@@ -48,7 +48,7 @@ This release includes the following Harness module and component versions.
         enabled: false
   ```
 - Upgraded MongoDB to 4.4.19. Changes are not required if you upgrade from 4.4.15. However, if you directly upgrage Helm charts from MongoDB 4.2, go to the following [instructions](#march-14-2023-version-78426). (SMP-1095)
-- You can now configure MongoDB to not install within the cluster and use and external database. (SMP-936)
+- You can now configure MongoDB to not install within the cluster and use an external database. (SMP-936)
 
   Use the following settings in your `override.yaml` file:
   ```
@@ -76,9 +76,6 @@ This release includes the following Harness module and component versions.
  
   For more information, go to [Back up and restore Self-Managed Enterprise Edition Helm installations](/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm).
 - You can now monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and eventually integrate with observability tools, such as Grafana. (SMP-766)
-- Chaos Engineering Helm Charts (SMP-763)
-
-  Need feature info.
 - Deployments load static files from the application server and no longer attempt to connect to static.harness.io. (SMP-851)
 #### Continuous Integration
 - When you [use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
@@ -324,6 +321,17 @@ This release includes the following Harness module and component versions.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
+#### Self-Managed Enterprise Edition
+- Data synchronization did not occur and dashboards displayed incorrect detail. (SMP-1178)
+
+  This issue is fixed. Updated the manifest to use `TIMESCALE_PASSWORD` instead of `TIMESCALEDB_PASSWORD` for some services.
+- The `timescale-db` was logging an error of not being able to access the services. No effect was seen on the functioning of the `timescale-db`, except for continuous error logging. (SMP-1163)
+
+  This was due to an underlying bug in the patroni library used by timescale-db.
+
+  This issue is fixed. Added the `create` permission in the `timescale-db` RBAC as a workaround.
+- Changed the `global.storageClassName` variable to `global.storageClass`. This update requires changes to the override file. (SMP-1091)
+- Moved MongoDB `wiredTigerCacheSizeGB` under extraFlags. Before this update, it was included under arguments. (SMP-1034)
 #### Continuous Integration
 - Fixed an issue related to secrets resolution in the [GitHub Action plugin step](/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-github-action-step). (CI-6969, CI-7300)
 - The [Base Image Connector setting](/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported DockerHub registries. (CI-7153, CI-7091, ZD-40319)
@@ -928,17 +936,6 @@ This release includes the following Harness module and component versions.
 - The API to retrieve filtered pipeline executions does not return executions that are successful in the UI, but failed in the backend. (PIE-8042)
 
   A code enhancement has fixed this issue.
-#### Self-Managed Enterprise Edition
-- Data synchronization did not occur and dashboards displayed incorrect detail. (SMP-1178)
-
-  This issue is fixed. Updated the manifest to use `TIMESCALE_PASSWORD` instead of `TIMESCALEDB_PASSWORD` for some services.
-- The `timescale-db` was logging an error of not being able to access the services. No effect was seen on the functioning of the `timescale-db`, except for continuous error logging. (SMP-1163)
-
-  This was due to an underlying bug in the patroni library used by timescale-db.
-
-  This issue is fixed. Added the `create` permission in the `timescale-db` RBAC as a workaround.
-- Changed the `global.storageClassName` variable to `global.storageClass`. This update requires changes to the override file. (SMP-1091)
-- Moved MongoDB `wiredTigerCacheSizeGB` under extraFlags. Before this update, it was included under arguments. (SMP-1034)
 #### Delegate
 - Minor fixes to the delegate installation wizard. (DEL-6073)
   
