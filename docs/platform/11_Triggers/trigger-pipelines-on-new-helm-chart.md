@@ -1,5 +1,5 @@
 ---
-title: Trigger Pipelines on new Helm Chart
+title: Trigger pipelines on new Helm chart
 description: Trigger Harness Pipelines in response to a new Helm chart version being added to an HTTP Helm repo.
 sidebar_position: 3
 helpdocs_topic_id: 54eqk0d1bd

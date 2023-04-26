@@ -1,5 +1,5 @@
 ---
-title: Enable or Disable a Policy Set
+title: Enable or disable a policy set
 description: Disable a Policy Set by locating the Policy Set and toggling the Enforced setting to off.
 # sidebar_position: 2
 helpdocs_topic_id: 6lxxd5j8j5

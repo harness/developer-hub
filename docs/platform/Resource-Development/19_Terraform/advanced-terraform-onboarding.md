@@ -1,5 +1,5 @@
 ---
-title: Advanced Terraform Onboarding
+title: Advanced Terraform onboarding
 description: A guide to writing onboarding automation using terraform
 sidebar_position: 4
 ---

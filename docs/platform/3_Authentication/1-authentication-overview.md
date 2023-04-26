@@ -1,5 +1,5 @@
 ---
-title: Authentication Overview
+title: Authentication overview
 description: An overview of how to control access to your organization's Harness account by SSO (single sign-on) provider, email domain, 2FA (two-factor authentication), and password policies (strength, expiration, and lockout).
 # sidebar_position: 2
 helpdocs_topic_id: gdob5gvyco

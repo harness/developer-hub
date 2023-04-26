@@ -104,7 +104,6 @@ If you chose **ECS Service Tags**, select the region, cluster, and the tag assoc
 :::
 
 
-
 ![](./static/aws-ecs-use-tags.png)
 
    

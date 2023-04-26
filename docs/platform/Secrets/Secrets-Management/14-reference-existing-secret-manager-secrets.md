@@ -1,5 +1,5 @@
 ---
-title: Reference Existing Secret Manager Secrets
+title: Reference existing secret manager secrets
 description: Topic to explain how to reference existing secret manager secrets.
 # sidebar_position: 2
 helpdocs_topic_id: 60lbrjdasw

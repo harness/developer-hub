@@ -1,5 +1,5 @@
 ---
-title: Add a Secret Manager
+title: Add a secret manager
 description: This document explains how to store and use encrypted secrets (such as access keys) using the built-in Harness Secrets Manager, AWS KMS, Google Cloud KMS, HashiCorp Vault, Azure Key Vault, CyberArk, and SSH via Kerberos.
 sidebar_position: 3
 helpdocs_topic_id: bo4qbrcggv

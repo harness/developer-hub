@@ -1,5 +1,5 @@
 ---
-title: Manage access control for CCM dashboards
+title: Dashboards
 description: This topic describes how to add and manage access control for CCM Dashboards.
 # sidebar_position: 2
 helpdocs_topic_id: ng6yaxqi2r
@@ -7,6 +7,8 @@ helpdocs_category_id: ak4v1iorl3
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+# Manage access control for CCM dashboards
 
 Harness provides Role-Based Access Control (RBAC) that enables you to control user and group access to Harness Resources according to their role assignment.
 

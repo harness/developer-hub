@@ -1,5 +1,5 @@
 ---
-title: Manage Input Sets and Triggers in Git Experience
+title: Manage input sets and triggers in Git Experience
 description: Once you have saved your Pipeline in your repo, you can set up your Input Sets and Triggers. You can set up your Input Set definitions in your repo along with your Pipeline. You can then set up your…
 sidebar_position: 9
 helpdocs_topic_id: 8tdwp6ntwz

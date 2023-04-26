@@ -1,5 +1,5 @@
 ---
-title: Input Sets and Overlays
+title: Input sets and overlays
 description: Input Sets are collections of runtime variables and values. Overlays are groups of Input Sets.
 sidebar_position: 5
 helpdocs_topic_id: 3fqwa8et3d

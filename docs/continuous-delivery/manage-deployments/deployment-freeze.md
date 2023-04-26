@@ -24,20 +24,20 @@ In Harness, you set up a a deployment freeze as a **freeze window**.
 
 A freeze window is defined using one or more rules and a schedule. The rules define the Harness orgs, projects, services, and environments to freeze. 
 
-![deployment freeze rule](../cd-deployments-category/static/deployment-freeze-rule.png)
+![deployment freeze rule](./static/deployment-freeze-rule.png)
 
 The schedule defines when to freeze deployments and the recurrence, if any (yearly, monthly, etc).
 
-![freeze schedule](../cd-deployments-category/static/deployment-freeze-schedule.png)
+![freeze recurrence](./static/deployment-freeze-recurrence.png)
 
 
 ### Freeze window scope
 
 Freeze windows can be set at the Harness account, org, or project levels, with the following differences:
 
-- **Account**: rules can apply to all or multiple **orgs and projects** in the account.
-- **Org**: rules can apply to all or multiple **projects** in the org.
-- **Project**: rules can apply to all or multiple **services and environments** in the project.
+- **Account**: rules can apply to specific, multiple, or all services or environments in the account.
+- **Org**: rules can apply to specific, multiple, or all services or environments in the org.
+- **Project**: rules can apply to specific, multiple, or all services, environments, or pipelines in the project.
 
 ### Exceptions
 
@@ -147,10 +147,17 @@ import TabItem from '@theme/TabItem';
    - `m` for minutes
 
 9.  In **Recurrence**, select how often to repeat the freeze window and a recurrence end date.
+    
+    For recurrence, you can select: 
+    - **Does not repeat**: to not repeat the recurrence of a freeze window. 
+    - **Daily**: to freeze window daily.
+    - **Weekly**: to freeze window weekly.
+    - **Monthly**: to freeze window monthly. You can select the number of months to freeze window once every `n` months. For example, select 3 to freeze window once every 3 months.
+    - **Yearly**: to freeze window yearly.
 
    The schedule will look something like this:
 
-   ![schedule](../cd-deployments-category/static/deployment-freeze-schedule.png)
+   ![schedule](./static/deployment-freeze-schedule.png)
 
 10. Click **Save**.
 
@@ -215,6 +222,8 @@ You can notify users of the following freeze window events:
 
 - Freeze window is enabled.
 - Deployments are rejected due to freeze window. This includes any trigger invocations that are rejected due to a freeze window.
+  
+In **Freeze Notification Message**, you can add a custom notification message.
 
 You can use the following notification methods:
 

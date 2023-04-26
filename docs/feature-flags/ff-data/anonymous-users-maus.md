@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic defines anonymous users, how their data is handled in Harness Feature Flags, and how they relate to the Monthly Active Users (MAUs) count.
 
-:::note
+:::info note
  Monthly Active Users (MAUs) are only applicable to client-side applications (JavaScript, iOS, Android, React, etc.).
 :::
 

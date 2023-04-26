@@ -1,5 +1,5 @@
 ---
-title: Create a Remote Step Template
+title: Create a remote step template
 description: This topic explains how to add a remote Step Template in Harness.
 # sidebar_position: 2
 helpdocs_topic_id: u1ozbrk1rh
