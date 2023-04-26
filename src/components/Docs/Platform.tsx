@@ -37,7 +37,7 @@ export default function PL() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
           <p>
-          Accelerate your onboarding using the Harness platform.
+          Accelerate your onboarding using the Harness Platform.
           </p>
           </div>
         </div>
