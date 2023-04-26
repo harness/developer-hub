@@ -4,9 +4,9 @@ description: Learn how to install the Harness Self-Managed Enterprise Edition us
 # sidebar_position: 6
 ---
 
-This document explains how to use Helm to install the Harness Self-Managed Enterprise Edition in an air-gapped environment and how to obtain and transfer Docker images to a private registry secure access. The steps include pulling Docker images, saving images as .tgz files, uploading to Google Cloud storage, downloading Helm charts, and pushing charts to your private repositories. This process ensures secure and seamless deployment of the Harness Self-Managed Enterprise Edition in restricted, offline environments.
+This topic explains how to use Helm to install the Harness Self-Managed Enterprise Edition in an air-gapped environment and how to obtain and transfer Docker images to a private registry with secure access. The steps include pulling Docker images, saving images as .tgz files, uploading to Google Cloud storage, downloading Helm charts, and pushing charts to your private repositories. This process ensures secure and seamless deployment of the Harness Self-Managed Enterprise Edition in restricted, offline environments.
 
-Air-gapped environments are characterized by a lack of direct access to the internet, which provides an added layer of security for sensitive data and systems. This isolation poses unique challenges to deploy and update software applications, as standard methods of accessing resources, such as Docker images, are not possbile.
+Air-gapped environments are characterized by a lack of direct access to the internet, which provides an added layer of security for sensitive data and systems. This isolation poses unique challenges to deploy and update software applications, as standard methods of accessing resources, such as Docker images, are not possible.
 
 The Harness Self-Managed Platform is designed to cater to various deployment scenarios, including an air-gapped environment. To facilitate this, the platform provides a secure and efficient method for obtaining and transferring Docker images to a private registry. This ensures that you can access, download, and push the required resources within your restricted network.
 
@@ -36,18 +36,17 @@ The flowchart below shows the air-gapped environment installation workflow steps
 ## Download required files
 
 To begin your installation, download the following files:
-
-Note: Different Harness releases are listed here including the hotfix, pick the relevant versions from https://storage.googleapis.com/smp-airgap-bundles
-
 - Harness Docker images [harness-docker-images.txt](https://storage.googleapis.com/smp-airgap-bundles/harness-docker-images.txt)
 - Harness air-gapped bundle [harness-airgapped.tgz](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped.tgz)
 - Harness airgap images [harness-airgap-images.sh](https://storage.googleapis.com/smp-airgap-bundles/harness-airgap-images.sh)
 
+:::info note
+
+Different Harness releases are listed here including the hotfix. Select the relevant versions from [airgap bundles](https://storage.googleapis.com/smp-airgap-bundles).
+
+:::
+
 ## Save Docker images to your private registry
-
-After you download the required files, you must save your Docker images to your private registry.
-
-**To save your Docker images**
 
 1. Sign in to your private registry.
     ```
