@@ -341,7 +341,9 @@ import TabItem from '@theme/TabItem';
     <TabItem value="GitHub" label="GitHub" default>
 ```
 
-Now we'll add a Github Connector to tell Harness where to pull the config.json from.
+Add a Github Connector to configure the location from which Harness can pull the config.json file. 
+
+To add a Github Connector:
 
 1. In **Github Connector**, select **New Github Connector**.
 2. Enter the following Github Connector settings:
@@ -352,9 +354,9 @@ Now we'll add a Github Connector to tell Harness where to pull the config.json f
     5. **Authentication:** select **Username and Token**. For the Token, you'll need to use a Personal Access Token (PAT) from Github. If you are logged into Github, just go to <https://github.com/settings/tokens>.
     6. Ensure the PAT has the **repo** scope selected.
    
-   ![](./static/harness-git-ops-application-set-tutorial-52.png)
+       ![](./static/harness-git-ops-application-set-tutorial-52.png)
    
-   You will store the PAT in a [Harness Text Secret](/docs/platform/Secrets/add-use-text-secrets). For details on Secrets Management, go to [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
+       You will store the PAT in a [Harness Text Secret](/docs/platform/Secrets/add-use-text-secrets). For details on Secrets Management, go to [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
     
     7. Select **Enable API access** and use the same Harness Secret.
     
@@ -373,8 +375,7 @@ Now we'll add a Github Connector to tell Harness where to pull the config.json f
     2. **URL Type:** select **Repository**.
     3. **Connection Type:** select **HTTP**.
     4. **GitHub Repository URL:** enter the HTTP URL for repo you used for your ApplicationSet, such as `https://bitbucket.org/johnsmith/applicationset.git`.
-    5. **Authentication:** select **Username and Token**. For the Token, you'll need to use a Personal Access Token (PAT) from Bitbucket. If you are logged into Bitbucket, just go to [HTTP access tokens](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html).
-       You must provide an account-level app password or token. Repo-level tokens are not supported.
+    5. **Authentication:** select **Username and Token**. For the Token, use a Personal Access Token (PAT) from Bitbucket. If you are logged into Bitbucket, go to [HTTP access tokens](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html). You must provide an account-level app password or token. Repo-level tokens are not supported.
    
        You will store the PAT in a [Harness Text Secret](/docs/platform/Secrets/add-use-text-secrets). For details on Secrets Management, go to [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
     
