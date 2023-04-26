@@ -35,9 +35,7 @@ This release includes the following Harness module and component versions.
   <TabItem value="What's new">
 ```
 #### Self-Managed Enterprise Edition
-- You now have the option to use Helm to install the Harness Self-Managed Enterprise Edition in an air-gapped environment. This process ensures secure and seamless deployment of the Harness Self-Managed Platform in restricted, offline environments.
-
-  Air-gapped environments are characterized by a lack of direct access to the internet, which provides an added layer of security for sensitive data and systems. This isolation poses unique challenges to deploy and update software applications, as standard methods of accessing resources, such as Docker images, are not possbile. (SMP-1201, SMP-1147, SMP-1146, SMP-1142, SMP-1100)
+- You now have the option to use Helm to install the Harness Self-Managed Enterprise Edition in an air-gapped environment. This process ensures secure and seamless deployment of the Harness Self-Managed Platform in restricted, offline environments. (SMP-1201, SMP-1147, SMP-1146, SMP-1142, SMP-1100)
 
   For more information, go to **link after feature PR is merged**.
 - You can now disable Postgres installations. (SMP-1196)
@@ -73,19 +71,11 @@ This release includes the following Harness module and component versions.
       extraArgs: ""
   ```
 - A Pre-Flight Validation Plugin is now tool available to perform pre-install, pre-upgrade, post-install, and post-upgrade checks on your setup. This optional plugin assists with installations and upgrades for the Harness Self-Managed Enterprise Edition. You can use the plugin to identify potential issues during deployment and ensure that all requirements are met before the deployment process begins. Suggestions are provided if the requirements are not met and the validation checks fail. (SMP-911)
-
-  For more information, go to [Need to add feature content](/docs/self-managed-enterprise-edition////).
 - You can now migrate from KOTS-based installations to Helm-based installations. (SMP-769)
-
-  For more information, go to [Need to add feature content](/docs/self-managed-enterprise-edition////).
-
 - Backup and restore for Helm-based installations is now supported using Velero. (SMP-767)
  
   For more information, go to [Back up and restore Self-Managed Enterprise Edition Helm installations](/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm).
-- You can now monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and eventually integrate with observability tools, such as Grafana.
-
-To monitor database applications like MongoDB, Postgres, or Redis, go to [Need to add feature content](/docs/self-managed-enterprise-edition////).
-(SMP-766)
+- You can now monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and eventually integrate with observability tools, such as Grafana. (SMP-766)
 - Chaos Engineering Helm Charts (SMP-763)
 
   Need feature info.
