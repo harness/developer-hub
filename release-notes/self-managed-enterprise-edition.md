@@ -833,16 +833,6 @@ To monitor database applications like MongoDB, Postgres, or Redis, go to [Need t
   
   This issue has been resolved. Now, the validation passes if there is incoming data from any one of the metric packs.
 #### Harness Platform
-- Despite having an active license, the CD module is not visible. (PLG-2047)
-  
-  A code enhancement has fixed this issue.
-- The `SubscriptionId` parameter was removed from the GET subscription request because only one subscription is currently allowed. (PLG-2018)
-  
-  This issue has been resolved. Added the `SubscriptionId` parameter in the GET request to allow future expansion.
-- Fixed a typographical error in the labeling of the quickstart UI for Service Reliability. (PLG-1834)
-- HTML injection occurs due to a lack of server-side validation. (PLG-657)
-  
-   Server-side validation now occurs.
 - When a password was entered on the **Credentials** page for **SMTP Configuration**, an incorrect error displayed. (PL-32113)
 
   This issue has been fixed.
