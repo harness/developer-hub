@@ -9,10 +9,10 @@ import { MODULES } from "@site/src/constants"
 // Featured Tutorials
 export const featuredTutorials: CardItem[] = [
     {
-      title: "Add feature flags to a JavaScript app",
+      title: "Add Feature Flags to a JavaScript app",
       module: MODULES.ff,
       icon: "img/icon_ff.svg",
-      description: "Add JavaScript Feature Flags to a TypeScript and React application.",
+      description: "Add Feature Flags to a JavaScript application.",
       newDoc: true,
       type: [docType.Documentation],
       time: "10min",
@@ -27,6 +27,13 @@ export const featuredTutorials: CardItem[] = [
       description:
         "",
       list: [
+        {
+          title: "Feature Flags tutorial",
+          module: MODULES.ff,
+          description:
+            "Dive in to this tutorial to add flags to a JavaScript app.",
+          link: "/tutorials/feature-flags/typescript-react",
+        },
         {
           title: "Get started with Feature Flags",
           module: MODULES.ff,
