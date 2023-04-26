@@ -4,7 +4,7 @@ description: Learn how to install the Harness Self-Managed Enterprise Edition us
 # sidebar_position: 6
 ---
 
-This document explains how to use Helm to install the Harness Self-Managed Enterprise Edition in an air-gapped environment. It explains the process of obtaining and transferring Docker images to a private registry for you to access them securely. The steps include pulling Docker images, saving them as .tgz files, uploading to Google Cloud storage, downloading Helm charts, and pushing charts to your private repositories. This process ensures secure and seamless deployment of the Harness Self-Managed Platform in restricted, offline environments.
+This document explains how to use Helm to install the Harness Self-Managed Enterprise Edition in an air-gapped environment and how to obtain and transfer Docker images to a private registry secure access. The steps include pulling Docker images, saving images as .tgz files, uploading to Google Cloud storage, downloading Helm charts, and pushing charts to your private repositories. This process ensures secure and seamless deployment of the Harness Self-Managed Enterprise Edition in restricted, offline environments.
 
 Air-gapped environments are characterized by a lack of direct access to the internet, which provides an added layer of security for sensitive data and systems. This isolation poses unique challenges to deploy and update software applications, as standard methods of accessing resources, such as Docker images, are not possbile.
 
@@ -60,11 +60,11 @@ After you download the required files, you must save your Docker images to your 
     # Authenticate with AWS for ECR
     aws ecr get-login-password --region <region> | docker login --username AWS --password-
     ```
-    All Docker files required to deploy Harness are stored in a `harness-docker-images.txt` file in the Helm repo. The downloaded image bundle is `harness-airgapped.tgz`.
+    All Docker files required to deploy Harness are stored in `harness-airgapped.tgz`.
 2. Add the `harness-airgapped.tgz` and `harness-docker-images.txt` to your air-gapped network. You can now push your images locally.
 3. Run `harness-airgap-images.sh`.
     ```
-    ./harness-airgap-images.sh --registry <REGISTRY.YOURDOMAIN.COM:PORT> --image-bundle harness-airgapped.gz --file harness-docker-images.txt
+    ./harness-airgap-images.sh -r <REGISTRY.YOURDOMAIN.COM:PORT> -f harness-airgapped.tgz
     ````
 
 ## Download and push Helm charts
