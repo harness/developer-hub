@@ -1,11 +1,29 @@
-## License usage
+Your Harness CI subscription includes a number of developer licenses. You can check how many of these licenses you're currently using in your Harness account. Go to **Account Settings**, and the select **Usage**.
 
-When you subscribe to a Harness module, you select a number of licenses for developers and monthly active users (MAUs) to include in your subscription. You can check how many of these licenses you’re currently using on the Harness Platform. To do this:
+CI subscription usage details are divided into several sections providing progressively more detail about your license and build credit usage.
 
-1. Go to the Harness Platform.
-2. Click **Account Settings**, then **Subscriptions**.
-3. Select the module you want to view the usage details for by clicking its tile.
-4. Under **Activity & Usage**, you can view the number of:
-	* Developers in the last 30 days
-	* MAUs for the current month
-	* Current Feature Flags in your account
+### Subscription details
+
+This section includes the **Account Name**, **Service Type**, and **Plan**.
+
+### Plan summary
+
+This section summarizes your license and build credit usage. It shows the number of current active developers against the total number of licenses, as well as your your balance of build credits.
+
+### Active developers
+
+In this section, you can drill down into license usage data, including:
+
+* Total active developers
+* Highest license usage in the current billing cycle
+* Usage trends
+* Overuse (when the number of active developers exceeded the subscription limit)
+
+### Build credits
+
+In this section, you can drill down into build credit usage data, including:
+
+* Start and expiration dates for credits
+* Remaining credit balance
+
+If you have a paid plan, you can see information about both free and paid credits.

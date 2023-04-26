@@ -3,7 +3,7 @@ You can quickly and securely manage your Harness CI subscriptions and licenses d
 You can:
 * Manage billing details and request invoices.
 * View license usage.
-* Change the number of licenses you need.
+* Change the number of licenses.
 
 :::info
 
