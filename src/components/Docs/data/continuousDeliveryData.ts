@@ -41,10 +41,17 @@ export const featuredTutorials: CardItem[] = [
         "",
       list: [
         {
+          title: "CD Tutorials",
+          module: MODULES.cd,
+          description:
+            "Learn how to set up CD pipelines to automate service deployments on your infrastructure.",
+          link: "/tutorials/cd-pipelines",
+        },
+        {
           title: "Get started",
           module: MODULES.cd,
           description:
-            "Learn the basics of Harness Continuous Delivery (CD)",
+            "Learn the basics of Harness Continuous Delivery (CD).",
           link: "/docs/category/get-started",
           // @Roshni: sample code for the sub categories -->
           /*children: [
@@ -131,6 +138,13 @@ export const featuredTutorials: CardItem[] = [
             },
           ]*/
         },
+      ],
+    },
+    {
+      name: "Key features",
+      description:
+        "",
+      list: [ 
         {
           title: "Common CD features across platforms",
           module: MODULES.cd,
@@ -183,13 +197,6 @@ export const featuredTutorials: CardItem[] = [
             },
           ]*/
         },
-      ],
-    },
-    {
-      name: "Key features",
-      description:
-        "",
-      list: [ 
         {
           title: "Deploy services on different platforms",
           module: MODULES.cd,
