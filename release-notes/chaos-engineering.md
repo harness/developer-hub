@@ -22,7 +22,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 * **Schedule** tab to schedule cron jobs (CHAOS-710)
-    * A **Schedule** tab has been added to the experiment builder page where you can select from cron and non-cron jobs, schedule a job, **Save** it, and then **Run** it. Previously, cron jobs could not be saved; they were created and run.
+    * A **Schedule** tab has been added to the experiment builder page where you can select from cron and non-cron experiments, schedule a cron experiment, **Save** it, and then **Run** it. Previously, cron experiments could not be saved; they were created and run.
 
 
 * **Save** button when creating, editing, and cloning an experiment (CHAOS-1409)
