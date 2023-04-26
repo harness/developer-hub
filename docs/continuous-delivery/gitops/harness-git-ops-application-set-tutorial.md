@@ -229,48 +229,7 @@ Now that we have the Agent, Clusters, and Repo, we can create the GitOps Applica
 	1. **Cluster:** select the Agent cluster **appset-example**.
 	2. Namespace: enter **default**.
 
-The GitOps Application is added. Now you can sync it.
-
-## Sync the ApplicationSet to create the applications
-
-A Sync brings the live state to its desired state by applying the declarative description. The guestbook application in the ApplicationSet will be created in the two target clusters. After the sync, the resources will look like this in Harness:
-
-![](./static/harness-git-ops-application-set-tutorial-40.png)
-
-<details>
-<summary>SYNC button</summary>
-
-When you select **Sync**, Harness will use the ApplicationSet to create the new Harness Applications for the dev and prod clusters.
-
-1. In the GitOps Application, select **SYNC**.
-   
-   ![](./static/harness-git-ops-application-set-tutorial-41.png)
-
-2. In the Sync settings, select **Synchronize**. Synchronization will take a minute.
-
-</details>
-
-<details>
-<summary>GitOpsSync execution step</summary>
-
-1. In **Execution**, select **Add Step** and then select the **GitOpsSync** step.
-2. Select the GitOpsSync step to configure step parameters.
-3. Enter a name for the step.
-4. In **Timeout**, enter how long you want the Harness delegate to wait for GitOps to respond to API requests before timeout.
-5. In **Advanced Configuration**, you can select the same configuration you set in the SYNC step.
-   
-   ![](./static/gitopssync-step.png)
-
-</details>
-
-
-In the git-generator-files-discovery Application **Resource View**, you can see the ApplicationSet and new Applications:
-
-![](./static/harness-git-ops-application-set-tutorial-42.png)
-
-Congratulations! Now you have a working ApplicationSet in Harness deploying an application to two target clusters.
-
-Next, we'll create a PR Pipeline to change the application in just one of the target clusters.
+The GitOps Application is added. Now you can [sync](/docs/continuous-delivery/gitops/sync-gitops-applications) it.
 
 ## Create a PR Pipeline
 
