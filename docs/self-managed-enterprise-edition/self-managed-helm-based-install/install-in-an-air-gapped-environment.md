@@ -87,7 +87,7 @@ You can use Helm to pull the chart and push it to your private repository or dow
 ## Install via Helm
 Next, you are ready to install via Helm by updating your `override.yaml` file with your private registry information.
 
-1. Update the `override.yaml` file with our private registry information.
+1. Update the `override.yaml` file with your private registry information.
     ```
     global:
     imageRegistry: "private-123.com"
