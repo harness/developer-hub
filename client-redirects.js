@@ -178,8 +178,10 @@ module.exports = {
       from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-arc",
       to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-arc",
     },
-
-
+    {
+      from: "/docs/category/9mefqceij0-cv-category",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step",
+    },
     // Created by Rashmi Sahoo to fix platform re-direct April 19th, 2023
     {
       from: "/docs/platform/Authentication/provision-users-with-okta-scim",
@@ -2314,7 +2316,6 @@ module.exports = {
       from: "/docs/chaos-engineering/chaos-faults/aws/security/policy-for-all-aws-faults",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/security-configurations/policy-for-all-aws-faults",
     },
-
     {
       from: "/docs/chaos-engineering/chaos-faults/",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/",
@@ -2337,13 +2338,12 @@ module.exports = {
     },
     {
       from: "/docs/article/1cqpe6f5id-chaos-enterprise-hub-experiments#azure",
-      to: "/docs/chaos-engineering/technical-reference/chaos-faults/gcp/",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/azure/",
     },
     {
       from: "/docs/article/v64rj2maiz-harness-chaos-engineering-basics#probes",
-      to: " /docs/category/probes-1",
+      to: "/docs/category/probes-1",
     },
-
 
     //  Created by aimurphy for branch ci-reorg-pt-3 on Apr 12, 2023
     {
