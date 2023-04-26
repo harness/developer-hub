@@ -265,10 +265,11 @@ This release includes the following Harness module and component versions.
 #### Self-Managed Enterprise Edition
 - You now have the option to use Helm to install the Harness Self-Managed Enterprise Edition in an air-gapped environment. This process ensures secure and seamless deployment of the Harness Self-Managed Platform in restricted, offline environments.
 
-  Air-gapped environments are characterized by a lack of direct access to the internet, which provides an added layer of security for sensitive data and systems. This isolation poses unique challenges to deploy and update software applications, as standard methods of accessing resources, such as Docker images, are not possbile.
+  Air-gapped environments are characterized by a lack of direct access to the internet, which provides an added layer of security for sensitive data and systems. This isolation poses unique challenges to deploy and update software applications, as standard methods of accessing resources, such as Docker images, are not possbile. (SMP-1201, SMP-1147, SMP-1146, SMP-1142, SMP-1100)
 
-  <!---
-  For more information, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).--> (SMP-1201, SMP-1147, SMP-1146, SMP-1142, SMP-1100)
+  [For more information, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).]: #
+  
+   
 - You can now disable Postgres installations. (SMP-1196)
 
   To disable Postgres installations use the following configuration:
@@ -278,7 +279,7 @@ This release includes the following Harness module and component versions.
       postgres:
         enabled: false
   ```
-- Upgraded MongoDB to 4.4.19. Changes are not required if you upgrade from 4.4.15. However, if you directly upgrage Helm charts from MongoDB 4.2, go to the following instructions: . (SMP-1095)
+- Upgraded MongoDB to 4.4.19. Changes are not required if you upgrade from 4.4.15. However, if you directly upgrage Helm charts from MongoDB 4.2, go to the following [instructions](#march-14-2023-version-78426). (SMP-1095)
 - You can now configure MongoDB to not install within the cluster and use and external database. (SMP-936)
 
   Use the following settings in your `override.yaml` file:
