@@ -6,7 +6,7 @@ sidebar_position: 1
 
 All CD tutorials can be found on the [Set up CD Pipelines](/tutorials/cd-pipelines/) tutorials page.
 
-These tutorials includes Kubernetes, Helm, and other integrations. For example:
+These tutorials include Kubernetes, Helm, and other integrations. For example:
 
 - [Deploy a Helm Chart](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/helm-chart)
 - [Deploy a Kubernetes Manifest](https://developer.harness.io/tutorials/cd-pipelines/kubernetes/manifest)
