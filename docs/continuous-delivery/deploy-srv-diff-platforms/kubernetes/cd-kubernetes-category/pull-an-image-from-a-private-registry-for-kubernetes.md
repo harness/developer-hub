@@ -14,7 +14,7 @@ Typically, if the Docker image you are deploying is in a private registry, Harne
 
 In some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For such cases, the values.yaml or manifest files in the service definition **Manifests** section must use the `dockercfg` or `dockerconfigjson` parameter.
 
-If the Docker image is added in the Service Definition **Artifacts** section, then you reference it like this: `dockercfg: <+artifact.imagePullSecret>` or `dockerconfigjson: <+artifact.dockerConfigJsonSecret>`.
+If the Docker image is added in the service definition **Artifacts** section, then you reference it like this: `dockercfg: <+artifact.imagePullSecret>` or `dockerconfigjson: <+artifact.dockerConfigJsonSecret>`.
 
 This key will import the credentials from the Docker credentials file in the artifact.
 
