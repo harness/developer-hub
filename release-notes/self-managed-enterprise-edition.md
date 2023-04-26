@@ -47,7 +47,7 @@ This release includes the following Harness module and component versions.
       postgres:
         enabled: false
   ```
-- Upgraded MongoDB to 4.4.19. Changes are not required if you upgrade from 4.4.15. However, if you directly upgrage Helm charts from MongoDB 4.2, go to the following [instructions](#march-14-2023-version-78426). (SMP-1095)
+- Upgraded MongoDB to 4.4.19. Changes are not required if you upgrade from 4.4.15. However, if you directly upgrage Helm charts from MongoDB 4.2, go to the following [instructions](/release-notes/self-managed-enterprise-edition/#march-14-2023-version-78426). (SMP-1095)
 - You can now configure MongoDB to not install within the cluster and use an external database. (SMP-936)
 
   Use the following settings in your `override.yaml` file:
@@ -95,7 +95,7 @@ This release includes the following Harness module and component versions.
   During deployment, the required task is deployed with the desired count provided in the **Service Definition**.
 
   Go to [ECS deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial) for more information.
-- A **RouteMapping** step is enabled for [Tanzu Application Services (TAS) deployments](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) to enable map and unmap routes. (CDS-50535)
+- A **RouteMapping** step is enabled for [Tanzu Application Services (TAS) deployments](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart/) to enable map and unmap routes. (CDS-50535)
 
   In the **Execution** tab of the TAS pipeline, you can now add a **Route Mapping** step for any execution strategy to configure route mapping or unmapping.
 
@@ -140,7 +140,7 @@ This release includes the following Harness module and component versions.
   When creating a deployment freeze window, select specific services and environments at an account or organization level using the **Add Rule** option in the **Coverage** tab. 
 
   ![](static/freeze-deployments-src-env.png)
-- The [Jira Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages) step now supports updating the issue type. (CDS-53876)
+- The [Jira Update](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages/) step now supports updating the issue type. (CDS-53876)
 
   When you update a Jira issue using the Jira Update step, you can now update the issue type. For example, if the issue you are updating is a Story, you can update it to a Task.
 
