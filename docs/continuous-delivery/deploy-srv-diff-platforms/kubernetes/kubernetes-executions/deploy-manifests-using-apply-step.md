@@ -212,17 +212,43 @@ Values YAML files can be specified at several places in Harness:
 You can also add a values YAML values and/or files or Kuztomize Patch files in the Apply step **Override Value**.
 
 1. Select **Add Manifest**.
-2. In **Specify Manifest Type**: 
-   * Select **Values YAML** type, and select **Continue**.
-     * Select a values YAML store. You can select remotes stores such as Git, GitHub, GitLab, Bitbucket, Azure Repo or Harness file store, or Inline.
-       - If you select a remote store, select or add a connector to that repo, and then enter a path to the folder or file.
-       - If you select Harness file store, select a values YAML file from project, organization, or account in the file store.
-       - If you select **Inline**, enter a name for you to identify values YAML and the `name:value` pairs for the override.
-   * Select **Kuztomize Patches** type, and select **Continue**.
-     * Select a Kuztomize Patches store. You can select remotes stores such as Git, GitHub, GitLab, Bitbucket, Azure Repo or Harness file store, or Inline.
-       - If you select a remote store, select or add a connector to that repo, and then enter a path to the folder or file.
-       - If you select Harness file store, select a Kuztomize Patch file from project, organization, or account in the file store.
-       - If you select **Inline**, enter a name for you to identify the Kuztomize Patch file and the value for the override.
+2. In **Specify Manifest Type**, select **Values YAML** or **Kuztomize Patches**, and then select **Continue**.
+   * To add a values YAML value and/or files, select a values YAML store. You can select remotes stores such as Git, GitHub, GitLab, Bitbucket, Azure Repo or Harness file store, or Inline.
+     - If you select a remote store, select or add a connector to that repo, and then enter a path to the folder or file.
+     - If you select Harness file store, select a values YAML file from project, organization, or account in the file store.
+     - If you select **Inline**, enter a name for you to identify values YAML and the `name:value` pairs for the override.
+   * To add a Kuztomize Patch file, select a Kuztomize Patches store. You can select remotes stores such as Git, GitHub, GitLab, Bitbucket, Azure Repo or Harness file store, or Inline.
+     - If you select a remote store, select or add a connector to that repo, and then enter a path to the folder or file.
+     - If you select Harness file store, select a Kuztomize Patch file from project, organization, or account in the file store.
+     - If you select **Inline**, enter a name for you to identify the Kuztomize Patch file and the YAML values for the override.
+       
+       <details>
+       <summary>Sample Kuztomize Patch YAML</summary>
+
+       ```
+       apiVersion: apps/v1
+       kind: Deployment
+       metadata:
+         name: example-deploy
+         namespace: default
+       spec:
+         template :
+           spec:
+             containers:
+               - name: example-app
+                 image: <+stages.s1.variables.image>
+       ---
+       apiVersion: apps/v1
+       kind: Deployment
+       metadata:
+         name: example-deploy
+         namespace: default
+       spec:
+         replicas: <+stages.s1.variables.replica>
+       ```
+
+       </details> 
+
 3. Select **Submit**. 
 
 You can add multiple overrides to the Apply step.
