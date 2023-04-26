@@ -927,11 +927,11 @@ See [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-deli
 
 ### <+artifact.dockerConfigJsonSecret>
 
-If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml or manifest file in service definition **Manifests** section must use the `dockerconfigjson` parameter.
+In some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For such cases, the values.yaml or manifest files in the service definition **Manifests** section must use the `dockerconfigjson` parameter.
 
 If the Docker image is added in the service definition **Artifacts** section, you can reference it as `dockerconfigjson: <+artifact.dockerConfigJsonSecret>`.
 
-values.yaml:
+Here is a sample values.yaml:
 
 ```
 name: <+stage.variables.name>  
@@ -944,7 +944,7 @@ createNamespace: true
 namespace: <+infra.namespace>  
 ...
 ```
-See [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes/).
+Go to [pull an image from a private registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes/) for more information.
 
 ### <+artifact.type>
 
