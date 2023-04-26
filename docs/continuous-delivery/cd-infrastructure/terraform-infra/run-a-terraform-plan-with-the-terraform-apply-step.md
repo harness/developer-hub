@@ -437,6 +437,17 @@ TF_VAR_alist='[1,2,3]'
 ```
 You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
+## Command Line Options
+
+It allows setting terraform CLI options for terraform commands depending on the terraform step type. Example of CLI options: **-lock=false**, **-lock-timeout=0s**.
+Each terraform command can be configured to have different CLI options. Also, each command can have multiple CLI options.
+
+![](./static/run-a-terraform-plan-with-the-terraform-apply-step-18.png)
+
+### Skip Terraform Refresh
+
+Terraform refresh command won't be running when this configuration is chosen.
+
 ## Option: Advanced Settings
 
 In **Advanced**, you can use the following options:

@@ -512,6 +512,17 @@ Terraform has compared your real infrastructure against your configuration
 and found no differences, so no changes are needed.
 ```
 
+## Command Line Options
+
+It allows setting terraform CLI options for terraform commands depending on the terraform step type. Example of CLI options: **-lock=false**, **-lock-timeout=0s**.
+Each terraform command can be configured to have different CLI options. Also, each command can have multiple CLI options.
+
+![](./static/run-a-terraform-plan-with-the-terraform-plan-step-16.png)
+
+### Skip Terraform Refresh
+
+Terraform refresh command won't be running when this configuration is chosen.
+
 ## Option: Terraform Plan detailed-exitcode
 
 You can use the standard `terraform plan` command option [detailed-exitcode](https://www.terraform.io/cli/commands/plan#other-options) with the Harness Terraform Plan step.
