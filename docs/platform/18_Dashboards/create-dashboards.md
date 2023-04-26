@@ -16,6 +16,8 @@ This topic describes how to create your own Dashboard.
 
 The following video explains how to create a Dashboard:
 
+<docvideo src="https://fast.wistia.com/embed/iframe/38m8yricif"/>
+
 ### Step 1: Create a Dashboard
 
 To create a Dashboard you first need to first create a Folder. The Dashboards are created inside a folder.
