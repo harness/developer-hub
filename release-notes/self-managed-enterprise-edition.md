@@ -47,7 +47,7 @@ This release includes the following Harness module and component versions.
       postgres:
         enabled: false
   ```
-- Upgraded MongoDB to 4.4.19. Changes are not required if you upgrade from 4.4.15. However, if you directly upgrage Helm charts from MongoDB 4.2, go to the following [instructions](/release-notes/self-managed-enterprise-edition/#march-14-2023-version-78426). (SMP-1095)
+- Upgraded MongoDB to 4.4.19. Changes are not required if you upgrade from 4.4.15. However, if you directly upgrage Helm charts from MongoDB 4.2, go to the following [instructions](https://developer.harness.io/release-notes/self-managed-enterprise-edition/#march-14-2023-version-78426). (SMP-1095)
 - You can now configure MongoDB to not install within the cluster and use an external database. (SMP-936)
 
   Use the following settings in your `override.yaml` file:
