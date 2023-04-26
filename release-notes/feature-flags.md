@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-04-22T10:00
+date: 2023-05-01T10:00
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -40,7 +40,7 @@ This release does not include early access features.
 
 #### Feature Flags UI
 
-* Fixed an issue in the onboarding flow where the flag validation did not work as expected. (FFM-6735)
+* Fixed an issue in the onboarding flow where the flag validation did not work as expected. (FFM-7534)
 
 ```mdx-code-block
   </TabItem>
