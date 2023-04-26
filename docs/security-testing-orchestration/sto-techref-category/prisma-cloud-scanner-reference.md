@@ -1,6 +1,6 @@
 ---
 title: Prisma Cloud (formerly Twistlock) scanner reference
-description: Repository and container image scans with Prisma Cloud
+description: Image scans with Prisma Cloud
 sidebar_position: 210
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Grype scanner reference
-description: Container image scans with Grype
+description: Image scans with Grype
 sidebar_position: 156
 ---
 
