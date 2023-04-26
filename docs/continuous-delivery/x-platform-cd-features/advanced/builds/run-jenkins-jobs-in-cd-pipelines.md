@@ -44,11 +44,13 @@ In your CD Stage's **Execution**, select **Add Step**, then select **Jenkins**.
 
 Select the Jenkins server you added as a Harness Jenkins connector. For more information, go to [connect to Jenkins](/docs/platform/Connectors/Artifact-Repositories/connect-to-jenkins).
 
-## Job name
+## Job/Folder name
 
 Select the Jenkins job (also called a project) to execute. The list is automatically populated using the Jenkins server you set up in the Jenkins connector you selected.
 
-To filter a job, search for its name. If the job is nested, select the top-level folder first, then search for the job name within that path using a secondary field.
+If you select a folder, then a new setting for the folder appears. For example, if you selected the folder **Test Jobs**, then a setting named **Test Jobs** appears. In the new setting, select the job to execute.
+
+To filter a job, search for its name.
 
 ## Use runtime inputs and expressions
 
