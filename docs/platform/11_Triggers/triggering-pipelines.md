@@ -105,7 +105,7 @@ To enforce authentication for all webhook triggers in this project, you can use 
 
 ![picture 2](static/6dee82fe88ab34915affa856d596d73c4a91fbbedf4784c2a8273db8a6f5b6b9.png)
 
-Now all Github webhooks for this project must be authenticated. All Github triggers in the project must be configured with a secret, and the corresponding webhooks in the Github repos must be configured with the corresponding secret. If the secret manager has a delegate selector selected, the corresponding delegate is used to decrypt it.
+Now all Github webhooks for this project must be authenticated. All Github triggers in the project must be configured with a secret, and the corresponding webhooks in the Github repos must be configured with the corresponding secret. A secret manager with a delegate selector will use the corresponding delegate to decrypt it.
 
 ## Polling frequency
 
