@@ -1139,7 +1139,7 @@ module.exports = {
     
     {
       from: "/docs/platform/Delegates/delegates-overview",
-      to: "docs/platform/Delegates/delegate-concepts/delegate-overview",
+      to: "/docs/platform/Delegates/delegate-concepts/delegate-overview",
     },
 
     {
