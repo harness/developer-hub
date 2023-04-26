@@ -663,6 +663,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
   <TabItem13 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
+
 You connect to GCS using a Harness GCP Connector. For details on all the GCS requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/).
 
 To add an artifact from GCS, do the following:
@@ -706,7 +707,7 @@ For more information, go to the GCP documentation about [Cloud IAM roles for Clo
 
 You connect to Google Artifact Registry using a Harness GCP Connector. 
 
-For details on all the Google Cloud Registry requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/).
+For details on all the Google Artifact Registry requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/).
 
 ```mdx-code-block
 import Tabs7 from '@theme/Tabs';
