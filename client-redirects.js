@@ -2326,6 +2326,11 @@ module.exports = {
       from: "/docs/article/1cqpe6f5id-chaos-enterprise-hub-experiments",
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/",
     },
+    
+    {
+      from: "/docs/article/v64rj2maiz-harness-chaos-engineering-basics",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/probes/configure-and-add-probe/",
+    },
 
     //  Created by aimurphy for branch ci-reorg-pt-3 on Apr 12, 2023
     {
