@@ -1,6 +1,6 @@
 ---
-title: Manage CI subscriptions and licenses
-description: View and manage your CI subscriptions and licenses from within Harness.
+title: Manage subscriptions and licenses
+description: View and manage your CI subscriptions and licenses.
 sidebar_position: 70
 ---
 
@@ -17,9 +17,19 @@ import License from '/docs/continuous-integration/shared/subscription-view-usage
 
 <Overview />
 
-<Create />
+## Subscriptions
+
+You can view and manage Harness CI subscriptions in your Harness **Account Settings**.
 
 <View />
+
+<Create />
+
+### Switch or downgrade your plan
+
+You can upgrade from the Free plan to either the Team or Enterprise plan through the Harness Platform.
+
+If you would like to switch between paid plans or downgrade to the Free plan, you must contact the [Harness Sales team](https://www.harness.io/pricing?module=ci#).
 
 <Cancel />
 
@@ -34,3 +44,8 @@ import License from '/docs/continuous-integration/shared/subscription-view-usage
 ## License usage
 
 <License />
+
+## See also
+
+<!-- FF subscription -->
+<!-- Amazon marketplace subscription -->

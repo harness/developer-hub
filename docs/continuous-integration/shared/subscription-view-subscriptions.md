@@ -1,23 +1,12 @@
-This topic describes how to view which Harness modules you are currently subscribed to, and how to view the details of your subscriptions. On the Harness Platform, you can view the following subscription details:
+### View subscriptions
+
+In your Harness account, go to **Account Settings** to view which Harness modules you are currently subscribed to. Subscriptions are shown in the **Subscribed Modules** section. You can select **Manage** to view the details of a particular subscription.
+
+For each subscription, you can view the following details:
 
 * Account name
 * Subscription plan
 * Number of licenses for developers and monthly active users
-* Expiry date of your subscription
+* Subscription expiration date
 
-## View which modules you’re currently subscribed to
-
-To view the modules you’ve already subscribe to:
-
-1. Go to the Harness Platform.
-2. Click **Account Settings**, then **Overview**.
-3. Your active subscriptions are displayed under **Subscribed Modules**.![A screenshot of the subscriptions on the account overview page.](./static/4-view-your-current-subscriptions-00.png)
-
-## View the details of a subscription
-
-To view the details of a subscription: 
-
-1. Go to the Harness Platform.
-2. Click **Account Settings**, then **Subscriptions**.
-3. Select the module you want to view the subscription details for by clicking its tile.You’ll see tiles for all Harness modules, whether you have subscribed to them yet or not.
-4. The subscription details are displayed in **Subscription Overview**, under **Subscription Details**.  
+You can also access subscription details by selecting **Plans** on the **Account Settings** navigation menu.
