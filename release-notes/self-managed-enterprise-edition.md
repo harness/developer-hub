@@ -34,6 +34,62 @@ This release includes the following Harness module and component versions.
 <Tabs>
   <TabItem value="What's new">
 ```
+#### Self-Managed Enterprise Edition
+- You now have the option to use Helm to install the Harness Self-Managed Enterprise Edition in an air-gapped environment. This process ensures secure and seamless deployment of the Harness Self-Managed Platform in restricted, offline environments.
+
+  Air-gapped environments are characterized by a lack of direct access to the internet, which provides an added layer of security for sensitive data and systems. This isolation poses unique challenges to deploy and update software applications, as standard methods of accessing resources, such as Docker images, are not possbile. (SMP-1201, SMP-1147, SMP-1146, SMP-1142, SMP-1100)
+
+  For more information, go to **link after feature PR is merged**.
+- You can now disable Postgres installations. (SMP-1196)
+
+  To disable Postgres installations use the following configuration:
+
+  ```
+  global:
+      postgres:
+        enabled: false
+  ```
+- Upgraded MongoDB to 4.4.19. Changes are not required if you upgrade from 4.4.15. However, if you directly upgrage Helm charts from MongoDB 4.2, go to the following [instructions](#march-14-2023-version-78426). (SMP-1095)
+- You can now configure MongoDB to not install within the cluster and use and external database. (SMP-936)
+
+  Use the following settings in your `override.yaml` file:
+  ```
+  global:
+  database:
+    mongo:
+      ## - installed = true if installed within cluster
+      installed: true
+      ## - protocol to use for connection     
+      protocol: mongodb
+      ## - array of external Mongo hostnames 
+      hosts: []
+      ## - secret name containing external values
+      secretName: ""
+      ## - key within secret containing username
+      userKey: ""
+      ## - key within secret containing password
+      passwordKey: ""
+      ## - extra arguments set to connection string
+      extraArgs: ""
+  ```
+- A Pre-Flight Validation Plugin is now tool available to perform pre-install, pre-upgrade, post-install, and post-upgrade checks on your setup. This optional plugin assists with installations and upgrades for the Harness Self-Managed Enterprise Edition. You can use the plugin to identify potential issues during deployment and ensure that all requirements are met before the deployment process begins. Suggestions are provided if the requirements are not met and the validation checks fail. (SMP-911)
+
+  For more information, go to [Need to add feature content](/docs/self-managed-enterprise-edition////).
+- You can now migrate from KOTS-based installations to Helm-based installations. (SMP-769)
+
+  For more information, go to [Need to add feature content](/docs/self-managed-enterprise-edition////).
+
+- Backup and restore for Helm-based installations is now supported using Velero. (SMP-767)
+ 
+  For more information, go to [Back up and restore Self-Managed Enterprise Edition Helm installations](/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm).
+- You can now monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and eventually integrate with observability tools, such as Grafana.
+
+To monitor database applications like MongoDB, Postgres, or Redis, go to [Need to add feature content](/docs/self-managed-enterprise-edition////).
+(SMP-766)
+- Chaos Engineering Helm Charts (SMP-763)
+
+  Need feature info.
+- Deployments load static files from the application server and no longer attempt to connect to static.harness.io. (SMP-851)
 #### Continuous Integration
 - When you [use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
 #### Continous Delivery & GitOps
@@ -49,12 +105,12 @@ This release includes the following Harness module and component versions.
   
   The task definition ARN points to an existing task created and available in the AWS cluster with the required definition. The task definition will be fetched using the task ARN provided and added to the ECS service configuration provided in the Harness ECS service **Service Definition**.
   
-  During deployment, the required task is deployed with the desired count provided in the **Service Definition**. 
+  During deployment, the required task is deployed with the desired count provided in the **Service Definition**.
 
   Go to [ECS deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial) for more information.
 - A **RouteMapping** step is enabled for [Tanzu Application Services (TAS) deployments](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart) to enable map and unmap routes. (CDS-50535)
 
-  In the **Execution** tab of the TAS pipeline, you can now add a **Route Mapping** step for any execution strategy to configure route mapping or unmapping. 
+  In the **Execution** tab of the TAS pipeline, you can now add a **Route Mapping** step for any execution strategy to configure route mapping or unmapping.
 
   ![](static/route-mapping-tas.png)
 
@@ -262,62 +318,6 @@ This release includes the following Harness module and component versions.
 - A failed decryption of secrets managed by the Harness Secret Manager causes the secret value inside values.yaml to be resolved as null. (PL-32043)
   
   The pipeline execution now fails with an exception if there is a failure in decrypting secrets.
-#### Self-Managed Enterprise Edition
-- You now have the option to use Helm to install the Harness Self-Managed Enterprise Edition in an air-gapped environment. This process ensures secure and seamless deployment of the Harness Self-Managed Platform in restricted, offline environments.
-
-  Air-gapped environments are characterized by a lack of direct access to the internet, which provides an added layer of security for sensitive data and systems. This isolation poses unique challenges to deploy and update software applications, as standard methods of accessing resources, such as Docker images, are not possbile. (SMP-1201, SMP-1147, SMP-1146, SMP-1142, SMP-1100)
-
-  For more information, go to **link after feature PR is merged**.
-- You can now disable Postgres installations. (SMP-1196)
-
-  To disable Postgres installations use the following configuration:
-
-  ```
-  global:
-      postgres:
-        enabled: false
-  ```
-- Upgraded MongoDB to 4.4.19. Changes are not required if you upgrade from 4.4.15. However, if you directly upgrage Helm charts from MongoDB 4.2, go to the following [instructions](#march-14-2023-version-78426). (SMP-1095)
-- You can now configure MongoDB to not install within the cluster and use and external database. (SMP-936)
-
-  Use the following settings in your `override.yaml` file:
-  ```
-  global:
-  database:
-    mongo:
-      ## - installed = true if installed within cluster
-      installed: true
-      ## - protocol to use for connection     
-      protocol: mongodb
-      ## - array of external Mongo hostnames 
-      hosts: []
-      ## - secret name containing external values
-      secretName: ""
-      ## - key within secret containing username
-      userKey: ""
-      ## - key within secret containing password
-      passwordKey: ""
-      ## - extra arguments set to connection string
-      extraArgs: ""
-  ```
-- A Pre-Flight Validation Plugin is now tool available to perform pre-install, pre-upgrade, post-install, and post-upgrade checks on your setup. This optional plugin assists with installations and upgrades for the Harness Self-Managed Enterprise Edition. You can use the plugin to identify potential issues during deployment and ensure that all requirements are met before the deployment process begins. Suggestions are provided if the requirements are not met and the validation checks fail. (SMP-911)
-
-  For more information, go to [Need to add feature content](/docs/self-managed-enterprise-edition////).
-- You can now migrate from KOTS-based installations to Helm-based installations. (SMP-769)
-
-  For more information, go to [Need to add feature content](/docs/self-managed-enterprise-edition////).
-
-- Backup and restore for Helm-based installations is now supported using Velero. (SMP-767)
- 
-  For more information, go to [Need to add feature content](/docs/self-managed-enterprise-edition////).
-- You can now monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and eventually integrate with observability tools, such as Grafana.
-
-To monitor database applications like MongoDB, Postgres, or Redis, go to [Need to add feature content](/docs/self-managed-enterprise-edition////).
-(SMP-766)
-- Chaos Engineering Helm Charts (SMP-763)
-
-  Need feature info.
-- Deployments load static files from the application server and no longer attempt to connect to static.harness.io. (SMP-851)
 #### Delegate
 - Set an expiry for delegate tokens. (DEL-5652)
 
