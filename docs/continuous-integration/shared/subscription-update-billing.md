@@ -1,5 +1,3 @@
-### Request changes to your billing information
-
 If you need to modify billing details that you can't manage in your Harness account, you must submit a support ticket.
 
 1. Log in to your Harness account and select **Help**.

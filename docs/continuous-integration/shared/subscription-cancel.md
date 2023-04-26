@@ -1,5 +1,3 @@
-### Cancel your subscription
-
 1. Log in to your Harness account and select **Help**.
 2. Select **Submit a ticket**.
 3. Complete the feedback form as follows:

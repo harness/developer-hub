@@ -1,9 +1,9 @@
-You can quickly and securely manage your Harness CI subscriptions and licenses directly through your [Harness account](https://app.harness.io) at any time.
+You can quickly and securely manage your Harness CI subscription directly through your [Harness account](https://app.harness.io) at any time, including:
 
-You can:
-* Manage billing details and request invoices.
-* View license usage.
-* Change the number of licenses.
+* Upgrading your plan
+* Managing payment details and billing admins
+* Viewing license usage data
+* Viewing build credit usage data
 
 :::info
 

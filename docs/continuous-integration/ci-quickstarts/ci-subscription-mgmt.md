@@ -1,5 +1,5 @@
 ---
-title: Manage subscriptions and licenses
+title: Subscriptions and licenses
 description: View and manage your CI subscriptions and licenses.
 sidebar_position: 70
 ---
@@ -19,9 +19,13 @@ import License from '/docs/continuous-integration/shared/subscription-view-usage
 
 ## Subscriptions
 
-You can view and manage Harness CI subscriptions in your Harness **Account Settings**.
+You can view and manage your Harness CI subscription in your Harness **Account Settings**.
+
+### View subscriptions
 
 <View />
+
+### Upgrade your plan
 
 <Create />
 
@@ -31,15 +35,23 @@ You can upgrade from the Free plan to either the Team or Enterprise plan through
 
 If you would like to switch between paid plans or downgrade to the Free plan, you must contact the [Harness Sales team](https://www.harness.io/pricing?module=ci#).
 
+### Cancel your subscription
+
 <Cancel />
 
 ## Billing
 
 You can manage payment methods and billing admins in your Harness account. Go to **Account settings** and then select **Billing**.
 
+### Request changes to your billing information
+
 <Billing />
 
+### Add a billing admin
+
 <Admin />
+
+### Request an invoice
 
 <Invoice />
 

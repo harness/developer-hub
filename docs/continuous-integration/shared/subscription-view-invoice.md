@@ -1,5 +1,3 @@
-### Request an invoice
-
 To request a copy of a subscription invoice, submit a support ticket.
 
 1. Log in to your Harness account and select **Help**.

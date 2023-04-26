@@ -1,5 +1,3 @@
-### View subscriptions
-
 In your Harness account, go to **Account Settings** to view which Harness modules you are currently subscribed to. Subscriptions are shown in the **Subscribed Modules** section. You can select **Manage** to view the details of a particular subscription.
 
 For each subscription, you can view the following details:
