@@ -1,7 +1,7 @@
 ---
-title: Get started with STO
+title: STO tutorials
 description: Get started with STO
-sidebar_position: 100
+sidebar_position: 10
 ---
 
 
