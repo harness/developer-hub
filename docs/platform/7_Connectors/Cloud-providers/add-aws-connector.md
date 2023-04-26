@@ -114,8 +114,7 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
    
 :::tip
 
-If you want to create AWS Connector with Delegate using IAM Roles for Service Accounts (IRSA) on the EKS cluster with OIDC Provider,
-Please choose AWS connector type in Harness as 'IRSA'.
+If you want to create an AWS Connector with a delegate using IAM Roles for Service Accounts (IRSA) on the EKS cluster with OIDC Provider, select **Use IRSA** in **Credentials**.
 
 :::
 
