@@ -2,66 +2,66 @@
 id: linux-process-kill
 title: Linux process kill
 ---
-Linux process kill fault kills the target processes running on the Linux machines.
-- It checks the performance of the application or process running on the Linux machine.
+Linux process kill kills the target processes running on the Linux machines. It checks the performance of the application or process running on the Linux machine.
 
 ![Linux process kill](./static/images/linux-process-kill.png)
 
 ## Use cases
+Linux process kill:
 - Induces process kill on the target Linux machines.
-- Disrupts the application critical processes such as databases or message queues by killing their underlying processes or threads.
+- Disrupts the application-critical processes such as databases or message queues by killing the underlying processes or threads.
 - Determines the resilience of applications when processes on a Linux machine are unexpectedly killed (or disrupted).
 
-:::note
-- This fault is compatible with Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in active state and the infrastructure should be in `CONNECTED` state.
+:::info note
+- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- The `linux-chaos-infrastructure` systemd service should be in an active state, and the infrastructure should be in `CONNECTED` state.
 :::
 
 ## Fault tunables
-<h3>Mandatory fields</h3>
+<h3>Mandatory tunables</h3>
 <table>
   <tr>
-    <th> Variables </th>
+    <th> Tunable </th>
     <th> Description </th>
     <th> Notes </th>
   </tr>
   <tr>
     <td> processIDs </td>
-    <td> Comma separated process IDs of the target processes. </td>
-    <td> Takes precedence over <code>processNames</code> and <code>processCommand</code>, if all three are defined. For example <code>13453,32444,27436</code> </td>
+    <td> Comma-separated process IDs of the target processes. </td>
+    <td> Takes precedence over <code>processNames</code> and <code>processCommand</code> when all three parameters are defined. For example, <code>13453,32444,27436</code> </td>
   </tr>
   <tr>
     <td> processCommand </td>
-    <td> Command used for starting the target processes. A substring match is performed to determine the target processes. </td>
-    <td> Takes precedence over <code>processNames</code>, if both are defined. For example <code>/usr/lib64/thunderbird/thunderbird</code> </td>
+    <td> Command used to start the target processes. A substring match is performed to determine the target process. </td>
+    <td> Takes precedence over <code>processNames</code> when both are defined. For example, <code>/usr/lib64/thunderbird/thunderbird</code> </td>
   </tr>
   <tr>
     <td> processNames </td>
-    <td> Comma separated names of the target processes. </td>
-    <td> For example <code>nginx,redis</code> </td>
+    <td> Comma-separated target process names. </td>
+    <td> For example, <code>nginx,redis</code> </td>
   </tr>
 </table>
-<h3>Optional fields</h3>
+<h3>Optional tunables</h3>
 <table>
   <tr>
-    <th> Variables </th>
+    <th> Tunable </th>
     <th> Description </th>
     <th> Notes </th>
   </tr>
   <tr>
     <td> forceKill </td>
-    <td> Whether to force kill the process using the <code>SIGKILL</code> signal or use the <code>SIGTERM</code> signal for graceful killing. </td>
-    <td> Defaults to <code>false</code>. </td>
+    <td> Whether to force kill the process using the <code>SIGKILL</code> signal or <code>SIGTERM</code> signal for graceful killing. </td>
+    <td> Default: <code>false</code>. </td>
   </tr>
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30s </td>
+    <td> Default: 30 s </td>
   </tr>
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Default: 0s </td>
+    <td> Default: 0 s </td>
   </tr>
 </table>
 
@@ -69,7 +69,7 @@ Linux process kill fault kills the target processes running on the Linux machine
 
 The `processIDs` input variable targets process IDs to kill.
 
-Use the following example to tune the process IDs:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/linux-process-kill/process-ids.yaml yaml)
 ```yaml
@@ -90,7 +90,7 @@ spec:
 
 The `processNames` input variable targets process names to kill.
 
-Use the following example to tune the process names:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/linux-process-kill/process-names.yaml yaml)
 ```yaml
@@ -109,9 +109,9 @@ spec:
 
 ### Process Command
 
-The `processCommand` input variable targets the processes based on the command that was used to start them, if available. A substring match is made on the given command to determine the target processes.
+The `processCommand` input variable targets the processes, based on the command used to start processes, if available. A substring match is made on the given command to determine the target processes.
 
-Use the following example to tune the process command:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/linux-process-kill/process-command.yaml yaml)
 ```yaml
@@ -130,9 +130,9 @@ spec:
 
 ### Force Kill
 
-The `forceKill` input variable controls whether to force kill the target processes using the `SIGKILL` signal or gracefully kill the target processes with the `SIGTERM` signal.
+The `forceKill` input variable specifies whether to force kill the target processes using the `SIGKILL` signal or gracefully kill the target processes with the `SIGTERM` signal.
 
-Use the following example to tune the force kill:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/linux-process-kill/force-kill.yaml yaml)
 ```yaml
