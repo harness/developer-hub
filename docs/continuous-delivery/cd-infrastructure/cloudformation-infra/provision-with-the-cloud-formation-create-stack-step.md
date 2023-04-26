@@ -1,5 +1,5 @@
 ---
-title: Provision with the CloudFormation Create Stack Step
+title: Provision with the CloudFormation Create Stack step
 description: Provision using the CloudFormation Create Stack step.
 sidebar_position: 3
 helpdocs_topic_id: pq58d0llyx

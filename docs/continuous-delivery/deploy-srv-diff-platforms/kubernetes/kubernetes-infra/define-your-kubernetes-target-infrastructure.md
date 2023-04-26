@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Infrastructure
+title: Kubernetes infrastructure
 description: This topic show you how to specify the Kubernetes cluster you want to target for your deployment.
 sidebar_position: 1
 helpdocs_topic_id: 0ud2ut4vt2
