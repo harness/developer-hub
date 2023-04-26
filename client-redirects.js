@@ -2329,7 +2329,7 @@ module.exports = {
     
     {
       from: "/docs/article/v64rj2maiz-harness-chaos-engineering-basics",
-      to: "/docs/chaos-engineering/configure-chaos-experiments/probes/configure-and-add-probe/",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/probes/configure-and-add-probe",
     },
 
     //  Created by aimurphy for branch ci-reorg-pt-3 on Apr 12, 2023
