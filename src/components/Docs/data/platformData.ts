@@ -48,7 +48,7 @@ export const featuredTutorials: CardItem[] = [
           title: "Delegates",
           module: MODULES.platform,
           description:
-            "Explore how to setup and manage delegates.",
+            "Explore how to set up and manage delegates.",
           link: "/docs/category/delegates",
         },
         {
