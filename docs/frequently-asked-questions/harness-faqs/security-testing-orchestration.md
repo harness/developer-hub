@@ -217,7 +217,7 @@ The most likely reason is that the scanned target does not have a baseline defin
 
 ### How does STO ensure High Availability and data protection for my scan data and vulnerability information?
 
-Harness and STO adopt the highest standards towards [data privacy](https://www.harness.io/legal/privacy) and [data security](https://www.harness.io/security). To see the general operational status of Harness production environments, go to [Harness Status - Uptime History](https://status.harness.io). 
+Harness and STO adopt the highest standards towards [data privacy](https://www.harness.io/legal/privacy) and [data security](https://www.harness.io/security). To see the general operational status of Harness production environments, go to [Harness Status](https://status.harness.io). 
 
 All of our Cloud SQL Prod databases (including STO) have both an HA and DR instance as well as point-in-time recovery to any moment in the previous seven days. The HA instance is in a different Google Cloud Platform zone in the same region and the DR instance is in a different region. Backups are retained for seven days.
 
