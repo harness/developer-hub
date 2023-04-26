@@ -142,7 +142,7 @@ For the above query, these sample variables specify the `SecretType`, and inclu
 
 
 ```
-curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://qa.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
+curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://app.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
 --header 'authorization: <Bearer-token>' \  
 --form 'file=@"/Users/sampleusername/Downloads/examplefile"' \  
 --form 'query="{  
@@ -214,7 +214,7 @@ For the above query, these sample variables specify the `SecretType`, and inclu
 
 
 ```
-curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://qa.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
+curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://app.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
 --header 'authorization: <Bearer-token>' \  
 --form 'file=@"/Users/sampleusername/Downloads/examplefile"' \  
 --form 'query="{  
@@ -299,7 +299,7 @@ For the above query, these sample variables specify the `SecretType`, and inclu
 
 
 ```
-curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://qa.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
+curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://app.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
 --header 'authorization: <Bearer-token>' \  
 --form 'file=@"/Users/sampleusername/Downloads/examplefile"' \  
 --form 'query="  
@@ -375,7 +375,7 @@ mutation ($secret: UpdateSecretInput!) {
 
 
 ```
-curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://qa.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
+curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://app.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
 --header 'authorization: <Bearer-token>' \  
 --form 'file=@"/Users/shashanksingh/Downloads/hello"' \  
 --form 'query="{  
