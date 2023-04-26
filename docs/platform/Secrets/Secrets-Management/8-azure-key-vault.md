@@ -197,7 +197,7 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
 In **Delegates** **Setup**, enter [**Selectors**](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Continue**.
 
-### Setup vault
+### Set up vault
 
 Click **Fetch Vault**.
 
