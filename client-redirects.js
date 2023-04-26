@@ -1486,6 +1486,41 @@ module.exports = {
 
     // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
     {
+      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-deployments-category/deployment-freeze",
+      to: "/docs/continuous-delivery/manage-deployments/deployment-freeze",
+    },
+
+    {
+      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart",
+    },
+
+    {
+      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/win-rm-tutorial",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial",
+    },
+
+    {
+      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial",
+    },
+
+    {
+      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-Jira",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages",
+    },
+
+    {
       from: "/docs/continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events",
       to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events",
     },
