@@ -813,8 +813,9 @@ To monitor database applications like MongoDB, Postgres, or Redis, go to [Need t
 - Long Prometheus metric links overflow outside the **METRIC NAME** column and obstruct adjacent column values in the console view during pipeline runs. (SRM-14107)  
   
   This issue is fixed and the long Prometheus metric links are now contained within the **METRIC NAME** column, preventing them from obstructing values in the adjacent column.
-- The **Save** button is always enabled for monitored service templates. (SRM-14085)
-  This issue is fixed. **Save** is only enabled when you make a change to a template.
+- After saving and reopening a monitored service template, the **Save** button remained enabled even if no changes are made. (SRM-14085)  
+
+  This issue is fixed, and the **Save** button is now enabled only if changes are made to the monitored service template. Additionally, an unsaved changes alert now appears next to the **Save** button when changes are made to the template values.
 - The Time Window in the Service Health tab does not display the information for an event by default when accessed using the link in the event notification. Users had to manually search for the information by moving the Time Window to the event's date and time. (SRM-14071)  
    
   This issue has been resolved. The Time Window now displays the event information automatically when accessed using the link in the notification. Users no longer need to manually search for the information by moving the Time Window to the event's date and time.
