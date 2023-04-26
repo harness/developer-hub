@@ -35,9 +35,19 @@ This release includes the following Harness module and component versions.
   <TabItem value="What's new">
 ```
 #### Self-Managed Enterprise Edition
+- Beginnning with v0.5.0, Harness will no longer publish `harness-prod` or `harness-demo` Helm charts. Harness will publish the `harness` base chart only. If you currently use the `harness-prod` or `harness-demo` Helm chart, you must download your `override.yaml` file from [the helm-charts repository](https://github.com/harness/helm-charts/tree/main/src) and use the following commands to upgrade:
+
+  **Demo chart**
+  ```
+  helm upgrade <release-name> harness/harness -f override-demo.yaml -f <custom-override>.yaml
+  ```
+  **Production chart**
+  ```
+  helm upgrade <release-name> harness/harness -f override-prod.yaml -f <custom-override>.yaml
+  ```
 - You now have the option to use Helm to install the Harness Self-Managed Enterprise Edition in an air-gapped environment. This process ensures secure and seamless deployment of the Harness Self-Managed Platform in restricted, offline environments. (SMP-1201, SMP-1147, SMP-1146, SMP-1142, SMP-1100)
 
-  For more information, go to **link after feature PR is merged**.
+  For more information, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).
 - You can now disable Postgres installations. (SMP-1196)
 
   To disable Postgres installations, use the following configuration:
@@ -47,7 +57,7 @@ This release includes the following Harness module and component versions.
       postgres:
         enabled: false
   ```
-- Upgraded MongoDB to 4.4.19. Changes are not required if you upgrade from 4.4.15. However, if you directly upgrage Helm charts from MongoDB 4.2, go to the following [instructions](https://developer.harness.io/release-notes/self-managed-enterprise-edition/#march-14-2023-version-78426). (SMP-1095)
+- Upgraded MongoDB to 4.4.19. Changes are not required if you upgrade from 4.4.15. However, if you directly upgrade Helm charts from MongoDB 4.2, go to the following [instructions](https://developer.harness.io/release-notes/self-managed-enterprise-edition/#march-14-2023-version-78426). (SMP-1095)
 - You can now configure MongoDB to not install within the cluster and use an external database. (SMP-936)
 
   Use the following settings in your `override.yaml` file:
