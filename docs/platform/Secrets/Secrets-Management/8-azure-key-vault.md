@@ -159,7 +159,7 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
    ![](../static/azure-key-vault-13.png)
 
-   To create and exchange the azure authentication key, perform the following steps:
+   To create and exchange the azure authentication key, follow these steps:
 
    * Navigate to Azure's **Certificates & secrets** page. (For details, see Microsoft Azure's [Create a new application secret](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) documentation.)
    * In the resulting page’s **Client secrets** section, select **New client secret**.
