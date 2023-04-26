@@ -4,7 +4,7 @@ description: This topic describes how to sync GitOps applications.
 sidebar_position: 8
 ---
 
-A sync brings the live state to its desired state by applying the declarative description. Sync will sync the desired Git state with the live cluster state. 
+Sync is a process that ensures that the live state of a system matches its desired state by applying a declarative description. This process involves synchronizing the desired Git state with the live cluster state. 
 
 To sync applications from the **Applications** page: 
 
@@ -41,6 +41,6 @@ To sync applications using the **GitOpsSync** step:
  
 5. Select **Apply Changes**.
 
-After the sync, the resources will look like this in Harness:
+Here is how the resources would look in Harness after the sync process is complete.
 
 ![](./static/harness-git-ops-application-set-tutorial-40.png)
