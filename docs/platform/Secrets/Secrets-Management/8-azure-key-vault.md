@@ -155,7 +155,7 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
    ![](../static/specify-credentials.png)
 
-   The secret that you reference here should have the Azure authentication key as the **Secret Value**. The below image shows the creation of a secret with Azure authentication key as its value:
+   The secret that you reference here should have the Azure authentication key as the **Secret Value**. The image below shows the creation of a secret with Azure authentication key as its value:
 
    ![](../static/azure-key-vault-13.png)
 
