@@ -311,6 +311,10 @@ This release includes the following Harness module and component versions.
   This issue is fixed.
 - If you configure a [code repo connector](/docs/category/code-repo-connectors) where the **URL Type** is **Account**, the **Connection Test** now shows the full test repo URL, which is the URL used to test the connection, rather than the account URL. (CI-4398)
 #### Continous Delivery & GitOps
+- You could not save a service with a linked artifact source in the Self-Managed Enterprise Edition. (CDS-59049)
+
+  This issue is fixed. Self-Managed Enterprise Helm charts are updated.
+- (CDS-59045)
 - Read-only Secret Manager was allowed for TerraForm plans. (CDS-57772, ZD-40401)
   
   Harness stores TerraForm plans in secrets in the Secret Manager you have set up in your Harness account. Now Harness won't allow the use of a secret manager for a Terraform plan if the secret manager is read-only.
@@ -806,6 +810,7 @@ This release includes the following Harness module and component versions.
 - SMTP configurations with special characters in the SMTP configuration name throw an `Invalid request` error. This happens because the SMTP configuration name is used to construct the secret name, and secret names should not have any special characters. (PL-31774, ZD-40679)
 
   This issue has been fixed by replacing special characters in SMTP configuration names with `-` before creating secrets.
+- When creating a Service Account through the Harness UI, emails were auto-generated and a user couldn't edit it. Now, a user can edit email when creating a Service Account. (PL-31769)
 - The encryption type for GCP Secrets Manager in the Terraform plan step is incorrect. (PL-31684,ZD-40381)
   
   The encryption type is correct now.
