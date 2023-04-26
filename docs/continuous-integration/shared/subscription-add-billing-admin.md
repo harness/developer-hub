@@ -1,0 +1,1 @@
+Billing Admins can manage payments on the Harness Platform. To add a Billing Admin, use our [Role Based Access Control](/docs/platform/User-Management/add-users) and add the user with a role of **Billing Admin**.
