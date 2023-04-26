@@ -76,14 +76,14 @@ The Terraform Rollback step is added to the **Rollback** steps.
 
 ## Command Line Options
 
-It allows setting terraform CLI options for terraform commands depending on the terraform step type. Example of CLI options: **-lock=false**, **-lock-timeout=0s**, etc.
-Each terraform command can be configured to have different CLI options. Also, each command can have multiple CLI options.
+This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
 
 ![](./static/rollback-provisioned-infra-with-the-terraform-rollback-step-19.png)
 
-### Skip Terraform Refresh
+## Skip Terraform Refresh
 
-Terraform refresh command won't be running when this configuration is chosen.
+Terraform refresh command won't be running when this setting is selected.
+
 
 ## See Also
 
