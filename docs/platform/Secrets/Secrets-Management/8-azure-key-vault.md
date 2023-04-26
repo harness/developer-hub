@@ -34,8 +34,8 @@ Here's a visual summary:
 
 To enable Harness to later fetch your Azure vaults (in Step 7 below), you must first set up a **Reader** role in Azure. You can do this two ways:
 
-* Azure Portal
-* PowerShell Command
+* Azure portal
+* PowerShell command
 
 ### Create a Reader role in Azure
 
