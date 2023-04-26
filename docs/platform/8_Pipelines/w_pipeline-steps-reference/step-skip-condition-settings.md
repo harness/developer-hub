@@ -1,5 +1,5 @@
 ---
-title: Stage and Step Conditional Execution Settings
+title: Stage and step conditional execution settings
 description: This topic describes Pipeline stage and step Conditional Executional settings. Review --  Failure Strategy takes Precedence over Conditional Execution. Harness Pipeline stages and steps both include Con…
 # sidebar_position: 2
 helpdocs_topic_id: i36ibenkq2

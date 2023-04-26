@@ -168,13 +168,15 @@ In the **Advanced** settings, you can use the following options:
 
 You can set up OWASP scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
+<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- 
 
 ```mdx-code-block
 import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
 ```
 
 <StoSecurityStepConfig />
+
+-->
 
 
 * `product_name` = `owasp`

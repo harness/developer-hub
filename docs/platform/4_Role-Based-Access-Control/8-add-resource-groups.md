@@ -1,5 +1,5 @@
 ---
-title: Add and Manage Resource Groups
+title: Add and manage resource groups
 description: This document shows steps to create and manage resource groups and assign them to user groups.
 # sidebar_position: 2
 helpdocs_topic_id: yp4xj36xro

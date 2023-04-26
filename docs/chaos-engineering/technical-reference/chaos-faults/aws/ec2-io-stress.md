@@ -2,6 +2,7 @@
 id: ec2-io-stress
 title: EC2 IO stress
 ---
+## Introduction
 
 EC2 IO stress disrupts the state of infrastructure resources. This fault:
 - Induces stress on AWS EC2 instance using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault.
@@ -18,30 +19,29 @@ EC2 IO stress:
 - Checks how the application functions under high disk latency conditions, when IO traffic is high and includes large I/O blocks, and when other services monopolize the IO disks. 
 
 
-:::note
-- Kubernetes >= 1.17 is required to execute this fault.
+:::info note
+- Kubernetes version 1.17 or later is required to execute the fault.
 - The EC2 instance should be in a healthy state.
 - SSM agent should be installed and running on the target EC2 instance.
-- Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+- The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  ```
+- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template, and you won't be able to use the default health check probes. 
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults, and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
 :::
 
-Here is an example AWS policy to execute the fault.
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -90,15 +90,12 @@ Here is an example AWS policy to execute the fault.
 }
 ```
 
-- Refer to [AWS Named Profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults, and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-
 ## Fault tunables
 
-<h3>Mandatory fields</h3>
+<h3>Mandatory tunables</h3>
 <table>
     <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
     </tr>
@@ -114,27 +111,27 @@ Here is an example AWS policy to execute the fault.
     </tr>
 </table>
 
-<h3>Optional Fields</h3>
+<h3>Optional tunables</h3>
 <table>
     <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
     </tr>
     <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration to insert chaos (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30 s. </td>
     </tr>
     <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds).</td>
-        <td> Defaults to 60s. </td>
+        <td> Default: 60 s. </td>
     </tr>
     <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Path to the AWS secret credentials.</td>
-        <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
+        <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
     </tr>
     <tr>
         <td> INSTALL_DEPENDENCIES </td>
@@ -144,41 +141,41 @@ Here is an example AWS policy to execute the fault.
     <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
         <td> Specify the size as percentage of free space on the file system. </td>
-        <td> Default to 0%, which results in 1 GB utilization. </td>
+        <td> Default: 0 %. Results in 1 GB utilization. </td>
     </tr>
     <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
         <td> Specify the size in gigabytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> and <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
-        <td> Defaults to 0GB, which results in 1 GB Utilization. </td>
+        <td> Default: 0 GB. Results in 1 GB Utilization. </td>
     </tr>
     <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of IO workers involved in IO stress. </td>
-        <td> Default to 4. </td>
+        <td> Default: 4. </td>
     </tr>
     <tr>
         <td> VOLUME_MOUNT_PATH </td>
         <td> Fill the given volume mount path.</td>
-        <td> Defaults to the user HOME directory. </td>
+        <td> Default: User HOME directory. </td>
     </tr>
     <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances.</td>
-        <td> Defaults to parallel. Supports serial and parallel. </td>
+        <td> Default: parallel. Supports serial and parallel. </td>
     </tr>
     <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. </td>
     </tr>
 </table>
 
 
 ### File system utilization in megabytes
 
-It specifies the file system value to be utilized on the EC2 instance (in megabytes). Tune it by using the `FILESYSTEM_UTILIZATION_BYTES` environment variable.
+Amount of file system that is utilized on the EC2 instance (in megabytes). Tune it by using the `FILESYSTEM_UTILIZATION_BYTES` environment variable.
 
-Use the following example to tune file system utilization:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-io-stress/filesystem-bytes.yaml yaml)
 ```yaml
@@ -207,9 +204,9 @@ spec:
 
 ### File system utilization in percentage
 
-It specifies the file system percentage to be utilized on the EC2 instance. Tune it by using the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable.
+Amount of file system that is utilized on the EC2 instance (in percentage). Tune it by using the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable.
 
-Use the following example to tune file system utilization in percentage:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-io-stress/filesystem-percentage.yaml yaml)
 ```yaml
@@ -238,9 +235,9 @@ spec:
 
 ### Multiple workers
 
-It specifies the CPU threads that need to be run to increase the file system utilization. This increases the amount of file system consumed. Tune it using the `NUMBER_OF_WORKERS` environment variable.
+CPU threads that need to be run to increase the file system utilization. This increases the amount of file system consumed. Tune it using the `NUMBER_OF_WORKERS` environment variable.
 
-Use the following example to tune multiple workers:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-io-stress/multiple-workers.yaml yaml)
 ```yaml
@@ -269,9 +266,9 @@ spec:
 
 ### Volume mount path
 
-It specifies the volume mount path to the target attached to the EC2 instance. Tune it by using the `VOLUME_MOUNT_PATH` environment variable.
+Volume mount path to the target attached to the EC2 instance. Tune it by using the `VOLUME_MOUNT_PATH` environment variable.
 
-Use the following example to tune volume mount path:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-io-stress/volume-path.yaml yaml)
 ```yaml
@@ -300,9 +297,9 @@ spec:
 
 ### Multiple EC2 instances 
 
-It specifies multiple EC2 instances as comma-separated IDs that are target in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
+Multiple EC2 instances as comma-separated IDs that are target in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
 
-Use the following example to tune multiple EC2 instances:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-io-stress/multiple-instances.yaml yaml)
 ```yaml

@@ -1,5 +1,5 @@
 ---
-title: Create Conditional Alerts
+title: Create conditional alerts
 description: This topic describes how to create conditional alerts for your dashboards.
 # sidebar_position: 2
 helpdocs_topic_id: ro0i58mvby

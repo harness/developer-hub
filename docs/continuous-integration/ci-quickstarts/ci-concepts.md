@@ -2,7 +2,7 @@
 title: Harness CI concepts
 description: Harness CI simplifies the code development and testing process.
 
-sidebar_position: 10
+sidebar_position: 20
 helpdocs_topic_id: rch2t8j1ay
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false

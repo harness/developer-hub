@@ -2,6 +2,8 @@
 id: kube-security-cis
 title: Kube security CIS
 ---
+## Introduction
+
 Kube security CIS runs the CIS benchmark on the Kubernetes cluster and checks for the compliance of the cluster with the CIS benchmark. CIS benchmark is a set of security best practices to improve the resilience of the Kubernetes cluster.
 
 ![Kube Security CIS](./static/images/kube-security-cis.png)
@@ -13,7 +15,7 @@ Kube security CIS:
 
 :::info note
 - Kubernetes > 1.16 is required to execute this fault.
-- Appropriate permissions are required to execute this fault.
+- Appropriate permissions to execute this fault.
 :::
 
 <h3>Mandatory tunables</h3>

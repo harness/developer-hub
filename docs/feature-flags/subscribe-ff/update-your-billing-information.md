@@ -22,8 +22,6 @@ To update your billing information:
 	5. **Priority**: Select **Priority:Normal**.
 4. Click **Send Feedback.**
 
-```mdx-code-block
-<img src={billing} alt="An example of the feedback form for updating your billing information." height="500" width="500" />
-```
-
-*Figure 1: An example of a feedback form.*
+	```mdx-code-block
+	<img src={billing} alt="An example of the feedback form for updating your billing information." height="500" width="500" />
+	```

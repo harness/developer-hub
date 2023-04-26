@@ -2,7 +2,7 @@
 title: Override secrets in settings.xml at runtime
 description: Override Harness CI build settings before a build runs.
 
-sidebar_position: 20
+sidebar_position: 40
 helpdocs_topic_id: 2hpamxaqf0
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false

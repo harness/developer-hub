@@ -39,12 +39,12 @@ The following is a detailed list of exam objectives:
 | 1.7 | Describe Build Infrastructures And Platforms |
 | 1.8 | Configure Build Infrastructures And Platforms |
 | 1.9 | Describe Different Options For CI Build Infrastructures |
-| 1.10 | Harness Cloud - Describe Supported Platform And Os (Linux, Mac, Windows) |
+| 1.10 | Harness Cloud - Describe the Supported Platform And Os (Linux, Mac, Windows) |
 | 1.11 | Harness Cloud - Test Build Infrastructure On Harness Cloud |
 | 1.12 | Define Connectors (You Can Use Source Providers, Artifact Repos, Cloud Providers, Etc) |
 | 1.13 | Configure A Git Connector |
 | 1.14 | Configure A Dockerhub Connector |
-| 1.15 | Understand Harness Delegate Role For The CI Capability |
+| 1.15 | Understand the Harness Delegate Role For The CI Capability |
 | 1.16 | Describe Pipeline Studio Vs Yaml Structure |
 | 1.17 | Secrets Management - Describe Possible Usages For Harness CI |
 | 1.18 | Secrets Management - How To Retrieve And Render Secrets Using Harness Expressions |
@@ -58,7 +58,7 @@ The following is a detailed list of exam objectives:
 | 1.26 | Identify Scanning Options |
 | 1.27 | Describe The Harness Manager |
 | 1.28 | Describe The Harness Delegate |
-| **2** | **Harness CI Pipelines And Its Features** |
+| **2** | **Harness CI Pipelines And Their Features** |
 | 2.1 | Describe Harness Step Library For CI Stages |
 | 2.2 | Describe Codebase Configuration |
 | 2.3 | Utilize Codebase Configuration |

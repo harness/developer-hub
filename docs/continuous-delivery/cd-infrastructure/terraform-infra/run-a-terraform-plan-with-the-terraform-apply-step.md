@@ -1,5 +1,5 @@
 ---
-title: Provision with the Terraform Apply Step
+title: Provision with the Terraform Apply step
 description: Apply a Terraform plan or script using the Terraform Apply step.
 sidebar_position: 5
 helpdocs_topic_id: hdclyshiho

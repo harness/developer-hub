@@ -1,5 +1,5 @@
 ---
-title: Use Harness Policy As Code For Connectors
+title: Use Harness Policy As Code for connectors
 description: Describes steps to add policies to Connectors.
 # sidebar_position: 2
 helpdocs_topic_id: 4kuokatvyw

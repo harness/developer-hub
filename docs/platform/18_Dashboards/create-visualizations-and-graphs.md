@@ -1,5 +1,5 @@
 ---
-title: Create Visualizations and Graphs
+title: Create visualizations and graphs
 description: This topic explains how to create visualizations that best show off your data.
 # sidebar_position: 2
 helpdocs_topic_id: n2jqctdt7c

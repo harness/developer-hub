@@ -1,5 +1,5 @@
 ---
-title: Add and Manage API Keys
+title: Add and manage API keys
 description: Steps to add and manage API Keys.
 # sidebar_position: 2
 helpdocs_topic_id: tdoad7xrh9

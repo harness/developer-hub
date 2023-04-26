@@ -31,7 +31,7 @@ ALB AZ down takes down the AZ (Availability Zones) on a target application load 
 - Tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
 <accordion color="green">
-    <summary>View fault usage</summary>
+    <summary>Use cases</summary>
 
 - ALB AZ down fault breaks the connectivity of an ALB with the given zones and impacts their delivery. 
 - Detaching the AZ from the application load balancer disrupts the application's performance. 
@@ -48,7 +48,7 @@ CLB AZ down takes down the AZ (Availability Zones) on a target CLB for a specifi
 - Tests the application sanity, availability, and recovery workflows of the application pod attached to the load balancer.
 
 <accordion color="green">
-    <summary>View fault usage</summary>
+    <summary>Use cases</summary>
 
 - CLB AZ down fault breaks the connectivity of a CLB with the given zones and impacts their delivery. 
 - Detaching the AZ from the classic load balancer disrupts the dependent application's performance. 

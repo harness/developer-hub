@@ -1,5 +1,5 @@
 ---
-title: Create Dashboards
+title: Create dashboards
 description: This topic describes how to create a Dashboard.
 # sidebar_position: 2
 helpdocs_topic_id: ardf4nbvcy
@@ -15,6 +15,8 @@ This topic describes how to create your own Dashboard.
 ### Visual Summary
 
 The following video explains how to create a Dashboard:
+
+<docvideo src="https://fast.wistia.com/embed/iframe/38m8yricif"/>
 
 ### Step 1: Create a Dashboard
 

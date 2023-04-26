@@ -185,7 +185,7 @@ There are different methods for the different Variation types and for each metho
 * Identifier of the Flag you want to evaluate
 * The default Variation
 
-:::note
+:::info note
 The Flag is evaluated against the Target you pass in when initializing the SDK.
 :::
 

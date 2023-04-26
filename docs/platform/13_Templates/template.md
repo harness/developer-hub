@@ -1,5 +1,5 @@
 ---
-title: Templates Overview
+title: Templates overview
 description: Harness enables you to add Templates to create re-usable logic and Harness entities (like Steps, Stages, and Pipelines) in your Pipelines. You can link these Templates in your Pipelines or share them…
 sidebar_position: 2
 helpdocs_topic_id: 6tl8zyxeol
