@@ -40,7 +40,7 @@ This release includes the following Harness module and component versions.
   For more information, go to **link after feature PR is merged**.
 - You can now disable Postgres installations. (SMP-1196)
 
-  To disable Postgres installations use the following configuration:
+  To disable Postgres installations, use the following configuration:
 
   ```
   global:
@@ -70,7 +70,7 @@ This release includes the following Harness module and component versions.
       ## - extra arguments set to connection string
       extraArgs: ""
   ```
-- A Pre-Flight Validation Plugin is now tool available to perform pre-install, pre-upgrade, post-install, and post-upgrade checks on your setup. This optional plugin assists with installations and upgrades for the Harness Self-Managed Enterprise Edition. You can use the plugin to identify potential issues during deployment and ensure that all requirements are met before the deployment process begins. Suggestions are provided if the requirements are not met and the validation checks fail. (SMP-911)
+- A Pre-Flight Validation Plugin is now available to perform pre-install, pre-upgrade, post-install, and post-upgrade checks on your setup. This optional plugin assists with installations and upgrades for the Harness Self-Managed Enterprise Edition. You can use the plugin to identify potential issues during deployment and ensure that all requirements are met before the deployment process begins. Suggestions are provided if the requirements are not met and the validation checks fail. (SMP-911)
 - You can now migrate from KOTS-based installations to Helm-based installations. (SMP-769)
 - Backup and restore for Helm-based installations is now supported using Velero. (SMP-767)
  
