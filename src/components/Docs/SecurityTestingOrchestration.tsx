@@ -15,7 +15,7 @@ export default function STO() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_sto.svg`} />
-            <h1>Security Testing Orchestration Docs</h1>
+            <h1>Security Testing Orchestration Documentation</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/tutorials/security-tests">

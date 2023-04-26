@@ -38,6 +38,13 @@ import {
             "",
           list: [
             {
+              title: "STO tutorials",
+              module: MODULES.sto,
+              description:
+                "Dive in with these tutorials.",
+              link: "/docs/security-testing-orchestration/onboard-sto/sto-tutorials",
+            },
+            {
               title: "STO basics",
               module: MODULES.sto,
               description:
@@ -45,19 +52,13 @@ import {
               link: "/docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics",
             },
             {
-              title: "Set up Harness for STO",
-              module: MODULES.sto,
-              description:
-                "How to set up the build infrastructure, connectors, and pipeline needed to run security scans automatically.",
-              link: "/docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto",
-            },
-            {
               title: "STO concepts",
               module: MODULES.sto,
               description:
-                "Learn about some key STO concepts such as scan targets, baselines, severities, and exemptions.",
-              link: "/docs/category/key-concepts-in-sto",
+                "Learn about key STO concepts such as scan targets, baselines, severities, and exemptions.",
+              link: "/docs/category/key-concepts-in-sto/",
             },
+
           ],
         },
     

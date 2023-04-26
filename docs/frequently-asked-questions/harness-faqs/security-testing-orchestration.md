@@ -26,6 +26,7 @@ In this topic:
 - [How does STO deduplicate detected issues?](#how-does-sto-deduplicate-detected-issues)
 - [I don't have any scanner licenses and I'm just getting started with security scanning. Where do I begin?](#i-dont-have-any-scanner-licenses-and-im-just-getting-started-with-security-scanning-where-do-i-begin)
 - [Why don't I see results from specific scans in the Security Testing Dashboard?](#why-dont-i-see-results-from-specific-scans-in-the-security-testing-dashboard)
+- [How does STO ensure High Availability and data protection for my scan data and vulnerability information?](#how-does-sto-ensure-high-availability-and-data-protection-for-my-scan-data-and-vulnerability-information)
 <!-- TOC end -->
 
 ### What is a security scanner?  
@@ -213,3 +214,11 @@ To get started, go to [Get started with STO](/docs/category/get-started-with-sto
 ### Why don't I see results from specific scans in the Security Testing Dashboard? 
 
 The most likely reason is that the scanned target does not have a baseline defined. The [Security Testing Dashboard](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/security-testing-dashboard.md) is intended to show vulnerabilities that potentially affect production-ready artifacts. For this reason, the dashboard shows detected vulnerabilities for targets that have baselines defined. 
+
+### How does STO ensure High Availability and data protection for my scan data and vulnerability information?
+
+Harness and STO adopt the highest standards towards [data privacy](https://www.harness.io/legal/privacy) and [data security](https://www.harness.io/security). To see the general operational status of Harness production environments, go to [Harness Status - Uptime History](https://status.harness.io/uptime). 
+
+All of our Cloud SQL Prod databases (including STO) have both an HA and DR instance as well as point-in-time recovery to any moment in the previous seven days. The HA instance is in a different Google Cloud Platform zone in the same region and the DR instance is in a different region. Backups are retained for seven days.
+
+Harness Engineering has a roadmap plan to support a similar infrastructure for Self-Managed Enterprise Edition.
