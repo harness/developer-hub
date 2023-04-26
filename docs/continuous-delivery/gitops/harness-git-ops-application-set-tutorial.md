@@ -338,12 +338,12 @@ import TabItem from '@theme/TabItem';
 ```
 ```mdx-code-block
 <Tabs>
-    <TabItem value="GitHub" label="GitHub" default>
+<TabItem value="GitHub" label="GitHub" default>
 ```
 
-Add a Github Connector to configure the location from which Harness can pull the config.json file. 
+Add a Github connector to configure the location from which Harness can pull the config.json file. 
 
-To add a Github Connector:
+To add a Github connector:
 
 1. In **Github Connector**, select **New Github Connector**.
 2. Enter the following Github Connector settings:
@@ -369,6 +369,10 @@ To add a Github Connector:
 </TabItem>
 <TabItem value="Bitbucket" label="Bitbucket">
 ```
+Add a Bitbucket connector to configure the location from which Harness can pull the config.json file. 
+
+To add a Bitbucket connector:
+
 1. In **Bitbucket Connector**, select **New Bitbucket Connector**.
 2. Enter the following Bitbucket Connector settings:
     1. **Name:** enter **gitops-bitbucket-cloud**.
