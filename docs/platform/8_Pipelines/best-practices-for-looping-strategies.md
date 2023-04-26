@@ -1,5 +1,5 @@
 ---
-title: Best Practices for Looping Strategies
+title: Best practices for looping strategies
 description: Review this topic before you implement a Matrix and Parallelism strategy in your pipeline.
 # sidebar_position: 2
 helpdocs_topic_id: q7i0saqgw4

@@ -203,6 +203,25 @@ function_id: my-storage-function
 
 ```
 </details>
+ 
+ 
+<details>
+<summary>Example 4: A Cloud Function that uses service config and environment variables</summary>
+
+```yaml
+function:
+  name: canaryDemo-<+env.name>
+  serviceConfig:
+    environment_variables:
+        MY_ENV_VAR: 'True'
+        GCF_FF_KEY: '<+env.variables.GCF_FF_KEY>'
+  buildConfig:
+    runtime: python39
+    entryPoint: hello_world
+  environment: GEN_2
+function_id: canaryDemo-<+env.name>
+```
+</details>  
 
 
 

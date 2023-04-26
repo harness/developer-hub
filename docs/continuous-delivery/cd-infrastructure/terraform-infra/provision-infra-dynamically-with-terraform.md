@@ -1,5 +1,5 @@
 ---
-title: Provision Target Deployment Infra Dynamically with Terraform
+title: Provision target deployment infrastructure dynamically with Terraform
 description: This topic show you how to dynamically provision the target deployment infrastructure at runtime using the Terraform Plan and Apply steps.
 sidebar_position: 3
 helpdocs_topic_id: uznls2lvod

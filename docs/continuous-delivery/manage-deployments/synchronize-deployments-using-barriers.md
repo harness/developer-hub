@@ -1,5 +1,5 @@
 ---
-title: Synchronize Parallel Stages and Step Groups using Barriers
+title: Synchronize parallel stages and step groups using Barriers
 description: This topic describes how to synchronize different stages in your Pipeline using barriers.
 sidebar_position: 4
 helpdocs_topic_id: dmlf8w2aeh

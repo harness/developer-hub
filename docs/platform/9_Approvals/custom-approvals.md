@@ -1,5 +1,5 @@
 ---
-title: Adding Custom Approval stages and steps
+title: Adding custom approval stages and steps
 description: Custom Approval stages and steps add control gates to pipelines
 sidebar_position: 40
 helpdocs_topic_id: 9ulc3vrpf2

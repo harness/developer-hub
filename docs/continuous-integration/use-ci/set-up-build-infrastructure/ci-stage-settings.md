@@ -224,7 +224,15 @@ The following **Platform** settings are available:
 
 ## Execution
 
-The **Execution** tab is where you add steps to the stage. For details about settings for each step, go to the [CI Technical Reference](/docs/category/reference-ci-steps-settings).
+The **Execution** tab is where you add steps to the stage. For details about different step types, go to:
+
+* [Build and upload artifacts](/docs/category/build-and-upload-artifacts)
+* [Run tests](/docs/category/run-tests)
+* [Manage dependencies](/docs/category/manage-dependencies)
+* [Share and cache CI data](/docs/category/share-and-cache-ci-data)
+* [Run scripts](/docs/category/run-scripts)
+* [Use plugins](/docs/category/use-plugins)
+* [Security step (Harness STO)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)
 
 ## Advanced
 

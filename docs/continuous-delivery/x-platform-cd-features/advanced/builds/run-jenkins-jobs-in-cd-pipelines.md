@@ -129,8 +129,18 @@ In **Job Name**, multibranch pipelines are displayed alongside other jobs, with 
 
 Select **>** and select the branch.
 
+:::note
+
+Some components in Jenkins, like controllers, might require a separate Harness Jenkins connector for proper integration. The URL for accessing Jenkins could be different for different installations of Jenkins or even for different instances of Jenkins running on the same server. If you're experiencing issues integrating Jenkins components, try a separate connector and update the connector's URL accordingly.
+
+:::
+
 ## Output expressions
 
 You can copy expressions for the job outputs from the **Output** tab of the Jenkins step.
 
 ![](./static/run-jenkins-jobs-in-cd-pipelines-31.png)
+
+To access Jenkins job's environment variables from the step output, use:
+
+`<+pipeline.stages.[STAGE_IDENTIFIER].spec.execution.steps.[STEP_IDENTIFIER].build.envVars.[ENV_VAR_FIELD]>`

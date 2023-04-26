@@ -1,7 +1,7 @@
 ---
 title: Integrate Jira in a CI pipeline
 description: Connect your Harness CI pipelines to Jira.
-sidebar_position: 40
+sidebar_position: 50
 ---
 
 To stay aligned and better serve customers, development teams need to understand how a feature is being released, when Jira issues have been deployed, and whether a build has passed or failed. Jira integrations in your CI pipelines provide insights into feature development and release information in Jira by automatically updating the **Deployment** or **Build** fields in Jira.
@@ -28,7 +28,7 @@ import TabItem3 from '@theme/TabItem';
   <TabItem3 value="Visual" label="Visual">
 ```
 
-1. In your CI pipeline's **Build** stage, add a [Plugin step](../../ci-technical-reference/plugin-steps/plugin-step-settings-reference.md).
+1. In your CI pipeline's **Build** stage, add a [Plugin step](./plugin-step-settings-reference.md).
 2. Enter a **Name** and optional **Description**.
 3. For **Container Registry**, select a container registry connector with DockerHub access.
 4. In the **Image** field, enter `plugins/jira`.
@@ -47,7 +47,7 @@ import TabItem3 from '@theme/TabItem';
   </TabItem3>
   <TabItem3 value="YAML" label="YAML" default>
 ```
-The following YAML example describes a [Plugin step](../../ci-technical-reference/plugin-steps/plugin-step-settings-reference.md) in a `CI` stage that updates the Jira **Build** field when there is a successful build.
+The following YAML example describes a [Plugin step](./plugin-step-settings-reference.md) in a `CI` stage that updates the Jira **Build** field when there is a successful build.
 
 ```yaml
               - step:

@@ -1,5 +1,5 @@
 ---
-title: Monitor Deployments and Services in CD Dashboards
+title: Monitor deployments and services in CD dashboards
 description: Use DORA and other metrics for deployments and services.
 sidebar_position: 1
 helpdocs_topic_id: phiv0zaoex

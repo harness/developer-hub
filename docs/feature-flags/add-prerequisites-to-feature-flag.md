@@ -30,8 +30,6 @@ Harness recommends that you **do not** add nested Prerequities, as this function
    <img src={pre_req_1} alt="A screenshot of the Write_Java Flag with the Prerequisites button highlighted." height="500" width="400" />
    ```
 
-   *Figure 1: Adding a Prerequisite*
-
 1. In **Add Prerequisites**, click **+ Prerequisites**.
 1. In the first drop-down menu, select the flag you want to use as a Prerequisite.
 1. In the second drop-down, select which Variation of the Prerequisite flag must be served before the Feature Flag can be turned on. 
@@ -42,5 +40,3 @@ Harness recommends that you **do not** add nested Prerequities, as this function
    ```mdx-code-block
    <img src={pre_req_2} alt="A screenshot of the Prerequisite flag added to the Write_Java flag." height="500" width="400" />
    ```
-   *Figure 2: The `Read_Java` Flag as a Prerequisite to the `Write_Java` Flag*
-

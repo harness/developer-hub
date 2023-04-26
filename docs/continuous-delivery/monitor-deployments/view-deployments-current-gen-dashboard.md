@@ -1,5 +1,5 @@
 ---
-title: View Deployments Dashboard (FirstGen)
+title: View deployments dashboard (FirstGen)
 description: View the Deployments (FirstGen) Dashboard.
 sidebar_position: 2
 helpdocs_topic_id: pk745ra5ig

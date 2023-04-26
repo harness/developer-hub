@@ -1,6 +1,6 @@
 ---
-title: Update ServiceNow Tickets in CD Stages
-description: Update Service Now tickets in CD Stages.
+title: Update ServiceNow tickets in CD stages
+description: Update ServiceNow tickets in CD stages.
 sidebar_position: 4
 ---
 

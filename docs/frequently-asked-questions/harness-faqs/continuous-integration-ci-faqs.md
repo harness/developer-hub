@@ -26,7 +26,7 @@ In this topic:
 
 ## How can a step call a service started by a Background step?
 
-For information about calling services started by Background steps, go to **Important notes** and **Port Bindings** in [Background step settings](../continuous-integration/ci-technical-reference/../../../continuous-integration/ci-technical-reference/background-step-settings.md).
+For information about calling services started by Background steps, go to **Important notes** and **Port Bindings** in [Background step settings](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings.md).
 
 ## What is the timeout limit for a CI pipeline?
 

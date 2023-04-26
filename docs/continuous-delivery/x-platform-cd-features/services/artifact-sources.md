@@ -311,7 +311,7 @@ To add an artifact from a Docker registry, do the following:
 <details>
 <summary>Use GCR artifacts</summary>
 
-You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp).
+You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
 
 ```mdx-code-block
 import Tabs6 from '@theme/Tabs';
@@ -508,10 +508,16 @@ Ensure the Harness delegate you have installed can reach `storage.cloud.google.c
 
 ### Google Cloud Storage (GCS)
 
+:::note
+
+Currently, Google Cloud Storage (GCS) is behind the feature flag `CDS_GOOGLE_CLOUD_FUNCTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 <details>
 <summary>Use GCS artifacts</summary>
 
-You connect to GCS using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp).
+You connect to GCS using a Harness GCP Connector. For details on all the GCS requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
 
 ```mdx-code-block
 import Tabs13 from '@theme/Tabs';
@@ -522,7 +528,7 @@ import TabItem13 from '@theme/TabItem';
   <TabItem13 value="YAML" label="YAML" default>
 ```
 
-To use a GCS artifact, you create or use a Harness GCP Connector to connect to GCS repo and then use that connector in your Harness service and reference the artifact to use.
+To use a GCS artifact, you create or use a Harness GCP Connector to connect to GCS bucket and then use that connector in your Harness service and reference the artifact to use.
 
 <details>
 <summary>GCP connector YAML</summary>
@@ -552,36 +558,33 @@ connector:
 
 ```yaml
 service:
-  name: Google Artifact
-  identifier: Google_Artifact
+  name: GCS
+  identifier: GCS
+  tags: {}
   serviceDefinition:
-    type: Kubernetes
     spec:
-      manifests:
-        - manifest:
-            identifier: manifests
-            type: K8sManifest
-            spec:
-              store:
-                type: Harness
-                spec:
-                  files:
-                    - account:/Templates
-              valuesPaths:
-                - account:/values.yaml
-              skipResourceVersioning: false
       artifacts:
         primary:
           primaryArtifactRef: <+input>
           sources:
             - spec:
-                connectorRef: GCR
-                imagePath: docs-play/todolist-sample
-                tag: <+input>
-                registryHostname: gcr.io
-              identifier: myapp
-              type: Gcr
-  gitOpsEnabled: false
+                connectorRef: GCP_Connector
+                project: myapp
+                bucket: functions
+                artifactPath: myfunction.zip
+              identifier: myfunction
+              type: GoogleCloudStorage
+      manifests:
+        - manifest:
+            identifier: myfunction
+            type: GoogleCloudFunctionDefinition
+            spec:
+              store:
+                type: Harness
+                spec:
+                  files:
+                    - /google-cloud-function/myfunction
+    type: GoogleCloudFunctions
 ```
 </details>
 
@@ -589,17 +592,17 @@ service:
   </TabItem13>
   <TabItem13 value="API" label="API">
 ```
-Create the GCR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
+Create the GCP connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
 <details>
-<summary>GCR connector example</summary>
+<summary>GCP connector example</summary>
 
 ```curl
 --header 'Content-Type: text/yaml' \
 --header 'x-api-key: pat.12345.6789' \
 --data-raw 'connector:
-  name: GCRexample
-  identifier: GCRexample
+  name: GCXexample
+  identifier: GCSexample
   description: ""
   orgIdentifier: default
   projectIdentifier: CD_Docs
@@ -660,30 +663,24 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
   <TabItem13 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
-You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/).
 
-To add an artifact from GCR, do the following:
+You connect to GCS using a Harness GCP Connector. For details on all the GCS requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/).
+
+To add an artifact from GCS, do the following:
 
 1. In your project, in CD (Deployments), select **Services**.
 2. Select **Manage Services**, and then select **New Service**.
 3. Enter a name for the service and select **Save**.
 4. Select **Configuration**.
-5. In **Service Definition**, select **Kubernetes**.
+5. In **Service Definition**, select **Google Cloud Functions**.
 6. In **Artifacts**, select **Add Artifact Source**.
-7. In **Select Artifact Repository Type**, click **GCR**, and then click **Continue**.
-8. In **GCR Repository**, select or create a [Google Cloud Platform (GCP) Connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/) that connects to the GCP account where the GCR registry is located.
+7. In **Select Artifact Repository Type**, click **Google Cloud Storage**, and then click **Continue**.
+8. In **Google Cloud Storage Repository**, select or create a [Google Cloud Platform (GCP) Connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/) that connects to the GCP account where the GCS bucket is located.
 9. Click **Continue**.
-10. In **Artifact Source Name**, enter a name for the artifact.
-11. In **GCR Registry URL**, select the GCR registry host name, for example `gcr.io`.
-12. In **Image Path**, enter the name of the artifact you want to deploy.
-
-    Images in repos need to reference a path starting with the project Id that the artifact is in, for example: `myproject-id/image-name`.
-13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select a [runtime input or expression](https://developer.harness.io/docs/platform/references/runtime-inputs/).
-    
-    ![](static/kubernetes-services-10.png)
-    
-    If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
-14. Click **Submit**.
+10. In **Project**, select the GCP project where the bucket is located.
+11. In **Bucket**, select the GCS bucket.
+12. In **Artifact Path**, select the name of the artifact you want to deploy.
+13. Click **Submit**.
     
     The Artifact is added to the **Service Definition**.
 
@@ -694,14 +691,12 @@ To add an artifact from GCR, do the following:
 
 #### Permissions
 
-For Google Container Registry (GCR), the following roles are required:
+For Google Cloud Storage (GCS), the following roles are required:
 
 - Storage Object Viewer (roles/storage.objectViewer)
 - Storage Object Admin (roles/storage.objectAdmin)
 
 For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
-
-Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`. 
 
 </details>
 
@@ -1943,6 +1938,164 @@ If used as a Docker Repo, user needs:
 * Pull images
 
 See [Managing Permissions: JFrog Artifactory User Guide](https://www.jfrog.com/confluence/display/RTF/Managing+Permissions).
+
+</details>
+
+### Bamboo
+
+:::note
+
+Currently, Bamboo support is behind the feature flag `BAMBOO_ARTIFACT_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+<details>
+<summary>Use Bamboo build plans as artifacts</summary>
+
+You can use Bamboo for build plans when performing deployments using the SSH/WinRM, Serverless.com Framework, and Deployment Templates deployment types. You can also trigger deployments based on new build plans in Bamboo.
+
+You connect to Bamboo using a Harness Bamboo connector.
+
+
+```mdx-code-block
+import Tabs14 from '@theme/Tabs';
+import TabItem14 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs14>
+  <TabItem14 value="YAML" label="YAML" default>
+```
+
+<details>
+<summary>Bamboo connector YAML</summary>
+
+```yaml
+connector:
+  name: Bamboo
+  identifier: Bamboo
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: Docs
+  type: Bamboo
+  spec:
+    bambooUrl: https://bamboo.dev.example.io
+    auth:
+      type: UsernamePassword
+      spec:
+        username: admin
+        passwordRef: bamboo
+    delegateSelectors:
+      - mydelegate
+```
+</details>
+
+<details>
+<summary>Service using Bamboo plans YAML</summary>
+
+```yaml
+service:
+  name: Bamboo
+  identifier: Bamboo
+  tags: {}
+  serviceDefinition:
+    spec:
+      artifacts:
+        primary:
+          primaryArtifactRef: myplan
+          sources:
+            - identifier: myplan
+              spec:
+                connectorRef: Bamboo
+                artifactPaths: artifacts
+                build: 133
+                planKey: PLAN1
+              type: Bamboo
+    type: Ssh
+```
+</details>
+
+
+
+```mdx-code-block
+  </TabItem14>
+  <TabItem14 value="API" label="API">
+```
+
+Create the Bamboo connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
+
+<details>
+<summary>Bamboo connector example</summary>
+
+```sh
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
+--header 'Content-Type: text/yaml' \
+--header 'x-api-key: pat.12345.6789' \
+--data-raw 'connector:
+  name: Bamboo
+  identifier: Bamboo
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: Docs
+  type: Bamboo
+  spec:
+    bambooUrl: https://bamboo.dev.example.io
+    auth:
+      type: UsernamePassword
+      spec:
+        username: admin
+        passwordRef: bamboo
+    delegateSelectors:
+      - mydelegate'
+```
+
+</details>
+
+
+Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
+
+```mdx-code-block
+  </TabItem14>
+  <TabItem14 value="Terraform Provider" label="Terraform Provider">
+```
+
+The Terraform Provider Bamboo connector resource is coming soon.
+
+```mdx-code-block
+  </TabItem14>
+  <TabItem14 value="Pipeline Studio" label="Pipeline Studio">
+```
+
+To add a plan from Bamboo, do the following:
+
+1. In your project, in CD (Deployments), select **Services**.
+2. Select **Manage Services**, and then select **New Service**.
+3. Enter a name for the service and select **Save**.
+4. Select **Configuration**.
+5. In **Service Definition**, select **Secure Shell** or one of the other deployment types that support Bamboo.
+6. In **Artifacts**, select **Add Artifact Source**.
+7. In **Artifact Repository Type**, select **Bamboo**, and then select **Continue**.
+8. In **Bamboo Repository**, select of create a Bamboo connector that connects to the Bamboo account where the plan is located. Click **Continue**.
+   The **Artifact Details** settings appear.
+9. In **Artifact Source Identifier**, enter a name for this artifact.
+10. In **Plan Name**, select the name of the plan.
+11. In **Artifact Paths**, select the artifact path for the plan.
+12. In **Bamboo Builds**, select the plan to use.
+13. Select **Submit**. The artifact is added to the service definition.
+
+
+```mdx-code-block
+  </TabItem14>
+</Tabs14>
+```
+
+#### Build plan permissions
+
+Make sure the connected user account has the following required permissions to the Bamboo Server.
+
+- View plan.
+- Build plan (if you plan to trigger a build as part of your pipeline).
+
+For more information, go to [Bamboo Permissions](https://confluence.atlassian.com/bamboo/bamboo-permissions-369296034.html).
 
 </details>
 

@@ -1,5 +1,5 @@
 ---
-title: Add and Manage Roles
+title: Add and manage roles
 description: This document shows steps to create new Roles and assign permissions to them.
 # sidebar_position: 2
 helpdocs_topic_id: tsons9mu0v

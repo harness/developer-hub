@@ -4,18 +4,19 @@ description: Configuration scans with Prowler
 sidebar_position: 220
 ---
 
+You can set up Prowler scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 ## Security step settings
 
-You can set up Prowler scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
-
-<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
+<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- 
 
 ```mdx-code-block
 import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
 ```
 
 <StoSecurityStepConfig />
+
+-->
 
 
 * `product_name` = `prowler`
@@ -45,8 +46,5 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
 <StoSettingFailOnSeverity />
-
-
-### Configuration settings
 
 

@@ -1,5 +1,5 @@
 ---
-title: Add a GitHub Connector
+title: Add a GitHub connector
 description: This topic describes how to add a GitHub Code Repo Connector.
 # sidebar_position: 2
 helpdocs_topic_id: jd77qvieuw

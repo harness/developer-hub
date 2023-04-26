@@ -1,5 +1,5 @@
 ---
-title: Trigger Deployments using Custom Triggers
+title: Trigger deployments using custom triggers
 description: Trigger deployments using cURL and Webhooks
 sidebar_position: 6
 helpdocs_topic_id: qghequ5vxu

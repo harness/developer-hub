@@ -185,7 +185,7 @@ function MyComponent() {
   return <p>My flag value is: {myFlagValue}</p>
 }
 ```
-:::note
+:::info note
 If the flag can’t be found, undefined is returned unless you passed in a different default value.
 :::
 

@@ -1,5 +1,5 @@
 ---
-title: Manage a Harness Pipeline Repo Using Git Experience
+title: Manage a Harness pipeline repo using Git Experience
 description: Git Experience enables you to store and manage your Harness Pipelines and configs in your Git repos.
 sidebar_position: 8
 helpdocs_topic_id: 5nz7j3e1yc

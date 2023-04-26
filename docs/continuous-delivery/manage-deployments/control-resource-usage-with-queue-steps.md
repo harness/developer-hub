@@ -1,5 +1,5 @@
 ---
-title: Control Resource Usage with Queue Steps
+title: Control resource usage with Queue steps
 description: This topic describes how to use the Queue step to control the access order to the resources Harness requests during a deployment and prevent multiple Pipelines from requesting the same resources at the same time.
 sidebar_position: 3
 helpdocs_topic_id: 5n96cc7cyo

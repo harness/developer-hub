@@ -1,5 +1,5 @@
 ---
-title: Speed Up CI Test Pipelines Using Parallelism
+title: Speed up CI test pipelines using parallelism
 description: Use parallelism to run tests in parallel.
 # sidebar_position: 2
 helpdocs_topic_id: kce8mgionj
