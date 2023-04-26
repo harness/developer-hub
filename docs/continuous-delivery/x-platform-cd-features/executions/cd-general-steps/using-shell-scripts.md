@@ -231,6 +231,8 @@ The format to reference the output variable can be one of the following:
 	+ `<+execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
 * Anywhere in the pipeline:
 	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].output.outputVariables.[output_variable_name]>`
+* When step is inside a step group:
+	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_group_Id].steps.stepId.build.[output_variable_name]`  
 
 For example, you could reference the output variable `newname` like this:
 
