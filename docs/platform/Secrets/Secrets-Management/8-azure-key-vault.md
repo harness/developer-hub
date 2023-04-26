@@ -87,7 +87,7 @@ Microsoft Azure's [Manage subscriptions](https://docs.microsoft.com/en-us/azure/
 :::
 
 
-#### PowerShell command
+### Create a Reader role using a PowerShell command
 
 You can also create a **Reader** role programmatically via this PowerShell command, after gathering the required parameters:
 
