@@ -2,6 +2,7 @@
 id: ec2-memory-hog
 title: EC2 memory hog
 ---
+## Introduction
 
 EC2 memory hog disrupts the state of infrastructure resources. This fault:
 - Induces stress on AWS EC2 instance using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault.
@@ -17,29 +18,29 @@ EC2 memory hog:
 - Simulates the situation of memory leaks in the deployment of microservices.
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to hogging.
 
-:::note
-- Kubernetes >= 1.17 is required to execute this fault.
+:::info note
+- Kubernetes version 1.17 or later is required to execute the fault.
 - The EC2 instance should be in a healthy state.
 - SSM agent should be installed and running on the target EC2 instance.
-- Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+- The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  ```
+- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template, and you won't be able to use the default health check probes. 
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults, and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
 :::
 
-Here is an example AWS policy to execute the fault.
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -88,14 +89,13 @@ Here is an example AWS policy to execute the fault.
 }
 ```
 
-- Refer to [AWS Named Profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults, and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
 
 ## Fault tunables
 
-<h3>Mandatory fields</h3>
+<h3>Mandatory tunables</h3>
 <table>
     <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
     </tr>
@@ -110,10 +110,10 @@ Here is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
     </tr>
 </table>
-<h3>Optional fields</h3>
+<h3>Optional tunables</h3>
 <table>
     <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
     </tr>
@@ -169,7 +169,7 @@ Here is an example AWS policy to execute the fault.
 
 It specifies the amount of memory to be utilized (in megabytes) on the EC2 instance. Tune it by using the `MEMORY_CONSUMPTION` environment variable.
 
-Use the following example to tune memory consumption in MB:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-memory-hog/memory-bytes.yaml yaml)
 ```yaml
@@ -200,7 +200,7 @@ spec:
 
 It specifies the amount of memory (in percentage) to be utilized on the EC2 instance. Tune it by using the `MEMORY_PERCENTAGE` environment variable.
 
-Use the following example to tune memory consumption in percentage:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-memory-hog/memory-percentage.yaml yaml)
 ```yaml
@@ -231,7 +231,7 @@ spec:
 
 It specifies multiple EC2 instances as comma-separated IDs that are targeted in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
 
-Use the following example to tune multiple EC2 instances:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-memory-hog/multiple-instances.yaml yaml)
 ```yaml
@@ -260,7 +260,7 @@ spec:
 
 It specifies the CPU threads that need to be run to increase the file system utilization. This increases the amount of file system consumed. Tune it using the `NUMBER_OF_WORKERS` environment variable.
 
-Use the following example to tune multiple workers:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-memory-hog/multiple-workers.yaml yaml)
 ```yaml
