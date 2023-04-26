@@ -83,9 +83,18 @@ In **Timeout**, enter how long Harness should wait to complete the Terraform Pla
 
 ### Run on Remote Workspace
 
-This checkbox is used to identify whether terraform configuration uses terraform "remote" backend.
-If this checkbox is selected, there won't be possible to provide the workspace input in harness, workspace will be outlined in your configuration for remote backend.
-Currently, this logic is behind a feature flag CD_TERRAFORM_CLOUD_CLI_NG
+:::note
+
+Currently, this feature is behind the feature flag `CD_TERRAFORM_CLOUD_CLI_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Enable this option to identify whether the Terraform configuration uses a Terraform remote backend.
+
+When enabled, you cannot provide the workspace input in Harness. The workspace will be outlined in your configuration for the remote backend.
+
+Also, the remote backend is supported only when the **Configuration Type** is **Inline**.
+
 ```
 terraform {
   backend "remote" {
