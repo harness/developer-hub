@@ -219,6 +219,6 @@ The most likely reason is that the scanned target does not have a baseline defin
 
 Harness and STO adopt the highest standards towards [data privacy](https://www.harness.io/legal/privacy) and [data security](https://www.harness.io/security). To see the general operational status of Harness production environments, go to [Harness Status](https://status.harness.io). 
 
-All of our Cloud SQL Prod databases (including STO) have both an HA and DR instance as well as point-in-time recovery to any moment in the previous seven days. The HA instance is in a different Google Cloud Platform zone in the same region and the DR instance is in a different region. Backups are retained for seven days.
+All of our Cloud SQL Prod databases (including STO) have both an HA and DR instance, as well as point-in-time recovery to any moment in the previous seven days. The HA instance is in a different Google Cloud Platform zone in the same region, and the DR instance is in a different region. Backups are retained for seven days.
 
 Harness Engineering has a roadmap plan to support a similar infrastructure for Self-Managed Enterprise Edition.
