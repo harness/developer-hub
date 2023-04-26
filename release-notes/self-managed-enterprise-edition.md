@@ -267,9 +267,7 @@ This release includes the following Harness module and component versions.
 
   Air-gapped environments are characterized by a lack of direct access to the internet, which provides an added layer of security for sensitive data and systems. This isolation poses unique challenges to deploy and update software applications, as standard methods of accessing resources, such as Docker images, are not possbile. (SMP-1201, SMP-1147, SMP-1146, SMP-1142, SMP-1100)
 
-  [For more information, go to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).]: #
-  
-   
+  For more information, go to **link after feature PR is merged**.
 - You can now disable Postgres installations. (SMP-1196)
 
   To disable Postgres installations use the following configuration:
