@@ -23,24 +23,22 @@ EC2 network latency:
 - SSM agent is installed and running on the target EC2 instance.
 - The EC2 instance should be in healthy state.
 - The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. A sample secret file looks like:
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  ```
+- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template, and you won't be able to use the default health check probes. 
 - Go to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults and [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults.
-- Go to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+- Go to the [common tunables](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 :::
 
 Below is an example AWS policy to execute the fault.
