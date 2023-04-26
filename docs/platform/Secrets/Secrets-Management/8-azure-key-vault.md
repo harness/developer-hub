@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 To store and use encrypted secrets (such as access keys) and files, you can add an Azure Key Vault Secret Manager.
 
-### Before you begin
+## Before you begin
 
 * See Harness [Secret Manager Overview](../Secrets-Management/1-harness-secret-manager-overview.md).
 * See [About Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/general/overview) by Microsoft.
@@ -18,7 +18,7 @@ To store and use encrypted secrets (such as access keys) and files, you can add 
 * Make sure you have set up an Azure account.
 * Make sure you have **View** and **Create/Edit** permissions for secrets.
 
-### Secret manager overview
+## Secret manager overview
 
 For a full overview of how your secrets are used with the Secrets Managers you configure in Harness, go to [Harness Secrets Management Overview](../Secrets-Management/1-harness-secret-manager-overview.md) and [Harness Security FAQs](../../../frequently-asked-questions/harness-faqs/harness-security-faqs.md).
 
@@ -26,17 +26,11 @@ Here's a visual summary:
 
 ![](../static/azure-key-vault-00.png)
 
-### Limitations
+## Limitations
 
 * Key Vault stores and manages secrets as sequences of octets (8-bit bytes), with a maximum size of 25k bytes each. For more information, go to [Azure Key Vault secrets](https://docs.microsoft.com/en-us/azure/key-vault/secrets/about-secrets).
 
-### Visual overview
-
-Azure Key Vault safeguards cryptographic keys and secrets, encrypting authentication keys, storage account keys, data encryption keys, .pfx files, and passwords.
-
-![](../static/azure-key-vault-01.png)
-
-### Create an Azure Reader role
+## Create an Azure Reader role
 
 To enable Harness to later fetch your Azure vaults (in Step 7 below), you must first set up a **Reader** role in Azure. You can do this two ways:
 
@@ -97,7 +91,7 @@ New-AzRoleAssignment -ObjectId <object_id> -RoleDefinitionName "Reader" -Scope /
 ```
 For details and examples, see Microsoft Azure's [Add or remove role assignments](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell#application-at-a-subscription-scope) documentation.
 
-### Add an Azure Key Vault secret manager in Harness
+## Add an Azure Key Vault secret manager in Harness
 
 You can add an Azure Key Vault connector in account or org or project [scope](../../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope).
 
@@ -122,13 +116,13 @@ To add an Azure Key Vault secret manager:
 
 6. Select **Continue**.
 
-### Configure details of the Azure Key Vault connector
+## Configure details of the Azure Key Vault connector
 
 To configure the details for your Azure Key Vault connector, you can do one of the following: 
 - Specify credentials
 - Use the credentials of a specific delegate
 
-#### Specify credentials
+### Specify credentials
 
 1. Select **Specify credentials here**.
 2. Enter **Client ID**, **Tenant ID** corresponding to the fields highlighted below in the Azure UI:
@@ -146,7 +140,6 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
    ![](../static/azure-key-vault-11.png)
 
-
    :::note
    If you do not enter a GUID, Harness uses the default subscription for the [Client ID](#setup-delegates) you've provided above.
    :::
@@ -161,25 +154,27 @@ To configure the details for your Azure Key Vault connector, you can do one of t
 
    To create and exchange the azure authentication key, follow these steps:
 
-   * Navigate to Azure's **Certificates & secrets** page. (For details, see Microsoft Azure's [Create a new application secret](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) documentation.)
-   * In the resulting page’s **Client secrets** section, select **New client secret**.
+   1. Navigate to Azure's **Certificates & secrets** page. (For details, see Microsoft Azure's [Create a new application secret](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-application-id-and-authentication-key) documentation.)
+   2. In the resulting page’s **Client secrets** section, select **New client secret**.
 
    ![](../static/azure-key-vault-14.png)
 
-   * Enter a **Description** and expiration option, then click **Add**.
+   3. Enter a **Description** and expiration option, then click **Add**.
 
    ![](../static/azure-key-vault-15.png)
 
-   * Find your new key in the **Client secrets** section, and copy its value to your clipboard.
+   4. Find your new key in the **Client secrets** section, and copy its value to your clipboard.
 
    ![](../static/azure-key-vault-16.png)
 
     
    :::note
-   This is your only chance to view this key's value in Azure. Store the value somewhere secure, and keep it on your clipboard.Click **Continue**.
+   This is your only chance to view this key's value in Azure. Store the value somewhere secure, and keep it on your clipboard.
    :::
 
-#### Use the credentials of a specific delegate
+   5. Click **Continue**.
+
+### Use the credentials of a specific delegate
 
 1. Select **Use the credentials of a specific Harness Delegate (IAM role, service account, managed identity, etc)**.
 2. In **Subscription**, enter your Azure Subscription ID (GUID).
@@ -193,11 +188,11 @@ To configure the details for your Azure Key Vault connector, you can do one of t
     
      ![](../static/user-assigned-managed-identity.png)
 
-### Set up delegates
+## Set up delegates
 
 In **Delegates** **Setup**, enter [**Selectors**](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md#option-select-a-delegate-for-a-connector-using-tags) for specific **Delegates** that you want to allow to connect to this Connector. Click **Continue**.
 
-### Set up vault
+## Set up vault
 
 Click **Fetch Vault**.
 
@@ -205,7 +200,7 @@ After a slight delay, the **Vault** drop-down list populates with vaults corre
 
 Click **Save and Continue**.
 
-### Test connection
+## Test connection
 
 Once the Test Connection succeeds, click Finish. You can now see the Connector in Connectors.
 
