@@ -18,7 +18,6 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 :::
 
 ## Latest - May XX, 2023
-=======
 
 ```mdx-code-block
 <Tabs>
