@@ -1,131 +1,244 @@
 ---
 sidebar_position: 4
 title: NodeJS application
-description: This build automation guide walks you through building a NodeJS and Docker application in a CI pipeline.
+description: Use a CI pipeline to build and test a NodeJS application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/nodejs
 ---
 
-# Build Docker image of a NodeJS app
+# Build, test, and publish a NodeJS app
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import DelegateInstall from '/tutorials/platform/install-delegate.md';
-```
-
-## Background on Continuous Integration
-
-Continuous Integration is automated builds that can be triggered by some sort of event, such as a code check-in, merge, or on a regular schedule. The end goal of a build is to be deployed somewhere, and the main goal of [Continuous Integration](https://harness.io/blog/continuous-integration/what-is-continuous-integration/) is to build and publish that deployable unit.
-
-However, more than the compiled source code can go into a build. The end product for Continuous Integration is a release candidate. A release candidate is the final form of an artifact to be deployed. There could be quality steps taken to produce the artifact, such as finding bugs, and identifying their fix. Packaging, distribution, and configuration all go into a release candidate.
-
-According to [Paul Duvall](https://www.oreilly.com/library/view/continuous-integration-improving/9780321336385/), co-author of Continuous Integration, in a nutshell, CI will improve quality and reduce risk. Having a Continuous Integration approach frees teams from the burden of manual builds and also makes builds more repeatable, consistent, and available. If you are unfamiliar with CI, this guide will get you started on your first automated build.
-
-```mdx-code-block
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 ```
 
+In this tutorial, you will create a Harness CI pipeline that does the following:
+
+1. Test a NodeJS application.
+2. Build and publish a Docker image of that app.
+
 <CISignupTip />
 
-## Your Local Build - Onramp to Continuous Integration
+<details>
+<summary>What is Continuous Integration?</summary>
 
-To create a build, you need to have something that can be built, which means source code. The steps you take to build and package your application or service need to be represented in a CI tool or platform for automation. CI platforms will need to connect to source code management e.g SCM to start the build process. This can be as simple as connecting your public GitHub Repository for something that needs to be built.
+[Continuous Integration](https://harness.io/blog/continuous-integration/what-is-continuous-integration/) is a DevOps process based on automated builds that are be triggered by some sort of event, such as a code check-in, merge, or a time schedule. According to [Paul Duvall](https://www.oreilly.com/library/view/continuous-integration-improving/9780321336385/), co-author of Continuous Integration, CI should improve quality and reduce risk. Having a Continuous Integration approach removes the burden of manual builds and also makes builds more repeatable, consistent, and available.
+
+#### Manual vs CI builds
+
+When you build without a CI platform, you deliberately run commands to clone the codebase, install or configure dependencies, compile the code, run tests, and then, usually, package and publish an image to a container registry. When you need to build multiple times per day or you have tens, hundreds, or even thousands of developers running builds, you need the ability to run builds quickly and automatically on build infrastructure that is more substantial and diverse than a single developer's machine.
+
+In a CI platform, such as Harness CI, you create a workflow or pipeline that includes the steps to build and package your application or service. You also specify where your source code exists (such as an SCM repo), and you ensure that the build infrastructure, such as a virtual machine or Kubernetes cluster, has all the required dependencies to build your code. The CI pipeline can then use this information to run builds automatically.
 
 ![Local Build Overview](../static/ci-tutorial-node-docker/local_build_overview.png)
 
-### How to Build an App Locally?
+#### Sharing images
 
-Languages and package formats have build specific tools. As an example, here is a simplistic NodeJS Application that can be built into a Docker Image; the Dockerfile has specifics on how to build and package the app.
+Eventually, the products of your builds are deployed somewhere, and the main goal of Continuous Integration is to build and publish a deployable unit, which can be referred to as an image, artifact, or release candidate.
 
-Sample App Repo:
-[https://github.com/harness-apps/easy-node-docker](https://github.com/harness-apps/easy-node-docker)
+A release candidate is the final form of an artifact to be deployed, and this often includes more than compiled source code. For example, there could be quality steps taken to produce the artifact, such as finding and fixing bugs. Additionally, packaging, distribution, and configuration all go into a release candidate.
 
-To execute the local build, the first step if using the sample application is to download/clone the repository to your local machine. For the later automated build steps, [Fork](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the [sample repository](https://github.com/harness-apps/easy-node-docker). 
-
-![Docker File](../static/ci-tutorial-node-docker/dockerfile.png)
-
-Building and packaging this sample application locally requires a few pieces, NPM and Docker.
-If you don’t have those runtimes, on a Windows Machine, you can use [Chocolatey](https://chocolatey.org/install) to install, or if using a Mac, [Homebrew](https://brew.sh/).
-
-```
-NPM:
-choco install nodejs
-brew install node
-
-Docker:
-choco install docker
-brew install docker
-```
-
-Once you build your application, you will need to store the binaries somewhere, in this case, the Docker Image. The next step, Docker Build, will call the underlying NPM Install to start the build process.
-
-### Creating and Storing Your Image
-
-Like any file you want to share with the world, storing them in an external spot makes them more accessible. A big benefit of using Docker as a packaging format is the ecosystem of Docker Registries out there. Your firm might have a registry provider. A good free registry for yourself is [Docker Hub](https://hub.docker.com/). If you do not have a registry available to you, you can create a Docker Hub account and create a registry, e.g “samplejs”.
+Once you've prepared a release candidate, you want to share it with your teammates or customers. Like any file you want to share with the world, storing it externally makes it more accessible. There are many options for packaging and sharing images, such as Docker. A big benefit to the Docker packaging format is the broad ecosystem of Docker registries. Your organization might have a registry provider, or your can use a free registry, such as [Docker Hub](https://hub.docker.com/).
 
 ![Sample JS Docker Registry](../static/ci-tutorial-node-docker/samplejs_repo.png)
 
-With those pieces, you can build and push your image to the registry.
+</details>
 
-```
-docker build --tag your_user/repo:tag .
-docker push your_user/repo:tag
-```
+<details>
+<summary>Optional exercise: Build locally</summary>
 
-E.g in my case, at the root of the project:
+As an optional exercise, you can build the app used in this tutorial locally before creating a Harness CI pipeline to build and test it automatically.
 
-```
-docker build --tag rlachhman/samplejs:1.0.4 .
-docker push rlachhman/samplejs:1.0.4
-```
+The codebase used in this tutorial is a [simple NodeJS app](https://github.com/harness-apps/easy-node-docker) that can be built into a Docker image. The Dockerfile has specifics on building and packaging the app.
 
-![Docker Push](../static/ci-tutorial-node-docker/docker_push.png)
+![Docker File](../static/ci-tutorial-node-docker/dockerfile.png)
 
+To build this app locally:
+
+1. Clone the [easy node docker repo](https://github.com/harness-apps/easy-node-docker) to your local machine.
+2. Create a Docker Hub account, if you don't already have a Docker registry account.
+3. Create a repo in your Docker registry account where you can push your app image.
+4. Make sure your local machine has [NPM](https://nodejs.org/en/download/package-manager) and [Docker](https://docs.docker.com/engine/install/).
+5. Use [docker build](https://docs.docker.com/build/building/context/) to call the underlying NPM install and start the build process. In the following example commands, replace the bracketed values with your Docker Hub or Docker registry username, the name of the repo where you want to push the image, and an appropriate image tag, such as `latest`.
+
+   ```
+   docker build --tag [your_docker_username]/[your-docker-repo-name]:[tag] .
+   docker push [your_docker_username]/[your-docker-repo-name]:[tag]
+   ```
+
+6. After the build and push commands run, you can verify that the image has been uploaded to your Docker repo.
 Can validate that this has been placed into the Docker Registry.
 
 ![Local Push](../static/ci-tutorial-node-docker/local_push.png)
 
-Simple enough locally to get your local build and packaging in. The next step is now to externalize this, which is exactly what creating a Continuous Integration Pipeline is all about.
+If you took a closer look at what your machine was doing during the local build, the machine was bogged down for a few moments. When building once, for yourself, that is fine, but the resource burden explodes when running multiple concurrent builds at scale to support tens, hundreds, or thousands of developers. Modern Continuous Integration platforms are designed to scale with distributed nodes. Harness CI is designed to scale and simplify the process of externalizing your build process into a CI pipeline. Replicating your workflows into Harness CI pipelines creates repeatable, consistent, and distributed build processes.
 
-## Your First Continuous Integration Pipeline
+The remainder of this tutorial walks you through the process of creating a Harness CI pipeline that builds, tests, and publishes the NodeJS app that you just built manually.
 
-If you took a closer look at what your machine was doing during those local builds, the machine was bogged down for a few moments. For yourself, that is fine, but imagine having to support 10’s or 100’s or even 1000’s of engineers, this process can be taxing on systems. Luckily, modern Continuous Integration Platforms are designed to scale with distributed nodes. Harness Continuous Integration is designed to scale and simplify getting your local steps externalized; this is the Continuous Integration Pipeline. Let’s enable Harness Continuous Integration to mimic your local steps and create your first CI Pipeline. Once you are done, you will have a repeatable, consistent, and distributed build process. 
+</details>
 
-There are a few Harness Objects to create along the way, which this guide will walk through step-by-step.There are two paths to take. One path is to have Harness host all of the needed infrastructure for a distributed build. The second is to bring your own infrastructure for the distributed build. 
+## Prepare the codebase
 
-Hosted Infrastructure:
+1. Fork the [easy node docker tutorial repo](https://github.com/harness-apps/easy-node-docker) into your GitHub account.
+2. Create a GitHub personal access token with the `repo`, `admin:repo_hook`, and `user` scopes. For instructions, go to the GitHub documentation on [creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token). For information about the token's purpose in Harness, go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#personal-access-token).
 
-![Harness CI Hosted Overview](../static/ci-tutorial-node-docker/harness_ci_hosted_infra_overview.png)
+   ![Repo Scope](../static/ci-tutorial-node-docker/repo_scope.png)
 
-Bring Your Own Infrastructure:
+3. Copy the token so you can use it when you create the GitHub connector in the next steps.
+4. In Harness, select the **Continuous Integration** module and then switch to the **Project** you want to use for this tutorial or create a project.
 
-![Harness CI Bring Your Own Overview](../static/ci-tutorial-node-docker/harness_ci_your_infra_overview.png)
+<details>
+<summary>Create a project</summary>
 
-### Starting off with Harness
+Use these steps to create a project in your Harness account.
 
-Harness is a Platform, but we will focus on the Continuous Integration module. First, sign up for a [Harness account to get started](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started).
+1. Select **Projects**, select **All Projects**, and then select **New Project**.
+2. Enter a **Name**, such as `CI tutorials`.
+3. Leave the **Organization** as **default**.
+4. Select **Save and Continue**.
+5. On **Invite Collaborators**, you can add others to your project, if desired. You don't need to add yourself.
+6. Select **Save and Continue**.
+7. On the Modules page, select **Continuous Integration**, and then select **Go to Module**.
 
-![Harness Signup](../static/ci-tutorial-node-docker/harness_signup.png)
+If this is your first project with CI, the CI pipeline wizard starts after you select **Go to Module**. You'll need to exit the wizard to create the GitHub connector.
+
+</details>
+
+### Create the GitHub connector
+
+Next, you'll create a _connector_ that allows Harness to connect to your Git codebase. A connector is a configurable object that connects to an external resource automatically while the pipeline runs. For detailed instructions on creating GitHub connectors, go to [Add a GitHub connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector). For details about GitHub connector settings, go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
+
+1. Under **Project Setup**, select **Connectors**.
+2. Select **New Connector**, and then select **GitHub** under **Code Repositories**.
+3. Enter a **Name**, and select **Continue**.
+4. Configure the **Details** as follows, and then select **Continue**:
+
+   * **URL Type:** Select **Repository**.
+   * **Connection Type:** Select **HTTP**.
+   * **GitHub Repository URL:** Enter the URL to your fork of the tutorial repo.
+
+5. Configure the **Credentials** as follows, and then select **Continue**:
+
+   * **Username:** Enter the username for the GitHub account where you forked the tutorial repo.
+   * **Personal Access Token:** Create a secret for the personal access token you created earlier. Harness secrets are safe; they're stored in the [Harness Secret Manager](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview). You can also use your own Secret Manager with Harness.
+   * **Enable API access:** Select this option and select the same personal access token secret.
+
+6. For **Select Connectivity Mode**, select **Connect through Harness Platform**, and then select **Save and Continue**.
+7. Wait while Harness tests the connection, and then select **Finish**.
+
+## Prepare the Docker registry
+
+For this tutorial, you'll need a Docker connector to allow Harness to authenticate and publish the NodeJS app image to a Docker registry repository. This tutorial uses Docker Hub for the Docker registry, but you can use other Docker registries with Harness.
+
+1. Create a [Docker Hub](https://hub.docker.com/) account if you don't have one already.
+2. Create a repo called `samplejs` in your Docker Hub account.
+3. Create a Docker Hub personal access token with **Read, Write, Delete** permissions. Copy the token; you need it when you create the Docker Hub connector in the next steps.
+4. In Harness, select the **Continuous Integration** module, and then select your project.
+5. Under **Project Setup**, select **Connectors**.
+6. Select **New Connector**, and then select **Docker Registry**.
+7. Configure the [Docker connector settings](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) as follows:
+
+   * **Name:** Enter a name.
+   * **Provider Type:** Select **DockerHub**.
+   * **Docker Registry URL:** Enter `https://index.docker.io/v2/`.
+   * **Username:** Enter the username for your Docker Hub account.
+   * **Password:** Create a [secret](/docs/platform/Secrets/add-use-text-secrets) for your Docker Hub personal access token.
+   * **Select Connectivity Mode:** Select **Connect through Harness Platform**.
+   * Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
+
+8. In the list of connectors, make a note of your Docker connector's ID.
+
+## Create the Java starter pipeline
+
+1. Under **Project Setup**, select **Get Started**.
+2. When prompted to select a repository, search for **easy-node-docker**, select the repository that you forked earlier, and then select **Configure Pipeline**.
+3. Under **Choose a Starter Configuration**, select **Java with Maven** and then select **Create a Pipeline**.
+
+<details>
+<summary>Java with Maven starter pipeline YAML</summary>
+
+The YAML for the **Java with Maven** starter pipeline is as follows. To switch to the YAML editor, select **YAML** at the top of the Pipeline Studio.
+
+```yaml
+pipeline:
+  name: Build Java with Maven
+  identifier: Build_Java_with_Maven
+  projectIdentifier: [your-project-ID]
+  orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        connectorRef: [your-github-connector]
+        repoName: [your-github-account]/easy-node-docker
+        build: <+input>
+  stages:
+    - stage:
+        name: Build Java App with Maven
+        identifier: Build_Java_App_with_Maven
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Build Java App
+                  identifier: Build_Java_App
+                  spec:
+                    shell: Sh
+                    command: |-
+                      echo "Welcome to Harness CI"
+                      mvn -B package --file pom.xml
+```
+
+</details>
 
 
-### Access To Your Sourcecode
 
-Assuming you are leveraging GitHub, Harness will need access to the repository. For the example, providing a Personal Access Token that is scooped to “repo” will allow for connectivity. If you are leveraging the [sample repository](https://github.com/harness-apps/easy-node-docker), make sure to Fork
-the sample repository. 
 
-If you have not created a Personal Access Token before.
 
-- GitHub -> Settings -> Developer Settings -> Personal Access Tokens
-- Name: harness
-- Scopes: repo
-- Expiration: 30 days
 
-Make sure to jot down the token as the token will only be displayed once.
+### Understand build infrastructure
 
-![Repo Scope](../static/ci-tutorial-node-docker/repo_scope.png)
+This pipeline uses a Linux AMD64 machine on Harness Cloud build infrastructure, as declared in the stage's `platform` specifications.
 
-Now you are ready to wire in the pieces to Harness Continuous Integration.
+```yaml
+    - stage:
+        ...
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+```
+
+You can change the build infrastructure if you want to use a different OS, arch, or infrastructure. With Harness Cloud build infrastructure, your builds run on pre-configured machines provided by Harness. You can also run builds locally or bring your own VMs or Kubernetes cluster build infrastructure. For more information on build infrastructure options, go to [Which build infrastructure is right for me](/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me).
+
+Regardless of the build infrastructure you choose, you must ensure the build farm can run the commands required by your pipeline. For example, this tutorial uses tools that are publicly available through Docker Hub or already installed on [Harness Cloud's preconfigured machines](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+
+In contrast, if you choose to [use a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure) and your pipeline requires a tool that is not already available in the cluster, you can configure your pipeline to load those prerequisite tools when the build runs. There are several ways to do this in Harness CI, including:
+
+* [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies) for running dependent services.
+* [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) to run templated scripts, such as GitHub Actions, BitBucket Integrations, or any Drone plugin.
+* [Various caching options](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) to load dependency caches.
+* [Run steps](/docs/category/run-scripts) for running all manner of scripts and commands.
+
+
+
+
 
 ## Create Your First Pipeline
 
