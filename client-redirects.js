@@ -1053,6 +1053,7 @@ module.exports = {
     },
     {
       from: "/tutorials/build-code/ci-java-http-server",
+      from: "/tutorials/ci-pipelines/ci-java-http-server",
       to: "/tutorials/ci-pipelines/build/java",
     },
     {
@@ -2505,6 +2506,7 @@ module.exports = {
     {
       from: "/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference",
       from: "/docs/continuous-integration/ci-technical-reference/plugin-steps/plugin-step-settings-reference",
+      from: "/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference/",
       to: "/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference",
     },
 
