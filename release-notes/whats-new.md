@@ -717,7 +717,7 @@ These changes are backward incompatible. Therefore, you must also update the Ter
 
 * AutoStopping Proxy for HTTPS and TCP connections.
 
- Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. For more information, go to [Add load balancers](https://developer.harness.io/docs/category/add-load-balancer-for-autostopping-rules) and [Create AutoStopping rules](https://developer.harness.io/docs/category/create-autostopping-rules).
+ Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. For more information, go to [Add load balancers](https://developer.harness.io/docs/category/add-load-balancers-for-autostopping-rules) and [Create AutoStopping rules](https://developer.harness.io/docs/category/create-autostopping-rules).
 
 * Introducing support for adding more than one CCM GCP connector when you have two or more billing export tables with different billing account IDs in the same dataset. (CCM-11244)
 * Introducing support for assigning a custom static port as the source port in the port configuration of the TCP traffic-based AutoStopping rule. (CCM-11264)
@@ -1567,7 +1567,7 @@ The Build UI now shows a new VM icon. (CI-4630)
 
   You can now set the notification channel to Slack and add multiple webhook URLs when creating a budget.
 
-  For more information, refer to [Create a Budget](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-budgets/create-a-budget/).
+  For more information, refer to [Create a Budget](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget/).
 
 ##### Harness Platform
 
