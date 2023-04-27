@@ -28,7 +28,7 @@ Needless to say, chaos experiments need the appropriate observability infrastruc
 steady-state. The practice of chaos engineering consists of repeated experimentation, with varied faults to simulate real-world failure conditions
 carried out against different targets.
 
-The diagram below describes the steps that you can perform to induce chaos into an application. 
+The diagram below describes the steps that you can perform to run chaos experiments in an application. 
 
 <img width="544" alt="Screenshot 2022-10-10 at 4 23 22 PM" src="https://user-images.githubusercontent.com/21166217/194850472-0f4dda25-74f5-4dbb-86e8-45e09258de73.png"></img>
 
@@ -43,17 +43,17 @@ are subject to frequent, and independent upgrades. The resulting paradigm is:
 
 ## Benefits of HCE
 
-HCE takes a holistic-approach to chaos engineering, and doesn't merely focus on fault-injection. It is designed to help users setup a fully-operational chaos function that is based on the original [principles of chaos](https://principlesofchaos.org/) as well as addressing several enterprise needs around its practice, which include:
+HCE takes a holistic approach to chaos engineering, and doesn't merely focus on fault injection. It is designed to help users set up a fully operational chaos function that is based on the original [principles of chaos](https://principlesofchaos.org/), and addresses several enterprise needs around its practice, which include:
 
 1. Cloud native approach to chaos engineering which supports declarative definition of experiments and Git-based chaos artifact sources (chaos-experiments-as-code).
 2. Extensive fault library and robust suite of [ready-to-use experiments](../technical-reference/chaos-faults/), with support to construct complex custom experiments with [multiple faults](../configure-chaos-experiments/experiments/create-complex-chaos-experiments) in the desired order.
 3. Centralized control plane which supports varied targets (Kubernetes-based microservices, cloud services, VMware infrastructure).
 4. Governance enforcement for chaos experimentation using dedicated workspaces, chaos teams, and access control.
-5. Native integration with [Harness CD (Continuous Delivery) pipelines](/tutorials/chaos-experiments/integration-with-harness-cd).
-6. [Hypothesis validation using probes](../configure-chaos-experiments/probes/validate-hypothesis-using-probes) and SLO management using integration with Harness CV (Continuous Verification).
+5. Native integration with [Harness Continuous Delivery (CD) pipelines](/tutorials/chaos-experiments/integration-with-harness-cd).
+6. [Hypothesis validation using probes](../configure-chaos-experiments/probes/validate-hypothesis-using-probes) and SLO management using integration with Harness Continuous Verification (CV).
 7. Guided gameday execution with detailed analytics and reporting based on experiment execution and application resilience.
 8. Chaos events, metrics and logs (audit and execution) to aid in the instrumentation of APM dashboards with chaos context.
 
 
 ## Conclusion
-Chaos engineering is a critical practice for building resilient systems in today's technology landscape. Harness provides a powerful chaos module that make it easy to get started with chaos engineering. To get started with a simple chaos experiment, go to [first chaos experiment](/tutorials/chaos-experiments/first-chaos-engineering).
+Chaos engineering is a critical practice for building resilient systems in today's technology landscape. Harness provides a powerful chaos module that makes it easy to get started with chaos engineering. To get started with a simple chaos experiment, go to [Your first chaos experiment](/tutorials/chaos-experiments/first-chaos-engineering).
