@@ -52,7 +52,7 @@ Once you have created a Trigger to listen for new artifacts, Harness will poll f
 
 Polling is immediate because Harness uses a perpetual task framework that constantly monitors for new builds/tags.
 
-### Using the <+trigger.artifact.build> expression
+### Using the <+trigger.artifact.build> and <+lastPublished.tag> expression
 
 When you add a Harness Service to the CD stage, you can set the artifact tag to use in **Artifacts Details**.
 
@@ -63,6 +63,9 @@ If you use a [Fixed Value](../20_References/runtime-inputs.md) for the artifact 
 If you want the Pipeline to deploy the artifact version that initiated the Trigger, use the expression `<+trigger.artifact.build>`.
 
 ![](./static/trigger-on-a-new-artifact-23.png)
+
+If you want the Pipeline to deploy the last published successful artifact version, use the expression `<+lastPublished.tag>` or If you want the Pipeline to deploy the last published successful artifact version of matching regex, use the expression `<+lastPublished.tag>.regex(regex)`.
+
 
 You can also set Tag as a Runtime Input and then use `<+trigger.artifact.build>` in the Trigger's [Pipeline Input](#step-3-select-pipeline-inputs) settings.
 
