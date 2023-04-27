@@ -11,7 +11,7 @@ import {
     // Docs
     export const docsCards: CardSections = [
       {
-        name: "Essentials",
+        name: "Get started",
         description:
           "",
         list: [
@@ -19,73 +19,51 @@ import {
             title: "Overview",
             module: MODULES.cet,
             description:
-              "Learn about SRM and how it can benefit you.",
-            link: "/docs/service-reliability-management/getting-started/srm-intro",
+              "Learn about Continuous Error Tracking (CET) and how it can benefit you.",
+            link: "/tutorials/service-reliability",
           },
           {
             title: "Key concepts",
             module: MODULES.cet,
             description:
-              "Understand concepts such as SLOs, SLIs, and error budgets.",
-            link: "/docs/service-reliability-management/getting-started/service-reliability-management-basics",
+              "Understand concepts such as CET Agent.",
+            link: "/docs/continuous-error-tracking/getting-started/cet-overview",
           },
           {
-            title: "Your first SLO",
+            title: "Start tracking errors",
             module: MODULES.cet,
             description:
-              "Learn how to create, track, and monitor a SLO.",
-            link: "/docs/service-reliability-management/getting-started/create-first-slo",
-          },
-        ],
-      },
-
-      {
-        name: "Manage SLOs",
-        description:
-          "",
-        list: [
-          {
-            title: "SLO types",
-            module: MODULES.cet,
-            description:
-              "Explore the different types of SLOs, such as composite SLOs and SLO as Code, and learn how to create and use them.",
-            link: "/docs/category/slo-types",
-          },
-          {
-            title: "SLO downtime",
-            module: MODULES.cet,
-            description:
-              "Learn how to schedule a maintenance window for your service without impacting the SLO.",
-            link: "/docs/category/slo-downtime",
-          },
-          {
-            title: "Change impact analysis",
-            module: MODULES.cet,
-            description:
-              "Learn how to conduct change impact analysis by tracking health and change events in your service.",
-            link: "/docs/category/change-impact-analysis",
+              "Learn how to install CET Agent and track errors.",
+            link: "/docs/continuous-error-tracking/getting-started/cet-setup",
           },
         ],
       },
 
       {
-        name: "Explore health and change sources",
+        name: "Manage events",
         description:
           "",
         list: [
           {
-            title: "Change source catalog",
+            title: "Explore events",
             module: MODULES.cet,
             description:
-              "Explore the range of change sources supported by Harness and learn how to add them to your monitored service.",
-            link: "/docs/category/change-sources-catalog",
+              "Learn to work with event types such as critical, resolved, resurfaced, and hidden.",
+            link: "/docs/category/event-explorer",
           },
           {
-            title: "Health source catalog",
+            title: "Create Jira tickets",
             module: MODULES.cet,
             description:
-              "Discover the range of health sources supported by Harness and learn how to add them to your monitored service.",
-            link: "/docs/category/health-sources-catalog",
+              "Create Jira tickets right from the event.",
+            link: "/docs/continuous-error-tracking/create-jira-ticket",
+          },
+          {
+            title: "Setup notifications",
+            module: MODULES.cet,
+            description:
+              "Alert your team whenever new, resurfaced, or critical events occur.",
+            link: "/docs/continuous-error-tracking/cet-notifications",
           },
         ],
       },
@@ -95,13 +73,13 @@ import {
   // Featured Tutorials
 export const featuredTutorials: CardItem[] = [
   {
-    title: "SLO Management with Prometheus",
+    title: "Find and fix Java exceptions",
     module: MODULES.cet,
     icon: "img/icon_cet.svg",
-    description: "Measure and manage your SLOs leveraging Prometheus.",
+    description: "Learn about types of Java exceptions and how to fix them.",
     newDoc: true,
     type: [docType.Documentation],
-    time: "15min",
+    time: "10min",
     link: "/tutorials/service-reliability/slo-prometheus",
   },
 ];
