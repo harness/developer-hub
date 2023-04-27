@@ -21,7 +21,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Continuous Integration
 
-* (CI-7602)
+* The CI Getting Started workflow now saves the pipeline remotely (in your Git repository) by default. Previously, the pipeline was stored inline (in Harness) unless you manually selected remote storage. The Getting Started workflow also automatically creates two [input sets](/docs/platform/pipelines/input-sets/) for [Git event triggers](/docs/platform/Triggers/triggering-pipelines): one for a PR trigger and one for a Push trigger. (CI-7602)
 * Plugin step supports output variable field? (CI-7491) + update docs
 * (CI-6237)
 
