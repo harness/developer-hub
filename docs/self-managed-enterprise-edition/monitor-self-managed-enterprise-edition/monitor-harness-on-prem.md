@@ -1,5 +1,5 @@
 ---
-title: Options for monitoring
+title: Monitor the infrastructure of your installation
 description: Monitor CPU, memory, disk usage, and other metrics.
 # sidebar_position: 2
 helpdocs_topic_id: ho0c1at9nv
@@ -10,133 +10,256 @@ helpdocs_is_published: true
 
 You can monitor your Harness Self-Managed Enterprise Edition installation and receive alerts on metrics such as CPU, memory, and disk usage.
 
-The Harness Self-Managed Enterprise Edition monitoring options available depend on whether you are running Harness Self-Managed Enterprise Edition - Virtual Machine or Harness Self-Managed Enterprise Edition - Kubernetes Cluster.
+Monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and ntegrate with observability tools, such as Grafana.
 
-Harness Self-Managed Enterprise Edition - Virtual Machine comes with built in monitoring using Prometheus, Grafana, and Alertmanager, but Harness Self-Managed Enterprise Edition - Kubernetes Cluster requires that you set up monitoring on your own.
+To monitor database applications like MongoDB, Postgres, or Redis for the Harness Self-Managed Enterprise Edition, this topic describes how you can use a Prometheus server installed in a Kubernetes cluster outside of Harness services. In this example, the monitored target application is present in one cluster, and Prometheus and Grafana are installed in another cluster. 
 
-## Monitoring Harness Self-Managed Enterprise Edition - virtual machine
+The example setup uses two clusters to demonstrate the use of an ingress controller using LoadBalancer with an external Prometheus server.
 
-Monitoring is included in Harness Self-Managed Enterprise Edition - Virtual Machine by default.
+![](./static/monitor-harness-on-prem.png)
 
-The KOTS admin tool for a running version of Harness Self-Managed Enterprise Edition - Virtual Machine displays Prometheus monitoring:
+## Requirements
 
-![](./static/monitor-harness-on-prem-07.png)
+This example setup requires:
+- Kubernetes 1.22+ (Harness recommends 1.23)
+- Helm 3.2.0+
+- Prometheus version: Bitnami/kube-prometheus 8.4.0+
+- Istio version 1.15.3 
+- Nginx version v1.0.0-alpha.2
 
-When you installed Harness Self-Managed Enterprise Edition - Virtual Machine, you were provided with Prometheus, Grafana, and Alertmanager ports and passwords in the output of the installer. For example:
+:::info note
+For this example, we use the Prometheus operator packaged by Bitnami as an external Prometheus setup.
+:::
 
+## Install an ingress controller
 
-```
-The UIs of Prometheus, Grafana and Alertmanager have been exposed on NodePorts 30900, 30902 and 30903 respectively.  
-To access Grafana use the generated user: xxxxx password of admin: xxxxx.
-```
-To view these addresses, log into the VM running Harness, and then view the Kubernetes services running in the `monitoring` namespace:
+Follow the steps below on the Kubernetes cluster where you deploy your Harness instance:
 
-
-```
-kubectl get svc -n monitoring
-```
-
-The output will be something like this:
-
+1. Install an ingress controller with a `LoadBalancer` service type in the YAML file of your Harness Kubernetes cluster.
 
 ```
-NAME                    TYPE        CLUSTER-IP    EXTERNAL-IP   PORT(S)                      AGE  
-alertmanager-main       NodePort    10.96.2.240   <none>        9093:30903/TCP               282d  
-alertmanager-operated   ClusterIP   None          <none>        9093/TCP,9094/TCP,9094/UDP   282d  
-grafana                 NodePort    10.96.2.252   <none>        3000:30902/TCP               282d  
-kube-state-metrics      ClusterIP   None          <none>        8443/TCP,9443/TCP            282d  
-node-exporter           ClusterIP   None          <none>        9100/TCP                     282d  
-prometheus-adapter      ClusterIP   10.96.1.45    <none>        443/TCP                      282d  
-prometheus-k8s          NodePort    10.96.2.94    <none>        9090:30900/TCP               282d  
-prometheus-operated     ClusterIP   None          <none>        9090/TCP                     282d  
-prometheus-operator     ClusterIP   None          <none>        8080/TCP                     282d
+apiVersion: v1
+kind:Service
+metadata:
+  name:harness-ingress-controller
+  namespace:gcloud
+spec:
+  selector:  
+    app:harness-ingress-controller
+  type:'LoadBalancer'
+  loadBalancerIP:<LB-IP>
+  externalTrafficPolicy:'Cluster'
+  ports:
+  - name:http
+    nodePort:32500
+    port:80
+    protocol:TCP
+    targetPort:http
+  - name:https
+    nodePort:32505
+    port:443
+    protocol:TCP
+    targetPort:https
 ```
-### Prometheus
+  :::info note
+  The cloud `loadBalancerIP` in this example is a reserved external static IP created by Harness.
+  :::
 
-The Prometheus port number is taken from the `prometheus-k8s` service (in this example, `30900`).
+2. Confirm your `ingress-controller` deployment is up and running to create a service with an external IP address. Harness recommends that you set up the controller in the same namespace where your deploy your Harness services.
 
-Combine that port number with the public IP address for Harness Self-Managed Enterprise Edition and you have the Prometheus endpoint.
+  :::info note
+  You must enable metrics and the `serviceMonitors` for your databases to view the services exposing the metrics for each database. 
+  :::
 
-If you have a load balancer configured, update the configuration to support the `prometheus-k8s` port number. In the KOTS admin tool, in **Application**, click **Configure Prometheus Address**.
-
-In **Configure graphs**, enter the URL using the public IP address and the Prometheus port number.
-
-![](./static/monitor-harness-on-prem-08.png)
-
-Click **Save**. The graphs appear.
-
-### Grafana
-
-The Grafana port is listed by running `kubectl get svc -n monitoring`:
-
-
-```
-grafana                 NodePort    10.96.2.252   <none>        3000:30902/TCP               
-```
-
-Combine that port number with the public IP address for Harness Self-Managed Enterprise Edition and you have the Grafana endpoint. For example `http://35.233.239.15:30902`.
-
-Log into Grafana using the generated username and password you received when you installed Harness Self-Managed Enterprise Edition:
-
+3. Create an ingress file for `mongo-metrics`, with defined routing rules that forwards requests to an internal service exposing metrics with a similar configuration.
 
 ```
-To access Grafana use the generated user: xxxxx password of admin: xxxxx.
-```
-If you do not have the username and password, log into the VM hosting Harness Self-Managed Enterprise Edition and run the following:
-
-
-```
-kubectl get secrets grafana-admin -n monitoring -o yaml
-```
-
-Log in and navigate to **Dashboards**. Click a default dashboard or create a new one.
-
-![](./static/monitor-harness-on-prem-09.png)
-
-For example, open the **Kubernetes / Pods** dashboard.
-
-![](./static/monitor-harness-on-prem-10.png)
-
-See [Grafana docs](https://grafana.com/docs/) for information on creating dashboards.
-
-For information on querying Prometheus, see [Querying Prometheus](https://prometheus.io/docs/prometheus/latest/querying/basics/).
-
-### Alertmanager
-
-The Alertmanager port is listed by running `kubectl get svc -n monitoring`:
-
-```
-alertmanager-main       NodePort    10.96.2.240   <none>        9093:30903/TCP
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: mongo-metrics
+  namespace: gcloud
+  annotations:
+    nginx.ingress.kubernetes.io/whitelist-source-range: "10.116.1.26"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+spec:
+  ingressClassName: harness
+  rules: 
+  - http:
+    paths: 
+      - path: /mongo-metrics
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: mongodb-replicaset-chart-metrics
+            port:
+              number: 9216
 ```
 
-Combine that port number with the public IP address for Harness Self-Managed Enterprise Edition and you have the Alertmanager endpoint. For example,  `http://35.233.239.15:30903`.
+ :::info note
+  Add your IPs to your allow list so the metrics exposed by the ingress are only accessible internally. The IP included in the allow list is the xxternal IP for the node where you host Prometheus in a separate cluster.
+  :::
 
-See [Alerting Rules](https://prometheus.io/docs/prometheus/latest/configuration/alerting_rules/) from Prometheus for details on setting up alerts.
+## Deploy Prometheus to integrate with Harness
 
-## Monitoring Harness Self-Managed Enterprise Edition - Kubernetes cluster
+There are two options you can use to deploy Prometheus to integrate with your Harness instance:
+- Use a Kubernetes operator by Bitnami
+- Use a standalone Prometheus installation
 
-Harness does not provide default monitoring for Harness Self-Managed Enterprise Edition.
+### Use a Kubernetes operator by Bitnami
 
-You can deploy a Prometheus server and Grafana to monitor Harness Self-Managed Enterprise Edition. For steps on setting up monitoring using Prometheus, Grafana, and Alertmanager, see [Prometheus](https://kots.io/kotsadm/monitoring/prometheus/) in the KOTS documentation.
+To use a Kubernetes operator by Bitnami, do the following:
 
-If you have an existing Prometheus setup, in the KOTS admin tool, click **Configure Prometheus Address** and then enter the Prometheus URL endpoint.
+1. Go to [Bitnami kube-prometheus charts](https://github.com/bitnami/charts/tree/main/bitnami/kube-prometheus).
 
-## Availability monitoring
+2. Under **Custom Resources → monitoring.coreos.com → Prometheus**, make the following changes to the CRD to enable adding additional scrape configs under `spec.additionalScrapeConfigs`.
 
-The following table shows the two available URL endpoints. These are microservices with external endpoints; ingress is configured by default.
+3. Provide the name of the secret you want to add in the `config.yaml` file.
 
-In these examples, `<domain name>` represents your vanity URL (for example, `mycompany.harness.io`). If your load balancer directs internal traffic for `app.harness.io`, you can use that address in the URLs.
+```
+spec:
+  additionalScrapeConfigs:
+    key: config.yml
+    name:harness-metrics
+```
+4. Create a `harness-metrics` secret in the same namespace where the Prometheus operator is installed. This secret passes a `config.yaml` file as the data. The data contains the job for the `additionalScrapeConfigs` in the following manner.
 
+```
+job_name:mongo-metrics-test
+  scrape_interval:30s
+  metrics_path:/mongo-metrics/metrics
+  static_configs:
+  - targets:
+    - <LB-IP>
+- job_name:redis-metrics-test
+  scrape_interval:30s
+  metrics_path:/redis-metrics/metrics
+  static_configs:
+  - targets:
+    - <LB-IP>
+- job_name:postgres-metrics-test
+  scrape_interval:30s
+  metrics_path:/postgres-metrics/metrics
+  static_configs:
+  - targets:
+    -<LB-IP>
+```
+5. Run the following command to create the secret:
 
+```
+kubectl create secret generic harness-metrics --from-file config.yml -n <Namespace>
+```
 
-| **Service Name** | **Endpoint** | **Response** |
-| :-- | :-- | :-- |
-| Verification | `https://<domain name>/verification/health` | `{"metaData":{},"resource":"healthy","responseMessages":[]}` |
-| NextGen Manager | `https://<domain name>/ng/api/health` | `{"status":"SUCCESS","data":"healthy","metaData":null,"correlationId":"a38c51ac-07ec-4596-b40b-4cc9487f8506"}` |
+  Prometheus can now scrape the metrics for MongoDB on the URL:
+  http://<LB-IP>/mongo-metrics/metrics.
 
-You can use the following methods to monitor other microservices in Self-Managed Enterprise Edition:
+:::info note 
+Because the URL is on your allow list, other users are not able to view the internal metrics of specific infra components, such as MongoDB.
+:::
 
-* MongoDB. There are many ways to monitor MongoDB instances. For example, you can monitor your MongoDB database with Grafana and Prometheus. For a summary, see the article [MongoDB Monitoring with Grafana & Prometheus](https://devconnected.com/mongodb-monitoring-with-grafana-prometheus/).
+### Use a standalone Prometheus installation
 
-* Disk/Memory. Use the [Kubernetes pod dashboard](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/).
+If you have Prometheus installed, you can make changes directly to your Prometheus `config.yaml` file by adding fields under scrape configs.
 
+To use a standalone Prometheus installation with a customer configuration, do the following:
+
+1. Update your `config.yaml` file with the following settings:
+
+    ```
+    scrape_configs:
+    
+    - job_name: mongo
+   
+   static_configs:
+
+     - targets:
+
+         - mongodb-replicaset-chart-metrics.<Namespace>.svc.cluster.local:9126
+
+     - job_name: timescale
+
+    static_configs:
+
+     - targets: 
+
+         - timescaledb-single-chart-prometheus.<Namespace>.svc.cluster.local:9187
+
+     - job_name: redis
+
+    static_configs:
+
+     - targets:
+
+       - redis-metrics.<Namespace>.svc.cluster.local:9121
+
+## View metrics on the Granfana dashboard
+
+To visualize metrics from various sources, you can import Grafana dashboards.
+
+Follow the below steps on your Kubernetes cluster to deploy Grafana:
+
+1.  Install Grafana using the Helm chart.
+
+  ```
+  helm repo add grafana https://grafana.github.io/helm-charts
+  helm repo update
+  helm install grafana grafana/grafana -n <Namespace>
+  ```
+
+2. Using Grafana operator - Install a bitnami packaged Grafana Operator, documentation steps are mentioned here - Grafana Operator Installation.
+
+## Open the Grafana dashboard
+
+1. Decode the secret. The login username is `admin` by default.
+2. Execute the port-forward command to host Grafana locally on port 3000.
+
+  ```
+  kubectl get secret --namespace <Namespace> grafana -o jsonpath="{.data.admin-password}" | base64 --decode ; echo
+
+  export POD_NAME=$(kubectl get pods --namespace <Namespace> -l "app.kubernetes.io/name=grafana,app.kubernetes.io/instance=grafana" -o jsonpath="{.items[0].metadata.name}")
+
+  kubectl --namespace default port-forward $POD_NAME 3000
+  ```
+
+3. Sign in to the Grafana dashboard home page.
+
+4. Set Prometheus as the datasource:
+  
+  Go to settings, select **Data sources**. Then, select **Add data source**. Select **Prometheus**.
+
+  ![](./static/monitor-harness-on-prem-prom1.png)
+ 
+5. Configure the URL settings to connect to your locally-hosted Prometheus setup, with the locally-hosted Grafana instance. 
+
+6. Deploy prometheus and grafana on the same cluster, and use kubeDNS resolution. For example, if you want to connect pod A to pod B, on pod A, the hostname of B should be:
+
+  `http://serviceNameOfPodB.<namespaceOfPodB>.svc.cluster.local:<port>`
+
+  This requires the following information: 
+
+  - Service name of where prometheus is hosted. 
+  - Namespace in which prometheus is hosted. 
+  - Port at  which prometheus is hosted.
+
+  This makes our present URL look like: 
+
+  `http://my-release-kube-prometheus-prometheus.default.svc.cluster.local:9090/`
+
+  :::caution
+  The final URL should be similar to the above URL, according to your system specifications. Any extra space or character in the URL field causes the data source testing to fail. 
+
+7. Configure the **Prometheus type** and **Prometheus version** fields.
+
+8. Select **Save & test**. A confirmation that the data source is working displays. 
+
+### Add a Grafana dashboard
+
+Now you can add a dashboard to view metrics via query.
+
+- To add a dashboard, go to **Dashboards -> New dashboard -> Add a new panel**. 
+
+Below are some sample opensource dashboards:
+
+- [MongoDB](https://github.com/dcu/mongodb_exporter/blob/master/grafana_dashboards/dashboard.json)
+- [Redis](https://github.com/oliver006/redis_exporter/blob/master/contrib/grafana_prometheus_redis_dashboard.json)
+- [Timescale/Postgres](https://github.com/prometheus-community/postgres_exporter/blob/master/postgres_mixin/dashboards/postgres-overview.json)
