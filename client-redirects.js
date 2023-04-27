@@ -34,6 +34,32 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by Rashmi Sahoo to fix PL redirects April 27th, 2023
+    {
+      from: "/docs/category/role-based-access-control",
+      to: "/docs/category/access-control-1",
+    },
+
+    {
+      from: "/docs/platform/Delegates/delegate-concepts/delegate-overview.md",
+      to: "/docs/platform/Delegates/delegate-concepts/delegate-overview"
+    },
+
+    {
+      from: "/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes/",
+      to: "/docs/platform/Delegates/install-delegates/install-a-kubernetes-delegate",
+    },
+
+    {
+      from: "/docs/platform/Governance/Policy-as-code/docs/feature-flags/harness-policy-engine",
+      to: "/docs/feature-flags/harness-policy-engine"
+    },
+
+    {
+      from: "/tutorials/platform/gke-workload-identity/",
+      to: "/tutorials/platform/gke-workload-identity",
+    },
+
     // Created by ravilach to move CVKB into Docs April 21st, 2023
     {
       from: "/kb/continuous-delivery/continuous-verification-ml",
