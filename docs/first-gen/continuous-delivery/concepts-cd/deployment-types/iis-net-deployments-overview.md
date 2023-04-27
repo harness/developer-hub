@@ -65,5 +65,5 @@ The following list describes the major steps of a Harness IIS (.NET) deployment:
 Read the following topics to build on what you've learned:
 
 * [IIS (.NET) Quickstart](../../../first-gen-quickstarts/iis-net-quickstart.md)
-* [IIS (.NET)](docs/category/iis-net-deployments) How-tos
+* [IIS (.NET)](/docs/category/iis-net-deployments) How-tos
 
