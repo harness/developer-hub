@@ -437,7 +437,7 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
     2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Instance Count** - Select whether to **Read from Manifest** or **Match Running Instances**.  
        The **Match Running Instances** setting can be used after your first deployment to override the instances in your manifest.
-    4. **Resize Strategy** - Select **Add new instances first, then downsize old instances** or **Downsize old instances first, then add new instances** strategy.
+    4. **Resize Strategy** - Select **Add new instances first, then downsize old instances** or **Downsize old instances first, then add new instances** strategy. You can also add **Resize Strategy** as a runtime input.
     5.  **Existing Versions to Keep** - Enter the number of existing versions you want to keep. This is to roll back to a stable version if the deployment fails.
     6.  **Additional Routes** - Enter additional routes if you want to add routes other than the ones defined in the manifests.
     7.  Select **Apply Changes**.
@@ -479,7 +479,7 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
      </details>
    - **Looping Strategy** - Select **Matrix**, **Repeat**, or **Parallelism** looping strategy. For more information, go to [looping strategies overview](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
    - **Policy Enforcement** - Add or modify a policy set to be evaluated after the step is complete. For more information, go to [CD governance](/docs/category/cd-governance).
-9. Select **Save**.
+9.  Select **Save**.
 
 Now the pipeline stage is complete and can be deployed.
 
