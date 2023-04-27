@@ -861,7 +861,7 @@ module.exports = {
     },
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/create-a-budget-perspective",
-      to: "/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-a-budget-perspective",
     },
     {
       from: "/docs/cloud-cost-management/monitor-cloud-cost-with-integration/integration/datadog-integration",
@@ -970,6 +970,14 @@ module.exports = {
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/ecs-recommendations",
       to: "/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/ecs-recommendations",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-budgets/create-a-budget",
+      to: "/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/create-cost-perspectives",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives",
     },
 
     // Created by SudheendraKatte for SRM Docs reorg, PR-1276, on Apr 12, 2023
