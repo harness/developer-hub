@@ -24,7 +24,7 @@ You can store your policies in one of the following Git providers:
 ## Prerequisites
 To create a remote policy, you must have:
 - **Create/Edit** permissions for policies.
-- Make sure you have a Git repo with at least one branch.
+- A Git repo with at least one branch.
 - Make sure you have a Git connector with a Personal Access Token (PAT) for your Git account.​​
 - A Personal Access Token (PAT) for your Git account.
 - Harness needs the PAT to use the Git platform APIs.
