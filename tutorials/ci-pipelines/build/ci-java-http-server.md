@@ -95,13 +95,12 @@ For this tutorial, you'll need a Docker connector to allow Harness to authentica
 2. When prompted to select a repository, search for **jhttp**, select the repository that you forked earlier, and then select **Configure Pipeline**.
 3. Select **Generate my Pipeline configuration**, and then select **Create a Pipeline**.
 
-**Generate my Pipeline configuration** automatically creates PR and Push triggers for the selected repository. If you want a more bare-bones pipeline, select **Create empty Pipeline configuration**.
+**Generate my Pipeline configuration** automatically creates PR and Push triggers for the selected repository. If you want a more bare bones pipeline, select **Create empty Pipeline configuration**.
 
 <details>
 <summary>Generated pipeline YAML</summary>
 
 The YAML for the generated pipeline is as follows. To switch to the YAML editor, select **YAML** at the top of the Pipeline Studio.
-
 
 ```yaml
 pipeline:
@@ -141,7 +140,7 @@ pipeline:
 
 </details>
 
-### Understand build infrastructure
+### Understand the build infrastructure
 
 This pipeline uses a Linux AMD64 machine on Harness Cloud build infrastructure, as declared in the stage's `platform` specifications.
 
@@ -249,7 +248,7 @@ You could also use **Pre-Command** to prepare the test environment. For example,
   <TabItem value="YAML" label="YAML" default>
 ```
 
-In the YAML editor, replace the `Echo Welcome Message` run step block with the following. Replace the bracketed value with your [Docker connector](#prepare-docker-registry) ID.
+In the YAML editor, replace the `Echo Welcome Message` run step block with the following. Replace the bracketed value with your [Docker connector](#prepare-the-docker-registry) ID.
 
 ```yaml
               - step:
@@ -317,7 +316,7 @@ Notice the following about this step:
   <TabItem value="YAML" label="YAML" default>
 ```
 1. In your Docker Hub account, create a repo called `jhttp`.
-2. In Harness, add the following `step` block to the `Build Java App with Maven` stage. Replace the bracketed value with your [Docker connector](#prepare-docker-registry) ID.
+2. In Harness, add the following `step` block to the `Build Java App with Maven` stage. Replace the bracketed value with your [Docker connector](#prepare-the-docker-registry) ID.
 
 ```yaml
               - step:
@@ -372,7 +371,7 @@ Notice that the **Image** value uses an expression that generates the image path
   <TabItem value="YAML" label="YAML" default>
 ```
 
-Add the following code block to the end of your pipeline YAML. Replace the bracketed value with your [Docker connector](#prepare-docker-registry) ID.
+Add the following code block to the end of your pipeline YAML. Replace the bracketed value with your [Docker connector](#prepare-the-docker-registry) ID.
 
 ```yaml
     - stage:
@@ -494,7 +493,7 @@ You can also try adding more steps to add more functionality to this pipeline, s
 
 ## Reference: Pipeline YAML
 
-Here is the complete YAML for this tutorial's pipeline. If you copy this example, make sure to replace the bracketed values with corresponding values for your Harness project, [GitHub connector ID](#create-a-github-connector), GitHub account name, and [Docker connector ID](#prepare-docker-hub).
+Here is the complete YAML for this tutorial's pipeline. If you copy this example, make sure to replace the bracketed values with corresponding values for your Harness project, [GitHub connector ID](#create-the-github-connector), GitHub account name, and [Docker connector ID](#prepare-the-docker-registry).
 
 <details>
 <summary>Pipeline YAML</summary>

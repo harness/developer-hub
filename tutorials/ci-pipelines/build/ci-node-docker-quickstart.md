@@ -151,64 +151,58 @@ For this tutorial, you'll need a Docker connector to allow Harness to authentica
 
 8. In the list of connectors, make a note of your Docker connector's ID.
 
-## Create the Java starter pipeline
+## Create a pipeline
 
 1. Under **Project Setup**, select **Get Started**.
 2. When prompted to select a repository, search for **easy-node-docker**, select the repository that you forked earlier, and then select **Configure Pipeline**.
-3. Under **Choose a Starter Configuration**, select **Java with Maven** and then select **Create a Pipeline**.
+3. Select **Generate my Pipeline configuration**, and then select **Create a Pipeline**.
+
+**Generate my Pipeline configuration** automatically creates PR and Push triggers for the selected repository. If you want a more bare bones pipeline, select **Create empty Pipeline configuration**.
 
 <details>
-<summary>Java with Maven starter pipeline YAML</summary>
+<summary>Generated pipeline YAML</summary>
 
-The YAML for the **Java with Maven** starter pipeline is as follows. To switch to the YAML editor, select **YAML** at the top of the Pipeline Studio.
+The YAML for the generated pipeline is as follows. To switch to the YAML editor, select **YAML** at the top of the Pipeline Studio.
 
 ```yaml
 pipeline:
-  name: Build Java with Maven
-  identifier: Build_Java_with_Maven
+  name: Build easy-node-docker
+  identifier: Build_easy_node_docker
   projectIdentifier: [your-project-ID]
   orgIdentifier: default
-  properties:
-    ci:
-      codebase:
-        connectorRef: [your-github-connector]
-        repoName: [your-github-account]/easy-node-docker
-        build: <+input>
   stages:
     - stage:
-        name: Build Java App with Maven
-        identifier: Build_Java_App_with_Maven
-        description: ""
+        name: Build
+        identifier: Build
         type: CI
         spec:
           cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Echo Welcome Message
+                  identifier: Echo_Welcome_Message
+                  spec:
+                    shell: Sh
+                    command: echo "Welcome to Harness CI"
           platform:
             os: Linux
             arch: Amd64
           runtime:
             type: Cloud
             spec: {}
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: Build Java App
-                  identifier: Build_Java_App
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo "Welcome to Harness CI"
-                      mvn -B package --file pom.xml
+  properties:
+    ci:
+      codebase:
+        connectorRef: [your-github-connector]
+        repoName: [your-github-account]/easy-node-docker
+        build: <+input>
 ```
 
 </details>
 
-
-
-
-
-
-### Understand build infrastructure
+### Understand the build infrastructure
 
 This pipeline uses a Linux AMD64 machine on Harness Cloud build infrastructure, as declared in the stage's `platform` specifications.
 
@@ -236,39 +230,11 @@ In contrast, if you choose to [use a Kubernetes cluster build infrastructure](/d
 * [Various caching options](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) to load dependency caches.
 * [Run steps](/docs/category/run-scripts) for running all manner of scripts and commands.
 
+## Run tests
 
+## Build and push to Docker registry
 
-
-
-## Create Your First Pipeline
-
-In the Build Module [Harness Continuous Integration], walking through the wizard is the fastest path to get your build running. Click Get Started. This will create a basic Pipeline for you.
-
-![Get Started](../static/ci-tutorial-node-docker/get_started.png)
-
-Once you click Get Started, select GitHub as the repository you use, and then you can enter your GitHub Access Token that was created or being leveraged for the example.
-
-![SCM Choice](../static/ci-tutorial-node-docker/scm_choice.png)
-
-Click Continue. Then click Select Repository to select the Repository that you want to build [the sample is called *easy-node-docker*].
-
-![Node Docker Repo](../static/ci-tutorial-node-docker/node_docker_repo.png)
-
-Select the repository, then click Create Pipeline. The next step to focus on will be where you want to run the build by configuring the Pipeline. 
-
-```mdx-code-block
-<Tabs>
-<TabItem value="Harness Hosted Build Infrastructure">
-```
-Can leverage one of the Starter Configs or create a Starter Pipeline. In this case if leveraging the example app which is NodeJS based, leveraging the Node.js Starter Configuration works fine. 
-
-![Configure Node JS](../static/ci-tutorial-node-docker/configure_nodejs.png)
-
-Click Continue to define what infrastructure to run the build on. To run on Harness Hosted Infrastructure, first change the Infrastructure to “Cloud”.
-
-![Where to Build](../static/ci-tutorial-node-docker/where_to_build_cloud.png)
-
-The scaffolding will take care of the NPM install for you. End goal would be to have a published Docker Image of your artifact. Can add an additional Step to take care of the Docker Push. 
+the build infra will take care of the NPM install for you. End goal would be to have a published Docker Image of your artifact. Can add an additional Step to take care of the Docker Push. 
 
 
 ![Add Publish](../static/ci-tutorial-node-docker/add_publish.png)
@@ -276,31 +242,6 @@ The scaffolding will take care of the NPM install for you. End goal would be to 
 Select “Build and Push” image to Docker Registry.
 
 ![Docker Publish Step](../static/ci-tutorial-node-docker/add_docker_step.png)
-
-Next, create a new Docker Connector by clicking on + New Connector. 
-
-* Name: `my_docker_hub_account`
-
-![My Docker Hub](../static/ci-tutorial-node-docker/my_docker_hub.png)
-
-Next fill out the details of your account credentials for a Docker Push. 
-
-
-* Registry URL: https://index.docker.io/v2/
-* Authentication: Username and Password
-* Provider Type: DockerHub
-* Username: `your_docker_hub_user`
-* Password: `your_docker_hub_pw`
-
-![Docker Hub Details](../static/ci-tutorial-node-docker/dh_details.png)
-
-For sensitive items such as your Docker Hub password, these can be stored as a Harness Secret. 
-
-![Docker Hub Password Secret](../static/ci-tutorial-node-docker/dh_pw.png)
-
-Click Save and Continue. You can run this connection directly from the Harness Platform. 
-
-![User Harness Docker](../static/ci-tutorial-node-docker/connect_harness.png)
 
 Once selected, you can run a connectivity test and you are ready to provide the registry details. 
 
@@ -317,149 +258,76 @@ Click Apply Changes then Save.
 
 Now you are ready to run once saved. 
 
-```mdx-code-block
-</TabItem>
-<TabItem value="Self-Managed Build Infrastructure">
-```
 
-If you want to use your own self-managed build infrastructure, then you should install the [Kubernetes Delegate](/tutorials/platform/install-delegate) in the Kubernetes cluster of your choice. 
 
-<details>
-<summary>Install Delegate</summary>
-<DelegateInstall />
-</details>
+## Run the pipeline
 
-For the self-managed infrastructure, can leverage one of the Starter Configs or create a Starter Pipeline. In this case, can run the Starter Pipeline. 
-
-![Build Self Hosted Step](../static/ci-tutorial-node-docker/self_hosted_starter.png)
-
-Click Continue to start to build out the Pipeline. 
-
-![Build Step](../static/ci-tutorial-node-docker/build_step.png)
-
-Click Continue to define what infrastructure to run the build on.
-
-First change the infrastructure to “Kubernetes”.
-
-![Where to Build](../static/ci-tutorial-node-docker/where_to_build.png)
-
-Then select the drop-down “Select Kubernetes Cluster”. Then + New Connector.
-
-![New K8s Connector](../static/ci-tutorial-node-docker/new_connector.png)
-
-In the wizard, name the Kubernetes connection “myfirstcinode”.
-
-![First CI Node](../static/ci-tutorial-node-docker/first_ci_node.png)
-
-Click continue. With Harness, you can use the same cluster the Harness Delegate is running on by selecting “Use Credentials of a specific Harness Delegate”. The Harness Delegate will facilitate all needed work on the Kubernetes cluster.
-
-![Delegate Connect](../static/ci-tutorial-node-docker/delegate_connect.png)
-
-Click continue. Now select the Harness Delegate that corresponds to your Kubernetes cluster.
-
-![Kubernetes Delegate](../static/ci-tutorial-node-docker/k8s_delegate.png)
-
-Click “Save and Continue” and the connection will be validated.
-Back in the Pipeline Builder, “myfirstcinode” will be listed.
-
-Provide a Namespace and OS to run.
-
-- Namespace: default
-- OS: Linux [if using Windows WSL, Linux is the correct setting].
-
-![Build Infra](../static/ci-tutorial-node-docker/build_infra.png)
-
-After the Build Infrastructure is set, now time to set up the Push step to push the artifact to a Docker Registry. In the Pipeline View, click + Add Stage and create a Staged called “Push”.Then click on “Set Up Stage”.
-
-![Push Stage](../static/ci-tutorial-node-docker/push_stage.png)
-
-Click on “Set Up Stage”.
-
-![Set Up Push](../static/ci-tutorial-node-docker/set_up_push.png)
-
-In the setup of the Stage, can leverage the infrastructure that the previous artifact build was run on by selecting “Propagate from an existing stage”.
-
-![Where To Run](../static/ci-tutorial-node-docker/where_to_run.png)
-
-Click Continue now, you can add a Step to represent the Docker Push. Click “Add Step”.
-
-![Add Publish](../static/ci-tutorial-node-docker/add_publish.png)
-
-Select “Build and Push” image to Docker Registry.
-
-![Docker Publish](../static/ci-tutorial-node-docker/docker_publish.png)
-
-Can create a new Push connector.
-
-Name: pushtodockerhub
-
-![Push Connector](../static/ci-tutorial-node-docker/push_connector.png)
-
-Next, set up the Docker Connector by clicking on the dropdown for Docker Connector.
-Then create a new connector.
-
-![Docker Connector](../static/ci-tutorial-node-docker/docker_connector.png)
-
-Can name the new docker registry connector “dockerhub”.
-
-![Docker Hub Conncetor](../static/ci-tutorial-node-docker/dh_connector.png)
-
-Click continue and can enter your credentials to Docker Hub.
-
-- Provider Type: Docker Hub
-- Docker Registry URL: https://registry.hub.docker.com/v2/
-- Authentication: your_user
-- Password: your_password [Will be saved as a Harness Secret]
-
-![Docker Hub Creds](../static/ci-tutorial-node-docker/dh_creds.png)
-
-Click Continue and select the Harness Delegate to execute on. This will be your Kubernetes infrastructure.
-
-![Kubernetes Delegate](../static/ci-tutorial-node-docker/k8s_delegate.png)
-
-Click Save and Continue, and the connection will validate.
-Then click Finish. Lastly, enter your Docker Repository and Tag information.
-
-- Docker Repository: `your_account/your_registry`
-- Tags: cibuilt
-
-![Push Settings](../static/ci-tutorial-node-docker/push_settings.png)
-
-Then click “Apply Changes” and Save the Changes.
-
-![Save Changes](../static/ci-tutorial-node-docker/save_changes.png)
-
-With those changes saved, you are ready to execute your first CI Pipeline.
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
-## Running Your First CI Pipeline
-
-Executing is simple. Head back to your pipeline and click on “Run”. Unlike your local machine, where you had to wire in NPM and Docker dependencies, Harness CI will resolve these by convention.
-
-![Pipeline](../static/ci-tutorial-node-docker/pipeline.png)
-
-Then you can select a branch to run off of and execute a step.
-Branch Name: main [if using the example repo]
+1. In the **Pipeline Studio**, save your pipeline and then select **Run**.
+2. In the **Build Type** field, select **Git Branch**, and then enter `main` in the **Branch Name** field.
+3. Select **Run Pipeline**.
 
 ![Run Pipeline](../static/ci-tutorial-node-docker/run_pipeline.png)
 
-Now you are ready to execute. Click “Run Pipeline”.
+While the build runs you can observe each step of the pipeline execution on the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds).
 
 ![Execute Pipeline](../static/ci-tutorial-node-docker/execution.png)
 
-Once a successful run, head back to Docker Hub, and `cibuilt` is there!
+If the build succeeds, you'll find your `cibuilt` image in your Docker Hub repo.
 
 ![Success](../static/ci-tutorial-node-docker/success.png)
 
-This is just the start of your Continuous Integration journey. It might seem like multiple steps to get your local build in the platform, but it unlocks the world of possibilities.
+## Do more with this pipeline
 
-## Continuing on Your Continuous Integration Journey
+Now that you've created a basic pipeline for building and testing a NodeJS app, you might want to explore the ways that you can [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times), including:
 
-You can now execute your builds whenever you want in a consistent fashion. Can modify the trigger to watch for SCM events so upon commit, for example, the Pipeline gets kicked off automatically. All of the objects you create are available for you to re-use. One part we did not touch upon in this example is executing your test suites, such as demonstrated in the [build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm). Lastly, you can even save your backing work / have it as part of your source code. Everything that you do in Harness is represented by YAML; feel free to store it as part of your project.
+* Using [triggers](/docs/category/triggers/) to automatically start pipelines.
+* [Caching dependencies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache).
+* [Variables and expressions](/docs/category/variables-and-expressions)
 
-![CI as Code](../static/ci-tutorial-node-docker/ci_as_code.png)
+<details>
+<summary>Example: Use variables</summary>
 
-After you have built your artifact, the next step is to deploy your artifact. This is where Continuous Delivery steps in and make sure to check out some other [CD Tutorials](/tutorials/cd-pipelines#all-tutorials).
+Variables and expressions make your pipelines more versatile by allowing variable inputs and values. For example, you can add a pipeline-level variable that lets you specify a Docker Hub username when the pipeline runs.
+
+To add a pipeline variable in the YAML editor, add the following `variables` block between the `properties` and `stages` sections.
+
+```yaml
+  variables:
+    - name: DOCKERHUB_USERNAME
+      type: String
+      description: Your Docker Hub username
+      value: <+input>
+```
+
+To add a pipeline variable in the visual editor:
+
+1. In the Pipeline Studio, select **Variables** on the right side of the Pipeline Studio.
+2. Under **Pipeline**, select **Add Variable**.
+3. For **Variable Name**, enter `DOCKERHUB_USERNAME`.
+4. For **Type** select **String**, and then select **Save**.
+5. Enter the value `<+input>`. This allows you to specify a Docker Hub username at runtime.
+1. Select **Apply Changes**.
+
+</details>
+
+You can also try adding more steps to add more functionality to this pipeline, such as:
+
+* [Uploading artifacts to JFrog](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog).
+* [Publishing an Allure Report to the Artifacts tab](/tutorials/ci-pipelines/test/allure-report).
+* [Including CodeCov code coverage and publishing results to your CodeCov dashboard](/tutorials/ci-pipelines/test/codecov/).
+* [Updating Jira issues when builds run](/docs/continuous-integration/use-ci/use-drone-plugins/ci-jira-int-plugin).
+
+After building an artifact, you can deploy your artifact with Harness [Continuous Delivery](/tutorials/cd-pipelines#all-tutorials).
+
+## Reference: Pipeline YAML
+
+Here is the complete YAML for this tutorial's pipeline. If you copy this example, make sure to replace the bracketed values with corresponding values for your Harness project, [GitHub connector ID](#create-the-github-connector), GitHub account name, and [Docker connector ID](#prepare-the-docker-registry).
+
+<details>
+<summary>Pipeline YAML</summary>
+
+```yaml
+...
+```
+
+</details>
