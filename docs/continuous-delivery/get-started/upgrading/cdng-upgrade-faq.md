@@ -139,7 +139,7 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
   - For details on NextGen SSO providers, go to [Authentication overview](https://developer.harness.io/docs/platform/Authentication/authentication-overview).
 - **Deployment history for CD dashboards**. Harness NextGen does not retain the deployment data from FirstGen. Harness will recalculate the deployment stats and metrics by using NextGen CD deployments.
 
-  - For details on NextGen dashboards, go to [Monitor deployments and services in CD dashboards](https://developer.harness.io/docs/continuous-delivery/cd-dashboards/monitor-cd-deployments).
+  - For details on NextGen dashboards, go to [Monitor deployments and services in CD dashboards](/docs/continuous-delivery/monitor-deployments/monitor-cd-deployments).
 - **API automation**. Harness will not upgrade API automation built with FirstGen GraphQL APIs.
     
     GraphQL APIs are not used in NextGen. They are replaced with REST APIs. The API endpoints are different and take different arguments. You must rewrite API-based automation to reintegrate with Harness NextGen.
