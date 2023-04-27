@@ -126,23 +126,30 @@ For example, in a subsequent step's **Conditional Execution** settings, you coul
 
 ### Option: User Groups as Expressions
 
-Select Expression tab for **User Groups** field. User Groups in Harness Approvals can be provided as expressions in two ways:
+In **User Groups**, select **Expression** as the type of value.
+![](./static/adding-harness-approval-stages-20.png)
 
-* **Individual Expression**: Select **Individual** option to specify individual expressions for each user group that needs to be configured as Approvers. Add more user groups by clicking on **Add** button.  
+You can select one of the following types of expression for user groups:
+* **Individual**: Specify individual expressions for each user group that needs to be configured as an approver. Select **Add** to add more user groups. 
 
 ![](./static/adding-harness-approval-stages-18.png)
 
-* **Combined Expression**: Select **Combined** option to specify a combined expression for all user groups that needs to be configured as Approvers. This expression should resolve in a list of strings.
+* **Combined**: Specify a combined expression for all user groups that need to be configured as Approvers. This expression must resolve to a list of strings.
 
-For example, combined expression for usergroups field can be 
+Following example shows a combined expression:
 
 `<+ <+pipeline.variables.grouplist1> + "," + <+pipeline.variables.grouplist2> >.split(",")`
 
-where the expression `<+pipeline.variables.grouplist1>` resolves to the value : `_project_all_users,testUserGroup`
-and the expression `<+pipeline.variables.grouplist2>` resolves to the value : `org._organization_all_users,account._account_all_users`. The above two expressions resolve to a string of comma separated user groups. The combined expression will resolve to a list of 4 user groups (`_project_all_users`, `testUserGroup`, `org._organization_all_users` and `account._account_all_users`). 
+where the expression `<+pipeline.variables.grouplist1>` resolves to `_project_all_users,testUserGroup`
+and the expression `<+pipeline.variables.grouplist2>` resolves to `org._organization_all_users,account._account_all_users`. 
+The above two expressions resolve to a string of comma-separated user groups. The combined expression resolves to a list of the following user groups:
+- _project_all_users
+-  testUserGroup
+-  org._organization_all_users
+-  account._account_all_users
 
      :::important
-     Please ensure no spaces are given in expression values for example `_project_all_users,testUserGroup` to match the split criteria exactly which is `,` in this example. 
+     Make sure no spaces are present in the expression values. In the above example, the format must be `_project_all_users,testUserGroup` to match the split criteria `,` .
 
 
 ![](./static/adding-harness-approval-stages-19.png)
