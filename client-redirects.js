@@ -42,7 +42,7 @@ module.exports = {
 
     {
       from: "/docs/platform/Delegates/delegate-concepts/delegate-overview.md",
-      to: "/docs/platform/Delegates/delegate-concepts/delegate-overview"
+      to: "/docs/platform/Delegates/delegate-concepts/delegate-overview",
     },
 
     {
@@ -52,12 +52,7 @@ module.exports = {
 
     {
       from: "/docs/platform/Governance/Policy-as-code/docs/feature-flags/harness-policy-engine",
-      to: "/docs/feature-flags/harness-policy-engine"
-    },
-
-    {
-      from: "/tutorials/platform/gke-workload-identity/",
-      to: "/tutorials/platform/gke-workload-identity",
+      to: "/docs/feature-flags/harness-policy-engine",
     },
 
     // Created by ravilach to move CVKB into Docs April 21st, 2023
