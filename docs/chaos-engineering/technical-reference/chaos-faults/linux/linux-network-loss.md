@@ -10,16 +10,16 @@ Linux network loss injects chaos to disrupt network connectivity on the Linux ma
 - Induces network loss on the target Linux machines.
 - Simulates loss of connectivity access by blocking the network requests on the machine.
 
-:::note
-- This fault is compatible with Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in active state and the infrastructure should be in `CONNECTED` state.
+:::info note
+- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- The `linux-chaos-infrastructure` systemd service should be in an active state, and the infrastructure should be in `CONNECTED` state.
 :::
 
 ## Fault tunables
-<h3>Mandatory fields</h3>
+<h3>Mandatory tunables</h3>
 <table>
   <tr>
-    <th> Variables </th>
+    <th> Tunable </th>
     <th> Description </th>
     <th> Notes </th>
   </tr>
@@ -29,10 +29,10 @@ Linux network loss injects chaos to disrupt network connectivity on the Linux ma
     <td> For example: <code>eth0</code> </td>
   </tr>
 </table>
-<h3>Optional fields</h3>
+<h3>Optional tunables</h3>
 <table>
   <tr>
-    <th> Variables </th>
+    <th> Tunable </th>
     <th> Description </th>
     <th> Notes </th>
   </tr>
@@ -72,7 +72,7 @@ Linux network loss injects chaos to disrupt network connectivity on the Linux ma
 
 The `destinationHosts` input variable subjects the comma-separated names of the target hosts to chaos.
 
-Use the following example to tune the destination hosts:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/linux-network-loss/destination-hosts.yaml yaml)
 ```yaml
@@ -92,7 +92,7 @@ spec:
 
 The `destinationIPs` input variable subjects the comma-separated names of the target IPs to chaos.
 
-Use the following example to tune the destination IPs:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/linux-network-loss/destination-ips.yaml yaml)
 ```yaml
@@ -112,7 +112,7 @@ spec:
 
 The `packetLossPercentage` input variable loses a specific percentage of the data packets.
 
-Use the following example to tune the packet loss percentage:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/linux-network-loss/packet-loss-percentage.yaml yaml)
 ```yaml

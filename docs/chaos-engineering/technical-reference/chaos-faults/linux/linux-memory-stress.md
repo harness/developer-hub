@@ -11,16 +11,16 @@ Linux memory stress causes memory consumption of the target Linux machines for a
 - Simulates a lack of memory for processes running on the application, which degrades their performance.
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to excessive consumption of memory.
 
-:::note
-- This fault is compatible with Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in active state and the infrastructure should be in `CONNECTED` state.
+:::info note
+- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- The `linux-chaos-infrastructure` systemd service should be in an active state, and the infrastructure should be in `CONNECTED` state.
 :::
 
 ## Fault tunables
-<h3>Optional fields</h3>
+<h3>Optional tunables</h3>
 <table>
   <tr>
-    <th> Variables </th>
+    <th> Tunable </th>
     <th> Description </th>
     <th> Notes </th>
   </tr>
@@ -42,12 +42,12 @@ Linux memory stress causes memory consumption of the target Linux machines for a
   <tr>
     <td> duration </td>
     <td> Duration through which chaos is injected into the target resource (in seconds). </td>
-    <td> Default: 30s </td>
+    <td> Default: 30 s </td>
   </tr>
   <tr>
     <td> rampTime </td>
     <td> Period to wait before and after injecting chaos (in seconds). </td>
-    <td> Default: 0s </td>
+    <td> Default: 0 s </td>
   </tr>
 </table>
 
@@ -55,7 +55,7 @@ Linux memory stress causes memory consumption of the target Linux machines for a
 
 The `workers` input variable utilizes a specific number of workers for the memory stress fault.
 
-Use the following example to tune the number of workers:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/linux-memory-stress/workers.yaml yaml)
 ```yaml
@@ -76,7 +76,7 @@ spec:
 
 The `memoryBytes` input variable utilizes a specific amount of memory (in bytes). 
 
-Use the following example to tune memory consumption in bytes:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/linux-memory-stress/memory-bytes.yaml yaml)
 ```yaml
@@ -97,7 +97,7 @@ spec:
 
 The `memoryPercentage` input variable utilizes a specific amount of memory (in percentage). 
 
-Use the following example to tune memory consumption in percentage:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/linux-memory-stress/memory-percentage.yaml yaml)
 ```yaml

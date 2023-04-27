@@ -11,16 +11,16 @@ Linux DNS spoof injects chaos to mimic DNS resolution on a Linux machine.
 - Induces DNS spoof on the target Linux machines.
 - Resolves DNS target host names (or domains) to other IPs provided as user input.
 
-:::note
-- This fault is compatible with Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in active state and the infrastructure should be in `CONNECTED` state.
+:::info note
+- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- The `linux-chaos-infrastructure` systemd service should be in an active state, and the infrastructure should be in `CONNECTED` state.
 :::
 
 ## Fault tunables
-<h3>Mandatory fields</h3>
+<h3>Mandatory tunables</h3>
 <table>
   <tr>
-    <th> Variables </th>
+    <th> Tunable </th>
     <th> Description </th>
     <th> Notes </th>
   </tr>
@@ -30,10 +30,10 @@ Linux DNS spoof injects chaos to mimic DNS resolution on a Linux machine.
     <td> For example, '&#123;"abc.com":"spoofabc.com"&#125;' where key is the host name to be spoofed and value is the host name to which the key is spoofed. </td>
   </tr>
 </table>
-<h3>Optional fields</h3>
+<h3>Optional tunables</h3>
 <table>
   <tr>
-    <th> Variables </th>
+    <th> Tunable </th>
     <th> Description </th>
     <th> Notes </th>
   </tr>
@@ -63,7 +63,7 @@ Linux DNS spoof injects chaos to mimic DNS resolution on a Linux machine.
 
 The `spoofMap` input variable maps the domain names to the target host names. For example, '{"abc.com":"spoofabc.com"}' where the key is the host name to be spoofed and the value is the host name to which the key is spoofed (or redirected).
 
-Use the following example to tune the spoof map:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/linux-dns-spoof/spoofMap.yaml yaml)
 ```yaml
