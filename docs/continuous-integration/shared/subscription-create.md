@@ -1,5 +1,5 @@
 1. Sign in to your Harness account or create an account at [app.harness.io](https://app.harness.io/).
-2. Go to **Account Settings**, and then select **Plans** (under **Subscription**) and **Continuous Integration**.
+2. Go to **Account Settings**, and then select **Plans** (under **Subscription**) and select **Continuous Integration**.
 
    :::info Compare plans
 
