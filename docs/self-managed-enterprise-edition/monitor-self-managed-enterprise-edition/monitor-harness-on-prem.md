@@ -38,17 +38,17 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
 1. Install an ingress controller with a `LoadBalancer` service type in the YAML file of your Harness Kubernetes cluster.
 
 ```
-apiVersion: v1
-kind:Service
-metadata:
-  name:harness-ingress-controller
-  namespace:gcloud
-spec:
-  selector:  
+  apiVersion: v1
+  kind:Service
+  metadata:
+    name:harness-ingress-controller
+    namespace:gcloud
+  spec:
+    selector:  
     app:harness-ingress-controller
   type:'LoadBalancer'
-  loadBalancerIP:<LB-IP>
-  externalTrafficPolicy:'Cluster'
+    loadBalancerIP:<LB-IP>
+    externalTrafficPolicy:'Cluster'
   ports:
   - name:http
     nodePort:32500
@@ -61,32 +61,33 @@ spec:
     protocol:TCP
     targetPort:https
 ```
+
   :::info note
-  The cloud `loadBalancerIP` in this example is a reserved external static IP created by Harness.
+    The cloud `loadBalancerIP` in this example is a reserved external static IP created by Harness.
   :::
 
 2. Confirm your `ingress-controller` deployment is up and running to create a service with an external IP address. Harness recommends that you set up the controller in the same namespace where your deploy your Harness services.
 
   :::info note
-  You must enable metrics and the `serviceMonitors` for your databases to view the services exposing the metrics for each database. 
+   You must enable metrics and the `serviceMonitors` for your databases to view the services exposing the metrics for each database. 
   :::
 
 3. Create an ingress file for `mongo-metrics`, with defined routing rules that forwards requests to an internal service exposing metrics with a similar configuration.
 
-```
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: mongo-metrics
-  namespace: gcloud
-  annotations:
-    nginx.ingress.kubernetes.io/whitelist-source-range: "10.116.1.26"
-    nginx.ingress.kubernetes.io/rewrite-target: /$2
-spec:
-  ingressClassName: harness
+  ```
+  apiVersion: networking.k8s.io/v1
+  kind: Ingress
+  metadata:
+    name: mongo-metrics
+    namespace: gcloud
+    annotations:
+      nginx.ingress.kubernetes.io/whitelist-source-range: "10.116.1.26"
+      nginx.ingress.kubernetes.io/rewrite-target: /$2
+  spec:
+    ingressClassName: harness
   rules: 
-  - http:
-    paths: 
+   - http:
+      paths: 
       - path: /mongo-metrics
         pathType: ImplementationSpecific
         backend:
@@ -96,15 +97,16 @@ spec:
               number: 9216
 ```
 
- :::info note
-  Add your IPs to your allow list so the metrics exposed by the ingress are only accessible internally. The IP included in the allow list is the xxternal IP for the node where you host Prometheus in a separate cluster.
-  :::
+:::info note
+ Add your IPs to your allow list so the metrics exposed by the ingress are only accessible internally. The IP included in the allow list is the xxternal IP for the node where you host Prometheus in a separate cluster.
+:::
 
 ## Deploy Prometheus to integrate with Harness
 
 There are two options you can use to deploy Prometheus to integrate with your Harness instance:
-- Use a Kubernetes operator by Bitnami
-- Use a standalone Prometheus installation
+
+ - Use a Kubernetes operator by Bitnami
+ - Use a standalone Prometheus installation
 
 ### Use a Kubernetes operator by Bitnami
 
@@ -122,6 +124,7 @@ spec:
     key: config.yml
     name:harness-metrics
 ```
+
 4. Create a `harness-metrics` secret in the same namespace where the Prometheus operator is installed. This secret passes a `config.yaml` file as the data. The data contains the job for the `additionalScrapeConfigs` in the following manner.
 
 ```
@@ -143,7 +146,8 @@ job_name:mongo-metrics-test
   static_configs:
   - targets:
     -<LB-IP>
-```
+
+
 5. Run the following command to create the secret:
 
 ```
@@ -154,7 +158,7 @@ kubectl create secret generic harness-metrics --from-file config.yml -n <Namespa
   `http://<LB-IP>/mongo-metrics/metrics`.
 
 :::info note 
-Because the URL is on your allow list, other users are not able to view the internal metrics of specific infra components, such as MongoDB.
+  Because the URL is on your allow list, other users are not able to view the internal metrics of specific infra components, such as MongoDB.
 :::
 
 ### Use a standalone Prometheus installation
@@ -237,9 +241,9 @@ Follow the below steps on your Kubernetes cluster to deploy Grafana:
 
   This requires the following information: 
 
-  - Service name of where prometheus is hosted. 
-  - Namespace in which prometheus is hosted. 
-  - Port at  which prometheus is hosted.
+    - Service name of where prometheus is hosted. 
+    - Namespace in which prometheus is hosted. 
+    - Port at  which prometheus is hosted.
 
   This makes our present URL look like: 
 
@@ -247,6 +251,7 @@ Follow the below steps on your Kubernetes cluster to deploy Grafana:
 
   :::caution
   The final URL should be similar to the above URL, according to your system specifications. Any extra space or character in the URL field causes the data source testing to fail. 
+  :::
 
 7. Configure the **Prometheus type** and **Prometheus version** fields.
 
