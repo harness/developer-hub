@@ -4,7 +4,7 @@ description: Add config files for TAS by using Harness.
 sidebar_position: 2
 ---
 
-Service configuration files enable you to specify information in the Harness service that can be referenced in other parts of the Harness application. In this topic we'll cover using these configuration files for Tanzu Application Service (TAS, formerly PCF).
+Service configuration files enable you to specify information in the Harness service that can be referenced in other parts of the Harness application. In this topic, we'll cover using these configuration files for Tanzu Application Service (TAS, formerly PCF).
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';   
@@ -24,7 +24,7 @@ import TabItem from '@theme/TabItem';
 6. Select **Submit**.
    ![](./static/config-file-harness.png)
 
-For more information about, go to [using config file in your deployments](/docs/continuous-delivery/x-platform-cd-features/services/cd-services-config-files/).
+For more information, go to [using config file in your deployments](/docs/continuous-delivery/x-platform-cd-features/services/cd-services-config-files/).
 
 You can view the config files added to your service definition.
 
