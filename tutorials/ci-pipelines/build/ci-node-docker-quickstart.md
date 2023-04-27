@@ -232,7 +232,7 @@ In contrast, if you choose to [use a Kubernetes cluster build infrastructure](/d
 
 ## Run tests
 
-Add a step to run tests against the NodeJS app code. This portion of the tutorial uses a **Run** step to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci.md). For more examples, go to [Run a script in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage.md).
+Add a step to run tests against the NodeJS app code. This portion of the tutorial uses a **Run** step to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci). For more examples, go to [Run a script in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage).
 
 ```mdx-code-block
 <Tabs>
@@ -258,7 +258,7 @@ Add a step to run tests against the NodeJS app code. This portion of the tutoria
 
 This tutorial pipeline uses Harness Cloud build infrastructure that already has Node installed. If you changed the build infrastructure, you may need to specify the **Container Registry** and **Image** containing the binaries that the step needs to run your script, such as `node:latest`.
 
-For information about when these fields are required, how to specify images, and information about all **Run** step settings, go to the [Run step settings reference](./run-step-settings.md).
+For information about when these fields are required, how to specify images, and information about all **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
 
 :::
 
@@ -286,7 +286,7 @@ In the YAML editor, replace the `Echo Welcome Message` run step block with the f
 
 This tutorial pipeline uses Harness Cloud build infrastructure that already has Node installed. If you changed the build infrastructure, you may need to specify the `connectorRef` and `image` containing the binaries that the step needs to run your script, such as `node:latest`.
 
-For information about when these fields are required, how to specify images, and information about all `Run` step settings, go to the [Run step settings reference](./run-step-settings.md).
+For information about when these fields are required, how to specify images, and information about all `Run` step settings, go to the [Run step settings reference](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
 
 The following example shows the same `Run` step with `connectorRef` and `image`.
 
@@ -385,7 +385,7 @@ Now that you've created a basic pipeline for building and testing a NodeJS app, 
 
 Variables and expressions make your pipelines more versatile by allowing variable inputs and values. For example, you can add a pipeline-level variable that lets you specify a Docker Hub username when the pipeline runs.
 
-To add a pipeline variable in the YAML editor:
+#### Add a pipeline variable in the YAML editor
 
 1. Add the following `variables` block between the `properties` and `stages` sections.
 
@@ -400,7 +400,7 @@ To add a pipeline variable in the YAML editor:
 2. In the `BuildAndPushDockerRegistry` step, change the `repo` value to `<+pipeline.variables.DOCKERHUB_USERNAME>/samplejs`.
 3. Save and run the pipeline. You'll be prompted to provide a Docker Hub username before the pipeline runs.
 
-To add a pipeline variable in the visual editor:
+#### Add a pipeline variable in the visual editor
 
 1. In the Pipeline Studio, select **Variables** on the right side of the Pipeline Studio.
 2. Under **Pipeline**, select **Add Variable**.
@@ -419,7 +419,7 @@ You can also try adding more steps to add more functionality to this pipeline, s
 * [Publishing an Allure Report to the Artifacts tab](/tutorials/ci-pipelines/test/allure-report).
 * [Including CodeCov code coverage and publishing results to your CodeCov dashboard](/tutorials/ci-pipelines/test/codecov/).
 * [Updating Jira issues when builds run](/docs/continuous-integration/use-ci/use-drone-plugins/ci-jira-int-plugin).
-* [Running background services](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings.md)
+* [Running background services](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings)
 
 <details>
 <summary>Example: Run a service dependency in a Background step</summary>
