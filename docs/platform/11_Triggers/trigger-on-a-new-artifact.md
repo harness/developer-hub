@@ -46,13 +46,13 @@ An artifact source does not need to be defined in the service definition for the
 
 This 5min video walks you through building an app from source code and pushing it to Docker Hub using Harness CIE, and then having an On New Artifact Trigger execute a CD Pipeline to deploy the new app release automatically.
 
-### Review: artifact polling
+### Review: Artifact polling
 
 Once you have created a Trigger to listen for new artifacts, Harness will poll for new artifacts continuously.
 
 Polling is immediate because Harness uses a perpetual task framework that constantly monitors for new builds/tags.
 
-### Using the <+trigger.artifact.build> and <+lastPublished.tag> expression
+### Using the <+trigger.artifact.build> and <+lastPublished.tag> expressions
 
 When you add a Harness Service to the CD stage, you can set the artifact tag to use in **Artifacts Details**.
 
@@ -64,7 +64,13 @@ If you want the Pipeline to deploy the artifact version that initiated the Trigg
 
 ![](./static/trigger-on-a-new-artifact-23.png)
 
-If you want the Pipeline to deploy the last successful published artifact version, use the expression `<+lastPublished.tag>` or If you want the Pipeline to deploy the last successful published artifact version of matching regex, use the expression `<+lastPublished.tag>.regex(regex)`.
+If you want the Pipeline to deploy the last successful published artifact version, use the expression, `<+lastPublished.tag>`.
+
+![last published artifact](./static/trigger-on-a-new-artifact-30.png)
+
+If you want the Pipeline to deploy the last successful published artifact version of matching regex, use the expression, `<+lastPublished.tag>.regex(regex)`.
+
+![last published artifact regex](./static/trigger-on-a-new-artifact-31.png)
 
 
 You can also set Tag as a Runtime Input and then use `<+trigger.artifact.build>` in the Trigger's [Pipeline Input](#step-3-select-pipeline-inputs) settings.
