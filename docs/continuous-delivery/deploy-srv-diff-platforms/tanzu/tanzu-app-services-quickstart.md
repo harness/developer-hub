@@ -300,7 +300,7 @@ Harness services represent your microservices or applications. You can add the s
 2. In **Specify Artifact Repository Type**, select **Artifactory**, and select **Continue**.
    
    :::important
-   TAS supports Artifactory, Nexus, Docker Registry, Amazon S3, Google Container Registry (GCR), Amazon Elastic Container Registry (ECR), Azure Container Registry (ACR), Google Artifact Registry (GAR), Google Cloud Storage (GCS), GitHub Package Registry, Azure Artifacts, Amazon Machine Image (AMI), Jenkins, Bamboo repository types. 
+   TAS supports Artifactory, Nexus, Docker Registry, Amazon S3, Google Container Registry (GCR), Amazon Elastic Container Registry (ECR), Azure Container Registry (ACR), Google Artifact Registry (GAR), Google Cloud Storage (GCS), GitHub Package Registry, Azure Artifacts, Amazon Machine Image (AMI), Jenkins, and Bamboo repository types. 
    
    For this tutorial, we will use Artifactory.
    :::
@@ -407,7 +407,7 @@ The TAS workflow for performing a basic deployment takes your Harness TAS servic
      | **Tanzu Command** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
      
      :::note
-     For the Tanzu Command step, we don’t provide any default rollback steps. You can do a rollback for this step by configuring your own Rollback step.
+     For the Tanzu Command step, Harness does not provide default rollback steps. You can do a rollback by configuring your own Rollback step.
      :::
 
      </details>
@@ -457,7 +457,7 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
     3. Select **Apply Changes**.
 7. Add an **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
 8. In **Advanced** configure the following options.
-   - **Delegate Selector** - Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All delegates with the tag are selected.
+   - **Delegate Selector** - Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All the delegates with that specific tag are selected.
    - **Conditional Execution** - Use the conditions to determine when this step is executed. For more information, go to [conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings).
    - **Failure Strategy** - Define the failure strategies to control the behavior of your pipeline when there is an error in execution. For more information, go to [failure strategy references](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings) and [define a failure strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
      
@@ -473,7 +473,7 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
      | **Tanzu Command** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
      
      :::note
-     For the Tanzu Command step, we don’t provide any default rollback steps. You can do a rollback for this step by configuring your own Rollback step.
+     For the Tanzu Command step, Harness does not provide default rollback steps. You can do a rollback for this step by configuring your own Rollback step.
      :::
 
      </details>
@@ -542,8 +542,8 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
 
    The failed application  is deleted.
 8. In **Advanced** configure the following options.
-   - **Delegate Selector** - Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All delegates with the tag are selected.
-   - **Conditional Execution** - Use the conditions to determine when this step is executed. For more information, go to [conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings).
+   - **Delegate Selector** - Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All the delegates with the specified tag are selected.
+   - **Conditional Execution** - Use the conditions to determine when this step should be executed. For more information, go to [conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings).
    - **Failure Strategy** - Define the failure strategies to control the behavior of your pipeline when there is an error in execution. For more information, go to [failure strategy references](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings) and [define a failure strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
      
      Expand the following section to view the error types and failure strategies supported for the steps in a Blue Green TAS deployment.
@@ -559,7 +559,7 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
      | **Tanzu Command** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
      
      :::note
-     For the Tanzu Command step, we don’t provide any default rollback steps. You can do a rollback for this step by configuring your own Rollback step.
+     For the Tanzu Command step, Harness does not provide any default rollback steps. You can do a rollback for this step by configuring your own Rollback step.
      :::
 
      </details>
@@ -594,8 +594,8 @@ Use this deployment method when you want to support both new and old deployments
     3. Select **Apply Changes**.   
 5. Add a **Rolling Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
 6. In **Advanced** configure the following options.
-   - **Delegate Selector** - Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All delegates with the tag are selected.
-   - **Conditional Execution** - Use the conditions to determine when this step is executed. For more information, go to [conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings).
+   - **Delegate Selector** - Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All delegates with the specified tag are selected.
+   - **Conditional Execution** - Use the conditions to determine when this step should be executed. For more information, go to [conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings).
    - **Failure Strategy** - Define the failure strategies to control the behavior of your pipeline when there is an error in execution. For more information, go to [failure strategy references](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings) and [define a failure strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
      
      Expand the following section to view the error types and failure strategies supported for the steps in a Rolling TAS deployment.
@@ -610,7 +610,7 @@ Use this deployment method when you want to support both new and old deployments
 
      
      :::note
-     For the Tanzu Command step, we don’t provide any default rollback steps. You can do a rollback for this step by configuring your own Rollback step.
+     For the Tanzu Command step, Harness does not provide any default rollback steps. You can do a rollback for this step by configuring your own Rollback step.
      :::
    
      </details>
