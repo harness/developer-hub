@@ -370,7 +370,6 @@ This release includes the following Harness module and component versions.
 - You could not save a service with a linked artifact source in the Self-Managed Enterprise Edition. (CDS-59049)
 
   This issue is fixed. Self-Managed Enterprise Helm charts are updated.
-- (CDS-59045)
 - Read-only Secret Manager was allowed for TerraForm plans. (CDS-57772, ZD-40401)
   
   Harness stores TerraForm plans in secrets in the Secret Manager you have set up in your Harness account. Now Harness won't allow the use of a secret manager for a Terraform plan if the secret manager is read-only.
@@ -407,7 +406,7 @@ This release includes the following Harness module and component versions.
   Running a cURL command for the API returned an error due to the presence of an OCI image header. This issue is fixed. The fetch APIs for Docker labels and manifest APIs on GCR now support OCI headers.
 - The **Job/Folder Name** selection field in the Jenkins connector displayed an additional drop-down list along with the first drop-down list if the jobs had child jobs associated with them. (CDS-54882, ZD-41097)
 
-  This issues is fixed. Now, when you select a job that has child jobs, the child job options with input fields appear below the parent job. 
+  This issue is fixed. Now, when you select a job that has child jobs, the child job options with input fields appear below the parent job. 
 - When saving a template in template studio, unsaved changes were displayed even though the template had been saved. (CDS-54842)
   
   A force page reload did not occur during the template update. This issue is fixed. Now a force reload occurs, and only the saved changes appear in the page.
@@ -463,7 +462,7 @@ This release includes the following Harness module and component versions.
   This issue is fixed. A region dropdown is now available. 
 - Dragging and dropping the steps of one stage to another stage generated a service propagation modal. (CDS-54340)
   
-  This issues is fixed.
+   This issue is fixed.
 - Service inputs were retained when the service was set as an expression. (CDS-54336)
   
   When a setting is set as an expression, any fixed value inputs should be replaced with `<+input>`. This replacement was not happening. This issue is now fixed.
@@ -802,16 +801,12 @@ This release includes the following Harness module and component versions.
 - Onboarding examples displayed a flag name instead of the required flag identifier.   
   This issue is now fixed. (FFM-6921)
 #### Service Reliability Management
-- The field type changes expressions to fixed when you edit a GCP metric monitored service template. (SRM-11985)
-  This issue is fixed. The field type no longer changes expressions to fixed.
 - Monitored service creation fails when using a monitored service template that has Org or Account level service and environment. (SRM-14291)
   
   This restriction is removed. Now, you can create a monitored service using a monitored service template with Org or Account level service and environment.
 - On the Monitored Services list page, a help panel appears for every monitored service listed. This is resulting in an overwhelming number of help panels that need to be closed individually. (SRM-14266)
   
   This issue has been resolved. Now, only one help panel appears for all monitored services listed on the page.
-- Filters by hostname returned clusters with a zero count. (SRM-14203)
-  This issue has been resolved. Now, only valid clusters are included in filters.
 - Error encountered when setting up monitored service in verify step with Org or Account level service and environment. (SRM-14191)  
   
   This restriction is removed. You can create a monitored service in the verify step even if the service and environments are at the Org or Account level.
@@ -840,9 +835,6 @@ This release includes the following Harness module and component versions.
   
   This issue has been resolved. Now, the validation passes if there is incoming data from any one of the metric packs.
 #### Harness Platform
-- When a password was entered on the **Credentials** page for **SMTP Configuration**, an incorrect error displayed. (PL-32113)
-
-  This issue has been fixed.
 - The template service APIs do not have trace filters. (PL-31829)
 
   Template service now includes an open telemetry trace filter and the responses have `X-Harness-Trace-ID` in the header.
@@ -900,9 +892,6 @@ This release includes the following Harness module and component versions.
   ![](./static/audittrail-chrome-issue.png)
 
   A change in the configuration to load the web workers fixed this issue.
-- Dropdown lists on the create connector modal are inconsistent. (PL-20547)
-
-  A code enhancement has fixed this issue.
 - Clicking **Retry** does not display the list of pipelines in the **Pipelines** page.  (PIE-8874)
 
   A code enhancement has fixed this issue.
@@ -921,15 +910,9 @@ This release includes the following Harness module and component versions.
 - Pre-flight check does not work with selective stage execution and pipeline YAML validation fails. (PIE-8476)
 
   Users can now skip or select pre-flight checks and the pipeline runs successfully.
-- The right drawer for step details does not close when you use the **Back** button. (PIE-8449)
-
-  A code enhancement has fixed this issue.
 - On the **Input Sets** page, the **Clone** option is disabled. (PIE-8373)
   
   The option has been removed.
-- The UI does not display an error message for failed pipeline runs when the delegate is down. (PIE-8310)
-
-  A code enhancement has fixed this issue.
 - After pipeline failure, the console view does not show error details. (PIE-8229)
   
   A code enhancement has fixed this issue.
@@ -939,9 +922,6 @@ This release includes the following Harness module and component versions.
 - Removing the default value from a variable in a service results in the addition of `.nan` as the default value in the YAML. (PIE-8129)
   
   In the absence of a value, the default value is now removed from the YAML.
-- The email body field cannot be expanded on the email step. (PIE-8097)
-
-  A code enhancement has fixed this issue.
 - The API to retrieve filtered pipeline executions does not return executions that are successful in the UI, but failed in the backend. (PIE-8042)
 
   A code enhancement has fixed this issue.
