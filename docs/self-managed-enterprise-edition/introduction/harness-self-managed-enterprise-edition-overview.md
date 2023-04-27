@@ -43,7 +43,7 @@ The following tables provide a summary of key differences between Harness SaaS a
 | Service Reliability Management | **✓** | **✓** |  |
 | Continuous Integration | **✓** | **✓** |  |
 | Feature Flags | **✓** | **✓** |  |
-| Cloud Costs Management | **✓** | X | This module is available currently in Beta, contact Harness support to enable it |
-| Harness Chaos Engineering | **✓** | X | This module is available currently in Beta, contact Harness support to enable it |
+| Cloud Costs Management | **✓** | X | This module is currently available in beta. Contact [Harness Support](mailto:support@harness.io) to enable it. |
+| Harness Chaos Engineering | **✓** | X | This module is currently available in beta. Contact [Harness Support](mailto:support@harness.io) to enable it. |
 | Harness Platform | **✓** | **✓** |  |
 
