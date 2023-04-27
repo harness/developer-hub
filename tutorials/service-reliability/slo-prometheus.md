@@ -46,7 +46,7 @@ helm upgrade --install prometheus prometheus-community/prometheus \
 --namespace prometheus --create-namespace
 ```
 
-Once installed, there are a few ways to access your Prometheus Web UI. It is not recommended with workloads of substance to expose this to the public. For this example, can expose via [NodePort](https://kubernetes.io/tutorials/concepts/services-networking/service/).
+Once installed, there are a few ways to access your Prometheus Web UI. It is not recommended with workloads of substance to expose this to the public. For this example, can expose via [NodePort](https://kubernetes.io/docs/concepts/services-networking/service/).
 
 ```
 kubectl expose deployment -n prometheus prometheus-server --type=NodePort --name=prometheus-service
@@ -95,7 +95,7 @@ With the application installed, now you can explore some metrics with Prometheus
 
 ## Prometheus Metrics
 
-Prometheus groups metrics in several ways. There are [four metric primitive types](https://prometheus.io/tutorials/concepts/metric_types/) that Prometheus supports. Querying these metrics are handled by Prometheus’s query language, or [PromQL](https://prometheus.io/tutorials/prometheus/latest/querying/basics/).
+Prometheus groups metrics in several ways. There are [four metric primitive types](https://prometheus.io/docs/concepts/metric_types/) that Prometheus supports. Querying these metrics are handled by Prometheus’s query language, or [PromQL](https://prometheus.io/docs/prometheus/latest/querying/basics/).
 
 If this is your first time delving into Prometheus or just want to find out more about what your applications are sending in, this [Prometheus Blog](https://promlabs.com/blog/2020/12/17/promql-queries-for-exploring-your-metrics) is a good resource to explore your metrics when the metric names are unknown. Below is a PromQL query to list all available metrics in your Prometheus instance.
 
@@ -107,7 +107,7 @@ Running that query, will notice all four metric types are being written by the e
 
 ![PromQL](static/first-slo-tutorial/promql.png)
 
-The _test_gauge0_ metric is a good metric to take a look at. A [Gauge](https://prometheus.io/tutorials/concepts/metric_types/#gauge) in Prometheus is a metric that represents a singular numerical value. How the sample application is designed will increase and decrease the gauge counter over time, which if this was a real life gauge could represent something like memory pressure or response time.
+The _test_gauge0_ metric is a good metric to take a look at. A [Gauge](https://prometheus.io/docs/concepts/metric_types/#gauge) in Prometheus is a metric that represents a singular numerical value. How the sample application is designed will increase and decrease the gauge counter over time, which if this was a real life gauge could represent something like memory pressure or response time.
 
 ![Gauge](static/first-slo-tutorial/gauge.png)
 
