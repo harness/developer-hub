@@ -10,7 +10,7 @@ For example, a TAS service uses a `manifest.yaml` file that specifies specific r
 
 ## Override TAS manifests
 
-You can override service manifests from inside a pipeline or from an environment level. When the service is deployed to that environment, the environment's manifests will override the service's manifests.
+You can override service manifests from inside a pipeline or from an environment level. When the service is deployed to that environment, the environment's manifests overrides the service's manifests.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';   
@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
 <TabItem value="Within a pipeline" label="Within a pipeline" default>
 ```
 
-To override manifests for all services used with an environment, do the following.
+To override manifests for all services used with an environment, do the following:
 
 1. In a pipeline deploy stage, go to the **Environments** tab.
 2. Edit an existing environment or add **+ New Environment**.
@@ -39,7 +39,7 @@ To override manifests for all services used with an environment, do the followin
 <TabItem value="At an environment level" label="At an environment level">
 ```
 
-To override the manifests of specific services' deployed to an environment, do the following.
+To override the manifests of specific services deployed to an environment, do the following:
 
 1. In **Environments**, select an environment.
 2. In the environment's **Service Overrides** tab, select **New configuration overrides**.
@@ -59,7 +59,7 @@ To override the manifests of specific services' deployed to an environment, do t
 ```
 ## Override config files
 
-You can override service config files from inside a pipeline or from an environment level. When the service is deployed to that environment, the environment's config files will override the service's config files.
+You can override service config files from inside a pipeline or from an environment level. When the service is deployed to that environment, the environment's config files override the service's config files.
 
 ```mdx-code-block
 import Tabs3 from '@theme/Tabs';   
@@ -70,7 +70,7 @@ import TabItem3 from '@theme/TabItem';
 <TabItem3 value="Within a pipeline" label="Within a pipeline" default>
 ```
 
-To override config files for all services used with an environment, do the following.
+To override config files for all services used with an environment, do the following:
 
 1. In a pipeline deploy stage, go to the **Environments** tab.
 2. Edit an existing environment or add **+ New Environment**.
@@ -82,7 +82,7 @@ To override config files for all services used with an environment, do the follo
 <TabItem3 value="At an environment level" label="At an environment level">
 ```
 
-To override the config files of specific services' deployed to an environment, do the following.
+To override the config files of specific services deployed to an environment, do the following:
 
 1. In **Environments**, select an environment.
 2. In the environment's **Service Overrides** tab, select **New configuration overrides**.
@@ -101,7 +101,7 @@ To override the config files of specific services' deployed to an environment, d
 
 ## Override variables 
 
-You can override service variables from inside a pipeline or from an environment level. When the service is deployed to that environment, the environment's variables will override the service's variables.
+You can override service variables from inside a pipeline or from an environment level. When the service is deployed to that environment, the environment's variables override the service's variables.
 
 ```mdx-code-block
 import Tabs2 from '@theme/Tabs';
@@ -112,7 +112,7 @@ import TabItem2 from '@theme/TabItem';
 <TabItem2 value="Within a pipeline" label="Within a pipeline">
 ```
 
-To override the variables for all services used with an environment, do the following.
+To override the variables for all services used with an environment, do the following:
 
 1. In a pipeline deploy stage, go to the **Environments** tab.
 2. Edit an existing environment or add **+ New Environment**.
@@ -126,7 +126,7 @@ To override the variables for all services used with an environment, do the foll
 <TabItem2 value="At an environment level" label="At an environment level">
 ```
 
-You can override the variables of specific services' deployed to an environment.
+You can override the variables of specific services deployed to an environment.
 
 1. In **Environments**, select an environment.
 2. In the environment's **Service Overrides** tab, select **New configuration overrides**.
