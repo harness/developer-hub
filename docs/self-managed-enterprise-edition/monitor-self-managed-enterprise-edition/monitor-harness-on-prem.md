@@ -74,7 +74,7 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
 
 3. Create an ingress file for `mongo-metrics`, with defined routing rules that forwards requests to an internal service exposing metrics with a similar configuration.
 
-  ```
+```
   apiVersion: networking.k8s.io/v1
   kind: Ingress
   metadata:
@@ -146,7 +146,7 @@ job_name:mongo-metrics-test
   static_configs:
   - targets:
     -<LB-IP>
-
+```
 
 5. Run the following command to create the secret:
 
