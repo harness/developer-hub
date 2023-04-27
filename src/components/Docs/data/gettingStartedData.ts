@@ -37,6 +37,27 @@ import {
     // Docs
     export const docsCards: CardSections = [
       {
+        name: "Start using Harness modules",
+        description:
+          "",
+        list: [
+          {
+            title: "Tutorials",
+            module: MODULES.platform,
+            description:
+              "New to Harness? Follow these tutorials to go from novice to advanced.",
+            link: "/tutorials",
+          },
+          {
+            title: "Start a free trial",
+            module: MODULES.platform,
+            description:
+              "Try the Harness Software Delivery Platform for free.",
+            link: "/docs/getting-started/start-a-free-trial",
+          },
+        ],
+      },
+      {
         name: "Learn Harness fundamentals",
         description:
           "",
@@ -75,28 +96,6 @@ import {
             description:
               "Review the platforms, methodologies, and related technologies that Harness supports.",
             link: "/docs/getting-started/supported-platforms-and-technologies",
-          },
-        ],
-      },
-
-      {
-        name: "Start using Harness modules",
-        description:
-          "",
-        list: [
-          {
-            title: "Tutorials and quickstart guides",
-            module: MODULES.platform,
-            description:
-              "New to Harness? Follow these quickstarts and tutorials to go from novice to advanced.",
-            link: "/docs/getting-started/quickstarts",
-          },
-          {
-            title: "Start a free trial",
-            module: MODULES.platform,
-            description:
-              "Try the Harness Software Delivery Platform for free.",
-            link: "/docs/getting-started/start-a-free-trial",
           },
         ],
       },
