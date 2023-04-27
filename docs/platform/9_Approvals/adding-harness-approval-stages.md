@@ -149,9 +149,9 @@ You can select one of the following types of expression for user groups:
   -  org._organization_all_users
   -  account._account_all_users
 
-     :::important
-     Make sure no spaces are present in the expression values. In the above example, the format must be `_project_all_users,testUserGroup` to match the        split criteria `,` .
-     :::
+  :::important
+  Make sure no spaces are present in the expression values. In the above example, the format must be `_project_all_users,testUserGroup` to match the        split criteria `,` .
+  :::
 
 
    ![](./static/adding-harness-approval-stages-19.png)
