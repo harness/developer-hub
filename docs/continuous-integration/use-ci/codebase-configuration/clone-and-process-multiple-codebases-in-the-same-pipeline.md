@@ -140,7 +140,7 @@ import TabItem from '@theme/TabItem';
 2. Under **Advanced**, select **New Variable**.
 3. For **Variable Name**, enter `PLUGIN_SSH_KEYSCAN_TIMEOUT`.
 4. Set the **Type** to **String**, and then select **Save**.
-5. Enter the desired timeout limit, such as `90s` for the **Value**.
+5. Enter the desired timeout limit for the **Value**. This is an integer representing a number of seconds, such as `90`.
 
 ```mdx-code-block
   </TabItem>
@@ -154,7 +154,7 @@ import TabItem from '@theme/TabItem';
           - name: PLUGIN_SSH_KEYSCAN_TIMEOUT
             type: String
             description: ""
-            value: 90s
+            value: 90
 ```
 
 ```mdx-code-block
