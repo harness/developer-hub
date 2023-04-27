@@ -64,7 +64,7 @@ If you want the Pipeline to deploy the artifact version that initiated the Trigg
 
 ![](./static/trigger-on-a-new-artifact-23.png)
 
-If you want the Pipeline to deploy the last published successful artifact version, use the expression `<+lastPublished.tag>` or If you want the Pipeline to deploy the last published successful artifact version of matching regex, use the expression `<+lastPublished.tag>.regex(regex)`.
+If you want the Pipeline to deploy the last successful published artifact version, use the expression `<+lastPublished.tag>` or If you want the Pipeline to deploy the last successful published artifact version of matching regex, use the expression `<+lastPublished.tag>.regex(regex)`.
 
 
 You can also set Tag as a Runtime Input and then use `<+trigger.artifact.build>` in the Trigger's [Pipeline Input](#step-3-select-pipeline-inputs) settings.
