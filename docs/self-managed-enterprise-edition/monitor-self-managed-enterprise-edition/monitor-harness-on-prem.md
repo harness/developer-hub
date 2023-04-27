@@ -151,7 +151,7 @@ kubectl create secret generic harness-metrics --from-file config.yml -n <Namespa
 ```
 
   Prometheus can now scrape the metrics for MongoDB on the URL:
-  http://<LB-IP>/mongo-metrics/metrics.
+  `http://<LB-IP>/mongo-metrics/metrics`.
 
 :::info note 
 Because the URL is on your allow list, other users are not able to view the internal metrics of specific infra components, such as MongoDB.
