@@ -1,6 +1,6 @@
 ---
 title: Monitor the infrastructure of your installation
-description: Monitor CPU, memory, disk usage, and other metrics.
+description: Monitor the infrastructure of your installation
 # sidebar_position: 2
 helpdocs_topic_id: ho0c1at9nv
 helpdocs_category_id: 75ydek1suj
