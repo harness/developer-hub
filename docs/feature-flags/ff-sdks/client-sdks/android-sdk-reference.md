@@ -43,7 +43,7 @@ Then ensure you:
 * Create an Android application to use with the SDK, or [clone our sample application](https://github.com/harness/ff-android-client-sdk) to use.
 * Download the SDK from our [GitHub Repository](https://github.com/harness/ff-android-client-sdk).
 * [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Create a Client SDK key and make a copy of it](docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
+* [Create a Client SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
 
 ## Install the SDK
 
