@@ -110,7 +110,7 @@ The following FirstGen entities and configurations are not upgraded in NextGen:
     
     You can run NextGen delegates alongside your FirstGen delegates as you are upgrading. There will be no impact to your existing workloads while running both sets of delegates.
   
-  - For details on NextGen delegates, go to [Delegate overview](https://developer.harness.io/docs/platform/Delegates/delegate-overview).
+  - For details on NextGen delegates, go to [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
 - **Triggers**. Harness won’t upgrade FirstGen triggers. You will need to reconfigure triggers for any upgraded pipelines.
   
   - For details on NextGen triggers, go to [Triggers](https://developer.harness.io/docs/category/triggers).
