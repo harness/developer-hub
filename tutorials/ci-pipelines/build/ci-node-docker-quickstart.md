@@ -195,8 +195,8 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: [your-github-connector]
-        repoName: [your-github-account]/easy-node-docker
+        connectorRef: [your-GitHub-connector]
+        repoName: [your-GitHub-account]/easy-node-docker
         build: <+input>
 ```
 
@@ -232,33 +232,135 @@ In contrast, if you choose to [use a Kubernetes cluster build infrastructure](/d
 
 ## Run tests
 
-## Build and push to Docker registry
+Add a step to run tests against the NodeJS app code. This portion of the tutorial uses a **Run** step to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci.md). For more examples, go to [Run a script in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage.md).
 
-the build infra will take care of the NPM install for you. End goal would be to have a published Docker Image of your artifact. Can add an additional Step to take care of the Docker Push. 
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
 
+1. In the Pipeline Studio, select the **Build** stage.
+2. Remove the **Echo Welcome Message** step.
+3. Select **Add Step** and add a **Run** step.
+4. Enter a **Name** and optional **Description**.
+5. Set the **Shell** type to **Sh**
+6. Input `npm` commands to test the NodeJS code in the **Command** field, for example:
 
-![Add Publish](../static/ci-tutorial-node-docker/add_publish.png)
+   ```
+   npm install
+   npm run build --if-present
+   npm test
+   ```
 
-Select “Build and Push” image to Docker Registry.
+7. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
-![Docker Publish Step](../static/ci-tutorial-node-docker/add_docker_step.png)
+:::tip
 
-Once selected, you can run a connectivity test and you are ready to provide the registry details. 
+This tutorial pipeline uses Harness Cloud build infrastructure that already has Node installed. If you changed the build infrastructure, you may need to specify the **Container Registry** and **Image** containing the binaries that the step needs to run your script, such as `node:latest`.
 
-* Name: docker_build_and_push
-* Docker Connector: `my_docker_hub_account`
-* Docker Repository: `<your_user>/<your_repository>`
-* Tags: cibuilt
+For information about when these fields are required, how to specify images, and information about all **Run** step settings, go to the [Run step settings reference](./run-step-settings.md).
 
-![Docker Build and Push](../static/ci-tutorial-node-docker/docker_build_and_push.png)
+:::
 
-Click Apply Changes then Save. 
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
 
-![Save Hosted](../static/ci-tutorial-node-docker/save_hosted.png)
+In the YAML editor, replace the `Echo Welcome Message` run step block with the following.
 
-Now you are ready to run once saved. 
+```yaml
+              - step:
+                  type: Run
+                  name: Run tests
+                  identifier: Run_tests
+                  spec:
+                    shell: Sh
+                    command: |-
+                      npm install
+                      npm run build --if-present
+                      npm test
+```
 
+:::tip
 
+This tutorial pipeline uses Harness Cloud build infrastructure that already has Node installed. If you changed the build infrastructure, you may need to specify the `connectorRef` and `image` containing the binaries that the step needs to run your script, such as `node:latest`.
+
+For information about when these fields are required, how to specify images, and information about all `Run` step settings, go to the [Run step settings reference](./run-step-settings.md).
+
+The following example shows the same `Run` step with `connectorRef` and `image`.
+
+```yaml
+              - step:
+                  type: Run
+                  name: Run tests
+                  identifier: Run_tests
+                  spec:
+                    connectorRef: [your-Docker-connector-ID]
+                    image: node:latest
+                    shell: Sh
+                    command: |-
+                      npm install
+                      npm run build --if-present
+                      npm test
+```
+
+:::
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Build and push to Docker Hub
+
+Add a step to build an image of the NodeJS app and push it to Docker Hub. While this tutorial uses a [Build and Push an image to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings), Harness has a variety of options for [building and uploading artifacts](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+Add a **Build and Push an image to Docker Registry** step to the **Build** stage with the following configuration:
+
+   * **Docker Connector:** Select your Docker connector.
+   * **Docker Repository:** Enter `[your-Docker-Hub-username]/samplejs`
+   * **Tags:** Select **Add** and enter `<+pipeline.sequenceId>`.
+
+:::tip
+
+The **Tag** value is an [expression](/docs/platform/references/runtime-inputs/#expressions) that uses the build ID as the image tag. Each time the pipeline runs, the build ID increments, creating a unique image tag for each run.
+
+:::
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+Add the following `step` block to the `Build` stage. Replace the bracketed values with your [Docker connector](#prepare-the-docker-registry) ID and your Docker Hub username.
+
+```yaml
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: Build and Push an image to Docker Registry
+                  identifier: BuildandPushanimagetoDockerRegistry
+                  spec:
+                    connectorRef: [your-Docker-connector-ID]
+                    repo: [your-Docker-Hub-username]/samplejs
+                    tags:
+                      - <+pipeline.sequenceId>
+```
+
+:::tip
+
+The `tag` value is an [expression](/docs/platform/references/runtime-inputs/#expressions) that uses the build ID as the image tag. Each time the pipeline runs, the build ID increments, creating a unique image tag for each run.
+
+:::
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## Run the pipeline
 
@@ -266,30 +368,26 @@ Now you are ready to run once saved.
 2. In the **Build Type** field, select **Git Branch**, and then enter `main` in the **Branch Name** field.
 3. Select **Run Pipeline**.
 
-![Run Pipeline](../static/ci-tutorial-node-docker/run_pipeline.png)
-
 While the build runs you can observe each step of the pipeline execution on the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds).
 
-![Execute Pipeline](../static/ci-tutorial-node-docker/execution.png)
-
-If the build succeeds, you'll find your `cibuilt` image in your Docker Hub repo.
-
-![Success](../static/ci-tutorial-node-docker/success.png)
+If the build succeeds, you'll find your pushed image in your Docker Hub `samplejs` repo.
 
 ## Do more with this pipeline
 
 Now that you've created a basic pipeline for building and testing a NodeJS app, you might want to explore the ways that you can [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times), including:
 
-* Using [triggers](/docs/category/triggers/) to automatically start pipelines.
-* [Caching dependencies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache).
-* [Variables and expressions](/docs/category/variables-and-expressions)
+* Using [triggers](/docs/category/triggers/) to automatically start pipelines
+* [Caching dependencies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache)
+* Using [variables and expressions](/docs/category/variables-and-expressions)
 
 <details>
 <summary>Example: Use variables</summary>
 
 Variables and expressions make your pipelines more versatile by allowing variable inputs and values. For example, you can add a pipeline-level variable that lets you specify a Docker Hub username when the pipeline runs.
 
-To add a pipeline variable in the YAML editor, add the following `variables` block between the `properties` and `stages` sections.
+To add a pipeline variable in the YAML editor:
+
+1. Add the following `variables` block between the `properties` and `stages` sections.
 
 ```yaml
   variables:
@@ -299,6 +397,9 @@ To add a pipeline variable in the YAML editor, add the following `variables` blo
       value: <+input>
 ```
 
+2. In the `BuildAndPushDockerRegistry` step, change the `repo` value to `<+pipeline.variables.DOCKERHUB_USERNAME>/samplejs`.
+3. Save and run the pipeline. You'll be prompted to provide a Docker Hub username before the pipeline runs.
+
 To add a pipeline variable in the visual editor:
 
 1. In the Pipeline Studio, select **Variables** on the right side of the Pipeline Studio.
@@ -306,7 +407,9 @@ To add a pipeline variable in the visual editor:
 3. For **Variable Name**, enter `DOCKERHUB_USERNAME`.
 4. For **Type** select **String**, and then select **Save**.
 5. Enter the value `<+input>`. This allows you to specify a Docker Hub username at runtime.
-1. Select **Apply Changes**.
+6. Select **Apply Changes**.
+7. Edit the **Build and Push an image to Docker Registry** step, and change the **Docker Repository** value to `<+pipeline.variables.DOCKERHUB_USERNAME>/samplejs`.
+8. Save and run the pipeline. You'll be prompted to provide a Docker Hub username before the pipeline runs.
 
 </details>
 
@@ -316,18 +419,70 @@ You can also try adding more steps to add more functionality to this pipeline, s
 * [Publishing an Allure Report to the Artifacts tab](/tutorials/ci-pipelines/test/allure-report).
 * [Including CodeCov code coverage and publishing results to your CodeCov dashboard](/tutorials/ci-pipelines/test/codecov/).
 * [Updating Jira issues when builds run](/docs/continuous-integration/use-ci/use-drone-plugins/ci-jira-int-plugin).
+* [Running background services](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings.md)
+
+<details>
+<summary>Example: Run a service dependency in a Background step</summary>
+content in md format
+</details>
 
 After building an artifact, you can deploy your artifact with Harness [Continuous Delivery](/tutorials/cd-pipelines#all-tutorials).
 
 ## Reference: Pipeline YAML
 
-Here is the complete YAML for this tutorial's pipeline. If you copy this example, make sure to replace the bracketed values with corresponding values for your Harness project, [GitHub connector ID](#create-the-github-connector), GitHub account name, and [Docker connector ID](#prepare-the-docker-registry).
+Here is the complete YAML for this tutorial's pipeline. If you copy this example, make sure to replace the bracketed values with corresponding values for your Harness project ID, [GitHub connector ID](#create-the-github-connector), GitHub account name, [Docker connector ID](#prepare-the-docker-registry), and Docker Hub username.
 
 <details>
 <summary>Pipeline YAML</summary>
 
 ```yaml
-...
+pipeline:
+  name: nodejs-sample
+  identifier: nodejssample
+  projectIdentifier: [your-project-ID]
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Build Node App
+        identifier: Build_Node_App
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Run tests
+                  identifier: Run_tests
+                  spec:
+                    shell: Sh
+                    command: |-
+                      npm install
+                      npm run build --if-present
+                      npm test
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: [your-Docker-connector-ID]
+                    repo: [your-Docker-Hub-username]/samplejs
+                    tags:
+                      - <+pipeline.sequenceId>
+  properties:
+    ci:
+      codebase:
+        connectorRef: [your-GitHub-connector]
+        repoName: [your-GitHub-account]/easy-node-docker
+        build: <+input>
 ```
 
 </details>

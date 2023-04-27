@@ -184,7 +184,7 @@ import TabItem from '@theme/TabItem';
 3. For **Variable Name**, enter `DOCKERHUB_USERNAME`.
 4. For **Type** select **String**, and then select **Save**.
 5. Enter the value `<+input>`. This allows you to specify a Docker Hub username at runtime.
-1. Select **Apply Changes**.
+6. Select **Apply Changes**.
 
 ```mdx-code-block
   </TabItem>
@@ -296,27 +296,24 @@ Add a step to build an image of the JHTTP app and push it to Docker Hub. While t
   <TabItem value="Visual" label="Visual">
 ```
 
-1. In your Docker Hub account, create a repo called `jhttp`.
-2. In Harness, in the **Build** stage, select **Add Step** and add a **Build and Push an image to Docker Registry** step configured as follows.
+Add a **Build and Push an image to Docker Registry** step to the **Build** stage with the following configuration:
 
    * **Docker Connector:** Select your Docker connector.
    * **Docker Repository:** Enter `<+pipeline.variables.DOCKERHUB_USERNAME>/jhttp`
    * **Tags:** Select **Add** and enter `<+pipeline.sequenceId>`.
 
-3. Select **Apply Changes**.
-
 Notice the following about this step:
 
-* The **Docker Repository** value calls the [pipeline variable](#add-a-pipeline-variable) you created earlier.
-* The **Tag** value is an expression that uses the build ID as the image tag. Each time the pipeline runs, the build ID increments, creating a unique image tag for each run.
+* The **Docker Repository** value calls the [pipeline variable](#use-variables) you created earlier.
+* The **Tag** value is an [expression](/docs/platform/references/runtime-inputs/#expressions) that uses the build ID as the image tag. Each time the pipeline runs, the build ID increments, creating a unique image tag for each run.
 
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="YAML" label="YAML" default>
 ```
-1. In your Docker Hub account, create a repo called `jhttp`.
-2. In Harness, add the following `step` block to the `Build Java App with Maven` stage. Replace the bracketed value with your [Docker connector](#prepare-the-docker-registry) ID.
+
+Add the following `step` block to the `Build` stage. Replace the bracketed value with your [Docker connector](#prepare-the-docker-registry) ID.
 
 ```yaml
               - step:
@@ -332,8 +329,8 @@ Notice the following about this step:
 
 Notice the following about this step:
 
-* The `repo` value calls the [pipeline variable](#add-a-pipeline-variable) you created earlier.
-* The `tag` value is an expression that uses the build ID as the tag. Each time the pipeline runs, the build ID increments, creating a unique image tag for each run.
+* The `repo` value calls the [pipeline variable](#use-variables) you created earlier.
+* The `tag` value is an [expression](/docs/platform/references/runtime-inputs/#expressions) that uses the build ID as the tag. Each time the pipeline runs, the build ID increments, creating a unique image tag for each run.
 
 ```mdx-code-block
   </TabItem>
@@ -364,7 +361,7 @@ Harness offers several options for [managing dependencies](/docs/continuous-inte
 
 5. Select **Apply Changes**.
 
-Notice that the **Image** value uses an expression that generates the image path by calling your [pipeline variable](#add-a-pipeline-variable) and the build ID expression, which was used as the **Tag** in the **Build and Push an image to Docker Registry** step.
+Notice that the **Image** value uses an expression that generates the image path by calling your [pipeline variable](#use-variables) and the build ID expression, which was used as the **Tag** in the **Build and Push an image to Docker Registry** step.
 
 ```mdx-code-block
   </TabItem>
@@ -407,7 +404,7 @@ This code block does the following:
 * `cloneCodebase: false` - This stage does not need to clone the GitHub repo because it will use the app image that was built and pushed to Docker Hub in the first stage.
 * `platform` - The stage uses the same build infrastructure as the first stage.
 * `step` - Adds a `Background` step that runs the JHTTP app image.
-* `image` - This value uses an expression that generates the image path by calling your [pipeline variable](#add-a-pipeline-variable) and the build ID expression, which was used as the `tag` value in the `Build and Push an image to Docker Registry` step.
+* `image` - This value uses an expression that generates the image path by calling your [pipeline variable](#use-variables) and the build ID expression, which was used as the `tag` value in the `Build and Push an image to Docker Registry` step.
 
 ```mdx-code-block
   </TabItem>
