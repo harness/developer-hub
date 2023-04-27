@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can monitor your Harness Self-Managed Enterprise Edition installation and receive alerts on metrics such as CPU, memory, and disk usage.
 
-Monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and ntegrate with observability tools, such as Grafana.
+Monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and integrate with observability tools, such as Grafana.
 
 To monitor database applications like MongoDB, Postgres, or Redis for the Harness Self-Managed Enterprise Edition, this topic describes how you can use a Prometheus server installed in a Kubernetes cluster outside of Harness services. In this example, the monitored target application is present in one cluster, and Prometheus and Grafana are installed in another cluster. 
 
@@ -24,8 +24,7 @@ This example setup requires:
 - Kubernetes 1.22+ (Harness recommends 1.23)
 - Helm 3.2.0+
 - Prometheus version: Bitnami/kube-prometheus 8.4.0+
-- Istio version 1.15.3 
-- Nginx version v1.0.0-alpha.2
+- Istio version 1.15.3 or Nginx version v1.0.0-alpha.2
 
 :::info note
 For this example, we use the Prometheus operator packaged by Bitnami as an external Prometheus setup.
