@@ -26,7 +26,7 @@ To create a remote policy, you must have:
 - **Create/Edit** permissions for policies.
 - A Git repo with at least one branch.
 - Make sure you have a Git connector with a Personal Access Token (PAT) for your Git account.​​
-- A Personal Access Token (PAT) for your Git account.
+- A PAT for your Git account.
 - Harness needs the PAT to use the Git platform APIs.
 - You add the PAT to Harness as an [encrypted text](../../Secrets/2-add-use-text-secrets.md), and it is encrypted using a Harness Secret Manager.
 - Your Git Personal Access Token is stored in your Harness secret and is a private key to which only you have access. This secret cannot be accessed or referenced by any other user.
