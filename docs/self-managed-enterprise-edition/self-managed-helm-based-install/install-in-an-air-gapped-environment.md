@@ -83,9 +83,9 @@ Next, you are ready to install via Helm by updating your `override.yaml` file wi
 1. Update the `override.yaml` file with your private registry information.
     ```
     global:
-    imageRegistry: "private-123.com"
+      imageRegistry: "private-123.com"
     ```
 2. Run the Helm install command.
     ```
-    helm install my-release harness/harness-prod -n <namespace> -f override.yaml
+    helm install my-release harness/harness -n <namespace> -f override.yaml
     ```
