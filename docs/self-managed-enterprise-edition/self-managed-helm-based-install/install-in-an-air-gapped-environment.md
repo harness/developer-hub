@@ -87,5 +87,5 @@ Next, you are ready to install via Helm by updating your `override.yaml` file wi
     ```
 2. Run the Helm install command.
     ```
-    helm install my-release harness/harness-prod -n <namespace> -f override.yaml
+    helm install my-release harness/harness-prod -n -f override.yaml
     ```
