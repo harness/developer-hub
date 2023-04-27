@@ -178,7 +178,7 @@ This release does not include any early access features.
   
   This issue is fixed and the long Prometheus metric links are now contained within the **METRIC NAME** column, preventing them from obstructing values in the adjacent column.
 
-- After saving and reopening a monitored service template, the **Save** button remained enabled even if no changes are made. (SRM-14107)  
+- After saving and reopening a monitored service template, the **Save** button remained enabled even if no changes are made. (SRM-14085)  
   
   This issue is fixed, and the **Save** button is now enabled only if changes are made to the monitored service template. Additionally, an unsaved changes alert now appears next to the **Save** button when changes are made to the template values.
 
