@@ -74,6 +74,17 @@ Click **Apply Changes**.
 
 The Terraform Rollback step is added to the **Rollback** steps.
 
+## Command Line Options
+
+This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
+
+![](./static/rollback-provisioned-infra-with-the-terraform-rollback-step-19.png)
+
+## Skip Terraform Refresh
+
+Terraform refresh command won't be running when this setting is selected.
+
+
 ## See Also
 
 * [Remove Provisioned Infra with Terraform Destroy](remove-provisioned-infra-with-terraform-destroy)

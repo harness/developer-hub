@@ -558,7 +558,7 @@ You can use any status value in a JEXL condition. For example, `<+pipeline.stage
 
 ### Step status
 
-The expression `<+execution.steps.[step Id].status>` resolves to the status of a step. For example, `<+execution.steps.mystep.status>`.
+The expression `<+pipeline.stages.[stage name].spec.execution.steps.[step Id].status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
 
 You must use the expression after the step in execution.
 
@@ -828,6 +828,7 @@ For example, here is how the common artifact expressions resolve for a Kubernete
 * **<+artifact.image>:** `index.docker.io/library/nginx:stable`
 * **<+artifact.imagePath>:** `library/nginx`
 * **<+artifact.imagePullSecret>:** `secret-value`
+* **<+artifact.dockerConfigJsonSecret>:** `secret-value`
 * **<+artifact.type>:** `DockerRegistry`
 * **<+artifact.connectorRef>:** `DockerHub`
 
@@ -839,6 +840,7 @@ echo "artifact.tag: "<+artifact.tag>
 echo "artifact.image: "<+artifact.image>  
 echo "artifact.imagePath: "<+artifact.imagePath>  
 echo "artifact.imagePullSecret: "<+artifact.imagePullSecret>  
+echo "artifact.dockerConfigJsonSecret: "<+artifact.dockerConfigJsonSecret>  
 echo "artifact.type: "<+artifact.type>  
 echo "artifact.connectorRef: "<+artifact.connectorRef>
 ```
@@ -851,6 +853,7 @@ artifact.tag: stable
 artifact.image: index.docker.io/library/nginx:stable  
 artifact.imagePath: library/nginx  
 artifact.imagePullSecret: secret-value
+artifact.dockerConfigJsonSecret: secret-value
 artifact.type: DockerRegistry  
 artifact.connectorRef: DockerHub  
 Command completed with ExitCode (0)
@@ -921,6 +924,27 @@ namespace: <+infra.namespace>
 ...
 ```
 See [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes/).
+
+### <+artifact.dockerConfigJsonSecret>
+
+In some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For such cases, the values.yaml or manifest files in the service definition **Manifests** section must use the `dockerconfigjson` parameter.
+
+If the Docker image is added in the service definition **Artifacts** section, you can reference it as `dockerconfigjson: <+artifact.dockerConfigJsonSecret>`.
+
+Here is a sample values.yaml:
+
+```
+name: <+stage.variables.name>  
+replicas: 2  
+  
+image: <+artifact.image>  
+dockerconfigjson: <+artifact.dockerConfigJsonSecret>
+  
+createNamespace: true  
+namespace: <+infra.namespace>  
+...
+```
+Go to [pull an image from a private registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes/) for more information.
 
 ### <+artifact.type>
 

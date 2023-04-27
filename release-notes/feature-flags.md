@@ -5,6 +5,7 @@ date: 2023-05-01T10:00
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
+
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -16,8 +17,8 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-
 ## Latest - May XX, 2023
+=======
 
 ```mdx-code-block
 <Tabs>
@@ -38,7 +39,7 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-#### Feature Flags UI
+#### Feature Flags SDKs
 
 * Fixed an issue in the onboarding flow where the flag validation did not work as expected. (FFM-7534)
 
@@ -52,7 +53,43 @@ This release does not include early access features.
 <details>
 <summary>2023 releases</summary>
 
+#### April 26, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Node.js** server SDK was updated to version **1.2.16** with the following update:
+
+* The eventsource library was opening three separate streams instead of one when the library disconnected and reconnected. This issue has been fixed. (FFM-7412)
+
 #### April 22, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+##### Feature Flags UI
+
+* Fixed an issue where the metrics loading spinner was hanging indefinitely. (FFM-6735)
+
+* Updated the field validation for the **YAML path** field in the Git connection form to prevent entering invalid path names beginning with `./`. (FFM-7448)
+
+#### Latest - April 11, 2023
 
 ##### What's new
 

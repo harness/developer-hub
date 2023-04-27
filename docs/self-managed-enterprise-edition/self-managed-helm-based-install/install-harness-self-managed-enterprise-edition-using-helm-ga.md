@@ -1,7 +1,7 @@
 ---
 title: Install using Helm
 description: Learn how to use Helm to install Harness Self-Managed Enterprise Edition. 
-# sidebar_position: 20
+# sidebar_position: 3
 helpdocs_topic_id: 6tblwmh830
 helpdocs_category_id: 66qbyn7ugu
 helpdocs_is_private: false
