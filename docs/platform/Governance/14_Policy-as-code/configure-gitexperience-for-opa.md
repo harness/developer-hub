@@ -21,7 +21,7 @@ You can store your policies in one of the following Git providers:
 - Azure Repos
 - GitLab
 
-## Important
+## Prerequisites
 
 - To create remote policies, you must have **Create/Edit** permissions for policies.
 - Make sure you have a Git repo with at least one branch.
