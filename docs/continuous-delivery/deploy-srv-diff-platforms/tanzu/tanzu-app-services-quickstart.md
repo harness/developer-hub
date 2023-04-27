@@ -65,7 +65,7 @@ import DelegateInstall from '/tutorials/platform/install-delegate.md';
 <DelegateInstall />
 </details>
 
-For details and a video, go to [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview).
+To learn more, watch the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview) video.
 
 9.  In **Set Up Delegates**, select the **Connect using Delegates with the following Tags** option and enter your delegate name.
 10. Select **Save and Continue**.
@@ -376,7 +376,7 @@ The TAS workflow for performing a basic deployment takes your Harness TAS servic
 4. Select the **App Resize** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
     2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
-    3. **Ignore instance count in Manifest** - Select this option to override the instance count mentioned in the `manifest.yaml` file with the values mentioned in the **App Resize** step.
+    3. **Ignore instance count in Manifest** - Select this option to override the instance count defined in the `manifest.yaml` file with the values specified in the **App Resize** step.
     4. **Total Instances** - Set the number or percentage of running instances you want to keep.
     5. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
     6. Select **Apply Changes**.
@@ -521,7 +521,7 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
 4. Select the **App Resize** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
     2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
-    3. **Ignore instance count in Manifest** - Select this option to override the instance count mentioned in the `manifest.yaml` file with the values mentioned in the **App Resize** step.
+    3. **Ignore instance count in Manifest** - Select this option to override the instance count defined in the `manifest.yaml` file with the values specified in the **App Resize** step.
     4. **Total Instances** - Set the number or percentage of running instances you want to keep.
     5. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
     6. Select **Apply Changes**.
