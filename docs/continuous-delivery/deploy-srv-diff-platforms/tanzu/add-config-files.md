@@ -26,6 +26,16 @@ import TabItem from '@theme/TabItem';
 
 For more information about, go to [using config file in your deployments](/docs/continuous-delivery/x-platform-cd-features/services/cd-services-config-files/).
 
+You can view the config files added to your service definition.
+
+You can reference this config file as an expression in a pipeline from the **Execution** tab. 
+
+For example, in a Tanzu Command step, you can reference the config file **Inline** by entering the following expression. 
+
+`echo "<+configFile.getAsString("shell")>"` 
+
+You can also reference the config file from the **File Store** by selecting the file.
+
 ```mdx-code-block
 </TabItem>
 <TabItem value="GitHub" label="GitHub">
@@ -44,26 +54,23 @@ Currently, this feature is behind a feature flag `CDS_GIT_CONFIG_FILES`. Contact
   
   ![](./static/config-file-git.png)
 
+You can view the config files added to your service definition.
+
+You can reference this config file as an expression in a pipeline from the **Execution** tab. 
+
+For example, in a Tanzu Command step, you can reference the config file **Inline** by entering the following expression. 
+
+`echo "<+configFile.getAsString("shellsec")>"` 
+
+You can also reference the config file from the **File Store** by selecting the file.
+
 ```mdx-code-block
 </TabItem>  
 </Tabs>
 ```
 
-You can view the config files added to your service definition.
 
-## Referencing config files in a pipeline
 
-You can also reference config files using expressions in a pipeline from the **Execution** tab. 
-
-For example: 
-
-In a Tanzu Command step, you can reference the config files inline by entering the following script: 
-
-```
-echo "<+configFile.getAsString("shell")>"
-echo "<+configFile.getAsString("shellsec")>"
-```
-You can also reference the config files from the **File Store** by selecting the config file from the Harness file store.
 
 
 
