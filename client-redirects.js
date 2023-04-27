@@ -41,11 +41,6 @@ module.exports = {
     },
 
     {
-      from: "/docs/platform/Delegates/delegate-concepts/delegate-overview.md",
-      to: "/docs/platform/Delegates/delegate-concepts/delegate-overview",
-    },
-
-    {
       from: "/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes/",
       to: "/docs/platform/Delegates/install-delegates/install-a-kubernetes-delegate",
     },
