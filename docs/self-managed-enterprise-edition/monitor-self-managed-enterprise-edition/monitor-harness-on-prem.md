@@ -44,30 +44,30 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
 
 1. Install an ingress controller with a `LoadBalancer` service type in the YAML file of your Harness Kubernetes cluster.
 
-```
-  apiVersion: v1
-  kind:Service
-  metadata:
-    name:harness-ingress-controller
-    namespace:gcloud
-  spec:
-    selector:  
-    app:harness-ingress-controller
-  type:'LoadBalancer'
-    loadBalancerIP:<LB-IP>
-    externalTrafficPolicy:'Cluster'
-  ports:
-  - name:http
-    nodePort:32500
-    port:80
-    protocol:TCP
-    targetPort:http
-  - name:https
-    nodePort:32505
-    port:443
-    protocol:TCP
-    targetPort:https
-```
+   ```
+     apiVersion: v1
+     kind:Service
+     metadata:
+       name:harness-ingress-controller
+       namespace:gcloud
+     spec:
+       selector:  
+       app:harness-ingress-controller
+     type:'LoadBalancer'
+       loadBalancerIP:<LB-IP>
+       externalTrafficPolicy:'Cluster'
+     ports:
+     - name:http
+       nodePort:32500
+       port:80
+       protocol:TCP
+       targetPort:http
+     - name:https
+       nodePort:32505
+       port:443
+       protocol:TCP
+       targetPort:https
+   ```
 
   :::info
   The cloud `loadBalancerIP` in this example is a reserved external static IP created by Harness.
@@ -81,28 +81,28 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
 
 3. Create an ingress file for `mongo-metrics`, with defined routing rules that forwards requests to an internal service exposing metrics with a similar configuration.
 
-```
-  apiVersion: networking.k8s.io/v1
-  kind: Ingress
-  metadata:
-    name: mongo-metrics
-    namespace: gcloud
-    annotations:
-      nginx.ingress.kubernetes.io/whitelist-source-range: "10.116.1.26"
-      nginx.ingress.kubernetes.io/rewrite-target: /$2
-  spec:
-    ingressClassName: harness
-  rules: 
-   - http:
-      paths: 
-      - path: /mongo-metrics
-        pathType: ImplementationSpecific
-        backend:
-          service:
-            name: mongodb-replicaset-chart-metrics
-            port:
-              number: 9216
-```
+   ```
+     apiVersion: networking.k8s.io/v1
+     kind: Ingress
+     metadata:
+       name: mongo-metrics
+       namespace: gcloud
+       annotations:
+         nginx.ingress.kubernetes.io/whitelist-source-range: "10.116.1.26"
+         nginx.ingress.kubernetes.io/rewrite-target: /$2
+     spec:
+       ingressClassName: harness
+     rules: 
+      - http:
+         paths: 
+         - path: /mongo-metrics
+           pathType: ImplementationSpecific
+           backend:
+             service:
+               name: mongodb-replicaset-chart-metrics
+               port:
+                 number: 9216
+   ```
 
 :::info
  Add your IPs to your allow list so the metrics exposed by the ingress are only accessible internally. The IP included in the allow list is the external IP for the node where you host Prometheus in a separate cluster.
