@@ -46,6 +46,7 @@ Harness also supports [Google KMS as a secrets manager](add-a-google-cloud-kms-s
 * An existing GSM secret's name cannot be updated using the Harness Secret Manager. Only the content of the secret is updated.
 * **Migration:** You can migrate **inline secrets** (existing secrets created in Harness) to and from your Harness GSM secrets manager. Any [secret references](reference-existing-secrets.md) to secrets in your GSM secrets manager are not migrated.
 
+
 ### Supported Platforms and Technologies
 
 See [Supported Platforms and Technologies](../../../starthere-firstgen/supported-platforms.md).
@@ -54,7 +55,10 @@ See [Supported Platforms and Technologies](../../../starthere-firstgen/supporte
 
 * **Harness Permissions:** to add a GSM secret manager, a Harness User must belong to a Harness User Group with the **Manage Secrets Managers** Account Permission.
 * **GCP Permissions:** The GCP Service Account you use in the **Google Secrets Manager Credentials File** should have the following IAM roles:
-	+ `roles/secretmanager.admin` or `roles/secretmanager.secretAccessor` and `roles/secretmanager.secretVersionManager`.
+	+ `roles/secretmanager.admin` and `roles/secretmanager.secretAccessor` and `roles/secretmanager.secretVersionManager` for Harness to be able to manage existing and new secrets.
+	+ `roles/secretmanager.viewer` and `roles/secretmanager.secretAccessor` and `roles/secretmanager.secretVersionManager` for Harness to be able to manage existing secrets from your GCP secret manager.
+* You cannot access the Google Cloud secret manager for a different project outside the service account provided. To access the secret manager in a different project, you must provide a separate service account JSON corresponding to that project.
+* Harness does not create a secret manager in Google, but simply uses the secret manager of the service account.
 
 See [Managing secrets](https://cloud.google.com/secret-manager/docs/access-control) from Google.
 
