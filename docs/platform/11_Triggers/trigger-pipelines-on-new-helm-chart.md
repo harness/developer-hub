@@ -191,6 +191,11 @@ You can enable or disable Triggers using the Enabled toggle:
 You can reuse Triggers by copying and pasting Trigger YAML. This can be helpful when you have advanced Conditions you don't want to set up each time.
 
 ![](./static/trigger-pipelines-on-new-helm-chart-14.png)
+
+:::note
+
+Trigger manifest expressions used in a pipeline are resolved during a pipeline re-run which were activated by a trigger.
+
 ### See also
 
 * [Schedule Pipelines using Triggers](schedule-pipelines-using-cron-triggers.md)
