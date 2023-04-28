@@ -4,7 +4,7 @@ description: Connect Harness with the artifact sources to use for deployments.
 sidebar_position: 4
 ---
 
-In DevOops, an artifact source is a location where the compiled, tested, and ready-to-deploy software artifacts are stored. These artifacts could be container images, compiled binary files, executables, or any other software components that are part of the application.
+In DevOps, an artifact source is a location where the compiled, tested, and ready-to-deploy software artifacts are stored. These artifacts could be container images, compiled binary files, executables, or any other software components that are part of the application.
 
 To add an artifact source, you add a Harness connector to the artifact platform (DockerHub, GCR, Artifactory, etc.) and then add an artifact source to a Harness service that defines the artifact source name, path, tags, and so on.
 
@@ -663,6 +663,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
   <TabItem13 value="Pipeline Studio" label="Pipeline Studio">
 ```
 
+
 You connect to GCS using a Harness GCP Connector. For details on all the GCS requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/).
 
 To add an artifact from GCS, do the following:
@@ -706,7 +707,7 @@ For more information, go to the GCP documentation about [Cloud IAM roles for Clo
 
 You connect to Google Artifact Registry using a Harness GCP Connector. 
 
-For details on all the Google Cloud Registry requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/).
+For details on all the Google Artifact Registry requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/).
 
 ```mdx-code-block
 import Tabs7 from '@theme/Tabs';
@@ -1937,6 +1938,164 @@ If used as a Docker Repo, user needs:
 * Pull images
 
 See [Managing Permissions: JFrog Artifactory User Guide](https://www.jfrog.com/confluence/display/RTF/Managing+Permissions).
+
+</details>
+
+### Bamboo
+
+:::note
+
+Currently, Bamboo support is behind the feature flag `BAMBOO_ARTIFACT_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+<details>
+<summary>Use Bamboo build plans as artifacts</summary>
+
+You can use Bamboo for build plans when performing deployments using the SSH/WinRM, Serverless.com Framework, and Deployment Templates deployment types. You can also trigger deployments based on new build plans in Bamboo.
+
+You connect to Bamboo using a Harness Bamboo connector.
+
+
+```mdx-code-block
+import Tabs14 from '@theme/Tabs';
+import TabItem14 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs14>
+  <TabItem14 value="YAML" label="YAML" default>
+```
+
+<details>
+<summary>Bamboo connector YAML</summary>
+
+```yaml
+connector:
+  name: Bamboo
+  identifier: Bamboo
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: Docs
+  type: Bamboo
+  spec:
+    bambooUrl: https://bamboo.dev.example.io
+    auth:
+      type: UsernamePassword
+      spec:
+        username: admin
+        passwordRef: bamboo
+    delegateSelectors:
+      - mydelegate
+```
+</details>
+
+<details>
+<summary>Service using Bamboo plans YAML</summary>
+
+```yaml
+service:
+  name: Bamboo
+  identifier: Bamboo
+  tags: {}
+  serviceDefinition:
+    spec:
+      artifacts:
+        primary:
+          primaryArtifactRef: myplan
+          sources:
+            - identifier: myplan
+              spec:
+                connectorRef: Bamboo
+                artifactPaths: artifacts
+                build: 133
+                planKey: PLAN1
+              type: Bamboo
+    type: Ssh
+```
+</details>
+
+
+
+```mdx-code-block
+  </TabItem14>
+  <TabItem14 value="API" label="API">
+```
+
+Create the Bamboo connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
+
+<details>
+<summary>Bamboo connector example</summary>
+
+```sh
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
+--header 'Content-Type: text/yaml' \
+--header 'x-api-key: pat.12345.6789' \
+--data-raw 'connector:
+  name: Bamboo
+  identifier: Bamboo
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: Docs
+  type: Bamboo
+  spec:
+    bambooUrl: https://bamboo.dev.example.io
+    auth:
+      type: UsernamePassword
+      spec:
+        username: admin
+        passwordRef: bamboo
+    delegateSelectors:
+      - mydelegate'
+```
+
+</details>
+
+
+Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
+
+```mdx-code-block
+  </TabItem14>
+  <TabItem14 value="Terraform Provider" label="Terraform Provider">
+```
+
+The Terraform Provider Bamboo connector resource is coming soon.
+
+```mdx-code-block
+  </TabItem14>
+  <TabItem14 value="Pipeline Studio" label="Pipeline Studio">
+```
+
+To add a plan from Bamboo, do the following:
+
+1. In your project, in CD (Deployments), select **Services**.
+2. Select **Manage Services**, and then select **New Service**.
+3. Enter a name for the service and select **Save**.
+4. Select **Configuration**.
+5. In **Service Definition**, select **Secure Shell** or one of the other deployment types that support Bamboo.
+6. In **Artifacts**, select **Add Artifact Source**.
+7. In **Artifact Repository Type**, select **Bamboo**, and then select **Continue**.
+8. In **Bamboo Repository**, select of create a Bamboo connector that connects to the Bamboo account where the plan is located. Click **Continue**.
+   The **Artifact Details** settings appear.
+9. In **Artifact Source Identifier**, enter a name for this artifact.
+10. In **Plan Name**, select the name of the plan.
+11. In **Artifact Paths**, select the artifact path for the plan.
+12. In **Bamboo Builds**, select the plan to use.
+13. Select **Submit**. The artifact is added to the service definition.
+
+
+```mdx-code-block
+  </TabItem14>
+</Tabs14>
+```
+
+#### Build plan permissions
+
+Make sure the connected user account has the following required permissions to the Bamboo Server.
+
+- View plan.
+- Build plan (if you plan to trigger a build as part of your pipeline).
+
+For more information, go to [Bamboo Permissions](https://confluence.atlassian.com/bamboo/bamboo-permissions-369296034.html).
 
 </details>
 

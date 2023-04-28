@@ -114,7 +114,7 @@ In this option, you specify the repo where your build config file and its relate
 4. In **Commit ID**, select **Latest from Branch** or **Specific Commit ID**.
 5. Enter the branch name or commit ID. Both of these settings allow Harness variables, such as [Workflow variables](../model-cd-pipeline/workflows/add-workflow-variables-new-template.md).  
 When you set up the Source Repo Provider, you entered in a branch name. The branch name you enter in the **Google Cloud Build** step **Branch Name** overrides that setting.
-6. In **File Path**, enter the full path from the root of the repo to the build config file. If the build file location in the repo is **https://github.com/john-smith/gcb/cloudbuild.json**, then the file is at the repo root and you would just enter **cloudbuild.json** in **File Path**.
+6. In **File Path**, enter the full path from the root of the repo to the build config file. If the build file location in the repo is `https://github.com/john-smith/gcb/cloudbuild.json`, then the file is at the repo root and you would just enter **cloudbuild.json** in **File Path**.
 
 ### Option 3: Execute Existing GCB Trigger
 

@@ -15,7 +15,7 @@ import { MODULES } from "@site/src/constants"
         "",
       list: [
         {
-          title: "Introduction to Chaos engineering",
+          title: "Build resilient applications with chaos engineering",
           module: MODULES.ce,
           description:
             "Learn the basics of Harness Chaos Engineering.",

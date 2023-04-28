@@ -48,8 +48,6 @@ If you have a cluster that meets the following requirements, then you can jump t
 * [Creating a clster from Google Kubernetes Engine (GKE)](https://cloud.google.com/kubernetes-engine/docs/how-to/creating-a-cluster) (machine type minimum: n2-standard-4)
 * [Creating an Amazon EKS Cluster](https://docs.aws.amazon.com/eks/latest/userguide/create-cluster.html) (node type minimum: m5.xlarge)
 
-
-
 ## Visual Summary
 
 Once you've completed this tutorial, you'll deploy a Docker image to your Kubernetes cluster using a Harness Canary Workflow. Here's what your deployment will look like:
@@ -60,15 +58,17 @@ Once you've completed this tutorial, you'll deploy a Docker image to your Kubern
 
 In this section, we'll download a new Harness Kubernetes Delegate and install and launch it in your target cluster. Running the Delegate as a pod in the same cluster used to deploy the your application is the recommended practice.
 
-Before installing the Delegate, ensure that you have **kubectl** installed in your Kubernetes cluster. For **kubectl** installation steps, see [Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) from Kubernetes.### Download the Delegate
+Before installing the Delegate, ensure that you have **kubectl** installed in your Kubernetes cluster. For **kubectl** installation steps, see [Install and Set Up kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) from Kubernetes.
 
-1. Log into Harness.
-2. In the Harness Manager, click **Setup**. **Setup** is where you configure your microservices, their deployment pipelines, and all the building blocks and resources for those pipelines.
-3. Click **Harness Delegates**.
-4. Click **Download Delegate** and then click **Kubernetes YAML**. The Delegate Setup settings appear.
+### Download the Delegate
+
+1. Sign in Harness.
+2. In the Harness Manager, select **Setup**. **Setup** is where you configure your microservices, their deployment pipelines, and all the building blocks and resources for those pipelines.
+3. Select **Harness Delegates**.
+4. Select **Download Delegate**, and then select **Kubernetes YAML**. The Delegate Setup settings appear.
 5. In **Name**, enter the name **k8s-delegate** exactly.![](./static/kubernetes-quickstart-92.png)
 6. In **Profile**, select the Primary Profile.
-7. Click **Download**. The YAML file for the Kubernetes Delegate, and its README, will download to your computer as an archive.
+7. Select **Download**. The YAML file for the Kubernetes Delegate, and its README, downloads to your computer as an archive.
 8. Open a terminal and navigate to where the Delegate file is located.
 9. Extract the YAML file's folder from the download and then navigate to the **harness-delegate-kubernetes** folder that you extracted:
 
@@ -82,7 +82,7 @@ You will connect to your cluster using the terminal so you can simply copy the Y
 
 ### Install and Launch the Delegate
 
-1. Log into your Kubernetes cluster. For example, if your Kubernetes cluster is in Google Cloud Platform, select the cluster, click **Connect**, and from the resulting **Connect to the cluster** setting, copy the **Command-line access command**.
+1. Sign in your Kubernetes cluster. For example, if your Kubernetes cluster is in Google Cloud Platform, select the cluster, select **Connect**, and from the resulting **Connect to the cluster** setting, copy the **Command-line access command**.
 2. In the terminal you used to navigate to the **harness-delegate** folder, paste the command and press **Enter**.  
 You are now connected to the Kubernetes cluster. If the connection is unsuccessful, ensure that the GCE firewall is not blocking port 22 to your VMs. For more information, see [Debug Running Pods](https://kubernetes.io/docs/tasks/debug/debug-application/debug-running-pod/) from Kubernetes.
 3. Let's quickly confirm that the cluster you created can connect to the Harness platform. Enter the following command:
@@ -119,8 +119,8 @@ A Harness Cloud Provider represents your infrastructure, such as a Kubernetes cl
 
 The Kubernetes Cluster Cloud Provider you will add now will connect Harness with your Kubernetes cluster using the Delegate you installed.
 
-1. In **Harness Manager**, click **Setup**.
-2. Click **Cloud Providers**. On the **Cloud Providers** page, click **Add Cloud Provider**. The Cloud Provider appears.
+1. In **Harness Manager**, select **Setup**.
+2. Select **Cloud Providers**. On the **Cloud Providers** page, select **Add Cloud Provider**. The Cloud Provider appears.
 3. Enter the following settings:
 
    * **Type:** Select Kubernetes Cluster.
@@ -130,7 +130,7 @@ The Kubernetes Cluster Cloud Provider you will add now will connect Harness with
    * **Select Skip Validation:** Enable this option.
    * **Usage Scope:** Don't change this setting. Usage Scope limits the use of a Cloud Provider to specific Harness Applications and Environments. For this tutorial, we will use the default scopes.
 
-3. Click **Test**. Verify that the `The test was successful message` appears, and then click **Submit**.
+3. Select **Test**. Verify that the `The test was successful message` appears, and then select **Submit**.
 
 Your Kubernetes Cloud Provider is set up. Now let's add an Artifact Server for pulling the Docker image.
 
@@ -138,8 +138,8 @@ Your Kubernetes Cloud Provider is set up. Now let's add an Artifact Server for p
 
 Harness integrates with many different types of repositories and providers. For this tutorial, you will connect to Docker Hub anonymously.
 
-1. In **Setup**, click **Connectors**.
-2. Click **Artifact Servers**, and then click **Add Artifact Server**. The **Docker Artifact Server** settings appear.
+1. In **Setup**, select **Connectors**.
+2. Select **Artifact Servers**, and then select **Add Artifact Server**. The **Docker Artifact Server** settings appear.
 3. Enter the following settings:
 
    * **Type:** Select **Docker Registry**.
@@ -147,7 +147,7 @@ Harness integrates with many different types of repositories and providers. For 
    * **Docker Repository URL:** Enter `https://registry.hub.docker.com/v2/`.
    * **Username and Password:** Leave these empty.
 
-3. Click Test, and then click the **SUBMIT** button.
+3. Select Test, and then select **SUBMIT**.
 
 :::note 
 If the test fails, it is possible that the Harness Delegate you installed cannot connect to https://registry.hub.docker.com/v2/. Ensure that the pod where the Delegate is installed can connect to that address.
@@ -163,8 +163,8 @@ First, we'll create a Harness Application and Service, and look at manifests.
 
 ### Create a Harness Application
 
-1. In **Setup**, click **Add Application**. The Application settings appear.
-2. Enter the name **K8s Tutorial** and click **Submit**.![](./static/kubernetes-quickstart-93.png)
+1. In **Setup**, select **Add Application**. The Application settings appear.
+2. Enter the name **K8s Tutorial** and select **Submit**.![](./static/kubernetes-quickstart-93.png)
 
 The Application is created.
 
@@ -174,15 +174,15 @@ The Application is created.
 
 To add your manifests, you create a Harness Service. Services represent your microservices/apps. You define the sources of app artifacts for those microservices, and you add your manifests.
 
-1. Click **Services**.
-2. In **Services**, click **Add Service**. The Add Service settings appear.
+1. Select **Services**.
+2. In **Services**, select **Add Service**. The Add Service settings appear.
 3. Enter the following settings:
 
    * **Name:** Enter **MyApp K8s**.
    * **Deployment Type:** Select **Kubernetes**.
   * **Enable Kubernetes V2:** If this option is available, select it.
 
-4. Click **Submit**. The new Service page appears.
+4. Select **Submit**. The new Service page appears.
 
 ![](./static/kubernetes-quickstart-95.png)
 
@@ -190,13 +190,13 @@ To add your manifests, you create a Harness Service. Services represent your mic
 
 First, we'll add a Docker image using the Artifact Server you created and then look at manifests.
 
-1. Click Add Artifact Source and then click Docker Registry. The **Artifact Source - Docker Registry** settings appear.
+1. Select **Add Artifact Source** and then select **Docker Registry**. The **Artifact Source - Docker Registry** settings appear.
 2. Enter the following settings:
 
    * **Source Server:** Select the Artifact Server you added earlier, **Docker Hub**.
    * **Docker Image Name:** Enter `library/nginx`.
 
-3. Click **Submit**. The artifact source is added.
+3. Select **Submit**. The artifact source is added.
 
 You can pull a list of artifacts from the source using **Artifact History**.Now that the artifact source is added, you can add your manifests.
 
@@ -223,14 +223,14 @@ Harness uses Environments to represent one or more of your deployment infrastruc
 In each Environment, you define Infrastructure Definitions to describe your deployment infrastructures. A single Infrastructure Definition can be used by multiple Services, pulling unique Kubernetes namespace values from each Service during deployment.
 
 1. Use the breadcrumb navigation to jump to **Environments**.![](./static/kubernetes-quickstart-98.png)
-2. In **Environments**, click **Add Environment**. The **Environment** settings appear.
+2. In **Environments**, select **Add Environment**. The **Environment** settings appear.
 3. Enter the following settings:
 
    * **Name:** Enter **Tutorial Cluster**.
    * **Environment Type:** Select **Non-Production**.
 
-4. Click **Submit**. The Environment is created. Next we will add an Infrastructure Definition to identify the cluster and namespace for our deployment.
-5. Click **Add Infrastructure Definition**. The Infrastructure Definition settings appear.
+4. Select **Submit**. The Environment is created. Next we will add an Infrastructure Definition to identify the cluster and namespace for our deployment.
+5. Select **Add Infrastructure Definition**. The Infrastructure Definition settings appear.
 6. Enter the following settings:
 
    * **Name:** Enter **Tutorial Namespace**.
@@ -240,7 +240,7 @@ In each Environment, you define Infrastructure Definitions to describe your depl
    * **Namespace:** Enter the namespace you want to use in your cluster. The `default` namespace is entered by default.
    * **Release Name:** Leave the default `release-${infra.kubernetes.infraId}`. Harness uses this name for tracking releases for rollback, etc.
 
-7. Click **Submit**. Your target infrastructure is defined. You can now use it and the Harness Service you set up to build your Canary Workflow.
+7. Select **Submit**. Your target infrastructure is defined. You can now use it and the Harness Service you set up to build your Canary Workflow.
 
 ## Step 6: Build a Canary Deployment
 
@@ -250,27 +250,27 @@ In this tutorial, we will use the popular Canary Deployment strategy. In Canary,
 
 To learn more about Canary deployments, see [Deployment Concepts and Strategies](../continuous-delivery/concepts-cd/deployment-types/deployment-concepts-and-strategies.md).
 
-1. Use the breadcrumb navigation to jump to **Workflows**, and then click **Add Workflow**. The Workflow settings appears.
+1. Use the breadcrumb navigation to jump to **Workflows**, and then select **Add Workflow**. The Workflow settings appears.
 2. Enter the following settings:
 
    * **Name:** Enter **MyApp K8s Canary**.
    * **Workflow Type:** Select **Canary Deployment**.
    * **Environment:** Select the Environment you created earlier, **Tutorial Cluster**.
 
-3. Click **Submit**. The Workflow is created.
+3. Select **Submit**. The Workflow is created.
 
    ![](./static/kubernetes-quickstart-99.png)
 
    Next, well add the first phase of our Canary Workflow.
 
-4. In **Deployment Phases**, click **Add Phase**. The Add Phase settings appear.
+4. In **Deployment Phases**, select **Add Phase**. The Add Phase settings appear.
 5. Enter the following settings:
 
    * **Service:** Select the Harness Service you created for this tutorial, **MyApp K8s**.
    * **Infrastructure Definition:** Select the Infrastructure Definition you created for this tutorial, **Tutorial Namespace**.
    * **Service Variable Overrides:** You can leave this setting blank. The purpose of Service Variable Overrides is to let you change any Config Variables created in the Service when the Workflow executes.
 
-7. Click **Submit**. The Phase is added to the Workflow.
+7. Select **Submit**. The Phase is added to the Workflow.
 
    ![](./static/kubernetes-quickstart-100.png)
    
@@ -278,7 +278,7 @@ To learn more about Canary deployments, see [Deployment Concepts and Strategies]
 
    Let's take a look at the **Canary Deployment** step. The Canary Deployment step defines how many pods are deployed for a Canary test of the configuration files in your Harness Service manifests.
 
-8. Click the **Canary Deployment** step.
+8. Select the **Canary Deployment** step.
 9. Review the following settings:
 
    * **Instance Unit Type**: You can specify the number of replicas to deploy using **COUNT** or **PERCENTAGE**.
@@ -296,14 +296,14 @@ To learn more about Canary deployments, see [Deployment Concepts and Strategies]
 
    Next, we'll add the Primary phase using a Kubernetes rolling update.
 
-11. In the breadcrumb navigation, click the name of the Workflow, **MyApp K8s Canary**. This takes you back to the main Workflow page.
-12. In **Deployment Phases**, click **Add Phase**.
+11. In the breadcrumb navigation, select the name of the Workflow, **MyApp K8s Canary**. This takes you back to the main Workflow page.
+12. In **Deployment Phases**, select **Add Phase**.
 13. Enter the following settings:
 
    * **Service:** Select the Harness Service you created for this tutorial, **MyApp K8s**.
    * **Infrastructure Definition:** Select the Infrastructure Definition you created for this tutorial, **Tutorial Namespace**.
 
-14. Click **Submit**. The new phase is added.
+14. Select **Submit**. The new phase is added.
 
    ![](./static/kubernetes-quickstart-101.png)
 
@@ -311,15 +311,15 @@ To learn more about Canary deployments, see [Deployment Concepts and Strategies]
 
    This step performs a standard Kubernetes rolling update, incrementally updating pod instances with new ones. The new pods are scheduled on nodes with available resources. The rolling update Deployment uses the number of pods you specified in the Harness Service Manifests (number of replicas).
 
-15. Click **Rollout Deployment**. The Rollout Deployment settings appear.
+15. Select **Rollout Deployment**. The Rollout Deployment settings appear.
 
   ![](./static/kubernetes-quickstart-102.png)
   
-  There's nothing to configure in this step. Click **Submit** to exit.
+  There's nothing to configure in this step. Select **Submit** to exit.
 
    That's it. The Canary Workflow is complete. Next, we'll deploy the Workflow to your cluster.
 
-16. In the breadcrumb navigation, click the name of the Workflow, **MyApp K8s Canary**. This takes you back to the main Workflow page where both phases are visible.
+16. In the breadcrumb navigation, select the name of the Workflow, **MyApp K8s Canary**. This takes you back to the main Workflow page where both phases are visible.
 
    ![](./static/kubernetes-quickstart-103.png)
    
@@ -328,13 +328,13 @@ To learn more about Canary deployments, see [Deployment Concepts and Strategies]
 Now that your Kubernetes Canary Workflow is complete you can deploy it to your cluster.
 
 1. If you're not already on the main Workflow page, use the breadcrumb navigation to navigate to **MyApp K8s Canary**.
-2. Click the **Deploy** button. The Deploy settings appear.
+2. Select the **Deploy** button. The Deploy settings appear.
 3. Enter the following settings:
 
    * **Artifacts > MyApp K8s:** Select an artifact from the Artifact Source you added to the Harness Service. In this tutorial, we are using a public nginx Docker image. Select a build/version such as **Tag# 1.9.15-alpine**.
    * **Send notification to me only:** Enable this setting if you are doing this tutorial using your corporate Harness account. Enabling this setting will ensure that other users won't be notified on this deployment.
 
-3. Click **Submit**. The deployment executes.
+3. Select **Submit**. The deployment executes.
 
 Here's a example of what the deployment looks like typically, including the link Harness generates to the host running nginx:
 
@@ -342,15 +342,17 @@ Here's a example of what the deployment looks like typically, including the link
 
 Your deployment is complete.
 
-If you run into any errors, it is typically because the cluster does meet the requirements from [Before You Begin](#before_you_begin) or the cluster's network setting do not allow the Delegate to connect to Docker Hub.## One More Thing to Try
+If you run into any errors, it is typically because the cluster does meet the requirements from [Before You Begin](#before_you_begin) or the cluster's network setting do not allow the Delegate to connect to Docker Hub.
+
+## One More Thing to Try
 
 Now that you have a working Canary Workflow, you can templatize it so it can be used with multiple Services, Environments, and Infrastructure Definitions.
 
-For the Workflow, you edit the Workflow settings and click the **[T]** next to **Environment**.
+For the Workflow, you edit the Workflow settings and select the **[T]** next to **Environment**.
 
 ![](./static/kubernetes-quickstart-105.png)
 
-For each Workflow Phase, you edit the Phase settings and click the **[T]** next to **Service**. The **[T]** was automatically selected for **Infrastructure Definition** when you clicked the **[T]** for **Environment**.
+For each Workflow Phase, you edit the Phase settings and select the **[T]** next to **Service**. The **[T]** was automatically selected for **Infrastructure Definition** when you selected the **[T]** for **Environment**.
 
 ![](./static/kubernetes-quickstart-106.png)
 

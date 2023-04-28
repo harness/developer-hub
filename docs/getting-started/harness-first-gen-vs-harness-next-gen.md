@@ -1,7 +1,7 @@
 ---
 title: Harness FirstGen vs Harness NextGen
 description: Compare Harness two product suite versions.
-# sidebar_position: 2
+sidebar_position: 40
 helpdocs_topic_id: 1fjmm4by22
 helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false

@@ -1036,7 +1036,7 @@ The following error message can appear if a property, such as the security setti
 ```
 ConstructorException: Cannot create property=spec for JavaBean=class V1StatefulSet
 ```
-Ensure that your YAML specification is formed correctly. There are online validation tools such as [kubeyaml.com](https://kubeyaml.com/).
+Use a validation tool to ensure that your YAML specification is formed correctly. 
 
 For steps on how to add a security context for a pod or container, see [Configure a Security Context for a Pod or Container](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/) from Kubernetes.
 

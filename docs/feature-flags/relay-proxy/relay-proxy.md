@@ -24,11 +24,13 @@ If you decide to use the Relay Proxy, make sure it has a good place in your netw
 
 ## Relay Proxy architecture
 
-![A diagram of the Relay Proxy architecture. ](./static/1-relay-proxy-00.png)The FF Relay Proxy resides between the SDKs and the hosted Harness Feature Flag services. On startup, proxy loads the necessary data from the FF services to ensure that it is completely functional even if the network connection drops temporarily.
+![A diagram of the Relay Proxy architecture. ](./static/1-relay-proxy-00.png)
 
-The Proxy creates an instance of the Go SDK for each API key that’s passed to it as a part of the [Proxy Configuration](relay-proxy.md#configuration-variables), and each instance of the SDK uses the Cache implementation. The Go SDK then takes care of populating this cache on startup and keeping it up to current whenever the remote service changes. When the Go SDK starts up, it retrieves all of the Features and Segments and then sends a request to the remote server to listen for any updates. Whenever there is an update in the remote service, it sends out an event, and when the embedded SDK sees one of these events, it sends a request to the remote service to get the most recent flag values and save them to the cache.
+The FF Relay Proxy resides between the SDKs and the hosted Harness Feature Flag services. On startup, proxy loads the necessary data from the FF services to ensure that it is completely functional even if the network connection drops temporarily.
 
-The Proxy can also use streaming functionality if it is configured with Redis. To view the variables that you need to configure for Redis, go to [Proxy configuration variables](relay-proxy.md#configuration-variables) .
+The Proxy creates an instance of the Go SDK for each API key that’s passed to it as a part of the [Proxy Configuration](/docs/feature-flags/relay-proxy/deploy-relay-proxy#configure-the-relay-proxy), and each instance of the SDK uses the Cache implementation. The Go SDK then takes care of populating this cache on startup and keeping it up to current whenever the remote service changes. When the Go SDK starts up, it retrieves all of the Features and Segments and then sends a request to the remote server to listen for any updates. Whenever there is an update in the remote service, it sends out an event, and when the embedded SDK sees one of these events, it sends a request to the remote service to get the most recent flag values and save them to the cache.
+
+The Proxy can also use streaming functionality if it is configured with Redis. To view the variables that you need to configure for Redis, go to [Proxy configuration variables](/docs/feature-flags/relay-proxy/deploy-relay-proxy#configure-the-relay-proxy) .
 
 ### Proxy Configuration variables
 
@@ -41,11 +43,11 @@ The configuration variables used in the proxy are listed in the following table:
 | **Environment Variable** | **Type** | **Flag** | **Example** | **Usage** |
 | ACCOUNT\_IDENTIFIER | string | -account-identifier | zAbbD-FLS425IEO7OLzXYz | The Account that you want the Proxy to pull down and load config for |
 | ORG\_IDENTIFIER | string | -org-identifier | featureflagsqa | The Organization that you want the Proxy to pull down and load config for |
-| ADMIN\_SERVICE | string | -admin-service | https://harness.io/gateway/cf | Used for creating the Client that interacts with the FeatureFlags Admin Service to retrieve Target and AuthConfig |
+| ADMIN\_SERVICE | string | -admin-service | `https://harness.io/gateway/cf` | Used for creating the Client that interacts with the FeatureFlags Admin Service to retrieve Target and AuthConfig |
 | SERVICE\_TOKEN | string | -service-token | ZHNvdWZoNjczMjR0aGZiLWk1NC0tMGRzZg== | Token that the Proxy can use to authenticate with the Admin service |
 | AUTH\_SECRET | string | -auth-secret | somethingSecret | To authenticate the connection between your SDK and the Proxy, the Proxy generates an authentication token (JWT) that is signed with the AUTH\_SECRET you set in your configuration. When the Proxy receives the authentication token, it verifies that it is signed using the AUTH\_SECRET. If it isn’t, the token is rejected as invalid. |
-| SDK\_BASE\_URL | string | -sdkBaseUrl | https://config.ff.harness.io/api/1.0 (default)| The Base URL that the internal Go SDK connects to |
-| SDK\_EVENTS\_URL | string | -sdkEventsUrl | https://events.ff.harness.io/api/1.0 (default) | The Event URL that the internal Go SDK connects to |
+| SDK\_BASE\_URL | string | -sdkBaseUrl | `https://config.ff.harness.io/api/1.0` (default)| The Base URL that the internal Go SDK connects to |
+| SDK\_EVENTS\_URL | string | -sdkEventsUrl | `https://events.ff.harness.io/api/1.0` (default) | The Event URL that the internal Go SDK connects to |
 | API\_KEYS | string | -apiKey | 5ecb5049-e071-4beb-ae43-381aa8f0d3a2, a7cb7fc6-c4fa-4ecb-b01f-068456f3e500 | The API Keys of the environments you want to configure the Proxy to work with.For example, create an SDK key called Proxy Key in your Environment and pass it in via the `API_KEYS` env. Then all the other applications in that Environment would be able to use the Proxy. |
 | TARGET\_POLL\_DURATION | int | target-poll-duration | 30 | Time in seconds that determines how frequently the Proxy polls Feature Flags to get the latest Targets |
 | REDIS\_ADDRESS | string | redis-address | localhost:6379 | Configures the Proxy to use Redis rather than an in-memory cache.Configuring the Proxy with Redis also enables streaming |

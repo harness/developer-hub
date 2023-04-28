@@ -309,7 +309,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - The Services dashboard was displaying deleted instances for project-level agents. (CDS-58041)
   
   The instance deletion did not happen due to an incorrect condition. This condition now picks up the instances for deletion.
-- Users were unable to delete a [V1 environments](https://developer.harness.io/docs/continuous-delivery/onboard-cd/upgrading/upgrade-cd-v2). (CDS-57943, ZD-41828)
+- Users were unable to delete a [V1 environments](/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2). (CDS-57943, ZD-41828)
   
   User can now delete V2 and V1 environments.
 - Missing task type support resulted in com.esotericsoftware.kryo.KryoException: Encountered unregistered class ID: 873575 error. (CDS-57912)
@@ -396,7 +396,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
                       primaryArtifactRef: <+input>
                       sources: <+input>
 
-- The [Jira Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages) step now supports modifying the issue type. (CDS-54027)
+- The [Jira Update](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages/) step now supports modifying the issue type. (CDS-54027)
 
   When you update a Jira issue using the Jira Update step, you can now modify the issue type by selecting the desired one from the drop-down list. For example, you can change a Story issue type to a Task. 
 
@@ -467,7 +467,7 @@ This release does not include any early access features.
   * URL with the `oci://` prefix. For example, `oci://public.ecr.aws`.
   * URL with port number. For example, `public.ecr.aws:443`.
   * URL with the `oci://` prefix and port number. For example, `oci://public.ecr.aws:443`. 
-- Users were able to save a [Kubernetes Apply step](https://developer.harness.io/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-apply-step/) template with empty manifest file paths. (CDS-53961)
+- Users were able to save a [Kubernetes Apply step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) template with empty manifest file paths. (CDS-53961)
 
   This issue is fixed. You can no longer configure empty file paths in the Apply step template.
 - Users were unable to create or edit the runtime input default values when configuring services, environments, templates, and pipelines. (CDS-53919, ZD-39998, ZD-40031, ZD-41197, ZD-41889)
@@ -642,7 +642,7 @@ This release does not include any early access features.
 
 ##### What's new
 
-- The [Jira Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages) step now supports updating the issue type. (CDS-53876)
+- The [Jira Update](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages/) step now supports updating the issue type. (CDS-53876)
 
   When you update a Jira issue using the Jira Update step, you can now update the issue type. For example, if the issue you are updating is a Story, you can update it to a Task.
 
@@ -933,7 +933,7 @@ These changes are backward incompatible. Therefore, you must also update the Ter
   Now, if there are empty values for values YAML **File Path**, these values YAML settings are omitted from the service UI.
 - The **Manual Intervention** tab was not displayed for the ServiceNow Create or Update steps. (CDS-53467, ZD-38687)
   
-  The **Manual Intervention** tab is used to select a failure strategy when the acceptance criteria in a ServiceNow [Create](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/create-service-now-tickets-in-cd-stages/) or [Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-service-now-tickets-in-cd-stages) step is not met. 
+  The **Manual Intervention** tab is used to select a failure strategy when the acceptance criteria in a ServiceNow [Create](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages) or [Update](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages) step is not met. 
   
   The **Manual Intervention** tab was not visible, but this has been fixed and the tab now displays during pipeline execution.
 
@@ -1027,7 +1027,7 @@ This release does not include early access features.
   Harness has added support for 128-character variable names.
 - Harness was inconsistent when displaying manifest files stored in the Harness File Store. (CDS-53118)
   
-  Harness was filtering [File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/) files based on the manifest type for some types (Kubernetes values YAML, Helm chart, etc.), but for other types Harness was showing all files.
+  Harness was filtering [File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) files based on the manifest type for some types (Kubernetes values YAML, Helm chart, etc.), but for other types Harness was showing all files.
   
   Now Harness is showing the correct file types for the manifest type selected by users. For example, in Kubernetes values YAML, Helm chart values YAML, Kustomize files, Kustomize patches files, OpenShift params files, OpenShift template files.
 - Invalid characters in [Shell Script step](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts/) output variables were allowed. (CDS-52946, ZD-39734)
@@ -1288,7 +1288,7 @@ This release does not include new features.
   The templates REST GET call was throwing a 400 Bad Request with error code `INVALID_REQUEST`. We have updated this error code to `RESOURCE_NOT_FOUND_EXCEPTION`. This is in line with best practices.
 - Unable to see the Harness file store at the projects level.	(CDS-50139)
 
-  The [Harness file store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/) is a hierarchical file manager in Harness for managing configuration files used in pipelines.
+  The [Harness file store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) is a hierarchical file manager in Harness for managing configuration files used in pipelines.
 
   The file store was not showing up at the projects level. This has been fixed and now you can use the file store in your projects.
 
