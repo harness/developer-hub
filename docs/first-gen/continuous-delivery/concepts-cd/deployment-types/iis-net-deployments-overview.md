@@ -12,7 +12,7 @@ This topic describes the concept of a Harness IIS (.NET) deployment by describin
 
 For a quick tutorial, see [IIS (.NET) Quickstart](../../../first-gen-quickstarts/iis-net-quickstart.md).
 
-For detailed instructions on using IIS (.NET) in Harness, see the [IIS (.NET)](docs/category/iis-net-deployments) How-tos.
+For detailed instructions on using IIS (.NET) in Harness, see the [IIS (.NET)](https://developer.harness.io/docs/category/iis-net-deployments) How-tos.
 
 ### Before You Begin
 
