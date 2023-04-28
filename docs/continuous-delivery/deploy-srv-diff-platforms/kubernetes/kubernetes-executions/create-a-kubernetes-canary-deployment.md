@@ -1,5 +1,5 @@
 ---
-title: Create a Kubernetes Canary Deployment
+title: Create a Kubernetes Canary deployment
 description: This topic describes how to create a Kubernetes Canary deployment in Harness.
 sidebar_position: 2
 helpdocs_topic_id: i5p4feil89

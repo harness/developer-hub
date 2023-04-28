@@ -34,6 +34,49 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by Sudheendra Katte to fix cv re-directs April 27th, 2023
+    {
+      from: "/docs/category/continuous-verification-1",
+      to: "/docs/category/configure-cv",
+    },
+
+    {
+      from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/install-the-error-tracking-agent",
+      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-setup",
+    },
+
+
+    // Created by Rashmi Sahoo to fix PL redirects April 27th, 2023
+    {
+      from: "/docs/category/role-based-access-control",
+      to: "/docs/category/access-control-1",
+    },
+
+    {
+      from: "/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes/",
+      to: "/docs/platform/Delegates/install-delegates/install-a-kubernetes-delegate",
+    },
+
+    {
+      from: "/docs/platform/Governance/Policy-as-code/docs/feature-flags/harness-policy-engine",
+      to: "/docs/feature-flags/harness-policy-engine",
+    },
+
+    // Created by ravilach to move CVKB into Docs April 21st, 2023
+    {
+      from: "/kb/continuous-delivery/continuous-verification-ml",
+      to: "/docs/continuous-delivery/verify/cv-concepts/machine-learning",
+    },
+
+    {
+      from: "/kb/continuous-delivery/continuous-verification-results",
+      to: "/docs/continuous-delivery/verify/cv-concepts/verification-results",
+    },
+
+    {
+      from: "/kb/continuous-delivery/continuous-verification-templates",
+      to: "/docs/continuous-delivery/verify/cv-concepts/templates",
+    },
 
     // Created by Sudheendra Katte to fix cv re-directs April 21st, 2023
     {
@@ -163,8 +206,10 @@ module.exports = {
       from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-arc",
       to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-arc",
     },
-
-
+    {
+      from: "/docs/category/9mefqceij0-cv-category",
+      to: "/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step",
+    },
     // Created by Rashmi Sahoo to fix platform re-direct April 19th, 2023
     {
       from: "/docs/platform/Authentication/provision-users-with-okta-scim",
@@ -844,7 +889,7 @@ module.exports = {
     },
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/create-a-budget-perspective",
-      to: "/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-a-budget-perspective",
     },
     {
       from: "/docs/cloud-cost-management/monitor-cloud-cost-with-integration/integration/datadog-integration",
@@ -954,6 +999,14 @@ module.exports = {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/ecs-recommendations",
       to: "/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/ecs-recommendations",
     },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-budgets/create-a-budget",
+      to: "/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget",
+    },
+    {
+      from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/create-cost-perspectives",
+      to: "/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives",
+    },
 
     // Created by SudheendraKatte for SRM Docs reorg, PR-1276, on Apr 12, 2023
     {
@@ -1036,6 +1089,7 @@ module.exports = {
     },
     {
       from: "/tutorials/build-code/ci-java-http-server",
+      from: "/tutorials/ci-pipelines/ci-java-http-server",
       to: "/tutorials/ci-pipelines/build/java",
     },
     {
@@ -1117,6 +1171,11 @@ module.exports = {
 
     {
       from: "/docs/platform/Delegates/get-started-with-delegates/delegates-overview",
+      to: "/docs/platform/Delegates/delegate-concepts/delegate-overview",
+    },
+    
+    {
+      from: "/docs/platform/Delegates/delegates-overview",
       to: "/docs/platform/Delegates/delegate-concepts/delegate-overview",
     },
 
@@ -1463,6 +1522,46 @@ module.exports = {
 
 
     // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
+    {
+      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-deployments-category/deployment-freeze",
+      to: "/docs/continuous-delivery/manage-deployments/deployment-freeze",
+    },
+
+    {
+      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart",
+    },
+
+    {
+      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/win-rm-tutorial",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial",
+    },
+
+    {
+      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial",
+    },
+
+    {
+      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-Jira",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events",
+    },
+
     {
       from: "/docs/continuous-delivery/cd-deployments-category/multiserv-multienv",
       to: "/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv",
@@ -2300,6 +2399,21 @@ module.exports = {
       to: "/docs/chaos-engineering/technical-reference/chaos-faults/aws/security-configurations/policy-for-all-aws-faults",
     },
 
+    {
+      from: "/docs/chaos-engineering/chaos-faults/",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/",
+    },
+
+    {
+      from: "/docs/article/1cqpe6f5id-chaos-enterprise-hub-experiments",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/",
+    },
+    
+    {
+      from: "/docs/article/v64rj2maiz-harness-chaos-engineering-basics",
+      to: "/docs/chaos-engineering/configure-chaos-experiments/probes/configure-and-add-probe",
+    },
+
     //  Created by aimurphy for branch ci-reorg-pt-3 on Apr 12, 2023
     {
       from: "/docs/category/codebase-configuration",
@@ -2344,87 +2458,128 @@ module.exports = {
       to: "/docs/category/set-up-build-infrastructure",
     },
 
-    // Created by aimurphy for branch ci-reorg-pt-3 on Apr 13, 2023
+    // adding redirect for Rashmi
+    {
+      from: "/docs/platform/References/whitelist-harness-domains-and-ips",
+      to: "/docs/platform/References/allowlist-harness-domains-and-ips",
+    },
+
+    // Created by aimurphy for branch ci-reorg-pt-5 on Apr 25, 2023
     {
       from: "/docs/category/ci-technical-reference",
-      to: "/docs/category/reference-ci-steps-settings",
+      from: "/docs/category/reference-ci-steps-settings",
+      to: "/docs/category/use-ci",
     },
 
     {
-      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/background-step-settings",
+      to: "/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings",
     },
 
     {
-      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-acr-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-acr-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/configure-service-dependency-step-settings",
+      to: "/docs/continuous-integration/use-ci/manage-dependencies/configure-service-dependency-step-settings",
     },
 
     {
-      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings",
     },
 
     {
-      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-gcr-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-gcr-step-settings",
-    },
-
-    {
-      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-gcs-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-gcs-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/run-step-settings",
+      to: "/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings",
     },
 
     {
       from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-jfrog-artifactory-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-jfrog-artifactory-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog/",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-gcs-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-gcs-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings",
     },
 
     {
       from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-s-3-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-s-3-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-s-3-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-acr-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-acr-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-gcr-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-gcr-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr",
     },
 
     {
       from: "/docs/continuous-integration/ci-technical-reference/ci-bitrise-plugin",
-      to: "/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-bitrise-plugin",
+      from: "/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-bitrise-plugin",
+      to: "/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference",
+      from: "/docs/continuous-integration/ci-technical-reference/plugin-steps/plugin-step-settings-reference",
+      from: "/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference/",
+      to: "/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference",
     },
 
     {
       from: "/tutorials/build-code/ci-github-action-step",
       from: "/docs/continuous-integration/ci-technical-reference/ci-github-action-step",
-      to: "/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-github-action-step",
-    },
-
-    {
-      from: "/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference",
-      to: "/docs/continuous-integration/ci-technical-reference/plugin-steps/plugin-step-settings-reference",
+      from: "/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-github-action-step",
+      to: "/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step",
     },
 
     {
       from: "/docs/continuous-integration/ci-technical-reference/restore-cache-from-gcs-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/cache-steps/restore-cache-from-gcs-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/cache-steps/restore-cache-from-gcs-settings",
+      to: "/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs",
     },
 
     {
       from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-gcs-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-gcs-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-gcs-step-settings",
+      to: "/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs",
     },
 
     {
       from: "/docs/continuous-integration/ci-technical-reference/restore-cache-from-s-3-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/cache-steps/restore-cache-from-s-3-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/cache-steps/restore-cache-from-s-3-step-settings",
+      to: "/docs/continuous-integration/use-ci/caching-ci-data/saving-cache",
     },
 
     {
       from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings",
-      to: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-s-3-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-s-3-step-settings",
+      to: "/docs/continuous-integration/use-ci/caching-ci-data/saving-cache",
     },
 
-    // adding redirect for Rashmi
     {
-      from: "/docs/platform/References/whitelist-harness-domains-and-ips",
-      to: "/docs/platform/References/allowlist-harness-domains-and-ips",
+      from: "/docs/continuous-integration/ci-technical-reference/ci-git-clone-step",
+      to: "/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline",
     },
   ],
 };

@@ -1,5 +1,5 @@
 ---
-title: Add Custom Fields to Custom Dashboards
+title: Add custom fields to custom dashboards
 description: This topic talks about how to add custom fields (dimensions and measures) to your dashboard.
 # sidebar_position: 2
 helpdocs_topic_id: i4mtqea5es

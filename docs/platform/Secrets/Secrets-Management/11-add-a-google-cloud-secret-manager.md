@@ -1,5 +1,5 @@
 ---
-title: Add a Google Cloud Secret Manager
+title: Add a Google Cloud secret manager
 description: Topic explaining how to add a Google Cloud Secret Manager.
 # sidebar_position: 2
 helpdocs_topic_id: nzqofaebno

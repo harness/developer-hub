@@ -24,12 +24,19 @@ import {
     // Docs
     export const docsCards: CardSections = [
       {
-        name: "Documentation topics",
+        name: "Get started with Cloud Cost Management",
         description:
           "",
         list: [
           {
-            title: "Get started with Cloud Cost Management",
+            title: "CCM Tutorials",
+            module: MODULES.ccm,
+            description:
+              "Learn how to manage and optimize the costs associated with your cloud resources.",
+            link: "/tutorials/cloud-costs",
+          },
+          {
+            title: "Get started",
             module: MODULES.ccm,
             description:
               "Learn the basic concepts of Harness Cloud Cost Management and how to set up CCM for your cloud accounts.",
@@ -57,11 +64,11 @@ import {
             link: "/docs/category/cost-governance",
           },
           {
-            title: "Third-party integrations",
+            title: "Integrations",
             module: MODULES.ccm,
             description:
               "Monitor your cloud costs by integrating CCM with third-party tools such as Datadog.",
-            link: "/docs/category/third-party-integrations",
+            link: "/docs/category/integrations-1",
           },
         ],
       },

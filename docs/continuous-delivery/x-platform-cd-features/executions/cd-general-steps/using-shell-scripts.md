@@ -1,5 +1,5 @@
 ---
-title: Using shell scripts in CD Stages
+title: Using shell scripts in CD stages
 description: This topic shows you how to run shell scripts in a CD stage using the Shell Script step.
 sidebar_position: 2
 ---
@@ -200,7 +200,7 @@ You can also use expressions in **Value**. For example, if you have an Output Va
 
 1. In **Script Input Variables**, you simply select **Expression** and paste the expression in **Value**:
    
-   ![](./static/using-shell-scripts-18.png)
+   ![](./static/script-input-variables.png)
 2. In the Script, you declare the variable using the **Name** value (in this example, `foo`).
    
    ![picture 3](static/3efd3f47e73c3ca4804bd0e728d8815194ae80c9284ddfe0c11fb07c520b3b0c.png)
@@ -231,6 +231,8 @@ The format to reference the output variable can be one of the following:
 	+ `<+execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
 * Anywhere in the pipeline:
 	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].output.outputVariables.[output_variable_name]>`
+* When step is inside a step group:
+	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_group_Id].steps.stepId.build.[output_variable_name]`  
 
 For example, you could reference the output variable `newname` like this:
 
@@ -280,7 +282,7 @@ You can use Harness variable expressions in your scripts and in the **Script Inp
 
 For **Script Input Variables** and **Script Output Variables**, you simply select **Expression**, and then paste in the Harness variable expression.
 
-![](./static/using-shell-scripts-26.png)
+![](./static/expressions-in-variables.png)
 
 ## Specify where to run the script
 

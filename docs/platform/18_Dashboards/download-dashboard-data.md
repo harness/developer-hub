@@ -1,5 +1,5 @@
 ---
-title: Download Dashboard Data
+title: Download dashboard data
 description: This page describes how to download content from By Harness Dashboards.
 # sidebar_position: 2
 helpdocs_topic_id: op59lb1pxv

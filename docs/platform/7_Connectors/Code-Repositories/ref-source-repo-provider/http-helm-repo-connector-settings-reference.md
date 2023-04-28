@@ -1,5 +1,5 @@
 ---
-title: HTTP Helm Repo Connector Settings Reference
+title: HTTP Helm repository connector settings reference
 description: This topic provides settings and permissions for the HTTP Helm Repo Connector.
 sidebar_position: 50
 helpdocs_topic_id: a0jotsvsi7

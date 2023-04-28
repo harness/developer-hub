@@ -1,5 +1,5 @@
 ---
-title: CloudFormation How-tos
+title: CloudFormation how-tos
 description: Harness has first-class support for AWS CloudFormation.
 sidebar_position: 1
 helpdocs_topic_id: vynj4hxt98

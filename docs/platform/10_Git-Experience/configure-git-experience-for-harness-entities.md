@@ -1,5 +1,5 @@
 ---
-title: Harness Git Experience Quickstart
+title: Harness Git Experience quickstart
 description: This topic explains steps to configure Git Experience for Harness Entities.
 sidebar_position: 3
 helpdocs_topic_id: grfeel98am
@@ -215,13 +215,24 @@ Click **Run**.
 
 Click **Run Pipeline**.
 
-### Branch selection logic for referencing remote entities in pipelines
+### Branch selection logic for fetching referenced entities in remote pipelines
 
-The configurations of the required resources and any referenced entities like Input Sets, are fetched from Git during pipeline fetch, creation, or execution.
+The configurations of the required resources and any referenced entities like input sets and templates are fetched from Git during pipeline fetch, creation, or execution.
 
-#### Referenced entities are in the same repository
+Following are the possible scenarios when your remote pipelines reference entities:
+- The referenced entities are stored in the same repository as the pipeline.
+- The referenced entities are stored in a different repository than the pipeline.
 
-If the referenced entities exist in the same repo, they are fetched from the same branch that you have selected for pipeline execution.​
+#### The referenced entities are stored in the same repository as the pipeline
+
+Following are the key points to keep in mind when the referenced entities reside in the same repository: 
+
+- During pipeline execution, Harness fetches the entities like templates from the same branch as the pipeline. This lets you test the templates before merging them back into the "default" branch.
+- Harness recommends creating a separate project for testing templates.
+- Templates and the corresponding pipelines to test them must be in the same repository.
+- When you modify a template in a feature branch, the test pipeline is also present in the feature branch.
+- As you can execute the pipeline from any branch, you can select the branch in which the changes to test templates were pushed. Merge the changes after testing. Upon merging, others can access them.
+- This approach works best when the teams responsible for creating and managing templates are different from those responsible for executing the pipeline (Platform Engineering or DevOps teams versus Developers), so the test projects should be separate from the production projects.
 
 Let us look at an example: 
 
@@ -233,9 +244,15 @@ When you execute this pipeline, Harness fetches these entities from the branch t
 
 ![](./static/entities-in-same-git-repo.png)
 
-#### Referenced entities are in different repositories
+#### The referenced entities are stored in a different repository than the pipeline
 
-If the referenced entities exist in a different repo, they are fetched from the default branch of the repo where the entities are stored.​
+Harness fetches entities like templates from the default branch of the repository if they are stored in another repository.
+
+This ensures: 
+- Teams always use tested and approved templates.
+- Prevents teams to execute pipelines using templates from different branches that have not yet been tested.
+
+If your inline entities refer remote entities, Harness fetches the remote entities from the default branch.
   
 Let us look at an example: 
   

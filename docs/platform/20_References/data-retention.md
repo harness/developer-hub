@@ -1,5 +1,5 @@
 ---
-title: Data Retention
+title: Data retention
 description: Data retention for Harness products is different depending on the Harness product and plan you are using. For example, Harness CD and CCM have different data retentions. To see the data retention for…
 # sidebar_position: 2
 helpdocs_topic_id: cqorziqg0z

@@ -3,7 +3,7 @@ sidebar_position: 1
 description: Walks you through adding JavaScript Feature Flags to a TypeScript and React Application.
 ---
 
-# Add feature flags to JavaScript app
+# Add Feature Flags to a JavaScript app
 
 ## Background on Feature Flags
 
@@ -197,7 +197,7 @@ With the expression and SDK wired in to monitor for changes in events, you are n
 
 ## Executing Your First Feature Flag
 
-You are now ready to run your first Feature Flag. As a note, this project is an example project to teach **strict** stylistic guidelines in TypeScript. You can disable the [Prettier plugin](https://prettier.io/tutorials/en/plugins.html) in the eslintrc config by adding a Prettier rule. You can also remove the “sort-imports” rule if your IDE did not take care of sorting the imports for you, e.g. when you added the init import statement.
+You are now ready to run your first Feature Flag. As a note, this project is an example project to teach **strict** stylistic guidelines in TypeScript. You can disable the [Prettier plugin](https://prettier.io/) in the eslintrc config by adding a Prettier rule. You can also remove the “sort-imports” rule if your IDE did not take care of sorting the imports for you, e.g. when you added the init import statement.
 
 ```
 "prettier/prettier": 0,

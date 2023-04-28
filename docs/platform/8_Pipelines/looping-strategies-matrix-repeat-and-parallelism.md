@@ -1,5 +1,5 @@
 ---
-title: Looping Strategies Overview -- Matrix, Repeat, and Parallelism
+title: Looping strategies overview -- matrix, repeat, and parallelism
 description: Looping strategies enable you to run a Stage or Step multiple times with different inputs. Looping speeds up your pipelines and makes them easier to read and maintain.
 # sidebar_position: 2
 helpdocs_topic_id: eh4azj73m4

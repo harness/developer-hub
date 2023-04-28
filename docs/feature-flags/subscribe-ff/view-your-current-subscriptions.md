@@ -23,8 +23,6 @@ To view the modules you’ve already subscribe to:
 2. Click **Account Settings**, then **Overview**.
 3. Your active subscriptions are displayed under **Subscribed Modules**.![A screenshot of the subscriptions on the account overview page.](./static/4-view-your-current-subscriptions-00.png)
 
-*Figure 1: Harness modules that are currently subscribed to*
-
 ## View the details of a subscription
 
 To view the details of a subscription: 
@@ -32,7 +30,8 @@ To view the details of a subscription: 
 1. Go to the Harness Platform.
 2. Click **Account Settings**, then **Subscriptions**.
 3. Select the module you want to view the subscription details for by clicking its tile.You’ll see tiles for all Harness modules, whether you have subscribed to them yet or not.
-4. The subscription details are displayed in **Subscription Overview**, under **Subscription Details**.  ![](./static/4-view-your-current-subscriptions-01.png)
+4. The subscription details are displayed in **Subscription Overview**, under **Subscription Details**.  
 
-*Figure 2: Subscription details*
+	![](./static/4-view-your-current-subscriptions-01.png)
+
 

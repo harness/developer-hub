@@ -364,7 +364,7 @@ export const STOList: CardItem[] = [
 
 export const CEList: CardItem[] = [
   {
-    title: "Your First Chaos Experiment on Kubernetes",
+    title: "Your first chaos experiment on Kubernetes",
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
     description: (
@@ -376,7 +376,7 @@ export const CEList: CardItem[] = [
     link: "/tutorials/chaos-experiments/first-chaos-engineering",
   },
   {
-    title: "Chaos Experiment from a Blank Canvas",
+    title: "Chaos experiment from a blank canvas",
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
     description: (

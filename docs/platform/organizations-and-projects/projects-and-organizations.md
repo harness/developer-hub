@@ -1,5 +1,5 @@
 ---
-title: Organizations and Projects Overview
+title: Organizations and projects overview
 description: This topic explains Organizations and Projects in Harness. In this topic --  Before you begin. Visual Summary. What is an Organization?. What is a Project?. What is a Product Module?. Resources Across S…
 sidebar_position: 10
 helpdocs_topic_id: 7fibxie636

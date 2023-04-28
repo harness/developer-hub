@@ -1,5 +1,5 @@
 ---
-title: Create a Kubernetes Rolling Deployment
+title: Create a Kubernetes Rolling deployment
 description: This topic describes how to perform a Kubernetes rolling update deployment in Harness.
 sidebar_position: 1
 helpdocs_topic_id: xsla71qg8t

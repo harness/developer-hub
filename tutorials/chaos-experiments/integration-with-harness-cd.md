@@ -19,7 +19,7 @@ It can be observed that currently the pipeline is able to deploy the application
 
 ![Online Boutique App Cart](./static/integration-with-harness-cd/online-boutique-app-cart.png)
 
-## Adding a Chaos Step
+## Add a chaos step
 
 Now let us add a chaos step to this pipeline so that the chaos experiment we had created in the previous tutorial, `cart-pod-delete`, will run whenever a new pipeline deployment is triggered. This will allow us to validate the deployment against the chaos hypothesis.
 
@@ -45,7 +45,7 @@ Now, select **Apply Changes**. That's all it takes to add a chaos step to your d
 
 ![Pipeline Updated](./static/integration-with-harness-cd/pipeline-updated.png)
 
-## Executing the CD Pipeline
+## Execute the CD pipeline
 
 Now if we manually **Run** this pipeline, we will observe that the pipeline will attempt to deploy the application as part of the CD deployment stage. However, the stage will fail with an error due to the failure of the **Boutique Cart Delete** chaos step, causing the CD to initiate a rollback and revert to the previous healthy deployment.
 
@@ -69,4 +69,5 @@ Upon the completion of the pipeline, we can observe that the deployment is succe
 
 ![CD Pipeline Passed](./static/integration-with-harness-cd/cd-pipeline-passed.png)
 
+## Conclusion
 Congratulations! You have now executed a chaos experiment as part of a Harness CD pipeline where you validated the resiliency of the application in a continuous manner.

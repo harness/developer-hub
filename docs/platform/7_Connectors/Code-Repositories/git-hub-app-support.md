@@ -1,5 +1,5 @@
 ---
-title: Use a GitHub App in a GitHub Connector
+title: Use a GitHub app in a GitHub connector
 description: Harness supports API access to GitHub using a GitHub App. GitHub recommends using GitHub Apps when integrating with GitHub. GitHub Apps offer more granular permissions to access data than typical aut…
 # sidebar_position: 2
 helpdocs_topic_id: nze5evmqu1

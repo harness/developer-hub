@@ -1,5 +1,5 @@
 ---
-title: Add a HashiCorp Vault Secret Manager
+title: Add a HashiCorp Vault secret manager
 description: This document explains how to store and use encrypted secrets (such as access keys) by adding a HashiCorp Vault Secrets Manager.
 # sidebar_position: 2
 helpdocs_topic_id: s65mzbyags
