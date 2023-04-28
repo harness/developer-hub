@@ -229,6 +229,10 @@ You can reuse triggers by copying and pasting trigger YAML. This can be helpful 
 
 ![](./static/trigger-on-a-new-artifact-29.png)
 
+:::note
+
+Trigger artifact expressions used in a pipeline are resolved during a pipeline re-run which were activated by a trigger.
+
 ### See also
 
 * [Schedule Pipelines using Triggers](schedule-pipelines-using-cron-triggers.md)
