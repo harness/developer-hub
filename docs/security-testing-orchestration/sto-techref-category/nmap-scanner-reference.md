@@ -4,7 +4,7 @@ description: Instance scans with Nmap
 sidebar_position: 200
 ---
 
-You can scan your container images using [Nmap](https://nmap.org/), an open-source tool used for network exploration, host discovery, and security auditing. 
+You can scan your instances using [Nmap](https://nmap.org/), an open-source tool used for network exploration, host discovery, and security auditing. 
 
 
 ## Nmap step configuration

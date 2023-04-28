@@ -1,26 +1,24 @@
 ---
-title: OWASP Dependency Check scanner reference
-description: Repository scans with OWASP Dependency Check
-sidebar_position: 210
+title: GitLeaks Scanner Reference
+description: Repository scans with GitLeaks
+sidebar_position: 155
+
 ---
 
-You can scan your code repositories using [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/), an SCA tool for detecting publicly disclosed vulnerabilities contained within a project’s dependencies.
+You can scan your code repositories using [GitLeaks](https://github.com/PyCQA/GitLeaks), an open-source tool designed to find common security issues in Python code. 
 
 
 <!-- START step-palette-config ----------------------------------------------------------------------------- -->
 
-## OWASP step configuration
+## GitLeaks step configuration
 
-The recommended workflow is to add an OWASP step to a Security Tests or CI Build stage and then configure it as described below. You can also configure OWASP scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is to add a GitLeaks step to a Security Tests or CI Build stage and then configure it as described below.  
 
 ```mdx-code-block
 import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 ```
 
 <StoScannerStepNotes />
-
-
-
 
 ### Scan Mode
 
@@ -87,7 +85,7 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 <!-- ============================================================================= -->
 <a name="target-workspace"></a>
 
-#### Workspace
+#### Workspace (_repository_)
 
 ```mdx-code-block
 import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
@@ -130,8 +128,6 @@ import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
 
 <StoSettingCliFlags />
 
-You can use this field to run the [dependency-check](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scanner with specific command-line arguments. For example, you can scan a specific path using the `--scan` argument: `tool_args` = `--scan ‘directory/**/*.jar’`
-
 <a name="fail-on-severity"></a>
 
 
@@ -142,15 +138,19 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 ```
 <StoSettingFailOnSeverity />
 
+### Settings
+
+You can add a `tool_args` setting to run the [GitLeaks scanner binary](https://pypi.org/project/GitLeaks/1.0.1/) with specific command-line arguments. For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `tool_args` = `-skip testID_1, testID_3, testID_5`
+
 
 ### Additional Configuration
 
 In the **Additional Configuration** settings, you can use the following options:
 
-* [Privileged](/docs/continuous-integration/ci-technical-reference/background-step-settings/#privileged)
-* [Image Pull Policy](/docs/continuous-integration/ci-technical-reference/background-step-settings/#image-pull-policy)
-* [Run as User](/docs/continuous-integration/ci-technical-reference/background-step-settings/#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/ci-technical-reference/background-step-settings/#set-container-resources)
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
 
 
 ### Advanced settings
@@ -164,37 +164,4 @@ In the **Advanced** settings, you can use the following options:
 
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
 
-## Security step settings (*deprecated*)
-
-You can set up OWASP scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
-
-<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- 
-
-```mdx-code-block
-import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
-```
-
-<StoSecurityStepConfig />
-
--->
-
-
-* `product_name` = `owasp`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan` or `ingestionOnly`
-* `product_config_name` = `default`
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-* `tool_args` — You can use this field to run the [dependency-check](https://jeremylong.github.io/DependencyCheck/dependency-check-cli/arguments.html) scanner with specific command-line arguments. For example, you can scan a specific path using the `--scan` argument: `tool_args` = `--scan ‘directory/**/*.jar’`
-
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
-
-<StoLegacyRepo />
-
-```mdx-code-block
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
-
-<StoLegacyIngest />
 

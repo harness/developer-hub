@@ -7,14 +7,6 @@ sidebar_position: 40
 You can scan your configurations using [AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html), which provides a comprehensive view of your security state in AWS and helps you check your environment against security industry standards and best practices. 
 
 
-## Before you begin
-
-```mdx-code-block
-import StoCreateDinD from './shared/dind-bg-step.md';
-```
-
-<StoCreateDinD />
-
 ## AWS Security Hub step configuration
 
 ### Scan settings
