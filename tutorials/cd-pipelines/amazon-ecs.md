@@ -111,13 +111,13 @@ Click Save and Continue and your credentials will be tested. Once successful, yo
 
 ### Configure Harness Docker Connector
 
-By default, Harness is wired to the public Docker Hub. Though depending on the image, the API endpoint can be different.  The endpoint for us to hit in this example is “https://registry.hub.docker.com/v2/” 
+By default, Harness is wired to the public Docker Hub. Though depending on the image, the API endpoint can be different.  The endpoint for us to hit in this example is `https://registry.hub.docker.com/v2/`.
 
 Harness -> Account Settings -> Account Connectors -> Harness Docker Connector then Edit.
 
 ![Edit Harness Docker Connector](static/first-ecs/edit_dh_conn.png)
 
-Modify the endpoint if not already to “https://registry.hub.docker.com/v2/”.
+Modify the endpoint if not already to `https://registry.hub.docker.com/v2/`.
 
 ![Docker Hub Details](static/first-ecs/dh_details.png)
 
