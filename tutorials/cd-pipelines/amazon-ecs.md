@@ -144,7 +144,7 @@ Can create two new files, one called “`ecs_task.json`” and one called “`se
 
 ![Harness File Store](static/first-ecs/harness_file_store.png)
 
-[ECS Task](https://github.com/harness-apps/developer-hub-apps/blob/main/applications/first-ecs-example/ecs_task.jso) JSON:
+[ECS Task](https://github.com/harness-apps/developer-hub-apps/blob/main/applications/first-ecs-example/ecs_task.json) JSON:
 On lines 3 and 53, replace the value of the “executionRoleArn” with your ecsInstanceRole.
 
 [Service Definition](https://github.com/harness-apps/developer-hub-apps/blob/main/applications/first-ecs-example/service_definition.jso) JSON:
