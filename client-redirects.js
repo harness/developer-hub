@@ -34,6 +34,92 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by Kim Fields to fix 404s found by marketing
+    {
+      from: "/docs/category/add-load-balancer-for-autostopping-rules",
+      to: "/docs/category/add-load-balancers-for-autostopping-rules",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-service-now-tickets-in-cd-stages",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-service-now-tickets-in-cd-stages",
+    },
+
+    {
+      from: "/docs/chaos-engineering/chaos-faults/security-chaos/kube-security-cis",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/security-chaos/kube-security-cis",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/ticketing-systems-category/create-service-now-tickets-in-cd-stages",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages",
+    }, 
+
+    {
+      from: "/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages",
+    },
+
+    {
+      from: "/docs/chaos-engineering/chaos-faults/load/locust-loadgen-chaos",
+      to: "/docs/chaos-engineering/technical-reference/chaos-faults/load/locust-loadgen",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-apply-step",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store",
+      to: "/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store",
+    },
+
+    {
+      from: "/docs/continuous-delivery/onboard-cd/upgrading/upgrade-cd-v2",
+      to: "/docs/category/upgrading-cd",
+    },
+
+    {
+      from: "/docs/category/cd-tutorials",
+      to: "/tutorials/cd-pipelines",
+    },
+
+    {
+      from: "/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/docs/category/cicd-artifact-build-and-deploy-pipelines",
+      to: "/docs/first-gen/continuous-delivery/concepts-cd/deployment-types/artifact-build-and-deploy-pipelines-overview",
+    },
+
+    {
+      from: "/docs/feature-flags/ff-sdks/client-sdks/docs/feature-flags/ff-creating-flag/create-a-project",
+      to: "/docs/feature-flags/ff-creating-flag/create-a-project",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/docs/platform/Connectors/Cloud-providers/add-aws-connector",
+      to: "/docs/category/cloudformation",
+    },
+
+    {
+      from: "/docs/first-gen/first-gen-quickstarts/docs/category/iis-net-deployments",
+      to: "/docs/category/iis-net-deployments",
+    },
+
+    {
+      from: "/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference",
+      to: "/docs/category/cloudformation",
+    },
+
+    {
+      from: "/docs/first-gen/firstgen-fa-qs/docs/category/cicd-artifact-build-and-deploy-pipelines",
+      to: "/docs/category/faqs-fg",
+    },
+
+    {
+      from: "/docs/first-gen/continuous-delivery/concepts-cd/deployment-types/docs/category/iis-net-deployments",
+      to: "/docs/category/iis-net-deployments",
+    },
+
     // Created by Sudheendra Katte to fix cv re-directs April 27th, 2023
     {
       from: "/docs/category/continuous-verification-1",
@@ -44,7 +130,6 @@ module.exports = {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/install-the-error-tracking-agent",
       to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-setup",
     },
-
 
     // Created by Rashmi Sahoo to fix PL redirects April 27th, 2023
     {
