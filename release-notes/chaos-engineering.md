@@ -3,7 +3,7 @@ title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
 date: 2023-04-25T10:00
-sidebar_position: 9
+sidebar_position: 10
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';

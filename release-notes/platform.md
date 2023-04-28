@@ -3,7 +3,7 @@ title: Harness Platform release notes
 sidebar_label: Harness Platform
 tags: [NextGen, "platform"]
 date: 2023-04-22T10:00
-sidebar_position: 10
+sidebar_position: 11
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
