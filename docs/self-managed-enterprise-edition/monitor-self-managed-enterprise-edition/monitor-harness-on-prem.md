@@ -7,6 +7,10 @@ helpdocs_category_id: 75ydek1suj
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
 Monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and integrating with observability tools, such as Grafana.
 
@@ -30,7 +34,7 @@ This example setup requires:
 - Prometheus version: Bitnami/kube-prometheus 8.4.0+
 - Istio version 1.15.3 or Nginx version v1.0.0-alpha.2
 
-:::info note
+:::info
 For this example, we use the Prometheus operator packaged by Bitnami as an external Prometheus setup.
 :::
 
@@ -71,7 +75,7 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
 
 2. Confirm your `ingress-controller` deployment is up and running to create a service with an external IP address. Harness recommends that you set up the controller in the same namespace where your deploy your Harness services.
 
-  :::info note
+  :::info
    You must enable metrics and the `serviceMonitors` for your databases to view the services exposing the metrics for each database. 
   :::
 
@@ -100,13 +104,14 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
               number: 9216
 ```
 
-:::info note
+:::info
  Add your IPs to your allow list so the metrics exposed by the ingress are only accessible internally. The IP included in the allow list is the external IP for the node where you host Prometheus in a separate cluster.
 :::
 
 ## Deploy Prometheus to integrate with Harness
 
 There are two options you can use to deploy Prometheus to integrate with your Harness instance:
+
 
 ```mdx-code-block
 <Tabs>
@@ -160,15 +165,19 @@ kubectl create secret generic harness-metrics --from-file config.yml -n <Namespa
   Prometheus can now scrape the metrics for MongoDB on the URL:
   `http://<LB-IP>/mongo-metrics/metrics`.
 
-:::info note 
+:::info
   Because the URL is on your allow list, other users are not able to view the internal metrics of specific infra components, such as MongoDB.
 :::
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="Standalone Prometheus installation">
 ```
-
 If you have Prometheus installed, you can make changes directly to your Prometheus `config.yaml` file by adding fields under scrape configs.
 
 To use a standalone Prometheus installation with a customer configuration, do the following:
@@ -201,6 +210,11 @@ To use a standalone Prometheus installation with a customer configuration, do th
      - targets:
 
        - redis-metrics.<Namespace>.svc.cluster.local:9121
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## View metrics on the Granfana dashboard
 
@@ -272,5 +286,9 @@ Now you can add a dashboard to view metrics via query.
 Here are some sample open source dashboards:
 
 - [MongoDB](https://github.com/dcu/mongodb_exporter/blob/master/grafana_dashboards/dashboard.json)
+
 - [Redis](https://github.com/oliver006/redis_exporter/blob/master/contrib/grafana_prometheus_redis_dashboard.json)
+
 - [Timescale/Postgres](https://github.com/prometheus-community/postgres_exporter/blob/master/postgres_mixin/dashboards/postgres-overview.json)
+
+
