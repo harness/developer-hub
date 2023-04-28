@@ -437,26 +437,12 @@ const config = {
         copyright: "Harness Inc.",
         rssDescription: "Harness Release Notes",
       },
+      redirectExport: {
+        destPath: "redirects.txt",
+      },
     }),
   plugins: [
-    [
-      "@docusaurus/plugin-client-redirects",
-      /* externalizing the redirects
-      {
-        redirects: [
-          {
-            from: "/release-notes",
-            to: "/release-notes/whats-new",
-          },
-          {
-            from: "/docs",
-            to: "/docs/category/documentation",
-          },
-        ],
-      },
-      */
-      clientRedirects,
-    ],
+    ["@docusaurus/plugin-client-redirects", clientRedirects],
     [
       "@docusaurus/plugin-content-docs",
       {
@@ -509,6 +495,7 @@ const config = {
     path.join(__dirname, "/plugins/onetrust-plugin"),
     path.join(__dirname, "/plugins/utmcookie-plugin"),
     path.join(__dirname, "/plugins/munity-plugin"),
+    path.join(__dirname, "/plugins/redirect-export-plugin"),
   ],
 };
 
