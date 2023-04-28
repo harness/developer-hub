@@ -34,7 +34,7 @@ This example setup requires:
 - Prometheus version: Bitnami/kube-prometheus 8.4.0+
 - Istio version 1.15.3 or Nginx version v1.0.0-alpha.2
 
-:::info
+:::info note
 For this example, we use the Prometheus operator packaged by Bitnami as an external Prometheus setup.
 :::
 
@@ -69,13 +69,13 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
        targetPort:https
    ```
 
-  :::info
+  :::info note
   The cloud `loadBalancerIP` in this example is a reserved external static IP created by Harness.
   :::
 
 2. Confirm your `ingress-controller` deployment is up and running to create a service with an external IP address. Harness recommends that you set up the controller in the same namespace where your deploy your Harness services.
 
-  :::info
+  :::info note
   You must enable metrics and the `serviceMonitors` for your databases to view the services exposing the metrics for each database. 
   :::
 
@@ -103,7 +103,7 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
                port:
                  number: 9216
    ```
-  :::info
+  :::info note
    Add your IPs to your allow list so the metrics exposed by the ingress are only accessible internally. The IP included in the allow list is the external IP for the node where you host Prometheus in a separate cluster.
   :::
 
@@ -163,7 +163,7 @@ To use a Kubernetes operator by Bitnami, do the following:
   Prometheus can now scrape the metrics for MongoDB on the URL:
   `http://<LB-IP>/mongo-metrics/metrics`.
 
- :::info
+ :::info note
    Because the URL is on your allow list, other users are not able to view the internal metrics of specific infra components, such as MongoDB.
  :::
 
