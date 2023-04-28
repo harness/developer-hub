@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and integrate with observability tools, such as Grafana.
 
-To monitor database applications like MongoDB, Postgres, or Redis for the Harness Self-Managed Enterprise Edition, this topic describes how you can use a Prometheus server installed in a Kubernetes cluster outside of Harness services. In this example, the monitored target application is present in one cluster, and Prometheus and Grafana are installed in another cluster. 
+To demonstrate how you can monitor database applications, like MongoDB, Postgres, or Redis, for the Harness Self-Managed Enterprise Edition, this topic describes how you can use a Prometheus server installed in a Kubernetes cluster outside of Harness services. In this example, the monitored target application is present in one cluster, and Prometheus and Grafana are installed in another cluster.
 
 The example setup uses two clusters to demonstrate the use of an ingress controller using LoadBalancer with an external Prometheus server.
 
@@ -59,7 +59,7 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
     targetPort:https
 ```
 
-  :::info note
+  :::info
     The cloud `loadBalancerIP` in this example is a reserved external static IP created by Harness.
   :::
 
@@ -95,7 +95,7 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
 ```
 
 :::info note
- Add your IPs to your allow list so the metrics exposed by the ingress are only accessible internally. The IP included in the allow list is the xxternal IP for the node where you host Prometheus in a separate cluster.
+ Add your IPs to your allow list so the metrics exposed by the ingress are only accessible internally. The IP included in the allow list is the external IP for the node where you host Prometheus in a separate cluster.
 :::
 
 ## Deploy Prometheus to integrate with Harness
@@ -260,7 +260,7 @@ Now you can add a dashboard to view metrics via query.
 
 - To add a dashboard, go to **Dashboards -> New dashboard -> Add a new panel**. 
 
-Below are some sample opensource dashboards:
+Here are some sample open source dashboards:
 
 - [MongoDB](https://github.com/dcu/mongodb_exporter/blob/master/grafana_dashboards/dashboard.json)
 - [Redis](https://github.com/oliver006/redis_exporter/blob/master/contrib/grafana_prometheus_redis_dashboard.json)
