@@ -47,11 +47,13 @@ This release includes the following Harness module and component versions.
   ```
 
   **Demo chart**
+
   Run the following to upgrade the demo chart:
   ```
   helm upgrade <release-name> harness/harness -f override-demo.yaml -f <custom-override>.yaml
   ```
   **Production chart**
+  
   Run the following up upgrade the production chart:
   ```
   helm upgrade <release-name> harness/harness -f override-prod.yaml -f <custom-override>.yaml
