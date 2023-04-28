@@ -457,57 +457,11 @@ The `image` value is an expression that generates the image path by calling your
 
 Harness CI has several caching options.
 
-* [Cache Intelligence](#cache-intelligence)
-* [S3 and GCS caching](#s3-and-gcs-caching)
+* Automated caching with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence)
+* [S3 caching](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache)
+* [GCS caching](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
 * [Shared Paths](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage), which you can use for temporary data sharing within a single stage
 * [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#docker-layer-caching)
-
-#### Cache Intelligence
-
-With [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence), Harness automatically caches and restores common dependencies. It doesn't require you to provide your own storage, because the cache is stored in our hosted environment, Harness Cloud.
-
-Cache Intelligence is available for the Harness Cloud build infrastructure only.
-
-To enable Cache Intelligence, add `caching: enabled: true` to he `stage: spec:` in the YAML editor, for example:
-
-```yaml
-    - stage:
-        name: Build Jhttp
-        identifier: Build_Jhttp
-        type: CI
-        spec:
-          caching:
-            enabled: true
-          cloneCodebase: true
-```
-
-To learn more about Cache Intelligence, including how to customize cache paths and keys, go to [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
-
-#### S3 and GCS caching
-
-
-[S3 caching](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache)
-* [GCS caching](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
-
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="Visual" label="Visual" default>
-```
-
-some content
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="YAML" label="YAML">
-```
-
-some content
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
 ## Run the pipeline
 
@@ -518,7 +472,7 @@ some content
 
 While the build runs you can observe each step of the pipeline execution on the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds). When the first stage completes, test results appear on the **Tests** tab.
 
-When the second stage completes, you should see the `curl` command running in the connectivity test step's logs. If it doesn't self-exit
+If you used the sample `curl` command in the second stage, the script may run indefinitely. Select the stop icon to terminate the build.
 
 :::tip
 
@@ -530,11 +484,7 @@ For a comprehensive guide on application testing, [Harness provides O'Reilly's *
 
 Now that you've created a basic pipeline for building and testing a Java app, you might want to explore the ways that you can [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times), including:
 
-* Using [triggers](/docs/category/triggers/) to automatically start pipelines.
-* [Caching dependencies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache).
-
-You can also try adding more steps to add more functionality to this pipeline, such as:
-
+* [Using Terraform notifications to automatically start builds](/tutorials/ci-pipelines/build/tfc-notification).
 * [Uploading artifacts to JFrog](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog).
 * [Publishing an Allure Report to the Artifacts tab](/tutorials/ci-pipelines/test/allure-report).
 * [Including CodeCov code coverage and publishing results to your CodeCov dashboard](/tutorials/ci-pipelines/test/codecov/).
