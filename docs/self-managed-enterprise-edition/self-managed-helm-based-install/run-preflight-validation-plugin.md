@@ -13,7 +13,7 @@ The pre-flight validation plugin allows you to perform pre-install, pre-upgrade,
 
 ## Install the plugin
 
-Helm plugins are installed using the $ helm plugin install <path|url> command. You can pass in a path to a plugin on your local file system or a URL of a remote VCS repo. The helm plugin install command clones or copies the plugin at the path/URL given into $HELM_PLUGINS.
+Helm plugins are installed using the `helm plugin install <path|url>` command. You can pass in a path to a plugin on your local file system or a URL of a remote VCS repo. The `helm plugin install` command clones or copies the plugin at the path/URL in `$HELM_PLUGINS`.
 
 To install the plugin using the GitHub repository, run the following command:
 
@@ -21,36 +21,33 @@ To install the plugin using the GitHub repository, run the following command:
 helm plugin install git@github.com:harness/Plugins-helm.git
 ```
 
-Alternatively , for an airgapped setup, users can give in the path to the directory where the plugin is installed on their system:
+Alternatively, for an [airgapped setup](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/), you can set the path to the directory where the plugin is installed on your system:
 
-First, download validator plugin tar file from the Harness Google Container Registry (GCR). 
-
-Then to install the plugin, run the following command:
+First, download validator plugin tar file from the Harness Google Container Registry (GCR), then run the following command to install the plugin:
 
 ```
 helm plugin install plugin-directory
 ```
 
-List the available plugins to ensure that the plugin has been installed:
+List the available plugins to ensure that the plugin installed:
 
 ```
 helm plugin list
 ```
 
-The output should show the plugin named “Validator” in installed plugins.
-
+The output includes the `Validator` plugin in installed plugins.
 
 ## Run the plugin
 
-Once the helm plugin is installed, it is ready to be used by running the following base command:
+Once the Helm plugin is installed, you can use it by running the following base command:
 
 ```
 helm validator run 
 ```
 
-This can be added with the available commands and flags for specific purposes. Out of which the namespace flag, specified by -n, is necessary for using the plugin as it tells where the validations should run.
+You can add this with the available commands and flags for specific purposes. The namespace flag, specified by `-n`, is required to use the plugin to define where the validations must run.
 
-Information about commands and other flags, how to use them and their purpose is defined as below:
+Here is a list of commands and other flags, how to use them, and their purpose:
 
 ```
 Usage:
@@ -70,15 +67,15 @@ Flags:
   -s, --stage              stage to run validations against. pre-upgrade, post-upgrade, pre-install, post-install.
 ```
 
-An example implementation that shows how the command to run and corresponding output would look like for particular cases:
+An example implementation that shows how the command to run and corresponding output is below.
 
-The following command will run the plugin on the namespace: `harness-smp1`
+The following command runs the plugin on the `harness-smp1` namespace:
 
 ```
 helm validator run -n harness-smp1
 ```
 
-The output would look something like the following in the case that all checks pass:
+When all checks pass, the output looks similar to the following:
 
 ```
 Check Harness health ran successfully
@@ -87,8 +84,7 @@ Check Mongo health ran successfully
 Check Access-Control health ran successfully
 ```
 
-Output that would be displayed in case that the Mongo Health and Service (Access-Control) Health checks fail, with suggestions for the same:
-
+When the Mongo Health and Service (access-control) checks fail,  the output looks similar to the following:
 
 ```
 Check Mongo Health:
@@ -110,13 +106,15 @@ Check Service Health:
         - If issue persists, contact harness-support
 ```
 
-Permissions
-Only the person(s) having access to customer’s Kubernetes cluster setup would be able to run this plugin. 
+## Permissions
 
-Validation YAML
-The yaml file for the validation will provide all the necessary information about the check that is required to run the 
+You must have access to the Kubernetes cluster setup to run this plugin. 
 
-The validation yaml format that is designed to define all the required parameters for a check:
+## Validation YAML
+
+The YAML file for the validation provides all necessary information about the check required to run the plugin. 
+
+The validation YAML format is designed to define all the required parameters for a check:
 
 ```
 name: "" # name of validation
@@ -137,7 +135,7 @@ checks: # checks to run under this validation
       - ""
 ```
 
-As an example, here is the YAML file we built for a Kubernetes check to ensure minimum number of nodes are allocated to the cluster: 
+Here is an example YAML file for a Kubernetes check to ensure a minimum number of nodes are allocated to the cluster: 
 
 ```
 name: "Check Minimum Nodes" # name of validation
@@ -159,14 +157,16 @@ checks: # checks to run under this validation
     - "" 
 ```
 
-Upgrade
- Updates to the plugin can be done using the following command:
+## Upgrade the plugin
+
+ You can upgrade the plugin using the following command:
 
 ```
 helm validator update
 ```
+## Uninstall
 
-The helm plugin can also be uninstalled by the following command, in case someone wants to do so: 
+You can unintall the plugin using the following command: 
 
 ```
 helm validator upinstall
