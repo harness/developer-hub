@@ -45,7 +45,7 @@ import {
             title: "Install using Helm",
             module: MODULES.platform,
             description:
-              "Learn how to use Helm to install Self-Managed Enterprise Edition.",
+              "Learn how to use Helm to install Harness Self-Managed Enterprise Edition.",
             link: "/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga",
           },
           {
