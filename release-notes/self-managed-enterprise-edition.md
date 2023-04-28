@@ -38,12 +38,21 @@ This release includes the following Harness module and component versions.
 ```
 #### Self-Managed Enterprise Edition
 - Beginning with v0.5.0, Harness will no longer publish `harness-prod` or `harness-demo` Helm charts. Harness will publish the `harness` base chart only. If you currently use the `harness-prod` or `harness-demo` Helm chart, you must download your `custom-override.yaml` file from [the helm-charts repository](https://github.com/harness/helm-charts/tree/main/src) and use the following commands to upgrade:
+  
+  **Harness chart**
+
+  Run the following to update the Harness chart repo:
+  ```
+  helm repo update harness
+  ```
 
   **Demo chart**
+  Run the following to upgrade the demo chart:
   ```
   helm upgrade <release-name> harness/harness -f override-demo.yaml -f <custom-override>.yaml
   ```
   **Production chart**
+  Run the following up upgrade the production chart:
   ```
   helm upgrade <release-name> harness/harness -f override-prod.yaml -f <custom-override>.yaml
   ```
