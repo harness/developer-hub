@@ -14,11 +14,11 @@ To override the manifests of specific services deployed to an environment, do th
 
 1. In **Environments**, select an environment.
 2. In the environment's **Service Overrides** tab, select **New configuration overrides**.
-3. In **Service**, select a service.
+3. In **Service**, select a service you want to override when it is deployed to the selected environment.
 4. In **Override Type**, select **Manifest**, and then select **New Manifest Override**.
 5. Specify a manifest type, and select **Continue**. 
    
-   You can select Values YAML, OpenShift Param, Kustomize Patches, Helm Repo Overide, TAS Manifest, TAS Vars, and TAS AutoScaler manifest types.
+   You can select TAS Manifest, TAS Vars, and TAS AutoScaler manifest types.
 
    ![manifest override](./static/manifest-override.png)
 
@@ -30,7 +30,7 @@ To override the config files of specific services deployed to an environment, do
 
 1. In **Environments**, select an environment.
 2. In the environment's **Service Overrides** tab, select **New configuration overrides**.
-3. In **Service**, select a service to override.
+3. In **Service**, select a service you want to override when it is deployed to the selected environment.
 4. In **Override Type**, select **Config File**, and then select **New Config File Override**.
 5. In **Config File Selection**, select the config file to override, and then select **Override**.
    
@@ -44,7 +44,7 @@ To override the variables of specific services deployed to an environment, do th
 
 1. In **Environments**, select an environment.
 2. In the environment's **Service Overrides** tab, select **New configuration overrides**.
-3. In **Service**, select a service.
+3. In **Service**, select a service you want to override when it is deployed to the selected environment.
 4. In **Override Type**, select **Variable**, and then select **New Variable Override**.
 5. In **Add Variable**, select the variable name, and enter an override value. 
 6. Select **Submit**.
