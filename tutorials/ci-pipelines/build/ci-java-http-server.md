@@ -142,7 +142,7 @@ pipeline:
 
 ### Understand the build infrastructure
 
-This pipeline uses a Linux AMD64 machine on Harness Cloud build infrastructure, as declared in the stage's `platform` specifications.
+If you inspect the pipeline you just created, you can see that it uses a Linux AMD64 machine on Harness Cloud build infrastructure. You can see this on the **Build** stage's **Infrastructure** tab in the visual editor, or in the stage's `platform` specification in the YAML editor.
 
 ```yaml
     - stage:
@@ -162,9 +162,15 @@ Regardless of the build infrastructure you choose, you must ensure the build far
 In contrast, if you choose to [use a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure) and your pipeline requires a tool that is not already available in the cluster, you can configure your pipeline to load those prerequisite tools when the build runs. There are several ways to do this in Harness CI, including:
 
 * [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies) for running dependent services.
-* [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) to run templated scripts, such as GitHub Actions, BitBucket Integrations, or any Drone plugin.
+* [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) to run templated scripts, such as GitHub Actions, BitBucket Integrations, Drone plugins, and your own custom plugins.
 * [Various caching options](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages) to load dependency caches.
 * [Run steps](/docs/category/run-scripts) for running all manner of scripts and commands.
+
+:::caution
+
+You must ensure that the build farm can run the commands required by your build. You may need to modify your build machines or add steps to your pipeline to install necessary tools, libraries, and other dependencies.
+
+:::
 
 ## Use variables
 
@@ -206,9 +212,9 @@ In the YAML editor, add the following `variables` block between the `properties`
 </Tabs>
 ```
 
-## Run the initial tests
+## Run tests
 
-Add a step to run tests against the JHTTP app code. This portion of the tutorial uses a [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings) so that the pipeline can benefit from Harness' [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) feature. Later in this tutorial, a Run step is used to run a connectivity test script. To learn more, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+Add a step to run tests against the JHTTP app code. This portion of the tutorial uses a [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings) so that the pipeline can benefit from Harness' [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) feature. In the [Manage dependencies](#manage-dependencies) section of this tutorial, you can see an example where a Run step is used to run a connectivity test script against the app running in a [Background step](#service-dependencies). To learn more, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
 
 ```mdx-code-block
 <Tabs>
@@ -337,11 +343,17 @@ Notice the following about this step:
 </Tabs>
 ```
 
-## Manage dependencies: Run the app as a service
+## Manage dependencies
 
-You can use [Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) to run services needed by other steps in the same stage. This tutorial uses a **Background** step to run the JHTTP app so that a **Run** step can run a connection test against the app.
+Harness offers several options for [managing dependencies](/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies), including Background steps and caching options.
 
-Harness offers several options for [managing dependencies](/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies), including automated caching through [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
+[Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and [Run steps](/docs/category/run-scripts) are also useful for installing dependencies.
+
+### Use a Background step
+
+You can use [Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) to run services needed by other steps in the same stage.
+
+The following example adds a **Background** step that runs the JHTTP app as a service. The subsequent [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) can leverage the service to do things like run connection tests.
 
 ```mdx-code-block
 <Tabs>
@@ -359,17 +371,31 @@ Harness offers several options for [managing dependencies](/docs/continuous-inte
    * **Tags:** Select **Add** and enter `<+pipeline.sequenceId>`.
    * **Port Bindings:** Select **Add** and enter `8888` for both **Host Port** and **Container Port**.
 
-5. Select **Apply Changes**.
+   :::info
 
-Notice that the **Image** value uses an expression that generates the image path by calling your [pipeline variable](#use-variables) and the build ID expression, which was used as the **Tag** in the **Build and Push an image to Docker Registry** step.
+   The **Image** value uses an expression that generates the image path by calling your [pipeline variable](#use-variables) and the build ID expression, which was used as the **Tag** in the **Build and Push an image to Docker Registry** step.
+
+   :::
+
+5. Select **Apply Changes** to save the **Background** step.
+6. Add a **Run** step after the **Background** step.
+7. For **Shell**, select the relevant script type.
+8. In the **Command** field, enter commands to interact with the app however you desire. For example:
+
+   ```
+   until curl https://localhost:8888; do
+     sleep 2;
+   done
+   ```
+
+9. Select **Apply Changes** to save the **Run** step.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="YAML" label="YAML" default>
 ```
 
-Add the following code block to the end of your pipeline YAML. Replace the bracketed value with your [Docker connector](#prepare-the-docker-registry) ID.
-
+Add the following code block to the end of your pipeline YAML. Replace the bracketed value with your [Docker connector](#prepare-the-docker-registry) ID. You can change the `Run` step's `command` to interact with the app however you desire.
 ```yaml
     - stage:
         name: Run Connectivity Test
@@ -396,50 +422,6 @@ Add the following code block to the end of your pipeline YAML. Replace the brack
                     shell: Sh
                     portBindings:
                       "8888": "8888"
-```
-
-This code block does the following:
-
-* `stage` - Adds a second `CI` stage to the pipeline.
-* `cloneCodebase: false` - This stage does not need to clone the GitHub repo because it will use the app image that was built and pushed to Docker Hub in the first stage.
-* `platform` - The stage uses the same build infrastructure as the first stage.
-* `step` - Adds a `Background` step that runs the JHTTP app image.
-* `image` - This value uses an expression that generates the image path by calling your [pipeline variable](#use-variables) and the build ID expression, which was used as the `tag` value in the `Build and Push an image to Docker Registry` step.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Run the connectivity test
-
-Add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to run a connectivity test script against the JHTTP app. To learn more, go to [Run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="Visual" label="Visual">
-```
-
-1. In your second **Build** stage, add a **Run** step.
-2. For **Shell**, select **Sh**.
-3. Enter the following code in the **Command** field:
-
-   ```
-   until curl --max-time 1 https://localhost:8888; do
-     sleep 2;
-   done
-   ```
-
-4. Select **Apply Changes**.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="YAML" label="YAML" default>
-```
-
-In the YAML editor, add the following `step` block after the `Background` step block.
-
-```yaml
               - step:
                   type: Run
                   name: Test Connection to Java HTTP Server
@@ -447,10 +429,80 @@ In the YAML editor, add the following `step` block after the `Background` step b
                   spec:
                     shell: Sh
                     command: |-
-                      until curl --max-time 1 http://localhost:8888; do
-                        sleep 2;
+                      until curl https://localhost:8888; do
+                       sleep 2;
                       done
 ```
+
+This code block does the following:
+
+* `stage` - Adds a second `CI` stage to the pipeline.
+* `cloneCodebase: false` - This stage does not need to clone the GitHub repo because it uses the app image that was built and pushed to Docker Hub in the first stage.
+* `platform` - The stage uses the same build infrastructure as the first stage.
+* `step: type: Background` - Adds a `Background` step that runs the JHTTP app image.
+* `step: type: Run` - Adds a `Run` step that runs a connection test against the JHTTP app.
+
+:::info
+
+The `image` value is an expression that generates the image path by calling your [pipeline variable](#use-variables) and the build ID expression, which was used as the `tag` value in the `Build and Push an image to Docker Registry` step.
+
+:::
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+### Use caching
+
+Harness CI has several caching options.
+
+* [Cache Intelligence](#cache-intelligence)
+* [S3 and GCS caching](#s3-and-gcs-caching)
+* [Shared Paths](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage), which you can use for temporary data sharing within a single stage
+* [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#docker-layer-caching)
+
+#### Cache Intelligence
+
+With [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence), Harness automatically caches and restores common dependencies. It doesn't require you to provide your own storage, because the cache is stored in our hosted environment, Harness Cloud.
+
+Cache Intelligence is available for the Harness Cloud build infrastructure only.
+
+To enable Cache Intelligence, add `caching: enabled: true` to he `stage: spec:` in the YAML editor, for example:
+
+```yaml
+    - stage:
+        name: Build Jhttp
+        identifier: Build_Jhttp
+        type: CI
+        spec:
+          caching:
+            enabled: true
+          cloneCodebase: true
+```
+
+To learn more about Cache Intelligence, including how to customize cache paths and keys, go to [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
+
+#### S3 and GCS caching
+
+
+[S3 caching](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache)
+* [GCS caching](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
+
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual" default>
+```
+
+some content
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML">
+```
+
+some content
 
 ```mdx-code-block
   </TabItem>
@@ -466,7 +518,7 @@ In the YAML editor, add the following `step` block after the `Background` step b
 
 While the build runs you can observe each step of the pipeline execution on the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds). When the first stage completes, test results appear on the **Tests** tab.
 
-When the second stage completes, you should see the successful `curl` command in the connectivity test step's logs.
+When the second stage completes, you should see the `curl` command running in the connectivity test step's logs. If it doesn't self-exit
 
 :::tip
 
@@ -490,7 +542,13 @@ You can also try adding more steps to add more functionality to this pipeline, s
 
 ## Reference: Pipeline YAML
 
-Here is the complete YAML for this tutorial's pipeline. If you copy this example, make sure to replace the bracketed values with corresponding values for your Harness project, [GitHub connector ID](#create-the-github-connector), GitHub account name, and [Docker connector ID](#prepare-the-docker-registry).
+Here is the complete YAML for this tutorial's pipeline. This pipeline:
+
+* Has a stage with [Cache Intelligence](#use-caching) and steps that [run tests](#run-tests) and [build the jhttp app](#build-and-push-to-docker-hub).
+* Has a stage that runs the jhttp app in a [Background step](#use-a-background-step) and then runs a connectivity test against the app.
+* Uses the [Harness Cloud build infrastructure](#understand-the-build-infrastructure).
+
+If you copy this example, make sure to replace the bracketed values with corresponding values for your Harness project, [GitHub connector ID](#create-the-github-connector), GitHub account name, and [Docker connector ID](#prepare-the-docker-registry).
 
 <details>
 <summary>Pipeline YAML</summary>
@@ -519,6 +577,8 @@ pipeline:
         description: ""
         type: CI
         spec:
+          caching:
+            enabled: true
           cloneCodebase: true
           platform:
             os: Linux
@@ -586,8 +646,8 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      until curl --max-time 1 http://localhost:8888; do
-                        sleep 2;
+                      until curl https://localhost:8888; do
+                       sleep 2;
                       done
 ```
 
