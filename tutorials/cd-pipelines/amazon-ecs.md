@@ -147,7 +147,7 @@ Can create two new files, one called “`ecs_task.json`” and one called “`se
 [ECS Task](https://github.com/harness-apps/developer-hub-apps/blob/main/applications/first-ecs-example/ecs_task.json) JSON:
 On lines 3 and 53, replace the value of the “executionRoleArn” with your ecsInstanceRole.
 
-[Service Definition](https://github.com/harness-apps/developer-hub-apps/blob/main/applications/first-ecs-example/service_definition.jso) JSON:
+[Service Definition](https://github.com/harness-apps/developer-hub-apps/blob/main/applications/first-ecs-example/service_definition.json) JSON:
 On line 8, replace the Security Group with your applicable Security Group. On lines 11, 12, and 13 replace the subnets with your subnet IDs for the availability zones selected when the ECS Cluster was created. You can add or subtract items in the subnet array depending on the number of subnets you have. 
 
 With those manifests out of the way, creating the ECS Pipeline will be very speedy. 
