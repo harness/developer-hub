@@ -8,13 +8,19 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and integrate with observability tools, such as Grafana.
+Monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and integrating with observability tools, such as Grafana.
 
 To demonstrate how you can monitor database applications, like MongoDB, Postgres, or Redis, for the Harness Self-Managed Enterprise Edition, this topic describes how you can use a Prometheus server installed in a Kubernetes cluster outside of Harness services. In this example, the monitored target application is present in one cluster, and Prometheus and Grafana are installed in another cluster.
 
 The example setup uses two clusters to demonstrate the use of an ingress controller using LoadBalancer with an external Prometheus server.
 
+<figure>
+
 ![](./static/monitor-harness-on-prem.png)
+
+<figcaption>Figure 1: Example monitoring setup</figcaption>
+
+</figure>
 
 ## Requirements
 
@@ -102,10 +108,10 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
 
 There are two options you can use to deploy Prometheus to integrate with your Harness instance:
 
- - Use a Kubernetes operator by Bitnami
- - Use a standalone Prometheus installation
-
-### Use a Kubernetes operator by Bitnami
+```mdx-code-block
+<Tabs>
+  <TabItem value="Kubernetes operator by Bitnami">
+```
 
 To use a Kubernetes operator by Bitnami, do the following:
 
@@ -158,7 +164,10 @@ kubectl create secret generic harness-metrics --from-file config.yml -n <Namespa
   Because the URL is on your allow list, other users are not able to view the internal metrics of specific infra components, such as MongoDB.
 :::
 
-### Use a standalone Prometheus installation
+```mdx-code-block
+<Tabs>
+  <TabItem value="Standalone Prometheus installation">
+```
 
 If you have Prometheus installed, you can make changes directly to your Prometheus `config.yaml` file by adding fields under scrape configs.
 
@@ -258,7 +267,7 @@ Follow the below steps on your Kubernetes cluster to deploy Grafana:
 
 Now you can add a dashboard to view metrics via query.
 
-- To add a dashboard, go to **Dashboards -> New dashboard -> Add a new panel**. 
+- To add a dashboard, go to Go to **Dashboards** and then select **New Dashboard** and **Add a new panel**. 
 
 Here are some sample open source dashboards:
 
