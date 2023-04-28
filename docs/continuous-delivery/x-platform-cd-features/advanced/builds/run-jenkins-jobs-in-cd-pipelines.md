@@ -150,4 +150,3 @@ To access Jenkins job's environment variables from the step output, use:
 When the step is inside a step group, use:
 
 `<+pipeline.stages.[STAGE_IDENTIFIER].spec.execution.steps.[STEP_GROUP_IDENTIFIER].steps.[STEP_IDENTIFIER].build.envVars.[ENV_VAR_FIELD]>`
- 
