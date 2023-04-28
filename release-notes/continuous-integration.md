@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-05-01T10:00
+date: 2023-05-03T10:00
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Continuous In
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - May 01, 2023, version 792xx
+## Latest - May 03, 2023, version 792xx
 
 ```mdx-code-block
 <Tabs>
@@ -23,8 +23,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 
 * The CI Getting Started workflow now saves the pipeline remotely (in your Git repository) by default. Previously, the pipeline was stored inline (in Harness) unless you manually selected remote storage. The Getting Started workflow also automatically creates two [input sets](/docs/platform/pipelines/input-sets/) for [Git event triggers](/docs/platform/Triggers/triggering-pipelines): one for a PR trigger and one for a Push trigger. (CI-7602)
-* Plugin step supports output variable field? (CI-7491) + update docs
-* (CI-6237)
+* You can now reference [output variables produced by Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables) in pipelines that use Kubernetes cluster build infrastructures. This is an addition to previously-existing support for Harness Cloud and self-hosted Cloud provider VM build infrastructures. (CI-7491)
+* [Local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) and [Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure) build infrastructures now support pipeline- and stage-level [delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors). You can use pipeline and stage-level delegate selectors to override the delegate selection in a connector's configuration. This level of delegate selection isn't supported for Harness Cloud or self-hosted Cloud provider VM build infrastructures. (CI-6237)
 
 ```mdx-code-block
   </TabItem>
