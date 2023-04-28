@@ -17,6 +17,8 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 ## Latest - April 26, 2023, version 78926
 
 This release includes the following Harness module and component versions.
+**Helm Chart Version ** 0.5.0
+**Release** https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 
 | **Name** | **Version** |
 | :-- | :--: |
@@ -661,9 +663,11 @@ This release includes the following Harness module and component versions.
 - The service information of a stage disappeared when swapping two stages if the stage was propagated from the other stage. (CDS-53331)
 
   The service details of stages appear properly now when you swap service propagated stages.
+
 - Files created with the [File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) do not save consistently witht the correct file type. (CDS-53329)
 
   A code enhancement has fixed this issue.
+
 - The Nexus version selected for an artifact source can be overridden in the artifact connector. (CDS-53308)
   
   When you create the artifact source for a service, you could choose Nexus 3 or 2, but when you create the Harness connector you could also select Nexus 3 or 2. Consequently, you could create a Nexus 2 artifact source with a Nexus 3 connector.
@@ -776,9 +780,6 @@ This release includes the following Harness module and component versions.
   The Git diff in the YAML reconcile screen was performing unnecessary changes like adding quotes to each string value, shifting YAML indentation, converting multiline strings to single line using the newline character, etc.
   
   Now you can see the correct Git diff in the Harness YAML. The diff consist of necessary changes only, such as the addition and removal of fields.
-- The hint text for the Specify Environment and Connector fields is not standardized. (CDS-43840)
-
-  This issue has been fixed, the hint text is now standardized to use "Select."
 #### Cloud Cost Management
 - In accounts without a Cluster Connector, the `ANOMALY_DETECTION_CLOUD` job responsible for displaying Cloud Anomalies was not executed. (CCM-11798)
 
