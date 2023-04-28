@@ -70,13 +70,13 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
 ```
 
   :::info
-    The cloud `loadBalancerIP` in this example is a reserved external static IP created by Harness.
+  The cloud `loadBalancerIP` in this example is a reserved external static IP created by Harness.
   :::
 
 2. Confirm your `ingress-controller` deployment is up and running to create a service with an external IP address. Harness recommends that you set up the controller in the same namespace where your deploy your Harness services.
 
   :::info
-   You must enable metrics and the `serviceMonitors` for your databases to view the services exposing the metrics for each database. 
+  You must enable metrics and the `serviceMonitors` for your databases to view the services exposing the metrics for each database. 
   :::
 
 3. Create an ingress file for `mongo-metrics`, with defined routing rules that forwards requests to an internal service exposing metrics with a similar configuration.
@@ -112,10 +112,9 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
 
 There are two options you can use to deploy Prometheus to integrate with your Harness instance:
 
-
 ```mdx-code-block
 <Tabs>
-  <TabItem value="Kubernetes operator by Bitnami">
+  <TabItem value="Kubernetes operator by Bitnami" default>
 ```
 
 To use a Kubernetes operator by Bitnami, do the following:
@@ -126,53 +125,54 @@ To use a Kubernetes operator by Bitnami, do the following:
 
 3. Provide the name of the secret you want to add in the `config.yaml` file.
 
-```
-spec:
-  additionalScrapeConfigs:
-    key: config.yml
-    name:harness-metrics
-```
+   ```
+   spec:
+     additionalScrapeConfigs:
+       key: config.yml
+       name:harness-metrics
+   ```
 
 4. Create a `harness-metrics` secret in the same namespace where the Prometheus operator is installed. This secret passes a `config.yaml` file as the data. The data contains the job for the `additionalScrapeConfigs` in the following manner.
 
-```
-job_name:mongo-metrics-test
-  scrape_interval:30s
-  metrics_path:/mongo-metrics/metrics
-  static_configs:
-  - targets:
-    - <LB-IP>
-- job_name:redis-metrics-test
-  scrape_interval:30s
-  metrics_path:/redis-metrics/metrics
-  static_configs:
-  - targets:
-    - <LB-IP>
-- job_name:postgres-metrics-test
-  scrape_interval:30s
-  metrics_path:/postgres-metrics/metrics
-  static_configs:
-  - targets:
-    -<LB-IP>
-```
+   ```
+   job_name:mongo-metrics-test
+     scrape_interval:30s
+     metrics_path:/mongo-metrics/metrics
+     static_configs:
+     - targets:
+       - <LB-IP>
+   - job_name:redis-metrics-test
+     scrape_interval:30s
+     metrics_path:/redis-metrics/metrics
+     static_configs:
+     - targets:
+       - <LB-IP>
+   - job_name:postgres-metrics-test
+     scrape_interval:30s
+     metrics_path:/postgres-metrics/metrics
+     static_configs:
+   - targets:
+     -<LB-IP>
+  ```
 
 5. Run the following command to create the secret:
 
-```
-kubectl create secret generic harness-metrics --from-file config.yml -n <Namespace>
-```
+   ```
+   kubectl create secret generic harness-metrics --from-file config.yml -n <Namespace>
+   ```
 
   Prometheus can now scrape the metrics for MongoDB on the URL:
   `http://<LB-IP>/mongo-metrics/metrics`.
 
-:::info
-  Because the URL is on your allow list, other users are not able to view the internal metrics of specific infra components, such as MongoDB.
-:::
+ :::info
+   Because the URL is on your allow list, other users are not able to view the internal metrics of specific infra components, such as MongoDB.
+ :::
 
 ```mdx-code-block
-<Tabs>
-  <TabItem value="Standalone Prometheus installation">
+  </TabItem>
+  <TabItem value="Standalone prometheus">
 ```
+
 If you have Prometheus installed, you can make changes directly to your Prometheus `config.yaml` file by adding fields under scrape configs.
 
 To use a standalone Prometheus installation with a customer configuration, do the following:
@@ -205,6 +205,7 @@ To use a standalone Prometheus installation with a customer configuration, do th
      - targets:
 
        - redis-metrics.<Namespace>.svc.cluster.local:9121
+  ```
 
 ```mdx-code-block
   </TabItem>
