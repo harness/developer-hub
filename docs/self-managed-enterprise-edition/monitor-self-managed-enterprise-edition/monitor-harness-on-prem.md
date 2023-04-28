@@ -1,5 +1,5 @@
 ---
-title: Monitor the infrastructure of your installation
+title: Monitoring options
 description: Monitor the infrastructure of your installation
 # sidebar_position: 2
 helpdocs_topic_id: ho0c1at9nv
@@ -168,11 +168,6 @@ kubectl create secret generic harness-metrics --from-file config.yml -n <Namespa
 :::info
   Because the URL is on your allow list, other users are not able to view the internal metrics of specific infra components, such as MongoDB.
 :::
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
 ```mdx-code-block
 <Tabs>
