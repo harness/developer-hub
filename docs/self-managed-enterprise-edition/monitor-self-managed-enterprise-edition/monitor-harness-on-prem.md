@@ -103,10 +103,9 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
                port:
                  number: 9216
    ```
-
-:::info
- Add your IPs to your allow list so the metrics exposed by the ingress are only accessible internally. The IP included in the allow list is the external IP for the node where you host Prometheus in a separate cluster.
-:::
+  :::info
+   Add your IPs to your allow list so the metrics exposed by the ingress are only accessible internally. The IP included in the allow list is the external IP for the node where you host Prometheus in a separate cluster.
+  :::
 
 ## Deploy Prometheus to integrate with Harness
 
