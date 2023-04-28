@@ -17,6 +17,8 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 ## Latest - April 26, 2023, version 78926
 
 This release includes the following Harness module and component versions.
+**Helm Chart Version ** 0.5.0
+**Release** https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 
 | **Name** | **Version** |
 | :-- | :--: |
