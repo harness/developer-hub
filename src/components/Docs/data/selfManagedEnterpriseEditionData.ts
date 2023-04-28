@@ -73,7 +73,7 @@ import {
             title: "Monitoring",
             module: MODULES.platform,
             description:
-              "Learn how to receive alerts on metrics such as CPU, memory, and disk usage.",
+              "Learn how to monitor the infrastructure of your installation.",
             link: "/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem",
           },
           {
