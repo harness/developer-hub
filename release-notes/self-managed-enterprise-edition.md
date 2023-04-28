@@ -521,7 +521,7 @@ This release includes the following Harness module and component versions.
   The **Default Settings** and **GitOps** categories should not both be selected when the **GitOps** category is selected.
   
   The UI is now fixed so that only the **GitOps** category is selected.
-- Users were able to save a [Kubernetes Apply step](https://developer.harness.io/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-apply-step/) template with empty manifest file paths. (CDS-53961)
+- Users were able to save a [Kubernetes Apply step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) template with empty manifest file paths. (CDS-53961)
 
   This issue is fixed. You can no longer configure empty file paths in the Apply step template.
 - Unable to deploy workloads when using Harness local store for native Helm deployments. (CDS-53937)
@@ -599,7 +599,7 @@ This release includes the following Harness module and component versions.
   You should not reference environment variables in service settings because the environment settings are resolved after the service settings during pipeline execution. Harness has now improved the error handling mechanism for such scenarios.
 - The **Manual Intervention** tab was not displayed for the ServiceNow Create or Update steps. (CDS-53467, ZD-38687)
   
-  The **Manual Intervention** tab is used to select a failure strategy when the acceptance criteria in a ServiceNow [Create](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/create-service-now-tickets-in-cd-stages/) or [Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-service-now-tickets-in-cd-stages) step is not met. 
+  The **Manual Intervention** tab is used to select a failure strategy when the acceptance criteria in a ServiceNow [Create](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages) or [Update](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-service-now-tickets-in-cd-stages) step is not met. 
   
   The **Manual Intervention** tab was not visible, but this has been fixed and the tab now displays during pipeline execution.
 
@@ -663,6 +663,11 @@ This release includes the following Harness module and component versions.
 - The service information of a stage disappeared when swapping two stages if the stage was propagated from the other stage. (CDS-53331)
 
   The service details of stages appear properly now when you swap service propagated stages.
+
+- Files created with the [File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) do not save consistently witht the correct file type. (CDS-53329)
+
+  A code enhancement has fixed this issue.
+
 - The Nexus version selected for an artifact source can be overridden in the artifact connector. (CDS-53308)
   
   When you create the artifact source for a service, you could choose Nexus 3 or 2, but when you create the Harness connector you could also select Nexus 3 or 2. Consequently, you could create a Nexus 2 artifact source with a Nexus 3 connector.
@@ -673,7 +678,7 @@ This release includes the following Harness module and component versions.
   Harness has added support for 128-character variable names.
 - Harness was inconsistent when displaying manifest files stored in the Harness File Store. (CDS-53118)
   
-  Harness was filtering [File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/) files based on the manifest type for some types (Kubernetes values YAML, Helm chart, etc.), but for other types Harness was showing all files.
+  Harness was filtering [File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) files based on the manifest type for some types (Kubernetes values YAML, Helm chart, etc.), but for other types Harness was showing all files.
   
   Now Harness is showing the correct file types for the manifest type selected by users. For example, in Kubernetes values YAML, Helm chart values YAML, Kustomize files, Kustomize patches files, OpenShift params files, OpenShift template files.
 - A reused [webhook trigger](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/) identifier results in a reused last activation time. (CDS-53107)
@@ -1316,7 +1321,7 @@ This release includes the following Harness module and component versions.
 
 - Unable to see the Harness file store at the projects level. (CDS-50139)
 
-  The [Harness file store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/) is a hierarchical file manager in Harness for managing configuration files used in pipelines.
+  The [Harness file store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) is a hierarchical file manager in Harness for managing configuration files used in pipelines.
 
   The file store was not showing up at the projects level. This has been fixed and now you can use the file store in your projects.
 

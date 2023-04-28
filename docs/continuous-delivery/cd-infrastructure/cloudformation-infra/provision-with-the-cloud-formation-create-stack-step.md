@@ -157,7 +157,7 @@ In **Cloud Formation Parameter Files**, click **Add**.
 
 In **Parameter File Connector**, select your Git platform, and the select or add a Git Connector. See [Code Repo Connectors](https://newdocs.helpdocs.io/category/xyexvcc206) for steps on adding a Git Connector.
 
-For AWS S3, see [Add an AWS Connector](/docs/platform/connectors/cloud-providers/add-aws-connector/).
+For AWS S3, see [Add an AWS Connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector).
 
 In **Parameter File Details**, enter the following:
 
