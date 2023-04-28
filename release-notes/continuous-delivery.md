@@ -70,7 +70,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - The Harness UI crashed when editing a service in the YAML view. (CDS-59077)
   
   The UI crashed when entering a key without a value in the service YAML. This issue is fixed.
-- Resolved an issue where the service tab was loading for a long time when the **Deploy multiple services** option was enabled when adding service as an expression. (CDS-58334)
+- Resolved an issue where the service tab was loading for a long time when the **Deploy multiple services** option was enabled when service was added as an expression. (CDS-58334)
 - Unable to save pipeline input sets even if the user had the Pipeline Editor permission. (CDS-67985)
   
   Users with Pipeline Editor permission can now save input sets.
@@ -97,14 +97,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - The Security Testing Orchestration (STO) module was present in the Harness CD Community Edition (CE). (CDS-59269)
   
   Support has been added to hide the STO module from CE.
-- Resolved an issue where the Jira Create and Jira Update steps were failing when multiselect fields were added. (CDS-58928, ZD-42795)
+- Resolved an issue where the Jira Create and Jira Update steps were failing when multi-select fields were added. (CDS-58928, ZD-42795)
 - Resolved an issue where users were not able to save the updated CloudFormation create stack step template. (CDS-59018)
 - Resolved an issue where lengthy names used for service or environment names or IDs were bleeding out of the UI. (CDS-54281)
 - Fixed minor bugs to improve consistency between connection test and steps when using a Kubernetes connector with client-key authentication. (CDS-54137)
 - The Cloudformation step in a Deployment Template at an account level was unable to return IAM roles. (CDS-59019)
   
   This was happening due to the validation of projectId and orgId query parameters. This issue is fixed. The Cloudformation step in a deployment template at an account level now returns IAM roles properly.
-- Previous service input values were removed when additional services were selected for a multi service input set. (CDS-59341, ZD-43262)
+- Previous service input values were removed when additional services were selected for a multi-service input set. (CDS-59341, ZD-43262)
   
   Service inputs in the run pipeline form and input sets are retained now.
 
