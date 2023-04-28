@@ -45,11 +45,25 @@ import {
           "",
         list: [
           {
+            title: "View events",
+            module: MODULES.cet,
+            description:
+              "Get a comprehensive view of all the monitored services and events.",
+            link: "/docs/continuous-error-tracking/getting-started/cet-event-dashboard",
+          },
+          {
             title: "Explore events",
             module: MODULES.cet,
             description:
               "Learn to work with event types such as critical, resolved, resurfaced, and hidden.",
             link: "/docs/category/event-explorer",
+          },
+          {
+            title: "Resolve events",
+            module: MODULES.cet,
+            description:
+              "Get to the root of events in production and staging environments using the Automated Root Cause (ARC) screen.",
+            link: "/docs/continuous-error-tracking/getting-started/cet-arc",
           },
           {
             title: "Create Jira tickets",
@@ -70,6 +84,7 @@ import {
       
   ];
 
+ /* Uncomment if you want to show the Featured Tutorials section -->
   // Featured Tutorials
 export const featuredTutorials: CardItem[] = [
   {
@@ -83,4 +98,6 @@ export const featuredTutorials: CardItem[] = [
     link: "/tutorials/service-reliability/slo-prometheus",
   },
 ];
+*/
+
     /* Define the cards - end */

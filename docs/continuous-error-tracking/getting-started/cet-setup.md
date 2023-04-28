@@ -6,10 +6,6 @@ sidebar_position: 20
 
 # Set up Continuous Error Tracking (CET)
 
-:::info note
-Currently, this feature is behind the feature flag `SRM_ET_EXPERIMENTAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 
 This topic describes how to add a monitored service in Harness and install an Error Tracking Agent on a JVM to identify and troubleshoot faults and exceptions in your code.
 

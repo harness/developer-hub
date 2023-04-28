@@ -4,11 +4,6 @@ description: Identify and prioritize critical errors.
 sidebar_position: 30
 ---
 
-:::info note
-Currently, this feature is behind the feature flag `SRM_ET_EXPERIMENTAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
-
 The Error Tracking Events dashboard displays a comprehensive list of all the monitored services and events.
 
 To go to the Events dashboard, in Harness, go to **Service Reliability Management**, and then select **Code Errors**.

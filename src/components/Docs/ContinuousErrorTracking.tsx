@@ -40,8 +40,7 @@ export default function CET() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Learn how you can identify, triage, and resolve errors in
-              applications with Harness CET.
+              Identify, triage, and resolve errors proactively with Harness Continuous Error Tracking (CET) in your services across CI, CD, QA, and production environments.
             </p>
           </div>
         </div>
