@@ -15,12 +15,67 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - April 22, 2023, version 79111
+## Latest - May 02, 2023, version 792xx
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+- Added a `resolved.yaml` to the `planExecutionsMetadata` API to resolve `<+trigger.artifact.build>` and `<+trigger.manifest.version>` expressions when re-running a failed pipeline. (CDS-58192)
+  
+  Here is a sample resolved YAML: 
+
+  ```
+  {
+    "status": "SUCCESS",
+    "data": {
+        "planExecutionId": "PimcPiwlQ56A2AhWogEM7A",
+        "executionYaml": "pipeline:\n  identifier: \"asda\"\n  name: \"asda\"\n  projectIdentifier: \"test\"\n  orgIdentifier: \"default\"\n  tags: {}\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      name: \"sda\"\n      description: \"\"\n      spec:\n        serviceConfig:\n          serviceRef: \"ads\"\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              variables: []\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    connectorRef: \"Test\"\n                    imagePath: \"library/nginx\"\n                    tag: \"<+trigger.artifact.build>\"\n              manifests: []\n        infrastructure:\n          environmentRef: \"wew\"\n          infrastructureDefinition:\n            type: \"KubernetesDirect\"\n            spec:\n              connectorRef: \"ad\"\n              namespace: \"asd\"\n              releaseName: \"release-<+INFRA_KEY>\"\n          allowSimultaneousDeployments: false\n        execution:\n          steps:\n          - step:\n              identifier: \"sad\"\n              type: \"ShellScript\"\n              name: \"sad\"\n              spec:\n                shell: \"Bash\"\n                onDelegate: true\n                source:\n                  type: \"Inline\"\n                  spec:\n                    script: \"echo \\\"test\\\"\"\n                environmentVariables: []\n                outputVariables: []\n                executionTarget: {}\n              timeout: \"10m\"\n          rollbackSteps: []\n      tags: {}\n      failureStrategies:\n      - onFailure:\n          errors:\n          - \"AllErrors\"\n          action:\n            type: \"StageRollback\"\n",
+        "inputYaml": "pipeline:\n  identifier: \"asda\"\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      spec:\n        serviceConfig:\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    tag: \"<+trigger.artifact.build>\"\n",
+        "resolvedYaml" "pipeline:\n  identifier: \"asda\"\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      spec:\n        serviceConfig:\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    tag: \"1.23-perl"\n",
+        "triggerPayload": {
+            "type": "ARTIFACT",
+            "headers": {},
+            "sourcetype": "CUSTOM_REPO",
+            "artifactdata": {
+                "build": "1.23-perl"
+            },
+            "version": 0
+        }
+    },
+    "metaData": null,
+    "correlationId": "1ad40479-c6ff-47e4-9722-db11c0a3ab06"
+  }
+  ```
+- Added support to fetch details from the `planExecutionsMetadata` API to resolve the `<+trigger.artifact.build>` expression when re-running a failed pipeline. 
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### April 22, 2023, version 79111
+
+##### What's new
 
 - SHA support for Artifactory (CDS-58629), ECR (CDS-58304), GCR	(CDS-56531), Nexus 3 Docker (CDS-56530), ACR (CDS-56529), Github Packages	(CDS-41930)
   
@@ -86,10 +141,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   <docimage path={require('./static/61a6e0b480e05303bfc5926bec326c1555eff5ae087014c0b6a7e00a1fa94ec2.png')} width="60%" height="60%" title="Click to view full size image" />
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 - Protecting secrets used in webhook-based triggers that use secret decryption on delegates (CDS-58488, ZD-42117)
   
@@ -109,10 +161,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   For Harness services using the Tanzu deployment type, config files can be configured using Github, in addition to the Harness file store. Support for other deployment types in coming soon.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
 
 - Usernames that were provided as secrets were not being decrypted for Github packages artifacts. (CDS-59187)
   
@@ -182,16 +231,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Harness manager Pipeline Studio was showing all infrastructures when **Runtime input** was selected. (CDS-51784)
   
   Pipeline Studio has been fixed and shows the correct information.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### April 10, 2023, version 79015
 
