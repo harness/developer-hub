@@ -16,6 +16,21 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### May 02, 2023, version 792xx
+
+#### What's new
+
+This release does not include new features. 
+
+#### Early access
+
+This release does not include early access features. 
+
+#### Fixed issues
+
+- Resolved a null pointer exception when the Canary Deployment step is initialized with the Helm manifest type. (CDS-59214)
+- Resolved an issue where the **Start New Deployment** window refreshed when selecting **Artifacts**. (CDS-59354)
+  
 ### April 22, 2023, version 79111
 
 #### What's new

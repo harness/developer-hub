@@ -47,21 +47,66 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     "correlationId": "1ad40479-c6ff-47e4-9722-db11c0a3ab06"
   }
   ```
-- Added support to fetch details from the `planExecutionsMetadata` API to resolve the `<+trigger.artifact.build>` expression when re-running a failed pipeline. 
+- Added support to fetch details from the `planExecutionsMetadata` API to resolve the `<+trigger.artifact.build>` expression when re-running a failed pipeline. (CDS-50585)
+- An **Aborting** pop-up window appears with a warning when aborting a pipeline. (CDS-67000)
+- You can run a specific pipeline stage using webhook triggers when you set the **Allow selective stage(s) executions?** option to **YES** in a pipeline configuration. (CDS-56775, CDS-56774)
+- A warning pops up when you create a new template with already existing identifiers in the same scope using a new version label. You can choose to merge the template with the existing template by selecting the **Save as new version of existing template** button in the pop-up window. (CDS-47301)
+- The pipeline variables, stage variables, and service and environment variables are no longer validated on the run pipeline form. These validations are optional now. (CDS-64656)
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-
-
+- Added support to get GitHub webhook events through a CURL command if the client call fails. (CDS-58692)
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
 
+- The GitHub connector did not decrypt the username when the username was provided as a secret. (CDS-59187)
 
+  The GitHub connector now decrypts the username when provided as a secret.
+- The Harness UI crashed when editing a service in the YAML view. (CDS-59077)
+  
+  The UI crashed when entering a key without a value in the service YAML. This issue is fixed.
+- Resolved an issue where the service tab was loading for a long time when the **Deploy multiple services** option was enabled when adding service as an expression. (CDS-58334)
+- Unable to save pipeline input sets even if the user had the Pipeline Editor permission. (CDS-67985)
+  
+  Users with Pipeline Editor permission can now save input sets.
+- Unable to resolve number variables in a service, environment, or an Update step of a GitOps pipeline. (CDS-58531)
+  
+  This issue is fixed.
+- Artifactory repository format support was not available for artifact source templates. (CDS-59092)
+  
+  Added support for Artifactory repository format for artifact source templates.  
+- The Rollback step of a Tanzu Application Service (TAS) Rolling deployment deleted applications instead of rolling them back to the previous version in some cases. (CDS-59089)
+  
+  This issue is fixed. Multiple failure scenarios are now covered in application failure and rollback for TAS Rolling deployments. 
+- Unable to fetch the bucket list for the Helm chart manifest type using a Google Cloud Storage (GCS) connector if set as a runtime input. (CDS-58722)
+
+  This issue is fixed.
+- Webhook triggers were not working for GitLab connectors with SSH auth type and API tokens. (CDS-58471)
+  
+  Added support for SSH URL in triggers.
+- Resolved an issue that converted runtime fields with default values to fixed values when viewing the template-linked parts of a pipeline like steps, stage, and so on. (CDS-67999)
+- Users were able to edit the **Freeze Windows>** **Schedule** tab when a freeze window was active. (CDS-58507)
+  
+  The **Schedule** tab is not editable anymore when a freeze window is active. It is also uneditable for users with read-only permissions. 
+- Fixed minor bugs in the Bamboo artifact source connector. (CDS-58632)
+- The Security Testing Orchestration (STO) module was present in the Harness CD Community Edition (CE). (CDS-59269)
+  
+  Support has been added to hide the STO module from CE.
+- Resolved an issue where the Jira Create and Jira Update steps were failing when multiselect fields were added. (CDS-58928, ZD-42795)
+- Resolved an issue where users were not able to save the updated CloudFormation create stack step template. (CDS-59018)
+- Resolved an issue where lengthy names used for service or environment names or IDs were bleeding out of the UI. (CDS-54281)
+- Fixed minor bugs to improve consistency between connection test and steps when using a Kubernetes connector with client-key authentication. (CDS-54137)
+- The Cloudformation step in a Deployment Template at an account level was unable to return IAM roles. (CDS-59019)
+  
+  This was happening due to the validation of projectId and orgId query parameters. This issue is fixed. The Cloudformation step in a deployment template at an account level now returns IAM roles properly.
+- Previous service input values were removed when additional services were selected for a multi service input set. (CDS-59341, ZD-43262)
+  
+  Service inputs in the run pipeline form and input sets are retained now.
 
 ```mdx-code-block
   </TabItem>
