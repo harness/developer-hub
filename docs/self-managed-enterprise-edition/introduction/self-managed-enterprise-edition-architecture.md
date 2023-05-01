@@ -16,12 +16,3 @@ Harness Self-Managed Enterprise Edition is installed in a Kubernetes cluster in 
 
 1. For Self-Managed Enterprise Edition with Helm, see [Install Harness Self-Managed Enterprise Edition Using Helm](../self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga.md).
 2. For Self-Managed Enterprise Edition with KOTS, see [Install Self-Managed Enterprise Edition Using KOTS](../deploy-with-kots/kubernetes-cluster-on-prem-kubernetes-cluster-setup.md).
-
-
-**GCP architecture**   
-
-![](./static/gcp_architecture_smpOverview.png)  
-
-**AWS architecture**
-
-![](./static/aws_architecture_smpOverview.png) |
