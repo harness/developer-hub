@@ -355,7 +355,7 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 ## Language-specific requirements
 
-Cache key and paths differ by language.
+The cache key and paths differ by language.
 
 ```mdx-code-block
 <Tabs>
@@ -374,8 +374,8 @@ Cache key and paths differ by language.
 ```yaml
                   spec:
                     sourcePaths:
-                    - /go/pkg/mod
-                    - /root/.cache/go-build
+                      - /go/pkg/mod
+                      - /root/.cache/go-build
 ```
 
 ```mdx-code-block
@@ -398,12 +398,12 @@ Cache key and paths differ by language.
                     key: cache-{{ checksum "yarn.lock" }}
 ```
 
-`spec.sourcePaths` must include `node_modues` in the **Save Cache to S3** step, for example:
+`spec.sourcePaths` must include `node_modules` in the **Save Cache to S3** step, for example:
 
 ```yaml
                   spec:
                     sourcePaths:
-                    - node_modules
+                      - node_modules
 ```
 
 ```mdx-code-block
@@ -424,7 +424,7 @@ Cache key and paths differ by language.
 ```yaml
                   spec:
                     sourcePaths:
-                    - /root/.m2
+                      - /root/.m2
 ```
 
 ```mdx-code-block

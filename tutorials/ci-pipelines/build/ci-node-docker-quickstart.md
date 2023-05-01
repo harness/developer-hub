@@ -11,14 +11,10 @@ slug: /ci-pipelines/build/nodejs
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
-import DelegateInstall from '/tutorials/platform/install-delegate.md';
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 ```
 
-In this tutorial, you will create a Harness CI pipeline that does the following:
-
-1. Test a NodeJS application.
-2. Build and publish a Docker image of that app.
+In this tutorial, you'll create a Harness CI pipeline that builds, tests, and publishes a NodeJS app.
 
 <CISignupTip />
 
@@ -368,6 +364,190 @@ The `tag` value is an [expression](/docs/platform/references/runtime-inputs/#exp
 </Tabs>
 ```
 
+## Manage dependencies
+
+Harness offers several options for [managing dependencies](/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies). In addition to multiple [caching](#use-caching) options, you can use [Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) for services dependencies, and you can use [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and [Run steps](/docs/category/run-scripts) to install dependencies.
+
+### Use caching
+
+Caching options include:
+
+* [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence)
+* [S3 caching](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache)
+* [GCS caching](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
+* [Shared Paths](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage)
+* [Docker layer caching](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#docker-layer-caching)
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="cacheint" label="Cache Intelligence" default>
+```
+
+Because this tutorial pipeline uses Harness Cloud build infrastructure, you can leverage automatic caching with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). To enable Cache Intelligence, switch to the YAML editor and add `caching: enabled: true` to the stage `spec`, for example:
+
+```yaml
+    - stage:
+        name: Build
+        identifier: Build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+          platform:
+          ...
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="s3" label="S3 caching">
+```
+
+To use [S3 caching](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache) in this tutorial pipeline, you can add a **Restore Cache from S3** step to the beginning of the **Build** stage and add a **Save Cache to S3** step to the end of the **Build** stage. You need an AWS connector to use S3 caching. For more information about configuring S3 cache steps, go to [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache).
+
+<details>
+<summary>Node cache key and path requirements</summary>
+
+All Node pipelines must include `node_modules` in the `sourcePaths` for your **Save Cache to S3** step, for example:
+
+```yaml
+                  spec:
+                    sourcePaths:
+                      - node_modules
+```
+
+If your pipeline uses [npm](https://www.npmjs.com/), the `key` value must reference `package-lock.json` in your **Save Cache to S3** and **Restore Cache from S3** steps, for example:
+
+```yaml
+                  spec:
+                    key: cache-{{ checksum "package-lock.json" }}
+```
+
+If your pipeline uses [yarn](https://yarnpkg.com/), the `key` value must reference `yarn.lock` in your **Save Cache to S3** and **Restore Cache from S3** steps, for example:
+
+```yaml
+                  spec:
+                    key: cache-{{ checksum "yarn.lock" }}
+```
+
+</details>
+
+<details>
+<summary>YAML example: S3 cache steps</summary>
+
+Here's an example of a pipeline with **Save and Restore S3 Cache** steps:
+
+```yaml
+            steps:
+              - step:
+                  type: RestoreCacheS3
+                  name: Restore Cache From S3
+                  identifier: Restore_Cache_From_S3
+                  spec:
+                    connectorRef: AWS_Connector
+                    region: us-east-1
+                    bucket: your-s3-bucket
+                    key: cache-{{ checksum "package-lock.json" }}
+                    archiveFormat: Tar
+              - step:
+                  type: Run
+                  ...
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  ...
+              - step:
+                  type: SaveCacheS3
+                  name: Save Cache to S3
+                  identifier: Save_Cache_to_S3
+                  spec:
+                    connectorRef: AWS_Connector
+                    region: us-east-1
+                    bucket: your-s3-bucket
+                    key: cache-{{ checksum "package-lock.json" }}
+                    sourcePaths:
+                      - node_modules
+                    archiveFormat: Tar
+```
+
+</details>
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="gcs" label="GCS caching">
+```
+
+To use [GCS caching](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs) in this tutorial pipeline, you can add a **Restore Cache from GCS** step to the beginning of the **Build** stage and add a **Save Cache to GCS** step to the end of the **Build** stage. You need a GCP connector to use GCS caching. For information about configuring GCS cache steps, go to [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs).
+
+<details>
+<summary>Node cache key and path requirements</summary>
+
+All Node pipelines must include `node_modules` in the `sourcePaths` for your **Save Cache to GCS** steps, for example:
+
+```yaml
+                  spec:
+                    sourcePaths:
+                      - node_modules
+```
+
+If your pipeline uses [npm](https://www.npmjs.com/), the `key` value must reference `package-lock.json` in your **Save Cache to GCS** and **Restore Cache from GCS** steps, for example:
+
+```yaml
+                  spec:
+                    key: cache-{{ checksum "package-lock.json" }}
+```
+
+If your pipeline uses [yarn](https://yarnpkg.com/), the `key` value must reference `yarn.lock` in your **Save Cache to GCS** and **Restore Cache from GCS** steps, for example:
+
+```yaml
+                  spec:
+                    key: cache-{{ checksum "yarn.lock" }}
+```
+
+</details>
+
+<details>
+<summary>YAML example: GCS cache steps</summary>
+
+Here's an example of a pipeline with **Save and Restore GCS Cache** steps:
+
+```yaml
+            steps:
+              - step:
+                  type: RestoreCacheGCS
+                  name: Restore Cache From GCS
+                  identifier: Restore_Cache_From_GCS
+                  spec:
+                    connectorRef: account.gcp
+                    bucket: your-gcs-bucket
+                    key: gcp-{{ checksum "package-lock.json" }}
+                    archiveFormat: Tar
+              - step:
+                  type: Run
+                  ...
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  ...
+              - step:
+                  type: SaveCacheGCS
+                  name: Save Cache to GCS
+                  identifier: Save_Cache_to_GCS
+                  spec:
+                    connectorRef: account.gcp
+                    bucket: your-gcs-bucket
+                    key: gcp-{{ checksum "package-lock.json" }}
+                    sourcePaths:
+                      - node_modules
+                    archiveFormat: Tar
+```
+
+</details>
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
 ## Run the pipeline
 
 1. In the **Pipeline Studio**, save your pipeline and then select **Run**.
@@ -382,16 +562,40 @@ If the build succeeds, you'll find your pushed image in your Docker Hub `samplej
 
 Now that you've created a basic pipeline for building and testing a NodeJS app, you might want to explore the ways that you can [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times), including:
 
-* Using [triggers](/docs/category/triggers/) to automatically start pipelines
-* [Caching dependencies](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache)
-* Using [variables and expressions](/docs/category/variables-and-expressions)
+* [Using Terraform notification triggers to automatically start builds.](/tutorials/ci-pipelines/build/tfc-notification)
+* [Uploading artifacts to JFrog.](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog)
+* [Publishing Allure reports to the Artifacts tab.](/tutorials/ci-pipelines/test/allure-report).
+* [Including CodeCov code coverage and publishing results to your CodeCov dashboard.](/tutorials/ci-pipelines/test/codecov/)
+* [Updating Jira issues when builds run.](/docs/continuous-integration/use-ci/use-drone-plugins/ci-jira-int-plugin)
+* [Using variables.](#use-variables)
+* [Deploying artifacts.](#deploy-artifacts)
 
-<details>
-<summary>Example: Use variables</summary>
+### Use variables
 
-Variables and expressions make your pipelines more versatile by allowing variable inputs and values. For example, you can add a pipeline-level variable that lets you specify a Docker Hub username when the pipeline runs.
+[Variables and expressions](/docs/category/variables-and-expressions) make your pipelines more versatile by allowing variable inputs and values. For example, you can add a pipeline-level variable that lets you specify a Docker Hub username when the pipeline runs.
 
-#### Add a pipeline variable in the YAML editor
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+To add a pipeline variable in the visual editor:
+
+1. In the Pipeline Studio, select **Variables** on the right side of the Pipeline Studio.
+2. Under **Pipeline**, select **Add Variable**.
+3. For **Variable Name**, enter `DOCKERHUB_USERNAME`.
+4. For **Type** select **String**, and then select **Save**.
+5. Enter the value `<+input>`. This allows you to specify a Docker Hub username at runtime.
+6. Select **Apply Changes**.
+7. Edit the **Build and Push an image to Docker Registry** step, and change the **Docker Repository** value to `<+pipeline.variables.DOCKERHUB_USERNAME>/samplejs`.
+8. Save and run the pipeline. You'll be prompted to provide a Docker Hub username before the pipeline runs.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+To add a pipeline variable in the YAML editor:
 
 1. Add the following `variables` block between the `properties` and `stages` sections.
 
@@ -406,35 +610,25 @@ Variables and expressions make your pipelines more versatile by allowing variabl
 2. In the `BuildAndPushDockerRegistry` step, change the `repo` value to `<+pipeline.variables.DOCKERHUB_USERNAME>/samplejs`.
 3. Save and run the pipeline. You'll be prompted to provide a Docker Hub username before the pipeline runs.
 
-#### Add a pipeline variable in the visual editor
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
-1. In the Pipeline Studio, select **Variables** on the right side of the Pipeline Studio.
-2. Under **Pipeline**, select **Add Variable**.
-3. For **Variable Name**, enter `DOCKERHUB_USERNAME`.
-4. For **Type** select **String**, and then select **Save**.
-5. Enter the value `<+input>`. This allows you to specify a Docker Hub username at runtime.
-6. Select **Apply Changes**.
-7. Edit the **Build and Push an image to Docker Registry** step, and change the **Docker Repository** value to `<+pipeline.variables.DOCKERHUB_USERNAME>/samplejs`.
-8. Save and run the pipeline. You'll be prompted to provide a Docker Hub username before the pipeline runs.
-
-</details>
-
-You can also try adding more steps to add more functionality to this pipeline, such as:
-
-* [Uploading artifacts to JFrog](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog).
-* [Publishing an Allure Report to the Artifacts tab](/tutorials/ci-pipelines/test/allure-report).
-* [Including CodeCov code coverage and publishing results to your CodeCov dashboard](/tutorials/ci-pipelines/test/codecov/).
-* [Updating Jira issues when builds run](/docs/continuous-integration/use-ci/use-drone-plugins/ci-jira-int-plugin).
-* [Running background services](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings)
-
-<details>
-<summary>Example: Run a service dependency in a Background step</summary>
-content in md format
-</details>
+### Deploy artifacts
 
 After building an artifact, you can deploy your artifact with Harness [Continuous Delivery](/tutorials/cd-pipelines#all-tutorials).
 
 ## Reference: Pipeline YAML
+
+Here is the complete YAML for this tutorial's pipeline. This pipeline:
+
+* Hes steps that [run tests](#run-tests) and [build the Node app](#build-and-push-to-docker-hub).
+* Uses [Cache Intelligence](#use-caching).
+* Uses the [Harness Cloud build infrastructure](#understand-the-build-infrastructure).
+
+If you copy this example, make sure to replace the bracketed values with corresponding values for your Harness project, [GitHub connector ID](#create-the-github-connector), GitHub account name, and [Docker connector ID](#prepare-the-docker-registry).
+
 
 Here is the complete YAML for this tutorial's pipeline. If you copy this example, make sure to replace the bracketed values with corresponding values for your Harness project ID, [GitHub connector ID](#create-the-github-connector), GitHub account name, [Docker connector ID](#prepare-the-docker-registry), and Docker Hub username.
 
@@ -456,6 +650,8 @@ pipeline:
         type: CI
         spec:
           cloneCodebase: true
+          caching:
+            enabled: true
           platform:
             os: Linux
             arch: Amd64

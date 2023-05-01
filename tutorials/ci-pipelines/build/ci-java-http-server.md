@@ -8,12 +8,9 @@ slug: /ci-pipelines/build/java
 
 # Build, test, and publish a Java app
 
-In this tutorial, you will create a Harness CI pipeline that does the following:
+In this tutorial, you'll create a Harness CI pipeline that builds, tests, and publishes a Java app.
 
-1. Build and test a Java HTTP server application.
-2. Publish a Docker image.
-3. Pull the published Docker image and run it as a service dependency.
-4. Run a connectivity test against the running application.
+In addition to creating a pipeline, you'll learn about **connectors**, **variables**, **caching**, and **service dependencies** in Harness CI pipelines.
 
 ```mdx-code-block
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';

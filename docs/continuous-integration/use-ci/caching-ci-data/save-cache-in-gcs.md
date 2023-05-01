@@ -83,9 +83,10 @@ Here is an example of the YAML for a **Save Cache to GCS** step.
                   spec:
                     connectorRef: account.gcp
                     bucket: ci_cache
-                    key: gcp-{{ checksum "package.json" }}
+                    key: gcs-{{ checksum filePath1 }} # example cache key based on file checksum
                     sourcePaths:
-                      - /harness/node_modules
+                      - directory1 # example first directory to cache
+                      - directory2 # example second directory to cache
                     archiveFormat: Tar
 ```
 
@@ -106,7 +107,7 @@ Here is an example of the YAML for a **Restore Cache from GCS** step.
                   spec:
                     connectorRef: account.gcp
                     bucket: ci_cache
-                    key: gcp-{{ checksum "package.json" }}
+                    key: gcs-{{ checksum filePath1 }} # example cache key based on file checksum
                     archiveFormat: Tar
 ```
 
@@ -255,7 +256,7 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 ### Language-specific requirements
 
-Cache key and paths differ by language.
+The cache key and paths differ by language.
 
 ```mdx-code-block
 <Tabs>
@@ -274,8 +275,8 @@ Cache key and paths differ by language.
 ```yaml
                   spec:
                     sourcePaths:
-                    - /go/pkg/mod
-                    - /root/.cache/go-build
+                      - /go/pkg/mod
+                      - /root/.cache/go-build
 ```
 
 ```mdx-code-block
@@ -298,12 +299,12 @@ Cache key and paths differ by language.
                     key: cache-{{ checksum "yarn.lock" }}
 ```
 
-`spec.sourcePaths` must include `node_modues` in the **Save Cache to GCS** step, for example:
+`spec.sourcePaths` must include `node_modules` in the **Save Cache to GCS** step, for example:
 
 ```yaml
                   spec:
                     sourcePaths:
-                    - node_modules
+                      - node_modules
 ```
 
 ```mdx-code-block
@@ -324,7 +325,7 @@ Cache key and paths differ by language.
 ```yaml
                   spec:
                     sourcePaths:
-                    - /root/.m2
+                      - /root/.m2
 ```
 
 ```mdx-code-block
