@@ -1173,8 +1173,11 @@ module.exports = {
       to: "/tutorials/ci-pipelines/test/saucelabs-proxy",
     },
     {
-      from: "/tutorials/build-code/ci-java-http-server",
       from: "/tutorials/ci-pipelines/ci-java-http-server",
+      to: "/tutorials/ci-pipelines/build/java",
+    },
+    {
+      from: "/tutorials/build-code/ci-java-http-server",
       to: "/tutorials/ci-pipelines/build/java",
     },
     {
@@ -1271,10 +1274,12 @@ module.exports = {
 
     {
       from: "/docs/platform/Delegates/delegate-guide/delegate-image-types",
+      to: "/docs/platform/Delegates/delegate-concepts/delegate-image-types",
+    },
+    {
       from: "/docs/platform/Delegates/get-started-with-delegates/delegate-image-types",
       to: "/docs/platform/Delegates/delegate-concepts/delegate-image-types",
     },
-
     {
       from: "/docs/platform/Delegates/get-started-with-delegates/delegate-registration",
       to: "/docs/platform/Delegates/delegate-concepts/delegate-registration",
@@ -2506,11 +2511,13 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-integration/ci-technical-reference/ci-cluster-requirement",
       from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-cluster-requirement",
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/ci-cluster-requirement",
     },
-
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-cluster-requirement",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/ci-cluster-requirement",
+    },
     {
       from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/run-windows-builds-in-a-kubernetes-build-infrastructure",
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/run-windows-builds-in-a-kubernetes-build-infrastructure",
@@ -2527,17 +2534,21 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-integration/ci-technical-reference/ci-stage-settings",
       from: "/docs/continuous-integration/use-ci/build-stage-settings/ci-stage-settings",
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings",
     },
-
     {
-      from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
+      from: "/docs/continuous-integration/ci-technical-reference/ci-stage-settings",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings",
+    },
+    {
       from: "/docs/continuous-integration/use-ci/build-stage-settings/modify-and-override-build-settings-before-a-build",
       to: "/docs/continuous-integration/use-ci/run-ci-scripts/modify-and-override-build-settings-before-a-build",
     },
-
+    {
+      from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/run-ci-scripts/modify-and-override-build-settings-before-a-build",
+    },
     {
       from: "/docs/category/build-stage-settings",
       to: "/docs/category/set-up-build-infrastructure",
@@ -2551,11 +2562,13 @@ module.exports = {
 
     // Created by aimurphy for branch ci-reorg-pt-5 on Apr 25, 2023
     {
-      from: "/docs/category/ci-technical-reference",
       from: "/docs/category/reference-ci-steps-settings",
       to: "/docs/category/use-ci",
     },
-
+    {
+      from: "/docs/category/ci-technical-reference",
+      to: "/docs/category/use-ci",
+    },
     {
       from: "/docs/continuous-integration/ci-technical-reference/background-step-settings",
       to: "/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings",
@@ -2577,91 +2590,122 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings",
       from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-jfrog-artifactory-step-settings",
       to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog/",
     },
-
     {
-      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-gcs-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog/",
+    },
+    {
       from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-gcs-step-settings",
       to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings",
     },
-
     {
-      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-s-3-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-gcs-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings",
+    },
+    {
       from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-steps/upload-artifacts-to-s-3-step-settings",
       to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings",
     },
-
     {
-      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-acr-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/upload-artifacts-to-s-3-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings",
+    },
+    {
       from: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-acr-step-settings",
       to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr",
     },
-
     {
-      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-acr-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-acr",
+    },
+    {
       from: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings",
       to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings",
     },
-
     {
-      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings",
+    },
+    {
       from: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings",
       to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings",
     },
-
     {
-      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-gcr-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-docker-hub-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings",
+    },
+    {
       from: "/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-gcr-step-settings",
       to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr",
     },
-
     {
-      from: "/docs/continuous-integration/ci-technical-reference/ci-bitrise-plugin",
+      from: "/docs/continuous-integration/ci-technical-reference/build-and-push-to-gcr-step-settings",
+      to: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-gcr",
+    },
+    {
       from: "/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-bitrise-plugin",
       to: "/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin",
     },
-
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-bitrise-plugin",
+      to: "/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin",
+    },
     {
       from: "/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference",
-      from: "/docs/continuous-integration/ci-technical-reference/plugin-steps/plugin-step-settings-reference",
-      from: "/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference/",
       to: "/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference",
     },
-
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/plugin-steps/plugin-step-settings-reference",
+      to: "/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference",
+    },
     {
       from: "/tutorials/build-code/ci-github-action-step",
+      to: "/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step",
+    },
+    {
       from: "/docs/continuous-integration/ci-technical-reference/ci-github-action-step",
+      to: "/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step",
+    },
+    {
       from: "/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-github-action-step",
       to: "/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step",
     },
-
     {
-      from: "/docs/continuous-integration/ci-technical-reference/restore-cache-from-gcs-settings",
       from: "/docs/continuous-integration/ci-technical-reference/cache-steps/restore-cache-from-gcs-settings",
       to: "/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs",
     },
-
     {
-      from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-gcs-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/restore-cache-from-gcs-settings",
+      to: "/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs",
+    },
+    {
       from: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-gcs-step-settings",
       to: "/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs",
     },
-
     {
-      from: "/docs/continuous-integration/ci-technical-reference/restore-cache-from-s-3-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-gcs-step-settings",
+      to: "/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs",
+    },
+    {
       from: "/docs/continuous-integration/ci-technical-reference/cache-steps/restore-cache-from-s-3-step-settings",
       to: "/docs/continuous-integration/use-ci/caching-ci-data/saving-cache",
     },
-
     {
-      from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings",
-      from: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-s-3-step-settings",
+      from: "/docs/continuous-integration/ci-technical-reference/restore-cache-from-s-3-step-settings",
       to: "/docs/continuous-integration/use-ci/caching-ci-data/saving-cache",
     },
 
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/cache-steps/save-cache-to-s-3-step-settings",
+      to: "/docs/continuous-integration/use-ci/caching-ci-data/saving-cache",
+    },
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/save-cache-to-s-3-step-settings",
+      to: "/docs/continuous-integration/use-ci/caching-ci-data/saving-cache",
+    },
     {
       from: "/docs/continuous-integration/ci-technical-reference/ci-git-clone-step",
       to: "/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline",
