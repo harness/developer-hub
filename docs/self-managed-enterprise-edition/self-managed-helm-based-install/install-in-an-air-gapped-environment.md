@@ -22,7 +22,7 @@ The Harness Self-Managed Platform is designed to cater to various deployment sce
 
 - Access to Helm charts or [download locally](https://github.com/harness/helm-charts/releases)
 
-- Access to [the Harness airgap bundle on GCP](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped.tgz) 
+- Access to [the Harness airgap bundle on GCP](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped-1_0_78927.tgz) 
 
 - Kubernetes version 1.22+ (Harness recommends v1.23.x)
 
