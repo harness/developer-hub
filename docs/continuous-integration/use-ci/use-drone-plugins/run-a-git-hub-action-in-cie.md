@@ -76,8 +76,8 @@ Use **Settings** to specify the Github Action you want to use and to pass variab
 | Key | Description | Value format | Value example |
 | - | - | - | - |
 | `uses` | Required. Specify the Action's repo, along with a branch or tag.| `[repo]@[tag]` | `actions/setup-go@v3` |
-| `with` | Required. Provide a map of key-value pairs representing settings required by the GitHub Action itself. | `key: value` | `go-version: '>=1.17.0'` or `{path: "pom.xml", destination: "cie-demo-pipeline/github-action", credentials: "<+stage.variables.GCP_SECRET_KEY_BASE64>"}` |
-| `env` | Optional. Specify a map of environment variables to pass to the Action. | `key: value` | `GITHUB_TOKEN: '<+secrets.getValue("github_pat")>'` |
+| `with` | Required. Provide a map of key-value pairs representing settings required by the GitHub Action itself. | `key: value` | `go-version: '>=1.17.0'` or `{path: pom.xml, destination: cie-demo-pipeline/github-action, credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>}` |
+| `env` | Optional. Specify a map of environment variables to pass to the Action. | `key: value` | `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` |
 
 :::tip
 
@@ -85,7 +85,43 @@ You can use variable expressions in your values, such as `credentials: <+stage.v
 
 :::
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual editor example">
+```
+
 ![A configured Plugin step with Settings variables.](./static/run-a-git-hub-action-in-cie-03.png)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML example" default>
+```
+
+```yaml
+                          - step:
+                                identifier: gcsuploader
+                                name: gcsuploader
+                                type: Plugin
+                                spec:
+                                    connectorRef: dockerhub # Your Docker connector ID
+                                    image: plugins/github-actions
+                                    privileged: true
+                                    settings:
+                                        uses: google-github-actions/upload-cloud-storage@main # The GitHub Action you want to use
+                                        with: # Action settings
+                                            path: pom.xml
+                                            destination: cie-demo-pipeline/github-action
+                                            credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ### Private Action repos
 
