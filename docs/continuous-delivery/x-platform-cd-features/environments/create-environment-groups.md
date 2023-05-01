@@ -12,9 +12,13 @@ Environment groups are simple a way to group environments so you can assign perm
    
 ![create environment groups](./static/services-and-environments-overview-23.png)
 
-4. Enter a name for the environment group, and select the environments you want to add to this group. You can also create **New Environment** and add it to this group. 
+4. Enter a name for the environment group, and select the environments you want to add to this group. You can also select **New Environment** to create a new environment and add it to this group. 
 
-*Note: Users can only select environments in the same scope of the environment group to be considered for the group. This means if the environment group is configured at the project level, only environments in the project level can be configured for the group. Same with Organization and Account. The environments must be at the same level (scope) as the configured group.*
+:::note
+
+You can only add environments in the same scope (Harness project, org, account) as the environment group. For example, if the environment group is configured at the project level, only environments in the project level can be configured for the group.
+
+:::
 
 ![environment groups](./static/environment-groups.png)
 
@@ -36,17 +40,15 @@ environmentGroup:
 5. Select **Submit**.
 
 
-## Using Environment Groups
+## Using environment groups
 
-Environment Groups can only be used in Multi Environment and Infrastructure based deployments. By default, Harness will loop through each environment in the Environment group and deploy. User's can specify whether they want to deploy to one environment or all the environments in thr group.
+Environment groups can only be used in multi environment and infrastructure based deployments. By default, Harness will loop through each environment in the environment group and deploy. You can specify whether you want to deploy to one environment or all the environments in the group.
 
-## Referencing Environment Groups
+## Referencing environment groups
 
-User's can reference the Environment Group selected as an expression. It can be captured as an output from the infrastructure step in the pipeline.
+You can reference which environment group was selected using as an expression. It can be captured as an output from the infrastructure step in the pipeline.
 
-**Name**
-`<+pipeline.stages.[YOUR_STAGE_ID].spec.infrastructure.output.environment.envGroupName>`
+- Environment group name: `<+pipeline.stages.[STAGE_ID].spec.infrastructure.output.environment.envGroupName>`.
 
-**Identifier**
-`<+pipeline.stages.[YOUR_STAGE_ID].spec.infrastructure.output.environment.envGroupRef>`
+- Environment group Id: `<+pipeline.stages.[STAGE_ID].spec.infrastructure.output.environment.envGroupRef>`.
 
