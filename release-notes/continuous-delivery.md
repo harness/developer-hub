@@ -49,8 +49,57 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   ```
 - Added support to fetch details from the `planExecutionsMetadata` API to resolve the `<+trigger.artifact.build>` expression when re-running a failed pipeline. (CDS-50585)
 - An **Aborting** pop-up window appears with a warning when aborting a pipeline. (CDS-67000)
-- You can run a specific pipeline stage using webhook triggers when you set the **Allow selective stage(s) executions?** option to **YES** in a pipeline configuration. (CDS-56775, CDS-56774)
+- You can run a specific pipeline stage using webhook triggers when you set the **Allow selective stage(s) executions?** option to **Yes** in a pipeline configuration. (CDS-56775, CDS-56774)
+  
+  To run a particular stage of the pipeline: 
+  1. Select the stage, then select **Advanced Options**.
+  2. In **Stage Execution Settings>** **Allow selective stages(s) executions?**, select **Yes**. This setting is selected by default.
+     
+     ![](./static/selective-stage-execution.png)
+  3. When you create a [webhook trigger](/docs/platform/triggers/trigger-deployments-using-custom-triggers/), in **Configuration**, select the stages you want to execute.
+     
+     ![](./static/select-stage-to-execute.png)
+  
+  Here is a sample trigger YAML: 
+  
+  ```
+  trigger:
+  name: stage3Trigger
+  identifier: stage3Trigger
+  enabled: true
+  description: ""
+  tags: {}
+  stagesToExecute:
+    - stage3
+  orgIdentifier: NgTriggersOrg
+  projectIdentifier: viniciusTest
+  pipelineIdentifier: ThreeStagesPipeline
+  source:
+    type: Webhook
+    spec:
+      type: Custom
+      spec:
+        payloadConditions: []
+        headerConditions: []
+  inputYaml: |
+    pipeline:
+      identifier: ThreeStagesPipeline
+      stages:
+        - stage:
+            identifier: stage3
+            type: Custom
+            variables:
+              - name: stage3var
+                type: String
+                value: stage3Var
+
+  ```
+  
+  
 - A warning pops up when you create a new template with already existing identifiers in the same scope using a new version label. You can choose to merge the template with the existing template by selecting the **Save as new version of existing template** button in the pop-up window. (CDS-47301)
+- The environment reference value in the service override configuration has been migrated to a scoped reference. (CDS-58214)
+  
+  When you create or update a new service override, the environment reference was an identifier before. Now, Harness supports scoped environment references in metadata as well as YAML as part of the overrides enhancement.
 - The pipeline variables, stage variables, and service and environment variables are no longer validated on the run pipeline form. These validations are optional now. (CDS-64656)
 
 ```mdx-code-block
@@ -276,6 +325,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Harness manager Pipeline Studio was showing all infrastructures when **Runtime input** was selected. (CDS-51784)
   
   Pipeline Studio has been fixed and shows the correct information.
+- Changed the hint text for the **Specify Environment** and **Connector** fields to `-Select-` as part of UI standardization. (CDS-43840)
+  
+  The hint texts for the **Specify Environment** and **Connector** fields for selecting runtime inputs during pipeline execution were `- Select Environment -` and `Select Connector` respectively, which were not aligning with the style of the text displayed in the rest of the UI. The hint text is now changed to `- Select -` to maintain consistency with the hint texts in the rest of the UI. 
 
 #### April 10, 2023, version 79015
 
@@ -329,6 +381,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   You can now use `.io` and `.us` domains.
 
   ![picture 73](static/40962ce702cb34f682116d48237a0b3a99d68d840ef0f6e39e4b260b79fba3dc.png)
+- You can now manually add service or environment input values as expressions to the YAML. These values also appear when viewing the pipeline with a linked template. (CDS-58404)
+  
 
 ##### Early access
 
@@ -445,6 +499,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - The trigger YAML **Edit** button was taking users back to the visual editor. (CDS-50426)
   
   The trigger page was not maintaining the user preference of view type (Visual/YAML). Now the user's trigger view type preference is stored in local storage so that user need not to chose the view type every time.
+- The Amazon Elastic Container Registry (ECR) **Artifact Details>** **Image Path** was not listing the image location. (CDS-54545)
+  
+  This issue is fixed by modifying the **Region** drop-down to display all available regions and image path in the artifact section. 
 
 #### March 31, 2023, version 78914
 
@@ -521,6 +578,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   The **Referenced By** tab in the **Environments** page now includes the pipelines that are using the infrastructure definitions in the environment. **Referenced By** now shows all pipelines that use the environment and each infrastructure definition individually.
   
   ![](static/referenced-by-tab.png)
+- You won't be able to delete the infrastructure used in a pipeline or template any longer. This feature is introduced to avoid deleting the entities in use unknowingly. (CDS-42182)
 
 ##### Early access  
 
@@ -721,6 +779,14 @@ This release does not include any early access features.
   If the declarative rollback feature was enabled, Harness did not do resource versioning for the ConfigMap and Secret because the main purpose of the versioning in Harness was to be able to do `kubectl` rollout for a managed workload to a previous version that would point to a different version of the resource. Harness was re-applying the full manifest of the previous version. Hence, all resource including the ConfigMap and Secret were reverted to a previous version. With canary and blue green deployment strategies, each canary workload or workload of different colors must point to a different version of the ConfigMap or Secret. Without versioning, it will point to the same resource revision.
 
   This issue is fixed now. The declarative rollback feature now creates a copy of the ConfigMap and Secret resources for canary deployment, and a copy of these resources for each color for blue green deployments.
+- The error message displayed when running a pipeline with Amazon Machine Image (AMI) artifacts as a runtime input displayed an unclear error message. (CDS-54204)
+  
+  When you try to select a **Version** without selecting the **Region** when selecting an AMI service during pipeline execution, an unclear error message was displayed. This issue is fixed. 
+- The Project Overview dashboard was the default CD module landing page. (CDS-54123)
+  
+  When a user opens a CD module, they are now redirected to: 
+  - **Get Started** page for a project without any pipelines.
+  - **Deployments** page for all other cases.
 
 #### March 15, 2023, version 78712
 
@@ -945,13 +1011,13 @@ connector:
   The Git diff in the YAML reconcile screen was performing unnecessary changes like adding quotes to each string value, shifting YAML indentation, converting multiline strings to single line using the newline character, etc.
   
   Now you can see the correct Git diff in the Harness YAML. The diff consist of necessary changes only, such as the addition and removal of fields.
-
+- Fixed an issue where the **Trigger** name and **Status** fields in the **Trigger** page were overlapping. (CDS-53106)
 
 #### March 8, 2023, version 78619
 
 ##### What's new
 
-- The YAML schema for the Jira connector has been migrated to a new version that encapsulates the authentication details in a new `auth` object with type `UsernamePassword`. This migration enables Harness to support different authentication types in the Jira connector. 
+- The YAML schema for the Jira connector has been migrated to a new version that encapsulates the authentication details in a new `auth` object with type `UsernamePassword`. This migration enables Harness to support different authentication types in the Jira connector. (CDS-52846)
 
 The first of the following two YAML snippets shows the new `auth` object and the new `username` and `passwordRef` fields nested within it. The second YAML snippet shows you the previous YAML specification for purposes of comparison.
 ```
@@ -995,6 +1061,10 @@ Any new Jira connectors that you create must include the new `auth` object, and 
 The new fields override the previously used `username` and `passwordRef` authentication fields. The older fields are now deprecated.
  
 These changes are backward incompatible. Therefore, you must also update the Terraform provider for creating a Jira connector to the latest version (version 0.14.12) so that these new fields are provided. You also need to provide these new fields in API calls that create or update a Jira connector.
+- The default Helm version is manifests is Helm version 3 now. (CDS-52961) 
+- You can leverage Drone SCM service to fetch manifest files from Azure DevOps repositories. (CDS-53176, CDS-53850)
+  
+  This feature is currently behind a feature flag, `OPTIMIZED_GIT_FETCH_FILES`. You can now use Azure Repo store for Kubernetes and Native Helm deployments by enabling this feature flag.  
 
 ##### Fixed issues
 
@@ -1015,7 +1085,7 @@ These changes are backward incompatible. Therefore, you must also update the Ter
   When you add a Kubernetes manifest you have the option to add a values YAML file. In cases where users did not add a values YAML file, the Harness UI was showing an empty path. 
   
   Now, if there are empty values for values YAML **File Path**, these values YAML settings are omitted from the service UI.
-- The **Manual Intervention** tab was not displayed for the ServiceNow Create or Update steps. (CDS-53467, ZD-38687)
+- The **Manual Intervention** tab was not displayed for the ServiceNow Create or Update steps. (CDS-53467, CD-50877, ZD-38687)
   
   The **Manual Intervention** tab is used to select a failure strategy when the acceptance criteria in a ServiceNow [Create](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages) or [Update](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages) step is not met. 
   
@@ -1074,12 +1144,23 @@ These changes are backward incompatible. Therefore, you must also update the Ter
   Harness was not handling the proxy use case.
   
   Now Harness handles the use case by adding the username and password to the HTTP client.
+- Fixed an issue where saving a pipeline was failing when the template input variable of type, number following regex. (CDS-53715)
+- The **Helm Command Flags** option is missing from the Helm **Manifest Details** page when Harness File Store is selected. (CDS-53377)
+  
+  When adding a Helm chart manifest type for a Native Helm deployment, selecting Harness file store as the manifest source type didn't display Helm Command Flag options. This issue is fixed. 
+- When creating manifest, config, and script file types in the Harness File Store, the first two files were saved as the same type even though the user selected three different file types during file creation. (CDS-53329)
+  
+  This issue is fixed.
+- The child elements were getting overlapped with the tabs when scrolling the **Template Inputs** tab in the template **Details** page. (CDS-52933)
+  
+  This issue is fixed.
+- Fixed an issue where the trigger authentication error message was unclear. (CDS-51560)
 
 #### February 23, 2023, version 78507
 
 ##### What's new
 
-This release does not include new features.
+- The **Infrastructure Section** step in a pipeline execution is now renamed to **Infrastructure**. (CDS-52440)
 
 ##### Early access
 
