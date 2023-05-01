@@ -21,11 +21,11 @@ You can install the Harness Delegate on either Docker or Kubernetes.
 
 ## Install Harness Delegate
 
-<h3> Create a new delegate token </h3>
+### Create a new delegate token
 
 Log in to the Harness Platform and go to **Account Settings -> Account Resources -> Delegates**. Select the **Tokens** tab. Select **+New Token**, and enter a token name, for example `firstdeltoken`. Select **Apply**. Harness Platform generates a new token for you. Select **Copy** to copy and store the token in a temporary file. You will provide this token as an input parameter in the next installation step. The delegate will use this token to authenticate with the Harness Platform.
 
-<h3> Get your Harness account ID </h3>
+### Get your Harness account ID
 
 Along with the delegate token, you will also need to provide your Harness `accountId` as an input parameter during delegate installation. This `accountId` is present in every Harness URL. For example, in the following URL:
 
@@ -41,7 +41,7 @@ Now you are ready to install the delegate on either Docker or Kubernetes.
 <Tabs>
 <TabItem value="Kubernetes">
 ```
-<h3> Prerequisite </h3>
+### Prerequisite
 
 Ensure that you have access to a Kubernetes cluster. For the purposes of this tutorial, we will use `minikube`.
 
@@ -72,7 +72,7 @@ Now that you have access to a Kubernetes cluster, you can install the delegate u
 <TabItem value="Helm Chart">
 ```
 
-<h3> Install the Helm chart </h3>
+### Install the Helm chart
 
 As a prerequisite, you must have [Helm v3](https://helm.sh/docs/intro/install/) installed on the machine from which you connect to your Kubernetes cluster. 
 
@@ -133,7 +133,7 @@ Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Mana
 <TabItem value="Terraform Helm Provider">
 ```
 
-<h3> Create main.tf file </h3>
+### Create main.tf file
 
 Harness uses a Terraform module for the Kubernetes delegate. This module uses the standard Terraform Helm provider to install the Helm chart onto a Kubernetes cluster whose config by default is stored in the same machine at the `~/.kube/config` path. Copy the following into a `main.tf` file stored on a machine from which you want to install your delegate.
 
@@ -174,7 +174,7 @@ Now replace the variables in the file with your Harness accound ID and delegate 
 | [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
 | [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
 
-<h3> Run Terraform init, plan, and apply </h3>
+### Run Terraform init, plan, and apply
 
 Initialize Terraform. This downloads the Terraform Helm provider to your machine.
 ```
@@ -212,13 +212,13 @@ Apply complete! Resources: 1 added, 0 changed, 0 destroyed.
 <TabItem value="Kubernetes Manifest">
 ```
 
-<h3> Download a Kubernetes manifest template </h3>
+### Download a Kubernetes manifest template
 
 ```
 curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml
 ```
 
-<h3> Replace variables in the template </h3>
+### Replace variables in the template
 
 Open the `harness-delegate.yaml` file in a text editor and replace `PUT_YOUR_DELEGATE_NAME_HERE`, `PUT_YOUR_HARNESS_ACCOUNTID_HERE`, and `PUT_YOUR_DELEGATE_TOKEN_HERE` with your delegate name (for example, `firstk8sdel`), Harness `accountId`, and delegate token values, respectively.
 
@@ -232,7 +232,7 @@ Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Mana
 | [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
 | [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
 
-<h3> Apply the Kubernetes manifest </h3>
+### Apply the Kubernetes manifest
 
 ```
 kubectl apply -f harness-delegate.yaml
