@@ -14,7 +14,7 @@ import TabItem from '@theme/TabItem';
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 ```
 
-In this tutorial, you'll create a Harness CI pipeline that builds, tests, and publishes a NodeJS app.
+In this tutorial, you'll create a Harness CI pipeline that builds, tests, and publishes a [Node.js](https://nodejs.org/en/docs/guides/getting-started-guide) app.
 
 <CISignupTip />
 
@@ -256,11 +256,11 @@ Add a step to run tests against the NodeJS app code. This portion of the tutoria
 
 7. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
 
-:::tip
+:::tip Specify the Node version
 
 This tutorial pipeline uses Harness Cloud build infrastructure that already has Node installed. If you changed the build infrastructure, you may need to specify the **Container Registry** and **Image** containing the binaries that the step needs to run your script, such as `node:latest`.
 
-For information about when these fields are required, how to specify images, and information about all **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
+For information about when these fields are required, how to specify images, and information about all **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings). For information about Harness Cloud image specifications and how to modify Harness Cloud build infrastructure, go to [Platform and image specifications for Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
 :::
 
@@ -284,11 +284,9 @@ In the YAML editor, replace the `Echo Welcome Message` run step block with the f
                       npm test
 ```
 
-:::tip
+:::tip Specify the Node version
 
 This tutorial pipeline uses Harness Cloud build infrastructure that already has Node installed. If you changed the build infrastructure, you may need to specify the `connectorRef` and `image` containing the binaries that the step needs to run your script, such as `node:latest`.
-
-For information about when these fields are required, how to specify images, and information about all `Run` step settings, go to the [Run step settings reference](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
 
 The following example shows the same `Run` step with `connectorRef` and `image`.
 
@@ -306,6 +304,8 @@ The following example shows the same `Run` step with `connectorRef` and `image`.
                       npm run build --if-present
                       npm test
 ```
+
+For information about when these fields are required, how to specify images, and information about all `Run` step settings, go to the [Run step settings reference](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings). For information about Harness Cloud image specifications and how to modify Harness Cloud build infrastructure, go to [Platform and image specifications for Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
 :::
 
