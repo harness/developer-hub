@@ -61,8 +61,9 @@ Unlike the deployments for supported platforms, like Kubernetes and AWS, Deploym
 
 |        **Type**         | **Nexus3** | **Artifactory** | **Jenkins** | **Amazon S3** | **Docker Registry** | **AWS ECR** | **GCR** | **ACR** | **Google Artifact Registry** | **Custom** | **GCS** | **Bamboo** | **AMI** | **Azure Artifacts** |
 | ----------------------- | ---------- | --------------- | ----------- | ------------- | ------------------- | ----------- | ------- | ------- | ---------------------------- | ---------- | ------- | ---------- | ------- | ------------------- |
-| Docker                  | x          | x               |             |               | x                   | x           | x       | x       |                              |            | x       | x           |         |                     |
-| Other (ZIP, Jobs, etc.) |            | x               | x           | x             |                     |             |         |         | x                            | x          |         | x          | x       | x                   |
+| Other (ZIP, Jobs, etc.) | ✅          | ✅               | ✅           | ✅             |                     |             |         |         | ✅                            | ✅          |         | ✅          | ✅       | ✅                   |
+
+
 
 * No steady state checks on deployed services.
 * Harness does not track releases.
