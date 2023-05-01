@@ -8,7 +8,7 @@ sidebar_position: 220
 You can scan your configurations using [Prowler](https://github.com/prowler-cloud/prowler), an open-source tool for performing AWS, GCP and Azure security best practices assessments, audits, incident response, continuous monitoring, hardening and forensics readiness. 
 
 
-## AWS Security Hub step configuration
+## Prowler step configuration
 
 ### Scan settings
 
