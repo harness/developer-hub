@@ -120,7 +120,7 @@ Delegate selections take precedence in the following order:
 
 This means that if delegate selectors are present at the pipeline and stage levels, then these selections override the delegate selected in the Kubernetes Cluster connector's configuration. If a stage has a stage-level delegate selector, then it uses that delegate. Stages that don't have stage-level delegate selectors use the pipeline-level selector, if present, or the connector's delegate.
 
-For example, assume you have a pipeline with three stages called `alpha`, `beta`, and `gamma`. If you specify a stage-level delegate selector on `alpha` and you don't specify a pipeline-level delegate selector, then `alpha` uses the stage-level delegate and the other stages (`beta` and `gamma`) use the Connector delegate.
+For example, assume you have a pipeline with three stages called `alpha`, `beta`, and `gamma`. If you specify a stage-level delegate selector on `alpha` and you don't specify a pipeline-level delegate selector, then `alpha` uses the stage-level delegate, and the other stages (`beta` and `gamma`) use the Connector delegate.
 
 :::
 

@@ -74,7 +74,7 @@ To reference an output variable in a different stage than the one where it origi
 
 For each expression:
 
-* Replace `[stepID]` with the ID of the **Plugin** step
+* Replace `[stepID]` with the ID of the **Plugin** step.
 * Replace `[VAR_NAME]` with the relevant variable name.
 * In cross-stage references, replace `[stageID]` with the ID of the stage where the **Plugin** step exists.
 
