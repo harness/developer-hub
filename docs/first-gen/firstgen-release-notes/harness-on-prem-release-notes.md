@@ -14,6 +14,71 @@ For Harness SaaS release notes, see [Harness SaaS Release Notes](https://develop
 
 Release notes are displayed with the most recent release first.
 
+### April 26, 2023, version 78926
+
+Delegate: 78904
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 78926 |
+| Delegate | 78904 |
+| Watcher | 78424 |
+| Verification Service | 78926 |
+| UI | 78901 |
+| Learning Engine | 67708 | 
+| Gateway | 2000185 |
+
+### New features and enhancements
+#### Harness Platform
+- Upgrades have been made to the following libraries:
+
+  - The Spring Data MongoDB package has been upgraded to version 3.4.7.
+  - Spring Data Commons has been upgraded to version 2.77.
+  - The MongoDB Java Driver has been upgraded to version 4.6.1. (PL-30730)
+- The API keys will now be encrypted with Harness Global Secrets Manager. (PL-30970)
+#### Delegate
+- Harness Delegate task collections were migrated to a new database. (DEL-5831) 
+
+  This migration is controlled through a configuration flag. For a period of time after the migration, any newly created tasks will have an ID with a **- DEL** suffix.
+- Users can override the delegate image for their account using an endpoint. (DEL-6024)
+
+  Use the following endpoint: 
+
+  - /version-override/delegate-tag
+
+  Pass the arguments in query param:
+
+  - 1- accountIdentifier : String
+
+  - 2- delegate image tag : String
+
+  Optional arguments:
+
+  - 1- validTillNextRelease : Boolean
+
+  - 2- validForDays : int
+
+  Use an api-key with account edit permission in the API header.
+### Fixed issues
+#### Continuous Delivery & GitOps
+- When manually triggering the workflow, there is an issue preventing the selection and retrieval of GCS artifacts. (CDS-53074)
+
+  A code enhancement has fixed this issue.
+#### Harness Platform
+- When a secret is used to create a Prometheus connector, the setup usage is not displayed. (PL-30755)
+  
+  A code enhancement has fixed this issue.
+- On the secret page, you can also see how many times the secret has been decrypted. A high number of details increases the loading time, which affects performance. (PL-31129)
+
+  The introduction of the feature flag `SPG_DISABLE_SECRET_DETAILS` has fixed this issue. Enable this feature flag to hide additional details from the secret page and enhance performance.
+#### Delegate
+- Upgraded org.codehaus.groovy:groovy to 3.0.15 to fix a vulnerability. (DEL-6015)
+- API output includes a new field called **Disconnected**, which determines if a delegate is connected. (DEL-5995)
+
+  The **Disconnected** field is set to **true** if no heartbeat communications occur between the delegate and the Harness Manager for five minutes. 
+
 ### March 14, 2023, version 78426
 
 Delegate: 78310
@@ -255,7 +320,7 @@ This release introduces the following features and enhancements.
 | CDS-40179 | Added reconciliation for `looker` entities to ensure data synchronization between mongoDB and timescaleDB. |
 | CDS-45694 | Deployment recon task failing. Longer retention for deployment in custom dashboards was failing due to a missing null check which has been added. (CDS-45694) |
 | CDS-47016 | Changed how search functionality on the deployments page works. Instead of using regex, search operations now use mongo stemming algorithms. |
-| DEL-4888 | Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview.md). |
+| DEL-4888 | Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/). |
 | DEL-5073 | Updated the Core Protocol Buffers library `protobuf-java/protobuf-javalite` to version 3.21.7. This update fixes CVE-2022-3171, a vulnerability that affects some earlier versions. The vulnerability was linked with denial-of-service (DoS) attacks. |
 | DEL-5153 | Upgraded `org.apache.commons:commons-text` to version 1.10.0 to fix a critical vulnerability in the delegate. |
 | DEL-5308 | Removed the delegate dependency on Java driver component `mongo-java-driver`. This eliminates the CVE-2021-20328 vulnerability that affects client-side field-level encryption (CSFLE). |
@@ -490,7 +555,7 @@ N/A
 Before you upgrade to this release, you must run the following **timescaledb\_upgrade.sh** script against your Harness namespace to update Timescale DB.  
 :::
 
-### timescaledb\_upgrade.sh
+**timescaledb\_upgrade.sh**
 
 ```
 #!/bin/bash  

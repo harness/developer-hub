@@ -318,6 +318,11 @@ a:hover {
   margin-right: 0.2em;
 }
 
+.theme-doc-markdown img[class^="img_"] {
+  border: 1px solid #d9dae5; /* var(--gray-400); */
+  border-radius: 8px;
+}
+
 /* #DLP-36 styles for details + summary */
 .alert--info {
   --ifm-alert-background-color: var(--primary-1);

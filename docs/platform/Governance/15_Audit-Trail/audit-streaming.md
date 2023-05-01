@@ -73,7 +73,7 @@ To add a streaming destination in Harness:
    Harness does not consider AWS buckets while testing the connection. Also, it tests the connector used without testing the bucket.
    :::
    
-   The streaming destination gets configured and appears in the list of destinations under **Audit Log Streaming**. By default setting of this destination is inactive.
+   The streaming destination gets configured and appears in the list of destinations under **Audit Log Streaming**. By default the destination is inactive.
    
 ## Activate or deactivate streaming
 
@@ -93,9 +93,29 @@ You can change the audit stream configuration by clicking three dots beside the 
 
 - **Edit**: Select a different streaming destination or make changes to the existing destination.
 
-- Delete: Delete the audit stream destination.
+- **Delete**: Delete the audit stream destination.
 
 ![](./static/edit-delete.png)
+
+
+## Amazon S3 audit file details
+
+Here is an example of an audit stream file in one of the Amazon S3 buckets.
+
+![](./static/s3-auditstream-file.png)
+
+This file has a list of audit events in JSON format.
+
+Following are the key points about the naming convention of the audit stream file: 
+- There are three timestamps in the file name: `<t1>_<t2>_<t3>`.
+- `<t1>` and `<t2>` indicate the time range of audit events in the file. This time range is provided for information only and is not always accurate. The timestamp can also be out of range if there is a delay in capturing the event.
+- `<t3>` indicates the time when the file was written.
+
+
+:::important
+Harness recommends not building any business logic based on the file name.
+:::
+
 
 ## Payload schema
 
@@ -114,9 +134,7 @@ Streamed audit events have a predictable schema in the body of the response.
 |   auditEventMetadata    |     Additional details required for streaming the audit log.  |  Optional     |
 
 
-
 ### JSON payload
-
 
 ```
 {
