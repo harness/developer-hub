@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-04-22T10:00
+date: 2023-05-02T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
