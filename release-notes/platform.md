@@ -47,7 +47,7 @@ This release does not include any early access feature.
   
   A code enhancement to fetch data corresponding to the selected scope has fixed the issue.
 
-- When the **Scope** value is changed in **Group memberships** for a user with membership in more than 10 groups overall but fewer than 10 groups in a specific scope, the page index is not reset.(PL-32551, ZD-42803)
+- Pagination does not work correctly in the **Group memberships** page.(PL-32551, ZD-42803)
   
   A code enhancement fixed this issue.
 
