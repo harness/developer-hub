@@ -26,7 +26,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
 
 ### Create a CA certificate
 
-- Use the following OpenSSL comment to create a test CA certificate with no password and 25+ years of validity. The public part of the CA certificate (ca.crt) should be provided to Harness to enable mTLS.
+- Use the following OpenSSL comment to create a test CA certificate with no password and 25+ years of validity. You must provide the public portion of the CA certificate (ca.crt) to Harness to enable mTLS.
 
     `openssl req -x509 -sha256 -nodes -days 9999 -newkey rsa:2048 \ -subj "/O=Example ORG/CN=CA Cert" -keyout "ca.key" -out "ca.crt"`
 
