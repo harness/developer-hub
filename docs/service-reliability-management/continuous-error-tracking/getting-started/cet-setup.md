@@ -6,10 +6,6 @@ sidebar_position: 20
 
 # Set up Continuous Error Tracking (CET)
 
-:::info note
-Currently, this feature is behind the feature flag `SRM_ET_EXPERIMENTAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 
 This topic describes how to add a monitored service in Harness and install an Error Tracking Agent on a JVM to identify and troubleshoot faults and exceptions in your code.
 
@@ -24,86 +20,57 @@ A Harness Monitored Service is a combination of service and environment. Harness
 
 The following steps explain how to create a monitored service, and define service and environments for tracking code errors and exceptions: 
 
-1. In your Harness project, navigate to the **Service Reliability Management** module, and then select **Monitored Services**.
+1. In your Harness project, navigate to the **Continuous Error Tracking** module, and then select **Monitored Services**.
 
-    ![Navigate to Monitored Services](./static/et-quickstart-moniterdservice-navigate.png)
+2. Select **+ New Monitored Service**.  
+   
+   The Create New Monitored Service page appears.
 
-2. Select **+ New Monitored Service**. 
+3. Select a service. A Service represents your microservices and other workloads. To add a new service:
+   
+    1. Select **+ Add New**.
+    2. In the New Service dialog, enter a **name** for the service, optional **tag**, and optional **description**, and then select **Save**.
 
-    The Create new monitored service settings page appears.
-
-
-3. In the **Overview** section, enter the following information:
-    * **Type**: Select **Application**.
-    * **Create or select a Service**: Select a Harness service that you want to monitor. A Harness service is a logical representation of your microservices and other workloads that you want to monitor.
-
-      To create a new service, perform the following steps:
-        
-      1. Select **+ Add New**.
-        
-            The New Service dialog appears.
-      2. Enter the following information, and then select **Save**:
-       
-          *  **Name** : Enter a name for the service. For example, _sample_service_.
-          *  **Description (Optional)**
-          *  **Tag (Optional)** 
-
-    * **Create or Select an Environment**: Choose an appropriate environment. Environments represent your deployment targets such as QA, Prod, and so on.
-  
-        To create a new environment, perform the following steps:
-    
-      1. Select **+ Add New**. 
-     
-         The New Environment dialog appears.
-      2. Enter the following information and then select **Save**:
-
-            * **Name**: Enter a name for the environment.
-            * **Description (Optional)**
-            * **Tag (Optional)**
-            * **Environment Type**: Select an environment type. The available options are **Production** and **Non-Production**.
-
-    Harness autopopulates the **Monitored Service Name** field by combining the **Service** and **Environment** names.
-
-4. Select **Save**.
- 
-   You can view the new monitored service in the **Monitored Services** list. 
+4. Select an environment where the Harness Service is deployed (QA, prod, and so on). To create a new environment:
+    1. Select + Add New.
+    2. In the Create Environment dialog, enter a name for the new environment, select an environment type such as production or pre-production, and then select **Save**.
+   
+   Harness auto creates the monitored service name by combining the service and environment names that you have entered.
+   
+5. Select **Save**.  
+   
+   The new monitored service appears on the Monitored Services page. 
 
     ![Monitored Service is created](./static/et-quickstart-moniterdservice-created.png)
 
 
 ## Create a token for the Error Tracking Agent
 
-To create a token, perform the following steps:
+To create a token, do the following:
 
-1. Expand **PROJECT SETUP** and then select **Code Error Settings**.
+1. Expand **PROJECT SETUP** and then select **Tokens**.
    
-2. On the top right-hand corner, select **Tokens**.
+2. On the Code Error Settings page, select **Generate New Token**.
        
      ![Create Token](./static/et-quickstart-token-navigate.png)
-
-3. Select **Generate New Token**. 
     
-    The New Token dialog appears. 
-
-4. Enter a **Name** for the token.
-
-5. Select **Generate**.
+3. In the New Token dialog, enter a name for the token and select **Generate**.  
+   
    A new authentication token is generated and displayed in the **Key** field.
 
-6. Copy the token to clipboard. This token is used in the Error Tracking Agent configuration file.  
+4. Copy the token to clipboard. This token is used in the Error Tracking Agent configuration file.  
 
     ![Generate new token](./static/et-quickstart-generate-new-token.png)
 
-7. Select **Close**.
+5. Select **Close**.
 
    The newly created token is added to the list of tokens.
 
 ![New token](./static/et-quickstart-new-token-created.png)
 
-:::note
+:::info note
 You can copy the token anytime by selecting the clipboard icon.
 :::
-
 
 
 ## Install an Error Tracking Agent
@@ -281,7 +248,7 @@ value: b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a
 
 After installing Error Tracking Agent, you should verify that it is connected to Harness. To verify the Error Tracking Agent connection, do the following:
 
-1. Expand **PROJECT SETUP** and then select **Code Error Settings**.  
+1. Expand **PROJECT SETUP** and then select **Agents**.  
    
    ![Navigate to Agents list](./static/et-quickstart-verify-agent-navigate.png)
  
