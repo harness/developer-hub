@@ -43,9 +43,9 @@ To install the chaos infrastructure on an existing Harness Kubernetes connector,
 ![Chaos Infrastructure in Existing Infra](./static/connect-chaos-infrastructures/chaos-infrastructure-in-existing-infra.png)
 
 :::info
-1. A Harness Kubernetes connector with cluster-wide read/write access can be used to setup chaos infrastructure in cluster scope and namespace scope.
-2. A Harness Kubernetes connector with cluster-wide read access **can't** be used to setup a chaos infrastructure.
-3. A Harness Kubernetes connector with specific namespace access can be used to setup a chaos infrastructure in that specific Kubernetes namespace scope only.
+1. A Harness Kubernetes connector with cluster-wide read/write access can be used to set up chaos infrastructure in cluster scope and namespace scope.
+2. A Harness Kubernetes connector with cluster-wide read access **can't** be used to set up a chaos infrastructure.
+3. A Harness Kubernetes connector with specific namespace access can be used to set up a chaos infrastructure in that specific Kubernetes namespace scope only.
 :::
 
 ### On a new infrastructure
@@ -88,7 +88,7 @@ For the namespace mode setup, you will see **three** commands which you need to 
 - Select **Done**.
 
 ## Validate the chaos infrastructure installation
-- After applying the manifest, Harness will take some time to setup all the chaos infrastructure resources. Once everything is set up, the chaos infrastructure's connection state reflects `CONNECTED`.
+- After applying the manifest, Harness will take some time to set up all the chaos infrastructure resources. Once everything is set up, the chaos infrastructure's connection state reflects `CONNECTED`.
 
 ![Infrastructure State](./static/connect-chaos-infrastructures/infrastructure-state.png)
 
