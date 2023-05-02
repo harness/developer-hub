@@ -21,7 +21,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <Tabs>
   <TabItem value="What's new">
 ```
-- Added a `resolved.yaml` to the `planExecutionsMetadata` API to resolve `<+trigger.artifact.build>` and `<+trigger.manifest.version>` expressions when re-running a failed pipeline. (CDS-58192)
+- Trigger artifact and manifest expressions (`<+trigger.artifact.build>` or `<+trigger.manifest.version>`) are now resolved when you rerun a pipeline that was activated by a trigger. (CDS-58192)
   
   Here is a sample resolved YAML: 
 
@@ -48,15 +48,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   }
   ```
 - Added support to fetch details from the `planExecutionsMetadata` API to resolve the `<+trigger.artifact.build>` expression when re-running a failed pipeline. (CDS-50585)
-- An **Aborting** pop-up window appears with a warning when aborting a pipeline. (CDS-67000)
-- You can run a specific pipeline stage using webhook triggers when you set the **Allow selective stage(s) executions?** option to **Yes** in a pipeline configuration. (CDS-56775, CDS-56774)
+- When you abort a pipeline execution, you will now see helpful warning text that explains the impact to the state of your service. (CDS-67000)
+  
+  `Warning: Abort command will not clean up any resources created during execution so far. Please mark the stage as failed if you would like to clean up and revert back to the old state.`
+- You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](https://developer.harness.io/docs/platform/pipelines/run-specific-stage-in-pipeline/) option. (CDS-56775, CDS-56774)
   
   To run a particular stage of the pipeline: 
   1. Select the stage, then select **Advanced Options**.
   2. In **Stage Execution Settings>** **Allow selective stages(s) executions?**, select **Yes**. This setting is selected by default.
      
      ![](./static/selective-stage-execution.png)
-  3. When you create a [webhook trigger](/docs/platform/triggers/trigger-deployments-using-custom-triggers/), in **Configuration**, select the stages you want to execute.
+  3. When you create a [Custom trigger](/docs/platform/triggers/trigger-deployments-using-custom-triggers/), in **Configuration**, select the stages you want to execute.
      
      ![](./static/select-stage-to-execute.png)
   
@@ -96,7 +98,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   ```
   
   
-- A warning pops up when you create a new template with already existing identifiers in the same scope using a new version label. You can choose to merge the template with the existing template by selecting the **Save as new version of existing template** button in the pop-up window. (CDS-47301)
+- You can now merge templates with identical identifiers. (CDS-47301)
+  A warning pops up when you create a new template with already existing identifiers in the same scope. You can choose to merge the new template with the existing template by selecting the **Save as new version of existing template** button in the warning.
 - The environment reference value in the service override configuration has been migrated to a scoped reference. (CDS-58214)
   
   When you create or update a new service override, the environment reference was an identifier before. Now, Harness supports scoped environment references in metadata as well as YAML as part of the overrides enhancement.
