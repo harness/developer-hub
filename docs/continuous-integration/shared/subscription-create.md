@@ -1,5 +1,6 @@
 1. Sign in to your Harness account or create an account at [app.harness.io](https://app.harness.io/).
-2. Go to **Account Settings**, and then select **Plans** (under **Subscription**) and select **Continuous Integration**.
+2. Go to **Account Settings**, and then select **Subscriptions**.
+3. Select **Continuous Integration**, and then switch to the **Plans** tab.
 
    :::info Compare plans
 
@@ -7,23 +8,23 @@
 
    :::
 
-3. Select **Upgrade** to upgrade from the Free plan to either the Team or Enterprise plans.
+4. Select **Upgrade** to upgrade from the Free plan to either the Team or Enterprise plans.
 
    If you already have a paid plan for another module, you must select the same plan level as your other subscription.
 
    If this is your first time upgrading any Harness module subscription, you'll also have the option to start a 14-day trial.
 
-4. Select the number of developers who will build with Harness CI.
+5. Select the number of developers who will build with Harness CI.
 
    If you were actively using a Free plan before upgrading, Harness makes a recommendation based on your previous and predicted usage.
 
    If you would like to subscribe to the premium 24/7 support package, select **Add Premium Support**. If you already have premium support for another module subscription, your CI subscription must also include premium support.
 
-5. Select **Next: Billing Information** and enter your billing information.
+6. Select **Next: Billing Information** and enter your billing information.
 
    Tax is calculated once you enter your billing zip code. This can take up to 10 seconds to calculate.
 
-6. Select **Subscribe and Pay** to submit payment. Harness doesn't store payment information. Payments are handled by Stripe.
+7. Select **Subscribe and Pay** to submit payment. Harness doesn't store payment information. Payments are handled by Stripe.
 
 :::info How is the total cost calculated?
 
