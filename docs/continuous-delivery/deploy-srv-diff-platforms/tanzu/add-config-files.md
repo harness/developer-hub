@@ -30,11 +30,9 @@ You can view the config files added to your service definition.
 
 You can reference this config file as an expression in a pipeline from the **Execution** tab. 
 
-For example, in a Tanzu Command step, you can reference the config file **Inline** by entering the following expression. 
+For example, in a Tanzu Command step, you can reference the config file by entering the following script in the step's **Step Parameters>** **Script>** **Inline**. 
 
 `echo "<+configFile.getAsString("shell")>"` 
-
-You can also reference the config file from the **File Store** by selecting the file.
 
 ```mdx-code-block
 </TabItem>
@@ -58,11 +56,9 @@ You can view the config files added to your service definition.
 
 You can reference this config file as an expression in a pipeline from the **Execution** tab. 
 
-For example, in a Tanzu Command step, you can reference the config file **Inline** by entering the following expression. 
+For example, in a Tanzu Command step, you can reference the config file by entering the following script in the step's **Step Parameters>** **Script>** **Inline**. 
 
 `echo "<+configFile.getAsString("shellsec")>"` 
-
-You can also reference the config file from the **File Store** by selecting the file.
 
 ```mdx-code-block
 </TabItem>  
