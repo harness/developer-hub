@@ -16,7 +16,7 @@ Below are the steps to enable service accounts to access AWS resources.
 
 #### Step 1: Create an IAM OpenID Connect (OIDC) provider for your cluster
 
-You must create an IAM OpenID Connect (OIDC) identity provider for your cluster with `eksctl`. This step is performed once for a cluster. For more information, go to [AWS documentation to setup an OIDC provider](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html).
+You must create an IAM OpenID Connect (OIDC) identity provider for your cluster with `eksctl`. This step is performed once for a cluster. For more information, go to [AWS documentation to set up an OIDC provider](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html).
 
 Below is the command to check if your cluster has an existing IAM OIDC provider.
 The cluster name specified in this example is `litmus-demo` and region is `us-west-1`. Replace these values based on your environment.
