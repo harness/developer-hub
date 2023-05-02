@@ -1,5 +1,5 @@
 ---
-title: Add and Manage Users
+title: Add and manage users
 description: This document shows steps to create a new user.
 # sidebar_position: 2
 helpdocs_topic_id: hyoe7qcaz6

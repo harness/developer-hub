@@ -1,14 +1,14 @@
 ---
 sidebar_position: 2
-title: Chaos Experiment from a Blank Canvas
-description: Create a Chaos Experiment from scratch.
+title: Chaos experiment from a blank canvas
+description: Create a chaos experiment from scratch.
 ---
+## Introduction
+This tutorial guides you through creating chaos experiments from scratch. Here, you'll construct a chaos experiment from scratch in the Chaos Studio. If you are a beginner, ensure you are hands-on with executing [simple chaos experiments](./first-chaos-engineering).
 
-Welcome to this tutorial on creating Chaos Experiments from scratch. Here, you'll be constructing a chaos experiment from scratch in the Chaos Studio. Make sure you have completed the previous tutorial before starting.
+## Constructing a chaos experiment from scratch
 
-## Constructing a Chaos Experiment from Scratch
-
-In the previous tutorial we used the **Boutique cart delete** template to create our experiment. This time around, let us try to define the same experiment with minor changes from scratch. We will again be targeting the pods of the carts microservice with the Pod Delete fault. Right now, the cart page is healthy and accessible in the frontend, as seen at the `/cart` route.
+In the previous tutorial, you used the **Boutique cart delete** template to create the chaos experiment. This time around, let us define the same experiment with minor changes from scratch. We will again target the pods of the carts microservice with the pod delete fault. Right now, the cart page is healthy and accessible in the frontend, as seen at the `/cart` route.
 
 ![Online Boutique App Cart](./static/chaos-experiment-from-blank-canvas/online-boutique-app-cart.png)
 
@@ -16,7 +16,7 @@ To create the chaos experiment, go to **Chaos Experiments** in the sidebar menu 
 
 ![Chaos Studio](./static/chaos-experiment-from-blank-canvas/chaos-studio.png)
 
-Let us try to define our Pod Delete fault. Choose **Add**. From the **Enterprise Chaos Hub** select Pod Delete fault under the Kubernetes category.
+Let us try to define our pod delete fault. Choose **Add**. From the **Enterprise Chaos Hub** select pod delete fault under the Kubernetes category.
 
 ![Pod Delete Fault](./static/chaos-experiment-from-blank-canvas/pod-delete-fault.png)
 
@@ -38,7 +38,7 @@ In the last step, choose the **Set Fault Weight** tab. We will use the default w
 
 ![Set Fault Weight](./static/chaos-experiment-from-blank-canvas/set-fault-weight.png)
 
-## Observing Chaos Execution
+## Observing chaos execution
 
 When ready, start the experiment execution by selecting **Run** on the top right corner of the screen. You'll be able to observe the experiment added to the list of chaos experiments and it should be in a `Running` status. Choose **Current Execution** to get a detailed view.
 
@@ -82,7 +82,7 @@ We can validate this behavior using the application metrics dashboard as well. T
 
 ![Application Down Dashboard](./static/chaos-experiment-from-blank-canvas/application-down-dashboard.png)
 
-## Evaluating the Experiment Run
+## Evaluating the experiment run
 
 This time when the experiment execution concludes, we get a resiliency score of 50%. The Pod Delete fault has failed this time as well.
 
@@ -100,4 +100,5 @@ We can also check the Chaos Results tab to get a summary of the experiment execu
 
 ![Result Fail Step](./static/chaos-experiment-from-blank-canvas/result-fail-step.png)
 
-With that you have now defined a chaos experiment from scratch!
+## Conclusion
+With that, you have successfully executed a chaos experiment from scratch! Don't forget to checkout how to execute [chaos experiments with API](./first-chaos-experiment-via-api), [on Jenkins](./chaos-experiments-on-jenkins), [on GitLab](./chaos-experiments-on-gitlab), and how the [chaos module integrates with Harness CD](./integration-with-harness-cd).

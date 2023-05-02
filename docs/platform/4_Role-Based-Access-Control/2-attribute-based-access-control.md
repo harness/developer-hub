@@ -1,5 +1,5 @@
 ---
-title: Attribute-Based Access Control
+title: Attribute-based access control
 description: This topic explains Attribute-Based access control.
 # sidebar_position: 2
 helpdocs_topic_id: uzzjd4fy67

@@ -318,6 +318,11 @@ a:hover {
   margin-right: 0.2em;
 }
 
+.theme-doc-markdown img[class^="img_"] {
+  border: 1px solid #d9dae5; /* var(--gray-400); */
+  border-radius: 8px;
+}
+
 /* #DLP-36 styles for details + summary */
 .alert--info {
   --ifm-alert-background-color: var(--primary-1);
@@ -521,6 +526,12 @@ a.card .text--truncate {
 }
 a.card p.text--truncate {
   min-height: 3em;
+}
+
+/* HDH-120: Change 2nd level numbered list style */
+ol ol,
+ul ol {
+  list-style-type: lower-alpha;
 }
 
 @media screen and (min-width: 1200px) {

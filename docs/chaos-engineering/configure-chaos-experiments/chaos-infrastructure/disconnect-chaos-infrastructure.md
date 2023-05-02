@@ -1,6 +1,6 @@
 ---
-title: Disconnect Chaos Infrastructure
-sidebar_position: 6
+title: Disconnect chaos infrastructure
+sidebar_position: 2
 ---
 
 Disconnecting and deleting a chaos infrastructure removes it from the environment in which it resides. It also removes the infrastructure services from the Kubernetes cluster.

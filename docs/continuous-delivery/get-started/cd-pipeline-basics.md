@@ -1,7 +1,7 @@
 ---
 title: CD pipeline basics
 description: This topic covers CD pipeline basics to get you ready to start building pipelines easily.
-sidebar_position: 1
+sidebar_position: 2
 helpdocs_topic_id: cqgeblt4uh
 helpdocs_category_id: dxej4ug0n5
 helpdocs_is_private: false

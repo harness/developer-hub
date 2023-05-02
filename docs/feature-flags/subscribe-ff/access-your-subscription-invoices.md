@@ -15,15 +15,14 @@ To get a copy of your subscription invoice:
 1. On the Harness Platform, on the lefthand navigation, click **Help**.
 2. Select **Submit a ticket**.
 3. Complete the following fields in the form:
-	1. **Feedback category**: Select Q**uestion**.
-	2. **Email**: Enter your email address.
-	3. **Subject**: Enter **FF Subscriptions**.
-	4. **Message**: Request a copy of your subscription invoice.
-	5. **Priority**: Select **Priority:Normal**.
+	* **Feedback category**: Select Q**uestion**.
+	* **Email**: Enter your email address.
+	* **Subject**: Enter **FF Subscriptions**.
+	* **Message**: Request a copy of your subscription invoice.
+	* **Priority**: Select **Priority:Normal**.
 4. Click **Send Feedback.**
 
-```mdx-code-block
-<img src={invoice} alt="An example of the feedback form for requesting a subscription invoice." height="500" width="400" />
-``` 
-*Figure 1: An example of a feedback form.*
+	```mdx-code-block
+	<img src={invoice} alt="An example of the feedback form for requesting a subscription invoice." height="500" width="400" />
+	``` 
 

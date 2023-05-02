@@ -1,5 +1,5 @@
 ---
-title: Add an AWS Secrets Manager
+title: Add an AWS secrets manager
 description: This topic shows how to create an AWS Secret Manager.
 sidebar_position: 5
 helpdocs_topic_id: a73o2cg3pe

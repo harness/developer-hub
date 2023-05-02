@@ -1,5 +1,5 @@
 ---
-title: Use CCM perspective date ranges
+title: Use perspective date ranges
 description: When you view a CCM Perspective , you can adjust the date ranges of the Perspective --  It's important to understand how selecting different date ranges impacts the Forecasted Cost. Let's look at an exa…
 # sidebar_position: 2
 helpdocs_topic_id: pzw6hnepyv

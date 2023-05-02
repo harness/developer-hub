@@ -107,7 +107,6 @@ A stage contains one or more steps. Each step is a series of commands that perfo
 * [Share and cache CI data](/docs/category/share-and-cache-ci-data)
 * [Run scripts](/docs/category/run-scripts)
 * [Use plugins](/docs/category/use-plugins)
-* [View builds](/docs/category/view-builds)
 * [Security step (Harness STO)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)
 
 ## Advanced stage and step settings

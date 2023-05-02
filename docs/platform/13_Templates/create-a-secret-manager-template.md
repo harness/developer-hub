@@ -1,5 +1,5 @@
 ---
-title: Create a Secret Manager Template
+title: Create a secret manager template
 description: This topic shows how to add a Secret Manager Template.
 # sidebar_position: 2
 helpdocs_topic_id: n41cqkjrla

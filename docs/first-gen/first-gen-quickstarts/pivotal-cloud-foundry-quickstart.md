@@ -312,7 +312,7 @@ In this tutorial, you learned how to:
 
 Read the following related How-tos:
 
-* [Tanzu Application Service How-tos](docs/category/iis-net-deployments) which include Canary and Blue/Green TAS deployments.
+* [Tanzu Application Service How-tos](https://developer.harness.io/docs/category/tanzu-application-service-formerly-pivotal) which include Canary and Blue/Green TAS deployments.
 * [Triggers](../continuous-delivery/model-cd-pipeline/triggers/add-a-trigger-2.md) show you how to automate deployments in response to different events.
 * [Infrastructure Provisioners Overview](../continuous-delivery/model-cd-pipeline/infrastructure-provisioner/add-an-infra-provisioner.md) will show you how to add provisioning as part of your Workflow.
 

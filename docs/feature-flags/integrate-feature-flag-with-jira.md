@@ -53,7 +53,7 @@ To add the Feature Flags app and token in Jira:
 
 1. Log in to your Jira instance. 
 1. On the **Apps** menu,  choose **Explore more apps**.
-1. Find and select the **Harness Feature Flags for Jira**.
+1. Find and select the **Harness Feature Flags for Jira**, or go directly to this [Atlassian Marketplace link](https://marketplace.atlassian.com/apps/1227514/harness-feature-flags-for-jira?tab=overview&hosting=cloud).
 1. Select **Get it now** to install the app.
 1. Once the app is installed, go to **Apps > Manage apps**, and then find the app.
 

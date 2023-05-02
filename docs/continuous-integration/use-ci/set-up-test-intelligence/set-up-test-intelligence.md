@@ -64,7 +64,7 @@ Use these steps to configure the **Run Tests** step and generate an initial call
    * **Test Annotations:** Leave blank or provide a comma-separated list of test annotations to use in unit testing. If you do not provide a list of test annotations, the default is `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`.
    * **Namespaces:** For .NET C# only, supply a comma-separated list of namespace prefixes that you want to test.
 
-   For more information about these settings, and other **Run Tests** step settings, go to the [Run Tests step settings reference](../../ci-technical-reference/configure-run-tests-step-settings.md).
+   For more information about these settings, and other **Run Tests** step settings, go to the [Run Tests step settings reference](./configure-run-tests-step-settings.md).
 
 <details>
 <summary>YAML example</summary>

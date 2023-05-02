@@ -1,5 +1,5 @@
 ---
-title: Harness Git Experience Overview
+title: Harness Git Experience overview
 description: Harness Git Experience lets you store configurations for your resources like pipelines, input sets in Git. You can choose Git as the source of truth and use your Git credentials to access and modifyâ€¦
 sidebar_position: 2
 helpdocs_topic_id: xl028jo9jk
@@ -29,6 +29,8 @@ The following section lists the support for Git providers for Harness Git Sync:â
 * GitHub
 * Bitbucket Cloud
 * Bitbucket Server
+* Azure Repos
+* GitLab
 
 Make sure `feature.file.editor` is not set to `false` in the `bitbucket.properties` file if you are using Bitbucket on-prem.
 

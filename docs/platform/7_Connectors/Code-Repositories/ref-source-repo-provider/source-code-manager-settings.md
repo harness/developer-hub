@@ -1,5 +1,5 @@
 ---
-title: Source Code Manager Settings
+title: Source Code Manager settings
 description: Currently, this feature is in Beta and behind a Feature Flag.
 sidebar_position: 60
 helpdocs_topic_id: kqik8km5eb

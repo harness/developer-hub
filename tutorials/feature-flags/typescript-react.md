@@ -3,13 +3,21 @@ sidebar_position: 1
 description: Walks you through adding JavaScript Feature Flags to a TypeScript and React Application.
 ---
 
-# Add feature flags to JavaScript app
+# Add Feature Flags to a JavaScript app
 
 ## Background on Feature Flags
 
 It takes two things to build software; teamwork and iteration. As software engineers, we dive into creating the unknown, sometimes for the first time. Core to innovative work is experimenting and prototyping as incremental success builds greater success. As changes near production, the experimentation that was appropriate in lower environments tapers off as the potential blast radius grows, e.g. if we get the experiment wrong, there’s a greater impact on a larger number of users.
 
 [Feature Flags](https://harness.io/blog/what-are-feature-flags) by definition allow blocks of code to be executed conditionally. Conditional statements are nothing new and have been around for several decades; the management of inventorying and toggling these conditional statements are newer and Feature Flag platforms are here. Feature Flags enable a concept called Progressive Delivery, or the incremental release of features. In this example we will walk you through your first Feature Flag creation and execution.
+
+## Video Tutorial
+
+This tutorial gives you a quick overview of adding Feature Flags.
+
+<!-- Video:
+Your First Feature Flag-->
+<docvideo src="https://www.youtube.com/watch?v=Zf51EDcDa80" />
 
 ## What You Need For Executing Your First Feature Flag
 
@@ -189,7 +197,7 @@ With the expression and SDK wired in to monitor for changes in events, you are n
 
 ## Executing Your First Feature Flag
 
-You are now ready to run your first Feature Flag. As a note, this project is an example project to teach **strict** stylistic guidelines in TypeScript. You can disable the [Prettier plugin](https://prettier.io/tutorials/en/plugins.html) in the eslintrc config by adding a Prettier rule. You can also remove the “sort-imports” rule if your IDE did not take care of sorting the imports for you, e.g. when you added the init import statement.
+You are now ready to run your first Feature Flag. As a note, this project is an example project to teach **strict** stylistic guidelines in TypeScript. You can disable the [Prettier plugin](https://prettier.io/) in the eslintrc config by adding a Prettier rule. You can also remove the “sort-imports” rule if your IDE did not take care of sorting the imports for you, e.g. when you added the init import statement.
 
 ```
 "prettier/prettier": 0,

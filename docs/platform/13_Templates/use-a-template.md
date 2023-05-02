@@ -1,5 +1,5 @@
 ---
-title: Use a Template
+title: Use a template
 description: This topic describes how to use an existing template in a pipeline.
 # sidebar_position: 2
 helpdocs_topic_id: 1re7pz9bj8

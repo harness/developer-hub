@@ -1,5 +1,5 @@
 ---
-title: Harness Entity Reference
+title: Harness entity reference
 description: The term entity is used to refer to the components of Harness. Most entities can be created at the account, organization, and project level. In this topic --  Examples of Entities. Entity Identifiers. E…
 # sidebar_position: 2
 helpdocs_topic_id: tygjin99y9

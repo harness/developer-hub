@@ -1,5 +1,5 @@
 ---
-title: Create a Remote Pipeline Template
+title: Create a remote pipeline template
 description: This topic explains how to add a remote Pipeline Template in Harness.
 # sidebar_position: 2
 helpdocs_topic_id: 0qu91h5rwu

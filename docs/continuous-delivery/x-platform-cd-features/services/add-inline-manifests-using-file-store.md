@@ -259,6 +259,15 @@ metadata:
 ```
 </details>
 
+## Reference files in the file store using an expression
 
+The expression `fileStore.getAsString()` can be used to fetch files in the File Store in a script or runtime input.
+
+For example:
+
+- Project-level File Store: `fileStore.getAsString("/folder1/myfile.yaml")`.
+- Org-level File Store: `fileStore.getAsString("org:/folder1/myfile.yaml")`. 
+- Account-level File Store: `fileStore.getAsString("account:/folder1/myfile.yaml")`.
+- Base64 encoded: `fileStore.getAsBase64("account:/folder1/folder2/myfile")`.
 
 

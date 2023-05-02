@@ -151,7 +151,7 @@ These options are provided for backwards-compatibility and it is preferable that
 | Chart reference. | `helm install stable/nginx` | **Chart Name:** stable/nginx |
 | Path to a packaged chart.In this method, the chart file is located on the same pod as the Harness Delegate.You can add a Delegate Profile that copies the chart from a repo to the pod. For more information, see [Delegate Profiles](../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-profiles). | `helm install ./nginx-1.2.3.tgz` | **Chart Name:** *dir\_path\_to\_delegate*/nginx |
 | Path to an unpacked chart directory.In this method, the chart file is located on the same pod as the Harness delegate.You can add a Delegate Profile that copies the chart from a repo to the pod. For more information, see [Delegate Profiles](../../firstgen-platform/account/manage-delegates/delegate-installation.md#delegate-profiles). | `helm install ./nginx` | **Chart Name:** *dir\_path\_to\_delegate*/nginx |
-| Absolute URL. | `helm install https://example.com/charts/nginx-1.2.3.tgz` | **Chart Name:** https://example.com/charts/nginx-1.2.3.tgz |
+| Absolute URL. | `helm install https://example.com/charts/nginx-1.2.3.tgz` | **Chart Name:** `https://example.com/charts/nginx-1.2.3.tgz` |
 
 For Helm, that's it. You don't have to do any further configuration to the service. Harness will use the chart you specified to configure the Kubernetes cluster.
 

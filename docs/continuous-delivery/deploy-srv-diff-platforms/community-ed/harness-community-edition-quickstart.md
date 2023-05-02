@@ -416,6 +416,10 @@ We are updating builds on a daily basis to fix issues and add features. To upgra
 3. Run `docker-compose down` in the **harness-cd-community/docker-compose/harness** folder.
 4. Run `docker-compose up -d` in the **harness-cd-community/docker-compose/harness** folder.
 
+:::note
+ You must manually pull the delegate image after the delegate is disconnected. This updates the version and allows you to restart.
+:::
+
 ### Next Steps
 
 In this tutorial, you learned how to:

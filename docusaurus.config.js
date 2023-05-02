@@ -83,6 +83,7 @@ const config = {
             position: "right",
             type: "dropdown",
             label: "Tutorials",
+            to: "tutorials",
             items: [
               {
                 // type: "doc",
@@ -138,6 +139,7 @@ const config = {
             position: "right",
             type: "dropdown",
             label: "Documentation",
+            to: "docs",
             items: [
               {
                 label: "Get Started",
@@ -205,6 +207,7 @@ const config = {
             label: "Certifications",
             position: "right",
             type: "dropdown",
+            to: "certifications",
             items: [
               {
                 label: "All Certifications",

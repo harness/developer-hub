@@ -1,5 +1,5 @@
 ---
-title: Controlling Resource Usage with Barriers, Resource Constraints, and Queue Steps
+title: Controlling resource usage with Barriers, Resource Constraints, and Queue steps
 description: This topic describes how to control resource usage during Harness deployments.
 sidebar_position: 2
 helpdocs_topic_id: 7ogetmgq7y

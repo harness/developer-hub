@@ -69,6 +69,17 @@ Click **Apply Changes**.
 
 The Terraform Destroy step is added.
 
+## Command Line Options
+
+This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
+
+![](./static/run-a-terraform-plan-with-the-terraform-apply-step-18.png)
+
+## Skip Terraform Refresh
+
+Terraform refresh command won't be running when this setting is selected.
+
+
 ## See Also
 
 * [Rollback Provisioned Infra with the Terraform Rollback Step](rollback-provisioned-infra-with-the-terraform-rollback-step)

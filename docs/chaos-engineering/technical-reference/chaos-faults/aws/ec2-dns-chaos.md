@@ -2,52 +2,44 @@
 id: ec2-dns-chaos
 title: EC2 DNS chaos
 ---
+## Introduction
+
 EC2 DNS chaos causes DNS errors such as unavailability or malfunctioning of DNS servers on the specified EC2 instance for a specific duration. 
-- It determines the performance of the application (or process) running on the EC2 instance(s).
 
 ![EC2 DNS Chaos](./static/images/ec2-dns-chaos.png)
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-This fault results in DNS errors on the target EC2 instances. This results in unavailability (or distorted) network connectivity from the VM to the target hosts. This fault determines the impact of DNS chaos on the infrastructure and standalone tasks. It simulates unavailability of DNS server (loss of access to any external domain from a given microservice) and malfunctioning of DNS server (loss of access to specific domains from a given microservice, access to cloud provider dependencies, and access to specific third party services).
+## Use cases
+EC2 DNS chaos:
+- Determines the performance of the application (or process) running on the EC2 instance(s).
+- Simulates the unavailability (or distorted) network connectivity from the VM to the target hosts. 
+- Determines the impact of DNS chaos on the infrastructure and standalone tasks. 
+- Simulates unavailability of the DNS server (loss of access to any external domain from a given microservice, access to cloud provider dependencies, and access to specific third party services).
 
-</div>
-</details>
-
-## Prerequisites
-- Kubernetes > 1.16
+:::info note
+- Kubernetes version 1.17 or later is required to execute this fault.
 - SSM agent is installed and running on the target EC2 instance.
-- Create a Kubernetes secret that has the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
+- The EC2 instance should be in a healthy state.
+- You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
+- The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  ```
+- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+- Go to the [common tunables](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+:::
 
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-### Note
-You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -95,20 +87,12 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
-
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-## Default validations
-The EC2 instance should be in a healthy state.
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+   <h3>Mandatory tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -125,35 +109,35 @@ The EC2 instance should be in a healthy state.
       <tr>
         <td> PORT </td>
         <td> DNS port where chaos is injected. </td>
-        <td> Defaults to port 54. </td>
+        <td> Default: port 54. </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h2>Optional tunables</h2>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30 s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive instance terminations (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30 s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple instance </td>
-        <td> Defaults to parallel. Supports serial sequence as well. </td>
+        <td> Sequence of chaos execution for multiple instance </td>
+        <td> Default: parallel. Supports serial sequence. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> For example, 30s </td>
+        <td> For example, 30 s </td>
       </tr>
       <tr>
         <td> INSTALL_DEPENDENCY </td>
@@ -168,26 +152,20 @@ The EC2 instance should be in a healthy state.
       <tr>
         <td> MATCH_SCHEME </td>
         <td> Determines whether the DNS query should exactly match the targets or can be a substring. </td>
-        <td> Defaults to exact.</td>
+        <td> Default: exact.</td>
       </tr>
       <tr>
         <td> UPSTREAM_SERVER </td>
         <td> Custom upstream server to which the intercepted DNS requests are forwarded. </td>
-        <td> defaults to the server mentioned in the resolv.conf file. </td>
+        <td> Default: Server mentioned in the resolv.conf file. </td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Fault tunables
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Run DNS chaos with port
 
-It contains the DNS port to inject DNS chaos. You can tune it using the `PORT` environment variable.
+DNS port to inject DNS chaos. Tune it by using the `PORT` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-port.yaml yaml)
 ```yaml
@@ -215,9 +193,9 @@ spec:
 
 ### Run DNS chaos with target host names
 
-It contains the list of the target host names to inject DNS chaos. You can tune it using the `TARGET_HOSTNAMES` environment variable.
+List of the target host names to inject DNS chaos. Tune it by using the `TARGET_HOSTNAMES` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-target-hostnames.yaml yaml)
 ```yaml
@@ -246,9 +224,9 @@ spec:
 
 ### Run DNS chaos with match scheme
 
-It determines whether the DNS query exactly matches the target or is a substring. You can tune it using the `MATCH_SCHEME` environment variable.
+Determine whether the DNS query exactly matches the target or is a substring. Tune it by using the `MATCH_SCHEME` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-match-scheme.yaml yaml)
 ```yaml
@@ -274,12 +252,11 @@ spec:
           value: 'us-west-2'
 ```
 
-
 ### Run DNS chaos with upstream server
 
-It contains the custom upstream server to which intercepted DNS requests are forwarded. It defaults to the server mentioned in the resolv.conf file. You can tune it using the `UPSTREAM_SERVER` environment variable.
+Custom upstream server where the intercepted DNS requests are forwarded. It defaults to the server mentioned in the resolv.conf file. Tune it by using the `UPSTREAM_SERVER` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-dns-chaos/ec2-dns-upstream-server.yaml yaml)
 ```yaml

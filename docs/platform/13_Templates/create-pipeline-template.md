@@ -1,5 +1,5 @@
 ---
-title: Create a Pipeline Template
+title: Create a pipeline template
 description: This quickstart walks you through the steps to create a Pipeline Template.
 sidebar_position: 3
 helpdocs_topic_id: gvbaldmib5

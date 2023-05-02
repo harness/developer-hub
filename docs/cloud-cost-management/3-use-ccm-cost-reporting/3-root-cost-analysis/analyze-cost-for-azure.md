@@ -1,5 +1,5 @@
 ---
-title: Analyze cost for Azure 
+title: Azure 
 description: This topic describes how to analyze costs for Azure using Perspectives.
 # sidebar_position: 2
 helpdocs_topic_id: p17sq3pwbd
@@ -7,6 +7,8 @@ helpdocs_category_id: jkwta6oexk
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+# Analyze cost for Azure 
 
 Harness Cloud Cost Management (CCM) allows you to view your Azure costs at a glance, understand what is costing the most, and analyze cost trends. CCM Perspectives displays the data for all your Azure services (Storage account, Virtual machines, Containers, and so on) and also helps you get details of:
 
