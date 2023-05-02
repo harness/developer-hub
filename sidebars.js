@@ -293,13 +293,8 @@ const sidebars = {
           type: "category",
           label: "Internal Developer Portal",
           link: {
-            type: "generated-index",
-            slug: "/internal-developer-portal",
-            /* Uncomment this block while we have a landing page for module docs
             type: "doc",
             id: "internal-developer-portal",
-          },
-          */
           },
           customProps: {
             description:
