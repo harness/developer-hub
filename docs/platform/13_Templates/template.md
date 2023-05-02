@@ -49,35 +49,32 @@ For example, if you have some tasks or operations that every Pipeline must do, t
 * Save time and create generic templates that you can use across the scopes in your Harness Account.
 * Add or remove a change in one file rather than a lot of stages.
 
-### Templates at Scopes
+### Templates scopes
 
 You can add Templates at any [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md) in Harness.
 
 The following table shows what it means to add Templates at different scopes or hierarchies:
 
 
-
-|  |  |
-| --- | --- |
 | **Scope** | **When to add Templates?** |
+| --- | --- |
 | **Account** | To share Step/Stage/Pipeline Templates with users in the Account, as well as users within the Organizations, and Projects created within this Account. |
 | **Organization** | To share Step/Stage/Pipeline Templates with users in the Organization as well as within the Projects created within the Org. |
 | **Project** | To share Step/Stage/Pipeline Templates with users within the Project. |
 
-#### Referencing Objects within a scope
+#### Referencing objects within a scope
 
-When leveraging a template at a specific scope, users can only reference resources within the respective scope. 
+When leveraging a template at a specific scope (project, org, or account), you can only reference resources within the respective scope or higher in the Harness object hierarchy (project --> org --> account). 
 
-For Example, If a user creates an account level stage deploy template - the service, the environment, the infrastructure, the connectors and the secrets referenced in steps must be defined at the account level in order to be refereced as a Fixed Value or an expression in the template.
+For example, if you create an account-level stage deploy template, the service, the environment, the infrastructure definition, the connectors, and the secrets referenced in its steps must be defined at the account level in order to be refereced as a fixed value or expression in the template.
 
-You cannot reference an org or project level service, environment, connector, infra definition as a fixed value in the account level template. All those resources must be at the account level in order to be fixed in a template.
+You cannot reference an **org** or **project** level service, environment, connector, or infrastructure definition as a fixed value in the **account-level** template. All those resources must be at the account level in order to be fixed in a template.
 
-The Project and Org level templates can reference higher level objects like service, environment, connectors and secrets. User's can define a fixed value service that is defined at the Org or Account level given their RBAC permissions. Similar with Environment and Infrastructure Definitions, they can come from higher level resources. Similar with secrets, users can reference org and account level secrets from a project scoped template.
+You cannot reference objects downwards in the heirarchy; however, given the correct RBAC access, you can use resources upwards in the heirarchy (project --> org --> account).
 
-User's can't reference objects down in the heirarchy, however given the correct access, users can leverage resource above in the heirarchy as fixed values for the template.
+The project and org-level templates can reference higher level objects like services, environments, connectors, and secrets. A project-level template can reference org and account-level objects and an org-level template can reference account-level objects.
 
-
-
+You can define a fixed value service at the org or account level according to your RBAC permissions. The same is true with environments and infrastructure definitions, as they can come from higher level resources. With secrets, you can reference org and account level secrets from a project-scoped template.
 
 ### What Are The Types of Templates in Harness?
 
