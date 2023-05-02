@@ -4,9 +4,9 @@ description: Identify and prioritize critical errors.
 sidebar_position: 30
 ---
 
-The Error Tracking Events dashboard displays a comprehensive list of all the monitored services and events.
+The Continuous Error Tracking Events dashboard displays a comprehensive list of all the monitored services and events.
 
-To go to the Events dashboard, in Harness, go to **Service Reliability Management**, and then select **Code Errors**.
+To go to the Events dashboard, in Harness, go to **Continuous Error Tracking**, and then select **Events Summary**.
 
 ![Continuous Error Tracking Events dashboard](./static/et-quickstart-errortracking-dashboard.png)
 
