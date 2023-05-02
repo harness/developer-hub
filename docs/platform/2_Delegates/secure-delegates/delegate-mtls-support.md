@@ -64,7 +64,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
 You provide the client.crt and client.key to the delegate YAML when you install the delegate.
 :::
 
-4. Once the certificates are created, provide the public cert of the CA certificate to Harness support. 
+4. After you create the certificates, provide the public cert of the CA certificate to Harness support. 
 5. Provide a unique API prefix to the location where your mTLS endpoint is hosted. You can set any prefix for your directory path, but it must be unique.
 
 :::note
