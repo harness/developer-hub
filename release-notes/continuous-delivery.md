@@ -21,7 +21,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <Tabs>
   <TabItem value="What's new">
 ```
-- Trigger artifact and manifest expressions (`<+trigger.artifact.build>` or `<+trigger.manifest.version>`) are now resolved when you rerun a pipeline that was activated by a trigger. (CDS-58192)
+- Trigger artifact and manifest expressions (`<+trigger.artifact.build>` or `<+trigger.manifest.version>`) are now resolved when you rerun a pipeline that was activated by a trigger. (CDS-58192, CDS-50585)
   
   Here is a sample resolved YAML: 
 
@@ -47,11 +47,21 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     "correlationId": "1ad40479-c6ff-47e4-9722-db11c0a3ab06"
   }
   ```
-- Added support to fetch details from the `planExecutionsMetadata` API to resolve the `<+trigger.artifact.build>` expression when re-running a failed pipeline. (CDS-50585)
 - When you abort a pipeline execution, you will now see helpful warning text that explains the impact to the state of your service. (CDS-67000)
   
   `Warning: Abort command will not clean up any resources created during execution so far. Please mark the stage as failed if you would like to clean up and revert back to the old state.`
+- You can now merge templates with identical identifiers. (CDS-47301)
+  A warning pops up when you create a new template with already existing identifiers in the same scope. You can choose to merge the new template with the existing template by selecting the **Save as new version of existing template** button in the warning.
+- The pipeline variables, stage variables, and service and environment variables are no longer validated on the run pipeline form. These validations are optional now. (CDS-64656)
+- Added support to get GitHub webhook events through a CURL command if the client call fails. (CDS-58692)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
 - You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](https://developer.harness.io/docs/platform/pipelines/run-specific-stage-in-pipeline/) option. (CDS-56775, CDS-56774)
+
+  This functionality is behind the feature flag, `CDS_NG_TRIGGER_SELECTIVE_STAGE_EXECUTION`. 
   
   To run a particular stage of the pipeline: 
   1. Select the stage, then select **Advanced Options**.
@@ -96,20 +106,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
                 value: stage3Var
 
   ```
-  
-  
-- You can now merge templates with identical identifiers. (CDS-47301)
-  A warning pops up when you create a new template with already existing identifiers in the same scope. You can choose to merge the new template with the existing template by selecting the **Save as new version of existing template** button in the warning.
-- The environment reference value in the service override configuration has been migrated to a scoped reference. (CDS-58214)
-  
-  When you create or update a new service override, the environment reference was an identifier before. Now, Harness supports scoped environment references in metadata as well as YAML as part of the overrides enhancement.
-- The pipeline variables, stage variables, and service and environment variables are no longer validated on the run pipeline form. These validations are optional now. (CDS-64656)
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
-- Added support to get GitHub webhook events through a CURL command if the client call fails. (CDS-58692)
 
 ```mdx-code-block
   </TabItem>
