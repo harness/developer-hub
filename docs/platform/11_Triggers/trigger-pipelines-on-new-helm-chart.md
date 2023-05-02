@@ -194,7 +194,9 @@ You can reuse Triggers by copying and pasting Trigger YAML. This can be helpful 
 
 :::note
 
-Trigger manifest expressions used in a pipeline are resolved during a pipeline re-run which were activated by a trigger.
+Trigger manifest expressions used in a pipeline are resolved when you rerun a pipeline that was activated by a trigger.
+
+:::
 
 ### See also
 
