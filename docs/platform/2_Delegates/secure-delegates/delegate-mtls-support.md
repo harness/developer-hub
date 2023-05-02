@@ -15,7 +15,7 @@ Harness supports the following modes of mTLS:
 - STRICT - only mTLS delegates are accepted. Any non-mTLS delegates are blocked. 
 
 :::note
-mTLS is an advanced feature. Contact Harness Support to enable it. 
+mTLS is an advanced feature. Contact Harness Support to enable it and only supported on immutable delegate image.
 :::
 
 ## Create a CA certificate and a client certificate
@@ -26,7 +26,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
 
 ### Create a CA certificate
 
-- Use the following OpenSSL comment to create a test CA certificate with no password and 25+ years of validity.
+- Use the following OpenSSL comment to create a test CA certificate with no password and 25+ years of validity. The public part of the CA certificate (ca.crt) should be provided to Harness to enable mTLS.
 
     `openssl req -x509 -sha256 -nodes -days 9999 -newkey rsa:2048 \ -subj "/O=Example ORG/CN=CA Cert" -keyout "ca.key" -out "ca.crt"`
 
@@ -59,13 +59,24 @@ In the following examples, OpenSSL is used to create the required certificates. 
 3. Using the previously created CA certificate with the certificate signing request, create the final signed client certificate:
 
     `openssl x509 -req -sha256 -days 9999 -extfile client.cnf -extensions v3_req \ -CAcreateserial -CA "ca.crt" -CAkey "ca.key" \ -in "client.csr" -out "client.crt"`
+    
+:::note
+The client.crt & client.key will be provided to the delegate YAML when installing the delegate.
+:::
+
+4. Once the certificates are created, provide the public cert of the CA certificate to Harness support. 
+5. Furthermore, provide a unique prefix where the mTLS endpoint to be hosted at (this can be anything, but has to be unique)
+
+:::note
+After this, Harness will perform the steps to enable the mTLS.
+:::
 
 ### Move delegates to mTLS
 
-Alternatively, you can download the new YAML file from the Harness UI and update the certificates in it:
+Download the new YAML file from the Harness UI and update the certificates in it:
 
 client.crt:
-
 client.key:
+
 
 
