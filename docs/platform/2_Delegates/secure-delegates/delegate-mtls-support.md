@@ -14,7 +14,7 @@ Harness supports the following modes of mTLS:
 
 - STRICT - only mTLS delegates are accepted. Any non-mTLS delegates are blocked. 
 
-:::note
+:::info note
 mTLS is an advanced feature and is only supported on immutable delegate images. Contact Harness Support to enable it.
 :::
 
@@ -34,7 +34,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
 
 1. Create the configuration used to create the client certificate:
 
-```text
+   ```text
     cat << EOF > "client.cnf"
     [req]
     default_bits = 2048
@@ -50,7 +50,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
     [v3_req]
     # empty
     EOF
-```
+   ```
 
 2. After the configuration file has been created, create a new certificate signing request together with the key pair:
 
@@ -60,23 +60,22 @@ In the following examples, OpenSSL is used to create the required certificates. 
 
     `openssl x509 -req -sha256 -days 9999 -extfile client.cnf -extensions v3_req \ -CAcreateserial -CA "ca.crt" -CAkey "ca.key" \ -in "client.csr" -out "client.crt"`
     
-:::note
-You provide the client.crt and client.key to the delegate YAML when you install the delegate.
-:::
+   :::info note
+   You provide the client.crt and client.key to the delegate YAML when you install the delegate.
+   :::
 
 4. After you create the certificates, provide the public cert of the CA certificate to Harness support. 
 5. Provide a unique API prefix to the location where your mTLS endpoint is hosted. You can set any prefix for your directory path, but it must be unique.
 
-:::note
-After this, Harness will perform the steps to enable the mTLS.
-:::
+   :::info note
+   After this, Harness will perform the steps to enable the mTLS.
+   :::
 
 ### Move delegates to mTLS
 
 Download the new YAML file from the Harness UI and update the certificates in it:
 
+```yaml
 client.crt:
 client.key:
-
-
-
+```
