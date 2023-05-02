@@ -61,7 +61,7 @@ In the following examples, OpenSSL is used to create the required certificates. 
     `openssl x509 -req -sha256 -days 9999 -extfile client.cnf -extensions v3_req \ -CAcreateserial -CA "ca.crt" -CAkey "ca.key" \ -in "client.csr" -out "client.crt"`
     
 :::note
-The client.crt & client.key will be provided to the delegate YAML when installing the delegate.
+You provide the client.crt and client.key to the delegate YAML when you install the delegate.
 :::
 
 4. Once the certificates are created, provide the public cert of the CA certificate to Harness support. 
