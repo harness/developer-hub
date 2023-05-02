@@ -38,7 +38,7 @@ This release does not include early access features.
 
 #### Fixed issue
 
-- Users cannot set a Firstgen LDAP password as secret. (PL-32597, ZD-42655)
+- Users cannot use Harness secret as LDAP password in FirstGen. (PL-32597, ZD-42655)
   A code enhancement fixed the issue.
 
 ### April 22, 2023, version 79111
