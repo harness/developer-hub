@@ -11,15 +11,15 @@ With these alerts, you can ensure that your team is aware of important events an
 
 To set up notifications in CET:
 
-1. In your Harness project, navigate to **Service Reliability Management** > **Monitored Services**, and then select the monitored service to set up notifications.
+1. In your Harness project, navigate to **Continuous Error Tracking** > **Monitored Services**, and then select the monitored service to set up notifications.
 
-2. In the monitored service details page, go to the **Configuration** tab, and, under **Notifications**, select **+New Notification Rule**.
+2. In the monitored service details page, go to the **Notifications** tab, and select **+ New Notification Rule**.
 
 3. In the New Notification wizard, do the following:
    
    1. Enter a name for the notification and select **Continue**.
 
-   2. On the Conditions page, select **Code Errors** from the **Condition** dropdown list, choose the desired **Events** (such as new, critical, or resurface events), and the **Event Type** (such as log errors). You can choose multiple events and event types.
+   2. On the Conditions page, select **Code Errors** from the **Condition** dropdown list, choose the desired **Events** (such as new, critical, or resurfaced events), and the **Event Type** (such as log errors). You can choose multiple events and event types.
    
    3. Optionally, you can add multiple conditions by selecting **+ Add Condition**.
    

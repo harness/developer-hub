@@ -11,7 +11,7 @@ You can create a Jira ticket for an issue from the Events page. This helps you m
 
 To create a Jira ticket for an event:
 
-1. In your Harness project, navigate to **Service Reliability Management** and select **Code Errors**.    
+1. In your Harness project, navigate to **Continuous Error Tracking** and select **Events List**.    
    A list of all the services monitored by Continuous Error Tracking is displayed.
 
 2. Select a monitored service for which you want to view the events.
