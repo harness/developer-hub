@@ -32,7 +32,8 @@ This example setup requires:
 - Kubernetes 1.22+ (Harness recommends 1.23)
 - Helm 3.2.0+
 - Prometheus version: Bitnami/kube-prometheus 8.4.0+
-- Istio version 1.15.3 or Nginx version v1.0.0-alpha.2
+- Istio version 1.15.3
+- Nginx version v1.0.0-alpha.2
 
 :::info note
 For this example, we use the Prometheus operator packaged by Bitnami as an external Prometheus setup.
@@ -42,44 +43,23 @@ For this example, we use the Prometheus operator packaged by Bitnami as an exter
 
 Follow the steps below on the Kubernetes cluster where you deploy your Harness instance:
 
-1. Install an ingress controller with a `LoadBalancer` service type in the YAML file of your Harness Kubernetes cluster.
+1. Add the following overrides to enable database metrics. This updates your Harness installation and your existing overrides.
 
    ```
-     apiVersion: v1
-     kind:Service
-     metadata:
-       name:harness-ingress-controller
-       namespace:gcloud
-     spec:
-       selector:  
-       app:harness-ingress-controller
-     type:'LoadBalancer'
-       loadBalancerIP:<LB-IP>
-       externalTrafficPolicy:'Cluster'
-     ports:
-     - name:http
-       nodePort:32500
-       port:80
-       protocol:TCP
-       targetPort:http
-     - name:https
-       nodePort:32505
-       port:443
-       protocol:TCP
-       targetPort:https
+   infra:
+      postgresql:
+        metrics:
+          enabled: true
+   platform:
+      mongodb:
+        metrics:
+          enabled: true
+    redis:
+      metrics:
+          enabled: true
    ```
 
-  :::info note
-  The cloud `loadBalancerIP` in this example is a reserved external static IP created by Harness.
-  :::
-
-2. Confirm your `ingress-controller` deployment is up and running to create a service with an external IP address. Harness recommends that you set up the controller in the same namespace where your deploy your Harness services.
-
-  :::info note
-  You must enable metrics and the `serviceMonitors` for your databases to view the services exposing the metrics for each database. 
-  :::
-
-3. Create an ingress file for `mongo-metrics`, with defined routing rules that forwards requests to an internal service exposing metrics with a similar configuration.
+2. Create an ingress file for `mongo-metrics`, with defined routing rules that forwards requests to an internal service exposing metrics with a similar configuration.
 
    ```
      apiVersion: networking.k8s.io/v1
@@ -109,7 +89,7 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
 
 ## Deploy Prometheus to integrate with Harness
 
-There are two options you can use to deploy Prometheus to integrate with your Harness instance:
+Follow the instructions below to deploy Prometheus to integrate with your Harness instance:
 
 ```mdx-code-block
 <Tabs>
@@ -179,31 +159,26 @@ To use a standalone Prometheus installation with a customer configuration, do th
 1. Update your `config.yaml` file with the following settings:
 
     ```
-    scrape_configs:
-    
-    - job_name: mongo
-   
-   static_configs:
+     scrape_configs:
 
-     - targets:
-
-         - mongodb-replicaset-chart-metrics.<Namespace>.svc.cluster.local:9126
-
-     - job_name: timescale
-
-    static_configs:
-
-     - targets: 
-
-         - timescaledb-single-chart-prometheus.<Namespace>.svc.cluster.local:9187
-
-     - job_name: redis
-
-    static_configs:
-
-     - targets:
-
-       - redis-metrics.<Namespace>.svc.cluster.local:9121
+    - job_name:mongo-metrics-test
+      scrape_interval:30s
+      metrics_path:/mongo-metrics/metrics
+      static_configs:
+    - targets:
+      - <LB-IP>
+    - job_name:redis-metrics-test
+      scrape_interval:30s
+      metrics_path:/redis-metrics/metrics
+      static_configs:
+    - targets:
+      - <LB-IP>
+    - job_name:postgres-metrics-test
+      scrape_interval:30s
+      metrics_path:/postgres-metrics/metrics
+      static_configs:
+    - targets:
+      -<LB-IP>
   ```
 
 ```mdx-code-block
@@ -285,5 +260,3 @@ Here are some sample open source dashboards:
 - [Redis](https://github.com/oliver006/redis_exporter/blob/master/contrib/grafana_prometheus_redis_dashboard.json)
 
 - [Timescale/Postgres](https://github.com/prometheus-community/postgres_exporter/blob/master/postgres_mixin/dashboards/postgres-overview.json)
-
-
