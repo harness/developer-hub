@@ -8,7 +8,7 @@ You can store your delegate tokens as a Kubernetes secret instead of a ConfigMap
 
 To store the delegate token as a Kubernetes secret:
 
-1. Create a Kubernetes secret. For  details, go to the Kubernetes documentation: [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
+1. Create a Kubernetes secret. For details, go to the Kubernetes documentation: [Secrets](https://kubernetes.io/docs/concepts/configuration/secret/).
 2. Create a delegate-token.yaml file.
 
    ```yaml
