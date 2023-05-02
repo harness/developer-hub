@@ -53,7 +53,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - You can now merge templates with identical identifiers. (CDS-47301)
   
   A warning pops up when you create a new template with already existing identifiers in the same scope. You can choose to merge the new template with the existing template by selecting the **Save as new version of existing template** button in the warning.
-- The pipeline variables, stage variables, and service and environment variables are no longer validated on the run pipeline form. These validations are optional now. (CDS-64656)
+- When you run a pipeline, you can leave the pipeline, stage, service, and environment variable values empty in the  **Run Pipeline** form. These fields are not validated in the UI any longer. (CDS-64656, ZD-43232)
+  
+  ![](./static/run-pipeline-form.png)
 - Added support to get GitHub webhook events through a CURL command if the client call fails. (CDS-58692)
 
 ```mdx-code-block
