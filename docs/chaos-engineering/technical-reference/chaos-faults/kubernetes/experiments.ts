@@ -176,4 +176,22 @@ export const experiments: ExperimentDetails[] = [
     tags: ["pod"],
     category: "kubernetes",
   },
+  {
+    name: "Pod IO latency",
+    description:"Pod IO latency delays the file system calls of the specified container",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod IO error",
+    description:"Pod IO error returns an error for filesystem calls of the specified container",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod IO attribute override",
+    description:"Pod IO attribute override modify the file properties of the specified container",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
 ];
