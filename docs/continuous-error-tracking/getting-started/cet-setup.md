@@ -173,11 +173,11 @@ This option lets you install the Error Tracking Agent as a standalone. Perform t
 
   | **Required Environment Variable** | **Description** | **Example** |
 | --- | --- | --- |
-| `ET_COLLECTOR_URL` | URL to the Error Tracking collector. | https://collector.et.harness.io/prod1|
-| `ET_APPLICATION_NAME` | Name of your application or Service. | myapp |
-| `ET_DEPLOYMENT_NAME` | Deployment or version number of your application or Service. When your application or Service is updated to a new version, it's recommended that you update this variable as well, so that the Error Tracking Agent can identify when new errors are introduced. | 1 |
-| `ET_ENV_ID` | ID of your Harness Environment. | production |
-| `ET_TOKEN` | ET Agent Token created on Harness. | b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a |
+| `ET_COLLECTOR_URL` | URL to the Error Tracking collector. | `https://collector.et.harness.io/prod1`|
+| `ET_APPLICATION_NAME` | Name of your application or Service. | `myapp` |
+| `ET_DEPLOYMENT_NAME` | Deployment or version number of your application or Service. When your application or Service is updated to a new version, it's recommended that you update this variable as well, so that the Error Tracking Agent can identify when new errors are introduced. | `1` |
+| `ET_ENV_ID` | ID of your Harness Environment. | `production` |
+| `ET_TOKEN` | ET Agent Token created on Harness. | `b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a` |
 
   For example:
 
@@ -205,11 +205,11 @@ RUN wget -qO- https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar
 
   | **Required Environment Variable** | **Description** | **Example** |
 | --- | --- | --- |
-| `ET_COLLECTOR_URL` | URL to the Error Tracking collector. | https://collector.et.harness.io/prod1 |
-| `ET_APPLICATION_NAME` | Name of your application or Service. | myapp |
-| `ET_DEPLOYMENT_NAME` | Deployment or version number of your application or Service. When your application or Service is updated to a new version, it's recommended that you update this variable as well, so that the Error Tracking Agent can identify when new errors are introduced. | 1 |
-| `ET_ENV_ID` | ID of your Harness Environment. | production |
-| `ET_TOKEN` | ET Agent Token created on Harness. | b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a |
+| `ET_COLLECTOR_URL` | URL to the Error Tracking collector. | `https://collector.et.harness.io/prod1` |
+| `ET_APPLICATION_NAME` | Name of your application or Service. | `myapp` |
+| `ET_DEPLOYMENT_NAME` | Deployment or version number of your application or Service. When your application or Service is updated to a new version, it's recommended that you update this variable as well, so that the Error Tracking Agent can identify when new errors are introduced. | `1` |
+| `ET_ENV_ID` | ID of your Harness Environment. | `production` |
+| `ET_TOKEN` | ET Agent Token created on Harness. | `b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a` |
 
   For example:
 ```
@@ -219,7 +219,7 @@ ENV ET_DEPLOYMENT_NAME=1
 ENV ET_ENV_ID=env1 
 ENV ET_TOKEN= agenttoken
 ```
-1. Add JVM arguments to the Docker image, which instructs the JVM to load the Agent. This is done by adding`agentpath:/harness/lib/libETAgent.so`to the application`ENTRYPOINT`. For example,`ENTRYPOINT java -agentpath:/harness/lib/libETAgent.so -jar yourapp.jar`. This parameter can also be specified using`JAVA_TOOL_OPTIONS`, for example `ENV JAVA_TOOL_OPTIONS="-agentpath:/harness/lib/libETAgent.so"`.
+1. Add JVM arguments to the Docker image, which instructs the JVM to load the Agent. This is done by adding `agentpath:/harness/lib/libETAgent.so`to the application `ENTRYPOINT`. For example, `ENTRYPOINT java -agentpath:/harness/lib/libETAgent.so -jar yourapp.jar`. This parameter can also be specified using `JAVA_TOOL_OPTIONS`, for example `ENV JAVA_TOOL_OPTIONS="-agentpath:/harness/lib/libETAgent.so"`.
 2. Once the Dockerfile is updated, rebuild the Docker image and restart any containers running on it to start monitoring using Error Tracking.
 
 ```

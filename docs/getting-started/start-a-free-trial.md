@@ -1,7 +1,7 @@
 ---
 title: Start a free trial
 description: Harness offers a free trial that allows you to try the Harness Software Delivery Platform. Click here to sign up for a free trial. After you have signed up for an account, go to the following topics…
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: 6z93pdhs28
 helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false

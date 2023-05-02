@@ -17,6 +17,8 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 ## Latest - April 26, 2023, version 78926
 
 This release includes the following Harness module and component versions.
+**Helm Chart Version ** 0.5.0
+**Release** https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 
 | **Name** | **Version** |
 | :-- | :--: |
@@ -36,12 +38,23 @@ This release includes the following Harness module and component versions.
 ```
 #### Self-Managed Enterprise Edition
 - Beginning with v0.5.0, Harness will no longer publish `harness-prod` or `harness-demo` Helm charts. Harness will publish the `harness` base chart only. If you currently use the `harness-prod` or `harness-demo` Helm chart, you must download your `custom-override.yaml` file from [the helm-charts repository](https://github.com/harness/helm-charts/tree/main/src) and use the following commands to upgrade:
+  
+  **Harness chart**
+
+  Run the following to update the Harness chart repo:
+  ```
+  helm repo update harness
+  ```
 
   **Demo chart**
+
+  Run the following to upgrade the demo chart:
   ```
   helm upgrade <release-name> harness/harness -f override-demo.yaml -f <custom-override>.yaml
   ```
   **Production chart**
+  
+  Run the following up upgrade the production chart:
   ```
   helm upgrade <release-name> harness/harness -f override-prod.yaml -f <custom-override>.yaml
   ```
@@ -84,8 +97,10 @@ This release includes the following Harness module and component versions.
 - You can now migrate from KOTS-based installations to Helm-based installations. (SMP-769)
 - Backup and restore for Helm-based installations is now supported using Velero. (SMP-767)
  
-  For more information, go to [Back up and restore Self-Managed Enterprise Edition Helm installations](/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm).
+  For more information, go to [Back up and restore](/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm).
 - You can now monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and eventually integrate with observability tools, such as Grafana. (SMP-766)
+
+  For more information, go to [Monitoring](/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem). 
 - Deployments load static files from the application server and no longer attempt to connect to static.harness.io. (SMP-851)
 #### Continuous Integration
 - When you [use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
@@ -519,7 +534,7 @@ This release includes the following Harness module and component versions.
   The **Default Settings** and **GitOps** categories should not both be selected when the **GitOps** category is selected.
   
   The UI is now fixed so that only the **GitOps** category is selected.
-- Users were able to save a [Kubernetes Apply step](https://developer.harness.io/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-apply-step/) template with empty manifest file paths. (CDS-53961)
+- Users were able to save a [Kubernetes Apply step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) template with empty manifest file paths. (CDS-53961)
 
   This issue is fixed. You can no longer configure empty file paths in the Apply step template.
 - Unable to deploy workloads when using Harness local store for native Helm deployments. (CDS-53937)
@@ -597,7 +612,7 @@ This release includes the following Harness module and component versions.
   You should not reference environment variables in service settings because the environment settings are resolved after the service settings during pipeline execution. Harness has now improved the error handling mechanism for such scenarios.
 - The **Manual Intervention** tab was not displayed for the ServiceNow Create or Update steps. (CDS-53467, ZD-38687)
   
-  The **Manual Intervention** tab is used to select a failure strategy when the acceptance criteria in a ServiceNow [Create](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/create-service-now-tickets-in-cd-stages/) or [Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-service-now-tickets-in-cd-stages) step is not met. 
+  The **Manual Intervention** tab is used to select a failure strategy when the acceptance criteria in a ServiceNow [Create](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages) or [Update](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-service-now-tickets-in-cd-stages) step is not met. 
   
   The **Manual Intervention** tab was not visible, but this has been fixed and the tab now displays during pipeline execution.
 
@@ -661,9 +676,11 @@ This release includes the following Harness module and component versions.
 - The service information of a stage disappeared when swapping two stages if the stage was propagated from the other stage. (CDS-53331)
 
   The service details of stages appear properly now when you swap service propagated stages.
-- Files created with the [File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/) do not save consistently witht the correct file type. (CDS-53329)
+
+- Files created with the [File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) do not save consistently witht the correct file type. (CDS-53329)
 
   A code enhancement has fixed this issue.
+
 - The Nexus version selected for an artifact source can be overridden in the artifact connector. (CDS-53308)
   
   When you create the artifact source for a service, you could choose Nexus 3 or 2, but when you create the Harness connector you could also select Nexus 3 or 2. Consequently, you could create a Nexus 2 artifact source with a Nexus 3 connector.
@@ -674,7 +691,7 @@ This release includes the following Harness module and component versions.
   Harness has added support for 128-character variable names.
 - Harness was inconsistent when displaying manifest files stored in the Harness File Store. (CDS-53118)
   
-  Harness was filtering [File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/) files based on the manifest type for some types (Kubernetes values YAML, Helm chart, etc.), but for other types Harness was showing all files.
+  Harness was filtering [File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) files based on the manifest type for some types (Kubernetes values YAML, Helm chart, etc.), but for other types Harness was showing all files.
   
   Now Harness is showing the correct file types for the manifest type selected by users. For example, in Kubernetes values YAML, Helm chart values YAML, Kustomize files, Kustomize patches files, OpenShift params files, OpenShift template files.
 - A reused [webhook trigger](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/) identifier results in a reused last activation time. (CDS-53107)
@@ -776,17 +793,11 @@ This release includes the following Harness module and component versions.
   The Git diff in the YAML reconcile screen was performing unnecessary changes like adding quotes to each string value, shifting YAML indentation, converting multiline strings to single line using the newline character, etc.
   
   Now you can see the correct Git diff in the Harness YAML. The diff consist of necessary changes only, such as the addition and removal of fields.
-- The hint text for the Specify Environment and Connector fields is not standardized. (CDS-43840)
-
-  This issue has been fixed, the hint text is now standardized to use "Select."
 #### Cloud Cost Management
-- In accounts without a Cluster Connector, the `ANOMALY_DETECTION_CLOUD` job responsible for displaying Cloud Anomalies was not executed. (CCM-11798)
-
-  This issue has been fixed and now the anomalies are computed, even when the account does not have a Cluster Connector. 
 - The ECS service billing data was missing in the Perspectives. (CCM-11464)
 
    This issue has been fixed, and all data is now accurately reflected on the **Perspectives** page without any errors.
-- The `ANOMALY_DETECTION_CLOUD` job responsible for displaying cloud anomalies was not being executed in accounts without a cluster connector.  (CCM-11228)
+- The `ANOMALY_DETECTION_CLOUD` job responsible for displaying cloud anomalies was not being executed in accounts without a cluster connector.  (CCM-11228, CCM-11798)
   
    This issue has been fixed, and anomalies are now computed even in the absence of a cluster connector.
 - Previously, even when the **Cascading** option was turned off, the budget amount was being equally divided among all the budgets in the group.  (CCM-10950)
@@ -1320,7 +1331,7 @@ This release includes the following Harness module and component versions.
 
 - Unable to see the Harness file store at the projects level. (CDS-50139)
 
-  The [Harness file store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/) is a hierarchical file manager in Harness for managing configuration files used in pipelines.
+  The [Harness file store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) is a hierarchical file manager in Harness for managing configuration files used in pipelines.
 
   The file store was not showing up at the projects level. This has been fixed and now you can use the file store in your projects.
 

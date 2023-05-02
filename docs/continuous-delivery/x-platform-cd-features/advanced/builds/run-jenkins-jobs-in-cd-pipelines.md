@@ -146,3 +146,7 @@ You can copy expressions for the job outputs from the **Output** tab of the Jenk
 To access Jenkins job's environment variables from the step output, use:
 
 `<+pipeline.stages.[STAGE_IDENTIFIER].spec.execution.steps.[STEP_IDENTIFIER].build.envVars.[ENV_VAR_FIELD]>`
+
+When the step is inside a step group, use:
+
+`<+pipeline.stages.[STAGE_IDENTIFIER].spec.execution.steps.[STEP_GROUP_IDENTIFIER].steps.[STEP_IDENTIFIER].build.envVars.[ENV_VAR_FIELD]>`

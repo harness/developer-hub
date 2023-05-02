@@ -37,65 +37,51 @@ import {
     // Docs
     export const docsCards: CardSections = [
       {
-        name: "Start using Harness modules",
+        name: "Get started",
         description:
           "",
         list: [
           {
-            title: "Tutorials",
+            title: "Install using Helm",
             module: MODULES.platform,
             description:
-              "New to Harness? Follow these tutorials to go from novice to advanced.",
-            link: "/tutorials",
+              "Learn how to use Helm to install Harness Self-Managed Enterprise Edition.",
+            link: "/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga",
           },
           {
-            title: "Start a free trial",
+            title: "Install in an air-gapped environment",
             module: MODULES.platform,
             description:
-              "Try the Harness Software Delivery Platform for free.",
-            link: "/docs/getting-started/start-a-free-trial",
+              "Learn how to use Helm to install in an air-gapped environment.",
+            link: "/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment",
+          },
+          {
+            title: "Overview",
+            module: MODULES.platform,
+            description:
+              "Learn the differences between Harness SaaS and self-managed products.",
+            link: "/docs/self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview",
           },
         ],
       },
       {
-        name: "Learn Harness fundamentals",
+        name: "Feature highlights",
         description:
           "",
         list: [
           {
-            title: "Harness UI overview",
+            title: "Monitoring",
             module: MODULES.platform,
             description:
-              "Explore the Harness UI and learn how to navigate to different modules.",
-            link: "/docs/getting-started/harness-ui-overview",
+              "Learn how to monitor the infrastructure of your installation.",
+            link: "/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem",
           },
           {
-            title: "Harness FirstGen vs Harness NextGen",
+            title: "Back up and restore",
             module: MODULES.platform,
             description:
-              "Compare the two Harness product suite versions.",
-            link: "/docs/getting-started/harness-first-gen-vs-harness-next-gen",
-          },
-          {
-            title: "Harness Platform architecture",
-            module: MODULES.platform,
-            description:
-              "Learn about the Harness components and editions.",
-            link: "/docs/getting-started/harness-platform-architecture",
-          },
-          {
-            title: "Harness key concepts",
-            module: MODULES.platform,
-            description:
-              "Learn about the key concepts and terms used in Harness products.",
-            link: "/docs/getting-started/learn-harness-key-concepts",
-          },
-          {
-            title: "Supported platforms and technologies",
-            module: MODULES.platform,
-            description:
-              "Review the platforms, methodologies, and related technologies that Harness supports.",
-            link: "/docs/getting-started/supported-platforms-and-technologies",
+              "Learn how to back up and restore Harness Self-Managed Enterprise Edition.",
+            link: "/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm",
           },
         ],
       },

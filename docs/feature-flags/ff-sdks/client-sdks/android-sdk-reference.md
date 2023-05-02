@@ -158,7 +158,7 @@ For example:
 
 To initialize the SDK, you must pass in the following:
 
-* `YOUR_API_KEY` - The client SDK key you created when [creating the Feature Flag](docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
+* `YOUR_API_KEY` - The client SDK key you created when [creating the Feature Flag](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
 * Any configuration options you want to use.
 * The Target you want to evaluate.
 
