@@ -47,10 +47,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     "correlationId": "1ad40479-c6ff-47e4-9722-db11c0a3ab06"
   }
   ```
-- When you abort a pipeline execution, you will now see helpful warning text that explains the impact to the state of your service. (CDS-67000)
+- When you abort a pipeline execution, you will now see a helpful warning text that explains the impact to the state of your service. (CDS-67000)
   
   `Warning: Abort command will not clean up any resources created during execution so far. Please mark the stage as failed if you would like to clean up and revert back to the old state.`
 - You can now merge templates with identical identifiers. (CDS-47301)
+  
   A warning pops up when you create a new template with already existing identifiers in the same scope. You can choose to merge the new template with the existing template by selecting the **Save as new version of existing template** button in the warning.
 - The pipeline variables, stage variables, and service and environment variables are no longer validated on the run pipeline form. These validations are optional now. (CDS-64656)
 - Added support to get GitHub webhook events through a CURL command if the client call fails. (CDS-58692)
