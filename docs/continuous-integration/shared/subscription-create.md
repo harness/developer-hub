@@ -9,18 +9,32 @@
 
 3. Select **Upgrade** to upgrade from the Free plan to either the Team or Enterprise plans.
 
-   If this is your first time upgrading a Harness module subscription, you'll also have the option to start a 14-day trial.
+   If you already have a paid plan for another module, you must select the same plan level as your other subscription.
+
+   If this is your first time upgrading any Harness module subscription, you'll also have the option to start a 14-day trial.
 
 4. Select the number of developers who will build with Harness CI.
 
    If you were actively using a Free plan before upgrading, Harness makes a recommendation based on your previous and predicted usage.
 
-   If you would like to subscribe to the premium 24/7 support package, select **Add Premium Support**.
-
-   The cost estimate updates based on the number of developers and whether you selected the premium support package. You can toggle between **Monthly** and **Yearly** billing. The price doesn't include tax; tax is calculated after you enter your billing details.
+   If you would like to subscribe to the premium 24/7 support package, select **Add Premium Support**. If you already have premium support for another module subscription, your CI subscription must also include premium support.
 
 5. Select **Next: Billing Information** and enter your billing information.
 
    Tax is calculated once you enter your billing zip code. This can take up to 10 seconds to calculate.
 
 6. Select **Subscribe and Pay** to submit payment. Harness doesn't store payment information. Payments are handled by Stripe.
+
+:::info How is the total cost calculated?
+
+The total cost is based on the plan level, the number of developers, and whether you selected the premium support package. You can toggle between **Monthly** and **Yearly** billing.
+
+If this is your first paid plan subscription, the price doesn't include tax until you enter your billing details. If you have an existing subscription, tax is calculated based on your existing billing details.
+
+If you have an existing subscription for another module, your new subscription is prorated so that your subscription renewal dates align. For example, if you have a CD subscription with 10 months remaining, your new CI subscription is prorated for 10 months so that both subscriptions renew at the same time.
+
+<!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_subscribe_prorate_billing.png) -->
+
+<docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_subscribe_prorate_billing.png')} />
+
+:::

@@ -3,7 +3,7 @@ You can quickly and securely manage your Harness CI subscription directly throug
 * Upgrading your plan
 * Managing payment details and billing admins
 * Viewing license usage data
-* Viewing build credit usage data
+<!-- * Viewing build credit usage data -->
 
 :::info
 
