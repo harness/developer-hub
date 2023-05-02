@@ -188,6 +188,18 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 </details>
 
+#### Stage setting: Shared paths
+
+Pipeline steps within a stage share the same [workspace](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings#workspace). You can optionally [share paths](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage) outside the workspace between steps in your stage by setting `spec.sharedPaths`.
+
+```yaml
+  stages:
+    - stage:
+        spec:
+          sharedPaths:
+            - /example/path # directory outside workspace to share between steps
+```
+
 ### Restore Cache from GCS step settings
 
 <details>
@@ -285,7 +297,7 @@ The cache key and paths differ by language.
 <TabItem value="Node.js">
 ```
 
-[Npm](https://www.npmjs.com/) pipelines must reference `package-lock.json` for `spec.key` in **Save Cache to GCS** and **Restore Cache From GCS** steps, for example:
+[npm](https://www.npmjs.com/) pipelines must reference `package-lock.json` for `spec.key` in **Save Cache to GCS** and **Restore Cache From GCS** steps, for example:
 
 ```yaml
                   spec:

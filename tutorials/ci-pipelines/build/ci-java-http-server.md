@@ -165,7 +165,7 @@ In contrast, if you choose to [use a Kubernetes cluster build infrastructure](/d
 
 :::caution
 
-You must ensure that the build farm can run the commands required by your build. You may need to modify your build machines or add steps to your pipeline to install necessary tools, libraries, and other dependencies.
+You must ensure that the build farm can run the commands required by your build. You might need to modify your build machines or add steps to your pipeline to install necessary tools, libraries, and other dependencies.
 
 :::
 

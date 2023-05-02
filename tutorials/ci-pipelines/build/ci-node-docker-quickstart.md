@@ -57,8 +57,8 @@ To build this app locally:
 1. Clone the [easy node docker repo](https://github.com/harness-apps/easy-node-docker) to your local machine.
 2. Create a Docker Hub account, if you don't already have a Docker registry account.
 3. Create a repo in your Docker registry account where you can push your app image.
-4. Make sure your local machine has [NPM](https://nodejs.org/en/download/package-manager) and [Docker](https://docs.docker.com/engine/install/).
-5. Use [docker build](https://docs.docker.com/build/building/context/) to call the underlying NPM install and start the build process. In the following example commands, replace the bracketed values with your Docker Hub or Docker registry username, the name of the repo where you want to push the image, and an appropriate image tag, such as `latest`.
+4. Make sure your local machine has [npm](https://nodejs.org/en/download/package-manager) and [Docker](https://docs.docker.com/engine/install/).
+5. Use [docker build](https://docs.docker.com/build/building/context/) to call the underlying npm install and start the build process. In the following example commands, replace the bracketed values with your Docker Hub or Docker registry username, the name of the repo where you want to push the image, and an appropriate image tag, such as `latest`.
 
    ```
    docker build --tag [your_docker_username]/[your-docker-repo-name]:[tag] .
@@ -228,7 +228,7 @@ In contrast, if you choose to [use a Kubernetes cluster build infrastructure](/d
 
 :::caution
 
-You must ensure that the build farm can run the commands required by your build. You may need to modify your build machines or add steps to your pipeline to install necessary tools, libraries, and other dependencies.
+You must ensure that the build farm can run the commands required by your build. You might need to modify your build machines or add steps to your pipeline to install necessary tools, libraries, and other dependencies.
 
 :::
 
