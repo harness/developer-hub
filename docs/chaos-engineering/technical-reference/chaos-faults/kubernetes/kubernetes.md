@@ -477,3 +477,48 @@ It can test the application's resilience to lossy (or flaky) network.
 </accordion>
 
 </FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod IO Latency
+
+Pod IO latency is a Kubernetes pod-level fault that delays file system calls of the specified container
+
+- It can test the application's resilience for the latency in i/o operations
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+It can test the application's resilience for the latency in i/o operations
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod IO Error
+
+Pod IO error is a Kubernetes pod-level fault that returns an error for filesystem calls of the specified container
+
+- It can test the application's resilience for the errors in i/o operations
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+It can test the application's resilience for the errors in i/o operations
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod IO Attribute Override
+
+Pod IO attribute override is a Kubernetes pod-level fault that override the file properties of the specified container
+
+- It can test the application's resilience for the different values of file properties
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+It can test the application's resilience for the different values of file properties
+</accordion>
+
+</FaultDetailsCard>
