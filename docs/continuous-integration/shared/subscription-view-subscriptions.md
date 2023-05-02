@@ -1,10 +1,5 @@
-In your Harness account, go to **Account Settings** to view which Harness modules you are currently subscribed to. Subscriptions are shown in the **Subscribed Modules** section. You can select **Manage** to view the details of a particular subscription.
+In your Harness account, go to **Account Settings** to view which Harness modules you are currently subscribed to. Subscriptions are shown in the **Subscribed Modules** section on the **Overview** page. You can select **Manage** to go to the **Subscriptions** page where you can view and manage your subscriptions.
 
-For each subscription, you can view the following details:
+<!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_account_overview.png) -->
 
-* Account name
-* Subscription plan
-* Number of licenses for developers and monthly active users
-* Subscription expiration date
-
-You can also access subscription details by selecting **Plans** on the **Account Settings** navigation menu.
+<docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_account_overview.png')} />

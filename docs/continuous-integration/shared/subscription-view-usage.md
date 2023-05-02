@@ -9,7 +9,12 @@ CI subscription usage details are divided into several sections providing progre
 <details>
 <summary>Subscription Details</summary>
 
-This section includes the **Account Name**, **Service Type**, and **Plan**.
+This section includes the following details:
+
+* Account name
+* Plan type
+* Number of developer licenses
+* Subscription expiration date
 
 <!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_subscr_details.png) -->
 
@@ -18,9 +23,13 @@ This section includes the **Account Name**, **Service Type**, and **Plan**.
 </details>
 
 <details>
-<summary>Plan Summary</summary>
+<summary>Activity & Usage</summary>
 
 This section shows the number of current active developers against the total number of licenses.
+
+<!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary_onetile.png) -->
+
+<docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary_onetile.png')} />
 
 <!-- It also shows your total monthly credit balance at the start of the month, but it doesn't show credit consumption or credits remaining. -->
 
@@ -33,11 +42,7 @@ This section shows the number of current active developers against the total num
 <details>
 <summary>Active Developers</summary>
 
-In this section, you can drill down into license usage data, including:
-
-* Peak license usage for the last year.
-* Peak license usage in the current billing cycle.
-* Over use, which indicates when the number of active developers exceeded the subscription limit.
+In this section, you can drill down into license usage data.
 
 The **Breakdown** tab shows a breakdown of license usage.
 
@@ -45,7 +50,11 @@ The **Breakdown** tab shows a breakdown of license usage.
 
 <docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_devs_breakdown.png')} />
 
-The **Trend** tab shows license usage trends over time.
+The **Trend** tab shows license usage trends over time, including:
+
+* Peak license usage in the current month.
+* Total license limit for your subscription.
+* Over use, which indicates when the number of active developers exceeded the subscription limit.
 
 <!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_dev_trend.png) -->
 
