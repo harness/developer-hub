@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Cloud Cost Management (CCM) monitors and provides visibility into the cloud costs of your Amazon Web Services (AWS) across your cloud infrastructure and AWS services, such as EC2, S3, RDS, Lambda, and so on. CCM also allows you to optimize your instances, auto-scaling groups (ASGs), and EKS clusters using intelligent cloud AutoStopping rules.
+Harness Cloud Cost Management (CCM) offers comprehensive solutions to manage and optimize the cloud costs of your Amazon Web Services (AWS) infrastructure. CCM provides visibility, governance, and optimization of AWS services such as EC2, S3, RDS, Lambda, and others. CCM provides recommendations to effectively right-size your cloud resources to match the workload demands and optimizes the auto-scaling groups (ASGs), and EKS clusters using intelligent cloud AutoStopping rules.
 
 > **☆ NOTE —** After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
 
