@@ -8,24 +8,73 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness SaaS Delegates only need outbound access to the Harness domain name (most commonly, **app.harness.io**) and, optionally, to **logging.googleapis.com** (used to provide logs to Harness support).
 
-The URL `logging.googleapis.com` is used to send log files to Harness support. Use the environment variable `STACK_DRIVER_LOGGING_ENABLED` to disable this functionality. 
+:::important
+Currently, this feature is behind the feature flag `PL_IP_ALLOWLIST_NG`. Contact Harness Support to enable the feature.
+:::
 
-For more information, go to [Delegate environment variables](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled).
 
-### Harness Manager
+Management of the IP allowlist involves reviewing and updating the list of approved IP addresses regularly to ensure that only authorized users are granted access. After you add and enable an IP allowlist, only users connecting from the IP address/CIDR (Classless Inter-Domain Routing) block may log into Harness.
+
+Following are some key benefits of IP whitelist management:
+
+- Increased security: By limiting access to approved IP addresses only, you can prevent unauthorized access to sensitive data and resources. This protects against data breaches, cyber-attacks, and other security threats.
+
+- Improved network performance: By limiting access to approved IP addresses only, you can reduce the number of requests your network receives, which improves network speed and reduces latency.
+
+
+:::important
+Harness IP allowlisting is for user connections to a Harness account. It will not perform IP allowlisting for Harness Delegate connections.
+:::
+
+
+This topic explains how to set up IP allowlist in Harness.
+
+## Add IP addresses in the allowlist
+
+To add IP allowlist in Harness: 
+
+1. Select **ACCOUNT SETTINGS** and then select **Authentication**.
+2. Select **Allowlist**.
+3. To add IP addresses, select **Add IP Addresses**.
+   The **IP Allowlist** settings appear.
+
+## Define the IP range
+
+1. Enter **Name** for the allowlist.
+2. In **IP Address/CIDR**, enter a CIDR or an individual IP address or a block of IP addresses. 
+3. You can mark the allowlist applicable to one of the following: 
+   - **UI**: Harness allows or blocks the IP address based on the UI request.
+   - **API**: Harness checks the API key in the request and allows or blocks the IP address.
+4. Select **Save and Continue**.
+  
+## Test IP
+
+1. Enter an IP address or a block of IP addresses to check if they are allowed.
+2. Select **Test**.
+3. Select **Finish**.
+   You can create multiple allowlists and enable or disable them as needed.
+
+## Manage IP allowlist
+
+The IP addresses configured in the allowlist now appear in the **IP Allowlist**.
+
+1. Toggle enable or disable beside the allowlist to enable or disable an allowlist.
+2. Select the 3 dot menu to edit or delete an allowlist.
+
+You can add and test allowlists by selecting **Add IP Addresses** and **Check any IP for allowlist**.
+
+## Harness Manager
 
 Users of the Harness Manager browser client need access to **app.harness.io** and **static.harness.io**. This is not a Harness Delegate requirement. It's simply for users to use the browser-based Harness Manager.
 
-### Vanity URL
+## Vanity URL
 
 If you are using a Harness vanity URL, like **mycompany.harness.io**, you can allowlist it also.
 
-### Allowlist Harness SaaS IPs
+## Allowlist Harness SaaS IPs
 
 The following list is optional. You can allowlist these IPs if needed.
-
 
 ```
 35.201.91.229  
@@ -34,5 +83,9 @@ The following list is optional. You can allowlist these IPs if needed.
 2606:4700:7::a29f:8640  
 2606:4700:7::a29f:8740
 ```
+
+:::caution
 Harness will not change IPs without 30 days notice to all customers. If a security emergency requires a change, all customers will be notified.
+
+:::
 
