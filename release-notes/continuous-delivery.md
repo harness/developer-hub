@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-05-02T10:00:15
+date: 2023-05-03T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 02, 2023, version 792xx
+## Latest - May 03, 2023, version 792xx
 
 ```mdx-code-block
 <Tabs>
@@ -149,7 +149,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   Minor bug fixes for the Bamboo artifact source connector.
 - The Security Testing Orchestration (STO) module was present in the Harness CD Community Edition (CE). (CDS-59269)
   
-  Support has been added to hide the STO module from CE.
+  Added support to hide the STO module from CE.
 - Resolved an issue where the Jira Create and Jira Update steps were failing when multi-select fields were added. (CDS-58928, ZD-42795)
 - Resolved an issue where users were not able to save the updated CloudFormation create stack step template. (CDS-59018)
 - Resolved an issue where lengthy names used for service or environment names or IDs were bleeding out of the UI. (CDS-54281)
