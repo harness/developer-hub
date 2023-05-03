@@ -46,6 +46,11 @@ Many Helm chart users use ChartMuseum as their Helm chart repository server.
 - Using the Helm OCI Connector user's can authenticate to any OCI compliant repository they choose
 - Harness can fetch the list of Chart Versions for a respective Helm Chart and these can be passed at runtime as a parameter into the service
 - User's can define expressions for the Chart Name and Path, at runtime Harness will resolve those expressions and still let the user pick a version
+- The Helm OCI Chart Support is supported for Native Helm Deployments and Helm Chart with Kubernetes Deployments.
+
+### Limitations
+
+- User's will not be able trigger via On New Manifest Trigger for OCI Helm Connector configured Helm Services. 
 
 
 ## Visual summary
