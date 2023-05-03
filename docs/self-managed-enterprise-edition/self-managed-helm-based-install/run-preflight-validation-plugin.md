@@ -4,7 +4,7 @@ description: Learn how to run a pre-flight validation plugin to perform pre-inst
 # sidebar_position: 5
 ---
 
-The pre-flight validation plugin allows you to perform pre-install, pre-upgrade, post-install, and post-upgrade checks on your setup. This optional plugin assists with installations and upgrades for the Harness Self-Managed Enterprise Edition. You can use the plugin to identify potential issues during deployment and ensure that all requirements are met before the deployment process begins. Suggestions are provided if the requirements are not met and the validation checks fail. You can also use the plugin architecture to build new validation checks for your custom setup.
+The pre-flight validation plugin allows you to perform pre-install, pre-upgrade, post-install, and post-upgrade checks on your setup. This optional plugin assists with installations and upgrades for Harness Self-Managed Enterprise Edition. You can use the plugin to identify potential issues during deployment and ensure that all requirements are met before the deployment process begins. Suggestions are provided if the requirements are not met and the validation checks fail. You can also use the plugin architecture to build new validation checks for your custom setup.
 
 ## Requirements
 
@@ -23,7 +23,7 @@ helm plugin install git@github.com:harness/Plugins-helm.git
 
 Alternatively, for an [airgapped setup](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/), you can set the path to the directory where the plugin is installed on your system:
 
-First, download validator plugin tar file from the Harness Google Container Registry (GCR), then run the following command to install the plugin:
+First, download validator plugin tar file from the Harness Google Container Registry (GCR), and then run the following command to install the plugin:
 
 ```
 helm plugin install plugin-directory
@@ -47,9 +47,9 @@ helm validator run
 
 You can add this with the available commands and flags for specific purposes. The namespace flag, specified by `-n`, is required to use the plugin to define where the validations must run.
 
-Here is a list of commands and other flags, how to use them, and their purpose:
+The following is a list of commands and other flags and their purpose:
 
-```
+```text
 Usage:
   validate [flags]
   validate [command]
@@ -67,7 +67,7 @@ Flags:
   -s, --stage              stage to run validations against. pre-upgrade, post-upgrade, pre-install, post-install.
 ```
 
-An example implementation that shows how the command to run and corresponding output is below.
+Below is an example implementation with commands and corresponding output.
 
 The following command runs the plugin on the `harness-smp1` namespace:
 
@@ -84,16 +84,16 @@ Check Mongo health ran successfully
 Check Access-Control health ran successfully
 ```
 
-When the Mongo Health and Service (access-control) checks fail,  the output looks similar to the following:
+When the Mongo Health and Service (access-control) checks fail, the output looks similar to the following:
 
-```
+```yaml
 Check Mongo Health:
     - name: Mongo health
       failure: exit status 1
       msg: ""
       info: ""
       suggestions:
-        - Mongo replicas are much behind the primary. Please make them come in sync before trying the upgrade
+        - Mongo replicas are behind the primary. Please make them come in sync before trying the upgrade.
         - ""
         
 Check Service Health:
@@ -102,7 +102,7 @@ Check Service Health:
       msg: ""
       info: ""
       suggestions:
-        - Access-control might not be running successfully. Please restart the pods for access-control
+        - Access-control might not be running successfully. Please restart the pods for access-control.
         - If issue persists, contact harness-support
 ```
 
@@ -112,11 +112,11 @@ You must have access to the Kubernetes cluster setup to run this plugin.
 
 ## Validation YAML
 
-The YAML file for the validation provides all necessary information about the check required to run the plugin. 
+The YAML validation file provides all necessary information about the checks required to run the plugin. 
 
-The validation YAML format is designed to define all the required parameters for a check:
+The validation YAML format is designed to define all required parameters for a check:
 
-```
+```yaml
 name: "" # name of validation
 description: "" # description of validation
 weight: 0 # decides the order in which to execute, higher the weight, higher the priority
@@ -135,9 +135,9 @@ checks: # checks to run under this validation
       - ""
 ```
 
-Here is an example YAML file for a Kubernetes check to ensure a minimum number of nodes are allocated to the cluster: 
+Below is an example YAML file for a Kubernetes check to ensure a minimum number of nodes are allocated to the cluster: 
 
-```
+```yaml
 name: "Check Minimum Nodes" # name of validation
 description: "" # description of validation
 weight: 0 # decides the order in which to execute, higher the weight, higher the priority
