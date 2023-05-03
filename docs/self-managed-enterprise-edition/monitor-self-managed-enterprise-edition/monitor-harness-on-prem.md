@@ -39,27 +39,26 @@ This example setup requires:
 For this example, we use the Prometheus operator packaged by Bitnami as an external Prometheus setup.
 :::
 
-## Install an ingress controller
+## Configure metrics and Ingress rules
 
 Follow the steps below on the Kubernetes cluster where you deploy your Harness instance:
 
 1. Add the following overrides to enable database metrics. This updates your Harness installation and your existing overrides.
 
    ```
-   infra:
-      postgresql:
-        metrics:
-          enabled: true
    platform:
       mongodb:
         metrics:
           enabled: true
-    redis:
-      metrics:
+      timescaledb:
+        prometheus:
+          enabled: true
+      redis:
+        metrics:
           enabled: true
    ```
 
-2. Create an ingress file for `mongo-metrics`, with defined routing rules that forwards requests to an internal service exposing metrics with a similar configuration.
+2. Create an ingress file for `metrics`, with defined routing rules that forwards requests to an internal service exposing metrics with a similar configuration.
 
    ```
      apiVersion: networking.k8s.io/v1
@@ -87,9 +86,9 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
    Add your IPs to your allow list so the metrics exposed by the ingress are only accessible internally. The IP included in the allow list is the external IP for the node where you host Prometheus in a separate cluster.
   :::
 
-## Deploy Prometheus to integrate with Harness
+## Configure Prometheus to integrate with Harness
 
-Follow the instructions below to deploy Prometheus to integrate with your Harness instance:
+Follow the instructions below based on the type of your prometheus installation to integrate with your Harness instance:
 
 ```mdx-code-block
 <Tabs>
@@ -114,24 +113,24 @@ To use a Kubernetes operator by Bitnami, do the following:
 4. Create a `harness-metrics` secret in the same namespace where the Prometheus operator is installed. This secret passes a `config.yaml` file as the data. The data contains the job for the `additionalScrapeConfigs` in the following manner.
 
    ```
-   job_name:mongo-metrics-test
+   - job_name:mongo-metrics-test
      scrape_interval:30s
-     metrics_path:/mongo-metrics/metrics
+     metrics_path: /mongo-metrics/metrics
      static_configs:
      - targets:
        - <LB-IP>
    - job_name:redis-metrics-test
      scrape_interval:30s
-     metrics_path:/redis-metrics/metrics
+     metrics_path: /redis-metrics/metrics
      static_configs:
      - targets:
        - <LB-IP>
    - job_name:postgres-metrics-test
      scrape_interval:30s
-     metrics_path:/postgres-metrics/metrics
+     metrics_path: /postgres-metrics/metrics
      static_configs:
    - targets:
-     -<LB-IP>
+     - <LB-IP>
   ```
 
 5. Run the following command to create the secret:
@@ -159,26 +158,25 @@ To use a standalone Prometheus installation with a customer configuration, do th
 1. Update your `config.yaml` file with the following settings:
 
     ```
-     scrape_configs:
-
+    scrape_configs:
     - job_name:mongo-metrics-test
       scrape_interval:30s
       metrics_path:/mongo-metrics/metrics
       static_configs:
-    - targets:
-      - <LB-IP>
+      - targets:
+        - <LB-IP>
     - job_name:redis-metrics-test
       scrape_interval:30s
       metrics_path:/redis-metrics/metrics
       static_configs:
-    - targets:
-      - <LB-IP>
+      - targets:
+        - <LB-IP>
     - job_name:postgres-metrics-test
       scrape_interval:30s
       metrics_path:/postgres-metrics/metrics
       static_configs:
-    - targets:
-      -<LB-IP>
+      - targets:
+        -<LB-IP>
   ```
 
 ```mdx-code-block
