@@ -52,6 +52,9 @@ The Harness GCP connector has 2 credential types. For each type, you must instal
 
 You can install the gke-gcloud-auth-plugin on the delegate by creating an immutable delegate and updating the following commands in `INIT_SCRIPT`:
 
+<details>
+<summary>RHEL 7 OS</summary>
+
 ```
 tee -a /etc/yum.repos.d/google-cloud-sdk.repo << EOM
 [google-cloud-cli]
@@ -66,14 +69,23 @@ EOM
 // Install google-cloud-cli and google-cloud-cli-gke-gcloud-auth-plugin
 microdnf install google-cloud-cli
 microdnf install google-cloud-cli-gke-gcloud-auth-plugin
-
-// USE_GKE_GCLOUD_AUTH_PLUGIN=True for kubernetes version <1.26
-echo "export USE_GKE_GCLOUD_AUTH_PLUGIN=True" >> ~/.bashrc
-source ~/.bashrc
-
-// Verify the binary
-gke-gcloud-auth-plugin --version
 ```
+</details>
+
+<details>
+<summary>Ubuntu</summary>
+
+```
+apt-get install apt-transport-https ca-certificates gnupg
+
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+
+apt-get update && apt-get install google-cloud-cli && apt-get install google-cloud-cli-gke-gcloud-auth-plugin
+```
+</details>
+
 
 For more information, go to [Install the gcloud CLI](https://cloud.google.com/sdk/docs/install) from Google and [Delegate installation overview](/docs/platform/2_Delegates/install-delegates/overview.md).
 

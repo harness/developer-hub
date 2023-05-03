@@ -49,7 +49,7 @@ To select which API to use:
 
 ### Install the kubelogin client-go credential (exec) plugin on the delegate
 
-When using the Harness Azure connector with Kubernetes version >= 1.22, you can use the **kubelogin client-go credential (exec) plugin** to authenticate to GKE cluster.
+When using the Harness Azure connector with Kubernetes version >= 1.22, you can use the **kubelogin client-go credential (exec) plugin** to authenticate to AKS cluster.
 
 The Harness Azure connector has 4 authentication types. For each type, you must install the following dependencies in the Harness delegates you use or Harness will follow the old Auth Provider API format.
 
@@ -64,6 +64,9 @@ The **System Assigned Managed Identity** and **User Assigned Managed Identity** 
 
 You can install the kubelogin plugin on the delegate by creating an immutable delegate and updating the following commands in `INIT_SCRIPT`:
 
+<details>
+<summary>RHEL 7 OS</summary>
+
 ```
 // Install dependencies
 microdnf install --nodocs openssl util-linux unzip python2 && microdnf clean all
@@ -76,12 +79,35 @@ chmod 755 /opt/harness-delegate/bin/linux_amd64/kubelogin
 // Add the binary to PATH
 mv ./bin/linux_amd64/kubelogin /usr/local/bin
 
-// Verify the binary
-kubelogin --version
+// If the AKS cloud provider auth type is Certificate then we need to install azure-cli as its PEM format is not supported by kubelogin. It can be installed on the delegate by creating an immutable delegate and updating the following commands in INIT_SCRIPT
+rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[azure-cli]
+name=Azure CLI
+baseurl=https://packages.microsoft.com/yumrepos/azure-cli
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc" | tee /etc/yum.repos.d/azure-cli.repo
+microdnf install azure-cli
+```
+</details>
 
-// If the AKS connector authentication type is Certificate then we need to install az-cli as its PEM format is not supported by kubelogin. It can be installed on the delegate by creating an immutable delegate and updating the following commands in INIT_SCRIPT
+<details>
+<summary>Ubuntu</summary>
+
+```
+// Download kubelogin
+curl https://github.com/Azure/kubelogin/releases/download/v0.0.27/kubelogin-linux-amd64.zip -L -o kubelogin.zip
+unzip kubelogin.zip
+chmod 755 /opt/harness-delegate/bin/linux_amd64/kubelogin
+
+// Add the binary to PATH
+mv ./bin/linux_amd64/kubelogin /usr/local/bin
+
+// If the AKS cloud provider auth type is Certificate then we need to install az-cli as its PEM format is not supported by kubelogin. It can be installed on the delegate by creating an immutable delegate and updating the following commands in INIT_SCRIPT
 curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 ```
+</details>
+
 
 For more information, go to [kubelogin](https://github.com/Azure/kubelogin/releases) from Azure and [Delegate installation overview](/docs/platform/2_Delegates/install-delegates/overview.md).
 
