@@ -21,8 +21,6 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
 ## Important notes
 
 * Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness Delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness Cloud Provider that uses this Delegate in A cannot assume the role for the B account.
-* Harness cannot fetch Helm chart versions with Helm OCI because Helm OCI no longer supports `helm chart list`. See [OCI Feature Deprecation and Behavior Changes with Helm v3.7.0](https://helm.sh/docs/topics/registries/#oci-feature-deprecation-and-behavior-changes-with-v370).
-* Currently, you cannot list the OCI image tags in Harness. You must pass the tag as a runtime input from a previous step or as a trigger. This is a Helm limitation. For more information, go to [Helm Search Repo Chart issue](https://github.com/helm/helm/issues/11000).
 
 ## Supported platforms and technologies
 
@@ -34,6 +32,21 @@ Many Helm chart users use ChartMuseum as their Helm chart repository server.
 
 * **ChartMuseum binary v0.8.2:** the default ChartMuseum binary used by Harness is v0.8.2.
 * **ChartMuseum binary v0.12.0:** to use ChartMuseum binary v0.12.0 you must enable the feature flag `USE_LATEST_CHARTMUSEUM_VERSION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+## Helm OCI Chart Registry Support
+
+- Helm OCI Chart Registries Supported by Harness:
+  - Amazon ECR
+  - Azure Container Registry
+  - Docker Hub
+  - Google Artifact Registry
+  - JFrog Artifactory
+
+
+- Using the Helm OCI Connector user's can authenticate to any OCI compliant repository they choose
+- Harness can fetch the list of Chart Versions for a respective Helm Chart and these can be passed at runtime as a parameter into the service
+- User's can define expressions for the Chart Name and Path, at runtime Harness will resolve those expressions and still let the user pick a version
+
 
 ## Visual summary
 
