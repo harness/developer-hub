@@ -2,7 +2,7 @@
 title: Harness Platform release notes
 sidebar_label: Harness Platform
 tags: [NextGen, "platform"]
-date: 2023-05-03T10:00
+date: 2023-05-03T10:00:30
 sidebar_position: 10
 ---
 ```mdx-code-block
