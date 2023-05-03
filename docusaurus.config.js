@@ -120,6 +120,11 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Track Errors",
+                to: "tutorials/error-tracking",
+              },
+              {
+                // type: "doc",
                 label: "Orchestrate Security Tests",
                 to: "tutorials/security-tests",
               },
@@ -170,12 +175,12 @@ const config = {
                 to: "docs/security-testing-orchestration",
               },
               {
-                label: "Chaos Engineering",
-                to: "docs/chaos-engineering",
-              },
-              {
                 label: "Continuous Error Tracking",
                 to: "docs/continuous-error-tracking",
+              },
+              {
+                label: "Chaos Engineering",
+                to: "docs/chaos-engineering",
               },
               {
                 label: "Harness Platform",

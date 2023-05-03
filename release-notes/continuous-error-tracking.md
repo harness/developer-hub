@@ -2,7 +2,7 @@
 title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
 tags: [NextGen, "cet"]
-date: 2023-04-26T10:00
+date: 2023-05-05T10:00
 sidebar_position: 8
 ---
 ```mdx-code-block
