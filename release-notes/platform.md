@@ -31,6 +31,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
 - Variables corresponding to pipelines, stages, services, and environments are optional and no longer validated on the run pipeline form. (CDS-64656, ZD-43232)
 
+- The pipeline abort dialog text is now updated to warn that abort will not clean up resources. It suggests marking the stage as failed if cleanup is required. (CDS-67000)
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
