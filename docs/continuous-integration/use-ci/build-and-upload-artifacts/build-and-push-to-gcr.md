@@ -125,7 +125,7 @@ You can find the following settings on the **Advanced** tab in the step settings
 
 After saving the pipeline, select **Run** to run the pipeline.
 
-On the [build details page](../view-your-builds/viewing-builds.md), you can see the logs for each step as they run.
+On the [build details page](../viewing-builds.md), you can see the logs for each step as they run.
 
 ![](./static/build-and-push-to-gcr-516.png)
 

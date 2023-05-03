@@ -289,7 +289,7 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
 2. For the **Pipeline Inputs**, select **Git branch** and enter the target branch in the code repo, such as `main`.
 3. Select **Run Pipeline**.
 
-On the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds) you can observe the pipeline while it runs. Select a stage to examine the steps in that stage. Select a step to view the step's logs. Select the **Tests** tab to [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests).
+On the [Build details page](/docs/continuous-integration/use-ci/viewing-builds) you can observe the pipeline while it runs. Select a stage to examine the steps in that stage. Select a step to view the step's logs. Select the **Tests** tab to [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests).
 
 ![](../static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-27.png)
 

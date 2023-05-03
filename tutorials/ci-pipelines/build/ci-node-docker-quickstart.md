@@ -554,7 +554,7 @@ Here's an example of a pipeline with **Save and Restore GCS Cache** steps:
 2. In the **Build Type** field, select **Git Branch**, and then enter `main` in the **Branch Name** field.
 3. Select **Run Pipeline**.
 
-While the build runs you can observe each step of the pipeline execution on the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds).
+While the build runs you can observe each step of the pipeline execution on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds).
 
 If the build succeeds, you'll find your pushed image in your Docker Hub `samplejs` repo.
 

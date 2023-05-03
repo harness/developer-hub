@@ -479,7 +479,7 @@ This YAML example includes two stages. The first stage creates a cache bucket an
 
 ## Cache step logs
 
-You can observe and review build logs on the [Build details page](../view-your-builds/viewing-builds.md).
+You can observe and review build logs on the [Build details page](../viewing-builds.md).
 
 <details>
 <summary>Example: Save Cache to GCS step logs</summary>
