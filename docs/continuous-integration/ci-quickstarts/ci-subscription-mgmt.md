@@ -27,7 +27,7 @@ You can view and manage your Harness CI subscription in your Harness **Account S
 
 From the **Subscriptions** page, you can:
 
-* [Upgrade your plan](#upgrade-your-plan)
+* [Upgrade your plan](#upgrade-your-plan).
 * [View subscription and license usage details](#license-usage).
 
 ### Upgrade your plan

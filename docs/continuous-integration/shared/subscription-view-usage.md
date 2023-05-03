@@ -54,11 +54,17 @@ The **Trend** tab shows license usage trends over time, including:
 
 * Peak license usage in the current month.
 * Total license limit for your subscription.
-* Over use, which indicates when the number of active developers exceeded the subscription limit.
+* Over use.
 
 <!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_dev_trend.png) -->
 
 <docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_dev_trend.png')} />
+
+:::info Over use
+
+Over use indicates when the number of active developers exceeded the number of licenses for your plan.<!-- While occasional, minor over use may be permitted, this privilege is not unlimited. --> Chronic over use indicates that you need to raise the number of developer licenses on your account.
+
+:::
 
 </details>
 
