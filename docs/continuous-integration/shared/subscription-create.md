@@ -6,6 +6,10 @@
 
    Harness CI offers three tiers of subscription plans: **Free**, **Team**, and **Enterprise**. Plan features are summarized on the **Plans** page in your Harness account. For a detailed comparison, go to [Harness CI Pricing and Plans](https://www.harness.io/pricing?module=ci#).
 
+   <!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_subscribe_compare_plans.png) -->
+
+   <docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_subscribe_compare_plans.png')} />
+
    :::
 
 4. Select **Upgrade** to upgrade from the Free plan to either the Team or Enterprise plans.
@@ -14,21 +18,27 @@
 
    If this is your first time upgrading any Harness module subscription, you'll also have the option to start a 14-day trial.
 
-5. Select the number of developers who will build with Harness CI.
+5. Select the number of developers who will build with Harness CI. If you were actively using a Free plan before upgrading, Harness makes a recommendation based on your previous and predicted usage.
 
-   If you were actively using a Free plan before upgrading, Harness makes a recommendation based on your previous and predicted usage.
+   <!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_subscribe_devs.png) -->
 
-   If you would like to subscribe to the premium 24/7 support package, select **Add Premium Support**. If you already have premium support for another module subscription, your CI subscription must also include premium support.
+   <docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_subscribe_devs.png')} />
 
-6. Select **Next: Billing Information** and enter your billing information.
+6. If you would like to subscribe to the 24/7 support package, select **Add Premier Support**. If you already have premier support for another module subscription, your CI subscription must also include premier support.
+
+   <!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_subscribe_premier.png) -->
+
+   <docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_subscribe_premier.png')} />
+
+7. Select **Next: Billing Information** and enter your billing information.
 
    Tax is calculated once you enter your billing zip code. This can take up to 10 seconds to calculate.
 
-7. Select **Subscribe and Pay** to submit payment. Harness doesn't store payment information. Payments are handled by Stripe.
+8. Select **Subscribe and Pay** to submit payment. Harness doesn't store payment information. Payments are handled by Stripe.
 
 :::info How is the total cost calculated?
 
-The total cost is based on the plan level, the number of developers, and whether you selected the premium support package. You can toggle between **Monthly** and **Yearly** billing.
+The total cost is based on the plan level, the number of developers, and whether you selected the premier support package. You can toggle between **Monthly** and **Yearly** billing.
 
 If this is your first paid plan subscription, the price doesn't include tax until you enter your billing details. If you have an existing subscription, tax is calculated based on your existing billing details.
 
