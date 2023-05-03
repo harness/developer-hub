@@ -75,7 +75,7 @@ Perform the following steps to connect CCM to the AWS account.
 <TabItem value="4" label="From Account Settings">
 ```
 1. Go to **Account Resources** | **Connectors**.
-- Click on **+ New Connector**.
+2. Click on **+ New Connector**.
 - Under **Cloud Costs**, select **AWS**.
 ```mdx-code-block
 </TabItem>
