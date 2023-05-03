@@ -114,9 +114,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="Fixed issues">
 ```
 
-- The GitHub connector did not decrypt the username when the username was provided as a secret. (CDS-59187)
-
-  The GitHub connector now decrypts the username when provided as a secret.
+- Usernames that were provided as secrets were not being decrypted for Github packages artifacts. (CDS-59187)
+  
+  When a Github connector was created with a username and password/token, if the username was a secret then its value was not decrypted.
+  
+  We now decrypt the username when provided as a secret.
 - The Harness UI crashed when editing a service in the YAML view. (CDS-59077)
   
   The UI crashed when entering a key without a value in the service YAML. This issue is fixed.
@@ -127,23 +129,24 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Unable to resolve number variables in a service, environment, or an Update step of a GitOps pipeline. (CDS-58531)
   
   This issue is fixed.
-- Artifactory repository format support was not available for artifact source templates. (CDS-59092)
+- Repository format is now supported for Artifactory artifact source templates. (CDS-59092)
+
+  <docimage path={require('./static/61a6e0b480e05303bfc5926bec326c1555eff5ae087014c0b6a7e00a1fa94ec2.png')} width="60%" height="60%" title="Click to view full size image" />
+- Tanzu rolling rollback was deleting the application instead of rolling back to previous state. (CDS-59089)
   
-  Added support for Artifactory repository format for artifact source templates.  
-- The Rollback step of a Tanzu Application Service (TAS) Rolling deployment deleted applications instead of rolling them back to the previous version in some cases. (CDS-59089)
+  The Rolling Rollback step in a Tanzu rolling deployment strategy was deleting the Tanzu application instead of rolling back to the previous version.
   
-  This issue is fixed. Multiple failure scenarios are now covered in application failure and rollback for TAS Rolling deployments. 
+  We now provide more coverage to ensure multiple failure scenarios are covered in application failure and rollback for Tanzu rolling deployments.
 - Unable to fetch the bucket list for the Helm chart manifest type using a Google Cloud Storage (GCS) connector if set as a runtime input. (CDS-58722)
 
   This issue is fixed.
 - Webhook triggers were not working for GitLab connectors with SSH auth type and API tokens. (CDS-58471)
   
   Added support for SSH URL in triggers.
-- Resolved an issue that converted runtime fields with default values to fixed values when viewing the template-linked parts of a pipeline like steps, stage, and so on. (CDS-67999)
-- Users were able to edit the **Freeze Windows>** **Schedule** tab when a freeze window was active. (CDS-58507)
+- Resolved an issue that converted runtime fields with default values to fixed values when viewing the template-linked parts of a pipeline like steps, stage, and so on. (CDS-67999, ZD-42765)
+- Bamboo artifact and connector fixes. (CDS-58632)
   
-  The **Schedule** tab is not editable anymore when a freeze window is active. It is also uneditable for users with read-only permissions. 
-- Fixed minor bugs in the Bamboo artifact source connector. (CDS-58632)
+  Minor bug fixes for the Bamboo artifact source connector.
 - The Security Testing Orchestration (STO) module was present in the Harness CD Community Edition (CE). (CDS-59269)
   
   Support has been added to hide the STO module from CE.
@@ -157,6 +160,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Previous service input values were removed when additional services were selected for a multi-service input set. (CDS-59341, ZD-43262)
   
   Service inputs in the run pipeline form and input sets are retained now.
+- The **Verify Connection** error message for WinRM credential connection test was unclear. (CDS-59108)
+  
+  The error handling is now improved to provide a more meaningful error message when the connection to the target host fails. 
+- Fixed an issue where users were unable to select **Subscription Id** in the **Azure Infrastructure details** section when creating a new environment and infrastructure at an org level. (CDS-58749, ZD-42608)
 
 ```mdx-code-block
   </TabItem>
@@ -232,9 +239,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   You can now use artifacts in Bamboo to initiate Triggers for your pipelines.
 
   <docimage path={require('./static/d5512549a2cb085680c609e42aef000fec60a5dc8ac6f20ee48ec31282f6f61e.png')} width="30%" height="30%" title="Click to view full size image" />
-- Repository format is now supported for Artifactory artifact source templates. (CDS-59092)
-
-  <docimage path={require('./static/61a6e0b480e05303bfc5926bec326c1555eff5ae087014c0b6a7e00a1fa94ec2.png')} width="60%" height="60%" title="Click to view full size image" />
 
 ##### Early access
 
@@ -258,16 +262,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ##### Fixed issues
 
-- Usernames that were provided as secrets were not being decrypted for Github packages artifacts. (CDS-59187)
-  
-  When a Github connector was created with a username and password/token, if the username was a secret then its value was not decrypted.
-  
-  We now decrypt the username when provided as a secret.
-- Tanzu rolling rollback was deleting the application instead of rolling back to previous state. (CDS-59089)
-  
-  The Rolling Rollback step in a Tanzu rolling deployment strategy was deleting the Tanzu application instead of rolling back to the previous version.
-  
-  We now provide more coverage to ensure multiple failure scenarios are covered in application failure and rollback for Tanzu rolling deployments.
 - The **Allow simultaneous deployments on the same infrastructure** setting was not being preserved when switching to YAML view for Azure deployment types. (CDS-59044)
   
   The setting is now preserved when switching modeling methods.
@@ -277,18 +271,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - White spaces and special characters (except for `_` and `$`) were causing errors in the **Artifact** and **Manifest Name** identifiers. (CDS-58678, ZD-42015)
   
   **Important:** white spaces and special characters (except for `_` and `$`) are prevented automatically in **Artifact** and **Manifest Name** identifiers. If you are using **Artifact** and **Manifest Name** identifiers with white spaces and special characters, you will need to update them.
-- Bamboo artifact and connector fixes. (CDS-58632)
-  
-  Minor bug fixes for the Bamboo artifact source connector.
 - For declarative rollback, the manifest outcome was not being passed in the Kubernetes Delete step. (CDS-58591)
   
   We have improved the behavior of declarative rollback with the Kubernetes Delete step and the manifest outcome is now passed to the step.
 - Not clear that file store UI has more content at the bottom of the file. (CDS-58551)
   
   This has been fixed.
-- Deployment freeze schedule section is editable when the freeze is active. (CDS-58507)
+- Users were able to edit the **Freeze Windows>** **Schedule** tab when a freeze window was active. (CDS-58507)
   
-  The schedule form is now uneditable for users with read-only permissions or when the freeze window is active.
+  The **Schedule** tab is not editable anymore when a freeze window is active. It is also uneditable for users with read-only permissions. 
 - ECR artifact source deployment was failing in Tanzu. (CDS-58459)
   
   This is fixed and now Tanzu Application Service deployments using ECR as the artifact source are working as expected.

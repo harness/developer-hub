@@ -29,7 +29,6 @@ This release does not include early access features.
 #### Fixed issues
 
 - Resolved a null pointer exception when the Canary Deployment step is initialized with the Helm manifest type. (CDS-59214)
-- Resolved an issue where the **Start New Deployment** window refreshed when selecting **Artifacts**. (CDS-59354)
   
 ### April 22, 2023, version 79111
 
