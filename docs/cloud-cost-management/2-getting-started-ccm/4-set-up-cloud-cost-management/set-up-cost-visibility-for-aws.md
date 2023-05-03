@@ -32,7 +32,7 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="tab-number">
 <TabItem value="1" label="Multiple Accounts with Consolidated Billing">
 ```
-* If you have [consolidated billing process](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-procedure.html) enabled, then you will only need to create a single (CUR) for the management account. This provides cost data for all member accounts in the organization.
+* If you have [consolidated billing process](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-procedure.html) enabled, then you need to create only a single CUR for the management account. This provides cost data for all member accounts in the organization.
 
 * For the Cost Visibility feature alone, you will only need a single AWS connector configured with the management account CUR.
 
