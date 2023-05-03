@@ -76,14 +76,14 @@ Perform the following steps to connect CCM to the AWS account.
 ```
 1. Go to **Account Resources** | **Connectors**.
 2. Click on **+ New Connector**.
-- Under **Cloud Costs**, select **AWS**.
+3. Under **Cloud Costs**, select **AWS**.
 ```mdx-code-block
 </TabItem>
 <TabItem value="5" label="From Cloud Costs">
 ```
 - Go to **Setup** | **Cloud Integration**.  
-- Click on **New Cluster/Cloud account**.
-- Select **AWS**.
+2. Click on **New Cluster/Cloud account**.
+3. Select **AWS**.
 ```mdx-code-block
 </TabItem>
 </Tabs>
@@ -91,59 +91,57 @@ Perform the following steps to connect CCM to the AWS account.
 
 ### Overview
 
-1. Enter the following values and click **Continue**
+1. Enter the following details and click **Continue**.
 
-| **Field** | **Value/Notes** |
+| **Field** | **Description** |
 | --- | --- |
 | **Connector Name** | Enter any name for the connector. This name will appear throughout the product to identify this AWS account. |
 | **Specify the AWS account ID** | The Account ID of the AWS account to connect to. To find your AWS account ID, see [Finding your AWS account ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html#FindingYourAWSId). |
-| **Is this an AWS GovCloud account?** | Select **Yes** if connecting to a GovCloud account |
+| **Is this an AWS GovCloud account?** | Select **Yes** if connecting to a GovCloud account. |
 
 
 ### Cost and Usage Report
 
-1. Click **Launch AWS console**. 
+Launch the AWS console and perform the following steps:
 
-> *In the AWS Console perform the following steps*
 
-2. Log into your AWS account if not already logged in.
-3. Click **Create Report**.   
-4. In the **Specify report details** step, enter the following values and click **Next**
+1. Log into your AWS account if not already logged in.
+2. Click **Create Report**.   
+4. In the **Specify report details** step, enter the following values, and then click **Next**.
 
-| **Field** | **Value/Notes** |
+| **Field** | **Description** |
 | --- | --- |
-| **Report Name** | Enter any name as the report name. Copy this name as you will need it to continue configure the Harness connector in steps below |
-| **Include resource IDs** | Make sure this option is checked |
-| **Refresh automatically** | Make sure this option is checked |
+| **Report Name** | Enter a name for the report. Make sure to copy this name, as you will need it to continue configuring the Harness connector in the steps below. |
+| **Include resource IDs** | Make sure this option is selected. |
+| **Refresh automatically** | Make sure this option is selected. |
 
-5. In the **Set delivery options** step, enter the following values and click **Next**
+5. In the **Set delivery options** step, enter the following values, and then click **Next**.
 
-| **Field** | **Value/Notes** |
+| **Field** | **Description** |
 | --- | --- |
-| **Configure S3 Bucket** | Select an existing bucket or create a new one. Copy this name as you will need it to continue configure the Harness connector in steps below |
+| **Configure S3 Bucket** | Select an existing bucket or create a new one. Make sure to copy this name, as you will need it to continue configuring the Harness connector in the steps below. |
 | **S3 path prefix - required** | Enter any path prefix. Harness will automatically scan and find this prefix. |
-| **Report data time granularity** | Select **Hourly** |
-| **Report versioning** | Select **Overwrite existing report** |
-| **Amazon Athena** | Make sure this option is unchecked |
-| **Amazon Redshift** | Make sure this option is unchecked |
-| **Amazon QuickSight** | Make sure this option is unchecked |
-| **Compression type** | Select **GZIP** |
+| **Report data time granularity** | Select **Hourly**. |
+| **Report versioning** | Select **Overwrite existing report**. |
+| **Amazon Athena** | Make sure this option is unchecked. |
+| **Amazon Redshift** | Make sure this option is unchecked. |
+| **Amazon QuickSight** | Make sure this option is unchecked. |
+| **Compression type** | Select **GZIP**. |
 
-6. In the **Review and create** step, click **Create Report**
+6. In the **Review and create** step, click **Create Report**.
 
-> *In the Harness connector dialog perform the following steps*
 
-7. Enter the following values and click **Continue**
+7. In the Harness connector dialog, enter the following values, and then click **Continue**.
 
-| **Field** | **Value/Notes** |
+| **Field** | **Description** |
 | --- | --- |
-| **Cost and Usage Report Name** | Enter the report name you specified in step 5 |
-| **Cost and Usage S3 Bucket Name** | Enter the bucket name you specified in step 5 |
+| **Cost and Usage Report Name** | Enter the report name you copied earlier. |
+| **Cost and Usage S3 Bucket Name** | Enter the bucket name you specified earlier. |
 
 
 ### Choose Requirements
 
-1. Select your desired features and click **Continue**. Details about the features are listed below. Note that the permissions required as part of the AWS cross-account role will be based on your selections. Those permissions are listed out in the **Reference - AWS Access Permission** section below.
+Select your desired features, and then click **Continue**. Details about the features are listed below. Note that the permissions required as part of the AWS cross-account role will be based on your selections. Those permissions are listed out in the **Reference - AWS Access Permission** section below.
 
 | **Features**  | **Capabilities** | 
 | --- | --- | 
@@ -158,7 +156,7 @@ Harness uses the secure cross-account role to access your AWS account. The role 
 
 1. In **Create Cross Account Role**, click **Launch Template on AWS console**.
 
-> *In the AWS Console perform the following steps*
+Perform the following steps in the AWS Console.
 
 2. In **Quick create stack**, in **Capabilities**, select the acknowledgment, and click **Create stack**.
   > **☆ NOTE** - The values on this page are based on your previous selections. Do not modify any values before creating the stack.  
@@ -167,14 +165,13 @@ Harness uses the secure cross-account role to access your AWS account. The role 
    
      ![](./static/set-up-cost-visibility-for-aws-36.png)
 
-> *In the Harness connector dialog perform the following steps*
 
-4. Enter the following values and click **Save and Continue**
+4. In the Harness connector dialog, enter the following values, and then click **Save and Continue**.
 
-| **Field** | **Value/Notes** |
+| **Field** | **Description** |
 | --- | --- |
-| **Cross Account Role ARN** | Enter the value that you copied in step 3 |
-| **External ID** | Do not modify. If you will be creating multiple AWS connectors via API, copy this value as you will need to reference it. |
+| **Cross Account Role ARN** | Enter the value that you copied in step 3. |
+| **External ID** | Do not modify. If you intend to create multiple AWS connectors via API, be sure to copy this value as you will need to reference it later.|
 
 ### Connection Test
 
@@ -199,61 +196,61 @@ Harness CCM also provides the ability to create connectors via API using a Stack
 
 Perform the following steps to create a StackSet in AWS:
 
-1. Click on the following link to start creating the StackSet:  
+1. Click the following link to start creating the StackSet:  
 <https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacksets/create>
-2. In the **Choose a template** step, enter the following values and click **Next**
+2. In the **Choose a template** step, enter the following values, and then click **Next**.
 
 | **Field** | **Value/Notes** |
 | --- | --- |
-| **Permissions** | Optional, configure if necessary based on your AWS policies |
-| **Prerequisite - Prepare template** | Select **Template is ready** |
-| **Specify template** | Select **Amazon S3 URL** |
+| **Permissions** | Optional, configure if necessary based on your AWS policies. |
+| **Prerequisite - Prepare template** | Select **Template is ready**. |
+| **Specify template** | Select **Amazon S3 URL**. |
 | **Amazon S3 URL** | Enter `https://continuous-efficiency-prod.s3.us-east-2.amazonaws.com/setup/ngv1/HarnessAWSTemplate.yaml` |
 
-3. In the **Specify StackSet details** step, enter the following values and click **Next**
+3. In the **Specify StackSet details** step, enter the following values, and then click **Next**.
 
-| **Field** | **Value/Notes** |
+| **Field** | **Description** |
 | --- | --- |
-| **StackSet name** | Enter any name. For example, `harness-ce-iam-stackset` |
-| **BillingEnabled** | Select **false** |
-| **BucketName** | Leave empty |
-| **EventsEnabled** | Select **true** |
-| **ExternalId** | The External ID value copied in step 4 of [Create Cross Account Role](#create-cross-account-role) |
-| **GovernanceEnabled** | Select **true** to enable Governance, **false** otherwise |
-| **LambdaExecutionRoleName** | Leave as is unless your AWS policies required a different naming convention |
-| **OptimizationEnabled** | Select **true** to enable AutoStopping, **false** otherwise |
-| **PrincipalBilling** | Do not modify |
-| **RoleName** | Leave as is unless your AWS policies required a different naming convention |
+| **StackSet name** | Enter any name. For example, `harness-ce-iam-stackset` .|
+| **BillingEnabled** | Select **false**. |
+| **BucketName** | Leave empty. |
+| **EventsEnabled** | Select **true**. |
+| **ExternalId** | The External ID value copied in step 4 of [Create Cross Account Role](#create-cross-account-role). |
+| **GovernanceEnabled** | Select **true** to enable Governance. Otherwise, select **false**. |
+| **LambdaExecutionRoleName** | Leave as is unless your AWS policies required a different naming convention. |
+| **OptimizationEnabled** | Select **true** to enable AutoStopping. Otherwise, select **false**. |
+| **PrincipalBilling** | Do not modify. |
+| **RoleName** | Leave as is unless your AWS policies required a different naming convention. |
    
 4. In the **Configure StackSet options** step, enter the following values and click **Next**
 
-| **Field** | **Value/Notes** |
+| **Field** | **Description** |
 | --- | --- |
-| **Managed execution** | Select **Active** |
+| **Managed execution** | Select **Active**. |
     
-5. In the **Set deployment options** step, enter the following values and click **Next**
+5. In the **Set deployment options** step, enter the following values, and then click **Next**.
 
-| **Field** | **Value/Notes** |
+| **Field** | **Description** |
 | --- | --- |
-| **Add stacks to StackSet** | Select **Deploy new stacks** |
-| **Deployment locations** | Configure the accounts or organization units that you want to deploy to |
-| **Specify regions** | Configure the regions that you want to deploy to |
-| **Region Concurrency** | Select **Sequential** |
+| **Add stacks to StackSet** | Select **Deploy new stacks**. |
+| **Deployment locations** | Configure the accounts or organization units that you want to deploy to. |
+| **Specify regions** | Configure the regions that you want to deploy to. |
+| **Region Concurrency** | Select **Sequential**. |
 
-6. In the **Review** step, select the acknowledgment, and click **Submit**.
+6. In the **Review** step, select the acknowledgment, and then click **Submit**.
 
 ### Create an AWS Connector via API
 
 Use the Harness API's [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) endpoint to create an AWS connector for each member account. Below is a sample cURL command to create an AWS connector. Replace the following placeholders with your values:
 
-| **Placeholder** | **Value/Notes** |
+| **Placeholder** | **Description** |
 | --- | --- |
-| **API TOKEN** | The API Key created in the [Create a Service Account and API Key in Harness](#create-a-service-account-and-api-key-in-harness) section |
+| **API TOKEN** | The API Key created in the [Create a Service Account and API Key in Harness](#create-a-service-account-and-api-key-in-harness) section. |
 | **CONNECTOR NAME** | Enter any name. This will be visible in the UI, perspectives, dashboards, etc. |
 | **CONNECTOR ID** | Enter a unique ID for the connector. The ID must meet the [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference/) specification. |
-| **CROSS ACCOUNT ROLE ARN** | The ARN value copied in step 3 of [Create Cross Account Role](#create-cross-account-role) |
-| **EXTERNAL ID** | The External ID value copied in step 4 of [Create Cross Account Role](#create-cross-account-role) |
-| **AWS ACCOUNT ID** | The ID of the AWS member account |
+| **CROSS ACCOUNT ROLE ARN** | The ARN value copied in step 3 of [Create Cross Account Role](#create-cross-account-role). |
+| **EXTERNAL ID** | The External ID value copied in step 4 of [Create Cross Account Role](#create-cross-account-role). |
+| **AWS ACCOUNT ID** | The ID of the AWS member account. |
 | **FEATURES** | A comma separated list of features to enable. Enter `"VISIBILITY", "OPTIMIZATION", "GOVERNANCE"` removing any features that you do not want to enable. |
 
 
