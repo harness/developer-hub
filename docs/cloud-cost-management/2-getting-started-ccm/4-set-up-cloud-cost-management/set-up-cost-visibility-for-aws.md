@@ -200,7 +200,7 @@ Perform the following steps to create a StackSet in AWS:
 <https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacksets/create>
 2. In the **Choose a template** step, enter the following values, and then click **Next**.
 
-| **Field** | **Value/Notes** |
+| **Field** | **Description** |
 | --- | --- |
 | **Permissions** | Optional, configure if necessary based on your AWS policies. |
 | **Prerequisite - Prepare template** | Select **Template is ready**. |
