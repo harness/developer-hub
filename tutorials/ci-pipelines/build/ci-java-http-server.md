@@ -467,7 +467,7 @@ Harness CI has several caching options.
 3. In the **Build Type** field, select **Git Branch**, and then enter `main` in the **Branch Name** field.
 4. Select **Run Pipeline**.
 
-While the build runs you can observe each step of the pipeline execution on the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds). When the first stage completes, test results appear on the **Tests** tab.
+While the build runs you can observe each step of the pipeline execution on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds). When the first stage completes, test results appear on the **Tests** tab.
 
 If you used the sample `curl` command in the second stage, the script may run indefinitely. Select the stop icon to terminate the build.
 
