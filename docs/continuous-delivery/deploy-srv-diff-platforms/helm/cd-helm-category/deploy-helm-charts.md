@@ -39,7 +39,6 @@ Many Helm chart users use ChartMuseum as their Helm chart repository server.
   - Amazon ECR
   - Azure Container Registry
   - Docker Hub
-  - Google Artifact Registry
   - JFrog Artifactory
 
 
@@ -51,6 +50,7 @@ Many Helm chart users use ChartMuseum as their Helm chart repository server.
 ### Limitations
 
 - User's will not be able trigger via On New Manifest Trigger for OCI Helm Connector configured Helm Services. 
+- Google Artifact Registry with OCI Support (Coming Soon)
 
 
 ## Visual summary
