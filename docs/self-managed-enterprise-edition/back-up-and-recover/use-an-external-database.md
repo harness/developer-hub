@@ -4,7 +4,7 @@ description: Learn how to use an external database with Self-Managed Enterprise 
 # sidebar_position: 10
 ---
 
-To use MongoDB with Harness Self-Managed Enterprise Edition, you must ensure that your hardware and software meet the minimum requirements for installation and configuration. This topic details the software and hardware requirements to use an external database and the required setup.
+To use MongoDB with Harness Self-Managed Enterprise Edition, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This topic details the software, hardware, and network requirements to use an external database.
 
 ## Benefits of the MongoDB replica set
 
@@ -12,14 +12,13 @@ Below are some of the benefits of the MongoDB replica set:
 
 - High availability
 - Disaster recovery
-- No downtime for maintenance
-- Secondary read (read scaling)
+- No maintenance downtime
+- Secondary read support (read scaling)
 
 ## Hardware requirements
 
-External database setup requires the following hardware:
+Harness recommends a MongoDB three member replica set configuration with the following minimum hardware:
 
-Harness recommends a MongoDB three member replica set configuration with the following:
 - Three nodes
 - Four CPU (3*4 = 12 CPU)
 - 16GB RAM (3*16 = 48GB RAM)
@@ -42,7 +41,7 @@ External database setup includes the following network requirements:
 - Your port must be open for bidirectional replication.
 
   :::info note
-  MongoDB uses default port 27017 to communicate between Harness Self-Managed Enterprise Edition and the database. MongoDB supports a wide range ports, you can use any supported MongoDB port range.
+  MongoDB uses default port 27017 to communicate between Harness Self-Managed Enterprise Edition and the database. MongoDB supports a wide range of ports, and you can use any supported MongoDB port range.
   :::
 
 - Your Kubernetes cluster and MongoDB backend must be on the same subnet.
@@ -51,9 +50,9 @@ External database setup includes the following network requirements:
 
 ## Monitoring tools
 
-For Enterprise Edition versions, Harness recommends Ops Manager for replica set management. Ops Manager is a MongoDB database management tool to monitor alerts, backup, and replica set management.
+For MongoDB Enterprise Edition versions, Harness recommends Ops Manager for replica set management. Ops Manager is a MongoDB database management tool to monitor alerts, backup, and replica set management.
 
-For Community Editions versions, Harness recommends the following third-party monitoring tools: 
+For MongoDB Community Editions versions, Harness recommends the following third-party monitoring tools: 
 
 - Datadog/App Dynamics (alerts)
 - Percona (MongoDB management tool)
