@@ -17,11 +17,11 @@ Perform the following steps to restrict rule execution access:
    
  <docimage path={require('./static/restricted-role-asset-gov.png')} width="50%" height="50%" title="Click to view full size image" />
 
-5. Create another role with `Execute` permissions to perform CRUD operations on all the CCM features.
+5. Create another role with `Execute` permissions to enable the execution of the governance rules.
 
  <docimage path={require('./static/admin-role-asset-gov.png')} width="50%" height="50%" title="Click to view full size image" />
 
-6. Create a new resource group to bind with this role. You could create a resource group with specific rules and connectors that you want to allow access to. Connectors allow you to access the cloud account tied to them. 
+6. Create a new resource group to bind with this role. You could create a resource group with specific rules and connectors that you want to allow access to. Connectors allow you to execute rules in the cloud account tied to them. 
 7. Select **Resource Groups**.
 8. Click **+ New Resource Group** to create a new resource group. For example, _RBAC GOV_.
 9. Select **Account only** in the **Resource Scope** dropdown list.
@@ -43,7 +43,7 @@ Perform the following steps to restrict rule execution access:
  
  <docimage path={require('./static/add-role-bindings-asset-gov.png')} width="50%" height="50%" title="Click to view full size image" />
 
- In the given example, the `ccm-execute` role allows the user to execute governance rules on the `RBAC GOV` resource group (specific resources) and the `ccm-gov-restricted` role restricts the user from executing the governance rules but allows access to other resources.
+ In the given example, the `ccm-execute` role allows the user to execute governance rules on the `RBAC GOV` resource group (specific resources) and the `ccm-gov-restricted` role restricts the user from executing the governance rules.
 
 ## Verifying permissions
 
@@ -53,6 +53,6 @@ Perform the following steps to restrict rule execution access:
 * You are not allowed to edit or delete the rules without `Execute` permission. However, you can clone these rules.
 
 * You can create a rule set only with the rules for which you have permissions. 
-* When creating an enforcement, you must have the necessary permissions for all the rules and target accounts that you want to include in the enforcement.
+* When editing an enforcement, you must have the necessary permissions for all the rules and target accounts that you want to include in the enforcement.
 
     <docimage path={require('./static/rbac-enforcements-asset-gov.png')} width="50%" height="50%" title="Click to view full size image" />
