@@ -166,16 +166,16 @@ const config = {
                 to: "docs/service-reliability-management",
               },
               {
-                label: "Continuous Error Tracking",
-                to: "docs/continuous-error-tracking",
-              },
-              {
                 label: "Security Testing Orchestration",
                 to: "docs/security-testing-orchestration",
               },
               {
                 label: "Chaos Engineering",
                 to: "docs/chaos-engineering",
+              },
+              {
+                label: "Continuous Error Tracking",
+                to: "docs/continuous-error-tracking",
               },
               {
                 label: "Harness Platform",

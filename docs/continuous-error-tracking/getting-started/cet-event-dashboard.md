@@ -31,7 +31,7 @@ To view the Event List, do the following:
 
 1. On the Events dashboard, select a monitored service. The list of events captured by that monitored service is displayed.
 
-![Event List](./static/et-quickstart-view-event-list.png)
+![Events summary page](./static/et-getstarted-event-summary-page.png)
 
 The Event List displays the following information:
 
@@ -42,7 +42,7 @@ The Event List displays the following information:
   * Log Error	- Events logged as errors in the user’s service.
   * Log Warning - Events logged as warnings in the user’s service.
   * HTTP Error - HTTP communication errors.
-  * Custom Errors - Events that occur in the custom SDK. 
+  * Custom Error - Events that occur in the custom SDK. 
 
 * **Description:** Name of the event. In case of an exception, this is the exception class name. For example, AmazonException, NullPointerException, and so on. You can see the complete exception message of an event by hovering over the **Description** field.
 

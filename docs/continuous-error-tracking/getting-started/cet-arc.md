@@ -11,7 +11,7 @@ To view the ARC screen, do the following:
 1. On the Events List, select an event. The ARC screen for that event appears.
 
 
-![View ARC screen](./static/et-quickstart-open-arc.png)
+![View ARC screen](./static/et-quickstart-open-arc.gif)
 
 The ARC screen is divided into following tabs to help you create a complete picture of the event.
 

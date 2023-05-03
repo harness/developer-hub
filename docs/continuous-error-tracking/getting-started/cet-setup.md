@@ -66,8 +66,6 @@ To create a token, do the following:
 
    The newly created token is added to the list of tokens.
 
-![New token](./static/et-quickstart-new-token-created.png)
-
 :::info note
 You can copy the token anytime by selecting the clipboard icon.
 :::
@@ -249,12 +247,8 @@ value: b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a
 After installing Error Tracking Agent, you should verify that it is connected to Harness. To verify the Error Tracking Agent connection, do the following:
 
 1. Expand **PROJECT SETUP** and then select **Agents**.  
-   
-   ![Navigate to Agents list](./static/et-quickstart-verify-agent-navigate.png)
  
     A comprehensive list of Error Tracking Agents is displayed along with the information such as service name, environment, deployment version, Agent version, Agent status, token name, and so on. Ensure that the Agent that you installed is listed, and the status is **CONNECTED**.
-
-   ![Verify agent connection](./static/et-quickstart-agent-connection-status.png)
 
 
 ## Next steps

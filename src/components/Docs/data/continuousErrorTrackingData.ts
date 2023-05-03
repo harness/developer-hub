@@ -16,17 +16,17 @@ import {
           "",
         list: [
           {
-            title: "Overview",
+            title: "CET tutorials",
             module: MODULES.cet,
             description:
-              "Learn about Continuous Error Tracking (CET) and how it can benefit you.",
+              "Dive in with these hands-on tutorials.",
             link: "/tutorials/service-reliability",
           },
           {
-            title: "Key concepts",
+            title: "Overview",
             module: MODULES.cet,
             description:
-              "Understand concepts such as CET Agent.",
+              "Understand concepts and benefits.",
             link: "/docs/continuous-error-tracking/getting-started/cet-overview",
           },
           {
