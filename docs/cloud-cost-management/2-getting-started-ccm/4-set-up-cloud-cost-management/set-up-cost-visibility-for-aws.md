@@ -45,7 +45,7 @@ import TabItem from '@theme/TabItem';
 
 <TabItem value="2" label="Multiple Accounts">
 ```
-* If you do NOT have [consolidated billing process](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-procedure.html) enabled, then you will need to create a CUR for each linked account.
+* If you do not have [consolidated billing process](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-procedure.html) enabled, then you need to create a CUR for each linked account.
 
 * Create an AWS connector for each AWS account, configured with the CUR for that account.
 
