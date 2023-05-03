@@ -4,6 +4,8 @@ description: Set freeze windows for deployments.
 sidebar_position: 8
 ---
 
+This topic covers the Harness deployment freeze feature, including how to set up freeze windows, access control, notifications, and best practices.
+
 ## Deployment freeze summary
 
 If you are new to deployment freezes, review the following summary.
