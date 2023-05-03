@@ -29,8 +29,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - You will now receive an alert on the default settings page when there are unsaved changes, or if you leave the page. (PL-32354)
 
-- The pipeline abort dialog text is now updated to warn that abort will not clean up resources. It suggests marking the stage as failed if cleanup is required. (CDS-67000)
-
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
@@ -54,18 +52,6 @@ This release does not include any early access feature.
 - The option to remove a secret is hidden when it has a long name. (PL-32571)
   
   A code enhancement fixed this issue.
-
-- The default values of runtime fields get converted to fixed values when viewing stages or steps linked to a template. (CDS-67999, ZD-42765)
-  
-  A code enhancement fixed this issue.
-
-- Users with Edit permission for the pipeline cannot save input sets. (CDS-67985, ZD-42516)
-  
-  A code enhancement to validate the input set YAML after integrating input set caching fixed the issue.
-
-- The previous input value is removed when adding additional services to a multiservice input set. (CDS-59341, ZD-43262)
-  
-  Input sets and values in **Run** pipeline settings are now retained when services change.
 
 
 ```mdx-code-block
