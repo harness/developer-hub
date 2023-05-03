@@ -1,5 +1,5 @@
 ---
-title: Harness CD ecosystem
+title: Supported CD features and integrations
 description: Select the tools and platforms for deploying your apps. 
 sidebar_position: 1
 ---
