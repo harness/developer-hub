@@ -35,22 +35,27 @@ Many Helm chart users use ChartMuseum as their Helm chart repository server.
 
 ## Helm OCI Chart Registry Support
 
-- Helm OCI Chart Registries Supported by Harness:
+Harness supports the following Helm OCI chart registries:
   - Amazon ECR
   - Azure Container Registry
-  - Docker Hub
+  - DockerHub
   - JFrog Artifactory
+  - Google Artifact Registry (coming soon)
 
+Helm OCI chart support includes the following deployment types:
 
-- Using the Helm OCI Connector user's can authenticate to any OCI compliant repository they choose
-- Harness can fetch the list of Chart Versions for a respective Helm Chart and these can be passed at runtime as a parameter into the service
-- User's can define expressions for the Chart Name and Path, at runtime Harness will resolve those expressions and still let the user pick a version
-- The Helm OCI Chart Support is supported for Native Helm Deployments and Helm Chart with Kubernetes Deployments.
+- Native Helm
+- Helm charts with Kubernetes deployments.
 
-### Limitations
+Harness OCI chart registry support details:
 
-- User's will not be able trigger via On New Manifest Trigger for OCI Helm Connector configured Helm Services. 
-- Google Artifact Registry with OCI Support (Coming Soon)
+- You can use the Harness Helm OCI connector to authenticate Harness with any OCI compliant repository.
+- Harness can fetch the list of chart versions for a respective Helm chart. These versions can be passed at runtime as a parameter into the service.
+- You can define expressions for the **Chart Name** and **Path** settings, and, at runtime, Harness will resolve those expressions and let you pick a version.
+
+### Important notes
+
+- You cannot be trigger pipelines using the On New Manifest trigger if your service uses the OCI Helm connector. 
 
 
 ## Visual summary
