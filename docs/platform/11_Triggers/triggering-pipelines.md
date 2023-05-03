@@ -88,13 +88,25 @@ If you select this option, when the branch you specified in the **Connector** is
 
 The updated branch will initiate a new Trigger execution.
 
-To identify active similar pipeline executions for a **Pull Request** Event, the following combination is used as criteria:
-Account Identifier, Org Identifier, Project Identfier, Pipeline Identifier, Repository URL, PR Number, Source Branch and Target Branch
+Use the following combinations as criteria to identify similar active pipeline executions for a **Pull Request** event.
+* Account identifier
+* Org identifier
+* Project identfier
+* Pipeline identifier
+* Repository URL
+* PR number
+* Source branch
+* Target branch
 
-To identify active similar pipeline executions for a **PUSH** Event, the following combination is used as criteria:
-Account Identifier, Org Identifier, Project Identfier, Pipeline Identifier,Repository URL and ref.
-"ref" is the value of "ref" from the git push webhook payload.
+Use the following combinations as criteria to identify similar active pipeline executions for a **PUSH** event.
+* Account identifier
+* Org identifier
+* Project identfier
+* Pipeline identifier
+* Repository URL
+* Ref
 
+Ref is the value of **ref** from the Git push webhook payload.
 
 ## Configure secret
 
