@@ -18,7 +18,7 @@ Harness Cloud Cost Management (CCM) offers comprehensive solutions to manage and
 * For CCM, AWS connectors are available only at the Account level in Harness.
 * If you have multiple AWS accounts, you may need to create multiple AWS connectors depending on desired functionality:
 	+ **Cost Visibility**: You may need to create one or multiple AWS connectors depending on the availability of consolidated billing. Go to **Cost and Usage Reports (CUR)** for more information. 
-	+ **Resource Inventory Management**: You will need to create an AWS connector for each account.
+	+ **Resource Inventory Management**: You need to create an AWS connector for each account.
 	+ **Optimization by AutoStopping**: You will need to create an AWS connector for each account.
 
 ## Cost and Usage Reports (CUR)
