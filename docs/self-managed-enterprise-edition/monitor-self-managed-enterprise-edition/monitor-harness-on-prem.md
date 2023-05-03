@@ -39,7 +39,7 @@ This example setup requires:
 For this example, we use the Prometheus operator packaged by Bitnami as an external Prometheus setup.
 :::
 
-## Configure metrics and Ingress rules
+## Configure metrics and ingress rules
 
 Follow the steps below on the Kubernetes cluster where you deploy your Harness instance:
 
@@ -58,7 +58,7 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
           enabled: true
    ```
 
-2. Create an ingress file for `metrics`, with defined routing rules that forwards requests to an internal service exposing metrics with a similar configuration.
+2. Create an ingress file for `metrics`, with defined routing rules that forward requests to an internal service exposing metrics with a similar configuration.
 
    ```
      apiVersion: networking.k8s.io/v1
@@ -88,7 +88,7 @@ Follow the steps below on the Kubernetes cluster where you deploy your Harness i
 
 ## Configure Prometheus to integrate with Harness
 
-Follow the instructions below based on the type of your prometheus installation to integrate with your Harness instance:
+To integrate Prometheus with your Harness instance, follow the instructions below for your type of installation:
 
 ```mdx-code-block
 <Tabs>
