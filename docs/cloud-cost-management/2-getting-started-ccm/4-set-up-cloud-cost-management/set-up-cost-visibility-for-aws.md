@@ -38,7 +38,7 @@ import TabItem from '@theme/TabItem';
 
 * In order to take advantage of other features such as Inventory Management and AutoStopping, you need to create a connector for each member account:
   * If you are using the UI to create the additional connectors, configure all connectors with the same management account CUR.
-  * If using the API to create the additional connectors, you can omit billing information altogether.
+  * If you are using the API to create the additional connectors, you can omit billing information altogether.
 
 ```mdx-code-block
 </TabItem>
