@@ -56,7 +56,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - When you run a pipeline, you can leave the pipeline, stage, service, and environment variable values empty in the  **Run Pipeline** form. These fields are not validated in the UI any longer. (CDS-64656, ZD-43232)
   
   ![](./static/run-pipeline-form.png)
-- Added support to get GitHub webhook events through a CURL command if the client call fails. (CDS-58692)
 
 ```mdx-code-block
   </TabItem>
