@@ -139,7 +139,7 @@ export const featuredTutorials: CardItem[] = [
           ]*/
         },
         {
-          title: "Harness CD ecosystem",
+          title: "CD features and integrations",
           module: MODULES.cd,
           description:
             "See the list of tools and platforms you can use in Harness for deploying your applications.",
