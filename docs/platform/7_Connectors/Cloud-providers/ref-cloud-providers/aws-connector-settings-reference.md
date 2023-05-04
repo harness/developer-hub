@@ -422,7 +422,21 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
   `aws-iam-authenticator` supports the role to be assumed and external Id as arguments. In case the connector is configured with a cross-account access and external Id, `kubeconfig` can be modified accordingly.
   ::: 
   
-* The `aws-iam-authenticator` is available on the `$PATH` object of the `delegate.yaml` file.
+* You have created an immutable delegate and installed the `aws-iam-authenticator` in the delegate.
+    * Open the `delegate.yaml` in a text editor.
+    * Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
+    * Replace `value: ""` with the following script to install `aws-iam-authenticator`. For more information, go to [install AWS IAM authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
+      
+      ```
+      // Download aws-iam-authenticator
+      curl -Lo aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.9/aws-iam-authenticator_0.5.9_linux_amd64
+      chmod +x ./aws-iam-authenticator
+      // Add the binary to PATH
+      mv ./aws-iam-authenticator /usr/local/bin
+      // Verify the binary
+      aws-iam-authenticator help
+      ```
+      
 * You're using Kubernetes version 1.22 or later. Harness uses a [client-go credential plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins) to authenticate the connection to the EKS cluster. Support for EKS is deprecated for Kubernetes 1.21 and earlier versions.
   
 
