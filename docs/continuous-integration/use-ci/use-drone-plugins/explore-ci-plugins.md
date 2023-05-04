@@ -10,18 +10,40 @@ You can build your own plugins or use one of the many preexisting plugins from t
 
 To include a plugin in a CI pipeline, you use either the generic **Plugin** step or a specialized plugin step.
 
+## Custom plugins
+
+You can write your own plugins and use the **Plugin** step to run them in your Harness CI pipelines.
+
+## Drone plugins
+
+You can use the [Plugin step](./run-a-drone-plugin-in-ci.md) to run [Drone plugins](https://plugins.drone.io/) in Harness CI pipelines.
+
+<details>
+<summary>About Drone</summary>
+
+[Drone](https://docs.drone.io/) was acquired by Harness in 2020 and is part of Harness CI.
+
+For more information on the acquisition of Drone, go to the following blog posts:
+
+* [Harness Acquires CI Pioneer Drone.io and Commits to Open Source](https://harness.io/blog/featured/harness-acquires-ci-pioneer-drone-io-and-commits-to-open-source/)
+* [Lavasoft Reduces Developer Toil by 94% Using Drone and Harness](https://harness.io/customers/case-studies/reduce-developer-toil/)
+
+</details>
+
 ## GitHub Actions
 
-Use the [GitHub Action plugin step](./ci-github-action-step.md) in pipelines that use Harness Cloud build infrastructure. For other build infrastructures, use the [GitHub Action Drone plugin in a Plugin step](./run-a-git-hub-action-in-cie.md).
+How you run [GitHub Actions](https://github.com/marketplace?type=actions) in Harness CI pipelines depends on your [build infrastructure](../set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+
+* With Harness Cloud build infrastructure, use the [GitHub Action plugin step](./ci-github-action-step.md).
+* With other build infrastructures, use the [GitHub Actions Drone plugin in a Plugin step](./run-a-git-hub-action-in-cie.md).
 
 ## Bitrise Integrations
 
-Use the [Bitrise plugin step](./ci-bitrise-plugin.md) in pipelines that use Harness Cloud build infrastructure. For other build infrastructures, use the [Plugin step](./plugin-step-settings-reference.md).
+How you run [Bitrise Integrations](https://bitrise.io/integrations/steps) in Harness CI pipelines depends on your [build infrastructure](../set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+
+* With Harness Cloud build infrastructure, use the [Bitrise plugin step](./ci-bitrise-plugin.md).
+* With other build infrastructures, you can use a custom plugin in the [Plugin step](./plugin-step-settings-reference.md).
 
 ## Jira integrations
 
-Use a **Plugin** step as explained in [Integrate Jira in a CI pipeline](./ci-jira-int-plugin.md).
-
-## Custom plugins and other Drone plugins
-
-Use the [Plugin step](./run-a-drone-plugin-in-ci.md).
+If you want your CI pipelines to update Jira issues, you can use a **Plugin** step as explained in [Integrate Jira in a CI pipeline](./ci-jira-int-plugin.md).

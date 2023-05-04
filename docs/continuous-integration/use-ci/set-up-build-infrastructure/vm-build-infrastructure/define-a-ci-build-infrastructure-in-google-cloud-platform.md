@@ -276,5 +276,4 @@ If you have problems running the delegate, runner, or VMs, you can collect debug
 ## See Also
 
 * [Set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
-* For more details on VM Runner, go to this [GitHub](https://github.com/drone-runners/drone-runner-aws) page.
-
+* For more details on VM Runner, go to the [AWS Drone Runner GitHub repo](https://github.com/drone-runners/drone-runner-aws).

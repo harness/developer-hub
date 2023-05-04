@@ -15,7 +15,7 @@ CI executes pipeline steps in containers, isolating code and dependencies from o
 
 This topic describes CI concepts and provides a summary of the benefits of CI.
 
-For information about general Harness Platform concepts, go to [Harness key concepts](../../getting-started/learn-harness-key-concepts.md). For information about how Drone and Harness CI work together, go to [Drone and Harness](drone-and-harness.md).
+For information about general Harness Platform concepts, go to [Harness key concepts](../../getting-started/learn-harness-key-concepts.md).
 
 ## Visual summary
 

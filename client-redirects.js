@@ -34,6 +34,13 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by aimurphy for branch doc-2951 on May 4 2023
+
+    {
+      from: "/docs/continuous-integration/ci-quickstarts/drone-and-harness",
+      to: "/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins",
+    },
+
     // Created by aimurphy for branch ci-misc-small-items on May 3 2023
 
     {
