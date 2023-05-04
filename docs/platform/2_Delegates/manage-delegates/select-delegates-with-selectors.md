@@ -13,7 +13,7 @@ Harness runs tasks by using Harness Delegate to connect your environment to reso
 In some cases, you might want Harness to select specific delegates. In these cases, you can use the **Delegate Selector** settings in Pipelines, Connectors, and so on, with corresponding delegate tags.
 
 :::info note
-If no Delegates are selected for a CD step in its Delegate Selector setting, Harness prioritizes the Delegate used successfully for the Infrastructure Connector. For more information, go to [Which delegate is used during pipeline execution?](/docs/platform/delegates/delegate-concepts/delegate-overview/#which-delegate-is-used-during-pipeline-execution).
+If no delegates are selected for a CD step's **Delegate Selector** setting, Harness prioritizes the delegate used successfully for the infrastructure definition connector. For more information, go to [Which delegate is used during pipeline execution?](/docs/platform/delegates/delegate-concepts/delegate-overview/#which-delegate-is-used-during-pipeline-execution).
 :::
 
 ### Review: Delegate tags
