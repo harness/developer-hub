@@ -61,6 +61,24 @@ You can deploy one service to multiple environments.
 
    ![](./static/multiserv-multienv-13.png)
 
+## Deploy services to environments, environment groups, or clusters filtered list using tags
+
+You can deploy services to multiple environments, environment groups, or clusters using tags.
+
+:::note
+
+Currently, this feature is behind the feature flag, `CDS_FILTER_INFRA_CLUSTERS_ON_TAGS`. Make sure these related feature flags are enabled as well: `MULTI_SERVICE_INFRA`, `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+1. In your CD stage, select **Service**.
+2. In **Select Services**, select the service you want to deploy.
+3. Select **Continue**.
+4. In **Environments**, enable **Deploy to multiple Environments or Infrastructures**.
+   You can select one or more environments, and then one or more infrastructures in each environment.
+
+
+
 ## Deploy multiple services to one environment
 
 You can deploy multiple services to the same environment and single infrastructure. You can deploy the services serially or in parallel.
