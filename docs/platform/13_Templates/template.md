@@ -251,7 +251,7 @@ To create a template filter in Harness:
 
    ![](./static/template-filter-config.png)
 
-8. Select **Save**.
-9. Select **Apply**.
+8. Select **Save**, and then **Apply**.
+
 
 Your filter now appears in the saved filter list. You can view the templates by selecting this filter.
