@@ -242,7 +242,6 @@ To create a template filter in Harness:
    
    ![](./static/template-new-filter-settings.png)
    
-5. Select **New Filter** on the right.
 6. In **Filter Name**, enter a name for the filter.
 7. Set the visibility of the filter by selecting one of the following: 
    - **Only me**
