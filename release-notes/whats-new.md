@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-04-24T10:00
+date: 2023-05-04T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -17,16 +17,27 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
  
-## Latest - April 22, 2023, version 79111
+## Latest - May 04, 2023, version 79214
 
 ### Harness Platform
+
+- You will now receive an alert on the default settings page when there are unsaved changes, or if you leave the page. (PL-32354)
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### April 22, 2023, version 79111
+
+##### Harness Platform
 
 - You can now configure session time-out in the UI. (PL-32258)
   In case of inactivity, Harness logs users out of their accounts after the configured session timeout.
 
 - You can now add descriptions to pipeline and stage variables. (PIE-3336)
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - SHA support for Artifactory (CDS-58629), ECR (CDS-58304), GCR	(CDS-56531), Nexus 3 Docker (CDS-56530), ACR (CDS-56529), Github Packages	(CDS-41930)
   
@@ -92,19 +103,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   <docimage path={require('./static/61a6e0b480e05303bfc5926bec326c1555eff5ae087014c0b6a7e00a1fa94ec2.png')} width="60%" height="60%" title="Click to view full size image" />
 
-### Continuous Integration
+##### Continuous Integration
 
 * The CI Getting Started workflow leads you through creating an SCM connector and a pipeline. This workflow has been improved to generate a pipeline based on the repository you select. (CI-7603)
 * The **Run as User** setting is now available for [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings), [Run Tests steps](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings), and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference) in stages that use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). This setting allows you to specify a user ID to use for processes running in containerized steps. (CI-7493)
 * Added validations for pipelines that use the [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) macOS build infrastructure, which doesn't support containerized steps. The new validations produce an error message if any applicable steps, such as [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings), have the **Image** and either **Container Registry** or **Connector** fields populated. (CI-7221)
 
-### Service Reliability Management
+##### Service Reliability Management
 
 - Added new advanced fields for consecutive error budges in SLO. These fields are optional. (SRM-14507)
 
 - Removed the mandatory check for the presence of Tier in the AppD complete metric path. (SRM-14463)
 
-### Harness Delegate 
+##### Harness Delegate 
 
 - Added the following metrics for immutable delegates that you can scrape via Prometheus: (DEL-5363)
 
@@ -158,11 +169,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     - org.springframework:spring-test from 5.3.25 -> 5.3.26
     - org.springframework:spring-tx from 5.3.25 -> 5.3.26
     - org.springframework:spring-web from 5.3.25 -> 5.3.26
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### April 19, 2023, version 79104
 
