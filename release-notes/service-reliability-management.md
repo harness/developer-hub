@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-04-10T10:00
+date: 2023-05-04T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -15,16 +15,14 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - April 22, 2023, version 79111
+## Latest - May 04, 2023, version 79214
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-- Added new advanced fields for consecutive error budges in SLO. These fields are optional. (SRM-14507)
-
-- Removed the mandatory check for the presence of Tier in the AppD complete metric path. (SRM-14463)
+- An icon appears on the SLO performance trend chart timeline to indicate when the error budget was reset and the amount of budget that was added. (SRM-14550)
 
 ```mdx-code-block
   </TabItem>
@@ -38,15 +36,9 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-- The title in the expressionals modal of health sources has been updated from Shell (Bash) to Query. (SRM-14478)
-
-- Monitored service cannot be deleted if it is created with an invalid connector. (SRM-14403)
-
-  To fix this issue, the UI connector component is now enabled when the provied connector is not found. 
-
-- For CloudWatch CV connector, IRSA was not supported for connectivity. (SRM-13907)
-
-  Support for IRSA connectivity was added. 
+- The **Error Budget Burn Rate is above** SLO notification setting was not triggering notifications, even when the condition was met. (SRM-14613)  
+  
+  This issue has been resolved and notifications are being triggered when the **Error Budget Burn Rate is above** condition is met.
 
 ```mdx-code-block
   </TabItem>
@@ -57,6 +49,30 @@ This release does not include any early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### April 22, 2023, version 79111
+
+##### What's new
+
+- Added new advanced fields for consecutive error budges in SLO. These fields are optional. (SRM-14507)
+
+- Removed the mandatory check for the presence of Tier in the AppDynamics complete metric path. (SRM-14463)
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- The title in the expressions modal of health sources has been updated from Shell (Bash) to Query. (SRM-14478)
+
+- Monitored service cannot be deleted if it is created with an invalid connector. (SRM-14403)
+
+  To fix this issue, the UI connector component is now enabled when the provided connector is not found. 
+
+- For CloudWatch CV connector, IRSA was not supported for connectivity. (SRM-13907)
+
+  Support for IRSA connectivity was added.
 
 #### April 10, 2023, version 79015
 
