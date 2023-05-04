@@ -1,10 +1,11 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-04-26T10:00
+date: 2023-05-04T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
+
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -16,7 +17,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - April 26, 2023
+## Latest - May 4, 2023
 
 ```mdx-code-block
 <Tabs>
@@ -39,9 +40,7 @@ This release does not include early access features.
 
 #### Feature Flags SDKs
 
-The **Node.js** server SDK was updated to version **1.2.16** with the following update:
-
-* The eventsource library was opening three separate streams instead of one when the library disconnected and reconnected. This issue has been fixed. (FFM-7412)
+* Fixed an issue in the onboarding flow where the flag validation did not work as expected. (FFM-7534)
 
 ```mdx-code-block
   </TabItem>
@@ -52,6 +51,24 @@ The **Node.js** server SDK was updated to version **1.2.16** with the following 
 
 <details>
 <summary>2023 releases</summary>
+
+#### April 26, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Node.js** server SDK was updated to version **1.2.16** with the following update:
+
+* The eventsource library was opening three separate streams instead of one when the library disconnected and reconnected. This issue has been fixed. (FFM-7412)
 
 #### April 22, 2023
 
@@ -81,9 +98,27 @@ This release does not include new features.
 
 This release does not include early access features.
 
-#### Fixed issues
+##### Fixed issues
 
 ##### Feature Flags UI
+
+* Fixed an issue where the metrics loading spinner was hanging indefinitely. (FFM-6735)
+
+* Updated the field validation for the **YAML path** field in the Git connection form to prevent entering invalid path names beginning with `./`. (FFM-7448)
+
+#### April 11, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
 
 Fixed an issue where users with reduced access could not create Feature Flags SDK Keys as a result of a permission mismatch between the frontend and backend. (FFM-7295)
 

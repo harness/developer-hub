@@ -44,6 +44,16 @@ This release does not include early access features.
   </TabItem>
   <TabItem value="Plugin updates">
 ```
+
+**Plugin update - May 3, 2023, version 1.11.1**
+
+This update includes the following fixed issues:
+
+* This release updates the Twistlock normalization algorithm. Issues with Moderate severity in Twistlock are now assigned Medium (not High) severity in STO. (STO-5861)
+
+* Fixed a Snyk ingestion issue that caused the scan to scan step to fail if the target name included a space. (STO-5855)
+
+
 **Plugin update - April 20, 2023, version 1.10.1**
 
 This update includes the following fixed issues: 
