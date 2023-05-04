@@ -19,20 +19,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  
 ## Latest - May 04, 2023, version 79214
 
-### Continuous Integration
-
-* The CI Getting Started workflow now saves the pipeline remotely (in your Git repository) by default. Previously, the pipeline was stored inline (in Harness) unless you manually selected remote storage. The Getting Started workflow also automatically creates two [input sets](/docs/platform/pipelines/input-sets/) for [Git event triggers](/docs/platform/Triggers/triggering-pipelines): one for a PR trigger and one for a Push trigger. (CI-7602)
-* You can now reference [output variables produced by Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables) in pipelines that use Kubernetes cluster build infrastructures. This is an addition to previously-existing support for Harness Cloud and self-hosted Cloud provider VM build infrastructures. (CI-7491)
-* [Local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) and [Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure) build infrastructures now support pipeline- and stage-level [delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors). You can use pipeline and stage-level delegate selectors to override the platform or connector delegate. These selections are not supported for Harness Cloud or self-hosted Cloud provider VM build infrastructures. (CI-6237)
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
-#### April 22, 2023, version 79111
-
-##### Harness Platform
+### Harness Platform
 
 - You will now receive an alert on the default settings page when there are unsaved changes, or if you leave the page. (PL-32354)
 
@@ -74,6 +61,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   ![](./static/run-pipeline-form.png)
 
+### Continuous Integration
+
+* The CI Getting Started workflow now saves the pipeline remotely (in your Git repository) by default. Previously, the pipeline was stored inline (in Harness) unless you manually selected remote storage. The Getting Started workflow also automatically creates two [input sets](/docs/platform/pipelines/input-sets/) for [Git event triggers](/docs/platform/Triggers/triggering-pipelines): one for a PR trigger and one for a Push trigger. (CI-7602)
+* You can now reference [output variables produced by Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables) in pipelines that use Kubernetes cluster build infrastructures. This is an addition to previously-existing support for Harness Cloud and self-hosted Cloud provider VM build infrastructures. (CI-7491)
+* [Local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) and [Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure) build infrastructures now support pipeline- and stage-level [delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors). You can use pipeline and stage-level delegate selectors to override the platform or connector delegate. These selections are not supported for Harness Cloud or self-hosted Cloud provider VM build infrastructures. (CI-6237)
+
 ## Previous releases
 
 <details>
@@ -91,33 +84,33 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ##### Continuous Delivery
 
 - SHA support for Artifactory (CDS-58629), ECR (CDS-58304), GCR	(CDS-56531), Nexus 3 Docker (CDS-56530), ACR (CDS-56529), Github Packages	(CDS-41930)
-
+  
   SHA values and labels for the artifact are now visible in the Harness service **Output** section of a pipeline execution.
 
   <docimage path={require('./static/726cd79347c2dabba5bd47f2264f91b0b2618f872663c90048453719e87ff634.png')} width="60%" height="60%" title="Click to view full size image" />
 
-
+  
   Labels are visible if the artifact manifest supports `schemaVersion1`.
-
+  
   Labels can be referenced using the expression: `<+pipeline.stages.[stage Id].spec.artifacts.primary.label.get("labelKey")>`.
-
+  
   Since manifests can support 2 schema versions, `schemaVersion1` and `schemaVersion2`, there could be SHA values for each schema version.
-
+  
   Here are the expressions for referencing each version:
   - SHA value of `schemaVersion1`: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA>`.
   - SHA value of `schemaVersion2`: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2>`.
 - New Harness expression for revision number. (CDS-57826)
-
+  
   You can now use the expression `<+kubernetes.release.revision>` in values.yaml, OpenShift Params, and Kustomize Patches. This will help you to:
     - Reference the current Harness release number as part of your manifest.
     - Reference versioned ConfigMaps and Secrets in custom resources and fields unknown by Harness.
-
+  
   **Important:** Users must update their delegate to version 1.0.79100 to use the expression.
 - Deployment freeze supports quarterly recurrence.	(CDS-57792)
-
+  
   You can now configure a deployment freeze with a recurrence of `n` months, where `n` can be between `2` to `11`.
 - Use any path to [Helm charts within the Helm repository](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts). (CDS-57667, ZD-41758)
-
+  
   You can now specify a path to Helm charts within the Helm repository and Harness will fetch the Helm chart and its subordinate charts within that folder.
 
   <docimage path={require('./static/70e9b1aa646408c07a6fef1ca8b6e0dfa2eef53e5f7eea3e88ac28b5a4d3e1c4.png')} width="60%" height="60%" title="Click to view full size image" />
@@ -138,15 +131,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   - templates/_helpers.tpl
   - README.md
   ```
-
+  
   **Important:** This change impacts existing Helm services in Harness. To use this feature, you will need to update the path to your subordinate chart(s) using `charts/`.
 - You can now see what deployment freeze failed a pipeline in the pipeline's execution history. (CDS-53781)
-
+  
   We have added support to identify the associated freeze window that failed a pipeline execution. You can hover over the status of the pipeline in its execution history and the associated freeze window details are shown.
 
   <docimage path={require('./static/eca1e7dd02fa705e9158c78f44ab49676270e4a477cc260e817c06da91bdf631.png')} width="60%" height="60%" title="Click to view full size image" />
 - Bamboo is now supported in On Artifact triggers. (CDS-51742)
-
+  
   You can now use artifacts in Bamboo to initiate Triggers for your pipelines.
 
   <docimage path={require('./static/d5512549a2cb085680c609e42aef000fec60a5dc8ac6f20ee48ec31282f6f61e.png')} width="30%" height="30%" title="Click to view full size image" />
@@ -171,7 +164,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Added the following metrics for immutable delegates that you can scrape via Prometheus: (DEL-5363)
 
     - io_harness_delegate_connected
-    - io_harness_delegate_disconnected
+    - io_harness_delegate_disconnected 
 
 - Upgraded the following libraries: (DEL-6069)
 
