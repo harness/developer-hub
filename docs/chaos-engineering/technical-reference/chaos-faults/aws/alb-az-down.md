@@ -18,21 +18,21 @@ ALB AZ down:
 - Appropriate AWS access to attach or detach subnet from the target ALB.
 - There needs to be a minimum of two AZs attached to the target ALB after injecting chaos; otherwise, the fault will fail to detach the given AZ.
 - The ALB should be attached to the given availability zones.
-- The Kubernetes secret should have AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file.
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXX
-```
-- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name but you may be unable to use the default health check probes. 
+  - The Kubernetes secret should have AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file.
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXX
+  ```
+- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template with the new secret name but you won't be able to use the default health check probes. 
 - Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
 :::
 

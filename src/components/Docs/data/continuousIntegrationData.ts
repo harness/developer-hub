@@ -181,7 +181,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.ci,
           description:
             "",
-          link: "/docs/continuous-integration/troubleshoot/troubleshooting-ci",
+          link: "/docs/continuous-integration/troubleshooting-ci",
         },
         {
           title: "CI FAQs",

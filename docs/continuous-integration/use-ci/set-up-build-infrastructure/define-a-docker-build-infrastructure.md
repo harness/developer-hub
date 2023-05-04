@@ -56,7 +56,7 @@ The Drone Runner service performs the build work. The Delegate needs the Runner 
 2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
-   export CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2]:/etc/ssl/certs/cacerts.pem"
+   export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
    ```
 
 3. Enable execution permissions for the Runner. For example:
@@ -74,7 +74,7 @@ The Drone Runner service performs the build work. The Delegate needs the Runner 
 Here is an example of the three commands to install the Linux arm64 Drone Runner with self-signed certificates:
 
 ```
-export CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/cacerts.pem"
+export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
 sudo chmod +x drone-docker-runner-linux-arm64
 ./drone-docker-runner-linux-arm64 server
 ```
@@ -115,7 +115,7 @@ The Drone Runner service performs the build work. The Delegate needs the Runner 
 2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
-   export CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2]:/etc/ssl/certs/cacerts.pem"
+   export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
    ```
 
 3. Enable execution permissions for the Runner. For example:
@@ -152,7 +152,7 @@ The Drone Runner service performs the build work. The Delegate needs the Runner 
 Here is an example of the three commands to install the Darwin amd64 Drone Runner with self-signed certificates:
 
 ```
-export CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/cacerts.pem"
+export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
 sudo chmod +x drone-docker-runner-darwin-arm64
 ./drone-docker-runner-darwin-arm64 server
 ```
@@ -214,7 +214,7 @@ Run the Drone Runner executable on the Windows machine that you specified in the
 3. To use self-signed certificates, set `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
-   SET CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2]:/etc/ssl/certs/cacerts.pem"
+   SET CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
    ```
 
 4. Run the following command to start the runner binary:
@@ -226,7 +226,7 @@ Run the Drone Runner executable on the Windows machine that you specified in the
 Here is an example of the two commands to install the Windows amd64 Drone Runner with self-signed certificates:
 
 ```
-SET CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/cacerts.pem"
+SET CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
 ./drone-docker-runner-windows-amd64 server
 ```
 

@@ -10,9 +10,69 @@ Review the notes below to learn about the early access (aka BETA) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - April 21, 2023, version 79111
+## Latest - May 04, 2023, version 79214
 
 ### Continuous Delivery
+
+- You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](https://developer.harness.io/docs/platform/pipelines/run-specific-stage-in-pipeline/) option. (CDS-56775, CDS-56774)
+
+  This functionality is behind the feature flag, `CDS_NG_TRIGGER_SELECTIVE_STAGE_EXECUTION`. 
+  
+  To run a particular stage of the pipeline: 
+  1. Select the stage, then select **Advanced Options**.
+  2. In **Stage Execution Settings>** **Allow selective stages(s) executions?**, select **Yes**. This setting is selected by default.
+     
+     ![](./static/selective-stage-execution.png)
+  3. When you create a [Custom trigger](/docs/platform/triggers/trigger-deployments-using-custom-triggers/), in **Configuration**, select the stages you want to execute.
+     
+     ![](./static/select-stage-to-execute.png)
+  
+  Here is a sample trigger YAML: 
+  
+  ```
+  trigger:
+  name: stage3Trigger
+  identifier: stage3Trigger
+  enabled: true
+  description: ""
+  tags: {}
+  stagesToExecute:
+    - stage3
+  orgIdentifier: NgTriggersOrg
+  projectIdentifier: viniciusTest
+  pipelineIdentifier: ThreeStagesPipeline
+  source:
+    type: Webhook
+    spec:
+      type: Custom
+      spec:
+        payloadConditions: []
+        headerConditions: []
+  inputYaml: |
+    pipeline:
+      identifier: ThreeStagesPipeline
+      stages:
+        - stage:
+            identifier: stage3
+            type: Custom
+            variables:
+              - name: stage3var
+                type: String
+                value: stage3Var
+
+  ```
+- You can add Tanzu Application Service (TAS) [config files](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/add-config-files) from GitHub. (CDS-56452)
+
+  This feature is currently behind the feature flag, `CDS_GIT_CONFIG_FILES`. For TAS deployment types, you can reference service config files from GitHub.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### April 21, 2023, version 79111
+
+##### Continuous Delivery
 
 - Protecting secrets used in webhook-based triggers that use secret decryption on delegates (CDS-58488, ZD-42117)
   
@@ -32,9 +92,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   For Harness services using the Tanzu deployment type, config files can be configured using Github, in addition to the Harness file store. Support for other deployment types in coming soon.
 
-## April 10, 2023, version 79015
+#### April 10, 2023, version 79015
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/lambda/aws-lambda-deployments)
   
@@ -71,11 +131,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   Expressions in comments were causing issues for some customers as Harness was trying to evaluate the expressions and this was causing failures.
   
   Harness will remove comments from values.yaml files to prevent expressions in comments from being evaluated and causing failures.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### March 24, 2023, version 78817
 
@@ -190,7 +245,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   **What is the impact on customers?**
     - Enabling declarative rollback disables versioning (even if the **Skip Versioning** checkbox is left unchecked), since versioning was introduced with the imperative rollback design. However, versioning is not needed anymore with declarative rollback.
-    - The delegate's service account needs the permission to create, update, and read secrets in the defined infrastructure namespace. Typically, customers' delegates already have these permissions, but if cluster roles are strictly scoped, this could cause failures. For information on cluster roles for the delegate, go to [Install Harness Delegate on Kubernetes](https://developer.harness.io/docs/platform/delegates/delegate-install-kubernetes/install-harness-delegate-on-kubernetes/).
+    - The delegate's service account needs the permission to create, update, and read secrets in the defined infrastructure namespace. Typically, customers' delegates already have these permissions, but if cluster roles are strictly scoped, this could cause failures. For information on cluster roles for the delegate, go to [Install Harness Delegate on Kubernetes](https://developer.harness.io/tutorials/platform/install-delegate/).
 
 </details>
 
@@ -293,7 +348,7 @@ For more information, go to [Secure Shell (SSH) deployment tutorial](https://dev
 
 Enable Feature Flags NG_SVC_ENV_REDESIGN and NG_DEPLOYMENT_TEMPLATE.
 
-For more information, go to the [Custom deployments using deployment templates tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial/).
+For more information, go to the [Custom deployments using deployment templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial).
 
 ##### Harness Platform
 

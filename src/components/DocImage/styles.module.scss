@@ -23,8 +23,8 @@ body {
     cursor: pointer;
 }
 .docImageWithBorder {
-    border: 1px solid var(--gray);
-    border-radius: 5px;
+    border: 1px solid #D9DAE5; /* var(--gray-400); */
+    border-radius:8px;
 }
 .docImageFullsize {
     max-width: 90vw;

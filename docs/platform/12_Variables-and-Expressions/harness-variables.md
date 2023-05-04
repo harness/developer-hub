@@ -558,7 +558,7 @@ You can use any status value in a JEXL condition. For example, `<+pipeline.stage
 
 ### Step status
 
-The expression `<+execution.steps.[step Id].status>` resolves to the status of a step. For example, `<+execution.steps.mystep.status>`.
+The expression `<+pipeline.stages.[stage name].spec.execution.steps.[step Id].status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
 
 You must use the expression after the step in execution.
 

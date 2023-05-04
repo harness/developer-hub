@@ -20,9 +20,9 @@ The Harness Self-Managed Platform is designed to cater to various deployment sce
 
 - Latest version of Helm 
 
-- Access to Helm charts or download locally
+- Access to Helm charts or [download locally](https://github.com/harness/helm-charts/releases)
 
-- Access to [the Harness airgap bundle on GCP](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped.tgz) 
+- Access to [the Harness airgap bundle on GCP](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped-1_0_78927.tgz) 
 
 - Kubernetes version 1.22+ (Harness recommends v1.23.x)
 
@@ -36,15 +36,8 @@ The flowchart below shows the air-gapped environment installation workflow steps
 ## Download required files
 
 To begin your installation, download the following files:
-- Harness Docker images [harness-docker-images.txt](https://storage.googleapis.com/smp-airgap-bundles/harness-docker-images.txt)
-- Harness air-gapped bundle [harness-airgapped.tgz](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped.tgz)
+- Harness air-gapped bundle [harness-airgapped-1_0_78927.tgz](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped-1_0_78927.tgz)
 - Harness airgap images [harness-airgap-images.sh](https://storage.googleapis.com/smp-airgap-bundles/harness-airgap-images.sh)
-
-:::info note
-
-Different Harness releases are listed here including the hotfix. Select the relevant versions from [airgap bundles](https://storage.googleapis.com/smp-airgap-bundles).
-
-:::
 
 ## Save Docker images to your private registry
 
@@ -53,10 +46,10 @@ Different Harness releases are listed here including the hotfix. Select the rele
     #Authenticate with Docker for Docker Registry
     docker login <registry-url>
 
-    # Authenticate with Google Cloud Platform for GCR
+    #Authenticate with Google Cloud Platform for GCR
     gcloud auth login
 
-    # Authenticate with AWS for ECR
+    #Authenticate with AWS for ECR
     aws ecr get-login-password --region <region> | docker login --username AWS --password-
     ```
     All Docker files required to deploy Harness are stored in `harness-airgapped.tgz`.
@@ -90,9 +83,9 @@ Next, you are ready to install via Helm by updating your `override.yaml` file wi
 1. Update the `override.yaml` file with your private registry information.
     ```
     global:
-    imageRegistry: "private-123.com"
+      imageRegistry: "private-123.com"
     ```
 2. Run the Helm install command.
     ```
-    helm install my-release harness/harness-prod -n <namespace> -f override.yaml
+    helm install my-release harness/harness -n <namespace> -f override.yaml
     ```

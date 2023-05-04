@@ -33,22 +33,22 @@ export const featuredTutorials: CardItem[] = [
   // Docs
   export const docsCards: CardSections = [
     {
-      name: "Documentation topics",
+      name: "Get started",
       description:
         "",
       list: [
         {
-          title: "Get started with platform",
+          title: "Tutorials",
           module: MODULES.platform,
           description:
-            "Learn the basic concepts of Harness Platform.",
-          link: "/docs/category/platform-concepts",
+            "Try hands-on tutorials to get started quickly.",
+          link: "/tutorials/platform",
         },
         {
           title: "Delegates",
           module: MODULES.platform,
           description:
-            "Explore how to setup and manage delegates.",
+            "Explore how to set up and manage delegates.",
           link: "/docs/category/delegates",
         },
         {

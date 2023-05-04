@@ -1,7 +1,7 @@
 ---
 title: Tanzu Application Services deployments
 description: Deploy a publicly available application to Tanzu Application Service (TAS) by using Harness.
-sidebar_position: 13
+sidebar_position: 1
 ---
 
 This topic shows you how to deploy a publicly available application to your Tanzu Application Service (TAS, formerly PCF) space by using any [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) in Harness.
@@ -42,62 +42,30 @@ You can connect Harness to a TAS space by adding a TAS connector. Perform the fo
 8. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then select **Continue**.
    We don't recommend using the **Connect through Harness Platform** option here because you'll need a delegate later for connecting to your TAS environment. Typically, the **Connect through Harness Platform** option is a quick way to make connections without having to use delegates.
 
-   Expand the section below to learn more about installing delegates.
+   Expand the sections below to learn more about installing delegates.
 
-   <details>
-   <summary>Install a new delegate</summary>
+<details>
+<summary>Use the delegate installation wizard</summary>
 
-    1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
-    2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Kubernetes**.
-    3. In **Install your Delegate**, select **Kubernetes Manifest**.
-    4. Enter a delegate name.
-        - Delegate names must be unique within a namespace and should be unique in your cluster. 
-        - A valid name includes only lowercase letters and does not start or end with a number. 
-        - The dash character (“-”) can be used as a separator between letters.
-    5. At a terminal, run the following cURL command to copy the Kuberntes YAML file to the target location for installation.
+1. In your Harness project, select **Project Setup**.
+2. Select **Delegates**.
+3. Select **Install a Delegate**.
+4. Follow the delegate installation wizard.
 
-    `curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml`
+Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yLMCxs3onH8) to guide you through the process.
 
-    6. Open the `harness-delegate.yaml` file. Find and specify the following placeholder values as described.
+</details>
 
-    | **Value** | **Description** |
-    | :-- | :-- |
-    | `PUT_YOUR_DELEGATE_NAME` | Name of the delegate. |
-    | `PUT_YOUR_ACCOUNT_ID` | Harness account ID. |
-    | `PUT_YOUR_MANAGER_ENDPOINT` | URL of your cluster. See the following table of Harness clusters and endpoints. |
-    | `PUT_YOUR_DELEGATE_TOKEN` | Delegate token. To find it, go to **Account Settings** > **Account Resources**, select **Delegate**, and select **Tokens**. For more information on how to add your delegate token to the harness-delegate.yaml file, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/). |
+```mdx-code-block
+import DelegateInstall from '/tutorials/platform/install-delegate.md';
+```
 
-    Your Harness manager endpoint depends on your Harness SaaS cluster location. Use the following table to find the Harness manager endpoint in your Harness SaaS cluster.
+<details>
+<summary>Install a delegate using the terminal</summary>
+<DelegateInstall />
+</details>
 
-    | **Harness cluster location** | **Harness Manager endpoint** |
-    | :-- | :-- |
-    | SaaS prod-1 | https://app.harness.io |
-    | SaaS prod-2 | https://app.harness.io/gratis |
-    | SaaS prod-3 | https://app3.harness.io |
-
-    7. Install the delegate by running the following command:
-
-    `kubectl apply -f harness-delegate.yaml`
-
-    The successful output looks like this.
-    
-    ```
-    namespace/harness-delegate-ng unchanged
-    clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-cluster-admin unchanged
-    secret/cd-doc-delegate-account-token created
-    deployment.apps/cd-doc-delegate created
-    service/delegate-service configured
-    role.rbac.authorization.k8s.io/upgrader-cronjob unchanged
-    rolebinding.rbac.authorization.k8s.io/upgrader-cronjob configured
-    serviceaccount/upgrader-cronjob-sa unchanged
-    secret/cd-doc-delegate-upgrader-token created
-    configmap/cd-doc-delegate-upgrader-config created
-    cronjob.batch/cd-doc-delegate-upgrader-job created
-    ```
-
-   8. Select **Verify** to make sure that the delegate is installed properly.
-   
-   </details>
+To learn more, watch the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview) video.
 
 9.  In **Set Up Delegates**, select the **Connect using Delegates with the following Tags** option and enter your delegate name.
 10. Select **Save and Continue**.
@@ -330,6 +298,14 @@ Harness services represent your microservices or applications. You can add the s
 
 1. In **Artifacts**, select **Add Artifact Source**.
 2. In **Specify Artifact Repository Type**, select **Artifactory**, and select **Continue**.
+   
+   :::important
+   TAS supports Artifactory, Nexus, Docker Registry, Amazon S3, Google Container Registry (GCR), Amazon Elastic Container Registry (ECR), Azure Container Registry (ACR), Google Artifact Registry (GAR), Google Cloud Storage (GCS), GitHub Package Registry, Azure Artifacts, Amazon Machine Image (AMI), Jenkins, and Bamboo repository types. 
+   
+   For this tutorial, we will use Artifactory.
+   :::
+   
+
 3. In **Artifactory Repository**, click **New Artifactory Connector**.
 4. Enter a name for the connector, such as **JFrog**, then select **Continue**.
 5. In **Details**, in **Artifactory Repository URL**, enter `https://harness.jfrog.io/artifactory/`.
@@ -400,9 +376,10 @@ The TAS workflow for performing a basic deployment takes your Harness TAS servic
 4. Select the **App Resize** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
     2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
-    3. **Total Instances** - Set the number or percentage of running instances you want to keep.
-    4. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
-    5. Select **Apply Changes**.
+    3. **Ignore instance count in Manifest** - Select this option to override the instance count defined in the `manifest.yaml` file with the values specified in the **App Resize** step.
+    4. **Total Instances** - Set the number or percentage of running instances you want to keep.
+    5. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
+    6. Select **Apply Changes**.
 
 5. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
     1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
@@ -412,7 +389,31 @@ The TAS workflow for performing a basic deployment takes your Harness TAS servic
     3. Select **Apply Changes**.
    
 6. Add an **App Rollback** step to your stage if you want to roll back to an older version of the application in case of deployment failure.
-7. Select **Save**.
+7. In **Advanced** configure the following options.
+   - **Delegate Selector** - Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All delegates with the tag are selected.
+   - **Conditional Execution** - Use the conditions to determine when this step is executed. For more information, go to [conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings).
+   - **Failure Strategy** - Define the failure strategies to control the behavior of your pipeline when there is an error in execution. For more information, go to [failure strategy references](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings) and [define a failure strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
+     
+     Expand the following section to view the error types and failure strategies supported for the steps in a Basic TAS deployment.
+
+     <details>
+     <summary>Error types and failure strategy</summary>
+
+     | Step name | Error types and failure strategy |
+     | :--- | :--- |
+     | **App Setup** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td> Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+     | **App Resize** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+     | **App Rollback** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+     | **Tanzu Command** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+     
+     :::note
+     For the Tanzu Command step, Harness does not provide default rollback steps. You can do a rollback by configuring your own Rollback step.
+     :::
+
+     </details>
+   - **Looping Strategy** - Select **Matrix**, **Repeat**, or **Parallelism** looping strategy. For more information, go to [looping strategies overview](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
+   - **Policy Enforcement** - Add or modify a policy set to be evaluated after the step is complete. For more information, go to [CD governance](/docs/category/cd-governance).
+8. Select **Save**.
 
 Now the pipeline stage is complete and you can deploy.
 
@@ -436,16 +437,17 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
     2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
     3. **Instance Count** - Select whether to **Read from Manifest** or **Match Running Instances**.  
        The **Match Running Instances** setting can be used after your first deployment to override the instances in your manifest.
-    4. **Resize Strategy** - Select **Add new instances first, then downsize old instances** or **Downsize old instances first, then add new instances** strategy.
+    4. **Resize Strategy** - Select **Add new instances first, then downsize old instances** or **Downsize old instances first, then add new instances** strategy. You can also add **Resize Strategy** as a runtime input.
     5.  **Existing Versions to Keep** - Enter the number of existing versions you want to keep. This is to roll back to a stable version if the deployment fails.
     6.  **Additional Routes** - Enter additional routes if you want to add routes other than the ones defined in the manifests.
     7.  Select **Apply Changes**.
 4. Select the **App Resize** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
     2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
-    3. **Total Instances** - Set the number or percentage of running instances you want to keep.
-    4. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
-    5. Select **Apply Changes**.
+    3. **Ignore instance count in Manifest** - Select this option to override the instance count mentioned in the `manifest.yaml` file with the values mentioned in the **App Resize** step.
+    4. **Total Instances** - Set the number or percentage of running instances you want to keep.
+    5. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
+    6. Select **Apply Changes**.
 5. Add more **App Resize** steps to perform gradual deployment.
 6. Add a **Tanzu Command** step to your stage if you want to execute custom Tanzu commands in this step. 
     1. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
@@ -454,7 +456,30 @@ The canary deployment contains **Canary App Setup** and **App Resize** steps. Yo
         - **Inline** - Select this option to enter a script inline.
     3. Select **Apply Changes**.
 7. Add an **App Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
-8. Select **Save**.
+8. In **Advanced** configure the following options.
+   - **Delegate Selector** - Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All the delegates with that specific tag are selected.
+   - **Conditional Execution** - Use the conditions to determine when this step is executed. For more information, go to [conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings).
+   - **Failure Strategy** - Define the failure strategies to control the behavior of your pipeline when there is an error in execution. For more information, go to [failure strategy references](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings) and [define a failure strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
+     
+     Expand the following section to view the error types and failure strategies supported for the steps in a Canary TAS deployment.
+     <details>
+     <summary>Error types and failure strategy</summary>
+
+     | Step name | Error types and failure strategy |
+     | :--- | :--- |
+     | **App Setup** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td> Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+     | **App Resize** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+     | **App Rollback** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+     | **Tanzu Command** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+     
+     :::note
+     For the Tanzu Command step, Harness does not provide default rollback steps. You can do a rollback for this step by configuring your own Rollback step.
+     :::
+
+     </details>
+   - **Looping Strategy** - Select **Matrix**, **Repeat**, or **Parallelism** looping strategy. For more information, go to [looping strategies overview](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
+   - **Policy Enforcement** - Add or modify a policy set to be evaluated after the step is complete. For more information, go to [CD governance](/docs/category/cd-governance).
+9.  Select **Save**.
 
 Now the pipeline stage is complete and can be deployed.
 
@@ -496,9 +521,10 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
 4. Select the **App Resize** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
     2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
-    3. **Total Instances** - Set the number or percentage of running instances you want to keep.
-    4. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
-    5. Select **Apply Changes**.
+    3. **Ignore instance count in Manifest** - Select this option to override the instance count defined in the `manifest.yaml` file with the values specified in the **App Resize** step.
+    4. **Total Instances** - Set the number or percentage of running instances you want to keep.
+    5. **Desired Instances - Old Version** - Set the number or percentage of instances for the previous version of the application you want to keep. If this field is left empty, the desired instance count will be the difference between the maximum possible instance count (from the manifest or match running instances count) and the number of new application instances.
+    6. Select **Apply Changes**.
 5. Select the **Swap Routes** step to define **Step Parameters**.
     1. **Name** - Edit the deployment step name.
     2. **Timeout** - Set how long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timeout.
@@ -515,7 +541,31 @@ Once the deployment is successful, the **Swap Routes** configuration switches th
    When **Swap Rollback** is used in a deployment's **Rollback Steps**, the application that was active before the deployment is restored to its original state with the same instances and routes it had before the deployment.
 
    The failed application  is deleted.
-8. Select **Save**.
+8. In **Advanced** configure the following options.
+   - **Delegate Selector** - Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All the delegates with the specified tag are selected.
+   - **Conditional Execution** - Use the conditions to determine when this step should be executed. For more information, go to [conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings).
+   - **Failure Strategy** - Define the failure strategies to control the behavior of your pipeline when there is an error in execution. For more information, go to [failure strategy references](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings) and [define a failure strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
+     
+     Expand the following section to view the error types and failure strategies supported for the steps in a Blue Green TAS deployment.
+     <details>
+     <summary>Error types and failure strategy</summary>
+
+     | Step name | Error types and failure strategy |
+     | :--- | :--- |
+     | **App Setup** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td> Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+     | **App Resize** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+     | **Swap Routes** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Support coming soon</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Support coming soon</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Support coming soon</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Support coming soon</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> <td>Rollback changes required</td> </tr> </tbody> </table> |
+     | **Swap Rollback** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+     | **Tanzu Command** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+     
+     :::note
+     For the Tanzu Command step, Harness does not provide any default rollback steps. You can do a rollback for this step by configuring your own Rollback step.
+     :::
+
+     </details>
+   - **Looping Strategy** - Select **Matrix**, **Repeat**, or **Parallelism** looping strategy. For more information, go to [looping strategies overview](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
+   - **Policy Enforcement** - Add or modify a policy set to be evaluated after the step is complete. For more information, go to [CD governance](/docs/category/cd-governance).
+9. Select **Save**.
 
 Now the pipeline stage is complete and can be deployed.
 
@@ -543,7 +593,30 @@ Use this deployment method when you want to support both new and old deployments
         - **Inline** - Select this option to enter a script inline.
     3. Select **Apply Changes**.   
 5. Add a **Rolling Rollback** step to your stage if you want to rollback to an older version of the application in case of deployment failure.
-6. Select **Save**.
+6. In **Advanced** configure the following options.
+   - **Delegate Selector** - Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All delegates with the specified tag are selected.
+   - **Conditional Execution** - Use the conditions to determine when this step should be executed. For more information, go to [conditional execution settings](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-conditional-execution-settings).
+   - **Failure Strategy** - Define the failure strategies to control the behavior of your pipeline when there is an error in execution. For more information, go to [failure strategy references](/docs/continuous-delivery/x-platform-cd-features/executions/step-failure-strategy-settings) and [define a failure strategy](/docs/continuous-delivery/x-platform-cd-features/executions/step-and-stage-failure-strategy).
+     
+     Expand the following section to view the error types and failure strategies supported for the steps in a Rolling TAS deployment.
+     <details>
+     <summary>Error types and failure strategy</summary>
+
+     | Step name | Error types and failure strategy |
+     | :--- | :--- |
+     | **Rolling Deploy** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+     | **Rolling Rollback** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+     | **Tanzu Command** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+
+     
+     :::note
+     For the Tanzu Command step, Harness does not provide any default rollback steps. You can do a rollback for this step by configuring your own Rollback step.
+     :::
+   
+     </details>
+   - **Looping Strategy** - Select **Matrix**, **Repeat**, or **Parallelism** looping strategy. For more information, go to [looping strategies overview](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
+   - **Policy Enforcement** - Add or modify a policy set to be evaluated after the step is complete. For more information, go to [CD governance](/docs/category/cd-governance).
+7. Select **Save**.
 
 Now the pipeline stage is complete and can be deployed.
 

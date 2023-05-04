@@ -230,5 +230,5 @@ Here's a YAML example of a stage configured to use a Kubernetes cluster build in
 
 For Kubernetes cluster build infrastructure troubleshooting guidance go to:
 
-* [Troubleshoot CI](../../../troubleshoot/troubleshooting-ci.md)
+* [Troubleshoot CI](/docs/continuous-integration/troubleshooting-ci.md)
 * [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen)

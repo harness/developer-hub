@@ -24,24 +24,22 @@ EC2 HTTP latency:
 - You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
 - The EC2 instance should be in a healthy state.
 - The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  ```
+- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
 - Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
-- Go to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+- Go to the [common tunables](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 :::
 
 

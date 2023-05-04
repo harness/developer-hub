@@ -4,6 +4,8 @@ description: Set freeze windows for deployments.
 sidebar_position: 8
 ---
 
+This topic covers the Harness deployment freeze feature, including how to set up freeze windows, access control, notifications, and best practices.
+
 ## Deployment freeze summary
 
 If you are new to deployment freezes, review the following summary.
@@ -49,7 +51,9 @@ Exceptions save you the time of having to select multiple subordinate entities i
 
 If a pipeline is running and a freeze happens, the pipeline will continue to run until the current stage of the pipeline has executed. Once that stage executes, the freeze is implemented and no further stages will execute.
 
-If the freeze happens to a running pipeline and it is unable to complete all stages, the status of the pipeline execution is listed as **Aborted By Freeze**.
+Pipelines that become frozen during execution and cannot complete all stages are marked as **Aborted By Freeze**. Hovering over the pipeline status in its execution history displays the associated freeze windows that failed the pipeline execution.
+
+![associated freeze windows](./static/view-associated-freeze-windows.png)
 
 ### Freeze windows only apply to CD stages
 

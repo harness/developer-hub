@@ -4,6 +4,7 @@ import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
+import { getCertLevel } from "./LandingPage";
 import DeveloperCertificationReviewGuide from "./data/cd-certification-developer-review-guide.md";
 import DeveloperCertificationExamDetails from "./data/cd-certification-developer-exam-details.md";
 import styles from "./styles.module.scss";
@@ -32,7 +33,7 @@ export default function CertificationsCD() {
   const location = useLocation();
   const history = useHistory();
   const { pathname = "/", search = "" } = location;
-  const searchKey = search.replace(/^\?.*=/, "");
+  const searchKey = getCertLevel(search);
   const [tab, setTab] = useState("developer");
   const handleSwitchTab = (tabKey) => {
     setTab(tabKey);

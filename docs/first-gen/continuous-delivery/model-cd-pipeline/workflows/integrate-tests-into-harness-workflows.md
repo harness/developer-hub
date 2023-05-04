@@ -15,7 +15,7 @@ In this topic we will walk you through common test integrations.
 ### Before You Begin
 
 * **Application used in this topic** — This topic uses a simple Java application that exposes a REST endpoint: the [Hello World Quarkus app](https://quarkus.io/guides/getting-started). It includes unit tests using the [REST Assured](http://rest-assured.io/) Java DSL.
-* [Artifact Build and Deploy Pipelines](docs/category/cicd-artifact-build-and-deploy-pipelines) — Review these How-tos to learn about CI/CD integration in Harness.
+* [Artifact Build and Deploy Pipelines](https://developer.harness.io/docs/category/cicd-artifact-build-and-deploy-pipelines/) — Review these How-tos to learn about CI/CD integration in Harness.
 
 ### Visual Summary
 
