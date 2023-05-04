@@ -156,6 +156,8 @@ Currently, this feature is behind the feature flag, `CDS_FILTER_INFRA_CLUSTERS_O
      
      Select **All** to deploy the selected service(s) to infrastructures having all these tags. 
 
+     You can select **CONDITION** as a fixed value, runtime input, or expression. The supported expressions are `<+service.tags>` and `<+pipeline.tags>`.
+
    ![](./static/deploy-to-infra-filter.png)
 9. Select **Continue**, select an execution strategy, and complete the execution steps.
 10. Select **Save**.
@@ -191,6 +193,8 @@ Currently, this feature is behind the feature flag, `CDS_FILTER_INFRA_CLUSTERS_O
      Select **Any** to deploy to clusters that has any of these tags. 
      
      Select **All** to deploy the selected service(s) to clusters having all these tags. 
+
+     You can select **CONDITION** as a fixed value, runtime input, or expression. The supported expressions are `<+service.tags>` and `<+pipeline.tags>`.
 
    ![](./static/deploy-to-clusters-filter.png)
 10. Select **Continue**, select an execution strategy, and complete the execution steps.
