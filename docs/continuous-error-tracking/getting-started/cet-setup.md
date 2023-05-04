@@ -39,9 +39,7 @@ The following steps explain how to create a monitored service, and define servic
    
 5. Select **Save**.  
    
-   The new monitored service appears on the Monitored Services page. 
-
-    ![Monitored Service is created](./static/et-quickstart-moniterdservice-created.png)
+   The new monitored service appears on the Monitored Services page.
 
 
 ## Create a token for the Error Tracking Agent
