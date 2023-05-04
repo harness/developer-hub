@@ -238,7 +238,7 @@ To create a template filter in Harness:
    ![](./static/template-filter-icon.png)
 
    **New Filter** settings appear.
-4. In **Name** enter the name of an existing template.
+4. In **Name** enter the name of an existing template, and then select **New Filter**.
    
    ![](./static/template-new-filter-settings.png)
    
