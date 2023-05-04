@@ -86,7 +86,7 @@
 |**4. RBAC, best practices, and small configuration tasks**||
 |Elaborate on Anonymous Docker Image pulls and Their Risks |[Use a Docker Connector](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials)|
 |Utilize Images When Shells Are Not Available|-|
-|Debug A Pipeline Step By Running The Step Locally (Troubleshooting)|[Troubleshoot Continuous Integration](https://developer.harness.io/docs/continuous-integration/troubleshoot/troubleshooting-ci/)|
+|Debug A Pipeline Step By Running The Step Locally (Troubleshooting)|[Troubleshoot Continuous Integration](https://developer.harness.io/docs/continuous-integration/troubleshooting-ci/)|
 |Describe Harness Cloud Characteristics And Its Advantages|[Hosted Builds on VM Quickstart](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart)|
 |Configure Git Experience for CI (pipeline)|[Harness Git Experience Quickstart](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/)|
 |Credentials And Permissions - Configure Or Elaborate On User And Groups For Acc, Org, And Project Levels|[Role-based Access Control](https://developer.harness.io/docs/platform/Role-Based-Access-Control/rbac-in-harness)|

@@ -115,7 +115,7 @@ export default function CertificationsCI() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Continuous Integration - Developer (BETA)</h2>
+                  <h2>Continuous Integration - Developer</h2>
                   <img
                     src={`${baseUrl}img/cert_dev_cI_badge.svg`}
                     alt="Harness Certified Expert - CI Developer"

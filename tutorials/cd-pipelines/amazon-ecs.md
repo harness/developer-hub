@@ -111,13 +111,13 @@ Click Save and Continue and your credentials will be tested. Once successful, yo
 
 ### Configure Harness Docker Connector
 
-By default, Harness is wired to the public Docker Hub. Though depending on the image, the API endpoint can be different.  The endpoint for us to hit in this example is “https://registry.hub.docker.com/v2/” 
+By default, Harness is wired to the public Docker Hub. Though depending on the image, the API endpoint can be different.  The endpoint for us to hit in this example is `https://registry.hub.docker.com/v2/`.
 
 Harness -> Account Settings -> Account Connectors -> Harness Docker Connector then Edit.
 
 ![Edit Harness Docker Connector](static/first-ecs/edit_dh_conn.png)
 
-Modify the endpoint if not already to “https://registry.hub.docker.com/v2/”.
+Modify the endpoint if not already to `https://registry.hub.docker.com/v2/`.
 
 ![Docker Hub Details](static/first-ecs/dh_details.png)
 
@@ -144,10 +144,10 @@ Can create two new files, one called “`ecs_task.json`” and one called “`se
 
 ![Harness File Store](static/first-ecs/harness_file_store.png)
 
-[ECS Task](https://github.com/harness-apps/developer-hub-apps/blob/main/applications/first-ecs-example/ecs_task.jso) JSON:
+[ECS Task](https://github.com/harness-apps/developer-hub-apps/blob/main/applications/first-ecs-example/ecs_task.json) JSON:
 On lines 3 and 53, replace the value of the “executionRoleArn” with your ecsInstanceRole.
 
-[Service Definition](https://github.com/harness-apps/developer-hub-apps/blob/main/applications/first-ecs-example/service_definition.jso) JSON:
+[Service Definition](https://github.com/harness-apps/developer-hub-apps/blob/main/applications/first-ecs-example/service_definition.json) JSON:
 On line 8, replace the Security Group with your applicable Security Group. On lines 11, 12, and 13 replace the subnets with your subnet IDs for the availability zones selected when the ECS Cluster was created. You can add or subtract items in the subnet array depending on the number of subnets you have. 
 
 With those manifests out of the way, creating the ECS Pipeline will be very speedy. 

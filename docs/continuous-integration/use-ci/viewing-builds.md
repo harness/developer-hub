@@ -1,7 +1,7 @@
 ---
 title: View builds
 description: You can inspect past builds and monitor ongoing builds.
-sidebar_position: 10
+sidebar_position: 100
 helpdocs_topic_id: sof7n3qjap
 helpdocs_category_id: flam7377aq
 helpdocs_is_private: false
@@ -28,7 +28,7 @@ On the **Build details** page, you can investigate a variety of details about a 
 * **Inputs**: This tab lists pipeline-level inputs. Step-level inputs are reported in the step details on the **Pipeline** tab.
 * **Artifacts:** This tab provides links to artifacts, such as images or reports, produced during the build. Availability of artifact details depends on the upload location, build configuration, or build infrastructure.
 * **Commits:** If applicable, this tab provides a list of commits that triggered the build, along with [source code repo links](#source-code-repository-links).
-* **Tests:** Test results from **Run** or **Run Tests** steps. For more information, go to [View tests](../set-up-test-intelligence/viewing-tests.md).
+* **Tests:** Test results from **Run** or **Run Tests** steps. For more information, go to [View tests](./set-up-test-intelligence/viewing-tests.md).
 * **Policy Evaluations**, **Security Tests**, and **Error Tracking**: These tabs report information from other Harness modules and features, such as [Harness Policy As Code](/docs/platform/Governance/Policy-as-code/harness-governance-quickstart#step-6-review-policy-evaluations), if these are enabled and included in the pipeline.
 
 ![The Build details page.](./static/ci-build-details-page.png)

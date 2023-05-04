@@ -8,11 +8,9 @@ description: This topic describes how to add and manage access control for CCM P
 
 You can now manage access to Perspective folders by assigning Resource Groups to users bound by the roles assigned to them.
 
-The following steps illustrate how to restrict access to a Resource Group:
+Perform the following steps to restrict access to a Resource Group:
 
-
-
-1. In **Harness**, go to** Account Settings**.
+1. In **Harness**, go to **Account Settings**.
 2. Select **Access Control**.
 3. Select **Roles**.
 4. Click **+ New Role** to create a custom role with the following permissions. For example, CCM Custom Role. 

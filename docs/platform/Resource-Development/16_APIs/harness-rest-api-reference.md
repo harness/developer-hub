@@ -69,3 +69,9 @@ Now you're ready to use the Harness API in the reference docs or anywhere else.
 
 See [https://harness.io/docs/api](https://harness.io/docs/api/).
 
+
+:::important
+You can use the same vanity URL in the API if you use one. Harness registers the vanity URL with load balancers and DNS to move it to the correct Harness account cluster (for example, prod-3) and the API call works seamlessly with the vanity URL.
+:::
+
+

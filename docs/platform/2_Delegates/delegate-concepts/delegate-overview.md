@@ -187,7 +187,7 @@ If a log file grows beyond 50MB in a day, the log file is renamed with today's d
 
 Harness keeps log files for today and the previous 10 days (up to one 1GB).
 
-The delegate logs are available in the Harness UI. When a pipeline runs and an error occurs due to the delegate, the **View Delegate Tasks Logs** option becomes available. This is an early access feature. Please contact Harness Support to enable it.
+The delegate logs are available in the Harness UI. When a pipeline runs and an error occurs due to the delegate, the **View Delegate Tasks Logs** option becomes available.
 
 ![](./static/view-delegate-task-logs.png)
 
