@@ -23,18 +23,6 @@ For more information about writing custom plugins, go to:
 
 You can use the [Plugin step](./run-a-drone-plugin-in-ci.md) to run [Drone plugins](https://plugins.drone.io/) in Harness CI pipelines.
 
-<details>
-<summary>About Drone</summary>
-
-[Drone](https://docs.drone.io/) was acquired by Harness in 2020 and is part of Harness CI.
-
-For more information on the acquisition of Drone, go to the following blog posts:
-
-* [Harness Acquires CI Pioneer Drone.io and Commits to Open Source](https://harness.io/blog/featured/harness-acquires-ci-pioneer-drone-io-and-commits-to-open-source/)
-* [Lavasoft Reduces Developer Toil by 94% Using Drone and Harness](https://harness.io/customers/case-studies/reduce-developer-toil/)
-
-</details>
-
 ## Bitrise Integrations
 
 How you run [Bitrise Integrations](https://bitrise.io/integrations/steps) in Harness CI pipelines depends on your [build infrastructure](../set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).

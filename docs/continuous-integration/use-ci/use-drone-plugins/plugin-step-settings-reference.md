@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the **Plugin** step. Plugins perform predefined tasks and are configured as steps in your CI pipelines. Plugins can be used to deploy code, publish artifacts, send notifications, and more. For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md)
+This topic provides settings for the **Plugin** step. For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md)
 
 :::info
 

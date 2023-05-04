@@ -18,7 +18,19 @@ Drone plugins are Docker containers that perform predefined tasks. You can use t
 
 This topic assumes you're familiar with [pipeline creation](../prep-ci-pipeline-components.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
 
-## Add the Plugin step
+<details>
+<summary>About Drone</summary>
+
+[Drone](https://docs.drone.io/) was acquired by Harness in 2020 and is part of Harness CI.
+
+For more information on the acquisition of Drone, go to the following blog posts:
+
+* [Harness Acquires CI Pioneer Drone.io and Commits to Open Source](https://harness.io/blog/featured/harness-acquires-ci-pioneer-drone-io-and-commits-to-open-source/)
+* [Lavasoft Reduces Developer Toil by 94% Using Drone and Harness](https://harness.io/customers/case-studies/reduce-developer-toil/)
+
+</details>
+
+## Configure a Plugin step
 
 To demonstrate how to add a Drone plugin to a Harness CI pipeline, the following instructions use the [Download plugin](https://plugins.drone.io/plugins/download) as an example. This plugin downloads an archive to the [stage workspace](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage).
 
@@ -88,6 +100,54 @@ When you run the pipeline, [check the log output](../viewing-builds.md) to verif
 ### Output variables
 
 For information about output variables produced by plugins, refer to [Output variables in the Plugin step settings reference](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables).
+
+### Plugin configuration examples
+
+Here are some YAML examples and additional information about specific Drone plugins.
+
+<details>
+<summary>Artifact Metadata Publisher plugin</summary>
+
+Use the [artifact-metadata-publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish a URL of an artifact file to the [Artifacts tab](../viewing-builds.md).
+
+An example of the **Plugin** step configuration is provided below; however your pipeline must also include steps to upload the file that you want to link to on the Artifacts tab, as demonstrated in the [Publish Allure reports to the Artifact tab tutorial](/tutorials/ci-pipelines/test/allure-report/).
+
+```yaml
+               - step:
+                  type: Plugin
+                  name: metadata publisher plugin
+                  identifier: metadata_publisher_plugin
+                  spec:
+                    connectorRef: account.harnessImage ## A Docker connector ID
+                    image: plugins/artifact-metadata-publisher
+                    settings:
+                      file_urls: https://storage.googleapis.com/.../index.html ## URL for the storage location where the data file is located.
+                      artifact_file: artifact.txt ## The name of the artifact file
+```
+
+</details>
+
+<details>
+<summary>GitHub Actions plugin</summary>
+
+* With Harness Cloud build infrastructure, use the [GitHub Action plugin step](./ci-github-action-step.md).
+* With other build infrastructures, use the [GitHub Actions Drone plugin in a Plugin step](./run-a-git-hub-action-in-cie.md).
+
+</details>
+
+<details>
+<summary>Jira plugin</summary>
+
+Go to [Integrate Jira in a CI pipeline](./ci-jira-int-plugin.md).
+
+</details>
+
+<details>
+<summary>Slack plugin</summary>
+
+Harness has built-in [notifications](/docs/category/notifications-1) for email, Microsoft Teams, and Slack.
+
+</details>
 
 ## Convert Drone YAML to Harness YAML
 
@@ -234,23 +294,3 @@ steps:
   </TabItem>
 </Tabs>
 ```
-
-## Configuration examples
-
-Here are some YAML examples of **Plugin** steps configured for some popular Drone plugins.
-
-<details>
-<summary>heading</summary>
-content in md format
-</details>
-
-<details>
-<summary>heading</summary>
-content in md format
-</details>
-
-<details>
-<summary>heading</summary>
-content in md format
-</details>
-
