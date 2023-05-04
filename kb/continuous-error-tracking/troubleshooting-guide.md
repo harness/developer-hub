@@ -1,10 +1,10 @@
 ---
-description: KB - Troubleshooting
+description: KB Sample Troubleshooting
 title: Troubleshooting Guide
 ---
 
 # Troubleshooting Guide
-KB coming soon
+KB Coming Soon
 
 
 
