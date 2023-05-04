@@ -88,6 +88,26 @@ If you select this option, when the branch you specified in the **Connector** is
 
 The updated branch will initiate a new Trigger execution.
 
+Use the following combinations as criteria to identify similar active pipeline executions for a **Pull Request** event.
+* Account identifier
+* Org identifier
+* Project identfier
+* Pipeline identifier
+* Repository URL
+* PR number
+* Source branch
+* Target branch
+
+Use the following combinations as criteria to identify similar active pipeline executions for a **PUSH** event.
+* Account identifier
+* Org identifier
+* Project identfier
+* Pipeline identifier
+* Repository URL
+* Ref
+
+Ref is the value of **ref** from the Git push webhook payload.
+
 ## Configure secret
 
 In **Configure Secret**, you can select a secret for authenticating the webhook call.
@@ -105,7 +125,7 @@ To enforce authentication for all webhook triggers in this project, you can use 
 
 ![picture 2](static/6dee82fe88ab34915affa856d596d73c4a91fbbedf4784c2a8273db8a6f5b6b9.png)
 
-Now all Github webhooks for this project must be authenticated. All Github triggers in the project must be configured with a secret, and the corresponding webhooks in the Github repos must be configured with the corresponding secret.
+Now all Github webhooks for this project must be authenticated. All Github triggers in the project must be configured with a secret, and the corresponding webhooks in the Github repos must be configured with the corresponding secret. A secret manager with a delegate selector will use the corresponding delegate to decrypt it.
 
 ## Polling frequency
 
