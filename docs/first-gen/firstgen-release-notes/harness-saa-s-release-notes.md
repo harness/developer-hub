@@ -16,12 +16,12 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### May 03, 2023, version 792xx
+### May 04, 2023, version 79214
 
 #### What's new
 
 - The following Spring framework libraries have been upgraded: (PL-31421)
-	- org.springframework:spring-aop from 5.3.26 to 5.3.27
+    - org.springframework:spring-aop from 5.3.26 to 5.3.27
     - org.springframework:spring-beans from 5.3.26 to 5.3.27
     - org.springframework:spring-context from 5.3.26 to 5.3.27
     - org.springframework:spring-core from 5.3.26 to 5.3.27
