@@ -369,6 +369,15 @@ Harness recommends that you use Java string method for concatenating pipeline va
 
 For example, use syntax `<+pipeline.variables.var1.concat("_suffix")>` or `<+<+pipeline.variables.var1>.concat("_suffix")>` or `<+<+pipeline.variables.var1> + "_suffix">` instead of `<+pipeline.variable.var1>_suffix`. 
 
+### Forward references
+
+Harness does not support referencing variables in the next step. For example, in a pipeline with four steps: step A, B, C and D, you cannot reference variables in step C in step A. 
+
+:::note Exception:
+You can refer the environment name in a service step.
+:::
+
+
 ## Built-in CIE codebase variables reference
 
 In Harness, you set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [connector](../7_Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your pipeline.
