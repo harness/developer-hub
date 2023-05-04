@@ -346,7 +346,7 @@ export const CETList: CardItem[] = [
     newDoc: false,
     type: [docType.Interactive, docType.Video],
     time: "10min",
-    link: "/tutorials/service-reliability/java-error-tracking",
+    link: "/tutorials/error-tracking/java-error-tracking",
   },
 ];
 
