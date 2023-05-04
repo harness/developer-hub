@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-05-03T10:00:15
+date: 2023-05-04T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 03, 2023, version 792xx
+## Latest - May 04, 2023, version 79214
 
 ```mdx-code-block
 <Tabs>
@@ -108,7 +108,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
                 value: stage3Var
 
   ```
+- You can add Tanzu Application Services (TAS) config files from GitHub. (CDS-56452)
 
+  This feature is currently behind the feature flag, `CDS_GIT_CONFIG_FILES`. For TAS deployment types, you can reference service config files from GitHub.
+  
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
