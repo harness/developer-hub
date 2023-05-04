@@ -247,6 +247,7 @@ To create a template filter in Harness:
 7. You can set the visibility of the filter by selecting one of the following: 
    - **Only me**
    - **Everyone**
+
    If you do not select anything, the visibility is set to **Only me** by default.
 
    ![](./static/template-filter-config.png)
