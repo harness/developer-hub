@@ -20,22 +20,16 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 #### What's new
 
-- The following Spring framework libraries have been upgraded: (PL-31421)
-    - org.springframework:spring-aop from 5.3.26 to 5.3.27
-    - org.springframework:spring-beans from 5.3.26 to 5.3.27
-    - org.springframework:spring-context from 5.3.26 to 5.3.27
-    - org.springframework:spring-core from 5.3.26 to 5.3.27
-    - org.springframework:spring-expression from 5.3.26 to 5.3.27
-    - org.springframework:spring-jcl from 5.3.26 to 5.3.27
-    - org.springframework:spring-messaging from 5.3.26 to 5.3.27
-    - org.springframework:spring-test from 5.3.26 to 5.3.27
-    - org.springframework:spring-tx from 5.3.26 to 5.3.27
-    - org.springframework:spring-web from 5.3.26 to 5.3.27
+This release does not include new features. 
 
 #### Early access
 
 This release does not include early access features. 
 
+#### Fixed issues
+
+- Resolved a null pointer exception when the Canary Deployment step is initialized with the Helm manifest type. (CDS-59214)
+  
 #### Fixed issue
 
 - Users cannot use Harness secret as LDAP password in FirstGen. (PL-32597, ZD-42655)
@@ -184,6 +178,9 @@ This release does not include any early access features.
   Harness was not handling the proxy use case.
   
   Now Harness handles the use case by adding the username and password to the HTTP client.
+- Unable to fetch the correct Google Cloud Storage (GCS) artifacts when manually triggering the pipeline though the correct artifacts were being listed in the **Manually Select An Artifact** dialog's **Artifact** field list. (CDS-53074, ZD-39446)
+  
+  This issue is fixed.
 
 ### February 23, 2023, version 78507
 
