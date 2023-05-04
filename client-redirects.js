@@ -809,9 +809,12 @@ module.exports = {
     },
     {
       from: "/tutorials/manage-service-reliability/intro-java-exception-management",
-      to: "/tutorials/service-reliability/java-error-tracking",
+      to: "/tutorials/error-tracking/java-error-tracking",
     },
-
+    {
+      from: "/tutorials/service-reliability/java-error-tracking",
+      to: "/tutorials/error-tracking/java-error-tracking",
+    },
     {
       from: "/tutorials/orchestrate-security-tests",
       to: "/tutorials/security-tests",
