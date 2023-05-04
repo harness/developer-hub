@@ -28,7 +28,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.cet]: 'Continuous Error Tracking',
     [MODULES.ssca]: 'Software Supply Chain Assurance',
     [MODULES.idp]: 'Internal Developer Portal',
-    [MODULES.iacm]: 'infra as Code Management',
+    [MODULES.iacm]: 'Infrastructure as Code Management',
     [MODULES.gitness]: 'Gitness',
     [MODULES.platform]: 'Harness Platform',
 }
