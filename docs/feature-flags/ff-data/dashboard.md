@@ -91,7 +91,7 @@ You can schedule delivery of the dashboard data to share with one or more email 
 
 To schedule delivery of dashboard data:
 
-1. In your dashboard, select the **Dashboard actions** icon at the top, and then choose **Schedule delivery**.
+1. On your dashboard, select the **Dashboard actions** icon at the top, and then choose **Schedule delivery**.
 
 	![The Schedule Delivery dialog with 3 tabs: Settings, Filters, Advanced options.](./static/dashboard-sched-delivery.png)
 
