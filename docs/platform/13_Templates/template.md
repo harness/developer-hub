@@ -230,6 +230,7 @@ The YAML editor is a full-fledged YAML IDE with autocomplete and other features.
 
 You can create your own template filter and use it later to view those templates in Harness. You can create a template filter at any scope.
 This topic explains steps to create a template filter at the account scope.
+
 To create a template filter in Harness: 
 1. Select **ACCOUNT SETTINGS**, and then select **Account Resources**.
 2. Select **Templates**.
@@ -237,7 +238,7 @@ To create a template filter in Harness:
    
    ![](./static/template-filter-icon.png)
 
-   **New Filter** settings appear.
+   The **New Filter** settings appear.
 4. In **Name** enter the name of an existing template, and then select **New Filter**.
    
    ![](./static/template-new-filter-settings.png)
