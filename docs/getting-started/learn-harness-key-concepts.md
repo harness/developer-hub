@@ -1,7 +1,7 @@
 ---
 title: Key concepts
 description: Learn about the key concepts and terms used in Harness products.
-# sidebar_position: 2
+sidebar_position: 60
 helpdocs_topic_id: hv2758ro4e
 helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
@@ -150,7 +150,7 @@ Harness includes built-in secrets management to store your encrypted secrets, su
 
 ![](./static/learn-harness-key-concepts-17.png)
 
-See [Harness Secrets Management Overview](../platform/6_Security/1-harness-secret-manager-overview.md).
+See [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
 
 ### YAML and Git
 

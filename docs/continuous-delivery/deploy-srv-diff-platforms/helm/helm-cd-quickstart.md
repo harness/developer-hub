@@ -1,5 +1,5 @@
 ---
-title: Helm chart deployment tutorial
+title: Helm chart deployments
 description: This topic shows you how to deploy a Docker image to your Kubernetes cluster using Helm charts in Harness.
 sidebar_position: 1
 ---
@@ -214,6 +214,6 @@ In this quickstart, you learned how to:
 
 ## Next steps
 
-* See [CD tutorials](/tutorials/deploy-services) for other deployment features.
+* See [CD tutorials](/tutorials/cd-pipelines/) for other deployment features.
 * [Trigger Pipelines on New Helm Chart](/docs/platform/Triggers/trigger-pipelines-on-new-helm-chart).
 

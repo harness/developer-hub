@@ -1,5 +1,5 @@
 ---
-title: Provision Target Deployment Infra Dynamically with Terraform
+title: Provision target deployment infrastructure dynamically with Terraform
 description: This topic show you how to dynamically provision the target deployment infrastructure at runtime using the Terraform Plan and Apply steps.
 sidebar_position: 3
 helpdocs_topic_id: uznls2lvod
@@ -113,12 +113,18 @@ For this reason, it's important that all your Project members know the Provision
 
 1. Select a Secrets Manager to use for encrypting/decrypting and saving the Terraform plan file.
 
-See [Harness Secrets Manager Overview](/docs/platform/Security/harness-secret-manager-overview).
+See [Harness Secrets Manager Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
 
 A Terraform plan is a sensitive file that could be misused to alter resources if someone has access to it. Harness avoids this issue by never passing the Terraform plan file as plain text.
 
 Harness only passes the Terraform plan between the Harness Manager and Delegate as an encrypted file using a Secrets Manager.
 
+Some third-party secret managers, such as HashiCorp Vault, Azure Key Vault, and AWS Secrets Manager, have a maximum secret size limitation. If the size of the secret you want to store exceeds this limit, an error will be thrown by the corresponding third-party system. Therefore, it's crucial to check the maximum secret size supported by your chosen secret manager and ensure that your secrets are within the size limit.
+
+In contrast, key management services like Google Cloud KMS or AWS KMS do not have the same limitation as they are primarily designed for managing encryption keys, not arbitrary secret data. However, it's still essential to check the specific limitations of your chosen key management service and ensure that your secrets meet their requirements.
+
+When designing your secret management strategy and selecting a secret management solution, consider the maximum secret size limit and other limitations that may affect your use case. You may need to choose a secret manager that can handle larger secret sizes or find alternative strategies for managing secrets that exceed the maximum size limit of your chosen secret manager.
+ 
 When the `terraform plan` command runs on the Harness Delegate, the Delegate encrypts the plan and saves it to the Secrets Manager you selected. The encrypted data is passed to the Harness Manager.
 
 When the plan is applied, the Harness Manager passes the encrypted data to the Delegate.
@@ -137,7 +143,7 @@ Here, you'll add a connection to the Terraform script repo.
 2. Click the provider where your files are hosted.
    
    ![](./static/provision-infra-dynamically-with-terraform-02.png)
-3. Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/Connectors/connect-to-code-repo) or [Artifactory Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+3. Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo),  [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**) or [AWS Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
 
 If you're simply experimenting, you can use [HashiCorp's Kubernetes repo](https://github.com/hashicorp/terraform-provider-kubernetes/tree/main/_examples/gke).
 
@@ -161,7 +167,17 @@ You can jump ahead to the Terraform Apply step below. The following sections cov
 
 ### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+
+### AWS S3
+
+1. In **Region**, select the region where your bucket is stored.
+2. In **Bucket**, select the bucket where your Terraform files are stored (all buckets from the selected region that are available to the connector will be fetched).
+3. In **Folder Path**, enter the path from the root of the repo to the folder containing the script.
+
+   ![](./static/provision-infra-dynamically-with-terraform-09.png)
+
+Harness will fetch all files from the specified folder.
 
 ### Source Module
 
@@ -265,30 +281,44 @@ If you are entering secrets (for credentials, etc.), use Harness secret referenc
 secrets_encryption_kms_key = "<+secrets.getValue("org.kms_key")>"
 ```
 
-See [Add Text Secrets](/docs/platform/Security/add-use-text-secrets).
+See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
 ### Remote variables
 
 You can connect Harness to remote variable files.
 
 1. Click **Add Terraform Var File**, and then click **Add Remote**.
-2. Select your Git provider (GitHub, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
+2. Select your provider (GitHub, Artifactory, S3, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
 3. Click **Continue**. The **Var File Details** settings appear.
-   
+
+
+#### Git providers
    ![](./static/provision-infra-dynamically-with-terraform-04.png)
-4. In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
+
+1. In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
    
    For example, if the **Identifier** is **myremotevars** you could refer to its content like this:
    
    `<+pipeline.stages.MyStage.spec.infrastructure.infrastructureDefinition.provisioner.steps.plan.spec.configuration.varFiles.myremotevars.spec.store.spec.paths>`
-5. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**.
-6. In **Branch**, enter the name of the branch.
-7. In **File Paths**, add one or more file paths from the root of the repo to the variable file.
-8. Click **Submit**. The remote file(s) are added.
+2. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**.
+3. In **Branch**, enter the name of the branch.
+4. In **File Paths**, add one or more file paths from the root of the repo to the variable file.
+5. Click **Submit**. The remote file(s) are added.
 
 #### Artifactory
 
-See [Artifactory Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+
+#### AWS S3
+
+1. In **Identifier**, enter an identifier so you can refer to variables using expressions if needed.
+2. In **Region**, select the region where your bucket is stored.
+3. In **Bucket**, select the bucket where your Terraform var files are stored (all buckets from the selected region that are available to the connector will be fetched).
+4. In **File Paths**, add one or more file paths from the root of the bucket to the variable file.
+
+   ![](./static/provision-infra-dynamically-with-terraform-10.png)
+
+ Click **Submit**. The remote file(s) are added.
 
 ## Backend Configuration
 
@@ -309,7 +339,7 @@ terraform {
 
 In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
 
-You can use Harness secrets for credentials. See [Add Text Secrets](/docs/platform/Security/add-use-text-secrets).
+You can use Harness secrets for credentials. See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
 ## Targets
 
@@ -329,7 +359,7 @@ For example:
 TF_LOG_PATH=./terraform.log  
 TF_VAR_alist='[1,2,3]'
 ```
-You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/Security/add-use-text-secrets).
+You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
 ## Advanced settings
 
@@ -339,7 +369,7 @@ In **Advanced**, you can use the following options:
 * [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## Approval step
 
@@ -438,5 +468,5 @@ However, let's look at the situation where module3 succeeds and now you have mod
 
 ## See also
 
-* [Apply a Terraform Plan with the Terraform Apply Step](../../cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
+* [Apply a Terraform Plan with the Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
 

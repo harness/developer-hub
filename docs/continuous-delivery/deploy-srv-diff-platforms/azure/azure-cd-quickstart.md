@@ -1,5 +1,5 @@
 ---
-title: Azure ACR to AKS deployment tutorial
+title: Azure ACR to AKS deployments
 description: This topic walks you through deploying an image from Azure ACR to Azure AKS using Harness.
 sidebar_position: 6
 helpdocs_topic_id: m7nkbph0ac
@@ -27,7 +27,7 @@ Review [Harness Key Concepts](/docs/getting-started/learn-harness-key-concepts)
 * **Azure ACR and AKS Permissions:** make sure you have a Service Principal or Managed Identity you can use to connect Harness to your Azure App registration, and that it has the required permissions:
 	+ **ACR:** the **Reader** role must be assigned.
 	+ **AKS:** the **Owner** role must be assigned.
-	+ For a custom role, see the permissions in [Add a Microsoft Azure Cloud Connector](/docs/platform/Connectors/add-a-microsoft-azure-connector).
+	+ For a custom role, see the permissions in [Add a Microsoft Azure Cloud Connector](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector).
 
 * **AKS Cluster:** you'll need a target AKS cluster for the deployment. Ensure your cluster meets the following requirements:
   * **Number of nodes:** 2.
@@ -236,11 +236,11 @@ Now you can add an artifact from your ACR repo. We'll create a Harness Azure Con
 
   ![](static/azure-cd-quickstart-103.png)
 
-   + **Azure ACR and AKS Permissions:** make sure the Service Principal or Managed Identity has the [required permissions](/docs/platform/Connectors/add-a-microsoft-azure-connector):
+   + **Azure ACR and AKS Permissions:** make sure the Service Principal or Managed Identity has the [required permissions](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector):
      
      + **ACR:** the **Reader** role must be assigned.
      + **AKS:** the **Owner** role must be assigned.
-     + For a custom role, see the permissions in [Add a Microsoft Azure Cloud Connector](/docs/platform/Connectors/add-a-microsoft-azure-connector).
+     + For a custom role, see the permissions in [Add a Microsoft Azure Cloud Connector](/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector).
   
 7. Click **Continue**.
 8. In **Delegates Setup**, click **Only use Delegates with all of the following tags**, and then select the Delegate you added earlier.

@@ -1,5 +1,5 @@
 ---
-title: Remove Provisioned Infra with the CloudFormation Delete Step
+title: Remove provisioned infrastructure with the CloudFormation Delete step
 description: Remove a provisioned stack or any resources created by CloudFormation.
 sidebar_position: 5
 helpdocs_topic_id: mmzimok6vp
@@ -32,7 +32,7 @@ In the **Execution** section of your Deploy stage, click **Add Step**, and then 
 There are two options:
 
 * **Inline:** removes the resources you identify using these settings:
-	+ **AWS Connector:** add or select the Harness AWS Connector for connecting to AWS. Ensure its credentials have the permissions needed to remove the resources. See [AWS Connector](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+	+ **AWS Connector:** add or select the Harness AWS Connector for connecting to AWS. Ensure its credentials have the permissions needed to remove the resources. See [AWS Connector](docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 	+ **Region:** select the region for the resources you are removing.
 	+ **Role ARN:** enter the AWS Role ARN to use when deleting the stack. This is the same as the role you would use when deleting a stack using the AWS console or CLI.
 	+ **Stack Name:** enter the name of the stack to delete.

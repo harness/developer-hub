@@ -1,5 +1,5 @@
 ---
-title: SDK Versioning
+title: SDK versioning
 description: This topic describes the versioning policy for SDKs.
 sidebar_position: 30
 helpdocs_topic_id: gr5hyn1gv5

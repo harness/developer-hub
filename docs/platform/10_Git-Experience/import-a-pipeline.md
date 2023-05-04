@@ -1,5 +1,5 @@
 ---
-title: Import a Pipeline From Git
+title: Import a pipeline from Git
 description: Topic describing how to import a Pipeline from Git to Harness.
 sidebar_position: 5
 helpdocs_topic_id: q1nnyk7h4v
@@ -51,7 +51,7 @@ This topic shows you how to import a Pipeline to the CD module.
    ```
 
 4. Enter a **Name** for your Pipeline.
-5. In **Git Connector**, select or create a Git Connector to connect to your Git repo. For steps, see [Code Repo Connectors](../7_Connectors/connect-to-code-repo.md).
+5. In **Git Connector**, select or create a Git Connector to connect to your Git repo. For steps, see [Code Repo Connectors](../7_Connectors/Code-Repositories/connect-to-code-repo.md).
    
    <details>
    <summary>
@@ -83,7 +83,7 @@ Create the repository in Git before entering it in **Select Repository**. Harnes
 Create the branch in your repository before entering it in **Git Branch**. Harness does not create the branch for you.
 :::
 
-8. Enter the **YAML Path** from where you want to import the Pipeline. All your configurations are stored in Git in the [Harness Folder](harness-git-experience-overview.md#harness-folder).
+1. Enter the **YAML Path** from where you want to import the Pipeline. All your configurations are stored in Git in the [Harness Folder](git-experience-overview.md#harness-folder).
    
 :::note
 Make sure that your YAML path starts with `.harness/` and the YAML file already exists in the specified Git repo and branch.

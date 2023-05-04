@@ -2,7 +2,7 @@
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-04-05T10:00
+date: 2023-04-25T10:00
 sidebar_position: 9
 ---
 ```mdx-code-block
@@ -15,14 +15,70 @@ Review the notes below for details about recent changes to Harness Chaos Enginee
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - April 4, 2023, version 0.9.6
+## Latest - April 25, 2023, version 0.10.3
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+* **Schedule** tab to schedule cron jobs (CHAOS-710)
+    * A **Schedule** tab has been added to the experiment builder page where you can select from cron and non-cron experiments, schedule a cron experiment, **Save** it, and then **Run** it. Previously, cron experiments could not be saved; they were created and run.
 
-### What’s new
+
+* **Save** button when creating, editing, and cloning an experiment (CHAOS-1409)
+    * After creating, editing, or cloning an experiment, you can **Save** and then **Run** the experiment. The **Run** button is disabled for unsaved changes. Previously, the **Run** button would save and execute the experiment.
+
+
+* New status `Completed_with_probe_failure` to show probe failure (CHAOS-1431)
+    * When an experiment completes execution, the resilience score may be 0. This means the experiment was successful and chaos was injected into the application, but the probes failed. The `Completed_with_probe_failure` status clearly indicates probe failure.
+
+
+* Number of service accounts in the YAML manifests reduced to 3 (CHAOS-1306)
+    * For ease of management and configuration, the number of service accounts provided in the YAML manifest is reduced to 3 from 6. 
+
+
+* New access control **Execute** to execute chaos experiments (CHAOS-1279)
+    * A new access control, **Execute** has been added, in addition to **View**, **Create/Edit**, and **Delete**. **Execute** allows you to execute the chaos experiments, whereas **Create/Edit** will only allow you to create a chaos experiment or edit an existing chaos experiment. The newly added access control provides granularity while working with chaos experiments. 
+
+
+* **Apply changes** and **Discard** buttons added to the **Experiment builder** screen
+    * After specifying values for the **Target application**, **Tune faults**, and **Probes**, you need to select the **Apply changes** button to apply the changes to the experiment. Otherwise, you can choose to **Discard** the changes. 
+
+
+* Delete experiment confirmation notification (CHAOS-1434)
+    * When you delete an experiment, a notification stating "The experiment has been deleted successfully" appears on the user interface indicating the successful deletion of the experiment.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+* This release does not include any early access features.
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+* When connecting to an existing chaos hub, selecting a connector from the **Organization** failed to load the page. This has been fixed. (CHAOS-1456)
+
+
+* When an experiment terminated with an error but the probes passed, the user interface showed the experiment as **Completed**. This has been fixed. (CHAOS-1410)
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### April 4, 2023, version 0.9.6
+
+##### What’s new
 
 * **Update** button to see available updates for a chaos infrastructure (CHAOS-1069)
     * This release displays an **Update** button alongside the chaos infrastructure. When you click this button, it shows if an update is available for the infrastructure.
@@ -67,37 +123,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * **All runs** screen changed to **Run history** (CHAOS-995)
     * This release has changed the **All runs** screen name to **Run history**. The **Run history** screen displays all the runs of a chaos experiment. Clicking on a specific run of the chaos experiment displays the fault executed, the status of the experiment, the status of the probes, the fault weights, and the duration of the experiment.
- 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
 
-### Early access
+##### Early access
  
 * This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
- 
-### Fixed issues
+
+##### Fixed issues
 
 * When tuning the target application, the OpenShift cluster timed out before fetching the information from your cluster. This issue is fixed. The duration of timeout has been increased. (CHAOS-1299)
  
 * When the labels of a chaos experiment, such as **Run by** included special characters, the experiment would not run because Kubernetes doesn’t allow special characters in the labels. This issue is fixed. The labels (which are a part of the manifest file) are encoded before sending the experiment to the cluster and decoded while presenting on the user interface. (CHAOS-1281)
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### February 22, 2023, version 0.8.4
 
@@ -318,7 +356,7 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 
 ##### Early access
 
-The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for testing. To be part of this testing, contact [Harness Support](mailto:support@harness.io). HCE documentation, which includes user guides and [tutorials](https://developer.harness.io/tutorials/run-chaos-experiments), is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in [Your First Chaos Experiment Run](https://developer.harness.io/tutorials/run-chaos-experiments/first-chaos-engineering).
+The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for testing. To be part of this testing, contact [Harness Support](mailto:support@harness.io). HCE documentation, which includes user guides and [tutorials](https://developer.harness.io/tutorials/chaos-experiments), is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in [Your First Chaos Experiment Run](https://developer.harness.io/tutorials/chaos-experiments/first-chaos-engineering).
 
 ##### Known issues
 

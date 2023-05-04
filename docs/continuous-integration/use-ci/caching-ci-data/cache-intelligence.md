@@ -6,7 +6,9 @@ sidebar_position: 20
 
 Modern continuous integration systems execute pipelines inside ephemeral environments that are provisioned solely for pipeline execution and are not reused from prior pipeline runs. As builds often require downloading and installing many library and software dependencies, caching these dependencies for quick retrieval at runtime can save a significant amount of time.
 
+
 There are several ways to configure caching in Harness CI: save and restore cache steps, mounting volumes, and Cache Intelligence. Mounting volumes or using save and restore cache steps requires you to manage the cache. With Cache Intelligence, Harness automatically caches and restores common dependencies. Also, you don't need to bring your own storage with Cache Intelligence, because we store the cache in our hosted environment, Harness Cloud.
+
 
 ## Supported build infrastructures and tools
 
@@ -126,7 +128,7 @@ You can use the Cache Intelligence API to get information about the cache or del
 
 You must have an API key with [core_account_edit](/docs/platform/Role-Based-Access-Control/ref-access-management/api-permissions-reference#harness-api-permissions) permissions to invoke these APIs.
 
-For information about API keys, go to [Add and manage API keys](/docs/platform/role-based-access-control/add-and-manage-api-keys).
+For information about API keys, go to [Add and manage API keys](/docs/platform/User-Management/add-and-manage-api-keys).
 
 :::
 

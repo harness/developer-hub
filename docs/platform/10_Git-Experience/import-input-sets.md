@@ -1,5 +1,5 @@
 ---
-title: Import an Input Set From Git
+title: Import an input set from Git
 description: This topic explains the steps to import an Inputset from Git.
 sidebar_position: 7
 helpdocs_topic_id: j7kdfi3640
@@ -47,7 +47,7 @@ This topic shows you how to import an Input Set to the CD module.
 	1. **Git Connector**
 	2. **Repository**
 	3. **Git Branch**
-6. Enter the **YAML Path** from where you want to import the Input Set. All your configurations are stored in Git in the [Harness Folder](harness-git-experience-overview.md#harness-folder).Make sure that your YAML path starts with `.harness/` and the YAML file already exists in the specified Git repo and branch.
+6. Enter the **YAML Path** from where you want to import the Input Set. Make sure that your YAML path starts with `.harness/` and the YAML file already exists in the specified Git repo and branch.
 7. Click **Import**.  
 Click on your **Run Pipeline** to proceed.
 

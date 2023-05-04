@@ -1,5 +1,5 @@
 ---
-title: Export Chaos Experiments
+title: Export chaos experiments
 sidebar_position: 5
 ---
 

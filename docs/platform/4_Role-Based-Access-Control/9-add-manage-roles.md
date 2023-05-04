@@ -1,5 +1,5 @@
 ---
-title: Add and Manage Roles
+title: Add and manage roles
 description: This document shows steps to create new Roles and assign permissions to them.
 # sidebar_position: 2
 helpdocs_topic_id: tsons9mu0v
@@ -77,8 +77,8 @@ Harness provides the following default roles at the Account, Org, and Project sc
 
 ### See also
 
-* [Add and Manage Users](./3-add-users.md)
-* [Add and Manage User Groups](./4-add-user-groups.md)
+* [Add and Manage Users](../3_User-Management/3-add-users.md)
+* [Add and Manage User Groups](../3_User-Management/4-add-user-groups.md)
 * [Add and Manage Resource Groups](./8-add-resource-groups.md)
 * [Permissions Reference](./ref-access-management/permissions-reference.md)
 

@@ -1,5 +1,5 @@
 ---
-title: Webhook Triggers Reference
+title: Webhook triggers reference
 description: This topic provides settings information for Triggers. Triggers are used to initiate the execution of Pipelines. For steps on setting up different types of Triggers, see Triggers Howtos. Name. The un…
 # sidebar_position: 2
 helpdocs_topic_id: rset0jry8q
@@ -46,7 +46,7 @@ See [Code Repo Connectors Tech Ref](/docs/category/code-repo-connectors).
 
 :::note
 
-Git webhook triggers do not support generic Git connectors. You must create provider-specific connectors for each provider (Github, GitLab, Bitbucket, etc) to use them with webhook triggers. For information on each Git provider connector, go to [Connect to a Git Repo](https://developer.harness.io/docs/platform/Connectors/connect-to-code-repo).
+Git webhook triggers do not support generic Git connectors. You must create provider-specific connectors for each provider (Github, GitLab, Bitbucket, etc) to use them with webhook triggers. For information on each Git provider connector, go to [Connect to a Git Repo](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-code-repo).
 
 :::
 

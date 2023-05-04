@@ -17,7 +17,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
+    link: "/tutorials/feature-flags/typescript-react",
   },
 ];
 
@@ -35,6 +35,6 @@ export const FFList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/manage-feature-flags/typescript-react-first-feature-flag",
+    link: "/tutorials/feature-flags/typescript-react",
   },
 ];

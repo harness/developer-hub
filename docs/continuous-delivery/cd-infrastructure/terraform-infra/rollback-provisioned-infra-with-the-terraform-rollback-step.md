@@ -13,7 +13,7 @@ This topic describes how to roll back your provisioned infrastructure and resour
 ## Before You Begin
 
 * [Terraform Provisioning with Harness](terraform-provisioning-with-harness)
-* [Provision Target Deployment Infra Dynamically with Terraform](../../cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform)
+* [Provision Target Deployment Infra Dynamically with Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform)
 * [Provision with the Terraform Apply Step](run-a-terraform-plan-with-the-terraform-apply-step)
 
 ## Important: Install Terraform on Delegates
@@ -73,6 +73,17 @@ In **Provisioner Identifier**, enter the same Provisioner Identifier you used in
 Click **Apply Changes**.
 
 The Terraform Rollback step is added to the **Rollback** steps.
+
+## Command Line Options
+
+This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
+
+![](./static/rollback-provisioned-infra-with-the-terraform-rollback-step-19.png)
+
+## Skip Terraform Refresh
+
+Terraform refresh command won't be running when this setting is selected.
+
 
 ## See Also
 

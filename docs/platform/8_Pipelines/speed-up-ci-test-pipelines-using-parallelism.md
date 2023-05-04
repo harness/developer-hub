@@ -1,5 +1,5 @@
 ---
-title: Speed Up CI Test Pipelines Using Parallelism
+title: Speed up CI test pipelines using parallelism
 description: Use parallelism to run tests in parallel.
 # sidebar_position: 2
 helpdocs_topic_id: kce8mgionj
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-To decrease test cycle time, utilize parallelism by dividing tests into multiple sets and running them in parallel. *Parallelism* is one of the [looping strategies](looping-strategies-matrix-repeat-and-parallelism.md) available in Harness pipelines. Whenever it's possible to divide the tasks of a particular step or stage into multiple sets and execute them concurrently, parallelism can be used to [speed things up](../../continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md).
+To decrease test cycle time, utilize parallelism by dividing tests into multiple sets and running them in parallel. *Parallelism* is one of the [looping strategies](looping-strategies-matrix-repeat-and-parallelism.md) available in Harness pipelines. Whenever it's possible to divide the tasks of a particular step or stage into multiple sets and execute them concurrently, parallelism can be used to [speed things up](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md).
 
 ## Key concepts: parallelism and test splitting
 
@@ -17,11 +17,11 @@ Most CI pipelines are set up to run tests with every new commit. When you [set u
 1. The [parallelism strategy](#define-the-parallelism-strategy), which determines the number of instances of a stage or step to execute
 2. The strategy for splitting tests. How you do this depends on which step you're using to run tests:
    * If you're using the **Run Tests** step, you specify the `testSplitStrategy` to [enable test splitting for Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/#enable-parallelism-test-splitting-for-test-intelligence).
-   * If you're using a **Run** step, you use the `split_tests` command along with test split strategies, such as `--split-by file_size` to [](#define-test-splitting).
+   * If you're using a **Run** step, you use the `split_tests` command along with test split strategies, such as `--split-by file_size` to [define test splitting](#define-test-splitting).
 
 :::info
 
-For more information about test splitting with Test Intelligence, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+For more information about test splitting with Test Intelligence, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/set-up-test-intelligence.md).
 
 :::
 
@@ -146,7 +146,7 @@ You can configure parallelism in the Pipeline Studio as well:
 
 :::info
 
-The following information applies to test splitting in a **Run** step. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+The following information applies to test splitting in a **Run** step. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/set-up-test-intelligence.md).
 
 :::
 
@@ -328,7 +328,7 @@ pipeline:
 
 ## See also
 
-* [Optimizing CI Build Times](../../continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md)
+* [Optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md)
 * [Looping Strategies Overview: Matrix, For Loop, and Parallelism](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
 * [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
 * [Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)

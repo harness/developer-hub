@@ -226,6 +226,7 @@
   --ifm-color-primary-lightest: var(--primary-3);
   --ifm-code-font-size: 95%;
   --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+  --docusaurus-announcement-bar-height: 48px !important;
 
   --ifm-link-color: var(--ifm-color-primary);
 
@@ -315,6 +316,11 @@ a:hover {
 }
 .theme-doc-markdown h3 > img {
   margin-right: 0.2em;
+}
+
+.theme-doc-markdown img[class^="img_"] {
+  border: 1px solid #d9dae5; /* var(--gray-400); */
+  border-radius: 8px;
 }
 
 /* #DLP-36 styles for details + summary */
@@ -520,6 +526,12 @@ a.card .text--truncate {
 }
 a.card p.text--truncate {
   min-height: 3em;
+}
+
+/* HDH-120: Change 2nd level numbered list style */
+ol ol,
+ul ol {
+  list-style-type: lower-alpha;
 }
 
 @media screen and (min-width: 1200px) {

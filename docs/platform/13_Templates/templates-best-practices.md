@@ -1,5 +1,5 @@
 ---
-title: Best Practices and Guidelines for Templates
+title: Best practices and guidelines for templates
 description: Best Practices for Template Versioning with GitExperience
 sidebar_position: 10
 ---
@@ -127,5 +127,3 @@ org.<templateIdentifier>
 - You can view the Git YAML differences for the pipeline and see which lines have been modified.
 
 - To update the template click Save. Harness reconciles the change making it the default state.
-
-- To check for runtime input validations, click on the three dots next to **Run** and select **Reconcile**. The UI indicates if reconciliation is necessary.

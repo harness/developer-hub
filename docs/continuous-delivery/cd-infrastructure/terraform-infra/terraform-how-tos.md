@@ -10,21 +10,63 @@ helpdocs_is_published: true
 
 Harness has first-class support for HashiCorp [Terraform](https://www.terraform.io/) as an infrastructure provisioner.
 
-See the following Terraform How-tos:
+You can use Harness with Terraform in the following ways:
 
-* [Provision Target Deployment Infra Dynamically with Terraform](../../cd-infrastructure/terraform-infra/provision-infra-dynamically-with-terraform)
+* **Local provisioning:** you can run configuration files on the Harness delegate(s) installed in your environment.
+* **Terraform Cloud/Enterprise:** you can run Terraform Cloud workspaces by connecting Harness to your Terraform Cloud account.
+
+You can do both methods in the same stage if you want.
+
+For a conceptual overview of Harness Terraform integration, see [Terraform Provisioning with Harness](terraform-provisioning-with-harness).
+
+## Running Terraform Cloud workspaces how-tos
+
+In addition to running Terraform configuration files locally on the Harness delegate, Harness supports running Terraform Cloud and Enterprise workspaces.
+
+For more information, go to  [Terraform Cloud deployments](terraform-cloud-deployments.md).
+
+## Running Terraform locally how-tos
+
+You can use the Harness Terraform steps to provision any resources. You simply add the steps in the Deploy or Custom stage **Execution**.
+
+For steps on how to run Terraform configuration files on Harness delegates installed in your environment, go to:
+
 * [Plan Terraform Provisioning with the Terraform Plan Step](run-a-terraform-plan-with-the-terraform-plan-step)
 * [Provision with the Terraform Apply Step](run-a-terraform-plan-with-the-terraform-apply-step)
 * [Remove Provisioned Infra with the Terraform Destroy Step](remove-provisioned-infra-with-terraform-destroy)
 * [Rollback Provisioned Infra with the Terraform Rollback Step](rollback-provisioned-infra-with-the-terraform-rollback-step)
 
-For a conceptual overview of Harness Terraform integration, see [Terraform Provisioning with Harness](terraform-provisioning-with-harness).
 
-## Important: Install Terraform on Delegates
+### Important: Install Terraform on delegates
 
-Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
+Terraform must be installed on the delegate to use **local** Terraform configuration files in Harness Terraform steps. This is not required for running Terraform Cloud/Enterprise workspaces.
 
-See [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
+You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
+
+See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+
+The Harness delegate uses RedHat Universal Base Image (redhat/ubi8).
+
+Here's an example of the script to install Terraform:
+
+```bash
+#!/bin/bash
+
+# Update the system and install necessary tools
+sudo yum update -y
+sudo yum install -y curl unzip
+
+# Install Terraform
+TERRAFORM_VERSION="1.3.5"
+TERRAFORM_URL="https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip"
+curl -LO $TERRAFORM_URL
+unzip terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+sudo install terraform /usr/local/bin/
+rm terraform_${TERRAFORM_VERSION}_linux_amd64.zip
+
+# Check TF install
+terraform --version
+```
 
 ### Target OS and architecture
 

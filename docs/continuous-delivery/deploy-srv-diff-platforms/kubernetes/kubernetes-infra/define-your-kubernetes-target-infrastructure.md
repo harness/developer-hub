@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Infrastructure
+title: Kubernetes infrastructure
 description: This topic show you how to specify the Kubernetes cluster you want to target for your deployment.
 sidebar_position: 1
 helpdocs_topic_id: 0ud2ut4vt2
@@ -65,7 +65,7 @@ The cluster details you enter will depend on the connection method you select.
 
 This is the recommend method for cluster connections because it avoids vendor-specific settings.A Direct Connection is a vendor agnostic connection to the Kubernetes cluster.
 
-It uses a [Harness Kubernetes Cluster Connector](/docs/platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md) to connect a cluster on any platform.
+It uses a [Harness Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference) to connect a cluster on any platform.
 
 Currently, Harness connects to Amazon Elastic Kubernetes Service (Amazon EKS) and OpenShift using the Kubernetes Cluster Connector.If you are using a Harness Kubernetes Cluster Cloud Provider to connect to your target cluster, enter the following settings.
 
@@ -73,7 +73,7 @@ Currently, Harness connects to Amazon Elastic Kubernetes Service (Amazon EKS) an
 
 1. Select or create a Kubernetes Cluster Connector for your target cluster.
 
-For details on the Kubernetes Cluster Connector settings, see [Kubernetes Cluster Connector Settings Reference](/docs/platform/7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
+For details on the Kubernetes Cluster Connector settings, see [Kubernetes Cluster Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference).
 
 #### Namespace
 

@@ -1,10 +1,10 @@
 ---
 title: Integrating CD with other Harness modules
 description: Learn how the CD module works with other Harness modules.
-sidebar_position: 4
+sidebar_position: 5
 ---
 
-
+This topic describes a few of the cross-module use cases in the Harness platform.
 
 ## Harness Continuous Integration
 
@@ -146,10 +146,10 @@ It's that simple to integrate Harness CI and CD.
 
 This was just a simple introduction to the integration.
 
-For a longer tutorial of Harness CI and CD integration, go to [Build and Deploy a NodeJS App to Kubernetes](https://developer.harness.io/tutorials/deploy-services/unified-cicd).
+For a longer tutorial of Harness CI and CD integration, go to [Build and Deploy a NodeJS App to Kubernetes](/tutorials/cd-pipelines/unified-cicd).
 
 ## Harness Chaos Engineering
 
 The Harness Chaos Engineering (HCE) integration with Harness CD allows chaos experiments to be executed as part of a Harness CD pipeline.
 
-For a tutorial of this integration, go to [Integration with Harness CD](https://developer.harness.io/tutorials/run-chaos-experiments/integration-with-harness-cd).
+For a tutorial of this integration, go to [Integration with Harness CD](/tutorials/chaos-experiments/integration-with-harness-cd).

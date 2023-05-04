@@ -39,14 +39,14 @@ export default function AllTutorials() {
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
           <img src={`${baseUrl}img/icon_ci.svg`} />
-          <h3>Build & Test Code</h3>
+          <h3>Set up CI Pipelines</h3>
         </div>
         <TutorialCard FeatureList={CIList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
           <img src={`${baseUrl}img/icon_cd.svg`} />
-          <h3>Deploy Services</h3>
+          <h3>Set up CD Pipelines</h3>
         </div>
         <TutorialCard FeatureList={CDList} />
       </div>

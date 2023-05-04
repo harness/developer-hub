@@ -1,5 +1,5 @@
 ---
-title: Serverless.com Framework - AWS Lambda deployment tutorial
+title: AWS Lambda deployments (Serverless.com Framework)
 description: This topic walks you through deploying a Serverless Lambda application to AWS Lambda using Harness.
 sidebar_position: 7
 helpdocs_topic_id: 5fnx4hgwsa
@@ -426,7 +426,7 @@ Now that you have configured the Service, we can define the target for our deplo
 7. Enter the following and click **Save and Continue**.
 	* **Name:** `AWS Serverless`.
 	* **Credentials:** `AWS Access Key`. Enter the AWS access key for the AWS User you created with the required policies in [Before You Begin](#before-you-begin).
-	* Enter the secret key as a [Harness Text Secret](/docs/platform/Security/add-use-text-secrets). The Harness Delegate uses these credentials to authenticate Harness with AWS at deployment runtime.
+	* Enter the secret key as a [Harness Text Secret](/docs/platform/Secrets/add-use-text-secrets). The Harness Delegate uses these credentials to authenticate Harness with AWS at deployment runtime.
 	* **Delegates Setup:** `Only use Delegates with all of the following tags`.
 	* Select the Delegate you added earlier in this quickstart.
 1. The **Connection Test** verifies the connection. Click **Finish**.
@@ -559,7 +559,7 @@ plugins:
 
 See:
 
-* [Add and Reference Text Secrets](/docs/platform/Security/add-use-text-secrets)
+* [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets)
 * [Built-in Harness Variables Reference](/docs/platform/Variables-and-Expressions/harness-variables)
 * [Run Pipelines using Input Sets and Overlays](/docs/platform/Pipelines/run-pipelines-using-input-sets-and-overlays)
 
@@ -571,7 +571,7 @@ Harness can fetch your YAML files and packaged code from the following stores:
   - You can store the serverless.yml and the artifact code in AWS S3, including in the same bucket.
   - You can use the .Zip format to grab the serverless.yaml and the packaged code that has been bundled in .zip and published in S3.
   - Harness will extrapolate the serverless.yaml file and use that for deployment.
-  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/aws-connector-settings-reference#aws-s3).
+  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#aws-s3).
 - Git providers.
 
 ### Rollback timestamps

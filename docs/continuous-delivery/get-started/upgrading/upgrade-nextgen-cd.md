@@ -63,7 +63,7 @@ Here are some NextGen highlights.
 
 Harness provides out-of-the-box Canary, Blue Green, and Rolling Deployment capabilities for any tech stack.
 
-For examples of how these deployment types work with different platforms and services, go to [CD tutorials](/tutorials/deploy-services).
+For examples of how these deployment types work with different platforms and services, go to [CD tutorials](/tutorials/cd-pipelines).
 
 ### Revamped template library experience
 

@@ -2,56 +2,44 @@
 id: ecs-agent-stop
 title: ECS agent stop
 ---
+## Introduction
 
-ECS agent stop disrupts the state of infrastructure resources. 
-- The fault induces an agent stop chaos on AWS ECS using Amazon SSM Run command, this is carried out by using SSM Docs which is in-built in the fault for the give chaos scenario.
-- It causes agent container stop on ECS with a given `CLUSTER_NAME` envrionment variable using an SSM docs for a specific duration.
+ECS agent stop disrupts the state of infrastructure resources. This fault:
+- Induces an agent stop chaos on AWS ECS using Amazon SSM Run command, that is carried out by using SSM documentation which is in-built in the fault for the give chaos scenario.
+- Causes agent container stop on ECS for a specific duration, with a given `CLUSTER_NAME` envrionment variable using SSM documentation. Killing the agent container disrupts the performance of the task containers.
 
 ![ECS Agent Stop](./static/images/ecs-agent-stop.png)
 
 
-## Usage
+## Use cases
+ECS agent stop halts the agent that manages the task container on the ECS cluster, thereby impacting its delivery. 
 
-<details>
-<summary>View fault usage</summary>
-<div>
-ECS agent stop chaos stops the agent that manages the task container on the ECS cluster, thereby impacting its delivery. Killing the agent container disrupts the performance of the task containers.
-</div>
-</details>
 
-## Prerequisites
-- Kubernetes >= 1.17
+:::info note
+- Kubernetes version 1.17 or later is required to execute the fault.
+- The ECS container instance should be in healthy state.
+- ECS container metadata should be enabled (this feature is disabled by default). To enable it please follow the aws docs to [Enabling container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If you have your task running prior this activity you may need to restart it to get the metadata directory as mentioned in the docs.
+- You and ECS cluster instances have a role with the required AWS access to do SSM and ECS operations. Go to [Systems Manager documentation](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html).
+- The Kubernetes secret should have the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXX
+  ```
+- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template, and you won't be able to use the default health check probes. 
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+- Go the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::
 
-- Ensure that the ECS container metadata is enabled this feature is disabled by default. To enable it please follow the aws docs to [Enabling container metadata](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container-metadata.html). If you have your task running prior this activity you may need to restart it to get the metadata directory as mentioned in the docs.
-
-- Ensure that both you and ECS cluster instances have a Role with required AWS access to do SSM and ECS operations. Refer the below mentioned sample policy for the fault (please note that the sample policy can be minimised further). To know more checkout [Systems Manager Docs](https://docs.aws.amazon.com/systems-manager/latest/userguide/setup-launch-managed-instance.html). Also, please refer the below mentioned policy required for the experiment.
-
-- Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXX
-```
-
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -113,22 +101,12 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
-
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-## Default validations
-
-The ECS container instance should be in healthy state.
 
 ## Fault tunables
-
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+<h3>Mandatory tunables</h3>
     <table>
         <tr>
-          <th> Variables </th>
+          <th> Tunable </th>
           <th> Description </th>
           <th> Notes </th>
         </tr>
@@ -143,32 +121,32 @@ The ECS container instance should be in healthy state.
           <td> For example, <code>us-east-2</code></td>
         </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> The total time duration for chaos insertion (sec) </td>
-        <td> Defaults to 30s </td>
+        <td> Default: 30 s </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in sec) between successive instance termination.</td>
-        <td> Defaults to 30s </td>
+        <td> Default: 30 s </td>
       </tr>
       <tr> 
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
         <td> Provide the path for aws secret credentials</td>
-        <td> Defaults to <code>/tmp/cloud_config.yml</code> </td>
+        <td> Default: <code>/tmp/cloud_config.yml</code> </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> It defines sequence of chaos execution for multiple instance</td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Default: parallel. Supported: serial, parallel </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
@@ -176,19 +154,12 @@ The ECS container instance should be in healthy state.
         <td> For example, 30 </td>
       </tr>
     </table>
-</details>
 
-## Fault examples
+### Agent stop
 
-### Common and AWS-specific tunables
+Target agent that is stopped for a specific duration. Tune it by using the `CLUSTER_NAME` environment variable. 
 
-Refer the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
-
-### Agent Stop
-
-It derives the target agent from `CLUSTER_NAME` and stop them for a certain chaos duration. 
-
-Use the following example to tune this:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ecs-agent-stop/agent-stop.yaml yaml)
 ```yaml

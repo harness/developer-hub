@@ -1,5 +1,5 @@
 ---
-title: Secure Shell (SSH) deployment tutorial
+title: Secure Shell (SSH) deployments
 description: Deploy to any platform using SSH.
 sidebar_position: 8
 helpdocs_topic_id: mpx2y48ovx
@@ -12,7 +12,7 @@ You can use Secure Shell (SSH) to deploy your artifacts to hosts located in Micr
 
 This deployment is called Traditional because it uses Secure Shell scripts and a traditional runtime environment as opposed to containers and orchestration mechanisms, such as those in the Kubernetes Tutorial.
 
-This tutorial shows you how to run a SSH deployment in Harness by setting up a Secure Shell Service and deploying artifacts from Artifactory to a target host in AWS. You will use a Canary deployment strategy.
+This topic shows you how to run a SSH deployment in Harness by setting up a Secure Shell Service and deploying artifacts from Artifactory to a target host in AWS. You will use a Canary deployment strategy.
 
 For Secure Shell, you can access artifacts from **Jenkins**, **Artifactory**, or **Custom**. If you select **Custom**, you will need to provide a Bash script.
 
@@ -44,7 +44,7 @@ You will learn how to:
 	+ You can install a Kubernetes or Docker Delegate. See Install Delegates.
 	+ Ideally, you should install the Delegate in the same subnet as the target host(s).
 * Target host: in this guide, we use an AWS EC2 instance as the target host with a minimum t2-medium.
-* SSH Keys for the target host(s): you will need [SSH Keys](/docs/platform/Security/add-use-ssh-secrets) for the target hosts. For example, in this tutorial, we connect to an AWS EC2 instance by providing the username and an existing secret file for that AWS EC2 instance. When a EC2 instance is created, a Key Pair is generated in AWS. From the Key Pair for the AWS EC2 instance, you can download a .PEM file to your machine and upload that file to Harness as a secret file.
+* SSH Keys for the target host(s): you will need [SSH Keys](/docs/platform/Secrets/add-use-ssh-secrets) for the target hosts. For example, in this tutorial, we connect to an AWS EC2 instance by providing the username and an existing secret file for that AWS EC2 instance. When a EC2 instance is created, a Key Pair is generated in AWS. From the Key Pair for the AWS EC2 instance, you can download a .PEM file to your machine and upload that file to Harness as a secret file.
 
 You can also simply deploy the artifact to your local computer instead of using an AWS EC2 instance. If you want to do this, install the Harness Delegate on your local computer (for example, using Docker Desktop), use a [Physical Data Center](/docs/first-gen/firstgen-platform/account/manage-connectors/add-physical-data-center-cloud-provider) Connector instead of an AWS Connector, and when you set up the target infrastructure SSH key in Harness, use your local login information. You might also need to enable remote access on your computer.
 

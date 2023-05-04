@@ -16,13 +16,12 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest release - April 6, 2023, version 1.43.1
+## Latest - April 6, 2023, version 1.43.1
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-### What's new
 
 This release does not include new features.
 
@@ -30,7 +29,6 @@ This release does not include new features.
   </TabItem>
   <TabItem value="Early access">
 ```
-### Early access 
 
 This release does not include early access features.
 
@@ -39,10 +37,28 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-### Fixed issues
-
 * Fixed a UI issue in **External Tickets Settings** for setting up Jira integrations:  **Default Project** and **Default Issue Type** always used the account-level Jira connector, even when a different connector was selected for the current project or organization. (STO-5756)
 * Fixed a search issue in **Security Tests**: If a search term included certain special characters, the UI would fail with a JavaScript exception. (STO-5745) 
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Plugin updates">
+```
+**Plugin update - April 20, 2023, version 1.10.1**
+
+This update includes the following fixed issues: 
+
+* Fixed an issue that caused orchestrated Snyk scans to fail when passing in  `--all-projects` via **Additional CLI flags** or as `tool_args`. This update now reflects the new supported Snyk workflow for specifying target variants: instead of using using `--project-name` to specify variants (old behavior), STO now uses the new `-—target-reference` flag (new behavior). (STO-5821, ZD-42967)
+  
+  For more information about the use of these flags, see the following topics in the Snyk documentation:
+
+  - [Group projects for monitoring](https://docs.snyk.io/snyk-cli/test-for-vulnerabilities/grouping-projects-by-branch-or-version)
+  - [Does the Snyk CLI support monorepos or multiple manifest files?](https://support.snyk.io/hc/en-us/articles/360000910577-Does-the-Snyk-CLI-support-monorepos-or-multiple-manifest-files-)
+
+* Fixed an issue where Snyk scans were processing container vulnerabilities only and ignored application vulnerabilities. STO now processes both container and application scan data from Snyk by default. (STO-5828)
+
+* Fixed an issue that prevented orchestrated Mend scans from running if the [Use version in project names](https://docs.mend.io/en-US/bundle/sca_user_guide/page/using_version_in_product_or_project_names.html) setting was turned off.
+
 
 ```mdx-code-block
   </TabItem>

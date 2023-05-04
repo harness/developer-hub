@@ -1,5 +1,5 @@
 ---
-title: Deployment Logs and Limitations
+title: Deployment logs and limitations
 description: This topic lists the deployment log size and export and viewing limits.
 sidebar_position: 6
 helpdocs_topic_id: n06yruxm0d

@@ -1,5 +1,5 @@
 ---
-title: Trigger pipelines using Git Events
+title: Trigger pipelines using Git events
 description: Trigger pipelines in response to git events.
 sidebar_position: 4
 helpdocs_topic_id: hndnde8usz
@@ -64,7 +64,7 @@ You add triggers in the pipeline Studio, in **Triggers**.
   
   :::note
 
-  Git webhook triggers do not support generic Git connectors. You must create provider-specific connectors for each provider (Github, GitLab, Bitbucket, etc) to use them with webhook triggers. For information on each Git provider connector, go to [Connect to a Git Repo](https://developer.harness.io/docs/platform/Connectors/connect-to-code-repo).
+  Git webhook triggers do not support generic Git connectors. You must create provider-specific connectors for each provider (Github, GitLab, Bitbucket, etc) to use them with webhook triggers. For information on each Git provider connector, go to [Connect to a Git Repo](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-code-repo).
 
   :::
 
@@ -105,13 +105,13 @@ To enforce authentication for all webhook triggers in this project, you can use 
 
 ![picture 2](static/6dee82fe88ab34915affa856d596d73c4a91fbbedf4784c2a8273db8a6f5b6b9.png)
 
-Now all Github webhooks for this project must be authenticated. All Github triggers in the project must be configured with a secret, and the corresponding webhooks in the Github repos must be configured with the corresponding secret.
+Now all Github webhooks for this project must be authenticated. All Github triggers in the project must be configured with a secret, and the corresponding webhooks in the Github repos must be configured with the corresponding secret. A secret manager with a delegate selector will use the corresponding delegate to decrypt it.
 
 ## Polling frequency
 
 
 :::note
-Currently, this feature is behind the feature flag `CD_GIT_WEBHOOK_POLLING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. By default, Harness Git-based triggers listen to Git events using webhooks. 
+Currently, this feature is only available for Github webhooks and is behind the feature flag `CD_GIT_WEBHOOK_POLLING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. By default, Harness Git-based triggers listen to Git events using webhooks. 
 
 :::
 
@@ -123,6 +123,12 @@ Permitted values:
 
 * minimum value: `2m`.
 * maxium value: `1h`.
+
+You will also need to enter the Github's webhook Id in **Webhook Id**, which can be found in your Github webhook settings page:
+
+<docimage path={require('./static/752891ea2d0d9bcee2511ad039994271c20f002eb525570b5bc8038915b85da1.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+
 
 ## Set trigger conditions
 

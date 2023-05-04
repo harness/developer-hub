@@ -1,5 +1,5 @@
 ---
-title: Send Notifications to Microsoft Teams
+title: Send notifications to Microsoft Teams
 description: This topic explains how to send user group notifications using Microsoft Teams.
 # sidebar_position: 2
 helpdocs_topic_id: xcb28vgn82
@@ -16,7 +16,7 @@ Setup is a simple process of generating a Webhook in Microsoft Teams and adding 
 
 ### Before you begin
 
-* See [User Group Notification Preferences](../4_Role-Based-Access-Control/4-add-user-groups.md#option-notification-preferences)
+* See [User Group Notification Preferences](../3_User-Management/4-add-user-groups.md#option-notification-preferences)
 
 ### Review: Requirements
 
@@ -61,7 +61,7 @@ Select the User Group to which you want to add notification preferences.
 
 In **Notification Preferences**, select **Microsoft Teams Webhook URL**.
 
-Paste the Webhook into **Microsoft Teams Webhook URL** or add it as an [Encrypted Text](../6_Security/2-add-use-text-secrets.md) in Harness and reference it here.
+Paste the Webhook into **Microsoft Teams Webhook URL** or add it as an [Encrypted Text](../Secrets/2-add-use-text-secrets.md) in Harness and reference it here.
 
 For example, if you have a text secret with the identifier `teamswebhookURL`, you can reference it like this: ​
 

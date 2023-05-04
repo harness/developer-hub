@@ -2,56 +2,46 @@
 id: ec2-stop-by-tag
 title: EC2 stop by tag
 ---
+## Introduction
 
-EC2 stop by tag stops an EC2 instance using the provided tag.
-- It brings back the instance after a specific duration. 
-- It checks the performance of the application (or process) running on the EC2 instance.
-- When the `MANAGED_NODEGROUP` environment variable is enabled, the fault will not try to start the instance after chaos. Instead, it checks for the addition of a new node instance to the cluster.
+EC2 stop by tag stops an EC2 instance using the provided tag and brings back the instance after a specific duration. When the `MANAGED_NODEGROUP` environment variable is enabled, the fault will not try to start the instance after chaos. Instead, it checks for the addition of a new node instance to the cluster.
 
 
 ![EC2 Stop By Tag](./static/images/ec2-stop-by-tag.png)
 
-## Usage
+## Use cases
+EC2 stop by tag:
+- Determines the performance of the application (or process) running on the EC2 instance.
+- Determines the resilience of an application to unexpected halts in the EC2 instance by validating its failover capabilities.
 
-<details>
-<summary>View fault usage</summary>
-<div>
-This fault determines the resilience of an application to unexpected halts in the EC2 instance by validating its failover capabilities.
-</div>
-</details>
+:::info note
+- Kubernetes version 1.17 or later is required to execute the fault.
+- Appropriate AWS access to stop and start an EC2 instance. 
+- The EC2 instances should be in a healthy state.
+- The Kubernetes secret should have the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is the sample secret file.
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXX
+  ```
+- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template, and you won't be able to use the default health check probes. 
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+- Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::
 
-## Prerequisites
-
-- Kubernetes > 1.16.
-- Ensure that you have sufficient AWS access to stop and start an EC2 instance. 
-- Ensure to create a Kubernetes secret having the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is the sample secret file.
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXX
-```
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-### Warning
-
+:::warning
 If the target EC2 instance is a part of a self-managed nodegroup, ensure that you drain the target node if any application is running on it. Cordon the target node before running the fault so that the fault pods do not schedule on it.
+:::
 
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -77,24 +67,12 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
-
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-## Default validations
-
-The EC2 instances should be in a healthy state.
-
-
 
 ## Fault tunables
-
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+ <h3>Mandatory tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -109,10 +87,10 @@ The EC2 instances should be in a healthy state.
         <td> </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -147,17 +125,10 @@ The EC2 instances should be in a healthy state.
         <td> For example, 30s. </td>
       </tr>    
     </table>
-</details>
-
-## Fault examples
-
-### Common and AWS-specific tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Target single instance
 
-It will stop a random single EC2 instance with the given `INSTANCE_TAG` tag and the `REGION` region.
+Random EC2 instance that is stopped. Tune it by using the `INSTANCE_TAG` tag and `REGION` region.
 
 You can tune it using the following example.
 
@@ -186,9 +157,9 @@ spec:
 
 ### Target Percent of instances
 
-It will stop the `INSTANCE_AFFECTED_PERC` percentage of EC2 instances with the given `INSTANCE_TAG` tag and `REGION` region.
+Percentage of EC2 instancs to stop, based on the `INSTANCE_TAG` tag and `REGION` region. Tune it by using the `INSTANCE_AFFECTED_PERC` environment variable.
 
-You can tune it using the following example.
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-stop-by-tag/instance-affected-percentage.yaml yaml)
 ```yaml

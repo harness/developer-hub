@@ -1,5 +1,5 @@
 ---
-title: Harness CD GitOps Tutorial
+title: Harness CD GitOps tutorial
 description: This topic describes how to use Harness GitOps to deploy services by syncing the Kubernetes manifests in your source repos with your target clusters.
 sidebar_position: 2
 helpdocs_topic_id: pptv7t53i9
@@ -224,7 +224,7 @@ You will also provide the credentials to use when connecting to the target clust
 8. In **Authentication**, select **Service Account**.
 9.  In **Service Account Token**, paste in the Service Account Token for the cluster's **default** namespace.
 
-To use a Kubernetes Service Account (SA) and token, you will need to either use an existing SA that has `cluster-admin` or *admin* permissions in the namespace, or create a new SA and grant it the permissions. This is described in [Add a Kubernetes Cluster Connector](../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md).
+To use a Kubernetes Service Account (SA) and token, you will need to either use an existing SA that has `cluster-admin` or *admin* permissions in the namespace, or create a new SA and grant it the permissions. This is described in [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
 
 Here's an example of a SA and ClusterRoleBinding with `cluster-admin`:
 

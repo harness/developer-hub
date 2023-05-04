@@ -2,8 +2,8 @@ import {
   CardItem,
   CardSections,
   docType,
-} from "../../LandingPage/TutorialCard";
-import { MODULES } from "../../../constants"
+} from "@site/src/components/LandingPage/TutorialCard";
+import { MODULES } from "@site/src/constants"
 
 /* Define the cards - start */
 // Featured Tutorials
@@ -16,7 +16,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "8min",
-      link: "/tutorials/deploy-services/helm-argocd-gitops-k8s",
+      link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
     },
     {
       title: "Deploy a Helm Chart using CD Community Edition",
@@ -26,7 +26,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "10min",
-      link: "/tutorials/deploy-services/kubernetes/helm-chart",
+      link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
     },
   ];
   

@@ -1,5 +1,5 @@
 ---
-title: View and Compare Pipeline Executions
+title: View and compare pipeline executions
 description: view and compare the Harness Pipeline YAML used for each Pipeline execution
 sidebar_position: 9
 helpdocs_topic_id: n39cwsfvmj
@@ -14,8 +14,8 @@ Comparing Pipeline YAML helps you see what changes took place between executions
 
 ### Before you begin
 
-* [CD Pipeline Basics](../../continuous-delivery/get-started/cd-pipeline-basics.md)
-* [CI Pipeline Basics](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md)
+* [CD Pipeline Basics](/docs/continuous-delivery/get-started/cd-pipeline-basics)
+* [CI pipeline concepts](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md)
 
 ### Limitations
 

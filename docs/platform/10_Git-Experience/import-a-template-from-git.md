@@ -1,5 +1,5 @@
 ---
-title: Import a Template From Git
+title: Import a template from Git
 description: This topic describes how to import various Templates from Git.
 sidebar_position: 6
 helpdocs_topic_id: etz5whjn5x
@@ -85,7 +85,7 @@ Create the branch in your repository before entering it in **Git Branch**. Harn
 :::
 
 
-10. Enter the **YAML Path** from where you want to import the Template. All your configurations are stored in Git in the [Harness Folder](harness-git-experience-overview.md#harness-folder).
+10. Enter the **YAML Path** from where you want to import the Template. All your configurations are stored in Git in the [Harness Folder](git-experience-overview.md#harness-folder).
 
    ![](./static/import-a-template-from-git-27.png)
 

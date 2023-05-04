@@ -1,5 +1,5 @@
 ---
-title: Manage access control for CCM dashboards
+title: Dashboards
 description: This topic describes how to add and manage access control for CCM Dashboards.
 # sidebar_position: 2
 helpdocs_topic_id: ng6yaxqi2r
@@ -7,6 +7,8 @@ helpdocs_category_id: ak4v1iorl3
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+# Manage access control for CCM dashboards
 
 Harness provides Role-Based Access Control (RBAC) that enables you to control user and group access to Harness Resources according to their role assignment.
 
@@ -97,7 +99,7 @@ Perform the following steps to limit the access to specific Dashboards for diffe
 1. In **Harness**, click **Access Control**.
    
      ![](./static/manage-access-control-for-ccm-dashboards-07.png)
-2. In **User**, in **New User**, select the User for which you want to add or modify the access control. For more information on adding and managing resource groups, see [Add and Manage Users](https://developer.harness.io/docs/platform/Role-Based-Access-Control/add-users).
+2. In **User**, in **New User**, select the User for which you want to add or modify the access control. For more information on adding and managing resource groups, see [Add and Manage Users](/docs/platform/User-Management/add-users).
 3. In **Assign Roles**, select the **Role** from the drop-down list. You can select either **Dashboard - Static Editor** or **Dashboard - All View**.
 4. In **Resource Groups**, select the resource group for which you want to add or modiy the access control.
    

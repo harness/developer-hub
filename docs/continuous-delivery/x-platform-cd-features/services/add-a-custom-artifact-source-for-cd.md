@@ -1,7 +1,7 @@
 ---
 title: Add a custom artifact source for CD
 description: This topic show you how to use a Harness Custom Artifact to fetch a JSON payload of the artifacts from your repo and then reference the artifact version to use in your deployment.
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 :::info
@@ -89,7 +89,7 @@ Enter the following settings.
 
   `HARNESS_ARTIFACT_RESULT_PATH` is a random, unique file path created on the Delegate by Harness.
 
-  You can use [Harness text secrets](/docs/platform/Security/add-use-text-secrets) in the script. For example:
+  You can use [Harness text secrets](/docs/platform/Secrets/add-use-text-secrets) in the script. For example:
 
   ```
   curl -u 'harness' <+secrets.getValue("repo_password")> https://myrepo.example.io/todolist/json/ > $HARNESS_ARTIFACT_RESULT_PATH

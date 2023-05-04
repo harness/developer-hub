@@ -64,7 +64,7 @@ Harness follows the Microsoft Style Guide:
 
 Since the final document is in Markdown, feel free to author in a tool of your choice and port to Markdown. 
 
-Vale is an excellent tool for validating spelling and style in Markdown **locally**. You can run [Vale](https://vale.sh/) aganist a specific file or project structure prior to submitting if you would like. 
+Vale is an excellent tool for validating spelling and style in Markdown **locally**. You can run [Vale](https://vale.sh/) aganist a specific file or project structure prior to submitting if you would like, locally. 
 
 ```
 #install
@@ -148,7 +148,7 @@ take a look at a [sample MD page ](http://developer.harness.io/tutorials/hdh/hdh
 on HDH. 
 
 ## Additional metadata
-When adding a new Markdown file, above the initial H1 tag, a `description` is needed for SEO. Below is an example for a [CI piece](https://github.com/harness/developer-hub/blob/main/tutorials/build-code/ci-node-docker-quickstart.md). Having `keywords` is recommended. 
+When adding a new Markdown file, above the initial H1 tag, a `description` is needed for SEO. Below is an example for a [CI piece](https://github.com/harness/developer-hub/blob/main/tutorials/ci-pipelines/build/ci-node-docker-quickstart.md). Having `keywords` is recommended. 
 
 ```
 ---

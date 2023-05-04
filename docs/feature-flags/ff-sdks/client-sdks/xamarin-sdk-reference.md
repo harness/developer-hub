@@ -1,5 +1,5 @@
 ---
-title: Xamarin SDK Reference
+title: Xamarin SDK reference
 description: This topic explains how to use the Harness Feature Flags SDK in your Xamarin application.
 sidebar_position: 60
 helpdocs_topic_id: x9mh0o785u
@@ -32,8 +32,8 @@ The current iOS version of this SDK is **0.5.1.**
 
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-xamarin-client-sdk)
 * Create a Xamarin application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-xamarin-client-sample).
-* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key)
+* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key)
 
 ## Xamarin for Android
 

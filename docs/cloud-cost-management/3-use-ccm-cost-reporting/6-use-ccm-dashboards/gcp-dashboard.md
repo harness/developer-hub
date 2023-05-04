@@ -1,5 +1,5 @@
 ---
-title: View GCP Cost Dashboard
+title: GCP Cost Dashboard
 description: This topic describes how to view By Harness GCP Cost Dashboard and get more information about that data.
 # sidebar_position: 2
 helpdocs_topic_id: tk55quhfi4
@@ -7,6 +7,8 @@ helpdocs_category_id: v3h3y6pya6
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+# View GCP Cost Dashboard
 
 Harness provides **By Harness** (pre-defined) and **Custom** (user-defined) Dashboards to visualize cloud cost data across clusters and cloud accounts. Using the GCP Cost Dashboard you can:
 

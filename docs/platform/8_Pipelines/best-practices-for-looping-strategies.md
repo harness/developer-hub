@@ -1,5 +1,5 @@
 ---
-title: Best Practices for Looping Strategies
+title: Best practices for looping strategies
 description: Review this topic before you implement a Matrix and Parallelism strategy in your pipeline.
 # sidebar_position: 2
 helpdocs_topic_id: q7i0saqgw4
@@ -53,9 +53,59 @@ Harness recommends that you determine the `maxConcurrency` for a specific Stage 
 2. Run the Pipeline and monitor the resource consumption for the overall Pipeline.
 3. Gradually increase the `maxConcurrency` based on each successive run until you reach a "happy medium" between your run times and resource consumption.
 
+### What is the best way to loop over items in a list or array using variables?
+
+Harness variable expressions support all Java String class built-in methods.
+
+You can create a Harness string variable containing a comma-separated list of other strings that represent items. At runtime, you can even get this list from the input.   
+
+The following example shows a pipeline variable that contains a list of Jira tickets:
+
+```
+# Variable: <+pipeline.variables.jiraTickets>
+HD-29193,HD-29194,HD-29195
+
+# YAML representation
+pipeline:
+  identifier: RepeatJiraTickets
+  variables:
+    - name: jiraTickets
+      type: String
+      value: HD-29193,HD-29194,HD-29195 // We have added the list of tickets to be comma separated
+```
+
+To split the variable into an array of substrings, use the `split()` method:
+
+```
+<+pipeline.variables.jiraTickets.split(',')>
+```
+
+The following example shows how to use the above expression in the `repeat` looping strategy:
+
+```
+repeat:
+  items: <+stage.variables.jiraTickets.split(',')>
+  maxConcurrency: 1
+```
+
+To refer to each item in the loop use the `<+repeat. Item>` expression:
+
+![Repeat with split()](./static/best-practices-for-looping-strategies-08.png)
+
+
+You can also create an axis for your matrix dynamically using the following expression:
+
+```
+matrix:
+  jira: <+stage.variables.jiraTickets.split(',')>
+```
+
+And use the `<+matrix.jira>` expression instead.
+
+
 ### See also
 
-* [Optimizing CI Build Times](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times)
+* [Optimizing CI Build Times](/docs/continuous-integration/troubleshoot/optimizing-ci-build-times/)
 * [How to Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)
 * [Looping Strategies Overview: Matrix, Repeat, and Parallelism](looping-strategies-matrix-repeat-and-parallelism.md)
 * [Speed Up CI Test Pipelines Using Parallelism](../8_Pipelines/speed-up-ci-test-pipelines-using-parallelism.md)

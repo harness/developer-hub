@@ -1,5 +1,5 @@
 ---
-title: Create Organizations and Projects
+title: Create organizations and projects
 description: Harness Organizations (Orgs) allow you to group projects that share the same goal. For example, all projects for a business unit or division. A Harness Project is a group of Harness modules and their…
 sidebar_position: 20
 helpdocs_topic_id: 36fw2u92i4

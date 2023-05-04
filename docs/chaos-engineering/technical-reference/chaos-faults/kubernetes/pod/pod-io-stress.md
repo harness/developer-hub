@@ -2,116 +2,99 @@
 id: pod-io-stress
 title: Pod IO stress
 ---
+## Introduction
 
-Pod I/O stress is a Kubernetes pod-level chaos fault that causes IO stress on the application pod by spiking the number of input and output requests.
-- Aims to verify the resiliency of applications that share this disk resource for ephemeral (or persistent) storage.
+Pod I/O stress is a Kubernetes pod-level chaos fault that causes I/O stress on the application pod by increasing the number of input and output requests. Applying stress on the disk with continuous and heavy I/O degrades the reads and writes with respect to the microservices. Scratch space consumed on a node may lead to lack of memory for new containers to be scheduled. All these aspects increase resilience to stress. 
 
 ![Pod IO Stress](./static/images/pod-io-stress.png)
 
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-Disk pressure or CPU hog affects Kubernetes applications that results in the eviction of the application replica and impacts its delivery. These issues are referred to as "noisy neighbour" problems.
-It simulates slower disk operations by the application and nosiy neighbour problems by hogging the disk bandwidth. It also verifies the disk performance on increasing I/O threads and varying I/O block sizes. It checks if the application functions under high disk latency conditions, when I/O traffic is very high and includes large I/O blocks, and when other services monopolize the I/O disks. 
-Stressing the disk with continuous and heavy I/O can degrade the reads and writes with respect to the microservices. Scratch space consumed on a node may lead to lack of memory for new containers to be scheduled. These faults helps build immunity to such stress cases.
-</div>
-</details>
+## Use cases
+Pod IO stress:
+- Aims to verify the resilience of applications that share the disk resource for ephemeral (or persistent) storage.
+- Simulates slower disk operations by the application.
+- Simulates noisy neighbour problems by hogging the disk bandwidth.
+- Verifies the disk performance on increasing I/O threads and varying I/O block sizes. 
+- Checks how the application functions under high disk latency conditions and when I/O traffic is very high.
+- Checks how the application functions under large I/O blocks, and when other services monopolize the I/O disks. 
 
-## Prerequisites
-
-- Kubernetes> 1.16.
-
-
-## Default validations
-
-The application pods should be in running state before and after chaos injection.
-
+:::info note
+- Kubernetes> 1.16 is required to execute this fault.
+- The application pods should be in the running state before and after injecting chaos.
+:::
 
 ## Fault tunables
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Optional fields</h2>
+
+  <h3>Optional tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
-        <td> Specify the size as percentage of free space on the file system </td>
-        <td> Default to 10%</td>
+        <td> Specifies the size as a percentage of free space on the file system. </td>
+        <td> Default: 10 %. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress#filesystem-utilization-percentage"> file system utilization percentage </a></td>
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
-        <td> Specify the size in GigaBytes(GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> & <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> is prioritized. </td>
+        <td> Specifies the size in gigabytes (GB). <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> and <code>FILESYSTEM_UTILIZATION_BYTES</code> are mutually exclusive. If both the values are provided, <code>FILESYSTEM_UTILIZATION_PERCENTAGE</code> takes priority. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress#filesystem-utilization-bytes"> file system utilization bytes</a></td>
         <td> </td>
       </tr>
       <tr>
         <td> NUMBER_OF_WORKERS </td>
-        <td> It is the number of IO workers involved in IO disk stress </td>
-        <td> Default to 4 </td>
+        <td> Number of IO workers involved in IO disk stress. </td>
+        <td> Default: 4. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress#workers-for-stress">workers for stress</a></td>
       </tr> 
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The time duration for chaos (seconds) </td>
-        <td> Default to 120s </td>
+        <td> Duration for which to insert chaos (in seconds). </td>
+        <td> Default: 120 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos </a></td>
       </tr>
       <tr>
         <td> VOLUME_MOUNT_PATH </td>
-        <td> Fill the given volume mount path</td>
-        <td> </td>
-      </tr>
-      <tr>
-        <td> LIB_IMAGE </td>
-        <td> Image used to run the stress command </td>
-        <td> Default to <code>litmuschaos/go-runner:latest</code> </td>
-      </tr>  
+        <td> Fill the given volume mount path. </td>
+        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-stress#mount-path"> mount path</a></td>
+      </tr> 
       <tr>
         <td> TARGET_PODS </td>
-        <td> Comma separated list of application pod name subjected to pod io stress chaos</td>
-        <td> If not provided, it will select target pods randomly based on provided appLabels</td>
+        <td> Comma-separated list of application pod names subject to pod IO stress. </td>
+        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a></td>
       </tr>  
       <tr>
         <td> PODS_AFFECTED_PERC </td>
-        <td> The Percentage of total pods to target </td>
-        <td> Defaults to 0 (corresponds to 1 replica), provide numeric value only </td>
+        <td> Percentage of total pods to target. Provide numeric values. </td>
+        <td> Default: 0 (corresponds to 1 replica). For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#pod-affected-percentage">pod affected percentage</a></td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
-        <td> container runtime interface for the cluster</td>
-        <td> Defaults to containerd, supported values: docker, containerd and crio </td>
+        <td> Container runtime interface for the cluster. </td>
+        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">container runtime </a> </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
-        <td> Path of the containerd/crio/docker socket file </td>
-        <td> Defaults to <code>/run/containerd/containerd.sock</code> </td>
+        <td> Path of the containerd or crio or docker socket file. </td>
+        <td> Default: <code>/run/containerd/containerd.sock</code> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-dns-error#container-runtime-and-socket-path">socket path</a></td>
       </tr>    
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injection of chaos in sec </td>
-        <td> For example, 30 </td>
+        <td> Period to wait before and after injecting chaos (in seconds). </td>
+        <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> It defines sequence of chaos execution for multiple target pods </td>
-        <td> Default value: parallel. Supported: serial, parallel </td>
+        <td> Sequence of chaos execution for multiple target pods. </td>
+        <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution">sequence of chaos execution</a></td>
       </tr>
     </table>
-</details>
 
-## Fault examples
 
-### Common and pod-specific tunables
-Refer to the [common attributes](../../common-tunables-for-all-faults) and [pod-specific tunables](./common-tunables-for-pod-faults) to tune the common tunables for all fault and pod specific tunables.
+### File system utilization percentage
 
-### Filesystem utilization percentage
+Amount (in percentage) of free space in the pod. Tune it by using the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable.
 
-It stresses the `FILESYSTEM_UTILIZATION_PERCENTAGE` percentage of total free space available in the pod.
-
-Use the following example to tune this:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]: # "./static/manifests/pod-io-stress/filesystem-utilization-percentage.yaml yaml"
 
@@ -143,12 +126,12 @@ spec:
               VALUE: "60"
 ```
 
-### Filesystem utilization bytes
+### File system utilization bytes
 
-It stresses the `FILESYSTEM_UTILIZATION_BYTES` GB of the i/o of the targeted pod.
-It is mutually exclusive with the `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV. If `FILESYSTEM_UTILIZATION_PERCENTAGE` ENV is set then it will use the percentage for the stress otherwise, it will stress the i/o based on `FILESYSTEM_UTILIZATION_BYTES` ENV.
+Amount of free space available in the pod in gigabytes (GB). Tune it by using the `FILESYSTEM_UTILIZATION_BYTES` environment variable.
+`FILESYSTEM_UTILIZATION_PERCENTAGE` and `FILESYSTEM_UTILIZATION_BYTES` environment variables are mutually exclusive. If both the values are provided, `FILESYSTEM_UTILIZATION_PERCENTAGE` takes priority.
 
-Use the following example to tune this:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]: # "./static/manifests/pod-io-stress/filesystem-utilization-bytes.yaml yaml"
 
@@ -182,12 +165,12 @@ spec:
 
 ### Container runtime and socket path
 
-It defines the `CONTAINER_RUNTIME` and `SOCKET_PATH` ENV to set the container runtime and socket file path.
+The `CONTAINER_RUNTIME` and `SOCKET_PATH` environment variables to set the container runtime and socket file path, respectively.
 
 - `CONTAINER_RUNTIME`: It supports `docker`, `containerd`, and `crio` runtimes. The default value is `containerd`.
 - `SOCKET_PATH`: It contains path of containerd socket file by default(`/run/containerd/containerd.sock`). For `docker`, specify path as `/var/run/docker.sock`. For `crio`, specify path as `/var/run/crio/crio.sock`.
 
-Use the following example to tune this:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]: # "./static/manifests/pod-io-stress/container-runtime-and-socket-path.yaml yaml"
 
@@ -223,9 +206,9 @@ spec:
 
 ### Mount path
 
-The volume mount path, which needs to be filled. It can be tuned with `VOLUME_MOUNT_PATH` ENV.
+Volume mount path that is to be filled. Tune it by using the `VOLUME_MOUNT_PATH` environment variable.
 
-Use the following example to tune this:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]: # "./static/manifests/pod-io-stress/mount-path.yaml yaml"
 
@@ -257,9 +240,9 @@ spec:
 
 ### Workers for stress
 
-The worker's count for the stress can be tuned with `NUMBER_OF_WORKERS` ENV.
+Number of workers for the stress. Tune it by using the `NUMBER_OF_WORKERS` environment variable.
 
-Use the following example to tune this:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]: # "./static/manifests/pod-io-stress/workers.yaml yaml"
 

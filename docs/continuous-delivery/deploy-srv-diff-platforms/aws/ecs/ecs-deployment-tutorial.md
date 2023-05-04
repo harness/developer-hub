@@ -1,7 +1,7 @@
 ---
-title: ECS deployment tutorial
+title: ECS deployments
 description: This topic walks you through deploying services to AWS ECS clusters using Harness.
-sidebar_position: 11
+sidebar_position: 1
 helpdocs_topic_id: vytf6s0kwc
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
@@ -474,7 +474,7 @@ We'll create a Harness AWS Connector to connect to your AWS account using the IA
 4. In Credentials, enter the following and click **Continue**:
 	1. Select **AWS Access Key**.
 	2. **Access Key:** enter the IAM User access key.
-	3. **Secret Key:** add a new Harness Secret using the access key's secret key. Secrets are always stored in encrypted form and decrypted only when they are needed. To learn more about Harness secrets, go to [Harness Secrets Management Overview](/docs/platform/Security/harness-secret-manager-overview).
+	3. **Secret Key:** add a new Harness Secret using the access key's secret key. Secrets are always stored in encrypted form and decrypted only when they are needed. To learn more about Harness secrets, go to [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
 	4. **Test Region:** US East (Virginia).
 5. In **Connect to the provider**, click **Connect through a Harness Delegate**, and then click **Continue**.
 6. In **Delegates Setup**, click **Only use Delegates with all of the following tags**, and then enter the tag of the Delegate you set up earlier.
@@ -631,7 +631,7 @@ Harness can fetch your task definitions, service definitions, scalable target an
 
 - Harness File Store.
 - AWS S3 buckets.
-  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](/docs/platform/Connectors/ref-cloud-providers/aws-connector-settings-reference).
+  - For S3, you use a Harness AWS Connector. The IAM role permissions required by Harness for S3 are described in [AWS Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 - Git providers.
 
 ### AWS Auto Scaling with ECS
@@ -1159,7 +1159,7 @@ With the above Service Registry ARN specified in ECS Service Definition ,deploye
 
 :::note
 
-Circuit breaker configuration can be applied to Harness ECS rolling and canary deployments only.
+Circuit breaker configuration can be applied to Harness ECS rolling and canary deployments only. **This feature is only available in Harness CD NextGen.**
 
 :::
 

@@ -1,5 +1,5 @@
 ---
-title: Custom deployments using Deployment Templates tutorial
+title: Custom deployments using Deployment Templates
 description: This topic walks you through a custom deployment in Harness using Deployment Templates to connect to target platforms, obtain target host information, and execute deployment steps.
 sidebar_position: 10
 helpdocs_topic_id: 6k9t49p6mn
@@ -58,11 +58,11 @@ Unlike the deployments for supported platforms, like Kubernetes and AWS, Deploym
 
 * All artifact providers and [Custom artifact](/docs/continuous-delivery/x-platform-cd-features/services/add-a-custom-artifact-source-for-cd) are supported:  
 
+|        **Type**         | **Nexus3** | **Artifactory** | **Jenkins** | **Amazon S3** | **Docker Registry** | **AWS ECR** | **GCR** | **ACR** | **Google Artifact Registry** | **Custom** | **GCS** | **Bamboo** | **AMI** | **Azure Artifacts** |
+| ----------------------- | ---------- | --------------- | ----------- | ------------- | ------------------- | ----------- | ------- | ------- | ---------------------------- | ---------- | ------- | ---------- | ------- | ------------------- |
+| Docker                  | ✅          | ✅               |             |               | ✅                   | ✅           | ✅       | ✅       |                              | ✅          | ✅       | ✅          |         |                     |
+| Other (ZIP, Jobs, etc.) | ✅          | ✅               | ✅           | ✅             |                     |             |         |         | ✅                            | ✅          |         | ✅          | ✅       | ✅                   |
 
-| **Type** | **Nexus3** | **Artifactory** | **Jenkins** | **Amazon S3** | **Docker Registry** | **AWS ECR** | **GCR** | **ACR** | **Google Artifact Registry** | **Custom** |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Docker | x | x |  |  | x | x | x | x |  |  |
-| Other(ZIP, Jobs, etc.) |  | x | x | x |  |  |  |  | x | x |
 * No steady state checks on deployed services.
 * Harness does not track releases.
 

@@ -1,5 +1,5 @@
 ---
-title: View the Analytics of Your Flags
+title: View the analytics for your flags
 description: This topic describes how to view the metrics of a feature flag.
 sidebar_position: 30
 helpdocs_topic_id: wb2nmcpo9x
@@ -13,8 +13,6 @@ Metrics allow you to view the following details of a feature flag for the select
 * Variations
 * Number of flag evaluations for each variation
 * Total number of evaluations![A screenshot of Feature Flag metrics on the Harness Platform.](./static/3-view-metrics-02.png)
-
-*Figure 1: An example of Feature Flag analytics*
 
 ## View Feature Flag metrics
 

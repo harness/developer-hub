@@ -8,14 +8,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can scan your container images using [Bandit](https://github.com/PyCQA/bandit), an open-source tool designed to find common security issues in Python code. 
+You can scan your code repositories using [Bandit](https://github.com/PyCQA/bandit), an open-source tool designed to find common security issues in Python code. 
 
 
 <!-- START step-palette-config ----------------------------------------------------------------------------- -->
 
 ## Bandit step configuration
 
-The recommended workflow is to add an Bandit step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Banditscans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is to add a Bandit step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Bandit scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
 
 ```mdx-code-block
 import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
@@ -158,10 +158,10 @@ You can add a `tool_args` setting to run the [bandit scanner binary](https://pyp
 
 In the **Additional Configuration** settings, you can use the following options:
 
-* [Privileged](/docs/continuous-integration/ci-technical-reference/background-step-settings/#privileged)
-* [Image Pull Policy](/docs/continuous-integration/ci-technical-reference/background-step-settings/#image-pull-policy)
-* [Run as User](/docs/continuous-integration/ci-technical-reference/background-step-settings/#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/ci-technical-reference/background-step-settings/#set-container-resources)
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
 
 
 ### Advanced settings
@@ -171,7 +171,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
 

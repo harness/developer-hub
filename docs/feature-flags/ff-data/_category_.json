@@ -1,6 +1,6 @@
 {
-    "label": "Get Data on Your Feature Flags",
-    "position": 30,
+    "label": "Get data on your flags",
+    "position": 40,
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",

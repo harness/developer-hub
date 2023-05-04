@@ -1,5 +1,5 @@
 ---
-title: Control Resource Usage with Queue Steps
+title: Control resource usage with Queue steps
 description: This topic describes how to use the Queue step to control the access order to the resources Harness requests during a deployment and prevent multiple Pipelines from requesting the same resources at the same time.
 sidebar_position: 3
 helpdocs_topic_id: 5n96cc7cyo
@@ -42,7 +42,7 @@ In **Advanced**, you can use the following options:
 * [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ### Test
 

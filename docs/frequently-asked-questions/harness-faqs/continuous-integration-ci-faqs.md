@@ -26,7 +26,7 @@ In this topic:
 
 ## How can a step call a service started by a Background step?
 
-For information about calling services started by Background steps, go to **Important notes** and **Port Bindings** in [Background step settings](../continuous-integration/ci-technical-reference/../../../continuous-integration/ci-technical-reference/background-step-settings.md).
+For information about calling services started by Background steps, go to **Important notes** and **Port Bindings** in [Background step settings](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings.md).
 
 ## What is the timeout limit for a CI pipeline?
 
@@ -52,11 +52,11 @@ When configuring permissions for a GitHub personal access token (PAT) that you'l
 
 :::caution
 
-When you enable API authentication in a GitHub connector (recommended), use the same personal access token for both [Authentication](/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference#personal-access-token) and [API authentication](/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access).
+When you enable API authentication in a GitHub connector (recommended), use the same personal access token for both [Authentication](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#personal-access-token) and [API authentication](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference#enable-api-access).
 
 :::
 
-For more information, go to the [GitHub connector settings reference](/docs/platform/Connectors/ref-source-repo-provider/git-hub-connector-settings-reference).
+For more information, go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 
 ## What permissions are required to run CI builds in an OpenShift cluster?
 

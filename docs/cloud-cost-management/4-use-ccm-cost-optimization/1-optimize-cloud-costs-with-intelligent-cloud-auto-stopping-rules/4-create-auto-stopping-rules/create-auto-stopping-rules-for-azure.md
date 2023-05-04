@@ -148,6 +148,10 @@ In certain scenarios, you would not want your resources to go down or up. For ex
 The fixed schedule takes precedence over the defined AutoStopping Rule.
 :::
 
+:::note
+Harness executes scheduled rules using [Dkron](https://dkron.io/), an open-source workload automation service.
+:::
+
 To create a fixed schedule for your rule, do the following:
 
 1. In **Fixed Schedules**, click **Add Fixed Schedule**.
@@ -225,7 +229,6 @@ The list populates the application gateway if the application gateway has previo
 :::note
  Multiple instances and rules can use a single application gateway. It identifies instances based on hostnames and directs the HTTP traffic appropriately.
 :::
-
 
 
 

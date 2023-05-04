@@ -1,5 +1,5 @@
 ---
-title: Harness Community Edition deployment tutorial
+title: Harness Community Edition deployments
 description: This topic walks you through deploying setting up Harness CD Community Edition locally and creating and deploying a CD pipeline.
 sidebar_position: 2
 ---
@@ -415,6 +415,10 @@ We are updating builds on a daily basis to fix issues and add features. To upgra
 2. Run `git pull` in a terminal in the **harness-cd-community** folder.
 3. Run `docker-compose down` in the **harness-cd-community/docker-compose/harness** folder.
 4. Run `docker-compose up -d` in the **harness-cd-community/docker-compose/harness** folder.
+
+:::note
+ You must manually pull the delegate image after the delegate is disconnected. This updates the version and allows you to restart.
+:::
 
 ### Next Steps
 

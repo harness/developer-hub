@@ -201,7 +201,7 @@ The following topics will walk you through how Harness implements common deploym
 * [​AWS Elastic Container Service (ECS)](../continuous-delivery/aws-deployments/ecs-deployment/ecs-deployments-overview.md)
 * [AWS Lambda](/docs/category/aws-lambda-deployments)
 * [​Azure](/docs/category/azure-deployments-and-provisioning)
-* [CI/CD: Artifact Build and Deploy Pipelines](docs/category/cicd-artifact-build-and-deploy-pipelines)
+* [CI/CD: Artifact Build and Deploy Pipelines](#cicd-artifact-build-and-deploy-pipelines)
 * [Google Cloud](/docs/category/google-cloud)
 * [Native Helm](/docs/category/native-helm-deployments)
 * [​IIS (.NET)](../continuous-delivery/dotnet-deployments/iis-net-deployment.md)

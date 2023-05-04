@@ -115,7 +115,7 @@ export default function CertificationsCI() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Continuous Integration - Developer (BETA)</h2>
+                  <h2>Continuous Integration - Developer</h2>
                   <img
                     src={`${baseUrl}img/cert_dev_cI_badge.svg`}
                     alt="Harness Certified Expert - CI Developer"
@@ -140,7 +140,7 @@ export default function CertificationsCI() {
                         Register for Exam
                       </button>
                     </Link>
-                    <Link href="/tutorials/build-code">
+                    <Link href="/tutorials/ci-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -164,7 +164,7 @@ export default function CertificationsCI() {
                     Register for Exam
                   </button>
                 </Link>
-                <Link href="/tutorials/build-code">
+                <Link href="/tutorials/ci-pipelines">
                   <button className={styles.startLearning}>
                     <span>Start Learning</span>
                     <i className="fa-solid fa-arrow-right"></i>
@@ -218,7 +218,7 @@ export default function CertificationsCI() {
                   {/*
                   <AdministratorCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="/tutorials/deploy-services">
+                    <Link href="/tutorials/cd-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -273,7 +273,7 @@ export default function CertificationsCI() {
                   {/*
                   <ArchitectCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="/tutorials/deploy-services">
+                    <Link href="/tutorials/cd-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>

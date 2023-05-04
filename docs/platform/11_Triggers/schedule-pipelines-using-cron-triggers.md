@@ -1,5 +1,5 @@
 ---
-title: Schedule Pipelines using Triggers
+title: Schedule pipelines using triggers
 description: Schedule Pipeline executions using Cron-based Triggers.
 sidebar_position: 1
 helpdocs_topic_id: 4z9mf24m1b
@@ -17,8 +17,8 @@ For general Triggers reference, see [Triggers Reference](../8_Pipelines/w_pipel
 ### ​Before you begin
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [Kubernetes CD Quickstart](../../continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
-* [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
+* [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
+* [CI pipeline tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
 
 ### ​Step 1: Add a trigger to a pipeline​
 

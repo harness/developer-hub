@@ -1,5 +1,5 @@
 ---
-title: Send Notifications Using Slack
+title: Send notifications using Slack
 description: This topic explains how to send user group notifications using slack.
 # sidebar_position: 2
 helpdocs_topic_id: h5n2oj8y5y
@@ -8,14 +8,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can notify your User Group members using Slack as one of the notification channels. To do this, add a Slack Incoming Webhook into your Harness User Groups' [Notification Preferences](../4_Role-Based-Access-Control/4-add-user-groups.md#option-notification-preferences).
+You can notify your User Group members using Slack as one of the notification channels. To do this, add a Slack Incoming Webhook into your Harness User Groups' [Notification Preferences](../3_User-Management/4-add-user-groups.md#option-notification-preferences).
 
 Then you can add your User Group to a Notification Strategy and receive alert info in Slack.
 
 
 ### Before you begin
 
-* See [User Group Notification Preferences](../4_Role-Based-Access-Control/4-add-user-groups.md#option-notification-preferences)
+* See [User Group Notification Preferences](../3_User-Management/4-add-user-groups.md#option-notification-preferences)
 
 ### Visual Summary
 
@@ -37,7 +37,7 @@ Copy the Webhook.
 2. Click **User Groups**.
 3. Select the User Group to which you want to add notification preferences.
 4. In **Notification Preferences**, select **Slack Webhook URL**.
-5. Paste the Webhook into **Slack Webhook URL**  or add it as an [Encrypted Text](../6_Security/2-add-use-text-secrets.md) in Harness and reference it here.  
+5. Paste the Webhook into **Slack Webhook URL**  or add it as an [Encrypted Text](../Secrets/2-add-use-text-secrets.md) in Harness and reference it here.  
 For example, if you have a text secret with the identifier slackwebhookURL, you can reference it like this:
 ```
 <+secrets.getValue("slackwebhookURL")>​​

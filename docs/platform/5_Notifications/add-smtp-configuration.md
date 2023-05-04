@@ -1,5 +1,5 @@
 ---
-title: Add SMTP Configuration
+title: Add SMTP configuration
 description: Explains how to configure SMTP for email-based deployment notifications, approvals, and tracking.
 # sidebar_position: 2
 helpdocs_topic_id: d43r71g20s
@@ -19,7 +19,7 @@ If you are using the Harness On-Prem offering, then you will need to add an SMTP
 
 ### Before you begin
 
-* [User Group Notification Preferences](../4_Role-Based-Access-Control/4-add-user-groups.md#option-notification-preferences)
+* [User Group Notification Preferences](../3_User-Management/4-add-user-groups.md#option-notification-preferences)
 
 ### Limitations
 

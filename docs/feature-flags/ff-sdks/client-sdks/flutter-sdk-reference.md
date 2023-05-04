@@ -1,5 +1,5 @@
 ---
-title: Flutter SDK Reference
+title: Flutter SDK reference
 description: This topic explains how to use the Feature Flags (FF) SDK in your Flutter application.
 sidebar_position: 20
 helpdocs_topic_id: mmf7cu2owg
@@ -34,15 +34,14 @@ To use this SDK, make sure you:
 * Install the [Flutter SDK, version 2.10.4 or higher](https://docs.flutter.dev/get-started/install).
 * (For iOS apps) Install [Xcode](https://docs.flutter.dev/get-started/install/macos#install-xcode).
 * (For Android apps) Install [Android Studio](https://developer.android.com/studio?gclid=CjwKCAjwp7eUBhBeEiwAZbHwkRqdhQkk6wroJeWGu0uGWjW9Ue3hFXc4SuB6lwYU4LOZiZ-MQ4p57BoCvF0QAvD_BwE&gclsrc=aw.ds), or install the Android SDK for Command-Line Interface (CLI) only.
-
-:::note
-To check if you have installed the prerequisites, run the `flutter doctor` command. 
-:::
-
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-flutter-client-sdk)
 * Create a Flutter application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-flutter-client-sdk).
-* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key).
+* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
+
+:::info note
+To check if you have installed the prerequisites, run the `flutter doctor` command. 
+:::
 
 ## Install the SDK
 
@@ -76,7 +75,7 @@ To initialize the Flutter SDK, you need to:
 Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
-For more information about Targets, go to [Targeting Users With Flags](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md).
+For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
 To add a Target, build it and pass in arguments for the following:
 
@@ -154,7 +153,7 @@ var conf = CfConfigurationBuilder()
 
 To initialize the SDK, you must pass in the following:
 
-* `apiKey` - The Client SDK Key you created when [creating the Feature Flag](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key).
+* `apiKey` - The Client SDK Key you created when creating the Feature Flag.
 * Any configuration options you want to use.
 * The Target you want to evaluate.
 

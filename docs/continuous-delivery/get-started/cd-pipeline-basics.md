@@ -1,7 +1,7 @@
 ---
 title: CD pipeline basics
 description: This topic covers CD pipeline basics to get you ready to start building pipelines easily.
-sidebar_position: 1
+sidebar_position: 2
 helpdocs_topic_id: cqgeblt4uh
 helpdocs_category_id: dxej4ug0n5
 helpdocs_is_private: false
@@ -107,9 +107,9 @@ For example, a GitHub Connector authenticates with a GitHub account and repo and
 
 For example, see:
 
-* [Add a Kubernetes Cluster Connector](../../platform/7_Connectors/add-a-kubernetes-cluster-connector.md)
-* [Docker Connector Settings Reference](../../platform/7_Connectors/ref-cloud-providers/docker-registry-connector-settings-reference.md)
-* [Git Connector Settings Reference](../../platform/7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md)
+* [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector)
+* [Docker Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
+* [Git Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
 
 #### Permissions
 

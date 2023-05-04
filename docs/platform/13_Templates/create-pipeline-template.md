@@ -1,5 +1,5 @@
 ---
-title: Create a Pipeline Template
+title: Create a pipeline template
 description: This quickstart walks you through the steps to create a Pipeline Template.
 sidebar_position: 3
 helpdocs_topic_id: gvbaldmib5
@@ -126,7 +126,7 @@ In **Infrastructure Definition**, select the method for Harness to reach your Ku
 
 In **Cluster Details**, enter **Connector** and **Namespace** details. Harness Pipelines allow you to use [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md) also.
 
-In **Connector**, select a Connector from the drop-down list. To create a new Connector, see [Kubernetes Cluster Connector Settings Reference](../7_Connectors/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md) and [Add a Kubernetes Cluster Connector](../7_Connectors/add-a-kubernetes-cluster-connector.md).
+In **Connector**, select a Connector from the drop-down list. To create a new Connector, see [Kubernetes Cluster Connector Settings Reference](../7_Connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md) and [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
 
 In **Namespace**, enter the namespace. For example, default.
 
@@ -138,7 +138,7 @@ Click **Next**. The **Execution Strategies** settings appear.
 
 ### Step 5: Define Execution Strategies
 
-In **Execution Strategies**, select the deployment strategy for your Pipeline Template. We've used **Rolling** in this document. For more information on different execution strategies, see [Deployment Concepts and Strategies](../../continuous-delivery/manage-deployments/deployment-concepts.md).
+In **Execution Strategies**, select the deployment strategy for your Pipeline Template. We've used **Rolling** in this document. For more information on different execution strategies, see [Deployment Concepts and Strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts/).
 
 Click **Use Strategy**.
 

@@ -1,7 +1,7 @@
 ---
 title: CI pipeline concepts
 description: Basic terminology and concepts related to CI pipelines
-sidebar_position: 20
+sidebar_position: 30
 helpdocs_topic_id: 3amcd8hn53
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false
@@ -52,7 +52,7 @@ Harness CI includes an extensive Step Library for common CI tasks: building arti
 
 ## Tests
 
-In a CI pipeline, you can run a variety of tests, such as integration tests, functional tests, and unit tests. To do this, you can use a [Run Tests step](../ci-technical-reference/configure-run-tests-step-settings.md) or a [Run step](../use-ci/run-ci-scripts/run-a-script-in-a-ci-stage.md). You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md).
+In a CI pipeline, you can run a variety of tests, such as integration tests, functional tests, and unit tests. To do this, you can use a [Run Tests step](../use-ci/set-up-test-intelligence/configure-run-tests-step-settings.md) or a [Run step](../use-ci/run-ci-scripts/run-a-script-in-a-ci-stage.md). You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md).
 
 ### Test Intelligence
 
@@ -64,13 +64,13 @@ Plugins perform predefined tasks, such as deploying code, publishing artifacts, 
 
 Docker Plugins are Docker containers that perform predefined tasks and run in **Plugin** steps. The Drone community maintains an [extensive plugin library](https://plugins.drone.io/) for specific CI workflows. You can customize and extend your build processes using existing plugins or [write your own plugins](https://harness.io/blog/continuous-integration/write-first-plugin-for-cie/).
 
-For more information, go to [Use Plugins](/docs/category/use-plugins/), [Plugin step settings](../ci-technical-reference/plugin-steps/plugin-step-settings-reference.md), and [Run a Drone plugin in CI](../use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md).
+For more information, go to [Use Plugins](/docs/category/use-plugins/), [Plugin step settings](../use-ci/use-drone-plugins/plugin-step-settings-reference.md), and [Run a Drone plugin in CI](../use-ci/use-drone-plugins/run-a-drone-plugin-in-ci.md).
 
-If you're using Harness Cloud build infrastructure, you can also use the [GitHub Action plugin step](../ci-technical-reference/plugin-steps/ci-github-action-step.md) and [Bitrise plugin step](../ci-technical-reference/plugin-steps/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
+If you're using Harness Cloud build infrastructure, you can also use the [GitHub Action plugin step](../use-ci/use-drone-plugins/ci-github-action-step.md) and [Bitrise plugin step](../use-ci/use-drone-plugins/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
 
 ## Dependencies and background services
 
-If you decide to split your pipeline into multiple stages, you need to make sure each stage has access to any dependencies. An example of a use case for background services is when your unit tests require a running Redis server. Background services can run in an isolated container or on the host. For information about configuring and calling background services, go to [Background step settings](../ci-technical-reference/background-step-settings.md).
+If you decide to split your pipeline into multiple stages, you need to make sure each stage has access to any dependencies. An example of a use case for background services is when your unit tests require a running Redis server. Background services can run in an isolated container or on the host. For information about configuring and calling background services, go to [Background step settings](../use-ci/manage-dependencies/background-step-settings.md).
 
 ### Caching
 
@@ -122,4 +122,4 @@ You can run your pipelines manually or use [triggers](/docs/category/triggers) t
 
 ### Dashboards
 
-The **Overview** screen provides a high-level view of all your builds, regardless of status (successful, failed, cancelled, or expired) and the percentage of successful builds for individual codebases. You can easily see where your builds have failed and [drill down into specific builds](../use-ci/view-your-builds/viewing-builds.md) to troubleshoot and analyze the root causes.
+The **Overview** screen provides a high-level view of all your builds, regardless of status (successful, failed, cancelled, or expired) and the percentage of successful builds for individual codebases. You can easily see where your builds have failed and [drill down into specific builds](../use-ci/viewing-builds.md) to troubleshoot and analyze the root causes.

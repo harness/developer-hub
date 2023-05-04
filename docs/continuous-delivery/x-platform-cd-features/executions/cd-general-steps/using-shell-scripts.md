@@ -1,5 +1,5 @@
 ---
-title: Using shell scripts in CD Stages
+title: Using shell scripts in CD stages
 description: This topic shows you how to run shell scripts in a CD stage using the Shell Script step.
 sidebar_position: 2
 ---
@@ -200,7 +200,7 @@ You can also use expressions in **Value**. For example, if you have an Output Va
 
 1. In **Script Input Variables**, you simply select **Expression** and paste the expression in **Value**:
    
-   ![](./static/using-shell-scripts-18.png)
+   ![](./static/script-input-variables.png)
 2. In the Script, you declare the variable using the **Name** value (in this example, `foo`).
    
    ![picture 3](static/3efd3f47e73c3ca4804bd0e728d8815194ae80c9284ddfe0c11fb07c520b3b0c.png)
@@ -231,6 +231,8 @@ The format to reference the output variable can be one of the following:
 	+ `<+execution.steps.[step_id].output.outputVariables.[output_variable_name]>`
 * Anywhere in the pipeline:
 	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].output.outputVariables.[output_variable_name]>`
+* When step is inside a step group:
+	+ `<+pipeline.stages.[stage_Id].spec.execution.steps.[step_group_Id].steps.stepId.build.[output_variable_name]`  
 
 For example, you could reference the output variable `newname` like this:
 
@@ -280,7 +282,7 @@ You can use Harness variable expressions in your scripts and in the **Script Inp
 
 For **Script Input Variables** and **Script Output Variables**, you simply select **Expression**, and then paste in the Harness variable expression.
 
-![](./static/using-shell-scripts-26.png)
+![](./static/expressions-in-variables.png)
 
 ## Specify where to run the script
 
@@ -293,7 +295,7 @@ See [select delegates with selectors](/docs/platform/Delegates/manage-delegates/
 If you select **Target Host**, enter the following:
 
 * **Target Host:** enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you created the workflow, and the Harness Delegate must have network access to the target host. You can also enter the variable `<+instance.name>` and the script will execute on whichever target host is used during deployment.
-* **SSH Connection Attribute:** select the execution credentials to use for the shell session. For information on setting up execution credentials, go to [add SSH keys](/docs/platform/Security/add-use-ssh-secrets).
+* **SSH Connection Attribute:** select the execution credentials to use for the shell session. For information on setting up execution credentials, go to [add SSH keys](/docs/platform/Secrets/add-use-ssh-secrets).
 
 ## Advanced settings
 
@@ -329,7 +331,7 @@ Instead, if you publish output variables in your shell script command, structure
 
 You can use Harness secrets in your Shell Script steps.
 
-For more information, go to [add text secrets](/docs/platform/Security/add-use-text-secrets).
+For more information, go to [add text secrets](/docs/platform/Secrets/add-use-text-secrets).
 
 Basically, you use `<+secrets.getValue("secret_Id")>` to refer to the secret.
 

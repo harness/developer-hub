@@ -1,5 +1,5 @@
 ---
-title: Trigger Pipelines on new Helm Chart
+title: Trigger pipelines on new Helm chart
 description: Trigger Harness Pipelines in response to a new Helm chart version being added to an HTTP Helm repo.
 sidebar_position: 3
 helpdocs_topic_id: 54eqk0d1bd
@@ -26,7 +26,7 @@ This Trigger is a simple way to automate deployments for new Helm charts.
 
 ### Before you begin
 
-* You should be familiar with Harness CD Pipelines for Helm charts, such as the one you create in the [Helm Chart deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md).
+* You should be familiar with Harness CD Pipelines for Helm charts, such as the one you create in the [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
 
 ### Summary and important notes
 
@@ -66,7 +66,7 @@ When you add the Helm Chart to Harness as a Manifest, you have different options
 ![](./static/trigger-pipelines-on-new-helm-chart-05.png)
 #### OCI Helm registries are not supported with Harness Triggers
 
-You cannot use [OCI Helm Registries](../7_Connectors/connect-to-an-artifact-repo.md) with Helm Chart Triggers.
+You cannot use [OCI Helm Registries](../7_Connectors/Artifact-Repositories/connect-to-an-artifact-repo.md) with Helm Chart Triggers.
 
 ### Create a Helm Chart Trigger
 
@@ -76,7 +76,7 @@ Typically, you add a Helm Chart Trigger to a Pipeline that deploys a Helm Chart.
 
    ![](./static/trigger-pipelines-on-new-helm-chart-06.png)
 
-   See [Helm Chart deployment tutorial](../../continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart.md) for details on adding Helm Charts to a Stage's **Service Definition**.
+   See [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) for details on adding Helm Charts to a Stage's **Service Definition**.
 
 Next, let's add the Trigger.
 
@@ -91,9 +91,9 @@ Define what Helm Chart you want Harness to listen on for the Trigger.
 
 1. In **Listen on New Artifact**, click **Define Manifest Source**.
 2. In **Specify Helm Chart Store**, select the repo type.
-	1. HTTP Helm: go to [HTTP Helm Repo Connector Settings Reference](../7_Connectors/ref-source-repo-provider/http-helm-repo-connector-settings-reference.md).
-	2. Google Cloud Storage: go to [Google Cloud Platform (GCP) Connector Settings Reference](../7_Connectors/ref-cloud-providers/gcs-connector-settings-reference.md).
-	3. AWS S3: go to [AWS Connector Settings Reference](../7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+	1. HTTP Helm: go to [HTTP Helm Repo Connector Settings Reference](../7_Connectors/Code-Repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference.md).
+	2. Google Cloud Storage: go to [Google Cloud Platform (GCP) Connector Settings Reference](../7_Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
+	3. AWS S3: go to [AWS Connector Settings Reference](../7_Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 3. Once you have selected a Connector, click **Continue**.
 4. In **Manifest Details**, enter the name of the Helm Chart to listen on in **Chart Name**. For example, `nginx` or `etcd`.
 5. In **Helm Version**, select the version of Helm your repo uses.
@@ -191,6 +191,13 @@ You can enable or disable Triggers using the Enabled toggle:
 You can reuse Triggers by copying and pasting Trigger YAML. This can be helpful when you have advanced Conditions you don't want to set up each time.
 
 ![](./static/trigger-pipelines-on-new-helm-chart-14.png)
+
+:::note
+
+Trigger manifest expressions used in a pipeline are resolved when you rerun a pipeline that was activated by a trigger.
+
+:::
+
 ### See also
 
 * [Schedule Pipelines using Triggers](schedule-pipelines-using-cron-triggers.md)
