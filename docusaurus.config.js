@@ -510,6 +510,7 @@ const config = {
     path.join(__dirname, "/plugins/utmcookie-plugin"),
     path.join(__dirname, "/plugins/munity-plugin"),
   ],
+  trailingSlash: false,
 };
 
 module.exports = config;
