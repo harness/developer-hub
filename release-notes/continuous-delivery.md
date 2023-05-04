@@ -108,7 +108,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
                 value: stage3Var
 
   ```
-- You can add Tanzu Application Services (TAS) config files from GitHub. (CDS-56452)
+- You can add Tanzu Application Service (TAS) config files from GitHub. (CDS-56452)
 
   This feature is currently behind the feature flag, `CDS_GIT_CONFIG_FILES`. For TAS deployment types, you can reference service config files from GitHub.
   
