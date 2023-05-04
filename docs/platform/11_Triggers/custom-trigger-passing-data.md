@@ -37,7 +37,7 @@ curl -X POST -H 'content-type: application/json' --url 'https://app.harness.io/g
 You would reference this data using the expression `<+trigger.payload.my_key>`. The expression would resolve to `hello world`.
 
 
-You can use the `<+trigger.payload.[key_name]>` expression is a script, a variable value, or any setting configured as an [expression](/docs/platform/20_References/runtime-inputs).
+You can use the `<+trigger.payload.[key_name]>` expression is a script, a variable value, or any setting configured as an expression.
 
 
 ## Passing data to the pipeline
