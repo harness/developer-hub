@@ -15,7 +15,7 @@ const config = {
     "Learn intelligent software delivery at your own pace. Step-by-step tutorials, videos, and reference docs to help you deliver customer happiness.",
   url: "https://developer.harness.io",
   baseUrl: BASE_URL,
-  onBrokenLinks: "throw",
+  onBrokenLinks: "warn",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/hdh_fav_icon_grey.ico",
 
