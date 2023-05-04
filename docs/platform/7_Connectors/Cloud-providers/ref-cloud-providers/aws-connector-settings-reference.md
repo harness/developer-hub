@@ -424,8 +424,8 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
   
 * You have created an immutable delegate and installed the `aws-iam-authenticator` in the delegate.
     1. Open the `delegate.yaml` in a text editor.
-    1. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
-    1. Replace `value: ""` with the following script to install `aws-iam-authenticator`. For more information, go to [install AWS IAM authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
+    2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
+    3. Replace `value: ""` with the following script to install `aws-iam-authenticator`. For more information, go to [install AWS IAM authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
       
       ```
       // Download aws-iam-authenticator
