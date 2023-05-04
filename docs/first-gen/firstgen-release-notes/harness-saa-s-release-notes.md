@@ -29,9 +29,6 @@ This release does not include early access features.
 #### Fixed issues
 
 - Resolved a null pointer exception when the Canary Deployment step is initialized with the Helm manifest type. (CDS-59214)
-  
-#### Fixed issue
-
 - Users cannot use Harness secret as LDAP password in FirstGen. (PL-32597, ZD-42655)
   A code enhancement fixed the issue.
 
