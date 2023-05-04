@@ -16,6 +16,22 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### May 04, 2023, version 79214
+
+#### What's new
+
+This release does not include new features. 
+
+#### Early access
+
+This release does not include early access features. 
+
+#### Fixed issues
+
+- Resolved a null pointer exception when the Canary Deployment step is initialized with the Helm manifest type. (CDS-59214)
+- Users cannot use Harness secret as LDAP password in FirstGen. (PL-32597, ZD-42655)
+  A code enhancement fixed the issue.
+
 ### April 22, 2023, version 79111
 
 #### What's new
@@ -159,6 +175,9 @@ This release does not include any early access features.
   Harness was not handling the proxy use case.
   
   Now Harness handles the use case by adding the username and password to the HTTP client.
+- Unable to fetch the correct Google Cloud Storage (GCS) artifacts when manually triggering the pipeline though the correct artifacts were being listed in the **Manually Select An Artifact** dialog's **Artifact** field list. (CDS-53074, ZD-39446)
+  
+  This issue is fixed.
 
 ### February 23, 2023, version 78507
 

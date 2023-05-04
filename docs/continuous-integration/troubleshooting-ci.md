@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot Continuous Integration
 description: Troubleshoot common CI issues.
-sidebar_position: 10
+sidebar_position: 40
 helpdocs_topic_id: jx7ew69ypa
 helpdocs_category_id: 99m8m1s55y
 helpdocs_is_private: false
@@ -48,11 +48,11 @@ environment:
 
 For more information about self-signed certificates, delegates, and delegate environment variables, go to:
 
-* [Delegate environment variables](../../platform/2_Delegates/delegate-reference/delegate-environment-variables.md)
-* [Docker delegate environment variables](../../platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md)
-* [Set up a local runner build infrastructure](../use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md)
+* [Delegate environment variables](../platform/2_Delegates/delegate-reference/delegate-environment-variables.md)
+* [Docker delegate environment variables](../platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md)
+* [Set up a local runner build infrastructure](./use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md)
 * [Install delegates](https://developer.harness.io/docs/category/install-delegates)
-* [Configure a Kubernetes build farm to use self-signed certificates](../use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
+* [Configure a Kubernetes build farm to use self-signed certificates](./use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
 <!-- DOC-2692 removed -->
 
@@ -62,7 +62,7 @@ The parsed test report in the **Tests** tab comes strictly from the provided tes
 
 ## Test Intelligence isn't working
 
-Test Intelligence may not work even if you select the **Run only selected tests** option in your [Run Tests step](../use-ci/set-up-test-intelligence/configure-run-tests-step-settings.md). One possible cause for this is that you're using **Maven** and your `**pom.xml**` contains `argLine`. In this case, you must update the Java Agent as follows:
+Test Intelligence may not work even if you select the **Run only selected tests** option in your [Run Tests step](./use-ci/set-up-test-intelligence/configure-run-tests-step-settings.md). One possible cause for this is that you're using **Maven** and your `**pom.xml**` contains `argLine`. In this case, you must update the Java Agent as follows:
 
 **Before:**
 
@@ -101,7 +101,7 @@ For more information, refer to the following Microsoft Azure troubleshooting doc
 
 ## CI pods appear to be evicted by Kubernetes autoscaling
 
- Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, if you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](../use-ci/view-your-builds/viewing-builds.md), add the following annotation to your [Kubernetes cluster build infrastructure settings](../use-ci/set-up-build-infrastructure/ci-stage-settings.md#infrastructure):
+ Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, if you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](./use-ci/viewing-builds.md), add the following annotation to your [Kubernetes cluster build infrastructure settings](./use-ci/set-up-build-infrastructure/ci-stage-settings.md#infrastructure):
 
 ```
 "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"

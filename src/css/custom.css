@@ -217,6 +217,21 @@
   /* Module Colors/CET/200 */
   --mod-cet-200: #ff5f45;
 
+  /* Module Colors/SEI/200 */
+  --mod-sei-200: var(--primary); /* To be updated */
+
+  /* Module Colors/SSCA/200 */
+  --mod-ssca-200: var(--primary); /* To be updated */
+
+  /* Module Colors/IDP/200 */
+  --mod-idp-200: var(--primary); /* To be updated */
+
+  /* Module Colors/IaCM/200 */
+  --mod-iacm-200: var(--primary); /* To be updated */
+
+  /* Module Colors/Gitness/200 */
+  --mod-gitness-200: var(--primary); /* To be updated */
+
   /* ----- */
   --ifm-link-decoration: none;
 

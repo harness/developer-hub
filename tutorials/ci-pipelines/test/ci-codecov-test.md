@@ -148,7 +148,7 @@ For more information about **Run** step settings, go to the [Run step settings r
 
 After adding the **Run** step, run your pipeline.
 
-On the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds), you can review CodeCov information in the **Run** step's logs. If the results were successfully uploaded to CodeCov, the logs include a `resultURL` that you can follow to view the code coverage output in your CodeCov account, such as:
+On the [Build details page](/docs/continuous-integration/use-ci/viewing-builds), you can review CodeCov information in the **Run** step's logs. If the results were successfully uploaded to CodeCov, the logs include a `resultURL` that you can follow to view the code coverage output in your CodeCov account, such as:
 
 ```
 ...
