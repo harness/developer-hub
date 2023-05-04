@@ -1,6 +1,6 @@
 ---
-title: Run a Drone Plugin in CI
-description: A Drone Plugin is a Docker container that performs a predefined task.
+title: Use Drone plugins
+description: Drone plugins are Docker containers that perform predefined tasks.
 
 sidebar_position: 30
 helpdocs_topic_id: fjagoj8mez
@@ -9,82 +9,143 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-A Drone Plugin is a Docker container that performs a predefined task. Plugins are essentially templated scripts that can be written in any programming language. The Drone community maintains an [extensive library](https://plugins.drone.io/) of plugins for specific CI workflows. You can customize and extend your build processes using existing plugins or [write your own](https://harness.io/blog/continuous-integration/write-first-plugin-for-cie/).
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-This topic describes how to set up and run Drone Plugins in your CI pipelines. You can also use [GitHub Action plugin steps](./ci-github-action-step.md) and [Bitrise plugin steps](./ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
+Drone plugins are Docker containers that perform predefined tasks. You can use the **Plugin** step to run plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/) in your Harness CI pipelines. You can also [write your own custom plugins](https://harness.io/blog/continuous-integration/write-first-plugin-for-cie/). For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md).
 
-## Before You Begin
+This topic assumes you're familiar with [pipeline creation](../prep-ci-pipeline-components.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
 
-To install and run a plugin, you need the following:
+## Add the Plugin step
 
-* A familiarity with basic Harness CI concepts:
-	+ [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
-	+ [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md)
-* A build infrastructure and Delegate to run builds:
-	+ [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
-	+ [Delegate installation overview](/docs/platform/2_Delegates/install-delegates/overview.md)
-* A CI pipeline with a Build stage to run the plugin:
-	+ [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
-* You should create text secrets for any sensitive information required by the plugin, such as a password or Personal Access Token. You'll need to reference the IDs for any secrets when you set up the Plugin Step.
-	+ [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets)
+To demonstrate how to add a Drone plugin to a Harness CI pipeline, the following instructions use the [Download plugin](https://plugins.drone.io/plugins/download) as an example. This plugin downloads an archive to the [stage workspace](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage).
 
-## Workflow Description
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
 
-The following steps describe the high-level workflow:
+Add the **Plugin** step to the **Build** stage of your CI pipeline, and configure the settings as follows:
 
-1. Go to the Pipeline and open the Build step where you want to run the plugin.
-2. In the Execution tab, click **Add step** and select **Plugin**.
-3. Enter the following:
-	1. **Name:** A unique, descriptive name.
-	2. **Container Registry:** A Connector to the image registry (such as Docker Hub) of the plugin image.
-	3. **Image:** The full image name, such as`dockerhubusername/my-plugin:2.3.1`. The Step uses the latest image if you don't specify a tag.
-	4. Under **Optional Configuration > Settings**, add any other settings that are required as specified in the docs for the specific plugin.
-4. Click **Apply Changes** to apply your Stage settings, then **Save** to save the updated Pipeline
-5. Run the updated Pipeline and check the log output to verify that the Plugin Step works as intended.
+* **Name:** Enter a name for the step.
+* **Description:** Optional description.
+* **Container Registry:** Select a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+* **Image:** Enter the plugin's Docker image, such as `plugins/download`. You can find this on the plugin's page on the [Drone Plugins Marketplace](https://plugins.drone.io/).
+* **Settings:** Enter key-value pairs representing plugin settings. You can find this on the plugin's page on the [Drone Plugins Marketplace](https://plugins.drone.io/) or in the plugin's README.
+* For information about other settings, go to the [Plugin step settings reference](./plugin-step-settings-reference.md).
 
-## Simple Example: Download a File
+The following screenshot shows a **Plugin** step configured for the [Download plugin](https://plugins.drone.io/plugins/download).
 
-This example describes how to run the Drone Downloads plugin, which downloads an archive to your build infrastructure. You can use the following workflow to implement any plugin.
+![](./static/run-a-drone-plugin-in-ci-00.png)
 
-1. Go to the [Drone Plugins Marketplace](https://plugins.drone.io/) and read the description for the specific plugin. The description should indicate the plugin image and the required settings.
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
 
-   The [Download plugin doc](https://plugins.drone.io/plugins/download) shows the image to use (`plugins/download`) and the settings that the plugin supports: `source`, `destination`, `username`, `password`, and so on.
+Add the `Plugin` step to your `CI` stage with the following settings:
 
-2. Go to the Build Stage in a CI Pipeline. In the Execute tab, add a **Plugin** step.
-3. Configure the Step as follows.
+* `type: Plugin`
+* `name:` A name for the step
+* `connectorRef:` The ID of a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
+* `image:` The plugin's Docker image, such as `plugins/download`. You can find this on the plugin's page on the [Drone Plugins Marketplace](https://plugins.drone.io/).
+* `settings:` A mapping of key-value pairs representing plugin settings. You can find this on the plugin's page on the [Drone Plugins Marketplace](https://plugins.drone.io/) or in the plugin's README.
+* For information about other settings, go to the [Plugin step settings reference](./plugin-step-settings-reference.md).
 
-   * **Name:** A unique, descriptive name.
-   * **Container Registry:** A Connector to Docker Hub.
-   * **Image:** The plugin image --in this case, `plugins/download`
-   * Under Optional Configuration, add the following settings:
-      + `source` = The artifact to download.
-	  + `destination` = Save the downloaded artifact to this file.
-	  + `username` = A valid username for the Git provider.
-	  + `password` = The ID of the text secret that contains the Git provider password, using the convention described [here](/docs/platform/Secrets/add-use-text-secrets#step-3-reference-the-encrypted-text-by-identifier). For example: `<+secrets.getValue("mygithubpersonalaccesstoken")>`
+The following example shows the YAML definition for a `Plugin` step configured for the [Download plugin](https://plugins.drone.io/plugins/download).
 
-   ![](./static/run-a-drone-plugin-in-ci-00.png)
+```yaml
+              - step:
+                  type: Plugin
+                  name: drone plugin
+                  identifier: drone_plugin
+                  spec:
+                    connectorRef: account.docker
+                    image: plugins/download
+                    settings:
+                      source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
+					  username: my-username
+					  password: `<+secrets.getValue("mygithubpersonalaccesstoken")>`
+```
 
-4. Click **Apply Changes** to apply your stage settings, then **Save** to save the updated Pipeline
-5. Run the updated Pipeline and check the log output to verify that the Plugin Step works as intended.
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
-  ![](./static/run-a-drone-plugin-in-ci-01.png)
+:::tip Tips
 
+You can use variable expressions for **Settings** values, such as `credentials: <+stage.variables.[TOKEN_SECRET]>`, which uses a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables).
 
-## Convert Drone Plugin YAML to Harness CI YAML
+Create [text secrets](/docs/platform/Secrets/add-use-text-secrets) for sensitive information, such as passwords and tokens, required by the plugin.
 
-You can use YAML examples in the [Drone Plugins Marketplace](https://plugins.drone.io/) to configure a **Plugin** step in Harness CI. While the formats are slightly different, it is fairly simple to translate Drone Plugin definitions to Harness CI YAML.
+When you run the pipeline, [check the log output](../viewing-builds.md) to verify that the plugin works as intended.
+
+:::
+
+### Output variables
+
+For information about output variables produced by plugins, refer to [Output variables in the Plugin step settings reference](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables).
+
+## Convert Drone YAML to Harness YAML
+
+The YAML examples in the [Drone Plugins Marketplace](https://plugins.drone.io/) can help you configure `settings` for a **Plugin** step in Harness CI. Many plugins offer both Harness and standalone Drone YAML samples, as indicated by the **Drone/Harness** toggle in the **Example** section.
+
+<!-- ![](./static/drone_marketplace_toggle_yaml.png) -->
+
+<docimage path={require('./static/drone_marketplace_toggle_yaml.png')} />
+
+Because Drone plugins can be used outside Harness CI, there are some differences, as explained below, in the YAML format when using Drone plugins in Harness CI versus outside Harness CI. This information focuses on the `step` YAML definition.
+
+### Step structure
+
+The following examples compare the YAML structure for a step when a Drone plugin is used in a Drone pipeline and a Harness CI pipeline.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="drone" label="Drone YAML" default>
+```
+
+```yaml
+steps:
+- name: download
+  image: plugins/download
+  settings:
+    source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="harness" label="Harness YAML">
+```
+
+```yaml
+            steps:
+              - step:
+                  type: Plugin
+                  name: drone plugin
+                  identifier: drone_plugin
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/download
+                    settings:
+                      source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ### Listed and nested settings
 
 To list-formatted settings from Drone Plugin YAML to Harness CI YAML, merge them with comma separation.
 
 ```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
-```mdx-code-block
 <Tabs>
-  <TabItem value="drone" label="Drone Plugin YAML" default>
+  <TabItem value="drone" label="Drone YAML" default>
 ```
 
 ```yaml
@@ -97,7 +158,7 @@ Settings:
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="ci" label="Harness CI YAML">
+  <TabItem value="ci" label="Harness YAML">
 ```
 
 ```yaml
@@ -122,23 +183,19 @@ settings:
    - itemtwo
 ```
 
-It's often easier to define complex settings in the Pipeline Studio's YAML editor, rather than the Visual editor. The settings in the above example would be defined in the Visual editor as shown in the following screenshot.
+It's often easier to define complex settings in the Harness Pipeline Studio's YAML editor, rather than the Visual editor. The settings in the above example would be defined in the Visual editor as shown in the following screenshot.
 
 ![](./static/run-a-drone-plugin-in-ci-02.png)
 
-### Text Secrets
+### Text secrets
 
 The following snippets illustrate the different ways that Drone and Harness CI handle [text secrets](/docs/platform/Secrets/add-use-text-secrets).
 
 Note that the CI definition includes a few additional fields and that some fields use different formats.
 
 ```mdx-code-block
-import Tabs2 from '@theme/Tabs';
-import TabItem2 from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs2>
-  <TabItem2 value="drone" label="Drone Plugin Marketplace definition" default>
+<Tabs>
+  <TabItem value="drone" label="Drone Plugin Marketplace definition" default>
 ```
 
 ```yaml
@@ -154,8 +211,8 @@ steps:
 ```
 
 ```mdx-code-block
-  </TabItem2>
-  <TabItem2 value="ci" label="Harness CI definition">
+  </TabItem>
+  <TabItem value="ci" label="Harness CI definition">
 ```
 
 ```yaml
@@ -174,18 +231,26 @@ steps:
 ```
 
 ```mdx-code-block
-  </TabItem2>
-</Tabs2>
+  </TabItem>
+</Tabs>
 ```
 
-### More examples
+## Configuration examples
 
-You can see additional examples in the [GitHub Actions Support in Harness CI blog post](https://harness.io/blog/continuous-integration/github-actions-support-harness-ci/).
+Here are some YAML examples of **Plugin** steps configured for some popular Drone plugins.
 
-## See also
+<details>
+<summary>heading</summary>
+content in md format
+</details>
 
-* [Drone Plugins Marketplace](https://plugins.drone.io/)
-* [Run GitHub Actions in CI pipelines](run-a-git-hub-action-in-cie.md)
-* [Plugin step settings](./plugin-step-settings-reference.md)
-* [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets)
+<details>
+<summary>heading</summary>
+content in md format
+</details>
+
+<details>
+<summary>heading</summary>
+content in md format
+</details>
 

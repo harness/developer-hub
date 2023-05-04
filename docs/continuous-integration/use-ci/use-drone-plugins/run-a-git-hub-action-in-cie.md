@@ -55,21 +55,15 @@ You can use expressions or [Runtime Inputs](/docs/platform/20_References/runtime
 
 ## Add the Plugin step
 
-1. In the Pipeline Studio, select the **Build** stage, and then select the **Execution** tab.
-2. Select **Add Step**, select **Add Step** again, and then select **Plugins** from the **Step Library**.
-3. Enter a **Name** and optional **Description**.
-4. For **Container Registry**, select a container registry connector that has DockerHub access.
-5. In the **Image** field, enter the name of the GitHub Actions Drone Plugin image: `plugins/github-actions`.
-6. Expand the **Optional Configuration**, and select **Privileged**.
+1. In your pipeline's **Build** stage, and a [Plugin step](./plugin-step-settings-reference.md).
+2. Enter a **Name** and optional **Description**.
+3. For **Container Registry**, select a container registry connector that has DockerHub access.
+4. In the **Image** field, enter the name of the GitHub Actions Drone Plugin image: `plugins/github-actions`.
+5. Expand the **Optional Configuration**, and select **Privileged**.
+
    The GitHub Actions Drone Plugin uses [nektos/act](https://github.com/nektos/act) to run GitHub Actions in Harness CI. It requires DinD (Docker-in-Docker) to run your images. Hence, the **Privileged** attribute needs to be enabled to run with escalated permissions. <!--If you're using local runner or VM build infra, do you need privileged? -->
 
-:::tip
-
-For more information about Plugin step settings, go to the [Plugin step settings reference](./plugin-step-settings-reference.md).
-
-:::
-
-## Define variables and attributes
+### Define variables and attributes
 
 Use **Settings** to specify the Github Action you want to use and to pass variables and attributes required by the Action and the Drone Plugin. You must specify `uses` and `with`. You can use `env` to specify environment variables, such as GitHub tokens to access [private Action repos](#private-action-repos).
 
@@ -81,7 +75,7 @@ Use **Settings** to specify the Github Action you want to use and to pass variab
 
 :::tip
 
-You can use variable expressions in your values, such as `credentials: <+stage.variables.[TOKEN_SECRET]>`, which uses a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables).
+You can use variable expressions for these values, such as `credentials: <+stage.variables.[TOKEN_SECRET]>`, which uses a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables).
 
 :::
 
@@ -122,6 +116,12 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 ```
+
+:::tip
+
+For more examples of GitHub Actions in Plugin steps, go to the [GitHub Actions Support in Harness CI blog post](https://harness.io/blog/continuous-integration/github-actions-support-harness-ci/).
+
+:::
 
 ### Private Action repos
 
