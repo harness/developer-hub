@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-05-02T10:00:20
+date: 2023-05-04T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
