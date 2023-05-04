@@ -27,7 +27,7 @@ To view the Feature Flags dashboard:
 On the dashboard, you can: 
 
 * Hover over elements of a chart with your mouse to view details.
-* Select different areas of the charts to see information in tabular form, and download it to use in other tools.
+* Select different areas of the charts to view information in tabular form, and download it to use in other tools.
 * Schedule delivery of the dashboard data to email addresses.
 * Set up alerts to be notified when specific data changes.
 * Clone a dashboard to customize it for different needs and audiences.
