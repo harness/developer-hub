@@ -1,7 +1,7 @@
 ---
 title: Use the GitHub Action plugin step
 description: Run Github Actions in your Harness CI pipelines.
-sidebar_position: 30
+sidebar_position: 70
 ---
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts. You can find over 10,000 GitHub Actions on the [GitHub Marketplace](https://github.com/marketplace?type=actions) or create your own Actions.

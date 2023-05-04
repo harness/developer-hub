@@ -1,7 +1,7 @@
 ---
 title: Integrate Jira in a CI pipeline
 description: Connect your Harness CI pipelines to Jira.
-sidebar_position: 50
+sidebar_position: 60
 ---
 
 To stay aligned and better serve customers, development teams need to understand how a feature is being released, when Jira issues have been deployed, and whether a build has passed or failed. Jira integrations in your CI pipelines provide insights into feature development and release information in Jira by automatically updating the **Deployment** or **Build** fields in Jira.

@@ -2,7 +2,7 @@
 title: Use the GitHub Actions Drone plugin
 description: Run GitHub Actions in your Harness CI pipelines.
 
-sidebar_position: 40
+sidebar_position: 80
 helpdocs_topic_id: 7kb90dkxw0
 helpdocs_category_id: ei5fgqxb0j
 helpdocs_is_private: false

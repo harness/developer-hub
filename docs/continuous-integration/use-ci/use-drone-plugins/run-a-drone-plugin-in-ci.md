@@ -2,7 +2,7 @@
 title: Run a Drone Plugin in CI
 description: A Drone Plugin is a Docker container that performs a predefined task.
 
-sidebar_position: 60
+sidebar_position: 30
 helpdocs_topic_id: fjagoj8mez
 helpdocs_category_id: ei5fgqxb0j
 helpdocs_is_private: false
