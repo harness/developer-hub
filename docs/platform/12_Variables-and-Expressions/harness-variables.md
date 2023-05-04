@@ -371,10 +371,10 @@ For example, use syntax `<+pipeline.variables.var1.concat("_suffix")>` or `<+<+p
 
 ### Forward references
 
-Harness does not support referencing variables in the next step. For example, in a pipeline with four steps: step A, B, C and D, you cannot reference variables in step C in step A. 
+Harness does not support referencing variables from future defined next steps. For example, in a pipeline with four steps: step A, B, C and D, you cannot reference variables from step C in step A. 
 
 :::note Exception:
-You can refer the environment name in a service step.
+You can refer the variable: `<+env.name>`(environment name) in a service step.
 :::
 
 
