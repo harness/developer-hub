@@ -15,7 +15,7 @@ const config = {
     "Learn intelligent software delivery at your own pace. Step-by-step tutorials, videos, and reference docs to help you deliver customer happiness.",
   url: "https://developer.harness.io",
   baseUrl: BASE_URL,
-  onBrokenLinks: "warn",
+  onBrokenLinks: "throw",
   onBrokenMarkdownLinks: "warn",
   favicon: "img/hdh_fav_icon_grey.ico",
 
@@ -51,7 +51,15 @@ const config = {
           exclude: ["**/shared/**", "**/static/**"],
           routeBasePath: "docs", //CHANGE HERE
         },
-
+        sitemap: {
+          // changefreq: 'weekly',
+          // priority: 0.5,
+          ignorePatterns: [
+            "/docs/infrastructure-as-code",
+            "/docs/infrastructure-as-code/**",
+          ],
+          // filename: 'sitemap.xml',
+        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"), // we could also use scss here
         },
@@ -510,7 +518,6 @@ const config = {
     path.join(__dirname, "/plugins/utmcookie-plugin"),
     path.join(__dirname, "/plugins/munity-plugin"),
   ],
-  trailingSlash: false,
 };
 
 module.exports = config;
