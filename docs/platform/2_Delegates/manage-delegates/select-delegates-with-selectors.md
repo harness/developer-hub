@@ -65,6 +65,12 @@ Here is a step group example:
 
 ![](./static/select-delegates-with-selectors-20.png)
 
+:::info
+
+Step and step group delegator selectors are not available for [Harness CI](/docs/continuous-integration) because CI stages run in self-contained build pods.
+
+:::
+
 ### Option: Select a delegate for a connector using tags
 
 When you add a connector you are given the option of connecting to your third part account using any available delegate or specific delegates.
