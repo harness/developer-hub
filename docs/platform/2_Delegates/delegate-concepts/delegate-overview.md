@@ -21,6 +21,8 @@ Harness Delegate connects to Harness Manager over an outbound HTTPS/WSS connecti
 ![](./static/delegates-overview-00.png)
 The delegate connects to Harness Manager (via SaaS) over a Secure WebSockets channel (WebSockets over TLS). The channel is used to send notifications of delegate task events and to exchange connection heartbeats. The channel is not used to send task data itself.
 
+Delegate communication includes the following functions:
+
 * **Heartbeat:** The delegate sends a [heartbeat](https://en.wikipedia.org/wiki/Heartbeat_(computing)) to notify Harness Manager that it is running.
 * **Deployment data:** The delegate sends information retrieved from API calls to Harness Manager for display on the **Deployments** page.
 * **Time series and log data for Continuous Verification:** The delegate connects to the verification providers you configure and sends the data retrieved from those providers to Harness Manager for display in Harness Continuous Verification.
@@ -34,12 +36,12 @@ The delegate connects to Harness Manager (via SaaS) over a Secure WebSockets cha
 
 Harness Delegate does not have a root image. There are two non-root images that use similar tags. For example:
 
-* `harness/delegate:22.03.74411`
-* `harness/delegate:22.03.74411.minimal`
-
-The first image includes client tools like `kubectl`, Helm, and ChartMuseum. The second image, for which the `minimal` tag is appended, does not include those client tools. If you want to add tools to the image, Harness recommends that you create a custom image.
+* `harness/delegate:22.03.74411`: Includes client tools like `kubectl`, Helm, and ChartMuseum. 
+* `harness/delegate:22.03.74411.minimal`: Does not include client tools. If you want to add tools to the image, Harness recommends that you create a custom image.
 
 ### Install a delegate
+
+The video below shows how to install a delegate.
 
 <!-- Video:
 https://harness-1.wistia.com/medias/frzea22qdc-->
@@ -83,8 +85,6 @@ In the case of all these delegate uses, you can select one or more specific dele
 In cases where you select specific delegates to perform the task, Harness uses those delegates only. If the delegates cannot perform the task, Harness does not use another delegate.
 
 In cases where you do not select specific delegates, Harness selects an available delegate to perform the task based on the following:
-
-
 
 * **Heartbeats:** Running delegates send heartbeats to the Harness Manager in one minute intervals. If the Manager does not have a heartbeat for a delegate when a task is ready to be assigned, it does not assign the task to that delegate.
 * **Tags:** For more information, go to [Select delegates with tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
@@ -158,7 +158,7 @@ Two delegates in different locations with different connectivity do not support 
 
 ### Delegate scope
 
-Delegates are scoped in two ways:
+Delegates are scoped in the following way:
 
 #### Project/Org/Accounts
 
