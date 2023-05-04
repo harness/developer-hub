@@ -24,7 +24,7 @@ To view the Feature Flags dashboard:
 
 	![The top of the feature flags dashboard, showing total number of flags, targets, and environments in this Harness organization](./static/dashboard-top.png)
 
-In the dashboard, you can: 
+On the dashboard, you can: 
 
 * Hover over elements of a chart with your mouse to see details.
 * Select different areas of the charts to see information in tabular form, and download it to use in other tools.
