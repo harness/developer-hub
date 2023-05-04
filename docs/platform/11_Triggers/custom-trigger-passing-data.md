@@ -119,5 +119,5 @@ You can see the split() method is used to parse the email addresses in the JSON 
 
 In the **To** setting of the Email step, you can reference the matrix using `<+matrix.emaild>`.
 
-Now the Email step is run for each addresses in the matrix.
+Now the Email step is run for each address in the matrix.
 
