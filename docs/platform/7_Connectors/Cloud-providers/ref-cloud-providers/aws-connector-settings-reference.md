@@ -378,14 +378,14 @@ This example policy gives limited permission to EKS clusters.
 
 ## Connect to EKS
 
-If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the platform-agnostic [Kubernetes cluster connector](kubernetes-cluster-connector-settings-reference.md) or Elastic Kubernetes Service (EKS) cloud connector.
+To connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the platform-agnostic [Kubernetes cluster connector](kubernetes-cluster-connector-settings-reference.md) or Elastic Kubernetes Service (EKS) cloud connector.
 
 Make sure you've met the following requirements to connect to the EKS cloud connector.
 
 * You have enabled the `NG_CDS_NATIVE_EKS_SUPPORT` feature flag. 
 * The IAM role of the worker nodes for the EKS cluster have the [required permissions](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html).
-    * Your IAM role have the permission to access the AWS EKS cluster. You can edit the `configmap/aws-auth` in the EKS cluster to enable the required permissions. For more information, go to [add user role](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html). You can also assume the IAM role used to create the AWS EKS cluster which has the required `configmap/aws-auth` entries by default.
-    * Your IAM role have the basic policies to access the AWS EKS cluster. For more information, go to [security IAM ID based policy examples](https://docs.aws.amazon.com/eks/latest/userguide/security_iam_id-based-policy-examples.html).
+    * Your IAM role has the permission to access the AWS EKS cluster. You can edit the `configmap/aws-auth` entry in the EKS cluster to enable the required permissions. For more information, go to [add user role](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html). You can also assume the IAM role used to create the AWS EKS cluster which has the required `configmap/aws-auth` entries by default.
+    * Your IAM role has the basic policies to access the AWS EKS cluster. For more information, go to [Amazon EKS identity-based policy examples](https://docs.aws.amazon.com/eks/latest/userguide/security_iam_id-based-policy-examples.html).
 * You have installed the `aws-iam-authenticator` plugin, which is used for `kubectl` authentication. For more information, go to [create `kubeconfig` file manually](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html#create-kubeconfig-manually).
   
   Here's a sample `kubeconfig`:
@@ -419,13 +419,13 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
   
   
   :::note
-  `aws-iam-authenticator` supports the role to be assumed and external Id as arguments. In case the connector is configured with a cross-account access and external Id, `kubeconfig` can be modified accordingly.
+  `aws-iam-authenticator` supports the role to be assumed and external ID as arguments. If the connector is configured with a cross-account access and external ID, `kubeconfig` can be modified accordingly.
   ::: 
   
 * You have created an immutable delegate and installed the `aws-iam-authenticator` in the delegate.
-    * Open the `delegate.yaml` in a text editor.
-    * Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
-    * Replace `value: ""` with the following script to install `aws-iam-authenticator`. For more information, go to [install AWS IAM authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
+    1. Open the `delegate.yaml` in a text editor.
+    1. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
+    1. Replace `value: ""` with the following script to install `aws-iam-authenticator`. For more information, go to [install AWS IAM authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
       
       ```
       // Download aws-iam-authenticator
