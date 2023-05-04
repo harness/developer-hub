@@ -1,7 +1,7 @@
 ---
-title: View the activities of your flags
+title: View the activities of a flag
 description: This topic describes how to view the activity of a selected feature flag.
-sidebar_position: 20
+sidebar_position: 10
 helpdocs_topic_id: 51gbk0d2zh
 helpdocs_category_id: axthyiihah
 helpdocs_is_private: false

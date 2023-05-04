@@ -122,4 +122,4 @@ You can run your pipelines manually or use [triggers](/docs/category/triggers) t
 
 ### Dashboards
 
-The **Overview** screen provides a high-level view of all your builds, regardless of status (successful, failed, cancelled, or expired) and the percentage of successful builds for individual codebases. You can easily see where your builds have failed and [drill down into specific builds](../use-ci/view-your-builds/viewing-builds.md) to troubleshoot and analyze the root causes.
+The **Overview** screen provides a high-level view of all your builds, regardless of status (successful, failed, cancelled, or expired) and the percentage of successful builds for individual codebases. You can easily see where your builds have failed and [drill down into specific builds](../use-ci/viewing-builds.md) to troubleshoot and analyze the root causes.

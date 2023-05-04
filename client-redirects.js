@@ -34,6 +34,38 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by aimurphy for branch ci-misc-small-items on May 3 2023
+
+    {
+      from: "/docs/category/troubleshoot-ci",
+      to: "/docs/continuous-integration/troubleshooting-ci",
+    },
+
+    {
+      from: "/docs/category/troubleshoot-and-optimize-ci",
+      to: "/docs/continuous-integration/troubleshooting-ci",
+    },
+
+    {
+      from: "/docs/continuous-integration/troubleshoot/troubleshooting-ci",
+      to: "/docs/continuous-integration/troubleshooting-ci",
+    },
+
+    {
+      from: "/docs/category/view-your-build",
+      to: "/docs/continuous-integration/use-ci/viewing-builds",
+    },
+
+    {
+      from: "/docs/category/view-builds",
+      to: "/docs/continuous-integration/use-ci/viewing-builds",
+    },
+
+    {
+      from: "/docs/continuous-integration/use-ci/view-your-builds/viewing-builds",
+      to: "/docs/continuous-integration/use-ci/viewing-builds",
+    },
+
     // Created by Kim Fields to fix 404s found by marketing
     {
       from: "/docs/category/add-load-balancer-for-autostopping-rules",
@@ -1546,12 +1578,6 @@ module.exports = {
       to: "/docs/category/run-scripts",
     },
 
-    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 3, 2023
-    {
-      from: "/docs/category/view-your-build",
-      to: "/docs/category/view-builds",
-    },
-
     //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 4, 2023
     {
       from: "/docs/continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference",
@@ -1562,12 +1588,6 @@ module.exports = {
     {
       from: "/docs/continuous-integration/use-ci/run-ci-scripts/clone-and-process-multiple-codebases-in-the-same-pipeline",
       to: "/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline",
-    },
-
-    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 6, 2023
-    {
-      from: "/docs/category/troubleshoot-and-optimize-ci",
-      to: "/docs/category/troubleshoot-ci",
     },
 
     //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 6, 2023
