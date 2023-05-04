@@ -52,7 +52,7 @@ Here is an example of specifying it at the environment's **Configuration**:
 
 ![](./static/services-and-environments-overview-17.png)
 
-When you have a values yaml file at two or more of the environment **Service Overrides**, **Environment Configuration**, and the service itself, Harness merges the files into a single values YAML for deployment. This merging is performed at pipeline execution runtime.
+When you have a values YAML file at two or more of the environment **Service Overrides**, **Environment Configuration**, and the service itself, Harness merges the files into a single values YAML for deployment. This merging is performed at pipeline execution runtime.
 
 Overriding occurs when the higher priority setting has the same `name:value` pair as a lower priority setting.
 
@@ -87,7 +87,7 @@ At runtime, the name:value pairs from the environment **Service Overrides** valu
 
 Config files and variables are completely overridden.
 
-Config files are a black box that can contain multiple formats and content, such as YAML, JSON, plain text, etc. Consequently, they cannot be overridden like Values YAML files.
+Config files are a black box that can contain multiple formats and content, such as YAML, JSON, plain text, etc. Consequently, they cannot be overridden like values YAML files.
 
 Variables cannot be partially overridden either. They are completely replaced.
 
