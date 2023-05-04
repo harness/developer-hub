@@ -61,24 +61,6 @@ You can deploy one service to multiple environments.
 
    ![](./static/multiserv-multienv-13.png)
 
-## Deploy services to environments, environment groups, or clusters filtered list using tags
-
-You can deploy services to multiple environments, environment groups, or clusters using tags.
-
-:::note
-
-Currently, this feature is behind the feature flag, `CDS_FILTER_INFRA_CLUSTERS_ON_TAGS`. Make sure these related feature flags are enabled as well: `MULTI_SERVICE_INFRA`, `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
-1. In your CD stage, select **Service**.
-2. In **Select Services**, select the service you want to deploy.
-3. Select **Continue**.
-4. In **Environments**, enable **Deploy to multiple Environments or Infrastructures**.
-   You can select one or more environments, and then one or more infrastructures in each environment.
-
-
-
 ## Deploy multiple services to one environment
 
 You can deploy multiple services to the same environment and single infrastructure. You can deploy the services serially or in parallel.
@@ -144,6 +126,79 @@ You can see the two service deployments running in parallel on both infrastructu
 
 The service deployments are grouped by Infrastructure. The first two services are running in parallel on one infrastructure and the second two services are running on the other infrastructure.
 
+## Deploy services to infrastructures using filtered list
+
+You can deploy services to infrastructures in an environment or environment group using filtered list.
+
+Make sure that you have added tags when creating your environment in the **Configuration** tab.
+
+![tag environments](./static/tag-environments.png)
+
+:::note
+
+Currently, this feature is behind the feature flag, `CDS_FILTER_INFRA_CLUSTERS_ON_TAGS`. Make sure these related feature flags, `MULTI_SERVICE_INFRA`, `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+1. In your CD stage, select **Service**.
+2. In **Select Services**, select the services you want to deploy.
+3. Select **Continue**.
+4. In the **Environments** tab, enable **Deploy to multiple Environments or Infrastructures**.
+5. Select **Environment** or **Environment Group**.  
+   You can select one or more environments or environment groups, and then one or more infrastructures in each environment or environment group.
+6. In **Infrastructures**, select **Deploy to filtered list**, and then select **+ Add Filters**.
+7. In **FILTERS ON ENTITIES**, select **Infrastructure**.
+8. In **Type**, select: 
+   * **All** to deploy the selected service(s) to all infrastructures within the environment or environment group.
+   * **Tags**, and then enter the tags in **CONDITION** to deploy the selected service(s) to the infrastructures with these tags. 
+        
+     Select **Any** to deploy to infrastructures that has any of these tags. 
+     
+     Select **All** to deploy the selected service(s) to infrastructures having all these tags. 
+
+   ![](./static/deploy-to-infra-filter.png)
+9. Select **Continue**, select an execution strategy, and complete the execution steps.
+10. Select **Save**.
+11. Select **Run**, and then **Run Pipeline**.
+    
+    You can see the infrastructures with the selected tags displayed in the target environment.
+
+## Deploy services to GitOps clusters using filtered list
+
+You can deploy services to the GitOps clusters in an environment using filtered list.
+
+Make sure that you have added tags when creating your environment in the **Configuration** tab.
+
+:::note
+
+Currently, this feature is behind the feature flag, `CDS_FILTER_INFRA_CLUSTERS_ON_TAGS`. Make sure these related feature flags, `MULTI_SERVICE_INFRA`, `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+1. In your pipeline, create a **Deploy** stage with the **GitOps** option enabled.
+2. In your CD stage, select **Service**.
+3. In **Select Services**, select the services you want to deploy.
+4. Select **Continue**.
+5. In the **Environments** tab, enable **Deploy to multiple Environments or Clusters**.
+6. Select **Environment** or **Environment Group**.  
+   You can select one or more environments or environment groups, and then one or more infrastructures in each environment or environment group.
+7. In **Clusters**, select **Deploy to filtered list**, and then select **+ Add Filters**.
+8. In **FILTERS ON ENTITIES**, select **Clusters**.
+9. In **Type**, select: 
+   * **All** to deploy the selected service(s) to all clusters within the environment or environment group.
+   * **Tags**, and then enter the tags in **CONDITION** to deploy the selected service(s) to the clusters with these tags. 
+        
+     Select **Any** to deploy to clusters that has any of these tags. 
+     
+     Select **All** to deploy the selected service(s) to clusters having all these tags. 
+
+   ![](./static/deploy-to-clusters-filter.png)
+10. Select **Continue**, select an execution strategy, and complete the execution steps.
+11. Select **Save**.
+12. Select **Run**, and then **Run Pipeline**.
+    
+    You can see the clusters with the selected tags displayed in the target environment.
+
 ## Deploying in parallel or serial
 
 You can deploy services to environments and infrastructures in parallel or serial, with the following options:
@@ -206,7 +261,7 @@ Triggers are applied at the pipeline level. If you have a trigger that runs a pi
 
 The trigger runs the entire pipeline, not just the service with the manifest or artifact that initiated the trigger.
 
-## Max concurreny
+## Max concurrency
 
 When you view a multi service or environment deployment, you can see **Max Concurrency**:
 
