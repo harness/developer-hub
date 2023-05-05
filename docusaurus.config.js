@@ -51,7 +51,15 @@ const config = {
           exclude: ["**/shared/**", "**/static/**"],
           routeBasePath: "docs", //CHANGE HERE
         },
-
+        sitemap: {
+          // changefreq: 'weekly',
+          // priority: 0.5,
+          ignorePatterns: [
+            "/docs/infrastructure-as-code",
+            "/docs/infrastructure-as-code/**",
+          ],
+          // filename: 'sitemap.xml',
+        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"), // we could also use scss here
         },
