@@ -93,6 +93,36 @@ In **Type**, select **Normal** or **Emergency**.
 
 ![](./static/create-service-now-tickets-in-cd-stages-13.png)
 
+## Custom table support
+
+:::note
+
+Currently, this feature is behind the feature flag `CDS_SERVICENOW_TICKET_TYPE_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Custom table support is now available in Harness' ServiceNow integration.
+
+Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. You can specify any custom table in Harness.
+
+<details>
+<summary>What is a table extending task?</summary>
+
+In ServiceNow, a table extending task is a task that involves creating a new table by extending an existing table. When a table is extended, a new child table is created that inherits all the fields, relationships, and other attributes of the parent table. The child table can then be customized further to meet the specific needs of the organization.
+
+</details>
+
+
+Itil roles are not mandatory for using these steps. When using the normal flow for custom tables, you should have sufficient permissions on the custom table, such as basic CRUD permissions, permissions to update desired fields, etc.
+
+When using a custom table template, your user role is required along with cross scope privileges to the custom table.
+
+The store app is only certified to be used with Incident, Problem, Change Request, and Change Task tables by the ServiceNow certification team.
+
+The custom table being used should allow access to this table via web services.
+
+
+
 ## See also
 
 * [Update ServiceNow tickets in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-service-now-tickets-in-cd-stages)
