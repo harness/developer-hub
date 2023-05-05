@@ -37,7 +37,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
         <td>✅</td>
     </tr>
     <tr>
-        <td>Experiment pontrol arameters through the tag in the UI</td>
+        <td>Experiment control parameters through the tag in the UI</td>
         <td>❌</td>
         <td> ✅ </td>
     </tr>
