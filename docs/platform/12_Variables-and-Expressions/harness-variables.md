@@ -369,6 +369,15 @@ Harness recommends that you use Java string method for concatenating pipeline va
 
 For example, use syntax `<+pipeline.variables.var1.concat("_suffix")>` or `<+<+pipeline.variables.var1>.concat("_suffix")>` or `<+<+pipeline.variables.var1> + "_suffix">` instead of `<+pipeline.variable.var1>_suffix`. 
 
+### Forward references
+
+Harness does not support referencing variables from future steps. For example, in a pipeline with four steps: step A, B, C and D, you cannot reference variables from step C in step A. 
+
+:::note Exception:
+You can reference the variable, `<+env.name>` (environment name) in a service step.
+:::
+
+
 ## Built-in CIE codebase variables reference
 
 In Harness, you set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [connector](../7_Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your pipeline.
@@ -988,6 +997,14 @@ The Id of the Primary artifact added in a Service **Artifacts** section.
 
 ![](./static/harness-variables-41.png)
 
+### <+artifact.metadata.fileName>
+
+The file name of the Artifactory artifact. 
+
+This variable is added to the metadata of the Artifactory artifacts with generic repository format. You can view this variable in the **Output** tab of the **Service** step of a pipeline execution.
+
+![](./static/artifact-file-name-variable.png)
+
 ### Sidecar artifacts
 
 Sidecar artifact expressions use the **Sidecar Identifier** to reference the sidecar artifact.
@@ -1046,12 +1063,25 @@ The available values are:
 - `PreProduction`
 - `Production`
 
+### <+env.envGroupName>
+
+The name of the environment group to which the environment belongs (if defined).
+
+### <+env.envGroupRef>
+
+The environment group reference.
+
 You can evaluate the expression using JEXL in the **Conditional Execution** settings of steps or stages:
 
 ```
 <+env.type> != "Production"
 ```
 
+:::note
+
+Environment expressions can be used in service steps as well.
+
+:::
 
 ## Infrastructure
 

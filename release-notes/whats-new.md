@@ -17,11 +17,16 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
  
+ 
 ## Latest - May 04, 2023, version 79214
 
 ### Harness Platform
 
 - You will now receive an alert on the default settings page when there are unsaved changes, or if you leave the page. (PL-32354)
+
+### Service Reliability Management
+
+- An icon appears on the SLO performance trend chart timeline to indicate when the error budget was reset and the amount of budget that was added. (SRM-14550)
 
 ### Continuous Delivery
 
@@ -157,7 +162,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Added new advanced fields for consecutive error budges in SLO. These fields are optional. (SRM-14507)
 
-- Removed the mandatory check for the presence of Tier in the AppD complete metric path. (SRM-14463)
+- Removed the mandatory check for the presence of Tier in the AppDynamics complete metric path. (SRM-14463)
 
 ##### Harness Delegate 
 
