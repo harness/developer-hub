@@ -2,17 +2,15 @@ import React from "react";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import TutorialCard from "./TutorialCard";
-import {
-  FeaturedList,
-  CIList,
-  CDList,
-  CCMList,
-  FFList,
-  SRMList,
-  STOList,
-  CEList,
-  PlatformList,
-} from "./data/allTutorialsData";
+import { FeaturedList } from "./data/allTutorialsData";
+import { CIList } from "./data/continuousIntegrationData";
+import { CDList } from "./data/continuousDeliveryData";
+import { CCMList } from "./data/cloudCostManagementData";
+import { FFList } from "./data/featureFlagsData";
+import { SRMList } from "./data/serviceReliabilityManagementData";
+import { STOList } from "./data/securityTestingOrchestrationData";
+import { CEList } from "./data/chaosEngineeringData";
+import { PlatformList } from "./data/platformData";
 import styles from "./styles.module.scss";
 import moduleStyles from "./TutorialCard.module.scss";
 
