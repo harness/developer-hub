@@ -1055,12 +1055,25 @@ The available values are:
 - `PreProduction`
 - `Production`
 
+### <+env.envGroupName>
+
+The name of the environment group to which the environment belongs (if defined).
+
+### <+env.envGroupRef>
+
+The environment group reference.
+
 You can evaluate the expression using JEXL in the **Conditional Execution** settings of steps or stages:
 
 ```
 <+env.type> != "Production"
 ```
 
+:::note
+
+Environment expressions can be used in service steps as well.
+
+:::
 
 ## Infrastructure
 
