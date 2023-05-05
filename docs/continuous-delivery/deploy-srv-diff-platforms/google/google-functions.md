@@ -11,10 +11,17 @@ This topic explains how to deploy new Cloud Functions to Google Cloud using Harn
 Harness integration with Google's serverless offering Google Functions.
 
 Harness supports the following:
-- Harness supports deploying Google Functions [2nd gen](https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available).
+- Harness supports deploying Google Functions [1st gen and 2nd gen](https://cloud.google.com/blog/products/serverless/cloud-functions-2nd-generation-now-generally-available).
 - To review the differences between Google Functions 1st gen and 2nd gen, go to  [Google Cloud Function documentation](https://cloud.google.com/functions/docs/concepts/version-comparison).
 
-### Harness Cloud Functions 2nd gen support 
+### Harness Cloud Functions 1st gen support
+
+Harness supports the following:
+- Basic deployments. 
+  - Harness deploys the new function and terminates the old one by sending 100% of traffic to the new function.
+- For rollback, Harness does not perform revision-based rollback. Instead, in case of deployment failure, Harness will take a snapshot of the last known good state of the function and reapply.
+
+### Harness Cloud Functions 2nd gen support
 
 Harness supports the following:
 - Basic, blue green, and canary deployments.
@@ -22,7 +29,8 @@ Harness supports the following:
 
 ### Cloud Functions limitations
 
-- Google Cloud Functions 2nd gen does not support [Google Cloud Source Repository](https://cloud.google.com/functions/docs/deploy#from-source-repo) at this time.
+- For Google Cloud Functions 2nd gen, Harness does not support [Google Cloud Source Repository](https://cloud.google.com/functions/docs/deploy#from-source-repo) at this time. Only Google Cloud Storage is supported.
+- For Google Cloud Functions 1st gen, Harness supports both Google Cloud Storage and Google Cloud Source.
 
 ## Deployment summary
 
@@ -52,14 +60,22 @@ Here's a high-level summary of the setup steps.
 
 ## Cloud Functions permission requirements
 
+:::note
+
+Harness supports Google Cloud Functions 1st and 2nd gen. There are minor differences in the permissions required by each generation. For a detailed breakdown, see [Access control with IAM](https://cloud.google.com/functions/docs/concepts/iam) from Google.
+
+The permissions listed below work for both 1st and 2nd gen.
+
+:::
+
 When you set up a Harness GCP connector to connect Harness with your GCP account, the GCP IAM user or service account must have the appropriate permissions assigned to their account. 
 
 <details>
 <summary>Cloud Functions minimum permissions</summary>
 
-Cloud Functions supports the basic roles of **Editor**, **Owner**, **Developer**, and **Viewer**.
+Cloud Functions supports the basic roles of **Editor**, **Admin**, **Developer**, and **Viewer**. For details, go to [Cloud Functions IAM Roles](https://cloud.google.com/functions/docs/reference/iam/roles).
 
-You can use the **Owner** role or the permissions below.
+You can use the **Admin** role or the permissions below.
 
 Here are the minimum permissions required for deploying Cloud Functions.
 
@@ -94,6 +110,13 @@ For more information, go to the GCP documentation about [Cloud IAM roles for Clo
 
 Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`. 
 
+For Google Cloud Source, the following roles are required:
+
+- Source Repository Reader (`roles/source.reader`)
+- Source Repository Reader (`roles/cloudsource.writer`)
+
+For more information, go to Cloud Source Repositories [Access control with IAM](https://cloud.google.com/source-repositories/docs/configure-access-control).
+
 </details>
 
 
@@ -104,7 +127,7 @@ The Harness Cloud Functions service the following:
 - **Function Definition**:
   - You can enter the function manifest YAML in Harness for use a remote function manifest YAML in a Git repo.
 - **Artifacts**:
-  - You add a connection to the function ZIP file in Google Cloud Storage.
+  - You add a connection to the function ZIP file in Google Cloud Storage (1st and 2nd gen) or Google Cloud Source (1st gen).
 
 <details>
 <summary>How the Function Definition and Artifact work together</summary>
@@ -124,11 +147,31 @@ When you deploy a function using the manifest file, the Cloud Functions service 
 
 The **Function Definition** is the parameter file you use to define your Google Function. The parameter file you add here maps to one Google Function. 
 
-The YAML parameters for Google Functions 2nd gen are defined in the [google.cloud.functions.v2 function message](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#function) from Google Cloud.
+To use Google Cloud Functions, in the Harness service, in **Deployment Type**, you select **Google Cloud Functions**. 
 
-User's can define details of the [service configuration](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#google.cloud.functions.v2.ServiceConfig) and [build config](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#buildconfig) via the YAML as seen in the below examples.
+Next, in **Google Cloud Function Environment Version**, you select **1st gen** or **2nd gen**.
 
-### Function Definition examples
+- Google Functions 2nd gen: The YAML parameters for Google Functions 2nd gen are defined in the [google.cloud.functions.v2 function message](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#function) from Google Cloud.
+  - User's can define details of the [ServiceConfig](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#google.cloud.functions.v2.ServiceConfig) and [BuildConfig](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#buildconfig) via the YAML as seen in the below examples.
+- Google Functions 1st gen: The YAML parameters for Google Functions 1st gen are defined in the [google.cloud.functions.v1 CloudFunction message](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v1#cloudfunction) from Google Cloud.
+
+
+### 1st gen function definition example
+
+Here is a Function Definition example.
+
+```yaml
+function:
+  name: my-function
+  runtime: python37
+  entryPoint: my_function
+  httpsTrigger:
+    securityLevel: SECURE_OPTIONAL
+```
+
+In `httpsTrigger`, you do not need to specify `url`.
+
+### 2nd gen function definition examples
 
 Here are some Function Definition examples.
 
