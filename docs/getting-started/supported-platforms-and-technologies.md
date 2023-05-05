@@ -1,7 +1,7 @@
 ---
 title: Supported platforms and technologies
 description: This topic lists Harness support for platforms, methodologies, and related technologies.
-sidebar_position: 70
+sidebar_position: 80
 helpdocs_topic_id: 1e536z41av
 helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
