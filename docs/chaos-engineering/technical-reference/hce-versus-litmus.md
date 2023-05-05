@@ -82,7 +82,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
         <td>✅ (GameDays and pipelines)</td>
     </tr>
     <tr>
-        <td>Out of the box chaos experiments</td>
+        <td>Out-of-the-box chaos experiments</td>
         <td>❌</td>
         <td>✅</td>
     </tr>
