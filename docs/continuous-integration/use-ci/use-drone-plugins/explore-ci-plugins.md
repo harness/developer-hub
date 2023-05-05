@@ -12,12 +12,7 @@ To include a plugin in a CI pipeline, you use either the generic **Plugin** step
 
 ## Custom plugins
 
-You can write your own plugins and use the **Plugin** step to run them in your Harness CI pipelines.
-
-For more information about writing custom plugins, go to:
-
-* [Blog post: How to Write Your First Plugin for CI](https://www.harness.io/blog/write-first-plugin-for-cie)
-* [Video: Building your first Drone Plugin](https://www.youtube.com/watch?v=JJgkX9ZYPpY)
+You can [write your own plugins](./custom_plugins.md) and use the **Plugin** step to run them in your Harness CI pipelines.
 
 ## Drone plugins
 

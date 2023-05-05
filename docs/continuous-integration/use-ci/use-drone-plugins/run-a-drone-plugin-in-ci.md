@@ -14,7 +14,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Drone plugins are Docker containers that perform predefined tasks. You can use the **Plugin** step to run plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/) in your Harness CI pipelines. You can also [write your own custom plugins](https://harness.io/blog/continuous-integration/write-first-plugin-for-cie/). For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md).
+Drone plugins are Docker containers that perform predefined tasks. You can use the **Plugin** step to run plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/) in your Harness CI pipelines. You can also [write your own custom plugins](./custom_plugins.md). For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md).
 
 This topic assumes you're familiar with [pipeline creation](../prep-ci-pipeline-components.md). If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md)
 
@@ -66,7 +66,14 @@ Add the `Plugin` step to your `CI` stage with the following settings:
 * `settings:` A mapping of key-value pairs representing plugin settings. You can find this on the plugin's page on the [Drone Plugins Marketplace](https://plugins.drone.io/) or in the plugin's README.
 * For information about other settings, go to the [Plugin step settings reference](./plugin-step-settings-reference.md).
 
-The following example shows the YAML definition for a `Plugin` step configured for the [Download plugin](https://plugins.drone.io/plugins/download).
+The following examples show the YAML definition for a `Plugin` step configured for the [Download plugin](https://plugins.drone.io/plugins/download).
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="download1" label="Download Drone tarball" default>
+```
+
+This example downloads the Drone Linux amd64 tarball. It provides a username and password for authentication to GitHub.
 
 ```yaml
               - step:
@@ -77,9 +84,43 @@ The following example shows the YAML definition for a `Plugin` step configured f
                     connectorRef: account.docker
                     image: plugins/download
                     settings:
-                      source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
-					  username: my-username
-					  password: `<+secrets.getValue("mygithubpersonalaccesstoken")>`
+                      source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz ## Target to download
+					            username: my-username ## Username for authentication to the source
+					            password: `<+secrets.getValue("mygithubpersonalaccesstoken")>` ## Password for authentication to the source
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="download2" label="Download AWS CLI">
+```
+
+This example downloads the AWS CLI for Linux and saves it to the default stage workspace directory under the name `awscli.zip`. Because the target is publicly accessible, authentication settings aren't required.
+
+```yaml
+              - step:
+                  type: Plugin
+                  name: drone plugin
+                  identifier: drone_plugin
+                  spec:
+                    connectorRef: account.docker
+                    image: plugins/download
+                    settings:
+                      source: https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip ## Target to download
+                      destination: awscli.zip ## File name to assign the downloaded file.
+```
+
+Expanding on this example, you could use the following commands in a subsequent [Run step](../run-ci-scripts/run-a-script-in-a-ci-stage.md) to unzip and install this tool:
+
+```
+unzip awscli.zip
+sudo ./aws/install
+```
+
+You could also [write a custom plugin](./custom_plugins.md) that downloads, unzips, and installs the AWS CLI in one step.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
 ```
 
 ```mdx-code-block
