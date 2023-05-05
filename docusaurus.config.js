@@ -120,11 +120,6 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Track Errors",
-                to: "tutorials/error-tracking",
-              },
-              {
-                // type: "doc",
                 label: "Orchestrate Security Tests",
                 to: "tutorials/security-tests",
               },
@@ -132,6 +127,11 @@ const config = {
                 // type: "doc",
                 label: "Run Chaos Experiments",
                 to: "tutorials/chaos-experiments",
+              },
+              {
+                // type: "doc",
+                label: "Track Errors",
+                to: "tutorials/error-tracking",
               },
               {
                 // type: "doc",
