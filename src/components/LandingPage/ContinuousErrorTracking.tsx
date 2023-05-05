@@ -63,7 +63,7 @@ export default function CET() {
               >
                 Tutorials <i className="fa-solid fa-arrow-right"></i>
               </Link>
-              <Link href="https://harness.io/products/continuous-error-tracking">
+              <Link href="#">
                 <button className={styles.link}>Learn more</button>
               </Link>
             </div>
