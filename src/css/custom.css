@@ -216,6 +216,7 @@
 
   /* Module Colors/CET/200 */
   --mod-cet-200: #ff5f45;
+  --mod-cet-100: #ffe2dd;
 
   /* Module Colors/SEI/200 */
   --mod-sei-200: var(--primary); /* To be updated */
