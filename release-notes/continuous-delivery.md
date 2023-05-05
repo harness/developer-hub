@@ -70,7 +70,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   2. In **Stage Execution Settings>** **Allow selective stages(s) executions?**, select **Yes**. This setting is selected by default.
      
      ![](./static/selective-stage-execution.png)
-  3. When you create a [Custom trigger](/docs/platform/triggers/trigger-deployments-using-custom-triggers/), in **Configuration**, select the stages you want to execute.
+  3. When you create a trigger, in **Configuration**, select the stages you want to execute.
      
      ![](./static/select-stage-to-execute.png)
   
