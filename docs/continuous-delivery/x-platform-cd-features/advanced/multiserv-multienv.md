@@ -149,7 +149,7 @@ Currently, this feature is behind the feature flag, `CDS_FILTER_INFRA_CLUSTERS_O
 6. In **Infrastructures**, select **Deploy to filtered list**, and then select **+ Add Filters**.
 7. In **FILTERS ON ENTITIES**, select **Infrastructure**.
 8. In **Type**, select: 
-   * **All** to deploy the selected service(s) to all infrastructures within the environment or environment group.
+   * **All** to deploy the selected services to all infrastructures within the environment or environment group.
    * **Tags**, and then enter the tags in **CONDITION** to deploy the selected service(s) to the infrastructures with these tags. 
         
      Select **Any** to deploy the selected services to infrastructures that have any of these tags. 
