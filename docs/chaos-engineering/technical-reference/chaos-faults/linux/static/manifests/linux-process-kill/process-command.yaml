@@ -1,0 +1,11 @@
+# process command of the target process
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-process-kill
+  labels:
+    name: process-kill
+spec:
+  processKillChaos/inputs:
+    processCommand: "/usr/lib64/thunderbird/thunderbird"
+    duration: 30
