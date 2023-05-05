@@ -170,9 +170,9 @@ The following examples compare the YAML structure for a step when a Drone plugin
 
 ```yaml
 steps:
-- name: download
-  image: plugins/download
-  settings:
+- name: download ## Step name
+  image: plugins/download ## Plugin's Docker image
+  settings: ## Plugin settings
     source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
@@ -184,13 +184,13 @@ steps:
 ```yaml
             steps:
               - step:
-                  type: Plugin
-                  name: drone plugin
-                  identifier: drone_plugin
+                  type: Plugin ## Indicates that this is a Plugin step.
+                  name: drone plugin ## Step name
+                  identifier: drone_plugin ## Step ID
                   spec:
-                    connectorRef: account.harnessImage
-                    image: plugins/download
-                    settings:
+                    connectorRef: account.harnessImage ## Docker connector to pull the plugin's Docker image
+                    image: plugins/download ## Plugin's Docker image
+                    settings: ## Plugin settings
                       source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz
 ```
 
@@ -255,7 +255,7 @@ Note that the CI definition includes a few additional fields and that some field
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="drone" label="Drone Plugin Marketplace definition" default>
+  <TabItem value="drone" label="Drone YAML" default>
 ```
 
 ```yaml
@@ -272,7 +272,7 @@ steps:
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="ci" label="Harness CI definition">
+  <TabItem value="ci" label="Harness YAML">
 ```
 
 ```yaml
