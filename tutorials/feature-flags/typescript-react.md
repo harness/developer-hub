@@ -9,7 +9,7 @@ description: Walks you through adding JavaScript Feature Flags to a TypeScript a
 
 As software engineers, we innovate by diving into creating the unknown, sometimes for the first time. Core to innovative work is experimenting and prototyping, because incremental success builds greater success. As changes get closer to production, the experimentation that was appropriate in lower environments tapers off as the potential blast radius grows. That is, if we get the experiment wrong, there’s a greater impact on a larger number of users.
 
-[Feature Flags](https://harness.io/blog/what-are-feature-flags) lets you experiment by allowing blocks of code to be executed conditionally. Conditional statements are nothing new, but the management of inventorying and toggling these conditional statements are newer, and Feature Flag platforms are here. Feature Flags enable progressive delivery, or the incremental release of features. 
+[Feature Flags](https://harness.io/blog/what-are-feature-flags) let you experiment by allowing blocks of code to be executed conditionally. Conditional statements are nothing new, but the management of inventorying and toggling these conditional statements are newer, and Feature Flag platforms are here. Feature Flags enable progressive delivery, or the incremental release of features. 
 
 In this tutorial we will walk you through your first Feature Flag creation and execution.
 
