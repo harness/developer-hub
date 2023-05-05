@@ -152,7 +152,7 @@ Currently, this feature is behind the feature flag, `CDS_FILTER_INFRA_CLUSTERS_O
    * **All** to deploy the selected service(s) to all infrastructures within the environment or environment group.
    * **Tags**, and then enter the tags in **CONDITION** to deploy the selected service(s) to the infrastructures with these tags. 
         
-     Select **Any** to deploy to infrastructures that has any of these tags. 
+     Select **Any** to deploy the selected service(s) to infrastructures that has any of these tags. 
      
      Select **All** to deploy the selected service(s) to infrastructures having all these tags. 
 
@@ -190,7 +190,7 @@ Currently, this feature is behind the feature flag, `CDS_FILTER_INFRA_CLUSTERS_O
    * **All** to deploy the selected service(s) to all clusters within the environment or environment group.
    * **Tags**, and then enter the tags in **CONDITION** to deploy the selected service(s) to the clusters with these tags. 
         
-     Select **Any** to deploy to clusters that has any of these tags. 
+     Select **Any** to deploy the selected service(s) to clusters that has any of these tags. 
      
      Select **All** to deploy the selected service(s) to clusters having all these tags. 
 
