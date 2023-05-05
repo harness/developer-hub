@@ -997,6 +997,14 @@ The Id of the Primary artifact added in a Service **Artifacts** section.
 
 ![](./static/harness-variables-41.png)
 
+### <+artifact.metadata.fileName>
+
+The file name of the Artifactory artifact. 
+
+This variable is added to the metadata of the Artifactory artifacts with generic repository format. You can view this variable in the **Output** tab of the **Service** step of a pipeline execution.
+
+![](./static/artifact-file-name-variable.png)
+
 ### Sidecar artifacts
 
 Sidecar artifact expressions use the **Sidecar Identifier** to reference the sidecar artifact.
