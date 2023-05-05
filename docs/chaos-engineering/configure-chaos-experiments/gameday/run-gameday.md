@@ -107,5 +107,5 @@ You can add up to 20 experiments to every GameDay, and every chaos experiment ca
 ![](./static/run-gameday/17-run-complete.png)
 
 ## Conclusion
-Congratulations! You have successfully executed your first GameDay in HCE. Don’t forget to check out [other tutorials](../../../../tutorials/run-chaos-experiments).
+Congratulations! You have successfully executed your first GameDay in HCE. Don’t forget to check out [other HCE tutorials](/tutorials/chaos-experiments).
 
