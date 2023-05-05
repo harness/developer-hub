@@ -16,8 +16,8 @@ RDS instance reboot determines the resilience of an application when an instance
 :::info note
 - Kubernetes version 1.17 or later is required to execute this fault.
 - AWS access to reboot RDS instances.
-- The RDS instance should be in a healthy state.
-- Kubernetes secret should have the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
+- The RDS instance must be in a healthy state.
+- Kubernetes secret must have the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A sample secret file looks like:
   ```yaml
   apiVersion: v1
   kind: Secret
@@ -31,7 +31,7 @@ RDS instance reboot determines the resilience of an application when an instance
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXX
   ```
-- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+- Harness recommends using the same secret name, that is, `cloud-secret`. Otherwise, you must update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
 - Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
 - Go to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
 - Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.

@@ -18,10 +18,10 @@ Windows EC2 memory hog:
 
 :::info note
 - Kubernetes version 1.17 or later is required to execute this fault.
-- The EC2 instance should be in a healthy state.
-- SSM agent should be installed and running on the target EC2 Windows instance in the admin mode.
-- SSM IAM role should be attached to the target EC2 instance(s).
-- Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+- The EC2 instance must be in a healthy state.
+- SSM agent must be installed and running on the target EC2 Windows instance in the admin mode.
+- SSM IAM role must be attached to the target EC2 instance(s).
+- Kubernetes secret must have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
     ```yaml
     apiVersion: v1
     kind: Secret
@@ -35,7 +35,7 @@ Windows EC2 memory hog:
         aws_access_key_id = XXXXXXXXXXXXXXXXXXX
         aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
     ```
-- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes.
+- Harness recommends using the same secret name, that is, `cloud-secret`. Otherwise, you will must update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes.
 - Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
 :::
 

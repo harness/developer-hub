@@ -14,9 +14,9 @@ Lambda delete function concurrency examines the performance of the running Lambd
 
 :::info note
 - Kubernetes version 1.17 or later is required to execute this fault.
-- Reserved concurrency should be set on the target Lambda function.
-- Lambda function should be up and running.
-- Kubernetes secret should have the AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+- Reserved concurrency must be set on the target Lambda function.
+- Lambda function must be up and running.
+- Kubernetes secret must have the AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
   ```yaml
   apiVersion: v1
   kind: Secret
@@ -30,7 +30,7 @@ Lambda delete function concurrency examines the performance of the running Lambd
       aws_access_key_id = XXXXXXXXXXXXXXXXXXX
       aws_secret_access_key = XXXXXXXXXXXXXXX
   ```
-- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+- Harness recommends using the same secret name, that is, `cloud-secret`. Otherwise, you must update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
 - Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
 - Go to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
 - Go to [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
