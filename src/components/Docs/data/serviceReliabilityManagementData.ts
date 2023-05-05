@@ -41,10 +41,10 @@ export const featuredTutorials: CardItem[] = [
         "",
       list: [
         {
-          title: "Overview",
+          title: "SRM tutorials",
           module: MODULES.srm,
           description:
-            "Learn about SRM and how it can benefit you.",
+            "Dive in with these hands-on tutorials.",
           link: "/tutorials/service-reliability",
         },
         {

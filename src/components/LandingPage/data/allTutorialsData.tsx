@@ -61,4 +61,65 @@ export const FeaturedList: CardItem[] = [
     time: "9 min",
     link: "/tutorials/ci-pipelines/build/tfc-notification",
   },
+  {
+    title: "Amazon ECR",
+    module: MODULES.ci,
+    description:
+      "Publish an Image to an Amazon Elastic Container Registry.",
+    link: "/tutorials/ci-pipelines/publish/amazon-ecr",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg"
+  },
+  {
+    title: "Google GAR",
+    module: MODULES.ci,
+    description:
+      "Publish an Image to a Google Artifact Registry.",
+    link: "/tutorials/ci-pipelines/publish/google-gar",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg"
+  },
+  {
+    title: "Code coverage with CodeCov",
+    module: MODULES.ci,
+    description:
+      "Use a Run step to include CodeCov code coverage.",
+    link: "/tutorials/ci-pipelines/test/codecov",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
+  },
+  {
+    title: "Publish Allure Report",
+    module: MODULES.ci,
+    description:
+      "Publish an Allure Report.",
+    link: "/tutorials/ci-pipelines/test/allure-report",
+    type: [docType.Documentation],
+    time: "5 min",
+    icon: "img/icon_ci.svg"
+  },
+  {
+    title: "Run LocalStack",
+    module: MODULES.ci,
+    description:
+      "Run LocalStack as a Background step.",
+    link: "/tutorials/ci-pipelines/test/localstack",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg"
+  },
+  {
+    title: "Run Sauce Connect Proxy",
+    module: MODULES.ci,
+    description:
+      "Run Sauce Connect Proxy as a Background step.",
+    link: "/tutorials/ci-pipelines/test/saucelabs-proxy",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg"
+  },
 ];

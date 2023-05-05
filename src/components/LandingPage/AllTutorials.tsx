@@ -11,6 +11,7 @@ import { SRMList } from "./data/serviceReliabilityManagementData";
 import { STOList } from "./data/securityTestingOrchestrationData";
 import { CEList } from "./data/chaosEngineeringData";
 import { PlatformList } from "./data/platformData";
+import { CETList } from "./data/continuousErrorTrackingData";
 import styles from "./styles.module.scss";
 import cardStyles from "./TutorialCard.module.scss";
 
@@ -82,6 +83,13 @@ export default function AllTutorials() {
           <h3>Run Chaos Experiments</h3>
         </div>
         <TutorialCard FeatureList={CEList} />
+      </div>
+      <div className={styles.subSection}>
+        <div className={styles.SectionName}>
+          <img src={`${baseUrl}img/icon_cet.svg`} />
+          <h3>Track Errors</h3>
+        </div>
+        <TutorialCard FeatureList={CETList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>

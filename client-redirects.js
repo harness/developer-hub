@@ -160,7 +160,7 @@ module.exports = {
 
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/install-the-error-tracking-agent",
-      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-setup",
+      to: "/docs/continuous-error-tracking/getting-started/cet-setup",
     },
 
     // Created by Rashmi Sahoo to fix PL redirects April 27th, 2023
@@ -309,19 +309,19 @@ module.exports = {
     // Created by Sudheendra Katte to fix error tracking re-directs April 20th, 2023
     {
       from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm-overview",
-      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-overview",
+      to: "/docs/continuous-error-tracking/getting-started/cet-overview",
     },
     {
       from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-in-srm",
-      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-setup",
+      to: "/docs/continuous-error-tracking/getting-started/cet-setup",
     },
     {
       from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-event-dashboard",
-      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-event-dashboard",
+      to: "/docs/continuous-error-tracking/getting-started/cet-event-dashboard",
     },
     {
       from: "/docs/service-reliability-management/continuous-error-tracking/error-tracking-arc",
-      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-arc",
+      to: "/docs/continuous-error-tracking/getting-started/cet-arc",
     },
     {
       from: "/docs/category/9mefqceij0-cv-category",
@@ -841,9 +841,12 @@ module.exports = {
     },
     {
       from: "/tutorials/manage-service-reliability/intro-java-exception-management",
-      to: "/tutorials/service-reliability/java-error-tracking",
+      to: "/tutorials/error-tracking/java-error-tracking",
     },
-
+    {
+      from: "/tutorials/service-reliability/java-error-tracking",
+      to: "/tutorials/error-tracking/java-error-tracking",
+    },
     {
       from: "/tutorials/orchestrate-security-tests",
       to: "/tutorials/security-tests",
@@ -1172,19 +1175,19 @@ module.exports = {
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm-overview",
-      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-overview",
+      to: "/docs/continuous-error-tracking/getting-started/cet-overview",
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-in-srm",
-      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-setup",
+      to: "/docs/continuous-error-tracking/getting-started/cet-setup",
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-event-dashboard",
-      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-event-dashboard",
+      to: "/docs/continuous-error-tracking/getting-started/cet-event-dashboard",
     },
     {
       from: "/docs/service-reliability-management/use-service-reliability-management/error-tracking-category/error-tracking-arc",
-      to: "/docs/service-reliability-management/continuous-error-tracking/getting-started/cet-arc",
+      to: "/docs/continuous-error-tracking/getting-started/cet-arc",
     },
 
     // Created by ravilach for CI Tutorials Refactor, PR-1231, on Apr 5, 2023

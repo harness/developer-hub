@@ -4,12 +4,6 @@ description: Get to the root of events in production and staging environments.
 sidebar_position: 40
 ---
 
-:::info note
-Currently, this feature is behind the feature flag `SRM_ET_EXPERIMENTAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
-
-
 The Automated Root Cause (ARC) screen provides a powerful mechanism to get to the root of events in production and staging environments. 
 
 To view the ARC screen, do the following:
@@ -17,7 +11,7 @@ To view the ARC screen, do the following:
 1. On the Events List, select an event. The ARC screen for that event appears.
 
 
-![View ARC screen](./static/et-quickstart-open-arc.png)
+![View ARC screen](./static/et-quickstart-open-arc.gif)
 
 The ARC screen is divided into following tabs to help you create a complete picture of the event.
 

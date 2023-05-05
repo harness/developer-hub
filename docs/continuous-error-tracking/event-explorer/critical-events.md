@@ -11,7 +11,7 @@ You can add a condition that specifies when an event should be marked as critica
 
 To add a condition:
 
-1. In your Harness project, navigate to **Service Reliability Management**, expand **PROJECT SETUP**, and then select **Code Error Settings**.
+1. In your Harness project, navigate to **Continuous Error Tracking**, expand **PROJECT SETUP**, and then select either **Tokens** or **Agents**.
 
 2. In the top right corner of the Project Code Error Settings page, select **Critical Events**.
    

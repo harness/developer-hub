@@ -4,14 +4,9 @@ description: Identify and prioritize critical errors.
 sidebar_position: 30
 ---
 
-:::info note
-Currently, this feature is behind the feature flag `SRM_ET_EXPERIMENTAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
+The Continuous Error Tracking Events dashboard displays a comprehensive list of all the monitored services and events.
 
-
-The Error Tracking Events dashboard displays a comprehensive list of all the monitored services and events.
-
-To go to the Events dashboard, in Harness, go to **Service Reliability Management**, and then select **Code Errors**.
+To go to the Events dashboard, in Harness, go to **Continuous Error Tracking**, and then select **Events Summary**.
 
 ![Continuous Error Tracking Events dashboard](./static/et-quickstart-errortracking-dashboard.png)
 
@@ -36,7 +31,7 @@ To view the Event List, do the following:
 
 1. On the Events dashboard, select a monitored service. The list of events captured by that monitored service is displayed.
 
-![Event List](./static/et-quickstart-view-event-list.png)
+![Events summary page](./static/et-getstarted-event-summary-page.png)
 
 The Event List displays the following information:
 
@@ -47,7 +42,7 @@ The Event List displays the following information:
   * Log Error	- Events logged as errors in the user’s service.
   * Log Warning - Events logged as warnings in the user’s service.
   * HTTP Error - HTTP communication errors.
-  * Custom Errors - Events that occur in the custom SDK. 
+  * Custom Error - Events that occur in the custom SDK. 
 
 * **Description:** Name of the event. In case of an exception, this is the exception class name. For example, AmazonException, NullPointerException, and so on. You can see the complete exception message of an event by hovering over the **Description** field.
 

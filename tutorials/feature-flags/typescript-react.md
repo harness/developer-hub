@@ -13,7 +13,7 @@ As software engineers, we innovate by diving into creating the unknown, sometime
 
 In this tutorial we will walk you through your first Feature Flag creation and execution.
 
-## What you need For executing your first Feature Flag
+## What you need for executing your first Feature Flag
 
 This example requires:
 * A GitHub account. 
