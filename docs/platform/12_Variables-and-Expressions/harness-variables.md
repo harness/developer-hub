@@ -1051,6 +1051,10 @@ The description of the environment.
 
 The environment type, such as `Production` or `PreProduction`.
 
+The available values are:
+- `PreProduction`
+- `Production`
+
 ### <+env.envGroupName>
 
 The name of the environment group to which the environment belongs (if defined).
@@ -1058,10 +1062,6 @@ The name of the environment group to which the environment belongs (if defined).
 ### <+env.envGroupRef>
 
 The Ref for environment group.
-
-The available values are:
-- `PreProduction`
-- `Production`
 
 You can evaluate the expression using JEXL in the **Conditional Execution** settings of steps or stages:
 
