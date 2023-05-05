@@ -1,6 +1,6 @@
 ---
 title: Selective pipeline stage execution by using triggers
-description: Execute specific stages of a pipeline using custom triggers
+description: Execute specific stages of a pipeline using webhook triggers
 sidebar_position: 7
 ---
 
@@ -14,8 +14,8 @@ Currently, this feature is behind the feature flag, `CDS_NG_TRIGGER_SELECTIVE_ST
 
 ## Requirements
 
-Make sure you have: 
-* A Harness pipeline with a [CD stage](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics).
+Make sure that you have met the following requirements:
+* You have a Harness pipeline with a [CD stage](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics).
 * You have set the service and infrastructure as runtime inputs so that you can provide the value in **Trigger>** **Configuration** tab.
 
 ## Execute a specific pipeline stage using triggers
