@@ -15,7 +15,11 @@ In this tutorial we will walk you through your first Feature Flag creation and e
 
 ## What you need For executing your first Feature Flag
 
-This example will require a GitHub Account, an editor such as an IDE, a [Harness Feature Flags Account](https://app.harness.io/auth/#/signup/?module=cf&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ff-plg&utm_content=get-started), and the ability to run an [NPM Install](https://docs.npmjs.com/cli/v7/commands/npm-install) in your local or remote environment.
+This example requires:
+* A GitHub account. 
+* An editor such as an IDE. 
+* A [Harness Feature Flags account](https://app.harness.io/auth/#/signup/?module=cf&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ff-plg&utm_content=get-started). 
+* The ability to run an [NPM Install](https://docs.npmjs.com/cli/v7/commands/npm-install) in your local or remote environment.
 
 ![Feature Flag Overview](static/ff-tutorial-typescript/ff_overview.png)
 
