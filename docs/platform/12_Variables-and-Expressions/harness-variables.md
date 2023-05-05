@@ -1055,6 +1055,10 @@ The environment type, such as `Production` or `PreProduction`.
 
 The name of the environment group to which the environment belongs (if defined).
 
+### <+env.envGroupRef>
+
+The Ref for environment group.
+
 The available values are:
 - `PreProduction`
 - `Production`
