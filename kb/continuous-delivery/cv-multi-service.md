@@ -29,7 +29,7 @@ Click `+ Add New Change Source`, select `Deployment` for the provider type, sele
 
 Click `+ Add New Health Source`, select your health source (prometheus in this example), give it a name, and finally select the connector for this source.
 
-![](./static/template-ws-hs.png)
+![](./static/template-ms-hs.png)
 
 On the next screen under `Group Name` click `+ Add New` and create a metric group. Next under `Assign` select the options that relate to the metric you will be measuring. Finally make sure the Query is set to be a runtime input.
 
