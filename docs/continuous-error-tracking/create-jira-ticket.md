@@ -1,5 +1,5 @@
 ---
-title: Create Jira ticket
+title: Create a Jira ticket from an event
 description: Create a Jira ticket for an event directly from CET.
 sidebar_position: 4
 ---

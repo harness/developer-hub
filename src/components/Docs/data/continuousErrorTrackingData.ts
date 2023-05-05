@@ -20,7 +20,7 @@ import {
             module: MODULES.cet,
             description:
               "Dive in with these hands-on tutorials.",
-            link: "/tutorials/service-reliability",
+            link: "/tutorials/error-tracking",
           },
           {
             title: "Overview",
@@ -73,7 +73,7 @@ import {
             link: "/docs/continuous-error-tracking/create-jira-ticket",
           },
           {
-            title: "Setup notifications",
+            title: "Set up notifications",
             module: MODULES.cet,
             description:
               "Alert your team whenever new, resurfaced, or critical events occur.",
