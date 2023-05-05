@@ -61,7 +61,7 @@ For the inputs under `Service` and `Environment` use `<+service.identifier>` and
 
 Finally, add the queries for the metrics you configured in the template.
 
-The important part here and how we get CV to work for multi-service deploys is that we can use [Harness variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#service) in our query. Things like `<+service.name>` or `<+service.identifier>`. If those cannot be used to generisize your queries you can also create [service variables]() in your service definitions to attach your health-source-specific labels to the respective Harness services. For example you could create a service variable for `app_name` and then reference it in your query with `<+serviceVariables.myvar>`.
+The important part here and how we get CV to work for multi-service deploys is that we can use [Harness variables](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#service) in our query. Things like `<+service.name>` or `<+service.identifier>`. If those cannot be used to generisize your queries you can also create *service variables* in your service definitions to attach your health-source-specific labels to the respective Harness services. For example you could create a service variable for `app_name` and then reference it in your query with `<+serviceVariables.myvar>`.
 
 Here is an example prometheus query that gets a metric based off a kubernetes application name using a service variable:
 
