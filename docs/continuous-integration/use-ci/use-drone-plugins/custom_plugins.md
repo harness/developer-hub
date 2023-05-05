@@ -74,9 +74,14 @@ docker run --rm \
 
 ## Run your plugin in Harness
 
-Use a **Plugin** step to run a plugin in a Harness CI pipeline. The following instructions use the `clone.sh` plugin example from the [Create a plugin](#create-your-plugin).
+Use a **Plugin** step to run a plugin in a Harness CI pipeline. The following instructions use the `clone.sh` plugin example from [Create a plugin](#create-your-plugin).
 
 For more information about configuring **Plugin** steps, go to the [Plugin step settings reference](./plugin-step-settings-reference.md) and [Use Drone plugins](./run-a-drone-plugin-in-ci.md).
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
 ```mdx-code-block
 <Tabs>

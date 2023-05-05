@@ -23,7 +23,7 @@ You can use the [Plugin step](./run-a-drone-plugin-in-ci.md) to run [Drone plugi
 How you run [Bitrise Integrations](https://bitrise.io/integrations/steps) in Harness CI pipelines depends on your [build infrastructure](../set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 * With Harness Cloud build infrastructure, use the [Bitrise plugin step](./ci-bitrise-plugin.md).
-* With other build infrastructures, you can use a custom plugin in the [Plugin step](./plugin-step-settings-reference.md).
+* With other build infrastructures, you can use a [custom plugin](./custom_plugins.md).
 
 ## GitHub Actions
 

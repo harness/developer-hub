@@ -292,8 +292,6 @@ It's often easier to define complex settings in the Harness Pipeline Studio's YA
 
 The following snippets illustrate the different ways that Drone and Harness CI handle [text secrets](/docs/platform/Secrets/add-use-text-secrets).
 
-Note that the CI definition includes a few additional fields and that some fields use different formats.
-
 ```mdx-code-block
 <Tabs>
   <TabItem value="drone" label="Drone YAML" default>
