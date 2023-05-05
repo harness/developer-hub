@@ -330,10 +330,13 @@ export const SRMList: CardItem[] = [
     time: "15min",
     link: "/tutorials/service-reliability/slo-prometheus",
   },
+];
+
+export const CETList: CardItem[] = [
   {
     title: "Java Error Tracking",
-    module: MODULES.srm,
-    icon: "img/icon_srm.svg",
+    module: MODULES.cet,
+    icon: "img/icon_cet.svg",
     description: (
       <>
         Finding and fixing caught, uncaught, and swallowed Java exceptions.
@@ -343,7 +346,7 @@ export const SRMList: CardItem[] = [
     newDoc: false,
     type: [docType.Interactive, docType.Video],
     time: "10min",
-    link: "/tutorials/service-reliability/java-error-tracking",
+    link: "/tutorials/error-tracking/java-error-tracking",
   },
 ];
 

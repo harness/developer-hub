@@ -6,10 +6,6 @@ sidebar_position: 10
 
 # Continuous Error Tracking overview
 
-:::info note
-Currently, this feature is behind the feature flag `SRM_ET_EXPERIMENTAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 
 Harness Continuous Error Tracking (CET) is a developer first observability solution that enables developers to identify, triage, and resolve errors in applications. This helps in implementing rapid code changes by ensuring that the code is always in a deployable state.
 

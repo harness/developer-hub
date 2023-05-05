@@ -138,6 +138,11 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Track Errors",
+                to: "tutorials/error-tracking",
+              },
+              {
+                // type: "doc",
                 label: "Administer Harness Platform",
                 to: "tutorials/platform",
               },
@@ -180,6 +185,10 @@ const config = {
               {
                 label: "Chaos Engineering",
                 to: "docs/chaos-engineering",
+              },
+              {
+                label: "Continuous Error Tracking",
+                to: "docs/continuous-error-tracking",
               },
               {
                 label: "Harness Platform",

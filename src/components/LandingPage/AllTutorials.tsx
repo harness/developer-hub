@@ -11,6 +11,7 @@ import {
   SRMList,
   STOList,
   CEList,
+  CETList,
   PlatformList,
 } from "./data/allTutorialsData";
 import styles from "./styles.module.scss";
@@ -84,6 +85,13 @@ export default function AllTutorials() {
           <h3>Run Chaos Experiments</h3>
         </div>
         <TutorialCard FeatureList={CEList} />
+      </div>
+      <div className={styles.subSection}>
+        <div className={styles.SectionName}>
+          <img src={`${baseUrl}img/icon_cet.svg`} />
+          <h3>Track Errors</h3>
+        </div>
+        <TutorialCard FeatureList={CETList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
