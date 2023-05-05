@@ -1051,6 +1051,10 @@ The description of the environment.
 
 The environment type, such as `Production` or `PreProduction`.
 
+### <+env.envGroupName>
+
+The environment group of environment , if defined.
+
 The available values are:
 - `PreProduction`
 - `Production`
@@ -1061,7 +1065,7 @@ You can evaluate the expression using JEXL in the **Conditional Execution** sett
 <+env.type> != "Production"
 ```
 
-
+**Note** : Env expressions can be used in service step as well.
 ## Infrastructure
 
 The following expressions provide information about the pipeline infrastructure settings. The infrastructure in a pipeline is the **Infrastructure Definition** in the Harness environment used in the CD stage's **Environment** section.
