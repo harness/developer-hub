@@ -8,11 +8,7 @@ export const FeaturedList: CardItem[] = [
     title: "Deploy a Kubernetes Helm Chart",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: (
-      <>
-      Deploy a Helm Chart onto your Kubernetes cluster.
-      </>
-    ),
+    description: <>Deploy a Helm Chart onto your Kubernetes cluster.</>,
     newDoc: true,
     type: [docType.Documentation],
     time: "8min",
@@ -25,8 +21,8 @@ export const FeaturedList: CardItem[] = [
     icon: "img/icon_ci.svg",
     description: (
       <>
-        Get started with Harness CI and explore some of the features that
-        make it four times faster than the leading competitor.
+        Get started with Harness CI and explore some of the features that make
+        it four times faster than the leading competitor.
       </>
     ),
     newDoc: false,
@@ -55,12 +51,13 @@ export const FeaturedList: CardItem[] = [
     icon: "img/icon_ci.svg",
     description: (
       <>
-       Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.
+        Terraform Cloud notifications can trigger CI pipelines through custom CI
+        webhooks.
       </>
     ),
     newDoc: true,
     type: [docType.Documentation],
-    time: '9 min',
+    time: "9 min",
     link: "/tutorials/ci-pipelines/build/tfc-notification",
   },
 ];
@@ -80,8 +77,7 @@ export const CIList: CardItem[] = [
   {
     title: "Build on a Kubernetes cluster",
     module: MODULES.ci,
-    description:
-      "Build a Docker Image on a Kubernetes cluster build farm.",
+    description: "Build a Docker Image on a Kubernetes cluster build farm.",
     link: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
     type: [docType.Documentation],
     time: "30 min",
@@ -90,8 +86,7 @@ export const CIList: CardItem[] = [
   {
     title: "Go application",
     module: MODULES.ci,
-    description:
-      "Build a Docker Image of a Go application.",
+    description: "Build a Docker Image of a Go application.",
     link: "/tutorials/ci-pipelines/build/go",
     type: [docType.Documentation],
     time: "15 min",
@@ -100,8 +95,7 @@ export const CIList: CardItem[] = [
   {
     title: "Java application",
     module: MODULES.ci,
-    description:
-      "Build a Docker Image of Java HTTP Server application.",
+    description: "Build a Docker Image of Java HTTP Server application.",
     link: "/tutorials/ci-pipelines/build/java",
     icon: "img/icon_ci.svg",
     time: "15 min",
@@ -110,8 +104,7 @@ export const CIList: CardItem[] = [
   {
     title: "NodeJS application",
     module: MODULES.ci,
-    description:
-      "Build a Docker Image of a NodeJS application.",
+    description: "Build a Docker Image of a NodeJS application.",
     link: "/tutorials/ci-pipelines/build/nodejs",
     type: [docType.Documentation],
     time: "15 min",
@@ -120,8 +113,7 @@ export const CIList: CardItem[] = [
   {
     title: "React application",
     module: MODULES.ci,
-    description:
-      "Build a Docker Image of a React application.",
+    description: "Build a Docker Image of a React application.",
     link: "/tutorials/ci-pipelines/build/react",
     type: [docType.Documentation],
     time: "20 min",
@@ -140,8 +132,7 @@ export const CIList: CardItem[] = [
   {
     title: "Signed images",
     module: MODULES.ci,
-    description:
-      "Build a signed Docker Image of a Go application.",
+    description: "Build a signed Docker Image of a Go application.",
     link: "/tutorials/ci-pipelines/build/signed-image",
     type: [docType.Documentation],
     time: "15 min",
@@ -155,34 +146,31 @@ export const CIList: CardItem[] = [
       "Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.",
     newDoc: true,
     type: [docType.Documentation],
-    time: '9 min',
+    time: "9 min",
     link: "/tutorials/ci-pipelines/build/tfc-notification",
   },
   {
     title: "Amazon ECR",
     module: MODULES.ci,
-    description:
-      "Publish an Image to an Amazon Elastic Container Registry.",
+    description: "Publish an Image to an Amazon Elastic Container Registry.",
     link: "/tutorials/ci-pipelines/publish/amazon-ecr",
     type: [docType.Documentation],
     time: "15 min",
-    icon: "img/icon_ci.svg"
+    icon: "img/icon_ci.svg",
   },
   {
     title: "Google GAR",
     module: MODULES.ci,
-    description:
-      "Publish an Image to a Google Artifact Registry.",
+    description: "Publish an Image to a Google Artifact Registry.",
     link: "/tutorials/ci-pipelines/publish/google-gar",
     type: [docType.Documentation],
     time: "15 min",
-    icon: "img/icon_ci.svg"
+    icon: "img/icon_ci.svg",
   },
   {
     title: "Code coverage with CodeCov",
     module: MODULES.ci,
-    description:
-      "Use a Run step to include CodeCov code coverage.",
+    description: "Use a Run step to include CodeCov code coverage.",
     link: "/tutorials/ci-pipelines/test/codecov",
     type: [docType.Documentation],
     time: "15 min",
@@ -192,32 +180,29 @@ export const CIList: CardItem[] = [
   {
     title: "Publish Allure Report",
     module: MODULES.ci,
-    description:
-      "Publish an Allure Report.",
+    description: "Publish an Allure Report.",
     link: "/tutorials/ci-pipelines/test/allure-report",
     type: [docType.Documentation],
     time: "5 min",
-    icon: "img/icon_ci.svg"
+    icon: "img/icon_ci.svg",
   },
   {
     title: "Run LocalStack",
     module: MODULES.ci,
-    description:
-      "Run LocalStack as a Background step.",
+    description: "Run LocalStack as a Background step.",
     link: "/tutorials/ci-pipelines/test/localstack",
     type: [docType.Documentation],
     time: "15 min",
-    icon: "img/icon_ci.svg"
+    icon: "img/icon_ci.svg",
   },
   {
     title: "Run Sauce Connect Proxy",
     module: MODULES.ci,
-    description:
-      "Run Sauce Connect Proxy as a Background step.",
+    description: "Run Sauce Connect Proxy as a Background step.",
     link: "/tutorials/ci-pipelines/test/saucelabs-proxy",
     type: [docType.Documentation],
     time: "15 min",
-    icon: "img/icon_ci.svg"
+    icon: "img/icon_ci.svg",
   },
 ];
 
@@ -424,9 +409,7 @@ export const PlatformList: CardItem[] = [
     title: "Install CD Community Edition",
     module: MODULES.platform,
     icon: "img/logo.svg",
-    description: (
-      <>Install the free CD Community Edition.</>
-    ),
+    description: <>Install the free CD Community Edition.</>,
     newDoc: false,
     type: [docType.Documentation],
     time: "5 min",
@@ -480,9 +463,7 @@ export const PlatformList: CardItem[] = [
     module: MODULES.platform,
     icon: "img/logo.svg",
     description: (
-      <>
-        Deploy Harness Delegate onto Workload Identity-enabled GKE.
-      </>
+      <>Deploy Harness Delegate onto Workload Identity-enabled GKE.</>
     ),
     newDoc: true,
     type: [docType.Documentation],

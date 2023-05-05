@@ -3,7 +3,7 @@ import { CardItem, docType } from "../TutorialCard";
 import { MODULES } from "../../../constants";
 
 /* Define the cards here */
-const PlansList: CardItem[] = [
+export const PlansList: CardItem[] = [
   {
     title: "Free Plan",
     module: MODULES.cd,
@@ -22,7 +22,7 @@ const PlansList: CardItem[] = [
   },
 ];
 
-const FeaturedList: CardItem[] = [
+export const FeaturedList: CardItem[] = [
   {
     title: "Deploy a Kubernetes Helm Chart",
     module: MODULES.cd,
@@ -38,9 +38,7 @@ const FeaturedList: CardItem[] = [
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
     description: (
-      <>
-        Deploy a Kubernetes Manifest onto your Kubernetes cluster.
-      </>
+      <>Deploy a Kubernetes Manifest onto your Kubernetes cluster.</>
     ),
     newDoc: true,
     type: [docType.Documentation],
@@ -49,7 +47,7 @@ const FeaturedList: CardItem[] = [
   },
 ];
 
-const CDList: CardItem[] = [
+export const CDList: CardItem[] = [
   {
     title: "Deploy a Kubernetes Helm Chart",
     module: MODULES.cd,
