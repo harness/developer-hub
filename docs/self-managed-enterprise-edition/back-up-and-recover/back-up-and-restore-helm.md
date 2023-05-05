@@ -8,7 +8,7 @@ Harness recommends using Velero to back up and restore Helm-based installations 
 
 ## Install Velero 
 
-You can install Velero using several methods, but Harness recommends installation using a Container Storage Interface (CSI) plugin. CSI is a standard interface that enables container orchestrators, such as Kubernetes, to manage different storage systems in a consistent and modular way. The CSI specification defines a set of APIs that container orchestrators can use to discover and manage storage systems, create and delete volums, attach and detach volumes from nodes, and perform other storage-related operations. CSI drivers implement these APIs to provide integration with specific storage systems. 
+You can install Velero using several methods, but Harness recommends installation using a Container Storage Interface (CSI) plugin. CSI is a standard interface that enables container orchestrators, such as Kubernetes, to manage different storage systems in a consistent and modular way. The CSI specification defines a set of APIs that container orchestrators can use to discover and manage storage systems, create and delete volumes, attach and detach volumes from nodes, and perform other storage-related operations. CSI drivers implement these APIs to provide integration with specific storage systems. 
 
 If installation with a CSI plugin is not a viable option for your environment, you may use one of the Velero integrations with cloud providers. For more information, go to [Providers](https://velero.io/docs/v1.11/supported-providers/) in the Velero documentation.
 
@@ -107,7 +107,7 @@ Velero takes two kinds of backups: Backups with Volume (VolumeSnapshots) and Kub
     --features=EnableCSI
     ```
 
-6. Creat a backup. The following command is an example of deploying a Harness application in the Harness namespace and taking a backup of MongoDB persistent volumes (PVs).
+6. Create a backup. The following command is an example of deploying a Harness application in the Harness namespace and taking a backup of MongoDB persistent volumes (PVs).
 
     ```
     velero backup create harness-backup --selector
@@ -124,5 +124,3 @@ Velero takes two kinds of backups: Backups with Volume (VolumeSnapshots) and Kub
     `velero restore create --from-backup harness-backup`
 
     The PVs are recreated, but the PVs are not bound to the Harness namespace. Scale the MongoDB pods back to 3. This creates the PVs with the data that was backed up from the volumeSnapshots. 
-
-
