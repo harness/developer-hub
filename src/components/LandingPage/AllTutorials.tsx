@@ -12,7 +12,7 @@ import { STOList } from "./data/securityTestingOrchestrationData";
 import { CEList } from "./data/chaosEngineeringData";
 import { PlatformList } from "./data/platformData";
 import styles from "./styles.module.scss";
-import moduleStyles from "./TutorialCard.module.scss";
+import cardStyles from "./TutorialCard.module.scss";
 
 export default function AllTutorials() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -22,7 +22,7 @@ export default function AllTutorials() {
     //     <li>Get Started</li>
     //     <li>All Tutorials</li>
     //   </ul>
-    <div className={clsx("container", moduleStyles.allTutorials)}>
+    <div className={clsx("container", cardStyles.allTutorials)}>
       <div className={styles.topSection}>
         <h1>All Tutorials</h1>
         <p>
