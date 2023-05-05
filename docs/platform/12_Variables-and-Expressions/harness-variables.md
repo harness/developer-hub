@@ -990,7 +990,7 @@ The Id of the Primary artifact added in a Service **Artifacts** section.
 
 ### <+artifact.metadata.fileName>
 
-The file name of the Artifactory artifacts. 
+The file name of the Artifactory artifact. 
 
 This variable is added to the metadata of the Artifactory artifacts with generic repository format. You can view this variable in the **Output** tab of the **Service** step of a pipeline execution.
 
