@@ -2,9 +2,9 @@
 id: windows-ec2-memory-hog
 title: Windows EC2 memory hog
 ---
+## Introduction
 
-Windows EC2 memory hog induces memory stress on the target AWS Windows EC2 instance using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault. This fault:
-- Causes memory exhaustion on the target Windows EC2 instance for a specific duration.
+Windows EC2 memory hog induces memory stress on the target AWS Windows EC2 instance using Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault. This fault causes memory exhaustion on the target Windows EC2 instance for a specific duration.
 
 ![Windows EC2 Memory Hog](./static/images/windows-ec2-memory-hog.png)
 
@@ -16,27 +16,27 @@ Windows EC2 memory hog:
 - Simulates the situation of memory leaks in the deployment of microservices.
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to hogging.
 
-:::note
-- Kubernetes >= 1.17 is required to execute this fault.
-- The EC2 instance should be in a healthy state.
-- SSM agent should be installed and running on the target EC2 Windows instance in the admin mode.
-- SSM IAM role should be attached to the target EC2 instance(s).
-- Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+:::info note
+- Kubernetes version 1.17 or later is required to execute this fault.
+- The EC2 instance must be in a healthy state.
+- SSM agent must be installed and running on the target EC2 Windows instance in the admin mode.
+- SSM IAM role must be attached to the target EC2 instance(s).
+- Kubernetes secret must have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+    ```yaml
+    apiVersion: v1
+    kind: Secret
+    metadata:
+      name: cloud-secret
+    type: Opaque
+    stringData:
+      cloud_config.yml: |-
+        # Add the cloud AWS credentials respectively
+        [default]
+        aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+        aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+    ```
+- Harness recommends using the same secret name, that is, `cloud-secret`. Otherwise, you will must update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes.
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
 :::
 
 Here is an example AWS policy to execute the fault.
@@ -88,14 +88,13 @@ Here is an example AWS policy to execute the fault.
 }
 ```
 
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
 
 ## Fault tunables
 
-<h3>Mandatory fields</h3>
+<h3>Mandatory tunables</h3>
 <table>
     <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
     </tr>
@@ -110,17 +109,17 @@ Here is an example AWS policy to execute the fault.
         <td> For example, <code>us-east-1</code>. </td>
     </tr>
 </table>
-<h3>Optional fields</h3>
+<h3>Optional tunables</h3>
 <table>
     <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
     </tr>
     <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration to insert chaos (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
+        <td> Default: 30 s </td>
     </tr>
     <tr>
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
@@ -130,35 +129,35 @@ Here is an example AWS policy to execute the fault.
     <tr>
         <td> INSTALL_DEPENDENCIES </td>
         <td> Install dependencies to run the network chaos. It can be 'True' or 'False'. </td>
-        <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
+        <td> If the dependency already exists, you can turn it off. Default: True.</td>
     </tr>
     <tr>
         <td> MEMORY_CONSUMPTION </td>
         <td> Amount of memory to be consumed by the EC2 instance (in megabytes). </td>
-        <td> Defaults to 0MB. </td>
+        <td> Default: 0 MB. </td>
     </tr>
     <tr>
         <td> MEMORY_PERCENTAGE </td>
         <td> Amount of memory to be consumed by the EC2 instance (in percentage).</td>
-        <td> Defaults to 50. </td>
+        <td> Default: 50. </td>
     </tr>
     <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple instances.</td>
-        <td> Defaults to parallel. Supports serial and parallel. </td>
+        <td> Default: parallel. Supports serial and parallel. </td>
     </tr>
     <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds).  </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. </td>
     </tr>
 </table>
 
 ### Memory consumption in megabytes
 
-It specifies the amount of memory to be utilized (in megabytes) on the EC2 instance. Tune it by using the `MEMORY_CONSUMPTION` environment variable.
+Memory utilized on the EC2 instance (in megabytes). Tune it by using the `MEMORY_CONSUMPTION` environment variable.
 
-Use the following example to tune memory consumption in MB:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/windows-ec2-memory-hog/memory-bytes.yaml yaml)
 ```yaml
@@ -187,9 +186,9 @@ spec:
 
 ### Memory consumption by percentage
 
-It specifies the amount of memory (in percentage) to be utilized on the EC2 instance. Tune it by using the `MEMORY_PERCENTAGE` environment variable.
+Memory utilized on the EC2 instance (in percentage). Tune it by using the `MEMORY_PERCENTAGE` environment variable.
 
-Use the following example to tune memory consumption in percentage:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/windows-ec2-memory-hog/memory-percentage.yaml yaml)
 ```yaml
@@ -220,9 +219,9 @@ spec:
 
 ### Multiple EC2 instances
 
-It specifies multiple EC2 instances as comma-separated IDs that are targeted in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
+Multiple EC2 instances specified as comma-separated IDs targeted in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
 
-Use the following example to tune multiple EC2 instances:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/windows-ec2-memory-hog/multiple-instances.yaml yaml)
 ```yaml
