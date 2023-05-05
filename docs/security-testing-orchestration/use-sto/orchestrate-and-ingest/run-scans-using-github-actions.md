@@ -17,6 +17,8 @@ import TabItem from '@theme/TabItem';
 * The type of step to use depends on your build infrastructure: use a GitHub Action step for Harness Cloud infrastructures and a Drone Plugin step for Kubernetes infrasgtructures.
 
 * Harness recommends that you output your scan results to a data file in [SARIF format](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning). You can then use a Custom Ingestion step to ingest the results into your pipeline.
+
+* As described below, you need to translate settings from the GitHub Action YAML to the Harness pipeline YAML. It is good practices to configure these settings in the YAML editor.
 ::: 
 
 
@@ -36,6 +38,10 @@ import TabItem from '@theme/TabItem';
    For information about the settings to set, go to the external scanner documentation.
 
    For a complete description of how to set up a GitHub Action Plugin step, go to [Use the GitHub Action plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step).
+
+   :::note
+
+   :::
 
    <table>
     <tr>
@@ -67,7 +73,35 @@ import TabItem from '@theme/TabItem';
 
 4. Add a [**Custom Ingest**](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-scan-reference) step and set it up to ingest the data file. 
 
-<details><summary>YAML pipeline example</summary>
+#### Example setup
+
+This example uses the Aqua Security Trivy action to scan a container. As noted in the [GitHub Marketplace documentation](https://github.com/marketplace/actions/aqua-security-trivy#using-trivy-with-github-code-scanning), this action runs based on the following YAML definition:
+
+```yaml
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'docker.io/my-organization/my-app:${{ github.sha }}'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+```
+Given this, you would set up the Action step in your Harness pipeline like this. You can then set up a CustomIngest step to ingest the `trivy-results.sarif` file that gets generated.
+
+```yaml
+      - step:
+          type: Action
+          name: trivy-sarif-demo
+          identifier: CxFlow
+          spec:
+            uses: aquasecurity/trivy-action@master
+            with:
+              image-ref: docker.io/my-organization/my-app:${{ github.sha }}
+              format: sarif
+              output: trivy-results.sarif
+          description: https://github.com/marketplace/actions/aqua-security-trivy#using-trivy-with-github-code-scanning
+```
+
+<details><summary>YAML pipeline</summary>
 
 ```yaml
 pipeline:
@@ -134,15 +168,18 @@ pipeline:
   <TabItem value="Drone Plugin setup">
 ```
 
+
+
 1. Open the CI or STO pipeline where you want to run the action, then go to the Build or Security Tests stage where you want to run the action.
 
-2. Click **Add Step** and then add a **GitHub Action plugin** step. 
+2. Click **Add Step** and then add a **Plugin** step. 
 
 3. Use **Settings** to specify the Github Action you want to use and to pass variables and attributes required by the Action. 
 
-   For information about the settings to set, go to the external scanner documentation.
+   For information about how to set up the specific action, go to the external scanner documentation.
 
-   For a complete description of how to set up a GitHub Action Plugin step, go to [Use the GitHub Action plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step).
+   For a complete description of how to set up a GitHub Action Plugin step, go to [Use the GitHub Actions Drone plugin](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie).
+
 
    <table>
     <tr>
@@ -172,7 +209,97 @@ pipeline:
    </table>
 
 
-4. Add a [**Custom Ingest**](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-scan-reference)) step and set it up to ingest the data file. 
+4. Add a [**Custom Ingest**](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-scan-reference) step and set it up to ingest the data file. 
+
+#### Example setup
+
+This example uses the Aqua Security Trivy action to scan a container. As noted in the [GitHub Marketplace documentation](https://github.com/marketplace/actions/aqua-security-trivy#using-trivy-with-github-code-scanning), this action runs based on the following YAML definition:
+
+```yaml
+      - name: Run Trivy vulnerability scanner
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'docker.io/my-organization/my-app:${{ github.sha }}'
+          format: 'sarif'
+          output: 'trivy-results.sarif'
+```
+Given this, you would set up the Action step in your Harness pipeline like this. You can then set up a CustomIngest step to ingest the `trivy-results.sarif` file that gets generated.
+
+```yaml
+      - step:
+          type: Action
+          name: trivy-sarif-demo
+          identifier: CxFlow
+          spec:
+            uses: aquasecurity/trivy-action@master
+            with:
+              image-ref: docker.io/my-organization/my-app:${{ github.sha }}
+              format: sarif
+              output: trivy-results.sarif
+          description: https://github.com/marketplace/actions/aqua-security-trivy#using-trivy-with-github-code-scanning
+```
+
+<details><summary>YAML pipeline</summary>
+
+```yaml
+pipeline:
+  projectIdentifier: myProject
+  orgIdentifier: myOrg
+  tags: {}
+  identifier: nodejs-repo-scane
+  name: NodeJS repo scan
+  properties:
+    ci:
+      codebase:
+        connectorRef: MY_REPO_CONNECTOR
+        repoName: https://github.com/OWASP/NodeGoat
+        build: <+input>
+  stages:
+    - stage:
+        name: njsscan
+        identifier: njsscan
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Action
+                  name: njsscan
+                  identifier: njsscan
+                  spec:
+                    uses: ajinabraham/njsscan-action@master
+                    with:
+                      args: . --sarif --output result.sarif || true
+              - step:
+                  type: CustomIngest
+                  name: CustomIngest_1
+                  identifier: CustomIngest_1
+                  spec:
+                    mode: ingestion
+                    config: default
+                    target:
+                      name: nodegoat
+                      type: repository
+                      variant: develop
+                    advanced:
+                      log:
+                        level: info
+                    ingestion:
+                      file: /harness/result.sarif
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          sharedPaths:
+            - /shared/customer_artifacts/
+
+
+```
+
+</details>
 
 
 
