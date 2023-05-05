@@ -45,14 +45,6 @@ export const featureList: CardItem[] = [
     link: "tutorials/service-reliability",
   },
   {
-    title: "Track Errors",
-    module: MODULES.cet,
-    icon: "img/icon_cet.svg",
-    description: <>Find and fix issues in minutes with code level visibility.</>,
-    type: [docType.Documentation, docType.Interactive, docType.Video],
-    link: "tutorials/error-tracking",
-  },
-  {
     title: "Orchestrate Security Tests",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
@@ -67,6 +59,14 @@ export const featureList: CardItem[] = [
     description: <>Ensure application and infrastructure resilience.</>,
     type: [docType.Documentation],
     link: "tutorials/chaos-experiments",
+  },
+  {
+    title: "Track Errors",
+    module: MODULES.cet,
+    icon: "img/icon_cet.svg",
+    description: <>Find and fix issues in minutes with code level visibility.</>,
+    type: [docType.Documentation, docType.Interactive, docType.Video],
+    link: "tutorials/error-tracking",
   },
   {
     title: "Administer Harness Platform",
