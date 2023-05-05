@@ -25,7 +25,7 @@ Make sure you have:
    
     ![](./static/selective-stage-execution.png)
 
-3. When you create a [custom trigger](/docs/platform/triggers/trigger-deployments-using-custom-triggers/), in the **Configuration** tab, select the stages you want to execute.
+3. When you create a trigger, in the **Configuration** tab, select the stages you want to execute.
    
    ![](./static/select-stage-to-execute.png)
   
