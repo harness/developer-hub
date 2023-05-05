@@ -152,9 +152,9 @@ Currently, this feature is behind the feature flag, `CDS_FILTER_INFRA_CLUSTERS_O
    * **All** to deploy the selected service(s) to all infrastructures within the environment or environment group.
    * **Tags**, and then enter the tags in **CONDITION** to deploy the selected service(s) to the infrastructures with these tags. 
         
-     Select **Any** to deploy the selected service(s) to infrastructures that has any of these tags. 
+     Select **Any** to deploy the selected services to infrastructures that have any of these tags. 
      
-     Select **All** to deploy the selected service(s) to infrastructures having all these tags. 
+     Select **All** to deploy the selected services to infrastructures having all these tags. 
 
      You can select **CONDITION** as a fixed value, runtime input, or expression. The supported expressions are `<+service.tags>` and `<+pipeline.tags>`.
 
@@ -187,12 +187,12 @@ Currently, this feature is behind the feature flag, `CDS_FILTER_INFRA_CLUSTERS_O
 7. In **Clusters**, select **Deploy to filtered list**, and then select **+ Add Filters**.
 8. In **FILTERS ON ENTITIES**, select **Clusters**.
 9. In **Type**, select: 
-   * **All** to deploy the selected service(s) to all clusters within the environment or environment group.
-   * **Tags**, and then enter the tags in **CONDITION** to deploy the selected service(s) to the clusters with these tags. 
+   * **All** to deploy the selected services to all clusters within the environment or environment group.
+   * **Tags**, and then enter the tags in **CONDITION** to deploy the selected services to the clusters with these tags. 
         
-     Select **Any** to deploy the selected service(s) to clusters that has any of these tags. 
+     Select **Any** to deploy the selected services to clusters that have any of these tags. 
      
-     Select **All** to deploy the selected service(s) to clusters having all these tags. 
+     Select **All** to deploy the selected services to clusters having all these tags. 
 
      You can select **CONDITION** as a fixed value, runtime input, or expression. The supported expressions are `<+service.tags>` and `<+pipeline.tags>`.
 
