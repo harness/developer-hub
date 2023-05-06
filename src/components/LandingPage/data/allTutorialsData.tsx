@@ -330,10 +330,13 @@ export const SRMList: CardItem[] = [
     time: "15min",
     link: "/tutorials/service-reliability/slo-prometheus",
   },
+];
+
+export const CETList: CardItem[] = [
   {
     title: "Java Error Tracking",
-    module: MODULES.srm,
-    icon: "img/icon_srm.svg",
+    module: MODULES.cet,
+    icon: "img/icon_cet.svg",
     description: (
       <>
         Finding and fixing caught, uncaught, and swallowed Java exceptions.
@@ -343,7 +346,7 @@ export const SRMList: CardItem[] = [
     newDoc: false,
     type: [docType.Interactive, docType.Video],
     time: "10min",
-    link: "/tutorials/service-reliability/java-error-tracking",
+    link: "/tutorials/error-tracking/java-error-tracking",
   },
 ];
 
@@ -364,7 +367,7 @@ export const STOList: CardItem[] = [
 
 export const CEList: CardItem[] = [
   {
-    title: "Your First Chaos Experiment on Kubernetes",
+    title: "Your first chaos experiment on Kubernetes",
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
     description: (
@@ -376,7 +379,7 @@ export const CEList: CardItem[] = [
     link: "/tutorials/chaos-experiments/first-chaos-engineering",
   },
   {
-    title: "Chaos Experiment from a Blank Canvas",
+    title: "Chaos experiment from a blank canvas",
     module: MODULES.ce,
     icon: "img/icon_ce.svg",
     description: (

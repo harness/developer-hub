@@ -1,5 +1,5 @@
 ---
-title: Harness Role-Based Access Control Overview
+title: Role-based access control overview
 description: This topic explains the concept of Harness Role-Based Access Control.
 # sidebar_position: 2
 helpdocs_topic_id: vz5cq0nfg2

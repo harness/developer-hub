@@ -71,7 +71,7 @@ Find the where the same name is identified in the deployment environment, and us
 For AWS EC2 hostnames, use the expression `${instance.hostName`}.For example, locate the pod name in the Datadog **Event Stream** page:
 
 1. In **Datadog**, click **Events**.
-2. Locate an event using a search query. For more information, see [Event Stream](https://docs.datadoghq.com/graphing/event_stream/) from Datadog.
+2. Locate an event using a search query. For more information, see [Event Stream](https://docs.datadoghq.com/dashboards/widgets/event_stream/) from Datadog.
 3. Expand the event by click the the ellipsis at the end of the event title.
 
    [![](./static/3-verify-deployments-with-datadog-25.png)](./static/3-verify-deployments-with-datadog-25.png)

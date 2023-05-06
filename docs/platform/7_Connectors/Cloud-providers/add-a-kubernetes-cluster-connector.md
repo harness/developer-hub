@@ -1,5 +1,5 @@
 ---
-title: Add a Kubernetes Cluster Connector
+title: Add a Kubernetes cluster connector
 description: Connect Harness to a Kubernetes cluster using a Harness Kubernetes Cluster Connector.
 sidebar_position: 5
 helpdocs_topic_id: 1gaud2efd4
@@ -23,7 +23,7 @@ Once connected, you can use Kubernetes and Harness for provisioning infrastructu
 
 Here's a quick video that shows you how to add a Kubernetes Cluster Connector and install the Kubernetes Delegate in the target cluster at the same time:
 
-### Review: Roles and Policies for the Connector
+### Roles and Policies for the Connector
 
 The IAM roles and policies needed by the account used in the Connector depend on what operations you are using with Harness and what operations you want Harness to perform in the cluster.
 
@@ -44,11 +44,9 @@ If you don’t want to use `verbs: [“*”]` for the Role, you can list out all
 
 The YAML provided for the Harness Delegate defaults to `cluster-admin` because that ensures anything could be applied. Any restriction must take into account the actual manifests to be deployed.
 
-### Review: Use the platform-agnostic Kubernetes Cluster Connector to connect to EKS
+### Use the platform-agnostic Kubernetes Cluster Connector to connect to EKS
 
-Harness does not have an out of the box connector for Elastic Kubernetes Service (Amazon EKS).
-
-If you want to connect Harness to Amazon EKS, use the platform-agnostic Kubernetes Cluster Connector discussed in this topic. 
+To connect Harness to Amazon EKS, use the platform-agnostic Kubernetes Cluster Connector discussed in this topic or an [Elastic Kubernetes Service (EKS)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-eks) cloud connector.
 
 Do not use an [AWS Connector](./add-aws-connector.md).
 
@@ -56,7 +54,7 @@ Do not use an [AWS Connector](./add-aws-connector.md).
 
 To use an AKS cluster for deployment, the AKS cluster must have local accounts enabled (AKS property `disableLocalAccounts=false`).
 
-### Review: Switching IAM Policies
+### Switching IAM Policies
 
 If the IAM role used by your Connector does not have the policies required, you can modify or switch the role.
 
@@ -68,7 +66,7 @@ When you switch or modify the IAM role, it might take up to 5 minutes to take ef
 
 For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../../../docs/getting-started/supported-platforms-and-technologies.md).
 
-### Step 1: Add a Kubernetes Cluster Connector
+### Add a Kubernetes Cluster Connector
 
 Open a Harness Project.
 
@@ -83,7 +81,7 @@ Harness automatically creates the corresponding Id ([entity identifier](../../..
 
 Click **Continue**.
 
-### Step 2: Enter Credentials
+### Enter Credentials
 
 Choose the method for Harness to use when connecting to the cluster.
 
@@ -157,7 +155,7 @@ echo $TOKEN
 ```
 The `| base64 -d` piping decodes the token. You can now enter it into the Connector.
 
-### Step 3: Set Up Delegates
+### Set Up Delegates
 
 Regardless of which authentication method you selected, you select Harness Delegates to perform authentication for this Connector.
 

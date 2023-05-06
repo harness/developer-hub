@@ -1,5 +1,5 @@
 ---
-title: Add a Stage
+title: Add a stage
 description: This functionality is limited temporarily to the platforms and settings you can see. More functionality for this feature is coming soon. A Stage is a subset of a Pipeline that contains the logic to p…
 sidebar_position: 3
 helpdocs_topic_id: 2chyf1acil

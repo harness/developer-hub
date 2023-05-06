@@ -111,6 +111,12 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
 6. To use cross-account ARN, select **Enable cross-account access (STS Role)**. This option is available for all authentication methods, but it may not be supported by all pipeline steps. For more information about cross-account access in AWS connectors, go to the [AWS connector settings reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 7. By default, Harness uses the `us-east-1` region to test the credentials for AWS connectors. If you want to use a different region or an AWS GovCloud account, select it in the **Test Region** field. For more information about AWS GovCloud support, go to the [AWS connector settings reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 8. Select **Continue** to proceed to **Select Connectivity Mode**.
+   
+:::tip
+
+If you want to create an AWS Connector with a delegate using IAM Roles for Service Accounts (IRSA) on the EKS cluster with OIDC Provider, select **Use IRSA** in **Credentials**.
+
+:::
 
 ## Select connectivity mode
 

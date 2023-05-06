@@ -1,7 +1,7 @@
 ---
 title: View tests
 description: View the results from CI tests.
-sidebar_position: 30
+sidebar_position: 40
 helpdocs_topic_id: sof7n3qjap
 helpdocs_category_id: flam7377aq
 helpdocs_is_private: false
@@ -10,9 +10,9 @@ helpdocs_is_published: true
 
 Your pipelines can run tests in **Run** and **Run Tests** steps.
 
-To publish test results, set the **Report Paths** setting in the relevant [Run](../../ci-technical-reference/run-step-settings.md) or [Run Tests](../../ci-technical-reference/configure-run-tests-step-settings.md) step.
+To publish test results, set the **Report Paths** setting in the relevant [Run](../run-ci-scripts/run-step-settings.md) or [Run Tests](./configure-run-tests-step-settings.md) step.
 
-If the test reports are in JUnit XML format, you can review test reports on the **Tests** tab on the [Build details page](../view-your-builds/viewing-builds.md).
+If the test reports are in JUnit XML format, you can review test reports on the **Tests** tab on the [Build details page](../viewing-builds.md).
 
 :::info
 

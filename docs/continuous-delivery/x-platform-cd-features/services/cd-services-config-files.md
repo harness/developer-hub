@@ -1,7 +1,7 @@
 ---
 title: Use config files in your deployments
 description: Use plain text and encrypted files in your deployments
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 You can use files added to the **Config Files** section in your Harness services in your manifests, such as in a ConfigMap. You can reference unencrypted and encrypted files, and they can be single or multiline.
@@ -146,6 +146,12 @@ At runtime, the config file is decoded and used as plaintext.
 
 
 ## Using Harness variables in config files
+
+:::note
+
+Currently, this feature is behind the feature flag `CDS_NG_CONFIG_FILE_EXPRESSION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 Plain text config files support the following [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables):
 

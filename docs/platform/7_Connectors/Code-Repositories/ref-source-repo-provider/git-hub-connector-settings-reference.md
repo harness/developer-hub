@@ -1,5 +1,5 @@
 ---
-title: GitHub Connector Settings Reference
+title: GitHub connector settings reference
 description: This topic provides settings and permissions for the GitHub Connector.
 sidebar_position: 30
 helpdocs_topic_id: v9sigwjlgo
@@ -46,14 +46,27 @@ You will need to provide the protocol-relevant URL in **URL**.
 
 If you use Two-Factor Authentication for your Git repo, you connect over **HTTPS** or **SSH**. HTTPS connections require a personal access token.
 
-For SSH, make sure that the key is PEM and not OpenSSH. To generate an SSHv2 key, use:   
-`ssh-keygen -t rsa -m PEM`   
-Use `rsa` and `-m PEM` to make sure that the algorithm and the key are PEM.  
-Next, follow the prompts to create the PEM key. See the  [ssh-keygen man page](https://linux.die.net/man/1/ssh-keygen) and [Connecting to GitHub with SSH](https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh).Starting March 15, 2022, GitHub is fully deprecating RSA with SHA-1. GitHub will allow ECDSA and Ed25519 to be used. RSA keys uploaded after this date will work with SHA-2 signatures only (RSA keys uploaded before this date will continue to work with SHA-1). See [Improving Git protocol security on GitHub](https://github.blog/2021-09-01-improving-git-protocol-security-github/#when-are-these-changes-effective) from GitHub.  
-  
-Generating an SSH key in ECDSA looks like this:  
-  
-`ssh-keygen -t ecdsa -b 256 -f /home/user/Documents/ECDSA/key -m pem`
+**SSH** requires an SSH key in PEM format. OpenSSH keys are not supported. In Harness, SSH keys are stored as [Harness Encrypted File secrets](../../../Secrets/3-add-file-secrets.md).
+
+:::tip
+
+If you use the `keygen` command to generate an SSH key, include arguments such as `rsa` and `-m PEM` to ensure your key is properly formatted and uses the RSA algorithm. For example, this command creates a PEM-formatted SSHv2 key:
+
+```
+ssh-keygen -t rsa -m PEM
+```
+
+Make sure to follow the prompts to finish creating the key. For more information, go to the Linux [ssh-keygen man page](https://linux.die.net/man/1/ssh-keygen).
+
+For GitHub repos, your SSH key must use ECDSA or Ed25519 instead of RSA. As an example, the following `ssh-keygen` command generates a PEM-formatted SSH key in ECDSA:
+
+```
+ssh-keygen -t ecdsa -b 256 -f /home/user/Documents/ECDSA/key -m pem
+```
+
+For more information about GitHub's deprecation of RSA support, go to the GitHub announcement on [Improving Git protocol security on GitHub](https://github.blog/2021-09-01-improving-git-protocol-security-github/#when-are-these-changes-effective).
+
+:::
 
 ### GitHub Repository URL
 

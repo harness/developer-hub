@@ -1,5 +1,5 @@
 ---
-title: Built-in and Custom Harness Variables Reference
+title: Built-in and custom Harness variables reference
 description: List of default (built-in) Harness expressions.
 # sidebar_position: 2
 helpdocs_topic_id: lml71vhsim
@@ -369,6 +369,15 @@ Harness recommends that you use Java string method for concatenating pipeline va
 
 For example, use syntax `<+pipeline.variables.var1.concat("_suffix")>` or `<+<+pipeline.variables.var1>.concat("_suffix")>` or `<+<+pipeline.variables.var1> + "_suffix">` instead of `<+pipeline.variable.var1>_suffix`. 
 
+### Forward references
+
+Harness does not support referencing variables from future steps. For example, in a pipeline with four steps: step A, B, C and D, you cannot reference variables from step C in step A. 
+
+:::note Exception:
+You can reference the variable, `<+env.name>` (environment name) in a service step.
+:::
+
+
 ## Built-in CIE codebase variables reference
 
 In Harness, you set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [connector](../7_Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your pipeline.
@@ -558,7 +567,7 @@ You can use any status value in a JEXL condition. For example, `<+pipeline.stage
 
 ### Step status
 
-The expression `<+execution.steps.[step Id].status>` resolves to the status of a step. For example, `<+execution.steps.mystep.status>`.
+The expression `<+pipeline.stages.[stage name].spec.execution.steps.[step Id].status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
 
 You must use the expression after the step in execution.
 
@@ -828,6 +837,7 @@ For example, here is how the common artifact expressions resolve for a Kubernete
 * **<+artifact.image>:** `index.docker.io/library/nginx:stable`
 * **<+artifact.imagePath>:** `library/nginx`
 * **<+artifact.imagePullSecret>:** `secret-value`
+* **<+artifact.dockerConfigJsonSecret>:** `secret-value`
 * **<+artifact.type>:** `DockerRegistry`
 * **<+artifact.connectorRef>:** `DockerHub`
 
@@ -839,6 +849,7 @@ echo "artifact.tag: "<+artifact.tag>
 echo "artifact.image: "<+artifact.image>  
 echo "artifact.imagePath: "<+artifact.imagePath>  
 echo "artifact.imagePullSecret: "<+artifact.imagePullSecret>  
+echo "artifact.dockerConfigJsonSecret: "<+artifact.dockerConfigJsonSecret>  
 echo "artifact.type: "<+artifact.type>  
 echo "artifact.connectorRef: "<+artifact.connectorRef>
 ```
@@ -851,6 +862,7 @@ artifact.tag: stable
 artifact.image: index.docker.io/library/nginx:stable  
 artifact.imagePath: library/nginx  
 artifact.imagePullSecret: secret-value
+artifact.dockerConfigJsonSecret: secret-value
 artifact.type: DockerRegistry  
 artifact.connectorRef: DockerHub  
 Command completed with ExitCode (0)
@@ -922,6 +934,27 @@ namespace: <+infra.namespace>
 ```
 See [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes/).
 
+### <+artifact.dockerConfigJsonSecret>
+
+In some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For such cases, the values.yaml or manifest files in the service definition **Manifests** section must use the `dockerconfigjson` parameter.
+
+If the Docker image is added in the service definition **Artifacts** section, you can reference it as `dockerconfigjson: <+artifact.dockerConfigJsonSecret>`.
+
+Here is a sample values.yaml:
+
+```
+name: <+stage.variables.name>  
+replicas: 2  
+  
+image: <+artifact.image>  
+dockerconfigjson: <+artifact.dockerConfigJsonSecret>
+  
+createNamespace: true  
+namespace: <+infra.namespace>  
+...
+```
+Go to [pull an image from a private registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes/) for more information.
+
 ### <+artifact.type>
 
 The type of repository used to add this artifact in the service **Artifacts**. For example, Docker Hub, ECR, or GCR.
@@ -963,6 +996,14 @@ When you run the pipeline, the expressions will resolve to their respective labe
 The Id of the Primary artifact added in a Service **Artifacts** section.
 
 ![](./static/harness-variables-41.png)
+
+### <+artifact.metadata.fileName>
+
+The file name of the Artifactory artifact. 
+
+This variable is added to the metadata of the Artifactory artifacts with generic repository format. You can view this variable in the **Output** tab of the **Service** step of a pipeline execution.
+
+![](./static/artifact-file-name-variable.png)
 
 ### Sidecar artifacts
 
@@ -1022,12 +1063,25 @@ The available values are:
 - `PreProduction`
 - `Production`
 
+### <+env.envGroupName>
+
+The name of the environment group to which the environment belongs (if defined).
+
+### <+env.envGroupRef>
+
+The environment group reference.
+
 You can evaluate the expression using JEXL in the **Conditional Execution** settings of steps or stages:
 
 ```
 <+env.type> != "Production"
 ```
 
+:::note
+
+Environment expressions can be used in service steps as well.
+
+:::
 
 ## Infrastructure
 

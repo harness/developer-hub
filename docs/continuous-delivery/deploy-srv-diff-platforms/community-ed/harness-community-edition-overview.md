@@ -1,5 +1,5 @@
 ---
-title: Harness CD Community Edition Overview
+title: Harness CD Community Edition overview
 description: Try Harness CD Community Edition (CE) on your laptop or any VM.
 sidebar_position: 1
 ---

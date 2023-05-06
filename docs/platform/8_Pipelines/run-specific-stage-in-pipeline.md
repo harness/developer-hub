@@ -1,5 +1,5 @@
 ---
-title: Run Specific Stages in Pipeline
+title: Run specific stages in pipeline
 description: You can choose to run a specific stage instead of running the whole Pipeline in Harness. The ability to run a specific stage helps in situations when only a few stages fail in a Pipeline This topic e…
 sidebar_position: 7
 helpdocs_topic_id: 95q2sp1hpr

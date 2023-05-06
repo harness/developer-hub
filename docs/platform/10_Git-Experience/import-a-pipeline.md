@@ -1,5 +1,5 @@
 ---
-title: Import a Pipeline From Git
+title: Import a pipeline from Git
 description: Topic describing how to import a Pipeline from Git to Harness.
 sidebar_position: 5
 helpdocs_topic_id: q1nnyk7h4v

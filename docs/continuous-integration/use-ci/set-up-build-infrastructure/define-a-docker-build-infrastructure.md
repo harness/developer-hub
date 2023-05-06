@@ -56,7 +56,7 @@ The Drone Runner service performs the build work. The Delegate needs the Runner 
 2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
-   export CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2]:/etc/ssl/certs/cacerts.pem"
+   export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
    ```
 
 3. Enable execution permissions for the Runner. For example:
@@ -74,7 +74,7 @@ The Drone Runner service performs the build work. The Delegate needs the Runner 
 Here is an example of the three commands to install the Linux arm64 Drone Runner with self-signed certificates:
 
 ```
-export CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/cacerts.pem"
+export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
 sudo chmod +x drone-docker-runner-linux-arm64
 ./drone-docker-runner-linux-arm64 server
 ```
@@ -115,7 +115,7 @@ The Drone Runner service performs the build work. The Delegate needs the Runner 
 2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
-   export CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2]:/etc/ssl/certs/cacerts.pem"
+   export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
    ```
 
 3. Enable execution permissions for the Runner. For example:
@@ -152,7 +152,7 @@ The Drone Runner service performs the build work. The Delegate needs the Runner 
 Here is an example of the three commands to install the Darwin amd64 Drone Runner with self-signed certificates:
 
 ```
-export CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/cacerts.pem"
+export CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
 sudo chmod +x drone-docker-runner-darwin-arm64
 ./drone-docker-runner-darwin-arm64 server
 ```
@@ -214,7 +214,7 @@ Run the Drone Runner executable on the Windows machine that you specified in the
 3. To use self-signed certificates, set `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
-   SET CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2]:/etc/ssl/certs/cacerts.pem"
+   SET CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/ca-certificates.crt,[path/to/local/cert2];/etc/ssl/certs/cacerts.pem"
    ```
 
 4. Run the following command to start the runner binary:
@@ -226,7 +226,7 @@ Run the Drone Runner executable on the Windows machine that you specified in the
 Here is an example of the two commands to install the Windows amd64 Drone Runner with self-signed certificates:
 
 ```
-SET CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/cacerts.pem"
+SET CI_MOUNT_VOLUMES="[path/to/local/cert];/etc/ssl/certs/cacerts.pem"
 ./drone-docker-runner-windows-amd64 server
 ```
 
@@ -237,7 +237,7 @@ SET CI_MOUNT_VOLUMES="[path/to/local/cert]:/etc/ssl/certs/cacerts.pem"
 
 ## Set the pipeline's build infrastructure
 
-Update the pipeline where you want to use the Docker Delegate. You can use either the Visual or YAML pipeline editor.
+Edit the CI pipeline where you want to use the local runner build infrastructure.
 
 ```mdx-code-block
 import Tabs2 from '@theme/Tabs';
@@ -258,9 +258,16 @@ import TabItem2 from '@theme/TabItem';
   <TabItem2 value="YAML" label="YAML">
 ```
 
-In the pipeline's `Build` (`type: CI`) stage, replace the `infrastructure` line with specifications for `platform` and `runtime`, for example:
+In the pipeline's build stage (`type: CI`), insert `platform` and `runtime` specifications, for example:
 
 ```yaml
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
           platform:
             os: Linux
             arch: Amd64
@@ -280,6 +287,22 @@ In the pipeline's `Build` (`type: CI`) stage, replace the `infrastructure` line 
   </TabItem2>
 </Tabs2>
 ```
+
+:::tip
+
+Although you must install a delegate to use the local runner build infrastructure, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#option-pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#option-stage-delegate-selector).
+
+Delegate selections take precedence in the following order:
+
+1. Stage
+2. Pipeline
+3. Platform (build machine delegate)
+
+This means that if delegate selectors are present at the pipeline and stage levels, then these selections override the platform delegate, which is the delegate that you installed on the build machine. If a stage has a stage-level delegate selector, then it uses that delegate. Stages that don't have stage-level delegate selectors use the pipeline-level selector, if present, or the platform delegate.
+
+For example, assume you have a pipeline with three stages called `alpha`, `beta`, and `gamma`. If you specify a stage-level delegate selector on `alpha` and you don't specify a pipeline-level delegate selector, then `alpha` uses the stage-level delegate, and the other stages (`beta` and `gamma`) use the platform delegate.
+
+:::
 
 ## Troubleshooting
 

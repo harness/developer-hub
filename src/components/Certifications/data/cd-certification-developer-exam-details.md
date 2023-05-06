@@ -31,7 +31,7 @@ The following is a detailed list of exam objectives:
 
 | #     | Objectives                                                                                |
 | ----- | ----------------------------------------------------------------------------------------- |
-| **1** | **Application Architectures and Services for Deploymente**|
+| **1** | **Application Architectures and Services for Deployment**|
 | 1.1   | Define a deployment and what makes it continuous       |                                 
 |1.2 |Explain application architectures|
 |1.3 |Identify artifacts and manifests needed for a deployment|
@@ -105,7 +105,7 @@ The following is a detailed list of exam objectives:
 
 ## Next Steps
 
-The Continuous Delivery Developer exam can start immediatly after registering. Please allow 90 mins for the exam.
+The Continuous Delivery Developer exam can start immediately after registering. Please allow 90 mins for the exam.
 
 1. Create an account in Harness University
 2. Register for an exam 

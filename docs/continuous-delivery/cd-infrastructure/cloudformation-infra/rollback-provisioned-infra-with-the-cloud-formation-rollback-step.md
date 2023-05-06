@@ -1,5 +1,5 @@
 ---
-title: Rollback Provisioned Infra with the CloudFormation Rollback Step
+title: Rollback provisioned infrastructure with the CloudFormation Rollback step
 description: Rollback to the last successfully provisioned stack.
 sidebar_position: 4
 helpdocs_topic_id: 5ooc4heyl4

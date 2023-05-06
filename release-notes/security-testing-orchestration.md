@@ -4,7 +4,7 @@ sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
 date: 2023-04-06T10:00
 tags: [NextGen, "security testing orchestration"]
-sidebar_position: 8
+sidebar_position: 9
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -16,13 +16,12 @@ Review the notes below for details about recent changes to Security Testing Orch
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest release - April 6, 2023, version 1.43.1
+## Latest - April 6, 2023, version 1.43.1
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-### What's new
 
 This release does not include new features.
 
@@ -30,7 +29,6 @@ This release does not include new features.
   </TabItem>
   <TabItem value="Early access">
 ```
-### Early access 
 
 This release does not include early access features.
 
@@ -39,8 +37,6 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-### Fixed issues
-
 * Fixed a UI issue in **External Tickets Settings** for setting up Jira integrations:  **Default Project** and **Default Issue Type** always used the account-level Jira connector, even when a different connector was selected for the current project or organization. (STO-5756)
 * Fixed a search issue in **Security Tests**: If a search term included certain special characters, the UI would fail with a JavaScript exception. (STO-5745) 
 
@@ -48,7 +44,17 @@ This release does not include early access features.
   </TabItem>
   <TabItem value="Plugin updates">
 ```
-### Plugin update - April 20, 2023, version 1.10.1
+
+**Plugin update - May 3, 2023, version 1.11.1**
+
+This update includes the following fixed issues:
+
+* This release updates the Twistlock normalization algorithm. Issues with Moderate severity in Twistlock are now assigned Medium (not High) severity in STO. (STO-5861)
+
+* Fixed a Snyk ingestion issue that caused the scan to scan step to fail if the target name included a space. (STO-5855)
+
+
+**Plugin update - April 20, 2023, version 1.10.1**
 
 This update includes the following fixed issues: 
 

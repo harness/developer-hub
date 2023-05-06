@@ -2,6 +2,8 @@ import React from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
+import Tooltip from "rc-tooltip";
+import "rc-tooltip/assets/bootstrap.css";
 import styles from "./styles.module.scss";
 import TutorialCard, { TutorialCards } from "../LandingPage/TutorialCard";
 // Define the cards in "***Data.ts"
@@ -17,7 +19,7 @@ export default function CD() {
             <img src={`${baseUrl}img/icon_cd.svg`} />
             <h1>Continuous Delivery & GitOps Documentation</h1>
           </div>
-          <div className={styles.btnContainerCD}>
+          <div className={styles.btnContainer}>
             <Link href="/tutorials/cd-pipelines">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_tutorials.svg`} />
@@ -31,16 +33,18 @@ export default function CD() {
               </button>
             </Link>
             <Link href="https://apidocs.harness.io/">
-              <button className={styles.btn}>
-                <img src={`${baseUrl}img/icon_documentation.svg`} />
-                API Reference
-              </button>
+              <Tooltip placement="top" overlay="API Reference">
+                <button className={styles.btnMini}>
+                  <img src={`${baseUrl}img/icon_api_docs.svg`} />
+                </button>
+              </Tooltip>
             </Link>
             <Link href="https://registry.terraform.io/providers/harness/harness/latest/docs">
-              <button className={styles.btn}>
-                <img src={`${baseUrl}img/icon_terraform.png`} />
-                Terraform Provider
-              </button>
+              <Tooltip placement="top" overlay="Terraform Provider">
+                <button className={styles.btnMini}>
+                  <img src={`${baseUrl}img/icon_terraform.svg`} />
+                </button>
+              </Tooltip>
             </Link>
           </div>
         </div>

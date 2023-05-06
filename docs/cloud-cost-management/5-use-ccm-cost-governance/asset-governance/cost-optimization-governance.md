@@ -1,10 +1,10 @@
 ---
-title: Optimize cloud costs using the asset governance rules
+title: Cost optimization using the asset governance rules
 description: This topic describes how to optimize cloud costs using asset governance.
 # sidebar_position: 2
 ---
 
-
+# Optimize cloud costs using the asset governance rules
 To optimize cloud costs, you need to create a governance rule or combine multiple rules into a ruleset and enforce it to provide a more comprehensive, consistent, and efficient approach to cloud asset governance.
 
 

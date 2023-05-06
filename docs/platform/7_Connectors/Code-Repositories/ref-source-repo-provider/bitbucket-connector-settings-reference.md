@@ -151,7 +151,7 @@ For details on creating SSH keys and adding them to your Bitbucket account, go t
 
 :::tip
 
-Use arguments such as `rsa` and `-m PEM` in your `keygen` commands to ensure your key is properly formatted and uses the RSA algorithm. For example, this command creates an SSHv2 key:
+If you use the `keygen` command to generate an SSH key, include arguments such as `rsa` and `-m PEM` to ensure your key is properly formatted and uses the RSA algorithm. For example, this command creates an SSHv2 key:
 
 ```
 ssh-keygen -t rsa -m PEM
@@ -187,6 +187,12 @@ For **HTTP** Connection Types, use the same password you used earlier, and make 
 ## Connectivity Mode settings
 
 Select whether you want Harness to connect directly to your Bitbucket account or repo, or if you want Harness to communicate with your Bitbucket account or repo through a delegate.
+
+### Delegates Setup
+
+If you select **Connect through a Harness Delegate**, you can select **Use any available Delegate** or **Only use Delegates with all of the following tags**.
+
+If you want to use specific delegates, you must identify those delegates. For more information, go to [Select Delegates with Tags](../../../2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
 ## Troubleshooting
 

@@ -1,0 +1,13 @@
+# specify the data block size
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-disk-fill
+  labels:
+    name: disk-fill
+spec:
+  diskFillChaos/inputs:
+    fillPath: "/"
+    fillPercentage: 80
+    dataBlockSize: 1000
+    duration: 30

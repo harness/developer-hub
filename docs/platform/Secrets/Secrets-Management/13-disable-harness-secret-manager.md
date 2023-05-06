@@ -1,5 +1,5 @@
 ---
-title: Disable Built-In Secret Manager
+title: Disable built-in secret manager
 description: Disable Harness built-in Secret Manager.
 # sidebar_position: 2
 helpdocs_topic_id: p8rcsfra01

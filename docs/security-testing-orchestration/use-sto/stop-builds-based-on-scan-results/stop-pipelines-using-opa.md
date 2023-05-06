@@ -20,21 +20,21 @@ In this workflow, you create a simple OPA policy for the pipeline: If the scan d
 
 1. Go to **Account Settings** (left menu) &gt; **Policies**.
 
-2. Click **Policies** (top right) and then **New Policiy**. 
+2. Click **Policies** (top right) and then **New Policy**. 
 
 3. Name the policy **Security no NEW_CRITICAL or NEW_HIGH issues**. 
 
 4. In the Edit Policy window, enter the following OPA code: 
 
    ```
-   package pipeline_environment
+    package pipeline_environment
 
-   deny[sprintf("Scan results can't include any NEW_CRITICAL vulnerabilities '%s'", [input])] {
-       input.NEW_CRITICAL != 0 
+   deny[sprintf("Scan can't contain any NEW_CRITICAL vulnerability '%s'", [input[_].outcome.outputVariables.NEW_CRITICAL])] {
+       input[_].outcome.outputVariables.NEW_CRITICAL != "0"
    }
 
-   deny[sprintf("Scan results can't contain any NEW_HIGH vulnerabilities '%s'", [input])] {
-       input.NEW_HIGH != 0 
+   deny[sprintf("Scan can't contain any high vulnerability '%s'", [input[_].outcome.outputVariables.NEW_HIGH])] {
+       input[_].outcome.outputVariables.NEW_HIGH != "0"
    }
    ```
 
@@ -64,37 +64,26 @@ A _policy set_ is a collection of one or more policies. You combine policies int
     
    2. Select the policy you just created and set the pull-down to **Error and Exit**. This is the action to take if any policies in the set are violated. 
 
-     ![]../static/notif-opa-select-policy.png)
+      ![](../static/notif-opa-select-policy.png)
 
    3. Click **Apply** to add the policy to the set, then **Finish** to close the Policy Set wizard.
 
 5. :exclamation: In the **Policy Sets** page, enable  **Enforced** for your new policy set.
 
-      ![]../static/notif-opa-policy-set-enforced-yes.png)
+    ![](../static/notif-opa-policy-set-enforced-yes.png)
 
 
-### Add a step to evaluate your policy against the scan results
+### Enforce the policy in your scan step
 
-Now you will create a Policy step that applies the policy set you just defined against the output variables from the scan. If the scan detected any NEW_CRITICAL or NEW_HIGH issues, the pipeline fails. 
+Now you can set up your scan step to stop builds automatically when the policy gets violated. 
 
-1. Add a **Custom** stage after the stage with the scan step, if you don't have one already. 
+1. Go to the scan step and click **Advanced**. 
 
-2. Add a **Policy** step to the stage.
+2. Under **Policy Enforcement**, click **Add/Modify Policy Set** and add the policy set you just created.
 
-3. Configure the step as follows:
+3. Click **Apply Changes** and then save the updated pipeline. 
 
-   1. Entity Type = **Custom**
-
-   2. Policy Set — Add the policy set you just created. 
-
-   3. Payload — Enter the following payload. Make sure that you replace `SCAN_STAGE_ID` and `SCAN_STEP_ID` with the stage and step IDs in your pipeline
-
-      ```json
-      {
-      "NEW_CRITICAL": <+pipeline.stages.SCAN_STAGE_ID.spec.execution.steps.SCAN_STEP_ID.output.outputVariables.NEW_CRITICAL>, 
-      "NEW_HIGH": <+pipeline.stages.SCAN_STAGE_ID.spec.execution.steps.SCAN_STEP_ID.output.outputVariables.NEW_HIGH>
-      }
-      ```
+   ![](../static/notif-opa-policy-add-policy-set.png)
 
 
 ### Set up email notifications for pipeline failures
@@ -120,7 +109,7 @@ You have a Policy that fails the pipeline based on an OPA policy. Now you can co
 The following pipeline includes both of these notification workflows. For every successful scan, it sends an automated email like this:
 
 ```
-"STO scan of dbothwell-notify-test v3 found the following issues:
+"STO scan of sto-notify-test v3 found the following issues:
 Critical : 1
 New Critical : 0
 High: 0

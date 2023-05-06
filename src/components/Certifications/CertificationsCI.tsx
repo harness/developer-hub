@@ -4,6 +4,7 @@ import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
+import { getCertLevel } from "./LandingPage";
 import DeveloperCertificationReviewGuide from "./data/ci-certification-developer-review-guide.md";
 import DeveloperCertificationExamDetails from "./data/ci-certification-developer-exam-details.md";
 import styles from "./styles.module.scss";
@@ -32,7 +33,7 @@ export default function CertificationsCI() {
   const location = useLocation();
   const history = useHistory();
   const { pathname = "/", search = "" } = location;
-  const searchKey = search.replace(/^\?.*=/, "");
+  const searchKey = getCertLevel(search);
   const [tab, setTab] = useState("developer");
   const handleSwitchTab = (tabKey) => {
     setTab(tabKey);
@@ -115,7 +116,7 @@ export default function CertificationsCI() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>Continuous Integration - Developer (BETA)</h2>
+                  <h2>Continuous Integration - Developer</h2>
                   <img
                     src={`${baseUrl}img/cert_dev_cI_badge.svg`}
                     alt="Harness Certified Expert - CI Developer"

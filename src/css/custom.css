@@ -214,6 +214,24 @@
   --mod-ce-200: #ff006a;
   --mod-ce-100: #fff1f7;
 
+  /* Module Colors/CET/200 */
+  --mod-cet-200: #ff5f45;
+
+  /* Module Colors/SEI/200 */
+  --mod-sei-200: var(--primary); /* To be updated */
+
+  /* Module Colors/SSCA/200 */
+  --mod-ssca-200: var(--primary); /* To be updated */
+
+  /* Module Colors/IDP/200 */
+  --mod-idp-200: var(--primary); /* To be updated */
+
+  /* Module Colors/IaCM/200 */
+  --mod-iacm-200: var(--primary); /* To be updated */
+
+  /* Module Colors/Gitness/200 */
+  --mod-gitness-200: var(--primary); /* To be updated */
+
   /* ----- */
   --ifm-link-decoration: none;
 
@@ -318,6 +336,11 @@ a:hover {
   margin-right: 0.2em;
 }
 
+.theme-doc-markdown img[class^="img_"] {
+  border: 1px solid #d9dae5; /* var(--gray-400); */
+  border-radius: 8px;
+}
+
 /* #DLP-36 styles for details + summary */
 .alert--info {
   --ifm-alert-background-color: var(--primary-1);
@@ -392,28 +415,6 @@ details summary::before {
 }
 .theme-doc-markdown h3 > img {
   margin-right: 0.2em;
-}
-
-.color-ci {
-  color: var(--mod-ci-200);
-}
-.color-cd {
-  color: var(--mod-cd-200);
-}
-.color-ff {
-  color: var(--mod-ff-200);
-}
-.color-ccm {
-  color: var(--mod-ccm-200);
-}
-.color-srm {
-  color: var(--mod-srm-200);
-}
-.color-sto {
-  color: var(--mod-sto-200);
-}
-.color-ce {
-  color: var(--mod-ce-200);
 }
 
 /* hide the algolia logo
@@ -521,6 +522,12 @@ a.card .text--truncate {
 }
 a.card p.text--truncate {
   min-height: 3em;
+}
+
+/* HDH-120: Change 2nd level numbered list style */
+ol ol,
+ul ol {
+  list-style-type: lower-alpha;
 }
 
 @media screen and (min-width: 1200px) {

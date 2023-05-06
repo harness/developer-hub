@@ -8,8 +8,13 @@ export enum MODULES {
     sto = 'sto',
     srm = 'srm',
     ce = 'ce',
+    sei = 'sei',
+    cet = 'cet',
+    ssca = 'ssca',
+    idp = 'idp',
+    iacm = 'iacm',
+    gitness = 'gitness',
     platform= 'platform',
-    gs= 'gs'
 }
 export const MODULE_DISPLAY_NAME = {
     [MODULES.ci]: 'Continuous Integration',
@@ -19,6 +24,11 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.sto]: 'Security Testing Orchestration',
     [MODULES.srm]: 'Service Reliability Management',
     [MODULES.ce]: 'Chaos Engineering',
+    [MODULES.sei]: 'Software Engineering Insights',
+    [MODULES.cet]: 'Continuous Error Tracking',
+    [MODULES.ssca]: 'Software Supply Chain Assurance',
+    [MODULES.idp]: 'Internal Developer Portal',
+    [MODULES.iacm]: 'Infrastructure as Code Management',
+    [MODULES.gitness]: 'Gitness',
     [MODULES.platform]: 'Harness Platform',
-    [MODULES.gs]: 'Getting Started'
 }

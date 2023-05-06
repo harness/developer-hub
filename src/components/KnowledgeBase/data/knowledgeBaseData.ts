@@ -14,22 +14,10 @@ export type CardItem = {
 
 export const knowledgeBaseList: CardItem[] = [
   {
-    title: "Continuous Verification - Machine Learning Usage",
+    title: "Multi Service Deployments with Continuous Verification",
     module: MODULES.cd,
-    date: "April 12, 2023",
-    link: "/kb/continuous-delivery/continuous-verification-ml",
-  },
-  {
-    title: "Continuous Verification - Results",
-    module: MODULES.cd,
-    date: "April 12, 2023",
-    link: "/kb/continuous-delivery/continuous-verification-results",
-  },
-  {
-    title: "Continuous Verification - Templates",
-    module: MODULES.cd,
-    date: "April 12, 2023",
-    link: "/kb/continuous-delivery/continuous-verification-templates",
+    date: "May 05, 2023",
+    link: "/kb/continuous-delivery/cv-multi-service",
   },
   {
     title: "How Can I Troubleshoot The Delegate Installation Error with Readiness Probe Failure in GKE?",

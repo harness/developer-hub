@@ -16,6 +16,22 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### May 04, 2023, version 79214
+
+#### What's new
+
+This release does not include new features. 
+
+#### Early access
+
+This release does not include early access features. 
+
+#### Fixed issues
+
+- Resolved a null pointer exception when the Canary Deployment step is initialized with the Helm manifest type. (CDS-59214)
+- Users cannot use Harness secret as LDAP password in FirstGen. (PL-32597, ZD-42655)
+  A code enhancement fixed the issue.
+
 ### April 22, 2023, version 79111
 
 #### What's new
@@ -159,6 +175,9 @@ This release does not include any early access features.
   Harness was not handling the proxy use case.
   
   Now Harness handles the use case by adding the username and password to the HTTP client.
+- Unable to fetch the correct Google Cloud Storage (GCS) artifacts when manually triggering the pipeline though the correct artifacts were being listed in the **Manually Select An Artifact** dialog's **Artifact** field list. (CDS-53074, ZD-39446)
+  
+  This issue is fixed.
 
 ### February 23, 2023, version 78507
 
@@ -911,8 +930,6 @@ The discovery process for immutable Delegates is limited to checking the followi
 
 #### Fixed issues
 
-* Python Script failed when using Local validation (PL-26534, ZD-32450, ZD-32477, ZD-32501)
-	+ The Python scripts provided for GraphQL APIs at https://github.com/gabrielcerioni/harness\_graphql\_labs started failing with the error "TypeError: Type SecretManagerConfig must define one or more fields". This happened because of a schema issue in the secret managers graphql API. The graphql APIs failed for the customer who has enabled the schema validation. This issue has been resolved. The graphql APIs are now running successfully.
 * Not able to re-login after logging out (PL-26444, ZD-32400, ZD-32402, ZD-32404)
 	+ As a part of security fixes some SAML library were upgraded which caused SAML to break. We reverted back to original version and then added exclusion for velocity jar to fix the issue.
 * Long running Harness Manager task lost during Harness upgrade (DEL-4479, ZD-32463)
@@ -1377,7 +1394,7 @@ We're pleased to present Harness SaaS Release 74200.
 The following new features are added to the Harness SaaS components:
 
 * Custom selector API for Delegate NG Token management is available now. (DEL-3558, ZD-21717, ZD-27515)
-	+ See [Delegate Token NG Source](https://harness.io/docs/api/tag/Delegate-Token-Ng-Resource/).
+
 * Harness can now send key Workflow and Pipeline deployment events to a URL endpoint as a JSON payload. This helps in analyzing how Workflows and Pipelines are performing, using other tools that consume and build dashboards for the events. This feature is now public and not behind the Feature Flag`FF APP_TELEMETRY`. (CDS-35193)
 	+ See [Publish Workflow Events](../continuous-delivery/concepts-cd/deployments-overview/publish-workflow-events-to-an-http-endpoint.md).
 	+ See [Publish Pipeline Events](../continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint.md).

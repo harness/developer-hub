@@ -1,5 +1,5 @@
 ---
-title: Step and Stage Failure Strategy References
+title: Step and stage failure strategy references
 description: This topic provides settings and permissions for the [context]. In this topic --  [Name of Entity] [Setting label name]. [Setting label name]. [Setting label name].. Related Reference Material. [Name of…
 # sidebar_position: 2
 helpdocs_topic_id: htrur23poj

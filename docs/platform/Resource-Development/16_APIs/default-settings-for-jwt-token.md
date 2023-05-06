@@ -1,5 +1,5 @@
 ---
-title: Use the Setting API to enable SCIM API authentication through JWT
+title: Use the setting API to enable SCIM API authentication through JWT
 description: Enable SCIM API authentication through JSON Web Tokens.
 sidebar_position: 3
 ---

@@ -1,5 +1,5 @@
 ---
-title: Provision Target Deployment Infra Dynamically with CloudFormation
+title: Provision target deployment infrastructure dynamically with CloudFormation
 description: Provision a CD stage's target deployment infra using CloudFormation.
 sidebar_position: 1
 helpdocs_topic_id: 6jfl7i6a5u

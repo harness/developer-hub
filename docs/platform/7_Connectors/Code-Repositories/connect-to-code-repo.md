@@ -1,5 +1,5 @@
 ---
-title: Connect to a Git Repo
+title: Connect to a Git repository
 description: An overview of Code Repo Connectors.
 sidebar_position: 2
 helpdocs_topic_id: zbhehjzsnv
