@@ -219,3 +219,28 @@ Harness maintains and updates a container image for every scanner supported by S
   </tr>
 </tbody>
 </table>
+
+### Security steps and scanner templates
+
+The Step library includes a **Security** step for setting up scanners: open the step and configure the scan as a set of key/value pairs under **Settings**. 
+
+Some scanners also have *scanner templates* with UIs that simplify the process of setting up a scanner. 
+
+<details><summary>Step Library with <b>Security</b> step and scanner templates</summary>
+
+
+![](./static/security-steps-tab.png)
+
+</details>
+
+<details><summary><b>Security</b> step configuration</summary>
+
+![](./static/security-step-settings-reference-00.png)
+
+</details>
+
+<details><summary>Scanner template configuration</summary>
+
+![](./static/sto-step-palette-example.png)
+
+</details>

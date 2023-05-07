@@ -15,28 +15,85 @@ In some cases, a scanner might require additional files such as SSL certificates
 
 ## Kubernetes workflows
 
-Do the following, depending on the steps in your Build or Security stages: 
+The primary workflow for adding certificates to your delegate is described in the CI docs: [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
 
-### Kubernetes infrastructure AND scanner-specific (non-Security) step 
- 
-If your pipeline includes a scanner-specific step with a graphical step-palette UI, such as [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference) or [Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference), do the workflow described in [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates#harness-cloud-infrastructure-or-security-step).
+You can add certificates to your delegate using this workflow with the following differences, based on the scanner you're setting up. 
 
-:::note
+* **Scanner template:**  If you're using a [scanner template](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates) to set up your scan, note the following:
 
-* Make sure that you place your files in the correct location in the delegate workspace and that you set up the CI_MOUNT_VOLUMES and ADDITIONAL_CERTS_PATH environment variables correctly.
+   * Make sure that you place your files in the correct location in the delegate workspace and that you set up the `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH` environment variables correctly.
 
-* STO supports certificates in DAR format as well as PEM.
+   * STO supports certificates in DAR format as well as PEM.
 
-:::
+* **Security step:** If you're using a [Security step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates) to set up your scan, note the following:
 
-### Kubernetes infrastructure OR Security step
+   * You need to place the certificates in the folder `/shared/customer_artifacts/certificates/`
 
-If you're using a generic (non-scanner-specific) Security steps, do the [Harness Cloud infrastructure OR Security step](#harness-cloud-infrastructure-or-security-step) described below. 
+   * STO supports loading multiple certificates in DAR format as well as PEM.
+  
+
+* **Nexus IQ scan:** For Nexus IQ scans, follow the Security step workflow. The certificate must have the filename `certificate` and the path `/shared/customer_artifacts/certificates/certificate`. 
+
+<details><summary>Security step setup example</summary>
+
+```yaml
+apiVersion: apps/v1  
+kind: StatefulSet  
+spec:  
+  template:  
+    spec:  
+        env:  
+        - name: ADDITIONAL_CERTS_PATH  
+          value: /tmp/ca.bundle  
+        - name: CI_MOUNT_VOLUMES  
+          value: /tmp/ca.bundle:/shared/customer_artifacts/certificates/ca.bundle  
+        volumeMounts:  
+        - name: customercertvol  
+          mountPath: /shared/customer_artifactss/certificates/ca.bundle  
+          subPath:  ca.bundle 
+       volumes:  
+        - name: customercertvol  
+          secret:  
+            secretName: addcerts  
+            items:  
+            - key: ca.bundle  
+              path: ca.bundle
+```
+
+</details>
 
 
-## Harness Cloud infrastructure OR Security step
+<details><summary>Nexus IQ scan setup example</summary>
 
-The following steps describe the high-level workflow.
+```yaml
+apiVersion: apps/v1  
+kind: StatefulSet  
+spec:  
+  template:  
+    spec:  
+        env:  
+        - name: ADDITIONAL_CERTS_PATH  
+          value: /tmp/ca.bundle  
+        - name: CI_MOUNT_VOLUMES  
+          value: /tmp/ca.bundle:/shared/customer_artifacts/certificates/certificate  
+        volumeMounts:  
+        - name: customercertvol  
+          mountPath: /shared/customer_artifactss/certificates/certificate 
+          subPath:  ca.bundle 
+       volumes:  
+        - name: customercertvol  
+          secret:  
+            secretName: addcerts  
+            items:  
+            - key: ca.bundle  
+              path: ca.bundle
+```
+
+</details>
+
+## Harness Cloud workflow
+
+If you're using a Harness Cloud delegate, use the following workflow. 
 
 1. For each artifact that contains sensitive information, such as an SSL certificate, create a Harness secret.
 
@@ -53,8 +110,6 @@ The following steps describe the high-level workflow.
 * If your scanners use SSL certificates such as PEM files, save each certificate to **/shared/customer_artifacts/`<certificate_name>`**. 
 
 * If the scanner requires a license file, save the file to **/shared/customer_artifacts/`<license_file_name>`**.  
-
-* If you're running a Nexus IQ scan, the certificate must be a PEM file in **/shared/customer_artifacts/** AND it must have the file name **certificate**. 
 
 * If you're running a ZAP scan that uses context files such as auth scripts, context files, or URL files, specify the following shared folders and make sure that your Run step copies in the required files. 
 

@@ -17,9 +17,10 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 * Harness CI Build and Push steps use the [kaniko](https://github.com/GoogleContainerTools/kaniko) plugin by default. Kaniko uses the path `/kaniko/ssl/certs/additional-ca-cert-bundle.crt` to read certificates.
 * Harness uses a UBI image for the Git Clone step. UBI reads certificates from `/etc/ssl/certs/ca-bundle.crt`.
 * Different base images use different paths as their default certificate location. For example, Alpine images use this path to recognize certificates: `/etc/ssl/certs/ca-certificates.crt` For any other image, make sure you verify the default certificate path.
-* If your stage includes STO scan steps, and your scanners require certificates or other files, note the following: 
-  - If you're using a scanner-specific step with a graphical UI, such as [Aqua Trivy](/docs/security-testing-orchestration/sto-techref-category/aqua-trivy-scanner-reference) or [Bandit](/docs/security-testing-orchestration/sto-techref-category/bandit-scanner-reference), your certificates need to be accessible to the delegate. Do the workflow described below. Note that STO supports certificates in DAR as well as PEM format. 
-  - If you're using a generic Security step for your scan, your certificates need to be in a `/shared/customer_artifacts` folder. Do the [Harness Cloud infrastructure OR Security step](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-artifacts-to-pipelines.md#harnes) described in the STO docs.
+
+### STO pipelines 
+
+If you have STO scan steps in your pipeline, you can set up your certificates using the workflow described below. However, there are some additional steps and requirements. For more information, go to [Adding Custom Artifacts to STO Pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-artifacts-to-pipelines.md).
 
 ## Enable self-signed certificates
 
