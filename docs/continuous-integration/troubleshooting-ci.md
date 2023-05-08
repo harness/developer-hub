@@ -116,3 +116,13 @@ For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshootin
 ## Docker Hub rate limiting
 
 By default, Harness uses anonymous access to [Harness Docker Hub](https://hub.docker.com/u/harness) to [pull Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md). If you experience rate limiting issues when pulling images, [use a Docker connector to connect to the Harness container image registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/) and provide login information in the [connector's authentication settings](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials).
+
+## Out of memory errors with Gradle
+
+If build that use Gradle experience out of memory errors, add the following to your `gradle.properties`:
+
+```
+-XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport
+```
+
+Your Java options must use [UseContainerSupport](https://www.eclipse.org/openj9/docs/xxusecontainersupport/) instead of `UseCGroupMemoryLimitForHeap`, which was removed in JDK 11.
