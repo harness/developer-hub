@@ -16,6 +16,7 @@ To view installed Feature Flags, do the following:
 
    :::info note
    This file is typically located in the following default path.
+   :::
 
    ```
    /path/to/helm-charts/src/override-prod.yaml
@@ -33,6 +34,7 @@ To add Feature Flags, do the following:
 
    :::info note
    This file is typically located in the following default path.
+   :::
 
    ```
    /path/to/helm-charts/src/override-prod.yaml
@@ -74,16 +76,18 @@ To add Feature Flags, do the following:
    ```
    helm upgrade <my-release> . -n harness-ng -f ../override-prod.yaml
    ```
-
+   
+   :::info note
    For Feature Flags that affect `ng-manager`, you must restart the component(s) after the Helm upgrade is complete and the Harness Manager has restarted and is up and running. You can restart your pods or run the following rollout restart command on the Harness Manager deployment for your installation.
+   :::
 
    ```
    kubectl rollout restart deployment ng-manager
    ```
 
-## Remove Feature Flags from your base installation
+## Add Feature Flags from your base installation
 
-You can remove Feature Flags included with the base configuration.
+You can add Feature Flags included with the base configuration.
 
 To remove Feature Flags, do the following:
 
@@ -93,19 +97,37 @@ To remove Feature Flags, do the following:
    This file is typically located in the following default path.
 
    ```
-   /path/to/helm-charts/src/override-prod.yaml
+   /path/to/helm-charts/src/harness-manager-config/features/override-prod.yaml
    ```
 
 2. Go to the `Base` section for the `featureFlags` component.
 
 ```yaml
-affinity: {}
-### These flags are used by the helper function to create the FEATURES config value based off the global.<features.enabled boolean
-# -- Feature Flags
-featureFlags:
-   # -- Base flags for all modules
-   Base:
-   "LDAP_SSO_PROVIDER, ASYNC_ARTIFACT COLLECTION, JIRA INTEGRATION, AUDIT TRAIL UI, GDS_TIME SERIES SAVE PER MINUTE, STACKDRIVER SERVICEGUARD, BATCH SECRET DECRYPTION, TIME SERIES SERVICEGUARD V2, TIME SERIES WORKFLOW V2, CUSTOM DASHBOARD, GRAPHOL, CV FEEDBACKS, LOGS_V2_247,UPGRADE JRE,LOG STREAMING INTEGRATION, NG HARNESS APPROVAL,GIT SYNC NG, NG SHOW DELEGATE,NG CG TASK ASSIGMENT ISOLATION, CI OVERVIEW PAGE, AZURE CLOUD PROVIDER VALIDATION ON DELEGATE, TERRAFORM AWS AUTHENTICATION, NG TEMPLATES, NEW DEPLOYMENT FREEZE, HELM CHART AS ARTIFACT, RESOLVE DEPLOYMENT TAGS BEFORE EXECUTION, WEBHOOK TRIGGER AUTHORIZATION, GITHUB WEBHOOK AUTHENTICATION, CUSTOM MANIFEST, GIT ACCOUNT SUPPORT, AZURE WEBAPP, PRUNE KUBERNETES_RESOURCES, LDAP GROUP_SYNC_JOB_ITERATOR, POLLING INTERVAL CONFIGURABLE, APPLICATION _DROPDOWN_MULTISELECT, USER GROUP AS EXPRESSION, RESOURCE CONSTRAINT SCOPE PIPELINE ENABLED,NG TEMPLATE GTYX"
-   #NG -- Specific Feature Flags
-   NG: "ENABLE_DEFAULT_NG EXPERIENCE FOR ONPREM, NEXT GEN ENABLED, NEW LEFT NAVBAR SETTINGS, SPG SIDENAV COLLAPSE"
+   affinity: {}
+   ## These flags are used by the helper function to create the FEATURES config value based off the global.<features.enabled boolean
+   # -- Feature Flags
+   featureFlags:
+      # -- Base flags for all modules
+      Base:
+      "LDAP_SSO_PROVIDER,ASYNC_ARTIFACT_COLLECTION,JIRA_INTEGRATION,AUDIT_TRAIL_UI,GDS_TIME_SERIES_SAVE_PER_MINUTE,STACKDRIVER_SERVICEGUARD,BATCH_SECRET_DECRYPTION, TIME_SERIES_SERVICEGUARD_V2,TIME_SERIES_WORKFLOW_V2,CUSTOM_DASHBOARD,GRAPHOL, CV_FEEDBACKS,LOGS_V2_247,UPGRADE_JRE,LOG_STREAMING_INTEGRATION,NG_HARNESS_APPROVAL,GIT_SYNC_NG,NG_SHOW_DELEGATE,NG_CG_TASK_ASSIGNMENT_ISOLATION,CI_OVERVIEW_PAGE,AZURE _CLOUD_PROVIDER_VALIDATION_ON_DELEGATE,TERRAFORM_AWS_AUTHENTICATION,NG_TEMPLATES,_NEW_DEPLOYMENT_FREEZE,HELM_CHART_AS_ARTIFACT,RESOLVE_DEPLOYMENT_TAGS_BEFORE_EXECUTION,WEBHOOK_TRIGGER_AUTHORIZATION,GITHUB_WEBHOOK_AUTHENTICATION,CUSTOM_MANIFEST,GIT_ACCOUNT_SUPPORT,AZURE_WEBAPP,PRUNE KUBERNETES_RESOURCES,LDAP_GROUP_SYNC_JOB_ITERATOR,POLLING_INTERVAL_CONFIGURABLE,APPLICATION _DROPDOWN_MULTISELECT,USER_GROUP_ASvEXPRESSION,RESOURCE_CONSTRAINT_SCOPE_PIPELINE_ENABLED,NG_TEMPLATE_GTYX"
+    #NG -- Specific Feature Flags
+    NG: "ENABLE_DEFAULT_NG EXPERIENCE_FOR_ONPREM,_NEXT_GEN_ENABLED,NEW_LEFT_NAVBAR_SETTINGS,SPG_SIDENAV_COLLAPSE"
 ```
+
+3. Add the Feature Flag to the list, comma separated without spaces.
+
+4. Save the file.
+
+5. (Optional) To save your changes for future upgrades, run Helm upgrade against your current release installation, referencing your updated values.
+
+   ```
+   helm upgrade <my-release> . -n harness-ng -f ../override-prod.yaml
+   ```
+   
+   :::info note
+   For Feature Flags that affect `ng-manager`, you must restart the component(s) after the Helm upgrade is complete and the Harness Manager has restarted and is up and running. You can restart your pods or run the following rollout restart command on the Harness Manager deployment for your installation.
+   :::
+
+   ```
+   kubectl rollout restart deployment ng-manager
+   ```
