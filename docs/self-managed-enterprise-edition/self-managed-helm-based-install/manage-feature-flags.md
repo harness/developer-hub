@@ -4,7 +4,7 @@ description: Learn how to manage Feature Flags for Self-Managed Enterprise Editi
 # sidebar_position: 10
 ---
 
-This topic describes how to manage Feature Flags for Harness Self-Managed Enterprise Edition. You update Feature Flags using the override.yml file for your base installation.
+This topic describes how to manage Feature Flags for Harness Self-Managed Enterprise Edition. You update Feature Flags using the override.yaml file for your base installation.
 
 ## View installed Feature Flags
 
