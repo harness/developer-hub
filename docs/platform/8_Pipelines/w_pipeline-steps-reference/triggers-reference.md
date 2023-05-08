@@ -30,7 +30,7 @@ See [Tags Reference](../../20_References/tags-reference.md).
 
 ### Payload Type
 
-Git providers, such as GitHub, Bitbucket, and GitLab.
+Git providers, such as Azure, GitHub, Bitbucket, and GitLab.
 
 ### Custom Payload type
 
@@ -56,43 +56,21 @@ Enter the name of the repo in the account.
 
 ### Event and Actions
 
- Select the Git events and actions that will initiate the Trigger.
+ Select Git events and, if applicable, one or more actions that will initiate the Trigger.
 
-
-
-|  |  |  |
+| **Payload Type** | **Event** | **Actions** |
 | --- | --- | --- |
-| **Payload Type** | **Event** | **Action** |
-|  **Github** |  Pull Request | Closed |
-|   |   | Edited |
-|   |   | Labeled |
-|   |   | Opened |
-|   |   | Reopened |
-|   |   | Synchronized |
-|   |   | Unassigned |
-|   |   | UnLabeled |
-|   | Push | n/a |
-|   | Release | Create |
-|   |   | Edit |
-|   |   | Delete |
-|   |   | Prereleae |
-|   |   | Publish |
-|   |   | Release |
-|   |   | Unpublish |
-|   | Issue Comment. Only comments on a pull request are supported. | Created |
-|   |   | Deleted |
-|   |   | Edited |
+| **Github** | Pull Request | <ul><li>Closed</li><li>Edited</li><li>Labeled</li><li>Opened</li><li>Reopened</li><li>Synchronized</li><li>Unassigned</li><li>Unlabeled</li></ul> |
+| | Push | N/A |
+| | Release | <ul><li>Create</li><li>Edit</li><li>Delete</li><li>Prerelease</li><li>Publish</li><li>Release</li><li>Unpublish</li></ul> |
+| | Issue Comment (Only comments on pull requests are supported.) | <ul><li>Created</li><li>Deleted</li><li>Edited</li></ul> |
 | **GitLab** | Push | N/A |
-|   | Merge Request | Sync |
-|  |  | Open |
-|  |  | Close |
-|  |  | Reopen |
-|  |  | Merge |
-|  |  | Update |
-| **Bitbucket** |  On Pull Request | Pull Request Created |
-|   |   | Pull Request Merged |
-|   |   | Pull Request Declined |
-|   | Push |  |
+| | Merge Request | <ul><li>Sync</li><li>Open</li><li>Close</li><li>Reopen</li><li>Merge</li><li>Update</li></ul> |
+| **Bitbucket** | On Pull Request | <ul><li>Pull Request Created</li><li>Pull Request Merged</li><li>Pull Request Declined</li></ul> |
+| | Push | N/A |
+| **Azure** | Pull Request | <ul><li>Create<li><li>Update</li><li>Merge</li></ul> |
+| | Push | N/A |
+| | Issue Comment | <ul><li>Create</li><li>Edit</li><li>Delete</li></ul> |
 
 Harness uses your Harness account Id to map incoming events. Harness takes the incoming event and compares it to ALL triggers in the account.
 
