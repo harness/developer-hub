@@ -124,7 +124,7 @@ The following YAML example demonstrates how a **Run** step can use a Docker imag
                   name: Welcome
                   identifier: Welcome
                   spec:
-                    connectorRef: my_dockerhub // Specify a Docker connector to pull an image from Docker.
+                    connectorRef: my_docker_hub // Specify a Docker connector to pull an image from Docker.
                     image: alpine // If no image is specified, the step runs on the host machine.
                     shell: Sh
                     command: Echo "Welcome to Harness CI"

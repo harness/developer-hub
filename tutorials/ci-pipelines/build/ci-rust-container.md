@@ -24,7 +24,7 @@ In this tutorial, you'll use [Rust](https://rust-lang.org) to build a simple RES
 In addition to a Harness account, you need the following accounts and tools:
 
 - A [GitHub](https://github.com) account where you can fork the tutorial repo
-- A Docker registry account, such as [DockerHub](https://hub.docker.com) or [Quay.io](https://quay.io)
+- A Docker registry account, such as [Docker Hub](https://hub.docker.com) or [Quay.io](https://quay.io)
 - [Drone CLI](https://docs.drone.io/cli/install/) to build the application locally
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
@@ -42,13 +42,13 @@ To avoid scenarios where builds only work on specific machines, you can use Dock
 
 Before building the application, you need a location to store build artifacts, which are also known as container images. Externally-hosted locations are ideal because they are more accessible. Container image storage spaces are called __Container Registries__. Examples of container registry providers include Docker Hub, Quay.io, Harbor, Google Artifact Registry (GAR), and Elastic Container Registry (ECR).
 
-This tutorial pushes a `fruits-api` application container image to a [DockerHub](https://hub.docker.com/) repository named `fruits-api`. You can use another container registry if you prefer.
+This tutorial pushes a `fruits-api` application container image to a [Docker Hub](https://hub.docker.com/) repository named `fruits-api`. You can use another container registry if you prefer.
 
 1. Create a public repository named `fruits-api` in your container registry.
 
 ![Fruits API Docker Repository](../static/ci-tutorial-go-containers/create-docker-repo.png)
 
-2. Test your `fruits-api` repository by manually building and pushing an application image to the registry. First, log in to the DockerHub account associated with the `fruits-api` repository:
+2. Test your `fruits-api` repository by manually building and pushing an application image to the registry. First, log in to the Docker Hub account associated with the `fruits-api` repository:
 
   ```shell
    echo -n "$DOCKER_HUB_PASSWORD" |\
@@ -93,7 +93,7 @@ Run a simple [Drone](https://drone.io) pipeline locally to build and push an app
    cp $TUTORIAL_HOME/.env.example $TUTORIAL_HOME/.env
    ```
 
-2. Edit the `$TUTORIAL_HOME/.env` as follows, replacing `$DOCKER_HUB_USERNAME`, `DOCKER_HUB_PASSWORD` with the username and password for the DockerHub account associated with the `fruits-api` repository:
+2. Edit the `$TUTORIAL_HOME/.env` as follows, replacing `$DOCKER_HUB_USERNAME`, `DOCKER_HUB_PASSWORD` with the username and password for the Docker Hub account associated with the `fruits-api` repository:
 
    ```properties
    PLUGIN_REGISTRY=docker.io
@@ -103,7 +103,7 @@ Run a simple [Drone](https://drone.io) pipeline locally to build and push an app
    PLUGIN_TAG=0.0.1
    ```
 
-3. Use Drone to build the image and push it to DockerHub:
+3. Use Drone to build the image and push it to Docker Hub:
 
    ```shell
    drone exec --trusted --env-file=.env
@@ -234,9 +234,9 @@ You can use either the visual editor or the YAML editor to add pipeline steps. T
 
 ![Pipeline Visual](../static/ci-tutorial-rust-container/starter_pipeline_visual.png)
 
-Initially, your starter pipeline has a single stage, called _Build_, and single step, called _Echo Welcome Message_. You'll modify this stage so that the pipeline builds and pushes a multi-architecture Rust application container image to DockerHub. However, first you must configure additional resources that the steps require, namely secrets and connectors.
+Initially, your starter pipeline has a single stage, called _Build_, and single step, called _Echo Welcome Message_. You'll modify this stage so that the pipeline builds and pushes a multi-architecture Rust application container image to Docker Hub. However, first you must configure additional resources that the steps require, namely secrets and connectors.
 
-### Create a DockerHub password secret
+### Create a Docker Hub password secret
 
 1. Under __Project Setup__, select __Secrets__.
 
@@ -249,17 +249,17 @@ Initially, your starter pipeline has a single stage, called _Build_, and single 
 3. On the __Add new Encrypted Text__ window, populate the fields as follows, and then select __Save__.
 
    - __Secrets Manager__: __Harness Built-in Secret Manager__
-   - __Secret Name__: _dockerhub password_
-   - __Secret Value__: DockerHub password for the account associated with the `fruits-api` repo
+   - __Secret Name__: _docker hub password_
+   - __Secret Value__: Docker Hub password for the account associated with the `fruits-api` repo
    - __Description__ and __Tags__: Optional
 
    ![Docker Hub Password](../static/ci-tutorial-rust-container/docker_hub_password_secret.png)
 
-4. On the secrets list, make a note of the `id` for the __dockerhub password__. You need this `id` later for your CI pipeline.
+4. On the secrets list, make a note of the `id` for the __docker hub password__. You need this `id` later for your CI pipeline.
 
-### Create a DockerHub Registry connector
+### Create a Docker Hub Registry connector
 
-You must add a __connector__ that allows Harness to connect to your DockerHub container registry.
+You must add a __connector__ that allows Harness to connect to your Docker Hub container registry.
 
 1. Under __Project Setup__, select __Connectors__.
 
@@ -273,8 +273,8 @@ You must add a __connector__ that allows Harness to connect to your DockerHub co
 
    ![Docker Connector Overview](../static/ci-tutorial-rust-container/docker_connector_overview.png)
 
-4. On the __Details__ page, select **DockerHub** as the provider type, and then enter the URL for the Docker registry where you created the `fruits-api` repo.
-5. For **Authentication**, select **Username and Password**, enter the DockerHub username, select the __dockerhub password__ secret that you created earlier, and then select __Continue__.
+4. On the __Details__ page, select **Docker Hub** as the provider type, and then enter the URL for the Docker registry where you created the `fruits-api` repo.
+5. For **Authentication**, select **Username and Password**, enter the Docker Hub username, select the __docker hub password__ secret that you created earlier, and then select __Continue__.
 
    ![Docker Connector Credentials](../static/ci-tutorial-rust-container/docker_connector_details.png)
 
@@ -327,7 +327,7 @@ Later in this tutorial, you'll use the _Integration testing_ workflow to make a 
 
    ![Background rgreeter Step](../static/ci-tutorial-rust-container/rust_pipeline_bg_step.png)
 
-7. Expand **Additional Configuration**. Select your DockerHub connector for the **Container Registry**, and then specify the **Image** as `<your_DockerHub_registry>/rust-zig-builder:v0.1.0`.
+7. Expand **Additional Configuration**. Select your Docker Hub connector for the **Container Registry**, and then specify the **Image** as `<your_DockerHub_registry>/rust-zig-builder:v0.1.0`.
 8. Add the following two **Environment Variables**:
 
    |  Key    | Value   |
@@ -354,7 +354,7 @@ When the pipeline runs, the `rgreeter` service takes a few minutes to start up. 
       until curl --output /dev/null --silent --head --fail $SERVICE_URL ; do sleep 5; done;
       ```
 
-12. Expand **Additional Configuration**. Select your DockerHub connector for the **Container Registry**, and then specify the **Image** as `alpine`.
+12. Expand **Additional Configuration**. Select your Docker Hub connector for the **Container Registry**, and then specify the **Image** as `alpine`.
 
    ![Configure Wait Service](../static/ci-tutorial-rust-container/wait_service.png)
 
@@ -369,7 +369,7 @@ When the pipeline runs, the `rgreeter` service takes a few minutes to start up. 
    * **Description:** `Run unit and integration tests`
    * **Shell:** Bash
    * **Command:** `cargo test --target-dir=/tmp/build`
-   * **Container Registry:** Your DockerHub connector
+   * **Container Registry:** Your Docker Hub connector
    * **Image:** `<your_DockerHub_registry>/rust-zig-builder:v0.1.0`
 
    ![Test Step](../static/ci-tutorial-rust-container/rust_pipeline_step_test.png)
@@ -404,7 +404,7 @@ If your pipeline succeeded, add two more steps to build your Rust application im
    * **Description:** `Build the application and cross compile the binary with architectures linux/arm64 and linux/amd64`
    * **Shell:** Bash
    * **Command:** `task cross`
-   * **Container Registry:** Your DockerHub connector
+   * **Container Registry:** Your Docker Hub connector
    * **Image:** `<your_DockerHub_registry>/rust-zig-builder:v0.1.0`
 
    :::info
@@ -442,7 +442,7 @@ If your pipeline succeeded, add two more steps to build your Rust application im
 
    |  Key    | Value    |
    | ---  | ----------- |
-   |`DOCKER_HUB_USERNAME`| The username for the DockerHub account where you want to push the image|
+   |`DOCKER_HUB_USERNAME`| The username for the Docker Hub account where you want to push the image|
    |`DOCKER_HUB_PASSWORD`| `<+secrets.getValue("docker_hub_password")>`|
    |`CONTEXT`| `/harness/target`|
    |`IMAGE_REGISTRY`| `docker.io`|
@@ -469,7 +469,7 @@ If your pipeline succeeded, add two more steps to build your Rust application im
 
    ![Run Pipeline](../static/ci-tutorial-rust-container/run_pipeline.png)
 
-7. If the pipeline succeeds, go to your DockerHub repo. Check that the tags `latest` and `last git commit sha` are present.
+7. If the pipeline succeeds, go to your Docker Hub repo. Check that the tags `latest` and `last git commit sha` are present.
 
    ![Success](../static/ci-tutorial-rust-container/rust_pipeline_success.png)
 

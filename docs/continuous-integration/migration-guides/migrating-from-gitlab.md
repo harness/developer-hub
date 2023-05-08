@@ -66,7 +66,7 @@ step1:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: my-dockerhub-connector
+                    connectorRef: my-docker-hub-connector
                     image: openjdk:17.0-jdk
                     shell: Bash
                     command: echo "this runs on openjdk"
@@ -305,7 +305,7 @@ For example, the following step includes a `connectorRef` referencing a Docker c
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: my-dockerhub-connector
+                    connectorRef: my-docker-hub-connector
                     image: openjdk:17.0-jdk
                     shell: Bash
                     command: echo "this runs on openjdk"

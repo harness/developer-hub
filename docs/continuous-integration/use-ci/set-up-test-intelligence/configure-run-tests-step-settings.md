@@ -20,7 +20,7 @@ Optional text string.
 
 ## Container Registry and Image
 
-The **Container Registry** is a Harness container registry connector for the image that you want Harness to run build commands on, such as DockerHub.
+The **Container Registry** is a Harness container registry connector for the image that you want Harness to run build commands on, such as Docker Hub.
 
 The **Image** is the FQN (fully-qualified name) or artifact name of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`. The image name should include the tag. If you don't include a tag, Harness uses the `latest` tag.
 

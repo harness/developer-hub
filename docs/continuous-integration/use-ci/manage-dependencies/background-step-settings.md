@@ -37,7 +37,7 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 ## Container Registry and Image
 
-**Container Registry** is a Harness container registry connector that connects to the container registry, such as DockerHub, from which you want Harness to pull an image.
+**Container Registry** is a Harness container registry connector that connects to the container registry, such as Docker Hub, from which you want Harness to pull an image.
 
 **Image** is the container image to use for the background service. The image name should include the tag, or it defaults to the `latest` tag if unspecified. You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
 

@@ -401,7 +401,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
       <li>Google Artifact Registry</li>
       <li>GitHub Package Registry</li>
       <li>Custom registry</li>
-      <li>any Docker Registry such as DockerHub</li>
+      <li>any Docker Registry such as Docker Hub</li>
     </ul>
     <p> Manifest Repo:</p><ul class=""><li>Github</li><li>GitLab</li><li>Bitbucket</li><li> Code Commit (Not Certified)</li><li> Google Cloud Source Repository (Not Certified)</li></ul></td>
   <td valign="top">
