@@ -1,7 +1,7 @@
 ---
 title: Auto scale using replicas
 description: This topic describes how to auto scale the delegate using replicas.
-sidebar_position: 2
+sidebar_position: 6
 ---
 
 Autoscaling Harness Delegate using replicas is a useful feature that can help ensure your deployments are executed efficiently, without downtime or resource overload.
