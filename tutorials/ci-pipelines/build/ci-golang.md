@@ -20,7 +20,7 @@ Build and test a [Go](https://go.dev/) application using Harness CI's Linux Clou
 
 ## Setup Go
 
-Hosed CI runners come with Go pre-installed, see [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+Hosted CI runners come with Go pre-installed, see [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
 If your application requires a specific version of Go, add a [**Run**](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) step to install it.
 
