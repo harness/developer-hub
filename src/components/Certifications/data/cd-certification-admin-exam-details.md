@@ -1,4 +1,4 @@
-The Continuous Delivery Administrator exam tests your knowledge and skills of the Harness Continuous Delivery module.  
+** (BETA Coming Soon) ** The Continuous Delivery Administrator exam tests your knowledge and skills of the Harness Continuous Delivery module.  
 
 ## Prerequisites
 
