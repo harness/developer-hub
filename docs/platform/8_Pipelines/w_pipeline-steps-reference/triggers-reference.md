@@ -60,27 +60,25 @@ Enter the name of the repo in the account.
 
 | **Payload Type** | **Event** | **Actions** |
 | --- | --- | --- |
-| **Github** | Pull Request | <ul><li>Closed</li><li>Edited</li><li>Labeled</li><li>Opened</li><li>Reopened</li><li>Synchronized</li><li>Unassigned</li><li>Unlabeled</li></ul> |
-| | Push | N/A |
-| | Release | <ul><li>Create</li><li>Edit</li><li>Delete</li><li>Prerelease</li><li>Publish</li><li>Release</li><li>Unpublish</li></ul> |
-| | Issue Comment (Only comments on pull requests are supported.) | <ul><li>Created</li><li>Deleted</li><li>Edited</li></ul> |
-| **GitLab** | Push | N/A |
-| | Merge Request | <ul><li>Sync</li><li>Open</li><li>Close</li><li>Reopen</li><li>Merge</li><li>Update</li></ul> |
-| **Bitbucket** | On Pull Request | <ul><li>Pull Request Created</li><li>Pull Request Merged</li><li>Pull Request Declined</li></ul> |
-| | Push | N/A |
-| **Azure** | Pull Request | <ul><li>Create<li><li>Update</li><li>Merge</li></ul> |
-| | Push | N/A |
-| | Issue Comment | <ul><li>Create</li><li>Edit</li><li>Delete</li></ul> |
+| **GitHub** | Pull Request | Select one or more of the following:<ul><li>Closed</li><li>Edited</li><li>Labeled</li><li>Opened</li><li>Reopened</li><li>Synchronized</li><li>Unassigned</li><li>Unlabeled</li></ul> |
+| | Push | GitHub push triggers respond to commit and tag creation actions. |
+| | Release | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li><li>Prerelease</li><li>Publish</li><li>Release</li><li>Unpublish</li></ul> |
+| | Issue Comment (Only comments on pull requests are supported.) | Select one or more of the following:<ul><li>Created</li><li>Deleted</li><li>Edited</li></ul> |
+| **GitLab** | Push | GitLab push triggers respond to commit and tag creation actions. |
+| | Merge Request | Select one or more of the following:<ul><li>Sync</li><li>Open</li><li>Close</li><li>Reopen</li><li>Merge</li><li>Update</li></ul> |
+| **Bitbucket** | On Pull Request | Select one or more of the following:<ul><li>Pull Request Created</li><li>Pull Request Merged</li><li>Pull Request Declined</li></ul> |
+| | Push | Bitbucket Cloud push triggers respond to commit and tag creation actions. |
+| **Azure** | Pull Request | Select one or more of the following:<ul><li>Create</li><li>Update</li><li>Merge</li></ul> |
+| | Push | Azure SCM push triggers respond to commit actions. |
+| | Issue Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> |
 
-Harness uses your Harness account Id to map incoming events. Harness takes the incoming event and compares it to ALL triggers in the account.
-
-You can see the event Id that Harness mapped to a Trigger in the Webhook's event response body `data`:
-
+Harness uses your Harness account ID to map incoming events. Harness takes the incoming event and compares it to ALL triggers in the account. You can see the event ID that Harness mapped to a trigger in the webhook's event response body `data`, for example:
 
 ```
 {"status":"SUCCESS","data":"60da52882dc492490c30649e","metaData":null,...
 ```
-Harness maps the success status, execution Id, and other information to this event Id.
+
+Harness maps the `success` status, execution ID, and other information to this event (`data`) ID.
 
 ### Conditions
 
