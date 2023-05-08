@@ -37,7 +37,7 @@ An artifact source does not need to be defined in the service definition for the
 * The trigger is executed based on **file names** and not metadata changes.
 * Do not trigger on the **latest** tag of an artifact, such as a Docker image. With latest, Harness only has metadata, such as the tag name, which has not changed, and so Harness does not know if anything has changed. The trigger will not be executed.
 * In Harness, you can select who is able to create and use triggers within Harness, but you must use your repository's RBAC to control who can add the artifacts or initiate the events that start the Harness trigger.
-* When creating a trigger for the first time, it is recommended to submit a tag or push an artifact to test whether the flow is working properly or not. This ensures that the trigger will execute and the pipeline will run as expected when subsequent tags are pushed.
+* Harness recommends that you submit a tag, or push an artifact when you create a trigger for the first time to verify whether the flow is working properly. This ensures that the trigger will execute and the pipeline will run as expected when subsequent tags are pushed.
   
 Familiarize yourself with Harness CD pipelines, such as the one you create in the [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
