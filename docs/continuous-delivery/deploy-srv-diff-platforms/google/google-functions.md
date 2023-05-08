@@ -21,7 +21,7 @@ Harness supports the following:
   - Harness deploys the new function and terminates the old one by sending 100% of traffic to the new function.
 - For rollback, Harness does not perform revision-based rollback. Instead, in case of deployment failure, Harness will take a snapshot of the last known good state of the function and reapply.
 
-https://www.loom.com/share/60a793fc62a748c5a9aad071eb60bdf1
+<docvideo src="https://www.loom.com/share/60a793fc62a748c5a9aad071eb60bdf1" />
 
 ### Harness Cloud Functions 2nd gen support
 
