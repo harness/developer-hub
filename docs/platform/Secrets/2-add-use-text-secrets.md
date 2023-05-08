@@ -149,6 +149,10 @@ cat >/harness/secret_exporter/values.txt << 'EOF'
 MySecret:<+secrets.getValue("test")>  
 EOF
 ```
+
+### Review: Characters length limit in Secret Names
+If you are using Vault V2 engine, you can not use secret name with more than 100 characters.
+
 ### Sanitization
 
 Sanitization only looks for an exact match of what is stored. So, if you stored a base64 encoded value then only the base64 encoded value is sanitized.
