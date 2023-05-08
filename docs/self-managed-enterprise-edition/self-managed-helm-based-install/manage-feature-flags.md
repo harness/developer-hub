@@ -1,5 +1,5 @@
 ---
-title: Manage Feature Flags for Self-Managed Enterprise Edition Helm installations
+title: Manage Feature Flags
 description: Learn how to manage Feature Flags for Self-Managed Enterprise Edition Helm installations. 
 # sidebar_position: 10
 ---
@@ -85,7 +85,7 @@ To add Feature Flags, do the following:
    kubectl rollout restart deployment ng-manager
    ```
 
-## Add Feature Flags from your base installation
+## Add Feature Flags to your base installation
 
 You can add Feature Flags included with the base configuration.
 
@@ -97,12 +97,12 @@ To remove Feature Flags, do the following:
    This file is typically located in the following default path.
 
    ```
-   /path/to/helm-charts/src/harness-manager-config/features/override-prod.yaml
+   /path/to/helm-charts/src/harness-manager-config/features/values.yaml
    ```
 
 2. Go to the `Base` section for the `featureFlags` component.
 
-```yaml
+   ```yaml
    affinity: {}
    ## These flags are used by the helper function to create the FEATURES config value based off the global.<features.enabled boolean
    # -- Feature Flags
@@ -112,7 +112,7 @@ To remove Feature Flags, do the following:
       "LDAP_SSO_PROVIDER,ASYNC_ARTIFACT_COLLECTION,JIRA_INTEGRATION,AUDIT_TRAIL_UI,GDS_TIME_SERIES_SAVE_PER_MINUTE,STACKDRIVER_SERVICEGUARD,BATCH_SECRET_DECRYPTION, TIME_SERIES_SERVICEGUARD_V2,TIME_SERIES_WORKFLOW_V2,CUSTOM_DASHBOARD,GRAPHOL, CV_FEEDBACKS,LOGS_V2_247,UPGRADE_JRE,LOG_STREAMING_INTEGRATION,NG_HARNESS_APPROVAL,GIT_SYNC_NG,NG_SHOW_DELEGATE,NG_CG_TASK_ASSIGNMENT_ISOLATION,CI_OVERVIEW_PAGE,AZURE _CLOUD_PROVIDER_VALIDATION_ON_DELEGATE,TERRAFORM_AWS_AUTHENTICATION,NG_TEMPLATES,_NEW_DEPLOYMENT_FREEZE,HELM_CHART_AS_ARTIFACT,RESOLVE_DEPLOYMENT_TAGS_BEFORE_EXECUTION,WEBHOOK_TRIGGER_AUTHORIZATION,GITHUB_WEBHOOK_AUTHENTICATION,CUSTOM_MANIFEST,GIT_ACCOUNT_SUPPORT,AZURE_WEBAPP,PRUNE KUBERNETES_RESOURCES,LDAP_GROUP_SYNC_JOB_ITERATOR,POLLING_INTERVAL_CONFIGURABLE,APPLICATION _DROPDOWN_MULTISELECT,USER_GROUP_ASvEXPRESSION,RESOURCE_CONSTRAINT_SCOPE_PIPELINE_ENABLED,NG_TEMPLATE_GTYX"
     #NG -- Specific Feature Flags
     NG: "ENABLE_DEFAULT_NG EXPERIENCE_FOR_ONPREM,_NEXT_GEN_ENABLED,NEW_LEFT_NAVBAR_SETTINGS,SPG_SIDENAV_COLLAPSE"
-```
+   ```
 
 3. Add the Feature Flag to the list, comma separated without spaces.
 
