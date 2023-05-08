@@ -222,6 +222,11 @@ export default function CertificationsCD() {
                   </div>
                   <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
+                    <Link href="#">
+                      <button className={styles.moreDetails}>
+                        Register for Exam
+                      </button>
+                    </Link>
                     <Link href="/tutorials/cd-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
@@ -234,8 +239,8 @@ export default function CertificationsCD() {
             </div>
           </div>
 
-         {/* Admin Exam Details */}
-         <div className={styles.examDetails}>
+          {/* Admin Exam Details */}
+          <div className={styles.examDetails}>
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
@@ -255,7 +260,7 @@ export default function CertificationsCD() {
             </div>
           </div>
         </div>
-          
+
 
         {/* Architect Tab Content */}
         <div
