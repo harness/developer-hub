@@ -19,18 +19,82 @@ If you are using an EKS connector, the data generation is delayed. AWS ingests d
 :::
  
 
-## Kubernetes Connector Requirements and Workflow
+## Kubernetes Connector requirements and workflow
 
 For CCM, Kubernetes connectors are available only at the Account level in Harness. To set up the CCM K8s Connector, you need to perform the following tasks:
 
-## Create a Cloud Provider Kubernetes Connector
+## Create a cloud provider Kubernetes connector
 You need to have completed the following tasks before creating a CCM connector for your Kubernetes cluster:
 * You need to set up Harness Delegate for each Cloud Provider (K8s cluster) connector. Delegate is installed when adding a Connector. See [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/install-a-kubernetes-delegate.md). The Delegate is responsible for collecting metrics from the K8s connector.
+
+  ### Delegate role requirements for CCM visibility features and recommendations:
+  
+    The YAML provided for the Harness Delegate defaults to the `cluster-admin` role to ensure you can apply updates. If you can't use cluster-admin because you are using a cluster in your company, you'll need to edit the delegate YAML.
+	
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ce-clusterrole
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - nodes
+  - nodes/proxy
+  - events
+  - namespaces
+  - persistentvolumes
+  - persistentvolumeclaims
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apps
+  - extensions
+  resources:
+  - statefulsets
+  - deployments
+  - daemonsets
+  - replicasets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  - cronjobs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - metrics.k8s.io
+  resources:
+  - pods
+  - nodes
+  verbs:
+  - get
+  - list
+- apiGroups:
+  - storage.k8s.io
+  resources:
+  - storageclasses
+  verbs:
+  - get
+  - list
+  - watch
+```
+  
 * You need to create a Kubernetes Cloud Provider Connector for each Kubernetes cluster. One connector can access only one cluster. See [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
  
 ## Create CCM Connector
 For the CCM Kubernetes connector, you need to reference an existing Cloud Provider Kubernetes Connector. Otherwise, you need to create one.
-For each cluster, you need to create a CCM Kubernetes connector.CCM can now connect to the K8s connector and collect CCM metrics for deep cloud cost visibility.
+For each cluster, you need to create a CCM Kubernetes connector. CCM can now connect to the K8s connector and collect CCM metrics for deep cloud cost visibility.
 
 
 :::note
@@ -40,7 +104,7 @@ Alternatively, if you wish to use a single Delegate to access multiple Kubernete
 :::
 
 
-## Visual Summary
+## Visual summary
 
 Here's a visual representation of the CCM Kubernetes connector requirements and workflow:
 
@@ -64,7 +128,7 @@ You must not rename the cluster. If you're setting up a new connector with this 
 :::
  
 	
-- **Delegate Size**: 
+- **Delegate size**: 
 Your Kubernetes cluster must have unallocated resources required to run the Harness Delegate workload:
 
   - Laptop - 1.6GB memory, 0.5CPU
@@ -77,7 +141,7 @@ Your Kubernetes cluster must have unallocated resources required to run the Harn
 These sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services. Ensure that the cluster has enough memory, storage, and CPU for all of its resource consumers.
 :::
 
-- **Delegate Permissions**: You can choose one of the following permissions for CCM:
+- **Delegate permissions**: You can choose one of the following permissions for CCM:
 
  **Install Delegate with cluster-wide read/write access**
 
