@@ -20,7 +20,7 @@ Currently, Git provider support is behind the feature flag `CDS_GIT_CONFIG_FILES
 
 :::
 
-You can use config files in Github, GitLab, and Bitbucket. You connect to these providers using Harness connectors. Ensure that the connector credentials have read permissions on the target repository.
+You can use config files in GitHub, GitLab, and Bitbucket. You connect to these providers using Harness connectors. Ensure that the connector credentials have read permissions on the target repository.
 
 ## Important notes
 
