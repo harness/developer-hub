@@ -56,28 +56,6 @@ For more information about self-signed certificates, delegates, and delegate env
 
 <!-- DOC-2692 removed -->
 
-## Test suites incorrectly parsed
-
-The parsed test report in the **Tests** tab comes strictly from the provided test reports. The reports must be in JUnit XML format. It is important to adhere to the standard [JUnit format](https://llg.cubic.org/docs/junit/) to improve test suite parsing.
-
-## Test Intelligence isn't working
-
-Test Intelligence may not work even if you select the **Run only selected tests** option in your [Run Tests step](./use-ci/set-up-test-intelligence/configure-run-tests-step-settings.md). One possible cause for this is that you're using **Maven** and your `**pom.xml**` contains `argLine`. In this case, you must update the Java Agent as follows:
-
-**Before:**
-
-```
-<argLine> something  
-</argLine>
-```
-
-**After:**
-
-```
-<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
-</argLine>
-```
-
 ## Truncated execution logs
 
 Each CI step supports a maximum log size of 5MB. Harness truncates logs larger than 5MB.

@@ -14,14 +14,12 @@ To publish test results, set the **Report Paths** setting in the relevant [Run](
 
 If the test reports are in JUnit XML format, you can review test reports on the **Tests** tab on the [Build details page](../viewing-builds.md).
 
-:::info
-
-Test reports must be in JUnit XML format to appear on the **Tests** tab. Harness parses test reports that are in JUnit XML format only.
-
-:::
-
 ![](./static/viewing-tests-533.png)
 
 If you use Test Intelligence for your unit tests, the **Tests** tab contains information unique to Test Intelligence. To learn more about the contents of this dashboard with Test Intelligence enabled, go to [Enable Test Intelligence](./set-up-test-intelligence.md).
 
 You can also publish reports to the **Artifacts** tab. For example, you can [Publish an Allure Report to the Artifacts tab](/tutorials/ci-pipelines/test/allure-report).
+
+## Troubleshooting: Test suites incorrectly parsed
+
+The parsed test report in the **Tests** tab comes strictly from the provided test reports. Test reports must be in JUnit XML format to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only. It is important to adhere to the standard [JUnit format](https://llg.cubic.org/docs/junit/) to improve test suite parsing.
