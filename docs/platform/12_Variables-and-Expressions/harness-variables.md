@@ -887,9 +887,9 @@ Not Harness tags. This expression evaluates to the tags on the artifact pushed, 
 
 The full location to the Docker image. For example, `docker.io/bitnami/nginx:1.22.0-debian-11-r0`.
 
-For non-containerized artifacts, use `<+artifacts.primary.path>`, described [below](#artifact_path).To see just the image name, use `<+artifacts.primary.imagePath>`.
+For non-containerized artifacts, use `<+artifacts.primary.path>`, described [below](#artifact_path).  To see just the image name, use `<+artifacts.primary.imagePath>`.
 
-You use `<+artifacts.primary.image>` or `<+artifacts.primary.imagePath>` is your values YAML file when you want to deploy an artifact you have added to the **Artifacts** section of a CD stage service definition.
+Use `<+artifacts.primary.image>` or `<+artifacts.primary.imagePath>` in your values YAML file when you want to deploy an artifact you have added to the **Artifacts** section of a CD stage service definition.
 
 For example, here is the **Artifacts** section with an artifact:
 
@@ -910,7 +910,7 @@ namespace: <+infra.namespace>
   
 ...
 ```
-See [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
+For more information, go to [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
 
 ### <+artifacts.primary.path>
 
@@ -944,7 +944,7 @@ createNamespace: true
 namespace: <+infra.namespace>  
 ...
 ```
-Go to [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes).
+Go to [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes) for more information.
 
 ### <+artifacts.primary.dockerConfigJsonSecret>
 
@@ -966,7 +966,7 @@ namespace: <+infra.namespace>
 ...
 ```
 
-See [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes).
+For more information, go to [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes).
 
 ### <+artifacts.primary.type>
 
