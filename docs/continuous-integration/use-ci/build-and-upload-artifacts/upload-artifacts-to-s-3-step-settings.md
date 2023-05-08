@@ -66,7 +66,7 @@ The name of the S3 bucket name where you want to upload the artifact.
 
 ## Source Path
 
-Path to the artifact file/folter that you want to upload. Harness creates the compressed file automatically.
+Path to the artifact file/folder that you want to upload. Harness creates the compressed file automatically.
 
 ## Optional Configuration
 
