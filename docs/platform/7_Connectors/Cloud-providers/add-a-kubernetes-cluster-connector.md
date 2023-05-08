@@ -23,6 +23,10 @@ Once connected, you can use Kubernetes and Harness for provisioning infrastructu
 
 Here's a quick video that shows you how to add a Kubernetes Cluster Connector and install the Kubernetes Delegate in the target cluster at the same time:
 
+<!-- Video:
+https://www.youtube.com/embed/wUC23lmqfnY-->
+<docvideo src="https://www.youtube.com/embed/wUC23lmqfnY" />
+
 ### Roles and Policies for the Connector
 
 The IAM roles and policies needed by the account used in the Connector depend on what operations you are using with Harness and what operations you want Harness to perform in the cluster.
