@@ -101,9 +101,17 @@ Currently, this feature is behind the feature flag `CDS_SERVICENOW_TICKET_TYPE_V
 
 :::
 
-Custom table support is now available in Harness' ServiceNow integration.
+Custom table support is now available in Harness' ServiceNow integration as part of the Ticket Type setting.
 
-Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. You can specify any custom table in Harness.
+<docimage path={require('./static/bcbbdbca197e5323c43f669c0e22b23f1bccea47c48264685c59cd69491af1e8.png')} width="60%" height="60%" title="Click to view full size image" />
+
+This feature is available in ServiceNow Create and Update steps.
+
+Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. 
+
+You can specify any custom table in Harness by typing the table name in the **Ticket Type** setting. 
+
+Fetched tables are not supported.
 
 <details>
 <summary>What is a table extending task?</summary>
@@ -113,14 +121,32 @@ In ServiceNow, a table extending task is a task that involves creating a new tab
 </details>
 
 
-Itil roles are not mandatory for using these steps. When using the normal flow for custom tables, you should have sufficient permissions on the custom table, such as basic CRUD permissions, permissions to update desired fields, etc.
+You should have sufficient permissions on the custom table, such as basic create, read, and update permissions. Also, you should have any additional permissions requireed to update specific fields within that custom table, if required.
 
-When using a custom table template, your user role is required along with cross scope privileges to the custom table.
+When using the normal flow for custom tables, you should have sufficient permissions on the custom table, such as basic CRUD permissions, permissions to update desired fields, etc.
 
-The store app is only certified to be used with Incident, Problem, Change Request, and Change Task tables by the ServiceNow certification team.
+### Using custom table support with the template flow
 
-The custom table being used should allow access to this table via web services.
+This section describes how to use custom tables via the Harness ServiceNow app in the ServiceNow store.
 
+:::notes
+
+- Cross-scope privileges are required to be added for the ServiceNow user only when using custom tables with templates (via the Harness app on the ServiceNow store).
+- The store app is only certified to be used with Incident, Problem, Change Request, and Change Task tables by the ServiceNow certification team.
+
+:::
+
+To use custom tables via the Harness ServiceNow app, do the following:
+
+1. Add three (create, read, write) cross-scope privileges from the **harness-app** to the global scope with the target name as the table name (**u_st** in this example) and set the **Status** as **Allowed**.
+   
+   <docimage path={require('./static/7c4ff638b97d3452edca6e45cc4ff70fe64134dde21b56eedd3e7b7aa33575e6.png')} width="60%" height="60%" title="Click to view full size image" />
+
+   ![Alt text](static/servicenow-custom-tables.gif)
+2. The ServiceNow user should be granted the read permission on the custom table at a minimum. In most cases, this is achieved with the **itil** role only.
+3. The custom table being used should allow access to this table via web services.
+
+   <docimage path={require('./static/f435a9ea3265d0696da26c80efd5bf8c6c2ff329f7c1a667727d294ef15d8c84.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 ## See also
