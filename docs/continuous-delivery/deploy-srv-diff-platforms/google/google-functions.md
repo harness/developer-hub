@@ -62,7 +62,7 @@ Here's a high-level summary of the setup steps.
 
 :::note
 
-Harness supports Google Cloud Functions 1st and 2nd gen. There are minor differences in the permissions required by each generation. For a detailed breakdown, see [Access control with IAM](https://cloud.google.com/functions/docs/concepts/iam) from Google.
+Harness supports Google Cloud Functions 1st and 2nd gen. There are minor differences in the permissions required by each generation. For a detailed breakdown, go to [Access control with IAM](https://cloud.google.com/functions/docs/concepts/iam) from Google.
 
 The permissions listed below work for both 1st and 2nd gen.
 
@@ -152,7 +152,7 @@ To use Google Cloud Functions, in the Harness service, in **Deployment Type**, y
 Next, in **Google Cloud Function Environment Version**, you select **1st gen** or **2nd gen**.
 
 - Google Functions 2nd gen: The YAML parameters for Google Functions 2nd gen are defined in the [google.cloud.functions.v2 function message](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#function) from Google Cloud.
-  - User's can define details of the [ServiceConfig](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#google.cloud.functions.v2.ServiceConfig) and [BuildConfig](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#buildconfig) via the YAML as seen in the below examples.
+  - You can define details of the [ServiceConfig](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#google.cloud.functions.v2.ServiceConfig) and [BuildConfig](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v2#buildconfig) via the YAML as seen in the below examples.
 - Google Functions 1st gen: The YAML parameters for Google Functions 1st gen are defined in the [google.cloud.functions.v1 CloudFunction message](https://cloud.google.com/functions/docs/reference/rpc/google.cloud.functions.v1#cloudfunction) from Google Cloud.
 
 
