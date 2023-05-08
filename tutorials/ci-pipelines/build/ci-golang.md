@@ -12,10 +12,11 @@ Build and test a [Go](https://go.dev/) application using Harness CI's Linux Clou
 
 ## Create pipeline
 
-1. In your project, select **Get Started**.
+1. Under **Project Setup**, select **Get Started**.
 2. Select your Go application repository from the repository list.
 3. Select **Generate my Pipeline configuration**, then select **Create Pipeline**.
 4. You will see the visual pipeline editor with a stage named **Build** with a step named **Echo Welcome Message**.
+5. Select **YAML** to switch to the YAML editor.
 
 ## Setup Go
 
@@ -110,7 +111,7 @@ Alternatively, if your application requires a specific version of Go, reference 
 
 </details>
 
-If you are using a matrix looping strategy, reference the matrix go version.
+If you are using a matrix looping strategy, reference the matrix variable.
 
 <details>
 <summary>Use multiple versions of Go</summary>
@@ -132,7 +133,7 @@ If you are using a matrix looping strategy, reference the matrix go version.
 
 ## Cache dependencies
 
-Cache your Go module dependencies with [cache intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
+Cache your Go module dependencies with [**Cache Intelligence**](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
 Add caching to your stage.
 
@@ -166,7 +167,7 @@ Add **Run** steps to build and run your tests.
                       go test -v ./...
 ```
 
-Alternatively, if your application requires a specific version of Go, add **Run** steps that reference that version.
+Alternatively, if your application requires a specific version of Go, reference the version in your **Run** steps.
 
 <details>
 <summary>Use a specific version of Go</summary>
@@ -196,7 +197,7 @@ Alternatively, if your application requires a specific version of Go, add **Run*
 
 </details>
 
-If you are using a matrix looping strategy, reference the matrix go version.
+If you are using a matrix looping strategy, reference the matrix variable.
 
 <details>
 <summary>Use multiple versions of Go</summary>
@@ -437,8 +438,8 @@ pipeline:
                     command: |-
                       export GOPATH=$HOME/go
                       $GOPATH/bin/go<+matrix.goVersion> install github.com/jstemmer/go-junit-report/v2@latest
-                      $GOPATH/bin/go<+matrix.goVersion> test -v ./... | tee report.out
-                      cat report.out | $GOPATH/bin/go-junit-report -set-exit-code > report_<+matrix.goVersion>.xml
+                      $GOPATH/bin/go<+matrix.goVersion> test -v ./... | tee report_<+matrix.goVersion>.out
+                      cat report_<+matrix.goVersion>.out | $GOPATH/bin/go-junit-report -set-exit-code > report_<+matrix.goVersion>.xml
                     reports:
                       type: JUnit
                       spec:
