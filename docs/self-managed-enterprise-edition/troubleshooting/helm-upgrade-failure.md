@@ -9,7 +9,10 @@ This topic provides solutions for upgrade problems related to Helm.
 
 Password failure happens when the current credentials are not used to authenticate. To avoid this problem, make sure you keep your old credentials after installation; they may be required to access data in persistent volume claims. You may encounter the following error.
 
-Note: This error should not surface in charts 0.2.93 or newer.
+:::info note
+This error should not surface in charts 0.2.93 or newer.
+:::
+
    ```
    UPGRADE FAILED: execution error at (harness-demo/charts/harness/charts/platform/charts/minio/templates/NOTES.txt:91:4): 
    PASSWORDS ERROR: You must provide your current passwords when upgrading the release.
