@@ -1,10 +1,12 @@
 ---
 title: Auto scale using replicas
-description: This topic describes how to auto scale the delegate using replicas.
+description: This topic describes how to auto scale the delegate using replicas for Helm chart deployments.
 sidebar_position: 6
 ---
 
-Autoscaling Harness Delegate using replicas is a useful feature that can help ensure your deployments are executed efficiently, without downtime or resource overload.
+Autoscaling Harness Delegate using replicas for Helm chart deployments is a useful feature that can help ensure your deployments are executed efficiently, without downtime or resource overload.
+
+To access the default Helm chart for values.yaml, go to [Harness Delegate Helm chart](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml).
 
 To auto scale the delegate, do the following:
 
