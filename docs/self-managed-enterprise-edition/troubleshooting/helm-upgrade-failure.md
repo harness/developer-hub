@@ -63,5 +63,3 @@ If you've already set the `auth.rootPassword` value one time, you can update and
    ```
 
 4. Delete the oldvalues.yaml file.
-
-
