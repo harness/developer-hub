@@ -1,6 +1,6 @@
 ---
 title: Add a Tanzu Application Service (TAS) connector
-description: Connect Harness to a TAS space using a Harness TAS connector.
+description: Connect Harness to a TAS space by using a Harness TAS connector.
 sidebar_position: 6
 ---
 
@@ -18,7 +18,7 @@ Expand the following section to learn how to install the Harness Delegate.
 1. In your Harness project, select **Project Setup**.
 2. Select **Delegates**.
 3. Select **Install a Delegate**.
-4. Follow the delegate installation wizard.
+4. Follow the instructions in the delegate installation wizard.
 
 Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yLMCxs3onH8) to guide you through the process.
 
@@ -29,18 +29,18 @@ import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
 
 <details>
-<summary>Install a delegate using the terminal</summary>
+<summary>Install a delegate by using the terminal</summary>
 <DelegateInstall />
 </details>
 
 To learn more, watch the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview) video.
 
 
-## Install Cloud Foundry Command Line Interface (CF CLI) on your Harness Delegate
+## Install the Cloud Foundry Command Line Interface (cf CLI) on your Harness Delegate
 
 After the delegate pods are created, you must edit your Harness Delegate YAML to install CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins.
 
-1. Open the `delegate.yaml` in a text editor.
+1. Open `delegate.yaml` in a text editor.
 2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
    ```
    - name: INIT_SCRIPT  
@@ -49,7 +49,7 @@ After the delegate pods are created, you must edit your Harness Delegate YAML to
 3. Replace `value: ""` with the following script to install CF CLI, `autoscaler`, and `Create-Service-Push` plugins.
    
    :::info
-   Harness Delegate uses Red Hat based distributions like Red Hat Enterprise Linux (RHEL) or Red Hat Universal Base Image (UBI). Hence, we recommend that you use `microdnf` commands to install CF CLI on your delegate. If you are using a package manager in Debian based distributions like Ubuntu, use `apt-get` commands to install CF CLI on your delegate.
+ Harness Delegate uses Red Hat–based distributions such as Red Hat Enterprise Linux (RHEL) or Red Hat Universal Base Image (UBI). Hence, we recommend that you use `microdnf` commands to install CF CLI on your delegate. If you are using a package manager in Debian-based distributions such as Ubuntu, use `apt-get` commands to install CF CLI on your delegate.
    :::
 
    :::info
@@ -158,7 +158,7 @@ import TabItem from '@theme/TabItem';
    Create-Service-Push   1.3.2     create-service-push, cspush   Works in the same manner as cf push, except that it will create services defined in a services-manifest.yml file first before performing a cf push.
    ``` 
 :::note
-The CF Command script does not require `cf login`. Harness logs in using the credentials in the TAS cloud provider set up in the infrastructure definition for the workflow executing the CF Command.
+The CF Command script does not require `cf login`. Harness logs in by using the credentials in the TAS cloud provider set up in the infrastructure definition for the workflow executing the CF Command.
 :::
 
 ## Add the Harness TAS provider
@@ -167,13 +167,13 @@ You can connect Harness to a TAS space by adding a TAS connector.
 
 Perform the following steps to add a TAS connector.
 
-1. Open a Harness project, and select **Connectors** under **Project Setup**.
+1. Open a Harness project, and then select **Connectors** under **Project Setup**.
 2. Select **New Connector**, and select **Tanzu Application Service** under **Cloud Providers**.
 4. Enter a connector name, enter an optional description and tag, and then select **Continue**.
    
-   Harness automatically creates an **[ID](/docs/platform/References/entity-identifier-reference)** for the connector based on the name.
+   Harness automatically creates an **[ID](/docs/platform/References/entity-identifier-reference)** for the connector. The ID is based on the connector's name.
 5. Enter the TAS **Endpoint URL**. For example, `https://api.system.tas-mycompany.com`.
-6. In **Authentication**, select one of the following options.
+6. In **Authentication**, select one of the following options:
     * **Plaintext** - Enter the username and password. For password, you can either create a new secret or use an existing one.
     * **Encrypted** - Enter the username and password. You can create a new secret for your username and password or use exiting ones.
 7. Select **Continue**.
