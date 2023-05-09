@@ -1,6 +1,6 @@
 ---
-title: Set up triggers to launch builds and scans using triggers
-description: Launch pipeline builds and scans based on Git events.
+title: Set up Harness triggers for GitLab merge requests
+description: Launch pipeline builds and scans automatically based on GitLab merge requests.
 sidebar_position: 25
 ---
 
@@ -19,7 +19,7 @@ This tutorial shows how you can set up a STO pipeline that runs a build and scan
 
 This tutorial uses a [Python repository in Gitlab](https://gitlab.com/gitsequence090/TestPythonSAST) and [Bandit](https://github.com/PyCQA/bandit), an open-source tool designed to find common security issues in Python code.
 
-You can follow this workflow if you're using a different Git provider, such as GitHub, or a different scanner. However, the steps to set up your codebase connector and scan step will be slighly different. 
+You can use this workflow for other types of GitLab repositories. However, the specific scanner and setup for your scan step might be different. 
 
 :::
 
@@ -27,13 +27,11 @@ You can follow this workflow if you're using a different Git provider, such as G
 
 To do this tutorial, you need the following:
 
-* An account with a Git service such as [GitLab](https://gitlab.com/), [GitHub](https://github.com/), or [BitBucket](https://bitbucket.org/). You also need the following:
+* A [GitLab](https://gitlab.com/) account. 
 
-  * An SSH key to enable pushing updates to your repositories
+  * An SSH key to enable pushing updates to your repositories. For more information, go to [Use SSH keys to communicate with GitLab](https://docs.gitlab.com/ee/user/ssh.html) in the Gitlab documentation.
 
-  * A Personal Access Token to enable pushing API requests
-
-  For information about how to create your key and token, go to the documentation for your Git service.
+  * A Personal Access Token to enable pushing API requests. For information about the scopes to enable for your token, go to [GitLab connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-lab-connector-settings-reference/#passwordpersonal-access-token).
 
 * A Harness [code repository connector](/docs/category/code-repositories) to your Git service.
 
@@ -108,7 +106,7 @@ In this section, you'll add a trigger to your pipeline that that listsns for inc
 
    ![](./static/trigger-tutorial-06-trigger-condition.png)
 
-5. In **Pipeline Input**, select **Git Branch** for the build type and enter **<+trigger.branch> for the branch name. Then click **Create Trigger**. 
+5. In **Pipeline Input**, select **Git Branch** for the build type and enter **<+trigger.branch>** for the branch name. Then click **Create Trigger**. 
 
    ![](./static/trigger-tutorial-08-pipeline-input.png)
 
@@ -131,5 +129,14 @@ The steps to do this differ depending on the service you're using. These steps a
 
 4. Click **Add webhook** at the bottom of the page. 
 
+### Create a Merge Request in GitLab
 
+At this point, your setup should be complete. To verify that your trigger is working correctly, do the following:
 
+* Open a browser page and point it to the **Execution History** page for your Harness pipeline. 
+
+* Go to your GitLab repo, then create and approve a merge request. 
+
+You should now see a new build in the **Execution History** page. 
+
+![](./static/trigger-tutorial-09-triggered-build.png)

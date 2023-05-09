@@ -352,6 +352,19 @@ export const CETList: CardItem[] = [
 
 export const STOList: CardItem[] = [
   {
+    title: "Trigger builds from GitLab events",
+    module: MODULES.sto,
+    icon: "img/icon_sto.svg",
+    description: (
+      <>Set up pipeline triggers for GitLab events such as merge requests.</>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/security-tests/sto-pipeline-with-triggers",
+  },
+
+  {
     title: "Scan a NodeJS Application",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
@@ -363,6 +376,7 @@ export const STOList: CardItem[] = [
     time: "10min",
     link: "/tutorials/security-tests/nodejs-owasp",
   },
+
 ];
 
 export const CEList: CardItem[] = [
