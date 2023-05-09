@@ -72,7 +72,7 @@ You can use Runtime Inputs for the Service in a CD stage's Service settings.
 
 ![](./static/runtime-inputs-06.png)
 
-### Using allowed and default values in runtime inputs
+### Using allowed values and default values in runtime inputs
 
 You can set allowed values and a default value for a runtime input. The default value should be present in the list of allowed values. 
 For runtime inputs defined for pipelines, stages, and shell script variables, multiple selections are allowed. 
