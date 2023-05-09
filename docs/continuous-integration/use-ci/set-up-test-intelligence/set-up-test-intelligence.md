@@ -331,6 +331,21 @@ Note that while parallelism for Test Intelligence can improve the total time it 
 
 </details>
 
+## Ignore tests or files
+
+If you want Test Intelligence to ignore certain tests or files, create a `.ticonfig.yaml` file in your codebase containing a list of tests and files to ignore, for example:
+
+```yaml
+config:
+  ignore:
+    - "README.md"
+    - ".ticonfig.yaml"
+    - "**/*.go"
+    - "**/Dockerfile*"
+    - "licenses/**/*"
+    - "img/**/*"
+```
+
 ## Troubleshooting
 
 You may encounter the following issues when using Test Intelligence with Maven.
