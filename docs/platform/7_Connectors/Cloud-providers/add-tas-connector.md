@@ -49,11 +49,15 @@ After the delegate pods are created, you must edit your Harness Delegate YAML to
 3. Replace `value: ""` with the following script to install CF CLI, `autoscaler`, and `Create-Service-Push` plugins.
    
    :::info
- Harness Delegate uses Red Hat–based distributions such as Red Hat Enterprise Linux (RHEL) or Red Hat Universal Base Image (UBI). Hence, we recommend that you use `microdnf` commands to install CF CLI on your delegate. If you are using a package manager in Debian-based distributions such as Ubuntu, use `apt-get` commands to install CF CLI on your delegate.
+   
+   Harness Delegate uses Red Hat–based distributions such as Red Hat Enterprise Linux (RHEL) or Red Hat Universal Base Image (UBI). Hence, we recommend that you use `microdnf` commands to install CF CLI on your delegate. If you are using a package manager in Debian-based distributions such as Ubuntu, use `apt-get` commands to install CF CLI on your delegate.
+   
    :::
 
    :::info
+   
    Make sure to use your API token for pivnet login in the following script.
+   
    :::
 
 ```mdx-code-block
