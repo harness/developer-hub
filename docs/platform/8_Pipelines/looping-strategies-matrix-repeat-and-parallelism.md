@@ -95,6 +95,10 @@ For more information, go to [Run a step on multiple target instances](/docs/cont
 
 Looping strategies can be defined as runtime input in pipelines and templates at stage, step and step group levels.
 
+<!-- Video:
+https://harness-24.wistia.com/medias/79nqqvqybt-->
+<docvideo src="https://harness-24.wistia.com/medias/79nqqvqybt" />
+
 ### See also
 
 * [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
