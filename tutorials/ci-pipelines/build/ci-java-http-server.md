@@ -77,7 +77,7 @@ For this tutorial, you'll need a Docker connector to allow Harness to authentica
 7. Configure the [Docker connector settings](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) as follows:
 
    * **Name:** Enter a name.
-   * **Provider Type:** Select **DockerHub**.
+   * **Provider Type:** Select **Docker Hub**.
    * **Docker Registry URL:** Enter `https://index.docker.io/v2/`.
    * **Username:** Enter the username for your Docker Hub account.
    * **Password:** Create a [secret](/docs/platform/Secrets/add-use-text-secrets) for your Docker Hub personal access token.

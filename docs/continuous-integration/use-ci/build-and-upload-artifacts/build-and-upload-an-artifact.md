@@ -203,7 +203,7 @@ pipeline:
                   name: CreateDockerFile
                   identifier: CreateDockerFile
                   spec:
-                    connectorRef: CI_DockerHub
+                    connectorRef: CI_Docker_Hub
                     image: alpine:latest
                     command: |-
                       touch harnessDockerfileui
@@ -227,7 +227,7 @@ pipeline:
                   name: DockerPushStep
                   identifier: DockerPushStep
                   spec:
-                    connectorRef: my-dockerhub
+                    connectorRef: my-docker-hub
                     repo: my-repo/ciquickstart
                     tags:
                       - "1.0"
@@ -264,7 +264,7 @@ pipeline:
                   name: CreateDockerFile
                   identifier: CreateDockerFile
                   spec:
-                    connectorRef: CI_DockerHub
+                    connectorRef: CI_Docker_Hub
                     image: alpine:latest
                     command: |-
                       touch harnessDockerfileui
@@ -288,7 +288,7 @@ pipeline:
                   name: DockerPushStep
                   identifier: DockerPushStep
                   spec:
-                    connectorRef: my-dockerhub
+                    connectorRef: my-docker-hub
                     repo: my-repo/ciquickstart
                     tags:
                       - "1.0"
@@ -330,8 +330,8 @@ pipeline:
             steps:
               - step:
                   type: BuildAndPushDockerRegistry
-                  name: Build and push image to DockerHub
-                  identifier: Build_and_push_image_to_DockerHub
+                  name: Build and push image to Docker Hub
+                  identifier: Build_and_push_image_to_Docker_Hub
                   spec:
                     connectorRef: account.Docker_Quickstart
                     repo: cretzman/ciquickstart

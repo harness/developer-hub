@@ -1,6 +1,6 @@
 ---
 title: Trigger pipelines using Git events
-description: Trigger pipelines in response to git events.
+description: Trigger pipelines in response to Git events.
 sidebar_position: 4
 helpdocs_topic_id: hndnde8usz
 helpdocs_category_id: oya6qhmmaw
@@ -8,23 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can trigger pipelines in response to Git events automatically.
+You can trigger pipelines in response to Git events automatically. For example, when a pull request or push event occurs on a Git repo, a CI or CD pipeline can execute.
 
-For example, when a pull request or push event occurs on a Git repo, a CI or CD pipeline can execute.
+Triggers enable event-driven CI/CD and support the practice of every commit building and/or deploying to a target environment.
 
-Triggers enable event driven CI/CD and support the practice of every commit building and/or deploying to a target environment.
-
-
-:::note
-For general Triggers reference, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
-
-:::
-
-
-## Important notes
+:::note info
 
 * Currently, Harness supports Git-based Triggers for the most common Git providers. Harness includes a Custom Trigger for other repo providers.
 * In Harness, you can select who is able to create and use Triggers within Harness, but you must use your repos' RBAC to control who can initiate the Git events that start the Harness Trigger.
+* For general trigger reference information, go to the [Triggers reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
+
+:::
 
 ## Visual summary
 
@@ -76,7 +70,7 @@ For details on these settings, see [Triggers Reference](../8_Pipelines/w_pipelin
 
 
 :::note
-For details on the payloads of the different repo Webhooks, see GitHub [Event Types & Payloads](https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads), Bitbucket [Event Payloads](https://confluence.atlassian.com/bitbucket/event-payloads-740262817.html), and Gitlab [Events](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html#events).
+For details on the payloads of the different repo Webhooks, see GitHub [Event Types & Payloads](https://docs.github.com/en/developers/webhooks-and-events/webhooks/webhook-events-and-payloads), Bitbucket [Event Payloads](https://confluence.atlassian.com/bitbucket/event-payloads-740262817.html), and Gitlab [Events](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html#events).
 
 :::
 
@@ -114,7 +108,7 @@ In **Configure Secret**, you can select a secret for authenticating the webhook 
 
 For the secret to work with your webhook, you need to configure the repository webhook with the same secret.
 
-![picture 1](static/177d72e7c78be248475dbdaf4a4faa2519415049151ed88451f1be00390cd90f.png)
+![GitHub repo webhook settings.](static/177d72e7c78be248475dbdaf4a4faa2519415049151ed88451f1be00390cd90f.png)
 
 ### Enforcing authentication
 
@@ -123,15 +117,15 @@ To enforce authentication for all webhook triggers in this project, you can use 
 1. In your project, click **Project Setup**, and then click **Default Settings**.
 2. In **Core**, set **Mandate Webhook Secrets for Github Triggers** to **true**.
 
-![picture 2](static/6dee82fe88ab34915affa856d596d73c4a91fbbedf4784c2a8273db8a6f5b6b9.png)
+![The mandate webhook secrets option in Harness.](static/6dee82fe88ab34915affa856d596d73c4a91fbbedf4784c2a8273db8a6f5b6b9.png)
 
-Now all Github webhooks for this project must be authenticated. All Github triggers in the project must be configured with a secret, and the corresponding webhooks in the Github repos must be configured with the corresponding secret. A secret manager with a delegate selector will use the corresponding delegate to decrypt it.
+Now all GitHub webhooks for this project must be authenticated. All GitHub triggers in the project must be configured with a secret, and the corresponding webhooks in the Github repos must be configured with the corresponding secret. A secret manager with a delegate selector will use the corresponding delegate to decrypt it.
 
 ## Polling frequency
 
 
 :::note
-Currently, this feature is only available for Github webhooks and is behind the feature flag `CD_GIT_WEBHOOK_POLLING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. By default, Harness Git-based triggers listen to Git events using webhooks. 
+Currently, this feature is only available for Github webhooks and is behind the feature flag `CD_GIT_WEBHOOK_POLLING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. By default, Harness Git-based triggers listen to Git events using webhooks.
 
 :::
 
@@ -188,7 +182,7 @@ The Trigger is now added to the Triggers page.
 
 When you create or edit the Trigger, Harness registers the webhook in your Git provider automatically. You don't need to copy it and add it to your repo webhooks. However, make sure you have the following permission for GitHub Personal Access Token for automatic webhook registration to work:
 
-* **Scopes:** select all the **repo**, **user**, and **admin:repo\_hook** options
+* **Scopes:** select all the **repo**, **user**, and **admin:repo\_hook** options
 
 ![](./static/triggering-pipelines-16.png)
 
@@ -199,13 +193,15 @@ You should also be repo admin.
 Make a change on the repo and see if it executes the Trigger. For example, change a file, commit it on a branch, and make a pull request.
 
 1. In your Git provider repo, you can see that the request and response were successful.
-   
+
    ![](./static/triggering-pipelines-17.png)
+
 2. In Harness, view the pipeline execution.
 3. In Harness CI, click **Builds**.
 4. You can see the source and target branches. You can also see the pull request comment and number.
-   
+
    ![](./static/triggering-pipelines-18.png)
+
 5. Click the pull request number and it opens the Git provider repo at the pull request.
 
 If you open the Trigger in the pipeline you will see a status in **Last Activation Details**.
@@ -213,8 +209,3 @@ If you open the Trigger in the pipeline you will see a status in **Last Activati
 ![](./static/triggering-pipelines-19.png)
 
 Activation means the Trigger was able to request pipeline execution. It does not mean that the Webhook didn't work.
-
-## See also
-
-* [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md)
-
