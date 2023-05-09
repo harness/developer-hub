@@ -190,7 +190,7 @@
   /* Module Colors/Cloud Cost/200 */
   --mod-ccm-200: #01c9cc;
   /* Module Colors/Cloud Cost/100 */
-  --mod-100: #ecffff;
+  --mod-ccm-100: #ecffff;
 
   /* Module Colors/Feature Flags/300 */
   --mod-ff-300: #c05809;
@@ -214,23 +214,35 @@
   --mod-ce-200: #ff006a;
   --mod-ce-100: #fff1f7;
 
-  /* Module Colors/CET/200 */
+  /* Module Colors/CET */
+  --mod-cet-300: #c01406;
   --mod-cet-200: #ff5f45;
+  --mod-cet-100: #ffe2dd;
 
-  /* Module Colors/SEI/200 */
-  --mod-sei-200: var(--primary); /* To be updated */
+  /* Module Colors/SEI */
+  --mod-sei-300: #30841f;
+  --mod-sei-200: #5fb34e;
+  --mod-sei-100: #f6fff2;
 
-  /* Module Colors/SSCA/200 */
-  --mod-ssca-200: var(--primary); /* To be updated */
+  /* Module Colors/SSCA */
+  --mod-ssca-300: #c01406;
+  --mod-ssca-200: #ff5f45;
+  --mod-ssca-100: #ffe2dd;
 
-  /* Module Colors/IDP/200 */
-  --mod-idp-200: var(--primary); /* To be updated */
+  /* Module Colors/IDP */
+  --mod-idp-300: #24807f;
+  --mod-idp-200: #01c9cc;
+  --mod-idp-100: #ecffff;
 
-  /* Module Colors/IaCM/200 */
-  --mod-iacm-200: var(--primary); /* To be updated */
+  /* Module Colors/IaCM */
+  --mod-iacm-300: #30841f;
+  --mod-iacm-200: #5fb34e;
+  --mod-iacm-300: #f6fff2;
 
-  /* Module Colors/Gitness/200 */
-  --mod-gitness-200: var(--primary); /* To be updated */
+  /* Module Colors/Gitness */
+  --mod-gitness-300: #9a0041;
+  --mod-gitness-200: #ff006a;
+  --mod-gitness-100: #fff1f7;
 
   /* ----- */
   --ifm-link-decoration: none;
