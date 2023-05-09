@@ -80,7 +80,9 @@ Multi Selection is currently behind the feature flag `PIE_MULTISELECT_AND_COMMA_
 
 ![](./static/runtime-inputs-11.png)
 
-Note:- Use of comma is supported in allowed values and default value. The string with comma needs to be wrapped within `\'   \'` 
+### Using commas in allowed and default values in runtime inputs
+
+Use of comma is supported in allowed values and default value. The string with comma needs to be wrapped within `\'   \'` 
 For Eg: `<+input>.default(\'london,uk\').allowedValues(\'bengaluru,india\',\'newyork,usa\',\'london,uk\')`
 
 ### Using Runtime Inputs During Execution
