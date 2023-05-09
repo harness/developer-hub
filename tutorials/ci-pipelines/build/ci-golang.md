@@ -8,7 +8,7 @@ slug: /ci-pipelines/build/golang
 
 # Build and test a Go app
 
-Build and test a [Go](https://go.dev/) application using Harness CI's Linux Cloud infrastructure.
+Build and test a [Go](https://go.dev/) application using a Linux platform on [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
 
 ## Create pipeline
 
