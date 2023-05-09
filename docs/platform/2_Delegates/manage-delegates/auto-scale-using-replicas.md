@@ -8,6 +8,10 @@ Autoscaling Harness Delegate using replicas for Helm chart deployments is a usef
 
 To access the default Helm chart for values.yaml, go to [Harness Delegate Helm chart](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml).
 
+:::info note
+You can also update the Harness Delegate yaml file in addition to the Helm chart.
+:::
+
 To auto scale the delegate, do the following:
 
 1. In your values.yaml file, go to `autoscaling` parameters.
