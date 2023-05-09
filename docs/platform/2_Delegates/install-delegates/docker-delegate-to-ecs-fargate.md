@@ -7,13 +7,20 @@ sidebar_position: 5
 # Deploy a Docker delegate to Amazon ECS or AWS Fargate
 
 Harness Delegate carries out the tasks in your Continuous Integration (CI) and Continuous Delivery (CD) pipelines. The delegate is a software component that installs in your environment and registers with Harness Manager. The delegate connects to Harness Manager for the assignment and completion of CI/CD tasks.
+
 You can use Harness NextGen to deploy a Docker delegate to Amazon Elastic Container Service (ECS) or AWS Fargate. This tutorial steps through the process of installing the delegate into an ECS cluster as an ECS service. The installed delegate connects to your AWS resources.
 
-You can also use a Terraform module to deploy a delegate. For more information, go to [Deploy a delegate using Terraform](#deploy-a-delegate-using-terraform).
+:::info note
+Delegate scope for an Amazon ECS delegate is based on the token you use.
+:::
 
 ## Deploy a delegate to Amazon ECS 
 
 Use the following steps to deploy a delegate to an Amazon ECS cluster. This process requires an immutable delegate.
+
+:::info note
+You can also use a Terraform module to deploy a delegate. For more information, go to [Deploy a delegate using Terraform](#deploy-a-delegate-using-terraform).
+:::
 
 ### Create the cluster
 
