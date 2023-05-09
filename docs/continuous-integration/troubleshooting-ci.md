@@ -97,7 +97,7 @@ By default, Harness uses anonymous access to [Harness Docker Hub](https://hub.do
 
 ## Out of memory errors with Gradle
 
-If build that use Gradle experience out of memory errors, add the following to your `gradle.properties`:
+If a build that uses Gradle experiences out of memory errors, add the following to your `gradle.properties` file:
 
 ```
 -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport
