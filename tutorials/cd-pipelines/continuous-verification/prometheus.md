@@ -110,7 +110,7 @@ With the query configured, your Verify Step has all of the necessary pieces.
 
 You are now ready to run the pipeline. 
 
-![Pipeline](../static/cv-prom/pipeline.png
+![Pipeline](../static/cv-prom/pipeline.png)
 
 ## Running Example Pipeline
 Harness Continuous Verification works off the concept of baselines and the ability to perform a before and after analysis of what has been deployed. Deploying the `stable` tag of the Sample Application for the first time will generate a pass. 
