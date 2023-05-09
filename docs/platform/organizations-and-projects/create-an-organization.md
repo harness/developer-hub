@@ -87,6 +87,20 @@ Next, the Harness modules appear.
 3. When you open the project, all the modules are displayed.
 4. Pick a module and click **Create New Pipeline** to get started!
 
+
+### Project FAQs
+
+**Q: Can I move things between projects?**
+
+No, currently a limitation, we do not support moving resources between projects, nor organizations.
+
+**Q: How can I decommission a Project and still retain its history?**
+
+We recommend removing rbac access to the the project and only allow for users to either view it or hide it entirely from most users. Only account admins can maintain view access to check configurations and deployment history in the project. If you delete the project, the deployment history will also be removed so its better to leave the project available and block access and usage to it in order to keep your history.
+
+
+
+
 ### See also
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
