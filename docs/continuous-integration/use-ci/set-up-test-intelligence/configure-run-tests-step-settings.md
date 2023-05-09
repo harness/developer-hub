@@ -1,6 +1,6 @@
 ---
 title: Run Tests step settings
-description: The Run Tests step runs tests and enables Test Intelligence.
+description: The Run Tests step runs tests and can be used to enable Test Intelligence.
 sidebar_position: 30
 helpdocs_topic_id: axzckflbt2
 helpdocs_category_id: 4xo13zdnfx
@@ -12,7 +12,7 @@ This topic describes settings for the Harness CI Run Tests step. Use the Run Tes
 
 :::info Hidden settings
 
-* Some settings are located under **Additional Configuration**.
+* Some settings are located under **Additional Configuration** in the Pipeline Studio's visual editor.
 * Some settings are only applicable to certain languages or build tools.
 * Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
@@ -55,19 +55,35 @@ Select the source code language to build: **C#**, **Java**, **Kotlin**, or **Sca
 
 Additional settings appear if you select **C#** or **Java**.
 
-### Build Environment (C#)
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="csharp" label="C#" default>
+```
+
+### Build Environment
 
 Select the build environment to test.
 
-### Framework Version (C#)
+### Framework Version
 
 Select the framework version to test.
 
-### Namespaces (.NET C#)
+### Namespaces
+
+This setting is only available if you select **DOTNET** as the [Build Tool](#build-tool).
 
 Supply a comma-separated list of namespace prefixes that you want to test.
 
-### Do you want to enable Error Tracking? (Java)
+```mdx-code-block
+  </TabItem>
+  <TabItem value="java" label="Java">
+```
+
+### Do you want to enable Error Tracking?
 
 Error tracking helps you be more proactive at discovering and remediating errors early in the software development lifecycle. It help s you more easily discover issues and assess the quality of code before it reaches production.
 
@@ -109,29 +125,77 @@ cd $PROJ_DIR
 
 Error tracking output is reported on the [Error Tracking tab](../viewing-builds.md) when the pipeline runs.
 
-### Test Annotations (Java)
+### Test Annotations
 
 This setting is located under **Additional Configuration**.
 
-Provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method. The defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`
+You can provide a comma-separated list of test annotations used in unit testing. Any method with a specified annotation is treated as a test method. If not specified, the defaults are: `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## Build Tool
 
-Select the build automation tool. Supported tools vary by **Language**. For example, Harness supports [Bazel](https://bazel.build/), [Maven](https://maven.apache.org/), and [Gradle](https://gradle.org/) for **Java** and [NET CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/) and [Nunit](https://nunit.org/) for **.NET:** .
+Select the build automation tool. Supported tools vary by **Language**.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="csharp" label="C#" default>
+```
+
+* [DOTNET CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/)
+* [NUnit](https://nunit.org/)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Java" label="Java">
+```
+
+* [Bazel](https://bazel.build/)
+* [Maven](https://maven.apache.org/)
+* [Gradle](https://gradle.org/)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Kotlin" label="Kotlin">
+```
+
+* [Bazel](https://bazel.build/)
+* [Maven](https://maven.apache.org/)
+* [Gradle](https://gradle.org/)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Scala" label="Scala">
+```
+
+* [Bazel](https://bazel.build/)
+* [Maven](https://maven.apache.org/)
+* [Gradle](https://gradle.org/)
+* [Sbt](https://www.scala-sbt.org/)
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## Build Arguments
 
 Enter the arguments for the build tool. These are used as input for the chosen build tool.
 
+The following languages and build tools have specific build argument requirements:
+
 * **Java:** Provide runtime arguments for the tests, for example: `Test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false`.
 * **C#:** Provide runtime arguments for the tests, for example: `/path/to/test.dll /path/to/testProject.dll`. **Do not** inject another instrumenting agent, such as a code-coverage agent, in the argument string.
-* **C#/Nunit:** Provide runtime executables and arguments for the tests, for example: `. "path/to/nunit3-console.exe" path/to/TestProject.dll --result="UnitTestResults.xml" /path/to/testProject.dll`. You must include the executable in the string. **Do not** inject another instrumenting agent, such as a code-coverage agent, in the string.
+* **NUnit C#:** Provide runtime executables and arguments for the tests, for example: `. "path/to/nunit3-console.exe" path/to/TestProject.dll --result="UnitTestResults.xml" /path/to/testProject.dll`. You must include the executable in the string. **Do not** inject another instrumenting agent, such as a code-coverage agent, in the string.
 
-## Report Paths
+## Test Report Paths
 
-The path to the file(s) that store test results in the JUnit XML format. You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+The path to the file(s) that store test [results in JUnit XML format](../set-up-test-intelligence/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
-This field is required for the Run Tests step to publish test results.
+This field is required for the Run Tests step to [publish test results](./viewing-tests.md).
 
 ## Pre-Command
 
