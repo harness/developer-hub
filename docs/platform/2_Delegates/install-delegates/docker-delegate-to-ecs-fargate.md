@@ -19,7 +19,7 @@ Use the following steps to deploy a delegate to an Amazon ECS cluster. This proc
 
 Create an ECS cluster. Use an EC2 instance type with networking. 
 
-For more information, see [EC2 instance types](https://aws.amazon.com/ec2/instance-types/) in the AWS documentation.
+For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/instance-types/) in the AWS documentation.
 
 ### Create the task definition
 
@@ -121,7 +121,7 @@ Use the following steps to create a service.
    
    Replace `service-name` with the unique name of your service. Replace `task-definition` with the task definition that the service runs. 
    
-   For information on the specification of ECS service parameters, see [`create-service`](https://docs.aws.amazon.com/cli/latest/reference/ecs/create-service.html).
+   For information on the specification of ECS service parameters, go to [`create-service`](https://docs.aws.amazon.com/cli/latest/reference/ecs/create-service.html).
    
 2. Use the following instruction to increase the count of replica pods to the desired number:
 
@@ -138,11 +138,11 @@ Use the following steps to deploy a delegate to an Amazon Fargate cluster. This 
 
 Create a cluster on Amazon Fargate. Use an instance type with networking.
 
-For more information, see [EC2 instance types](https://aws.amazon.com/ec2/instance-types/) in the AWS documentation.
+For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/instance-types/) in the AWS documentation.
 
 ### Create the task definition
 
-Use the following steps to create a task definition. For information about task definition in Amazon ECS, see [Task Definition Template](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-definition-template.html).
+Use the following steps to create a task definition. For information about task definition in Amazon ECS, go to [Task Definition Template](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-definition-template.html).
 
 1. Copy the following task `spec` into a file. Save the file as task-spec.json.
 
@@ -262,7 +262,7 @@ Use the following steps to create a task definition. For information about task 
  3. From AWS CLI, use the following instruction to register the task definition:
  
     ```
-    aws ecs registger-task-definition --cli-input-json file://task-spec.json
+    aws ecs register-task-definition --cli-input-json file://task-spec.json
     ```
     
  4. Then register the service definition:
