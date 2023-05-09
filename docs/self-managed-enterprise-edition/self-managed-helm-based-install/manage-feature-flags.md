@@ -91,13 +91,13 @@ You can add Feature Flags included with the base configuration.
 
 To remove Feature Flags, do the following:
 
-1. Open your global overrides file in a text editor.
+1. Open your `harness-manager` values.yaml file in a text editor.
 
    :::info note
-   This file is typically located in the following default path.
+   This file is typically located in the following default path in the release directory.
 
    ```
-   /path/to/helm-charts/src/harness-manager-config/features/values.yaml
+   harness/charts/platform/charts/harness-manager/values.yaml
    ```
 
 2. Go to the `Base` section for the `featureFlags` component.
@@ -125,9 +125,6 @@ To remove Feature Flags, do the following:
    ```
    
    :::info note
-   For Feature Flags that affect `ng-manager`, you must restart the component(s) after the Helm upgrade is complete and the Harness Manager has restarted and is up and running. You can restart your pods or run the following rollout restart command on the Harness Manager deployment for your installation.
+   This example is the snapshot to update the Helm chart. You can also update the values.yaml file for your Kubernetes delegate.
    :::
-
-   ```
-   kubectl rollout restart deployment ng-manager
-   ```
+   
