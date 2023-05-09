@@ -5,7 +5,7 @@ sidebar_position: 1
 This section describes what a GameDay is, how a typical GameDay is run, and its outcomes.
 
 :::note
-This feature is currently behind a feature flag. Contact Harness Support to enable the feature.
+This feature is currently behind a feature flag named `CHAOS_GAMEDAY_ENABLED`. Contact Harness Support to enable the feature.
 :::
 
 ## Introduction
