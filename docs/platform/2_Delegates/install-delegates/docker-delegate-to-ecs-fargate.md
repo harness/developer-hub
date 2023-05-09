@@ -268,3 +268,73 @@ Use the following steps to create a task definition. For information about task 
     ```
     aws ecs create-service --cli-input-json file://service.json
     ```
+
+## Deploy a delegate using Terraform
+
+The above logic for deploying a delegate to ECS has been wrapped up in a Terraform module that can be referenced directly or used as a starting point for your own automation. You can use an existing ECS cluster (ec2 or fargate based) or let the module create one for you.
+
+You can find the module source [here](https://github.com/harness-community/terraform-aws-harness-delegate-ecs-fargate).
+
+```terraform
+module "delegate" {
+  source                    = "git::https://github.com/harness-community/terraform-aws-harness-delegate-ecs-fargate.git"
+  name                      = "ecs"
+  harness_account_id        = "wlgELJ0TTre5aZhzpt8gVA"
+  delegate_token_secret_arn = "arn:aws:secretsmanager:us-west-2:012345678901:secret:harness/delegate-zBsttc"
+  delegate_policy_arns      = [
+    aws_iam_policy.delegate_aws_access.arn
+  ]
+  security_groups = [
+    module.vpc.default_security_group_id
+  ]
+  subnets = module.vpc.private_subnets
+}
+
+module "vpc" {
+  source  = "terraform-aws-modules/vpc/aws"
+  version = "~> 3.0"
+
+  name = "this"
+  cidr = "10.0.0.0/16"
+
+  azs             = ["us-west-2a", "us-west-2b"]
+  private_subnets = ["10.0.1.0/24", "10.0.2.0/24"]
+  public_subnets  = ["10.0.4.0/24", "10.0.5.0/24"]
+
+  enable_nat_gateway   = true
+  single_nat_gateway   = true
+  enable_dns_hostnames = true
+
+  public_subnet_tags = {
+    "type"                         = "public"
+  }
+
+  private_subnet_tags = {
+    "type"                            = "private"
+  }
+}
+
+resource "aws_iam_policy" "delegate_aws_access" {
+  name        = "delegate_aws_access"
+  description = "Policy for harness delegate aws access"
+
+  policy = <<EOF
+{
+   "Version": "2012-10-17",
+   "Statement": [
+       {
+           "Sid": "GetArtifacts",
+           "Effect": "Allow",
+           "Action": [
+               "s3:*"
+           ],
+           "Resource": [
+              "${aws_s3_bucket.this.arn}",
+              "${aws_s3_bucket.this.arn}/*"
+           ]
+       }
+   ]
+}
+EOF
+}
+```
