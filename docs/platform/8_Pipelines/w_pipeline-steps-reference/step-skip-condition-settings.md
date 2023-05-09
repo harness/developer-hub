@@ -102,5 +102,13 @@ Since **Conditional Execution** settings are used to determine if the stage shou
 Deployment status values are a Java enum. The list of values can be seen in the Deployments **Status** filter:
 
 ![](./static/step-skip-condition-settings-10.png)
+
 You can use any status value in a JEXL condition. For example, `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "FAILED"`.
 
+### Conditional execution settings can be defined as runtime input
+
+Conditional execution settings can be defined as runtime input in pipelines and templates at stage, step and step group levels. Following video explains how this can be done.
+
+<!-- Video:
+https://harness-24.wistia.com/medias/5w053wtla8-->
+<docvideo src="https://harness-24.wistia.com/medias/5w053wtla8" />

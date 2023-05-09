@@ -98,6 +98,14 @@ Currently, only **All Errors** is supported.* **Action:** select one of the avai
 * **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
 * **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
 
+### Failure Strategies can be defined as runtime input
+
+Failure strategies can be defined as runtime input in pipelines and templates at stage, step and step group levels. Following video explains how this can be done.
+
+<!-- Video:
+https://harness-24.wistia.com/medias/bj2kzkgw8a-->
+<docvideo src="https://harness-24.wistia.com/medias/bj2kzkgw8a" />
+
 ### See also
 
 * [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md)

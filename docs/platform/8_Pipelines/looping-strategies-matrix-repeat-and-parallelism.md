@@ -91,6 +91,10 @@ repeat:
 ```
 For more information, go to [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances/).
 
+### Looping Strategies can be defined as runtime input
+
+Looping strategies can be defined as runtime input in pipelines and templates at stage, step and step group levels.
+
 ### See also
 
 * [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
