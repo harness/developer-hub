@@ -184,9 +184,27 @@ When you create or edit the Trigger, Harness registers the webhook in your Git p
 
 * **Scopes:** select all the **repo**, **user**, and **admin:repo\_hook** options
 
-![](./static/triggering-pipelines-16.png)
+<docimage path={require('./static/triggering-pipelines-16.png')} width="60%" height="60%" title="Click to view full size image" />
 
 You should also be repo admin.
+
+### Verify webhook registration
+
+Webhook registration is immediate but the Harness Triggers page does not refresh immediately. Simply refresh the page to see if the webhook registers successfully.
+
+If you see **Webhook registration failed**, here are the common causes:
+
+- Github repository does not exist: 
+  - Ensure you selected the correct repo.
+- The token used in the Harness connector does not have read write permissions:
+  - Ensure that it has the **repo**, **user**, and **admin:repo\_hook** options enabled.
+  - If your Git provider organization using SSO, ensure that the token is authorized for access to the organization containing the repo.
+- The **Enable API access** option in the connector is not enabled.
+  - Ensure this option is enabled and the Personal Access Token used in the settings has the **repo**, **user**, and **admin:repo\_hook** options enabled. 
+
+Once you have fixed the issue, simply edit the Harness trigger, select **Continue** to navigate throught its settings, and then select **Update Trigger**.
+
+Once you are back on the Triggers page, refresh the page to verify that the webhook was registered.
 
 ## Test trigger
 
@@ -209,3 +227,20 @@ If you open the Trigger in the pipeline you will see a status in **Last Activati
 ![](./static/triggering-pipelines-19.png)
 
 Activation means the Trigger was able to request pipeline execution. It does not mean that the Webhook didn't work.
+
+## Trigger type expression
+
+You can use the Harness expression `<+pipeline.triggerType>` to see how the pipeline was executed.
+
+You can echo the expression like this:
+
+```
+echo "pipeline.triggerType: " <+pipeline.triggerType>
+```
+
+For example, if the pipeline is executed manually, the `<+pipeline.triggerType>` expression will resolve to `MANUAL`. If the pipeline is executed by a Webhook trigger, the expression will resolve to `WEBHOOK`.
+
+```
+pipeline.triggerType:  WEBHOOK
+```
+
