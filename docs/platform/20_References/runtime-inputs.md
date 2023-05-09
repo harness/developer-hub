@@ -75,15 +75,15 @@ You can use Runtime Inputs for the Service in a CD stage's Service settings.
 ### Using allowed and default values in runtime inputs
 
 You can add allowed values and a default value for a runtime input. Default value should be present in the list of allowed values. 
-For runtime inputs defined for pipeline, stage, and shell script variables, multi selection is allowed. 
-Multi Selection is currently behind the feature flag `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`
+For runtime inputs defined for pipelines, stages, and shell script variables, multiple selections are allowed. 
+The multiple selection functionality is currently behind the feature flag, `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`
 
 ![](./static/runtime-inputs-11.png)
 
 ### Using commas in allowed and default values in runtime inputs
 
-Use of comma is supported in allowed values and default value. The string with comma needs to be wrapped within `\'   \'` 
-For Eg: `<+input>.default(\'london,uk\').allowedValues(\'bengaluru,india\',\'newyork,usa\',\'london,uk\')`
+Commas are supported in both allowed and default values. A string with comma must be wrapped within `\'   \'`. 
+For example, `<+input>.default(\'london,uk\').allowedValues(\'bengaluru,india\',\'newyork,usa\',\'london,uk\')`.
 
 ### Using Runtime Inputs During Execution
 
