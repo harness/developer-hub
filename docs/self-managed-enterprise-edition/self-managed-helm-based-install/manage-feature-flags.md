@@ -95,6 +95,7 @@ To remove Feature Flags, do the following:
 
    :::info note
    This file is typically located in the following default path in the release directory.
+   :::
 
    ```
    harness/charts/platform/charts/harness-manager/values.yaml
@@ -127,4 +128,3 @@ To remove Feature Flags, do the following:
    :::info note
    This example is the snapshot to update the Helm chart. You can also update the values.yaml file for your Kubernetes delegate.
    :::
-   
