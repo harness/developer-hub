@@ -109,9 +109,7 @@ This feature is available in ServiceNow Create and Update steps.
 
 Harness recommends that you only use a table extending task, or extend tables that indirectly extend the task. 
 
-You can specify any custom table in Harness by typing the table name in the **Ticket Type** setting. 
-
-Fetched tables are not supported.
+You can specify any custom table in Harness by typing the table name in the **Ticket Type** setting.
 
 <details>
 <summary>What is a table extending task?</summary>
@@ -121,9 +119,10 @@ In ServiceNow, a table extending task is a task that involves creating a new tab
 </details>
 
 
-You should have sufficient permissions on the custom table, such as basic create, read, and update permissions. Also, you should have any additional permissions requireed to update specific fields within that custom table, if required.
+Harness supports two use cases, and you should have sufficient permissions for each use case:
+- **Standard use case**: you should have sufficient permissions on the custom table, such as basic create, read, and update permissions. Also, you should have any additional permissions requireed to update specific fields within that custom table, if required.
+- **Template use case**: this use case is covered below.
 
-When using the normal flow for custom tables, you should have sufficient permissions on the custom table, such as basic CRUD permissions, permissions to update desired fields, etc.
 
 ### Using custom table support with the template flow
 
