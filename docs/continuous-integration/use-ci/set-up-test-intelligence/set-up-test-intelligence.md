@@ -42,7 +42,7 @@ import TabItem from '@theme/TabItem';
 Add the **Run Tests** step to the **Build** stage. To run tests with Test Intelligence, configure the step as follows:
 
 * Provide a **Name**.
-* Define one or more **Test Report Paths**. JUnit XML format is required. For details about formatting test reports, go to [Format unit test reports](./test-report-ref.md). <!-- update per final topic title -->
+* Define one or more **Test Report Paths**. JUnit XML format is required. For details about formatting test reports, go to [Format test reports](./test-report-ref.md).
 * Select **Run Only Selected Tests**.
 * Specify the **Language**, **Build Tool**, **Build Arguments**, and other language- or tool-specific settings as described in the [Run Tests step settings reference](./configure-run-tests-step-settings.md).
 * Specify the **Container Registry** and **Image**, if required by the build infrastructure.
@@ -59,7 +59,7 @@ Add a `RunTests` step to your pipeline's `CI` stage. To run tests with Test Inte
 
 * `type: RunTests`
 * `name:` Enter a name for the step.
-* `reports:` Specify one or more report paths. JUnit XML format is required. For details about formatting test reports, go to [Format unit test reports](./test-report-ref.md). <!-- update per final topic title -->
+* `reports:` Specify one or more report paths. JUnit XML format is required. For details about formatting test reports, go to [Format test reports](./test-report-ref.md).
 * `runOnlySelectedTests: true`
 * `language`, `buildTool`, `args`, and other language- or tool-specific settings as described in the [Run Tests step settings reference](./configure-run-tests-step-settings.md).
 * `connectorRef` and `image`: Specify if required by the build infrastructure.
