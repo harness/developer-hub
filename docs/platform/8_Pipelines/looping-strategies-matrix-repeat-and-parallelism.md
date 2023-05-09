@@ -14,7 +14,7 @@ Looping strategies enable you to run a Stage or Step multiple times with differe
 * You want to build artifacts for multiple JDK versions in the same Build Stage.
 * You have a Build Pipeline with 20 unit tests. To speed up execution, you want to run the tests in parallel across 4 jobs that run 5 tests each.
 
-### Looping Strategy Types
+### Looping strategy types
 
 Harness supports the following strategies.
 
@@ -91,9 +91,11 @@ repeat:
 ```
 For more information, go to [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances/).
 
-### Looping Strategies can be defined as runtime input
+### Looping strategy as a runtime input
 
-Looping strategies can be defined as runtime input in pipelines and templates at stage, step and step group levels.
+Looping strategies can be defined as runtime inputs in pipelines and templates at stage, step, and step group levels.
+
+Here's a video that explains how to define looping strategy as a runtime input:
 
 <!-- Video:
 https://harness-24.wistia.com/medias/79nqqvqybt-->
