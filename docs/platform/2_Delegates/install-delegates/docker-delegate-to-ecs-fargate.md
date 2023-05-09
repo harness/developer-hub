@@ -32,77 +32,77 @@ For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/inst
 
 1. Copy the following task `spec` into a file. Save the file as task-spec.json.
 
-```
-  {
-    "containerDefinitions": [
-      {
-        "portMappings": [
-          {
-            "hostPort": 8080,
-            "protocol": "tcp",
-            "containerPort": 8080
-          }
-        ],
-        "cpu": 1,
-        "environment": [
-          {
-            "name": "ACCOUNT_ID",
-            "value": "<ACCOUNT_ID>"
-          },
-          {
-            "name": "DELEGATE_TOKEN",
-            "value": "<DELEGATE_TOKEN>"
-          },
-          {
-            "name": "DELEGATE_TYPE",
-            "value": "DOCKER"
-          },
-          {
-            "name": "INIT_SCRIPT",
-            "value": ""
-          },
-          {
-            "name": "DEPLOY_MODE",
-            "value": "KUBERNETES"
-          },
-          {
-            "name": "MANAGER_HOST_AND_PORT",
-            "value": "<MANAGER_HOST_AND_PORT>"
-          },
-          {
-            "name": "DELEGATE_NAME",
-            "value": "<DELEGATE_NAME>"
-          },
+   ```
+     {
+       "containerDefinitions": [
          {
-            "name": "LOG_STREAMING_SERVICE_URL",
-            "value": "<LOG_STREAMING_SERVICE_URL>"
-          },
-         {
-            "name": "DELEGATE_TAGS",
-            "value": ""
-          },
-
-          {
-            "name": "NEXT_GEN",
-            "value": "true"
-          }
-        ],
-        "memory": 2048,
-        "image": "harness/delegate:22.12.77802",
-        "essential": true,
-        "hostname": "<DELEGATE_HOST>",
-        "name": "<DELEGATE_NAME>"
-      }
-    ],
-    "memory": "2048",
-    "requiresCompatibilities": [
-      "EC2"
-    ],
-  
-    "cpu": "1024",
-    "family": "harness-delegate-task-spec"
-  }
-```
+           "portMappings": [
+             {
+               "hostPort": 8080,
+               "protocol": "tcp",
+               "containerPort": 8080
+             }
+           ],
+           "cpu": 1,
+           "environment": [
+             {
+               "name": "ACCOUNT_ID",
+               "value": "<ACCOUNT_ID>"
+             },
+             {
+               "name": "DELEGATE_TOKEN",
+               "value": "<DELEGATE_TOKEN>"
+             },
+             {
+               "name": "DELEGATE_TYPE",
+               "value": "DOCKER"
+             },
+             {
+               "name": "INIT_SCRIPT",
+               "value": ""
+             },
+             {
+               "name": "DEPLOY_MODE",
+               "value": "KUBERNETES"
+             },
+             {
+               "name": "MANAGER_HOST_AND_PORT",
+               "value": "<MANAGER_HOST_AND_PORT>"
+             },
+             {
+               "name": "DELEGATE_NAME",
+               "value": "<DELEGATE_NAME>"
+             },
+             {
+               "name": "LOG_STREAMING_SERVICE_URL",
+               "value": "<LOG_STREAMING_SERVICE_URL>"
+             },
+            {
+               "name": "DELEGATE_TAGS",
+               "value": ""
+             },
+   
+             {
+               "name": "NEXT_GEN",
+               "value": "true"
+             }
+            ],
+           "memory": 2048,
+           "image": "harness/delegate:22.12.77802",
+           "essential": true,
+           "hostname": "<DELEGATE_HOST>",
+           "name": "<DELEGATE_NAME>"
+         }
+       ],
+         "memory": "2048",
+         "requiresCompatibilities": [
+         "EC2"
+       ],
+     
+       "cpu": "1024",
+       "family": "harness-delegate-task-spec"
+     }
+   ```
 
 2. Enter the fields of the task definition as follows:
 
