@@ -31,14 +31,9 @@ Linux disk fill:
     <td> Path to a valid directory. </td>
   </tr>
   <tr>
-    <td> fillPercentage </td>
-    <td> Percentage of available storage space to fill. </td>
-    <td> Mutually exclusive with <code>fillStorageMebibytes</code>. Defaults to 50 %. </td>
-  </tr>
-  <tr>
-    <td> fillStorageMebibytes </td>
-    <td> Amount of storage to be filled (in mebibytes). </td>
-    <td> Mutually exclusive with <code>fillPercentage</code>. </td>
+    <td> fillStorage </td>
+    <td> Amount of storage to be filled. </td>
+    <td> Can be specified in bytes(b/B), kilobytes(k/K), megabytes(m/M) or gigabytes(g/G) to be filled or percentage(%) of available storage to be filled. The unit can be suffixed with the corresponding value or else, if no unit is provided, the value is assumed to be in bytes. For example: <code>30m</code>, <code>1G</code>, <code>35%</code>, etc. Default: 50%. </td>
   </tr>
   <tr>
     <td> dataBlockSize </td>

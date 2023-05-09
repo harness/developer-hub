@@ -25,15 +25,10 @@ Linux disk IO stress applies stress on the disk of the target Linux machines ove
     <th> Description </th>
     <th> Notes </th>
   </tr>
-  <tr>
-    <td> fileSystemUtilisationBytes </td>
-    <td> File size consumed for the disk I/O operations (in bytes). </td>
-    <td> Mutually exclusive with <code>fileSystemUtilisationPercentage</code> </td>
-  </tr>
    <tr>
-    <td> fileSystemUtilisationPercentage </td>
-    <td> File size consumed during the disk I/O operations (in percentage of the total available disk size). </td>
-    <td> Mutually exclusive with <code>fileSystemUtilisationBytes</code>. Default: 10% </td>
+    <td> fileSystemUtilisation </td>
+    <td> File size consumed during the disk I/O operations. </td>
+    <td> Can be specified in bytes(b/B), kilobytes(k/K), megabytes(m/M) or gigabytes(g/G) to be filled or percentage(%) of available disk space to be filled. The unit can be suffixed with the corresponding value or else, if no unit is provided, the value is assumed to be in bytes. For example: <code>30m</code>, <code>1G</code>, <code>35%</code>, etc. Default: 10%. </td>
   </tr>
   <tr>
     <td> workers </td>
