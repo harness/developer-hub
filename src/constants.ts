@@ -15,6 +15,7 @@ export enum MODULES {
     iacm = 'iacm',
     gitness = 'gitness',
     platform= 'platform',
+    cv= 'cv',
 }
 
 export const MODULE_DISPLAY_NAME = {
@@ -32,6 +33,7 @@ export const MODULE_DISPLAY_NAME = {
     [MODULES.iacm]: 'Infrastructure as Code Management',
     [MODULES.gitness]: 'Gitness',
     [MODULES.platform]: 'Harness Platform',
+    [MODULES.cv]: 'Continuous Verification',
 }
 
 export const MODULE_ICON = {
@@ -49,4 +51,5 @@ export const MODULE_ICON = {
     [MODULES.iacm]: 'img/icon_iacm.svg',
     [MODULES.gitness]: 'img/icon_gitness.svg',
     [MODULES.platform]: 'img/icon_harness.svg',
+    [MODULES.cv]: 'img/icon_cv.svg',
 }
