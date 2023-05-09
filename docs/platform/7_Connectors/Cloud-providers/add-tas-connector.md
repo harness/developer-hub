@@ -29,7 +29,7 @@ import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
 
 <details>
-<summary>Install a delegate by using the terminal</summary>
+<summary>Use the terminal</summary>
 <DelegateInstall />
 </details>
 
