@@ -2,57 +2,48 @@
 id: ec2-http-latency
 title: EC2 HTTP latency
 ---
+## Introduction
 
 EC2 HTTP latency disrupts the state of infrastructure resources. This fault induces HTTP chaos on an AWS EC2 instance using the Amazon SSM Run command, carried out using SSM Docs that is in-built in the fault.
 - It injects HTTP response latency to the service whose port is specified using `TARGET_SERVICE_PORT` environment variable by starting the proxy server and redirecting the traffic through the proxy server.
-- It introduces HTTP latency chaos on the EC2 instance using an SSM doc for a certain chaos duration.
+- It introduces HTTP latency chaos on the EC2 instance using an SSM doc for a certain duration.
 
 
 ![EC2 HTTP Latency](./static/images/ec2-http-latency.png)
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-This fault results in delays on the target EC2 instances. This results in delayed network connectivity from the VM to the target hosts.
-It simulates latency to specific API services for (or from) a given microservice. It also simulates a slow response on specific third party (or dependent) components (or services). 
-</div>
-</details>
+## Use cases
+EC2 HTTP latency:
+- Delays the network connectivity from the VM to the target hosts.
+- Simulates latency to specific API services for (or from) a given microservice.
+- Simulates a slow response on specific third party (or dependent) components (or services). 
 
 
-## Prerequisites
-- Kubernetes >= 1.17
+:::info note
+- Kubernetes version 1.17 or later is required to execute this fault.
 - SSM agent is installed and running on the target EC2 instance.
-- Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
+- You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
+- The EC2 instance should be in a healthy state.
+- The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  ```
+- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+- Go to the [common tunables](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
+:::
 
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
 
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-### Note
-
-You can pass the VM credentials as secrets or as a `ChaosEngine` environment variable.
-
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -100,21 +91,12 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
-
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-## Default validations
-The EC2 instance should be in a healthy state.
-
 ## Fault tunables
 
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+   <h3>Mandatory tunables</h3>
     <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
@@ -136,75 +118,68 @@ The EC2 instance should be in a healthy state.
         <tr>
             <td> TARGET_SERVICE_PORT </td>
             <td> Port of the service to target </td>
-            <td> Defaults to port 80. </td>
+            <td> Default: port 80. </td>
         </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional tunables</h3>
     <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Defaults to 30s. </td>
+            <td> Default: 30 s. </td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Defaults to 30s. </td>
+            <td> Default: 30 s. </td>
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
             <td> Provide the path for AWS secret credentials.</td>
-            <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
+            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
           </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> It defines a sequence of chaos execution for multiple instances. </td>
-            <td> Defaults to parallel. Supports serial sequence as well. </td>
+            <td> Default: parallel. Supports serial sequence. </td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injection of chaos (in seconds). </td>
-            <td> For example, 30s. </td>
+            <td> For example, 30 s. </td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCY </td>
             <td> Specify the dependencies to be installed to run the network chaos. If the dependency exists, it can be turned off. </td>
-            <td> If the dependency already exists, you can turn it off. Defaults to True.</td>
+            <td> If the dependency already exists, you can turn it off. Default: True.</td>
         </tr>
         <tr>
             <td> PROXY_PORT  </td>
             <td> Port where the proxy listens to requests.</td>
-            <td> Defaults to 20000. </td>
+            <td> Default: 20000. </td>
         </tr>
         <tr>
             <td> TOXICITY </td>
             <td> Percentage of HTTP requests affected. </td>
-            <td> Defaults to 100 </td>
+            <td> Default: 100 </td>
         </tr>
         <tr>
           <td> NETWORK_INTERFACE  </td>
           <td> Network interface used for the proxy. </td>
-          <td> Defaults to `eth0`. </td>
+          <td> Default: `eth0`. </td>
         </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Fault tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Target service port
 
-It is the targeted service's port being targeted. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
+Port of the target service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
 
-You can tune it using the following example:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/http-latency/target-service-port.yaml yaml)
 ```yaml
@@ -228,9 +203,9 @@ spec:
 
 ### Proxy port
 
-It is the port where the proxy server listens to the requests. You can tune it using the `PROXY_PORT` environment variable.
+Port where the proxy server listens to the requests. Tune it by using the `PROXY_PORT` environment variable.
 
-You can use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/http-latency/proxy-port.yaml yaml)
 ```yaml
@@ -257,9 +232,9 @@ spec:
 
 ### Latency
 
-It is the latency value that is added to the http request. You can tune it using the `LATENCY` environment variable.
+Delay added to the HTTP request. Tune it by using the `LATENCY` environment variable.
 
-You can use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/http-latency/latency.yaml yaml)
 ```yaml
@@ -286,10 +261,9 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value to be added to the http request. You can tune it using the `TOXICITY` environment variable.
-Toxicity value defines the percentage of the total number of http requests that are affected.
+Percentage of the total number of HTTP requests that are affected. Tune it by using the `TOXICITY` environment variable.
 
-You can use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/http-latency/toxicity.yaml yaml)
 ```yaml
@@ -318,9 +292,9 @@ spec:
 
 ### Network interface
 
-It defines the network interface used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
+Network interface used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
 
-You can use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/http-latency/network-interface.yaml yaml)
 ```yaml

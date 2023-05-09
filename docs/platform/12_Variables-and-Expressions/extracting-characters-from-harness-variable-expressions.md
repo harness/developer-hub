@@ -1,5 +1,5 @@
 ---
-title: Extracting Characters from Harness Variable Expressions
+title: Extracting characters from Harness variable expressions
 description: You can return the character at a specified index in a Harness variable expression string. This can be helpful with built-in variable expressions such as <+artifact.tag> , <+artifact.image> , or vari…
 # sidebar_position: 2
 helpdocs_topic_id: 91bhqk7t4q

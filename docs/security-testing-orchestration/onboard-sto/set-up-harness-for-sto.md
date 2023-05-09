@@ -1,7 +1,7 @@
 ---
 title: Set up Harness for STO
 description: This topic describes the manual process for setting up an STO pipeline.
-sidebar_position: 20
+sidebar_position: 30
 helpdocs_topic_id: rlbw5luj4h
 helpdocs_category_id: 8nywcs2sa7
 helpdocs_is_private: false

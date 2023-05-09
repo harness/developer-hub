@@ -2,55 +2,42 @@
 id: ec2-http-reset-peer
 title: EC2 HTTP reset peer
 ---
+## Introduction
 
-EC2 HTTP reset peer injects HTTP reset on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
-- It stops the outgoing HTTP requests by resetting the TCP connection for the requests.
-- It determines the application's resilience to a lossy (or flaky) HTTP connection.
+EC2 HTTP reset peer injects HTTP reset on the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable. This fault stops the outgoing HTTP requests by resetting the TCP connection for the requests.
 
 ![EC2 HTTP Reset Peer](./static/images/ec2-http-reset-peer.png)
 
-## Usage
-<details>
-<summary>View fault usage</summary>
-<div>
-It simulates premature connection loss (firewall issues or other issues) between microservices (verify connection timeout), and connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
-</div>
-</details>
+## Use cases
+EC2 HTTP reset peer:
+- Verifies connection timeout by simulating premature connection loss (firewall issues or other issues) between microservices.
+- Simulates connection resets due to resource limitations on the server side like out of memory server (or process killed or overload on the server due to a high amount of traffic). 
+- Determines the application's resilience to a lossy (or flaky) HTTP connection.
 
-
-## Prerequisites
-- Kubernetes >= 1.17
+:::info note
+- Kubernetes version 1.17 or later is required to execute this fault.
+- The EC2 instance should be in a healthy state.
 - SSM agent is installed and running in the target EC2 instance.
-- Kubernetes secret with AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
+- You can pass the VM credentials as secrets or as an chaosengine environment variable.
+- The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is the sample secret file:
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  ```
+- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+:::
 
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-### Note
-
-You can pass the VM credentials as secrets or as an chaosengine environment variable.
-
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -98,22 +85,13 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
-
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-## Default validations
-
-The EC2 instance should be in a healthy state.
 
 ## Fault tunables
 
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+  <h3>Mandatory tunables</h3>
     <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
@@ -129,41 +107,41 @@ The EC2 instance should be in a healthy state.
         </tr>
         <tr>
             <td> RESET_TIMEOUT </td>
-            <td> Reset Timeout specifies after how much duration to reset the connection.</td>
-            <td> Defaults to 0. </td>
+            <td> Duration after which the connection is reset.</td>
+            <td> Default: 0. </td>
         </tr>
         <tr>
             <td> TARGET_SERVICE_PORT </td>
             <td> Port of the service to target. </td>
-            <td> Defaults to port 80. </td>
+            <td> Default: port 80. </td>
         </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional tunable</h3>
     <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-            <td> Defaults to 30s. </td>
+            <td> Default: 30 s. </td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Time interval between two successive instance terminations (in seconds). </td>
-            <td> Defaults to 30s. </td>
+            <td> Default: 30 s. </td>
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
-            <td> Provide the path for aws secret credentials.</td>
-            <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
+            <td> Provide the path for AWS secret credentials.</td>
+            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
         </tr>
         <tr>
             <td> SEQUENCE </td>
             <td> It defines the sequence of chaos execution for multiple instances. </td>
-            <td> Defaults to parallel. Supports serial sequence as well. </td>
+            <td> Default: parallel. Supports serial sequence. </td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
@@ -178,32 +156,25 @@ The EC2 instance should be in a healthy state.
         <tr>
             <td> PROXY_PORT </td>
             <td> Port where the proxy will be listening to requests.</td>
-            <td> Defaults to 20000. </td>
+            <td> Default: 20000. </td>
         </tr>
         <tr>
             <td> TOXICITY </td>
             <td> Percentage of HTTP requests to be affected. </td>
-            <td> Defaults to 100. </td>
+            <td> Default: 100. </td>
         </tr>
         <tr>
           <td> NETWORK_INTERFACE </td>
           <td> Network interface to be used for the proxy.</td>
-          <td> Defaults to `eth0`. </td>
+          <td> Default: `eth0`. </td>
         </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Fault tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) to tune the common tunables for all the faults.
 
 ### Target service port
 
-It is the target service's port being targeted. You can tune it using the `TARGET_SERVICE_PORT` environment variable.
+Port of the target service. Tune it by using the `TARGET_SERVICE_PORT` environment variable.
 
-Use the below example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/http-reset-peer/target-service-port.yaml yaml)
 ```yaml
@@ -227,9 +198,9 @@ spec:
 
 ### Proxy port
 
-It is the port where the proxy server listens for requests. You can tune it using the `PROXY_PORT` environment variable.
+Port where the proxy server listens for requests. Tune it by using the `PROXY_PORT` environment variable.
 
-Use the below example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/http-reset-peer/proxy-port.yaml yaml)
 ```yaml
@@ -256,9 +227,9 @@ spec:
 
 ### Reset timeout
 
-It defines the reset timeout value that is added to the http request. You can tune it using the `RESET_TIMEOUT` environment variable.
+Duration after which the connection is reset, that is, the value added to the HTTP request. Tune it by using the `RESET_TIMEOUT` environment variable.
 
-Use the below example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/http-reset-peer/reset-timeout.yaml yaml)
 ```yaml
@@ -285,10 +256,9 @@ spec:
 
 ### Toxicity
 
-It defines the toxicity value to be added to the http request. You can tune it using the `TOXICITY` environment variable.
-Toxicity value defines the percentage of the total number of http requests that are affected.
+Percentage of the total number of HTTP requests that are affected. Tune it by using the `TOXICITY` environment variable.
 
-Use the below example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/http-reset-peer/toxicity.yaml yaml)
 ```yaml
@@ -317,9 +287,9 @@ spec:
 
 ### Network interface
 
-It defines the network interface used for the proxy. You can tune it using the `NETWORK_INTERFACE` environment variable.
+Network interface used for the proxy. Tune it by using the `NETWORK_INTERFACE` environment variable.
 
-Use the below example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/http-reset-peer/network-interface.yaml yaml)
 ```yaml

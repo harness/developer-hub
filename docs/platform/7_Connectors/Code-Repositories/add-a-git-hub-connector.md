@@ -1,5 +1,5 @@
 ---
-title: Add a GitHub Connector
+title: Add a GitHub connector
 description: This topic describes how to add a GitHub Code Repo Connector.
 # sidebar_position: 2
 helpdocs_topic_id: jd77qvieuw
@@ -20,7 +20,7 @@ This topic assumes you have a Harness Project set up. If not, see [Create Organ
 
 You can add a Connector from any module in your Project in Project setup, or in your Organization, or Account Resources.
 
-This topic shows you how to add a ServiceNow Connector to your Project.
+This topic shows you how to add a GitHub Connector to your Project.
 
 In **Project Setup**, click **Connectors**.
 

@@ -76,7 +76,7 @@ Harness supported Health Sources:
 * Datadog
 * Dynatrace
 
-Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](/docs/continuous-delivery/verify/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
+Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
 
 ### Change Source
 
@@ -85,14 +85,6 @@ A Change Source monitors change events related to deployments, infrastructure ch
 ### Service Health
 
 Service Health is basically the Health Score aggregated from multiple Health Sources. This helps you analyze the impact of an issue on your organization's business services and applications.
-
-### Continuous Verification
-
-The more often you deploy software, the more you need to validate the health of the newly deployed service instances. You need the ability to rapidly detect regressions or anomalies, and to rapidly roll back failed deployments. Harness' ML-driven Deployment Verification simplifies verification in the following ways:
-
-* Aggregates data from multiple Health Sources into one dashboard
-* Use machine learning to identify normal behavior for your applications
-* Allows Harness to identify and flag anomalies in future deployments, and to perform automatic rollbacks
 
 
 ## Next steps

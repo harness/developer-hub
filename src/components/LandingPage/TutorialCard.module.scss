@@ -50,6 +50,20 @@
         font-family: 'Inter';
         color: #22222A;
     }
+    ul.subCategories {
+        padding-left: 2em;
+        margin: 0;
+        margin-top: -0.5em;
+        li {
+            list-style: square;
+            font-size: 12px;
+            line-height: 150%;
+            img {
+                width: 16px;
+                height: 16px;
+            }
+        }
+    }
     .tags {
         display: flex;
         align-items: center;
@@ -59,20 +73,20 @@
             padding-left: 0;
             margin: 0;
             li {
-            width: 24px;
-            height: 24px;
-            overflow: hidden;
-            background-color: #F3F3FA;
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            align-items: center;
-            border-radius: 4px;
-            margin: 0 4px 0 0;
-            img {
-                width: 16px;
-                height: 16px;
-            }
+                width: 24px;
+                height: 24px;
+                overflow: hidden;
+                background-color: #F3F3FA;
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                align-items: center;
+                border-radius: 4px;
+                margin: 0 4px 0 0;
+                img {
+                    width: 16px;
+                    height: 16px;
+                }
             }
         }
         .difficulty {
@@ -114,6 +128,24 @@
 }
 .ce:hover{
     border-color: var(--mod-ce-200);
+}
+.cet:hover{
+    border-color: var(--mod-cet-200);
+}
+.sei:hover{
+    border-color: var(--mod-sei-200);
+}
+.ssca:hover{
+    border-color: var(--mod-ssca-200);
+}
+.idp:hover{
+    border-color: var(--mod-idp-200);
+}
+.iacm:hover{
+    border-color: var(--mod-iacm-200);
+}
+.gitness:hover{
+    border-color: var(--mod-gitness-200);
 }
 .platform:hover{
     border-color: var(--primary);

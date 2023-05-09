@@ -1,5 +1,5 @@
 ---
-title: Send Notifications Using Slack
+title: Send notifications using Slack
 description: This topic explains how to send user group notifications using slack.
 # sidebar_position: 2
 helpdocs_topic_id: h5n2oj8y5y

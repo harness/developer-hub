@@ -1,5 +1,5 @@
 ---
-title: Add an AWS KMS Secret Manager
+title: Add an AWS KMS secret manager
 description: To store and use encrypted secrets (such as access keys), you can add an AWS KMS Secrets Manager.
 sidebar_position: 4
 helpdocs_topic_id: pt52h8sb6z

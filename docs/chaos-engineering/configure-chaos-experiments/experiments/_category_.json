@@ -1,13 +1,13 @@
 {
   "position": 4,
-  "label": "Manage Chaos Experiments ",
+  "label": "Chaos experiments ",
   "collapsible": true,
   "collapsed": true,
   "link":{
       "type":"generated-index",
-      "title":"Manage Chaos Experiments"
+      "title":"Chaos experiments"
    },
   "customProps": {
-    "description": "Manage Chaos Experiments"
+    "description": "Chaos experiments"
   }
 }

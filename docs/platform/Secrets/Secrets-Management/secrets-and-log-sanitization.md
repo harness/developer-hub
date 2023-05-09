@@ -1,5 +1,5 @@
 ---
-title: Secrets and Log Sanitization
+title: Secrets and log sanitization
 description: This topic describes how Harness sanitizes logs and outputs to prevent secrets from being exposed.
 # sidebar_position: 2
 helpdocs_topic_id: j07l1tbx5t

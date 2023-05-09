@@ -1,7 +1,7 @@
 ---
 title: Supported platforms and technologies
 description: This topic lists Harness support for platforms, methodologies, and related technologies.
-# sidebar_position: 2
+sidebar_position: 70
 helpdocs_topic_id: 1e536z41av
 helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
@@ -583,7 +583,7 @@ Some Harness features might require specific Terraform versions.
 
 #### Azure AKS clusters
 
-To use an AKS cluster for deployment, the AKS cluster must have local accounts enabled (AKS property `disableLocalAccounts=false`).
+To use an AKS cluster for deployment, the AKS cluster parameter `disableLocalAccounts` can be set either `true` or `false`.
 
 #### AWS and Azure GovCloud
 
@@ -689,15 +689,15 @@ The following table lists Harness support for metrics platforms (APMs).
 
 | Metrics Provider Name                                                                                                               | Metric Pack                    | Deployment Verification      |
 | ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------- |
-| [AppDynamics](../continuous-delivery/verify/verify-deployments-with-app-dynamics.md)                              | Business Transactions          | Yes                          |
-| [AppDynamics](../continuous-delivery/verify/verify-deployments-with-app-dynamics.md)                              | JVM and Infra Metrics          | Supported via Custom Metrics |
-| [New Relic](../continuous-delivery/verify/verify-deployments-with-new-relic.md)                                   | Business Transactions          | Yes                          |
+| [AppDynamics](../continuous-delivery/verify/configure-cv/verify-deployments-with-app-dynamics.md)                              | Business Transactions          | Yes                          |
+| [AppDynamics](../continuous-delivery/verify/configure-cv/verify-deployments-with-app-dynamics.md)                              | JVM and Infra Metrics          | Supported via Custom Metrics |
+| [New Relic](../continuous-delivery/verify/configure-cv/verify-deployments-with-new-relic.md)                                   | Business Transactions          | Yes                          |
 | New Relic                                                                                                                           | Insights                       | Supported via Custom Metrics |
-| [Google Cloud Operations (GCP)](../continuous-delivery/verify/verify-deployments-with-google-cloud-operations.md) | Infrastructure Metrics         | Yes                          |
+| [Google Cloud Operations (GCP)](../continuous-delivery/verify/configure-cv/verify-deployments-with-google-cloud-operations.md) | Infrastructure Metrics         | Yes                          |
 | Google Cloud Operations (GCP)                                                                                                       | Custom metrics from explorer   | No                           |
-| [Prometheus](../continuous-delivery/verify/verify-deployment-with-prometheus.md)                                  | Custom metrics from Prometheus | Yes                          |
-| [Datadog](../continuous-delivery/verify/verify-deployments-with-datadog.md)                                       | Docker Infra Metrics           | Yes                          |
-| [Dynatrace](../continuous-delivery/verify/verify-deployments-with-dynatrace.md)                                   | Performance                    | Yes                          |
+| [Prometheus](../continuous-delivery/verify/configure-cv/verify-deployments-with-prometheus.md)                                  | Custom metrics from Prometheus | Yes                          |
+| [Datadog](../continuous-delivery/verify/configure-cv/verify-deployments-with-datadog.md)                                       | Docker Infra Metrics           | Yes                          |
+| [Dynatrace](../continuous-delivery/verify/configure-cv/verify-deployments-with-dynatrace.md)                                   | Performance                    | Yes                          |
 
 ### Log providers
 
@@ -706,14 +706,14 @@ Most logging platforms are also supported.
 |                                                                                                                                     |                             |
 | ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
 | **Log Provider Name**                                                                                                               | **Deployment Verification** |
-| [Splunk](../continuous-delivery/verify/verify-deployments-with-splunk.md)                                         | Yes                         |
-| [Google Cloud Operations (GCP)](../continuous-delivery/verify/verify-deployments-with-google-cloud-operations.md) | Yes                         |
+| [Splunk](../continuous-delivery/verify/configure-cv/verify-deployments-with-splunk.md)                                         | Yes                         |
+| [Google Cloud Operations (GCP)](../continuous-delivery/verify/configure-cv/verify-deployments-with-google-cloud-operations.md) | Yes                         |
 
 ### Custom health sources
 
 Harness offers support for all major APM vendors and log providers, but there are cases where a customized APM or log provider is needed. The Custom Health Source lets you customize APMs and log providers of your choice.
 
-See [Verify Deployments with Custom Health Source](../continuous-delivery/verify/verify-deployments-with-custom-health-metrics.md).
+See [Verify Deployments with Custom Health Source](../continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics.md).
 
 ## Cloud Cost Management
 
@@ -791,7 +791,7 @@ Harness supports the following Health Sources and Change Sources.
 
 A Health Source monitors changes in health trends of the Service using metrics and logs collected from an APM and log provider respectively.
 
-Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../continuous-delivery/verify/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
+Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](../continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
 
 #### Metrics providers and logging tools
 

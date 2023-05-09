@@ -15,7 +15,7 @@ export default function CCM() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_ccm.svg`} />
-            <h1>Cloud Cost Management</h1>
+            <h1>Cloud Cost Management Documentation</h1>
           </div>
           <div className={styles.btnContainer}>
             <Link href="/tutorials/cloud-costs">
@@ -37,10 +37,8 @@ export default function CCM() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
           <p>
-              Harness CCM is an intelligent cloud cost management solution for
-              FinOps, Infrastructure, and Engineering teams that provides complete 
-              cost transparency across teams with robust business intelligence (BI) and 
-              helps reduce wasted cloud costs by up to 75% with intelligent cloud AutoStopping.
+          Harness CCM is a cutting-edge cloud cost management solution that empowers your FinOps, infrastructure, and engineering teams with intelligent tools to optimize your cloud spend. 
+          With its advanced business intelligence (BI) capabilities, CCM provides complete cost transparency across teams in your organization.
           </p>
           </div>
         </div>

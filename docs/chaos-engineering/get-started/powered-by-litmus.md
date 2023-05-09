@@ -11,32 +11,33 @@ The chaos engineering module in the Harness platform is powered by the open sour
 ## Common capabilities of HCE and LitmusChaos
 Following are the common features between Litmus and Harness Chaos Engineering:
 
-1. Scalable Platform
-2. Declarative chaos fault archtecture
-3. Kubernetes Chaos Faults
-4. Chaos Faults as CRDs
-5. Chaos Metrics
-6. Chaos Hubs
+1. Scalable platform
+2. Declarative chaos fault architecture
+3. Kubernetes chaos faults
+4. Chaos faults as CRDs
+5. Chaos metrics
+6. Chaos hubs
 7. Chaos infrastructure architecture
-8. Chaos Experiments structure
-9. Scheduling of chaos experiments
-10. Resilience Probes
+8. Chaos experiments structure
+9. Scheduling chaos experiments
+10. Resilience probes
 
 ## Additional capabilities
 
 Harness chaos engineering module adds the following additional capabilities:
 
-1. Kubelet Density Chaos Fault
-2. VMware Chaos Faults
-3. AWS Chaos Faults
-4. GCP Chaos Faults
-5. AZure Chaos Faults
-6. Teaming around Chaos Hubs
-7. Additional Resilience Probes
+1. [Kubelet density chaos fault](../technical-reference/chaos-faults/kube-resilience/kubelet-density)
+2. [VMware chaos faults](../technical-reference/chaos-faults/vmware/)
+3. [AWS chaos faults](../technical-reference/chaos-faults/aws/)
+4. [GCP chaos faults](../technical-reference/chaos-faults/gcp/)
+5. [Azure chaos faults](../technical-reference/chaos-faults/azure/)
+6. [Linux chaos faults](../technical-reference/chaos-faults/linux/)
+7. Teaming around chaos hubs
+8. Additional resilience probes
 
 ## Integrations
 
 In addition to the above features, the chaos engineering module has the following integrations in the Harness platform:
 
-- Harness Continuous Delivery (CD)
+- [Harness Continuous Delivery (CD)](/tutorials/chaos-experiments/integration-with-harness-cd)
 

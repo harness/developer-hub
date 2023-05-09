@@ -21,8 +21,6 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
 ## Important notes
 
 * Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness Delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness Cloud Provider that uses this Delegate in A cannot assume the role for the B account.
-* Harness cannot fetch Helm chart versions with Helm OCI because Helm OCI no longer supports `helm chart list`. See [OCI Feature Deprecation and Behavior Changes with Helm v3.7.0](https://helm.sh/docs/topics/registries/#oci-feature-deprecation-and-behavior-changes-with-v370).
-* Currently, you cannot list the OCI image tags in Harness. You must pass the tag as a runtime input from a previous step or as a trigger. This is a Helm limitation. For more information, go to [Helm Search Repo Chart issue](https://github.com/helm/helm/issues/11000).
 
 ## Supported platforms and technologies
 
@@ -34,6 +32,31 @@ Many Helm chart users use ChartMuseum as their Helm chart repository server.
 
 * **ChartMuseum binary v0.8.2:** the default ChartMuseum binary used by Harness is v0.8.2.
 * **ChartMuseum binary v0.12.0:** to use ChartMuseum binary v0.12.0 you must enable the feature flag `USE_LATEST_CHARTMUSEUM_VERSION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+## Helm OCI Chart Registry Support
+
+Harness supports the following Helm OCI chart registries:
+  - Amazon ECR
+  - Azure Container Registry
+  - DockerHub
+  - JFrog Artifactory
+  - Google Artifact Registry (coming soon)
+
+Helm OCI chart support includes the following deployment types:
+
+- Native Helm
+- Helm charts with Kubernetes deployments.
+
+Harness OCI chart registry support details:
+
+- You can use the Harness Helm OCI connector to authenticate Harness with any OCI compliant repository.
+- Harness can fetch the list of chart versions for a respective Helm chart. These versions can be passed at runtime as a parameter into the service.
+- You can define expressions for the **Chart Name** and **Path** settings, and, at runtime, Harness will resolve those expressions and let you pick a version.
+
+### Important notes
+
+- You cannot be trigger pipelines using the On New Manifest trigger if your service uses the OCI Helm connector. 
+
 
 ## Visual summary
 
@@ -154,6 +177,29 @@ If you haven't set up a Harness delegate, you can add one as part of the connect
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
 
 ![](./static/deploy-helm-charts-04.png)
+
+### Using subcharts
+
+You can specify a path to Helm charts within the Helm repository and Harness will fetch the Helm chart and its subordinate charts within that folder.
+
+<docimage path={require('./static/70e9b1aa646408c07a6fef1ca8b6e0dfa2eef53e5f7eea3e88ac28b5a4d3e1c4.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+When you deploy, the logs will include all subcharts, like this:
+
+```sh
+  Successfully fetched following files:
+  - Chart.yaml
+  - values.yaml
+  - charts/first-child/Chart.yaml
+  - charts/first-child/values.yaml
+  - charts/first-child/templates/deployment.yaml
+  - charts/shared-lib/Chart.yaml
+  - charts/shared-lib/templates/_service.yaml
+  - charts/shared-lib/templates/_helpers.tpl
+  - charts/shared-lib/templates/_deployment.yaml
+  - templates/_helpers.tpl
+  - README.md
+```
 
 ## Reference the artifact
 

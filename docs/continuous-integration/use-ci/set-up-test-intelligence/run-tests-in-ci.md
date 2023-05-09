@@ -4,7 +4,11 @@ description: Use Run and Run Tests steps to run tests in CI pipelines.
 sidebar_position: 10
 ---
 
-In a CI pipeline, you can run a variety of tests, such as integration tests, functional tests, and unit tests. To do this, you can use a [Run step](../run-ci-scripts/run-a-script-in-a-ci-stage.md) or a [Run Tests step](../../ci-technical-reference/configure-run-tests-step-settings.md). The major difference between these two options is that you must use the **Run Tests** step if you want to [enable Test Intelligence](./set-up-test-intelligence.md).
+In a CI pipeline, you can run a variety of tests, such as integration tests, functional tests, and unit tests.
+
+## Run tests in a CI pipeline
+
+To run tests in CI pipelines, you can use [Run steps](../run-ci-scripts/run-a-script-in-a-ci-stage.md) or a [Run Tests steps](./configure-run-tests-step-settings.md). The major difference between these two options is that you must use the **Run Tests** step if you want to [enable Test Intelligence](./set-up-test-intelligence.md).
 
 ## Improve test times
 

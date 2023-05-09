@@ -1,7 +1,7 @@
 ---
 title: Helm installation requirements and included components
 description: Requirements for using Helm installation for Harness Self-Managed Enterprise Edition.
-# sidebar_position: 10
+# sidebar_position: 1
 helpdocs_topic_id: nsx1d4z86l
 helpdocs_category_id: 66qbyn7ugu
 helpdocs_is_private: false
@@ -17,7 +17,7 @@ Harness recommends Helm package manager for the installation and deployment of S
 
 The Harness Helm chart packages the core modules and components that are required to operate Harness at scale.
 
-For instructions on installing Self-Managed Enterprise Edition using Helm, see [Install using Helm](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga).
+For instructions on installing Self-Managed Enterprise Edition using Helm, go to [Install using Helm](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga).
 
 ## Requirements
 

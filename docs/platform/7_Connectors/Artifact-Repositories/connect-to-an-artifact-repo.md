@@ -1,5 +1,5 @@
 ---
-title: Connect to an Artifact Repo
+title: Connect to an Artifact repository
 description: Doc explaining steps to create Artifactory Repository connector.
 sidebar_position: 3
 helpdocs_topic_id: xxvnk67c5x

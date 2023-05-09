@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-04-10T10:00
+date: 2023-05-04T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -15,23 +15,19 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - April 10, 2023, version 79015
+## Latest - May 04, 2023, version 79214
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-### What's new
-
-Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
+- An icon appears on the SLO performance trend chart timeline to indicate when the error budget was reset and the amount of budget that was added. (SRM-14550)
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-
-### Early access
 
 This release does not include any early access features.
 
@@ -40,15 +36,9 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-### Fixed issues
-
-- When switched to a different project while a template was open, the health sources from the previous template would remain visible in the template, even though they were not part of the new project. (SRM-12236)  
+- The **Error Budget Burn Rate is above** SLO notification setting was not triggering notifications, even when the condition was met. (SRM-14613)  
   
-  This issue has been resolved. Now, when you switch to a different project while a template is open, you will be redirected to the templates listing page.
-
-- The SLO health summary cards displayed in a monitored service's health dashboard show summarized data for SLOs associated with all the monitored services in the project, even if the SLOs are not connected to the selected monitored service. (SRM-14462)  
-
-  This issue has been resolved. Now, the SLO health summary cards displayed in a monitored service's health dashboard will show summarized data only for the SLOs associated with the selected monitored service.
+  This issue has been resolved and notifications are being triggered when the **Error Budget Burn Rate is above** condition is met.
 
 ```mdx-code-block
   </TabItem>
@@ -60,6 +50,49 @@ This release does not include any early access features.
 <details>
 <summary>2023 releases</summary>
 
+#### April 22, 2023, version 79111
+
+##### What's new
+
+- Added new advanced fields for consecutive error budges in SLO. These fields are optional. (SRM-14507)
+
+- Removed the mandatory check for the presence of Tier in the AppDynamics complete metric path. (SRM-14463)
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- The title in the expressions modal of health sources has been updated from Shell (Bash) to Query. (SRM-14478)
+
+- Monitored service cannot be deleted if it is created with an invalid connector. (SRM-14403)
+
+  To fix this issue, the UI connector component is now enabled when the provided connector is not found. 
+
+- For CloudWatch CV connector, IRSA was not supported for connectivity. (SRM-13907)
+
+  Support for IRSA connectivity was added.
+
+#### April 10, 2023, version 79015
+
+##### What's new
+
+Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- When switched to a different project while a template was open, the health sources from the previous template would remain visible in the template, even though they were not part of the new project. (SRM-12236)  
+  
+  This issue has been resolved. Now, when you switch to a different project while a template is open, you will be redirected to the templates listing page.
+
+- The SLO health summary cards displayed in a monitored service's health dashboard show summarized data for SLOs associated with all the monitored services in the project, even if the SLOs are not connected to the selected monitored service. (SRM-14462)  
+
+  This issue has been resolved. Now, the SLO health summary cards displayed in a monitored service's health dashboard will show summarized data only for the SLOs associated with the selected monitored service.
 
 #### March 31, 2023, version 78914
 
@@ -161,7 +194,7 @@ This release does not include any early access features.
   
   This issue is fixed and the long Prometheus metric links are now contained within the **METRIC NAME** column, preventing them from obstructing values in the adjacent column.
 
-- After saving and reopening a monitored service template, the **Save** button remained enabled even if no changes are made. (SRM-14107)  
+- After saving and reopening a monitored service template, the **Save** button remained enabled even if no changes are made. (SRM-14085)  
   
   This issue is fixed, and the **Save** button is now enabled only if changes are made to the monitored service template. Additionally, an unsaved changes alert now appears next to the **Save** button when changes are made to the template values.
 

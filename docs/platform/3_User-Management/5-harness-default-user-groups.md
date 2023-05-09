@@ -1,5 +1,5 @@
 ---
-title: Harness Default User Groups
+title: Harness default user groups
 description: Describes the default User Groups at each scope.
 # sidebar_position: 2
 helpdocs_topic_id: n3cel7d8re

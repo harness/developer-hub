@@ -51,7 +51,15 @@ const config = {
           exclude: ["**/shared/**", "**/static/**"],
           routeBasePath: "docs", //CHANGE HERE
         },
-
+        sitemap: {
+          // changefreq: 'weekly',
+          // priority: 0.5,
+          ignorePatterns: [
+            "/docs/infrastructure-as-code",
+            "/docs/infrastructure-as-code/**",
+          ],
+          // filename: 'sitemap.xml',
+        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"), // we could also use scss here
         },
@@ -83,6 +91,7 @@ const config = {
             position: "right",
             type: "dropdown",
             label: "Tutorials",
+            to: "tutorials",
             items: [
               {
                 // type: "doc",
@@ -129,6 +138,11 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Track Errors",
+                to: "tutorials/error-tracking",
+              },
+              {
+                // type: "doc",
                 label: "Administer Harness Platform",
                 to: "tutorials/platform",
               },
@@ -138,6 +152,7 @@ const config = {
             position: "right",
             type: "dropdown",
             label: "Documentation",
+            to: "docs",
             items: [
               {
                 label: "Get Started",
@@ -170,6 +185,10 @@ const config = {
               {
                 label: "Chaos Engineering",
                 to: "docs/chaos-engineering",
+              },
+              {
+                label: "Continuous Error Tracking",
+                to: "docs/continuous-error-tracking",
               },
               {
                 label: "Harness Platform",
@@ -205,6 +224,7 @@ const config = {
             label: "Certifications",
             position: "right",
             type: "dropdown",
+            to: "certifications",
             items: [
               {
                 label: "All Certifications",

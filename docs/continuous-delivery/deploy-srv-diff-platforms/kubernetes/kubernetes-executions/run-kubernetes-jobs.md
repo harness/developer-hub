@@ -200,9 +200,9 @@ To view Job output after the Apply step, you can use a simple script in a Shell 
 ```
 echo  
   
-pods=$(kubectl get pods -n <+infra.kubernetes.namespace> --selector=job-name=my-job --output=jsonpath='{.items[*].metadata.name}')  
+pods=$(kubectl get pods -n <+infra.namespace> --selector=job-name=my-job --output=jsonpath='{.items[*].metadata.name}')  
   
-kubectl logs -n <+infra.kubernetes.namespace> $pods  
+kubectl logs -n <+infra.namespace> $pods  
   
 echo
 ```

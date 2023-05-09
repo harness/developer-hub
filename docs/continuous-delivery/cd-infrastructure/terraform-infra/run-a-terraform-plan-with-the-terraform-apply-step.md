@@ -1,5 +1,5 @@
 ---
-title: Provision with the Terraform Apply Step
+title: Provision with the Terraform Apply step
 description: Apply a Terraform plan or script using the Terraform Apply step.
 sidebar_position: 5
 helpdocs_topic_id: hdclyshiho
@@ -84,6 +84,32 @@ or simply `<+execution.steps.apply.timeout>`.
 
 In **Timeout**, enter how long Harness should wait to complete the Terraform Apply step before failing the step.
 
+### Run on Remote Workspace
+
+:::note
+
+Currently, this feature is behind the feature flag `CD_TERRAFORM_CLOUD_CLI_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Enable this option to identify whether the Terraform configuration uses a Terraform remote backend.
+
+When enabled, you cannot provide the workspace input in Harness. The workspace will be outlined in your configuration for the remote backend.
+
+Also, the remote backend is supported only when the **Configuration Type** is **Inline**.
+
+```
+terraform {
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "your-organization"
+    workspaces {
+      name = "your-workspace"
+    }
+  }
+}
+```
+
 ### Configuration Type
 
 In **Configuration Type**, select **Inline** or **Inherit from Plan**.
@@ -128,9 +154,11 @@ The **Terraform Config File Store** settings appear.
 
 Click the provider where your files are hosted.
 
-![](./static/run-a-terraform-plan-with-the-terraform-apply-step-05.png)
+![](./static/provision-infra-dynamically-with-terraform-02.png)
 
-Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) or [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+Select or create a Connector for your repo. For steps, see [Connect to a Git Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo), [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**) or [AWS Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+
+### Git
 
 In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**. When you run the Pipeline, Harness will fetch the script from the repo.
 
@@ -153,6 +181,16 @@ The following sections cover common Terraform Apply step options.
 ### Artifactory
 
 See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+
+### AWS S3
+
+1. In **Region**, select the region where your bucket is stored.
+2. In **Bucket**, select the bucket where your Terraform files are stored (all buckets from the selected region that are available to the connector will be fetched).
+3. In **Folder Path**, enter the path from the root of the repo to the folder containing the script.
+
+   ![](./static/provision-infra-dynamically-with-terraform-09.png)
+
+Harness will fetch all files from specified folder.
 
 ### Source Module
 
@@ -264,9 +302,11 @@ You can connect Harness to remote variable files.
 
 Click **Add Terraform Var File**, and then click **Add Remote**.
 
-Select your Git provider (GitHub, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
+Select your Git provider (GitHub, Artifactory, S3, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
 
 Click **Continue**. The **Var File Details** settings appear.
+
+##### Git providers
 
 ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-07.png)
 
@@ -284,6 +324,20 @@ Click **Submit**. The remote file(s) are added.
 
 See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
 
+##### S3 provider
+
+In **Identifier**, enter an identifier, so you can refer to variables using expressions if needed.
+
+In **Region**, select the region where your bucket is stored.
+
+In **Bucket**, select the bucket where your Terraform var files are stored (all buckets from the selected region that are available to the connector will be fetched).
+
+In **File Paths**, add one or more file paths from the root of the bucket to the variable file.
+
+   ![](./static/provision-infra-dynamically-with-terraform-10.png)
+
+Click **Submit**. The remote file(s) are added.
+
 ## Option: Backend Configuration
 
 The **Backend Configuration** section contains the [remote state](https://www.terraform.io/docs/language/state/remote.html) values.
@@ -299,7 +353,30 @@ Currently, remote state file support is behind the feature flag `TERRAFORM_REMOT
 :::
 
 1. In Backend Configuration, select **Remote**.
-2. Click **Specify Backend Config File**, add a Connector to your repo, and select the backend config file.![](./static/run-a-terraform-plan-with-the-terraform-apply-step-08.png)
+2. Click **Specify Backend Config File**
+3. Select your provider (GitHub, Artifactory, S3, etc.) and then select or create a Connector to the repo where the files are located. Typically, this is the same repo where your Terraform script is located, so you can use the same Connector.
+   ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-16.png)
+
+#### Git providers
+
+1. In **Git Fetch Type**, select **Latest from Branch** or **Specific Commit ID**.
+2. In **Branch**, enter the name of the branch.
+3. In **File Path**, add file path from the root of the repo to the backend config file.
+4. Click **Submit**. The remote file(s) are added.
+
+   ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-08.png)
+
+##### Artifactory
+
+See [Artifactory Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference) (see **Artifactory with Terraform Scripts and Variable Definitions (.tfvars) Files**).
+
+#### AWS S3
+
+1. In **Region**, select the region where your bucket is stored.
+2. In **Bucket**, select the bucket where your backend config file is stored (all buckets from the selected region that are available to the connector will be fetched).
+3. In **File Path**, add file path from the root of the bucket to the backend config file.
+
+    ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-17.png)
 
 You can also use files in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
@@ -385,6 +462,16 @@ TF_LOG_PATH=./terraform.log
 TF_VAR_alist='[1,2,3]'
 ```
 You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
+
+## Command Line Options
+
+This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
+
+![](./static/run-a-terraform-plan-with-the-terraform-apply-step-18.png)
+
+## Skip Terraform Refresh
+
+Terraform refresh command won't be running when this setting is selected.
 
 ## Option: Advanced Settings
 

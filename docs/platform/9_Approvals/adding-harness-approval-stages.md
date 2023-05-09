@@ -1,5 +1,5 @@
 ---
-title: Using Manual Harness Approval Stages
+title: Using manual Harness approval stages
 description: Approve or reject a Pipeline at any point in its execution using Manual Approval Stages.
 sidebar_position: 10
 helpdocs_topic_id: fkvso46bok
@@ -123,6 +123,38 @@ These variables can serve as inputs to later stages of the same Pipeline, where 
 For example, in a subsequent step's **Conditional Execution** settings, you could use an expression that only runs the step if the expression evaluates to 1.
 
 `<+pipeline.stages.Shell_Script.spec.execution.steps.Harness_Approval_Step.output.approverInputs.foo> == 1`
+
+### Option: User Groups as Expressions
+
+In **User Groups**, select **Expression** as the type of value.
+
+![](./static/adding-harness-approval-stages-20.png)
+
+You can select one of the following types of expression for user groups:
+* **Individual**: Specify individual expressions for each user group that needs to be configured as an approver. Select **Add** to add more user groups. 
+
+  ![](./static/adding-harness-approval-stages-18.png)
+
+* **Combined**: Specify a combined expression for all user groups that need to be configured as Approvers. This expression must resolve to a list of strings.
+
+  Following example shows a combined expression:
+
+  `<+ <+pipeline.variables.grouplist1> + "," + <+pipeline.variables.grouplist2> >.split(",")`
+
+  The expression `<+pipeline.variables.grouplist1>` resolves to `_project_all_users,testUserGroup`
+  and the expression `<+pipeline.variables.grouplist2>` resolves to `org._organization_all_users,account._account_all_users`. 
+  The above two expressions resolve to a string of comma-separated user groups. The combined expression resolves to a list of the following user groups:
+  - _project_all_users
+  -  testUserGroup
+  -  org._organization_all_users
+  -  account._account_all_users
+
+  :::important
+  Make sure no spaces are present in the expression values. In the above example, the format must be `_project_all_users,testUserGroup` to match the        split criteria `,` .
+  :::
+
+
+   ![](./static/adding-harness-approval-stages-19.png)
 
 ### Option: Advanced Settings
 

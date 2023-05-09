@@ -64,7 +64,7 @@ Use these steps to configure the **Run Tests** step and generate an initial call
    * **Test Annotations:** Leave blank or provide a comma-separated list of test annotations to use in unit testing. If you do not provide a list of test annotations, the default is `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`.
    * **Namespaces:** For .NET C# only, supply a comma-separated list of namespace prefixes that you want to test.
 
-   For more information about these settings, and other **Run Tests** step settings, go to the [Run Tests step settings reference](../../ci-technical-reference/configure-run-tests-step-settings.md).
+   For more information about these settings, and other **Run Tests** step settings, go to the [Run Tests step settings reference](./configure-run-tests-step-settings.md).
 
 <details>
 <summary>YAML example</summary>
@@ -136,7 +136,7 @@ pipeline:
 
 ## View test reports
 
-To view the test report, go to the [Build details page](../view-your-builds/viewing-builds.md) and select **Tests**. The test report content is based on the tests you configured for the **Run Tests** step. In order for the **Tests** tab to show tests, your test reports must be in JUnit XML format. Harness parses test reports that are in JUnit XML format only.
+To view the test report, go to the [Build details page](../viewing-builds.md) and select **Tests**. The test report content is based on the tests you configured for the **Run Tests** step. In order for the **Tests** tab to show tests, your test reports must be in JUnit XML format. Harness parses test reports that are in JUnit XML format only.
 
 ![](./static/set-up-test-intelligence-03.png)
 

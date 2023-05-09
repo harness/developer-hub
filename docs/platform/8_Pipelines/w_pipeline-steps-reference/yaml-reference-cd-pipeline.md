@@ -1,5 +1,5 @@
 ---
-title: YAML Reference -- Pipelines
+title: YAML reference -- pipelines
 description: This topic describes the YAML schema for a CD Pipeline.
 # sidebar_position: 2
 helpdocs_topic_id: xs2dfgq7s2

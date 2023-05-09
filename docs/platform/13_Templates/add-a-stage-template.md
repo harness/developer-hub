@@ -1,5 +1,5 @@
 ---
-title: Create a Stage Template
+title: Create a stage template
 description: The Harness Template Library enables you to standardize and create Templates that you can use across Harness Pipelines and teams. A Stage Template is a Harness CD, CI, or Approval Stage Template that…
 sidebar_position: 4
 helpdocs_topic_id: s3wrqjsg43

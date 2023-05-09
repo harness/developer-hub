@@ -81,11 +81,11 @@ export default function CE() {
         </div>
       </div>
       <div className={styles.subSection}>
-        <h3>Featured Tutorials</h3>
+        <h3>Featured tutorials</h3>
         <TutorialCard FeatureList={FeaturedList} featuredCard={true} />
       </div>
       <div className={styles.subSection}>
-        <h3 id="all-tutorials">All CE Tutorials</h3>
+        <h3 id="all-tutorials">Harness Chaos Engineering tutorials</h3>
         <TutorialCard FeatureList={CEList} />
       </div>
     </div>

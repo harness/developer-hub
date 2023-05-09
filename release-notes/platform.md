@@ -2,8 +2,8 @@
 title: Harness Platform release notes
 sidebar_label: Harness Platform
 tags: [NextGen, "platform"]
-date: 2023-04-10T10:00
-sidebar_position: 10
+date: 2023-05-04T10:00:30
+sidebar_position: 12
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -19,30 +19,20 @@ Review the notes below for details about recent changes to Harness Platform, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - April 10, 2023, version 79015
+## Latest - May 04, 2023, version 79214
+
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-### What's new
-- You can now navigate to the parent organization by clicking its name on a project details page. (PL-32182, ZD-41785)
-
-- Harness Git Experience now supports GitLab as a code repository. You can now select a Harness connector with any of the following Git providers to save entities in a repository: (PIE-9139)
-  * Github
-  * Bitbucket
-  * AzureRepo 
-  * Gitlab 
-
-- You can now open the modal in the template studio to see all applicable metadata such as a description, tags, connector, and repository name. (PIE-8692)
+- You will now receive an alert on the default settings page when there are unsaved changes, or if you leave the page. (PL-32354)
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-
-### Early access
 
 This release does not include any early access feature.
 
@@ -51,16 +41,18 @@ This release does not include any early access feature.
   <TabItem value="Fixed issues">
 ```
 
-### Fixed issues
+- In **Group Memberships**, the selected scope value does not match the scope of the displayed user groups. (PL-32552)
+  
+  A code enhancement to fetch data corresponding to the selected scope has fixed the issue.
 
-- Role assignments by **Scope** filter do not populate usernames or email addresses for existing users. (PL-32206)
+- Pagination does not work correctly in the **Group memberships** page.(PL-32551, ZD-42803)
+  
   A code enhancement fixed this issue.
 
-- When polling, the stage selection flickers on the pipeline execution page. (PIE-9360, ZD-42361)
+- The option to remove a secret is hidden when it has a long name. (PL-32571)
+  
   A code enhancement fixed this issue.
 
-- During pipeline execution, failure strategies are prompted even when not configured as inputs. (PIE-9277, ZD-41602)
-  The pipeline and template studio no longer display the failure strategy runtime panel when failure strategy is not marked as runtime. 
 
 ```mdx-code-block
   </TabItem>
@@ -71,6 +63,62 @@ This release does not include any early access feature.
 
 <details>
 <summary>2023 releases</summary>
+
+#### April 22, 2023, version 79111
+
+##### What's new
+- You can now configure session time-out in the UI. (PL-32258)
+  In case of inactivity, Harness logs users out of their accounts after the configured session timeout.
+
+- You can now add descriptions to pipeline and stage variables. (PIE-3336)
+
+##### Early access
+This release does not include any early access feature.
+
+##### Fixed issues
+- The creation of secrets on Custom Secret Manager validates the existence of those secrets. (PL-31715)
+  A code enhancement to remove secret validation during Custom Secret Manager creation has fixed the issue.
+
+- The tooltip for **Optional Configuration** in **Run Step** flashes in and out in a loop, making it difficult to read the text.(PL-32462, ZD-42201)
+  A code enhancement fixed this issue.
+
+- It is possible to delete an encrypted text or file secret, even if it is referenced by another secret. (PL-31037)
+  A code enhancement fixed this issue.
+
+- The cache response metadata gets added to YAML when an input set for a pipeline is edited. (PIE-9487, ZD-42516)
+  A code enhancement to validate the input set YAML after integrating input set caching fixed the issue.
+
+- Logs for chained pipelines are not visible. (PIE-9242, ZD-42050)
+  A code enhancement fixed this issue.
+
+#### April 10, 2023, version 79015
+
+##### What's new
+- You can now navigate to the parent organization by selecting its name on a project details page. (PL-32182, ZD-41785)
+
+- Harness Git Experience now supports GitLab as a code repository. You can now select a Harness connector with any of the following Git providers to save entities in a repository: (PIE-9139)
+  * Github
+  * Bitbucket
+  * AzureRepo 
+  * Gitlab 
+
+- You can now open the modal in the template studio to see all applicable metadata such as a description, tags, connector, and repository name. (PIE-8692)
+
+##### Early access
+
+This release does not include any early access feature.
+
+##### Fixed issues
+
+- Role assignments by **Scope** filter do not populate usernames or email addresses for existing users. (PL-32206)
+  A code enhancement fixed this issue.
+
+- When polling, the stage selection flickers on the pipeline execution page. (PIE-9360, ZD-42361)
+  A code enhancement fixed this issue.
+
+- During pipeline execution, failure strategies are prompted even when not configured as inputs. (PIE-9277, ZD-41602)
+  The pipeline and template studio no longer display the failure strategy runtime panel when failure strategy is not marked as runtime. 
+
 
 #### March 31, 2023, version 78914
 
@@ -297,6 +345,10 @@ This release does not include any early access feature.
 - The execution of a chained pipeline with triggers fails with the error "User is not authorized". (PL-31594,ZD-39808,39954,40294,40337,40662)
   
   A code enhancement has fixed this issue.
+
+- There is a conflict between the schema names for `InviteDTO` and `SecretManagerMetadataRequestDTO`, causing an issue with Terraform Provider. (PL-31626)
+
+  Renaming the schema name of `SecretManagerMetatadataRequestDTO` has fixed the issue.
   
 - During search, an incorrect message is displayed in the pipeline chaining selection window if no pipeline matches the selection criteria. (PIE-8526)
   
@@ -304,7 +356,7 @@ This release does not include any early access feature.
   
 - On the **Input Sets** page, the **Clone** option is disabled. (PIE-8373)
   
-  The option has been removed.  
+  The option has been removed. 
 
 #### February 23, 2023, version 78507
 
@@ -351,6 +403,10 @@ This release does not include any early access feature.
 - The UI does not display an error message when the referred connector in infra does not exist.(PL-30130)
   
   An enhancement to the error-handling system enables an error message to appear when the connector API fails.
+
+- The warning corresponding to permissions does not display properly in organization settings. (PL-31278)
+
+  An enhancement to the width of the warning fixed the issue.
 
 - Removing the default value from a variable in a service results in the addition of `.nan` as the default value in the YAML. (PIE-8129)
   

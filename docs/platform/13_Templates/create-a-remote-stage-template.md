@@ -1,5 +1,5 @@
 ---
-title: Create a Remote Stage Template
+title: Create a remote stage template
 description: This topic explains how to add a remote Stage Template in Harness.
 # sidebar_position: 2
 helpdocs_topic_id: e4xthq6sx0

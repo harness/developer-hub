@@ -4,18 +4,21 @@ description: Repository scans with Fortify on Demand
 sidebar_position: 150
 ---
 
+You can set up Fortify scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 ### Security step settings
 
-You can set up Fortify scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
+
+<!-- SECURITY STEP CONFIG DBOX ---------------------------------------------------------------------------
 
 ```mdx-code-block
 import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
 ```
 
 <StoSecurityStepConfig />
+
+ -->
 
 
 * `product_name` = `fortifyondemand`

@@ -1,7 +1,7 @@
 ---
-title: STO Basics
+title: STO basics
 description: Enable DevOps and DevSecOps teams to left shift security testing.
-sidebar_position: 10
+sidebar_position: 20
 helpdocs_topic_id: ap7y94ap7h
 helpdocs_category_id: 8nywcs2sa7
 helpdocs_is_private: false

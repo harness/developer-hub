@@ -1,5 +1,5 @@
 ---
-title: CloudFormation Provisioning with Harness
+title: CloudFormation provisioning with Harness
 description: Use CloudFormation to provision infrastructure.
 sidebar_position: 2
 helpdocs_topic_id: vu2qi7dfzm
