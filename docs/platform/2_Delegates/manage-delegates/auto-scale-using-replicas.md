@@ -29,6 +29,6 @@ To auto scale the delegate, do the following:
 
 5. (Optional) Set the `targetMemoryUtilizationPercentage` to add a new replica if memory utilization exceeds this percentage.
 
-6. Save the file.
+6. Save the file and restart your pods.
 
 When you create a deployment, Harness automatically spins up new replicas of your delegate as needed to ensure the deployment is completed.
