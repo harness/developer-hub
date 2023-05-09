@@ -16,7 +16,7 @@
 |Harness Cloud - Test Build Infrastructure On Harness Cloud|[Get started with Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart)|
 |Describe Available Connectors |[Connectors](https://developer.harness.io/docs/category/connectors)|
 |Configure a Git Connector|[Add a GitHub Connector](https://developer.harness.io/docs/platform/connectors/code-repositories/add-a-git-hub-connector/)|
-|Configure a DockerHub Connector|[Connect to Harness Container Image Registry Using Docker Connector](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)|
+|Configure a Docker Hub Connector|[Connect to Harness Container Image Registry Using Docker Connector](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)|
 |Understand Harness Delegate Role For The CI Capability|[CI pipeline basics](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics)| <!--- ||Describe Pipeline Studio Vs Yaml Structure|-| -->
 |Secrets Management - Describe Possible Usages For Harness CI|[Add and Reference Text Secrets](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets/)|
 |Secrets Management - How To Retrieve And Render Secrets Using Harness Expressions|[Add and Reference Text Secrets](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets/)|
@@ -71,7 +71,7 @@
 |Step Library - Describe Git Clone Step (versus the Codebase one)|[Git Clone step settings](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline/)|
 |Step Library - Configure a Git Clone Step|[Git Clone step settings](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline/)|
 |Build an Artifact and send to an Artifact Repo|[Build and push an artifact](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/)|
-|Build a Container Image and send it to a Container Registry (such as DockerHub)|[Build and push an artifact](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/)|
+|Build a Container Image and send it to a Container Registry (such as Docker Hub)|[Build and push an artifact](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/)|
 |Perform Integration Test From Host Versus From A Container|[Port Bindings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/#port-bindings)|
 |Describe Chained Pipelines|[Pipeline chaining in Harness](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/)|
 |Configure Chained Pipelines|[Pipeline chaining in Harness](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/)|

@@ -23,7 +23,7 @@ At the end of this tutorial you will learn,
 Before you get started with the tutorial make sure you have the following accounts,credentials and tools,
 
 - A [GitHub](https://github.com) account, where you may need to fork the tutorial sources.
-- A Docker Registry account, e.g [DockerHub](https://hub.docker.com), [Quay.io](https://quay.io)
+- A Docker Registry account, e.g [Docker Hub](https://hub.docker.com), [Quay.io](https://quay.io)
 - [Drone CLI](https://docs.drone.io/cli/install/) to build the application locally.
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 
@@ -519,7 +519,7 @@ Click __Apply Changes__ to save the step and click __Save__ to save the pipeline
 
 ![Final Pipeline](../static/ci-tutorial-go-containers/go_pipeline_final.png)
 
-With those changes saved, you are ready to lint, test, build and push your __go__ application to container registry(DockerHub).
+With those changes saved, you are ready to lint, test, build and push your __go__ application to container registry (Docker Hub).
 
 ## Run CI Pipeline
 
