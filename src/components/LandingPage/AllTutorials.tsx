@@ -32,7 +32,7 @@ export default function AllTutorials() {
         </p>
       </div>
       <div className={styles.subSection}>
-        <h3>Featured Tutorials</h3>
+        <h3>All Featured Tutorials</h3>
         <TutorialCard FeatureList={FeaturedList} featuredCard={true} />
       </div>
       <div className={styles.subSection}>

@@ -102,4 +102,14 @@ export const CDList: CardItem[] = [
     time: "15min",
     link: "/tutorials/cd-pipelines/amazon-ecs",
   },
+  {
+    title: "Verify Kubernetes Deployment with Prometheus  ",
+    module: MODULES.cd,
+    icon: "img/icon_cv.svg",
+    description: <>Verify a Spring Boot based Kubernetes Deployment with Prometheus Metrics.</>,
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "15min",
+    link: "/tutorials/cd-pipelines/continuous-verification/prometheus",
+  },
 ];
