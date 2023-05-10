@@ -63,3 +63,13 @@ In **Filter Name**, enter a name for the filter and click **Save**.
 The filter is now available from the **Load Saved Filter**:
 
 ![](./static/filtering-deployments-07.png)
+
+### Quick filter by Environment
+
+If you needed a simple way to filter by **Environment** you can request the feature to be enabled using a feature flag called `SPG_ENABLE_STATUS_OF_DEPLOYMENTS`.
+
+With the feature flag active, a dropdown similar to this will appear:
+
+![](./static/filtering-deployments-08.png)
+
+As you can see, you can filter without going through several filters based only on the environment.
