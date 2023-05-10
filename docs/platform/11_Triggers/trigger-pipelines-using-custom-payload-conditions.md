@@ -39,7 +39,7 @@ On the trigger's **Configuration** tab, specify the following:
 
 * **Name** and **Description**.
 * **Payload Type:** This should match your SCM provider.
-* **Connector:** A [code repo connector](/docs/category/code-repo-connectors) for your SCM provider. A connector is required for all Git trigger types except **Custom**. In the connector's credentials, make sure API access is enabled. For **Custom** triggers, you must set up the external tool to send paylods to to the trigger URL. Refer to your tool's documentation for instructions on sending payloads.
+* **Connector:** A [code repo connector](/docs/category/code-repo-connectors) for your SCM provider. A connector is required for all Git trigger types except **Custom**. In the connector's credentials, make sure API access is enabled. For **Custom** triggers, you must set up the external tool to send payloads to to the trigger URL. Refer to your tool's documentation for instructions on sending payloads.
 * **Event:** Select the [Git event type for the webhook](/docs/platform/Pipelines/w_pipeline-steps-reference/triggers-reference#event-and-actions). For some event types, you must also select **Actions** settings for the webhook, or you can select **Any Actions**.
 * **Auto-abort Previous Execution:** Use this option if you want new triggering events to override active pipeline executions. When a newer triggering event is detected, any active builds on the same branch are aborted before the new build begins.
 
@@ -112,27 +112,45 @@ Pipelines often have [Runtime Inputs](../20_References/runtime-inputs.md), such 
 
 ## Step 5: Register the webhook in the Git provider
 
-When you create or edit the custom webhook trigger, you need to copy the webook URL and add it to your repo webhooks.
+For all Git providers supported by Harness, non-custom webhooks are automatically created in the repo. For details about automatically-registered Git events, go to the [Triggers reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
 
-For GitHub, you must be a repo admin and the GitHub personal access token used in the pipeline's GitHub connector must include all `repo`, `user`, and `admin:repo_hook` options for **Scopes**.
+However, when you create or edit the custom webhook trigger, you need to copy the webhook URL and add it to your repo webhooks.
 
-![](./static/trigger-pipelines-using-custom-payload-conditions-32.png)
+:::info Required permissions
+
+To configure a functioning Git event webhook trigger:
+
+* You must have the appropriate level of access to configure repo webhooks in your Git provider.
+* The personal access token use for [code repo connector](/docs/category/code-repo-connectors) authentication must have the appropriate scopes.
+
+For example, for GitHub, you must be a repo admin and the GitHub personal access token used in the pipeline's GitHub connector must include all `repo`, `user`, and `admin:repo_hook` options for **Scopes**.
+
+![GitHub personal access token scopes.](./static/trigger-pipelines-using-custom-payload-conditions-32.png)
+
+For information about other provider's token scopes, go to:
+
+* [GitLab - Personal access token scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes)
+* [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
+* [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
+
+:::
 
 1. Go to your pipeline in Harness and select **Triggers**.
-2. Select your  ustom webhook.
-3. Select the webhook URL icon.
-4. Select the link icon to copy the webhook URL.
+2. Select your custom webhook.
+3. Select the link icon to copy the webhook URL.
 
    ![](./static/trigger-pipelines-using-custom-payload-conditions-33.png)
 
-5. Log in to your repo in your SCM provider and navigate to the repo's webhook settings.
-6. Create a new webhook and paste the webhook URL you copied from Harness.
-7. Make sure that the content type for outbound requests is **Application/json**.
-8. Make sure that **Enable verification** is enabled.
-9. Select the events that you would like to trigger this webhook. The following example selected **Just the push event**, which means that this webhook is only triggered if there is a push event.
-10. Select **Update webhook**.
+4. Log in to your repo in your SCM provider and navigate to the repo's webhook settings.
+5. Create a new webhook and paste the webhook URL you copied from Harness.
+6. Make sure that the content type for outbound requests is **Application/json**.
+7. Make sure that **Enable verification** is enabled.
+8. Select the events that you would like to trigger this webhook. The following example selected **Just the push event**, which means that this webhook is only triggered if there is a push event.
+9. Select **Update webhook**.
 
 ![](./static/trigger-pipelines-using-custom-payload-conditions-34.png)
+
+For more information about manual webhook registration, go to the [Triggers reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
 
 ## Step 6: Test the trigger
 

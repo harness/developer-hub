@@ -421,6 +421,25 @@ The `pipelineIdentifier` and `triggerIdentifier` target the webhook at the speci
 
 In some cases, you won't want to target the webhook at the specific pipeline and trigger. For example, there are events in GitHub that are not covered by Harness and you might want to set up a custom trigger for those events that applies to all pipelines and their triggers in a project. To instruct Harness to evaluate the custom trigger against all pipelines (until it finds matching **Conditions**), remove `pipelineIdentifier` and `triggerIdentifier` from the URL before adding it to your repo.
 
+#### Webhook registration permissions
+
+To register a webhook:
+
+* You must have the appropriate level of access to configure repo webhooks in your Git provider.
+* The personal access token used for [code repo connector](/docs/category/code-repo-connectors) authentication must have the appropriate scopes/permissions.
+
+For example, for GitHub, you must be a repo admin and the GitHub personal access token used in the pipeline's GitHub connector must include all `repo`, `user`, and `admin:repo_hook` options for **Scopes**.
+
+![GitHub personal access token scopes.](./static/trigger-pipelines-using-custom-payload-conditions-32.png)
+
+For information about other provider's token scopes, go to:
+
+* [GitLab - Personal access token scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes)
+* [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
+* [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
+
+:::
+
 ## Last Activation
 
 On the list of triggers for a pipeline, you can see when each trigger was last activated.
