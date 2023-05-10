@@ -25,7 +25,7 @@ import { MODULES } from "../../constants";
           title: "Go application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of a Go application.",
+            "Build a Go application.",
           link: "/tutorials/ci-pipelines/build/go",
         },
         {
@@ -56,13 +56,6 @@ import { MODULES } from "../../constants";
           description:
             "Build a Docker Image of a multi-architecture Rust application.",
           link: "/tutorials/ci-pipelines/build/rust",
-        },
-        {
-          title: "Signed images",
-          module: MODULES.ci,
-          description:
-            "Build a Signed Docker Image of a Go application.",
-          link: "/tutorials/ci-pipelines/build/signed-image",
         },
         {
           title: "Terraform Cloud notification triggers",
