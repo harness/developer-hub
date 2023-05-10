@@ -63,6 +63,19 @@ The filter is now available from the **Load Saved Filter**:
 
 ![](./static/filtering-deployments-07.png)
 
+### Quickly filter by environment
+
+:::note
+
+Currently, this feature is behind the feature flag `SPG_ENABLE_STATUS_OF_DEPLOYMENTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can quickly filter environments by selecting specific environments using the filter menu:
+
+![](./static/filtering-deployments-08.png)
+
+
 ### Sharing filters
 
 :::note
