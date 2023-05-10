@@ -37,6 +37,11 @@ module.exports = {
     // Created by aimurphy for branch ci-misc-small-items on May 3 2023
 
     {
+      from: "/tutorials/ci-pipelines/build/signed-image",
+      to: "/tutorials/ci-pipelines/build/go",
+    },
+
+    {
       from: "/docs/category/troubleshoot-ci",
       to: "/docs/continuous-integration/troubleshooting-ci",
     },
