@@ -2,7 +2,7 @@
 title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
 tags: [NextGen, "cet"]
-date: 2023-05-05T10:00
+date: 2023-05-02T10:55
 sidebar_position: 11
 ---
 ```mdx-code-block
@@ -24,7 +24,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <Tabs>
   <TabItem value="What's new">
 ```
-This release does not include any new features.
+* Exception/Error Event Summary 
+* Event Explorer
+* Automated Root Cause Analysis (ARC) Screen
+* Hidden, Resolved and Resurfaced Events
+* New Events
+* Critical Events
+* Source Attach
+* Shift Left with Harness CI Integration
+* JIRA Integration
+* Integration with APM Tools
+* Integration with Logging Tools
 
 ```mdx-code-block
   </TabItem>
