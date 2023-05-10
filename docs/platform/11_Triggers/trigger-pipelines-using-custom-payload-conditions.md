@@ -40,7 +40,7 @@ On the trigger's **Configuration** tab, specify the following:
 * **Name** and **Description**.
 * **Payload Type:** This should match your SCM provider.
 * **Connector:** A [code repo connector](/docs/category/code-repo-connectors) for your SCM provider. A connector is required for all Git trigger types except **Custom**. In the connector's credentials, make sure API access is enabled. For **Custom** triggers, you must set up the external tool to send paylods to to the trigger URL. Refer to your tool's documentation for instructions on sending payloads.
-* **Event:** Select the Git event type for the webhook. For some event types, you must also select **Actions** settings for the webhook, or you can select **Any Actions**.
+* **Event:** Select the [Git event type for the webhook](/docs/platform/Pipelines/w_pipeline-steps-reference/triggers-reference#event-and-actions). For some event types, you must also select **Actions** settings for the webhook, or you can select **Any Actions**.
 * **Auto-abort Previous Execution:** Use this option if you want new triggering events to override active pipeline executions. When a newer triggering event is detected, any active builds on the same branch are aborted before the new build begins.
 
 ## Step 3: Set trigger conditions
@@ -80,7 +80,7 @@ For more Harness trigger expressions, go to [Built-in Git Trigger and Payload Ex
 
 Conditions based on the values of the JSON payload. Harness treats the JSON payload as a data model and parses the payload and listens for events on a JSON payload key.
 
-To reference payload values, you use `<+eventPayload.` followed by the path to the key name, for example `<+eventPayload.repository.full_name>`
+To reference payload values, you use `<+eventPayload.[path-to-key-name]`, for example `<+eventPayload.repository.full_name>`.
 
 For details on Payload Condition, go to [Payload Condition in the Triggers reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md#payload-conditions).
 
