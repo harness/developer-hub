@@ -38,13 +38,13 @@ For a comprehensive list that includes all Harness modules, go to [Supported pla
 <summary>Kubernetes</summary>
 
 - **Supported connectors for deployment:**
-  - Kubernetes Connector
-    + Username and Password
-    + Client Key and Secret
-    + OIDC Authentication
-    + Kubernetes Service Account
-    + Assume Role binding on Delegate Configuration
-  - Google Cloud Connector (GKE Authentication)
+  - Kubernetes connector
+    + Username and password
+    + Client key and secret
+    + OIDC authentication
+    + Kubernetes service account
+    + Assume role binding on delegate configuration
+  - Google Cloud connector (GKE authentication)
     + Service Account
     + Google Cloud Role on Delegate
     + Workload Identity
@@ -58,9 +58,61 @@ For a comprehensive list that includes all Harness modules, go to [Supported pla
     + IAM Role
     + GovCloud Support  
 - **Supported platforms for deployment:**
+  - Self Hosted Kubernetes
+  - Google Kubernetes Engine
+  - Azure Kubernetes Engine
+  - AWS Elastic Kubernetes Service
+  - Red Hat OpenShift
 - **Versions and tooling support:**
+  - Kubectl Client Versions:
+    - 1.16
+    - 1.27
+    - We support what each of the Cloud Providers support. We recommend users to keep their binary versions up to date.
+    - By default Harness ships with kubectl client - 1.24
+  - Tooling:
+    - OpenShift - oc client binary
+    - Kustomize - kustomize binary
+    - Helm - Helm 3.12 and 2.8 binary.
+    - Helm 3.8 can be supported via feature flag.
 - **Limitations:**
+  - Helm:
+    - Helm Hooks are not supported for this swimlane. Harness manages and orchestrates the manifests and their release.
+    - Kustomize:
+      - Kustomize Patches are only supported in YAML, not JSON
+      - Kustomize Containerized Plugins are not supported
+    - Harness managed resources:
+      - Deployment
+      - Secrets
+      - ConfigMap
+      - StatefulSet
+      - HorizontalPodAutoScalar is coming soon.
+      - PodDisruptionBudget is coming soon.
 - **Supported integrations:**
+  - Traffic Shifting for Advanced Deployment Strategies:
+    - Istio
+    - Nginx Ingress Controller
+  - All manifest type sources for fetching Kubernetes resources:
+    - Github
+    - Gitlab
+    - Bitbucket
+    - Custom Remote Source Repository
+    - Harness Local File Store
+  - For Helm Chart Type Manifests we also support:
+    - Generic Git Provider
+    - Google Cloud Storage
+    - Amazon S3 Storage
+    - Helm OCI Repository (ACR, ECR, GAR, Artifactory)
+    - Helm HTTP Server Repository (Nexus, Artifactory)
+  - Artifact repository supported to deploy with manifest:
+    - DockerHub
+    - Amazon Elastic Container Registry
+    - Google Container Registry
+    - Azure Container Registry
+    - Custom Artifact Source
+    - Google Artifact Registry
+    - Github Package Registry
+    - Nexus 3
+    - Artifactory
 
 </details>
 
