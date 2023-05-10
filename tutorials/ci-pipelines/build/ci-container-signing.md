@@ -148,7 +148,7 @@ The step also exposes an [output variable](https://developer.harness.io/docs/con
 
 ![Final Pipeline](../static/ci-tutorial-go-containers/go_pipeline_final.png)
 
-With those changes saved, you are ready to lint, test, build and push your __go__ application to container registry(DockerHub).
+With those changes saved, you are ready to lint, test, build and push your __go__ application to container registry (Docker Hub).
 
 ## Run the CI pipeline
 

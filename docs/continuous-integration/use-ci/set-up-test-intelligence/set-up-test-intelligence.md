@@ -299,3 +299,49 @@ Note that while parallelism for Test Intelligence can improve the total time it 
 
 </details>
 
+## Troubleshooting
+
+You may encounter the following issues when using Test Intelligence with Maven.
+
+<details>
+<summary>pom.xml includes argLine</summary>
+
+If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
+
+**Before:**
+
+```
+<argLine> something  
+</argLine>
+```
+
+**After:**
+
+```
+<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
+</argLine>
+```
+
+</details>
+
+<details>
+<summary>Jacoco/Surefire/Failsafe</summary>
+
+If you're using Jacoco, Surefire, or Failsafe, make sure the `forkCount` is not set to `0`.
+
+For example, the following configuration in `pom.xml` removes the `forkCount` setting and applies `useSystemClassLoader` as a workaround:
+
+```
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.22.1</version>
+    <configuration>
+        <!--  <forkCount>0</forkCount> -->
+        <useSystemClassLoader>false</useSystemClassLoader>
+    </configuration>
+</plugin>
+```
+
+</details>
+

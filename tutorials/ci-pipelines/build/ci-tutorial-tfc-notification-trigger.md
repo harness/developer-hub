@@ -257,7 +257,7 @@ Create a pipeline by importing a premade pipeline from one of the tutorial repos
 
 :::tip
 
-This pipeline pulls public images from DockerHub. If you do not want to use the default `account.harnessImage` connector, you can use a different Docker connector, as described in [Connect to Harness Container Image Registry using Docker Connector](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector).
+This pipeline pulls public images from Docker Hub. If you do not want to use the default `account.harnessImage` connector, you can use a different Docker connector, as described in [Connect to Harness Container Image Registry using Docker Connector](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector).
 
 :::
 

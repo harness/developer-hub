@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Continuous In
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - May 04, 2023, version 79214
+## Latest - May 04, 2023, version 1.0.3506
 
 ```mdx-code-block
 <Tabs>
@@ -126,7 +126,7 @@ This release does not include early access features.
 
 ##### What's new
 
-* The [Base Image Connector setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported DockerHub registries. (CI-7153, CI-7091, ZD-40319)
+* The [Base Image Connector setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported Docker Hub registries. (CI-7153, CI-7091, ZD-40319)
 * You can now call pipeline-level variables in steps as environment variables. This is an extension of existing functionality that allows you to call stage-level variables in steps as environment variables. (CI-6709, ZD-39203)
 * When configuring [SCM connectors](/docs/category/code-repo-connectors):
   * Failed connection tests now return more detailed error messages. (CI-7089)
@@ -640,7 +640,7 @@ The Build UI now shows a new VM icon. (CI-4630)
 
 This release does not include early access features.
 
-####3 Fixed issues
+##### Fixed issues
 
 - TI pipeline is failing with error: "no account ID in query params" (CI-4792)
 - Active Committers should not count cron and manual execution. (CI-4841)

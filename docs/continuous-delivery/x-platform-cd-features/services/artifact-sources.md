@@ -1517,6 +1517,32 @@ The following JSON sample creates a custom role with the required permissions. T
 
 </details>
 
+<details>
+<summary>Use Docker Registry connector for ACR</summary>
+
+If you do not want to centrally manage service principles for access to ACR, you can use the platform-agnostic Docker Registry connector and [repository-scoped permissions](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-repository-scoped-permissions) to connect Harness to ACR.
+
+To use the Docker Registry connector to connect to ACR, do the following:
+
+1. In Azure ACR, in **Repository permissions**, select **Tokens**.
+   
+  <docimage path={require('./static/cfe33a0df139ae4c13d3b191c3fe1b160a0d79dd337fc16dac88be1cbdf582a4.png')} width="30%" height="30%" title="Click to view full size image" />  
+
+2. Create a new token and scope map.
+   
+  <docimage path={require('./static/6eacbefee02319d23d749a69a7adcd66666c6e7036efb267bfc37454cea6c6a6.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+3.  Generate the password for the token.
+   
+  <docimage path={require('./static/feacb89196f0649e37019b63020dc2faab70f04b135a872f21599b07b42b7cf5.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+3.  In Harness, create a new Docker Registry connector. 
+4.  For **Provider Type**, select **Other**.
+5.  Select **Username and Password** for **Authentication**, and use the username and password for the ACR token.
+   
+  <docimage path={require('./static/f9b3efd13ddb3f9bd25f1686d4154bfc281501be9b9c75e5c8660858a64284ed.png')} width="60%" height="60%" title="Click to view full size image" />
+
+</details>
 
 
 ### Nexus

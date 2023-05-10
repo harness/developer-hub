@@ -202,7 +202,7 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
 4. Create a Docker Registry connector to connect to your Docker Hub account.
 
    * **Name:** Enter a recognizable name for the connector.
-   * **Provider Type:** Select **DockerHub**.
+   * **Provider Type:** Select **Docker Hub**.
    * **Docker Registry URL:** Enter `https://index.docker.io/v2/`.
    * **Username:** Enter the username for your Docker Hub account.
    * **Password:** Create a secret for a Personal Access Token that Harness can use to access your Docker Hub account.

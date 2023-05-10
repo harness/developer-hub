@@ -58,7 +58,7 @@ You can use expressions or [Runtime Inputs](/docs/platform/20_References/runtime
 1. In the Pipeline Studio, select the **Build** stage, and then select the **Execution** tab.
 2. Select **Add Step**, select **Add Step** again, and then select **Plugins** from the **Step Library**.
 3. Enter a **Name** and optional **Description**.
-4. For **Container Registry**, select a container registry connector that has DockerHub access.
+4. For **Container Registry**, select a container registry connector that has Docker Hub access.
 5. In the **Image** field, enter the name of the GitHub Actions Drone Plugin image: `plugins/github-actions`.
 6. Expand the **Optional Configuration**, and select **Privileged**.
    The GitHub Actions Drone Plugin uses [nektos/act](https://github.com/nektos/act) to run GitHub Actions in Harness CI. It requires DinD (Docker-in-Docker) to run your images. Hence, the **Privileged** attribute needs to be enabled to run with escalated permissions. <!--If you're using local runner or VM build infra, do you need privileged? -->

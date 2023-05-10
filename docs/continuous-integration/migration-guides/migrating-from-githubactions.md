@@ -129,7 +129,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      - name: login to dockerhub
+      - name: login to docker hub
         uses: docker/login-action@v2
         with: 
           username: {{secrets.DOCKERHUB_USERNAME}}
@@ -383,7 +383,7 @@ For example, in the following YAML example, the `connectorRef` references a Dock
 To log in to Docker Hub in a GitHub Actions workflow, you use `docker/login-action` in a step. You then use other `docker` actions in other steps to pull images, push images, and so on.
 
 ```yaml
-  name: login to dockerhub
+  name: login to docker hub
     uses: docker/login-action@v2
     with:
       username: {{ secrets.DOCKERHUB_USERNAME }}
@@ -411,7 +411,7 @@ To interact with Docker registries in Harness, you use a [Docker connector](/doc
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: my-dockerhub-connector
+                    connectorRef: my-docker-hub-connector
                     image: openjdk:17.0-jdk
                     shell: Bash
                     command: echo "this runs on openjdk"
