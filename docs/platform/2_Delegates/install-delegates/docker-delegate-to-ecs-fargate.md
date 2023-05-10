@@ -280,7 +280,7 @@ Use the following steps to create a task definition. For information about task 
 
 ## Deploy a delegate using Terraform
 
-The above steps to [deploy a delegate to ECS](#deploy-a-delegate-to-amazon-ecs) are also available in a Terraform module that you can referenced directly or use as a starting point for your own automation. You can use an existing ECS cluster (EC2- or Fargate-based) or let the module create one for you.
+The above steps to [deploy a delegate to ECS](#deploy-a-delegate-to-amazon-ecs) are also available in a Terraform module that you can reference directly or use as a starting point for your own automation. You can use an existing ECS cluster (EC2- or Fargate-based) or let the module create one for you.
 
 To access the module, go to [Harness Community GitHub](https://github.com/harness-community/terraform-aws-harness-delegate-ecs-fargate).
 
