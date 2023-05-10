@@ -12,11 +12,10 @@ This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-v
 
 You can save these filters as a quick way to filter deployments in the future.
 
-
 ### Before You Begin
 
-* [Deployments Overview](deployments-overview.md)
-* [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
+- [Deployments Overview](deployments-overview.md)
+- [Harness Key Concepts](../../../starthere-firstgen/harness-key-concepts.md)
 
 ### Limitations
 
@@ -63,3 +62,15 @@ In **Filter Name**, enter a name for the filter and click **Save**.
 The filter is now available from the **Load Saved Filter**:
 
 ![](./static/filtering-deployments-07.png)
+
+### Sharing filters
+
+:::note
+
+Currently, this feature is behind the feature flag `SPG_ENABLE_SHARING_FILTERS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+If you are an Account Manager, you can user the **Share filter with these User Groups** field to select which user groups can also see that filter. All the user on that user group wiil be able to use the saved filter, but they won't be able to delete it. Users belonging to other user groups won't see it
+
+![](./static/shering-filter.png)
