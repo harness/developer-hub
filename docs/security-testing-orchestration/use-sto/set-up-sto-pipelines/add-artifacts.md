@@ -1,12 +1,18 @@
 ---
-title: Adding Custom Artifacts to STO Pipelines
+title: v2 Adding Custom Artifacts to STO Pipelines
 description: This topic describes how to include SSL certificates and other types of artifacts in your STO pipelines. 
 sidebar_position: 70
 ---
 
-In some cases, a scanner might require additional files such as SSL certificates and license files. The workflow to include these files depends on your build infrastructure.
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-## Kubernetes workflow
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Kubernetes workflows">
+```
 
 The primary workflow for adding certificates to your delegate is described in the CI docs: [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
 
@@ -84,8 +90,10 @@ spec:
 
 </details>
 
-
-## Harness Cloud workflow
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="Harness Cloud workflow" default>
+```
 
 If you're using a Harness Cloud delegate, use the following workflow. 
 
@@ -117,7 +125,7 @@ If you're using a Harness Cloud delegate, use the following workflow.
 :::
 
   
-### Example workflow
+#### Example workflow
   
 This example shows how to include a PEM file in a pipeline that runs a scan using a Security step. This workflow assumes that you have a valid PEM stored as a Harness File Secret. 
 
@@ -137,7 +145,7 @@ This example shows how to include a PEM file in a pipeline that runs a scan usin
 
 3. Set up the remaining downstream steps in your pipeline. When the pipeline runs a SonarQube scan that requires a PEM, it looks in **/shared/customer_artifacts/certificates** and proceeds if it finds a valid certificate. 
 
-### YAML pipeline example
+#### YAML pipeline example
 
 The following illustrates an end-to-end pipeline that copies a PEM certificate to the default location, builds an image, and then scans the image using SonarQube (authorized using the certificate).
 
@@ -260,3 +268,8 @@ pipeline:
             value: dev
 ```
 
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```

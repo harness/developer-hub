@@ -228,19 +228,18 @@ Some scanners also have *scanner templates* with UIs that simplify the process o
 
 <details><summary>Step Library with <b>Security</b> step and scanner templates</summary>
 
-
-![](./static/security-steps-tab.png)
+![tep Library with Security step and scanner templates](./static/security-steps-tab.png)
 
 </details>
 
 <details><summary><b>Security</b> step configuration</summary>
 
-![](./static/security-step-settings-reference-00.png)
+![Security step configuration](./static/security-step-settings-reference-00.png)
 
 </details>
 
 <details><summary>Scanner template configuration</summary>
 
-![](./static/sto-step-palette-example.png)
+![Scanner template configuration](./static/sto-step-palette-example.png)
 
 </details>
