@@ -1,6 +1,6 @@
 ---
-title: Auto scale using replicas
-description: This topic describes how to auto scale the delegate using replicas for Helm chart deployments.
+title: Autoscale using replicas
+description: This topic describes how to autoscale the delegate using replicas for Helm chart deployments.
 sidebar_position: 6
 ---
 
