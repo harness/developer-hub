@@ -23,13 +23,13 @@ You can add certificates to your delegate using this workflow with the following
 
    * Make sure that you place your files in the correct location in the delegate workspace and that you set up the `CI_MOUNT_VOLUMES` and `ADDITIONAL_CERTS_PATH` environment variables correctly.
 
-   * STO supports certificates in DAR format as well as PEM.
+   * STO supports certificates in PEM format as well as DER (Distinguished Encoding Rules).
 
 * **Security step:** If you're using a [Security step](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#security-steps-and-scanner-templates) to set up your scan, note the following:
 
    * You need to place the certificates in the folder `/shared/customer_artifacts/certificates/`
 
-   * STO supports loading multiple certificates in DAR format as well as PEM.
+   * STO supports loading multiple certificates in PEM format as well as DER (Distinguished Encoding Rules).
   
 
 * **Nexus IQ scan:** For Nexus IQ scans, follow the Security step workflow. The certificate must have the filename `certificate` and the path `/shared/customer_artifacts/certificates/certificate`. 
