@@ -922,6 +922,196 @@ Ensure the Harness delegate you have installed can reach your Google Artifact Re
 </details>
 
 
+### Azure DevOps Artifacts
+
+<details>
+<summary>Use Azure Artifacts</summary>
+
+You connect to your Azure DevOps artifacts using a Harness Azure Artifacts connector.
+
+```mdx-code-block
+import Tabs15 from '@theme/Tabs';
+import TabItem15 from '@theme/TabItem';
+```
+
+<Tabs15>
+  <TabItem15 value="YAML" label="YAML" default>
+
+
+<details>
+<summary>Azure Artifacts connector YAML</summary>
+
+```yaml
+connector:
+  name: Azure Artifacts
+  identifier: Azure_Artifacts
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  type: AzureArtifacts
+  spec:
+    azureArtifactsUrl: https://dev.azure.com/garvit-test
+    auth:
+      spec:
+        type: PersonalAccessToken
+        spec:
+          tokenRef: azureartifactspat
+    delegateSelectors:
+      - gcpdocplay
+    executeOnDelegate: true
+```
+
+</details>
+
+
+<details>
+<summary>Service using Azure Artifacts artifact YAML</summary>
+
+```yaml
+service:
+  name: Azure Artifacts
+  identifier: Azure_Artifacts
+  tags: {}
+  serviceDefinition:
+    spec:
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - identifier: mypackage
+              spec:
+                connectorRef: Azure_Artifacts
+                scope: org
+                feed: garvit-test
+                packageType: maven
+                package: com.mycompany.app:my-app
+                version: 1.1-SNAPSHOT
+              type: AzureArtifacts
+    type: Ssh
+```
+
+</details>
+
+
+
+```mdx-code-block
+  </TabItem15>
+  <TabItem15 value="API" label="API">
+```
+
+<details>
+<summary>Azure Artifact connector example</summary>
+
+Create the Azure Artifact connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
+
+
+```yaml
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
+--header 'Content-Type: text/yaml' \
+--header 'x-api-key: pat.12345.6789' \
+--data-raw 'connector:
+  name: Azure Artifacts
+  identifier: Azure_Artifacts
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  type: AzureArtifacts
+  spec:
+    azureArtifactsUrl: https://dev.azure.com/garvit-test
+    auth:
+      spec:
+        type: PersonalAccessToken
+        spec:
+          tokenRef: azureartifactspat
+    delegateSelectors:
+      - gcpdocplay
+    executeOnDelegate: true'
+```
+
+</details>
+
+Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
+
+```mdx-code-block
+  </TabItem15>
+  <TabItem15 value="Pipeline Studio" label="Pipeline Studio">
+```
+
+<details>
+<summary>Azure Artifact connector</summary>
+
+1. In you Harness project, in **Connectors**, select **New Connector**, and then select **Azure Artifacts**.
+2. Enter a name for the connector, and select **Continue**.
+3. In **Azure Artifacts URL**, enter the Azure DevOps organization URL, for example, `https://dev.azure.com/my-org`.
+4. In **Personal Access Token**, enter a PAT token for the Azure DevOps organization, and select **Continue**.
+5. In **Delegates Setup**, select a delegate that has network connectivity to the Azure Cloud.
+6. Save the connector.
+
+</details>
+
+
+<details>
+<summary>Add an Azure Artifact artifact</summary>
+
+1. In a Harness service, select **Configuration**.
+2. In **Deployment Type**, select one of the supported deployment types (deployment type support is described below).
+3. In **Artifacts**, select **Add Artifact Source**.
+4. In **Specify Artifact Repository Type**, select **Azure Artifacts**, and select **Continue**.
+5. In **Azure Artifacts Repository**, select or create an Azure Artifacts connector that connects to your Azure DevOps organization, and then select **Continue**.
+6. In **Artifact Details**, enter the following:
+   1. **Artifact Source Identifier:** enter the name for the artifact in Harness.
+   2. **Scope:** select **Org** or **Project**.
+   3. **Feed:** select the artifact feed.
+   4. **Package Name:** select the name of the package on Azure Artifacts.
+   5. **Version:** select the artifact version to use or set the option as a runtime input or expression.
+7. Select **Submit**.
+
+<docimage path={require('./static/c5a9e07628ab8f1c79c71ba7f19750797af1321378f1008563e8d58595c70d74.png')} width="60%" height="60%" title="Click to view full size image" />
+
+</details>
+
+
+
+```mdx-code-block
+  </TabItem15>
+</Tabs15>
+```
+
+
+#### Deployment type support
+
+Azure DevOps Artifacts are can be used with the following Harness deployment types:
+
+- SSH
+- WinRM
+- Azure Web Apps
+- Tanzu
+
+#### Package type support
+
+Currently, Harness supports Maven and Nuget package types only.
+
+#### Azure DevOps URL
+
+This is the URL in your browser when you are in the Azure DevOps organization containing the projects and feed(s) you want to use.
+
+For example, in this URL, `https://dev.azure.com/garvit-test/sample-project/_packaging?_a=feed&feed=other-feed`, you only need to use `https://dev.azure.com/garvit-test` in Harness connector **Azure DevOps URL** setting.
+
+#### Permissions
+
+You use an Azure DevOps Personal Access Token (PAT) to authenticate with Azure.
+
+Create a Personal Access token as described in [Authenticate access with personal access tokens](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page) from Azure.
+
+Next, copy the token and paste it in the Harness Encrypted Text secret you use for the PAT in the Harness Azure Artifacts connector.
+
+The PAT must have the **Read** permission in **Packaging**.
+
+<docimage path={require('./static/ee464a7fb77650d47cc1c64d752f917cda4343824ba02ce64885894b5d506739.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+</details>
+
 
 ### Amazon Elastic Container Registry (ECR)
 
