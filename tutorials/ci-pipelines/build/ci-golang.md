@@ -1,9 +1,9 @@
 ---
 sidebar_position: 5
-title: Build and test a Go app
+title: Go application
 description: Use a CI pipeline to build and test a Go application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
-slug: /ci-pipelines/build/golang
+slug: /ci-pipelines/build/go
 ---
 
 ```mdx-code-block
