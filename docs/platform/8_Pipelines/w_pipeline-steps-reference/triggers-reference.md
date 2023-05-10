@@ -162,22 +162,24 @@ Always make sure the path you use works with the provider's payload format and t
 
 ### Operators
 
-Some operators work on single values and some work on multiple values:
+Some operators require single values and some operators allow single or multiple values.
 
-* Single-value operators include **Equals**, **Not Equals**, **Starts With**, **Ends With**, and **Regex**.
-* Multiple-value operators include **In** and **Not In**.
+Single-value operators include:
 
-The **In** and **Not In** operators can take comma-separated and Regex values, such as `Not In master,release/.*`.
+* **Equals** and **Not Equals** - Expects a single, full path value.
+* **Starts With** - Expects a single value. Matches any full path starting with the value.
+* **Ends With** - Expects a single value. Matches any full path ending with the value.
+* **Contains** - Expects a single value. Matches any full path containing the value.
+* **In** and **Not In** - Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. Also accepts Regex, such as `main,release/.*`
+* **Regex** - Expects a single Regex value. Matches full paths based on the Regex. Use this operator if you want to specify multiple paths.
 
-You can also use a Regex value to specify all files in a parent folder, such as `ci/*`.
-
-If you want to specify multiple paths, use the **Regex** operator.
+You can use Regex to specify all files in a parent folder, such as `ci/*`.
 
 ### Matches Value
 
 Matches values are the values for the trigger to match. Acceptable values and value formatting depend on the condition type, attribute, and operator.
 
-You can supply a single value, comma-separated values, and Regex values.
+Depending on the attribute and operator, you can supply a single value, comma-separated values, and Regex or JEXL.
 
 ### Source Branch, Target Branch, and Changed Files Conditions
 
@@ -188,7 +190,7 @@ For example, the following image shows a trigger that would start a build if bot
 * The source branch starts with `new-`.
 * The target branch equals `main`.
 
-![example source branch and target branch configurations](./static/triggers-reference-12.png)
+![Example source branch and target branch configurations.](./static/triggers-reference-12.png)
 
 ### Header Conditions
 
