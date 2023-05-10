@@ -149,7 +149,8 @@ For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/inst
 
 ### Create the task definition
 
-Use the following steps to create a task definition. For information about task definition in Amazon ECS, go to [Task Definition Template](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-definition-template.html).
+Use the following steps to create a task definition. For information about task definitions<Harness account Id
+                                                                                                 >in Amazon ECS, go to [Task Definition Template](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-definition-template.html).
 
 1. Copy the following task `spec` into a file. Save the file as task-spec.json.
 
@@ -288,7 +289,7 @@ To access the module, go to [Harness Community GitHub](https://github.com/harnes
 module "delegate" {
   source                    = "git::https://github.com/harness-community/terraform-aws-harness-delegate-ecs-fargate.git"
   name                      = "ecs"
-  harness_account_id        = "wlgELJ0TTre5aZhzpt8gVA"
+  harness_account_id        = "<Harness account Id>"
   delegate_token_secret_arn = "arn:aws:secretsmanager:us-west-2:012345678901:secret:harness/delegate-zBsttc"
   delegate_policy_arns      = [
     aws_iam_policy.delegate_aws_access.arn
