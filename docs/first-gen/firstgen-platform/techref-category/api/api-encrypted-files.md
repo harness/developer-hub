@@ -299,35 +299,36 @@ For the above query, these sample variables specify the `SecretType`, and inclu
 
 
 ```
-curl --location --request POST 'https://app.harness.io/gateway/api/graphql?accountId=<accountId>' \
--H 'x-api-key: <api-key> \
---form 'file=@"/path/to/secret/file"' \
---form 'query="
-{
-    \"query\": \"  mutation($secret: UpdateSecretInput!){    updateSecret(input: $secret){      secret{        id        name        ... on EncryptedFile{          name          secretManagerId          id        }        usageScope{          appEnvScopes{            application{              filterType              appId            }            environment{              filterType              envId            }          }        }      }    }  }  \",
-    \"variables\": {
-        \"secret\": {
-            \"secretType\": \"ENCRYPTED_FILE\",
-\"secretId\": \"<secretId>\",
-            \"encryptedFile\": {
-                \"name\": \"<secretName>\",
-                
-                \"usageScope\": {
-                    \"appEnvScopes\": [
-                        {
-                            \"application\": {
-                                \"filterType\": \"ALL\"
-                            },
-                            \"environment\": {
-                                \"filterType\": \"PRODUCTION_ENVIRONMENTS\"
-                            }
-                        }
-                    ]
-                }
-            }
-        }
-    }
-}"'
+curl --location --request POST 'https://app.harness.io/gateway/api/graphql?accountId=<account-id>' \  
+--header 'x-api-key: <api-key>' \  
+--form 'file=@"/path/to/secret/file"' \  
+--form 'query="  
+{  
+    \"query\": \"  mutation($secret: UpdateSecretInput!){    updateSecret(input: $secret){      secret{        id        name        ... on EncryptedFile{          name          secretManagerId          id        }        usageScope{          appEnvScopes{            application{              filterType              appId            }            environment{              filterType              envId            }          }        }      }    }  }  \",  
+    \"variables\": {  
+        \"secret\": {  
+            \"secretType\": \"ENCRYPTED_FILE\",  
+\"secretId\": \"<secretId>\",  
+            \"encryptedFile\": {  
+                \"name\": \"<secretName>\",  
+                  
+                \"usageScope\": {  
+                    \"appEnvScopes\": [  
+                        {  
+                            \"application\": {  
+                                \"filterType\": \"ALL\"  
+                            },  
+                            \"environment\": {  
+                                \"filterType\": \"PRODUCTION_ENVIRONMENTS\"  
+                            }  
+                        }  
+                    ]  
+                }  
+            }  
+        }  
+    }  
+}"'  
+
 
 ```
 ### Inherit Scope
