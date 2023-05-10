@@ -76,7 +76,7 @@ You can use Runtime Inputs for the Service in a CD stage's Service settings.
 
 You can set allowed values and a default value for a runtime input. The default value should be present in the list of allowed values. 
 For runtime inputs defined for pipelines, stages, and shell script variables, multiple selections are allowed. 
-The multiple selection functionality is currently behind the feature flag, `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`
+The multiple selection functionality is currently behind the feature flag, `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`.
 
 ![](./static/runtime-inputs-11.png)
 
