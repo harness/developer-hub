@@ -1,5 +1,5 @@
 ---
-title: Manage flags using Git Experience
+title: Manage flags with Git
 description: Using Harness Git Experience with Feature Flags allows you to manage your Flags from a .yaml file in your Git repository.
 tags: 
    - git experience
@@ -208,6 +208,10 @@ To turn off syncing with Git:
   ```mdx-code-block
   <img src={git_8} alt="A screenshot of the Git sync toggle turned off." height="500" width="300" />
   ``` 
+
+## Reset Git settings
+
+
 
 ## See also
 
