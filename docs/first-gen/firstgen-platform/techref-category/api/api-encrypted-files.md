@@ -308,7 +308,7 @@ curl --location --request POST 'https://app.harness.io/gateway/api/graphql?accou
     \"variables\": {  
         \"secret\": {  
             \"secretType\": \"ENCRYPTED_FILE\",  
-\"secretId\": \"<secretId>\",  
+            \"secretId\": \"<secretId>\",  
             \"encryptedFile\": {  
                 \"name\": \"<secretName>\",  
                   
