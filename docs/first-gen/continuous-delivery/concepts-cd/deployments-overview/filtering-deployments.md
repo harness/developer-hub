@@ -71,6 +71,6 @@ Currently, this feature is behind the feature flag `SPG_ENABLE_SHARING_FILTERS`.
 
 :::
 
-If you are an Account Manager, you can user the **Share filter with these User Groups** field to select which user groups can also see that filter. All the user on that user group wiil be able to use the saved filter, but they won't be able to delete it. Users belonging to other user groups won't see it
+If you are a Harness Account Manager, you can user the **Share filter with these User Groups** setting to select the user groups that can see a filter. All the users in that user group will be able to use the saved filter, but they won't be able to delete it. Users belonging to other user groups won't see it
 
 ![](./static/sharing-filter.png)
