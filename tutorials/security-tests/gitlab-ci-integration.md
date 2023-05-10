@@ -1,5 +1,5 @@
 ---
-title: Set up Harness triggers for GitLab merge requests
+title: Set up STO integrations with GitLab CI
 description: Launch pipeline builds and scans automatically based on GitLab merge requests.
 sidebar_position: 25
 ---
@@ -41,17 +41,29 @@ To do this tutorial, you need the following:
 
 1. In the Harness UI, click **Security Tests**, then **Pipelines**, then **Create a Pipeline**. 
 
+   <figure>
+
    ```mdx-code-block
     <img src={create_pipeline} alt="Create a new STO pipeline." height="40%" width="40%" />
     ```
+
+   <figcaption>Figure 1: Create a new pipeline</figcaption>
+   </figure> 
+
 
 2. Enter a pipeline name and click **Start**. 
 
 3. In the visual editor, add a **Security Tests** stage. 
 
+   <figure>
+
     ```mdx-code-block
     <img src={add_sto_stage} alt="Create a new STO pipeline." height="40%" width="40%" />
     ```
+
+   <figcaption>Figure 2: Add a <b>Security Tests</b> stage</figcaption>
+   </figure> 
+
 
 4. In **About your Stage**, do the following:
 
@@ -59,7 +71,13 @@ To do this tutorial, you need the following:
 
    b. In **Configure Codebase**, select your codebase connector and enter the repository that you want to scan.  
      
-      ![](./static/trigger-tutorial-02-set-up-sto-stage.png)
+   <figure>
+
+   ![](./static/trigger-tutorial-02-set-up-sto-stage.png)
+
+   <figcaption>Figure 3: Set up the <b>Security Tests</b> stage</figcaption>
+   </figure> 
+
 
    c. Click **Set up Stage**. 
 
@@ -88,7 +106,13 @@ In this section, you'll add a trigger to your pipeline that that listsns for inc
 
 2. Click **New Trigger** and select the webhook for your Git service provider. 
 
+   <figure>
+
    ![New webhook trigger](./static/trigger-tutorial-04-select-trigger.png)
+
+   <figcaption>Figure 4: Add a new <b>Webhook</b> trigger</figcaption>
+   </figure> 
+   
 
 3. In **Configuration**, specify the webhook as follows. This is a typical setup, where any event related to a merge request triggers a pipeline build. 
 
@@ -100,21 +124,42 @@ In this section, you'll add a trigger to your pipeline that that listsns for inc
 
    d. Select **Any Actions**. 
 
+     <figure>
+
      ![](./static/trigger-tutorial-05-trigger-config.png)
 
+     <figcaption>Figure 5: Configure the trigger</figcaption>
+     </figure> 
+     
 4. In **Conditions**, set the conditions for running the pipeline. The typical setup is to trigger a build based on the main or master branch of the repo.
+
+   <figure>
 
    ![](./static/trigger-tutorial-06-trigger-condition.png)
 
+   <figcaption>Figure 6: Set the trigger conditions</figcaption>
+   </figure> 
+   
+
 5. In **Pipeline Input**, select **Git Branch** for the build type and enter **<+trigger.branch>** for the branch name. Then click **Create Trigger**. 
 
+   <figure>
+
    ![](./static/trigger-tutorial-08-pipeline-input.png)
+
+   <figcaption>Figure 7: Specify the pipeline input</figcaption>
+   </figure> 
 
    The new trigger now appears in the Triggers table. Note that this table includes a **Webhook** column with a link.
 
 6. Click the **Webhook** link to copy the webhook URL for this trigger to the clipboard. You will now add this webhook to your Git service. 
 
+   <figure>
+
    ![](./static/trigger-tutorial-07-copy-url-webhook.png)
+
+   <figcaption>Figure 8: Copy the webhook URL</figcaption>
+   </figure> 
 
 
 ### Add the trigger webhook to your Git service
@@ -137,6 +182,24 @@ At this point, your setup should be complete. To verify that your trigger is wor
 
 * Go to your GitLab repo, then create and approve a merge request. 
 
-You should now see a new build in the **Execution History** page. 
+With the integration in place, the following events occur when you create a merge request in your GitLab repository:
+
+  1. GitLab sends a request to the Harness webhook.
+  
+  2. The Harness pipeline starts a new build automatically, using information from the incoming request.  
+
+  3. When the build finishes, you can see the scan results in the **Security Tests** tab. 
+
+<figure>
 
 ![](./static/trigger-tutorial-09-triggered-build.png)
+
+<figcaption>Figure 9: Harness pipeline build launched from trigger</figcaption>
+</figure>
+
+<figure>
+
+![](./static/trigger-tutorial-10-security-tests.png)
+
+<figcaption>Figure 10: Scan results</figcaption>
+</figure>

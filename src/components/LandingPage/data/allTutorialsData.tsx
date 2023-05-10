@@ -352,7 +352,7 @@ export const CETList: CardItem[] = [
 
 export const STOList: CardItem[] = [
   {
-    title: "Trigger builds from GitLab events",
+    title: "Set up STO integrations with GitLab CI",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
     description: (
@@ -361,7 +361,7 @@ export const STOList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/security-tests/sto-pipeline-with-triggers",
+    link: "/tutorials/security-tests/gitlab-ci-integration",
   },
 
   {
