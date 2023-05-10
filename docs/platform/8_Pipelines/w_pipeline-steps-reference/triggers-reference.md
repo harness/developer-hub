@@ -164,7 +164,7 @@ This is an optional setting for additional authentication. You can select a secr
 
 For the secret to work with your webhook, you need to configure the repository webhook with the same secret after creating the trigger in Harness.
 
-![GitHub repo secret settings.](/docs/platform/11_Triggers/static/177d72e7c78be248475dbdaf4a4faa2519415049151ed88451f1be00390cd90f.png)
+![GitHub repo secret settings.](./static/177d72e7c78be248475dbdaf4a4faa2519415049151ed88451f1be00390cd90f.png)
 
 :::tip Enforce authentication
 
@@ -193,7 +193,7 @@ To prevent these issues from happening, enter an polling interval in **Polling F
 
 You must also enter the GitHub webhook's ID in **Webhook Id**, which can be found at the end of the URL for the GitHub webhook's settings page. If this trigger is new, you will have to get this value after you create the trigger in Harness and allow Harness to automatically create the GitHub webhook.
 
-<docimage path={require('/docs/platform/11_Triggers/static/752891ea2d0d9bcee2511ad039994271c20f002eb525570b5bc8038915b85da1.png')} width="60%" height="60%" title="Getting a webhook ID from a GitHub webhook page URL." />
+![Getting a webhook ID from a GitHub webhook page URL.](./static/752891ea2d0d9bcee2511ad039994271c20f002eb525570b5bc8038915b85da1.png)
 
 ## Conditions settings
 
