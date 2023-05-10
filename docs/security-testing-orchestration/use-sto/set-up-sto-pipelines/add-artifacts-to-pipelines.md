@@ -6,7 +6,7 @@ sidebar_position: 70
 
 In some cases, a scanner might require additional files such as SSL certificates and license files. The workflow to include these files depends on your build infrastructure.
 
-## Kubernetes workflow
+## Kubernetes workflows
 
 The primary workflow for adding certificates to your delegate is described in the CI docs: [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).
 
@@ -137,6 +137,8 @@ This example shows how to include a PEM file in a pipeline that runs a scan usin
 
 3. Set up the remaining downstream steps in your pipeline. When the pipeline runs a SonarQube scan that requires a PEM, it looks in **/shared/customer_artifacts/certificates** and proceeds if it finds a valid certificate. 
 
+<!-- 
+
 ### YAML pipeline example
 
 The following illustrates an end-to-end pipeline that copies a PEM certificate to the default location, builds an image, and then scans the image using SonarQube (authorized using the certificate).
@@ -259,4 +261,4 @@ pipeline:
             type: String
             value: dev
 ```
-
+-->
