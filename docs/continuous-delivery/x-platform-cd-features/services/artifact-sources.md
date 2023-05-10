@@ -1040,7 +1040,7 @@ Create a service with an artifact source that uses the connector using the [Crea
 <details>
 <summary>Azure Artifact connector</summary>
 
-1. In you Harness project, in **Connectors**, select **New Connector**, and then select **Azure Artifacts**.
+1. In your Harness project, in **Connectors**, select **New Connector**, and then select **Azure Artifacts**.
 2. Enter a name for the connector, and select **Continue**.
 3. In **Azure Artifacts URL**, enter the Azure DevOps organization URL, for example, `https://dev.azure.com/my-org`.
 4. In **Personal Access Token**, enter a PAT token for the Azure DevOps organization, and select **Continue**.
@@ -1054,16 +1054,16 @@ Create a service with an artifact source that uses the connector using the [Crea
 <summary>Add an Azure Artifact artifact</summary>
 
 1. In a Harness service, select **Configuration**.
-2. In **Deployment Type**, select one of the supported deployment types (deployment type support is described below).
+2. In **Deployment Type**, select one of the [supported deployment types](#deployment-type-support).
 3. In **Artifacts**, select **Add Artifact Source**.
 4. In **Specify Artifact Repository Type**, select **Azure Artifacts**, and select **Continue**.
 5. In **Azure Artifacts Repository**, select or create an Azure Artifacts connector that connects to your Azure DevOps organization, and then select **Continue**.
 6. In **Artifact Details**, enter the following:
-   1. **Artifact Source Identifier:** enter the name for the artifact in Harness.
-   2. **Scope:** select **Org** or **Project**.
-   3. **Feed:** select the artifact feed.
-   4. **Package Name:** select the name of the package on Azure Artifacts.
-   5. **Version:** select the artifact version to use or set the option as a runtime input or expression.
+   1. **Artifact Source Identifier:** Enter the name for the artifact in Harness.
+   2. **Scope:** Select **Org** or **Project**.
+   3. **Feed:** Select the artifact feed.
+   4. **Package Name:** Select the name of the package on Azure Artifacts.
+   5. **Version:** Select the artifact version to use or set the option as a runtime input or expression.
 7. Select **Submit**.
 
 <docimage path={require('./static/c5a9e07628ab8f1c79c71ba7f19750797af1321378f1008563e8d58595c70d74.png')} width="60%" height="60%" title="Click to view full size image" />
