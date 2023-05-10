@@ -1,6 +1,6 @@
 ---
 title: Webhook triggers reference
-description: This topic provides settings information for Triggers. Triggers are used to initiate the execution of Pipelines. For steps on setting up different types of Triggers, see Triggers Howtos. Name. The un…
+description: This topic provides settings information for triggers.
 # sidebar_position: 2
 helpdocs_topic_id: rset0jry8q
 helpdocs_category_id: lussbhnyjt
@@ -8,55 +8,101 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings information for Triggers. Triggers are used to initiate the execution of Pipelines.
+This topic provides settings information for triggers. Triggers are used to initiate the execution of pipelines.
 
-For steps on setting up different types of Triggers, see [Triggers Howtos](/docs/category/triggers).
+For steps on setting up different types of triggers, go to the [Triggers documentation](/docs/category/triggers).
 
-## Name
+<details>
+<summary>Write triggers in YAML</summary>
 
-The unique name for the Trigger.
+There is a YAML editor for triggers. When creating or editing a trigger, switch to **YAML** to access the YAML editor.
 
-## ID
+Here's an example of the YAML for a trigger.
 
-See [Entity Identifier Reference](../../20_References/entity-identifier-reference.md).
+```yaml
+trigger:  
+    name: GitlabNewTrigger  
+    identifier: GitlabNewTrigger  
+    enabled: true  
+    description: ""  
+    tags: {}  
+    orgIdentifier: default  
+    projectIdentifier: NewProject  
+    pipelineIdentifier: testpp  
+    source:  
+        type: Webhook  
+        spec:  
+            type: Gitlab  
+            spec:  
+                type: MergeRequest  
+                spec:  
+                    connectorRef: gitlab  
+                    autoAbortPreviousExecutions: true  
+                    payloadConditions:  
+                        - key: <+trigger.payload.user.username>  
+                          operator: In  
+                          value: john, doe.john  
+                    headerConditions:  
+                        - key: <+trigger.header['X-Gitlab-Event']>  
+                          operator: Equals  
+                          value: Merge Request Hook  
+                    jexlCondition: (<+trigger.payload.user.username> == "doe" || <+trigger.payload.user.username> == "doe.john") && <+trigger.header['X-Gitlab-Event']> == "Merge Request Hook"  
+                    actions: []  
+    inputYaml: |  
+        pipeline:  
+            identifier: testpp  
+            properties:  
+                ci:  
+                    codebase:  
+                        build:  
+                            type: branch  
+                            spec:  
+                                branch: <+trigger.branch>  
+            variables:  
+                - name: testVar  
+                  type: String  
+                  value: alpine
+```
 
-## Description
+</details>
 
-Text string.
+## Configuration settings
 
-## Tags
+### Trigger object metadata
 
-See [Tags Reference](../../20_References/tags-reference.md).
+* **Name** and **Id**: Enter a name for the trigger. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the trigger is saved. Once saved, you can change the name but not the Id.
+* **Description**: Optional text string.
+* **Tags**: Go to the [Tags Reference](../../20_References/tags-reference.md).
 
-## Payload Type
+### Payload Type
 
-Git providers, such as Azure, GitHub, Bitbucket, and GitLab.
+Either **Custom** or a Git provider: **Azure**, **GitHub**, **Bitbucket**, **GitLab**.
 
-## Custom Payload type
+For the **Custom** payload type, you must create a secure token and add it to your custom Git provider. Whenever you regenerate a secure token, any preceding tokens become invalid, and you must update your Git provider with the new token.
 
-To use a custom payload type, copy the secure token and add it to your custom Git provider.
+### Connector
 
-Whenever you regenerate a secure token, any preceding tokens become invalid. Update your Git provider with the new token.
+Select the [code repo connector](/docs/category/code-repo-connectors) that connects to your Git provider account. The generic Git connector is not supported; you must use a provider-specific connector.
 
-## Connector
+:::info Personal Access Token Permissions
 
-Select the Code Repo Connector that connects to your Git provider account.
+The personal access token used for connector authentication must have the appropriate scopes/permissions.
 
-See [Code Repo Connectors Tech Ref](/docs/category/code-repo-connectors).
+For example, a GitHub personal access token for a GitHub connector must include all `repo`, `user`, and `admin:repo_hook` options for **Scopes**.
 
-:::note
+For information about other provider's token scopes, go to:
 
-Git webhook triggers do not support generic Git connectors. You must create provider-specific connectors for each provider (Github, GitLab, Bitbucket, etc) to use them with webhook triggers. For information on each Git provider connector, go to [Connect to a Git Repo](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-code-repo).
+* [GitLab - Personal access token scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes)
+* [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
+* [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
 
 :::
 
-## Repository Name
+If the connector is for an entire account, rather than a specific repository, you must also enter the **Repository Name** for this trigger.
 
-Enter the name of the repo in the account.
+### Event and Actions
 
-## Event and Actions
-
- Select Git events and, if applicable, one or more actions that will initiate the Trigger.
+Select Git events and, if applicable, one or more actions that will initiate the trigger.
 
 | **Payload Type** | **Event** | **Actions** |
 | --- | --- | --- |
@@ -89,9 +135,13 @@ For details on each provider's events, go to:
 * [GitLab - Events](https://docs.gitlab.com/ee/api/events.html)
 * [Bitbucket - Repository events](https://support.atlassian.com/bitbucket-cloud/docs/event-payloads/#Repository-events)
 
-## Conditions
+### Configure Secret
 
-Optional conditions to specify in addition to events and actions. These help to form the overall set of criteria to trigger a Pipeline based on changes in a given source.
+Optional setting for additional authentication.
+
+## Conditions settings
+
+Conditions are optional settings you can use to refine the trigger, in addition to events and actions. These form the overall set of criteria to trigger a pipeline based on changes in a given source.
 
 For example:
 
@@ -113,7 +163,7 @@ The JEXL `in` operator is not supported in the **JEXL Condition** field.
 
 :::
 
-With the exception of JEXL conditions, trigger conditions include an **Attribute**, **Operator**, and **Matches Value**.
+With the exception of [JEXL conditions](#jexl-conditions), trigger conditions include an **Attribute**, **Operator**, and **Matches Value**.
 
 ### Attributes
 
@@ -279,66 +329,13 @@ The JEXL `in` operator is not supported in the **JEXL Condition** field.
 
 ## Pipeline Input
 
-You can specify [runtime inputs]((../run-pipelines-using-input-sets-and-overlays.md)) for the trigger to use, such as Harness Service and artifact.
+You can specify [runtime inputs](../run-pipelines-using-input-sets-and-overlays.md) for the trigger to use, such as Harness Service and artifact.
 
 You can use [built-in Git payload expressions](#built-in-git-payload-expressions) and [JEXL expressions](#jexl-conditions) in this setting.
 
-## Configure triggers in YAML
-
-There is a YAML editor for triggers. When creating or editing a trigger, switch to **YAML** to access the YAML editor.
-
-Here's an example of the YAML for a trigger.
-
-```yaml
-trigger:  
-    name: GitlabNewTrigger  
-    identifier: GitlabNewTrigger  
-    enabled: true  
-    description: ""  
-    tags: {}  
-    orgIdentifier: default  
-    projectIdentifier: NewProject  
-    pipelineIdentifier: testpp  
-    source:  
-        type: Webhook  
-        spec:  
-            type: Gitlab  
-            spec:  
-                type: MergeRequest  
-                spec:  
-                    connectorRef: gitlab  
-                    autoAbortPreviousExecutions: true  
-                    payloadConditions:  
-                        - key: <+trigger.payload.user.username>  
-                          operator: In  
-                          value: john, doe.john  
-                    headerConditions:  
-                        - key: <+trigger.header['X-Gitlab-Event']>  
-                          operator: Equals  
-                          value: Merge Request Hook  
-                    jexlCondition: (<+trigger.payload.user.username> == "doe" || <+trigger.payload.user.username> == "doe.john") && <+trigger.header['X-Gitlab-Event']> == "Merge Request Hook"  
-                    actions: []  
-    inputYaml: |  
-        pipeline:  
-            identifier: testpp  
-            properties:  
-                ci:  
-                    codebase:  
-                        build:  
-                            type: branch  
-                            spec:  
-                                branch: <+trigger.branch>  
-            variables:  
-                - name: testVar  
-                  type: String  
-                  value: alpine
-```
-
-## Webhooks
+## Webhook registration
 
 For all Git providers supported by Harness, the webhook is automatically created in the repo. You usually don't need to copy the URL and add it to your repo's webhook settings.
-
-### Automatically registered Git events
 
 The following Git events are automatically added to the webhooks that Harness registers.
 
@@ -397,7 +394,21 @@ import TabItem from '@theme/TabItem';
 
 ### Manual and custom webhook registration
 
-Here's a summary of the manual webhook registration process if automatic webhook registration fails or is impossible (as with custom webhooks).
+Use the manual webhook registration process if automatic webhook registration fails or is impossible (as with custom webhooks).
+
+:::info Webhook registration permissions
+
+You must have the appropriate level of access to configure repo webhooks in your Git provider, and the personal access token used for [code repo connector](/docs/category/code-repo-connectors) authentication must have the appropriate scopes/permissions.
+
+For example, for GitHub, you must be a repo admin and the GitHub personal access token used in the pipeline's GitHub connector must include all `repo`, `user`, and `admin:repo_hook` options for **Scopes**.
+
+For information about other provider's token scopes, go to:
+
+* [GitLab - Personal access token scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes)
+* [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
+* [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
+
+:::
 
 1. In Harness, obtain the trigger webhook by selecting the **Webhook/Link** icon in the list of triggers.
 
@@ -409,7 +420,7 @@ Here's a summary of the manual webhook registration process if automatic webhook
 
 3. Add a webhook. In the webhook settings, paste the webhook URL that you copied from Harness into the payload URL setting in the repo. Make sure that you select JSON for the content type. For example, in GitHub, you select **application/json** in **Content type**.
 
-#### Custom webhook URL format
+:::info Custom webhook URL format
 
 The format for the custom webhook URL is as follows:
 
@@ -423,22 +434,6 @@ The `pipelineIdentifier` and `triggerIdentifier` target the webhook at the speci
 
 In some cases, you won't want to target the webhook at the specific pipeline and trigger. For example, there are events in GitHub that are not covered by Harness and you might want to set up a custom trigger for those events that applies to all pipelines and their triggers in a project. To instruct Harness to evaluate the custom trigger against all pipelines (until it finds matching **Conditions**), remove `pipelineIdentifier` and `triggerIdentifier` from the URL before adding it to your repo.
 
-#### Webhook registration permissions
-
-To register a webhook:
-
-* You must have the appropriate level of access to configure repo webhooks in your Git provider.
-* The personal access token used for [code repo connector](/docs/category/code-repo-connectors) authentication must have the appropriate scopes/permissions.
-
-For example, for GitHub, you must be a repo admin and the GitHub personal access token used in the pipeline's GitHub connector must include all `repo`, `user`, and `admin:repo_hook` options for **Scopes**.
-
-![GitHub personal access token scopes.](./static/trigger-pipelines-using-custom-payload-conditions-32.png)
-
-For information about other provider's token scopes, go to:
-
-* [GitLab - Personal access token scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes)
-* [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
-* [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
 
 :::
 
