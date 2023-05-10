@@ -36,45 +36,27 @@ To do this tutorial, you need the following:
 
 1. In the Harness UI, click **Security Tests**, then **Pipelines**, then **Create a Pipeline**. 
 
-   <figure>
-
    ```mdx-code-block
     <img src={create_pipeline} alt="Create a new STO pipeline." height="40%" width="40%" />
     ```
-
-   <figcaption>Figure 1: Create a new pipeline</figcaption>
-   </figure> 
-
 
 2. Enter a pipeline name and click **Start**. 
 
 3. In the visual editor, add a **Security Tests** stage. 
 
-   <figure>
-
     ```mdx-code-block
     <img src={add_sto_stage} alt="Create a new STO pipeline." height="40%" width="40%" />
     ```
 
-   <figcaption>Figure 2: Add a <b>Security Tests</b> stage</figcaption>
-   </figure> 
-
-
 4. In **About your Stage**, do the following:
 
-   a. Enter a name.
+   1. Enter a name.
 
-   b. In **Configure Codebase**, select your codebase connector and enter the repository that you want to scan.  
-     
-   <figure>
+   2. In **Configure Codebase**, select your codebase connector and enter the repository that you want to scan.  
+      
+     ![](./static/trigger-tutorial-02-set-up-sto-stage.png)
 
-   ![](./static/trigger-tutorial-02-set-up-sto-stage.png)
-
-   <figcaption>Figure 3: Set up the <b>Security Tests</b> stage</figcaption>
-   </figure> 
-
-
-   c. Click **Set up Stage**. 
+   3. Click **Set up Stage**. 
 
 
 4. In **Infrastructure**, specify your build infrastructure. STO supports Cloud (Linux AMD64) and Kubernetes infrastructures.
@@ -83,81 +65,57 @@ To do this tutorial, you need the following:
 
 6. In **Configure Bandit**, specify the following:
 
-   a. Scan Mode = **Orchestration**
+   1. Scan Mode = **Orchestration**
 
-   b. Target name  = ***your-name*-dvpwa**
+   2. Target name  = ***your-name*-dvpwa**
 
-   c. Target variaent = **<+codebase.branch>**
+   3. Target variaent = **<+codebase.branch>**
 
 7. Click **Apply Changes** to return to the pipeline, 
 
 8. Click **Run** (top right). In **Run Pipeline**, select **Git Branch** for the build type and **master** for the branch name. Then click **Run Pipeline** to ensure that the pipeline runs successfully as configured. 
 
-### Add a trigger to your pipeline
+## Add a trigger to your pipeline
 
-In this section, you'll add a trigger to your pipeline that that listsns for incoming requests on a webhook.
+Add a trigger to your pipeline that that listens for incoming requests on a webhook.
 
 1. In the rop right of the visual editor, click **Triggers**. 
 
 2. Click **New Trigger** and select the webhook for your Git service provider. 
 
-   <figure>
-
    ![New webhook trigger](./static/trigger-tutorial-04-select-trigger.png)
-
-   <figcaption>Figure 4: Add a new <b>Webhook</b> trigger</figcaption>
-   </figure> 
    
 
 3. In **Configuration**, specify the webhook as follows. This is a typical setup, where any event related to a merge request triggers a pipeline build. 
 
-   a. Connector = The connector to your Git service provider.
+   1. Connector = The connector to your Git service provider.
 
-   b. Repository Name = The repository you want to scan. 
+   2. Repository Name = The repository you want to scan. 
 
-   c. Event = **Merge Request**. 
+   3. Event = **Merge Request**. 
 
-   d. Select **Any Actions**. 
-
-     <figure>
+   4. Select **Any Actions**. 
 
      ![](./static/trigger-tutorial-05-trigger-config.png)
 
-     <figcaption>Figure 5: Configure the trigger</figcaption>
-     </figure> 
      
 4. In **Conditions**, set the conditions for running the pipeline. The typical setup is to trigger a build based on the main or master branch of the repo.
 
-   <figure>
-
    ![](./static/trigger-tutorial-06-trigger-condition.png)
-
-   <figcaption>Figure 6: Set the trigger conditions</figcaption>
-   </figure> 
-   
 
 5. In **Pipeline Input**, select **Git Branch** for the build type and enter **<+trigger.branch>** for the branch name. Then click **Create Trigger**. 
 
-   <figure>
-
    ![](./static/trigger-tutorial-08-pipeline-input.png)
-
-   <figcaption>Figure 7: Specify the pipeline input</figcaption>
-   </figure> 
 
    The new trigger now appears in the Triggers table. Note that this table includes a **Webhook** column with a link.
 
 6. Click the **Webhook** link to copy the webhook URL for this trigger to the clipboard. You will now add this webhook to your Git service. 
 
-   <figure>
-
    ![](./static/trigger-tutorial-07-copy-url-webhook.png)
 
-   <figcaption>Figure 8: Copy the webhook URL</figcaption>
-   </figure> 
 
 
-### Add the trigger webhook to your Git service
+## Add the trigger webhook to your Git service
 
 The steps to do this differ depending on the service you're using. These steps assume you're using GitLab.
 
@@ -169,13 +127,13 @@ The steps to do this differ depending on the service you're using. These steps a
 
 4. Click **Add webhook** at the bottom of the page. 
 
-### Create a Merge Request in GitLab
+## Create a Merge Request in GitLab
 
-At this point, your setup should be complete. To verify that your trigger is working correctly, do the following:
+To verify that your trigger is working correctly, do the following:
 
-* Open a browser page and point it to the **Execution History** page for your Harness pipeline. 
+1. Open a browser page and point it to the **Execution History** page for your Harness pipeline. 
 
-* Go to your GitLab repo, then create and approve a merge request. 
+2. Go to your GitLab repo, then create and approve a merge request. 
 
 With the integration in place, the following events occur when you create a merge request in your GitLab repository:
 
@@ -189,12 +147,13 @@ With the integration in place, the following events occur when you create a merg
 
 ![](./static/trigger-tutorial-09-triggered-build.png)
 
-<figcaption>Figure 9: Harness pipeline build launched from trigger</figcaption>
+<figcaption>Figure 1: Harness pipeline build launched from trigger</figcaption>
 </figure>
+
 
 <figure>
 
 ![](./static/trigger-tutorial-10-security-tests.png)
 
-<figcaption>Figure 10: Scan results</figcaption>
+<figcaption>Figure 2: Scan results</figcaption>
 </figure>
