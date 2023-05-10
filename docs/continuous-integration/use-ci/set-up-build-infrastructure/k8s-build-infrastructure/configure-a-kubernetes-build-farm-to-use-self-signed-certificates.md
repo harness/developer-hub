@@ -52,7 +52,6 @@ If you have STO scan steps in your pipeline, you can set up your certificates us
    You need to specify the following environment variables in the Delegate pod:
 
    * `ADDITIONAL_CERTS_PATH`: The path to the certificates in the Delegate, for example: `/tmp/ca.bundle`.
-   
    * `CI_MOUNT_VOLUMES`: A comma-separated list of `source:destination` mappings. The `source` is the certificate path on the delegate, and the `destination` is the path where you want to expose the certificates on the build containers, for example: `/tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt`.
    
    This list must include *all* certificates that your build containers need to interact with external services.
