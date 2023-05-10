@@ -50,7 +50,8 @@ The YAML provided for the Harness Delegate defaults to `cluster-admin` because t
 
 ### Use the platform-agnostic Kubernetes Cluster Connector to connect to EKS
 
-To connect Harness to Amazon EKS, use the platform-agnostic Kubernetes Cluster Connector discussed in this topic or an [Elastic Kubernetes Service (EKS)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-eks) cloud connector.
+To connect Harness to Amazon EKS, use the platform-agnostic Kubernetes Cluster Connector discussed in this topic.
+<!--- or an [Elastic Kubernetes Service (EKS)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-eks) cloud connector. -->
 
 Do not use an [AWS Connector](./add-aws-connector.md).
 
