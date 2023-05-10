@@ -135,13 +135,69 @@ For details on each provider's events, go to:
 * [GitLab - Events](https://docs.gitlab.com/ee/api/events.html)
 * [Bitbucket - Repository events](https://support.atlassian.com/bitbucket-cloud/docs/event-payloads/#Repository-events)
 
+### Auto-abort Previous Execution
+
+Select this option if you want to override active builds whenever this trigger is activated. By selecting this option, when the branch/PR associated with the trigger receives a newer update that re-triggers the trigger, then any ongoing builds that were previously started by the same trigger are cancelled before the new build starts.
+
+Harness uses the following combinations as criteria to identify similar active builds for **Pull Request** events:
+
+* Account identifier
+* Org identifier
+* Project identfier
+* Pipeline identifier
+* Repository URL
+* PR number
+* Source branch
+* Target branch
+
+Harness uses the following combinations as criteria to identify similar active builds for **Push** events.
+* Account identifier
+* Org identifier
+* Project identfier
+* Pipeline identifier
+* Repository URL
+* Ref (the value of `ref` from the Git push webhook payload)
+
 ### Configure Secret
 
-Optional setting for additional authentication.
+This is an optional setting for additional authentication. You can select a secret for authenticating the webhook call.
+
+For the secret to work with your webhook, you need to configure the repository webhook with the same secret after creating the trigger in Harness.
+
+![GitHub repo secret settings.](/docs/platform/11_Triggers/static/177d72e7c78be248475dbdaf4a4faa2519415049151ed88451f1be00390cd90f.png)
+
+:::tip Enforce authentication
+
+To enforce authentication for all webhook triggers in a project, you can modify the project's **Default Settings**.
+
+1. In your Harness project, select **Project Setup**, and then select **Default Settings**.
+2. Expand the **Pipeline** settings, and then set **Mandate Webhook Secrets for Github Triggers** to **true**.
+
+Now all GitHub webhooks for this project must be authenticated. This means all GitHub triggers, and their associated GitHub repo webhooks, in this project must be configured with a secret. When authenticated in this way, a secret manager with a delegate selector uses the corresponding delegate to decrypt it.
+
+:::
+
+### Polling frequency
+
+:::note
+
+Currently, this feature is only available for GitHub webhooks, and it is behind the feature flag `CD_GIT_WEBHOOK_POLLING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+By default, Harness Git-based triggers listen to Git events using webhooks.
+
+:::
+
+Sometimes webhook events can be missed due to a firewall or a network issue preventing calls from reaching Harness.
+
+To prevent these issues from happening, enter an polling interval in **Polling Frequency**. The polling frequency must be at least two minutes (`2m`) and no more than one hour (`1h`).
+
+You must also enter the GitHub webhook's ID in **Webhook Id**, which can be found at the end of the URL for the GitHub webhook's settings page. If this trigger is new, you will have to get this value after you create the trigger in Harness and allow Harness to automatically create the GitHub webhook.
+
+<docimage path={require('/docs/platform/11_Triggers/static/752891ea2d0d9bcee2511ad039994271c20f002eb525570b5bc8038915b85da1.png')} width="60%" height="60%" title="Getting a webhook ID from a GitHub webhook page URL." />
 
 ## Conditions settings
 
-Conditions are optional settings you can use to refine the trigger, in addition to events and actions. These form the overall set of criteria to trigger a pipeline based on changes in a given source.
+Conditions are optional settings you can use to refine the trigger beyond [events and actions](#event-and-actions). These form the overall set of criteria to trigger a pipeline based on changes in a given source.
 
 For example:
 
@@ -220,7 +276,7 @@ Single-value operators include:
 * **Starts With** - Expects a single value. Matches any full path starting with the value.
 * **Ends With** - Expects a single value. Matches any full path ending with the value.
 * **Contains** - Expects a single value. Matches any full path containing the value.
-* **In** and **Not In** - Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. Also accepts Regex, such as `main,release/.*`
+* **In** and **Not In** - Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. For some **Conditions**, you can also use Regex, such as `main,release/.*`
 * **Regex** - Expects a single Regex value. Matches full paths based on the Regex. Use this operator if you want to specify multiple paths.
 
 You can use Regex to specify all files in a parent folder, such as `ci/*`.
@@ -244,6 +300,10 @@ For example, the following image shows a trigger that would start a build if bot
 
 ### Header Conditions
 
+In the **Attribute** field, the header expression format is `<+trigger.header['key-name']>`, such as `<+trigger.header['X-GitHub-Event']>`. The following image shows how the expression `<+trigger.header['X-GitHub-Event']>` was derived from the `X-GitHub-Event` key in a GitHub webhook payload.
+
+![Extracting trigger attributes from a GitHub webhook payload.](./static/triggers-reference-13.png)
+
 While valid JSON cannot contain a dash (-), headers are not JSON strings and often contain dashes. For example, `X-Github-Event`  and `content-type` in the following payload:
 
 ```json
@@ -259,15 +319,11 @@ X-GitHub-Hook-Installation-Target-ID: 250384642
 X-GitHub-Hook-Installation-Target-Type: repository
 ```
 
-In the **Attribute** field, the header expression format is `<+trigger.header['key-name']>`, such as `<+trigger.header['X-GitHub-Event']>`. The following image shows how the expression `<+trigger.header['X-GitHub-Event']>` was derived from the `X-GitHub-Event` key in a GitHub webhook payload.
-
-![Extracting trigger attributes from a GitHub webhook payload.](./static/triggers-reference-13.png)
-
 If the header key doesn't contain a dash (`-`), then the following format also works: `<+trigger.header['key name']>`
 
 When Harness evaluates the header key you provide, the comparison is case insensitive.
 
-In **Matches Value**, you can enter a single value or multiple comma-separated values, and you can use wildcards.
+Depending on the [operator](#operators), In **Matches Value**, you can enter a single value or multiple comma-separated values, and you can use wildcards.
 
 ### Payload Conditions
 
@@ -433,7 +489,6 @@ The `orgIdentifier` and `projectIdentifier` are mandatory.
 The `pipelineIdentifier` and `triggerIdentifier` target the webhook at the specific pipeline and trigger.
 
 In some cases, you won't want to target the webhook at the specific pipeline and trigger. For example, there are events in GitHub that are not covered by Harness and you might want to set up a custom trigger for those events that applies to all pipelines and their triggers in a project. To instruct Harness to evaluate the custom trigger against all pipelines (until it finds matching **Conditions**), remove `pipelineIdentifier` and `triggerIdentifier` from the URL before adding it to your repo.
-
 
 :::
 
