@@ -194,6 +194,10 @@ If you select **Connect through a Harness Delegate**, you can select **Use any a
 
 If you want to use specific delegates, you must identify those delegates. For more information, go to [Select Delegates with Tags](../../../2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
+### Kubernetes delegate with self-signed certificates
+
+If your codebase connector allows API access and connects through a Harness Delegate that uses self-signed certificates, you must specify `ADDITIONAL_CERTS_PATH` in the delegate pod, as described in [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates#enable-self-signed-certificates).
+
 ## Troubleshooting
 
 If the connection test returns a `not authorized` error, make sure you used the **Username** specified in the Bitbucket **Account settings**.
