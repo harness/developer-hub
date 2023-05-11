@@ -49,8 +49,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="Early access">
 ```
 
-### Early access
-
 This release does not incude early-access features. 
 
 
@@ -58,8 +56,6 @@ This release does not incude early-access features.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
-
-### Fixed issues
 
 * Fixed an issue with Mend scans that caused builds to fail with the log message “Missing valid image". (STO=-5867)
 
