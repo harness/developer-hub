@@ -410,34 +410,34 @@ For a comprehensive list that includes all Harness modules, go to [Supported pla
 
 ## Infrastructure provisioners
 
-- [Terraform](http://localhost:3000/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
-- [Terragrunt](http://localhost:3000/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos)
+- [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
+- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos)
 - Azure ARM and Blueprint
-- [AWS CloudFormation](http://localhost:3000/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos)
+- [AWS CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos)
 - Shell script (custom)
 
 ## CD pipeline controls
 
-- [Strategies](http://localhost:3000/docs/continuous-delivery/manage-deployments/deployment-concepts): basic, rolling, canary, blue green, custom.
-- [Barriers](http://localhost:3000/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers)
-- [Resource Constraints](http://localhost:3000/docs/continuous-delivery/manage-deployments/deployment-resource-constraints)
-- [Queue steps](http://localhost:3000/docs/continuous-delivery/manage-deployments/control-resource-usage-with-queue-steps)
-- [Deployment freeze](http://localhost:3000/docs/continuous-delivery/manage-deployments/deployment-freeze)
-- [Failure strategies](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-- [Conditional executions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-- [Looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-- [Triggers](/docs/category/triggers)
-- [Input set and overlays](/docs/platform/pipelines/input-sets/)
+- [Strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts): basic, rolling, canary, blue green, custom.
+- [Barriers](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers)
+- [Resource Constraints](/docs/continuous-delivery/manage-deployments/deployment-resource-constraints)
+- [Queue steps](/docs/continuous-delivery/manage-deployments/control-resource-usage-with-queue-steps)
+- [Deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze)
+- [Failure strategies](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings//)
+- [Conditional executions](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+- [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+- [Triggers](https://developer.harness.io/docs/category/triggers)
+- [Input set and overlays](https://developer.harness.io/docs/platform/pipelines/input-sets/)
 
 ## Manifests and file sources
 
-- [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/)
-- [Git on any platform](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
-- [Github](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-- [GitLab](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
-- [Bitbucket](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-- [AWS CodeCommit](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
-- [Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo/)
+- [Harness File Store](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/)
+- [Git on any platform](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
+- [Github](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+- [GitLab](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+- [Bitbucket](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+- [AWS CodeCommit](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
+- [Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo/)
 
 ## Artifact sources
 
