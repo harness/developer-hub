@@ -60,7 +60,6 @@ This release does not incude early-access features.
   <TabItem value="Fixed issues">
 ```
 
-### Fixed issues
 
 * Fixed an issue with Mend scans that caused builds to fail with the log message “Missing valid image". (STO=-5867)
 
