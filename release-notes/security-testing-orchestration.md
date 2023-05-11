@@ -27,19 +27,23 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### What's new
 
-* Zap now supports the ingestion of both JSON and XML reports. For information about the ZAP XML report format, go to [Traditional XML Report](https://www.zaproxy.org/docs/desktop/addons/report-generation/report-traditional-xml/) in the ZAP documentation. (STO-5868)
+* You can now ingest ZAP scan results from both JSON and XML reports. For information about the ZAP XML report format, go to [Traditional XML Report](https://www.zaproxy.org/docs/desktop/addons/report-generation/report-traditional-xml/) in the ZAP documentation. (STO-5868)
 
-* The Security Tests tab now renders tables from tool-provided descriptions in the Issue Details panel. (STO-5857)
+* The Security Tests tab now renders tables from tool-provided descriptions in the **Issue Details** panel. (STO-5857)
 
-* The UI now uses consistent terminology when referring to exemptions. All references to "ignore" and "ignored" have been updated to "exempted" and "exempted." (STO-5749)
+* The UI now uses consistent terminology when referring to exemptions. All references to "ignore" and "ignored" have been updated to "exempt" and "exempted." (STO-5749)
 
-* The Security Testing Dashboard  includes a new **Target Type** filter. (STO-5732)
+* The Security Testing Dashboard includes a new **Target Type** filter. (STO-5732)
 
   ![](./static/sto-std-new-filter-sto-5732.png)
 
-* The Security Tests tab now paginates results for scans that detect a lot of issues. You can paginate by 20, 50, or 100 issues per page. (STO-5211)
+* The **Security Tests** tab now paginates results for scans that detect a lot of issues. You can set the pagination to 20, 50, or 100 issues per page. (STO-5211)
 
 * STO now supports [looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for Security Tests stages. (STO-5726)
+
+* You can now select a high-level reason when you [request an exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) for a detected issue. The **Request Exemption for Issue** dialog box includes a new **Reason** pull-down menu with a set of common reasons for exempting an issue. (STO-5730)
+
+   ![](./static/sto-exemption-reason-pulldown.gif)
 
 
 
