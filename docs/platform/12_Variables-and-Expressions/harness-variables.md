@@ -563,7 +563,7 @@ The list of stages selected for execution.
 
 ### <+pipeline.delegateSelectors>
 
-The pipeline level delegate selectors selected via runtime input  
+The pipeline level delegate selectors selected via runtime input.  
 
 ## Deployment and step status
 
