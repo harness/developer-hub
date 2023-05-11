@@ -45,7 +45,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
    ![](./static/sto-exemption-reason-pulldown.gif)
 
 
-
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
