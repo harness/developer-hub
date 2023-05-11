@@ -87,6 +87,7 @@ To do this, edit the service account and click **Permissions**. Click **Roles*
 See [Managing secrets](https://cloud.google.com/secret-manager/docs/access-control) from Google.
 4. Open your service account's Actions ⋮ menu, then select **Create key.**
 5. In the resulting **Create private key** dialog, select the **JSON** option, create the key, and download it to your computer.
+   For more information, go to [Application Default Credentials](https://cloud.google.com/docs/authentication/application-default-credentials)
 6. Go back to Harness.
 7. In **Google Secrets Manager Credentials File**, select the encrypted file you just added in Harness.
 
