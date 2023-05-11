@@ -557,6 +557,14 @@ If a user name is not present in the event payload, the `<+pipeline.triggeredBy.
 
 The email of the user who triggered the pipeline. This returns NULL if the pipeline is triggered using a webhook. See [Trigger How-tos](/docs/category/triggers).
 
+### <+pipeline.selectedStages>
+
+The list of stages selected for execution. 
+
+### <+pipeline.delegateSelectors>
+
+The pipeline level delegate selectors selected via runtime input.  
+
 ## Deployment and step status
 
 Deployment status values are a Java enum. The list of values can be seen in the deployments **Status** filter:
@@ -570,6 +578,15 @@ You can use any status value in a JEXL condition. For example, `<+pipeline.stage
 The expression `<+pipeline.stages.[stage name].spec.execution.steps.[step Id].status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
 
 You must use the expression after the step in execution.
+
+## InputSet
+
+Input Set values are a Json value. The list of values can be searched via 
+
+```
+<+inputSet>
+
+```
 
 ## Stage
 
@@ -656,6 +673,10 @@ Use the following fully qualified expression to get the execution URL for a spec
 <+pipeline.stages.[stageId].executionUrl>
 
 ```
+
+### <+stage.delegateSelectors>
+
+The stage level delegate selectors selected via runtime input
 
 ## Service
 
