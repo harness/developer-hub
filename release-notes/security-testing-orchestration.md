@@ -31,7 +31,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * The Security Tests tab now renders tables from tool-provided descriptions in the **Issue Details** panel. (STO-5857)
 
-* The UI now uses consistent terminology when referring to exemptions. All references to "ignore" and "ignored" have been updated to "exempt" and "exempted." (STO-5749)
+* The UI now uses consistent terminology when referring to exemptions. All references to "ignore" and "ignored" have been updated to "exempt" and "exempted". (STO-5749)
 
 * The Security Testing Dashboard includes a new **Target Type** filter. (STO-5732)
 
