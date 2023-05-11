@@ -122,10 +122,6 @@ In **Secret Key**, use a [Harness Encrypted Text secret](../../Secrets/2-add-us
 :::note
 For more details on the settings to create this connector, see [Bitbucket Connector Settings Reference](../../7_Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference.md).
 
-:::
-
-
-:::note
 Harness supports both Cloud and Data Center (On-Prem) versions of Bitbucket.
 
 :::
@@ -148,7 +144,6 @@ For **HTTP**, the format for the URL should be `https://bitbucket.org/<userName>
 15. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
 ### Add GitLab Repo
-
 
 :::note
 For more details on the settings to create this connector, see [GitLab Connector Settings Reference](../../7_Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference.md).

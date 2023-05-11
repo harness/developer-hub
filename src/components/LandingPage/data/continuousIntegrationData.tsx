@@ -103,7 +103,7 @@ export const CIList: CardItem[] = [
     title: "Go application",
     module: MODULES.ci,
     description:
-      "Build a Docker Image of a Go application.",
+      "Build a Go application.",
     link: "/tutorials/ci-pipelines/build/go",
     type: [docType.Documentation],
     time: "15 min",
@@ -145,16 +145,6 @@ export const CIList: CardItem[] = [
     description:
       "Build a Docker Image of a multi-architecture Rust application.",
     link: "/tutorials/ci-pipelines/build/rust",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-  },
-  {
-    title: "Signed images",
-    module: MODULES.ci,
-    description:
-      "Build a signed Docker Image of a Go application.",
-    link: "/tutorials/ci-pipelines/build/signed-image",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",

@@ -401,7 +401,7 @@ The following table lists Harness support for deployment platforms, artifacts, s
       <li>Google Artifact Registry</li>
       <li>GitHub Package Registry</li>
       <li>Custom registry</li>
-      <li>any Docker Registry such as DockerHub</li>
+      <li>any Docker Registry such as Docker Hub</li>
     </ul>
     <p> Manifest Repo:</p><ul class=""><li>Github</li><li>GitLab</li><li>Bitbucket</li><li> Code Commit (Not Certified)</li><li> Google Cloud Source Repository (Not Certified)</li></ul></td>
   <td valign="top">
@@ -583,7 +583,7 @@ Some Harness features might require specific Terraform versions.
 
 #### Azure AKS clusters
 
-To use an AKS cluster for deployment, the AKS cluster must have local accounts enabled (AKS property `disableLocalAccounts=false`).
+To use an AKS cluster for deployment, the AKS cluster parameter `disableLocalAccounts` can be set either `true` or `false`.
 
 #### AWS and Azure GovCloud
 

@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Harness Self-Managed Enterprise Edition is an end-to-end solution for continuous, self-managed delivery. You can install and update Harness Self-Managed Enterprise Edition using online or offline (air-gapped) methods. This topic provides a summary comparison of Harness SaaS and self-managed offerings and describes the options for self-managed delivery.
 
-For information about supported platforms, go to [Support platforms and technologies](../../getting-started/supported-platforms-and-technologies.md)
+For information about supported platforms, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 ## Compare Harness SaaS with self-managed
 

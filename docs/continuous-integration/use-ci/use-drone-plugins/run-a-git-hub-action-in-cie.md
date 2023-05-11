@@ -58,7 +58,7 @@ You can use expressions or [Runtime Inputs](/docs/platform/20_References/runtime
 1. In the Pipeline Studio, select the **Build** stage, and then select the **Execution** tab.
 2. Select **Add Step**, select **Add Step** again, and then select **Plugins** from the **Step Library**.
 3. Enter a **Name** and optional **Description**.
-4. For **Container Registry**, select a container registry connector that has DockerHub access.
+4. For **Container Registry**, select a container registry connector that has Docker Hub access.
 5. In the **Image** field, enter the name of the GitHub Actions Drone Plugin image: `plugins/github-actions`.
 6. Expand the **Optional Configuration**, and select **Privileged**.
    The GitHub Actions Drone Plugin uses [nektos/act](https://github.com/nektos/act) to run GitHub Actions in Harness CI. It requires DinD (Docker-in-Docker) to run your images. Hence, the **Privileged** attribute needs to be enabled to run with escalated permissions. <!--If you're using local runner or VM build infra, do you need privileged? -->
@@ -76,7 +76,7 @@ Use **Settings** to specify the Github Action you want to use and to pass variab
 | Key | Description | Value format | Value example |
 | - | - | - | - |
 | `uses` | Required. Specify the Action's repo, along with a branch or tag.| `[repo]@[tag]` | `actions/setup-go@v3` |
-| `with` | Required. Provide a map of key-value pairs representing settings required by the GitHub Action itself. | `key: value` | `go-version: '>=1.17.0'` or `{"path: pom.xml", "destination: cie-demo-pipeline/github-action", "credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>"}` |
+| `with` | Required. Provide a map of key-value pairs representing settings required by the GitHub Action itself. | `key: value` | `go-version: '>=1.17.0'` or `{path: pom.xml, destination: cie-demo-pipeline/github-action, credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>}` |
 | `env` | Optional. Specify a map of environment variables to pass to the Action. | `key: value` | `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` |
 
 :::tip
@@ -85,11 +85,47 @@ You can use variable expressions in your values, such as `credentials: <+stage.v
 
 :::
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual editor example">
+```
+
 ![A configured Plugin step with Settings variables.](./static/run-a-git-hub-action-in-cie-03.png)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML example" default>
+```
+
+```yaml
+                          - step:
+                                identifier: gcsuploader
+                                name: gcsuploader
+                                type: Plugin
+                                spec:
+                                    connectorRef: dockerhub # Your Docker connector ID
+                                    image: plugins/github-actions
+                                    privileged: true
+                                    settings:
+                                        uses: google-github-actions/upload-cloud-storage@main # The GitHub Action you want to use
+                                        with: # Action settings
+                                            path: pom.xml
+                                            destination: cie-demo-pipeline/github-action
+                                            credentials: <+stage.variables.GCP_SECRET_KEY_BASE64>
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ### Private Action repos
 
-If you want to use an Action composite that is located in a private repository, you must add a `GITHUB_TOKEN` environment variable to the `env` **Settings**. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose.
+If you want to use an Action composite that is located in a private repository, you must add a `GITHUB_TOKEN` environment variable to the `env` settings. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose.
 
 * Key: `env`
 * Value: `GITHUB_TOKEN: <+secrets.getValue("[SECRET_NAME]")>`
@@ -117,8 +153,8 @@ Here's an example of the YAML for a `Plugin` step using a private Action repo:
        uses: myorg/private-action-step@v1
        with:
          path: pom.xml
-     envVariables:
-       GITHUB_TOKEN: <+secrets.getValue("github_pat")>
+       env:
+         GITHUB_TOKEN: <+secrets.getValue("github_pat")>
 ```
 
 ## Test your pipeline

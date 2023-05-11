@@ -136,7 +136,7 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
 
    :::info
 
-   You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For this tutorial, select **Kubernetes Manifest**. For information about the other options and detailed instructions, go to [Install a delegate](/docs/platform/Delegates/install-delegates/install-a-delegate).
+   You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For this tutorial, select **Kubernetes Manifest**. For information about the other options and detailed instructions, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
 
    If delegate installation succeeds, the `kubectl apply` command should produce output similar to the following:
 
@@ -202,7 +202,7 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
 4. Create a Docker Registry connector to connect to your Docker Hub account.
 
    * **Name:** Enter a recognizable name for the connector.
-   * **Provider Type:** Select **DockerHub**.
+   * **Provider Type:** Select **Docker Hub**.
    * **Docker Registry URL:** Enter `https://index.docker.io/v2/`.
    * **Username:** Enter the username for your Docker Hub account.
    * **Password:** Create a secret for a Personal Access Token that Harness can use to access your Docker Hub account.
@@ -289,7 +289,7 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
 2. For the **Pipeline Inputs**, select **Git branch** and enter the target branch in the code repo, such as `main`.
 3. Select **Run Pipeline**.
 
-On the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds) you can observe the pipeline while it runs. Select a stage to examine the steps in that stage. Select a step to view the step's logs. Select the **Tests** tab to [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests).
+On the [Build details page](/docs/continuous-integration/use-ci/viewing-builds) you can observe the pipeline while it runs. Select a stage to examine the steps in that stage. Select a step to view the step's logs. Select the **Tests** tab to [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests).
 
 ![](../static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-27.png)
 

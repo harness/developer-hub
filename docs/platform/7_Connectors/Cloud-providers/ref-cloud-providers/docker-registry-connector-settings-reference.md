@@ -12,7 +12,7 @@ This topic provides settings and permissions for the Docker Connector.
 
 ### Docker registry rate limits
 
-For pulling Docker images from Docker repos, Harness is restricted by the limits of the Docker repo. For example, [Dockerhub limits](https://docs.docker.com/docker-hub/download-rate-limit/).
+For pulling Docker images from Docker repos, Harness is restricted by the limits of the Docker repo. For example, [Docker Hub limits](https://docs.docker.com/docker-hub/download-rate-limit/).
 
 ### Docker Registries in Cloud Platforms
 
@@ -66,7 +66,7 @@ To connect to a private Docker registry, use `https://index.docker.io/v2/`.
 
 The Docker registry platform that you want to connect. Some examples:
 
-* DockerHub
+* Docker Hub
 * Harbor
 * Quay
 

@@ -50,7 +50,7 @@ In the CI Build stage > **Infrastructure** tab, define the build infrastructure 
 In the Execution tab, add a [Background step](../manage-dependencies/background-step-settings.md) and configure it as follows:
 
 * **Name:** `dind_Service`
-* **Container Registry:** A DockerHub container registry connector.
+* **Container Registry:** A Docker Hub container registry connector.
 * **Image:** The image you want to use, such as [docker:dind](https://hub.docker.com/_/docker).
 * **Optional Configuration:** Select **Privileged**. This is required for Docker-in-Docker.
 

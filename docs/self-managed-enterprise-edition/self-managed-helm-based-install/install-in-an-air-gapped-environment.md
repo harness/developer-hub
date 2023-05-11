@@ -22,7 +22,7 @@ The Harness Self-Managed Platform is designed to cater to various deployment sce
 
 - Access to Helm charts or [download locally](https://github.com/harness/helm-charts/releases)
 
-- Access to [the Harness airgap bundle on GCP](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped.tgz) 
+- Access to [the Harness airgap bundle on GCP](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped-1_0_78927.tgz) 
 
 - Kubernetes version 1.22+ (Harness recommends v1.23.x)
 
@@ -36,7 +36,7 @@ The flowchart below shows the air-gapped environment installation workflow steps
 ## Download required files
 
 To begin your installation, download the following files:
-- Harness air-gapped bundle [harness-airgapped.tgz](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped.tgz)
+- Harness air-gapped bundle [harness-airgapped-1_0_78927.tgz](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped-1_0_78927.tgz)
 - Harness airgap images [harness-airgap-images.sh](https://storage.googleapis.com/smp-airgap-bundles/harness-airgap-images.sh)
 
 ## Save Docker images to your private registry
