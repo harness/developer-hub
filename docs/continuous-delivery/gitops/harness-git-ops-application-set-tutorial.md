@@ -229,29 +229,7 @@ Now that we have the Agent, Clusters, and Repo, we can create the GitOps Applica
 	1. **Cluster:** select the Agent cluster **appset-example**.
 	2. Namespace: enter **default**.
 
-The GitOps Application is added. Now you can sync it.
-
-## Sync the ApplicationSet to create the applications
-
-A Sync brings the live state to its desired state by applying the declarative description. The guestbook application in the ApplicationSet will be created in the two target clusters. After the sync, the resources will look like this in Harness:
-
-![](./static/harness-git-ops-application-set-tutorial-40.png)
-
-When you click **Sync**, Harness will use the ApplicationSet to create the new Harness Applications for the dev and prod clusters.
-
-1. In the GitOps Application, click **SYNC**.
-   
-   ![](./static/harness-git-ops-application-set-tutorial-41.png)
-
-2. In the Sync settings, click **Synchronize**. Synchronization will take a minute.
-
-In the git-generator-files-discovery Application **Resource View**, you can see the ApplicationSet and new Applications:
-
-![](./static/harness-git-ops-application-set-tutorial-42.png)
-
-Congratulations! Now you have a working ApplicationSet in Harness deploying an application to two target clusters.
-
-Next, we'll create a PR Pipeline to change the application in just one of the target clusters.
+The GitOps Application is added. Now you can [sync](/docs/continuous-delivery/gitops/sync-gitops-applications) it.
 
 ## Create a PR Pipeline
 
@@ -352,13 +330,22 @@ The Harness Service represents what you're deploying. In this case, we're deploy
 1. In **Select Service**, click **New Service**.
 2. In **Name**, enter **PR Example**.
 3. In **Manifests**, click **Add Release Repo Manifest**.
-4. In **Release Repo Store**, select **Github**.  
+4. In **Release Repo Store**, select one of the following repositories.  
 
-Now we'll add a Github Connector to tell Harness where to pull the config.json from.
+```mdx-code-block
+import Tabs from '@theme/Tabs';   
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+<TabItem value="GitHub" label="GitHub" default>
+```
 
-#### Add Github Connector
+Add a Github connector to configure the location from which Harness can pull the config.json file. 
 
-1. In **Github Connector**, click **New Github Connector**.
+To add a Github connector:
+
+1. In **Github Connector**, select **New Github Connector**.
 2. Enter the following Github Connector settings:
     1. **Name:** enter **gitops-github**.
     2. **URL Type:** select **Repository**.
@@ -367,14 +354,46 @@ Now we'll add a Github Connector to tell Harness where to pull the config.json f
     5. **Authentication:** select **Username and Token**. For the Token, you'll need to use a Personal Access Token (PAT) from Github. If you are logged into Github, just go to <https://github.com/settings/tokens>.
     6. Ensure the PAT has the **repo** scope selected.
    
-   ![](./static/harness-git-ops-application-set-tutorial-52.png)
+       ![](./static/harness-git-ops-application-set-tutorial-52.png)
    
-   You will store the PAT in a [Harness Text Secret](/docs/platform/Secrets/add-use-text-secrets). For details on Secrets Management, go to [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
+       You will store the PAT in a [Harness Text Secret](/docs/platform/Secrets/add-use-text-secrets). For details on Secrets Management, go to [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
     
     7. Select **Enable API access** and use the same Harness Secret.
-3. Click **Continue**.
+    
+    For more information, go to [add a GitHub connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector).
+3. Select **Continue**.
 4. In **Connect to the provider**, select **Connect through Harness Platform**., and then click **Save and Continue**.
 5. When the **Connection Test** in complete, click **Continue**.
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Bitbucket" label="Bitbucket">
+```
+Add a Bitbucket connector to configure the location from which Harness can pull the config.json file. 
+
+To add a Bitbucket connector:
+
+1. In **Bitbucket Connector**, select **New Bitbucket Connector**.
+2. Enter the following Bitbucket Connector settings:
+    1. **Name:** enter **gitops-bitbucket-cloud**.
+    2. **URL Type:** select **Repository**.
+    3. **Connection Type:** select **HTTP**.
+    4. **GitHub Repository URL:** enter the HTTP URL for repo you used for your ApplicationSet, such as `https://bitbucket.org/johnsmith/applicationset.git`.
+    5. **Authentication:** select **Username and Token**. For the Token, use a Personal Access Token (PAT) from Bitbucket. If you are logged into Bitbucket, go to [HTTP access tokens](https://confluence.atlassian.com/bitbucketserver/http-access-tokens-939515499.html). You must provide an account-level app password or token. Repo-level tokens are not supported.
+   
+       Store the PAT in a [Harness Text Secret](/docs/platform/Secrets/add-use-text-secrets). For details on Secrets Management, go to [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
+    
+    6. Select **Enable API access** and use the same Harness Secret.
+    
+    For more information, go to [Bitbucket connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference).
+3. Select **Continue**.
+4. In **Connect to the provider**, select **Connect through Harness Platform**, and then click **Save and Continue**.
+5. After the Connection Test is complete, click **Continue**.
+
+```mdx-code-block
+</TabItem>    
+</Tabs>
+```
 
 #### Specify manifest details
 

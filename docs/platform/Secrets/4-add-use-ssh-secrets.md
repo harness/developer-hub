@@ -1,5 +1,5 @@
 ---
-title: Add SSH Keys
+title: Add SSH keys
 description: This document explains how to add and use SSH secrets.
 # sidebar_position: 2
 helpdocs_topic_id: xmp9j0dk8b

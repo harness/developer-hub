@@ -1,5 +1,5 @@
 ---
-title: Harness Secrets Management Overview
+title: Harness secrets management overview
 description: Harness includes a built-in Secret Management feature that enables you to store encrypted secrets, such as access keys, and use them in your Harness account. Some key points about Secret Management.
 sidebar_position: 2
 helpdocs_topic_id: hngrlb7rd6

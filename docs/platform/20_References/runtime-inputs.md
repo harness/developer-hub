@@ -1,5 +1,5 @@
 ---
-title: Fixed Values, Runtime Inputs, and Expressions
+title: Fixed values, runtime inputs, and expressions
 description: Most settings in Harness Pipelines allow you to use Fixed Values, Runtime Inputs, and Expressions. This topic describes each of these options. Fixed Values. Fixed Values are simply values that you en…
 # sidebar_position: 2
 helpdocs_topic_id: f6yobn7iq0
@@ -71,9 +71,26 @@ You can use Runtime Inputs in a CI stage's Infrastructure. Here's an example usi
 You can use Runtime Inputs for the Service in a CD stage's Service settings.
 
 ![](./static/runtime-inputs-06.png)
+
+### Using allowed values and default values in runtime inputs
+
+You can set allowed values and a default value for a runtime input. The default value should be present in the list of allowed values. 
+
+For runtime inputs defined for pipelines, stages, and shell script variables, multiple selections are allowed. 
+
+The multiple selection functionality is currently behind the feature flag, `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+![](./static/runtime-inputs-11.png)
+
+### Using commas in allowed and default values in runtime inputs
+
+Commas are supported in both allowed and default values. A string with comma must be wrapped within `\'   \'`. 
+
+For example, `<+input>.default(\'london,uk\').allowedValues(\'bengaluru,india\',\'newyork,usa\',\'london,uk\')`.
+
 ### Using Runtime Inputs During Execution
 
-Currently, this feature is behind the feature flag `NG_EXECUTION_INPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.You can add runtime input to a pipeline that runs when a stage or a step is executed. If a custom stage is setup for runtime input, you can enter a shell script when prompted by Harness during execution. If a Harness Approval step is setup for runtime input, when the pipeline executes, you can specify the Harness Groups that will approve that step.
+Currently, this feature is behind the feature flag `NG_EXECUTION_INPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. You can add runtime input to a pipeline that runs when a stage or a step is executed. If a custom stage is setup for runtime input, you can enter a shell script when prompted by Harness during execution. If a Harness Approval step is setup for runtime input, when the pipeline executes, you can specify the Harness Groups that will approve that step.
 
 #### Limitations and Requirements
 

@@ -1,5 +1,5 @@
 ---
-title: Jira Connector Settings Reference
+title: Jira connector settings reference
 description: This topic describes the settings and permissions for the Jira Connector.
 # sidebar_position: 2
 helpdocs_topic_id: ud8rysntnz

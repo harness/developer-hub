@@ -1,5 +1,5 @@
 ---
-title: Schedule and Share Dashboards
+title: Schedule and share dashboards
 description: This topic describes how to schedule and share dashboards.
 # sidebar_position: 2
 helpdocs_topic_id: 35gfke0rl8

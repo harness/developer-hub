@@ -1,5 +1,5 @@
 ---
-title: Tags Reference
+title: Tags reference
 description: You can add Tags to Harness entities and then use the Tags to search for all matching entities. For example, you can add a Tag to a Harness Project and then filter the list of Projects by Tag. What a…
 # sidebar_position: 2
 helpdocs_topic_id: i8t053o0sq

@@ -142,7 +142,7 @@ For the above query, these sample variables specify the `SecretType`, and inclu
 
 
 ```
-curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://qa.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
+curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://app.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
 --header 'authorization: <Bearer-token>' \  
 --form 'file=@"/Users/sampleusername/Downloads/examplefile"' \  
 --form 'query="{  
@@ -214,7 +214,7 @@ For the above query, these sample variables specify the `SecretType`, and inclu
 
 
 ```
-curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://qa.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
+curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://app.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
 --header 'authorization: <Bearer-token>' \  
 --form 'file=@"/Users/sampleusername/Downloads/examplefile"' \  
 --form 'query="{  
@@ -299,18 +299,18 @@ For the above query, these sample variables specify the `SecretType`, and inclu
 
 
 ```
-curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://qa.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
---header 'authorization: <Bearer-token>' \  
---form 'file=@"/Users/sampleusername/Downloads/examplefile"' \  
+curl --location --request POST 'https://app.harness.io/gateway/api/graphql?accountId=<account-id>' \  
+--header 'x-api-key: <api-key>' \  
+--form 'file=@"/path/to/secret/file"' \  
 --form 'query="  
 {  
-    \"query\": \"  mutation($secret: UpdateSecretInput!){    updateSecret(input: $secret){      secret{        id,        name        ... on EncryptedFile{          name          secretManagerId          id        }        usageScope{          appEnvScopes{            application{              filterType              appId            }            environment{              filterType              envId            }          }        }      }    }  }  \",  
+    \"query\": \"  mutation($secret: UpdateSecretInput!){    updateSecret(input: $secret){      secret{        id        name        ... on EncryptedFile{          name          secretManagerId          id        }        usageScope{          appEnvScopes{            application{              filterType              appId            }            environment{              filterType              envId            }          }        }      }    }  }  \",  
     \"variables\": {  
         \"secret\": {  
             \"secretType\": \"ENCRYPTED_FILE\",  
-\"secretId\": \"NL-OhB47Qn-7jiL9u1CZiQ\",  
+            \"secretId\": \"<secretId>\",  
             \"encryptedFile\": {  
-                \"name\": \"fileSecretName\",  
+                \"name\": \"<secretName>\",  
                   
                 \"usageScope\": {  
                     \"appEnvScopes\": [  
@@ -328,6 +328,7 @@ curl --location --request POST '[https://app.harness.io/gateway/api/graphql?acco
         }  
     }  
 }"'  
+
 
 ```
 ### Inherit Scope
@@ -375,7 +376,7 @@ mutation ($secret: UpdateSecretInput!) {
 
 
 ```
-curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://qa.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
+curl --location --request POST '[https://app.harness.io/gateway/api/graphql?accountId=](https://app.harness.io/gateway/api/graphql?accountId=px7xd_BFRCi-pfWPYXVjvw)<account-id>' \  
 --header 'authorization: <Bearer-token>' \  
 --form 'file=@"/Users/shashanksingh/Downloads/hello"' \  
 --form 'query="{  

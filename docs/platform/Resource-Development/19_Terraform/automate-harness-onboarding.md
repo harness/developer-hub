@@ -295,7 +295,7 @@ This section explains the steps to set up a sample pipeline.
 
 ### Build the pipeline
 
-For detailed steps to build the pipeline, go to [Kubernetes deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/kubernetes-cd-quickstart/).
+For detailed steps to build the pipeline, go to [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
 ### Configure pipeline stages
 
@@ -328,7 +328,7 @@ Harness supports the following:
 - GitLab
 - Bitbucket
 
-For more information on triggers, go to [Trigger pipelines using custom payload conditions](https://developer.harness.io/docs/platform/triggers/trigger-pipelines-using-custom-payload-conditions/).
+For more information on triggers, go to [Trigger pipelines using Git Events](/docs/platform/triggers/triggering-pipelines/).
 
 ```YAML
 trigger:

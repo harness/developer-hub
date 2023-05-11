@@ -1,7 +1,7 @@
 ---
 title: ECS deployments
 description: This topic walks you through deploying services to AWS ECS clusters using Harness.
-sidebar_position: 11
+sidebar_position: 1
 helpdocs_topic_id: vytf6s0kwc
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
@@ -1159,7 +1159,7 @@ With the above Service Registry ARN specified in ECS Service Definition ,deploye
 
 :::note
 
-Circuit breaker configuration can be applied to Harness ECS rolling and canary deployments only.
+Circuit breaker configuration can be applied to Harness ECS rolling and canary deployments only. **This feature is only available in Harness CD NextGen.**
 
 :::
 

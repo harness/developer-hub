@@ -1,7 +1,7 @@
 ---
 title: Propagate CD services
 description: Use the same service across multiple stages.
-sidebar_position: 5
+sidebar_position: 6
 ---
 
 This topic describes how to propagate CD services between stages.
@@ -49,17 +49,114 @@ You can also use Harness input sets and overlays to select from different collec
 
 This stage now uses the exact same Service as the stage you selected.
 
-## Multiple service deployment
+## Propagating services through multiple stages
 
 :::info
 
-A multiple service deployment is when you deploy multiple services in the same stage. Multiple service deployments do not support service propagation.
+This feature is currently behind the feature flag, `CDS_PROPAGATE_STAGE_TEMPLATE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
+
+When defining a pipeline, you can pass the service, its variables, artifact, and manifest inputs through multiple stages. You can propagate a service from a previous templated or non-templated stage. You can also propagate a service from one templated stage to another stage referring to a different template. 
+
+### Limitations
+
+You cannot propagate services between different deployment types. For example, you cannot propagate a Kubernetes service between a Kubernetes deployment stage and a Native Helm deployment stage.
+
+### Requirements
+
+Make sure that the service is configured as a runtime input in the stage template or stage.
+
+### Video
+
+<!-- Video:
+https://www.loom.com/embed/79b0d4c9c4634d2e95da1a832ef8060f%22-->
+<docvideo src="https://www.loom.com/share/79b0d4c9c4634d2e95da1a832ef8060f" />
+
+### Propagate services from one stage template to another
+
+1. Open or create a pipeline with two stage templates. For more information, go to [create a stage template](/docs/continuous-delivery/x-platform-cd-features/templates/create-a-remote-stage-template).
+2. Select the **Service** tab if it is not already selected.
+   
+   The propagation option appears.
+
+   ![](static/template-stage-propagation1.png)
+3. Select **Propagate from** and then select the stage with the service you want to use.
+   
+   You can see the stage name and service name.
+
+   ![](static/template-stage-propagation2.png)
+
+   You can also propagate a service from one template stage to another if it is a runtime input. 
+
+Here is a sample service propagation YAML:
+
+```
+pipeline:
+  name: Deployment Pipeline
+  identifier: Deployment_Pipeline
+  projectIdentifier: Rohan
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Deploy Dev
+        identifier: Deploy_Dev
+        template:
+          templateRef: Deploy_Stage_1
+          versionLabel: "1.01"
+          templateInputs:
+            type: Deployment
+            spec:
+              service:
+                serviceInputs:
+                  serviceDefinition:
+                    type: Kubernetes
+                    spec:
+                      artifacts:
+                        primary:
+                          primaryArtifactRef: nginx
+                          sources:
+                            - identifier: nginx
+                              type: DockerRegistry
+                              spec:
+                                tag: <+input>
+                serviceRef: nginxcanary
+    - stage:
+        name: Deploy to QA
+        identifier: Deploy_to_QA
+        template:
+          templateRef: Deploy_Stage_1
+          versionLabel: "1.01"
+          templateInputs:
+            type: Deployment
+            spec:
+              service:
+                useFromStage:
+                  stage: Deploy_Dev
+    - stage:
+        name: Deploy to Prod
+        identifier: Deploy_to_Prod
+        template:
+          templateRef: Deploy_Stage_1
+          versionLabel: "1.01"
+          templateInputs:
+            type: Deployment
+            spec:
+              service:
+                useFromStage:
+                  stage: Deploy_Dev
+
+```
+
+## Multiple service deployment
+
+A multiple service deployment is when you deploy multiple services in the same stage. Multiple service deployments do not support service propagation.
 
 If you select multiple services in a stage, you cannot propagate them to subsequent stages.
 
 For information on multiple service deployments, go to [use multiple services and multiple environments in a deployment](/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv).
+
 
 ## Override service settings
 
@@ -80,4 +177,8 @@ You can overlay values files in Harness by adding multiple files or you can repl
 ![overlay](./static/0bbc97758875d869b84bcf9ee6648103f217ecd0923076a0f2d86f3c821e0df7.png)
 
 Go to [add and override values YAML files](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files) for more information.
+
+
+
+
 

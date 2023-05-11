@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Use a Harness AWS connector to integrate AWS with Harness. Use AWS with Harness to obtain artifacts, communicate with AWS services, provision infrastructure, and deploy microservices and other workloads. If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), you must use the platform-agnostic [Kubernetes Cluster connector](../..7_Connectors/../Cloud-providers/connect-to-a-cloud-provider.md).
+Use a Harness AWS connector to integrate AWS with Harness. Use AWS with Harness to obtain artifacts, communicate with AWS services, provision infrastructure, and deploy microservices and other workloads. If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the platform-agnostic [Kubernetes Cluster connector](../..7_Connectors/../Cloud-providers/connect-to-a-cloud-provider.md).
 
 This topic explains how to set up an AWS connector.
 
@@ -111,6 +111,12 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
 6. To use cross-account ARN, select **Enable cross-account access (STS Role)**. This option is available for all authentication methods, but it may not be supported by all pipeline steps. For more information about cross-account access in AWS connectors, go to the [AWS connector settings reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 7. By default, Harness uses the `us-east-1` region to test the credentials for AWS connectors. If you want to use a different region or an AWS GovCloud account, select it in the **Test Region** field. For more information about AWS GovCloud support, go to the [AWS connector settings reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 8. Select **Continue** to proceed to **Select Connectivity Mode**.
+   
+:::tip
+
+If you want to create an AWS Connector with a delegate using IAM Roles for Service Accounts (IRSA) on the EKS cluster with OIDC Provider, select **Use IRSA** in **Credentials**.
+
+:::
 
 ## Select connectivity mode
 

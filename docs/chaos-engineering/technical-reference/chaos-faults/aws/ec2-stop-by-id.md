@@ -2,58 +2,46 @@
 id: ec2-stop-by-id
 title: EC2 stop by ID
 ---
+## Introduction
 
-EC2 stop by ID stops an EC2 instance using the provided instance ID or list of instance IDs.
-- It brings back the instance after a specific duration. 
-- It checks the performance of the application (or process) running on the EC2 instance.
-- When the `MANAGED_NODEGROUP` environment variable is enabled, the fault will not try to start the instance after chaos. Instead, it checks for the addition of a new node instance to the cluster.
+EC2 stop by ID stops an EC2 instance using the provided instance ID or list of instance IDs and brings back the instance after a specific duration. When the `MANAGED_NODEGROUP` environment variable is enabled, the fault will not try to start the instance after chaos. Instead, it checks for the addition of a new node instance to the cluster.
 
 ![EC2 Stop By ID](./static/images/ec2-stop-by-id.png)
 
+## Use cases
+EC2 stop by ID:
+- Determines the performance of the application (or process) running on the EC2 instance.
+- Determines the resilience of an application to unexpected halts in the EC2 instance by validating its failover capabilities.
 
-## Usage
 
-<details>
-<summary>View fault usage</summary>
-<div>
-This fault determines the resilience of an application to unexpected halts in the EC2 instance by validating its failover capabilities.
-</div>
-</details>
-
-## Prerequisites
-
-- Kubernetes >= 1.17
+:::info note
+- Kubernetes version 1.17 or later is required to execute the fault.
 - Access to start and stop an EC2 instance in AWS.
-- Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is the sample secret file.
+- The EC2 instance should be in a healthy state.
+- The Kubernetes secret should have the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is the sample secret file.
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXX
+  ```
+- We recommend you use the same secret name, that is, `cloud-secret`. Otherwise, update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template, and you won't be able to use the default health check probes. 
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+- Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::
 
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXX
-```
+:::warning
+If the target EC2 instance is a part of a managed node group, drain the target node of any application running on it. Isolate the target node before running the fault so that the faulty pods are not scheduled on it.
+:::
 
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-### WARNING
-
-If the target EC2 instance is a part of a managed node group, drain the target node of any application running on it. Isolate the target node before running the fault so that the fault pods are not scheduled on it.
-
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -79,22 +67,13 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
-
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-## Default validations
-The EC2 instance should be in a healthy state.
-
 
 ## Fault tunables
 
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+ <h3>Mandatory tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -109,10 +88,10 @@ The EC2 instance should be in a healthy state.
         <td> </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -142,19 +121,12 @@ The EC2 instance should be in a healthy state.
         <td> For example, 30s. </td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common and AWS-specific tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Stop Instances By ID
 
-It contains a comma-separated list of instance IDs subjected to EC2 stop chaos. You can tune it using the `EC2_INSTANCE_ID` environment variable.
+Comma-separated list of target instance IDs. Tune it by using the `EC2_INSTANCE_ID` environment variable.
 
-You can tune it using the following example.
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-stop-by-id/instance-id.yaml yaml)
 ```yaml

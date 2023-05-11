@@ -1,5 +1,5 @@
 ---
-title: Add and Manage User Groups
+title: Add and manage user groups
 description: This document shows steps to create new user groups and assign roles to them.
 # sidebar_position: 2
 helpdocs_topic_id: dfwuvmy33m

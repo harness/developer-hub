@@ -41,7 +41,7 @@ export const featureList: CardItem[] = [
     module: MODULES.srm,
     icon: "img/icon_srm.svg",
     description: <>Monitor SLOs, track error budgets, debug code errors.</>,
-    type: [docType.Documentation, docType.Interactive, docType.Video],
+    type: [docType.Documentation],
     link: "tutorials/service-reliability",
   },
   {
@@ -59,6 +59,14 @@ export const featureList: CardItem[] = [
     description: <>Ensure application and infrastructure resilience.</>,
     type: [docType.Documentation],
     link: "tutorials/chaos-experiments",
+  },
+  {
+    title: "Track Errors",
+    module: MODULES.cet,
+    icon: "img/icon_cet.svg",
+    description: <>Find and fix issues in minutes with code level visibility.</>,
+    type: [docType.Documentation, docType.Interactive, docType.Video],
+    link: "tutorials/error-tracking",
   },
   {
     title: "Administer Harness Platform",

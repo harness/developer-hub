@@ -1,5 +1,5 @@
 ---
-title: Import an Input Set From Git
+title: Import an input set from Git
 description: This topic explains the steps to import an Inputset from Git.
 sidebar_position: 7
 helpdocs_topic_id: j7kdfi3640

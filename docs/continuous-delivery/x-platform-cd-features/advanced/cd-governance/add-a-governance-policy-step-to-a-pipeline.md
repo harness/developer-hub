@@ -1,6 +1,6 @@
 ---
-title: Add a Policy Step to a Pipeline
-description: Add a Policy step to your Stage.
+title: Add a Policy step to a pipeline
+description: Add a Policy step to your stage.
 sidebar_position: 3
 ---
 

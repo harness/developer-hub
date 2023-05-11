@@ -2,7 +2,7 @@
 title: CI tutorials
 description: Learn about Harness CI through step-by-step tutorials, interactive labs, and videos.
 
-sidebar_position: 60
+sidebar_position: 10
 helpdocs_topic_id: x0d77ktjw8
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false

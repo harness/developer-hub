@@ -378,8 +378,68 @@ This example policy gives limited permission to EKS clusters.
 
 ## Connect to EKS
 
-If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), use the platform-agnostic [Kubernetes cluster connector](kubernetes-cluster-connector-settings-reference.md).
+To connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the platform-agnostic [Kubernetes cluster connector](kubernetes-cluster-connector-settings-reference.md).
+<!--- or Elastic Kubernetes Service (EKS) cloud connector.
 
+Make sure you've met the following requirements to connect to the EKS cloud connector.
+
+* You have enabled the `NG_CDS_NATIVE_EKS_SUPPORT` feature flag.
+* The IAM role of the worker nodes for the EKS cluster have the [required permissions](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html).
+    * Your IAM role has the permission to access the AWS EKS cluster. You can edit the `configmap/aws-auth` entry in the EKS cluster to enable the required permissions. For more information, go to [add user role](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html). You can also assume the IAM role used to create the AWS EKS cluster which has the required `configmap/aws-auth` entries by default.
+    * Your IAM role has the basic policies to access the AWS EKS cluster. For more information, go to [Amazon EKS identity-based policy examples](https://docs.aws.amazon.com/eks/latest/userguide/security_iam_id-based-policy-examples.html).
+* You have installed the `aws-iam-authenticator` plugin, which is used for `kubectl` authentication. For more information, go to [Create `kubeconfig` file manually](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html#create-kubeconfig-manually).
+  
+  Here's a sample `kubeconfig`:
+  
+  ```
+  apiVersion: v1
+  clusters:
+  - cluster:
+      server: $cluster_endpoint
+      certificate-authority-data: $certificate_data
+    name: arn:aws:eks:$region_code:$account_id:cluster/$cluster_name
+  contexts:
+  - context:
+      cluster: arn:aws:eks:$region_code:$account_id:cluster/$cluster_name
+      user: arn:aws:eks:$region_code:$account_id:cluster/$cluster_name
+    name: arn:aws:eks:$region_code:$account_id:cluster/$cluster_name
+  current-context: arn:aws:eks:$region_code:$account_id:cluster/$cluster_name
+  kind: Config
+  preferences: {}
+  users:
+  - name: arn:aws:eks:$region_code:$account_id:cluster/$cluster_name
+    user:
+      exec:
+        apiVersion: client.authentication.k8s.io/v1beta1
+        command: aws-iam-authenticator
+        args:
+          - "token"
+          - "-i"
+          - "$cluster_name"
+  ```
+  
+  
+  :::note
+  `aws-iam-authenticator` supports the role to be assumed and external ID as arguments. If the connector is configured with a cross-account access and external ID, `kubeconfig` can be modified accordingly.
+  ::: 
+  
+* You have created an immutable delegate and installed the `aws-iam-authenticator` in the delegate.
+    1. Open the `delegate.yaml` in a text editor.
+    2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
+    3. Replace `value: ""` with the following script to install `aws-iam-authenticator`. For more information, go to [install AWS IAM authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
+      
+      ```
+      // Download aws-iam-authenticator
+      curl -Lo aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.9/aws-iam-authenticator_0.5.9_linux_amd64
+      chmod +x ./aws-iam-authenticator
+      // Add the binary to PATH
+      mv ./aws-iam-authenticator /usr/local/bin
+      // Verify the binary
+      aws-iam-authenticator help
+      ```
+      
+* You're using Kubernetes version 1.22 or later. Harness uses a [client-go credential plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins) to authenticate the connection to the EKS cluster. Support for EKS is deprecated for Kubernetes 1.21 and earlier versions.-->
+  
 ## AWS Serverless Lambda
 
 There are three authentication options for the AWS connector when used for AWS ECS images for AWS Serverless Lambda deployments:

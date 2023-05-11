@@ -1,7 +1,7 @@
 ---
 title: Integrate Jira in a CI pipeline
 description: Connect your Harness CI pipelines to Jira.
-sidebar_position: 40
+sidebar_position: 50
 ---
 
 To stay aligned and better serve customers, development teams need to understand how a feature is being released, when Jira issues have been deployed, and whether a build has passed or failed. Jira integrations in your CI pipelines provide insights into feature development and release information in Jira by automatically updating the **Deployment** or **Build** fields in Jira.
@@ -28,9 +28,9 @@ import TabItem3 from '@theme/TabItem';
   <TabItem3 value="Visual" label="Visual">
 ```
 
-1. In your CI pipeline's **Build** stage, add a [Plugin step](../../ci-technical-reference/plugin-steps/plugin-step-settings-reference.md).
+1. In your CI pipeline's **Build** stage, add a [Plugin step](./plugin-step-settings-reference.md).
 2. Enter a **Name** and optional **Description**.
-3. For **Container Registry**, select a container registry connector with DockerHub access.
+3. For **Container Registry**, select a container registry connector with Docker Hub access.
 4. In the **Image** field, enter `plugins/jira`.
 5. Under **Optional Configuration**, add **Settings** to configure the Jira plugin's properties for this step, as described in the following table.
 
@@ -47,7 +47,7 @@ import TabItem3 from '@theme/TabItem';
   </TabItem3>
   <TabItem3 value="YAML" label="YAML" default>
 ```
-The following YAML example describes a [Plugin step](../../ci-technical-reference/plugin-steps/plugin-step-settings-reference.md) in a `CI` stage that updates the Jira **Build** field when there is a successful build.
+The following YAML example describes a [Plugin step](./plugin-step-settings-reference.md) in a `CI` stage that updates the Jira **Build** field when there is a successful build.
 
 ```yaml
               - step:
@@ -55,7 +55,7 @@ The following YAML example describes a [Plugin step](../../ci-technical-referenc
                   name: Update Jira Build #Step name
                   identifier: updateJiraBuild #Step ID
                   spec:
-                    connectorRef: account.harnessImage #DockerHub container registry connector
+                    connectorRef: account.harnessImage #Docker Hub container registry connector
                     image: plugins/jira
                     settings:
                       PROJECT: MYT #Your Jira project key
@@ -76,7 +76,7 @@ To update the Jira **Deployment** field, instead of the **Build** field, include
 *  `type: Plugin`
 *  `name:` Specify a step name.
 *  `identifier:` Specify a unique step ID.
-*  `connectorRef:` Specify a DockerHub container registry connector.
+*  `connectorRef:` Specify a Docker Hub container registry connector.
 *  `image: plugins/jira`
 *  `settings:` Add environment variables to configure the Jira plugin's properties for this step, as described in the following table.
 

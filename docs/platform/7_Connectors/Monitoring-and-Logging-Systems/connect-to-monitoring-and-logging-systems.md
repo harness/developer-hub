@@ -1,5 +1,5 @@
 ---
-title: Connect to Monitoring and Logging Systems
+title: Connect to monitoring and logging systems
 description: You can connect Harness to Monitoring and Logging Systems.
 sidebar_position: 2
 helpdocs_topic_id: g21fb5kfkg

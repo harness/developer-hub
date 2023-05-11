@@ -81,6 +81,32 @@ For example, if the name of the stage is **Terraform** and the name of the step 
 
 In **Timeout**, enter how long Harness should wait to complete the Terraform Plan step before failing the step.
 
+### Run on Remote Workspace
+
+:::note
+
+Currently, this feature is behind the feature flag `CD_TERRAFORM_CLOUD_CLI_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Enable this option to identify whether the Terraform configuration uses a Terraform remote backend.
+
+When enabled, you cannot provide the workspace input in Harness. The workspace will be outlined in your configuration for the remote backend.
+
+Also, the remote backend is supported only when the **Configuration Type** is **Inline**.
+
+```
+terraform {
+  backend "remote" {
+    hostname     = "app.terraform.io"
+    organization = "your-organization"
+    workspaces {
+      name = "your-workspace"
+    }
+  }
+}
+```
+
 ### Command
 
 In **Command**, select **Apply or Destroy**.
@@ -511,6 +537,16 @@ No changes. Your infrastructure matches the configuration.
 Terraform has compared your real infrastructure against your configuration
 and found no differences, so no changes are needed.
 ```
+
+## Command line options
+
+This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
+
+![](./static/run-a-terraform-plan-with-the-terraform-plan-step-16.png)
+
+## Skip Terraform Refresh
+
+Terraform refresh command won't be running when this setting is selected.
 
 ## Option: Terraform Plan detailed-exitcode
 

@@ -1,5 +1,5 @@
 ---
-title: Define a Failure Strategy on Stages and Steps
+title: Define a failure strategy on stages and steps
 description: Currently, only the All Errors Failure Type is supported. A failure strategy defines how your stages and steps handle different failure conditions. The failure strategy contains error conditions that…
 sidebar_position: 11
 helpdocs_topic_id: 0zvnn5s1ph
@@ -26,7 +26,7 @@ For details on strategy options and how strategies work, see [Step and Stage Fai
 
 * [Add a Stage](add-a-stage.md)
 
-### Visual Summary
+### Visual summary
 
 Here's a quick video of how to set up failure strategies:
 
@@ -40,7 +40,7 @@ Here is what a Manual Intervention action looks like when a failure occurs:
 
 You can select an option or, if the Manual Intervention exceeds its Timeout setting, select the Post Timeout Action that will happen automatically.
 
-### Review: Failure Strategy takes Precedence over Conditional Execution
+### Failure strategy takes precedence over conditional execution
 
 Harness Pipeline stages and steps both include **Conditional Execution** and **Failure Strategy** settings:
 
@@ -58,7 +58,7 @@ In order to get stage 2 to execute, you can set the stage 1 **Failure Strategy**
 
 In general, if you want to run particular steps on a stage failure, you should add them to stage's **Rollback** section.
 
-### Step: Add a Stage Failure Strategy
+### Add a stage failure strategy
 
 The stage failure strategy applies to all steps in the stage that do not have their own failure strategy configured.
 
@@ -75,12 +75,10 @@ To add an additional stage failure strategy, click **Add**.
 Select the following:
 
 * **On failure of type:** select one or more of the error types. See [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
-
-Currently, only **All Errors** is supported.* **Action:** select one of the available actions. See [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
 * **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
 * **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
 
-### Step: Add a Step Failure Strategy
+### Add a step failure strategy
 
 By default, steps do not have a failure strategy. Steps follow the stage failure strategy.
 
@@ -93,10 +91,18 @@ Click **Failure Strategy** and click **Add**.
 Select the following:
 
 * **On failure of type:** select one or more of the error types. See [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
-
-Currently, only **All Errors** is supported.* **Action:** select one of the available actions. See [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
 * **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
 * **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
+
+### Failure strategy as a runtime input
+
+Failure strategies can be defined as runtime inputs in pipelines and templates at stage, step, and step group levels. 
+
+Here's a video that explains how to define failure strategy as a runtime input:
+
+<!-- Video:
+https://harness-24.wistia.com/medias/bj2kzkgw8a-->
+<docvideo src="https://harness-24.wistia.com/medias/bj2kzkgw8a" />
 
 ### See also
 

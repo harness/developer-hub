@@ -1,5 +1,5 @@
 ---
-title: Best Practices for Looping Strategies
+title: Best practices for looping strategies
 description: Review this topic before you implement a Matrix and Parallelism strategy in your pipeline.
 # sidebar_position: 2
 helpdocs_topic_id: q7i0saqgw4
@@ -105,7 +105,7 @@ And use the `<+matrix.jira>` expression instead.
 
 ### See also
 
-* [Optimizing CI Build Times](/docs/continuous-integration/troubleshoot/optimizing-ci-build-times/)
+* [Optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md)
 * [How to Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)
 * [Looping Strategies Overview: Matrix, Repeat, and Parallelism](looping-strategies-matrix-repeat-and-parallelism.md)
 * [Speed Up CI Test Pipelines Using Parallelism](../8_Pipelines/speed-up-ci-test-pipelines-using-parallelism.md)

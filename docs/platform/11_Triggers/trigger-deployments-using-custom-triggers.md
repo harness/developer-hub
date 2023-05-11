@@ -1,5 +1,5 @@
 ---
-title: Trigger Deployments using Custom Triggers
+title: Trigger deployments using custom triggers
 description: Trigger deployments using cURL and Webhooks
 sidebar_position: 6
 helpdocs_topic_id: qghequ5vxu
@@ -36,7 +36,7 @@ You can do the following with a custom trigger:
 
 The **Payload Type** is set as Custom. If this were a Git provider trigger, you would specify the repo URL and events for the trigger.
 
-For more details, see [Trigger Pipelines using Git Event Payload Conditions](trigger-pipelines-using-custom-payload-conditions.md) and [Trigger Pipelines using Git Events](triggering-pipelines.md).
+For more details, go to [Trigger Pipelines using Git Events](triggering-pipelines.md).
 
 ## Conditions
 
@@ -358,7 +358,7 @@ You can use [Harness API keys](../3_User-Management/7-add-and-manage-api-keys.md
 You can see the `-H 'X-Api-Key: sample_api_key'` parameter in the cURL command you copy from Harness.
 
 ```
-curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://qa.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
 ```
 
 You can use this parameter with a Harness API key in your cURL command to authorize the execution of a trigger. You can also enforce the use of API keys for all custom triggers.
@@ -376,7 +376,7 @@ To skip authorization omit the `-H 'X-Api-Key: sample_api_key'` parameter.
 3. Copy the cURL command for your custom trigger. For example:
 
    ```
-   curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://qa.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+   curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
    ```
 4. Replace `sample_api_key` with the API key you created. For example:
    

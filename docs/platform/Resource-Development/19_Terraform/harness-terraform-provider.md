@@ -1,5 +1,5 @@
 ---
-title: Harness Terraform Provider Quickstart
+title: Harness Terraform Provider quickstart
 description: This topic shows how to get started with the Harness Terraform Provider.
 sidebar_position: 2
 helpdocs_topic_id: 7cude5tvzh
@@ -24,7 +24,9 @@ This quickstart shows you how to write your configurations in Terraform and prov
 
 * You must have a Harness Account.
 * You must have an admin setup for your Harness Account.
-* You must have a Personal Access Token (PAT).  
+* You must have a Personal Access Token (PAT) or a Service Access Token (SAT).
+
+
 For detailed steps on how to generate a PAT, see [Create a Personal Access Token](../../3_User-Management/7-add-and-manage-api-keys.md#create-personal-access-token).
 
 ### Important
@@ -70,9 +72,13 @@ The account Id is in every URL when using Harness:
 
 `https://app.harness.io/ng/#/account/``**{accountid}**``/home/get-started​`
 
-Enter your Personal Access Token (PAT) in `platform_api_key`.
+Enter your PAT or SAT in `platform_api_key`.
 
-For detailed steps on how to generate a PAT, see [Create a Personal Access Token](../../3_User-Management/7-add-and-manage-api-keys.md#create-personal-access-token).​
+:::important
+Harness recommends using SAT to install the Harness Terraform Provider.
+:::
+
+For detailed steps on how to generate a PAT or SAT, go to [Add and manage API keys](../../3_User-Management/7-add-and-manage-api-keys.md).​
 
 
 ```

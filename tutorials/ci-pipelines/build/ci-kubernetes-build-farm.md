@@ -54,7 +54,7 @@ In addition to a Harness account, you need the following accounts and tools:
 
 * A **GitHub account** where you can fork the tutorial repo.
 * A **Docker Hub account and repo** where the pipeline can push and pull app images.
-* A **Kubernetes cluster** where you'll install the [Harness Delegate](/docs/platform/Delegates/get-started-with-delegates/delegates-overview) and run the build farm. The cluster needs the following minimum specifications:
+* A **Kubernetes cluster** where you'll install the [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview/) and run the build farm. The cluster needs the following minimum specifications:
   * Pods: 3 (two for the Delegate and one for the build farm)
   * Machine type: 4vCPU
   * Memory: 16GB RAM
@@ -136,7 +136,7 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
 
    :::info
 
-   You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For this tutorial, select **Kubernetes Manifest**. For information about the other options and detailed instructions, go to [Install a delegate](/docs/platform/Delegates/install-delegates/install-a-delegate).
+   You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For this tutorial, select **Kubernetes Manifest**. For information about the other options and detailed instructions, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
 
    If delegate installation succeeds, the `kubectl apply` command should produce output similar to the following:
 
@@ -194,7 +194,7 @@ Next, you need to define the build infrastructure. Harness offers several [build
 
 Now that the pipeline has a stage with a defined codebase and build infrastructure, you are ready to add steps to build the codebase, run unit tests, and push an artifact to Docker Hub. The first step will run unit tests and compile the codebase. The second step builds a container image and pushes it to a Docker Hub repo.
 
-To run unit tests in a CI pipeline, you can use either a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings) or a [Run Tests step](/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings). This tutorial uses a **Run** step. In addition to unit tests, the **Run** step can run any number of commands on a container image. **Run** steps are highly versatile and you'll use them often in your CI pipelines. While not used in this tutorial, with the **Run Tests** step, you can leverage [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
+To run unit tests in a CI pipeline, you can use either a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) or a [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings). This tutorial uses a **Run** step. In addition to unit tests, the **Run** step can run any number of commands on a container image. **Run** steps are highly versatile and you'll use them often in your CI pipelines. While not used in this tutorial, with the **Run Tests** step, you can leverage [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/).
 
 1. On the **Execution** tab for your Build stage, select **Add Step**, select **Add Step** again, and then select the **Run** step from the Step Library.
 2. For **Name**, enter `Run Unit Tests`.
@@ -202,7 +202,7 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
 4. Create a Docker Registry connector to connect to your Docker Hub account.
 
    * **Name:** Enter a recognizable name for the connector.
-   * **Provider Type:** Select **DockerHub**.
+   * **Provider Type:** Select **Docker Hub**.
    * **Docker Registry URL:** Enter `https://index.docker.io/v2/`.
    * **Username:** Enter the username for your Docker Hub account.
    * **Password:** Create a secret for a Personal Access Token that Harness can use to access your Docker Hub account.
@@ -225,7 +225,7 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
 
 7. Under **Optional Configuration**, add a **Report Path** and enter `*.xml`.
 8. Select **Apply Changes** to save the step.
-9. Add a [Build and Push an Image to Docker Registry step](/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings) to your Build stage, and configure it as follows:
+9. Add a [Build and Push an Image to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) to your Build stage, and configure it as follows:
 
    * **Name:** Enter a name, such as `Build and push image to Docker Registry`.
    * **Docker Connector:** Select the Docker Hub connector you created for the **Run** step.
@@ -255,7 +255,7 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
 
 3. In the **Infrastructure** tab, select **Propagate from an existing stage**, and select the first **Build** stage in your pipeline. This configures the pipeline to use the same Kubernetes cluster and namespace for both stages.
 4. Select **Continue**.
-5. Add a **Background** step to this stage and configure it as follows. For more information, go to the [Background step settings reference](/docs/continuous-integration/ci-technical-reference/background-step-settings).
+5. Add a **Background** step to this stage and configure it as follows. For more information, go to the [Background step settings reference](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings).
 
    * **Name:** Enter a recognizable name.
    * **Container Registry:** Select the Docker Hub connector you used for the steps in the previous stage.
@@ -289,7 +289,7 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
 2. For the **Pipeline Inputs**, select **Git branch** and enter the target branch in the code repo, such as `main`.
 3. Select **Run Pipeline**.
 
-On the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds) you can observe the pipeline while it runs. Select a stage to examine the steps in that stage. Select a step to view the step's logs. Select the **Tests** tab to [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests).
+On the [Build details page](/docs/continuous-integration/use-ci/viewing-builds) you can observe the pipeline while it runs. Select a stage to examine the steps in that stage. Select a step to view the step's logs. Select the **Tests** tab to [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests).
 
 ![](../static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-27.png)
 

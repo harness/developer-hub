@@ -2,9 +2,9 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-04-06T10:00
+date: 2023-05-10T10:00
 tags: [NextGen, "security testing orchestration"]
-sidebar_position: 8
+sidebar_position: 9
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -13,42 +13,95 @@ import TabItem from '@theme/TabItem';
 Review the notes below for details about recent changes to Security Testing Orchestration, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). 
 
 :::info note
+
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
+
 :::
 
-## Latest release - April 6, 2023, version 1.43.1
+## Latest - May 10, 2023, version 1.50.3
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-### What's new
 
-This release does not include new features.
+* You can now ingest ZAP scan results from both JSON and XML reports. For information about the ZAP XML report format, go to [Traditional XML Report](https://www.zaproxy.org/docs/desktop/addons/report-generation/report-traditional-xml/) in the ZAP documentation. (STO-5868)
+
+* The Security Tests tab now renders tables from tool-provided descriptions in the **Issue Details** panel. (STO-5857)
+
+* The UI now uses consistent terminology when referring to exemptions. All references to *ignore* and *ignored* have been updated to *exempt* and *exempted*. (STO-5749)
+
+* The Security Testing Dashboard includes a new **Target Type** filter. (STO-5732)
+
+  ![](./static/sto-std-new-filter-sto-5732.png)
+
+* The **Security Tests** tab now paginates results for scans that detect a lot of issues. You can set the pagination to 20, 50, or 100 issues per page. (STO-5211)
+
+* STO now supports [looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for Security Tests stages. (STO-5726)
+
+* You can now select a high-level reason when you [request an exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) for a detected issue. The **Request Exemption for Issue** dialog box includes a new **Reason** pull-down menu with a set of common reasons for exempting an issue. (STO-5730)
+
+   ![](./static/sto-exemption-reason-pulldown.gif)
+
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-### Early access 
 
-This release does not include early access features.
+This release does not incude early-access features. 
+
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
 
-### Fixed issues
+* Fixed an issue with Mend scans that caused builds to fail with the log message “Missing valid image". (STO-5867)
+
+* Fixed an issue with Mend scans where the `product_domain` step setting did not get passed to the CLI, causing the scan to point to the default US server. (STO-5708)
+
+* Added a **Privileged** checkbox to the UI for Security steps and scanner templates. This fixes an issue where `privileged` would automatically reset to `true` whenever a user updated the step, which required setting this option back to `false` in the YAML editor.  (STO-5773)
+
+* Implemented fixes to improve UI speed and performance in the Security Testing Dashboard. (STO-5612)
+  
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### April 6, 2023, version 1.43.1
+
+##### New features
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
 
 * Fixed a UI issue in **External Tickets Settings** for setting up Jira integrations:  **Default Project** and **Default Issue Type** always used the account-level Jira connector, even when a different connector was selected for the current project or organization. (STO-5756)
 * Fixed a search issue in **Security Tests**: If a search term included certain special characters, the UI would fail with a JavaScript exception. (STO-5745) 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Plugin updates">
-```
-### Plugin update - April 20, 2023, version 1.10.1
+
+##### Plugin update - May 3, 2023, version 1.11.1
+
+This update includes the following fixed issues:
+
+* This release updates the Twistlock normalization algorithm. Issues with Moderate severity in Twistlock are now assigned Medium (not High) severity in STO. (STO-5861)
+
+* Fixed a Snyk ingestion issue that caused the scan to scan step to fail if the target name included a space. (STO-5855)
+
+
+##### Plugin update - April 20, 2023, version 1.10.1
 
 This update includes the following fixed issues: 
 
@@ -62,17 +115,6 @@ This update includes the following fixed issues:
 * Fixed an issue where Snyk scans were processing container vulnerabilities only and ignored application vulnerabilities. STO now processes both container and application scan data from Snyk by default. (STO-5828)
 
 * Fixed an issue that prevented orchestrated Mend scans from running if the [Use version in project names](https://docs.mend.io/en-US/bundle/sca_user_guide/page/using_version_in_product_or_project_names.html) setting was turned off.
-
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### March 30, 2023, version 1.40.2
 

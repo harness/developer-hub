@@ -63,7 +63,7 @@ First, we will create a simple “Hello World!” application in Node.js with a 
 
 3. Once the build and push are successful, you can confirm it by going to your Docker Hub account.
 
-![DockerHub image](./static/harness-cicd-tutorial/hello_world_docker_image.jpeg)
+![Docker Hub image](./static/harness-cicd-tutorial/hello_world_docker_image.jpeg)
 
  You can see the `deployment.yaml` file in the forked repo, which defines the deployment yaml file to help us deploy the application to our Kubernetes      cluster. At this point, make sure your Kubernetes cluster is up and running.
 

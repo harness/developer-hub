@@ -1,5 +1,5 @@
 ---
-title: Harness API Quickstart
+title: Harness API quickstart
 description: This document explains the steps to get started with Harness NG APIs.
 sidebar_position: 2
 helpdocs_topic_id: f0aqiv3td7
@@ -150,7 +150,7 @@ A Harness Connector contains the information necessary to integrate and work wit
 
 Harness uses Connectors at Pipeline runtime to authenticate and perform operations with a 3rd party tool.
 
-Let's create a [Docker Registry Connector](../../7_Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md) that connects to DockerHub anonymously.
+Let's create a [Docker Registry Connector](../../7_Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md) that connects to Docker Hub anonymously.
 
 Copy the following curl command:
 
