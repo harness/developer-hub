@@ -87,7 +87,6 @@ To do this, edit the service account and click **Permissions**. Click **Roles*
 See [Managing secrets](https://cloud.google.com/secret-manager/docs/access-control) from Google.
 4. Open your service account's Actions ⋮ menu, then select **Create key.**
 5. In the resulting **Create private key** dialog, select the **JSON** option, create the key, and download it to your computer.
-   For more information, go to [Application Default Credentials](https://cloud.google.com/docs/authentication/application-default-credentials)
 6. Go back to Harness.
 7. In **Google Secrets Manager Credentials File**, select the encrypted file you just added in Harness.
 
@@ -99,7 +98,11 @@ Click **Continue**.
 
 ### Use the credentials of a specific Harness Delegate (IAM role, service account, etc)
 
-If you select this option, Harness will authenticate using the IAM role assigned to the specific delegate you select. You can select a delegate using a Delegate Selector.
+If you select this option, Harness will authenticate using the IAM role assigned to the specific delegate you select. This would be the Application Default Credentials.
+
+For more information, go to [Application Default Credentials](https://cloud.google.com/docs/authentication/application-default-credentials).
+
+You can select a delegate using a Delegate Selector.
 
 Click **Continue**.
 
