@@ -85,7 +85,13 @@ You can store your configurations in the following ways:
 * Store configuration files in a repository separate from the code.
 * Store the prod configurations in one repo, and the non-prod ones in another repo, so that only the selected developers can access prod configs.
 * Store the configuration files of different environments in different branches.
-* Store the pipelines in one repository, and other configuration files in another.
+* Store the pipelines in one repository, and other configuration files in another. 
+
+  :::important
+  To link input sets and pipelines from different repositories enable the setting `Allow different repo for Pipeline and InputSets` in the default settings.
+  For more information, go to [Default Settings](/docs/platform/Settings/default-settings)
+  :::
+
 
 #### Multiple branch support
 
