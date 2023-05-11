@@ -287,7 +287,7 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
 <TabItem value="Harness Cloud">
 ```
 
-Hosted Cloud runners come with Go pre-installed, see [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications) for all available tools and versions.
+Go is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
 If your application requires a specific version of Go, add a **Run** step to install it.
 
@@ -313,31 +313,31 @@ If your application requires a specific version of Go, add a **Run** step to ins
 <details>
 <summary>Install multiple versions of Go</summary>
 
-Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
 
-```yaml
-        strategy:
-          matrix:
-            # matrix strategy with Go versions 1.19 and 1.20
-            goVersion:
-              - "1.19"
-              - "1.20"
-```
+   ```yaml
+           strategy:
+             matrix:
+               # matrix strategy with Go versions 1.19 and 1.20
+               goVersion:
+                 - "1.19"
+                 - "1.20"
+   ```
 
-Reference the matrix variable in your steps.
+2. Reference the matrix variable in your steps.
 
-```yaml
-              - step:
-                  type: Run
-                  identifier: installgo
-                  name: Install Go
-                  spec:
-                    shell: Sh
-                    command: |-
-                      export GOPATH=$HOME/go
-                      go install golang.org/dl/go<+matrix.goVersion>@latest
-                      $GOPATH/bin/go<+matrix.goVersion> download
-```
+   ```yaml
+                 - step:
+                     type: Run
+                     identifier: installgo
+                     name: Install Go
+                     spec:
+                       shell: Sh
+                       command: |-
+                         export GOPATH=$HOME/go
+                         go install golang.org/dl/go<+matrix.goVersion>@latest
+                         $GOPATH/bin/go<+matrix.goVersion> download
+   ```
 
 </details>
 
@@ -418,7 +418,7 @@ Replace the bracketed values with corresponding values for your [code repo conne
 Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
-<summary>Use a specific Go version</summary>
+<summary>Pipeline with one specific Go version</summary>
 
 ```yaml
 pipeline:
@@ -489,7 +489,7 @@ pipeline:
 </details>
 
 <details>
-<summary>Use multiple Go versions</summary>
+<summary>Pipeline with multiple Go versions</summary>
 
 ```yaml
 pipeline:
@@ -575,7 +575,7 @@ Replace the bracketed values with corresponding values for your [code repo conne
 Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
-<summary>Use a specific Go version</summary>
+<summary>Pipeline with one specific Go version</summary>
 
 ```yaml
 pipeline:
@@ -636,7 +636,7 @@ pipeline:
 </details>
 
 <details>
-<summary>Use multiple Go versions</summary>
+<summary>Pipeline with multiple Go versions</summary>
 
 ```yaml
 pipeline:
@@ -708,6 +708,8 @@ pipeline:
 
 ## Next steps
 
-Create [triggers](https://developer.harness.io/docs/category/triggers) to execute your pipeline.
+Now that you have created a pipeline that builds and tests a Go app, you could:
 
-Learn how to [build and upload artifacts](/docs/category/build-and-upload-artifacts), or how to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
+* Create [triggers](https://developer.harness.io/docs/category/triggers) to automatically run your pipeline.
+* Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
+* Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
