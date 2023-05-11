@@ -348,7 +348,7 @@ Harness offers several options for [managing dependencies](/docs/continuous-inte
 
 ### Use a Background step
 
-You can use [Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) to run services needed by other steps in the same stage.
+You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run services needed by other steps in the same stage.
 
 The following example adds a **Background** step that runs the JHTTP app as a service. The subsequent [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) can leverage the service to do things like run connection tests.
 

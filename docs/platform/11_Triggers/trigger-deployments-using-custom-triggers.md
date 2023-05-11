@@ -36,7 +36,7 @@ You can do the following with a custom trigger:
 
 The **Payload Type** is set as Custom. If this were a Git provider trigger, you would specify the repo URL and events for the trigger.
 
-For more details, see [Trigger Pipelines using Git Event Payload Conditions](trigger-pipelines-using-custom-payload-conditions.md) and [Trigger Pipelines using Git Events](triggering-pipelines.md).
+For more details, go to [Trigger Pipelines using Git Events](triggering-pipelines.md).
 
 ## Conditions
 

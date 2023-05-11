@@ -366,7 +366,7 @@ The `tag` value is an [expression](/docs/platform/references/runtime-inputs/#exp
 
 ## Manage dependencies
 
-Harness offers several options for [managing dependencies](/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies). In addition to multiple [caching](#use-caching) options, you can use [Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) for services dependencies, and you can use [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and [Run steps](/docs/category/run-scripts) to install dependencies.
+Harness offers several options for [managing dependencies](/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies). In addition to multiple [caching](#use-caching) options, you can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) for services dependencies, and you can use [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) and [Run steps](/docs/category/run-scripts) to install dependencies.
 
 ### Use caching
 

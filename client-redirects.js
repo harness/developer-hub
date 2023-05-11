@@ -34,6 +34,13 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by aimurphy for branch ci-4876 on May 10 2023
+
+    {
+      from: "/docs/platform/Triggers/trigger-pipelines-using-custom-payload-conditions",
+      to: "/docs/platform/Triggers/triggering-pipelines",
+    },
+
     // Created by aimurphy for branch ci-misc-small-items on May 3 2023
 
     {
