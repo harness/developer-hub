@@ -22,7 +22,19 @@ You'll learn how to:
 
 ## Important notes
 
-* For TAS deployments, Harness supports these artifact sources: [Artifactory](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo), [Nexus](/docs/platform/pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference/), [Docker Registry](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector), [Amazon S3](/docs/platform/Connectors/Cloud-providers/add-aws-connector), Google Container Registry (GCR), [Amazon Elastic Container Registry (ECR)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-elastic-container-registry-ecr-policies-and-permissions), [Azure Container Registry (ACR)](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart/#add-the-artifact), Google Artifact Registry (GAR), [Google Cloud Storage (GCS)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/), [GitHub Package Registry](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo), [Azure Artifacts](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector/), and [Jenkins](docs/platform/Connectors/Artifact-Repositories/connect-to-jenkins) repository types. You connect Harness to these registries by using your registry account credentials.
+* For TAS deployments, Harness supports the following artifact sources. You connect Harness to these registries by using your registry account credentials.
+   * [Artifactory](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#artifactory)
+   * [Nexus](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#nexus)
+   * [Docker Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#docker) 
+   * Amazon S3
+   * [Google Container Registry (GCR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr)
+   * [Amazon Elastic Container Registry (ECR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#amazon-elastic-container-registry-ecr)
+   * [Azure Container Registry (ACR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#azure-container-registry-acr) 
+   * [Google Artifact Registry (GAR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-artifact-registry)
+   * [Google Cloud Storage (GCS)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-cloud-storage-gcs)
+   * [GitHub Package Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#github-packages)
+   * Azure Artifacts
+   * [Jenkins](/docs/platform/Connectors/Artifact-Repositories/connect-to-jenkins)
 * Before you create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/). 
 * Your Harness delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it. 
 
@@ -300,7 +312,20 @@ Harness services represent your microservices or applications. You can add the s
 2. In **Specify Artifact Repository Type**, select **Artifactory**, and select **Continue**.
    
    :::important
-   TAS supports [Artifactory](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo), [Nexus](/docs/platform/pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference/), [Docker Registry](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector), [Amazon S3](/docs/platform/Connectors/Cloud-providers/add-aws-connector), Google Container Registry (GCR), [Amazon Elastic Container Registry (ECR)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#aws-elastic-container-registry-ecr-policies-and-permissions), [Azure Container Registry (ACR)](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-cd-quickstart/#add-the-artifact), Google Artifact Registry (GAR), [Google Cloud Storage (GCS)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/gcs-connector-settings-reference/), [GitHub Package Registry](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo), [Azure Artifacts](/docs/platform/connectors/cloud-providers/add-a-microsoft-azure-connector/), and [Jenkins](docs/platform/Connectors/Artifact-Repositories/connect-to-jenkins) repository types.
+
+   For TAS deployments, Harness supports the following artifact sources. You connect Harness to these registries by using your registry account credentials.
+   * [Artifactory](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#artifactory)
+   * [Nexus](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#nexus)
+   * [Docker Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#docker) 
+   * Amazon S3
+   * [Google Container Registry (GCR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr)
+   * [Amazon Elastic Container Registry (ECR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#amazon-elastic-container-registry-ecr)
+   * [Azure Container Registry (ACR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#azure-container-registry-acr) 
+   * [Google Artifact Registry (GAR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-artifact-registry)
+   * [Google Cloud Storage (GCS)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-cloud-storage-gcs)
+   * [GitHub Package Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#github-packages)
+   * Azure Artifacts
+   * [Jenkins](/docs/platform/Connectors/Artifact-Repositories/connect-to-jenkins)
    
    For this tutorial, we will use Artifactory.
    :::
