@@ -48,7 +48,7 @@ You can select the **Custom** trigger type if you are using an unsupported Git p
 
 :::caution
 
-All triggers in a Harness account have the same URL: `https://app.harness.io/gateway/ng/api/webhook?accountIdentifier=ACCOUNT_ID`. This means that you must set up your trigger conditions carefully to ensure that triggers start builds for relevant events only.
+All triggers in a Harness account have the same URL: `https://app.harness.io/gateway/ng/api/webhook?accountIdentifier=ACCOUNT_ID`. This means that you must set up your trigger conditions carefully to ensure that triggers start pipelines for relevant events only.
 
 :::
 
@@ -70,13 +70,13 @@ For details on trigger settings, go to the [Triggers reference](../8_Pipelines/w
 
 Here are some examples of trigger conditions:
 
-* Trigger a build when a specific value is passed in the source payload.
-* Trigger a build when there's a change in a specific file or a pull request.
-* Trigger a build based on a specific artifact tag convention.
-* Trigger a build if the source or target branch in the Git event matches a specified pattern.
-* Trigger a build if there are file changes in specific directories in the Git repo (This is useful when working with a mono-repository; it ensures that builds only run in response to certain changes, rather than every change).
+* Trigger a pipeline when a specific value is passed in the source payload.
+* Trigger a pipeline when there's a change in a specific file or a pull request.
+* Trigger a pipeline based on a specific artifact tag convention.
+* Trigger a pipeline if the source or target branch in the Git event matches a specified pattern.
+* Trigger a pipeline if there are file changes in specific directories in the Git repo (This is useful when working with a mono-repository; it ensures that pipelines only run in response to certain changes, rather than every change).
 
-:::caution Conditions are cumulative
+:::info Conditions are cumulative
 
 Triggers are like complex filters in which the **Conditions** are `AND`-ed together. To execute a trigger, the event payload must match *all* trigger conditions.
 
@@ -222,11 +222,11 @@ On the list of triggers for a pipeline, you can see when each trigger was last a
 
 **Activation** means the trigger was able to *request* pipeline execution; it doesn't mean that the webhook didn't work.
 
-**Failed** usually means the pipeline has a configuration issue that prevented the trigger from initiating a build.
+**Failed** usually means the pipeline has a configuration issue that prevented the trigger from initiating a pipeline.
 
 ### Troubleshooting
 
-If a build does not start in response to an incoming event, do the following:
+If a pipeline does not start in response to an incoming event, do the following:
 
 * Check the execution history (select **Execution History** in the top right of the Pipeline Studio).
 * Verify that the runtime inputs are correct.

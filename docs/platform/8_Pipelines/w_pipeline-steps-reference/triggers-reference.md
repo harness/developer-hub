@@ -137,9 +137,9 @@ For details on each provider's events, go to:
 
 ### Auto-abort Previous Execution
 
-Select this option if you want to override active builds whenever this trigger is activated. By selecting this option, when the branch/PR associated with the trigger receives a newer update that re-triggers the trigger, then any ongoing builds that were previously started by the same trigger are cancelled before the new build starts.
+Select this option if you want to override active pipeline runs whenever this trigger is activated. By selecting this option, when the branch/PR associated with the trigger receives a newer update that re-triggers the trigger, then any ongoing pipeline runs that were previously started by the same trigger are cancelled before the new pipeline run starts.
 
-Harness uses the following combinations as criteria to identify similar active builds for **Pull Request** events:
+Harness uses the following combinations as criteria to identify similar active pipeline runs for **Pull Request** events:
 
 * Account identifier
 * Org identifier
@@ -150,7 +150,7 @@ Harness uses the following combinations as criteria to identify similar active b
 * Source branch
 * Target branch
 
-Harness uses the following combinations as criteria to identify similar active builds for **Push** events.
+Harness uses the following combinations as criteria to identify similar active pipeline runs for **Push** events.
 * Account identifier
 * Org identifier
 * Project identfier
@@ -201,11 +201,11 @@ Conditions are optional settings you can use to refine the trigger beyond [event
 
 For example:
 
-* Trigger a build when a specific value is passed in the source payload.
-* Trigger a build when there's a change in a specific file or a pull request.
-* Trigger a build based on a specific artifact tag convention.
+* Trigger a pipeline when a specific value is passed in the source payload.
+* Trigger a pipeline when there's a change in a specific file or a pull request.
+* Trigger a pipeline based on a specific artifact tag convention.
 
-:::caution Conditions are cumulative
+:::info Conditions are cumulative
 
 Triggers are like complex filters in which all conditions are `AND`-ed together. To execute a trigger, the event payload must match *all* trigger conditions.
 
@@ -291,7 +291,7 @@ Depending on the attribute and operator, you can supply a single value, comma-se
 
 You can configure triggers to match the source branch, target branch, and/or changed files in a Git merge. Available conditions depend on the [event type](#event-and-actions) selected. For example, any event that belongs to a merge will have **Source Branch** and **Target Branch** conditions.
 
-For example, the following image shows a trigger that would start a build if both of the following conditions were true:
+For example, the following image shows a trigger that would start a pipeline if both of the following conditions were true:
 
 * The source branch starts with `new-`.
 * The target branch equals `main`.
@@ -352,7 +352,7 @@ The following image shows how the expression `<+eventPayload.repository.name>` w
 
 ![Extracting trigger attributes from a GitHub webhook payload.](./static/triggers-reference-14.png)
 
-The following image shows payload conditions that trigger a build if the comment body starts with `This` *and* the repository owner is `johndoe`.
+The following image shows payload conditions that trigger a pipeline if the comment body starts with `This` *and* the repository owner is `johndoe`.
 
 ![](./static/triggers-reference-15.png)
 
@@ -498,4 +498,4 @@ On the list of triggers for a pipeline, you can see when each trigger was last a
 
 **Activation** means the trigger was able to *request* pipeline execution; it doesn't mean that the webhook didn't work.
 
-**Failed** usually means the pipeline has a configuration issue that prevented the trigger from initiating a build.
+**Failed** usually means the pipeline has a configuration issue that prevented the trigger from initiating a pipeline.

@@ -136,7 +136,7 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
 
    :::info
 
-   You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For this tutorial, select **Kubernetes Manifest**. For information about the other options and detailed instructions, go to [Install a delegate](/docs/platform/Delegates/install-delegates/install-a-delegate).
+   You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For this tutorial, select **Kubernetes Manifest**. For information about the other options and detailed instructions, go to [Delegate installation overview](/docs/platform/Delegates/install-delegates/overview).
 
    If delegate installation succeeds, the `kubectl apply` command should produce output similar to the following:
 
