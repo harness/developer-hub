@@ -125,7 +125,7 @@ In **Advanced**, you can use the following options:
 
 ## Delegate proxy
 
-HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](/docs/platform/2_Delegates/manage-delegates/configure-delegate-proxy-settings).
+HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](https://developer.harness.io/docs/platform/Delegates/manage-delegates/configure-delegate-proxy-settings).
 
 ## Header capability check
 

@@ -139,8 +139,8 @@ The Harness Delegate is a software service you install in your environment. It c
 If you're new to Harness, read [Harness Platform architecture](/docs/getting-started/harness-platform-architecture) to learn about how Harness uses a Delegate to perform deployment tasks.
 
 1. Follow the steps here to install a Harness Delegate:
-	1. [Install a Docker Delegate](/docs/platform/2_Delegates/install-delegates/overview).
-	2. [Install Harness Delegate on Kubernetes](/docs/platform/2_Delegates/install-delegates/overview).
+	1. [Install a Docker Delegate](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
+	2. [Install Harness Delegate on Kubernetes](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
 
 When you are done setting up the Delegate and it has registered with Harness, you'll see the Delegate's tags on the Delegates list page:
 
