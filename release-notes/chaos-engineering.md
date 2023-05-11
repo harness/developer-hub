@@ -15,19 +15,21 @@ Review the notes below for details about recent changes to Harness Chaos Enginee
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 5, 2023, version 0.11.1
+## Latest - May XX, 2023, version 0.12.x
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-* Introduction of GameDays in HCE Module. (CHAOS-643)
-    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday).
 
-* Allow saving of experiment with inactive infrastructure. (CHAOS-1573)
-    * HCE now allows you to save an experiment if the infrastructure is inactive, with the saveExperiment API.
+* Reports can now be downloaded. (CHAOS-1615)
 
-* The search field on the experiment runs page has been updated to **Search for experiment run ID** to make it clear that it does not search on the name of the experiment run. (CHAOS-1528)
+* Chaos users can now sign up for a free plan. (CHAOS-1156)
+
+* Chaos now supports dual connectivity for infrastructure and subscribers. (CHAOS-1117)
+    * Chaos supports both websocket and polling modes.
+
+* Introduction of Chaos usage dashboards. (CHAOS-719)
 
 ```mdx-code-block
   </TabItem>
@@ -41,8 +43,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="Fixed issues">
 ```
 
-* This release does not include any fixed issues.
-
+* Corrected the UI text for the Inactive and Pending states for Linux infrastructure states. (CHAOS-1633)
+* Improved the UI text in the case of empty search results for Kubernetes or Linux infrastructures. (CHAOS-1629)
+* Fixed an issue where the search bar was not displaying when there were no search results for Linux infrastructure. (CHAOS-1621)
+* Fixed an issue in the UI where there was not a meaningful message displayed when a Linux infrastructure was in the process of deploying. Now there is a PENDING label displayed until the infrastructure is deployed. (CHAOS-1620)
+* There was an issue where the total number of probes came to 0 when an experiment was running in a GameDay. This has been fixed. (CHAOS-1618)
+* There was in issue in XXX UI where the side drawer was displaying 0 faults in the case of more than one fault in serial or parallel. This issue has been fixed. (CHAOS-1617)
+* Fixed a text wrapping issue on the confirmation dialog for deleting a chaos infrastructure. (CHAOS-1578)
 
 ```mdx-code-block
   </TabItem>
@@ -53,6 +60,27 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 <details>
 <summary>2023 releases</summary>
+
+#### May 5, 2023, version 0.11.1
+
+##### What's new
+
+* Introduction of GameDays in HCE Module. (CHAOS-643)
+    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday).
+
+* Allow saving of experiment with inactive infrastructure. (CHAOS-1573)
+    * HCE now allows you to save an experiment if the infrastructure is inactive, with the saveExperiment API.
+
+* The search field on the experiment runs page has been updated to **Search for experiment run ID** to make it clear that it does not search on the name of the experiment run. (CHAOS-1528)
+
+##### Early access
+
+* This release does not include any early access features.
+
+
+##### Fixed issues
+
+* This release does not include any fixed issues.
 
 #### April 25, 2023, version 0.10.3
 
