@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-04-06T10:00
+date: 2023-05-10T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 9
 ---
@@ -57,7 +57,7 @@ This release does not incude early-access features.
   <TabItem value="Fixed issues">
 ```
 
-* Fixed an issue with Mend scans that caused builds to fail with the log message “Missing valid image". (STO=-5867)
+* Fixed an issue with Mend scans that caused builds to fail with the log message “Missing valid image". (STO-5867)
 
 * Fixed an issue with Mend scans where the `product_domain` step setting did not get passed to the CLI, causing the scan to point to the default US server. (STO-5708)
 
