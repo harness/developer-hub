@@ -210,7 +210,7 @@ If you see **Webhook registration failed**, here are the common causes:
   - Ensure you selected the correct repo.
 - The token used in the Harness connector does not have read write permissions:
   - Ensure that it has the **repo**, **user**, and **admin:repo\_hook** options enabled.
-  - If your Git provider organization using SSO, ensure that the token is authorized for access to the organization containing the repo.
+  - If your Git provider organization uses SSO, ensure that the token is authorized for access to the organization containing the repo.
 - The **Enable API access** option in the connector is not enabled.
   - Ensure this option is enabled and the Personal Access Token used in the settings has the **repo**, **user**, and **admin:repo\_hook** options enabled. 
 
@@ -273,13 +273,13 @@ This ternary operator takes three operands: a Boolean expression, and two values
 
 :::note
 
-The ternary operator is also known as the conditional operator because it evaluates a Boolean expression and returns one of two possible values depending on whether the expression is true or false.
+The ternary operator is also known as the conditional operator because it evaluates a Boolean expression and returns one of two possible values, depending on whether the expression is true or false.
 
 :::
 
 In the following example, we use the `<+pipeline.triggerType>` expression to see how the pipeline was executed. 
 
-If the expression evaluates to `WEBHOOK` (`true`) we expose and resolve the `<+trigger.commitSha>` to show the commit SHA that fired the trigger. If the expression does not resolve to `WEBHOOK` (`false`), we show the pipeline execution Id.
+If the expression evaluates to `WEBHOOK` (`true`), we expose and resolve the `<+trigger.commitSha>` to show the commit SHA that fired the trigger. If the expression does not resolve to `WEBHOOK` (`false`), we show the pipeline execution Id.
 
 ```
 echo <+<+pipeline.triggerType> == "WEBHOOK" ? <+trigger.commitSha>:<+pipeline.executionId>>
