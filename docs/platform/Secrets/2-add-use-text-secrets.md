@@ -151,7 +151,7 @@ EOF
 ```
 
 ### Review: Characters length limit in Secret Names
-If you are using Vault V2 engine, you can not use secret name with more than 100 characters.
+A secret name cannot exceed 100 characters if you are using the Vault V2 engine.
 
 ### Sanitization
 
