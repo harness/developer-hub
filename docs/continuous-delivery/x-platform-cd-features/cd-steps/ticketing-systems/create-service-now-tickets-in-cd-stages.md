@@ -123,6 +123,9 @@ Harness supports two use cases, and you should have sufficient permissions for e
 - **Standard use case**: you should have sufficient permissions on the custom table, such as basic create, read, and update permissions. Also, you should have any additional permissions requireed to update specific fields within that custom table, if required.
 - **Template use case**: this use case is covered below.
 
+For standard use cases, the custom table being used should allow access to this table via web services.
+
+   <docimage path={require('./static/f435a9ea3265d0696da26c80efd5bf8c6c2ff329f7c1a667727d294ef15d8c84.png')} width="60%" height="60%" title="Click to view full size image" />
 
 ### Using custom table support with the template flow
 
