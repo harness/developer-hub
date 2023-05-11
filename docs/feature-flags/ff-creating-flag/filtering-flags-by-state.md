@@ -55,6 +55,9 @@ To view flag states in different environments:
         ![Dashboard with one environment selected](../static/dashboard-1env.png)
 
     * If you choose **All Environments**, this view shows you each flag's state in each environment, grouped by **Prod** or **Non-Prod** environments. If needed, you can scroll right on each row to see more environments.
+        
+        Note that the Prod/Non-Prod grouping is based on whether you selected the **Prod** or **Non-prod** tag when creating the environment, though you may currently be using it for a different purpose. These tags cannot be changed once the environment is created.
 
         ![Dashboard with all environments selected](../static/all-envs-page.png)
+
 
