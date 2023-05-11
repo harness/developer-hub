@@ -83,8 +83,18 @@ The following table shows a few simple examples of expressions for specific use 
         <th>Description</th>
     </tr>
     <tr>
+        <td>release-20230420<br /> release-20230427 <br /> release-20230504 <br /> release-20230511 <br />  </td>
+        <td valign="top"><code>release\-\d+</code></td>
+        <td valign="top">
+            <ul>
+                <li><code><b>release\-</b></code> start with <code>release</code>, dash </li>
+                <li><code><b>\d+\.\d+\</b></code> follow with one or more digits </li>
+            </ul>
+        </td>
+    </tr>
+    <tr>
         <td>code-v1.1 <br /> code-v1.2 <br /> code-v1.3 <br /> code-v2.1 <br /> code-v2.2 <br /> code-v20.31 </td>
-        <td valign="top"><code>code\-v\d+\.\d*\</code></td>
+        <td valign="top"><code>code\-v\d+\.\d*</code></td>
         <td valign="top">
             <ul>
                 <li><code><b>code\-v</b></code> start with <code>code</code>, dash, <code>v</code> </li>
