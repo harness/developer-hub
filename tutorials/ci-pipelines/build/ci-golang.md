@@ -60,7 +60,7 @@ Add [**Run**](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settin
                   identifier: build
                   name: Build
                   spec:
-                    connectorRef: [your-docker-connector-ID] # replace with your connector ID
+                    connectorRef: account.harnessImage
                     image: golang
                     command: |-
                       go build
@@ -69,7 +69,7 @@ Add [**Run**](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settin
                   identifier: test
                   name: Test
                   spec:
-                    connectorRef: [your-docker-connector-ID] # replace with your connector ID
+                    connectorRef: account.harnessImage
                     image: golang
                     command: |-
                       go test -v ./...
@@ -112,7 +112,7 @@ If necessary, add a **Run** step to install any dependencies.
                   identifier: dependencies
                   name: Dependencies
                   spec:
-                    connectorRef: [your-docker-connector-ID] # replace with your connector ID
+                    connectorRef: account.harnessImage
                     image: golang
                     command: |-
                       go get example.com/my-go-module
@@ -197,7 +197,7 @@ Modify your test step to generate the JUnit XML, and add the reports path.
                   identifier: test
                   name: Test
                   spec:
-                    connectorRef: [your-docker-connector-ID] # replace with your connector ID
+                    connectorRef: account.harnessImage
                     image: golang
                     command: |-
                       go install github.com/jstemmer/go-junit-report/v2@latest
@@ -293,7 +293,7 @@ Specify the desired [Golang Docker image](https://hub.docker.com/_/golang) tag i
                   identifier: build
                   name: Build
                   spec:
-                    connectorRef: [your-docker-connector-ID] # replace with your connector ID
+                    connectorRef: account.harnessImage
                     # use version 1.20 of Go
                     image: golang:1.20
                     command: |-
@@ -326,7 +326,7 @@ Reference the matrix variable in the `image` field of your steps.
                   identifier: build
                   name: Build
                   spec:
-                    connectorRef: [your-docker-connector-ID] # replace with your connector ID
+                    connectorRef: account.harnessImage
                     image: golang:<+matrix.goVersion>
                     command: |-
                       go build
@@ -532,7 +532,7 @@ pipeline:
                   identifier: build
                   name: Build
                   spec:
-                    connectorRef: [your-docker-connector-ID] # replace with your connector ID
+                    connectorRef: account.harnessImage
                     image: golang:1.20
                     command: |-
                       go build
@@ -541,7 +541,7 @@ pipeline:
                   identifier: test
                   name: Test
                   spec:
-                    connectorRef: [your-docker-connector-ID] # replace with your connector ID
+                    connectorRef: account.harnessImage
                     image: golang:1.20
                     command: |-
                       go install github.com/jstemmer/go-junit-report/v2@latest
@@ -598,7 +598,7 @@ pipeline:
                   identifier: build
                   name: Build
                   spec:
-                    connectorRef: [your-docker-connector-ID] # replace with your connector ID
+                    connectorRef: account.harnessImage
                     image: golang:<+matrix.goVersion>
                     command: |-
                       go build
@@ -607,7 +607,7 @@ pipeline:
                   name: Test
                   identifier: test
                   spec:
-                    connectorRef: [your-docker-connector-ID] # replace with your connector ID
+                    connectorRef: account.harnessImage
                     image: golang:<+matrix.goVersion>
                     command: |-
                       go install github.com/jstemmer/go-junit-report/v2@latest
