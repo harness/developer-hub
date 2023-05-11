@@ -19,7 +19,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 
 * `product_name` = `burp`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `instance`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `ingestionOnly`
+* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan`, `dataLoad`, or `ingestionOnly`
 * `product_config_name`
 	+ Accepted values(s):
 		- `burp-default` (CLI interface uses a Cybric extension)
@@ -28,11 +28,26 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 
+
+
 ```mdx-code-block
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
 ```
 
 <StoLegacyInstance />
+
+```mdx-code-block
+import StoLegacyOrch from './shared/legacy/_sto-ref-legacy-orchestrated.md';
+```
+
+<StoLegacyOrch />
+
+```mdx-code-block
+import StoLegacyData from './shared/legacy/_sto-ref-legacy-dataload.md';
+```
+
+<StoLegacyData />
+
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
