@@ -25,12 +25,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-
 * You can now ingest ZAP scan results from both JSON and XML reports. For information about the ZAP XML report format, go to [Traditional XML Report](https://www.zaproxy.org/docs/desktop/addons/report-generation/report-traditional-xml/) in the ZAP documentation. (STO-5868)
 
 * The Security Tests tab now renders tables from tool-provided descriptions in the **Issue Details** panel. (STO-5857)
 
-* The UI now uses consistent terminology when referring to exemptions. All references to "ignore" and "ignored" have been updated to "exempt" and "exempted". (STO-5749)
+* The UI now uses consistent terminology when referring to exemptions. All references to *ignore* and *ignored* have been updated to *exempt* and *exempted*. (STO-5749)
 
 * The Security Testing Dashboard includes a new **Target Type** filter. (STO-5732)
 
@@ -50,6 +49,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="Early access">
 ```
 
+### Early access
 
 This release does not incude early-access features. 
 
@@ -59,6 +59,7 @@ This release does not incude early-access features.
   <TabItem value="Fixed issues">
 ```
 
+### Fixed issues
 
 * Fixed an issue with Mend scans that caused builds to fail with the log message “Missing valid image". (STO=-5867)
 
