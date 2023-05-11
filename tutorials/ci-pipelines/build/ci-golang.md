@@ -147,7 +147,72 @@ Cache your Go module dependencies with [**Cache Intelligence**](/docs/continuous
 <TabItem value="Self-hosted">
 ```
 
-See [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/) or [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs).
+With self-hosted build infrastructures, you can:
+
+ * [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
+ * [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs).
+
+<details>
+<summary>Go cache key and path requirements</summary>
+
+Go pipelines must reference `go.sum` for `spec.key` in **Save Cache** and **Restore Cache** steps, for example:
+
+```yaml
+                  spec:
+                    key: cache-{{ checksum "go.sum" }}
+```
+
+Additionally, `spec.sourcePaths` must include `/go/pkg/mod` and `/root/.cache/go-build` in the **Save Cache** step, for example:
+
+```yaml
+                  spec:
+                    sourcePaths:
+                      - /go/pkg/mod
+                      - /root/.cache/go-build
+```
+
+</details>
+
+<details>
+<summary>YAML example: Save and restore cache steps</summary>
+
+Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
+
+```yaml
+            steps:
+              - step:
+                  type: RestoreCacheS3
+                  name: Restore Cache From S3
+                  identifier: Restore_Cache_From_S3
+                  spec:
+                    connectorRef: AWS_Connector
+                    region: us-east-1
+                    bucket: your-s3-bucket
+                    key: cache-{{ checksum "go.sum" }}
+                    archiveFormat: Tar
+              - step:
+                  type: Run
+                  ...
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  ...
+              - step:
+                  type: SaveCacheS3
+                  name: Save Cache to S3
+                  identifier: Save_Cache_to_S3
+                  spec:
+                    connectorRef: AWS_Connector
+                    region: us-east-1
+                    bucket: your-s3-bucket
+                    key: cache-{{ checksum "go.sum" }}
+                    sourcePaths:
+                      - /go/pkg/mod
+                      - /root/.cache/go-build
+                    archiveFormat: Tar
+```
+ 
+</details>
+
 
 ```mdx-code-block
 </TabItem>
@@ -156,11 +221,11 @@ See [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching
 
 ## Visualize test results
 
-Test results can be [viewed](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/) in the **Tests** tab in your pipeline execution. Test results must be in JUnit XML format.
+You can [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/) on the **Tests** tab of your pipeline executions. Test results must be in JUnit XML format.
 
-[go-junit-report](https://github.com/jstemmer/go-junit-report) can be used to output compatible JUnit XML reports.
+You can use [go-junit-report](https://github.com/jstemmer/go-junit-report) to output compatible JUnit XML reports.
 
-Modify your test step to generate the JUnit XML, and add the reports path.
+For your pipeline to produce test reports, you need to modify the **Run** step that runs your tests. Make sure the `command` generates JUnit XML reports and add the `reports` specification.
 
 ```mdx-code-block
 <Tabs>
