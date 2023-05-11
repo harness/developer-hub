@@ -51,7 +51,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="Early access">
 ```
 
-### Early access
 
 This release does not incude early-access features. 
 
