@@ -84,7 +84,7 @@ The following YAML example defines a `RunTests` step for Java with Maven.
                                         type: JUnit
                                         spec:
                                             paths:
-                                                - "**/*.xml"
+                                                - "target/surefire-reports/*.xml"
 ```
 
 After adding the `RunTests` step, make sure you [generate the initial call graph](#generate-the-initial-call-graph).
@@ -97,60 +97,55 @@ After adding the `RunTests` step, make sure you [generate the initial call graph
 <details>
 <summary>Pipeline YAML example</summary>
 
-The following YAML example is for a pipeline that runs Test Intelligence on the Dubbo open-source project. Note that this example uses the deprecated Service Dependency step, which has been replaced by the [Background step](../manage-dependencies/background-step-settings.md).
+The following YAML example shows a pipeline that runs tests with Test Intelligence.
 
 ```yaml
 pipeline:
-    name: ti-dubbo
-    identifier: tidubbo
-    properties:
-        ci:
-            codebase:
-                connectorRef: account.howdi
-                repoName: dubbo
-                build: <+input>
-    stages:
-        - stage:
-              name: unit-test
-              identifier: unitteststi
-              type: CI
-              spec:
-                  cloneCodebase: true
-                  execution:
-                      steps:
-                          - step:
-                                type: RunTests
-                                name: runTestsWithIntelligence
-                                identifier: runTestsWithIntelligence
-                                spec:
-                                    connectorRef: account.GCR
-                                    image: maven:3-openjdk-8
-                                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
-                                    buildTool: Maven
-                                    language: Java
-                                    packages: org.apache.dubbo,com.alibaba.dubbo
-                                    runOnlySelectedTests: true
-                                    reports:
-                                        type: JUnit
-                                        spec:
-                                            paths:
-                                                - "**/*.xml"
-                                    resources:
-                                        limits:
-                                            memory: 2Gi
-                                            cpu: 2000m
-                                timeout: 60m
-                  serviceDependencies: []
-                  infrastructure:
-                      type: KubernetesDirect
+  name: Test Intelligence Demo
+  identifier: testintelligencedemo
+  projectIdentifier: [project-ID]
+  orgIdentifier: default
+  description: This pipeline demonstrates using Harness Test Intelligence to speed up Java Maven tests.
+  properties:
+    ci:
+      codebase:
+        build: <+input>
+        connectorRef: [code-repo-connector-ID]
+  stages:
+    - stage:
+        type: CI
+        identifier: Build_and_Test
+        name: Build and Test
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: Run_Tests_with_Intelligence
+                  name: Run Tests with Intelligence
+                  spec:
+                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false -T 16C -fae
+                    buildTool: Maven
+                    envVariables:
+                      HARNESS_STAGE_INDEX: <+strategy.iteration>
+                      HARNESS_STAGE_TOTAL: <+strategy.iterations>
+                    language: Java
+                    preCommand: |-
+                      echo $HARNESS_STAGE_INDEX
+                      echo $HARNESS_STAGE_TOTAL
+                    reports:
                       spec:
-                          connectorRef: Kubernetes_Quickstart
-                          namespace: harness-delegate
-              variables: []
-    projectIdentifier: CI_Examples
-    orgIdentifier: default
-    description: TI for open source project dubbo
-    tags: {}
+                        paths:
+                          - "target/surefire-reports/*.xml"
+                      type: JUnit
+                    runOnlySelectedTests: true
+                  type: RunTests
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
 ```
 
 </details>
@@ -243,7 +238,7 @@ Suppose you have a pipeline that runs 100 tests, and each test takes about one s
 To enable parallelism for Test Intelligence, you must set a parallelism `strategy` on either the Run Tests step or the stage where you have the Run Tests step, and you must add the `enableTestSplitting` parameter to your Run Tests step's `spec`. You can also add the optional parameter `testSplitStrategy`.
 
 1. Go to the pipeline where you want to enable parallelism for Test Intelligence.
-2. [Define the parallelism strategy](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy` and `parallelism`. Other options, such as `maxConcurrency` are optional. For example:
+2. [Define the parallelism strategy](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional. For example:
 
    ```yaml
         strategy:
@@ -286,47 +281,43 @@ Note that while parallelism for Test Intelligence can improve the total time it 
 <summary>YAML example: Build stage with Test Intelligence and test splitting</summary>
 
 ```yaml
-        - stage:
-              name: unit-test
-              identifier: unitteststi
-              type: CI
-              spec:
-                  cloneCodebase: true
-                  execution:
-                      steps:
-                          - step:
-                                type: RunTests
-                                name: runTestsWithIntelligence
-                                identifier: runTestsWithIntelligence
-                                spec:
-                                    enableTestSplitting: true
-                                    testSplitStrategy: ClassTiming
-                                    connectorRef: account.GCR
-                                    image: maven:3-openjdk-8
-                                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
-                                    buildTool: Maven
-                                    language: Java
-                                    packages: org.apache.dubbo,com.alibaba.dubbo
-                                    runOnlySelectedTests: true
-                                    reports:
-                                        type: JUnit
-                                        spec:
-                                            paths:
-                                                - "**/*.xml"
-                                    resources:
-                                        limits:
-                                            memory: 2Gi
-                                            cpu: 2000m
-                                timeout: 60m
-                  serviceDependencies: []
-                  infrastructure:
-                      type: KubernetesDirect
+    - stage:
+        type: CI
+        identifier: Build_and_Test
+        name: Build and Test
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: Run_Tests_with_Intelligence
+                  name: Run Tests with Intelligence
+                  spec:
+                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false -T 16C -fae
+                    buildTool: Maven
+                    enableTestSplitting: true
+                    envVariables:
+                      HARNESS_STAGE_INDEX: <+strategy.iteration>
+                      HARNESS_STAGE_TOTAL: <+strategy.iterations>
+                    language: Java
+                    preCommand: |-
+                      echo $HARNESS_STAGE_INDEX
+                      echo $HARNESS_STAGE_TOTAL
+                    reports:
                       spec:
-                        connectorRef: Kubernetes_Quickstart
-                        namespace: harness-delegate
-              variables: []
-              strategy:
-                parallelism: 3
+                        paths:
+                          - "target/surefire-reports/*.xml"
+                      type: JUnit
+                    runOnlySelectedTests: true
+                  type: RunTests
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+        strategy:
+          parallelism: 3
 ```
 
 </details>
