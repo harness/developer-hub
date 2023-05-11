@@ -89,7 +89,7 @@ You can store your configurations in the following ways:
 
   :::important
   To link input sets and pipelines from different repositories enable the setting `Allow different repo for Pipeline and InputSets` in the default settings.
-  For more information, go to [Default Settings](/docs/platform/Settings/default-settings)
+  For more information, go to [Default settings](/docs/platform/Settings/default-settings).
   :::
 
 
