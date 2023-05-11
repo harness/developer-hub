@@ -20,12 +20,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  
 ## Latest - May 10, 2023, STO Core version 1.50.3
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
-
-### What's new
+### Security Testing Orchestration 
 
 * You can now ingest ZAP scan results from both JSON and XML reports. For information about the ZAP XML report format, go to [Traditional XML Report](https://www.zaproxy.org/docs/desktop/addons/report-generation/report-traditional-xml/) in the ZAP documentation. (STO-5868)
 
@@ -45,38 +40,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
    ![](./static/sto-exemption-reason-pulldown.gif)
 
-
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
-
-### Early access
-
-This release does not incude early-access features. 
-
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
-
-### Fixed issues
-
-* Fixed an issue with Mend scans that caused builds to fail with the log message “Missing valid image". (STO=-5867)
-
-* Fixed an issue with Mend scans where the `product_domain` step setting did not get passed to the CLI, causing the scan to point to the default US server. (STO-5708)
-
-* Added a **Privileged** checkbox to the UI for Security steps and scanner templates. This fixes an issue where `privileged` would automatically reset to `true` whenever a user updated the step, which required setting this option back to `false` in the YAML editor.  (STO-5773)
-
-* Implemented fixes to improve UI speed and performance in the Security Testing Dashboard. (STO-5612)
-  
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
 
 <details>
