@@ -117,13 +117,15 @@ In the following examples, the Id of the HTTP step is `HTTP`.
 
 In **Advanced**, you can use the following options:
 
-* [Step skip condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Step failure strategy settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-* [Select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
+* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## Delegate proxy
 
-HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](/docs/platform/Delegates/configure-delegates/configure-delegate-proxy-settings).
+HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](/docs/platform/2_Delegates/manage-delegates/configure-delegate-proxy-settings).
 
 ## Header capability check
 
