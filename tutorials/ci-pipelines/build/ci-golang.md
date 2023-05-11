@@ -150,7 +150,7 @@ Cache your Go module dependencies with [**Cache Intelligence**](/docs/continuous
 With self-hosted build infrastructures, you can:
 
  * [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
- * [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs).
+ * [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
 
 <details>
 <summary>Go cache key and path requirements</summary>
@@ -315,29 +315,29 @@ If your application requires a specific version of Go, add a **Run** step to ins
 
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
 
-   ```yaml
-           strategy:
-             matrix:
-               # matrix strategy with Go versions 1.19 and 1.20
-               goVersion:
-                 - "1.19"
-                 - "1.20"
-   ```
+```yaml
+        strategy:
+          matrix:
+            # matrix strategy with Go versions 1.19 and 1.20
+            goVersion:
+              - "1.19"
+              - "1.20"
+```
 
 2. Reference the matrix variable in your steps.
 
-   ```yaml
-                 - step:
-                     type: Run
-                     identifier: installgo
-                     name: Install Go
-                     spec:
-                       shell: Sh
-                       command: |-
-                         export GOPATH=$HOME/go
-                         go install golang.org/dl/go<+matrix.goVersion>@latest
-                         $GOPATH/bin/go<+matrix.goVersion> download
-   ```
+```yaml
+              - step:
+                  type: Run
+                  identifier: installgo
+                  name: Install Go
+                  spec:
+                    shell: Sh
+                    command: |-
+                      export GOPATH=$HOME/go
+                      go install golang.org/dl/go<+matrix.goVersion>@latest
+                      $GOPATH/bin/go<+matrix.goVersion> download
+```
 
 </details>
 
@@ -368,11 +368,10 @@ Specify the desired [Golang Docker image](https://hub.docker.com/_/golang) tag i
 </details>
 
 
-
 <details>
 <summary>Build using multiple versions of Go</summary>
 
-Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
 
 ```yaml
         strategy:
@@ -383,7 +382,7 @@ Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-ma
               - "1.20"
 ```
 
-Reference the matrix variable in the `image` field of your steps.
+2. Reference the matrix variable in the `image` field of your steps.
 
 ```yaml
               - step:
@@ -419,6 +418,8 @@ Depending on your project and organization, you may also need to replace `projec
 
 <details>
 <summary>Pipeline with one specific Go version</summary>
+
+Here is a single-stage pipeline using cache intelligence, with steps to install Go 1.20, build and test.
 
 ```yaml
 pipeline:
@@ -490,6 +491,8 @@ pipeline:
 
 <details>
 <summary>Pipeline with multiple Go versions</summary>
+
+Here is a single-stage pipeline using cache intelligence, with a matrix looping strategy for Go versions 1.19 and 1.20.
 
 ```yaml
 pipeline:
@@ -577,6 +580,8 @@ Depending on your project and organization, you may also need to replace `projec
 <details>
 <summary>Pipeline with one specific Go version</summary>
 
+Here is a single-stage pipeline, with steps to install Go 1.20, build and test.
+
 ```yaml
 pipeline:
   name: Build and test Go app
@@ -637,6 +642,8 @@ pipeline:
 
 <details>
 <summary>Pipeline with multiple Go versions</summary>
+
+Here is a single-stage pipeline, with a matrix looping strategy for Go versions 1.19 and 1.20.
 
 ```yaml
 pipeline:
