@@ -244,3 +244,102 @@ For example, if the pipeline is executed manually, the `<+pipeline.triggerType>`
 pipeline.triggerType:  WEBHOOK
 ```
 
+### Null comparisons
+
+You can also use JEXL comparisons with Trigger expressions.
+
+For example, let's look at an example that uses the `?` ternary operator in a JEXL expression. 
+
+This ternary operator takes three operands: a Boolean expression, and two values or expressions that are evaluated based on the Boolean expression. 
+
+
+:::note
+
+The ternary operator is also known as the conditional operator because it evaluates a Boolean expression and returns one of two possible values depending on whether the expression is true or false.
+
+:::
+
+In the following example, we use the `<+pipeline.triggerType>` expression to see how the pipeline was executed. 
+
+If the expression evaluates to `WEBHOOK` (`true`) we expose and resolve the `<+trigger.commitSha>` to show the commit SHA that fired the trigger. If the expression does not resolve to `WEBHOOK` (`false`), we show the pipeline execution Id.
+
+```
+echo <+<+pipeline.triggerType> == "WEBHOOK" ? <+trigger.commitSha>:<+pipeline.executionId>>
+```
+
+We can do the same using the `MANUAL` value:
+
+```
+echo <+<+pipeline.triggerType> == "MANUAL" ? <+pipeline.executionId>:<+trigger.commitSha>>
+```
+
+Here's a sample pipeline that demonstrates these comparisons.
+
+<details>
+<summary>Pipeline with trigger expressions comparisons</summary>
+
+```yaml
+pipeline:
+  name: Trigger
+  identifier: Trigger
+  projectIdentifier: CD_Docs
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Custom
+        identifier: Custom
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: Echo
+                  identifier: Echo
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          echo "pipeline.triggerType: " <+pipeline.triggerType>
+                          echo "pipeline.executionId: " <+pipeline.executionId>
+                          echo "trigger.commitSha: " <+trigger.commitSha>
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+              - step:
+                  type: ShellScript
+                  name: Triggered by WEBHOOK
+                  identifier: Comparison_2
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo <+<+pipeline.triggerType> == "WEBHOOK" ? <+trigger.commitSha>:<+pipeline.executionId>>
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+              - step:
+                  type: ShellScript
+                  name: Triggered by MANUAL
+                  identifier: Comparison
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo <+<+pipeline.triggerType> == "MANUAL" ? <+pipeline.executionId>:<+trigger.commitSha>>
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+```
+
+</details>
