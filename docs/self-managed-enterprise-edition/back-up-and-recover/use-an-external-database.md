@@ -60,10 +60,6 @@ For MongoDB Community Editions versions, Harness recommends the following third-
 - Rubrik (cloud backups)
 - Custom tools
 
-## SSL/TLS security communication
-
-MongoDB supports SSL/TLS secure client/server communication. KOTS supports SSL/TLS communication between Harness Self-Managed Enterprise Edition and MongoDB. 
-
 ## FAQs
 
 ### How do I resolve an out of sync issue?
