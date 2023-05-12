@@ -17,27 +17,41 @@ This topic provides some highlights and useful information about the HCE dashboa
 
 ## HCE dashboard highlights
 
-### View the dashboards
+### View the HCE dashboards
 
 To view the HCE dashboards: 
 
 1. In Harness, select **Dashboards** in the left navigation pane.
-1. In the Dashboards page, select **Chaos**, and then choose one of the chaos dashboards.
+1. In the Dashboards page, select **Chaos**, and then select one of the chaos dashboards.
 
-On the dashboard, you can: 
+	![Two chaos dashboards on the Dashboards page](./static/dashboards/chaos-dashboards.png)
+
+On any dashboard, you can: 
 
 * Hover over elements of a chart with your mouse to view details.
-* Select different areas of the charts to view information in tabular form, and download it to use in other tools.
+* Select different areas/bars of a chart to view details in tabular form, and download it to use in other tools.
 * Schedule delivery of the dashboard data to email addresses.
 * Set up alerts to be notified when specific data changes.
 * Clone a dashboard to customize it for different needs and audiences.
 
 
-### View experiment runs by users
+### View the Experiment Runs by Users dashboard
 
+This dashboard shows the number of experiments run by each chaos user over time. Three charts are available for: **Last Week**, **Last Month**, and **Last Year**.
 
-### View chaos infrastructures by users
+![Chaos Experiments Run by Users dashboard](./static/dashboards/dash-exp-run-by-user.png)
 
+* Hover over any bar on the chart to see details.
+* Click any bar on the chart to drill down and see information in tabular form. From here, you can download the data in several formats to use in other tools.
+
+### View the Chaos Infrastructures by Users dashboard
+
+This dashboard shows the number of infrastructures created by each chaos user over time. Three charts are available for: **Last Week**, **Last Month**, and **Last Year**.
+
+![Chaos Infrastructures by Users dashboard](./static/dashboards/dash-infra-by-user.png)
+
+* Hover over any bar on the chart to see details.
+* Click any bar on the chart to drill down and see information in tabular form. From here, you can download the data in several formats to use in other tools.
 
 ## Download, schedule, and share dashboard data
 
@@ -49,13 +63,19 @@ You can download the entire dashboard or individual charts.
 
 #### To download the entire dashboard:
 
-Select the **Dashboard actions** icon at the top of the dashboard, select **Download**, and then modify the settings as needed.
+1. At the top of the dashboard, select the **Dashboard actions** icon, and then select **Download**. 
 
-![Dashboard actions icon circled in red at top right of dashboard](./static/dashboards/dashboard-download-data-top1.png)
+	![Dashboard actions icon circled in red at top right of dashboard](./static/dashboards/dash-actions-menu-top.png)
+
+1. Modify the settings as needed, and then select **Download**.
 
 #### To download a chart:
 
-Select the **Tile actions** icon at the top of the chart, select **Download data**, and then modify the settings as needed.
+1. Select the **Tile actions** icon at the top of the chart, and then select **Download data**. 
+
+	![Tile actions menu](./static/dashboards/dash-tile-actions-icon.png)
+
+1. Modify the settings as needed, and then select **Download**.
 
 
 ### Schedule and share data
@@ -74,9 +94,20 @@ To schedule delivery of dashboard data:
 
 ## Alert on dashboard data
 
-You can set up alerts on any chart by selecting the alert icon, and then modifying the alert settings for that chart.
+You can set up alerts on any chart, specifying the alert condition, when to get the alerts, and where to send them.
 
-IMAGE HERE
+To set up alerts on a chart:
+
+1. At the top of the chart, select the alert icon. and then modifying the alert settings for that chart.
+
+	![Alert icon](./static/dashboards/dash-alert-icon.png)
+
+1. Modify the settings to: 
+	* Specify the condition for the alert. 
+	* Select where to send the alert. 
+	* Specify the alert frequency. 
+1. Select **Save Alert**.
+
 
 ## Create a custom dashboard
 
@@ -88,7 +119,7 @@ To clone a dashboard:
 
 1. Find the dashboard, select the actions icon, and then select **Clone**.
 
-	IMAGE HERE ./static/dashboards/dashboard-clone.png
+	![Chaos Infrastructure by User dashboard with Clone option selected](./static/dashboards/dash-clone-menu.png)
 
 1. Select a **Folder**, provide a dashboard **Name** and optional **Tags**, and then select **Continue**.
 
@@ -96,11 +127,11 @@ To clone a dashboard:
 
 1. To customize it, select your new dashboard, then select the **Dashboard actions** icon at the top, and then choose **Edit dashboard**.
 
-	IMAGE HERE ./static/dashboards/dashboard-actions-icon.png
+	![Dashboard action icon](./static/dashboards/dashboard-actions-icon.png)
 
 1. In the edit view, click the **Tile actions** icon on any chart to customize, hide, delete, or duplicate it.
 
-	IMAGE HERE ./static/dashboards/dashboard-edit.png
+	![Tile actions menu in the edit view](./static/dashboards/dashboard-edit.png)
 
 ### Create a new dashboard
 
