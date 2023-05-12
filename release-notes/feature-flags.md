@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-05-04T10:00:25
+date: 2023-05-15T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -17,7 +17,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - May 4, 2023
+## Latest - May 15, 2023
 
 ```mdx-code-block
 <Tabs>
@@ -38,9 +38,17 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-#### Feature Flags SDKs
+#### Feature Flags server
 
-* Fixed an issue in the onboarding flow where the flag validation did not work as expected. (FFM-7534)
+* Previously, re-enabling Git Experience did not trigger an immediate Git sync. With this change, flags are synchronized as soon as Git Experience is re-enabled. (FFM-7670)
+
+* Some Git sync operations were failing if there was a large volume of flags and environments. This fix increased the transaction time-out for Git sync calls to allow processing of a large number of the flags. (FFM-7638)
+
+* Policy checks weren't being carried out on flag rules added from the Target Group details page. This issue has been fixed. (FFM-7607)(FFM-7606)
+
+* Previously, Feature Flag permissions and roles assigned to users or user groups in Access Control were applied at the account and project levels, but not at the organization level. With this change, roles and permissions assigned at the organization level are now honored. (FFM-7376)
+
+* When trying to delete a flag that is a prerequisite to another flag, a new explanatory message is now displayed for why this cannot be done: *Cannot delete flag which is a prerequisite for other flags*. (FFM-5105)
 
 ```mdx-code-block
   </TabItem>
@@ -51,6 +59,22 @@ This release does not include early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### May 4, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+* Fixed an issue in the onboarding flow where the flag validation did not work as expected. (FFM-7534)
 
 #### April 26, 2023
 
