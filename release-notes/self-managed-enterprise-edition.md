@@ -16,7 +16,7 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 ## Latest - May 12, 2023, patch release for version 78926
 
-Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and security updates.
+Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and updates to address potential security vulnerabilities.
 
 This release includes the following Harness module and component versions.
 
