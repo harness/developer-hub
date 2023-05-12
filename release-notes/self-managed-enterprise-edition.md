@@ -39,6 +39,8 @@ This release includes the following Harness module and component versions.
 
    This issue is fixed. The migrator is now only enabled when `global.migrator.enabled` is set to `true`.
 
+* The legacy delegate is no longer the default delegate type. The default value of `useImmutableDelegate` is now set to `true`. (SMP-1280)
+
 ## Previous releases
 
 <details>
