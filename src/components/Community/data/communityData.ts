@@ -23,7 +23,7 @@ export const communityList: CardItem[] = [
     title: "CD Community Guide",
     module: MODULES.cd,
     date: "May 12, 2023",
-    link: "/community/continuius-delivery/community-guide",
+    link: "/community/continuous-delivery/community-guide",
   },
   {
     title: "FF Community Guide",
