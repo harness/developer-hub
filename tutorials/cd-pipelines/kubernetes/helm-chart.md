@@ -2,6 +2,9 @@
 sidebar_position: 1
 hide_table_of_contents: true
 title: Helm Chart
+alias:
+  - /helm
+  - /chart
 ---
 
 # Deploy a Helm Chart

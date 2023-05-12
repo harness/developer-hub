@@ -454,6 +454,9 @@ const config = {
         copyright: "Harness Inc.",
         rssDescription: "Harness Release Notes",
       },
+      redirectExport: {
+        destPath: "_redirects",
+      },
     }),
   plugins: [
     [
@@ -474,18 +477,18 @@ const config = {
       */
       clientRedirects,
     ],
-    [
-      "@docusaurus/plugin-content-docs",
-      {
-        id: "tutorials",
-        path: "tutorials",
-        routeBasePath: "tutorials",
-        exclude: ["**/shared/**", "**/static/**"],
-        sidebarPath: require.resolve("./sidebars-tutorials.js"),
-        editUrl: "https://github.com/harness/developer-hub/tree/main",
-        // ... other options
-      },
-    ],
+    // [
+    //   "@docusaurus/plugin-content-docs",
+    //   {
+    //     id: "tutorials",
+    //     path: "tutorials",
+    //     routeBasePath: "tutorials",
+    //     exclude: ["**/shared/**", "**/static/**"],
+    //     sidebarPath: require.resolve("./sidebars-tutorials.js"),
+    //     editUrl: "https://github.com/harness/developer-hub/tree/main",
+    //     // ... other options
+    //   },
+    // ],
     [
       "@docusaurus/plugin-content-docs",
       {
@@ -519,6 +522,18 @@ const config = {
         exclude: ["**/shared/**", "**/static/**"],
         sidebarPath: require.resolve("./sidebars-release-notes.js"),
         editUrl: "https://github.com/harness/developer-hub/tree/main",
+      },
+    ],
+    [
+      path.resolve(__dirname, "./plugins/redirect-plugin"),
+      {
+        id: "tutorials",
+        path: "tutorials",
+        routeBasePath: "tutorials",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-tutorials.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
       },
     ],
     "docusaurus-plugin-sass",
