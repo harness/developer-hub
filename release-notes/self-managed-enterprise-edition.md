@@ -34,20 +34,37 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.4
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="What's new">
+```
+This release does not include any new features.
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
-
-* The FirstGen to NextGen migrator disabled initialization for some Feature Flags.
+* The FirstGen to NextGen migrator disabled initialization for some Feature Flags. (SMP-1294)
 
    This issue is fixed. The migrator is now only enabled when `global.migrator.enabled` is set to `true`.
 
-## Latest - April 26, 2023, version 78926
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### April 26, 2023, version 78926
 
 This release includes the following Harness module and component versions.
 
-### Helm Chart Version 0.5.0 
+#### Helm Chart Version 0.5.0 
 
 https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 
@@ -63,10 +80,9 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+
+#### What's new
+
 #### Self-Managed Enterprise Edition
 - Beginning with v0.5.0, Harness will no longer publish `harness-prod` or `harness-demo` Helm charts. Harness will publish the `harness` base chart only. If you currently use the `harness-prod` or `harness-demo` Helm chart, you must download your `custom-override.yaml` file from [the helm-charts repository](https://github.com/harness/helm-charts/tree/main/src) and use the following commands to upgrade:
   
@@ -372,11 +388,8 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 
   You can now view logs for delegate tasks for pipeline steps that are running or finished. This can help with debugging issues.
 
+#### Fixed issues
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
 #### Self-Managed Enterprise Edition
 - Data synchronization did not occur and dashboards displayed incorrect detail. (SMP-1178)
 
@@ -981,15 +994,6 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 - The new delegate installation wizard is now available in all delegate installation worfklows. (DEL-5989)
 - Fixed an issue that interfered with the delegate installation process. Delegate API requests did not include the context that was required; organization and project ID information was not being sent with requests. The required context is now included. (DEL-5951)
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### March 14, 2023, version 78426
 
