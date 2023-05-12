@@ -48,7 +48,7 @@ This release does not include early access features.
 
 * Previously, Feature Flag permissions and roles assigned to users or user groups in Access Control were applied at the account and project levels, but not at the organization level. With this change, roles and permissions assigned at the organization level are now honored. (FFM-7376)
 
-* When trying to delete a flag that is a prerequisite to another flag, a new explanatory message is now displayed for why this cannot be done: *Cannot delete flag which is a prerequisite for other flags*. (FFM-5105)
+* When you try to delete a flag that is a prerequisite to another flag, the UI now shows an improved message that explains why this cannot be done: *Cannot delete flag which is a prerequisite for other flags*. (FFM-5105)
 
 ```mdx-code-block
   </TabItem>
