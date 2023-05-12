@@ -62,9 +62,9 @@ For MongoDB Community Editions versions, Harness recommends the following third-
 
 ## Required updates
 
-For external MongoDB support, update the following fields:
+For external MongoDB support, update the following fields in your Helm configuration files:
 
-```
+```yaml
 global:
 # -- provide overrides to use in-cluster database or configure to use external databases
   database:
@@ -86,7 +86,7 @@ global:
       extraArgs: ""
 ```
 
-```
+```yaml
 platform:
   # -- Access control settings (taints, tolerations, and so on)
   access-control:
