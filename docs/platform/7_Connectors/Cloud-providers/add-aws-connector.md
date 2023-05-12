@@ -88,7 +88,7 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
       ---
       ```
 
-    2. If legacy delegate, add  `serviceAccountName` to the Statefulset spec,  if immutable delegate, add  `serviceAccountName` to the Deployment spec. For example:
+    2. Add `serviceAccountName` to the Deployment spec. For example:
 
       ```
       ...
@@ -102,6 +102,8 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
                - containerPort: 8080
       ...
       ```
+      :::info note
+      For legacy delegate, add `serviceAccountName` to the Statefulset spec.
 
 6. Save the delegate YAML file.
 7. If you haven't already installed the delegate, [Install the Kubernetes delegate](../../../platform/2_Delegates/install-delegates/overview.md) in your EKS cluster and register the delegate with Harness. When you install the delegate in the cluster, the SA you added is used, and the environment variables `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` are added automatically by EKS.
