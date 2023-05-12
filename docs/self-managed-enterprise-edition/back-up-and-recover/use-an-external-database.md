@@ -62,7 +62,7 @@ For MongoDB Community Editions versions, Harness recommends the following third-
 
 ## Required Helm configuration updates
 
-For external MongoDB support, update the following fields in your Helm configuration files:
+For external MongoDB support, update the following fields in your Helm values.yaml configuration files:
 
 ### Global configuration
 
