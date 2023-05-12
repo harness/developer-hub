@@ -16,6 +16,8 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 ## Latest - May 12, 2023, patch release for version 78926
 
+Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and security updates.
+
 This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
@@ -36,7 +38,6 @@ This release includes the following Harness module and component versions.
 * The FirstGen to NextGen migrator disabled initialization for some feature flags. (SMP-1294)
 
    This issue is fixed. The migrator is now only enabled when `global.migrator.enabled` is set to `true`.
-
 
 ## Previous releases
 
