@@ -160,6 +160,7 @@ The trigger is added to the triggers page. The last step is [webhook registratio
 
 For all Git providers supported by Harness, non-custom webhooks are automatically created in the repo. For details about automatically-registered Git events, go to the [Triggers reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
 
+
 However, if automatic registration fails or you created a custom webhook, you must manually copy the webhook URL and add it to your repo webhooks.
 
 :::info Required permissions
@@ -198,6 +199,27 @@ For information about other provider's token scopes, go to:
 
 For more information about manual webhook registration, go to the [Triggers reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
 
+<details>
+<summary>Common causes of Webhook registration failed errors</summary>
+
+Webhook registration is immediate but the Harness Triggers page does not refresh immediately. Simply refresh the page to see if the webhook registers successfully.
+
+If you see **Webhook registration failed**, here are the common causes:
+
+- Github repository does not exist: 
+  - Ensure you selected the correct repo.
+- The token used in the Harness connector does not have read write permissions:
+  - Ensure that it has the **repo**, **user**, and **admin:repo\_hook** options enabled.
+  - If your Git provider organization uses SSO, ensure that the token is authorized for access to the organization containing the repo.
+- The **Enable API access** option in the connector is not enabled.
+  - Ensure this option is enabled and the Personal Access Token used in the settings has the **repo**, **user**, and **admin:repo\_hook** options enabled. 
+
+Once you have fixed the issue, simply edit the Harness trigger, select **Continue** to navigate through its settings, and then select **Update Trigger**.
+
+Once you are back on the Triggers page, refresh the page to verify that the webhook was registered.
+
+</details>
+
 ## Test the trigger
 
 To test the trigger, make (and push) a change in your repo. If you created a Pull Request (or similar) trigger, you'll also need to create a Pull Request.
@@ -223,6 +245,122 @@ On the list of triggers for a pipeline, you can see when each trigger was last a
 **Activation** means the trigger was able to *request* pipeline execution; it doesn't mean that the webhook didn't work.
 
 **Failed** usually means the pipeline has a configuration issue that prevented the trigger from initiating a pipeline.
+
+## Trigger type expression
+
+You can use the Harness expression `<+pipeline.triggerType>` to see how the pipeline was executed.
+
+You can echo the expression like this:
+
+```
+echo "pipeline.triggerType: " <+pipeline.triggerType>
+```
+
+For example, if the pipeline is executed manually, the `<+pipeline.triggerType>` expression will resolve to `MANUAL`. If the pipeline is executed by a Webhook trigger, the expression will resolve to `WEBHOOK`.
+
+```
+pipeline.triggerType:  WEBHOOK
+```
+
+### Null comparisons
+
+You can also use JEXL comparisons with Trigger expressions.
+
+For example, let's look at an example that uses the `?` ternary operator in a JEXL expression. 
+
+This ternary operator takes three operands: a Boolean expression, and two values or expressions that are evaluated based on the Boolean expression. 
+
+
+:::note
+
+The ternary operator is also known as the conditional operator because it evaluates a Boolean expression and returns one of two possible values, depending on whether the expression is true or false.
+
+:::
+
+In the following example, we use the `<+pipeline.triggerType>` expression to see how the pipeline was executed. 
+
+If the expression evaluates to `WEBHOOK` (`true`), we expose and resolve the `<+trigger.commitSha>` to show the commit SHA that fired the trigger. If the expression does not resolve to `WEBHOOK` (`false`), we show the pipeline execution Id.
+
+```
+echo <+<+pipeline.triggerType> == "WEBHOOK" ? <+trigger.commitSha>:<+pipeline.executionId>>
+```
+
+We can do the same using the `MANUAL` value:
+
+```
+echo <+<+pipeline.triggerType> == "MANUAL" ? <+pipeline.executionId>:<+trigger.commitSha>>
+```
+
+Here's a sample pipeline that demonstrates these comparisons.
+
+<details>
+<summary>Pipeline with trigger expressions comparisons</summary>
+
+```yaml
+pipeline:
+  name: Trigger
+  identifier: Trigger
+  projectIdentifier: CD_Docs
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: Custom
+        identifier: Custom
+        description: ""
+        type: Custom
+        spec:
+          execution:
+            steps:
+              - step:
+                  type: ShellScript
+                  name: Echo
+                  identifier: Echo
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: |-
+                          echo "pipeline.triggerType: " <+pipeline.triggerType>
+                          echo "pipeline.executionId: " <+pipeline.executionId>
+                          echo "trigger.commitSha: " <+trigger.commitSha>
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+              - step:
+                  type: ShellScript
+                  name: Triggered by WEBHOOK
+                  identifier: Comparison_2
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo <+<+pipeline.triggerType> == "WEBHOOK" ? <+trigger.commitSha>:<+pipeline.executionId>>
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+              - step:
+                  type: ShellScript
+                  name: Triggered by MANUAL
+                  identifier: Comparison
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo <+<+pipeline.triggerType> == "MANUAL" ? <+pipeline.executionId>:<+trigger.commitSha>>
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+        tags: {}
+```
+
+</details>
 
 ### Troubleshooting
 
