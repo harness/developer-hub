@@ -18,12 +18,9 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 This release includes the following Harness module and component versions.
 
-### Helm Chart Version 0.5.4
-
-https://github.com/harness/helm-charts/releases/tag/harness-0.5.4
-
 | **Name** | **Version** |
 | :-- | :--: |
+| Helm Chart | [0.5.4](https://github.com/harness/helm-charts/releases/tag/harness-0.5.4) |
 | NG Manager | 78926 |
 | CI Manager | 3303 |
 | Pipeline Service | 1.26.9 |
@@ -34,26 +31,12 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.4
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
+### Fixed issues
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
-This release does not include any new features.
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
-* The FirstGen to NextGen migrator disabled initialization for some Feature Flags. (SMP-1294)
+* The FirstGen to NextGen migrator disabled initialization for some feature flags. (SMP-1294)
 
    This issue is fixed. The migrator is now only enabled when `global.migrator.enabled` is set to `true`.
 
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
 ## Previous releases
 
