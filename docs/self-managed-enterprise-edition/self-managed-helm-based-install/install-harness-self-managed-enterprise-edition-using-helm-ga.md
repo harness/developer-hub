@@ -26,7 +26,7 @@ Depending on your target environment, you'll need to update the override.yaml fi
 
 Use the following procedure to add a load balancer.
 
-**To add the URL for a load balancer**
+To add the URL for a load balancer, do the following:
 
 1. In the values.yaml file, set the `global.loadbalancerURL` field to the URL of your load balancer. This is the URL you use for Harness.
 
@@ -110,7 +110,7 @@ Harness Self-Managed Enterprise Edition needs a license to be provisioned for th
 
 To use the charts, you must install Helm. To get started with Helm, see the [Helm documentation](https://helm.sh/docs/). After you install Helm, follow the instructions below.
 
-**To install the Helm chart**
+To install the Helm chart, do the following:
 
 1. Add the repository.
 
@@ -140,7 +140,7 @@ After the installation completes, the services that were installed are enumerate
 
 The services that appear depend on the modules that were installed.
 
-**To verify installation**
+To verify installation, do the following:
 
 1. Review the list of services.
 2. In your browser, type the following instruction: 
