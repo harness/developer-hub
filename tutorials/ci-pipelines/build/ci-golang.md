@@ -210,7 +210,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                       - /root/.cache/go-build
                     archiveFormat: Tar
 ```
- 
+
 </details>
 
 
@@ -717,6 +717,6 @@ pipeline:
 
 Now that you have created a pipeline that builds and tests a Go app, you could:
 
-* Create [triggers](https://developer.harness.io/docs/category/triggers) to automatically run your pipeline.
+* Create [triggers](/docs/category/triggers) to automatically run your pipeline.
 * Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
 * Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
