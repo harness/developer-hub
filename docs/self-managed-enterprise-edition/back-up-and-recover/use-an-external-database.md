@@ -60,9 +60,11 @@ For MongoDB Community Editions versions, Harness recommends the following third-
 - Rubrik (cloud backups)
 - Custom tools
 
-## Required updates
+## Required Helm configuration updates
 
 For external MongoDB support, update the following fields in your Helm configuration files:
+
+### Global configuration
 
 ```yaml
 global:
@@ -85,6 +87,8 @@ global:
       # -- set additional arguments to mongo uri
       extraArgs: ""
 ```
+
+### Platform configuration
 
 ```yaml
 platform:
