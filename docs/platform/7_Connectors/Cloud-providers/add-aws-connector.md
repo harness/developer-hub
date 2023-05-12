@@ -88,7 +88,7 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
       ---
       ```
 
-    2. Add `serviceAccountName` to the `StatefulSet` spec. For example:
+    2. If legacy delegate, add  `serviceAccountName` to the Statefulset spec,  if immutable delegate, add  `serviceAccountName` to the Deployment spec. For example:
 
       ```
       ...
