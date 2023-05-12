@@ -32,20 +32,6 @@ Using Harness Git Experience with Feature Flags allows you to manage your flags 
 This feature is not supported on the Harness Self-Managed Enterprise Edition (on-prem).
 :::
 
-## Before you begin
-
-You must set up Git Experience before you can use it in your Feature Flags project. To do this:
-
-<!-- TBD DOC-2410 * [ Add a Source Code Manager to your account. ](https://docs.harness.io/article/p92awqts2x-add-source-code-managers) -->
-
-* Follow the steps in [Harness Git Experience Quickstart](/docs/platform/Git-Experience/configure-git-experience-for-harness-entities) to create a Git repository that contains at least one branch. Then select or create the connector. Note that, currently, branch setup cannot be reconfigured after initial setup.
-
-* To set up Git Sync for Feature Flags, navigate to the top of the flag page and select **Set Up Git Sync**.
-
-  ![Setup button for gitEx on Feature Flag page](./static/gitex-setup-featureflags-01.png)
-
-* Also ensure you read [How Git Experience works with Feature Flags](#how-git-experience-works-with-feature-flags) below.
-
 ## How Git Experience works with Feature Flags
 
 When you set up Git Experience and enable it in your Feature Flag Project, Harness automatically creates a file specified by the user during the setup phase, for example, `flags.yaml`. All your flag, environment, and target information is stored in this file. 
@@ -108,6 +94,34 @@ If you don’t see the changes you made in Git reflected on the Harness Platform
 :::caution
  Syncing changes between a remote file and the Harness Platform can take up to 5 mins. During this window the changes are commited to the remote file but not yet pulled and synced by the Harness Platform. Any changes made to the Harness Platform within that window trigger remote file updates, which overwrite the content of the remote file.
 :::
+
+## Prerequisites
+
+### Create or identify a Git repository
+
+* Your repository must have at least one branch.
+* Create a Personal Access Token (PAT) for your Git account to create the connector. The PAT must have the following scope:
+
+  * GitHub
+
+  * Bitbucket
+
+### Create or identify a Git connector
+
+When you set up Git Experience, you must either select an existing Git connector or create one. You can create the connector beforehand in Harness, or you can create it while setting up Git Experience. 
+
+### Set up Git Experience
+
+You must set up Git Experience before you can use it in your Feature Flags project. To do this:
+
+* Follow the steps in [Harness Git Experience Quickstart](/docs/platform/Git-Experience/configure-git-experience-for-harness-entities) to create a Git repository that contains at least one branch. Note that, currently, branch setup cannot be reconfigured after initial setup.
+
+* To set up Git Sync for Feature Flags, navigate to the top of the flag page and select **Set Up Git Sync**.
+
+  ![Setup button for gitEx on Feature Flag page](./static/gitex-setup-featureflags-01.png)
+
+
+
 
 ## Turn on syncing with Git
 
