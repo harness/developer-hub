@@ -104,11 +104,6 @@ The following example runs `mvn test` (declared in `args`), and then runs `mvn p
 
 Use Run steps to install dependencies in the build environment. [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies. You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="run" label="Run step" default>
-```
-
 ```yaml
               - step:
                    type: Run
@@ -135,29 +130,6 @@ Use Run steps to install dependencies in the build environment. [Plugin steps](/
                            spec:
                              paths:
                                - /harness/target/*.xml
-```
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="background" label="Background step">
-```
-
-The following example uses a Background step to run a Docker image as a service. For example, you could [build and push](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) your Java app image, pull that image in a Background step, and then use Run steps to run tests against the app while it is running.
-
-```yaml
-              - step:
-                  type: Background
-                  name: run app
-                  identifier: run_app
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: some-docker-repo/some-image
-                    shell: Sh
-```
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
 ```
 
 ## Caching
