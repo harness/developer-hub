@@ -12,13 +12,44 @@ import TabItem from '@theme/TabItem';
 ```mdx-code-block
 import delete_project from './static/delete-project.png'
 ```
-Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes). 
+Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes).
+
+## Latest - May 12, 2023, maintenance/patch/hotfix release for version 78926
+
+This release includes the following Harness module and component versions.
+
+### Helm Chart Version 0.5.4
+
+https://github.com/harness/helm-charts/releases/tag/harness-0.5.4
+
+| **Name** | **Version** |
+| :-- | :--: |
+| NG Manager | 78926 |
+| CI Manager | 3303 |
+| Pipeline Service | 1.26.9 |
+| Platform Service | 78602 |
+| Access Control Service | 78405 |
+| Change Data Capture | 78926 |
+| Test Intelligence Service | release-167 |
+| NG UI | 0.344.13 |
+| LE NG | 67708 |
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+* The FirstGen to NextGen migrator disabled initialization for some Feature Flags.
+
+   This issue is fixed. The migrator is now only enabled when `global.migrator.enabled` is set to `true`.
 
 ## Latest - April 26, 2023, version 78926
 
 This release includes the following Harness module and component versions.
-**Helm Chart Version ** 0.5.0
-**Release** https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
+
+### Helm Chart Version 0.5.0 
+
+https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 
 | **Name** | **Version** |
 | :-- | :--: |
