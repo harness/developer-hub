@@ -11,13 +11,12 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
-# Build and test Java apps
 
 This guide explains how you can build and test Java apps with Harness CI.
 
 The examples in this guide use a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructures.
 
-This guide assumes you've created a Harness CI pipeline. For more information, go to:
+This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
 
 * [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
 * [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
@@ -310,33 +309,24 @@ You can use a Run step or Plugin step to install Java versions.
 This example uses the [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie) to run the GitHub Actions Drone plugin and run the `setup-java` action.
 
 ```yaml
-                         - step:
-                                identifier: setup_java
-                                name: setup java
-                                type: Plugin
-                                spec:
-                                    connectorRef: account.harnessImage
-                                    image: plugins/github-actions
-                                    privileged: true
-                                    settings:
-                                        uses: actions/setup-java@v3
-                                        with:
-                                            java-version: '17'
+              - step:
+                  identifier: setup_java
+                  name: setup java
+                  type: Plugin
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/github-actions
+                    privileged: true
+                    settings:
+                      uses: actions/setup-java@v3
+                      with:
+                        java-version: '17'
 ```
 
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ```
-
-## Next steps
-
-Now that you have created a pipeline that builds and tests a Java app, you could:
-
-* Create [triggers](/docs/category/triggers) to automatically run your pipeline.
-* Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
-* Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
-* Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).
 
 ## Reference: Pipeline YAML
 
@@ -412,3 +402,12 @@ pipeline:
 ```
 
 </details>
+
+## Next steps
+
+Now that you have created a pipeline that builds and tests a Java app, you could:
+
+* Create [triggers](/docs/category/triggers) to automatically run your pipeline.
+* Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
+* Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
+* Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).
