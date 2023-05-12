@@ -60,6 +60,47 @@ For MongoDB Community Editions versions, Harness recommends the following third-
 - Rubrik (cloud backups)
 - Custom tools
 
+## Required updates
+
+For external MongoDB support, update the following fields:
+
+```
+global:
+# -- provide overrides to use in-cluster database or configure to use external databases
+  database:
+    # -- settings to deploy mongo in-cluster or configure to use external mongo source
+    mongo:
+      # -- set false to configure external mongo and generate mongo uri protocol://hosts?extraArgs
+      installed: true
+      # -- set the protocol for mongo uri
+      protocol: mongodb
+      # --   set the mongo hosts if mongo.installed is set to false
+      hosts: []
+      # -- provide the secret name to reference mongo username and password
+      secretName: ""
+      # -- provide the userKey to reference mongo username
+      userKey: ""
+      # -- provide the passwordKey to reference mongo password
+      passwordKey: ""
+      # -- set additional arguments to mongo uri
+      extraArgs: ""
+```
+
+```
+platform:
+  # -- Access control settings (taints, tolerations, and so on)
+  access-control:
+    # -- set mongoHosts for external database hosts
+    # -- mongoHosts:
+    # -- - replica1.host.com:27017
+    # -- - replica2.host.com:27017
+    # -- - replica3.host.com:27017
+    mongoHosts: []
+    # -- enable mongoSSL for external database connections
+    mongoSSL:
+      enabled: false
+```
+
 ## FAQs
 
 ### How do I resolve an out of sync issue?
