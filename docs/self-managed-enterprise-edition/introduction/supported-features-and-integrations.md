@@ -26,8 +26,11 @@ This topic lists the supported features and integrations you can use to install 
 
 ### RBAC requirement 
 * Permission required to deploy Helm
+* Permission to add roles
+* Permission to add a secret/edit
 
 ### License requirements
+* Reach out to Harness support (support@harness.io) to get the license information.
 
 ## Supported functionality
 * [Self-signed certificates](https://developer.harness.io/docs/self-managed-enterprise-edition/self-managed-helm-based-install/how-to-use-self-signed-certificates-with-self-managed/)
