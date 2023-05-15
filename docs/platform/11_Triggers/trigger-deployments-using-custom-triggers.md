@@ -61,7 +61,7 @@ Conditions are ANDed together (boolean AND operation). All Conditions must match
 
 Pipelines often have [Runtime Inputs](../20_References/runtime-inputs.md) like codebase branch names or artifact versions and tags.
 
-1. Provide values for the inputs. You can also use [input sets](../8_Pipelines/input-sets.md).
+1. Provide values for the inputs. You can use [input sets](../8_Pipelines/input-sets.md). For more information, go to [Passing data in custom triggers](/docs/platform/triggers/custom-trigger-passing-data).
 2. Click **Create Trigger**.
 
 The trigger is now added to the Triggers page.
