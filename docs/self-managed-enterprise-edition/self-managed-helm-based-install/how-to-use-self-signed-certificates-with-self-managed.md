@@ -1,5 +1,5 @@
 ---
-title: Use self-signed certificates with Helm-based installations
+title: Use self-signed certificates
 description: Learn how to modify the delegate truststore to generate self-signed certificates.
 # sidebar_position: 2
 helpdocs_topic_id: h0yo0jwuo9
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::info
+:::info note
 Applies to Helm-based installation only.
 :::
 
