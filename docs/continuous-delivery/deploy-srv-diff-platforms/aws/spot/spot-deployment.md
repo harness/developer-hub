@@ -10,7 +10,7 @@ Currently, Spot Elastigroup support is behind the feature flag `SPOT_ELASTIGROUP
 
 :::
 
-This topic describes how to configure and execute Amazon Machine Image (AMI) deployments through the Spot Elastigroup management platform. 
+This topic describes how to deploy AWS ASG deployments using Harness and the Spot Elastigroup management platform. 
 
 ## Requirements and limitations
 
@@ -21,9 +21,9 @@ This topic describes how to configure and execute Amazon Machine Image (AMI) dep
 
 ## Connect to a Spot cloud provider
 
-You can connect Harness to a Spot cloud provider by adding a Spot connector or an [AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector). 
+You can connect Harness to a Spot cloud provider by adding a Harness Spot or [AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector). 
 
-To connect to a Spot cloud provider using API, go to [Spot API authentication](https://docs.spot.io/api/#section/Authentication).
+To connect to a Spot cloud provider using Spot's API, go to [Spot API authentication](https://docs.spot.io/api/#section/Authentication).
 
 To use an AWS connector, your spot account must first be connected to the AWS cloud provider. For more information, go to [Connect your cloud account to Spot](https://docs.spot.io/connect-your-cloud-provider/aws-account).
 
@@ -152,7 +152,7 @@ service:
 
 Define the environment where you will deploy your application.
 
-1. In **Environment >** **Specify Environment**, select **New Environment**.  
+1. In **Environment**, select **New Environment**.  
 2. Enter the name **Spot**, and the select **Production** or **Pre-Production**.
 4. Select **Save**.
 5. In **Specify Infrastructure**, select **New Infrastructure**.
@@ -241,7 +241,7 @@ Define the environment where you will deploy your application.
              "loadBalancers": [
                {
                  "name": "asg-tg6",
-                 "arn": "arn:aws:elasticloadbalancing:us-east-1:839162981415:targetgroup/asg-tg6/3bcd13e204785948",
+                 "arn": "arn:aws:elasticloadbalancing:us-east-1:1234567890:targetgroup/asg-tg6/3bcd13e204785948",
                  "type": "TARGET_GROUP"
                }
              ]
