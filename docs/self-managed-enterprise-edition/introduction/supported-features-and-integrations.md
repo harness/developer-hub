@@ -24,10 +24,10 @@ This topic lists the supported features and integrations you can use to install 
 * Istio supported version: 1-15-3
 * NGINX supported version: v1.0.0-alpha.2
 
-### RBAC requirement 
-* Permission required to deploy Helm
+### RBAC requirements
+* Permission to deploy Helm
 * Permission to add roles
-* Permission to add a secret/edit
+* Permission to add/edit secrets
 
 ### License requirements
 * Reach out to Harness support (support@harness.io) to get the license information.
