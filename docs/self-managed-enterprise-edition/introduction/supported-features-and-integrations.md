@@ -30,12 +30,12 @@ This topic lists the supported features and integrations you can use to install 
 ### License requirements
 
 ## Supported functionality
-[Self-signed certificates](https://developer.harness.io/docs/self-managed-enterprise-edition/self-managed-helm-based-install/how-to-use-self-signed-certificates-with-self-managed/)
-[Air-gap mode](https://developer.harness.io/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/)
-[Infrastructure monitoring](https://developer.harness.io/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem/)
-[Backup and restore](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm/)
-External Database (coming soon)
-Disaster Recovery (coming soon)
+* [Self-signed certificates](https://developer.harness.io/docs/self-managed-enterprise-edition/self-managed-helm-based-install/how-to-use-self-signed-certificates-with-self-managed/)
+* [Air-gap mode](https://developer.harness.io/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/)
+* [Infrastructure monitoring](https://developer.harness.io/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem/)
+* [Backup and restore](https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm/)
+* External Database (coming soon)
+* Disaster Recovery (coming soon)
 
 ## Supported Harness modules
 
