@@ -55,7 +55,7 @@ Perform the following steps to add a Spot connector.
 6. Select **Continue**.
 7. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then select **Continue**.
    
-   We don't recommend using the **Connect through Harness Platform** option here because you'll need a delegate later for connecting to your Spot cloud. Typically, the **Connect through Harness Platform** option is a quick way to make connections without having to use delegates.
+   We don't recommend using the **Connect through Harness Platform** option here because you'll need a delegate later when deploying to your Spot cloud. Typically, the **Connect through Harness Platform** option is a quick way to make connections without having to use delegates.
 
 8.  In **Set Up Delegates**, select the **Connect using Delegates with the following Tags** option and enter the name of the [delegate](#install-the-harness-delegate) you created earlier.
 9.  Select **Save and Continue**.
