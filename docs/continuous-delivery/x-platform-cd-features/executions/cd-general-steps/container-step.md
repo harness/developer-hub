@@ -361,8 +361,8 @@ For example, you can set **Value** as an expression and reference the value of s
 </Tabs>
 ```
 
-### Delegate Selector
-Infrastructure delegate selector will be considered for step execution by default unless overridden by step, stage or pipeline level delegate selector.
+### Delegate selector
+By default, the infrastructure delegate selector is considered for step execution unless overridden by a step, stage, or pipeline level delegate selector.
 
 ## Advanced settings
 
