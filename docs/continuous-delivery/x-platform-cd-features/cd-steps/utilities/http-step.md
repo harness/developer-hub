@@ -74,7 +74,7 @@ You can copy the key and paste it in the HTTP step **Header** setting. For more 
 
 Create input variables that can be used by other fields within the step. The **Value** setting can contain fixed values, expressions, or runtime inputs.
 
-These variables can be used by other fields like URLs by using the following expression: 
+These variables can be used by other fields like URLs by using the following expressions: 
 
 ```<+spec.inputVariables.variable_name>``` or ```<+step.spec.inputVariables.variable_name>```
 
