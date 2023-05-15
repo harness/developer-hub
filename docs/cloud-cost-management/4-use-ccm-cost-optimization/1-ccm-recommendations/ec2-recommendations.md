@@ -1,10 +1,10 @@
 ---
-title: Optimize AWS EC2 costs with recommendations
+title: AWS EC2 recommendations
 description: Optimize the utilization of your EC2 instances using Harness CCM recommendations.
 # sidebar_position: 2
 ---
 
-
+# Optimize AWS EC2 costs with recommendations
 An effective way to reduce AWS EC2 instance costs is to optimize VM utilization. This involves resizing instances based on active tasks and decommissioning unused instances.
 
 Harness helps you reduce costs with recommendations.
@@ -44,8 +44,6 @@ Harness CCM provides two types of recommendations to optimize your EC2 instances
 * **Instance resizing**: In this type of recommendation, CCM recommends resizing your instance within the same instance family or using a different instance family based on instance usage. For information about the different instance families in AWS, go to [Available instance types](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html#AvailableInstanceTypes). 
  
 
-
-
 ![](./static/ec2-recommendations-1.png)
 
 * **Decommissioning**: In this type of recommendation, the instance is terminated or decommissioned if not in use for a long time.
@@ -64,8 +62,6 @@ If you are an existing customer, you need to:
 * Edit the IAM role used by the Harness AWS Connector corresponding to the AWS account.
 * In the IAM role, add the `ce:GetRightsizingRecommendation` permission to the **HarnessEventsMonitoringPolicy**.
 :::
-
-
 
 Once you have the `ce:GetRightsizingRecommendation` permission added to the **HarnessEventsMonitoringPolicy** in the IAM role, perform the following tasks on your AWS console to enable recommendations.
 
@@ -111,7 +107,6 @@ You need to perform the following steps in Harness:
   
 
 ### View your EC2 recommendations
-
 
 1. In **Harness**, go to the **Cloud Costs** module.
 2. Click **Recommendations**.

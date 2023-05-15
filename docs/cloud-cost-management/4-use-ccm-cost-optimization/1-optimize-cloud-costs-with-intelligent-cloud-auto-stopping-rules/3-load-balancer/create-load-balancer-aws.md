@@ -16,18 +16,18 @@ An Application Load Balancer makes routing decisions at the application layer (H
 This topic describes how to create a new application load balancer for creating AutoStopping Rules for AWS. 
 
 
-## Before You Begin
+## Before you begin
 
 * [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md)
 * [Create AutoStopping Rules for AWS](../4-create-auto-stopping-rules/create-autostopping-rules-aws.md)
 
-## Why do You Need a Load Balancer?
+## Why do you need a load balancer?
 
 AutoStopping integrates with the cloud provider's native load balancing technologies (Application Load Balancer, Azure AppGateway, etc.) to provide start and stop capability for the AutoStopping-managed cloud services.
 
   ![](./static/create-load-balancer-aws-14.png)
 
-* The rule requires a load balancer to direct traffic/shut down appropriate instances. Each load balancer is identified by its DNS hostname `(autostopping.example.com`, `www.example.com`, etc.).
+* The rule requires a load balancer to direct traffic/shut down appropriate instances. Each load balancer is identified by its DNS hostname (`autostopping.example.com`, `www.example.com`, etc).
 * AutoStopping can use the same load balancer for multiple AutoStopping rules. This means multiple instances can be added under one single load balancer and AutoStopping manages the traffic based on the HTTP host details.
 * DNS configuration for load balancer is a one-time setup.
 * When configuring a load balancer, it is required to choose a domain name. This domain name will be used for all the AutoStopping rules created under this load balancer. For example:  
@@ -37,7 +37,13 @@ AutoStopping integrates with the cloud provider's native load balancing technolo
 *.autostopping.example.com -> Load balancer IP
 ```
 
-## Create a New Application Load Balancer
+A Harness load balancer in AWS consists of two primary components:
+
+* **Application Load Balancer (ALB)**: The ALB receives incoming traffic from clients and distributes it across a group of backend servers. It is a Layer 7 load balancer, which means it can route traffic based on application-level information such as HTTP headers or cookies.
+
+* **Lambda Function**: The Lambda function with its target group is mapped to the default rule of the ALB. It is used to warm up resources, hold traffic, and display progress page until the intended page comes up. See [Update AWS Lambda function code](create-load-balancer-aws.md#update-aws-lambda-function-code) to update the function code to the latest version. 
+
+## Create a new Application Load Balancer
 
 A DNS link allows you to access the resources managed by the AutoStopping rule using an HTTP or HTTPS URL. Select DNS Link if the underlying application running on the resources managed by this AutoStopping Rule is currently accessed by an HTTP or HTTPS URL.
 
@@ -63,26 +69,27 @@ Perform the following steps to create a new Application Load Balancer in AWS.
 
 The Application Load Balancer (ALB) does not have a domain name associated with it. The AutoStopping Rule directs traffic to resources through the load balancer. Hence the load balancer requires a domain name to be accessed by the rule. You can configure DNS using **Route 53** or **Others** DNS providers to do the mapping.
 
-### Configure DNS Using Route 53
+### Configure DNS using Route 53
 
 AutoStopping Rule has first-class integration with Route 53. 
 
 
 :::note
-This works only if Route 53 is in the same AWS account as the instance you want to include in the AutoStopping rule.1. In **Select your preferred DNS provider and perform the mapping**, select **Route 53**.
+This works only if Route 53 is in the same AWS account as the instance you want to include in the AutoStopping rule.
 :::
-1. Select the correct Route 53 hosted zone from the drop-down list.
+1. In **Select your preferred DNS provider and perform the mapping**, select **Route 53**.
+2. Select the correct Route 53 hosted zone from the dropdown list.
    
      ![](./static/create-load-balancer-aws-20.png)
-2. In **Enter Domain name**, enter the domain name. For example, `autostopping`.
+3. In **Enter Domain name**, enter the domain name. For example, `autostopping`.
    
      ![](./static/create-load-balancer-aws-21.png)
-3. Click **Continue**.
-4. Select region from the drop-down list to install the Access Point.
-5. Select a certificate from the drop-down list.
-6. Select VPC.
-7. Select security groups.
-8. Click **Save Load Balancer**.
+4. Click **Continue**.
+5. Select region from the dropdown list to install the Access Point.
+6. Select a certificate from the drop-down list.
+7. Select VPC.
+8. Select security groups.
+9. Click **Save Load Balancer**.
      
 	   ![](./static/create-load-balancer-aws-22.png)
 	 
@@ -114,5 +121,30 @@ A record: *.autostopping.yourdomain.com<lightwing.io> -> up-a1thp0i3k1k7ment50l0
 *.autostopping.test.com -> Load balancer DNS address
 ```
 
-Your Load Balancer is now listed.
+Your load balancer is now listed.
 
+## Locate and update AWS Lambda function code
+
+You can use a Lambda function to process requests from an Application Load Balancer. Elastic Load Balancing supports Lambda functions as a target for an Application Load Balancer. Use load balancer rules to route HTTP requests to a function, based on path or header values. Process the request and return an HTTP response from your Lambda function.
+
+### Locate the corresponding Lambda function of the ALB
+1. Navigate to your AWS console and select the Application Load Balancer (ALB).
+2. In the **Listeners** tab, you can view the available listeners.
+3. Choose one of the listeners and view the list of rules associated with that listener.
+4. Locate the **Default** rule in the list of rules and then select the target group that it is pointing to.
+
+  The target group contains the Lambda function as a registered target that you need to update.
+
+### Update the Lambda function code
+
+:::important
+The current version of AWS Lambda function proxy code to be used is `aws-proxymanager-0.1.3.zip`.
+:::
+
+To update the Lambda function code, follow these steps: 
+1. [Download](https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/aws-proxymanager-0.1.3.zip) the latest code package in the form of a .zip file.
+2. Select the **Code** tab in **Lambda** > **Functions**.
+
+    <docimage path={require('./static/lambda-function-code.png')} width="50%" height="50%" title="Click to view full size image" />
+
+3. Click **Upload from** and choose the zip file you downloaded, and then click **Save**.

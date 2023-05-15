@@ -408,6 +408,51 @@ This feature provides visibility into your EC2, EBS volumes, and ECS costs. The 
 * Insight into EC2 instances and their utilization.
 * Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards. For more information, see [View AWS EC2 Inventory Cost Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard.md), [Orphaned EBS Volumes and Snapshots Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/orphaned-ebs-volumes-and-snapshots-dashboard.md), and [View AWS EC2 Instance Metrics Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-instance-metrics.md).
 
+### Cloud asset governance
+Enable the following permissions in AWS to execute cloud governance rules:
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "ec2:Describe*",
+                "ec2:DeleteSnapshot",
+                "ec2:DeleteVolume",
+                "ec2:Get*",
+                "ec2:ListImagesInRecycleBin",
+                "ec2:ListSnapshotsInRecycleBin",
+                "elasticbeanstalk:Check*",
+                "elasticbeanstalk:Describe*",
+                "elasticbeanstalk:List*",
+                "elasticbeanstalk:Request*",
+                "elasticbeanstalk:Retrieve*",
+                "elasticbeanstalk:Validate*",
+                "elasticloadbalancing:Describe*",
+                "rds:Describe*",
+                "rds:List*",
+                "autoscaling-plans:Describe*",
+                "autoscaling-plans:GetScalingPlanResourceForecastData",
+                "autoscaling:Describe*",
+                "autoscaling:GetPredictiveScalingForecast",
+                "s3:DescribeJob",
+                "s3:Get*",
+                "s3:List*"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        }
+    ]
+}
+```
+
+:::info
+* This is not an exhaustive list; you may require additional permissions to support custom rules.
+* A yellow underline in a custom policy indicates that you need permission to support the underlined filters and/or actions.
+:::
+
+
 ### Optimization by AutoStopping
 
 The AutoStopping policy performs the following actions:
