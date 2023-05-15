@@ -61,7 +61,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: '9 min',
-    link: "/tutorials/ci-pipelines/build/tfc-notification",
+    link: "/tutorials/ci-pipelines/tfc-notification",
   },
 ];
 
@@ -138,7 +138,7 @@ export const CIList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: '9 min',
-    link: "/tutorials/ci-pipelines/build/tfc-notification",
+    link: "/tutorials/ci-pipelines/tfc-notification",
   },
   {
     title: "Amazon ECR",

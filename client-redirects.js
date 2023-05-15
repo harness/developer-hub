@@ -81,6 +81,16 @@ module.exports = {
       to: "/tutorials/ci-pipelines/kubernetes-build-farm",
     },
 
+    {
+      from: "/tutorials/build-code/build/tfc-notification",
+      to: "/tutorials/ci-pipelines/tfc-notification",
+    },
+
+    {
+      from: "/tutorials/ci-pipelines/build/tfc-notification",
+      to: "/tutorials/ci-pipelines/tfc-notification",
+    },
+
     // Created by aimurphy for branch ci-4876 on May 10 2023
 
     {
@@ -793,10 +803,6 @@ module.exports = {
     {
       from: "/tutorials/build-code/build/go",
       to: "/tutorials/ci-pipelines/build/go",
-    },
-    {
-      from: "/tutorials/build-code/build/tfc-notification",
-      to: "/tutorials/ci-pipelines/build/tfc-notification",
     },
     {
       from: "/tutorials/build-code/test",

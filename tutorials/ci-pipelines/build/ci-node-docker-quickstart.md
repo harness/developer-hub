@@ -562,7 +562,7 @@ If the build succeeds, you'll find your pushed image in your Docker Hub `samplej
 
 Now that you've created a basic pipeline for building and testing a NodeJS app, you might want to explore the ways that you can [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times), including:
 
-* [Using Terraform notification triggers to automatically start builds.](/tutorials/ci-pipelines/build/tfc-notification)
+* [Using Terraform notification triggers to automatically start builds.](/tutorials/ci-pipelines/tfc-notification)
 * [Uploading artifacts to JFrog.](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog)
 * [Publishing Allure reports to the Artifacts tab.](/tutorials/ci-pipelines/test/allure-report).
 * [Including CodeCov code coverage and publishing results to your CodeCov dashboard.](/tutorials/ci-pipelines/test/codecov/)

@@ -51,7 +51,7 @@ import { MODULES } from "../../constants";
           newDoc: true,
           type: [docType.Documentation],
           time: '9 min',
-          link: "/tutorials/ci-pipelines/build/tfc-notification",
+          link: "/tutorials/ci-pipelines/tfc-notification",
         },
       ],
     },
