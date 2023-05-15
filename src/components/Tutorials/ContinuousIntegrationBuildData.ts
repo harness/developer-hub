@@ -42,21 +42,6 @@ import { MODULES } from "../../constants";
             "Build a Docker Image of a NodeJS application.",
           link: "/tutorials/ci-pipelines/build/nodejs",
         },
-
-        {
-          title: "React application",
-          module: MODULES.ci,
-          description:
-            "Build a Docker Image of a React application.",
-          link: "/tutorials/ci-pipelines/build/react",
-        },
-        {
-          title: "Rust application",
-          module: MODULES.ci,
-          description:
-            "Build a Docker Image of a multi-architecture Rust application.",
-          link: "/tutorials/ci-pipelines/build/rust",
-        },
         {
           title: "Terraform Cloud notification triggers",
           module: MODULES.ci,

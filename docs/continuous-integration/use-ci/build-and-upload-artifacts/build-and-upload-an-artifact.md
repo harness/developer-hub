@@ -163,7 +163,7 @@ You can use your CI pipeline to test a Dockerfile used in your codebase and veri
 
 To use a CI pipeline to build multi-architecture images, create a stage for each architecture.
 
-The following YAML example describes a mulit-architecture pipeline. For a guided experience, try the [Rust application CI tutorial](/tutorials/ci-pipelines/build/rust).
+The following YAML example describes a multi-architecture pipeline.
 
 ```yaml
 pipeline:

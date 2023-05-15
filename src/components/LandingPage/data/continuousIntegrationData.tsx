@@ -130,26 +130,6 @@ export const CIList: CardItem[] = [
     icon: "img/icon_ci.svg",
   },
   {
-    title: "React application",
-    module: MODULES.ci,
-    description:
-      "Build a Docker Image of a React application.",
-    link: "/tutorials/ci-pipelines/build/react",
-    type: [docType.Documentation],
-    time: "20 min",
-    icon: "img/icon_ci.svg",
-  },
-  {
-    title: "Rust application",
-    module: MODULES.ci,
-    description:
-      "Build a Docker Image of a multi-architecture Rust application.",
-    link: "/tutorials/ci-pipelines/build/rust",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-  },
-  {
     title: "Terraform Cloud notification triggers",
     module: MODULES.ci,
     icon: "img/icon_ci.svg",

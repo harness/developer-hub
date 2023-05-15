@@ -34,6 +34,28 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by aimurphy for branch doc-3104 on May 15 2023
+
+    {
+      from: "/tutorials/build-code/ci-react-quickstart",
+      to: "/tutorials/ci-pipelines",
+    },
+
+    {
+      from: "/tutorials/build-code/build/react",
+      to: "/tutorials/ci-pipelines",
+    },
+
+    {
+      from: "/tutorials/build-code/build/rust",
+      to: "/tutorials/ci-pipelines",
+    },
+
+    {
+      from: "/tutorials/build-code/ci-tutorial-rust-container",
+      to: "/tutorials/ci-pipelines",
+    },
+
     // Created by aimurphy for branch ci-4876 on May 10 2023
 
     {
@@ -748,16 +770,8 @@ module.exports = {
       to: "/tutorials/ci-pipelines/build/java",
     },
     {
-      from: "/tutorials/build-code/build/react",
-      to: "/tutorials/ci-pipelines/build/react",
-    },
-    {
       from: "/tutorials/build-code/build/go",
       to: "/tutorials/ci-pipelines/build/go",
-    },
-    {
-      from: "/tutorials/build-code/build/rust",
-      to: "/tutorials/ci-pipelines/build/rust",
     },
     {
       from: "/tutorials/build-code/build/tfc-notification",
@@ -1232,20 +1246,12 @@ module.exports = {
       to: "/tutorials/ci-pipelines/build/go",
     },
     {
-      from: "/tutorials/build-code/ci-react-quickstart",
-      to: "/tutorials/ci-pipelines/build/react",
-    },
-    {
       from: "/tutorials/build-code/ci-tutorial-push-to-gar",
       to: "/tutorials/ci-pipelines/publish/google-gar",
     },
     {
       from: "/tutorials/build-code/ci-publish-allure-report",
       to: "/tutorials/ci-pipelines/test/allure-report",
-    },
-    {
-      from: "/tutorials/build-code/ci-tutorial-rust-container",
-      to: "/tutorials/ci-pipelines/build/rust",
     },
     {
       from: "/tutorials/build-code/ci-tutorial-codecov-test",
