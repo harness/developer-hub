@@ -37,7 +37,7 @@ To learn more, watch the [Delegate overview](https://developer.harness.io/docs/p
 
 ## Add the Spot Elastigroup cloud provider
 
-You can connect Harness to a Spot Elastigroup cloud provider by adding a Spot connector. 
+You can connect Harness to a Spot Elastigroup cloud provider by adding a Harness Spot connector. 
 
 To connect to a Spot Elastigroup cloud provider using Spot's API, go to [Spot API authentication](https://docs.spot.io/api/#section/Authentication).
 
