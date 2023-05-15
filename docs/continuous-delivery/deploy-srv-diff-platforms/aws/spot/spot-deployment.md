@@ -38,7 +38,7 @@ Perform the following steps to add a Spot connector.
     * **Encrypted** - You can create or select a secret for your Spot account Id and API token.
 7. Select **Continue**.
 8. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then select **Continue**.
-   We don't recommend using the **Connect through Harness Platform** option here because you'll need a delegate later for connecting to your TAS environment. Typically, the **Connect through Harness Platform** option is a quick way to make connections without having to use delegates.
+   We don't recommend using the **Connect through Harness Platform** option here because you'll need a delegate later for connecting to your Spot cloud. Typically, the **Connect through Harness Platform** option is a quick way to make connections without having to use delegates.
 
    Expand the sections below to learn more about installing delegates.
 
