@@ -48,7 +48,7 @@ Perform the following steps to add a Spot connector.
 3. In **Cloud Providers**, select **Spot**. The Spot connector settings appear. 
 4. Enter a connector name, enter an optional description and tag, and then select **Continue**.
    
-   Harness automatically creates an [ID](/docs/platform/References/entity-identifier-reference) for the connector. The ID is based on the connector's name.
+   Harness automatically creates an [Id](/docs/platform/References/entity-identifier-reference) for the connector. The Id is based on the connector's name.
 5. In **Authentication**, select one of the following options.
     * **Plaintext** - Enter the **Spot Account Id** and **API Token**. For API token, you can either create a new secret or use an existing one.
     * **Encrypted** - You can create or select a secret for your Spot account Id and API token.
