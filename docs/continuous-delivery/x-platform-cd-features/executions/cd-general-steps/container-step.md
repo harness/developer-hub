@@ -361,6 +361,9 @@ For example, you can set **Value** as an expression and reference the value of s
 </Tabs>
 ```
 
+### Delegate Selector
+If Delegate Selector is not configured for this step then Infrastructure delegate selector will be considered for step execution.
+
 ## Advanced settings
 
 In **Advanced**, you can use the following options:
