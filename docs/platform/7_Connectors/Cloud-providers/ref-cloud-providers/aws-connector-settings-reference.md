@@ -444,7 +444,6 @@ Here's a quick video demonstrating Native EKS authentication support for Kuberne
 <!-- Video:
 https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34-->
 <docvideo src="https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34" />
-  
 
 ## AWS Serverless Lambda
 
