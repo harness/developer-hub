@@ -35,7 +35,7 @@ On any dashboard, you can:
 * Clone a dashboard to customize it for different needs and audiences.
 
 
-### View the Experiment Runs by Users dashboard
+### Experiment Runs by Users dashboard
 
 This dashboard shows the number of experiments run by each chaos user over time. Three charts are available for: **Last Week**, **Last Month**, and **Last Year**.
 
@@ -44,7 +44,7 @@ This dashboard shows the number of experiments run by each chaos user over time.
 * Hover over any bar on the chart to see details.
 * Click any bar on the chart to drill down and see information in tabular form. From here, you can download the data in several formats to use in other tools.
 
-### View the Chaos Infrastructures by Users dashboard
+### Chaos Infrastructures by Users dashboard
 
 This dashboard shows the number of infrastructures created by each chaos user over time. Three charts are available for: **Last Week**, **Last Month**, and **Last Year**.
 
