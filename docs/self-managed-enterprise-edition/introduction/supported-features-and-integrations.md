@@ -11,6 +11,7 @@ This topic lists the supported features and integrations you can use to install 
 ### Compute infrastructure 
 * Kubernetes supported version: 1.24
 * Required module-specific infrastructure:
+
    | **Modules** | **Pods** | **CPU** | **Memory (GB)** | **Storage (GB)** |
    | :-- | :--: | :--: | :--: | :--: |
    | Platform (including CD, GitOps, OPA) | 40 | 50.4 | 125.4 | 1090 |
