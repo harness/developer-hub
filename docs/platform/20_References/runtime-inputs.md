@@ -74,22 +74,26 @@ You can use Runtime Inputs for the Service in a CD stage's Service settings.
 
 ### Using runtime inputs during execution
 
+:::info
+
 Currently, this feature is behind the feature flag `NG_EXECUTION_INPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
 
-You can add runtime input to a pipeline that runs when a stage or a step is executed. For example, for a custom stage with a Shell Script step that has an runtime input field, you will be prompted to enter the input during the execution just before starting the Shell Script step.
+:::
 
-If a custom stage is setup for runtime input, you can enter a shell script when prompted by Harness during execution. 
+You can add runtime inputs to a pipeline during a step or stage execution. For example, for a custom stage with a Shell Script step with a runtime input field, you will be prompted to enter the input during the execution just before starting the Shell Script step.
 
-If a Harness Approval step is setup for runtime input, when the pipeline executes, you can specify the Harness Groups that will approve that step.
+If a custom stage is setup with runtime input, you can enter a shell script when prompted by Harness during execution. 
 
-You can select the following runtime input types for a step or stage during an execution:  
+If a Harness Approval step is setup with runtime input, you can specify the Harness groups that will approve that step during pipeline execution.
+
+You can select the following runtime input types for a step or stage during execution:  
 
 * Allowed values (`allowedValues()`)  
 * Default value (optional) (`default()`)
 * Request input value when step/stage is being executed (`executionInput()`)
 
 You can add execution inputs in this format: `<+input>.default(DefaultInputValue).executionInput()`.  
-For example:
+For example:  
 * `<+input>.allowedValues(value1,value2).executionInput()` - During execution, you will be prompted to enter `value 1` and `value 2` inputs. Only `value1` and `value2` values will be allowed as valid inputs.
 * `<+input>.allowedValues(value1,value2).default(value1).executionInput()` - During execution, you will be prompted to enter `value 1` and `value 2` inputs. Only `value1` and `value2` values will be allowed as valid inputs. `value1` is the default input in this example, so it appears as the deafult input in the prompt.  
 
