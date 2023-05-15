@@ -12,6 +12,20 @@ You can view the recommendations for all of your AWS accounts on the recommendat
 
    <docimage path={require('./static/governance.png')} width="50%" height="50%" title="Click to view full size image" />
 
+The following resource types can be utilized optimally by creating governance rules to rightsize the resources:
+
+- EC2 instances
+
+- RDS instances 
+
+- DynamoDB Tables 
+
+- Lambda functions
+
+- EBS Volumes 
+
+- ELB 
+
 :::note
 Before using recommendations in your environment, ensure that you evaluate their impact thoroughly. The person reviewing the recommendations should be able to understand the impacts identified in the recommendations, as well as the impact on the infrastructure and business.
 
@@ -25,6 +39,20 @@ Using recommendations without proper assessment could result in unexpected chang
 * Make sure that you have added the required permissions in your AWS account. Go to [AWS access permissions for Cloud asset governance](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#cloud-asset-governance).
 * To add missing permissions, go to [Add permissions](../../5-use-ccm-cost-governance/asset-governance/asset-governance.md#add-permissions).
 
+
+## Types of governance recommendations
+
+Harness CCM provides two types of recommendations to optimize utilization of your AWS resources:
+
+* **Instance resizing**: In this type of recommendation, CCM recommends resizing your instances that are over-provisioned or underutilized. For information about the different instance families in AWS, go to [Available instance types](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/instance-types.html#AvailableInstanceTypes). 
+
+* **Decommissioning**: In this type of recommendation, the instance is terminated or decommissioned if not in use for a long time. For example, for EBS service, the recommendations are computed based on the following criteria:
+
+  - Identify the EBS volumes that are orphaned
+  - Identify the EBS volumes which are not in use or low utilization
+  - Save costs by migrating to latest EBS volume type 
+  - Delete orphaned snapshots over post deletion of the volume
+ 
 ## View your cost governance recommendations
 
 1. In **Harness**, go to the **Cloud Costs** module.
