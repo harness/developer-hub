@@ -17,7 +17,7 @@ export default function Community() {
   return (
     <div className={styles.community}>
       <div className={styles.title}>
-        <h2>Top Posts</h2>
+        <h2>Community Posts</h2>
       </div>
       <ul className={styles.communityList}>
         {communityList.map((community) => (
