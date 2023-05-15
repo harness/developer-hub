@@ -36,6 +36,13 @@ export default function communityAspects() {
                 </button>
               </Tooltip>
             </Link>
+            <Link href="/kb">
+              <Tooltip placement="top" overlay="Knowledge Base">
+                <button className={styles.btn}>
+                  <img src={`${baseUrl}img/kb.svg`} />
+                </button>
+              </Tooltip>
+            </Link>
           </div>
         </div>
       </div>
