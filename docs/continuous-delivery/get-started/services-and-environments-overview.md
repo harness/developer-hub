@@ -573,6 +573,18 @@ When you select an environment in a stage, you can select the **Infrastructure D
 
 ![](./static/services-and-environments-overview-14.png)
 
+#### Infrastructure Tags
+
+Tags can be attached to infrastructure definitions representing their characteristics. These tags can be key value pairs. 
+
+![](./static/services-and-environments-overview-28.png)
+
+When you select the **Infrastructure Definition** for a stage, the attached tags can be accessed using their keys with the expression, ```<+infra.tags.tag_key>```. This expression is available for use throughout the stage. 
+
+For example, skipping certain steps in pipeline based on the tags attached to the infrastructure. 
+
+![](./static/services-and-environments-overview-29.png)
+
 ## Values YAML overrides and merges
 
 You can specify values YAML files at the environment's **Service Overrides** and **Configuration**, and the service itself.
