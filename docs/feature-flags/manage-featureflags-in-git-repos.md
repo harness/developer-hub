@@ -124,15 +124,15 @@ You can create the connector beforehand in Harness, or you can create it while s
 
 You must set up Git Experience before you can turn on syncing with Git in your Feature Flags project. 
 
+:::caution
+Do not use **Git Management** in Project Setup. This is an older version of Git Experience that does not work with Feature Flags.
+:::
+
 During the setup, you are asked to either select an existing Harness Git connector, or create a new one. If creating a new one, have your [PAT](#create-a-personal-access-token-if-adding-a-new-git-connector) ready to enter into the connector configuration. You can also create a Git connector before starting this procedure. Go to [Connect to a Git repository](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) for instructions.
 
 To set up Git Experience:
 
 1. In Harness, select **Feature Flags**, and in the Feature Flags page, select **Set Up Git Sync** at the top.
-
-  :::caution
-  Do not use **Git Management** in Project Setup. This is an older version of Git Experience that does not work with Feature Flags.
-  :::
 
   The **Set up a Git connection** form appears:
 
