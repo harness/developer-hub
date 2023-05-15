@@ -74,7 +74,13 @@ You can use Runtime Inputs for the Service in a CD stage's Service settings.
 
 ### Using runtime inputs during execution
 
-Currently, this feature is behind the feature flag `NG_EXECUTION_INPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. You can add runtime input to a pipeline that runs when a stage or a step is executed. If a custom stage is setup for runtime input, you can enter a shell script when prompted by Harness during execution. If a Harness Approval step is setup for runtime input, when the pipeline executes, you can specify the Harness Groups that will approve that step.
+Currently, this feature is behind the feature flag `NG_EXECUTION_INPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+You can add runtime input to a pipeline that runs when a stage or a step is executed. For example, for a custom stage with a Shell Script step that has an runtime input field, you will be prompted to enter the input during the execution just before starting the Shell Script step.
+
+If a custom stage is setup for runtime input, you can enter a shell script when prompted by Harness during execution. 
+
+If a Harness Approval step is setup for runtime input, when the pipeline executes, you can specify the Harness Groups that will approve that step.
 
 You can select the following runtime input types for a step or stage during an execution:  
 
