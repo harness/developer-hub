@@ -4,7 +4,7 @@ description: This topic describes how to run all pipeline steps in one delegate 
 sidebar_position: 2
 ---
 
-Harness uses delegates for all operations. In cases where you want to select specific delegates pods to perform the task, Harness uses those delegate pods only. In cases where you do not select specific delegates, Harness manager picks the delegate (https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#how-harness-manager-picks-delegates)
+Harness uses delegates for all operations. In cases where you want to select specific delegates pods to perform the task, Harness uses those delegate pods only. In cases where you do not select specific delegates, Harness manager picks the delegate. For more information, go to [How Harness Manager picks delegates] (https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#how-harness-manager-picks-delegates).
 
 This topic describes how to to run all pipeline steps in one delegate pod.
 
