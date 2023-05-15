@@ -362,7 +362,7 @@ For example, you can set **Value** as an expression and reference the value of s
 ```
 
 ### Delegate selector
-By default, the infrastructure connector [delegate selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/) is considered for step execution unless overridden by a step, stage or pipeline level delegate selector.
+By default, the [infrastructure connector delegate selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/) is considered for step execution unless overridden by a step, stage or pipeline level delegate selector.
 
 ## Advanced settings
 
