@@ -70,7 +70,17 @@ Another method:
 
 You can copy the key and paste it in the HTTP step **Header** setting. For more information, go to [add and manage API keys](/docs/platform/User-Management/add-and-manage-api-keys).
 
-## Output
+## Input variables
+
+Create input variables that can be used by other fields within the step. The **Value** setting can contain fixed values, expressions, or runtime inputs.
+
+These variables can be used by other fields like URLs by using the following expressions: 
+
+```<+spec.inputVariables.variable_name>``` or ```<+step.spec.inputVariables.variable_name>```
+
+![](./static/http-step-06.png)
+
+## Output variables
 
 Create output variables to be used by other steps in the stage. The **Value** setting can contain any HTTP step input, output, or response information.
 
