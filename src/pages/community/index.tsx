@@ -15,7 +15,7 @@ export default function AccessibilityPage() {
     <div>
       <MDXContent>
         <Layout
-          title="Harness Accessibility Conformance Report" // {`${siteConfig.title}`}
+          title="Harness Community" // {`${siteConfig.title}`}
           description={`${siteConfig.tagline}`} // "Description will go into a meta tag in <head />"
         >
           <main className={`container ${styles.container}`}>
