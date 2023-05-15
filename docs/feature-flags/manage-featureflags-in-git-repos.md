@@ -45,6 +45,8 @@ The following example YAML file shows:
 * A target with the ID `T_1`.
 * The variation served to `T_1`.
 
+### Example YAML file for flags
+
 <details>
   <summary>Example of a YAML file for Feature Flags</summary>
 
@@ -99,29 +101,56 @@ If you don’t see the changes you made in Git reflected on the Harness Platform
 
 ### Create or identify a Git repository
 
-* Your repository must have at least one branch.
-* Create a Personal Access Token (PAT) for your Git account to create the connector. The PAT must have the following scope:
+Your repository must have at least one branch.
 
-  * GitHub
+### Create a Personal Access Token (if adding a new Git connector)
 
-  * Bitbucket
+When you set up Git Experience, you either select an existing Git connector in Harness, or create a new one.  
 
-### Create or identify a Git connector
+If you're creating a new Git connector, you must first create a Personal Access Token (PAT) for your Git account to supply to the connector. The PAT must have the following scopes selected:
 
-When you set up Git Experience, you must either select an existing Git connector or create one. You can create the connector beforehand in Harness, or you can create it while setting up Git Experience. 
+  * **In GitHub**
+    * repo (all permissions)
+    * user (all permissions)
 
-### Set up Git Experience
+  * **In Bitbucket**
+    * Pull requests: Write
+    * Issues: Read
+    * Webhooks: Read and write
 
-You must set up Git Experience before you can use it in your Feature Flags project. To do this:
+You can create the connector beforehand in Harness, or you can create it while setting up Git Experience.
 
-* Follow the steps in [Harness Git Experience Quickstart](/docs/platform/Git-Experience/configure-git-experience-for-harness-entities) to create a Git repository that contains at least one branch. Note that, currently, branch setup cannot be reconfigured after initial setup.
+## Set up Git Experience
 
-* To set up Git Sync for Feature Flags, navigate to the top of the flag page and select **Set Up Git Sync**.
+You must set up Git Experience before you can turn on syncing with Git in your Feature Flags project. 
 
-  ![Setup button for gitEx on Feature Flag page](./static/gitex-setup-featureflags-01.png)
+During the setup, you are asked to either select an existing Harness Git connector, or create a new one. If creating a new one, have your [PAT](#create-a-personal-access-token-if-adding-a-new-git-connector) ready to enter into the connector configuration. You can also create a Git connector before starting this procedure. Go to [Connect to a Git repository](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) for instructions.
 
+To set up Git Experience:
 
+1. In Harness, select **Feature Flags**, and in the Feature Flags page, select **Set Up Git Sync** at the top.
 
+  :::caution
+  Do not use **Git Management** in Project Setup. This is an older version of Git Experience that does not work with Feature Flags.
+  :::
+
+  The **Set up a Git connection** form appears:
+
+  ![Set up a git connection form](./static/gitex-setup-git-connection.png)
+
+1. Configure these fields, and then select **Save**:
+
+    * **Git Connector** - Select an existing connector, or select **+ New Connector** to create a new one.
+
+      If creating a new connector, you must enter the access token ([PAT](#create-a-personal-access-token-if-adding-a-new-git-connector)) to your Git repo in the Credentials step, and be sure to select **Enable API access**.
+
+      ![New Git Connector form with **Enable API access** checkbox selected](./static/gitex-connector-enable-api-access.png)
+
+      For more information, go to [Connect to a Git repository](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo), and [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference/).
+
+    * **Repository** - Select or enter the name of your repository.
+    * **Git branch** - Select or enter a branch name.
+    * **YAML Path** - Enter the path to the [YAML file](#example-yaml-file-for-flags) containing your flag information.
 
 ## Turn on syncing with Git
 
