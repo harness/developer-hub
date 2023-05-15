@@ -22,7 +22,7 @@ This topic provides some highlights and useful information about the HCE dashboa
 To view the HCE dashboards: 
 
 1. In Harness, select **Dashboards** in the left navigation pane.
-1. In the Dashboards page, select **Chaos**, and then select one of the chaos dashboards.
+1. In the Dashboards page, select **Chaos**, and then select one of the Chaos dashboards.
 
 	![Two chaos dashboards on the Dashboards page](./static/dashboards/chaos-dashboards.png)
 
