@@ -1,6 +1,6 @@
 ---
 title: Add a Spot connector
-description: Add a Harness AWS connector.
+description: Add a Harness Spot Elastigroup connector.
 sidebar_position: 6
 ---
 
