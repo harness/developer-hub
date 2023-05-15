@@ -6,7 +6,7 @@ sidebar_position: 35
 Within Harness, you can see the impact of chaos faults on your target environment by using [Service Reliability Management (SRM)](/docs/service-reliability-management).
 To do this, you connect any chaos fault within an experiment to monitored services. A monitored service in Harness is a combination of a service and environment that [SRM](/docs/service-reliability-management) monitors for changes, events, and health trends. 
 
-For example, let's say you use SRM to monitor services and to correlate change events to service health. Now you want to see how one or more chaos faults impacts your target environment. By adding the target environment as one or more monitored services, and linking faults to those services, you can see the impacts on service health in SRM when you run experiments containing those faults. 
+For example, let's say you use SRM to monitor services and to correlate change events to service health. Now you want to see how one or more chaos faults impacts services in your target environment. By adding the target environment as one or more monitored services, and linking faults to those services, you can see the impacts on service health in SRM when you run experiments containing those faults. 
 
 For more information on monitored services, go to the [SRM documentation](/docs/service-reliability-management).
 
@@ -23,7 +23,7 @@ You can connect any fault within a chaos experiment to one or more monitored ser
 
 To connect a fault to a monitored service:
 
-1. In Harness, select **Chaos > Chaos Experiments**, and then find and select an experiment.
+1. In Harness, select **Chaos > Chaos Experiments**, and then find and select an experiment (or create a new one).
 1. In Experiment Builder, select a fault, and then select the **SRM Events** tab.
 
 	![Fault details, SRM Events tab](./static/srm/apply-fault-to-service.png)
@@ -52,7 +52,7 @@ To check the impact of a fault on a monitored service:
 
 	![SLOs dashboard filters](./static/srm/srm-slo-filters.png)
 
-1. Go to **Chaos > Changes** to get another view of the data.
+1. Go to **Service Reliability > Changes** to get another view of the data.
 
 	![SRM **Changes** dashboard](./static/srm/srm-changes-dashboard.png)
 
