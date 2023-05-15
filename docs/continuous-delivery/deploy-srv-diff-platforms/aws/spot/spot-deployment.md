@@ -311,7 +311,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="Basic" label="Basic">
 ```
-Spot Elastigroups perform the functions that Auto Scaling Groups perform in standard AMI deployments. By default, Harness Spot Elastigroup Basic deployment pre-configures the following steps:
+Spot Elastigroups perform the functions that Auto Scaling Groups perform in standard AMI deployments. By default, a Harness Spot Elastigroup Basic deployment pre-configures the following steps:
 
 * Elastigroup Setup - Specify how many instances to launch, and their steady state timeout.
 * Elastigroup Deploy - Specify how many instances to deploy, as a number or percentage of the Elastigroup parameters you've set up.
@@ -326,7 +326,7 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
 3. Select the **Elastigroup Setup** step to define **Step Parameters**.
     * **Name** - Enter the deployment step name.
     * **Timeout** - Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
-    * **App Name** - Enter a name for the Elastigroup app name that Harness will create. For example, `<+project.identifier>_<+service.identifier>_<+env.identifier>_basic2`. You can select a fixed value, runtime input, or expression for this field. 
+    * **App Name** - Enter a name for the Elastigroup app name that Harness will create. For example, you can use Harness expressions, such as `<+project.identifier>_<+service.identifier>_<+env.identifier>_myasg`. You can select a fixed value, runtime input, or expression for this field. 
     * In **Instances**, select: 
        * **Same as already running instances** to replicate the already running instances.
        * **Fixed** and enter **Min Instances**, **Max Instances**, and **Desired Instances**.

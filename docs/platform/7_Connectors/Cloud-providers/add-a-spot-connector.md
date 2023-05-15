@@ -1,16 +1,16 @@
 ---
-title: Add an AWS connector
+title: Add a Spot connector
 description: Add a Harness AWS connector.
 sidebar_position: 6
 ---
 
-This topic describes how to set up the Harness Delegate in your Spot Elastigroup environment, and connect to your Spot cloud for deployment. 
+This topic describes how to connect Harness with your Spot cloud.
 
-## Install the Harness Delegate
+## Install the Harness delegate
 
-Harness Delegate is a service you run in your local network or VPC to connect your artifacts, TAS infrastructure, and any other providers with the Harness Manager.
+The Harness delegate is a service you run in your local network or VPC to connect Harness with your artifact repos, Spot infrastructure, and any other providers needed for deployments.
 
-Expand the following section to learn how to install the Harness Delegate.
+Expand the following section to learn how to install the Harness delegate.
 
 <details>
 <summary>Use the delegate installation wizard</summary>
