@@ -445,6 +445,7 @@ Here's a quick video demonstrating Native EKS authentication support for Kuberne
 https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34-->
 <docvideo src="https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34" />
   
+
 ## AWS Serverless Lambda
 
 There are three authentication options for the AWS connector when used for AWS ECS images for AWS Serverless Lambda deployments:
