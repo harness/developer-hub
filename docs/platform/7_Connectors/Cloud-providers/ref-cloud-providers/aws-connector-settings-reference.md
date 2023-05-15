@@ -438,6 +438,12 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
       ```
       
 * You're using Kubernetes version 1.22 or later. Harness uses a [client-go credential plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins) to authenticate the connection to the EKS cluster. Support for EKS is deprecated for Kubernetes 1.21 and earlier versions.
+
+Here's a quick video demonstrating Native EKS authentication support for Kubernetes:
+
+<!-- Video:
+https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34-->
+<docvideo src="https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34" />
   
 ## AWS Serverless Lambda
 
