@@ -47,6 +47,11 @@ module.exports = {
     },
 
     {
+      from: "/tutorials/ci-pipelines/build/react",
+      to: "/tutorials/ci-pipelines",
+    },
+
+    {
       from: "/tutorials/build-code/build/rust",
       to: "/tutorials/ci-pipelines",
     },
@@ -54,6 +59,26 @@ module.exports = {
     {
       from: "/tutorials/build-code/ci-tutorial-rust-container",
       to: "/tutorials/ci-pipelines",
+    },
+
+    {
+      from: "/tutorials/ci-pipelines/build/rust",
+      to: "/tutorials/ci-pipelines",
+    },
+
+    {
+      from: "/tutorials/build-code/build/kubernetes-build-farm",
+      to: "/tutorials/ci-pipelines/kubernetes-build-farm",
+    },
+
+    {
+      from: "/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra",
+      to: "/tutorials/ci-pipelines/kubernetes-build-farm",
+    },
+
+    {
+      from: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
+      to: "/tutorials/ci-pipelines/kubernetes-build-farm",
     },
 
     // Created by aimurphy for branch ci-4876 on May 10 2023
@@ -758,10 +783,6 @@ module.exports = {
       to: "/tutorials/ci-pipelines/build",
     },
     {
-      from: "/tutorials/build-code/build/kubernetes-build-farm",
-      to: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
-    },
-    {
       from: "/tutorials/build-code/build/nodejs",
       to: "/tutorials/ci-pipelines/build/nodejs",
     },
@@ -1213,10 +1234,6 @@ module.exports = {
     },
 
     // Created by ravilach for CI Tutorials Refactor, PR-1231, on Apr 5, 2023
-    {
-      from: "/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra",
-      to: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
-    },
     {
       from: "/tutorials/build-code/ci-node-docker-quickstart",
       to: "/tutorials/ci-pipelines/build/nodejs",

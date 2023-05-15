@@ -47,7 +47,7 @@ When a CI pipeline build finishes successfully, the build infrastructure then se
 
 Here's a an end-to-end demo that shows how to set up a CI pipeline and run a build. You can go through a similar workflow yourself in the following tutorials:
 
-* [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+* [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 * [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
 
 <!-- Video:

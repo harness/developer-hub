@@ -19,7 +19,7 @@ import { MODULES } from "../../constants";
           module: MODULES.ci,
           description:
             "Build a Docker Image on a Kubernetes cluster build farm.",
-          link: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
+          link: "/tutorials/ci-pipelines/kubernetes-build-farm",
         },
         {
           title: "Go application",
