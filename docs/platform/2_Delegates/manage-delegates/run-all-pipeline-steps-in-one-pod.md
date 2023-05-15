@@ -6,7 +6,7 @@ sidebar_position: 2
 
 This topic describes how to to run all pipeline steps in one delegate pod.
 
-## Run all pipeline steps in the same delegate pod
+## Configure pipelines to run steps in the same pod
 
 When you have multiple steps in your pipeline, you can configure your delegate to run all the steps in the same pod.
 
