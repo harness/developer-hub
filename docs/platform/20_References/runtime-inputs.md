@@ -95,11 +95,11 @@ You can select the following runtime input types for a step or stage during exec
 You can add execution inputs in this format: `<+input>.default(DefaultInputValue).executionInput()`.  
 For example:  
 * `<+input>.allowedValues(value1,value2).executionInput()` - During execution, you will be prompted to enter `value 1` and `value 2` inputs. Only `value1` and `value2` values will be allowed as valid inputs.
-* `<+input>.allowedValues(value1,value2).default(value1).executionInput()` - During execution, you will be prompted to enter `value 1` and `value 2` inputs. Only `value1` and `value2` values will be allowed as valid inputs. `value1` is the default input in this example, so it appears as the deafult input in the prompt.  
+* `<+input>.allowedValues(value1,value2).default(value1).executionInput()` - During execution, you will be prompted to enter `value 1` and `value 2` inputs. Only `value1` and `value2` values will be allowed as valid inputs. `value1` is the default input in this example, so it appears as the default input in the prompt.  
 
 You can also create default values in templates and later override them during the pipeline execution. 
 
-Here's a YAML example of a stage template with default value, `<+input>.default(“ABC”)`. You can ovveride this default value during pipeline execution. 
+Here's a YAML example of a stage template with default value, `<+input>.default(“ABC”)`. You can override this default value during pipeline execution. 
 ```
 pipeline:
   name: UsingStageTempWithDefaults
@@ -139,7 +139,7 @@ The multiple selection functionality is currently behind the feature flag, `PIE_
 
 ![](./static/runtime-inputs-11.png)
 
-Commas are supported in both allowed and default values. A string with comma must be wrapped within `\'   \'`. 
+Commas are supported in both allowed and default values. A string with a comma must be wrapped within `\'   \'`. 
 
 For example, `<+input>.default(\'london,uk\').allowedValues(\'bengaluru,india\',\'newyork,usa\',\'london,uk\')`.
 
@@ -167,7 +167,7 @@ Save and run the pipeline.
 
 #### Using runtime input with an Approval step
 
-To add a runtime input with an Approval step, create a new pipeline, add an Approval stage, and click **Set Up Stage**.
+To add a runtime input with an Approval step, create a new pipeline, add an Approval stage, and then click **Set Up Stage**.
 
 In the workflow for Execution, click **Approval**.
 
