@@ -575,13 +575,13 @@ When you select an environment in a stage, you can select the **Infrastructure D
 
 #### Infrastructure Tags
 
-Tags can be attached to Infrastructure definitions representing their characteristics. These tags can be key value pairs. 
+Tags can be attached to infrastructure definitions representing their characteristics. These tags can be key value pairs. 
 
 ![](./static/services-and-environments-overview-28.png)
 
-When you select the **Infrastructure Definition** to use for that stage, the attached tags can be accessed using their keys with the expression ```<+infra.tags.tag_key>```. This expression is available for use throughout the stage. 
+When you select the **Infrastructure Definition** for a stage, the attached tags can be accessed using their keys with the expression, ```<+infra.tags.tag_key>```. This expression is available for use throughout the stage. 
 
-An example use case would be to skip certain steps in pipeline based on the tags attached to the infrastructure. 
+For example, skipping certain steps in pipeline based on the tags attached to the infrastructure. 
 
 ![](./static/services-and-environments-overview-29.png)
 
