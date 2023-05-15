@@ -362,7 +362,7 @@ For example, you can set **Value** as an expression and reference the value of s
 ```
 
 ### Delegate Selector
-If Delegate Selector is not configured for this step then Infrastructure delegate selector will be considered for step execution.
+Infrastructure delegate selector will be considered for step execution by default unless overridden by step, stage or pipeline level delegate selector.
 
 ## Advanced settings
 
