@@ -33,11 +33,11 @@ Perform the following steps to add a Spot connector.
 2. In **Project Setup**, select **Connectors**, then select **New Connector**.
 3. In **Cloud Providers**, select **Spot**. The Spot connector settings appear. 
 4. Enter a connector name and select **Continue**.
-6. In **Authentication**, select one of the following options.
+5. In **Authentication**, select one of the following options.
     * **Plaintext** - Enter the **Spot Account Id** and **API Token**. For API token, you can either create a new secret or use an existing one.
     * **Encrypted** - You can create or select a secret for your Spot account Id and API token.
-7. Select **Continue**.
-8. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then select **Continue**.
+6. Select **Continue**.
+7. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then select **Continue**.
    We don't recommend using the **Connect through Harness Platform** option here because you'll need a delegate later for connecting to your Spot cloud. Typically, the **Connect through Harness Platform** option is a quick way to make connections without having to use delegates.
 
    Expand the sections below to learn more about installing delegates.
@@ -59,15 +59,15 @@ import DelegateInstall from '/tutorials/platform/install-delegate.md';
 ```
 
 <details>
-<summary>Install a delegate using the terminal</summary>
+<summary>Use the terminal</summary>
 <DelegateInstall />
 </details>
 
 To learn more, watch the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview) video.
 
-9.  In **Set Up Delegates**, select the **Connect using Delegates with the following Tags** option and enter your delegate name.
-10. Select **Save and Continue**.
-11. Once the test connection succeeds, select **Finish**. The connector now appears in the **Connectors** list.
+8.  In **Set Up Delegates**, select the **Connect using Delegates with the following Tags** option and enter your delegate name.
+9.  Select **Save and Continue**.
+10.  Once the test connection succeeds, select **Finish**. The connector now appears in the **Connectors** list.
 
 ## Create the Harness Spot Elastigroup pipeline 
 
@@ -92,7 +92,7 @@ Harness services represent your microservices or applications. You can add the s
 
 3. In **Service Definition**, in **Deployment Type**, verify if **Spot Elastigroup** is selected.
 4. In **Artifacts**, select **Add Artifact Source**.
-5. In **Specify Artifact Repository Type**, select **Amazon Machine Image**, and select **Continue**.
+5. In **Specify Artifact Repository Type**, select **Amazon Machine Image**, and then select **Continue**.
    
    :::important
    Spot Elastigroup deployments support AMI artifacts only.
@@ -108,21 +108,22 @@ Harness services represent your microservices or applications. You can add the s
     
     In this scenario, the AWS account used for AWS access in credentials will assume the IAM role you specify in cross-account role ARN setting. This option uses the [AWS Security Token Service (STS)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) feature.
 11. In **Test Region**, select an AWS region to test the credentials for this connector. 
-12. In **Delegates Setup**, select **Only use Delegate with all of the following tags** and enter the name of the delegate created in [connect to a Spot cloud provider (step 8)](#connect-to-a-spot-cloud-provider).
+12. In **Delegates Setup**, select **Only use Delegate with all of the following tags** and enter the name of the delegate created in [connect to a Spot cloud provider (step 7)](#connect-to-a-spot-cloud-provider).
 13. Select **Save and Continue**
-14.  After the test connection succeeds, select **Continue**.
+14.  After the connection test succeeds, select **Continue**.
 15. In **Artifact Details**, enter the following details:
     1.  In **Artifact Source Identifier**, enter a name for the artifact.
     2.  In **Region**, select the region where the artifact is located. 
     3.  (Optional) In **AMI Tags**, add the tags used by your AMI. 
     4.  (Optional) In **AMI Filters**, add the AMI ID filters to locate the AMI resource.
-    5.  In **Version Details** select **Value** to enter the version number of the package you want to use. You can also select **Regex** and enter a tag regex to filter the package version.
+    5.  In **Version Details**, select **Value** to enter the version number of the package you want to use. You can also select **Regex**, and then enter a tag regex to filter the package version.
     
     ![](./static/spot-artifacts-ami.png)
 16. Select **Submit**.
 17. **Save** the service configuration.
 
-### Sample service YAML
+<details>
+<summary>Sample service YAML</summary>
 
 Here's a sample Spot service YAML: 
 
@@ -145,13 +146,14 @@ service:
               type: AmazonMachineImage
   gitOpsEnabled: false
 ```
+</details>
 
 ## Add a Spot environment
 
 Define the environment where you will deploy your application.
 
 1. In **Environment >** **Specify Environment**, select **New Environment**.  
-2. Enter the name **Spot** and select **Production** or **Pre-Production**.
+2. Enter the name **Spot**, and the select **Production** or **Pre-Production**.
 4. Select **Save**.
 5. In **Specify Infrastructure**, select **New Infrastructure**.
 6. Enter a name, and then verify that the selected deployment type is **Spot Elastigroup**.
@@ -264,7 +266,8 @@ Define the environment where you will deploy your application.
    </details>
 9. Select **Save**.
 
-### Sample infrastructure definition YAML
+<details>
+<summary>Sample infrastructure definition YAML</summary>
 
 Here's a sample infrastructure definition YAML: 
 ```
@@ -289,6 +292,9 @@ infrastructureDefinition:
   allowSimultaneousDeployments: false
 ```
 
+</details>
+
+
 ## Spot Elastigroup execution strategies
 
 Now you can select a [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) for this stage of the pipeline.
@@ -305,7 +311,7 @@ import TabItem from '@theme/TabItem';
 <Tabs>
 <TabItem value="Basic" label="Basic">
 ```
-Spot Elastigroups perform the functions that Auto Scaling Groups perform in standard AMI deployments. By default, Harness Spot Elastigroup Basic deployment pre-configure the following steps:
+Spot Elastigroups perform the functions that Auto Scaling Groups perform in standard AMI deployments. By default, Harness Spot Elastigroup Basic deployment pre-configures the following steps:
 
 * Elastigroup Setup - Specify how many instances to launch, and their steady state timeout.
 * Elastigroup Deploy - Specify how many instances to deploy, as a number or percentage of the Elastigroup parameters you've set up.
@@ -345,7 +351,7 @@ Now the pipeline stage is complete and you can deploy. Select **Run** to run the
   </TabItem>
   <TabItem value="Canary" label="Canary">
 ```
-Spot Elastigroups perform the functions that Auto Scaling Groups perform in standard AMI deployments. By default, Harness Spot Elastigroup Basic deployment pre-configure the following steps:
+Spot Elastigroups perform the functions that Auto Scaling Groups perform in standard AMI deployments. By default, Harness Spot Elastigroup Canary deployment pre-configures the following steps:
 
 * Elastigroup Setup - Specify how many instances to launch, and their steady state timeout.
 * Elastigroup Canary Deploy - Specify how many instances to deploy in this phase. When you add additional phases, each phase automatically includes a Elastigroup Deploy step, which you must configure with the count or percentage of instances you want deployed in that phase.
@@ -396,12 +402,12 @@ With this strategy, you are not shifting traffic from stage and production envir
 
 However, in a Canary deployment, the percentage of traffic that goes to the new Elastigroup is determined by the number of instances or the forwarding policy of the load balancer.
 
-With this Incremental Traffic Shift strategy, you are controlling the percentage of traffic sent to the new Elastigroup.
+With this incremental traffic shift strategy, you are controlling the percentage of traffic sent to the new Elastigroup.
 
 ## Requirements
 
 * A pair of [Target Groups](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-target-groups.html), typically staging (Stage) and production (Prod) both with the **instance** target type.
-* A Load Balancer with listeners for both your Target Groups' ports.
+* A load balancer with listeners for both your Target Groups' ports.
 
 ## Create a Blue Green deployment
   
