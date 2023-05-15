@@ -84,11 +84,40 @@ If a Harness Approval step is setup for runtime input, when the pipeline execute
 
 You can select the following runtime input types for a step or stage during an execution:  
 
-* Allowed values (`allowedValues()`)
+* Allowed values (`allowedValues()`)  
 * Default value (optional) (`default()`)
 * Request input value when step/stage is being executed (`executionInput()`)
 
+You can add execution inputs in this format: `<+input>.default(DefaultInputValue).executionInput()`.  
+For example:
+* `<+input>.allowedValues(value1,value2).executionInput()` - During execution, you will be prompted to enter `value 1` and `value 2` inputs. Only `value1` and `value2` values will be allowed as valid inputs.
+* `<+input>.allowedValues(value1,value2).default(value1).executionInput()` - During execution, you will be prompted to enter `value 1` and `value 2` inputs. Only `value1` and `value2` values will be allowed as valid inputs. `value1` is the default input in this example, so it appears as the deafult input in the prompt.  
+
 You can also create default values in templates and later override them during the pipeline execution. 
+
+Here's a YAML example of a stage template with default value, `<+input>.default(“ABC”)`. You can ovveride this default value during pipeline execution. 
+```
+pipeline:
+  name: UsingStageTempWithDefaults
+  identifier: UsingStageTempWithDefaults
+  projectIdentifier: svcredesignhinger
+  orgIdentifier: harness
+  tags: {}
+  stages:
+    - stage:
+        name: s1
+        identifier: s1
+        template:
+          templateRef: stageTempDefaults1
+          versionLabel: v1
+          templateInputs:
+            type: Custom
+            variables:
+              - name: var1
+                type: String
+                default: ABC
+                value: <+input>.default(ABC)
+ ```
 
 #### Limitations and requirements
 
