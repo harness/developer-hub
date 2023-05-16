@@ -34,7 +34,19 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by aimurphy for branch ci-4876 on May 10 2023
+
+    {
+      from: "/docs/platform/Triggers/trigger-pipelines-using-custom-payload-conditions",
+      to: "/docs/platform/Triggers/triggering-pipelines",
+    },
+
     // Created by aimurphy for branch ci-misc-small-items on May 3 2023
+
+    {
+      from: "/tutorials/ci-pipelines/build/signed-image",
+      to: "/tutorials/ci-pipelines/build/go",
+    },
 
     {
       from: "/docs/category/troubleshoot-ci",
@@ -748,10 +760,6 @@ module.exports = {
       to: "/tutorials/ci-pipelines/build/rust",
     },
     {
-      from: "/tutorials/build-code/build/signed-image",
-      to: "/tutorials/ci-pipelines/build/signed-image",
-    },
-    {
       from: "/tutorials/build-code/build/tfc-notification",
       to: "/tutorials/ci-pipelines/build/tfc-notification",
     },
@@ -1222,10 +1230,6 @@ module.exports = {
     {
       from: "/tutorials/build-code/ci-tutorial-go-containers",
       to: "/tutorials/ci-pipelines/build/go",
-    },
-    {
-      from: "/tutorials/build-code/ci-tutorial-container-signing",
-      to: "/tutorials/ci-pipelines/build/signed-image",
     },
     {
       from: "/tutorials/build-code/ci-react-quickstart",

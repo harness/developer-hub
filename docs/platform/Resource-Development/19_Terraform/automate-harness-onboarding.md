@@ -328,7 +328,7 @@ Harness supports the following:
 - GitLab
 - Bitbucket
 
-For more information on triggers, go to [Trigger pipelines using custom payload conditions](https://developer.harness.io/docs/platform/triggers/trigger-pipelines-using-custom-payload-conditions/).
+For more information on triggers, go to [Trigger pipelines using Git Events](/docs/platform/triggers/triggering-pipelines/).
 
 ```YAML
 trigger:

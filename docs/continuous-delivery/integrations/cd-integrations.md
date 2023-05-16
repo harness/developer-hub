@@ -30,47 +30,414 @@ For a comprehensive list that includes all Harness modules, go to [Supported pla
 - [GitOps](/docs/continuous-delivery/gitops/harness-git-ops-basics)
 - Local ([Harness Community Edition](/docs/continuous-delivery/deploy-srv-diff-platforms/community-ed/harness-community-edition-overview))
 
-## Deployment environments
 
-- Kubernetes clusters on any platform.
-- Azure:
-  - AKS, Azure Virtual Machines.
-- AWS:
-  - EKS, ECS, EC2, Lambda.
-- Google:
-  - AKS, Functions, Google Compute Engine (GCE).
-- Physical data center.
+
+## Deployment types and environments
+
+<details>
+<summary>Kubernetes</summary>
+
+- **Supported connectors for deployment:**
+  - Kubernetes connector
+    + Username and password
+    + Client key and secret
+    + OIDC authentication
+    + Kubernetes service account
+    + Assume role binding on delegate configuration
+  - Google Cloud connector (GKE authentication)
+    + Service Account
+    + Google Cloud Role on Delegate
+    + Workload Identity
+  - Azure Cloud Connector (AKS Authentication)
+    + Subscription Id
+    + Principal and Service Account
+    + GovCloud Support
+  - AWS Cloud Connector (EKS Authentication)
+    + IRSA
+    + Access Key and Secret Key
+    + IAM Role
+    + GovCloud Support  
+- **Supported platforms for deployment:**
+  - Self Hosted Kubernetes
+  - Google Kubernetes Engine
+  - Azure Kubernetes Engine
+  - AWS Elastic Kubernetes Service
+  - Red Hat OpenShift
+- **Versions and tooling support:**
+  - Kubectl Client Versions:
+    - 1.16
+    - 1.27
+    - We support what each of the Cloud Providers support. We recommend users to keep their binary versions up to date.
+    - By default Harness ships with kubectl client - 1.24
+  - Tooling:
+    - OpenShift - oc client binary
+    - Kustomize - kustomize binary
+    - Helm - Helm 3.12 and 2.8 binary.
+    - Helm 3.8 can be supported via feature flag.
+- **Limitations:**
+  - Helm:
+    - Helm Hooks are not supported for this swimlane. Harness manages and orchestrates the manifests and their release.
+    - Kustomize:
+      - Kustomize Patches are only supported in YAML, not JSON
+      - Kustomize Containerized Plugins are not supported
+    - Harness managed resources:
+      - Deployment
+      - Secrets
+      - ConfigMap
+      - StatefulSet
+      - HorizontalPodAutoScalar is coming soon.
+      - PodDisruptionBudget is coming soon.
+- **Supported integrations:**
+  - Traffic Shifting for Advanced Deployment Strategies:
+    - Istio
+    - Nginx Ingress Controller
+  - All manifest type sources for fetching Kubernetes resources:
+    - Github
+    - Gitlab
+    - Bitbucket
+    - Custom Remote Source Repository
+    - Harness Local File Store
+  - For Helm Chart Type Manifests we also support:
+    - Generic Git Provider
+    - Google Cloud Storage
+    - Amazon S3 Storage
+    - Helm OCI Repository (ACR, ECR, GAR, Artifactory)
+    - Helm HTTP Server Repository (Nexus, Artifactory)
+  - Artifact repository supported to deploy with manifest:
+    - DockerHub
+    - Amazon Elastic Container Registry
+    - Google Container Registry
+    - Azure Container Registry
+    - Custom Artifact Source
+    - Google Artifact Registry
+    - Github Package Registry
+    - Nexus 3
+    - Artifactory
+
+</details>
+
+<details>
+<summary>Native Helm</summary>
+
+- **Supported connectors for deployment:**
+  - Kubernetes Connector
+    - Username + Password
+    - Client Key and Secret
+    - OIDC Authentication
+    - Kubernetes Service Account
+    - Assume Rolebinding on Delegate Configuration
+  - Google Cloud Connector (GKE Authentication)
+    - Service Account
+    - Google Cloud Role on Delegate
+    - Workload Identity
+  - Azure Cloud Connector (AKS Authentication)
+    - Subscription ID
+    - Principal and Service Account
+    - GovCloud Support
+  - AWS Cloud Connector (EKS Authentication)
+    - IRSA
+    - Access Key and Secret Key
+    - IAM Role
+    - GovCloud Support 
+- **Supported platforms for deployment:**
+  - Self Hosted Kubernetes
+  - Google Kubernetes Engine
+  - Azure Kubernetes Engine
+  - AWS Elastic Kubernetes Service
+  - Red Hat OpenShift
+- **Versions and tooling support:**
+  - Helm Client Versions: 2.8 - 3.8
+  - We support what each of the Cloud Providers support, we recommend users to keep their binary versions up to date
+  - By default Harness ships with helm client 2.8 and 3.12.
+  - Tooling:
+    - OpenShift - oc client binary
+    - Kustomize - kustomize binary
+    - Helm - Helm 3.12 & 2.8 binary. Helm 3.8 can be supported via feature flag.
+- **Limitations:**
+  - Helm 2 is deprecated so there is limited support for Helm 2.
+  - Helm 3 is now the default for Harness Helm Chart Deployments.
+  - Helm Plugins are not supported
+  - Only Basic Deployment Strategy supported (No Canary or Blue-Green Support Out of the box)
+- **Supported integrations:**
+  - Manifest Sources for fetching Helm Chart:
+    - Github
+    - Gitlab
+    - Bitbucket
+    - Generic Git Provider
+    - Custom Remote Source Repository
+    - Google Cloud Storage
+    - Amazon S3 Storage
+    - Helm OCI Repository (ACR, ECR, GAR, Artifactory)
+    - Helm HTTP Server Repository (Nexus, Artifactory)
+    - Harness Local File Store
+  - Artifact Repository for Container Images to deploy with Chart:
+    - DockerHub
+    - Amazon Elastic Container Registry
+    - Google Container Registry
+    - Azure Container Registry
+    - Custom Artifact Source
+    - Google Artifact Registry
+    - Github Package Registry
+    - Nexus 3
+    - Artifactory
+
+</details>
+
+<details>
+<summary>Amazon ECS</summary>
+
+- **Supported connectors for deployment:**
+- AWS Cloud Connector
+  - IRSA
+  - Access Key and Secret Key
+  - IAM Role
+  - GovCloud Support
+- **Supported platforms for deployment:**
+  - AWS Cloud, any region
+  - AWS - Launch Types:
+    - Amazon ECS - EC2 - Generally Provisioned Instances
+    - Amazon ECS - EC2 - Spot Backed Instances
+    - Amazon ECS - Fargate
+- **Versions and tooling support:**
+  - AWS SDK 
+- **Supported integrations:**
+  - ECS Service Discovery - Supported via Service Definition
+  - ECS Circuit Breaker - Supported via Service Definition
+  - Artifact Repository:
+    - DockerHub
+    - Amazon Elastic Container Registry
+    - Azure Container Registry
+    - Custom Artifact Source
+    - Github Package Registry
+    - Nexus 3
+    - Artifactory
+
+</details>
+
+
+
+<details>
+<summary>Amazon AMI/ASG</summary>
+
+- **Supported connectors for deployment:**
+  - AWS cloud connector
+    - IRSA
+    - Access Key and Secret Key
+    - IAM Role
+    - GovCloud Support
+- **Supported platforms for deployment:**
+  - AWS cloud, any region
+- **Versions and tooling support:**
+  - AWS SDK
+
+</details>
+
+
+<details>
+<summary>AWS Lambda</summary>
+
+- **Supported connectors for deployment:**
+  - AWS Cloud Connector
+    - IRSA
+    - Access Key and Secret Key
+    - IAM Role
+    - GovCloud Support
+- **Supported platforms for deployment:**
+  - AWS cloud, any region
+- **Versions and tooling support:**
+  - AWS SDK
+- **Supported integrations:**
+  - Artifact Repository Supported to Deploy with Function Definition:
+    - Amazon Elastic Container Registry
+    - Amazon S3
+
+</details>
+
+<details>
+<summary>Traditional: WinRM</summary>
+
+- **Supported connectors for deployment:**
+  - AWS Cloud Connector
+    - IRSA
+    - Access Key and Secret Key
+    - IAM Role
+    - GovCloud Support
+  - Azure Cloud Connector (AKS Authentication)
+    - Subscription Id
+    - Principal and Service Account
+    - GovCloud Support
+- **Supported platforms for deployment:**
+  - AWS Cloud
+  - Azure Cloud
+  - Physical Datacenter
+
+</details>
+
+
+<details>
+<summary>Traditional: SSH</summary>
+
+- **Supported connectors for deployment:**
+  - AWS Cloud Connector
+    - IRSA
+    - Access Key and Secret Key
+    - IAM Role
+    - GovCloud Support
+  - Azure Cloud Connector (AKS Authentication)
+    - Subscription Id
+    - Principal and Service Account
+    - GovCloud Support
+- **Supported platforms for deployment:**
+  - AWS Cloud
+  - Azure Cloud
+  - Physical Datacenter
+- **Limitations:**
+  - Google Compute Engine (Virtual Machine Targets)
+    - Limited Support, Harness can connect to Google VMs via an SSH Key, not via Google Cloud Authentication
+  - Linux SSH Setups
+    - Ubuntu Version 22 is not supported. It is coming soon.
+    - RHEL9 (Red Hat Enterprise Linux 9) is not supported. It is coming soon.
+
+</details>
+
+
+<details>
+<summary>Tanzu Application Service (formerly Pivotal Cloud Foundry)</summary>
+
+- **Supported connectors for deployment:**
+  - Tanzu Connector
+    - Endpoint URL, Username and Password
+- **Supported platforms for deployment:**
+  - On Premise Cloud Foundry Installations
+  - VMware Tanzu Platform
+- **Versions and tooling support:**
+  - Binary Versions:
+    - CF CLI v6
+    - CF CLI v7
+    - CF CLI v8
+
+</details>
+
+
+<details>
+<summary>Google Functions</summary>
+
+- **Supported connectors for deployment:**
+  - Google Cloud Connector
+  - Service Account
+- **Supported platforms for deployment:**
+  - Google Cloud, any region
+- **Versions and tooling support:**
+  - Google SDK. Supported versions:
+    - Google Functions Gen 1
+    - Google Functions Gen 2
+- **Supported integrations:**
+  - Artifact Repository:
+    - Google Cloud Storage
+    - Google Source Repository (Gen 1 Only)
+
+</details>
+
+
+<details>
+<summary>Spot Instances</summary>
+
+- **Supported connectors for deployment:**
+  - Spot Connector
+    - AccountID + API Token
+- **Supported platforms for deployment:**
+  - AWS cloud, any region
+- **Limitations:**
+  - Deployment Behavior:
+    - Incremental Traffic Shifting for SpotInst Deployment is not supported
+    - VM-based Deployments are supported via Elastigroup configuration
+
+</details>
+
+
+<details>
+<summary>Serverless.com Framework</summary>
+
+- **Supported connectors for deployment:**
+  - AWS Cloud Connector
+    - IRSA
+    - Access Key and Secret Key
+    - IAM Role
+- **Supported platforms for deployment:**
+  - AWS cloud, any region
+- **Versions and tooling support:**
+  - Supported Binary Versions:
+    - serverless.com 1.x
+    - serverless.com 2.x
+    - serverless.com 3.x
+- **Limitations:**
+  - Deployment Behavior:
+    - Harness only supports AWS Lambda Functions to be deployed via Serverless.com Framework
+    - Harness builds and deploys Lambda Functions, users cannot split up the tasks to build functions and deploy functions separately natively via the swimlane
+  - Not supported application types:
+    - Google Functions
+    - Azure Functions
+  - Serverless.com 1.x (limited support). Not all capabilities supported.
+  - Basic deployment supported. No out-of-the-box canary and blue green deployment supported.
+- **Supported integrations:**
+  - Serverless.com plugins:
+    - Harness supports all the Serverless.com plugins. Please make sure they are compatible with the version of Serverless.com you are using.
+  - Artifact Repository:
+    - DockerHub
+    - Amazon Elastic Container Registry
+    - Artifactory
+    - Amazon S3
+
+</details>
+
+
+<details>
+<summary>Azure WebApps</summary>
+
+- **Supported connectors for deployment:**
+  - Azure Cloud Connector (AKS Authentication)
+    - Subscription Id
+    - Principal and Service Account
+    - GovCloud Support
+- **Supported platforms for deployment:**
+  - Azure cloud, any Region
+- **Versions and tooling support:**
+  - Azure SDK
+
+</details>
+
+
 
 ## Infrastructure provisioners
 
-- [Terraform](http://localhost:3000/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
-- [Terragrunt](http://localhost:3000/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos)
+- [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
+- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos)
 - Azure ARM and Blueprint
-- [AWS CloudFormation](http://localhost:3000/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos)
+- [AWS CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos)
 - Shell script (custom)
 
 ## CD pipeline controls
 
-- [Strategies](http://localhost:3000/docs/continuous-delivery/manage-deployments/deployment-concepts): basic, rolling, canary, blue green, custom.
-- [Barriers](http://localhost:3000/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers)
-- [Resource Constraints](http://localhost:3000/docs/continuous-delivery/manage-deployments/deployment-resource-constraints)
-- [Queue steps](http://localhost:3000/docs/continuous-delivery/manage-deployments/control-resource-usage-with-queue-steps)
-- [Deployment freeze](http://localhost:3000/docs/continuous-delivery/manage-deployments/deployment-freeze)
-- [Failure strategies](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-- [Conditional executions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-- [Looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-- [Triggers](/docs/category/triggers)
-- [Input set and overlays](/docs/platform/pipelines/input-sets/)
+- [Strategies](/docs/continuous-delivery/manage-deployments/deployment-concepts): basic, rolling, canary, blue green, custom.
+- [Barriers](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers)
+- [Resource Constraints](/docs/continuous-delivery/manage-deployments/deployment-resource-constraints)
+- [Queue steps](/docs/continuous-delivery/manage-deployments/control-resource-usage-with-queue-steps)
+- [Deployment freeze](/docs/continuous-delivery/manage-deployments/deployment-freeze)
+- [Failure strategies](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings//)
+- [Conditional executions](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+- [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+- [Triggers](https://developer.harness.io/docs/category/triggers)
+- [Input set and overlays](https://developer.harness.io/docs/platform/pipelines/input-sets/)
 
 ## Manifests and file sources
 
-- [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/)
-- [Git on any platform](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
-- [Github](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-- [GitLab](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
-- [Bitbucket](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-- [AWS CodeCommit](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
-- [Azure Repos](/docs/platform/connectors/code-repositories/connect-to-a-azure-repo/)
+- [Harness File Store](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/)
+- [Git on any platform](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
+- [Github](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+- [GitLab](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+- [Bitbucket](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+- [AWS CodeCommit](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference)
+- [Azure Repos](https://developer.harness.io/docs/platform/connectors/code-repositories/connect-to-a-azure-repo/)
 
 ## Artifact sources
 

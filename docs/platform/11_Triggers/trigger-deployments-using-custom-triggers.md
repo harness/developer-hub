@@ -36,7 +36,7 @@ You can do the following with a custom trigger:
 
 The **Payload Type** is set as Custom. If this were a Git provider trigger, you would specify the repo URL and events for the trigger.
 
-For more details, see [Trigger Pipelines using Git Event Payload Conditions](trigger-pipelines-using-custom-payload-conditions.md) and [Trigger Pipelines using Git Events](triggering-pipelines.md).
+For more details, go to [Trigger Pipelines using Git Events](triggering-pipelines.md).
 
 ## Conditions
 
@@ -61,7 +61,7 @@ Conditions are ANDed together (boolean AND operation). All Conditions must match
 
 Pipelines often have [Runtime Inputs](../20_References/runtime-inputs.md) like codebase branch names or artifact versions and tags.
 
-1. Provide values for the inputs. You can also use [input sets](../8_Pipelines/input-sets.md).
+1. Provide values for the inputs. You can use [input sets](../8_Pipelines/input-sets.md). For more information, go to [Passing data in custom triggers](/docs/platform/triggers/custom-trigger-passing-data).
 2. Click **Create Trigger**.
 
 The trigger is now added to the Triggers page.

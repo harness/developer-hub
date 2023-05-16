@@ -382,7 +382,7 @@ To connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the p
 
 Make sure you've met the following requirements to connect to the EKS cloud connector.
 
-* You have enabled the `NG_CDS_NATIVE_EKS_SUPPORT` feature flag. *FEATURE - COMING SOON*
+* You have enabled the `NG_CDS_NATIVE_EKS_SUPPORT` feature flag.
 * The IAM role of the worker nodes for the EKS cluster have the [required permissions](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html).
     * Your IAM role has the permission to access the AWS EKS cluster. You can edit the `configmap/aws-auth` entry in the EKS cluster to enable the required permissions. For more information, go to [add user role](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html). You can also assume the IAM role used to create the AWS EKS cluster which has the required `configmap/aws-auth` entries by default.
     * Your IAM role has the basic policies to access the AWS EKS cluster. For more information, go to [Amazon EKS identity-based policy examples](https://docs.aws.amazon.com/eks/latest/userguide/security_iam_id-based-policy-examples.html).
@@ -438,7 +438,12 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
       ```
       
 * You're using Kubernetes version 1.22 or later. Harness uses a [client-go credential plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins) to authenticate the connection to the EKS cluster. Support for EKS is deprecated for Kubernetes 1.21 and earlier versions.
-  
+
+Here's a quick video demonstrating Native EKS authentication support for Kubernetes:
+
+<!-- Video:
+https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34-->
+<docvideo src="https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34" />
 
 ## AWS Serverless Lambda
 
