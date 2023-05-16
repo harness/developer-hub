@@ -35,9 +35,9 @@ This topic provides settings and permissions for the Docker connector.
 
 The URL of the Docker registry. This is usually the URL used for your [docker login](https://docs.docker.com/engine/reference/commandline/login/) credentials.
 
-To connect to a public Docker registry like Docker Hub, use `https://registry.hub.docker.com/v2/`.
+To connect to a public Docker registry like Docker Hub, use `https://index.docker.io/v2/`.
 
-To connect to a private Docker registry, use `https://index.docker.io/v2/`.
+To connect to a private Docker registry, use `https://registry.hub.docker.com/v2/`.
 
 ## Provider Type
 
