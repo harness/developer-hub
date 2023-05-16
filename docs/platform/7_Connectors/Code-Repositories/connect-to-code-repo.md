@@ -27,6 +27,8 @@ To fetch very large repos, enable the feature flag `OPTIMIZED_GIT_FETCH_FILES`. 
 :::note
 If this FF is enabled, and the GitHub Organization has SAML enabled, the token needs to be SAML authorized to access the Organization even if the repository is public. For more details see [GitHub Authentication with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/about-authentication-with-saml-single-sign-on).
 
+:::
+
 Currently, this feature is behind the feature flag `OPTIMIZED_GIT_FETCH_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 ### Permissions
