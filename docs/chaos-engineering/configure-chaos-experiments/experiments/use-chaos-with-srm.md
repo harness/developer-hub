@@ -60,7 +60,7 @@ To check the impact of a fault on a monitored service:
 
 	![SRM **Changes** dashboard](./static/srm/srm-changes-dashboard.png)
 
-	The top part of the [Changes dashboard](/docs/service-reliability-management/change-impact-analysis/change-impact-analysis-changes-dash-board) displays a Changes Timeline, including a separate line for **Chaos Experiments**. Chaos events along this timeline are indicated by diamonds icons.
+	The top part of the [Changes dashboard](/docs/service-reliability-management/change-impact-analysis/change-impact-analysis-changes-dash-board) displays a Changes Timeline, including a separate line for **Chaos Experiments**. Chaos events along this timeline are indicated by diamond icons.
 
 1. Use the filters at the top to narrow down the data, and then move the pointer to the diamond icons in the **Chaos Experiments** timeline to see chaos events at those points in time.
 
