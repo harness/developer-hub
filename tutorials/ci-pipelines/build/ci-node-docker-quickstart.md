@@ -117,9 +117,9 @@ Use **Run** steps to install dependencies in the build environment. [Plugin step
                   name: Dependencies
                   spec:
                     connectorRef: account.harnessImage
-                    image: node:latest
+                    image: node:14.18.2-alpine
                     command: |-
-                      npm install express@4.18.2 --no-save
+                      npm install express@14.18.2 --no-save
 ```
 
 ```mdx-code-block
@@ -235,12 +235,16 @@ If your application requires a specific Node version, add a **Run** step to inst
 ```yaml
               - step:
                   type: Run
-                  identifier: install_node
-                  name: install node
+                  name: Install Node
+                  identifier: installnode
                   spec:
                     shell: Sh
+                    envVariables:
+                      NODE_VERSION: 18.16.0
                     command: |-
-                      ?
+                      mkdir $HOME/nodejs
+                      curl -L https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz | tar xJ -C $HOME/nodejs
+                      export PATH=$HOME/nodejs/node-v${NODE_VERSION}-linux-x64/bin:$PATH
 ```
 
 </details>
@@ -251,11 +255,12 @@ If your application requires a specific Node version, add a **Run** step to inst
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
 
 ```yaml
+    - stage:
         strategy:
           matrix:
             nodeVersion:
-              - "latest"
-              - "lts-hydrogen"
+              - 18.16.0
+              - 20.2.0
 ```
 
 2. Reference the matrix variable in your steps.
@@ -263,12 +268,16 @@ If your application requires a specific Node version, add a **Run** step to inst
 ```yaml
               - step:
                   type: Run
-                  identifier: install_node
-                  name: install node
+                  name: Install node
+                  identifier: installnode
                   spec:
                     shell: Sh
                     command: |-
-                      ?
+                      mkdir $HOME/nodejs
+                      curl -L https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz | tar xJ -C $HOME/nodejs
+                      export PATH=$HOME/nodejs/node-v${NODE_VERSION}-linux-x64/bin:$PATH
+                    envVariables:
+                      NODE_VERSION: <+matrix.nodeVersion>
 ```
 
 </details>
@@ -287,13 +296,16 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
 ```yaml
               - step:
                   type: Run
-                  identifier: build
-                  name: Build
+                  name: Node Version
+                  identifier: nodeversion
                   spec:
                     connectorRef: account.harnessImage
-                    image: node:lts-hydrogen
+                    image: node:18.16.0
+                    shell: Sh
                     command: |-
-                      npm install
+                      node -v
+                      npm version
+                      npx -v
 ```
 
 </details>
@@ -304,11 +316,12 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
 
 ```yaml
+    - stage:
         strategy:
           matrix:
             nodeVersion:
-              - "latest"
-              - "lts-hydrogen"
+              - 18.16.0
+              - 20.2.0
 ```
 
 2. Reference the matrix variable in the `image` field of your steps.
@@ -316,13 +329,16 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
 ```yaml
               - step:
                   type: Run
-                  identifier: build
-                  name: Build
+                  name: Node Version
+                  identifier: nodeversion
                   spec:
                     connectorRef: account.harnessImage
                     image: node:<+matrix.nodeVersion>
+                    shell: Sh
                     command: |-
-                      npm install
+                      node -v
+                      npm version
+                      npx -v
 ```
 
 </details>
