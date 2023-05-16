@@ -75,14 +75,16 @@ The trigger is now added to the Triggers page.
 Here's an example of the cURL command:
 
 ```
-curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/{customWebhookToken}/v3?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
 ```
 
 :::note
 
+The custom webhook token is a unique token that is generated internally for every custom webhook trigger when it is created and remain unchanged.
+
 The `-H 'X-Api-Key: sample_api_key'` parameter is used to authorize custom triggers. You can use [Harness API keys](../3_User-Management/7-add-and-manage-api-keys.md) with this parameter. This is described below in [Custom trigger authorization using API keys](#custom-trigger-authorization-using-api-keys).
 
-To skip authorization, omit the `-H 'X-Api-Key: sample_api_key'` parameter.
+To skip authorization, omit the `-H 'X-Api-Key: sample_api_key'` parameter. When authorization is not enforced for the custom webhook triggers then this api key is excluded from the generated curl command.
 
 :::
 
