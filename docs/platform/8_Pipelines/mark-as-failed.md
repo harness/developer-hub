@@ -26,6 +26,7 @@ To mark a stage as failed during pipeline execution:
    ![](./static/mark-as-failed-option.png)
 
 4. Select **Confirm**.
+   
    The **Error Summary** for the stage displays `User Initiated Failure`. The failure type of this stage is set to `USER_MARKED_FAILURE`.
 
    ![](./static/error-summary.png)
