@@ -147,16 +147,16 @@ To rotate your tokens, do the following:
 2. Add the delegate token to a secret manager, such as HashiCorp Vault.
 3. When you deploy the delegate pod, reference the delegate token from the secret manager.
 
-To reference the delegate token stored in the HashiCorp Vault, do the following:
+As an example, to reference the delegate token stored in the HashiCorp Vault, do the following. The steps may differ for other secret managers.
 
 * Add the below annotations in the [delegate Helm chart](https://github.com/harness/delegate-helm-chart):
 
    ```yaml
    vault.hashicorp.com/agent-inject: true
-                 vault.hashicorp.com/agent-inject-secret-secret1: <delegate_token>
+                 vault.hashicorp.com/agent-inject-secret-secret1: <delegate_token> //delegate token referenced in hashicorp vault
                  vault.hashicorp.com/agent-inject-status: injected
                  vault.hashicorp.com/agent-inject-template-secret1:
-                   {{ with secret "<delegate_token>" }}
+                   {{ with secret "<delegate_token>" }}                           //delegate token referenced in hashicorp vault
                    export DELEGATE_TOKEN="{{ .Data.data.DELEGATE_TOKEN }}"
                    {{ end }}
                  vault.hashicorp.com/auth-config-type: iam
