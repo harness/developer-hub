@@ -12,13 +12,47 @@ import TabItem from '@theme/TabItem';
 ```mdx-code-block
 import delete_project from './static/delete-project.png'
 ```
-Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes). 
+Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes).
 
-## Latest - April 26, 2023, version 78926
+## Latest - May 12, 2023, patch release for version 78926
+
+Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and updates to address potential security vulnerabilities.
 
 This release includes the following Harness module and component versions.
-**Helm Chart Version ** 0.5.0
-**Release** https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.5.4](https://github.com/harness/helm-charts/releases/tag/harness-0.5.4) |
+| NG Manager | 78926 |
+| CI Manager | 3303 |
+| Pipeline Service | 1.26.9 |
+| Platform Service | 78602 |
+| Access Control Service | 78405 |
+| Change Data Capture | 78926 |
+| Test Intelligence Service | release-167 |
+| NG UI | 0.344.13 |
+| LE NG | 67708 |
+
+### Fixed issues
+
+* The FirstGen to NextGen migrator disabled initialization for some feature flags. (SMP-1294)
+
+   This issue is fixed. The migrator is now only enabled when `global.migrator.enabled` is set to `true`.
+
+* The legacy delegate is no longer the default delegate type. The default value of `useImmutableDelegate` is now set to `true`. (SMP-1280)
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### April 26, 2023, version 78926
+
+This release includes the following Harness module and component versions.
+
+#### Helm Chart Version 0.5.0 
+
+https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 
 | **Name** | **Version** |
 | :-- | :--: |
@@ -32,10 +66,9 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+
+#### What's new
+
 #### Self-Managed Enterprise Edition
 - Beginning with v0.5.0, Harness will no longer publish `harness-prod` or `harness-demo` Helm charts. Harness will publish the `harness` base chart only. If you currently use the `harness-prod` or `harness-demo` Helm chart, you must download your `custom-override.yaml` file from [the helm-charts repository](https://github.com/harness/helm-charts/tree/main/src) and use the following commands to upgrade:
   
@@ -341,11 +374,8 @@ This release includes the following Harness module and component versions.
 
   You can now view logs for delegate tasks for pipeline steps that are running or finished. This can help with debugging issues.
 
+#### Fixed issues
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
 #### Self-Managed Enterprise Edition
 - Data synchronization did not occur and dashboards displayed incorrect detail. (SMP-1178)
 
@@ -950,15 +980,6 @@ This release includes the following Harness module and component versions.
 - The new delegate installation wizard is now available in all delegate installation worfklows. (DEL-5989)
 - Fixed an issue that interfered with the delegate installation process. Delegate API requests did not include the context that was required; organization and project ID information was not being sent with requests. The required context is now included. (DEL-5951)
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### March 14, 2023, version 78426
 

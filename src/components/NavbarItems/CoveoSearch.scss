@@ -701,6 +701,18 @@
     }
 }
 
+/* [HDH-114] Cleaner Difference Between FG and NG Docs */
+.harness-search-module .CoveoFieldValue {
+	&:has(span[title*="FirstGen Docs"]) {
+		background-color: var(--gray-200);
+		border-color: var(--gray-200);
+	}
+	&:has(span[title*="NextGen Docs"]) {
+		background-color: var(--primary-3);
+		border-color: var(--primary-3);
+	}
+}
+
 .CoveoLogo {
     display: none !important;
 }

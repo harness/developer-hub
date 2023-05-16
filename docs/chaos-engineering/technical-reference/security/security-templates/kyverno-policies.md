@@ -31,7 +31,7 @@ kustomize build https://github.com/litmuschaos/chaos-charts/security/kyverno-pol
 
 ## Pod security policies in restricted setup
 
-If a setup contains restricted policies, it will not allow HCE experiments to be executed by default. For example, [deny-privilege-escalation](https://kyverno.io/policies/pod-security/restricted/deny-privilege-escalation/deny-privilege-escalation/) policy doesn't allow privileged escalation. It denies all the pods of privileged escalation.
+If a setup contains restricted policies, it will not allow HCE experiments to be executed by default. For example, [disallow-privilege-escalation](https://kyverno.io/policies/pod-security/restricted/disallow-privilege-escalation/disallow-privilege-escalation/) policy doesn't allow privileged escalation. It denies all the pods of privileged escalation.
 
 To allow HCE pods to use the privileged escalation, add the HCE service acccount or ClusterRole or Role inside the exclude block as:
 
@@ -40,7 +40,7 @@ To allow HCE pods to use the privileged escalation, add the HCE service acccount
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
-  name: deny-privilege-escalation
+  name: disallow-privilege-escalation
   annotations:
     policies.kyverno.io/category: Pod Security Standards (Restricted)
     policies.kyverno.io/severity: medium
@@ -53,7 +53,7 @@ spec:
   background: true
   validationFailureAction: enforce
   rules:
-  - name: deny-privilege-escalation
+  - name: disallow-privilege-escalation
     match:
       resources:
         kinds:

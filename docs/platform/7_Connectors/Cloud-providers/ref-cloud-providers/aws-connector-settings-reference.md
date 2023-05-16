@@ -378,8 +378,7 @@ This example policy gives limited permission to EKS clusters.
 
 ## Connect to EKS
 
-To connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the platform-agnostic [Kubernetes cluster connector](kubernetes-cluster-connector-settings-reference.md).
-<!--- or Elastic Kubernetes Service (EKS) cloud connector.
+To connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the platform-agnostic [Kubernetes cluster connector](kubernetes-cluster-connector-settings-reference.md) or Elastic Kubernetes Service (EKS) cloud connector.
 
 Make sure you've met the following requirements to connect to the EKS cloud connector.
 
@@ -438,8 +437,14 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
       aws-iam-authenticator help
       ```
       
-* You're using Kubernetes version 1.22 or later. Harness uses a [client-go credential plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins) to authenticate the connection to the EKS cluster. Support for EKS is deprecated for Kubernetes 1.21 and earlier versions.-->
-  
+* You're using Kubernetes version 1.22 or later. Harness uses a [client-go credential plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins) to authenticate the connection to the EKS cluster. Support for EKS is deprecated for Kubernetes 1.21 and earlier versions.
+
+Here's a quick video demonstrating Native EKS authentication support for Kubernetes:
+
+<!-- Video:
+https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34-->
+<docvideo src="https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34" />
+
 ## AWS Serverless Lambda
 
 There are three authentication options for the AWS connector when used for AWS ECS images for AWS Serverless Lambda deployments:
