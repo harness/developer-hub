@@ -91,6 +91,9 @@ In **Approval Message**, add the message for the Users in **Approvers**.
 
 Enable this option to provide approvers with the execution history for this Pipeline. This can help approvers make their decision.
 
+### Option: Auto-Reject previous deployments paused in this step on approval
+Enable this option to auto reject older executions that are waiting on approval when the latest execution is approved. 
+
 ### Step 3: Select Approvers
 
 In **Approvers**, in **User Groups**, select the Harness User Groups across Project/Org/Account scope, that will approve the step.
