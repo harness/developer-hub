@@ -1,10 +1,10 @@
 ---
-title: Build custom images with delegate Dockerfile
-description: This topic describes how to build custom images with the Harness Delegate Dockerfile.
+title: Build custom images using delegate Dockerfile
+description: This topic describes how to build custom images using the Harness Delegate Dockerfile.
 sidebar_position: 7
 ---
 
-The Harness Delegate [Dockerfile](https://docs.docker.com/engine/reference/builder/) is available in the [delegate Dockerfile repository](https://github.com/harness/delegate-dockerfile). You can use the Dockerfile to build custom delegate images.
+You can use the Harness Delegate Dockerfile to build custom delegate images. The [Dockerfile](https://docs.docker.com/engine/reference/builder/) is available in the [delegate Dockerfile repository](https://github.com/harness/delegate-dockerfile). 
 
 The repository includes the `Dockerfile-minimal` and `Dockerfile-ubuntu` versions. 
 
