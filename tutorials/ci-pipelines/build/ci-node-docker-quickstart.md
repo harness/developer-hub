@@ -149,8 +149,8 @@ With Harness Cloud build infrastructure, use [Cache Intelligence](/docs/continuo
 
 With self-hosted build infrastructures, you can:
 
- * [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
- * [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
+* [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
+* [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
 
 <details>
 <summary>Node cache key and path requirements</summary>
