@@ -1,5 +1,5 @@
 ---
-title: Build custom images using delegate Dockerfile
+title: Build custom images using Dockerfile
 description: This topic describes how to build custom images using the Harness Delegate Dockerfile.
 sidebar_position: 7
 ---
