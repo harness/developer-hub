@@ -135,6 +135,75 @@ See:
 
 * [Create a Kubernetes Canary Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
 
+### Build deployments
+
+A Build deployment runs a build process, such as a Jenkins job that creates a WAR file and deposits it in a registry.
+
+::: note
+
+Build deployments in CD stages are not part of Harness Continuous Integration (CI). Harness CI performs extensive code testing, compiling, and artifact registration.
+
+Build deployments in CD stages are a way to perform standard job runs without using Harness CI. For an example, go to [Run Jenkins jobs in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines/).
+
+:::
+
+#### When to use build deployments
+
+Typically, you use build deployments as part of a build step or stage in a CD pipeline.
+
+A build step runs a build process (Jenkins job) and deposits the built artifact in a registry.
+
+#### Build step for push events
+
+Build steps can also be used to build an artifact when the source has been updated.
+
+For example, you might use a trigger to execute the CD pipeline on a Webhook event, such as a Git push event. In this case, the new artifact version needs to be built before the pipeline can pick it up.
+
+You simply add a build step at the beginning of the pipeline to build the artifact so you always have the latest build.
+
+## Basic deployments
+
+With basic deployments, all nodes (pods, instances, etc) within a single environment are updated at the same time with a single new service/artifact version.
+
+Basic deployments are supported in Harness for a number of platforms as a way for you to experiment with deployments. They are not intended for production deployments because they are not as safe as Canary or Blue/Green deployments.
+
+### When to use basic deployments
+
+* Your app/service is not business, mission, or revenue critical.
+* You’re deploying off-hours and no one is using the app/service.
+* You're experimenting with deployments and it's okay if the app/service fails.
+
+#### Pros
+
+* Simple and fast
+* Useful for learning Harness
+
+#### Cons
+
+* Risk, outages, slower rollback
+
+Not too long ago, basic deployments were how developers rolled out applications. Typically, someone in Ops updates the servers at midnight and then you hope all goes well.
+
+## Multi-service deployments
+
+With multi-service deployments, all nodes within a single environment are updated at the same time with *multiple* new services/artifacts.
+
+For a detailed explanation of multi-service and multi-environment deployents, go to [Use multiple services and environments in a deployment
+](/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv/).
+
+### When to use multi-service deployments
+
+* When your app has service/version dependencies.
+
+#### Pros
+
+* Simple, fast, and with less risk than Basic deployment.
+
+#### Cons
+
+* Risk
+* Difficult to test/verify all service dependencies, outages, slow rollback.
+
 ## Which deployment strategy should I use?
 
 It depends entirely on the type of application/service and environment. Most Harness customers are currently using blue/green or canary deployments for mission-critical applications.
