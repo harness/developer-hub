@@ -198,7 +198,7 @@ https://app.harness.io/ng/#/account/myaccount/ci/orgs/myusername/projects/myproj
 
 :::tip
 
-The [Build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm) uses a Kubernetes cluster build infrastructure.
+The [Build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/kubernetes-build-farm) uses a Kubernetes cluster build infrastructure.
 
 :::
 
