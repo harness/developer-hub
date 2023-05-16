@@ -139,7 +139,7 @@ You can rotate and store your delegate tokens in 3P secret manager and reference
 
 :::info note
 If you rotate your delegate tokens, you must redeploy the delegate.
-::
+:::
 
 To rotate your tokens, do the following:
 
