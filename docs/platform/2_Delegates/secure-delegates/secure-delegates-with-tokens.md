@@ -161,4 +161,4 @@ To reference the delegate token stored in the HashiCorp Vault, do the following:
                    {{ end }}
                  vault.hashicorp.com/auth-config-type: iam
                  vault.hashicorp.com/role: qa-cloudtrust-infrastructure
-```
+   ```
