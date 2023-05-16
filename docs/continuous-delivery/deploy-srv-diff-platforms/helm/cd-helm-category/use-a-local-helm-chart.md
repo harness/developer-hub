@@ -26,7 +26,7 @@ New to Helm deployments in Harness? Review [Helm Chart Deployment Tutorial](/doc
    You can install the chart manually on the host, but it is easier to install it using the `INIT_SCRIPT` environment variable in the delegate YAML.  
 2. Add the `INIT_SCRIPT` environment variable to the StatefulSet (legacy delegate) or deployment (immutable delegate) object in the delegate YAML, and add your Helm chart installation script. 
 
-   For information on using `INIT_SCRIPT`, go to [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
+   For information on using `INIT_SCRIPT`, go to [Build custom delegate images with third-party tools](https://developer.harness.io/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
    For information on installing Helm charts, go to Helm's documentation for [Helm Install](https://helm.sh/docs/helm/helm_install/).
 

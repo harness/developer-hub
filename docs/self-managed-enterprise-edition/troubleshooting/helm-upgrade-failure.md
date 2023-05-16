@@ -24,7 +24,9 @@ This error should not surface in charts 0.2.93 or newer.
 
 #### Set the root password
 
-Specify the `auth.rootPassword` value. This field must not be empty. 
+Specify the `auth.rootPassword` value. This field must not be empty.
+
+To set the root password, do the following:
 
 1. Use the following command to get the current value:
 
@@ -47,6 +49,8 @@ Specify the `auth.rootPassword` value. This field must not be empty.
 #### Update the oldvalues.yaml file
 
 If you've already set the `auth.rootPassword` value one time, you can update and remove the oldvalues.yaml file.
+
+To update and remove the file, do the following:
 
 1. Use the following command to retrieve the file:
 

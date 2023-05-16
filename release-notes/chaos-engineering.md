@@ -21,8 +21,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <Tabs>
   <TabItem value="What's new">
 ```
-* Introduction of GameDays in HCE Module. (CHAOS-643)
-    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday).
 
 * Allow saving of experiment with inactive infrastructure. (CHAOS-1573)
     * HCE now allows you to save an experiment if the infrastructure is inactive, with the saveExperiment API.
@@ -33,7 +31,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   </TabItem>
   <TabItem value="Early access">
 ```
-* This release does not include any early access features.
+* Introduction of GameDays in HCE Module. (CHAOS-643)
+
+    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday).
+    * This feature is currently behind a feature flag named `CHAOS_GAMEDAY_ENABLED`. Contact Harness Support to enable the feature.
 
 
 ```mdx-code-block
