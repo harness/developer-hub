@@ -35,7 +35,7 @@ To mark a stage as failed during pipeline execution:
 
 To configure failure strategy for a stage marked as failure: 
 
-1. Select your pipeline and then select the stage for which you want to configure failure strategy.
+1. Select your pipeline, and then select the stage for which you want to configure failure strategy.
 2. Select **Advanced**.
 3. In **Failure Strategy**, select **Add**.
 4. Select **User Marked Failure** in **On failure of type**.
