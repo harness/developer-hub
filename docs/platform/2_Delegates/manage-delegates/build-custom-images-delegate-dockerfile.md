@@ -1,6 +1,6 @@
 ---
-title: Build custom images using Dockerfile
-description: This topic describes how to build custom images using the Harness Delegate Dockerfile.
+title: Build custom delegate images using Dockerfile
+description: This topic describes how to build custom delegate images using the Harness Delegate Dockerfile.
 sidebar_position: 7
 ---
 
@@ -9,14 +9,14 @@ You can use the Harness Delegate Dockerfile to build custom delegate images. The
 The repository includes the `Dockerfile-minimal` and `Dockerfile-ubuntu` versions. 
 
 :::info note
-If you build and use custom images, you can choose to set automatic upgrades off or on for Kubernetes delegates. To learn more about automatic upgrades with custom images, go to [Use automatic upgrade with custom delegate images](https://developer.harness.io/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration#use-automatic-upgrade-with-custom-delegate-images).
+If you build and use custom images, you can choose to enable or disable automatic upgrades for Kubernetes delegates. To learn more about automatic upgrades with custom images, go to [Use automatic upgrade with custom delegate images](https://developer.harness.io/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration#use-automatic-upgrade-with-custom-delegate-images).
 
-For more information on delegate automatic upgrades and expiration policy, go to [Delegate automatic upgrades and expiration policy](https://developer.harness.io/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration).
+For more information on delegate automatic upgrades and the delegate expiration policy, go to [Delegate automatic upgrades and expiration policy](https://developer.harness.io/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration).
 :::
 
 ## Dockerfile tools
 
-Use Dockerfile to create the delegate image with tools. This image includes the following tools by default.
+You can include third party tools with your delegate when you use the delegate Dockerfile. The image includes the default tools. For a list of default tools and their versions, go to the [delegate Dockerfile repository](https://github.com/harness/delegate-dockerfile).
 
 * `kubectl` v1.24.3
 * `helm` v2.13.1
