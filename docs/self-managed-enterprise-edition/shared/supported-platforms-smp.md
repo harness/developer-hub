@@ -15,9 +15,9 @@ The following table lists the major support features for Harness Self-Managed En
 
 Harness Self-Managed Enterprise Edition does not introduce changes that break compatibility with supported versions of Kubernetes. For example, Self-Managed Enterprise Edition does not use features from Kubernetes version n that do not work in Kubernetes version n-2.
 
-Installation and upgrade preflight checks provide warnings when you use Kubernetes versions that are not supported.
+Installation and upgrade preflight checks provide warnings when you use unsupported Kubernetes versions.
 
-In cases where you encounter a problem that is related to an incompatibility issue, you must upgrade your cluster. Harness will not issue a patch to accommodate the use of unsupported Kubernetes versions.
+In cases where you encounter a problem related to an incompatibility issue, you must upgrade your cluster. Harness will not issue a patch to accommodate the use of unsupported Kubernetes versions.
 
 ### Deployment infrastructure
 
