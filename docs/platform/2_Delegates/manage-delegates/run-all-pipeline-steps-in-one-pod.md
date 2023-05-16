@@ -6,13 +6,13 @@ sidebar_position: 2
 
 Harness uses delegates for all operations. In cases where you want to select specific delegates pods to perform the task, Harness uses those delegate pods only. In cases where you do not select specific delegates, Harness manager picks the delegate. For more information, go to [How Harness Manager picks delegates] (https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/#how-harness-manager-picks-delegates).
 
-This topic describes how to to run all pipeline steps in one delegate pod.
+This topic describes how to run all pipeline steps in a single delegate pod.
 
 ## Configure pipelines to run steps in the same pod
 
 When you have multiple steps in your pipeline, you can configure your delegate to run all the steps in the same pod.
 
-To run all steps in the same pod, do the following:
+To run all the steps in the same pod, do the following:
 
 * Provide the delegate hostname as a dynamic selector to pick one individual delegate among the delegate groups.
 
