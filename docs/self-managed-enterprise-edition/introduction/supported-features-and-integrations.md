@@ -25,6 +25,8 @@ This topic lists the supported features and integrations you can use to install 
 * NGINX supported version: v1.0.0-alpha.2
 
 ### RBAC requirements
+
+The following permissions are required:
 * Deploy Helm
 * Add roles
 * Add/edit secrets
