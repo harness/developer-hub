@@ -16,19 +16,7 @@ For more information on delegate automatic upgrades and the delegate expiration 
 
 ## Dockerfile tools
 
-You can include third party tools with your delegate when you use the delegate Dockerfile. The image includes the default tools. For a list of default tools and their versions, go to the [delegate Dockerfile repository](https://github.com/harness/delegate-dockerfile).
-
-* `kubectl` v1.24.3
-* `helm` v2.13.1
-* `helm` v3.1.2
-* `helm` v3.8.0
-* `go-template` v0.4.2
-* `harness-pywinrm` v0.4-dev
-* `chartmuseum` v0.15.0
-* `tf-config-inspect` v1.2
-* `oc` v4.2.16
-* `kustomize` v4.5.4
-* `scm`
+You can include third party tools with your delegate when you use the delegate Dockerfile. The image includes default tools. For a list of default tools and their versions, go to the [delegate Dockerfile repository](https://github.com/harness/delegate-dockerfile).
 
 ## Dockerfile-minimal
 
