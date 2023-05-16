@@ -91,7 +91,7 @@ The key used for deduplication must be a Harness field. Do not try to deduplicat
 | **Name** | **Format** | **Description** |
 | `issueName` | String | Name of vulnerability, license issue, compliance issue, etc. |
 | `issueDescription` | String (long) | Description of vulnerability, license issue, compliance issue, etc. |
-| `scanTool` | String | The name of the scanning tool (e.g. “SonarQube”) |
+| `subProduct` | String | The name of the scanning tool (e.g. “MyCustomCodeScanner”) |
 | `severity` | Float | CVSS 3.0 score (a number from 1.0-10.0) |
 
 #### **Recommended fields**

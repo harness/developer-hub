@@ -84,6 +84,11 @@ spec:
 
 </details>
 
+<details><summary>YAML pipeline example</summary>
+
+
+
+
 
 ## Harness Cloud workflow
 
@@ -137,7 +142,7 @@ This example shows how to include a PEM file in a pipeline that runs a scan usin
 
 3. Set up the remaining downstream steps in your pipeline. When the pipeline runs a SonarQube scan that requires a PEM, it looks in **/shared/customer_artifacts/certificates** and proceeds if it finds a valid certificate. 
 
-<!-- 
+
 
 ### YAML pipeline example
 
@@ -148,9 +153,8 @@ pipeline:
   allowStageExecutions: false
   projectIdentifier: STO
   orgIdentifier: default
-  identifier: my_pipeline_clone_sq_mvn_with_pem_files
-  name: sq mvn with pem files
-  tags: {}
+  identifier: jsmith_cloud_sq_mvn_with_pem_files
+  name: "jsmith cloud - sq mvn with pem files "  tags: {}
   properties:
     ci:
       codebase:
@@ -163,14 +167,6 @@ pipeline:
         type: SecurityTests
         spec:
           cloneCodebase: true
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: stodelegate
-              namespace: harness-delegate-ng
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
           sharedPaths:
             - /var/run
             - /shared/customer_artifacts
@@ -209,17 +205,24 @@ pipeline:
                   name: addcerts
                   identifier: addcert
                   spec:
-                    connectorRef: jsmithdocker
+                    connectorRef: mydocker
                     image: alpine
                     shell: Sh
                     command: |-
                       set -e
                       mkdir -p -v /shared/customer_artifacts/certificates
+
                       touch /shared/customer_artifacts/certificates/certificate1
                       printf "%s" "$NEWCERT" > /shared/customer_artifacts/certificates/certificate1
+
+                      # touch /shared/customer_artifacts/certificates/certificate2
+                      # printf "%s" "$NEWDUMMYCERT" > /shared/customer_artifacts/certificates/certificate2
+
+                      ls -l /shared/customer_artifacts/certificates
+                      cat /shared/customer_artifacts/certificates/certificate | base64
                     envVariables:
                       NEWCERT: <+secrets.getValue("sonarqube_self_signed_cert")>
-                      NEWDUMMYCERT: <+secrets.getValue("dbothwell-dummy-pem")>
+                      NEWDUMMYCERT: <+secrets.getValue("my-dummy-pem")>
               - step:
                   type: Run
                   name: build
@@ -244,7 +247,7 @@ pipeline:
                       product_config_name: sonarqube-agent
                       repository_project: dvja
                       repository_branch: <+codebase.branch>
-                      product_access_token: $SQ_ACCESS_TOKEN
+                      product_access_token: MY_PROD_TOKEN
                       product_project_key: dvja
                       verify_ssl: true
                       bypass_ssl_check: true
@@ -256,9 +259,18 @@ pipeline:
                         cpu: 1000m
                   description: sonar
                   failureStrategies: []
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
         variables:
           - name: runner_tag
             type: String
             value: dev
+
+
 ```
--->
+
+</details>
