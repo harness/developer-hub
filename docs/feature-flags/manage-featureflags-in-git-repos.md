@@ -254,7 +254,7 @@ To turn off syncing with Git:
 
 ## Reset the Git connection
 
-This procedure removes the connection you set up to your Git repository when you [set up Git Experience](#set-up-git-experience).
+This procedure removes the connection to the Git repository that you configured when you [set up Git Experience](#set-up-git-experience).
 
 To reset Git settings:
 
