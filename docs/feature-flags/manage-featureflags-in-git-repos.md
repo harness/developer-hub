@@ -236,13 +236,11 @@ If you want to always commit to the same branch, and not be prompted for commit 
 
 ## Turn off syncing with Git
 
-When you turn off syncing with Git, any changes you make to flags in Harness are not committed to your Git repository, and any changes to the flags YAML file in your repository are not synced with Harness, until you [turn on syncing](#turn-on-syncing-with-git) again.
+When you turn off syncing with Git, any changes you make to flags in Harness are not committed to the flags YAML file in your Git repository, and any changes to that file in your repository are not synced with Harness, until you [turn on syncing](#turn-on-syncing-with-git) again.
 
 To turn off syncing with Git:
 
-1. In Harness, go to the project you enabled Git Experience for.
-
-1. Select **Feature Flags**.
+1. In Harness, go to the project you enabled Git Experience for, and then select **Feature Flags**.
 
 1. In the top bar navigation, next to the Git repository, select the branch, and then toggle **Sync with Git** off. 
 
@@ -254,15 +252,13 @@ To turn off syncing with Git:
   <img src={git_8} alt="A screenshot of the Git sync toggle turned off." height="500" width="300" />
   ``` 
 
-## Reset Git settings
+## Reset the Git connection
 
-This procedure removes the connection you set up to your Git repository.
+This procedure removes the connection you set up to your Git repository when you [set up Git Experience](#set-up-git-experience).
 
 To reset Git settings:
 
-1. In Harness, go to the project you enabled Git Experience for.
-
-1. Select **Feature Flags**.
+1. In Harness, go to the project you enabled Git Experience for, and then select **Feature Flags**.
 
 1. In the top bar navigation, next to the Git repository, select the branch, and then select **Reset Git Settings**. 
 
