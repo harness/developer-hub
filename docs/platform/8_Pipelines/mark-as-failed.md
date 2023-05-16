@@ -47,7 +47,7 @@ To configure failure strategy for a stage marked as failure:
 
 
 :::important
-If you mark a stage as failed whose failure strategy is not defined, Harness triggers the default failure strategy.
+If you mark a stage as failed, and its failure strategy is not defined, Harness triggers the default failure strategy.
 :::
 
 
