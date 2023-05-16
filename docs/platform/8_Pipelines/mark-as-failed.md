@@ -7,7 +7,7 @@ sidebar_position: 9
 You can mark a specific stage as failed during pipeline execution by selecting the `Mark Stage As Failed` option.
 This lets you do the following: 
 - Abort a step that is running.
-- Trigger rollback after the step is aborted.
+- Trigger configured failure strategy after the step is aborted.
 
 ## Important
 
@@ -38,7 +38,7 @@ To configure failure strategy for a stage marked as failure:
 2. Select **Advanced**.
 3. In **Failure Strategy**, select **Add**.
 4. Select **User Marked Failure** in **On failure of type**.
-5. Select desired action in **Perform Action**.
+5. Select desired action in **Perform Action** like **Rollback**, **Retry**.
    The action you select here gets triggered after you mark a stage as failed.
 6. Select **Save**.
 
