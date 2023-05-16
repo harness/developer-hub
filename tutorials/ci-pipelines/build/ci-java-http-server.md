@@ -26,9 +26,85 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 ## Run tests
 
-You can use Run or Run Tests steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
 
 If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="hosted" label="Harness cloud" default>
+```
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="run" label="Run step" default>
+```
+
+This example uses two [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and test with Maven.
+
+```yaml
+              - step:
+                   type: Run
+                   name: build
+                   identifier: build
+                   spec:
+                     shell: Sh
+                     command: |
+                       mvn clean package dependency:copy-dependencies
+              - step:
+                  type: Run
+                  name: run test
+                  identifier: run_test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      mvn test
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - target/surefire-reports/*.xml
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
+```
+
+You must use the [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings) for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) feature.
+
+Where Run steps use the `command` field for all commands, the Run Tests step uses `preCommand`, `args`, and `postCommand` to set up the environment before testing, pass arguments for the test tool, and run any post-test commands. For example, you could declare dependencies or install test tools in `preCommand`.
+
+The following example runs `mvn test` (declared in `args`), and then runs `mvn package -DskipTests` as a `postCommand`.
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: Run Tests
+                  identifier: Run_Tests
+                  spec:
+                    language: Java
+                    buildTool: Maven
+                    args: test
+                    packages: io.harness.
+                    runOnlySelectedTests: true
+                    postCommand: mvn package -DskipTests
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "target/surefire-reports/*.xml"
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="selfhosted" label="Self-hosted">
+```
 
 ```mdx-code-block
 <Tabs>
@@ -65,7 +141,7 @@ This example uses two [Run steps](/docs/continuous-integration/use-ci/run-ci-scr
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="runtests" label="Run Tests step (Test Intelligence)" default>
+  <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
 ```
 
 You must use the [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings) for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) feature.
@@ -100,9 +176,14 @@ The following example runs `mvn test` (declared in `args`), and then runs `mvn p
 </Tabs>
 ```
 
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
 ## Install dependencies
 
-Use Run steps to install dependencies in the build environment. [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies. You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
+Use **Run** steps to install dependencies in the build environment. [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies. You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
 
 ```yaml
               - step:
@@ -188,9 +269,9 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                   name: Restore Cache From S3
                   identifier: Restore_Cache_From_S3
                   spec:
-                    connectorRef: AWS_Connector
+                    connectorRef: AWS_Connector ## Use your AWS connector ID
                     region: us-east-1
-                    bucket: your-s3-bucket
+                    bucket: your-s3-bucket ## Use your S3 bucket name
                     key: cache-{{ checksum "pom.xml" }}
                     archiveFormat: Tar
               - step:
@@ -204,9 +285,9 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                   name: Save Cache to S3
                   identifier: Save_Cache_to_S3
                   spec:
-                    connectorRef: AWS_Connector
+                    connectorRef: AWS_Connector ## Use your AWS connector ID
                     region: us-east-1
-                    bucket: your-s3-bucket
+                    bucket: your-s3-bucket ## Use your S3 bucket name
                     key: cache-{{ checksum "pom.xml" }}
                     sourcePaths:
                       - /root/.m2
@@ -227,31 +308,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 Java is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="preinstalled" label="Select pre-installed version" default>
-```
-
-```yaml
-              - step:
-                  type: Run
-                  name: Install
-                  identifier: install
-                  spec:
-                    shell: Bash
-                    command: |-
-                      export JAVA_HOME=$JAVA_HOME_8_X64
-                      export PATH=$JAVA_HOME_8_X64/bin:$PATH
-                      which java
-                      java --version
-```
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="install" label="Install a specific version">
-```
-
-If your application requires a specific version of Java, you can use a Run step or Plugin step to install it.
+If your application requires a specific version of Java, you can use a **Run** or **Plugin** step to install it.
 
 This example uses the [GitHub Action plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) to run the `setup-java` action.
 
@@ -263,12 +320,8 @@ This example uses the [GitHub Action plugin step](/docs/continuous-integration/u
                   spec:
                     uses: actions/setup-java@v3
                     with:
-                      java-version: '17'
-```
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
+                      distribution: 'temurin'
+                      java-version: '16'
 ```
 
 ```mdx-code-block
@@ -276,7 +329,7 @@ This example uses the [GitHub Action plugin step](/docs/continuous-integration/u
 <TabItem value="Self-hosted">
 ```
 
-You can use a Run step or Plugin step to install Java versions.
+You can use a **Run** or **Plugin** step to install Java versions that are not already installed on your host machine.
 
 This example uses the [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie) to run the GitHub Actions Drone plugin and run the `setup-java` action.
 
@@ -292,6 +345,7 @@ This example uses the [Plugin step](/docs/continuous-integration/use-ci/use-dron
                     settings:
                       uses: actions/setup-java@v3
                       with:
+                        distribution: 'temurin'
                         java-version: '17'
 ```
 
@@ -349,8 +403,6 @@ pipeline:
                   name: RunTests_1
                   identifier: RunTests_1
                   spec:
-                    connectorRef: account.harnessImage
-                    image: maven:3.5.2-jdk-8-alpine
                     language: Java
                     buildTool: Maven
                     args: test
@@ -361,7 +413,7 @@ pipeline:
                       type: JUnit
                       spec:
                         paths:
-                          - "**/*.xml"
+                          - "target/surefire-reports/*.xml"
               - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1

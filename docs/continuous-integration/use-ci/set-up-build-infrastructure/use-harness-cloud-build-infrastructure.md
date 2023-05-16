@@ -74,7 +74,7 @@ In the following YAML example, an [Action step](../use-drone-plugins/ci-github-a
                   spec:
                     uses: actions/setup-java@v3
                     with:
-                      distribution: 'zulu' # See 'Supported distributions' for available options
+                      distribution: 'temurin'
                       java-version: '17'
               - step:
                   identifier: java_ver_check
