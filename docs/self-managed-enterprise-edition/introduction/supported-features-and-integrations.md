@@ -25,9 +25,9 @@ This topic lists the supported features and integrations you can use to install 
 * NGINX supported version: v1.0.0-alpha.2
 
 ### RBAC requirements
-* Permission to deploy Helm
-* Permission to add roles
-* Permission to add/edit secrets
+* Deploy Helm
+* Add roles
+* Add/edit secrets
 
 ### License requirements
 * Reach out to Harness support (support@harness.io) to get the license information.
