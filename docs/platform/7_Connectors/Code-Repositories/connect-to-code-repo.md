@@ -22,9 +22,11 @@ Harness performs a `git clone` to fetch files. When fetching very large reposito
 
 Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
-To fetch very large repos, enable the feature flag `OPTIMIZED_GIT_FETCH_FILES`. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
+:::info
 
-Currently, this feature is behind the feature flag `OPTIMIZED_GIT_FETCH_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+If the `OPTIMIZED_GIT_FETCH_FILES` feature flag is enabled, and the GitHub organization has SAML enabled, the token must be SAML authorized to access the organization even if the repository is public. For more information, go to [GitHub authentication with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/about-authentication-with-saml-single-sign-on).
+
+:::
 
 ### Permissions
 
