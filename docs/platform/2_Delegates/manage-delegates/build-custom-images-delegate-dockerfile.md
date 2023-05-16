@@ -9,7 +9,9 @@ You can use the Harness Delegate Dockerfile to build custom delegate images. The
 The repository includes the `Dockerfile-minimal` and `Dockerfile-ubuntu` versions. 
 
 :::info note
-If you build and use custom images, you must turn off automatic upgrades for Kubernetes delegates. For more information, go to [Delegate automatic upgrades and expiration policy](https://developer.harness.io/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration).
+If you build and use custom images, you can choose to set automatic upgrades off or on for Kubernetes delegates. To use Automatic upgrades with custom image go to https://developer.harness.io/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration#use-automatic-upgrade-with-custom-delegate-images
+
+For more information on delegate automatic upgrades and expiration policy, go to [Delegate automatic upgrades and expiration policy](https://developer.harness.io/docs/platform/Delegates/install-delegates/delegate-upgrades-and-expiration).
 :::
 
 ## Dockerfile tools
