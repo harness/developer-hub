@@ -113,7 +113,7 @@ Depending on when your account was created, the built-in **Harness Docker Connec
 While using hosted infrastructure, all connectors should be configured to go via the Harness platform instead of via the delegate. Please update the connectors: [harnessImage] to connect via the Harness platform instead. This can be done by editing the connecotr and updating the connectivity to go via the Harness platform.
 ```
 
-To resolve this error, you can either modify the **Harness Docker Connector** or use another Docker connector that you have already configured to connect through the Harness platform.
+To resolve this error, you can either modify the **Harness Docker Connector** or use another Docker connector that you have already configured to connect through the Harness Platform.
 
 To change the connector's connectivity settings:
 
