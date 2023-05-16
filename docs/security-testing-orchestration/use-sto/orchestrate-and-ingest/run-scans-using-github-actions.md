@@ -21,12 +21,15 @@ import TabItem from '@theme/TabItem';
 * As described below, you need to translate settings from the GitHub Action YAML to the Harness pipeline YAML. It is good practices to configure these settings in the YAML editor.
 ::: 
 
+<!-- action -->
 
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="GitHub Action setup">
 ```
+
+<!-- action -->
 
 
 1. Open the CI or STO pipeline where you want to run the action, then go to the Build or Security Tests stage where you want to run the action.
@@ -75,31 +78,51 @@ import TabItem from '@theme/TabItem';
 
 #### Example setup
 
-This example uses the Aqua Security Trivy action to scan a container. As noted in the [GitHub Marketplace documentation](https://github.com/marketplace/actions/aqua-security-trivy#using-trivy-with-github-code-scanning), this action runs based on the following YAML definition:
+<!-- action -->
+
+This example uses the [njsscan action](https://github.com/ajinabraham/njsscan-action) to scan a container. As noted in the [Github Code Scanning SARIF upload](https://github.com/ajinabraham/njsscan-action) snippet, you can configure the  `args` value to output the scan results to a SARIF file:
 
 ```yaml
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: 'docker.io/my-organization/my-app:${{ github.sha }}'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
+name: njsscan
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  njsscan:
+    runs-on: ubuntu-latest
+    name: njsscan code scanning
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: nodejsscan scan
+      id: njsscan
+      uses: ajinabraham/njsscan-action@master
+      # ARGUMENTS THAT SPECIFY THE SARIF OUTPUT FILE
+      with:
+        args: '. --sarif --output results.sarif || true'
+    - name: Upload njsscan report
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: results.sarif
 ```
+<!-- action -->
+
 Given this, you would set up the Action step in your Harness pipeline like this. You can then set up a CustomIngest step to ingest the `trivy-results.sarif` file that gets generated.
 
 ```yaml
-      - step:
-          type: Action
-          name: trivy-sarif-demo
-          identifier: CxFlow
-          spec:
-            uses: aquasecurity/trivy-action@master
-            with:
-              image-ref: docker.io/my-organization/my-app:${{ github.sha }}
-              format: sarif
-              output: trivy-results.sarif
-          description: https://github.com/marketplace/actions/aqua-security-trivy#using-trivy-with-github-code-scanning
+- step:
+    type: Action
+    name: njsscan
+    identifier: njsscan
+    spec:
+      uses: ajinabraham/njsscan-action@master
+      # ARGUMENTS THAT SPECIFY THE SARIF OUTPUT FILE
+      with:
+        args: . --sarif --output result.sarif || true
 ```
+<!-- action -->
 
 <details><summary>YAML pipeline</summary>
 
@@ -168,7 +191,7 @@ pipeline:
   <TabItem value="Drone Plugin setup">
 ```
 
-
+<!-- plugin -->
 
 1. Open the CI or STO pipeline where you want to run the action, then go to the Build or Security Tests stage where you want to run the action.
 
@@ -213,31 +236,57 @@ pipeline:
 
 #### Example setup
 
-This example uses the Aqua Security Trivy action to scan a container. As noted in the [GitHub Marketplace documentation](https://github.com/marketplace/actions/aqua-security-trivy#using-trivy-with-github-code-scanning), this action runs based on the following YAML definition:
+<!-- plugin -->
+
+This example uses the [njsscan action](https://github.com/ajinabraham/njsscan-action) to scan a container. As noted in the [Github Code Scanning SARIF upload](https://github.com/ajinabraham/njsscan-action) snippet, you can configure the  `args` value to output the scan results to a SARIF file:
 
 ```yaml
-      - name: Run Trivy vulnerability scanner
-        uses: aquasecurity/trivy-action@master
-        with:
-          image-ref: 'docker.io/my-organization/my-app:${{ github.sha }}'
-          format: 'sarif'
-          output: 'trivy-results.sarif'
+name: njsscan
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+jobs:
+  njsscan:
+    runs-on: ubuntu-latest
+    name: njsscan code scanning
+    steps:
+    - name: Checkout the code
+      uses: actions/checkout@v2
+    - name: nodejsscan scan
+      id: njsscan
+      uses: ajinabraham/njsscan-action@master
+      # ARGUMENTS THAT SPECIFY THE SARIF OUTPUT FILE
+      with:
+        args: '. --sarif --output results.sarif || true'
+    - name: Upload njsscan report
+      uses: github/codeql-action/upload-sarif@v2
+      with:
+        sarif_file: results.sarif
 ```
 Given this, you would set up the Action step in your Harness pipeline like this. You can then set up a CustomIngest step to ingest the `trivy-results.sarif` file that gets generated.
 
+<!-- plugin -->
+
 ```yaml
-      - step:
-          type: Action
-          name: trivy-sarif-demo
-          identifier: CxFlow
-          spec:
-            uses: aquasecurity/trivy-action@master
-            with:
-              image-ref: docker.io/my-organization/my-app:${{ github.sha }}
-              format: sarif
-              output: trivy-results.sarif
-          description: https://github.com/marketplace/actions/aqua-security-trivy#using-trivy-with-github-code-scanning
+            steps:
+              - step:
+                  type: Plugin
+                  name: Plugin_1
+                  identifier: Plugin_1
+                  spec:
+                    connectorRef: dbothwelldocker
+                    image: plugins/github-actions
+                    privileged: true
+                    settings:
+                      uses: ajinabraham/njsscan-action@master
+                      # ARGUMENTS THAT SPECIFY THE SARIF OUTPUT FILE
+                      with:
+                        args: . --sarif --output result.sarif || true
 ```
+
+<!-- plugin -->
 
 <details><summary>YAML pipeline</summary>
 
@@ -264,13 +313,17 @@ pipeline:
           execution:
             steps:
               - step:
-                  type: Action
-                  name: njsscan
-                  identifier: njsscan
+                  type: Plugin
+                  name: Plugin_1
+                  identifier: Plugin_1
                   spec:
-                    uses: ajinabraham/njsscan-action@master
-                    with:
-                      args: . --sarif --output result.sarif || true
+                    connectorRef: dbothwelldocker
+                    image: plugins/github-actions
+                    privileged: true
+                    settings:
+                      uses: ajinabraham/njsscan-action@master
+                      with:
+                        args: . --sarif --output result.sarif || true
               - step:
                   type: CustomIngest
                   name: CustomIngest_1
