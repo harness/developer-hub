@@ -236,7 +236,7 @@ If you want to always commit to the same branch, and not be prompted for commit 
 
 ## Turn off syncing with Git
 
-When you turn off syncing with Git, any changes you make to flags in Harness are not committed to the flags YAML file in your Git repository, and any changes to that file in your repository are not synced with Harness, until you [turn on syncing](#turn-on-syncing-with-git) again.
+When you turn off syncing with Git, any changes you make to flags in Harness are not committed to the flags YAML file in your Git repository. Any changes to that file in your repository are not synced with Harness until you [turn on syncing](#turn-on-syncing-with-git) again.
 
 To turn off syncing with Git:
 
