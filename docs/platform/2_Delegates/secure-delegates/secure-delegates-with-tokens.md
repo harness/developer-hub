@@ -133,3 +133,32 @@ On the **Tokens** page, click **Revoke** to revoke any token.
 
 Click **Revoke**. The token is revoked. The Harness Manager will not accept connections from any Delegates using this revoked token.
 
+### Option: Rotate tokens
+
+You can rotate and store your delegate tokens in 3P secret manager and reference them as needed.
+
+:::info note
+If you rotate your delegate tokens, you must redeploy the delegate.
+::
+
+To rotate your tokens, do the following:
+
+1. Create your delegate token through the [API](https://apidocs.harness.io/tag/Delegate-Token-Resource#operation/createDelegateToken). The delegate token API returns the token value.
+2. Add the delegate token to a secret manager, such as HashiCorp Vault.
+3. When you deploy the delegate pod, reference the delegate token from the secret manager.
+
+To reference the delegate token stored in the HashiCorp Vault, do the following:
+
+* Add the below annotations in the [delegate Helm chart](https://github.com/harness/delegate-helm-chart):
+
+   ```yaml
+   vault.hashicorp.com/agent-inject: true
+                 vault.hashicorp.com/agent-inject-secret-secret1: <delegate_token>
+                 vault.hashicorp.com/agent-inject-status: injected
+                 vault.hashicorp.com/agent-inject-template-secret1:
+                   {{ with secret "<delegate_token>" }}
+                   export DELEGATE_TOKEN="{{ .Data.data.DELEGATE_TOKEN }}"
+                   {{ end }}
+                 vault.hashicorp.com/auth-config-type: iam
+                 vault.hashicorp.com/role: qa-cloudtrust-infrastructure
+```
