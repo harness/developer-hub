@@ -74,7 +74,7 @@ To check the impact of a fault on a monitored service:
 
 ## More information
 
-For more information on Harness SRM and monitored services, go to these topics to:
+For more information on Harness SRM and monitored services, go to these topics:
 
 * [Create a monitored service](/docs/service-reliability-management/monitored-service/create-monitored-service)
 * [Create your first SLO](/docs/service-reliability-management/getting-started/create-first-slo)
