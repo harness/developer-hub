@@ -33,7 +33,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "30 min",
-    link: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
+    link: "/tutorials/ci-pipelines/kubernetes-build-farm",
   },
   {
     title: "Code coverage with CodeCov",
@@ -61,7 +61,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: '9 min',
-    link: "/tutorials/ci-pipelines/build/tfc-notification",
+    link: "/tutorials/ci-pipelines/tfc-notification",
   },
 ];
 
@@ -94,7 +94,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Build a Docker Image on a Kubernetes cluster build farm.",
-    link: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
+    link: "/tutorials/ci-pipelines/kubernetes-build-farm",
     type: [docType.Documentation],
     time: "30 min",
     icon: "img/icon_ci.svg",
@@ -130,26 +130,6 @@ export const CIList: CardItem[] = [
     icon: "img/icon_ci.svg",
   },
   {
-    title: "React application",
-    module: MODULES.ci,
-    description:
-      "Build a Docker Image of a React application.",
-    link: "/tutorials/ci-pipelines/build/react",
-    type: [docType.Documentation],
-    time: "20 min",
-    icon: "img/icon_ci.svg",
-  },
-  {
-    title: "Rust application",
-    module: MODULES.ci,
-    description:
-      "Build a Docker Image of a multi-architecture Rust application.",
-    link: "/tutorials/ci-pipelines/build/rust",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-  },
-  {
     title: "Terraform Cloud notification triggers",
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
@@ -158,7 +138,7 @@ export const CIList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: '9 min',
-    link: "/tutorials/ci-pipelines/build/tfc-notification",
+    link: "/tutorials/ci-pipelines/tfc-notification",
   },
   {
     title: "Amazon ECR",

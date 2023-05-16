@@ -34,6 +34,63 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by aimurphy for branch doc-3104 on May 15 2023
+
+    {
+      from: "/tutorials/build-code/ci-react-quickstart",
+      to: "/tutorials/ci-pipelines",
+    },
+
+    {
+      from: "/tutorials/build-code/build/react",
+      to: "/tutorials/ci-pipelines",
+    },
+
+    {
+      from: "/tutorials/ci-pipelines/build/react",
+      to: "/tutorials/ci-pipelines",
+    },
+
+    {
+      from: "/tutorials/build-code/build/rust",
+      to: "/tutorials/ci-pipelines",
+    },
+
+    {
+      from: "/tutorials/build-code/ci-tutorial-rust-container",
+      to: "/tutorials/ci-pipelines",
+    },
+
+    {
+      from: "/tutorials/ci-pipelines/build/rust",
+      to: "/tutorials/ci-pipelines",
+    },
+
+    {
+      from: "/tutorials/build-code/build/kubernetes-build-farm",
+      to: "/tutorials/ci-pipelines/kubernetes-build-farm",
+    },
+
+    {
+      from: "/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra",
+      to: "/tutorials/ci-pipelines/kubernetes-build-farm",
+    },
+
+    {
+      from: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
+      to: "/tutorials/ci-pipelines/kubernetes-build-farm",
+    },
+
+    {
+      from: "/tutorials/build-code/build/tfc-notification",
+      to: "/tutorials/ci-pipelines/tfc-notification",
+    },
+
+    {
+      from: "/tutorials/ci-pipelines/build/tfc-notification",
+      to: "/tutorials/ci-pipelines/tfc-notification",
+    },
+
     // Created by aimurphy for branch ci-4876 on May 10 2023
 
     {
@@ -736,10 +793,6 @@ module.exports = {
       to: "/tutorials/ci-pipelines/build",
     },
     {
-      from: "/tutorials/build-code/build/kubernetes-build-farm",
-      to: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
-    },
-    {
       from: "/tutorials/build-code/build/nodejs",
       to: "/tutorials/ci-pipelines/build/nodejs",
     },
@@ -748,20 +801,8 @@ module.exports = {
       to: "/tutorials/ci-pipelines/build/java",
     },
     {
-      from: "/tutorials/build-code/build/react",
-      to: "/tutorials/ci-pipelines/build/react",
-    },
-    {
       from: "/tutorials/build-code/build/go",
       to: "/tutorials/ci-pipelines/build/go",
-    },
-    {
-      from: "/tutorials/build-code/build/rust",
-      to: "/tutorials/ci-pipelines/build/rust",
-    },
-    {
-      from: "/tutorials/build-code/build/tfc-notification",
-      to: "/tutorials/ci-pipelines/build/tfc-notification",
     },
     {
       from: "/tutorials/build-code/test",
@@ -1200,10 +1241,6 @@ module.exports = {
 
     // Created by ravilach for CI Tutorials Refactor, PR-1231, on Apr 5, 2023
     {
-      from: "/tutorials/build-code/ci-tutorial-kubernetes-cluster-build-infra",
-      to: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
-    },
-    {
       from: "/tutorials/build-code/ci-node-docker-quickstart",
       to: "/tutorials/ci-pipelines/build/nodejs",
     },
@@ -1232,20 +1269,12 @@ module.exports = {
       to: "/tutorials/ci-pipelines/build/go",
     },
     {
-      from: "/tutorials/build-code/ci-react-quickstart",
-      to: "/tutorials/ci-pipelines/build/react",
-    },
-    {
       from: "/tutorials/build-code/ci-tutorial-push-to-gar",
       to: "/tutorials/ci-pipelines/publish/google-gar",
     },
     {
       from: "/tutorials/build-code/ci-publish-allure-report",
       to: "/tutorials/ci-pipelines/test/allure-report",
-    },
-    {
-      from: "/tutorials/build-code/ci-tutorial-rust-container",
-      to: "/tutorials/ci-pipelines/build/rust",
     },
     {
       from: "/tutorials/build-code/ci-tutorial-codecov-test",
