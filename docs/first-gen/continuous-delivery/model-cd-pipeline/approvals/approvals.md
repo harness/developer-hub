@@ -46,7 +46,7 @@ Select **Approval Step**.
 
 Select **Harness UI** in the **Ticketing System**.
 
-When needed provide a useful description, this field is optional, where is possible to use variables to give more information to the approvals audience.
+In **Description**, enter a useful description. You can use Harness variable expressions to give more information to the approvals audience.
 
 Select one or more **User Group(s)** to notify for the approval requests.
 
