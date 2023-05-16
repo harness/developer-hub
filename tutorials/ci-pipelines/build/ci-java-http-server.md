@@ -26,14 +26,14 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 ## Run tests
 
-You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
-
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
-
 ```mdx-code-block
 <Tabs>
   <TabItem value="hosted" label="Harness cloud" default>
 ```
+
+You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
 
 ```mdx-code-block
 <Tabs>
@@ -105,6 +105,10 @@ The following example runs `mvn test` (declared in `args`), and then runs `mvn p
   </TabItem>
   <TabItem value="selfhosted" label="Self-hosted">
 ```
+
+You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
 
 ```mdx-code-block
 <Tabs>
