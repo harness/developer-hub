@@ -20,7 +20,7 @@ This lets you do the following:
 To mark a stage as failed during pipeline execution: 
 
 1. Select your pipeline, and then select **Run**.
-2. Enter runtime input if any and select **Run Pipeline**.
+2. Enter runtime input, if any, and then select **Run Pipeline**.
 3. Select **Mark Stage As Failed**.
    
    ![](./static/mark-as-failed-option.png)
