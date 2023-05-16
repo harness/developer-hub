@@ -30,7 +30,7 @@ The easiest way to set user privileges for the delegate container is to use the 
 To set container privileges in the Delegate installer, do the following:
 
 1. Go to the **Delegate Setup** page.![](./static/enable-root-user-privileges-to-add-custom-binaries-11.png)
-2. Clear or select the checkbox as follows:
+2. Clear or select the options as follows:
 * To set non-root user privileges, clear **Run delegate with root access**.
 * To set root user privileges, select **Run delegate with root access**.
 
