@@ -1,10 +1,10 @@
 ---
 title: Trigger pipelines from a third-party CI system
 description: Trigger pipelines from a non-Harness CI system.
-sidebar_position: 6
+sidebar_position: 8
 ---
 
-Harness includes a [native CI system](https://developer.harness.io/docs/category/onboard-with-ci) that can build and test code and push your artifact to any repository. You can set [triggers](https://developer.harness.io/docs/category/triggers) on Harness pipelines that execute a pipeline when a change is made in the code or artifact repository.
+Harness includes a [native CI system](https://developer.harness.io/docs/category/get-started-with-ci) that can build and test code and push your artifact to any repository. You can set [triggers](https://developer.harness.io/docs/category/triggers) on Harness pipelines that execute a pipeline when a change is made in the code or artifact repository.
 
 In some cases, you might be using a third-party CI system. You can still execute Harness pipelines when changes are made to the code or artifact repositories used by that system.
 
@@ -76,7 +76,7 @@ Make sure you have:
     curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=<your_account_identifier>&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Container&triggerIdentifier=Trigger_to_CI' -d '{"image": "library/nginx", "tag":"stable"}'
     ```
 
-    The `-H 'X-Api-Key: sample_api_key'` parameter is used to authorize custom triggers. You can use [Harness API keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) with this parameter. For more information, go to [Custom trigger authorization using API keys](#custom-trigger-authorization-using-api-keys).
+    The `-H 'X-Api-Key: sample_api_key'` parameter is used to authorize custom triggers. You can use [Harness API keys](../3_User-Management/7-add-and-manage-api-keys.md) with this parameter. For more information, go to [Custom trigger authorization using API keys](#custom-trigger-authorization-using-api-keys).
     
 
 3. Run the updated cURL command in a Terminal. 

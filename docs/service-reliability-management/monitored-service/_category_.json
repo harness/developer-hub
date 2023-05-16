@@ -1,0 +1,11 @@
+{
+   "label":"Monitored service",
+   "position": 40,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Monitored service"
+   }
+   }

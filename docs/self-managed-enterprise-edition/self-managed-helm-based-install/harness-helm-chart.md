@@ -1,7 +1,8 @@
 ---
-title: Harness Helm chart for Self-Managed Enterprise Edition
-description: The core modules and components, as well as the optional dependencies and additions, that are included in the Harness Helm chart.
-# sidebar_position: 2
+title: Helm installation requirements and included components
+sidebar_label: Requirements and included components
+description: Requirements for using Helm installation for Harness Self-Managed Enterprise Edition.
+# sidebar_position: 1
 helpdocs_topic_id: nsx1d4z86l
 helpdocs_category_id: 66qbyn7ugu
 helpdocs_is_private: false
@@ -17,13 +18,17 @@ Harness recommends Helm package manager for the installation and deployment of S
 
 The Harness Helm chart packages the core modules and components that are required to operate Harness at scale.
 
-For instructions on installing Self-Managed Enterprise Edition using Helm, see [Install Harness Self-Managed Enterprise Edition using Helm](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga).
+For instructions on installing Self-Managed Enterprise Edition using Helm, go to [Install using Helm](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-harness-self-managed-enterprise-edition-using-helm-ga).
 
 ## Requirements
 
 The following infrastructure is required to install Self-Managed Enterprise Edition using Helm.
 
-Support each node with 8 cores vCPU and a minimum of 12 GB memory.
+:::info note
+
+Support each node with 8 cores vCPU and a minimum of 32 GB memory.
+
+:::
 
 ### Production environment
 

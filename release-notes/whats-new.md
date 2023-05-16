@@ -1,46 +1,553 @@
 ---
-title: What's New
-date: 2023-03-24T10:00
+title: What's new
+date: 2023-05-10T10:00
 sidebar_position: 1
 ---
-
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 ```mdx-code-block
 import delete_project from './static/delete-project.png'
 ```
 
-Learn about the new features that are Generally Available (GA) in Harness SaaS across all Harness modules and the Harness Platform.
+Review the notes below to learn about the new features that are Generally Available (GA) in Harness NextGen SaaS across all Harness modules and the Harness Platform. For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 
-:::note
-Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
-
-Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
+:::info note
+Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
+ 
+ 
+## Latest - May 10, 2023, STO Core version 1.50.3
 
-## March 24, 2023, version 78817
+### Security Testing Orchestration 
 
-### Continuous Integration
+* You can now ingest ZAP scan results from both JSON and XML reports. For information about the ZAP XML report format, go to [Traditional XML Report](https://www.zaproxy.org/docs/desktop/addons/report-generation/report-traditional-xml/) in the ZAP documentation. (STO-5868)
 
-* [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence/) is now generally available. With Cache Intelligence, Harness automatically caches and restores common dependencies. You don't need to bring your own storage because Harness stores the cache in the Harness-hosted environment, Harness Cloud. (CI-7127)
-* [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) build infrastructure now supports **Run as User** for [Plugin](/docs/continuous-integration/ci-technical-reference/plugin-step-settings-reference) and [Run](/docs/continuous-integration/ci-technical-reference/run-step-settings) steps that are running on containers. (CI-7320)
+* The Security Tests tab now renders tables from tool-provided descriptions in the **Issue Details** panel. (STO-5857)
 
-### Service Reliability Management
+* The UI now uses consistent terminology when referring to exemptions. All references to *ignore* and *ignored* have been updated to *exempt* and *exempted*. (STO-5749)
+
+* The Security Testing Dashboard  includes a new **Target Type** filter. (STO-5732)
+
+  ![](./static/sto-std-new-filter-sto-5732.png)
+
+* The Security Tests tab now paginates results for scans that detect a lot of issues. You can set the pagination to 20, 50, or 100 issues per page. (STO-5211)
+
+* STO now supports [looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for Security Tests stages. (STO-5726)
+
+* You can now select a high-level reason when you [request an exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) for a detected issue. The **Request Exemption for Issue** dialog box includes a new **Reason** pull-down menu with a set of common reasons for exempting an issue. (STO-5730)
+
+   ![](./static/sto-exemption-reason-pulldown.gif)
+
+
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 04, 2023, version 79214
+
+##### Harness Platform
+
+- You will now receive an alert on the default settings page when there are unsaved changes, or if you leave the page. (PL-32354)
+
+##### Service Reliability Management
+
+- An icon appears on the SLO performance trend chart timeline to indicate when the error budget was reset and the amount of budget that was added. (SRM-14550)
+
+##### Continuous Delivery
+
+- Trigger artifact and manifest expressions (`<+trigger.artifact.build>` or `<+trigger.manifest.version>`) are now resolved when you rerun a pipeline that was activated by a trigger. (CDS-58192, CDS-50585)
+  
+  Here is a sample resolved YAML: 
+
+  ```
+  {
+    "status": "SUCCESS",
+    "data": {
+        "planExecutionId": "PimcPiwlQ56A2AhWogEM7A",
+        "executionYaml": "pipeline:\n  identifier: \"asda\"\n  name: \"asda\"\n  projectIdentifier: \"test\"\n  orgIdentifier: \"default\"\n  tags: {}\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      name: \"sda\"\n      description: \"\"\n      spec:\n        serviceConfig:\n          serviceRef: \"ads\"\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              variables: []\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    connectorRef: \"Test\"\n                    imagePath: \"library/nginx\"\n                    tag: \"<+trigger.artifact.build>\"\n              manifests: []\n        infrastructure:\n          environmentRef: \"wew\"\n          infrastructureDefinition:\n            type: \"KubernetesDirect\"\n            spec:\n              connectorRef: \"ad\"\n              namespace: \"asd\"\n              releaseName: \"release-<+INFRA_KEY>\"\n          allowSimultaneousDeployments: false\n        execution:\n          steps:\n          - step:\n              identifier: \"sad\"\n              type: \"ShellScript\"\n              name: \"sad\"\n              spec:\n                shell: \"Bash\"\n                onDelegate: true\n                source:\n                  type: \"Inline\"\n                  spec:\n                    script: \"echo \\\"test\\\"\"\n                environmentVariables: []\n                outputVariables: []\n                executionTarget: {}\n              timeout: \"10m\"\n          rollbackSteps: []\n      tags: {}\n      failureStrategies:\n      - onFailure:\n          errors:\n          - \"AllErrors\"\n          action:\n            type: \"StageRollback\"\n",
+        "inputYaml": "pipeline:\n  identifier: \"asda\"\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      spec:\n        serviceConfig:\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    tag: \"<+trigger.artifact.build>\"\n",
+        "resolvedYaml" "pipeline:\n  identifier: \"asda\"\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      spec:\n        serviceConfig:\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    tag: \"1.23-perl"\n",
+        "triggerPayload": {
+            "type": "ARTIFACT",
+            "headers": {},
+            "sourcetype": "CUSTOM_REPO",
+            "artifactdata": {
+                "build": "1.23-perl"
+            },
+            "version": 0
+        }
+    },
+    "metaData": null,
+    "correlationId": "1ad40479-c6ff-47e4-9722-db11c0a3ab06"
+  }
+  ```
+- When you abort a pipeline execution, you will now see a helpful warning text that explains the impact to the state of your service. (CDS-67000)
+  
+  `Warning: Abort command will not clean up any resources created during execution so far. Please mark the stage as failed if you would like to clean up and revert back to the old state.`
+- You can now merge templates with identical identifiers. (CDS-47301)
+  
+  A warning pops up when you create a new template with already existing identifiers in the same scope. You can choose to merge the new template with the existing template by selecting the **Save as new version of existing template** button in the warning.
+- When you run a pipeline, you can leave the pipeline, stage, service, and environment variable values empty in the  **Run Pipeline** form. These fields are not validated in the UI any longer. (CDS-64656, ZD-43232)
+  
+  ![](./static/run-pipeline-form.png)
+
+##### Continuous Integration
+
+* The CI Getting Started workflow now saves the pipeline remotely (in your Git repository) by default. Previously, the pipeline was stored inline (in Harness) unless you manually selected remote storage. The Getting Started workflow also automatically creates two [input sets](/docs/platform/pipelines/input-sets/) for [Git event triggers](/docs/platform/Triggers/triggering-pipelines): one for a PR trigger and one for a Push trigger. (CI-7602)
+* You can now reference [output variables produced by Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables) in pipelines that use Kubernetes cluster build infrastructures. This is an addition to previously-existing support for Harness Cloud and self-hosted Cloud provider VM build infrastructures. (CI-7491)
+* [Local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) and [Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure) build infrastructures now support pipeline- and stage-level [delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors). You can use pipeline and stage-level delegate selectors to override the platform or connector delegate. These selections are not supported for Harness Cloud or self-hosted Cloud provider VM build infrastructures. (CI-6237)
+
+
+#### April 22, 2023, version 79111
+
+##### Harness Platform
+
+- You can now configure session time-out in the UI. (PL-32258)
+  In case of inactivity, Harness logs users out of their accounts after the configured session timeout.
+
+- You can now add descriptions to pipeline and stage variables. (PIE-3336)
+
+##### Continuous Delivery
+
+- SHA support for Artifactory (CDS-58629), ECR (CDS-58304), GCR	(CDS-56531), Nexus 3 Docker (CDS-56530), ACR (CDS-56529), Github Packages	(CDS-41930)
+  
+  SHA values and labels for the artifact are now visible in the Harness service **Output** section of a pipeline execution.
+
+  <docimage path={require('./static/726cd79347c2dabba5bd47f2264f91b0b2618f872663c90048453719e87ff634.png')} width="60%" height="60%" title="Click to view full size image" />
+
+  
+  Labels are visible if the artifact manifest supports `schemaVersion1`.
+  
+  Labels can be referenced using the expression: `<+pipeline.stages.[stage Id].spec.artifacts.primary.label.get("labelKey")>`.
+  
+  Since manifests can support 2 schema versions, `schemaVersion1` and `schemaVersion2`, there could be SHA values for each schema version.
+  
+  Here are the expressions for referencing each version:
+  - SHA value of `schemaVersion1`: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA>`.
+  - SHA value of `schemaVersion2`: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2>`.
+- New Harness expression for revision number. (CDS-57826)
+  
+  You can now use the expression `<+kubernetes.release.revision>` in values.yaml, OpenShift Params, and Kustomize Patches. This will help you to:
+    - Reference the current Harness release number as part of your manifest.
+    - Reference versioned ConfigMaps and Secrets in custom resources and fields unknown by Harness.
+  
+  **Important:** Users must update their delegate to version 1.0.79100 to use the expression.
+- Deployment freeze supports quarterly recurrence.	(CDS-57792)
+  
+  You can now configure a deployment freeze with a recurrence of `n` months, where `n` can be between `2` to `11`.
+- Use any path to [Helm charts within the Helm repository](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts). (CDS-57667, ZD-41758)
+  
+  You can now specify a path to Helm charts within the Helm repository and Harness will fetch the Helm chart and its subordinate charts within that folder.
+
+  <docimage path={require('./static/70e9b1aa646408c07a6fef1ca8b6e0dfa2eef53e5f7eea3e88ac28b5a4d3e1c4.png')} width="60%" height="60%" title="Click to view full size image" />
+
+  When you deploy, the logs will include all subcharts, like this:
+
+  ```sh
+  Successfully fetched following files:
+  - Chart.yaml
+  - values.yaml
+  - charts/first-child/Chart.yaml
+  - charts/first-child/values.yaml
+  - charts/first-child/templates/deployment.yaml
+  - charts/shared-lib/Chart.yaml
+  - charts/shared-lib/templates/_service.yaml
+  - charts/shared-lib/templates/_helpers.tpl
+  - charts/shared-lib/templates/_deployment.yaml
+  - templates/_helpers.tpl
+  - README.md
+  ```
+  
+  **Important:** This change impacts existing Helm services in Harness. To use this feature, you will need to update the path to your subordinate chart(s) using `charts/`.
+- You can now see what deployment freeze failed a pipeline in the pipeline's execution history. (CDS-53781)
+  
+  We have added support to identify the associated freeze window that failed a pipeline execution. You can hover over the status of the pipeline in its execution history and the associated freeze window details are shown.
+
+  <docimage path={require('./static/eca1e7dd02fa705e9158c78f44ab49676270e4a477cc260e817c06da91bdf631.png')} width="60%" height="60%" title="Click to view full size image" />
+- Bamboo is now supported in On Artifact triggers. (CDS-51742)
+  
+  You can now use artifacts in Bamboo to initiate Triggers for your pipelines.
+
+  <docimage path={require('./static/d5512549a2cb085680c609e42aef000fec60a5dc8ac6f20ee48ec31282f6f61e.png')} width="30%" height="30%" title="Click to view full size image" />
+- Repository format is now supported for Artifactory artifact source templates. (CDS-59092)
+
+  <docimage path={require('./static/61a6e0b480e05303bfc5926bec326c1555eff5ae087014c0b6a7e00a1fa94ec2.png')} width="60%" height="60%" title="Click to view full size image" />
+
+##### Continuous Integration
+
+* The CI Getting Started workflow leads you through creating an SCM connector and a pipeline. This workflow has been improved to generate a pipeline based on the repository you select. (CI-7603)
+* The **Run as User** setting is now available for [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings), [Run Tests steps](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings), and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference) in stages that use [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). This setting allows you to specify a user ID to use for processes running in containerized steps. (CI-7493)
+* Added validations for pipelines that use the [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) macOS build infrastructure, which doesn't support containerized steps. The new validations produce an error message if any applicable steps, such as [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings), have the **Image** and either **Container Registry** or **Connector** fields populated. (CI-7221)
+
+##### Service Reliability Management
+
+- Added new advanced fields for consecutive error budges in SLO. These fields are optional. (SRM-14507)
+
+- Removed the mandatory check for the presence of Tier in the AppDynamics complete metric path. (SRM-14463)
+
+##### Harness Delegate 
+
+- Added the following metrics for immutable delegates that you can scrape via Prometheus: (DEL-5363)
+
+    - io_harness_delegate_connected
+    - io_harness_delegate_disconnected 
+
+- Upgraded the following libraries: (DEL-6069)
+
+    - org.yaml:snakeyaml from 1.33 -> 2.0
+    - com.fasterxml.jackson.core:jackson-annotations from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.core:jackson-core from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-cbor from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-smile from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-xml from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.dataformat:jackson-dataformat-yaml from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-guava from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-jdk8 from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-joda from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.datatype:jackson-datatype-jsr310 from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.jaxrs:jackson-jaxrs-base from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.jaxrs:jackson-jaxrs-json-provider from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.jaxrs:jackson-jaxrs-yaml-provider from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-afterburner from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-jaxb-annotations from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-jsonSchema from 2.13.4 -> 2.14.2
+    - com.fasterxml.jackson.module:jackson-module-parameter-names from 2.13.4 -> 2.14.2
+    - io.kubernetes:client-java-api from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java-extended from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java-proto from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java from 16.0.0 -> 18.0.0
+    - io.kubernetes:client-java-api-fluent from 16.0.0 -> 18.0.0
+    - org.springframework.boot:spring-boot-autoconfigure from 2.1.6.RELEASE -> 2.7.10
+    - org.springframework.boot:spring-boot-loader from 2.4.5 -> 2.7.10
+    - org.springframework.boot:spring-boot-starter-batch from 2.1.6.RELEASE -> 2.7.10
+    - org.springframework.boot:spring-boot from 2.3.2.RELEASE -> 2.7.10
+
+- Added APIs to enable auto upgrading with custom delegate images. (DEL-6183)
+
+    - `SupportedDelegateVersion` returns the maximum delegate version number to install.
+    - `overrideDelegateImageTag` changes the tag the upgrader uses to upgrade delegates when auto upgrade is on.
+
+- Upgraded the following libraries: (DEL-6198)
+
+    - org.springframework:spring-aop from 5.3.23 -> 5.3.26
+    - org.springframework:spring-beans from 5.3.25 -> 5.3.26
+    - org.springframework:spring-context from 5.3.25 -> 5.3.26
+    - org.springframework:spring-core from 5.3.25 -> 5.3.26
+    - org.springframework:spring-expression from 5.3.25 -> 5.3.26
+    - org.springframework:spring-jcl from 5.3.25 -> 5.3.26
+    - org.springframework:spring-messaging from 5.3.25 -> 5.3.26
+    - org.springframework:spring-test from 5.3.25 -> 5.3.26
+    - org.springframework:spring-tx from 5.3.25 -> 5.3.26
+    - org.springframework:spring-web from 5.3.25 -> 5.3.26
+
+#### April 19, 2023, version 79104
+
+##### Cloud Cost Management
+
+- Recommendations enhancement (CCM-11769)
+
+  A new filter has been added to recommendations, which allows the selection of the age of the recommendations. This filter allows you to specify how many days old recommendations should be included in the results. 
+
+#### April 10, 2023, version 79015
+
+##### Feature Flags
+
+* The UI now provides improved RBAC messaging when trying to toggle or edit a flag in an environment without the correct permissions. (FFM-7234)
+
+##### Harness Platform
+
+- You can now navigate to the parent organization by clicking its name on a project details page. (PL-32182, ZD-41785)
+
+- Harness Git Experience now supports GitLab as a code repository. You can now select a Harness connector with any of the following Git providers to save entities in a repository: (PIE-9139)
+  * Github
+  * Bitbucket
+  * AzureRepo 
+  * Gitlab 
+
+- You can now open the modal in the template studio to see all applicable metadata such as a description, tags, connector, and repository name. (PIE-8692)
+
+##### Continuous Integration
+
+* Your CI pipelines can automatically update Jira issues when builds and deployments occur. For more information, go to [Explore plugins](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins). (CI-7222)
+* The following features are now generally available. These were enabled by default for all users, but they were behind features flags until they were deemed stable. (CI-6537)
+  * `CI_LE_STATUS_REST_ENABLED`: All CI steps send status updates to the [Harness Manager](/docs/getting-started/harness-platform-architecture#harness-platform-components) directly by HTTP rather than through a Delegate.
+  * `CI_DISABLE_GIT_SAFEDIR`: To facilitate `git config` operations, [Run](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) and [Run Tests](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings) steps automatically run a [Git safe.directory](https://git-scm.com/docs/git-config#Documentation/git-config.txt-safedirectory) script.
+
+##### Service Reliability Management
+
+* Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
+
+##### Continuous Delivery
+
+- The **Manage Services** tab has been removed from the services dashboard page. (CDS-57974)
+  
+  Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/) apply to a single Services page only.
+- The [Shell Script step](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts) input and output variables are now optional. (CDS-57766, CDS-56448)
+  
+  Input and output variables were mandatory, but now you can choose whether to fill in values. This allows you more flexibility when modeling your pipeline.
+  Here's an example where the script declares two variables but one is set as a runtime input and one is empty.
+
+  ![picture 66](static/ecc637c511be5850e704bf1db61db5cbda37d8a10ad37eb3490a05570a0b5ece.png)
+- Tanzu Application Services (TAS) deployments now support additional artifact sources: Azure Artifacts, Bamboo, and GCS. (CDS-57681)
+  
+  TAS deployments now support Artifactory, Nexus, Bamboo, Amazon S3, Google Container Registry (GCR), Google Cloud Storage (GCS), Google Artifact Registry, AWS Elastic Container Registry (ECR), Azure Container Registry (ACR), Azure Artifacts, GitHub Package Registry, custom registries, and any Docker Registry such as Docker Hub.
+
+  ![picture 67](static/162273825052b81df3a86e5b649c38bdcf12f9175bd60cb7db872d223c2635c5.png)
+- The **Retry** timeout failure strategy is now supported in [TAS steps](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart) App Setup, App Resize, and Swap Routes. (CDS-55117)
+  
+  If you set the [failure strategy](https://developer.harness.io/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/) on these Tanzu Application Services (TAS) steps, you can now select **Retry** for **Timeout Failures**.
+
+  <docimage path={require('./static/e467e7de04d6d257e1871fad7181b65a39b7712b68826b84b7c79d849b411f04.png')} width="60%" height="60%" title="Click to view full size image" />
+
+- View the freeze windows that impact a pipeline from the **Pipeline Executions** page. (CDS-53781)
+  
+  You can now select **Associated Freeze Window Details** from the more options setting (⋮) on the **Pipeline Executions** page. Selecting this option will take you to the related freeze windows that apply to the pipeline execution.
+- Helm Chart Version fetch is added to **Manifest Details** form. (CDS-53220)
+  
+  You can now select the Helm Chart name in the **Manifest Details** form of the service and get the list of chart versions.
+  
+  ![picture 72](static/f01d849d1372a8d1c67dcd7532d2a3d58562fb72453328008eb617ae5df0b127.png)
+
+  This only works for HTTP Helm or Git-based Helm Charts.
+- Harness recommends that you use the `kubelogin` auth plugin to authenticate the Google Kubernetes Engine cluster with Kubernetes version 1.22 or later. (CDS-52514)
+  
+  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster logins. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For Harness Azure cloud providers connecting to AKS with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
+
+  The Harness Google Cloud cloud provider (connecting to GKE) supports two authentication types. For each authentication type, the following dependencies must be installed on your Harness delegate. It they are missing, Harness will follow the old auth provider format.
+
+  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary.
+  * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
+- You can now trigger a pipeline when there are changes to an artifact in Bamboo. (CDS-51742)
+  
+  [On new artifact](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/) triggers are a simple way to automate deployments for new builds. On new artifact triggers simply listen to a Bamboo registry where one or more artifacts in your pipeline are hosted. Every time a new image is pushed to your Bamboo account, a CD pipeline is triggered that deploys the image automatically.
+
+  <docimage path={require('./static/6a9869b8714c6ef7316fcdc98fd5bda65f0758f5ed84a4991c4d7f3007dc5372.png')} width="60%" height="60%" title="Click to view full size image" />
+- ACR in Azure GovCloud is supported in the Docker Registry connector. (CDS-57777)
+  
+  You can now use `.io` and `.us` domains.
+
+  ![picture 73](static/40962ce702cb34f682116d48237a0b3a99d68d840ef0f6e39e4b260b79fba3dc.png)
+
+#### April 05, 2023, version 79001
+
+##### Cloud Cost Management
+
+* Workload recommendations enhancement. (CCM-9161)(Zendesk Ticket ID 34658)
+
+  Introduced support for 100th percentile in workload recommendations.  Recommendations will be displayed for 100% usage of workloads.
+
+#### March 31, 2023, version 78914
+
+##### Continuous Integration
+
+* When you [use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
+* Added a [codebase expression](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference) for commit messages: `<+codebase.commitMessage>`. (CI-7222)
+
+##### Harness Platform
+
+- The favicon now dynamically changes based on pipeline execution status on the dashboard's execution view. (PL-31520)
+
+##### Continuous Delivery
+
+- Harness supports manually adding service or environment [runtime inputs](https://developer.harness.io/docs/platform/references/runtime-inputs/) in the pipeline YAML. (CDS-54249)
+
+  You can now manually add service or environment runtime input expressions in the pipeline YAML. The values added to the YAML are reflected on the Harness UI. 
+  
+  Here's an example of the YAML:
+
+  ```yaml
+  ...
+           service:
+            serviceRef: CDS54249
+            serviceInputs:
+              serviceDefinition:
+                type: Kubernetes
+                spec:
+                  manifests:
+                    - manifest:
+                        identifier: foo
+                        type: K8sManifest
+                        spec:
+                          store:
+                            type: Github
+                            spec:
+                              connectorRef: <+input>
+                              repoName: <+input>
+                              branch: <+input>
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+
+- The [Jira Update](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages) step now supports modifying the issue type. (CDS-54027)
+
+  When you update a Jira issue using the Jira Update step, you can now modify the issue type by selecting the desired one from the drop-down list. For example, you can change a Story issue type to a Task. 
+
+  ![](static/jira-update-step.png)
+
+  The Issue Key is used to automatically fetch additional (optional) fields in the Jira Update step.
+  
+  ![](static/add-jira-fields.png)
+  
+- You can now select specific services and environments at an account or organization level when creating a deployment freeze window. (CDS-54222, CDS-53783)
+
+  When creating a deployment freeze window, select specific services and environments at an account or organization level using the **Add Rule** option in the **Coverage** tab. 
+
+  ![](static/freeze-deployments-src-env.png)
+
+  * At the account level freeze window, you can access account level services and environments only.
+  * At the organization level freeze window, you can access account and organization level services and environments.
+  * At the project level freeze window, you can access account, organization, and project level services and environments.
+  
+  For more information, go to [freeze deployments](/docs/continuous-delivery/manage-deployments/deployment-freeze).
+- Harness recommends that you use the `kubelogin` auth plugin to authenticate the Azure Kubernetes Service (AKS) cluster with Kubernetes version 1.22 or later. (CDS-52513)
+  
+  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster logins. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For Harness Azure cloud providers connecting to AKS with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
+
+  The Harness Azure cloud provider (connecting to AKS) supports four authentication types. For each authentication type, the following dependencies must be installed on your Harness delegate. It they are missing, Harness will follow the old auth provider format.
+
+  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary.
+  * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
+  * `MANAGED_IDENTITY_SYSTEM_ASSIGNED`: No need to add any dependency.
+  * `MANAGED_IDENTITY_USER_ASSIGNED`: No need to add any dependency.
+- A **RouteMapping** step is enabled for [Tanzu Application Services (TAS) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart) to enable map and unmap routes. (CDS-50535)
+
+  In the **Execution** tab of the TAS pipeline, you can now add a **Route Mapping** step for any execution strategy to configure route mapping or unmapping. 
+
+  ![](static/route-mapping-tas.png)
+
+  The parameters of the **Route Mapping** step are: 
+    * **Name** - Deployment step name. For example, Map Route or Unmap Route.
+    * **Timeout** - How long you want the Harness delegate to wait for the TAS cloud to respond to API requests before timing out and initiating the failure strategy.
+    * **Mapping Type** - Select **Map Route** or **UnMap Route** to map or unmap routes respectively. 
+    * **App Name** - Enter the application name.
+    * **Routes** - Enter the routes you want to map or unmap to this deployment. 
+     
+  ![](static/route-mapping.png)
+
+- You can now see what pipelines are using an Infrastructure Definition. (CDS-46777)
+  
+  The **Referenced By** tab in the **Environments** page now includes the pipelines that are using the infrastructure definitions in the environment. **Referenced By** now shows all pipelines that use the environment and each infrastructure definition individually.
+  
+  ![](static/referenced-by-tab.png)
+
+#### March 30, 2023
+
+##### Security Testing Orchestration, version 1.40.2
+
+* The Snyk integration has been updated. Orchestrated Snyk scans now upload results to the external Snyk portal by default. (STO-5607)
+
+* This release includes the following enhancements to the [Jira integration](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations):
+   * After you create a new ticket, **Issue Details** replaces the **Create Ticket** button with a link to the new ticket and the ticket status. (STO-5518)
+
+     Before:
+
+     ![](./static/sto-jira-ticket-create-BEFORE.png)
+
+     After:
+
+     ![](./static/sto-jira-ticket-create-AFTER.png)
+
+   * The External Tickets page now automatically populates the **Default Project Name** and **Default Project Type** menus based on the selected ticket-provider connector. (STO-5492)
+
+
+#### March 24, 2023, version 78817
+
+##### Continuous Integration
+
+* [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) is now generally available. With Cache Intelligence, Harness automatically caches and restores common dependencies. You don't need to bring your own storage because Harness stores the cache in the Harness-hosted environment, Harness Cloud. (CI-7127)
+* [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) build infrastructure now supports **Run as User** for [Plugin](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference) and [Run](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) steps that are running on containers. (CI-7320)
+
+##### Service Reliability Management
 
 - When you try editing an existing SLO, you will see the **Tags (optional)** field autopopulated even if no value was entered while creating the SLO. Harness uses the selected SLI type as value to autopopulate the **Tags (optional)** field. (SRM-14121)
   
 - There is a new user interface (UI) for Elasticsearch health source configuration. This update is designed to improve the overall user experience and make it easier to configure Elasticsearch health sources. (SRM-14180)
 
-### Harness Platform
+##### Harness Platform
 
 - You can now add specific service accounts to your resource group. (PL-31867)
   
   By doing this, you can prevent accidental or deliberate misuse of API keys by restricting who can generate them from which service accounts.
 
 - You can now enter usernames as a comma separated string while adding users in **Users(name or email)**. (PL-29630)
+
+##### Continuous Delivery
+
+- [Azure Repo](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo) is now supported as a manifest repo for Amazon Elastic Container Service (ECS) and Serverless.com Framework Lambda deployments. (CDS-54961)
+
+  When creating Amazon ECS or Serverless.com Framework Lambda deployment pipelines, you can now use Azure Repo as a manifest repo in the service definition.
   
+- Harness now supports template input APIs. (CDS-55694)
+  
+  You can now use the `/templateInputs/[templateIdentifier]` API to get template inputs using the `getTemplateInputSetYaml` query parameter when creating a [pipeline template](https://developer.harness.io/docs/platform/Templates/create-pipeline-template).
+  
+  Here is a sample template: 
+  
+  ```yaml
+  template:
+  name: my_template
+  identifier: eqweqw
+  versionLabel: v1
+  type: StepGroup
+  projectIdentifier: projtest
+  orgIdentifier: default
+  tags: {}
+  spec:
+    stageType: Deployment
+    steps:
+      - step:
+          name: my_template
+          identifier: my_template
+          template:
+            templateRef: account.same_name
+            versionLabel: v1
+    delegateSelectors: <+input>
 
-## March 15, 2023, version 78712
+- Harness supports filtering Docker artifact tags based on regex. (CDS-53644)
+  
+  You can now filter Docker artifact tags based on regex when using runtime inputs during pipeline execution. 
 
-### Harness Delegate
+  ![](static/tag-regex.png)
+
+- You can now provide an already created task definition ARN during ECS service configuration in Harness. (CDS-50112)
+  
+  The task definition ARN points to an existing task created and available in the AWS cluster with the required definition. The task definition will be fetched using the task ARN provided and added to the ECS service configuration provided in the Harness ECS service **Service Definition**.
+  
+  During deployment, the required task is deployed with the desired count provided in the **Service Definition**. 
+
+  Go to [ECS deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/ecs-deployment-tutorial) for more information.
+
+- You can now view the ServiceNow Active Directory Federation Services (ADFS) and Jira Personal Access Token (PAT) in the **Credentials** section of the **Connectors** page. (CDS-55670)
+  
+  ![](static/connector-credentials.png)
+  
+#### March 21, 2023, version 78903
+
+##### Cloud Cost Management
+
+Enabled audit trail for budget groups. (CCM-11387)
+
+  With this enhancement, you can track all CRUD operations such as Create, Delete, and Update related to budget groups.
+
+* Display the AWS account ID and name on the **Recommendations** page. (CCM-11666)
+
+  The AWS Account ID has been added to the ECS Services on the Recommendations list page.
+
+* Cost category enhancement (CCM-10580)
+
+  Introduced support to allocate the cost of shared cost buckets by a fixed percentage among each cost bucket. A new user interface has been developed. 
+  
+    ![](./static/cost-category-builder-2.png)
+
+  
+  For more information, go to [Use Cost Categories](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-cost-categories/use-ccm-cost-categories).
+
+#### March 15, 2023, version 78712
+
+##### Harness Delegate
 
 - Integrated **Logs** API in the **Executed Details** page where the delegate task ID is available. (DEL-6035)
 
@@ -50,26 +557,22 @@ Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS r
 
   When you create a delegate token through APIs, you can provide an optional parameter `revokeAfter`. This is the epoch time in milliseconds after which the token is marked as revoked. There can be a delay of up to one hour from when the epoch value is provided to when the token is revoked. 
 
-### Continuous Integration
+##### Continuous Integration
 
-* The [Base Image Connector setting](/docs/continuous-integration/ci-technical-reference/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported DockerHub registries. (CI-7153, CI-7091, ZD-40319)
+* The [Base Image Connector setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported Docker Hub registries. (CI-7153, CI-7091, ZD-40319)
 * You can now call pipeline-level variables in steps as environment variables. This is an extension of existing functionality that allows you to call stage-level variables in steps as environment variables. (CI-6709, ZD-39203)
 * When configuring [SCM connectors](/docs/category/code-repo-connectors):
   * Failed connection tests now return more detailed error messages. (CI-7089)
   * The placeholder text in the **Repository URL** field shows a complete repo URL example. (CI-5750)
 
-### Continuous Delivery
+##### Continuous Delivery
 
-- The [Jira Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages) step now supports updating the issue type. (CDS-53876)
+- The [Jira Update](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages) step now supports updating the issue type. (CDS-53876)
 
   When you update a Jira issue using the Jira Update step, you can now update the issue type. For example, if the issue you are updating is a Story, you can update it to a Task.
 
   To update an issue type, add a new field named `Issue Type` and mention the new type in its **Value**.
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 ```mdx-code-block
 <Tabs>
   <TabItem value="YAML" label="YAML" default>
@@ -106,7 +609,12 @@ import TabItem from '@theme/TabItem';
   </TabItem>
 </Tabs>
 ```
-### Harness Platform
+
+- The **Resize Strategy** field in the **Canary App Setup** step of a [Tanzu Application Services (TAS, formerly PCF) deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart) can be added as runtime input when using the canary deployment strategy. (CDS-53201)
+  
+  ![](static/canary-app-set-up-resize.png)
+
+##### Harness Platform
 
 - The Harness UI now supports editing the email domain when creating a Service Account. Previously, the email domain was auto-generated and there was no option to edit it. (PL-31769)
   
@@ -124,7 +632,7 @@ import TabItem from '@theme/TabItem';
 
 - Template expressions now support `when` conditions. (PIE-8762)
 
-### Service Reliability Management
+##### Service Reliability Management
 
 - Metrics graphs are now added to the **Create SLO** screen. (SRM-14025)  
     
@@ -134,9 +642,9 @@ import TabItem from '@theme/TabItem';
   
   ![Metrics graph in Create SLO screen](./static/srm-rn-787-metricgraph.png)
 
-## March 14, 2023
+#### March 14, 2023
 
-### Security Testing Orchestration
+##### Security Testing Orchestration
 
 This release includes a set of new scanner-specific steps (step palettes) for Aqua Trivy, Bandit, SonarQube, and other popular scanners. These steps greatly simplify the process of setting up scans in your pipelines. Previously, the workflow for all scanners was to enter a set of hard-coded key and value strings in a Security step. These new steps have simplified user-friendly UIs that include only the options relevant to the specific scanner, mode, and target.
 
@@ -154,9 +662,9 @@ The following security steps are now generally available:
 * [Zed Attack Proxy (ZAP)](/docs/security-testing-orchestration/sto-techref-category/zap-scanner-reference) (STO-5058)
 
 
-## March 13, 2023
+#### March 13, 2023
 
-### Cloud Cost Management
+##### Cloud Cost Management
 
   Cost Category enhancements (CCM-10280)
   
@@ -165,15 +673,15 @@ The following security steps are now generally available:
   - If the **Cost Category** is `NULL`, it indicates that the cost buckets are not considered in the perspective. `Unattributed` is taken into account.
   - Previously, all shared cost buckets were displayed as `No Groupby`. Now, when you apply a GroupBy option other than the cost category, the cost of the rules present in the shared cost bucket are displayed in a separate entity based on the GroupBy selection you have made. However, it is important to note that this change will be effective only if you have incorporated cost category with shared buckets in perspective rules.
 
-## March 9, 2023
+#### March 9, 2023
 
-### Security Testing Orchestration
+##### Security Testing Orchestration
 
-* The new [Jira integration](/docs/security-testing-orchestration/use-sto/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, the Issue Details pane now shows the ticket status along with the number. (STO-5491)
+* The new [Jira integration](/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/jira-integrations) has been enhanced. If an issue has an associated Jira ticket, the Issue Details pane now shows the ticket status along with the number. (STO-5491)
 
-## March 8, 2023, version 78619
+#### March 8, 2023, version 78619
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - The YAML schema for the Jira connector has been migrated to a new version that encapsulates the authentication details in a new `auth` object with type `UsernamePassword`. This migration enables Harness to support different authentication types in the Jira connector. 
 
@@ -220,7 +728,7 @@ The new fields override the previously used `username` and `passwordRef` authent
  
 These changes are backward incompatible. Therefore, you must also update the Terraform provider for creating a Jira connector to the latest version (version 0.14.12) so that these new fields are provided. You also need to provide these new fields in API calls that create or update a Jira connector.
 
-### Harness Platform
+##### Harness Platform
 
 - Sorting functionality is available on the triggers listing page. (PL-31530)
 
@@ -244,7 +752,7 @@ These changes are backward incompatible. Therefore, you must also update the Ter
   
 - The feature flag `FF_ALLOW_OPTIONAL_VARIABLE` now lets you make runtime variables optional in pipelines and stages. (PIE-8209)
 
-### Harness Delegate
+##### Harness Delegate
 
 - The delegate installation UI experience is now updated with a new installation method: the Terraform Helm provider. Also, the installation experience has been enhanced for the existing methods (Helm chart, Kubernetes manifest, and Docker). This new experience is more developer friendly. For example, it enables cutting and pasting of relevant commands. You can also automate the commands and use new values when necessary. 
 
@@ -261,9 +769,9 @@ These changes are backward incompatible. Therefore, you must also update the Ter
 
  This move further enhances security because the secrets manager configuration no longer goes outside of the Harness Manager's pod.
  
-## March 2, 2023
+#### March 2, 2023
 
-### Security Testing Orchestration
+##### Security Testing Orchestration
 
 - The Twistlock integration has been upgraded to use version 22.12.582. (STO-5575)
 - The Brakeman, Nikto, and Nmap scanner integrations now enable you to customize scans by passing CLI arguments to the scanner via the `tool_args` setting. (STO-5465)
@@ -281,20 +789,20 @@ These changes are backward incompatible. Therefore, you must also update the Ter
 ![Security Testing Dashboard -- filters and Refresh button](static/sto-dashboard-with-new-filters.png)
 
 
-## March 1, 2023
+#### March 1, 2023
 
-### Cloud Cost Management
+##### Cloud Cost Management
 
 * AutoStopping Proxy for HTTPS and TCP connections.
 
- Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. For more information, go to [Add load balancers](https://developer.harness.io/docs/category/add-load-balancer-for-autostopping-rules) and [Create AutoStopping rules](https://developer.harness.io/docs/category/create-autostopping-rules).
+ Harness CCM introduces **AutoStopping Proxy** to support AutoStopping for HTTPS and TCP connections. For more information, go to [Add load balancers](https://developer.harness.io/docs/category/add-load-balancers-for-autostopping-rules) and [Create AutoStopping rules](https://developer.harness.io/docs/category/create-autostopping-rules).
 
 * Introducing support for adding more than one CCM GCP connector when you have two or more billing export tables with different billing account IDs in the same dataset. (CCM-11244)
 * Introducing support for assigning a custom static port as the source port in the port configuration of the TCP traffic-based AutoStopping rule. (CCM-11264)
 
-## February 23, 2023, version 78507
+#### February 23, 2023, version 78507
 
-### Harness Platform
+##### Harness Platform
 
 - The new delegate installation wizard is now generally available. (PL-31305)
   
@@ -324,35 +832,35 @@ These changes are backward incompatible. Therefore, you must also update the Ter
 
 - You can now change stages without losing the values you enter in the **Run Pipeline** form. (PIE-4663)
 
-### Continuous Integration
+##### Continuous Integration
 
-In addition to fixed values and runtime inputs, you can now use [expressions](/docs/platform/References/runtime-inputs#expressions) for the **Repository Name** in your pipelines' input sets, triggers, and codebase configuration settings. This is useful for pipelines that you use with multiple repositories. (CI-6657, ZD-38657)
+In addition to fixed values and runtime inputs, you can now use [expressions](/docs/platform/references/runtime-inputs) for the **Repository Name** in your pipelines' input sets, triggers, and codebase configuration settings. This is useful for pipelines that you use with multiple repositories. (CI-6657, ZD-38657)
 
 ![The CI pipeline codebase configuration settings window.](static/ci-pipeline-codebase-reponame-exp.png)
 
-## February 15, 2023, version 78421
+#### February 15, 2023, version 78421
 
-### Continuous Integration
+##### Continuous Integration
 
 * Microsoft Windows (amd64) is now a supported [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) build infrastructure option. (CI-5455)
-* **Python** is now available as a built-in **Shell** option for [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings). (CI-6692)
-* [Run steps](/docs/continuous-integration/ci-technical-reference/run-step-settings) can now reference images in GCR through [GCP connectors](/docs/platform/Connectors/connect-to-google-cloud-platform-gcp) that use inherited credentials. (CI-5758, ZD-38986)
+* **Python** is now available as a built-in **Shell** option for [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings). (CI-6692)
+* [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) can now reference images in GCR through [GCP connectors](/docs/platform/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp) that use inherited credentials. (CI-5758, ZD-38986)
   * GCP connectors are authenticated through either a GCP service account key or by inheriting credentials from the Harness delegate running in GCP. This change improves how you can use GCP connectors with inherited credentials in your pipelines.
   * Previously, if you wanted a Run step to call an image in GRC, the GCP connector attached to your Run step had to use service account key authentication. Now, the GCP connector can use either authentication method.
-* Use [Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) to configure service dependencies. (CI-5580)
+* Use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to configure service dependencies. (CI-5580)
   * The Background step allows for better control and configuration of services than the now-deprecated Configure Service Dependency step.
   * Pipelines with Configure Service Dependency steps remain backwards compatible, but this step is not available for new pipelines.
   * Replace Configure Service Dependency steps with Background steps to take advantage of the more robust control and configuration option.
-* [Pipeline execution status links](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds) in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
+* [Pipeline execution status links](/docs/continuous-integration/use-ci/viewing-builds) in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
 * Improved handling of Azure repo URLs in [Git webhook pipeline triggers](/docs/platform/triggers/triggering-pipelines). (CI-5720)
 
-### Delegate version 78306
+##### Delegate version 78306
 
 This release introduces the following new features and enhancements:
 
 - Added the `helm repo update` command to the delegate installer. The command is included in the instructions that apply the delegate manifest. This change reduces the chance of retrieving the wrong file from the repository. (DEL-5540)
 
-### Harness Platform
+##### Harness Platform
 
 - The Redisson client library has been upgraded to version 3.17.7 across all services for enhanced performance and bug resolution. (PL-31136)
   This update will not affect any business operations.
@@ -383,9 +891,9 @@ This release introduces the following new features and enhancements:
 
   - Deployment list page: This is the default selection page. (PIE-7625)
 
-## February 6, 2023, version 78321
+#### February 6, 2023, version 78321
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - Active Directory Federation Services (ADFS) is now supported for ServiceNow authentication. (CDS-49406, CDS-49229)
   
@@ -393,12 +901,12 @@ This release introduces the following new features and enhancements:
 
   ![ADFS](static/9460e1a9c71864311b8a7d0ef1e1508bb6616649161bcf2cf932c9f4442a51d6.png)
 
-### Continuous Integration
+##### Continuous Integration
 
 - Linux ARM is now supported in [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) build infrastructures. (CI-5787)
 - The Harness UI now shows a detailed warning when a CI build uses unsupported versions of any CI build images. (CI-6721)
 
-### Harness Platform
+##### Harness Platform
 
 - The pages in app.harness.io autofocus the search input box by default. (PL-30656)
   
@@ -407,7 +915,7 @@ This release introduces the following new features and enhancements:
 - Entity names can now include the `/` character. (PL-29929)
 - [Looping strategies](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/), including matrix and parallelism strategies, are no longer behind a feature flag. (PIE-5010)
 
-### Security Testing Orchestration
+##### Security Testing Orchestration
 
 * You can now ingest results from a specific Checkmarx scan. This option is useful for ensuring that a pipeline ingests the scan triggered by a specific event. Add the setting `product_scan_id` = `MY_SCAN_ID` to the Checkmarx step. This overrides the default behavior, which is to ingest results for the most recent scan. (STO-5424)	
 
@@ -417,22 +925,22 @@ This release introduces the following new features and enhancements:
 
 * To make the Issue Details pane easier to navigate, Raw Details JSON data is now collapsed by default. (STO-5398)	
 
-## February 3, 2023
+#### February 3, 2023
 
-### Security Testing Orchestration
+##### Security Testing Orchestration
 
 * The Issue Details pane now shows the message “No recommendations are available at this time” when the scan tool doesn't return remediation steps for a specific issue. (STO-5380)
 
-## January 29, 2023
+#### January 29, 2023
 
-### Continuous Integration
+##### Continuous Integration
 
 - CI pipelines now support workflows that can run with some runtime inputs undefined. Previously a pipeline would fail if any runtime input was undefined for any field such as an environment variable, label, build argument, or port binding. (CI-5116 , ZD-33893, ZD-34255)
 
 
-## January 17, 2023
+#### January 17, 2023
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - YAML schema validation for environments. (CDS-48947)
   
@@ -449,7 +957,7 @@ This release introduces the following new features and enhancements:
   
   Hover over the error message to see the full message.
 
-### Continuous Integration
+##### Continuous Integration
 
 * This release includes two new CI steps for integrating your Harness CI pipelines with GitHub Actions and Bitrise. The following steps are available in Harness Cloud build infrastructures only. 
    - An Actions step to run GitHub Actions.
@@ -471,20 +979,20 @@ infrastructure:
       - xyz.com
 ```
   
-### Harness Platform
+##### Harness Platform
 
 - A dedicated release notes page was introduced for Harness Delegate. You can find the delegate release notes at [Delegate](/release-notes/delegate).
 
-## January 15, 2023		
+#### January 15, 2023		
 
-### Security Testing Orchestration
+##### Security Testing Orchestration
 
 * Aqua Trivy scans now support a `tool_args` field. You can use this field to run the plugin with specific command-line arguments. To run an offline scan, for example, `specify tool_args` = `---offline-scan`. (STO-5388)	
 
 
-## January 10, 2023, version 78105
+#### January 10, 2023, version 78105
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - A [failure strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) is now mandatory for all Deploy stages. (CDS-48951)  
   
@@ -500,7 +1008,7 @@ infrastructure:
   If a remote template is created in a non-default or feature branch, Harness fetches the template details from the created branch and displays them on the template studio/listing page. You no longer need to manually select the correct branch.
 
   No action required by users.
-- Absolute paths for Native Helm charts [Custom Remote Manifest](/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) are now supported. (CDS-47647, RN-37501)
+- Absolute paths for Native Helm charts [Custom Remote Manifest](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) are now supported. (CDS-47647, RN-37501)
   
   Previously, Harness CD looked for a path relative to the Harness working directory, which is a temporary directory that Harness creates. Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`. For example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
 
@@ -508,7 +1016,7 @@ infrastructure:
 
   No action required by users.
 
-### Harness Platform
+##### Harness Platform
 
 - Secrets and connectors now have a character limit of 128 for the **Name** and **ID** fields. (PL-29887)
   
@@ -520,24 +1028,28 @@ infrastructure:
 
   The repository is being deprecated. Updates to the chart will not be made to [https://app.harness.io/storage/harness-download/delegate-helm-chart/](https://app.harness.io/storage/harness-download/delegate-helm-chart/) and will not be available from that location. To ensure retrieval of the most recent Helm chart, update your repository references to [https://app.harness.io/storage/harness-download/harness-helm-charts/](https://app.harness.io/storage/harness-download/harness-helm-charts/).
   
-## January 8, 2023		
+#### January 8, 2023		
 
-### Security Testing Orchestration
+##### Security Testing Orchestration
 
 * Checkmarx scans now support a `tool_args` field. You can use this field to run the Checkmarx plugin with specific command-line arguments. To run an incremental scan, for example, `specify tool_args` = `-incremental`. (STO-5041)	
 
 * STO now supports orchestrated scans using [Grype](/docs/security-testing-orchestration/sto-techref-category/grype-scanner-reference). (STO-5161)	
 
-## January 1, 2023	
+#### January 1, 2023	
 
-### Security Testing Orchestration
+##### Security Testing Orchestration
 
 * The Issues Details pane has been revised to make it easier to navigate. Raw JSON data now appears at the bottom of each occurrence and is collapsed by default. (STO-4839)	
 
+</details>
 
-## December 22, 2022, version 77908
+<details>
+<summary>2022 releases</summary>
 
-### Harness Platform
+#### December 22, 2022, version 77908
+
+##### Harness Platform
 
 -   You can now get the service provider configuration, schema, and a list of all the supported resource types corresponding to SCIM applications through API. (PL-29069)
 
@@ -551,49 +1063,49 @@ infrastructure:
 
     Harness now supports these three API endpoints.
 
-### Continuous Delivery
+##### Continuous Delivery
 
-- [Deployment Templates](/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial) **Execution** tab now supports all steps in Command category (CDS-48030)
+- [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial) **Execution** tab now supports all steps in Command category (CDS-48030)
   - Earlier, only the Utilities steps were supported.
   - Now you can add any CD step.
-+ Support for absolute paths in [Custom Remote Manifest](/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/) for Helm Charts (CDS-47647, ZD-37501) 
++ Support for absolute paths in [Custom Remote Manifest](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) for Helm Charts (CDS-47647, ZD-37501) 
   - Previously, we were only looking for a path relative to Harness working directory (a temporary directory created by Harness).
   - Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`.
   - Example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
-- **Referenced By** tab added to [Environments](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview) (CDS-39989)
+- **Referenced By** tab added to [Environments](/docs/continuous-delivery/get-started/services-and-environments-overview) (CDS-39989)
   - You can see which pipeline use any Environment in the Environment's **Referenced By** tab.
 
-- The [Deployment Templates](/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial) **Execution** tab now supports all steps in the Command category. (CDS-48030)
+- The [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial) **Execution** tab now supports all steps in the Command category. (CDS-48030)
 
   Earlier, only the Utilities steps were supported. Now you can add any CD step.
 
-- Support for absolute paths in a [Custom Remote Manifest](/docs/continuous-delivery/cd-advanced/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/) for Helm Charts. (CDS-47647, ZD-37501) 
+- Support for absolute paths in a [Custom Remote Manifest](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests) for Helm Charts. (CDS-47647, ZD-37501) 
 
   Previously, we were only looking for a path relative to the Harness working directory (a temporary directory created by Harness). Now, you can specify an absolute path in **Extracted Manifest File Location** by starting with a forward slash `/`.
 
   Example: `/tmp/myChart1/custom-remote-test-repo/helm/todolist/`.
 
-- The **Referenced By** tab was added to [Environments](/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview). (CDS-39989)
+- The **Referenced By** tab was added to [Environments](/docs/continuous-delivery/get-started/services-and-environments-overview). (CDS-39989)
 
   You can see which pipeline uses any Environment in the Environment's **Referenced By** tab.
 
-### Continuous Integration
+##### Continuous Integration
 
 * Customers on the free plan can now run 5 stages per day on the CI hosted infrastructure. Contact Harness Sales to upgrade your plan. (CI-6430)
 
 * The onboarding workflow now caters to customers who do not have a codebase with which to connect. (CI-6348)
 
-## December 18, 2022			
+#### December 18, 2022			
 
-### Security Testing Orchestration
+##### Security Testing Orchestration
 
 * Remediated issues are no longer included in the issue counts logged near the end of a Security Step run and provided as output variables. (STO-5304)	
 
 *  With this release, you can run a SonarQube scan and specify a collection of SSL certificates rather than a single certificate. This option is useful when you don't know which specific certificate in a collection is required by the server. (STO-5243)	
 
-## December 13, 2022, version 77808
+#### December 13, 2022, version 77808
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - ServiceNow Connector YAML has changed to include authentication details. (CDS-46672, CDS-45969)
 
@@ -635,43 +1147,43 @@ infrastructure:
 
         echo <+rollbackArtifact.url>
 
-### Harness Platform
+##### Harness Platform
 
 - You can now refer to existing secrets of Azure Key Vault, AWS secret manager, and GCP secret manager. (PL-29915)
 
-  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](https://developer.harness.iohttps://developer.harness.io/docs/platform/security/reference-existing-secret-manager-secrets/).
+  With this enhancement, you need not create secrets in Harness. You can use expressions to reference the secrets already existing in the mentioned secrets managers. For more information, see [Reference Existing Secret Managers Secrets](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets).
 
 - You can now use the Git client to commit changes while creating or updating pipelines using Bitbucket on-prem as the Git provider. (PIE-6423)
 
   To do this, enable Use Git client for commits in the default settings at the account scope. Harness checks out the code on the delegate and uses the Git client to make the commits to your Git repository.
 
-## December 11, 2023			
+#### December 11, 2023			
 
-### Security Testing Orchestration
+##### Security Testing Orchestration
 	
 * STO is now supported on Linux (amd64 and arm64 platforms) in Harness Cloud. (STO-5314)	
 
 * Instead of using Service Dependencies for Docker-in-Docker configuration, users should use new Background steps. (STO-5268)
 
 
-## December 7, 2022, version 77716
+#### December 7, 2022, version 77716
 
-### Continuous Delivery
+##### Continuous Delivery
 
 Helm steady state checks with Kubernetes version >= 1.16 (CDS-40269)
 
 Harness will automatically perform steady state checks with Helm deployments using Kubernetes version >= 1.16.
 This feature was previously behind the HELM_STEADY_STATE_CHECK_1_16 feature flag and is now GA.
 
-### Harness Platform
+##### Harness Platform
 
 Securing data through JSON Web Token (JWT) masking. (PL-29019, ZD-32004)
 
 Harness now masks all JWTs in pipelines and delegate logs. This change prevents data leakage risks for the applications running in Harness.
 
-## December 2, 2022, version 0.4.2
+#### December 2, 2022, version 0.4.2
 
-### Chaos Engineering
+####3 Chaos Engineering
 
 - Update feature for chaos hub enables users to update details such as `Git Connector`, `Repository Name`, `Branch Name` and `Name` for an already connected chaos hub.
 
@@ -687,9 +1199,9 @@ Harness now masks all JWTs in pipelines and delegate logs. This change prevents 
 
 - Adds consistent loaders for all components and screens in the UI.
 
-## November 29, 2022
+#### November 29, 2022
 
-### Harness Platform
+##### Harness Platform
 
 - Fix to help you identify Harness in your two-factor authentication app. (PL-29563)
 
@@ -719,7 +1231,7 @@ Harness now masks all JWTs in pipelines and delegate logs. This change prevents 
 
   The corresponding information for these fields are fetched from Git.
 
-### Continuous Integration
+##### Continuous Integration
 
 - New Subscription ID field. (CI-6032)
   An Azure subscription ID is now required in the Build and Push ACR step to enable the display of artifacts uploaded by the steps on the Artifacts tab.
@@ -727,27 +1239,27 @@ Harness now masks all JWTs in pipelines and delegate logs. This change prevents 
 - New background step to define the service dependency. (CI-5580)
   A new background step has been added to define the service dependency in CI. The previous stage settings of service dependency are now deprecated. The new background step allows for better control and configuration of services.
 
-## November 21, 2022
+#### November 21, 2022
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - Fetch Helm Chart Versions from Source on Run Pipeline UI (CDS-40390)
 
   Now you can set Helm Chart version using a runtime input (when using HTTP Helm, S3, and GCS stores), view the list of chart versions available at runtime, and select the required one.
 
-  For Helm deployment information, go to [Helm Chart deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/helm-cd-quickstart/).
+  For Helm deployment information, go to [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
 
 - Copy of Service and Environment variables (CDS-38870, ZD-37291)
 
   You can now copy the FQNs for Service and Environment variables. The Service variables use the format <+serviceVariables.[variable name]> and Environment variables use the format `<env.variables.[variable name]>`.
 
-### Feature Flags
+##### Feature Flags
 
 A new React Client SDK has been released for Feature Flags as version 1.0.0. For more information about this SDK and how to integrate with it, go to the [React Client Reference Guide](https://developer.harness.io/docs/category/client-sdk-guides/) and the [React Client GitHub repository](https://github.com/harness/ff-react-client-sdk).
 
-## November 11, 2022
+#### November 11, 2022
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - Helm steady state checks with Kubernetes version >= 1.16 (CDS-40269)
 
@@ -765,7 +1277,7 @@ A new React Client SDK has been released for Feature Flags as version 1.0.0. For
 
   See [Use the Command step to download, copy, or run scripts](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/download-and-copy-artifacts-using-the-command-step).
 
-### Harness Platform
+##### Harness Platform
 
 - You can now send email notifications to all the members of a user group by selecting the Send email to all users part of the user group option.(PL-29434, ZD-32444)
 
@@ -775,26 +1287,26 @@ A new React Client SDK has been released for Feature Flags as version 1.0.0. For
 
   You can now see the versions of the services in Account Overview in Platform Service Versions.(PL-26581)
 
-## November 6, 2022
+#### November 6, 2022
 
-### Harness Platform
+##### Harness Platform
 
 The option to disable Harness Secret Manager is now a part of the core settings in Account Default Settings. (PL-27160)
 
-### Continuous Integration
+##### Continuous Integration
 
 The Custom Git Connector now supports connection via the Harness Platform, in addition to the ability to connect through the Harness Delegate. Connecting through Harness Secrets Manager is required to use the generic git connector on the Harness Cloud build infrastructure hosted by Harness. (CI-5666)
 
-### Security Testing Orchestration
+##### Security Testing Orchestration
 
 * You can now include Run steps in Security Test stages. You can also include Security Tests stages in STO pipelines without a CI license. (STO-5208)
 
-* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/snyk-scans). (STO-4958)	
+* You can now configure a pipeline to ingest Snyk data from multiple files and paths. For an example of how to set this up, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans). (STO-4958)	
 
 
-## October 31, 2022
+#### October 31, 2022
 
-### Security Testing Orchestration
+##### Security Testing Orchestration
 
 - New output variables – This release includes a new set of output variables you can use to determine the next stage of your pipeline. These variables show the number of new issues detected in the current scan compared to the last scan. If this is the first scan for the target, these variables reflect new issues compared to the baseline. You can use these variables to determine the next stage of your pipeline:
 
@@ -820,30 +1332,30 @@ The Custom Git Connector now supports connection via the Harness Platform, in ad
 
 - AWS ECR – STO now supports scans on AWS Elastic Container Registry (ECR). (STO-4969)
 
-## October 21, 2022
+#### October 21, 2022
 
-### Cloud Cost Management
+####3 Cloud Cost Management
 
 You can now add labels to enable node pool recommendations. kops cluster node label is added for node pool recommendations. See [Labels for node pool recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/node-pool-recommendations/) for more information. (CCM-9309)
 
-### Harness Platform
+##### Harness Platform
 
 You can now import Templates from your Git repo. (PL-28597)
 
 See [Import a Template From Git](https://developer.harness.io/docs/platform/git-experience/import-a-template-from-git/).
 
-## October 18, 2022
+#### October 18, 2022
 
-### Continuous Delivery
+##### Continuous Delivery
 
 You can now send Approval Step notifications to multiple Users as part of the User Group (CDS-43667, ZD-32444)
 Manual Approval email notifications configured for a User Group now send the approval emails to all Users of the User Group without having the need to specify a group email.
 
-### Continuous Integration
+##### Continuous Integration
 
 The Infrastructure tab in Build steps has been updated to show only supported options when a Hosted build infrastructure is selected. (CI-5737)
 
-## Harness Platform
+#### Harness Platform
 
 - The functionality of the delegate auto-upgrade components was enhanced. On installation, the AutoUpgrade feature displays a status message of Synchronizing. If the component does not receive an API call from the upgrader within 90 minutes, the status message changes to OFF. This affects delegates that are installed with upgrader components.
 
@@ -851,19 +1363,19 @@ The Infrastructure tab in Build steps has been updated to show only supported op
 
 - A loader is now displayed on click of Run Pipeline to indicate that the Pipeline is running. (PIE-5396)
 
-### Feature Flags
+##### Feature Flags
 
 You can now add a default pipeline to your Feature Flags that will be applied when you add targeting rules, or when you enable or disable a Flag. This means that you can ensure your Flag changes go through the process you want them to, allowing for better security and more consistent operations. For example, you can add an approval step so all your production Flag changes must be approved before they are executed, or you can send a Slack notification every time a Flag changes.
 
 For more information about how to use a default pipeline for your Flags, go to [Add a Default Pipeline for Flag Changes](https://developer.harness.io/docs/feature-flags/ff-using-flags/ff-build-pipeline/default-pipeline-ff/).
 
-## October 7, 2022
+#### October 7, 2022
 
-### Harness Platform
+##### Harness Platform
 
 You can now use a readOnly vault as a default SM. (PL-24491)
 
-### Continuous Delivery
+#### Continuous Delivery
 
 - ECS deployments: deploy artifacts to your Amazon Elastic Container Service (ECS) clusters using a Rolling, Canary, and Blue Green strategies.
 
@@ -875,31 +1387,31 @@ You can now use a readOnly vault as a default SM. (PL-24491)
 
   For more information, go to:
 
-  [Secure Shell (SSH) deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng/)
+  [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)
 
-  [WinRM deployment tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/win-rm-tutorial)
+  [WinRM deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
 
 - Custom deployments using Deployment templates: In some cases, you might be using a platform that does not have first class support in Harness, such as OpenStack, WebLogic, WebSphere, Google Cloud functions, etc. We call these non-native deployments. For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
 
-  For more information, go to: [Custom deployments using Deployment Templates tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial).
+  For more information, go to: [Custom deployments using Deployment Templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial).
 
 - The ability to provision resources in a CD stage's deployment infrastructure using the CloudFormation Create Stack step is now GA. Previously, it was behind the CLOUDFORMATION_NG feature flag.
 
-### Continuous Integration
+##### Continuous Integration
 
 - You can now select Kotlin and Scala as languages in the Run Tests step when setting up Test Intelligence. You can also select sbt as a build tool for Scala. (CI-5653, CI-3333)
 
 - Run Step logs now show the commands that the step will run before it runs them. This functionality is limited to Kubernetes build infrastructures. (CI-5557)
 
-## September 29, 2022
+#### September 29, 2022
 
-### Continuous Delivery
+##### Continuous Delivery
 
 For [Native Helm deployments](https://developer.harness.io/docs/category/native-helm-deployments/), you can enable the new Ignore Release History Failed Status option to have Harness ignore when the Helm release is in a failed state. (CDS-43785)
 
 By default, if the latest Helm release failed, Harness does not proceed with the install/upgrade and throws an error. Enable the Ignore Release History Failed Status option to have Harness ignore these errors and proceed with install/upgrade.
 
-### Cloud Cost Management
+##### Cloud Cost Management
 
 - First-class Support for Istio is released with version 1.0.8 of autostopping-controller.​ (CCM-8386)
 
@@ -907,27 +1419,27 @@ By default, if the latest Helm release failed, Harness does not proceed with the
 
 - Now, you can sort perspective filters while creating cost categories, perspectives, etc. You can search for a filter quickly and apply it easily.​ (CCM-8597)​
 
-### Continuous Integration
+##### Continuous Integration
 
 CI pipelines now support workflows that can run with some runtime inputs undefined. Previously a pipeline would fail if any runtime input was undefined for any field such as an environment variable, label, build argument, or port binding. (CI-5116, ZD-33893)
 
-### Harness Platform
+##### Harness Platform
 
 - The method that the log streaming task client uses to create thread pools was modified. Thread pools are now created one time in the client's lifetime instead of being created for each task the Delegate receives. (DEL-4328)
 
 - When NG LDAP authorization is 'disabled', all LDAP SSO-linked Harness User Groups don't sync in NG. They sync with the users from LDAP when the LDAP settings have authorization enabled.​ (PL-27954)​​
 
-## September 26, 2022
+#### September 26, 2022
 
-### Feature Flags
+##### Feature Flags
 
 For self-serve customers, you can now create and upgrade a Feature Flags subscription directly through the Harness Platform instead of contacting our Sales team, meaning you can manage your subscription quickly, securely, and at any time.
 
 For information about the current plans you can subscribe to, go to [Pricing & Plans](https://harness.io/pricing?module=ff#). For more information about how to use subscriptions, go to [Subscribe to Feature Flags](https://developer.harness.io/docs/category/subscribe-to-feature-flags/).
 
-## September 22, 2022
+#### September 22, 2022
 
-### Harness Platform
+##### Harness Platform
 
 - Harness Manager was changed to remove the edit and details UI for Immutable Delegates. These Delegates cannot be changed. (DEL-4756)
 
@@ -941,11 +1453,11 @@ For information about the current plans you can subscribe to, go to [Pricing & P
 
 - Harness now has a default User Group at each scope. ​These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the User Groups by default.​ Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
 
-  See [Harness Default User Groups](https://developer.harness.io/docs/platform/role-based-access-control/harness-default-user-groups/).
+  See [Harness Default User Groups](/docs/platform/User-Management/harness-default-user-groups).
 
-## September 14, 2022
+#### September 14, 2022
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - Shell Script Output Variables now allow the Secret type (CDS-41263, ZD-33761)
 
@@ -955,7 +1467,7 @@ For information about the current plans you can subscribe to, go to [Pricing & P
 
   See [Using Shell Scripts in CD Stages](https://developer.harness.io/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts/).
 
-### Harness Platform
+##### Harness Platform
 
 - The versioning scheme for the Immutable Delegate was changed from 1.0.`<build_number>` to year.month.`<buildNumber>`. (DEL-4338)
 
@@ -969,9 +1481,9 @@ For information about the current plans you can subscribe to, go to [Pricing & P
 
 - You can now use forecasting on your dashboards to help you create data predictions. (CDB-351)
 
-## September 9, 2022
+#### September 9, 2022
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - Support for Gov Cloud for AWS Connectors in NG (CDS-42414).
 
@@ -981,7 +1493,7 @@ For information about the current plans you can subscribe to, go to [Pricing & P
 
   Fields that manage users and issue links are now supported by Harness.
 
-### Feature Flags
+##### Feature Flags
 
 The Feature Flag PHP SDK has been released. This means you can now connect an application that uses PHP when using Harness Feature Flags.
 
@@ -989,17 +1501,17 @@ For more information about the PHP SDK, go to the [PHP Reference Guide](https://
 
 To get the PHP SDK, go to our [PHP Git Repository](https://github.com/harness/ff-php-server-sdk).
 
-## September 7, 2022
+#### September 7, 2022
 
-### Harness Platform
+##### Harness Platform
 
 You can now inherit User Groups created at a higher scope by using Assign Roles.
 
-See [Assign Roles](https://developer.harness.io/docs/platform/Role-Based-Access-Control/add-user-groups#step-assign-roles).
+See [Assign Roles](https://developer.harness.io/docs/platform/User-Management/add-user-groups#step-assign-roles).
 
-## August 31, 2022
+#### August 31, 2022
 
-### Harness Platform
+##### Harness Platform
 
 - Git Experience in Next Gen is now enhanced and simplified.
 
@@ -1009,25 +1521,25 @@ See [Assign Roles](https://developer.harness.io/docs/platform/Role-Based-Access-
 
 - You can now view the past 10 executions of the Pipelines and sort them from the table. You can also go to a specific execution by clicking on it. (PIE-4903)
 
-## August 25, 2022
+#### August 25, 2022
 
-### Feature Flags
+##### Feature Flags
 
 You can now configure the Relay Proxy for Feature Flags to load and use configuration data that is stored offline. This means in case of an outage, you can still use the Proxy with the configuration you set. To use this feature, you need to generate the offline configuration and then run the Proxy in offline mode. For more information about how to do this, go to the [Relay Proxy overview](https://developer.harness.io/docs/category/git-experience/) and [Run the Proxy in offline mode](https://developer.harness.io/docs/feature-flags/ff-using-flags/relay-proxy/deploy-relay-proxy#run-the-relay-proxy-in-offline-mode).
 
 The Feature Flag Relay Proxy has been updated to version 0.9.7.
 
-### Continuous Integration
+##### Continuous Integration
 
 - This release includes a new Git Clone step that clones a repo separate from the repo specified in the Codebase object. This step supports all the config options supported for Codebase objects. (CI-4692)
 
 - You can now use a hosted delegate for Docker, Artifactory, AWS, GCP, BitBucket, GitLab, and Azure connectors. (CI-4828, CI-5241)
 
-### Harness Platform
+##### Harness Platform
 
 - Now you can add up to 50,000 users in the Harness Non-Community Edition. (PL-27300)
 
-  See [Add and Manage Users](https://developer.harness.io/docs/platform/Role-Based-Access-Control/add-users).
+  See [Add and Manage Users](/docs/platform/User-Management/add-users).
 
 - You can now use an enhanced Git Experience. (PL-26339)
 
@@ -1035,21 +1547,21 @@ The Feature Flag Relay Proxy has been updated to version 0.9.7.
 
 Harness will continue to support users who have been using the old Git Experience.
 
-## August 18, 2022
+#### August 18, 2022
 
-### Continuous Integration
+##### Continuous Integration
 
 You can now run connection tests for AWS, GCP, and Azure connectors. By default, executeOnDelegate field is true so that existing connectors remain backward-compatible. (CI-4980)
 
-## August 8, 2022
+#### August 8, 2022
 
-### Continuous Integration
+##### Continuous Integration
 
 This release introduces validations for Custom Webhook events. The event handler now provides appropriate error messages if an event has incorrect values. (CI-4300, ZD-30121)
 
-## August 2, 2022
+#### August 2, 2022
 
-### Security Testing Orchestration
+##### Security Testing Orchestration
 
 The STO module launches its first GA product with the following capabilities:
 
@@ -1081,35 +1593,35 @@ The STO module launches its first GA product with the following capabilities:
 
 See [Security Testing Orchestration Basics](https://developer.harness.io/docs/security-testing-orchestration/onboard-sto/security-testing-orchestration-basics).
 
-### Continuous Integration
+##### Continuous Integration
 
 Users can now use Azure Repos connectors in pipeline codebase configuration and triggers. (CI-4825)
 
-### Harness Platform
+##### Harness Platform
 
 Role-based Access Control has been added to Custom Dashboards. To access Dashboards, users now must have the View Dashboards permissions.
 
-## July 11, 2022
+#### July 11, 2022
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - AWS Connector Assume IAM Role on Delegate and Use IRSA credentials support for Serverless Lambda (CDS-38924)
 
   You can now use the Assume IAM Role on Delegate and Use IRSA credentials options when setting up an AWS Connector for Serverless Lambda deployments.
 
-  For more information, refer to [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/ref-cloud-providers/aws-connector-settings-reference/).
+  For more information, refer to [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference/).
 
 - Allow AWS ECR artifact for Serverless Lambda (CDS-38857)
 
   You can now use artifacts from an AWS ECR registry for Serverless Lambda deployments.
 
-  For more information, refer to [Serverless Lambda Deployment Tutorial](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart/).
+  For more information, refer to [Serverless Lambda Deployment Tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart).
 
-### Continuous Integration
+##### Continuous Integration
 
 The Build UI now shows a new VM icon. (CI-4630)
 
-### Cloud Cost Management
+##### Cloud Cost Management
 
 - Resource names display enhancement (CCM-8079)
 
@@ -1133,9 +1645,9 @@ The Build UI now shows a new VM icon. (CI-4630)
 
   You can now set the notification channel to Slack and add multiple webhook URLs when creating a budget.
 
-  For more information, refer to [Create a Budget](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-budgets/create-a-budget/).
+  For more information, refer to [Create a Budget](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-governance/ccm-budgets/create-a-budget/).
 
-### Harness Platform
+##### Harness Platform
 
 - Support for the use of secrets for notifications to be sent via the Delegate (PL-22129)
 
@@ -1166,3 +1678,5 @@ The Build UI now shows a new VM icon. (CI-4630)
 - Improved the logic of Delegate token validation to make it more performant​. (DEL-3998)
 
 - Removed the io_netty_netty dependency from delegates​. (DEL-3798)
+
+</details>

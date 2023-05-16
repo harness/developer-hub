@@ -1,5 +1,5 @@
 ---
-title: Harness Git Experience Overview
+title: Harness Git Experience overview
 description: Harness Git Experience lets you store configurations for your resources like pipelines, input sets in Git. You can choose Git as the source of truth and use your Git credentials to access and modify…
 sidebar_position: 2
 helpdocs_topic_id: xl028jo9jk
@@ -29,6 +29,8 @@ The following section lists the support for Git providers for Harness Git Sync:�
 * GitHub
 * Bitbucket Cloud
 * Bitbucket Server
+* Azure Repos
+* GitLab
 
 Make sure `feature.file.editor` is not set to `false` in the `bitbucket.properties` file if you are using Bitbucket on-prem.
 
@@ -83,7 +85,13 @@ You can store your configurations in the following ways:
 * Store configuration files in a repository separate from the code.
 * Store the prod configurations in one repo, and the non-prod ones in another repo, so that only the selected developers can access prod configs.
 * Store the configuration files of different environments in different branches.
-* Store the pipelines in one repository, and other configuration files in another.
+* Store the pipelines in one repository, and other configuration files in another. 
+
+  :::important
+  To link input sets and pipelines from different repositories, enable `Allow different repo for Pipeline and InputSets` in the default settings.
+  For more information, go to [Default settings](/docs/platform/Settings/default-settings).
+  :::
+
 
 #### Multiple branch support
 
@@ -110,7 +118,7 @@ You will need a Harness Git Connector to connect with the Git provider and perfo
 
 
 :::note
-**Important:** The Connector must use the **Enable API access** option and **Username and Token** authentication. Harness requires the token to access the Git API. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector. For detailed steps to add a Git Connector, see [Code Repo Connectors](../7_Connectors/connect-to-code-repo.md).
+**Important:** The Connector must use the **Enable API access** option and **Username and Token** authentication. Harness requires the token to access the Git API. Generate the token in your account on the Git provider and add it to Harness as a Secret. Next, use the token in the credentials for the Git Connector. For detailed steps to add a Git Connector, see [Code Repo Connectors](../7_Connectors/Code-Repositories/connect-to-code-repo.md).
 
 :::
 

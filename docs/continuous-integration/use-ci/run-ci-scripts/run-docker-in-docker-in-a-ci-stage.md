@@ -1,7 +1,8 @@
 ---
-title: Run Docker-in-Docker in a CI Stage
-description: You can run Docker-in-Docker as a Background step in a CI Stage.
-# sidebar_position: 2
+title: Run Docker-in-Docker in a Build stage
+description: You can run Docker-in-Docker as a Background step in a Build stage.
+
+sidebar_position: 30
 helpdocs_topic_id: ajehk588p4
 helpdocs_category_id: 7ljl8n7mzn
 helpdocs_is_private: false
@@ -14,7 +15,7 @@ Docker-in-Docker (DinD) with privileged mode is necessary only when using a Kube
 
 :::
 
-CI pipelines that use a Kubernetes build infrastructure need Docker-in-Docker (**DinD**) if you need to run Docker commands as part of the build process. For example, you can build images from two separate codebases in the same pipeline: One with a [Build and Push an Image to Docker Registry step](../../ci-technical-reference/build-and-push-to-docker-hub-step-settings.md) and another with Docker commands in a [Run step](../../ci-technical-reference/run-step-settings.md).
+CI pipelines that use a Kubernetes build infrastructure need Docker-in-Docker (**DinD**) if you need to run Docker commands as part of the build process. For example, you can build images from two separate codebases in the same pipeline: One with a [Build and Push an Image to Docker Registry step](../build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings.md) and another with Docker commands in a [Run step](./run-step-settings.md).
 
 This topic illustrates a simple build-and-push workflow using Docker-in-Docker for a pipeline that uses a Kubernetes build infrastructure.
 
@@ -24,9 +25,9 @@ Docker-in-Docker must run in privileged mode to work properly. Use caution becau
 
 These steps assume you are familiar with the following concepts:
 
-* Pipeline configuration, such as the [CI Pipeline quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
+* Pipeline configuration, such as in the [build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
 * [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
-* [CI Build Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
+* [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 
 ## Step 1: Set Up the CI Stage
 
@@ -46,16 +47,54 @@ In the CI Build stage > **Infrastructure** tab, define the build infrastructure 
 
 ## Step 3: Add a DinD Background step
 
-In the Execution tab, add a [Background step](../../ci-technical-reference/background-step-settings.md) and configure it as follows:
+In the Execution tab, add a [Background step](../manage-dependencies/background-step-settings.md) and configure it as follows:
 
-* **Name:** dind_Service.
-* **Container Registry:** A connector to your Docker registry.
+* **Name:** `dind_Service`
+* **Container Registry:** A Docker Hub container registry connector.
 * **Image:** The image you want to use, such as [docker:dind](https://hub.docker.com/_/docker).
 * **Optional Configuration:** Select **Privileged**. This is required for Docker-in-Docker.
 
+<details>
+<summary>Providing arguments</summary>
+
+Provide arguments as a list in **Entry Point**.
+
+For example, the entry point for the `docker:dind` image is `dockerd-entrypoint.sh`. If you want to add an `--mtu` argument, you would include both the image entry point and the argument in your step's **Entry Point** specification.
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual" default>
+```
+
+<!-- ![](./static/dind-background-step-entry-point.png) -->
+
+<docimage path={require('./static/dind-background-step-entry-point.png')} />
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML">
+```
+
+```yaml
+entrypoint:
+  - dockerd-entrypoint.sh
+  - "--mtu=1450"
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+</details>
+
 ## Step 4: Configure the Run Step
 
-In the Execution tab, add a [Run Step](../../ci-technical-reference/run-step-settings.md) and configure it as follows:
+In the Execution tab, add a [Run Step](./run-step-settings.md) and configure it as follows:
 
 * **Container Registry:** A Connector to your Docker registry.
 * **Image:** The Docker image, with the Docker binary, that you want to run the **Run** step in.

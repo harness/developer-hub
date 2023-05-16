@@ -1,11 +1,12 @@
 {
-   "label":"Set Up Build Infrastructure",
+   "label":"Set up build infrastructure",
+   "position": 40,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Set Up Build Infrastructure"
+      "title":"Set up build infrastructure"
    },
    "customProps":{
       "helpdocs_category_id":"rg8mrhqm95"

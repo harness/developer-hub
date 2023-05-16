@@ -1,12 +1,23 @@
 ---
-title: Infrastructure requirements for KOTS
-description: This document lists the infrastructure requirements for installing Harness Self-Managed Enterprise Edition
-# sidebar_position: 2
+title: KOTS installation requirements
+description: Requirements for using KOTS installation for Harness Self-Managed Enterprise Edition.
+# sidebar_position: 10
 helpdocs_topic_id: d5lptkp5ow
 helpdocs_category_id: vu99714ib1
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+:::info note
+
+This is an End of Life (EOL) notice for the KOTS installation method. This method will be in maintenance mode after May 31, 2023. 
+
+Maintenance mode means the following:
+
+- No new features will be added.
+- Security and bug fixes will continue to be made. 
+
+:::
 
 Installation of Harness Self-Managed Enterprise Edition in an existing Kubernetes cluster requires the following infrastructure.
 

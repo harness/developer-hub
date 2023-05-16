@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can run scripts on Harness Delegate pods, hosts, and containers to install applications or run commands.
 
-For more information about running scripts, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md). This topic provides information on script availability and some common delegate initialization scripts.
+For more information about running scripts, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md). This topic provides information on script availability and some common delegate initialization scripts.
 
 ### Limitations
 
@@ -33,6 +33,15 @@ Delegate scripts are applied under the following conditions:
 
 * **New Delegate.** Scripts added on delegate creation run before the delegate starts.
 * **Running Delegate.** Scripts applied during delegate runtime, either by application as a new script or by switching the Delegate’s current script, run on delegate restart, before the delegate reaches steady state.
+
+### Unzip
+
+Run `microdnf update` before you run `microdnf` commands.
+```
+microdnf update  
+# Install Unzip  
+microdnf install unzip
+```
 
 ### Terraform
 
@@ -77,7 +86,7 @@ The `helm init` command is used with Helm 2 to install Tiller into a Kubernetes 
 kubectl config current-context cluster_name
 ```
 
-If you are using TLS for communication between Helm and Tiller, ensure that you use the `--tls` parameter with your commands. For more information, see [Using SSL Between Helm and Tiller](https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller) from Helm, and the section **Securing your Helm Installation** in that document.The following example shows how to add a Helm chart from a private repository using the secrets `repoUsername` and `repoPassword` from Harness [Text Secrets](../../6_Security/2-add-use-text-secrets.md). 
+If you are using TLS for communication between Helm and Tiller, ensure that you use the `--tls` parameter with your commands. For more information, see [Using SSL Between Helm and Tiller](https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller) from Helm, and the section **Securing your Helm Installation** in that document.The following example shows how to add a Helm chart from a private repository using the secrets `repoUsername` and `repoPassword` from Harness [Text Secrets](../../Secrets/2-add-use-text-secrets.md). 
 
 
 ```
@@ -107,15 +116,6 @@ microdnf update
 microdnf -y install python3-pip  
 # Check pip install  
 pip -v
-```
-
-### Unzip
-
-Run `microdnf update` before you run `microdnf` commands.
-```
-microdnf update  
-# Install Unzip  
-microdnf install unzip
 ```
 
 ### AWS CLI

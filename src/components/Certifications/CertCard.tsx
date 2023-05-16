@@ -5,21 +5,22 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import "rc-tooltip/assets/bootstrap.css";
 import styles from "./CertCard.module.scss";
+import { MODULES } from "../../constants";
 
 export enum certType {
-  Developer = "Developers",
-  Administrator = "Administrators",
-  Architect = "Architects",
+  developer = "Developers",
+  administrator = "Administrators",
+  architect = "Architects",
 }
 const stars = {
-  [certType.Developer]: 1,
-  [certType.Administrator]: 2,
-  [certType.Architect]: 3,
+  [certType.developer]: 1,
+  [certType.administrator]: 2,
+  [certType.architect]: 3,
 };
 
 export type CardItem = {
   title: string;
-  module: string;
+  module: MODULES;
   type?: certType;
   description: JSX.Element | string;
   version?: string;
@@ -53,15 +54,17 @@ export default function CertCard({
             {type ? type : module.toUpperCase()}
           </h6>
           <span>
-            {[...new Array(stars[type] || 0)].map(() => (
+            {[...new Array(stars[type || ""] || 0)].map(() => (
               <i className="fa-solid fa-star"></i>
             ))}
           </span>
         </div>
         <h4>{title}</h4>
-        <div className={styles.numberOfCerts}>
-          <img src="/img/icon_cert.svg" /> {numberOfCerts} Certifications
-        </div>
+        {numberOfCerts && (
+          <div className={styles.numberOfCerts}>
+            <img src="/img/icon_cert.svg" /> {numberOfCerts} Certifications
+          </div>
+        )}
         <p>{description}</p>
         {version && (
           <div className={styles.productVersion}>

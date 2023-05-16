@@ -1,5 +1,5 @@
 ---
-title: Manage Input Sets and Triggers in Git Experience
+title: Manage input sets and triggers in Git Experience
 description: Once you have saved your Pipeline in your repo, you can set up your Input Sets and Triggers. You can set up your Input Set definitions in your repo along with your Pipeline. You can then set up your…
 sidebar_position: 9
 helpdocs_topic_id: 8tdwp6ntwz
@@ -13,7 +13,7 @@ Once you have saved your Pipeline in your repo, you can set up your Input Sets 
 This topic covers a simple workflow for setting up your Input Sets and Triggers. It does not cover these topics in detail. For details on those, see:
 
 * [Run Pipelines using Input Sets and Overlays](../8_Pipelines/run-pipelines-using-input-sets-and-overlays.md)
-* [Trigger Pipelines using Git Event Payloads](../11_Triggers/trigger-pipelines-using-custom-payload-conditions.md)
+* [Trigger Pipelines using Git Events](/docs/platform/triggers/triggering-pipelines/)
 
 ### Before you begin
 
@@ -58,7 +58,7 @@ In the Run Pipeline screen, click **Cancel**.
 
 Now that you have a Pipeline and Input Set in your default branch, create a Trigger that uses the Input Set you just created.
 
-In the Pipeline Studio, create a new Trigger as described in [Trigger Pipelines using Git Event Payload Conditions](../11_Triggers/trigger-pipelines-using-custom-payload-conditions.md).
+In the Pipeline Studio, create a new Trigger as described in [Trigger Pipelines using Git Event Payload Conditions](/docs/platform/triggers/triggering-pipelines/).
 
 In the Pipeline Input tab, select the Input Set you just created and click **Create Trigger**.
 

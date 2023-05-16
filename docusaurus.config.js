@@ -51,7 +51,15 @@ const config = {
           exclude: ["**/shared/**", "**/static/**"],
           routeBasePath: "docs", //CHANGE HERE
         },
-
+        sitemap: {
+          // changefreq: 'weekly',
+          // priority: 0.5,
+          ignorePatterns: [
+            "/docs/infrastructure-as-code",
+            "/docs/infrastructure-as-code/**",
+          ],
+          // filename: 'sitemap.xml',
+        },
         theme: {
           customCss: require.resolve("./src/css/custom.css"), // we could also use scss here
         },
@@ -83,6 +91,7 @@ const config = {
             position: "right",
             type: "dropdown",
             label: "Tutorials",
+            to: "tutorials",
             items: [
               {
                 // type: "doc",
@@ -91,41 +100,46 @@ const config = {
               },
               {
                 // type: "doc",
-                label: "Build & Test Code",
-                to: "tutorials/build-code",
-                // docId: "build-code",
+                label: "Set up CI Pipelines",
+                to: "tutorials/ci-pipelines",
+                // docId: "ci-pipelines",
                 // activeBasePath: "to",
               },
               {
                 // type: "doc",
-                label: "Deploy Services",
-                to: "tutorials/deploy-services",
+                label: "Set up CD Pipelines",
+                to: "tutorials/cd-pipelines",
               },
               {
                 // type: "doc",
                 label: "Manage Feature Flags",
-                to: "tutorials/manage-feature-flags",
-                // activeBaseRegex: "/manage-feature-flags",
+                to: "tutorials/feature-flags",
+                // activeBaseRegex: "/feature-flags",
               },
               {
                 // type: "doc",
                 label: "Manage Cloud Costs",
-                to: "tutorials/manage-cloud-costs",
+                to: "tutorials/cloud-costs",
               },
               {
                 // type: "doc",
                 label: "Manage Service Reliability",
-                to: "tutorials/manage-service-reliability",
+                to: "tutorials/service-reliability",
               },
               {
                 // type: "doc",
                 label: "Orchestrate Security Tests",
-                to: "tutorials/orchestrate-security-tests",
+                to: "tutorials/security-tests",
               },
               {
                 // type: "doc",
                 label: "Run Chaos Experiments",
-                to: "tutorials/run-chaos-experiments",
+                to: "tutorials/chaos-experiments",
+              },
+              {
+                // type: "doc",
+                label: "Track Errors",
+                to: "tutorials/error-tracking",
               },
               {
                 // type: "doc",
@@ -138,6 +152,7 @@ const config = {
             position: "right",
             type: "dropdown",
             label: "Documentation",
+            to: "docs",
             items: [
               {
                 label: "Get Started",
@@ -172,6 +187,10 @@ const config = {
                 to: "docs/chaos-engineering",
               },
               {
+                label: "Continuous Error Tracking",
+                to: "docs/continuous-error-tracking",
+              },
+              {
                 label: "Harness Platform",
                 to: "docs/platform",
               },
@@ -197,7 +216,7 @@ const config = {
               },
               {
                 label: "API Reference",
-                href: "https://apidocs.harness.io/",
+                to: "https://apidocs.harness.io/",
               },
             ],
           },
@@ -205,6 +224,7 @@ const config = {
             label: "Certifications",
             position: "right",
             type: "dropdown",
+            to: "certifications",
             items: [
               {
                 label: "All Certifications",
@@ -218,10 +238,6 @@ const config = {
                 label: "Continuous Integration",
                 to: "certifications/continuous-integration",
               },
-              {
-                label: "Software Delivery Foundations",
-                href: "https://university.harness.io/page/job-role-certifications",
-              },
             ],
           },
           {
@@ -231,7 +247,7 @@ const config = {
           },
           {
             position: "right",
-            href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
+            to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
             label: "Join Slack",
           },
           {
@@ -265,35 +281,35 @@ const config = {
             items: [
               {
                 label: "Overview",
-                href: "https://harness.io/products/platform",
+                to: "https://harness.io/products/platform",
               },
               {
                 label: "Continuous Integration",
-                href: "https://harness.io/products/continuous-integration",
+                to: "https://harness.io/products/continuous-integration",
               },
               {
                 label: "Continuous Delivery & GitOps",
-                href: "https://harness.io/products/continuous-delivery",
+                to: "https://harness.io/products/continuous-delivery",
               },
               {
                 label: "Feature Flags",
-                href: "https://harness.io/products/feature-flags",
+                to: "https://harness.io/products/feature-flags",
               },
               {
                 label: "Cloud Cost Management",
-                href: "https://harness.io/products/cloud-cost",
+                to: "https://harness.io/products/cloud-cost",
               },
               {
                 label: "Service Reliability Management",
-                href: "https://harness.io/products/service-reliability-management",
+                to: "https://harness.io/products/service-reliability-management",
               },
               {
                 label: "Security Testing Orchestration",
-                href: "https://harness.io/products/security-testing-orchestration",
+                to: "https://harness.io/products/security-testing-orchestration",
               },
               {
                 label: "Chaos Engineering",
-                href: "https://harness.io/products/chaos-engineering",
+                to: "https://harness.io/products/chaos-engineering",
               },
             ],
           },
@@ -302,35 +318,35 @@ const config = {
             items: [
               {
                 label: "Sign up",
-                href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
+                to: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
               },
               {
                 label: "Slack",
-                href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
+                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
               },
               {
                 label: "API Reference",
-                href: "https://apidocs.harness.io/",
+                to: "https://apidocs.harness.io/",
               },
               {
                 label: "Forum",
-                href: "https://community.harness.io",
+                to: "https://community.harness.io",
               },
               {
                 label: "University",
-                href: "https://university.harness.io",
+                to: "https://university.harness.io",
               },
               {
                 label: "Open Source",
-                href: "https://harness-community.github.io/",
+                to: "https://harness-community.github.io/",
               },
               {
                 label: "YouTube",
-                href: "https://www.youtube.com/c/Harnessio",
+                to: "https://www.youtube.com/c/Harnessio",
               },
               {
                 label: "Developer Hub GitHub",
-                href: "https://github.com/harness/developer-hub",
+                to: "https://github.com/harness/developer-hub",
               },
               {
                 label: "Release Notes",
@@ -347,7 +363,7 @@ const config = {
               },
               {
                 label: "Privacy Policy",
-                href: "https://harness.io/legal/privacy",
+                to: "https://harness.io/legal/privacy",
               },
               {
                 label: "Accessibility",
@@ -384,7 +400,7 @@ const config = {
       announcementBar: {
         id: "announcementBar_cd_announcement",
         content:
-          "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>Our FirstGen CD product will be phased out in about 12 months.</span> Learn more in our <a href='/docs/continuous-delivery/onboard-cd/upgrading/upgrade-nextgen-cd/' target='_self'>Upgrade Guide</a> . For any questions or concerns please reach out to <a href='https://support.harness.io' target='_blank'>support.harness.io</a>.",
+          "<i class='fa-solid fa-circle-exclamation' style='color: #CF2318; margin-right: 4px;'></i><span style='color: #CF2318;'>FirstGen Harness CD will be EOL on 12/30/2023 and EOS on 3/30/2024.</span> Learn more in our <a href='/docs/continuous-delivery/get-started/upgrading/upgrade-nextgen-cd/' target='_self'>Upgrade Guide</a>. Contact  <a href='https://support.harness.io' target='_self'>Harness Support</a> with questions or concerns.",
         backgroundColor: "#FFF5ED",
         textColor: "#000000",
         isCloseable: true,

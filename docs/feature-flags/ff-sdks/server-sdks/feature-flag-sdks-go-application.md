@@ -1,5 +1,5 @@
 ---
-title: Go SDK Reference
+title: Go SDK reference
 description: This topic explains how to integrate your feature flags with Go SDK.
 sidebar_position: 20
 helpdocs_topic_id: 4c8wljx60w
@@ -7,6 +7,8 @@ helpdocs_category_id: kkiqy1f6d7
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 This topic describes how to use the Harness Feature Flags Go SDK for your Go application. 
 
@@ -17,13 +19,13 @@ For getting started quickly, you can use our [sample code from the SDK README](h
 Make sure you read and understand:
 
 * [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](../../ff-onboarding/ff-getting-started/getting-started-with-feature-flags.md)
+* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **0.1.6.**
+The current version of this SDK is **0.1.8.**
 
 ## Requirements
 
@@ -32,8 +34,8 @@ To use this SDK, make sure you:
 * Install Go version 1.6 or newer.
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-golang-server-sdk)
 * Create a Go application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-golang-server-sdk/blob/main/examples/getting_started.go).
-* [Create a Feature Flag on the Harness Platform](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Create an SDK key and make a copy of it](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key).
+* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
 
 ## Install the SDK
 
@@ -105,7 +107,7 @@ client, err := harness.NewCfClient(myApiKey, 
 Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
-For more information about Targets, go to [Targeting Users With Flags](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md).
+For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
 
 To add a Target, build it and pass in arguments for the following:
@@ -212,6 +214,8 @@ client.JSONVariation(flagName, &target, types.JSON{"darkmode": false})
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
 
+<Sixty />
+
 ## Close the SDK
 
 To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, run the following command: 
@@ -238,7 +242,7 @@ client, err := harness.NewCfClient(sdkKey, harness.WithLogger(logger))
 ```
 ### Use the Relay Proxy
 
-When using your Feature Flag SDKs with a [Harness Relay Proxy](../../ff-using-flags/relay-proxy/relay-proxy.md) you need to change the default URL and events URL to `http://localhost:7000` when initializing the SDK. For example:
+When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/relay-proxy/) you need to change the default URL and events URL to `http://localhost:7000` when initializing the SDK. For example:
 
 
 ```

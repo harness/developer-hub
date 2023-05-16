@@ -5,7 +5,7 @@ sidebar_position: 200
 ---
 
 
-## Security step settings
+### Security step settings
 
 You can set up OpenVAS scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
@@ -30,16 +30,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 		- `full-and-very-deep`  — Do a full and very deep discovery scan
 		- `openvas-system-discovery`  — Do a system discovery scan on the network
 		- `default`
-
-
-```mdx-code-block
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
-<StoSettingFailOnSeverity />
-
-
-
-### Instance settings
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 ```mdx-code-block
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
@@ -47,3 +38,15 @@ import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
 
 <StoLegacyInstance />
 
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
+
+#### Fail on Severity
+
+```mdx-code-block
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+```
+<StoSettingFailOnSeverity />

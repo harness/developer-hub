@@ -27,7 +27,7 @@ const DocImage = (props) => {
     height = null,
     alt = "",
     title = "Click to view full size image",
-    border = false,
+    border = true,
   } = props;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 

@@ -1,6 +1,6 @@
 ---
 title: Grype scanner reference
-description: Container image scans with Grype
+description: Image scans with Grype
 sidebar_position: 156
 ---
 
@@ -206,18 +206,18 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 
 
-#### Settings
+### Settings
 
 You can add a `tool_args` setting to run the [grype scanner](https://github.com/anchore/grype) with specific command-line arguments. For example, you can report vulnerabilities with known fixes only using `--only-fixed`: `tool_args` = `--only-fixed`.
 
-#### Additional Configuration
+### Additional Configuration
 
 In the **Additional Configuration** settings, you can use the following options:
 
-* [Privileged](/docs/continuous-integration/ci-technical-reference/background-step-settings/#privileged)
-* [Image Pull Policy](/docs/continuous-integration/ci-technical-reference/background-step-settings/#image-pull-policy)
-* [Run as User](/docs/continuous-integration/ci-technical-reference/background-step-settings/#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/ci-technical-reference/background-step-settings/#set-container-resources)
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
 
 
 ### Advanced settings
@@ -227,7 +227,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
  
 ## Security step configuration (_deprecated_)
@@ -241,7 +241,7 @@ You can set up a Security step with [Grype](https://github.com/anchore/grype) to
 #### Important Notes
 
 * STO supports Grype scans of containers and repositories.
-* STO supports [orchestrated scans](../use-sto/run-an-orchestrated-scan-in-sto.md) and [ingestionOnly scans](../use-sto/ingest-scan-results-into-an-sto-pipeline.md) scans  with Grype. 
+* STO supports [orchestrated scans](../use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto.md) and [ingestionOnly scans](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md) scans  with Grype. 
 
 #### Required Settings
 
@@ -253,6 +253,7 @@ You can set up a Security step with [Grype](https://github.com/anchore/grype) to
 * `container_project` — The image owner and project, for example `harness/delegate`
 * `container_tag` — The tag of the image to scan, for example `latest`
 * `container_type` — Set to `local_image`, `docker_v2`, `jfrog_artifactory`, or `aws_ecr`  
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 The following settings are also required, depending on the container type:
 + if `container_type` = `docker_v2`
@@ -267,26 +268,23 @@ The following settings are also required, depending on the container type:
 	- `container_access_token`: Password/token
 
 
-<!-- CONTAINERS --------------------------------------------------------------------------- -->
-
-#### Container Image scan settings
-
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 ```
 
 <StoLegacyContainer />
 
-
-<!-- REPOS --------------------------------------------------------------------------- -->
-
-#### Repository scan settings
-
 ```mdx-code-block
 import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 ```
 
 <StoLegacyRepo />
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
 
 </details>
 

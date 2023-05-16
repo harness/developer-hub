@@ -242,6 +242,21 @@
 	 color: var(--mod-ce-300);
 }
 
+.harness-search-module .CoveoFieldValue.CoveoFieldValueCET {
+	background: var(--mod-cet-100);
+	border: 1px solid var(--mod-cet-200);
+	color: var(--mod-cet-300);
+	&::before {
+		content: url('/img/icon_cet_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueCET .coveo-clickable {
+	color: var(--mod-cet-300);
+}
 .harness-search-module .CoveoFieldValue.CoveoFieldValueSTO {
     background: var(--mod-sto-100);
     border: 1px solid var(--mod-sto-200);
@@ -272,6 +287,23 @@
 }
 .harness-search-module .CoveoFieldValue.CoveoFieldValueSRM .coveo-clickable {
     color: var(--mod-srm-300);
+}
+
+
+.harness-search-module .CoveoFieldValue.CoveoFieldValueSEI {
+	background: var(--mod-sei-100);
+	border: 1px solid var(--mod-sei-200);
+	color: var(--mod-sei-300);
+	&::before {
+		content: url('/img/icon_sei_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueSEI .coveo-clickable {
+	color: var(--mod-sei-300);
 }
 
 .harness-search-module .CoveoFieldValue.CoveoFieldValuePlatform {
@@ -576,6 +608,13 @@
         height: 16px;
         margin-right: 4px;
     }
+	&[title="Continuous Error Tracking"]::before {
+        content: url('/img/icon_cet_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
     &[title="Cloud Cost Management"]::before {
         content: url('/img/icon_ccm_s.svg');
         display: inline-block;
@@ -618,6 +657,41 @@
         height: 16px;
         margin-right: 4px;
     }
+	&[title="Software Engineering Insights"]::before {
+        content: url('/img/icon_sei_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+	&[title="Software Supply Chain Assurance"]::before {
+        content: url('/img/icon_ssca_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+	&[title="Internal Developer Portal"]::before {
+        content: url('/img/icon_idp_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+	&[title="Infrastructure as Code Management"]::before {
+        content: url('/img/icon_iacm_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
+	&[title="Gitness"]::before {
+        content: url('/img/icon_gitness_s.svg');
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-right: 4px;
+    }
     &[title="Harness Platform"]::before {
         content: url('/img/icon_harness_s.svg');
         display: inline-block;
@@ -627,24 +701,42 @@
     }
 }
 
+/* [HDH-114] Cleaner Difference Between FG and NG Docs */
+.harness-search-module .CoveoFieldValue {
+	&:has(span[title*="FirstGen Docs"]) {
+		background-color: var(--gray-200);
+		border-color: var(--gray-200);
+	}
+	&:has(span[title*="NextGen Docs"]) {
+		background-color: var(--primary-3);
+		border-color: var(--primary-3);
+	}
+}
+
 .CoveoLogo {
     display: none !important;
 }
 
-
-@media screen and (max-width: 1399px) {
+/* TBD: needs a better design/solution for the responsiveness of the navbar */
+@media screen and (max-width: 1499px) {
     #searchBoxCoveo {
-		width: 280px;
+		width: 250px;
     }
 }
 
-@media screen and (max-width: 1299px) {
+@media screen and (max-width: 1399px) {
     #searchBoxCoveo {
 		width: 200px;
     }
 }
 
-@media screen and (max-width: 1199px) {
+@media screen and (max-width: 1349px) {
+    #searchBoxCoveo {
+		width: 150px;
+    }
+}
+
+@media screen and (max-width: 1299px) {
     #searchBoxCoveo {
 		// width: calc(100vw - 1025px);
 		width: 120px;
@@ -655,12 +747,58 @@
             font-size: 14px;
         }
     }
+	.navbar__logo {
+		display: flex;
+		align-items: center;
+		& > img {
+			width: 70%;
+			height: auto;
+		}
+	}
 }
 
-@media screen and (max-width: 1060px) {
-    #searchBoxCoveo {
-		display: none
+@media screen and (max-width: 1179px) {
+    .navbar__items {
+		font-size: 14px;
+		.button--cta, .button--primary {
+			font-size: 14px;
+			padding-left: 1em;
+			padding-right: 1em;
+		}
     }
+}
+
+@media screen and (max-width: 1079px) {
+    #searchBoxCoveo {
+		width: 80px;
+		// display: none
+		.magic-box-input > input {
+            font-size: 12px;
+        }
+    }
+	.magic-box .magic-box-clear {
+		// height: 12px !important;
+		width: 14px !important;
+		// line-height: 12px !important;
+	}
+	.CoveoSearchbox .magic-box .magic-box-clear-svg {
+		width: 8px !important;
+		// height: 10px !important;
+	}
+	.magic-box .magic-box-input .magic-box-underlay, .magic-box .magic-box-input>input {
+		padding: 12px 14px 12px 6px !important;
+	}
+	.magic-box .magic-box-suggestions {
+		min-width: 200px;
+	}
+}
+
+@media screen and (max-width: 1039px) {
+	.navbar__logo {
+		& > img {
+			width: 57%;
+		}
+	}
 }
 
 @media screen and (max-width: 996px) {
@@ -680,6 +818,9 @@
 	#searchResultsCoveo #coveo-search {
 		min-width: unset;
 	}
-	
+	.navbar__logo {
+		& > img {
+			width: 100%;
+		}
+	}
 }
-

@@ -1,12 +1,7 @@
 ---
 title: Use Harness Cloud build infrastructure
 description: You can use Harness-hosted build infrastructure for your Harness CI pipelines.
-
 sidebar_position: 20
-helpdocs_topic_id: ia5dwx5ya8
-helpdocs_category_id: rg8mrhqm95
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 With Harness Cloud you can run builds in isolation on Harness-hosted VMs that are preconfigured with the tools, packages, and settings commonly used in CI pipelines. Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure.
@@ -40,54 +35,35 @@ Refer to the following image specification README files for more information abo
 
 * [Linux amd64 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md)
 * [Linux arm64 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md)
-* [macOS image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-12-Readme.md)
+* [macOS image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-13-Readme.md)
 * [Windows Server 2019 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2019-Readme.md)
 
 You can include steps in your pipeline to specify a version of a tool installed on an image, lock the stage to a required version, or install additional tools and versions that aren't available on the image. These steps run on the host machine or run as separate Docker images.
 
 :::caution
 
-Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in **Lock versions or install additional tools** to prevent your pipeline from failing when the image changes.
+Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in [Lock versions or install additional tools](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
 
 :::
 
-<details>
-<summary>Specify versions</summary>
+### Specify versions
 
-If there are multiple versions of a tool installed on an image, you can specify the version to use in a step's **Command**.
-
-For example, with the Harness Cloud macOS build infrastructure, you could use the following command in a **Run** step to select an Xcode version:
+If there are multiple versions of a tool installed on an image, you can specify the version to use in a step's **Command**. For example, with the Harness Cloud macOS build infrastructure, you could use the following command in a **Run** step to select an Xcode version:
 
 ```
 sudo xcode-select -switch /Applications/Xcode_14.1.0.app
 ```
 
-:::caution
+However, Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in [Lock versions or install additional tools](#lock-versions-or-install-additional-tools) to prevent your pipeline from failing when the image changes.
 
-Harness Cloud machine images can change. If your pipeline relies on a specific version of a software, tool, or environment, use the instructions in **Lock versions or install additional tools** to prevent your pipeline from failing when the image changes.
+### Lock versions or install additional tools
 
-:::
-
-</details>
+If your build requires a specific version of a tool or a tool that isn't already available on the Harness Cloud image, you can use a step to install it directly or run it in a Docker image. There are a variety of steps you can use to do this, such as a [Run step](../run-ci-scripts/run-step-settings.md) or a [Plugin step](../use-drone-plugins/explore-ci-plugins.md).
 
 <details>
-<summary>Lock versions or install additional tools</summary>
+<summary>Example: Install Java 17</summary>
 
-If your build requires a specific version of a tool or a tool that isn't already available on the Harness Cloud image, you can use a step to install it directly or run it in a Docker image. There are a variety of steps you can use to do this, such as:
-
-* [Run step](../../ci-technical-reference/run-step-settings.md)
-* [Background step](../../ci-technical-reference/background-step-settings.md)
-* [GitHub Action plugin step](../../ci-technical-reference/ci-github-action-step.md)
-* [Bitrise plugin step](../../ci-technical-reference/ci-bitrise-plugin.md)
-* [Plugin step](../../ci-technical-reference/plugin-step-settings-reference.md)
-
-:::tip
-
-Use the [Bitrise plugin step](../../ci-technical-reference/ci-bitrise-plugin.md) to run Bitrise Integrations in your CI pipelines.
-
-:::
-
-In the following YAML example, an `Action` step runs the `actions/setup-java` GitHub Action to load Java 17, and then the **Run** step confirms the Java version.
+In the following YAML example, an [Action step](../use-drone-plugins/ci-github-action-step.md) runs the `actions/setup-java` GitHub Action to install Java 17, and then the **Run** step confirms the Java version.
 
 ```yaml
             steps:
@@ -115,6 +91,17 @@ In the following YAML example, an `Action` step runs the `actions/setup-java` Gi
                       fi
 ```
 
+:::tip
+
+You can also use the [Bitrise plugin step](../use-drone-plugins/ci-bitrise-plugin.md) to run Bitrise Integrations in your CI pipelines.
+
+:::
+
+</details>
+
+<details>
+<summary>Example: Pull a Docker image</summary>
+
 The following YAML example demonstrates how a **Run** step can use a Docker image (specified in `conectorRef` and `image`) to leverage tools available on that image that aren't available on the host image:
 
 ```yaml
@@ -137,7 +124,7 @@ The following YAML example demonstrates how a **Run** step can use a Docker imag
                   name: Welcome
                   identifier: Welcome
                   spec:
-                    connectorRef: my_dockerhub // Specify a Docker connector to pull an image from Docker.
+                    connectorRef: my_docker_hub // Specify a Docker connector to pull an image from Docker.
                     image: alpine // If no image is specified, the step runs on the host machine.
                     shell: Sh
                     command: Echo "Welcome to Harness CI"
@@ -145,7 +132,7 @@ The following YAML example demonstrates how a **Run** step can use a Docker imag
 
 :::caution
 
-Steps running in containers can't communicate with [Background steps](../../ci-technical-reference/background-step-settings.md) running on the Harness Cloud build infrastructure, because they do not have a common host.
+Steps running in containers can't communicate with [Background steps](../manage-dependencies/background-step-settings.md) running on the Harness Cloud build infrastructure, because they do not have a common host.
 
 :::
 
@@ -245,69 +232,4 @@ Harness Cloud machine images can change. If your pipeline relies on a specific v
 
 :::
 
-## Build private repos with Harness Cloud
-
-:::danger
-
-Whitelisting is only required if your code repository, Docker registry, or Artifactory registry isn't accessible by direct connection over the internet, such as those that are behind firewalls.
-
-:::
-
-You can use Harness Cloud build infrastructure with private repositories. However, if your codebase repository or Docker/Artifactory registry is not publicly accessible, you must whitelist the following IPs in your firewall:
-
-<!-- keep space between because users copy 1x1 -->
-```text
-34.171.8.178
-
-34.172.44.211
-
-34.28.94.170
-
-34.82.176.50
-
-35.199.170.16
-
-35.247.53.82
-
-34.94.207.230
-
-34.94.194.45
-
-34.102.51.149
-
-34.94.56.103
-
-34.82.155.149
-
-34.83.51.28
-
-35.230.70.231
-
-34.105.92.100
-
-35.233.187.42
-
-35.247.6.7
-
-34.83.106.43
-
-34.168.179.66
-
-34.145.10.183
-
-35.197.78.109
-
-35.247.11.84
-
-34.168.91.26
-
-35.230.82.250
-
-35.247.57.139
-
-34.83.191.187
-
-34.127.8.91
-
-35.247.40.237
-```
+<!-- whitelist removed - DOC-2875 -->

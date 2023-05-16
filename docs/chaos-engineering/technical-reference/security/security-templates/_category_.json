@@ -1,0 +1,13 @@
+{
+  "position": 3,
+  "label": "Security policies",
+  "collapsible": true,
+  "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"Security policies"
+   },
+  "customProps": {
+    "description": "Harness Chaos security policies"
+  }
+}

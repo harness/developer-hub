@@ -3,80 +3,8 @@ import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
-import TutorialCard, { CardItem, docType } from "./TutorialCard";
-
-/* Define the cards here */
-const FeaturedList: CardItem[] = [
-  {
-    title: "Your First Chaos Experiment on Kubernetes",
-    module: "ce",
-    icon: "img/icon_ce.svg",
-    description: (
-      <>Running a Chaos Experiment on Kubernetes for the first time.</>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/run-chaos-experiments/first-chaos-engineering",
-  },
-];
-
-const CEList: CardItem[] = [
-  {
-    title: "Your First Chaos Experiment on Kubernetes",
-    module: "ce",
-    icon: "img/icon_ce.svg",
-    description: (
-      <>Running a Chaos Experiment on Kubernetes for the first time.</>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/run-chaos-experiments/first-chaos-engineering",
-  },
-  {
-    title: "Chaos Experiment from a Blank Canvas",
-    module: "ce",
-    icon: "img/icon_ce.svg",
-    description: (
-      <>Create, run, observe and evaluate a custom chaos experiment.</>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "5min",
-    link: "/tutorials/run-chaos-experiments/chaos-experiment-from-blank-canvas",
-  },
-  {
-    title: "Integration with Harness CD",
-    module: "ce",
-    icon: "img/icon_ce.svg",
-    description: (
-      <>
-        Execute a chaos experiment as part of a Harness CD pipeline for
-        continuous resilience.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15min",
-    link: "/tutorials/run-chaos-experiments/integration-with-harness-cd",
-  },
-  {
-    title: "Your first chaos experiment execution using APIs",
-    module: "ce",
-    icon: "img/icon_ce.svg",
-    description: (
-      <>
-        Executing a chaos experiment on Kubernetes for the first time using
-        APIs.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/run-chaos-experiments/first-chaos-experiment-via-API",
-  },
-];
+import TutorialCard from "./TutorialCard";
+import { FeaturedList, CEList } from "./data/chaosEngineeringData";
 
 export default function CE() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -88,7 +16,7 @@ export default function CE() {
     //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
-        <h3>Run chaos experiments</h3>
+        <h3>Ensure app and infrastructure resilience</h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
@@ -140,8 +68,7 @@ export default function CE() {
                 className={clsx("button button--lg", styles.btn, styles.btnCE)}
                 to="#all-tutorials"
               >
-                Tutorials
-                <img src={`${baseUrl}img/Stroke.svg`} />
+                Tutorials <i className="fa-solid fa-arrow-right"></i>
               </Link>
               <Link href="https://harness.io/products/chaos-engineering">
                 <button className={styles.link}>Learn more</button>
@@ -154,11 +81,11 @@ export default function CE() {
         </div>
       </div>
       <div className={styles.subSection}>
-        <h3>Featured Tutorials</h3>
+        <h3>Featured tutorials</h3>
         <TutorialCard FeatureList={FeaturedList} featuredCard={true} />
       </div>
       <div className={styles.subSection}>
-        <h3 id="all-tutorials">All CE Tutorials</h3>
+        <h3 id="all-tutorials">Harness Chaos Engineering tutorials</h3>
         <TutorialCard FeatureList={CEList} />
       </div>
     </div>

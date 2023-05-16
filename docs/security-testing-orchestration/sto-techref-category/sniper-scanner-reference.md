@@ -25,16 +25,25 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
   - `default`  — Run a basic sniper scan on a target
   - `web`  — Sniper Stealth Mode
   - `stealth`  — Run the web based scan
-
-```mdx-code-block
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
-<StoSettingFailOnSeverity />
-
-### Instance scan settings
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 ```mdx-code-block
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
 ```
 
 <StoLegacyInstance />
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
+
+#### Fail on Severity
+
+```mdx-code-block
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+```
+<StoSettingFailOnSeverity />
+
+

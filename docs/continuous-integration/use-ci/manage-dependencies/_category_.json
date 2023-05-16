@@ -1,0 +1,11 @@
+{
+   "label":"Manage dependencies",
+   "position": 70,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Manage dependencies"
+   }
+}

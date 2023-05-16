@@ -1,21 +1,169 @@
 ---
-title: Chaos Engineering
+title: Chaos Engineering release notes
+sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-02-07T10:00
+date: 2023-05-04T10:00
 sidebar_position: 9
 ---
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+Review the notes below for details about recent changes to Harness Chaos Engineering, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). 
 
-Harness Chaos Engineering is updated regularly in Harness SaaS. Review the notes below for details about recent changes.
-
-:::note
-Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
-
-Additionally, the release notes below are only for NextGen SaaS. FirstGen SaaS release notes are available [here](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes) and Self-Managed Enterprise Edition release notes are available [here](/release-notes/self-managed-enterprise-edition).
+:::info note
+Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## February 22, 2023, version 0.8.4
+## Latest - May 5, 2023, version 0.11.1
 
-### What’s new
+```mdx-code-block
+<Tabs>
+  <TabItem value="What's new">
+```
+
+* Allow saving of experiment with inactive infrastructure. (CHAOS-1573)
+    * HCE now allows you to save an experiment if the infrastructure is inactive, with the saveExperiment API.
+
+* The search field on the experiment runs page has been updated to **Search for experiment run ID** to make it clear that it does not search on the name of the experiment run. (CHAOS-1528)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+* Introduction of GameDays in HCE Module. (CHAOS-643)
+
+    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday).
+    * This feature is currently behind a feature flag named `CHAOS_GAMEDAY_ENABLED`. Contact Harness Support to enable the feature.
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+* This release does not include any fixed issues.
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### April 25, 2023, version 0.10.3
+
+##### What's new
+
+* **Schedule** tab to schedule cron jobs (CHAOS-710)
+    * A **Schedule** tab has been added to the experiment builder page where you can select from cron and non-cron experiments, schedule a cron experiment, **Save** it, and then **Run** it. Previously, cron experiments could not be saved; they were created and run.
+
+
+* **Save** button when creating, editing, and cloning an experiment (CHAOS-1409)
+    * After creating, editing, or cloning an experiment, you can **Save** and then **Run** the experiment. The **Run** button is disabled for unsaved changes. Previously, the **Run** button would save and execute the experiment.
+
+
+* New status `Completed_with_probe_failure` to show probe failure (CHAOS-1431)
+    * When an experiment completes execution, the resilience score may be 0. This means the experiment was successful and chaos was injected into the application, but the probes failed. The `Completed_with_probe_failure` status clearly indicates probe failure.
+
+
+* Number of service accounts in the YAML manifests reduced to 3 (CHAOS-1306)
+    * For ease of management and configuration, the number of service accounts provided in the YAML manifest is reduced to 3 from 6. 
+
+
+* New access control **Execute** to execute chaos experiments (CHAOS-1279)
+    * A new access control, **Execute** has been added, in addition to **View**, **Create/Edit**, and **Delete**. **Execute** allows you to execute the chaos experiments, whereas **Create/Edit** will only allow you to create a chaos experiment or edit an existing chaos experiment. The newly added access control provides granularity while working with chaos experiments. 
+
+
+* **Apply changes** and **Discard** buttons added to the **Experiment builder** screen
+    * After specifying values for the **Target application**, **Tune faults**, and **Probes**, you need to select the **Apply changes** button to apply the changes to the experiment. Otherwise, you can choose to **Discard** the changes. 
+
+
+* Delete experiment confirmation notification (CHAOS-1434)
+    * When you delete an experiment, a notification stating "The experiment has been deleted successfully" appears on the user interface indicating the successful deletion of the experiment.
+
+
+##### Early access
+
+* This release does not include any early access features.
+
+
+##### Fixed issues
+
+* When connecting to an existing chaos hub, selecting a connector from the **Organization** failed to load the page. This has been fixed. (CHAOS-1456)
+
+
+* When an experiment terminated with an error but the probes passed, the user interface showed the experiment as **Completed**. This has been fixed. (CHAOS-1410)
+
+
+#### April 4, 2023, version 0.9.6
+
+##### What’s new
+
+* **Update** button to see available updates for a chaos infrastructure (CHAOS-1069)
+    * This release displays an **Update** button alongside the chaos infrastructure. When you click this button, it shows if an update is available for the infrastructure.
+
+
+* Clicking an experiment goes to the experiment builder page (CHAOS-995)
+    * This release takes you to the **Experiment Builder** page when you click the chaos experiment, instead of showing the **Overview** page. This way, you can directly edit the chaos experiment, save it, and run it.
+
+
+ 
+* Replica pods are deleted when a chaos infrastructure is disabled (CHAOS-1290)
+    * This release deletes all replica pods, including the subscriber pod, when the chaos infrastructure is disabled. You can delete the pods from the user interface by clicking **Disable** which displays a set of commands you can execute on your terminal. The commands vary depending on the mode of deployment (cluster-mode or namespace-mode).
+
+
+* Deploying setup on new chaos infrastructures has **‘X’** and **‘Done’** buttons (CHAOS-1289)
+    * This release adds the **X** (Cancel) and **Done** buttons to the **Deploy the setup** page when enabling chaos on new infrastructure. The **X** button cancels the deployment of chaos on new infrastructure. The **Done** button deploys chaos on the new infrastructure. 
+
+
+* Message displayed when no matching infrastructure is found (CHAOS-1289)
+    * This release displays an alert message that states **"No Kubernetes chaos infrastructures found"** when you search for an infrastructure in the search bar on the Kubernetes infrastructure screen and that infrastructure doesn’t exist. Previously, when an infrastructure was not found, an empty screen used to be displayed.
+ 
+
+* Manifest has a yml extension when enabling chaos on new infrastructure (CHAOS-1289)
+    * This release downloads the manifest with the yml extension when you **Enable chaos** **On new infrastructures**, rather than with the yaml extension.
+ 
+
+* Description field in the chaos infrastructure doesn’t display if not populated (CHAOS-1289)
+    * This release doesn’t display the description of the chaos infrastructure on the screen if you do not enter a description while creating a chaos infrastructure. Previously, the chaos infrastructure would show the field **Description** with no contents on the screen. 
+ 
+
+* Upgrade manifest downloads the manifest with the yml extension (CHAOS-1190)
+    * This release downloads the upgraded manifest file with the yml extension when you click **re-download the manifest**. 
+ 
+
+* Exceeding limit of 1,000 experiments allows scheduling chaos experiments and connecting to new (or existing) infrastructure (CHAOS-1261)
+    * This release displays a message stating that the resource limits have been reached once you exceed the 1,000 experiment creation limit. You will be able to schedule chaos experiments and connect to chaos infrastructures (new and existing ones) even after you hit the limit of 1000 experiments in chaos.
+ 
+
+* Reduced response time of the communication chaos module and other Harness services (CHAOS-1262)
+    * This release reduces the response time when the chaos module communicates with other Harness services. This is because the chaos module doesn’t use intermediate gateways for communication, but rather hits the Harness service directly. 
+ 
+
+* **All runs** screen changed to **Run history** (CHAOS-995)
+    * This release has changed the **All runs** screen name to **Run history**. The **Run history** screen displays all the runs of a chaos experiment. Clicking on a specific run of the chaos experiment displays the fault executed, the status of the experiment, the status of the probes, the fault weights, and the duration of the experiment.
+
+
+##### Early access
+ 
+* This release does not include any early access features.
+
+
+##### Fixed issues
+
+* When tuning the target application, the OpenShift cluster timed out before fetching the information from your cluster. This issue is fixed. The duration of timeout has been increased. (CHAOS-1299)
+ 
+* When the labels of a chaos experiment, such as **Run by** included special characters, the experiment would not run because Kubernetes doesn’t allow special characters in the labels. This issue is fixed. The labels (which are a part of the manifest file) are encoded before sending the experiment to the cluster and decoded while presenting on the user interface. (CHAOS-1281)
+
+
+#### February 22, 2023, version 0.8.4
+
+##### What’s new
 
 * Polling model to communicate between chaos infrastructure and the control plane (CHAOS-644)
     * This release updates the method of communication from web socket to the polling model. This allows the chaos infrastructure to handle higher loads with better scalability.
@@ -43,7 +191,7 @@ From this release onward, chaos infrastructures will communicate with the contro
     * This release adds search functionality when selecting an experiment template from chaos hub. You can also filter the experiments you want to view or select from the chaos hub. This allows you to select and run your experiment without searching multiple experiments.
 
 * Chaos infrastructure manifest file extension changed to .yaml (CHAOS-1037)
-    * This release changes the downloadable chaos infrastructure manifest file extension from .yml to .yaml.
+    * This release changes the downloadable chaos infrastructure manifest file extension from yml to yaml.
 
 * **Set fault weights** tab moved inside **Tune fault** tab (CHAOS-1077)
     * This release moves the **Set fault weights** tab, which was previously a separate tab, into the **Tune fault** tab. This allows you to tune the fault parameters and set fault weights in a single step rather than navigating through multiple tabs.
@@ -51,11 +199,11 @@ From this release onward, chaos infrastructures will communicate with the contro
 * Support for the GitLab connector (CHAOS-35)
     * This release introduces a new connector called the GitLab connector to connect to a chaos hub.
 
-### Early access
+##### Early access
 
 * This release does not include any early access features.
 
-### Fixed issues
+##### Fixed issues
 
 * When two faults were being executed in parallel, the timestamp in the **View detailed execution** showed only for the first fault. The second fault showed an empty timestamp field. This issue has been fixed. (CHAOS-1064)
  
@@ -72,17 +220,17 @@ From this release onward, chaos infrastructures will communicate with the contro
 * In chaos hubs, the number of experiments in the category tab for the chaos experiments overflowed. This issue is fixed. (CHAOS-1053)
 
 
-## February 7, 2023, version 0.7.3
+#### February 7, 2023, version 0.7.3
 
-### What’s new
+##### What’s new
 
 * This release does not include any new features.
 
-### Early access
+##### Early access
 
 * This release does not include any early access features.
 
-### Fixed issues
+##### Fixed issues
 
 * When the connection between the control plane (user interface) and your cluster was broken (or closed), the chaos infrastructure displayed ‘disconnected’ status with the incorrect message "chaos infrastructure is already connected." Now, it has been fixed such that chaos infrastructure displays ‘disconnected’ status only after confirming the status of the connection using the Ping-Pong model, i.e., the control plane sends a message to the user cluster, and if the user cluster does not respond to it, the status is ‘disconnected’. Consequently, the message "chaos infrastructure is disconnected" is displayed. (CHAOS-1113)
 
@@ -92,9 +240,9 @@ From this release onward, chaos infrastructures will communicate with the contro
 This release introduces the Ping-Pong model, which requires the users to upgrade their existing chaos infrastructures to the latest version by re-downloading the chaos infrastructure manifest from the user interface and applying it to the respective cluster.
 :::
 
-## January 17, 2023, version 0.7.2
+#### January 17, 2023, version 0.7.2
 
-### What's new
+##### What's new
 
 * Resilience tab introduced on the pipeline execution screen (CHAOS-963)
     * This release adds a resilience tab, which displays the experiment results as a list of probes, their logs (descriptions), and probe status. Instead of navigating to the **View detailed execution** section of the experiment, you can now view the results of all the experiments on the pipeline execution screen. 
@@ -129,11 +277,11 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 * Every run of an experiment is clickable to view detailed execution (CHAOS-1032)
     * On the **Chaos Experiments** tab, you could see the detailed execution of an experiment's runs by clicking the three vertical dots corresponding to a run, and then clicking **View run**. In this release, you can also directly click the experiment run to view its detailed execution.
 
-### Early access
+##### Early access
 
 * This release does not include any early access features.
 
-### Fixed issues
+####3 Fixed issues
 * Searching for chaos experiments by using the search bar showed only those experiments that had been run at least once. Now, when you search for an experiment, the search results include those experiments that were aborted and experiments that were saved but not run. (CHAOS-916)
 * When specifying the target application parameters through a YAML manifest, if you left some parameters empty, the user interface of the target application page would stop responding. This has been fixed so that, irrespective of the values that you enter in the YAML manifest, you can change the values of the target application on the user interface. (CHAOS-970)
 * In a chaos experiment, the fault library incorrectly showed fault categories and fault labels even when the hub was disconnected. The fault library persisted data from the previously selected chaos hub. This is now fixed. A disconnected chaos hub now displays the message “No faults found in the selected hub.” (CHAOS-971)
@@ -145,10 +293,14 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 * In CRON experiments, the scheduled run time would always be shown in GMT. Now, it has been fixed to show the run time in your browser’s time zone. (CHAOS-1035)
 * The parameters in the YAML manifest of different runs of the same chaos experiment were inconsistent with the changes made (if any) in their respective runs. Now, it has been fixed.
 
+</details>
 
-## December 23, 2022, version 0.6
+<details>
+<summary>2022 releases</summary>
 
-### What’s new
+#### December 23, 2022, version 0.6
+
+##### What’s new
 
 * Optimized listWorkflow and listWorkflowRun queries in the chaos manager (CHAOS-860)
     * This release optimizes the listWorkflow and listWorkflowRun queries in the chaos manager by only fetching those experiments that the user requests, instead of loading all the experiments at once.
@@ -165,10 +317,10 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 * Edit chaos experiment is separated into two action components (CHAOS-685)
     * This release divides the **Edit experiment** action into two actions: **Edit Experiment** and **Clone Experiment**. The **Edit Experiment** action helps you make changes to the current (or selected) experiment. The **Clone Experiment** action helps you create a new experiment from an already existing experiment. The cloned experiment retains the same configuration as the original experiment with the ability to tune the configurations if required.
 
-### Early access
+##### Early access
 * This release does not include any early access features.
 
-### Fixed issues
+##### Fixed issues
 * When a component on the user interface was missing due to incompatibilities, the page would stop responding. Now it has been fixed so that instead of the page crashing, the component field shows as empty. (CHAOS-843)
 * Experiments executed and triggered by respective categories (a pipeline, a scheduled CRON job, or a user) are correctly shown. (CHAOS-800)
 * When a chaos experiment contains characters such as ‘ ‘, ‘/’, and so on, logs are correctly parsed and displayed on the screen. The execution is encoded before being sent to the control plane and decoded after being received by the user interface. (CHAOS-854)
@@ -181,9 +333,9 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 * The term “agent” was changed to “infrastructure”. While selecting (or creating) an infrastructure, the search bar showed all available infrastructures irrespective of the search string entered by the user in the search bar. (CHAOS-920) 
 * When a CRON experiment was stopped by the user, the current run used to stop, but the upcoming (and subsequent) runs were not being affected by the stop. It has been fixed now so that stopping an experiment will stop the upcoming schedules as well. (CHAOS-713)
 
-## December 2, 2022, version 0.4.2
+#### December 2, 2022, version 0.4.2
 
-### What’s new
+##### What’s new
 
 * Provision to update chaos hub details (CHAOS-699)
     * This release allows you to update the details (such as name, Git connector, repository name, and branch name) of a connected chaos hub. 
@@ -209,11 +361,11 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 * Configurable response timeout for HTTP probes
     * This release adds a new response timeout parameter for HTTP probes in the user interface. The response timeout is in units of seconds. You can use this parameter to specify timeouts during HTTP probe health checks during chaos fault execution.
 
-### Early access
+##### Early access
 
 * This release does not include any early access features.
 
-### Fixed issues
+##### Fixed issues
 
 * Enterprise chaos hub appeared in the search results irrespective of the terms searched. Now it has been fixed.
 * Details of a previously connected chaos infrastructure were prefilled when connecting to a new chaos infrastructure. Now it has been fixed. (CHAOS-777)
@@ -224,20 +376,20 @@ This release introduces the Ping-Pong model, which requires the users to upgrade
 * The expected resilience score changed to `NaN` (not a number) when it was overridden. Now it has been fixed. (CHAOS-791)
 * The resource-type field was previously not available. Now, it has been made available and you can use this field to abort a chaos experiment in the audit trail. (CHAOS-714)
 
-## November 14, 2022
+#### November 14, 2022
 
-### Early access
+##### Early access
 
-The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for testing. To be part of this testing, contact [Harness Support](mailto:support@harness.io). HCE documentation, which includes user guides and [tutorials](https://developer.harness.io/tutorials/run-chaos-experiments), is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in [Your First Chaos Experiment Run](https://developer.harness.io/tutorials/run-chaos-experiments/first-chaos-engineering).
+The Harness Chaos Engineering (HCE) module, which you can use to perform chaos experiments on your applications and infrastructure, is now available for testing. To be part of this testing, contact [Harness Support](mailto:support@harness.io). HCE documentation, which includes user guides and [tutorials](https://developer.harness.io/tutorials/chaos-experiments), is available on the Harness Developer Hub. Harness recommends that you gain familiarity with the chaos experimentation workflow in HCE by following the instructions in [Your First Chaos Experiment Run](https://developer.harness.io/tutorials/chaos-experiments/first-chaos-engineering).
 
-### Known issues
+##### Known issues
 
-#### Chaos hub
+###### Chaos hub
 
 1. Github is the only Git provider for chaos hubs.
 2. Details for an already connected chaos hub can’t be updated.
 
-#### Chaos infrastructure
+###### Chaos infrastructure
 
 1. Chaos infrastructure can't be installed through Harness Delegate.
 2. Logs for chaos infrastructure can’t be viewed.
@@ -245,7 +397,7 @@ The Harness Chaos Engineering (HCE) module, which you can use to perform chaos e
 4. The properties of the environment to which the chaos infrastructure belongs can’t be updated.
 5. Configuring chaos infrastructure doesn’t provide support for Linux and Windows.
 
-#### Chaos experiments
+###### Chaos experiments
 
 1. Experiments with parallel faults can’t be created.
 2. Probe tunables can’t be updated or edited.
@@ -255,7 +407,7 @@ The Harness Chaos Engineering (HCE) module, which you can use to perform chaos e
 6. A chaos experiment can’t be pushed from Azure to Got
 7. SCM experiment push logs can’t be audited.
 
-#### CI Pipeline integration
+#####3 CI Pipeline integration
 
 1. Optional assertion for chaos step failure can’t be provided during pipeline integration.
 2. The chaos error type(s) can’t be selected in a failure strategy.
@@ -265,3 +417,5 @@ The Harness Chaos Engineering (HCE) module, which you can use to perform chaos e
 6. The experiment execution can’t be viewed from step output during the experiment run.
 7. Propagation can’t be aborted from chaos step to experiment execution.
 8. Information about propagation can’t be gained from pipeline to experiment (for audit purposes).
+
+</details>

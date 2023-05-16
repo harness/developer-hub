@@ -201,7 +201,7 @@ The following topics will walk you through how Harness implements common deploym
 * [​AWS Elastic Container Service (ECS)](../continuous-delivery/aws-deployments/ecs-deployment/ecs-deployments-overview.md)
 * [AWS Lambda](/docs/category/aws-lambda-deployments)
 * [​Azure](/docs/category/azure-deployments-and-provisioning)
-* [CI/CD: Artifact Build and Deploy Pipelines](docs/category/cicd-artifact-build-and-deploy-pipelines)
+* [CI/CD: Artifact Build and Deploy Pipelines](#cicd-artifact-build-and-deploy-pipelines)
 * [Google Cloud](/docs/category/google-cloud)
 * [Native Helm](/docs/category/native-helm-deployments)
 * [​IIS (.NET)](../continuous-delivery/dotnet-deployments/iis-net-deployment.md)
@@ -667,7 +667,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Harness includes both [Kubernetes](../first-gen-quickstarts/kubernetes-quickstart.md) and [Native Helm](../continuous-delivery/concepts-cd/deployment-types/helm-deployments-overview.md) deployments, and you can use Helm charts in both. Here's the difference:
 
-* Harness [Kubernetes Deployments](../continuous-delivery/kubernetes-deployments/kubernetes-deployments-overview.md) allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.  
+* Harness [Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview.md) allow you to use your own Kubernetes manifests or a Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster.  
 Harness Kubernetes deployments also support all deployment strategies (Canary, Blue/Green, Rolling, etc).
 * For Harness [Native Helm Deployments](../continuous-delivery/helm-deployment/helm-deployments-overview.md), you must always have Helm and Tiller (for Helm v2) running on one pod in your target cluster. Tiller makes the API calls to Kubernetes in these cases. You can perform a Basic or Rolling deployment strategy only (no Canary or Blue Green). For Harness Native Helm v3 deployments, you no longer need Tiller, but you are still limited to Basic or Rolling deployments.
 	+ **Versioning:** Harness Kubernetes deployments version all objects, such as ConfigMaps and Secrets. Native Helm does not.

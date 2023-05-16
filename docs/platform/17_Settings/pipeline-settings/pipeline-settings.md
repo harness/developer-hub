@@ -1,5 +1,5 @@
 ---
-title: Pipeline Settings
+title: Pipeline settings
 description: This topic describes centralized pipeline settings.
 sidebar_position: 3
 ---

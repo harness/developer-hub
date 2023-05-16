@@ -1,5 +1,5 @@
 ---
-title: Looping Strategies Overview -- Matrix, Repeat, and Parallelism
+title: Looping strategies overview -- matrix, repeat, and parallelism
 description: Looping strategies enable you to run a Stage or Step multiple times with different inputs. Looping speeds up your pipelines and makes them easier to read and maintain.
 # sidebar_position: 2
 helpdocs_topic_id: eh4azj73m4
@@ -14,7 +14,7 @@ Looping strategies enable you to run a Stage or Step multiple times with differe
 * You want to build artifacts for multiple JDK versions in the same Build Stage.
 * You have a Build Pipeline with 20 unit tests. To speed up execution, you want to run the tests in parallel across 4 jobs that run 5 tests each.
 
-### Looping Strategy Types
+### Looping strategy types
 
 Harness supports the following strategies.
 
@@ -89,12 +89,22 @@ To run steps on multiple target hosts, such as in a CD stage that performs a Dep
 repeat:  
   items: <+stage.output.hosts>
 ```
-For more information, go to [Run a step on multiple target instances](../../continuous-delivery/cd-execution/cd-general-steps/run-a-script-on-multiple-target-instances.md).
+For more information, go to [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances/).
+
+### Looping strategy as a runtime input
+
+Looping strategies can be defined as runtime inputs in pipelines and templates at stage, step, and step group levels.
+
+Here's a video that explains how to define looping strategy as a runtime input:
+
+<!-- Video:
+https://harness-24.wistia.com/medias/79nqqvqybt-->
+<docvideo src="https://harness-24.wistia.com/medias/79nqqvqybt" />
 
 ### See also
 
 * [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
 * [Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)
 * [Speed Up CI Test Pipelines Using Parallelism](../8_Pipelines/speed-up-ci-test-pipelines-using-parallelism.md)
-* [Optimizing CI Build Times](../../continuous-integration/troubleshoot/optimizing-ci-build-times.md)
+* [Optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times.md)
 

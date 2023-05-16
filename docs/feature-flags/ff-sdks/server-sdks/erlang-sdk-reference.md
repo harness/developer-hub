@@ -1,14 +1,16 @@
 ---
-title: Erlang SDK Reference
+title: Erlang SDK reference
 description: This topic describes how to use the Harness Feature Flags Erlang SDK. For getting started quickly, you can use our sample code from the Erlang SDK README.
 sidebar_position: 15
 ---
+
+import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
 This topic describes how to use the Harness Feature Flags Erlang SDK for your Erlang or Elixir based application. 
 
 For getting started quickly:
 
-1. For **Erlang** based applications, you can clone our sample Erlang application in [GitHub](https://github.com/harness-apps/ff-erlang-server-sample) below.
+1. For **Erlang** based applications, you can clone our sample Erlang application in [GitHub](https://github.com/harness-apps/ff-erlang-server-sample).
 2. For **Elixir** based applications, you can clone our sample Elixir application in [GitHub](https://github.com/harness/ff-elixir-server-sample).
 
 ## Before you begin
@@ -16,7 +18,7 @@ For getting started quickly:
 Make sure you read and understand:
 
 * [Feature Flags Overview](/docs/feature-flags/ff-onboarding/cf-feature-flag-overview)
-* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/ff-getting-started/getting-started-with-feature-flags)
+* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
 * [Client-Side and Server-Side SDKs](/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks)
 * [Communication Strategy Between SDKs and Harness Feature Flags](/docs/feature-flags/ff-sdks/sdk-overview/communication-sdks-harness-feature-flags)
 
@@ -37,8 +39,8 @@ The current version of this SDK is **1.0.0**.
 
 To follow along with our test code sample, make sure you:
 
-* [Create a Feature Flag](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag) on the Harness Platform called `harnessappdemodarkmode`.
-* [Create a server SDK key](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-an-sdk-key/#create-an-sdk-key) and made a copy of it.
+* [Create a Feature Flag](/docs/feature-flags/ff-creating-flag/create-a-feature-flag) on the Harness Platform called `harnessappdemodarkmode`.
+* [Create a server SDK key](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key) and made a copy of it.
 
 ## Install the SDK
 
@@ -135,7 +137,7 @@ To initialize the Erlang SDK:
 Targets are used to control which users see which variation of a Feature Flag. For example, if you want to do internal testing, you can enable the flag for some users but not others. When creating a target, you give it a name and a unique identifier. Targets are often users, but you can create a target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
-For more information about targets, go to [Target Users With Flags](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags).
+For more information about targets, go to [Target Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
 To create a target, create a map and add the following keys:
 
@@ -262,6 +264,8 @@ Below are examples of evaluating different types of flag variations for Erlang a
 ## Test your app is connected to Harness
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the flag on and off. The SDK polls for changes every 60 seconds by default. Check your app after this interval to verify if the flag variation displayed is updated with the variation you toggled. 
+
+<Sixty />
 
 ## Close the SDK
 

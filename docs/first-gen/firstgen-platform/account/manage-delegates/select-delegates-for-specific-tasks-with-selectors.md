@@ -21,11 +21,12 @@ In a few cases, you might want Harness to select specific Delegates. In these ca
 
 In this topic:
 
-* [Review: Implicit and Custom Selectors](#review-implicit-and-custom-selectors)
-* [Review: How Selectors are Used](#review-how-selectors-are-used)
-* [Step 1: Create a Selector](#step-1-create-a-selector)
-* [Step 2: Select Delegates Using Selectors](#step-2-select-delegates-using-selectors)
-* [See Also](#see-also)
+- [Review: Implicit and Custom Selectors](#review-implicit-and-custom-selectors)
+- [Review: How Selectors are Used](#review-how-selectors-are-used)
+  - [Pre-deployment Steps](#pre-deployment-steps)
+- [Step 1: Create a Selector](#step-1-create-a-selector)
+- [Step 2: Select Delegates Using Selectors](#step-2-select-delegates-using-selectors)
+- [See Also](#see-also)
 
 ## Review: Implicit and Custom Selectors
 

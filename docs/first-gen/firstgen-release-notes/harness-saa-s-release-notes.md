@@ -16,15 +16,121 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### May 04, 2023, version 79214
+
+#### What's new
+
+This release does not include new features. 
+
+#### Early access
+
+This release does not include early access features. 
+
+#### Fixed issues
+
+- Resolved a null pointer exception when the Canary Deployment step is initialized with the Helm manifest type. (CDS-59214)
+- Users cannot use Harness secret as LDAP password in FirstGen. (PL-32597, ZD-42655)
+  A code enhancement fixed the issue.
+
+### April 22, 2023, version 79111
+
+#### What's new
+
+- Switching accounts now loads accounts on scroll. This increases the modal load time when there are more accounts to load. (PL-30467)
+
+#### Early access
+
+This release does not include early access features. 
+
+#### Fixed issues
+
+- Canary Delete step during rollback deleting the primary deployment. (CDS-58661, ZD-42392)
+  
+	This occurred when the user skipped the dry run in the Canary Deployment step, and Harness was unable to process the manifest.yaml file during error handling. This resulted in the storage of the primary resource name as the canary workload name.
+	
+	The issue has been resolved, and Harness now relies on release history instead of populating the canary workload if there is an error in the deployment manifest and the dry run is skipped.
+- When an app was removed it was still returning inside the GraphQL query result for a short period of time. (CDS-54879, ZD-40375)
+  
+	We added new functionality to verify each appId before returning the user group GraphQL. If the appId does not exist it's removed from the response. 
+	
+	This change is behind the feature flag `SPG_GRAPHQL_VERIFY_APPLICATION_FROM_USER_GROUP`.
+
+### April 10, 2023, version 79015
+
+#### What's new
+
+- Harness recommends that you use the `kubelogin` auth plugin to authenticate the Google Kubernetes Engine (GKE) cluster with Kubernetes version 1.22 or later. (CDS-52514)
+  
+  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate Kubernetes cluster logins. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For Harness Azure cloud providers connecting to AKS with Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
+
+  The Harness Google Cloud cloud provider (connecting to GKE) supports two authentication types. For each authentication type, the following dependencies must be installed on your Harness delegate. It they are missing, Harness will follow the old auth provider format.
+
+  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary.
+  * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
+- Users can view only their services in the **Overview** page and deployments in the **Deployments** page (CDS-50514)
+	In the main dashboard's **Overview**, Harness now automatically filters the **Service Instances** panel to show only those services that the currently logged in user is authorized to view.
+	
+	In the main dashboard's **Deployments**, Harness now automatically filters the deployments to show only those deployments that the currently logged in user is authorized to view.
+	
+	This makes it easier for you to find your services.
+
+#### Early access
+
+- Pipelines in different projects are now independent. (CDS-55830, ZD-41377)
+
+	This change is behind the feature flag `PROJECT_SCOPED_RESOURCE_CONSTRAINT_QUEUE`.
+	
+	Pipelines were waiting on resource constraints although no other deployment was running with the same service and infrastructure definition combination. 
+	
+	Resource Constraints were scoped too broadly, so users' pipelines went into a wait state.
+	
+	This was because of other pipelines in other projects with the same infrastructure configuration. 
+	
+	This has now been changed by scoping resource constraints to the project.
+
+#### Fixed issues
+
+This release does not include any fixed issues.
+
+### March 31, 2023, version 78914
+
+#### Early access
+
+Permissions-based filtering of service instances on the Main Dashboard (CDS-50514)
+
+The Service Instances panel on the Overview screen and the Instances panel on the Services screen show only those service instances for which the user has `Read` permissions. This feature is behind the feature flag `SPG_SERVICES_OVERVIEW_RBAC`. To enable the feature flag, contact Harness Support.
+
+#### What's new
+
+- Harness recommendeds that you use the `kubelogin` auth plugin to authenticate the Azure Kubernetes Service (AKS) cluster with Kubernetes version 1.22 or later. (CDS-52513)
+  
+  The open source community requires that all provider-specific codes that currently exist in the OSS codebase must be removed starting from version 1.26. You can now use client-go credential plugins to authenticate a Kubernetes cluster login. Auth Provider is deprecated for Kubernetes version 1.22 or later, and completely unsupported for versions 1.26 or later. For the Harness Azure cloud provider connecting to Kubernetes version 1.22 or later, we recommend using the `kubelogin` auth plugin for authentication.
+
+  The Harness Azure cloud provider supports four authentication types when used with AKS. For each authentication type, the following dependencies must be installed on your Harness delegate. If they are not installed, Harness will follow the old auth provider format.
+
+  * `SERVICE_PRINCIPAL_SECRET`: Add `kubelogin` binary.
+  * `SERVICE_PRINCIPAL_CERT`: Requires additional dependency on Azure CLI. Therefore, we use the old auth provider to authenticate AKS cloud provider. 
+  * `MANAGED_IDENTITY_SYSTEM_ASSIGNED`: No need to add any dependency.
+  * `MANAGED_IDENTITY_USER_ASSIGNED`: No need to add any dependency.
+- The Harness Continuous Delivery (CD) UI now displays only your services in the **Main Dashboard** page. (CDS-50514)
+  
+  The main dashboard view automatically filters your services when you log into CD.
+
+  ![](static/main-dashboard.png)
+
+#### Fixed issues
+
+This release does not include fixed issues.
+
 ### March 24, 2023, version 78817
 
 #### Early access
 
-This release does not include any early access features.
+This release does not include early access features.
 
 #### What's new
 
-This release does not include any early access features.
+This release does not include new features.
 
 #### Fixed issues
 
@@ -36,7 +142,7 @@ This release does not include any early access features.
 
 #### Early access
 
-- Large repositories are now supported for [Azure Repo](https://developer.harness.io/docs/platform/connectors/connect-to-a-azure-repo/). This functionality is behind a feature flag, `OTIMIZED_GET_FETCH_FILES`.
+- Large repositories are now supported for [Azure Repo](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo). This functionality is behind a feature flag, `OTIMIZED_GET_FETCH_FILES`.
 
 	Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
@@ -69,6 +175,9 @@ This release does not include any early access features.
   Harness was not handling the proxy use case.
   
   Now Harness handles the use case by adding the username and password to the HTTP client.
+- Unable to fetch the correct Google Cloud Storage (GCS) artifacts when manually triggering the pipeline though the correct artifacts were being listed in the **Manually Select An Artifact** dialog's **Artifact** field list. (CDS-53074, ZD-39446)
+  
+  This issue is fixed.
 
 ### February 23, 2023, version 78507
 
@@ -330,7 +439,7 @@ Delegate: 77609
 
 #### Fixed issues
 
-* Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md). (DEL-4888)
+* Adopted the use of an immutable image for the delegate that is installed by default in newly created accounts. For more information on new delegate features including auto-update, see [Delegate Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md). (DEL-4888)
 * Removed the delegate dependency on Java driver component `mongo-java-driver` . This eliminates vulnerability [CVE-2021-20328](https://nvd.nist.gov/vuln/detail/CVE-2021-20328) affecting client-side field level encryption (CSFLE). (DEL-5308)
 * Changed the base image that the non-legacy delegate uses to `redhat/ubi8-minimal:latest`. This ensures that each release includes all OS-level security updates. (DEL-5386)
 * Disabling the feature flag `LDAP_SECRET_AUTH` restricts referencing secrets for LDAP connection. (PL-29668)  
@@ -821,8 +930,6 @@ The discovery process for immutable Delegates is limited to checking the followi
 
 #### Fixed issues
 
-* Python Script failed when using Local validation (PL-26534, ZD-32450, ZD-32477, ZD-32501)
-	+ The Python scripts provided for GraphQL APIs at https://github.com/gabrielcerioni/harness\_graphql\_labs started failing with the error "TypeError: Type SecretManagerConfig must define one or more fields". This happened because of a schema issue in the secret managers graphql API. The graphql APIs failed for the customer who has enabled the schema validation. This issue has been resolved. The graphql APIs are now running successfully.
 * Not able to re-login after logging out (PL-26444, ZD-32400, ZD-32402, ZD-32404)
 	+ As a part of security fixes some SAML library were upgraded which caused SAML to break. We reverted back to original version and then added exclusion for velocity jar to fix the issue.
 * Long running Harness Manager task lost during Harness upgrade (DEL-4479, ZD-32463)
@@ -1287,7 +1394,7 @@ We're pleased to present Harness SaaS Release 74200.
 The following new features are added to the Harness SaaS components:
 
 * Custom selector API for Delegate NG Token management is available now. (DEL-3558, ZD-21717, ZD-27515)
-	+ See [Delegate Token NG Source](https://harness.io/docs/api/tag/Delegate-Token-Ng-Resource/).
+
 * Harness can now send key Workflow and Pipeline deployment events to a URL endpoint as a JSON payload. This helps in analyzing how Workflows and Pipelines are performing, using other tools that consume and build dashboards for the events. This feature is now public and not behind the Feature Flag`FF APP_TELEMETRY`. (CDS-35193)
 	+ See [Publish Workflow Events](../continuous-delivery/concepts-cd/deployments-overview/publish-workflow-events-to-an-http-endpoint.md).
 	+ See [Publish Pipeline Events](../continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint.md).

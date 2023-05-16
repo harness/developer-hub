@@ -1,5 +1,5 @@
 ---
-title: Trigger Deployments using Custom Triggers
+title: Trigger deployments using custom triggers
 description: Trigger deployments using cURL and Webhooks
 sidebar_position: 6
 helpdocs_topic_id: qghequ5vxu
@@ -36,7 +36,7 @@ You can do the following with a custom trigger:
 
 The **Payload Type** is set as Custom. If this were a Git provider trigger, you would specify the repo URL and events for the trigger.
 
-For more details, see [Trigger Pipelines using Git Event Payload Conditions](trigger-pipelines-using-custom-payload-conditions.md) and [Trigger Pipelines using Git Events](triggering-pipelines.md).
+For more details, go to [Trigger Pipelines using Git Events](triggering-pipelines.md).
 
 ## Conditions
 
@@ -61,7 +61,7 @@ Conditions are ANDed together (boolean AND operation). All Conditions must match
 
 Pipelines often have [Runtime Inputs](../20_References/runtime-inputs.md) like codebase branch names or artifact versions and tags.
 
-1. Provide values for the inputs. You can also use [input sets](../8_Pipelines/input-sets.md).
+1. Provide values for the inputs. You can use [input sets](../8_Pipelines/input-sets.md). For more information, go to [Passing data in custom triggers](/docs/platform/triggers/custom-trigger-passing-data).
 2. Click **Create Trigger**.
 
 The trigger is now added to the Triggers page.
@@ -80,7 +80,7 @@ curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' 
 
 :::note
 
-The `-H 'X-Api-Key: sample_api_key'` parameter is used to authorize custom triggers. You can use [Harness API keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) with this parameter. This is described below in [Custom trigger authorization using API keys](#custom-trigger-authorization-using-api-keys).
+The `-H 'X-Api-Key: sample_api_key'` parameter is used to authorize custom triggers. You can use [Harness API keys](../3_User-Management/7-add-and-manage-api-keys.md) with this parameter. This is described below in [Custom trigger authorization using API keys](#custom-trigger-authorization-using-api-keys).
 
 To skip authorization, omit the `-H 'X-Api-Key: sample_api_key'` parameter.
 
@@ -353,12 +353,12 @@ Currently, this functionality is behind the feature flag `NG_SETTINGS`. Contact 
 
 :::
 
-You can use [Harness API keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) in your cURL command to authorize the execution of a trigger.
+You can use [Harness API keys](../3_User-Management/7-add-and-manage-api-keys.md) in your cURL command to authorize the execution of a trigger.
 
 You can see the `-H 'X-Api-Key: sample_api_key'` parameter in the cURL command you copy from Harness.
 
 ```
-curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://qa.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
 ```
 
 You can use this parameter with a Harness API key in your cURL command to authorize the execution of a trigger. You can also enforce the use of API keys for all custom triggers.
@@ -371,12 +371,12 @@ To skip authorization omit the `-H 'X-Api-Key: sample_api_key'` parameter.
 
 ### Adding authorization to custom triggers
 
-1. Create the [Harness API key](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) you want to use for authorization.
+1. Create the [Harness API key](../3_User-Management/7-add-and-manage-api-keys.md) you want to use for authorization.
 2. Save the token from the key. Please make sure to copy and store your token value somewhere safe. You won't be able to see it again after you create it.
 3. Copy the cURL command for your custom trigger. For example:
 
    ```
-   curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://qa.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+   curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=px7xd_BFRCi-pfWPYXVjvw&orgIdentifier=default&projectIdentifier=Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
    ```
 4. Replace `sample_api_key` with the API key you created. For example:
    

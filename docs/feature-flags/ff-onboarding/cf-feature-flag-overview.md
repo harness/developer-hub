@@ -1,5 +1,5 @@
 ---
-title: Feature Flags Overview
+title: Overview of Feature Flags
 description: An overview of how Harness Feature Flags work
 sidebar_position: 10
 helpdocs_topic_id: 7n9433hkc0
@@ -22,6 +22,12 @@ A Feature Flag is a decision point in your code that can change the behavior of 
 * Who can test the changes
 * Progressive rollouts of the feature
 * Turn on a feature on a specific date
+
+Watch this video for an introduction to Feature Flags:
+
+<!-- Video:
+https://www.loom.com/share/0ff74ed44f7c44a6b33c4d3b83046695-->
+<docvideo src="https://www.loom.com/share/0ff74ed44f7c44a6b33c4d3b83046695" /> 
 
 ## Reasons to use Feature Flags
 
@@ -50,5 +56,5 @@ The Harness Service Reliability Management (SRM) module provides tools to help m
 The ability to release changes to a limited set of users makes it much easier to gather feedback about the product. You can create a group of users and target feature flags specifically to that group. Testing new features with a subset of users allows developers to find and address the bugs before the major release.
 
 :::tip
-You can also learn more using our [Feature Flag tutorials](https://developer.harness.io/tutorials/manage-feature-flags).
+You can also learn more using our [Feature Flag tutorials](https://developer.harness.io/tutorials/feature-flags).
 :::

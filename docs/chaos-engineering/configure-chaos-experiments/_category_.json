@@ -1,0 +1,13 @@
+{
+  "position": 2,
+  "label": "Configure chaos experiments",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link":{
+      "type":"generated-index",
+      "title":"Configure chaos experiments"
+   },
+  "customProps": {
+    "description": "Configuring chaos experiments"
+  }
+}

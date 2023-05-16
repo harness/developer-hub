@@ -1,5 +1,5 @@
 ---
-title: Available Plans for Feature Flags
+title: Available plans for Feature Flags
 description: With Feature Flags, there are three tiers of subscription plans you can choose from --  Free plan. Team plan. Enterprise plan. Below is an overview of the features of each plan. For a full list of all f…
 sidebar_position: 30
 helpdocs_topic_id: wybv4q7ux2
@@ -25,7 +25,7 @@ Below is an overview of the features of each plan. For a full list of all featur
 | 25,000 client monthly active users (MAUs) | 100,000 client monthly active users (MAUs) included, with more available for purchase if needed | 1 million client monthly active users (MAUs) included, with more available for purchase if needed |
 | Unlimited Feature Flags and Environments | Unlimited Feature Flags and Environments | Unlimited Feature Flags and Environments |
 | A Feature Flag dashboard | CI/CD Pipelines for rolling out your Flags | CI/CD Pipelines for rolling out your Flags |
-| CI/CD Pipelines for rolling out your Flags | [Automated progressive delivery](../ff-using-flags/ff-build-pipeline/build-feature-flag-pipeline.md) | [Automated progressive delivery](../ff-using-flags/ff-build-pipeline/build-feature-flag-pipeline.md) |
+| CI/CD Pipelines for rolling out your Flags | [Automated progressive delivery](/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline) | [Automated progressive delivery](/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline) |
 |  | External integrations | External integrations |
 |  | SLA guarantee | SLA guarantee |
 |  | Harness Standard Support\*, with the option to purchase Premier Support | Harness Standard Support\*, with the option to purchase Premier Support |
@@ -35,6 +35,6 @@ Below is an overview of the features of each plan. For a full list of all featur
 |  |  | Custom dashboards and Business Intelligence |
 
 
-:::note
+:::info note
  Standard Support is coverage from 8am to 5pm PST. Premier Support is 24x7.
 :::

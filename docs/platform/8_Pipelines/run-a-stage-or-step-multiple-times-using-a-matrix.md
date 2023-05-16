@@ -1,5 +1,5 @@
 ---
-title: Run a Stage or Step Multiple Times using a Matrix
+title: Run a stage or step multiple times using a matrix
 description: A matrix enables you to run the same Stage or Step multiple times with different parameters.  Matrix strategies also make your Pipelines more readable, clean, and easy to maintain.
 sidebar_position: 6
 helpdocs_topic_id: kay7z1bi01
@@ -18,7 +18,7 @@ A matrix enables you to run the same Stage or Step multiple times with different
 
 You can apply matrix strategies to both CI and CD workflows. This topic assumes that you are familiar with the following:
 
-* [CD Pipeline Basics](../../continuous-delivery/onboard-cd/cd-concepts/cd-pipeline-basics.md) and [CI Pipeline Basics](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md)
+* [CD Pipeline Basics](/docs/continuous-delivery/get-started/cd-pipeline-basics) and [CI pipeline concepts](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md)
 * [Looping Strategies Overview](looping-strategies-matrix-repeat-and-parallelism.md)
 * [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
 

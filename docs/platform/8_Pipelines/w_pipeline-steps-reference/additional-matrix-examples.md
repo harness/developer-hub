@@ -1,5 +1,5 @@
 ---
-title: Additional Matrix Examples
+title: Additional matrix examples
 description: Specific examples for matrix.
 sidebar_position: 4
 ---

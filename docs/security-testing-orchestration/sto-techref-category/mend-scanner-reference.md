@@ -17,7 +17,7 @@ import StoCreateDinD from './shared/dind-bg-step.md';
 
 ## Mend step configuration
 
-The recommended workflow is add a Mend step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is add a Mend step to a Security Tests or CI Build stage and then configure it as described below. 
 
 ```mdx-code-block
 import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
@@ -270,10 +270,10 @@ You can add a `tool_args` setting to run the [Unified Agent binary](https://docs
 
 In the **Additional Configuration** settings, you can use the following options:
 
-* [Privileged](/docs/continuous-integration/ci-technical-reference/background-step-settings/#privileged)
-* [Image Pull Policy](/docs/continuous-integration/ci-technical-reference/background-step-settings/#image-pull-policy)
-* [Run as User](/docs/continuous-integration/ci-technical-reference/background-step-settings/#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/ci-technical-reference/background-step-settings/#set-container-resources)
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
 
 
 ### Advanced settings
@@ -283,7 +283,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 
 
@@ -316,6 +316,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 - Accepted value(s) when `policy_type` is set to `orchestratedScan`: 
 	- `appendToProductByToken`
 	- `appendToProductByName`
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 		
 :::note
 You must configure the following settings depending on the product lookup type  — i.e., whether you are using the names or tokens to reference the Mend product:
@@ -327,17 +328,21 @@ You must configure the following settings depending on the product lookup type  
 * `product_project_token`
 
 
-<!-- CONTAINERS --------------------------------------------------------------------------- -->
-
-## Container Image scan settings
-
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 ```
 
 <StoLegacyContainer />
 
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
+
 </details>
+
+<!--
 
 ## YAML configuration
 
@@ -346,3 +351,5 @@ import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.m
 ```
 
 <StoSettingYAMLexample />
+
+-->

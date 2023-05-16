@@ -1,5 +1,5 @@
 ---
-title: React Client SDK Reference
+title: React Client SDK reference
 description: This topic explains how to use the Harness Feature Flags SDK in your React Client application.
 sidebar_position: 70
 helpdocs_category_id: y1oewjcb0q
@@ -7,13 +7,16 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
+
+
 This topic describes how to use the Harness Feature Flags SDK for your React Client application. 
 
 For getting started quickly, you can use our [sample code from the SDK README](https://github.com/harness/ff-react-client-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [React Client SDK GitHub Repository](https://github.com/harness/ff-react-client-sdk).
 
 ## Before you begin
 
-* [Getting Started with Feature Flags](../../ff-onboarding/ff-getting-started/getting-started-with-feature-flags.md)
+* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
 * [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
@@ -28,8 +31,8 @@ To use this SDK, make sure you've: 
 
 * Installed Node.js v12 or a newer version.
 * Installed React.js v16.7 or a newer version.
-* [Created a Feature Flag on the Harness Platform](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
-* [Created an SDK key and made a copy of it](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key)
+* [Created a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`.
+* [Created an SDK key and made a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key)
 
 ## Install the SDK
 
@@ -77,7 +80,7 @@ apiKey="YOUR_API_KEY"
 Targets are used to control which users see which variation of a feature flag, for example, if you want to do internal testing, you can enable the flag for some users and not others. When creating a target, you give it a name and a unique identifier. Often, targets are users but you can create a target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
-For more information about targets, go to [Targeting Users With Flags](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md).
+For more information about targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
 To add a target that you want to evaluate, build it using `cfTarget` and pass in arguments for the following:
 
@@ -182,7 +185,7 @@ function MyComponent() {
   return <p>My flag value is: {myFlagValue}</p>
 }
 ```
-:::note
+:::info note
 If the flag can’t be found, undefined is returned unless you passed in a different default value.
 :::
 
@@ -225,6 +228,8 @@ const myFlagValues = useFeatureFlags({
 ## Test your app is connected to Harness
 
 When you receive a response showing the current status of your feature flag, go to the Harness Platform and toggle the flag on and off. Then, check your app to verify if the flag variation displayed is updated with the variation you toggled.
+
+<Sixty />
 
 ## Additional options
 

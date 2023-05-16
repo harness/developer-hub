@@ -1,52 +1,81 @@
 ---
 title: Upload Artifacts to JFrog
-description: This topic provides settings to upload artifacts to JFrog Artifactory.
+description: Add a step to upload artifacts to JFrog.
 
-sidebar_position: 40
+sidebar_position: 70
 helpdocs_topic_id: lh082yv36h
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory).
+You can use the **upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory). Harness CI also provides steps to [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md) and [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md).
 
-The following steps run SSH commands and push the artifacts to JFrog Artifactory.
+## Prepare a pipeline
 
-### Before you Begin
+You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
 
-* [CI Pipeline Quickstart](../../ci-quickstarts/ci-pipeline-quickstart.md)
-* [CI Stage Settings](../../ci-technical-reference/ci-stage-settings.md)
-* [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
-* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+If you haven't created a pipeline before, try one of the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
 
-### Step 1: Create the CI Stage
+## Prepare artifacts to upload
 
-In your Harness Pipeline, click **Add Stage**, and then click CI.
+Add steps to your pipeline that generate artifacts to upload, such as [Run steps](../set-up-test-intelligence/configure-run-tests-step-settings.md). The steps you use depend on what artifacts you ultimately want to upload.
 
-### Step 2: Define the Build Farm Infrastructure
+## Upload artifacts to JFrog Artifactory
 
-In the CI stage Infrastructure, define the build farm for the codebase. See [Set up a Kubernetes cluster build infrastructure](../set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
+Add an **Upload Artifacts to JFrog Artifactory** step. This step's settings are described below.
 
-### Step 3: Configure the Run Step
+:::info
 
-In the stage's Execution tab, add a **Run** step. The Run step executes one or more commands on a container image. See [Run step settings](../../ci-technical-reference/configure-run-tests-step-settings.md).
+Depending on the stage's build infrastructure, some settings may be unavailable or located under **Optional Configuration** in the visual pipeline editor. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
-### Step 4: Upload Artifacts to JFrog Artifactory
+:::
 
-Add an **Upload Artifacts to JFrog Artifactory** step.
+### Name
 
-To configure this step, select the Harness Artifactory connector, enter the source file/path, and the target path. For more information about these settings, go to the [Upload Artifacts to JFrog Artifactory step settings reference](../../ci-technical-reference/upload-artifacts-to-jfrog-artifactory-step-settings.md).
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
-The JFrog Account associated with the connector must have read/write permission. For more information, go to the [Artifactory connector settings reference](../../../platform/7_Connectors/ref-cloud-providers/artifactory-connector-settings-reference.md).
+### Description
+
+Text string describing the step's purpose.
+
+### Artifactory Connector
+
+Select the Harness Artifactory connector to use for this upload. The JFrog Account associated with the connector must have read/write permission. For more information, go to the [Artifactory connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference).
+
+This step supports Artifactory connectors that use either anonymous or username and password authentication.
+
+### Target and Source Path
+
+The **Target** is the target path in the JFrog Artifactory registry. This is a target repository name relative to the server URL in the connector. If `pom.xml` is not present, then the **Target** must be a full path to an artifacts folder, such as `groupId/artifactId/version`.
+
+**Source Path** is a path to the artifact file/folder on the local/build machine you want to upload. Harness creates the compressed file automatically.
 
 ![](./static/upload-artifacts-to-jfrog-519.png)
 
-### Step 5: View the Results
+### Run as User
 
-Save the Pipeline and click **Run**.
+Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
-You can see the logs for the Run and Upload step in the pipeline as it runs.
+### Set container resources
+
+Set maximum resource limits for the resources used by the container at runtime:
+
+* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+
+### Timeout
+
+Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
+
+* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+
+## Confirm the upload
+
+After adding the steps and saving the pipeline, select **Run** to run the pipeline.
+
+On the [build details page](../viewing-builds.md), you can see the logs for each step as they run.
 
 ![](static/upload-artifacts-to-jfrog-520.png)
 
@@ -54,6 +83,6 @@ In your Harness project's Builds, you can see the build listed.
 
 ![](./static/upload-artifacts-to-jfrog-521.png)
 
-On JFrog, you can see the file that you pushed.
+On JFrog, you can see the uploaded artifacts.
 
 ![](./static/upload-artifacts-to-jfrog-522.png)

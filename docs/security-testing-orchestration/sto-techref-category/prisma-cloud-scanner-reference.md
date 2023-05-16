@@ -1,6 +1,6 @@
 ---
 title: Prisma Cloud (formerly Twistlock) scanner reference
-description: Repository and container image scans with Prisma Cloud
+description: Image scans with Prisma Cloud
 sidebar_position: 210
 ---
 
@@ -294,10 +294,10 @@ You can add a `tool_args` setting to run the [twistcli images scan binary](https
 
 In the **Additional Configuration** settings, you can use the following options:
 
-* [Privileged](/docs/continuous-integration/ci-technical-reference/background-step-settings/#privileged)
-* [Image Pull Policy](/docs/continuous-integration/ci-technical-reference/background-step-settings/#image-pull-policy)
-* [Run as User](/docs/continuous-integration/ci-technical-reference/background-step-settings/#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/ci-technical-reference/background-step-settings/#set-container-resources)
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
 
 
 ### Advanced settings
@@ -307,7 +307,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 
 
@@ -337,15 +337,19 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `product_config_name`
 	+ Accepted values(s):
 		- `default`
-
-
-<!-- CONTAINERS ---------------------------------------------------------------------------  -->
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 ```
 
 <StoLegacyContainer />
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
 
 </details>
 

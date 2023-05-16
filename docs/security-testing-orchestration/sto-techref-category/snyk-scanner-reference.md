@@ -1,18 +1,16 @@
 ---
 title: Snyk scanner reference
-description: Image or Repository scans with Snyk
+description: Image and repository scans with Snyk
 sidebar_position: 290
 ---
 
 
-You can set up a Security step with [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes.
-
-STO supports the following scan types for the following Snyk products:
+Harness STO supports the following scan types for the following Snyk products:
 * Snyk Open Source — `orchestratedScan` and `ingestionOnly` 
 * Snyk Code  —  `ingestionOnly` 
 * Snyk Container  — `ingestionOnly` 
 
-For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/snyk-scans.md).
+For a workflow description, go to [Ingest Scan Results from Snyk](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/snyk-scans.md).
 
 ## Before you begin
 
@@ -160,10 +158,10 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 In the **Additional Configuration** settings, you can use the following options:
 
-* [Privileged](/docs/continuous-integration/ci-technical-reference/background-step-settings/#privileged)
-* [Image Pull Policy](/docs/continuous-integration/ci-technical-reference/background-step-settings/#image-pull-policy)
-* [Run as User](/docs/continuous-integration/ci-technical-reference/background-step-settings/#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/ci-technical-reference/background-step-settings/#set-container-resources)
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
 
 
 ### Advanced settings
@@ -173,7 +171,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 
 
@@ -201,9 +199,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `product_access_token`
 * `product_config_name` = `default`
 * `snyk_api` = URL to the Snyk instance, if you're using an on-prem installation.
-
-
-### Container Image scan settings
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
@@ -211,14 +207,17 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 
 <StoLegacyContainer />
 
-
-### Repository scan settings
-
 ```mdx-code-block
 import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 ```
 
 <StoLegacyRepo />
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
 
 </details>
 

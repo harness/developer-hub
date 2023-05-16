@@ -1,5 +1,5 @@
 ---
-title: Update Your Billing Information
+title: Update your billing information
 description: To update your billing information --  On the Harness Platform, on the lefthand navigation, click Help. Select Submit a ticket. Complete the following fields in the form --  Feedback category  --  Select Q ue…
 sidebar_position: 60
 helpdocs_topic_id: dl3be0zzfe
@@ -22,8 +22,6 @@ To update your billing information:
 	5. **Priority**: Select **Priority:Normal**.
 4. Click **Send Feedback.**
 
-```mdx-code-block
-<img src={billing} alt="An example of the feedback form for updating your billing information." height="500" width="500" />
-```
-
-*Figure 1: An example of a feedback form.*
+	```mdx-code-block
+	<img src={billing} alt="An example of the feedback form for updating your billing information." height="500" width="500" />
+	```

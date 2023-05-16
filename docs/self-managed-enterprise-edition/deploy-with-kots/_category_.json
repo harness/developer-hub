@@ -1,12 +1,12 @@
 {
-    "label":"Install with KOTS",
+    "label":"KOTS installation",
     "position": 30,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Install with KOTS"
+       "title":"KOTS installation - End of Life (EOL) notice. As of May 31, 2023, only security and bug fixes. No new features."
     },
     "customProps":{
        "helpdocs_category_id":"vu99714ib1"

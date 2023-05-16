@@ -1,5 +1,5 @@
 ---
-title: Provision Users and Single Sign-On (SSO) with LDAP
+title: Single Sign-On (SSO) with LDAP
 description: This topic explains how to configure Single Sign-On with LDAP in Harness.
 # sidebar_position: 2
 helpdocs_topic_id: 142gh64nux
@@ -84,6 +84,13 @@ The specific permissions needed by Harness depend on the LDAP directory service 
 ### Add LDAP SSO provider
 
 Adding your LDAP Provider to Harness initially involves establishing a connection from Harness (specifically, the Harness delegate) and querying your LDAP directory for the users and groups you want to sync with Harness for SSO.
+
+:::note
+If you experience frequent delegate time-out errors, try the following:
+1. In Harness, set the LDAP Response Timeout to 2 minutes.
+2. Set the sync interval to 1 hour. It is set to 15 minutes by default.
+:::
+
 
 #### Query your LDAP directory
 

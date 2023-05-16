@@ -1,5 +1,5 @@
 ---
-title: Kubernetes Probe
+title: Kubernetes probe
 sidebar_position: 5
 ---
 
@@ -10,9 +10,9 @@ With the proliferation of custom resources & operators, especially in the case o
 - **present:** It checks for the presence of kubernetes resource based on GVR and filters (field selectors/label selectors).
 - **absent:** It checks for the absence of kubernetes resource based on GVR and filters (field selectors/label selectors).
 
-## Where to define
+## Defining the probe
 
-The probes can be defined at **.spec.experiments[].spec.probe** path inside Chaos Engine.
+You can define the probes at **.spec.experiments[].spec.probe** path inside the chaos engine.
 
 ```yaml
 kind: Workflow
@@ -36,7 +36,7 @@ spec:
 
 ## Schema
 
-Probe schema for K8s Probe with common properties shared across all probes and properties unique to K8s probe.
+Listed below is the probe schema for the Kubernetes probe, with properties shared across all the probes and properties unique to the Kubernetes probe.
 
 <table>
   <tr>
@@ -137,9 +137,7 @@ Probe schema for K8s Probe with common properties shared across all probes and p
   </tr>
 </table>
 
-### Run Properties
-
-Probe run properties for K8s Probe.
+### Run properties
 
 <table>
   <tr>

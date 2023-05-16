@@ -1,0 +1,14 @@
+{
+    "label": "Code repositories",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": 5,
+    "link": {
+        "type": "generated-index",
+        "title": "Code Repositories"
+    },
+    "customProps": {
+        
+    }
+}

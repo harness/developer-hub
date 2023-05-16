@@ -1,5 +1,5 @@
 ---
-title: Provision Target Deployment Infra Dynamically with CloudFormation
+title: Provision target deployment infrastructure dynamically with CloudFormation
 description: Provision a CD stage's target deployment infra using CloudFormation.
 sidebar_position: 1
 helpdocs_topic_id: 6jfl7i6a5u
@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 :::info
 
-Dynamic provisioning is only supported in [Service and Environments v1](../../onboard-cd/upgrading/upgrade-cd-v2). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
+Dynamic provisioning is only supported in [Service and Environments v1](../../get-started/upgrading/upgrade-cd-v2). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
 
 :::
 
@@ -24,7 +24,7 @@ When you use **Create Stack** in **Infrastructure**, you also have the option to
 
 To provision non-target infrastructure resources, add the CloudFormation Create Stack step to the stage **Execution** section instead of the **Infrastructure** section.### Before You Begin
 
-* [CloudFormation Provisioning with Harness](../../cd-advanced/cloudformation-howto/cloud-formation-provisioning-with-harness.md)
+* [CloudFormation Provisioning with Harness](./cloud-formation-provisioning-with-harness.md)
 
 ## Important notes
 
@@ -36,7 +36,7 @@ For example, the cloud-agnostic Kubernetes Cluster Connector requires that you h
 
 ## Enable dynamic provisioning
 
-These steps assume you've created a Harness CD stage before. If Harness CD is new to you, see [Kubernetes CD Quickstart](../../onboard-cd/cd-quickstarts/kubernetes-cd-quickstart.md).
+These steps assume you've created a Harness CD stage before. If Harness CD is new to you, see [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
 
 We'll start in the stage's **Infrastructure** section because the **Service** settings of the stage don't have specific settings for CloudFormation provisioning. The Service manifests and artifacts will be deployed to the infrastructure defined in **Infrastructure**.
 
@@ -49,7 +49,7 @@ The default CloudFormation provisioning steps appear:
 
 ![](./static/provision-target-deployment-infra-dynamically-with-cloud-formation-01.png)
 
-Harness automatically adds the **Create Stack**, [Harness Approval](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md), and **Delete Stack** steps in **Execution**, and the **Rollback Stack** step in **Rollback**. You can change these steps, but **Create Stack** is required to run your CloudFormation template.
+Harness automatically adds the **Create Stack**, [Harness Approval](../../x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md), and **Delete Stack** steps in **Execution**, and the **Rollback Stack** step in **Rollback**. You can change these steps, but **Create Stack** is required to run your CloudFormation template.
 
 ## CloudFormation Create Stack step
 
@@ -59,13 +59,13 @@ The **Create Stack** step is where you connect Harness to your templates and pro
 
 1. In **Name**, enter a name for the step, for example, **C****reate EC2 Instance**.
 
-Harness will create an [Entity Id](../../../platform/20_References/entity-identifier-reference.md) using the name. The Id is very important. You can use a Harness expression and Id to refer to settings in this step from another step.
+Harness will create an [Entity Id](/docs/platform/20_References/entity-identifier-reference.md) using the name. The Id is very important. You can use a Harness expression and Id to refer to settings in this step from another step.
 
-See [Built-in and Custom Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md).
+See [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md).
 
 ### Timeout
 
-1. In **Timeout**, enter how long Harness should wait to complete the step before failing the step and initiating the [Step and Stage Failure Strategy](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
+1. In **Timeout**, enter how long Harness should wait to complete the step before failing the step and initiating the [Step and Stage Failure Strategy](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
 ### Provisioner Identifier
 
@@ -87,7 +87,7 @@ For this reason, it's important that all your Project members know the Provision
 
 ### AWS Connector
 
-1. Add or select the Harness [AWS Connector](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md) that will be used for this step. The AWS Connector will include the credentials needed to perform the provisioning.
+1. Add or select the Harness [AWS Connector](docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference) that will be used for this step. The AWS Connector will include the credentials needed to perform the provisioning.
 
 The credentials required for provisioning depend on what you are provisioning.
 
@@ -113,7 +113,7 @@ For example, if you wanted to give full access to create and manage EKS clusters
      ]  
  }
 ```
-Ensure that the credentials include the `ec2:DescribeRegions` policy described in [AWS Connector](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+Ensure that the credentials include the `ec2:DescribeRegions` policy described in [AWS Connector](docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 See [AWS CloudFormation service role](https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/using-iam-servicerole.html) from AWS.
 
@@ -126,7 +126,7 @@ See [AWS CloudFormation service role](https://docs.aws.amazon.com/AWSCloudFormat
 You can add your template in the following ways:
 
 * **Inline:** just enter the template in **Template File**. You can use CloudFormation-compliant JSON or YAML.
-* **AWS S3:** enter the URL of the S3 bucket containing the template file. This can be a public or private URL. If you use a private URL, the AWS credentials in the **AWS Connector** setting are used for authentication. Ensure that the credentials include the **AmazonS3ReadOnlyAccess** policy and the `ec2:DescribeRegions` policy described in [AWS Connector](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+* **AWS S3:** enter the URL of the S3 bucket containing the template file. This can be a public or private URL. If you use a private URL, the AWS credentials in the **AWS Connector** setting are used for authentication. Ensure that the credentials include the **AmazonS3ReadOnlyAccess** policy and the `ec2:DescribeRegions` policy described in [AWS Connector](docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 * **Remote:** select a Git repo where you template is located. You'll add or select a Harness Git Connector for the repo. See [Code Repo Connectors](https://newdocs.helpdocs.io/category/xyexvcc206).
 
 #### Expression and Secret Support in Templates
@@ -135,8 +135,8 @@ Harness expressions and secrets can be used in templates. They are resolved at r
 
 See:
 
-* [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
-* [Built-in and Custom Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md)
+* [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets)
+* [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
 
 ### Stack Name
 
@@ -179,7 +179,7 @@ Where the JSON file contains parameters such as these:
 1. In **Cloud Formation Parameter Files**, click **Add**.
 2. In **Parameter File Connector**, select your Git platform, and the select or add a Git Connector. See [Code Repo Connectors](https://newdocs.helpdocs.io/category/xyexvcc206) for steps on adding a Git Connector.
    
-   For AWS S3, see [Add an AWS Connector](../../../platform/7_Connectors/add-aws-connector.md).
+   For AWS S3, see [Add an AWS Connector](docs/platform/Connectors/Cloud-providers/add-aws-connector).
 3. In **Parameter File Details**, enter the following:
 
    + **Identifier:** enter an Identifier for the file. This is just a name that indicates what the parameters are for.
@@ -197,8 +197,8 @@ Harness expressions and secrets can be used in parameter files and in the **Para
 
 See:
 
-* [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md)
-* [Built-in and Custom Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md)
+* [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets)
+* [Built-in and Custom Harness Variables Reference](/docs/platform/12_Variables-and-Expressions/harness-variables.md)
 
 ### CloudFormation Parameters Overrides
 
@@ -210,7 +210,7 @@ In **CloudFormation Parameters Overrides**, click **Retrieve Names from template
 
 For each parameter you want to override, enter a new values in **Value**.
 
-Harness text secrets are supported. See [Add and Reference Text Secrets](../../../platform/6_Security/2-add-use-text-secrets.md).
+Harness text secrets are supported. See [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
 ### Role ARN
 
@@ -268,18 +268,18 @@ In **Advanced**, you can use the following options:
 * [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](https://developer.harness.io/docs/platform/Policy-as-code/harness-governance-overview)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## Approval step
 
-By default, Harness adds an Approval step between the Create Stack and Delete Stack steps. You can remove this step or follow the steps in [Using Manual Harness Approval Steps in CD Stages](../../cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md) to configure the step.
+By default, Harness adds an Approval step between the Create Stack and Delete Stack steps. You can remove this step or follow the steps in [Using Manual Harness Approval Steps in CD Stages](../../x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages.md) to configure the step.
 
 You can also use other Approval step types.
 
 See:
 
-* [Create Jira Issues in CD Stages](../../cd-advanced/ticketing-systems-category/create-jira-issues-in-cd-stages.md)
-* [Create ServiceNow Tickets in CD Stages](../../cd-advanced/ticketing-systems-category/create-service-now-tickets-in-cd-stages.md)
+* [Create Jira Issues in CD Stages](../../x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages.md)
+* [Create ServiceNow Tickets in CD Stages](../../x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages.md)
 
 ## Delete Stack step
 
@@ -292,7 +292,7 @@ You can use the Delete Stack step to remove resources provisioned by the Create 
 There are two options:
 
 * **Inline:** similar to `aws cloudformation delete-stack --stack-name my-stack`. **Inline** removes the stack you identify using these settings:
-	+ **AWS Connector:** add or select the Harness AWS Connector for connecting to AWS. Ensure its credentials have the permissions needed to remove the resources. See [AWS Connector](../../../platform/7_Connectors/ref-cloud-providers/aws-connector-settings-reference.md).
+	+ **AWS Connector:** add or select the Harness AWS Connector for connecting to AWS. Ensure its credentials have the permissions needed to remove the resources. See [AWS Connector](docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 	+ **Region:** select the region for the resources you are removing.
 	+ **Role ARN:** enter the AWS Role ARN to use when deleting the stack. This is the same as the role you would use when deleting a stack using the AWS console or CLI.
 	+ **Stack Name:** enter the name of the stack to delete.

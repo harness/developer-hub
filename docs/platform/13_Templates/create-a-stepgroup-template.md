@@ -1,5 +1,5 @@
 ---
-title: Create a Step Group Template
+title: Create a step group template
 description: Streamline and standardize your deployment processes with step group templates.
 sidebar_position: 6
 
@@ -11,8 +11,9 @@ By creating a step group template, you can standardize and simplify your deploym
 
 You can create a step group template at the project, organization, and account levels.
 
-## Product Demo Vide
+## Video
 
+Here is a video that provides a quick overview of the step group template:
 <!-- Video:
 https://harness-1.wistia.com/medias/x5wsia9i08-->
 <docvideo src="https://harness-1.wistia.com/medias/x5wsia9i08" />
@@ -40,7 +41,7 @@ Let us start by creating a template in the project scope within the **Deployment
   
 ### Create a remote template
 
-  1. In **Git Connector**, select or create a Git Connector to the repo for your project.​ For more information, go to [Code Repo Connectors](../7_Connectors/connect-to-code-repo.md).
+  1. In **Git Connector**, select or create a Git Connector to the repo for your project.​ For more information, go to [Code Repo Connectors](../7_Connectors/Code-Repositories/connect-to-code-repo.md).
   2. In **Repository**, select your repository.
 
      :::note

@@ -4,10 +4,10 @@ description: Instance scans with Burp
 sidebar_position: 80
 ---
 
-
-## Security step settings
-
 You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+
+
+### Security step settings
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
@@ -25,13 +25,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 		- `burp-default` (CLI interface uses a Cybric extension)
 		- `burp-fast-and-max-depth-of-1` (Form fill disabled and max\_link\_depth=1)
 		- `burp-fast-mode` (Turns off automatic form fill)
-
-
-```mdx-code-block
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
-```
-<StoSettingFailOnSeverity />
-
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 
 ```mdx-code-block
@@ -39,4 +33,17 @@ import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
 ```
 
 <StoLegacyInstance />
+
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
+
+#### Fail on Severity
+
+```mdx-code-block
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+```
+<StoSettingFailOnSeverity />
 

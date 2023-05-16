@@ -1,0 +1,14 @@
+{
+    "label": "Set up STO pipelines",
+    "position": 20,
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "link": {
+        "type": "generated-index",
+        "title": "Set up STO pipelines"
+    },
+    "customProps": {
+        "ref": "doc-2894"
+    }
+}

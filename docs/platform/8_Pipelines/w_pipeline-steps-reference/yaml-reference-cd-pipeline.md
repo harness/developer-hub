@@ -1,5 +1,5 @@
 ---
-title: YAML Reference -- Pipelines
+title: YAML reference -- pipelines
 description: This topic describes the YAML schema for a CD Pipeline.
 # sidebar_position: 2
 helpdocs_topic_id: xs2dfgq7s2
@@ -32,7 +32,7 @@ The Pipeline Studio includes visual and YAML editors.
 
 The best way to get started with YAML is to do a CI or CD quickstart and then view the YAML in Pipeline Studio.
 
-See ​[CD Quickstarts](/docs/category/cd-tutorials) and [CI Quickstarts](/docs/category/onboard-with-ci).
+See [CD Quickstarts](https://developer.harness.io/tutorials/cd-pipelines) and [Get started with CI](/docs/category/get-started-with-ci).
 
 The YAML editor validates YAML before allowing you to save it.
 
@@ -45,11 +45,13 @@ The YAML editor has an autocomplete feature that makes it very easy to see what 
 The keyboard command for autocomplete is `Ctrl + Space`.
 
 ![](./static/yaml-reference-cd-pipeline-01.png)
+
 If an entry already has a value, the autocomplete will not show you other options. You need to delete the value and then enter `Ctrl + Space`.
 
 The command palette keyboard command is `F1`.
 
 ![](./static/yaml-reference-cd-pipeline-02.png)
+
 The command palette displays the keyboard shortcuts for all commands.
 
 ### Limitations
@@ -201,7 +203,7 @@ pipeline:
 ```
 See also:
 
-* [Using Shell Scripts in CD Stages](../../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md)
+* [Using Shell Scripts in CD Stages](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts)
 
 ### Stage
 
@@ -365,7 +367,7 @@ spec:
 ```
 See also:
 
-* [Propagate and Override CD Services](../../../continuous-delivery/cd-services/cd-services-general/propagate-and-override-cd-services.md)
+* [Propagate and Override CD Services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services)
 
 ### Infrastructure
 
@@ -416,8 +418,8 @@ That example is for the platform agnostic Kubernetes infrastructure. For a diffe
 ```
 See also:
 
-* [Define Your Kubernetes Target Infrastructure](../../../continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
-* [Set up a Kubernetes cluster build infrastructure](../../../continuous-integration/use-ci/set-up-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
+* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure)
+* [Set up a Kubernetes cluster build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
 
 ### Execution
 
@@ -515,7 +517,7 @@ Here is an example of a Canary Deployment step.
 ```
 See also:
 
-* [CD How-tos](/docs/category/advanced-cd)
+* [CD How-tos](https://developer.harness.io/docs/category/advanced-cd-use-cases)
 
 ### Fixed Value, Runtime Input, and Expression
 
@@ -564,7 +566,7 @@ flowControl:
 ```
 See also:
 
-* [Synchronize Deployments using Barriers](../../../continuous-delivery/cd-deployments-category/synchronize-deployments-using-barriers.md)
+* [Synchronize Deployments using Barriers](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers/)
 
 ### Notification Rules
 
@@ -616,7 +618,7 @@ notificationRules:
 ```
 See also:
 
-* [Add a Pipeline Notification Strategy](../../../continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events.md)
+* [Add a Pipeline Notification Strategy](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events/)
 
 ### Triggers
 

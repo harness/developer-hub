@@ -20,6 +20,7 @@
 }
 .cardContainer h2 {
   font-size: var(--ifm-h4-font-size);
+  color: var(--primary);
 }
 
 .cardContainer:hover {

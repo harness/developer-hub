@@ -49,7 +49,7 @@ Executing builds in a Kubernetes cluster is useful when you want to run ephemera
 
 When running builds in a Kubernetes cluster, each CI stage executes in a pod, and the stage's steps share the pod's resources.
 
-To learn more about using a Kubernetes cluster as build infrastructure, go to [Set up a Kubernetes cluster build infrastructure](./set-up-a-kubernetes-cluster-build-infrastructure.md).
+To learn more about using a Kubernetes cluster as build infrastructure, go to [Set up a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
 ```mdx-code-block
   </TabItem>
@@ -91,15 +91,16 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 | - | - | - | - | - |
 | Test Intelligence | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Test Parallelism | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| Cache Intelligence | ✅ Supported | ❌ Not supported | ❌ Not supported | ❌ Not supported |
+| Cache Intelligence | <ul><li>✅ Supported - Linux, Windows</li><li>❌ Not supported - macOS</li></ul>| ❌ Not supported | ❌ Not supported | ❌ Not supported |
 | Remote Caching in **Build and Push** steps | ❌ Not supported | ❌ Not supported | ✅ Supported | ❌ Not supported |
 | Harness Secret Manager | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Custom Secret Manager | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
 | GitHub App support | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
-| STO step in Build stage | ✅ Supported for Linux platform| ❌ Not supported | ✅ Supported | <ul><li>✅ Supported for Linux platform</li><li> ❌ Not supported for Windows</li></ul>|
+| STO step in Build stage | ✅ Supported - Linux | ❌ Not supported | ✅ Supported | <ul><li>✅ Supported - Linux</li><li> ❌ Not supported - Windows</li></ul> |
+| STO stage in CI pipeline |  ✅ Supported - Linux | ❌ Not supported  | ✅ Supported | <ul><li>✅ Supported - Linux</li><li> ❌ Not supported - Windows</li></ul> |
 | Plugins (Containers) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Plugins (Host VM) | ✅ Supported | ❌ Not supported | ❌ Not supported | ❌ Not supported |
 |GitHub Actions | ✅ Supported - GitHub Actions plugin step | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin |
 | Bitrise Integrations | ✅ Supported - Bitrise plugin step | ❌ Not supported | ❌ Not supported | ❌ Not supported |
-| Plugin output variables | ✅ Supported | <!-- unknown --> | ❌ Not supported | ✅ Supported |
+| Plugin output variables | ✅ Supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
 | Build details - Artifacts tab | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |

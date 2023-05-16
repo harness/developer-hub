@@ -1,38 +1,56 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
+import { getCertLevel } from "./LandingPage";
 import DeveloperCertificationReviewGuide from "./data/cd-certification-developer-review-guide.md";
 import DeveloperCertificationExamDetails from "./data/cd-certification-developer-exam-details.md";
+import AdminCertificationReviewDetails from "./data/cd-certification-admin-review-guide.md";
+import AdminCertificationExamDetails from "./data/cd-certification-admin-exam-details.md";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
   {
     img: `${url}img/cert_dev_cd_badge.svg`,
     alt: "Harness Certified Expert - Developer",
-    type: certType.Developer,
+    type: certType.developer,
   },
   {
     img: `${url}img/cert_adm_cd_badge.svg`,
     alt: "Harness Certified Expert - Administrator",
-    type: certType.Administrator,
+    type: certType.administrator,
   },
   {
     img: `${url}img/cert_arc_cd_badge.svg`,
     alt: "Harness Certified Expert - Architect",
-    type: certType.Architect,
+    type: certType.architect,
   },
 ];
 
 export default function CertificationsCD() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
-  const [tab, setTab] = useState(certType.Developer);
-  const handleSwitchTab = (tabVal) => {
-    setTab(tabVal);
+  // React router provides the current component's route, even in SSR
+  const location = useLocation();
+  const history = useHistory();
+  const { pathname = "/", search = "" } = location;
+  const searchKey = getCertLevel(search);
+  const [tab, setTab] = useState("developer");
+  const handleSwitchTab = (tabKey) => {
+    setTab(tabKey);
+    if (pathname && tabKey) {
+      history.push(`${pathname}?lvl=${tabKey}`);
+    }
   };
 
   const certBadges = getCertBadges(baseUrl);
+
+  useEffect(() => {
+    if (searchKey) {
+      setTab(searchKey);
+    }
+  }, [searchKey]);
 
   return (
     <div className={styles.certificationsCD}>
@@ -58,7 +76,7 @@ export default function CertificationsCD() {
             <img
               src={badge.img}
               alt={badge.alt}
-              className={badge.type === tab ? styles.active : ""}
+              className={badge.type === certType[tab] ? styles.active : ""}
             />
           ))}
         </div>
@@ -67,11 +85,11 @@ export default function CertificationsCD() {
       {/* Tab Content */}
       <div className={styles.tabs}>
         <ul className={styles.tabItems}>
-          {Object.values(certType).map((tabVal) => (
+          {Object.entries(certType).map(([tabKey, tabVal]) => (
             <li
-              key={tabVal}
-              className={tab === tabVal ? styles.active : ""}
-              onClick={() => handleSwitchTab(tabVal)}
+              key={tabKey}
+              className={tab === tabKey ? styles.active : ""}
+              onClick={() => handleSwitchTab(tabKey)}
             >
               For {tabVal}
             </li>
@@ -82,7 +100,7 @@ export default function CertificationsCD() {
         <div
           className={clsx(
             styles.tabContent,
-            tab === certType.Developer && styles.active
+            certType[tab] === certType.developer && styles.active
           )}
         >
           {/* Developer Study Guide */}
@@ -91,7 +109,7 @@ export default function CertificationsCD() {
             <div
               className={clsx(
                 styles.studyGuideCard,
-                styles[certType.Developer]
+                styles[certType.developer]
               )}
             >
               <div className={styles.info}>
@@ -122,12 +140,12 @@ export default function CertificationsCD() {
                   </div>
                   <DeveloperCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="https://university.harness.io/page/continuous-delivery-developer">
+                    <Link href="https://university.harness.io/certified-continuous-delivery-developer">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
                     </Link>
-                    <Link href="/tutorials/deploy-services">
+                    <Link href="/tutorials/cd-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
@@ -144,14 +162,13 @@ export default function CertificationsCD() {
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
-
               <div className={styles.btnContainer}>
-                <Link href="https://university.harness.io/page/continuous-delivery-developer">
+                <Link href="https://university.harness.io/certified-continuous-delivery-developer">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
                 </Link>
-                <Link href="/tutorials/deploy-services">
+                <Link href="/tutorials/cd-pipelines">
                   <button className={styles.startLearning}>
                     <span>Start Learning</span>
                     <i className="fa-solid fa-arrow-right"></i>
@@ -166,7 +183,7 @@ export default function CertificationsCD() {
         <div
           className={clsx(
             styles.tabContent,
-            tab === certType.Administrator && styles.active
+            certType[tab] === certType.administrator && styles.active
           )}
         >
           <div className={styles.studyGuide}>
@@ -174,7 +191,7 @@ export default function CertificationsCD() {
             <div
               className={clsx(
                 styles.studyGuideCard,
-                styles[certType.Administrator]
+                styles[certType.administrator]
               )}
             >
               <div className={styles.info}>
@@ -198,33 +215,58 @@ export default function CertificationsCD() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Coming Soon...</h3>
+                  <h3>Review Study Guide - Coming Soon</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy and maintain CD
                     projects and the overall Harness Platform.
                   </div>
-                  {/*
-                  <AdministratorCertificationReviewGuide />
+                  <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="/tutorials/deploy-services">
+                    <Link href="#">
+                      <button className={styles.moreDetails}>
+                        Register for Exam
+                      </button>
+                    </Link>
+                    <Link href="/tutorials/cd-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
                     </Link>
                   </div>
-                  */}
                 </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Admin Exam Details */}
+          <div className={styles.examDetails}>
+            <h2 id="exam-details">Exam Details</h2>
+            <div className={styles.examDetailsCard}>
+              <AdminCertificationExamDetails />
+              <div className={styles.btnContainer}>
+                <Link href="#">
+                  <button className={styles.moreDetails}>
+                    Register for Exam
+                  </button>
+                </Link>
+                <Link href="/tutorials/cd-pipelines">
+                  <button className={styles.startLearning}>
+                    <span>Start Learning</span>
+                    <i className="fa-solid fa-arrow-right"></i>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>
         </div>
 
+
         {/* Architect Tab Content */}
         <div
           className={clsx(
             styles.tabContent,
-            tab === certType.Architect && styles.active
+            certType[tab] === certType.architect && styles.active
           )}
         >
           <div className={styles.studyGuide}>
@@ -232,7 +274,7 @@ export default function CertificationsCD() {
             <div
               className={clsx(
                 styles.studyGuideCard,
-                styles[certType.Architect]
+                styles[certType.architect]
               )}
             >
               <div className={styles.info}>
@@ -263,7 +305,7 @@ export default function CertificationsCD() {
                   {/*
                   <ArchitectCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="/tutorials/deploy-services">
+                    <Link href="/tutorials/cd-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>

@@ -214,10 +214,10 @@ You can add a `tool_args` setting to run the [sonar-scanner binary](https://docs
 
 In the **Additional Configuration** settings, you can use the following options:
 
-* [Privileged](/docs/continuous-integration/ci-technical-reference/background-step-settings/#privileged)
-* [Image Pull Policy](/docs/continuous-integration/ci-technical-reference/background-step-settings/#image-pull-policy)
-* [Run as User](/docs/continuous-integration/ci-technical-reference/background-step-settings/#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/ci-technical-reference/background-step-settings/#set-container-resources)
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
 
 
 ### Advanced settings
@@ -227,7 +227,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 
 ## Security step configuration (_deprecated_)
@@ -242,7 +242,7 @@ STO supports the following scan types for SonarQube:
 
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
 * `dataLoad`  — The pipeline downloads scan results using the [SonarScanner API](https://docs.sonarqube.org/latest/extend/web-api/).
-* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/ingest-scan-results-into-an-sto-pipeline.md).
+* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md).
 
 #### Required settings
 
@@ -252,18 +252,23 @@ STO supports the following scan types for SonarQube:
 * `policy_type` — Enter one of the following:
 	+ `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
 	+ `dataLoad`  — The pipeline downloads scan results using the [SonarScanner API](https://docs.sonarqube.org/latest/extend/web-api/).
-	+ `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/ingest-scan-results-into-an-sto-pipeline).
+	+ `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
 * `repository_project` — The repository name. If you want to scan `https://github.com/my-github-account/codebaseAlpha`, for example, you would set this to `codebaseAlpha`.
-* `repository_branch` — The git branch to scan. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md#manual-branch-build). This sets the branch based on the user input or trigger payload at runtime.
+* `repository_branch` — The git branch to scan. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference#manual-branch-build-expressions). This sets the branch based on the user input or trigger payload at runtime.
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 #### `ingestionOnly` settings
 
-For information about setting up an ingestionOnly scan, go to [Ingest scan results into an STO pipeline](../use-sto/ingest-scan-results-into-an-sto-pipeline.md).
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
 
 ####  `orchestratedScan` and `dataLoad` settings
 
 * `product_domain` — The URL of the SonarQube server.
-* `product_access_token` — The access token to communicate with the SonarQube server. You must create a secret for the token and use the format `<+secrets.getValue("secret_name")>` to reference the secret. This example references a secret created at the project level. For additional details on referencing secrets, go to [Add and Reference Text Secrets](/docs/platform/6_Security/2-add-use-text-secrets.md).  
+* `product_access_token` — The access token to communicate with the SonarQube server. You must create a secret for the token and use the format `<+secrets.getValue("secret_name")>` to reference the secret. This example references a secret created at the project level. For additional details on referencing secrets, go to [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets).  
 Go to the [SonarQube docs](https://docs.sonarqube.org/latest/user-guide/user-token/) for information about creating tokens.
 * `product_project_name`—The name of the SonarQube project. This is the also the target name in the Harness UI (Security Tests > Test Targets).
 * `product_project_key` — The unique identifier of the SonarQube project you want to scan. Look for `sonar.projectKey` in the **sonar-project.properties** file.

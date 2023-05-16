@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This example harness-delegate.yaml file implements the approach of using the Kubernetes `emptyDir` object with an initialization (`INIT`) container to move binaries to the delegate image.
 
-For more information, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools.md).
+For more information, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 
 ```
@@ -114,7 +114,7 @@ spec:
         - name: ACCOUNT_ID  
           value: D3fzqqYxSmGYPzWMvroIWw  
         - name: MANAGER_HOST_AND_PORT  
-          value: https://qa.harness.io/gratis  
+          value: https://app.harness.io/gratis  
         - name: DEPLOY_MODE  
           value: KUBERNETES  
         - name: DELEGATE_NAME  
@@ -136,7 +136,7 @@ spec:
         - name: CLIENT_TOOLS_DOWNLOAD_DISABLED  
           value: "true"  
         - name: LOG_STREAMING_SERVICE_URL  
-          value: "https://qa.harness.io/gratis/log-service/"  
+          value: "https://app.harness.io/gratis/log-service/"  
         volumeMounts:  
         - mountPath: /opt/harness-delegate/client-tools  
           name: client-tools  
@@ -245,7 +245,7 @@ data:
     containerName: delegate  
     delegateConfig:  
       accountId: D3fzqqYxSmGYPzWMvroIWw  
-      managerHost: https://qa.harness.io/gratis  
+      managerHost: https://app.harness.io/gratis  
   
 ---  
   

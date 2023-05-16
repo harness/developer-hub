@@ -1,5 +1,5 @@
 ---
-title: Built-in and Custom Harness Variables Reference
+title: Built-in and custom Harness variables reference
 description: List of default (built-in) Harness expressions.
 # sidebar_position: 2
 helpdocs_topic_id: lml71vhsim
@@ -32,7 +32,7 @@ The content between the `<+...>` delimiters is passed on to the [Java Expressio
 ```
 <+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") || <+trigger.payload.repository.owner.name> == "wings-software"
 ```
-Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) and other steps.
+Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) and other steps.
 
 ### You can use all Java string methods
 
@@ -103,9 +103,9 @@ echo "service name: "<+service.name>
   
 echo "service variables: "<+serviceVariables.example_var>   
   
-echo "artifact image: "<+artifact.image>  
+echo "artifact image: "<+artifacts.primary.image>  
   
-echo "artifact.imagePath: "<+artifact.imagePath>  
+echo "artifact image path: "<+artifacts.primary.imagePath>  
   
 echo "environment name: "<+env.name>  
   
@@ -135,7 +135,7 @@ service variables: foo
   
 artifact image: index.docker.io/library/nginx:stable  
   
-artifact.imagePath: library/nginx  
+artifact image path: library/nginx  
   
 environment name: quickstart  
   
@@ -255,8 +255,8 @@ For example, here is a values.yaml file with a Harness expression in the comment
 ```yaml
 name: test
 replicas: 4
-image: <+artifact.image>
-dockercfg: <+artifact.imagePullSecret>
+image: <+artifacts.primary.image>
+dockercfg: <+artifacts.primary.imagePullSecret>
 createNamespace: true
 namespace: <+infra.namespace>
 # using expression <+infra.namespace>
@@ -369,9 +369,18 @@ Harness recommends that you use Java string method for concatenating pipeline va
 
 For example, use syntax `<+pipeline.variables.var1.concat("_suffix")>` or `<+<+pipeline.variables.var1>.concat("_suffix")>` or `<+<+pipeline.variables.var1> + "_suffix">` instead of `<+pipeline.variable.var1>_suffix`. 
 
+### Forward references
+
+Harness does not support referencing variables from future steps. For example, in a pipeline with four steps: step A, B, C and D, you cannot reference variables from step C in step A. 
+
+:::note Exception:
+You can reference the variable, `<+env.name>` (environment name) in a service step.
+:::
+
+
 ## Built-in CIE codebase variables reference
 
-In Harness, you set up your [codebase](../../continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [connector](../7_Connectors/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your pipeline.
+In Harness, you set up your [codebase](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase.md) by connecting to a Git repo using a Harness [connector](../7_Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference.md) and cloning the code you wish to build and test in your pipeline.
 
 Harness also retrieves your Git details and presents them in your build stage once a pipeline is run.
 
@@ -396,7 +405,7 @@ echo <+codebase.pullRequestLink>
 echo <+codebase.pullRequestBody>  
 echo <+codebase.state>
 ```
-See [Built-in CIE Codebase Variables Reference](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md).
+See [Built-in CIE Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
 
 ## Account
 
@@ -486,6 +495,7 @@ For example, in the following execution URL, the UUID follows `executions` and i
 ```
 https://app.harness.io/ng/#/account/12345678910/cd/orgs/default/projects/CD_Quickstart/pipelines/Helm_Quickstart/executions/kNHtmOaLTu66f_QNU-wdDw/pipeline
 ```
+
 ### <+pipeline.executionUrl>
 
 The execution URL of the pipeline. This is the same URL you see in your browser when you are viewing the pipeline execution.
@@ -517,7 +527,7 @@ For CD pipelines, the ID is named execution. For CI pipelines, the ID is named b
 
 ![](./static/harness-variables-26.png)
 
-You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repo, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. See [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
+You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repo, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For an example, go to the [Build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/kubernetes-build-farm).
 
 ### <+pipeline.startTs>
 
@@ -547,6 +557,14 @@ If a user name is not present in the event payload, the `<+pipeline.triggeredBy.
 
 The email of the user who triggered the pipeline. This returns NULL if the pipeline is triggered using a webhook. See [Trigger How-tos](/docs/category/triggers).
 
+### <+pipeline.selectedStages>
+
+The list of stages selected for execution. 
+
+### <+pipeline.delegateSelectors>
+
+The pipeline level delegate selectors selected via runtime input.  
+
 ## Deployment and step status
 
 Deployment status values are a Java enum. The list of values can be seen in the deployments **Status** filter:
@@ -557,9 +575,18 @@ You can use any status value in a JEXL condition. For example, `<+pipeline.stage
 
 ### Step status
 
-The expression `<+execution.steps.[step Id].status>` resolves to the status of a step. For example, `<+execution.steps.mystep.status>`.
+The expression `<+pipeline.stages.[stage name].spec.execution.steps.[step Id].status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
 
 You must use the expression after the step in execution.
+
+## InputSet
+
+Input Set values are a Json value. The list of values can be searched via 
+
+```
+<+inputSet>
+
+```
 
 ## Stage
 
@@ -588,7 +615,7 @@ For example, you could create a stage variable `name` and then reference its i
 name: <+stage.variables.name>  
 replicas: 2  
   
-image: <+artifact.image>  
+image: <+artifacts.primary.image>  
 ...
 ```
 When you run this pipeline, the value for `name` is used for the values.yaml file. The value can be a fixed value, expression, or runtime input.
@@ -634,7 +661,7 @@ Here is an example with a Shell script step.
 
 ![](./static/harness-variables-31.png)
 
-For examples, see the looping strategies used in the [Secure Shell (SSH) deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md).
+For examples, see the looping strategies used in the [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng).
 
 ### <+stage.executionUrl>
 
@@ -647,13 +674,17 @@ Use the following fully qualified expression to get the execution URL for a spec
 
 ```
 
+### <+stage.delegateSelectors>
+
+The stage level delegate selectors selected via runtime input
+
 ## Service
 
 Currently, there are two versions of services and environments, v1 and v2. Services and environments v1 are being replaced by services and environments v2.
 
 The use of variable expressions is different between v1 and v2.
 
-For more information, go to [Services and Environments Overview](../../continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview.md).
+For more information, go to [Services and Environments Overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 ### Service-level variables for service v2
 
@@ -727,7 +758,7 @@ Resolves to a boolean value to indicate whether the GitOps option is enabled (tr
 
 ![](./static/harness-variables-37.png)
 
-For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](../../continuous-delivery/cd-gitops/harness-git-ops-application-set-tutorial.md).
+For details on using the GitOps option, go to [Harness GitOps ApplicationSet and PR Pipeline Tutorial](/docs/continuous-delivery/gitops/harness-cd-git-ops-quickstart).
 
 ## Manifest
 
@@ -786,7 +817,7 @@ Resolves to the manifest type. For example, `K8sManifest`.
 ```
 ### <+manifests.[manifest name].store>
 
-Resolves to where the manifest is stored. For example, this manifest is stored in the [Harness File Store](../../continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store.md).
+Resolves to where the manifest is stored. For example, this manifest is stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
 
 ```
@@ -817,54 +848,69 @@ Value: `8d30fc49e6ed13155590b7d8c16931cd1a7b5bac`
 
 ## Artifact
 
-If an artifact expression is in a manifest or step and you have not selected an artifact in a service definition, or set the artifact is set as a runtime Input, you will be prompted to select an artifact at runtime. This is true even if the stage does not deploy an artifact (such as a custom stage or a stage performing a [Kustomize](../../continuous-delivery/onboard-cd/cd-quickstarts/kustomize-quickstart.md) deployment). 
-
-If you want to reference an artifact that isn't the primary deployment artifact without being prompted, you can use an expression with quotes, like `docker pull <+artifact<+".metadata.image">>`.The artifact expressions will resolve to settings and values specified in a service's **Artifacts** section.
+If an artifact expression is in a manifest or step and you have not selected an artifact in a service definition, or set the artifact is set as a runtime Input, you will be prompted to select an artifact at runtime. This is true even if the stage does not deploy an artifact (such as a custom stage or a stage performing a [Kustomize](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart) deployment). 
 
 For example, here is how the common artifact expressions resolve for a Kubernetes deployment with a Docker image on Docker Hub:
 
-* **<+artifact.tag>:** `stable`
-* **<+artifact.image>:** `index.docker.io/library/nginx:stable`
-* **<+artifact.imagePath>:** `library/nginx`
-* **<+artifact.imagePullSecret>:** `secret-value`
-* **<+artifact.type>:** `DockerRegistry`
-* **<+artifact.connectorRef>:** `DockerHub`
+* **<+artifacts.primary.tag>:** `stable`
+* **<+artifacts.primary.image>:** `index.docker.io/library/nginx:stable`
+* **<+artifacts.primary.imagePath>:** `library/nginx`
+* **<+artifacts.primary.imagePullSecret>:** `secret-value`
+* **<+artifacts.primary.dockerConfigJsonSecret>:** `secret-value`
+* **<+artifacts.primary.type>:** `DockerRegistry`
+* **<+artifacts.primary.connectorRef>:** `DockerHub`
 
-Here is a script you can add to a [Shell Script](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step to view the artifact info:
 
+<details>
+<summary>Example output for all artifact expressions</summary>
 
-```
-echo "artifact.tag: "<+artifact.tag>  
-echo "artifact.image: "<+artifact.image>  
-echo "artifact.imagePath: "<+artifact.imagePath>  
-echo "artifact.imagePullSecret: "<+artifact.imagePullSecret>  
-echo "artifact.type: "<+artifact.type>  
-echo "artifact.connectorRef: "<+artifact.connectorRef>
-```
-Here is the example log from the deployment:
-
+Here's an example where we use a Shell Script step to echo all the artifact expressions.
 
 ```
-Executing command ...  
-artifact.tag: stable  
-artifact.image: index.docker.io/library/nginx:stable  
-artifact.imagePath: library/nginx  
-artifact.imagePullSecret: secret-value
-artifact.type: DockerRegistry  
-artifact.connectorRef: DockerHub  
+echo "artifacts.primary.image: "<+artifacts.primary.image>
+echo "artifacts.primary.connectorRef: "<+artifacts.primary.connectorRef>
+echo "artifacts.primary.digest: "<+artifacts.primary.digest>
+echo "artifacts.primary.identifier: "<+artifacts.primary.identifier>
+echo "artifacts.primary.imagePath: "<+artifacts.primary.imagePath>
+echo "artifacts.primary.imagePullSecret: "<+artifacts.primary.imagePullSecret>
+echo "artifacts.primary.label: "<+artifacts.primary.label>
+echo "artifacts.primary.metadata: "<+artifacts.primary.metadata>
+echo "artifacts.primary.primaryArtifact: "<+artifacts.primary.primaryArtifact>
+echo "artifacts.primary.tag: "<+artifacts.primary.tag>
+echo "artifacts.primary.type: "<+artifacts.primary.type>
+```
+
+Here's the output:
+
+```
+Executing command ...
+artifacts.primary.image: index.docker.io/johndoe/tweetapp:21
+artifacts.primary.connectorRef: Docker_Hub_with_Pwd
+artifacts.primary.digest: null
+artifacts.primary.identifier: primary
+artifacts.primary.imagePath: johndoe/tweetapp
+artifacts.primary.imagePullSecret: 123abc
+artifacts.primary.metadata: {image=index.docker.io/johndoe/tweetapp:21, tag=21}
+artifacts.primary.primaryArtifact: true
+artifacts.primary.tag: 21
+artifacts.primary.type: DockerRegistry
 Command completed with ExitCode (0)
 ```
-### <+artifact.tag>
+
+</details>
+
+
+### <+artifacts.primary.tag>
 
 Not Harness tags. This expression evaluates to the tags on the artifact pushed, pulled, or deployed. For example, AMI tags. If you are deploying the Docker image `nginx:stable-perl`, the tag would be `stable-perl`.
 
-### <+artifact.image>
+### <+artifacts.primary.image>
 
 The full location to the Docker image. For example, `docker.io/bitnami/nginx:1.22.0-debian-11-r0`.
 
-For non-containerized artifacts, use `<+artifact.path>`, described [below](#artifact_path).To see just the image name, use `<+artifact.imagePath>`.
+For non-containerized artifacts, use `<+artifacts.primary.path>`, described [below](#artifact_path).  To see just the image name, use `<+artifacts.primary.imagePath>`.
 
-You use `<+artifact.image>` or `<+artifact.imagePath>` is your values YAML file when you want to deploy an artifact you have added to the **Artifacts** section of a CD stage service definition.
+Use `<+artifacts.primary.image>` or `<+artifacts.primary.imagePath>` in your values YAML file when you want to deploy an artifact you have added to the **Artifacts** section of a CD stage service definition.
 
 For example, here is the **Artifacts** section with an artifact:
 
@@ -877,33 +923,33 @@ Here is the Values YAML file referencing the artifact in **Artifacts**:
 name: example  
 replicas: 2  
   
-image: <+artifact.image>  
-# dockercfg: <+artifact.imagePullSecret>  
+image: <+artifacts.primary.image>  
+# dockercfg: <+artifacts.primary.imagePullSecret>  
   
 createNamespace: true  
 namespace: <+infra.namespace>  
   
 ...
 ```
-See [Example Kubernetes Manifests using Go Templating](../../continuous-delivery/cd-technical-reference/cd-k8s-ref/example-kubernetes-manifests-using-go-templating.md).
+For more information, go to [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
 
-### <+artifact.path>
+### <+artifacts.primary.path>
 
 The full path to the non-containerized artifact. This expression is used in non-containerized deployments.
 
-### <+artifact.filePath>
+### <+artifacts.primary.filePath>
 
 The file name of the non-containerized artifact. This expression is used in non-containerized deployments. For example, a ZIP file in AWS S3.
 
-### <+artifact.imagePath>
+### <+artifacts.primary.imagePath>
 
-The image name, such as `nginx`. To see the entire image location use `<+artifact.image>`.
+The image name, such as `nginx`. To see the entire image location use `<+artifacts.primary.image>`.
 
-### <+artifact.imagePullSecret>
+### <+artifacts.primary.imagePullSecret>
 
 If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For these cases, the values.yaml or manifest file in service definition **Manifests** section must use the `dockercfg` parameter.
 
-If the Docker image is added in the service definition **Artifacts** section, you can reference it as `dockercfg: <+artifact.imagePullSecret>`.
+If the Docker image is added in the service definition **Artifacts** section, you can reference it as `dockercfg: <+artifacts.primary.imagePullSecret>`.
 
 values.yaml:
 
@@ -912,26 +958,48 @@ values.yaml:
 name: <+stage.variables.name>  
 replicas: 2  
   
-image: <+artifact.image>  
-dockercfg: <+artifact.imagePullSecret>  
+image: <+artifacts.primary.image>  
+dockercfg: <+artifacts.primary.imagePullSecret>  
   
 createNamespace: true  
 namespace: <+infra.namespace>  
 ...
 ```
-See [Pull an Image from a Private Registry for Kubernetes](../../continuous-delivery/cd-advanced/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes.md).
+Go to [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes) for more information.
 
-### <+artifact.type>
+### <+artifacts.primary.dockerConfigJsonSecret>
+
+In some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. For such cases, the values.yaml or manifest files in the service definition **Manifests** section must use the `dockerconfigjson` parameter.
+
+If the Docker image is added in the service definition **Artifacts** section, you can reference it as `dockerconfigjson: <+artifact.dockerConfigJsonSecret>`.
+
+Here is a sample values.yaml:
+
+```
+name: <+stage.variables.name>  
+replicas: 2  
+  
+image: <+artifacts.primary.image>  
+dockerconfigjson: <+artifacts.primary.dockerConfigJsonSecret>
+  
+createNamespace: true  
+namespace: <+infra.namespace>  
+...
+```
+
+For more information, go to [Pull an Image from a Private Registry for Kubernetes](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/pull-an-image-from-a-private-registry-for-kubernetes).
+
+### <+artifacts.primary.type>
 
 The type of repository used to add this artifact in the service **Artifacts**. For example, Docker Hub, ECR, or GCR.
 
-### <+artifact.connectorRef>
+### <+artifacts.primary.connectorRef>
 
 The [entity identifier](../20_References/entity-identifier-reference.md) for the connector used to connect to the artifact repository.
 
 ![](./static/harness-variables-39.png)
 
-### <+artifact.label.get("")>
+### <+artifacts.primary.label.get("")>
 
 This expression resolves to the Docker labels of a Docker image.
 
@@ -947,11 +1015,11 @@ In a Harness Shell script step or any setting where you want use the labels, you
 
 
 ```
-echo <+artifact.label.get("maintainer")>  
-echo <+artifact.label.get("build_date")>  
-echo <+artifact.label.get("multi.author")>  
-echo <+artifact.label.get("key-value")>  
-echo <+artifact.label.get("multi.key.value")>
+echo <+artifacts.primary.label.get("maintainer")>  
+echo <+artifacts.primary.label.get("build_date")>  
+echo <+artifacts.primary.label.get("multi.author")>  
+echo <+artifacts.primary.label.get("key-value")>  
+echo <+artifacts.primary.label.get("multi.key.value")>
 ```
 When you run the pipeline, the expressions will resolve to their respective label values.
 
@@ -962,6 +1030,14 @@ When you run the pipeline, the expressions will resolve to their respective labe
 The Id of the Primary artifact added in a Service **Artifacts** section.
 
 ![](./static/harness-variables-41.png)
+
+### <+artifact.metadata.fileName>
+
+The file name of the Artifactory artifact. 
+
+This variable is added to the metadata of the Artifactory artifacts with generic repository format. You can view this variable in the **Output** tab of the **Service** step of a pipeline execution.
+
+![](./static/artifact-file-name-variable.png)
 
 ### Sidecar artifacts
 
@@ -989,7 +1065,7 @@ Currently, there are two versions of services and environments, v1 and v2. Servi
 
 The use of variable expressions is different between v1 and v2.
 
-For more information, go to [Services and Environments Overview](../../continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview.md).
+For more information, go to [Services and Environments Overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 To reference an environment-level variable, use the expression `<+env.variables.[variable name]>`.
 
@@ -1021,12 +1097,25 @@ The available values are:
 - `PreProduction`
 - `Production`
 
+### <+env.envGroupName>
+
+The name of the environment group to which the environment belongs (if defined).
+
+### <+env.envGroupRef>
+
+The environment group reference.
+
 You can evaluate the expression using JEXL in the **Conditional Execution** settings of steps or stages:
 
 ```
 <+env.type> != "Production"
 ```
 
+:::note
+
+Environment expressions can be used in service steps as well.
+
+:::
 
 ## Infrastructure
 
@@ -1105,7 +1194,7 @@ Use the following fully qualified expression to get the execution URL for a spec
 
 The following instance expressions are supported in SSH, WinRM, and custom deployments using deployment templates. These deployments can be done on physical data centers, AWS, and Azure.
 
-For details on these deployment types, go to [Secure Shell (SSH) deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/ssh-ng.md), [WinRM deployment tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/win-rm-tutorial.md), and [Custom deployments using Deployment Templates tutorial](../../continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial.md).
+For details on these deployment types, go to [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng), [WinRM deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial), and [Custom deployments using Deployment Templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial).
 
 To use these instance expressions in a step, you must use the repeat [Looping Strategy](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
 
@@ -1116,7 +1205,7 @@ repeat:
 ```
 ![](./static/harness-variables-48.png)
 
-For examples, see [Run a script on multiple target instances](../../continuous-delivery/cd-execution/cd-general-steps/run-a-script-on-multiple-target-instances.md).
+For examples, see [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances/).
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
@@ -1131,7 +1220,7 @@ For Microsoft Azure or AWS:
 
 ### Deployment templates
 
-For [Deployment Templates](../../continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial.md), you can use `<+instance...>` expressions to reference host(s) properties.
+For [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial), you can use `<+instance...>` expressions to reference host(s) properties.
 
 The `<+instance...>` expressions refer to the **Instance Attributes** in the deployment template:
 
@@ -1227,7 +1316,7 @@ Consequently, you can only use `${HARNESS_KUBE_CONFIG_PATH}` when you are using 
 
 If you are running the script using an in-cluster delegate with the **Use the credentials of a specific Harness Delegate** credentials option, then there are no credentials to store in a kubeconfig file since the Delegate is already an in-cluster process.
 
-You can use this variable in a [Shell script](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step to set the environment variable at the beginning of your kubectl script:
+You can use this variable in a [Shell script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step to set the environment variable at the beginning of your kubectl script:
 
 `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`
 
@@ -1238,6 +1327,18 @@ For example:
 export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n default
 ```
 The `${HARNESS_KUBE_CONFIG_PATH}` expression can be used in scripts in Shell script steps. It cannot be used in other scripts such as a Terraform script.
+
+### kubernetes.release.revision
+
+Harness expression for the deployment revision number.
+
+You can use the expression `<+kubernetes.release.revision>` in values.yaml, OpenShift Params, and Kustomize Patches. 
+
+This will help you to:
+  - Reference the current Harness release number as part of your manifest.
+  - Reference versioned ConfigMaps and Secrets in custom resources and fields unknown by Harness.
+
+**Important:** Users must update their delegate to version 1.0.79100 to use this expression.
 
 ## Tag expressions
 
@@ -1460,11 +1561,11 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 For more information migrating to NextGen, go to the following:
 
 - [Harness FirstGen vs Harness NextGen](https://developer.harness.io/docs/getting-started/harness-first-gen-vs-harness-next-gen)
-- [FirstGen and NextGen CD parity matrix](https://developer.harness.io/docs/continuous-delivery/onboard-cd/upgrading/feature-parity-matrix)
-- [Harness CD upgrading FAQ](https://developer.harness.io/docs/continuous-delivery/onboard-cd/upgrading/cdng-upgrade-faq)
+- [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)
+- [Harness CD upgrading FAQ](/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)
 
 ## See also
 
-* [Codebase Variables Reference](../../continuous-integration/ci-technical-reference/built-in-cie-codebase-variables-reference.md)
+* [Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
 * [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
 

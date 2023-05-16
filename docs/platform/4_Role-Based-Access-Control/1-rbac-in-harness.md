@@ -1,5 +1,5 @@
 ---
-title: Harness Role-Based Access Control Overview
+title: Role-based access control overview
 description: This topic explains the concept of Harness Role-Based Access Control.
 # sidebar_position: 2
 helpdocs_topic_id: vz5cq0nfg2
@@ -38,11 +38,11 @@ Here is a quick overview of Harness RBAC:
 ### Harness RBAC components
 
 * **Users:** These are individual users within the Harness system. One User can belong to many user groups.  
-For more information on creating a new User, see [Add and Manage Users](../4_Role-Based-Access-Control/3-add-users.md).
+For more information on creating a new User, see [Add and Manage Users](../3_User-Management/3-add-users.md).
 * **User Groups:** User Groups contain multiple Harness Users. Each User Group has assigned roles. You can create User Groups at Account/Org/Project scope.  
-For more information on creating a new User Group, see [Add and Manage User Groups](../4_Role-Based-Access-Control/4-add-user-groups.md).
-* **Service Account:** A Service Account is a set of [API Keys](../4_Role-Based-Access-Control/7-add-and-manage-api-keys.md) with a set of permissions assigned to them via role assignment. API Keys are used for authenticating and authorizing remote services attempting to perform operations in Harness via our APIs. API Keys that are part of a Service Account are assigned permissions (equivalent to users) that Service Accounts inherit.  
-For more information on creating a new Service Account, see [Add and Manage Service Accounts.](../4_Role-Based-Access-Control/6-add-and-manage-service-account.md)
+For more information on creating a new User Group, see [Add and Manage User Groups](../3_User-Management/4-add-user-groups.md).
+* **Service Account:** A Service Account is a set of [API Keys](../3_User-Management/7-add-and-manage-api-keys.md) with a set of permissions assigned to them via role assignment. API Keys are used for authenticating and authorizing remote services attempting to perform operations in Harness via our APIs. API Keys that are part of a Service Account are assigned permissions (equivalent to users) that Service Accounts inherit.  
+For more information on creating a new Service Account, see [Add and Manage Service Accounts.](../3_User-Management/6-add-and-manage-service-account.md)
 * **Resource Groups:** A [Resource Group](#resource-group) is a set of Harness resources that a User or User Group can access. You can create Resource Groups at Account/Org/Project scope.  
 For more information on creating a new Resource Group, see [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md).
 * **Roles:** A [Role](#role) is a group of permissions you assign to a User Group. You can create roles at Account/Org/Project scope.  
@@ -222,9 +222,9 @@ The following blog post walks you through User and Role Management in Harness:
 
 ### Next steps
 
-* [Add and Manage Users](../4_Role-Based-Access-Control/3-add-users.md)
-* [Add and Manage User Groups](../4_Role-Based-Access-Control/4-add-user-groups.md)
-* [Add and Manage Service Accounts](../4_Role-Based-Access-Control/6-add-and-manage-service-account.md)
+* [Add and Manage Users](../3_User-Management/3-add-users.md)
+* [Add and Manage User Groups](../3_User-Management/4-add-user-groups.md)
+* [Add and Manage Service Accounts](../3_User-Management/6-add-and-manage-service-account.md)
 * [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md)
 * [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md)
 * [Attribute-Based Access Control](../4_Role-Based-Access-Control/2-attribute-based-access-control.md)

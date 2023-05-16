@@ -1,5 +1,5 @@
 ---
-title: Add Account, Org, and Project-level Variables
+title: Add account, org, and project-level variables
 description: Describes steps to add Variables as Resources.
 # sidebar_position: 2
 helpdocs_topic_id: f3450ye0ul
@@ -128,7 +128,7 @@ Let us add the Variable in a Pipeline now.
 
 In Harness go to a Pipeline in the same Org as the variable you created.
 
-In **Execution**, add a [Shell Script](../../continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts.md) step and reference the variables:
+In **Execution**, add a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step and reference the variables:
 
 
 ```

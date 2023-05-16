@@ -1,0 +1,14 @@
+{
+    "label": "Artifact repositories",
+    "collapsible": "true",
+    "collapsed": "true",
+    "className": "red",
+    "position": 3,
+    "link": {
+        "type": "generated-index",
+        "title": "Artifact Repositories"
+    },
+    "customProps": {
+        
+    }
+}

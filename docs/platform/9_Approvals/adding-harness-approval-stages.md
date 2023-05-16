@@ -1,5 +1,5 @@
 ---
-title: Using Manual Harness Approval Stages
+title: Using manual Harness approval stages
 description: Approve or reject a Pipeline at any point in its execution using Manual Approval Stages.
 sidebar_position: 10
 helpdocs_topic_id: fkvso46bok
@@ -12,11 +12,11 @@ You can specify Harness User Group(s) to approve or reject a Pipeline at any poi
 
 Approvals are added in between Stages to prevent the Pipeline execution from proceeding without an approval.
 
-For example, in a [Build Pipeline](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md), you might want to add an approval stage between a Build Stage and an Integration Test Stage.
+For example, in a [CI Build pipeline](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md), you might want to add an approval stage between a Build Stage and an Integration Test Stage.
 
 Other approval methods are:
 
-* [Manual Harness Approval Steps in CD Stages](../../continuous-delivery/cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md): add Approval steps to a stage for manual intervention.
+* [Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/): add Approval steps to a stage for manual intervention.
 * [Adding Jira Approval Stages and Steps](adding-jira-approval-stages.md): add Jira Approval stages and steps.
 
 ### Before you begin
@@ -124,6 +124,38 @@ For example, in a subsequent step's **Conditional Execution** settings, you coul
 
 `<+pipeline.stages.Shell_Script.spec.execution.steps.Harness_Approval_Step.output.approverInputs.foo> == 1`
 
+### Option: User Groups as Expressions
+
+In **User Groups**, select **Expression** as the type of value.
+
+![](./static/adding-harness-approval-stages-20.png)
+
+You can select one of the following types of expression for user groups:
+* **Individual**: Specify individual expressions for each user group that needs to be configured as an approver. Select **Add** to add more user groups. 
+
+  ![](./static/adding-harness-approval-stages-18.png)
+
+* **Combined**: Specify a combined expression for all user groups that need to be configured as Approvers. This expression must resolve to a list of strings.
+
+  Following example shows a combined expression:
+
+  `<+ <+pipeline.variables.grouplist1> + "," + <+pipeline.variables.grouplist2> >.split(",")`
+
+  The expression `<+pipeline.variables.grouplist1>` resolves to `_project_all_users,testUserGroup`
+  and the expression `<+pipeline.variables.grouplist2>` resolves to `org._organization_all_users,account._account_all_users`. 
+  The above two expressions resolve to a string of comma-separated user groups. The combined expression resolves to a list of the following user groups:
+  - _project_all_users
+  -  testUserGroup
+  -  org._organization_all_users
+  -  account._account_all_users
+
+  :::important
+  Make sure no spaces are present in the expression values. In the above example, the format must be `_project_all_users,testUserGroup` to match the        split criteria `,` .
+  :::
+
+
+   ![](./static/adding-harness-approval-stages-19.png)
+
 ### Option: Advanced Settings
 
 See:
@@ -134,6 +166,6 @@ See:
 
 ### See also
 
-* [Using Manual Harness Approval Steps in CD Stages](../../continuous-delivery/cd-advanced/approvals/using-harness-approval-steps-in-cd-stages.md)
-* [Update Jira Issues in CD Stages](../../continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-stages.md)
+* [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/)
+* [Update Jira Issues in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages)
 

@@ -1,5 +1,5 @@
 ---
-title: Python SDK Reference
+title: Python SDK reference
 description: This topic explains how to use the Harness Feature Flags SDK in your Python application.
 sidebar_position: 70
 helpdocs_topic_id: hwoxb6x2oe
@@ -7,6 +7,9 @@ helpdocs_category_id: kkiqy1f6d7
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
+
 
 This topic describes how to use the Harness Feature Flags Java SDK for your Java application.
 
@@ -17,13 +20,13 @@ For getting started quickly, you can use our [sample code from the Python SDK R
 You should read and understand the following:
 
 * [Feature Flags Overview](../../ff-onboarding/cf-feature-flag-overview.md)
-* [Getting Started with Feature Flags](../../ff-onboarding/ff-getting-started/getting-started-with-feature-flags.md)
+* [Getting Started with Feature Flags](/docs/feature-flags/ff-onboarding/getting-started-with-feature-flags)
 * [Client-Side and Server-Side SDKs](../sdk-overview/client-side-and-server-side-sdks.md)
 * [Communication Strategy Between SDKs and Harness Feature Flags](../sdk-overview/communication-sdks-harness-feature-flags.md)
 
 ## Version
 
-The current version of this SDK is **1.1.9.**
+The current version of this SDK is **1.1.10.**
 
 ## Requirements
 
@@ -33,8 +36,8 @@ To use this SDK, make sure you:  
 * Install [pip](https://packaging.python.org/en/latest/tutorials/installing-packages/#id12)
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-python-server-sdk)
 * Create a Java application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-python-server-sdk).
-* [Create a Feature Flag on the Harness Platform](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`
-* [Create an SDK key and make a copy of it](../../ff-using-flags/ff-creating-flag/create-a-feature-flag.md#step-3-create-an-sdk-key)
+* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`
+* [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key)
 
 ## Install the SDK
 
@@ -72,7 +75,7 @@ cf = CfClient(api_key);
 Targets are used to control which users see which Variation of a Feature Flag, for example, if you want to do internal testing, you can enable the Flag for some users and not others. When creating a Target, you give it a name and a unique identifier. Often Targets are users but you can create a Target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
-For more information about Targets, go to [Targeting Users With Flags](../../ff-using-flags/ff-target-management/targeting-users-with-flags.md).
+For more information about Targets, go to [Targeting Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
 To add a Target, build it and pass in arguments for the following:
 
@@ -148,9 +151,9 @@ For example:
 ```
 ## Evaluate a Flag
 
-Evaluating a Flag is when the SDK processes all Flag rules and returns the correct Variation of that Flag for the Target you provide. 
+Evaluating a Flag is when the SDK processes all Flag rules and returns the correct Variation of that Flag for the Target you provide.
 
-If a matching Flag can’t be found, or the SDK can’t remotely fetch flags, the default value is returned. 
+If a matching Flag can’t be found, or the SDK can’t remotely fetch flags, the default value is returned, and an error is logged.
 
 There are different methods for the different Variation types and for each method you need to pass in:
 
@@ -188,6 +191,8 @@ client.json_variation('identifier_of_your_json_flag', target, {})
 
 When you receive a response showing the current status of your Feature Flag, go to the Harness Platform and toggle the Flag on and off. Then, check your app to verify if the Flag Variation displayed is updated with the Variation you toggled.
 
+<Sixty />
+
 ## Close the SDK
 
 To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, run the following command: 
@@ -218,7 +223,7 @@ log.setLevel(logging.WARN)
 ```
 ### Use the Relay Proxy
 
-When using your Feature Flag SDKs with a [Harness Relay Proxy](../../ff-using-flags/relay-proxy/relay-proxy.md) you need to change the default URL and events URL to `http://localhost:7000` when initializing the SDK. To do this:
+When using your Feature Flag SDKs with a [Harness Relay Proxy](/docs/feature-flags/relay-proxy/) you need to change the default URL and events URL to `http://localhost:7000` when initializing the SDK. To do this:
 
 1. Import the URL helper functions, for example:
 ```

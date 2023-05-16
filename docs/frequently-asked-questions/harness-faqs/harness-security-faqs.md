@@ -53,23 +53,23 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 The set of security features that Harness provides includes the following features:
 
-* [User management](../../platform/4_Role-Based-Access-Control/3-add-users.md)
-* [User group management](../../platform/4_Role-Based-Access-Control/4-add-user-groups.md)
+* [User management](/docs/platform/User-Management/add-users)
+* [User group management](/docs/platform/User-Management/add-user-groups)
 * [Role management](../../platform/4_Role-Based-Access-Control/9-add-manage-roles.md)
 * [Resource group management](../../platform/4_Role-Based-Access-Control/8-add-resource-groups.md)
 * [Access management (for example, RBAC)](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md)
 * [Password policies](../../platform/3_Authentication/1-authentication-overview.md#enforce-password-policies)
 * [Two-factor authentication](../../platform/3_Authentication/2-two-factor-authentication.md)
 * [Single sign-on (SSO)](../../platform/3_Authentication/3-single-sign-on-saml.md#saml-sso-with-harness-overview)
-* [Text encryption](../../platform/6_Security/2-add-use-text-secrets.md)
-* [File encryption](../../platform/6_Security/3-add-file-secrets.md)
-* [Auditing](../../platform/15_Audit-Trail/audit-trail.md)
+* [Text encryption](/docs/platform/Secrets/add-use-text-secrets)
+* [File encryption](/docs/platform/Secrets/add-file-secrets)
+* [Auditing](/docs/platform/Governance/Audit-Trail/audit-trail)
 
 #### Are delegate communications secure?
 
 Yes. All network connections from the delegate on your local network or VPC to Harness SaaS are HTTPS outbound-only.
 
-See [Delegates overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
+See [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 
 #### What data does the delegate send to Harness Manager?
 
@@ -78,7 +78,7 @@ The delegate and Harness Manager (SaaS) establish a Secure WebSocket channel (We
 * **Heartbeat** - The delegate sends a [heartbeat](https://en.wikipedia.org/wiki/Heartbeat_(computing)) to let Harness Manager know that it is running.
 * **Deployment data** - The information from the API executions the delegate performs is sent to Harness Manager for display on the **Deployments** page.
 * **Time series and log data for Continuous Verification** - The delegate connects to the verification providers you have configured and sends their data to Harness Manager for display in Harness Continuous Verification.  
-See [Delegates overview](/docs/platform/2_Delegates/get-started-with-delegates/delegates-overview.md).
+See [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 
 ### Harness role-based access control (RBAC)
 
@@ -106,9 +106,9 @@ See:
 
 * [Single sign-on (SSO) with SAML](../../platform/3_Authentication/3-single-sign-on-saml.md)
 * [Single sign-on (SSO) with OAuth](../../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md)
-* [Provision users with Okta (SCIM)](../../platform/3_Authentication/6-provision-users-with-okta-scim.md)
-* [Provision users with OneLogin (SCIM)](../../platform/3_Authentication/7provision-users-and-groups-with-one-login-scim.md)
-* [Provision users with Azure AD (SCIM)](../../platform/3_Authentication/8-provision-users-and-groups-using-azure-ad-scim.md)
+* [Provision users with Okta (SCIM)](/docs/platform/User-Management/provision-users-with-okta-scim)
+* [Provision users with OneLogin (SCIM)](/docs/platform/User-Management/7provision-users-and-groups-with-one-login-scim)
+* [Provision users with Azure AD (SCIM)](/docs/platform/User-Management/provision-users-and-groups-using-azure-ad-scim)
 
 #### Are there best practices for setting up Harness users?
 
@@ -164,17 +164,17 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 #### How are secrets managed in Harness?
 
-See [Harness secrets management overview](../../platform/6_Security/1-harness-secret-manager-overview.md).
+See [Harness secrets management overview](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview).
 
 Google Cloud Key Management Service is the default Secrets Manager in Harness.
 
 You can use your own secrets manager with Harness. Harness integrates with all of the common secret managers:
 
-* [Add Google KMS as a Harness secrets manager](../../platform/6_Security/10-add-google-kms-secrets-manager.md)
-* [Add an AWS Secret Manager](../../platform/6_Security/6-add-an-aws-secret-manager.md)
-* [Add an AWS KMS Secrets Manager](../../platform/6_Security/7-add-an-aws-kms-secrets-manager.md)
-* [Add an Azure Key Vault Secrets Manager](../../platform/6_Security/8-azure-key-vault.md)
-* [Add a HashiCorp Vault Secrets Manager](../../platform/6_Security/12-add-hashicorp-vault.md)
+* [Add Google KMS as a Harness secrets manager](/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager)
+* [Add an AWS Secret Manager](/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager)
+* [Add an AWS KMS Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager)
+* [Add an Azure Key Vault Secrets Manager](/docs/platform/Secrets/Secrets-Management/azure-key-vault)
+* [Add a HashiCorp Vault Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault)
 
 This diagram shows how Harness handles secrets:
 
@@ -184,9 +184,9 @@ This diagram shows how Harness handles secrets:
 
 Harness supports:
 
-* [Text encryption](../../platform/6_Security/2-add-use-text-secrets.md) (for strings such as passwords)
-* [File encryption](../../platform/6_Security/3-add-file-secrets.md) (for files such as configuration files)
-* [SSH connection credentials](../../platform/6_Security/4-add-use-ssh-secrets.md)
+* [Text encryption](/docs/platform/Secrets/add-use-text-secrets) (for strings such as passwords)
+* [File encryption](/docs/platform/Secrets/add-file-secrets) (for files such as configuration files)
+* [SSH connection credentials](/docs/platform/Secrets/add-use-ssh-secrets)
 
 #### Where can I use a secret?
 
@@ -202,8 +202,8 @@ In Harness Secrets Management, you pick a type of secret, and then enter the sec
 
 See:
 
-* [Use encrypted text secrets](../../platform/6_Security/2-add-use-text-secrets.md)
-* [Use encrypted file secrets](../../platform/6_Security/3-add-file-secrets.md)
+* [Use encrypted text secrets](/docs/platform/Secrets/add-use-text-secrets)
+* [Use encrypted file secrets](/docs/platform/Secrets/add-file-secrets)
 
 #### How do I use a secret?
 
@@ -221,8 +221,8 @@ If your secret is scoped at the Account level, you can refer it using the expres
 
 See:
 
-* [Use encrypted text secrets](../../platform/6_Security/2-add-use-text-secrets.md)
-* [Use encrypted file secrets](../../platform/6_Security/3-add-file-secrets.md)
+* [Use encrypted text secrets](/docs/platform/Secrets/add-use-text-secrets)
+* [Use encrypted file secrets](/docs/platform/Secrets/add-file-secrets)
 
 #### Are my secrets exposed in logs?
 
@@ -240,7 +240,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Yes. Harness provides auditing of events for Harness resources within your account. The Audit Trail enables you to track and review all events in one place.
 
-See [Audit trail](../../platform/15_Audit-Trail/audit-trail.md).
+See [Audit trail](/docs/platform/Governance/Audit-Trail/audit-trail).
 
 #### What can I see on the audit trail?
 
@@ -272,7 +272,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Yes. Harness Pipeline Governance feature enables you to measure how conformant your Pipelines are with your regulatory and operations standards.
 
-See [Pipeline governance](../../platform/14_Policy-as-code/harness-governance-overview.md).
+See [Pipeline governance](/docs/platform/Governance/Policy-as-code/harness-governance-overview).
 
 #### How do I set up governance?
 
@@ -296,5 +296,5 @@ To integrate Harness with some third-party apps, you need to register Harness wi
 
 The API key is a simple encrypted string that other applications can use to access Harness without a private Harness account.
 
-See [API keys](../../platform/4_Role-Based-Access-Control/7-add-and-manage-api-keys.md).
+See [API keys](/docs/platform/User-Management/add-and-manage-api-keys).
 

@@ -158,10 +158,10 @@ You can add a `tool_args` setting to run the trivy image scanner with specific c
 
 In the **Additional Configuration** settings, you can use the following options:
 
-* [Privileged](/docs/continuous-integration/ci-technical-reference/background-step-settings/#privileged)
-* [Image Pull Policy](/docs/continuous-integration/ci-technical-reference/background-step-settings/#image-pull-policy)
-* [Run as User](/docs/continuous-integration/ci-technical-reference/background-step-settings/#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/ci-technical-reference/background-step-settings/#set-container-resources)
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
 
 
 ### Advanced settings
@@ -171,7 +171,7 @@ In the **Advanced** settings, you can use the following options:
 * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
 * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/policy-as-code/harness-governance-overview)
+* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 
 
@@ -190,12 +190,12 @@ In the **Advanced** settings, you can use the following options:
 STO supports the following `policy_type` settings for Aqua-Trivy:
 
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
-* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/ingest-scan-results-into-an-sto-pipeline.md).
+* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md).
 
-#### Required Settings
+#### Required settings
 
 * `product_name` = `aqua-trivy`
-* `scan_type` = `containerImage`
+* `scan_type` = `containerImage`, `ingestionOnly`
 * `product_config_name` — Specify one of the following:
 	+ `aqua-trivy` — Run the Trivy image scanner with default settings.
 	+ `aqua-trivy-debug` — Run the Trivy image scanner in Debug mode.
@@ -203,6 +203,7 @@ STO supports the following `policy_type` settings for Aqua-Trivy:
 * `container_project` — The image owner and project, for example `harness/delegate`
 * `container_tag` — The tag of the image to scan, for example `latest`
 * `container_type` — Set to `local_image`, `docker_v2`, `jfrog_artifactory`, or `aws_ecr`  
+* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 The following settings are also required, depending on the container type:
 + if `container_type` = `docker_v2`
@@ -216,7 +217,16 @@ The following settings are also required, depending on the container type:
 	- `container_access_id`: Username
 	- `container_access_token`: Password/Token
 
+```mdx-code-block
+import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
+```
+
+<StoLegacyIngest />
+
 </details>
+
+
+
 
 ## YAML configuration
 
