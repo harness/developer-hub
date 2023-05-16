@@ -139,7 +139,7 @@ See:
 
 A Build deployment runs a build process, such as a Jenkins job that creates a WAR file and deposits it in a registry.
 
-::: note
+:::note
 
 Build deployments in CD stages are not part of Harness Continuous Integration (CI). Harness CI performs extensive code testing, compiling, and artifact registration.
 
