@@ -224,7 +224,7 @@ Use **Run** steps to install dependencies in the build environment. [Plugin step
 <TabItem value="Harness Cloud" default>
 ```
 
-With Harness Cloud build infrastructure, use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) to automate caching of Java dependencies. Add `caching: enabled: true` to your `stage:spec`.
+With Harness Cloud build infrastructure, use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) to automate caching of Java dependencies. Add `caching.enabled.true` to your `stage.spec`.
 
 ```yaml
     - stage:
@@ -273,9 +273,9 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                   name: Restore Cache From S3
                   identifier: Restore_Cache_From_S3
                   spec:
-                    connectorRef: AWS_Connector ## Use your AWS connector ID
+                    connectorRef: AWS_Connector
                     region: us-east-1
-                    bucket: your-s3-bucket ## Use your S3 bucket name
+                    bucket: your-s3-bucket
                     key: cache-{{ checksum "pom.xml" }}
                     archiveFormat: Tar
               - step:
@@ -289,9 +289,9 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                   name: Save Cache to S3
                   identifier: Save_Cache_to_S3
                   spec:
-                    connectorRef: AWS_Connector ## Use your AWS connector ID
+                    connectorRef: AWS_Connector
                     region: us-east-1
-                    bucket: your-s3-bucket ## Use your S3 bucket name
+                    bucket: your-s3-bucket
                     key: cache-{{ checksum "pom.xml" }}
                     sourcePaths:
                       - /root/.m2

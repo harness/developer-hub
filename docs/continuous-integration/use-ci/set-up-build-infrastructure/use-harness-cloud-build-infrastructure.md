@@ -162,7 +162,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="YAML" label="YAML editor">
 ```
 
-To enable Harness Cloud build infrastructure in your pipeline YAML, specify the `platform` and `runtime` in the `stage: spec:`. For example:
+To enable Harness Cloud build infrastructure in your pipeline YAML, specify the `platform` and `runtime` in the `stage.spec`. For example:
 
 ```yaml
           platform:

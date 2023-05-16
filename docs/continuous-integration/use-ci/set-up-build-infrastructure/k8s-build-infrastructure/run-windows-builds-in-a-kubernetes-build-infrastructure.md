@@ -43,7 +43,7 @@ COPY --from=core /windows/system32/netapi32.dll /windows/system32/netapi32.dll
 
 ### Pipelines-as-code YAML example
 
-Here is an example of a pipeline that runs a Windows build on a Kubernetes cluster build infrastructure. Not the presence of `os` and `nodeSelector` in the `stage: spec: infrastructure: spec:`.
+Here is an example of a pipeline that runs a Windows build on a Kubernetes cluster build infrastructure. Not the presence of `os` and `nodeSelector` in the `stage.spec.infrastructure.spec`.
 
 ```yaml
 pipeline:  

@@ -86,7 +86,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 
 ## Install dependencies
 
-Use Run steps to install dependencies in the build environment. [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies. You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
+Use **Run** steps to install dependencies in the build environment. [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies. You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
 
 ```mdx-code-block
 <Tabs>
@@ -101,7 +101,7 @@ Use Run steps to install dependencies in the build environment. [Plugin steps](/
                   spec:
                     shell: Sh
                     command: |-
-                      ?
+                      npm install express@4.18.2 --no-save
 ```
 
 ```mdx-code-block
@@ -119,7 +119,7 @@ Use Run steps to install dependencies in the build environment. [Plugin steps](/
                     connectorRef: account.harnessImage
                     image: node:latest
                     command: |-
-                      ?
+                      npm install express@4.18.2 --no-save
 ```
 
 ```mdx-code-block
@@ -133,7 +133,7 @@ Use Run steps to install dependencies in the build environment. [Plugin steps](/
   <TabItem value="cloud" label="Harness Cloud" default>
 ```
 
-With Harness Cloud build infrastructure, use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) to automate caching of Node dependencies. Add `caching: enabled: true` to your `stage:spec`.
+With Harness Cloud build infrastructure, use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) to automate caching of Node dependencies. Add `caching.enabled.true` to your `stage.spec`.
 
 ```yaml
     - stage:
