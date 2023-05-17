@@ -45,7 +45,7 @@ The following example illustrates the required format for your data:
          "issueName",  
          "fileName"  
       ],  
-      "author":"Jane Doe"  
+      "subproduct":"MyCustomCodeScanner"  
    },  
    "issues":[  
       {  
@@ -68,9 +68,18 @@ The following example illustrates the required format for your data:
 }
 ```
 
-The basic schema includes a `“meta”` section, which requires a `“key”` — this is the name of the attribute used to deduplicate multiple occurrences of an issue. In the example data file above, `"key"` = `"issueName"`. Thus if the data includes multiple occurrences of an issue with the same `"issueName"`, the pipeline combines these occurrences into one issue. The resulting issue includes a list of all occurrences and the data for each individual occurrence.
+The basic schema includes a `“meta”` section, which requires the following: 
 
-The key used for deduplication must be a Harness field. Do not try to deduplicate based on non-Harness fields. The full JSON takes the form:
+* `“key”`
+   The name of the attribute used to deduplicate multiple occurrences of an issue. In the example data file above, `"key"` = `"issueName"`. Thus if the data includes multiple occurrences of an issue with the same `"issueName"`, the pipeline combines these occurrences into one issue. The resulting issue includes a list of all occurrences and the data for each individual occurrence.
+   
+   The key used for deduplication must be a Harness field. Do not try to deduplicate based on non-Harness fields. 
+
+* `“subproduct”` 
+
+   The product name of the external scanner. 
+   
+The full JSON takes the form:
 
 
 ```json
