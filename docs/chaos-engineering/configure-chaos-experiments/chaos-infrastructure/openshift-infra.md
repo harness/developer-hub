@@ -16,9 +16,9 @@ kubectl create ns hce
 
 You can create the service account in the cluster mode or the namespace mode.   
 
-To install in the **cluster mode**, create the service accounts using the [cluster-mode-sa.yaml](./static/openshift-installation/cluster-sa.yaml) file. You can download the file and apply it.
+To install in the **cluster mode**, create the service accounts using the [cluster-mode-sa.yaml](./static/openshift/cluster-sa.yaml) file. You can download the file and apply it.
 
-To install in the **namespace mode**, create the service accounts using the [ns-mode-sa.yaml](./static/openshift-installation/namespace-sa.yaml) file. You can download the file and apply it.
+To install in the **namespace mode**, create the service accounts using the [namespace-mode-sa.yaml](./static/openshift/namespace-sa.yaml) file. You can download the file and apply it.
 
 If you have a different namespace, replace the namespace with `<your-namespace>` in the manifest.
 
@@ -40,7 +40,7 @@ serviceaccount/litmus-cluster-scope created
 ## 2. Create Litmus Security Context Constraint (SCC) and authenticate it with the service account
 
 To create the litmus SCC,
-- Copy the contents of [litmus SCC manifest](./static/openshift-installation/litmus-scc.yaml) to `litmus-scc.yaml` file.
+- Copy the contents of the [litmus SCC manifest](./static/openshift/litmus-scc.yaml) to `litmus-scc.yaml` file.
 - Apply this manifest to your chaos infrastructure. 
 
 ```bash
