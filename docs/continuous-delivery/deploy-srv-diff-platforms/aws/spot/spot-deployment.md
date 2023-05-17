@@ -21,53 +21,11 @@ This topic describes how to deploy AWS ASG deployments using Harness and the Spo
 
 ## Connect to a Spot cloud provider
 
-You can connect Harness to a Spot cloud provider by adding a Harness Spot or [AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector). 
+You can connect Harness to a Spot cloud provider by adding a [Harness Spot Elastigroup connector](/docs/platform/Connectors/Cloud-providers/add-a-spot-connector) or [AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector). 
 
 To connect to a Spot cloud provider using Spot's API, go to [Spot API authentication](https://docs.spot.io/api/#section/Authentication).
 
 To use an AWS connector, your spot account must first be connected to the AWS cloud provider. For more information, go to [Connect your cloud account to Spot](https://docs.spot.io/connect-your-cloud-provider/aws-account).
-
-Perform the following steps to add a Spot connector.
-
-1. Open a Harness project.
-2. In **Project Setup**, select **Connectors**, then select **New Connector**.
-3. In **Cloud Providers**, select **Spot**. The Spot connector settings appear. 
-4. Enter a connector name and select **Continue**.
-5. In **Authentication**, select one of the following options.
-    * **Plaintext** - Enter the **Spot Account Id** and **API Token**. For API token, you can either create a new secret or use an existing one.
-    * **Encrypted** - You can create or select a secret for your Spot account Id and API token.
-6. Select **Continue**.
-7. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then select **Continue**.
-   We don't recommend using the **Connect through Harness Platform** option here because you'll need a delegate later for connecting to your Spot cloud. Typically, the **Connect through Harness Platform** option is a quick way to make connections without having to use delegates.
-
-   Expand the sections below to learn more about installing delegates.
-
-<details>
-<summary>Use the delegate installation wizard</summary>
-
-1. In your Harness project, select **Project Setup**.
-2. Select **Delegates**.
-3. Select **Install a Delegate**.
-4. Follow the delegate installation wizard.
-
-Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yLMCxs3onH8) to guide you through the process.
-
-</details>
-
-```mdx-code-block
-import DelegateInstall from '/tutorials/platform/install-delegate.md';
-```
-
-<details>
-<summary>Use the terminal</summary>
-<DelegateInstall />
-</details>
-
-To learn more, watch the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview) video.
-
-8.  In **Set Up Delegates**, select the **Connect using Delegates with the following Tags** option and enter your delegate name.
-9.  Select **Save and Continue**.
-10.  Once the test connection succeeds, select **Finish**. The connector now appears in the **Connectors** list.
 
 ## Create the Harness Spot Elastigroup pipeline 
 
@@ -84,6 +42,42 @@ The new stage is created. Next, we'll add a Harness service to represent the app
 ## Add a Harness service
 
 Harness services represent your microservices or applications. You can add the same service to as many stages as you need. For more information, go to [services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
+
+```mdx-code-block
+import Tabs1 from '@theme/Tabs';
+import TabItem1 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs1>
+<TabItem1 value="YAML" label="YAML">
+```
+
+Here's a sample Spot service YAML: 
+
+```
+service:
+  name: spot-svc
+  identifier: spotsvc
+  serviceDefinition:
+    type: Elastigroup
+    spec:
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - identifier: spot_ami
+              spec:
+                connectorRef: org.AWSConnectorForAutomationTest
+                region: us-east-1
+                version: <+input>.allowedValues(asgAmi-Orderv2,asgAmi-Order)
+              type: AmazonMachineImage
+  gitOpsEnabled: false
+```
+
+```mdx-code-block
+</TabItem1>
+<TabItem1 value="Harness Manager" label="Harness Manager">
+```
 
 1. Select the **Service** tab, then select **Add Service**.  
 2. Enter a service name. For example, spot-svc.
@@ -108,7 +102,7 @@ Harness services represent your microservices or applications. You can add the s
     
     In this scenario, the AWS account used for AWS access in credentials will assume the IAM role you specify in cross-account role ARN setting. This option uses the [AWS Security Token Service (STS)](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) feature.
 11. In **Test Region**, select an AWS region to test the credentials for this connector. 
-12. In **Delegates Setup**, select **Only use Delegate with all of the following tags** and enter the name of the delegate created in [connect to a Spot cloud provider (step 7)](#connect-to-a-spot-cloud-provider).
+12. In **Delegates Setup**, select **Only use Delegate with all of the following tags** and enter the name of the delegate created when creating the [Harness Spot Elastigroup connector](/docs/platform/Connectors/Cloud-providers/add-a-spot-connector).
 13. Select **Save and Continue**
 14.  After the connection test succeeds, select **Continue**.
 15. In **Artifact Details**, enter the following details:
@@ -122,35 +116,52 @@ Harness services represent your microservices or applications. You can add the s
 16. Select **Submit**.
 17. **Save** the service configuration.
 
-<details>
-<summary>Sample service YAML</summary>
-
-Here's a sample Spot service YAML: 
-
+```mdx-code-block
+</TabItem1>    
+</Tabs1>
 ```
-service:
-  name: spot-svc
-  identifier: spotsvc
-  serviceDefinition:
-    type: Elastigroup
-    spec:
-      artifacts:
-        primary:
-          primaryArtifactRef: <+input>
-          sources:
-            - identifier: spot_ami
-              spec:
-                connectorRef: org.AWSConnectorForAutomationTest
-                region: us-east-1
-                version: <+input>.allowedValues(asgAmi-Orderv2,asgAmi-Order)
-              type: AmazonMachineImage
-  gitOpsEnabled: false
-```
-</details>
 
 ## Add a Spot environment
 
 Define the environment where you will deploy your application.
+
+```mdx-code-block
+import Tabs2 from '@theme/Tabs';
+import TabItem2 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs2>
+<TabItem2 value="YAML" label="YAML">
+```
+
+Here's a sample infrastructure definition YAML: 
+
+```
+infrastructureDefinition:
+  name: spot-infra
+  identifier: spotinfra
+  description: ""
+  tags: {}
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  projectIdentifier: DoNotDelete_IvanBalan
+  environmentRef: Spot
+  deploymentType: Elastigroup
+  type: Elastigroup
+  spec:
+    connectorRef: spotinstconn
+    configuration:
+      store:
+        type: Harness
+        spec:
+          files:
+            - /spot/spot-cfg
+  allowSimultaneousDeployments: false
+```
+
+```mdx-code-block
+</TabItem2>
+<TabItem2 value="Harness Manager" label="Harness Manager">
+```
 
 1. In **Environment**, select **New Environment**.  
 2. Enter the name **Spot**, and the select **Production** or **Pre-Production**.
@@ -266,34 +277,10 @@ Define the environment where you will deploy your application.
    </details>
 9. Select **Save**.
 
-<details>
-<summary>Sample infrastructure definition YAML</summary>
-
-Here's a sample infrastructure definition YAML: 
+```mdx-code-block
+</TabItem2>    
+</Tabs2>
 ```
-infrastructureDefinition:
-  name: spot-infra
-  identifier: spotinfra
-  description: ""
-  tags: {}
-  orgIdentifier: Ng_Pipelines_K8s_Organisations
-  projectIdentifier: DoNotDelete_IvanBalan
-  environmentRef: Spot
-  deploymentType: Elastigroup
-  type: Elastigroup
-  spec:
-    connectorRef: spotinstconn
-    configuration:
-      store:
-        type: Harness
-        spec:
-          files:
-            - /spot/spot-cfg
-  allowSimultaneousDeployments: false
-```
-
-</details>
-
 
 ## Spot Elastigroup execution strategies
 
@@ -316,7 +303,64 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
 * Elastigroup Setup - Specify how many instances to launch, and their steady state timeout.
 * Elastigroup Deploy - Specify how many instances to deploy, as a number or percentage of the Elastigroup parameters you've set up.
 
-## Create a Basic deployment
+```mdx-code-block
+import Tabs3 from '@theme/Tabs';
+import TabItem3 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs3>
+<TabItem3 value="YAML" label="YAML">
+```
+
+Here's a sample Basic execution YAML: 
+
+```
+execution:
+  steps:
+    - step:
+        name: Elastigroup Setup
+        identifier: Elastigroup_Setup
+        type: ElastigroupSetup
+        timeout: 10m
+        spec:
+           name: <+project.identifier>_<+service.identifier>_<+env.identifier>_basic2
+           instances:
+             type: Fixed
+             spec:
+               min: 1
+               max: 1
+               desired: 1
+        failureStrategies: []
+    - step:
+        type: ElastigroupDeploy
+        name: Elastigroup Deploy
+        identifier: Elastigroup_Deploy
+        spec:
+          newService:
+            type: Percentage
+            spec:
+              percentage: 100
+        timeout: 15m
+  rollbackSteps:
+    - step:
+        name: Elastigroup Rollback
+        identifier: Elastigroup_Rollback
+        type: ElastigroupRollback
+        timeout: 10m
+        spec: {}
+tags: {}
+failureStrategies:
+  - onFailure:
+      errors:
+        - AllErrors
+      action:
+        type: StageRollback
+
+```
+```mdx-code-block
+</TabItem3>
+<TabItem3 value="Harness Manager" label="Harness Manager">
+```
 
 1. In Execution Strategies, select **Basic**, then select **Use Strategy**.
 2. The basic execution steps are added. 
@@ -324,28 +368,37 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
    ![](./static/spot-basic.png)
 
 3. Select the **Elastigroup Setup** step to define **Step Parameters**.
-    * **Name** - Enter the deployment step name.
-    * **Timeout** - Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
-    * **App Name** - Enter a name for the Elastigroup app name that Harness will create. For example, you can use Harness expressions, such as `<+project.identifier>_<+service.identifier>_<+env.identifier>_myasg`. You can select a fixed value, runtime input, or expression for this field. 
+    * **Name**: Enter the deployment step name.
+    * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
+    * **App Name**: Enter a name for the Elastigroup app name that Harness will create. For example, you can use Harness expressions, such as `<+project.identifier>_<+service.identifier>_<+env.identifier>_myasg`. You can select a fixed value, runtime input, or expression for this field. 
     * In **Instances**, select: 
-       * **Same as already running instances** to replicate the already running instances.
-       * **Fixed** and enter **Min Instances**, **Max Instances**, and **Desired Instances**.
+       * **Same as already running instances**: Replicate the already running instances.
+       * **Fixed**: Enter **Min Instances**, **Max Instances**, and **Desired Instances**.
 4. Select the **Elastigroup Deploy** step to define **Step Parameters**.
-    * **Name** - Enter the deployment step name.
-    * **Timeout** - Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
-    * **New Service** - Select:
-        * **Percent** to specify a percentage of the target instances that you set in the **Elastigroup Setup** step.
-        * **Count** and specify an exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
+    * **Name**: Enter the deployment step name.
+    * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
+    * **New Service**: Select:
+        * **Percent**: Specify a percentage of the target instances that you set in the **Elastigroup Setup** step.
+        * **Count**: Specify the exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
 5. (Optional) In the **Advanced** section of each step, configure the following options.
-   - **Delegate Selector** - Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All delegates with the tag are selected.
-   - **Conditional Execution** - Use the conditions to determine when this step is executed. For more information, go to [Conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/).
-   - **Failure Strategy** - Define the failure strategies to control the behavior of your pipeline when there is an error in execution. For more information, go to [Failure strategy references](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) and [Define a failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps).
-   - **Looping Strategy** - Select matrix, repeat, or parallelism looping strategy. For more information, go to [Looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
-   - **Policy Enforcement** - Add or modify policy set. These policies will be evaluated after the step is complete. For more information, go to [Policy sets](/docs/platform/Governance/Policy-as-code/disable-a-policy-set).
+   - **Delegate Selector**: Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All delegates with the tag are selected.
+   - **Conditional Execution**: Use the conditions to determine when this step is executed. For more information, go to [Conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/).
+   - **Failure Strategy**: Define the failure strategies to control the behavior of your pipeline when there is an error in execution. For more information, go to [Failure strategy references](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) and [Define a failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps).
+   - **Looping Strategy**: Select matrix, repeat, or parallelism looping strategy. For more information, go to [Looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
+   - **Policy Enforcement**: Add or modify policy set. These policies will be evaluated after the step is complete. For more information, go to [Policy sets](/docs/platform/Governance/Policy-as-code/disable-a-policy-set).
 6. Select **Apply Changes**. 
 7. Select **Save**. 
+
+```mdx-code-block
+</TabItem3>    
+</Tabs3>
+```
    
 Now the pipeline stage is complete and you can deploy. Select **Run** to run the pipeline. 
+
+Select **Console View** to view the execution details.
+
+![](./static/spot-basic-execution.png)
 
 ```mdx-code-block
   </TabItem>
@@ -357,40 +410,128 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
 * Elastigroup Canary Deploy - Specify how many instances to deploy in this phase. When you add additional phases, each phase automatically includes a Elastigroup Deploy step, which you must configure with the count or percentage of instances you want deployed in that phase.
 * Elastigroup Deploy - Specify how many instances to deploy, as a number or percentage of the Elastigroup parameters you've set up.
 
-## Create a Canary deployment
+```
+pipeline:
+  name: Spot canary
+  identifier: Spot_canary
+  projectIdentifier: DoNotDelete_IvanBalan
+  orgIdentifier: Ng_Pipelines_K8s_Organisations
+  tags: {}
+  stages:
+    - stage:
+        name: spot canary
+        identifier: spot_canary
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Elastigroup
+          service:
+            serviceRef: spotsvc
+            serviceInputs:
+              serviceDefinition:
+                type: Elastigroup
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+          environment:
+            environmentRef: Spot
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: spotinfra
+          execution:
+            steps:
+              - step:
+                  name: Elastigroup Setup
+                  identifier: Elastigroup_Setup
+                  type: ElastigroupSetup
+                  timeout: 10m
+                  spec:
+                    name: <+project.identifier>_<+service.identifier>_<+env.identifier>
+                    instances:
+                      type: Fixed
+                      spec:
+                        min: 1
+                        max: 2
+                        desired: 2
+                  failureStrategies: []
+              - step:
+                  type: ElastigroupDeploy
+                  name: Elastigroup Canary Deploy
+                  identifier: Elastigroup_Canary_Deploy
+                  spec:
+                    newService:
+                      type: Count
+                      spec:
+                        count: 1
+                  timeout: 15m
+              - step:
+                  type: ElastigroupDeploy
+                  name: Elastigroup Deploy
+                  identifier: Elastigroup_Deploy
+                  spec:
+                    newService:
+                      type: Percentage
+                      spec:
+                        percentage: 100
+                  timeout: 15m
+            rollbackSteps:
+              - step:
+                  name: Elastigroup Rollback
+                  identifier: Elastigroup_Rollback
+                  type: ElastigroupRollback
+                  timeout: 10m
+                  spec: {}
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+
+```
+
 
 1. In **Execution Strategies**, select **Canary**, and then click **Use Strategy**.
 2. The canary execution steps are added. 
    ![](./static/spot-canary.png)
 3. Select the **Elastigroup Setup** step to define **Step Parameters**.
-    * **Name** - Enter the deployment step name.
-    * **Timeout** - Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
-    * **App Name** - Enter a name for the Elastigroup app name that Harness will create. For example, `<+project.identifier>_<+service.identifier>_<+env.identifier>_basic2`. You can select a fixed value, runtime input, or expression for this field. 
+    * **Name**: Enter the deployment step name.
+    * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
+    * **App Name**: Enter a name for the Elastigroup app name that Harness will create. For example, `<+project.identifier>_<+service.identifier>_<+env.identifier>_basic2`. You can select a fixed value, runtime input, or expression for this field. 
     * In **Instances**, select: 
-       * **Same as already running instances** to replicate the already running instances.
-       * **Fixed** and enter **Min Instances**, **Max Instances**, and **Desired Instances**.
+       * **Same as already running instances**: Replicate the already running instances.
+       * **Fixed**: Enter **Min Instances**, **Max Instances**, and **Desired Instances**.
 4. Select the **Elastigroup Canary Deploy** step to define **Step Parameters**.
-    * **Name** - Enter the deployment step name.
-    * **Timeout** - Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
-    * **New Service** - Select:
-        * **Percent** to specify a percentage of the target instances that you set in the **Elastigroup Setup** step.
-        * **Count** and specify an exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
+    * **Name**: Enter the deployment step name.
+    * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
+    * **New Service**: Select:
+        * **Percent**: Specify a percentage of the target instances that you set in the **Elastigroup Setup** step.
+        * **Count**: Specify the exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
 5. Select the **Elastigroup Deploy** step to define **Step Parameters**.
-    * **Name** - Enter the deployment step name.
-    * **Timeout** - Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
-    * **New Service** - Select:
-        * **Percent** to specify a percentage of the target instances that you set in the **Elastigroup Setup** step.
-        * **Count** and specify an exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
+    * **Name**: Enter the deployment step name.
+    * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
+    * **New Service**: Select:
+        * **Percent**: Specify a percentage of the target instances that you set in the **Elastigroup Setup** step.
+        * **Count**: Specify an exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
 6. (Optional) In the **Advanced** section of each step, configure the following options.
    - **Delegate Selector** - Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All delegates with the tag are selected.
-   - **Conditional Execution** - Use the conditions to determine when this step is executed. For more information, go to [Conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/).
-   - **Failure Strategy** - Define the failure strategies to control the behavior of your pipeline when there is an error in execution. For more information, go to [Failure strategy references](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) and [Define a failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps).
-   - **Looping Strategy** - Select matrix, repeat, or parallelism looping strategy. For more information, go to [Looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
-   - **Policy Enforcement** - Add or modify policy set. These policies will be evaluated after the step is complete. For more information, go to [Policy sets](/docs/platform/Governance/Policy-as-code/disable-a-policy-set).
+   - **Conditional Execution**: Use the conditions to determine when this step is executed. For more information, go to [Conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/).
+   - **Failure Strategy**: Define the failure strategies to control the behavior of your pipeline when there is an error in execution. For more information, go to [Failure strategy references](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) and [Define a failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps).
+   - **Looping Strategy**: Select matrix, repeat, or parallelism looping strategy. For more information, go to [Looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
+   - **Policy Enforcement**: Add or modify policy set. These policies will be evaluated after the step is complete. For more information, go to [Policy sets](/docs/platform/Governance/Policy-as-code/disable-a-policy-set).
 7. Select **Apply Changes**. 
 8. Select **Save**. 
 
 Now the pipeline stage is complete and you can deploy. Select **Run** to run the pipeline. 
+
+Now the pipeline stage is complete and you can deploy. Select **Run** to run the pipeline. 
+
+Select **Console View** to view the execution details.
+
+![](./static/spot-canary-execution.png)
 
 ```mdx-code-block
   </TabItem>
@@ -416,12 +557,12 @@ With this incremental traffic shift strategy, you are controlling the percentage
    
    ![](.static/../static/spot-bg.png)
 3. Select the **Elastigroup Blue Green Stage Setup** step to define **Step Parameters**.
-    * **Name** - Enter the deployment step name.
-    * **Timeout** - Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
-    * **App Name** - Enter a name for the Elastigroup app name that Harness will create. For example, `<+project.identifier>_<+service.identifier>_<+env.identifier>_basic2`. You can select a fixed value, runtime input, or expression for this field. 
+    * **Name**: Enter the deployment step name.
+    * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
+    * **App Name**: Enter a name for the Elastigroup app name that Harness will create. For example, `<+project.identifier>_<+service.identifier>_<+env.identifier>_basic2`. You can select a fixed value, runtime input, or expression for this field. 
     * In **Instances**, select: 
-       * **Same as already running instances** to replicate the already running instances.
-       * **Fixed** and enter **Min Instances**, **Max Instances**, and **Desired Instances**.
+       * **Same as already running instances**: Replicate the already running instances.
+       * **Fixed**: Enter **Min Instances**, **Max Instances**, and **Desired Instances**.
     * In **Connected Cloud Provider**, you can override the connector and region you selected in the service configuration. 
     * Add **AWS Load Balancer Configuration**.
   
@@ -432,15 +573,15 @@ With this incremental traffic shift strategy, you are controlling the percentage
         
         ![](./static/aws-elb.png)
 4. Select the **Elastigroup Blue Green Stage Setup** step to define **Step Parameters**.
-    * **Name** - Enter the deployment step name.
-    * **Timeout** - Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
+    * **Name**: Enter the deployment step name.
+    * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
     * Select **Downsize old Elastigroup** to downsize the old Elastigroup.
 5. (Optional) In the **Advanced** section of each step, configure the following options.
-   - **Delegate Selector** - Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All delegates with the tag are selected.
-   - **Conditional Execution** - Use the conditions to determine when this step is executed. For more information, go to [Conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/).
-   - **Failure Strategy** - Define the failure strategies to control the behavior of your pipeline when there is an error in execution. For more information, go to [Failure strategy references](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) and [Define a failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps).
-   - **Looping Strategy** - Select matrix, repeat, or parallelism looping strategy. For more information, go to [Looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
-   - **Policy Enforcement** - Add or modify policy set. These policies will be evaluated after the step is complete. For more information, go to [Policy sets](/docs/platform/Governance/Policy-as-code/disable-a-policy-set).
+   - **Delegate Selector**: Select the delegate(s) you want to use to execute this step. You can select one or more delegates for each pipeline step. You only need to select one of a delegate's tags to select it. All delegates with the tag are selected.
+   - **Conditional Execution**: Use the conditions to determine when this step is executed. For more information, go to [Conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/).
+   - **Failure Strategy**: Define the failure strategies to control the behavior of your pipeline when there is an error in execution. For more information, go to [Failure strategy references](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) and [Define a failure strategy](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps).
+   - **Looping Strategy**: Select matrix, repeat, or parallelism looping strategy. For more information, go to [Looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/).
+   - **Policy Enforcement**: Add or modify policy set. These policies will be evaluated after the step is complete. For more information, go to [Policy sets](/docs/platform/Governance/Policy-as-code/disable-a-policy-set).
 6. Select **Apply Changes**. 
 7. Select **Save**.   
 
