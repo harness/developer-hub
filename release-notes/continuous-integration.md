@@ -31,14 +31,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="Early access">
 ```
 
-Harness CI now supports remote debugging. This feature was initially released in January 2023 and subsequently reverted for further development. Debug mode is available if all of the following conditions are met:
-
-* You have the feature flag `CI_REMOTE_DEBUG` enabled. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-* The build infrastructure is remote. This includes Harness Cloud, Kubernetes clusters, or AWS VMs on remote hosts.
-* The build infrastructure uses a Linux-based OS.
-* The build fails at a **Run** step with a Bash or Shell script in a **Build** (`CI`) stage.
-
-You can re-run builds in debug mode through the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. <!-- For more information, go to the [debug mode]() documentation. -->(CI-7795)
+This release does not include early access features.
 
 ```mdx-code-block
   </TabItem>
