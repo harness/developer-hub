@@ -34,6 +34,11 @@ This topic explains how to set up IP allowlist in Harness.
 - Make sure you have **View**, **Create/Edit**, and **Delete** permissions for **Authentication Settings** to add and manage IP allowlist.
 - Harness returns a status code of HTTP 401 if an IP address is not allowlisted but tries to access Harness.
 - An allowlist can be based on IPv4 or IPv6 or a mix of both.
+- Following are the exceptions to the IP allowlist in Harness:
+  - Calls corresponding to SCIM.
+  - Calls corresponding to Identity providers.
+  - API calls corresponding to Harness admin.
+- Harness uses an in-memory cache. All caches expire after 15 minutes. Every update takes 15 minutes because there are no manual cache updates.
 
 ## Add IP addresses in the allowlist
 
