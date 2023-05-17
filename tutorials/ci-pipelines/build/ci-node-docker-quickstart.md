@@ -226,7 +226,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 </Tabs>
 ```
 
-## Full pipeline examples
+## Specify version
 
 ```mdx-code-block
 <Tabs>
@@ -352,7 +352,7 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
 </Tabs>
 ```
 
-## Reference: Pipeline YAML
+## Full pipeline examples
 
 Here's a YAML example of a pipeline that:
 
