@@ -101,6 +101,14 @@ Currently, this feature is behind the feature flag `NG_EXECUTION_INPUT`. Contact
 
 :::
 
+#### Limitations and requirements
+
+The following limitations and requirements apply to this feature:
+
+- A Harness user must have the **Pipeline Execute** permission to be able to submit runtime input during execution.
+
+#### Configure runtime inputs
+
 You can configure runtime inputs to a pipeline to be supplied during a step or stage execution. For example, you can configure a custom stage with a Shell Script step with a runtime input field with this property, you will be prompted to enter the input during the execution just before starting the Shell Script step.
 
 If a custom stage is setup with runtime input, you can enter a shell script when prompted by Harness during execution. 
@@ -115,9 +123,10 @@ To configure runtime inputs in the Harness Pipeline Studio:
      A configuration popup appears. 
  3. Enable **Request input value when the Stage/Step is being executed**. 
 
-You can configure the same in YAML by adding the `executionInput()` method to an input field. For example, `<+input>.executionInput()`. This method can be used in combination with allowed values and default values. 
+You can configure the same in YAML by adding the `executionInput()` method to an input field. For example, `<+input>.executionInput()`. 
 
-For example:  
+This method can be used in combination with allowed values and default values. For example:  
+
 * `<+input>.allowedValues(value1,value2).executionInput()` - During execution, you will be prompted to enter `value 1` and `value 2` inputs. Only `value1` and `value2` values will be allowed as valid inputs.
 * `<+input>.allowedValues(value1,value2).default(value1).executionInput()` - During execution, you will be prompted to enter `value 1` and `value 2` inputs. Only `value1` and `value2` values will be allowed as valid inputs. `value1` is the default input in this example, so it appears as the default input in the prompt.  
 
@@ -149,16 +158,9 @@ pipeline:
 
 :::info
 
-If you're using the default method along with the execution Input method, when the execution time input times out, the step fails instead of automatically applying the default. To automatically use the default value during such timeouts, you must configure the **Proceed with Default Values** failure strategy linked to the error type **Execution-time Inputs Timeout Error**.
+If you're using the default method along with the execution input method, when the execution time input times out, the step fails instead of automatically applying the default. To automatically use the default value during such timeouts, you must configure the **Proceed with Default Values** failure strategy and link it to the error type **Execution-time Inputs Timeout Error**.
 
 :::
-
-
-#### Limitations and requirements
-
-The following limitations and requirements apply to this feature:
-
-- A Harness user must have the **Pipeline Execute** permission to be able to submit runtime input during execution.
 
 #### Using runtime input during execution with a shell script
 
