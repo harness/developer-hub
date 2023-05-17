@@ -22,9 +22,12 @@ When you create a new delegate, you can generate a new token.
 
 To generate a new token, do the following:
 
-1. In **Delegate Setup**, in **Delegate Tokens**, select **Add**, and then name and apply the new token:
+1. In Harness, select **Delegates**, then select **Tokens**.
+2. Select **New Token**.
 
    ![](static/secure-delegates-with-tokens-02.png)
+
+3. Enter a name for the new token, and then select **Apply**.
 
    The new token is created and its value is copied to your system clipboard. The new token also appears in the list using the name you gave it.
 
@@ -42,13 +45,13 @@ To generate a new token, do the following:
 
 1. In Harness, select **Project Setup > Delegates** in a project or **Account Settings > Account Resources > Delegates** for the entire account.
 
-2. Select **Tokens**. Here you can view, create, and revoke all delegate tokens.
-
-3. Select **New Token**.
-
    Here's an Account Settings example:
 
    ![](static/secure-delegates-with-tokens-03.png)
+
+2. Select **Tokens**. Here you can view, create, and revoke all delegate tokens.
+
+3. Select **New Token**.
 
 4. Enter a name for the new token, and then select **Apply**.
 
@@ -60,9 +63,7 @@ To generate a new token, do the following:
 
 5. Save the new token value. You cannot retrieve the token value after this.
 
-   When you install a new delegate, you can select the token to use:
-
-   ![](static/secure-delegates-with-tokens-05.png)
+   When you install a new delegate, you can select the token to use.
 
 ## Option: Update and restart existing delegate
 
