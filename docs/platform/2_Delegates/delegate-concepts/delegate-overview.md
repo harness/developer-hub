@@ -126,7 +126,7 @@ In addition to compute considerations, you can enable HA for Harness Delegates. 
 
 For example, your Kubernetes deployment could include two Kubernetes delegates, each running in its own pod in the same target cluster. 
 
-To add delegates to your deployment, increase the desired count of delegate replica pods in the **spec** section of the harness-kubernetes.yaml file that you download from Harness:
+To add delegates to your deployment, increase the desired count of delegate replica pods in the **spec** section of the `harness-kubernetes.yaml` file that you download from Harness:
 
 
 ```yaml
@@ -150,7 +150,7 @@ spec:
 
 You only need one Kubernetes delegate in a cluster. Do not install additional delegates to create HA. Instead, you should increase the number of replicas pods. 
 
-If you want to install Kubernetes delegates in separate clusters, make sure they do not use the same **harness-kubernetes.yaml** file and name. Download a new Kubernetes YAML `spec` from Harness for each delegate you want to install. This avoids name conflicts. 
+If you want to install Kubernetes delegates in separate clusters, make sure they do not use the same `harness-kubernetes.yaml` file and name. Download a new Kubernetes YAML `spec` from Harness for each delegate you want to install. This avoids name conflicts. 
 
 In every case, delegates must be identical in terms of permissions, keys, connectivity, and so on. With two or more delegates running in the same target environment, you get HA by default. One delegate can go down without impacting Harness' ability to perform deployments. If you want more availability, you can set up three delegates to handle the loss of two delegates, and so on.
 
