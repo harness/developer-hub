@@ -23,10 +23,7 @@ Use these resources to learn about JUnit XML formatting.
 
 Here are some Harness YAML examples for tools that produce JUnit XML output by default.
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="Java" label="Java" default>
-```
+### Java - Gradle
 
 This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligence.md).
 
@@ -48,10 +45,7 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
                     runOnlySelectedTests: true
 ```
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="php" label="PHP">
-```
+### PHP
 
 ```yaml
               - step:
@@ -70,10 +64,7 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
                           - /harness/phpunit/junit.xml
 ```
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Python" label="Python">
-```
+### Python
 
 ```yaml
               - step:
@@ -99,10 +90,7 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
 
 :::
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Ruby" label="Ruby - Cucumber">
-```
+### Ruby - Cucumber
 
 ```yaml
               - step:
@@ -122,19 +110,11 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
                           - /harness/cucumber/junit.xml
 ```
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
 ## JUnit converters, formatters, and plugins
 
 If your test tool doesn't automatically produce test results in JUnit XML format, there are JUnit converters, formatters, and plugins available for all major languages. Some examples of conversion tools and corresponding Harness YAML are provided below.
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="c" label="C, C++" default>
-```
+### C, C++
 
 You can use the [--output-junit](https://cmake.org/cmake/help/latest/manual/ctest.1.html#cmdoption-ctest-output-junit) command with CTest.
 
@@ -153,29 +133,20 @@ You can use the [--output-junit](https://cmake.org/cmake/help/latest/manual/ctes
                       type: JUnit
                       spec:
                         paths:
-                          - /build/out.xml
+                          - /harness/build/out.xml
 ```
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="csharp" label="C# - .NET, NUnit">
-```
+### C# - .NET, NUnit
 
 * [NUnit to JUnit](https://github.com/nunit/nunit-transforms/tree/master/nunit3-junit)
 * [.NET trx2JUnit](https://github.com/gfoidl/trx2junit)
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="clojure" label="Clojure">
-```
+### Clojure
 
 * [Kaocha JUnit Plugin](https://clojars.org/lambdaisland/kaocha-junit-xml)
 * [Clojure.test JUnit Plugin](https://github.com/ruedigergad/test2junit)
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="go" label="Go">
-```
+### Go
 
 You can use the [go-junit-report](https://github.com/jstemmer/go-junit-report) tool.
 
@@ -197,10 +168,7 @@ You can use the [go-junit-report](https://github.com/jstemmer/go-junit-report) t
                           - report.xml
 ```
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="java" label="Java - Maven">
-```
+### Java - Maven
 
 This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/maven-surefire-plugin/) and runs Maven tests with [Test Intelligence](./set-up-test-intelligence.md).
 
@@ -210,7 +178,7 @@ This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/
                   identifier: Run_Tests_with_Intelligence
                   name: Run Tests with Intelligence
                   spec:
-                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false -T 16C -fae
+                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
                     buildTool: Maven
                     enableTestSplitting: true
                     language: Java
@@ -222,10 +190,7 @@ This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/
                     runOnlySelectedTests: true
 ```
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="javascript" label="JavaScript">
-```
+### JavaScript
 
 <details>
 <summary>ESLint</summary>
@@ -332,10 +297,7 @@ This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/
 
 </details>
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="ruby" label="Ruby">
-```
+### Ruby
 
 <details>
 <summary>Minitest</summary>
@@ -385,8 +347,3 @@ Add the [RSpec JUnit formatter](https://rubygems.org/gems/rspec_junit_formatter)
 ```
 
 </details>
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
