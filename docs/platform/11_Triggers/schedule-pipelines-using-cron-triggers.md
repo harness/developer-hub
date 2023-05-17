@@ -39,9 +39,9 @@ When you edit a Cron trigger later, you can type or paste in a Cron expression.
 
 The Cron expression will be evaluated against UTC time.
 
-There are two types of supported cron expressions UNIX and QUARTZ. 
+There are two types of supported cron expressions, QUARTZ and UNIX. 
 
-Here's a reminder of Cron expression formatting:
+Following are the QUARTZ and UNIX expression formatting samples:
 
 QUARTZ Expression
 ```
