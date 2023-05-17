@@ -84,7 +84,7 @@ spec:
 
 </details>
 
-<details><summary>YAML pipeline example</summary>
+
 
 
 
@@ -147,6 +147,8 @@ This example shows how to include a PEM file in a pipeline that runs a scan usin
 ### YAML pipeline example
 
 The following illustrates an end-to-end pipeline that copies a PEM certificate to the default location, builds an image, and then scans the image using SonarQube (authorized using the certificate).
+
+<details><summary>YAML pipeline example</summary>
 
 ```yaml 
 pipeline:
