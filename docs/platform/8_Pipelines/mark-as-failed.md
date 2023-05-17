@@ -12,6 +12,7 @@ This lets you do the following:
 ## Important
 
 - You must have `Execute` pipeline permission to be able to mark as stage as failed.
+- You must enable `Allow users to mark a running Step as failure` in the default settings. For more information, go to [Default settings](/docs/platform/Settings/default-settings).
 - The option `Mark Stage As Failed` is at a stage level in the execution phase. During the execution of parallel stages (like a matrix), you must either mark each one as a failure or let the other steps complete before applying the failure strategy.
 - Harness aborts any delegate task currently running after you mark a stage as failed.
 
