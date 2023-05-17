@@ -136,10 +136,11 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
 
 If your test tool doesn't automatically produce test results in JUnit XML format, there are JUnit converters, formatters, and plugins available for all major languages. Some examples of conversion tools and corresponding Harness YAML are provided below.
 
-### C# - .NET Core, Framework, NUnit
+### C# - .NET Core, NUnit
 
 For C#, you can use conversion tools such as [NUnit to JUnit](https://github.com/nunit/nunit-transforms/tree/master/nunit3-junit) and [.NET trx2JUnit](https://github.com/gfoidl/trx2junit).
 
+<!-- Framework example
 The following example runs tests with [Test Intelligence](./set-up-test-intelligence.md).
 
 ```yaml
@@ -174,6 +175,7 @@ The following example runs tests with [Test Intelligence](./set-up-test-intellig
                               - UnitTestResults.xml
                         shell: Powershell
 ```
+-->
 
 ### Clojure
 
