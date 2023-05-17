@@ -1,5 +1,5 @@
 ---
-title: Debug mode
+title: Debug with SSH
 description: Use debug mode to troubleshoot remote builds
 sidebar_position: 110
 ---
