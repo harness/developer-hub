@@ -138,7 +138,8 @@ If your test tool doesn't automatically produce test results in JUnit XML format
 
 ### C# - .NET Core, NUnit
 
-For C#, you can use conversion tools such as [NUnit to JUnit](https://github.com/nunit/nunit-transforms/tree/master/nunit3-junit) and [.NET trx2JUnit](https://github.com/gfoidl/trx2junit).
+* [NUnit to JUnit](https://github.com/nunit/nunit-transforms/tree/master/nunit3-junit)
+* [.NET trx2JUnit](https://github.com/gfoidl/trx2junit)
 
 <!-- Framework example
 The following example runs tests with [Test Intelligence](./set-up-test-intelligence.md).
