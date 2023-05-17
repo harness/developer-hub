@@ -23,6 +23,28 @@ Use these resources to learn about JUnit XML formatting.
 
 Here are some Harness YAML examples for tools that produce JUnit XML output by default.
 
+### C, C++
+
+You can use the [--output-junit](https://cmake.org/cmake/help/latest/manual/ctest.1.html#cmdoption-ctest-output-junit) command with CTest.
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: test
+                  name: Test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      mkdir build
+                      cmake -S . -B build
+                      ctest --test-dir build --output-junit out.xml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - /harness/build/out.xml
+```
+
 ### Java - Gradle
 
 This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligence.md).
@@ -113,28 +135,6 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
 ## JUnit converters, formatters, and plugins
 
 If your test tool doesn't automatically produce test results in JUnit XML format, there are JUnit converters, formatters, and plugins available for all major languages. Some examples of conversion tools and corresponding Harness YAML are provided below.
-
-### C, C++
-
-You can use the [--output-junit](https://cmake.org/cmake/help/latest/manual/ctest.1.html#cmdoption-ctest-output-junit) command with CTest.
-
-```yaml
-              - step:
-                  type: Run
-                  identifier: test
-                  name: Test
-                  spec:
-                    shell: Sh
-                    command: |-
-                      mkdir build
-                      cmake -S . -B build
-                      ctest --test-dir build --output-junit out.xml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - /harness/build/out.xml
-```
 
 ### C# - .NET, NUnit
 
