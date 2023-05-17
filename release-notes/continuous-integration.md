@@ -22,7 +22,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-
+* (CI-7491) <!-- recorded in previous release -->
+* (CI-6237) <!-- recorded in previous release -->
+<!-- discard What's new changes if none for this release -->
 
 ```mdx-code-block
   </TabItem>
@@ -43,6 +45,17 @@ You can re-run builds in debug mode through the **Builds**, **Execution**, and *
   <TabItem value="Fixed issues">
 ```
 
+* (CI-7936) <!-- marked as both Yes & No for RNC. Not sure if bug or new/enhancement. -->
+* (CI-7959)
+* (CI-7945)
+* (CI-7934, ZD-43980)
+* (CI-7930, ZD-43974)
+* (CI-7853)
+* (CI-7845)
+* (CI-7800, ZD-43259)
+* (CI-7785)
+* When manually running a pipeline, you can chose to run specific stages, rather than the entire pipeline. Previously, if you chose to run only stages with **Clone codebase** disabled, you were blocked by a field validation error requiring you to populate the **Git Branch** and **Repository** fields, which weren't visible. This has been fixed so that stages with **Clone Codebase** disabled no longer prompt for this codebase information. (CI-7559, ZD-41974, ZD-44041)
+* Fixed an issue where build pods weren't cleaned up after CI pipeline executions if the pipeline/stage and Kubernetes cluster connector had different delegate selectors. The [Harness Delegate version 793xx](/release-notes/delegate) is required for this fix. (CI-7955, ZD-44048)
 
 ```mdx-code-block
   </TabItem>

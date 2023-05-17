@@ -21,7 +21,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Continuous Integration
 
-* x
+* 
 
 <details>
 <summary>2023 releases</summary>
