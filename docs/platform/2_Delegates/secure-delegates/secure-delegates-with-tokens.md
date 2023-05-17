@@ -22,7 +22,7 @@ When you create a new delegate, you can generate a new token.
 
 To generate a new token, do the following:
 
-1. In **Delegate Setup**, in **Delegate Tokens**, click **Add**, and then name and apply the new token:
+1. In **Delegate Setup**, in **Delegate Tokens**, select **Add**, and then name and apply the new token:
 
    ![](static/secure-delegates-with-tokens-02.png)
 
@@ -40,11 +40,11 @@ You can also generate a new token without creating a new delegate.
 
 To generate a new token, do the following:
 
-1. In Harness, click **Project Setup > Delegates** in a Project or **Account Settings > Account Resources > Delegates** for the entire account.
+1. In Harness, select **Project Setup > Delegates** in a project or **Account Settings > Account Resources > Delegates** for the entire account.
 
-2. Click **Tokens**. Here you can view, create, and revoke all delegate tokens.
+2. Select **Tokens**. Here you can view, create, and revoke all delegate tokens.
 
-3. Click **New Token**.
+3. Select **New Token**.
 
    Here's an Account Settings example:
 
@@ -142,7 +142,7 @@ To update and restart an existing Docker delegate, do the following:
 
 To revoke tokens, do the following:
 
-1. On the **Tokens** page, click **Revoke** to revoke any token.
+1. On the **Tokens** page, select **Revoke** to revoke any token.
 
    ![](static/secure-delegates-with-tokens-06.png)
 
