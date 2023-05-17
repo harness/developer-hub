@@ -12,9 +12,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-This guide explains how you can build and test Java apps with Harness CI.
-
-The examples in this guide use a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructures.
+You can build and test a Java application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
 
@@ -24,7 +22,7 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 <CISignupTip />
 
-## Run tests
+## Build and run tests
 
 ```mdx-code-block
 <Tabs>
@@ -32,8 +30,6 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 ```
 
 You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
-
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
 
 ```mdx-code-block
 <Tabs>
@@ -107,8 +103,6 @@ The following example runs `mvn test` (declared in `args`), and then runs `mvn p
 ```
 
 You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
-
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
 
 ```mdx-code-block
 <Tabs>
@@ -185,6 +179,18 @@ The following example runs `mvn test` (declared in `args`), and then runs `mvn p
 </Tabs>
 ```
 
+### Visualize test results
+
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
+
+```yaml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - target/surefire-reports/*.xml
+```
+
 ## Install dependencies
 
 Use **Run** steps to install dependencies in the build environment. [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies. You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
@@ -217,7 +223,7 @@ Use **Run** steps to install dependencies in the build environment. [Plugin step
                                - /harness/target/*.xml
 ```
 
-## Caching
+## Cache dependencies
 
 ```mdx-code-block
 <Tabs>
@@ -358,7 +364,7 @@ This example uses the [Plugin step](/docs/continuous-integration/use-ci/use-dron
 </Tabs>
 ```
 
-## Reference: Pipeline YAML
+## Full pipeline examples
 
 Here's a YAML example of a pipeline that:
 

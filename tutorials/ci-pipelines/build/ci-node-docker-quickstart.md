@@ -12,9 +12,7 @@ import TabItem from '@theme/TabItem';
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 ```
 
-This guide explains how you can build and test [Node.js](https://nodejs.org/en/docs/guides/getting-started-guide) apps with Harness CI.
-
-The examples in this guide use a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructures.
+You can build and test a [Node.js](https://nodejs.org/en/docs/guides/getting-started-guide) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
 
@@ -27,8 +25,6 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 ## Build and run tests
 
 Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
-
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your **Run** step includes the 'reports' specification and commands that produce reports in JUnit XML format.
 
 ```mdx-code-block
 <Tabs>
@@ -84,6 +80,18 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 </Tabs>
 ```
 
+### Visualize test results
+
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/),  make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
+
+```yaml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - report.xml
+```
+
 ## Install dependencies
 
 Use **Run** steps to install dependencies in the build environment. [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies. You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
@@ -126,7 +134,7 @@ Use **Run** steps to install dependencies in the build environment. [Plugin step
 </TabItem>
 </Tabs>
 ```
-## Caching
+## Cache dependencies
 
 ```mdx-code-block
 <Tabs>
@@ -218,7 +226,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 </Tabs>
 ```
 
-## Specify versions
+## Full pipeline examples
 
 ```mdx-code-block
 <Tabs>
@@ -303,9 +311,7 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
                     image: node:18.16.0
                     shell: Sh
                     command: |-
-                      node -v
                       npm version
-                      npx -v
 ```
 
 </details>
@@ -336,9 +342,7 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
                     image: node:<+matrix.nodeVersion>
                     shell: Sh
                     command: |-
-                      node -v
                       npm version
-                      npx -v
 ```
 
 </details>
@@ -352,7 +356,7 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
 
 Here's a YAML example of a pipeline that:
 
-1. Tests a Java code repo.
+1. Tests a Node code repo.
 2. Builds and pushes an image to Docker Hub.
 
 This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence), and [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts).
@@ -418,7 +422,7 @@ pipeline:
 
 ## Next steps
 
-Now that you have created a pipeline that builds and tests a Node.js app, you could:
+Now that you have created a pipeline that builds and tests a Node app, you could:
 
 * Create [triggers](/docs/category/triggers) to automatically run your pipeline.
 * Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
