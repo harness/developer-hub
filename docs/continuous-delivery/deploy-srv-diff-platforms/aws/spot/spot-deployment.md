@@ -29,6 +29,19 @@ To use an AWS connector, your spot account must first be connected to the AWS cl
 
 ## Create the Harness Spot Elastigroup pipeline 
 
+You can create a service and environment when you are building the pipeline or separately in **Services** and **Environments**. In this topic, we walk through building these within a pipeline. 
+
+The pipeline models the release process using execution steps, triggers, and other settings. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
+
+```mdx-code-block
+import Tabs3 from '@theme/Tabs';
+import TabItem3 from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs3>
+<TabItem3 value="Pipeline Studio" label="Pipeline Studio">
+```
+
 1. In your Harness Project, select **Deployments**.
 2. Select **Pipelines**, and then select **Create a Pipeline**.
 3. Enter the name **Spot Tutorial** for the pipeline, and then select **Start**.
@@ -39,7 +52,7 @@ To use an AWS connector, your spot account must first be connected to the AWS cl
 
 The new stage is created. Next, we'll add a Harness service to represent the application you're deploying, and configure the service with the Spot Elastigroup service definition, artifacts, environment definition, and infrastructure for deployment.
 
-## Add a Harness service
+### Add a Harness service
 
 Harness services represent your microservices or applications. You can add the same service to as many stages as you need. For more information, go to [services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview).
 
@@ -121,7 +134,7 @@ service:
 </Tabs1>
 ```
 
-## Add a Spot environment
+### Add a Spot environment
 
 Define the environment where you will deploy your application.
 
@@ -282,7 +295,7 @@ infrastructureDefinition:
 </Tabs2>
 ```
 
-## Spot Elastigroup execution strategies
+### Spot Elastigroup pipeline execution strategies
 
 Now you can select a [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) for this stage of the pipeline.
 
@@ -321,6 +334,12 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
     * **New Service**: Select:
         * **Percent**: Specify a percentage of the target instances that you set in the **Elastigroup Setup** step.
         * **Count**: Specify the exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
+5. In the **Advanced** settings of all steps, you can use the following options:
+    * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+    * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+    * [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 5. Select **Apply Changes**. 
 6. Select **Save**. 
 
@@ -358,8 +377,14 @@ Spot Elastigroups perform the functions that Auto Scaling Groups perform in stan
     * **New Service**: Select:
         * **Percent**: Specify a percentage of the target instances that you set in the **Elastigroup Setup** step.
         * **Count**: Specify an exact number of instances. This cannot exceed the **Max Instances** that you set in the **Elastigroup Setup** step.
-6. Select **Apply Changes**. 
-7. Select **Save**. 
+6. In the **Advanced** settings of all steps, you can use the following options:
+    * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+    * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+    * [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+7. Select **Apply Changes**. 
+8. Select **Save**. 
 
 ```mdx-code-block
   </TabItem>
@@ -441,6 +466,12 @@ With this incremental traffic shift strategy, you are controlling the percentage
     * **Name**: Enter the deployment step name.
     * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.
     * Select **Downsize old Elastigroup** to downsize the old Elastigroup.
+5. In the **Advanced** settings of all steps, you can use the following options:
+    * [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+    * [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+    * [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+    * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+    * [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 5. Select **Apply Changes**. 
 6. Select **Save**.   
 
@@ -448,19 +479,13 @@ With this incremental traffic shift strategy, you are controlling the percentage
 </TabItem>    
 </Tabs>
 ```
-## Advanced settings for all steps
 
-In the **Advanced** settings of all step, you can use the following options:
+```mdx-code-block
+</TabItem3>
+<TabItem3 value="YAML" label="YAML">
+```
 
-* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
-
-## Sample Spot Elastigroup pipeline YAML
-
-Here's a YAML sample of a Spot Elastigroup pipeline using Canary deployment strategy.
+Here's a YAML sample of a Spot Elastigroup pipeline using the Canary deployment strategy.
 
 ```
 pipeline:
@@ -544,4 +569,8 @@ pipeline:
                 type: StageRollback
 
 ```
-
+```mdx-code-block
+</TabItem3>    
+</Tabs3>
+```
+Now the pipeline stage is complete and can be deployed. Select **Run** to run the pipeline. 
