@@ -151,7 +151,7 @@ To revoke tokens, do the following:
 
 ## Option: Rotate tokens
 
-You can rotate and store your delegate tokens in 3P secret manager and reference them as needed.
+You can rotate and store your delegate tokens in a third-party secret manager and reference them as needed.
 
 :::info note
 If you rotate your delegate tokens, you must redeploy the delegate.
