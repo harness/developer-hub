@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-05-10T10:00
+date: 2023-05-22T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -16,11 +16,19 @@ Review the notes below to learn about the new features that are Generally Availa
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
- 
- 
-## Latest - May 10, 2023, STO Core version 1.50.3
 
-### Security Testing Orchestration 
+## Latest - May 22, 2023, version 793xx
+
+### Continuous Integration
+
+* x
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 10, 2023, STO Core version 1.50.3
+
+##### Security Testing Orchestration 
 
 * You can now ingest ZAP scan results from both JSON and XML reports. For information about the ZAP XML report format, go to [Traditional XML Report](https://www.zaproxy.org/docs/desktop/addons/report-generation/report-traditional-xml/) in the ZAP documentation. (STO-5868)
 
@@ -39,11 +47,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * You can now select a high-level reason when you [request an exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) for a detected issue. The **Request Exemption for Issue** dialog box includes a new **Reason** pull-down menu with a set of common reasons for exempting an issue. (STO-5730)
 
    ![](./static/sto-exemption-reason-pulldown.gif)
-
-
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 04, 2023, version 79214
 
@@ -963,9 +966,6 @@ This release introduces the following new features and enhancements:
    - An Actions step to run GitHub Actions.
    - A Bitrise step to run Bitrise steps and workflows. (CI-6479)
 * Harness CI now supports remote debugging of remote builds in Harness Cloud, Kubernetes, and VMs in AWS, Azure, and other cloud platforms. If a build fails at a Run step, you can rerun the build in debug mode. This option is available in the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. (CI-6350) 
-   
-  ![](./static/ci-rerun-build-in-debug-mode.png) 
-
 * You can now specify hostnames instead of IPs in Kubernetes build infrastructures. This enables your pipelines to communicate with external services using hostnames. The following Harness YAML snippet shows how to set up aliases for your cluster in the CI stage **Infrastructure** section. (CI-5996, ZD-36578)
 
 ``` yaml 

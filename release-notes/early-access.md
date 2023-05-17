@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-04-10T10:00
+date: 2023-05-22T10:00
 sidebar_position: 2
 ---
 
@@ -10,25 +10,43 @@ Review the notes below to learn about the early access (aka BETA) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 04, 2023, version 79214
+## Latest - May 22, 2023, version 793xx
 
-### Continuous Delivery
+### Continuous Integration
+
+Harness CI now supports remote debugging when all of the following conditions are met:
+
+* You have the feature flag `CI_REMOTE_DEBUG` enabled. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+* The build infrastructure is remote. This includes Harness Cloud, Kubernetes clusters, or AWS VMs on remote hosts.
+* The build infrastructure uses a Linux-based OS.
+* The build fails at a **Run** step with a Bash or Shell script in a **Build** (`CI`) stage.
+
+You can re-run builds in debug mode through the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. <!-- For more information, go to the [debug mode]() documentation. -->(CI-7795)
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 04, 2023, version 79214
+
+##### Continuous Delivery
 
 - You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](https://developer.harness.io/docs/platform/pipelines/run-specific-stage-in-pipeline/) option. (CDS-56775, CDS-56774)
 
-  This functionality is behind the feature flag, `CDS_NG_TRIGGER_SELECTIVE_STAGE_EXECUTION`. 
-  
-  To run a particular stage of the pipeline: 
+  This functionality is behind the feature flag, `CDS_NG_TRIGGER_SELECTIVE_STAGE_EXECUTION`.
+
+  To run a particular stage of the pipeline:
   1. Select the stage, then select **Advanced Options**.
   2. In **Stage Execution Settings>** **Allow selective stages(s) executions?**, select **Yes**. This setting is selected by default.
-     
+
      ![](./static/selective-stage-execution.png)
   3. When you create a trigger, in **Configuration**, select the stages you want to execute.
-     
+
      ![](./static/select-stage-to-execute.png)
-  
-  Here is a sample trigger YAML: 
-  
+
+  Here is a sample trigger YAML:
+
   ```
   trigger:
   name: stage3Trigger
@@ -64,11 +82,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - You can add Tanzu Application Service (TAS) [config files](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/add-config-files) from GitHub. (CDS-56452)
 
   This feature is currently behind the feature flag, `CDS_GIT_CONFIG_FILES`. For TAS deployment types, you can reference service config files from GitHub.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### April 21, 2023, version 79111
 
