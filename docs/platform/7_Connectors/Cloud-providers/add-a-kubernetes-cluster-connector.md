@@ -1,6 +1,6 @@
 ---
 title: Add a Kubernetes cluster connector
-description: Connect Harness to a Kubernetes cluster using a Harness Kubernetes Cluster Connector.
+description: Connect Harness to your Kubernetes clusters on any platform.
 sidebar_position: 5
 helpdocs_topic_id: 1gaud2efd4
 helpdocs_category_id: o1zhrfo8n5
