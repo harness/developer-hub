@@ -147,6 +147,7 @@ To configure runtime inputs in the Harness Pipeline Studio:
  3. In the **Configure Options** window, enable the **Request input value when the Stage/Step is being executed** option. 
  
  ![](./static/runtime-inputs-07.png)
+ 
  4. Select **Submit**.
 
 You can configure the same in YAML by adding the `executionInput()` method to an input field. For example, `<+input>.executionInput()`. 
