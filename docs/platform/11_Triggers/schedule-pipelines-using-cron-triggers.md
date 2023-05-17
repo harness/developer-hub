@@ -42,9 +42,9 @@ When you edit a Cron Trigger later, you can type or paste in a Cron expression.
 
 The Cron expression will be evaluated against UTC time.
 
-Here's a reminder of Cron expression formatting:
+There are two types of supported cron expressions UNIX and QUARTZ .Here's a reminder of Cron expression formatting:
 
-
+QUARTZ Expression
 ```
 0 0 4 7 ? 2014  
 | | | |   | |  
@@ -55,6 +55,19 @@ Here's a reminder of Cron expression formatting:
 | \----------------- HOUR (0- MIDNIGHT LOCAL TIME)  
 \------------------- MINUTE (0)
 ```
+
+UNIX Expression
+
+```
+5 0 * * 5
+| | | | |
+| | | | \-------DAY_OF_WEEK (Friday)
+| | | \---------MONTH (Any month)
+| | \-----------DAY_OF_MONTH (Any day of the month)
+| \-------------HOUR(0- MIDNIGHT LOCAL TIME)
+\---------------MINUTE(5)
+```
+
 ### ​Step 3: Set pipeline input
 
 Pipelines often have [Runtime Inputs](../20_References/runtime-inputs.md) like codebase branch names or artifact versions and tags.
