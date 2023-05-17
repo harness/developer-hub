@@ -169,7 +169,7 @@ Basic deployments are supported in Harness for a number of platforms as a way fo
 
 ### When to use basic deployments
 
-* Your app/service is not business, mission, or revenue critical.
+* Your app/service is not business, mission, or revenue-critical.
 * You’re deploying off-hours and no one is using the app/service.
 * You're experimenting with deployments and it's okay if the app/service fails.
 
@@ -182,7 +182,7 @@ Basic deployments are supported in Harness for a number of platforms as a way fo
 
 * Risk, outages, slower rollback
 
-Not too long ago, basic deployments were how developers rolled out applications. Typically, someone in Ops updates the servers at midnight and then you hope all goes well.
+Not too long ago, basic deployments were how developers rolled out applications. Typically, someone in Ops updated the servers at midnight and then you hoped all goes well.
 
 ## Multi-service deployments
 
