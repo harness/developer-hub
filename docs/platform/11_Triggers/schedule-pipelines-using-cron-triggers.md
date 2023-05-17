@@ -14,35 +14,34 @@ For example, you can have a Pipeline run every Monday at 1AM. Harness will gener
 
 For general Triggers reference, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
 
-### ​Before you begin
+### Before you begin
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 * [CI pipeline tutorials](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md)
 
-### ​Step 1: Add a trigger to a pipeline​
+### Add a trigger to a pipeline
 
-Open your Harness Pipeline in Pipeline Studio.
+Open your Harness pipeline in Pipeline Studio.
 
-Click **Triggers**.
+1. Select **Triggers**.
+2. Select **New Trigger**.
+3. Select **Cron**.
+   
+   For Git-based Trigger types or CodeCommit, see [Trigger Pipelines using Git Events](triggering-pipelines.md).
+4. In **Trigger Overview**, enter a name, description, and tags for the trigger.
 
-Click **New Trigger**.
+### Schedule the trigger
 
-Click **Cron**.
+In **Schedule**, use the settings to schedule the trigger.
 
-For Git-based Trigger types or CodeCommit, see [Trigger Pipelines using Git Events](triggering-pipelines.md).
-
-In **Trigger Overview**, enter a name, description, and Tags for the Trigger.
-
-### ​Step 2: Schedule the trigger​
-
-In **Schedule**, use the settings to schedule the Trigger.
-
-When you edit a Cron Trigger later, you can type or paste in a Cron expression.
+When you edit a Cron trigger later, you can type or paste in a Cron expression.
 
 The Cron expression will be evaluated against UTC time.
 
-There are two types of supported cron expressions UNIX and QUARTZ .Here's a reminder of Cron expression formatting:
+There are two types of supported cron expressions UNIX and QUARTZ. 
+
+Here's a reminder of Cron expression formatting:
 
 QUARTZ Expression
 ```
@@ -68,35 +67,37 @@ UNIX Expression
 \---------------MINUTE(5)
 ```
 
-### ​Step 3: Set pipeline input
+### Set pipeline input
 
-Pipelines often have [Runtime Inputs](../20_References/runtime-inputs.md) like codebase branch names or artifact versions and tags.
+Pipelines often have [Runtime inputs](../20_References/runtime-inputs.md) like codebase branch names or artifact versions and tags.
 
-Provide values for the inputs. You can also use [Input Sets](../8_Pipelines/input-sets.md).
+Provide values for the inputs. You can also use [Input sets](../8_Pipelines/input-sets.md).
 
-Click **Create Trigger**.
+Select **Create Trigger**.
 
-The Trigger is now added to the Triggers page.
+The Trigger is now added to the **Triggers** page.
 
-### Step 4: Enable or disable trigger
+### Enable or disable trigger
 
-Use the Enable setting to turn the Trigger on and off.
+Use the enable setting to turn the trigger on and off.
 
 ![](./static/schedule-pipelines-using-cron-triggers-20.png)
-That's it. Your Pipeline will run when the Cron expression equals the current time.
 
-### Option: Run once
+Your pipeline will run when the Cron expression equals the current time.
+
+### Run once
 
 To specify a run-once schedule, specify a fully qualified date and time.
 
-Simply enter the time, day of month, month, and then allow for any day of the week.
+Enter the time, day of month, month, and then allow for any day of the week.
 
 The below example runs on **At 1:45 PM, on day 13 of the month, and on Tuesday, only in September**
 
 `45 13 13 09 Tue`
 
 ![](./static/schedule-pipelines-using-cron-triggers-21.png)
+
 ### See also
 
-* [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md)
+* [Triggers reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md)
 
