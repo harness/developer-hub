@@ -78,7 +78,7 @@ You can set allowed values and a default value for a runtime input. The default 
 
 Allowed values are specified for an input using the `allowedValues()` method. For example, `<+input>.allowedValues(\'bengaluru\',\'newyork\')`.
 
-A default value can also be specified for an input, using the `default()` method. For example, `<+input>.default(\'bengaluru\').
+A default value can also be specified for an input, using the `default()` method. For example, `<+input>.default(\'bengaluru\')`.
 
 Both allowed values and defaults can be specified for the same input set. In this case, the default value must be present in the list of allowed values. For example, `<+input>.default(\'london\').allowedValues(\'bengaluru\',\'newyork\',\'london\')`. 
 
@@ -105,7 +105,7 @@ Currently, this feature is behind the feature flag `NG_EXECUTION_INPUT`. Contact
 
 The following limitations and requirements apply to this feature:
 
-- A Harness user must have the **Pipeline Execute** permission to be able to submit runtime input during execution.
+- A Harness user must have the **Pipeline Execute** permission to be able to submit runtime inputs during execution.
 
 #### Configure runtime inputs
 
@@ -117,11 +117,12 @@ If a Harness Approval step is setup with runtime input, you can specify the Harn
 
 To configure runtime inputs in the Harness Pipeline Studio:
 
- 1.  Select "Runtime input" for an input field.
+ 1. Select **Runtime input** for an input field.
  2. Select the settings icon next to the input field. 
-     
-     A configuration popup appears. 
- 3. Enable **Request input value when the Stage/Step is being executed**. 
+ 3. In the **Configure Options** window, enable the **Request input value when the Stage/Step is being executed** option. 
+ 
+ ![](./static/runtime-inputs-07.png)
+ 4. Select **Submit**.
 
 You can configure the same in YAML by adding the `executionInput()` method to an input field. For example, `<+input>.executionInput()`. 
 
@@ -156,11 +157,14 @@ pipeline:
                 value: <+input>.default(ABC).executionInput()
  ```
 
-:::info
+If you're using the default method along with the execution input method, when the execution time input times out, the step fails instead of automatically applying the default. 
 
-If you're using the default method along with the execution input method, when the execution time input times out, the step fails instead of automatically applying the default. To automatically use the default value during such timeouts, you must configure the **Proceed with Default Values** failure strategy and link it to the error type **Execution-time Inputs Timeout Error**.
+To automatically use the default value during such timeouts: 
+* In **Failure Strategy** > **On failure of type**, select the **Execution-time Inputs Timeout Errors** error. 
+* In **Perform Action**, select **Proceed with Default Values**.
 
-:::
+![](static/execution-time-error-configuration.png)
+
 
 #### Using runtime input during execution with a shell script
 
