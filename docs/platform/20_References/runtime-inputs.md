@@ -92,6 +92,31 @@ The multiple selection functionality is currently behind the feature flag, `PIE_
 
 ![](./static/runtime-inputs-11.png)
 
+You can also create default values in templates and later override them during the pipeline execution. 
+
+Here's a YAML example of a stage template with default value, `<+input>.default(“ABC”)`. You can override this default value during pipeline execution. 
+```
+pipeline:
+  name: UsingStageTempWithDefaults
+  identifier: UsingStageTempWithDefaults
+  projectIdentifier: svcredesignhinger
+  orgIdentifier: harness
+  tags: {}
+  stages:
+    - stage:
+        name: s1
+        identifier: s1
+        template:
+          templateRef: stageTempDefaults1
+          versionLabel: v1
+          templateInputs:
+            type: Custom
+            variables:
+              - name: var1
+                type: String
+                default: ABC
+                value: <+input>.default(ABC).executionInput()
+ ```
 
 ### Supplying runtime inputs during execution
 
@@ -130,32 +155,6 @@ This method can be used in combination with allowed values and default values. F
 
 * `<+input>.allowedValues(value1,value2).executionInput()` - During execution, you will be prompted to enter `value 1` and `value 2` inputs. Only `value1` and `value2` values will be allowed as valid inputs.
 * `<+input>.allowedValues(value1,value2).default(value1).executionInput()` - During execution, you will be prompted to enter `value 1` and `value 2` inputs. Only `value1` and `value2` values will be allowed as valid inputs. `value1` is the default input in this example, so it appears as the default input in the prompt.  
-
-You can also create default values in templates and later override them during the pipeline execution. 
-
-Here's a YAML example of a stage template with default value, `<+input>.default(“ABC”)`. You can override this default value during pipeline execution. 
-```
-pipeline:
-  name: UsingStageTempWithDefaults
-  identifier: UsingStageTempWithDefaults
-  projectIdentifier: svcredesignhinger
-  orgIdentifier: harness
-  tags: {}
-  stages:
-    - stage:
-        name: s1
-        identifier: s1
-        template:
-          templateRef: stageTempDefaults1
-          versionLabel: v1
-          templateInputs:
-            type: Custom
-            variables:
-              - name: var1
-                type: String
-                default: ABC
-                value: <+input>.default(ABC).executionInput()
- ```
 
 If you're using the default method along with the execution input method, when the execution time input times out, the step fails instead of automatically applying the default. 
 
