@@ -26,20 +26,20 @@ Debug mode is never available for a pipeline's first build. You must run the pip
 
    <docimage path={require('./static/ci-rerun-build-in-debug-mode.png')} />
 
-3. Wait while the build runs. When the Run step fails, the build stops and generates log output with an SSH command you can use to SSH into the session on the remote host.
+3. Wait while the build runs. If the Run step fails, the build stops and generates log output with an SSH command you can use to SSH into the session on the remote host.
 
    * The SSH command is formatted as `ssh {harness pat}:<your-harness-account-ID>:<random-session-token>@tmate.harness.io`
-   * Replace `{harness pat}` with your own [Harness personal access token](/docs/platform/user-management/add-and-manage-api-keys/#create-personal-access-token).
+   * Replace `{harness pat}` with your own [Harness personal access token (PAT)](/docs/platform/user-management/add-and-manage-api-keys/#create-personal-access-token). Your Harness PAT must have `pipeline execution` permissions.
 
    <!-- ![](./static/debug-remote-build-links.png) -->
 
    <docimage path={require('./static/debug-remote-build-links.png')} />
 
 4. When you're in the debug session, use the CLI to reproduce and troubleshoot the issue on the remote host.
-5. To terminate the debug session, abort the build and then run a new build to determine if the issue is resolved.
+5. To terminate the debug session, abort the build and then run a new build to determine if the issue is resolved. Sessions automatically terminate after one hour or at the step timeout limit, whichever occurs first.
 
 :::tip
 
-You can troubleshoot pipelines that appear to build successfully but still needs remote troubleshooting. To do this, add a Run step with the CLI command `exit 1`. This forces the build to fail so you can re-run it in Debug mode.
+You can troubleshoot pipelines that appear to build successfully but still needs remote troubleshooting. To do this, add a Run step with the CLI command `exit 1`. This forces the build to fail so you can re-run it in debug mode.
 
 :::
