@@ -136,10 +136,44 @@ This example runs Gradle tests with [Test Intelligence](./set-up-test-intelligen
 
 If your test tool doesn't automatically produce test results in JUnit XML format, there are JUnit converters, formatters, and plugins available for all major languages. Some examples of conversion tools and corresponding Harness YAML are provided below.
 
-### C# - .NET, NUnit
+### C# - .NET Core, Framework, NUnit
 
-* [NUnit to JUnit](https://github.com/nunit/nunit-transforms/tree/master/nunit3-junit)
-* [.NET trx2JUnit](https://github.com/gfoidl/trx2junit)
+For C#, you can use conversion tools such as [NUnit to JUnit](https://github.com/nunit/nunit-transforms/tree/master/nunit3-junit) and [.NET trx2JUnit](https://github.com/gfoidl/trx2junit).
+
+The following example runs tests with [Test Intelligence](./set-up-test-intelligence.md).
+
+```yaml
+                  - step:
+                      type: RunTests
+                      name: runTests
+                      identifier: runTest
+                      spec:
+                        language: Csharp
+                        buildEnvironment: Framework
+                        frameworkVersion: "5.0"
+                        buildTool: Nunitconsole
+                        args: . "C:/Program Files (x86)/NUnit.org/nunit-console/nunit3-console.exe" dotnet-agent/TestProject1/bin/Debug/net48/TestProject1.dll --result="UnitTestResults.xml;transform=nunit3-junit.xslt"
+                        packages: TestProject1
+                        namespaces: TestProject1
+                        runOnlySelectedTests: true
+                        preCommand: |-
+                          wget https://github.com/nunit/nunit-console/releases/download/3.13/NUnit.Console-3.13.0.msi -o nunit.msi
+                          ./nunit.msi
+                          git status
+                          cd dotnet-agent/TestProject1
+                          wget -UseBasicParsing https://dot.net/v1/dotnet-install.ps1 -o dotnet-install.ps1
+                          .\dotnet-install.ps1
+                          dotnet build
+                          cd ..
+                          cd ..
+                          wget https://raw.githubusercontent.com/nunit/nunit-transforms/master/nunit3-junit/nunit3-junit.xslt -o nunit3-junit.xslt
+                        reports:
+                          type: JUnit
+                          spec:
+                            paths:
+                              - UnitTestResults.xml
+                        shell: Powershell
+```
 
 ### Clojure
 

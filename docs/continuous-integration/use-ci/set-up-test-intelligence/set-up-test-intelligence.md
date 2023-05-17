@@ -25,7 +25,9 @@ Test Intelligence is available for the following codebases:
 * Java
 * Kotlin
 * Scala
-* C# .NET Core/NUnit: Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+* C# .NET Core, Framework, NUnit
+  * Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+  * Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [build environment](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings#build-environment) in your pipeline's YAML.
 
 :::
 

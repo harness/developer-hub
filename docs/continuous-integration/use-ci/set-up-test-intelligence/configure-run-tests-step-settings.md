@@ -68,6 +68,25 @@ import TabItem from '@theme/TabItem';
 
 Select the build environment to test.
 
+:::info .NET Framework
+
+.NET Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only. You must specify `buildEnvironment: Framework` in your pipeline's YAML, for example:
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: runTests
+                  identifier: runTest
+                  spec:
+                    language: Csharp
+                    buildEnvironment: Framework
+                    frameworkVersion: "5.0"
+                    buildTool: Nunitconsole
+                    ...
+```
+
+:::
+
 ### Framework Version
 
 Select the framework version to test.
