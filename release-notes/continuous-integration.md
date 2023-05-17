@@ -31,7 +31,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="Early access">
 ```
 
-Harness CI now supports remote debugging when all of the following conditions are met:
+Harness CI now supports remote debugging. This feature was initially released in January 2023 and subsequently reverted for further development. Debug mode is available if all of the following conditions are met:
 
 * You have the feature flag `CI_REMOTE_DEBUG` enabled. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 * The build infrastructure is remote. This includes Harness Cloud, Kubernetes clusters, or AWS VMs on remote hosts.
@@ -52,10 +52,10 @@ You can re-run builds in debug mode through the **Builds**, **Execution**, and *
 * (CI-7930, ZD-43974)
 * (CI-7853)
 * (CI-7845)
-* (CI-7800, ZD-43259)
-* (CI-7785)
+* Previously, test splitting wouldn't work with step-level parallelism on a Kubernetes cluster build infrastructure due to the way certain environment variables were read. This is fixed. (CI-7800, ZD-43259, <!-- CI-7803, ZD-43272 -->)
+* If you run a pipeline that uses a Kubernetes cluster build infrastructure and step templates with empty `connectorRef` and `image` values, the resulting error message is more accurate and informative. (CI-7785)
 * When manually running a pipeline, you can chose to run specific stages, rather than the entire pipeline. Previously, if you chose to run only stages with **Clone codebase** disabled, you were blocked by a field validation error requiring you to populate the **Git Branch** and **Repository** fields, which weren't visible. This has been fixed so that stages with **Clone Codebase** disabled no longer prompt for this codebase information. (CI-7559, ZD-41974, ZD-44041)
-* Fixed an issue where build pods weren't cleaned up after CI pipeline executions if the pipeline/stage and Kubernetes cluster connector had different delegate selectors. The [Harness Delegate version 793xx](/release-notes/delegate) is required for this fix. (CI-7955, ZD-44048)
+* Fixed an issue where build pods weren't cleaned up after CI pipeline executions if the pipeline/stage and Kubernetes cluster connector had different delegate selectors. The [Harness Delegate version 793xx or later](/release-notes/delegate) is required for this fix. (CI-7955, ZD-44048)
 
 ```mdx-code-block
   </TabItem>
@@ -259,6 +259,7 @@ This release does not include early access features.
 * This release includes two new CI steps for integrating your Harness CI pipelines with GitHub Actions and Bitrise. The following steps are available in Harness Cloud build infrastructures only.
    - An Actions step to run GitHub Actions.
    - A Bitrise step to run Bitrise steps and workflows. (CI-6479)
+* *The remote debugging feature announced in this release was reverted due to a security concern.* (CI-6350)
 * You can now specify hostnames instead of IPs in Kubernetes build infrastructures. This enables your pipelines to communicate with external services using hostnames. The following Harness YAML snippet shows how to set up aliases for your cluster in the CI stage **Infrastructure** section. (CI-5996, ZD-36578)
 
 ##### Defining hostnames to use in a Kubernetes build infrastructure
