@@ -285,9 +285,7 @@ This example uses the [Maven Surefire Plugin](https://maven.apache.org/surefire/
         command: |
           npm install
           mkdir /harness/junit
-          mocha test --reporter mocha-junit-reporter
-      envVariables:
-         MOCHA_FILE: "/harness/junit/test-results.xml"
+          mocha test --reporter mocha-junit-reporter --reporter-options mochaFile=./path_to_your/file.xml
       reports:
         type: JUnit
         spec:
