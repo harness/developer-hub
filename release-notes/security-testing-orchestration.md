@@ -18,12 +18,46 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
-## Latest - May 10, 2023, version 1.50.3
+## Latest - May 17, 2023, version 1.53.0
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+
+* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
+
+  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not incude early-access features. 
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+* Fixed an issue that would sometimes cause long-running scans to fail with a `requests.exceptions.ReadTimeout` exception and scan results to be lost.  (STO-5907)
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 10, 2023, version 1.50.3
+
+##### What's new
 
 * You can now ingest ZAP scan results from both JSON and XML reports. For information about the ZAP XML report format, go to [Traditional XML Report](https://www.zaproxy.org/docs/desktop/addons/report-generation/report-traditional-xml/) in the ZAP documentation. (STO-5868)
 
@@ -44,18 +78,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
    ![](./static/sto-exemption-reason-pulldown.gif)
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 This release does not incude early-access features. 
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
 
 * Fixed an issue with Mend scans that caused builds to fail with the log message “Missing valid image". (STO-5867)
 
@@ -66,16 +94,7 @@ This release does not incude early-access features.
 * Implemented fixes to improve UI speed and performance in the Security Testing Dashboard. (STO-5612)
   
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### April 6, 2023, version 1.43.1
 

@@ -18,9 +18,20 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
  
  
-## Latest - May 10, 2023, STO Core version 1.50.3
+## Latest - May 17, 2023, STO Core version 1.53.0
 
-### Security Testing Orchestration 
+* * Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
+
+  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
+
+
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 10, 2023, STO Core version 1.50.3
+
+##### Security Testing Orchestration 
 
 * You can now ingest ZAP scan results from both JSON and XML reports. For information about the ZAP XML report format, go to [Traditional XML Report](https://www.zaproxy.org/docs/desktop/addons/report-generation/report-traditional-xml/) in the ZAP documentation. (STO-5868)
 
@@ -39,11 +50,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * You can now select a high-level reason when you [request an exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) for a detected issue. The **Request Exemption for Issue** dialog box includes a new **Reason** pull-down menu with a set of common reasons for exempting an issue. (STO-5730)
 
    ![](./static/sto-exemption-reason-pulldown.gif)
-
-
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 04, 2023, version 79214
 
