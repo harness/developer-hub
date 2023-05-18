@@ -11,7 +11,6 @@ The Harness CI **Re-run in Debug Mode** feature can troubleshoot remote builds.
 Debug mode is only available if the following conditions are met:
 
 * You have the feature flag `CI_REMOTE_DEBUG` enabled. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-* The build infrastructure is remote. This includes Harness Cloud, Kubernetes clusters, or AWS VMs on remote hosts.
 * The build infrastructure uses a Linux-based OS.
 * The build fails at a Run step with a Bash or Shell script in a **Build** (`CI`) stage.
 
