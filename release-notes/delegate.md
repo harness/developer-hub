@@ -62,8 +62,8 @@ This release introduces the following new features and enhancements:
    | `task_completed` | The number of tasks completed. |
    | `task_failed` | The number of failed tasks. |
    | `task_rejected` | The number of tasks rejected because of a high load on the delegate. |
-   | `delegate_connected` | The number of times the delegate connected and disconnected. |
-   | `resource_consumption_above_threshold` | The delegate resource consumption reached more than 90%. |
+   | `delegate_connected` | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
+   | `resource_consumption_above_threshold` | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. |
 
    Enable the feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST` to new delegate agent metrics. When this feature flag is enabled, Harness will capture the metrics.
 
