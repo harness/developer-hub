@@ -10,9 +10,9 @@ An effective way to reduce Azure VM costs is to optimize VM utilization. This in
 
 Virtual machines are considered low-utilization:
 
-* If their CPU utilization is 5 percent or less and their network utilization is less than 2 percent and have threshold memory pressure numbers
+* If their CPU utilization is 5 percent or less and their network utilization is less than 2 percent and have threshold memory pressure numbers.
 
-* If the current workload can be accommodated by a smaller virtual machine size.
+* If the current workload can be accommodated by a smaller sized virtual machine.
 
 You can view the recommendations for your Azure VMs on the **Recommendations** page. 
 
@@ -33,7 +33,7 @@ Enabling the **Visibility** feature allows retrieving recommendations from the A
 
 ## How are Azure recommendations computed?
 
-The recommendations are computed by analyzing the past CPU utilization. Harness CCM leverages the Azure Advisor recommendations. CCM uses the Azure APIs to fetch data from the Azure account.
+The recommendations are computed by analyzing the past CPU utilization. Harness CCM leverages the Azure Advisor recommendations. CCM uses the Azure APIs to retrieve data from the Azure account.
 
 :::note
 Azure Advisor automatically runs in the background to find newly created resources. It can take up to 24 hours to provide recommendations on those resources.
@@ -41,7 +41,7 @@ Azure Advisor automatically runs in the background to find newly created resourc
 
 ### Configure Azure Advisor
 
-You must configure Azure Advisor to receive recommendations for cost optimization. Go to [Enable Azure recommendations](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
+You must configure Azure Advisor to receive recommendations for cost optimization. For more information, go to [Enable Azure recommendations](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
 
 ## Types of Azure VM recommendations
 
