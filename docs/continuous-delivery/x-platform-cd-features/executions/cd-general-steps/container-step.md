@@ -361,12 +361,15 @@ For example, you can set **Value** as an expression and reference the value of s
 </Tabs>
 ```
 
+### Delegate selector
+By default, the [infrastructure connector delegate selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/) is considered for step execution unless overridden by a step, stage or pipeline level delegate selector.
+
 ## Advanced settings
 
 In **Advanced**, you can use the following options:
 
-* [Delegate selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)

@@ -9,7 +9,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-CI pipelines build and test code that is pulled from a Git code repositories. When you add a **Build** stage to a CI pipeline, you select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored. This topic explains how to configure codebase settings for CI pipelines.
+CI pipelines build and test code that is pulled from a Git code repository. When you add a **Build** stage to a CI pipeline, you select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored. This topic explains how to configure codebase settings for CI pipelines.
 
 This topic assumes you have an understanding of [Harness CI concepts](../../ci-quickstarts/ci-concepts.md) and the general [pipeline creation process](../prep-ci-pipeline-components.md).
 

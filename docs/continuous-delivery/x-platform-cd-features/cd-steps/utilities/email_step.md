@@ -78,10 +78,11 @@ For more information on runtime inputs and expressions, go to [fixed values, run
 
 In **Advanced**, you can use the following options:
 
-* [Delegate selector](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
-* [Conditional execution](/docs/platform/Pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Failure strategy](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-* [Looping strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism)
+* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## Options
 

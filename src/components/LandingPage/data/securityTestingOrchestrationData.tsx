@@ -44,7 +44,7 @@ export const STOList: CardItem[] = [
     link: "/tutorials/security-tests/standalone-pipeline",
   },
   {
-    title: "Create a CI/CD pipeline integrated with STO",
+    title: "Create an integrated STO/CI pipeline",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
     description: (

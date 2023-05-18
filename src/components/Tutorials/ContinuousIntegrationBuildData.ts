@@ -19,13 +19,13 @@ import { MODULES } from "../../constants";
           module: MODULES.ci,
           description:
             "Build a Docker Image on a Kubernetes cluster build farm.",
-          link: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
+          link: "/tutorials/ci-pipelines/kubernetes-build-farm",
         },
         {
           title: "Go application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of a Go application.",
+            "Build a Go application.",
           link: "/tutorials/ci-pipelines/build/go",
         },
         {
@@ -42,28 +42,6 @@ import { MODULES } from "../../constants";
             "Build a Docker Image of a NodeJS application.",
           link: "/tutorials/ci-pipelines/build/nodejs",
         },
-
-        {
-          title: "React application",
-          module: MODULES.ci,
-          description:
-            "Build a Docker Image of a React application.",
-          link: "/tutorials/ci-pipelines/build/react",
-        },
-        {
-          title: "Rust application",
-          module: MODULES.ci,
-          description:
-            "Build a Docker Image of a multi-architecture Rust application.",
-          link: "/tutorials/ci-pipelines/build/rust",
-        },
-        {
-          title: "Signed images",
-          module: MODULES.ci,
-          description:
-            "Build a Signed Docker Image of a Go application.",
-          link: "/tutorials/ci-pipelines/build/signed-image",
-        },
         {
           title: "Terraform Cloud notification triggers",
           module: MODULES.ci,
@@ -73,7 +51,7 @@ import { MODULES } from "../../constants";
           newDoc: true,
           type: [docType.Documentation],
           time: '9 min',
-          link: "/tutorials/ci-pipelines/build/tfc-notification",
+          link: "/tutorials/ci-pipelines/tfc-notification",
         },
       ],
     },

@@ -574,7 +574,7 @@ In GitHub Actions, triggers are defined in the workflow based on Git events agai
 
 Harness CI supports webhook, artifact, manifest and schedule triggers. The two most commonly used triggers are webhook triggers based on Git events and scheduled triggers based on `cron` expressions. To learn more about creating triggers, go to:
 
-* [Trigger Pipelines using Git Event Payload Conditions](/docs/platform/triggers/trigger-pipelines-using-custom-payload-conditions/)
+* [Trigger Pipelines using Git Event Payload Conditions](/docs/platform/triggers/triggering-pipelines/)
 * [Triggers](https://developer.harness.io/docs/category/triggers)
 * [Built-in CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference)
 

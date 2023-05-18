@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-05-04T10:00
+date: 2023-05-10T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -18,17 +18,44 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
  
  
-## Latest - May 04, 2023, version 79214
+## Latest - May 10, 2023, STO Core version 1.50.3
 
-### Harness Platform
+### Security Testing Orchestration 
+
+* You can now ingest ZAP scan results from both JSON and XML reports. For information about the ZAP XML report format, go to [Traditional XML Report](https://www.zaproxy.org/docs/desktop/addons/report-generation/report-traditional-xml/) in the ZAP documentation. (STO-5868)
+
+* The Security Tests tab now renders tables from tool-provided descriptions in the **Issue Details** panel. (STO-5857)
+
+* The UI now uses consistent terminology when referring to exemptions. All references to *ignore* and *ignored* have been updated to *exempt* and *exempted*. (STO-5749)
+
+* The Security Testing Dashboard  includes a new **Target Type** filter. (STO-5732)
+
+  ![](./static/sto-std-new-filter-sto-5732.png)
+
+* The Security Tests tab now paginates results for scans that detect a lot of issues. You can set the pagination to 20, 50, or 100 issues per page. (STO-5211)
+
+* STO now supports [looping strategies](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for Security Tests stages. (STO-5726)
+
+* You can now select a high-level reason when you [request an exemption](/docs/security-testing-orchestration/use-sto/stop-builds-based-on-scan-results/exemption-workflows) for a detected issue. The **Request Exemption for Issue** dialog box includes a new **Reason** pull-down menu with a set of common reasons for exempting an issue. (STO-5730)
+
+   ![](./static/sto-exemption-reason-pulldown.gif)
+
+
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 04, 2023, version 79214
+
+##### Harness Platform
 
 - You will now receive an alert on the default settings page when there are unsaved changes, or if you leave the page. (PL-32354)
 
-### Service Reliability Management
+##### Service Reliability Management
 
 - An icon appears on the SLO performance trend chart timeline to indicate when the error budget was reset and the amount of budget that was added. (SRM-14550)
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - Trigger artifact and manifest expressions (`<+trigger.artifact.build>` or `<+trigger.manifest.version>`) are now resolved when you rerun a pipeline that was activated by a trigger. (CDS-58192, CDS-50585)
   
@@ -66,16 +93,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   ![](./static/run-pipeline-form.png)
 
-### Continuous Integration
+##### Continuous Integration
 
 * The CI Getting Started workflow now saves the pipeline remotely (in your Git repository) by default. Previously, the pipeline was stored inline (in Harness) unless you manually selected remote storage. The Getting Started workflow also automatically creates two [input sets](/docs/platform/pipelines/input-sets/) for [Git event triggers](/docs/platform/Triggers/triggering-pipelines): one for a PR trigger and one for a Push trigger. (CI-7602)
 * You can now reference [output variables produced by Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables) in pipelines that use Kubernetes cluster build infrastructures. This is an addition to previously-existing support for Harness Cloud and self-hosted Cloud provider VM build infrastructures. (CI-7491)
 * [Local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) and [Kubernetes cluster](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure) build infrastructures now support pipeline- and stage-level [delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors). You can use pipeline and stage-level delegate selectors to override the platform or connector delegate. These selections are not supported for Harness Cloud or self-hosted Cloud provider VM build infrastructures. (CI-6237)
 
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### April 22, 2023, version 79111
 

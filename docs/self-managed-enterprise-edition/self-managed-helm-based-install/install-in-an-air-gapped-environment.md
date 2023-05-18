@@ -41,6 +41,8 @@ To begin your installation, download the following files:
 
 ## Save Docker images to your private registry
 
+To save Docker images, do the following:
+
 1. Sign in to your private registry.
     ```
     #Authenticate with Docker for Docker Registry
@@ -79,6 +81,8 @@ You can use Helm to pull the chart and push it to your private repository or dow
 
 ## Install via Helm
 Next, you are ready to install via Helm by updating your `override.yaml` file with your private registry information.
+
+To install via Helm, do the following:
 
 1. Update the `override.yaml` file with your private registry information.
     ```

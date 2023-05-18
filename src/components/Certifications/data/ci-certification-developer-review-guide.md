@@ -44,9 +44,9 @@
 |Configure Remote Docker Layer Caching|[Optimizing CI Build Times](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/)|
 |Describe Harness Test Intelligence|[Enable Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-test-intelligence/)|
 |Configure Harness Test Intelligence|[Test Intelligence](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts)|
-|Describe Triggers for CI |[Trigger Pipelines using Git Event Payload Conditions](https://developer.harness.io/docs/platform/triggers/trigger-pipelines-using-custom-payload-conditions)|
-|Configure Triggers for CI |[Configure Triggers for TI](https://developer.harness.io/docs/platform/triggers/trigger-pipelines-using-custom-payload-conditions/)|
-|Configure Custom Webhook Triggers |[Trigger Pipelines using Git Event Payload Conditions](https://developer.harness.io/docs/platform/Triggers/trigger-deployments-using-custom-triggers)|
+|Describe Triggers for CI |[Trigger Pipelines using Git Events](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/)|
+|Configure Triggers for CI |[Configure Triggers for CI](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/)|
+|Configure Custom Webhook Triggers |[Trigger deployments using custom triggers](https://developer.harness.io/docs/platform/Triggers/trigger-deployments-using-custom-triggers)|
 |Describe Input Sets and Overlays|[Input Sets and Overlays](https://developer.harness.io/docs/platform/Pipelines/input-sets)|
 |Configure Input Sets and Overlays|[Input Sets and Overlays](https://developer.harness.io/docs/platform/Pipelines/input-sets)|
 |Describe Failure Strategies|<p>[Step and Stage Failure Strategy References](https://developer.harness.io/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings) </p><p>[Define a Failure Strategy on Stages and Steps](https://developer.harness.io/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) </p>|

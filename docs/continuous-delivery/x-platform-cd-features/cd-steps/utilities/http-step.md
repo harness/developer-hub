@@ -70,7 +70,17 @@ Another method:
 
 You can copy the key and paste it in the HTTP step **Header** setting. For more information, go to [add and manage API keys](/docs/platform/User-Management/add-and-manage-api-keys).
 
-## Output
+## Input variables
+
+Create input variables that can be used by other fields within the step. The **Value** setting can contain fixed values, expressions, or runtime inputs.
+
+These variables can be used by other fields like URLs by using the following expressions: 
+
+```<+spec.inputVariables.variable_name>``` or ```<+step.spec.inputVariables.variable_name>```
+
+![](./static/http-step-06.png)
+
+## Output variables
 
 Create output variables to be used by other steps in the stage. The **Value** setting can contain any HTTP step input, output, or response information.
 
@@ -117,13 +127,15 @@ In the following examples, the Id of the HTTP step is `HTTP`.
 
 In **Advanced**, you can use the following options:
 
-* [Step skip condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Step failure strategy settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-* [Select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
+* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## Delegate proxy
 
-HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](/docs/platform/Delegates/configure-delegates/configure-delegate-proxy-settings).
+HTTP step supports delegate proxy settings by default. For more information, go to [delegate proxy settings](https://developer.harness.io/docs/platform/Delegates/manage-delegates/configure-delegate-proxy-settings).
 
 ## Header capability check
 

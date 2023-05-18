@@ -348,7 +348,7 @@ Harness offers several options for [managing dependencies](/docs/continuous-inte
 
 ### Use a Background step
 
-You can use [Background steps](/docs/continuous-integration/ci-technical-reference/background-step-settings) to run services needed by other steps in the same stage.
+You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run services needed by other steps in the same stage.
 
 The following example adds a **Background** step that runs the JHTTP app as a service. The subsequent [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) can leverage the service to do things like run connection tests.
 
@@ -481,7 +481,7 @@ For a comprehensive guide on application testing, [Harness provides O'Reilly's *
 
 Now that you've created a basic pipeline for building and testing a Java app, you might want to explore the ways that you can [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times), including:
 
-* [Using Terraform notifications to automatically start builds](/tutorials/ci-pipelines/build/tfc-notification).
+* [Using Terraform notifications to automatically start builds](/tutorials/ci-pipelines/tfc-notification).
 * [Uploading artifacts to JFrog](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog).
 * [Publishing an Allure Report to the Artifacts tab](/tutorials/ci-pipelines/test/allure-report).
 * [Including CodeCov code coverage and publishing results to your CodeCov dashboard](/tutorials/ci-pipelines/test/codecov/).

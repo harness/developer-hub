@@ -1,5 +1,6 @@
 ---
-title: Back up and restore Self-Managed Enterprise Edition Helm installations
+title: Back up and restore Harness Self-Managed Enterprise Edition Helm installations
+sidebar_label: Back up and restore Helm installations
 description: Learn how to back up and restore Self-Managed Enterprise Edition Helm installations. 
 # sidebar_position: 10
 ---
@@ -17,6 +18,8 @@ If installation with a CSI plugin is not a viable option for your environment, y
 The following backup solution has been tested for Istio-based environments. It can restore the sidecars when backing up the Kubernetes objects. 
 
 :::
+
+To install Velero, do the following:
 
 1. Create a VolumeSnapshot with `velero.io/csi-volumesnapshot-class: "true"`, and ensure you are using the Storage class and snapshot with the same CSI driver. 
 
@@ -49,6 +52,8 @@ Delete TimescaleDB endpoints after restoring data. TimescaleDB cannot operate on
 In this example, the Harness application is deployed in the Harness namespace. Velero and Minio are deployed in a namespace Velero. 
 
 Velero takes two kinds of backups: Backups with Volume (VolumeSnapshots) and Kubernetes resource Backups. For VolumeSnapshots, the CSI supported storage class is required. In this example, The application is deployed in a `standard-rwo` storage class, which is driven by pd.csi.storage.gke.io. This driver is used in VolumeSnapshotClass as well. Make sure the VolumeSnapshotClass is labeled with `velero.io/csi-volumesnapshot-class: "true"` so Velero recognizes it.
+
+To backup with volume, do the following:
 
 1. Create a VolumeSnapshotClass.
 

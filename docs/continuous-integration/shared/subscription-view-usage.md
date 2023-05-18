@@ -27,6 +27,8 @@ This section includes the following details:
 
 This section shows the number of current active developers against the total number of licenses.
 
+An active developer is an active codebase committer observed in the builds managed by Harness CI over the last 30 days.
+
 <!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary_onetile.png) -->
 
 <docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary_onetile.png')} />
@@ -42,7 +44,7 @@ This section shows the number of current active developers against the total num
 <details>
 <summary>Active Developers</summary>
 
-In this section, you can drill down into license usage data.
+In this section, you can drill down into license usage data for active developers. An active developer is an active codebase committer observed in the builds managed by Harness CI each month.
 
 The **Breakdown** tab shows a breakdown of license usage.
 

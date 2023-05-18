@@ -1,5 +1,5 @@
 ---
-title: Helm installation failures
+title: Helm installation failure
 description: Troubleshoot installation failures in Harness Self-Management Enterprise Edition.
 ---
 
@@ -31,4 +31,3 @@ global:
       httpNodePort: 32501
       httpsNodePort: 32506
  ```
-

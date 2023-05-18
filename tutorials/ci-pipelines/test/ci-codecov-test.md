@@ -18,7 +18,7 @@ In addition to a Harness account, this tutorial requires the following:
 * An understanding of test tools, scripts, and related commands.
 * A CI pipeline. If you haven't created a pipeline before, try one of the following tutorials:
   * [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
-  * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+  * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 ```mdx-code-block
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';

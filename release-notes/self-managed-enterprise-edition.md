@@ -12,13 +12,47 @@ import TabItem from '@theme/TabItem';
 ```mdx-code-block
 import delete_project from './static/delete-project.png'
 ```
-Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes). 
+Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes).
 
-## Latest - April 26, 2023, version 78926
+## Latest - May 12, 2023, patch release for version 78926
+
+Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and updates to address potential security vulnerabilities.
 
 This release includes the following Harness module and component versions.
-**Helm Chart Version ** 0.5.0
-**Release** https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.5.4](https://github.com/harness/helm-charts/releases/tag/harness-0.5.4) |
+| NG Manager | 78926 |
+| CI Manager | 3303 |
+| Pipeline Service | 1.26.9 |
+| Platform Service | 78602 |
+| Access Control Service | 78405 |
+| Change Data Capture | 78926 |
+| Test Intelligence Service | release-167 |
+| NG UI | 0.344.13 |
+| LE NG | 67708 |
+
+### Fixed issues
+
+* The FirstGen to NextGen migrator disabled initialization for some feature flags. (SMP-1294)
+
+   This issue is fixed. The migrator is now only enabled when `global.migrator.enabled` is set to `true`.
+
+* The legacy delegate is no longer the default delegate type. The default value of `useImmutableDelegate` is now set to `true`. (SMP-1280)
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### April 26, 2023, version 78926
+
+This release includes the following Harness module and component versions.
+
+#### Helm Chart Version 0.5.0 
+
+https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 
 | **Name** | **Version** |
 | :-- | :--: |
@@ -32,10 +66,9 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+
+#### What's new
+
 #### Self-Managed Enterprise Edition
 - Beginning with v0.5.0, Harness will no longer publish `harness-prod` or `harness-demo` Helm charts. Harness will publish the `harness` base chart only. If you currently use the `harness-prod` or `harness-demo` Helm chart, you must download your `custom-override.yaml` file from [the helm-charts repository](https://github.com/harness/helm-charts/tree/main/src) and use the following commands to upgrade:
   
@@ -341,11 +374,8 @@ This release includes the following Harness module and component versions.
 
   You can now view logs for delegate tasks for pipeline steps that are running or finished. This can help with debugging issues.
 
+#### Fixed issues
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
 #### Self-Managed Enterprise Edition
 - Data synchronization did not occur and dashboards displayed incorrect detail. (SMP-1178)
 
@@ -358,8 +388,8 @@ This release includes the following Harness module and component versions.
 - Changed the `global.storageClassName` variable to `global.storageClass`. This update requires changes to the override file. (SMP-1091)
 - Moved MongoDB `wiredTigerCacheSizeGB` under extraFlags. Before this update, it was included under arguments. (SMP-1034)
 #### Continuous Integration
-- Fixed an issue related to secrets resolution in the [GitHub Action plugin step](/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-github-action-step). (CI-6969, CI-7300)
-- The [Base Image Connector setting](/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported Docker Hub registries. (CI-7153, CI-7091, ZD-40319)
+- Fixed an issue related to secrets resolution in the [GitHub Action plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/). (CI-6969, CI-7300)
+- The [Base Image Connector setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings/#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported Docker Hub registries. (CI-7153, CI-7091, ZD-40319)
 - Builds no longer fail if steps in different step groups have the same `identifier`. Additionally, to prevent steps in step groups from producing artifacts with identical artifact IDs, when steps in step groups produce artifacts, the resulting artifact IDs now use a unique identifier that reflects the step's presence in a step group. (CI-7115)
 - When configuring [local build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure), it was not possible to select the Windows operating system. This issue has been resolved and the Windows OS is available again. (CI-7111, ZD-40311)
 - An `unsupported image` warning banner incorrectly appeared for builds that did not use Kubernetes build infrastructure. (CI-7098, ZD-40428)
@@ -950,15 +980,6 @@ This release includes the following Harness module and component versions.
 - The new delegate installation wizard is now available in all delegate installation worfklows. (DEL-5989)
 - Fixed an issue that interfered with the delegate installation process. Delegate API requests did not include the context that was required; organization and project ID information was not being sent with requests. The required context is now included. (DEL-5951)
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### March 14, 2023, version 78426
 
