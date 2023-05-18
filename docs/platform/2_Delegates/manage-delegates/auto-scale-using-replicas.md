@@ -6,15 +6,15 @@ sidebar_position: 6
 
 Autoscaling Harness Delegate using replicas for Helm chart deployments is a useful feature that can help ensure your deployments are executed efficiently, without downtime or resource overload.
 
-To access the default Helm chart for values.yaml, go to [Harness Delegate Helm chart](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml).
+To access the default Helm chart for the `values.yaml` file, go to [Harness Delegate Helm chart](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml).
 
 :::info note
-You can also update the Harness Delegate yaml file in addition to the Helm chart.
+You can also update the Harness Delegate YAML file in addition to the Helm chart.
 :::
 
 To auto scale the delegate, do the following:
 
-1. In your values.yaml file, go to `autoscaling` parameters.
+1. In your `values.yaml` file, go to `autoscaling` parameters.
 
    ```yaml
    autoscaling:
@@ -33,6 +33,6 @@ To auto scale the delegate, do the following:
 
 5. (Optional) Set the `targetMemoryUtilizationPercentage` to add a new replica if memory utilization exceeds this percentage.
 
-6. Save the file and restart your pods.
+6. Save the file, and restart your pods.
 
 When you create a deployment, Harness automatically spins up new replicas of your delegate as needed to ensure the deployment is completed.
