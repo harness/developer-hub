@@ -160,33 +160,6 @@ With self-hosted build infrastructures, you can:
 * [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
 * [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
 
-<details>
-<summary>Node cache key and path requirements</summary>
-
-All Node pipelines must include `node_modules` in the `sourcePaths` for your **Save Cache** step.
-
-```yaml
-                  spec:
-                    sourcePaths:
-                      - node_modules
-```
-
-If your pipeline uses [npm](https://www.npmjs.com/), the `key` value must reference `package-lock.json` in your **Save Cache** and **Restore Cache** steps.
-
-```yaml
-                  spec:
-                    key: cache-{{ checksum "package-lock.json" }}
-```
-
-If your pipeline uses [yarn](https://yarnpkg.com/), the `key` value must reference `yarn.lock` in your **Save Cache** and **Restore Cache** steps.
-
-```yaml
-                  spec:
-                    key: cache-{{ checksum "yarn.lock" }}
-```
-
-</details>
-
 Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
 
 ```yaml
@@ -199,7 +172,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     connectorRef: AWS_Connector
                     region: us-east-1
                     bucket: your-s3-bucket
-                    key: cache-{{ checksum "package-lock.json" }}
+                    key: cache-{{ checksum filepath1 }}
                     archiveFormat: Tar
               - step:
                   type: Run
@@ -215,9 +188,10 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     connectorRef: AWS_Connector
                     region: us-east-1
                     bucket: your-s3-bucket
-                    key: cache-{{ checksum "package-lock.json" }}
+                    key: cache-{{ checksum filepath1 }}
                     sourcePaths:
-                      - node_modules
+                      - directory1
+                      - directory2
                     archiveFormat: Tar
 ```
 
@@ -422,7 +396,7 @@ pipeline:
 
 ## Next steps
 
-Now that you have created a pipeline that builds and tests a Node app, you could:
+Now that you have created a pipeline that builds and tests a Python app, you could:
 
 * Create [triggers](/docs/category/triggers) to automatically run your pipeline.
 * Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
