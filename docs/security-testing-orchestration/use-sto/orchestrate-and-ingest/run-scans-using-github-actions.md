@@ -12,13 +12,24 @@ import TabItem from '@theme/TabItem';
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities, such as security scanning, in GitHub. This topic describes how to run GitHub Action scans and ingest the results into your Harness pipelines.  
 
 :::note Important notes
+
+* Integration with GitHub Actions is primarily a CI feature. You can run GHA scans in standalone STO pipelines without a CI license, but the number of scans you can run is license-limited. 
+
 * You can run scans using [GitHub Action steps](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) and [Drone plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie). 
 
-* The type of step to use depends on your build infrastructure: use a GitHub Action step for Harness Cloud infrastructures and a Drone Plugin step for Kubernetes infrasgtructures.
+* The type of step to use depends on your build infrastructure. GitHub Action steps are supported on Harness Cloud infrastructures only. Drone Plugin steps are supported on Harness Cloud and Kubernetes infrastructures.
+
+* [GitHub](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#the-components-of-github-actions) and [Harness](/docs/getting-started/learn-harness-key-concepts) use slightly different terminologies for similar concepts:
+
+  * GitHub **workflow** = Harness **pipeline**
+  * GitHub **job** = Harness **Stage**
+  * GitHub **step** = Harness **step**
+
+  ![](../static/sto-gha-vs-harness-concepts.png)
 
 * Harness recommends that you output your scan results to a data file in [SARIF format](https://docs.github.com/en/code-security/code-scanning/integrating-with-code-scanning/sarif-support-for-code-scanning). You can then use a Custom Ingestion step to ingest the results into your pipeline.
 
-* As described below, you need to translate settings from the GitHub Action YAML to the Harness pipeline YAML. It is good practices to configure these settings in the YAML editor.
+* As described below, you need to translate settings from the GitHub Action YAML to the Harness pipeline YAML. It is good practice to configure these settings in the YAML editor.
 ::: 
 
 <!-- action -->
@@ -124,7 +135,7 @@ Given this, you would set up the Action step in your Harness pipeline like this.
 ```
 <!-- action -->
 
-<details><summary>YAML pipeline</summary>
+<details><summary>YAML pipeline example</summary>
 
 ```yaml
 pipeline:
@@ -288,25 +299,24 @@ Given this, you would set up the Action step in your Harness pipeline like this.
 
 <!-- plugin -->
 
-<details><summary>YAML pipeline</summary>
+<details><summary>YAML pipeline example</summary>
 
 ```yaml
+
 pipeline:
-  projectIdentifier: myProject
-  orgIdentifier: myOrg
+  projectIdentifier: STO
+  orgIdentifier: default
   tags: {}
-  identifier: nodejs-repo-scane
-  name: NodeJS repo scan
   properties:
     ci:
       codebase:
-        connectorRef: MY_REPO_CONNECTOR
+        connectorRef: NodeGoat_Harness_Hosted
         repoName: https://github.com/OWASP/NodeGoat
         build: <+input>
   stages:
     - stage:
         name: njsscan
-        identifier: njsscan
+        identifier: checkmarxone
         type: CI
         spec:
           cloneCodebase: true
@@ -317,7 +327,7 @@ pipeline:
                   name: Plugin_1
                   identifier: Plugin_1
                   spec:
-                    connectorRef: dbothwelldocker
+                    connectorRef: MY_DOCKERHUB_CONNECTOR
                     image: plugins/github-actions
                     privileged: true
                     settings:
@@ -326,8 +336,8 @@ pipeline:
                         args: . --sarif --output result.sarif || true
               - step:
                   type: CustomIngest
-                  name: CustomIngest_1
-                  identifier: CustomIngest_1
+                  name: CustomIngest_plugin
+                  identifier: CustomIngest_2
                   spec:
                     mode: ingestion
                     config: default
@@ -338,16 +348,21 @@ pipeline:
                     advanced:
                       log:
                         level: info
+                    privileged: true
                     ingestion:
                       file: /harness/result.sarif
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
           sharedPaths:
             - /shared/customer_artifacts/
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: MY_K8S_CONNECTOR
+              namespace: harness-qa-delegate
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+  identifier: njsscan_dbothwell_v3
+  name: njsscan dbothwell v3
 
 
 ```
