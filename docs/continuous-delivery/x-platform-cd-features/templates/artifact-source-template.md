@@ -299,4 +299,7 @@ You can see the artifact source template in the `artifacts` section:
 </Tabs2>
 ```
 
+## Reconcile changes from Artifact Source Template to consuming Artifact
+Artifact Template is supported with reconciliation . When there is a change in the source Artifact Template consumed by the artifact in the Service configuration , the consuming Service does not get the changes automatically . It is possible to reconcile the changes on demand using the Reconcile action available as part of the Service.
+Once the reconcile action is initiated , the changes are made available to the Service
 
