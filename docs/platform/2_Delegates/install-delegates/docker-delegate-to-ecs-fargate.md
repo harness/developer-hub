@@ -149,10 +149,9 @@ For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/inst
 
 ### Create the task definition
 
-Use the following steps to create a task definition. For information about task definitions<Harness account Id
-                                                                                                 >in Amazon ECS, go to [Task Definition Template](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-definition-template.html).
+Use the following steps to create a task definition. For information about task definitions<Harness account Id in Amazon ECS, go to [Task Definition Template](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-definition-template.html).
 
-1. Copy the following task `spec` into a file. Save the file as task-spec.json.
+1. Copy the following task `spec` into a file. Save the file as `task-spec.json`.
 
    ```
    {
