@@ -68,7 +68,7 @@ To add IP allowlist in Harness:
   
 ## Test IP
 
-1. Enter an IP address or a block of IP addresses to check if they are allowed.
+1. Enter an IP address to check if it falls within the IP address range configured in the previous step.
 2. Select **Test**.
 3. Select **Finish**.
 
@@ -87,6 +87,11 @@ The IP addresses configured in the allowlist now appear in the **IP Allowlist**.
    ![](./static/allowlist-check-ip.png)
 
    Enter an IP address or a range of IP addresses and select **Check**.
+   
+   
+   :::important
+   Make sure that your current IP address is allowlisted in all enabled configurations, otherwise, they may get locked out.
+   :::
 
 ## Harness Manager
 
