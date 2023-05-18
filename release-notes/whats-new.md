@@ -17,10 +17,38 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
  
- 
-## Latest - May 10, 2023, STO Core version 1.50.3
+## May 22, 2023, version 793xx
 
-### Security Testing Orchestration 
+### Harness Delegate
+
+- A new [`listDelegates` API](https://app.harness.io/gateway/ng/api/delegate-setup/listDelegates/accountIdentifier=string&orgIdentifier=string&projectIdentifier=string') enables you to list and filter delegates in your project, organization, or account. (PL-37981)
+
+   You can use the body parameters to filter your delegate list:
+
+   ```json
+   {
+   "filterType":"Delegate", //This field is mandatory.
+   
+   "delegateInstanceFilter": "EXPIRED/AVAILABLE",
+
+   "status": "CONNECTED/DISCONNECTED",
+   
+   "delegateType": "KUBERNETES/DOCKER/HELM_DELEGATE/SHELL_SCRIPT/ECS",
+   
+   "delegateName": "<>",
+   
+   "description": "<>",
+   
+   "delegateTags": "[]"
+   }
+   ```
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 10, 2023, STO Core version 1.50.3
+
+##### Security Testing Orchestration 
 
 * You can now ingest ZAP scan results from both JSON and XML reports. For information about the ZAP XML report format, go to [Traditional XML Report](https://www.zaproxy.org/docs/desktop/addons/report-generation/report-traditional-xml/) in the ZAP documentation. (STO-5868)
 
@@ -40,10 +68,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
    ![](./static/sto-exemption-reason-pulldown.gif)
 
-
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 04, 2023, version 79214
 
