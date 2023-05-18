@@ -70,6 +70,7 @@ The following example illustrates the required format for your data:
 The basic schema includes a `“meta”` section, which requires the following: 
 
 * `“key”`
+
    The name of the attribute used to deduplicate multiple occurrences of an issue. In the example data file above, `"key"` = `"issueName"`. Thus if the data includes multiple occurrences of an issue with the same `"issueName"`, the pipeline combines these occurrences into one issue. The resulting issue includes a list of all occurrences and the data for each individual occurrence.
    
    The key used for deduplication must be a Harness field. Do not try to deduplicate based on non-Harness fields. 
