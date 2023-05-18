@@ -38,7 +38,7 @@ This topic explains how to set up IP allowlist in Harness.
   - Calls corresponding to SCIM.
   - Calls corresponding to Identity providers.
   - API calls corresponding to Harness admin.
-- Harness uses an in-memory cache. All caches expire after 15 minutes. Every update takes 15 minutes because there are no manual cache updates.
+- Harness uses an in-memory cache. All caches expire after 5 minutes. Every update takes 5 minutes because there are no manual cache updates.
 
 ## Add IP addresses in the allowlist
 
