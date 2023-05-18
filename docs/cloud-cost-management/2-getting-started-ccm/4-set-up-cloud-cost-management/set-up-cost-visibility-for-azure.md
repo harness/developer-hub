@@ -7,7 +7,7 @@ helpdocs_category_id: 7vy86n7cws
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+# Set up CCM for Azure
 
 ```mdx-code-block
 import select_azure from './static/set-up-cost-visibility-for-azure-02.png'

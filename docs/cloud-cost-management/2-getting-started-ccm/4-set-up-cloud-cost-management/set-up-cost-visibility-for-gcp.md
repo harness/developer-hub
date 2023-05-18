@@ -7,7 +7,7 @@ helpdocs_category_id: 7vy86n7cws
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+# Set up CCM for GCP
 
 ```mdx-code-block
 import select_gcp from './static/set-up-cost-visibility-for-gcp-01.png'

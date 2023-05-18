@@ -1,6 +1,6 @@
 ---
 title: Azure VM recommendations
-description: Optimize the utilization of your EC2 instances using Harness CCM recommendations.
+description: Optimize the utilization of your Azure VMs using Harness CCM recommendations.
 # sidebar_position: 2
 ---
 
@@ -25,12 +25,15 @@ Using recommendations without proper assessment could result in unexpected chang
 ## Before you begin
 
 * Connect your Azure cloud account in Harness and set up CCM for cost management. For more information, go to [Set up cost visibility for Azure](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
-* To obtain Azure VM recommendations, configure a Harness Azure CCM connector with the Inventory Management feature enabled.
+* To obtain Azure VM recommendations, configure a Harness Azure CCM connector with the Cost Visibility and the Inventory Management features enabled. For more information, go to [Connect CCM to your Azure account](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md#connect-ccm-to-your-azure-account).
+  
+:::note
+Enabling the **Visibility** feature allows fetching recommendations from the Azure Advisor. The **Inventory Management** feature allows fetching the CPU utilization data and display the respective recommendations. If the Inventory Management feature is not enabled, the graph and table may show a null state.
+:::
 
 ## How are Azure recommendations computed?
 
 The recommendations are computed by analyzing the past CPU utilization. Harness CCM leverages the Azure Advisor recommendations. CCM uses the Azure APIs to fetch data from the Azure account.
-
 
 :::note
 Azure Advisor automatically runs in the background to find newly created resources. It can take up to 24 hours to provide recommendations on those resources.
@@ -44,7 +47,7 @@ You must configure Azure Advisor to receive recommendations for cost optimizatio
 
 Harness CCM provides two types of recommendations to optimize your VMs:
 
-* **Resizing**: In this type of recommendation, CCM recommends resizing your VM based on usage. For information about the different types of Azure VMs, go to [Available instance types](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes). 
+* **VM Rightsizing**: In this type of recommendation, CCM recommends resizing your VM based on usage. For information about the different types of Azure VMs, go to [Available instance types](https://learn.microsoft.com/en-us/azure/virtual-machines/sizes). 
 
 * **Shutdown**: In this type of recommendation, the instance is terminated or shutdown if not in use for a long time.  
   
