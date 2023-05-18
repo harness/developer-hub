@@ -112,7 +112,7 @@ The following versions are tested and supported for Kubernetes Canary, Rolling, 
 - 1.23.0
 - 1.24.3
 
-For details on other tools and versions included in Harness, see [Delegate-required SDKs](../platform/2_Delegates/delegate-reference/delegate-required-sdks.md).
+For details on other tools and versions included in Harness, see [Delegate-required SDKs](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-required-sdks).
 
 Guidelines:
 
@@ -531,7 +531,7 @@ Harness supports the following infrastructure provisioning tools:
 
 ### Terraform version support
 
-Harness does not include Terraform on the Harness Delegate. You must install Terraform on the Delegate when using Terraform in Harness. For more information, go to [Terraform How-tos](../continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos).
+Harness does not include Terraform on the Harness Delegate. You must install Terraform on the Delegate when using Terraform in Harness. For more information, go to [Terraform How-tos](/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos).
 
 Harness supports the following Terraform versions:
 
