@@ -20,7 +20,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  
 ## Latest - May 17, 2023, STO Core version 1.53.0
 
-* * Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
+* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
 
   ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
 
