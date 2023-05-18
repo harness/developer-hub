@@ -40,7 +40,7 @@ This release does not include early access features.
 
 #### Feature Flags UI
 
-* The toggle for turning Git Sync on and off was causing the branch settings menu to disappear, and display the **Set Up Git Sync** button incorrectly. This issue has been fixed. (FFM-7786)
+* The toggle for turning Git Sync on and off was causing the branch settings menu to disappear and display the **Set Up Git Sync** button incorrectly. This issue has been fixed. (FFM-7786)
 * The Target and Target Group pages reported successful save and edit operations before the operations completed. This issue has been fixed. (FFM-7609)
 
 
