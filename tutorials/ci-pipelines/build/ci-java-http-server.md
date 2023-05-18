@@ -226,7 +226,7 @@ Add a step to run tests against the JHTTP app code. This portion of the tutorial
    * **Build Tool:** Select **Maven**.
    * **Maven setup:** Select **No**.
    * **Build Arguments:** Enter `test`.
-   * **Test Report Paths:** Select **Add** and enter `**/*.xml`.
+   * **Test Report Paths:** Select **Add** and enter `target/surefire-reports/*.xml`.
    * **Post-Command:** Enter `mvn package -DskipTests`.
    * **Packages:** Enter `io.harness`.
    * **Container Registry:** Select your Docker connector.
@@ -271,7 +271,7 @@ In the YAML editor, replace the `Echo Welcome Message` run step block with the f
                       type: JUnit
                       spec:
                         paths:
-                          - "**/*.xml"
+                          - "target/surefire-reports/*.xml"
                   timeout: 30m
 ```
 
@@ -552,7 +552,7 @@ pipeline:
                       type: JUnit
                       spec:
                         paths:
-                          - "**/*.xml"
+                          - "target/surefire-reports/*.xml"
                   timeout: 30m
               - step:
                   type: BuildAndPushDockerRegistry
