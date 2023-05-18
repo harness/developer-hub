@@ -37,7 +37,6 @@ You might want to set up a Run step to generate your scans automatically wheneve
 
 The following example illustrates the required format for your data:
 
-
 ```yaml
 {  
    "meta":{  
@@ -45,11 +44,11 @@ The following example illustrates the required format for your data:
          "issueName",  
          "fileName"  
       ],  
-      "subproduct":"MyCustomCodeScanner"  
+      "subproduct":"MyCustomScanner"  
    },  
    "issues":[  
       {  
-         "scanTool":"MySastTool",  
+         "subproduct":"MyCustomScanTool",  
          "issueName":"Cross Site Scripting",  
          "issueDescription":"Lorem ipsum...",  
          "fileName":"homepage-jobs.php",  
@@ -77,7 +76,7 @@ The basic schema includes a `“meta”` section, which requires the following:
 
 * `“subproduct”` 
 
-   The product name of the external scanner. 
+   The scan tool name to apply to the overall issue. 
    
 The full JSON takes the form:
 
@@ -100,7 +99,7 @@ The full JSON takes the form:
 | **Name** | **Format** | **Description** |
 | `issueName` | String | Name of vulnerability, license issue, compliance issue, etc. |
 | `issueDescription` | String (long) | Description of vulnerability, license issue, compliance issue, etc. |
-| `subProduct` | String | The name of the scanning tool (e.g. “MyCustomCodeScanner”) |
+| `subProduct` | String | The scan tool name to apply to the individual occurrence of the issue. |
 | `severity` | Float | CVSS 3.0 score (a number from 1.0-10.0) |
 
 #### **Recommended fields**
