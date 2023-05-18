@@ -1,6 +1,6 @@
 ---
 title: Add an AWS connector
-description: Add a Harness AWS connector.
+description: Connect Harness to your AWS accounts and services.
 sidebar_position: 2
 helpdocs_topic_id: 98ezfwox9u
 helpdocs_category_id: o1zhrfo8n5

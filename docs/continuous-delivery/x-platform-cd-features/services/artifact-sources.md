@@ -265,7 +265,7 @@ resource "harness_platform_service" "example" {
 
 ```mdx-code-block
   </TabItem5>
-  <TabItem5 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem5 value="Harness Manager" label="Harness Manager">
 ```
 
 To add an artifact from a Docker registry, do the following:
@@ -458,7 +458,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem6>
-  <TabItem6 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem6 value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/).
@@ -660,7 +660,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem13>
-  <TabItem13 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem13 value="Harness Manager" label="Harness Manager">
 ```
 
 
@@ -858,7 +858,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem7>
-  <TabItem7 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem7 value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to Google Artifact Registry using a Harness GCP Connector. 
@@ -1034,7 +1034,7 @@ Create a service with an artifact source that uses the connector using the [Crea
 
 ```mdx-code-block
   </TabItem15>
-  <TabItem15 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem15 value="Harness Manager" label="Harness Manager">
 ```
 
 <details>
@@ -1271,7 +1271,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem8>
-  <TabItem8 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem8 value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to ECR using a Harness AWS Connector. For details on all the ECR requirements for the AWS Connector, see [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector).
@@ -1576,7 +1576,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem9>
-  <TabItem9 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem9 value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure Cloud Connector](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector).
@@ -1899,7 +1899,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem10>
-  <TabItem10 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem10 value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
@@ -2108,7 +2108,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem11>
-  <TabItem11 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem11 value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, go to [Artifactory Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
@@ -2278,7 +2278,7 @@ The Terraform Provider Bamboo connector resource is coming soon.
 
 ```mdx-code-block
   </TabItem14>
-  <TabItem14 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem14 value="Harness Manager" label="Harness Manager">
 ```
 
 To add a plan from Bamboo, do the following:
@@ -2539,7 +2539,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem12>
-  <TabItem12 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem12 value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to Github using a Harness Github Connector, username, and Personal Access Token (PAT).
