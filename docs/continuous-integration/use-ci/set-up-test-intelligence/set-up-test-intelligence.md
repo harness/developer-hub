@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. To learn more about how Test Intelligence works, go to [Get started with Test Intelligence](../../ci-quickstarts/test-intelligence-concepts.md).
 
-You must add the **Run Tests** step to a pipeline's **Build** stage to enable Test Intelligence on that pipeline. The **Run Tests** step executes one or more test on a container image. The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to generate an initial call graph, which sets the baseline for intelligent test selection in future builds.
+You must add the **Run Tests** step to a pipeline's **Build** stage to enable Test Intelligence on that pipeline. The **Run Tests** step executes one or more tests on a container image. The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to generate an initial call graph, which sets the baseline for intelligent test selection in future builds.
 
 You can also [enable test splitting for Test Intelligence](#enable-parallelism-test-splitting-for-test-intelligence) to further optimize your tests.
 
