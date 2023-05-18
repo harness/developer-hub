@@ -1,4 +1,4 @@
-The following table lists the major support features for Harness Self-Managed Enterprise Edition offerings.
+The following table lists the major supported features for Harness Self-Managed Enterprise Edition offerings.
 
 | Solution                                                          | Supported Platform           | Connected | HA | Monitoring          | Disaster Recovery | Auto Restart | Features Under Controlled Release |
 | ----------------------------------------------------------------- | ---------------------------- | ----------- | ---------------- | ------------------- | ----------------- | ------------ | --------------------------------- |
