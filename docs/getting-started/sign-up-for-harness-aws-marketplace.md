@@ -14,7 +14,9 @@ Follow these steps to purchase Harness products through the AWS Marketplace:
     :::info note
     If you would like to work with the Harness team to get custom pricing options for Harness on AWS Marketplace on a contract basis, please complete [this form](https://www.harness.io/contact-sales/get-pricing).
     :::
-6. Select **Click here to set up your account**, and then follow the prompts to set up your account. 
+6. Choose your contract options, and then select **Create contract**.
+7. Select **Pay now** to purchase the contract for the module you selected.  
+8. Select **Click here to set up your account**, and then follow the prompts to set up your account. 
 
     A Harness Customer Success Manager will contact you and provision a license for you. 
 
