@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-05-10T10:00
+date: 2023-05-17T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,6 +19,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  
  
 ## Latest - May 17, 2023, STO Core version 1.53.0
+
+### Security Testing Orchestration
 
 * Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
 
