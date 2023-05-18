@@ -16,3 +16,5 @@ Follow these steps to purchase Harness products through the AWS Marketplace:
     :::
 6. Select **Click here to set up your account**, and then follow the prompts to set up your account. 
 
+    A Harness Customer Success Manager will contact you and provision a license for you. 
+
