@@ -24,22 +24,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * Reports can now be downloaded. (CHAOS-1615)
 
-* Chaos users can now sign up for a free plan. (CHAOS-1156)
-
-* Chaos now supports dual connectivity for infrastructure and subscribers. (CHAOS-1117)
-    * Chaos supports both websocket and polling modes.
-
-* Introduction of Chaos usage dashboards. (CHAOS-719)
+    * You can now download reports for experiments as well as associated experiment runs. Reports include details about target chaos infrastructure, and execution details for experiment runs.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-* Introduction of GameDays in HCE Module. (CHAOS-643)
-
-    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday).
-    * This feature is currently behind a feature flag named `CHAOS_GAMEDAY_ENABLED`. Contact Harness Support to enable the feature.
-
+* Introduction of Chaos dashboards. (CHAOS-719)
+    * Two new dashboards include number of experiments and number of infrastructures by user, as well as statistics of the chaos faults that were executed.
+    * This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
 
 ```mdx-code-block
   </TabItem>
@@ -47,11 +40,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 
 * Corrected the UI text for the Inactive and Pending states for Linux infrastructure states. (CHAOS-1633)
-* Improved the UI text in the case of empty search results for Kubernetes or Linux infrastructures. (CHAOS-1629)
-* Fixed an issue where the search bar was not displaying when there were no search results for Linux infrastructure. (CHAOS-1621)
-* Fixed an issue in the UI where there was not a meaningful message displayed when a Linux infrastructure was in the process of deploying. Now there is a PENDING label displayed until the infrastructure is deployed. (CHAOS-1620)
+
+* Improved the UI text when there are empty search results for Kubernetes or Linux infrastructures. (CHAOS-1629)
+
+* Corrected the UI text for Linux infrastructure screens. (CHAOS-1619) 
+
 * There was an issue where the total number of probes came to 0 when an experiment was running in a GameDay. This has been fixed. (CHAOS-1618)
-* There was in issue in XXX UI where the side drawer was displaying 0 faults in the case of more than one fault in serial or parallel. This issue has been fixed. (CHAOS-1617)
+
 * Fixed a text wrapping issue on the confirmation dialog for deleting a chaos infrastructure. (CHAOS-1578)
 
 ```mdx-code-block
