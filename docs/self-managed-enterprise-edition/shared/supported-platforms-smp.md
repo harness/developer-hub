@@ -21,7 +21,7 @@ In cases where you encounter a problem related to an incompatibility issue, you 
 
 ### Deployment infrastructure
 
-#### Compute infrastructure 
+#### Infrastructure 
 * Required module-specific infrastructure:
 
    | **Modules** | **Pods** | **CPU** | **Memory (GB)** | **Storage (GB)** |
