@@ -1,5 +1,6 @@
 ---
 title: Manage flags using Git Experience
+sidebar_label: Manage flags with Git
 description: Using Harness Git Experience with Feature Flags allows you to manage your Flags from a .yaml file in your Git repository.
 tags: 
    - git experience
@@ -236,11 +237,11 @@ If you want to always commit to the same branch, and not be prompted for commit 
 
 ## Turn off syncing with Git
 
+When you turn off syncing with Git, any changes you make to flags in Harness are not committed to the flags YAML file in your Git repository. Any changes to that file in your repository are not synced with Harness until you [turn on syncing](#turn-on-syncing-with-git) again.
+
 To turn off syncing with Git:
 
-1. In Harness, go to the project you enabled Git Experience for.
-
-1. Select **Feature Flags**.
+1. In Harness, go to the project you enabled Git Experience for, and then select **Feature Flags**.
 
 1. In the top bar navigation, next to the Git repository, select the branch, and then toggle **Sync with Git** off. 
 
@@ -252,7 +253,15 @@ To turn off syncing with Git:
   <img src={git_8} alt="A screenshot of the Git sync toggle turned off." height="500" width="300" />
   ``` 
 
-## See also
+## Reset the Git connection
 
-For more information about using Git Experience, go to [Git Experience How-tos](/docs/platform/Git-Experience/git-experience-overview).
+This procedure removes the connection to the Git repository that you configured when you [set up Git Experience](#set-up-git-experience).
+
+To reset Git settings:
+
+1. In Harness, go to the project you enabled Git Experience for, and then select **Feature Flags**.
+
+1. In the top bar navigation, next to the Git repository, select the branch, and then select **Reset Git Settings**. 
+
+  ![Reset Git Settings button circled](./static/gitex-reset-button.png)
 

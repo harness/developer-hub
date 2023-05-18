@@ -60,7 +60,7 @@ With Input Sets and Overlays, you can use the same pipeline for multiple scenari
 
 A CI stage is a subset of a pipeline that contains one major segment of the CI workflow. All stages have stage settings and one or more steps.
 
-To [add a stage to a pipeline](/docs/platform/pipelines/add-a-stage/), select **Add Stage** in the Pipeline Studio. The most essential stage for CI pipelines is the **Build** stage. A **Build** stage often includes [steps](#steps) for building, pushing, and testing code, among other steps.
+To [add a stage to a pipeline](/docs/platform/pipelines/add-a-stage/), select **Add Stage** in the Pipeline Studio. The most essential stage for CI pipelines is the **Build** stage, which includes [steps](#steps) that test code, build and push images, and upload artifacts, among other steps.
 
 [CI Build stage settings](./set-up-build-infrastructure/ci-stage-settings.md) include [codebase configuration](#codebases), [build infrastructure](#build-infrastructure), [shared paths](#shared-paths), and other [advanced settings](#advanced-stage-and-step-settings).
 

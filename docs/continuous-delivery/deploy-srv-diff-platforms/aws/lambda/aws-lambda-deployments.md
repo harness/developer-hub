@@ -171,7 +171,7 @@ When you create a Harness service, select **AWS Lambda** to define a service tha
 
 ![picture 1](./static/9cf86f80dc3a87a555996390c68b8b6a99bc7d6d7400fcbf9b21f2e1f0b44b9f.png)
 
-The service contains the function artifact in **Artifacts** and the function definition in **Manifests**.
+The service contains the function artifact in **Artifacts** and the function definition in **AWS Lambda Function Definition**.
 
 ### Artifacts
 
@@ -179,14 +179,14 @@ You can deploy Lambda functions packaged as ZIP files in S3 Buckets or as contai
 
 ![picture 2](./static/b2fe3a2941e8cdad79c802494c33c0b9e467e294d26e851512f38e78c837eee6.png)
 
-The artifact defined in the Harness service is the equivalent to the `Code:ImageUri` in the definition. You omit the `Code:ImageUri` in the definition you add to the service in **Manifests** and Harness adds it at runtime using the artifact you added in the service. This allows you to specify the image more dynamically.
+The artifact defined in the Harness service is the equivalent to the `Code:ImageUri` in the definition. You omit the `Code:ImageUri` in the definition you add to the service in **AWS Lambda Function Definition** and Harness adds it at runtime using the artifact you added in the service. This allows you to specify the image more dynamically.
 
 If you do use the `Code:ImageUri` in the definition, Harness ignores it and instead uses the artifact in **Artifacts**.
 
 
 ### Function definition
 
-In **Manifests**, you specify your function definition.
+In **AWS Lambda Function Definition**, you specify your function definition.
 
 Harness uses the AWS Lambda [Create Function API](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html) to create a new Lambda function in the specified AWS account and region. 
 

@@ -72,30 +72,25 @@ You can use Runtime Inputs for the Service in a CD stage's Service settings.
 
 ![](./static/runtime-inputs-06.png)
 
-### Using runtime inputs during execution
+#### Using allowed values, default values, and multiple selection in runtime inputs
 
-:::info
+You can set allowed values and a default value for a runtime input. The default value should be present in the list of allowed values. 
 
-Currently, this feature is behind the feature flag `NG_EXECUTION_INPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+Allowed values are specified for an input using the `allowedValues()` method. For example, `<+input>.allowedValues(\'bengaluru\',\'newyork\')`.
 
-:::
+A default value can also be specified for an input, using the `default()` method. For example, `<+input>.default(\'bengaluru\')`.
 
-You can add runtime inputs to a pipeline during a step or stage execution. For example, for a custom stage with a Shell Script step with a runtime input field, you will be prompted to enter the input during the execution just before starting the Shell Script step.
+Both allowed values and defaults can be specified for the same input set. In this case, the default value must be present in the list of allowed values. For example, `<+input>.default(\'london\').allowedValues(\'bengaluru\',\'newyork\',\'london\')`. 
 
-If a custom stage is setup with runtime input, you can enter a shell script when prompted by Harness during execution. 
+Commas are supported in both allowed and default values. A string with a comma must be wrapped within `\'   \'`. 
 
-If a Harness Approval step is setup with runtime input, you can specify the Harness groups that will approve that step during pipeline execution.
+For example, `<+input>.default(\'london,uk\').allowedValues(\'bengaluru,india\',\'newyork,usa\',\'london,uk\')`.
 
-You can select the following runtime input types for a step or stage during execution:  
+Multiple selection is allowed for runtime inputs defined for pipelines, stages, and shell script variables. You must specify the allowed values in the input as mentioned in the above examples. 
 
-* Allowed values (`allowedValues()`)  
-* Default value (optional) (`default()`)
-* Request input value when step/stage is being executed (`executionInput()`)
+The multiple selection functionality is currently behind the feature flag, `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-You can add execution inputs in this format: `<+input>.default(DefaultInputValue).executionInput()`.  
-For example:  
-* `<+input>.allowedValues(value1,value2).executionInput()` - During execution, you will be prompted to enter `value 1` and `value 2` inputs. Only `value1` and `value2` values will be allowed as valid inputs.
-* `<+input>.allowedValues(value1,value2).default(value1).executionInput()` - During execution, you will be prompted to enter `value 1` and `value 2` inputs. Only `value1` and `value2` values will be allowed as valid inputs. `value1` is the default input in this example, so it appears as the default input in the prompt.  
+![](./static/runtime-inputs-11.png)
 
 You can also create default values in templates and later override them during the pipeline execution. 
 
@@ -120,28 +115,56 @@ pipeline:
               - name: var1
                 type: String
                 default: ABC
-                value: <+input>.default(ABC)
+                value: <+input>.default(ABC).executionInput()
  ```
+
+### Supplying runtime inputs during execution
+
+:::info
+
+Currently, this feature is behind the feature flag `NG_EXECUTION_INPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+:::
 
 #### Limitations and requirements
 
 The following limitations and requirements apply to this feature:
 
-- A Harness user must have the **Pipeline Execute** permission to be able to submit runtime input during execution.
+- A Harness user must have the **Pipeline Execute** permission to be able to submit runtime inputs during execution.
 
-#### Using allowed values and default values in runtime inputs
+#### Configure runtime inputs
 
-You can set allowed values and a default value for a runtime input. The default value should be present in the list of allowed values. 
+You can configure runtime inputs to a pipeline to be supplied during a step or stage execution. For example, you can configure a custom stage with a Shell Script step with a runtime input field with this property, you will be prompted to enter the input during the execution just before starting the Shell Script step.
 
-Multiple selection is allowed for runtime inputs defined for pipelines, stages, and shell script variables. 
+If a custom stage is setup with runtime input, you can enter a shell script when prompted by Harness during execution. 
 
-The multiple selection functionality is currently behind the feature flag, `PIE_MULTISELECT_AND_COMMA_IN_ALLOWED_VALUES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+If a Harness Approval step is setup with runtime input, you can specify the Harness groups that will approve that step during pipeline execution.
 
-![](./static/runtime-inputs-11.png)
+To configure runtime inputs in the Harness Pipeline Studio:
 
-Commas are supported in both allowed and default values. A string with a comma must be wrapped within `\'   \'`. 
+ 1. Select **Runtime input** for an input field.
+ 2. Select the settings icon next to the input field. 
+ 3. In the **Configure Options** window, enable the **Request input value when the Stage/Step is being executed** option. 
+ 
+ ![](./static/runtime-inputs-07.png)
+ 
+ 4. Select **Submit**.
 
-For example, `<+input>.default(\'london,uk\').allowedValues(\'bengaluru,india\',\'newyork,usa\',\'london,uk\')`.
+You can configure the same in YAML by adding the `executionInput()` method to an input field. For example, `<+input>.executionInput()`. 
+
+This method can be used in combination with allowed values and default values. For example:  
+
+* `<+input>.allowedValues(value1,value2).executionInput()` - During execution, you will be prompted to enter `value 1` and `value 2` inputs. Only `value1` and `value2` values will be allowed as valid inputs.
+* `<+input>.allowedValues(value1,value2).default(value1).executionInput()` - During execution, you will be prompted to enter `value 1` and `value 2` inputs. Only `value1` and `value2` values will be allowed as valid inputs. `value1` is the default input in this example, so it appears as the default input in the prompt.  
+
+If you're using the default method along with the execution input method, when the execution time input times out, the step fails instead of automatically applying the default. 
+
+To automatically use the default value during such timeouts: 
+* In **Failure Strategy** > **On failure of type**, select the **Execution-time Inputs Timeout Errors** error. 
+* In **Perform Action**, select **Proceed with Default Values**.
+
+![](static/execution-time-error-configuration.png)
+
 
 #### Using runtime input during execution with a shell script
 
