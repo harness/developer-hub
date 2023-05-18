@@ -1,7 +1,7 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 description: Create a pipeline that uses a Kubernetes cluster build infrastructure.
-slug: /ci-pipelines/build/kubernetes-build-farm
+slug: /ci-pipelines/kubernetes-build-farm
 keywords: [Kubernetes, Continuous Integration, CI Tutorial]
 title: Build on a Kubernetes cluster
 ---
@@ -24,7 +24,7 @@ You'll learn how to create a CI pipeline that does the following:
 
 The following diagram shows the architecture of a kubernetes cluster build infrastructure. You interact with the Harness Platform through your browser. The Harness Delegate, which is installed in your Kubernetes cluster, manages communication between the Harness Platform and the Kubernetes pod where the pipeline's build farm is running. While the pipeline runs, the build farm communicates with your codebase, such as GitHub, and container registry, such as Docker Hub.
 
-![](../static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-13.png)
+![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-13.png)
 
 You must install the Harness Delegate in the same cluster you use for the build farm. The Delegate creates the namespace `harness-delegate`, and you use that namespace for both the Delegate and build farm. You can change the namespace name if you like.
 
@@ -111,7 +111,7 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
    * **Connection Type:** Select **HTTP**.
    * **GitHub Repository URL:** Enter the URL to your fork of the tutorial repo, such as `https://github.com/keen-software/goHelloWorldServer.git`.
 
-   ![](../static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-15.png)
+   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-15.png)
 
 5. Configure the **Credentials** as follows, and then select **Continue**:
 
@@ -119,7 +119,7 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
    * **Personal Access Token:** Create a secret for the personal access token you created earlier. Harness secrets are safe; they're stored in the [Harness Secret Manager](/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview). You can also use your own Secret Manager with Harness.
    * **Enable API access:** Select this option and select the same personal access token secret.
 
-   ![](../static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-16.png)
+   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-16.png)
 
 6. For **Select Connectivity Mode**, select **Connect through a Harness Delegate**, and then select **Continue**.
 
@@ -129,7 +129,7 @@ Next, you'll create a _connector_ that allows Harness to connect to your Git cod
 
    :::
 
-   ![](../static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-17.png)
+   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-17.png)
 
 7. On **Delegates Setup**, select **Only use Delegates with all of the following tags**, and then select **Install new Delegate**.
 8. Select **Kubernetes Manifest** and follow the instructions given on the **New Delegate** page to install the Delegate on a pod in your Kubernetes cluster.
@@ -170,7 +170,7 @@ For most CI pipelines, Build stages do most of the heavy lifting. Build stages a
 2. For the **Stage Name**, enter `Build Test and Push`.
 3. For **Connector**, select the GitHub connector you created earlier in [Prepare the codebase](#prepare-the-codebase).
 
-   ![](../static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-22.png)
+   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-22.png)
 
 4. Select **Set Up Stage**. The Build stage is added to the pipeline.
 
@@ -238,7 +238,7 @@ To run unit tests in a CI pipeline, you can use either a [Run step](/docs/contin
 
 The tag `<+pipeline.sequenceId>` is a built-in Harness variable that represents the Build ID number, for example `9`. The pipeline uses the Build ID to tag the image that it pushes in the first stage and pulls in the second stage of this tutorial pipeline. You will see the Build ID when you run the pipeline. You will also use this variable to identify the image location when you set up the dependency (as a **Background** step) in the next stage.
 
-![](../static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-25.png)
+![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-25.png)
 
 :::
 
@@ -251,7 +251,7 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
 1. Select **Add Stage** (in the upper portion of the Pipeline Studio), and select **Build**.
 2. Enter `Run integration test` for the **Name**, disable **Clone Codebase**, and then select **Set Up Stage**.
 
-   ![](../static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-26.png)
+   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-26.png)
 
 3. In the **Infrastructure** tab, select **Propagate from an existing stage**, and select the first **Build** stage in your pipeline. This configures the pipeline to use the same Kubernetes cluster and namespace for both stages.
 4. Select **Continue**.
@@ -291,11 +291,11 @@ The first stage in this pipeline builds, tests, containerizes, and then pushes a
 
 On the [Build details page](/docs/continuous-integration/use-ci/viewing-builds) you can observe the pipeline while it runs. Select a stage to examine the steps in that stage. Select a step to view the step's logs. Select the **Tests** tab to [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests).
 
-![](../static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-27.png)
+![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-27.png)
 
 You can switch to **Console view** for a focused view of the logs.
 
-![](../static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-28.png)
+![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-28.png)
 
 For this pipeline, note the following log details:
 
@@ -314,7 +314,7 @@ For this pipeline, note the following log details:
 
 * You can find the pushed image and the associated tag in your Docker Hub repo.
 
-   ![](../static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-29.png)
+   ![](./static/ci-tutorial-kubernetes-cluster-build-infra/ci-pipeline-quickstart-29.png)
 
 ## Continue your Continuous Integration journey
 

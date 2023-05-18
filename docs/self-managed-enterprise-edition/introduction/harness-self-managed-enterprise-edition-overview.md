@@ -1,5 +1,6 @@
 ---
-title: Overview
+title: Harness Self-Managed Enterprise Edition Overview
+sidebar_label: Overview
 description: Learn about the on-premises Harness Self-Managed Enterprise Edition.
 # sidebar_position: 10
 helpdocs_topic_id: tb4e039h8x

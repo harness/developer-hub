@@ -233,8 +233,6 @@ To update user attributes:
 :::note
 Only the five fields listed at the top of this section are synced to Harness users. You can update values in other fields, but those values are saved for this user in Okta only and are not updated in Harness.
 
-Enable the feature flag UPDATE_EMAILS_VIA_SCIM to reflect changes to the email address in the SCIM provider.
-
 The Display name in Okta is displayed as the user name in Harness. 
 
 :::
