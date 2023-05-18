@@ -16,8 +16,8 @@ Harness captures delegate agent metrics for delegates shipped on immutable image
 | `task_completed` | The number of tasks completed. |
 | `task_failed` | The number of failed tasks. |
 | `task_rejected` | The number of tasks rejected because of a high load on the delegate. |
-| `delegate_connected` | A value of 1 or 0, where value 1 means delegate is connected   |
-| `resource_consumption_above_threshold` | Delegate cpu/memory reached beyound a threshold (defaults to 80%). This can be configured by providing `DELEGATE_RESOURCE_THRESHOLD` as env variable in delegate yaml |
+| `delegate_connected` | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
+| `resource_consumption_above_threshold` | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. |
 
 This topic includes example YAML files you can use to create application manifests for your Prometheus and Grafana configurations.
 
