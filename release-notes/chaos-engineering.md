@@ -30,7 +30,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   </TabItem>
   <TabItem value="Early access">
 ```
-* Introduction of Chaos dashboards. (CHAOS-719)
+* Introduction of [Chaos dashboards](/docs/chaos-engineering/configure-chaos-experiments/experiments/dashboards). (CHAOS-719)
     * Two new dashboards include number of experiments and number of infrastructures by user, as well as statistics of the chaos faults that were executed.
     * This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
 
@@ -45,7 +45,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * Corrected the UI text for Linux infrastructure screens. (CHAOS-1619) 
 
-* There was an issue where the total number of probes came to 0 when an experiment was running in a GameDay. This has been fixed. (CHAOS-1618)
+* There was an issue where the total number of probes incorrectly came to 0 when an experiment was running in a GameDay. This has been fixed. (CHAOS-1618)
 
 * Fixed a text wrapping issue on the confirmation dialog for deleting a chaos infrastructure. (CHAOS-1578)
 
