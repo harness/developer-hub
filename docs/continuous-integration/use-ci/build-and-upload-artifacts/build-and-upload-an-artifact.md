@@ -148,12 +148,12 @@ As a more specific example, if you have a [Background step](../manage-dependenci
 
 You can use your CI pipeline to test a Dockerfile used in your codebase and verify that the resulting image is correct before you push it to your Docker repository.
 
-1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
-2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
-3. Click **Add Variable** and enter the following:
+1. In your CI pipeline, go to the **Variables** tab on the right of the screen.
+2. Under the **Build** stage that has the **Build and Push** step add a new stage variable.
 	1. Name: **PLUGIN\_NO\_PUSH**
 	2. Type: **String**
 	3. Value: **true**
+3. Click **Apply Changes** at the top of the screen.
 4. Save and run the pipeline.
 
 </details>
