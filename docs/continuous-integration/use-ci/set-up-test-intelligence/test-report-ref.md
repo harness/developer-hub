@@ -141,6 +141,29 @@ If your test tool doesn't automatically produce test results in JUnit XML format
 * [NUnit to JUnit](https://github.com/nunit/nunit-transforms/tree/master/nunit3-junit)
 * [.NET trx2JUnit](https://github.com/gfoidl/trx2junit)
 
+```yaml
+              - step:
+                  type: Run
+                  identifier: test
+                  name: Test
+                  spec:
+                    shell: Powershell
+                    command: |-
+                      cd dotnet-agent/TestProject1
+                      wget -UseBasicParsing https://dot.net/v1/dotnet-install.ps1 -o dotnet-install.ps1
+                      .\dotnet-install.ps1
+                      dotnet build
+
+                      wget https://raw.githubusercontent.com/nunit/nunit-transforms/master/nunit3-junit/nunit3-junit.xslt -o nunit3-junit.xslt
+
+                      "C:/Program Files (x86)/NUnit.org/nunit-console/nunit3-console.exe" dotnet-agent/TestProject1/bin/Debug/net48/TestProject1.dll --result="UnitTestResults.xml;transform=nunit3-junit.xslt"
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - UnitTestResults.xml
+```
+
 <!-- Framework example
 The following example runs tests with [Test Intelligence](./set-up-test-intelligence.md).
 
