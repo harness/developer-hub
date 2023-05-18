@@ -7,7 +7,7 @@ helpdocs_category_id: 7vy86n7cws
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+# Set up CCM for your Kubernetes clusters
 Harness Cloud Cost Management (CCM) monitors the cloud costs of your Kubernetes clusters, namespaces, nodes, workloads, and labels. CCM also allows you to optimize your Kubernetes cluster resources using intelligent cloud AutoStopping rules.
 
 This topic describes how to connect your Kubernetes cluster to CCM.
