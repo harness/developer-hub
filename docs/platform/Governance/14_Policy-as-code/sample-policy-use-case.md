@@ -176,6 +176,40 @@ deny[msg] {
 }
 ```
 
+**Use Case:** Prevent users from leveraging steps that are not allowed by the company
+
+Some users want to restrict developers from using specific steps in their pipelines. We can enforce this `on pipeline save` and `on pipeline run`.
+
+```TEXT
+package pipeline
+
+# Deny pipelines that are missing required steps
+# NOTE: Try adding "HarnessApproval" to the 'forbidden_steps' list to see the policy fail
+deny[msg] {
+	# Find all stages ...
+	stage = input.pipeline.stages[_].stage
+
+	# ... that are deployments
+	stage.type == "Deployment"
+
+	# Find all steps in each stage ...
+	step = stage.spec.execution.steps[_].step
+
+	# ... that use forbidden types
+	forbidden_steps[_] = step.type
+
+	# Show a human-friendly error message
+	msg := sprintf("deployment stage '%s' has step '%s' that is forbidden type '%s'", [stage.name, step.name, step.type])
+}
+
+# Steps that should not used in deployments
+forbidden_steps = ["ShellScript"]
+
+contains(arr, elem) {
+	arr[_] = elem
+}
+```
+
 **Use Case:** Enforcing a Deployment Freeze via Policy
 
 Admin's may configure a deployment freeze via Policy to supplement the formal deployment freeze feature. The policy route is great for one off freezes that are set by the business. This policy is set on `Pipeline Run`
@@ -227,6 +261,58 @@ deny[msg] {
 }
 ```
 
+**Use Case:**  Users want to enforce the flag types that are configured for Feature Flags
+
+Users can enforce that feature flags are configured with boolean value. This can be configured on when Feature Flag Creation.
+
+```TEXT
+package feature_flags
+
+# Deny flags that aren't "boolean"
+# NOTE: Try adding changing the flag 'kind' to see the policy fail
+deny[msg] {
+	input.flag.kind != "boolean"
+	msg := sprintf(`Flag '%s' isn't of type "boolean"`, [input.flag.name])
+}
+```
+
+**Use Case:** Users want to deny the creation of feature flags that serve true by default. 
+
+This protects users from configuring flags and serving true to all the end users of the flag. This allows for a safer rollout of the flag. This can be configured on feature flag configuration.
+
+```TEXT
+package feature_flags
+
+# Deny flags that serve true by default when turned off to prevent accidentally enabling the flag
+# NOTE: Try setting the 'defaultOnVariation' to true to see the policy fail
+deny[msg] {
+	input.flag.defaultOnVariation != "false"
+	msg := sprintf("Flag '%s' does not have default 'on' value of false", [input.flag.name])
+}
+
+# Deny flags that serve true by default when turned on to prevent accidentally enabling the flag
+# NOTE: Try setting the 'defaultOffVariation' to true to see the policy fail
+deny[msg] {
+	input.flag.defaultOffVariation != "false"
+	msg := sprintf("Flag '%s' does not have default 'off' value of false", [input.flag.name])
+}
+```
+
+**Use Case:** Users want to enforce naming conventions for their Feature flags
+
+On Feature Flag Save, users can enforce the naming convention of the flags to ensure that no one falls outside the porper naming standards for internal flags. This ensures good feature flag hygenie.
+
+```TEXT
+package feature_flags
+
+# Deny flags whose names do not contain a validly formatted Jira ticket number
+# e.g. "FFM-123" is allowed but "Cool flag" is not
+# NOTE: Try setting the name to "Test" to see the policy fail
+deny[msg] {
+	not regex.match("[FFM|OPA|CI|CD]+[-][1-9][0-9]?", input.flag.name)
+	msg := sprintf("Flag name '%s' doesn't contain a Jira ticket number", [input.flag.name])
+}
+```
 
 #### Template Policies
 
@@ -354,6 +440,168 @@ deny[msg] {
 }
 ```
 
+**Use Case:** Enforce a Pipeline's Stage structure
+
+Users may want to make sure pipelines are designed with the recommended or mandatory structure. This ensures pipeline designers have the freedom to design a pipeline while following the guard rails. This policy works `On Pipeline Save`
+
+```TEXT
+package pipeline
+
+stage_order := ["OPA check", "deploy"]
+
+# Deny a pipeline if stages do not execute in the
+# correct order. This will check that the named stages
+# in the array above are in the right order, ignoring
+# other stages.
+deny[msg] {
+	# Run through the order rules array
+	item = stage_order[i]
+	prev = stage_order[i - 1]
+	index = getIndex(item, input.pipeline.stages)
+	prevIndex = getIndex(prev, input.pipeline.stages)
+
+	# Makes sure the current rule is after the previous
+	# rule in the step order
+	index < prevIndex
+
+	# Show a human-friendly error message
+	msg = sprintf("Stage order is incorrect %s should be after %s", [item, prev])
+}
+
+getIndex(str, stages) = result {
+	stage = input.pipeline.stages[i].stage
+	str == stage.name
+	result = i
+}
+```
+
+**Use Case:** Enforce a steps in a Pipeline
+
+Users can ensure that mandaroty steps are configured in a pipeline. This policy can be configured `On Pipeline Run`, or `On Pipeline Save`
+
+```TEXT
+
+ppackage pipeline
+
+# Deny pipelines that are missing required steps
+# NOTE: Try adding "ShellScript" to the 'required_steps' list to see the policy fail
+deny[msg] {
+	# Find all stages ...
+	stage = input.pipeline.stages[_].stage
+
+	# ... that are deployments
+	stage.type == "Deployment"
+
+	# ... and create a list of all step types in use
+	existing_steps := [s | s = stage.spec.execution.steps[_].step.type]
+
+	# For each required step ...
+	required_step := required_steps[_]
+
+	# ... check if it's present in the existing steps
+	not contains(existing_steps, required_step)
+
+	# Show a human-friendly error message
+	msg := sprintf("deployment stage '%s' is missing required step '%s'", [stage.name, existing_steps])
+}
+
+# Steps that must be present in every deployment
+required_steps = ["JiraUpdate","HarnessApproval"]
+
+contains(arr, elem) {
+	arr[_] = elem
+}
+```
+
+**Use Case:** Enforce Step Order in a Pipeline
+
+Users may want to enforce the ordering of steps that are configured in a pipeline. This policy can be used `On Pipeline Save` or `On Pipeline Run`.
+
+```TEXT
+package pipeline
+
+step_order := ["Get version", "Run OPA policy"]
+
+# Deny a pipeline if steps do not execute in the
+# correct order, this will check the steps in every
+# stage
+deny[msg] {
+	stage = input.pipeline.stages[_].stage
+
+	# Run through the order rules array
+	item = step_order[i]
+	prev = step_order[i - 1]
+	index = getIndex(item, stage)
+	prevIndex = getIndex(prev, stage)
+
+	# Makes sure the current rule is after the previous
+	# rule in the step order
+	index < prevIndex
+
+	# Show a human-friendly error message
+	msg = sprintf("Step order is incorrect %s should be after %s", [item, prev])
+}
 
 
+getIndex(str, stage) = result {
+	item = stage.spec.execution.steps[i]
+	str == item.step.name
+	result = i
+}
+```
+
+#### Sample Secret Policies
+
+**Use Case:** Ensure there are no principals in the secret Secrets.
+
+Users want to ensure that the secrets configured in Harness are configured by the correct group. This policy can be configured on Secret Save time.
+
+```TEXT
+package secret
+
+import future.keywords.in
+
+# The identifiers for one or more principals allowed to save secrets
+allowedPrincipals = ["1234abcd"]
+
+deny["Principal is not allowed to save secrets"] {
+	# If the principal is not in the allowed principals list, deny.
+	not input.metadata.principalIdentifier in allowedPrincipals
+}
+```
+
+**Use Case:** Enforce Secret Naming Conventions
+
+Users want to ensure that developers add secrets to Harness with a common naming standard, this makes it easy to identify and manage them. This can be configured on secret save.
+
+```TEXT
+package secrets
+
+# Deny secrets whose names do not follow the correct naming convention
+# e.g. "Lion - MongoDB Password" is allowed but "Cool secret" is not
+# NOTE: Try setting the name to "Test" to see the policy fail
+deny[msg] {
+	not regex.match("[Cheetah|Tiger|Lion]\\s[-]\\s[a-zA-Z0-9\\s]+", input.secret.name)
+	msg := sprintf("Secret name '%s' must follow the correct naming convention 'Team - Purpose'", [input.secret.name])
+}
+```
+
+**Use Case:** Enforce what secrets manager can be used to save secrets.
+
+Users may want to enforce their secrets configured in Harness to be stored to a particular secrets manager. This policy can be enforced on pipeline save.
+
+```TEXT
+package secrets
+
+import future.keywords.in
+
+# Choose one or more allowed providers based on there identifier
+allowedProviders := ["harnessSecretManager"]
+
+deny[msg] {
+	# Check that the secret manager identifier exists in the white list
+	not input.secret.spec.secretManagerIdentifier in allowedProviders
+	msg := sprintf("Only %s are allowed as providers", [allowedProviders])
+}
+```
 
