@@ -3,6 +3,10 @@ title: Use the chaos dashboards
 sidebar_position: 80
 ---
 
+:::note
+This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
+:::
+
 Harness Chaos Engineering (HCE) comes with out-of-the-box dashboards that provide various aggregated views of data about your chaos experiments at an organization level. This includes experiments across all projects and environments in an organization.
 
 With Harness dashboards, you can:
