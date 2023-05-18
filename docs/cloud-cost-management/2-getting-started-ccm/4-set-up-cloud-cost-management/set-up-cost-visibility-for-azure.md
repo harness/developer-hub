@@ -241,4 +241,4 @@ Configure the following settings in Azure to enable recommendations:
 4. Select the subscriptions. This is required to receive VM right sizing recommendations.
    The default **CPU utilization** is 100% and the default **Look back period** is 7 days.
 
-After configuring the **Advisor**, go to [Azure recommendations](../../4-use-ccm-cost-optimization/1-ccm-recommendations/azure-vm.md) to view and apply recommendations.
+After configuring the **Advisor**, go to [Azure recommendations](https://developer.harness.io/docs/category/recommendations) to view and apply recommendations.

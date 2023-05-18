@@ -28,7 +28,7 @@ Using recommendations without proper assessment could result in unexpected chang
 * To obtain Azure VM recommendations, configure a Harness Azure CCM connector with the Cost Visibility and the Inventory Management features enabled. For more information, go to [Connect CCM to your Azure account](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md#connect-ccm-to-your-azure-account).
   
 :::note
-Enabling the **Visibility** feature allows fetching recommendations from the Azure Advisor. The **Inventory Management** feature allows fetching the CPU utilization data and display the respective recommendations. If the Inventory Management feature is not enabled, the graph and table may show a null state.
+Enabling the **Visibility** feature allows retrieving recommendations from the Azure Advisor. The **Inventory Management** feature allows you to fetch the CPU utilization data and display the corresponding recommendations. If the Inventory Management feature is not enabled, the graph and table may show a null state.
 :::
 
 ## How are Azure recommendations computed?
