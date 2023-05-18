@@ -11,9 +11,7 @@ import TabItem from '@theme/TabItem';
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities, such as security scanning, in GitHub. This topic describes how to run GitHub Action scans and ingest the results into your Harness pipelines.  
 
-:::note Important notes
-
-* Integration with GitHub Actions is primarily a CI feature. You can run GHA scans in standalone STO pipelines without a CI license, but the number of scans you can run is license-limited. 
+:::note Important notes 
 
 * You can run scans using [GitHub Action steps](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) and [Drone plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie). 
 
