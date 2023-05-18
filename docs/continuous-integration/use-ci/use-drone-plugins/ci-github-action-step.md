@@ -79,6 +79,7 @@ This Action step uses the `actions/setup-java` GitHub Action to set up a Java en
                   spec:
                     uses: actions/setup-java@v3
                     with:
+                      distribution: 'temurin'
                       java-version: '17'
 ```
 
