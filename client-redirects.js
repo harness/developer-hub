@@ -34,6 +34,13 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by SudheendraKatte for branch cet-redirect on May 19 2023
+
+    {
+      from: "/docs/category/continuous-error-tracking",
+      to: "/docs/continuous-error-tracking/",
+    },
+
     // Created by SudheendraKatte for branch cet-broken-link on May 17 2023
 
     {
