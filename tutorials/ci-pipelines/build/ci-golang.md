@@ -7,18 +7,20 @@ slug: /ci-pipelines/build/go
 ---
 
 ```mdx-code-block
+import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Build and test a [Go](https://go.dev/) application using a Linux platform on [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), or on a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/).
+You can build and test a [Go](https://go.dev/) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
-## Create pipeline
+This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
 
-1. Under **Project Setup**, select **Get Started**.
-2. Select your Go application repository from the repository list.
-3. Select **Generate my Pipeline configuration**, then select **Create Pipeline**.
-4. Select **YAML** to switch to the YAML editor.
+* [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
+* [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
+* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+
+<CISignupTip />
 
 ## Build and run tests
 
@@ -73,6 +75,67 @@ Add [**Run**](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settin
                     image: golang
                     command: |-
                       go test -v ./...
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+### Visualize test results
+
+You can [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/) on the **Tests** tab of your pipeline executions. Test results must be in JUnit XML format.
+
+You can use [go-junit-report](https://github.com/jstemmer/go-junit-report) to output compatible JUnit XML reports.
+
+For your pipeline to produce test reports, you need to modify the **Run** step that runs your tests. Make sure the `command` generates JUnit XML reports and add the `reports` specification.
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Harness Cloud">
+```
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: test
+                  name: Test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      go install github.com/jstemmer/go-junit-report/v2@latest
+                      go test -v ./... | tee report.out
+                      cat report.out | $HOME/go/bin/go-junit-report -set-exit-code > report.xml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - report.xml
+```
+
+```mdx-code-block
+</TabItem>
+
+<TabItem value="Self-hosted">
+```
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: test
+                  name: Test
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: golang
+                    command: |-
+                      go install github.com/jstemmer/go-junit-report/v2@latest
+                      go test -v ./... | tee report.out
+                      cat report.out | $GOPATH/bin/go-junit-report -set-exit-code > report.xml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - report.xml
 ```
 
 ```mdx-code-block
@@ -210,70 +273,9 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                       - /root/.cache/go-build
                     archiveFormat: Tar
 ```
- 
+
 </details>
 
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
-
-## Visualize test results
-
-You can [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/) on the **Tests** tab of your pipeline executions. Test results must be in JUnit XML format.
-
-You can use [go-junit-report](https://github.com/jstemmer/go-junit-report) to output compatible JUnit XML reports.
-
-For your pipeline to produce test reports, you need to modify the **Run** step that runs your tests. Make sure the `command` generates JUnit XML reports and add the `reports` specification.
-
-```mdx-code-block
-<Tabs>
-<TabItem value="Harness Cloud">
-```
-
-```yaml
-              - step:
-                  type: Run
-                  identifier: test
-                  name: Test
-                  spec:
-                    shell: Sh
-                    command: |-
-                      go install github.com/jstemmer/go-junit-report/v2@latest
-                      go test -v ./... | tee report.out
-                      cat report.out | $HOME/go/bin/go-junit-report -set-exit-code > report.xml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - report.xml
-```
-
-```mdx-code-block
-</TabItem>
-
-<TabItem value="Self-hosted">
-```
-
-```yaml
-              - step:
-                  type: Run
-                  identifier: test
-                  name: Test
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: golang
-                    command: |-
-                      go install github.com/jstemmer/go-junit-report/v2@latest
-                      go test -v ./... | tee report.out
-                      cat report.out | $GOPATH/bin/go-junit-report -set-exit-code > report.xml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - report.xml
-```
 
 ```mdx-code-block
 </TabItem>
@@ -717,6 +719,6 @@ pipeline:
 
 Now that you have created a pipeline that builds and tests a Go app, you could:
 
-* Create [triggers](https://developer.harness.io/docs/category/triggers) to automatically run your pipeline.
+* Create [triggers](/docs/category/triggers) to automatically run your pipeline.
 * Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
 * Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).

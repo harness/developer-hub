@@ -18,6 +18,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
  
  
+
 ## Latest - May 22, 2023, version 793xx
 
 ### Harness Platform
@@ -43,11 +44,17 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 * The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set secret expiration date. The Harness Delegate version 793xx is required for this feature. (PL-32708, ZD-42524)
 
 
-
-
-
 <details>
 <summary>2023 releases</summary>
+
+#### May 17, 2023, STO Core version 1.53.0
+
+##### Security Testing Orchestration
+
+* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
+
+  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
+
 
 #### May 10, 2023, STO Core version 1.50.3
 
