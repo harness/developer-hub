@@ -186,7 +186,7 @@ kubectl apply -f prometheus.yml
 
 ## Set up Grafana
 
-To set up Grafana, use the following example grafana.yml file.
+To set up Grafana, use the following example `grafana.yml` file.
 
 ### Example grafana.yml file
 
@@ -275,7 +275,7 @@ spec:
       targetPort: 3000     
 ```
 
-1. Copy the grafana.yml file.
+1. Copy the `grafana.yml` file.
 
 2. If you're not using the default `harness-delegate-ng` namespace, replace it with the namespace into which you deployed your delegate.
 
