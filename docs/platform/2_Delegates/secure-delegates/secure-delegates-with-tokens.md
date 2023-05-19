@@ -93,7 +93,7 @@ To update and restart an existing Kubernetes delegate, do the following:
    ...
    ```
 
-4. Run `kubectl apply -f harness-delegate.yaml`.
+3. Run `kubectl apply -f harness-delegate.yaml`.
 
    The delegate pods restart automatically with the updated settings.
 
