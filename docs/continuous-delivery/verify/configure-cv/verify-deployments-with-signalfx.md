@@ -1,7 +1,7 @@
 ---
-title: Sumo Logic
-description: Verify deployments with Sumo Logic. 
-sidebar_position: 12
+title: SignalFx
+description: Verify deployments with SignalFx. 
+sidebar_position: 10
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
@@ -11,20 +11,17 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-:::note
-Currently, this feature is behind the feature flag `SRM_SUMO`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
-Harness Continuous Verification (CV) integrates with Sumo Logic to:
+Harness Continuous Verification (CV) integrates with SignalFx to:
 
-* Verify that the deployed service is running safely and perform automatic rollbacks.
-* Apply machine learning to every deployment to identify and flag anomalies with the new version.
+* Verify that the deployed service is running safely and performing automatic rollbacks.
+* Apply machine learning to every deployment to identify and flag anomalies in future deployments.
 
-This topic describes how to set up a Sumo Logic health source when adding a CV step to your Continuous Deployment (CD).
+This topic describes how to set up an SignalFx health source when adding a CV step to your Continuous Deployment (CD).
 
 ## Prerequisite
 
-Sumo Logic is added as a verification provider in Harness.
+SignalFx is added as a verification provider in Harness.
 
 
 ## Set up continuous verification
@@ -34,35 +31,42 @@ To set up CV, you need to configure a Service Reliability Management (SRM)-monit
 
 ## Add Verify Step
 
-To add a Verify step to your pipeline, use one of the following methods:
+To add a Verify step to your pipeline, use one of the methods below.
 
 
-### While building a deployment stage
+### Add a Verify step while building a deployment stage
 
 If you're building a deployment stage and currently on the **Execution Strategies** page:
 
-1. Select the **Enable Verification** option.  
+1. Select the **Enable Verification** option. 
+    
    The Verify step gets added to the pipeline.
+
 2. Select the **Verify** step.  
+   
    The Verify settings page appears.
 
 
-### To an existing deployment stage
+### Add a Verify step to an existing deployment stage
 
 If you already have a deployment stage:
 
 1. Select the stage where you want to add the Verify step.
+   
 2. On the stage settings pane, select the **Execution** tab.
 3. On the pipeline, hover over where you want the Verify step, select the + icon, and then choose **Add Step**.  
-The Step Library page appears.
+
+   The Step Library page appears.
 You can add a step at various points in the pipeline such as the beginning, end, in between existing steps, or below an existing step. Simply choose the location where you want to add the step and follow the prompts to add it.
 
 4. In the **Continuous Verification** section, select **Verify**.  
+   
    The Verify settings page appears.
 
 ## Define name and time out information
 
 1. In **Name**, enter a name for the Verification step.
+   
 2. In **Timeout**, enter a timeout value for the step. Harness uses this information to time out the verification. Use the following syntax to define timeout:
    - **w** for weeks. For example, to define one week, enter 1w.
    - **d** for days. For example, to define 7 days, enter 7d.
@@ -79,26 +83,33 @@ You can add a step at various points in the pipeline such as the beginning, end,
 1. In **Continuous Verification Type**, select a type that matches your deployment strategy. The following options are available:
    
    - **Auto**: Harness automatically selects the best continuous verification type based on the deployment strategy.
-   - **Rolling Update**: A rolling deployment is a deployment technique that gradually replaces old versions of a service with a new version by replacing the infrastructure on which the service runs. Rolling updates are useful in situations where a sudden changeover might cause downtime or errors.
+   - **Rolling Update**: Rolling deployment is a deployment technique that gradually replaces old versions of a service with a new version by replacing the infrastructure on which the service runs. Rolling updates are useful in situations where a sudden changeover might cause downtime or errors.
    - **Canary**: Canary deployment involves a two-phased deployment. In phase one, new pods and instances with the new service version are added to a single environment. In phase two, a rolling update is performed in the same environment. Canary deployment helps to detect issues with the new deployment before fully deploying it.
    - **Blue Green**: Blue-green deployment is a technique used to deploy services to a production environment by gradually shifting user traffic from an old version to a new one. The previous version is referred to as the blue environment, while the new version is known as the green environment. Upon completion of the transfer, the blue environment remains on standby in case of a need for rollback or can be removed from production and updated to serve as the template for future updates.
    - **Load Test**: Load testing is a strategy used in lower-level environments, such as quality assurance, where a consistent load is absent and deployment validation is typically accomplished through the execution of load-generating scripts. This is useful to ensure that the application can handle the expected load and validate that the deployment is working as expected before releasing it to the production environment.
 
 2. In **Sensitivity**, choose the sensitivity level. The available options are **High**, **Medium**, and **Low**. When the sensitivity is set to high, even minor anomalies are treated as verification failures. When the sensitivity is set to **High**, any anomaly, no matter how small, will be treated as a verification failure. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
+   
 3. In **Duration**, choose a duration. Harness will use the data points within this duration for analysis. For instance, if you select 10 minutes, Harness will analyze the first 10 minutes of your log or APM data. It is recommended to choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
+   
 4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md).
+   
 5. Select **Fail On No Analysis** if you want the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
 
 
 ## Create a monitored service
 
-In **Monitored Service**, select **Click to autocreate a monitored service**.
+Harness Continuous Verification monitors the health trend deviations using logs and metrics obtained from the health source, such as APM and logging tools, via a monitored service.
 
-Harness automatically generates a monitored service name by combining the service and environment names. The generated name appears in the **Monitored Service Name** field. Note that you cannot edit the monitored service name.
+To create a monitored service:
+
+1. In the **Monitored Service Name** section, select **Click to autocreate a monitored service**.
+
+      Harness automatically generates a monitored service name by combining the service and environment names. The generated name appears in the **Monitored Service Name** field. Note that you cannot edit the monitored service name.
 
 If a monitored service with the same name and environment already exists, the **Click to autocreate a monitored service** option is hidden and the existing monitored service is assigned to the Verify step by Harness.
 
-:::note
+:::info note
 
 If you've set up a service or environment as runtime values, the auto-create option for monitored services won't be available. When you run the pipeline, Harness combines the service and environment values to create a monitored service. If a monitored service with the same name already exists, it will be assigned to the pipeline. If not, Harness skips the Verification step.
 
@@ -117,36 +128,37 @@ A health source is an APM or logging tool that monitors and aggregates data in y
 
 To add a health source:
 
-1. In the **Health Sources** section, select **+ Add**.
+1. In the **Health Sources** section, select **+ Add New Health Source**.
+   
    The Add New Health Source dialog appears.
+
 2. On the **Define Health Source** tab, do the following:
-      1. In the **Define Health Source** section, select **SumoLogic** as health source type.
+      1. In the **Define Health Source** section, select **SignalFx** as health source type.
       2. In the **Health Source Name** field, enter a name for the health source.
-      3. In the **Connect Health Source** section, select the **Select Connector**.  
+      3. In the **Connect Health Source** section, select **Select Connector**.  
      The Create or Select an Existing Connector dialog appears.
-      1. Select a connector for the Sumo Logic health source and then select **Apply Selected**.  
-     The selected connector appears in the **Select Connector** dropdown field.
-      1. In the **Select Feature**, you can either select **SumoLogic Cloud Metrics** or **SumoLogic Cloud Logs**.
-      2. Select **Next**.  
-     The **Configuration** tab appears.
+      1. Select a connector for the SignalFx health source and then select **Apply Selected**.  
+     The selected connector appears in the **Select Connector** dropdown.
+      1. Select **Next**.  
+      
+         The **Configuration** tab appears.
 
 
-### Define metric and log configuration settings
-   
-   Perform the following steps based on the feature you have selected in the **Select Feature** field.
+:::info note
+Currently, Harness supports only SignalFx metrics. The **SignalFx Metrics** option is selected by default in the **Select Feature** field.
+:::
 
-<Tabs>
-  <TabItem value="Steps to configure SumoLogic Cloud Metrics" label="Steps to configure SumoLogic Cloud Metrics" default>
 
-   
-   1. On the **Configuration** tab, select **+ Add Metric**.  
+### Define log configuration settings
+
+1. On the **Configuration** tab, select **+ Add Metric**.  
    The Add Metric dialog appears.
-   2. Enter the following information and then select **Submit**:  
+2. Enter the following information and then select **Submit**:  
       * **Metric name**: Enter a name for the metric. For example, Memory Metric.
       * **Group name**: If the group to which you want to add the metric already exists, select it.   
      If you want to create a new group, select **+ Add New**. In the Add Group Name dialog enter a group name, and then select **Submit**.
-   3. In the Add Metric dialog, select **Submit**.   
-   New group and metric are created. The query specifications and mapping settings are displayed. These settings help you get the desired metric data from the Sumo Logic platform and map it to Harness service. To learn about Sumo Logic metrics and queries, go to [https://help.sumologic.com/docs/metrics/](https://help.sumologic.com/docs/metrics/).
+3. In the Add Metric dialog, select **Submit**.   
+   New group and metric are created. The query specifications and mapping settings are displayed. These settings help you get the desired metric data from the SignalFx platform and map it to Harness service. To learn about SignalFx metrics and queries, go to [https://dev.splunk.com/observability/docs/signalflow](https://dev.splunk.com/observability/docs/signalflow).
 
 
 #### Define a query
@@ -154,6 +166,7 @@ To add a health source:
    In the **Query** box, enter your metric query and then select **Run Query**.  
    Sample data is displayed in the **Records** box. The **Chart** box displays the graph corresponding to the sample data. This helps you verify if the query that you have built is correct.
 
+<!--- This section needs to be updated with SignalFx example
    <details>
    <summary><b>Sample query for memory usage</b></summary>
 
@@ -165,8 +178,7 @@ To add a health source:
 
    ![Memory usage records and charts](./static/cv-sumologic-select-metric-query-memory-chart-records.png)
 
-
-   </details>
+-->
 
 #### Assign services
 
@@ -200,13 +212,13 @@ The **Risk Profile** section is only visible if you have selected **Continuous V
 - **Higher counts = higher risk**
 - **Lower counts = higher risk**
 
-  Note that you can select multiple options.
+  You can select multiple options.
 
 
 #### Map service instance identifier
 
 :::note
-The **Map service instance identifier** section is only visible if you have selected **Continuous Verification (Applied to the pipelines in the Continuous Deployment**) in the **Assign** section.
+The **Map service instance identifier** section is visible only if you have selected **Continuous Verification (Applied to the pipelines in the Continuous Deployment**) in the **Assign** section.
 :::
 
 In **Service Instance Identifier (only needed for CV)**, specify the service instance identifier, which represents a dynamically created service that you deploy using Harness. The default value is `_sourceHost`.
@@ -248,38 +260,10 @@ To set fail-fast thresholds for CV, follow these steps:
 
 </details>
 
-</TabItem>
-  
-<TabItem value="Steps to configure SumoLogic Cloud Logs" label="Steps to configure SumoLogic Cloud Logs">
-
-1. On the Configuration tab, select **+ Add Query**.  
-   The Add Query dialog appears.
-2. Enter a name for the query and then select **Submit**.  
-   The Custom Queries settings are displayed. These settings assist in retrieving the desired logs from the Sumo Logic platform and mapping them to the Harness service. To learn about Sumo Logic logs, go to [https://help.sumologic.com/docs/search/](https://help.sumologic.com/docs/search/).
-
-#### Define a query
-
-1. In the **Query** field, enter the log query and select **Run Query** to execute it. This displays a sample record in the **Records** field, allowing you to confirm the accuracy of the query you've constructed. For the verification process to be effective, the query should be designed to accurately extract error logs specific to the service.```
-2. In the **Field Mapping** section, select the **Service Instance Identifier** to display the logs, and then select **Get sample log messages**. Sample logs are displayed which include a timestamp, the host where the log was recorded, and the log message itself. These three properties are critical for accurate verification, so it's important to check their accuracy. If the host information doesn't match the actual instance of your service, you should review the mapping provided for the **Service Instance Identifier**.```
-
-<details>
-   <summary><b>Sample log query</b></summary>
-
-   Query: `_sourcename = "Http Input"`
-
-   ![Query - Logs](./static/cv-sumologic-select-log-query-chart-records.png)
-
-
-   </details>
-
-
-</TabItem>
-</Tabs>
-
-
 ### Save the health source settings
 
 1. After configuring all the settings, select **Submit** to add the health source to the Verify step.
+   
 2. Select **Apply Changes** to save the changes made to the Verify step.
 
 ## Run the pipeline
@@ -287,12 +271,16 @@ To set fail-fast thresholds for CV, follow these steps:
 To run the pipeline:
 
 1. In the upper-right corner, select **Run**.  
+   
    The Run Pipeline dialog box appears.
+
 2. In the dialog box, do the following:
    - **Tag**: If you did not add a tag in the** Artifact Details** settings, select it now.
    - **Skip preflight check**: Select this option if you want to skip the preflight check.
    - **Notify only me about execution status**: Select this option if you want Harness to alert only you about the execution status.
+  
 3. Select **Run Pipeline**.  
+   
    The pipeline starts running.
 
 ## View results
@@ -315,16 +303,16 @@ The console view displays detailed logs of the pipeline, including verification 
 
 By default, the console displays logs of only the anomalous metrics and affected nodes. To see all logs, clear the **Display only anomalous metrics and affected nodes** check box.
 
-![Verification step console view all data](./static/cv-sumologic-verify-view-anamalous-data.png)
+![Verification step console view all data](./static/cv-signalfx-verify-view-anamalous-data.png)
 
 The following screenshots show successful and failed verifications in a deployment run:
 
 **Successful verification**
 
-![Passed verification step](./static/cv-sumologic-pipeline-pass.png)
+![Passed verification step](./static/cv-signalfx-pipeline-pass.png)
 
 **Failed verification**
 
-![Failed verification step](./static/cv-sumologic-pipeline-fail.png)
+![Failed verification step](./static/cv-signalfx-pipeline-fail.png)
 
 
