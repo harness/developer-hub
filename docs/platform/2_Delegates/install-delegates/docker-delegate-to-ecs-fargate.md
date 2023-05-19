@@ -16,7 +16,7 @@ Delegate scope for an Amazon ECS delegate is based on the token you use.
 
 ## Deploy a delegate to Amazon ECS 
 
-Use the following steps to deploy a delegate to an Amazon ECS cluster. This process requires an immutable delegate.
+Use the following steps to deploy a delegate to an Amazon ECS cluster. This process requires a delegate an immutable image. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types).
 
 :::info note
 You can also use a Terraform module to deploy a delegate. For more information, go to [Deploy a delegate using Terraform](#deploy-a-delegate-using-terraform).
@@ -30,7 +30,7 @@ For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/inst
 
 ### Create the task definition
 
-1. Copy the following task `spec` into a file. Save the file as task-spec.json.
+1. Copy the following task `spec` into a file. Save the file as `task-spec.json`.
 
    ```
      {
@@ -137,7 +137,7 @@ Use the following steps to create a service.
    
 ## Deploy a delegate to Amazon Fargate
 
-Use the following steps to deploy a delegate to an Amazon Fargate cluster. This process requires an immutable delegate.
+Use the following steps to deploy a delegate to an Amazon Fargate cluster. This process requires a delegate with an immutable image. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types).
 
 ### Create the cluster 
 
@@ -235,7 +235,7 @@ Use the following steps to create a task definition. For information about task 
 
 ### Create the service
 
-1. Edit the service.json file as follows:
+1. Edit the `service.json` file as follows:
 
    ```
    {
