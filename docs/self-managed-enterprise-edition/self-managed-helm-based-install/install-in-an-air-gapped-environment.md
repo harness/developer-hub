@@ -64,7 +64,7 @@ To save Docker images, do the following:
 ## Download and push Helm charts
 After you save Docker images to your private registry, you must download the Helm charts and push them to your repository.
 
-**To download and push Helm charts**
+To download and push Helm charts:
 
 You can use Helm to pull the chart and push it to your private repository or download the chart directly.
 
@@ -75,7 +75,7 @@ You can use Helm to pull the chart and push it to your private repository or dow
     helm push harness docker://private-repo
     ```
 
-**To download the Helm chart**
+To download the Helm chart:
  
  - Download the chart from the [Harness repository](https://github.com/harness/helm-charts/releases).
 
