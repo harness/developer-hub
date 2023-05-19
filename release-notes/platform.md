@@ -45,7 +45,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 - A warning now appears if you try to save a template with an existing identifier and an updated version label. This warns you that it will be merged with the existing template (upon confirmation). (CDS-47301)
 
-- The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set secret expiration date. The Harness Delegate version 793xx is required for this feature. (PL-32708, ZD-42524)
+- The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set a secret expiration date. The Harness Delegate version 793xx is required for this feature. (PL-32708, ZD-42524)
 
 
 ```mdx-code-block
