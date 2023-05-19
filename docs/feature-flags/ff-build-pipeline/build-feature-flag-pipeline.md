@@ -115,7 +115,7 @@ To add details to a Flag Configuration step:
 	| **Default Rules**   | Select the default rule for when the flag is ON and OFF. For example, if the flag is ON, serve the variation `True`. |
 	| **Serve Variation to Individual Target** | Select the target and the flag variation to serve to that target. |
 	| **Serve Variation to Target Group** | Select the target group and the flag variation to serve to that group. |
-	| **Serve Percentage Rollout** | Select a target group, and then select a percentage of users in that group to serve the variation `True`, and a percentage to serve the variation `False`. For more information, go to [Target Users with Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags#target-specific-users-or-target-groups-when-a-flag-is-enabled). |
+	| **Serve Percentage Rollout** | Select a target group, and then select a percentage of users in that group to serve a selected variation, and a percentage to serve another variation. For more information, go to [Target Users with Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags#target-specific-users-or-target-groups-when-a-flag-is-enabled). |
 
   
 	For information on managing variations, go to [**Change the variations of your flags**](/docs/feature-flags/ff-creating-flag/manage-variations).
