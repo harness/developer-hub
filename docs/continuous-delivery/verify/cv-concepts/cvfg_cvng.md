@@ -23,7 +23,6 @@ Harness Platform provides flexible CV capabilities. You can easily add CV as a s
 * Expanded verification types: CVNG introduces additional verification types, including support for rolling deployments and load tests. In CVFG, verification was limited to "canary" and "previous" deployment scenarios.
 
 ## CVFG and CVNG Field Mappings
-Comparing CVFG and CVNG Field Mappings.
 
 | **CVFG**            | **CVNG**                    |
 |---------------------|-----------------------------|
