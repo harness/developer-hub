@@ -73,7 +73,7 @@ Currently, character encoding is behind the feature flag `CDS_ENCODE_HTTP_STEP_U
 
 By default, Harness validates the URL you enter to ensure it is not an invalid URL (or a URL with invalid characters) before it sends the request to the URL.
 
-Harness can allow URLs with invalid characters such as a blank space, `^`, `{`, `}` and URL encode them before sending request. 
+Harness can allow URLs with invalid characters such as a blank space, `^`, `{`, `}` and URL encode them before sending the request. 
 
 <!-- ### Using secrets in the HTTP step URL
 
