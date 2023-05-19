@@ -19,8 +19,9 @@ You can apply a failure strategy to the following:
 * Step
 * Step Group
 * Stage
+* Pipeline
 
-For details on strategy options and how strategies work, see [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
+For details on strategy options and how strategies work, see [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md) and [Define a failure strategy on pipelines](../define-a-failure-strategy-for-pipelines.md).
 
 ### Before you begin
 
@@ -93,6 +94,22 @@ Select the following:
 * **On failure of type:** select one or more of the error types. See [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
 * **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
 * **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
+
+### Add a pipeline failure strategy
+
+The pipeline failure strategy applies to all stages in the pipeline. 
+
+In a stage in a pipeline, click **Advanced**.
+
+In **Failure Strategy**, you can see the default stage strategy:
+
+**On all errors other than those specified in failure strategies defined here, perform action**
+
+To add an additional stage failure strategy, click **Add**.
+
+In **On failure of type**, select one or more of the error types, or select **All Errors**. Go to [Error types](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings#error-types) for more information.
+
+In **Perform Action**, select **Rollback Pipeline**
 
 ### Failure strategy as a runtime input
 
