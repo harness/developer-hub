@@ -1,6 +1,6 @@
 ---
-title: SignalFx
-description: Verify deployments with SignalFx. 
+title: Splunk Observability [SignalFx] 
+description: Verify deployments with Splunk Observability [SignalFx]. 
 sidebar_position: 10
 helpdocs_is_private: false
 helpdocs_is_published: true
@@ -12,16 +12,21 @@ import TabItem from '@theme/TabItem';
 ```
 
 
-Harness Continuous Verification (CV) integrates with SignalFx to:
+:::info note
+Currently, this feature is behind the feature flag `SRM_SPLUNK_SIGNALFX`. Contact Harness Support to enable the feature.
+:::
+
+
+Harness Continuous Verification (CV) integrates with Splunk Observability [SignalFx] to:
 
 * Verify that the deployed service is running safely and performing automatic rollbacks.
 * Apply machine learning to every deployment to identify and flag anomalies in future deployments.
 
-This topic describes how to set up an SignalFx health source when adding a CV step to your Continuous Deployment (CD).
+This topic describes how to set up a Splunk Observability [SignalFx] health source when adding a CV step to your Continuous Deployment (CD).
 
 ## Prerequisite
 
-SignalFx is added as a verification provider in Harness.
+Splunk Observability [SignalFx] is added as a verification provider in Harness.
 
 
 ## Set up continuous verification
@@ -29,7 +34,7 @@ SignalFx is added as a verification provider in Harness.
 To set up CV, you need to configure a Service Reliability Management (SRM)-monitored service. A monitored service is a mapping of a Harness service to a service that is being monitored by your Application Performance Monitoring (APM) or logging tool.
 
 
-## Add Verify Step
+## Add Verify step
 
 To add a Verify step to your pipeline, use one of the methods below.
 
@@ -133,11 +138,11 @@ To add a health source:
    The Add New Health Source dialog appears.
 
 2. On the **Define Health Source** tab, do the following:
-      1. In the **Define Health Source** section, select **SignalFx** as the health source type.
+      1. In the **Define Health Source** section, select **Splunk Observability [SignalFx]** as the health source type.
       2. In the **Health Source Name** field, enter a name for the health source.
       3. In the **Connect Health Source** section, select **Select Connector**.  
      The Create or Select an Existing Connector dialog appears.
-      1. Select a connector for the SignalFx health source, and then select **Apply Selected**.  
+      1. Select a connector for the Splunk Observability [SignalFx] health source, and then select **Apply Selected**.  
      The selected connector appears in the **Select Connector** dropdown.
       1. Select **Next**.  
       
@@ -145,7 +150,7 @@ To add a health source:
 
 
 :::info note
-Currently, Harness supports only SignalFx metrics. The **SignalFx Metrics** option is selected by default in the **Select Feature** field.
+Currently, Harness supports only Splunk Observability [SignalFx] metrics. The **Splunk Observability [SignalFx] Metrics** option is selected by default in the **Select Feature** field.
 :::
 
 
@@ -158,7 +163,7 @@ Currently, Harness supports only SignalFx metrics. The **SignalFx Metrics** opti
       * **Group name**: If the group to which you want to add the metric already exists, select it.   
      If you want to create a new group, select **+ Add New**. In the Add Group Name dialog enter a group name, and then select **Submit**.
 3. In the Add Metric dialog, select **Submit**.   
-   New group and metric are created. The query specifications and mapping settings are displayed. These settings help you get the desired metric data from the SignalFx platform and map it to Harness service. To learn about SignalFx metrics and queries, go to [https://dev.splunk.com/observability/docs/signalflow](https://dev.splunk.com/observability/docs/signalflow).
+   New group and metric are created. The query specifications and mapping settings are displayed. These settings help you get the desired metric data from the Splunk Observability [SignalFx] platform and map it to Harness service. To learn about Splunk Observability [SignalFx] metrics and queries, go to [https://dev.splunk.com/observability/docs/signalflow](https://dev.splunk.com/observability/docs/signalflow).
 
 
 #### Define a query
