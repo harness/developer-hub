@@ -100,7 +100,7 @@ To add details to a Flag Configuration step:
 
 	Choose one of these options:
 
-	* **Fixed value**- A value you enter manually and do not change at runtime.
+	* **Fixed value** - A value you enter manually and do not change at runtime.
 	* **Runtime Input** - This is a placeholder for values that will be provided when you start a pipeline execution.
 
 1. In **Flag Changes**, select an action to take when this flag changes, and then configure the variation to serve based on that action.
