@@ -64,7 +64,7 @@ This release does not include any early access feature.
   
   A code enhancement to populate name with the display name fixed the issue.
 
-- The email step in the pipeline succeeds and is not marked as failed even if email delivery fails (PL-38440, ZD-43831)
+- The email step in the pipeline succeeds and is not marked as failed, even if email delivery fails. (PL-38440, ZD-43831)
   
   A code enhancement fixed this issue.
 
