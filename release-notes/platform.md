@@ -70,7 +70,7 @@ This release does not include any early access feature.
 
 - The **LAST ACTIVITY** column in the connector list page is not updated. (PL-32582, ZD-42966)
   
-  A code enhancement to remove the column from the UI fixed this issue.
+  This column has been removed and the UI no longer displays this.
 
 - The secrets list API return a status code of `200` when permissions are missing. (PL-26474)
 
@@ -102,7 +102,7 @@ This release does not include any early access feature.
 
 - Custom Secret Manager creation does not consider the delegate selector. (PL-32260)
 
-  In Custom SM configuration, using the SSH Custom Secret Manager to validate delegate selection fixed this issue.
+  Decrypting secrets using the SSH connection to validate delegate selection fixed this issue.
   The Harness Delegate version 793xx is required for this fix.
 
 - Invites to users fail with an unauthorized error while RBAC setup is still in progress. (PL-32117)
@@ -123,7 +123,7 @@ This release does not include any early access feature.
 
 ##### What's new
 
-- You will now receive an alert on the default settings page when there are unsaved changes, or if you leave the page. (PL-32354)
+- You will now receive an alert on the default settings page when there are unsaved changes and you leave the page. (PL-32354)
 
 ##### Early access
 
