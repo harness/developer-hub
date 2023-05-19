@@ -63,7 +63,7 @@ You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness
 
 Before handing the execution of the HTTP step to a Harness Delegate, Harness performs a capability check on the URL to ensure that a non-400 response code is returned.
 
-By default Harness performs a validation in UI in order to restrict usage of an invalid URL or URL with invalid characters and sends the request to exactly same URL provided by the user.
+By default Harness performs a validation on UI in order to restrict usage of an invalid URL or URL with invalid characters and sends the request to exactly same URL provided by the user.
 Harness can allow passing URL with invalid characters like ` ` (space), `^`, `{`, `}` ... and URL encode them before sending request. This functionality is behing `CDS_ENCODE_HTTP_STEP_URL` feature flag, contact harness support in order to enable it.
 
 <!-- ### Using secrets in the HTTP step URL
