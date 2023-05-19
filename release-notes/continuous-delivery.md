@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-05-04T10:00:15
+date: 2023-05-22T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -15,12 +15,40 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 04, 2023, version 79214
+## Latest - May 22, 2023, version 793xx
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 04, 2023, version 79214
+
+##### What's new
+
 - Trigger artifact and manifest expressions (`<+trigger.artifact.build>` or `<+trigger.manifest.version>`) are now resolved when you rerun a pipeline that was activated by a trigger. (CDS-58192, CDS-50585)
   
   Here is a sample resolved YAML: 
@@ -57,10 +85,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   ![](./static/run-pipeline-form.png)
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
+
 - You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](https://developer.harness.io/docs/platform/pipelines/run-specific-stage-in-pipeline/) option. (CDS-56775, CDS-56774)
 
   This functionality is behind the feature flag, `CDS_NG_TRIGGER_SELECTIVE_STAGE_EXECUTION`. 
@@ -111,11 +137,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - You can add Tanzu Application Service (TAS) [config files](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/add-config-files) from GitHub. (CDS-56452)
 
   This feature is currently behind the feature flag, `CDS_GIT_CONFIG_FILES`. For TAS deployment types, you can reference service config files from GitHub.
-  
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+
+##### Fixed issues  
 
 - Usernames that were provided as secrets were not being decrypted for Github packages artifacts. (CDS-59187)
   
@@ -167,16 +190,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   The error handling is now improved to provide a more meaningful error message when the connection to the target host fails. 
 - Fixed an issue where users were unable to select **Subscription Id** in the **Azure Infrastructure details** section when creating a new environment and infrastructure at an org level. (CDS-58749, ZD-42608)
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### April 22, 2023, version 79111
 
