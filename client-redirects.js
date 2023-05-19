@@ -33,6 +33,12 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },
     //===================================================================================
+    // Created by roshnisarangadharan from branch fix-cd-link on May 19 2023
+
+    {
+      from: "/docs/continuous-delivery/cd-deployments-category/deployment-concepts",
+      to: "/docs/continuous-delivery/manage-deployments/deployment-concepts",
+    },
 
     // Created by SudheendraKatte for branch cet-redirect on May 19 2023
 
