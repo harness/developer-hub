@@ -22,9 +22,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-* (CI-7491) <!-- recorded in previous release, something was reverted per CI-7930 -->
-* (CI-6237) <!-- recorded in previous release -->
-<!-- discard What's new changes if none for this release -->
+Added support for showing artifacts on the **Artifacts** tab in Harness Cloud and VMs. (CI-7218)
+
+Previously, this was supported only for Kubernetes builds. The artifacts are visible on the execution **Artifact** tab and the artifact details are visible on the step output window. 
 
 ```mdx-code-block
   </TabItem>
@@ -38,16 +38,14 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-* (CI-7936) <!-- marked as both Yes & No for RNC. Not sure if bug or new/enhancement. -->
-* (CI-7959) <!-- not sure it needs a release note -->
 * Fixed the [license usage](/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt) sort function. (CI-7945)
-* <!-- related to CI-7491 --> (CI-7930, ZD-43974)
 * [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) now supports caching subdirectory builds. (CI-7853)
 * In step templates for **Run**, **Run Tests**, and **Background** steps, the `connectorRef` and `image` settings are now optional because these settings are not required for all build infrastructures. Validations are triggered when you use these templates in a pipeline that requires these settings. (CI-7845)
 * Previously, test splitting wouldn't work with step-level parallelism on a Kubernetes cluster build infrastructure due to the way certain environment variables were read. This is fixed. (CI-7800, ZD-43259, <!-- CI-7803, ZD-43272 -->)
 * If you run a pipeline that uses a Kubernetes cluster build infrastructure and step templates with empty `connectorRef` and `image` values, the resulting error message is more accurate and informative. (CI-7785)
 * When manually running a pipeline, you can chose to run specific stages, rather than the entire pipeline. Previously, if you chose to run only stages with **Clone Codebase** disabled, you were blocked by a field validation error requiring you to populate the **Git Branch** and **Repository** fields, which weren't visible. This has been fixed so that you are only asked to provide codebase information if **Clone Codebase** is enabled for at least one of the selected stages. (CI-7559, CI-7934 ZD-41974, ZD-43980, ZD-44041) <!-- combined CI-7934 & ZD-43980 -->
-* Fixed an issue where build pods weren't cleaned up after CI pipeline executions if the pipeline/stage and Kubernetes cluster connector had different delegate selectors. The [Harness Delegate version 793xx or later](/release-notes/delegate) is required for this fix. (CI-7955, ZD-44048)
+* If the GitLab SCM URL is of the form of anything other than `https://<domain>/project/repo.git`, then the API access fails for the connector. To fix this, a new field called `apiUrl` was added to the connector YAML. You can specify the new field to be used for all API requests. (CI-7838)
+
 
 ```mdx-code-block
   </TabItem>

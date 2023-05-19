@@ -21,7 +21,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Continuous Integration
 
-* 
+Added support for showing artifacts on the **Artifacts** tab in Harness Cloud and VMs. (CI-7218)
+
+Previously, this was supported only for Kubernetes builds. The artifacts are visible on the execution **Artifact** tab and the artifact details are visible on the step output window. 
 
 <details>
 <summary>2023 releases</summary>
