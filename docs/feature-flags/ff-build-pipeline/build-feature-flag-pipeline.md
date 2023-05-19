@@ -33,7 +33,7 @@ You should be familiar with the [Harness' Key Concepts](/docs/getting-started/le
 
 ## Create a pipeline
 
-This topic assumes you have a [project](/docs/feature-flags/ff-creating-flag/create-a-project#create-a-project) set up.
+This topic assumes you have already set up a [project](/docs/feature-flags/ff-creating-flag/create-a-project#create-a-project).
 
 To create a pipeline for Feature Flags:
 
