@@ -63,7 +63,7 @@ Add [**Run**](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settin
                   name: Build
                   spec:
                     connectorRef: account.harnessImage
-                    image: golang
+                    image: golang:latest
                     command: |-
                       go build
               - step:
@@ -72,7 +72,7 @@ Add [**Run**](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settin
                   name: Test
                   spec:
                     connectorRef: account.harnessImage
-                    image: golang
+                    image: golang:latest
                     command: |-
                       go test -v ./...
 ```
@@ -103,9 +103,10 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
                   spec:
                     shell: Sh
                     command: |-
+                      export PATH=$(go env GOPATH)/bin:$PATH
                       go install github.com/jstemmer/go-junit-report/v2@latest
                       go test -v ./... | tee report.out
-                      cat report.out | $HOME/go/bin/go-junit-report -set-exit-code > report.xml
+                      cat report.out | go-junit-report -set-exit-code > report.xml
                     reports:
                       type: JUnit
                       spec:
@@ -130,7 +131,7 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
                     command: |-
                       go install github.com/jstemmer/go-junit-report/v2@latest
                       go test -v ./... | tee report.out
-                      cat report.out | $GOPATH/bin/go-junit-report -set-exit-code > report.xml
+                      cat report.out | go-junit-report -set-exit-code > report.xml
                     reports:
                       type: JUnit
                       spec:
@@ -176,7 +177,7 @@ If necessary, add a **Run** step to install any dependencies.
                   name: Dependencies
                   spec:
                     connectorRef: account.harnessImage
-                    image: golang
+                    image: golang:latest
                     command: |-
                       go get example.com/my-go-module
 ```
@@ -305,9 +306,9 @@ If your application requires a specific version of Go, add a **Run** step to ins
                     shell: Sh
                     # install version 1.20 of Go
                     command: |-
-                      export GOPATH=$HOME/go
+                      export PATH=$(go env GOPATH)/bin:$PATH
                       go install golang.org/dl/go1.20@latest
-                      $GOPATH/bin/go1.20 download
+                      go1.20 download
 ```
 
 </details>
@@ -336,9 +337,9 @@ If your application requires a specific version of Go, add a **Run** step to ins
                   spec:
                     shell: Sh
                     command: |-
-                      export GOPATH=$HOME/go
+                      export PATH=$(go env GOPATH)/bin:$PATH
                       go install golang.org/dl/go<+matrix.goVersion>@latest
-                      $GOPATH/bin/go<+matrix.goVersion> download
+                      go<+matrix.goVersion> download
 ```
 
 </details>
@@ -447,9 +448,9 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      export GOPATH=$HOME/go
+                      export PATH=$(go env GOPATH)/bin:$PATH
                       go install golang.org/dl/go1.20@latest
-                      $GOPATH/bin/go1.20 download
+                      go1.20 download
               - step:
                   type: Run
                   identifier: build
@@ -457,8 +458,8 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      export GOPATH=$HOME/go
-                      $GOPATH/bin/go1.20 build
+                      export PATH=$(go env GOPATH)/bin:$PATH
+                      go1.20 build
               - step:
                   type: Run
                   identifier: test
@@ -466,10 +467,10 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      export GOPATH=$HOME/go
-                      $GOPATH/bin/go1.20 install github.com/jstemmer/go-junit-report/v2@latest
-                      $GOPATH/bin/go1.20 test -v | tee report.out
-                      cat report.out | $GOPATH/bin/go-junit-report -set-exit-code > report.xml
+                      export PATH=$(go env GOPATH)/bin:$PATH
+                      go1.20 install github.com/jstemmer/go-junit-report/v2@latest
+                      go1.20 test -v | tee report.out
+                      cat report.out | go-junit-report -set-exit-code > report.xml
                     reports:
                       type: JUnit
                       spec:
@@ -525,9 +526,9 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      export GOPATH=$HOME/go
+                      export PATH=$(go env GOPATH)/bin:$PATH
                       go install golang.org/dl/go<+matrix.goVersion>@latest
-                      $GOPATH/bin/go<+matrix.goVersion> download
+                      go<+matrix.goVersion> download
               - step:
                   type: Run
                   identifier: build
@@ -535,8 +536,8 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      export GOPATH=$HOME/go
-                      $GOPATH/bin/go<+matrix.goVersion> build
+                      export PATH=$(go env GOPATH)/bin:$PATH
+                      go<+matrix.goVersion> build
               - step:
                   type: Run
                   name: Test
@@ -544,10 +545,10 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      export GOPATH=$HOME/go
-                      $GOPATH/bin/go<+matrix.goVersion> install github.com/jstemmer/go-junit-report/v2@latest
-                      $GOPATH/bin/go<+matrix.goVersion> test -v ./... | tee report_<+matrix.goVersion>.out
-                      cat report_<+matrix.goVersion>.out | $GOPATH/bin/go-junit-report -set-exit-code > report_<+matrix.goVersion>.xml
+                      export PATH=$(go env GOPATH)/bin:$PATH
+                      go<+matrix.goVersion> install github.com/jstemmer/go-junit-report/v2@latest
+                      go<+matrix.goVersion> test -v ./... | tee report_<+matrix.goVersion>.out
+                      cat report_<+matrix.goVersion>.out | go-junit-report -set-exit-code > report_<+matrix.goVersion>.xml
                     reports:
                       type: JUnit
                       spec:
@@ -686,7 +687,7 @@ pipeline:
                     command: |-
                       go install github.com/jstemmer/go-junit-report/v2@latest
                       go test -v ./... | tee report_<+matrix.goVersion>.out
-                      cat report_<+matrix.goVersion>.out | $GOPATH/bin/go-junit-report -set-exit-code > report_<+matrix.goVersion>.xml
+                      cat report_<+matrix.goVersion>.out | go-junit-report -set-exit-code > report_<+matrix.goVersion>.xml
                     reports:
                       type: JUnit
                       spec:
