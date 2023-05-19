@@ -82,7 +82,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 ##### Harness Platform
 
-- You will now receive an alert on the default settings page when there are unsaved changes, or if you leave the page. (PL-32354)
+- You will now receive an alert on the default settings page when there are unsaved changes and you leave the page. (PL-32354)
 
 ##### Service Reliability Management
 
