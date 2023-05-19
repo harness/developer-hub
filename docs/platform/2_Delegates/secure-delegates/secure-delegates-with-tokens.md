@@ -79,7 +79,6 @@ To update and restart an existing Kubernetes delegate, do the following:
 
 2. Paste the token into the delegate `spec` of the `Secret`, in the `UPGRADER_TOKEN` field. 
 
-
    ```yaml
    ...  
    ---  
