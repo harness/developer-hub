@@ -29,7 +29,7 @@ To use an AWS connector, your spot account must first be connected to the AWS cl
 
 ## Create the Harness Spot Elastigroup pipeline 
 
-You can create a service and environment when you are building the pipeline or separately in **Services** and **Environments**. In this topic, we walk through building these within a pipeline. 
+You can create a service and environment either when you are building the pipeline or separately in **Services** and **Environments**. This topic walks you through building these within a pipeline. 
 
 The pipeline models the release process using execution steps, triggers, and other settings. For more information, go to [CD pipeline modeling overview](/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview).
 
@@ -127,7 +127,7 @@ service:
     
     ![](./static/spot-artifacts-ami.png)
 16. Select **Submit**.
-17. **Save** the service configuration.
+17. Select **Save** to save the service configuration.
 
 ```mdx-code-block
 </TabItem1>    
