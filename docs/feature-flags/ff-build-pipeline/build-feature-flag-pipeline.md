@@ -57,7 +57,7 @@ A Feature Flag pipeline is organized into stages. Each stage contains the logic 
 
 1. In **About your Stage**, in **Name**, enter a name for your stage. Click **Set up Stage**.
 
-	You can add a name when you create the stage, but you can edit the name in the **Overview** section of the stage anytime.
+	You can edit the name in the **Overview** tab of the stage anytime.
 
 	Changing the stage name doesn't change the stage identifier (ID). The stage identifier is created when you first name the stage and it cannot be changed. For more information, go to [Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md).
 
