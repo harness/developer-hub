@@ -25,8 +25,17 @@ Added support for showing artifacts on the **Artifacts** tab in Harness Cloud an
 
 Previously, this was supported only for Kubernetes builds. The artifacts are visible on the execution **Artifact** tab and the artifact details are visible on the step output window. 
 
+
 <details>
 <summary>2023 releases</summary>
+  
+May 17, 2023, STO Core version 1.53.0
+
+#### Security Testing Orchestration
+
+* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
+
+  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
 
 #### May 10, 2023, STO Core version 1.50.3
 

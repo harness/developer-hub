@@ -33,6 +33,26 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },
     //===================================================================================
+    // Created by roshnisarangadharan from branch fix-cd-link on May 19 2023
+
+    {
+      from: "/docs/continuous-delivery/cd-deployments-category/deployment-concepts",
+      to: "/docs/continuous-delivery/manage-deployments/deployment-concepts",
+    },
+
+    // Created by SudheendraKatte for branch cet-redirect on May 19 2023
+
+    {
+      from: "/docs/category/continuous-error-tracking",
+      to: "/docs/continuous-error-tracking/",
+    },
+
+    // Created by SudheendraKatte for branch cet-broken-link on May 17 2023
+
+    {
+      from: "/docs/category/error-tracking",
+      to: "/docs/continuous-error-tracking/getting-started/cet-overview",
+    },
 
     // Created by aimurphy for branch doc-3104 on May 15 2023
 

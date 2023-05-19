@@ -1,6 +1,6 @@
 ---
 title: Add a Google Cloud Platform (GCP) connector
-description: Use a Harness GCP connector to integrate GCP with Harness.
+description: Connect Harness to your GCP accounts and services.
 sidebar_position: 4
 helpdocs_topic_id: cii3t8ra3v
 helpdocs_category_id: o1zhrfo8n5
