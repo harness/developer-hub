@@ -102,7 +102,7 @@ This release does not include any early access feature.
 
 - Custom Secret Manager creation does not consider the delegate selector. (PL-32260)
 
-  Decrypting secrets using the SSH connection to validate delegate selection fixed this issue.
+  In Custom SM configuration, decrypting secrets using the SSH connection to validate delegate selection fixed this issue.
   The Harness Delegate version 793xx is required for this fix.
 
 - Invites to users fail with an unauthorized error while RBAC setup is still in progress. (PL-32117)
