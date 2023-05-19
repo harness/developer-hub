@@ -43,7 +43,6 @@ This release does not include early access features.
 * The toggle for turning Git Sync on and off was causing the branch settings menu to disappear and display the **Set Up Git Sync** button incorrectly. This issue has been fixed. (FFM-7786)
 * The Target and Target Group pages reported successful save and edit operations before the operations completed. This issue has been fixed. (FFM-7609)
 
-
 ```mdx-code-block
   </TabItem>
 </Tabs>
@@ -53,6 +52,24 @@ This release does not include early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### May 19, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server
+
+The **FF server** has been updated to version **1.1054.2** with the following update.
+
+* The Identifier search filter sometimes incorrectly used a wildcard match. This happened if two flags had overlapping names such as `flag_one` and `flag_one_b`. The detail view of `flag_one_b` sometimes returned `flag_one` details instead. Because flags order by creation, this only happened when flags were created in a certain order. This fix uses an exact match when searching for flag identifiers.
 
 #### May 15, 2023
 
