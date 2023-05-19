@@ -88,18 +88,18 @@ You can add a step at various points in the pipeline such as the beginning, end,
    - **Blue Green**: Blue-green deployment is a technique used to deploy services to a production environment by gradually shifting user traffic from an old version to a new one. The previous version is referred to as the blue environment, while the new version is known as the green environment. Upon completion of the transfer, the blue environment remains on standby in case of a need for rollback or can be removed from production and updated to serve as the template for future updates.
    - **Load Test**: Load testing is a strategy used in lower-level environments, such as quality assurance, where a consistent load is absent and deployment validation is typically accomplished through the execution of load-generating scripts. This is useful to ensure that the application can handle the expected load and validate that the deployment is working as expected before releasing it to the production environment.
 
-2. In **Sensitivity**, choose the sensitivity level. The available options are **High**, **Medium**, and **Low**. When the sensitivity is set to high, even minor anomalies are treated as verification failures. When the sensitivity is set to **High**, any anomaly, no matter how small, will be treated as a verification failure. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
+2. In **Sensitivity**, choose the sensitivity level. The available options are **High**, **Medium**, and **Low**. When the sensitivity is set to high, even minor anomalies are treated as verification failures. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
    
 3. In **Duration**, choose a duration. Harness will use the data points within this duration for analysis. For instance, if you select 10 minutes, Harness will analyze the first 10 minutes of your log or APM data. It is recommended to choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
    
-4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md).
+4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the **Service** tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md).
    
 5. Select **Fail On No Analysis** if you want the pipeline to fail if there is no data from the health source. This ensures that the deployment fails when there is no data for Harness to analyze.
 
 
 ## Create a monitored service
 
-Harness Continuous Verification monitors the health trend deviations using logs and metrics obtained from the health source, such as APM and logging tools, via a monitored service.
+Harness CV monitors the health trend deviations using logs and metrics obtained from the health source, such as APM and logging tools, via a monitored service.
 
 To create a monitored service:
 
@@ -133,11 +133,11 @@ To add a health source:
    The Add New Health Source dialog appears.
 
 2. On the **Define Health Source** tab, do the following:
-      1. In the **Define Health Source** section, select **SignalFx** as health source type.
+      1. In the **Define Health Source** section, select **SignalFx** as the health source type.
       2. In the **Health Source Name** field, enter a name for the health source.
       3. In the **Connect Health Source** section, select **Select Connector**.  
      The Create or Select an Existing Connector dialog appears.
-      1. Select a connector for the SignalFx health source and then select **Apply Selected**.  
+      1. Select a connector for the SignalFx health source, and then select **Apply Selected**.  
      The selected connector appears in the **Select Connector** dropdown.
       1. Select **Next**.  
       
@@ -153,7 +153,7 @@ Currently, Harness supports only SignalFx metrics. The **SignalFx Metrics** opti
 
 1. On the **Configuration** tab, select **+ Add Metric**.  
    The Add Metric dialog appears.
-2. Enter the following information and then select **Submit**:  
+2. Enter the following information, and then select **Submit**:  
       * **Metric name**: Enter a name for the metric. For example, Memory Metric.
       * **Group name**: If the group to which you want to add the metric already exists, select it.   
      If you want to create a new group, select **+ Add New**. In the Add Group Name dialog enter a group name, and then select **Submit**.
@@ -163,27 +163,24 @@ Currently, Harness supports only SignalFx metrics. The **SignalFx Metrics** opti
 
 #### Define a query
 
-   In the **Query** box, enter your metric query and then select **Run Query**.  
+   In the **Query** box, enter your metric query, and then select **Run Query**.  
    Sample data is displayed in the **Records** box. The **Chart** box displays the graph corresponding to the sample data. This helps you verify if the query that you have built is correct.
 
-<!--- This section needs to be updated with SignalFx example
+
    <details>
-   <summary><b>Sample query for memory usage</b></summary>
+   <summary><b>Sample query to check the number of Kubernetes pods in ready state</b></summary>
 
-   Query: `metric=memory`
+   Query: `data("k8s.container.ready")`
 
-   ![Query - disk usage](./static/cv-sumologic-select-metric-query-memory.png)
+   ![Query - disk usage](./static/cv-signalfx-sample-log-query.png)
 
-   Disk usage records and chart being displayed for the query
+   </details>
 
-   ![Memory usage records and charts](./static/cv-sumologic-select-metric-query-memory-chart-records.png)
-
--->
 
 #### Assign services
 
 In the **Assign** section, select the services to which you want to apply the Sumo Logic metric. Following options are available:
-   * **Continuous Verification (Applied to the pipelines in the Continuous Deployment)**: Select this option to use the metric data in the Continuous Deployment pipeline to ensure that the deployed service is running safely and to perform automatic rollbacks. In addition, the metric will be used to apply machine learning in detecting and highlighting future deployment issues.
+   * **Continuous Verification (Applied to the pipelines in the Continuous Deployment)**: Select this option to use the metric data in the Continuous Deployment pipeline to ensure that the deployed service is running safely and to perform automatic rollbacks. In addition, the metric will be used to apply Machine Learning in detecting and highlighting future deployment issues.
    * **Service Health**: Select this option to use the metric data to track the changes in the health trend of your monitored service.
    * **Service Level Indicator (SLI)**: Select this option to use the metric data to measure the SLI and obtain the performance of the service. 
 
@@ -237,7 +234,7 @@ To set the **Ignore Thresholds** for CV:
 
 1. Go to the **Ignore Thresholds** tab and select the **+ Add Threshold** button.
 2. From the **Metric** dropdown, select the desired metric for which you want to set the rule.
-3. In the Criteria field, choose the type of criteria you want to apply for the threshold:
+3. In the **Criteria** field, choose the type of criteria you want to apply for the threshold:
 - **Absolute Value**: Select this option and enter the **Greater than** and **Lesser than** values.
 - **Percentage Deviation**: Select this option and enter the **Lesser than** value.
 
@@ -253,8 +250,8 @@ To set fail-fast thresholds for CV, follow these steps:
 - **Fail Immediately**
 - **Fail after multiple occurrences**
 - **Fail after consecutive occurrences**
-4. In the Count field, set the number of occurrences. This setting is only visible if you have selected **Fail after multiple occurrences** or **Fail after consecutive occurrences** in the **Action** field. The minimum value must be two.
-3. In the Criteria field, choose the type of criteria you want to apply for the threshold:
+4. In the **Count** field, set the number of occurrences. This setting is only visible if you have selected **Fail after multiple occurrences** or **Fail after consecutive occurrences** in the **Action** field. The minimum value must be two.
+3. In the **Criteria** field, choose the type of criteria you want to apply for the threshold:
 - **Absolute Value**: Select this option and enter the **Greater than** and **Lesser than** values.
 - **Percentage Deviation**: Select this option and enter the **Lesser than** value.
 
@@ -272,9 +269,9 @@ To run the pipeline:
 
 1. In the upper-right corner, select **Run**.  
    
-   The Run Pipeline dialog box appears.
+   The Run Pipeline dialog appears.
 
-2. In the dialog box, do the following:
+2. In the dialog, do the following:
    - **Tag**: If you did not add a tag in the** Artifact Details** settings, select it now.
    - **Skip preflight check**: Select this option if you want to skip the preflight check.
    - **Notify only me about execution status**: Select this option if you want Harness to alert only you about the execution status.
@@ -288,8 +285,8 @@ To run the pipeline:
 The Summary section displays the following details when the Verify step begins:
 
 - Metrics in violation
-- Log Clusters in violation
-- Error Clusters in violation
+- Log clusters in violation
+- Error clusters in violation
 
 Note that it may take some time for the analysis to begin. The screenshot below shows a Verification step running in a deployment:
 
