@@ -66,10 +66,8 @@ If you want the pipeline to deploy the artifact version that initiated the trigg
 
 If you want the pipeline to deploy the last successful published artifact version, use the expression, `<+lastPublished.tag>`.
 
-:::note
-
-In case of container image based artifact sources, lastPublished tag will return the lexicographically last published tag
-
+:::info note
+The `lastPublished` tag returns the lexicographically last published tag for container image based artifact sources.
 :::
 
 ![last published artifact](./static/trigger-on-a-new-artifact-30.png)
