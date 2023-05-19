@@ -57,7 +57,7 @@ This release does not include early access features.
 - Users cannot use Harness secret as LDAP password in FirstGen. (PL-32597, ZD-42655)
   A code enhancement fixed the issue.
 
-  The user group list now displays the number of members. Select this number to see the user details. This is behind the feature flag `PL_CG_SHOW_MEMBER_ID_COUNT`.
+  The user group list now displays the number of users in the group. Select this number to see the user details. This is behind the feature flag `PL_CG_SHOW_MEMBER_ID_COUNT`.
 
 ### April 22, 2023, version 79111
 
