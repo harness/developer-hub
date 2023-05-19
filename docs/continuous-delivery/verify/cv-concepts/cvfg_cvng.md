@@ -5,25 +5,24 @@ description: Comparing CV FirstGen vs CV NextGen.
 slug: /continuous-delivery/verify/cv-concepts/cvfg-cvng
 ---
 
-# CVFG vs CVNG Differences
+# CVFG and CVNG: Key Differences
 
-Continuous Verification when comparing Harness FirstGen (FG) with Harness NextGen (NG) have implementation differences. This document will go through those differences and address mappings between CVFG and CVNG. 
+This topic lists the differences between Continuous Verification FirstGen (CVFG) and Continuous Verification NextGen (CVNG). It also provides the address mappings between them.
 
-## Continuous Verification NextGen Approach
+Harness CVNG introduces a more reliable and customizable approach to Continuous Verification (CV). It relies on your monitoring, logging, and observability solutions as the primary data source for deployment-related information.
 
-In order to make Continuous Verification (CV) more deterministic, the system of record for all data related to deployments is now your monitoring/logging/observability solutions. Compared to CVFG, CVNG exposes the queries that are used for greater flexibility and determinability. Based on your defined analysis time, CVNG will query your monitoring/logging/observability solution(s) for user specified queries and data. 
+Compared to CVFG, CVNG offers greater flexibility and control over the queries used. You can specify the queries to run and retrieve data from your monitoring, logging, and observability solutions based on the defined analysis time. This ensures precise and targeted verification of your deployments.
 
-Continuous Verification along with most of the Harness Platform has greater flexibility as a Harness Step on where you can place CV in your pipeline and the ability to access skip conditions, failure strategies, and other facets of a Harness Step/Stage.
+Harness Platform provides flexible CV capabilities. You can easily add CV as a step in your pipeline and access skip conditions, failure strategies, and other features of a Harness Step/Stage. This level of control allows seamless integration and optimized verification.
 
-## Key Differences between CVFG and CVNG
-There are four major differences between the CVFG and CVNG. 
+## Key differences
 
-1. Introduction of Monitored Service Concept in CVNG: The “when” and “where” to verify concept is still configured as part of the Pipeline Verify Step. The “what” and “how” to query against your Health Source is now in a Monitored Service Configuration. Monitored Services can be templated and also leverage run-time or expressions. 
-2. In one Verify Step in CVNG, you can have multiple Health Sources (data providers) together. Compared to FG where this would require separate steps. For example validating against Prometheus and Datadog is achievable in a singular Verify Step. 
-3. The onus of what has been deployed is now placed on the monitoring/logging/observability solution in CVNG in the form of a Service Instance Identifier (SII). This data previously has come from the Continuous Delivery Pipeline. The SII concept allows querying for changes, for example with a Kubernetes deployment, having an SII as `pod` can allow CVNG to focus in on what has been deployed based on the analysis window. 
-4. CVNG has more verification types now supporting Rolling Deployments and Load Tests. In CVFG, this was limited to “Canary” and “Previous”
+* Introduction of “Monitored Service” concept: In CVNG, the verification concept of "when" and "where" to verify remains configured as part of the Pipeline Verify step. However, the "what" and "how" to query against your health source is defined in a Monitored Service configuration. Monitored Services can be templated and utilize run-time or expressions.
+* Multiple health sources in a single Verify step: In CVNG, you can have multiple health sources (data providers) within a single Verify step. This allows validating against multiple sources such as Prometheus and Datadog in a unified manner, eliminating the need for separate steps as in CVFG.
+* Shifting data R\responsibility to monitoring/logging/observability solution: CVNG places the responsibility of tracking deployed components onto the monitoring/logging/observability solution. This is done through Service Instance Identifier (SII) concept, which replaces the Continuous Delivery pipeline as the source of deployment data. The SII enables querying for changes, focusing on specific deployed elements within the analysis window, such as using the SII "pod" for Kubernetes deployments.
+* Expanded verification types: CVNG introduces additional verification types, including support for rolling deployments and load tests. In CVFG, verification was limited to "canary" and "previous" deployment scenarios.
 
-## Field Mappings Between CVFG and CVNG
+## CVFG and CVNG Field Mappings
 Comparing CVFG and CVNG Field Mappings.
 
 | **CVFG**            | **CVNG**                    |
