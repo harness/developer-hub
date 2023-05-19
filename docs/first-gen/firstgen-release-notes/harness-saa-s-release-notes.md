@@ -38,7 +38,7 @@ This release does not include early access features.
 
 #### Fixed issues
 
-- Null pointer exception occurs when streaming user groups with null values. (PL-32144)
+- Null pointer exception occurs when generating audit events for user groups with null values. (PL-32144)
 - No members appear in user group list even after the user has been added via SCIM. (PL-32482)
 
 ### May 04, 2023, version 79214
