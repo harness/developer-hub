@@ -70,7 +70,7 @@ This release does not include any early access feature.
 
 - The **LAST ACTIVITY** column in the **Connector List** page is not updated. (PL-32582, ZD-42966)
   
-  This column has been removed and the UI no longer displays this.
+  This column has been removed, and the UI no longer displays this.
 
 - The secrets list API return a status code of `200` when permissions are missing. (PL-26474)
 
