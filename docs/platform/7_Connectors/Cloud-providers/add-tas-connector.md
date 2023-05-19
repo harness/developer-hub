@@ -1,6 +1,6 @@
 ---
 title: Add a Tanzu Application Service (TAS) connector
-description: Connect Harness to a TAS space by using a Harness TAS connector.
+description: Connect Harness to your Tanzu accounts and spaces.
 sidebar_position: 6
 ---
 

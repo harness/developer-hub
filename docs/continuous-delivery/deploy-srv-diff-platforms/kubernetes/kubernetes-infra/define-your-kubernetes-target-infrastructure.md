@@ -1,6 +1,6 @@
 ---
 title: Kubernetes infrastructure
-description: This topic show you how to specify the Kubernetes cluster you want to target for your deployment.
+description: Specify the Kubernetes cluster you want to target for your deployment.
 sidebar_position: 1
 helpdocs_topic_id: 0ud2ut4vt2
 helpdocs_category_id: y2cksg5q0x
@@ -144,7 +144,7 @@ Select the cloud platform where your Kubernetes cluster is hosted, such as Googl
 
 1. Select or create a Connector for your target cluster's platform.
 
-For details on the Connector settings, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
+For details on the Connector settings, see [Cloud Platform Connectors](https://developer.harness.io/docs/category/cloud-platform-connectors/).
 
 #### Cluster
 
