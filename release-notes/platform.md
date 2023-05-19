@@ -68,7 +68,7 @@ This release does not include any early access feature.
   
   A code enhancement fixed this issue.
 
-- The **LAST ACTIVITY** column in the connector list page is not updated. (PL-32582, ZD-42966)
+- The **LAST ACTIVITY** column in the **Connector List** page is not updated. (PL-32582, ZD-42966)
   
   This column has been removed and the UI no longer displays this.
 
