@@ -13,7 +13,7 @@ export default function communityAspects() {
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
           <div className={styles.btnContainer}>
-            <Link href="https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw">
+            <Link href="https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw">
               <Tooltip placement="top" overlay="Join Harness Community Slack">
                 <button className={styles.btn}>
                   <img src={`${baseUrl}img/slack.svg`} />
@@ -33,6 +33,13 @@ export default function communityAspects() {
               <Tooltip placement="top" overlay="API Reference">
                 <button className={styles.btn}>
                   <img src={`${baseUrl}img/icon_api_docs.svg`} />
+                </button>
+              </Tooltip>
+            </Link>
+            <Link href="/kb">
+              <Tooltip placement="top" overlay="Knowledge Base">
+                <button className={styles.btn}>
+                  <img src={`${baseUrl}img/kb.svg`} />
                 </button>
               </Tooltip>
             </Link>

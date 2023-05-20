@@ -41,6 +41,8 @@ To begin your installation, download the following files:
 
 ## Save Docker images to your private registry
 
+To save Docker images, do the following:
+
 1. Sign in to your private registry.
     ```
     #Authenticate with Docker for Docker Registry
@@ -62,7 +64,7 @@ To begin your installation, download the following files:
 ## Download and push Helm charts
 After you save Docker images to your private registry, you must download the Helm charts and push them to your repository.
 
-**To download and push Helm charts**
+To download and push Helm charts:
 
 You can use Helm to pull the chart and push it to your private repository or download the chart directly.
 
@@ -73,12 +75,14 @@ You can use Helm to pull the chart and push it to your private repository or dow
     helm push harness docker://private-repo
     ```
 
-**To download the Helm chart**
+To download the Helm chart:
  
  - Download the chart from the [Harness repository](https://github.com/harness/helm-charts/releases).
 
 ## Install via Helm
 Next, you are ready to install via Helm by updating your `override.yaml` file with your private registry information.
+
+To install via Helm, do the following:
 
 1. Update the `override.yaml` file with your private registry information.
     ```

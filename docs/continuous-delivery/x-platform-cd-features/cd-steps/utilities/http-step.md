@@ -70,11 +70,33 @@ Another method:
 
 You can copy the key and paste it in the HTTP step **Header** setting. For more information, go to [add and manage API keys](/docs/platform/User-Management/add-and-manage-api-keys).
 
-## Output
+## Input variables
+
+Create input variables that can be used by other fields within the step. The **Value** setting can contain fixed values, expressions, or runtime inputs.
+
+These variables can be used by other fields like URLs by using the following expressions: 
+
+```<+spec.inputVariables.variable_name>``` or ```<+step.spec.inputVariables.variable_name>```
+
+![](./static/http-step-06.png)
+
+## Output variables
 
 Create output variables to be used by other steps in the stage. The **Value** setting can contain any HTTP step input, output, or response information.
 
 You can also use ​JSON and XML functors in the values for the output variable. For example, `<+json.select("data.attributes.version_pins.mvn-service://new-construction-api", httpResponseBody)>`.
+
+You can use pipeline variables along with `httpResponseBody` and `httpResponseCode`.
+
+Here are some examples:
+
+`<+json.object(httpResponseBody).title>`
+
+`<+json.select(<+pipeline.variables.title>, httpResponseBody)>`
+
+To concatenate strings within the JSON functor:
+
+`<+json.select(<+ <+pipeline.variables.user> + <+pipeline.variables.id>>,httpResponseBody)>` or `<+json.select("user".concat(<+pipeline.variables.id>),httpResponseBody)>`
 
 For more information, go to [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors).
 

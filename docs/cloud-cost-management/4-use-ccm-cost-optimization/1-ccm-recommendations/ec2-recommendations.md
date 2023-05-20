@@ -55,7 +55,8 @@ Harness CCM provides two types of recommendations to optimize your EC2 instances
 
 ## Enable EC2 recommendations
 
-
+You must add the required permissions and enable EC2 recommendations in AWS.
+Go to [Enable EC2 recommendations](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#enable-ec2-recommendations) for the tasks to be performed on your AWS console.
 
 :::note
 If you are an existing customer, you need to:
@@ -77,8 +78,6 @@ Once you have the `ce:GetRightsizingRecommendation` permission added to the **Ha
   
     ![](./static/ec2-recom-aws-screen-2.png)
 
-
-
 4. Verify that you have enabled these recommendations correctly. 
 
   Open AWS CloudShell and run the following command: 
@@ -97,14 +96,15 @@ Once you have the `ce:GetRightsizingRecommendation` permission added to the **Ha
 You need to perform the following steps in Harness:
 
 
+After completing the aforementioned tasks, you need to perform the following steps in Harness:
+
+
 1. While creating a new AWS CCM connector, select the **Inventory Management** feature to enable recommendations. For more information, go to [Set up CCM for your AWS account](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
 
  
 2. Add the required **Cost Explorer** permissions to the CCM template:
 
     ![](./static/ec2-create-cross-account-role.png)
-
-  
 
 ### View your EC2 recommendations
 

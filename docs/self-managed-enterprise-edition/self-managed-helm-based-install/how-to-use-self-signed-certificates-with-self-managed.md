@@ -1,5 +1,6 @@
 ---
 title: Use self-signed certificates with Helm-based installations
+sidebar_label: Use self-signed certificates
 description: Learn how to modify the delegate truststore to generate self-signed certificates.
 # sidebar_position: 2
 helpdocs_topic_id: h0yo0jwuo9
@@ -8,17 +9,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-:::info
+:::info note
 Applies to Helm-based installation only.
 :::
 
 Harness Self-Managed Enterprise Edition supports authorization by self-signed certificate. This document explains how to modify the delegate truststore for the use of self-signed certificates in the self-managed environment. 
 
-Harness Delegate makes outbound connections to the resources you specify—for example, artifact servers and verification providers. These services typically use public certificates that are included in the operating system or the JRE. The self-signed certificates that you use, however, must be added to the delegate. The process that this document describes is supported for use with the legacy delegate in combination with the Harness CD, CI and STO modules. 
+Harness Delegate makes outbound connections to the resources you specify—for example, artifact servers and verification providers. These services typically use public certificates that are included in the operating system or the JRE. You must add the self-signed certificates that you use to the delegate. The process that this document describes is supported for use with the legacy delegate in combination with the Harness CD, CI, and STO modules. 
 
 **IMPORTANT**
 
-* For Golang 1.15 and later, the self-signed certificate must include a Subject Alternative Name (SAN). For more information, see the JFrog [knowledge base](https://jfrog.com/knowledge-base/general-what-should-i-do-if-i-get-an-x509-certificate-relies-on-legacy-common-name-field-error/).
+* For Golang 1.15 and later, the self-signed certificate must include a Subject Alternative Name (SAN). For more information, go to the JFrog [knowledge base](https://jfrog.com/knowledge-base/general-what-should-i-do-if-i-get-an-x509-certificate-relies-on-legacy-common-name-field-error/).
 * For truststores used with Istio, the size of the RSA key must not exceed 2048 bits.
 
 ## Create the truststore
@@ -148,7 +149,7 @@ Repeat this command for each certificate you want to include in the truststore.
 
 The following Kubernetes manifest provides an example of a delegate truststore modified for the generation of self-signed certificates:
 
-Example harness-delegate.yml
+#### Example harness-delegate.yml
 
 ```
 apiVersion: v1  
