@@ -51,7 +51,7 @@ policies:
         immediate: true
 ```
 
-For resizing, let's consider a policy for EBS volume change from gp2 to gp3: 
+For resizing, let's consider a policy for EBS volume migration from gp2 to gp3: 
 
 ```
 policies:
