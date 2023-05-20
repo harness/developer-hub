@@ -354,7 +354,7 @@ See [Scale Kubernetes pods](../../continuous-delivery/deploy-srv-diff-platforms
 
 #### Can I prune resources?
 
-Yes. You can manually delete Kubernetes resources using the [Delete](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources) step, but you can also set Harness to perform resource pruning during deployment using the **Enable Kubernetes Pruning** setting in the **Rolling Deployment** and **Stage Deployment** (used in Blue Green deployments) steps.
+Yes. You can manually delete Kubernetes resources using the [Delete](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources) step, but you can also set Harness to perform resource pruning during deployment using the **Enable Kubernetes Pruning** setting in the **Rolling Deployment** and **Stage Deployment** (used in blue green deployments) steps.
 
 
 
@@ -444,7 +444,7 @@ See [Harness Git Experience Quickstart](../../platform/10_Git-Experience/configu
 
 ### Community Edition
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 #### Do you have a free version of Harness CD?
 
@@ -472,15 +472,15 @@ Harness uses this information for sales, support, product updates, security upda
 
 The use of this information is governed by our [Privacy Policy](https://harness.io/privacy).
 
-If you would like us to stop processing your data, or if you have any other questions or requests concerning your data, please contact the [Harness Privacy Team](mailto:privacy@harness.io). For more information on how we process your data, see our [Privacy Policy](https://harness.io/privacy).
+If you would like us to stop processing your data, or if you have any other questions or requests concerning your data, please contact the [Harness Privacy Team](mailto:privacy@harness.io). For more information on how we process your data, go to our [Privacy Policy](https://harness.io/privacy).
 
 ### Azure Web Apps
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 #### Can I deploy Azure Web Apps?
 
-Yes. Harness can deploy a Docker image or non-containerized artifact for your Azure Web App. You can deploy to slots, perform traffic shifting, and swap slots. Harness supports common deployment strategies (Basic, Canary, and Blue Green).
+Yes. Harness can deploy a Docker image or non-containerized artifact for your Azure Web App. You can deploy to slots, perform traffic shifting, and swap slots. Harness supports common deployment strategies (basic, canary, and blue green).
 
 For more information, go to [Azure Web Apps deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial).
 
@@ -488,7 +488,7 @@ For more information, go to [Azure Web Apps deployments](/docs/continuous-delive
 
 Basic, canary, and blue green.
 
-The Rolling strategy doesn't suit Azure Web App deployments as they are use slots for staging and production environments. The Rolling strategy uses a single environment and roll out a new app version incrementally.
+The Rolling strategy doesn't suit Azure Web App deployments, as they use slots for staging and production environments. The Rolling strategy uses a single environment and roll out a new app version incrementally.
 
 #### What limitations are there?
 
@@ -499,7 +499,7 @@ The Rolling strategy doesn't suit Azure Web App deployments as they are use slot
 
 ### AWS ASG
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 #### What is an ASG deployment?
 
@@ -509,7 +509,7 @@ Here's a summary of how Harness deploys new ASG versions:
    1. Harness takes the launch template and ASG configuration files you provide and creates a new ASG and its instances in your AWS account and region.
 2. Subsequent deployments:
    1. Harness creates a new version of the launch template.
-3. Har	ness uses the new version of the launch template to update the ASG. For example, if you increased the desired capacity (desiredCapacity) for the ASG in your ASG configuration file, Harness will create a new version of the ASG with the new desired capacity.
+3. Harness uses the new version of the launch template to update the ASG. For example, if you increased the desired capacity (`desiredCapacity`) for the ASG in your ASG configuration file, Harness will create a new version of the ASG with the new desired capacity.
    1. Instance refresh is triggered (a rolling replacement of all or some instances in the ASG).
 
 #### What do I need for an ASG deployment?
@@ -535,11 +535,11 @@ AWS has the following limitations to keep in mind:
 
 ### AWS ECS
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 #### What is a Harness ECS deployment?
 
-You can deploy images to your Amazon Elastic Container Service (ECS) cluster using a rolling, canary, and blue green deployment strategies.
+You can deploy images to your Amazon Elastic Container Service (ECS) cluster using rolling, canary, and blue green deployment strategies.
 
 Harness supports standard ECS specifications:
 
@@ -563,7 +563,7 @@ You can use both JSON and YAML for your task and service definitions.
 
 #### Can I perform auto scaling?
 
-Yes. The ECS service(s) you deploy with Harness can be configured to use AWS Service Auto Scaling to adjust its desired ECS service count up or down in response to CloudWatch alarms. For more information on using Auto Scaling with ECS, see [Target Tracking Scaling Policies](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html) from AWS.
+Yes. The ECS service(s) you deploy with Harness can be configured to use AWS Service Auto Scaling to adjust its desired ECS service count up or down in response to CloudWatch alarms. For more information on using Auto Scaling with ECS, go to [Target Tracking Scaling Policies](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/service-autoscaling-targettracking.html) from AWS.
 
 Before you set up Auto Scaling for the ECS service in Harness, you need to obtain the JSON for the Scalable Target and Scalable Policy resources from AWS.
 
@@ -634,11 +634,11 @@ During failure scenarios, ECS circuit breaker performs a rollback automatically 
 
 ### AWS Lambda
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 #### What is a Lambda deployment?
 
-In Harness, you specify the location of the function definition and artifact and AWS account and Harness will deploy the Lambda function and automatically route the traffic from the old version of the Lambda function to the new version on each deployment.
+In Harness, you specify the location of the function definition, artifact, and AWS account. Harness will deploy the Lambda function and automatically route the traffic from the old version of the Lambda function to the new version on each deployment.
 
 **Looking for Serverless.com Framework Lambda?** Harness also supports Serverless.com Framework Lambda deployments. For more information, go to [AWS Lambda deployments (Serverless.com Framework)](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart).
 
@@ -670,7 +670,7 @@ Harness supports all of the popular Git platforms for storing your function defi
 
 ### Spot Elastigroup
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 #### What is a Spot deployment in Harness?
 
@@ -680,11 +680,11 @@ You can deploy AWS ASGs using Harness and the Spot Elastigroup management platfo
 
 - Currently, Harness integrates with Spot only for Amazon Web Services (AWS) deployments by using Elastigroups.
 - Spot Elastigroup deployments support AMI artifacts only.
-- Spot Elastigroup deployments support only Basic, Canary, and Blue Green execution types.
+- Spot Elastigroup deployments support only basic, canary, and blue green execution types.
 
 ### Google Cloud Functions
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 #### What is a Google Cloud Function deployment?
 
@@ -712,7 +712,7 @@ Harness supports the following:
 
 ### AWS Lambda (Serverless.com Framework)
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 #### What is a Lambda Serverless.com Framework deployment?
 
@@ -739,7 +739,7 @@ Serverless Lambda deployments are versioned using the timestamp of their deploym
 
 ### Tanzu Application Services (TAS)
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 ### What is a TAS deployment?
 
@@ -755,7 +755,7 @@ Basic, canary, blue green, and rolling.
 
 ### Traditional deployments
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, see [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 
 #### What are traditional deployments?
