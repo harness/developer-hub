@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 ```
 
 :::important
-Currently this feature is behind the feature flag `PL_ENABLE_MULTIPLE_IDP_SUPPORT`. Contact Harness Support to enable the feature.
+Currently, this feature is behind the feature flag `PL_ENABLE_MULTIPLE_IDP_SUPPORT`. Contact Harness Support to enable the feature.
 :::
 
 Harness supports multiple Identity Providers (IdPs) for user authentication using SAML.
