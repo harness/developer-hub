@@ -1,5 +1,5 @@
 ---
-title: Multiple Identity Providers
+title: Multiple identity providers
 description: Configure and use multiple IdPs for authentication.
 ---
 ```mdx-code-block
