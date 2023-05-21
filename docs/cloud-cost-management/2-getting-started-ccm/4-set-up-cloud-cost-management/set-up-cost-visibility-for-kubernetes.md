@@ -27,7 +27,7 @@ For CCM, Kubernetes connectors are available only at the Account level in Harnes
 
 ## Create a cloud provider Kubernetes connector
 You need to have completed the following tasks before creating a CCM connector for your Kubernetes cluster:
-* You need to set up Harness Delegate for each Cloud Provider (K8s cluster) connector. Delegate is installed when adding a Connector. For more information, go to [Install a Kubernetes Delegate](../../../../tutorials/platform/install-delegate.md). The Delegate is responsible for collecting metrics from the K8s connector.
+* You need to set up Harness Delegate for each Cloud Provider (K8s cluster) connector. Delegate is installed when adding a Connector. For more information, go to [Install a Kubernetes Delegate](https://developer.harness.io/tutorials/platform/install-delegate/). The Delegate is responsible for collecting metrics from the K8s connector.
 
   ### Delegate role requirements for CCM visibility features and recommendations:
   
