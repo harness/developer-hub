@@ -19,7 +19,7 @@ This topic explains how to set up multiple SAML providers in Harness.
 ## Configure multiple SAML providers
 
 To configure multiple SAML providers in Harness: 
-1. Select **ACCOUNT SETTINGS** and then select **Authentication**.
+1. Select **ACCOUNT SETTINGS**, and then select **Authentication**.
 2. If you have not configured any SAML provider in your account, select **SAML Provider**.
    If you already have a configured SAML provider, select **Add SAML Provider** to add another SAML provider.
    The SAML Provider settings appear.
