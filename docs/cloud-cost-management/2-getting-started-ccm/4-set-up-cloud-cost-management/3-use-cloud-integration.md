@@ -24,7 +24,7 @@ Harness Cloud Cost Management (CCM) monitors the cloud costs of your Kubernetes 
 The **Cloud Integration** page displays the existing connectors for the Kubernetes clusters and the cloud accounts.
 2. Click **New Cluster/Cloud account.**
 3. Click **Advanced**.
-4. For further instructions, go to [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector) and [Set up CCM for Kubernetes](set-up-cost-visibility-for-kubernetes.md).
+4. For further instructions, go to [Add a Kubernetes Cluster Connector](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector) and [Set up CCM for Kubernetes](set-up-cost-visibility-for-kubernetes.md).
 
 ## Creating the Kubernetes connector using the Quick Create option
 
