@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 Currently, this feature is behind the feature flag `PL_ENABLE_MULTIPLE_IDP_SUPPORT`. Contact Harness Support to enable the feature.
 :::
 
-Harness supports multiple Identity Providers (IdPs) for user authentication using SAML.
+Harness supports multiple identity providers (IdPs) for user authentication using SAML.
 You can configure a mix of various SAML providers and enable or disable them for user authentication.
 
 This topic explains how to set up multiple SAML providers in Harness.
