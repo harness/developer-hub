@@ -1,0 +1,69 @@
+---
+title: Integrate OAuth with Git experience
+description: Configure your credentials for Git experience.
+sidebar_position: 10
+---
+
+
+:::important
+Currently, this feature is behind the feature flag `PIE_GITX_OAUTH`. Contact Harness Support to enable the feature.
+:::
+
+
+You can now push configuration changes using your own credentials by integrating OAuth with Git. 
+
+Harness will use your Git credentials for all Git commits if you choose to "Connect to a Git Provider" in your user profile.
+
+This topic explains how to configure OAuth for Git experience in Harness.
+
+## Configure OAuth for Git provider
+
+Harness supports OAuth integration for the following Git providers: 
+* GitHub
+* GitLab
+* Bitbucket
+
+This topic explains how to configure OAuth for GitHub.
+
+To configure your credentials for Git: 
+
+1. Go to your user profile in Harness.
+2. Select **GitHub** in **Connect to a Git Provider**.
+
+   ![](./static/select-git-provider.png)
+
+3. Select **Connect**.
+   The OAuth settings for the selected Git provider appear.
+
+   ![](./static/authorize-git-account.png)
+
+4. Select **Authorize**.
+   Harness fetches the corresponding OAuth token associated with the Git provider and displays it under **Access token for Git providers**.
+
+   ![](./static/oauth-credentials.png)
+
+## Commit changes to Git with the configured OAuth token
+
+To commit changes to Git using the configured OAuth token: 
+
+1. Go to an existing remote pipeline or [create](./configure-git-experience-for-harness-entities.md#add-a-remote-pipeline) a new one.
+2. Edit the pipeline and select **Save**.
+   The **Save Pipelines to Git** settings appear. Harness displays the credentials being used for this commit.
+
+   ![](./static/git-commit-oauth.png)
+
+3. Select **Save**.
+
+   :::important
+   If you have not configured OAuth for Git, Harness prompts you to set up an access token in the user profile to use it for Git commits.
+   You can do one of the following to commit your changes to Git: 
+   * Select **Connect** to configure OAuth for Git and use your Git credentials for the commit and then select **Save**.
+   * Select **Save** to use your Harness user profile credentials for the commit.
+
+   ![](./static/commit-without-oauth.png)
+   :::
+
+4. Go to your branch in the Git repository. It now displays your credentials besides the commit.
+
+
+
