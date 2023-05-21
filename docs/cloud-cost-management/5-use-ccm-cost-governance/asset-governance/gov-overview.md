@@ -30,7 +30,7 @@ In certain cases, there can be overlapping rules targeting the same resource. Fo
   
 To apply a recommendation, select the row. The recommendation opens on the **Recommendations** page. To learn how to enforce this recommendation, go to [Governance recommendations](../../4-use-ccm-cost-optimization/1-ccm-recommendations/governance.md).
 
-## How are the cost savings calculated?
+<!---## How are the cost savings calculated?
 
 Cost savings are calculated for the last 30 days. However, for rightsizing rules, it depends on the resize percentage specified in the policy. For example, let's consider the following rule to resize an RDS instance. The potential or realized cost savings is 30% of the last 30 days cost.
 
@@ -97,7 +97,7 @@ An EBS snapshot with no associated volume refers to a snapshot that was created 
 
 On the other hand, an unused EBS snapshot refers to a snapshot that is not currently being utilized by any resources, such as an EC2 instance or an AMI. This type of snapshot can still be valuable as it can be used to create a new volume or restore an existing one. However, if an unused snapshot is no longer needed, deleting it can help reduce storage costs.
 
-In summary, an EBS snapshot with no volume is an orphaned resource that cannot be used, while an unused EBS snapshot is a potentially useful resource that is not currently in use.
+In summary, an EBS snapshot with no volume is an orphaned resource that cannot be used, while an unused EBS snapshot is a potentially useful resource that is not currently in use.-->
 
 
 
