@@ -82,7 +82,7 @@ Configure more SAML providers by repeating the steps.
 ## Enable login via SAML
 
    Select **Login via SAML** and then select **Continue**.
-   To log into Harness, a user of this account must select the SAML provider and then log in.
+   To log in to Harness, a user of this account must select the SAML provider and then log in.
 
    ![](./static/multiple-idp-login.png)
 
