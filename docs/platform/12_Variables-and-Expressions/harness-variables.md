@@ -1025,14 +1025,14 @@ When you run the pipeline, the expressions will resolve to their respective labe
 
 ![](./static/harness-variables-40.png)
 
-### <+artifact.primary.metadata.SHA> / <+artifact.primary.metadata.SHAV2>
+### <+artifacts.primary.metadata.SHA> / <+artifacts.primary.metadata.SHAV2>
 
 Digest/SHA256 hash of the docker image.
 Since docker image manifest API supports 2 schema versions, schemaVersion1 and schemaVersion2, there could be SHA values corresponding to each schema version.
 
 Here are the expressions for referencing each version:
-SHA value of schemaVersion1: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA>`
-SHA value of schemaVersion2: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2>`
+SHA value of schemaVersion1: `<+artifacts.primary.metadata.SHA>`
+SHA value of schemaVersion2: `<+artifacts.primary.metadata.SHAV2>`
 
 ### <+artifact.primary.identifier>
 
