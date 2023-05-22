@@ -81,7 +81,7 @@ This release does not include early access features.
 
 The **FF server** has been updated to version **1.1054.2** with the following update.
 
-* The Identifier search filter sometimes incorrectly used a wildcard match. This happened if two flags had overlapping names such as `flag_one` and `flag_one_b`. The detail view of `flag_one_b` sometimes returned `flag_one` details instead. Because flags order by creation, this only happened when flags were created in a certain order. This fix uses an exact match when searching for flag identifiers.
+* The Identifier search filter sometimes incorrectly used a wildcard match. This happened if two flags had overlapping names, such as `flag_one` and `flag_one_b`. The detail view of `flag_one_b` sometimes returned `flag_one` details instead. Because flags order by creation, this only happened when flags were created in a certain order. This fix uses an exact match when searching for flag identifiers.
 
 #### May 15, 2023
 
