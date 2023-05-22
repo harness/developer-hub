@@ -100,7 +100,7 @@ Harness provides different types of delegates to give you flexibility in how you
 
 You are not limited to using a delegate of the same type as your deployment platform, although that is more complicated to set up initially.
 
-For delegates types, got to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+For delegates types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 #### Where do I install the Harness Delegate?
 
@@ -297,7 +297,7 @@ If you want to install Kubernetes delegates in separate clusters, do not use the
 
 ### Troubleshooting the delegate
 
-For an overview of Harness' support for platforms, methodologies, and related technologies, Go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
+For an overview of Harness' support for platforms, methodologies, and related technologies, go to [Supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md).
 
 #### What are common problems with the delegate?
 
