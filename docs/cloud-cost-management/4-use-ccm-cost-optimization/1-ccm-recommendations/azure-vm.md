@@ -57,7 +57,7 @@ Harness CCM provides two types of recommendations to optimize your VMs:
 2. Click **Recommendations**.
 3. Click the filter icon.
 4. In the **Recommendation Type** dropdown list, select **AZURE_INSTANCE**.
-5. Click **Apply**. 
+5. Select **Apply**. 
 
   The recommendations for Azure VMs are displayed. 
 
