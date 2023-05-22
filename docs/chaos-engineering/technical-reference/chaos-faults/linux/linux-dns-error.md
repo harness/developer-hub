@@ -2,6 +2,10 @@
 id: linux-dns-error
 title: Linux DNS error
 ---
+
+import Ossupport from './shared/note-supported-os.md'
+
+
 Linux DNS error injects chaos to disrupt the DNS resolution on a Linux machine.
 
 ![Linux DNS error](./static/images/linux-dns-error.png)
@@ -10,10 +14,7 @@ Linux DNS error injects chaos to disrupt the DNS resolution on a Linux machine.
 - Induces DNS error on the target Linux machines.
 - Simulates loss of access to host by blocking the DNS resolution of host names.
 
-:::info note
-- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, Fedora 30 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in an active state, and the infrastructure should be in `CONNECTED` state.
-:::
+<Ossupport />
 
 ## Fault tunables
 <h3>Optional tunables</h3>

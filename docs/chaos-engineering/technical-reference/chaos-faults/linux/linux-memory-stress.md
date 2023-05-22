@@ -2,6 +2,10 @@
 id: linux-memory-stress
 title: Linux memory stress
 ---
+
+import Ossupport from './shared/note-supported-os.md'
+
+
 Linux memory stress causes memory consumption of the target Linux machines for a specific duration.
 
 ![Linux memory stress](./static/images/linux-memory-stress.png)
@@ -11,10 +15,7 @@ Linux memory stress causes memory consumption of the target Linux machines for a
 - Simulates a lack of memory for processes running on the application, which degrades their performance.
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to excessive consumption of memory.
 
-:::info note
-- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, Fedora 30 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in an active state, and the infrastructure should be in `CONNECTED` state.
-:::
+<Ossupport />
 
 ## Fault tunables
 <h3>Optional tunables</h3>

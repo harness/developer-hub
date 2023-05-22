@@ -2,6 +2,10 @@
 id: linux-network-latency
 title: Linux network latency
 ---
+
+import Ossupport from './shared/note-supported-os.md'
+
+
 Linux network latency injects chaos to disrupt network connectivity in linux machine by adding delay to the network requests.
 
 ![Linux network latency](./static/images/linux-network-latency.png)
@@ -10,10 +14,7 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
 - Induces Network Latency on the target Linux machines.
 - Simulates latency in connectivity access by delaying the network requests of the machine.
 
-:::info note
-- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, Fedora 30 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in an active state, and the infrastructure should be in `CONNECTED` state.
-:::
+<Ossupport />
 
 ## Fault tunables
 <h3>Mandatory tunables</h3>

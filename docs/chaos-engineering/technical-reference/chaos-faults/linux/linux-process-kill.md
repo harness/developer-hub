@@ -2,6 +2,10 @@
 id: linux-process-kill
 title: Linux process kill
 ---
+
+import Ossupport from './shared/note-supported-os.md'
+
+
 Linux process kill kills the target processes running on the Linux machines. It checks the performance of the application or process running on the Linux machine.
 
 ![Linux process kill](./static/images/linux-process-kill.png)
@@ -12,10 +16,7 @@ Linux process kill:
 - Disrupts the application-critical processes such as databases or message queues by killing the underlying processes or threads.
 - Determines the resilience of applications when processes on a Linux machine are unexpectedly killed (or disrupted).
 
-:::info note
-- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, Fedora 30 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in an active state, and the infrastructure should be in `CONNECTED` state.
-:::
+<Ossupport />
 
 ## Fault tunables
 <h3>Mandatory tunables</h3>

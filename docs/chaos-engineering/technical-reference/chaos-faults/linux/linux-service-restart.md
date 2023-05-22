@@ -2,6 +2,10 @@
 id: linux-service-restart
 title: Linux service restart
 ---
+
+import Ossupport from './shared/note-supported-os.md'
+
+
 Linux service restart stops the target system services running in a Linux machine.
 - It determines the performance and resilience of the application (or services) running on Linux machines.
 
@@ -11,10 +15,7 @@ Linux service restart stops the target system services running in a Linux machin
 - Service restart determines the resilience of an application upon random halts.
 - Determines how efficiently an application recovers and restarts the services.
 
-:::info note
-- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, Fedora 30 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in an active state, and the infrastructure should be in `CONNECTED` state.
-:::
+<Ossupport />
 
 ## Fault tunables
 <h3>Mandatory tunables</h3>
