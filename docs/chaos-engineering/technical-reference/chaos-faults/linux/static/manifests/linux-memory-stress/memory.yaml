@@ -1,4 +1,4 @@
-# memory bytes to consume
+# memory to consume
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:
@@ -8,4 +8,4 @@ metadata:
 spec:
   stressChaos/inputs:
     workers: 1
-    memoryBytes: 5000
+    memory: 50%
