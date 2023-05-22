@@ -2,10 +2,6 @@
 title: Windows Build
 description: This topic contains information on how build and run the Proxy on windows machines
 sidebar_position: 130
-helpdocs_topic_id: q0kvq8nd2o
-helpdocs_category_id: 0dqv0mh8xu
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 # Windows Build

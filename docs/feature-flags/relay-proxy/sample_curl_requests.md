@@ -2,10 +2,6 @@
 title: Sample cURL Requests
 description: This topic contains some example curl requests that can be useful for debugging
 sidebar_position: 110
-helpdocs_topic_id: q0kvq8nd2o
-helpdocs_category_id: 0dqv0mh8xu
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 # Sample cURL Requests

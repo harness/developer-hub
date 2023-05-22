@@ -2,10 +2,6 @@
 title: Enabling TLS
 description: This topic contains information on how to enable TLS in the Proxy
 sidebar_position: 120
-helpdocs_topic_id: q0kvq8nd2o
-helpdocs_category_id: 0dqv0mh8xu
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 # Enabling TLS

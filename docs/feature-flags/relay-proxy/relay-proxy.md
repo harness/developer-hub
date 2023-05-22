@@ -2,13 +2,9 @@
 title: Relay proxy overview
 description: This topic describes what is Relay Proxy and how to use it with Harness Feature Flags (FF).
 sidebar_position: 10
-helpdocs_topic_id: q0kvq8nd2o
-helpdocs_category_id: 0dqv0mh8xu
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
-This topic describes Relay Proxy and how to use it with Harness Feature Flags (FF).
+This topic describes the Harness Relay Proxy and how to use it with Feature Flags (FF).
 
 The Relay Proxy enables your apps to connect directly to Feature Flag services without having to make a significant number of outbound connections to FF services. The Relay Proxy establishes a connection to the Feature Flags configuration data and relays that connection to clients in an organization's network.
 
@@ -70,11 +66,7 @@ When the proxy starts, an embedded Go server SDK retrieves the Feature and Segme
 
 Client and Server SDKs fetch the evaluation details in the same way as they would if they were interacting with the FF Services on ff-server.
 
-## Blog post
+## More information
 
 For more information about the Relay Proxy, go to our blog post [In-Depth: Harness Feature Flags Relay Proxy](https://harness.io/blog/in-depth-feature-flags-relay-proxy/).
-
-## Next step
-
-After you understand the basics of the Relay Proxy, you can then [deploy it](deploy-relay-proxy.md).
 

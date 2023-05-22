@@ -2,10 +2,6 @@
 title: Offline Mode
 description: This topic contains information on how to configure the proxy to run in offline mode
 sidebar_position: 80
-helpdocs_topic_id: q0kvq8nd2o
-helpdocs_category_id: 0dqv0mh8xu
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 # Offline Mode

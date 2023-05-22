@@ -2,10 +2,6 @@
 title: Endpoints
 description: This topic provides an overview of the endpoints the Proxy uses when it connects to SASS Feature Flags
 5idebar_position: 60
-helpdocs_topic_id: q0kvq8nd2o
-helpdocs_category_id: 0dqv0mh8xu
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 # Endpoints

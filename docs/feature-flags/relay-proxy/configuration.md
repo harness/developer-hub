@@ -1,11 +1,7 @@
 ---
-title: Configuration
+title: Configuration Reference
 description: This topic describes how to configure the Relay Proxy.
 sidebar_position: 30
-helpdocs_topic_id: rae6uk12hk
-helpdocs_category_id: 0dqv0mh8xu
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 # Configuration
