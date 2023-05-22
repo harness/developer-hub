@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-05-19T10:00:25
+date: 2023-05-22T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -17,7 +17,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - May 19, 2023
+## Latest - May 22, 2023
 
 ```mdx-code-block
 <Tabs>
@@ -38,11 +38,22 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-#### Feature Flags server
+#### Feature Flags SDKs
 
-The **FF server** has been updated to version **1.1054.2** with the following update.
+The **Ruby** server SDK has been updated to version **1.1.1** with the following updates.
 
-* The Identifier search filter sometimes incorrectly used a wildcard match. This happened if two flags had overlapping names such as `flag_one` and `flag_one_b`. The detail view of `flag_one_b` sometimes returned `flag_one` details instead. Because flags order by creation, this only happened when flags were created in a certain order. This fix uses an exact match when searching for flag identifiers.
+* Fixed evaluator logic. Before, if a target group had multiple clauses, all clauses had to evaluate to true for the entire condition to be true. This logic has been changed to match that of other SDKs. Now only one condition clause needs to be true. (FFM-6503)
+
+* Certain log messages will now be coded with a unique 4-digit number to help identify issues across SDKs. (FFM-7324)
+  
+  Response code patterns for each SDK stage are:
+  * Initialization - 1xxx
+  * Auth - 2xxx
+  * Close - 3xxx
+  * Polling - 4xxx
+  * Streaming - 5xxx
+  * Evaluation - 6xxx
+  * Metrics - 7xxx
 
 ```mdx-code-block
   </TabItem>
@@ -53,6 +64,24 @@ The **FF server** has been updated to version **1.1054.2** with the following up
 
 <details>
 <summary>2023 releases</summary>
+
+#### May 19, 2023
+
+#####
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server
+
+The **FF server** has been updated to version **1.1054.2** with the following update.
+
+* The Identifier search filter sometimes incorrectly used a wildcard match. This happened if two flags had overlapping names, such as `flag_one` and `flag_one_b`. The detail view of `flag_one_b` sometimes returned `flag_one` details instead. Because flags order by creation, this only happened when flags were created in a certain order. This fix uses an exact match when searching for flag identifiers.
 
 #### May 15, 2023
 
