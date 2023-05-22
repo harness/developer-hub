@@ -55,7 +55,7 @@ Harness CCM provides two types of recommendations to optimize your VMs:
 
 1. In **Harness**, go to the **Cloud Costs** module.
 2. Click **Recommendations**.
-3. Click the filter icon.
+3. Select the filter icon.
 4. In the **Recommendation Type** dropdown list, select **AZURE_INSTANCE**.
 5. Select **Apply**. 
 
