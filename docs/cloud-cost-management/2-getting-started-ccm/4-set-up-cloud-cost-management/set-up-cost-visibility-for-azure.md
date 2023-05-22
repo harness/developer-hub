@@ -156,7 +156,7 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
 | **Azure Inventory Management** (Optional)| This feature provides visibility into your Azure VM inventory dashboard and metrics dashboard. The insights provided by inventory management can be used by finance teams to understand resource utilization across the board.|
 | **Azure optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for your Azure instances with a simple one-time setup. For more information, go to **Create AutoStopping Rules for Azure**.<ul><li>Orchestrate GCE VMs based on idleness</li><li>Set dependencies between VMs</li><li>Granular savings visibility</li><li>Simple one-time setup</li></ul>|
  
-2. Make your selection and click **Continue**.
+2. Make your selection and select **Continue**.
 
 ### Create Service Principal and Assign Permissions
 
