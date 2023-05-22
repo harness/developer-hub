@@ -23,7 +23,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 - Support for the **Enforce Git experience for pipelines and templates** Git experience. (CDS-67885)
   
-  A new Git experience is introduced, **Enforce git experience for pipelines and templates**. Enabling this setting will enforce users to create only remote pipelines and templates. If this setting is enabled, then the `InputSet` will be out of scope as it is controlled by the pipelines. 
+  A new Git experience is introduced, **Enforce git experience for pipelines and templates**. Enabling this setting will let you create only remote pipelines and templates. If this setting is enabled, then the `InputSet` will be out of scope as it is controlled by the pipelines. 
 - Failed steps or stages with failure strategy set as **Ignore Failure** display the status as **Success**. (CDS-67670, ZD-40157)
   
   When you set the failure strategy to **Ignore Failure**, the failure of the steps or stages are ignored and marked as success instead of failed. 
@@ -84,7 +84,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   This issue is fixed by adding a Helm version query parameter in the API call to fetch charts dependent on the user's Helm version.
 - Made code enhancements to not disable triggers if validation fails during runtime. (CDS-68168, ZD-43588)
   
-  Triggers were automatically disabled if Harness fails to fetch templates when validating a pipeline trigger. This was the expected behavior as Harness disables the trigger if pipeline validation fails. 
+  Triggers were automatically disabled if Harness failed to fetch templates when validating a pipeline trigger. This was the expected behavior as Harness disables the trigger if pipeline validation fails. 
   
   Triggers are not disabled now even if pipeline validation fails. 
 - The Terraform Plan step failed when an account level secret manager was selected an the feature flag, `CDS_NOT_ALLOW_READ_ONLY_SECRET_MANAGER_TERRAFORM_TERRAGRUNT_PLAN` was enabled. (CDS-68140)
@@ -135,15 +135,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - The access denied exception was saving the OAuth secret in the Harness Source Code Manager (SCM) user profile. (CDS-68144)
   
   This issue is fixed in the Harness Delegate version 793xx by passing the context correctly from the SCM service to the Git service. 
-- Pipelines with multi-level templates displayed Java errors. (CDS-68094)
+- Pipelines with multi-level templates displayed Java errors because a secret was referenced by another secret. (CDS-68094)
   
-  This issue is fixed in the Harness Delegate version 793xx by improving the error messages in case a secret is referenced by another secret. 
+  This issue is fixed in the Harness Delegate version 793xx by improving the error messages.
+  
 - Fixed an issue in the the Harness Delegate version 793xx by eliminating NPE during ASG pipeline execution. (CDS-59383)
 - The Canary Delete step during rollback skipped deleting Canary resources if the forward Canary Delete step expired.(CDS-58704)
   
   Canary Delete step rely on the Harness release history when Canary Deployment step expires. Harness release history wasn't getting updated, and wasn't made available for the Canary Delete step during rollback because the Watch API call request wasn't getting interrupted properly.
 
-  This issue fixed in the Harness Delegate version 793xx. Now the Canary Delete step is properly deleting canary workloads when the forward Canary Deployment step expires.
+  This issue was fixed in the Harness Delegate version 793xx. Now the Canary Delete step is properly deleting canary workloads when the forward Canary Deployment step expires.
 - Fixed an issue by adding support for retrying `sockettimeoutExceptions` as they can occur due to intermittent issues during a Kubernetes deployment. (CDS-57688)
 
 
