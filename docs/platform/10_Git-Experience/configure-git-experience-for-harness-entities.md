@@ -12,7 +12,7 @@ This quickstart shows you how to enable and use Git Experience for your Harness 
 
 Harness Git Experience lets you store your resources and configurations in Git and pick Git repos as the source of truth.
 
-### Objectives
+## Objectives
 
 You'll learn how to:
 
@@ -20,7 +20,7 @@ You'll learn how to:
 2. Create and sync a pipeline with your Git repo.
 3. Execute a pipeline
 
-### Before you begin
+## Before you begin
 
 Make sure you have the following set up Before you begin this quickstart:
 
@@ -41,7 +41,7 @@ Make sure your repo has at least one branch, such as main or master. For most Gi
 
 :::
 
-### Supported Git providers
+## Supported Git providers
 
 The following section lists the support for Git providers for Harness Git Sync:​
 
@@ -53,7 +53,7 @@ The following section lists the support for Git providers for Harness Git Sync:�
 
 Make sure `feature.file.editor` is not set to `false` in the `bitbucket.properties` file if you are using Bitbucket on-prem.
 
-### Git experience requirements
+## Git experience requirements
 
 You can store your resources and configurations in Git by selecting the **Remote** option while creating the resources.
 
@@ -72,7 +72,20 @@ You can store configurations of the following resources in Git:
 
 Harness tracks where your configuration is kept and manages the whole lifespan of resources by maintaining metadata for each resource.
 
-### Add a remote pipeline
+## Enforce Git experience
+
+In your Harness account, you can enforce Git experience to save resource configurations only in Git repositories.
+
+To enforce Git experience in Harness: 
+
+1. Go to **ACCOUNT SETTINGS**, and then select **Account Resources**.
+2. Select **Default Settings**, and then select **Git Experience**.
+3. Enable **Enforce git experience for pipelines and templates**.
+4. Select **Allow Overrides** besides the settings to save configurations in Harness as well as Git repositories in the child scopes like project and Organization.
+
+   ![](./static/enforce-gitx.png)
+
+## Add a remote pipeline
 
 This quickstart explains how to add a pipeline and sync it with your Git repo. This is called the Remote option. To add an inline pipeline, see **Remote** option. To add an inline pipeline, see [Create a Pipeline](../8_Pipelines/add-a-stage.md#step-1-create-a-pipeline).
 
@@ -141,7 +154,7 @@ The pipeline Studio is displayed with your repo and branch name.
 
 ![](./static/configure-git-experience-for-harness-entities-46.png)
 
-### Add a stage
+## Add a stage
 
 Click **Add Stage**. The stage options appear.
 
@@ -188,7 +201,7 @@ Click **Update**.
 
 The changes you made in Git are now applied to Harness.​
 
-### Execute pipeline
+## Execute pipeline
 
 In your Project, click **Pipelines**.
 
@@ -215,7 +228,7 @@ Click **Run**.
 
 Click **Run Pipeline**.
 
-### Branch selection logic for fetching referenced entities in remote pipelines
+## Branch selection logic for fetching referenced entities in remote pipelines
 
 The configurations of the required resources and any referenced entities like input sets and templates are fetched from Git during pipeline fetch, creation, or execution.
 
@@ -223,7 +236,7 @@ Following are the possible scenarios when your remote pipelines reference entiti
 - The referenced entities are stored in the same repository as the pipeline.
 - The referenced entities are stored in a different repository than the pipeline.
 
-#### The referenced entities are stored in the same repository as the pipeline
+### The referenced entities are stored in the same repository as the pipeline
 
 Following are the key points to keep in mind when the referenced entities reside in the same repository: 
 
@@ -244,7 +257,7 @@ When you execute this pipeline, Harness fetches these entities from the branch t
 
 ![](./static/entities-in-same-git-repo.png)
 
-#### The referenced entities are stored in a different repository than the pipeline
+### The referenced entities are stored in a different repository than the pipeline
 
 Harness fetches entities like templates from the default branch of the repository if they are stored in another repository.
 
@@ -264,7 +277,7 @@ When you execute this pipeline, Harness fetches these nested entities from the d
   
 Harness resolves all the dependencies and then proceeds with Pipeline execution.​
 
-### Next steps
+## Next steps
 
 * [Manage Input Sets and Triggers in Simplified Git Experience​](manage-input-sets-in-simplified-git-experience.md)
 
