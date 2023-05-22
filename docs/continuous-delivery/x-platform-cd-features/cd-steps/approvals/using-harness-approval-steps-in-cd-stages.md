@@ -88,7 +88,7 @@ The maximum timeout duration is 24 days.The timeout countdown appears when the s
    
    :::info Limitations:
 
-   * If you have two approval steps in a step group of a stage with the same step identifier. Harness won't be able to differentiate between the approval steps in such case, and rejects previous deployments with the same identifier.
+   * If you have two approval steps in a step group of a stage with the same step identifier. Harness won't be able to differentiate between the approval steps, and rejects previous deployments with the same identifier.
    * If you change the services in a CD stage, Harness won't reject the previous pipeline waiting for approval because you added/updated the service in the pipeline.
 
    :::
