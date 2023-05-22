@@ -21,9 +21,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <Tabs>
   <TabItem value="What's new">
 ```
-- Enforce Git experience for pipelines and templates. (CDS-67885)
+- Support for the **Enforce Git experience for pipelines and templates** Git experience. (CDS-67885)
   
-  A new Git experience is introduced, **Enforce git experience for pipelines and templates**. Enabling this setting will enforce users to create only remote pipelines and templates. If this setting is enabled, `InputSet` will be out of scope as it will be controlled by the pipelines. Users won't be able to create pipelines or templates if this setting is enabled.
+  A new Git experience is introduced, **Enforce git experience for pipelines and templates**. Enabling this setting will enforce users to create only remote pipelines and templates. If this setting is enabled, then the `InputSet` will be out of scope as it is controlled by the pipelines. 
 - Failed steps or stages with failure strategy set as **Ignore Failure** display the status as **Success**. (CDS-67670, ZD-40157)
   
   When you set the failure strategy to **Ignore Failure**, the failure of the steps or stages are ignored and marked as success instead of failed. 
@@ -42,10 +42,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   With this option, you can now reject old executions waiting on approval when a latest step is approved. 
 - You can add metadata or [JEXL conditions](/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/#jexl-conditions) on artifact triggers just like custom triggers. (CDS-51928)
-- The `<+trigger.artifact.build> expression now resolves with value when you rerun a failed pipeline. (CDS-50585, ZD-42193)
+- The `<+trigger.artifact.build>` expression now resolves with value when you rerun a failed pipeline. (CDS-50585, ZD-42193)
   
   A new API is now supported in the backend to fetch details from `planExecutionsMetadata` that has information about the tags that were used when a trigger fires a pipeline. 
-- You can now use the expression, [`<+lastPublihsed.tag>](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#using-the-triggerartifactbuild-and-lastpublishedtag-expressions) if you want to deploy the last successfully published artifact version. (CDS-53512)
+- You can now use the expression, [`<+lastPublihsed.tag>`](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#using-the-triggerartifactbuild-and-lastpublishedtag-expressions) if you want to deploy the last successfully published artifact version. (CDS-53512)
 - Added support for accessing connector attributes for Deployment Templates. (CDS-54247)
   
   The Harness Delegate version 793xx is required for this feature.
@@ -88,15 +88,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - The Terraform Plan step failed when an account level secret manager was selected an the feature flag, `CDS_NOT_ALLOW_READ_ONLY_SECRET_MANAGER_TERRAFORM_TERRAGRUNT_PLAN` was enabled. (CDS-68140)
 
   This issue is now fixed.
-- Unable to create a Physical Data Center (PDC) connector if the hostname definitions with more than 1000 characters. (CDS-68136)
+- Unable to create a Physical Data Center (PDC) connector if the hostname definitions has more than 1000 characters. (CDS-68136)
   
-  Extended character length support is now provided for PDC connector hostname definitions to accommodate lengthy host and connector names. 
-- Fixed an issue where tabular data is not showing up properly in service dashboards for empty artifacts. (CDS-68100)
+  Extended character length support is now provided for the PDC connector hostname definitions to accommodate lengthy host and connector names. 
+- Fixed an issue where tabular data was not showing up properly in service dashboards for empty artifacts. (CDS-68100)
 - Adding a pipeline tag to a branch affects all branches. (CDS-67983, ZD-43144)
   
-  Pipeline tags are now picked from the pipeline data in Harness whenever available. This prevents tags from changing branches if the pipeline is saved remotely. 
+  Pipeline tags are now picked from the pipeline data in Harness whenever available. This prevents tags from changing branches if pipelines are saved remotely.
 - Improved the **Run Pipeline** page error message by adding FQN expressions to suggest the variable name whenever the evaluation fails. (CDS-67559)
-- Improved the **Run Pipeline** page error message when the getTemplate or merge API call fails. The error message now displays **Pipeline Run Failed For Repo: xx, And Branch: xx**.
+- The error message displayed when the getTemplate or merge API call failed was unclear. (CDS-67500)
+  
+  The error message now displays **Pipeline Run Failed For Repo: xx, And Branch: xx**.
 - Fixed the following issues in the Sync step. (CDS-59624)
   
   * Sync step error for account level agents.
@@ -104,8 +106,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   * Random values in the expressions are considered as false values.
 - Instance sync was not implemented for Azure Kubernetes Service (AKS). (CDS-59624)
   
-  Performance improvements on AKS infrastructure type instance sync improved. The service instance data from the cluster now appears on the service dashboard faster now. 
-- The Harness UI hid the Interrupts button for chained pipelines for multi service multi environment cases. (CDS-59374)
+  Performance improvements on AKS infrastructure type instance sync improved. The service instance data from the cluster now appears on the service dashboard faster. 
+- The Harness UI hid the Interrupts button for chained pipelines for multi-service and multi-environment cases. (CDS-59374)
   
   Previously, the parent pipeline's **planExecutionId**, **projectId**, and **orgId** were passed in the child pipeline, and hence, the interrupt functionality for chained pipeline was not working. This issue is fixed by passing the the correct **planExecutionId**, **projectId**, and **orgId** for the child pipeline. There is no need to hide these buttons anymore.
 - Harness displays an error message when the ASG configuration or ASG launch template is missing from the ASG deployment config file. (CDS-59154)
@@ -114,32 +116,30 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   This issue is fixed by adding descriptive error messages for the ASG Blue Green deployment Rollback step.
 - Fixed an issue where the delegate select field is empty in the UI even if a delegate is present in the YAML. (CDS-58188)
 - Fixed an issue where the expressions of tags were not rendered properly. This issue is fixed in the Harness Delegate version 793xx. (CDS-68703, ZD-43797)
-- Executions are failing with `Canary failed: [Canary Deployment failed - NoSuchMethodError: org.yaml.snakeyaml.constructor.SafeConstructor: method 'void <init>()' not found ]` error message. (CDS-68293, ZD-43753, ZD-43769)
+- Executions were failing with `Canary failed: [Canary Deployment failed - NoSuchMethodError: org.yaml.snakeyaml.constructor.SafeConstructor: method 'void <init>()' not found ]` error message. (CDS-68293, ZD-43753, ZD-43769)
   
-  Fabric8 library used by Harness is upgraded from version 5.x to 6.x. Harness was explicitly using snakeyaml version 2.x due to vulnerabilities present in the 1.x version.
+  The Fabric8 library used by Harness is upgraded from version 5.x to 6.x. Harness was explicitly using snake.yaml version 2.x due to vulnerabilities present in the 1.x version.
   
-  Harness' usages of fabric8 library were throwing the above mentioned because fabric8 library version 5.12.1 uses the old snakeyaml library version 1.x.
+  Harness' usages of Fabric8 library were throwing the above mentioned because Fabric8 library version 5.12.1 uses the old snake.yaml library version 1.x.
 
-  Customers who were using the following were probably affected earlier:
+  Customers who were using the following were affected:
     - FirstGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
     - FirstGen Traffic Split step.
     - FirstGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
     - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
     - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
 
-  This change should not result in any behavioral change. 
-
-  This issue is fixed in the Harness Delegate version 793xx.
+  This issue is fixed in the Harness Delegate version 793xx. This change does not create any behavioral changes. 
 - The access denied exception was saving the OAuth secret in the Harness Source Code Manager (SCM) user profile. (CDS-68144)
   
-  This issue is fixed in the Harness Delegate version 793xx by passing the context correctly from SCM service to Git service. 
+  This issue is fixed in the Harness Delegate version 793xx by passing the context correctly from the SCM service to the Git service. 
 - Pipelines with multi-level templates displayed Java errors. (CDS-68094)
   
   This issue is fixed in the Harness Delegate version 793xx by improving the error messages in case a secret is referenced by another secret. 
 - Fixed an issue in the the Harness Delegate version 793xx by eliminating NPE during ASG pipeline execution. (CDS-59383)
-- The Canary Delete step during rollback could end up in skipping deleting canary resources if the forward Canary Delete step expired.(CDS-58704)
+- The Canary Delete step during rollback skipped deleting Canary resources if the forward Canary Delete step expired.(CDS-58704)
   
-  Canary Delete step rely on Harness release history when Canary Deployment step expires. Due to an issue in the Watch API calls where the request were not getting interrupted properly, Harness release history wasn't getting updated in time, and wasn't made available for Canary Delete step during rollback.
+  Canary Delete step rely on the Harness release history when Canary Deployment step expires. Harness release history wasn't getting updated, and wasn't made available for the Canary Delete step during rollback because the Watch API call request wasn't getting interrupted properly.
 
   This issue fixed in the Harness Delegate version 793xx. Now the Canary Delete step is properly deleting canary workloads when the forward Canary Deployment step expires.
 - Fixed an issue by adding support for retrying `sockettimeoutExceptions` as they can occur due to intermittent issues during a Kubernetes deployment. (CDS-57688)
