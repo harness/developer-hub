@@ -18,7 +18,7 @@ Linux faults disrupt the resources running on a Linux machine. This deteriorates
 ## Fault compatibility matrix
 The faults have been tested for compatibility in the following Linux OS distributions:
 
-|                                                 | stress faults (cpu, memory, disk IO) | network faults (loss, latency, corruption, duplication) | DNS faults (error, spoof) | process faults (process kill, service restart) | time chaos | disk fill |
+|                                                 | Stress faults (cpu, memory, disk IO) | Network faults (loss, latency, corruption, duplication) | DNS faults (error, spoof) | Process faults (process kill, service restart) | Time chaos | Disk fill |
 |-------------------------------------------------|--------------------------------------|---------------------------------------------------------|---------------------------|------------------------------------------------|------------|-----------|
 | Ubuntu 16+                                      | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          | ✓         |
 | Debian 10+                                      | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          | ✓         |

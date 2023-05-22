@@ -27,7 +27,7 @@ Linux memory stress causes memory consumption of the target Linux machines for a
   <tr>
     <td> memory </td>
     <td> Amount of memory to be consumed. </td>
-    <td> Can be specified in bytes(b/B), kilobytes(k/K), megabytes(m/M) or gigabytes(g/G) to be consumed or percentage(%) of available memory to be consumed. The unit can be suffixed with the corresponding value or else, if no unit is provided, the value is assumed to be in bytes. For example: <code>30m</code>, <code>1G</code>, <code>35%</code>, etc. Default: 256m </td>
+    <td> Can be specified in bytes (b/B), kilobytes (k/K), megabytes (m/M), gigabytes (g/G), or percentage (%) of available storage. If no unit is provided, the value is assumed to be in bytes. Example values: <code>30m</code>, <code>1G</code>, <code>35%</code>, etc. Default: 256m </td>
   </tr>
   <tr>
     <td> workers </td>

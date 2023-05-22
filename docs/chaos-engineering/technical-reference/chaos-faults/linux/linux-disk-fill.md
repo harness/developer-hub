@@ -33,7 +33,7 @@ Linux disk fill:
   <tr>
     <td> fillStorage </td>
     <td> Amount of storage to be filled. </td>
-    <td> Can be specified in bytes(b/B), kilobytes(k/K), megabytes(m/M) or gigabytes(g/G) to be filled or percentage(%) of available storage to be filled. The unit can be suffixed with the corresponding value or else, if no unit is provided, the value is assumed to be in bytes. For example: <code>30m</code>, <code>1G</code>, <code>35%</code>, etc. Default: 50%. </td>
+    <td> Can be specified in bytes (b/B), kilobytes (k/K), megabytes (m/M), gigabytes (g/G), or percentage (%) of available storage. If no unit is provided, the value is assumed to be in bytes. Example values: <code>30m</code>, <code>1G</code>, <code>35%</code>, etc. Default: 50%. </td>
   </tr>
   <tr>
     <td> dataBlockSize </td>
