@@ -37,7 +37,6 @@ You might want to set up a Run step to generate your scans automatically wheneve
 
 The following example illustrates the required format for your data:
 
-
 ```yaml
 {  
    "meta":{  
@@ -45,11 +44,11 @@ The following example illustrates the required format for your data:
          "issueName",  
          "fileName"  
       ],  
-      "author":"Jane Doe"  
+      "subproduct":"MyCustomScanner"  
    },  
    "issues":[  
       {  
-         "scanTool":"MySastTool",  
+         "subproduct":"MyCustomScanTool",  
          "issueName":"Cross Site Scripting",  
          "issueDescription":"Lorem ipsum...",  
          "fileName":"homepage-jobs.php",  
@@ -68,9 +67,19 @@ The following example illustrates the required format for your data:
 }
 ```
 
-The basic schema includes a `“meta”` section, which requires a `“key”` — this is the name of the attribute used to deduplicate multiple occurrences of an issue. In the example data file above, `"key"` = `"issueName"`. Thus if the data includes multiple occurrences of an issue with the same `"issueName"`, the pipeline combines these occurrences into one issue. The resulting issue includes a list of all occurrences and the data for each individual occurrence.
+The basic schema includes a `“meta”` section, which requires the following: 
 
-The key used for deduplication must be a Harness field. Do not try to deduplicate based on non-Harness fields. The full JSON takes the form:
+* `“key”`
+
+   The name of the attribute used to deduplicate multiple occurrences of an issue. In the example data file above, `"key"` = `"issueName"`. Thus if the data includes multiple occurrences of an issue with the same `"issueName"`, the pipeline combines these occurrences into one issue. The resulting issue includes a list of all occurrences and the data for each individual occurrence.
+   
+   The key used for deduplication must be a Harness field. Do not try to deduplicate based on non-Harness fields. 
+
+* `“subproduct”` 
+
+   The scan tool name to apply to the overall issue. 
+   
+The full JSON takes the form:
 
 
 ```json
@@ -91,7 +100,7 @@ The key used for deduplication must be a Harness field. Do not try to deduplicat
 | **Name** | **Format** | **Description** |
 | `issueName` | String | Name of vulnerability, license issue, compliance issue, etc. |
 | `issueDescription` | String (long) | Description of vulnerability, license issue, compliance issue, etc. |
-| `scanTool` | String | The name of the scanning tool (e.g. “SonarQube”) |
+| `subProduct` | String | The scan tool name to apply to the individual occurrence of the issue. |
 | `severity` | Float | CVSS 3.0 score (a number from 1.0-10.0) |
 
 #### **Recommended fields**

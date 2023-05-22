@@ -19,7 +19,7 @@ You create your Harness account the first time you use Harness Self-Managed Ente
 
 ![](./static/getting-started-with-self-managed-enterprise-edition-01.png)
 
-**To create your Harness account**
+To create your Harness account, do the following:
 
 1. On the Harness **Sign up** page, enter your email address and a secure password.
 
@@ -33,7 +33,7 @@ You create your Harness account the first time you use Harness Self-Managed Ente
 
 It takes time to learn how to create complex CI/CD pipelines. You can start with opening a project and inviting collaborators. 
 
-**To create a project**
+To create a project, do the following:
 
 1. From the **Continuous Delivery** start page, select **Create Project**.
 

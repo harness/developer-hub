@@ -1,6 +1,6 @@
 ---
 title: Add a Microsoft Azure connector
-description: The Azure connector connects Harness to Azure.
+description: Connect Harness to your Azure accounts and services.
 sidebar_position: 3
 helpdocs_topic_id: 9epdx5m9ae
 helpdocs_category_id: o1zhrfo8n5
