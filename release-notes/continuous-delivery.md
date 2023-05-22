@@ -29,7 +29,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   When you set the failure strategy to **Ignore Failure**, the failure of the steps or stages are ignored and marked as success instead of failed. 
 - Added support to provide quartz cron expressions for scheduled triggers. (CDS-59261, CDS-59260)
   
-  The Harness Delegate version 793xx is required for this feature.
+  The Harness Delegate version 793xx is required for this feature. 
+  
+  For more information, go to [Schedule pipeline using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/).
 - Support for creating or updating a variable of type, secret in the Update Release Repo step is now removed. (CDS-58530)
   
   For example, adding a variable of the type, secret in an environment will no longer create any entry in the `config.js` file via the Update Repo Step. 
@@ -40,12 +42,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   For more information, go to [Input variables](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/#input-variables).
 - The **Auto-Reject previous deployments paused in this step on approval** is added to the Approval step. (CDS-58063)
   
-  With this option, you can now reject old executions waiting on approval when a latest step is approved. 
+  With this option, you can now reject old executions waiting on approval when a latest step is approved. For more information, go to [Manual Approval steps in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages).
 - You can add metadata or [JEXL conditions](/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/#jexl-conditions) on artifact triggers just like custom triggers. (CDS-51928)
 - The `<+trigger.artifact.build>` expression now resolves with value when you rerun a failed pipeline. (CDS-50585, ZD-42193)
   
   A new API is now supported in the backend to fetch details from `planExecutionsMetadata` that has information about the tags that were used when a trigger fires a pipeline. 
-- You can now use the expression, [`<+lastPublihsed.tag>`](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#using-the-triggerartifactbuild-and-lastpublishedtag-expressions) if you want to deploy the last successfully published artifact version. (CDS-53512)
+- You can now use the expression, [`<+lastPublished.tag>`](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#using-the-triggerartifactbuild-and-lastpublishedtag-expressions) if you want to deploy the last successfully published artifact version. (CDS-53512)
 - Added support for accessing connector attributes for Deployment Templates. (CDS-54247)
   
   The Harness Delegate version 793xx is required for this feature.
