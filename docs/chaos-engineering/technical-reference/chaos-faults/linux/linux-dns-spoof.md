@@ -12,7 +12,7 @@ Linux DNS spoof injects chaos to mimic DNS resolution on a Linux machine.
 - Resolves DNS target host names (or domains) to other IPs provided as user input.
 
 :::info note
-- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
+- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, Fedora 30 or higher, and openSUSE LEAP 15.4 or higher.
 - The `linux-chaos-infrastructure` systemd service should be in an active state, and the infrastructure should be in `CONNECTED` state.
 :::
 
