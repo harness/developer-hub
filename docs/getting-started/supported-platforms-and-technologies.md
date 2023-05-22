@@ -337,7 +337,7 @@ Harness Self-Managed Enterprise Edition does not introduce changes that break co
 
 Installation and upgrade preflight checks provide warnings when you use unsupported Kubernetes versions.
 
-In cases where you encounter a problem related to an incompatibility issue, you must upgrade your cluster. Harness will not issue a patch to accommodate the use of unsupported Kubernetes versions.
+In cases where you encounter a problem related to an incompatibility issue, you must upgrade your cluster. Harness does not issue a patch to accommodate the use of unsupported Kubernetes versions.
 
 ## SDKs installed with the Delegate
 
