@@ -238,7 +238,7 @@ Configure the following settings in Azure to enable recommendations:
 
   All resources are selected by default. However, you can deselect to exclude resources for which you do not wish to receive recommendations.
 3. Select the **VM/VMSS right sizing** tab. 
-4. Select the subscriptions. This is required to receive VM right sizing recommendations.
+4. Select the subscriptions. This is required to receive VM rightsizing recommendations.
    The default **CPU utilization** is 100% and the default **Look back period** is 7 days.
 
 After configuring the **Advisor**, go to [Azure recommendations](https://developer.harness.io/docs/category/recommendations) to view and apply recommendations.
