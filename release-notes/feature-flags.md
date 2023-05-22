@@ -42,7 +42,7 @@ This release does not include early access features.
 
 The **Ruby** server SDK has been updated to version **1.1.1** with the following updates.
 
-* Fixed evaluator logic - if a target group had multiple clauses all clauses had to evaluate to true for the entire condition to be true. Instead this has been changed to only one condition needing to be true to match other SDKs. (FFM-6503)
+* Fixed evaluator logic. Before, if a target group had multiple clauses, all clauses had to evaluate to true for the entire condition to be true. This logic has been changed to match that of other SDKs. Now only one condition clause needs to be true. (FFM-6503)
 
 * Certain log messages will now be coded with a unique 4-digit number to help identify issues across SDKs. (FFM-7324)
   
