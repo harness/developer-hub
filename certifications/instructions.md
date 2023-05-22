@@ -25,7 +25,7 @@ These instructions are in BETA and in support of our Admin and Architect level e
 
 5. On the following screen, click the **Start Exam** button to begin the Hands-on exam.
 
-6. Within this scrren, you will see a toolbar to the right of this question, you will then see a Widget that will house your Instruqt Hands-On Labs, click the icon below to display your labs: 
+6. Within this screen, you will see a toolbar to the right of this question, you will then see a Widget that will house your Instruqt Hands-On Labs, click the icon below to display your labs: 
 
 ![Instruqt Widget](./static/instruqt-widget-scorpion.png)
 
