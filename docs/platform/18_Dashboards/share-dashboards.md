@@ -78,7 +78,7 @@ Select one of the following to configure the destination:
 
 * **Amazon S3**: Enter **Bucket**, **Optional Path**, **Access Key**, **Secret Key**, and **Region**.
 
-* **SFTP**: Enter the SFTP host path in **Address** and then enter **Username**, **Password**, and **Preferred key exchange algorithm**.
+* **SFTP**: Enter the SFTP host path in **Address**, and then enter **Username**, **Password**, and **Preferred key exchange algorithm**.
 
 * **Google Drive**: Select **Signin with Google** and enter the credentials to verify.
 
