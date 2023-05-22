@@ -70,16 +70,16 @@ metadata:
 spec:
   stressChaos/inputs:
     workers: 1
-    fileSystemUtilisationPercentage: 10
+    fileSystemUtilisation: 10%
 ```
 
-### File system utilization in bytes
+### File system utilisation
 
-The `fileSystemUtilisationBytes` input variable utilizes a specific amount of file system disk space or bandwidth as a part of the disk I/O operations in bytes.
+The `fileSystemUtilisation` input variable utilizes a specific amount of file system disk space or bandwidth as a part of the disk I/O operations in bytes.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/linux-disk-io-stress/file-system-bytes.yaml yaml)
+[embedmd]:# (./static/manifests/linux-disk-io-stress/file-system-utilisation.yaml yaml)
 ```yaml
 # file system amount to be utilized
 apiVersion: litmuchaos.io/v1alpha1
@@ -91,28 +91,7 @@ metadata:
 spec:
   stressChaos/inputs:
     workers: 3
-    fileSystemUtilisationBytes: 10000
-```
-
-### File system utilization in percentage
-
-The `fileSystemUtilisationPercentage` input variable utilizes a specific amount of file system disk space or bandwidth as a part of the disk I/O operations in terms of percentage of the total available disk space.
-
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]:# (./static/manifests/linux-disk-io-stress/file-system-percentage.yaml yaml)
-```yaml
-# file system percentage to be utilized
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-disk-io-stress
-  labels:
-    name: disk-io-stress
-spec:
-  stressChaos/inputs:
-    workers: 3
-    fileSystemUtilisationPercentage: 70
+    fileSystemUtilisation: 50g
 ```
 
 ### Volume mount path
@@ -132,6 +111,6 @@ metadata:
 spec:
   stressChaos/inputs:
     workers: 1
-    fileSystemUtilisationPercentage: 50
+    fileSystemUtilisation: 50%
     volumeMountPath: "/tmp"
 ```

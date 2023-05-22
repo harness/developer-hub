@@ -37,8 +37,8 @@ Linux disk fill:
   </tr>
   <tr>
     <td> dataBlockSize </td>
-    <td> Size of each data block used to fill up the disk (in kilobytes). </td>
-    <td> Default: 256 KB. </td>
+    <td> Size of each data block used to fill up the disk. </td>
+    <td> Can be specified in bytes (b/B), kilobytes (k/K), megabytes (m/M), or gigabytes (g/G). If no unit is provided, the value is assumed to be in bytes. Example values: <code>30m</code>, <code>500k</code>, <code>1G</code>, etc. Default: 256 KB. </td>
   </tr>
   <tr>
     <td> duration </td>
@@ -73,15 +73,15 @@ spec:
     duration: 30
 ```
 
-### Fill percentage
+### Fill storage
 
-The `fillPercentage` input variable determines the percentage of available storage space to be filled up at the given `fillPath`.
+The `fillStorage` input variable determines the amount of storage space to be filled up at the `fillPath` path.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/linux-disk-fill/fill-percentage.yaml yaml)
+[embedmd]:# (./static/manifests/linux-disk-fill/fill-storage.yaml yaml)
 ```yaml
-# specify the fill percentage
+# specify the storage to be filled
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:
@@ -91,35 +91,13 @@ metadata:
 spec:
   diskFillChaos/inputs:
     fillPath: "/"
-    fillPercentage: 80
-    duration: 30
-```
-
-### Fill storage mebibytes
-
-The `fillStorageMebibytes` input variable determines the amount of storage space to be filled up at the `fillPath` path (in mebibytes).
-
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]:# (./static/manifests/linux-disk-fill/fill-storage-mebibytes.yaml yaml)
-```yaml
-# specify the fill percentage
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-disk-fill
-  labels:
-    name: disk-fill
-spec:
-  diskFillChaos/inputs:
-    fillPath: "/"
-    fillStorageMebibytes: 8048
+    fillStorage: 72%
     duration: 30
 ```
 
 ### Data block size
 
-The `dataBlockSize` input variable determines the size of a single block of data, that is used to fill up the disk (in kilobytes). A larger block size results in quick completion of the disk fill operation and vice-versa.
+The `dataBlockSize` input variable determines the size of a single block of data, that is used to fill up the disk. A larger block size results in quick completion of the disk fill operation and vice-versa.
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -135,7 +113,7 @@ metadata:
 spec:
   diskFillChaos/inputs:
     fillPath: "/"
-    fillPercentage: 80
-    dataBlockSize: 1000
+    fillStorage: 80%
+    dataBlockSize: 400k
     duration: 30
 ```

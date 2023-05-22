@@ -64,18 +64,18 @@ metadata:
 spec:
   stressChaos/inputs:
     workers: 1
-    memoryPercentage: 50
+    memory: 5g
 ```
 
-### Memory consumption in bytes
+### Memory consumption
 
-The `memoryBytes` input variable utilizes a specific amount of memory (in bytes). 
+The `memory` input variable specifies the amount of memory to be filled.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/linux-memory-stress/memory-bytes.yaml yaml)
+[embedmd]:# (./static/manifests/linux-memory-stress/memory.yaml yaml)
 ```yaml
-# memory bytes to consume
+# memory to consume
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:
@@ -85,26 +85,5 @@ metadata:
 spec:
   stressChaos/inputs:
     workers: 1
-    memoryBytes: 5000
-```
-
-### Memory consumption in percentage
-
-The `memoryPercentage` input variable utilizes a specific amount of memory (in percentage). 
-
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]:# (./static/manifests/linux-memory-stress/memory-percentage.yaml yaml)
-```yaml
-# memory percentage to consume
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-memory-stress
-  labels:
-    name: memory-stress
-spec:
-  stressChaos/inputs:
-    workers: 1
-    memoryPercentage: 70
+    memory: 50%
 ```
