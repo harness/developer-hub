@@ -22,7 +22,7 @@ You can set up any supported scanner using a Security step: create a CI Build or
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan`, `dataLoad`, or `ingestionOnly`
 * `product_config_name`
 	+ The following configurations are available. These are [built-in configurations](https://portswigger.net/burp/documentation/scanner/scan-configurations/burp-scanner-built-in-configs) provided by Burp Enterprise.  
-	    -  `default` This is the same as the `Crawl and Audit - Lightweight` built-in configuration
+	    -  `default` This is the same as the `Crawl and Audit - Lightweight` built-in configuration.
 		-  `never-stop-crawl-due-to-application-errors`
 		-  `never-stop-audit-due-to-application-errors`
 		-  `minimize-false-positives`
