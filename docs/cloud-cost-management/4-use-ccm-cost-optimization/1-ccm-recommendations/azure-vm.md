@@ -61,5 +61,7 @@ Harness CCM provides two types of recommendations to optimize your VMs:
 
   The recommendations for Azure VMs are displayed. 
 
-6. Click the row to view the recommendations for that account.  The CPU utilization graph shows the current utilization data. Go to [View and apply recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/home-recommendations#enable-azure-recommendations) to learn how to apply these recommendations.
+6. Select a row to view the recommendations for that account.  
+    
+The CPU utilization graph shows the current utilization data. Go to [View and apply recommendations](https://developer.harness.io/docs/cloud-cost-management/use-cloud-cost-management/ccm-recommendations/home-recommendations#enable-azure-recommendations) to learn how to apply these recommendations.
 
