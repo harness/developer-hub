@@ -102,7 +102,7 @@ Enable this option to reject old executions waiting for approval when a latest s
 
 :::info
 
-If you have two approval steps in a step group of a stage with the same step identifier. Harness won't be able to differentiate between the approval steps, and rejects previous deployments with the same identifier.
+If you have two approval steps in a step group of a stage with the same step identifier, Harness won't be able to differentiate between the approval steps, and rejects previous deployments with the same identifier.
 
 :::
 
