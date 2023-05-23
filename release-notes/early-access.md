@@ -10,9 +10,24 @@ Review the notes below to learn about the early access (aka BETA) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 04, 2023, version 79214
+## Latest - May 23, 2023, version 79306
 
 ### Continuous Delivery
+
+- Trigger all artifacts and manifests using **On New Artifact** and **On New Manifest** triggers respectively. (CDS-68262, ZD-43588, ZD-43726)
+  
+  This functionality is behind a feature flag, `TRIGGER_FOR_ALL_ARTIFACTS`. 
+
+  Earlier, you could trigger only the last pushed artifact or manifest using triggers. You can now trigger all collected artifacts and manifests of perpetual tasks in one single execution using the **On New Artifact** or **On New Manifest** trigger options. 
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 04, 2023, version 79214
+
+##### Continuous Delivery
 
 - You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](https://developer.harness.io/docs/platform/pipelines/run-specific-stage-in-pipeline/) option. (CDS-56775, CDS-56774)
 
@@ -64,11 +79,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - You can add Tanzu Application Service (TAS) [config files](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/add-config-files) from GitHub. (CDS-56452)
 
   This feature is currently behind the feature flag, `CDS_GIT_CONFIG_FILES`. For TAS deployment types, you can reference service config files from GitHub.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### April 21, 2023, version 79111
 

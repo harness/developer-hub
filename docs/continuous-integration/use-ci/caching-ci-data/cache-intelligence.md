@@ -26,7 +26,7 @@ The cache retention window is 15 days, which resets whenever the cache is update
 
 ## Enable Cache Intelligence
 
-To enable Cache Intelligence on a CI Build stage, add the following lines to the `stage: spec:` in your pipeline's YAML:
+To enable Cache Intelligence on a CI Build stage, add the following lines to the `stage.spec` in your pipeline's YAML:
 
 ```yaml
 caching:
@@ -70,7 +70,7 @@ Add the `paths` list to your pipeline's YAML, for example:
 ...
 ```
 
-If a path you want to cache is outside the `/harness` directory, you must also specify this as a shared path. In the YAML editor, add a list of `sharedPaths` to the `stage: spec:`, for example:
+If a path you want to cache is outside the `/harness` directory, you must also specify this as a shared path. In the YAML editor, add a list of `sharedPaths` to the `stage.spec`, for example:
 
 ```yaml
     - stage:
@@ -103,7 +103,7 @@ In the Visual editor, you can add **Shared Paths** in the stage's **Overview** s
 
 Harness generates a cache key from a hash of the build lock file (such as `pom.xml`, `build.gradle`, or `package.json`) that Harness detects. If Harness detects multiple tools or multiple lock files, Harness combines the hashes to create the cache key.
 
-To customize the cache key, add `key: [custom-key]` to `stage: spec: caching:` in your pipeline's YAML, and specify the custom key value. You can use [fixed values, runtime inputs, and expressions](/docs/platform/References/runtime-inputs) to create the key value.
+To customize the cache key, add `key: [custom-key]` to `stage.spec.caching` in your pipeline's YAML, and specify the custom key value. You can use [fixed values, runtime inputs, and expressions](/docs/platform/References/runtime-inputs) to create the key value.
 
 The following YAML example uses `key: <+input>`, which prompts the user to supply a cache key value at runtime.
 

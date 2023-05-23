@@ -74,7 +74,7 @@ In the following YAML example, an [Action step](../use-drone-plugins/ci-github-a
                   spec:
                     uses: actions/setup-java@v3
                     with:
-                      distribution: 'zulu' # See 'Supported distributions' for available options
+                      distribution: 'temurin'
                       java-version: '17'
               - step:
                   identifier: java_ver_check
@@ -162,7 +162,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="YAML" label="YAML editor">
 ```
 
-To enable Harness Cloud build infrastructure in your pipeline YAML, specify the `platform` and `runtime` in the `stage: spec:`. For example:
+To enable Harness Cloud build infrastructure in your pipeline YAML, specify the `platform` and `runtime` in the `stage.spec`. For example:
 
 ```yaml
           platform:

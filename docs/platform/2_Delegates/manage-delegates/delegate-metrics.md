@@ -13,10 +13,15 @@ Harness captures delegate agent metrics for delegates shipped on immutable image
 | `task_execution_time` | The time it takes to complete a task. |
 | `tasks_currently_executing` | The number of tasks underway. |
 | `task_timeout` | The number of tasks that time out before completion. |
-| `task_completed` | The number of tasks completed. |
-| `task_failed` | The number of failed tasks. |
-| `task_rejected` | The number of tasks rejected because of a high load on the delegate. |
-| `resource_consumption_above_threshold` | The delegate resource consumption reached more than 90%. |
+| `task_completed`* | The number of tasks completed. |
+| `task_failed`* | The number of failed tasks. |
+| `task_rejected`* | The number of tasks rejected because of a high load on the delegate. |
+| `delegate_connected`* | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
+| `resource_consumption_above_threshold`* | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. |
+
+:::info note
+Metrics notated with * above are currently behind the feature flag `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 This topic includes example YAML files you can use to create application manifests for your Prometheus and Grafana configurations.
 
@@ -181,7 +186,7 @@ kubectl apply -f prometheus.yml
 
 ## Set up Grafana
 
-To set up Grafana, use the following example grafana.yml file.
+To set up Grafana, use the following example `grafana.yml` file.
 
 ### Example grafana.yml file
 
@@ -270,7 +275,7 @@ spec:
       targetPort: 3000     
 ```
 
-1. Copy the grafana.yml file.
+1. Copy the `grafana.yml` file.
 
 2. If you're not using the default `harness-delegate-ng` namespace, replace it with the namespace into which you deployed your delegate.
 

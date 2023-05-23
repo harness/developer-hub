@@ -21,20 +21,9 @@ Harness provides the following delegate images. Each image includes a set of too
 
 For detailed information on Docker delegate installation, go to [Install a Docker delegate](/docs/platform/2_Delegates/install-delegates/overview.md).
 
-### Select user privileges in the installer
+### Set user privileges
 
-The easiest way to set user privileges for the delegate container is to use the delegate installer.
-
-![](./static/enable-root-user-privileges-to-add-custom-binaries-10.png)
-
-To set container privileges in the Delegate installer, do the following:
-
-1. Go to the **Delegate Setup** page.![](./static/enable-root-user-privileges-to-add-custom-binaries-11.png)
-2. Clear or select the options as follows:
-* To set non-root user privileges, clear **Run delegate with root access**.
-* To set root user privileges, select **Run delegate with root access**.
-
-The delegate is installed with the specified privilege level.
+You can set privileges in the Helm chart or the Kubernetes manifest.
 
 ### Specify user privileges in delegate YAML
 

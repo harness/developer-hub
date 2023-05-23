@@ -16,7 +16,7 @@ Delegate scope for an Amazon ECS delegate is based on the token you use.
 
 ## Deploy a delegate to Amazon ECS 
 
-Use the following steps to deploy a delegate to an Amazon ECS cluster. This process requires an immutable delegate.
+Use the following steps to deploy a delegate to an Amazon ECS cluster. This process requires a delegate an immutable image. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types).
 
 :::info note
 You can also use a Terraform module to deploy a delegate. For more information, go to [Deploy a delegate using Terraform](#deploy-a-delegate-using-terraform).
@@ -30,7 +30,7 @@ For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/inst
 
 ### Create the task definition
 
-1. Copy the following task `spec` into a file. Save the file as task-spec.json.
+1. Copy the following task `spec` into a file. Save the file as `task-spec.json`.
 
    ```
      {
@@ -115,7 +115,6 @@ For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/inst
    | `IMAGE` | Use the most recent delegate image from https://hub.docker.com/r/harness/delegate/{tags}. The correct image uses an image tag in the following format: `harness/delegate:yy.mm.xxxxx`. |
    | `LOG_STREAMING_SERVICE_URL` | The URL of your log streaming service. This depends on the Harness production cluster you use: Prod1: https://app.harness.io/log-service/, Prod2: https://app.harness.io/gratis/log-service/, or Prod3: https://app3.harness.io/log-service/. |
 
-
 ### Create your services
 
 Use the following steps to create a service.
@@ -136,10 +135,9 @@ Use the following steps to create a service.
    harness-delegate-task-spec --cluster <CLUSTER_NAME> --desired-count 1
    ```
    
-
 ## Deploy a delegate to Amazon Fargate
 
-Use the following steps to deploy a delegate to an Amazon Fargate cluster. This process requires an immutable delegate.
+Use the following steps to deploy a delegate to an Amazon Fargate cluster. This process requires a delegate with an immutable image. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types).
 
 ### Create the cluster 
 
@@ -149,13 +147,12 @@ For more information, go to [EC2 instance types](https://aws.amazon.com/ec2/inst
 
 ### Create the task definition
 
-Use the following steps to create a task definition. For information about task definitions<Harness account Id
-                                                                                                 >in Amazon ECS, go to [Task Definition Template](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-definition-template.html).
+Use the following steps to create a task definition. For information about task definitions in Amazon ECS, go to [Task definition template](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task-definition-template.html).
 
-1. Copy the following task `spec` into a file. Save the file as task-spec.json.
+1. Copy the following task `spec` into a file. Save the file as `task-spec.json`.
 
    ```
-   {
+    {
       "containerDefinitions": [
         {
           "portMappings": [
@@ -238,7 +235,7 @@ Use the following steps to create a task definition. For information about task 
 
 ### Create the service
 
-1. Edit the service.json file as follows:
+1. Edit the `service.json` file as follows:
 
    ```
    {
