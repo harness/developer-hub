@@ -9,12 +9,13 @@ sidebar_position: 10
 Currently, this feature is behind the feature flag `PIE_GITX_OAUTH`. Contact Harness Support to enable the feature.
 :::
 
-You can store configurations for your resources, such as pipelines and input sets, in Git using Harness Git Experience. In order to commit configuration changes to Git, Harness fetches the user credentials from the Git connector used to push the changes and uses them as the author.
+You can store configurations for your resources, such as pipelines and input sets, in Git using Harness Git Experience. Harness fetches user credentials from the Harness account and uses the corresponding user name as the author of the commit.
 
-You can now push configuration changes using your own credentials by integrating OAuth with Git. Harness fetches your credentials from your user profile for all Git commits.
+You can now push configuration changes using your own credentials by integrating OAuth with Git. 
+When you integrate OAuth with Git experience, the credentials are stored in your Harness account user profile. These credentials are used for any subsequent commits.
 
 :::important
-Harness will continue to fetch Git connector credentials if you don't integrate OAuth with Git experience.
+Harness will continue to use the user name corresponding to the account if you don't integrate OAuth with Git experience.
 :::
 
 
@@ -25,7 +26,7 @@ This topic explains how to configure OAuth for Git experience in Harness.
 Harness supports OAuth integration for the following Git providers: 
 * GitHub
 * GitLab
-* Bitbucket
+* Bitbucket SaaS
 
 This topic explains how to configure OAuth for GitHub.
 
@@ -52,7 +53,7 @@ To commit changes to Git using the configured OAuth token:
 
 1. Go to an existing remote pipeline or [create](./configure-git-experience-for-harness-entities.md#add-a-remote-pipeline) a new one.
 2. Edit the pipeline and select **Save**.
-   The **Save Pipelines to Git** settings appear. Harness displays the credentials being used for this commit.
+   The **Save Pipelines to Git** settings appear. Harness displays the user name being used for this commit.
 
    ![](./static/git-commit-oauth.png)
 
@@ -68,7 +69,7 @@ To commit changes to Git using the configured OAuth token:
    
    :::
 
-4. Go to your branch in the Git repository. It now displays your credentials besides the commit.
+4. Go to your branch in the Git repository. It now displays the author details besides the commit.
 
 
 
