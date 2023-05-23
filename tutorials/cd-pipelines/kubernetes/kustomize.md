@@ -79,7 +79,7 @@ See [Delegate Overview](https://developer.harness.io/docs/platform/delegates/del
         helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
           harness-delegate/harness-delegate-ng \
           --set delegateName=helm-delegate \
-          --set accountId=Hdp26q9USBK_hrtf_PPC7A \
+          --set accountId=liasdfiohqbwihioquehrgvbiu \
           --set managerEndpoint=https://app.harness.io/gratis \
           --set delegateDockerImage=harness/delegate:23.03.78904 \
           --set replicas=1 --set upgrader.enabled=false \
