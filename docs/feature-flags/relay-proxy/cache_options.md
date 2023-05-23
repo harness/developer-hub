@@ -1,5 +1,5 @@
 ---
-title: Cache options
+title: Caching options
 description: This topic provides an overview of how the Proxy's in memory cache functions
 sidebar_position: 40
 ---
