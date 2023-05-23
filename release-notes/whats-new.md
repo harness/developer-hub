@@ -43,6 +43,8 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 * The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set secret expiration date. The Harness Delegate version 793xx is required for this feature. (PL-32708, ZD-42524)
 
+* AuthZ now considers the SAML setting that the user logged in to when multiple SAML settings are present and the user belongs to more than one of them. The user will be removed from any other SAML settings that the same user might have been part of and synced with Harness through previous SAML logins.  (PL-32484) 
+
 
 <details>
 <summary>2023 releases</summary>
