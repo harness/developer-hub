@@ -52,7 +52,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   The Harness Delegate version 79306 is required for this feature.
   
-  The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using expressions. For example, the attribute `vaultUrl` of Hashi Corp connector can be accessed using the expression, `<+infra.variables.HashiCorp.spec.vaultUrl>`.
+  The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions. 
+  
+  * [AWS KMS](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
+  * [AWS Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
+  * [Azure Key Vault](/docs/platform/Secrets/Secrets-Management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
+  * [Google KMS](/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
+  * [Google Cloud secret manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
+  * [Custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
+  * [HashiCorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
 
 ```mdx-code-block
   </TabItem>
