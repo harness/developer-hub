@@ -86,7 +86,7 @@ See [Delegate Overview](https://developer.harness.io/docs/platform/delegates/del
           --set delegateToken=DELEGATE_TOKEN
         ```       
     - Verify that the Delegate is installed successfully and can connect to the Harness Manager.
-    - You can also follow the [Install Harness Delegate on Kubernetes or Docker](/Users/ompragash/Git/hdh/tutorials/platform/install-delegate) tutorial to install Delegate using _Terraform Helm Provider_ or _Kubernetes Manifest_.
+    - You can also follow the [Install Harness Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/) tutorial to install Delegate using _Terraform Helm Provider_ or _Kubernetes Manifest_.
 
 
 <details>
