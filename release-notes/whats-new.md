@@ -19,6 +19,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - May 23, 2023, version 79306
 
+### Continuous Integration
+
+Added support for showing artifacts on the **Artifacts** tab in Harness Cloud and VMs. (CI-7218)
+
+Previously, this was supported only for Kubernetes builds. The artifacts are visible on the execution **Artifact** tab and the artifact details are visible on the step output window. 
+
 ### Harness Platform
 
 * You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
@@ -134,6 +140,14 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 <details>
 <summary>2023 releases</summary>
+  
+May 17, 2023, STO Core version 1.53.0
+
+#### Security Testing Orchestration
+
+* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
+
+  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
 
 #### May 17, 2023, STO Core version 1.53.0
 
@@ -1082,7 +1096,11 @@ This release introduces the following new features and enhancements:
 * This release includes two new CI steps for integrating your Harness CI pipelines with GitHub Actions and Bitrise. The following steps are available in Harness Cloud build infrastructures only. 
    - An Actions step to run GitHub Actions.
    - A Bitrise step to run Bitrise steps and workflows. (CI-6479)
+
+* *The remote debugging feature announced in this release was reverted due to a security concern.* (CI-6350)
+
 * Harness CI now supports remote debugging of remote builds in Harness Cloud, Kubernetes, and VMs in AWS, Azure, and other cloud platforms. If a build fails at a Run step, you can rerun the build in debug mode. This option is available in the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. (CI-6350)  *This feature was removed in a later release due to a vulnerability.*
+
 * You can now specify hostnames instead of IPs in Kubernetes build infrastructures. This enables your pipelines to communicate with external services using hostnames. The following Harness YAML snippet shows how to set up aliases for your cluster in the CI stage **Infrastructure** section. (CI-5996, ZD-36578)
 
 ``` yaml 
