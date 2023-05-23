@@ -23,7 +23,6 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 <Tabs>
   <TabItem value="What's new">
 ```
-
 This release does not include new features.
 
 ```mdx-code-block

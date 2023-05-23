@@ -1,10 +1,10 @@
 ---
-title: Optimize AWS EC2 costs with recommendations
+title: AWS EC2 recommendations
 description: Optimize the utilization of your EC2 instances using Harness CCM recommendations.
 # sidebar_position: 2
 ---
 
-
+# Optimize AWS EC2 costs with recommendations
 An effective way to reduce AWS EC2 instance costs is to optimize VM utilization. This involves resizing instances based on active tasks and decommissioning unused instances.
 
 Harness helps you reduce costs with recommendations.
@@ -74,7 +74,7 @@ After completing the aforementioned tasks, you need to perform the following ste
 1. In **Harness**, go to the **Cloud Costs** module.
 2. Click **Recommendations**.
 3. Click the filter icon.
-4. In the **Resource Type** dropdown list, select **EC2_INSTANCE**.
+4. In the **Recommendation Type** dropdown list, select **EC2_INSTANCE**.
 5. Click **Apply**. 
 
   All the AWS accounts with EC2 instances are displayed. 

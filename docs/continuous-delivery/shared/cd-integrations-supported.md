@@ -378,6 +378,8 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <details>
 <summary>Spot Instances</summary>
 
+- **Overview:**
+  - [Spot Elastigroup deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-deployment)
 - **Supported connectors for deployment:**
   - Spot Connector
     - AccountID + API Token
