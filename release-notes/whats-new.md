@@ -114,6 +114,30 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
   * [Custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
   * [HashiCorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
 
+  ### Harness Delegate
+
+- A new [`listDelegates` API](https://app.harness.io/gateway/ng/api/delegate-setup/listDelegates/accountIdentifier=string&orgIdentifier=string&projectIdentifier=string') enables you to list and filter delegates in your project, organization, or account. (PL-37981)
+
+   You can use the body parameters to filter your delegate list:
+
+   ```json
+   {
+   "filterType":"Delegate", //This field is mandatory.
+   
+   "delegateInstanceFilter": "EXPIRED/AVAILABLE",
+
+   "status": "CONNECTED/DISCONNECTED",
+   
+   "delegateType": "KUBERNETES/DOCKER/HELM_DELEGATE/SHELL_SCRIPT/ECS",
+   
+   "delegateName": "<>",
+   
+   "description": "<>",
+   
+   "delegateTags": "[]"
+   }
+   ```
+
 <details>
 <summary>2023 releases</summary>
   
@@ -1072,7 +1096,11 @@ This release introduces the following new features and enhancements:
 * This release includes two new CI steps for integrating your Harness CI pipelines with GitHub Actions and Bitrise. The following steps are available in Harness Cloud build infrastructures only. 
    - An Actions step to run GitHub Actions.
    - A Bitrise step to run Bitrise steps and workflows. (CI-6479)
+
 * *The remote debugging feature announced in this release was reverted due to a security concern.* (CI-6350)
+
+* Harness CI now supports remote debugging of remote builds in Harness Cloud, Kubernetes, and VMs in AWS, Azure, and other cloud platforms. If a build fails at a Run step, you can rerun the build in debug mode. This option is available in the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. (CI-6350)  *This feature was removed in a later release due to a vulnerability.*
+
 * You can now specify hostnames instead of IPs in Kubernetes build infrastructures. This enables your pipelines to communicate with external services using hostnames. The following Harness YAML snippet shows how to set up aliases for your cluster in the CI stage **Infrastructure** section. (CI-5996, ZD-36578)
 
 ``` yaml 
