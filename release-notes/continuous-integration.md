@@ -31,7 +31,14 @@ Previously, this was supported only for Kubernetes builds. The artifacts are vis
   <TabItem value="Early access">
 ```
 
-This release does not include early access features.
+Harness CI now supports remote debugging. This feature was initially released in January 2023 and subsequently reverted for further development. Debug mode is available if all of the following conditions are met:
+
+* You have the feature flag `CI_REMOTE_DEBUG` enabled. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+* The build infrastructure uses a Linux-based OS.
+* The build fails at a **Run** step with a Bash or Shell script in a **Build** (`CI`) stage.
+* The build runs in Harness Cloud, on a virtual machine, or in Kubernetes.
+
+You can re-run builds in debug mode through the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. For more information, go to the [debug mode](/docs/continuous-integration/use-ci/debug-mode) documentation.
 
 ```mdx-code-block
   </TabItem>
