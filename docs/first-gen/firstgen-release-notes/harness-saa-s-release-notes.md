@@ -38,6 +38,28 @@ This release does not include early access features.
 
 #### Fixed issues
 
+- The ASG Rollback auto-scaling step failed with an exception. (CDS-68533, ZD-43354)
+  
+  Fixed this issue by adding a back-off strategy support for ASG deployments.
+- Fixed an issue where perpetual tasks corresponding to a non-existing service was still running. (CDS-58137)
+- The feature flag, `CG_GIT_POLLING` was creating too many queries in yamlGitConfig. (CDS-45085)
+  
+  This issue is fixed. Git polling for Git sync now works via a different internal method where Harness polls for a feature flag change once every 30 minutes, and then continue polling on accounts for which feature flags are enabled.
+
+- Executions were failing with `Canary failed: [Canary Deployment failed - NoSuchMethodError: org.yaml.snakeyaml.constructor.SafeConstructor: method 'void <init>()' not found ]` error message. (CDS-68293, ZD-43753, ZD-43769)
+  
+  The Fabric8 library used by Harness is upgraded from version 5.x to 6.x. Harness was explicitly using snake.yaml version 2.x due to vulnerabilities present in the 1.x version.
+  
+  Harness' usages of Fabric8 library were throwing the above mentioned because Fabric8 library version 5.12.1 uses the old snake.yaml library version 1.x.
+
+  Customers who were using the following were affected:
+    - FirstGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - FirstGen Traffic Split step.
+    - FirstGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+    - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+
+  This issue is fixed in the Harness Delegate version 79306. This change does not create any behavioral changes. 
 - Null pointer exception occurs when generating audit events for user groups with null values. (PL-32144)
 - No members appear in user group list even after the user has been added via SCIM. (PL-32482)
 

@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-05-04T10:00:15
+date: 2023-05-23T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -15,12 +15,161 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 04, 2023, version 79214
+## Latest - May 23, 2023, version 79306
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+- Support for the **Enforce Git experience for pipelines and templates** Git experience. (CDS-67885)
+  
+  A new Git experience is introduced, **Enforce git experience for pipelines and templates**. Enabling this setting will let you create only remote pipelines and templates. If this setting is enabled, then the `InputSet` will be out of scope as it is controlled by the pipelines. 
+- Failed steps or stages with failure strategy set as **Ignore Failure** display the status as **Success**. (CDS-67670, ZD-40157)
+  
+  When you set the failure strategy to **Ignore Failure**, the failure of the steps or stages are ignored and marked as success instead of failed. 
+- Added support to provide quartz cron expressions for scheduled triggers. (CDS-59261, CDS-59260)
+  
+  The Harness Delegate version 79306 is required for this feature. 
+  
+  For more information, go to [Schedule pipeline using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/).
+- Support for creating or updating a variable of type, secret in the Update Release Repo step is now removed. (CDS-58530)
+  
+  For example, adding a variable of the type, secret in an environment will no longer create any entry in the `config.js` file via the Update Repo Step. 
+  
+  Support for all such cases are now ignored by Harness. 
+- Users can now add input variables of all types when adding an HTTP step from the Harness UI. (CDS-58376)
+  
+  For more information, go to [Input variables](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/#input-variables).
+- The **Auto-Reject previous deployments paused in this step on approval** is added to the Approval step. (CDS-58063)
+  
+  With this option, you can now reject old executions waiting on approval when a latest step is approved. For more information, go to [Manual Approval steps in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages).
+- You can add metadata or [JEXL conditions](/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/#jexl-conditions) on artifact triggers just like custom triggers. (CDS-51928)
+- The `<+trigger.artifact.build>` expression now resolves with value when you rerun a failed pipeline. (CDS-50585, ZD-42193)
+  
+  A new API is now supported in the backend to fetch details from `planExecutionsMetadata` that has information about the tags that were used when a trigger fires a pipeline. 
+- You can now use the expression, [`<+lastPublished.tag>`](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#using-the-triggerartifactbuild-and-lastpublishedtag-expressions) if you want to deploy the last successfully published artifact version. (CDS-53512)
+- Added support for accessing connector attributes for Deployment Templates. (CDS-54247)
+  
+  The Harness Delegate version 79306 is required for this feature.
+  
+  The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions. 
+  
+  * [AWS KMS](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
+  * [AWS Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
+  * [Azure Key Vault](/docs/platform/Secrets/Secrets-Management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
+  * [Google KMS](/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
+  * [Google Cloud secret manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
+  * [Custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
+  * [HashiCorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+- Trigger all artifacts and manifests using **On New Artifact** and **On New Manifest** triggers respectively. (CDS-68262, ZD-43588, ZD-43726)
+  
+  This functionality is behind a feature flag, `TRIGGER_FOR_ALL_ARTIFACTS`. 
+
+  Earlier, you could trigger only the last pushed artifact or manifest using triggers. You can now trigger all collected artifacts and manifests of perpetual tasks in one single execution using the **On New Artifact** or **On New Manifest** trigger options. 
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+- Unable to save multiple services when changing the input type from runtime input to fixed inside a template stage or a pipeline. (CDS-68848, ZD-44569)
+  
+  You can now change the input type of multiple services from runtime input to fixed.
+- The Harness UI displayed incorrect default value for conditional execution. (CDS-68600)
+  
+  When you create a new pipeline, if you don't have any default value for conditional execution, the Harness UI showed that the **Execute this step if the stage execution is successful thus far** is selected, but the YAML view didn't reflect the same.
+
+  This issue is fixed. If no options are selected, then the default strategy will be applied from the backend at runtime.
+- When a delegate selector was added at the step, stage, or pipeline level in a Jenkins step, it did not override the delegate selectors from the Jenkins connector. (CDS_68312, ZD-43710)
+
+  This issue is fixed. Any selector at a step, stage, or pipeline level overrides the selectors from the Jenkins connector.
+- Helm charts were not being listed in a Helm service. (CDS-68193, ZD-43655)
+  
+  This issue is fixed by adding a Helm version query parameter in the API call to fetch charts dependent on the user's Helm version.
+- Made code enhancements to not disable triggers if validation fails during runtime. (CDS-68168, ZD-43588)
+  
+  Triggers were automatically disabled if Harness failed to fetch templates when validating a pipeline trigger. This was the expected behavior as Harness disables the trigger if pipeline validation fails. 
+  
+  Triggers are not disabled now even if pipeline validation fails. 
+- The Terraform Plan step failed when an account level secret manager was selected an the feature flag, `CDS_NOT_ALLOW_READ_ONLY_SECRET_MANAGER_TERRAFORM_TERRAGRUNT_PLAN` was enabled. (CDS-68140)
+
+  This issue is now fixed.
+- Unable to create a Physical Data Center (PDC) connector if the hostname definitions has more than 1000 characters. (CDS-68136)
+  
+  Extended character length support is now provided for the PDC connector hostname definitions to accommodate lengthy host and connector names. 
+- Fixed an issue where tabular data was not showing up properly in service dashboards for empty artifacts. (CDS-68100)
+- Adding a pipeline tag to a branch affects all branches. (CDS-67983, ZD-43144)
+  
+  Pipeline tags are now picked from the pipeline data in Harness whenever available. This prevents tags from changing branches if pipelines are saved remotely.
+- Improved the **Run Pipeline** page error message by adding FQN expressions to suggest the variable name whenever the evaluation fails. (CDS-67559)
+- The error message displayed when the getTemplate or merge API call failed was unclear. (CDS-67500)
+  
+  The error message now displays **Pipeline Run Failed For Repo: xx, And Branch: xx**.
+- Fixed the following issues in the Sync step. (CDS-59624)
+  
+  * Sync step error for account level agents.
+  * Unable to close log streams.
+  * Random values in the expressions are considered as false values.
+- Instance sync was not implemented for Azure Kubernetes Service (AKS). (CDS-59624)
+  
+  Performance improvements on AKS infrastructure type instance sync improved. The service instance data from the cluster now appears on the service dashboard faster. 
+- The Harness UI hid the Interrupts button for chained pipelines for multi-service and multi-environment cases. (CDS-59374)
+  
+  Previously, the parent pipeline's **planExecutionId**, **projectId**, and **orgId** were passed in the child pipeline, and hence, the interrupt functionality for chained pipeline was not working. This issue is fixed by passing the the correct **planExecutionId**, **projectId**, and **orgId** for the child pipeline. There is no need to hide these buttons anymore.
+- Harness displays an error message when the ASG configuration or ASG launch template is missing from the ASG deployment config file. (CDS-59154)
+- Rollback step logs were empty when the ASG deployment is rolled back due to errors. (CDS-59152)
+  
+  This issue is fixed by adding descriptive error messages for the ASG Blue Green deployment Rollback step.
+- Fixed an issue where the delegate select field is empty in the UI even if a delegate is present in the YAML. (CDS-58188)
+- Fixed an issue where the expressions of tags were not rendered properly. This issue is fixed in the Harness Delegate version 79306. (CDS-68703, ZD-43797)
+- Executions were failing with `Canary failed: [Canary Deployment failed - NoSuchMethodError: org.yaml.snakeyaml.constructor.SafeConstructor: method 'void <init>()' not found ]` error message. (CDS-68293, ZD-43753, ZD-43769)
+  
+  The Fabric8 library used by Harness is upgraded from version 5.x to 6.x. Harness was explicitly using snake.yaml version 2.x due to vulnerabilities present in the 1.x version.
+  
+  Harness' usages of Fabric8 library were throwing the above mentioned because Fabric8 library version 5.12.1 uses the old snake.yaml library version 1.x.
+
+  Customers who were using the following were affected:
+    - FirstGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - FirstGen Traffic Split step.
+    - FirstGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+    - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+
+  This issue is fixed in the Harness Delegate version 79306. This change does not create any behavioral changes. 
+- The access denied exception was saving the OAuth secret in the Harness Source Code Manager (SCM) user profile. (CDS-68144)
+  
+  This issue is fixed in the Harness Delegate version 79306 by passing the context correctly from the SCM service to the Git service. 
+- Pipelines with multi-level templates displayed Java errors because a secret was referenced by another secret. (CDS-68094)
+  
+  This issue is fixed in the Harness Delegate version 79306 by improving the error messages.
+  
+- Fixed an issue in the the Harness Delegate version 79306 by eliminating NPE during ASG pipeline execution. (CDS-59383)
+- The Canary Delete step during rollback skipped deleting Canary resources if the forward Canary Delete step expired.(CDS-58704)
+  
+  Canary Delete step rely on the Harness release history when Canary Deployment step expires. Harness release history wasn't getting updated, and wasn't made available for the Canary Delete step during rollback because the Watch API call request wasn't getting interrupted properly.
+
+  This issue was fixed in the Harness Delegate version 79306. Now the Canary Delete step is properly deleting canary workloads when the forward Canary Deployment step expires.
+- Fixed an issue by adding support for retrying `sockettimeoutExceptions` as they can occur due to intermittent issues during a Kubernetes deployment. (CDS-57688)
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 04, 2023, version 79214
+
+##### What's new
+
 - Trigger artifact and manifest expressions (`<+trigger.artifact.build>` or `<+trigger.manifest.version>`) are now resolved when you rerun a pipeline that was activated by a trigger. (CDS-58192, CDS-50585)
   
   Here is a sample resolved YAML: 
@@ -57,10 +206,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   ![](./static/run-pipeline-form.png)
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
+
 - You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](https://developer.harness.io/docs/platform/pipelines/run-specific-stage-in-pipeline/) option. (CDS-56775, CDS-56774)
 
   This functionality is behind the feature flag, `CDS_NG_TRIGGER_SELECTIVE_STAGE_EXECUTION`. 
@@ -111,11 +258,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - You can add Tanzu Application Service (TAS) [config files](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/add-config-files) from GitHub. (CDS-56452)
 
   This feature is currently behind the feature flag, `CDS_GIT_CONFIG_FILES`. For TAS deployment types, you can reference service config files from GitHub.
-  
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+
+##### Fixed issues  
 
 - Usernames that were provided as secrets were not being decrypted for Github packages artifacts. (CDS-59187)
   
@@ -167,16 +311,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   The error handling is now improved to provide a more meaningful error message when the connection to the target host fails. 
 - Fixed an issue where users were unable to select **Subscription Id** in the **Azure Infrastructure details** section when creating a new environment and infrastructure at an org level. (CDS-58749, ZD-42608)
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### April 22, 2023, version 79111
 
@@ -257,7 +391,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   Variable expression support includes service, environment, pipeline, and stage variables. Any Harness expression is supported.
   
   Variable expressions are not supported for encrypted text config files because expressions impact the encoded secret.
-- Config files can now be pulled from Github. (CDS-56652)
+- Config files can now be pulled from Github. (CDS-56652, CDS-68530)
   
   This functionality is behind a feature flag, `CDS_GIT_CONFIG_FILES`.
 
