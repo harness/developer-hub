@@ -463,10 +463,17 @@ TF_VAR_alist='[1,2,3]'
 ```
 You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
-## Command Line Options
+## Command line options
+
+:::note
+
+Currently, FEATURE_NAME is behind the feature flag `CDS_TERRAFORM_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
-Currently, this feature is behind the feature flag `CDS_TERRAFORM_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+
 
 ![](./static/run-a-terraform-plan-with-the-terraform-apply-step-18.png)
 
