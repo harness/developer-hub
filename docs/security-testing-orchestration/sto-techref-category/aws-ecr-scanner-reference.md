@@ -7,15 +7,6 @@ sidebar_position: 30
 You can scan your container images using [Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html). 
 
 
-## Before you begin
-
-```mdx-code-block
-import StoCreateDinD from './shared/dind-bg-step.md';
-```
-
-<StoCreateDinD />
-
-
 ## AWS ECR step configuration
 
 The recommended workflow is add an AWS ECR step to a Security Tests or CI Build stage and then configure it as described below. You can also configure scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
