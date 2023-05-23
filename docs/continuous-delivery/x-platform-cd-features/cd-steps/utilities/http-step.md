@@ -173,26 +173,27 @@ Capability checks are basic accessibility checks and do not follow multiple redi
 
 ## HTTP polling
 
-HTTP step supports polling. When you create the HTTP step for polling, the client requests the resource at regular intervals. 
+The HTTP step supports polling. When you create the HTTP step for polling, the client requests the resource at regular intervals. 
 
-To enable HTTP polling: 
+To configure polling in the HTTP step: 
 
-1. In the step's **Step Parameters >** **Optional Configuration**, enter the following details: 
+1. In the step, go to **Step Parameters** > **Optional Configuration**, and then enter the following details: 
     * **Assertion (optional)**: Enter the expression to validate the incoming response. You can use the following aliases to refer to the HTTP responses, URL, and method:
         * `<+httpsResponseCode>`
         * `<+httpUrl>`
         * `<+httpMethod>`
         * `<+httpResponseBody>`
-    * **Headers (optional)**: Enter the key and value for the headers for the message. 
+    * **Headers (optional)**: Enter the key and value for the headers in the message. 
       
-      For example, in **Key**, enter token, in **Value**, enter secret references such as `<+secrets.getValue("aws-playground_AWS_secret_key")>`.
+      For example, in **Key**, enter the token, in **Value**, enter secret references such as `<+secrets.getValue("aws-playground_AWS_secret_key")>`.
     * **Output (optional)**: Create output steps to be used by other steps in the stage. 
       
       The **Value** setting can contain any HTTP step input, output, or response information. You can also use JSON and XML functors in the value.
 2. In **Advanced** > **Failure Strategy**, do the following: 
     * In **On failure of type**, select **All Errors**.
     * In **Perform Action**, select **Retry**.
-    * Enter the **Retry count** and **Retry intervals**.
+    * In **Retry count**, enter the number of times you want the HTTP step to retry reaching the resource.
+    * In **Retry intervals**, specify the gap between two successive connection retries.
     * In **Post retry failure action**, select **Ignore Failure**.
     
     ![](./static/http-polling.png)
