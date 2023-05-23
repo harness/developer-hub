@@ -177,7 +177,7 @@ The HTTP step supports polling. When you create the HTTP step for polling, the c
 
 To configure polling in the HTTP step: 
 
-1. In the step, go to **Step Parameters** > **Optional Configuration**, and then enter the following details: 
+1. In the step, go to **Step Parameters** > **Optional Configuration**, and enter the following details: 
     * **Assertion (optional)**: Enter the expression to validate the incoming response. You can use the following aliases to refer to the HTTP responses, URL, and method:
         * `<+httpsResponseCode>`
         * `<+httpUrl>`
@@ -186,7 +186,7 @@ To configure polling in the HTTP step:
     * **Headers (optional)**: Enter the key and value for the headers in the message. 
       
       For example, in **Key**, enter the token, in **Value**, enter secret references such as `<+secrets.getValue("aws-playground_AWS_secret_key")>`.
-    * **Output (optional)**: Create output steps to be used by other steps in the stage. 
+    * **Output (optional)**: Create the output steps to be used by other steps in the stage. 
       
       The **Value** setting can contain any HTTP step input, output, or response information. You can also use JSON and XML functors in the value.
 2. In **Advanced** > **Failure Strategy**, do the following: 
