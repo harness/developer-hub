@@ -9,10 +9,14 @@ sidebar_position: 10
 Currently, this feature is behind the feature flag `PIE_GITX_OAUTH`. Contact Harness Support to enable the feature.
 :::
 
+You can store configurations for your resources, such as pipelines and input sets, in Git using Harness Git Experience. In order to commit configuration changes to Git, Harness fetches the user credentials from the Git connector used to push the changes and uses them as the author.
 
-You can now push configuration changes using your own credentials by integrating OAuth with Git. 
+You can now push configuration changes using your own credentials by integrating OAuth with Git. Harness fetches your credentials from your user profile for all Git commits.
 
-Harness will use your Git credentials for all Git commits if you choose to "Connect to a Git Provider" in your user profile.
+:::important
+Harness will continue to fetch Git connector credentials if you don't integrate OAuth with Git experience.
+:::
+
 
 This topic explains how to configure OAuth for Git experience in Harness.
 
@@ -57,10 +61,11 @@ To commit changes to Git using the configured OAuth token:
    :::important
    If you have not configured OAuth for Git, Harness prompts you to set up an access token in the user profile to use it for Git commits.
    You can do one of the following to commit your changes to Git: 
-   * Select **Connect** to configure OAuth for Git and use your Git credentials for the commit and then select **Save**.
-   * Select **Save** to use your Harness user profile credentials for the commit.
+   * Select **Connect** to configure OAuth for Git and use your Git credentials for the commit and then select **Save**. This is optional.
+   * Select **Save** to use the credentials from the Git connector for the commit.
 
    ![](./static/commit-without-oauth.png)
+   
    :::
 
 4. Go to your branch in the Git repository. It now displays your credentials besides the commit.
