@@ -13,6 +13,7 @@ Debug mode is only available if the following conditions are met:
 * You have the feature flag `CI_REMOTE_DEBUG` enabled. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 * The build infrastructure uses a Linux-based OS.
 * The build fails at a Run step with a Bash or Shell script in a **Build** (`CI`) stage.
+* The build runs in Harness Cloud or a virtual machine on Kubernetes.
 
 Debug mode is never available for a pipeline's first build. You must run the pipeline at least once before you can run the build in debug mode.
 
