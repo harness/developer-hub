@@ -173,9 +173,9 @@ Capability checks are basic accessibility checks and do not follow multiple redi
 
 ## HTTP polling
 
-HTTP step supports polling. When you create the HTTP step for polling, the client will keep requesting the resource at regular intervals. 
+HTTP step supports polling. When you create the HTTP step for polling, the client requests the resource at regular intervals. 
 
-To support HTTP polling: 
+To enable HTTP polling: 
 
 1. In the step's **Step Parameters >** **Optional Configuration**, enter the following details: 
     * **Assertion (optional)**: Enter the expression to validate the incoming response. You can use the following aliases to refer to the HTTP responses, URL, and method:
@@ -189,7 +189,7 @@ To support HTTP polling:
     * **Output (optional)**: Create output steps to be used by other steps in the stage. 
       
       The **Value** setting can contain any HTTP step input, output, or response information. You can also use JSON and XML functors in the value.
-2. In **Advanced >** **Failure Strategy**: 
+2. In **Advanced** > **Failure Strategy**, do the following: 
     * In **On failure of type**, select **All Errors**.
     * In **Perform Action**, select **Retry**.
     * Enter the **Retry count** and **Retry intervals**.
@@ -197,7 +197,7 @@ To support HTTP polling:
     
     ![](./static/http-polling.png)
 
-The HTTP step will retry polling and ignore all errors until the condition mentioned in the assertion section is met.
+The HTTP step retries polling and ignores all errors until the condition mentioned in the assertion section is met.
 
 
 ## See also
