@@ -8,126 +8,152 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use Secure Shell (SSH) to deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-This deployment is called Traditional because it uses Secure Shell scripts and a traditional runtime environment as opposed to containers and orchestration mechanisms, such as those in the Kubernetes Tutorial.
+You can use a Secure Shell (SSH) deployment type to deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
 
-This topic shows you how to run a SSH deployment in Harness by setting up a Secure Shell Service and deploying artifacts from Artifactory to a target host in AWS. You will use a Canary deployment strategy.
+:::note
 
-For Secure Shell, you can access artifacts from **Jenkins**, **Artifactory**, or **Custom**. If you select **Custom**, you will need to provide a Bash script.
+Many traditional deployments use runtime environments such as Tomcat or JBoss. Your target hosts should have these installed before deployment. You can use the Harness [Command](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step) step to install them in the same pipeline as your SSH deployment.
 
-The **Execution Strategies** supported for Secure Shell include **Blank Canvas**, **Basic**, **Rolling**, and **Canary**.
+:::
 
-The supported artifact package types include JAR, TAR, WAR, RPM and ZIP.
+<details>
+<summary>Deployment summary</summary>
 
-[Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) should be enabled if you want to upload Config files from the file store.
+1. Create a Harness Secure Shell service.
+2. Set up a Harness connector to access your repository.
+3. Define the target infrastructure for deployment.
+   1. Add the Harness connector for the target infrastructure.
+   2. Add the credentials needed to connect to target hosts.
+4. Select the deployment strategy.
+5. Run the pipeline and review.
 
-## Objectives
+</details>
 
-You will learn how to:
+## Create an SSH pipeline
 
-* Create a Harness Secure Shell Service.
-* Set up a Harness Artifactory Connector for access to a public repository.
-* Add the credentials needed to connect to target hosts.
-* Define the target infrastructure for deployment.
-* Select the Canary deployment strategy.
-* Run the Pipeline and review.
-
-### Limitations and Requirements
-
-* Secure Shell requires looping capability. See [Looping Strategies Overview: Matrix, Repeat, and Parallelism](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism)
-
-### Before You Begin
-
-* Review [Harness Key Concepts](/docs/getting-started/learn-harness-key-concepts) to establish a general understanding of Harness.
-* Make sure that you have a Delegate available in your environment.
-	+ You can install a Kubernetes or Docker Delegate. See Install Delegates.
-	+ Ideally, you should install the Delegate in the same subnet as the target host(s).
-* Target host: in this guide, we use an AWS EC2 instance as the target host with a minimum t2-medium.
-* SSH Keys for the target host(s): you will need [SSH Keys](/docs/platform/Secrets/add-use-ssh-secrets) for the target hosts. For example, in this tutorial, we connect to an AWS EC2 instance by providing the username and an existing secret file for that AWS EC2 instance. When a EC2 instance is created, a Key Pair is generated in AWS. From the Key Pair for the AWS EC2 instance, you can download a .PEM file to your machine and upload that file to Harness as a secret file.
-
-You can also simply deploy the artifact to your local computer instead of using an AWS EC2 instance. If you want to do this, install the Harness Delegate on your local computer (for example, using Docker Desktop), use a [Physical Data Center](/docs/first-gen/firstgen-platform/account/manage-connectors/add-physical-data-center-cloud-provider) Connector instead of an AWS Connector, and when you set up the target infrastructure SSH key in Harness, use your local login information. You might also need to enable remote access on your computer.
-
-## Create the Deploy Stage
-
-Pipelines are collections of stages. In this tutorial, we will create a new Pipeline and add a stage for Secure Shell deployments of artifacts to a target host.
-
-1. In your Harness project, click **Pipelines**, and then **Create a Pipeline**.
-2. Enter a name for the pipeline: **ssh-tutorial-pipeline**. Keep the default **Inline (Pipeline is stored in Harness)** for **How do you want to set up your pipeline**.
-3. Click **Start** and your pipeline appears.
-4. Click **Add Stage**.
-5. For **Select Stage Type**, select **Deploy**.
-6. For **Stage Name**, enter: **ssh-tutorial-stage-one**.
-7. Click Secure Shell and then click **Set Up Stage**.
+Create a new pipeline and add a stage for **Secure Shell** deployments.
 
 ![](static/ssh-ng-169.png)
 
-Next, you will create a Harness Service that represents your application. Once you have created a Service, it is persistent and can be used throughout the stages of this or any other Pipeline in the Project.
+Next, you can create the service, environment, and execution steps for the pipeline.
 
-## Create a Harness Secure Shell Service
+```mdx-code-block
+<Tabs>
+  <TabItem value="Service" label="Service" default>
+```
 
-The Harness Secure Shell (SSH) Service contains the application package artifact (file or metadata) and the related config files to execute on the target host.
+In **Service**, you add the artifact metadata and the related config files to execute on the target hosts.
 
-Let's create the Service for an application package artifact.
+<details>
+<summary>Create a Harness Secure Shell service</summary>
 
-1. For **Select Service**, click **New Service,** enter a name for the service: **tutorial-service-ssh**.
+1. For **Select Service**, click **New Service,** enter a name for the service.
 2. For **Service Definition**, in **Deployment Type**, select **Secure Shell**.
 
-## Add the Artifactory Connector
+</details>
 
-Harness includes Connectors for all the major artifact repositories. In this tutorial, we will use Artifactory.
+
+<details>
+<summary>Add the artifact connector</summary>
+
+For Secure Shell, you can access artifacts from the following sources:
+- Jenkins
+- Artifactory
+- Bamboo 
+- Amazon S3
+- Amazon ECR
+- Nexus2
+- Azure Artifacts
+- GCR
+- ACR
+- Docker Registry (platform-agnostic)
+- Custom. If you select **Custom**, you will need to provide a Bash script.
+
+The supported artifact package types include Docker, JAR, TAR, WAR, RPM and ZIP.
+
+Harness includes connectors for all the major artifact repositories. In this example, we will use Artifactory and a publicly available artifact.
 
 1. In **Artifacts**, click **Add Primary Artifact**.
-2. In **Specify Artifact Repository Type**, select **Artifactory** and click **Continue**. You can use another artifact repo if you like.
+2. In **Specify Artifact Repository Type**.
+
+   <docimage path={require('./static/911d27b9753c2eee8709a32910a80cf2ce42605db121b3067f2ddc4b2cd0be0e.png')} width="60%" height="60%" title="Click to view full size image" />
+
+   1. For this example, select **Artifactory** and click **Continue**. You can use another artifact repo if you like.
 3. For the Artifactory Connector, select **New Artifactory Connector**.
-4. In **Name**, enter a name for the connector: **artifactory-tutorial-connector** and click **Continue**.
-5. In **Details**, enter the the following URL path for **Artifactory Repository URL**: **https://harness.jfrog.io/artifactory**. In this tutorial, we will use the artifacts stored in that repository.
-6. For **Authentication**, click the down-drop arrow for **Username and Password**. Then, select **Anonymous (no credentials required)**. Click **Continue**.
+4. In **Name**, enter a name for the connector and select **Continue**.
+5. In **Details**, enter the the following URL path for **Artifactory Repository URL**: `https://harness.jfrog.io/artifactory`. In this example, we will use the artifacts stored in that repository.
+6. For **Authentication**, select **Anonymous** and select **Continue**.
    
    ![](static/ssh-ng-170.png)
 
-7. Click **Continue** to connect with Artifactory by using a Harness Delegate.
+7. Select **Continue** to connect with Artifactory by using a Harness Delegate.
 8. In **Delegates Setup**, select **Connect through the Harness Platform**.
-9.  Click **Save and Continue**.
-10. In **Connection Test**, Harness validates Artifactory Repository authentication and permissions for the repo. Click **Continue**.
+9.  Select **Save and Continue**.
+10. In **Connection Test**, Harness validates authentication and permissions for the repo.
+11. Select **Continue**.
 
 ![](static/ssh-ng-171.png)
 
-## Set up Artifact Location and Details
+</details>
 
-For this tutorial, we'll use a **ToDo List** app artifact, **todolist.war**, available in a public Harness Artifactory repo.
 
-1. In **Artifact Details**, enter the following:
-	1. In **Artifact Source Name**, enter **Todolist**.
-	2. In **Repository Format**, keep the default value **Generic**.
-	3. For **Repository**, enter: **todolist-tutorial**. Note that if you select the down-drop menu for Repository, Harness loads any available repositories and displays them for selection.
-	4. In **Artifact Directory**, enter a forward slash **/**.
-	5. In **Artifact Details**, keep the default **Value**.
-	6. In **Artifact Path**, leave the default Runtime Input value **<+input>** for that field. Click **Submit.**
-   
+<details>
+<summary>Set up artifact location and details</summary>
+
+For this example, we'll use a publicly available **ToDo List** app artifact, **todolist.war**, available in a public Harness Artifactory repo.
+
+In **Artifact Details**, enter the following:
+
+2. In **Artifact Source Name**, enter **Todolist**.
+3. In **Repository Format**, keep the default value **Generic**.
+4. For **Repository**, enter: **todolist-tutorial**. Note that if you select **Repository**, Harness loads any available repositories and displays them for selection.
+5. In **Artifact Directory**, enter a forward slash **/**.
+6. In **Artifact Details**, keep the default **Value**.
+7. In **Artifact Path**, leave the default Runtime Input value **<+input>** for that field. 
+8. Select **Submit.**
+
    ![](static/ssh-ng-172.png)
-   
-   The artifact is added to your Service.
-   
+
+   The artifact is added to your service.
+
    ![](static/ssh-ng-173.png)
 
-2. Click **Save**. The Service is added to your stage.
-3. Click **Continue** to set up the target Environment.
+1. Select **Save**. The Service is added to your stage.
+2. Select **Continue** to set up the target Environment.
 
-## Add the Target Infrastructure for the Physical Data Center
+</details>
 
-Create the Infrastructure Definition for the target hosts.
 
-1. In **Specify Environment**, click **New Environment** and enter **ssh-tutorial-env** for **Name.** This is the name that you will use when you select this Infrastructure Definition.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Environment" label="Environment">
+```
+
+In **Environment**, you create the infrastructure definition for the target hosts.
+
+<details>
+<summary>Add the target infrastructure</summary>
+
+1. In **Specify Environment**, click **New Environment** and enter a name. 
 2. For **Environment Type**, select **Pre-****Production**, and click **Save**.
 3. For **Specify Infrastructure**, click **New infrastructure**.
-4. Enter the name **ssh-tutorial-infra** for the new infrastructure.
-5. For **Select Infrastructure Type**, select **Physical Data Center**.
-6. Keep the default selection: **Select preconfigured hosts from Physical Data Center**.
+4. Enter a name for the new infrastructure.
+5. For **Select Infrastructure Type**, select where you want to deploy. For this example, we'll use **Physical Data Center**.
+   1. Keep the default selection: **Select preconfigured hosts from Physical Data Center**.
    
    ![](static/ssh-ng-174.png)
 
-## Create the PDC Connector for the Host
+</details>
+
+
+<details>
+<summary>Create the PDC connector for the hosts</summary>
 
 1. In **Infrastructure Definition**, for **Connector**, click **Select Connector** to create the Connector for PDC.
    
@@ -153,17 +179,21 @@ Create the Infrastructure Definition for the target hosts.
   
 ![](static/ssh-ng-179.png)
 
-## Use SSH Credential for Authenticating to the Target Host
+</details>
+
+
+<details>
+<summary>Use an SSH credential for authenticating to the target hosts</summary>
 
 You can use an SSH Key or Kerberos for authenticating to the target host. In this tutorial, we will use an SSH Key.
 
 1. In **Specify Credentials**, click **Create or Select a Secret**.
 2. In **Create or Select an Existing Secret**, click **New SSH Credential**.
-3. In **SSH Details**, for **Name**, enter **ssh-tutorial-key** for this SSH Credential and click **Continue**.
+3. In **SSH Details**, for **Name**, enter a name for this SSH Credential and click **Continue**.
    
    ![](static/ssh-ng-180.png)
 
-4. In **Configuration and Authentication**, you have three authentication options: In this tutorial, we will use **Username/SSH Key**. Click the down-drop menu and select **Username/SSH Key**.
+4. In **Configuration and Authentication**, you have three authentication options: In this example, we will use **Username/SSH Key**. Click the down-drop menu and select **Username/SSH Key**.
    
    ![](static/ssh-ng-181.png)
 
@@ -201,14 +231,27 @@ Next, you'll select the deployment strategy for this stage, the package type, an
 
 ![](static/ssh-ng-188.png)
 
-## Use a Basic strategy
+</details>
 
-You are now taken to **Execution Strategies** where you will use a deployment strategy and run your pipeline.
 
-1. In **Execution Strategies**, select **Basic**. We'll use Basic because we're using one host. If we did Rolling or Canary, we would need multiple hosts.
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Execution" label="Execution">
+```
+
+In **Execution**, Harness automatically adds the steps required to deploy the service to the environment according to the deployment strategy you select.
+
+The **Execution Strategies** supported for Secure Shell include **Blank Canvas**, **Basic**, **Rolling**, and **Canary**. Let's look at Basic.
+
+<details>
+<summary>Basic deployments</summary>
+
+1. In **Execution Strategies**, select **Basic**. Typically, you use basic when deploying to one host and rolling or canary for multiple hosts.
 2. For **Package type**, select **WAR**.
 3. Click **Use Strategy**. Harness adds the **Deploy** step for execution.
-4. Click the **Deploy** step. Here is where are add the scripts for your package. We'll use the defaults for this tutorial. So we'll simply be copying the artifact to the target host.
+4. Click the **Deploy** step. Here is where you add the scripts for your package. We'll use the defaults for this example. So, we'll simply copy the artifact to the target host.
    
    ![](static/ssh-ng-189.png)
 
@@ -218,26 +261,42 @@ You are now taken to **Execution Strategies** where you will use a deployment st
    ![](static/ssh-ng-190.png)
 
 7. Click **Save**.
-8. Review Looping Strategy: the Looping Strategy is how the deployment will repeat deployments for multiple hosts and for different deployment strategies (Basic, Rolling, Canary).
+8. **Review Looping Strategy:** the looping strategy repeats deployments for multiple hosts and for different deployment strategies (Basic, Rolling, Canary).
 	1. Click **Advanced**.
 	2. Click **Looping Strategy**. You can see that the step will be repeated for all hosts using the `<+stage.output.hosts>` expression.  
-	In this tutorial, we're just using one host, but if you had two hosts the step would be repeated for each host.
+	For example, if you had two hosts the step would be repeated for each host.
   
   ![](static/ssh-ng-191.png)
 
 9.  Click **Apply Changes**.
 10. When you're done, click **Save** to publish the Pipeline.
 
-## Run the Pipeline to Deploy and Review
+</details>
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+
+## Deploy and review
+
+<details>
+<summary>Deploy the pipeline</summary>
 
 1. Click **Run** to run the pipeline.
 2. In **Run Pipeline**, for **Primary Artifact**, select **Todolist**.
-3. In **Artifact Path**, click the down-drop arrow and Harness displays a list of available artifact packages.
+3. In **Artifact Path**, Harness displays a list of available artifact packages.
 4. Select **todolist.war**.
    
    ![](static/ssh-ng-192.png)
 
 5. Click **Run Pipeline**. Harness runs the pipeline and the **Console View** displays the tasks executed for each step.
+
+</details>
+
+<details>
+<summary>Review deployment</summary>
 
 Let's review what is happening in the Deploy step. Most sections correspond to the commands you can see in the Deploy step.
 
@@ -296,18 +355,13 @@ Command finished with status SUCCESS
 ```
 Congratulations! You have now successfully created and completed the steps for running a pipeline by using Secure Shell.
 
-In this tutorial you learned how to:
+</details>
 
-* Create a Harness Secure Shell Service.
-* Set up a Harness Artifactory Connector for access to a public repository.
-* Add the credentials needed to connect to target hosts.
-* Define the target infrastructure for deployment.
-* Select the Canary deployment strategy.
-* Run the Pipeline and review.
 
 ## Notes
 
-### Selecting multiple hosts
+<details>
+<summary>Selecting multiple hosts</summary>
 
 You can add multiple hosts in the Physical Data Center Connector:
 
@@ -317,11 +371,15 @@ During deployment, you'll see each host listed in the loop:
 
 ![](static/ssh-ng-194.png)
 
-### Looping Strategies for each deployment strategy
+</details>
 
-The Repeat [Looping Strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) is used differently for the Basic, Rolling, and Canary deployment types.
 
-The Looping Strategy is automatically added to the **Deploy** step and configured for the deployment type you selected:
+<details>
+<summary>Looping strategies for each deployment strategy</summary>
+
+The Repeat looping strategy is used differently for the basic, rolling, and canary deployment types.
+
+The looping strategy is automatically added to the **Deploy** step and configured for the deployment type you selected:
 
 ![](static/ssh-ng-195.png)
 
@@ -329,7 +387,7 @@ Let's look how it's used for different deployment types.
 
 #### Basic
 
-The Looping Strategy for the Basic deployment simply repeats the deployment on all the target hosts.
+The looping strategy for the basic deployment simply repeats the deployment on all the target hosts.
 
 ```yaml
 repeat:  
@@ -338,23 +396,27 @@ repeat:
 
 #### Rolling
 
-For a Rolling strategy, you specify how many instances you want to deploy per phase.
+For a rolling strategy, you specify how many instances you want to deploy per phase.
 
-Let’s say you have 10 target hosts in the stage Infrastructure Definition and you want to have 3 instances per phase. In **Instances**, you would enter 3. As a result, when execution starts there will be 4 phases: 3, 3, 3, 1. The number of instances per phase can be provided as a count or a percentage.
+Let’s say you have 10 target hosts in the stage **Infrastructure Definition** and you want to have 3 instances per phase. 
 
-This is an example of the Rolling strategy using 2 hosts with 50% Instances.
+In **Instances**, you would enter 3. 
+
+As a result, when execution starts there will be 4 phases: 3, 3, 3, 1. The number of instances per phase can be provided as a count or a percentage.
+
+This is an example of the rolling strategy using 2 hosts with 50% in **Instances**.
 
 ![](static/ssh-ng-196.png)
 
 This means, that Harness will roll out to 50% of target hosts first, and then the remaining 50% if the first 50% were successful.
 
-Harness creates 2 Phases.
+Harness creates 2 phases.
 
 ![](static/ssh-ng-197.png)
 
-You can add any Approval steps inside the Phase Group. See [Adding ServiceNow Approval Steps and Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages), [Adding Jira Approval Stages and Steps](/docs/platform/Approvals/adding-jira-approval-stages), and [Adding ServiceNow Approval Steps and Stages](/docs/platform/Approvals/service-now-approvals).
+You can add any Approval steps inside the Phase Group. For more information, go to [Approvals](https://developer.harness.io/docs/category/approvals).
 
-The Looping Strategy for the first Phase deploys to 50% of the hosts (partitions):
+The looping strategy for the first phase deploys to 50% of the hosts (partitions):
 
 ```yaml
 repeat:  
@@ -364,7 +426,7 @@ repeat:
   unit: Percentage
 ```
 
-The Looping Strategy for the second Phase repeats the partition count:
+The looping strategy for the second phase repeats the partition count:
 
 ```yaml
 repeat:  
@@ -379,7 +441,7 @@ So, partition1 = host1, host2, host3, partition2 = host4, host5, host6, partitio
 
 #### Canary
 
-For Canary strategies, Harness calculates phase instances based on the number of hosts and the number of requested instances per phase.
+For canary strategies, Harness calculates phase instances based on the number of hosts and the number of requested instances per phase.
 
 Let’s say you have 10 hosts and you add 2 phases with 50% and 100%. This means Harness deploys on 5 instances in the first phase and on the rest of the instances in the second phase.
 
@@ -415,7 +477,11 @@ repeat:
   unit: Percentage
 ```
 
-### Reference hosts in steps using expressions
+
+</details>
+
+<details>
+<summary>Reference hosts in steps using expressions</summary>
 
 You can use all of the `<+instance...>` expressions to reference your hosts.
 
@@ -432,3 +498,8 @@ For Microsoft Azure or AWS:
 
 
 `instance.name` has the same value as `instance.hostName`. Both are available for backward compatibility.
+
+
+</details>
+
+
