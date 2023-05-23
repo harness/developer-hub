@@ -16,7 +16,7 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### May 22, 2023, version 793xx
+### May 22, 2023, version 79306
 
 #### What's new
 
@@ -49,7 +49,7 @@ This release does not include early access features.
     - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
     - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
 
-  This issue is fixed in the Harness Delegate version 793xx. This change does not create any behavioral changes. 
+  This issue is fixed in the Harness Delegate version 79306. This change does not create any behavioral changes. 
 
 ### May 04, 2023, version 79214
 
