@@ -52,7 +52,7 @@ In **Service**, you add the artifact metadata and the related config files to ex
 <details>
 <summary>Create a Harness Secure Shell service</summary>
 
-1. For **Select Service**, click **New Service,** enter a name for the service.
+1. For **Select Service**, select **New Service,** enter a name for the service.
 2. For **Service Definition**, in **Deployment Type**, select **Secure Shell**.
 
 </details>
@@ -78,12 +78,12 @@ The supported artifact package types include Docker, JAR, TAR, WAR, RPM and ZIP.
 
 Harness includes connectors for all the major artifact repositories. In this example, we will use Artifactory and a publicly available artifact.
 
-1. In **Artifacts**, click **Add Primary Artifact**.
+1. In **Artifacts**, select **Add Primary Artifact**.
 2. In **Specify Artifact Repository Type**.
 
-   <docimage path={require('./static/911d27b9753c2eee8709a32910a80cf2ce42605db121b3067f2ddc4b2cd0be0e.png')} width="60%" height="60%" title="Click to view full size image" />
+   <docimage path={require('./static/911d27b9753c2eee8709a32910a80cf2ce42605db121b3067f2ddc4b2cd0be0e.png')} width="60%" height="60%" title="Select to view full size image" />
 
-   1. For this example, select **Artifactory** and click **Continue**. You can use another artifact repo if you like.
+   1. For this example, select **Artifactory** and select **Continue**. You can use another artifact repo if you like.
 3. For the Artifactory Connector, select **New Artifactory Connector**.
 4. In **Name**, enter a name for the connector and select **Continue**.
 5. In **Details**, enter the the following URL path for **Artifactory Repository URL**: `https://harness.jfrog.io/artifactory`. In this example, we will use the artifacts stored in that repository.
@@ -140,9 +140,9 @@ In **Environment**, you create the infrastructure definition for the target host
 <details>
 <summary>Add the target infrastructure</summary>
 
-1. In **Specify Environment**, click **New Environment** and enter a name. 
-2. For **Environment Type**, select **Pre-****Production**, and click **Save**.
-3. For **Specify Infrastructure**, click **New infrastructure**.
+1. In **Specify Environment**, select **New Environment** and enter a name. 
+2. For **Environment Type**, select **Pre-****Production**, and select **Save**.
+3. For **Specify Infrastructure**, select **New infrastructure**.
 4. Enter a name for the new infrastructure.
 5. For **Select Infrastructure Type**, select where you want to deploy. For this example, we'll use **Physical Data Center**.
    1. Keep the default selection: **Select preconfigured hosts from Physical Data Center**.
@@ -155,27 +155,27 @@ In **Environment**, you create the infrastructure definition for the target host
 <details>
 <summary>Create the PDC connector for the hosts</summary>
 
-1. In **Infrastructure Definition**, for **Connector**, click **Select Connector** to create the Connector for PDC.
+1. In **Infrastructure Definition**, for **Connector**, select **Select Connector** to create the Connector for PDC.
    
    ![](static/ssh-ng-175.png)
 
 2. In **Create or Select an Existing Connector**, select **New Connector**.
 3.  In **Physical Data Center**, enter a name for this connector: **PDC-Connector**.
-4.  Click **Continue**.
+4.  Select **Continue**.
    
    ![](static/ssh-ng-176.png)
 
 5.  In **Details**, keep the default for **Manually enter host names** and enter the hostname for the EC2 instance.
-6.  Click **Continue**.
+6.  Select **Continue**.
 
    ![](static/ssh-ng-177.png)
 
 7.  In **Delegates Setup**, keep the default for **Use any available Delegate**. 
-8.  Click **Save and Continue**. Harness validates connectivity for the PDC connector.
+8.  Select **Save and Continue**. Harness validates connectivity for the PDC connector.
    
    ![](static/ssh-ng-178.png)
    
-9.  Click **Finish**. The Infrastructure Definition is updated with the PDC Connector.
+9.  Select **Finish**. The Infrastructure Definition is updated with the PDC Connector.
   
 ![](static/ssh-ng-179.png)
 
@@ -187,36 +187,37 @@ In **Environment**, you create the infrastructure definition for the target host
 
 You can use an SSH Key or Kerberos for authenticating to the target host. In this tutorial, we will use an SSH Key.
 
-1. In **Specify Credentials**, click **Create or Select a Secret**.
-2. In **Create or Select an Existing Secret**, click **New SSH Credential**.
-3. In **SSH Details**, for **Name**, enter a name for this SSH Credential and click **Continue**.
+1. In **Specify Credentials**, select **Create or Select a Secret**.
+2. In **Create or Select an Existing Secret**, select **New SSH Credential**.
+3. In **SSH Details**, for **Name**, enter a name for this SSH Credential and select **Continue**.
    
    ![](static/ssh-ng-180.png)
 
-4. In **Configuration and Authentication**, you have three authentication options: In this example, we will use **Username/SSH Key**. Click the down-drop menu and select **Username/SSH Key**.
+4. In **Configuration and Authentication**, you have three authentication options: In this example, we will use **Username/SSH Key**. Select the down-drop menu and select **Username/SSH Key**.
    
    ![](static/ssh-ng-181.png)
 
 5. For username, enter **ec2-user**. This is the user for the EC2 instance.
-6. For **Select or create a SSH Key**, click **Create or Select a Secret**.
+6. For **Select or create a SSH Key**, select **Create or Select a Secret**.
 7. in **Create or Select an Existing Secret**, select **New Secret File**.
    
    ![](static/ssh-ng-182.png)
 
 8. in **Add new Encrypted File**, enter a name for **Secret Name**: **ssh-key-name**. This is the name you will use to reference this file.
-9. For **Select File**, click **Browse**. On your machine, browse for the .pem file that you downloaded from your EC2 instance. Select that file and Harness uploads it to the **Select File** field. Click **Save**.
+9. For **Select File**, select **Browse**. On your machine, browse for the .pem file that you downloaded from your EC2 instance. Select that file and Harness uploads it to the **Select File** field. 
+10. Select **Save**.
    
    ![](static/ssh-ng-183.png)
 
-10. In **Configuration and Authentication**, keep the default values for **Passphrase** and **SSH port**. Click **Save and Continue**.
+11. In **Configuration and Authentication**, keep the default values for **Passphrase** and **SSH port**. Select **Save and Continue**.
     
     ![](static/ssh-ng-184.png)
     
-11. In **Verify Connection**, enter the hostname for the EC2 instance in the **Add a Host Name to start verification** field and click **Connection Test**.
+12. In **Verify Connection**, enter the hostname for the EC2 instance in the **Add a Host Name to start verification** field and select **Connection Test**.
     
     ![](static/ssh-ng-185.png)
     
-12. The Secure Shell connection to the EC2 instance is tested. Click **Finish**. Click **Continue**.
+13. The Secure Shell connection to the EC2 instance is tested. Select **Finish**. Select **Continue**.
     
     ![](static/ssh-ng-186.png)
     
@@ -224,8 +225,8 @@ You can use an SSH Key or Kerberos for authenticating to the target host. In thi
     
     ![](static/ssh-ng-187.png)
 
-13. Click **Save**.
-14. Back in **Environment**, click **Continue**.
+14. Select **Save**.
+15. Back in **Environment**, select **Continue**.
 
 Next, you'll select the deployment strategy for this stage, the package type, and the number of instances to deploy on.
 
@@ -250,26 +251,26 @@ The **Execution Strategies** supported for Secure Shell include **Blank Canvas**
 
 1. In **Execution Strategies**, select **Basic**. Typically, you use basic when deploying to one host and rolling or canary for multiple hosts.
 2. For **Package type**, select **WAR**.
-3. Click **Use Strategy**. Harness adds the **Deploy** step for execution.
-4. Click the **Deploy** step. Here is where you add the scripts for your package. We'll use the defaults for this example. So, we'll simply copy the artifact to the target host.
+3. Select **Use Strategy**. Harness adds the **Deploy** step for execution.
+4. Select the **Deploy** step. Here is where you add the scripts for your package. We'll use the defaults for this example. So, we'll simply copy the artifact to the target host.
    
    ![](static/ssh-ng-189.png)
 
 5. In **Command Scripts**, edit **Copy Config**.
-6. In **Edit Command**, for **Select file type to copy**, click **Artifact**.
+6. In **Edit Command**, for **Select file type to copy**, select **Artifact**.
    
    ![](static/ssh-ng-190.png)
 
-7. Click **Save**.
+7. Select **Save**.
 8. **Review Looping Strategy:** the looping strategy repeats deployments for multiple hosts and for different deployment strategies (Basic, Rolling, Canary).
-	1. Click **Advanced**.
-	2. Click **Looping Strategy**. You can see that the step will be repeated for all hosts using the `<+stage.output.hosts>` expression.  
+	1. Select **Advanced**.
+	2. Select **Looping Strategy**. You can see that the step will be repeated for all hosts using the `<+stage.output.hosts>` expression.  
 	For example, if you had two hosts the step would be repeated for each host.
   
   ![](static/ssh-ng-191.png)
 
-9.  Click **Apply Changes**.
-10. When you're done, click **Save** to publish the Pipeline.
+9.  Select **Apply Changes**.
+10. When you're done, select **Save** to publish the Pipeline.
 
 </details>
 
@@ -284,14 +285,14 @@ The **Execution Strategies** supported for Secure Shell include **Blank Canvas**
 <details>
 <summary>Deploy the pipeline</summary>
 
-1. Click **Run** to run the pipeline.
+1. Select **Run** to run the pipeline.
 2. In **Run Pipeline**, for **Primary Artifact**, select **Todolist**.
 3. In **Artifact Path**, Harness displays a list of available artifact packages.
 4. Select **todolist.war**.
    
    ![](static/ssh-ng-192.png)
 
-5. Click **Run Pipeline**. Harness runs the pipeline and the **Console View** displays the tasks executed for each step.
+5. Select **Run Pipeline**. Harness runs the pipeline and the **Console View** displays the tasks executed for each step.
 
 </details>
 
