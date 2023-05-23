@@ -2,7 +2,7 @@
 title: Harness Platform release notes
 sidebar_label: Harness Platform
 tags: [NextGen, "platform"]
-date: 2023-05-22T10:00:30
+date: 2023-05-23T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Platform, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 22, 2023, version 793xx
+## Latest - May 22, 2023, version 79306
 
 
 ```mdx-code-block
