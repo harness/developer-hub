@@ -54,7 +54,9 @@ For more information about self-signed certificates, delegates, and delegate env
 * [Install delegates](https://developer.harness.io/docs/category/install-delegates)
 * [Configure a Kubernetes build farm to use self-signed certificates](./use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
-<!-- DOC-2692 removed -->
+## Use debug mode to troubleshoot remote builds
+
+The Harness CI [Re-run in Debug Mode](./use-ci/debug-mode.md) feature can troubleshoot remote builds.
 
 ## Truncated execution logs
 
