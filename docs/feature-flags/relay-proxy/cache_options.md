@@ -24,7 +24,7 @@ By default, the Relay Proxy will store all flag data in memory on startup.
 
 	The main potential issue with running in memory mode is that when the proxy is restarted it will lose all cached data. This means if no connection can be established at the time of startup the Relay Proxy won't be able to serve flags to connected sdks. 
 
-	This issue can be avoided by connecting to a redis cache for persistent storage, see [redis cache](redis_cache.md) for more details.
+	This issue can be avoided by connecting to a redis cache for persistent storage, see [Redis cache](#redis-cache) below for more details.
 
 ## Redis cache
 
