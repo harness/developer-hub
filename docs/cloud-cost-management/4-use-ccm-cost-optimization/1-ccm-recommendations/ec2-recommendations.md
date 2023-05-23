@@ -1,10 +1,10 @@
 ---
-title: Optimize AWS EC2 costs with recommendations
+title: AWS EC2 recommendations
 description: Optimize the utilization of your EC2 instances using Harness CCM recommendations.
 # sidebar_position: 2
 ---
 
-
+# Optimize AWS EC2 costs with recommendations
 An effective way to reduce AWS EC2 instance costs is to optimize VM utilization. This involves resizing instances based on active tasks and decommissioning unused instances.
 
 Harness helps you reduce costs with recommendations.
@@ -57,49 +57,10 @@ Harness CCM provides two types of recommendations to optimize your EC2 instances
 
 ## Enable EC2 recommendations
 
+You must add the required permissions and enable EC2 recommendations in AWS.
+Go to [Enable EC2 recommendations](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#enable-ec2-recommendations) for the tasks to be performed on your AWS console.
 
-
-:::note
-If you are an existing customer, you need to:
-* Edit the IAM role used by the Harness AWS Connector corresponding to the AWS account.
-* In the IAM role, add the `ce:GetRightsizingRecommendation` permission to the **HarnessEventsMonitoringPolicy**.
-:::
-
-
-
-Once you have the `ce:GetRightsizingRecommendation` permission added to the **HarnessEventsMonitoringPolicy** in the IAM role, perform the following tasks on your AWS console to enable recommendations.
-
-1. On your AWS console, go to the **Cost Explorer** service.
-
-  ![](./static/ec2-recom-aws-screen-1.png)
-  
-
-2. Click **Preferences** on the left pane.
-3. Enable the following recommendations:
- * Receive Amazon EC2 resource recommendations 
- * Recommendations for linked accounts
-  
-    ![](./static/ec2-recom-aws-screen-2.png)
-
-
-
-4. Verify that you have enabled these recommendations correctly. 
-
-  Open AWS CloudShell and run the following command: 
-
-```
-  aws ce get-rightsizing-recommendation --service AmazonEC2
-```
- 
- If the recommendations are not enabled, the following error message is displayed:
-
-     
-  "An error occurred (AccessDeniedException) when calling the GetRightsizingRecommendation operation: Rightsizing EC2 recommendation is an opt-in only feature. You can enable this feature from the PAYER account’s Cost Explorer Preferences page. Normally it may take up to 24 hours in order to generate your rightsizing recommendations."
-
-5. You must install the Amazon CloudWatch agent on your EC2 instance to enable memory metrics.
-
-You need to perform the following steps in Harness:
-
+After completing the aforementioned tasks, you need to perform the following steps in Harness:
 
 1. While creating a new AWS CCM connector, select the **Inventory Management** feature to enable recommendations. For more information, go to [Set up CCM for your AWS account](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md).
 
@@ -108,15 +69,12 @@ You need to perform the following steps in Harness:
 
     ![](./static/ec2-create-cross-account-role.png)
 
-  
-
 ### View your EC2 recommendations
-
 
 1. In **Harness**, go to the **Cloud Costs** module.
 2. Click **Recommendations**.
 3. Click the filter icon.
-4. In the **Resource Type** dropdown list, select **EC2_INSTANCE**.
+4. In the **Recommendation Type** dropdown list, select **EC2_INSTANCE**.
 5. Click **Apply**. 
 
   All the AWS accounts with EC2 instances are displayed. 

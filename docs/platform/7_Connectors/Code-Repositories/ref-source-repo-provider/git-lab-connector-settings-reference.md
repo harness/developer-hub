@@ -96,3 +96,6 @@ You'll need this setting if you use [Harness Git Experience](https://harness.hel
 
 Simply use the same Personal Access Token you created earlier.
 
+### Kubernetes delegate with self-signed certificates
+
+If your codebase connector allows API access and connects through a Harness Delegate that uses self-signed certificates, you must specify `ADDITIONAL_CERTS_PATH` in the delegate pod, as described in [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates#enable-self-signed-certificates).

@@ -60,7 +60,7 @@ Text string.
 
 ### Container Registry
 
-Harness Connector for the container registry containing the Service Dependency image, such as DockerHub.
+Harness Connector for the container registry containing the Service Dependency image, such as Docker Hub.
 
 ### Image
 

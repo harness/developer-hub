@@ -12,9 +12,9 @@ This topic provides settings and permissions for the Kubernetes Cluster Connecto
 
 The Kubernetes Cluster Connector is a platform-agnostic connection to a Kubernetes cluster located anywhere.
 
-For cloud platform-specific connections, see platform [Cloud Connectors](/docs/category/cloud-platform-connectors).
+For cloud platform-specific connections, see platform [Cloud Connectors](https://developer.harness.io/docs/category/cloud-platform-connectors/).
 
-Looking for the How-to? See [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
+Looking for the How-to? See [Add a Kubernetes Cluster Connector](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
 
 ### Video Summary
 

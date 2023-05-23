@@ -12,23 +12,23 @@ This topic provides settings and permissions for the GitHub Connector.
 
 You can also use a GitHub App for authentication in a Harness GitHub Connector. See [Use a GitHub App in a GitHub Connector](../../Code-Repositories/git-hub-app-support.md).
 
-### Name
+## Name
 
 The unique name for this Connector.
 
-### ID
+## ID
 
 See [Entity Identifier Reference](../../../20_References/entity-identifier-reference.md).
 
-### Description
+## Description
 
 Text string.
 
-### Tags
+## Tags
 
 See [Tags Reference](../../../20_References/tags-reference.md).
 
-### URL Type
+## URL Type
 
 You can select Git Account (which is a GitHub **organization**) or Git Repository.
 
@@ -38,7 +38,7 @@ Later, when you test this connection, you'll use a repo in the org.
 
 In either case, when you use the Connector later in Harness, you'll specify which repo to use.
 
-### Connection Type
+## Connection Type
 
 You can select **HTTPS** or **SSH** for the connection.
 
@@ -68,7 +68,7 @@ For more information about GitHub's deprecation of RSA support, go to the GitHub
 
 :::
 
-### GitHub Repository URL
+## GitHub Repository URL
 
 The URL for a Git org or repo. The URL format must match the [Connection Type](#connection_type) you selected --for example:
 
@@ -82,11 +82,11 @@ If you selected **Git Repository** in [URL Type](#url_type), enter the full U
 
 If you selected **Git Account** in [URL Type](#url_type), enter the URL without the repo name, like `https://github.com/[org-name]`. You will need to provide a repo name before you can use the Connector in Harness.
 
-### Authentication
+## Authentication
 
-Read-only GitHub repos also require a username and password/token.You can use a password/token for HTTPS credentials.
+All GitHub repos, including read-only repos, require authentication.
 
-If you selected **SSH** as the connection protocol, you must add the **SSH Key** to use with the connection. 
+You can use a username and password/token for HTTPS credentials. If you selected **SSH** as the connection protocol, you must add the **SSH Key** to use with the connection.
 
 ### Username
 
@@ -96,33 +96,35 @@ Your personal GitHub account username. You can use either plaintext or a [Harnes
 
 A [Harness Encrypted Text secret](../../../Secrets/2-add-use-text-secrets.md) for the credentials of your GitHub user account.
 
-A Personal Access Token (PAT) is required if your GitHub authentication uses 2FA.
+A Personal Access Token (PAT) is required if your GitHub authentication uses two-factor authentication (2FA). In GitHub, you can create personal access tokens at <https://github.com/settings/tokens/new>.
 
 Typically, you can validate your token from the command line before using it in Harness. For example:
 
 `curl -i https://api.github.com -u <username>:<token>`
 
-If you have Two-Factor Authentication set up in your Git repo, then you need to generate a personal access token in your repo and enter that token in the **Personal Access Token** field. In GitHub, you can set up the personal access token at <https://github.com/settings/tokens/new>.
+:::info Personal Access Token Permissions
 
-#### PAT Permissions
+To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token, as described in the GitHub documentation on [authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
 
-To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token. See [Authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on) from GitHub.* The GitHub user account used to create the Personal Access Token must have admin permissions on the repo.
-* GitHub doesn't provide a way of scoping a PAT for read-only access to repos. You must select the following permissions:
+* The GitHub user account that you use to create the token must have admin permissions on the repo.
+* GitHub doesn't provide a way to scope tokens for read-only access to repos. You must select all `repo`, `admin:repo_hook`, and `user` scopes.
 
-![](./static/git-hub-connector-settings-reference-01.png)
+![Selecting PAT permission scopes.](./static/git-hub-connector-settings-reference-01.png)
+
+:::
+
 ### SSH Key
 
-If you selected **SSH** as the connection protocol, you must add the **SSH Key** to use with the connection as a [Harness Encrypted Text secret](../../../Secrets/2-add-use-text-secrets.md). For detailed steps to create an SSH Key, see [Add new SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
+If you selected **SSH** as the connection protocol, you must add the **SSH Key** to use with the connection as a [Harness Encrypted Text secret](../../../Secrets/2-add-use-text-secrets.md). For instructions on creating an SSH Key, go to the GitHub documentation on [adding a new SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account).
 
-Harness also supports [GitHub deploy keys](https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys). Deploy keys grant access to a single repo. Using a deploy key ensures that the Connector only works with the specific repo you selected in **URL Type**.
+Harness also supports [GitHub deploy keys](https://docs.github.com/en/developers/overview/managing-deploy-keys#deploy-keys). Deploy keys grant access to a single repo. Using a deploy key ensures that the connector only works with the specific repo you selected in **URL Type**.
 
-### Enable API access
+## Enable API access
 
 This option is required for using Git-based triggers, Webhooks management, and updating Git statuses.
 
-You can use the same token you used in **Personal Access Token**.
-
-#### API Authentication
-
 You should use the same [Personal Access Token](#password_personal_access_token) for both Authentication and API Authentication.
 
+### Kubernetes delegate with self-signed certificates
+
+If your codebase connector allows API access and connects through a Harness Delegate that uses self-signed certificates, you must specify `ADDITIONAL_CERTS_PATH` in the delegate pod, as described in [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates#enable-self-signed-certificates).

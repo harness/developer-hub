@@ -45,7 +45,7 @@ The following table differentiates between delegate images based on key features
   | git | NA | 2.31.1
   | scm | The Harness-generated library and version are changed with every fix. | The Harness-generated library and version are changed with every fix. |
 
-## docker pull commands
+## Docker pull commands
 
 The following table provides instructions for retrieval of delegate images.
 

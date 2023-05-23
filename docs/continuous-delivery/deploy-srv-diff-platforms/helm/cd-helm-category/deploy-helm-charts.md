@@ -21,8 +21,6 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
 ## Important notes
 
 * Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness Delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness Cloud Provider that uses this Delegate in A cannot assume the role for the B account.
-* Harness cannot fetch Helm chart versions with Helm OCI because Helm OCI no longer supports `helm chart list`. See [OCI Feature Deprecation and Behavior Changes with Helm v3.7.0](https://helm.sh/docs/topics/registries/#oci-feature-deprecation-and-behavior-changes-with-v370).
-* Currently, you cannot list the OCI image tags in Harness. You must pass the tag as a runtime input from a previous step or as a trigger. This is a Helm limitation. For more information, go to [Helm Search Repo Chart issue](https://github.com/helm/helm/issues/11000).
 
 ## Supported platforms and technologies
 
@@ -34,6 +32,31 @@ Many Helm chart users use ChartMuseum as their Helm chart repository server.
 
 * **ChartMuseum binary v0.8.2:** the default ChartMuseum binary used by Harness is v0.8.2.
 * **ChartMuseum binary v0.12.0:** to use ChartMuseum binary v0.12.0 you must enable the feature flag `USE_LATEST_CHARTMUSEUM_VERSION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+## Helm OCI Chart Registry Support
+
+Harness supports the following Helm OCI chart registries:
+  - Amazon ECR
+  - Azure Container Registry
+  - DockerHub
+  - JFrog Artifactory
+  - Google Artifact Registry (coming soon)
+
+Helm OCI chart support includes the following deployment types:
+
+- Native Helm
+- Helm charts with Kubernetes deployments.
+
+Harness OCI chart registry support details:
+
+- You can use the Harness Helm OCI connector to authenticate Harness with any OCI compliant repository.
+- Harness can fetch the list of chart versions for a respective Helm chart. These versions can be passed at runtime as a parameter into the service.
+- You can define expressions for the **Chart Name** and **Path** settings, and, at runtime, Harness will resolve those expressions and let you pick a version.
+
+### Important notes
+
+- You cannot be trigger pipelines using the On New Manifest trigger if your service uses the OCI Helm connector. 
+
 
 ## Visual summary
 
@@ -97,9 +120,9 @@ Adding a Helm chart is a simple process of connecting Harness to the Git or HTTP
    ![](./static/deploy-helm-charts-02.png)
 5. In **Specify Helm Chart Store**, select the type of repo or or cloud storage service (Google Cloud Storage, AWS S3) you're using.
 
-For the steps and settings of each option, see the [Connect to an Artifact Repo](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo) How-tos.
+For the steps and settings of each option, see the [Connect to an Artifact Repo](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo/) How-tos.
 
-If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
+If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](https://developer.harness.io/docs/category/cloud-platform-connectors/).
 
 You can also use a local Helm chart if you are deploying the same Helm chart and version to many clusters/namespaces in parallel. For information, see [Use a local Helm Chart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/use-a-local-helm-chart). For all of the Helm Chart Store types (Git, GitHub, HTTP Helm, OCI, etc), you will need to provide the following Helm info:
 
@@ -149,7 +172,7 @@ Here's an example:
 
 ![](./static/deploy-helm-charts-03.png)
 
-If you haven't set up a Harness delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](/docs/platform/Delegates/advanced-installation/install-a-kubernetes-delegate).
+If you haven't set up a Harness delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
 
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
 

@@ -17,7 +17,7 @@ This topic describes how to set up a CI build infrastructure in Microsoft Azure.
 
 For information on using Kubernetes as a build farm, see [Set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-The following diagram illustrates a build farm. The [Harness Delegate](/docs/platform/Delegates/install-delegates/overview) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
+The following diagram illustrates a build farm. The [Harness Delegate](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
 ![](../static/define-a-ci-build-infrastructure-in-azure-16.png)
 
@@ -298,5 +298,5 @@ If you have problems running the delegate, runner, or VMs, you can collect debug
 
 * [Set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
 * For more details on VM Runner, visit this [GitHub](https://github.com/drone-runners/drone-runner-aws) page.
-* [Troubleshoot Continuous Integration](../../../troubleshoot/troubleshooting-ci.md)
+* [Troubleshoot Continuous Integration](/docs/continuous-integration/troubleshooting-ci.md)
 

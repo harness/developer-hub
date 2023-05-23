@@ -265,7 +265,7 @@ resource "harness_platform_service" "example" {
 
 ```mdx-code-block
   </TabItem5>
-  <TabItem5 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem5 value="Harness Manager" label="Harness Manager">
 ```
 
 To add an artifact from a Docker registry, do the following:
@@ -458,7 +458,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem6>
-  <TabItem6 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem6 value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/).
@@ -660,7 +660,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem13>
-  <TabItem13 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem13 value="Harness Manager" label="Harness Manager">
 ```
 
 
@@ -858,7 +858,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem7>
-  <TabItem7 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem7 value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to Google Artifact Registry using a Harness GCP Connector. 
@@ -921,6 +921,196 @@ Ensure the Harness delegate you have installed can reach your Google Artifact Re
 
 </details>
 
+
+### Azure DevOps Artifacts
+
+<details>
+<summary>Use Azure Artifacts</summary>
+
+You connect to your Azure DevOps artifacts using a Harness Azure Artifacts connector.
+
+```mdx-code-block
+import Tabs15 from '@theme/Tabs';
+import TabItem15 from '@theme/TabItem';
+```
+
+<Tabs15>
+  <TabItem15 value="YAML" label="YAML" default>
+
+
+<details>
+<summary>Azure Artifacts connector YAML</summary>
+
+```yaml
+connector:
+  name: Azure Artifacts
+  identifier: Azure_Artifacts
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  type: AzureArtifacts
+  spec:
+    azureArtifactsUrl: https://dev.azure.com/garvit-test
+    auth:
+      spec:
+        type: PersonalAccessToken
+        spec:
+          tokenRef: azureartifactspat
+    delegateSelectors:
+      - gcpdocplay
+    executeOnDelegate: true
+```
+
+</details>
+
+
+<details>
+<summary>Service using Azure Artifacts artifact YAML</summary>
+
+```yaml
+service:
+  name: Azure Artifacts
+  identifier: Azure_Artifacts
+  tags: {}
+  serviceDefinition:
+    spec:
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - identifier: mypackage
+              spec:
+                connectorRef: Azure_Artifacts
+                scope: org
+                feed: garvit-test
+                packageType: maven
+                package: com.mycompany.app:my-app
+                version: 1.1-SNAPSHOT
+              type: AzureArtifacts
+    type: Ssh
+```
+
+</details>
+
+
+
+```mdx-code-block
+  </TabItem15>
+  <TabItem15 value="API" label="API">
+```
+
+<details>
+<summary>Azure Artifact connector example</summary>
+
+Create the Azure Artifact connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
+
+
+```yaml
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
+--header 'Content-Type: text/yaml' \
+--header 'x-api-key: pat.12345.6789' \
+--data-raw 'connector:
+  name: Azure Artifacts
+  identifier: Azure_Artifacts
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  type: AzureArtifacts
+  spec:
+    azureArtifactsUrl: https://dev.azure.com/garvit-test
+    auth:
+      spec:
+        type: PersonalAccessToken
+        spec:
+          tokenRef: azureartifactspat
+    delegateSelectors:
+      - gcpdocplay
+    executeOnDelegate: true'
+```
+
+</details>
+
+Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
+
+```mdx-code-block
+  </TabItem15>
+  <TabItem15 value="Harness Manager" label="Harness Manager">
+```
+
+<details>
+<summary>Azure Artifact connector</summary>
+
+1. In your Harness project, in **Connectors**, select **New Connector**, and then select **Azure Artifacts**.
+2. Enter a name for the connector, and select **Continue**.
+3. In **Azure Artifacts URL**, enter the Azure DevOps organization URL, for example, `https://dev.azure.com/my-org`.
+4. In **Personal Access Token**, enter a PAT token for the Azure DevOps organization, and select **Continue**.
+5. In **Delegates Setup**, select a delegate that has network connectivity to the Azure Cloud.
+6. Save the connector.
+
+</details>
+
+
+<details>
+<summary>Add an Azure Artifact artifact</summary>
+
+1. In a Harness service, select **Configuration**.
+2. In **Deployment Type**, select one of the [supported deployment types](#deployment-type-support).
+3. In **Artifacts**, select **Add Artifact Source**.
+4. In **Specify Artifact Repository Type**, select **Azure Artifacts**, and select **Continue**.
+5. In **Azure Artifacts Repository**, select or create an Azure Artifacts connector that connects to your Azure DevOps organization, and then select **Continue**.
+6. In **Artifact Details**, enter the following:
+   1. **Artifact Source Identifier:** Enter the name for the artifact in Harness.
+   2. **Scope:** Select **Org** or **Project**.
+   3. **Feed:** Select the artifact feed.
+   4. **Package Name:** Select the name of the package on Azure Artifacts.
+   5. **Version:** Select the artifact version to use or set the option as a runtime input or expression.
+7. Select **Submit**.
+
+<docimage path={require('./static/c5a9e07628ab8f1c79c71ba7f19750797af1321378f1008563e8d58595c70d74.png')} width="60%" height="60%" title="Click to view full size image" />
+
+</details>
+
+
+
+```mdx-code-block
+  </TabItem15>
+</Tabs15>
+```
+
+
+#### Deployment type support
+
+Azure DevOps Artifacts are can be used with the following Harness deployment types:
+
+- SSH
+- WinRM
+- Azure Web Apps
+- Tanzu
+
+#### Package type support
+
+Currently, Harness supports Maven and Nuget package types only.
+
+#### Azure DevOps URL
+
+This is the URL in your browser when you are in the Azure DevOps organization containing the projects and feed(s) you want to use.
+
+For example, in this URL, `https://dev.azure.com/garvit-test/sample-project/_packaging?_a=feed&feed=other-feed`, you only need to use `https://dev.azure.com/garvit-test` in Harness connector **Azure DevOps URL** setting.
+
+#### Permissions
+
+You use an Azure DevOps Personal Access Token (PAT) to authenticate with Azure.
+
+Create a Personal Access token as described in [Authenticate access with personal access tokens](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page) from Azure.
+
+Next, copy the token and paste it in the Harness Encrypted Text secret you use for the PAT in the Harness Azure Artifacts connector.
+
+The PAT must have the **Read** permission in **Packaging**.
+
+<docimage path={require('./static/ee464a7fb77650d47cc1c64d752f917cda4343824ba02ce64885894b5d506739.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+</details>
 
 
 ### Amazon Elastic Container Registry (ECR)
@@ -1081,7 +1271,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem8>
-  <TabItem8 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem8 value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to ECR using a Harness AWS Connector. For details on all the ECR requirements for the AWS Connector, see [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector).
@@ -1386,7 +1576,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem9>
-  <TabItem9 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem9 value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure Cloud Connector](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector).
@@ -1517,6 +1707,32 @@ The following JSON sample creates a custom role with the required permissions. T
 
 </details>
 
+<details>
+<summary>Use Docker Registry connector for ACR</summary>
+
+If you do not want to centrally manage service principles for access to ACR, you can use the platform-agnostic Docker Registry connector and [repository-scoped permissions](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-repository-scoped-permissions) to connect Harness to ACR.
+
+To use the Docker Registry connector to connect to ACR, do the following:
+
+1. In Azure ACR, in **Repository permissions**, select **Tokens**.
+   
+  <docimage path={require('./static/cfe33a0df139ae4c13d3b191c3fe1b160a0d79dd337fc16dac88be1cbdf582a4.png')} width="30%" height="30%" title="Click to view full size image" />  
+
+2. Create a new token and scope map.
+   
+  <docimage path={require('./static/6eacbefee02319d23d749a69a7adcd66666c6e7036efb267bfc37454cea6c6a6.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+3.  Generate the password for the token.
+   
+  <docimage path={require('./static/feacb89196f0649e37019b63020dc2faab70f04b135a872f21599b07b42b7cf5.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+3.  In Harness, create a new Docker Registry connector. 
+4.  For **Provider Type**, select **Other**.
+5.  Select **Username and Password** for **Authentication**, and use the username and password for the ACR token.
+   
+  <docimage path={require('./static/f9b3efd13ddb3f9bd25f1686d4154bfc281501be9b9c75e5c8660858a64284ed.png')} width="60%" height="60%" title="Click to view full size image" />
+
+</details>
 
 
 ### Nexus
@@ -1683,7 +1899,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem10>
-  <TabItem10 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem10 value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
@@ -1892,7 +2108,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem11>
-  <TabItem11 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem11 value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, go to [Artifactory Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
@@ -2062,7 +2278,7 @@ The Terraform Provider Bamboo connector resource is coming soon.
 
 ```mdx-code-block
   </TabItem14>
-  <TabItem14 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem14 value="Harness Manager" label="Harness Manager">
 ```
 
 To add a plan from Bamboo, do the following:
@@ -2323,7 +2539,7 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 ```mdx-code-block
   </TabItem12>
-  <TabItem12 value="Pipeline Studio" label="Pipeline Studio">
+  <TabItem12 value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to Github using a Harness Github Connector, username, and Personal Access Token (PAT).

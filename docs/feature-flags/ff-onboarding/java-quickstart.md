@@ -101,7 +101,7 @@ When you name a Feature Flag, Harness automatically generates its unique identif
 5. Click **Save and Close**. The Feature Flag is created. By default, the flag is set to OFF.
 
 :::info note
-Once you have created your flag type, optionally you can [manage targets](/docs/feature-flags/ff-using-flags/ff-target-management/add-targets) and modify the [variations](/docs/feature-flags/ff-creating-flag/manage-variations), [rules](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags), and [add prerequisites](/docs/feature-flags/add-prerequisites-to-feature-flag) of your flag.
+Once you have created your flag type, optionally you can [manage targets](/docs/feature-flags/ff-target-management/add-targets) and modify the [variations](/docs/feature-flags/ff-creating-flag/manage-variations), [rules](/docs/feature-flags/ff-target-management/targeting-users-with-flags), and [add prerequisites](/docs/feature-flags/add-prerequisites-to-feature-flag) of your flag.
 :::
 
 ## Use Harness Feature Flags SDKs with Java applications

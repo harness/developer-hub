@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-04-10T10:00
+date: 2023-05-23T10:00
 sidebar_position: 2
 ---
 
@@ -10,9 +10,79 @@ Review the notes below to learn about the early access (aka BETA) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - April 21, 2023, version 79111
+## Latest - May 23, 2023, version 79306
 
 ### Continuous Delivery
+
+- Trigger all artifacts and manifests using **On New Artifact** and **On New Manifest** triggers respectively. (CDS-68262, ZD-43588, ZD-43726)
+  
+  This functionality is behind a feature flag, `TRIGGER_FOR_ALL_ARTIFACTS`. 
+
+  Earlier, you could trigger only the last pushed artifact or manifest using triggers. You can now trigger all collected artifacts and manifests of perpetual tasks in one single execution using the **On New Artifact** or **On New Manifest** trigger options. 
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 04, 2023, version 79214
+
+##### Continuous Delivery
+
+- You can set webhook triggers to run specific pipeline stages using the [Allow selective stage(s) executions?](https://developer.harness.io/docs/platform/pipelines/run-specific-stage-in-pipeline/) option. (CDS-56775, CDS-56774)
+
+  This functionality is behind the feature flag, `CDS_NG_TRIGGER_SELECTIVE_STAGE_EXECUTION`. 
+  
+  To run a particular stage of the pipeline: 
+  1. Select the stage, then select **Advanced Options**.
+  2. In **Stage Execution Settings>** **Allow selective stages(s) executions?**, select **Yes**. This setting is selected by default.
+     
+     ![](./static/selective-stage-execution.png)
+  3. When you create a trigger, in **Configuration**, select the stages you want to execute.
+     
+     ![](./static/select-stage-to-execute.png)
+  
+  Here is a sample trigger YAML: 
+  
+  ```
+  trigger:
+  name: stage3Trigger
+  identifier: stage3Trigger
+  enabled: true
+  description: ""
+  tags: {}
+  stagesToExecute:
+    - stage3
+  orgIdentifier: NgTriggersOrg
+  projectIdentifier: viniciusTest
+  pipelineIdentifier: ThreeStagesPipeline
+  source:
+    type: Webhook
+    spec:
+      type: Custom
+      spec:
+        payloadConditions: []
+        headerConditions: []
+  inputYaml: |
+    pipeline:
+      identifier: ThreeStagesPipeline
+      stages:
+        - stage:
+            identifier: stage3
+            type: Custom
+            variables:
+              - name: stage3var
+                type: String
+                value: stage3Var
+
+  ```
+- You can add Tanzu Application Service (TAS) [config files](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/add-config-files) from GitHub. (CDS-56452)
+
+  This feature is currently behind the feature flag, `CDS_GIT_CONFIG_FILES`. For TAS deployment types, you can reference service config files from GitHub.
+
+#### April 21, 2023, version 79111
+
+##### Continuous Delivery
 
 - Protecting secrets used in webhook-based triggers that use secret decryption on delegates (CDS-58488, ZD-42117)
   
@@ -32,9 +102,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   For Harness services using the Tanzu deployment type, config files can be configured using Github, in addition to the Harness file store. Support for other deployment types in coming soon.
 
-## April 10, 2023, version 79015
+#### April 10, 2023, version 79015
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/lambda/aws-lambda-deployments)
   
@@ -71,11 +141,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   Expressions in comments were causing issues for some customers as Harness was trying to evaluate the expressions and this was causing failures.
   
   Harness will remove comments from values.yaml files to prevent expressions in comments from being evaluated and causing failures.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### March 24, 2023, version 78817
 

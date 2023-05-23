@@ -2,8 +2,8 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-04-21T10:00
-sidebar_position: 12
+date: 2023-05-23T10:00
+sidebar_position: 14
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -15,9 +15,9 @@ Review the notes below for details about recent changes to Harness Delegate, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest release - April 22, 2023, Harness version 79111, Harness Delegate version 79106
+## Latest release - May 23, 2023, Harness version 79306, Harness Delegate version 79307
 
-Harness NextGen release 79111 includes the following changes for the Harness Delegate.
+Harness NextGen release 79306 includes the following changes for the Harness Delegate.
 
 ```mdx-code-block
 <Tabs>
@@ -25,6 +25,79 @@ Harness NextGen release 79111 includes the following changes for the Harness Del
 ```
 
 This release introduces the following new features and enhancements:
+
+- A new [`listDelegates` API](https://app.harness.io/gateway/ng/api/delegate-setup/listDelegates/accountIdentifier=string&orgIdentifier=string&projectIdentifier=string') enables you to list and filter delegates in your project, organization, or account. (PL-37981)
+
+   You can use the body parameters to filter your delegate list:
+
+   ```json
+   {
+   "filterType":"Delegate", //This field is mandatory.
+   
+   "delegateInstanceFilter": "EXPIRED/AVAILABLE",
+
+   "status": "CONNECTED/DISCONNECTED",
+   
+   "delegateType": "KUBERNETES/DOCKER/HELM_DELEGATE/SHELL_SCRIPT/ECS",
+   
+   "delegateName": "<>",
+   
+   "description": "<>",
+   
+   "delegateTags": "[]"
+   }
+   ```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+- New delegate metrics are available. This functionality is behind a feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. (PL-37908)
+
+   Harness captures delegate agent metrics for delegates shipped on immutable image types. The following new delegate agent metrics are available with the feature flag:
+  
+   | **Metric name** | **Description** |
+   | :-- | :-- |
+   | `task_completed` | The number of tasks completed. |
+   | `task_failed` | The number of failed tasks. |
+   | `task_rejected` | The number of tasks rejected because of a high load on the delegate. |
+   | `delegate_connected` | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
+   | `resource_consumption_above_threshold` | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. |
+
+   Enable the feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST` to new delegate agent metrics. When this feature flag is enabled, Harness will capture the metrics.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+This release includes the following fixes:
+
+- Deployments consistently failed during the same stage. (PL-38247)
+
+   This issue was fixed by updating the delegate YAML. Startup now fails when you uses a legacy delegate image with an immutable delegate.
+
+- Delegates were intermittently unavailable during upgrade. (PL38283)
+  
+   This issue was fixed by adding a two minute wait period to rolling upgrades after a new pod is created before the previous pod is removed.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>Expand this section to view changes to previous releases</summary>
+
+
+#### April 22, 2023, Harness version 79111, Harness Delegate version 79106
+
+Harness NextGen release 79111 includes the following changes for the Harness Delegate.
+
+#### What's new
 
 - Added the following metrics for immutable delegates that you can scrape via Prometheus: (DEL-5363)
 
@@ -79,33 +152,15 @@ This release introduces the following new features and enhancements:
     - org.springframework:spring-tx from 5.3.25 -> 5.3.26
     - org.springframework:spring-web from 5.3.25 -> 5.3.26
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+#### Early access
 
 This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
-
-This release includes the following fixes:
+#### Fixed issues
 
 - Added WebSocket reconnect logic for when the Harness Manager does not receive a heartbeat from the Harness Delegate for more than five minutes. (DEL-5954)
 
 - Set the delegate `LANG` environment variable to en_US.UTF-8 by default. (DEL-6221)
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>Expand this section to view changes to previous releases</summary>
 
 #### March 31, 2023, Harness version 78914, Harness Delegate version 78904
 

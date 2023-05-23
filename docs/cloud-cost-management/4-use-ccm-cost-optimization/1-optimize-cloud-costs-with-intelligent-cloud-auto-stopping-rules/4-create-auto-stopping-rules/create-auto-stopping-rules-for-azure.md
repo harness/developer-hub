@@ -1,5 +1,5 @@
 ---
-title: Create AutoStopping Rules for Azure
+title: Azure
 description: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle.
 # sidebar_position: 2
 helpdocs_topic_id: r5x5pvuqfn
@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# Create AutoStopping Rules for Azure
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions.
 
 ## Before you begin
