@@ -10,12 +10,13 @@ A set of mandatory input flags is required for the installation of the chaos inf
 2. **task-poll-interval-seconds**: Specifies the interval between subsequent poll queries to the server for a new experiment. The default value is **5 seconds**.
 3. **task-update-interval-seconds**: Specifies the duration between subsequent status updates of an active fault to the server. The default value is **5 seconds**.
 4. **result-update-retry-interval-seconds**: Specifies the interval between subsequent retries for updating the result, in case the result updation to the server fails. The default value is **5 seconds**.
-5. **task-update-retries**: Specifies the maximum number of experiment updation retry count, in case of a failure. If the retry count is breached, the active fault is aborted and the result is attempted to be sent. The default value is **5**.
-6. **task-update-retry-interval-seconds**: Specifies the interval between subsequent task updation retries, in case of a failure. The default value for it is **5 seconds**.
-7. **chaos-infra-liveness-update-interval-seconds**: Specifies the interval between the chaos infrastructure liveness heartbeats. The default value is **5 seconds**.
-8. **chaos-infra-log-file-max-size-mb**: Specifies the maximum size limit for the chaos infrastructure log file rotation. Upon breaching the size limit, a new log file is created to store the logs and the old log file is retired as a backup archive. The default value is **5 MB**.
-9. **chaos-infra-log-file-max-backups**: Specifies the maximum number of backup archives to be retained at any given time. The oldest archive is deleted when a new log file is created. The default value is **2**.
-10. **experiment-log-file-max-age-days**: Specifies the number of days after which the experiment log files will be deleted. The default value is **30**.
+5. **task-update-retries**: Specifies the maximum number of fault status updation retry count, in case of a failure. If the retry count is breached, the active fault is aborted after logging the error during each attempts and the result is attempted to be sent. The default value is **5**.
+6. **result-update-retries**: Specifies the maximum number of fault result updation retry count, in case of a failure. Upon breaching the retry count, no result is sent by the infrastructure but the error during the attempts are logged. The default value is **5**.
+7. **task-update-retry-interval-seconds**: Specifies the interval between subsequent task updation retries, in case of a failure. The default value for it is **5 seconds**.
+8. **chaos-infra-liveness-update-interval-seconds**: Specifies the interval between the chaos infrastructure liveness heartbeats. The default value is **5 seconds**.
+9. **chaos-infra-log-file-max-size-mb**: Specifies the maximum size limit for the chaos infrastructure log file rotation. Upon breaching the size limit, a new log file is created to store the logs and the old log file is retired as a backup archive. The default value is **5 MB**.
+10. **chaos-infra-log-file-max-backups**: Specifies the maximum number of backup archives to be retained at any given time. The oldest archive is deleted when a new log file is created. The default value is **2**.
+11. **experiment-log-file-max-age-days**: Specifies the number of days after which the experiment log files will be deleted. The default value is **30**.
 
 ## Infrastructure service
 Linux chaos infrastructure is installed as an executable binary on your Linux machine. This infrastructure is managed as a `Systemd` service.
