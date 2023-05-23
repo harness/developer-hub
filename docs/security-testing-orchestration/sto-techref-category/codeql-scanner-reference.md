@@ -152,4 +152,108 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 * [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
+## YAML pipeline example: ingest CodeQL scan results
 
+The following pipeline illustrates how you can set up a scan using a Run step and then ingest the results using a Custom 
+
+```yaml
+
+pipeline:
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: wwdvpwa
+        repoName: dvpwa
+        build: <+input>
+  stages:
+    - stage:
+        name: codeql
+        identifier: codeql
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: codeql_analyze
+                  identifier: codeql_analyze
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: ubuntu:20.04
+                    shell: Sh
+                    command: |-
+                      #!/bin/bash
+
+
+                      # Change the working directory to the app directory.
+                      mkdir /app
+                      cd /app
+
+                      # Update and upgrade the apt packages.
+                      apt update -y -q
+                      apt upgrade -y -q 
+
+                      # Install the wget and tar packages and python3.
+                      export DEBIAN_FRONTEND="noninteractive"
+                      apt install -y -q wget tar python3.9-venv python3.9 build-essential
+
+                      # Download the CodeQL bundle.
+                      wget -q https://github.com/github/codeql-action/releases/latest/download/codeql-bundle-linux64.tar.gz
+
+                      # Extract the CodeQL bundle.
+                      tar -xvzf ./codeql-bundle-linux64.tar.gz -C /app/
+
+                      # Set the PATH environment variable to include the CodeQL directory.
+                      export PATH="${PATH}:/app/codeql"
+
+                      # Resolve the CodeQL packs
+                      codeql resolve qlpacks
+
+                      # Move back to the code folder before scanning
+                      cd /harness
+
+                      # Create a CodeQL database.
+                      codeql database create python_database --language=python
+
+                      # Run the CodeQL analyzer.
+                      codeql database analyze python_database --format=sarif-latest --output=/shared/customer_artifacts/dvpwa-codeql-results.sarif
+                    imagePullPolicy: Always
+                    resources:
+                      limits:
+                        memory: 2G
+                        cpu: 2000m
+              - step:
+                  type: CustomIngest
+                  name: CustomIngest_1
+                  identifier: CustomIngest_1
+                  spec:
+                    mode: ingestion
+                    config: default
+                    target:
+                      name: codeql
+                      type: repository
+                      variant: test
+                    advanced:
+                      log:
+                        level: info
+                      fail_on_severity: critical
+                    ingestion:
+                      file: /shared/customer_artifacts/dvpwa-codeql-results.sarif
+          sharedPaths:
+            - /shared/customer_artifacts/
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: stoqadelegate
+              namespace: harness-qa-delegate
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+  identifier: CodeQLdbothwellv2_Clone
+  name: CodeQL-dbothwell-v2 Clone
+
+```
