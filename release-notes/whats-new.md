@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-05-17T10:00
+date: 2023-05-23T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -18,18 +18,41 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
  
  
-## Latest - May 17, 2023, STO Core version 1.53.0
+## Latest - May 22, 2023, version 79306
 
-### Security Testing Orchestration
+### Service Reliability Management
 
-* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
+- Continuous Error Tracking (CET) is a separate module in Harness now and no longer available as a health source in SRM. To learn more about CET, go to the [Continuous Error Tracking Documentation](https://developer.harness.io/docs/continuous-error-tracking). (SRM-14701)
 
-  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
+- Clicking on a Prometheus metrics entry in the Service Health page of a monitored service directly navigates you to the Prometheus metrics dashboard. (SRM-14699)
 
+- In the event of an SLO encountering an error, it is now displayed in the respective Simple and Composite SLOs. Additionally, when the underlying issue causing data collection failures is resolved, the missed data that couldn't be collected during the error period will be restored. However, there is a time limit for data restoration, which is set at 24 hours. For example, if the issue is resolved within 48 hours, only the last 24 hours of data is restored. (SRM-14672)
+
+- Verify step in CV has a new icon. (OIP-3)
+
+- You can now configure your monitored service to trigger notifications whenever there are updates or changes related to chaos experiments or feature flags. (SRM-14553)
+
+- New errors are introduced to provide a comprehensive insight into SLO's performance (SRM-14549).  
+  
+  Now, errors are displayed in the following scenarios:
+  
+  - Ongoing Problem: Errors are displayed when an SLO experiences an ongoing problem, such as an issue with the health of a connector.
+  
+  - Missing Data: Errors are shown when there is missing data in an SLO, even if there is no current error. This helps identify any gaps in historical SLO records.
+  
+  - Contributing SLO Issues: Errors in contributing SLOs are now reflected in the composite SLO, ensuring a complete picture of performance when individual components encounter problems.
 
 
 <details>
 <summary>2023 releases</summary>
+
+#### May 17, 2023, STO Core version 1.53.0
+
+##### Security Testing Orchestration
+
+* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
+
+  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
 
 #### May 10, 2023, STO Core version 1.50.3
 
