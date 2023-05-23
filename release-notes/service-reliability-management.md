@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-05-22T10:00:20
+date: 2023-05-23T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 22, 2023, version 793xx
+## Latest - May 23, 2023, version 79306
 
 ```mdx-code-block
 <Tabs>
@@ -77,7 +77,7 @@ This release does not include any early access features.
 
 - Missing data in SLOs was not considered in error budget burn rate notifications. (SRM-14682)  
 
-  - This issue has been resolved. Now the missing data will be treated according to user preference (GOOD, BAD, or IGNORE), contributes to error budget burn rate and is included in notifications.
+  - This issue has been resolved. Now the missing data is treated according to user preference (GOOD, BAD, or IGNORE), contributes to error budget burn rate, and is included in notifications.
 
 ```mdx-code-block
   </TabItem>
