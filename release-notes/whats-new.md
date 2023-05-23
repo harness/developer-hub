@@ -16,9 +16,32 @@ Review the notes below to learn about the new features that are Generally Availa
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
- 
- 
-## Latest - May 22, 2023, version 79306
+
+## Latest - May 23, 2023, version 79306
+
+### Harness Platform
+
+* You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
+
+* The **Connector Details** page now shows whether a connector is connected via a delegate or via Harness Platform. (PL-32673)
+
+* When steps or stages fail with a **Ignore Failure** strategy, their status is displayed as **Success (Failure Ignored)** instead of **Failed**. (CDS-67670)
+
+* You can now reject old executions waiting on approval when new ones are approved by using the **Auto-Reject previous deployments paused in this step on approval** option in the **Harness Approval** step. (CDS-58063)
+
+* You can now view the most recent delegate task details and their corresponding selection logs for approvals.
+The details of the latest delegate task are automatically updated. (CDS-57927)
+  
+  You can view task details for the following:
+  - ServiceNow
+  - Jira
+  - Custom Approvals
+
+* A warning now appears if you try to save a template with an existing identifier and an updated version label. This warns you that it will be merged with the existing template (upon confirmation). (CDS-47301)
+
+* The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set secret expiration date. The Harness Delegate version 793xx is required for this feature. (PL-32708, ZD-42524)
+
+* AuthZ now considers the SAML setting that the user logged in to when multiple SAML settings are present and the user belongs to more than one of them. The user will be removed from any other SAML settings that the same user might have been part of and synced with Harness through previous SAML logins. (PL-32484) 
 
 ### Service Reliability Management
 
@@ -80,7 +103,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ##### Harness Platform
 
-- You will now receive an alert on the default settings page when there are unsaved changes, or if you leave the page. (PL-32354)
+- You will now receive an alert on the default settings page when there are unsaved changes and you leave the page. (PL-32354)
 
 ##### Service Reliability Management
 
