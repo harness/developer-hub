@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-05-22T10:00
+date: 2023-05-23T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -15,9 +15,9 @@ Review the notes below for details about recent changes to Harness Delegate, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest release - May 22, 2023, Harness version 793xx, Harness Delegate version 793xx
+## Latest release - May 23, 2023, Harness version 79306, Harness Delegate version 79307
 
-Harness NextGen release 793xx includes the following changes for the Harness Delegate.
+Harness NextGen release 79306 includes the following changes for the Harness Delegate.
 
 ```mdx-code-block
 <Tabs>
