@@ -9,9 +9,9 @@ A set of mandatory input flags is required for the installation of the chaos inf
 1. **log-directory**: Specifies a custom log directory to store the log files. By default, the logs are stored at `/var/log/linux-chaos-infrastructure`.
 2. **task-poll-interval-seconds**: Specifies the interval between subsequent poll queries to the server for a new experiment. The default value is **5 seconds**.
 3. **task-update-interval-seconds**: Specifies the duration between subsequent status updates of an active fault to the server. The default value is **5 seconds**.
-4. **result-update-retry-interval-seconds**: Specifies the interval between subsequent retries for updating the result, in case the result updation to the server fails. The default value is **5 seconds**.
-5. **task-update-retries**: Specifies the maximum number of experiment updation retry count, in case of a failure. If the retry count is breached, the active fault is aborted and the result is attempted to be sent. The default value is **5**.
-6. **task-update-retry-interval-seconds**: Specifies the interval between subsequent task updation retries, in case of a failure. The default value for it is **5 seconds**.
+4. **result-update-retry-interval-seconds**: Specifies the interval between subsequent retries for updating the result, in case the result upate to the server fails. The default value is **5 seconds**.
+5. **task-update-retries**: Specifies the maximum number of experiment upate retries, in case of a failure. If the retry count is breached, the active fault is aborted and an attempt is made to send the result. The default value is **5**.
+6. **task-update-retry-interval-seconds**: Specifies the interval between subsequent task upate retries, in case of a failure. The default value for it is **5 seconds**.
 7. **chaos-infra-liveness-update-interval-seconds**: Specifies the interval between the chaos infrastructure liveness heartbeats. The default value is **5 seconds**.
 8. **chaos-infra-log-file-max-size-mb**: Specifies the maximum size limit for the chaos infrastructure log file rotation. Upon breaching the size limit, a new log file is created to store the logs and the old log file is retired as a backup archive. The default value is **5 MB**.
 9. **chaos-infra-log-file-max-backups**: Specifies the maximum number of backup archives to be retained at any given time. The oldest archive is deleted when a new log file is created. The default value is **2**.
