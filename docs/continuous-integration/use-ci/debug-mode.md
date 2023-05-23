@@ -40,6 +40,6 @@ Debug mode is never available for a pipeline's first build. You must run the pip
 
 :::tip
 
-You can troubleshoot pipelines that appear to build successfully but still needs remote troubleshooting. To do this, add a Run step with the CLI command `exit 1`. This forces the build to fail so you can re-run it in debug mode.
+You can troubleshoot pipelines that appear to build successfully but still need remote troubleshooting. To do this, add a Run step with the CLI command `exit 1`. This forces the build to fail so you can re-run it in debug mode.
 
 :::
