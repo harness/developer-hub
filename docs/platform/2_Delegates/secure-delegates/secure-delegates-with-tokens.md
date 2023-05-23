@@ -79,8 +79,6 @@ To update and restart an existing Kubernetes delegate, do the following:
 
 2. Paste the token into the delegate `spec` of the `Secret`, in the `UPGRADER_TOKEN` field. 
 
-3. Paste the token into the specification of the `Secret` in the `DELEGATE_TOKEN` field.
-
    ```yaml
    ...  
    ---  
@@ -92,19 +90,9 @@ To update and restart an existing Kubernetes delegate, do the following:
    data:
      UPGRADER_TOKEN: "[enter new token here]"
    ...
-   ---
-   
-   apiVersion: v1
-   kind: Secret
-   ...
-   type: Opaque
-   data:
-     DELEGATE_TOKEN: "[enter new token here]"
-   
-   ...
    ```
 
-4. Run `kubectl apply -f harness-delegate.yaml`.
+3. Run `kubectl apply -f harness-delegate.yaml`.
 
    The delegate pods restart automatically with the updated settings.
 

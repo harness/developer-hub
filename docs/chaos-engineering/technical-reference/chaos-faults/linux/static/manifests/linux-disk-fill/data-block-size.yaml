@@ -8,6 +8,6 @@ metadata:
 spec:
   diskFillChaos/inputs:
     fillPath: "/"
-    fillPercentage: 80
-    dataBlockSize: 1000
+    fillStorage: 80%
+    dataBlockSize: 400k
     duration: 30

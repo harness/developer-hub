@@ -1,5 +1,5 @@
 ---
-title: Optimize Kubernetes costs with workload recommendations
+title: Workload recommendations
 description: Harness Cloud Cost Management (CCM) provides recommendations for your Kubernetes clusters. These recommendations show you resource optimization opportunities to potentially reduce your monthly spending.
 # sidebar_position: 2
 helpdocs_topic_id: o75arkcg8i
@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# Optimize Kubernetes costs with workload recommendations
 One of the most impactful ways to reduce spend on Kubernetes infrastructure is to make sure your clusters are optimally sized for the workloads and node pools they run. Harness Cloud Cost Management (CCM) provides recommendations for your Kubernetes clusters to show you resource optimization opportunities to potentially reduce your monthly spend.
 
 The recommendations are computed by analyzing the past utilization of CPU and memory of your workload. The implementation uses a histogram method to compute recommendations.
