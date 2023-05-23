@@ -2793,6 +2793,7 @@ module.exports = {
       from: "/docs/continuous-integration/ci-technical-reference/ci-git-clone-step",
       to: "/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline",
     },
+    
     // Created by bfisher for SMP PR 1837 on May 23, 2023
     {
       from: "https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm",
@@ -2802,5 +2803,6 @@ module.exports = {
       from: "/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem",
       to: "/docs/self-managed-enterprise-edition/monitor-harness-on-prem",
     },
+    
   ],
 };
