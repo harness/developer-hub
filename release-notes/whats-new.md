@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-05-22T10:00
+date: 2023-05-23T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
  
  
 
-## Latest - May 22, 2023, version 793xx
+## Latest - May 23, 2023, version 79306
 
 ### Harness Platform
 
