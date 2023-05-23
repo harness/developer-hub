@@ -20,7 +20,17 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 #### What's new
 
-This release does not include new features. 
+- The following libraries have been upgraded. (PL-31421, ZD-40165,42531)
+	- org.springframework:spring-aop from 5.3.26 to 5.3.27
+	- org.springframework:spring-beans from 5.3.26 to 5.3.27
+	- org.springframework:spring-context from 5.3.26 to 5.3.27
+	- org.springframework:spring-core from 5.3.26 to 5.3.27
+	- org.springframework:spring-expression from 5.3.26 to 5.3.27
+	- org.springframework:spring-jcl from 5.3.26 to 5.3.27
+	- org.springframework:spring-messaging from 5.3.26 to 5.3.27
+	- org.springframework:spring-test from 5.3.26 to 5.3.27
+	- org.springframework:spring-tx from 5.3.26 to 5.3.27
+	- org.springframework:spring-web from 5.3.26 to 5.3.27
 
 #### Early access
 
@@ -50,6 +60,8 @@ This release does not include early access features.
     - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
 
   This issue is fixed in the Harness Delegate version 79306. This change does not create any behavioral changes. 
+- Null pointer exception occurs when generating audit events for user groups with null values. (PL-32144)
+- No members appear in user group list even after the user has been added via SCIM. (PL-32482)
 
 ### May 04, 2023, version 79214
 
@@ -66,6 +78,8 @@ This release does not include early access features.
 - Resolved a null pointer exception when the Canary Deployment step is initialized with the Helm manifest type. (CDS-59214)
 - Users cannot use Harness secret as LDAP password in FirstGen. (PL-32597, ZD-42655)
   A code enhancement fixed the issue.
+
+  The user group list now displays the number of users in the group. Select this number to see the user details. This is behind the feature flag `PL_CG_SHOW_MEMBER_ID_COUNT`.
 
 ### April 22, 2023, version 79111
 

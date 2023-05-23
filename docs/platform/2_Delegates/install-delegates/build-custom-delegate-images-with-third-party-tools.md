@@ -18,8 +18,6 @@ This document explains how you can:
 
 You can build on either of the following Harness-provided images.
 
-
-
 | **Image** | **Description** |
 | --- | --- |
 | Harness Delegate Docker image | A publicly available Docker image providing Harness Delegate. |
@@ -411,7 +409,4 @@ You can use your registered delegate to run Kubernetes and Terraform pipelines.
 
 For information about creating a Kubernetes pipeline, go to [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
-![](./static/build-custom-delegate-images-with-third-party-tools-09.png)
-
 For information about creating a Terraform Plan, go to [Provision with the Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/).
-

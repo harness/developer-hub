@@ -1,10 +1,10 @@
 ---
-title: Create an AutoStopping proxy for AWS
+title: AWS AutoStopping proxy 
 description: This topic describes how to create an AutoStopping proxy for AWS.
 # sidebar_position: 3
 ---
 
-
+# Create an AutoStopping proxy for AWS
 AutoStopping is a solution that is well-suited for use with native load-balancing options like AWS ALB. However, there are certain use cases, such as SSH/RDP/RDS connections, that cannot be addressed by native load balancer integrations for AutoStopping.
 
 To address these use cases, AutoStopping offers a reverse proxy called the AutoStopping proxy. This proxy sits in front of the virtual machines (VMs) and manages the start and stop of the VMs based on network traffic. The proxy is capable of supporting both HTTP(S) and TCP connections.

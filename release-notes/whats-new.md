@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-05-17T10:00
+date: 2023-05-23T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -16,20 +16,66 @@ Review the notes below to learn about the new features that are Generally Availa
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
- 
- 
-## Latest - May 17, 2023, STO Core version 1.53.0
 
-### Security Testing Orchestration
+## Latest - May 23, 2023, version 79306
 
-* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
+### Harness Platform
 
-  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
+* You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
+* The **Connector Details** page now shows whether a connector is connected via a delegate or via Harness Platform. (PL-32673)
+
+* When steps or stages fail with a **Ignore Failure** strategy, their status is displayed as **Success (Failure Ignored)** instead of **Failed**. (CDS-67670)
+
+* You can now reject old executions waiting on approval when new ones are approved by using the **Auto-Reject previous deployments paused in this step on approval** option in the **Harness Approval** step. (CDS-58063)
+
+* You can now view the most recent delegate task details and their corresponding selection logs for approvals.
+The details of the latest delegate task are automatically updated. (CDS-57927)
+  
+  You can view task details for the following:
+  - ServiceNow
+  - Jira
+  - Custom Approvals
+
+* A warning now appears if you try to save a template with an existing identifier and an updated version label. This warns you that it will be merged with the existing template (upon confirmation). (CDS-47301)
+
+* The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set secret expiration date. The Harness Delegate version 793xx is required for this feature. (PL-32708, ZD-42524)
+
+* AuthZ now considers the SAML setting that the user logged in to when multiple SAML settings are present and the user belongs to more than one of them. The user will be removed from any other SAML settings that the same user might have been part of and synced with Harness through previous SAML logins. (PL-32484) 
+
+### Service Reliability Management
+
+- Continuous Error Tracking (CET) is a separate module in Harness now and no longer available as a health source in SRM. To learn more about CET, go to the [Continuous Error Tracking Documentation](https://developer.harness.io/docs/continuous-error-tracking). (SRM-14701)
+
+- Clicking on a Prometheus metrics entry in the Service Health page of a monitored service directly navigates you to the Prometheus metrics dashboard. (SRM-14699)
+
+- In the event of an SLO encountering an error, it is now displayed in the respective Simple and Composite SLOs. Additionally, when the underlying issue causing data collection failures is resolved, the missed data that couldn't be collected during the error period will be restored. However, there is a time limit for data restoration, which is set at 24 hours. For example, if the issue is resolved within 48 hours, only the last 24 hours of data is restored. (SRM-14672)
+
+- Verify step in CV has a new icon. (OIP-3)
+
+- You can now configure your monitored service to trigger notifications whenever there are updates or changes related to chaos experiments or feature flags. (SRM-14553)
+
+- New errors are introduced to provide a comprehensive insight into SLO's performance (SRM-14549).  
+  
+  Now, errors are displayed in the following scenarios:
+  
+  - Ongoing Problem: Errors are displayed when an SLO experiences an ongoing problem, such as an issue with the health of a connector.
+  
+  - Missing Data: Errors are shown when there is missing data in an SLO, even if there is no current error. This helps identify any gaps in historical SLO records.
+  
+  - Contributing SLO Issues: Errors in contributing SLOs are now reflected in the composite SLO, ensuring a complete picture of performance when individual components encounter problems.
 
 
 <details>
 <summary>2023 releases</summary>
+
+#### May 17, 2023, STO Core version 1.53.0
+
+##### Security Testing Orchestration
+
+* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
+
+  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
 
 #### May 10, 2023, STO Core version 1.50.3
 
@@ -57,7 +103,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ##### Harness Platform
 
-- You will now receive an alert on the default settings page when there are unsaved changes, or if you leave the page. (PL-32354)
+- You will now receive an alert on the default settings page when there are unsaved changes and you leave the page. (PL-32354)
 
 ##### Service Reliability Management
 

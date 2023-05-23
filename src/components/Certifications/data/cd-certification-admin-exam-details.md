@@ -111,4 +111,6 @@ The Continuous Delivery Administrator exam can start immediately after registeri
 
 1. Create an account in Harness University
 2. Register for an exams 
-3. Take the exams
+3. Review the [instructions for the Hands On Exam](/certifications/instructions)
+4. Take the exams
+    1. There will be a knowledge and hands on portion.	

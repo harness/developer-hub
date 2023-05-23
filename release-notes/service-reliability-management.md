@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-05-04T10:00:20
+date: 2023-05-23T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -15,14 +15,33 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 04, 2023, version 79214
+## Latest - May 23, 2023, version 79306
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-- An icon appears on the SLO performance trend chart timeline to indicate when the error budget was reset and the amount of budget that was added. (SRM-14550)
+- Continuous Error Tracking (CET) is a separate module in Harness now and no longer available as a health source in SRM. To learn more about CET, go to the [Continuous Error Tracking Documentation](https://developer.harness.io/docs/continuous-error-tracking). (SRM-14701)
+
+- Clicking on a Prometheus metrics entry in the Service Health page of a monitored service directly navigates you to the Prometheus metrics dashboard. (SRM-14699)
+
+- In the event of an SLO encountering an error, it is now displayed in the respective Simple and Composite SLOs. Additionally, when the underlying issue causing data collection failures is resolved, the missed data that couldn't be collected during the error period will be restored. However, there is a time limit for data restoration, which is set at 24 hours. For example, if the issue is resolved within 48 hours, only the last 24 hours of data is restored. (SRM-14672)
+
+- Verify step in CV has a new icon. (OIP-3)
+
+- You can now configure your monitored service to trigger notifications whenever there are updates or changes related to chaos experiments or feature flags. (SRM-14553)
+
+- New errors are introduced to provide a comprehensive insight into SLO's performance (SRM-14549).  
+  
+  Now, errors are displayed in the following scenarios:
+  
+  - Ongoing Problem: Errors are displayed when an SLO experiences an ongoing problem, such as an issue with the health of a connector.
+  - 
+  - Missing Data: Errors are shown when there is missing data in an SLO, even if there is no current error. This helps identify any gaps in historical SLO records.
+  - 
+  - Contributing SLO Issues: Errors in contributing SLOs are now reflected in the composite SLO, ensuring a complete picture of performance when individual components encounter problems.
+
 
 ```mdx-code-block
   </TabItem>
@@ -36,9 +55,29 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-- The **Error Budget Burn Rate is above** SLO notification setting was not triggering notifications, even when the condition was met. (SRM-14613)  
+- Error budget burn rate notifications are not being sent for Request Based SLO. (SRM-14705).  
   
-  This issue has been resolved and notifications are being triggered when the **Error Budget Burn Rate is above** condition is met.
+    This issue has been resolved, and error budget burn rate notifications are now being sent for Request Based SLO also.
+
+- Error budget burn rate notifications are not being sent for composite SLOs. (SRM-14658)  
+
+    This issue has been resolved, and error budget burn rate notifications are now being sent for composite SLOs.
+
+- Encountering an error when configuring monitored services using the Harness Terraform provider. (SRM-14684)  
+  
+  The Harness Terraform provider was sending the Terraform resource incorrectly, resulting in the error. This issue has been resolved.
+
+- On the Composite SLO Details page, the environment links under the monitored services were broken. (SRM-14645)  
+  
+  This issue has been resolved. Now, clicking on the environment link correctly displays the SLOs page for the respective monitored service.
+
+- The last updated date and time of monitored services and SLOs are changing automatically even when no configuration changes were made. (SRM-14543)  
+
+  - This issue has been resolved. Now, the last updated date and time will change only when modifications are made to the configuration of the monitored services and SLOs.
+
+- Missing data in SLOs was not considered in error budget burn rate notifications. (SRM-14682)  
+
+  - This issue has been resolved. Now the missing data is treated according to user preference (GOOD, BAD, or IGNORE), contributes to error budget burn rate, and is included in notifications.
 
 ```mdx-code-block
   </TabItem>
@@ -50,11 +89,27 @@ This release does not include any early access features.
 <details>
 <summary>2023 releases</summary>
 
+#### May 04, 2023, version 79214
+
+##### What's new
+
+- An icon appears on the SLO performance trend chart timeline to indicate when the error budget was reset and the amount of budget that was added. (SRM-14550)
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- The **Error Budget Burn Rate is above** SLO notification setting was not triggering notifications, even when the condition was met. (SRM-14613)  
+  
+  This issue has been resolved and notifications are being triggered when the **Error Budget Burn Rate is above** condition is met.
+
 #### April 22, 2023, version 79111
 
 ##### What's new
 
-- Added new advanced fields for consecutive error budges in SLO. These fields are optional. (SRM-14507)
+- Added new advanced fields for consecutive error budgets in SLO. These fields are optional. (SRM-14507)
 
 - Removed the mandatory check for the presence of Tier in the AppDynamics complete metric path. (SRM-14463)
 

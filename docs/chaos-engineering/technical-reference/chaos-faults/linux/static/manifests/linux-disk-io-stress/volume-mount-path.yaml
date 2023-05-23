@@ -8,5 +8,5 @@ metadata:
 spec:
   stressChaos/inputs:
     workers: 1
-    fileSystemUtilisationPercentage: 50
+    fileSystemUtilisation: 50%
     volumeMountPath: "/tmp"
