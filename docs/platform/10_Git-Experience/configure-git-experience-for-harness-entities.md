@@ -74,14 +74,24 @@ Harness tracks where your configuration is kept and manages the whole lifespan o
 
 ## Enforce Git experience
 
-In your Harness account, you can enforce Git experience to save resource configurations only in Git repositories.
+To ensure that your resource configurations are saved only in Git repositories, you can enforce Git experience in your Harness account.
+You can do this by enabling `Enforce git experience for pipelines and templates`. 
+
+This setting applies to the following resources:
+
+* Pipelines
+* Templates
+
+Harness disables inline pipelines and templates, and users can only create remote pipelines and templates after enabling this setting. You can still create inline input sets corresponding to existing inline pipelines.
 
 To enforce Git experience in Harness: 
 
 1. Go to **ACCOUNT SETTINGS**, and then select **Account Resources**.
 2. Select **Default Settings**, and then select **Git Experience**.
 3. Enable **Enforce git experience for pipelines and templates**.
-4. Select **Allow Overrides** besides the settings to save configurations in Harness as well as Git repositories in the child scopes like project and Organization.
+   After you enable this setting, it applies to all the scopes (account, organization, and project) in Harness.
+4. To override this setting in the child scopes, select **Allow Overrides** beside the settings.
+   This forces configurations at the account scope to be saved in Git repositories only. Users can, however, still create inline pipelines and templates at the organizational and project levels.
 
    ![](./static/enforce-gitx.png)
 
