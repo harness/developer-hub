@@ -505,6 +505,33 @@ Ensure the Harness delegate you have installed can reach `storage.cloud.google.c
 
 </details>
 
+<details>
+<summary>Use Docker Registry for GCR</summary>
+
+If you do not want to use the GCP connector for GCR, you can use the platform-agnostic Docker Registry connector.
+
+Use the following settings:
+
+- **Provider Type:** select **Other (Docker V2 compliant)**.
+  - Example: https://1234567890.dkr.ecr.us-east-2.amazonaws.com.
+- **Authentication:** select **Username and Password**.
+
+Ensure that the GCP IAM user you use has the correct permissions for pulling from GCR.
+
+#### Permissions
+
+For Google Container Registry (GCR), the following roles are required:
+
+- Storage Object Viewer (roles/storage.objectViewer)
+- Storage Object Admin (roles/storage.objectAdmin)
+
+For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
+
+Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`. 
+
+</details>
+
+
 ### Google Cloud Storage (GCS)
 
 :::note
@@ -1337,6 +1364,44 @@ Ensure that the AWS IAM user account you use in the AWS Connector has the follow
 
 If you do not want to use the AWS connector for ECR, you can use the platform-agnostic Docker Registry connector.
 
+Use the following settings:
+- **Provider Type:** select **Other (Docker V2 compliant)**.
+  - Example: `https://1234567890.dkr.ecr.us-east-2.amazonaws.com`.
+- **Authentication:** select **Username and Password**.
+
+Ensure that the AWS IAM user you use has the correct policies for pulling from ECR:
+
+<details>
+<summary>Pull from ECR policy</summary>
+
+* **Policy Name:** `AmazonEC2ContainerRegistryReadOnly`
+* **Policy ARN:** `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly`
+* **Description:** `Provides read-only access to Amazon EC2 Container Registry repositories.`
+* **Policy JSON:**
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+              "Effect": "Allow",
+              "Action": [
+                  "ecr:GetAuthorizationToken",
+                  "ecr:BatchCheckLayerAvailability",
+                  "ecr:GetDownloadUrlForLayer",
+                  "ecr:GetRepositoryPolicy",
+                  "ecr:DescribeRepositories",
+                  "ecr:ListImages",
+                  "ecr:DescribeImages",
+                  "ecr:BatchGetImage"
+              ],
+              "Resource": "*"
+      }
+  ]
+}
+```
+
+</details>
 
 
 </details>
