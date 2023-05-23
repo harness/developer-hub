@@ -2,6 +2,10 @@
 id: linux-network-duplication
 title: Linux network duplication
 ---
+
+import Ossupport from './shared/note-supported-os.md'
+
+
 Linux network duplication injects chaos to disrupt network connectivity on a Linux machine by duplicating network packets.
 
 ![Linux network duplication](./static/images/linux-network-duplication.png)
@@ -10,10 +14,7 @@ Linux network duplication injects chaos to disrupt network connectivity on a Lin
 - Induces network duplication on the target Linux machines.
 - Simulates packet duplication in the network.
 
-:::info note
-- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in an active state, and the infrastructure should be in `CONNECTED` state.
-:::
+<Ossupport />
 
 ## Fault tunables
 <h3>Mandatory tunables</h3>

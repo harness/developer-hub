@@ -238,6 +238,10 @@ const config = {
                 label: "Continuous Integration",
                 to: "certifications/continuous-integration",
               },
+              {
+                label: "Instructions",
+                to: "certifications/instructions",
+              },
             ],
           },
           {

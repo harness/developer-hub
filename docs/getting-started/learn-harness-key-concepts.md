@@ -1,7 +1,7 @@
 ---
 title: Key concepts
 description: Learn about the key concepts and terms used in Harness products.
-sidebar_position: 60
+sidebar_position: 70
 helpdocs_topic_id: hv2758ro4e
 helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
