@@ -2796,13 +2796,12 @@ module.exports = {
     
     // Created by bfisher for SMP PR 1837 on May 23, 2023
     {
-      from: "https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm",
-      to: "https://developer.harness.io/docs/self-managed-enterprise-edition/back-up-and-restore-helm",
+      from: "docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm",
+      to: "/docs/self-managed-enterprise-edition/back-up-and-restore-helm",
     },
     {
       from: "/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem",
       to: "/docs/self-managed-enterprise-edition/monitor-harness-on-prem",
     },
-    
   ],
 };
