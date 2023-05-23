@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-05-19T10:00:25
+date: 2023-05-23T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -17,7 +17,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - May XX, 2023
+## Latest - May 23, 2023
 
 ```mdx-code-block
 <Tabs>
@@ -52,6 +52,35 @@ This release does not include early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### May 22, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Ruby** server SDK has been updated to version **1.1.1** with the following updates.
+
+* Fixed evaluator logic. Before, if a target group had multiple clauses, all clauses had to evaluate to true for the entire condition to be true. This logic has been changed to match that of other SDKs. Now only one condition clause needs to be true. (FFM-6503)
+
+* Certain log messages will now be coded with a unique 4-digit number to help identify issues across SDKs. (FFM-7324)
+  
+  Response code patterns for each SDK stage are:
+  * Initialization - 1xxx
+  * Auth - 2xxx
+  * Close - 3xxx
+  * Polling - 4xxx
+  * Streaming - 5xxx
+  * Evaluation - 6xxx
+  * Metrics - 7xxx
 
 #### May 19, 2023
 
