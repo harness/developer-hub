@@ -4,7 +4,7 @@
 
 - Intermediate terminal skills
 - Basic understanding of on-premise or cloud architecture
-- [Harness Certified Continuous Integration Developer Certification](https://developer.harness.io/certifications/continuous-integration)
+- This exam builds upon the [CI Developer Exam](/certifications/continuous-integration?lvl=developer)
 
 ## Exam Details
 | Exam Type                               | Duration         |
@@ -135,3 +135,4 @@ The Continuous Integration Administrator exam can start immediately after regist
 3. Review the [instructions for the Hands On Exam](/certifications/instructions)
 4. Take the exams
     1. There will be a knowledge and hands on portion.	
+
