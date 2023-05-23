@@ -108,6 +108,30 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
   * [Custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
   * [HashiCorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
 
+  ### Harness Delegate
+
+- A new [`listDelegates` API](https://app.harness.io/gateway/ng/api/delegate-setup/listDelegates/accountIdentifier=string&orgIdentifier=string&projectIdentifier=string') enables you to list and filter delegates in your project, organization, or account. (PL-37981)
+
+   You can use the body parameters to filter your delegate list:
+
+   ```json
+   {
+   "filterType":"Delegate", //This field is mandatory.
+   
+   "delegateInstanceFilter": "EXPIRED/AVAILABLE",
+
+   "status": "CONNECTED/DISCONNECTED",
+   
+   "delegateType": "KUBERNETES/DOCKER/HELM_DELEGATE/SHELL_SCRIPT/ECS",
+   
+   "delegateName": "<>",
+   
+   "description": "<>",
+   
+   "delegateTags": "[]"
+   }
+   ```
+
 <details>
 <summary>2023 releases</summary>
 
