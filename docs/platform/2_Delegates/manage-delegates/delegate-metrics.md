@@ -296,10 +296,10 @@ spec:
 You can set the delegate to reject new tasks if x% of memory is being consumed. You can then spin up new delegates when resources are above the threshold.
 
 :::info note
-The resource_consumption_above_threshold metric is currently behind the feature flag `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+The `resource_consumption_above_threshold` metric is currently behind the feature flag `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-To configure the delegate resource threshold, do the following:
+To configure the delegate resource threshold, make the following changes to the delegate YAML file:
 
 1. Set the `JAVA_OPTS` env variable.
 
@@ -317,7 +317,7 @@ To configure the delegate resource threshold, do the following:
         value: "true"
    ```
 
-3. Set the `RESOURCE_USAGE_THRESHOLD` env variable to the threshold value of cpu/memory beyond which you want the delegate to reject new tasks.
+3. Set the `RESOURCE_USAGE_THRESHOLD` env variable to the cpu/memory threshold. When the threshold is exceeded, the delegate rejects new tasks.
 
    ```
    env:
