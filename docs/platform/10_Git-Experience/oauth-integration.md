@@ -6,7 +6,7 @@ sidebar_position: 10
 
 
 :::important
-Currently, this feature is behind the feature flag `PIE_GITX_OAUTH`. Contact Harness Support to enable the feature.
+Currently, this feature is behind the feature flag `PIE_GITX_OAUTH`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
 You can store configurations for your resources, such as pipelines and input sets, in Git using Harness Git Experience. Harness fetches user credentials from the Harness account and uses the corresponding user name as the author of the commit.
