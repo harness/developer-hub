@@ -37,7 +37,7 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-- The Events Summary page is taking longer (exceeding over eight hours) to display the events. (CET-1356)  
+- The Events Summary page is taking longer (exceeding eight hours) to display the events. (CET-1356)  
   
     This issue has been resolved. Now, the events are being displayed on the Events Summary page within a couple of minutes.
 
@@ -75,26 +75,20 @@ This release does not include any early access features.
 
 #### May 08, 2023, version 79111
 
-Harness Continuous Error Tracking (CET) is now available for public preview to provide developer-first observability for modern applications. 
-
-CET helps developers proactively identify and resolve errors in modern applications. As the latest module in the Harness Platform, CET helps developers proactively identify and resolve errors across the entire software delivery lifecycle (SDLC).
+Harness Continuous Error Tracking (CET) is now available for public preview to provide developer-first observability for modern applications. This is the first release of CET and the module is now available for Public Preview.
+As the latest module in the Harness Platform, CET helps developers proactively identify and resolve errors across the entire software delivery lifecycle (SDLC).
 
 Here are CET’s key features:
 
-* Exception/error event summary: displays a comprehensive list of all the exceptions and events that occur in your.
+- Exception/error event summary: Provides a dashboard summary of all error events related to your monitored services.
+- Event explorer: Provides a list of all error events for a specific monitored service and deployment version.
+- Automated Root Cause Analysis (ARC) screen: Provides a powerful mechanism to view every exception’s source code, variables, and environment state.
+- Hidden, resolved, and resurfaced events: Helps you manage and troubleshoot the events and exceptions by providing the ability to mark them as hidden, resolved, or resurfaced.
+Critical events: Enables you to add a condition that specifies when an event should be marked as critical.
+- Critical events: Allows you to add a condition that specifies when an event should be marked as critical.
+- Source Attach: Connects your Git source repositories to Harness CET, allowing Harness CET to display the original source code in the ARC screen for an event.
+- Shift Left with Harness CI integration: CET natively integrates into Harness Continuous Integration so that developers can run their unit tests and integration and detect errors early in the SDLC.
+- JIRA integration: Allows you to create and view Jira tickets for a specific event.
 
-* Event explorer: This helps you explore the events list in detail.
-
-* Automated Root Cause Analysis (ARC) Screen: Provides a powerful mechanism to view every exception’s source code, variables, and environment state.
-
-* Hidden, resolved, and resurfaced events: helps you manage and troubleshoot the events and exceptions systematically by providing you with the ability to mark them as hidden, resolved, or resurfaced.
-
-* Critical events: You can add a condition that specifies when an event should be marked as critical.
-
-* Source Attach: provides you with the ability to see the decompiled source code for an event on the ARC screen by connecting your GitLab and GitHub source repositories to CET.
-
-* Shift Left with Harness CI integration: CET natively integrates into Harness Continuous Integration so that you can gain a more complete picture of exceptions.
-
-* JIRA integration: provides you with the ability to create and view Jira tickets for a specific event.
 
 </details>
