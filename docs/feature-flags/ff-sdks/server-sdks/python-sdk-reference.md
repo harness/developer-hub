@@ -259,10 +259,10 @@ def main():
                       with_base_url("https://config.ff.harness.io/api/1.0"),  
                       with_events_url("https://events.ff.harness.io/api/1.0"))  
   
-    target = Target(identifier='harness')  
+    target = Target(identifier='HT_1', name="Harness_Target_1", attributes={"location": "emea"})
   
     while True:  
-        result = client.bool_variation('your_flag_identifier', target, False)  
+        result = client.bool_variation('harnessappdemodarkmode', target, False)  
         log.debug("Result %s", result)  
         time.sleep(10)  
   
