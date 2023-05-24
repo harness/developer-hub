@@ -15,7 +15,7 @@ You can push configuration changes using your own credentials by integrating OAu
 When you integrate OAuth with Git Experience, the credentials are stored in your Harness account user profile. These credentials are used for any subsequent commits.
 
 :::important
-Harness will continue to use the user name corresponding to the account if you don't integrate OAuth with Git experience.
+Harness will continue to use the user name corresponding to the account if you don't integrate OAuth with Git Experience.
 :::
 
 
