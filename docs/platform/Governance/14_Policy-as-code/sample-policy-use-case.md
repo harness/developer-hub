@@ -10,11 +10,12 @@ Currently, this feature is behind the feature flag `OPA_PIPELINE_GOVERNANCE`. Co
 Harness provides governance using Open Policy Agent (OPA), policy management, and Rego policies.
 You can enforce policies in the following ways:
 
-* **Account, Org, and** **Project-specific:** you can create the policy and apply it to all Pipelines in your Account, Org, and Project. The policy is evaluated on Pipeline-level events like On Run and On Save. See [Harness Governance Quickstart](harness-governance-quickstart.md).
-* **Stage-specific:** you can add a Policy step, add a new/existing Policy Set to it, and then provide a JSON payload to evaluate.
-	+ The policy is evaluated whenever the Pipeline reaches the Policy step.
-	+ Policy evaluation can be performed on data generated when the Pipeline is running, such as resolved expressions.
-	+ Policy evaluation can fail Pipeline execution.
+You can enforce policies in the following ways: 
+
+* Enforce policies at a scope: Create a policy and apply it to all pipelines in your account, organization, and project. Policy evaluation occurs on pipeline-level events like On Run and On Save.
+For more information, go to [Harness Policy As Code quickstart](/docs/platform/Governance/Policy-as-code/harness-governance-quickstart).
+
+* Enforce policies at any stage: Create a policy step, add a policy set, and provide a JSON payload. Whenever the pipeline reaches the policy step, policy evaluation occurs. Data such as resolved expressions can be evaluated when the pipeline runs. Evaluating policies can lead to pipeline execution failures.
 
 This topic describes how to add a policy step to a stage.
 
