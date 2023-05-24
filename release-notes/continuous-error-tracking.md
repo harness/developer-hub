@@ -53,7 +53,7 @@ This release does not include any early access features.
   
     This issue has been fixed. Now, you can search for agents using the search box.
 
-- Currently, the event list, when viewed from a CI pipeline, does not include the cards above the list that show the number of total, new, critical, and resurfaced events. (CET-1249)
+- The event list, when viewed from a CI pipeline, does not include the cards above the list that show the number of total, new, critical, and resurfaced events. (CET-1249)
   
     This issue has been fixed, and the cards are now displayed on the event list when viewed from a CI pipeline.
 
@@ -84,8 +84,7 @@ Here are CET’s key features:
 - Event explorer: Provides a list of all error events for a specific monitored service and deployment version.
 - Automated Root Cause Analysis (ARC) screen: Provides a powerful mechanism to view every exception’s source code, variables, and environment state.
 - Hidden, resolved, and resurfaced events: Helps you manage and troubleshoot the events and exceptions by providing the ability to mark them as hidden, resolved, or resurfaced.
-Critical events: Enables you to add a condition that specifies when an event should be marked as critical.
-- Critical events: Allows you to add a condition that specifies when an event should be marked as critical.
+- Critical events: Enables you to add a condition that specifies when an event should be marked as critical.
 - Source Attach: Connects your Git source repositories to Harness CET, allowing Harness CET to display the original source code in the ARC screen for an event.
 - Shift Left with Harness CI integration: CET natively integrates into Harness Continuous Integration so that developers can run their unit tests and integration and detect errors early in the SDLC.
 - JIRA integration: Allows you to create and view Jira tickets for a specific event.
