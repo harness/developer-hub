@@ -17,7 +17,7 @@ Harness captures delegate agent metrics for delegates shipped on immutable image
 | `task_failed`* | The number of failed tasks. |
 | `task_rejected`* | The number of tasks rejected because of a high load on the delegate. |
 | `delegate_connected`* | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
-| `resource_consumption_above_threshold`* | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. For more information, go to [Configure delegate resource threshold](configure-delegate-resource-threshold). |
+| `resource_consumption_above_threshold`* | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. For more information, go to [Configure delegate resource threshold](#configure-delegate-resource-threshold). |
 
 :::info note
 Metrics notated with * above are currently behind the feature flag `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
