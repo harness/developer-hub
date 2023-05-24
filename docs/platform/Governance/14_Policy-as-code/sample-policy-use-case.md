@@ -19,17 +19,12 @@ For more information, go to [Harness Policy As Code quickstart](/docs/platform/G
 
 This topic describes how to add a policy step to a stage.
 
-### Before you begin
-
-* If you are new to Harness Governance, see [Harness Governance Overview](harness-governance-overview.md) and [Harness Governance Quickstart](harness-governance-quickstart.md).
+## Policy Samples
 
 
-### Policy Samples
+### Sample Connector Policies
 
-
-#### Sample Connector Policies
-
-**Use Case:** Enforcing an authorization type when configuring a Kubernetes Connector
+#### Enforce an authorization type when configuring a Kubernetes connector
 
 The Below policy can be used to enforce a specific auth type, this prevents users from setting up connectors that may not be in compliance or standard with the guidelines set by the account owner. This policy can be executed `On Connector Save`. 
 
@@ -56,7 +51,7 @@ deny[msg] {
 
 ```
 
-**Use Case:** Admins want to enforce which user's can select a specific connector for Pipeline Configuration and Pipeline Run time
+#### Admins want to enforce which user's can select a specific connector for Pipeline Configuration and Pipeline Run time
 
 The below policy can enforce which users and user group is allowed to use the connector for deployment, build, etc.
 
@@ -86,7 +81,7 @@ contains(userGroups) {
 }
 ```
 
-**Use Case:** Admins want to enforce the connector naming conventions when users add a new connector
+#### Admins want to enforce the connector naming conventions when users add a new connector
 
 This policy can be applied on `Connector Save`, this will enforce naming conventions for connectors created in the Harness Account
 
@@ -102,9 +97,9 @@ deny[msg] {
 }
 ```
 
-#### Pipeline Enforcement Policies
+### Pipeline Enforcement Policies
 
-**Use Case:** Admins want to prevent other developers from deploying into a non-compliant environment.
+#### Admins want to prevent other developers from deploying into a non-compliant environment.
 
 The below policy enforces `On Pipeline Run`. User's can enforce policies on which environment the developer can deploy to.
 
@@ -146,7 +141,7 @@ contains(arr, elem) {
 }
 ```
 
-**Use Case:** Enforcing the container registry selected for building and publishing code
+#### Enforcing the container registry selected for building and publishing code
 
 Admin's want to restrict and prevent users from publishing images to public repos, only approve repos can be used. Below policy can be executed `On Pipeline Run`
 
@@ -176,7 +171,7 @@ deny[msg] {
 }
 ```
 
-**Use Case:** Prevent users from leveraging steps that are not allowed by the company
+#### Prevent users from leveraging steps that are not allowed by the company
 
 Some users want to restrict developers from using specific steps in their pipelines. We can enforce this `on pipeline save` and `on pipeline run`.
 
@@ -210,7 +205,7 @@ contains(arr, elem) {
 }
 ```
 
-**Use Case:** Enforcing a Deployment Freeze via Policy
+#### Enforcing a Deployment Freeze via Policy
 
 Admin's may configure a deployment freeze via Policy to supplement the formal deployment freeze feature. The policy route is great for one off freezes that are set by the business. This policy is set on `Pipeline Run`
 
@@ -234,9 +229,9 @@ deny[msg] {
 ```
 
 
-#### Feature Flag Policies
+### Feature Flag Policies
 
-**Use Case:** Prevent feature flags from being enabled in production that are not configured in a lower environment like stage
+#### Prevent feature flags from being enabled in production that are not configured in a lower environment like stage
 
 This policy can be enforced on Feature Flags. It can ensure the configuration of the Flag is properly governed by the end user.
 
@@ -261,7 +256,7 @@ deny[msg] {
 }
 ```
 
-**Use Case:**  Users want to enforce the flag types that are configured for Feature Flags
+####  Users want to enforce the flag types that are configured for Feature Flags
 
 Users can enforce that feature flags are configured with boolean value. This can be configured on when Feature Flag Creation.
 
@@ -276,7 +271,7 @@ deny[msg] {
 }
 ```
 
-**Use Case:** Users want to deny the creation of feature flags that serve true by default. 
+#### Users want to deny the creation of feature flags that serve true by default. 
 
 This protects users from configuring flags and serving true to all the end users of the flag. This allows for a safer rollout of the flag. This can be configured on feature flag configuration.
 
@@ -298,7 +293,7 @@ deny[msg] {
 }
 ```
 
-**Use Case:** Users want to enforce naming conventions for their Feature flags
+#### Users want to enforce naming conventions for their Feature flags
 
 On Feature Flag Save, users can enforce the naming convention of the flags to ensure that no one falls outside the porper naming standards for internal flags. This ensures good feature flag hygenie.
 
@@ -314,9 +309,9 @@ deny[msg] {
 }
 ```
 
-#### Template Policies
+### Template Policies
 
-**Use Case:** Enforce the use of stable templates in a pipeline
+#### Enforce the use of stable templates in a pipeline
 
 This policy enforces the correct version of a template is used in the pipeline. It can be applied `On Pipeline Save` or `On Pipeline Run` 
 
@@ -361,7 +356,7 @@ deny[msg] {
 ```
 
 
-**Use Case:** Enforce a Stage templates use in a Pipeline
+#### Enforce a Stage templates use in a Pipeline
 
 Users may want to enforce an approved stage template in a pipeline. This policy can be executed `On Pipeline Save` or `On Pipelne Run`.
 
@@ -400,7 +395,7 @@ deny[msg] {
 
 ```
 
-**Use Case:** Enforce step templates to be used in a pipeline
+#### Enforce step templates to be used in a pipeline
 
 Users can enforce the step template being used in a Pipeline. It ensures the correct steps and approved steps are leveraged `On Pipeline Save` or  `On Pipeline Run`.
 
@@ -440,7 +435,7 @@ deny[msg] {
 }
 ```
 
-**Use Case:** Enforce a Pipeline's Stage structure
+#### Enforce a Pipeline's Stage structure
 
 Users may want to make sure pipelines are designed with the recommended or mandatory structure. This ensures pipeline designers have the freedom to design a pipeline while following the guard rails. This policy works `On Pipeline Save`
 
@@ -475,7 +470,7 @@ getIndex(str, stages) = result {
 }
 ```
 
-**Use Case:** Enforce a steps in a Pipeline
+#### Enforce a steps in a Pipeline
 
 Users can ensure that mandaroty steps are configured in a pipeline. This policy can be configured `On Pipeline Run`, or `On Pipeline Save`
 
@@ -513,7 +508,7 @@ contains(arr, elem) {
 }
 ```
 
-**Use Case:** Enforce Step Order in a Pipeline
+#### Enforce Step Order in a Pipeline
 
 Users may want to enforce the ordering of steps that are configured in a pipeline. This policy can be used `On Pipeline Save` or `On Pipeline Run`.
 
@@ -550,9 +545,9 @@ getIndex(str, stage) = result {
 }
 ```
 
-#### Sample Secret Policies
+### Sample Secret Policies
 
-**Use Case:** Ensure there are no principals in the secret Secrets.
+#### Ensure there are no principals in the secret Secrets.
 
 Users want to ensure that the secrets configured in Harness are configured by the correct group. This policy can be configured on Secret Save time.
 
@@ -570,7 +565,7 @@ deny["Principal is not allowed to save secrets"] {
 }
 ```
 
-**Use Case:** Enforce Secret Naming Conventions
+#### Enforce Secret Naming Conventions
 
 Users want to ensure that developers add secrets to Harness with a common naming standard, this makes it easy to identify and manage them. This can be configured on secret save.
 
@@ -586,7 +581,7 @@ deny[msg] {
 }
 ```
 
-**Use Case:** Enforce what secrets manager can be used to save secrets.
+#### Enforce what secrets manager can be used to save secrets.
 
 Users may want to enforce their secrets configured in Harness to be stored to a particular secrets manager. This policy can be enforced on pipeline save.
 
