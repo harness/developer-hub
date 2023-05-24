@@ -1,10 +1,10 @@
 ---
-title: Create an AutoStopping proxy for GCP
+title: GCP AutoStopping proxy 
 description: This topic describes how to create an AutoStopping proxy for GCP.
 # sidebar_position: 2
 ---
 
-
+# Create an AutoStopping proxy for GCP
 
 AutoStopping is a solution that is well-suited for use with native load-balancing options like AWS ALB. However, there are certain use cases, such as SSH/RDP/RDS connections, that cannot be addressed by native load balancer integrations for AutoStopping.
 

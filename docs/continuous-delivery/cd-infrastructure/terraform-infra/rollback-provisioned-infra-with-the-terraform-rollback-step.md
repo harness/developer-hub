@@ -74,9 +74,16 @@ Click **Apply Changes**.
 
 The Terraform Rollback step is added to the **Rollback** steps.
 
-## Command Line Options
+## Command line options
+
+:::note
+
+Currently, FEATURE_NAME is behind the feature flag `CDS_TERRAFORM_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
+
 
 ![](./static/rollback-provisioned-infra-with-the-terraform-rollback-step-19.png)
 

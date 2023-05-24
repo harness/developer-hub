@@ -1,5 +1,5 @@
 ---
-title: Create AutoStopping Rules for GCP
+title: GCP
 description: This topic describes how to create an AutoStopping Rule for GCP.
 # sidebar_position: 4
 helpdocs_topic_id: 4brkwfy8yt
@@ -7,7 +7,7 @@ helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+# Create AutoStopping Rules for GCP
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. 
 
 This topic describes how to create AutoStopping Rules for GCP.

@@ -54,7 +54,9 @@ For more information about self-signed certificates, delegates, and delegate env
 * [Install delegates](https://developer.harness.io/docs/category/install-delegates)
 * [Configure a Kubernetes build farm to use self-signed certificates](./use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
-<!-- DOC-2692 removed -->
+## Use debug mode to troubleshoot remote builds
+
+The Harness CI [Re-run in Debug Mode](./use-ci/debug-mode.md) feature can troubleshoot remote builds.
 
 ## Truncated execution logs
 
@@ -104,3 +106,22 @@ If a build that uses Gradle experiences out of memory errors, add the following 
 ```
 
 Your Java options must use [UseContainerSupport](https://www.eclipse.org/openj9/docs/xxusecontainersupport/) instead of `UseCGroupMemoryLimitForHeap`, which was removed in JDK 11.
+
+## Can't use the built-in Harness Docker Connector with Harness Cloud build infrastructure
+
+Depending on when your account was created, the built-in **Harness Docker Connector** (`account.harnessImage`) might be configured to connect through a Harness Delegate instead of the Harness Platform. In this case, attempting to use this connector with Harness Cloud build infrastructure generates the following error:
+
+```
+While using hosted infrastructure, all connectors should be configured to go via the Harness platform instead of via the delegate. Please update the connectors: [harnessImage] to connect via the Harness platform instead. This can be done by editing the connecotr and updating the connectivity to go via the Harness platform.
+```
+
+To resolve this error, you can either modify the **Harness Docker Connector** or use another Docker connector that you have already configured to connect through the Harness Platform.
+
+To change the connector's connectivity settings:
+
+1. Go to **Account Settings** and select **Account Resources**.
+2. Select **Connectors** and select the **Harness Docker Connector** (ID: `harnessImage`).
+3. Select **Edit Details**.
+4. Select **Continue** until you reach **Select Connectivity Mode**.
+5. Select **Change** and select **Connect through Harness Platform**.
+6. Select **Save and Continue** and select **Finish**.

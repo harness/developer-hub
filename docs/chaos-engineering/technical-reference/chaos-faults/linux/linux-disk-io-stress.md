@@ -2,6 +2,10 @@
 id: linux-disk-io-stress
 title: Linux disk IO stress
 ---
+
+import Ossupport from './shared/note-supported-os.md'
+
+
 Linux disk IO stress applies stress on the disk of the target Linux machines over I/O operations for a specific duration.
 
 ![Linux disk IO stress](./static/images/linux-disk-io-stress.png)
@@ -12,10 +16,7 @@ Linux disk IO stress applies stress on the disk of the target Linux machines ove
 - Verifies the disk performance on increasing I/O threads and varying I/O block sizes.
 - Checks how the application functions under high disk latency conditions, when I/O traffic is high and includes large I/O blocks, and when other services monopolize the I/O disks.
 
-:::info note
-- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in an active state, and the infrastructure should be in `CONNECTED` state.
-:::
+<Ossupport />
 
 ## Fault tunables
 <h3>Optional tunables</h3>
@@ -25,15 +26,10 @@ Linux disk IO stress applies stress on the disk of the target Linux machines ove
     <th> Description </th>
     <th> Notes </th>
   </tr>
-  <tr>
-    <td> fileSystemUtilisationBytes </td>
-    <td> File size consumed for the disk I/O operations (in bytes). </td>
-    <td> Mutually exclusive with <code>fileSystemUtilisationPercentage</code> </td>
-  </tr>
    <tr>
-    <td> fileSystemUtilisationPercentage </td>
-    <td> File size consumed during the disk I/O operations (in percentage of the total available disk size). </td>
-    <td> Mutually exclusive with <code>fileSystemUtilisationBytes</code>. Default: 10% </td>
+    <td> fileSystemUtilisation </td>
+    <td> File size consumed during the disk I/O operations. </td>
+    <td> Can be specified in bytes (b/B), kilobytes (k/K), megabytes (m/M), gigabytes (g/G), or percentage (%) of available storage. If no unit is provided, the value is assumed to be in bytes. Example values: <code>30m</code>, <code>1G</code>, <code>35%</code>, etc. Default: 10%. </td>
   </tr>
   <tr>
     <td> workers </td>
@@ -75,16 +71,16 @@ metadata:
 spec:
   stressChaos/inputs:
     workers: 1
-    fileSystemUtilisationPercentage: 10
+    fileSystemUtilisation: 10%
 ```
 
-### File system utilization in bytes
+### File system utilisation
 
-The `fileSystemUtilisationBytes` input variable utilizes a specific amount of file system disk space or bandwidth as a part of the disk I/O operations in bytes.
+The `fileSystemUtilisation` input variable utilizes a specific amount of file system disk space or bandwidth as a part of the disk I/O operations in bytes.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/linux-disk-io-stress/file-system-bytes.yaml yaml)
+[embedmd]:# (./static/manifests/linux-disk-io-stress/file-system-utilisation.yaml yaml)
 ```yaml
 # file system amount to be utilized
 apiVersion: litmuchaos.io/v1alpha1
@@ -96,28 +92,7 @@ metadata:
 spec:
   stressChaos/inputs:
     workers: 3
-    fileSystemUtilisationBytes: 10000
-```
-
-### File system utilization in percentage
-
-The `fileSystemUtilisationPercentage` input variable utilizes a specific amount of file system disk space or bandwidth as a part of the disk I/O operations in terms of percentage of the total available disk space.
-
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]:# (./static/manifests/linux-disk-io-stress/file-system-percentage.yaml yaml)
-```yaml
-# file system percentage to be utilized
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-disk-io-stress
-  labels:
-    name: disk-io-stress
-spec:
-  stressChaos/inputs:
-    workers: 3
-    fileSystemUtilisationPercentage: 70
+    fileSystemUtilisation: 50g
 ```
 
 ### Volume mount path
@@ -137,6 +112,6 @@ metadata:
 spec:
   stressChaos/inputs:
     workers: 1
-    fileSystemUtilisationPercentage: 50
+    fileSystemUtilisation: 50%
     volumeMountPath: "/tmp"
 ```

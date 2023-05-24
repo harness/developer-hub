@@ -14,7 +14,6 @@ Harness provides a "minimal" delgate image that does not include third-party SDK
 
 For a list of the SDK versions that are certified for different types of deployments, go to [Delegate-required SDKs](/docs/platform/2_Delegates/delegate-reference/delegate-required-sdks.md).
 
-
 ## Use cases
 
 The primary use cases for customization of the delegate image include:
@@ -25,7 +24,7 @@ The primary use cases for customization of the delegate image include:
 
 The remainder of this topic explains the process.
 
-:::note
+:::info note
 The toolset you install on the delegate minimal image must include the SDKs that Harness requires to perform tasks. 
 :::
 

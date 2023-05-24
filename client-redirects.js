@@ -34,6 +34,41 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by Charanya Jayaraman to fix CCM broken link on May 23 2023
+
+    {
+      from:"/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/auto-stopping-rules",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/auto-stopping-rules",
+    },
+
+    // Created by RashmiNandaSahoo to fix gitx broken link on May 22 2023
+
+    {
+      from:"/docs/platform/Git-Experience/harness-git-experience-overview",
+      to: "/docs/platform/Git-Experience/git-experience-overview",
+    },
+
+    // Created by roshnisarangadharan from branch fix-cd-link on May 19 2023
+
+    {
+      from: "/docs/continuous-delivery/cd-deployments-category/deployment-concepts",
+      to: "/docs/continuous-delivery/manage-deployments/deployment-concepts",
+    },
+
+    // Created by SudheendraKatte for branch cet-redirect on May 19 2023
+
+    {
+      from: "/docs/category/continuous-error-tracking",
+      to: "/docs/continuous-error-tracking/",
+    },
+
+    // Created by SudheendraKatte for branch cet-broken-link on May 17 2023
+
+    {
+      from: "/docs/category/error-tracking",
+      to: "/docs/continuous-error-tracking/getting-started/cet-overview",
+    },
+
     // Created by aimurphy for branch doc-3104 on May 15 2023
 
     {
@@ -2765,6 +2800,16 @@ module.exports = {
     {
       from: "/docs/continuous-integration/ci-technical-reference/ci-git-clone-step",
       to: "/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline",
+    },
+    
+    // Created by bfisher for SMP PR 1837 on May 23, 2023
+    {
+      from: "/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm",
+      to: "/docs/self-managed-enterprise-edition/back-up-and-restore-helm",
+    },
+    {
+      from: "/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem",
+      to: "/docs/self-managed-enterprise-edition/monitor-harness-on-prem",
     },
   ],
 };
