@@ -1,3 +1,5 @@
+
+---
 title: Policy samples
 description: See sample policies and when to use them.
 sidebar_position: 6
@@ -24,9 +26,9 @@ This topic describes how to add a policy step to a stage.
 
 ### Connector policy samples
 
-#### Enforce an authorization type when configuring a Kubernetes connector
+#### Enforce authorization type while configuring a Kubernetes connector
 
-The Below policy can be used to enforce a specific auth type, this prevents users from setting up connectors that may not be in compliance or standard with the guidelines set by the account owner. This policy can be executed `On Connector Save`. 
+To enforce a specific authentication type, use the following policy. This prevents users from setting up connectors that may not be in compliance or standard with the account owner's guidelines. You can execute this policy **On Connector Save**. 
 
 ```TEXT
 package connector
@@ -51,9 +53,11 @@ deny[msg] {
 
 ```
 
-#### Admins want to enforce which user's can select a specific connector for Pipeline Configuration and Pipeline Run time
+#### Enforce access control for a specific connector at runtime while configuring the pipeline
 
-The below policy can enforce which users and user group is allowed to use the connector for deployment, build, etc.
+The administrator can control which users can select a specific connector for pipeline configuration and pipeline execution.
+
+Use the following policy to enforce which users and user groups can deploy and build using the connector:
 
 ```TEXT
 package connector
@@ -83,7 +87,8 @@ contains(userGroups) {
 
 #### Admins want to enforce the connector naming conventions when users add a new connector
 
-This policy can be applied on `Connector Save`, this will enforce naming conventions for connectors created in the Harness Account
+Use the following policy to enforce naming conventions for connectors created in the Harness account.
+You can apply this policy on Connector Save.
 
 ```TEXT
 package connectors
