@@ -1366,8 +1366,19 @@ If you do not want to use the AWS connector for ECR, you can use the platform-ag
 
 Use the following settings:
 - **Provider Type:** select **Other (Docker V2 compliant)**.
-  - Example: `https://1234567890.dkr.ecr.us-east-2.amazonaws.com`.
-- **Authentication:** select **Username and Password**.
+- **URL:** Enter the same URL you would use in your push command. 
+  - For example, here is an ECR push command example: 
+  
+    `docker push 1234567890.dkr.ecr.us-east-2.amazonaws.com/my-private-repo:123`. 
+  - Include the `https://` scheme when you add the URL in **URL**.
+  - Your URL will look something like this: `https://1234567890.dkr.ecr.us-east-2.amazonaws.com`.
+- **Authentication:** 
+  - **Username:** Enter `AWS`. Do not enter an access key or user name.
+  - **Password:** Enter the password returned from the following command (replace `us-east-2` with your region):
+  
+    ```
+    aws ecr get-login-password --region us-east-2
+    ```
 
 Ensure that the AWS IAM user you use has the correct policies for pulling from ECR:
 
