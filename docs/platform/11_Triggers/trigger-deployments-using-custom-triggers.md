@@ -84,7 +84,7 @@ The custom webhook token is a unique token that is generated internally for ever
 
 The `-H 'X-Api-Key: sample_api_key'` parameter is used to authorize custom triggers. You can use [Harness API keys](../3_User-Management/7-add-and-manage-api-keys.md) with this parameter. This is described below in [Custom trigger authorization using API keys](#custom-trigger-authorization-using-api-keys).
 
-To skip authorization, omit the `-H 'X-Api-Key: sample_api_key'` parameter. When authorization is not enforced for custom webhook triggers, api keys excluded from the generated cURL command.
+To skip authorization, omit the `-H 'X-Api-Key: sample_api_key'` parameter. When authorization is not enforced for custom webhook triggers, the API key is excluded from the generated cURL command.
 
 :::
 

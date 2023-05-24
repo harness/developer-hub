@@ -33,6 +33,14 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },
     //===================================================================================
+
+    // Created by Charanya Jayaraman to fix CCM broken link on May 23 2023
+
+    {
+      from:"/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/auto-stopping-rules",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/auto-stopping-rules",
+    },
+
     // Created by RashmiNandaSahoo to fix gitx broken link on May 22 2023
 
     {

@@ -45,7 +45,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 * A warning now appears if you try to save a template with an existing identifier and an updated version label. This warns you that it will be merged with the existing template (upon confirmation). (CDS-47301)
 
-* The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set secret expiration date. The Harness Delegate version 793xx is required for this feature. (PL-32708, ZD-42524)
+* The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set secret expiration date. The Harness Delegate version 79306 is required for this feature. (PL-32708, ZD-42524)
 
 * AuthZ now considers the SAML setting that the user logged in to when multiple SAML settings are present and the user belongs to more than one of them. The user will be removed from any other SAML settings that the same user might have been part of and synced with Harness through previous SAML logins. (PL-32484) 
 
@@ -81,7 +81,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
   When you set the failure strategy to **Ignore Failure**, the failure of the steps or stages are ignored and marked as success instead of failed. 
 - Added support to provide quartz cron expressions for scheduled triggers. (CDS-59261, CDS-59260)
   
-  The Harness Delegate version 79306 is required for this feature. 
+  The Harness Delegate version 79307 is required for this feature. 
   
   For more information, go to [Schedule pipeline using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/).
 - Support for creating or updating a variable of type, secret in the Update Release Repo step is now removed. (CDS-58530)
@@ -102,7 +102,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 - You can now use the expression, [`<+lastPublished.tag>`](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#using-the-triggerartifactbuild-and-lastpublishedtag-expressions) if you want to deploy the last successfully published artifact version. (CDS-53512)
 - Added support for accessing connector attributes for Deployment Templates. (CDS-54247)
   
-  The Harness Delegate version 79306 is required for this feature.
+  The Harness Delegate version 79307 is required for this feature.
   
   The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions. 
   
@@ -113,6 +113,18 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
   * [Google Cloud secret manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
   * [Custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
   * [HashiCorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
+- A unique custom webhook token is added to the custom webhook URL when triggering a deployment using cURL. (CDS-59511, ZD-34797)
+  
+  Previously, custom webhook triggers used insecure URLs that can be formed as long as account, org, project, pipeline, and trigger IDs were known. Now, a unique custom webhook token is generated internally for all custom webhook triggers when they're created. This token cannot be changed. 
+  
+  Here's a sample cURL command with custom webhook token: 
+
+  `curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/{customWebhookToken}/v3?accountIdentifier=<your_account_Id>&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'`
+- Git polling tasks for triggers are executed on the same delegate selector used in the Git connector. (CDS-58115)
+  
+  Previously, triggers used the round robin algorithm to select any available delegate within a project or account. Now, the delegate-based trigger polling selects the same delegate you used in the connectors for triggers. 
+
+  The Harness Delegate version 79306 is required for this feature.
 
 ### Harness Delegate
 
