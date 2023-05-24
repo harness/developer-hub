@@ -76,7 +76,7 @@ This release includes the following fixes:
 
 - Deployments consistently failed during the same stage. (PL-38247)
 
-   This issue was fixed by updating the delegate YAML. Startup now fails when you uses a legacy delegate image with an immutable delegate.
+   This issue was fixed by updating the delegate YAML. Startup now fails when you use a legacy delegate image with an immutable delegate.
 
 - Delegates were intermittently unavailable during upgrade. (PL38283)
   
