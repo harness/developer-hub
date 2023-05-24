@@ -11,7 +11,7 @@ Currently, this feature is behind the feature flag `PIE_GITX_OAUTH`. Contact [Ha
 
 You can store configurations for your resources, such as pipelines and input sets, in Git using Harness Git Experience. Harness fetches user credentials from the Harness account and uses the corresponding user name as the author of the commit.
 
-You can now push configuration changes using your own credentials by integrating OAuth with Git. 
+You can push configuration changes using your own credentials by integrating OAuth with Git. 
 When you integrate OAuth with Git experience, the credentials are stored in your Harness account user profile. These credentials are used for any subsequent commits.
 
 :::important
