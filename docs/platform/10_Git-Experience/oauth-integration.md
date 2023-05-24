@@ -62,7 +62,7 @@ To commit changes to Git using the configured OAuth token:
    :::important
    If you have not configured OAuth for Git, Harness prompts you to set up an access token in the user profile to use for Git commits.
    You can do one of the following to commit your changes to Git: 
-   * Select **Connect** to configure OAuth for Git and use your Git credentials for the commit and then select **Save**. This is optional.
+   * Select **Connect** to configure OAuth for Git and use your Git credentials for the commit, and then select **Save**. This is optional.
    * Select **Save** to use the credentials from the Git connector for the commit.
 
    ![](./static/commit-without-oauth.png)
