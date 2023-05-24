@@ -26,7 +26,7 @@ For SSH and WinRM, the Command step(s) is added automatically when you select th
 
 Also, the looping strategy needed to run the Command step on each target host is set automatically to **Repeat**.
 
-> **_NOTE:_**  Only **Repeat** looping strategy is supported with Command steps
+> **_NOTE:_**  Only **Repeat** looping strategy is supported with Command step
 
 You can edit or add any automatically-added Command step.
 
