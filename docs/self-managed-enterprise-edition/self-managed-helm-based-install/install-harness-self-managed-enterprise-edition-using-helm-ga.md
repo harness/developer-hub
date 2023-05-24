@@ -12,6 +12,10 @@ This document explains how to use Helm to install, upgrade or uninstall Harness 
 
 Helm package manager provides a declarative approach to Kubernetes application management in which software packages are specified as “charts.” For more information, go to the [Helm documentation](https://helm.sh/docs/).
 
+:::info note
+You can also install Harness Self-Managed Enterprise Edition in an air-gapped environment. For more information, go to [Install in air-gapped environment](docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).
+:::
+
 ## Download the Harness Helm chart
 
 To download Harness Helm chart for the installation of Self-Managed Enterprise Edition, go to [the Harness Helm chart repo on GitHub](https://github.com/harness/helm-charts).
