@@ -1,15 +1,14 @@
-title: Sample Policies and Use Case Library
-description: Common Policies and Use Cases
+title: Policy samples
+description: See sample policies and when to use them.
 sidebar_position: 6
-helpdocs_topic_id: xy8zsn8fa3
-helpdocs_category_id: zoc8fpiifm
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the feature flag `OPA_PIPELINE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Harness provides governance using Open Policy Agent (OPA), Policy Management, and Rego policies.
+:::important
+Currently, this feature is behind the feature flag `OPA_PIPELINE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
-You can enforce policies in two ways:
+Harness provides governance using Open Policy Agent (OPA), policy management, and Rego policies.
+You can enforce policies in the following ways:
 
 * **Account, Org, and** **Project-specific:** you can create the policy and apply it to all Pipelines in your Account, Org, and Project. The policy is evaluated on Pipeline-level events like On Run and On Save. See [Harness Governance Quickstart](harness-governance-quickstart.md).
 * **Stage-specific:** you can add a Policy step, add a new/existing Policy Set to it, and then provide a JSON payload to evaluate.
@@ -17,7 +16,7 @@ You can enforce policies in two ways:
 	+ Policy evaluation can be performed on data generated when the Pipeline is running, such as resolved expressions.
 	+ Policy evaluation can fail Pipeline execution.
 
-This topic describes how to add a Policy step to a Stage.
+This topic describes how to add a policy step to a stage.
 
 ### Before you begin
 
