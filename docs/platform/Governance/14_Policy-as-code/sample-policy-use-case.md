@@ -19,10 +19,10 @@ For more information, go to [Harness Policy As Code quickstart](/docs/platform/G
 
 This topic describes how to add a policy step to a stage.
 
-## Policy Samples
+## Policy samples
 
 
-### Sample Connector Policies
+### Connector policy samples
 
 #### Enforce an authorization type when configuring a Kubernetes connector
 
@@ -97,7 +97,7 @@ deny[msg] {
 }
 ```
 
-### Pipeline Enforcement Policies
+### Pipeline enforcement policy samples
 
 #### Admins want to prevent other developers from deploying into a non-compliant environment.
 
@@ -205,7 +205,7 @@ contains(arr, elem) {
 }
 ```
 
-#### Enforcing a Deployment Freeze via Policy
+#### Enforcing a deployment freeze via policy
 
 Admin's may configure a deployment freeze via Policy to supplement the formal deployment freeze feature. The policy route is great for one off freezes that are set by the business. This policy is set on `Pipeline Run`
 
@@ -229,7 +229,7 @@ deny[msg] {
 ```
 
 
-### Feature Flag Policies
+### Feature Flag policies
 
 #### Prevent feature flags from being enabled in production that are not configured in a lower environment like stage
 
@@ -309,7 +309,7 @@ deny[msg] {
 }
 ```
 
-### Template Policies
+### Template policy samples
 
 #### Enforce the use of stable templates in a pipeline
 
@@ -435,7 +435,7 @@ deny[msg] {
 }
 ```
 
-#### Enforce a Pipeline's Stage structure
+#### Enforce a pipeline's stage structure
 
 Users may want to make sure pipelines are designed with the recommended or mandatory structure. This ensures pipeline designers have the freedom to design a pipeline while following the guard rails. This policy works `On Pipeline Save`
 
@@ -470,7 +470,7 @@ getIndex(str, stages) = result {
 }
 ```
 
-#### Enforce a steps in a Pipeline
+#### Enforce a steps in a pipeline
 
 Users can ensure that mandaroty steps are configured in a pipeline. This policy can be configured `On Pipeline Run`, or `On Pipeline Save`
 
@@ -508,7 +508,7 @@ contains(arr, elem) {
 }
 ```
 
-#### Enforce Step Order in a Pipeline
+#### Enforce step order in a pipeline
 
 Users may want to enforce the ordering of steps that are configured in a pipeline. This policy can be used `On Pipeline Save` or `On Pipeline Run`.
 
@@ -545,9 +545,9 @@ getIndex(str, stage) = result {
 }
 ```
 
-### Sample Secret Policies
+### Secret policy samples
 
-#### Ensure there are no principals in the secret Secrets.
+#### Ensure there are no principals in the secret secrets.
 
 Users want to ensure that the secrets configured in Harness are configured by the correct group. This policy can be configured on Secret Save time.
 
@@ -565,7 +565,7 @@ deny["Principal is not allowed to save secrets"] {
 }
 ```
 
-#### Enforce Secret Naming Conventions
+#### Enforce secret naming conventions
 
 Users want to ensure that developers add secrets to Harness with a common naming standard, this makes it easy to identify and manage them. This can be configured on secret save.
 
