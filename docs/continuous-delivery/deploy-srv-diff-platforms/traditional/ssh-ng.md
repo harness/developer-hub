@@ -378,6 +378,17 @@ During deployment, you'll see each host listed in the loop:
 <details>
 <summary>Looping strategies for each deployment strategy</summary>
 
+:::note
+
+Only the Repeat Looping strategy is supported by the Command step. Also, only the `items` parameter is supported when running the Command step on multiple target hosts:
+
+```yaml
+repeat:  
+  items: <+stage.output.hosts>
+```
+
+:::
+
 The Repeat looping strategy is used differently for the basic, rolling, and canary deployment types.
 
 The looping strategy is automatically added to the **Deploy** step and configured for the deployment type you selected:
