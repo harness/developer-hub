@@ -1,15 +1,15 @@
 ---
-title: Harness Chaos Engineering (HCE) versus LitmusChaos
+title: Harness Chaos Engineering (CE) versus LitmusChaos
 sidebar_position: 2
 ---
-This section describes the differences between Harness Chaos Engineering (HCE) and the open-source CNCF incubation project, LitmusChaos.
+This section describes the differences between Harness Chaos Engineering (CE ) and the open-source CNCF incubation project, LitmusChaos.
 
-### Chaos management- Basic 
+### Chaos management - Basic 
 <table>
     <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>CE  (SaaS)</b></td>
     </tr>
    <tr>
         <td>Centralized chaos portal</td>
@@ -58,13 +58,13 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
     </tr>
 </table>
 
-### Chaos management- Advanced
+### Chaos management - Advanced
 
 <table>
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>CE  (SaaS)</b></td>
     </tr>
   <tr>
         <td>Chaos experiments CRUD</td>
@@ -113,7 +113,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>CE  (SaaS)</b></td>
     </tr>
     <tr>
         <td>Rest/GraphQL APIs</td>
@@ -167,7 +167,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>CE  (SaaS)</b></td>
     </tr>
     <tr>
         <td>Two-factor authentication</td>
@@ -206,7 +206,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
 <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>CE  (SaaS)</b></td>
     </tr>
     <tr>
         <td>Integration with Harness CD Pipelines</td>
@@ -225,7 +225,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>CE  (SaaS)</b></td>
     </tr>    
     <tr>
         <td>Pod delete</td>
@@ -340,7 +340,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>CE  (SaaS)</b></td>
     </tr>
     <tr>
         <td>Docker service kill</td>
@@ -404,7 +404,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>CE  (SaaS)</b></td>
     </tr>
     <tr>
         <td>ALB AZ down</td>
@@ -598,7 +598,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>CE  (SaaS)</b></td>
     </tr>
     <tr>
         <td>Lambda delete function concurrency</td>
@@ -637,7 +637,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>CE  (SaaS)</b></td>
     </tr>
     <tr>
         <td>GCP disk loss</td>
@@ -666,7 +666,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>CE  (SaaS)</b></td>
     </tr>
     <tr>
         <td>Azure instance stop</td>
@@ -710,7 +710,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>CE  (SaaS)</b></td>
     </tr>
     <tr>
         <td>VMware VM power off</td>
@@ -794,7 +794,7 @@ This section describes the differences between Harness Chaos Engineering (HCE) a
   <tr>
         <td><b>Feature</b></td>
         <td><b>Litmus</b></td>
-        <td><b>HCE (SaaS)</b></td>
+        <td><b>CE  (SaaS)</b></td>
     </tr>
     <tr>
         <td>Latency</td>
