@@ -19,7 +19,7 @@ Harness will continue to use the user name corresponding to the account if you d
 :::
 
 
-This topic explains how to configure OAuth for Git experience in Harness.
+This topic explains how to configure OAuth for Git Experience in Harness.
 
 ## Configure OAuth for Git provider
 
