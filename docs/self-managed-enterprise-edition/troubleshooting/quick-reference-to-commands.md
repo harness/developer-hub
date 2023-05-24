@@ -1,6 +1,7 @@
 ---
 title: Quick command reference
 description: Helpful commands for troubleshooting.
+sidebar_position: 90
 ---
 
 This topic provides a short list of commands that are useful for troubleshooting Harness Self-Managed Platform Edition.
