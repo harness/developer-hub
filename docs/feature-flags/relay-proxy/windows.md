@@ -4,23 +4,23 @@ description: This topic contains information on how build and run the Proxy on w
 sidebar_position: 130
 ---
 
-# Windows Build
 
-To run the Relay Proxy on Windows you must first build it as an exe for your desired architecture using the Go compiler from the root directory.
+To run the Relay Proxy on Windows: 
 
-`GOOS=windows GOARCH=386 go build -o ff-proxy ./cmd/ff-proxy/main.go`
+1. Build the proxy as an exe for your desired architecture, using the Go compiler from the root directory.
 
-We recommend performing these builds against a verified release tag so behaviour is the same as our published docker images of the same versions. These can be found on our [releases page](https://github.com/harness/ff-proxy/releases).
+	`GOOS=windows GOARCH=386 go build -o ff-proxy ./cmd/ff-proxy/main.go`
 
-This can then be run by passing flags to the proxy exe like so or with environment variables: 
+	Harness recommends doing these builds against a verified release tag so behaviour is the same as our published docker images of the same versions. These can be found on the proxy [releases page](https://github.com/harness/ff-proxy/releases) in GitHub.
 
-`call ff-proxy.exe --admin-service-token=${TOKEN} --auth-secret=${SECRET} --account-identifier=${ACCOUNT_IDENTIFIER} --org-identifier=${ORG_IDENTIFIER} --api-keys=${API_KEYS}`
+1. Run the exe by passing flags to it, or use environment variables:  
 
-See [configuration](./configuration.md) for more configuration options.
+	`call ff-proxy.exe --admin-service-token=${TOKEN} --auth-secret=${SECRET} --account-identifier=${ACCOUNT_IDENTIFIER} --org-identifier=${ORG_IDENTIFIER} --api-keys=${API_KEYS}`
 
-### Streaming
-Streaming mode for connected sdks is not currently supported for direct Windows or Linux builds. 
+	See [Configuration reference](/docs/feature-flags/relay-proxy/configuration) for more configuration options.
 
-If connected sdks are run with streaming enabled they will receive a 501 not implemented status code when connecting to the relay proxy then continue to function as normal in polling mode.
+:::info note
+**Streaming mode** for connected SDKs is not currently supported for direct Windows or Linux builds. 
 
-We do however recommend that sdks are run with streaming disabled to avoid error logs both within the relay proxy and the sdks themselves, though neither will have any adverse behaviour due to these.
+If connected SDKs run with streaming enabled, they receive a 501 "not implemented" status code when connecting to the relay proxy, and then continue to function as normal in polling mode.
+:::
