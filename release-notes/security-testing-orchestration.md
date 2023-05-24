@@ -55,6 +55,24 @@ This release does not incude early-access features.
 <details>
 <summary>2023 releases</summary>
 
+#### May 17, 2023, version 1.53.0
+
+##### New features
+
+* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
+
+  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
+
+##### Early access
+
+This release does not incude early-access features. 
+
+##### Fixed issues
+
+* Fixed an issue that would sometimes cause long-running scans to fail with a `requests.exceptions.ReadTimeout` exception and scan results to be lost.  (STO-5907)
+
+
+
 #### May 10, 2023, version 1.50.3
 
 ##### What's new
