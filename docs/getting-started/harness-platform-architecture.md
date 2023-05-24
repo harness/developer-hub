@@ -1,7 +1,7 @@
 ---
 title: Harness Platform architecture
 description: Harness Platform overview. The Harness Platform is a self-service CI/CD platform that enables end-to-end software delivery. The Platform includes modules to help you build, test, deploy, and verify s…
-# sidebar_position: 2
+sidebar_position: 60
 helpdocs_topic_id: len9gulvh1
 helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false

@@ -12,7 +12,7 @@ This topic provides settings and permissions for the Kubernetes Rollout Deployme
 
 ## Rollout Deployments
 
-The Rollout Deployment step performs a Kubernetes [rolling update strategy](https://developer.harness.io/docs/continuous-delivery/cd-deployments-category/deployment-concepts#rolling-deployment). All nodes within a single environment are incrementally added one-by-one with a new service/artifact version.
+The Rollout Deployment step performs a Kubernetes [rolling update strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts#rolling-deployment). All nodes within a single environment are incrementally added one-by-one with a new service/artifact version.
 
 The new pods are scheduled on nodes with available resources. The rolling update Deployment uses the number of pods you specified in the Service Definition **Manifests** (number of replicas).
 
@@ -107,7 +107,9 @@ By default, Harness uses the `--dry-run` flag on the `kubectl apply` command
 
 See the following:
 
-* [Step skip condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Step failure strategy settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-* [Select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
+* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 

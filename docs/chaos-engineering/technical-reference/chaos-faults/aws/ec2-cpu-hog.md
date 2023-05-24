@@ -2,9 +2,9 @@
 id: ec2-cpu-hog
 title: EC2 CPU hog
 ---
+## Introduction
 
-EC2 CPU hog induces stress on the AWS EC2 instances using the Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault. This fault:
-- Causes CPU chaos on the target EC2 instances using the `EC2_INSTANCE_ID` environment variable for a specific duration.
+EC2 CPU hog induces stress on the AWS EC2 instances using the Amazon SSM Run command. The SSM Run command is executed using SSM documentation that is built into the fault. This fault causes CPU chaos on the target EC2 instances using the `EC2_INSTANCE_ID` environment variable for a specific duration.
 
 ![EC2 CPU Hog](./static/images/ec2-cpu-hog.png)
 
@@ -15,31 +15,30 @@ EC2 CPU hog:
 - Simulates a lack of CPU for processes running on the application, which degrades their performance. 
 - Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the instance.
 
-:::note
-- Kubernetes >= 1.17 is required to execute this fault.
+:::info note
+- Kubernetes version 1.17 or later is required to execute this fault.
 - The EC2 instance should be in a healthy state.
 - SSM agent should be installed and running on the target EC2 instance.
 - SSM IAM role should be attached to the target EC2 instance(s).
-- Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-```
-
-- It is recommended to use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+- The Kubernetes secret should have the AWS Access Key ID and Secret Access Key credentials in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+  ```
+- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes.
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
 :::
 
-Here is an example AWS policy to execute the fault.
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -88,15 +87,12 @@ Here is an example AWS policy to execute the fault.
 }
 ```
 
-- Refer to [AWS Named Profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults, and the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-
 ## Fault tunables
 
-  <h3>Mandatory fields</h3>
+  <h3>Mandatory tunables</h3>
     <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
@@ -111,37 +107,37 @@ Here is an example AWS policy to execute the fault.
             <td> For example: <code>us-east-1</code>. </td>
         </tr>
     </table>
-    <h3>Optional fields</h3>
+    <h3>Optional tunables</h3>
     <table>
         <tr>
-            <th> Variables </th>
+            <th> Tunable </th>
             <th> Description </th>
             <th> Notes </th>
         </tr>
         <tr>
             <td> TOTAL_CHAOS_DURATION </td>
             <td> Duration to insert chaos (in seconds). </td>
-            <td> Defaults to 30s. </td>
+            <td> Default: 30 s. </td>
         </tr>
         <tr>
             <td> CHAOS_INTERVAL </td>
             <td> Interval between successive chaos injection (in seconds). </td>
-            <td> Defaults to 60s. </td>
+            <td> Default: 60 s. </td>
         </tr>
         <tr>
             <td> AWS_SHARED_CREDENTIALS_FILE </td>
             <td> Path to the AWS secret credentials. </td>
-            <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
+            <td> Default: <code>/tmp/cloud_config.yml</code>. </td>
         </tr>
         <tr>
             <td> INSTALL_DEPENDENCIES </td>
             <td> Install dependencies to run CPU chaos. It can be 'True' or 'False'.</td>
-            <td> Defaults to True. </td>
+            <td> Default: True. </td>
         </tr>
         <tr>
             <td> CPU_CORE </td>
             <td> Number of CPU cores to consume. </td>
-            <td> Defaults to 0. </td>
+            <td> Default: 0. </td>
         </tr>
         <tr>
             <td> CPU_LOAD </td>
@@ -151,21 +147,21 @@ Here is an example AWS policy to execute the fault.
         <tr>
             <td> SEQUENCE </td>
             <td> Sequence of chaos execution for multiple instances. </td>
-            <td> Default value is parallel. Supports serial and parallel. </td>
+            <td> Default: parallel. Supports serial and parallel. </td>
         </tr>
         <tr>
             <td> RAMP_TIME </td>
             <td> Period to wait before and after injecting chaos (in seconds). </td>
-            <td> For example, 30s. </td>
+            <td> For example, 30 s. </td>
         </tr>
     </table>
 
 
 ### CPU core
 
-It specifies the CPU core value that will be utilized on the EC2 instance. Tune it by using the `CPU_CORE` environment variable.
+CPU core value utilized on the EC2 instance. Tune it by using the `CPU_CORE` environment variable.
 
-Use the following example to tune CPU core:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-cpu-hog/cpu-core.yaml yaml)
 ```yaml
@@ -194,9 +190,9 @@ spec:
 
 ### CPU percentage
 
-It specifies the CPU percentage value that will be utilized on the EC2 instance. Tune it by using the `CPU_LOAD` environment variable.
+CPU percentage value utilized on the EC2 instance. Tune it by using the `CPU_LOAD` environment variable.
 
-Use the following example to tune CPU percentage:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-cpu-hog/cpu-percentage.yaml yaml)
 ```yaml
@@ -225,9 +221,9 @@ spec:
 
 ### Multiple EC2 instances
 
-It specifies multiple EC2 instances that are targeted in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
+Multiple EC2 instances that are targeted in one chaos run. Tune it by using the `EC2_INSTANCE_ID` environment variable.
 
-Use the following example to tune multiple EC2 instances:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-cpu-hog/multiple-instances.yaml yaml)
 ```yaml
@@ -254,9 +250,9 @@ spec:
 
 ### CPU core with percentage consumption
 
-It specifies the number of CPU cores that will be utilized (in terms of percentage) on the EC2 instance. Tune it by using the `CPU_CORE` and `CPU_LOAD` environment variables, respectively.
+Number of CPU cores (in terms of percentage) utilized on the EC2 instance. Tune it by using the `CPU_CORE` and `CPU_LOAD` environment variables, respectively.
 
-Use the following example to tune CPU core with percentage consumption:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ec2-cpu-hog/cpu-core-with-percentage.yaml yaml)
 ```yaml

@@ -1,5 +1,5 @@
 ---
-title: Provision Users and Groups using Azure AD (SCIM)
+title: Provision users and groups using Azure AD (SCIM)
 description: Explains how to use Harness' SCIM integration with Azure Active Directory (AD) to automatically provision users and/or groups.
 # sidebar_position: 2
 helpdocs_topic_id: 6r8hin2z20
@@ -101,12 +101,6 @@ Before you configure Harness for automatic user provisioning with Azure AD, you 
 16. Click **Save**.
 
 This operation starts the initial sync of the users or groups you're provisioning. The initial sync takes longer to perform than later ones. Syncs occur approximately every 40 minutes, as long as the Azure AD provisioning service is running. To monitor progress, go to the **Synchronization Details** section. You can also follow links to a provisioning activity report, which describes all actions performed by the Azure AD provisioning service on Harness.
-
-
-:::note
-Enable the feature flag UPDATE_EMAILS_VIA_SCIM to reflect changes to the email address in the SCIM provider.
-
-:::
 
 For more information about how to read the Azure AD provisioning logs, see [Report on automatic user account provisioning](https://docs.microsoft.com/en-us/azure/active-directory/app-provisioning/check-status-user-account-provisioning).
 

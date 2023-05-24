@@ -1,10 +1,10 @@
 ---
-title: Optimize cloud costs using the asset governance rules
+title: Cost optimization using the asset governance rules
 description: This topic describes how to optimize cloud costs using asset governance.
 # sidebar_position: 2
 ---
 
-
+# Optimize cloud costs using the asset governance rules
 To optimize cloud costs, you need to create a governance rule or combine multiple rules into a ruleset and enforce it to provide a more comprehensive, consistent, and efficient approach to cloud asset governance.
 
 
@@ -79,7 +79,7 @@ To create enforcement, perform the following steps:
 7. Select the rules or rulesets that you want to enforce. You can use the **Search** box if you have multiple rules and are looking to enforce a particular rule or rule set.
 8. Click Continue. 
 9. Select the target accounts and target regions. You could select multiple AWS accounts and regions.
-10. You can set the frequency from **Hourly**, **Daily**, or **Weekly **options. In case you select Daily or Weekly, specify the day, time, and time zone to run the rule on schedule.
+10. Set the frequency from **Hourly**, **Daily**, or **Weekly **options. In case you select Daily or Weekly, specify the day, time, and time zone to run the rule on schedule.
 11. Toggle the **Dry Run** mode if you do not want to take action immediately.
 12. Click **Finish**. 
 

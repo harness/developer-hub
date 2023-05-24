@@ -190,7 +190,7 @@ If you use large images in your Build stage's steps, you might find that the ini
 
 ### Override Image Connector
 
-By default, [Harness pulls certain images from public DockerHub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
+By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
 ```mdx-code-block
   </TabItem>
@@ -215,7 +215,7 @@ The following **Platform** settings are available:
 
 * **Select the Operating System:** Select the build infrastructure OS.
 * **Pool Name:** Enter the pool name as specified in the `pool.yml` setup file in your build infrastructure.
-* **Override Image Connector:** By default, [Harness pulls certain images from public DockerHub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
+* **Override Image Connector:** By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
 ```mdx-code-block
   </TabItem>
@@ -224,7 +224,15 @@ The following **Platform** settings are available:
 
 ## Execution
 
-The **Execution** tab is where you add steps to the stage. For details about settings for each step, go to the [CI Technical Reference](/docs/category/reference-ci-steps-settings).
+The **Execution** tab is where you add steps to the stage. For details about different step types, go to:
+
+* [Build and upload artifacts](/docs/category/build-and-upload-artifacts)
+* [Run tests](/docs/category/run-tests)
+* [Manage dependencies](/docs/category/manage-dependencies)
+* [Share and cache CI data](/docs/category/share-and-cache-ci-data)
+* [Run scripts](/docs/category/run-scripts)
+* [Use plugins](/docs/category/use-plugins)
+* [Security step (Harness STO)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)
 
 ## Advanced
 

@@ -31,12 +31,13 @@ Harness chaos engineering module adds the following additional capabilities:
 3. [AWS chaos faults](../technical-reference/chaos-faults/aws/)
 4. [GCP chaos faults](../technical-reference/chaos-faults/gcp/)
 5. [Azure chaos faults](../technical-reference/chaos-faults/azure/)
-6. Teaming around chaos hubs
-7. Additional resilience probes
+6. [Linux chaos faults](../technical-reference/chaos-faults/linux/)
+7. Teaming around chaos hubs
+8. Additional resilience probes
 
 ## Integrations
 
 In addition to the above features, the chaos engineering module has the following integrations in the Harness platform:
 
-- [Harness Continuous Delivery (CD)](/tutorials/run-chaos-experiments/integration-with-harness-cd)
+- [Harness Continuous Delivery (CD)](/tutorials/chaos-experiments/integration-with-harness-cd)
 

@@ -2,7 +2,7 @@
 title: Run a Drone Plugin in CI
 description: A Drone Plugin is a Docker container that performs a predefined task.
 
-sidebar_position: 20
+sidebar_position: 60
 helpdocs_topic_id: fjagoj8mez
 helpdocs_category_id: ei5fgqxb0j
 helpdocs_is_private: false
@@ -11,7 +11,7 @@ helpdocs_is_published: true
 
 A Drone Plugin is a Docker container that performs a predefined task. Plugins are essentially templated scripts that can be written in any programming language. The Drone community maintains an [extensive library](https://plugins.drone.io/) of plugins for specific CI workflows. You can customize and extend your build processes using existing plugins or [write your own](https://harness.io/blog/continuous-integration/write-first-plugin-for-cie/).
 
-This topic describes how to set up and run Drone Plugins in your CI pipelines. You can also use [GitHub Action plugin steps](../../ci-technical-reference/plugin-steps/ci-github-action-step.md) and [Bitrise plugin steps](../../ci-technical-reference/plugin-steps/ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
+This topic describes how to set up and run Drone Plugins in your CI pipelines. You can also use [GitHub Action plugin steps](./ci-github-action-step.md) and [Bitrise plugin steps](./ci-bitrise-plugin.md) to run GitHub Actions and Bitrise Integrations in your CI pipelines.
 
 ## Before You Begin
 
@@ -22,7 +22,7 @@ To install and run a plugin, you need the following:
 	+ [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md)
 * A build infrastructure and Delegate to run builds:
 	+ [Set Up Build Infrastructure](/docs/category/set-up-build-infrastructure)
-	+ [Delegate installation overview](/docs/platform/2_Delegates/install-delegates/overview.md)
+	+ [Delegate installation overview](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview.md)
 * A CI pipeline with a Build stage to run the plugin:
 	+ [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 * You should create text secrets for any sensitive information required by the plugin, such as a password or Personal Access Token. You'll need to reference the IDs for any secrets when you set up the Plugin Step.
@@ -186,6 +186,6 @@ You can see additional examples in the [GitHub Actions Support in Harness CI blo
 
 * [Drone Plugins Marketplace](https://plugins.drone.io/)
 * [Run GitHub Actions in CI pipelines](run-a-git-hub-action-in-cie.md)
-* [Plugin step settings](../../ci-technical-reference/plugin-steps/plugin-step-settings-reference.md)
+* [Plugin step settings](./plugin-step-settings-reference.md)
 * [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets)
 

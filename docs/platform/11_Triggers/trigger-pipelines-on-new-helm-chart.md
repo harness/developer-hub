@@ -1,5 +1,5 @@
 ---
-title: Trigger Pipelines on new Helm Chart
+title: Trigger pipelines on new Helm chart
 description: Trigger Harness Pipelines in response to a new Helm chart version being added to an HTTP Helm repo.
 sidebar_position: 3
 helpdocs_topic_id: 54eqk0d1bd
@@ -191,6 +191,13 @@ You can enable or disable Triggers using the Enabled toggle:
 You can reuse Triggers by copying and pasting Trigger YAML. This can be helpful when you have advanced Conditions you don't want to set up each time.
 
 ![](./static/trigger-pipelines-on-new-helm-chart-14.png)
+
+:::note
+
+Trigger manifest expressions used in a pipeline are resolved when you rerun a pipeline that was activated by a trigger.
+
+:::
+
 ### See also
 
 * [Schedule Pipelines using Triggers](schedule-pipelines-using-cron-triggers.md)

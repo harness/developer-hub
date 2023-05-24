@@ -1,5 +1,5 @@
 ---
-title: Harness Role-Based Access Control Quickstart
+title: Role-based access control quickstart
 description: This document explains how to set up RBAC for Pipelines.
 # sidebar_position: 2
 helpdocs_topic_id: lrz2e4t1ko

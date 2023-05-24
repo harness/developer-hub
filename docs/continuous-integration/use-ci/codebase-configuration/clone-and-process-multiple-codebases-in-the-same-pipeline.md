@@ -39,27 +39,140 @@ The following steps explain how to create a pipeline and add a **Build** stage. 
 
 For more information about configuring the **Build** stage's, go to [Create and configure a codebase](./create-and-configure-a-codebase.md) and [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
 
-## Add a Git Clone step
+## Add the Git Clone step
 
-Add a **Git Clone** step to clone a second repo into the pipeline's workspace.
+Add a **Git Clone** step to clone a second repo into the pipeline's workspace. This step's settings are described below. Depending on the stage's build infrastructure, some settings may be unavailable.
 
-1. On the **Execution** tab, select **Add step**, select **Add step** again, and then select **Git Clone** from the step library.
-2. Enter a **Name** and optional **Description**.
-3. For **Connector**, select or create a [code repo connector](./create-and-configure-a-codebase.md#code-repo-connectors) for your second code repo.
-4. If **Repository Name** is not automatically populated, enter the second code repo's name.
-5. For **Build Type**, select **Git Branch** if you want the step to clone code from a specific branch with in the repo, or select **Git Tag** if you want the step to clone code from a specific commit tag. Based on your selection, specify a **Branch Name** or **Tag Name**.
-6. Populate other fields as desired. For example, use **Clone Directory** to clone the code repo to a specific location in the workspace. For information about all **Git Clone** step settings, go to the [Git Clone step settings reference](../../ci-technical-reference/ci-git-clone-step.md).
-7. Select **Apply Changes** to save the step, and then select **Save** to save the pipeline.
+### Name, Id, and Description
+
+Enter a **Name** summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+
+The **Description** is an optional text string.
+
+### Connector
+
+Select a connector for the source control provider hosting the code repo that you want the step to clone.
+
+The following topics provide more information about creating code repo connectors:
+
+* AWS CodeCommit: [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo#add-aws-codecommit-repo)
+* Azure Repos: [Connect to Azure Repos](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo)
+* Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+* GitHub:
+  * [Add a GitHub connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector)
+  * [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
+  * [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support)
+* GitLab: [GitLab Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
+* Other Git providers:
+  * [Connect to a Git repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo)
+  * [Git connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
+
+### Repository Name
+
+If the connector's [URL Type](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference#url-type) is **Repository**, then **Repository Name** is automatically populated based on the repository defined in the connector's configuration.
+
+If the connector's URL Type is **Account**, then you must specify the name of the code repo that you want to clone into the pipeline workspace.
+
+### Build Type, Branch Name, and Tag Name
+
+For **Build Type**, select **Git Branch** if you want the step to clone code from a specific branch within the repo, or select **Git Tag** if you want the step to clone code from a specific commit tag. Based on your selection, specify a **Branch Name** or **Tag Name**.
+
+:::tip
+
+You can use [fixed values, runtime input, or variable expressions](/docs/platform/references/runtime-inputs/) for the branch and tag names. For example, you can enter `<+input>` for the branch or tag name to supply a branch or tag name at runtime. You could also use expressions to match the pipeline's [codebase](./create-and-configure-a-codebase.md) branch or tag so that, for example, the pipeline and the Git Clone step both pull code from the same environment, such as `production` when a production build runs or `development` when a development build runs.
+
+:::
+
+This setting applies only to the repo specified in this **Git Clone** step. It is separate from the `codebase` object for the pipeline's **Build** stage. If you want this **Git Clone** step's repo to use the same branch or commit as the primary codebase, specify either `<+codebase.branch>` or `<+codebase.tag>` for **Branch Name** or **Tag Name**. These expressions pull runtime input from the pipeline; for example, if the pipeline's primary codebase uses the `development` branch, then the **Git Clone** step clones the `development` branch from its repo. For more information, go to the [Built-in CI codebase variables reference](./built-in-cie-codebase-variables-reference.md).
+
+### Clone Directory
+
+An optional target path in the pipeline workspace where you want to clone the repo.
+
+You can't specify `/harness/` as a target directory for a **Git Clone** step because this folder is reserved for the **Build** stage's [codebase](./create-and-configure-a-codebase.md). You can specify **Shared Paths** in your [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md) to share data across steps in your **Build** stage.
+
+### Depth
+
+The number of commits to fetch when the step clones the repo.
+
+For manually-triggered builds, the default depth is `50`. This means each `git clone` operation fetches the 50 most recent commits. For all other trigger types, the default depth is `0`, which fetches all commits from the relevant branch.
+
+For more information, go to the [git clone documentation](https://git-scm.com/docs/git-clone).
+
+### SSL Verify
+
+If **True**, which is the default value, the pipeline verifies your Git SSL certificates. The build fails if the certificate check fails. Set this to **False** only if you have a known issue with the certificate and you are willing to run your builds anyway.
+
+If you want to use self-signed certificates in a Kubernetes Cluster build infrastructure, go to [Configure a Kubernetes Build Farm to use Self-Signed Certificates](../set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
+
+### Run as User
+
+Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+
+### Set Container Resources
+
+Set maximum resource limits for the resources used by the container at runtime:
+
+* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+
+### Timeout
+
+Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
+
+* [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+* [Step Failure Strategy settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+
+### Stage setting: SSH-keyscan timeout
+
+If your [connector](#connector) uses SSH authentication, you can add a `PLUGIN_SSH_KEYSCAN_TIMEOUT` [stage variable](/docs/platform/pipelines/add-a-stage/#option-stage-variables) to override the `ssh-keyscan` command's timeout limit (the default is `5s`).
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+1. In your CI pipeline, select the stage with the **Git Clone** step, and then select the **Overview** tab.
+2. Under **Advanced**, select **New Variable**.
+3. For **Variable Name**, enter `PLUGIN_SSH_KEYSCAN_TIMEOUT`.
+4. Set the **Type** to **String**, and then select **Save**.
+5. Enter the desired timeout limit for the **Value**. This is an integer representing a number of seconds, such as `90`.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+```yaml
+    - stage:
+        ...
+        variables:
+          - name: PLUGIN_SSH_KEYSCAN_TIMEOUT
+            type: String
+            description: ""
+            value: 90
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+Add this variable to all stages where you need to override the `SSH-keyscan` timeout limit.
 
 ## Build an artifact from both code repos
 
-Now that the files from both repos will be cloned into a common workspace, you can add a step to build an artifact using code from both repos, such as a [Build and Push an image to Docker Registry step](/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings).
+Now that the files from both repos will be cloned into a common workspace, you can add a step to build an artifact using code from both repos, such as a [Build and Push an image to Docker Registry step](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings).
 
-Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-docker-hub-step-settings#dockerfile) that assume files are located at the codebase's root directory if not otherwise specified. Depending on the default codebase, you might need to specify a non-root path for build files.
+Pay attention to settings like the [Dockerfile setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings#dockerfile) that assume files are located at the codebase's root directory if not otherwise specified. Depending on the default codebase, you might need to specify a non-root path for build files.
 
-You can also use, for example, a `cp` command in a [Run step](/docs/continuous-integration/ci-technical-reference/run-step-settings) to move cloned files around the workspace before building an artifact.
+You can also use, for example, a `cp` command in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to move cloned files around the workspace before building an artifact.
 
-## YAML example
+## Reference: YAML example
 
 The following YAML example describes a pipeline that clones two code repos.
 
@@ -114,7 +227,7 @@ pipeline:
                     dockerfile: /path/to/dockerfile
 ```
 
-## Option: Use a Run step
+## Alternative: Use a Run step
 
 As an alternative to the **Git Clone** step, you can use scripts in **Run** steps to clone multiple repos into a stage.
 

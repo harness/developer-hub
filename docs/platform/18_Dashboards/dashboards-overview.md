@@ -1,5 +1,5 @@
 ---
-title: Dashboards Overview
+title: Dashboards overview
 description: An overview of dashboards in Harness.
 sidebar_position: 2
 ---

@@ -44,11 +44,13 @@ In your CD Stage's **Execution**, select **Add Step**, then select **Jenkins**.
 
 Select the Jenkins server you added as a Harness Jenkins connector. For more information, go to [connect to Jenkins](/docs/platform/Connectors/Artifact-Repositories/connect-to-jenkins).
 
-## Job name
+## Job/Folder name
 
 Select the Jenkins job (also called a project) to execute. The list is automatically populated using the Jenkins server you set up in the Jenkins connector you selected.
 
-To filter a job, search for its name. If the job is nested, select the top-level folder first, then search for the job name within that path using a secondary field.
+If you select a folder, then a new setting for the folder appears. For example, if you selected the folder **Test Jobs**, then a setting named **Test Jobs** appears. In the new setting, select the job to execute.
+
+To filter a job, search for its name.
 
 ## Use runtime inputs and expressions
 
@@ -79,11 +81,11 @@ If this setting is enabled then `Unstable` statuses will be considered as `Succe
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## Captured environment variables from Jenkins builds
 
@@ -129,8 +131,22 @@ In **Job Name**, multibranch pipelines are displayed alongside other jobs, with 
 
 Select **>** and select the branch.
 
+:::note
+
+Some components in Jenkins, like controllers, might require a separate Harness Jenkins connector for proper integration. The URL for accessing Jenkins could be different for different installations of Jenkins or even for different instances of Jenkins running on the same server. If you're experiencing issues integrating Jenkins components, try a separate connector and update the connector's URL accordingly.
+
+:::
+
 ## Output expressions
 
 You can copy expressions for the job outputs from the **Output** tab of the Jenkins step.
 
 ![](./static/run-jenkins-jobs-in-cd-pipelines-31.png)
+
+To access Jenkins job's environment variables from the step output, use:
+
+`<+pipeline.stages.[STAGE_IDENTIFIER].spec.execution.steps.[STEP_IDENTIFIER].build.envVars.[ENV_VAR_FIELD]>`
+
+When the step is inside a step group, use:
+
+`<+pipeline.stages.[STAGE_IDENTIFIER].spec.execution.steps.[STEP_GROUP_IDENTIFIER].steps.[STEP_IDENTIFIER].build.envVars.[ENV_VAR_FIELD]>`

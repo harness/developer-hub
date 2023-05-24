@@ -1,5 +1,5 @@
 ---
-title: Provision Users and Groups with Okta (SCIM)
+title: Provision users and groups with Okta (SCIM)
 description: Explains how to provision and manage Harness Users and User Groups using Okta's SCIM integration.
 # sidebar_position: 2
 helpdocs_topic_id: umv2xdnofv
@@ -232,8 +232,6 @@ To update user attributes:
 
 :::note
 Only the five fields listed at the top of this section are synced to Harness users. You can update values in other fields, but those values are saved for this user in Okta only and are not updated in Harness.
-
-Enable the feature flag UPDATE_EMAILS_VIA_SCIM to reflect changes to the email address in the SCIM provider.
 
 The Display name in Okta is displayed as the user name in Harness. 
 

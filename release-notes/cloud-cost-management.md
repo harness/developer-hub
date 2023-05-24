@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-04-11T10:00
+date: 2023-05-20T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -16,7 +16,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - April 05, 2023, version 79001
+## Latest - May 19, 2023, version 79300
 
 ```mdx-code-block
 <Tabs>
@@ -24,9 +24,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 
 ### What's new
-* Workload recommendations enhancement. (CCM-9161)(Zendesk Ticket ID 34658)
 
-  Introduced support for 100th percentile in workload recommendations.  Recommendations will be displayed for 100% usage of workloads.
+  This release does not include any new features.
+
 
 ```mdx-code-block
   </TabItem>
@@ -37,6 +37,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   This release does not include any early access features.
 
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
@@ -44,15 +45,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Fixed issues
 
-* Updated the default perspective names from `Aws` to `AWS` and `Gcp` to `GCP`. (CCM-11770)
-* Discrepancy in the number of EC2 recommendations. (CCM-11730)
- 
-   The Terminate-type recommendations were not being saved, and certain EC2 recommendations were disappearing after a specific interval of time. This issue has been resolved.
+* Budget group missing from the Budget page. (CCM-12334)
 
-* The link to the perspective on the **Anomalies** page was incorrect. (CCM-11403)
+  Previously, updating a budget group rendered its history irrelevant due to its dependence on child entities. However, this issue has been resolved by introducing support for modifying the budget group history during updates. 
 
-  This issue has been fixed, and the link now directs to the correct perspective.
+* AutoStopping — Adding multiple proxy configuration with custom domain in GCP proxy cannot be saved and displays error message. (CCM-12048)
 
+  Saving the AutoStopping rule did not append custom domain providers for non-AWS cloud providers. This resulted in a validation error at the back-end. This issue has been resolved. The required field `custom_domain_provider` is now being set for every cloud provider.
+
+  
 ```mdx-code-block
   </TabItem>
 </Tabs>
@@ -62,6 +63,89 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 <details>
 <summary>2023 releases</summary>
+
+#### May 05, 2023, version 79300
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+This release does not include any early access features.
+
+##### Fixed issues
+
+* Previously, the budget amount in the monthly fields did not default to zero when selecting the yearly budget period. (CCM-12289)
+
+  This issue is resolved. Now, when choosing the budget type as **Specified amount**, the budget amount for individual months correctly defaults to zero.
+
+  <docimage path={require('./static/ccm-set-budget-amount.png')} width="60%" height="60%" title="Click to view full size image" />
+
+* Users couldn't dismiss the "How to get started with creating rules?" modal on the **Cost Category** page. (CCM-12278)
+
+  The issue is resolved. Now, you can collapse the modal if you don't want to see it on the screen.
+
+* Updated the default **Budget Type** as **Specified amount**. You could select **Last period spend** if you like to set up budget based on that budget type. (CCM-12254)
+  
+* A stopped AutoStopping rule displayed **Scale down** on the rule **Details** page. A stopped rule must display **Scale up** and a running rule must display **Scale down**. (CCM-11920)
+
+  This issue is resolved now.
+
+    <docimage path={require('./static/ccm-rule-scaledown.png')} width="60%" height="60%" title="Click to view full size image" />
+
+* The escape character `&amp` rendered incorrectly in the budget dashboard. (CCM-11683)
+
+ The issue is resolved now.
+
+
+#### April 19, 2023, version 79104
+
+##### What's new
+
+* Recommendations enhancement (CCM-11769)
+
+  A new filter has been added to recommendations, which allows the selection of the age of the recommendations. This filter allows you to specify how many days old recommendations should be included in the results. 
+
+##### Early access
+
+  This release does not include any early access features.
+
+##### Fixed issues
+
+* The **Recommendations** page displayed incorrect savings value. (CCM-12082)
+
+  This issue has been resolved. The value in the grid now matches with the widgets.
+* Spike in BigQuery cost. (CCM-12027)
+
+  Limited the data queried by users with restricted access (granular RBAC enabled) by implementing a time filter of 30 days. These users can retrieve recommendations only from the past 30 days, effectively reducing the overall size of the query results.
+* Modifying individual budgets within a budget group resulted in inconsistencies within the budget group as a whole. (CCM-11854)
+
+  To fix this issue, you are allowed to modify only the budget type, budget amount, and configure alerts for individual budgets. You cannot modify other parameters.
+* While configuring budget groups, you cannot add a negative integer in the **Cascading** > **Proportionally** field. The total sum of the proportions should always be 100. (CCM-11852)
+
+    <docimage path={require('./static/budget-group-release-note.png')} width="60%" height="60%" title="Click to view full size image" />
+
+#### April 05, 2023, version 79001
+
+##### What's new
+* Workload recommendations enhancement. (CCM-9161)(Zendesk Ticket ID 34658)
+
+  Introduced support for 100th percentile in workload recommendations.  Recommendations will be displayed for 100% usage of workloads.
+
+##### Early access
+
+  This release does not include any early access features.
+
+##### Fixed issues
+
+* Updated the default perspective names from `Aws` to `AWS` and `Gcp` to `GCP`. (CCM-11770)
+* Discrepancy in the number of EC2 recommendations. (CCM-11730)
+ 
+   The Terminate-type recommendations were not being saved, and certain EC2 recommendations were disappearing after a specific interval of time. This issue has been resolved.
+
+* The link to the perspective on the **Anomalies** page was incorrect. (CCM-11403)
+
+  This issue has been fixed, and the link now directs to the correct perspective.
 
 #### March 21, 2023, version 78903
 

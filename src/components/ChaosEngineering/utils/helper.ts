@@ -46,6 +46,9 @@ const getCategoryDetails = (category: string): Record<string, string> => {
     case FaultCategory.Load:
       setDetails(FaultCategory.Load);
       break;
+    case FaultCategory.SecurityChaos:
+      setDetails(FaultCategory.SecurityChaos);
+      break;
     default:
       details.icon = `${path}/default.svg`;
       details.link = `#`;
@@ -102,6 +105,9 @@ const getFaultDetails = (
       break;
     case FaultCategory.Load:
       setDetails(FaultCategory.Load);
+      break;
+    case FaultCategory.SecurityChaos:
+      setDetails(FaultCategory.SecurityChaos);
       break;
     default:
       details.icon = `${path}/default.svg`;

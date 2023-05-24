@@ -1,5 +1,5 @@
 ---
-title: Create AutoStopping Rules for AWS
+title: AWS
 description: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle.
 # sidebar_position: 3
 helpdocs_topic_id: 7025n9ml7z
@@ -7,7 +7,7 @@ helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+# Create AutoStopping Rules for AWS
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions.
 
 ## Before you begin
@@ -66,7 +66,7 @@ Perform the following steps to add a new AWS AutoStopping rule:
 	+ Step: Define an AutoStopping Rule
 	+ Step: Select the Resources to be Managed by the AutoStopping Rule
 		- Option 1: Select EC2 VM(s)
-		- Option 2: Select Auto Scaling Groups]
+		- Option 2: Select Auto Scaling Groups
 		- Option 3: Select Kubernetes Clusters
 		- Option 4: Select ECS Service
 		- Option 5: Select RDS Instances
@@ -210,7 +210,15 @@ Create fixed uptime or downtime schedules for the resources managed by this Auto
 
 In certain scenarios, you would not want your resources to go down or up. For example, every Friday at 5 p.m. you want your `ABC` resource to go down. You can schedule downtime for your `ABC` resource. During this window, the resource is forced to go down regardless of the defined rule. You can choose to specify uptime for your resources in the same way.
 
-The fixed schedule takes precedence over the defined AutoStopping Rule.To create a fixed schedule for your rule, do the following:
+:::note
+The fixed schedule takes precedence over the defined AutoStopping Rule. 
+:::
+
+:::note
+Harness executes scheduled rules using [Dkron](https://dkron.io/), an open-source workload automation service.
+:::
+
+To create a fixed schedule for your rule, do the following:
 
 1. In **Fixed Schedules**, click **Add Fixed Schedule**.
    
@@ -243,8 +251,8 @@ The fixed schedule takes precedence over the defined AutoStopping Rule.To create
 
 Now that you have the AutoStopping rule configured, define how you would want to access the underlying application running on the resources managed by this Rule. You can use either of the following or both the methods depending on your requirement:
 
-* Set up Access for HTTP/HTTPS workload: If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
-* Setup Access for TCP workload or SSH/RDP: If the underlying applications running on the resources managed by AutoStopping Rule are accessed via TCP, SSH or RDP.
+* **Set up Access for HTTP/HTTPS workload**: If the underlying applications running on the resources managed by the AutoStopping Rule are accessed by an HTTP or HTTPS URL.
+* **Setup Access for TCP workload or SSH/RDP**: If the underlying applications running on the resources managed by AutoStopping Rule are accessed via TCP, SSH or RDP.
 * You could skip this step for now and use the CLI to set up access. Go to [Use the Harness CLI to access resources through SSH/RDP](create-autostopping-rules-aws.md#use-the-harness-cli-to-access-resources-through-sshrdp) for details.
 
 ## Set up access for TCP workload or SSH/RDP 
@@ -271,7 +279,7 @@ Choose an Application Load Balancer or an AutoStopping Proxy load balancer from 
 ### Use an Application Load Balancer
   If you have not created a load balancer already, go to [Create an Application load balancer](../3-load-balancer/create-load-balancer-aws.md).
 
-#### Enter Routing Configuration and Health Check Details
+#### Enter the routing configuration 
 
 1. If the security groups are configured for the selected instances, then the routing information is auto-populated for those instances.  
 You can edit or delete the routing information. However, it is mandatory to have at least one port listed. For more information, see [Listeners](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-listeners.html). 
@@ -287,9 +295,18 @@ You can edit or delete the routing information. However, it is mandatory to have
   * If you are forwarding the same action to different ports, then specify the server name and/or path match.  
 	  
   * If you specify the server name, then the host uses the custom URL to access the resources. You cannot use an auto-generated URL to access the resources.
-  
 
-3. Toggle the **Health check** button to configure the health check. Health check status should be successful for the AutoStopping rules to come into effect. Set a health check for the underlying application that is running on the cloud resources managed by this AutoStopping rule. The load balancer periodically sends requests as per the settings below to the application. If your application does not support health check or you do not have any application running, you can disable the health check.
+##### Add multiple domains with the AutoStopping rule
+ALB has certain [limitations](https://docs.aws.amazon.com/elasticloadbalancing/latest/application/load-balancer-limits.html) to consider when creating rules. By default, ALB allows only five conditions on a Listener Rule. This can become problematic when the AutoStopping rule requires configuration for more than five domains. To address this, you can utilize the **Server name** field in the **Port configuration** section.
+
+:::important
+Each row in the Port config table represents an ALB rule in Harness. The information provided in the row is translated into an ALB rule by the Harness backend. Therefore, the **Server name** field has a limit of five domains.
+:::
+
+You can add a comma separated list of domain names in the server name field to add more domains to the rule. Each server name field can take up to five domain names. Continue adding rows to the table until all domains are included. Each row will generate a new rule in the ALB of the Harness load balancer.
+
+#### Enter the Health Check Details
+1. Toggle the **Health check** button to configure the health check. Health check status should be successful for the AutoStopping rules to come into effect. Set a health check for the underlying application that is running on the cloud resources managed by this AutoStopping rule. The load balancer periodically sends requests as per the settings below to the application. If your application does not support health check or you do not have any application running, you can disable the health check.
 
   By default, the health check is turned on.
 
@@ -348,7 +365,6 @@ Similarly, you can configure custom inclusions. Requests to the specified path o
 
 ### Use an AutoStopping Proxy load balancer
 If you have not created an AutoStopping proxy load balancer already, go to [Create an AutoStopping Proxy load balancer](../3-load-balancer/create-autoproxy-aws-lb.md).
-
 
 :::note
 You can use the same proxy load balancer for more than one rule managing resources (VMs, ASG) within the same VPC.

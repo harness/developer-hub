@@ -7,6 +7,7 @@ import { experiments as KubeResilienceExperiments } from "./kube-resilience/expe
 import { experiments as KubernetesExperiments } from "./kubernetes/experiments";
 import { experiments as VMWareExperiments } from "./vmware/experiments";
 import { experiments as LoadExperiments } from "./load/experiments";
+import { experiments as LinuxExperiments } from "./linux/experiments";
 
 export const categories: FaultCardItem[] = [
   {
@@ -50,5 +51,17 @@ export const categories: FaultCardItem[] = [
     description: <>Chaos faults for Load </>,
     faults: LoadExperiments.length,
     category: "load",
+  },
+  {
+    title: "Linux",
+    description: <>Build production ready and resilient applications. </>,
+    faults: LinuxExperiments.length,
+    category: "linux",
+  },
+  {
+    title: "Security chaos",
+    description: <>Chaos faults for security CIS </>,
+    faults: LoadExperiments.length,
+    category: "security-chaos",
   },
 ];

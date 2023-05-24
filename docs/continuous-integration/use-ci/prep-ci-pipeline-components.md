@@ -10,7 +10,7 @@ For definitions of terms like stage, step, build infrastructure, delegate, conne
 
 ## Pipelines
 
-A CI pipeline is an end-to-end integration workflow that, in its simplest form, pulls a codebase, builds an artifact, and then uploads the artifact to storage or a registry such as DockerHub, Google Cloud Registry, JFrog Artifactory, and many others. Pipelines are comprised of [stages](#stages) and [steps](#steps).
+A CI pipeline is an end-to-end integration workflow that, in its simplest form, pulls a codebase, builds an artifact, and then uploads the artifact to storage or a registry such as Docker Hub, Google Cloud Registry, JFrog Artifactory, and many others. Pipelines are comprised of [stages](#stages) and [steps](#steps).
 
 You can run a pipeline manually or set up triggers to automatically run it on a schedule or when an event occurs, such as a Git merge in your codebase.
 
@@ -60,7 +60,7 @@ With Input Sets and Overlays, you can use the same pipeline for multiple scenari
 
 A CI stage is a subset of a pipeline that contains one major segment of the CI workflow. All stages have stage settings and one or more steps.
 
-To [add a stage to a pipeline](/docs/platform/pipelines/add-a-stage/), select **Add Stage** in the Pipeline Studio. The most essential stage for CI pipelines is the **Build** stage. A **Build** stage often includes [steps](#steps) for building, pushing, and testing code, among other steps.
+To [add a stage to a pipeline](/docs/platform/pipelines/add-a-stage/), select **Add Stage** in the Pipeline Studio. The most essential stage for CI pipelines is the **Build** stage, which includes [steps](#steps) that test code, build and push images, and upload artifacts, among other steps.
 
 [CI Build stage settings](./set-up-build-infrastructure/ci-stage-settings.md) include [codebase configuration](#codebases), [build infrastructure](#build-infrastructure), [shared paths](#shared-paths), and other [advanced settings](#advanced-stage-and-step-settings).
 
@@ -83,7 +83,7 @@ All stages have an infrastructure definition, which represents the build infrast
 :::tip Tutorials
 
 * [Harness Cloud build infrastructure tutorial](/tutorials/ci-pipelines/fastest-ci)
-* [Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+* [Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 :::
 
@@ -107,7 +107,6 @@ A stage contains one or more steps. Each step is a series of commands that perfo
 * [Share and cache CI data](/docs/category/share-and-cache-ci-data)
 * [Run scripts](/docs/category/run-scripts)
 * [Use plugins](/docs/category/use-plugins)
-* [View builds](/docs/category/view-builds)
 * [Security step (Harness STO)](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference)
 
 ## Advanced stage and step settings

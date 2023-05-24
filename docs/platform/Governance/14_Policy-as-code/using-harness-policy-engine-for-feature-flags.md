@@ -1,7 +1,7 @@
 ---
 title: Use Harness Policy As Code for Feature Flags
 description: This topic gives steps to create, update, and view policies and policy sets for Feature Flags.
-# sidebar_position: 2
+sidebar_position: 7
 helpdocs_topic_id: vb6ilyz194
 helpdocs_category_id: zoc8fpiifm
 helpdocs_is_private: false
@@ -19,7 +19,7 @@ This topic describes how to create policies using the Harness Policy As Code and
 ### Before you begin
 
 * Ensure you have read and understood [Harness Policy As Code Overview](/docs/feature-flags/harness-policy-engine).
-* Ensure you have [created your project and environment](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag) in the Harness platform.
+* Ensure you have [created your project and environment](/docs/feature-flags/ff-creating-flag/create-a-feature-flag) in the Harness platform.
 * Policies use OPA authoring language Rego. New to Rego? Use the following resources to learn it:
 	+ Free online course on Rego from Styra founder and OPA co-creator Tim Hendricks: [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
 	+ See [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) from OPA. The [Rego Cheat Sheet](https://dboles-opa-docs.netlify.app/docs/v0.10.7/rego-cheatsheet/) is also helpful to have on hand.

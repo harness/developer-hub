@@ -1,1 +1,14 @@
-{"label": "Cloud Platform Connectors", "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "Cloud Platform Connectors"}, "customProps": {"position": "To position the category, enter a number and move this to the root level.", "helpdocs_category_id": "1ehb4tcksy"}}
+{
+  "label": "Cloud platform connectors reference",
+  "collapsible": "true",
+  "collapsed": "true",
+  "className": "red",
+  "link": {
+    "type": "generated-index",
+    "title": "Cloud platform connectors reference"
+  },
+  "customProps": {
+    "position": "To position the category, enter a number and move this to the root level.",
+    "helpdocs_category_id": "1ehb4tcksy"
+  }
+}

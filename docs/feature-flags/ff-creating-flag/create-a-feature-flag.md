@@ -22,7 +22,7 @@ You can use the same flags across multiple environments within a single project,
 
 ## Before you begin
 
-Before you create a Feature Flag, you must have [completed the prerequisites](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project), that is:
+Before you create a Feature Flag, you must have [completed the prerequisites](/docs/feature-flags/ff-creating-flag/create-a-project), that is:
 
 1. Created a project
 2. Created an environment
@@ -36,11 +36,11 @@ There are two different types of Feature Flags you can create:
 
 * **Boolean**: Has only two variations; true and false.
 
-    ![Diagram showing the on and off variation of a boolean feature flag.](./static/4-create-a-feature-flag-05.png)*Figure 1: Variations of a boolean flag*
+    ![Diagram showing the on and off variation of a boolean feature flag.](./static/4-create-a-feature-flag-05.png)
 
 * **Multivariate**: Has multiple variations, you can add as many custom variations as you like.
 
-    ![Diagram showing three variations (a 30 variation, 60 variation, and 90 variation) of a multivariate Feature Flag.](./static/4-create-a-feature-flag-06.png)*Figure 2: Variations of a multivariate flag*
+    ![Diagram showing three variations (a 30 variation, 60 variation, and 90 variation) of a multivariate Feature Flag.](./static/4-create-a-feature-flag-06.png)
 
 ## Create a boolean flag
 
@@ -61,17 +61,15 @@ There are two different types of Feature Flags you can create:
     <img src={var_settings} alt="A screenshot of the Variation Settings form when creating a Feature Flag." height="500" width="700" />
     ```
 
-    *Figure 3: Variation settings*
-
 9. Click **Save and Close**. The Feature Flag is created and is set to **OFF** by default.
 
-    ![A screenshot of the Feature Flags page with the new flag added.](./static/4-create-a-feature-flag-08.png)*Figure 4: A boolean flag*
+    ![A screenshot of the Feature Flags page with the new flag added.](./static/4-create-a-feature-flag-08.png)
 
 After you have created your Boolean flag, you can:
 
 * [Manage the variations of the Feature Flag](/docs/feature-flags/ff-creating-flag/manage-variations)
 * [Add flag prerequisites](/docs/feature-flags/add-prerequisites-to-feature-flag)
-* [Target users with flags](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags)
+* [Target users with flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags)
 
 ## Create a multivariate flag
 
@@ -103,11 +101,9 @@ To create a multivariate flag:
     <img src={multivar_settings} alt="A screenshot of the Variation Settings form when creating a Feature Flag." height="500" width="700" />
     ```
 
-    *Figure 5: Variation settings of a multivariate flag*
-
 After you have created your multivariate flag, you can then:
 
 * [Change the Variations of the Feature Flag](/docs/feature-flags/ff-creating-flag/manage-variations)
 * [Add Flag Prerequisites](/docs/feature-flags/add-prerequisites-to-feature-flag)
-* [Target Users with Flags](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags)
+* [Target Users with Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags)
 

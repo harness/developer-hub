@@ -1,7 +1,7 @@
 ---
 title: Services and environments basics
 description: Learn the basics of CD services and environments.
-sidebar_position: 3
+sidebar_position: 4
 helpdocs_topic_id: 9ryi1ay01f
 helpdocs_category_id: dxej4ug0n5
 helpdocs_is_private: false
@@ -572,6 +572,18 @@ An environment can have multiple **Infrastructure Definitions**. 
 When you select an environment in a stage, you can select the **Infrastructure Definition** to use for that stage.
 
 ![](./static/services-and-environments-overview-14.png)
+
+#### Infrastructure Tags
+
+Tags can be attached to infrastructure definitions representing their characteristics. These tags can be key value pairs. 
+
+![](./static/services-and-environments-overview-28.png)
+
+When you select the **Infrastructure Definition** for a stage, the attached tags can be accessed using their keys with the expression, ```<+infra.tags.tag_key>```. This expression is available for use throughout the stage. 
+
+For example, skipping certain steps in pipeline based on the tags attached to the infrastructure. 
+
+![](./static/services-and-environments-overview-29.png)
 
 ## Values YAML overrides and merges
 

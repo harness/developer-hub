@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-04-10T10:00
+date: 2023-05-23T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -15,23 +15,38 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - April 10, 2023, version 79015
+## Latest - May 23, 2023, version 79306
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-### What's new
+- Continuous Error Tracking (CET) is a separate module in Harness now and no longer available as a health source in SRM. To learn more about CET, go to the [Continuous Error Tracking Documentation](https://developer.harness.io/docs/continuous-error-tracking). (SRM-14701)
 
-Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
+- Clicking on a Prometheus metrics entry in the Service Health page of a monitored service directly navigates you to the Prometheus metrics dashboard. (SRM-14699)
+
+- In the event of an SLO encountering an error, it is now displayed in the respective Simple and Composite SLOs. Additionally, when the underlying issue causing data collection failures is resolved, the missed data that couldn't be collected during the error period will be restored. However, there is a time limit for data restoration, which is set at 24 hours. For example, if the issue is resolved within 48 hours, only the last 24 hours of data is restored. (SRM-14672)
+
+- Verify step in CV has a new icon. (OIP-3)
+
+- You can now configure your monitored service to trigger notifications whenever there are updates or changes related to chaos experiments or feature flags. (SRM-14553)
+
+- New errors are introduced to provide a comprehensive insight into SLO's performance (SRM-14549).  
+  
+  Now, errors are displayed in the following scenarios:
+  
+  - Ongoing Problem: Errors are displayed when an SLO experiences an ongoing problem, such as an issue with the health of a connector.
+  - 
+  - Missing Data: Errors are shown when there is missing data in an SLO, even if there is no current error. This helps identify any gaps in historical SLO records.
+  - 
+  - Contributing SLO Issues: Errors in contributing SLOs are now reflected in the composite SLO, ensuring a complete picture of performance when individual components encounter problems.
+
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-
-### Early access
 
 This release does not include any early access features.
 
@@ -40,15 +55,29 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-### Fixed issues
-
-- When switched to a different project while a template was open, the health sources from the previous template would remain visible in the template, even though they were not part of the new project. (SRM-12236)  
+- Error budget burn rate notifications are not being sent for Request Based SLO. (SRM-14705).  
   
-  This issue has been resolved. Now, when you switch to a different project while a template is open, you will be redirected to the templates listing page.
+    This issue has been resolved, and error budget burn rate notifications are now being sent for Request Based SLO also.
 
-- The SLO health summary cards displayed in a monitored service's health dashboard show summarized data for SLOs associated with all the monitored services in the project, even if the SLOs are not connected to the selected monitored service. (SRM-14462)  
+- Error budget burn rate notifications are not being sent for composite SLOs. (SRM-14658)  
 
-  This issue has been resolved. Now, the SLO health summary cards displayed in a monitored service's health dashboard will show summarized data only for the SLOs associated with the selected monitored service.
+    This issue has been resolved, and error budget burn rate notifications are now being sent for composite SLOs.
+
+- Encountering an error when configuring monitored services using the Harness Terraform provider. (SRM-14684)  
+  
+  The Harness Terraform provider was sending the Terraform resource incorrectly, resulting in the error. This issue has been resolved.
+
+- On the Composite SLO Details page, the environment links under the monitored services were broken. (SRM-14645)  
+  
+  This issue has been resolved. Now, clicking on the environment link correctly displays the SLOs page for the respective monitored service.
+
+- The last updated date and time of monitored services and SLOs are changing automatically even when no configuration changes were made. (SRM-14543)  
+
+  - This issue has been resolved. Now, the last updated date and time will change only when modifications are made to the configuration of the monitored services and SLOs.
+
+- Missing data in SLOs was not considered in error budget burn rate notifications. (SRM-14682)  
+
+  - This issue has been resolved. Now the missing data is treated according to user preference (GOOD, BAD, or IGNORE), contributes to error budget burn rate, and is included in notifications.
 
 ```mdx-code-block
   </TabItem>
@@ -60,6 +89,65 @@ This release does not include any early access features.
 <details>
 <summary>2023 releases</summary>
 
+#### May 04, 2023, version 79214
+
+##### What's new
+
+- An icon appears on the SLO performance trend chart timeline to indicate when the error budget was reset and the amount of budget that was added. (SRM-14550)
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- The **Error Budget Burn Rate is above** SLO notification setting was not triggering notifications, even when the condition was met. (SRM-14613)  
+  
+  This issue has been resolved and notifications are being triggered when the **Error Budget Burn Rate is above** condition is met.
+
+#### April 22, 2023, version 79111
+
+##### What's new
+
+- Added new advanced fields for consecutive error budgets in SLO. These fields are optional. (SRM-14507)
+
+- Removed the mandatory check for the presence of Tier in the AppDynamics complete metric path. (SRM-14463)
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- The title in the expressions modal of health sources has been updated from Shell (Bash) to Query. (SRM-14478)
+
+- Monitored service cannot be deleted if it is created with an invalid connector. (SRM-14403)
+
+  To fix this issue, the UI connector component is now enabled when the provided connector is not found. 
+
+- For CloudWatch CV connector, IRSA was not supported for connectivity. (SRM-13907)
+
+  Support for IRSA connectivity was added.
+
+#### April 10, 2023, version 79015
+
+##### What's new
+
+Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- When switched to a different project while a template was open, the health sources from the previous template would remain visible in the template, even though they were not part of the new project. (SRM-12236)  
+  
+  This issue has been resolved. Now, when you switch to a different project while a template is open, you will be redirected to the templates listing page.
+
+- The SLO health summary cards displayed in a monitored service's health dashboard show summarized data for SLOs associated with all the monitored services in the project, even if the SLOs are not connected to the selected monitored service. (SRM-14462)  
+
+  This issue has been resolved. Now, the SLO health summary cards displayed in a monitored service's health dashboard will show summarized data only for the SLOs associated with the selected monitored service.
 
 #### March 31, 2023, version 78914
 
@@ -161,7 +249,7 @@ This release does not include any early access features.
   
   This issue is fixed and the long Prometheus metric links are now contained within the **METRIC NAME** column, preventing them from obstructing values in the adjacent column.
 
-- After saving and reopening a monitored service template, the **Save** button remained enabled even if no changes are made. (SRM-14107)  
+- After saving and reopening a monitored service template, the **Save** button remained enabled even if no changes are made. (SRM-14085)  
   
   This issue is fixed, and the **Save** button is now enabled only if changes are made to the monitored service template. Additionally, an unsaved changes alert now appears next to the **Save** button when changes are made to the template values.
 

@@ -41,10 +41,17 @@ export const featuredTutorials: CardItem[] = [
         "",
       list: [
         {
+          title: "CD tutorials",
+          module: MODULES.cd,
+          description:
+            "Learn how to set up CD pipelines to automate service deployments on your infrastructure.",
+          link: "/tutorials/cd-pipelines",
+        },
+        {
           title: "Get started",
           module: MODULES.cd,
           description:
-            "Learn the basics of Harness Continuous Delivery (CD)",
+            "Learn the basics of Harness Continuous Delivery (CD).",
           link: "/docs/category/get-started",
           // @Roshni: sample code for the sub categories -->
           /*children: [
@@ -132,6 +139,20 @@ export const featuredTutorials: CardItem[] = [
           ]*/
         },
         {
+          title: "Supported CD features and integrations",
+          module: MODULES.cd,
+          description:
+            "See the list of tools and platforms you can use in Harness for deploying your applications.",
+          link: "/docs/continuous-delivery/integrations/cd-integrations",
+        },
+      ],
+    },
+    {
+      name: "Key features",
+      description:
+        "",
+      list: [ 
+        {
           title: "Common CD features across platforms",
           module: MODULES.cd,
           description:
@@ -183,13 +204,6 @@ export const featuredTutorials: CardItem[] = [
             },
           ]*/
         },
-      ],
-    },
-    {
-      name: "Key features",
-      description:
-        "",
-      list: [ 
         {
           title: "Deploy services on different platforms",
           module: MODULES.cd,
@@ -402,7 +416,7 @@ export const featuredTutorials: CardItem[] = [
           ]*/  
         },
         {
-          title: "GitOps",
+          title: "Deploy services using GitOps",
           module: MODULES.cd,
           description:
             "Perform GitOps deployments in Harness.",
@@ -467,7 +481,7 @@ export const featuredTutorials: CardItem[] = [
           ]*/
         },
         {
-          title: "Continuous Verification (CV)",
+          title: "Verify deployments",
           module: MODULES.cd,
           description:
             "Use Harness Continuous Verification (CV) to verify your deployments.",
@@ -568,14 +582,14 @@ export const featuredTutorials: CardItem[] = [
       list: [
         {
           title: "Troubleshoot CD",
-          module: "MODULES.cd",
+          module: MODULES.cd,
           description:
             "",
           link: "/docs/troubleshooting/troubleshooting-nextgen#continuous-delivery",
         },
         {
           title: "CD FAQs",
-          module: "ci",
+          module: MODULES.cd,
           description:
             "",
           link: "/docs/frequently-asked-questions/harness-faqs/continuous-delivery-faqs",

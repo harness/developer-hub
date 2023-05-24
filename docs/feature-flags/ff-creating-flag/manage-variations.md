@@ -38,7 +38,6 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
    ```mdx-code-block
    <img src={edit_vars} alt="The Edit Variations icon." height="500" width="300" />
    ``` 
-   *Figure 1: The edit Variations icon*
 
 3. In **Edit Variations**, you can add or delete a Variation and also edit the following:
 * **Name**: The name of the Variation, for example `Enabled`. The identifier is not changed if you change the name.
@@ -50,19 +49,18 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
    <img src={edit_var_form} alt="A screenshot of the Edit Variations page." height="500" width="400" />
    ``` 
 
-   *Figure 2: The Edit Variations form*
-
 ## Edit the Variations served for your current Environment
 
 1. Go to the Feature Flag you want to edit the Variations for.
 2. In the **Targeting** tab, under **When the Default Flag is Enabled** and **When the Default Flag is Disabled**, select the Variations you want to set as the default.
 
-```mdx-code-block
-<img src={manage_vars} alt="A screenshot of the Targeting tab of a Flag, which highlights where you can change which Flag Variation is served." height="500" width="400" />
-``` 
-*Figure 3: Variations when the Flag is enabled and disabled*
-:::info note
- For information about Specific Targeting, go to [Targeting Users with Flags](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags)
-:::
+   ```mdx-code-block
+   <img src={manage_vars} alt="A screenshot of the Targeting tab of a Flag, which highlights where you can change which Flag Variation is served." height="500" width="400" />
+   ``` 
+
+   :::info note
+    For information about Specific Targeting, go to [Targeting Users with Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags)
+   :::
+   
 3. Click **Save** to save your changes.
 

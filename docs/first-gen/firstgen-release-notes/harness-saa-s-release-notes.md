@@ -16,9 +16,82 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-## Latest - April 21, 2023, version 79111
+### May 23, 2023, version 79306
 
-#### Continuous Delivery
+#### What's new
+
+- The following libraries have been upgraded. (PL-31421, ZD-40165,42531)
+	- org.springframework:spring-aop from 5.3.26 to 5.3.27
+	- org.springframework:spring-beans from 5.3.26 to 5.3.27
+	- org.springframework:spring-context from 5.3.26 to 5.3.27
+	- org.springframework:spring-core from 5.3.26 to 5.3.27
+	- org.springframework:spring-expression from 5.3.26 to 5.3.27
+	- org.springframework:spring-jcl from 5.3.26 to 5.3.27
+	- org.springframework:spring-messaging from 5.3.26 to 5.3.27
+	- org.springframework:spring-test from 5.3.26 to 5.3.27
+	- org.springframework:spring-tx from 5.3.26 to 5.3.27
+	- org.springframework:spring-web from 5.3.26 to 5.3.27
+
+#### Early access
+
+This release does not include early access features. 
+
+#### Fixed issues
+
+- The ASG Rollback auto-scaling step failed with an exception. (CDS-68533, ZD-43354)
+  
+  Fixed this issue by adding a back-off strategy support for ASG deployments.
+- Fixed an issue where perpetual tasks corresponding to a non-existing service was still running. (CDS-58137)
+- The feature flag, `CG_GIT_POLLING` was creating too many queries in yamlGitConfig. (CDS-45085)
+  
+  This issue is fixed. Git polling for Git sync now works via a different internal method where Harness polls for a feature flag change once every 30 minutes, and then continue polling on accounts for which feature flags are enabled.
+
+- Executions were failing with `Canary failed: [Canary Deployment failed - NoSuchMethodError: org.yaml.snakeyaml.constructor.SafeConstructor: method 'void <init>()' not found ]` error message. (CDS-68293, ZD-43753, ZD-43769)
+  
+  The Fabric8 library used by Harness is upgraded from version 5.x to 6.x. Harness was explicitly using snake.yaml version 2.x due to vulnerabilities present in the 1.x version.
+  
+  Harness' usages of Fabric8 library were throwing the above mentioned because Fabric8 library version 5.12.1 uses the old snake.yaml library version 1.x.
+
+  Customers who were using the following were affected:
+    - FirstGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - FirstGen Traffic Split step.
+    - FirstGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+    - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+
+  This issue is fixed in the Harness Delegate version 79306. This change does not create any behavioral changes. 
+- Null pointer exception occurs when generating audit events for user groups with null values. (PL-32144)
+- No members appear in user group list even after the user has been added via SCIM. (PL-32482)
+
+### May 04, 2023, version 79214
+
+#### What's new
+
+This release does not include new features. 
+
+#### Early access
+
+This release does not include early access features. 
+
+#### Fixed issues
+
+- Resolved a null pointer exception when the Canary Deployment step is initialized with the Helm manifest type. (CDS-59214)
+- Users cannot use Harness secret as LDAP password in FirstGen. (PL-32597, ZD-42655)
+  A code enhancement fixed the issue.
+
+  The user group list now displays the number of users in the group. Select this number to see the user details. This is behind the feature flag `PL_CG_SHOW_MEMBER_ID_COUNT`.
+
+### April 22, 2023, version 79111
+
+#### What's new
+
+- Switching accounts now loads accounts on scroll. This increases the modal load time when there are more accounts to load. (PL-30467)
+
+#### Early access
+
+This release does not include early access features. 
+
+#### Fixed issues
 
 - Canary Delete step during rollback deleting the primary deployment. (CDS-58661, ZD-42392)
   
@@ -151,6 +224,9 @@ This release does not include any early access features.
   Harness was not handling the proxy use case.
   
   Now Harness handles the use case by adding the username and password to the HTTP client.
+- Unable to fetch the correct Google Cloud Storage (GCS) artifacts when manually triggering the pipeline though the correct artifacts were being listed in the **Manually Select An Artifact** dialog's **Artifact** field list. (CDS-53074, ZD-39446)
+  
+  This issue is fixed.
 
 ### February 23, 2023, version 78507
 
@@ -903,8 +979,6 @@ The discovery process for immutable Delegates is limited to checking the followi
 
 #### Fixed issues
 
-* Python Script failed when using Local validation (PL-26534, ZD-32450, ZD-32477, ZD-32501)
-	+ The Python scripts provided for GraphQL APIs at https://github.com/gabrielcerioni/harness\_graphql\_labs started failing with the error "TypeError: Type SecretManagerConfig must define one or more fields". This happened because of a schema issue in the secret managers graphql API. The graphql APIs failed for the customer who has enabled the schema validation. This issue has been resolved. The graphql APIs are now running successfully.
 * Not able to re-login after logging out (PL-26444, ZD-32400, ZD-32402, ZD-32404)
 	+ As a part of security fixes some SAML library were upgraded which caused SAML to break. We reverted back to original version and then added exclusion for velocity jar to fix the issue.
 * Long running Harness Manager task lost during Harness upgrade (DEL-4479, ZD-32463)
@@ -1369,7 +1443,7 @@ We're pleased to present Harness SaaS Release 74200.
 The following new features are added to the Harness SaaS components:
 
 * Custom selector API for Delegate NG Token management is available now. (DEL-3558, ZD-21717, ZD-27515)
-	+ See [Delegate Token NG Source](https://harness.io/docs/api/tag/Delegate-Token-Ng-Resource/).
+
 * Harness can now send key Workflow and Pipeline deployment events to a URL endpoint as a JSON payload. This helps in analyzing how Workflows and Pipelines are performing, using other tools that consume and build dashboards for the events. This feature is now public and not behind the Feature Flag`FF APP_TELEMETRY`. (CDS-35193)
 	+ See [Publish Workflow Events](../continuous-delivery/concepts-cd/deployments-overview/publish-workflow-events-to-an-http-endpoint.md).
 	+ See [Publish Pipeline Events](../continuous-delivery/concepts-cd/deployments-overview/publish-pipeline-events-to-an-http-endpoint.md).

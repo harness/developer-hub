@@ -299,4 +299,11 @@ You can see the artifact source template in the `artifacts` section:
 </Tabs2>
 ```
 
+## Reconcile artifact source template changes in a service
+
+When changes are made to an artifact source template the service using the template is not automatically updated in the Harness Manager.
+
+You can reconcile these changes by using the **Reconcile** option in the service (next to **Save**).
+
+Once the reconcile action is initiated, the changes are available in the service.
 

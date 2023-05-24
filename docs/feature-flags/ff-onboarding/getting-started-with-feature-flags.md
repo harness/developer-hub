@@ -24,13 +24,13 @@ To create a Flag, you need to complete the following steps:
 
 You can also follow the Get Started tutorial for Feature Flags on the Harness Platform.
 
-![A screenshot of the Harness Platform that highlights the Get Started button on the left navigation.](./static/2-getting-started-with-feature-flags-01.png)*Figure 1: The Get Started tutorial for Feature Flags*
+![A screenshot of the Harness Platform that highlights the Get Started button on the left navigation.](./static/2-getting-started-with-feature-flags-01.png)
 
 ## Next steps
 
 Once you have created your flag, you can then:
 
-* [Manage Targets](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags)
-* Modify [Variations](/docs/feature-flags/ff-creating-flag/manage-variations) and [Rules](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags)
+* [Manage Targets](/docs/feature-flags/ff-target-management/targeting-users-with-flags)
+* Modify [Variations](/docs/feature-flags/ff-creating-flag/manage-variations) and [Rules](/docs/feature-flags/ff-target-management/targeting-users-with-flags)
 * [Add Prerequisites](/docs/feature-flags/add-prerequisites-to-feature-flag)
 

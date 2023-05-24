@@ -1,5 +1,5 @@
 ---
-title: Create AutoStopping Rules for a Kubernetes Cluster
+title: Kubernetes cluster
 description: This topic describes how to create an AutoStopping Rules for a Kubernetes cluster.
 # sidebar_position: 5
 helpdocs_topic_id: 1r80jdz2f9
@@ -8,9 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# Create AutoStopping Rules for a Kubernetes Cluster
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. 
 
-## Before You Begin
+## Before you begin
 
 * [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md)
 * [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md)
@@ -32,7 +33,7 @@ The following section lists the support for Kubernetes clusters for AutoStopping
 	+ Ensure that you have access to (Cost Usage Report) CUR. See [Review: Cost and Usage Reports (CUR) and CCM Requirements](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#cost-and-usage-reports-cur-and-ccm-requirements)
 	+ Permissions to create a cross-account role. See [AWS Access Permissions](../../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#aws-access-permissions)
 
-## Step 1: Add a Cloud Provider
+## Add a cloud provider
 
 Perform the following steps to link your Kubernetes cluster to Harness for creating AutoStopping Rules:
 
@@ -53,11 +54,11 @@ You can select any of the following cloud account types:
   
 For the detailed steps, see the [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md).
 
-## Step 2: Add a New AutoStopping Rule
+## Add a new AutoStopping rule
 
 Perform the following steps to add a new AWS AutoStopping rule for Kubernetes clusters:
 
-### Step 1: Define an AutoStopping Rule
+### Define an AutoStopping rule
 
 Perform the following steps to get started with AutoStopping Rule.
 
@@ -72,7 +73,7 @@ For the detailed steps, see [Create a Kubernetes Connector for AutoStopping Rule
 4. In **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
 5. In **Idle time**, enter the idle time in minutes. This is the time that the AutoStopping rule will wait before stopping the idle instances.
 
-### Step 2: Select the Resources to be Managed by the AutoStopping Rule
+### Select the Resources to be Managed by the AutoStopping Rule
 
 Select the Kubernetes workload that you want to manage using this rule. AutoStopping Rule will monitor the selected resources and stop them when they are idle beyond the configured idle time.
 
@@ -80,11 +81,11 @@ Select the Kubernetes workload that you want to manage using this rule. AutoStop
 2. Select the Kubernetes cluster that you want to manage using the AutoStopping rules. If you wish to create a new connector for the Kubernetes cluster, see [Create a Kubernetes Connector for AutoStopping Rules](../1-add-connectors/k8s-connector-autostopping.md).
 3. Once you have finished selecting the Kubernetes cluster, click **Add selected**.
 
-### (Optional) Step 3: Set Up Advanced Configuration
+## (Optional) Set up Advanced Configuration
 
 In this step, you can configure the following settings:
 
-#### Hide Progress Page
+### Hide progress page
 
 Toggle the button to disable the display of progress page during instances' warming up process. This option is especially useful when the service is invoked by an automation system, as it prevents misinterpretation of the progress page as the intended response from a service that is onboarded to AutoStopping. By hiding the progress page, the first response of warming up a rule after a downtime will be delayed until the intended service is up and running.
 
@@ -95,7 +96,7 @@ Toggle the button to disable the display of progress page during instances' warm
 
 Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to [Evaluate AutoStopping rules in dry-run mode](../4-create-auto-stopping-rules/autostopping-dry-run-mode.md).
 
-#### Add Dependency
+### Add Dependency
 
 Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. For example for an application server dependant on a database server, create two AutoStopping Rules managing both the servers. Add a dependency on the Rule managing the application server to be dependant on the Rule managing the database server.
 
@@ -104,13 +105,21 @@ Set dependencies between two or more AutoStopping Rules when you want one Rule t
 3. In **DELAY IN SECS**, enter the number of seconds that rule should wait after warming up the dependent rule. For example, you have Rule 1 dependent on Rule 2 and you have set 5 seconds delay. In that case, when the request is received to warm up Rule 1, then Rule 2 (dependent rule) is warmed up first, and then there will be a delay of 5 seconds before warming up Rule 1.
 4. Once you're done with all the configurations, click **Next**.
 
-##### Fixed Schedule
+### Fixed Schedule
 
 Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period.
 
 In certain scenarios, you would not want your resources to go down or up. For example, every Friday at 5 p.m. you want your `ABC` resource to go down. You can schedule downtime for your `ABC` resource. During this window, the resource will be forced to go down regardless of the defined rule. You can choose to specify uptime for your resources in the same way.
 
-The fixed schedule takes precedence over the defined AutoStopping Rule.To create a fixed schedule for your rule, do the following:
+:::note
+The fixed schedule takes precedence over the defined AutoStopping Rule.
+:::
+
+:::note
+Harness executes scheduled rules using [Dkron](https://dkron.io/), an open-source workload automation service.
+:::
+
+To create a fixed schedule for your rule, do the following:
 
 1. In **Fixed Schedules**, click **Add Fixed Schedule**.
    
@@ -139,7 +148,7 @@ The fixed schedule takes precedence over the defined AutoStopping Rule.To create
       ![](./static/create-autostopping-rules-for-kubernetes-86.png)
 8. Click **Apply**.
 
-## Step 3: Setup Access
+## Setup Access
 
 In this step, update the resource definition YAML of the Kubernetes AutoStopping Rule that will be applied to the cluster.
 

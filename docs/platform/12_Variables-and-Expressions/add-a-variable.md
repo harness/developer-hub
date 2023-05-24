@@ -1,5 +1,5 @@
 ---
-title: Add Account, Org, and Project-level Variables
+title: Add account, org, and project-level variables
 description: Describes steps to add Variables as Resources.
 # sidebar_position: 2
 helpdocs_topic_id: f3450ye0ul

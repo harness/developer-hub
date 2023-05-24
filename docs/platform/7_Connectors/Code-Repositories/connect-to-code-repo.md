@@ -1,5 +1,5 @@
 ---
-title: Connect to a Git Repo
+title: Connect to a Git repository
 description: An overview of Code Repo Connectors.
 sidebar_position: 2
 helpdocs_topic_id: zbhehjzsnv
@@ -22,9 +22,11 @@ Harness performs a `git clone` to fetch files. When fetching very large reposito
 
 Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
 
-To fetch very large repos, enable the feature flag `OPTIMIZED_GIT_FETCH_FILES`. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
+:::info
 
-Currently, this feature is behind the feature flag `OPTIMIZED_GIT_FETCH_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+If the `OPTIMIZED_GIT_FETCH_FILES` feature flag is enabled, and the GitHub organization has SAML enabled, the token must be SAML authorized to access the organization even if the repository is public. For more information, go to [GitHub authentication with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/about-authentication-with-saml-single-sign-on).
+
+:::
 
 ### Permissions
 
@@ -122,10 +124,6 @@ In **Secret Key**, use a [Harness Encrypted Text secret](../../Secrets/2-add-us
 :::note
 For more details on the settings to create this connector, see [Bitbucket Connector Settings Reference](../../7_Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference.md).
 
-:::
-
-
-:::note
 Harness supports both Cloud and Data Center (On-Prem) versions of Bitbucket.
 
 :::
@@ -148,7 +146,6 @@ For **HTTP**, the format for the URL should be `https://bitbucket.org/<userName>
 15. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
 ### Add GitLab Repo
-
 
 :::note
 For more details on the settings to create this connector, see [GitLab Connector Settings Reference](../../7_Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference.md).

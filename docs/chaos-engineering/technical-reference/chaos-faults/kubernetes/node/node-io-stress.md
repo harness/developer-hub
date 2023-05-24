@@ -2,31 +2,31 @@
 title: Node IO stress
 id: node-io-stress
 ---
+## Introduction
 
 Node IO stress causes I/O stress on the Kubernetes node. 
-- It tests application resiliency on replica evictions that occur due I/O stress on the available disk space.
-
 
 ![Node CPU Hog](./static/images/node-stress.png)
 
 
 ## Use cases
 - Node IO stress fault verifies the resilience of applications that share the disk resource for ephemeral or persistent storage during high disk I/O usage.
+- It tests application resilience on replica evictions that occur due to I/O stress on the available disk space.
 - It simulates slower disk operations by the application and noisy neighbour problems by hogging the disk bandwidth. 
 - It also verifies the disk performance on increasing I/O threads and varying I/O block sizes. 
 - It checks if the application functions under high disk latency conditions. when I/O traffic is very high and includes large I/O blocks, and when other services monopolize the I/O disks. 
 
-**Note**
+:::info note
 - Kubernetes > 1.16 is required to execute this fault.
 - The target nodes should be in the ready state before and after injecting chaos.
-
+:::
 
 ## Fault tunables
 
-   <h3>Mandatory fields</h3>
+   <h3>Mandatory tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -41,22 +41,22 @@ Node IO stress causes I/O stress on the Kubernetes node.
         <td>If both the environment variables are provided, <code>TARGET_NODES</code> takes precedence. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#target-nodes-with-labels">node label.</a></td>
       </tr>
     </table>
-    <h3>Optional fields</h3>
+    <h3>Optional tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Default to 120s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
+        <td> Default: 120 s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_PERCENTAGE </td>
         <td> Specify the size as a percentage of free space on the file system.</td>
-        <td> Default to 10%. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-io-stress/#filesystem-utilization-percentage">file system utilization percentage.</a> </td>
+        <td> Default: 10 %. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-io-stress/#filesystem-utilization-percentage">file system utilization percentage.</a> </td>
       </tr>
       <tr>
         <td> FILESYSTEM_UTILIZATION_BYTES </td>
@@ -66,46 +66,46 @@ Node IO stress causes I/O stress on the Kubernetes node.
       <tr>
         <td> CPU </td>
         <td> Number of cores of the CPU that will be used. </td>
-        <td> Defaults to 1. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-cpu-hog/#cpu_cores"> CPU cores.</a></td>
+        <td> Default: 1. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/vmware/vmware-cpu-hog/#cpu_cores"> CPU cores.</a></td>
       </tr>    
       <tr>
         <td> NUMBER_OF_WORKERS </td>
         <td> Number of I/O workers involved in I/O stress. </td>
-        <td> Defaults to 4. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-io-stress/#workers-for-stress"> workers for stress.</a></td>
+        <td> Default: 4. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-io-stress/#workers-for-stress"> workers for stress.</a></td>
       </tr> 
       <tr>
         <td> VM_WORKERS </td>
         <td> Number of VM workers involved in I/O stress. </td>
-        <td> Defaults to 1. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-io-stress/#workers-for-stress"> workers for stress.</a></td>
+        <td> Default: 1. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/node-io-stress/#workers-for-stress"> workers for stress.</a></td>
       </tr> 
       <tr>    
         <td> LIB_IMAGE </td>
         <td> Image used to run the stress command. </td>
-        <td> Defaults to <code>litmuschaos/go-runner:latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
+        <td> Default: <code>litmuschaos/go-runner:latest</code>. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#image-used-by-the-helper-pod">image used by the helper pod.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
+        <td> For example, 30 s. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time">ramp time.</a></td>
       </tr>
       <tr>
         <td> NODES_AFFECTED_PERC </td>
         <td> Percentage of the total nodes to target. It takes numeric values only. </td>
-        <td> Defaults to 0 (corresponds to 1 node). For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#node-affected-percentage">node affected percentage.</a></td>
+        <td> Default: 0 (corresponds to 1 node). For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/node/common-tunables-for-node-faults#node-affected-percentage">node affected percentage.</a></td>
       </tr> 
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple target pods.</td>
-        <td> Defaults to parallel. Supports serial sequence as well. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
+        <td> Default: parallel. Supports serial sequence as well. For more information, go to <a href = "https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
     </table>
 
 
 ### File system utilization percentage
 
-It specifies the amount of free space available on the node (in percentage). Tune it by using the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable. 
+Free space available on the node (in percentage). Tune it by using the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable. 
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/node-io-stress/filesystem-utilization-percentage.yaml yaml)
 ```yaml
@@ -134,9 +134,9 @@ spec:
 
 ### File system utilization bytes
 
-It specifies the amount of free space available on the node (in gigabytes). Tune it by using the `FILESYSTEM_UTILIZATION_BYTES` environment variable. It is mutually exclusive with the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable. When both the values are provided, `FILESYSTEM_UTILIZATION_PERCENTAGE` takes precedence.
+Free space available on the node (in gigabytes). Tune it by using the `FILESYSTEM_UTILIZATION_BYTES` environment variable. It is mutually exclusive with the `FILESYSTEM_UTILIZATION_PERCENTAGE` environment variable. When both the values are provided, `FILESYSTEM_UTILIZATION_PERCENTAGE` takes precedence.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/node-io-stress/filesystem-utilization-bytes.yaml yaml)
 ```yaml
@@ -165,9 +165,9 @@ spec:
 
 ### Limit CPU utilization
 
-It specifies the CPU usage limit while the CPU undergoes I/O stress. Tune it by using the `CPU` environment variable.
+CPU usage limit while the CPU undergoes I/O stress. Tune it by using the `CPU` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/node-io-stress/limit-cpu-utilization.yaml yaml)
 ```yaml
@@ -194,9 +194,9 @@ spec:
 
 ### Workers for stress
 
-It specifies the number of I/O and VM workers for the stress. Tune it by using the `NUMBER_OF_WORKERS` and `VM_WORKERS` environment variables, respectively. 
+Number of I/O and VM workers for the stress. Tune it by using the `NUMBER_OF_WORKERS` and `VM_WORKERS` environment variables, respectively. 
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/node-io-stress/workers.yaml yaml)
 ```yaml

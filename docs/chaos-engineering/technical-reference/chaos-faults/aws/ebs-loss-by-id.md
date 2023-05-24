@@ -2,49 +2,39 @@
 id: ebs-loss-by-id
 title: EBS loss by ID
 ---
-EBS loss by ID disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration.
-- In case of EBS persistent volumes, the volumes can self-attach and the re-attachment step can be skipped.
-- It tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
+## Introduction
+
+EBS (Elastic Block Store) loss by ID disrupts the state of EBS volume by detaching it from the node (or EC2) instance using volume ID for a certain duration. In case of EBS persistent volumes, the volumes can self-attach, and the re-attachment step can be skipped.
 
 ![EBS Loss By ID](./static/images/ebs-loss-by-id.png)
 
-## Usage
+## Use cases
+EBS loss by ID tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
 
-<details>
-<summary>View fault usage</summary>
-<div>
-It tests the deployment sanity (replica availability and uninterrupted service) and recovery workflows of the application pod.
-</div>
-</details>
+:::info note
+- Kubernetes version 1.17 or later is required to execute this fault.
+- Appropriate AWS access to attach or detach an EBS volume for the instance.
+- The EBS volume should be attached to the instance.
+- The Kubernetes secret should have AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXX
+  ```
+- We recommend that you use the same secret name, that is, `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes.
+- Refer to [AWS named profile for chaos](./security-configurations/aws-switch-profile) to use a different profile for AWS faults and [superset permission or policy](./security-configurations/policy-for-all-aws-faults) to execute all AWS faults.
+- Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::
 
-## Prerequisites
-
-- Kubernetes > 1.16.
-- Adequate AWS access to attach or detach an EBS volume for the instance. 
-- Create a Kubernetes secret that has the AWS access configuration(key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXX
-```
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes.
-
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -74,23 +64,13 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
-
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-
-## Default validations
-
-EBS volume is attached to the instance.
 
 ## Fault tunables
 
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+   <h3>Mandatory tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -105,47 +85,40 @@ EBS volume is attached to the instance.
         <td> For example, <code>us-east-1</code>. </td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h3>Optional tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30 s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between the attachment and detachment of the volumes (in seconds). </td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30 s. </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
         <td> Sequence of chaos execution for multiple volumes.</td>
-        <td> Defaults to parallel. Supports serial sequence as well. </td>
+        <td> Default: parallel. Supports serial sequence as well. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. </td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common and AWS-specific tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Detach volumes by ID
 
-It contains a comma-separated list of volume IDs that will be subject to EBS detach. You can tune it using the `EBS_VOLUME_ID` environment variable.
+Comma-separated list of volume IDs subject to EBS detach. Tune it by using the `EBS_VOLUME_ID` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/ebs-loss-by-id/ebs-volume-id.yaml yaml)
 ```yaml

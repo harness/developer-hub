@@ -103,7 +103,7 @@ To add a flag and link it to an issue from Jira:
 1. In the right pane, scroll down to the **Releases** field. 
 1. Select **Add feature flag**, and then select **Create feature flag**.
 
-    You are redirected to Harness, where you can [add a flag](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag) as normal.
+    You are redirected to Harness, where you can [add a flag](/docs/feature-flags/ff-creating-flag/create-a-feature-flag) as normal.
 
 
 ### Link a flag to an existing issue from Harness

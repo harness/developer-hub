@@ -1,146 +1,84 @@
 ---
 sidebar_position: 3
 title: Java application
-description: This build automation guide walks you through building and testing a Java HTTP server application in a CI Pipeline
+description: Use a CI pipeline to build and test a Java application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/java
 ---
 
-# Build, test, and publish a Docker Image for a Java HTTP server application
-
-In this tutorial, you will create a Harness CI pipeline for a Java HTTP server application that does the following:
-1. Build and test the application.
-2. Publish a Docker image.
-3. Pull the published Docker image, then pull and run it as a [Background step](/docs/continuous-integration/ci-technical-reference/background-step-settings).
-4. Run a connectivity test against the running application.
-
 ```mdx-code-block
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
-```
-
-<CISignupTip />
-
-## Create your pipeline
-
-```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-1. Fork the repository https://github.com/keen-software/jhttp into your GitHub account.
-2. Follow the **Get Started** wizard in Harness CI.
+You can build and test a Java application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
+
+This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
+
+* [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
+* [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
+* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+
+<CISignupTip />
+
+## Build and run tests
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="newaccount" label="New account" default>
-```
-[Sign up](https://app.harness.io/auth/#/signup/?module=ci&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ci-plg&utm_content=get-started) for a new Harness account. Select the **Continuous Integration** module after your initial sign in. This brings you to the **Get Started** wizard.
-```mdx-code-block
-</TabItem>
-<TabItem value="existingaccount" label="Existing account">
-```
-[Log in](https://app.harness.io/auth/#/signin) to your Harness account. You can either create a new project or select an existing project, and then select the **Continuous Integration** module. In the **Project** pane, expand the **Project Setup** menu, and then select **Get Started**.
-```mdx-code-block
-</TabItem>
-</Tabs>
+  <TabItem value="hosted" label="Harness cloud" default>
 ```
 
-3. When you are prompted to select a repository, search for **jhttp**, select the repository that you forked in the earlier step, and then select **Configure Pipeline**.
-4. Select **Starter Pipeline**, and then select **Create Pipeline**.
-
-### Docker Hub connector
-
-You need a [Docker Hub](https://hub.docker.com/) connector. This connector is used to authenticate and publish the Java HTTP server image to your Docker Hub account.
-
-If you have not created a Docker Hub connector yet, follow these steps.
-
-<details><summary>Create connector</summary>
-<p>
+You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
 
 ```mdx-code-block
-import DockerHubConnector from '/tutorials/shared/dockerhub-connector-includes.md';
+<Tabs>
+  <TabItem value="run" label="Run step" default>
 ```
 
-<DockerHubConnector />
-
-</p>
-</details>
-
-:::info
-
-Your connector needs an access token with **Read, Write, Delete** permissions.
-
-:::
-
-### Modify the pipeline
-
-From the left pane, select **Pipelines**, and then select your **jhttp** pipeline from the list.
-
-Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
-
-A starter pipeline is created with a single stage. It should look similar to this:
+This example uses two [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and test with Maven.
 
 ```yaml
-pipeline:
-  name: Build jhttp
-  identifier: Build_jhttp
-  orgIdentifier: default
-  // highlight-start
-  stages:
-    - stage:
-        name: Build
-        identifier: Build
-        type: CI
-        spec:
-          cloneCodebase: true
-          execution:
-            steps:
+              - step:
+                   type: Run
+                   name: build
+                   identifier: build
+                   spec:
+                     shell: Sh
+                     command: |
+                       mvn clean package dependency:copy-dependencies
               - step:
                   type: Run
-                  name: Echo Welcome Message
-                  identifier: Run
+                  name: run test
+                  identifier: run_test
                   spec:
                     shell: Sh
-                    command: echo "Welcome to Harness CI"
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-  // highlight-end
-  properties:
-    ci:
-      codebase:
-        connectorRef: account.Github_OAuth
-        repoName: your_user/jhttp
-        build: <+input>
+                    command: |-
+                      mvn test
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - target/surefire-reports/*.xml
 ```
 
-Replace the sample `stages` section with the following `variables` and `stages` sections:
+```mdx-code-block
+  </TabItem>
+  <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
+```
+
+You must use the [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings) for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) feature.
+
+Where Run steps use the `command` field for all commands, the Run Tests step uses `preCommand`, `args`, and `postCommand` to set up the environment before testing, pass arguments for the test tool, and run any post-test commands. For example, you could declare dependencies or install test tools in `preCommand`.
+
+The following example runs `mvn test` (declared in `args`), and then runs `mvn package -DskipTests` as a `postCommand`.
 
 ```yaml
-  variables:
-    - name: DOCKERHUB_USERNAME
-      type: String
-      description: Your Docker Hub username
-      value: <+input>
-  stages:
-    - stage:
-        name: Build
-        identifier: Build
-        type: CI
-        spec:
-          cloneCodebase: true
-          execution:
-            steps:
               - step:
                   type: RunTests
                   name: Run Tests
-                  identifier: RunTests
+                  identifier: Run_Tests
                   spec:
-                    connectorRef: Docker_Hub
-                    image: maven:3.5.2-jdk-8-alpine
                     language: Java
                     buildTool: Maven
                     args: test
@@ -151,30 +89,317 @@ Replace the sample `stages` section with the following `variables` and `stages` 
                       type: JUnit
                       spec:
                         paths:
-                          - "**/*.xml"
-                  timeout: 30m
+                          - "target/surefire-reports/*.xml"
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="selfhosted" label="Self-hosted">
+```
+
+You can use **Run** or **Run Tests** steps to [run tests in CI pipelines](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="run" label="Run step" default>
+```
+
+This example uses two [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and test with Maven.
+
+```yaml
+              - step:
+                   type: Run
+                   name: build
+                   identifier: build
+                   spec:
+                     connectorRef: account.harnessImage
+                     image: maven:3.8-jdk-11
+                     shell: Sh
+                     command: |
+                       mvn clean package dependency:copy-dependencies
+              - step:
+                  type: Run
+                  name: run test
+                  identifier: run_test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      mvn test
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - target/surefire-reports/*.xml
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
+```
+
+You must use the [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings) for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts) feature.
+
+Where Run steps use the `command` field for all commands, the Run Tests step uses `preCommand`, `args`, and `postCommand` to set up the environment before testing, pass arguments for the test tool, and run any post-test commands. For example, you could declare dependencies or install test tools in `preCommand`.
+
+The following example runs `mvn test` (declared in `args`), and then runs `mvn package -DskipTests` as a `postCommand`.
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: Run Tests
+                  identifier: Run_Tests
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: maven:3.8-jdk-11
+                    language: Java
+                    buildTool: Maven
+                    args: test
+                    packages: io.harness.
+                    runOnlySelectedTests: true
+                    postCommand: mvn package -DskipTests
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "target/surefire-reports/*.xml"
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+### Visualize test results
+
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
+
+```yaml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - target/surefire-reports/*.xml
+```
+
+## Install dependencies
+
+Use **Run** steps to install dependencies in the build environment. [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies. You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
+
+```yaml
+              - step:
+                   type: Run
+                   name: build
+                   identifier: build
+                   spec:
+                     connectorRef: account.harnessImage
+                     image: maven:3.8-jdk-11
+                     shell: Sh
+                     command: |-
+                       mvn clean package dependency:copy-dependencies
+                   - step:
+                       type: Run
+                       name: check dependencies
+                       identifier: check_dependencies
+                       spec:
+                         connectorRef: account.harnessImage
+                         image: maven:3.8-jdk-11
+                         shell: Sh
+                         command: |-
+                           mvn dependency-check:check -U -DskipTests
+                         reports:
+                           type: JUnit
+                           spec:
+                             paths:
+                               - /harness/target/*.xml
+```
+
+## Cache dependencies
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Harness Cloud" default>
+```
+
+With Harness Cloud build infrastructure, use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) to automate caching of Java dependencies. Add `caching.enabled.true` to your `stage.spec`.
+
+```yaml
+    - stage:
+        spec:
+          caching:
+            enabled: true
+```
+
+```mdx-code-block
+</TabItem>
+
+<TabItem value="Self-hosted">
+```
+
+With self-hosted build infrastructures, you can:
+
+* [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
+* [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
+
+<details>
+<summary>Maven cache key and path requirements</summary>
+
+If you're using Maven, you must reference `pom.xml` in the `key` value for your **Save Cache** and **Restore Cache** steps, for example:
+
+```yaml
+                  spec:
+                    key: cache-{{ checksum "pom.xml" }}
+```
+
+Additionally, you must include `/root/.m2` in the `sourcePaths` for your **Save Cache** step, for example:
+
+```yaml
+                  spec:
+                    sourcePaths:
+                      - /root/.m2
+```
+
+</details>
+
+Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
+
+```yaml
+            steps:
+              - step:
+                  type: RestoreCacheS3
+                  name: Restore Cache From S3
+                  identifier: Restore_Cache_From_S3
+                  spec:
+                    connectorRef: AWS_Connector
+                    region: us-east-1
+                    bucket: your-s3-bucket
+                    key: cache-{{ checksum "pom.xml" }}
+                    archiveFormat: Tar
+              - step:
+                  type: Run
+                  ...
               - step:
                   type: BuildAndPushDockerRegistry
-                  name: Build and Push an image to Docker Registry
-                  identifier: BuildandPushanimagetoDockerRegistry
+                  ...
+              - step:
+                  type: SaveCacheS3
+                  name: Save Cache to S3
+                  identifier: Save_Cache_to_S3
                   spec:
-                    connectorRef: Docker_Hub
-                    repo: <+pipeline.variables.DOCKERHUB_USERNAME>/jhttp
-                    tags:
-                      - <+pipeline.sequenceId>
-          platform:
-            os: Linux
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
+                    connectorRef: AWS_Connector
+                    region: us-east-1
+                    bucket: your-s3-bucket
+                    key: cache-{{ checksum "pom.xml" }}
+                    sourcePaths:
+                      - /root/.m2
+                    archiveFormat: Tar
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+## Specify version
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Harness Cloud">
+```
+
+Java is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+
+If your application requires a specific version of Java, you can use a **Run** or **Plugin** step to install it.
+
+This example uses the [GitHub Action plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) to run the `setup-java` action.
+
+```yaml
+              - step:
+                  type: Action
+                  name: setup java
+                  identifier: setup_java
+                  spec:
+                    uses: actions/setup-java@v3
+                    with:
+                      distribution: 'temurin'
+                      java-version: '16'
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Self-hosted">
+```
+
+You can use a **Run** or **Plugin** step to install Java versions that are not already installed on your host machine.
+
+This example uses the [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie) to run the GitHub Actions Drone plugin and run the `setup-java` action.
+
+```yaml
+              - step:
+                  identifier: setup_java
+                  name: setup java
+                  type: Plugin
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: plugins/github-actions
+                    privileged: true
+                    settings:
+                      uses: actions/setup-java@v3
+                      with:
+                        distribution: 'temurin'
+                        java-version: '17'
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+## Full pipeline examples
+
+Here's a YAML example of a pipeline that:
+
+1. Tests a Java code repo.
+2. Builds and pushes an image to Docker Hub.
+
+This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence), and [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts).
+
+If you copy this example, replace the bracketed values with corresponding values for your Harness project, connector IDs, account/user names, and repo names.
+
+<details>
+<summary>Pipeline YAML</summary>
+
+```yaml
+pipeline:
+  name: Build java
+  identifier: Build_java
+  projectIdentifier: [project-ID]
+  orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        connectorRef: [code-repo-connector]
+        repoName: [scm-account-name]/[repo-name]
+        build: <+input>
+  stages:
     - stage:
-        name: Run Connectivity Test
-        identifier: Run_Connectivity_Test
+        name: Build
+        identifier: Build
         description: ""
         type: CI
         spec:
-          cloneCodebase: false
+          caching:
+            enabled: true
+          cloneCodebase: true
           platform:
             os: Linux
             arch: Amd64
@@ -184,47 +409,39 @@ Replace the sample `stages` section with the following `variables` and `stages` 
           execution:
             steps:
               - step:
-                  type: Background
-                  name: Run Java HTTP Server
-                  identifier: Run_Java_HTTP_Server
+                  type: RunTests
+                  name: RunTests_1
+                  identifier: RunTests_1
                   spec:
-                    connectorRef: Docker_Hub
-                    image: <+pipeline.variables.DOCKERHUB_USERNAME>/jhttp:<+pipeline.sequenceId>
-                    shell: Sh
-                    portBindings:
-                      "8888": "8888"
+                    language: Java
+                    buildTool: Maven
+                    args: test
+                    packages: io.harness
+                    runOnlySelectedTests: true
+                    postCommand: mvn package -DskipTests
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "target/surefire-reports/*.xml"
               - step:
-                  type: Run
-                  name: Test Connection to Java HTTP Server
-                  identifier: Test_Connection_to_Java_HTTP_Server
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
                   spec:
-                    shell: Sh
-                    command: |-
-                      until curl --max-time 1 http://localhost:8888; do
-                        sleep 2;
-                      done
+                    connectorRef: [Docker-connector-ID]
+                    repo: [docker-username]/[repo-name]
+                    tags:
+                      - <+pipeline.sequenceId>
 ```
 
-:::info
+</details>
 
-This configuration requires the Docker Hub connector ID to be `Docker_Hub`. If your connector ID is different, replace `Docker_Hub` with the correct ID.
+## Next steps
 
-:::
+Now that you have created a pipeline that builds and tests a Java app, you could:
 
-Select **Save** in the YAML editor.
-
-## Run your pipeline
-
-1. In the **Pipeline Studio**, select **Run**.
-2. Enter your Docker Hub username in the `DOCKERHUB_USERNAME` field.
-2. In the **Build Type** field, select **Git Branch**, and then enter **main** in the **Branch Name** field.
-3. Select **Run Pipeline**.
-4. Observe each step of the pipeline execution. When the first stage completes, test results appear on the **Tests** tab.
-
-   When the second stage completes, you should see the successful `curl` command in the **Test Connection to Java HTTP Server** step.
-
-:::tip
-
-For a comprehensive guide on application testing, Harness provides O'Reilly's **Full Stack Testing** book for free at https://harness.io/resources/oreilly-full-stack-testing.
-
-:::
+* Create [triggers](/docs/category/triggers) to automatically run your pipeline.
+* Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
+* Add a step to [build and push an image to a Docker registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings/).
+* Explore other ways to [optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times).

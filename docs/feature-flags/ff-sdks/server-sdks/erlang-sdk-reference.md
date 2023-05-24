@@ -39,8 +39,8 @@ The current version of this SDK is **1.0.0**.
 
 To follow along with our test code sample, make sure you:
 
-* [Create a Feature Flag](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag) on the Harness Platform called `harnessappdemodarkmode`.
-* [Create a server SDK key](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project#create-an-sdk-key) and made a copy of it.
+* [Create a Feature Flag](/docs/feature-flags/ff-creating-flag/create-a-feature-flag) on the Harness Platform called `harnessappdemodarkmode`.
+* [Create a server SDK key](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key) and made a copy of it.
 
 ## Install the SDK
 
@@ -137,7 +137,7 @@ To initialize the Erlang SDK:
 Targets are used to control which users see which variation of a Feature Flag. For example, if you want to do internal testing, you can enable the flag for some users but not others. When creating a target, you give it a name and a unique identifier. Targets are often users, but you can create a target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
-For more information about targets, go to [Target Users With Flags](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags).
+For more information about targets, go to [Target Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
 To create a target, create a map and add the following keys:
 

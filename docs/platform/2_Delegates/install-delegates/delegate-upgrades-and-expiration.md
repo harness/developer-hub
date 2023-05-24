@@ -82,7 +82,7 @@ After the first hour, the delegate shows a status of **AUTO UPGRADE: ON** or **A
 
 If you disable automatic upgrades, then you have to manually upgrade the delegate regularly to prevent a loss of backward compatibility.
 
-**To disable auto-upgrade on an installed delegate image**
+To disable auto-upgrade on an installed delegate image, do the following:
 
 1. Run the following command to suspend auto-upgrade on the installed image:  
 `kubectl patch cronjobs <job-name> -p '{"spec" : {"suspend" : true }}' -n <namespace>`
@@ -151,7 +151,7 @@ Delegate expiration does not mean the delegate stops working. It means that you 
 
 ### Determine when your delegate expires
 
-To determine when your delegate expires, you can check the **INSTANCE STATUS** column.
+To determine when your delegate expires, do the following:
 
 1. Select an account, a project, or an organization, and then select **Delegates**.
 
@@ -161,8 +161,8 @@ To determine when your delegate expires, you can check the **INSTANCE STATUS** c
 
 Harness does not recommend the use of delegate images that are not current. However, if you require an earlier image version, check the repository on [Docker Hub](https://hub.docker.com/r/harness/delegate/tags).
 
-**To update the delegate YAML**
+To update the delegate YAML, do the following:
 
 - Select to **New Delegate** > **Kubernetes** > **Kubernetes Manfiest** > **Custom**, and then follow the instructions on the screen. 
 
-For an example of a complete Delegate YAML file, see [Example Kubernetes Manifest: Harness Delegate](/docs/platform/2_Delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate.md).
+For an example of a complete Delegate YAML file, go to [Example Kubernetes manifest for Harness Delegate](/docs/platform/2_Delegates/delegate-reference/YAML/example-kubernetes-manifest-harness-delegate.md).

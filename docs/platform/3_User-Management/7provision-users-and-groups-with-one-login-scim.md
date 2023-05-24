@@ -1,5 +1,5 @@
 ---
-title: Provision Users and Groups with OneLogin (SCIM)
+title: Provision users and groups with OneLogin (SCIM)
 description: Explains how to provision and manage Harness Users and User Groups using Okta's SCIM integration.
 # sidebar_position: 2
 helpdocs_topic_id: y402mpkrxq
@@ -116,12 +116,6 @@ Only **First name**, **Last name**, and **Email** are permitted for Harness 
 8. Click **Save**. The status in the **Applications** table is now **Pending**.
 9.  Click **Pending**. The **Create User in Application** settings appear.
 10. Click **Approve**. The Provisioning status will turn to Provisioned.
-
-
-:::note
-Enable the feature flag UPDATE_EMAILS_VIA_SCIM to reflect changes to the email address in the SCIM provider.
-
-:::
 
 If provisioning fails, you might see something like the following error:
 

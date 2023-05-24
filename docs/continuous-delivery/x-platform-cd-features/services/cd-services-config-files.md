@@ -1,14 +1,26 @@
 ---
 title: Use config files in your deployments
 description: Use plain text and encrypted files in your deployments
-sidebar_position: 6
+sidebar_position: 7
 ---
 
 You can use files added to the **Config Files** section in your Harness services in your manifests, such as in a ConfigMap. You can reference unencrypted and encrypted files, and they can be single or multiline.
 
 ## Supported platforms
 
-All platform [integrations](/docs/continuous-delivery/integrations/cd-integrations) (Kubernetes, etc) support config files stored in the Harness File Store. Eventually, Harness will support config files from Git platforms.
+### Harness file store
+
+All platform [integrations](/docs/continuous-delivery/integrations/cd-integrations) (Kubernetes, etc) support config files stored in the Harness File Store.
+
+### Git providers
+
+:::note
+
+Currently, Git provider support is behind the feature flag `CDS_GIT_CONFIG_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can use config files in any Git provider, including GitHub, GitLab, and Bitbucket. You connect to these providers using Harness connectors. Ensure that the connector credentials have read permissions on the target repository.
 
 ## Important notes
 
@@ -146,6 +158,12 @@ At runtime, the config file is decoded and used as plaintext.
 
 
 ## Using Harness variables in config files
+
+:::note
+
+Currently, this feature is behind the feature flag `CDS_NG_CONFIG_FILE_EXPRESSION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 Plain text config files support the following [Harness variables](/docs/platform/Variables-and-Expressions/harness-variables):
 

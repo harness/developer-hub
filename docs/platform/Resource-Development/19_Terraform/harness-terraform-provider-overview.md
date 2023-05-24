@@ -1,5 +1,5 @@
 ---
-title: Harness Terraform Provider Overview
+title: Harness Terraform Provider overview
 description: An overview of the Harness Terraform Provider
 sidebar_position: 1
 ---

@@ -20,7 +20,7 @@ This topic describes how to roll back your provisioned infrastructure and resour
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
+See [Build custom delegate images with third-party tools](https://developer.harness.io/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
 
 ```bash
@@ -73,6 +73,24 @@ In **Provisioner Identifier**, enter the same Provisioner Identifier you used in
 Click **Apply Changes**.
 
 The Terraform Rollback step is added to the **Rollback** steps.
+
+## Command line options
+
+:::note
+
+Currently, FEATURE_NAME is behind the feature flag `CDS_TERRAFORM_CLI_OPTIONS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+This setting allows you to set the Terraform CLI options for Terraform commands depending on the Terraform step type. For example: `-lock=false`, `-lock-timeout=0s`.
+
+
+![](./static/rollback-provisioned-infra-with-the-terraform-rollback-step-19.png)
+
+## Skip Terraform Refresh
+
+Terraform refresh command won't be running when this setting is selected.
+
 
 ## See Also
 

@@ -1,6 +1,6 @@
 ---
 title: Add an AWS connector
-description: Add a Harness AWS connector.
+description: Connect Harness to your AWS accounts and services.
 sidebar_position: 2
 helpdocs_topic_id: 98ezfwox9u
 helpdocs_category_id: o1zhrfo8n5
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Use a Harness AWS connector to integrate AWS with Harness. Use AWS with Harness to obtain artifacts, communicate with AWS services, provision infrastructure, and deploy microservices and other workloads. If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), you must use the platform-agnostic [Kubernetes Cluster connector](../..7_Connectors/../Cloud-providers/connect-to-a-cloud-provider.md).
+Use a Harness AWS connector to integrate AWS with Harness. Use AWS with Harness to obtain artifacts, communicate with AWS services, provision infrastructure, and deploy microservices and other workloads. If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the platform-agnostic [Kubernetes Cluster connector](../..7_Connectors/../Cloud-providers/connect-to-a-cloud-provider.md) or the [EKS cloud connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-eks).
 
 This topic explains how to set up an AWS connector.
 
@@ -88,7 +88,7 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
       ---
       ```
 
-    2. Add `serviceAccountName` to the `StatefulSet` spec. For example:
+    2. Add `serviceAccountName` to the Deployment spec. For example:
 
       ```
       ...
@@ -102,6 +102,8 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
                - containerPort: 8080
       ...
       ```
+      :::info note
+      For legacy delegate, add `serviceAccountName` to the Statefulset spec.
 
 6. Save the delegate YAML file.
 7. If you haven't already installed the delegate, [Install the Kubernetes delegate](../../../platform/2_Delegates/install-delegates/overview.md) in your EKS cluster and register the delegate with Harness. When you install the delegate in the cluster, the SA you added is used, and the environment variables `AWS_ROLE_ARN` and `AWS_WEB_IDENTITY_TOKEN_FILE` are added automatically by EKS.
@@ -111,6 +113,12 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
 6. To use cross-account ARN, select **Enable cross-account access (STS Role)**. This option is available for all authentication methods, but it may not be supported by all pipeline steps. For more information about cross-account access in AWS connectors, go to the [AWS connector settings reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 7. By default, Harness uses the `us-east-1` region to test the credentials for AWS connectors. If you want to use a different region or an AWS GovCloud account, select it in the **Test Region** field. For more information about AWS GovCloud support, go to the [AWS connector settings reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference.md).
 8. Select **Continue** to proceed to **Select Connectivity Mode**.
+   
+:::tip
+
+If you want to create an AWS Connector with a delegate using IAM Roles for Service Accounts (IRSA) on the EKS cluster with OIDC Provider, select **Use IRSA** in **Credentials**.
+
+:::
 
 ## Select connectivity mode
 

@@ -2,8 +2,8 @@ import {
   CardItem,
   CardSections,
   docType,
-} from "../../LandingPage/TutorialCard";
-import { MODULES } from "../../../constants"
+} from "@site/src/components/LandingPage/TutorialCard";
+import { MODULES } from "@site/src/constants"
 
 /* Define the cards - start */
 
@@ -15,7 +15,7 @@ import { MODULES } from "../../../constants"
         "",
       list: [
         {
-          title: "Introduction to Chaos engineering",
+          title: "Build resilient applications with chaos engineering",
           module: MODULES.ce,
           description:
             "Learn the basics of Harness Chaos Engineering.",
@@ -83,6 +83,20 @@ import { MODULES } from "../../../constants"
             "Execute kube-resilience chaos faults",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/kube-resilience/",
         },
+        {
+          title: "Security chaos faults",
+          module: MODULES.ce,
+          description:
+            "Execute security chaos faults",
+          link: "/docs/chaos-engineering/technical-reference/chaos-faults/security-chaos/",
+        },
+        {
+          title: "Linux chaos faults",
+          module: MODULES.ce,
+          description:
+            "Execute Linux chaos faults",
+          link: "/docs/chaos-engineering/technical-reference/chaos-faults/linux/",
+        },
 ];
 
 // Featured Tutorials
@@ -95,7 +109,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "10min",
-      link: "/tutorials/run-chaos-experiments/first-chaos-engineering",
+      link: "/tutorials/chaos-experiments/first-chaos-engineering",
     },
     {
       title: "Running chaos experiments in GitLab pipelines",
@@ -105,7 +119,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "15min",
-      link: "/tutorials/run-chaos-experiments/chaos-experiments-on-gitlab",
+      link: "/tutorials/chaos-experiments/chaos-experiments-on-gitlab",
     },
     {
       title: "Run your first chaos experiment on a Kubernetes cluster using API",
@@ -115,7 +129,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "10min",
-      link: "/tutorials/run-chaos-experiments/first-chaos-experiment-via-API",
+      link: "/tutorials/chaos-experiments/first-chaos-experiment-via-API",
     },
   ];
   /* Define the cards - end */

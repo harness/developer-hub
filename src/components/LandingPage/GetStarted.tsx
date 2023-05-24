@@ -7,7 +7,6 @@ import TutorialCard from "./TutorialCard";
 import { FeaturedList } from "./data/getStartedData";
 import "rc-tooltip/assets/bootstrap.css";
 import styles from "./styles.module.scss";
-// import moduleStyles from "./TutorialCard.module.scss";
 
 export default function GetStarted() {
   // const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();

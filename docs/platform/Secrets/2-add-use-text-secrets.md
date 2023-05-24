@@ -1,5 +1,5 @@
 ---
-title: Add and Reference Text Secrets
+title: Add and reference text secrets
 description: This topic shows how to create a text secret and reference it in Harness Application entities.
 # sidebar_position: 2
 helpdocs_topic_id: osfw70e59c
@@ -149,6 +149,10 @@ cat >/harness/secret_exporter/values.txt << 'EOF'
 MySecret:<+secrets.getValue("test")>  
 EOF
 ```
+
+### Review: Characters length limit in Secret Names
+A secret name cannot exceed 100 characters if you are using the Vault V2 engine.
+
 ### Sanitization
 
 Sanitization only looks for an exact match of what is stored. So, if you stored a base64 encoded value then only the base64 encoded value is sanitized.

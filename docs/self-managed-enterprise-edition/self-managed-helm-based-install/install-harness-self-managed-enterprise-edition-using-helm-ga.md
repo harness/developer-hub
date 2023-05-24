@@ -1,7 +1,7 @@
 ---
 title: Install using Helm
 description: Learn how to use Helm to install Harness Self-Managed Enterprise Edition. 
-# sidebar_position: 20
+# sidebar_position: 3
 helpdocs_topic_id: 6tblwmh830
 helpdocs_category_id: 66qbyn7ugu
 helpdocs_is_private: false
@@ -20,15 +20,15 @@ Harness Helm chart is available for demonstration and production environments.
 
 ## Update the override.yaml file
 
-Depending on your target environment, you'll need to update the override.yaml file to specify a load balancer or to specify the Harness modules to be deployed.
+Depending on your target environment, you'll need to update the `override.yaml` file to specify a load balancer or to specify the Harness modules to be deployed.
 
 ### Add a load balancer
 
 Use the following procedure to add a load balancer.
 
-**To add the URL for a load balancer**
+To add the URL for a load balancer, do the following:
 
-1. In the values.yaml file, set the `global.loadbalancerURL` field to the URL of your load balancer. This is the URL you use for Harness.
+1. In the `values.yaml` file, set the `global.loadbalancerURL` field to the URL of your load balancer. This is the URL you use for Harness.
 
    ```
    global:  
@@ -43,7 +43,7 @@ Use the following procedure to add a load balancer.
 
 ### Deploy Harness modules
 
-Harness Helm chart includes Harness Platform components. You can add modules by editing the override.yaml file.
+Harness Helm chart includes Harness Platform components. You can add modules by editing the `override.yaml` file.
 
 <!-- PR-1002 -->
 The Platform component and below module is enabled by default:
@@ -97,7 +97,7 @@ enabled: true
 
 ### Add a Harness license
 
-Harness Self-Managed Enterprise Edition needs a license to be provisioned for the Harness NextGen platform. Please contact Harness Support to procure the license and add it to the override.yaml file.
+Harness Self-Managed Enterprise Edition needs a license to be provisioned for the Harness NextGen platform. Please contact Harness Support to procure the license and add it to the `override.yaml` file.
 ```
   license:
     # -- Insert CG License String to enable CG license
@@ -108,9 +108,9 @@ Harness Self-Managed Enterprise Edition needs a license to be provisioned for th
 
 ## Install the Helm chart
 
-To use the charts, you must install Helm. To get started with Helm, see the [Helm documentation](https://helm.sh/docs/). After you install Helm, follow the instructions below.
+To use the charts, you must install Helm. To get started with Helm, go to the [Helm documentation](https://helm.sh/docs/). After you install Helm, follow the instructions below.
 
-**To install the Helm chart**
+To install the Helm chart, do the following:
 
 1. Add the repository.
 
@@ -124,7 +124,7 @@ To use the charts, you must install Helm. To get started with Helm, see the [Hel
    $ kubectl create namespace <namespace>
    ```
 
-3. Modify the override.yaml file with your environment settings.
+3. Modify the `override.yaml` file with your environment settings.
 
 4. Install the Helm chart.  
 
@@ -140,7 +140,7 @@ After the installation completes, the services that were installed are enumerate
 
 The services that appear depend on the modules that were installed.
 
-**To verify installation**
+To verify installation, do the following:
 
 1. Review the list of services.
 2. In your browser, type the following instruction: 

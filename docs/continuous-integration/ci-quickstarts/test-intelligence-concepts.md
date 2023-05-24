@@ -2,7 +2,7 @@
 title: Get started with Test Intelligence
 description: Reduce unit test time by running only relevant unit tests.
 
-sidebar_position: 40
+sidebar_position: 50
 helpdocs_topic_id: vtu9k1dsfa
 helpdocs_category_id: pjovrkldfq
 helpdocs_is_private: false
@@ -19,8 +19,9 @@ Test Intelligence is available for the following codebases:
 
 * Java
 * Kotlin
-* .NET Core: Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 * Scala
+* C# .NET Core, <!-- Framework, -->NUnit
+  * Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. <!-- * Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only. -->
 
 :::info
 
@@ -69,7 +70,7 @@ The Test Runner Agent runs on the build infrastructure. It's responsible for com
 
 ### Run Tests step
 
-While you can [use a script in a Run step](../use-ci/run-ci-scripts/run-a-script-in-a-ci-stage.md) to run tests in a CI pipeline, to enable Test Intelligence, you must use the [Run Tests step](../ci-technical-reference/configure-run-tests-step-settings.md). The **Run Tests** step is similar to the **Run** step, and it accepts additional test-specific information, such as the programming language of the source code being tested, build tools, and other parameters.
+While you can [use a script in a Run step](../use-ci/run-ci-scripts/run-a-script-in-a-ci-stage.md) to run tests in a CI pipeline, to enable Test Intelligence, you must use the [Run Tests step](../use-ci/set-up-test-intelligence/configure-run-tests-step-settings.md). The **Run Tests** step is similar to the **Run** step, and it accepts additional test-specific information, such as the programming language of the source code being tested, build tools, and other parameters.
 
 TI identifies the programming language and uses the **Run Tests** step to run the selected tests in the **Run Tests**  step container. The **Run Tests** step then parses test results and returns the results to the TI service.
 

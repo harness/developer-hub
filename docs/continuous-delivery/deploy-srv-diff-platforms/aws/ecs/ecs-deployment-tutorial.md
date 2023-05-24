@@ -1,7 +1,7 @@
 ---
 title: ECS deployments
 description: This topic walks you through deploying services to AWS ECS clusters using Harness.
-sidebar_position: 11
+sidebar_position: 1
 helpdocs_topic_id: vytf6s0kwc
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
@@ -139,8 +139,8 @@ The Harness Delegate is a software service you install in your environment. It c
 If you're new to Harness, read [Harness Platform architecture](/docs/getting-started/harness-platform-architecture) to learn about how Harness uses a Delegate to perform deployment tasks.
 
 1. Follow the steps here to install a Harness Delegate:
-	1. [Install a Docker Delegate](/docs/platform/Delegates/install-delegates/install-a-delegate#docker-environment).
-	2. [Install Harness Delegate on Kubernetes](/docs/platform/Delegates/install-delegates/install-a-delegate#kubernetes-environment).
+	1. [Install a Docker Delegate](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
+	2. [Install Harness Delegate on Kubernetes](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
 
 When you are done setting up the Delegate and it has registered with Harness, you'll see the Delegate's tags on the Delegates list page:
 
@@ -1123,17 +1123,17 @@ If you do select this option, Harness will poll the ECS task to see if it trigge
 
 ### Support for ECS Deployments with AWS Service Mesh Configuration
 
-Harness ECS Deployments supports deploying of ECS Services with AWS Service Discovery Configuration
+Harness ECS Deployments supports deploying of ECS services with AWS Service Discovery.
 
-AWS Service Discovery is a cloud service provided by Amazon Web Services (AWS) that makes it easy for microservices applications to discover and communicate with each other. It enables you to manage and discover the addresses of the services within your microservices application without the need for hard-coded IP addresses or hostnames.
+AWS Service Discovery is a cloud service provided by AWS that makes it easy for microservices applications to discover and communicate with each other. It enables you to manage and discover the addresses of the services within your microservices application without the need for hard-coded IP addresses or hostnames.
 
-It is possible to provide AWS Service Discovery as part of ECS Service Definiton and deploy using Harness.
+You can use AWS Service Discovery as part of the ECS service definition in Harness.
 
-Following are the steps required to configure a Service Discovery and deploy
+Here are the steps required to configure a Service Discovery and deploy:
 
-1. Create a Namespace in AWS Cloud Map.
-2. Create Service Discovery with above namespace,generate ARN.
-3. Provide the Service Discovery ARN in Service Definition.
+1. Create a namespace in AWS Cloud Map.
+2. Create a Service Discovery with the above namespace and generate the ARN.
+3. Provide the Service Discovery ARN in the service definition.
 
 ```
 launchType: FARGATE
@@ -1153,13 +1153,13 @@ deploymentConfiguration:
   ** - registryArn: arn:aws:servicediscovery:us-east-1:1234567890:service/srv-xeycgshb42ydmokf**
 ```
 
-With the above Service Registry ARN specified in ECS Service Definition ,deployed services are marked with Service Discovery capability
+With the above Service Registry ARN specified in the ECS service definition, deployed services are marked with Service Discovery.
 
 ### Support for circuit breaker configurations
 
 :::note
 
-Circuit breaker configuration can be applied to Harness ECS rolling and canary deployments only.
+Circuit breaker configuration can be applied to Harness ECS rolling and canary deployments only. **This feature is only available in Harness CD NextGen.**
 
 :::
 

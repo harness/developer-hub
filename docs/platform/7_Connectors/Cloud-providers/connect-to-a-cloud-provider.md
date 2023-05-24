@@ -1,5 +1,5 @@
 ---
-title: Connect to a Cloud Provider
+title: Connect to a cloud provider
 description: Steps explaining how to create a Cloud Provider connector.
 # sidebar_position: 2
 helpdocs_topic_id: s9j6cggx1p
@@ -8,46 +8,22 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Connect Harness to your AWS and GCP accounts or a platform-agnostic Kubernetes cluster by adding a Cloud Provider Connector.
+Harness cloud provider connectors integrate your cloud platforms with Harness. You set up connectors with the connection information and credentials you need to perform tasks in Harness, such as deploying services.
 
-Connectors contain the information necessary for Harness to integrate and work with 3rd party tools.
+See the following topics:
 
-Harness uses Connectors at Pipeline runtime to authenticate and perform operations with a 3rd party tool.
+- [Kubernetes cluster connector](add-a-kubernetes-cluster-connector.md) (platform agnostic)
+- [AWS connector](add-aws-connector.md)
+- [GCP connector](connect-to-google-cloud-platform-gcp.md)
+- [Azure connector](add-a-microsoft-azure-connector.md)
+- [Tanzu Application Services connector](add-tas-connector.md)
+- [Physical Data Center connector](pdc-connector.md)
 
-### Before you begin
+See also:
+- [Harness connectors API](https://apidocs.harness.io/tag/Connectors)
+- [Harness Terraform Provider connector resources](https://registry.terraform.io/providers/harness/harness/latest/docs)
 
-* [Learn Harness' Key Concepts](../../../getting-started/learn-harness-key-concepts.md)
+## Cloud provider connector scope
 
-### Add a Cloud Provider Connector
-
-You can add a Cloud Provider Connector at the Account, Org, or Project scope. This topic will explain how to add it at the Project scope. The process is same for Org and Account. You can add an AWS, GCP, or Kubernetes Cluster as Cloud Provider Connector.
-
-### Step: Add an AWS Connector
-
-For steps on setting up an AWS Connector, see [Add an AWS Connector](../Cloud-providers/add-aws-connector.md).
-
-For details on settings and permissions, see [AWS Connector Settings Reference](ref-cloud-providers/aws-connector-settings-reference.md).
-
-### Step: Add a GCP Connector
-
-For steps on setting up a GCP Connector, see [Add a Google Cloud Platform (GCP) Connector](../Cloud-providers/connect-to-google-cloud-platform-gcp.md).
-
-For details on settings and permissions, see [Google Cloud Platform (GCP) Connector Settings Reference](ref-cloud-providers/gcs-connector-settings-reference.md).
-
-### Step: Add a Kubernetes Cluster Connector
-
-For steps on setting up a Kubernetes Cluster Connector, see [Add a Kubernetes Cluster Connector](../Cloud-providers/add-a-kubernetes-cluster-connector.md).
-
-For details on settings and permissions, see [Kubernetes Cluster Connector Settings Reference](ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
-
-Here's a quick video that shows you how to add a Kubernetes Cluster Connector and install the Kubernetes Delegate in the target cluster at the same time:
-
-### Step: Add a Microsoft Azure Cloud Connector
-
-For steps on setting up a Microsoft Azure Cloud Connector, see [Add a Microsoft Azure Cloud Connector](../Cloud-providers/add-a-microsoft-azure-connector.md).
-
-### See also
-
-* [Install a Kubernetes Delegate](../../2_Delegates/install-delegates/overview.md)
-* [Select Delegates with Selectors](../../2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+You can add a cloud provider connector at the account, org, or project scope.
 
