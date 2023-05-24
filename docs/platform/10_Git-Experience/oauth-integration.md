@@ -69,7 +69,7 @@ To commit changes to Git using the configured OAuth token:
    
    :::
 
-4. Go to your branch in the Git repository. It now displays the author details besides the commit.
+4. Go to your branch in the Git repository. It now displays the author details beside the commit.
 
 
 
