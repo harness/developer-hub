@@ -42,7 +42,7 @@ This release does not incude early-access features.
 
 * Fixed a UI issue where **Security Tests** would briefly display the message "No issues were found" when the window initially loaded. (STO-5927)
 
-* Fixed an issue in non-Kubernetes builds and  builds that fail the step execution based on `fail_on_severity` flag. Now, STO can generate output variables on all supported platforms for all `fail_on_severity` values. (STO-5483)
+* Fixed an issue in non-Kubernetes builds and  builds that fail the step execution based on the `fail_on_severity` flag. Now, STO can generate output variables on all supported platforms for all `fail_on_severity` values. (STO-5483)
 
 ```mdx-code-block
   </TabItem>
