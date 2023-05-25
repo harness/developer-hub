@@ -29,7 +29,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   When you set the failure strategy to **Ignore Failure**, the failure of the steps or stages are ignored and marked as success instead of failed. 
 - Added support to provide quartz cron expressions for scheduled triggers. (CDS-59261, CDS-59260)
   
-  The Harness Delegate version 79306 is required for this feature. 
+  The Harness Delegate version 79307 is required for this feature. 
   
   For more information, go to [Schedule pipeline using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/).
 - Support for creating or updating a variable of type, secret in the Update Release Repo step is now removed. (CDS-58530)
@@ -50,7 +50,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - You can now use the expression, [`<+lastPublished.tag>`](https://developer.harness.io/docs/platform/triggers/trigger-on-a-new-artifact/#using-the-triggerartifactbuild-and-lastpublishedtag-expressions) if you want to deploy the last successfully published artifact version. (CDS-53512)
 - Added support for accessing connector attributes for Deployment Templates. (CDS-54247)
   
-  The Harness Delegate version 79306 is required for this feature.
+  The Harness Delegate version 79307 is required for this feature.
   
   The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions. 
   
@@ -72,7 +72,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   Previously, triggers used the round robin algorithm to select any available delegate within a project or account. Now, the delegate-based trigger polling selects the same delegate you used in the connectors for triggers. 
 
-  The Harness Delegate version 79306 is required for this feature.
+  The Harness Delegate version 79307 is required for this feature.
 
 ```mdx-code-block
   </TabItem>
@@ -137,7 +137,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   This issue is fixed by adding descriptive error messages for the ASG Blue Green deployment Rollback step.
 - Fixed an issue where the delegate select field is empty in the UI even if a delegate is present in the YAML. (CDS-58188)
-- Fixed an issue where the expressions of tags were not rendered properly. This issue is fixed in the Harness Delegate version 79306. (CDS-68703, ZD-43797)
+- Fixed an issue where the expressions of tags were not rendered properly. This issue is fixed in the Harness Delegate version 79307. (CDS-68703, ZD-43797)
 - Executions were failing with `Canary failed: [Canary Deployment failed - NoSuchMethodError: org.yaml.snakeyaml.constructor.SafeConstructor: method 'void <init>()' not found ]` error message. (CDS-68293, ZD-43753, ZD-43769)
   
   The Fabric8 library used by Harness is upgraded from version 5.x to 6.x. Harness was explicitly using snake.yaml version 2.x due to vulnerabilities present in the 1.x version.
@@ -151,20 +151,20 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
     - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
 
-  This issue is fixed in the Harness Delegate version 79306. This change does not create any behavioral changes. 
+  This issue is fixed in the Harness Delegate version 79307. This change does not create any behavioral changes. 
 - The access denied exception was saving the OAuth secret in the Harness Source Code Manager (SCM) user profile. (CDS-68144)
   
-  This issue is fixed in the Harness Delegate version 79306 by passing the context correctly from the SCM service to the Git service. 
+  This issue is fixed in the Harness Delegate version 79307 by passing the context correctly from the SCM service to the Git service. 
 - Pipelines with multi-level templates displayed Java errors because a secret was referenced by another secret. (CDS-68094)
   
-  This issue is fixed in the Harness Delegate version 79306 by improving the error messages.
+  This issue is fixed in the Harness Delegate version 79307 by improving the error messages.
   
-- Fixed an issue in the the Harness Delegate version 79306 by eliminating NPE during ASG pipeline execution. (CDS-59383)
+- Fixed an issue in the the Harness Delegate version 79307 by eliminating NPE during ASG pipeline execution. (CDS-59383)
 - The Canary Delete step during rollback skipped deleting Canary resources if the forward Canary Delete step expired.(CDS-58704)
   
   Canary Delete step rely on the Harness release history when Canary Deployment step expires. Harness release history wasn't getting updated, and wasn't made available for the Canary Delete step during rollback because the Watch API call request wasn't getting interrupted properly.
 
-  This issue was fixed in the Harness Delegate version 79306. Now the Canary Delete step is properly deleting canary workloads when the forward Canary Deployment step expires.
+  This issue was fixed in the Harness Delegate version 79307. Now the Canary Delete step is properly deleting canary workloads when the forward Canary Deployment step expires.
 - Fixed an issue by adding support for retrying `sockettimeoutExceptions` as they can occur due to intermittent issues during a Kubernetes deployment. (CDS-57688)
 
 

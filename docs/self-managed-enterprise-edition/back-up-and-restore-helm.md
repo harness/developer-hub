@@ -2,7 +2,7 @@
 title: Back up and restore Harness Self-Managed Enterprise Edition Helm installations
 sidebar_label: Back up and restore Helm installations
 description: Learn how to back up and restore Self-Managed Enterprise Edition Helm installations. 
-# sidebar_position: 10
+sidebar_position: 26
 ---
 
 Harness recommends using Velero to back up and restore Helm-based installations of Harness Self-Managed Enterprise Edition.

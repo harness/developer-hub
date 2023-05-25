@@ -59,7 +59,7 @@ This release does not include early access features.
     - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
     - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
 
-  This issue is fixed in the Harness Delegate version 79306. This change does not create any behavioral changes. 
+  This issue is fixed in the Harness Delegate version 79307. This change does not create any behavioral changes. 
 - Null pointer exception occurs when generating audit events for user groups with null values. (PL-32144)
 - No members appear in user group list even after the user has been added via SCIM. (PL-32482)
 

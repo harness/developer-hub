@@ -45,6 +45,9 @@ Select **Connection Type** as **HTTP** or **SSH**.
 
 Enter your **GitHub Account URL**.
 
+If using **Github Enterprise**, the URL must include the organization name. 
+For example `https://mygithub.com/harness/repo-name.git`. Here `harness` is the organization name. 
+
 In **Test Repository**, enter your repository name to test the connection.
 
 ![](../static/add-a-git-hub-connector-35.png)

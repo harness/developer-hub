@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-05-23T10:00:25
+date: 2023-05-24T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -17,7 +17,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - May 23, 2023
+## Latest - May 24, 2023
 
 ```mdx-code-block
 <Tabs>
@@ -37,10 +37,11 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-#### Feature Flags UI
+#### Feature Flags SDKs
 
-* The toggle for turning Git Sync on and off was causing the branch settings menu to disappear and display the **Set Up Git Sync** button incorrectly. This issue has been fixed. (FFM-7786)
-* The Target and Target Group pages reported successful save and edit operations before the operations completed. This issue has been fixed. (FFM-7609)
+The **Python** server SDK has been updated to version **1.1.11** with the following update.
+
+* Fixed an issue where the SDK was not evaluating flags with multiple and/or nested prerequisites correctly.
 
 ```mdx-code-block
   </TabItem>
@@ -51,6 +52,23 @@ This release does not include early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### May 23, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
+* The toggle for turning Git Sync on and off was causing the branch settings menu to disappear and display the **Set Up Git Sync** button incorrectly. This issue has been fixed. (FFM-7786)
+* The Target and Target Group pages reported successful save and edit operations before the operations completed. This issue has been fixed. (FFM-7609)
 
 #### May 22, 2023
 
