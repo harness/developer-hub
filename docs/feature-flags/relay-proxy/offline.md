@@ -56,4 +56,4 @@ No. When running in offline mode the proxy doesn't make any external network req
 
 ### Can I hot-load a new configuration in during runtime?
 
-No. On startup the Relay Proxy moves all the config from disk to the cache of choice (in memory or redis), and from then on uses only the cache data to serve connected SDKs. Changing the content of the `/config` directory during runtime has no impact. Only a restart will pick up the new configuration.
+No. On startup the Relay Proxy moves all the config from disk to the cache of choice (in memory or Redis), and from then on uses only the cache data to serve connected SDKs. Changing the content of the `/config` directory during runtime has no impact. Only a restart will pick up the new configuration.
