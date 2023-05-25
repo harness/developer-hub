@@ -4,6 +4,10 @@ description: Use debug mode to troubleshoot remote builds
 sidebar_position: 110
 ---
 
+:::note
+This is an early access feature and is behind the feature flag `CI_REMOTE_DEBUG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 The Harness CI **Re-run in Debug Mode** feature can troubleshoot remote builds.
 
 ## Requirements
