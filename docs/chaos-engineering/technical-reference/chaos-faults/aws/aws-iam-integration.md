@@ -6,7 +6,7 @@ sidebar_position: 2
 
 There are two methods available for Harness CE to authenticate itself with AWS and obtain the necessary permissions that are specific to the targeted services:
 
-* **(Recommended) IAM Roles for Service Accounts (IRSA):** IRSA leverages an OpenID Connect (OIDC) provider for authentication. This documentation will focus specifically on this method, which is applicable when the execution plane is installed on an Amazon Elastic Kubernetes Service (EKS) cluster. 
+* **[Recommended] IAM Roles for Service Accounts (IRSA):** IRSA leverages an OpenID Connect (OIDC) provider for authentication. This documentation will focus specifically on this method, which is applicable when the execution plane is installed on an Amazon Elastic Kubernetes Service (EKS) cluster. 
 
 * **Kubernetes Secret:** This approach involves providing the necessary credentials through Kubernetes secrets. The advantage of this method is its compatibility with any cluster and platform. It is explained in the Notes section of the experiment docs.
 
