@@ -166,8 +166,8 @@ helm validator update
 ```
 ## Uninstall
 
-You can unintall the plugin using the following command: 
+You can uninstall the plugin using the following command: 
 
 ```
-helm validator upinstall
+helm validator uninstall
 ```
