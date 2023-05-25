@@ -391,6 +391,11 @@ const config = {
         disableSwitch: true,
         respectPrefersColorScheme: false,
       },
+      docs: {
+        sidebar: {
+          hideable: true,
+        },
+      },
       /*
       announcementBar: {
         id: "support_us",
