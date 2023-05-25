@@ -17,7 +17,7 @@ To run the Relay Proxy on Windows:
 
 	`call ff-proxy.exe --admin-service-token=${TOKEN} --auth-secret=${SECRET} --account-identifier=${ACCOUNT_IDENTIFIER} --org-identifier=${ORG_IDENTIFIER} --api-keys=${API_KEYS}`
 
-	See [Configuration reference](/docs/feature-flags/relay-proxy/configuration) for more configuration options.
+	Go to [Configuration reference](/docs/feature-flags/relay-proxy/configuration) for more configuration options.
 
 :::info note
 **Streaming mode** for connected SDKs is not currently supported for direct Windows or Linux builds. 
