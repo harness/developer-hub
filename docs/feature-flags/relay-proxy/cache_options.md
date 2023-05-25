@@ -12,7 +12,7 @@ By default, the Relay Proxy will store all flag data in memory on startup.
 
 * **What happens if network connection is lost?**
 
-	If connection is lost to Harness servers the Relay Proxy will continue to serve the cached values to connected sdks. 
+	If connection is lost to Harness servers, the Relay Proxy will continue to serve the cached values to connected SDKs. 
 
 	It will continue to attempt to reconnect and once connection is established will sync down the latest data then continue as normal. 
 
