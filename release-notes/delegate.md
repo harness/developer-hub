@@ -26,6 +26,26 @@ Harness NextGen release 79306 includes the following changes for the Harness Del
 
 This release introduces the following new features and enhancements:
 
+- Added support to provide quartz cron expressions for scheduled triggers. (CDS-59261, CDS-59260)
+
+- Added support for accessing connector attributes for Deployment Templates. (CDS-54247)
+    
+  The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions. 
+  
+  * [AWS KMS](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
+  * [AWS Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
+  * [Azure Key Vault](/docs/platform/Secrets/Secrets-Management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
+  * [Google KMS](/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
+  * [Google Cloud secret manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
+  * [Custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
+  * [HashiCorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
+
+- Git polling tasks for triggers are executed on the same delegate selector used in the Git connector. (CDS-58115)
+  
+  Previously, triggers used the round robin algorithm to select any available delegate within a project or account. Now, the delegate-based trigger polling selects the same delegate you used in the connectors for triggers. 
+
+- The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set a secret expiration date. (PL-32708, ZD-42524)
+
 - A new [`listDelegates` API](https://app.harness.io/gateway/ng/api/delegate-setup/listDelegates/accountIdentifier=string&orgIdentifier=string&projectIdentifier=string') enables you to list and filter delegates in your project, organization, or account. (PL-37981)
 
    You can use the body parameters to filter your delegate list:
@@ -73,6 +93,47 @@ This release introduces the following new features and enhancements:
 ```
 
 This release includes the following fixes:
+
+- Fixed an issue where the expressions of tags were not rendered properly. (CDS-68703, ZD-43797)
+
+- Executions were failing with `Canary failed: [Canary Deployment failed - NoSuchMethodError: org.yaml.snakeyaml.constructor.SafeConstructor: method 'void <init>()' not found ]` error message. (CDS-68293, ZD-43753, ZD-43769)
+  
+  The Fabric8 library used by Harness is upgraded from version 5.x to 6.x. Harness was explicitly using snake.yaml version 2.x due to vulnerabilities present in the 1.x version.
+  
+  Harness' usages of Fabric8 library were throwing the above mentioned because Fabric8 library version 5.12.1 uses the old snake.yaml library version 1.x.
+
+  Customers who were using the following were affected:
+    - FirstGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - FirstGen Traffic Split step.
+    - FirstGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+    - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+
+  This change does not create any behavioral changes.
+
+- The access denied exception was saving the OAuth secret in the Harness Source Code Manager (SCM) user profile. (CDS-68144)
+  
+  This issue is fixed by passing the context correctly from the SCM service to the Git service.
+
+- Pipelines with multi-level templates displayed Java errors because a secret was referenced by another secret. (CDS-68094)
+  
+  This issue is fixed in by improving the error messages.
+  
+- Fixed an issue by eliminating NPE during ASG pipeline execution. (CDS-59383)
+
+- The Canary Delete step during rollback skipped deleting Canary resources if the forward Canary Delete step expired.(CDS-58704)
+  
+  Canary Delete step rely on the Harness release history when Canary Deployment step expires. Harness release history wasn't getting updated, and wasn't made available for the Canary Delete step during rollback because the Watch API call request wasn't getting interrupted properly.
+
+  Now the Canary Delete step is properly deleting canary workloads when the forward Canary Deployment step expires.
+
+- Invites to users fail with an unauthorized error while RBAC setup is still in progress. (PL-32117)
+
+  A polling system ensures that RBAC setup has been completed.
+
+- Custom Secret Manager creation does not consider the delegate selector. (PL-32260)
+
+  In Custom SM configuration, decrypting secrets using the SSH connection to validate delegate selection fixed this issue.
 
 - Deployments consistently failed during the same stage. (PL-38247)
 
