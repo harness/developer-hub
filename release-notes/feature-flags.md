@@ -43,7 +43,7 @@ The **FF server** has been updated to version **1.1071.0** with the following up
 
 * For customers with a large volume of targets (in the millions), the Target page load time could be slow. Harness has introduced additional indexes to improve the response time of this page. (FFM-7988)
 
-* When Git Sync is first configured and a repository is created, Harness attempts to sync and back up the content of the project to the remote file. (FFM-7681)
+* There was an issue when Git Sync was first configured, a sync was not attempted until a flag was changed or a new one was created. With this fix, a sync is immediately attempted when you configure Git Sync, and the existing flags in your project are backed up to the remote file. (FFM-7681)
 
 #### Feature Flags SDKs
 
