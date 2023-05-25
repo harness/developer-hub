@@ -1,6 +1,6 @@
 ---
 title: Run chaos experiments
-sidebar_position: 2
+sidebar_position: 20
 ---
 
 import Analyze from '/docs/chaos-engineering/configure-chaos-experiments/experiments/shared/analyze-chaos-experiment.md'

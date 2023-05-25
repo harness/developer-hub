@@ -236,7 +236,7 @@ let jsonEvaluation = await client.jsonVariation("demo_json_evaluation", {});
 
 ### Register the event listener
 
-Use `client.registerEventsListener` to register a listener for different events that might be triggered by SDK.
+Use `client.registerListener` to register a listener for different events that might be triggered by SDK.
 
 The possible events and their responses are outlined in the following table:
 
@@ -319,7 +319,7 @@ jsonVariation(evalutionId: string, defaultValue: any)
 ```
 
 ```
-registerEventsListener(listener: (type: string, flags: any) => void)
+registerListener(listener: (type: string, flags: any) => void)
 ```
 
 ```

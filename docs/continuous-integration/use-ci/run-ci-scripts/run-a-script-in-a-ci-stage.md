@@ -152,7 +152,7 @@ The following example includes `reports` settings and commands that run `pytest`
 
 Select **Run** to run the pipeline. Depending on your codebase configuration, you may need to specify a branch or tag.
 
-While the build runs, you can observe the step logs on the [Build details page](../view-your-builds/viewing-builds.md).
+While the build runs, you can observe the step logs on the [Build details page](../viewing-builds.md).
 
 After the pipeline runs, you can [view test reports](../set-up-test-intelligence/viewing-tests.md) on the **Tests** tab of the Build details page.
 

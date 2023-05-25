@@ -1,6 +1,6 @@
 ---
 title: Docker Connector Settings Reference
-description: This topic provides settings and permissions for the Docker Connector. Docker Registries in Cloud Platforms. The Docker Connector is platform-agnostic and can be used to connect to any Docker contain…
+description: This topic provides settings and permissions for the Docker Connector.
 # sidebar_position: 2
 helpdocs_topic_id: u9bsd77g5a
 helpdocs_category_id: 1ehb4tcksy
@@ -8,75 +8,77 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the Docker Connector.
+This topic provides settings and permissions for the Docker connector.
 
-### Docker registry rate limits
+:::info Important notes
 
-For pulling Docker images from Docker repos, Harness is restricted by the limits of the Docker repo. For example, [Dockerhub limits](https://docs.docker.com/docker-hub/download-rate-limit/).
+* **Docker registry rate limits:** Harness is restricted by the limits of the Docker repo, such as [Docker Hub limits](https://docs.docker.com/docker-hub/download-rate-limit/) for pulling Docker images from Docker repos.
+* **Docker Registries in Cloud Platforms:** The Docker connector is platform-agnostic and can be used to connect to any Docker container registry. Harness also provides first class support for registries in AWS and GCR through [AWS connectors](../../../7_Connectors/Cloud-providers/add-aws-connector.md) and [Google Cloud Platform (GCP) connectors](../../../7_Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md).
 
-### Docker Registries in Cloud Platforms
+:::
 
-The Docker Connector is platform-agnostic and can be used to connect to any Docker container registry, but Harness provides first class support for registries in AWS and GCR.
+## Create a Docker connector
 
-See:
+1. In Harness, go to the module and project where you want to create the connector, and select **Connectors** (under **Project Setup**). You can also create connectors at the account level.
+2. Select **New Connector**, and then select **Docker Registry**.
+3. Configure the Docker connector settings as described in the sections below.
+4. Select **Save and Continue**, wait for the connectivity test to run, and then select **Finish**.
+5. In the list of connectors, make a note of your Docker connector's ID. Use the ID in your pipeline YAML, such as `connectorRef: docker_connector_ID`.
 
-* [Add an AWS Connector](../../../7_Connectors/Cloud-providers/add-aws-connector.md)
-* [Google Cloud Platform (GCP) Connector Settings Reference](../../../7_Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md)
+## Connector metadata settings
 
-### Docker Registry Permissions Required
+* **Name:** Enter a name for this connector. Harness creates and **Id** ([Entity Identifier](../../../20_References/entity-identifier-reference.md)) based on the name.
+* **Description:** Optional text string.
+* **Tags:** Optional. Go to the [Tags reference](../../../20_References/tags-reference.md).
 
-Make sure the connected user account has the following permissions.
+## Docker Registry URL
 
-* Read permission for all repositories.
+The URL of the Docker registry. This is usually the URL used for your [docker login](https://docs.docker.com/engine/reference/commandline/login/) credentials.
 
-The user needs access and permissions to the following:
+To connect to a public Docker registry like Docker Hub, use `https://index.docker.io/v2/`.
 
-* List images and tags
-* Pull images
+To connect to a private Docker registry, use `https://registry.hub.docker.com/v2/`.
 
-See [Docker Permissions](https://docs.docker.com/datacenter/dtr/2.0/user-management/permission-levels/).
+## Provider Type
 
-If you are using anonymous access to a Docker registry for a Kubernetes deployment, then `imagePullSecrets` should be removed from the container specification. This is standard Kubernetes behavior and not related to Harness specifically.
+Select the Docker registry platform, such as Docker Hub, Harbor, Quay, and so on.
 
-### Name
+## Authentication
 
-The unique name for this Connector.
+You can authenticate anonymously or by username and password.
 
-### ID
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="unpw" label="Username and password" default>
+```
 
-See [Entity Identifier Reference](../../../20_References/entity-identifier-reference.md).
+* **Username:** Enter the username for your Docker registry account.
+* **Password:** In your Docker registry, create a personal access token with **Read, Write, Delete** permissions. Then, create a [Harness secret](/docs/platform/Secrets/add-use-text-secrets) for your Docker registry personal access token.
 
-### Description
+:::info Docker registry permissions
 
-Text string.
+Make sure the connected user account has *read permission for all repositories* as well as access and permissions to *pull images* and *list images and tags*.
 
-### Tags
+For more information, go to the Docker documentation on [Docker Permissions](https://docs.docker.com/datacenter/dtr/2.0/user-management/permission-levels/).
 
-See [Tags Reference](../../../20_References/tags-reference.md).
+:::
 
-### Docker Registry URL
+```mdx-code-block
+  </TabItem>
+  <TabItem value="anonymous" label="Anonymous">
+```
 
-The URL of the Docker Registry. This is usually the URL used for your [docker login](https://docs.docker.com/engine/reference/commandline/login/) credentials.
+If you use anonymous access for a Kubernetes deployment, make sure `imagePullSecrets` is removed from the container specification. This is standard Kubernetes behavior and not related to Harness specifically.
 
-To connect to a public Docker registry like Docker Hub, use `https://registry.hub.docker.com/v2/`.
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
-To connect to a private Docker registry, use `https://index.docker.io/v2/`.
+## Select Connectivity Mode
 
-### Provider Type
-
-The Docker registry platform that you want to connect. Some examples:
-
-* DockerHub
-* Harbor
-* Quay
-
-### Authentication
-
-You can authenticate using username and password, or select anonymous.
-
-### Credentials
-
-The username and password for the Docker registry account.
-
-The password uses a [Harness Encrypted Text secret](../../../Secrets/2-add-use-text-secrets.md).
-
+You can connect through a Delegate or the Harness Platform. If you plan to use this connector with Harness Cloud build infrastructure, you must select **Connect through Harness Platform**.

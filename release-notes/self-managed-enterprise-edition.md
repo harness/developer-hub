@@ -3,7 +3,7 @@ title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
 date: 2023-04-26T10:00
-sidebar_position: 11
+sidebar_position: 13
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -12,11 +12,47 @@ import TabItem from '@theme/TabItem';
 ```mdx-code-block
 import delete_project from './static/delete-project.png'
 ```
-Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes). 
+Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes).
 
-## Latest - April 26, 2023, version 78926
+## Latest - May 12, 2023, patch release for version 78926
+
+Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and updates to address potential security vulnerabilities.
 
 This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.5.4](https://github.com/harness/helm-charts/releases/tag/harness-0.5.4) |
+| NG Manager | 78926 |
+| CI Manager | 3303 |
+| Pipeline Service | 1.26.9 |
+| Platform Service | 78602 |
+| Access Control Service | 78405 |
+| Change Data Capture | 78926 |
+| Test Intelligence Service | release-167 |
+| NG UI | 0.344.13 |
+| LE NG | 67708 |
+
+### Fixed issues
+
+* The FirstGen to NextGen migrator disabled initialization for some feature flags. (SMP-1294)
+
+   This issue is fixed. The migrator is now only enabled when `global.migrator.enabled` is set to `true`.
+
+* The legacy delegate is no longer the default delegate type. The default value of `useImmutableDelegate` is now set to `true`. (SMP-1280)
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### April 26, 2023, version 78926
+
+This release includes the following Harness module and component versions.
+
+#### Helm Chart Version 0.5.0 
+
+https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 
 | **Name** | **Version** |
 | :-- | :--: |
@@ -30,18 +66,28 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+
+#### What's new
+
 #### Self-Managed Enterprise Edition
 - Beginning with v0.5.0, Harness will no longer publish `harness-prod` or `harness-demo` Helm charts. Harness will publish the `harness` base chart only. If you currently use the `harness-prod` or `harness-demo` Helm chart, you must download your `custom-override.yaml` file from [the helm-charts repository](https://github.com/harness/helm-charts/tree/main/src) and use the following commands to upgrade:
+  
+  **Harness chart**
+
+  Run the following to update the Harness chart repo:
+  ```
+  helm repo update harness
+  ```
 
   **Demo chart**
+
+  Run the following to upgrade the demo chart:
   ```
   helm upgrade <release-name> harness/harness -f override-demo.yaml -f <custom-override>.yaml
   ```
   **Production chart**
+  
+  Run the following up upgrade the production chart:
   ```
   helm upgrade <release-name> harness/harness -f override-prod.yaml -f <custom-override>.yaml
   ```
@@ -84,8 +130,10 @@ This release includes the following Harness module and component versions.
 - You can now migrate from KOTS-based installations to Helm-based installations. (SMP-769)
 - Backup and restore for Helm-based installations is now supported using Velero. (SMP-767)
  
-  For more information, go to [Back up and restore Self-Managed Enterprise Edition Helm installations](/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm).
+  For more information, go to [Back up and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm).
 - You can now monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and eventually integrate with observability tools, such as Grafana. (SMP-766)
+
+  For more information, go to [Monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem). 
 - Deployments load static files from the application server and no longer attempt to connect to static.harness.io. (SMP-851)
 #### Continuous Integration
 - When you [use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
@@ -326,11 +374,8 @@ This release includes the following Harness module and component versions.
 
   You can now view logs for delegate tasks for pipeline steps that are running or finished. This can help with debugging issues.
 
+#### Fixed issues
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
 #### Self-Managed Enterprise Edition
 - Data synchronization did not occur and dashboards displayed incorrect detail. (SMP-1178)
 
@@ -343,8 +388,8 @@ This release includes the following Harness module and component versions.
 - Changed the `global.storageClassName` variable to `global.storageClass`. This update requires changes to the override file. (SMP-1091)
 - Moved MongoDB `wiredTigerCacheSizeGB` under extraFlags. Before this update, it was included under arguments. (SMP-1034)
 #### Continuous Integration
-- Fixed an issue related to secrets resolution in the [GitHub Action plugin step](/docs/continuous-integration/ci-technical-reference/plugin-steps/ci-github-action-step). (CI-6969, CI-7300)
-- The [Base Image Connector setting](/docs/continuous-integration/ci-technical-reference/build-and-push-steps/build-and-push-to-ecr-step-settings#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported DockerHub registries. (CI-7153, CI-7091, ZD-40319)
+- Fixed an issue related to secrets resolution in the [GitHub Action plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/). (CI-6969, CI-7300)
+- The [Base Image Connector setting](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-ecr-step-settings/#base-image-connector) for the **Build and Push to ECR** step now supports all Docker-compliant registries. Previously, this setting only supported Docker Hub registries. (CI-7153, CI-7091, ZD-40319)
 - Builds no longer fail if steps in different step groups have the same `identifier`. Additionally, to prevent steps in step groups from producing artifacts with identical artifact IDs, when steps in step groups produce artifacts, the resulting artifact IDs now use a unique identifier that reflects the step's presence in a step group. (CI-7115)
 - When configuring [local build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure), it was not possible to select the Windows operating system. This issue has been resolved and the Windows OS is available again. (CI-7111, ZD-40311)
 - An `unsupported image` warning banner incorrectly appeared for builds that did not use Kubernetes build infrastructure. (CI-7098, ZD-40428)
@@ -355,7 +400,7 @@ This release includes the following Harness module and component versions.
 - If a pipeline's [codebase clone depth](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase) was set to `0`, manually triggered builds would override this setting and clone at a depth of 50 instead. This issue did not occur for depth settings other than `0`, and it did not occur for non-manual triggers. Now, manually triggered builds won't override the depth setting when it is set to `0`. (CI-7083, ZD-40306)
 - You can now use [variable expressions](/docs/platform/references/runtime-inputs) for the **Shell** and **Image Pull Policy** settings. Previously, selecting the **Expression** input type for **Shell** caused a UI-breaking error, and providing an expression for **Image Pull Policy** caused a field validation error. (CI-7071, ZD-40277)
 - Fixed an issue where builds triggered by issue comments had the incorrect PR status or link for some SCM providers. (CI-6978)
-- Fixed several issues related to error messages on the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds#build-details):
+- Fixed several issues related to error messages on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds#build-details):
   - If the Docker runner was down for a build using local build infrastructure, the error message now contains the correct wording corresponding with the local build infrastructure, rather than wording relevant to a Kubernetes build infrastructure. (CI-6854)
   - Unresolved stage-level and pipeline-level environment variables generated exception errors in cases where those variables were expected to receive a value at a later point in the pipeline. These variables now supplement a default (`null`) value if no initial value is available. (CI-7125)
 - When manually triggering a build, the default repository is populated for on-prem Git connectors. (CI-6814)
@@ -519,7 +564,7 @@ This release includes the following Harness module and component versions.
   The **Default Settings** and **GitOps** categories should not both be selected when the **GitOps** category is selected.
   
   The UI is now fixed so that only the **GitOps** category is selected.
-- Users were able to save a [Kubernetes Apply step](https://developer.harness.io/docs/continuous-delivery/cd-technical-reference/cd-k8s-ref/kubernetes-apply-step/) template with empty manifest file paths. (CDS-53961)
+- Users were able to save a [Kubernetes Apply step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) template with empty manifest file paths. (CDS-53961)
 
   This issue is fixed. You can no longer configure empty file paths in the Apply step template.
 - Unable to deploy workloads when using Harness local store for native Helm deployments. (CDS-53937)
@@ -597,7 +642,7 @@ This release includes the following Harness module and component versions.
   You should not reference environment variables in service settings because the environment settings are resolved after the service settings during pipeline execution. Harness has now improved the error handling mechanism for such scenarios.
 - The **Manual Intervention** tab was not displayed for the ServiceNow Create or Update steps. (CDS-53467, ZD-38687)
   
-  The **Manual Intervention** tab is used to select a failure strategy when the acceptance criteria in a ServiceNow [Create](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/create-service-now-tickets-in-cd-stages/) or [Update](https://developer.harness.io/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-service-now-tickets-in-cd-stages) step is not met. 
+  The **Manual Intervention** tab is used to select a failure strategy when the acceptance criteria in a ServiceNow [Create](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages) or [Update](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-service-now-tickets-in-cd-stages) step is not met. 
   
   The **Manual Intervention** tab was not visible, but this has been fixed and the tab now displays during pipeline execution.
 
@@ -661,6 +706,11 @@ This release includes the following Harness module and component versions.
 - The service information of a stage disappeared when swapping two stages if the stage was propagated from the other stage. (CDS-53331)
 
   The service details of stages appear properly now when you swap service propagated stages.
+
+- Files created with the [File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) do not save consistently witht the correct file type. (CDS-53329)
+
+  A code enhancement has fixed this issue.
+
 - The Nexus version selected for an artifact source can be overridden in the artifact connector. (CDS-53308)
   
   When you create the artifact source for a service, you could choose Nexus 3 or 2, but when you create the Harness connector you could also select Nexus 3 or 2. Consequently, you could create a Nexus 2 artifact source with a Nexus 3 connector.
@@ -671,7 +721,7 @@ This release includes the following Harness module and component versions.
   Harness has added support for 128-character variable names.
 - Harness was inconsistent when displaying manifest files stored in the Harness File Store. (CDS-53118)
   
-  Harness was filtering [File Store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/) files based on the manifest type for some types (Kubernetes values YAML, Helm chart, etc.), but for other types Harness was showing all files.
+  Harness was filtering [File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) files based on the manifest type for some types (Kubernetes values YAML, Helm chart, etc.), but for other types Harness was showing all files.
   
   Now Harness is showing the correct file types for the manifest type selected by users. For example, in Kubernetes values YAML, Helm chart values YAML, Kustomize files, Kustomize patches files, OpenShift params files, OpenShift template files.
 - A reused [webhook trigger](https://developer.harness.io/docs/platform/triggers/trigger-deployments-using-custom-triggers/) identifier results in a reused last activation time. (CDS-53107)
@@ -774,13 +824,10 @@ This release includes the following Harness module and component versions.
   
   Now you can see the correct Git diff in the Harness YAML. The diff consist of necessary changes only, such as the addition and removal of fields.
 #### Cloud Cost Management
-- In accounts without a Cluster Connector, the `ANOMALY_DETECTION_CLOUD` job responsible for displaying Cloud Anomalies was not executed. (CCM-11798)
-
-  This issue has been fixed and now the anomalies are computed, even when the account does not have a Cluster Connector. 
 - The ECS service billing data was missing in the Perspectives. (CCM-11464)
 
    This issue has been fixed, and all data is now accurately reflected on the **Perspectives** page without any errors.
-- The `ANOMALY_DETECTION_CLOUD` job responsible for displaying cloud anomalies was not being executed in accounts without a cluster connector.  (CCM-11228)
+- The `ANOMALY_DETECTION_CLOUD` job responsible for displaying cloud anomalies was not being executed in accounts without a cluster connector.  (CCM-11228, CCM-11798)
   
    This issue has been fixed, and anomalies are now computed even in the absence of a cluster connector.
 - Previously, even when the **Cascading** option was turned off, the budget amount was being equally divided among all the budgets in the group.  (CCM-10950)
@@ -933,15 +980,6 @@ This release includes the following Harness module and component versions.
 - The new delegate installation wizard is now available in all delegate installation worfklows. (DEL-5989)
 - Fixed an issue that interfered with the delegate installation process. Delegate API requests did not include the context that was required; organization and project ID information was not being sent with requests. The required context is now included. (DEL-5951)
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### March 14, 2023, version 78426
 
@@ -1067,7 +1105,7 @@ This release includes the following Harness module and component versions.
   
 - Added the `helm repo update` command to the delegate installer. The command is included in the instructions that apply the delegate manifest. This change reduces the chance of retrieving the wrong file from the repository. (DEL-5540)
   
-- [Pipeline execution status links](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds) in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
+- [Pipeline execution status links](/docs/continuous-integration/use-ci/viewing-builds) in Git pull requests now direct you to the associated stage within the pipeline, rather than the pipeline as a whole. (CI-6813)
 
 
 - This release includes two new CI steps for integrating your Harness CI pipelines with GitHub Actions and Bitrise. The following steps are available in Harness Cloud build infrastructures only.
@@ -1314,7 +1352,7 @@ This release includes the following Harness module and component versions.
 
 - Unable to see the Harness file store at the projects level. (CDS-50139)
 
-  The [Harness file store](https://developer.harness.io/docs/continuous-delivery/cd-services/cd-services-general/add-inline-manifests-using-file-store/) is a hierarchical file manager in Harness for managing configuration files used in pipelines.
+  The [Harness file store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store) is a hierarchical file manager in Harness for managing configuration files used in pipelines.
 
   The file store was not showing up at the projects level. This has been fixed and now you can use the file store in your projects.
 

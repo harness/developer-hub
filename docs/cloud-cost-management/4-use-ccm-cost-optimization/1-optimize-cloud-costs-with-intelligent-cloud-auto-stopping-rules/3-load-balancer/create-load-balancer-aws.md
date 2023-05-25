@@ -1,5 +1,5 @@
 ---
-title: Create an Application Load Balancer for AWS
+title: AWS Application Load Balancer 
 description: Describes how to create a new Application Load Balancer for AWS.
 # sidebar_position: 2
 helpdocs_topic_id: eba1bn2jm6
@@ -7,10 +7,11 @@ helpdocs_category_id: k8xq40kf08
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+# Create an Application Load Balancer for AWS
 
 A load balancer serves as the single point of contact for clients. The load balancer distributes incoming application traffic across multiple targets, such as EC2 instances, in multiple Availability Zones. This increases the availability of your application.
 
-An Application Load Balancer makes routing decisions at the application layer (HTTP/HTTPS), supports path-based routing, and can route requests to one or more ports on each container instance in your cluster.
+An Application Load Balancer (ALB) makes routing decisions at the application layer (HTTP/HTTPS), supports path-based routing, and can route requests to one or more ports on each container instance in your cluster.
 
 
 This topic describes how to create a new application load balancer for creating AutoStopping Rules for AWS. 
@@ -36,6 +37,11 @@ AutoStopping integrates with the cloud provider's native load balancing technolo
 ```
 *.autostopping.example.com -> Load balancer IP
 ```
+A Harness load balancer in AWS consists of two primary components:
+
+* **Application Load Balancer (ALB)**: The ALB receives incoming traffic from clients and distributes it across a group of backend servers. It is a Layer 7 load balancer, which means it can route traffic based on application-level information such as HTTP headers or cookies.
+
+* **Lambda Function**: The Lambda function with its target group is mapped to the default rule of the ALB. It is used to warm up resources, hold traffic, and display progress page until the intended page comes up. See [Update AWS Lambda function code](create-load-balancer-aws.md#update-aws-lambda-function-code) to update the function code to the latest version. 
 
 ## Create a New Application Load Balancer
 
@@ -116,3 +122,28 @@ A record: *.autostopping.yourdomain.com<lightwing.io> -> up-a1thp0i3k1k7ment50l0
 
 Your Load Balancer is now listed.
 
+## Locate and update AWS Lambda function code
+
+You can use a Lambda function to process requests from an Application Load Balancer. Elastic Load Balancing supports Lambda functions as a target for an Application Load Balancer. Use load balancer rules to route HTTP requests to a function, based on path or header values. Process the request and return an HTTP response from your Lambda function.
+
+### Locate the corresponding Lambda function of the ALB
+1. Navigate to your AWS console and select the Application Load Balancer (ALB).
+2. In the **Listeners** tab, you can view the available listeners.
+3. Choose one of the listeners and view the list of rules associated with that listener.
+4. Locate the **Default** rule in the list of rules and then select the target group that it is pointing to.
+
+  The target group contains the Lambda function as a registered target that you need to update.
+
+### Update the Lambda function code
+
+:::important
+The current version of AWS Lambda function proxy code to be used is `aws-proxymanager-0.1.3.zip`.
+:::
+
+To update the Lambda function code, follow these steps: 
+1. [Download](https://lightwing-downloads-temp.s3.ap-south-1.amazonaws.com/aws-proxymanager-0.1.3.zip) the latest code package in the form of a .zip file.
+2. Select the **Code** tab in **Lambda** > **Functions**.
+
+    <docimage path={require('./static/lambda-function-code.png')} width="50%" height="50%" title="Click to view full size image" />
+
+3. Click **Upload from** and choose the zip file you downloaded, and then click **Save**.

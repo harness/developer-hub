@@ -10,86 +10,65 @@ helpdocs_is_published: true
 
 Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. To learn more about how Test Intelligence works, go to [Get started with Test Intelligence](../../ci-quickstarts/test-intelligence-concepts.md).
 
-The **Run Tests** step executes one or more test on a container image. You must add the **Run Tests** step to a pipeline's **Build** stage to enable Test Intelligence on that pipeline. The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to generate an initial call graph, which sets the baseline for intelligent test selection in future builds.
+You must add the **Run Tests** step to a pipeline's **Build** stage to enable Test Intelligence on that pipeline. The **Run Tests** step executes one or more tests on a container image. The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to generate an initial call graph, which sets the baseline for intelligent test selection in future builds.
 
 You can also [enable test splitting for Test Intelligence](#enable-parallelism-test-splitting-for-test-intelligence) to further optimize your tests.
 
 ## Requirements
 
-To enable Test Intelligence, you need a supported codebase and a CI pipeline with a **Build** stage that is connected to the codebase and build infrastructure.
+To enable Test Intelligence, you need a CI pipeline with a **Build** stage that is connected to a supported codebase. If you haven't created a pipeline before, go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
 
-<details>
-<summary>Supported codebases</summary>
+:::info Supported codebases
 
 Test Intelligence is available for the following codebases:
 
 * Java
 * Kotlin
-* .NET Core: Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 * Scala
+* C# .NET Core, <!--Framework, -->NUnit
+  * Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.<!-- * Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [build environment](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings#build-environment) in your pipeline's YAML. -->
 
-</details>
+:::
 
-<details>
-<summary>Prepare your pipeline</summary>
+## Add the Run Tests step
 
-Make sure you have a CI pipeline with a **Build** stage that is connected to your codebase. If you haven't created a pipeline before, go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+Add the **Run Tests** step to the **Build** stage. To run tests with Test Intelligence, configure the step as follows:
 
-To add a **Build** stage to an existing pipeline:
-1. Go to the pipeline you want to edit.
-2. In the Pipeline Studio, select **Add Stage**, and then select **Build**.
-3. Enter a **Stage Name**, enable **Clone Codebase**, and then select **Set Up Stage**.
-4. On the **Build** stage's **Infrastructure** tab, [set up the build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure).
+* Provide a **Name**.
+* Define one or more **Test Report Paths**. JUnit XML format is required. For details about formatting test reports, go to [Format test reports](./test-report-ref.md).
+* Select **Run Only Selected Tests**.
+* Specify the **Language**, **Build Tool**, **Build Arguments**, and other language- or tool-specific settings as described in the [Run Tests step settings reference](./configure-run-tests-step-settings.md).
+* Specify the **Container Registry** and **Image**, if required by the build infrastructure.
+* Specify other settings as necessary. For information about all **Run Tests** step settings, go to the [Run Tests step settings reference](./configure-run-tests-step-settings.md).
 
-To edit codebase configuration for existing pipelines, select **Codebase** while viewing the pipeline in the Pipeline Studio. For more information about codebase configuration, go to [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md).
+After adding the **Run Tests** step, make sure you [generate the initial call graph](#generate-the-initial-call-graph).
 
-</details>
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
 
-## Enable Test Intelligence
+Add a `RunTests` step to your pipeline's `CI` stage. To run tests with Test Intelligence, configure the step as follows:
 
-Use these steps to configure the **Run Tests** step and generate an initial call graph.
+* `type: RunTests`
+* `name:` Enter a name for the step.
+* `reports:` Specify one or more report paths. JUnit XML format is required. For details about formatting test reports, go to [Format test reports](./test-report-ref.md).
+* `runOnlySelectedTests: true`
+* `language`, `buildTool`, `args`, and other language- or tool-specific settings as described in the [Run Tests step settings reference](./configure-run-tests-step-settings.md).
+* `connectorRef` and `image`: Specify if required by the build infrastructure.
+* Specify other settings as necessary. For information about all `RunTests` step settings, go to the [Run Tests step settings reference](./configure-run-tests-step-settings.md).
 
-1. In the Pipeline Studio, select the **Build** stage, and then select the **Execution** tab.
-2. Select **Add Step**, select **Add Step** again, and then select **Run Tests** from the **Step Library**.
-3. At minimum, you must configure the following settings to run tests with Test Intelligence:
-   * **Name**
-   * **Container Registry**
-   * **Image**
-   * **Language**
-   * **Build Tool**
-   * **Build Arguments**
-   * **Test Report Paths**
-   * **Run Only Selected Tests**
-   * **Packages:** Leave blank or provide a comma-separated list of source code package prefixes
-   * **Test Annotations:** Leave blank or provide a comma-separated list of test annotations to use in unit testing. If you do not provide a list of test annotations, the default is `org.junit.Test, org.junit.jupiter.api.Test, org.testing.annotations.Test`.
-   * **Namespaces:** For .NET C# only, supply a comma-separated list of namespace prefixes that you want to test.
-
-   For more information about these settings, and other **Run Tests** step settings, go to the [Run Tests step settings reference](./configure-run-tests-step-settings.md).
-
-<details>
-<summary>YAML example</summary>
-
-The following YAML example is for a pipeline that runs Test Intelligence on the Dubbo open-source project. You can use this YAML template to set up a pipeline with a Run Tests step. Make sure you complete the remaining steps in this procedure to generate the initial call graph.
+The following YAML example defines a `RunTests` step for Java with Maven.
 
 ```yaml
-pipeline:
-    name: ti-dubbo
-    identifier: tidubbo
-    properties:
-        ci:
-            codebase:
-                connectorRef: account.howdi
-                repoName: dubbo
-                build: <+input>
-    stages:
-        - stage:
-              name: unit-test
-              identifier: unitteststi
-              type: CI
-              spec:
-                  cloneCodebase: true
-                  execution:
-                      steps:
                           - step:
                                 type: RunTests
                                 name: runTestsWithIntelligence
@@ -106,37 +85,86 @@ pipeline:
                                         type: JUnit
                                         spec:
                                             paths:
-                                                - "**/*.xml"
-                                    resources:
-                                        limits:
-                                            memory: 2Gi
-                                            cpu: 2000m
-                                timeout: 60m
-                  serviceDependencies: []
-                  infrastructure:
-                      type: KubernetesDirect
+                                                - "target/surefire-reports/*.xml"
+```
+
+After adding the `RunTests` step, make sure you [generate the initial call graph](#generate-the-initial-call-graph).
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+<details>
+<summary>Pipeline YAML example</summary>
+
+The following YAML example shows a pipeline that runs tests with Test Intelligence.
+
+```yaml
+pipeline:
+  name: Test Intelligence Demo
+  identifier: testintelligencedemo
+  projectIdentifier: [project-ID]
+  orgIdentifier: default
+  description: This pipeline demonstrates using Harness Test Intelligence to speed up Java Maven tests.
+  properties:
+    ci:
+      codebase:
+        build: <+input>
+        connectorRef: [code-repo-connector-ID]
+  stages:
+    - stage:
+        type: CI
+        identifier: Build_and_Test
+        name: Build and Test
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: Run_Tests_with_Intelligence
+                  name: Run Tests with Intelligence
+                  spec:
+                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false -T 16C -fae
+                    buildTool: Maven
+                    envVariables:
+                      HARNESS_STAGE_INDEX: <+strategy.iteration>
+                      HARNESS_STAGE_TOTAL: <+strategy.iterations>
+                    language: Java
+                    preCommand: |-
+                      echo $HARNESS_STAGE_INDEX
+                      echo $HARNESS_STAGE_TOTAL
+                    reports:
                       spec:
-                          connectorRef: Kubernetes_Quickstart
-                          namespace: harness-delegate
-              variables: []
-    projectIdentifier: CI_Examples
-    orgIdentifier: default
-    description: TI for open source project dubbo
-    tags: {}
+                        paths:
+                          - "target/surefire-reports/*.xml"
+                      type: JUnit
+                    runOnlySelectedTests: true
+                  type: RunTests
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
 ```
 
 </details>
 
-4. Select **Apply Changes** to save the step settings, and then select **Save** to save the pipeline.
-5. The first time you enable Test Intelligence on a repo, you must run all tests to generate an initial call graph. This creates a baseline for test selection in future builds. To generate the initial call graph:
-   1. [Add a webhook trigger](../../../platform/11_Triggers/triggering-pipelines.md) to the pipeline that listens for PRs to be opened against the pipeline's codebase.
-   2. Open a PR against the pipeline's codebase. Make sure the build triggered by this PR runs all tests.
-   3. Wait while the pipeline executes. To monitor the build's progress, go to **Builds** and select the build that the PR started.
-   4. If the tests pass and the build succeeds, merge the PR.
+## Generate the initial call graph
+
+The first time you enable Test Intelligence on a repo, you must run all tests to generate an initial call graph. This creates a baseline for test selection in future builds. To generate the initial call graph:
+
+1. [Add a webhook trigger](../../../platform/11_Triggers/triggering-pipelines.md) to the pipeline that listens for PRs to be opened against the pipeline's codebase.
+2. Open a PR against the pipeline's codebase. Make sure the build triggered by this PR runs all tests.
+3. Wait while the pipeline executes. To monitor the build's progress, go to **Builds** and select the build that the PR started.
+4. If the tests pass and the build succeeds, merge the PR.
 
 ## View test reports
 
-To view the test report, go to the [Build details page](../view-your-builds/viewing-builds.md) and select **Tests**. The test report content is based on the tests you configured for the **Run Tests** step. In order for the **Tests** tab to show tests, your test reports must be in JUnit XML format. Harness parses test reports that are in JUnit XML format only.
+To view the test report, go to the [Tests tab](./viewing-tests.md) on the [Build details page](../viewing-builds.md). The test report content is based on the tests you configured for the **Run Tests** step.
+
+In order for the **Tests** tab to show tests, your test reports must be in JUnit XML format, because Harness parses test reports that are in JUnit XML format only. For more information about formatting unit test reports, go to [Format test reports](./test-report-ref.md).
 
 ![](./static/set-up-test-intelligence-03.png)
 
@@ -183,7 +211,7 @@ You can sort the list by failure rate, duration, and total tests. You can also e
 <details>
 <summary>Call Graph</summary>
 
-The first time you [Enable Test Intelligence](#enable-test-intelligence) on a repo, you must use a webhook-based PR trigger to run all tests and generate the initial call graph. This creates a baseline for test selection in future builds; therefore, the initial call graph is not particularly useful. In subsequent builds, the call graph shows information about tests selected by Test Intelligence for that run.
+The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to run all tests and [generate the initial call graph](#generate-the-initial-call-graph). This creates a baseline for test selection in future builds; therefore, the initial call graph is not particularly useful. In subsequent builds, the call graph shows information about tests selected by Test Intelligence for that run.
 
 Select **Expand graph** to view the Test Intelligence Visualization, which shows why a specific test was selected and the reason behind every test selection. Purple nodes represent tests. Select any test (purple node) to see all the classes and methods covered by that test. Blue nodes represent changes to classes and methods that caused Test Intelligence to select that test.
 
@@ -211,7 +239,7 @@ Suppose you have a pipeline that runs 100 tests, and each test takes about one s
 To enable parallelism for Test Intelligence, you must set a parallelism `strategy` on either the Run Tests step or the stage where you have the Run Tests step, and you must add the `enableTestSplitting` parameter to your Run Tests step's `spec`. You can also add the optional parameter `testSplitStrategy`.
 
 1. Go to the pipeline where you want to enable parallelism for Test Intelligence.
-2. [Define the parallelism strategy](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy` and `parallelism`. Other options, such as `maxConcurrency` are optional. For example:
+2. [Define the parallelism strategy](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional. For example:
 
    ```yaml
         strategy:
@@ -254,48 +282,104 @@ Note that while parallelism for Test Intelligence can improve the total time it 
 <summary>YAML example: Build stage with Test Intelligence and test splitting</summary>
 
 ```yaml
-        - stage:
-              name: unit-test
-              identifier: unitteststi
-              type: CI
-              spec:
-                  cloneCodebase: true
-                  execution:
-                      steps:
-                          - step:
-                                type: RunTests
-                                name: runTestsWithIntelligence
-                                identifier: runTestsWithIntelligence
-                                spec:
-                                    enableTestSplitting: true
-                                    testSplitStrategy: ClassTiming
-                                    connectorRef: account.GCR
-                                    image: maven:3-openjdk-8
-                                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
-                                    buildTool: Maven
-                                    language: Java
-                                    packages: org.apache.dubbo,com.alibaba.dubbo
-                                    runOnlySelectedTests: true
-                                    reports:
-                                        type: JUnit
-                                        spec:
-                                            paths:
-                                                - "**/*.xml"
-                                    resources:
-                                        limits:
-                                            memory: 2Gi
-                                            cpu: 2000m
-                                timeout: 60m
-                  serviceDependencies: []
-                  infrastructure:
-                      type: KubernetesDirect
+    - stage:
+        type: CI
+        identifier: Build_and_Test
+        name: Build and Test
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  identifier: Run_Tests_with_Intelligence
+                  name: Run Tests with Intelligence
+                  spec:
+                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false -T 16C -fae
+                    buildTool: Maven
+                    enableTestSplitting: true
+                    envVariables:
+                      HARNESS_STAGE_INDEX: <+strategy.iteration>
+                      HARNESS_STAGE_TOTAL: <+strategy.iterations>
+                    language: Java
+                    preCommand: |-
+                      echo $HARNESS_STAGE_INDEX
+                      echo $HARNESS_STAGE_TOTAL
+                    reports:
                       spec:
-                        connectorRef: Kubernetes_Quickstart
-                        namespace: harness-delegate
-              variables: []
-              strategy:
-                parallelism: 3
+                        paths:
+                          - "target/surefire-reports/*.xml"
+                      type: JUnit
+                    runOnlySelectedTests: true
+                  type: RunTests
+          platform:
+            arch: Amd64
+            os: Linux
+          runtime:
+            spec: {}
+            type: Cloud
+        strategy:
+          parallelism: 3
 ```
 
 </details>
 
+## Ignore tests or files
+
+If you want Test Intelligence to ignore certain tests or files, create a `.ticonfig.yaml` file in your codebase containing a list of tests and files to ignore, for example:
+
+```yaml
+config:
+  ignore:
+    - "README.md"
+    - ".ticonfig.yaml"
+    - "**/*.go"
+    - "**/Dockerfile*"
+    - "licenses/**/*"
+    - "img/**/*"
+```
+
+## Troubleshooting
+
+You may encounter the following issues when using Test Intelligence with Maven.
+
+<details>
+<summary>pom.xml includes argLine</summary>
+
+If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
+
+**Before:**
+
+```
+<argLine> something  
+</argLine>
+```
+
+**After:**
+
+```
+<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
+</argLine>
+```
+
+</details>
+
+<details>
+<summary>Jacoco/Surefire/Failsafe</summary>
+
+If you're using Jacoco, Surefire, or Failsafe, make sure the `forkCount` is not set to `0`.
+
+For example, the following configuration in `pom.xml` removes the `forkCount` setting and applies `useSystemClassLoader` as a workaround:
+
+```
+<plugin>
+    <groupId>org.apache.maven.plugins</groupId>
+    <artifactId>maven-surefire-plugin</artifactId>
+    <version>2.22.1</version>
+    <configuration>
+        <!--  <forkCount>0</forkCount> -->
+        <useSystemClassLoader>false</useSystemClassLoader>
+    </configuration>
+</plugin>
+```
+
+</details>

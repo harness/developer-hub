@@ -1,5 +1,5 @@
 ---
-title: Optimize AWS ECS costs with recommendations
+title: AWS ECS recommendations
 description: Optimize AWS ECS costs with recommendations
 # sidebar_position: 2
 helpdocs_topic_id: 7xxejpvs9w
@@ -7,6 +7,8 @@ helpdocs_category_id: viib5j7fek
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+# Optimize AWS ECS costs with recommendations
 
 One of the most impactful ways to reduce spend on AWS ECS infrastructure is to make sure your ECS clusters are optimally sized for the services and tasks they run. Harness Cloud Cost Management (CCM) provides recommendations for your ECS clusters to show you resource optimization opportunities to potentially reduce your monthly spend.
 

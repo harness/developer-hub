@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 :::info
 
-Dynamic provisioning is only supported in [Service and Environments v1](https://developer.harness.io/docs/continuous-delivery/onboard-cd/upgrading/upgrade-cd-v2). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
+Dynamic provisioning is only supported in [Service and Environments v1](/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2/). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
 
 :::
 
@@ -39,7 +39,7 @@ You can do all methods in the same stage if you want.
 
 :::info
 
-Dynamic provisioning is only supported in [Service and Environments v1](https://developer.harness.io/docs/continuous-delivery/onboard-cd/upgrading/upgrade-cd-v2). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
+Dynamic provisioning is only supported in [Service and Environments v1](/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2/). Dynamic provisioning will be added to Service and Environments v2 soon. Until then, you can create a stage to provision the target infrastructure and then a subsequent stage to deploy to that provisioned infrastructure.
 
 :::
 
@@ -97,7 +97,7 @@ Terraform must be installed on the delegate to use local Terraform configuration
 
 You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+See [Build custom delegate images with third-party tools](https://developer.harness.io/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 The Harness delegate uses RedHat Universal Base Image (redhat/ubi8).
 

@@ -20,7 +20,7 @@ This topic assumes you have a Harness Project set up. If not, see [Create Organ
 
 You can add a Connector from any module in your Project in Project setup, or in your Organization, or Account Resources.
 
-This topic shows you how to add a ServiceNow Connector to your Project.
+This topic shows you how to add a GitHub Connector to your Project.
 
 In **Project Setup**, click **Connectors**.
 
@@ -44,6 +44,9 @@ Select **Account** or **Repository** in **URL Type**.
 Select **Connection Type** as **HTTP** or **SSH**.
 
 Enter your **GitHub Account URL**.
+
+If using **Github Enterprise**, the URL must include the organization name. 
+For example `https://mygithub.com/harness/repo-name.git`. Here `harness` is the organization name. 
 
 In **Test Repository**, enter your repository name to test the connection.
 
@@ -101,3 +104,6 @@ Harness tests the connection. Click **Finish** once the verification is successf
 ![](../static/add-a-git-hub-connector-41.png)
 The GitHub connector is listed in Connectors.
 
+### Kubernetes delegate with self-signed certificates
+
+If your codebase connector allows API access and connects through a Harness Delegate that uses self-signed certificates, you must specify `ADDITIONAL_CERTS_PATH` in the delegate pod, as described in [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates#enable-self-signed-certificates).

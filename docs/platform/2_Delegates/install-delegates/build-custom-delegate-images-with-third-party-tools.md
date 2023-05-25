@@ -18,8 +18,6 @@ This document explains how you can:
 
 You can build on either of the following Harness-provided images.
 
-
-
 | **Image** | **Description** |
 | --- | --- |
 | Harness Delegate Docker image | A publicly available Docker image providing Harness Delegate. |
@@ -95,7 +93,7 @@ ENV PATH=/opt/harness-delegate/tools/:$PATH
 ```
 ### Upload the image to Docker Hub
 
-The next step is to upload your custom image to Docker Hub. For information on working with Docker repositories, see [Manage repositories](https://docs.docker.com/docker-hub/repos/) in the Docker documentation.
+The next step is to upload your custom image to Docker Hub. For information on working with Docker repositories, go to [Manage repositories](https://docs.docker.com/docker-hub/repos/) in the Docker documentation.
 
 ### Modify the delegate manifest
 
@@ -409,9 +407,6 @@ You can confirm the successful deployment and registration of the delegate in Ha
 
 You can use your registered delegate to run Kubernetes and Terraform pipelines.
 
-For information about creating a Kubernetes pipeline, see [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
+For information about creating a Kubernetes pipeline, go to [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
-![](./static/build-custom-delegate-images-with-third-party-tools-09.png)
-
-For information about creating a Terraform Plan, see [Provision with the Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/).
-
+For information about creating a Terraform Plan, go to [Provision with the Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step/).

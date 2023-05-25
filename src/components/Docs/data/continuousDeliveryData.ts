@@ -41,7 +41,7 @@ export const featuredTutorials: CardItem[] = [
         "",
       list: [
         {
-          title: "CD Tutorials",
+          title: "CD tutorials",
           module: MODULES.cd,
           description:
             "Learn how to set up CD pipelines to automate service deployments on your infrastructure.",
@@ -137,6 +137,13 @@ export const featuredTutorials: CardItem[] = [
               link: "/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq",
             },
           ]*/
+        },
+        {
+          title: "Supported CD features and integrations",
+          module: MODULES.cd,
+          description:
+            "See the list of tools and platforms you can use in Harness for deploying your applications.",
+          link: "/docs/continuous-delivery/integrations/cd-integrations",
         },
       ],
     },

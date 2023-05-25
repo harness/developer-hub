@@ -47,24 +47,26 @@ This option installs the 3rd party custom binaries on a new custom delegate imag
 
 ### Network proxy
 
-This option is detailed in this [document](/docs/platform/2_Delegates/manage-delegates/configure-delegate-proxy-settings.md).
+For network proxy details, go to [Configure delegate proxy settings](/docs/platform/2_Delegates/manage-delegates/configure-delegate-proxy-settings.md).
 
 ### CI-specific variables
 
-This option is detailed in this [document](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#install-the-delegate).
+For CI-specific variables, go to [Install the delegate](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#install-the-delegate).
 
 ### Custom certificates
 
-This option is detailed in this [document](/docs/platform/2_Delegates/secure-delegates/install-delegates-with-custom-certs.md).
+For custom certificates, go to [Install delegates with custom certificates](/docs/platform/2_Delegates/secure-delegates/install-delegates-with-custom-certs.md).
+
+### Group names
+
+The legacy delegate used `DELEGATE_GROUP_NAME` for group names. This environment is not valid in NextGen. Use `DELEGATE_NAME` for group names. 
 
 ## Additional installation approaches
 
 ### Install Docker delegate to Amazon ECS Fargate
 
-The Docker delegate can be installed into Amazon ECS Fargate using this instructions provided in this [document](./docker-delegate-to-ecs-fargate).
+You can install the Docker delegate into Amazon ECS Fargate. For more information, go to [Deploy a Docker delegate to Amazon ECS or AWS Fargate](./docker-delegate-to-ecs-fargate).
 
 ### Install a legacy Kubernetes delegate
 
-The legacy Kubernetes delegate, denoted `latest` container image tag, is used primarily in Harness FirstGen had the auto-upgrade setting ON by default and did not have the flexibility to turn OFF this setting if needed. This type of delegate is now deprecated for new Harness accounts. Here is a [document](./install-a-kubernetes-delegate) that shows how to install a legacy Kubernetes delegate.
-
-
+The legacy Kubernetes delegate, denoted `latest` container image tag, is used primarily in Harness FirstGen had the auto-upgrade setting ON by default and did not have the flexibility to turn OFF this setting if needed. This type of delegate is now deprecated for new Harness accounts. For more information, go to [Install a legacy Kubernetes delegate](./install-a-kubernetes-delegate).

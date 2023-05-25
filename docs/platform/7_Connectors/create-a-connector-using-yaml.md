@@ -59,7 +59,7 @@ Click **Create via YAML Builder**.
 
 Copy and paste the snippet for the Connector you want to create.
 
-For example, here is the snippet for a DockerHub Connector:
+For example, here is the snippet for a Docker Hub Connector:
 
 
 ```
@@ -87,7 +87,7 @@ Provide values for the credentials keys.
 
 For any password/key labels, paste the secret/key's `identifier` value.
 
-For example, using the `identifier` from the secret created earlier (`docsdockerhubpassword`), the DockerHub Connector would now be:
+For example, using the `identifier` from the secret created earlier (`docsdockerhubpassword`), the Docker Hub Connector would now be:
 
 
 ```

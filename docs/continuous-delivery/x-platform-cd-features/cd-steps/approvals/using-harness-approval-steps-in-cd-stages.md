@@ -84,11 +84,21 @@ The maximum timeout duration is 24 days.The timeout countdown appears when the s
 1. In **Approval Message**, add the message for the users in **Approvers**.
 
 2. Enable the **Include Pipeline execution history in approval details** option to show approvers the pipeline's execution history. This can help an approver compare the current execution info with historical data.
+3. Enable the **Auto-Reject previous deployments paused in this step on approval** option to reject old executions waiting for approval when a latest step is approved. 
+   
+   :::info Limitations:
+
+   * If you have two approval steps in a step group of a stage with the same step identifier, Harness won't be able to differentiate between the approval steps, and rejects previous deployments with the same identifier.
+   * If you change the services in a CD stage, Harness won't reject the previous pipeline waiting for approval because you added/updated the service in the pipeline.
+
+   :::
 
 ## Select approvers
 
 1. In **User Groups**, select the Harness user groups that will approve the step. For more information, go to [add and manage user groups](/docs/platform/User-Management/add-user-groups).
 2. In **Number of approvers that are required at this step**, enter how many of the users in the user groups must approve the step.
+   
+   ![](./static/adding-harness-approval-stages.png)
 
 ## Prevent approval by pipeline executor
 
@@ -122,9 +132,11 @@ For example, in a subsequent step's **Conditional Execution** settings, you coul
 
 In **Advanced**, you can use the following options:
 
-* [Step skip condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Step failure strategy settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-* [Select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
+* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## See also
 

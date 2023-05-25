@@ -90,6 +90,13 @@ import { MODULES } from "@site/src/constants"
             "Execute security chaos faults",
           link: "/docs/chaos-engineering/technical-reference/chaos-faults/security-chaos/",
         },
+        {
+          title: "Linux chaos faults",
+          module: MODULES.ce,
+          description:
+            "Execute Linux chaos faults",
+          link: "/docs/chaos-engineering/technical-reference/chaos-faults/linux/",
+        },
 ];
 
 // Featured Tutorials

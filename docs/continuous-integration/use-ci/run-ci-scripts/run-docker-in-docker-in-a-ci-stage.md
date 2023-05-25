@@ -25,7 +25,7 @@ Docker-in-Docker must run in privileged mode to work properly. Use caution becau
 
 These steps assume you are familiar with the following concepts:
 
-* Pipeline configuration, such as in the [build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+* Pipeline configuration, such as in the [build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
 * [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 
@@ -50,7 +50,7 @@ In the CI Build stage > **Infrastructure** tab, define the build infrastructure 
 In the Execution tab, add a [Background step](../manage-dependencies/background-step-settings.md) and configure it as follows:
 
 * **Name:** `dind_Service`
-* **Container Registry:** A DockerHub container registry connector.
+* **Container Registry:** A Docker Hub container registry connector.
 * **Image:** The image you want to use, such as [docker:dind](https://hub.docker.com/_/docker).
 * **Optional Configuration:** Select **Privileged**. This is required for Docker-in-Docker.
 
