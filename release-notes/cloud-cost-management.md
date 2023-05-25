@@ -16,7 +16,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - May 19, 2023, version 79300
+## Latest - May 19, 2023, version 79400
 
 ```mdx-code-block
 <Tabs>
@@ -49,7 +49,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   Previously, updating a budget group rendered its history irrelevant due to its dependence on child entities. However, this issue has been resolved by introducing support for modifying the budget group history during updates. 
 
-* AutoStopping — Adding multiple proxy configuration with custom domain in GCP proxy cannot be saved and displays error message. (CCM-12048)
+* An error occurred while attempting to save an AutoStopping rule with multiple proxy configurations and a custom domain in the GCP proxy. (CCM-12048)
 
   Saving the AutoStopping rule did not append custom domain providers for non-AWS cloud providers. This resulted in a validation error at the back-end. This issue has been resolved. The required field `custom_domain_provider` is now being set for every cloud provider.
 
