@@ -1,4 +1,3 @@
-
 ---
 title: Policy samples
 description: See sample policies and when to use them.
@@ -85,10 +84,10 @@ contains(userGroups) {
 }
 ```
 
-#### Admins want to enforce the connector naming conventions when users add a new connector
+#### Enforce the connector naming conventions when users add a new connector
 
-Use the following policy to enforce naming conventions for connectors created in the Harness account.
-You can apply this policy on Connector Save.
+Administrators can enforce naming conventions for connectors created in the Harness account.
+Here is a sample policy to do this, that can be applied **Connector Save**.
 
 ```TEXT
 package connectors
@@ -104,9 +103,10 @@ deny[msg] {
 
 ### Pipeline enforcement policy samples
 
-#### Admins want to prevent other developers from deploying into a non-compliant environment.
+#### Prevent other developers from deploying into a non-compliant environment.
 
-The below policy enforces `On Pipeline Run`. User's can enforce policies on which environment the developer can deploy to.
+Administrators can enforce policies to restrict the environments the developers can deploy to. 
+Here is a sample policy to do this that can be applied **On Pipeline Run**:
 
 ```TEXT
 package pipeline
@@ -146,9 +146,11 @@ contains(arr, elem) {
 }
 ```
 
-#### Enforcing the container registry selected for building and publishing code
+#### Enforce the container registry selected for building and publishing code
 
-Admin's want to restrict and prevent users from publishing images to public repos, only approve repos can be used. Below policy can be executed `On Pipeline Run`
+Administrators can restrict and prevent users from publishing images to public repos, only approve repos can be used. 
+
+Here is a sample policy that can be applied **On Pipeline Run**.
 
 ```TEXT
 package pipeline
@@ -178,7 +180,8 @@ deny[msg] {
 
 #### Prevent users from leveraging steps that are not allowed by the company
 
-Some users want to restrict developers from using specific steps in their pipelines. We can enforce this `on pipeline save` and `on pipeline run`.
+You can restrict developers from using specific steps in their pipelines. 
+Here is a sample policy to do this, that can be applied **on pipeline save** and **on pipeline run**.
 
 ```TEXT
 package pipeline
@@ -210,9 +213,9 @@ contains(arr, elem) {
 }
 ```
 
-#### Enforcing a deployment freeze via policy
+#### Enforce a deployment freeze via policy
 
-Admin's may configure a deployment freeze via Policy to supplement the formal deployment freeze feature. The policy route is great for one off freezes that are set by the business. This policy is set on `Pipeline Run`
+Administrators can configure a deployment freeze via policy to supplement the formal deployment freeze feature. The policy route is great for one off freezes that are set by the business. This policy is set on **Pipeline Run**.
 
 ```TEXT
 package pipeline
