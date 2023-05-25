@@ -17,7 +17,7 @@ aws_access_key_id=AKERI44QH8DHBEXAMPLE
 aws_secret_access_key=je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
 ```
 
-### To prepare multiple profiles for HCE ,follow the below mentioned steps:
+### Prepare multiple profiles for HCE
 
 #### 1. Prepare Kubernetes secret
 

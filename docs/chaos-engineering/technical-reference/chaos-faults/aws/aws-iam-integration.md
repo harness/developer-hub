@@ -1,20 +1,30 @@
 ---
 id: aws-iam-integration
-title: IAM Integration for AWS Authentication
+title: Using IAM roles for authentication
 sidebar_position: 2
 ---
-This section describes the steps you can take to execute chaos experiments with IAM integration.
 
-### Why should I use IAM integration for AWS authentication?
+There are two methods available for Harness CE to authenticate itself with AWS and obtain the necessary permissions that are specific to the targeted services:
+
+* **(Recommended) IAM Roles for Service Accounts (IRSA):** IRSA leverages an OpenID Connect (OIDC) provider for authentication. This documentation will focus specifically on this method, which is applicable when the execution plane is installed on an Amazon Elastic Kubernetes Service (EKS) cluster. 
+
+* **Kubernetes Secret:** This approach involves providing the necessary credentials through Kubernetes secrets. The advantage of this method is its compatibility with any cluster and platform. It is explained in the Notes section of the experiment docs.
+
+This topic focuses on using IRSA for AWS authentication.
+
+## Benefits of IAM integration
 
 IAM roles for service accounts provide the following benefits.
 
 - **Least privilege:** Using IAM roles for service accounts avoids extending permissions for the pods on the node, such as restricting the node IAM role for pods from making an AWS API call. You can scope IAM permissions to a service account, and only pods that use that service account will have access to those permissions.
+
 - **Credential isolation:** The experiment can only retrieve credentials for the IAM role associated with a particular service account. This experiment would not have access to credentials for other experiments belonging to other pods.
 
-Below are the steps to enable service accounts to access AWS resources.
+## Enable service accounts to access AWS resources
 
-#### Step 1: Create an IAM OpenID Connect (OIDC) provider for your cluster
+Follow the steps below to enable service accounts to access AWS resources.
+
+### Step 1: Create an IAM OpenID Connect (OIDC) provider for your cluster
 
 You must create an IAM OpenID Connect (OIDC) identity provider for your cluster with `eksctl`. This step is performed once for a cluster. For more information, go to [AWS documentation to set up an OIDC provider](https://docs.aws.amazon.com/eks/latest/userguide/enable-iam-roles-for-service-accounts.html).
 
@@ -51,7 +61,7 @@ eksctl utils associate-iam-oidc-provider --cluster litmus-demo --approve
 2021-09-07 14:54:05 [✔]  created IAM Open ID Connect provider for cluster "litmus-demo" in "us-west-1"
 ```
 
-#### Step 2: Create an IAM role and policy for your service account 
+### Step 2: Create an IAM role and policy for your service account 
 
 Create an IAM policy with the permissions that you would like the experiment to have. There are several ways to create a new IAM permission policy. Go to [AWS documentation to create IAM policy](https://docs.aws.amazon.com/eks/latest/userguide/create-service-account-iam-policy-and-role.html#create-service-account-iam-policy) to know more. Use the `eksctl` command to create the IAM permission policy.
 
@@ -65,7 +75,7 @@ eksctl create iamserviceaccount \
 --override-existing-serviceaccounts
 ```
 
-#### Step 3: Associate an IAM role with a service account
+### Step 3: Associate an IAM role with a service account
 
 Define the IAM role for every Kubernetes service account in your cluster that requires access to AWS resources by adding the following annotation to the service account.
 
@@ -89,7 +99,7 @@ eks.amazonaws.com/role-arn=arn:aws:iam::<ACCOUNT_ID>:role/<IAM_ROLE_NAME>
 2. For the cluster autoscaler experiment, annotate the service account in the `kube-system` namespace.
 :::
 
-#### Step 4: Verify that the experiment service account associates with the IAM
+### Step 4: Verify that the experiment service account associates with the IAM
 
 If you run an experiment and describe one of the pods, you will be able to verify whether the `AWS_WEB_IDENTITY_TOKEN_FILE` and `AWS_ROLE_ARN` environment variables exist.
 
@@ -103,7 +113,7 @@ AWS_ROLE_ARN=arn:aws:iam::<ACCOUNT_ID>:role/<IAM_ROLE_NAME>
 AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/token
 ```
 
-#### Step 5: Configure the experiment CR
+### Step 5: Configure the experiment CR
 
 Since you have already configured IAM for the experiment service account, you won't have to create a secret and mount it with the experiment CR (enabled by default). To remove the secret mount, remove the following lines from the experiment YAML.
 
