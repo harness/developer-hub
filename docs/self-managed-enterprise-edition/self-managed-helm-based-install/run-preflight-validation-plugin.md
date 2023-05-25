@@ -4,7 +4,7 @@ description: Learn how to run a pre-flight validation plugin to perform pre-inst
 # sidebar_position: 5
 ---
 
-The pre-flight validation plugin allows you to perform pre-install, pre-upgrade, post-install, and post-upgrade checks on your setup. This optional plugin assists with installations and upgrades for Harness Self-Managed Enterprise Edition. You can use the plugin to identify potential issues during deployment and ensure that all requirements are met before the deployment process begins. Suggestions are provided if the requirements are not met and the validation checks fail. You can also use the plugin architecture to build new validation checks for your custom setup.
+The pre-flight validation plugin allows you to perform pre-install, pre-upgrade, post-install, and post-upgrade checks on your setup. This optional plugin assists with installations and upgrades for Harness Self-Managed Enterprise Edition. You can use the plugin to identify potential issues during deployment and ensure that all requirements are met before the deployment process begins. Suggestions are provided if the requirements are not met and the validation checks fail.
 
 ## Requirements
 
@@ -21,7 +21,7 @@ To install the plugin using the GitHub repository, run the following command:
 helm plugin install git@github.com:harness/Plugins-helm.git
 ```
 
-Alternatively, for an [airgapped setup](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/), you can set the path to the directory where the plugin is installed on your system:
+Alternatively, for an [airgapped setup](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/), you can set the path to the directory where the plugin is downloaded on your system:
 
 First, download validator plugin tar file from the Harness Google Container Registry (GCR), and then run the following command to install the plugin:
 
