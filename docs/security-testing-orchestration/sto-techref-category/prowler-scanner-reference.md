@@ -187,7 +187,7 @@ In the **Advanced** settings, you can use the following options:
 * [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 
-## Security step settings
+## Security step settings (*deprecated*)
 
 You can set up Prowler scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 

@@ -23,7 +23,7 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 
 <!-- ============================================================================= -->
 
-## Custom Ingest step settings
+<details><summary>Custom Ingest step settings</summary>
 
 ### Scan settings
 
@@ -47,7 +47,11 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 
 <StoSettingProductConfigName />
 
-### Target settings
+</details>
+
+
+
+<details><summary>Target settings</summary>
 
 
 #### Type
@@ -90,6 +94,8 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 ```
 
 <StoSettingTargetVariant  />
+
+</details>
 
 
 <!-- ---------------------------------------------------------------------------- -->

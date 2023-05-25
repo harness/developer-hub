@@ -17,15 +17,35 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - May 23, 2023, version 79306
+## Latest - May 25, 2023, STO Core version 1.54.1
 
-### Continuous Integration
+### Security Testing Orchestration
+
+* This release include new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
+
+  * [AWS ECR](/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference)
+  * [AWS Security Hub](/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference)
+  * [Brakeman](/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference)
+  * [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference)
+  * [Nikto](/docs/security-testing-orchestration/sto-techref-category/nikto-scanner-reference)
+  * [Nmap](/docs/security-testing-orchestration/sto-techref-category/nmap-scanner-reference)
+  * [OWASP](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference)
+  * [Prowler](/docs/security-testing-orchestration/sto-techref-category/prowler-scanner-reference)
+
+* This release includes a minor UI update. In **Security Tests** > **Details**, the **Exempt** button has been renamed to **Request Exemption** to make the button's purpose more clear. (STO-5928)
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 23, 2023, version 79306
+
+##### Continuous Integration
 
 Added support for showing artifacts on the **Artifacts** tab in Harness Cloud and VMs. (CI-7218)
 
 Previously, this was supported only for Kubernetes builds. The artifacts are visible on the execution **Artifact** tab and the artifact details are visible on the step output window. 
 
-### Harness Platform
+##### Harness Platform
 
 * You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
@@ -49,7 +69,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 * AuthZ now considers the SAML setting that the user logged in to when multiple SAML settings are present and the user belongs to more than one of them. The user will be removed from any other SAML settings that the same user might have been part of and synced with Harness through previous SAML logins. (PL-32484) 
 
-### Service Reliability Management
+##### Service Reliability Management
 
 - Continuous Error Tracking (CET) is a separate module in Harness now and no longer available as a health source in SRM. To learn more about CET, go to the [Continuous Error Tracking Documentation](https://developer.harness.io/docs/continuous-error-tracking). (SRM-14701)
 
@@ -71,7 +91,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
   
   - Contributing SLO Issues: Errors in contributing SLOs are now reflected in the composite SLO, ensuring a complete picture of performance when individual components encounter problems.
 
-### Continuous Delivery
+##### Continuous Delivery
 
 - Support for the **Enforce Git experience for pipelines and templates** Git experience. (CDS-67885)
   
@@ -126,7 +146,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
   The Harness Delegate version 79307 is required for this feature.
 
-### Harness Delegate
+##### Harness Delegate
 
 - A new [`listDelegates` API](https://app.harness.io/gateway/ng/api/delegate-setup/listDelegates/accountIdentifier=string&orgIdentifier=string&projectIdentifier=string') enables you to list and filter delegates in your project, organization, or account. (PL-37981)
 
@@ -149,9 +169,6 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
    "delegateTags": "[]"
    }
    ```
-
-<details>
-<summary>2023 releases</summary>
   
 May 17, 2023, STO Core version 1.53.0
 
