@@ -513,8 +513,12 @@ If you do not want to use the GCP connector for GCR, you can use the platform-ag
 Use the following settings:
 
 - **Provider Type:** select **Other (Docker V2 compliant)**.
-  - Example: https://1234567890.dkr.ecr.us-east-2.amazonaws.com.
-- **Authentication:** select **Username and Password**.
+- **URL:** Enter the GCR URL for your GCP account.
+  - Example: `https://gcr.io/my-account`.
+- **Authentication:**
+  - **Username:** Enter `_token`. 
+    - The usage of `_token` as a username for GCP authentication typically occurs when using certain command-line utilities or API clients that require an access token instead of a traditional username and password.
+  - **Password:** Enter the output of the `gcloud auth print-access-token` command using a Harness secret.
 
 Ensure that the GCP IAM user you use has the correct permissions for pulling from GCR.
 
