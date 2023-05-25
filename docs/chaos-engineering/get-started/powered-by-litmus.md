@@ -263,7 +263,9 @@ This section describes the differences between Harness Chaos Engineering (CE ) a
     </tr>
 </table>
 
-### [Kubernetes pod-level chaos faults](/docs/category/pod)
+### Kubernetes pod-level chaos faults
+
+Go to [Pod faults](/docs/category/pod) for more information.
 <table>
   <tr>
         <td><b>Feature</b></td>
@@ -377,7 +379,9 @@ This section describes the differences between Harness Chaos Engineering (CE ) a
     </tr>
 </table>
 
-### [Kubernetes node-level chaos faults](/docs/category/node)
+### Kubernetes node-level chaos faults
+
+Go to [Node faults](/docs/category/node) for more information.
 
 <table>
   <tr>
@@ -442,7 +446,9 @@ This section describes the differences between Harness Chaos Engineering (CE ) a
     </tr>
   </table>
 
-### [AWS chaos faults](../technical-reference/chaos-faults/aws)
+### AWS chaos faults
+
+Go to [Chaos faults for AWS](/docs/chaos-engineering/technical-reference/chaos-faults/aws) for more information.
 <table>
   <tr>
         <td><b>Feature</b></td>
@@ -636,7 +642,10 @@ This section describes the differences between Harness Chaos Engineering (CE ) a
     </tr>
   </table>
 
-### [AWS serverless chaos faults](../technical-reference/chaos-faults/aws) 
+### AWS serverless chaos faults
+
+Go to [Chaos faults for AWS](/docs/chaos-engineering/technical-reference/chaos-faults/aws) for more information.
+
 <table>
   <tr>
         <td><b>Feature</b></td>
@@ -675,7 +684,9 @@ This section describes the differences between Harness Chaos Engineering (CE ) a
     </tr>
 </table>
 
-### [GCP chaos faults](../technical-reference/chaos-faults/gcp)
+### GCP chaos faults
+
+Go to [Chaos faults for GCP](/docs/chaos-engineering/technical-reference/chaos-faults/gcp) for more information.
 <table>
   <tr>
         <td><b>Feature</b></td>
@@ -704,7 +715,9 @@ This section describes the differences between Harness Chaos Engineering (CE ) a
     </tr>
 </table>
 
-### [Azure chaos faults](../technical-reference/chaos-faults/azure)
+### Azure chaos faults
+
+Got to [Chaos faults for Azure](/docs/chaos-engineering/technical-reference/chaos-faults/azure) for more information.
 <table>
   <tr>
         <td><b>Feature</b></td>
@@ -748,7 +761,9 @@ This section describes the differences between Harness Chaos Engineering (CE ) a
     </tr>
 </table>
 
-### [VMware chaos faults](../technical-reference/chaos-faults/vmware)
+### VMware chaos faults
+
+Go to [Chaos faults for VMware](/docs/chaos-engineering/technical-reference/chaos-faults/vmware) for more information.
 <table>
   <tr>
         <td><b>Feature</b></td>
