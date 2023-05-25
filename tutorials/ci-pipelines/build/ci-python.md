@@ -22,79 +22,11 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 <CISignupTip />
 
-## Build and run tests
-
-Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
-
-```mdx-code-block
-<Tabs>
-<TabItem value="Harness Cloud">
-```
-
-```yaml
-              - step:
-                  type: Run
-                  name: npm test
-                  identifier: npm_test
-                  spec:
-                    shell: Sh
-                    command: |-
-                      npm install
-                      npm run build --if-present
-                      npm test
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - report.xml
-```
-
-```mdx-code-block
-</TabItem>
-
-<TabItem value="Self-hosted">
-```
-
-```yaml
-              - step:
-                  type: Run
-                  name: npm test
-                  identifier: npm test
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: node:latest
-                    shell: Sh
-                    command: |-
-                      npm install
-                      npm run build --if-present
-                      npm test
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - report.xml
-```
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
-
-### Visualize test results
-
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/),  make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
-
-```yaml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - report.xml
-```
-
 ## Install dependencies
 
-Use **Run** steps to install dependencies in the build environment. [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies. You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
+Use **Run** steps to install dependencies in the build environment.
+
+[Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) can be used to run dependent services that are needed by steps in the same stage.
 
 ```mdx-code-block
 <Tabs>
@@ -109,7 +41,10 @@ Use **Run** steps to install dependencies in the build environment. [Plugin step
                   spec:
                     shell: Sh
                     command: |-
-                      npm install express@4.18.2 --no-save
+                      python -m pip install --upgrade pip
+                      pip install -r requirements.txt
+                    envVariables:
+                      PIP_CACHE_DIR: "/root/.cache"
 ```
 
 ```mdx-code-block
@@ -125,40 +60,75 @@ Use **Run** steps to install dependencies in the build environment. [Plugin step
                   name: Dependencies
                   spec:
                     connectorRef: account.harnessImage
-                    image: node:14.18.2-alpine
+                    image: python:latest
                     command: |-
-                      npm install express@14.18.2 --no-save
+                      python -m pip install --upgrade pip
+                      pip install -r requirements.txt
 ```
 
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ```
+
 ## Cache dependencies
+
+Add caching to your stage.
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="cloud" label="Harness Cloud" default>
+<TabItem value="Harness Cloud">
 ```
 
-With Harness Cloud build infrastructure, use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) to automate caching of Node dependencies. Add `caching.enabled.true` to your `stage.spec`.
+Cache your Python module dependencies with [**Cache Intelligence**](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
+
+Add caching to your stage.
 
 ```yaml
     - stage:
         spec:
           caching:
             enabled: true
+            key: cache-{{ checksum "requirements.txt" }}
+            paths:
+              - "/root/.cache"
+          sharedPaths:
+            - /root/.cache
 ```
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+</TabItem>
+
+<TabItem value="Self-hosted">
 ```
 
 With self-hosted build infrastructures, you can:
 
-* [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
-* [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
+ * [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
+ * [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
+
+<details>
+<summary>Python cache key and path requirements</summary>
+
+Python pipelines typically reference `requirements.txt` in **Save Cache** and **Restore Cache** steps, for example:
+
+```yaml
+                  spec:
+                    key: cache-{{ checksum "requirements.txt" }}
+```
+
+Additionally, `spec.sourcePaths` must include the python cache (typically `/root/.cache`) in the **Save Cache** step, for example:
+
+```yaml
+                  spec:
+                    sourcePaths:
+                      - "/root/.cache"
+```
+
+</details>
+
+<details>
+<summary>YAML example: Save and restore cache steps</summary>
 
 Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
 
@@ -172,13 +142,12 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     connectorRef: AWS_Connector
                     region: us-east-1
                     bucket: your-s3-bucket
-                    key: cache-{{ checksum filepath1 }}
+                    key: cache-{{ checksum "requirements.txt" }}
                     archiveFormat: Tar
               - step:
                   type: Run
-                  ...
-              - step:
-                  type: BuildAndPushDockerRegistry
+                    envVariables:
+                      PIP_CACHE_DIR: "/root/.cache"
                   ...
               - step:
                   type: SaveCacheS3
@@ -188,16 +157,80 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     connectorRef: AWS_Connector
                     region: us-east-1
                     bucket: your-s3-bucket
-                    key: cache-{{ checksum filepath1 }}
+                    key: cache-{{ checksum "requirements.txt" }}
                     sourcePaths:
-                      - directory1
-                      - directory2
+                      - "/root/.cache"
                     archiveFormat: Tar
+```
+ 
+</details>
+
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+## Run tests
+
+Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Harness Cloud">
+```
+
+```yaml
+              - step:
+                  type: Run
+                  name: Test
+                  identifier: test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      pip install pytest
+                      pytest tests.py --junit-xml=report.xml
+                    envVariables:
+                      PIP_CACHE_DIR: /root/.cache
 ```
 
 ```mdx-code-block
-  </TabItem>
+</TabItem>
+
+<TabItem value="Self-hosted">
+```
+
+```yaml
+              - step:
+                  type: Run
+                  name: Test
+                  identifier: test
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: python:latest
+                    shell: Sh
+                    command: |-
+                      python -m pip install --upgrade pip
+                      pip install -r requirements.txt
+                      pip install pytest
+                      pytest tests.py --junit-xml=report.xml
+```
+
+```mdx-code-block
+</TabItem>
 </Tabs>
+```
+
+### Visualize test results
+
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
+
+```yaml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - report.xml
 ```
 
 ## Specify version
@@ -207,32 +240,33 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 <TabItem value="Harness Cloud">
 ```
 
-Node is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+Python is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-If your application requires a specific Node version, add a **Run** step to install it.
+If your application requires a specific Python version, add a **Run** step to install it.
+
+Use the [setup-python](https://github.com/actions/setup-python) action in a [GitHub Actions step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/) to install the required Python version.
+
+You will need a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token), stored as a [secret](/docs/platform/Secrets/add-use-text-secrets), with read-only access for GitHub authentication.
 
 <details>
-<summary>Install one Node version</summary>
+<summary>Install one Python version</summary>
 
 ```yaml
               - step:
-                  type: Run
-                  name: Install Node
-                  identifier: installnode
+                  type: Action
+                  name: Install python
+                  identifier: installpython
                   spec:
-                    shell: Sh
-                    envVariables:
-                      NODE_VERSION: 18.16.0
-                    command: |-
-                      mkdir $HOME/nodejs
-                      curl -L https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz | tar xJ -C $HOME/nodejs
-                      export PATH=$HOME/nodejs/node-v${NODE_VERSION}-linux-x64/bin:$PATH
+                    uses: actions/setup-python@v4
+                    with:
+                      python-version: 3.10.10
+                      token: <+ secrets.getValue("github_token") >
 ```
 
 </details>
 
 <details>
-<summary>Install multiple Node versions</summary>
+<summary>Install multiple Python versions</summary>
 
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
 
@@ -240,26 +274,23 @@ If your application requires a specific Node version, add a **Run** step to inst
     - stage:
         strategy:
           matrix:
-            nodeVersion:
-              - 18.16.0
-              - 20.2.0
+            pythonVersion:
+              - 3.11.2
+              - 3.10.10
 ```
 
 2. Reference the matrix variable in your steps.
 
 ```yaml
               - step:
-                  type: Run
-                  name: Install node
-                  identifier: installnode
+                  type: Action
+                  name: Install python
+                  identifier: installpython
                   spec:
-                    shell: Sh
-                    command: |-
-                      mkdir $HOME/nodejs
-                      curl -L https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz | tar xJ -C $HOME/nodejs
-                      export PATH=$HOME/nodejs/node-v${NODE_VERSION}-linux-x64/bin:$PATH
-                    envVariables:
-                      NODE_VERSION: <+matrix.nodeVersion>
+                    uses: actions/setup-python@v4
+                    with:
+                      python-version: <+ stage.matrix.pythonVersion >
+                      token: <+ secrets.getValue("github_token") >
 ```
 
 </details>
@@ -270,28 +301,28 @@ If your application requires a specific Node version, add a **Run** step to inst
 <TabItem value="Self-hosted">
 ```
 
-Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in your steps. There is no need for a separate install step when using Docker.
+Specify the desired [Python Docker image](https://hub.docker.com/_/python) tag in your steps. There is no need for a separate install step when using Docker.
 
 <details>
-<summary>Use a specific Node version</summary>
+<summary>Use a specific Python version</summary>
 
 ```yaml
               - step:
                   type: Run
-                  name: Node Version
-                  identifier: nodeversion
+                  name: Python Version
+                  identifier: pythonversion
                   spec:
                     connectorRef: account.harnessImage
-                    image: node:18.16.0
+                    image: python:3.10.10
                     shell: Sh
                     command: |-
-                      npm version
+                      python --version
 ```
 
 </details>
 
 <details>
-<summary>Use multiple node versions</summary>
+<summary>Use multiple Python versions</summary>
 
 1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
 
@@ -299,9 +330,9 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
     - stage:
         strategy:
           matrix:
-            nodeVersion:
-              - 18.16.0
-              - 20.2.0
+            pythonVersion:
+              - 3.11.2
+              - 3.10.10
 ```
 
 2. Reference the matrix variable in the `image` field of your steps.
@@ -309,14 +340,14 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
 ```yaml
               - step:
                   type: Run
-                  name: Node Version
-                  identifier: nodeversion
+                  name: Python Version
+                  identifier: pythonversion
                   spec:
                     connectorRef: account.harnessImage
-                    image: node:<+matrix.nodeVersion>
+                    image: python:<+ stage.matrix.pythonVersion >
                     shell: Sh
                     command: |-
-                      npm version
+                      python --version
 ```
 
 </details>
@@ -328,71 +359,300 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
 
 ## Full pipeline examples
 
-Here's a YAML example of a pipeline that:
+Full pipeline examples based on the steps above.
 
-1. Tests a Node code repo.
-2. Builds and pushes an image to Docker Hub.
+```mdx-code-block
+<Tabs>
+<TabItem value="Harness Cloud">
+```
 
-This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence), and [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts).
+This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
-If you copy this example, replace the bracketed values with corresponding values for your Harness project, connector IDs, account/user names, and repo names.
+If you copy this example, replace the bracketed values with corresponding values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and repository name.
+
+Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
-<summary>Pipeline YAML</summary>
+<summary>Pipeline with default Python version</summary>
 
 ```yaml
 pipeline:
-  name: nodejs-sample
-  identifier: nodejssample
-  projectIdentifier: [project-ID]
+  name: Test a Python app
+  identifier: Test_a_Python_app
+  projectIdentifier: default
   orgIdentifier: default
-  tags: {}
   stages:
     - stage:
-        name: Build Node App
-        identifier: Build_Node_App
+        name: Test
+        identifier: test
         description: ""
         type: CI
         spec:
           cloneCodebase: true
           caching:
             enabled: true
+            key: cache-{{ checksum "requirements.txt" }}
+            paths:
+              - "/root/.cache"
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  identifier: dependencies
+                  name: Dependencies
+                  spec:
+                    shell: Sh
+                    command: |-
+                      python -m pip install --upgrade pip
+                      pip install -r requirements.txt
+                    envVariables:
+                      PIP_CACHE_DIR: "/root/.cache"
+              - step:
+                  type: Run
+                  name: Test
+                  identifier: test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      pip install pytest
+                      pytest tests.py --junit-xml=report.xml
+                    envVariables:
+                      PIP_CACHE_DIR: /root/.cache
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - report.xml
           platform:
             os: Linux
             arch: Amd64
           runtime:
             type: Cloud
             spec: {}
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: npm test
-                  identifier: npm_test
-                  spec:
-                    shell: Sh
-                    command: |-
-                      npm install
-                      npm run build --if-present
-                      npm test
-              - step:
-                  type: BuildAndPushDockerRegistry
-                  name: BuildAndPushDockerRegistry_1
-                  identifier: BuildAndPushDockerRegistry_1
-                  spec:
-                    connectorRef: [Docker-connector-ID]
-                    repo: [Docker-Hub-username]/[Docker-repo]
-                    tags:
-                      - <+pipeline.sequenceId>
+          sharedPaths:
+            - /root/.cache
   properties:
     ci:
       codebase:
-        connectorRef: [code-repo-connector]
-        repoName: [scm-account-name]/[repo-name]
+        connectorRef: [your-code-repo-connector-ID] # replace with your connector ID
+        repoName: [your-repository-name] # replace with your repository name
         build: <+input>
 ```
 
 </details>
+
+<details>
+<summary>Pipeline with multiple Python versions</summary>
+
+```yaml
+pipeline:
+  name: Test a Python app
+  identifier: Test_a_Python_app
+  projectIdentifier: default
+  orgIdentifier: default
+  stages:
+    - stage:
+        name: Test
+        identifier: test
+        description: ""
+        type: CI
+        strategy:
+          matrix:
+            pythonVersion:
+              - 3.11.2
+              - 3.10.10
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            key: cache-{{ checksum "requirements.txt" }}
+            paths:
+              - "/root/.cache"
+          execution:
+            steps:
+              - step:
+                  type: Action
+                  name: Install python
+                  identifier: installpython
+                  spec:
+                    uses: actions/setup-python@v4
+                    with:
+                      python-version: <+ stage.matrix.pythonVersion >
+                      token: <+ secrets.getValue("github_token") >
+              - step:
+                  type: Run
+                  identifier: dependencies
+                  name: Dependencies
+                  spec:
+                    shell: Sh
+                    command: |-
+                      python -m pip install --upgrade pip
+                      pip install -r requirements.txt
+                    envVariables:
+                      PIP_CACHE_DIR: "/root/.cache"
+              - step:
+                  type: Run
+                  name: Test
+                  identifier: test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      pip install pytest
+                      pytest tests.py --junit-xml=report.xml
+                    envVariables:
+                      PIP_CACHE_DIR: /root/.cache
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - report.xml
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          sharedPaths:
+            - /root/.cache
+  properties:
+    ci:
+      codebase:
+        connectorRef: [your-code-repo-connector-ID] # replace with your connector ID
+        repoName: [your-repository-name] # replace with your repository name
+        build: <+input>
+```
+
+</details>
+
+```mdx-code-block
+</TabItem>
+
+<TabItem value="Self-hosted">
+```
+
+Replace the bracketed values with corresponding values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector), kubernetes namespace, and repository name.
+
+Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
+
+<details>
+<summary>Pipeline with one specific Python version</summary>
+
+Here is a single-stage pipeline, with steps that use Python 3.10.10.
+
+```yaml
+pipeline:
+  identifier: Test a Python app
+  name: Test_a_Python_app
+  orgIdentifier: default
+  projectIdentifier: default
+  stages:
+    - stage:
+        identifier: default
+        name: default
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Test
+                  identifier: test
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: python:3.10.10
+                    shell: Sh
+                    command: |-
+                      pip install pytest
+                      pytest tests.py --junit-xml=report.xml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "report.xml"
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: [your-kube-connector-ID] # replace with your connector ID
+              namespace: [your-kube-namespace] # replace with your namespace
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+        type: CI
+  properties:
+    ci:
+      codebase:
+        connectorRef: [your-code-repo-connector-ID] # replace with your connector ID
+        repoName: [your-repository-name] # replace with your repository name
+        build: <+input>
+```
+
+</details>
+
+<details>
+<summary>Pipeline with multiple Python versions</summary>
+
+Here is a single-stage pipeline, with a matrix looping strategy for Python versions 3.11.2 and 3.10.10.
+
+```yaml
+pipeline:
+  identifier: Test a Python app
+  name: Test_a_Python_app
+  orgIdentifier: default
+  projectIdentifier: default
+  stages:
+    - stage:
+        strategy:
+          matrix:
+            pythonVersion:
+              - 3.11.2
+              - 3.10.10
+        identifier: default
+        name: default
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Test
+                  identifier: test
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: python:<+ stage.matrix.pythonVersion >
+                    shell: Sh
+                    command: |-
+                      python -m pip install --upgrade pip
+                      pip install -r requirements.txt
+                      pip install pytest
+                      pytest tests.py --junit-xml=report.xml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "report.xml"
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: [your-kube-connector-ID] # replace with your connector ID
+              namespace: [your-kube-namespace] # replace with your namespace
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+        type: CI
+  properties:
+    ci:
+      codebase:
+        connectorRef: [your-code-repo-connector-ID] # replace with your connector ID
+        repoName: [your-repository-name] # replace with your repository name
+        build: <+input>
+```
+
+</details>
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 ## Next steps
 
