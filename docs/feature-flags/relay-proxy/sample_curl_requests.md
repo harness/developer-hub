@@ -8,7 +8,7 @@ These requests can be useful to debug information coming from Harness SaaS or fr
 
 ## Startup Requests
 
-These requests are made by the Relay Proxy to Harness SaaS on startup. They are also made by connected sdks to the Relay Proxy when they startup. As such they can be used to help diagnose connection issues either outbound from the Relay Proxy or inbound to it.
+These requests are made by the Relay Proxy to Harness SaaS on startup. They are also made by connected SDKs to the Relay Proxy when they startup. As such, they can be used to help diagnose connection issues either outbound from the Relay Proxy or inbound to it.
 
 On startup SDKS makes these four requests, and the Relay Proxy makes these four requests for each environment you have configured it to connect to:
 - /auth
