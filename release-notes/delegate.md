@@ -53,7 +53,7 @@ This release introduces the following new features and enhancements:
   <TabItem value="Early access">
 ```
 
-- New delegate metrics are available. This functionality is behind a feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. (PL-37908)
+- New delegate metrics are available. This functionality is behind a feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. (PL-37908, PL-38538)
 
    Harness captures delegate agent metrics for delegates shipped on immutable image types. The following new delegate agent metrics are available with the feature flag:
   
@@ -65,7 +65,7 @@ This release introduces the following new features and enhancements:
    | `delegate_connected` | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
    | `resource_consumption_above_threshold` | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. |
 
-   Enable the feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST` to new delegate agent metrics. When this feature flag is enabled, Harness will capture the metrics.
+   Enable the feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST` to use the new delegate agent metrics. When this feature flag is enabled, Harness will capture the metrics. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
 
 ```mdx-code-block
   </TabItem>
@@ -76,7 +76,7 @@ This release includes the following fixes:
 
 - Deployments consistently failed during the same stage. (PL-38247)
 
-   This issue was fixed by updating the delegate YAML. Startup now fails when you uses a legacy delegate image with an immutable delegate.
+   This issue was fixed by updating the delegate YAML. Startup now fails when you use a legacy delegate image with an immutable delegate.
 
 - Delegates were intermittently unavailable during upgrade. (PL38283)
   

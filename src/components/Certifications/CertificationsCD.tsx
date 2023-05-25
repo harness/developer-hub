@@ -215,10 +215,11 @@ export default function CertificationsCD() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide - Coming Soon</h3>
+                  <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy and maintain CD
-                    projects and the overall Harness Platform.
+                    projects and the overall Harness Platform. This exam builds upon
+                    the <a href="/certifications/continuous-delivery?lvl=developer">CD Developer Certification</a>. 
                   </div>
                   <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>

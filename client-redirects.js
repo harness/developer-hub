@@ -33,6 +33,14 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },
     //===================================================================================
+
+    // Created by Charanya Jayaraman to fix CCM broken link on May 23 2023
+
+    {
+      from:"/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/auto-stopping-rules",
+      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/auto-stopping-rules",
+    },
+
     // Created by RashmiNandaSahoo to fix gitx broken link on May 22 2023
 
     {
@@ -2792,6 +2800,16 @@ module.exports = {
     {
       from: "/docs/continuous-integration/ci-technical-reference/ci-git-clone-step",
       to: "/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline",
+    },
+    
+    // Created by bfisher for SMP PR 1837 on May 23, 2023
+    {
+      from: "/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm",
+      to: "/docs/self-managed-enterprise-edition/back-up-and-restore-helm",
+    },
+    {
+      from: "/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem",
+      to: "/docs/self-managed-enterprise-edition/monitor-harness-on-prem",
     },
   ],
 };

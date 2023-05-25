@@ -66,7 +66,7 @@ repo_gpgcheck=0
 gpgkey=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 EOM
 
-// Install google-cloud-cli and google-cloud-cli-gke-gcloud-auth-plugin
+# Install google-cloud-cli and google-cloud-cli-gke-gcloud-auth-plugin
 microdnf install google-cloud-cli
 microdnf install google-cloud-cli-gke-gcloud-auth-plugin
 ```

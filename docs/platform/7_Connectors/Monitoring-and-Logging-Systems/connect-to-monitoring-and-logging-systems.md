@@ -188,7 +188,8 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
    
 
 :::note
-   The trailing forward slash after `api` (`api/`) is mandatory. Also, if your URL has `v1` at the end of it, remove `v1`.
+   The trailing forward slash after `api` (`api/`) is mandatory.
+   
    Your URL should look like one of the following : 
       - `https://app.datadoghq.com/api/`
       - `https://us3.datadoghq.com/api/`

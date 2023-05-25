@@ -4,6 +4,7 @@
 
 - Basic terminal skills
 - Intermediate understanding of on-premise or cloud architecture
+- This exam builds upon the [CD Developer Exam](/certifications/continuous-delivery?lvl=developer)
 
 ## Exam Details
 | Exam Type                               | Duration         |
