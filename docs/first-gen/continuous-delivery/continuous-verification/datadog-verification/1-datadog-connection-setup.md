@@ -43,7 +43,7 @@ Simply take the URL from the Datadog dashboard, such as `https://app.datadoghq.c
 
 For example, `https://app.datadoghq.com/api/v1/`.
 
-The trailing forward slash after `v1` (`v1/`) in mandatory.
+The trailing forward slash after `v1` (`v1/`) is mandatory.
 
 ### Step 4: Encrypted API Key
 

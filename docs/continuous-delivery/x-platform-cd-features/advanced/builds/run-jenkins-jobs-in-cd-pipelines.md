@@ -81,11 +81,11 @@ If this setting is enabled then `Unstable` statuses will be considered as `Succe
 
 In **Advanced**, you can use the following options:
 
-* [Delegate Selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## Captured environment variables from Jenkins builds
 
@@ -146,3 +146,7 @@ You can copy expressions for the job outputs from the **Output** tab of the Jenk
 To access Jenkins job's environment variables from the step output, use:
 
 `<+pipeline.stages.[STAGE_IDENTIFIER].spec.execution.steps.[STEP_IDENTIFIER].build.envVars.[ENV_VAR_FIELD]>`
+
+When the step is inside a step group, use:
+
+`<+pipeline.stages.[STAGE_IDENTIFIER].spec.execution.steps.[STEP_GROUP_IDENTIFIER].steps.[STEP_IDENTIFIER].build.envVars.[ENV_VAR_FIELD]>`

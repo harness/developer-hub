@@ -58,7 +58,7 @@ Add each tag separately.
 
 :::tip
 
-s are a useful way to define tags. For example, `<+pipeline.sequenceId>` is a built-in Harness expression. It represents the Build ID number, such as `9`. You can use the same tag in another stage to reference the same build by its tag.
+Harness expressions are a useful way to define tags. For example, `<+pipeline.sequenceId>` is a built-in Harness expression. It represents the Build ID number, such as `9`. You can use the same tag in another stage to reference the same build by its tag.
 
 :::
 
@@ -104,8 +104,8 @@ Specify the user ID to use to run all processes in the pod if running in contain
 
 Set maximum resource limits for the resources used by the container at runtime:
 
-* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`.
-* * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 ### Timeout
 
@@ -125,7 +125,7 @@ You can find the following settings on the **Advanced** tab in the step settings
 
 After saving the pipeline, select **Run** to run the pipeline.
 
-On the [build details page](../view-your-builds/viewing-builds.md), you can see the logs for each step as they run.
+On the [build details page](../viewing-builds.md), you can see the logs for each step as they run.
 
 ![](./static/build-and-push-to-gcr-516.png)
 
@@ -136,7 +136,7 @@ If the build succeeds, you can find your pushed image on GCR.
 ## See also
 
 * [Run step settings](../run-ci-scripts/run-step-settings.md)
-* [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+* [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 * [Delegate overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 * [Harness key concepts](../../../getting-started/learn-harness-key-concepts.md)

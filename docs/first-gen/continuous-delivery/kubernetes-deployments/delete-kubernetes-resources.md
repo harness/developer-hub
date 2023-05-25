@@ -101,7 +101,7 @@ If you apply the ignore comment `# harness.io/skip-file-for-deploy` to a resou
 
 For resources in a Helm chart, provide the path and name of the file from the root folder of the repo.
 
-For example, the following Service uses a remote manifest that points to a Helm chart at **https://github.com/helm/charts.git/stable/chartsmuseum**. In the chart's **templates** folder, there is a **deployment.yaml** file. In **File Path**, you reference **templates/deployment.yaml**.
+For example, the following Service uses a remote manifest that points to a Helm chart at `github.com/helm/charts.git/stable/chartsmuseum`. In the chart's **templates** folder, there is a **deployment.yaml** file. In **File Path**, you reference **templates/deployment.yaml**.
 
 ![](./static/delete-kubernetes-resources-118.png)
 

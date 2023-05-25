@@ -43,7 +43,7 @@ The following is a detailed list of exam objectives:
 | 1.11 | Harness Cloud - Test Build Infrastructure On Harness Cloud |
 | 1.12 | Define Connectors (You Can Use Source Providers, Artifact Repos, Cloud Providers, Etc) |
 | 1.13 | Configure A Git Connector |
-| 1.14 | Configure A Dockerhub Connector |
+| 1.14 | Configure A Docker Hub Connector |
 | 1.15 | Understand the Harness Delegate Role For The CI Capability |
 | 1.16 | Describe Pipeline Studio Vs Yaml Structure |
 | 1.17 | Secrets Management - Describe Possible Usages For Harness CI |

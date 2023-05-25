@@ -1,7 +1,11 @@
 ---
 title: Upgrade the Helm chart
 description: Learn how to upgrade the Helm chart for Harness Self-Managed Enterprise Edition. 
+<<<<<<< HEAD
 # sidebar_position: 7
+=======
+sidebar_position: 6
+>>>>>>> main
 ---
 
 Use the following instructions to upgrade the chart to a new release. 

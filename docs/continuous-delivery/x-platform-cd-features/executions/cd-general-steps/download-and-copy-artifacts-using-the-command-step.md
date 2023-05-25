@@ -26,6 +26,12 @@ For SSH and WinRM, the Command step(s) is added automatically when you select th
 
 Also, the looping strategy needed to run the Command step on each target host is set automatically to **Repeat**.
 
+:::info Note
+
+The Command step supports only the **Repeat** looping strategy.
+
+:::
+
 You can edit or add any automatically-added Command step.
 
 For more information, go to:
@@ -111,6 +117,12 @@ For SSH or WinRM deployments, the path `$HOME/<+service.name>/<+env.name>` is ad
 For example, a destination path for a stage that deploys **todolist.war** using a service named **tutorial-service-ssh2** to an environment named **ssh-tutorial-env** will look like this:
 
 `$HOME/tutorial-service-ssh2/ssh-tutorial-env/todolist.war`
+
+:::note
+
+Always use `$` in the beginning of the path when you reference an environment variables in a Command step.
+
+:::
 
 You can use any path on the target hosts you want. Harness will not create the path if it does not exist.
 

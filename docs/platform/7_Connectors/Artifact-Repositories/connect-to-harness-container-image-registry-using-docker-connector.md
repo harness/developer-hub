@@ -22,9 +22,9 @@ You can override the default behavior at the Account level and the Stage level:
 
 Since you and the Harness Delegate are already connected to Harness securely, there are no additional connections to worry about.
 
-:::note
+:::info
 
-If you choose to override the `harnessImageConnector`, you may also avoid triggering any rate limiting or throttling.This topic explains how to set up the Docker Connector to connect to the Harness Container Image Registry.
+If you choose to override the `harnessImageConnector`, you may also avoid triggering any rate limiting or throttling. This topic explains how to set up the Docker Connector to connect to the Harness Container Image Registry.
 
 :::
 
@@ -69,7 +69,7 @@ You must create the Harness Docker Connector at the Account level. Make sure tha
 3. In **Name**, enter a name for this connector.
    Harness automatically generates the corresponding Id ([entity identifier](../../20_References/entity-identifier-reference.md)).
    If you want to override the account-level connector, modify the Id and set it to `harnessImage`. You must use the Id `harnessImage`.
-   Harness gives precedence to the connector with the `harnessImage` identifier, and uses it to pull from the Harness Container Image Registry, as opposed to pulling from DockerHub directly.
+   Harness gives precedence to the connector with the `harnessImage` identifier, and uses it to pull from the Harness Container Image Registry, as opposed to pulling from Docker Hub directly.
 4. Click **Continue**.
 
 ### Step 2: Enter credentials
@@ -86,7 +86,7 @@ Click **Continue**.
 
 :::tip
 
-By default, Harness uses anonymous access to [Harness DockerHub](https://hub.docker.com/u/harness) to pull images. If you experience rate limiting issues when pulling images anonymously, select **Username and Password** for **Authentication** and provide login details.
+By default, Harness uses anonymous access to [Harness Docker Hub](https://hub.docker.com/u/harness) to pull images. If you experience rate limiting issues when pulling images anonymously, select **Username and Password** for **Authentication** and provide login details.
 
 :::
 

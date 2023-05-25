@@ -2,15 +2,11 @@
 title: Deploy the relay proxy
 description: This topic describes how to deploy and start the Relay Proxy.
 sidebar_position: 20
-helpdocs_topic_id: rae6uk12hk
-helpdocs_category_id: 0dqv0mh8xu
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 The Relay Proxy enables your apps to connect directly to Feature Flag services without having to make a significant number of outbound connections to FF services. The Relay Proxy establishes a connection to the Feature Flags configuration data and relays that connection to clients in an organization's network.
 
-This topic describes how to deploy and start the [Relay Proxy](relay-proxy.md). For an overview, go to the [Relay Proxy Overview](relay-proxy.md).
+This topic describes how to deploy and start the Relay Proxy. For an overview, go to the [Relay Proxy Overview](relay-proxy.md).
 
 ## Requirements
 
@@ -27,18 +23,16 @@ in their environment.
 
 ## Configure the Relay Proxy
 
-You can start the Relay Proxy by pulling the `harness/ff-proxy` image from [Docker](https://hub.docker.com/r/harness/ff-proxy).
+To configure the Relay Proxy:
 
-1. Pull the latest Relay Proxy [Docker image](https://hub.docker.com/r/harness/ff-proxy).  
+1. Pull the latest [Harness Relay Proxy image](https://hub.docker.com/r/harness/ff-proxy) from Docker.  
   
-`docker pull harness/ff-proxy`
+    `docker pull harness/ff-proxy`
 
-2. View the configuration variables by running the following command:  
+2. View all the configuration variables.  
   
-`docker run harness/ff-proxy`  
+    `docker run harness/ff-proxy`  
   
-This prints all the configuration variables. 
-
 <details>
 <summary>Details of /app/ff-proxy Configuration variables:</summary>
 
@@ -147,60 +141,86 @@ generate-offline-config boolean
 ```
 config-dir string
 ```
-Specify a path for the offline config directory. The default is `/config`.
+Specifies a path for the offline config directory. The default is `/config`.
 </details>
 
-The Relay Proxy obtains a list of all Environments and associated API keys for the given Account and Organization when it first starts up, which it will use to validate authentication requests and generate tokens.
+3. Specify your configuration details and Docker run the proxy image.
 
-The following are the required configuration variables to connect to the Feature Flags service:
+    The Relay Proxy obtains a list of all Environments and associated API keys for the given Account and Organization when it first starts up, which it will use to validate authentication requests and generate tokens.
 
-* **admin-service-token**: Enter the Service Account details. An auth token that lets the proxy communicate with Feature Flags. For more information on how to create a Service Account, go to [Create a Service Account](/docs/platform/User-Management/add-and-manage-service-account#create-a-service-account).
-* **account-identifier**: Enter your account identifier for which you want to retrieve the config. You can copy the account ID from the Harness Manager. In Harness Manager's address bar, copy the **Harness account ID** from your Harness URL. The Harness account ID comes after `account` in the URL. For example in the following URL, the account ID is `1a2b3c`: `https://app.harness.io/#/account/1a2b3c`.
-* **org-identifier**: Enter your organization identifier for which you want to retrieve the config. For more information, go to [Create a Harness Organization](/docs/platform/organizations-and-projects/create-an-organization).
-* **api-keys**: Enter your server SDK key. For more information, go to [Create an SDK key](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
-* **auth-secret**: Enter your authentication secret details. A secret that is used by the proxy to sign the [JWTs](https://jwt.io/) that it sends to the SDKs. For more information, go to [Add a Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager/).
-1. Specify your configuration details and Docker run the proxy image. The following are the examples:
-	1. Here is an example of a Docker Relay Proxy image with the required configuration details:  
-	  
-	
-	```
-	docker run -d -p 7000:7000 harness/ff-proxy -admin-service-token $MY_SERVICE_TOKEN -account-identifier $MY_ACCOUNT_IDENTIFIER -org-identifier $MY_ORG_IDENTIFIER -api-keys $ENV_1_KEY,$ENV_2_KEY,$ENV_3_KEY... -auth-secret $ANY_AUTH_SECRET
-	```
+    The following are the required configuration variables to connect to the Feature Flags service:
 
-	2. The following example uses a `.env` file. Create a `.env` file with the following environment variables:  
+    * **admin-service-token**: Enter the Service Account details. An auth token that lets the proxy communicate with Feature Flags. For more information on how to create a Service Account, go to [Create a Service Account](/docs/platform/User-Management/add-and-manage-service-account#create-a-service-account).
+    * **account-identifier**: Enter your account identifier for which you want to retrieve the config. You can copy the account ID from the Harness Manager. In Harness Manager's address bar, copy the **Harness account ID** from your Harness URL. The Harness account ID comes after `account` in the URL. For example in the following URL, the account ID is `1a2b3c`: `https://app.harness.io/#/account/1a2b3c`.
+    * **org-identifier**: Enter your organization identifier for which you want to retrieve the config. For more information, go to [Create a Harness Organization](/docs/platform/organizations-and-projects/create-an-organization).
+    * **api-keys**: Enter your server SDK key. For more information, go to [Create an SDK key](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key).
+    * **auth-secret**: Enter your authentication secret details. A secret that is used by the proxy to sign the [JWTs](https://jwt.io/) that it sends to the SDKs. For more information, go to [Add a Secrets Manager](/docs/platform/secrets/secrets-management/add-secrets-manager/).
+
+    **Examples**
+
+	* This is an example of a Docker Relay Proxy image with the required configuration details:  
+	  	
+    	```
+    	docker run -d -p 7000:7000 harness/ff-proxy -admin-service-token $MY_SERVICE_TOKEN -account-identifier $MY_ACCOUNT_IDENTIFIER -org-identifier $MY_ORG_IDENTIFIER -api-keys $ENV_1_KEY,$ENV_2_KEY,$ENV_3_KEY... -auth-secret $ANY_AUTH_SECRET
+    	```
+
+	* This example uses a `.env` file. Create a `.env` file with the following environment variables:  
+	  	
+    	```
+    	// Create a .env file with these envs   
+    	DEBUG=false   
+    	OFFLINE=false   
+    	PORT=7000   
+    	ACCOUNT_IDENTIFIER=<string>   
+    	ORG_IDENTIFIER=<string>   
+    	ADMIN_SERVICE_TOKEN=<string>   
+    	AUTH_SECRET=<string>   
+    	REDIS_ADDRESS=<host:port>   
+    	API_KEYS=6cfe5e7b-e264-4fa7-b163-befab9fd1223,9e4ec55f-3d11-4621-88c7-5ca0aa8b868b
+    	```
 	  
+        Then use the `.env` file with `docker run`.  
 	
-	```
-	// Create a .env file with these envs   
-	DEBUG=false   
-	OFFLINE=false   
-	PORT=7000   
-	ACCOUNT_IDENTIFIER=<string>   
-	ORG_IDENTIFIER=<string>   
-	ADMIN_SERVICE_TOKEN=<string>   
-	AUTH_SECRET=<string>   
-	REDIS_ADDRESS=<host:port>   
-	API_KEYS=6cfe5e7b-e264-4fa7-b163-befab9fd1223,9e4ec55f-3d11-4621-88c7-5ca0aa8b868b
-	```
-	  
-	Then use the `.env` file with `docker run`  
-	  
-	
-	```
-	docker run -d -p 7000:7000 --env-file .env harness/ff-proxy
-	```
-2. (Optional) You can optionally provide config for a Redis instance used to store flag data using the `redis-address`, `redis-db` (optional), and `redis-password` (optional).  
+    	```
+    	docker run -d -p 7000:7000 --env-file .env harness/ff-proxy
+    	```
+        For more information, go to [Configuration options](/docs/feature-flags/relay-proxy/configuration#configuration-options).
+        
+4. (Optional) You can provide config for a [Redis](/docs/feature-flags/relay-proxy/cache_options#redis-cache) instance used to store flag data using the `redis-address`, `redis-db` (optional), and `redis-password` (optional).  
+
+    For more information, go to [Configure Relay Proxy with Redis](#configure-relay-proxy-with-redis) below.
 
     :::info note
-    If you do not use Redis, the flag data is stored in the memory. In-memory is the default option.
+    If you do not use [Redis](/docs/feature-flags/relay-proxy/cache_options#redis-cache), the flag data is stored in the memory. In-memory is the default option.
     :::
+
+## Configure Relay Proxy with Redis
+
+You can run Redis locally and configure the proxy to work with it. Perform the following steps to configure proxy with Redis.
+
+1. Start Redis.  
+  
+    ```
+     docker run --rm --name redis -d -p 6379:6379 redis:latest
+    ```
+
+2. Start the proxy and configure using a `.env`.  
+  
+    ```
+     docker run -d -p 7000:7000 --env-file .online.uat.env harness/ff-proxy:latest
+    ```
+
+3. Start the proxy and configure using flags.  
+
+    ```
+    docker run -d -p 7000:7000 harness/ff-proxy -redis-address $REDIS_ADDRESS -admin-service-token $MY_SERVICE_TOKEN -account-identifier $MY_ACCOUNT_IDENTIFIER -org-identifier $MY_ORG_IDENTIFIER -api-keys $ENV_1_KEY,$ENV_2_KEY,$ENV_3_KEY... -auth-secret $ANY_AUTH_SECRET
+    ```
 
 ## Configure SDKs to work With the Relay Proxy
 
 The SDKs do not require any additional configuration to work with the proxy. The only difference is that instead of supplying the Feature Flags URL when starting up an SDK, you supply the proxy URL.
 
 For example, if you wanted your SDK to work without the proxy, you'd give it the following URLs (if using the default URLs):
-
 
 ```
 baseURL:   https://config.ff.harness.io/api/1.0
@@ -288,28 +308,6 @@ var cf = initialize(apiKey,
         }  
 )
 ```
-## Configure Relay Proxy with Redis
-
-You can run Redis locally and configure the proxy to work with it. Perform the following steps to configure proxy with Redis.
-
-1. Start Redis.  
-  
-
-```
- docker run --rm --name redis -d -p 6379:6379 redis:latest
-```
-2. Start the proxy and configure using a `.env`.  
-  
-
-```
- docker run -d -p 7000:7000 --env-file .online.uat.env harness/ff-proxy:latest
-```
-3. Start the proxy and configure using flags.  
-  
-
-```
-docker run -d -p 7000:7000 harness/ff-proxy -redis-address $REDIS_ADDRESS -admin-service-token $MY_SERVICE_TOKEN -account-identifier $MY_ACCOUNT_IDENTIFIER -org-identifier $MY_ORG_IDENTIFIER -api-keys $ENV_1_KEY,$ENV_2_KEY,$ENV_3_KEY... -auth-secret $ANY_AUTH_SECRET
-```
 
 ## Run the Relay Proxy in offline mode
 
@@ -322,7 +320,7 @@ You can configure the Relay Proxy to load and use configuration data that is sto
 
 This stored configuration is then loaded from this directory when you enable the `offline` Flag.
 
-To use offline mode, you need to:
+To use offline mode:
 
 1. [Generate the offline configuration directory](#generate-the-offline-configuration-directory)
 2. [Run the proxy in offline mode when needed](#run-the-proxy-in-offline-mode-when-needed)
@@ -331,10 +329,10 @@ To use offline mode, you need to:
 
 You need to generate the configuration directory that contains your Project data before you can run the proxy in offline mode. To do this you run the proxy using your usual configuration, but also:
 
-1. Include the variable for generating an offline configuration
-2. Mount your configuration directory to the docker container
+1. Include the variable for generating an offline configuration.
+2. Mount your configuration directory to the docker container.
 
-How you add these depends on whether you use Flags or a .env file:
+How you add these depends on whether you use Flags or a `.env` file:
 
 #### Docker command when using flags
 
@@ -358,8 +356,8 @@ This generates the configuration you need to run the proxy in offline mode, then
 
 After you have generated a configuration directory, you can load the data from it any time you need to run the proxy offline. To use the stored configuration when the proxy is offline you run the proxy using your usual configuration, but also:
 
-1. Include the variable for running offline
-2. Mount your configuration directory to the docker container
+1. Include the variable for running offline.
+2. Mount your configuration directory to the docker container.
 
 When you run the proxy in offline mode, it remains offline until you run the proxy in online mode again. This means that the proxy won't send metrics data or connect to the Harness servers.How you run the proxy in offline mode depends on whether you use flags or a .env file:
 
@@ -378,4 +376,8 @@ Add `OFFLINE=true` to your .env file and add the directory path in place of `{YO
 
 ```
 docker run -d -p 7000:7000 --env-file .env -v {YOUR_ABSOULUTE_PATH}/config:/config ff-proxy
+
+## More information
+
+For more information
 ```

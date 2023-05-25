@@ -117,12 +117,6 @@ Only **First name**, **Last name**, and **Email** are permitted for Harness 
 9.  Click **Pending**. The **Create User in Application** settings appear.
 10. Click **Approve**. The Provisioning status will turn to Provisioned.
 
-
-:::note
-Enable the feature flag UPDATE_EMAILS_VIA_SCIM to reflect changes to the email address in the SCIM provider.
-
-:::
-
 If provisioning fails, you might see something like the following error:
 
 ![](./static/provision-users-and-groups-with-one-login-scim-130.png)
