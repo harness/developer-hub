@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-05-17T10:00
+date: 2023-05-25T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 9
 ---
@@ -18,16 +18,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
-## Latest - May 17, 2023, version 1.53.0
+## Latest - May 25, 2023, version 1.54.1
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
-
-  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
+* This release includes a minor UI update. In **Security Tests** > **Details**, the **Exempt** button has been renamed to **Request Exemption** to make the button's purpose more clear. (STO-5928)
 
 ```mdx-code-block
   </TabItem>
@@ -42,7 +40,9 @@ This release does not incude early-access features.
   <TabItem value="Fixed issues">
 ```
 
-* Fixed an issue that would sometimes cause long-running scans to fail with a `requests.exceptions.ReadTimeout` exception and scan results to be lost.  (STO-5907)
+* Fixed a UI issue where **Security Tests** would briefly display the message "No issues were found" when the window initially loaded. (STO-5927)
+
+* Fixed an issue in non-Kubernetes builds and  builds that fail the step execution based on `fail_on_severity` flag. Now, STO can generate output variables on all supported platforms for all `fail_on_severity` values. (STO-5483)
 
 ```mdx-code-block
   </TabItem>
