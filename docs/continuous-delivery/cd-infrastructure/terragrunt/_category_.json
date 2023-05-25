@@ -1,6 +1,6 @@
 {
     "label": "Terragrunt",
-    "position": "300",
+    "position": "3",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
