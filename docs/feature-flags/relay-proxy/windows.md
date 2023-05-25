@@ -11,7 +11,7 @@ To run the Relay Proxy on Windows:
 
 	`GOOS=windows GOARCH=386 go build -o ff-proxy ./cmd/ff-proxy/main.go`
 
-	Harness recommends doing these builds against a verified release tag so behaviour is the same as our published docker images of the same versions. These can be found on the proxy [releases page](https://github.com/harness/ff-proxy/releases) in GitHub.
+	Harness recommends doing these builds against a verified release tag so behaviour is the same as our published Docker images of the same versions. These can be found on the proxy [releases page](https://github.com/harness/ff-proxy/releases) in GitHub.
 
 1. Run the exe by passing flags to it, or use environment variables:  
 
