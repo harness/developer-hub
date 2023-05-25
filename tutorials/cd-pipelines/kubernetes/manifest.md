@@ -4,7 +4,7 @@ hide_table_of_contents: true
 title: Manifest
 ---
 
-# Deploy a Kuberenets Manifest Template
+# Deploy a Kubernetes Manifest Template
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
