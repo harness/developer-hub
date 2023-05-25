@@ -5,7 +5,7 @@ title: VMware disk fill
 
 VMware disk fill fault contains chaos to inject disk fill in a VM at a given filesystem path. It fills up the path up to a given amount to simulate high IO usage and storage space unavailability.
 
-<!-- ![VMware Disk Fill](./static/images/vmware-disk-fill.png) -->
+![VMware Disk Fill](./static/images/vmware-disk-fill.png)
 
 ## Use cases
 
