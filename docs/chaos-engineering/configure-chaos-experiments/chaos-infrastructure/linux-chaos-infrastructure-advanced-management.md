@@ -9,7 +9,7 @@ A set of mandatory input flags is required for the installation of the chaos inf
 1. **log-directory**: Specifies a custom log directory to store the log files. By default, the logs are stored at `/var/log/linux-chaos-infrastructure`.
 2. **task-poll-interval-seconds**: Specifies the interval between subsequent poll queries to the server for a new experiment. The default value is **5 seconds**.
 3. **task-update-interval-seconds**: Specifies the duration between subsequent status updates of an active fault to the server. The default value is **5 seconds**.
-4. **result-update-retry-interval-seconds**: Specifies the interval between subsequent retries for updating the result, in case the result upate to the server fails. The default value is **5 seconds**.
+4. **result-update-retry-interval-seconds**: Specifies the interval between subsequent retries for updating the result, in case the result update to the server fails. The default value is **5 seconds**.
 5. **task-update-retries**: Specifies the maximum number of experiment upate retries, in case of a failure. If the retry count is breached, the active fault is aborted and an attempt is made to send the result. The default value is **5**.
 6. **task-update-retry-interval-seconds**: Specifies the interval between subsequent task upate retries, in case of a failure. The default value for it is **5 seconds**.
 7. **chaos-infra-liveness-update-interval-seconds**: Specifies the interval between the chaos infrastructure liveness heartbeats. The default value is **5 seconds**.
