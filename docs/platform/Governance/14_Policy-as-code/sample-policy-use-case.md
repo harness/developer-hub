@@ -91,7 +91,7 @@ contains(userGroups) {
 #### Enforce the connector naming conventions when users add a new connector
 
 Administrators can enforce naming conventions for connectors created in the Harness account.
-Here is a sample policy to do this, that can be applied **On Save** event for connector:
+Here is a sample policy to enforce naming conventions for connectors that can be applied using the **On Save** event for connector:
 
 ```TEXT
 package connectors
