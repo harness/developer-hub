@@ -219,8 +219,9 @@ contains(arr, elem) {
 
 #### Enforce a deployment freeze via policy
 
-Administrators can configure a deployment freeze via policy to supplement the formal deployment freeze feature. The policy route is great for one off freezes that are set by the business. 
-Here is a sample policy to do this, that can be applied **On Run** events for a pipeline:
+Administrators can configure a deployment freeze via policy to supplement the [deployment freeze](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-freeze) feature. The policy is great for one off freezes as opposed to recurring freezes. 
+
+Here is a sample policy to do this, that can be applied using the **On Run** event for a pipeline:
 
 ```TEXT
 package pipeline
