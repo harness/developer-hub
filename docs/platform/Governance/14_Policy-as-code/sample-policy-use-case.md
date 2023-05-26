@@ -333,7 +333,7 @@ deny[msg] {
 #### Enforce the use of stable templates in a pipeline
 
 Enforce policies to ensure that the correct version of a template is used in the pipeline. 
-Here is a sample policy that can be applied `On Save` or `On Run` events for a pipeline:
+Here is a sample policy that can be applied using the `On Save` or `On Run` events for a pipeline:
 
 ```TEXT
 package pipeline
