@@ -61,7 +61,7 @@ import StoSettingFailOnSeverity from '../../sto-techref-category/shared/step_pal
 
 ## YAML pipeline example: ingest CodeQL scan results
 
-The following pipeline illustrates how you can set up a scan using a Run step and then ingest the results using a Custom 
+The following pipeline illustrates how you can set up a scan using a Run step and then ingest the results using a Custom Ingest step.
 
 ```yaml
 
