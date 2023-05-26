@@ -18,7 +18,9 @@ For more information, go to [Harness Policy As Code quickstart](/docs/platform/G
 
 * Enforce policies at any stage: Create a policy step and include a policy set and JSON payload to evaluate. When the pipeline reaches the policy step, policy evaluation occurs. Data such as resolved expressions can be evaluated when the pipeline runs.
 
-This topic describes how to add a policy step to a stage.
+For steps on adding a policy step to a stage, go to [Add a policy step to a pipeline](https://developer.harness.io/docs/platform/Governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline).
+
+This topic provides sample policies you can use in policy steps and on pipeline-level events like On Run and On Save.
 
 ## Policy samples
 
