@@ -611,7 +611,7 @@ deny[msg] {
 
 Enforce policies to store your secrets in a specific secrets manager. 
 
-Here is a sample policy that can be applied **On Save** event for a secret:
+Here is a sample policy that can be applied using the **On Save** event for a secret:
 
 
 ```TEXT
