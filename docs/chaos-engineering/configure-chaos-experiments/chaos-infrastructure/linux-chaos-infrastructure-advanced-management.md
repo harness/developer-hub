@@ -10,9 +10,13 @@ A set of mandatory input flags is required for the installation of the chaos inf
 2. **task-poll-interval-seconds**: Specifies the interval between subsequent poll queries to the server for a new experiment. The default value is **5 seconds**.
 3. **task-update-interval-seconds**: Specifies the duration between subsequent status updates of an active fault to the server. The default value is **5 seconds**.
 4. **update-retries**: Specifies the maximum number of retries in case of a failure while sending a fault status or result.
-  - If the retry count is breached while sending the status, then the active fault is aborted after logging the error during each attempts and the result is then attempted to be sent.
-  - If the retry count is breached while sending the result, then no result is sent by the infrastructure but the error during the attempts are logged.
-  The default value is **5**.
+
+    * If the retry count is breached while sending the status, then the active fault is aborted after logging the error during each attempts and the result is then attempted to be sent.
+    
+    * If the retry count is breached while sending the result, then no result is sent by the infrastructure but the error during the attempts are logged.
+    
+    The default value is **5**.
+  
 5. **update-retry-interval-seconds**: Specifies the interval between the subsequent attempts to send a fault status or result, in case of a failure. The default value for it is **5 seconds**.
 6. **chaos-infra-liveness-update-interval-seconds**: Specifies the interval between the chaos infrastructure liveness heartbeats. The default value is **5 seconds**.
 7. **chaos-infra-log-file-max-size-mb**: Specifies the maximum size limit for the chaos infrastructure log file rotation. Upon breaching the size limit, a new log file is created to store the logs and the old log file is retired as a backup archive. The default value is **5 MB**.
