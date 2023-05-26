@@ -418,8 +418,8 @@ deny[msg] {
 
 #### Enforce step templates to be used in a pipeline
 
-Enforce the usage of step template in a pipeline. This ensures the correct steps and approved steps are leveraged.
-Here is a sample policy that can be applied **On Save** or **On Run** event for a pipeline:
+Enforce the usage of a step template in a pipeline. This ensures the correct and approved steps are used.
+Here is a sample policy that can be applied using the **On Save** or **On Run** event for a pipeline:
 
 ```TEXT
 package pipeline
