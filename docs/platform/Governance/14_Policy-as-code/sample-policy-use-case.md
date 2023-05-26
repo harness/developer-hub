@@ -593,7 +593,7 @@ deny["Principal is not allowed to save secrets"] {
 #### Enforce secret naming conventions
 
 Enforce policies to ensure that developers add secrets to Harness with a common naming standard. This makes it easy to identify and manage them. 
-Here is a sample policy that can be applied **On Save** event for a secret:
+Here is a sample policy that can be applied using the **On Save** event for a secret:
 
 ```TEXT
 package secrets
