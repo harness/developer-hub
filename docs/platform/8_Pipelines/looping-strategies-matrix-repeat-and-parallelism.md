@@ -72,13 +72,21 @@ repeat:
 # parallelism: 6  
 #    maxConcurrency: 3
 ```
-You can iterate through a list of values with the keyword `items` . You can then use the variable `<+repeat.item>` to access each value in the list.
 
+You can iterate through a list of values with the keyword `items`. You can then use the variable `<+repeat.item>` to access each value in the list.
 
 ```
 repeat:   
   items: [ "18", "17", "16", "15", "14", "13", "12", "11", "10", "9" ]  
   maxConcurrency: 5
+```
+
+
+If you opt to use only a `times` repeat, without a list, you can still access the index during the loop. You may use the following expressions:
+
+```
+<+strategy.iteration> -> current count
+<+strategy.iterations> -> total iterations
 ```
 ##### Running steps on multiple target hosts
 
