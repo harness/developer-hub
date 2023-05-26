@@ -2773,9 +2773,7 @@ Labels can be referenced using the expression: `<+pipeline.stages.[stage Id].spe
 Since manifests can support two schema versions, `schemaVersion1` and `schemaVersion2`, there could be SHA values for each schema version.
 
 Here are the expressions for referencing each version:
-- SHA value of `schemaVersion1`: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA>`.
-- SHA value of `schemaVersion2`: `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2>`.
+- SHA value of `schemaVersion1`: `<+artifacts.primary.metadata.SHA>` (same stage) or `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA>`.
+- SHA value of `schemaVersion2`: `<+artifacts.primary.metadata.SHAV2>` (same stage) or `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2>`.
 
 </details>
-
-
