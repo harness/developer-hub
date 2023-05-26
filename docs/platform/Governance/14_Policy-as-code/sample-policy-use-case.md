@@ -459,8 +459,11 @@ deny[msg] {
 
 #### Enforce the stage structure of a pipeline
 
-Enforce policies to ensure pipelines are designed with the recommended or mandatory structure. This ensures pipeline designers have the freedom to design a pipeline while following the guard rails. 
-Here is a sample policy that can be applied **On Save** event for a pipeline:
+Enforce policies to ensure pipelines are designed with a recommended or mandatory structure. 
+
+This ensures pipeline designers have the freedom to design a pipeline while following the guardrails. 
+
+Here is a sample policy that can be applied using the **On Save** event for a pipeline:
 
 ```TEXT
 package pipeline
