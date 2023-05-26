@@ -185,7 +185,7 @@ deny[msg] {
 #### Prevent users from leveraging steps that are not allowed by the company
 
 You can restrict developers from using specific steps in their pipelines. 
-Here is a sample policy to do this, that can be applied **On Save** and **On Run** events for a pipeline:
+Here is a sample policy to do this, that can be applied using the **On Save** and **On Run** events for a pipeline:
 
 ```TEXT
 package pipeline
