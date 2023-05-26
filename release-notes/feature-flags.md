@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-05-22T10:00:25
+date: 2023-05-25T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -17,13 +17,12 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - May 22, 2023
+## Latest - May 25, 2023
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-
 This release does not include new features.
 
 ```mdx-code-block
@@ -38,7 +37,76 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
+#### Feature Flags server
+
+The **FF server** has been updated to version **1.1071.0** with the following updates.
+
+* For customers with a large volume of targets (in the millions), the Target page load time could be slow. Harness has introduced additional indexes to improve the response time of this page. (FFM-7988)
+
+* There was an issue when Git Sync was first configured, a sync was not attempted until a flag was changed or a new one was created. With this fix, a sync is immediately attempted when you configure Git Sync, and the existing flags in your project are backed up to the remote file. (FFM-7681)
+
 #### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.1.12** with the following update.
+
+*  There was an issue where if an error occurred when processing a new stream event, the SDK could potentially log a blank string. This issue has been fixed and the SDK now logs these errors correctly. (FFM-8015)
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 24, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+#### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.1.11** with the following update.
+
+* Fixed an issue where the SDK was not evaluating flags with multiple and/or nested prerequisites correctly.
+
+#### May 23, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
+* The toggle for turning Git Sync on and off was causing the branch settings menu to disappear and display the **Set Up Git Sync** button incorrectly. This issue has been fixed. (FFM-7786)
+* The Target and Target Group pages reported successful save and edit operations before the operations completed. This issue has been fixed. (FFM-7609)
+
+#### May 22, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
 
 The **Ruby** server SDK has been updated to version **1.1.1** with the following updates.
 
@@ -55,19 +123,9 @@ The **Ruby** server SDK has been updated to version **1.1.1** with the following
   * Evaluation - 6xxx
   * Metrics - 7xxx
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
 #### May 19, 2023
 
-#####
+##### What's new
 
 This release does not include new features.
 
@@ -81,7 +139,7 @@ This release does not include early access features.
 
 The **FF server** has been updated to version **1.1054.2** with the following update.
 
-* The Identifier search filter sometimes incorrectly used a wildcard match. This happened if two flags had overlapping names, such as `flag_one` and `flag_one_b`. The detail view of `flag_one_b` sometimes returned `flag_one` details instead. Because flags order by creation, this only happened when flags were created in a certain order. This fix uses an exact match when searching for flag identifiers.
+* The Identifier search filter sometimes incorrectly used a wildcard match. This happened if two flags had overlapping names such as `flag_one` and `flag_one_b`. The detail view of `flag_one_b` sometimes returned `flag_one` details instead. Because flags order by creation, this only happened when flags were created in a certain order. This fix uses an exact match when searching for flag identifiers. (FFM-7928)
 
 #### May 15, 2023
 

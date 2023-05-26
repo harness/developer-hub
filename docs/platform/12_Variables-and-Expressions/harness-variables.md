@@ -1027,8 +1027,9 @@ When you run the pipeline, the expressions will resolve to their respective labe
 
 ### <+artifacts.primary.metadata.SHA> or <+artifacts.primary.metadata.SHAV2>
 
-Digest/SHA256 hash of the docker image.
-Since docker image manifest API supports two schema versions, schemaVersion1 and schemaVersion2, there could be SHA values corresponding to each version.
+Digest/SHA256 hash of the Docker image.
+	
+Since Docker image manifest API supports two schema versions, schemaVersion1 and schemaVersion2, there could be SHA values corresponding to each version.
 
 Here are the expressions for referencing each version:
 
