@@ -71,6 +71,8 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 * AuthZ now considers the SAML setting that the user logged in to when multiple SAML settings are present and the user belongs to more than one of them. The user will be removed from any other SAML settings that the same user might have been part of and synced with Harness through previous SAML logins. (PL-32484) 
 
+#### May 23, 2023, version 79307
+
 ##### Service Reliability Management
 
 - Continuous Error Tracking (CET) is a separate module in Harness now and no longer available as a health source in SRM. To learn more about CET, go to the [Continuous Error Tracking Documentation](https://developer.harness.io/docs/continuous-error-tracking). (SRM-14701)
