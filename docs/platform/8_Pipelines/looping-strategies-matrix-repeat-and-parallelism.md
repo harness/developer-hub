@@ -85,7 +85,7 @@ repeat:
 If you opt to use only a `times` repeat, without a list, you can still access the index during the loop. You may use the following expressions:
 
 ```
-<+strategy.iteration> -> current count
+<+strategy.iteration> -> current count starting with 0
 <+strategy.iterations> -> total iterations
 ```
 ##### Running steps on multiple target hosts
