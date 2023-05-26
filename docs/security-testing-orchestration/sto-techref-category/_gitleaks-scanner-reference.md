@@ -1,17 +1,18 @@
 ---
-title: Brakeman scanner reference
-description: Repository scans with Brakeman
-sidebar_position: 70
+title: GitLeaks Scanner Reference
+description: Repository scans with GitLeaks
+sidebar_position: 155
+
 ---
 
-You can scan your container images using [Brakeman](https://brakemanscanner.org/), a free tool for scanning Ruby on Rails applications. 
+You can scan your code repositories using [GitLeaks](https://github.com/PyCQA/GitLeaks), an open-source tool designed to find common security issues in Python code. 
 
 
 <!-- START step-palette-config ----------------------------------------------------------------------------- -->
 
-## Brakeman step configuration
+## GitLeaks step configuration
 
-The recommended workflow is to add an Brakeman step to a Security Tests or CI Build stage and then configure it as described below. You can also configure Brakeman scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
+The recommended workflow is to add a GitLeaks step to a Security Tests or CI Build stage and then configure it as described below.  
 
 ```mdx-code-block
 import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
@@ -19,16 +20,7 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 
 <StoScannerStepNotes />
 
-<details>
-    <summary>Step Palette</summary>
-
-![](static/step-palette-00.png) 
-
-</details>
-
-### Scan settings
-
-#### Scan Mode
+### Scan Mode
 
 ```mdx-code-block
 import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
@@ -43,7 +35,7 @@ import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mod
 <!-- ============================================================================= -->
 <a name="scan-config"></a>
 
-#### Scan Configuration
+### Scan Configuration
 
 ```mdx-code-block
 import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-product-config-name.md';
@@ -52,7 +44,7 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 <StoSettingProductConfigName />
 
 
-### Target settings
+### Target
 
 
 <!-- ============================================================================= -->
@@ -148,17 +140,17 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 ### Settings
 
-You can add a `tool_args` setting to run the [Brakeman scanner binary](https://pypi.org/project/Brakeman/1.0.1/) with specific command-line arguments. For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `tool_args` = `-skip testID_1, testID_3, testID_5`
+You can add a `tool_args` setting to run the [GitLeaks scanner binary](https://pypi.org/project/GitLeaks/1.0.1/) with specific command-line arguments. For example, you can skip certain tests using  `-skip` followed by a list of test IDs: `tool_args` = `-skip testID_1, testID_3, testID_5`
 
 
 ### Additional Configuration
 
 In the **Additional Configuration** settings, you can use the following options:
 
-* [Privileged](/docs/continuous-integration/ci-technical-reference/background-step-settings/#privileged)
-* [Image Pull Policy](/docs/continuous-integration/ci-technical-reference/background-step-settings/#image-pull-policy)
-* [Run as User](/docs/continuous-integration/ci-technical-reference/background-step-settings/#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/ci-technical-reference/background-step-settings/#set-container-resources)
+* [Privileged](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#privileged)
+* [Image Pull Policy](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#image-pull-policy)
+* [Run as User](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#run-as-user)
+* [Set Container Resources](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings#set-container-resources)
 
 
 ### Advanced settings
@@ -170,42 +162,6 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 * [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
-## Security step settings (*deprecated*)
-
-
-You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
-
-<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
-
-```mdx-code-block
-import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
-```
-
-<StoSecurityStepConfig />
-
-* `product_name` = `brakeman`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan` or `ingestionOnly`
-* `product_config_name` = `default`
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
-* `tool_args` — You can use this field to run the brakeman scanner with specific command-line arguments. For example, you can generate warnings with only the highest confidence using `-w3`: `tool_args` = `-w3`
-
-
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
-
-<StoLegacyRepo />
-
-```mdx-code-block
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
-
-<StoLegacyIngest />
-
-
-#### Fail on Severity
-
-<StoSettingFailOnSeverity />
+<!-- END step-palette-config ----------------------------------------------------------------------------- -->
 
 
