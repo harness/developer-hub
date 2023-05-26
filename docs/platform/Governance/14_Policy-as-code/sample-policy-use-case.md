@@ -274,8 +274,8 @@ deny[msg] {
 
 ####  Enforce the flag types that are configured for Feature Flags
 
-Enforce policies to configure Feature Flags with boolean value. 
-Here is a sample policy to do this, that can be applied **On Creation** events for a Feature Flag:
+Enforce policies to configure Feature Flags with a boolean value. 
+Here is a sample policy to do this, that can be applied using the **On Creation** events for a Feature Flag:
 
 ```TEXT
 package feature_flags
