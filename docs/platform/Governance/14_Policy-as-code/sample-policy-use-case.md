@@ -378,8 +378,8 @@ deny[msg] {
 
 #### Enforce a stage templates use in a pipeline
 
-Enforce policies for the usage of an approved stage template in a pipeline. 
-Here is a sample policy that can be applied **On Save** or **On Run** events for a pipeline:
+Enforce the usage of an approved stage template in a pipeline. 
+Here is a sample policy that can be applied using the **On Save** or **On Run** events for a pipeline:
 
 ```TEXT
 package pipeline
