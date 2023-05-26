@@ -152,9 +152,9 @@ contains(arr, elem) {
 
 #### Enforce the container registry selected for building and publishing code
 
-Administrators can restrict and prevent users from publishing images to public repos, only approve repos can be used. 
+Administrators can restrict and prevent users from publishing images to public repos, ensuring that only approved repos can be used. 
 
-Here is a sample policy that can be applied **On Run** event for a pipeline:
+Here is a sample policy that can be applied using the **On Run** event for a pipeline:
 
 ```TEXT
 package pipeline
