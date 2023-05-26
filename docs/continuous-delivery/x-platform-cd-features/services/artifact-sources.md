@@ -2748,11 +2748,12 @@ For more information, go to:
 
 ## Viewing SHA values and labels
 
-You can view SHA values and labels for the following artifact types:
+You can view the SHA values and labels of the Docker images for the following artifact types:
 
 - Artifactory
 - ECR
 - GCR
+- Google Artifact Registry
 - Nexus 3 Docker
 - ACR
 - Github Packages
