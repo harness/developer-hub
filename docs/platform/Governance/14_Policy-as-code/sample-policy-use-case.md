@@ -495,7 +495,7 @@ getIndex(str, stages) = result {
 #### Enforce steps in a pipeline
 
 Enforce policies to ensure mandaroty steps are configured in a pipeline. 
-Here is a sample policy that can be applied **On Save** or **On Run** event for a pipeline:
+Here is a sample policy that can be applied using the **On Save** or **On Run** event for a pipeline:
 
 ```TEXT
 
