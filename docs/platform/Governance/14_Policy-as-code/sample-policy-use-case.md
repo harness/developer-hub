@@ -314,7 +314,7 @@ deny[msg] {
 #### Users want to enforce naming conventions for their Feature flags
 
 Establish policies to ensure no one falls outside the proper naming convention for internal flags when naming Feature Flags. 
-Here is a sample policy to do this, that can be applied **On Save** event for the Feature Flag:
+Here is a sample policy to do this, that can be applied using the **On Save** event for the Feature Flag:
 
 ```TEXT
 package feature_flags
