@@ -36,6 +36,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   * [OWASP](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference)
   * [Prowler](/docs/security-testing-orchestration/sto-techref-category/prowler-scanner-reference)
 
+* The **Account Settings** > **Subscriptions** page has a new **Activity & Usage** section that shows the number of security scans and user activity over the past day. (STO-4942)
+
 * This release includes a minor UI update. In **Security Tests** > **Details**, the **Exempt** button has been renamed to **Request Exemption** to make the button's purpose more clear. (STO-5928)
 
 ```mdx-code-block
@@ -53,7 +55,7 @@ This release does not incude early-access features.
 
 * Fixed a UI issue where **Security Tests** would briefly display the message "No issues were found" when the window initially loaded. (STO-5927)
 
-* Fixed an issue in non-Kubernetes builds and  builds that fail the step execution based on the `fail_on_severity` flag. Now, STO can generate output variables on all supported platforms for all `fail_on_severity` values. (STO-5483)
+* Fixed an issue in non-Kubernetes builds where a scan would not produce output variables. This meant that failing a pipeline using `fail_on_severity` was not supported on non-Kubernetes builds.  Now, STO can generate output variables and fail pipelines using `fail_on_severity` on all supported build infrastructures. (STO-5483)
 
 ```mdx-code-block
   </TabItem>
