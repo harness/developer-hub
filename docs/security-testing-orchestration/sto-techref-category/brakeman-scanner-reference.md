@@ -4,7 +4,7 @@ description: Repository scans with Brakeman
 sidebar_position: 70
 ---
 
-You can scan your container images using [Brakeman](https://brakemanscanner.org/), free tool for scanning Ruby on Rails applications. 
+You can scan your container images using [Brakeman](https://brakemanscanner.org/), a free tool for scanning Ruby on Rails applications. 
 
 
 <!-- START step-palette-config ----------------------------------------------------------------------------- -->
