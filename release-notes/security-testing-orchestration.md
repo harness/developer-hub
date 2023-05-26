@@ -36,7 +36,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   * [OWASP](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference)
   * [Prowler](/docs/security-testing-orchestration/sto-techref-category/prowler-scanner-reference)
 
-* The **Account Settings** > **Subscriptions** page has a new **Activity & Usage** section that shows the number of security scans and user activity over the past day. (STO-4942)
+* The **Account Settings** > **Subscriptions** page has a new **Activity & Usage** section that shows the number of security scans and user activity over the past 30 days. (STO-4942)
 
 * This release includes a minor UI update. In **Security Tests** > **Details**, the **Exempt** button has been renamed to **Request Exemption** to make the button's purpose more clear. (STO-5928)
 
