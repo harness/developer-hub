@@ -31,7 +31,7 @@ This topic provides sample policies you can use in policy steps and on pipeline-
 
 Enforce authorization type to prevent users from setting up connectors that may not be in compliance or standard with the account owner's guidelines. 
 
-Here is a sample policy that you can evaluate **On Save** event for a connector:
+Here is a sample policy that you can evaluate using the **On Save** event for a Harness connector:
 
 ```TEXT
 package connector
