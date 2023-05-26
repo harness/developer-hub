@@ -245,7 +245,7 @@ deny[msg] {
 
 ### Feature Flag policies
 
-#### Prevent feature flags from being enabled in production that are not configured in a lower environment like stage
+#### Prevent feature flags from being enabled in a production environment that are not configured in a stage environment
 
 Enforced a policy on Feature Flags to ensure the configuration of the flag is properly governed by the end user.
 
