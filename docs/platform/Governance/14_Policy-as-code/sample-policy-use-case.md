@@ -110,7 +110,7 @@ deny[msg] {
 #### Prevent other developers from deploying into a non-compliant environment.
 
 Administrators can enforce policies to restrict the environments the developers can deploy to. 
-Here is a sample policy to do this that can be applied **On Run** event for a pipeline:
+Here is a sample policy to do this that can be applied using the **On Run** event for a pipeline:
 
 ```TEXT
 package pipeline
