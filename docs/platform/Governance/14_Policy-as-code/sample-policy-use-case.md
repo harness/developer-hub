@@ -534,7 +534,7 @@ contains(arr, elem) {
 #### Enforce step order in a pipeline
 
 Enforce policies for the ordering of steps that are configured in a pipeline. 
-Here is a sample policy that can be applied **On Save** or **On Run** event for a pipeline:
+Here is a sample policy that can be applied using the **On Save** or **On Run** event for a pipeline:
 
 ```TEXT
 package pipeline
