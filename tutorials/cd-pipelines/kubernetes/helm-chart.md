@@ -4,363 +4,379 @@ hide_table_of_contents: true
 title: Helm Chart
 ---
 
-# Deploy a Helm Chart
+# Deploy a Helm Chart Template
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Pick the [Harness CD & GitOps plan](https://www.harness.io/pricing?module=cd#) you are using from the tabs below to get started. If you don't have a plan yet, then [sign up for the Free plan](https://app.harness.io/auth/#/signup/?module=cd&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started).
+This tutorial is designed to help you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD Pipeline/GitOps for deploying a Guestbook application. It's important to note that this Guestbook application is based on a Kustomize template.
+
+:::info
+
+[Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/?module=cd)
+
+:::
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="Free/Team/Enterprise Plans (SaaS)">
+<TabItem value="CD Pipeline">
 ```
-You can use Harness CD & GitOps in the following ways.
-- Pipeline approach: In this case, the availability of a new artifact (as the output of CI) to deploy triggers a deployment pipeline that pushes the new artifact on deployment targets.
 
-- GitOps approach: In this case, the need to deploy a new artifact is specified in the GitOps repo first. The GitOps agent observes this change and then pulls this change onto the deployment target using a sync process
+## Before you begin
+
+Verify the following:
+
+1. **Obtain GitHub personal access token with repo permissions**. See the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
+2. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/), for installing Harness Delegates and deploying a sample application in a local development environment.
+    - Check [Delegate System and network requirements](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+3. **Install [Helm CLI](https://helm.sh/docs/intro/install/)**.
+4. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
+    - More details on Forking a GitHub repository [here](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository)
+
+## Getting Started with Harness CD
+----------------------------------
+
+1. Log in to the [Harness App](https://app.harness.io/)
+
+2. Click on **Projects** in the top left corner and choose **Default Project**
+
+:::caution
+
+Going forward, follow all the steps as they are, including the naming conventions, for the pipeline to run successfully.
+
+:::
+
+### Delegate
+
+The Harness Delegate is a service that runs in your local network or VPC to establish connections between Harness Manager and various providers such as artifacts, infrastructure, etc. It is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the Delegate in the [Delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
+
+3. Under **Project Setup**, click on **Delegates**
+    - On the top right corner, click **Tokens**
+        - Click **New Token**
+        - Enter name: `delegate_token`
+        - Click **Apply**
+        - Now, copy the token value by clicking on the copy icon and store it somewhere.
+        - Click **close**
+    - Now, click **Delegates** in the top right corner
+        - Click **Install Delegate**
+        - For this tutorial, let's explore how to install the Delegate using Helm.
+        - Add Harness helm chart repo to your local helm registry
+        ```bash
+        helm repo add harness-delegate https://app.harness.io/storage/harness-download/delegate-helm-chart/
+        ```
+        ```bash
+        helm repo update harness-delegate
+        ```
+        -  In the command provided, ACCOUNT_ID and MANAGER_ENDPOINT are auto-populated values that you can obtain from the Delegate Installation wizard. 
+            You simply need to replace **DELEGATE_TOKEN** in the command with the token that was copied earlier and proceed with installing the Delegate.
+            ```bash
+            helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
+            harness-delegate/harness-delegate-ng \
+             --set delegateName=helm-delegate \
+             --set accountId=ACCOUNT_ID \
+             --set managerEndpoint=MANAGER_ENDPOINT \
+             --set delegateDockerImage=harness/delegate:23.03.78904 \
+             --set replicas=1 --set upgrader.enabled=false \
+             --set delegateToken=DELEGATE_TOKEN
+            ```
+    - Verify that the Delegate is installed successfully and can connect to the Harness Manager.
+    - You can also follow the [Install Harness Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/) tutorial to install Delegate using _Terraform Helm Provider_ or _Kubernetes Manifest_.
+
+
+### Secrets
+
+Harness offers built-in Secret Management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness Delegate has access to the key management system. You can also integrate your own secret management solution. Learn more about Secrets in Harness [here](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview/).
+
+4. Under **Project Setup**, click on **Secrets**
+    - Click **New Secret** > **Text**
+    - Enter the secret name: `harness_gitpat`
+    - Secret Value: Paste the GitHub Personal Access Token to this field
+    - Click **Save**
+
+### Connectors
+
+Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. Explore connector how-tos [here](https://developer.harness.io/docs/category/connectors).
+
+5. Create **GitHub Connector**
+    - Copy the contents of [1-github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/1-github-connector.yml)
+    - In the Harness web console, under **Project Setup**, click **Connectors**.
+    - Click **Create via YAML Builder** and paste the copied YAML contents.
+    - Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository as mentioned at the start, replace **GITHUB_USERNAME** with your GitHub account username in the YAML wherever required.
+    - Click **Save Changes** and verify that the new connector named _**harness_gitconnector**_ is successfully created.
+    - Finally, click **Test** under **CONNECTIVITY STATUS** to ensure the connection is successful.
+
+6. Create **Kubernetes Connector**
+    - Copy the contents of [2-kubernetes-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/2-kubernetes-connector.yml)
+    - In the Harness web console, under **Project Setup**, click **Connectors**.
+    - Click **Create via YAML Builder** and and paste the copied YAML contents.
+    - Now, replace **DELEGATE_NAME** with the installed Delegate name. To obtain the Delegate name, navigate to Default Project > Project Setup > Delegates. 
+    - Click **Save Changes** and verify that the new connector named _**harness_k8sconnector**_ is successfully created.
+    - Finally, click **Test** under **CONNECTIVITY STATUS** to verify the connection is successful.
+
+### Environment
+
+Environments determine the deployment location, categorized as prod or non-prod. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or target infrastructure. Learn more about environments [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
+
+7. Under **Default Project** click on **Environments**
+    - Click **New Environment** and toggle to **YAML** _(next to VISUAL)_.
+    - Copy the contents of [3-environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/3-environment.yml) and paste it into the YAML editor and click **Save**
+    - Now, go to the **Infrastructure Definitions** tab
+    - Click on **Infrastructure Definition** and click **Edit YAML**.
+    - Copy the contents of [4-infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/4-infrastructure-definition.yml) and paste it into the YAML editor.
+    - Click **Save** and verify that the Environment and Infra definition is created successfully.
+
+### Services
+
+In Harness, services represent what you deploy and are managed within environments. Use Manage Services to configure variables, manifests, and artifacts. The Dashboard provides service statistics like deployment frequency and failure rate. Learn more about services [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
+
+8. Under **Default Project** click on **Services**
+    - Click **New Service**
+    - Enter the name: `harnessguestbook`
+    - click **Save** and toggle to **YAML** _(next to VISUAL)_ under **Configuration** tab.
+    - Click **Edit YAML** and copy the contents of [5-service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/5-service.yml) and paste it into the YAML editor.
+    - Click **Save** and verify that the Service _**harness_guestbook**_ is successfully created.
+
+### Pipeline
+
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. Learn more about CD pipeline basics [here](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
+
+9. Under **Default Project** click on **Pipelines**
+    - Click **New Pipeline** and enter the below details
+    - Enter the name: `harness_guestbook_pipeline`
+    - Choose **Inline** and the Pipeline will be stored in Harness
+    - Click **Start** and toggle to **YAML** _(next to VISUAL)_
+    - Now, click on **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
 
 ```mdx-code-block
 <Tabs>
-<TabItem value="Pipeline Approach">
-```
-## Install Kubernetes Delegate
-
-You will first install a delegate named `my-harness-delegate` on the Kubernetes cluster that is the deployment target using the [Install Delegate](/tutorials/platform/install-delegate) tutorial. 
-
-## Create a CD Pipeline
-
-You are now ready to create your first Harness Pipeline. You will be deploying a [WildFly](https://www.wildfly.org/) Helm Chart coming from a [public Helm Chart Repository](https://github.com/bitnami/charts/tree/master/bitnami/wildfly/#installing-the-chart). The following steps will walk you through how to create a Pipeline with those resources.
-
-- Deployments -> Pipelines + Create new Pipeline
-- Name: helm-pipeline
-- Setup Pipeline: Inline
-
-![Inline Pipeline](../static/first-helm-deployment/inline.png)
-
-Click Start and now can add a Pipeline Stage by clicking the +Add Stage icon.
-
-![Deploy Stage](../static/first-helm-deployment/deploy_stage.png)
-
-Select Deploy as the Stage.
-Next name the stage “Deploy Wildfly” as a type Service.
-
-![Stage Name](../static/first-helm-deployment/stage_name.png)
-
-Then click Set Up Stage.
-
-The first step is to define the Service e.g the “what” you are deploying by clicking on + New Service
-
-![About Service](../static/first-helm-deployment/about_service.png)
-
-Name: my-wildfly-instance
-
-![Service Name](../static/first-helm-deployment/service_name.png)
-
-Once Saved, the next step is to point to Bitnami’s WildFly Helm Chart. In the Service Definition section, select Native Helm as the Deployment Type. Then you can wire in the Helm Chart Repository information in the Manifest section.
-
-![About Service](../static/first-helm-deployment/about_service_defination.png)
-
-Click on + Add Manifest in the Manifests Section then select Helm Chart as the Manifest Type.
-
-![Manifest Type](../static/first-helm-deployment/manifest_type.png)
-
-Click Continue and then select HTTP Helm as the Helm Chart Store. Create a new HTTP Helm Repo to connect to Bitnami’s Helm Chart Repository by clicking + New HTTP Helm Repo Connector. Follow the wizard.
-
-- Name: bitnami-helm
-- Helm Repository URL: https://charts.bitnami.com/bitnami
-- Authentication: Anonymous
-
-![Repo URL](../static/first-helm-deployment/repo_url.png)
-
-Click Continue and can specify which Harness Delegate you would want to run the Helm operations on. If using this example, can select “Use any available Delegate”.
-
-![Manifest Delegate](../static/first-helm-deployment/manifest_delegate.png)
-
-Click Save and Continue which will run through a Connection Test.
-
-Now you can enter the Helm Chart information.
-
-- Manifest Name: wildfly
-- Chart Name: wildfly
-- Helm Version: Version 3
-
-![Helm Details](../static/first-helm-deployment/helm_details.png)
-
-Click Submit, and the WildFly Helm Chart will be wired to your Harness Pipeline Stage.
-
-![Wired Manifest](../static/first-helm-deployment/wired_manifest.png)
-
-With the Helm Chart wired in, now you can define the “where” or the target Kubernetes cluster to deploy your Helm Chart to.
-
-## Set Your Deployment Target
-
-With the “what” out of the way, the next two steps are the “where” and “how”. Click Continue after wiring in the Helm Chart, and you will be brought to the Infrastructure configuration.
-
-![Add Stage](../static/first-helm-deployment/add_stage.png)
-
-The object being set up here is a [Harness Environment](https://docs.harness.io/article/n39w05njjv-environment-configuration); naming and saving the “where” you are deploying.
-
-You can create a new Harness Environment via the wizard by clicking on + New Environment.
-
-- Name: my-k8s-environment
-- Environment Type: Pre-Production
-
-![New Environment](../static/first-helm-deployment/new_env.png)
-
-Click Save and now you are ready to wire in your Kubernetes cluster. Since your Delegate should be running in a Kubernetes cluster, you can create a reference to this cluster with a Cluster Connector.
-
-Select “Direct Connection” Kubernetes then can fill out the Cluster Details with a New Connector.
-
-![Infra Defination](../static/first-helm-deployment/infra_def.png)
-
-Click on Select Connector and then + New Connector
-
-Once clicked on + New Connector, can give a name to your Kubernetes cluster.
-
-Name: my-k8s-cluster
-
-![K8s Cluster Name](../static/first-helm-deployment/k8s_name.png)
-
-Click Continue and select “Use the credentials of a specific Harness Delegate” to connect.
-
-![Cluter Connect](../static/first-helm-deployment/cluster_connect.png)
-
-Click Continue and select the Harness Delegate you installed into your Kubernetes Cluster e.g my-harness-delegate.
-
-![K8s Delegate](../static/first-helm-deployment/k8s_delegate.png)
-
-Click Save and Continue and a connectivity test will occur.
-Click Finish and you can enter a namespace that is available on the Kubernetes cluster.
-
-- Namespace: default
-
-![K8s Cluster Details](../static/first-helm-deployment/cluster_details.png)
-
-Click Continue and now you are ready to configure how you want your deployment to execute.
-
-## How Your Pipeline Deploys
-
-Clicking Continue, you are now ready to configure the Execution Strategy or the “how” your Pipeline executes. For the example, a Rolling Deployment is simplest.
-
-![Deployment Strategy](../static/first-helm-deployment/strategy.png)
-
-Select “Rolling” then click on Use Strategy. Now you are ready to save this Pipeline and execute the Pipeline to create a deployment e.g a [Helm Release](https://helm.sh/docs/intro/using_helm/).
-
-![Pre Run](../static/first-helm-deployment/pre_run.png)
-
-Click Save and you are now ready to run your Pipeline executing the Helm Chart.
-
-## Your First Pipeline Execution with Helm
-
-Executing your Pipeline is easy. Just click Run back in the Pipelines menu and you are on your way to a Helm Release.
-
-![Run Pipeline](../static/first-helm-deployment/run.png)
-
-Click Run Pipeline and your Pipeline will execute. In the “Install/Upgrade” section of the console output, you will see commands to visit your new Wildfly instance.
-
-![Helm Output](../static/first-helm-deployment/helm_output.png)
-
-E.g.
-
-```
-kubectl get svc --namespace default release-6b428c463af2c7ed8766defc9ac7c844a02c7385-wildfly
+<TabItem value="Canary">
 ```
 
-Head to the External-IP and check out your new Helm Release.
+**Canary Deployment** updates nodes in a single environment gradually, with each phase requiring verification before proceeding to the next. It allows incremental updates and ensures a controlled rollout process. See [When to use Canary deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments)
 
-![External IP](../static/first-helm-deployment/external_ip.png)
+- Copy the contents of [6-canary-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/6-canary-deployment.yml)
+- Finally, click on **Save** in the top right corner to save the Pipeline.
+- Alternatively, you can switch to the **VISUAL** version and confirm the pipeline stage and execution steps as shown below.
 
-Heading to http://34.123.210.140
-
-![Wildfly](../static/first-helm-deployment/wildfly.png)
-
-Congratulations on your first Harness Helm Deployment [release]!
+![Canary](../static/k8s-helm-tutorial/canary.png)
 
 ```mdx-code-block
 </TabItem>
-<TabItem value="GitOps Approach">
+<TabItem value="Blue Green">
 ```
 
-Harness will install Argo CD on your behalf and connect that Argo CD instance to Harness. All you need is a Kubernetes cluster. Navigate to Deployments -> GitOps  -> Settings -> GitOps Agents
+**Blue-Green Deployment** involves running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on stage before flipping the traffic from prod to stage, allowing decommissioning of the old environment post-successful deployment. It is also referred to as red/black deployment by some vendors. See [When to use Blue Green deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments)
 
-![New GitOps Agent](../static/first-gitops/new_gitops_agent.png)
 
-Then + New GitOps Agent. Select “No” for an existing Argo CD instance then click Start.
+- Copy the contents of [6-bluegreen-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/6-bluegreen-deployment.yml)
+- Finally, click on **Save** in the top right corner to save the Pipeline.
+- Alternatively, you can switch to the **VISUAL** version and confirm the pipeline stage and execution steps as shown below.
 
-![No Existing Argo](../static/first-gitops/no_argo.png)
+![Blue Green](../static/k8s-helm-tutorial/bluegreen.png)
 
-Click Start. Can name and provide an existing Namespace on the cluster for the installation. 
-
-* Name: harness-managed-argocd
-* Namespace: default
-
-![Agent Config](../static/first-gitops/agent_config.png)
-
-Hit continue and download the provided YAML and apply the YAML into the Kubernetes cluster where you would like Argo CD to be running. 
-
-```
-kubectl apply -f gitops-agent.yaml -n default
+```mdx-code-block
+</TabItem>
+<TabItem value="Rolling">
 ```
 
-![Apply Agent](../static/first-gitops/apply_agent.png)
+**Rolling Deployment** incrementally adds nodes in a single environment with a new version, either one-by-one or in batches defined by a window size. It allows a controlled and gradual update process for the service/artifact. See [When to use rolling deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
 
-After a few moments, the Verification steps will run and you can click Finish. 
-The next step is to deploy an application with Harness GitOps. 
 
-## Deploying Via Harness GitOps 
-If you are familiar with Argo CD, these steps will be very familiar. If you have not, no worries these steps are straightforward.  Will be needing to define a what [repository], where [target], and when [synch policy] to deploy Kubernetes resources. 
+- Copy the contents of [6-rolling-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/6-rolling-deployment.yml)
+- Finally, click on **Save** in the top right corner to save the Pipeline.
+- Alternatively, you can switch to the **VISUAL** version and confirm the pipeline stage and execution steps as shown below.
 
-### What to Deploy
-
-The Argo CD project has a sample Guestbook application that is deployed via Helm. This is located at:
-`https://github.com/argoproj/argocd-example-apps/tree/master/helm-guestbook`
-
-First will need to connect the repository to Harness. 
-
-Deployments -> GitOps -> Settings -> Repositories + New Repository 
-
-![Git Repo](../static/first-gitops/git_repo.png)
-
-Select Git as the repository type to connect to. Fill in a few prudent details.
-
-* Repository Name: guestbook
-* GitOps Agent: A GitOps Agent You Installed
-* Repository URL: https://github.com/argoproj/argocd-example-apps
-
-![Git Repo Config](../static/first-gitops/repo_config.png)
-
-Click Next and specify credentials for the repository. Since this is a public repository, anonymous access is fine. 
-
-![Creds](../static/first-gitops/creds.png)
-
-Click save and continue and a Verification will run. Click Finish and the Repository will be wired. 
-
-![Wired Repo](../static/first-gitops/wired_repo.png)
-
-The next step is the where portion, or where the application will be deployed. 
-
-### Where To Deploy - Kubernetes Target
-Defining where to deploy is a simple process especially with a Harness GitOps Agent. 
-
-Deployments -> GitOps -> Settings -> Clusters + New Cluster
-
-* Name: myk8scluster
-* GitOps Agent: Your GitOps Agent Name
-
-![Add Cluster](../static/first-gitops/add_cluster.png)
-
-Click Continue. You can leverage the credentials of the Harness GitOps Agent to deploy on your behalf. Select that as the connection methodology. 
-
-![Use Agent](../static/first-gitops/use_agent.png)
-
-Click Finish and your Cluster will be ready to be connected into an Application, a combination of the “what” and the “where”.
-
-### Creating an Application
-
-Creating an Application, combining the what and where to deploy covered in this step. 
-
-Deployments -> GitOps -> Applications + New Application
-
-* Name: guestbook
-* GitOps Agent: Your GitOps Agent Name
-* Service: A Service is a logical grouping of configurations. Can click + New Service if you do not already have a Service and create a Service Name such as “guestbook”.
-* Environment: An Environment is a logical grouping of infrastructure. Can click + New Environment and create an Environment Name such as “guestbook_env”.
-
-![Argo Application](../static/first-gitops/application.png)
-
-Click Next and you can choose how the repository sync occurs. Automatic will look for changes in the repository. Though since this is an example repository and you might not have publish access to the repository [you can always Fork and check out in your own repository], Manual Sync is appropriate. 
-
-![Sync Policy](../static/first-gitops/sync_policy.png)
-
-Click Continue to connect the Repository to the Application. 
-
-* Repository URL: Repo URL that was just connected [https://github.com/argoproj/argocd-example-apps]
-* Revision Type: Branch
-* Target Revision: master
-* Path: helm-guestbook
-* Value Files: values.yaml 
-
-![Source](../static/first-gitops/source.png)
-
-Click Continue and connect in the Cluster and Namespace Details. 
-
-* Cluster: Select the Cluster that was connected in before [default.svc is fine]. 
-* Namespace: Define an existing Namespace, e.g default. 
-
-![Destination](../static/first-gitops/destination.png)
-
-Click Finish and you are now ready to deploy e.g Sync. 
-
-## Deploying Your Application, the GitOps Way
-Now you are ready to deploy. Since the sample application is not on your cluster, your Kubernetes resources are out of synch based on the current Kubernetes cluster state and what is in the repository. 
-
-![Out of Sync](../static/first-gitops/out_of_sync.png)
-
-You can deploy e.g Sync the manifest(s) with the Kubernetes cluster by clicking SYNC in the top right corner. 
-
-![Sync](../static/first-gitops/sync.png)
-
-Click Synchronize and your deployment will start.
-
-![Deployment](../static/first-gitops/deployment.png)
-
-After the synchronization, your Harness GitOps deployment is complete. 
-
-To check out Guesbook, you can expose via a Kubernetes Load Balancer and navigate to the External-IP.
-
-```
-kubectl patch svc guestbook-helm-guestbook -n default -p '{"spec": {"type": "LoadBalancer"}}'
-
-kubectl get services -n default
-```
-
-![Patch](../static/first-gitops/patch.png)
-
-If using a local Kubernetes cluster like minikube, you might have to run `minikube tunnel` to expose. 
-
-E.g http://35.192.51.53
-
-![Guestbook](../static/first-gitops/guestbook.png)
-
-Congratulations on your GitOps deployment. The GitOps paradigm offers a lot of capabilities for Kubernetes based workloads. Harness aims to make Argo CD experience better by leveraging Argo CD as an engine and layer that with the ease of use and management capabilities that Harness provides. 
+![Rolling](../static/k8s-helm-tutorial/rolling.png)
 
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ```
+
+10. Finally, it's time to execute the Pipeline. Click on **Run**, and then click **Run Pipeline** to initiate the deployment.
+    - Observe the execution logs as Harness deploys the workload and checks for steady state.
+    - After a successful execution, you can check the deployment on your Kubernetes cluster using the following command:
+        ```bash
+        kubectl get pods -n default
+        ```
+    - To access the Guestbook application deployed via the Harness Pipeline, port forward the service and access it at [http://localhost:8080](http://localhost:8080)
+        ```bash
+        kubectl port-forward svc/<service-name> 8080:80
+        ```
+
+### Congratulations!🎉
+You've just learned how to use Harness CD to deploy application using Kustomize template.
+
+#### What's Next?
+- Keep learning about Harness CD. Add **Trigger** to your pipeline that'll respond to Git events by following this [doc](https://developer.harness.io/docs/platform/Triggers/triggering-pipelines).
+- Visit the [Harness Developer Hub](https://developer.harness.io/) for more Tutorials and resources.
+
 ```mdx-code-block
 </TabItem>
-<TabItem value="Community Edition (Self-Managed)">
+<TabItem value="GitOps Workflow">
 ```
 
-As shown in the figure below, we will perform the following steps in this tutorial.
-1. Install CD Community Edition (CDCE), if not already installed
-1. Create a Helm CD pipeline using the Terraform Provider.
-2. Install a delegate on the Kubernetes cluster where the helm chart will be deployed to.
-3. Deploy the helm chart using by running the pipelines.
-4. Verify the health of your deployed application.
+:::info
 
-![Tutorial](../static/cdce/cdce-deploy-to-k8s.png)
+Whether you're new to GitOps or already have an Argo CD instance, this guide will assist you in getting started with Harness GitOps, both with and without Argo CD.
+
+Harness also offers a Hosted GitOps solution, and a tutorial for it will be available soon.
+
+:::
+
+## Before you begin
+
+Verify the following:
+
+1. **A Kubernetes cluster**. We recommend [K3D](https://k3d.io/v5.5.1/) for installing Harness GitOps Agent and deploying a sample application in a local development environment.
+    - Check [Harness GitOps Agent Requirements](https://developer.harness.io/docs/continuous-delivery/gitops/install-a-harness-git-ops-agent/#requirements).
+2. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub web interface.
+    - More details on Forking a GitHub repository [here](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
+
+## Getting Started with Harness GitOps
+--------------------------------------
+
+1. Log in to the [Harness App](https://app.harness.io/).
+
+2. Click on **Projects** in the top left corner, choose **Default Project**.
+
+3. Click **Deployments**, under **Default Project** click on **GitOps**.
+
+### GitOps Agent
+
+A Harness GitOps Agent is a worker process that runs in your environment, makes secure, outbound connections to Harness SaaS, and performs all the GitOps tasks you request in Harness.
+
+4. Click **Settings** in the top right corner and click **GitOps Agents**.
+- Click **New GitOps Agent**
+- Now, a propmts asking _Do you have any existing Argo CD instances?_, choose **Yes** if you already have a Argo CD Instance else choose **No** to install *Harness GitOps Agent*
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Harness GitOps Agent Fresh Install">
+```
+
+- Click **No**, and then click **Start**.
+- In **Name**, enter the name for the new Agent.
+- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
+    - For this tutorial, let's use `default` namespace to install the Agent and deploy Applications.
+- Click **Continue**. The Review YAML settings appear.
+- This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.
+    ```yaml
+    kubectl apply -f gitops-agent.yml -n default
+    ```
+- Click **Continue** and verify the Agent is successfully installed and can connect to Harness Manager.
 
 
-## Prerequisite 
+```mdx-code-block
+</TabItem>
+<TabItem value="Harness GitOps Agent with Existing Argo CD Instance">
+```
 
-Use the [Install CD Community Edition](/tutorials/platform/install-cd-community-edition) tutorial to install CDCE if you have not done so yet.
+- Click **Yes**, and then click **Start**.
+- In **Name**, enter the name for the existing Agent CD Project.
+- In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
+- Click **Next**. The Review YAML settings appear.
+- This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.
+    ```yaml
+    kubectl apply -f gitops-agent.yml -n default
+    ```
+- Once you have installed the Agent, Harness will start importing all the entities from the existing Argo CD Project.
 
-## Create Helm CD Pipeline with Terraform Provider
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
-Now that CDCE is up and running, we will create a CD pipeline that will deploy a helm chart onto a different Kubernetes cluster (usually known as the deployment target or infrastructure). You can always set this up in the pipeline studio which will also include creating other Harness resources like service, environment and connectors. Instead, we will use the popular [Harness Terraform Provider](https://registry.terraform.io/providers/harness/harness/) to automate this process for us. Instructions for onboarding an new application into Harness using Terraform are available in this [tutorial](/tutorials/platform/onboard-terraform-provider).
+### Repositories
 
-## Install Kubernetes Delegate
+A Harness GitOps Repository is a repo containing the declarative description of a desired state. The declarative description can be in Kubernetes manifests, Helm Chart, Kustomize manifests, etc.
 
-We will now to install a delegate named `firstk8sdel` on the Kubernetes cluster that is the deployment target using the [Install Delegate](/tutorials/platform/install-delegate) tutorial. Note that if you have installed CDCE on a Kubernetes cluster then you can reuse the same cluster as this deployment cluster. However, the cluster should have enough underlying resources to run CDCE (in namespace `harness`), a delegate (in namespace `harness-delegate-ng`) and the helm chart you will be deploying (in the namespace of your choice) via CDCE.
+5. Click **Settings** in the top right corner and click **Repositories**.
+- Click **New Repository**
+- Choose **Git**
+    - Enter **Repository** name.
+    - In the **GitOps Agent**, choose the Agent that you installed in your cluster and click **Apply**.
+    - In **Git Repository URL**, paste [https://github.com/GITHUB_USERNAME/harnesscd-example-apps.git](https://github.com/GITHUB_USERNAME/harnesscd-example-apps.git) and replace **GITHUB_USERNAME** with your GitHub username.
+    - Click **Continue** and choose **Specify Credentials For Repository**
+        - Choose **HTTPS** as the **Connection Type**
+        - Now, choose **Anonymous (no credentials required)** as the **Authentication** method.
+        - Click **Save & Continue** and wait for the Harness to verify the conenction.
+        - Finally, click **Finish**
 
-## Run Pipeline to Deploy Helm Chart
+### Clusters
 
-Login to CDCE UI and click into the Project. Click on the pipeline and then click Run. You will see that the `wildfly` helm chart from `https://charts.bitnami.com/bitnami` will be pulled by the delegate you had installed and it will deploy into the `default` namespace of the Kubernetes cluster. You can always change the helm chart and its deployment namespace to your own application.
+A cluster is the target deployment cluster that is compared to the desire state. Clusters are synced with the source manifests you add as GitOps Repositories.
+
+6. Click **Settings** in the top right corner and click **Clusters**.
+- Click **New Cluster**
+    - Enter the **Name**
+    - In the **GitOps Agent**, choose the Agent that you installed in your cluster and click **Apply**.
+    - Click **Continue** and choose **Use the credentials of a specific Harness GitOps Agent**
+    - Click **Save & Continue** and wait for the Harness to verify the conenction.
+    - Finally, click **Finish**
+
+### Applications
+
+GitOps Applications are how you manage GitOps operations for a given desired state and its live instantiation.
+
+A GitOps Application collects the Repository (**what you want to deploy**), Cluster (**where you want to deploy**), and Agent (**how you want to deploy**). You define these entities and then select them when you set up your Application.
+
+7. Click **Applications** in the top right corner.
+- Click **New Application**
+    - Enter the **Application Name**: `guestbook`
+    - In the **GitOps Agent**, choose the Agent that you installed in your cluster and click **Apply**.
+    - Then, click **New Service** and toggle to **YAML** _(next to VISUAL)_.
+    - Click **Edit YAML**, paste the below and click **Save**
+    ```yaml
+    service:
+      name: gitopsguestbook
+      identifier: gitopsguestbook
+      serviceDefinition:
+        type: Kubernetes
+        spec: {}
+      gitOpsEnabled: true
+    ```
+    - Click **New Environment** and toggle to **YAML** _(next to VISUAL)_.
+    - Click **Edit YAML**, paste the below and click **Save**
+    ```yaml
+    environment:
+      name: gitopsenv
+      identifier: gitopsenv
+      description: ""
+      tags: {}
+      type: PreProduction
+      orgIdentifier: default
+      projectIdentifier: default_project
+      variables: []
+    ```
+    - Finally, click **Continue** and keep the **Sync Policy** settings as is and click **Continue** again.
+    - Now, in the **Repository URL**, choose the **Repository** you created earlier and click **Apply**.
+    - Select **master** as the **target Revision** and type `kustomize-guestbook` in the **Path** and hit **enter**
+    - Click **Continue** to select the **Cluster** created in the above steps.
+    - Enter the target **Namespace** for Harness GitOps to sync the application. Type `default` and click **Finish**
+
+8. Finally, it's time to **Synchronize** the Apllication state. Click on **Sync** in the top right corner, check the Application details, and then click **Synchronize** to initiate the deployment.
+    - After a successful execution, you can check the deployment on your Kubernetes cluster using the following command:
+        ```bash
+        kubectl get pods -n default
+        ```
+    - To access the Guestbook application deployed via the Harness Pipeline, port forward the service and access it at [http://localhost:8080](http://localhost:8080)
+        ```bash
+        kubectl port-forward svc/<service-name> 8080:80
+        ```
+
+On successful Application sync, you'll see the below status tree under **Resource View**.
+
+![GitOps](../static/k8s-helm-tutorial/gitops-helm.png)
+
+### Congratulations!🎉
+You've just learned how to use **Harness GitOps** to deploy application using Kustomize template.
+
+#### What's Next?
+- Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [tutorial](https://developer.harness.io/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial).
+- Visit the [Harness Developer Hub](https://developer.harness.io/) for more Tutorials and resources.
 
 ```mdx-code-block
 </TabItem>
