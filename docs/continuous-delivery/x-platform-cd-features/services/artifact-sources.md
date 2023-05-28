@@ -2697,6 +2697,9 @@ For steps on adding a Custom Artifact source, go to [Add a custom artifact sourc
 
 Typically, if the Docker image you are deploying is in a private registry, Harness has access to that registry using the credentials set up in the Harness connector you use with your service **Artifacts**.
 
+<details>
+<summary>Pull an image from a private registry</summary>
+
 If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. 
 
 For these cases, the values YAML file in Service Definition **Manifests** section must use the `dockercfg` parameter.
@@ -2721,7 +2724,11 @@ namespace: <+infra.namespace>
 ...
 ```
 
-### Reference dockercfg in Kubernetes objects
+</details>
+
+
+<details>
+<summary>Reference dockercfg in Kubernetes objects</summary>
 
 Next, verify that the Deployment and Secret objects reference `dockercfg: {{.Values.dockercfg}}`.
 
@@ -2769,10 +2776,15 @@ spec:
 With these requirements met, the cluster imports the credentials from the Docker credentials file in the artifact.
 </details>
 
+</details>
+
 
 ## Sidecar workloads
 
 You can use Harness to deploy both primary and sidecar Kubernetes workloads.
+
+<details>
+<summary>Sidecar workloads</summary>
 
 Kubernetes sidecar workloads are a powerful way to modularize and encapsulate application functionality while keeping the overall architecture simple and easy to manage.
 
@@ -2784,6 +2796,9 @@ Sidecars can also be used to implement advanced features like load balancing, se
 
 For more information, go to [Add a Kubernetes sidecar container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container).
 
+</details>
+
+
 ### Propagate and override artifacts, manifests, and service variables
 
 You can propagate services between stages and override service settings by using multiple values YAML files and/or **Environment Overrides**. 
@@ -2792,3 +2807,35 @@ For more information, go to:
 
 - [Propagating CD services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services)
 - [Add and override values YAML files](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files)
+
+## Viewing SHA values and labels
+
+You can view the SHA values and labels of the Docker images for the following artifact types:
+
+- Artifactory
+- ECR
+- GCR
+- Google Artifact Registry
+- Nexus 3 Docker
+- ACR
+- Github Packages
+
+<details>
+<summary>Viewing SHA values and labels</summary>
+
+SHA values and labels for the artifact are now visible in the Harness service **Output** section of a pipeline execution.
+
+<docimage path={require('./static/726cd79347c2dabba5bd47f2264f91b0b2618f872663c90048453719e87ff634.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+Labels are visible if the artifact manifest supports `schemaVersion1`.
+
+Labels can be referenced using the expression: `<+pipeline.stages.[stage Id].spec.artifacts.primary.label.get("labelKey")>`.
+
+Since manifests can support two schema versions, `schemaVersion1` and `schemaVersion2`, there could be SHA values for each schema version.
+
+Here are the expressions for referencing each version:
+- SHA value of `schemaVersion1`: `<+artifacts.primary.metadata.SHA>` (same stage) or `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA>`.
+- SHA value of `schemaVersion2`: `<+artifacts.primary.metadata.SHAV2>` (same stage) or `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2>`.
+
+</details>

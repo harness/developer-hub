@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 23, 2023, version 79306
+## Latest - May 23, 2023, version 79307
 
 ```mdx-code-block
 <Tabs>
@@ -37,9 +37,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   Now, errors are displayed in the following scenarios:
   
   - Ongoing Problem: Errors are displayed when an SLO experiences an ongoing problem, such as an issue with the health of a connector.
-  - 
+  
   - Missing Data: Errors are shown when there is missing data in an SLO, even if there is no current error. This helps identify any gaps in historical SLO records.
-  - 
+  
   - Contributing SLO Issues: Errors in contributing SLOs are now reflected in the composite SLO, ensuring a complete picture of performance when individual components encounter problems.
 
 
