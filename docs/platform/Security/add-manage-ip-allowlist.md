@@ -53,7 +53,7 @@ To add IP allowlist in Harness:
 ## Define the IP range
 
 1. In **IP Address/CIDR**, enter a CIDR or an individual IP address or a block of IP addresses. 
-2. You can select one of the following for the allowlist application: 
+2.  Select one of the following for the allowlist application: 
    - **UI**: Harness allows or blocks the IP address based on the UI request.
    - **API**: Harness checks the API key in the request and allows or blocks the IP address.
 3. Select **Save and Continue**.
