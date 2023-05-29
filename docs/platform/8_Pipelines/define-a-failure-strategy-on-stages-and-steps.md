@@ -19,9 +19,8 @@ You can apply a failure strategy to the following:
 * Step
 * Step Group
 * Stage
-* Pipeline
 
-For details on strategy options and how strategies work, go to [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md) and [Define a failure strategy on pipelines](../define-a-failure-strategy-for-pipelines.md).
+For details on strategy options and how strategies work, go to [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
 ### Before you begin
 
