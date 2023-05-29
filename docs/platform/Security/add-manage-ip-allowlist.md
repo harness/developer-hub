@@ -44,7 +44,8 @@ To create an allowlist and add IP addresses to it:
    
    ![](./static/allowlist-tab.png)
 
-3. To add IP addresses, select **Add IP Addresses**.
+3. Select **Add IP Addresses**.
+
    The **IP Allowlist** settings appear.
 4. Enter a **Name** for the allowlist, and then select **Continue**.
 
