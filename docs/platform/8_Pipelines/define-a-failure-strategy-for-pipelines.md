@@ -4,20 +4,7 @@ description: Rollback pipelines to handle different failure conditions.
 sidebar_position: 12
 ---
 
-Failure strategies are a critical pipeline design component that determine what fails a step or stage and what to do when the failure occurs.
-
-You can apply a failure strategy to the following:
-
-* Step
-* Step Group
-* Stage
-* Pipeline
-
-For details on strategy options and how strategies work on steps and stages, go to [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
-
-### Add a pipeline failure strategy
-
-You can add a Rollback Pipeline failure strategy to your pipelines. This failure strategy applies to all stages in the pipeline. 
+You can add a Rollback Pipeline failure strategy to your pipelines. Rollback pipeline applies to all stages in the pipeline. 
 
 1. In a pipeline, select **Advanced**.
 2. In **Failure Strategy** > **On failure of type**, select a failure type or select **All Errors**. 
