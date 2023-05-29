@@ -26,7 +26,7 @@ Harness IP allowlisting is for user connections to a Harness account. It does no
 This topic explains how to set up an IP allowlist in Harness.
 
 ## Important
-- Make sure you have **View**, **Create/Edit**, and **Delete** permissions for **Authentication Settings** to add and manage IP allowlist.
+- Make sure you have **View**, **Create/Edit**, and **Delete** permissions for **Authentication Settings** to add and manage IP allowlists.
 - Harness returns a status code of HTTP 401 if an IP address is not allowlisted but tries to access Harness.
 - An allowlist can be based on IPv4 or IPv6 or a mix of both.
 - Following are the exceptions to the IP allowlist in Harness:
