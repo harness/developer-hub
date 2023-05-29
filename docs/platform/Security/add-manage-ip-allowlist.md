@@ -19,7 +19,7 @@ The following are some key benefits of IP allowlist management:
 
 
 :::important
-Harness IP allowlisting is for user connections to a Harness account. It will not perform IP allowlisting for Harness Delegate connections.
+Harness IP allowlisting is for user connections to a Harness account. It does not perform IP allowlisting for Harness Delegate connections.
 :::
 
 
