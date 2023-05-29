@@ -9,7 +9,7 @@ Currently, this feature is behind the feature flag `PL_IP_ALLOWLIST_NG`. Contact
 :::
 
 
-Management of the IP allowlist involves reviewing and updating the list of approved IP addresses regularly to ensure that only authorized users are granted access. After you add and enable an IP allowlist, only users connecting from the IP address/CIDR (Classless Inter-Domain Routing) block may log into Harness.
+Management of the IP allowlist involves reviewing and updating the list of approved IP addresses regularly to ensure that only authorized users are granted access. After you add and enable an IP allowlist, only users connecting from the IP address/[CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) block may log into Harness.
 
 Following are some key benefits of IP allowlist management:
 
