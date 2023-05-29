@@ -68,7 +68,7 @@ A Harness GitOps service is the same as any other Harness service.
 
 A service represents your microservices and other workloads logically. A Service is a logical entity to be deployed, monitored, or changed independently.
 
-You can create or select services from an account, organization, and project level. 
+You can create or select services from an account, organization, or project level. 
 
 An account level service can only reference connectors for the manifests and artifacts within the account. These services are global and cannot have dependencies at a lower hierarchy level.
 
@@ -86,7 +86,7 @@ A single service can have multiple service instances. For example, one for Dev, 
 
 Harness environments represent your live environment logically (QA, Prod, etc). In Harness GitOps, an environment is the live state of the infrastructure.
 
-You can create or select environments from an account, organization, and project level. 
+You can create or select environments from an account, organization, or project level. 
 
 An account level environments can only reference connectors within the account. They cannot have dependencies at a lower hierarchy level.
 
