@@ -1111,11 +1111,11 @@ The available values are:
 
 ### <+env.envGroupName>
 
-The name of the environment group to which the environment belongs (if defined). This only resolves if the deployment was done to an Environment Group
+The name of the environment group to which the environment belongs (if defined). This expression resolves only if the deployment is done to an environment group
 
 ### <+env.envGroupRef>
 
-The environment group reference. This only resolves if the deployment was done to an Environment Group
+The environment group reference. This expression resolves only if the deployment is done to an environment group
 
 You can evaluate the expression using JEXL in the **Conditional Execution** settings of steps or stages:
 
