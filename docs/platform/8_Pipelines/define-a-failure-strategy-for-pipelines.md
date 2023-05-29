@@ -10,7 +10,7 @@ Currently, this feature is behind the feature flag, `PIPELINE_ROLLBACK`. Contact
 
 :::
 
-You can add a Rollback Pipeline failure strategy to your pipelines. Rollback pipeline applies to all stages in the pipeline. 
+You can add a Rollback Pipeline failure strategy to your pipelines. Rollback pipeline applies to all steps and stages in a pipeline. 
 
 :::info
 
@@ -43,6 +43,6 @@ During pipeline execution, in **Permissible Actions**, if you select **Mark as F
 
 ![](static/pipeline-failure-strategy-1.png)
 
-If you select **Mark as Success**, the stage passes and the next stage's execution begins. 
+If you select **Mark as Success**, the stage passes, and the next stage's execution begins. 
 
 ![](static/pipeline-failure-strategy-2.png)
