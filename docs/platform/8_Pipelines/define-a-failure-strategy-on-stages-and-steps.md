@@ -95,9 +95,15 @@ Select the following:
 * **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
 * **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
 
-### Add a pipeline failure strategy
+### Rollback pipelines
 
-The pipeline failure strategy applies to all stages in the pipeline. 
+The rollback pipeline failure strategy applies to all stages in a pipeline. 
+
+:::note Info
+
+Currently, this feature is behind the feature flag, `PIPELINE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 In a stage in a pipeline, click **Advanced**.
 
@@ -110,6 +116,12 @@ To add an additional stage failure strategy, click **Add**.
 In **On failure of type**, select one or more of the error types, or select **All Errors**. Go to [Error types](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings#error-types) for more information.
 
 In **Perform Action**, select **Rollback Pipeline**
+
+::: info
+
+This feature works for deployment stages only. During [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining/), if there is a stage of type, pipeline, the deployment stages inside the child pipeline cannot be rolled back using the Rollback Pipeline failure strategy because the child pipeline is a seperate execution.
+
+:::
 
 ### Failure strategy as a runtime input
 
