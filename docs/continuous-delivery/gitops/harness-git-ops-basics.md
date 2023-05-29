@@ -88,7 +88,7 @@ Harness environments represent your live environment logically (QA, Prod, etc). 
 
 You can create or select environments from an account, organization, or project level. 
 
-An account level environments can only reference connectors within the account. They cannot have dependencies at a lower hierarchy level.
+An account level environment can only reference connectors within the account, and cannot have dependencies at a lower hierarchy level.
 
 For more information, go to [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
