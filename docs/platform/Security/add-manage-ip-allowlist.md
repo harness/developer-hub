@@ -35,7 +35,7 @@ This topic explains how to set up an IP allowlist in Harness.
   - API calls corresponding to Harness admin.
 - Harness uses an in-memory cache. All caches expire after 5 minutes. Every update takes 5 minutes because there are no manual cache updates.
 
-## Add IP addresses in the allowlist
+## Add an allowlist
 
 To add IP allowlist in Harness: 
 
