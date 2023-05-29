@@ -37,7 +37,7 @@ This topic explains how to set up an IP allowlist in Harness.
 
 ## Add an allowlist
 
-To add IP allowlist in Harness: 
+To create an allowlist and add IP addresses to it: 
 
 1. Select **ACCOUNT SETTINGS** and then select **Authentication**.
 2. Select **Allowlist**.
