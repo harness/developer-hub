@@ -36,6 +36,6 @@ The following list is optional. You can allowlist these IPs if needed.
 ```
 
 :::caution
-Harness will not change IPs without 30 days notice to all customers. If a security emergency requires a change, all customers will be notified.
+Harness will not change IPs without 30 days notice to all customers. If a security emergency requires a change, all customers are notified.
 :::
 
