@@ -23,7 +23,7 @@ Harness IP allowlisting is for user connections to a Harness account. It does no
 :::
 
 
-This topic explains how to set up IP allowlist in Harness.
+This topic explains how to set up an IP allowlist in Harness.
 
 ## Important
 - Make sure you have **View**, **Create/Edit**, and **Delete** permissions for **Authentication Settings** to add and manage IP allowlist.
