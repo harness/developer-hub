@@ -1,5 +1,5 @@
 ---
-title: Add and manage IP allowlist
+title: Add and manage IP allowlists
 description: Add and manage the list of allowed IP addresses.
 sidebar_position: 3
 ---
