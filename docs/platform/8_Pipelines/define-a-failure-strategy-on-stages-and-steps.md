@@ -97,31 +97,37 @@ Select the following:
 
 ### Rollback pipelines
 
-The rollback pipeline failure strategy applies to all stages in a pipeline. 
-
 :::note Info
 
 Currently, this feature is behind the feature flag, `PIPELINE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
-In a stage in a pipeline, click **Advanced**.
+The Rollback Pipeline failure strategy applies to all stages in a pipeline. 
+
+::: info
+
+During [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining/), if there is a stage of type, pipeline, the deployment stages inside the child pipeline cannot be rolled back using the Rollback Pipeline failure strategy because the execution of the child pipeline is considered as a seperate execution.
+
+:::
+
+The Rollback Pipeline failure strategy applies to the following deployments only:
+* Kubernetes
+* Native Helm
+* Amazon Elastic Container Service (ECS)
+
+In a stage in a pipeline, select **Advanced**.
 
 In **Failure Strategy**, you can see the default stage strategy:
 
 **On all errors other than those specified in failure strategies defined here, perform action**
 
-To add an additional stage failure strategy, click **Add**.
+To add an additional stage failure strategy, select **Add**.
 
 In **On failure of type**, select one or more of the error types, or select **All Errors**. Go to [Error types](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings#error-types) for more information.
 
 In **Perform Action**, select **Rollback Pipeline**
 
-::: info
-
-This feature works for deployment stages only. During [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining/), if there is a stage of type, pipeline, the deployment stages inside the child pipeline cannot be rolled back using the Rollback Pipeline failure strategy because the child pipeline is a seperate execution.
-
-:::
 
 ### Failure strategy as a runtime input
 
