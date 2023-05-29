@@ -111,12 +111,12 @@ During [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining/), if ther
 
 :::
 
-The Rollback Pipeline failure strategy applies to the following deployments only:
+Currently, the Rollback Pipeline failure strategy applies to the following deployments only:
 * Kubernetes
 * Native Helm
 * Amazon Elastic Container Service (ECS)
 
-In a stage in a pipeline, select **Advanced**.
+In a pipeline's step or stage, select **Advanced**.
 
 In **Failure Strategy**, you can see the default stage strategy:
 
