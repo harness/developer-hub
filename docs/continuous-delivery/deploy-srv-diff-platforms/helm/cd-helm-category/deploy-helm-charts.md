@@ -391,7 +391,7 @@ If you want to use the uninstall command in the **Manifest Details**, be aware o
 
 #### Authentication for Google Cloud with Helm OCI connector
 
- To connect Harness using GCP with a Helm OCI connector, you must provide the username and password to your Google service account.
+ To configure authentication for GCP with a Helm OCI connector, you must provide the username and password to your Google service account.
   
  **Username**: A _json_key or _json_key_base64. We recommend that you use the json_key_base64 to encode your Google service account file to base64.
   
