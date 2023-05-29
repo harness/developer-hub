@@ -15,7 +15,7 @@ The following are some key benefits of IP allowlist management:
 
 - **Increased security:** By limiting access to approved IP addresses only, you can prevent unauthorized access to sensitive data and resources. This protects against data breaches, cyber-attacks, and other security threats.
 
-- Improved network performance: By limiting access to approved IP addresses only, you can reduce the number of requests your network receives, which improves network speed and reduces latency.
+- **Improved network performance:** By limiting access to approved IP addresses only, you can reduce the number of requests your network receives, which improves network speed and reduces latency.
 
 
 :::important
