@@ -46,7 +46,7 @@ To add IP allowlist in Harness:
 
 3. To add IP addresses, select **Add IP Addresses**.
    The **IP Allowlist** settings appear.
-4. Enter **Name** for the allowlist.
+4. Enter a **Name** for the allowlist, and then select **Continue**.
 5. Select **Continue**.
 
    ![](./static/allowlist-overview.png)
