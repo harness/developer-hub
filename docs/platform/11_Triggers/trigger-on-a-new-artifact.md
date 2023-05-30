@@ -39,6 +39,7 @@ An artifact source does not need to be defined in the service definition for the
 * In Harness, you can select who is able to create and use triggers within Harness, but you must use your repository's RBAC to control who can add the artifacts or initiate the events that start the Harness trigger.
 * Whenever you create a trigger for the first time, Harness recommends submitting a tag or pushing an artifact to verify its functionality. By doing this, the trigger will execute and the pipeline will run as expected when subsequent tags are pushed.
 * The polling stops when you disable a trigger. Artifact polling restarts after reenabling the trigger. Harness recommends that you submit a tag or push an artifact and verify the flow as this is treated as a new polling job.
+* When a trigger is created or updated it takes around 5-10 minutes for the polling job to start and for the trigger to be in working state, so it is advised that when a new trigger is created or an existing trigger is updated to wait for sometime before testing the trigger by pushing an artifact.
   
 Familiarize yourself with Harness CD pipelines, such as the one you create in the [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
