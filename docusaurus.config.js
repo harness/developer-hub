@@ -502,7 +502,8 @@ const config = {
       },
     ],
     [
-      "@docusaurus/plugin-content-docs",
+      // "@docusaurus/plugin-content-docs",
+      path.resolve(__dirname, "./plugins/redirect-plugin"),
       {
         id: "kb",
         path: "kb",

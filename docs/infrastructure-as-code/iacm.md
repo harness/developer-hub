@@ -1,7 +1,7 @@
 ---
 title: About Infrastructure as Code Management 
 description: About Infrastructure as Code Management Beta.
-displayed_sidebar: iacmbeta
+# displayed_sidebar: iacmbeta
 ---
 
 import BetaIcon from '/img/icon_beta.svg';

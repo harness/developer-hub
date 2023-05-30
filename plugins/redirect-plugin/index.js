@@ -54,10 +54,24 @@ async function docsPluginEnhanced(context, options) {
       // const { routeBasePath } = options;
       // const docsBaseUrl = normalizeUrl([siteUrl, baseUrl, routeBasePath]);
 
-      const docs = content.loadedVersions[0].docs;
+      const outPutPath = path.join(outDir, destPath);
+      const exists = await fs.pathExists(outPutPath);
+      console.log("pathExists", outPutPath, exists);
 
       let strRedirects =
         "# Redirects For Netlify\r\n# From <space> To - https://docs.netlify.com/routing/redirects/\r\n\r\n";
+      if (!exists) {
+        const historyRedirectsPath = path.resolve(
+          __dirname,
+          "../../_history-redirects"
+        );
+        await fs.copy(historyRedirectsPath, outPutPath);
+      }
+      strRedirects = await fs.readFile(outPutPath, {
+        encoding: "utf8",
+      });
+
+      const docs = content.loadedVersions[0].docs;
 
       await Promise.all(
         docs.map(async (post) => {
@@ -71,19 +85,21 @@ async function docsPluginEnhanced(context, options) {
             lastUpdatedAt,
             // },
           } = post;
-          const { id, title, data, alias } = frontMatter;
+          const { id, title, data, redirect_from } = frontMatter;
 
           const dispId = id || metadataId;
           const dispTitle = title || metadataTitle;
           const dispDate = data || lastUpdatedAt || "";
 
-          if (alias) {
-            if (Array.isArray(alias)) {
-              alias.forEach((al) => {
-                strRedirects += `# ${dispId} ${dispTitle} ${dispDate}\r\n${al} ${permalink}\r\n\r\n`;
+          if (redirect_from) {
+            if (Array.isArray(redirect_from)) {
+              redirect_from.forEach((al) => {
+                strRedirects += `# ID: ${dispId} Title: ${dispTitle} ${
+                  dispDate ? "Date: " + dispDate : ""
+                }\r\n${al} ${permalink}\r\n\r\n`;
               });
             } else {
-              strRedirects += `\r\n${alias} ${permalink}\r\n\r\n`;
+              strRedirects += `\r\n${redirect_from} ${permalink}\r\n\r\n`;
             }
           }
 

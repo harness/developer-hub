@@ -1,6 +1,9 @@
 ---
 description: KB - CV with Multi Service
 title: CV with Multi Service Deployments
+redirect_from:
+  - /kb-cv
+  - /kb-multi-service
 ---
 
 # Introduction
