@@ -13,10 +13,15 @@ Harness captures delegate agent metrics for delegates shipped on immutable image
 | `task_execution_time` | The time it takes to complete a task. |
 | `tasks_currently_executing` | The number of tasks underway. |
 | `task_timeout` | The number of tasks that time out before completion. |
-| `task_completed` | The number of tasks completed. |
-| `task_failed` | The number of failed tasks. |
-| `task_rejected` | The number of tasks rejected because of a high load on the delegate. |
-| `resource_consumption_above_threshold` | The delegate resource consumption reached more than 90%. |
+| `task_completed`* | The number of tasks completed. |
+| `task_failed`* | The number of failed tasks. |
+| `task_rejected`* | The number of tasks rejected because of a high load on the delegate. |
+| `delegate_connected`* | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
+| `resource_consumption_above_threshold`* | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. For more information, go to [Configure delegate resource threshold](#configure-delegate-resource-threshold). |
+
+:::info note
+Metrics notated with * above are currently behind the feature flag `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 This topic includes example YAML files you can use to create application manifests for your Prometheus and Grafana configurations.
 
@@ -181,7 +186,7 @@ kubectl apply -f prometheus.yml
 
 ## Set up Grafana
 
-To set up Grafana, use the following example grafana.yml file.
+To set up Grafana, use the following example `grafana.yml` file.
 
 ### Example grafana.yml file
 
@@ -270,7 +275,7 @@ spec:
       targetPort: 3000     
 ```
 
-1. Copy the grafana.yml file.
+1. Copy the `grafana.yml` file.
 
 2. If you're not using the default `harness-delegate-ng` namespace, replace it with the namespace into which you deployed your delegate.
 
@@ -285,3 +290,40 @@ spec:
    :::
 
 4. Select the exposed URL to access Grafana.
+
+## Configure delegate resource threshold
+
+You can set the delegate to reject new tasks if x% of memory is being consumed. You can then spin up new delegates when resources are above the threshold.
+
+:::info note
+The `resource_consumption_above_threshold` metric is currently behind the feature flag `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+To configure the delegate resource threshold, make the following changes to the delegate YAML file:
+
+1. Set the `JAVA_OPTS` env variable.
+
+   ```
+   env:
+       - name: JAVA_OPTS
+         value: "-Xmx1536M"
+   ```
+
+2. Set the `DYNAMIC_REQUEST_HANDLING` env variable to `true` to enable dynamic task rejection.
+
+   ```
+   env:
+      - name: DYNAMIC_REQUEST_HANDLING
+        value: "true"
+   ```
+
+3. Set the `RESOURCE_USAGE_THRESHOLD` env variable to the cpu/memory threshold. When the threshold is exceeded, the delegate rejects new tasks.
+
+   ```
+   env:
+      - name: RESOURCE_USAGE_THRESHOLD
+        value: "80"
+   ```
+   :::info note
+   This step is optional if you want to use the default value of 80%.
+   ::: 

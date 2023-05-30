@@ -238,6 +238,10 @@ const config = {
                 label: "Continuous Integration",
                 to: "certifications/continuous-integration",
               },
+              {
+                label: "Instructions",
+                to: "certifications/instructions",
+              },
             ],
           },
           {
@@ -386,6 +390,11 @@ const config = {
         defaultMode: "light",
         disableSwitch: true,
         respectPrefersColorScheme: false,
+      },
+      docs: {
+        sidebar: {
+          hideable: true,
+        },
       },
       /*
       announcementBar: {

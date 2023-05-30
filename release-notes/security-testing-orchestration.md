@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-05-10T10:00
+date: 2023-05-25T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 9
 ---
@@ -18,12 +18,77 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
-## Latest - May 10, 2023, version 1.50.3
+## Latest - May 25, 2023, version 1.54.1
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+
+* This release include new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
+
+  * [AWS ECR](/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference)
+  * [AWS Security Hub](/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference)
+  * [Brakeman](/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference)
+  * [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference)
+  * [Nikto](/docs/security-testing-orchestration/sto-techref-category/nikto-scanner-reference)
+  * [Nmap](/docs/security-testing-orchestration/sto-techref-category/nmap-scanner-reference)
+  * [OWASP](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference)
+  * [Prowler](/docs/security-testing-orchestration/sto-techref-category/prowler-scanner-reference)
+
+* The **Account Settings** > **Subscriptions** page has a new **Activity & Usage** section that shows the number of security scans and user activity over the past 30 days. (STO-4942)
+
+* This release includes a minor UI update. In **Security Tests** > **Details**, the **Exempt** button has been renamed to **Request Exemption** to make the button's purpose more clear. (STO-5928)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not incude early-access features. 
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+* Fixed a UI issue where **Security Tests** would briefly display the message "No issues were found" when the window initially loaded. (STO-5927)
+
+* Fixed an issue in non-Kubernetes builds where a scan would not produce output variables. This meant that failing a pipeline using `fail_on_severity` was not supported on non-Kubernetes builds.  Now, STO can generate output variables and fail pipelines using `fail_on_severity` on all supported build infrastructures. (STO-5483)
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 17, 2023, version 1.53.0
+
+##### New features
+
+* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
+
+  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
+
+##### Early access
+
+This release does not incude early-access features. 
+
+##### Fixed issues
+
+* Fixed an issue that would sometimes cause long-running scans to fail with a `requests.exceptions.ReadTimeout` exception and scan results to be lost.  (STO-5907)
+
+
+
+#### May 10, 2023, version 1.50.3
+
+##### What's new
 
 * You can now ingest ZAP scan results from both JSON and XML reports. For information about the ZAP XML report format, go to [Traditional XML Report](https://www.zaproxy.org/docs/desktop/addons/report-generation/report-traditional-xml/) in the ZAP documentation. (STO-5868)
 
@@ -44,18 +109,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
    ![](./static/sto-exemption-reason-pulldown.gif)
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 This release does not incude early-access features. 
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
 
 * Fixed an issue with Mend scans that caused builds to fail with the log message “Missing valid image". (STO-5867)
 
@@ -66,16 +125,7 @@ This release does not incude early-access features.
 * Implemented fixes to improve UI speed and performance in the Security Testing Dashboard. (STO-5612)
   
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### April 6, 2023, version 1.43.1
 

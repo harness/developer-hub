@@ -1,6 +1,6 @@
 ---
 title: Add a Google Cloud Platform (GCP) connector
-description: Use a Harness GCP connector to integrate GCP with Harness.
+description: Connect Harness to your GCP accounts and services.
 sidebar_position: 4
 helpdocs_topic_id: cii3t8ra3v
 helpdocs_category_id: o1zhrfo8n5
@@ -66,7 +66,7 @@ repo_gpgcheck=0
 gpgkey=https://packages.cloud.google.com/yum/doc/rpm-package-key.gpg
 EOM
 
-// Install google-cloud-cli and google-cloud-cli-gke-gcloud-auth-plugin
+# Install google-cloud-cli and google-cloud-cli-gke-gcloud-auth-plugin
 microdnf install google-cloud-cli
 microdnf install google-cloud-cli-gke-gcloud-auth-plugin
 ```

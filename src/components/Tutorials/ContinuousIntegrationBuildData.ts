@@ -25,7 +25,7 @@ import { MODULES } from "../../constants";
           title: "Java application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of Java HTTP Server application.",
+            "Build a Docker Image of Java application.",
           link: "/tutorials/ci-pipelines/build/java",
         },
         {

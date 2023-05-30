@@ -12,7 +12,7 @@ Harness uses delegate tokens to encrypt communication between Harness Delegates 
 
 You can further secure delegate-to-Harness communication by replacing the default delegate token with new tokens. You can add and revoke delegate tokens per your governance policies and replace revoked tokens with custom tokens when needed. You can also rotate your tokens and store them in a secret manager.
 
-## Step 1: Generate a new token
+## Generate a new token
 
 You can generate a new token when you create a delegate or as a separate process.
 
@@ -79,8 +79,6 @@ To update and restart an existing Kubernetes delegate, do the following:
 
 2. Paste the token into the delegate `spec` of the `Secret`, in the `UPGRADER_TOKEN` field. 
 
-3. Paste the token into the specification of the `Secret` in the `DELEGATE_TOKEN` field.
-
    ```yaml
    ...  
    ---  
@@ -92,19 +90,9 @@ To update and restart an existing Kubernetes delegate, do the following:
    data:
      UPGRADER_TOKEN: "[enter new token here]"
    ...
-   ---
-   
-   apiVersion: v1
-   kind: Secret
-   ...
-   type: Opaque
-   data:
-     DELEGATE_TOKEN: "[enter new token here]"
-   
-   ...
    ```
 
-4. Run `kubectl apply -f harness-delegate.yaml`.
+3. Run `kubectl apply -f harness-delegate.yaml`.
 
    The delegate pods restart automatically with the updated settings.
 

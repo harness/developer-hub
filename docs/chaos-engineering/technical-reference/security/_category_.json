@@ -1,5 +1,5 @@
 {
-  "position": 3,
+  "position": 5,
   "label": "Security",
   "collapsible": true,
   "collapsed": true,
@@ -8,6 +8,6 @@
       "title":"Security"
    },
   "customProps": {
-    "description": "Harness Chaos Security"
+    "description": "Harness Chaos security"
   }
 }

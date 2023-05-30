@@ -68,7 +68,7 @@ For example in the following URL, the account ID is `1a2b3c`: `https://app.har
 2. Copy the hostname.
    
 
-![](./static%20/configure-ecg-for-auto-stopping-rules-00.png)
+![](./static/configure-ecg-for-auto-stopping-rules-00.png)
 
 
 ##### Example

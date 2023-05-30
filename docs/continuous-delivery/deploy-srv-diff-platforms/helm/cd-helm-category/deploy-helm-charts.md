@@ -40,7 +40,7 @@ Harness supports the following Helm OCI chart registries:
   - Azure Container Registry
   - DockerHub
   - JFrog Artifactory
-  - Google Artifact Registry (coming soon)
+  - Google Artifact Registry
 
 Helm OCI chart support includes the following deployment types:
 
@@ -120,9 +120,9 @@ Adding a Helm chart is a simple process of connecting Harness to the Git or HTTP
    ![](./static/deploy-helm-charts-02.png)
 5. In **Specify Helm Chart Store**, select the type of repo or or cloud storage service (Google Cloud Storage, AWS S3) you're using.
 
-For the steps and settings of each option, see the [Connect to an Artifact Repo](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo) How-tos.
+For the steps and settings of each option, see the [Connect to an Artifact Repo](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo/) How-tos.
 
-If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-platform-connectors).
+If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](https://developer.harness.io/docs/category/cloud-platform-connectors/).
 
 You can also use a local Helm chart if you are deploying the same Helm chart and version to many clusters/namespaces in parallel. For information, see [Use a local Helm Chart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/use-a-local-helm-chart). For all of the Helm Chart Store types (Git, GitHub, HTTP Helm, OCI, etc), you will need to provide the following Helm info:
 
@@ -379,6 +379,26 @@ For more information, go to [Kubernetes Rollback](/docs/continuous-delivery/depl
 
 You can set up a Harness trigger to listen on the chart repo and execute the pipeline when a new chart version appears. For more information, go to [Trigger Pipelines on New Helm Chart](/docs/platform/Triggers/trigger-pipelines-on-new-helm-chart).
 
+## Fetch Helm chart dependencies
+
+Harness can fetch Helm chart dependencies within GitHub using the `--dependency-update` command flag. 
+  
+Harness fetches dependent Helm charts along with the main Helm chart used for the deployment. Dependencies are resolved before Harness performs the deployment of the main Helm chart. 
+
+For more information, go to [Helm Docs](https://helm.sh/docs/helm/helm_template/#helm).
+
+To update Helm chart dependencies:
+
+* For Kubernetes with Helm deployments (as described in this topic), configure **Helm Command Flags** with the **Template** command type and `--dependency-update` flag.
+
+* For Native Kubernetes deployments, add the command flag `--depdency-update` to the **Install** and **Upgrade** command types.
+
+:::info
+  
+All dependency repositories must be available and accessible from the Harness delegate(s) used by the deployment.
+
+:::
+  
 ## Notes
 
 #### Uninstall command flag
@@ -389,3 +409,10 @@ If you want to use the uninstall command in the **Manifest Details**, be aware o
 * If the deployment fails on the very first execution, then Harness will apply the `--uninstall` flag itself. You can see this in the logs under `Wait For Steady State`.
 * If you want to pass in some command flags when Harness performs the `--uninstall`, enter uninstall in **Manifest Details** and enter in the relevant command flags.
 
+#### Authentication for Google Cloud with Helm OCI connector
+
+ To configure authentication for GCP with a Helm OCI connector, you must provide the username and password to your Google service account.
+  
+ **Username**: A _json_key or _json_key_base64. We recommend that you use the json_key_base64 to encode your Google service account file to base64.
+  
+ **Password**: Your Google service account file content.

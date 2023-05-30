@@ -18,7 +18,8 @@ Go to [Delegate system requirements](./delegate-requirements.md).
 
 Harness Delegate connects to Harness Manager over an outbound HTTPS/WSS connection.
 
-![](./static/delegates-overview-00.png)
+![Harness Delegate overview](./static/harness-platform-architecture-00.png)
+
 The delegate connects to Harness Manager (via SaaS) over a Secure WebSockets channel (WebSockets over TLS). The channel is used to send notifications of delegate task events and to exchange connection heartbeats. The channel is not used to send task data itself.
 
 Delegate communication includes the following functions:
