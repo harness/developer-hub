@@ -22,7 +22,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-Python is now a supported **Language** for the [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings). (CI-8040)
+This release does not include new features.
 
 ```mdx-code-block
   </TabItem>
@@ -36,10 +36,10 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-* (CI-8065)
+* Previously, in situations where a build pod wasn't created, an error occurred when the cleanup event couldn't find details of a pod to cleanup. Now, handling has been added to avoid this error. (CI-8065)
 * (CI-8053)
-* (CI-8039)
-* (CI-7912, ZD-43490)
+* Fixed an issue where running multiple [Build and Push an image to Docker Registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) steps [in parallel](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) could result in multiple copies of the same image being pushed to the Docker repository. While the image names were different, the underlying image was the same. (CI-8039)
+* Fixed an issue where passing an empty runtime input value for the **Dockerfile** setting in a [Build and Push an image to Docker Registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) step didn't resolve properly. (CI-7912, ZD-43490)
 
 ```mdx-code-block
   </TabItem>
