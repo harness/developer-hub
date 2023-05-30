@@ -82,7 +82,7 @@ Add caching to your stage.
 
 Cache your Python module dependencies with [**Cache Intelligence**](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
-Add caching to your stage.
+Add caching to your `stage.spec`.
 
 ```yaml
     - stage:
