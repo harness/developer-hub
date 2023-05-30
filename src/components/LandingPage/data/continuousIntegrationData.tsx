@@ -74,17 +74,6 @@ export const FeaturedList: CardItem[] = [
     icon: "img/icon_ci.svg",
     newDoc: true,
   },
-  {
-    title: "Swift application",
-    module: MODULES.ci,
-    description:
-      "Build a Docker Image of a Swift application.",
-    link: "/tutorials/ci-pipelines/build/swift",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: true,
-  },
 ];
 
 export const DroneList: CardItem[] = [
@@ -157,28 +146,6 @@ export const CIList: CardItem[] = [
     description:
       "Build a Docker Image of a Python application.",
     link: "/tutorials/ci-pipelines/build/python",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: true,
-  },
-  {
-    title: "Ruby application",
-    module: MODULES.ci,
-    description:
-      "Build a Docker Image of a Ruby application.",
-    link: "/tutorials/ci-pipelines/build/ruby",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: true,
-  },
-  {
-    title: "Swift application",
-    module: MODULES.ci,
-    description:
-      "Build a Docker Image of a Swift application.",
-    link: "/tutorials/ci-pipelines/build/swift",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
