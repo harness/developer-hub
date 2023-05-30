@@ -44,7 +44,7 @@ export default function communityAspects() {
               </Tooltip>
             </Link>
             <Link href="https://discuss.harness.io/">
-              <Tooltip placement="top" overlay="Forum [Discourse] - Read Only as on June 16th, 2023">
+              <Tooltip placement="top" overlay="Forum [Discourse] - Read Only as of June 16th, 2023">
                 <button className={styles.btn}>
                   <img src={`${baseUrl}img/discuss.svg`} />
                 </button>
