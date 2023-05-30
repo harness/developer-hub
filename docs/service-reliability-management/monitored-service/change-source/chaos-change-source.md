@@ -12,7 +12,7 @@ This feature is currently behind two feature flags: `CHAOS_SRM_EVENT` and `SRM_I
 
 
 By connecting a Chaos Experiment to a monitored service, you can effectively monitor the impact of chaos faults on the health of the service. To do this, you connect any chaos fault within an experiment to monitored services.
-For example, let's say you use SRM to monitor services and to correlate change events to service health. Now you want to see how one or more chaos faults impacts services in your target environment. By adding the target environment as one or more monitored services, and linking faults to those services, you can see the impacts on service health in SRM when you run experiments containing those faults.
+For example, let's say you use SRM to monitor services and correlate change events to service health. Now you want to see how one or more chaos faults impact services in your target environment. By adding the target environment as one or more monitored services and linking faults to those services, you can see the impacts on service health in SRM when you run experiments containing those faults.
 
 ## Connect a fault to a monitored service
 
@@ -27,7 +27,7 @@ To check the impact of a fault on a monitored service:
 
 1. In Harness, select **Service Reliability**.
 
-	The [Service Level Objectives (SLOs) dashboard](/docs/service-reliability-management/getting-started/slo-dashboard) appears, listing SLOs, their associated monitored service, status, [error budget](/docs/service-reliability-management/getting-started/slo-dashboard#error-budget-details), etc.
+	The [Service Level Objectives (SLOs) dashboard](/docs/service-reliability-management/getting-started/slo-dashboard) appears, listing SLOs, their associated monitored services, status, [error budget](/docs/service-reliability-management/getting-started/slo-dashboard#error-budget-details), etc.
 	
 	![The SRM SLOs dashboard, listing 3 SLOs, and their associated monitored services](./static/srm-slo-dashboard.png) 
 
@@ -45,10 +45,10 @@ To check the impact of a fault on a monitored service:
 
 3. Use the filters at the top to narrow down the data, and then move the pointer to the diamond icons in the **Chaos Experiments** timeline to see chaos events at those points in time.
 
-	For example, in the image above, the pointer is centered around one of diamonds on the **Chaos Experiments** timeline, and there are 2 Chaos Events at that point in time. The corresponding events are also listed in the **Changes** section at the bottom of the page.
+	For example, in the image above, the pointer is centered around one of the diamonds on the **Chaos Experiments** timeline, and there are two Chaos Events at that point in time. The corresponding events are also listed in the **Changes** section at the bottom of the page.
 
 1. Below the timeline, in the Changes section, select a change event to see [SLO details](/docs/service-reliability-management/getting-started/slo-dashboard#slo-details-page).
 
-	Here you can see performance trends and error budget for the SLO, among other details. 
+	Here you can see performance trends and the error budget for the SLO, among other details. 
 
 1. To go to the chaos experiment corresponding to this change event, select **View Chaos Experiment**.
