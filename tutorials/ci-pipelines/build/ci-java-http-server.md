@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 2
 title: Java application
 description: Use a CI pipeline to build and test a Java application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]

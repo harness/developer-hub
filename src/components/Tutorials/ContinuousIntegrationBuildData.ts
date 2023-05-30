@@ -15,13 +15,6 @@ import { MODULES } from "../../constants";
         "",
       list: [
         {
-          title: "Build on a Kubernetes cluster",
-          module: MODULES.ci,
-          description:
-            "Build a Docker Image on a Kubernetes cluster build farm.",
-          link: "/tutorials/ci-pipelines/kubernetes-build-farm",
-        },
-        {
           title: "Go application",
           module: MODULES.ci,
           description:
@@ -43,15 +36,12 @@ import { MODULES } from "../../constants";
           link: "/tutorials/ci-pipelines/build/nodejs",
         },
         {
-          title: "Terraform Cloud notification triggers",
+          title: "Python application",
           module: MODULES.ci,
-          icon: "img/icon_ci.svg",
           description:
-            "Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.",
+            "Build a Docker Image of a Python application.",
+          link: "/tutorials/ci-pipelines/build/python",
           newDoc: true,
-          type: [docType.Documentation],
-          time: '9 min',
-          link: "/tutorials/ci-pipelines/tfc-notification",
         },
         {
           title: "Ruby application",
