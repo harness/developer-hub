@@ -1,6 +1,6 @@
 ---
 id: aws-iam-integration
-title: Using IAM roles for authentication
+title: Use IAM roles for authentication
 sidebar_position: 2
 ---
 
@@ -52,17 +52,17 @@ To create an OIDC provider for a cluster:
   https://oidc.eks.us-west-1.amazonaws.com/id/D054E55B6947B1A7B3F200297789662C
   ```
 
-  In the above example `us-west-1` is the region.
+  In the above example `us-west-1` is the region, and `D054E55B6947B1A7B3F200297789662C` is the OIDC provider ID.
 
-1. List the IAM OIDC providers in your account. 
-
-  Run the following command, and replace `EXAMPLED539D4633E53DE1B716D3041E` (including brackets `<>`) with the value returned from the output of the previous command. In our example, this value is `<D054E55B6947B1A7B3F200297789662C>`.
+1. Run the following command to list the IAM OIDC providers available to your account. 
 
   ```bash
-  aws iam list-open-id-connect-providers | grep <EXAMPLED539D4633E53DE1B716D3041E>
+  aws iam list-open-id-connect-providers | grep <Provider_ID>
   ```
 
-1. If no IAM OIDC identity provider is available for your account, create one for your cluster using the following command
+  Where: `Provider_ID` is the value returned from the output of the previous command. In our example, this value is `D054E55B6947B1A7B3F200297789662C`.
+
+1. If no IAM OIDC identity provider is available for your account, create one for your cluster using the following command.
   ```bash
   eksctl utils associate-iam-oidc-provider --cluster <your-cluster-name> --approve
   ```
