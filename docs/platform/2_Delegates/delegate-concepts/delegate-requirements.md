@@ -23,8 +23,6 @@ Note the following important information about delegates:
 	For example, an instance of a Kubernetes workload where Harness creates the pods, or an instance of an ECS task where Harness creates the service for the task.
 
 * The delegate is installed in your network and connects to the Harness Manager.
-
-  ![](./static/delegate-requirements-and-limitations-00.png)
   
   The requirements for memory and CPU support only the delegate. The delegate host, pod, and container require additional compute resources to support other operations, systems, and services, such as Docker or Kubernetes.
 
