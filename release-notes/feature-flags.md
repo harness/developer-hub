@@ -41,7 +41,7 @@ This release does not include early access features.
 
 * Previously, display of the FF module depended on an internal Harness feature flag. Now, display of the FF module is instead based on having an active license (including 'free'). (FFM-7866)
 
-* Previously when a new user was onboarding in the Feature Flags page, when they selected 'Get Started', they saw a dropdown of flags, even though they hadn't created any flags yet. Now, when users do not have any existing flags, they see a text box that prompts them to create one.
+* Previously when a new user was onboarding in the Feature Flags page, when they selected **Get Started**, they saw a dropdown of flags, even though they hadn't created any flags yet. Now, when users do not have any existing flags, they see a text box that prompts them to create one.
 
 ```mdx-code-block
   </TabItem>
