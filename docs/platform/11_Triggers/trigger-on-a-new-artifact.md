@@ -219,6 +219,106 @@ If the regex expression does not result in a match, Harness ignores the value.
 
 Harness supports standard Java regex. For example, if regex is enabled and the intent is to match any branch, the wildcard should be `.*` instead of simply a wildcard `*`. If you wanted to match all of the files that end in `-DEV.tar` you would enter `.*-DEV\.tar`.
 
+#### Set Metadata conditions
+
+On New Artifact Triggers supports conditions based on artifact metadata expressions.
+
+It is possible to define conditions based on metadata apart from the artifact build and JEXL conditions.
+
+Configure a condition based on Artifact metadata
+
+1. In configuration of On New Artifact Trigger , select **Condition** sections after providing the required artifact configuration
+
+2. Navigate to **Metadata Conditions** 
+3. Click on Add and add a condition
+4. Provide the expression associated with the artifact configured in the Trigger in the attribute fields
+5. Select the operator and  value to match to the metadata attribute
+
+On execution of the Trigger , the metadata condition is evaluated and based on the condition match the Trigger is enableExecuteCommand
+
+List of Artifact metadata expressions can be referred in the section below
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+<TabItem value="Docker Registry Artifact Metadata Expressions" label="Docker Registry Artifact Metadata Expressions">
+```
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.image>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.tag>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.SHAV2>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.SHA>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.url>
+<+pipeline.stages.DS.spec.artifacts.primary.dockerConfigJsonSecret>
+
+```mdx-code-block
+<Tabs>
+<TabItem value="ECR Artifact Metadata Expressions" label="ECR Artifact Metadata Expressions">
+```
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.image>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.tag>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.SHAV2>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.SHA>
+<+pipeline.stages.DS.spec.artifacts.primary.dockerConfigJsonSecret>
+
+```mdx-code-block
+<Tabs>
+<TabItem value="ACR Artifact Metadata Expressions" label="ACR Artifact Metadata Expressions">
+```
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.image>
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.registryHostname>
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.tag>
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.SHAV2>
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.SHA>
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.url>
+
+```mdx-code-block
+<Tabs>
+<TabItem value="GAR Artifact Metadata Expressions" label="GAR Artifact Metadata Expressions">
+```
+<+pipeline.stages.firstS.spec.artifacts.primary.metadata.image>
+<+pipeline.stages.firstS.spec.artifacts.primary.metadata.registryHostname>
+<+pipeline.stages.firstS.spec.artifacts.primary.metadata.SHAV2>
+<+pipeline.stages.firstS.spec.artifacts.primary.metadata.SHA>
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Artifactory Metadata Expressions" label="Artifactory Metadata Expressions">
+```
+<+pipeline.stages.tas_0.spec.artifacts.primary.metadata.fileName>
+<+pipeline.stages.tas_0.spec.artifacts.primary.metadata.url>
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Jenkins Metadata Expressions" label="Jenkins Metadata Expressions">
+```
+<+pipeline.stages.SSH_Jenkins_ArtifactSource.spec.artifacts.primary.metadata.url>
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Nexus 2 Metadata Expressions" label="Nexus 2 Metadata Expressions">
+```
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.fileName>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.package>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.repositoryName>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.version>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.url>
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Nexus 3 Metadata Expressions" label="Nexus 3 Metadata Expressions">
+```
+<+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.extension>
+<+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.fileName>
+<+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.imagePath>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.repositoryName>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.version>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.url>
+<+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.artifactId>
+<+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.groupId>
+
 ### Select pipeline inputs
 
 If your pipeline uses [Input Sets](../8_Pipelines/input-sets.md), you can select the input set to use when the trigger executes the pipeline.
