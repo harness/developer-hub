@@ -15,24 +15,17 @@ import { MODULES } from "../../constants";
         "",
       list: [
         {
-          title: "Build on a Kubernetes cluster",
-          module: MODULES.ci,
-          description:
-            "Build a Docker Image on a Kubernetes cluster build farm.",
-          link: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
-        },
-        {
           title: "Go application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of a Go application.",
+            "Build a Go application.",
           link: "/tutorials/ci-pipelines/build/go",
         },
         {
           title: "Java application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of Java HTTP Server application.",
+            "Build a Docker Image of Java application.",
           link: "/tutorials/ci-pipelines/build/java",
         },
         {
@@ -42,38 +35,13 @@ import { MODULES } from "../../constants";
             "Build a Docker Image of a NodeJS application.",
           link: "/tutorials/ci-pipelines/build/nodejs",
         },
-
         {
-          title: "React application",
+          title: "Python application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of a React application.",
-          link: "/tutorials/ci-pipelines/build/react",
-        },
-        {
-          title: "Rust application",
-          module: MODULES.ci,
-          description:
-            "Build a Docker Image of a multi-architecture Rust application.",
-          link: "/tutorials/ci-pipelines/build/rust",
-        },
-        {
-          title: "Signed images",
-          module: MODULES.ci,
-          description:
-            "Build a Signed Docker Image of a Go application.",
-          link: "/tutorials/ci-pipelines/build/signed-image",
-        },
-        {
-          title: "Terraform Cloud notification triggers",
-          module: MODULES.ci,
-          icon: "img/icon_ci.svg",
-          description:
-            "Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.",
+            "Build a Docker Image of a Python application.",
+          link: "/tutorials/ci-pipelines/build/python",
           newDoc: true,
-          type: [docType.Documentation],
-          time: '9 min',
-          link: "/tutorials/ci-pipelines/build/tfc-notification",
         },
       ],
     },

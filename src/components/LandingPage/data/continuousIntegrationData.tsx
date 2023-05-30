@@ -33,7 +33,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "30 min",
-    link: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
+    link: "/tutorials/ci-pipelines/kubernetes-build-farm",
   },
   {
     title: "Code coverage with CodeCov",
@@ -44,7 +44,7 @@ export const FeaturedList: CardItem[] = [
         Use a Run step to include CodeCov code coverage.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/ci-pipelines/test/codecov",
@@ -58,10 +58,21 @@ export const FeaturedList: CardItem[] = [
        Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: '9 min',
-    link: "/tutorials/ci-pipelines/build/tfc-notification",
+    link: "/tutorials/ci-pipelines/tfc-notification",
+  },
+  {
+    title: "Python application",
+    module: MODULES.ci,
+    description:
+      "Build a Docker Image of a Python application.",
+    link: "/tutorials/ci-pipelines/build/python",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
   },
 ];
 
@@ -94,7 +105,7 @@ export const CIList: CardItem[] = [
     module: MODULES.ci,
     description:
       "Build a Docker Image on a Kubernetes cluster build farm.",
-    link: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
+    link: "/tutorials/ci-pipelines/kubernetes-build-farm",
     type: [docType.Documentation],
     time: "30 min",
     icon: "img/icon_ci.svg",
@@ -103,7 +114,7 @@ export const CIList: CardItem[] = [
     title: "Go application",
     module: MODULES.ci,
     description:
-      "Build a Docker Image of a Go application.",
+      "Build a Go application.",
     link: "/tutorials/ci-pipelines/build/go",
     type: [docType.Documentation],
     time: "15 min",
@@ -113,7 +124,7 @@ export const CIList: CardItem[] = [
     title: "Java application",
     module: MODULES.ci,
     description:
-      "Build a Docker Image of Java HTTP Server application.",
+      "Build a Docker Image of Java application.",
     link: "/tutorials/ci-pipelines/build/java",
     icon: "img/icon_ci.svg",
     time: "15 min",
@@ -130,34 +141,15 @@ export const CIList: CardItem[] = [
     icon: "img/icon_ci.svg",
   },
   {
-    title: "React application",
+    title: "Python application",
     module: MODULES.ci,
     description:
-      "Build a Docker Image of a React application.",
-    link: "/tutorials/ci-pipelines/build/react",
-    type: [docType.Documentation],
-    time: "20 min",
-    icon: "img/icon_ci.svg",
-  },
-  {
-    title: "Rust application",
-    module: MODULES.ci,
-    description:
-      "Build a Docker Image of a multi-architecture Rust application.",
-    link: "/tutorials/ci-pipelines/build/rust",
+      "Build a Docker Image of a Python application.",
+    link: "/tutorials/ci-pipelines/build/python",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
-  },
-  {
-    title: "Signed images",
-    module: MODULES.ci,
-    description:
-      "Build a signed Docker Image of a Go application.",
-    link: "/tutorials/ci-pipelines/build/signed-image",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
+    newDoc: true,
   },
   {
     title: "Terraform Cloud notification triggers",
@@ -165,10 +157,10 @@ export const CIList: CardItem[] = [
     icon: "img/icon_ci.svg",
     description:
       "Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.",
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: '9 min',
-    link: "/tutorials/ci-pipelines/build/tfc-notification",
+    link: "/tutorials/ci-pipelines/tfc-notification",
   },
   {
     title: "Amazon ECR",
@@ -199,7 +191,7 @@ export const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
-    newDoc: true,
+    newDoc: false,
   },
   {
     title: "Publish Allure Report",

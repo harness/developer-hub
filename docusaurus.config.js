@@ -138,6 +138,11 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Track Errors",
+                to: "tutorials/error-tracking",
+              },
+              {
+                // type: "doc",
                 label: "Administer Harness Platform",
                 to: "tutorials/platform",
               },
@@ -180,6 +185,10 @@ const config = {
               {
                 label: "Chaos Engineering",
                 to: "docs/chaos-engineering",
+              },
+              {
+                label: "Continuous Error Tracking",
+                to: "docs/continuous-error-tracking",
               },
               {
                 label: "Harness Platform",
@@ -229,6 +238,10 @@ const config = {
                 label: "Continuous Integration",
                 to: "certifications/continuous-integration",
               },
+              {
+                label: "Instructions",
+                to: "certifications/instructions",
+              },
             ],
           },
           {
@@ -238,7 +251,7 @@ const config = {
           },
           {
             position: "right",
-            to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
+            to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
             label: "Join Slack",
           },
           {
@@ -313,7 +326,7 @@ const config = {
               },
               {
                 label: "Slack",
-                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-y4hdqh7p-RVuEQyIl5Hcx4Ck8VCvzBw",
+                to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
               },
               {
                 label: "API Reference",
@@ -321,7 +334,7 @@ const config = {
               },
               {
                 label: "Forum",
-                to: "https://community.harness.io",
+                to: "https://discuss.harness.io",
               },
               {
                 label: "University",
@@ -377,6 +390,11 @@ const config = {
         defaultMode: "light",
         disableSwitch: true,
         respectPrefersColorScheme: false,
+      },
+      docs: {
+        sidebar: {
+          hideable: true,
+        },
       },
       /*
       announcementBar: {

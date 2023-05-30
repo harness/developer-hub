@@ -7,12 +7,12 @@ helpdocs_category_id: 7vy86n7cws
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+# Set up CCM for AWS
 Harness Cloud Cost Management (CCM) offers comprehensive solutions to manage and optimize the cloud costs of your Amazon Web Services (AWS) infrastructure. CCM provides visibility, governance, and optimization of AWS services such as EC2, S3, RDS, Lambda, and others. CCM provides recommendations to effectively right-size your cloud resources to match the workload demands and optimizes the auto-scaling groups (ASGs), and EKS clusters using intelligent cloud AutoStopping rules.
 
 > **☆ NOTE —** After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
 
-## AWS Connector Requirements
+## AWS Connector requirements
 
 * The same connector cannot be used in NextGen and FirstGen. 
 * For CCM, AWS connectors are available only at the Account level in Harness.
@@ -62,7 +62,7 @@ import TabItem from '@theme/TabItem';
 </Tabs>
 ```
 
-## Connect CCM to your AWS Account
+## Connect CCM to your AWS account
 
 To enable CCM for your AWS services (such as EC2, S3, RDS, Lambda, and so on), you simply need to connect Harness to your AWS accounts.
 
@@ -147,7 +147,8 @@ Select your desired features, and then click **Continue**. Details about the fea
 | --- | --- | 
 | **Cost Visibility** (Required)| This feature is available by default and requires access to the CUR report. Provides the following capabilities:<ul><li>Insights into AWS costs by services, accounts, etc. </li><li>Root cost analysis using cost perspectives</li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul> This feature will give you cost insights that are derived from the CUR. For deep Kubernetes visibility and rightsizing recommendations based on the historical utilization and usage metrics, set up Kubernetes connectors. See [Set Up Cloud Cost Management for Kubernetes](set-up-cost-visibility-for-kubernetes.md). |
 | **Resource Inventory Management** (Optional)| This feature provides visibility into your EC2, EBS volumes, and ECS costs. The insights provided by inventory management can be consumed by Finance teams to understand resource utilization across the board. <ul><li>Breakdown by ECS cluster cost, Service, Task, and Launch Type (EC2, Fargate) </li><li>Insight into EC2 instances and their utilization</li><li>Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards. For more information, see View AWS EC2 Inventory Cost Dashboard, Orphaned EBS Volumes and Snapshots Dashboard, and View AWS EC2 Instance Metrics Dashboard.</li></ul> |
-| **Optimization by AutoStopping** (Optional)| This feature allows you to enable Intelligent Cloud AutoStopping for your AWS instances and auto-scaling groups. For more information, see Create AutoStopping Rules for AWS. <ul><li>Orchestrate VMs and ASGs based on idleness</li><li>Run your workloads on fully orchestrated spot instances</li><li>Granular savings visibility</li></ul> |
+| **Optimization by AutoStopping** (Optional)| This feature allows you to enable Intelligent Cloud AutoStopping for your AWS instances and auto-scaling groups. For more information, see [Create AutoStopping Rules for AWS](../../4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/autostopping-dashboard.md). <ul><li>Orchestrate VMs and ASGs based on idleness</li><li>Run your workloads on fully orchestrated spot instances</li><li>Granular savings visibility</li></ul> |
+| **Cloud Governance** (Optional)| This feature allows you to optimize your cloud spend and avoid unnecessary costs by rightsizing resources and decommissioning unused instances. For more information, see [Asset governance](../../5-use-ccm-cost-governance/asset-governance/asset-governance.md). <ul><li>Asset Management (EC2, EBS, RDS, S3)</li><li>Automated Actions</li></ul> |
 
 
 ### Create Cross Account Role
@@ -177,7 +178,13 @@ Perform the following steps in the AWS Console.
 
 The connection is validated, and verified in this step. After successful validation, click **Finish**.
 
-## Create Connectors for Multiple AWS Accounts
+
+:::important
+Creating a new CUR (Cost and Usage Report) in AWS typically takes 6-8 hours. During this period, you might encounter an error message stating that Harness CCM is unable to find a CUR file.
+:::
+
+
+## Create Connectors for multiple AWS accounts
 
 Harness CCM also provides the ability to create connectors via API using a StackSet configured at the management account. It involves the following steps:
 
@@ -187,7 +194,7 @@ Harness CCM also provides the ability to create connectors via API using a Stack
 
 > **☆ NOTE —** You should manually create a connector via the UI for the management account before using the API method described here to create connectors for the member accounts.
 
-### Create a Service Account and API Key in Harness
+### Create a Service Account and API key in Harness
 
 1. At the Account level, [create a Service Account](/docs/platform/User-Management/add-and-manage-service-account#create-a-service-account) with the **Admin** role for **All Account Level Resources** or **All Resources Including Child Scopes**.
 2. [Create a Service Account Token](/docs/platform/User-Management/add-and-manage-service-account#create-a-service-account). Save the API Key, which will be used when creating AWS connectors via the API below.
@@ -281,13 +288,49 @@ curl -i -X POST 'https://app.harness.io/gateway/ng/api/connectors' \
 }'
 ```
 
-## Reference - AWS Access Permissions
+## Enable EC2 recommendations
+
+:::note
+If you are an existing customer, you need to:
+* Edit the IAM role used by the Harness AWS Connector corresponding to the AWS account.
+* In the IAM role, add the `ce:GetRightsizingRecommendation` permission to the **HarnessEventsMonitoringPolicy**.
+:::
+
+Once you have the `ce:GetRightsizingRecommendation` permission added to the **HarnessEventsMonitoringPolicy** in the IAM role, perform the following tasks on your AWS console to enable recommendations.
+
+1. On your AWS console, go to the **Cost Explorer** service.
+
+  <docimage path={require('./static/ec2-recom-aws-screen-1.png')} width="50%" height="50%" title="Click to view full size image" />
+
+2. Click **Preferences** on the left pane.
+3. Enable the following recommendations:
+ * Receive Amazon EC2 resource recommendations 
+ * Recommendations for linked accounts
+  
+  <docimage path={require('./static/ec2-recom-aws-screen-2.png')} width="50%" height="50%" title="Click to view full size image" />
+
+4. Verify that you have enabled these recommendations correctly. 
+
+  Open AWS CloudShell and run the following command: 
+
+```
+  aws ce get-rightsizing-recommendation --service AmazonEC2
+```
+ 
+ If the recommendations are not enabled, the following error message is displayed:
+
+     
+  "An error occurred (AccessDeniedException) when calling the GetRightsizingRecommendation operation: Rightsizing EC2 recommendation is an opt-in only feature. You can enable this feature from the PAYER account’s Cost Explorer Preferences page. Normally it may take up to 24 hours in order to generate your rightsizing recommendations."
+
+5. You must install the Amazon CloudWatch agent on your EC2 instance to enable memory metrics.
+   
+## Reference - AWS access permissions
 
 CCM requires the following permissions which are automatically created via a StackSet based on the features you select during configuration.
 
 > **☆ NOTE —** If you don't have access to create a cost and usage report or run a CloudFormation template, contact your IT or security teams to provide the required permissions.
 
-### Cost Visibility
+### Cost visibility
 
 The cost visibility policy grants the following permissions:
 
@@ -360,7 +403,7 @@ If the `cur:DescribeReportDefinitions`, `organizations:Describe`, and `organizat
 * `organizations:ListAccounts`: fetches a list of all the accounts present in the organization, and also fetches the accountID to Account Name mapping.
 * `organizations:ListTagsForResource`: fetches the AWS Account level tags. Harness supports account tags within CCM that can be used for reporting and analysis.
 
-### Resource Inventory Management
+### Resource inventory management
 
 The inventory management policy performs the following actions:
 
@@ -407,6 +450,7 @@ This feature provides visibility into your EC2, EBS volumes, and ECS costs. The 
 * Breakdown by ECS cluster cost, Service, Task, and Launch Type (EC2, Fargate).
 * Insight into EC2 instances and their utilization.
 * Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards. For more information, see [View AWS EC2 Inventory Cost Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard.md), [Orphaned EBS Volumes and Snapshots Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/orphaned-ebs-volumes-and-snapshots-dashboard.md), and [View AWS EC2 Instance Metrics Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-instance-metrics.md).
+
 
 ### Optimization by AutoStopping
 
@@ -496,8 +540,51 @@ HarnessOptimisationPolicy:
       "Roles":  
         - !Ref HarnessCloudFormationRole 
 ```
+### Cloud asset governance
+Enable the following permissions in AWS to execute cloud governance rules:
 
-## Next Steps
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "ec2:Describe*",
+                "ec2:DeleteSnapshot",
+                "ec2:DeleteVolume",
+                "ec2:Get*",
+                "ec2:ListImagesInRecycleBin",
+                "ec2:ListSnapshotsInRecycleBin",
+                "elasticbeanstalk:Check*",
+                "elasticbeanstalk:Describe*",
+                "elasticbeanstalk:List*",
+                "elasticbeanstalk:Request*",
+                "elasticbeanstalk:Retrieve*",
+                "elasticbeanstalk:Validate*",
+                "elasticloadbalancing:Describe*",
+                "rds:Describe*",
+                "rds:List*",
+                "autoscaling-plans:Describe*",
+                "autoscaling-plans:GetScalingPlanResourceForecastData",
+                "autoscaling:Describe*",
+                "autoscaling:GetPredictiveScalingForecast",
+                "s3:DescribeJob",
+                "s3:Get*",
+                "s3:List*"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        }
+    ]
+}
+```
+
+:::info
+* This is not an exhaustive list; you may require additional permissions to support custom rules.
+* A yellow underline in a custom policy indicates that you need permission to support the underlined filters and/or actions.
+:::
+
+## Next steps
 
 * [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
 * [Analyze Cost for AWS Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-aws.md)

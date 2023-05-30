@@ -2,7 +2,7 @@
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-04-25T10:00
+date: 2023-05-04T10:00
 sidebar_position: 9
 ---
 ```mdx-code-block
@@ -15,12 +15,75 @@ Review the notes below for details about recent changes to Harness Chaos Enginee
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - April 25, 2023, version 0.10.3
+## Latest - May 23, 2023, version 0.12.2
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+
+* Reports can now be downloaded. (CHAOS-1615)
+
+    * You can now download reports for experiments as well as associated experiment runs. Reports include details about target chaos infrastructure, and execution details for experiment runs.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+* Introduction of [Chaos dashboards](/docs/chaos-engineering/configure-chaos-experiments/experiments/dashboards). (CHAOS-719)
+    * Two new dashboards include number of experiments and number of infrastructures by user, as well as statistics of the chaos faults that were executed.
+    * This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+* Corrected the UI text for the Inactive and Pending states for Linux infrastructure states. (CHAOS-1633)
+
+* Improved the UI text when there are empty search results for Kubernetes or Linux infrastructures. (CHAOS-1629)
+
+* Corrected the UI text for Linux infrastructure screens. (CHAOS-1619) 
+
+* There was an issue where the total number of probes incorrectly came to 0 when an experiment was running in a GameDay. This has been fixed. (CHAOS-1618)
+
+* Fixed a text wrapping issue on the confirmation dialog for deleting a chaos infrastructure. (CHAOS-1578)
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 5, 2023, version 0.11.1
+
+##### What's new
+
+* Introduction of GameDays in HCE Module. (CHAOS-643)
+    * GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. For more information, go to [Run a GameDay](/docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday).
+
+* Allow saving of experiment with inactive infrastructure. (CHAOS-1573)
+    * HCE now allows you to save an experiment if the infrastructure is inactive, with the saveExperiment API.
+
+* The search field on the experiment runs page has been updated to **Search for experiment run ID** to make it clear that it does not search on the name of the experiment run. (CHAOS-1528)
+
+##### Early access
+
+* This release does not include any early access features.
+
+
+##### Fixed issues
+
+* This release does not include any fixed issues.
+
+#### April 25, 2023, version 0.10.3
+
+##### What's new
+
 * **Schedule** tab to schedule cron jobs (CHAOS-710)
     * A **Schedule** tab has been added to the experiment builder page where you can select from cron and non-cron experiments, schedule a cron experiment, **Save** it, and then **Run** it. Previously, cron experiments could not be saved; they were created and run.
 
@@ -48,33 +111,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * Delete experiment confirmation notification (CHAOS-1434)
     * When you delete an experiment, a notification stating "The experiment has been deleted successfully" appears on the user interface indicating the successful deletion of the experiment.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+
+##### Early access
+
 * This release does not include any early access features.
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
 
 * When connecting to an existing chaos hub, selecting a connector from the **Organization** failed to load the page. This has been fixed. (CHAOS-1456)
 
 
 * When an experiment terminated with an error but the probes passed, the user interface showed the experiment as **Completed**. This has been fixed. (CHAOS-1410)
 
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### April 4, 2023, version 0.9.6
 

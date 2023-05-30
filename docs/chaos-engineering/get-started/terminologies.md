@@ -1,5 +1,5 @@
 ---
-title: Terminologies
+title: Terminology
 sidebar_position: 2
 ---
 

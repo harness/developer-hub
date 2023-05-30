@@ -26,7 +26,7 @@ Optional text string describing the step's purpose.
 
 ## Container Registry and Image
 
-The **Container Registry** is a Harness container registry connector for the image that you want Harness to run build commands on, such as DockerHub.
+The **Container Registry** is a Harness container registry connector for the image that you want Harness to run build commands on, such as Docker Hub.
 
 The **Image** is the FQN (fully-qualified name) or artifact name of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`. The image name should include the tag. If you don't include a tag, Harness uses the `latest` tag.
 
@@ -213,9 +213,9 @@ Enable this option to run the container with escalated privileges. This is equiv
 
 ### Report Paths
 
-The path to the file(s) that store test results in the JUnit XML format. You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+Specify one or more paths to files that store [test results in JUnit XML format](../set-up-test-intelligence/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
-This setting is required for the Run step to be able to publish test results.
+This setting is required for the Run step to be able to [publish test results](../set-up-test-intelligence/viewing-tests.md).
 
 ### Environment Variables
 
@@ -323,7 +323,7 @@ For a Kubernetes cluster build infrastructure, the step uses this user ID to run
 Maximum resources limits for the resources used by the container at runtime:
 
 * **Limit Memory:** Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number with the suffixes `G` or `M`. You can also use the power-of-two equivalents, `Gi` or `Mi`. Do not include spaces when entering a fixed value. The default is `500Mi`.
-* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 ### Timeout
 

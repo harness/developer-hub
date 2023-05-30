@@ -1,6 +1,6 @@
 ---
 title: Connect chaos infrastructures
-sidebar_position: 1
+sidebar_position: 10
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';

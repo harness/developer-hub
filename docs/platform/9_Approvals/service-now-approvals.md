@@ -119,7 +119,17 @@ For example, `<+ticket.state.displayValue> == "New"` in the Approval Criteria,
 
 `state` is a ticket field. You can use any ticket field.
 
-### See also
+## Custom table support
+
+:::note
+
+Currently, this feature is behind the feature flag `CDS_SERVICENOW_TICKET_TYPE_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+For details, go to **Custom table support** in [Create ServiceNow tickets in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages#custom-table-support).
+
+## See also
 
 * [Using Manual Harness Approval Stages](adding-harness-approval-stages.md)
 * [Using Manual Harness Approval Steps in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/)

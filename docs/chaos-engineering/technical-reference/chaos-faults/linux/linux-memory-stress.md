@@ -2,6 +2,10 @@
 id: linux-memory-stress
 title: Linux memory stress
 ---
+
+import Ossupport from './shared/note-supported-os.md'
+
+
 Linux memory stress causes memory consumption of the target Linux machines for a specific duration.
 
 ![Linux memory stress](./static/images/linux-memory-stress.png)
@@ -11,10 +15,7 @@ Linux memory stress causes memory consumption of the target Linux machines for a
 - Simulates a lack of memory for processes running on the application, which degrades their performance.
 - Simulates application slowness due to memory starvation, and noisy neighbour problems due to excessive consumption of memory.
 
-:::info note
-- This fault can be executed on Ubuntu 16 or higher, Debian 10 or higher, CentOS 7 or higher, RHEL 7 or higher, and openSUSE LEAP 15.4 or higher.
-- The `linux-chaos-infrastructure` systemd service should be in an active state, and the infrastructure should be in `CONNECTED` state.
-:::
+<Ossupport />
 
 ## Fault tunables
 <h3>Optional tunables</h3>
@@ -25,14 +26,9 @@ Linux memory stress causes memory consumption of the target Linux machines for a
     <th> Notes </th>
   </tr>
   <tr>
-    <td> memoryBytes </td>
-    <td> Amount of memory consumed (in bytes). </td>
-    <td> Mutually exclusive to <code>memoryPercentage</code>. Default: 256 MB </td>
-  </tr>
-   <tr>
-    <td> memoryPercentage </td>
-    <td> Amount of memory consumed (in percentage of the total available memory). </td>
-    <td> Mutually exclusive to <code>memoryBytes</code>. </td>
+    <td> memory </td>
+    <td> Amount of memory to be consumed. </td>
+    <td> Can be specified in bytes (b/B), kilobytes (k/K), megabytes (m/M), gigabytes (g/G), or percentage (%) of available storage. If no unit is provided, the value is assumed to be in bytes. Example values: <code>30m</code>, <code>1G</code>, <code>35%</code>, etc. Default: 256m </td>
   </tr>
   <tr>
     <td> workers </td>
@@ -69,18 +65,18 @@ metadata:
 spec:
   stressChaos/inputs:
     workers: 1
-    memoryPercentage: 50
+    memory: 5g
 ```
 
-### Memory consumption in bytes
+### Memory consumption
 
-The `memoryBytes` input variable utilizes a specific amount of memory (in bytes). 
+The `memory` input variable specifies the amount of memory to be filled.
 
 The following YAML snippet illustrates the use of this environment variable:
 
-[embedmd]:# (./static/manifests/linux-memory-stress/memory-bytes.yaml yaml)
+[embedmd]:# (./static/manifests/linux-memory-stress/memory.yaml yaml)
 ```yaml
-# memory bytes to consume
+# memory to consume
 apiVersion: litmuchaos.io/v1alpha1
 kind: LinuxFault
 metadata:
@@ -90,26 +86,5 @@ metadata:
 spec:
   stressChaos/inputs:
     workers: 1
-    memoryBytes: 5000
-```
-
-### Memory consumption in percentage
-
-The `memoryPercentage` input variable utilizes a specific amount of memory (in percentage). 
-
-The following YAML snippet illustrates the use of this environment variable:
-
-[embedmd]:# (./static/manifests/linux-memory-stress/memory-percentage.yaml yaml)
-```yaml
-# memory percentage to consume
-apiVersion: litmuchaos.io/v1alpha1
-kind: LinuxFault
-metadata:
-  name: linux-memory-stress
-  labels:
-    name: memory-stress
-spec:
-  stressChaos/inputs:
-    workers: 1
-    memoryPercentage: 70
+    memory: 50%
 ```

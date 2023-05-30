@@ -29,7 +29,7 @@ import {
         newDoc: true,
         type: [docType.Documentation],
         time: "9min",
-        link: "/tutorials/build-code/build/tfc-notification",
+        link: "/tutorials/build-code/tfc-notification",
       },
     ];
     */
@@ -74,14 +74,14 @@ import {
             module: MODULES.platform,
             description:
               "Learn how to monitor the infrastructure of your installation.",
-            link: "/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem",
+            link: "/docs/self-managed-enterprise-edition/monitor-harness-on-prem",
           },
           {
             title: "Back up and restore",
             module: MODULES.platform,
             description:
               "Learn how to back up and restore Harness Self-Managed Enterprise Edition.",
-            link: "/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm",
+            link: "/docs/self-managed-enterprise-edition/back-up-and-restore-helm",
           },
         ],
       },

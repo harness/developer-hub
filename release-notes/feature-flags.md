@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-05-04T10:00:25
+date: 2023-05-25T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -17,13 +17,12 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - May 4, 2023
+## Latest - May 25, 2023
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-
 This release does not include new features.
 
 ```mdx-code-block
@@ -38,9 +37,19 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
+#### Feature Flags server
+
+The **FF server** has been updated to version **1.1071.0** with the following updates.
+
+* For customers with a large volume of targets (in the millions), the Target page load time could be slow. Harness has introduced additional indexes to improve the response time of this page. (FFM-7988)
+
+* There was an issue when Git Sync was first configured, a sync was not attempted until a flag was changed or a new one was created. With this fix, a sync is immediately attempted when you configure Git Sync, and the existing flags in your project are backed up to the remote file. (FFM-7681)
+
 #### Feature Flags SDKs
 
-* Fixed an issue in the onboarding flow where the flag validation did not work as expected. (FFM-7534)
+The **Python** server SDK has been updated to version **1.1.12** with the following update.
+
+*  There was an issue where if an error occurred when processing a new stream event, the SDK could potentially log a blank string. This issue has been fixed and the SDK now logs these errors correctly. (FFM-8015)
 
 ```mdx-code-block
   </TabItem>
@@ -51,6 +60,126 @@ This release does not include early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### May 24, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+#### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.1.11** with the following update.
+
+* Fixed an issue where the SDK was not evaluating flags with multiple and/or nested prerequisites correctly.
+
+#### May 23, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
+* The toggle for turning Git Sync on and off was causing the branch settings menu to disappear and display the **Set Up Git Sync** button incorrectly. This issue has been fixed. (FFM-7786)
+* The Target and Target Group pages reported successful save and edit operations before the operations completed. This issue has been fixed. (FFM-7609)
+
+#### May 22, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Ruby** server SDK has been updated to version **1.1.1** with the following updates.
+
+* Fixed evaluator logic. Before, if a target group had multiple clauses, all clauses had to evaluate to true for the entire condition to be true. This logic has been changed to match that of other SDKs. Now only one condition clause needs to be true. (FFM-6503)
+
+* Certain log messages will now be coded with a unique 4-digit number to help identify issues across SDKs. (FFM-7324)
+  
+  Response code patterns for each SDK stage are:
+  * Initialization - 1xxx
+  * Auth - 2xxx
+  * Close - 3xxx
+  * Polling - 4xxx
+  * Streaming - 5xxx
+  * Evaluation - 6xxx
+  * Metrics - 7xxx
+
+#### May 19, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server
+
+The **FF server** has been updated to version **1.1054.2** with the following update.
+
+* The Identifier search filter sometimes incorrectly used a wildcard match. This happened if two flags had overlapping names such as `flag_one` and `flag_one_b`. The detail view of `flag_one_b` sometimes returned `flag_one` details instead. Because flags order by creation, this only happened when flags were created in a certain order. This fix uses an exact match when searching for flag identifiers. (FFM-7928)
+
+#### May 15, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server
+
+* Previously, re-enabling Git Experience did not trigger an immediate Git sync. With this change, flags are synchronized as soon as Git Experience is re-enabled. (FFM-7670)
+
+* Some Git sync operations were failing if there was a large volume of flags and environments. This fix increased the transaction time-out for Git sync calls to allow processing of a large number of the flags. (FFM-7638)
+
+* Policy checks weren't being carried out on flag rules added from the Target Group details page. This issue has been fixed. (FFM-7607)(FFM-7606)
+
+* Previously, Feature Flag permissions and roles assigned to users or user groups in Access Control were applied at the account and project levels, but not at the organization level. With this change, roles and permissions assigned at the organization level are now honored. (FFM-7376)
+
+* When you try to delete a flag that is a prerequisite to another flag, the UI now shows an improved message that explains why this cannot be done: *Cannot delete flag which is a prerequisite for other flags*. (FFM-5105)
+
+#### May 4, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+* Fixed an issue in the onboarding flow where the flag validation did not work as expected. (FFM-7534)
 
 #### April 26, 2023
 
@@ -202,7 +331,7 @@ This release does not include early access features.
 
 The **FF server** has been updated to version **1.979.0**, with the following update.
 
-* Before this update, targets never expired. Now, targets expire if they have not been updated for 60 days, except when used in flag rule, or when part of a target group's include/exclude lists. For more information, go to [How targets expire](/docs/feature-flags/ff-using-flags/ff-target-management/add-targets#how-targets-expire).
+* Before this update, targets never expired. Now, targets expire if they have not been updated for 60 days, except when used in flag rule, or when part of a target group's include/exclude lists. For more information, go to [How targets expire](/docs/feature-flags/ff-target-management/add-targets#how-targets-expire).
 
 ###### Feature Flags SDKs
 
@@ -1174,7 +1303,7 @@ The .NET SDK has been updated to version 1.1.3. Fixes in this update include:
 
 * The proxy had a dependency on a JWT package that is no longer maintained. This fix updated the JWT dependency to a package that is maintained. (FFM-3867)
 * The proxy had a dependency on ff-server, which is in a private repository. This fix removed the dependency on ff-server. (FFM-3965)
-* Harness provided a tool to generate offline config files. For details, go to [Run the Relay Proxy in offline mode](/docs/feature-flags/ff-using-flags/relay-proxy/deploy-relay-proxy#run-the-relay-proxy-in-offline-mode) (FFM-3772)
+* Harness provided a tool to generate offline config files. For details, go to [Run the Relay Proxy in offline mode](/docs/feature-flags/relay-proxy/deploy-relay-proxy#run-the-relay-proxy-in-offline-mode) (FFM-3772)
 
 #### August 18, 2022
 

@@ -4,7 +4,7 @@ description: Schedule an approval step to automatically approve by a specific ti
 sidebar_position: 3
 ---
 
-You can use the approval step's **Timeout** and [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) settings to schedule an automatic approval.
+You can use the approval step's **Timeout** and [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings//) settings to schedule an automatic approval.
 
 This method works for all Harness approval steps (manual, Jira, ServiceNow, and Custom).
 

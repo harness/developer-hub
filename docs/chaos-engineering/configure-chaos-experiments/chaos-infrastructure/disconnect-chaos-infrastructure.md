@@ -1,6 +1,6 @@
 ---
 title: Disconnect chaos infrastructure
-sidebar_position: 2
+sidebar_position: 20
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';

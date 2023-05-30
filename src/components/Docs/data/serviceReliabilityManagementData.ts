@@ -28,7 +28,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "9min",
-      link: "/tutorials/build-code/build/tfc-notification",
+      link: "/tutorials/build-code/tfc-notification",
     },
   ];
   */
@@ -41,10 +41,10 @@ export const featuredTutorials: CardItem[] = [
         "",
       list: [
         {
-          title: "Overview",
+          title: "SRM tutorials",
           module: MODULES.srm,
           description:
-            "Learn about SRM and how it can benefit you.",
+            "Dive in with these hands-on tutorials.",
           link: "/tutorials/service-reliability",
         },
         {

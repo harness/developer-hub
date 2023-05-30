@@ -10,12 +10,6 @@ slug: /ci-pipelines/test/allure-report
 
 This tutorial provides an example pipeline that builds a Java Maven application and generates an Allure Report that you can view in the Harness UI. 
 
-:::note
-
-Artifact tab publishing is supported in the Kubernetes infrastructure only.
-
-:::
-
 ### Pipeline workflow 
 
 This pipeline has five steps that do the following: 

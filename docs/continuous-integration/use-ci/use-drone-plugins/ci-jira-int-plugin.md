@@ -30,7 +30,7 @@ import TabItem3 from '@theme/TabItem';
 
 1. In your CI pipeline's **Build** stage, add a [Plugin step](./plugin-step-settings-reference.md).
 2. Enter a **Name** and optional **Description**.
-3. For **Container Registry**, select a container registry connector with DockerHub access.
+3. For **Container Registry**, select a container registry connector with Docker Hub access.
 4. In the **Image** field, enter `plugins/jira`.
 5. Under **Optional Configuration**, add **Settings** to configure the Jira plugin's properties for this step, as described in the following table.
 
@@ -55,7 +55,7 @@ The following YAML example describes a [Plugin step](./plugin-step-settings-refe
                   name: Update Jira Build #Step name
                   identifier: updateJiraBuild #Step ID
                   spec:
-                    connectorRef: account.harnessImage #DockerHub container registry connector
+                    connectorRef: account.harnessImage #Docker Hub container registry connector
                     image: plugins/jira
                     settings:
                       PROJECT: MYT #Your Jira project key
@@ -76,7 +76,7 @@ To update the Jira **Deployment** field, instead of the **Build** field, include
 *  `type: Plugin`
 *  `name:` Specify a step name.
 *  `identifier:` Specify a unique step ID.
-*  `connectorRef:` Specify a DockerHub container registry connector.
+*  `connectorRef:` Specify a Docker Hub container registry connector.
 *  `image: plugins/jira`
 *  `settings:` Add environment variables to configure the Jira plugin's properties for this step, as described in the following table.
 

@@ -54,29 +54,9 @@ For more information about self-signed certificates, delegates, and delegate env
 * [Install delegates](https://developer.harness.io/docs/category/install-delegates)
 * [Configure a Kubernetes build farm to use self-signed certificates](./use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
-<!-- DOC-2692 removed -->
+## Use debug mode to troubleshoot remote builds
 
-## Test suites incorrectly parsed
-
-The parsed test report in the **Tests** tab comes strictly from the provided test reports. The reports must be in JUnit XML format. It is important to adhere to the standard [JUnit format](https://llg.cubic.org/docs/junit/) to improve test suite parsing.
-
-## Test Intelligence isn't working
-
-Test Intelligence may not work even if you select the **Run only selected tests** option in your [Run Tests step](./use-ci/set-up-test-intelligence/configure-run-tests-step-settings.md). One possible cause for this is that you're using **Maven** and your `**pom.xml**` contains `argLine`. In this case, you must update the Java Agent as follows:
-
-**Before:**
-
-```
-<argLine> something  
-</argLine>
-```
-
-**After:**
-
-```
-<argLine> something -javaagent:/addon/bin/java-agent.jar=/addon/tmp/config.ini  
-</argLine>
-```
+The Harness CI [Re-run in Debug Mode](./use-ci/debug-mode.md) feature can troubleshoot remote builds.
 
 ## Truncated execution logs
 
@@ -112,3 +92,36 @@ For more information, refer to the following Microsoft Azure troubleshooting doc
 If you get this error when using a Kubernetes cluster build infrastructure, and you have confirmed that the delegate is installed in the same cluster where the build is running, you may need to allow port 20001 in your network policy to allow pod-to-pod communication.
 
 For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
+
+## Docker Hub rate limiting
+
+By default, Harness uses anonymous access to [Harness Docker Hub](https://hub.docker.com/u/harness) to [pull Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md). If you experience rate limiting issues when pulling images, [use a Docker connector to connect to the Harness container image registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/) and provide login information in the [connector's authentication settings](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials).
+
+## Out of memory errors with Gradle
+
+If a build that uses Gradle experiences out of memory errors, add the following to your `gradle.properties` file:
+
+```
+-XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport
+```
+
+Your Java options must use [UseContainerSupport](https://www.eclipse.org/openj9/docs/xxusecontainersupport/) instead of `UseCGroupMemoryLimitForHeap`, which was removed in JDK 11.
+
+## Can't use the built-in Harness Docker Connector with Harness Cloud build infrastructure
+
+Depending on when your account was created, the built-in **Harness Docker Connector** (`account.harnessImage`) might be configured to connect through a Harness Delegate instead of the Harness Platform. In this case, attempting to use this connector with Harness Cloud build infrastructure generates the following error:
+
+```
+While using hosted infrastructure, all connectors should be configured to go via the Harness platform instead of via the delegate. Please update the connectors: [harnessImage] to connect via the Harness platform instead. This can be done by editing the connecotr and updating the connectivity to go via the Harness platform.
+```
+
+To resolve this error, you can either modify the **Harness Docker Connector** or use another Docker connector that you have already configured to connect through the Harness Platform.
+
+To change the connector's connectivity settings:
+
+1. Go to **Account Settings** and select **Account Resources**.
+2. Select **Connectors** and select the **Harness Docker Connector** (ID: `harnessImage`).
+3. Select **Edit Details**.
+4. Select **Continue** until you reach **Select Connectivity Mode**.
+5. Select **Change** and select **Connect through Harness Platform**.
+6. Select **Save and Continue** and select **Finish**.
