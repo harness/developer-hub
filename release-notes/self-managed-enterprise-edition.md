@@ -14,7 +14,60 @@ import delete_project from './static/delete-project.png'
 ```
 Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes).
 
-## Latest - May 12, 2023, patch release for version 78926
+## Latest - May 30, 2023, patch release for version 79306
+
+Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and updates to address potential security vulnerabilities.
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.5.5](https://github.com/harness/helm-charts/releases/tag/harness-0.5.5) |
+| NG Manager | 78929 |
+| CI Manager | 3304 |
+| Pipeline Service | 1.26.9 |
+| Platform Service | 78602 |
+| Access Control Service | 78405 |
+| Change Data Capture | 78929 |
+| Test Intelligence Service | release-167 |
+| NG UI | 0.344.13 |
+| LE NG | 67708 |
+
+### Fixed issues
+
+- You can now use an external database with your installation. For more information, go to [Use an external database](docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database). (SMP-545)
+
+- You can now deploy the delegate-minimal image in an air-gapped environment using `useMinimalDelegate` in your `overrides.yaml` file. For more information, got to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/). (SMP-1130)
+
+- The `nodeSelector` in Harness services failed for Redis and was missing in other services.
+
+   This issue is fixed. To use Redis `nodeSelector`, update the `overrides.yaml` file.
+
+   ```yaml
+   platform:  
+   redis:
+    affinity: {}
+    nodeSelector: {}
+    tolerations: []
+      Mongo Arbiter:
+      
+   platform:
+     mongodb:
+       affinity: {}
+       nodeSelector: {}
+       tolerations: []
+       arbiter:
+         affinity: {}
+         nodeSelector: {}
+         tolerations: []
+   ```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 12, 2023, patch release for version 78926
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and updates to address potential security vulnerabilities.
 
@@ -33,18 +86,13 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
-### Fixed issues
+#### Fixed issues
 
-* The FirstGen to NextGen migrator disabled initialization for some feature flags. (SMP-1294)
+- The FirstGen to NextGen migrator disabled initialization for some feature flags. (SMP-1294)
 
    This issue is fixed. The migrator is now only enabled when `global.migrator.enabled` is set to `true`.
 
-* The legacy delegate is no longer the default delegate type. The default value of `useImmutableDelegate` is now set to `true`. (SMP-1280)
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
+- The legacy delegate is no longer the default delegate type. The default value of `useImmutableDelegate` is now set to `true`. (SMP-1280)
 
 #### April 26, 2023, version 78926
 
