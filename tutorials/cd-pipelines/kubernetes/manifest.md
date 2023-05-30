@@ -133,7 +133,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     2. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     3. Select **Create via YAML Builder** and paste the copied YAML.
     4. Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
-    5. In `projectIdentifier`, replace with the project identifier with yours, which you can you in the browser URL. For example, `Default_Project_1663189008762`.
+    5. In `projectIdentifier`, verify that the project identifier is correct, which you can see in the browser URL (after `account`). If it is incorrect, Harness will suggest the correct Id.
     6. Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     7. Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
 
