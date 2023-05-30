@@ -40,7 +40,7 @@ Harness supports the following Helm OCI chart registries:
   - Azure Container Registry
   - DockerHub
   - JFrog Artifactory
-  - Google Artifact Registry (coming soon)
+  - Google Artifact Registry
 
 Helm OCI chart support includes the following deployment types:
 
@@ -409,3 +409,10 @@ If you want to use the uninstall command in the **Manifest Details**, be aware o
 * If the deployment fails on the very first execution, then Harness will apply the `--uninstall` flag itself. You can see this in the logs under `Wait For Steady State`.
 * If you want to pass in some command flags when Harness performs the `--uninstall`, enter uninstall in **Manifest Details** and enter in the relevant command flags.
 
+#### Authentication for Google Cloud with Helm OCI connector
+
+ To configure authentication for GCP with a Helm OCI connector, you must provide the username and password to your Google service account.
+  
+ **Username**: A _json_key or _json_key_base64. We recommend that you use the json_key_base64 to encode your Google service account file to base64.
+  
+ **Password**: Your Google service account file content.

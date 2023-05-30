@@ -26,7 +26,7 @@ This topic assumes that you have the following:
    1. Click in the row to open the **Issue Details** pane. 
    2. Click the **Ignore** button.
 
-      ![]../static/exemption-click-ignore-rule.png)
+      ![](../static/exemption-click-ignore-rule.png)
    
    3. In the **Request to Ignore an Issue** popup, configure the Ignore request as follows:
       1. **Where do you want this issue to be ignored?** (*if available*)
@@ -35,7 +35,7 @@ This topic assumes that you have the following:
       4. **URL Reference** — Paste the link you copied in the previous request, or add a different link that provides information about the specific issue you want the pipeline to ignore. If your repo already addresses the issue, for example, you can include a link to the relevant code. 
    5. Click **Create Request**. 
   
-      ![]../static/exemption-click-create-request.png)
+      ![](../static/exemption-click-create-request.png)
      
 3. Send a notification of your exemption request — via email, Slack, Jira, etc. — to your SecOps reviewer. Your notification should include the URL to the Security Tests page with the relevant issue selected.
 
@@ -61,7 +61,7 @@ An Ignore rule, if approved, overrides the default behavior for running a pipeli
  The **Issue Details** pane is comprehensive, but might not include all the information you need. You might want to research the issue further before you approve the request.
  :::
 
-  ![]../static/exemption-issue-details.png)  
+  ![](../static/exemption-issue-details.png)  
           
 ### Review all Ignore Rules
 
@@ -71,4 +71,4 @@ You can review all Ignore rules in the current project in the **Security Review*
 
 2. In the Security Review page, click the Approve, Reject, or Delete buttons for individual rules as needed.
 
-   ![]../static/exemption-security-review.png)
+   ![](../static/exemption-security-review.png)

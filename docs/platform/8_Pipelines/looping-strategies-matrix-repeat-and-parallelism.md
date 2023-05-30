@@ -22,10 +22,9 @@ Harness supports the following strategies.
 
 Matrix strategies are highly flexible and applicable for both CD and CI Pipelines.
 
-First you define a matrix of configurations that you want the Stage or Step to run. Each axis has a user-defined tag — `env`, `service`, `platform`, `browser`, `jdk`, etc. — and a list of values.  You can use variables such as `<+matrix.jdk>` in a Build and Push Step or `<+matrix.env>` and `<+matrix.service>` in a Deploy Stage.
+First you define a matrix of configurations that you want the Stage or Step to run. Each axis has a user-defined tag — `env`, `service`, `platform`, `browser`, `jdk`, etc. — and a list of values. You can use variables such as `<+matrix.jdk>` in a Build and Push Step or `<+matrix.env>` and `<+matrix.service>` in a Deploy Stage.
 
-When a Pipeline runs, it creates multiple copies of the Stage or Step and runs them in parallel. You can use the`exclude` keyword to filter out some combinations. You can also use the `maxConcurrency` keyword to limit the number of parallel runs.
-
+When a Pipeline runs, it creates multiple copies of the Stage or Step and runs them in parallel. You can use the `exclude` keyword to filter out some combinations. You can also use the `maxConcurrency` keyword to limit the number of parallel runs.
 
 ```
 matrix:   
@@ -45,7 +44,6 @@ matrix:
 
 Parallelism strategies are useful for CI Build Stages that include a lot of tests. Suppose your Stage includes over 100 tests. You can specify the following to split your tests into 10 groups and test 5 groups at a time.
 
-
 ```
 parallelism: 10  
   maxConcurrency: 5  
@@ -62,7 +60,6 @@ Repeat strategies are alternative methods for defining Matrix or Parallelism or 
 
 For example, you can define a Parallelism strategy as follows:
 
-
 ```
 repeat:   
   times: 6  
@@ -72,18 +69,24 @@ repeat:
 # parallelism: 6  
 #    maxConcurrency: 3
 ```
-You can iterate through a list of values with the keyword `items` . You can then use the variable `<+repeat.item>` to access each value in the list.
 
+You can iterate through a list of values with the keyword `items`. You can then use the variable `<+repeat.item>` to access each value in the list.
 
 ```
 repeat:   
   items: [ "18", "17", "16", "15", "14", "13", "12", "11", "10", "9" ]  
   maxConcurrency: 5
 ```
+
+If you opt to use only a `times` repeat, without a list, you can still access the index during the loop. You can use the following expressions:
+
+```
+<+strategy.iteration> -> current count starting with 0
+<+strategy.iterations> -> total iterations
+```
 ##### Running steps on multiple target hosts
 
 To run steps on multiple target hosts, such as in a CD stage that performs a Deployment Template or SSH/WinRM deployment, you must use the `<+stage.output.hosts>` expression to reference all of the hosts/pods/instances:
-
 
 ```
 repeat:  
