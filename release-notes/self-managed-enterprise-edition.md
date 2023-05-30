@@ -23,7 +23,7 @@ This release includes the following Harness module and component versions.
 | **Name** | **Version** |
 | :-- | :--: |
 | Helm Chart | [0.5.5](https://github.com/harness/helm-charts/releases/tag/harness-0.5.5) |
-| NG Manager | 79306 |
+| NG Manager | 78929 |
 | CI Manager | 3304 |
 | Pipeline Service | 1.26.9 |
 | Platform Service | 78602 |
