@@ -1079,13 +1079,13 @@ The use of variable expressions is different between v1 and v2.
 
 For more information, go to [Services and Environments Overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
-To reference an environment-level variable, use the expression `<+env.variables.[variable name]>`.
+To reference an environment-level variable, use the expression `<+env.variables.variableName>`.
 
-For example, here is an environment variable named `envvar`.
+For example, to reference an environment variable named `envvar`, use the following expression:
+
+`<+env.variables.envvar>`
 
 ![](./static/harness-variables-44.png)
-
-You would reference it as `<+env.variables.envvar>`.
 
 ### <+env.name>
 
