@@ -36,7 +36,12 @@ You can use any Docker image from any Docker registry, including Docker images f
 * **ECR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
 * **GCR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
 
+   <figure>
+
    ![](./static/run-step-settings-03.png)
+
+   <figcaption>Figure 1: Configuring GCR Container Registry and Image settings.</figcaption>
+   </figure>
 
 :::info
 
@@ -61,7 +66,14 @@ In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) she
 
 You can reference services started in [Background steps](../manage-dependencies/background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a `curl` command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
 
-![The Background step ID, pythonscript, is used in a curl command in a Run step.](../manage-dependencies/static/background-step-settings-call-id-in-other-step.png)
+<figure>
+
+![](../manage-dependencies/static/background-step-settings-call-id-in-other-step.png)
+
+<figcaption>Figure 2: The Background step ID, <code>pythonscript</code>, is used in a curl command in a Run step.</figcaption>
+</figure>
+
+If the Background step is inside a step group, you must include step group ID, such as `[stepGroupId]_[backgroundStepId]:5000`, even if both steps are in the same step group.
 
 :::
 
@@ -225,7 +237,12 @@ You can reference environment variables in the **Command** script by their name.
 
 Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/platform/20_References/runtime-inputs.md). For example, if the value type is expression, you can input a value that references the value of some other setting in the stage or pipeline. Select the **Thumbtack** ![](./static/icon-thumbtack.png) to change the value type.
 
+<figure>
+
 ![](./static/run-step-settings-04.png)
+
+<figcaption>Figure 3: Using a Harness expression for an environment variable value.</figcaption>
+</figure>
 
 For more information, go to the [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md).
 
