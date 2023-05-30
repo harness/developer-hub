@@ -1279,6 +1279,22 @@ The public IP of the host where the service is deployed.
 
 If you use this variable in a pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
 
+## Strategy
+
+The following expressions provide the `currentStatus` of the strategy node. The expressions are available in pipelines and during rollback.
+
+### <+strategy.currentStatus>
+
+The `currentStatus` of the strategy node with maximum depth.
+
+### <+strategy.node.strategyNodeIdentifier.currentStatus>
+
+The `currentStatus` of the strategy node with the `strategyNodeIdentifier`.
+
+### <+strategy.node.get("strategyNodeIdentifier").currentStatus>
+
+The `currentStatus` of the strategy node with the `strategyNodeIdentifier`.
+
 ## Triggers
 
 ### <+trigger.artifact.build>
