@@ -159,7 +159,7 @@ For details on settings and permissions, see [Nexus Connector Settings Reference
 
 1. Open a Harness Project.
 2. In **Project Setup**, select **Connectors**.
-3. Select **New Connector**, and click **Nexus** in **Artifact Repositories**. The Nexus Repository settings appear.
+3. Select **New Connector**, and the select **Nexus** in **Artifact Repositories**. The Nexus Repository settings appear.
 4. In **Name**, enter a name for this connector.
 5. Select **Continue**.
 6. In **Nexus Repository URL**, enter the URL that you use to connect to your Nexus server. For example, `https://nexus3.dev.mycompany.io/repository/your-repo-name`.
