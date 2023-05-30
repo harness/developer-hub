@@ -43,6 +43,13 @@ export default function communityAspects() {
                 </button>
               </Tooltip>
             </Link>
+            <Link href="https://discuss.harness.io/">
+              <Tooltip placement="top" overlay="Forum [Discourse] - Read Only as on June 16th, 2023">
+                <button className={styles.btn}>
+                  <img src={`${baseUrl}img/discuss.svg`} />
+                </button>
+              </Tooltip>
+            </Link>
           </div>
         </div>
       </div>
