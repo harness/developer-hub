@@ -46,28 +46,6 @@ This release introduces the following new features and enhancements:
 
 - The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set a secret expiration date. (PL-32708, ZD-42524)
 
-- A new [`listDelegates` API](https://app.harness.io/gateway/ng/api/delegate-setup/listDelegates/accountIdentifier=string&orgIdentifier=string&projectIdentifier=string') enables you to list and filter delegates in your project, organization, or account. (PL-37981)
-
-   You can use the body parameters to filter your delegate list:
-
-   ```json
-   {
-   "filterType":"Delegate", //This field is mandatory.
-   
-   "delegateInstanceFilter": "EXPIRED/AVAILABLE",
-
-   "status": "CONNECTED/DISCONNECTED",
-   
-   "delegateType": "KUBERNETES/DOCKER/HELM_DELEGATE/SHELL_SCRIPT/ECS",
-   
-   "delegateName": "<>",
-   
-   "description": "<>",
-   
-   "delegateTags": "[]"
-   }
-   ```
-
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
@@ -121,11 +99,11 @@ This release includes the following fixes:
   
 - Fixed an issue by eliminating NPE during ASG pipeline execution. (CDS-59383)
 
-- The Canary Delete step during rollback skipped deleting Canary resources if the forward Canary Delete step expired.(CDS-58704)
-  
-  Canary Delete step rely on the Harness release history when Canary Deployment step expires. Harness release history wasn't getting updated, and wasn't made available for the Canary Delete step during rollback because the Watch API call request wasn't getting interrupted properly.
+- The Canary Delete step during rollback did not delete all canary resources when the forward Canary Delete step expired. The Canary Delete step uses Harness release history when the Canary Deployment step expires. An API call issue prevented Harness release history from being updated in time and available for the Canary Delete step during rollback. (CDS-58702)
 
-  Now the Canary Delete step is properly deleting canary workloads when the forward Canary Deployment step expires.
+   This issue has been resolved. The Canary Delete step now properly deletes canary workloads when the forward Canary Deployment step expires.
+
+- Fixed an issue by adding support for retrying `sockettimeoutExceptions` as they can occur due to intermittent issues during a Kubernetes deployment. (CDS-57688)
 
 - Invites to users fail with an unauthorized error while RBAC setup is still in progress. (PL-32117)
 
@@ -138,10 +116,6 @@ This release includes the following fixes:
 - Deployments consistently failed during the same stage. (PL-38247)
 
    This issue was fixed by updating the delegate YAML. Startup now fails when you use a legacy delegate image with an immutable delegate.
-
-- Delegates were intermittently unavailable during upgrade. (PL38283)
-  
-   This issue was fixed by adding a two minute wait period to rolling upgrades after a new pod is created before the previous pod is removed.
 
 ```mdx-code-block
   </TabItem>
