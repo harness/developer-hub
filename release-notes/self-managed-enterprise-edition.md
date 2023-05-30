@@ -24,14 +24,14 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.5.5](https://github.com/harness/helm-charts/releases/tag/harness-0.5.5) |
 | NG Manager | 79306 |
-| CI Manager |  |
-| Pipeline Service |  |
-| Platform Service |  |
-| Access Control Service |  |
-| Change Data Capture |  |
-| Test Intelligence Service |  |
-| NG UI |  |
-| LE NG |  |
+| CI Manager | 3304 |
+| Pipeline Service | 1.26.9 |
+| Platform Service | 78602 |
+| Access Control Service | 78405 |
+| Change Data Capture | 78929 |
+| Test Intelligence Service | release-167 |
+| NG UI | 0.344.13 |
+| LE NG | 67708 |
 
 ### Fixed issues
 
