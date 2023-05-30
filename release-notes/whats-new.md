@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-05-31T10:00
+date: 2023-05-23T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -17,18 +17,9 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - May 31, 2023, version 794xx
+## Latest - May 25, 2023, STO Core version 1.54.1
 
-### Continuous Integration
-
-Python is now a supported **Language** for the [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings). (CI-8040)
-
-<details>
-<summary>2023 releases</summary>
-
-#### May 25, 2023, STO Core version 1.54.1
-
-##### Security Testing Orchestration
+### Security Testing Orchestration
 
 * This release include new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
 
@@ -44,6 +35,9 @@ Python is now a supported **Language** for the [Run Tests step](/docs/continuous
 * The **Account Settings** > **Subscriptions** page has a new **Activity & Usage** section that shows the number of security scans and user activity over the past 30 days. (STO-4942)
 
 * This release includes a minor UI update. In **Security Tests** > **Details**, the **Exempt** button has been renamed to **Request Exemption** to make the button's purpose more clear. (STO-5928)
+
+<details>
+<summary>2023 releases</summary>
 
 #### May 23, 2023, version 79307
 
