@@ -65,7 +65,9 @@ See [Tags Reference](../../20_References/tags-reference.md).
 
 #### Nexus Repository URL
 
-The URL that you use to connect to your Nexus server. For example, `https://nexus3.dev.mycompany.io`.
+The URL that you use to connect to your Nexus server. For example, `https://nexus3.dev.mycompany.io/repository/your-repo-name`.
+
+![](./static/nexus-repository.png)
 
 #### Version
 
