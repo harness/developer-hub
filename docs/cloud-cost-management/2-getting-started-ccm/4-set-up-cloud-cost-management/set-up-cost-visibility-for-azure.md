@@ -40,32 +40,41 @@ For more information, see [Manage Subscriptions](https://docs.microsoft.com/en-
 To enable CCM for your Azure services (such as storage accounts, virtual machines, containers, and so on), you need to connect Harness to your Azure account.
 
 Perform the following steps to connect to your Azure account:
+1. Create a new Kubernetes connector using one of the two options below:
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+```mdx-code-block
+<Tabs queryString="tab-number">
+<TabItem value="4" label="From Account Settings">
+```
+1. Go to **Account Resources** | **Connectors**.
+2. Click on **+ New Connector**.
+3. Under **Cloud Costs**, select **Azure**.
+```mdx-code-block
+</TabItem>
+<TabItem value="5" label="From Cloud Costs">
+```
+1. Go to **Setup** | **Cloud Integration**.  
+2. Click on **New Cluster/Cloud account**.
+3. Select **Azure**.
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+2. Perform the following tasks in the **Azure Connector** wizard.
 
 ### Overview
-
-1. In **Account Settings**, under **Account Resources**, click **Connectors**.
-
-  ![](static/set-up-cost-visibility-for-azure-01.png)
-2. Click **+ New Connector**.
-3. Under **Cloud Costs**, click **Azure**.
-   ```mdx-code-block
-<img src={select_azure} alt="A screenshot that illstrates how and where to select the cloud provider." height="500" width="600" />
-
- Or
-
-1. In your Harness account, click **Cloud Costs.** Under **Setup,** click **Cloud Integration**.  
-The **Cloud Integration** page displays the existing connectors for the Kubernetes clusters and the cloud accounts.
-2. Click **New Cluster/Cloud account**.
-3. Select **Azure**.
 	 
-4. In the **Azure Connector** wizard, in the **Overview** section, enter the following details:
+1. In the **Azure Connector** wizard, in the **Overview** section, enter the following details:
 	1. **Connector name**: Enter a name for the connector
 	2. **Azure Tenant ID**: Enter the Tenant ID of your Azure AD account. A tenant represents an organization. It's a dedicated instance of Azure AD that an organization or app developer receives at the beginning of a relationship with Microsoft. Each Azure AD tenant is distinct and separate from other Azure AD tenants. To find your tenant ID, do the following:
 		1. Launch Azure Active Directory.
 		2. Copy the tenant ID from the Tenant information.
 		
-    	
-	<img src={tenant_info} alt="A screenshot." height="500" width="500" />
+	<img src={tenant_info} alt="A screenshot." height="400" width="400" />
 
 	 If you don't find the tenant ID in the Azure console, run the `az account show` command using the Azure CLI.
 

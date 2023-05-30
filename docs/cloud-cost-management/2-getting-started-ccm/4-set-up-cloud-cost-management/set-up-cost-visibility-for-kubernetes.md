@@ -164,26 +164,47 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/down
 
 Perform the following steps to connect your Kubernetes cluster to CCM.
 
-### Overview
+1. Create a new Kubernetes connector using one of the two options below:
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-1. In Harness, click **Account Settings**.
-2. In **Account Settings**, under **Account Resources**, click **Connectors**.
-   
-     ![](./static/set-up-cost-visibility-for-kubernetes-15.png)
-3. In **Connectors**, click **+ Connector**.
-4. In **Cloud Costs**, click **Kubernetes**.![](./static/set-up-cost-visibility-for-kubernetes-16.png)
-5. In the **Kubernetes Connector** wizard, in the **Overview** section, from the **Reference an existing connector** drop-down list, select your Cloud Provider Kubernetes Connector.  
+```mdx-code-block
+<Tabs queryString="tab-number">
+<TabItem value="4" label="From Account Settings">
+```
+1. Go to **Account Resources** | **Connectors**.
+2. Click on **+ New Connector**.
+3. Under **Cloud Costs**, select **Kubernetes**.
+```mdx-code-block
+</TabItem>
+<TabItem value="5" label="From Cloud Costs">
+```
+1. Go to **Setup** | **Cloud Integration**.  
+2. Click on **New Cluster/Cloud account**.
+3. Select **Kubernetes**.
+4. Select **Advanced**.
+
+:::note
+   For the Quick Create option, go to [Kubernetes Quick Create](../4-set-up-cloud-cost-management/3-use-cloud-integration.md).
+:::
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+### Overview
+ 
+1. In the **Kubernetes Connector** wizard, in the **Overview** section, from the **Reference an existing connector** drop-down list, select your Cloud Provider Kubernetes Connector.  
 If you do not have Cloud Provider Kubernetes Connector already created, click **Create a new connector**. See [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
-1. The **Name** for your connector is automatically populated. You can choose to edit the name. This name appears on the Perspectives page to identify this cluster.
+2. The name for your connector is automatically populated. You can choose to edit the name. This name appears on the **Perspectives** page to identify this cluster.
    
-   ![](./static/set-up-cost-visibility-for-kubernetes-17.png)
-2. Click **Save and Continue**.
+3. Click **Save and Continue**.
 
 ### Choose Requirements
 
 In **Choose Requirements**, select the Cloud Cost Management features that you would like to enable for your Kubernetes clusters. Based on your selection Harness requires specific permissions.
-
-![](./static/set-up-cost-visibility-for-kubernetes-18.png)
 
 You need to provide different permissions depending on the features that you enable for your Kubernetes clusters. CCM offers the following features:
 

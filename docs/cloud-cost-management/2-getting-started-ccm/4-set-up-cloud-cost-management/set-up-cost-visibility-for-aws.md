@@ -88,6 +88,7 @@ Perform the following steps to connect CCM to the AWS account.
 </TabItem>
 </Tabs>
 ```
+2. Perform the following tasks in the **AWS Connector** wizard.
 
 ### Overview
 

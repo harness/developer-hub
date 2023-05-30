@@ -34,26 +34,32 @@ Connect Harness to your GCP account to gain access your GCP services, Compute En
 
 > **☆ NOTE —** Time periods in the GCP Cloud Billing report use the Pacific Time Zone (PST) and observe daylight saving time shifts. However, Harness CCM explorer uses the UTC time zone. You may notice some cloud cost differences between Harness CCM explorer and the GCP Cloud Billing report due to the time zone difference.
 
+1. Create a new Kubernetes connector using one of the two options below:
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-
-1. In **Account Setup**, in **Account Resources**, click **Connectors**.
-
-    ![](./static/set-up-cost-visibility-for-gcp-00.png)
-2. In **Connectors**, click **+ Connector**.
-3. In **Cloud Costs**, click **GCP**.
-   
-   ```mdx-code-block
-<img src={select_gcp} alt="A screenshot that illstrates how and where to select the cloud provider." height="500" width="600" />
-
- Or
-
-1. In your Harness account, click **Cloud Costs.** Under **Setup,** click **Cloud Integration**.  
-The **Cloud Integration** page displays the existing connectors for the Kubernetes clusters and the cloud accounts.
-2. Click **New Cluster/Cloud account**.
+```mdx-code-block
+<Tabs queryString="tab-number">
+<TabItem value="4" label="From Account Settings">
+```
+1. Go to **Account Resources** | **Connectors**.
+2. Click on **+ New Connector**.
+3. Under **Cloud Costs**, select **GCP**.
+```mdx-code-block
+</TabItem>
+<TabItem value="5" label="From Cloud Costs">
+```
+1. Go to **Setup** | **Cloud Integration**.  
+2. Click on **New Cluster/Cloud account**.
 3. Select **GCP**.
-
-
-Perform the following tasks in the **GCP Connector** wizard:
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+ 
+2. Perform the following tasks in the **GCP Connector** wizard.
 ### Overview
 1. In **Overview**, in **Connector Name**, enter a name that describes this account.
 2. In **Specify Project ID**, enter the project ID and click **Continue**. For more information on how to get a project ID, see [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
@@ -91,15 +97,12 @@ You need to enter Dataset Name in Harness.
   
     ![](./static/set-up-cost-visibility-for-gcp-04.png)
 11. Enter the **Table Name** in Harness.
-12. Click **Continue**. When you are done it will look something like this:
+12. Click **Continue**. 
   
-  ![](./static/set-up-cost-visibility-for-gcp-05.png)
 
 ### Choose Requirements
 
 Select the Cloud Cost Management features that you would like to use on your GCP account.
-
-![](./static/set-up-cost-visibility-for-gcp-06.png)
 
 CCM offers the following features:
 
