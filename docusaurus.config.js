@@ -334,7 +334,7 @@ const config = {
               },
               {
                 label: "Forum",
-                to: "https://community.harness.io",
+                to: "https://discuss.harness.io",
               },
               {
                 label: "University",

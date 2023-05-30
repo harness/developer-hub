@@ -7,7 +7,7 @@ helpdocs_category_id: 7vy86n7cws
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+# Set up CCM for Azure
 
 ```mdx-code-block
 import select_azure from './static/set-up-cost-visibility-for-azure-02.png'
@@ -156,7 +156,7 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
 | **Azure Inventory Management** (Optional)| This feature provides visibility into your Azure VM inventory dashboard and metrics dashboard. The insights provided by inventory management can be used by finance teams to understand resource utilization across the board.|
 | **Azure optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for your Azure instances with a simple one-time setup. For more information, go to **Create AutoStopping Rules for Azure**.<ul><li>Orchestrate GCE VMs based on idleness</li><li>Set dependencies between VMs</li><li>Granular savings visibility</li><li>Simple one-time setup</li></ul>|
  
-1. Make your selection and click **Continue**.
+2. Make your selection and select **Continue**.
 
 ### Create Service Principal and Assign Permissions
 
@@ -229,3 +229,16 @@ Your connector is listed in the **Connectors**.
 If you get the `When using this permission, the backing application of the service principal being created must in the local tenant` error, check if you have the **Application Administrator** role assigned for your Azure AD. Users in this role can create and manage all aspects of enterprise applications, application registrations, and application proxy settings. For more information, see [Application Administrator](https://docs.microsoft.com/en-us/azure/active-directory/roles/permissions-reference#application-administrator).
 
 
+## Enable Azure recommendations
+
+Configure the following settings in Azure to enable recommendations: 
+
+1. Sign in to the [Azure](https://portal.azure.com/#home) portal, and then open **Advisor**.
+2. Select **Configuration**.
+
+  All resources are selected by default. However, you can deselect to exclude resources for which you do not wish to receive recommendations.
+3. Select the **VM/VMSS right sizing** tab. 
+4. Select the subscriptions. This is required to receive VM rightsizing recommendations.
+   The default **CPU utilization** is 100% and the default **Look back period** is 7 days.
+
+After configuring the **Advisor**, go to [Azure recommendations](https://developer.harness.io/docs/category/recommendations) to view and apply recommendations.
