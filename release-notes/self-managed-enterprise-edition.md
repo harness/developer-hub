@@ -35,9 +35,32 @@ This release includes the following Harness module and component versions.
 
 ### Fixed issues
 
+- You can now use an external database with your installation. For more information, go to (link after merge). (SMP-545)
+
 - You can now deploy the delegate-minimal image in an air-gapped environment using `useMinimalDelegate` in your `overrides.yaml` file. For more information, got to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/). (SMP-1130)
 
-- You can now use an external database with your installation. For more information, go to (link after merge). (SMP-545)
+- The `nodeSelector` in Harness services failed for Redis and was missing in other services.
+
+   This issue is fixed. To use Redis `nodeSelector`, update the `overrides.yaml` file.
+
+   ```yaml
+   platform:  
+   redis:
+    affinity: {}
+    nodeSelector: {}
+    tolerations: []
+      Mongo Arbiter:
+      
+   platform:
+     mongodb:
+       affinity: {}
+       nodeSelector: {}
+       tolerations: []
+       arbiter:
+         affinity: {}
+         nodeSelector: {}
+         tolerations: []
+   ```
 
 ## Previous releases
 
