@@ -53,6 +53,14 @@ import { MODULES } from "../../constants";
           time: '9 min',
           link: "/tutorials/ci-pipelines/tfc-notification",
         },
+        {
+          title: "Ruby application",
+          module: MODULES.ci,
+          description:
+            "Build a Docker Image of a Ruby application.",
+          link: "/tutorials/ci-pipelines/build/ruby",
+          newDoc: true,
+        },
       ],
     },
   ];

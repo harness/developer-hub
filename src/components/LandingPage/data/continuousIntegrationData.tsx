@@ -130,6 +130,17 @@ export const CIList: CardItem[] = [
     icon: "img/icon_ci.svg",
   },
   {
+    title: "Ruby application",
+    module: MODULES.ci,
+    description:
+      "Build a Docker Image of a Ruby application.",
+    link: "/tutorials/ci-pipelines/build/ruby",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
+  },
+  {
     title: "Terraform Cloud notification triggers",
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
