@@ -1081,7 +1081,9 @@ For more information, go to [Services and Environments Overview](/docs/continuou
 
 To reference an environment-level variable, use the expression `<+env.variables.variableName>`.
 
-For example, here is an environment variable named `envvar`. You would reference it as `<+env.variables.envvar>`.
+For example, to reference an environment variable named `envvar`, use the following expression:
+
+`<+env.variables.envvar>`
 
 ![](./static/harness-variables-44.png)
 
