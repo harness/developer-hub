@@ -6,6 +6,8 @@ sidebar_position: 35
 
 ```mdx-code-block
 import remediate_indiv_occurrences from '../static/ai-remediation-occurrences.png'
+import remediate_occurrence_three from '../static/ai-remediation-occurrence-3.png'
+import remediate_issue_refine from '../static/ai-remediation-issue-refine.png'
 ```
 
 Harness STO has an AI-enhanced remediation engine that generates suggestions for fixing detected issues. This feature is especially useful when the external tool does not provide remediations for a specific issue. 
@@ -18,7 +20,7 @@ Harness STO has an AI-enhanced remediation engine that generates suggestions for
   * STO anonymizes all information it includes in a Bard query. The Bard engine deletes all query information immediately after it sends a response. 
 * The accuracy, reliability, and completeness of a suggestion depends on the publicly-known information about the detected issue. An issue might have no known remediation, especially if it was recently discovered. An issue might have multiple suggested remediations that are contradictory, controversial, or applicable only to specific use cases.
 * Before you implement an AI-generated suggestion, consider carefully the reliability and extent of the publicly-known information that that issue. Also consider the suggestion's applicability to your specific organization and use case.
-* You can refine a suggestion by providing more information, such as additional context or code snippets, to the AI engine. For more information, go to [How it works](#how-it-works) below. 
+* The workflow description below shows how you can refine a suggestion by providing more information, such as additional context or code snippets, to the AI engine.
 
 ## Workflow description
 
@@ -34,14 +36,16 @@ Harness STO has an AI-enhanced remediation engine that generates suggestions for
 
    3. Add any additional context in the text pane. This might be a code snippet, a Dockerfile, or some other piece of information that's relevant to the specific target and issue. Then click **Generate**. 
 
-     ![](../static/ai-remediation-issue-refine.png)
+       ```mdx-code-block
+      <img src={remediate_issue_refine} alt="Generate a new remediation using additional information." height="50%" width="50%" />
+      ```
 
    4. You can repeat this process, providing more information to generate increasingly targeted suggestions. 
 
 
 3. To generate remediations for another occurrence,  do the following:
 
-   1. Scroll down to the occurrence of interest and click **Unsure how to remediate? Ask AI**.
+   1. Scroll down to the occurrence of interest and click **Unsure how to remediate? Ask AI**. (You might need to wait a few seconds for the remediation to appear.)
 
       ```mdx-code-block
       <img src={remediate_indiv_occurrences} alt="Generate AI-enhanced remediations for individual occurrences." height="50%" width="50%" />
@@ -49,4 +53,7 @@ Harness STO has an AI-enhanced remediation engine that generates suggestions for
 
    2. To further refine the suggested remediation with an additional code snippet, click **Edit Snippet** and re-generate.
 
-      ![](../static/ai-remediation-occurrence-3.png)
+      ```mdx-code-block
+      <img src={remediate_occurrence_three} alt="Generate AI-enhanced remediations for a specific occurrence." height="50%" width="50%" />
+      ```
+      
