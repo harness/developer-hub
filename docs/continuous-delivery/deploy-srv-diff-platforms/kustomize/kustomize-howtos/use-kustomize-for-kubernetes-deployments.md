@@ -462,6 +462,30 @@ The Harness Delegate ships with the 3.5.4 [release](https://github.com/kubernete
 
 If you want to use a different release of Kustomize, add it to a location on the Delegate, update the following Delegate files, and restart the Delegate.
 
+
+## Configuring a Kustomize Service with Command Flags 
+
+Command Flags lets users change the behavior of how Harness will perform a Kustomize based deployment. With the `build` command you can pass in sub commands to change the behavior of the `kustomize build` command. 
+
+Example Commands:
+```TEXT
+## To print the stack trace of the kustomize build command 
+kustomize build --stack-trace 
+```
+
+You can deploy [Helm Charts with Kustomize](https://github.com/kubernetes-sigs/kustomize/blob/master/examples/chart.md#helm-related-flags), Harness supports this today with the proper configuration. Please see the example:
+
+
+```Text
+kustomize build --enable-helm --helm-command `<YOUR_HELM_COMMAND>`
+```
+
+
+### Limitation
+
+Harness only supports the Kustomize `build` command. The Kustomize `build` command performs the following: `build a kustomization target from a directory or URL.` 
+
+
 ### Kubernetes delegate
 
 Update the `value` environment variable in harness-delegate.yaml:
