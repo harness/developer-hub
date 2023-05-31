@@ -35,7 +35,7 @@ This release includes the following Harness module and component versions.
 
 ### Fixed issues
 
-- You can now use an external database with your installation. For more information, go to [Use an external database](docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database). (SMP-545)
+- You can now use an external database with your installation. For more information, go to [Use an external database](/docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database). (SMP-545)
 
 - You can now deploy the delegate-minimal image in an air-gapped environment using `useMinimalDelegate` in your `overrides.yaml` file. For more information, got to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/). (SMP-1130)
 
