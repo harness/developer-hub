@@ -16,6 +16,22 @@ For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Relea
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### May 31, 2023, version 794xx
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+#### Harness Manager delegate fixed issues
+
+The fixed issue below is available with version 794xx and does not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+
 ### May 23, 2023, version 79306
 
 #### What's new

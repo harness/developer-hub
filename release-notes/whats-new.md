@@ -17,18 +17,28 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - May 25, 2023 
+## Latest - May 31, 2023
 
-### Cloud Cost Management, version 79600
+### Harness Platform
 
-**Azure VM recommendations**
+* Harness now blocks any RBAC change event that creates more than 2 million Access Control Lists (ACLs). (PL-38756)
 
-  Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
+  Harness uses Access Control Lists (ACLs) for faster authorization checks. Principals, resource types, permissions, and scopes contribute to the number of ACLs created for role assignment.
 
-### STO Core version 1.54.1
+* You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
 
+### Harness Manager delegate
 
-#### Security Testing Orchestration
+The feature below is available with version 794xx and does not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
+
+* You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 25, 2023, STO Core version 1.54.1
+
+### Security Testing Orchestration
 
 * This release include new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
 
@@ -44,9 +54,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * The **Account Settings** > **Subscriptions** page has a new **Activity & Usage** section that shows the number of security scans and user activity over the past 30 days. (STO-4942)
 
 * This release includes a minor UI update. In **Security Tests** > **Details**, the **Exempt** button has been renamed to **Request Exemption** to make the button's purpose more clear. (STO-5928)
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 23, 2023, version 79307
 
@@ -81,8 +88,6 @@ Added support for showing artifacts on the **Artifacts** tab in Harness Cloud an
 Previously, this was supported only for Kubernetes builds. The artifacts are visible on the execution **Artifact** tab and the artifact details are visible on the step output window. 
 
 ##### Harness Platform
-
-* You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
 * The **Connector Details** page now shows whether a connector is connected via a delegate or via Harness Platform. (PL-32673)
 
