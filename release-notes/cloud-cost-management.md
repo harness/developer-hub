@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-05-20T10:00
+date: 2023-05-31T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -16,7 +16,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - May 19, 2023, version 79400
+## Latest - May 29, 2023, version 79600
 
 ```mdx-code-block
 <Tabs>
@@ -25,7 +25,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### What's new
 
-  This release does not include any new features.
+**Azure VM recommendations**
+
+  Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
+
 
 
 ```mdx-code-block
@@ -44,14 +47,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 
 ### Fixed issues
+  
+* The recommendations for workloads with containers that do not have properly set limits and requests displayed a value of -1 or null. (CCM-11765).
 
-* Budget group missing from the Budget page. (CCM-12334)
-
-  Previously, updating a budget group rendered its history irrelevant due to its dependence on child entities. However, this issue has been resolved by introducing support for modifying the budget group history during updates. 
-
-* An error occurred while attempting to save an AutoStopping rule with multiple proxy configurations and a custom domain in the GCP proxy. (CCM-12048)
-
-  Saving the AutoStopping rule did not append custom domain providers for non-AWS cloud providers. This resulted in a validation error at the back-end. This issue has been resolved. The required field `custom_domain_provider` is now being set for every cloud provider.
+  This issue has been resolved.
 
   
 ```mdx-code-block
@@ -64,11 +63,56 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <details>
 <summary>2023 releases</summary>
 
-#### May 05, 2023, version 79300
+#### May 24, 2023, version 79505
 
 ##### What's new
 
 This release does not include any new features.
+
+##### Early access
+This release does not include any early access features.
+
+##### Fixed issues
+
+* The users encountered an issue where they were unable to toggle the **Hide progress** page and **Dry run** options. Each time the toggle button was clicked, an error was thrown, preventing them from enabling or disabling these options successfully. (CCM-12438)
+
+  The UI was relying on a deprecated API to update the rule, causing issues with toggling the values. This issue has been resolved by replacing the older API with a new v2 API. This update restored the functionality, allowing users to effortlessly toggle the values.
+
+* The ALB that was created in AWS did not appear on the Harness AutoStopping rules creation page. (CCM-12517)
+
+  This issue has been resolved.
+
+* The AutoStopping fixed schedule did not execute the rule as configured in the schedule settings. (CCM-12396)
+
+  The issue was identified as missing triggers from Dkron, an external service, corresponding to the created schedule. To address this, a backup job was created. This backup job is designed to trigger the required operation in case the triggers from Dkron are missed. By implementing this solution, the system ensures that the necessary operation will still be executed even if the triggers from Dkron are not received.
+
+#### May 19, 2023, version 79400
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+* Budget group missing from the Budget page. (CCM-12334)
+
+  Previously, updating a budget group rendered its history irrelevant due to its dependence on child entities. However, this issue has been resolved by introducing support for modifying the budget group history during updates. 
+
+* An error occurred while attempting to save an AutoStopping rule with multiple proxy configurations and a custom domain in the GCP proxy. (CCM-12048)
+
+  Saving the AutoStopping rule did not append custom domain providers for non-AWS cloud providers. This resulted in a validation error at the back-end. This issue has been resolved. The required field `custom_domain_provider` is now being set for every cloud provider.
+
+
+
+#### May 05, 2023, version 79300
+
+##### What's new
+This release does not include any new features.
+
 
 ##### Early access
 This release does not include any early access features.
