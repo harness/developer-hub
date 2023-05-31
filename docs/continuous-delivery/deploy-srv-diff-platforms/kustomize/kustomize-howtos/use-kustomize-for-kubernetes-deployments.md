@@ -485,7 +485,7 @@ Add the Kustomize path environment variable in the Delegate Docker compose file:
 
 Command flags let users change the behavior of how Harness performs a Kustomize based deployment. Using the `build` command, you can pass sub-commands to change the behavior of the `kustomize build` command. 
 
-You can configure the command flag in the Kustomize **[Manifest Details](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments)** page.
+You can configure the command flag in the Kustomize **[Manifest Details](#add-manifests-and-kustomization)** page.
 
 ![image](https://github.com/harness/developer-hub/assets/52221549/1a95d4a4-f34c-4034-a02a-11e3cb1c1f76)
 
