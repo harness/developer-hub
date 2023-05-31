@@ -40,39 +40,48 @@ For more information, see [Manage Subscriptions](https://docs.microsoft.com/en-
 To enable CCM for your Azure services (such as storage accounts, virtual machines, containers, and so on), you need to connect Harness to your Azure account.
 
 Perform the following steps to connect to your Azure account:
+1. Create a new Kubernetes connector using one of the two options below:
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+```mdx-code-block
+<Tabs queryString="tab-number">
+<TabItem value="4" label="From Account Settings">
+```
+1. Go to **Account Resources** > **Connectors**.
+2. Select **+ New Connector**.
+3. Under **Cloud Costs**, select **Azure**.
+```mdx-code-block
+</TabItem>
+<TabItem value="5" label="From Cloud Costs">
+```
+1. Go to **Setup** > **Cloud Integration**.  
+2. Select on **New Cluster/Cloud account**.
+3. Select **Azure**.
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+2. Perform the following tasks in the **Azure Connector** wizard.
 
 ### Overview
-
-1. In **Account Settings**, under **Account Resources**, click **Connectors**.
-
-  ![](static/set-up-cost-visibility-for-azure-01.png)
-2. Click **+ New Connector**.
-3. Under **Cloud Costs**, click **Azure**.
-   ```mdx-code-block
-<img src={select_azure} alt="A screenshot that illstrates how and where to select the cloud provider." height="500" width="600" />
-
- Or
-
-1. In your Harness account, click **Cloud Costs.** Under **Setup,** click **Cloud Integration**.  
-The **Cloud Integration** page displays the existing connectors for the Kubernetes clusters and the cloud accounts.
-2. Click **New Cluster/Cloud account**.
-3. Select **Azure**.
 	 
-4. In the **Azure Connector** wizard, in the **Overview** section, enter the following details:
-	1. **Connector name**: Enter a name for the connector
+1. In the **Azure Connector** wizard, in the **Overview** section, enter the following details:
+	1. **Connector name**: Enter a name for the connector.
 	2. **Azure Tenant ID**: Enter the Tenant ID of your Azure AD account. A tenant represents an organization. It's a dedicated instance of Azure AD that an organization or app developer receives at the beginning of a relationship with Microsoft. Each Azure AD tenant is distinct and separate from other Azure AD tenants. To find your tenant ID, do the following:
 		1. Launch Azure Active Directory.
 		2. Copy the tenant ID from the Tenant information.
 		
-    	
-	<img src={tenant_info} alt="A screenshot." height="500" width="500" />
+	<img src={tenant_info} alt="A screenshot." height="400" width="400" />
 
 	 If you don't find the tenant ID in the Azure console, run the `az account show` command using the Azure CLI.
 
 	3. **Azure Subscription ID**: Enter the Azure subscription ID. To find your Subscription ID, do the following:
    
 		1. Launch Azure **Cost Management** page.
-		2. Under **Product + services**, click **Azure subscriptions**.
+		2. Under **Product + services**, select **Azure subscriptions**.
 		3. Copy the **Subscription ID** for your subscription.
    
      ![](static/set-up-cost-visibility-for-azure-04.png)
@@ -80,16 +89,16 @@ The **Cloud Integration** page displays the existing connectors for the Kubernet
 	 If you don't find the Subscription ID in the Azure console, you can use Azure CLI. See [List your Azure subscriptions with CLI](https://docs.microsoft.com/en-us/azure/media-services/latest/setup-azure-subscription-how-to?tabs=cli).
 	4. **Description** (optional): Enter a brief description that conveys the purpose of this connector.
 	5. **Tag** (optional): Enter text to create a tag for this connector.
-5. Click **Continue**.
+5. Select **Continue**.
 
 ### Azure Billing Exports
 
 Billing export is used to get insights into your cloud infrastructure and Azure services such as Storage accounts, Virtual machines, Containers, etc.
 
-1. In **Azure Billing Exports**, click **Launch Azure Billing Exports**.
+1. In **Azure Billing Exports**, select **Launch Azure Billing Exports**.
    
      ![](static/set-up-cost-visibility-for-azure-05.png)
-2. In the Azure **Cost Management** portal, under **Settings**, in **Exports**, click **Add** to create a new export.
+2. In the Azure **Cost Management** portal, under **Settings**, in **Exports**, select **Add** to create a new export.
 3. In **Export details**, provide the following details:
 	1. Enter a name for your export.
 	2. In **Metrics**, select one of the following cost type:
@@ -121,15 +130,15 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
    
        ![](static/set-up-cost-visibility-for-azure-07.png)
 
-	   7. Click **Create**.  
+	   7. Select **Create**.  
 		Your export report is listed in the **Exports** list.
 					
 
-5. Select the export that you created in the previous step and click **Run now**.
+5. Select the export that you created in the previous step and select **Run now**.
    
 <img src={run_now} alt="A screenshot" height="500" width="500" />
 
-6. In the Azure **Cost Management** portal, click the billing export that you created in the enable export billing step.
+6. In the Azure **Cost Management** portal, select the billing export that you created in the enable export billing step.
    
      ![](static/set-up-cost-visibility-for-azure-10.png)
 7. Enter the following details in Harness:
@@ -139,7 +148,7 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
 	4. In **Report Name**, enter the report name.
    
      ![](static/set-up-cost-visibility-for-azure-11.png)
-8. Click **Continue**.
+8. Select **Continue**.
 
 ### Choose Requirements
 
@@ -214,11 +223,11 @@ $ echo $SCOPE
 
  (Optional) You need to run this command only if you have selected **Azure Optimization by AutoStopping** in the Choosing Requirements step.
  
-5. Click **Continue** in Harness.
+5. Select **Continue** in Harness.
 
 ### Test Connection
 
-The connection is validated and verified in this step. After successful validation, and verification, click **Finish**.
+The connection is validated and verified in this step. After successful validation, and verification, select **Finish**.
 
 Your connector is listed in the **Connectors**.
 

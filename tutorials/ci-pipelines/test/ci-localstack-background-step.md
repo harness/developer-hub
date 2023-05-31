@@ -35,7 +35,7 @@ This will run the LocalStack Docker image as a Background step in your pipeline.
 
 ### Add Step
 
-This will add a step to ensure the LocalStack service is healthy. The step will run the `curl` command to poll the LocalStack service's `/health` endpoint until it returns successfully. This ensures that LocalStack is ready to receive traffic before the pipeline continues.
+This will add a step to ensure the LocalStack service is healthy. The step will run the cURL command to poll the LocalStack service's `/health` endpoint until it returns successfully. This ensures that LocalStack is ready to receive traffic before the pipeline continues.
 
 1. In the **Execution** tab of your pipeline stage, click **Add Step** then select **Run**.
 2. Enter "localstack health" in the **Name** field.

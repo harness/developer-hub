@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-05-23T10:00
+date: 2023-05-31T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -17,9 +17,7 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - May 26, 2023
-
-### Continuous Delivery - version 79411
+### Continuous Delivery, version 79411
 
 - Edit Git details for pipelines stored using Harness Git Experience. (CDS-69130)
   
@@ -59,9 +57,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   For information on setting up notifications for user groups, go to [Add and manage user groups](https://developer.harness.io/docs/platform/User-Management/add-user-groups).
 
-### Security Testing Orchestration - STO Core version 1.54.1
 
-* This release include new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
+### Cloud Cost Management, version 79600
+
+**Azure VM recommendations**
+
+  Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
+
+### Security Testing Orchestration, version 1.54.1
+
+* This release includes new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
 
   * [AWS ECR](/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference)
   * [AWS Security Hub](/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference)

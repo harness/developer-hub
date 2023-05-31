@@ -483,6 +483,46 @@ Add the Kustomize path environment variable in the Delegate Docker compose file:
 - KUSTOMIZE_PATH=<path>
 ```
 
+## Configuring a Kustomize service with command flags 
+
+Command flags let users change the behavior of how Harness performs a Kustomize deployment. 
+
+Using the **Build** command type, you can pass subcommands to change the behavior of the `kustomize build` command used by Harness at runtime. 
+
+You can configure the command flag in the Kustomize **Manifest Details** page.
+
+Here's a sample stack trace command:
+
+```TEXT
+## To print the stack trace of the Kustomize build command 
+kustomize build --stack-trace 
+```
+
+Here is how it's implemented in Harness:
+
+<docimage path={require('./static/35ec7e7239ffd1e3318ccc1cab146317c35abba1ace73a1684108e69a54fa632.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+Harness also supports [Helm charts with Kustomize](https://github.com/kubernetes-sigs/kustomize/blob/master/examples/chart.md#helm-related-flags) deployments. 
+
+Here's how to render your kustomization with Helm:
+
+```Text
+## Enable the Helm template and pull capabilities and render your kustomization with Helm. 
+kustomize build --enable-helm --helm-command `<YOUR_HELM_COMMAND>`
+```
+
+Here's how it's implemented in Harness:
+
+<docimage path={require('./static/440c8cc0277021997de5c09937e550f1558e48edb350e5e143f09ff3b8b67718.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+When Harness executes the Kustomize `build` command as part of your deployment, you will see these commands being applied in the execution log.
+
+### Limitations
+
+Harness supports the Kustomize `build` command only. The Kustomize `build` command builds a kustomization target from a directory or URL.
+
 ## Next steps
 
 * [Create a Kubernetes Rolling Deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment)
