@@ -1104,7 +1104,7 @@ module.exports = {
     },
     {
       from: "/docs/cloud-cost-management/monitor-cloud-cost-with-integration/integration/datadog-integration",
-      to: "/docs/cloud-cost-management/monitor-cloud-cost-with-integration/datadog-integration",
+      to: "/docs/cloud-cost-management/datadog-integration",
     },
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/share-cost-perspective-report",

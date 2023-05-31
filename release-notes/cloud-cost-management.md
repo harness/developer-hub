@@ -67,7 +67,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ##### What's new
 
-This release does not include any new features.
+**Asset Governance**
+
+Introduced support for access control (RBAC) for the Asset Governance feature. For more information, go to [Asset Governance RBAC](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov).
 
 ##### Early access
 This release does not include any early access features.

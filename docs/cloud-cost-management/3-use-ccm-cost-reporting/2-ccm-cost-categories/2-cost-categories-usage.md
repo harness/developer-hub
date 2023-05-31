@@ -9,10 +9,6 @@ helpdocs_is_published: true
 ---
 
 
-```mdx-code-block
-import dashboards_cc from './static/cost-categories-dashboards.png'
-```
-
 You can use cost categories in both perspectives and dashboards. When you create or modify a cost category, the changes are immediately reflected in perspectives, including historical data. However, in Dashboards, it may take up to 24 hours for the changes to be reflected on the current month or the last three days' data, depending on the cloud service provider.
 
 ## Use cost categories in perspectives
@@ -98,9 +94,9 @@ Consider the following scenario where the Perspective rule has two cost categori
 
 You can visualize cost categories in your custom dashboard. To learn how to create a custom dashboard, go to [Create Dashboards](../../../platform/18_Dashboards/create-dashboards.md).
 
-**Cost Categories** is available in the Unified explore on the Dashboards page. 
+**Cost Categories** is available in the **Unified** explore on the **Dashboards** page. 
 
-  <img src={dashboards_cc} alt="A screenshot to show the unified explore." height="400" width="500" />
+  <docimage path={require('./static/cost-categories-dashboards.png')} width="40%" height="40%" title="Click to view full size image" />
 
 
 * When you create a new cost category or make changes to an existing one, it may take up to 24 hours for the changes to be reflected in the dashboard data.
