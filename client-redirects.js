@@ -298,7 +298,7 @@ module.exports = {
 
     {
       from: "/kb/continuous-delivery/continuous-verification-results",
-      to: "/docs/continuous-delivery/verify/cv-concepts/verification-results",
+      to: "/docs/category/understand-cv-results",
     },
 
     {
