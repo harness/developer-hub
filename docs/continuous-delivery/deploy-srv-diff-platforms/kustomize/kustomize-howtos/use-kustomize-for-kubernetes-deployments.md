@@ -467,36 +467,31 @@ If you want to use a different release of Kustomize, add it to a location on the
 
 Command flags let users change the behavior of how Harness performs a Kustomize based deployment. Using the `build` command, you can pass sub-commands to change the behavior of the `kustomize build` command. 
 
-You can configure the command flag and the Kustomize Manifest Details Section.
+You can configure the command flag in the Kustomize **[Manifest Details](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments)** page.
 
 ![image](https://github.com/harness/developer-hub/assets/52221549/1a95d4a4-f34c-4034-a02a-11e3cb1c1f76)
 
-**Below are some sample configurations**
+Here's a sample stack trace command:
 
-Here's a sample command stack trace command:
 ```TEXT
-## To print the stack trace of the kustomize build command 
+## To print the stack trace of the Kustomize build command 
 kustomize build --stack-trace 
 ```
 
 ![image](https://github.com/harness/developer-hub/assets/52221549/7d350ee7-01ae-40a8-b849-0a78332590bb)
 
-
 Harness also supports [Helm charts with Kustomize](https://github.com/kubernetes-sigs/kustomize/blob/master/examples/chart.md#helm-related-flags) deployments. 
 
 For example:
 
-
 ```Text
-## Enable the Helm Template and Pull capabilities and render your kustomization with Helm. 
+## Enable the Helm Template and Pull capabilities and render your Kustomization with Helm. 
 kustomize build --enable-helm --helm-command `<YOUR_HELM_COMMAND>`
 ```
 
 ![image](https://github.com/harness/developer-hub/assets/52221549/3cbb4782-2f44-49ed-9f73-d41d17485b0d)
 
-
-You will see it be applied when Harness executes the kustomize build command in the execution log.
-
+When Harness executes the Kustomize `build` command, you can see these commands being applied in the execution log.
 
 ### Limitations
 
