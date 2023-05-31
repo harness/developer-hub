@@ -55,11 +55,10 @@ async function docsPluginEnhanced(context, options) {
       // const docsBaseUrl = normalizeUrl([siteUrl, baseUrl, routeBasePath]);
 
       const outPutPath = path.join(outDir, destPath);
-      const exists = await fs.pathExists(outPutPath);
-      console.log("pathExists", outPutPath, exists);
+      const exists = await fs.exists(outPutPath);
+      console.log(new Date(), "fileExists?...", outPutPath, exists);
 
-      let strRedirects =
-        "# Redirects For Netlify\r\n# From <space> To - https://docs.netlify.com/routing/redirects/\r\n\r\n";
+      let strRedirects = "";
       if (!exists) {
         const historyRedirectsPath = path.resolve(
           __dirname,
