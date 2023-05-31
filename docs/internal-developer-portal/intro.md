@@ -8,6 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# Overview of Harness IDP
+
 :::note
 This module is currently available in Beta to limited customers. Contact Harness Support if you would like to try it out.
 :::
@@ -32,7 +34,7 @@ The software catalog is a centralized registry for all your software (services, 
 
 ![](static/plugins-screenshot.png)
 
-Harness IDP includes curated plugins. You can choose the plugins you need based on the tools that you use. The plugins enable you to customize  a software component on the basis of its type, and to present all information relevant to developers in a single view. Harness IDP’s plugin library is based on the hundreds of open-source Backstage plugins available in the marketplace.
+Harness IDP includes curated plugins. You can choose the plugins you need based on the tools that you use. The plugins enable you to customize a software component on the basis of its type, and to present all information relevant to developers in a single view. Harness IDP’s plugin library is based on the hundreds of open-source Backstage plugins available in the marketplace.
 
 ## Technical documentation
 

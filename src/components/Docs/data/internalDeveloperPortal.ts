@@ -58,7 +58,7 @@ export const docsCards: CardSections = [
         title: "Overview",
         module: MODULES.platform,
         description:
-          "Learn how Harness's developer-centric portal helps platform engineering and development teams improve productivity."
+          "Learn how Harness's developer-centric portal helps platform engineering and development teams improve productivity.",
         link: "/docs/internal-developer-portal/intro",
       },
     ],
