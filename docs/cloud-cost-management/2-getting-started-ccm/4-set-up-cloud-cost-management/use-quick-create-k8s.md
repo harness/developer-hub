@@ -1,6 +1,6 @@
 ---
-title: Kubernetes Quick Create
-description:  This topic helps you seamlessly set up your Harness CCM with a single click for your existing Kubernetes clusters, and integrate CCM with your cloud service providers.
+title: Kubernetes quick create
+description:  This topic helps you seamlessly set up your Harness CCM with a single click for your existing Kubernetes clusters.
 # sidebar_position: 2
 helpdocs_topic_id: g9dgxg2cc6
 helpdocs_category_id: ekrjjfyle0
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 # Set up CCM for Kubernetes cluster by using the Quick Create option
-Cloud Integration allows you to seamlessly set up your Harness CCM with a single click for your existing Kubernetes clusters, and integrate cost management with your cloud service providers.
+The Kubernetes Quick Create feature allows you to seamlessly set up your Harness CCM with a single click for your existing Kubernetes clusters.
 
 ## Prerequisites and Permissions
 
@@ -52,7 +52,7 @@ The **Cloud Integration** page displays the existing connectors for the Kubernet
 The required permissions and components are verified. On successful verification, the cost management features are enabled on the cluster.
 
   ![](./static/use-cloud-integration-00.gif)
-1. (Optional) To enable the AutoStopping feature, select **Enable AutoStopping** before clicking **Finish** and continue to follow the steps in the wizard or you could choose to enable this feature later if required. To learn how to enable AutoStopping, see [Create a secret and provide permissions for AutoStopping](set-up-cost-visibility-for-kubernetes.md#optional-create-a-secret).
+1. (Optional) To enable the AutoStopping feature, select **Enable AutoStopping** before selecting **Finish** and continue to follow the steps in the wizard or you could choose to enable this feature later if required. To learn how to enable AutoStopping, see [Create a secret and provide permissions for AutoStopping](set-up-cost-visibility-for-kubernetes.md#optional-create-a-secret).
 
 ### Viewing Cloud Costs
 

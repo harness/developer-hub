@@ -45,14 +45,14 @@ import TabItem from '@theme/TabItem';
 <TabItem value="4" label="From Account Settings">
 ```
 1. Go to **Account Resources** | **Connectors**.
-2. Click on **+ New Connector**.
+2. Select **+ New Connector**.
 3. Under **Cloud Costs**, select **GCP**.
 ```mdx-code-block
 </TabItem>
 <TabItem value="5" label="From Cloud Costs">
 ```
 1. Go to **Setup** | **Cloud Integration**.  
-2. Click on **New Cluster/Cloud account**.
+2. Select **New Cluster/Cloud account**.
 3. Select **GCP**.
 ```mdx-code-block
 </TabItem>
@@ -62,7 +62,7 @@ import TabItem from '@theme/TabItem';
 2. Perform the following tasks in the **GCP Connector** wizard.
 ### Overview
 1. In **Overview**, in **Connector Name**, enter a name that describes this account.
-2. In **Specify Project ID**, enter the project ID and click **Continue**. For more information on how to get a project ID, see [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
+2. In **Specify Project ID**, enter the project ID and select **Continue**. For more information on how to get a project ID, see [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
 
 ### GCP Billing Export
 
@@ -74,9 +74,9 @@ Make sure that you have enabled **Detailed Usage Cost** on the **Billing Export*
 :::
 
 
-1. In **GCP Billing Export**, click **Launch GCP console**.
-2. In the GCP **Explorer** window, in the pinned projects section, click **your project ID** to open the project. If you see an overflow menu (:) next to your project ID, click the menu and select **Open**.
-3. Click **Create dataset**. For more information, see [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
+1. In **GCP Billing Export**, select **Launch GCP console**.
+2. In the GCP **Explorer** window, in the pinned projects section, select **your project ID** to open the project. If you see an overflow menu (:) next to your project ID, select the menu and select **Open**.
+3. Select **Create dataset**. For more information, see [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
   
   
   ```mdx-code-block
@@ -87,7 +87,7 @@ You need to enter Dataset Name in Harness.
 5. Select a **Data location**.
 6. Set the **Default table expiration** to **Never**.
 7. Set the **Encryption** option to **Google-managed key**.
-8. To save, click **CREATE DATASET**.
+8. To save, select **CREATE DATASET**.
 9. Enter the **Dataset Name** in Harness.
 
   ```mdx-code-block
@@ -97,7 +97,7 @@ You need to enter Dataset Name in Harness.
   
     ![](./static/set-up-cost-visibility-for-gcp-04.png)
 11. Enter the **Table Name** in Harness.
-12. Click **Continue**. 
+12. Select **Continue**. 
   
 
 ### Choose Requirements
@@ -113,19 +113,19 @@ CCM offers the following features:
 | **GCP optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for your GCP cloud resources. For more information, see **Create AutoStopping Rules for GCP**.<ul><li>Orchestrate GCE VMs based on idleness</li><li>Set dependencies between VMs</li><li>Granular savings visibility</li><li>Simple one-time setup</li></ul>|
 
 
-Make your selection and click **Continue**.
+Make your selection and select **Continue**.
 
 ### Grant Permissions
 
 Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing data (such as usage and cost estimate data) to a BigQuery dataset that you specify. The export happens throughout the day automatically. 
 
-1. In **Grant permissions**, click **Open BigQuery Page**.
+1. In **Grant permissions**, select **Open BigQuery Page**.
 2. Log into the GCP console and go to the BigQuery page.
 3. Select your project in the left panel.
 4. Select your dataset. For more information on creating a dataset, see [Creating datasets](https://cloud.google.com/bigquery/docs/datasets).
 
   ![](./static/gcp_billing_export_resource.png)
-5. Click the **more actions** icon (three vertical dots) against the dataset, and then click **Share.**
+5. Select the **more actions** icon (three vertical dots) against the dataset, and then select **Share.**
 
    ![](./static/gcp-dataset-share.png)
 
@@ -135,8 +135,8 @@ Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing
   
     ![](./static/Adding-principals-gcp.png)
 
-7. In **Select a role**, select **BigQuery Data Viewer**, and then click **Add**.
-8. Click **Done**.  
+7. In **Select a role**, select **BigQuery Data Viewer**, and then select **Add**.
+8. Select **Done**.  
     When you are done, the following screen is displayed:
   
   ```mdx-code-block
@@ -148,12 +148,12 @@ To enable AutoStopping rules, you need to add more permissions. For more informa
 :::
   
    
-1. Click **Continue** in Harness.
+9. Select **Continue** in Harness.
 
 
 ### Connection Test
 
-The connection is validated and verified in this step. After successfully testing the connection, click **Finish**.
+The connection is validated and verified in this step. After successfully testing the connection, select **Finish**.
 
 ![](./static/set-up-cost-visibility-for-gcp-12.png)
 

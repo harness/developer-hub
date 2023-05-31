@@ -51,14 +51,14 @@ import TabItem from '@theme/TabItem';
 <TabItem value="4" label="From Account Settings">
 ```
 1. Go to **Account Resources** | **Connectors**.
-2. Click on **+ New Connector**.
+2. Select **+ New Connector**.
 3. Under **Cloud Costs**, select **Azure**.
 ```mdx-code-block
 </TabItem>
 <TabItem value="5" label="From Cloud Costs">
 ```
 1. Go to **Setup** | **Cloud Integration**.  
-2. Click on **New Cluster/Cloud account**.
+2. Select on **New Cluster/Cloud account**.
 3. Select **Azure**.
 ```mdx-code-block
 </TabItem>
@@ -81,7 +81,7 @@ import TabItem from '@theme/TabItem';
 	3. **Azure Subscription ID**: Enter the Azure subscription ID. To find your Subscription ID, do the following:
    
 		1. Launch Azure **Cost Management** page.
-		2. Under **Product + services**, click **Azure subscriptions**.
+		2. Under **Product + services**, select **Azure subscriptions**.
 		3. Copy the **Subscription ID** for your subscription.
    
      ![](static/set-up-cost-visibility-for-azure-04.png)
@@ -89,16 +89,16 @@ import TabItem from '@theme/TabItem';
 	 If you don't find the Subscription ID in the Azure console, you can use Azure CLI. See [List your Azure subscriptions with CLI](https://docs.microsoft.com/en-us/azure/media-services/latest/setup-azure-subscription-how-to?tabs=cli).
 	4. **Description** (optional): Enter a brief description that conveys the purpose of this connector.
 	5. **Tag** (optional): Enter text to create a tag for this connector.
-5. Click **Continue**.
+5. Select **Continue**.
 
 ### Azure Billing Exports
 
 Billing export is used to get insights into your cloud infrastructure and Azure services such as Storage accounts, Virtual machines, Containers, etc.
 
-1. In **Azure Billing Exports**, click **Launch Azure Billing Exports**.
+1. In **Azure Billing Exports**, select **Launch Azure Billing Exports**.
    
      ![](static/set-up-cost-visibility-for-azure-05.png)
-2. In the Azure **Cost Management** portal, under **Settings**, in **Exports**, click **Add** to create a new export.
+2. In the Azure **Cost Management** portal, under **Settings**, in **Exports**, select **Add** to create a new export.
 3. In **Export details**, provide the following details:
 	1. Enter a name for your export.
 	2. In **Metrics**, select one of the following cost type:
@@ -130,15 +130,15 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
    
        ![](static/set-up-cost-visibility-for-azure-07.png)
 
-	   7. Click **Create**.  
+	   7. Select **Create**.  
 		Your export report is listed in the **Exports** list.
 					
 
-5. Select the export that you created in the previous step and click **Run now**.
+5. Select the export that you created in the previous step and select **Run now**.
    
 <img src={run_now} alt="A screenshot" height="500" width="500" />
 
-6. In the Azure **Cost Management** portal, click the billing export that you created in the enable export billing step.
+6. In the Azure **Cost Management** portal, select the billing export that you created in the enable export billing step.
    
      ![](static/set-up-cost-visibility-for-azure-10.png)
 7. Enter the following details in Harness:
@@ -148,7 +148,7 @@ Billing export is used to get insights into your cloud infrastructure and Azure 
 	4. In **Report Name**, enter the report name.
    
      ![](static/set-up-cost-visibility-for-azure-11.png)
-8. Click **Continue**.
+8. Select **Continue**.
 
 ### Choose Requirements
 
@@ -223,11 +223,11 @@ $ echo $SCOPE
 
  (Optional) You need to run this command only if you have selected **Azure Optimization by AutoStopping** in the Choosing Requirements step.
  
-5. Click **Continue** in Harness.
+5. Select **Continue** in Harness.
 
 ### Test Connection
 
-The connection is validated and verified in this step. After successful validation, and verification, click **Finish**.
+The connection is validated and verified in this step. After successful validation, and verification, select **Finish**.
 
 Your connector is listed in the **Connectors**.
 

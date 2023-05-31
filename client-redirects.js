@@ -1760,7 +1760,7 @@ module.exports = {
 
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/cloud-integration/use-cloud-integration",
-      to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/use-cloud-integration",
+      to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/use-quick-create-k8s",
     },
 
     {
