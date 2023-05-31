@@ -197,7 +197,7 @@ If you need to access the resources managed by this AutoStopping rule using TCP 
 
 1. Choose an AutoStopping Proxy load balancer from the **Specify AutoStopping Proxy** dropdown list to set up access. Go to [Create an AutoStopping Proxy for Azure](../3-load-balancer/create-azure-autoproxy-lb.md) to create an AutoStopping load balancer.
 2. Toggle SSH or RDP to specify the listening ports. The port number is autopopulated.
-3. Specify the source port numbers and the target TCP ports your application is listening to. If you do not enter the source port, a random port will be generated in the backend. The auto generated port will be used as long as the target port does not change or until user explicitly modifies the source port. Ensure that these ports are open and accessible.
+3. Specify the source port numbers and the target TCP ports your application is listening to. If the source port is not specified, a random port will be generated at the backend. This auto-generated port will continue to be used as long as the target port remains unchanged, unless the user explicitly modifies the source port. Ensure that these ports are open and accessible.
 4. Click **Next**.
 
 ## Set up access for HTTP/HTTPS workload
