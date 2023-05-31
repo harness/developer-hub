@@ -30,7 +30,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Security Testing Orchestration
 
-* This release include new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
+* This release includes new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
 
   * [AWS ECR](/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference)
   * [AWS Security Hub](/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference)
