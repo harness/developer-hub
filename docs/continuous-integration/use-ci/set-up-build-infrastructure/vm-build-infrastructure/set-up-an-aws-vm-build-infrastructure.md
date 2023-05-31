@@ -39,18 +39,19 @@ If you have Terraform and Go installed on your EC2, you set up your build infras
 
 ## Prerequisites
 
-* AWS EC2 configuration:
-	+ For the Delegate VM, use an Ubuntu t2.large (or higher) AMI.
-	+ Build VMs can be Ubuntu, AWS Linux, or Windows Server 2019 (or higher).
-	+ Authentication requirements:
-		- You can use an access key and access secret ([AWS secret](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)) for configuration of the Runner.  
-		For Windows instances, you need to add the [AdministratorAccess policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to the IAM role associated with the access key and access secret [IAM](https://console.aws.amazon.com/iamv2/home#/users).
-		- You can also use IAM profiles instead of access and secret keys.  
-		You need to run the Delegate VM with an IAM role that has CRUD permissions on EC2. This role will provide the Runner with temporary security credentials to create VMs and manage the build pool.
-	+ Set up VPC firewall rules for the build instances on EC2.
-		- For information on creating a Security Group, see [Authorize inbound traffic for your Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html) in the AWS docs.
-		- You also need to allow ingress access to ports 22 and 9079. Open port 3389 as well if you want to run Windows builds and be able to RDP into your build VMs.
-		- Once completed, you'll have a Security Group ID, which is needed for the configuration of the Runner.
+The following are required for the AWS EC2 configuration:
+
+* For the Delegate VM, use an Ubuntu t2.large (or higher) AMI.
+* Build VMs can be Ubuntu, AWS Linux, or Windows Server 2019 (or higher).
+* Authentication requirements:
+   + You can use an access key and access secret ([AWS secret](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)) for configuration of the Runner.
+     - For Windows instances, you need to add the [AdministratorAccess policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to the IAM role associated with the access key and access secret [IAM](https://console.aws.amazon.com/iamv2/home#/users).
+   + You can use IAM profiles instead of access and secret keys. You need to run the Delegate VM with an IAM role that has CRUD permissions on EC2. This role provides the Runner with temporary security credentials to create VMs and manage the build pool.
+   + If you want ot use IAM roles with Windows VMs, go to the AWS documentation for [additional configuration for Windows IAM roles for tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html). This additional configuration is required because containers running on Windows can't directly access the IAM profile on the host.
+* Set up VPC firewall rules for the build instances on EC2.
+   + Create a Security Group. You need the Security Group ID to configure the Runner. For information on creating Security Groups, go to the AWS documentation on [authorizing inbound traffic for your Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html).
+   + Allow ingress access to ports 22 and 9079.
+   + If you want to run Windows builds and be able to RDP into your build VMs, you must also open port 3389.
 
 ## Step 1: Set up the Delegate VM
 
