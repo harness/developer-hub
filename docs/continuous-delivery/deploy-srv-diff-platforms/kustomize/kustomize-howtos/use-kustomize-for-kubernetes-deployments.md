@@ -500,7 +500,7 @@ You will see it be applied when Harness executes the kustomize build command in 
 
 ### Limitations
 
-Harness only supports the Kustomize `build` command. The Kustomize `build` command performs the following: `build a kustomization target from a directory or URL.` 
+Harness supports the Kustomize `build` command only. The Kustomize `build` command builds a Kustomization target from a directory or URL.
 
 
 ### Kubernetes delegate
