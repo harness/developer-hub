@@ -32,6 +32,10 @@ This release does not include early access features.
 
 The fixed issue below is available with version 794xx and does not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
 
+- The `DMS_MONGO_URI` was missing from the ConfigMap of cg-manager for Self-Managed Enterprise Edition Helm installations. (PL-38850)
+
+   This issue is fixed. The `DMS_MONGO_URI` is included in the ConfigMap.
+
 ### May 23, 2023, version 79306
 
 #### What's new
