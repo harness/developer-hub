@@ -46,6 +46,12 @@ You can reference existing secrets in the following types of Secret Managers:
 
 * Azure Key Vault
 * Hashicorp Vault
+* GCP Secret Manager
+
+
+Optionally you can test your secret refernce path validity using **Test** button
+
+![](./static/test-secret-reference-path.png)
 
 Enter **Description** for your secret.
 
