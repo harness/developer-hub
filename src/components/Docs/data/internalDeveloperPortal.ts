@@ -51,14 +51,14 @@ export const idpCards: CardItem[] = [];
 // Docs
 export const docsCards: CardSections = [
   {
-    name: "Learn more",
+    name: "Get started with IDP",
     description: "",
     list: [
       {
         title: "Overview",
         module: MODULES.platform,
         description:
-          "Read this to know more about the use-cases and features of Harness IDP.",
+          "Learn how Harness's developer-centric portal helps platform engineering and development teams improve productivity."
         link: "/docs/internal-developer-portal/intro",
       },
     ],
