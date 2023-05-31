@@ -46,6 +46,11 @@ Familiarize yourself with Harness CD pipelines, such as the one you create in th
 
 This 5 minutes video walks you through building an app from source code and pushing it to Docker Hub using Harness CIE, and then having an **On New Artifact Trigger** execute a CD pipeline to deploy the new app release automatically.
 
+<!-- Video:
+https://www.youtube.com/embed/nIPjsANiKRk-->
+<docvideo src="https://www.youtube.com/embed/nIPjsANiKRk" />
+
+
 ### Artifact polling
 
 Once you have created a trigger to listen for new artifacts, Harness will poll for new artifacts continuously.
