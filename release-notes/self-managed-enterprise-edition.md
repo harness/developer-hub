@@ -178,7 +178,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 - You can now migrate from KOTS-based installations to Helm-based installations. (SMP-769)
 - Backup and restore for Helm-based installations is now supported using Velero. (SMP-767)
  
-  For more information, go to [Back up and restore](/docs/self-managed-enterprise-edition/back-up-and-restore-helm).
+  For more information, go to [Back up and restore](/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm).
 - You can now monitor the infrastructure components of your Harness Self-Managed Enterprise Edition installation by bringing your own open-source monitoring system, such as Prometheus, and eventually integrate with observability tools, such as Grafana. (SMP-766)
 
   For more information, go to [Monitoring](/docs/self-managed-enterprise-edition/monitor-harness-on-prem). 
