@@ -68,7 +68,7 @@ import {
             module: MODULES.ccm,
             description:
               "Monitor your cloud costs by integrating CCM with third-party tools such as Datadog.",
-            link: "/docs/category/integrations-1",
+            link: "/docs/cloud-cost-management/datadog-integration",
           },
         ],
       },
