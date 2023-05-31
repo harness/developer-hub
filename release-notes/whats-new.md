@@ -36,9 +36,15 @@ The feature below is available with version 794xx and does not require a new del
 <details>
 <summary>2023 releases</summary>
 
-#### May 25, 2023, STO Core version 1.54.1
+#### May 25, 2023
 
-#### Security Testing Orchestration
+##### Cloud Cost Management, version 79600
+
+**Azure VM recommendations**
+
+  Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
+
+##### Security Testing Orchestration Core version 1.54.1
 
 * This release include new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
 
@@ -163,30 +169,6 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
   Previously, triggers used the round robin algorithm to select any available delegate within a project or account. Now, the delegate-based trigger polling selects the same delegate you used in the connectors for triggers. 
 
   The Harness Delegate version 79307 is required for this feature.
-
-##### Harness Delegate
-
-- A new [`listDelegates` API](https://app.harness.io/gateway/ng/api/delegate-setup/listDelegates/accountIdentifier=string&orgIdentifier=string&projectIdentifier=string') enables you to list and filter delegates in your project, organization, or account. (PL-37981)
-
-   You can use the body parameters to filter your delegate list:
-
-   ```json
-   {
-   "filterType":"Delegate", //This field is mandatory.
-   
-   "delegateInstanceFilter": "EXPIRED/AVAILABLE",
-
-   "status": "CONNECTED/DISCONNECTED",
-   
-   "delegateType": "KUBERNETES/DOCKER/HELM_DELEGATE/SHELL_SCRIPT/ECS",
-   
-   "delegateName": "<>",
-   
-   "description": "<>",
-   
-   "delegateTags": "[]"
-   }
-   ```
   
 May 17, 2023, STO Core version 1.53.0
 
