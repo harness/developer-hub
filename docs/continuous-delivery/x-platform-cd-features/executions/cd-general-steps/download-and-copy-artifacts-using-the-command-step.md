@@ -132,6 +132,28 @@ Here's an example of the results of a download command:
 
 **Deployment Templates:** to run the download command on the target hosts, add the command after the Fetch Instances step. Go to [looping strategy and target hosts](#looping-strategy-and-target-hosts) below for more information
 
+**Download Artifacts with Proxy**
+
+In order to support the download artifacts by using the proxy setting on remote hosts these two env variable needs to be set on the target machine (host).
+
+HARNESS_ENV_PROXY - referring to using proxy or not
+HTTP_PROXY - referring to proxy URL
+
+![image](https://github.com/harness/developer-hub/assets/52221549/6e3852c3-66af-4142-b8b7-6c0d6f394caf)
+
+On the Harness side, Artifact should be added to the Service and Download Artifact command unit in the Command step. 
+
+The Destination path should be set to the location where artifacts will be downloaded on the target machine. The destination path should exist on the target machine.
+
+![image](https://github.com/harness/developer-hub/assets/52221549/77763f80-88c3-417d-a780-f57dccecb759)
+
+While the pipeline is running we should see Using HTTP_PROXY environment variable console log message in the Download Artifact command unit that indicated the proxy is used on the target machine.
+
+![image](https://github.com/harness/developer-hub/assets/52221549/ec800ae2-8d9e-49bf-811a-1c64a44b8b38)
+
+
+
+
 ## Copy an artifact or config
 
 The deployment artifact for the stage is set in the service definition **Artifacts** section.
