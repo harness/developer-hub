@@ -1,7 +1,7 @@
 ---
 title: Use an external database
 description: Learn how to use an external database with Self-Managed Enterprise Edition installations. 
-# sidebar_position: 10
+# sidebar_position: 37
 ---
 
 To use MongoDB with Harness Self-Managed Enterprise Edition, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This topic details the software, hardware, and network requirements to use an external database.
