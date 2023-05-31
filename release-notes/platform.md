@@ -59,7 +59,7 @@ This release does not include any early access feature.
   
   A code enhancement has fixed this issue.
 
-- The comparison of email addresses during login is case-sensitive. (PL-32198)
+- The comparison of email addresses during sign in is case-sensitive. (PL-32198)
 
   A code enhancement has fixed this issue.
 
