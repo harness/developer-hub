@@ -103,4 +103,4 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 |GitHub Actions | ✅ Supported - GitHub Actions plugin step | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin |
 | Bitrise Integrations | ✅ Supported - Bitrise plugin step | ❌ Not supported | ❌ Not supported | ❌ Not supported |
 | Plugin output variables | ✅ Supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
-| Build details - Artifacts tab | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
+| Build details - Artifacts tab | ✅ Supported | <!-- unknown --> | ✅ Supported | ✅ Supported |

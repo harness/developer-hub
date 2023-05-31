@@ -1,15 +1,14 @@
 ---
 title: Supported features and integrations
 description: Self-Managed Enterprise Edition supported features and integrations. 
-# sidebar_position: 10
+sidebar_position: 3
 ---
 
-This topic lists the supported features and integrations you can use to install and update Harness Self-Managed Enterprise Edition.
+This topic lists the supported features and integrations you can use to install and update Harness Self-Managed Enterprise Edition. For supported platforms, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies#harness-self-managed-enterprise-edition).
 
 ## Deployment infrastructure
 
-### Compute infrastructure 
-* Kubernetes supported version: 1.24
+### Infrastructure 
 * Required module-specific infrastructure:
 
    | **Modules** | **Pods** | **CPU** | **Memory (GB)** | **Storage (GB)** |
@@ -32,7 +31,7 @@ The following permissions are required:
 * Add/edit secrets
 
 ### License requirements
-* Reach out to Harness support (support@harness.io) to get the license information.
+* Contact [Harness Support](mailto:support@harness.io) for license information.
 
 ## Supported functionality
 * [Self-signed certificates](https://developer.harness.io/docs/self-managed-enterprise-edition/self-managed-helm-based-install/how-to-use-self-signed-certificates-with-self-managed/)

@@ -1,5 +1,5 @@
 ---
-title: Optimize Kubernetes costs with node pool recommendations
+title: Node pool recommendations
 description: Harness Cloud Cost Management (CCM) provides recommendations for your Kubernetes clusters. This topic describes how CCM computes node pool recommendations and how you can use them to potentially reduce monthly costs.
 # sidebar_position: 2
 helpdocs_topic_id: x75xp0xime
@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# Optimize Kubernetes costs with node pool recommendations
 One of the most impactful ways to reduce spend on Kubernetes infrastructure is to make sure your clusters are optimally sized for the workloads and node pools they run. Harness CCM recommends optimal compute resources for your workloads and node pools to help you reduce costs and improve performance.
 
 Recommendations are produced by analyzing your historical utilization metrics. CCM recommends you choose the optimal resource configuration based on your utilization data and requests metrics for pods.

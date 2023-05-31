@@ -24,7 +24,10 @@ The following video explains how to create a Dashboard:
 Perform the following steps to schedule a delivery:
 
 1. Click the three-dot menu in the upper right of the dashboard and select **Schedule delivery**.![](./static/share-dashboards-00.png)
-2. In Schedule, the top of the schedule window shows the name automatically given to the delivery. The name defaults to the dashboard’s name. To edit the delivery’s name, click the name (indicated by the dotted underscore), and make your edits.![](./static/share-dashboards-01.png)
+2. In Schedule, the top of the schedule window shows the name automatically given to the delivery. The name defaults to the dashboard’s name. To edit the delivery’s name, click the name (indicated by the dotted underscore), and make your edits.
+
+   ![](./static/share-dashboards-01.png)
+   
 3. In **Schedule**, the following options are available:
 	* Settings
 	* Filters
@@ -70,7 +73,19 @@ The **Time**, **Start**, and **End** fields use a 24-hour clock. If the time
 
 #### Destination
 
-In **Email addresses**, enter the email address(es) of the recipients and press **Enter**.
+Select one of the following to configure the destination: 
+
+* **Email**: Enter the email address(es) of the recipients in **Email addresses**.
+
+* **Webhook**: Enter the webhook URL in **Webhook URL**.
+
+* **Amazon S3**: Enter **Bucket**, **Optional Path**, **Access Key**, **Secret Key**, and **Region**.
+
+* **SFTP**: Enter the SFTP host path in **Address**, and then enter **Username**, **Password**, and **Preferred key exchange algorithm**.
+
+* **Google Drive**: Select **Signin with Google** and enter the credentials to verify.
+
+* **Slack**: Select **Login** and enter the credentials.
 
 #### Format
 
@@ -78,7 +93,8 @@ The **Format** field contains a drop-down menu of available formats:
 
 * **CSV zip file**: The unformatted data from the dashboard delivered as a collection of comma-separated values (CSV) files in a zipped directory. For deliveries to email, the ZIP file is delivered as an email attachment.
 * **PDF**: An image of the dashboard as a single PDF file. The default layout displays tiles as they are arranged in the dashboard, but other layout and sizing options are available under **Advanced options**. For deliveries to email, the file is delivered as an email attachment.
-* **PNG visualization**: An image of the dashboard as a single PNG file. The default layout displays tiles as they are arranged in the dashboard, but other layout options are available under **Advanced options**. For deliveries to email, the image appears inline within the body of the email.  
+* **PNG visualization**: An image of the dashboard as a single PNG file. The default layout displays tiles as they are arranged in the dashboard, but other layout options are available under **Advanced options**. For deliveries to email, the image appears inline within the body of the email. 
+
 ![](./static/share-dashboards-02.png)
 
 ### Filters

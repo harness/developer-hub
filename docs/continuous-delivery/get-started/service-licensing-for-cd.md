@@ -12,7 +12,7 @@ Harness uses a Service-based license model to charge Harness customers using its
 
 The CD License calculation uses the Active Services count and the number of Service Instances each active Service's deployment creates.
 
-# Active Services
+## Active services
 
 Harness gets all Services that are part of any Pipeline execution (deployment) over the past **30 Days**. We call these a list of **Active Services**.
 
@@ -30,26 +30,26 @@ Harness still counts service3 and service4 as **Active Services** since they wer
 
 Also, the number of instances deployed does not matter here. A Service is considered Active even if the corresponding deployment(s) does not create any instance.
 
-# Active Services vs Deployments
+## Active services vs deployments
 
-Active Service instances represents the active instances deployed using Harness strategies, whereas active Deployments contains all Service and Environment combinations.
+Active service instances represents the active instances deployed using Harness strategies, whereas active deployments contains all service and environment combinations.
 
 ![](./static/service-licensing-for-cd-01.png)
 
-# How Service-based Licensing is Calculated
+## How service-based licensing is calculated
 
-For every Active Service found, Harness finds the **95th Percentile** of the number of its Service Instances across a period of 30 days.
+For every active service found, Harness finds the **95th Percentile** of the number of its service instances across a period of 30 days.
 
-The active CD License Usage is calculated as follows:
+The active CD license usage is calculated as follows:
 
-* Every Active Service consumes a **minimum of ONE license**.
-* For every additional 20 Service Instances (95th Percentile of Service Instances across a period of 30 days), Harness adds another license for the corresponding Service.
+* Every active service consumes a **minimum of ONE license**.
+* For every additional 20 service instances (95th percentile of service instances across a period of 30 days), Harness adds another license for the corresponding service.
 
-This Service Instances count might or might not reflect the active instances as at the present time. Instead, it might reflect the 95th percentile count over last 30 days.### Example
+This service instances count might or might not reflect the active instances as at the present time. Instead, it might reflect the 95th percentile count over last 30 days.
 
-Here's an example using 4 different Services.
+### Example
 
-
+Here's an example using 4 different services.
 
 | **Active Service** | **95th Percentile Active Instances** | **Licenses Consumed** |
 | --- | --- | --- |

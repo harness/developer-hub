@@ -1,7 +1,7 @@
 ---
 title: Sumo Logic
 description: Verify deployments with Sumo Logic. 
-sidebar_position: 11
+sidebar_position: 12
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---

@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-04-24T10:00
+date: 2023-05-31T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -16,7 +16,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - April 19, 2023, version 79104
+## Latest - May 29, 2023, version 79600
 
 ```mdx-code-block
 <Tabs>
@@ -25,9 +25,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### What's new
 
-* Recommendations enhancement (CCM-11769)
+**Azure VM recommendations**
 
-  A new filter has been added to recommendations, which allows the selection of the age of the recommendations. This filter allows you to specify how many days old recommendations should be included in the results. 
+  Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
+
 
 
 ```mdx-code-block
@@ -46,6 +47,121 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 
 ### Fixed issues
+  
+* The recommendations for workloads with containers that do not have properly set limits and requests displayed a value of -1 or null. (CCM-11765).
+
+  This issue has been resolved.
+
+  
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 24, 2023, version 79505
+
+##### What's new
+This release does not include any new features.
+
+##### Early access
+This release does not include any early access features.
+
+##### Fixed issues
+
+* The users encountered an issue where they were unable to toggle the **Hide progress** page and **Dry run** options. Each time the toggle button was clicked, an error was thrown, preventing them from enabling or disabling these options successfully. (CCM-12438)
+
+  The UI was relying on a deprecated API to update the rule, causing issues with toggling the values. This issue has been resolved by replacing the older API with a new v2 API. This update restored the functionality, allowing users to effortlessly toggle the values.
+
+* The ALB that was created in AWS did not appear on the Harness AutoStopping rules creation page. (CCM-12517)
+
+  This issue has been resolved.
+
+* The AutoStopping fixed schedule did not execute the rule as configured in the schedule settings. (CCM-12396)
+
+  The issue was identified as missing triggers from Dkron, an external service, corresponding to the created schedule. To address this, a backup job was created. This backup job is designed to trigger the required operation in case the triggers from Dkron are missed. By implementing this solution, the system ensures that the necessary operation will still be executed even if the triggers from Dkron are not received.
+
+* The users were not able to create an Azure Application Gateway successfully as the Azure function package was corrupt. (CCM-12550)
+
+  Rolling back to the previous function package fixed this issue.
+
+#### May 19, 2023, version 79400
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+This release does not include any early access features.
+
+
+##### Fixed issues
+
+* Budget group missing from the Budget page. (CCM-12334)
+
+  Previously, updating a budget group rendered its history irrelevant due to its dependence on child entities. However, this issue has been resolved by introducing support for modifying the budget group history during updates. 
+
+* An error occurred while attempting to save an AutoStopping rule with multiple proxy configurations and a custom domain in the GCP proxy. (CCM-12048)
+
+  Saving the AutoStopping rule did not append custom domain providers for non-AWS cloud providers. This resulted in a validation error at the back-end. This issue has been resolved. The required field `custom_domain_provider` is now being set for every cloud provider.
+
+
+
+#### May 05, 2023, version 79300
+
+##### What's new
+
+This release does not include any new features.
+
+
+##### Early access
+**Asset Governance**
+
+The Asset Governance feature now includes support for access control through Role-Based Access Control (RBAC). This enhancement allows more granular control and management of permissions. For more information, go to [Asset Governance RBAC](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov). 
+
+This feature is behind the feature flag, `CCM_ENABLE_CLOUD_ASSET_GOVERNANCE_UI`.
+##### Fixed issues
+
+* Previously, the budget amount in the monthly fields did not default to zero when selecting the yearly budget period. (CCM-12289)
+
+  This issue is resolved. Now, when choosing the budget type as **Specified amount**, the budget amount for individual months correctly defaults to zero.
+
+  <docimage path={require('./static/ccm-set-budget-amount.png')} width="60%" height="60%" title="Click to view full size image" />
+
+* Users couldn't dismiss the "How to get started with creating rules?" modal on the **Cost Category** page. (CCM-12278)
+
+  The issue is resolved. Now, you can collapse the modal if you don't want to see it on the screen.
+
+* Updated the default **Budget Type** as **Specified amount**. You could select **Last period spend** if you like to set up budget based on that budget type. (CCM-12254)
+  
+* A stopped AutoStopping rule displayed **Scale down** on the rule **Details** page. A stopped rule must display **Scale up** and a running rule must display **Scale down**. (CCM-11920)
+
+  This issue is resolved now.
+
+    <docimage path={require('./static/ccm-rule-scaledown.png')} width="60%" height="60%" title="Click to view full size image" />
+
+* The escape character `&amp` rendered incorrectly in the budget dashboard. (CCM-11683)
+
+ The issue is resolved now.
+
+
+#### April 19, 2023, version 79104
+
+##### What's new
+
+* Recommendations enhancement (CCM-11769)
+
+  A new filter has been added to recommendations, which allows the selection of the age of the recommendations. This filter allows you to specify how many days old recommendations should be included in the results. 
+
+##### Early access
+
+  This release does not include any early access features.
+
+##### Fixed issues
 
 * The **Recommendations** page displayed incorrect savings value. (CCM-12082)
 
@@ -59,19 +175,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * While configuring budget groups, you cannot add a negative integer in the **Cascading** > **Proportionally** field. The total sum of the proportions should always be 100. (CCM-11852)
 
     <docimage path={require('./static/budget-group-release-note.png')} width="60%" height="60%" title="Click to view full size image" />
-
-
-  
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### April 05, 2023, version 79001
 

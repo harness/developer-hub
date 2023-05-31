@@ -1,5 +1,5 @@
 ---
-title: Create AutoStopping Rules with Terraform
+title: Terraform
 description: Describes how to create an AutoStopping Rules for Terraform.
 # sidebar_position: 6
 helpdocs_topic_id: 90zwlg096d
@@ -7,7 +7,7 @@ helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+# Create AutoStopping Rules with Terraform
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions.
 
 This topic describes how to create AutoStopping Rules with Terraform using scripts.
@@ -24,9 +24,9 @@ Perform the following steps to create AutoStopping Rules for Terraform.
 
 To use Terraform you first need to install it. To install Terraform, download the appropriate package for your Operating System:
 
-* Darwin: <https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/3.0.1/tf_3.0.1_darwin_amd64.zip>
-* Linux: <https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/3.0.1/tf_3.0.1_linux_amd64.zip>
-* Windows: <https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/3.0.1/tf_3.0.1_windows_amd64.zip>
+* Darwin: <https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/3.1.1/tf_3.1.1_darwin_amd64.zip>
+* Linux: <https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/3.1.1/tf_3.1.1_linux_amd64.zip>
+* Windows: <https://lightwing-downloads.s3.ap-southeast-1.amazonaws.com/terraform-provider/3.1.1/tf_3.1.1_windows_amd64.zip>
 
 For Windows, you need to manually extract the contents of the Zip file and place it in the following location:
 

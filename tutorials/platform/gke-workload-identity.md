@@ -278,4 +278,4 @@ task destroy
 
 By using Workload Identity Delegate we have simplified and secured our CI pipelines, which can now use any Google API services by configuring the GSA with the correct roles and permissions. The CI SaaS platform no longer needs to store or update the Google API credentials.
 
-Having deployed Workload Identity Delegate, you can also do [keyless signing](https://docs.sigstore.dev/cosign/sign/#keyless-signing) of your container images using Google Application Credentials using [cosign](https://sigstore.dev).
+Having deployed Workload Identity Delegate, you can also do [keyless signing](https://docs.sigstore.dev/cosign/overview/#keyless-signing-of-a-container) of your container images using Google Application Credentials using [cosign](https://sigstore.dev).

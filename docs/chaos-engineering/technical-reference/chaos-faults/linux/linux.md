@@ -18,13 +18,14 @@ Linux faults disrupt the resources running on a Linux machine. This deteriorates
 ## Fault compatibility matrix
 The faults have been tested for compatibility in the following Linux OS distributions:
 
-|                                                 | stress faults (CPU, memory, disk IO) | network faults (loss, latency, corruption, duplication) | DNS faults (error, spoof) | process faults (process kill, service restart) | time chaos |
-|-------------------------------------------------|--------------------------------------|---------------------------------------------------------|---------------------------|------------------------------------------------|------------|
-| Ubuntu 16+                                      | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          |
-| Debian 10+                                      | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          |
-| CentOS 7+                                       | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          |
-| RHEL 7+                                         | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          |
-| openSUSE LEAP 15.4+ / SUSE Linux Enterprise 15+ | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          |
+|                                                 | Stress faults (cpu, memory, disk IO) | Network faults (loss, latency, corruption, duplication) | DNS faults (error, spoof) | Process faults (process kill, service restart) | Time chaos | Disk fill |
+|-------------------------------------------------|--------------------------------------|---------------------------------------------------------|---------------------------|------------------------------------------------|------------|-----------|
+| Ubuntu 16+                                      | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          | ✓         |
+| Debian 10+                                      | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          | ✓         |
+| CentOS 7+                                       | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          | ✓         |
+| RHEL 7+                                         | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          | ✓         |
+| Fedora 30+                                      | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          | ✓         |
+| openSUSE LEAP 15.4+ / SUSE Linux Enterprise 15+ | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          | ✓         |
 
 <!-- Experiment List and Search Bar (every experiment added below, need to be added in this file also) -->
 

@@ -10,30 +10,41 @@ helpdocs_is_published: true
 
 Use Background steps to [manage dependent services](./dependency-mgmt-strategies.md) that need to run for the entire lifetime of a Build stage. For example, you can set up your pipeline to run multiple background services that implement a local, multi-service app.
 
-![A Build stage with multiple services running in Background steps.](./static/background-step-settings-07.png)
+<figure>
 
-## Important notes
+![](./static/background-step-settings-07.png)
+
+<figcaption>Figure 1: A Build stage with multiple services running in Background steps.</figcaption>
+</figure>
+
+A Background step starts a service and then proceeds. For any later step that relies on the service, it is good practice to verify that the service is running before sending requests.
+
+:::info
 
 * Background steps do not support failure strategies or output variables.
 * If the pipeline runs on a VM build infrastructure, you can run the background service directly on the VM rather than in a container. To do this, leave the **Container Registry** and **Image** fields blank.
-* A Background step starts a service and then proceeds. For any later step that relies on the service, it is good practice to verify that the service is running before sending requests. You can use the Background step **Id** to call services started by Background steps in later steps, such as `curl` commands in Run steps.
+* Depending on the stage's build infrastructure, some settings may be unavailable or optional.
+
+:::
+
+## Name and Id
+
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the step is saved; once saved, the **Id** is locked.
+
+:::tip
+
+You can use the Background step **Id** to call services started by Background steps in later steps, such as commands in Run steps. For example, a cURL command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
 
 <figure>
 
 ![](./static/background-step-settings-call-id-in-other-step.png)
 
-<figcaption>Figure 1: The Background step ID, <code>pythonscript</code>, is used in a curl command in a Run step.</figcaption>
+<figcaption>Figure 2: The Background step ID, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
 </figure>
 
-:::info
-
-Depending on the stage's build infrastructure, some settings may be unavailable.
+If the Background step is inside a step group, you must include step group ID, such as `curl [stepGroupId]_[backgroundStepId]:5000`, even if both steps are in the same step group.
 
 :::
-
-## Name
-
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Container Registry and Image
 
@@ -49,7 +60,7 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 ![](./static/background-step-settings-08.png)
 
-<figcaption>Figure 2: An example configuration for the <b>Container Registry</b> and <b>Image</b> fields. Note that this figure shows a <b>Run</b> step, but the fields are populated the same for <b>Background</b> steps.</figcaption>
+<figcaption>Figure 3: An example configuration for the <b>Container Registry</b> and <b>Image</b> fields. Note that this figure shows a <b>Run</b> step, but the fields are populated the same for <b>Background</b> steps.</figcaption>
 </figure>
 
 :::info
@@ -81,11 +92,9 @@ import TabItem2 from '@theme/TabItem';
 ```
 <figure>
 
-<!-- ![](./static/dind-background-step-entry-point.png) -->
+![](./static/dind-background-step-entry-point.png)
 
-<docimage path={require('./static/dind-background-step-entry-point.png')} />
-
-<figcaption>Figure 3: <b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
+<figcaption>Figure 4: <b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
 </figure>
 
 ```mdx-code-block
@@ -241,9 +250,9 @@ Select this option to run the container with escalated privileges. This is the e
 
 ### Report Paths
 
-The path to the file(s) that store results in JUnit XML format. You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
+The path to the file(s) that store [results in JUnit XML format](../set-up-test-intelligence/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
-This setting is required for commands run in the Background step to be able to publish test results.
+This setting is required for commands run in the Background step to be able to [publish test results](../set-up-test-intelligence/viewing-tests.md).
 
 ### Environment Variables
 
@@ -257,7 +266,7 @@ Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/pla
 
 ![](./static/background-step-settings-09.png)
 
-<figcaption>Figure 4: Using an expression for an environment variable's value.</figcaption>
+<figcaption>Figure 5: Using an expression for an environment variable's value.</figcaption>
 </figure>
 
 ### Image Pull Policy
@@ -286,7 +295,7 @@ The host port and container port binding are similar to [port mapping in Docker]
 
 :::note
 
-If your build stage uses Harness Cloud build infrastructure and you are running a Docker image in a Background step, you must specify **Port Bindings** if you want to reference that Background step in a later step in the pipeline (such as in a `curl` command in a Run step).
+If your build stage uses Harness Cloud build infrastructure and you are running a Docker image in a Background step, you must specify **Port Bindings** if you want to reference that Background step in a later step in the pipeline (such as in a cURL command in a Run step).
 
 :::
 

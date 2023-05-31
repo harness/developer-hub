@@ -86,6 +86,18 @@ Create output variables to be used by other steps in the stage. The **Value** se
 
 You can also use ​JSON and XML functors in the values for the output variable. For example, `<+json.select("data.attributes.version_pins.mvn-service://new-construction-api", httpResponseBody)>`.
 
+You can use pipeline variables along with `httpResponseBody` and `httpResponseCode`.
+
+Here are some examples:
+
+`<+json.object(httpResponseBody).title>`
+
+`<+json.select(<+pipeline.variables.title>, httpResponseBody)>`
+
+To concatenate strings within the JSON functor:
+
+`<+json.select(<+ <+pipeline.variables.user> + <+pipeline.variables.id>>,httpResponseBody)>` or `<+json.select("user".concat(<+pipeline.variables.id>),httpResponseBody)>`
+
 For more information, go to [JSON and XML functors](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/json-and-xml-functors).
 
 ## Step execution inputs and outputs
@@ -161,7 +173,7 @@ During a capability check, the non-secret headers are used as is but the secret 
 
 This results in a `401 Unauthorized` response due to an incorrect api key. However, the capability check will be successful and the task will be assigned to the Harness delegate. 
 
-:::note
+:::info
 Using `<<<and>>>` in HTTP requests might result in bad requests on the server side. In such cases, follow these workarounds.
 
 * Use FF `CDS_NOT_USE_HEADERS_FOR_HTTP_CAPABILTY` to not use headers for capability checks.
@@ -170,6 +182,35 @@ Using `<<<and>>>` in HTTP requests might result in bad requests on the server si
 :::
 
 Capability checks are basic accessibility checks and do not follow multiple redirects. Hence, Harness returns from the first `302 Found` response during capability checks. 
+
+## HTTP polling
+
+The HTTP step supports polling. When you create the HTTP step for polling, the client requests the resource at regular intervals. 
+
+To configure polling in the HTTP step: 
+
+1. In the step, go to **Step Parameters** > **Optional Configuration**, and enter the following details: 
+    * **Assertion (optional)**: Enter the expression to validate the incoming response. You can use the following aliases to refer to the HTTP responses, URL, and method:
+        * `<+httpsResponseCode>`
+        * `<+httpUrl>`
+        * `<+httpMethod>`
+        * `<+httpResponseBody>`
+    * **Headers (optional)**: Enter the key and value for the headers in the message. 
+      
+      For example, in **Key**, enter the token, in **Value**, enter secret references such as `<+secrets.getValue("aws-playground_AWS_secret_key")>`.
+    * **Output (optional)**: Create the output steps to be used by other steps in the stage. 
+      
+      The **Value** setting can contain any HTTP step input, output, or response information. You can also use JSON and XML functors in the value.
+2. In **Advanced** > **Failure Strategy**, do the following: 
+    * In **On failure of type**, select **All Errors**.
+    * In **Perform Action**, select **Retry**.
+    * In **Retry count**, enter the number of times you want the HTTP step to retry reaching the resource.
+    * In **Retry intervals**, specify the gap between two successive connection retries.
+    * In **Post retry failure action**, select **Ignore Failure**.
+    
+    ![](./static/http-polling.png)
+
+The HTTP step retries polling and ignores all errors until the condition mentioned in the assertion section is met.
 
 
 ## See also

@@ -45,6 +45,9 @@ Select **Connection Type** as **HTTP** or **SSH**.
 
 Enter your **GitHub Account URL**.
 
+If using **Github Enterprise**, the URL must include the organization name. 
+For example `https://mygithub.com/harness/repo-name.git`. Here `harness` is the organization name. 
+
 In **Test Repository**, enter your repository name to test the connection.
 
 ![](../static/add-a-git-hub-connector-35.png)
@@ -64,6 +67,7 @@ To use a personal access token with a GitHub organization that uses SAML single 
 * GitHub doesn't provide a way of scoping a PAT for read-only access to repos. You must select the following permissions:
 
 ![](../static/add-a-git-hub-connector-37.png)
+
 If you selected **SSH** as the connection protocol, you must add the **SSH Key** to use with the connection as a [Harness Encrypted Text secret](../../Secrets/2-add-use-text-secrets.md). For detailed steps to create an SSH Key, see [Add new SSH Key](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account) from GitHub.
 
 Make sure the **Username** for your **SSH Credential** is `git` for the Test Connection to be successful.  

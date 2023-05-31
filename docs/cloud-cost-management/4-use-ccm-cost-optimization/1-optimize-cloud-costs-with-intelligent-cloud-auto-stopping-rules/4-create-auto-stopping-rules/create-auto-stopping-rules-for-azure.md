@@ -1,5 +1,5 @@
 ---
-title: Create AutoStopping Rules for Azure
+title: Azure
 description: AutoStopping Rules make sure that your non-production resources run only when used, and never when idle.
 # sidebar_position: 2
 helpdocs_topic_id: r5x5pvuqfn
@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# Create AutoStopping Rules for Azure
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. It also allows you to run your workloads on fully orchestrated spot instances without any worry of spot interruptions.
 
 ## Before you begin
@@ -194,12 +195,9 @@ Setting up access for TCP workload or SSH/RDP allows AutoStopping to detect acti
 If you need to access the resources managed by this AutoStopping rule using TCP or SSH/RDP HTTPS URL, you need to perform the following steps: 
 
 
-  ![](./static/aws-set-up-tcp.png)
-
-
 1. Choose an AutoStopping Proxy load balancer from the **Specify AutoStopping Proxy** dropdown list to set up access. Go to [Create an AutoStopping Proxy for Azure](../3-load-balancer/create-azure-autoproxy-lb.md) to create an AutoStopping load balancer.
 2. Toggle SSH or RDP to specify the listening ports. The port number is autopopulated.
-3. Specify all the TCP ports your application is listening. Ensure that these ports are open and accessible.
+3. Specify the source port numbers and the target TCP ports your application is listening to. If the source port is not specified, a random port will be generated at the backend. This auto-generated port will continue to be used as long as the target port remains unchanged or unless the user explicitly modifies the source port. Ensure that these ports are open and accessible.
 4. Click **Next**.
 
 ## Set up access for HTTP/HTTPS workload

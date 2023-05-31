@@ -14,7 +14,7 @@ By default, the Harness Delegate uses HTTP and HTTPS in its Proxy Scheme setting
 
 ### Kubernetes Proxy Settings
 
-The proxy settings are in the **harness-delegate.yaml** file:
+The proxy settings are in the `harness-delegate.yaml` file:
 
 ```
 ...  
@@ -48,7 +48,7 @@ If an in-cluster Kubernetes Delegate has a proxy configured, then `NO_PROXY` mus
 
 ### Subnet Masks not Supported
 
-You cannot use Delegate proxy settings to specify the Cluster Service Network CIDR notation and make the Delegate bypass the proxy to talk to the K8s API.
+You cannot use Delegate proxy settings to specify the Cluster Service Network CIDR notation and make the Delegate bypass the proxy to talk to the Kubernetes API.
 
 Harness does not allow any methods of representing a subnet mask.
 
@@ -59,5 +59,5 @@ kubectl -n default get service kubernetes -o json | jq -r '.spec.clusterIP'
 ```
 
 :::info
-Harness supports mTLS authentication on a case-by-case basis. Contact Harness Support to enable it.
+Harness supports mTLS authentication on a case-by-case basis. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
