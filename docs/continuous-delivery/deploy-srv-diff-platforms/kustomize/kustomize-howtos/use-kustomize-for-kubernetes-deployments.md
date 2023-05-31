@@ -487,8 +487,6 @@ Command flags let users change the behavior of how Harness performs a Kustomize 
 
 You can configure the command flag in the Kustomize **[Manifest Details](#add-manifests-and-kustomization)** page.
 
-![image](https://github.com/harness/developer-hub/assets/52221549/1a95d4a4-f34c-4034-a02a-11e3cb1c1f76)
-
 Here's a sample stack trace command:
 
 ```TEXT
@@ -503,7 +501,7 @@ Harness also supports [Helm charts with Kustomize](https://github.com/kubernetes
 For example:
 
 ```Text
-## Enable the Helm Template and Pull capabilities and render your Kustomization with Helm. 
+## Enable the Helm Template and Pull capabilities and render your kustomization with Helm. 
 kustomize build --enable-helm --helm-command `<YOUR_HELM_COMMAND>`
 ```
 
@@ -513,7 +511,7 @@ When Harness executes the Kustomize `build` command, you can see these commands 
 
 ### Limitations
 
-Harness supports the Kustomize `build` command only. The Kustomize `build` command builds a Kustomization target from a directory or URL.
+Harness supports the Kustomize `build` command only. The Kustomize `build` command builds a kustomization target from a directory or URL.
 
 ## Next steps
 
