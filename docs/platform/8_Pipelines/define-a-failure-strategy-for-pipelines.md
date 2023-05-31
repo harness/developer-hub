@@ -23,6 +23,8 @@ Currently, the Rollback Pipeline failure strategy applies to the following deplo
 * Native Helm
 * Amazon Elastic Container Service (ECS)
 
+## Rollback pipeline steps or stages
+
 1. In a pipeline's step or stage, select **Advanced**.
 2. In **Failure Strategy** > **On failure of type**, select a failure type or select **All Errors**. 
    Go to [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md) for information about error types.
