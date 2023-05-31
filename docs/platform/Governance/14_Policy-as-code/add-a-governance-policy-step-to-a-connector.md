@@ -25,14 +25,17 @@ In Harness, go to **Account Settings**.
 Click **Policies**.
 
 ![](./static/add-a-governance-policy-step-to-a-connector-14.png)
+
 Click **Policies**, and then click **New Policy**.
 
 ![](./static/add-a-governance-policy-step-to-a-connector-15.png)
+
 The **New Policy** settings appear.
 
 Enter a **Name** for your policy and click **Apply**.
 
 ![](./static/add-a-governance-policy-step-to-a-connector-16.png)
+
 Next you need to add your policy. Enter your own Rego policy. For example:
 
 

@@ -32,6 +32,7 @@ Here's a quick visual summary:
 In Harness, navigate to your **Profile**.
 
 ![](./static/harness-rest-api-reference-10.png)
+
 In **My API Keys**, Click **API Key**. The API Key settings appear.
 
 ![](./static/harness-rest-api-reference-11.png)

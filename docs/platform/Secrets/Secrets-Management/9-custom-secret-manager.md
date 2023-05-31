@@ -70,8 +70,11 @@ This topic shows you how to add a Custome Secret Manager in the Project scope.
 
 1. In your Harness Account, go to your Project.
 2. In Project Setup, click **Connectors** and then click **New Connector**.
-3. In **Secret Managers**, click **Custom Secret Manager**.![](../../Secrets/static/custom-secret-manager-34.png)
-The Custom Secret Manager settings appear.
+3. In **Secret Managers**, click **Custom Secret Manager**.
+
+   ![](../../Secrets/static/custom-secret-manager-34.png)
+   
+   The Custom Secret Manager settings appear.
 4. Enter a **Name** for your Custom Secret Manager. Click **Continue**.
 5. Click **Select Template**. The Template Library appears with all the [Secret Manager Templates](../../13_Templates/create-a-secret-manager-template.md) listed.
 6. Select the desired scope and select a Secret Manager Template from the Template Library.

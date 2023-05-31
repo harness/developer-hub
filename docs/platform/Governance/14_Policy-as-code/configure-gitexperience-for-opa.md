@@ -3,7 +3,7 @@ title: Configure Git Experience for OPA
 description: Configure Git Experiemce for your policies.
 sidebar_position: 9
 ---
-:::note
+:::important
 Currently, this feature is behind the feature flag `OPA_GIT_GOVERNANCE`. Contact Harness Support to enable the feature.
 :::
 
