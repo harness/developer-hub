@@ -46,7 +46,7 @@ The feature below is available with version 794xx and does not require a new del
 
 ##### Security Testing Orchestration Core version 1.54.1
 
-* This release include new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
+* This release includes new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
 
   * [AWS ECR](/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference)
   * [AWS Security Hub](/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference)
