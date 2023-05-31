@@ -477,8 +477,10 @@ You can deploy [Helm Charts with Kustomize](https://github.com/kubernetes-sigs/k
 
 
 ```Text
+## Enable the Helm Template and Pull capabilities and render your kustomization with Helm. 
 kustomize build --enable-helm --helm-command `<YOUR_HELM_COMMAND>`
 ```
+
 
 
 ### Limitation
