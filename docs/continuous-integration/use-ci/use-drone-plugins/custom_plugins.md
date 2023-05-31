@@ -4,7 +4,16 @@ description: You can write your own plugins.
 sidebar_position: 20
 ---
 
-You can write your own [plugins](./explore-ci-plugins.md) and run them in a **Plugin** step in your Harness CI pipelines. You can write plugins for anything. If it can be scripted, it can be a plugin.
+Plugins perform predefined tasks. They are essentially templated scripts that can be written in any programming language. While you can [run scripts in CI pipelines](/docs/category/run-scripts), if you reuse a script, it is easier to maintain a single plugin rather than modify multiple instances of a script.
+
+You can write your own plugins and run them in a **Plugin** step in your Harness CI pipelines. There are also many [preexisting plugins](./explore-ci-plugins.md) you can use.
+
+You can write plugins for anything. If it can be scripted, it can be a plugin. For example, you could write plugins that:
+
+* Scrape commit information from a Git repo.
+* Extract Jira issue numbers from Git commit messages.
+* Print an extended build history.
+* Create a file, write to it, and store it remotely.
 
 ## Create your plugin
 
@@ -56,10 +65,6 @@ To create a plugin, you need to prepare a script, create a Docker image to run t
    docker push my-docker-repo/git-clone-plugin
    ```
 
-### Share plugins
-
-If your plugin image is public, you can [share your plugin with others](https://docs.drone.io/plugins/overview/#plugin-distribution).
-
 ### Test plugins locally
 
 You can test your plugin in a local environment by running it as a Docker container. For example, the following Docker command runs the `clone.sh` plugin locally by supplying the required inputs (`PLUGIN_PATH`, `PLUGIN_REPO_URL`, and `PLUGIN_BRANCH`) and specifying the plugin's Docker repo and image (`my-docker-repo/git-clone-plugin`).
@@ -71,6 +76,14 @@ docker run --rm \
  -e PLUGIN_BRANCH=main \
  my-docker-repo/git-clone-plugin
 ```
+
+### Distribute plugins
+
+Plugins are distributed as Docker images.
+
+If your plugin image is private, others in your organization can use your plugin in their Harness CI pipelines by using a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) configured for the private registry where your plugin image is stored.
+
+If your plugin image is public, you can share it with anyone. You can submit a pull request to the [drone-plugin-index repository](https://github.com/drone/drone-plugin-index) if you'd like your plugin to be considered for the [Drone Plugins Marketplace](https://plugins.drone.io/).
 
 ## Run your plugin in Harness
 
