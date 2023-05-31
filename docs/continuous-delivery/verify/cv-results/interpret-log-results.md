@@ -6,15 +6,15 @@ description: Learn how to interpret log verification results.
 
 Logs emitted by a service provide valuable insights into its operations. Developers typically use logs for the following purposes:
 
-- Support custom metrics: Logs contain information that can be used to aggregate custom metrics.
+- Support custom metrics: Contains information that can be used to aggregate custom metrics.
 
-- Debugging: Logs help developers diagnose and troubleshoot issues reported in the service.
+- Debugging: Helps developers diagnose and troubleshoot issues reported in the service.
 
 During the debugging process, developers often perform the following tasks:
 
-- Check for new errors: They examine if any new errors have been reported by the service.
+- Check for new errors: Examine if any new errors have been reported by the service.
 
-- Monitor error frequency: They observe whether the occurrence frequency of any errors has changed.
+- Monitor error frequency: Observe whether the occurrence frequency of any errors has changed.
 
 Doing these tasks manually can be cumbersome. Developers usually start by filtering errors one by one until they come across new ones. They might use wildcard-based filters to exclude similar errors. However, there is no fixed pattern for these filters, as they vary depending on the specific errors.  
 
@@ -26,7 +26,7 @@ This is where log analysis with Harness Continuous Verification (CV) comes into 
 
 - Debugging the issue.
 
-Logging tools such as Google Cloud Operations (GCP) and Splunk help you capture and analyze logs for various purposes, such as debugging, monitoring, auditing, and security. To see the list of logging tools supported by Harness, go to [Log providers](https://developer.harness.io/docs/getting-started/supported-platforms-and-technologies#log-providers).
+Logging tools such as Google Cloud Operations and Splunk help you capture and analyze logs for various purposes, such as debugging, monitoring, auditing, and security. To see the list of logging tools supported by Harness, go to [Log providers](https://developer.harness.io/docs/getting-started/supported-platforms-and-technologies#log-providers).
 
 
 ## Log verification in Harness CV
@@ -35,18 +35,18 @@ You can [configure your logging tool](/docs/category/configure-cv) (also known a
 
 Harness CV classifies the error clusters identified by the ML model during log analysis into the following categories:
 
-- Known: Errors that were also present in the previous version.
+- **Known**: Errors that were also present in the previous version.
 
-- Unknown: New errors that have not been observed before.
+- **Unknown**: New errors that have not been observed before.
 
-- Unexpected Frequency: Errors with an increased occurrence frequency.
+- **Unexpected Frequency**: Errors with an increased occurrence frequency.
 
 
 ## View log verification results
 
 Harness CV provides a powerful mechanism to visualize and interpret the log verification results.
 
-Prerequisite: You should have added a health source to the Verify step and run the pipeline. To learn more about how to add a health source to the verify step and run the pipeline, go to Configure CV.
+**Prerequisite**: You should have added a health source to the Verify step and run the pipeline. To learn more about how to add a health source to the verify step and run the pipeline, go to [Configure CV](/docs/category/configure-cv).
 
 To view log verification results for a pipeline:
 
@@ -54,7 +54,7 @@ To view log verification results for a pipeline:
 
 2. In the top right corner, select **Execution History**, and from the pipeline executions list, choose the execution for which you want to see the verification results.
 
-3. Ensure that the **Console View** toggle switch is turned ON.
+3. Ensure that the **Console View** toggle switch is turned on.
 
 4. From the stages list, expand the stage in which you want to see the verification results, and then select **Verify**.  
    Verification details appear on the right.
@@ -76,7 +76,7 @@ The Radar chart presents a comprehensive bird's-eye view of all the log clusters
 
 <docimage path={require('./static/radar-chart.png')} />
 
-The radar chart visually organizes log clusters into three concentric circles. The outermost circle represents all the Unknown event clusters, while the middle circle contains both Known and Unexpected frequency clusters.
+The radar chart visually organizes log clusters into three concentric circles. The outermost circle represents all the **Unknown** event clusters, while the middle circle contains both **Known** and **Unexpected Frequency** clusters.
 
 Each point on the Radar Chart represents a log message. The region inside the innermost circle represents logs from baseline or control nodes. The region between the outermost circle and the second circle represents Unknown events clusters. The region between the second circle and the innermost circle represents Unexpected frequency clusters observed in Canary nodes. The clusters that are related (logs observed in both Canary and baseline nodes) are shown on the same radii. The Radar Graph is divided into several sectors, with each sector having several log messages. 
 

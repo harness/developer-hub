@@ -14,7 +14,7 @@ After running log verification as part of the verify step, you can review the de
 
 To the event preference or log feedback:
 
-1. On the Event list, select the three vertical dots next to the event for which you want to set the preference, and then select Update event preference.  
+1. On the Event list, select the three vertical dots next to the event for which you want to set the preference, and then select **Update event preference**.  
    Alternatively, you can go to the Event Details page by clicking the event and then selecting Update event preference from the top.
 
 2. On the Update event preference page, from the Update event priority dropdown, you select one of the following preferences:
