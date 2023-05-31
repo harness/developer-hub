@@ -12,6 +12,8 @@ import TabItem from '@theme/TabItem';
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities, such as security scanning, in GitHub. This topic describes how to run GitHub Action scans and ingest the results into your Harness pipelines.  
 
 :::note Important notes 
+[
+* GitHub Action security scans are useful primarily for integrated CI/STO pipelines, which require both CI and STO licenses. For more information, go to [Migrate from GitHub Actions to Harness CI](/docs/continuous-integration/migration-guides/migrating-from-githubactions/).
 
 * You can run scans using [GitHub Action steps](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie). 
 
@@ -64,19 +66,19 @@ import TabItem from '@theme/TabItem';
     </tr>
     <tr>
         <td><code>uses</code></td>
-        <td> Required. Specify the Action's repo, along with a branch or tag.</td>
+        <td>Specify the Action's repo, along with a branch or tag.</td>
         <td><code>[repo]@[tag]</code></td>
         <td><code>ajinabraham/njsscan-action@master</code></td>
     </tr>
     <tr>
         <td><code>with</code></td>
-        <td>Required. Provide a map of key-value pairs representing settings required by the GitHub Action itself. This example configures the Action to output a data file in SARIF format. </td>
+        <td>Provide a map of key-value pairs representing settings required by the action itself. At a minimum, make sure you configure the action to publish results in SARIF format. </td>
         <td><code>key: value</code> </td>
         <td><code>args: . --sarif --output result.sarif || true</code> </td>
     </tr>
     <tr>
         <td><code>env</code></td>
-        <td>Optional. Specify a map of environment variables to pass to the Action. </td>
+        <td>Specify a map of environment variables to pass to the Action. For example, you might need to pass an access token to scan a private repository.</td>
         <td><code>key: value</code></td>
         <td><code>GITHUB_TOKEN: &lt;+secrets.getValue("github_pat")&gt;</code></td>
     </tr>
@@ -206,6 +208,10 @@ pipeline:
 
 2. Click **Add Step** and then add a **Plugin** step. 
 
+4. For **Container Registry**, select a container registry connector that has Docker Hub access.
+
+5. In the **Image** field, enter the name of the GitHub Actions Drone Plugin image: `plugins/github-actions`.
+
 3. Use **Settings** to specify the Github Action you want to use and to pass variables and attributes required by the Action. 
 
    For information about how to set up the specific action, go to the external scanner documentation.
@@ -222,19 +228,19 @@ pipeline:
     </tr>
     <tr>
         <td><code>uses</code></td>
-        <td> Required. Specify the Action's repo, along with a branch or tag.</td>
+        <td>Specify the Action's repo, along with a branch or tag.</td>
         <td><code>[repo]@[tag]</code></td>
         <td><code>ajinabraham/njsscan-action@master</code></td>
     </tr>
     <tr>
         <td><code>with</code></td>
-        <td>Required. Provide a map of key-value pairs representing settings required by the GitHub Action itself. This example configures the Action to output a data file in SARIF format. </td>
+        <td>Provide a map of key-value pairs representing settings required by the GitHub Action itself. This example configures the Action to output a data file in SARIF format. </td>
         <td><code>key: value</code> </td>
         <td><code>args: . --sarif --output result.sarif || true</code> </td>
     </tr>
     <tr>
         <td><code>env</code></td>
-        <td>Optional. Specify a map of environment variables to pass to the Action. </td>
+        <td>Specify a map of environment variables to pass to the Action. For example, you might need to pass an access token to scan a private repository.</td>
         <td><code>key: value</code></td>
         <td><code>GITHUB_TOKEN: &lt;+secrets.getValue("github_pat")&gt;</code></td>
     </tr>
