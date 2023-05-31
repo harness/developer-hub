@@ -34,6 +34,13 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by SudheendraKatte for branch cv-metric-log on May 31 2023
+
+    {
+      from:"/docs/continuous-delivery/verify/cv-concepts/verification-results",
+      to: "/docs/category/understand-cv-results",
+    },
+
     // Created by Charanya Jayaraman to fix CCM broken link on May 23 2023
 
     {
@@ -291,7 +298,7 @@ module.exports = {
 
     {
       from: "/kb/continuous-delivery/continuous-verification-results",
-      to: "/docs/continuous-delivery/verify/cv-concepts/verification-results",
+      to: "/docs/category/understand-cv-results",
     },
 
     {
