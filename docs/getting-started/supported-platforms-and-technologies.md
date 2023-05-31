@@ -153,6 +153,9 @@ The following table lists the ingress controllers supported for Kubernetes AutoS
 | Istio as API gateway       | Fully supported                                                    |
 | Ambassador as API gateway  | Supported by manually editing the mapping                          |
 
+:::note
+The supported Kubernetes version for AutoStopping is 1.19.
+:::
 ### Feature Support Matrix
 
 This section lists the feature support matrix for the supported cloud platforms:
