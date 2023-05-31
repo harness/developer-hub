@@ -62,7 +62,7 @@ import TabItem from '@theme/TabItem';
 2. Perform the following tasks in the **GCP Connector** wizard.
 ### Overview
 1. In **Overview**, in **Connector Name**, enter a name that describes this account.
-2. In **Specify Project ID**, enter the project ID and select **Continue**. For more information on how to get a project ID, see [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
+2. In **Specify Project ID**, enter the project ID and select **Continue**. For more information on how to get a project ID, go to [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
 
 ### GCP Billing Export
 
