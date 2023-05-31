@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 
 :::note Important notes 
 
-* You can run scans using [GitHub Action steps](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) and [Drone plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie). 
+* You can run scans using [GitHub Action steps](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie). 
 
 * The type of step to use depends on your build infrastructure. GitHub Action steps are supported on Harness Cloud infrastructures only. Drone Plugin steps are supported on Harness Cloud and Kubernetes infrastructures.
 
