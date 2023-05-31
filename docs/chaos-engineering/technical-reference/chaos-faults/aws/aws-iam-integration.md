@@ -4,6 +4,15 @@ title: Use IAM roles for authentication
 sidebar_position: 2
 ---
 
+>>>>> When you install chaos infra on your EKS cluster, you install an execution plane where there will be 2 accounts:
+
+K8s Service account > `litmus-chaos` > runs experiments
+AWS source account acts as "...."
+
+Target accounts > where you'll run experiments against resources and services in those accounts
+
+----------------------XXXX---------------------------
+
 ## Authentication methods
 
 There are two methods available for Harness CE to authenticate itself with AWS and obtain the necessary permissions that are specific to the targeted services:
@@ -22,15 +31,22 @@ There are two methods available for Harness CE to authenticate itself with AWS a
 
   This approach involves providing the necessary credentials through Kubernetes secrets. The advantage of this method is its compatibility with any cluster and platform. It is explained in the Notes section of the experiment docs.
 
+
+**XXX Source account is the aws acct where EXECUTION plane is installed on an EKS cluster**
+
 ### Summary of steps for IAM integration
 
 To use IRSA for AWS authentication, you:
 
-1. [Enable service accounts to access AWS resources](#enable-service-accounts-to-access-aws-resources). The service account acts as the host for your EKS cluster, and enables CE to access resources across multiple AWS target accounts.
+1. [Enable the kubernetes service account (this is the experiment account) to access AWS resources](#enable-service-accounts-to-access-aws-resources). The service account acts as the host for your EKS cluster, and enables CE to access resources across multiple AWS target accounts.
+
+  [[[[ *one or many service accounts? is this the **source** account?* ]]]]
 
 1. [Set up your target AWS accounts for IRSA](#set-up-your-target-accounts-for-irsa). The target accounts are the ones where you will run your chaos experiments.
 
-## Enable service accounts to access AWS resources
+1. [Establish a trust relationship](#establish-trust-between-service-and-target-accounts) between service and target accounts.
+
+## Enable the k8s service account to access AWS resources
 
 Chaos experiments are initiated and controlled through a service account. You must enable this account, and other service accounts that need it, to access AWS resources. Follow the steps below to enable these accounts to access AWS resources.
 
@@ -45,6 +61,8 @@ To create an OIDC provider for a cluster:
   ```bash
   aws eks describe-cluster --name <your-cluster-name> --query "cluster.identity.oidc.issuer" --output text
   ```
+
+  [[[[[[ *what if there's no IDP found? Does our procedure assume and IDP assoc w/cluster?* ]]]]]]
 
   **Example output:**
 
@@ -76,9 +94,18 @@ To create an OIDC provider for a cluster:
   2021-09-07 14:54:05 [✔]  created IAM Open ID Connect provider for cluster "litmus-demo" in "us-west-1"
   ```
 
-### Step 2: Create an IAM role and policy for your service account 
+### Step 2: Create an IAM role and policy for your Kubernetes service account 
+
+[[[[ *which service account?* ITS THE ACCOUNT THAT CONTAINS THE EXECUTION PLANE = chaos infrastructure ]]]] 
 
 Create an IAM policy with the permissions that you would like the experiment to have. There are several ways to create a new IAM permission policy. For more information, go to [AWS IAM documentation](https://docs.aws.amazon.com/transfer/latest/userguide/requirements-roles.html). 
+
+XXxXXXXX
+FOR service_account_names USE `litmus-admin`
+service_account_namespace is wherever you installed the execution plane.
+
+they can only use ONE service account to run chaos experiments
+XXXXXXXX
 
 Use the `eksctl` command to create the IAM permission policy. For example:
 
@@ -92,21 +119,13 @@ eksctl create iamserviceaccount \
 --override-existing-serviceaccounts
 ```
 
-### Step 3: Associate an IAM role with other service accounts
+### Step 3: ASSOCIATE the IAM role with the experiment service account (default is litmus-admin) - above account where I created the role
 
-Define the IAM role for every Kubernetes service account in your cluster that requires access to AWS resources.
 
-To do so, add the following annotation to the service account:
+Define the IAM role as an annotation in the experiment Kubernetes service account in your cluster. this will give it required access to AWS resources.
 
-```yaml
-apiVersion: v1
-kind: ServiceAccount
-metadata:
-  annotations:
-    eks.amazonaws.com/role-arn: arn:aws:iam::<ACCOUNT_ID>:role/<IAM_ROLE_NAME>
-```
+To do so, run this command:
 
-You can also annotate the experiment service account using this command:
 
 ```bash
 kubectl annotate serviceaccount -n <SERVICE_ACCOUNT_NAMESPACE> <SERVICE_ACCOUNT_NAME> \
@@ -119,6 +138,8 @@ eks.amazonaws.com/role-arn=arn:aws:iam::<ACCOUNT_ID>:role/<IAM_ROLE_NAME>
 :::
 
 ### Step 4: Verify the experiment service account associates with the IAM role
+
+[[[ *What is the experiment service account?* ]]]
 
 To verify the association between the service account and the IAM role: 
 
@@ -136,9 +157,9 @@ To verify the association between the service account and the IAM role:
   AWS_WEB_IDENTITY_TOKEN_FILE=/var/run/secrets/eks.amazonaws.com/serviceaccount/token
   ```
 
-### Step 5: Configure the experiment CR [[[[Remove secret references in faults]]]]
+### Step 5: Configure the experiment CR [[[[ Remove secret references in experiment definitions ]]]]
 
-[[[[[ *Ideally when should this be done? This seems like a step that's not linked to a specific part of these procedures but should be done at some point... can I move it to the end???* ]]]]]
+[[[[[ *I've added this as a section at the end. Ideally when should this be done? This seems like a step that's not linked to a specific part of these procedures but should be done at some point... can I delete it here and keep the section at the end???* ]]]]]
 
 Since you have already configured IAM for the experiment service account, you won't have to create a secret and mount it with the experiment CR (enabled by default). 
 
@@ -152,11 +173,15 @@ secrets:
 
 ## Set up your target accounts for IRSA
 
-Target accounts are the accounts susceptible to chaos experiments, so their services can be intentionally disrupted or manipulated. The chaos experiments are initiated and controlled through a service account. 
+Chaos experiments are initiated and controlled through a service account. Whereas, target accounts are the accounts you'll subject to chaos experiments, so you can intentionally disrupt and manipulate their services.
 
-### Step 1: Create an IAM role in each AWS target account
+In this section, you create an IAM role and set up an OIDC provider in each target account.
 
-Create an IAM role and policy in each AWS account to provide the required permissions for accessing the desired resources. This step allows you to grant permissions for chaos injection targeting various AWS services. You have the flexibility to define the level of permissions you wish to assign to the HCE.
+### Step 1: Create an IAM role and policy in each AWS target account
+
+Create an IAM role and policy in each AWS target account to provide the required permissions for accessing the desired resources in that account. 
+
+This step lets you grant permissions for chaos injection targeting various AWS services. You have the flexibility to define the level of permissions you wish to assign to Harness CE.
 
 For instructions, go to [Create an IAM role and policy](https://docs.aws.amazon.com/transfer/latest/userguide/requirements-roles.html) in the AWS documentation.
 
@@ -187,20 +212,23 @@ To add the OIDC provider to each target account:
     * **Audience:** Specify `sts.amazonaws.com`.
 
 1. Select **Add provider**.
+1. Repeat these steps for each target account.
 
-### Step 3: Configure a trust relationship between target accounts and service account [[[ Is this overlapping with the first existing part? ]]]
+## Establish trust between THE AWS source account and target accounts
 
-<<<< *I think this is a missing step in the first part* >>>>
+the source account = AWS acct that has the EKS cluster execution plane. service account is k8s execution plane component (litmus-admin, it's only job is to get annotated and switches between accounts).
 
-You must configure a trust relationship for each IAM role you created in [Step 1](#step-1-create-an-iam-role-in-each-aws-target-account) above. This authorizes the Kubernetes service account's OIDC provider to assume that IAM role on the target account. To do this, you update the trust policy of the Kubernetes service account, and that of each IAM role you created on target accounts. 
+### Step 1: Configure a trust relationship between target accounts and source account
+
+You must configure a trust relationship for each IAM role you created in a target account in [Step 1](#step-1-create-an-iam-role-and-policy-in-each-aws-target-account) in the previous section. This authorizes the Kubernetes service account's OIDC provider to assume that IAM role on the target account. To do this, you update the trust policy of the Kubernetes service account, and that of each IAM role you created on target accounts. 
 
 Follow this procedure for each target account to configure the IAM role and policy on both the Kubernetes service account and the target account.
 
 **To configure a trust relationship between the Kubernetes service account OIDC provider and a target account:**
 
-1. Edit the IAM role and policy YAML file you created on the Kubernetes service account as shown in the example below.
+1. (CORRECT THIS0 Edit the IAM role and policy YAML file you [created on the Kubernetes service account](#step-2-create-an-iam-role-and-policy-for-your-service-account) as shown in the example below.
 
-  In this example `2222222222` is the target account ID, and `1111111111` is the Kubernetes service account ID:
+  In this example `2222222222` is the target account ID, and `1111111111` is the AWS source account ID:
 
   ```
   {
@@ -226,7 +254,7 @@ Follow this procedure for each target account to configure the IAM role and poli
   }
   ```
 
-2. Edit the IAM role and policy YAML file you created on the target account as shown in the example below.
+2. Edit the IAM role and policy YAML file you [created on the target account](#step-1-create-an-iam-role-and-policy-in-each-aws-target-account) as shown in the example below.
 
    In this example `2222222222` is the target account ID, and `1111111111` is the Kubernetes service account ID:
 
@@ -252,9 +280,11 @@ Follow this procedure for each target account to configure the IAM role and poli
   }
   ```
 
-### Step 4: Enable the service account to switch between target accounts
+### Step 2: Enable the service account to switch between target accounts
 
-To enable cross-account connectivity, you must annotate the service account with the *corresponding* (?????) roles in target accounts. For instance, if the target account has a role named `chaos-role`, you must annotate the service account with the unique Amazon Resource Name (ARN) of that role. This enables for seamless switching between accounts.
+[[[ *Many service accounts? "Corresponding roles" = some roles, not all roles in target accounts?* ]]]
+
+To enable cross-account connectivity, you must annotate the service account (litmus-admin) with the *corresponding* chaos role in each target accounts. For instance, if the target account has a role named `chaos-role`, you must annotate the service account with the unique Amazon Resource Name (ARN) of that role. This enables for seamless switching between accounts.
 
 [[[[[ *What/who does the switching???? Is the service account switching between target accounts* ]]]]]
 
@@ -272,7 +302,13 @@ To enable cross-account connectivity, you must annotate the service account with
 
 1. Repeat the above step for every role in a target account, where the service account needs access to that role.
 
+  [[[[ *Assume this is a subset of roles on the target account?* ]]]]
+
 ## Remove all secret references from experiment definitions
+
+[[ experiment templates will have secret references ]]
+
+[[[ *This assumes they've configured some experiments. Realistic? Would they be doing IAM integration before they set up exeriments? Maybe start with "if you've configured experiments, then do this. Else leave out secret mounts for new experiments"* ]]]
 
 Since IAM integration does not rely on secrets, you must not include any secret-related configurations or parameters in the chaos experiment configuration or execution. Ensure that you have removed any secret references from the experiment definition YAML files. 
 
