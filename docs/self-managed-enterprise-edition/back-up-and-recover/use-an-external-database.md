@@ -32,7 +32,7 @@ External database setup requires the following software:
 
     For details, go to the MongoDB documentation: [MongoDB Enterprise version support](https://www.mongodb.com/docs/v4.4/administration/install-enterprise/) and [MongoDB Community version support](https://www.mongodb.com/docs/v4.4/administration/install-community/).
 
-- MongoDB supported versions 4.4.0 to 4.4.18
+- MongoDB supported versions 4.4.0 to 4.4.19
 
 ## Network requirements
 
