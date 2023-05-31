@@ -15,7 +15,7 @@ import TabItem from '@theme/TabItem';
 
 * You can run scans using [GitHub Action steps](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step) and [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/run-a-git-hub-action-in-cie). 
 
-* The type of step to use depends on your build infrastructure. GitHub Action steps are supported on Harness Cloud infrastructures only. Drone Plugin steps are supported on Harness Cloud and Kubernetes infrastructures.
+* The type of step to use depends on your build infrastructure. You can run STO scans using GitHub Action steps on Harness Cloud infrastructures only. You can run STO scans using Drone Plugin steps on Harness Cloud and Kubernetes infrastructures.
 
 * [GitHub](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions#the-components-of-github-actions) and [Harness](/docs/getting-started/learn-harness-key-concepts) use slightly different terminologies for similar concepts:
 
