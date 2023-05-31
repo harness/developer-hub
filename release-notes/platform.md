@@ -53,7 +53,7 @@ This release does not include any early access feature.
 
 - The error message displayed during pipeline execution when connector permissions are missing is unclear. (PL-32662)
 
-  A code enhancement to display appropriate error message fixed this issue.
+  A code enhancement to display an appropriate error message fixed this issue.
 
 - The creation of SSH or WinRM secrets in a project or organization after disabling Harness' built-in secret manager is not supported.  (PL-32562)
   
