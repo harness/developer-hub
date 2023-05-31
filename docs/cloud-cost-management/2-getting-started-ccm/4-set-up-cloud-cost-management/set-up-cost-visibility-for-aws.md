@@ -162,7 +162,7 @@ Harness uses the secure cross-account role to access your AWS account. The role 
 
 Perform the following steps in the AWS Console.
 
-2. In **Quick create stack**, in **Capabilities**, select the acknowledgment, and select **Create stack**.
+2. In **Quick create stack**, in **Capabilities**, select the acknowledgment, and then select **Create stack**.
   > **☆ NOTE** - The values on this page are based on your previous selections. Do not modify any values before creating the stack.  
     
 3. In the stack's page, go to the **Outputs** tab  and copy the **Value** of **CrossAccountRoleArn Key**.
