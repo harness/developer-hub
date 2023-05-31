@@ -12,7 +12,7 @@ Harness progressively deploys updates to different Harness cluster hosting accou
 
 Harness is updated regularly. This document describes recent changes.
 
-For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Release Notes](harness-on-prem-release-notes.md). Release notes are displayed with the most recent release first.
+For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Release Notes](harness-on-prem-release-notes.md). Release notes are displayed with the most recent release first.
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
