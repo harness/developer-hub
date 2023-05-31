@@ -25,7 +25,7 @@ If there are items that don't belong to any of these cost categories, the cost a
 
 ## Prerequisites and permissions
 
-To use Cost Categories, your Harness User account must belong to a User Group with the following Role permissions:
+To use cost categories, your Harness user account must belong to a user group with the following role permissions:
 
 * **Cloud Cost Management**: **Cost Categories**: **Create/Edit**
 
@@ -50,8 +50,8 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 You can create a Cost Category
 
 1. In your Harness application, go to **Cloud Costs**.
-2. Go to **Setup**, and then click **Cost Categories**.
-3. Click **New Cost Category**.
+2. Go to **Setup**, and then select **Cost Categories**.
+3. Select **New Cost Category**.
 
 
 You can also create a new Cost Category when you create a Perspective.
@@ -67,7 +67,7 @@ The new Cost Category appears.
 
 
 ### Create cost buckets
-1. Click **New Cost Bucket**.
+1. Select **New Cost Bucket**.
 2. Enter a name for the cost bucket, such as the name of a department.
 3. Define the rules (data sources) for the cost bucket. You could add multiple conditions to this rule using the AND operator.  
 Add a new row for each rule until the cost bucket correctly includes all the costs incurred for this bucket. These rules are defined using the OR operator.  
@@ -85,7 +85,7 @@ The AND and OR operators are used to filter data based on more than one conditio
 
 ### Create shared cost buckets
 
-1. Click **+ New Shared Bucket**.
+1. Select **+ New Shared Bucket**.
 2. Enter a relevant name for the shared bucket.
 3. Define rules and conditions as per requirement.
 4. Select the sharing strategy.  

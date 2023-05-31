@@ -71,7 +71,7 @@ As you add your resources in the **Perspective Builder**, a **Preview** of your 
 
 ![](./static/create-cost-perspectives-18.png)
 
-The following are the key advantages of Preview:
+The following are the key advantages of preview:
 
 * Provides a quick visual representation of your resources in the Perspective without saving them.
 * Allows you to group resources in the preview mode itself. You can group by **Common**, **Custom** (if Custom Fields are available), **Cluster**, **AWS**, **GCP**, and **Azure**.
@@ -126,7 +126,7 @@ When you create a new Perspective, data across all cloud service providers and c
 
 
 :::note
-If you've added labels and cluster rules in the perspective builder section, it's considered a cluster perspective, hence all cluster labels are considered. In this case, data from cloud service providers such as GCP, Azure, and AWS are not considered. However, if you have applied a label that belongs to the cloud provider data, and you want to view the cluster data as well, then, you have to add a Cloud Provider filter.
+If you've added labels and cluster rules in the perspective builder section, it's considered a cluster perspective, hence all cluster labels are considered. In this case, data from cloud service providers such as GCP, Azure, and AWS are not considered. However, if you have applied a label that belongs to the cloud provider data, and you want to view the cluster data as well, then you have to add a Cloud Provider filter.
 :::
 ## Budgets, Reports, and Alerts
 For details on adding Budgets, Reports, and Alerts go to:
@@ -164,14 +164,14 @@ In some graphs, you will also see an **Unallocated** item. This is included to h
 The **Include Unallocated** option is only available in the chart when the **Group By** is using **Cluster** and the following options are selected:
 
 * Namespace
-* Namespace Id
+* Namespace ID
 * Workload
-* Workload Id
+* Workload ID
 * ECS Task
-* ECS Task Id
-* ECS Service Id
+* ECS Task ID
+* ECS Service ID
 * ECS Service
-* ECS Launch Type Id
+* ECS Launch Type ID
 * ECS Launch Type
 
 ### Review: No Account/Project/etc
