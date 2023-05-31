@@ -38,7 +38,7 @@ The feature below is available with version 794xx and does not require a new del
 
 #### May 25, 2023, STO Core version 1.54.1
 
-### Security Testing Orchestration
+#### Security Testing Orchestration
 
 * This release include new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
 
