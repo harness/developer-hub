@@ -6,8 +6,26 @@ sidebar_position: 80
 
 You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
+## Burp step settings
 
-### Security step settings
+
+### Scan Mode
+
+```mdx-code-block
+import StoSettingScanMode from './shared/step_palette/_sto-ref-ui-scan-mode.md';
+import StoSettingScanModeOrch from './shared/step_palette/_sto-ref-ui-scan-mode-00-orchestrated.md';
+import StoSettingScanModeData from './shared/step_palette/_sto-ref-ui-scan-mode-01-dataload.md';
+import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
+```
+
+<StoSettingScanMode />
+<StoSettingScanModeOrch />
+<StoSettingScanModeData />
+<StoSettingScanModeIngest />
+
+
+
+## Security step settings
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
