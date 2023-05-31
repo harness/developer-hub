@@ -33,13 +33,15 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
-### Fixed issues
+### What's new
 
 - You can now use an external database with your installation. For more information, go to [Use an external database](/docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database). (SMP-545)
 
+### Fixed issues
+
 - You can now deploy the delegate-minimal image in an air-gapped environment using `useMinimalDelegate` in your `overrides.yaml` file. For more information, got to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/). (SMP-1130)
 
-- The `nodeSelector` in Harness services failed for Redis and was missing in other services.
+- The `nodeSelector` in Harness services failed for Redis and was missing in other services. (SMP-1180)
 
    This issue is fixed. To use Redis `nodeSelector`, update the `overrides.yaml` file.
 
