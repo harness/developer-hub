@@ -17,7 +17,7 @@ This topic describes how to set up and use AWS VMs as build infrastructures for 
 
 For information on using Kubernetes as a build farm, go to [Set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-The following diagram illustrates an AWS build farm. The [Harness Delegate](/docs/platform/Delegates/delegate-concepts/delegate-overview) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
+The following diagram illustrates an AWS build farm. The [Harness Delegate](/docs/platform/Delegates/delegate-concepts/delegate-overview) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
 ![](../static/set-up-an-aws-vm-build-infrastructure-12.png)
 
@@ -41,12 +41,12 @@ If you have Terraform and Go installed on your EC2, you set up your build infras
 
 The following are required for the AWS EC2 configuration:
 
-* For the Delegate VM, use an Ubuntu t2.large (or higher) AMI.
+* For the delegate VM, use an Ubuntu t2.large (or higher) AMI.
 * Build VMs can be Ubuntu, AWS Linux, or Windows Server 2019 (or higher).
 * Authentication requirements:
    + You can use an access key and access secret ([AWS secret](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)) for configuration of the Runner.
      - For Windows instances, you need to add the [AdministratorAccess policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to the IAM role associated with the access key and access secret [IAM](https://console.aws.amazon.com/iamv2/home#/users).
-   + You can use IAM profiles instead of access and secret keys. You need to run the Delegate VM with an IAM role that has CRUD permissions on EC2. This role provides the Runner with temporary security credentials to create VMs and manage the build pool.
+   + You can use IAM profiles instead of access and secret keys. You need to run the delegate VM with an IAM role that has CRUD permissions on EC2. This role provides the Runner with temporary security credentials to create VMs and manage the build pool.
    + If you want ot use IAM roles with Windows VMs, go to the AWS documentation for [additional configuration for Windows IAM roles for tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html). This additional configuration is required because containers running on Windows can't directly access the IAM profile on the host.
 * Set up VPC firewall rules for the build instances on EC2.
    + Create a Security Group. You need the Security Group ID to configure the Runner. For information on creating Security Groups, go to the AWS documentation on [authorizing inbound traffic for your Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html).
