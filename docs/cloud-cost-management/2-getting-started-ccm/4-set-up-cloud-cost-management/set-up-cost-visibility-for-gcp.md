@@ -76,7 +76,7 @@ Make sure that you have enabled **Detailed Usage Cost** on the **Billing Export*
 
 1. In **GCP Billing Export**, select **Launch GCP console**.
 2. In the GCP **Explorer** window, in the pinned projects section, select **your project ID** to open the project. If you see an overflow menu (:) next to your project ID, select the menu and select **Open**.
-3. Select **Create dataset**. For more information, see [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
+3. Select **Create dataset**. For more information, go to [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
   
   
   ```mdx-code-block
