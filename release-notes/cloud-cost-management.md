@@ -66,10 +66,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 #### May 24, 2023, version 79505
 
 ##### What's new
-
-**Asset Governance**
-
-Introduced support for access control (RBAC) for the Asset Governance feature. For more information, go to [Asset Governance RBAC](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov).
+This release does not include any new features.
 
 ##### Early access
 This release does not include any early access features.
@@ -87,6 +84,10 @@ This release does not include any early access features.
 * The AutoStopping fixed schedule did not execute the rule as configured in the schedule settings. (CCM-12396)
 
   The issue was identified as missing triggers from Dkron, an external service, corresponding to the created schedule. To address this, a backup job was created. This backup job is designed to trigger the required operation in case the triggers from Dkron are missed. By implementing this solution, the system ensures that the necessary operation will still be executed even if the triggers from Dkron are not received.
+
+* The users were not able to create an Azure Application Gateway successfully as the Azure function package was corrupt. (CCM-12550)
+
+  Rolling back to the previous function package fixed this issue.
 
 #### May 19, 2023, version 79400
 
@@ -113,12 +114,16 @@ This release does not include any early access features.
 #### May 05, 2023, version 79300
 
 ##### What's new
+
 This release does not include any new features.
 
 
 ##### Early access
-This release does not include any early access features.
+**Asset Governance**
 
+The Asset Governance feature now includes support for access control through Role-Based Access Control (RBAC). This enhancement allows for more granular control and management of permissions. For more information, go to [Asset Governance RBAC](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov). 
+
+This feature is behind the feature flag **CCM_ENABLE_CLOUD_ASSET_GOVERNANCE_UI**.
 ##### Fixed issues
 
 * Previously, the budget amount in the monthly fields did not default to zero when selecting the yearly budget period. (CCM-12289)
