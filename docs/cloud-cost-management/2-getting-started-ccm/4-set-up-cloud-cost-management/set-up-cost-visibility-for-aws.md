@@ -142,7 +142,9 @@ Launch the AWS console and perform the following steps:
 
 ### Choose Requirements
 
-Select your desired features, and then select **Continue**. Details about the features are listed below. Note that the permissions required as part of the AWS cross-account role will be based on your selections. Those permissions are listed out in the **Reference - AWS Access Permission** section below.
+Select your desired features, and then select **Continue**. 
+
+Details about the features are listed below. Note that the permissions required as part of the AWS cross-account role will be based on your selections. Those permissions are listed out in the **Reference - AWS Access Permission** section below.
 
 | **Features**  | **Capabilities** | 
 | --- | --- | 
