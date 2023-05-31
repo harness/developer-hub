@@ -17,7 +17,7 @@ This topic describes how to set up and use AWS VMs as build infrastructures for 
 
 For information on using Kubernetes as a build farm, go to [Set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-The following diagram illustrates an AWS build farm. The [Harness Delegate](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
+The following diagram illustrates an AWS build farm. The [Harness Delegate](/docs/platform/Delegates/delegate-concepts/delegate-overview) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
 ![](../static/set-up-an-aws-vm-build-infrastructure-12.png)
 
@@ -26,7 +26,7 @@ The following diagram illustrates an AWS build farm. The [Harness Delegate](http
 This topic assumes you're familiar with the following:
 
 * [Building and testing on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
-* [Delegates overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
+* [Delegates overview](/docs/platform/Delegates/delegate-concepts/delegate-overview)
 * [CI Build stage settings](../ci-stage-settings.md)
 * [Harness key concepts](../../../../getting-started/learn-harness-key-concepts.md)
 * Drone VM Runner
