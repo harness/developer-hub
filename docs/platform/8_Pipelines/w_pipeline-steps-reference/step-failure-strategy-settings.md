@@ -87,13 +87,15 @@ To execute stage 2, you can set the stage 1 **Failure Strategy** to **Ignore Fai
 
 In general, if you want to run particular steps on a stage failure, you should add them to stage's **Rollback** section.
 
-### Stage and step priority
+### Stage, step, and step group priority
 
-The stage failure strategy applies to all steps that do not have their own failure strategy. A step's failure strategy overrides (or extends) its stage's failure strategy.
+The stage failure strategy applies to all steps that do not have their own failure strategy. A step's failure strategy takes precedence over a step group's failure strategy, which takes precedence over a stage's failure strategy.
 
-Step failure strategies are evaluated before their stage's failure strategy. The order of the steps determines which failure strategy is evaluated first.
+Step failure strategies are evaluated before step group's and stage's failure strategy. 
 
-If the first step in the execution doesn't have a failure strategy, the stage's failure strategy is used. If the second step has its own failure strategy, it is used. And so on.
+The order of the steps determines which failure strategy is evaluated first.
+
+If the step is not part of a step group, and the first step in the execution doesn't have a failure strategy, the stage's failure strategy is used. If the second step has its own failure strategy, it is used. And so on.
 
 ### Multiple failure strategies in a stage
 
