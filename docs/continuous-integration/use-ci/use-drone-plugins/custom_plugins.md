@@ -115,7 +115,6 @@ Add the `Plugin` step to your `CI` stage. The following settings are always or u
 * `type: Plugin`
 * `name:` A name for the step
 * `connectorRef:` The ID of a [Docker connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference) that can connect to the Docker registry where you uploaded the plugin image.
-* **Image:** The plugin's Docker repo and image.
 * `image:` The plugin's Docker repo and image.
 * `settings:` A mapping of key-value pairs representing plugin settings. Settings are derived from [variables in your plugin script](#variables-in-plugin-scripts).
 
