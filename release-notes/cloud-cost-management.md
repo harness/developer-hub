@@ -121,7 +121,7 @@ This release does not include any new features.
 ##### Early access
 **Asset Governance**
 
-The Asset Governance feature now includes support for access control through Role-Based Access Control (RBAC). This enhancement allows for more granular control and management of permissions. For more information, go to [Asset Governance RBAC](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov). 
+The Asset Governance feature now includes support for access control through Role-Based Access Control (RBAC). This enhancement allows more granular control and management of permissions. For more information, go to [Asset Governance RBAC](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov). 
 
 This feature is behind the feature flag **CCM_ENABLE_CLOUD_ASSET_GOVERNANCE_UI**.
 ##### Fixed issues
