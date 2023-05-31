@@ -52,7 +52,7 @@ The **Cloud Integration** page displays the existing connectors for the Kubernet
 The required permissions and components are verified. On successful verification, the cost management features are enabled on the cluster.
 
   ![](./static/use-cloud-integration-00.gif)
-1. (Optional) To enable the AutoStopping feature, select **Enable AutoStopping** before selecting **Finish** and continue to follow the steps in the wizard or you could choose to enable this feature later if required. To learn how to enable AutoStopping, see [Create a secret and provide permissions for AutoStopping](set-up-cost-visibility-for-kubernetes.md#optional-create-a-secret).
+1. (Optional) To enable the AutoStopping feature, select **Enable AutoStopping** before selecting **Finish** and continue to follow the steps in the wizard or you could choose to enable this feature later if required. To learn how to enable AutoStopping, go to [Create a secret and provide permissions for AutoStopping](set-up-cost-visibility-for-kubernetes.md#optional-create-a-secret).
 
 ### Viewing Cloud Costs
 
