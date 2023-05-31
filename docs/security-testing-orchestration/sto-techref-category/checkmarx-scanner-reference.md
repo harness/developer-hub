@@ -304,10 +304,77 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 </details>
 
-## YAML configuration
+## Example workflow
 
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
+The following pipeline example illustrates an ingestion workflow. It consists of two steps:
+
+* An Action step scans a code repo using a Checkmarx GitHub Action and export the scan results to a SARIF data file.
+* A Checkmarx step that ingests the SARIF data.
+
+```yaml
+pipeline:
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: NodeGoat_Harness_Hosted
+        repoName: https://github.com/OWASP/NodeGoat
+        build: <+input>
+  stages:
+    - stage:
+        name: CheckmarxSCA
+        identifier: checkmarxone
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Action
+                  name: Checkmarx CxFlow Action
+                  identifier: CxFlow
+                  spec:
+                    uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.6
+                    with:
+                      project: SampleProject
+                      team: /CxServer/nzsouth
+                      scanners: sca
+                      checkmarx_url: <+secrets.getValue("my-checkmarx-url")>
+                      checkmarx_username: zeronorth
+                      checkmarx_password:  <+secrets.getValue("my-checkmarx-password")>
+                      checkmarx_client_secret: <+secrets.getValue("my-checkmarx-client-secret")>
+                      sca_username: harness
+                      sca_password:  <+secrets.getValue("my-sca-passeword")>
+                      sca_tenant: cxIntegrations
+                      break_build: false
+              - step:
+                  type: Checkmarx
+                  name: Checkmarx_1
+                  identifier: Checkmarx_1
+                  spec:
+                    mode: ingestion
+                    config: default
+                    target:
+                      name: <+pipeline.name>
+                      type: repository
+                      variant: dev
+                    advanced:
+                      log:
+                        level: debug
+                    runAsUser: "1001"
+                    ingestion:
+                      file: /harness/cx.sarif
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          sharedPaths:
+            - /shared/customer_artifacts/
+  identifier: CheckmarxGitAction
+  name: CheckmarxGitAction
+
 ```
-
-<StoSettingYAMLexample />
