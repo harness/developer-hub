@@ -132,26 +132,25 @@ Here's an example of the results of a download command:
 
 **Deployment Templates:** to run the download command on the target hosts, add the command after the Fetch Instances step. Go to [looping strategy and target hosts](#looping-strategy-and-target-hosts) below for more information
 
-**Download Artifacts with Proxy**
+## Download artifacts with a proxy
 
-In order to support the download artifacts by using the proxy setting on remote hosts these two env variable needs to be set on the target machine (host).
+In order to support the download artifacts by using the proxy settings on remote hosts, the follow environment variables needs to be set on the target machine (host).
 
-HARNESS_ENV_PROXY - referring to using proxy or not
-HTTP_PROXY - referring to proxy URL
-
-![image](https://github.com/harness/developer-hub/assets/52221549/6e3852c3-66af-4142-b8b7-6c0d6f394caf)
-
-On the Harness side, Artifact should be added to the Service and Download Artifact command unit in the Command step. 
-
-The Destination path should be set to the location where artifacts will be downloaded on the target machine. The destination path should exist on the target machine.
-
-![image](https://github.com/harness/developer-hub/assets/52221549/77763f80-88c3-417d-a780-f57dccecb759)
-
-While the pipeline is running we should see Using HTTP_PROXY environment variable console log message in the Download Artifact command unit that indicated the proxy is used on the target machine.
-
-![image](https://github.com/harness/developer-hub/assets/52221549/ec800ae2-8d9e-49bf-811a-1c64a44b8b38)
+- `HARNESS_ENV_PROXY`: boolean value for whether or not the proxy is used.
+- `HTTP_PROXY`: the proxy URL.
 
 
+<docimage path={require('./static/084f850ec904e0510100abb6e53f51389109c0d143dd4da1be73cdc5879f1158.png')} width="60%" height="60%" title="Click to view full size image" />
+
+In Harness, the artifact should be added to the Harness service and the **Download Artifact** command type in the Command step. 
+
+The **Destination Path** should be set to the location where the artifacts will be downloaded on the target machine. The destination path should exist on the target machine.
+
+<docimage path={require('./static/3bed823e82a32864c979d6397aaaa4f05f3b4328a26fb5374c5b10fbfb001019.png')} width="60%" height="60%" title="Click to view full size image" />
+
+While the pipeline is running, you will see `Using HTTP_PROXY environment variable` log message for the **Download Artifact** command type. This message indicates that the proxy is used on the target machine.
+
+<docimage path={require('./static/7d8bcd481e413b9371ed9f9b5970fda32d1ac556dfa134cebffd6532e8bd3707.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 ## Copy an artifact or config
