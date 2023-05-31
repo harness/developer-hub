@@ -64,13 +64,13 @@ In the **Command** field, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) she
 
 :::tip
 
-You can reference services started in [Background steps](../manage-dependencies/background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a `curl` command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
+You can reference services started in [Background steps](../manage-dependencies/background-step-settings.md) by using the Background step's **Id** in your Run step's **Command**. For example, a cURL command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
 
 <figure>
 
 ![](../manage-dependencies/static/background-step-settings-call-id-in-other-step.png)
 
-<figcaption>Figure 2: The Background step ID, <code>pythonscript</code>, is used in a curl command in a Run step.</figcaption>
+<figcaption>Figure 2: The Background step ID, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
 </figure>
 
 If the Background step is inside a step group, you must include step group ID, such as `[stepGroupId]_[backgroundStepId]:5000`, even if both steps are in the same step group.

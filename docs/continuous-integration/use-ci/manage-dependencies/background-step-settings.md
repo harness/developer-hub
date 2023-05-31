@@ -33,13 +33,13 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 :::tip
 
-You can use the Background step **Id** to call services started by Background steps in later steps, such as commands in Run steps. For example, a `curl` command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
+You can use the Background step **Id** to call services started by Background steps in later steps, such as commands in Run steps. For example, a cURL command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
 
 <figure>
 
 ![](./static/background-step-settings-call-id-in-other-step.png)
 
-<figcaption>Figure 2: The Background step ID, <code>pythonscript</code>, is used in a curl command in a Run step.</figcaption>
+<figcaption>Figure 2: The Background step ID, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
 </figure>
 
 If the Background step is inside a step group, you must include step group ID, such as `curl [stepGroupId]_[backgroundStepId]:5000`, even if both steps are in the same step group.
@@ -295,7 +295,7 @@ The host port and container port binding are similar to [port mapping in Docker]
 
 :::note
 
-If your build stage uses Harness Cloud build infrastructure and you are running a Docker image in a Background step, you must specify **Port Bindings** if you want to reference that Background step in a later step in the pipeline (such as in a `curl` command in a Run step).
+If your build stage uses Harness Cloud build infrastructure and you are running a Docker image in a Background step, you must specify **Port Bindings** if you want to reference that Background step in a later step in the pipeline (such as in a cURL command in a Run step).
 
 :::
 
