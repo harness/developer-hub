@@ -26,7 +26,7 @@ The Kubernetes **Quick Create** option is recommended especially for first-time 
 
 To use the **Quick Create** option, perform the following steps:
 
-1. In your Harness account, select **Cloud Costs.** Under **Setup**, select **Cloud Integration**.  
+1. In your Harness application, select **Cloud Costs.** Under **Setup**, select **Cloud Integration**.  
 The **Cloud Integration** page displays the existing connectors for the Kubernetes clusters and the cloud accounts.
 2. Select **New Cluster/Cloud account**.
 3. Select **Kubernetes**.
@@ -46,13 +46,13 @@ The **Cloud Integration** page displays the existing connectors for the Kubernet
 
 To enable cloud cost for your Kubernetes clusters, perform the following steps:
 
-1. In your Harness account, select **Cloud Costs**. Under **Setup**, select **Cloud Integration**.  
+1. In your Harness application, select **Cloud Costs**. Under **Setup**, select **Cloud Integration**.  
 The **Cloud Integration** page displays the existing connectors for the Kubernetes clusters and the cloud accounts.
 2. To enable cloud costs for a Kubernetes cluster, select **Enable Cloud Costs** for the Kubernetes Connector.  
 The required permissions and components are verified. On successful verification, the cost management features are enabled on the cluster.
 
   ![](./static/use-cloud-integration-00.gif)
-1. (Optional) To enable the AutoStopping feature, select **Enable AutoStopping** before selecting **Finish** and continue to follow the steps in the wizard or you could choose to enable this feature later if required. To learn how to enable AutoStopping, go to [Create a secret and provide permissions for AutoStopping](set-up-cost-visibility-for-kubernetes.md#optional-create-a-secret).
+1. (Optional) To enable the AutoStopping feature, select **Enable AutoStopping** before selecting **Finish** and continue to follow the steps in the wizard, or you could choose to enable this feature later if required. To learn how to enable AutoStopping, go to [Create a secret and provide permissions for AutoStopping](set-up-cost-visibility-for-kubernetes.md#optional-create-a-secret).
 
 ### Viewing Cloud Costs
 
@@ -62,7 +62,7 @@ To view the cloud spend data for the Kubernetes cluster, select **View costs** f
 
 To edit an existing connector, perform the following steps:
 
-1. In your Harness account, select **Cloud Costs**. Under **Setup**, select **Cloud Integration**.  
+1. In your Harness application, select **Cloud Costs**. Under **Setup**, select **Cloud Integration**.  
 The **Cloud Integration** page displays the existing connectors for the Kubernetes clusters and the cloud accounts.
 2. Select the three dots against the cluster and select **Edit Connector**.  
 The **Kubernetes cluster** wizard opens.
@@ -73,7 +73,7 @@ The **Kubernetes cluster** wizard opens.
 
 To disable cost reporting on your Kubernetes cluster, perform the following steps:
 
-1. In your Harness account, select **Cloud Costs**. Under **Setup**, select **Cloud Integration**.  
+1. In your Harness application, select **Cloud Costs**. Under **Setup**, select **Cloud Integration**.  
 The **Cloud Integration** page displays the existing connectors for the Kubernetes clusters and the cloud accounts.
 2. Select the three dots against the cluster and select **Edit cost access features**.  
 The **Enable Cloud Costs** wizard opens.
@@ -84,7 +84,7 @@ The **Enable Cloud Costs** wizard opens.
 
 To delete a connector, perform the following steps:
 
-1. In your Harness account, select **Cloud Costs**.  Under **Setup**, select **Cloud Integration**.  
+1. In your Harness application, select **Cloud Costs**.  Under **Setup**, select **Cloud Integration**.  
 The **Cloud Integration** page displays the existing connectors for the Kubernetes clusters and the cloud accounts.
 2. Select the three dots against the cluster and select **Delete Connector**.
 3. Select **Delete** in the confirmation dialog box.

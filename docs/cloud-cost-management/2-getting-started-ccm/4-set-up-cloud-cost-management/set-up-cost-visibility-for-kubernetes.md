@@ -174,14 +174,14 @@ import TabItem from '@theme/TabItem';
 <Tabs queryString="tab-number">
 <TabItem value="4" label="From Account Settings">
 ```
-1. Go to **Account Resources** | **Connectors**.
+1. Go to **Account Resources** > **Connectors**.
 2. Select **+ New Connector**.
 3. Under **Cloud Costs**, select **Kubernetes**.
 ```mdx-code-block
 </TabItem>
 <TabItem value="5" label="From Cloud Costs">
 ```
-1. Go to **Setup** | **Cloud Integration**.  
+1. Go to **Setup** > **Cloud Integration**.  
 2. Select **New Cluster/Cloud account**.
 3. Select **Kubernetes**.
 4. Select **Advanced**.
