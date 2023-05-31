@@ -462,6 +462,24 @@ The Harness Delegate ships with the 3.5.4 [release](https://github.com/kubernete
 
 If you want to use a different release of Kustomize, add it to a location on the Delegate, update the following Delegate files, and restart the Delegate.
 
+### Kubernetes delegate
+
+Update the `value` environment variable in harness-delegate.yaml:
+
+```yaml
+...  
+name: KUSTOMIZE_PATH  
+value: "<path>"  
+...
+```
+
+### Docker delegate
+
+Add the Kustomize path environment variable in the Delegate Docker compose file:
+
+```yaml
+- KUSTOMIZE_PATH=<path>
+```
 
 ## Configuring a Kustomize service with command flags 
 
@@ -496,28 +514,6 @@ When Harness executes the Kustomize `build` command, you can see these commands 
 ### Limitations
 
 Harness supports the Kustomize `build` command only. The Kustomize `build` command builds a Kustomization target from a directory or URL.
-
-
-### Kubernetes delegate
-
-Update the `value` environment variable in harness-delegate.yaml:
-
-
-```yaml
-...  
-name: KUSTOMIZE_PATH  
-value: "<path>"  
-...
-```
-
-### Docker delegate
-
-Add the Kustomize path environment variable in the Delegate Docker compose file:
-
-
-```yaml
-- KUSTOMIZE_PATH=<path>
-```
 
 ## Next steps
 
