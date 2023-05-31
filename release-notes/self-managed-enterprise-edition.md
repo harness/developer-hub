@@ -39,7 +39,7 @@ This release includes the following Harness module and component versions.
 
 - You can now deploy the delegate-minimal image in an air-gapped environment using `useMinimalDelegate` in your `overrides.yaml` file. For more information, got to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/). (SMP-1130)
 
-- The `nodeSelector` in Harness services failed for Redis and was missing in other services.
+- The `nodeSelector` in Harness services failed for Redis and was missing in other services. (SMP-1180)
 
    This issue is fixed. To use Redis `nodeSelector`, update the `overrides.yaml` file.
 
