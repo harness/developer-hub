@@ -44,13 +44,29 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - New default Git connector for Git Experience (CDS-66921)
 
-  You can now set the default Git connector remote entities like Git Experience pipelines and input sets. The default Git connector will be selected whenever a users is performing create or import operations with Git Experience entities. The default connector can be changed at any time and another connector can be used when needed.
-- ...
+  You can now set the default Git connector for Git Experience pipelines and input sets. The default Git connector will be selected whenever a user performs create or import operations with Git Experience entities. The default connector can be changed at any time and another connector can be used when needed.
+
+  You select the default connector in your project/org/account **Default Settings**:
+
+  <docimage path={require('./static/abb924b38a23ab57c26b3703d7c38e096eb60005625a6dfcd42793d503553a6e.png')} width="60%" height="60%" title="Click to view full size image" />
+
+- Approval step notifications. (CDS-31886, ZD-43905)
+  
+  Notifications are sent once a Harness [Approval step](https://developer.harness.io/docs/category/approvals) is approved or rejected. Harness sends the approval details along with the status.
+
+  Notifications are sent to the destinations set up in the user group(s) listed in the Approval step's **Approvers** setting. This includes email, Slack, PagerDuty, and MS Teams.
+
+  ![picture 87](static/fa61423c00604c9a2d1dcf3cd2e8c040d71992791e34abf983eb5befe8640159.png)
+
+  For information on setting up notifications for user groups, go to [Add and manage user groups](https://developer.harness.io/docs/platform/User-Management/add-user-groups).
+
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
+
+This release does not include any early access features.
 
 
 ```mdx-code-block
@@ -58,7 +74,45 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="Fixed issues">
 ```
 
+- Selecting stages in Triggers was resetting to all stages in the YAML editor. (CDS-69725)
+  
+  Now Harness avoids sending multiple API calls for merge, and stage selecting works as intended.
 
+  ![picture 88](static/ee0f296b5c9ed5249f409415b8a1dbb6b901ceed5e3b7118ee1ad40a6f93b77d.png)  
+
+- Infrastructure provisioning steps were missing for Google Function and AWS Lambda	Serverless	deployment types. (CDS-69595)
+  
+  Now both deployment types include [infrastructure provisioning steps](https://developer.harness.io/docs/category/provision-infrastructure).
+- Add support to fetch resolved service for evaluating repo format for artifactory artifact source	Artifacts, CDS UI	CDS-69485	45064	Users can now get the approval status of a JIRA or ServiceNow Ticket and pass in via Runtime in the Pipeline run form	Yes	
+- getTriggerDetails API was returning incorrect code (CDS-69329, ZD-44372)
+  
+  [getTriggerDetails](https://apidocs.harness.io/tag/Triggers/#operation/getTriggerDetails) API was returning a 200 status code when it was not able to find a Trigger. Now it returns a 404 status code and appropriate error message.
+- Pipelines services listing was limited to 100. (CDS-69273)
+  
+  Now the services list is paginated and all services can be viewed.
+- CD license utilization data was not reported for some accounts. (CDS-69101)
+  
+  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage can exceed the connection timeout.
+
+  This issue has been resolved. The license usage now retrieves the required information in batches to avoid read timeout.
+- Deployment Template connector variable expressions were not resolving. (CDS-68880)
+  
+  You can access information about the connectors used in a deployment template using connector variable expressions (for example, `<+stage.spec.infrastructure.output.variable.[name]>`). 
+  
+  <docimage path={require('./static/0e40fbf0db025ce3330a7b4e7352a8203acb51d5a06653b1b010a279e2f42cc5.png')} width="60%" height="60%" title="Click to view full size image" />
+  
+  These were not resolving but this has been fixed.	
+- Multi service stage templates could not be saved with fixed values. (CDS-68848, ZD-44569)
+  
+  Users were unable to save multi service pipelines when changing the type from **Runtime** to **Fixed Value**.
+  
+  This is now fixed and you can save multi services as fixed values in stage templates.
+- Encrypted config file opens secret text instead of secret file. (CDS-68601)
+  
+  Config files should only support encrypted files, so we removed encrypted text for config files in the Harness store.
+- Save button greyed out when variables are added or updated in a service template. (CDS-59320, ZD-43110)
+  
+  Users can now use the Save button when variables are added or updated in a service template.
 
 ```mdx-code-block
   </TabItem>
