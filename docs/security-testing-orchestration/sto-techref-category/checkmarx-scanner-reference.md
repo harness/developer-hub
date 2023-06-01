@@ -18,9 +18,9 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 <StoScannerStepNotes />
 
 <details>
-    <summary>Step Palette</summary>
+    <summary>Scanner Template example</summary>
 
-![](static/step-palette-00.png) 
+![](./static/checkmarx-scanner-template.png) 
 
 </details>
 
@@ -104,7 +104,7 @@ import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion
 <!-- ============================================================================= -->
 <a name="auth-domain"></a>
 
-#### Domain (_extraction_)
+#### Domain
 
 
 ```mdx-code-block
@@ -145,9 +145,9 @@ import StoSettingAuthType from './shared/step_palette/_sto-ref-ui-auth-type.md';
 
 <StoSettingAuthType />
 
+-->
 
-
-#### Access ID (_orchestration_)
+#### Access ID
 
 ```mdx-code-block
 import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
@@ -155,7 +155,7 @@ import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-acces
 
 <StoSettingAuthAccessID />
 
--->
+
 
 #### Access Token
 
@@ -169,6 +169,10 @@ import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-ac
 
 <!-- ============================================================================= -->
 
+#### Team Name
+
+The Checkmarx team name. Use the format `/<`*`server-name`*`>/<`*`team-name`*`>` — for example, `/server1.myorg.org/devOpsEast`.
+
 
 #### Project Name
 
@@ -179,16 +183,6 @@ import StoSettingToolProjectName from './shared/step_palette/_sto-ref-ui-tool-pr
 <StoSettingToolProjectName />
 
 <!-- ============================================================================= -->
-
-
-#### Project Version
-
-```mdx-code-block
-import StoSettingToolProjectVersion from './shared/step_palette/_sto-ref-ui-tool-project-version.md';
-```
-
-<a name="product-project-version"></a>
-<StoSettingToolProjectVersion />
 
 
 ### Log Level, CLI flags, and Fail on Severity
@@ -311,6 +305,8 @@ The following pipeline example illustrates an ingestion workflow. It consists of
 * An Action step scans a code repo using a Checkmarx GitHub Action and export the scan results to a SARIF data file.
 * A Checkmarx step that ingests the SARIF data.
 
+![Checkmarx ingestion pipeline in Pipeline Studio](./static/checkmarx-ingestion-pipeline-example.png)
+
 ```yaml
 pipeline:
   projectIdentifier: STO
@@ -333,7 +329,7 @@ pipeline:
             steps:
               - step:
                   type: Action
-                  name: Checkmarx CxFlow Action
+                  name: Checkmarx Scan GHA
                   identifier: CxFlow
                   spec:
                     uses: checkmarx-ts/checkmarx-cxflow-github-action@v1.6
@@ -351,7 +347,7 @@ pipeline:
                       break_build: false
               - step:
                   type: Checkmarx
-                  name: Checkmarx_1
+                  name: ingest-cmarx
                   identifier: Checkmarx_1
                   spec:
                     mode: ingestion
