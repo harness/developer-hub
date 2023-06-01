@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-05-31T10:00
+date: 2023-06-01T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -17,9 +17,9 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June xx, 2023 
+## Latest - June 01, 2023 
 
-### Service Reliability Management, version 794xx
+### Service Reliability Management, version 79400
 
 - Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
 
