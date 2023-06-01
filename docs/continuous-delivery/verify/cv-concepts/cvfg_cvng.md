@@ -36,7 +36,7 @@ Harness Platform provides flexible CV capabilities. You can easily add CV as a s
 
 The Service Instance Identifier (SII) is used by Harness Continuous Verification NextGen to identify [new or changed nodes](https://developer.harness.io/docs/continuous-delivery/verify/cv-results/interpret-metric-results#nodes-section) during a deployment. The SII can be considered a filter to help identify metrics on what has been deployed. Harness CVNG will then calculate what has been deployed based on the observed metrics leveraging the SII. Depending on your deployment type, for example a canary deployment, this will help determine which nodes are stable and which nodes are the canary in the current canary phase for analysis. 
 
-### Example Order of Operations using a SII
+### Example Order of Operations using SII
 In this example, setting up CVNG to have a 5 minute analysis window on a [Prometheus Health Source](https://developer.harness.io/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-prometheus) with a rolling deployment to a Kubernetes endpoint. 
 
 PromQL:
@@ -49,7 +49,7 @@ max(
 
 SII: `pod`
 
-Query Order by CVNG:
+#### Query Order by CVNG
 
 1. CVNG will query against the SII, in this case `pod`, to list all possible Pods given the time range. 
 	1. /api/v1/label/**pod**/values?start=1685548800&end=1685549100&match[]={app="harness-cv-prom-example"}
@@ -63,7 +63,7 @@ Node determination is now made.
 
 ### SII Configuration Tips
 
-The goal of the SII is to determine from a monitoring system what has been deployed. Different monitoring systems handle this differently and is dependent on how the monitoring system has been configured and labeling applied to resources being deployed. In the above Prometheus order of operations, other monitoring solutions might not require iteration over the SII, but the end effect is the same, gathering what was available before and after deployment for node determination. 
+The goal of the SII is to determine from a monitoring system what has been deployed. Different monitoring systems handle this differently and is dependent on how the monitoring system has been configured and labeling applied to resources being deployed. In the above [Prometheus order of operations](#example-order-of-operations-using-sii), other monitoring solutions might not require iteration over the SII, but the end effect is the same, gathering what was available before and after deployment for node determination. 
 
 #### Potential SII’s
 
