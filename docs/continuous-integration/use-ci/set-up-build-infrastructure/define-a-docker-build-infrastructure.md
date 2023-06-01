@@ -207,7 +207,7 @@ The Drone Runner service performs the build work. The delegate needs the runner 
 
 Run the Drone Runner executable on the Windows machine that you specified in the delegate's `RUNNER_URL`.
 
-Use Powershell to run these commands.
+Use PowerShell to run these commands.
 
 :::
 
