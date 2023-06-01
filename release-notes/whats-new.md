@@ -25,7 +25,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   You can edit the Harness Git connector, repository, and path to the YAML file.
 
-  To edit the Git details, select Edit Git Metadata in the pipelines and input sets listing pages. 
+  To edit the Git details, select **Edit Git Metadata** in the pipelines and input sets listing pages. 
 
   <docimage path={require('./static/d3ae175d36c932027045989f3c6d5b8b35ff3f50d7dec64195f1e1a264b4f577.png')} width="60%" height="60%" title="Click to view full size image" />  
 
@@ -41,9 +41,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - New default Git connector for Git Experience (CDS-66921)
 
-  You can now set the default Git connector for Git Experience pipelines and input sets. The default Git connector will be selected whenever a user performs create or import operations with Git Experience entities. The default connector can be changed at any time and another connector can be used when needed.
+  You can now set the default Git connector for Git Experience pipelines and input sets. The default Git connector will be selected whenever you create or import operations with the Git Experience entities. The default connector can be changed at any time and another connector can be used when needed.
 
-  You select the default connector in your project/org/account **Default Settings**:
+  You can select the default connector in your project, org, or account **Default Settings**:
 
   <docimage path={require('./static/abb924b38a23ab57c26b3703d7c38e096eb60005625a6dfcd42793d503553a6e.png')} width="60%" height="60%" title="Click to view full size image" />
 
