@@ -71,7 +71,7 @@ This release does not include any early access features.
 
 ### Harness Manager delegate fixed issues
 
-The fixed issue below is available with version 79414 and does not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
+The fixed issue below is available with version 79414 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
 
 - Delegate instances that do not shut down gracefully and do not come back online are removed from the UI after three hours. (PL-38755)
 

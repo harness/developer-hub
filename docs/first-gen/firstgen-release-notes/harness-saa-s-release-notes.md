@@ -36,7 +36,7 @@ This release does not include early access features.
 
 #### Harness Manager delegate fixed issues
 
-The fixed issue below is available with version 79414 and does not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+The fixed issue below is available with version 79414 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
 
 - The `DMS_MONGO_URI` was missing from the ConfigMap of cg-manager for Self-Managed Enterprise Edition Helm installations. (PL-38850)
 
