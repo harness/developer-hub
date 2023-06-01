@@ -29,7 +29,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
 
-### Harness Manager delegate new features
+**Harness Manager delegate new features**
 
 The features below are available with version 79414 and do not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
 
@@ -42,7 +42,7 @@ The features below are available with version 79414 and do not require a new del
   <TabItem value="Early access">
 ```
 
-This release does not include any early access feature.
+This release does not include any early access features.
 
 ```mdx-code-block
   </TabItem>
@@ -74,6 +74,7 @@ This release does not include any early access feature.
 The fixed issue below is available with version 79414 and does not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
 
 - Delegate instances that do not shutdown gracefully and do not come back online are removed from the UI after three hours. (PL-38755)
+
 
 ```mdx-code-block
   </TabItem>
