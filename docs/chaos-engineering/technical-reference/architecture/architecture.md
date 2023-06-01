@@ -2,18 +2,18 @@
 title: Architecture
 sidebar_position: 1
 ---
-This section describes the Harness Chaos Engineering (HCE) architecture along with the components.
+This section describes the Harness Chaos Engineering (CE) architecture along with the components.
 
-Below is an overview of the HCE architecture.
+Below is an overview of the CE architecture.
 
 ![Overview](./static/architecture/overview.png)
 
-HCE comprises two parts:
+CE comprises two parts:
 
 1. **Harness control plane**
 2. **Chaos infrastructure**
 
-The diagram below gives a peek into the HCE architecture.
+The diagram below gives a peek into the CE architecture.
 ![Architecture](./static/architecture/HCE-architecture.png)
 
 ## Harness control plane
@@ -22,11 +22,11 @@ The diagram below gives a peek into the HCE architecture.
 
 ### Control plane components
 
-The control plane in HCE contains many components, which are described below.
+The control plane in CE contains many components, which are described below.
 
 #### Chaos infrastructure
 
-**Chaos infrastructure** is a service that runs within your target environment to help HCE access the target resources and inject chaos at cloud-native scale. It can be set up with cluster-wide access or with a single namespace scope.
+**Chaos infrastructure** is a service that runs within your target environment to help CE access the target resources and inject chaos at cloud-native scale. It can be set up with cluster-wide access or with a single namespace scope.
 
 - There are different types of chaos infrastructures for different environments, such as Kubernetes, Linux VMs, AWS cloud, VMware, etc.
 - Based on the target environments, chaos infrastructures can be installed as a Kubernetes service, a Linux daemon, and so on.
@@ -35,7 +35,7 @@ All the chaos infrastructure services adhere to the principle of least privilege
 
 #### Enterprise hub
 
-Enterprise chaos hub comes out of the box with HCE and provides many faults and experiment templates. Enterprise hub is a prebuilt chaos hub, a collection of manifests and charts that represent the existing experiments and faults. You can use faults from multiple categories to create chaos experiments in the Enterprise chaos hub.
+Enterprise chaos hub comes out of the box with CE and provides many faults and experiment templates. Enterprise hub is a prebuilt chaos hub, a collection of manifests and charts that represent the existing experiments and faults. You can use faults from multiple categories to create chaos experiments in the Enterprise chaos hub.
 
 #### Chaos manager
 
