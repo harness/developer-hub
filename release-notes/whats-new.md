@@ -19,7 +19,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - June 01, 2023 
 
-### Service Reliability Management, version 79400
+### Service Reliability Management, version 79414
 
 - Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
 
