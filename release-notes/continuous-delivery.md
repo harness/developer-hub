@@ -83,9 +83,9 @@ This release does not include any early access features.
 - Infrastructure provisioning steps were missing for Google Function and AWS Lambda	Serverless	deployment types. (CDS-69595)
   
   Now both deployment types include [infrastructure provisioning steps](https://developer.harness.io/docs/category/provision-infrastructure).
-- Unable to fetch resolved services for evaluating repository format for Artifactory artifact source. (CDS-69485	45064)	
+- Unable to fetch the approval status of a JIRA or ServiceNow ticket in the **Artifact Path** drop-down as runtime inputs during pipeline execution. (CDS-69485, ZD-45064)	
 
-This issues is fixed. You  can now get the approval status of a JIRA or ServiceNow ticket and pass it at runtime during a pipeline execution.
+  This issues is fixed. Support has been added to poll the get approval API to fetch and update the ticket status field for JIRA and ServiceNow approval during a pipeline execution.
 - The getTriggerDetails API was returning incorrect code (CDS-69329, ZD-44372)
   
   The [getTriggerDetails](https://apidocs.harness.io/tag/Triggers/#operation/getTriggerDetails) API was returning a 200 status code when it was not able to find a Trigger. Now it returns a 404 status code and appropriate error message.
