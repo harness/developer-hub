@@ -21,11 +21,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Harness Platform
 
-* Harness now blocks any RBAC change event that creates more than 2 million Access Control Lists (ACLs). (PL-38756)
+- You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
 
-  Harness uses Access Control Lists (ACLs) for faster authorization checks. Principals, resource types, permissions, and scopes contribute to the number of ACLs created for role assignment.
-
-* You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
+- You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
 <details>
 <summary>2023 releases</summary>
