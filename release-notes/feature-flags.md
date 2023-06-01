@@ -314,6 +314,9 @@ This release does not include early access features.
   * Disabling the metrics processor didn't disable entries being written to the queue, causing an eventual memory leak. This fix corrects this behavior. (FFM-6965)
   * Added TLS support to the SDK and updated the documentation in the SDK [repository](https://github.com/harness/ff-ruby-server-sdk).
 
+* The **Apex** server SDK has been updated to version **beta 0.5.1** with the following update.
+  * The JSON parsing code was unable to parse the fields `createdAt` and `modifiedAt` in the Target Segment response, because the values were too large for an Integer data type. This issue has been fixed. (FFM-7812)
+
 #### April 4, 2023
 
 ##### What's new
