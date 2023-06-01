@@ -23,7 +23,7 @@ A probe, with its spec defined in the Chaos Engine, is triggered by the Chaos Ru
 
 ### Types
 
-HCE facilitates four types of probes.
+CE facilitates four types of probes.
 
 - **HTTP Probe**: To query health/downstream URIs
 - **Command Probe**: To execute any user-desired health-check function implemented as a shell command
