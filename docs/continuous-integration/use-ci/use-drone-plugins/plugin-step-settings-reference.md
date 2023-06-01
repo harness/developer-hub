@@ -1,14 +1,14 @@
 ---
 title: Plugin step settings
-description: Plugins are Docker containers that perform predefined tasks and are configured as steps.
-sidebar_position: 70
+description: Plugins perform predefined tasks.
+sidebar_position: 40
 helpdocs_topic_id: 8r5c3yvb8k
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the CI Plugin step. [Plugins](./explore-ci-plugins.md) are Docker containers that perform predefined tasks and are configured as steps in your stage. Plugins can be used to deploy code, publish artifacts, send notifications, and more.
+This topic provides settings for the **Plugin** step. For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md)
 
 :::info
 
