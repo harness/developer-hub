@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 26, 2023, version 79411
+## Latest - May 26, 2023, version 79414
 
 ```mdx-code-block
 <Tabs>
@@ -28,7 +28,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   You can edit the Harness Git connector, repository, and path to the YAML file.
 
-  To edit the Git details, select Edit Git Metadata in the pipelines and input sets listing pages. 
+  To edit the Git details, select **Edit Git Metadata** in the pipelines and input sets listing pages. 
 
   <docimage path={require('./static/d3ae175d36c932027045989f3c6d5b8b35ff3f50d7dec64195f1e1a264b4f577.png')} width="60%" height="60%" title="Click to view full size image" />  
 
@@ -44,9 +44,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - New default Git connector for Git Experience (CDS-66921)
 
-  You can now set the default Git connector for Git Experience pipelines and input sets. The default Git connector will be selected whenever a user performs create or import operations with Git Experience entities. The default connector can be changed at any time and another connector can be used when needed.
+  You can now set the default Git connector for Git Experience pipelines and input sets. The default Git connector will be selected whenever you create or import operations with the Git Experience entities. The default connector can be changed at any time and another connector can be used when needed.
 
-  You select the default connector in your project/org/account **Default Settings**:
+  You can select the default connector in your project, org, or account **Default Settings**:
 
   <docimage path={require('./static/abb924b38a23ab57c26b3703d7c38e096eb60005625a6dfcd42793d503553a6e.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -83,34 +83,36 @@ This release does not include any early access features.
 - Infrastructure provisioning steps were missing for Google Function and AWS Lambda	Serverless	deployment types. (CDS-69595)
   
   Now both deployment types include [infrastructure provisioning steps](https://developer.harness.io/docs/category/provision-infrastructure).
-- Add support to fetch resolved service for evaluating repo format for artifactory artifact source	Artifacts, CDS UI	CDS-69485	45064	Users can now get the approval status of a JIRA or ServiceNow Ticket and pass in via Runtime in the Pipeline run form	Yes	
-- getTriggerDetails API was returning incorrect code (CDS-69329, ZD-44372)
+- Unable to fetch resolved services for evaluating repository format for Artifactory artifact source. (CDS-69485	45064)	
+
+This issues is fixed. You  can now get the approval status of a JIRA or ServiceNow ticket and pass it at runtime during a pipeline execution.
+- The getTriggerDetails API was returning incorrect code (CDS-69329, ZD-44372)
   
-  [getTriggerDetails](https://apidocs.harness.io/tag/Triggers/#operation/getTriggerDetails) API was returning a 200 status code when it was not able to find a Trigger. Now it returns a 404 status code and appropriate error message.
+  The [getTriggerDetails](https://apidocs.harness.io/tag/Triggers/#operation/getTriggerDetails) API was returning a 200 status code when it was not able to find a Trigger. Now it returns a 404 status code and appropriate error message.
 - Pipelines services listing was limited to 100. (CDS-69273)
   
   Now the services list is paginated and all services can be viewed.
 - CD license utilization data was not reported for some accounts. (CDS-69101)
   
-  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage can exceed the connection timeout.
+  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
 
   This issue has been resolved. The license usage now retrieves the required information in batches to avoid read timeout.
-- Deployment Template connector variable expressions were not resolving. (CDS-68880)
+- Deployment template connector variable expressions were not resolving. (CDS-68880)
   
   You can access information about the connectors used in a deployment template using connector variable expressions (for example, `<+stage.spec.infrastructure.output.variable.[name]>`). 
   
   <docimage path={require('./static/0e40fbf0db025ce3330a7b4e7352a8203acb51d5a06653b1b010a279e2f42cc5.png')} width="60%" height="60%" title="Click to view full size image" />
   
-  These were not resolving but this has been fixed.	
-- Multi service stage templates could not be saved with fixed values. (CDS-68848, ZD-44569)
+  This issue is fixed.	
+- Multi-service stage templates could not be saved with fixed values. (CDS-68848, ZD-44569)
   
-  Users were unable to save multi service pipelines when changing the type from **Runtime** to **Fixed Value**.
+  Users were unable to save multi-service pipelines when changing the type from **Runtime** to **Fixed Value**.
   
-  This is now fixed and you can save multi services as fixed values in stage templates.
+  This is now fixed and you can save multiple services as fixed values in stage templates.
 - Encrypted config file opens secret text instead of secret file. (CDS-68601)
   
   Config files should only support encrypted files, so we removed encrypted text for config files in the Harness store.
-- Save button greyed out when variables are added or updated in a service template. (CDS-59320, ZD-43110)
+- The Save button greyed out when variables are added or updated in a service template. (CDS-59320, ZD-43110)
   
   Users can now use the Save button when variables are added or updated in a service template.
 
