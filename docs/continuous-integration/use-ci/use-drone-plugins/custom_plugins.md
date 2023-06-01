@@ -40,7 +40,7 @@ To create a plugin, you need to prepare a script, create a Docker image to run t
 
    :::info Variables
 
-   The above example script includes variable inputs: `PLUGIN_PATH`, `PLUGIN_REPO_URL`, and `PLUGIN_BRANCH`. [Variables in plugin scripts](#variables-in-plugin-scripts) become the plugin's **Settings** when you [add the Plugin step](#run-your-plugin-in-harness) to your CI pipeline.
+   The above example script includes variable inputs: `PLUGIN_PATH`, `PLUGIN_REPO_URL`, and `PLUGIN_BRANCH`. [Variables in plugin scripts](#variables-in-plugin-scripts) become the plugin's **Settings** when you [add the Plugin step](#add-the-plugin-step) to your CI pipeline.
 
    :::
 
@@ -58,7 +58,7 @@ To create a plugin, you need to prepare a script, create a Docker image to run t
    ENTRYPOINT [ "/usr/local/bin/clone.sh" ]
    ```
 
-3. Using the method of your choice, build and publish the plugin image to a Docker registry. Take note of the Docker repo and image name, such as `my-docker-repo/git-clone-plugin`. You need it when you [add the Plugin step](#run-your-plugin-in-harness) to your CI pipeline.
+3. Using the method of your choice, build and publish the plugin image to a Docker registry. Take note of the Docker repo and image name, such as `my-docker-repo/git-clone-plugin`. You need it when you [add the Plugin step](#add-the-plugin-step) to your CI pipeline.
 
    ```
    docker build -t my-docker-repo/git-clone-plugin .
@@ -85,7 +85,7 @@ If your plugin image is private, others in your organization can use your plugin
 
 If your plugin image is public, you can share it with anyone. You can submit a pull request to the [drone-plugin-index repository](https://github.com/drone/drone-plugin-index) if you'd like your plugin to be considered for the [Drone Plugins Marketplace](https://plugins.drone.io/).
 
-## Run your plugin in Harness
+## Add the Plugin step
 
 Use a **Plugin** step to run a plugin in a Harness CI pipeline. The following instructions use the `clone.sh` plugin example from [Create a plugin](#create-your-plugin).
 

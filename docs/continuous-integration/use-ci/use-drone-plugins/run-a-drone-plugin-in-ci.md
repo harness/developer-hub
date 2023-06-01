@@ -30,9 +30,9 @@ For more information on the acquisition of Drone, go to the following blog posts
 
 </details>
 
-## Configure a Plugin step
+## Add a plugin to a Harness CI pipeline
 
-To demonstrate how to add a Drone plugin to a Harness CI pipeline, the following instructions use the [Download plugin](https://plugins.drone.io/plugins/download) as an example. This plugin downloads an archive to the [stage workspace](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage).
+To demonstrate how to add a Drone plugin to a Harness CI pipeline, these steps use the [Download plugin](https://plugins.drone.io/plugins/download) as an example. This plugin downloads an archive to the [stage workspace](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage).
 
 ```mdx-code-block
 <Tabs>
@@ -242,7 +242,7 @@ steps:
 
 ### Listed and nested settings
 
-To list-formatted settings from Drone Plugin YAML to Harness CI YAML, merge them with comma separation.
+To convert list-formatted settings from Drone Plugin YAML to Harness CI YAML, merge them with comma separation.
 
 ```mdx-code-block
 <Tabs>
