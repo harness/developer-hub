@@ -53,9 +53,6 @@ import TabItem from '@theme/TabItem';
 
    For a complete description of how to set up a GitHub Action Plugin step, go to [Use the GitHub Action plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step).
 
-   :::note
-
-   :::
 
    <table>
     <tr>
