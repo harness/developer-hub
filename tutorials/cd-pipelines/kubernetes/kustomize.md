@@ -48,18 +48,18 @@ For the pipeline to run successfully, please follow all of the following steps a
 
 :::
 
-### delegate
+### Delegate
 
 The Harness Delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifact registries, cloud platforms, etc. The delegate is installed in the target infrastructure (Kubernetes cluster) and performs operations including deployment and integration. To learn more about the delegate, go to [delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
 
-1. In **Project Setup**, select **delegates**.
+1. In **Project Setup**, select **Delegates**.
     - Select **Tokens**.
         - Select **New Token**.
         - Enter the named `delegate_token`.
         - Select **Apply**.
         - Copy the token value by selecting the copy icon and store the token somewhere.
         - Select **Close**.
-    - Select **delegates**.
+    - Select **Delegates**.
         - Select **Install delegate**. For this tutorial, let's explore how to install the delegate using Helm.
         - Add the Harness Helm chart repo to your local Helm registry.  
 
