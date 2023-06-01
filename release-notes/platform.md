@@ -67,7 +67,7 @@ The fixed issue below is available with version 79411 and does not require a new
 
   A code enhancement to display an appropriate error message fixed this issue.
 
-- The creation of SSH or WinRM secrets in a project or organization after disabling Harness' built-in secret manager is not supported.  (PL-32562)
+- The creation of SSH or WinRM secrets in a project or organization after disabling Harness' built-in secret manager is not supported. (PL-32562)
   
   A code enhancement has fixed this issue.
 
