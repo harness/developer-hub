@@ -17,7 +17,7 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - May 31, 2023
+## Latest - June 01, 2023
 
 ### Harness Platform
 
@@ -29,7 +29,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Harness Manager delegate
 
-The feature below is available with version 794xx and does not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
+The feature below is available with version 79414 and does not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
 
 * You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 

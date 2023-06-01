@@ -16,7 +16,7 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-### May 31, 2023, version 794xx
+### June 01, 2023, version 79414
 
 #### What's new
 
@@ -30,7 +30,7 @@ This release does not include early access features.
 
 #### Harness Manager delegate fixed issues
 
-The fixed issue below is available with version 794xx and does not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+The fixed issue below is available with version 79414 and does not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
 
 - The `DMS_MONGO_URI` was missing from the ConfigMap of cg-manager for Self-Managed Enterprise Edition Helm installations. (PL-38850)
 

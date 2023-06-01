@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Platform, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 31, 2023, version 794xx
+## Latest - June 01, 2023, version 79414
 
 
 ```mdx-code-block
@@ -35,7 +35,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Harness Manager delegate new features
 
-The features below are available with version 794xx and do not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
+The features below are available with version 79414 and do not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
 
 - You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
@@ -75,7 +75,7 @@ This release does not include any early access feature.
 
 ### Harness Manager delegate fixed issues
 
-The fixed issue below is available with version 794xx and does not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
+The fixed issue below is available with version 79414 and does not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
 
 - Delegate instances that do not shutdown gracefully and do not come back online are removed from the UI after three hours. (PL-38755)
 
