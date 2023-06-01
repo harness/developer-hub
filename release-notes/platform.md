@@ -2,7 +2,7 @@
 title: Harness Platform release notes
 sidebar_label: Harness Platform
 tags: [NextGen, "platform"]
-date: 2023-05-23T10:00:30
+date: 2023-06-01T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Platform, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 23, 2023, version 79306
+## Latest - June 01, 2023, version 79414
 
 
 ```mdx-code-block
@@ -27,7 +27,56 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
+- You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
+
 - You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not include any early access feature.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+- The SSH secret reference gets created even if secret creation fails due to a validation error. (PL-38549, ZD-44073)
+
+  Reference creation now only occurs if the SSH secret is created.
+
+- The error message displayed during pipeline execution when connector permissions are missing is unclear. (PL-32662)
+
+  A code enhancement to display an appropriate error message fixed this issue.
+
+- The creation of SSH or WinRM secrets in a project or organization after disabling Harness' built-in secret manager is not supported.  (PL-32562)
+  
+  A code enhancement has fixed this issue.
+
+- The comparison of email addresses during sign in is case-sensitive. (PL-32198)
+
+  A code enhancement has fixed this issue.
+
+- The error message displayed when permissions are missing during pipeline execution does not mention the corresponding resource Id. (PL-31350)
+
+  A code enhancement to display the resource Id in the error message fixed this issue.
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 23, 2023, version 79306
+
+##### What's new
 
 - The **Connector Details** page now shows whether a connector is connected via a delegate or via Harness Platform. (PL-32673)
 
@@ -49,18 +98,11 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
 
 - AuthZ now considers the SAML setting that the user logged in to when multiple SAML settings are present and the user belongs to more than one of them. The user will be removed from any other SAML settings that the same user might have been part of and synced with Harness through previous SAML logins.  (PL-32484)
 
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 This release does not include any early access feature.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
 
 - The email address is displayed instead of the display name for users created through Okta. (PL-38479, ZD-43201)
   
@@ -110,16 +152,6 @@ This release does not include any early access feature.
 - Invites to users fail with an unauthorized error while RBAC setup is still in progress. (PL-32117)
 
   A polling system ensures that RBAC setup has been completed. The Harness Delegate version 79307 is required for this fix.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 04, 2023, version 79214
 

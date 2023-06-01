@@ -63,6 +63,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   For information on setting up notifications for user groups, go to [Add and manage user groups](https://developer.harness.io/docs/platform/User-Management/add-user-groups).
 
+### Harness Platform, version 79414
+ 
+- You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
+
+- You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
 <details>
 <summary>2023 releases</summary>
@@ -125,8 +130,6 @@ Added support for showing artifacts on the **Artifacts** tab in Harness Cloud an
 Previously, this was supported only for Kubernetes builds. The artifacts are visible on the execution **Artifact** tab and the artifact details are visible on the step output window. 
 
 ##### Harness Platform
-
-* You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
 * The **Connector Details** page now shows whether a connector is connected via a delegate or via Harness Platform. (PL-32673)
 
