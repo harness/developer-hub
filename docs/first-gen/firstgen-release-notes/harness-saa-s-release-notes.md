@@ -32,7 +32,7 @@ This release does not include early access features.
   
   [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
 
-- HTML characters in the `userName` issues during deployments. The following characters are no longer allowed in the `userName`: `:` , `/` , `<` , `>` , `=` , `(` , `)`. (PL-24129)
+- HTML characters in the `userName` caused issues during deployments. The following characters are no longer allowed in the `userName`: `:` , `/` , `<` , `>` , `=` , `(` , `)`. (PL-24129)
 
 #### Harness Manager delegate fixed issues
 
