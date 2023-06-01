@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-05-31T10:00
+date: 2023-06-01T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
