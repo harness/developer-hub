@@ -14,21 +14,21 @@ helpdocs_is_published: true
 This module is currently available in Beta to limited customers. Contact Harness Support if you would like to try it out.
 :::
 
-Harness IDP lets developers **create** new software components in seconds following the company’s best practices. It lets them **manage** their software by presenting a developer-centric view of all the relevant information. And it lets them **explore** the internal software ecosystem of the company, discover tech docs, APIs, services to enable better collaboration.
+Harness IDP lets you **create** new software components in seconds adhering to your company’s best practices. It lets you **manage** the software you own by presenting a developer-centric view of all the relevant information like service health, deployments and alerts. And it lets you **explore** the internal software ecosystem of the company, discover technical docs, APIs, services to enable better collaboration.
 
-Fully integrated into the Harness platform, IDP reduces the maintenance overhead and investment required from customers and is enterprise ready with our platform features.
+Fully integrated into the Harness platform, IDP reduces the maintenance overhead and investment required from the platform engineering and is enterprise ready.
 
 ## Service onboarding pipelines
 
 ![](static/pipelines-screenshot.png)
 
-Platform engineers can orchestrate the onboarding of services by creating pipelines in Harness Pipeline Studio. On the other hand, developers can create a backend service, API, or website by submitting a few details. Developers focus on what they do best, which is writing features, while Platform engineers focus on creating software templates, automating processes, and enforcing standards.
+As a platform engineer, you can orchestrate the onboarding of services by creating pipelines in the Harness Pipeline Studio. On the other hand, as a developer, you can create a new backend service, API, or website by submitting a few details as configured by your platform engineering. Developers focus on what they do best, which is writing features, while Platform engineers focus on creating software templates, automating processes, and enforcing standards.
 
 ## Software catalog
 
 ![](static/catalog-screenshot.png)
 
-The software catalog is a centralized registry for all your software (services, websites, libraries, data pipelines, and so on), and it helps you track their ownership, metadata, and dependencies. The catalog is built from metadata YAML files, each of which is stored with its its code and owned by a team.
+The software catalog is a centralized registry for all your software (services, websites, libraries, data pipelines, and so on), and it helps you track their ownership, metadata, and dependencies. The catalog is built from metadata YAML files, each of which is stored with its code and owned by a team.
 
 ## Extensibility through plugins
 

@@ -35,12 +35,7 @@ export default function IDP() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness IDP lets developers <b>create</b> new software components
-              in seconds following the company’s best practices. It lets them{" "}
-              <b>manage</b> their software by presenting a developer-centric
-              view of all the relevant information. And it lets them{" "}
-              <b>explore</b> the internal software ecosystem of the company,
-              discover tech docs, APIs, services to enable better collaboration.
+              A home for developers to create, manage, and explore software.
             </p>
           </div>
         </div>
