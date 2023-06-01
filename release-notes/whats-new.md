@@ -72,7 +72,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <details>
 <summary>2023 releases</summary>
 
-#### May 29, 2023, version 79600
+#### May 29, 2023, version 79505
 
 ##### Cloud Cost Management
 
