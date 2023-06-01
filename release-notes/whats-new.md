@@ -17,7 +17,7 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-### Continuous Delivery, version 79411
+### Continuous Delivery, version 79414
 
 - Edit Git details for pipelines stored using Harness Git Experience. (CDS-69130)
   
