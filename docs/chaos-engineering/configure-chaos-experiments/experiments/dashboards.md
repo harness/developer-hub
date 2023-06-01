@@ -17,7 +17,7 @@ With Harness dashboards, you can:
 
 For a complete guide to Harness dashboards, go to [Dashboards](/docs/category/dashboards-1).
 
-This topic provides some highlights and useful information about the CE  dashboards.
+This topic provides some highlights and useful information about the CE dashboards.
 
 ## CE  dashboard highlights
 
