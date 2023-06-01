@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-05-23T10:00:20
+date: 2023-06-01T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -15,12 +15,49 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 23, 2023, version 79307
+## Latest - June 01, 2023, version 79413
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+
+- Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not include any early access features.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+- The ErrorBudgetReset API incorrectly accepting Rolling type SLOs along with Calendar type SLOs. (SRM-14692)  
+
+  This issue has been resolved. Now, the ErrorBudgetReset API only accepts Calendar type SLOs.
+
+- Unable to create SLO using SignalFX metrics. (OIP-406)  
+
+  This issue has been resolved. Now, SignalFX's health source supports SLI functionality, and you can create SLOs using SignalFX metrics.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 23, 2023, version 79307
+
+##### What's new
 
 - Continuous Error Tracking (CET) is a separate module in Harness now and no longer available as a health source in SRM. To learn more about CET, go to the [Continuous Error Tracking Documentation](https://developer.harness.io/docs/continuous-error-tracking). (SRM-14701)
 
@@ -42,18 +79,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   - Contributing SLO Issues: Errors in contributing SLOs are now reflected in the composite SLO, ensuring a complete picture of performance when individual components encounter problems.
 
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
 
 - Error budget burn rate notifications are not being sent for Request Based SLO. (SRM-14705).  
   
@@ -78,16 +108,6 @@ This release does not include any early access features.
 - Missing data in SLOs was not considered in error budget burn rate notifications. (SRM-14682)  
 
   - This issue has been resolved. Now the missing data is treated according to user preference (GOOD, BAD, or IGNORE), contributes to error budget burn rate, and is included in notifications.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 04, 2023, version 79214
 

@@ -2,7 +2,7 @@
 title: Harness Platform release notes
 sidebar_label: Harness Platform
 tags: [NextGen, "platform"]
-date: 2023-05-31T10:00:30
+date: 2023-06-01T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -26,10 +26,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <Tabs>
   <TabItem value="What's new">
 ```
-
-- Harness now blocks any RBAC change event that creates more than 2 million Access Control Lists (ACLs). (PL-38756)
-
-  Harness uses Access Control Lists (ACLs) for faster authorization checks. Principals, resource types, permissions, and scopes contribute to the number of ACLs created for role assignment.
 
 - You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
 
@@ -78,6 +74,53 @@ This release does not include any early access feature.
 The fixed issue below is available with version 79414 and does not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
 
 - Delegate instances that do not shutdown gracefully and do not come back online are removed from the UI after three hours. (PL-38755)
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 23, 2023, version 79306
+
+##### What's new
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not include any early access feature.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+- The SSH secret reference gets created even if secret creation fails due to a validation error. (PL-38549, ZD-44073)
+
+  Reference creation now only occurs if the SSH secret is created.
+
+- The error message displayed during pipeline execution when connector permissions are missing is unclear. (PL-32662)
+
+  A code enhancement to display an appropriate error message fixed this issue.
+
+- The creation of SSH or WinRM secrets in a project or organization after disabling Harness' built-in secret manager is not supported.  (PL-32562)
+  
+  A code enhancement has fixed this issue.
+
+- The comparison of email addresses during sign in is case-sensitive. (PL-32198)
+
+  A code enhancement has fixed this issue.
+
+- The error message displayed when permissions are missing during pipeline execution does not mention the corresponding resource Id. (PL-31350)
+
+  A code enhancement to display the resource Id in the error message fixed this issue.
+
 
 ```mdx-code-block
   </TabItem>
