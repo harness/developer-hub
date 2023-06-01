@@ -28,8 +28,8 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 CCM provides insight and visibility into your cloud infrastructure costs. CCM provides the following benefits:
 
-* **Cost Visibility**: Insights into the costs of your Harness Applications and clusters. Provides granular cost details of your cluster namespaces, workloads, label, nodes, pods, and labels.
-* **Cost Optimization**: Details of total cost vs. utilized, idle, and unallocated cost. Forecasts future spend based on historical data.
+* **Cost Visibility**: Insights into the costs of your Harness Applications and clusters. Provides granular cost details of your cluster namespaces, workloads, label, nodes, pods, and labels. Details of total cost vs. utilized, idle, and unallocated cost. Forecasts future spend based on historical data.
+* **Cost Optimization**: Optimize and minimize the costs associated with utilizing cloud resources. The AutoStoppiing rules, Recommendations, and the Asset Governance features help you identify cloud resources and services that are idle or underutilized and take required action to ensure optimum utilization.
 * **Cost Governance**: Enables you to set a budget and configure notifications based on thresholds.
 
 ![](./static/continuous-efficiency-overview-04.png)

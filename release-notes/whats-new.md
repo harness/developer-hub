@@ -72,13 +72,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <details>
 <summary>2023 releases</summary>
 
-#### May 25, 2023
+#### May 29, 2023, version 79600
 
-##### Cloud Cost Management, version 79600
+##### Cloud Cost Management
 
 **Azure VM recommendations**
 
   Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
+
+#### May 25, 2023 
 
 ##### Security Testing Orchestration, version 1.54.1
 
