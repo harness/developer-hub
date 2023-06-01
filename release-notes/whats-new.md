@@ -17,7 +17,9 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-### Continuous Delivery, version 79414
+## Latest - June 01, 2023, version 79414
+
+### Continuous Delivery
 
 - Edit Git details for pipelines stored using Harness Git Experience. (CDS-69130)
   
@@ -58,13 +60,18 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   For information on setting up notifications for user groups, go to [Add and manage user groups](https://developer.harness.io/docs/platform/User-Management/add-user-groups).
 
 
-### Cloud Cost Management, version 79600
+<details>
+<summary>2023 releases</summary>
+
+#### May 25, 2023
+
+##### Cloud Cost Management, version 79600
 
 **Azure VM recommendations**
 
   Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
 
-### Security Testing Orchestration, version 1.54.1
+##### Security Testing Orchestration, version 1.54.1
 
 * This release includes new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
 
@@ -81,8 +88,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * This release includes a minor UI update. In **Security Tests** > **Details**, the **Exempt** button has been renamed to **Request Exemption** to make the button's purpose more clear. (STO-5928)
 
-<details>
-<summary>2023 releases</summary>
 
 #### May 23, 2023, version 79307
 
@@ -219,13 +224,6 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
    }
    ```
   
-May 17, 2023, STO Core version 1.53.0
-
-#### Security Testing Orchestration
-
-* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
-
-  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
 
 #### May 17, 2023, STO Core version 1.53.0
 
