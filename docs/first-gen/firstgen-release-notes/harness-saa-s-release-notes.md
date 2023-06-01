@@ -28,6 +28,12 @@ This release does not include early access features.
 
 #### Fixed issues
 
+- CD license utilization data was not reported for some accounts. (CDS-69101)
+  
+  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
+
+- HTML characters in the `userName` issues during deployments. The following characters are no longer allowed in the `userName`: `:` , `/` , `<` , `>` , `=` , `(` , `)`. (PL-24129)
+
 #### Harness Manager delegate fixed issues
 
 The fixed issue below is available with version 79414 and does not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
