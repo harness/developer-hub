@@ -151,7 +151,8 @@ You can use your CI pipeline to test a Dockerfile used in your codebase and veri
 1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
 2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
 3. Click **Add Variable** and enter the following:
-	1. Name: **PLUGIN\_NO\_PUSH**
+	1a. For Kubernetes Build Infrastructure, use Name: **PLUGIN\_NO\_PUSH**
+	1b. For Harness Cloud Build Infrastructure, use Name: **PLUGIN\_DRY\_RUN**
 	2. Type: **String**
 	3. Value: **true**
 4. Save and run the pipeline.
