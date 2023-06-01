@@ -139,10 +139,10 @@ Git Experience enables you to create branches in your Harness repo so you can cr
 
 ## Set default Git connector for Git Experience
 
-You can set the default Git connector for Git Experience pipelines and input sets. The default Git connector will be selected whenever a user is performing create or import operations with Git Experience entities. 
+You can set the default Git connector for Git Experience pipelines and input sets. The default Git connector will be selected whenever you create or import operations with Git Experience entities. 
 
 This default connector can be changed at any time and another connector can be used when needed.
 
-You select the default connector in your project/org/account **Default Settings**:
+You can select the default connector in your project, org, or account **Default Settings**:
 
 <docimage path={require('./static/78f49fd6d5d64ecd1b877cf3f76767ae04cce53bffccbb67b20447c64ccca5cf.png')} width="60%" height="60%" title="Click to view full size image" />  
