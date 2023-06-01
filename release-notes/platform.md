@@ -29,7 +29,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
 
-**Harness Manager delegate new features**
+### Harness Manager delegate new features
 
 The features below are available with version 79414 and do not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
 
