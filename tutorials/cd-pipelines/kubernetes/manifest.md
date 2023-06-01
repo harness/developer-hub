@@ -468,7 +468,7 @@ You've just learned how to use **Harness GitOps** to deploy application using a 
 
 #### What's Next?
 - Keep learning about Harness GitOps. Create a GitOps ApplicationSet and PR Pipeline in Harness GitOps by following this [guide](https://developer.harness.io/docs/continuous-delivery/gitops/harness-git-ops-application-set-tutorial).
-- Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
+- Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.  
 
 ```mdx-code-block
 </TabItem>
