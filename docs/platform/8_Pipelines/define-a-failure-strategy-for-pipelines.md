@@ -14,8 +14,7 @@ You can add a Rollback Pipeline failure strategy to your pipelines. Rollback pip
 
 :::info
 
-During [Pipeline chaining](/docs/platform/pipelines/pipeline-chaining/), if there is a stage of type, pipeline, the deployment stages inside the child pipeline cannot be rolled back using the Rollback Pipeline failure strategy because the execution of the child pipeline is considered as a separate execution.
-
+If a pipeline includes a child pipeline as a stage ([Pipeline chaining](/docs/platform/pipelines/pipeline-chaining/)), rolling back the parent pipeline will not roll back the child pipeline as the latter is considered as a separate execution. In such cases, only the deployment stages of the parent pipeline rolls back.
 :::
 
 Currently, the Rollback Pipeline failure strategy applies to the following deployments only:
@@ -48,3 +47,8 @@ During pipeline execution, in **Permissible Actions**, if you select **Mark as F
 If you select **Mark as Success**, the stage passes, and the next stage's execution begins. 
 
 ![](static/pipeline-failure-strategy-2.png)
+
+## See also
+
+[Step and stage failure strategy references](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+
