@@ -38,11 +38,11 @@ In this topic, we refer to three types of accounts:
 
 To use IRSA for AWS authentication, you:
 
-1. [Enable the kubernetes service account (this is the experiment account) to access AWS resources](#enable-service-accounts-to-access-aws-resources). The service account acts as the host for your EKS cluster, and enables CE to access resources across multiple AWS target accounts.
+1. [Enable the kubernetes service account to access AWS resources](#enable-the-kubernetes-service-account-to-access-aws-resources). This enables Kubernetes service account, which controls chaos experiments, to access resources across multiple AWS target accounts.
 
 1. [Set up your target AWS accounts for IRSA](#set-up-your-target-accounts-for-irsa). The target accounts are the ones where you will run your chaos experiments.
 
-1. [Establish a trust relationship](#establish-trust-between-service-and-target-accounts) between the AWS source account and target accounts.
+1. [Establish a trust relationship](#establish-trust-between-the-aws-source-account-and-target-accounts) between the AWS source account and target accounts.
 
 ## Enable the Kubernetes service account to access AWS resources
 
@@ -95,30 +95,37 @@ To create an OIDC provider for your EKS cluster:
 
 ### Step 2: Create an IAM role and policy for your Kubernetes service account 
 
-The Kubernetes service account is usually named `litmus-admin`. You must create an IAM role and policy for this account with the permissions that you would like chaos experiments to have. There are several ways to create a new IAM permission policy. For more information, go to [AWS IAM documentation](https://docs.aws.amazon.com/transfer/latest/userguide/requirements-roles.html). 
+The Kubernetes service account is usually named `litmus-admin`. You must create an IAM role and policy for this account with the permissions that you would like chaos experiments to have. 
 
+To create the IAM role and policy: 
 
-To create the IAM role and permission policy, use the `eksctl` command. For example:
+1. Create a permission policy for the role. 
 
-[[[[ *Where do they find the `IAM_policy_ARN` below? Can we add a step/command for how to find it?* ]]]]
+  There are several ways to create a new IAM permission policy. For more information, go to [AWS IAM documentation](https://docs.aws.amazon.com/transfer/latest/userguide/requirements-roles.html). 
 
-```bash
-eksctl create iamserviceaccount \
---name <service_account_name> \
---namespace <service_account_namespace> \
---cluster <cluster_name> \
---attach-policy-arn <IAM_policy_ARN> \
---approve \
---override-existing-serviceaccounts
-```
+  You will need the policy's ARN for the next step.
 
-Where:
+1. To create the role and attach the policy you just created, use the `eksctl` command. For example:
 
-* `service_account_name` - is the name of the Kubernetes service account, usually `litmus-admin`.
-* `service_account_namespace` is namespace where you installed the execution plane.
-* `IAM_policy_ARN` is the unique Amazon Resource Name (ARN) for the policy you created for this account.
+  [[[[ *Where do they find the `IAM_policy_ARN` below? Can we add a step for how to find it? (possibly add that to the previous step)* ]]]]
 
-### Step 3: Associate the IAM role with the Kubernetes service account (litmus-admin)
+  ```bash
+  eksctl create iamserviceaccount \
+  --name <service_account_name> \
+  --namespace <service_account_namespace> \
+  --cluster <cluster_name> \
+  --attach-policy-arn <IAM_policy_ARN> \
+  --approve \
+  --override-existing-serviceaccounts
+  ```
+
+  Where:
+
+    * `service_account_name` - is the name of the Kubernetes service account, usually `litmus-admin`.
+    * `service_account_namespace` is namespace where you installed the execution plane.
+    * `IAM_policy_ARN` is the unique Amazon Resource Name (ARN) for the policy you created for this account.
+
+### Step 3: Associate the IAM role with the Kubernetes service account
 
 Associate the IAM role you created in the previous step by annotating the Kubernetes service account (`litmus-admin`). This will give it the required access to AWS resources.
 
@@ -134,7 +141,7 @@ eks.amazonaws.com/role-arn=arn:aws:iam::<ACCOUNT_ID>:role/<IAM_ROLE_NAME>
 2. For the cluster autoscaler experiment, annotate the service account in the `kube-system` namespace.
 :::
 
-### Step 4: Verify the experiment service account associates with the IAM role
+### Step 4: Verify the association of the IAM role with the service account
 
 To verify the association between the Kubernetes service account (`litmus-admin`) and the IAM role: 
 
@@ -154,17 +161,15 @@ To verify the association between the Kubernetes service account (`litmus-admin`
 
 ## Set up your target accounts for IRSA
 
-Whereas chaos experiments are initiated and controlled through a service account, **target accounts** are the accounts you'll subject to chaos experiments so you can intentionally disrupt and manipulate their services.
+Whereas chaos experiments are initiated and controlled through the Kubernetes service account, **target accounts** are the accounts you'll subject to chaos experiments so you can intentionally disrupt and manipulate their services.
 
 In this section, you create an IAM role and set up an OIDC provider in each target account.
 
 ### Step 1: Create an IAM role and policy in each AWS target account
 
-Create an IAM role and policy in each AWS target account to provide the required permissions for accessing the desired resources in that account. 
+This step lets you grant permissions for Harness CE to inject chaos targeting various AWS services in the target account. 
 
-This step lets you grant permissions for chaos injection targeting various AWS services. You have the flexibility to define the level of permissions you wish to assign to Harness CE.
-
-For instructions, go to [Create an IAM role and policy](https://docs.aws.amazon.com/transfer/latest/userguide/requirements-roles.html) in the AWS documentation.
+Create an IAM role and policy in each target account to provide the required permissions for accessing the desired resources in that account. You have the flexibility to define the level of permissions you wish to assign to Harness CE. For instructions, go to [Create an IAM role and policy](https://docs.aws.amazon.com/transfer/latest/userguide/requirements-roles.html) in the AWS documentation.
 
 ### Step 2: Set up the OIDC provider in all target accounts
 
@@ -187,7 +192,7 @@ To add the OIDC provider to each target account:
 1. Navigate to the target account.
 1. In the IAM dashboard, select **Identity Providers**, and then select **Add Provider**.
 1. In the **Add an Identity provider** screen, for **Provider type**, select **OpenID Connect**. 
-1. Provide these required details of the OIDC provider from the source account: 
+1. Provide these required details of the OIDC provider: 
     
     * **Provider URL:** Use the URL you retrieved in Step 1. 
     * **Audience:** Specify `sts.amazonaws.com`.
@@ -197,17 +202,19 @@ To add the OIDC provider to each target account:
 
 ## Establish trust between the AWS source account and target accounts
 
-The source account = AWS acct that has the EKS cluster execution plane. service account is k8s execution plane component (litmus-admin, it's only job is to get annotated and switches between accounts).
+The AWS source account enables Harness CE to access resources across multiple target accounts.
 
-### Step 1: Configure a trust relationship between target accounts and the AWS source account
+### Step 1: Configure trust between target accounts and the AWS source account
 
-You must configure a trust relationship for each IAM role you created in a target account in [Step 1](#step-1-create-an-iam-role-and-policy-in-each-aws-target-account) in the previous section. This authorizes the AWS source account's OIDC provider to assume that IAM role on the target account. To do this, you update the trust policy of the AWS source account, and the policy of the IAM role you created on each target accounts. 
+You must configure a trust relationship for each IAM role you created in a target account in [Step 1](#step-1-create-an-iam-role-and-policy-in-each-aws-target-account) in the previous section. This authorizes the AWS source account's OIDC provider to assume that IAM role on the target account. To do this, you update the trust policy of the AWS source account, and the policy of the IAM role you created on each target account. 
 
-Follow this procedure for each target account to configure the IAM role and policy on both the Kubernetes service account and the target account.
+Follow this procedure for each target account to configure the IAM role and policy on both the AWS source account and the target account.
 
-**To configure a trust relationship between the AWS source account OIDC provider and a target account:**
+**To configure trust between the AWS source account OIDC provider and a target account:**
 
-1. (XXX CORRECT THIS) Edit the IAM role and policy YAML file you [created on the Kubernetes service account](#step-2-create-an-iam-role-and-policy-for-your-service-account) as shown in the example below.
+1. **In the AWS source account:** Edit the trust relationship in the IAM role YAML file as shown in the example below.
+
+  [[[[ *Still not clear which file they're editing below. We haven't mentioned an IAM role/policy on the source account at this point, so I want to be very specific WHAT they're editing here.* ]]]]
 
   In this example `2222222222` is the target account ID, and `1111111111` is the AWS source account ID:
 
@@ -235,7 +242,7 @@ Follow this procedure for each target account to configure the IAM role and poli
   }
   ```
 
-2. Edit the IAM role and policy YAML file you [created on the target account](#step-1-create-an-iam-role-and-policy-in-each-aws-target-account) as shown in the example below.
+2. **In each target account:** Edit the trust relationship in the IAM role YAML file you [created on the target account](#step-1-create-an-iam-role-and-policy-in-each-aws-target-account) as shown in the example below.
 
    In this example `2222222222` is the target account ID, and `1111111111` is the Kubernetes service account ID:
 
@@ -263,13 +270,11 @@ Follow this procedure for each target account to configure the IAM role and poli
 
 ### Step 2: Enable the Kubernetes service account to switch between target accounts
 
-This procedure enables the Kubernetes service account (`litmus-admin`) to seamless switch between target accounts when running experiments. To do this you must annotate the Kubernetes service account (litmus-admin) with the corresponding chaos role in each target account. 
+This procedure enables the Kubernetes service account (`litmus-admin`) to seamlessly switch between target accounts when running experiments. To do this you must annotate the Kubernetes service account with the corresponding chaos role in each target account. 
 
 For example, if the target account has a role named `chaos-role`, you must annotate the litmus-admin service account with the unique Amazon Resource Name (ARN) of that role. This enables for seamless switching between target accounts when running experiments.
 
 **To annotate the service account with the role ARN:**
-
-[[[ *Can we add a step for how to find the ARN?* ]]]
 
 1. Run the following command:
 
