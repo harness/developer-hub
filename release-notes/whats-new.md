@@ -17,7 +17,15 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - May 25, 2023 
+## Latest - June xx, 2023 
+
+### Service Reliability Management, version 794xx
+
+- Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
+
+
+<details>
+<summary>2023 releases</summary>
 
 ### Cloud Cost Management, version 79600
 
@@ -44,9 +52,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * The **Account Settings** > **Subscriptions** page has a new **Activity & Usage** section that shows the number of security scans and user activity over the past 30 days. (STO-4942)
 
 * This release includes a minor UI update. In **Security Tests** > **Details**, the **Exempt** button has been renamed to **Request Exemption** to make the button's purpose more clear. (STO-5928)
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 23, 2023, version 79307
 
