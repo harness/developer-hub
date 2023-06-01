@@ -79,7 +79,7 @@ const config = {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "img/logo_dlp.svg",
+          src: "img/logo_pride.svg",
         },
         items: [
           /*{
@@ -334,7 +334,7 @@ const config = {
               },
               {
                 label: "Forum",
-                to: "https://community.harness.io",
+                to: "https://discuss.harness.io",
               },
               {
                 label: "University",

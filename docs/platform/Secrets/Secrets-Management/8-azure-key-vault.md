@@ -205,7 +205,7 @@ Click **Save and Continue**.
 Once the Test Connection succeeds, click Finish. You can now see the Connector in Connectors.
 
 
-:::note
-Important: Test Connection failsHarness tests connections by generating a fake secret in the Secret Manager or Vault. For the Test Connection to function successfully, make sure you have the Create permission for secrets.  
+:::important
+Important: Harness tests connections by generating a fake secret in the Secret Manager or Vault. For the Test Connection to function successfully, make sure you have the Create permission for secrets.  
 The Test Connection fails if you do not have the Create permission. However, Harness still creates the Connector for you. You may use this Connector to read secrets if you have View permissions.
 :::

@@ -8,7 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+
+:::important
 Currently, this feature is behind the feature flag `OPA_PIPELINE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. Harness provides governance using Open Policy Agent (OPA), Policy Management, and Rego policies.
+:::
+
 
 You can enforce policies in two ways:
 
@@ -76,12 +80,17 @@ In **Policy Set**, click **Add/Modify Policy Set**.
 In this example, we'll use an existing policy set. For details on creating a policy set, see [Harness Governance Quickstart](harness-governance-quickstart.md).
 
 ![](./static/add-a-governance-policy-step-to-a-pipeline-01.png)
+
 Navigate to a **Policy Set**, select it, and click **Apply**.
 
-The Policy Set you select must be evaluated **On Step**.Currently, only the **Custom** entity type is supported. The Policy Set you select must have the **Custom** entity type selected.![](./static/add-a-governance-policy-step-to-a-pipeline-02.png)
+The Policy Set you select must be evaluated **On Step**.Currently, only the **Custom** entity type is supported. The Policy Set you select must have the **Custom** entity type selected.
+
+![](./static/add-a-governance-policy-step-to-a-pipeline-02.png)
+
 Also, select how you want the Pipeline to handle policy evaluation failures:
 
 ![](./static/add-a-governance-policy-step-to-a-pipeline-03.png)
+
 The Policy Set is added.
 
 ### Step 4: Add Payload

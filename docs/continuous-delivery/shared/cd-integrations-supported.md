@@ -323,12 +323,17 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
   - AWS Cloud
   - Azure Cloud
   - Physical Datacenter
+- Linux SSH Setups
+  - Ubuntu Version 22+
+  - RHEL9 (Red Hat Enterprise Linux 9) 
+  - SSH libraries supported:
+    - SSHJ: used in our HashiCorp Vault SSH integrations.
+    - JSCH: used in our SSH deployment types.
+    - To see the hostkey formats for these libraries, go to the [SSH implementation comparison](https://ssh-comparison.quendi.de/comparison/hostkey.html).
 - **Limitations:**
   - Google Compute Engine (Virtual Machine Targets)
     - Limited Support, Harness can connect to Google VMs via an SSH Key, not via Google Cloud Authentication
-  - Linux SSH Setups
-    - Ubuntu Version 22 is not supported. It is coming soon.
-    - RHEL9 (Red Hat Enterprise Linux 9) is not supported. It is coming soon.
+
 
 </details>
 

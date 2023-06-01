@@ -144,7 +144,7 @@ Select the cloud platform where your Kubernetes cluster is hosted, such as Googl
 
 1. Select or create a Connector for your target cluster's platform.
 
-For details on the Connector settings, see [Cloud Platform Connectors](https://developer.harness.io/docs/category/cloud-platform-connectors/).
+For details on the Connector settings, see [Cloud Platform Connectors](/docs/category/cloud-providers).
 
 #### Cluster
 
@@ -193,7 +193,7 @@ For more information about manifests in Harness, see [Add Kubernetes Manifests](
 
 If you omit the `namespace` key and value from a manifest in your Service, Harness automatically uses the namespace you entered in the Harness Environment  **Infrastructure Definition** settings **Namespace** field.
 
-## Release Name
+## Release name
 
 Harness requires a Kubernetes release name for tracking.
 

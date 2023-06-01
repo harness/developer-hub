@@ -34,6 +34,13 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by SudheendraKatte for branch cv-metric-log on May 31 2023
+
+    {
+      from:"/docs/continuous-delivery/verify/cv-concepts/verification-results",
+      to: "/docs/category/understand-cv-results",
+    },
+
     // Created by Charanya Jayaraman to fix CCM broken link on May 23 2023
 
     {
@@ -291,7 +298,7 @@ module.exports = {
 
     {
       from: "/kb/continuous-delivery/continuous-verification-results",
-      to: "/docs/continuous-delivery/verify/cv-concepts/verification-results",
+      to: "/docs/category/understand-cv-results",
     },
 
     {
@@ -1097,7 +1104,7 @@ module.exports = {
     },
     {
       from: "/docs/cloud-cost-management/monitor-cloud-cost-with-integration/integration/datadog-integration",
-      to: "/docs/cloud-cost-management/monitor-cloud-cost-with-integration/datadog-integration",
+      to: "/docs/cloud-cost-management/datadog-integration",
     },
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/share-cost-perspective-report",
@@ -1760,7 +1767,7 @@ module.exports = {
 
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/cloud-integration/use-cloud-integration",
-      to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/use-cloud-integration",
+      to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/use-quick-create-k8s",
     },
 
     {
@@ -2803,10 +2810,6 @@ module.exports = {
     },
     
     // Created by bfisher for SMP PR 1837 on May 23, 2023
-    {
-      from: "/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm",
-      to: "/docs/self-managed-enterprise-edition/back-up-and-restore-helm",
-    },
     {
       from: "/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem",
       to: "/docs/self-managed-enterprise-edition/monitor-harness-on-prem",

@@ -18,7 +18,7 @@ In each Stage, you define **what** you want to deploy using Services, **where** 
 
 For example, a **Service** uses your Kubernetes manifests and Docker image, an **Environment** connects to your dev cluster, and Harness automatically generates an **Execution** using a Rolling Deployment step.
 
-![](./static/cd-pipeline-modeling-overview-02.png)
+![pipeline overview](./static/cd-pipeline-modeling-overview-02.png)
 
 The image above shows you the order for modeling a CD stage:
 
@@ -78,7 +78,7 @@ Add checks at any point in your process to ensure that deployments are safe:
 
 ![](./static/cd-pipeline-modeling-overview-07.png)
 
-For more details, see [Approvals](/docs/category/approvals).
+For more details, go to [Approvals](/docs/category/approvals).
 
 ### Verification
 
@@ -91,7 +91,7 @@ Harness CV integrates with your APMs and logging tools to:
 
 ![](./static/cd-pipeline-modeling-overview-08.png)
 
-For more details, see [Verify Deployments with the Verify Step](../verify/verify-deployments-with-the-verify-step.md).
+For more details, go to [Verify Deployments with the Verify Step](../verify/verify-deployments-with-the-verify-step.md).
 
 ### Summary
 

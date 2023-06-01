@@ -124,7 +124,7 @@ strategy:
     maxUnavailable: 1
 ```
 
-For details on the settings, see [RollingUpdateDeployment](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.20/#rollingupdatedeployment-v1-apps) in the Kubernetes API.
+For details on the settings, see [RollingUpdateDeployment](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.26/#deploymentstrategy-v1-apps/#rollingupdatedeployment-v1-apps) in the Kubernetes API.
 
 ## Define the service and infrastructure
 
