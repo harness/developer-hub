@@ -2,7 +2,7 @@
 title: Harness Platform release notes
 sidebar_label: Harness Platform
 tags: [NextGen, "platform"]
-date: 2023-05-31T10:00:30
+date: 2023-06-01T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Platform, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 31, 2023, version 794xx
+## Latest - June 01, 2023, version 79414
 
 
 ```mdx-code-block
@@ -27,13 +27,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-- Harness now blocks any RBAC change event that creates more than 2 million Access Control Lists (ACLs). (PL-38756)
-
-  Harness uses Access Control Lists (ACLs) for faster authorization checks. Principals, resource types, permissions, and scopes contribute to the number of ACLs created for role assignment.
-
 - You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
 
-
+- You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
 ```mdx-code-block
   </TabItem>
@@ -81,8 +77,6 @@ This release does not include any early access feature.
 #### May 23, 2023, version 79306
 
 ##### What's new
-
-- You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
 - The **Connector Details** page now shows whether a connector is connected via a delegate or via Harness Platform. (PL-32673)
 
