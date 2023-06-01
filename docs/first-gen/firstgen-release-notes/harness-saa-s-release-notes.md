@@ -28,12 +28,6 @@ This release does not include early access features.
 
 #### Fixed issues
 
-- CD license utilization data was not reported for some accounts. (CDS-69101)
-  
-  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
-
-- HTML characters in the `userName` caused issues during deployments. The following characters are no longer allowed in the `userName`: `:` , `/` , `<` , `>` , `=` , `(` , `)`. (PL-24129)
-
 #### Harness Manager delegate fixed issues
 
 The fixed issue below is available with version 79414 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
@@ -41,6 +35,14 @@ The fixed issue below is available with version 79414 and does not require a new
 - The `DMS_MONGO_URI` was missing from the ConfigMap of cg-manager for Self-Managed Enterprise Edition Helm installations. (PL-38850)
 
    This issue is fixed. The `DMS_MONGO_URI` is included in the ConfigMap.
+
+#### All other Platform fixed issues
+
+- CD license utilization data was not reported for some accounts. (CDS-69101)
+  
+  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
+
+- HTML characters in the `userName` caused issues during deployments. The following characters are no longer allowed in the `userName`: `:` , `/` , `<` , `>` , `=` , `(` , `)`. (PL-24129)
 
 ### May 23, 2023, version 79306
 

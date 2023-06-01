@@ -27,8 +27,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-- You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
-
 ### Harness Manager delegate new features
 
 The features below are available with version 79414 and do not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
@@ -36,6 +34,10 @@ The features below are available with version 79414 and do not require a new del
 - You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
 - You can now use the legacy UI to create delegates. (PL-38937)
+
+### All other Platform new features
+
+- You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
 
 ```mdx-code-block
   </TabItem>
@@ -48,6 +50,14 @@ This release does not include any early access features.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
+
+### Harness Manager delegate fixed issues
+
+The fixed issue below is available with version 79414 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
+
+- Delegate instances that do not shut down gracefully and do not come back online are removed from the UI after three hours. (PL-38755)
+
+### All other Platform fixed issues
 
 - The SSH secret reference gets created even if secret creation fails due to a validation error. (PL-38549, ZD-44073)
 
@@ -68,12 +78,6 @@ This release does not include any early access features.
 - The error message displayed when permissions are missing during pipeline execution does not mention the corresponding resource Id. (PL-31350)
 
   A code enhancement to display the resource Id in the error message fixed this issue.
-
-### Harness Manager delegate fixed issues
-
-The fixed issue below is available with version 79414 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
-
-- Delegate instances that do not shut down gracefully and do not come back online are removed from the UI after three hours. (PL-38755)
 
 
 ```mdx-code-block

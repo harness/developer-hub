@@ -64,8 +64,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   For information on setting up notifications for user groups, go to [Add and manage user groups](https://developer.harness.io/docs/platform/User-Management/add-user-groups).
 
 ### Harness Platform, version 79414
- 
-- You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
 
 #### Harness Manager delegate
 
@@ -74,6 +72,10 @@ The features below are available with version 79414 and do not require a new del
 - You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
 - You can now use the legacy UI to create delegates. (PL-38937)
+
+#### All other Platform new features
+
+- You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
 
 <details>
 <summary>2023 releases</summary>
