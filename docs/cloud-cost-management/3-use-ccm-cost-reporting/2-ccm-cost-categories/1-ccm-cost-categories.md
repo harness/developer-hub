@@ -101,7 +101,7 @@ For example, consider two cost targets named team A and team B. These two teams 
 * You cannot add the same cost category as a rule in the cost bucket.
 * You cannot include a nested cost category, which shares a bucket, as a rule in the cost bucket.
 * You cannot create cyclic nested cost categories, where a cost category is nested within itself.
-* The maximum depth allowed for nested cost categories is 20 levels.
+* You can nest cost categories to a maximum of 20 levels.
 :::
 
 ### Manage unallocated costs
