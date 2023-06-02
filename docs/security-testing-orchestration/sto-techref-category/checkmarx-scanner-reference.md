@@ -4,7 +4,11 @@ description: Repository scans with Checkmarx
 sidebar_position: 90
 ---
 
-You can scan your repositories using Checkmarx.
+You can scan your repositories using Checkmarx. Harness supports the following Checkmarx workflows:
+
+* Checkmarx v1 platform - SAST and SCA scans with SARIF data (ingestion workflows only)
+
+* Checkmarx v2 platform - SAST and SCA  with SARIF data (orchestration, extraction, and ingestion workflows)
 
 ## Checkmarx step configuration
 
