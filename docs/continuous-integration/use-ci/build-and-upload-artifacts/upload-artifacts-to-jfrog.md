@@ -87,4 +87,4 @@ On JFrog, you can see the uploaded artifacts.
 
 ### Troubleshooting
 
-If you get a `certificate signed by unknown authority` error, make sure the correct server certificates are uploaded to the correct container path, such as `C:/Users/ContainerAdministrator/.jfrog/security/certs`.
+If you get a `certificate signed by unknown authority` error, make sure the correct server certificates are uploaded to the correct container path. For example, the container path for Windows is `C:/Users/ContainerAdministrator/.jfrog/security/certs`.

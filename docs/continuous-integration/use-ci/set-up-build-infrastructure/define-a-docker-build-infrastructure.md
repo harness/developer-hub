@@ -216,7 +216,7 @@ Use PowerShell to run these commands.
 3. To use self-signed certificates, set `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
 
    ```
-   Set-Volume $env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
+   $env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
    ```
 
    With Windows, volume mapping must be folder-to-folder.
@@ -224,14 +224,14 @@ Use PowerShell to run these commands.
 4. Run the following command to start the runner binary:
 
    ```
-   ./drone-docker-runner-windows-amd64 server
+   drone-docker-runner-windows-amd64.exe server
    ```
 
 Here is an example of the two commands to install the Windows amd64 Drone Runner with self-signed certificates:
 
 ```
-Set-Volume $env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
-./drone-docker-runner-windows-amd64 server
+$env:CI_MOUNT_VOLUMES="C:\Users\installer\Downloads\certs;C:/Users/ContainerAdministrator/.jfrog/security/certs"
+drone-docker-runner-windows-amd64.exe server
 ```
 
 ```mdx-code-block
