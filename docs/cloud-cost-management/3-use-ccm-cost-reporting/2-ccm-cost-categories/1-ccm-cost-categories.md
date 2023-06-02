@@ -96,6 +96,14 @@ For example, consider two cost targets named team A and team B. These two teams 
 
   ![](./static/cost-category-builder-2.png)
 
+:::important
+* You cannot include a nested cost category as a rule within another cost category if they share a bucket.
+* You cannot add the same cost category as a rule in the cost bucket.
+* You cannot include a nested cost category, which shares a bucket, as a rule in the cost bucket.
+* You cannot create cyclic nested cost categories, where a cost category is nested within itself.
+* The maximum depth allowed for nested cost categories is 20 levels.
+:::
+
 ### Manage unallocated costs
 
 When used in a Perspective as a filter or **Group By**, the Cost Category shows data that matches its filters.
@@ -109,4 +117,6 @@ In **Manage Unallocated Costs**, you can choose to show or ignore unallocated co
 Save the cost category. Now, you can view the cost bucket details in a cost category on the **Cost Categories** page.
 
   ![](./static/cost-bucket-details.png)
+
+  
 
