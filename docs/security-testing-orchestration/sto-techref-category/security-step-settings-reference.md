@@ -12,7 +12,7 @@ This topic includes the Security step settings for each of the scanner providers
 
 ### What's new: Improved UIs and set-up workflows for popular scanners
 
-On March 14, 2023, Harness introduced a set of new UIs (step palettes) for Aqua Trivy, Bandit, SonarQube, and other popular scanners. These steps greatly simplify the process of setting up scans in your pipelines. Previously, the workflow for all scanners was to enter a set of hard-coded key and value strings in a Security step. These new steps have simplified user-friendly UIs that include only the options relevant to the specific scanner, mode, and target.
+On March 14, 2023, Harness introduced a set of new UIs (scanner templates) for Aqua Trivy, Bandit, SonarQube, and other popular scanners. These steps greatly simplify the process of setting up scans in your pipelines. Previously, the workflow for all scanners was to enter a set of hard-coded key and value strings in a Security step. These new steps have simplified user-friendly UIs that include only the options relevant to the specific scanner, mode, and target.
 
 The following security steps are now generally available:
 
@@ -68,7 +68,12 @@ The scanner, targets, and scan approach combinations are covered in the next sec
         </td>
         <td valign="top">
         	<ul>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference">Checkmarx</a> Orchestration, Extraction, Ingestion</li>
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference">Checkmarx</a> 
+                <ul>
+                  <li>v1 platform - SAST and SCA  with SARIF data (<i>ingestion workflows only</i>)</li>
+                  <li>v2 platform - SAST and SCA  with SARIF data (<i>orchestration, extraction, and ingestion workflows</i>)</li>
+                </ul>
+              </li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-scanner-reference">Fortify Static Code Analyzer</a> Ingestion</li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/mend-scanner-reference">Mend (formerly WhiteSource)</a> Orchestration, Ingestion</li>
