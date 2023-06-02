@@ -4,11 +4,9 @@ description: Repository scans with Checkmarx
 sidebar_position: 90
 ---
 
-You can scan your repositories using Checkmarx. Harness supports the following Checkmarx workflows:
-
-* Checkmarx v1 platform - SAST and SCA scans with SARIF data (ingestion workflows only)
-
-* Checkmarx v2 platform - SAST and SCA  with SARIF data (orchestration, extraction, and ingestion workflows)
+You can scan your repositories using Checkmarx. Harness STO supports the following workflows:
+* Ingestion workflows for all Checkmarx One services (including SAST and SCA) that can publish scan results in SARIF format.
+* Orchestration, Extraction, and Ingestion workflows for Checkmarx SAST and Checkmarx SCA scans.
 
 ## Checkmarx step configuration
 
@@ -302,7 +300,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 </details>
 
-## Example workflow
+## Example workflow: Ingest SARIF data from a Checkmarx GitHub Action scan
 
 The following pipeline example illustrates an ingestion workflow. It consists of two steps:
 

@@ -68,10 +68,10 @@ The scanner, targets, and scan approach combinations are covered in the next sec
         </td>
         <td valign="top">
         	<ul>
-          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference">Checkmarx</a> 
+          		<li><a href="/docs/security-testing-orchestration/sto-techref-category/checkmarx-scanner-reference">Checkmarx — The following workflows are supported</a> 
                 <ul>
-                  <li>v1 platform - SAST and SCA  with SARIF data (<i>ingestion workflows only</i>)</li>
-                  <li>v2 platform - SAST and SCA  with SARIF data (<i>orchestration, extraction, and ingestion workflows</i>)</li>
+                  <li>Ingestion workflows for all Checkmarx One services (including SAST and SCA) that can publish scan results in SARIF format</li>
+                  <li>Orchestration, Extraction, and Ingestion workflows for Checkmarx SAST and Checkmarx SCA scans</li>
                 </ul>
               </li>
           		<li><a href="/docs/security-testing-orchestration/sto-techref-category/fortify-on-demand-scanner-reference">Fortify on Demand</a> Ingestion</li>
