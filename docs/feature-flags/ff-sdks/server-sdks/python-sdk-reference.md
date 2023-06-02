@@ -55,6 +55,8 @@ To initialize the Python SDK, you need to:
 2. Add a Target that you want to Evaluate against a Feature Flag.
 3. (Optional) Configure the SDK options. For more details on what features you can configure for this SDK, go to [Configure the SDK](python-sdk-reference.md#configure-the-sdk).
 
+#### Note if the SDK fails to authenticate with the Feature Flags service and cannot initialise, the SDK will operate in a "limited" mode and will only serve the default values you provide in variation calls
+
 ### Add the Server SDK Key
 
 To connect to the correct Environment that you set up on the Harness Platform, you need to add the Server SDK Key from that Environment. Input the Server SDK Key into the `api_key` parameter. For example:
