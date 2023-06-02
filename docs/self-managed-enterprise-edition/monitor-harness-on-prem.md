@@ -159,7 +159,7 @@ If you have Prometheus installed, you can make changes directly to your Promethe
 
 To use a standalone Prometheus installation with a customer configuration, do the following:
 
-1. Update your `config.yaml` file with the following settings:
+- Update your `config.yaml` file with the following settings:
 
     ```
     scrape_configs:
@@ -345,11 +345,16 @@ In a production environment, you can use a central Grafana setup to visualize me
 
 To expose in-cluster Prometheus metrics to an external instance of Grafana, do the following:
 
-1. Set up your ingress or VirtualService.
+- Set up your ingress or VirtualService.
 
-   a. To use an nginx ingress controller, create an ingress rule for Prometheus.
+```mdx-code-block
+<Tabs>
+  <TabItem value="nginx ingress controller" default>
+```
 
-      ```yaml
+To use an nginx ingress controller, create an ingress rule for Prometheus.
+
+   ```yaml
       apiVersion: networking.k8s.io/v1
          kind: Ingress
          metadata:
@@ -369,7 +374,12 @@ To expose in-cluster Prometheus metrics to an external instance of Grafana, do t
                         number: 9090
    ```
 
-   b. To use Istio, create a VirtualService for Prometheus.
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Istio">
+```
+
+To use Istio, create a VirtualService for Prometheus.
 
    ```yaml
       apiVersion: networking.istio.io/v1alpha3
@@ -396,7 +406,12 @@ To expose in-cluster Prometheus metrics to an external instance of Grafana, do t
                   host: <prometheus-service-name>
                   port:
                     number: 9090
-    ```
+   ```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ### Required overrides
 
