@@ -60,31 +60,31 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 </details>
 
 3. Under **Project Setup**, select **Delegates**.
-    1. Select **Tokens**.
-        1. Select **New Token**.
-        2. Name the token `delegate_token`.
-        3. Select **Apply**.
-        4. Copy the token value by selecting on the copy icon and store it somewhere.
-        5. Select **Close**.
-    2. Select **Delegates**.
-        1. Select **New Delegate**.
+    - Select **Tokens**.
+        - Select **New Token**.
+        - Name the token `delegate_token`.
+        - Select **Apply**.
+        - Copy the token value by selecting on the copy icon and store it somewhere.
+        - Select **Close**.
+    - Select **Delegates**.
+        - Select **New Delegate**.
           
           For this tutorial, let's explore how to install a delegate using Helm.
 
-        2. Add the Harness Helm chart repo to your local helm registry using the following commands.
+        - Add the Harness Helm chart repo to your local helm registry using the following commands.
         
         ```bash
         helm repo add harness-delegate https://app.harness.io/storage/harness-download/delegate-helm-chart/
         ```
 
-        3. Update the repo:
+        - Update the repo:
 
         ```bash
         helm repo update harness-delegate
         ```
 
-        4.  In the command provided, `ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the delegate installation wizard.
-        5.  Replace **DELEGATE_TOKEN** in the command with the token that was copied earlier and proceed with delegate installation.
+        -  In the command provided, `ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the delegate installation wizard.
+        -  Replace **DELEGATE_TOKEN** in the command with the token that was copied earlier and proceed with delegate installation.
 
          
         ```bash
@@ -97,7 +97,7 @@ The Harness delegate is a service that runs in your local network or VPC to esta
          --set replicas=1 --set upgrader.enabled=false \
          --set delegateToken=DELEGATE_TOKEN
         ```
-    3. Select **Verify** to verify that the delegate is installed successfully and can connect to the Harness Manager.
+        - Select **Verify** to verify that the delegate is installed successfully and can connect to the Harness Manager.
 
 :::note
 
@@ -116,10 +116,10 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 </details>
 
 4. Under **Project Setup**, select **Secrets**.
-    1. Select **New Secret**, and then select **Text**.
-    2. Enter the secret name `harness_gitpat`.
-    3. For the secret value, paste the GitHub personal access token you saved earlier.
-    4. Select **Save**.
+    - Select **New Secret**, and then select **Text**.
+    - Enter the secret name `harness_gitpat`.
+    - For the secret value, paste the GitHub personal access token you saved earlier.
+    - Select **Save**.
 
 ### Connectors
 
@@ -131,21 +131,21 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 </details>
 
 5. Create the **GitHub connector**.
-    1. Copy the contents of [1-github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/1-github-connector.yml)
-    2. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
-    3. Select **Create via YAML Builder** and paste the copied YAML.
-    4. Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
-    5. In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
-    6. Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
-    7. Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
+    - Copy the contents of [1-github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/1-github-connector.yml)
+    - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
+    - Select **Create via YAML Builder** and paste the copied YAML.
+    - Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
+    - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
+    - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
+    - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
 
 6. Create the **Kubernetes connector**.
-    1. Copy the contents of [2-kubernetes-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/2-kubernetes-connector.yml).
-    2. In your Harness project, under **Project Setup**, select **Connectors**.
-    3. Select **Create via YAML Builder** and and paste the copied YAML.
-    4. Replace **DELEGATE_NAME** with the installed Delegate name. To obtain the Delegate name, navigate to **Project Setup**, and then **Delegates**.
-    5. Select **Save Changes** and verify that the new connector named **harness_k8sconnector** is successfully created.
-    6. Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
+    - Copy the contents of [2-kubernetes-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/2-kubernetes-connector.yml).
+    - In your Harness project, under **Project Setup**, select **Connectors**.
+    - Select **Create via YAML Builder** and and paste the copied YAML.
+    - Replace **DELEGATE_NAME** with the installed Delegate name. To obtain the Delegate name, navigate to **Project Setup**, and then **Delegates**.
+    - Select **Save Changes** and verify that the new connector named **harness_k8sconnector** is successfully created.
+    - Finally, select **Connection Test** under **Connectivity Status** to verify the connection is successful.
 
 ### Environment
 
@@ -157,12 +157,12 @@ Environments define the deployment location, categorized as **Production** or **
 </details>
 
 7. In your Harness project, select **Environments**.
-    1. Select **New Environment**, and then select **YAML**.
-    2. Copy the contents of [3-environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/3-environment.yml), paste it into the YAML editor, and select **Save**.
-    3. In your new environment, select the **Infrastructure Definitions** tab.
-    4. Select **Infrastructure Definition**, and then select **YAML**.
-    5. Copy the contents of [4-infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/4-infrastructure-definition.yml) and paste it into the YAML editor.
-    6. Select **Save** and verify that the environment and infrastructure definition are created successfully.
+    - Select **New Environment**, and then select **YAML**.
+    - Copy the contents of [3-environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/3-environment.yml), paste it into the YAML editor, and select **Save**.
+    - In your new environment, select the **Infrastructure Definitions** tab.
+    - Select **Infrastructure Definition**, and then select **YAML**.
+    - Copy the contents of [4-infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/4-infrastructure-definition.yml) and paste it into the YAML editor.
+    - Select **Save** and verify that the environment and infrastructure definition are created successfully.
 
 ### Services
 
@@ -175,11 +175,11 @@ In Harness, services represent what you deploy to environments. You use services
 
 
 8. In your Harness project, select **Services**.
-    1. Select **New Service**.
-    2. Enter the name `harnessguestbook`.
-    3. Select **Save**, and then **YAML** (on the **Configuration** tab).
-    4. Select **Edit YAML**, copy the contents of [5-service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/5-service.yml), and paste the into the YAML editor.
-    5. Select **Save**, and verify that the service **harness_guestbook** is successfully created.
+    - Select **New Service**.
+    - Enter the name `harnessguestbook`.
+    - Select **Save**, and then **YAML** (on the **Configuration** tab).
+    - Select **Edit YAML**, copy the contents of [5-service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/5-service.yml), and paste the into the YAML editor.
+    - Select **Save**, and verify that the service **harness_guestbook** is successfully created.
 
 ### Pipeline
 
@@ -191,12 +191,12 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 </details>
 
 9. In your Harness project, select **Pipelines**.
-    1. Select **Create a Pipeline**.
-    2. Enter the name `harness_guestbook_pipeline`.
-    3. Select **Inline** to store the pipeline in Harness.
-    4. Select **Start**. 
-    5. In **Pipeline Studio**, select **YAML**.
-    6. Select **Edit YAML** and choose any of the following execution strategies. Paste the respective YAML based on your selection.
+- Select **Create a Pipeline**.
+- Enter the name `harness_guestbook_pipeline`.
+- Select **Inline** to store the pipeline in Harness.
+- Select **Start**. 
+- In **Pipeline Studio**, select **YAML**.
+- Select **Edit YAML** and choose any of the following execution strategies. Paste the respective YAML based on your selection.
 
 ```mdx-code-block
 <Tabs>
@@ -210,11 +210,11 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 </details>
 
-10. Copy the contents of [6-canary-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/6-canary-deployment.yml).
+- Copy the contents of [6-canary-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/6-canary-deployment.yml).
 
-11. In your Harness pipeline YAML editor, paste the YAML.
+- In your Harness pipeline YAML editor, paste the YAML.
 
-12. Select **Save**.
+- Select **Save**.
    
    You can switch to the **Visual** editor and confirm the pipeline stage and execution steps as shown below.
 
@@ -233,11 +233,11 @@ Blue Green deployments involve running two identical environments (stage and pro
 </details>
 
 
-10. Copy the contents of [6-bluegreen-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/6-bluegreen-deployment.yml).
+- Copy the contents of [6-bluegreen-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/6-bluegreen-deployment.yml).
 
-11. In your Harness pipeline YAML editor, paste the YAML.
+- In your Harness pipeline YAML editor, paste the YAML.
 
-12. Select **Save**.
+- Select **Save**.
    
    You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
 
@@ -258,11 +258,11 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
 
 
-10. Copy the contents of [6-rolling-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/6-rolling-deployment.yml).
+- Copy the contents of [6-rolling-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/6-rolling-deployment.yml).
 
-11. In your Harness pipeline YAML editor, paste the YAML.
+- In your Harness pipeline YAML editor, paste the YAML.
 
-12. Select **Save**.
+- Select **Save**.
    
    You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
 
@@ -275,7 +275,7 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
 Finally, it's time to execute your pipeline. 
 
-13.  Select **Run**, and then select **Run Pipeline** to initiate the deployment.
+10.  Select **Run**, and then select **Run Pipeline** to initiate the deployment.
   - Observe the execution logs as Harness deploys the workload and checks for steady state.
   - After a successful execution, you can check the deployment on your Kubernetes cluster using the following command:
         
