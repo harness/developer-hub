@@ -13,7 +13,7 @@ Harness Continuous Verification NextGen introduces a more reliable and customiza
 
 Compared to Harness Continuous Verification FirstGen, Harness Continuous Verification NextGen offers increased flexibility and control over the queries used. You can specify the queries to run and retrieve data from your monitoring, logging, and observability solutions based on the defined analysis time. This ensures precise and targeted verification of your deployments.
 
-Harness Platform provides flexible Continuous Verification capabilities. You can easily add Continuous Verification as a step in your pipeline and access skip conditions, failure strategies, and other features of a Harness Step or Stage. This level of control allows seamless integration and optimized verification process.
+Harness Platform provides flexible CV capabilities. You can easily add CV as a step in your pipeline and access skip conditions, failure strategies, and other features of a Harness Step or Stage. This level of control allows seamless integration and optimized verification process.
 
 ## Key differences
 
@@ -21,7 +21,7 @@ Harness Platform provides flexible Continuous Verification capabilities. You can
 
 * Multiple health sources in a single Verify step: Harness Continuous Verification NextGen allows adding multiple health sources (data providers) within a single Verify step. This means you can validate against multiple sources, such as Prometheus and Datadog, in a unified manner. This eliminates the need for separate steps, as was required in Harness Continuous Verification FirstGen.
 
-* Shifting data responsibility to monitoring/logging/observability solution: In Harness Continuous Verification NextGen, the responsibility of tracking deployed components is placed on the monitoring/logging/observability solution. This is accomplished through the concept of [Service Instance Identifier (SII)](#service-instance-identifier-sii), which replaces the Continuous Delivery pipeline as the source of deployment data. The SII enables querying for changes and focuses on specific deployed elements within the analysis window, such as using the SII "pod" for Kubernetes deployments.
+* Shifting data responsibility to monitoring/logging/observability solution: In Harness Continuous Verification NextGen, the responsibility of tracking deployed components is placed on the monitoring/logging/observability solution. This is accomplished through the concept of [Service Instance Identifier (SII)](#service-instance-identifier-sii), which replaces the Continuous Delivery (CD) pipeline as the source of deployment data. The SII enables querying for changes and focuses on specific deployed elements within the analysis window, such as using the SII "pod" for Kubernetes deployments.
 
 * Expanded verification types: Harness Continuous Verification NextGen introduces additional verification types, including support for rolling deployments and load tests. In contrast, Harness Continuous Verification FirstGen was limited to "canary" and "previous" deployment scenarios.
 
@@ -60,11 +60,11 @@ SII: `pod`
 
 Let's use the Prometheus query as an example to understand this process:
  
-1. Queries the SII (in this case, pod) to list all possible Pods within the specified time range.
+1. Queries the SII (in this case, pod) to list all possible pods within the specified time range.
    
    `/api/v1/label/**pod**/values?start=1685548800&end=1685549100&match[]={app="harness-cv-prom-example"}`
 
-2. Retrieves the PromQL metric values by iterating over the returned SII results for each Pod.
+2. Retrieves the PromQL metric values by iterating over the returned SII results for each pod.
    
    `api/v1/label/**app**/values?start=1685548800&end=1685549100&match[]={app="harness-cv-prom-example"}`
 
