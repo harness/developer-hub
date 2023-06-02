@@ -128,14 +128,16 @@ You can configure the following features of the SDK:
 
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
-| **Name** | **Example** | **Description** | **Default Value** |
-| baseUrl | `with_base_url("https://config.ff.harness.io/api/1.0")` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
-| eventUrl | `with_events_url("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
-| pollInterval | `Config(pull_interval=60)` | The interval **in seconds** that we poll for changes when you are using stream mode. | `60` (seconds) |
-| streamEnabled | `with_stream_enabled(True)` | Set to ``True`` to enable streaming mode.Set to `False` to disable streaming mode. | `True` |
-| analyticsEnabled | `with_analytics_enabled(True)` | Set to `True` to enable analytics.Set to `False` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `True` |
+|                  |                                                           |                                                                                                                                          |                                        |
+|------------------|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|
+| **Name**         | **Example**                                               | **Description**                                                                                                                          | **Default Value**                      |
+| baseUrl          | `with_base_url("https://config.ff.harness.io/api/1.0")`   | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000`                      | `https://config.ff.harness.io/api/1.0` |
+| eventUrl         | `with_events_url("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000`        | `https://events.ff.harness.io/api/1.0` |
+| pollInterval     | `Config(pull_interval=60)`                                | The interval **in seconds** that we poll for changes when you are using stream mode.                                                     | `60` (seconds)                         |
+| streamEnabled    | `with_stream_enabled(True)`                               | Set to ``True`` to enable streaming mode.Set to `False` to disable streaming mode.                                                       | `True`                                 |
+| analyticsEnabled | `with_analytics_enabled(True)`                            | Set to `True` to enable analytics.Set to `False` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `True`                                 |
+| maxAuthRetries   | with_max_auth_retries(10)                                 | The number of retry attempts to make if client authentication fails on a retryable HTTP error                                            | 10                                     |
+
 
 For example:
 
