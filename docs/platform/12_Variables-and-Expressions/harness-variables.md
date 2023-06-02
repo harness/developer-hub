@@ -28,35 +28,33 @@ Harness expressions are identified using the `<+...>` syntax. For example, `<+p
 
 The content between the `<+...>` delimiters is passed on to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) where it is evaluated. Using JEXL, you can build complex variable expressions that use JEXL methods. For example, here is an expression that uses Webhook Trigger payload information:
 
-
 ```
 <+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") || <+trigger.payload.repository.owner.name> == "wings-software"
 ```
 Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) and other steps.
 
-### You can use all Java string methods
+### Java string methods
 
 You can use all Java string methods on Harness variable expressions.
 
-The above example used `contains()`:
+The example mentioned in the previous section used `contains()`:
 
 `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")`
 
-Let's look at another example. Imagine you have a variable called `abc` with the value `def:ghi`. You can use `split()` like this:
-
+Let's look at another example. For a variable called `abc` with value, `def:ghi`. You can use `split()` like this:
 
 ```
 echo <+<+pipeline.variables.abc>.split(':')[1]>
 ```
-The result would be `ghi`.
+The output of this expression is `ghi`.
 
-Please note that the correct way to use a java method with a variable is `<+<+expression>.methodName()>`
+The correct way to use a Java method with a variable is `<+<+expression>.methodName()>`.
 
-Let's take another example for a variable `myvar` using methods substring and indexOf. Let's assume the value of `myvar` is `Hello` . You can use the methods like 
+For example, for a variable `myvar` using methods substring and indexOf, with value `Hello`. You can use the methods like: 
 
 <+<+stage.variables.myvar>.substring(<+<+stage.variables.myvar>.indexOf("e")>)>
 
-This expression will evaluate to `ello`
+This expression evaluates to `ello`.
 
 ### FQNs and expressions
 
