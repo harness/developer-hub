@@ -46,9 +46,17 @@ Let's look at another example. Imagine you have a variable called `abc` with t
 
 
 ```
-echo <+pipeline.variables.abc.split(':')[1]>
+echo <+<+pipeline.variables.abc>.split(':')[1]>
 ```
 The result would be `ghi`.
+
+Please note that the correct way to use a java method with a variable is `<+<+expression>.methodName()>`
+
+Let's take another example for a variable `myvar` using methods substring and indexOf. Let's assume the value of `myvar` is `Hello` . You can use the methods like 
+
+<+<+stage.variables.myvar>.substring(<+<+stage.variables.myvar>.indexOf("e")>)>
+
+This expression will evaluate to `ello`
 
 ### FQNs and expressions
 
