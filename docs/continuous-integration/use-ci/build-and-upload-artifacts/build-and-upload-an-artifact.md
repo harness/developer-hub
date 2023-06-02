@@ -142,22 +142,55 @@ As a more specific example, if you have a [Background step](../manage-dependenci
 
 You can use your CI pipeline to test a Dockerfile used in your codebase and verify that the resulting image is correct before you push it to your Docker repository.
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="hosted" label="Harness Cloud build infrastructure" default>
+```
+
 1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
 2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
-3. Click **Add Variable** and enter the following:
-	1. Name: **PLUGIN\_NO\_PUSH**
-	2. Type: **String**
-	3. Value: **true**
+3. Select **Add Variable** and enter the following:
+   * **Name:** `PLUGIN_DRY_RUN`
+   * **Type:** **String**
+   * **Value:** `true`
 4. Save and run the pipeline.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="other" label="Other build infrastructures">
+```
+
+1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
+2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
+3. Select **Add Variable** and enter the following:
+   * **Name:** `PLUGIN_NO_PUSH`
+   * **Type:** **String**
+   * **Value:** `true`
+4. Save and run the pipeline.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 </details>
 
 <details>
 <summary>Build multi-architecture images</summary>
 
-To use a CI pipeline to build multi-architecture images, create a stage for each architecture.
+To use a CI pipeline to build multi-architecture images, create a separate stage for building and pushing each architecture.
 
-The following YAML example describes a multi-architecture pipeline.
+The following YAML example describes a multi-architecture pipeline with two stages. Both stages have similar components but they are slightly different according to the architecture of the image that the stage builds.
+
+Each stage:
+
+* Uses a variation of a Kubernetes cluster build infrastructure.
+* Has a **Run** step that prepares the DockerFile.
+* Has a **Build and Push** step that builds and uploads the image.
 
 ```yaml
 pipeline:

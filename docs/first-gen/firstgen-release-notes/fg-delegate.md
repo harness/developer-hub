@@ -2,7 +2,7 @@
 
 These release notes document changes to Harness Delegate in Harness FirstGen.
 
-:::note
+:::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means the features and fixes that these release notes describe might not be immediately available in your cluster. 
 
 To identify the cluster that hosts your account, open Harness FirstGen and go to **Account Settings**. Then click **Overview**. The cluster is listed in **Harness Cluster Hosting Account**.
@@ -39,9 +39,9 @@ This release does not include any new early access features.
 
   This change does not create any behavioral changes.
 
-- Secret decryption failures were not included in logs. 
+- Secret decryption failures were not included in logs. (PL-31517)
 
-  A code enhancement to return runtime errors from secret managers during decryption fixed this issue. (PL-31517)
+  A code enhancement to return runtime errors from secret managers during decryption fixed this issue.
 
 - The org.json:json is upgraded from version 20160810 to 20230227 to address vulnerabilities. (PL-37905)
 
