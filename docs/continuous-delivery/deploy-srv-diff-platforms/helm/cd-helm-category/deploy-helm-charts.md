@@ -1,6 +1,6 @@
 ---
-title: Deploy Helm charts
-description: This topic describes how to deploy Helm charts from a remote Git repository, HTTP Helm Repository, or cloud storage service.
+title: Deploy Helm Charts
+description: This topic describes how to deploy Helm Charts from a remote Git repository, HTTP Helm Repository, or cloud storage service.
 sidebar_position: 1
 helpdocs_topic_id: 7owpxsaqar
 helpdocs_category_id: xot6u3ge9d
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to deploy Helm charts in standard Helm syntax in YAML from a remote Git repo, HTTP Helm Repository, or cloud storage service (Google Cloud Storage, AWS S3).
+This topic describes how to deploy Helm Charts in standard Helm syntax in YAML from a remote Git repo, HTTP Helm Repository, or cloud storage service (Google Cloud Storage, AWS S3).
 
 This process is also covered in the [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
 
@@ -16,7 +16,7 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
 
 * [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart)
 * [The Chart Template Developer's Guide](https://helm.sh/docs/chart_template_guide/) from Helm.
-* The [Helm charts repo on GitHub](https://github.com/helm/charts) has many useful examples.
+* The [Helm Charts repo on GitHub](https://github.com/helm/charts) has many useful examples.
 
 ## Important notes
 
@@ -45,7 +45,7 @@ Harness supports the following Helm OCI chart registries:
 Helm OCI chart support includes the following deployment types:
 
 - Native Helm
-- Helm charts with Kubernetes deployments.
+- Helm Charts with Kubernetes deployments.
 
 Harness OCI chart registry support details:
 
@@ -60,16 +60,16 @@ Harness OCI chart registry support details:
 
 ## Visual summary
 
-Here's a quick video showing you how to add different types of manifests. It also describes how to add Helm charts and multiple values YAML files in the same repo as the chart, or in separate repos.
+Here's a quick video showing you how to add different types of manifests. It also describes how to add Helm Charts and multiple values YAML files in the same repo as the chart, or in separate repos.
 
 <!-- Video:
 https://www.youtube.com/watch?v=dVk6-8tfwJc-->
 <docvideo src="https://www.youtube.com/watch?v=dVk6-8tfwJc" />
 
 
-## Artifacts and Helm charts
+## Artifacts and Helm Charts
 
-Harness supports image artifacts with Helm charts in the following ways.
+Harness supports image artifacts with Helm Charts in the following ways.
 
 <details>
 <summary>Helm chart with hardcoded artifact</summary>
@@ -161,7 +161,7 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
   The values3.yaml key:value pair overrides the key:value pair of values2.yaml and values.yaml files.
 
   You can also select **Expression** and use [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `<+stage.variables.qa>`.
-- **Skip Resource Versioning**: By default, Harness versions ConfigMaps and secrets deployed into Kubernetes clusters. In some cases, such as when using public manifests or Helm charts, you cannot add the annotation. When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and secrets for the resource. If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and secrets.
+- **Skip Resource Versioning**: By default, Harness versions ConfigMaps and secrets deployed into Kubernetes clusters. In some cases, such as when using public manifests or Helm Charts, you cannot add the annotation. When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and secrets for the resource. If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and secrets.
 - **Helm Command Flags**: You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart. Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
 - **Command Type**: Select the Helm command type you want to use. For example:
   - [Template](https://v2.helm.sh/docs/helm/#helm-template): `helm template` to render the helm template files.
@@ -180,7 +180,7 @@ Once your Helm chart is added, it appears in the **Manifests** section. For exam
 
 ### Using subcharts
 
-You can specify a path to Helm charts within the Helm repository and Harness will fetch the Helm chart and its subordinate charts within that folder.
+You can specify a path to Helm Charts within the Helm repository and Harness will fetch the Helm chart and its subordinate charts within that folder.
 
 <docimage path={require('./static/70e9b1aa646408c07a6fef1ca8b6e0dfa2eef53e5f7eea3e88ac28b5a4d3e1c4.png')} width="60%" height="60%" title="Click to view full size image" />  
 
@@ -254,7 +254,7 @@ There is nothing unique about defining the target cluster infrastructure definit
 
 For more information, go to [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure).
 
-Helm charts can be deployed using any of the execution steps and deployment strategies used in other Kubernetes deployments. For more information, go to [Kubernetes How-tos](/docs/category/kubernetes).
+Helm Charts can be deployed using any of the execution steps and deployment strategies used in other Kubernetes deployments. For more information, go to [Kubernetes How-tos](/docs/category/kubernetes).
 
 ## Deploy
 
@@ -383,7 +383,7 @@ You can set up a Harness trigger to listen on the chart repo and execute the pip
 
 Harness can fetch Helm chart dependencies within GitHub using the `--dependency-update` command flag. 
   
-Harness fetches dependent Helm charts along with the main Helm chart used for the deployment. Dependencies are resolved before Harness performs the deployment of the main Helm chart. 
+Harness fetches dependent Helm Charts along with the main Helm chart used for the deployment. Dependencies are resolved before Harness performs the deployment of the main Helm chart. 
 
 For more information, go to [Helm Docs](https://helm.sh/docs/helm/helm_template/#helm).
 
@@ -395,10 +395,102 @@ To update Helm chart dependencies:
 
 :::info
   
-All dependency repositories must be available and accessible from the Harness delegate(s) used by the deployment.
+All dependency repositories must be available and accessible from the Harness Delegate(s) used by the deployment.
 
 :::
-  
+
+## Service hooks 
+
+Helm has [hook](https://v2.helm.sh/docs/charts_hooks/) mechanism that lets you fetch files and dependencies. 
+
+These are the service hook actions supported by Harness: 
+
+* Fetch files: Service hooks can be triggered before or after the manifest files are fetched.
+* Manifest templates: Service hooks can be triggered before or after the manifest has been rendered. 
+* Steady state check: Service hooks can be triggered before or after the steady state check.
+
+Here's a sample service hook YAML: 
+
+```
+service:
+  name: nginx-k8s
+  identifier: nginxk8s
+  serviceDefinition:
+    hooks:
+      - preHook:
+          actions: [FetchFiles]
+          storeType: Inline
+          spec:
+            value: helm plugin secret --helmChartName --commands -- <+service.name> <+service.manifest.chartName>
+      - postHook:
+          actions: 
+            - FetchFiles
+          storeType: Harness
+          spec:
+            files:
+              - account:/hooks/fetch-files.sh
+```
+
+### Add private repositories as dependency and use them in Helm Chart
+
+1. Add a requested repository in Helm using the following script.
+
+   You can create a postHook for FetchFiles or a preHook for TemplateManifest action.
+
+   ```
+   helm repo add test-remote-name 
+   https://url.to.chart.example.artifactory/artifactory/harness-helm-charts/ --username 
+   <+secrets.getValue("username")> --password <+secrets.getValue("password")>
+   ```
+
+2. Add the required name and version of the dependency in the `Chart.yaml` to reference these dependencies. 
+   
+   The repository name starts with `@` followed by the name by which you have added the repository in your script.
+
+   ```
+   apiVersion: v1
+   appVersion: "1.0"
+   description: A Helm chart for Kubernetes
+   name: todolist
+   version: 0.2.0
+   
+   dependencies:
+     - name: trivy-operator
+       version: "0.1.9"
+       repository: "https://aquasecurity.github.io/helm-charts/"
+     - name: kube-prometheus-stack
+       version: "16.13.0"
+       repository: "@test-art-remote"
+   ```
+
+3. Run the `--dependency-update` command flag in the manifest to update dependencies as shown in the image below:
+   
+   ![](./static/dependency-update.png)
+
+### Use secrets in Helm by using SOPS_AGE_KEY
+
+1. Install `sops` and `age` to generate a public key to encrypt files.
+2. Enter the following commands to encrypt and save your files in your Git repository: 
+   
+   ```
+   export SOPS_AGE_KEY="age13fft7eceazacraytq0ufrgthyjkua5hqt3yzs4v29yvyag2vaprustsf9ge2q"
+   sops --encrypt --age $SOPS_AGE_KEY secrets.yaml > secrets.enc.yaml
+   ```
+   This command creates a `secrets.yaml` file.
+3. Enter the following commands to decrypt the `secrets.yaml` file and use it to resolve values in your Chart:
+   
+   ```
+   cd $MANIFEST_FILES_DIRECTORY    //go to the directory containing manifest-files
+   export SOPS_AGE_KEY=<+secrets.getValue("agesecret")> // export the PRIVATE Key to be used to decrypt
+   sops --decrypt secrets.enc.yaml     // you can decrypt using sops
+   helm secrets decrypt secrets.enc.yaml     // or by using helm secrets
+   helm secrets decrypt secrets.enc.yaml > secrets.yaml    // store the decrypted file in a temprory folder
+   ```
+   
+   In the manifest configuration, you can resolve the values: 
+
+   ![](./static/dependency-update-secrets-yaml.png)
+
 ## Notes
 
 #### Uninstall command flag
@@ -416,3 +508,6 @@ If you want to use the uninstall command in the **Manifest Details**, be aware o
  **Username**: A _json_key or _json_key_base64. We recommend that you use the json_key_base64 to encode your Google service account file to base64.
   
  **Password**: Your Google service account file content.
+ 
+
+
