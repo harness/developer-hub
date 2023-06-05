@@ -51,6 +51,12 @@ Click a service in the **Total Services** table drills down to show more service
 
 An individual service's dashboard includes the following features.
 
+:::note
+
+If you do not see the environment cards in the dashboard, you will see the message `There are no environments with instances in this service`. This appears when there are no environments with *active* instances for this service. You must perform an actual deployment to create active instances. 
+
+:::
+
 ### Open tasks
 
 The **See Open Tasks** banner will appear when there are deployments with the following statuses:
