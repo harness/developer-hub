@@ -45,6 +45,8 @@ For each event record, this view shows the:
 
 From here, you have multiple options to [Modify the Audit Trail View](#modify_the_audit_trail_view).
 
+:::important Pipeline execution Audit events, such as Pipeline Start and End, Stage Start and End, are not displayed by default in the Audit Trail. To enable these, you'll need to enable the setting `Enable Node Execution Audit Events`, available under the Pipeline category, in the Account Level Settings. This setting is only available at the Account level. :::
+
 #### Exclude Audit Trail Records
 
 You can view all the records or filter the displayed records by selecting one of the following:
