@@ -199,6 +199,10 @@ const config = {
                 to: "docs/self-managed-enterprise-edition",
               },
               {
+                label: "Internal Developer Portal",
+                to: "docs/internal-developer-portal",
+              },
+              {
                 label: "Harness FirstGen",
                 to: "docs/first-gen",
               },
