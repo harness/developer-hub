@@ -45,7 +45,7 @@ Currently, the following service dashboard functionality is behind the feature f
 
 :::
 
-Click a service in the **Total Services** table drills down to show more service details:
+Click a service in the **Total Services** table to drill down and show more service details:
 
 <docimage path={require('./static/eebdfe6a596f69e0fd2dca49ce04dd5659094aab8d76ef38886fa905659ffac9.png')} width="60%" height="60%" title="Click to view full size image" />  
 
@@ -174,7 +174,7 @@ The Deployments dashboard provides deployment frequency, status, and duration da
 
 ![](../cd-dashboards/static/monitor-cd-deployments-24.png)
 
-Clicking on data points or service and project names brings up data tables.
+Clicking on data points, service names,  or project names brings up data tables.
 
 ![](../cd-dashboards/static/monitor-cd-deployments-25.png)
 
