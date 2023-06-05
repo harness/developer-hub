@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-06-02T10:00:25
+date: 2023-06-05T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -17,13 +17,18 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - June 1, 2023
+## Latest - June 5, 2023
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-This release does not include new features.
+
+#### Feature Flags SDKs
+
+* The **Python** server SDK has been updated to version **1.14** with the following update.
+
+  * The Python SDK now sends extra headers to backend requests to aid in diagnostics. (FFM-7362)
 
 ```mdx-code-block
   </TabItem>
@@ -37,18 +42,7 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-#### Feature Flags UI
-
-* Previously, display of the FF module depended on an internal Harness feature flag. Now, display of the FF module is instead based on having an active license (including 'free'). (FFM-7866)
-
-* Previously when a new user was onboarding in the Feature Flags page, when they selected **Get Started**, they saw a dropdown of flags, even though they hadn't created any flags yet. Now, when users do not have any existing flags, they see a text box that prompts them to create one.
-
-#### Feature Flags SDKs
-
-* The **iOS** client SDK has been updated to version **1.0.4** with the following updates.
-
-  * Fixed the stream connection to have a read timeout of 60 seconds. This enables stale connections to be detected and closed, and retries to be started for polling/SSE connections. (FFM-8051)
-  * Fixed a nil pointer dereference bug that caused the SDK to crash under certain conditions. (FFM-8034)
+This release does not include fixed issues.
 
 ```mdx-code-block
   </TabItem>
@@ -59,6 +53,31 @@ This release does not include early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 1, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
+* Previously, display of the FF module depended on an internal Harness feature flag. Now, display of the FF module is instead based on having an active license (including 'free'). (FFM-7866)
+
+* Previously when a new user was onboarding in the Feature Flags page, when they selected **Get Started**, they saw a dropdown of flags, even though they hadn't created any flags yet. Now, when users do not have any existing flags, they see a text box that prompts them to create one.
+
+###### Feature Flags SDKs
+
+* The **iOS** client SDK has been updated to version **1.0.4** with the following updates.
+
+  * Fixed the stream connection to have a read timeout of 60 seconds. This enables stale connections to be detected and closed, and retries to be started for polling/SSE connections. (FFM-8051)
+  * Fixed a nil pointer dereference bug that caused the SDK to crash under certain conditions. (FFM-8034)
 
 #### May 25, 2023
 
