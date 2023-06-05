@@ -282,7 +282,7 @@ For example, if the target account has a role named `chaos-role`, you must annot
 
     Where:
 
-    * `<chaos-namespace>` is the namespace where the service account is installed.
+    * `<chaos-namespace>` is the namespace where the chaos infrastructure is installed.
     * `<service-account-name>` is the name of your Kubernetes service account.
     * `<role-arn>` is the ARN of the role in the target account.
 
