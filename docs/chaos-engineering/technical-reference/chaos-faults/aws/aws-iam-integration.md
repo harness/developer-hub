@@ -161,7 +161,7 @@ To verify the association between the experiment service account (`litmus-admin`
 
 ## Set up your target accounts for IRSA
 
-Whereas chaos experiments are initiated and controlled through the experiment service account, **target accounts** are the accounts you'll subject to chaos experiments so you can intentionally disrupt and manipulate their services.
+Whereas chaos experiments are initiated and controlled through the experiment service account, **target accounts** are the accounts you'll subject to chaos experiments, so you can intentionally disrupt and manipulate their services.
 
 In this section, you create an IAM role and set up an OIDC provider in each target account.
 
