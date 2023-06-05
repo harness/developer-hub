@@ -169,7 +169,7 @@ In this section, you create an IAM role and set up an OIDC provider in each targ
 
 This step lets you grant permissions for Harness CE to inject chaos targeting various AWS services in the target account. 
 
-Create an IAM role and policy in each target account to provide the required permissions for accessing the desired resources in that account. You have the flexibility to define the level of permissions you wish to assign to Harness CE. For instructions, go to [Create an IAM role and policy](https://docs.aws.amazon.com/transfer/latest/userguide/requirements-roles.html) in the AWS documentation.
+Create an IAM role and policy in each target account to provide the required permissions to access the desired resources in that account. You have the flexibility to define the level of permissions you wish to assign to Harness CE. For instructions, go to [Create an IAM role and policy](https://docs.aws.amazon.com/transfer/latest/userguide/requirements-roles.html) in the AWS documentation.
 
 ### Step 2: Set up the OIDC provider in all target accounts
 
