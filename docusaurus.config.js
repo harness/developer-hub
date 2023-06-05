@@ -79,7 +79,7 @@ const config = {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "img/logo_dlp.svg",
+          src: "img/logo_pride.svg",
         },
         items: [
           /*{
@@ -197,6 +197,10 @@ const config = {
               {
                 label: "Self-Managed Enterprise Edition",
                 to: "docs/self-managed-enterprise-edition",
+              },
+              {
+                label: "Internal Developer Portal",
+                to: "docs/internal-developer-portal",
               },
               {
                 label: "Harness FirstGen",
@@ -334,7 +338,7 @@ const config = {
               },
               {
                 label: "Forum",
-                to: "https://community.harness.io",
+                to: "https://discuss.harness.io",
               },
               {
                 label: "University",
@@ -390,6 +394,11 @@ const config = {
         defaultMode: "light",
         disableSwitch: true,
         respectPrefersColorScheme: false,
+      },
+      docs: {
+        sidebar: {
+          hideable: true,
+        },
       },
       /*
       announcementBar: {

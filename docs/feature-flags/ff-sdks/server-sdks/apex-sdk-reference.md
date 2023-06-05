@@ -26,7 +26,7 @@ Make sure you read and understand:
 
 ## Version
 
-This SDK is currently in beta. 
+This SDK is currently in **beta version 0.5.1**. 
 
 ## Requirements
 

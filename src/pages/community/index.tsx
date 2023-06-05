@@ -30,8 +30,8 @@ export default function AccessibilityPage() {
             <CommunityAspects />
             
             <ul>
-              <li>Slack for Discussions.</li>
-              <li>KB for Articles by Harness Experts. </li>
+              <li>Slack is used for discussions.</li>
+              <li>Knowledge Base is used for Articles by Harness Experts. </li>
             </ul>
             
             <CommunityPosts />

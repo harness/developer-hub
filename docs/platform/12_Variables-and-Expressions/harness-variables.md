@@ -28,27 +28,33 @@ Harness expressions are identified using the `<+...>` syntax. For example, `<+p
 
 The content between the `<+...>` delimiters is passed on to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) where it is evaluated. Using JEXL, you can build complex variable expressions that use JEXL methods. For example, here is an expression that uses Webhook Trigger payload information:
 
-
 ```
 <+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") || <+trigger.payload.repository.owner.name> == "wings-software"
 ```
 Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) and other steps.
 
-### You can use all Java string methods
+### Java string methods
 
 You can use all Java string methods on Harness variable expressions.
 
-The above example used `contains()`:
+The example mentioned in the previous section used `contains()`:
 
 `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")`
 
-Let's look at another example. Imagine you have a variable called `abc` with the value `def:ghi`. You can use `split()` like this:
-
+Let's look at another example. For a variable called `abc` with value, `def:ghi`. You can use `split()` like this:
 
 ```
-echo <+pipeline.variables.abc.split(':')[1]>
+echo <+<+pipeline.variables.abc>.split(':')[1]>
 ```
-The result would be `ghi`.
+The output of this expression is `ghi`.
+
+The correct way to use a Java method with a variable is `<+<+expression>.methodName()>`.
+
+For example, for a variable `myvar` using methods substring and indexOf, with value `Hello`. You can use the methods like: 
+
+<+<+stage.variables.myvar>.substring(<+<+stage.variables.myvar>.indexOf("e")>)>
+
+This expression evaluates to `ello`.
 
 ### FQNs and expressions
 
@@ -1079,13 +1085,13 @@ The use of variable expressions is different between v1 and v2.
 
 For more information, go to [Services and Environments Overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
-To reference an environment-level variable, use the expression `<+env.variables.[variable name]>`.
+To reference an environment-level variable, use the expression `<+env.variables.variableName>`.
 
-For example, here is an environment variable named `envvar`.
+For example, to reference an environment variable named `envvar`, use the following expression:
+
+`<+env.variables.envvar>`
 
 ![](./static/harness-variables-44.png)
-
-You would reference it as `<+env.variables.envvar>`.
 
 ### <+env.name>
 
@@ -1111,11 +1117,11 @@ The available values are:
 
 ### <+env.envGroupName>
 
-The name of the environment group to which the environment belongs (if defined).
+The name of the environment group to which the environment belongs (if defined). This expression resolves only if the deployment is done to an environment group.
 
 ### <+env.envGroupRef>
 
-The environment group reference.
+The environment group reference. This expression resolves only if the deployment is done to an environment group.
 
 You can evaluate the expression using JEXL in the **Conditional Execution** settings of steps or stages:
 

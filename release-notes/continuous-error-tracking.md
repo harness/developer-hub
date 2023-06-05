@@ -18,7 +18,7 @@ Review the notes below for details about recent changes to Continuous Error Trac
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - May 09, 2023, versions et-service 5.21.0 and et-collector 5.19.2
+## Latest - May 25, 2023, versions et-service 5.22.0 and et-collector 5.22.0
 
 ```mdx-code-block
 <Tabs>
@@ -36,6 +36,24 @@ This release does not include any early access features.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
+
+
+- The CET Agent list is failing to load correctly when running in SMP installations with Postgres. (CET-1279)  
+  
+    The issue has been resolved. The CET Agent list now loads properly in SMP installations with Postgres.
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 09, 2023, versions et-service 5.21.0 and et-collector 5.19.2
 
 - The Events Summary page is taking longer (exceeding eight hours) to display the events. (CET-1356)  
   
@@ -60,18 +78,6 @@ This release does not include any early access features.
 - The Impacted Services column is displayed in the event list when viewed from the CI pipeline. (CET-1232)  
   
     This issue has been fixed, and now the Impacted Services column is not being displayed.
-
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
 
 #### May 08, 2023, version 79111
 

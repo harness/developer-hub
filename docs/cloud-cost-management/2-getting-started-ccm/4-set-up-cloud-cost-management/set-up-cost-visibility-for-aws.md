@@ -7,7 +7,7 @@ helpdocs_category_id: 7vy86n7cws
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+# Set up CCM for AWS
 Harness Cloud Cost Management (CCM) offers comprehensive solutions to manage and optimize the cloud costs of your Amazon Web Services (AWS) infrastructure. CCM provides visibility, governance, and optimization of AWS services such as EC2, S3, RDS, Lambda, and others. CCM provides recommendations to effectively right-size your cloud resources to match the workload demands and optimizes the auto-scaling groups (ASGs), and EKS clusters using intelligent cloud AutoStopping rules.
 
 > **☆ NOTE —** After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
@@ -74,24 +74,25 @@ Perform the following steps to connect CCM to the AWS account.
 <Tabs queryString="tab-number">
 <TabItem value="4" label="From Account Settings">
 ```
-1. Go to **Account Resources** | **Connectors**.
-2. Click on **+ New Connector**.
+1. Go to **Account Resources** > **Connectors**.
+2. Select **+ New Connector**.
 3. Under **Cloud Costs**, select **AWS**.
 ```mdx-code-block
 </TabItem>
 <TabItem value="5" label="From Cloud Costs">
 ```
-1. Go to **Setup** | **Cloud Integration**.  
-2. Click on **New Cluster/Cloud account**.
+1. Go to **Setup** > **Cloud Integration**.  
+2. Select **New Cluster/Cloud account**.
 3. Select **AWS**.
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ```
+2. Perform the following tasks in the **AWS Connector** wizard.
 
 ### Overview
 
-1. Enter the following details and click **Continue**.
+1. Enter the following details and select **Continue**.
 
 | **Field** | **Description** |
 | --- | --- |
@@ -106,8 +107,8 @@ Launch the AWS console and perform the following steps:
 
 
 1. Log into your AWS account if not already logged in.
-2. Click **Create Report**.   
-4. In the **Specify report details** step, enter the following values, and then click **Next**.
+2. Select **Create Report**.   
+4. In the **Specify report details** step, enter the following values, and then select **Next**.
 
 | **Field** | **Description** |
 | --- | --- |
@@ -115,7 +116,7 @@ Launch the AWS console and perform the following steps:
 | **Include resource IDs** | Make sure this option is selected. |
 | **Refresh automatically** | Make sure this option is selected. |
 
-5. In the **Set delivery options** step, enter the following values, and then click **Next**.
+5. In the **Set delivery options** step, enter the following values, and then select **Next**.
 
 | **Field** | **Description** |
 | --- | --- |
@@ -128,10 +129,10 @@ Launch the AWS console and perform the following steps:
 | **Amazon QuickSight** | Make sure this option is unchecked. |
 | **Compression type** | Select **GZIP**. |
 
-6. In the **Review and create** step, click **Create Report**.
+6. In the **Review and create** step, select **Create Report**.
 
 
-7. In the Harness connector dialog, enter the following values, and then click **Continue**.
+7. In the Harness connector dialog, enter the following values, and then select **Continue**.
 
 | **Field** | **Description** |
 | --- | --- |
@@ -141,7 +142,9 @@ Launch the AWS console and perform the following steps:
 
 ### Choose Requirements
 
-Select your desired features, and then click **Continue**. Details about the features are listed below. Note that the permissions required as part of the AWS cross-account role will be based on your selections. Those permissions are listed out in the **Reference - AWS Access Permission** section below.
+Select your desired features, and then select **Continue**. 
+
+Details about the features are listed below. Note that the permissions required as part of the AWS cross-account role will be based on your selections. Those permissions are listed out in the **Reference - AWS Access Permission** section below.
 
 | **Features**  | **Capabilities** | 
 | --- | --- | 
@@ -155,11 +158,11 @@ Select your desired features, and then click **Continue**. Details about the fea
 
 Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy based on the features selected above.
 
-1. In **Create Cross Account Role**, click **Launch Template on AWS console**.
+1. In **Create Cross Account Role**, select **Launch Template on AWS console**.
 
 Perform the following steps in the AWS Console.
 
-2. In **Quick create stack**, in **Capabilities**, select the acknowledgment, and click **Create stack**.
+2. In **Quick create stack**, in **Capabilities**, select the acknowledgment, and then select **Create stack**.
   > **☆ NOTE** - The values on this page are based on your previous selections. Do not modify any values before creating the stack.  
     
 3. In the stack's page, go to the **Outputs** tab  and copy the **Value** of **CrossAccountRoleArn Key**.
@@ -167,7 +170,7 @@ Perform the following steps in the AWS Console.
      ![](./static/set-up-cost-visibility-for-aws-36.png)
 
 
-4. In the Harness connector dialog, enter the following values, and then click **Save and Continue**.
+4. In the Harness connector dialog, enter the following values, and then select **Save and Continue**.
 
 | **Field** | **Description** |
 | --- | --- |
@@ -176,7 +179,7 @@ Perform the following steps in the AWS Console.
 
 ### Connection Test
 
-The connection is validated, and verified in this step. After successful validation, click **Finish**.
+The connection is validated, and verified in this step. After successful validation, select **Finish**.
 
 
 :::important
@@ -203,9 +206,9 @@ Harness CCM also provides the ability to create connectors via API using a Stack
 
 Perform the following steps to create a StackSet in AWS:
 
-1. Click the following link to start creating the StackSet:  
+1. Select the following link to start creating the StackSet:  
 <https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacksets/create>
-2. In the **Choose a template** step, enter the following values, and then click **Next**.
+2. In the **Choose a template** step, enter the following values, and then select **Next**.
 
 | **Field** | **Description** |
 | --- | --- |
@@ -214,7 +217,7 @@ Perform the following steps to create a StackSet in AWS:
 | **Specify template** | Select **Amazon S3 URL**. |
 | **Amazon S3 URL** | Enter `https://continuous-efficiency-prod.s3.us-east-2.amazonaws.com/setup/ngv1/HarnessAWSTemplate.yaml` |
 
-3. In the **Specify StackSet details** step, enter the following values, and then click **Next**.
+3. In the **Specify StackSet details** step, enter the following values, and then select **Next**.
 
 | **Field** | **Description** |
 | --- | --- |
@@ -229,13 +232,13 @@ Perform the following steps to create a StackSet in AWS:
 | **PrincipalBilling** | Do not modify. |
 | **RoleName** | Leave as is unless your AWS policies required a different naming convention. |
    
-4. In the **Configure StackSet options** step, enter the following values and click **Next**
+4. In the **Configure StackSet options** step, enter the following values and select **Next**
 
 | **Field** | **Description** |
 | --- | --- |
 | **Managed execution** | Select **Active**. |
     
-5. In the **Set deployment options** step, enter the following values, and then click **Next**.
+5. In the **Set deployment options** step, enter the following values, and then select **Next**.
 
 | **Field** | **Description** |
 | --- | --- |
@@ -244,7 +247,7 @@ Perform the following steps to create a StackSet in AWS:
 | **Specify regions** | Configure the regions that you want to deploy to. |
 | **Region Concurrency** | Select **Sequential**. |
 
-6. In the **Review** step, select the acknowledgment, and then click **Submit**.
+6. In the **Review** step, select the acknowledgment, and then select **Submit**.
 
 ### Create an AWS Connector via API
 

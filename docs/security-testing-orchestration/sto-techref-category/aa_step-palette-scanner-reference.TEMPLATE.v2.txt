@@ -18,7 +18,7 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 <StoScannerStepNotes />
 
 <details>
-    <summary>Step Palette</summary>
+    <summary>Scanner Template</summary>
 
 ![](static/step-palette-00.png) 
 
@@ -552,7 +552,7 @@ Optionally, you can set up a $PRODUCT scan manually in a Security step. Enter th
 
 ### YAML example
 
-The following YAML example shows a Bandit scan step. If you want to configure Bandit steps programmatically, the recommended practice is to set up one Bandit scanner using the [Step Palette](#step-palette-configuration) in the Harness UI. Then switch over to the YAML view in the Pipeline Editor, and copy and edit the YAML specification as needed.
+The following YAML example shows a Bandit scan step. If you want to configure Bandit steps programmatically, the recommended practice is to set up one Bandit scanner using the [Scanner Template](#step-palette-configuration) in the Harness UI. Then switch over to the YAML view in the Pipeline Editor, and copy and edit the YAML specification as needed.
 
 ```yaml
 

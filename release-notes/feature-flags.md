@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-05-24T10:00:25
+date: 2023-06-02T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -11,13 +11,13 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Review the notes below for details about recent changes to Harness Feature Flags, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
+Review the notes below for details about recent changes to Harness Feature Flags (FF), NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 
 :::info note
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - May 24, 2023
+## Latest - June 1, 2023
 
 ```mdx-code-block
 <Tabs>
@@ -37,11 +37,18 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
+#### Feature Flags UI
+
+* Previously, display of the FF module depended on an internal Harness feature flag. Now, display of the FF module is instead based on having an active license (including 'free'). (FFM-7866)
+
+* Previously when a new user was onboarding in the Feature Flags page, when they selected **Get Started**, they saw a dropdown of flags, even though they hadn't created any flags yet. Now, when users do not have any existing flags, they see a text box that prompts them to create one.
+
 #### Feature Flags SDKs
 
-The **Python** server SDK has been updated to version **1.1.11** with the following update.
+* The **iOS** client SDK has been updated to version **1.0.4** with the following updates.
 
-* Fixed an issue where the SDK was not evaluating flags with multiple and/or nested prerequisites correctly.
+  * Fixed the stream connection to have a read timeout of 60 seconds. This enables stale connections to be detected and closed, and retries to be started for polling/SSE connections. (FFM-8051)
+  * Fixed a nil pointer dereference bug that caused the SDK to crash under certain conditions. (FFM-8034)
 
 ```mdx-code-block
   </TabItem>
@@ -52,6 +59,48 @@ The **Python** server SDK has been updated to version **1.1.11** with the follow
 
 <details>
 <summary>2023 releases</summary>
+
+#### May 25, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server
+
+The **FF server** has been updated to version **1.1071.0** with the following updates.
+
+* For customers with a large volume of targets (in the millions), the Target page load time could be slow. Harness has introduced additional indexes to improve the response time of this page. (FFM-7988)
+
+* There was an issue when Git Sync was first configured, a sync was not attempted until a flag was changed or a new one was created. With this fix, a sync is immediately attempted when you configure Git Sync, and the existing flags in your project are backed up to the remote file. (FFM-7681)
+
+###### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.1.12** with the following update.
+
+*  There was an issue where if an error occurred when processing a new stream event, the SDK could potentially log a blank string. This issue has been fixed and the SDK now logs these errors correctly. (FFM-8015)
+
+#### May 24, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+#### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.1.11** with the following update.
+
+* Fixed an issue where the SDK was not evaluating flags with multiple and/or nested prerequisites correctly.
 
 #### May 23, 2023
 
@@ -115,7 +164,7 @@ This release does not include early access features.
 
 The **FF server** has been updated to version **1.1054.2** with the following update.
 
-* The Identifier search filter sometimes incorrectly used a wildcard match. This happened if two flags had overlapping names such as `flag_one` and `flag_one_b`. The detail view of `flag_one_b` sometimes returned `flag_one` details instead. Because flags order by creation, this only happened when flags were created in a certain order. This fix uses an exact match when searching for flag identifiers.
+* The Identifier search filter sometimes incorrectly used a wildcard match. This happened if two flags had overlapping names such as `flag_one` and `flag_one_b`. The detail view of `flag_one_b` sometimes returned `flag_one` details instead. Because flags order by creation, this only happened when flags were created in a certain order. This fix uses an exact match when searching for flag identifiers. (FFM-7928)
 
 #### May 15, 2023
 
@@ -271,6 +320,9 @@ This release does not include early access features.
   * Added a Ruby on Rails example in the SDK [repository](https://github.com/harness/ff-ruby-server-sdk). (FFM-6926)
   * Disabling the metrics processor didn't disable entries being written to the queue, causing an eventual memory leak. This fix corrects this behavior. (FFM-6965)
   * Added TLS support to the SDK and updated the documentation in the SDK [repository](https://github.com/harness/ff-ruby-server-sdk).
+
+* The **Apex** server SDK has been updated to version **beta 0.5.1** with the following update.
+  * The JSON parsing code was unable to parse the fields `createdAt` and `modifiedAt` in the Target Segment response, because the values were too large for an Integer data type. This issue has been fixed. (FFM-7812)
 
 #### April 4, 2023
 
