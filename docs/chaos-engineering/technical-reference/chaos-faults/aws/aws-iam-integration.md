@@ -130,8 +130,8 @@ Associate the IAM role you created in the previous step by annotating the experi
 To associate the IAM role to the experiment service account, run this command:
 
 ```bash
-kubectl annotate serviceaccount -n <EXPERIMENT_SERVICE_ACCOUNT_NAMESPACE> <EXPERIMENT_SERVICE_ACCOUNT_NAME> \
-eks.amazonaws.com/role-arn=arn:aws:iam::<ACCOUNT_ID>:role/<IAM_ROLE_NAME>
+kubectl annotate serviceaccount -n <experiment_service_account_namespace> <experiment_service_account_name> \
+eks.amazonaws.com/role-arn=arn:aws:iam::<account_ID>:role/<IAM_role_name>
 ```
 
 :::note   
