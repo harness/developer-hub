@@ -93,12 +93,11 @@ Future releases will include support for more operating systems.
 When you attach the Harness Error Tracking Agent to a JVM that runs Java 10, 11, 16, 17, or any IBM Java version, ensure that the following requirements are met:
 
 * Turn off class sharing using the following flags:
-
-  |  |  |
-| --- | --- |
-| IBM Java | `‑Xshareclasses:none` |
-| HotSpot | `-Xshare:off -XX:-UseTypeSpeculation` |
-
+  
+  | **JVM**  | **Flag**                              |
+  | -------- | ------------------------------------- |
+  | IBM Java | `‑Xshareclasses:none`                 |
+  | HotSpot  | `-Xshare:off -XX:-UseTypeSpeculation` |
 
 * Increase `ReservedCodeCache` to at least 512mb by adding the following flag:  
 `-XX:ReservedCodeCacheSize=512m`

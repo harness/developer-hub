@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-05-31T10:00
+date: 2023-06-01T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -17,20 +17,82 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - May 25, 2023 
+## Latest - June 01, 2023 
 
-### Cloud Cost Management, version 79600
+### Service Reliability Management, version 79413
+
+- Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
+
+### Continuous Delivery, version 79411
+
+- Edit Git details for pipelines stored using Harness Git Experience. (CDS-69130)
+  
+  You can now edit the Git metadata in the pipelines and input sets you use in your Git-synced Harness pipelines.
+
+  You can edit the Harness Git connector, repository, and path to the YAML file.
+
+  To edit the Git details, select **Edit Git Metadata** in the pipelines and input sets listing pages. 
+
+  <docimage path={require('./static/d3ae175d36c932027045989f3c6d5b8b35ff3f50d7dec64195f1e1a264b4f577.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+  <docimage path={require('./static/87cae6dd20947c866629d225293d41ad83be7848061537e28efd2def8e14ea48.png')} width="60%" height="60%" title="Click to view full size image" />
+
+- Step group templates can now be used in custom and deploy stages. (CDS-68210, ZD-43059)
+  
+  The same step group template can be used in a **Custom** or **Deploy** stage type.
+
+  <docimage path={require('./static/64a3aee31250b15c98b4978994ca1ff14e720b2d739c8feec72fdee12d6220a7.png')} width="60%" height="60%" title="Click to view full size image" />
+
+  The same step group template can be used in both **Custom** or **Deploy** stage types if the step group does not contain steps that are specific to the **Deploy** stage type.
+
+- New default Git connector for Git Experience (CDS-66921)
+
+  You can now set the default Git connector for Git Experience pipelines and input sets. The default Git connector will be selected whenever you create or import operations with the Git Experience entities. The default connector can be changed at any time and another connector can be used when needed.
+
+  You can select the default connector in your project, org, or account **Default Settings**:
+
+  <docimage path={require('./static/abb924b38a23ab57c26b3703d7c38e096eb60005625a6dfcd42793d503553a6e.png')} width="60%" height="60%" title="Click to view full size image" />
+
+- Approval step notifications. (CDS-31886, ZD-43905)
+  
+  Notifications are sent once a Harness [Approval step](https://developer.harness.io/docs/category/approvals) is approved or rejected. Harness sends the approval details along with the status.
+
+  Notifications are sent to the destinations set up in the user group(s) listed in the Approval step's **Approvers** setting. This includes email, Slack, PagerDuty, and MS Teams.
+
+  ![picture 87](static/fa61423c00604c9a2d1dcf3cd2e8c040d71992791e34abf983eb5befe8640159.png)
+
+  For information on setting up notifications for user groups, go to [Add and manage user groups](https://developer.harness.io/docs/platform/User-Management/add-user-groups).
+
+### Harness Platform, version 79411
+
+#### Harness Manager delegate
+
+The features below are available with version 79411 and do not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
+
+- You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
+
+- You can now use the legacy UI to create delegates. (PL-38937)
+
+#### All other Platform new features
+
+- You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 29, 2023, version 79505
+
+##### Cloud Cost Management
 
 **Azure VM recommendations**
 
   Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
 
-### STO Core version 1.54.1
+#### May 25, 2023 
 
+##### Security Testing Orchestration, version 1.54.1
 
-#### Security Testing Orchestration
-
-* This release include new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
+* This release includes new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
 
   * [AWS ECR](/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference)
   * [AWS Security Hub](/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference)
@@ -44,9 +106,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * The **Account Settings** > **Subscriptions** page has a new **Activity & Usage** section that shows the number of security scans and user activity over the past 30 days. (STO-4942)
 
 * This release includes a minor UI update. In **Security Tests** > **Details**, the **Exempt** button has been renamed to **Request Exemption** to make the button's purpose more clear. (STO-5928)
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 23, 2023, version 79307
 
@@ -81,8 +140,6 @@ Added support for showing artifacts on the **Artifacts** tab in Harness Cloud an
 Previously, this was supported only for Kubernetes builds. The artifacts are visible on the execution **Artifact** tab and the artifact details are visible on the step output window. 
 
 ##### Harness Platform
-
-* You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
 * The **Connector Details** page now shows whether a connector is connected via a delegate or via Harness Platform. (PL-32673)
 
@@ -158,38 +215,7 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
   Previously, triggers used the round robin algorithm to select any available delegate within a project or account. Now, the delegate-based trigger polling selects the same delegate you used in the connectors for triggers. 
 
   The Harness Delegate version 79307 is required for this feature.
-
-##### Harness Delegate
-
-- A new [`listDelegates` API](https://app.harness.io/gateway/ng/api/delegate-setup/listDelegates/accountIdentifier=string&orgIdentifier=string&projectIdentifier=string') enables you to list and filter delegates in your project, organization, or account. (PL-37981)
-
-   You can use the body parameters to filter your delegate list:
-
-   ```json
-   {
-   "filterType":"Delegate", //This field is mandatory.
-   
-   "delegateInstanceFilter": "EXPIRED/AVAILABLE",
-
-   "status": "CONNECTED/DISCONNECTED",
-   
-   "delegateType": "KUBERNETES/DOCKER/HELM_DELEGATE/SHELL_SCRIPT/ECS",
-   
-   "delegateName": "<>",
-   
-   "description": "<>",
-   
-   "delegateTags": "[]"
-   }
-   ```
   
-May 17, 2023, STO Core version 1.53.0
-
-#### Security Testing Orchestration
-
-* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
-
-  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
 
 #### May 17, 2023, STO Core version 1.53.0
 
