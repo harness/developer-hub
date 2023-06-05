@@ -241,10 +241,12 @@ Finally, it's time to execute the pipeline.
 1. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
 2. Observe the execution logs as Harness deploys the workload and checks for steady state.
 3. After a successful execution, you can check the deployment on your Kubernetes cluster using the following command:
+
    ```bash
    kubectl get pods -n default
    ```
- 4. To access the Guestbook application deployed using the Harness pipeline, port forward the service and access it at [http://localhost:8080](http://localhost:8080).
+ 4. To access the Guestbook application deployed using the Harness pipeline, port forward the service and access it at `http://localhost:8080`:
+ 
     ```bash
     kubectl port-forward svc/<service-name> 8080:80
     ```
@@ -421,14 +423,16 @@ Finally, it's time to **Synchronize** the application state.
 1. Select **Sync** in the top right corner of the UI.
 2. Check the application details, and then select **Synchronize** to initiate the deployment.
    - After a successful execution, you can check the deployment on your Kubernetes cluster using the following command:
+   
      ```bash
      kubectl get pods -n default
      ```
-   - To access the Guestbook application deployed via the Harness Pipeline, port forward the service and access it at [http://localhost:8080](http://localhost:8080)
+   - To access the Guestbook application deployed via the Harness pipeline, port forward the service and access it at `http://localhost:8080`:
+   
      ```bash
      kubectl port-forward svc/<service-name> 8080:80
      ```
-On successful application sync, you'll see the status tree under **Resource View** as shown below.
+On successful application sync, you'll see the status tree under **Resource View** as shown below:
 
 ![GitOps](../static/k8s-helm-tutorial/gitops-helm.png)
 
