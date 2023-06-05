@@ -28,7 +28,9 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 * The **Python** server SDK has been updated to version **1.14** with the following update.
 
-  * The Python SDK now sends extra headers to backend requests to aid in diagnostics. (FFM-7362)
+  * The SDK now sends extra headers to backend requests to aid in diagnostics. (FFM-7362)
+
+  * The SDK now retries on failed client authentication requests for specific HTTP errors. If client authentication fails, the SDK serves the default values you provide in `variation` calls. (FFM-7177)
 
 ```mdx-code-block
   </TabItem>
