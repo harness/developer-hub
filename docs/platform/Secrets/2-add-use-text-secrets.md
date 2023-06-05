@@ -49,7 +49,7 @@ You can reference existing secrets in the following types of Secret Managers:
 * GCP Secrets Manager
 
 
-Optionally you can test your secret refernce path validity using **Test** button
+You can validate the secret reference path using the **Test** button as shown below:
 
 ![](./static/test-secret-reference-path.png)
 
