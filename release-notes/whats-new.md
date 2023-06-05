@@ -17,13 +17,22 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 01, 2023 
+## Latest - June 07, 2023 Harness Platform, version 795xx
 
-### Service Reliability Management, version 79413
+### Harness Delegate
+
+- Kubernetes blue/green and canary deployments now support HorizontalPodAutoscaler and PodDisruptionBudget resources. (CDS-59011)
+
+- Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SMP-14724)
+
+
+### June 01, 2023 
+
+#### Service Reliability Management, version 79413
 
 - Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
 
-### Continuous Delivery, version 79411
+#### Continuous Delivery, version 79411
 
 - Edit Git details for pipelines stored using Harness Git Experience. (CDS-69130)
   

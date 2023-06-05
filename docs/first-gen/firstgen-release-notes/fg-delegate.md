@@ -10,6 +10,20 @@ To identify the cluster that hosts your account, open Harness FirstGen and go to
 
 For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, see [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
 
+## Latest release - June 7, 2023, Harness version 795xx, Harness Delegate version 795xx
+
+### What's new
+
+This release does not include any new features.
+
+### Early access 
+
+This release does not include any new early access features. 
+
+### Fixed issues
+
+This release does not include any fixed issues.
+
 ## May 23, 2023, Harness version 79306, Harness Delegate version 79307
 
 Harness FirstGen release 79306 includes the following feature changes and fixes for the Harness Delegate.

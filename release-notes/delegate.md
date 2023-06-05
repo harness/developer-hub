@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-05-23T10:00
+date: 2023-06-07T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -19,9 +19,10 @@ Harness Delegate, NextGen SaaS releases every two weeks. Harness Platform, NextG
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest release - May 23, 2023, Harness version 79306, Harness Delegate version 79307
+## Latest release - June 7, 2023, Harness version 795xx, Harness Delegate version 795xx
 
-Harness NextGen release 79306 includes the following changes for the Harness Delegate.
+Harness NextGen release 795xx includes the following changes for the Harness Delegate.
+
 
 ```mdx-code-block
 <Tabs>
@@ -29,6 +30,108 @@ Harness NextGen release 79306 includes the following changes for the Harness Del
 ```
 
 This release introduces the following new features and enhancements:
+
+- Kubernetes blue/green and canary deployments now support HorizontalPodAutoscaler and PodDisruptionBudget resources. (CDS-59011)
+
+- Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SMP-14724)
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release includes the following early access features and enhancements:
+
+- You can now scale down the last successful stage environment you created using the blue/green deployment strategy to help efficiently manage resources. You can configure this step in the same stage or a different stage, depending your requirements. (CDS-68527)
+
+   Scaling down removes the HorizontalPodAutoscaler and PodDisruptionBudget resources. The Deployments, StatefulSets, DaemonSets, and Deployment Configs resources are scaled down.
+
+   You must configure the same infra definition as the blue/green deployment. Harness identifies resources from the release history, which is mapped to release name. A different infra definition configuration may lead to scaling down important resources.
+
+   This is behind the feature flag `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`.
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+This release includes the following fixes:
+
+- Migrations that took longer than 30 minutes failed. (SRM-14859)
+
+   This issue is fixed by a code enhancement to separate cleanup and migration bucketing.
+
+- Deployments consistently failed during the same stage. (PL-38247)
+
+   This issue was fixed by updating the delegate YAML. Startup now fails when you use a legacy delegate image with an immutable delegate.
+
+- Enhanced handling and logging for the `No enum constant io.harness.delegate.message.MessengerType.WATCHEIN` exception to enable the actual malformed message. This error indicates that a message is malformed and only occurs when there is an error during writing, for example, out of disk, process killed, etc. (PL-38245)
+
+- Unable to create SLO using SignalFX metrics. (OIP-406)
+
+This issue has been resolved. Now, SignalFX's health source supports SLI functionality, and you can create SLOs using SignalFX metrics.
+
+- Fixed an issue where Harness was unable to retrieve the Git status or push updates to Azure repos with project names with white spaces. (CI-8105)
+
+   This issue is fixed.
+
+- Spot deployments failed to retrieve instance health and expired. (CDS-56451)
+
+  This issue is fixed by adding an error handler for the spot `instanceHealthiness` API. 
+
+- When a delegate selector was added at the step, stage, or pipeline level in a Jenkins step, it did not override the delegate selectors from the Jenkins connector. (CDS-68312, ZD-43710)
+
+  This issue is fixed. Any selector at a step, stage, or pipeline level overrides the selectors from the Jenkins connector.
+
+- When you delete a template referenced by another template, Harness includes a force delete option. The force delete option incorrectly removed all template versions from Harness and the UI. (CDS-68683)
+
+   This issue was fixed with a code enhancement. The force delete option no longer removes all template versions when you delete referenced templates.
+
+- Reduced error logging for failed Git authentication attempts. (CDS-68760)
+
+- Perpetual tasks caused excessive GCP error logging. (CDS-68772)
+
+  This issue was fixed by logging unsuccessful JSCH connections errors for only the last retry.
+
+- Bamboo triggers weren't working correctly. (CDS-69605)
+
+   This issue was fixed by adding the Bamboo build to the delegate response.
+
+- ECS tasks failed in some NPE cases when the start time was null from the delegate. (CDS-69745)
+
+   This issue was fixed with a code enhancement.
+
+- `eventPayload` trigger expressions did not resolve when failed pipelines were restarted. (CDS-70559)
+
+  This issue is fixed and `eventPayload` trigger expressions now resolve when you restart failed pipelines.
+
+- Instance Sync for rolling deployments took the new instances and left earlier instances in place when the index matched. (CDS-70825)
+
+   This issue is fixed. Instance Sync for rolling deployments no longer retain earlier instances.
+
+
+
+
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>Expand this section to view changes to previous releases</summary>
+
+
+## May 23, 2023, Harness version 79306, Harness Delegate version 79307
+
+Harness NextGen release 79306 includes the following changes for the Harness Delegate.
+
+#### What's new
 
 - Added support to provide quartz cron expressions for scheduled triggers. (CDS-59261, CDS-59260)
 
@@ -50,10 +153,7 @@ This release introduces the following new features and enhancements:
 
 - The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set a secret expiration date. (PL-32708, ZD-42524)
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+#### Early access
 
 - New delegate metrics are available. This functionality is behind a feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. (PL-37908, PL-38538)
 
@@ -69,12 +169,8 @@ This release introduces the following new features and enhancements:
 
    Enable the feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST` to use the new delegate agent metrics. When this feature flag is enabled, Harness will capture the metrics. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
 
-This release includes the following fixes:
+#### Fixed issues
 
 - Fixed an issue where the expressions of tags were not rendered properly. (CDS-68703, ZD-43797)
 
@@ -120,16 +216,6 @@ This release includes the following fixes:
 - Deployments consistently failed during the same stage. (PL-38247)
 
    This issue was fixed by updating the delegate YAML. Startup now fails when you use a legacy delegate image with an immutable delegate.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>Expand this section to view changes to previous releases</summary>
 
 
 #### April 22, 2023, Harness version 79111, Harness Delegate version 79106
