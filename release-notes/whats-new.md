@@ -67,11 +67,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Harness Manager delegate
 
-The features below are available with version 79411 and do not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
+The feature below is available with version 79411 and does not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
 
-- You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
-
-- You can now use the legacy UI to create delegates. (PL-38937)
+- You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508, 40688)
 
 #### All other Platform new features
 
