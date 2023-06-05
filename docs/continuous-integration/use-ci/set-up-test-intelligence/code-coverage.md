@@ -124,15 +124,9 @@ To publish code coverage results to your CodeCov dashboard, follow this tutorial
 
 ### Coveralls
 
-https://docs.coveralls.io/#integrate-coveralls-with-your-codebase
-
-* Github action
-* language integration
-
 Drone supported w Coveralls Universal Reporter:
 1. Set up in codebase https://docs.coveralls.io/index#integrate-coveralls-with-your-codebase
-2. coveralls repo token env var on step: https://docs.coveralls.io/ci-services#the-coveralls-repo-token-required  
-1. Or use .coveralls.yml (not rec for private repos)? https://docs.coveralls.io/ci-services#option-2-use-a-coverallsyml-file
+2. coveralls repo token env var on step: https://docs.coveralls.io/ci-services#the-coveralls-repo-token-required
 
 Use a harness text secret for the token.
 
