@@ -51,7 +51,7 @@ To use the matrix labels naming strategy, do the following:
 4. Select **Save**.
 
 :::info note
- This option is available at the project, organization, or account level.
+ This option is available at the project, organization, and account level.
 :::
 
 #### Parallelism
