@@ -1,7 +1,7 @@
 ---
 title: View tests
 description: View the results from CI tests.
-sidebar_position: 50
+sidebar_position: 60
 helpdocs_topic_id: sof7n3qjap
 helpdocs_category_id: flam7377aq
 helpdocs_is_private: false
@@ -47,7 +47,7 @@ To publish an artifact to the **Artifacts** tab, you must:
    * **Container Registry:** Select a Docker connector.
    * **Image:** Enter `plugins/artifact-metadata-publisher`.
    * **Settings:** Add the following two settings as key-value pairs.
-      * `file_urls`: The URL to the target artifact that was uploaded in the **Upload Artifacts to S3** step.
+      * `file_urls`: The URL to the target artifact that was uploaded in the **Upload Artifacts** step.
       * `artifact_file`: `artifact.txt`
 
 ```mdx-code-block
@@ -68,7 +68,7 @@ To publish an artifact to the **Artifacts** tab, you must:
                        connectorRef: account.harnessImage
                        image: plugins/artifact-metadata-publisher
                        settings:
-                         file_urls: ## Provide the URL to the target artifact that was uploaded in the Upload Artifacts to S3 step.
+                         file_urls: ## Provide the URL to the target artifact that was uploaded in the Upload Artifacts step.
                          artifact_file: artifact.txt
    ```
 

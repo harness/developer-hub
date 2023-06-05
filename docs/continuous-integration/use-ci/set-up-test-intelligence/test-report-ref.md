@@ -1,7 +1,7 @@
 ---
 title: Format test reports
 description: Test reports must be in JUnit XML format to appear on the Tests tab.
-sidebar_position: 40
+sidebar_position: 50
 ---
 
 ```mdx-code-block
