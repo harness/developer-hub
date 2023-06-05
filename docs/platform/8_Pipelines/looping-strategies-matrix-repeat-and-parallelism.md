@@ -38,8 +38,22 @@ matrix:
   maxConcurrency: 2 # run up to 2 jobs in parallel based on your resources  
 # example run:  
 # testgroup0 -> testgroup2  
-# testgroup1 -> testgroup3 
+# testgroup1 -> testgroup3
 ```
+
+By default, Harness uses indexes for the matrix naming strategy. You can also use labels.
+
+To use the matrix labels naming strategy, do the following:
+
+1. In Harness, select **Account Settings**.
+2. Select **Account Resources**, then select **Pipeline**.
+3. Set **Enable Matrix Labels By Name** to `true`.
+4. Select **Save**.
+
+:::info note
+ This option is available at the project, organization, or account level.
+:::
+
 #### Parallelism
 
 Parallelism strategies are useful for CI Build Stages that include a lot of tests. Suppose your Stage includes over 100 tests. You can specify the following to split your tests into 10 groups and test 5 groups at a time.
