@@ -11,4 +11,4 @@ Harness IDP is currently in Beta and is available to a limited set of customers.
 
 Once the IDP module is enabled for your account, any one of your account admin can proceed with onboarding of your services and configuring the required plugins.
 
-If the module is already made available in your account, check out [setting up IDP](./setting-up-idp.md).
+If the module is already made available in your account, check out [setting up IDP](./2-setting-up-idp.md).
