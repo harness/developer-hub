@@ -95,13 +95,13 @@ For example, consider two cost targets named team A and team B. These two teams 
   *  **Fixed percentage**: This option allows the distribution of the cost of the shared bucket by a fixed percentage between cost buckets. For example, 30% to team A and 70% to team B.
 
   ![](./static/cost-category-builder-2.png)
-
-:::important
-* You cannot include a nested cost category as a rule within another cost category if they share a bucket.
-* You cannot add the same cost category as a rule in the cost bucket.
-* You cannot include a nested cost category, which shares a bucket, as a rule in the cost bucket.
-* You cannot create cyclic nested cost categories, where a cost category is nested within itself.
-* You can nest cost categories to a maximum of 20 levels.
+  
+   
+:::info important
+  * You cannot include a nested cost category as a rule within another cost category if either of these cost categories contains a shared bucket.
+  * You cannot add the same cost category as a rule in the cost bucket.
+  * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
+  * You can nest cost categories to a maximum of 20 levels.
 :::
 
 ### Manage unallocated costs
