@@ -121,7 +121,7 @@ To create the IAM role and policy:
 
   Where:
 
-    * `experiment_service_account_name` - is the name of the experiment service account, usually `litmus-admin`.
+    * `experiment_service_account_name` is the name of the experiment service account, usually `litmus-admin`.
     * `service_account_namespace` is namespace where you installed the execution plane.
     * `IAM_policy_ARN` is ARN for the policy you created in the previous step.
 
