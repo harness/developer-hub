@@ -49,11 +49,13 @@ Click a service in the **Total Services** table to drill down and show more serv
 
 <docimage path={require('./static/eebdfe6a596f69e0fd2dca49ce04dd5659094aab8d76ef38886fa905659ffac9.png')} width="60%" height="60%" title="Click to view full size image" />  
 
+Clicking on any card in this dashboard filters the executions list to display executions relevant to the service and environment/artifact.
+
 An individual service's dashboard includes the following features.
 
 :::note
 
-If you do not see the environment cards in the dashboard, you will see the message `There are no environments with instances in this service`. This appears when there are no environments with *active* instances for this service. You must perform an actual deployment to create active instances. 
+If you do not see the environment cards in the dashboard, you will see the message `There are no environments with instances in this service`. This appears when there are no environments with *active* instances for this services. You must perform an actual deployment to create active instances.  Active services are services that are part of any pipeline execution (deployment) over the past 30 Days.
 
 :::
 
@@ -92,7 +94,7 @@ Each environment card shows the following:
 
 - **Instance details:** details of the instance(s) where the service was deployed.
 
-  <docimage path={require('./static/46f68f86975b85364f0103b07622c4c9db84dea76e0d3c8820166bc015d09b1c.png')} width="60%" height="60%" title="Click to view full size image" />  
+  <docimage path={require('./static/7814890e535b27da5affb299c3bb5f38332a13a55056a2afb25b4963a17ac27c.png')} width="60%" height="60%" title="Click to view full size image" />  
 
   Select **Open Execution** in the instance details to see the pipeline execution that deployed the service instance.
 - **Deployments:** each deployment to a selected environment or environment group. If you filter using **My Deployments** you see only those deployments that your user account initiated.
@@ -112,7 +114,9 @@ Each artifact card shows the following:
   - Clicking the environment opens details for the specific environment where the artifact was deployed.
 - **Drift detection:** drift detection displays any differences between the deployments to environments in an environment group. For example, if the artifact you select was deployed to an environment group, but one of the group's environments deployed a different artifact, it is highlighted as drift:
 
-  <docimage path={require('./static/b46ca573dd4b036c3ab5189e6edda2fd86207f6401e8337a52f365da443007a9.png')} width="60%" height="60%" title="Click to view full size image" />
+  <docimage path={require('./static/b46ca573dd4b036c3ab5189e6edda2fd86207f6401e8337a52f365da443007a9.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+  Clicking on the environment group name will take you to that group's settings. Clicking on the execution date (in this example, `1 day ago`) will take you to the pipeline execution details.
 - **Deployments:** each deployment of the service or a selected artifact. If you filter using **My Deployments** you see only those deployments that your user account initiated. 
 
 ### View in table
