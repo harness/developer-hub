@@ -456,24 +456,40 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
 * You have created a Fargate profile.
 
   ```bash
-   aws eks create-fargate-profile --fargate-profile-name sainath-test-fargate-profile --cluster-name cdp-eks-cluster --pod-execution-role-arn arn:aws:iam::XXXXX:role/AmazonEKSFargatePodExecutionRole --selectors "namespace=sainath-test, labels={infra=fargate}"
-   
+   aws eks create-fargate-profile --fargate-profile-name test-fargate-profile --cluster-name cdp-eks-cluster --pod-execution-role-arn arn:aws:iam::XXXXX:role/AmazonEKSFargatePodExecutionRole --selectors "namespace=sainath-test, labels={infra=fargate}"
+   ```
+
+   ```bash
    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" unzip awscliv2.zip
    ./aws/install
+   ```
    
-   eksctl create iamserviceaccount --cluster=cdp-eks-cluster --name=sainath-test-sa --namespace=harness-delegate --attach-policy-arn=
+   ```bash
+   eksctl create iamserviceaccount --cluster=cdp-eks-cluster --name=<cluster-name> --namespace=harness-delegate --attach-policy-arn=
+   ```
+
+   ```bash
+   kubectl apply -f ~/Desktop/new/harness-delegate-kubernetes/harness-delegate.yaml
+   ```
    
-   kubectl apply -f ~/Desktop/United\ Airlines/new/harness-delegate-kubernetes/harness-delegate.yaml
-   
+   ```bash
    aws sts get-caller-identity
-   
+   ```
+
+   ```bash
    apt-get update && apt-get install -yy less
-   
+   ```
+
+   ```bash
    eksctl get nodegroups --cluster=cdp-eks-cluster
+   ```
    
+   ```bash
    eksctl create iamserviceaccount --cluster=<clusterName> --name=<serviceAccountName> --tags "Owner=Owner_Name,Team=Team_Name" --override-existing-serviceaccounts
-   
-   kubectl describe pod sainath-test-new-xicobc-0 -n harness-delegate | grep AWS_WEB_IDENTITY_TOKEN_FILE:
+   ```
+
+   ```bash
+   kubectl describe pod test-new-xicobc-0 -n harness-delegate | grep AWS_WEB_IDENTITY_TOKEN_FILE:
    ```
 
 ### Sample delegate YAML file
