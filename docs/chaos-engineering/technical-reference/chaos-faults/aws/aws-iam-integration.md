@@ -210,7 +210,7 @@ You must configure a trust relationship for each IAM role you created in a targe
 
 Follow this procedure for each target account to configure the IAM role and policy on both the AWS source account and the target account.
 
-**To configure trust between the AWS source account OIDC provider and a target account:**
+To configure trust between the AWS source account OIDC provider and a target account:
 
 1. **In the AWS source account:** Edit the trust relationship in the IAM role as shown in the example below.
 
