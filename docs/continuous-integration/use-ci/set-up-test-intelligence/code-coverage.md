@@ -10,15 +10,111 @@ You can add code coverage to a Harness CI pipeline by adding the relevant comman
 
 ### Go
 
+```
+go test -cover -coverprofile=c.out
+go tool cover -html=c.out -o coverage.html
+
+
+
+      - run: go build
+      - run:
+          name: "Create a temp directory for artifacts"
+          command: |
+            mkdir -p /tmp/artifacts
+      - run:
+          command: |
+            go test -coverprofile=c.out
+            go tool cover -html=c.out -o coverage.html
+            mv coverage.html /tmp/artifacts
+
+Follow by optional step to upload the artifact file to cloud storage.
+
+Follow by optional plugin step to publish the artifact to the Artifacts tab.
+```
+
 ### Java
+
+[JaCoCo](https://github.com/jacoco/jacoco)
+
+Include jacoco in pom.xml. when you run `mvn test`, code coverage is included (report written to an `exec` file).
+
+```
+command: |-
+  mvn test
+
+Follow by optional step to upload the artifact file to cloud storage.
+
+Follow by optional plugin step to publish the artifact to the Artifacts tab.
+```
 
 ### JavaScript
 
+[Istanbul](https://github.com/gotwarlost/istanbul) by itself.
+
+Istanbul in Jest.
+
+```
+      - run: npm install
+      - run:
+          name: "Run Jest and Collect Coverage Reports"
+          command: jest --collectCoverage=true
+
+Follow by optional step to upload the artifact file to cloud storage.
+
+Follow by optional plugin step to publish the artifact to the Artifacts tab.
+```
+
 ### PHP
+
+[phpdbg](https://www.php.net/manual/en/book.phpdbg.php)
+
+```
+phpdbg -qrr vendor/bin/phpunit --coverage-html build/coverage-report
+
+
+      - run:
+          name: "Run tests"
+          command: phpdbg -qrr vendor/bin/phpunit --coverage-html build/coverage-report
+          environment:
+            XDEBUG_MODE: coverage
+
+Follow by optional step to upload the artifact file to cloud storage.
+
+Follow by optional plugin step to publish the artifact to the Artifacts tab.
+```
 
 ### Python
 
+[Coverage.py](https://coverage.readthedocs.io/en/latest/)
+
+```
+pip install coverage ## install coverage.py (separate run step?)
+
+## prefix commands with `coverage`:
+
+coverage run -m pytest
+coverage report
+coverage html
+
+Follow by optional step to upload the artifact file to cloud storage.
+
+Follow by optional plugin step to publish the artifact to the Artifacts tab.
+```
+
 ### Ruby
+
+[SimpleCov](https://github.com/simplecov-ruby/simplecov)
+
+```
+## Add simplecov gem
+gem 'simplecov', require: false, group: :test
+
+Run script ex `bin/rails test` - https://github.com/simplecov-ruby/simplecov#getting-started
+
+Follow by optional step to upload the artifact file to cloud storage.
+
+Follow by optional plugin step to publish the artifact to the Artifacts tab.
+```
 
 ## Code coverage services
 
@@ -28,7 +124,19 @@ To publish code coverage results to your CodeCov dashboard, follow this tutorial
 
 ### Coveralls
 
-## Publish reports to the Artifacts tab
+https://docs.coveralls.io/#integrate-coveralls-with-your-codebase
+
+* Github action
+* language integration
+
+Drone supported w Coveralls Universal Reporter:
+1. Set up in codebase https://docs.coveralls.io/index#integrate-coveralls-with-your-codebase
+2. coveralls repo token env var on step: https://docs.coveralls.io/ci-services#the-coveralls-repo-token-required  
+1. Or use .coveralls.yml (not rec for private repos)? https://docs.coveralls.io/ci-services#option-2-use-a-coverallsyml-file
+
+Use a harness text secret for the token.
+
+## Publish code coverage reports to the Artifacts tab
 
 You can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish code coverage reports to the **Artifacts** tab on the [Build details page](../viewing-builds.md). Code coverage reports are not the only artifacts you can publish to the **Artifacts** tab, for example, you can [Publish an Allure Report to the Artifacts tab](/tutorials/ci-pipelines/test/allure-report).
 
