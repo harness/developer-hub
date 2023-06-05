@@ -16,15 +16,9 @@ Add a **Build and Push** step to your CI pipeline to build your codebase and the
 * [Amazon Elastic Container Registry (ECR)](/tutorials/ci-pipelines/publish/amazon-ecr)
 * [Google Artifact Registry (GAR)](/tutorials/ci-pipelines/publish/google-gar#configure-pipeline-steps)
 
-:::info
-
-For language-specific tutorials, go to the [CI Build tutorials](/tutorials/ci-pipelines/build/).
-
-For information about **Upload Artifact** steps, go to [Upload Artifacts to JFrog](./upload-artifacts-to-jfrog.md)
-
-:::
-
 This topic describes a simple one-step build workflow that does not include testing. It builds the code in a build farm, and then pushes it to a repo.
+
+For information about **Upload Artifact** steps, go to [Upload Artifacts to JFrog](./upload-artifacts-to-jfrog.md), [Upload Artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [Upload Artifacts to S3](./upload-artifacts-to-s-3-step-settings.md).
 
 <details>
 <summary>Video summary</summary>
