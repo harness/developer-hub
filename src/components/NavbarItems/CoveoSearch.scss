@@ -811,9 +811,10 @@
     }
 
 	#searchResultsCoveo .coveo-search-results {
-		top: 195px; // 50px;
+		top: 222px; // 195px; // 50px;
 		margin-right: 0;
 		z-index: 1;
+		min-width: var(--ifm-navbar-sidebar-width);
 	}
 	#searchResultsCoveo #coveo-search {
 		min-width: unset;
