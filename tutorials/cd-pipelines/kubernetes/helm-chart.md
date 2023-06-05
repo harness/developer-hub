@@ -4,7 +4,7 @@ hide_table_of_contents: true
 title: Helm Chart
 ---
 
-# Deploy a Helm chart template
+# Deploy a Helm Chart template
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -61,7 +61,7 @@ The Harness delegate is a service that runs in your local network or VPC to esta
      For this tutorial, let's explore how to install the delegate using Helm.
    - In **Select where you want to install your Delegate**, select **Kubernetes**.
    - In **Install your Delegate**, select **Helm**.
-   - Add the Harness Helm chart repository to your local helm registry using the following commands:
+   - Add the Harness Helm Chart repository to your local helm registry using the following commands:
    
      ```bash
      helm repo add harness-delegate https://app.harness.io/storage/harness-download/delegate-helm-chart/
@@ -443,7 +443,7 @@ On successful application sync, you'll see the status tree under **Resource View
 
 ## Congratulations!🎉
 
-You've just learned how to use Harness CD to deploy application using a Helm chart template.
+You've just learned how to use Harness CD to deploy application using a Helm Chart template.
 
 ## Next steps
 
