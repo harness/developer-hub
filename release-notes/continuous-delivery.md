@@ -85,7 +85,7 @@ This release does not include any early access features.
   Now both deployment types include [infrastructure provisioning steps](https://developer.harness.io/docs/category/provision-infrastructure).
 - Unable to fetch the resolved service when evaluating the repo format for artifact source templates. (CDS-69485, ZD-45064)	
 
-  This issues is fixed. Now the repo format (Generic/Docker) is honoured for the artifact source template in the **Run Pipeline** form.
+  This issue is fixed. Now the repo format (Generic/Docker) is honoured for the artifact source template in the **Run Pipeline** form.
 - The getTriggerDetails API was returning incorrect code (CDS-69329, ZD-44372)
   
   The [getTriggerDetails](https://apidocs.harness.io/tag/Triggers/#operation/getTriggerDetails) API was returning a 200 status code when it was not able to find a Trigger. Now it returns a 404 status code and appropriate error message.
