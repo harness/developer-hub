@@ -43,7 +43,12 @@ Follow the below mentioned steps as they are, including the naming conventions, 
 
 ### Set up a delegate
 
-The Harness Delegate is a service that runs in your local network or VPC to establish connections between Harness Manager and various providers such as artifacts, infrastructure, and so on. It is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. To learn more about delegates, go to [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
+<details open>
+<summary>What is the Harness delegate?</summary>
+
+The Harness delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
+
+</details>
 
 1. In **PROJECT SETUP**, select **Delegates**, and then select **Tokens** on the top right corner of the UI.
    - Select **New Token**.
@@ -80,7 +85,12 @@ You can also [Install Harness Delegate on Kubernetes or Docker](https://develope
 
 ### Create a secret
 
-Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness Delegate has access to the key management system. You can also integrate your own secret management solution. To learn more, go to [Secrets](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview/).
+<details open>
+<summary>What are Harness secrets?</summary>
+
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview/).
+
+</details>
 
 1. In **PROJECT SETUP**, select **Secrets**.
 2. Select **New Secret**, and then select **Text**.
@@ -91,41 +101,36 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 
 ### Create a connector
 
-Connectors in Harness enable integration with third party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication to fetch files from a GitHub repository within pipeline stages. 
+<details open>
+<summary>What are connectors?</summary>
 
-Go to [Connector how-tos](https://developer.harness.io/docs/category/connectors) for more information.
+Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. Explore connector how-tos [here](https://developer.harness.io/docs/category/connectors).
 
-```mdx-code-block
-<Tabs1>
-<TabItem1 value="GitHub connector">
-```
+</details>
 
-1. In **PROJECT SETUP**, select **Connectors**, and then select **Create via YAML Builder**.
-2. Copy and paste the contents of [1-github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/1-github-connector.yml).
-3. Replace **GITHUB_USERNAME** with your GitHub account username in the YAML wherever required.
-   We assume that you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository as mentioned in the [Before you begin](#before-you-begin) section.
-4. Select **Save Changes**, and verify that the new connector named _**harness_gitconnector**_ is successfully created.
-5. Select **Connection Test** under **Connectivity Status** to ensure that the connection is successful.
+1. Create a GitGub connector.
+   1. In **PROJECT SETUP**, select **Connectors**, and then select **Create via YAML Builder**.
+   2. Copy and paste the contents of [1-github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/1-github-connector.yml).
+   3. Replace **GITHUB_USERNAME** with your GitHub account username in the YAML wherever required.
+      We assume that you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository as mentioned in the [Before you begin](#before-you-begin) section.
+   4. Select **Save Changes**, and verify that the new connector named _**harness_gitconnector**_ is successfully created.
+   5. Select **Connection Test** under **Connectivity Status** to ensure that the connection is successful.
     
-```mdx-code-block
-</TabItem>
-<TabItem value="Kubernetes connector">
-```
-
-1. In **PROJECT SETUP**, select **Connectors**, and then select **Create via YAML Builder**.
-2. Copy and paste the contents of [2-kubernetes-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/2-kubernetes-connector.yml).
-3. Replace **DELEGATE_NAME** with the installed delegate name. To obtain the delegate name, navigate to **Default Project** > **PROJECT SETUP** > **Delegates**. 
-4. Select **Save Changes**, and verify that the new connector named _**harness_k8sconnector**_ is successfully created.
-5. Select **Connection Test** under **Connectivity Status** to ensure that the connection is successful.
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
+2. Create a Kubernetes connector.
+   1. In **PROJECT SETUP**, select **Connectors**, and then select **Create via YAML Builder**.
+   2. Copy and paste the contents of [2-kubernetes-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/2-kubernetes-connector.yml).
+   3. Replace **DELEGATE_NAME** with the installed delegate name. To obtain the delegate name, navigate to **Default Project** > **PROJECT SETUP** > **Delegates**. 
+   4. Select **Save Changes**, and verify that the new connector named _**harness_k8sconnector**_ is successfully created.
+   5. Select **Connection Test** under **Connectivity Status** to ensure that the connection is successful.
 
 ### Create an environment
 
-Environments determine the deployment location, categorized as prod or non-prod. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or target infrastructure. To learn more, go to [Environments overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
+<details open>
+<summary>What are Harness environments?</summary>
+
+Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
+
+</details>
 
 1. In **Default Project**, select **Environments**
 2. Select **New Environment** and toggle to the **YAML** view _(next to VISUAL)_.
@@ -136,7 +141,12 @@ Environments determine the deployment location, categorized as prod or non-prod.
 
 ### Create a service
 
-In Harness, services represent what you deploy, and what are managed within environments. Use Manage Services to configure variables, manifests, and artifacts. The Dashboard provides service statistics like deployment frequency and failure rate. To learn more about, go to [Services overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
+<details open>
+<summary>What are Harness services?</summary>
+
+In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
+
+</details>
 
 1. In **Default Project**, select **Services**.
 2. Select **New Service**, enter the name, `harnessguestbook`, and then select **Save**.
@@ -146,7 +156,12 @@ In Harness, services represent what you deploy, and what are managed within envi
 
 ### Create a pipeline
 
-A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize Continuous Integration (CI) for code building and testing, followed by CD for artifact deployment in production. To learn more, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
+<details open>
+<summary>What are Harness pipelines?</summary>
+
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
+
+</details>
 
 1. In **Deafult Project**, select **Pipelines**.
 2. Select **Create a Pipeline** and enter the following details:
@@ -160,7 +175,12 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 <TabItem value="Canary">
 ```
 
-**Canary Deployment** updates nodes in a single environment gradually, with each phase requiring verification before proceeding to the next. It allows incremental updates and ensures a controlled rollout process. For more information, go to [When to use Canary deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
+<details open>
+<summary>What are Canary deployments?</summary>
+
+A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
+
+</details>
 
 - Copy the contents of [6-canary-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/6-canary-deployment.yml) and paste it in the YAML editor.
 - Select **Save** to save the pipeline.
@@ -173,7 +193,12 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 <TabItem value="Blue Green">
 ```
 
-**Blue Green Deployment** involves running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on stage before flipping the traffic from prod to stage, allowing decommissioning of the old environment post-successful deployment. It is also referred to as Red Black deployment by some vendors. For more information, go to [When to use Blue Green deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
+<details open>
+<summary>What are Blue Green deployments?</summary>
+
+Blue Green deployments involve running two identical environments (stage and prod) simultaneously with different service versions. QA and UAT are performed on a **new** service version in the stage environment first. Next, traffic is shifted from the prod environment to stage, and the previous service version running on prod is scaled down. Blue Green deployments are also referred to as red/black deployment by some vendors. For more information, go to [When to use Blue Green deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-blue-green-deployments).
+
+</details>
 
 
 - Copy the contents of [6-bluegreen-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/6-bluegreen-deployment.yml) and paste it in the YAML editor.
@@ -187,7 +212,12 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 <TabItem value="Rolling">
 ```
 
-**Rolling Deployment** incrementally adds nodes in a single environment with a new version, either one-by-one or in batches defined by a window size. It allows a controlled and gradual update process of the service or artifact. For more information, go to [When to use rolling deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
+<details open>
+<summary>What are Rolling deployments?</summary>
+
+Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
+
+</details>
 
 - Copy the contents of [6-rolling-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/6-rolling-deployment.yml) and paste it in the YAML editor.
 - Select **Save** to save the pipeline.
@@ -245,7 +275,12 @@ Make sure that you have met the follwoing requirements:
 
 ### Install a Harness GitOps Agent
 
-A Harness GitOps Agent is a worker process that runs in your environment, makes secure outbound connections to Harness SaaS, and performs all GitOps tasks you request in Harness.
+<details open>
+<summary>What is a GitOps Agent?</summary>
+    
+A Harness GitOps Agent is a worker process that runs in your environment, makes secure, outbound connections to Harness, and performs all the GitOps tasks you request in Harness.
+
+</details>
 
 1. Select **Settings** on the top right corner of the UI.
 2. Select **GitOps Agents**, and then select **New GitOps Agent**.
@@ -292,7 +327,12 @@ Once you have installed the Agent, Harness will start importing all the entities
 
 ### Add a Harness GitOps repository
 
-A Harness GitOps repository is a repository containing the declarative description of a desired state. The declarative description can be in Kubernetes manifests, Helm Chart, Kustomize manifests, and so on.
+<details open>
+<summary>What is a GitOps Repository?</summary>
+    
+A Harness GitOps Repository is a repo containing the declarative description of a desired state. The declarative description can be in Kubernetes manifests, Helm Chart, Kustomize manifests, etc.
+
+</details>
 
 1. Select **Settings** in the top right corner of the UI.
 2. Select **Repositories**, and then select **New Repository**
@@ -308,7 +348,12 @@ A Harness GitOps repository is a repository containing the declarative descripti
 
 ### Add a Harness GitOps cluster
 
-A cluster is the target deployment cluster that is compared to the desire state. Clusters are synced with the source manifests you add as GitOps repositories.
+<details open>
+<summary>What is a GitOps Cluster?</summary>
+    
+A Harness GitOps Cluster is the target deployment cluster that is compared to the desire state. Clusters are synced with the source manifests you add as GitOps Repositories.
+
+</details>
 
 1. Select **Settings** in the top right corner of the UI.
 2. Select **Clusters**, and then select **New Cluster**.
@@ -320,9 +365,13 @@ A cluster is the target deployment cluster that is compared to the desire state.
 
 ### Add a Harness GitOps application
 
-GitOps applications define how you manage GitOps operations for a given desired state and its live instantiation.
+<details open>
+<summary>What is a GitOps Application?</summary>
+    
+GitOps Applications are how you manage GitOps operations for a given desired state and its live instantiation.
+A GitOps Application collects the Repository (**what you want to deploy**), Cluster (**where you want to deploy**), and Agent (**how you want to deploy**). You select these entities when you set up your Application.
 
-A GitOps application collects the repository (what you want to deploy?), cluster (where you want to deploy?), and Agent (how you want to deploy?). You define these entities, and then select them when you set up your application.
+</details>
 
 1. Select **Applications** on the top right corner of the UI.
 2. Select **New Application**.
