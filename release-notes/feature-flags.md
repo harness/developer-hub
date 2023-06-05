@@ -26,7 +26,7 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 #### Feature Flags SDKs
 
-* The **Python** server SDK has been updated to version **1.14** with the following update.
+* The **Python** server SDK has been updated to version **1.14** with the following updates.
 
   * The SDK now sends extra headers to backend requests to aid in diagnostics. (FFM-7362)
 
