@@ -108,8 +108,8 @@ Go to [Connector how-tos](https://developer.harness.io/docs/category/connectors)
 5. Select **Connection Test** under **Connectivity Status** to ensure that the connection is successful.
     
 ```mdx-code-block
-</TabItem1>
-<TabItem1 value="Kubernetes connector">
+</TabItem>
+<TabItem value="Kubernetes connector">
 ```
 
 1. In **PROJECT SETUP**, select **Connectors**, and then select **Create via YAML Builder**.
@@ -119,8 +119,8 @@ Go to [Connector how-tos](https://developer.harness.io/docs/category/connectors)
 5. Select **Connection Test** under **Connectivity Status** to ensure that the connection is successful.
 
 ```mdx-code-block
-</TabItem1>
-</Tabs1>
+</TabItem>
+</Tabs>
 ```
 
 ### Create an environment
