@@ -44,6 +44,8 @@ To use IRSA for AWS authentication, you:
 
 1. [Establish a trust relationship](#establish-trust-between-the-aws-source-account-and-target-accounts) between the AWS source account and target accounts.
 
+1. [Remove any references to secrets](#remove-all-secret-references-from-experiment-definitions) in chaos experiments.
+
 ## Enable the experiment service account to access AWS resources
 
 Chaos experiments are initiated and controlled through this service account (usually named `litmus-admin`). You must enable this account to access AWS resources. 
