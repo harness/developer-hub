@@ -110,53 +110,6 @@ Check Service Health:
 
 You must have access to the Kubernetes cluster setup to run this plugin. 
 
-## Validation YAML
-
-The YAML validation file provides all necessary information about the checks required to run the plugin. 
-
-The validation YAML format is designed to define all required parameters for a check:
-
-```yaml
-name: "" # name of validation
-description: "" # description of validation
-weight: 0 # decides the order in which to execute, higher the weight, higher the priority
-stage: pre-install/post-install/pre-upgrade/post-upgrade # type of pre-flight validation 
-checks: # checks to run under this validation
-    - name: "" # name of the check
-      id: "" # id of the check
-      type: HTTP/KUBERNETES/CUSTOM # type of check
-      resource: "" # resource to execute the command on
-      args: 
-      - “”
-      - “”
-      expression: "" # boolean expression to evaluate, should decide whether check passed or failed
-      suggestions: # list of common suggestions to fix the failure
-      - ""
-      - ""
-```
-
-Below is an example YAML file for a Kubernetes check to ensure a minimum number of nodes are allocated to the cluster: 
-
-```yaml
-name: "Check Minimum Nodes" # name of validation
-description: "" # description of validation
-weight: 0 # decides the order in which to execute, higher the weight, higher the priority
-stage: 
-  - pre-install #pre-install,pre-upgrade,post-install,post-upgrade
-checks: # checks to run under this validation
-  - name: "Minimum Nodes" # name of the check
-    id: "minnodes" # id of the check
-    type: KUBERNETES # see below for each
-    resource: "nodes" # resource to execute the command on
-    args: 
-    - ""
-    - ""
-    expression: "{{ge (len .items) 3}}" # boolean expression to evaluate, should decide whether check passed or failed
-    suggestions: # list of common suggestions to fix the failure
-    - "You have less than 3 nodes which are not recommended for high availability. Please provision more nodes"
-    - "" 
-```
-
 ## Upgrade the plugin
 
  You can upgrade the plugin using the following command:
