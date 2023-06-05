@@ -1,6 +1,6 @@
 {
-  "position": 30,
-  "label": "Technical reference",
+  "position": 25,
+  "label": "Integrate CE with other Harness modules",
   "collapsible": "true",
   "collapsed": "true",
   "link":{
@@ -8,6 +8,6 @@
       "title":"Technical reference"
    },
   "customProps": {
-    "description": "Technical reference to Harness Chaos Engineering"
+    "description": "Integrate Chaos Engineering with other Harness modules."
   }
 }
