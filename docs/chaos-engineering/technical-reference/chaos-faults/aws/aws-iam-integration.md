@@ -272,7 +272,7 @@ To configure trust between the AWS source account OIDC provider and a target acc
 
 ### Step 2: Enable the experiment service account to switch between target accounts
 
-This procedure enables the experiment service account (`litmus-admin`) to seamlessly switch between target accounts when running experiments. To do this you must annotate the experiment service account with the corresponding chaos role in each target account. 
+This procedure enables the experiment service account (`litmus-admin`) to seamlessly switch between target accounts when running experiments. To do this, you must annotate the experiment service account with the corresponding chaos role in each target account. 
 
 For example, if the target account has a role named `chaos-role`, you must annotate the litmus-admin service account with the unique Amazon Resource Name (ARN) of that role. This enables for seamless switching between target accounts for running experiments.
 
