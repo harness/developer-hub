@@ -16,7 +16,7 @@ This module is currently available in Beta to limited customers. Contact Harness
 
 Harness IDP enables you to create new software components quickly while adhering to your company’s best practices. It enables you to manage the software you own by presenting a developer-centric view of all relevant information such as service health, deployments, and alerts. It also enables you to explore the internal software ecosystem of the company, discover technical documentation, APIs, and services, all of which enable better collaboration.
 
-Fully integrated into the Harness platform, IDP reduces the maintenance overhead and investment required from the platform engineering and is enterprise ready.
+Fully integrated into the Harness platform, IDP reduces the maintenance overhead and investment required from platform engineering teams and is enterprise ready.
 
 ## Service onboarding pipelines
 
