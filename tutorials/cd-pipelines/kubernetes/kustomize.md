@@ -4,18 +4,18 @@ hide_table_of_contents: true
 title: Kustomize
 ---
 
-# Deploy a Kustomize Template
+# Deploy using Kustomize
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-This tutorial helps you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline and deployment of a Guestbook application. It's important to note that this Guestbook application is based on a Kustomize template.
+This tutorial helps you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline and deployment of a Guestbook application. This Guestbook application will use Kustomize for deployment.
 
 :::info
 
-[Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/?module=cd).
+[Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=tutorials-cd-kubernetes-kustomize).
 
 :::
 
