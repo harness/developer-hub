@@ -59,9 +59,8 @@ This release includes the following early access features and enhancements:
 
 This release includes the following fixes:
 
-- Migrations that took longer than 30 minutes failed. (SRM-14859)
 
-   This issue is fixed by a code enhancement to separate cleanup and migration bucketing.
+
 
 - Deployments consistently failed during the same stage. (PL-38247)
 
