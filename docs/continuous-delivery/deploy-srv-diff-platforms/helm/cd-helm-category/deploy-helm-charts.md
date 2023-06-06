@@ -403,7 +403,7 @@ All dependency repositories must be available and accessible from the Harness De
 
 Kubernetes and Helm deployments use service hooks to fetch Helm Chart dependencies that refer Git and other repositories, and install them with the main Helm Chart. 
 
-These are the service hook actions supported by Harness: 
+Harness supports two types of service hooks: preHook and postHook. These are the service hook actions supported by Harness: 
 
 * Fetch files: Service hooks can be triggered before or after the manifest files are fetched. 
 * Manifest templates: Service hooks can be triggered before or after the manifest has been rendered. 
@@ -413,16 +413,18 @@ Each service hook has its own context variable:
 
 | **Action** | **Context Variable and Description** |
 | :--- | :--- |
-| Fetch files | `MANIFEST_FILES_DIRECTORY`: The path to the directory from where the manifest files can be downloaded. |
-| Manifest template | `MANIFEST_FILES_DIRECTORY`: The path to the directory where the original Kubernetes template is located. <br />`MANIFEST_FILE_OUTPUT_PATH`: The path to the final `manifest.yaml` file. |
-| Steady state check | `WORKLOADS_LIST`: The comma separated list of the workloads managed by Harness |
+| Fetch files | `$MANIFEST_FILES_DIRECTORY`: The path to the directory from where the manifest files can be downloaded. |
+| Manifest template | `$MANIFEST_FILES_DIRECTORY`: The path to the directory where the original Kubernetes template is located. <br />`$MANIFEST_FILE_OUTPUT_PATH`: The path to the final `manifest.yaml` file. |
+| Steady state check | `$WORKLOADS_LIST`: The comma separated list of all workloads. <br />`$MANAGED_WORKLOADS`: The comma separated list of workloads managed by Harness. <br />`$CUSTOM_WORKLOADS`: The comma separated list of custom workloads. |
+
+You can use service hooks to run additional configurations when carrying out the above mentioned actions. For example, when you run a deployment, you need to fetch files first. After fetching the files, you can resolve the secrets of those encrypted files using Helm secrets, SOPS, AGE keys, and so on. You can use the above mentioned context variables during deployment. For more details, go to [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts).
 
 Here are some sample service hook YAMLs: 
 
 ```
 hooks:
   - preHook:
-      identifier: hello
+      identifier: sample
       storeType: Inline
       actions:
         - FetchFiles
@@ -501,7 +503,7 @@ For more information about Helm dependencies, go to [Helm dependency](https://he
 
 ### Use secrets in Helm by using SOPS and AGE keys
 
-1. Install `SOPS` and `AGE` keys on your Harness Delegate. A public key is generated, that can be used to encrypt files. 
+1. Install [SOPS](https://github.com/mozilla/sops) or [AGE](https://github.com/FiloSottile/age) keys to generate a public key to encrypt files. 
    
    ![](./static/sops-age-keygen.png)
 2. Enter the following commands to encrypt and save your files in your Git repository: 
