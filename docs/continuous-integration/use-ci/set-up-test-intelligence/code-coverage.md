@@ -4,6 +4,11 @@ description: Include code coverage in your CI pipelines.
 sidebar_position: 40
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 You can add code coverage to a Harness CI pipeline by adding the relevant commands to your steps that run tests.
 
 ## Code coverage examples by language
@@ -124,20 +129,67 @@ To publish code coverage results to your CodeCov dashboard, follow this tutorial
 
 ### Coveralls
 
-Drone supported w Coveralls Universal Reporter:
-1. Set up in codebase https://docs.coveralls.io/index#integrate-coveralls-with-your-codebase
-2. coveralls repo token env var on step: https://docs.coveralls.io/ci-services#the-coveralls-repo-token-required
+To integrate Coveralls in your Harness CI pipelines, follow the Coveralls documentation to [Integrate Coveralls with your codebase](https://docs.coveralls.io/index#integrate-coveralls-with-your-codebase). Note the following:
 
-Use a harness text secret for the token.
+* For **Step 2: Choose an integration**, use the **Universal Coverage Reporter**.
+* For **Step 3: Configure your project to send coverage to Coveralls**:
+  * Create a [Harness text secret](/docs/platform/Secrets/add-use-text-secrets) for your `COVERALLS_REPO_TOKEN`.
+  * Add the `COVERALLS_REPO_TOKEN` environment variable to steps in your CI pipelines that run tests with code coverage.
+  * For the environment variable value, use a Harness expression to [reference the encrypted text secret](/docs/platform/secrets/add-use-text-secrets/#step-3-reference-the-encrypted-text-by-identifier), such as `<+secrets.getValue("YOUR_COVERALLS_SECRET_ID")>`.
+
+<details>
+<summary>Add an environment variable to a step</summary>
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+1. In Harness, edit the step that runs your tests with code coverage.
+2. Under **Environment Variables**, select **Add**.
+3. Set the key to `COVERALLS_REPO_TOKEN`.
+4. Set the value to `<+secrets.getValue("YOUR_COVERALLS_SECRET_ID")>`
+
+![Adding the Coveralls Repo Token environment variable to a step in Harness.](./static/codecoverage_coveralls_env_var_visual.png)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+Add `envVariables` to the `step.spec` for the relevant `Run` or `RunTests` step.
+
+```yaml
+              - step:
+                  type: Run
+                  name: npm test
+                  identifier: npm_test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      npm install
+                      npm run build --if-present
+                      npm test
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - report.xml
+                    envVariables:
+                      COVERALLS_REPO_TOKEN: <+secrets.getValue("YOUR_COVERALLS_SECRET_ID")>
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+</details>
 
 ## Publish code coverage reports to the Artifacts tab
 
-You can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish code coverage reports to the **Artifacts** tab on the [Build details page](../viewing-builds.md). Code coverage reports are not the only artifacts you can publish to the **Artifacts** tab, for example, you can [Publish an Allure Report to the Artifacts tab](/tutorials/ci-pipelines/test/allure-report).
+You can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish code coverage reports to the **Artifacts** tab on the [Build details page](../viewing-builds.md).
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 ```mdx-code-block
 <Tabs>
   <TabItem value="Visual" label="Visual">
@@ -182,3 +234,9 @@ To publish a code coverage report to the **Artifacts** tab, you must:
   </TabItem>
 </Tabs>
 ```
+
+:::tip
+
+Code coverage reports are not the only artifacts you can publish to the **Artifacts** tab, for example, you can [Publish an Allure Report to the Artifacts tab](/tutorials/ci-pipelines/test/allure-report).
+
+:::
