@@ -468,7 +468,7 @@ hooks:
 
 For more information about Helm dependencies, go to [Helm dependency](https://helm.sh/docs/helm/helm_dependency/) and [Helm dependency update](https://helm.sh/docs/helm/helm_dependency_update/).
 
-### Add private repositories as dependency and use them in Helm Chart
+### Use case: Add private repositories as a Helm Chart dependency
 
 1. Add a repository in Helm using the following script: 
 
@@ -501,7 +501,7 @@ For more information about Helm dependencies, go to [Helm dependency](https://he
    
    ![](./static/dependency-update.png)
 
-### Use secrets in Helm by using SOPS and AGE keys
+### Use case: Use secrets to encrypt and decrypt files
 
 1. Install [SOPS](https://github.com/mozilla/sops) or [AGE](https://github.com/FiloSottile/age) keys to generate a public key to encrypt files. 
    
