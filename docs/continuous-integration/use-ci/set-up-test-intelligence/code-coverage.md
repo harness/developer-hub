@@ -9,7 +9,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-You can add code coverage to a Harness CI pipeline by adding the relevant commands to your [steps that run tests](./run-tests-in-ci.md).
+You can add code coverage to a Harness CI pipeline by configuring code coverage tools in your codebase or adding the relevant commands to your [steps that run tests](./run-tests-in-ci.md).
 
 ## Code coverage by language
 
@@ -47,24 +47,24 @@ go tool cover -html=c.out -o coverage.html
 3. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
 ### Java
 
-1. Add code coverage commands to the relevant **Run** or **Run Tests** step.
-[JaCoCo](https://github.com/jacoco/jacoco)
+1. Set up a Java code coverage tool, such as [JaCoCo](https://github.com/jacoco/jacoco).
+2. Run your tests in a **Run** or **Run Tests** step.
 
-Include jacoco in pom.xml. when you run `mvn test`, code coverage is included (report written to an `exec` file).
+   Including JaCoCo in `pom.xml` automatically includes code coverage when `mvn test` runs. The code coverage report is written to an `exec` file.
 
-```
-command: |-
-  mvn test
-
-```
-
-2. Add a step to upload your code coverage report to cloud storage.
+3. Add a step to upload your code coverage report to cloud storage.
 
    * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
    * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
    * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
 
-3. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
+4. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
+
+:::tip JaCoCo Drone plugin
+
+As an alternative to steps three and four, you can use the [JaCoCo Drone plugin](https://github.com/harness-community/drone-jacoco-s3). Instead of two separate steps, you only use one [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) to run the JaCoCo Drone plugin, which uploads the JaCoCo code coverage report to S3 and publishes it to the **Artifacts** tab.
+
+:::
 
 ### JavaScript
 
@@ -116,48 +116,69 @@ phpdbg -qrr vendor/bin/phpunit --coverage-html build/coverage-report
 
 ### Python
 
-1. Add code coverage commands to the relevant **Run** or **Run Tests** step.
+1. Install a Python code coverage tool, such as [Coverage.py](https://coverage.readthedocs.io/en/latest/). Depending on your build infrastructure, you can install this directly on the host machine or use a **Run** step to set up the test environment at runtime.
 
-[Coverage.py](https://coverage.readthedocs.io/en/latest/)
+   ```yaml
+                - step:
+                 type: Run
+                 identifier: installdependencies
+                 name: Install dependencies
+                 spec:
+                   connectorRef: account.harnessImage
+                   image: python:3.12.0b1-alpine3.18
+                   command: |
+                     python3 -m pip install --upgrade pip
+                     pip install -r requirements.txt
+                     pip install pytest
+                     python3 -m pip install coverage
+   ```
 
-```
-pip install coverage ## install coverage.py (separate run step?)
+2. Add code coverage commands to the relevant **Run** or **Run Tests** step.
 
-## prefix commands with `coverage`:
+   ```yaml
+             - step:
+                 type: Run
+                 identifier: runtests
+                 name: Run Tests
+                 spec:
+                   connectorRef: account.harnessImage
+                   image: python:3.12.0b1-alpine3.18
+                   command: |
+                     coverage run -m pytest --junit-xml=report.xml
+                     coverage report
+                     coverage html
+   ```
 
-coverage run -m pytest
-coverage report
-coverage html
+   :::info Coverage.py usage
 
-```
+   With Coverage.py, replace the initial `python` or `pytest` in your usual test commands with `coverage run`.
 
-2. Add a step to upload your code coverage report to cloud storage.
+   For more information, refer to the [Coverage.py quick start guide](https://coverage.readthedocs.io/en/latest/#quick-start).
+
+   :::
+
+3. Add a step to upload your code coverage report to cloud storage.
 
    * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
    * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
    * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
 
-3. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
+4. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
 
 ### Ruby
 
-1. Add code coverage commands to the relevant **Run** or **Run Tests** step.
-[SimpleCov](https://github.com/simplecov-ruby/simplecov)
+1. Set up a Ruby code coverage tool, such as [SimpleCov](https://github.com/simplecov-ruby/simplecov).
+2. Run your tests in a **Run** step.
 
-```
-## Add simplecov gem
-gem 'simplecov', require: false, group: :test
+   SimpleCov does not require additional commands in the **Run** step since it is loaded in `test/test_helper.rb`.
 
-Run script ex `bin/rails test` - https://github.com/simplecov-ruby/simplecov#getting-started
-```
-
-2. Add a step to upload your code coverage report to cloud storage.
+3. Add a step to upload your code coverage report to cloud storage.
 
    * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
    * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
    * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
 
-3. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
+4. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
 
 ## Code coverage services
 
