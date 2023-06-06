@@ -16,7 +16,7 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
 
 * [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart)
 * [The Chart Template Developer's Guide](https://helm.sh/docs/chart_template_guide/) from Helm.
-* The [Helm Charts repo on GitHub](https://github.com/helm/charts) has many useful examples.
+* The [Helm charts repo on GitHub](https://github.com/helm/charts) has many useful examples.
 
 ## Important notes
 
@@ -67,7 +67,7 @@ https://www.youtube.com/watch?v=dVk6-8tfwJc-->
 <docvideo src="https://www.youtube.com/watch?v=dVk6-8tfwJc" />
 
 
-## Artifacts and Helm Charts
+## Artifacts and Helm charts
 
 Harness supports image artifacts with Helm charts in the following ways.
 
