@@ -55,7 +55,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
 * Budgets that contain the `/` character in their names were previously experiencing issues with correctly opening the budget details page. (CCM-12062)
 
-  Previously, there was an issue when the budget name appended to the URL contained the `/` character. It was treated as a separate route. This caused the browser to fail in loading the corresponding budget details. Now, before appending the budget name to the URL, it is properly encoded. This ensures that the browser handles the `/` character correctly, allowing the page to load as expected with the corresponding budget details.
+  Previously, when the budget name appended to the URL contained the `/` character, it was treated as a separate route. This caused the browser to fail in loading the corresponding budget details. Now, before appending the budget name to the URL, it is properly encoded. This ensures that the browser handles the `/` character correctly, allowing the page to load as expected.
 
   
 ```mdx-code-block
