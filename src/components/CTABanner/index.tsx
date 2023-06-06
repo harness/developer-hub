@@ -19,7 +19,7 @@ const CTABanner = ({
   tagline,
   link = "#",
   closable = false,
-  target="_blank"
+  target = "_blank",
 }) => {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const handleClose = () => {
@@ -35,7 +35,10 @@ const CTABanner = ({
     }
     const elemCtaBanner = document.getElementById("cta-banner");
     const isClosed = localStorage.getItem(link) === "true";
-    if (!elemCtaBanner && !isClosed) {
+    if (elemCtaBanner) {
+      document.body.removeChild(elemCtaBanner);
+    }
+    if (!isClosed) {
       const elemFirstChild = document.body.children[0];
       const ctaBannerRoot = document.createElement("div");
       ctaBannerRoot.setAttribute("class", "cta-banner");
@@ -74,7 +77,7 @@ const CTABanner = ({
       }
       document.body.insertBefore(ctaBannerRoot, elemFirstChild);
     }
-  }, []);
+  }, [buttonText, title, tagline, link, closable, target]);
   return null;
 };
 
