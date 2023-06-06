@@ -9,12 +9,17 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-You can add code coverage to a Harness CI pipeline by adding the relevant commands to your steps that run tests.
+You can add code coverage to a Harness CI pipeline by adding the relevant commands to your [steps that run tests](./run-tests-in-ci.md).
 
-## Code coverage examples by language
+## Code coverage by language
+
+The following examples show how to include code coverage in a Harness CI pipeline.
+
+For information about available tools and configuring specific tools, refer to the tool or language documentation.
 
 ### Go
 
+1. Add code coverage commands to the relevant **Run** or **Run Tests** step.
 ```
 go test -cover -coverprofile=c.out
 go tool cover -html=c.out -o coverage.html
@@ -31,14 +36,18 @@ go tool cover -html=c.out -o coverage.html
             go test -coverprofile=c.out
             go tool cover -html=c.out -o coverage.html
             mv coverage.html /tmp/artifacts
-
-Follow by optional step to upload the artifact file to cloud storage.
-
-Follow by optional plugin step to publish the artifact to the Artifacts tab.
 ```
 
+2. Add a step to upload your code coverage report to cloud storage.
+
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+
+3. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
 ### Java
 
+1. Add code coverage commands to the relevant **Run** or **Run Tests** step.
 [JaCoCo](https://github.com/jacoco/jacoco)
 
 Include jacoco in pom.xml. when you run `mvn test`, code coverage is included (report written to an `exec` file).
@@ -47,13 +56,19 @@ Include jacoco in pom.xml. when you run `mvn test`, code coverage is included (r
 command: |-
   mvn test
 
-Follow by optional step to upload the artifact file to cloud storage.
-
-Follow by optional plugin step to publish the artifact to the Artifacts tab.
 ```
+
+2. Add a step to upload your code coverage report to cloud storage.
+
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+
+3. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
 
 ### JavaScript
 
+1. Add code coverage commands to the relevant **Run** or **Run Tests** step.
 [Istanbul](https://github.com/gotwarlost/istanbul) by itself.
 
 Istanbul in Jest.
@@ -64,12 +79,19 @@ Istanbul in Jest.
           name: "Run Jest and Collect Coverage Reports"
           command: jest --collectCoverage=true
 
-Follow by optional step to upload the artifact file to cloud storage.
-
-Follow by optional plugin step to publish the artifact to the Artifacts tab.
 ```
 
+2. Add a step to upload your code coverage report to cloud storage.
+
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+
+3. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
+
 ### PHP
+
+1. Add code coverage commands to the relevant **Run** or **Run Tests** step.
 
 [phpdbg](https://www.php.net/manual/en/book.phpdbg.php)
 
@@ -82,13 +104,19 @@ phpdbg -qrr vendor/bin/phpunit --coverage-html build/coverage-report
           command: phpdbg -qrr vendor/bin/phpunit --coverage-html build/coverage-report
           environment:
             XDEBUG_MODE: coverage
-
-Follow by optional step to upload the artifact file to cloud storage.
-
-Follow by optional plugin step to publish the artifact to the Artifacts tab.
 ```
 
+2. Add a step to upload your code coverage report to cloud storage.
+
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+
+3. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
+
 ### Python
+
+1. Add code coverage commands to the relevant **Run** or **Run Tests** step.
 
 [Coverage.py](https://coverage.readthedocs.io/en/latest/)
 
@@ -101,13 +129,19 @@ coverage run -m pytest
 coverage report
 coverage html
 
-Follow by optional step to upload the artifact file to cloud storage.
-
-Follow by optional plugin step to publish the artifact to the Artifacts tab.
 ```
+
+2. Add a step to upload your code coverage report to cloud storage.
+
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+
+3. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
 
 ### Ruby
 
+1. Add code coverage commands to the relevant **Run** or **Run Tests** step.
 [SimpleCov](https://github.com/simplecov-ruby/simplecov)
 
 ```
@@ -115,11 +149,15 @@ Follow by optional plugin step to publish the artifact to the Artifacts tab.
 gem 'simplecov', require: false, group: :test
 
 Run script ex `bin/rails test` - https://github.com/simplecov-ruby/simplecov#getting-started
-
-Follow by optional step to upload the artifact file to cloud storage.
-
-Follow by optional plugin step to publish the artifact to the Artifacts tab.
 ```
+
+2. Add a step to upload your code coverage report to cloud storage.
+
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+
+3. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
 
 ## Code coverage services
 
