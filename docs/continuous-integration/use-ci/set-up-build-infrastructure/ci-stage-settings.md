@@ -78,7 +78,7 @@ import TabItem from '@theme/TabItem';
 ```
 ```mdx-code-block
 <Tabs>
-  <TabItem value="cloud" label="Cloud" default>
+  <TabItem value="cloud" label="Cloud">
 ```
 
 Use the **Cloud** infrastructure option for [Harness Cloud build infrastructure](./use-harness-cloud-build-infrastructure.md).
@@ -90,7 +90,7 @@ The following **Platform** settings are available:
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="kubernetes" label="Kubernetes">
+  <TabItem value="kubernetes" label="Kubernetes" default>
 ```
 
 Use the **Kubernetes** infrastructure option to [set up a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
