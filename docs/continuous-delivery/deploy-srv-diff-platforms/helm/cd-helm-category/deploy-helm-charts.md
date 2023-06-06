@@ -401,48 +401,80 @@ All dependency repositories must be available and accessible from the Harness De
 
 ## Service hooks 
 
-Helm has [hook](https://v2.helm.sh/docs/charts_hooks/) mechanism that lets you fetch files and dependencies. 
+Kubernetes and Helm deployments use service hooks to fetch Helm Chart dependencies that refer Git and other repositories, and install them with the main Helm Chart. 
 
 These are the service hook actions supported by Harness: 
 
-* Fetch files: Service hooks can be triggered before or after the manifest files are fetched.
+* Fetch files: Service hooks can be triggered before or after the manifest files are fetched. 
 * Manifest templates: Service hooks can be triggered before or after the manifest has been rendered. 
 * Steady state check: Service hooks can be triggered before or after the steady state check.
 
-Here's a sample service hook YAML: 
+Each service hook has its own context variable: 
+
+| **Action** | **Context Variable and Description** |
+| :--- | :--- |
+| Fetch files | `MANIFEST_FILES_DIRECTORY`: The path to the directory from where the manifest files can be downloaded. |
+| Manifest template | `MANIFEST_FILES_DIRECTORY`: The path to the directory where the original Kubernetes template is located. <br />`MANIFEST_FILE_OUTPUT_PATH`: The path to the final `manifest.yaml` file. |
+| Steady state check | `WORKLOADS_LIST`: The comma separated list of the workloads managed by Harness |
+
+Here are some sample service hook YAMLs: 
 
 ```
-service:
-  name: nginx-k8s
-  identifier: nginxk8s
-  serviceDefinition:
-    hooks:
-      - preHook:
-          actions: [FetchFiles]
-          storeType: Inline
-          spec:
-            value: helm plugin secret --helmChartName --commands -- <+service.name> <+service.manifest.chartName>
-      - postHook:
-          actions: 
-            - FetchFiles
-          storeType: Harness
-          spec:
-            files:
-              - account:/hooks/fetch-files.sh
+hooks:
+  - preHook:
+      identifier: hello
+      storeType: Inline
+      actions:
+        - FetchFiles
+        - TemplateManifest
+        - SteadyStateCheck
+      store:
+        content: echo "sample Hook for all action"
 ```
+
+```
+hooks:
+  - postHook:
+      identifier: dependency
+      storeType: Inline
+      actions:
+        - FetchFiles
+      store:
+        content: |
+          cd $MANIFEST_FILES_DIRECTORY
+          helm repo add test-art-remote https://sample.jfrog.io/artifactory/sample-charts/ --username automationuser --password <+secrets.getValue("reposecret")>
+          helm dependency build
+          cd charts
+```
+
+```
+hooks:
+  - postHook:
+      identifier: cdasd
+      storeType: Inline
+      actions:
+        - FetchFiles
+      store:
+        content: |-
+          source $HOME/.profile
+          cd $MANIFEST_FILES_DIRECTORY
+          echo $MANIFEST_FILES_DIRECTORY
+          export SOPS_AGE_KEY=<+secrets.getValue("agesecret")>
+          helm secrets decrypt secrets.enc.yaml
+          helm secrets decrypt secrets.enc.yaml > secrets.yaml
+```
+
+For more information about Helm dependencies, go to [Helm dependency](https://helm.sh/docs/helm/helm_dependency/) and [Helm dependency update](https://helm.sh/docs/helm/helm_dependency_update/).
 
 ### Add private repositories as dependency and use them in Helm Chart
 
-1. Add a requested repository in Helm using the following script.
-
-   You can create a postHook for FetchFiles or a preHook for TemplateManifest action.
+1. Add a repository in Helm using the following script: 
 
    ```
    helm repo add test-remote-name 
    https://url.to.chart.example.artifactory/artifactory/harness-helm-charts/ --username 
    <+secrets.getValue("username")> --password <+secrets.getValue("password")>
    ```
-
 2. Add the required name and version of the dependency in the `Chart.yaml` to reference these dependencies. 
    
    The repository name starts with `@` followed by the name by which you have added the repository in your script.
@@ -463,31 +495,33 @@ service:
        repository: "@test-art-remote"
    ```
 
-3. Run the `--dependency-update` command flag in the manifest to update dependencies as shown in the image below:
+3. Run the `--dependency-update` command flag in the manifest configuration to update dependencies as shown in the image below:
    
    ![](./static/dependency-update.png)
 
-### Use secrets in Helm by using SOPS_AGE_KEY
+### Use secrets in Helm by using SOPS and AGE keys
 
-1. Install `sops` and `age` to generate a public key to encrypt files.
+1. Install `SOPS` and `AGE` keys on your Harness Delegate. A public key is generated, that can be used to encrypt files. 
+   
+   ![](./static/sops-age-keygen.png)
 2. Enter the following commands to encrypt and save your files in your Git repository: 
    
    ```
-   export SOPS_AGE_KEY="age13fft7eceazacraytq0ufrgthyjkua5hqt3yzs4v29yvyag2vaprustsf9ge2q"
+   export SOPS_AGE_KEY=<"ENTER_YOUR_SOPS_AGE_KEY">
    sops --encrypt --age $SOPS_AGE_KEY secrets.yaml > secrets.enc.yaml
    ```
    This command creates a `secrets.yaml` file.
-3. Enter the following commands to decrypt the `secrets.yaml` file and use it to resolve values in your Chart:
+3. Enter the following commands to decrypt the `secrets.yaml` file and use it to resolve the values in your Chart:
    
    ```
    cd $MANIFEST_FILES_DIRECTORY    //go to the directory containing manifest-files
    export SOPS_AGE_KEY=<+secrets.getValue("agesecret")> // export the PRIVATE Key to be used to decrypt
    sops --decrypt secrets.enc.yaml     // you can decrypt using sops
    helm secrets decrypt secrets.enc.yaml     // or by using helm secrets
-   helm secrets decrypt secrets.enc.yaml > secrets.yaml    // store the decrypted file in a temprory folder
+   helm secrets decrypt secrets.enc.yaml > secrets.yaml    // store the decrypted file in a temporary folder
    ```
    
-   In the manifest configuration, you can resolve the values: 
+   Alternatively, run the `--dependency-update -f secrets.yaml` command flag in the manifest configuration to resolve the values as shown in the image below:
 
    ![](./static/dependency-update-secrets-yaml.png)
 
