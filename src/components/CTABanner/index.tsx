@@ -9,6 +9,7 @@ import "./styles.css";
   tagline="Sign up today to get started for free!"
   link="https://app.harness.io/auth/#/signup/?module=ci&utm_source=Website&utm_medium=&utm_campaign=CI-Product-Page-Hero-PLG"
   closable={true}
+  target="_blank"
 />
 */
 
@@ -18,6 +19,7 @@ const CTABanner = ({
   tagline,
   link = "#",
   closable = false,
+  target="_blank"
 }) => {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const handleClose = () => {
@@ -48,7 +50,7 @@ const CTABanner = ({
       spanTagline.setAttribute("class", "cta-banner-tagline");
       const linkButton = document.createElement("a");
       linkButton.setAttribute("href", link);
-      linkButton.setAttribute("target", "_blank");
+      linkButton.setAttribute("target", target);
       const btnCTA = document.createElement("button");
       btnCTA.setAttribute("class", "cta-banner-button");
       const spanClose = document.createElement("span");

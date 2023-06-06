@@ -4,7 +4,16 @@ hide_table_of_contents: true
 title: Manifest
 ---
 
-# Deploy a Kubernetes Manifest
+# Deploy using Kubernetes Manifest
+
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Delivery & GitOps Certification today!"
+  link="/certifications/continuous-delivery"
+  closable={true}
+  target="_self"
+/>
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -13,7 +22,7 @@ import TabItem from '@theme/TabItem';
 
 This tutorial will get you started with Harness Continuous Delivery (CD). We will guide you through deploying a Guestbook application using Harness CD pipeline and GitOps methods. 
 
-The Guestbook application uses a publicly available Kubernetes manifest and Docker image.
+This Guestbook application uses a publicly available Kubernetes manifest and Docker image.
 
 :::info
 
