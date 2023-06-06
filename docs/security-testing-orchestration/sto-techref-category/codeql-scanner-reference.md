@@ -97,17 +97,18 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 
 <StoSettingTargetWorkspace  />
 
+### Ingestion settings
 
 
-### Ingestion File
+<a name="ingestion-file"></a>
+
+#### Ingestion File
 
 ```mdx-code-block
 import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
 ```
 
 <StoSettingIngestionFile  />
-
-
 
 
 ### Log Level, CLI flags, and Fail on Severity
@@ -169,44 +170,117 @@ In the **Advanced** settings, you can use the following options:
 <!-- END step-palette-config ----------------------------------------------------------------------------- -->
 
 
-## Security step configuration (_deprecated_)
- 
 
-<details><summary>Set up a CodeQL scan in a Security step</summary>
+## YAML pipeline example
 
-You can set up a Security step with [CodeQL](https://CodeQL.readthedocs.io/en/latest/) to find common security issues in your Python code.
+The following pipeline example illustrates an ingestion workflow. It consists of two steps:
+
+* A Run step that downloads and installs CodeQL, scans the codebase defined for the pipeline, and then publishes the results to a SARIF data file. 
+* A CodeQL step that ingests the SARIF data.
+
+![CodeQL ingestion pipeline example](./static/codeql-ingest-pipeline-example.png)
+
+```yaml
+
+pipeline:
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: wwdvpwa
+        repoName: dvpwa
+        build: <+input>
+  stages:
+    - stage:
+        name: codeql
+        identifier: codeql
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: codeql_analyze
+                  identifier: codeql_analyze
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: ubuntu:20.04
+                    shell: Sh
+                    command: |-
+                      #!/bin/bash
 
 
-#### Scan policy types
+                      # Change the working directory to the app directory.
+                      mkdir /app
+                      cd /app
 
-STO supports the following policy\_type settings for CodeQL:
+                      # Update and upgrade the apt packages.
+                      apt update -y -q
+                      apt upgrade -y -q 
 
-* `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
-* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
+                      # Install the wget and tar packages and python3.
+                      export DEBIAN_FRONTEND="noninteractive"
+                      apt install -y -q wget tar python3.9-venv python3.9 build-essential
 
-#### Required Settings
+                      # Download the CodeQL bundle.
+                      wget -q https://github.com/github/codeql-action/releases/latest/download/codeql-bundle-linux64.tar.gz
 
-* `product_name` = `CodeQL`
-* `scan_type` = `repository`
-* `product_config_name` = `default` — Run a CodeQL scan with the default settings.
-* `repository_project` — The repository name. If you want to scan `https://github.com/my-github-account/codebaseAlpha`, for example, you would set this to `codebaseAlpha`.
-* `repository_branch` — This tells CodeQL the Git branch to scan. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference#manual-branch-build-expressions). This sets the branch based on the user input or trigger payload at runtime.
-* `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
+                      # Extract the CodeQL bundle.
+                      tar -xvzf ./codeql-bundle-linux64.tar.gz -C /app/
 
-```mdx-code-block
-import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
-```
+                      # Set the PATH environment variable to include the CodeQL directory.
+                      export PATH="${PATH}:/app/codeql"
 
-<StoLegacyIngest />
+                      # Resolve the CodeQL packs
+                      codeql resolve qlpacks
 
-</details>
+                      # Move back to the code folder before scanning
+                      cd /harness
+
+                      # Create a CodeQL database.
+                      codeql database create python_database --language=python
+
+                      # Run the CodeQL analyzer.
+                      codeql database analyze python_database --format=sarif-latest --output=/shared/customer_artifacts/dvpwa-codeql-results.sarif
+                    imagePullPolicy: Always
+                    resources:
+                      limits:
+                        memory: 2G
+                        cpu: 2000m
+              - step:
+                  type: CodeQL
+                  name: CodeQL_ingest
+                  identifier: CodeQL_1
+                  spec:
+                    mode: ingestion
+                    config: default
+                    target:
+                      name: codeql-dvpwa
+                      type: repository
+                      variant: test
+                    advanced:
+                      log:
+                        level: info
+                      fail_on_severity: critical
+                    ingestion:
+                      file: /shared/customer_artifacts/dvpwa-codeql-results.sarif
+          sharedPaths:
+            - /shared/customer_artifacts/
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: stoqadelegate
+              namespace: harness-qa-delegate
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+  identifier: CodeQLtestv3
+  name: CodeQL-test-v3
 
 
-
-## YAML configuration
-
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
 ```
 
 <StoSettingYAMLexample />

@@ -304,7 +304,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 The following pipeline example illustrates an ingestion workflow. It consists of two steps:
 
-* An Action step scans a code repo using a Checkmarx GitHub Action and export the scan results to a SARIF data file.
+* An Action step scans a code repo using a Checkmarx GitHub Action and exports the scan results to a SARIF data file.
 * A Checkmarx step that ingests the SARIF data.
 
 ![Checkmarx ingestion pipeline in Pipeline Studio](./static/checkmarx-ingestion-pipeline-example.png)
