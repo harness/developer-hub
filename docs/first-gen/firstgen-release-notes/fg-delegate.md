@@ -3,7 +3,7 @@
 These release notes document changes to Harness Delegate in Harness FirstGen.
 
 :::info note
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means the features and fixes that these release notes describe might not be immediately available in your cluster. 
+Harness deploys changes to Harness SaaS clusters on a progressive basis. This means the features and fixes that these release notes describe might not be immediately available in your cluster.
 
 To identify the cluster that hosts your account, open Harness FirstGen and go to **Account Settings**. Then click **Overview**. The cluster is listed in **Harness Cluster Hosting Account**.
 :::
@@ -18,11 +18,11 @@ This release does not include any new features.
 
 ### Early access 
 
-This release does not include any new early access features. 
+This release does not include any new early access features.
 
 ### Fixed issues
 
-- Apps with a service name are now production apps when the `HARNESS_STATUS_IDENTIFIER` environment variable is not set to `ACTIVE`.
+- When the `HARNESS_STATUS_IDENTIFIER` environment variable is not set to `ACTIVE`, apps with a service name are now treated as production apps. (CDS-68821)
 
 ## May 23, 2023, Harness version 79306, Harness Delegate version 79307
 
