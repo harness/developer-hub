@@ -46,6 +46,7 @@ You can reference existing secrets in the following types of Secret Managers:
 
 * Azure Key Vault
 * Hashicorp Vault
+* AWS Secrets Manager
 * GCP Secrets Manager
 
 
