@@ -1,6 +1,6 @@
 ---
-title: Deploy Helm Charts
-description: This topic describes how to deploy Helm Charts from a remote Git repository, HTTP Helm Repository, or cloud storage service.
+title: Deploy Helm charts
+description: This topic describes how to deploy Helm charts from a remote Git repository, HTTP Helm Repository, or cloud storage service.
 sidebar_position: 1
 helpdocs_topic_id: 7owpxsaqar
 helpdocs_category_id: xot6u3ge9d
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to deploy Helm Charts in standard Helm syntax in YAML from a remote Git repo, HTTP Helm Repository, or cloud storage service (Google Cloud Storage, AWS S3).
+This topic describes how to deploy Helm charts in standard Helm syntax in YAML from a remote Git repo, HTTP Helm Repository, or cloud storage service (Google Cloud Storage, AWS S3).
 
 This process is also covered in the [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart).
 
@@ -45,7 +45,7 @@ Harness supports the following Helm OCI chart registries:
 Helm OCI chart support includes the following deployment types:
 
 - Native Helm
-- Helm Charts with Kubernetes deployments.
+- Helm charts with Kubernetes deployments.
 
 Harness OCI chart registry support details:
 
@@ -60,7 +60,7 @@ Harness OCI chart registry support details:
 
 ## Visual summary
 
-Here's a quick video showing you how to add different types of manifests. It also describes how to add Helm Charts and multiple values YAML files in the same repo as the chart, or in separate repos.
+Here's a quick video showing you how to add different types of manifests. It also describes how to add Helm charts and multiple values YAML files in the same repo as the chart, or in separate repos.
 
 <!-- Video:
 https://www.youtube.com/watch?v=dVk6-8tfwJc-->
@@ -69,7 +69,7 @@ https://www.youtube.com/watch?v=dVk6-8tfwJc-->
 
 ## Artifacts and Helm Charts
 
-Harness supports image artifacts with Helm Charts in the following ways.
+Harness supports image artifacts with Helm charts in the following ways.
 
 <details>
 <summary>Helm chart with hardcoded artifact</summary>
@@ -161,7 +161,7 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
   The values3.yaml key:value pair overrides the key:value pair of values2.yaml and values.yaml files.
 
   You can also select **Expression** and use [Harness expressions](/docs/platform/Variables-and-Expressions/harness-variables) in this setting. The resolved expression must be the name of a Values YAML file in the chart. For example, you could create a stage variable for **values4.yaml** named **qa** and then reference it in **Values YAML** like this: `<+stage.variables.qa>`.
-- **Skip Resource Versioning**: By default, Harness versions ConfigMaps and secrets deployed into Kubernetes clusters. In some cases, such as when using public manifests or Helm Charts, you cannot add the annotation. When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and secrets for the resource. If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and secrets.
+- **Skip Resource Versioning**: By default, Harness versions ConfigMaps and secrets deployed into Kubernetes clusters. In some cases, such as when using public manifests or Helm charts, you cannot add the annotation. When you enable **Skip Resource Versioning**, Harness will not perform versioning of ConfigMaps and secrets for the resource. If you have enabled **Skip Resource Versioning** for a few deployments and then disable it, Harness will start versioning ConfigMaps and secrets.
 - **Helm Command Flags**: You can use Helm command flags to extend the Helm commands that Harness runs when deploying your Helm chart. Harness will run Helm-specific Helm commands and their flags as part of preprocessing. All the commands you select are run before `helm install/upgrade`.
 - **Command Type**: Select the Helm command type you want to use. For example:
   - [Template](https://v2.helm.sh/docs/helm/#helm-template): `helm template` to render the helm template files.
@@ -180,7 +180,7 @@ Once your Helm chart is added, it appears in the **Manifests** section. For exam
 
 ### Using subcharts
 
-You can specify a path to Helm Charts within the Helm repository and Harness will fetch the Helm chart and its subordinate charts within that folder.
+You can specify a path to Helm charts within the Helm repository and Harness will fetch the Helm chart and its subordinate charts within that folder.
 
 <docimage path={require('./static/70e9b1aa646408c07a6fef1ca8b6e0dfa2eef53e5f7eea3e88ac28b5a4d3e1c4.png')} width="60%" height="60%" title="Click to view full size image" />  
 
@@ -254,7 +254,7 @@ There is nothing unique about defining the target cluster infrastructure definit
 
 For more information, go to [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure).
 
-Helm Charts can be deployed using any of the execution steps and deployment strategies used in other Kubernetes deployments. For more information, go to [Kubernetes How-tos](/docs/category/kubernetes).
+Helm charts can be deployed using any of the execution steps and deployment strategies used in other Kubernetes deployments. For more information, go to [Kubernetes How-tos](/docs/category/kubernetes).
 
 ## Deploy
 
@@ -383,7 +383,7 @@ You can set up a Harness trigger to listen on the chart repo and execute the pip
 
 Harness can fetch Helm chart dependencies within GitHub using the `--dependency-update` command flag. 
   
-Harness fetches dependent Helm Charts along with the main Helm chart used for the deployment. Dependencies are resolved before Harness performs the deployment of the main Helm chart. 
+Harness fetches dependent Helm charts along with the main Helm chart used for the deployment. Dependencies are resolved before Harness performs the deployment of the main Helm chart. 
 
 For more information, go to [Helm Docs](https://helm.sh/docs/helm/helm_template/#helm).
 
@@ -401,7 +401,7 @@ All dependency repositories must be available and accessible from the Harness De
 
 ## Service hooks 
 
-Kubernetes and Helm deployments use service hooks to fetch Helm Chart dependencies that refer Git and other repositories, and install them with the main Helm Chart. 
+Kubernetes and Helm deployments use service hooks to fetch Helm Chart dependencies that refer to Git and other repositories, and install them with the main Helm Chart. 
 
 Harness supports two types of service hooks: preHook and postHook. These are the service hook actions supported by Harness: 
 
@@ -417,7 +417,7 @@ Each service hook has its own context variable:
 | Manifest template | `$MANIFEST_FILES_DIRECTORY`: The path to the directory where the original Kubernetes template is located. <br />`$MANIFEST_FILE_OUTPUT_PATH`: The path to the final `manifest.yaml` file. |
 | Steady state check | `$WORKLOADS_LIST`: The comma separated list of all workloads. <br />`$MANAGED_WORKLOADS`: The comma separated list of workloads managed by Harness. <br />`$CUSTOM_WORKLOADS`: The comma separated list of custom workloads. |
 
-You can use service hooks to run additional configurations when carrying out the above mentioned actions. For example, when you run a deployment, you need to fetch files first. After fetching the files, you can resolve the secrets of those encrypted files using Helm secrets, SOPS, AGE keys, and so on. You can use the above mentioned context variables during deployment. For more details, go to [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts).
+You can use service hooks to run additional configurations when carrying out the actions above. For example, when you run a deployment, you must fetch files first. After fetching the files, you can resolve the secrets of those encrypted files using Helm secrets, SOPS, AGE keys, and so on. You can use the context variables above during deployment. For more details, go to [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts).
 
 Here are some sample service hook YAMLs: 
 
@@ -479,7 +479,7 @@ For more information about Helm dependencies, go to [Helm dependency](https://he
    ```
 2. Add the required name and version of the dependency in the `Chart.yaml` to reference these dependencies. 
    
-   The repository name starts with `@` followed by the name by which you have added the repository in your script.
+   The repository name starts with `@` followed by the name you used for the repository in your script.
 
    ```
    apiVersion: v1
