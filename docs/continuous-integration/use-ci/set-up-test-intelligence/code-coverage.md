@@ -19,24 +19,14 @@ For information about available tools and configuring specific tools, refer to t
 
 ### Go
 
-1. Add code coverage commands to the relevant **Run** or **Run Tests** step.
-```
-go test -cover -coverprofile=c.out
-go tool cover -html=c.out -o coverage.html
+Code coverage is built in to Go.
 
+1. Add the following commands to the **Run** step where you run your tests:
 
-
-      - run: go build
-      - run:
-          name: "Create a temp directory for artifacts"
-          command: |
-            mkdir -p /tmp/artifacts
-      - run:
-          command: |
-            go test -coverprofile=c.out
-            go tool cover -html=c.out -o coverage.html
-            mv coverage.html /tmp/artifacts
-```
+   ```
+   go test -cover -coverprofile=c.out
+   go tool cover -html=c.out -o coverage.html
+   ```
 
 2. Add a step to upload your code coverage report to cloud storage.
 
@@ -45,6 +35,7 @@ go tool cover -html=c.out -o coverage.html
    * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
 
 3. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
+
 ### Java
 
 1. Set up a Java code coverage tool, such as [JaCoCo](https://github.com/jacoco/jacoco).
