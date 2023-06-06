@@ -47,7 +47,7 @@ This release includes the following early access features and enhancements:
 
    Scaling down removes the HorizontalPodAutoscaler and PodDisruptionBudget resources. The Deployments, StatefulSets, DaemonSets, and Deployment Configs resources are scaled down.
 
-   You must configure the same infra definition as the blue/green deployment. Harness identifies resources from the release history, which is mapped to release name. A different infra definition configuration may lead to scaling down important resources.
+   You must configure the same infrastructure definition as the blue/green deployment. Harness identifies resources from the release history, which is mapped to release name. A different infrastructure definition configuration may lead to scaling down important resources.
 
    This is behind the feature flag `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`.
 
