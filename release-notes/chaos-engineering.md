@@ -36,8 +36,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * Added a new advanced configuration to allow users to add annotations to all chaos pods using the UI. (CHAOS-1465) 
 
-* Upgraded argo-workflows library to version 3.2.11. This fixes vulnerabilities found in some of our components, such as chaos-manager and subscriber. (CHAOS-568)
-
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
