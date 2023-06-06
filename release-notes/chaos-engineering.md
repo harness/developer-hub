@@ -31,7 +31,7 @@ To upgrade chaos infrastructures and experiments:
 
     ![](./static/chaos-infra-upgrade-needed.png)
 
-1. Edit the YAML definitions of experiments to update the chaosnative/go-runner image to version 0.13.1.
+1. Edit the YAML definitions of experiments to update the chaosnative/go-runner image to version 0.13.1. Do the same for experiments in custom chaos hubs that may be connected to your project.
 :::
 
 * Added audit events for various GameDay operations such as create, update, etc., so that users can easily audit operations done on their GameDays. (CHAOS-1709)
