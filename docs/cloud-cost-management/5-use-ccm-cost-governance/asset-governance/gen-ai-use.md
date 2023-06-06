@@ -22,7 +22,7 @@ To create a rule by using the Harness AI Copilot, perform the following steps:
 
   The Harness AI Copilot pane opens.
 8. Select the Cloud service provider. For example, AWS.
-9. You could do one of the following options: 
+9. You could opt for one of the following options: 
 
   * Select a rule from a list of examples: The UI presents a curated list of rule examples that you can choose from. These examples cover a wide range of common governance scenarios. By selecting a relevant example, you can easily adapt it to suit your specific requirements, saving time and effort in policy formulation.
   * Type your requirement and hit enter: Alternatively, you can directly input your governance requirement into the UI. Type your desired rule in a clear and concise manner and press the enter key. For instance, you could specify a rule such as "Delete EC2 instances older than 90 days." The Gen AI bot will then process your input and generate a corresponding rule based on your requirement.
