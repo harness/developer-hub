@@ -18,7 +18,10 @@ Governance-as-Code is a modern approach that enables organizations to automate a
 
 At a high level, Cloud Custodian integrates seamlessly with services, features, and resources native to AWS, Azure, and GCP. The platform's basic syntax of resources, filters, and actions eliminates the complexity of API calls, business logic, and data translation, making cloud policy authorship more straightforward and efficient.
 
+
+:::info important
 Harness supports only AWS cloud governance in its initial release.
+:::
 
 ## Anatomy of a cloud asset governance rule
 
@@ -130,30 +133,9 @@ Enable the following permissions in AWS to execute cloud governance rules:
 :::info
 * This is not an exhaustive list; you may require additional permissions to support custom rules.
 * A yellow underline in a custom policy indicates that you need permission to support the underlined filters and/or actions.
+To learn how to add missing permissions in AWS, go to [Add permissions](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md#add-permissions).
 :::
 
-### Add permissions
-If you come across an error message indicating missing permissions, as displayed in the following screenshot, you need to add the missing permission [here](https://us-east-1.console.aws.amazon.com/iamv2/home#/roles). 
-
-
-<docimage path={require('./static/asset-governance-test-output-error.png')} width="50%" height="50%" title="Click to view full size image" />
-
-1. Copy the role specified in the error message that requires permission to execute the rule.
-2. Enter the role in the search text box in IAM > Roles to filter the roles. The policies are displayed. 
-
-  <docimage path={require('./static/aws-missing-permission-role.png')} width="50%" height="50%" title="Click to view full size image" />
-
-3. In the list of policies, select the policy to edit.
-    <docimage path={require('./static/aws-select-policy.png')} width="50%" height="50%" title="Click to view full size image" />
-
-4. In the **Permissions** tab, select **Edit policy**, and then go to the **JSON** tab.
-
-      <docimage path={require('./static/aws-edit-json.png')} width="50%" height="50%" title="Click to view full size image" />
-
-5. Add the missing permissions. You can use a wildcard (asterisk) to grant multiple permissions. For example, `s3:Get*` permission would allow multiple S3 actions that start with "Get". 
-6. Save changes.
-
-For more information, go to [Editing IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html).
 
 
 

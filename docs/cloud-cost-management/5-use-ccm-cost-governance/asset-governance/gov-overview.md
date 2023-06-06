@@ -1,10 +1,9 @@
 ---
-title: Asset governance overview page
+title: Summary of your asset governance rules  
+sidebar_label: Asset governance summary 
 description: This topic talks about Harness cloud asset governance.
 # sidebar_position: 2
 ---
-
-# Cloud asset governance overview page
 
 The **Overview** page offers a consolidated summary of your organization's governance rules, enforcements, and cost savings resulting from rule executions. This provides a quick and easy way to monitor your cloud spend and ensure compliance with your governance policies. Additionally, you can access valuable recommendations for optimizing resource utilization, allowing you to achieve even greater cost savings. 
 
