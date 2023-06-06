@@ -4,6 +4,9 @@ sidebar_label: Generative AI overview
 description: This topic talks about Harness cloud asset governance.
 # sidebar_position: 1
 ---
+:::note
+Currently, this feature is behind the feature flag **CCM_GOVERNANCE_GENAI_ENABLE**. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 Asset governance policies play a crucial role in governing and optimizing costs by enforcing governance rules. However, authoring these policies can be challenging and confusing at times. In such situations, Generative AI support can be extremely valuable in assisting with policy creation. Harness CCM offers a user-friendly interface and serves as an excellent starting point for establishing the necessary policies. By leveraging this tool, organizations can streamline the process of policy development and ensure that the required policies are effectively implemented.
 
