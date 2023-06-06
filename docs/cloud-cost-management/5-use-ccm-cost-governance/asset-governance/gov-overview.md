@@ -29,6 +29,8 @@ In certain cases, there can be overlapping rules targeting the same resource. Fo
   
 To apply a recommendation, select the row. The recommendation opens on the **Recommendations** page. To learn how to enforce this recommendation, go to [Governance recommendations](../../4-use-ccm-cost-optimization/1-ccm-recommendations/governance.md).
 
+Make use of Harness AI Copilot to create a new rule. Select the **Create a new rule with Copilot** option. A new rule opens on the Rule Editor with an auto-generated name. For more information, go to [Generative AI overview](gen-ai-overview.md).
+
 <!---## How are the cost savings calculated?
 
 Cost savings are calculated for the last 30 days. However, for rightsizing rules, it depends on the resize percentage specified in the policy. For example, let's consider the following rule to resize an RDS instance. The potential or realized cost savings is 30% of the last 30 days cost.
