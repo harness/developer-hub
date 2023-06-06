@@ -59,6 +59,13 @@ This release includes the following early access features and enhancements:
 
 This release includes the following fixes:
 
+<<<<<<< HEAD
+=======
+- Deployments consistently failed during the same stage. (PL-38247)
+
+   This issue was fixed by updating the delegate YAML. Delegate startup now fails when you use a legacy delegate image with an immutable delegate YAML.
+
+>>>>>>> 9b814602030b9ec8b357b1e75633c9719f9924f7
 - Enhanced handling and logging for the `No enum constant io.harness.delegate.message.MessengerType.WATCHEIN` exception to enable the actual malformed message. This error indicates that a message is malformed and only occurs when there is an error during writing, for example, out of disk, process killed, etc. (PL-38245)
 
 - Unable to create SLO using SignalFX metrics. (OIP-406)
