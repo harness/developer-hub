@@ -68,43 +68,45 @@ As an alternative to steps three and four, you can use the [JaCoCo Drone plugin]
 
 ### JavaScript
 
-1. Add code coverage commands to the relevant **Run** or **Run Tests** step.
-[Istanbul](https://github.com/gotwarlost/istanbul) by itself.
+1. If necessary, set up a JavaScript code coverage tool, such as [Istanbul](https://github.com/gotwarlost/istanbul). Your test tool may already include code coverage; for example, [Istanbul is included with Jest.](https://jestjs.io/docs/configuration/#collectcoverage-boolean).
+2. Add code coverage commands to the relevant **Run** step. For example, with Jest, add `--collectCoverage=true`.
 
-Istanbul in Jest.
-
+```yaml
+              - step:
+                  type: Run
+                  name: Run Jest Tests
+                  identifier: run_jest_tests
+                  spec:
+                    shell: Sh
+                    command: |-
+                      yarn add --dev jest-junit
+                      jest --ci --runInBand --reporters=default --reporters=jest-junit --collectCoverage=true
+                    envVariables:
+                      JEST_JUNIT_OUTPUT_DIR: "/harness/reports"
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "/harness/reports/*.xml"
 ```
-      - run: npm install
-      - run:
-          name: "Run Jest and Collect Coverage Reports"
-          command: jest --collectCoverage=true
 
-```
-
-2. Add a step to upload your code coverage report to cloud storage.
+3. Add a step to upload your code coverage report to cloud storage.
 
    * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
    * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
    * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
 
-3. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
+4. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
 
 ### PHP
 
-1. Add code coverage commands to the relevant **Run** or **Run Tests** step.
+You can use the [phpdbg](https://www.php.net/manual/en/book.phpdbg.php) tool to generate code coverage reports.
 
-[phpdbg](https://www.php.net/manual/en/book.phpdbg.php)
+1. Add the following command to the **Run** step where your run your tests:
 
-```
-phpdbg -qrr vendor/bin/phpunit --coverage-html build/coverage-report
-
-
-      - run:
-          name: "Run tests"
-          command: phpdbg -qrr vendor/bin/phpunit --coverage-html build/coverage-report
-          environment:
-            XDEBUG_MODE: coverage
-```
+   ```
+   phpdbg -qrr vendor/bin/phpunit --coverage-html build/coverage-report
+   ```
 
 2. Add a step to upload your code coverage report to cloud storage.
 
