@@ -33,7 +33,7 @@ This release introduces the following new features and enhancements:
 
 - Kubernetes blue/green and canary deployments now support HorizontalPodAutoscaler and PodDisruptionBudget resources. (CDS-59011)
 
-- Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SMP-14724)
+- Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SRM-14724)
 
 
 ```mdx-code-block
