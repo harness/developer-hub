@@ -22,6 +22,18 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
+:::caution
+This release breaks backward compatibility with older chaos infrastructures. You must update Chaos Infrastructures and the chaosnative/go-runner image in experiment definitions. If you don't upgrade, then chaos experiments will start to fail.
+
+To upgrade chaos infrastructures and experiments:
+
+1. If a chaos infrastructure indicates **UPGRADE NEEDED**, select **Update**, and then follow the instructions on your screen.
+
+    ![](./static/chaos-infra-upgrade-needed.png)
+
+1. Edit the YAML definitions of experiments to update the chaosnative/go-runner image to version 0.13.1.
+:::
+
 * Added audit events for various GameDay operations such as create, update, etc., so that users can easily audit operations done on their GameDays. (CHAOS-1709)
 
 * Browser tabs now show the module page name to help users switching between different tabs. (CHAOS-1683)
