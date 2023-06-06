@@ -8,6 +8,15 @@ slug: /ci-pipelines/test/allure-report
 
 # Publish an Allure Report to the Artifacts tab 
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
+
 This tutorial provides an example pipeline that builds a Java Maven application and generates an Allure Report that you can view in the Harness UI. 
 
 ### Pipeline workflow 
