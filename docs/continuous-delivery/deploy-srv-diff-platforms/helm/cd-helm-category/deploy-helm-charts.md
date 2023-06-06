@@ -504,8 +504,6 @@ For more information about Helm dependencies, go to [Helm dependency](https://he
 ### Use case: Use secrets to encrypt and decrypt files
 
 1. Install [SOPS](https://github.com/mozilla/sops) or [AGE](https://github.com/FiloSottile/age) keys to generate a public key to encrypt files. 
-   
-   ![](./static/sops-age-keygen.png)
 2. Enter the following commands to encrypt and save your files in your Git repository: 
    
    ```
@@ -527,9 +525,7 @@ For more information about Helm dependencies, go to [Helm dependency](https://he
 
    ![](./static/dependency-update-secrets-yaml.png)
 
-## Notes
-
-#### Uninstall command flag
+## Uninstall command flag
 
 If you want to use the uninstall command in the **Manifest Details**, be aware of the following:
 
@@ -537,7 +533,7 @@ If you want to use the uninstall command in the **Manifest Details**, be aware o
 * If the deployment fails on the very first execution, then Harness will apply the `--uninstall` flag itself. You can see this in the logs under `Wait For Steady State`.
 * If you want to pass in some command flags when Harness performs the `--uninstall`, enter uninstall in **Manifest Details** and enter in the relevant command flags.
 
-#### Authentication for Google Cloud with Helm OCI connector
+## Authentication for Google Cloud with Helm OCI connector
 
  To configure authentication for GCP with a Helm OCI connector, you must provide the username and password to your Google service account.
   
