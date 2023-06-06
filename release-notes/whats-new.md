@@ -25,7 +25,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Kubernetes blue/green and canary deployments now support HorizontalPodAutoscaler and PodDisruptionBudget resources. (CDS-59011)
 
-- Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SMP-14724)
+- Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SRM-14724)
 
 ### June 06, 2023 Cloud Cost Management, version 79601
 
