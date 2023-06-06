@@ -22,9 +22,9 @@ To optimize cloud costs, you need to create a governance rule or combine multipl
 
 4. Enter a name for the rule.
 5. Optionally, enter a description of the rule.
-6. Click **Apply**.
+6. Select **Apply**.
 7. Enter the YAML policy in the rule editor.
-8. Click **Save**. 
+8. Select **Save**. 
 If the policy is invalid, an error message is displayed.
 9. Select the **Account** and the **Region** from the dropdown list in the Test Terminal.
 10. Click **Dry Run** to view the instances or services that will be acted upon when you enforce the rule. 
@@ -45,7 +45,7 @@ To create a rule set, perform the following steps:
 
     The **Asset Governance Rules** page is displayed. Select the **Rule sets** tab.
 
-3. Click **+New Rule Set**.
+3. Select **+New Rule Set**.
 4. Enter a name for the rule set.
 5. Optionally, enter a description of the rule set.
 6. Select the rules that you want to enforce. 
@@ -53,7 +53,7 @@ To create a rule set, perform the following steps:
   <docimage path={require('./static/create-new-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-7. Click **Create Rule Set**. 
+7. Select **Create Rule Set**. 
 The rule set is created successfully. You can view the rule set on the **Asset Governance Rules** page. Expand the rule set to view the individual rules in the rule set.
 
   <docimage path={require('./static/view-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
@@ -73,15 +73,15 @@ To create enforcement, perform the following steps:
     The **Asset Governance Rules** page is displayed.
 
 3. Select **Enforcements**.
-4. Click **+New Enforcement**.
+4. ClSelectick **+New Enforcement**.
 5. Enter a name for the enforcement.
 6. Optionally, enter a description of the enforcement.
 7. Select the rules or rulesets that you want to enforce. You can use the **Search** box if you have multiple rules and are looking to enforce a particular rule or rule set.
-8. Click Continue. 
+8. Select Continue. 
 9. Select the target accounts and target regions. You could select multiple AWS accounts and regions.
 10. Set the frequency from **Hourly**, **Daily**, or **Weekly **options. In case you select Daily or Weekly, specify the day, time, and time zone to run the rule on schedule.
 11. Toggle the **Dry Run** mode if you do not want to take action immediately.
-12. Click **Finish**. 
+12. Select **Finish**. 
 
     <docimage path={require('./static/set-up-schedule.png')} width="60%" height="60%" title="Click to view full size image" />
 

@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-06-05T10:00
+date: 2023-06-06T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -16,7 +16,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - June 05, 2023, version 79600
+## Latest - June 06, 2023, version 79601
 
 ```mdx-code-block
 <Tabs>
@@ -27,7 +27,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 **Cost Category enhancement** (CCM-12585)
 
-  When building a cost category, it is now possible to incorporate another cost category as a rule. However, there are important considerations to keep in mind when utilizing a cost category within your rule. 
+  When building a cost category, it is now possible to incorporate another cost category as a rule. However, there are important considerations to keep in mind when using a cost category within your rule. 
   
    * You cannot include a nested cost category as a rule within another cost category if either of these cost categories contains a shared bucket.
    * You cannot add the same cost category as a rule in the cost bucket.
@@ -55,9 +55,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
 * Budgets that contain the `/` character in their names were previously experiencing issues with correctly opening the budget details page. (CCM-12062)
 
-  Previously, there was an issue when the budget name appended to the URL contained the `/` character. It was treated as a separate route. This caused the browser to fail in loading the corresponding budget details. Now, before appending the budget name to the URI, it is properly encoded. This ensures that the browser handles the `/` character correctly, allowing the page to load as expected with the corresponding budget details.
-
-
+  Previously, there was an issue when the budget name appended to the URL contained the `/` character. It was treated as a separate route. This caused the browser to fail in loading the corresponding budget details. Now, before appending the budget name to the URL, it is properly encoded. This ensures that the browser handles the `/` character correctly, allowing the page to load as expected with the corresponding budget details.
 
   
 ```mdx-code-block
