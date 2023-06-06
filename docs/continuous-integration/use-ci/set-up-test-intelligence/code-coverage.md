@@ -9,17 +9,19 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-You can add code coverage to a Harness CI pipeline by configuring code coverage tools in your codebase or adding the relevant commands to your [steps that run tests](./run-tests-in-ci.md).
+You can add code coverage to a Harness CI pipeline by configuring code coverage tools in your codebase and adding code coverage commands to steps that run tests.
+
+For more information about running tests in Harness CI, go to [Run tests in CI pipelines](./run-tests-in-ci.md).
 
 ## Code coverage by language
 
-The following examples show how to include code coverage in a Harness CI pipeline.
+The following examples show how to include code coverage in a Harness CI pipeline for different languages.
 
-For information about available tools and configuring specific tools, refer to the tool or language documentation.
+For information about available code coverage tools, configuring specific tools, or code coverage for languages not described here, refer to the documentation for that tool or language.
 
 ### Go
 
-Code coverage is built in to Go.
+Go has built-in code coverage functionality.
 
 1. Add the following commands to the **Run** step where you run your tests:
 
@@ -41,7 +43,7 @@ Code coverage is built in to Go.
 1. Set up a Java code coverage tool, such as [JaCoCo](https://github.com/jacoco/jacoco).
 2. Run your tests in a **Run** or **Run Tests** step.
 
-   Including JaCoCo in `pom.xml` automatically includes code coverage when `mvn test` runs. The code coverage report is written to an `exec` file.
+   By including JaCoCo in `pom.xml`, the `mnv test` command automatically writes a code coverage report to an `exec` file.
 
 3. Add a step to upload your code coverage report to cloud storage.
 
@@ -53,14 +55,14 @@ Code coverage is built in to Go.
 
 :::tip JaCoCo Drone plugin
 
-As an alternative to steps three and four, you can use the [JaCoCo Drone plugin](https://github.com/harness-community/drone-jacoco-s3). Instead of two separate steps, you only use one [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) to run the JaCoCo Drone plugin, which uploads the JaCoCo code coverage report to S3 and publishes it to the **Artifacts** tab.
+As an alternative to steps three and four, you can use the [JaCoCo Drone plugin](https://github.com/harness-community/drone-jacoco-s3). Instead of two separate steps, you use one [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) to run the JaCoCo Drone plugin, which uploads the JaCoCo code coverage report to S3 and publishes it to the **Artifacts** tab.
 
 :::
 
 ### JavaScript
 
-1. If necessary, set up a JavaScript code coverage tool, such as [Istanbul](https://github.com/gotwarlost/istanbul). Your test tool may already include code coverage; for example, [Istanbul is included with Jest.](https://jestjs.io/docs/configuration/#collectcoverage-boolean).
-2. Add code coverage commands to the relevant **Run** step. For example, with Jest, add `--collectCoverage=true`.
+1. If necessary, set up a JavaScript code coverage tool, such as [Istanbul](https://github.com/gotwarlost/istanbul). Your test tool may already include code coverage; for example, [Istanbul is included with Jest](https://jestjs.io/docs/configuration/#collectcoverage-boolean).
+2. Add code coverage arguments or commands to the relevant **Run** step. For example, with Jest, add `--collectCoverage=true` to your `jest` command.
 
 ```yaml
               - step:
@@ -91,7 +93,7 @@ As an alternative to steps three and four, you can use the [JaCoCo Drone plugin]
 
 ### PHP
 
-You can use the [phpdbg](https://www.php.net/manual/en/book.phpdbg.php) tool to generate code coverage reports.
+The built-in [phpdbg](https://www.php.net/manual/en/book.phpdbg.php) tool can generate code coverage reports.
 
 1. Add the following command to the **Run** step where your run your tests:
 
@@ -163,7 +165,7 @@ You can use the [phpdbg](https://www.php.net/manual/en/book.phpdbg.php) tool to 
 1. Set up a Ruby code coverage tool, such as [SimpleCov](https://github.com/simplecov-ruby/simplecov).
 2. Run your tests in a **Run** step.
 
-   SimpleCov does not require additional commands in the **Run** step since it is loaded in `test/test_helper.rb`.
+   SimpleCov doesn't require additional commands in the **Run** step since it is loaded in `test/test_helper.rb`.
 
 3. Add a step to upload your code coverage report to cloud storage.
 
@@ -175,9 +177,11 @@ You can use the [phpdbg](https://www.php.net/manual/en/book.phpdbg.php) tool to 
 
 ## Code coverage services
 
+You can use code coverage services with Harness.
+
 ### CodeCov
 
-To publish code coverage results to your CodeCov dashboard, follow this tutorial: [Code coverage with CodeCov in Harness CI](/tutorials/ci-pipelines/test/codecov).
+To publish code coverage results to your CodeCov dashboard, use this tutorial: [Code coverage with CodeCov in Harness CI](/tutorials/ci-pipelines/test/codecov).
 
 ### Coveralls
 
