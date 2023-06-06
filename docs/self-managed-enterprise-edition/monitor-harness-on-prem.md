@@ -208,44 +208,6 @@ global:
 For this example, we use the Prometheus operator packaged by Bitnami as an external Prometheus setup.
 :::
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Standalone prometheus">
-```
-
-If you have Prometheus installed, you can make changes directly to your Prometheus `config.yaml` file by adding fields under scrape configs.
-
-To use a standalone Prometheus installation with a customer configuration, do the following:
-
-- Update your `config.yaml` file with the following settings:
-
-    ```
-    scrape_configs:
-    - job_name:mongo-metrics-test
-      scrape_interval:30s
-      metrics_path:/mongo-metrics/metrics
-      static_configs:
-      - targets:
-        - <LB-IP>
-    - job_name:redis-metrics-test
-      scrape_interval:30s
-      metrics_path:/redis-metrics/metrics
-      static_configs:
-      - targets:
-        - <LB-IP>
-    - job_name:postgres-metrics-test
-      scrape_interval:30s
-      metrics_path:/postgres-metrics/metrics
-      static_configs:
-      - targets:
-        -<LB-IP>
-  ```
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
 ## View metrics on the Grafana dashboard
 
 To visualize metrics from various sources, you can import Grafana dashboards.
