@@ -49,7 +49,7 @@ You can add this with the available commands and flags for specific purposes. Th
 
 The following is a list of commands and other flags and their purpose:
 
-```text
+```bash
 Usage:
   validate [flags]
   validate [command]
@@ -108,7 +108,7 @@ Check Service Health:
 
 ## Permissions
 
-You must have access to the Kubernetes cluster setup to run this plugin. 
+You must have access to the Kubernetes cluster set up to run this plugin. 
 
 ## Upgrade the plugin
 
