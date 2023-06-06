@@ -59,21 +59,17 @@ This release includes the following early access features and enhancements:
 
 This release includes the following fixes:
 
-- Deployments consistently failed during the same stage. (PL-38247)
-
-   This issue was fixed by updating the delegate YAML. Startup now fails when you use a legacy delegate image with an immutable delegate.
-
 - Enhanced handling and logging for the `No enum constant io.harness.delegate.message.MessengerType.WATCHEIN` exception to enable the actual malformed message. This error indicates that a message is malformed and only occurs when there is an error during writing, for example, out of disk, process killed, etc. (PL-38245)
 
 - Unable to create SLO using SignalFX metrics. (OIP-406)
 
 This issue has been resolved. Now, SignalFX's health source supports SLI functionality, and you can create SLOs using SignalFX metrics.
 
-- Fixed an issue where Harness was unable to retrieve the Git status or push updates to Azure repos with project names with white spaces. (CI-8105)
+- Fixed an issue where Harness was unable to retrieve the Git status or push updates to Azure repos with project names with white spaces. (CI-8105, ZD-44679)
 
    This issue is fixed.
 
-- Spot deployments failed to retrieve instance health and expired. (CDS-56451)
+- Spot deployments failed to retrieve instance health and expired. (CDS-56451, ZD-41436)
 
   This issue is fixed by adding an error handler for the spot `instanceHealthiness` API. 
 
@@ -81,7 +77,7 @@ This issue has been resolved. Now, SignalFX's health source supports SLI functio
 
   This issue is fixed. Any selector at a step, stage, or pipeline level overrides the selectors from the Jenkins connector.
 
-- When you delete a template referenced by another template, Harness includes a force delete option. The force delete option incorrectly removed all template versions from Harness and the UI. (CDS-68683)
+- When you delete a template referenced by another template, Harness includes a force delete option. The force delete option incorrectly removed all template versions from Harness. (CDS-68683)
 
    This issue was fixed with a code enhancement. The force delete option no longer removes all template versions when you delete referenced templates.
 
@@ -91,6 +87,18 @@ This issue has been resolved. Now, SignalFX's health source supports SLI functio
 
   This issue was fixed by logging unsuccessful JSCH connections errors for only the last retry.
 
+- Input string pipeline variables that included letter and numbers were interpreted as scientific notation. For example, 97e0087 was interpreted as 9.7E88. (CDS-69063, ZD-44206)
+
+   This issue was fixed with a code enhancement by adding quotes around strings in this format.
+
+- Input values during stage and step execution failed with errors. (CDS-69342, ZD-4344)
+
+   This issue is fixed. The execution input helper is updated to use JsonNode. With this change, quotes inside the fields are escaped, resulting in valid YAML.
+
+- The error message displayed for pipeline execution failures was unclear. (CDS-69576)
+
+   The error message is now updated to convey the error properly when YAML processing fails.
+
 - Bamboo triggers weren't working correctly. (CDS-69605)
 
    This issue was fixed by adding the Bamboo build to the delegate response.
@@ -98,6 +106,10 @@ This issue has been resolved. Now, SignalFX's health source supports SLI functio
 - ECS tasks failed in some NPE cases when the start time was null from the delegate. (CDS-69745)
 
    This issue was fixed with a code enhancement.
+
+- The HTTP step failed when the **Certificate** field did not include a value when validated against servers with self-signed certificates. In previous versions, the field was not required. (CDS-70410, ZD-45105, ZD-45110, ZD-45128)
+
+   This issue was fixed with a code enhancement. The **Certificate** field is no longer required in the HTTP step. 
 
 - `eventPayload` trigger expressions did not resolve when failed pipelines were restarted. (CDS-70559)
 
@@ -204,9 +216,9 @@ Harness NextGen release 79306 includes the following changes for the Harness Del
 
   In Custom SM configuration, decrypting secrets using the SSH connection to validate delegate selection fixed this issue.
 
-- Deployments consistently failed during the same stage. (PL-38247)
+- Deployments consistently failed during the same stage. (PL-38247, ZD-42721)
 
-   This issue was fixed by updating the delegate YAML. Startup now fails when you use a legacy delegate image with an immutable delegate.
+   This issue was fixed by updating the delegate YAML. Delegate startup now fails when you use a legacy delegate image with an immutable delegate.
 
 
 #### April 22, 2023, Harness version 79111, Harness Delegate version 79106
