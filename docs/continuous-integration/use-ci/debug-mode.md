@@ -27,7 +27,7 @@ Debug mode is never available for a pipeline's first build. You must run the pip
 ## Enable debug mode
 
 1. Create a [Harness personal access token (PAT)](/docs/platform/user-management/add-and-manage-api-keys/#create-personal-access-token) with `pipeline execution` permissions, if you do not have one already.
-2. Navigate to the [**Builds**](./viewing-builds.md), **Execution**, or **Execution History** page in the Harness UI.
+2. Navigate to the [**Builds**](./viewing-builds.md), **Execution**, or **Execution History** page.
 3. Locate the build you want to troubleshoot, select **More Options** (&vellip;), and select **Re-run in Debug Mode**.
 
    <!-- ![Using the build's More Options menu to trigger debug mode.](./static/ci-rerun-build-in-debug-mode.png) -->
