@@ -59,9 +59,6 @@ This release includes the following early access features and enhancements:
 
 This release includes the following fixes:
 
-
-
-
 - Deployments consistently failed during the same stage. (PL-38247)
 
    This issue was fixed by updating the delegate YAML. Startup now fails when you use a legacy delegate image with an immutable delegate.
@@ -109,11 +106,6 @@ This issue has been resolved. Now, SignalFX's health source supports SLI functio
 - Instance Sync for rolling deployments took the new instances and left earlier instances in place when the index matched. (CDS-70825)
 
    This issue is fixed. Instance Sync for rolling deployments no longer retain earlier instances.
-
-
-
-
-
 
 ```mdx-code-block
   </TabItem>

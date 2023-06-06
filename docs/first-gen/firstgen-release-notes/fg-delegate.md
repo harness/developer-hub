@@ -22,7 +22,7 @@ This release does not include any new early access features.
 
 ### Fixed issues
 
-This release does not include any fixed issues.
+- Apps with a service name are now production apps when the `HARNESS_STATUS_IDENTIFIER` environment variable is not set to `ACTIVE`.
 
 ## May 23, 2023, Harness version 79306, Harness Delegate version 79307
 
