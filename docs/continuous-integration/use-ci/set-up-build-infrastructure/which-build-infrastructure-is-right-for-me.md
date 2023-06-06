@@ -99,8 +99,8 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 | STO step in Build stage | ✅ Supported - Linux | ❌ Not supported | ✅ Supported | <ul><li>✅ Supported - Linux</li><li> ❌ Not supported - Windows</li></ul> |
 | STO stage in CI pipeline |  ✅ Supported - Linux | ❌ Not supported  | ✅ Supported | <ul><li>✅ Supported - Linux</li><li> ❌ Not supported - Windows</li></ul> |
 | Plugins (Containers) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| Plugins (Host VM) | ✅ Supported | ❌ Not supported | ❌ Not supported | ❌ Not supported |
-|GitHub Actions | ✅ Supported - GitHub Actions plugin step | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin |
-| Bitrise Integrations | ✅ Supported - Bitrise plugin step | ❌ Not supported | ❌ Not supported | ❌ Not supported |
-| Plugin output variables | ✅ Supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
-| Build details - Artifacts tab | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
+| Plugins (Host VM) | ✅ Supported | ❌ Not supported | 🔸 Not applicable | ❌ Not supported |
+| [GitHub Actions](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins#github-actions) | ✅ Supported - GitHub Actions plugin step | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin |
+| [Bitrise Integrations](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins#bitrise-integrations) | ✅ Supported - Bitrise plugin step | ❌ Not supported | ❌ Not supported | ❌ Not supported |
+| Plugin output variables | ✅ Supported | ❌ Not supported | ✅ Supported | ✅ Supported |
+| [Build details - Artifacts tab](/docs/continuous-integration/use-ci/viewing-builds#build-details) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
