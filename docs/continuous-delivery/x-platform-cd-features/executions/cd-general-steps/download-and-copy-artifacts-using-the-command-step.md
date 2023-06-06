@@ -311,9 +311,14 @@ Legend:
 * N: No
 * N/A: Not Applicable
 
+:::note
+
+The WinRM deployment type supports Download Artifact only. You cannot use Cope Artifact in WinRM deployments.
+
+:::
 
 
-| **Provider** | **Repository/Package Types** | **Download Artifact****(WinRM or SSH deployment types only)** | **Copy Artifact****(SSH deployment type only)** |
+| **Provider** | **Repository/Package Types** | **Download Artifact (WinRM or SSH deployment types only)** | **Copy Artifact SSH deployment type only)** |
 | --- | --- | --- | --- |
 | AWS S3 | All | Y | Y |
 | Artifactory (JFrog) | Non-Docker | Y | Y |
@@ -335,4 +340,7 @@ Legend:
 |  | Docker | N/A | N/A |
 | Azure Artifacts | Maven 2.0, NuGet | Y | Y |
 | Custom Repository | All | N/A | N (use the Exec script to use the metadata to copy artifact to target host) |
+
+
+
 

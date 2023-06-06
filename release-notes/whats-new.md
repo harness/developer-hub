@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-06-01T10:00
+date: 2023-06-06T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -17,13 +17,28 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 01, 2023 
+## Latest - June 06, 2023 
 
-### Service Reliability Management, version 79413
+### Cloud Cost Management, version 79601
+**Cost Category enhancement** (CCM-12585)
+
+  When building a cost category, it is now possible to incorporate another cost category as a rule. However, there are important considerations to keep in mind when using a cost category within your rule. 
+  
+   * You cannot include a nested cost category as a rule within another cost category if either of these cost categories contains a shared bucket.
+   * You cannot add the same cost category as a rule in the cost bucket.
+   * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
+   * You can nest cost categories to a maximum of 20 levels.
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 01, 2023 
+
+##### Service Reliability Management, version 79413
 
 - Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
 
-### Continuous Delivery, version 79411
+##### Continuous Delivery, version 79411
 
 - Edit Git details for pipelines stored using Harness Git Experience. (CDS-69130)
   
@@ -63,14 +78,20 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   For information on setting up notifications for user groups, go to [Add and manage user groups](https://developer.harness.io/docs/platform/User-Management/add-user-groups).
 
-### Harness Platform, version 79414
- 
-- You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
+##### Harness Platform, version 79411
+
+##### Harness Manager delegate
+
+The features below are available with version 79411 and do not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
 
 - You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
-<details>
-<summary>2023 releases</summary>
+- You can now use the legacy UI to create delegates. (PL-38937)
+
+##### All other Platform new features
+
+- You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
+
 
 #### May 29, 2023, version 79505
 
@@ -207,30 +228,6 @@ The details of the latest delegate task are automatically updated. (CDS-57927)
   Previously, triggers used the round robin algorithm to select any available delegate within a project or account. Now, the delegate-based trigger polling selects the same delegate you used in the connectors for triggers. 
 
   The Harness Delegate version 79307 is required for this feature.
-
-##### Harness Delegate
-
-- A new [`listDelegates` API](https://app.harness.io/gateway/ng/api/delegate-setup/listDelegates/accountIdentifier=string&orgIdentifier=string&projectIdentifier=string') enables you to list and filter delegates in your project, organization, or account. (PL-37981)
-
-   You can use the body parameters to filter your delegate list:
-
-   ```json
-   {
-   "filterType":"Delegate", //This field is mandatory.
-   
-   "delegateInstanceFilter": "EXPIRED/AVAILABLE",
-
-   "status": "CONNECTED/DISCONNECTED",
-   
-   "delegateType": "KUBERNETES/DOCKER/HELM_DELEGATE/SHELL_SCRIPT/ECS",
-   
-   "delegateName": "<>",
-   
-   "description": "<>",
-   
-   "delegateTags": "[]"
-   }
-   ```
   
 
 #### May 17, 2023, STO Core version 1.53.0

@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Platform, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 01, 2023, version 79414
+## Latest - June 01, 2023, version 79411
 
 
 ```mdx-code-block
@@ -27,21 +27,37 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-- You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
+### Harness Manager delegate new features
+
+The features below are available with version 79411 and do not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
 
 - You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
+
+- You can now use the legacy UI to create delegates. (PL-38937)
+
+### All other Platform new features
+
+- You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
 
-This release does not include any early access feature.
+This release does not include any early access features.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
+
+### Harness Manager delegate fixed issues
+
+The fixed issue below is available with version 79411 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
+
+- Delegate instances that do not shut down gracefully and do not come back online are removed from the UI after three hours. (PL-38755)
+
+### All other Platform fixed issues
 
 - The SSH secret reference gets created even if secret creation fails due to a validation error. (PL-38549, ZD-44073)
 
@@ -51,7 +67,7 @@ This release does not include any early access feature.
 
   A code enhancement to display an appropriate error message fixed this issue.
 
-- The creation of SSH or WinRM secrets in a project or organization after disabling Harness' built-in secret manager is not supported.  (PL-32562)
+- The creation of SSH or WinRM secrets in a project or organization after disabling Harness' built-in secret manager is not supported. (PL-32562)
   
   A code enhancement has fixed this issue.
 
