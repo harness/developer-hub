@@ -93,6 +93,7 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 | Test Parallelism | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Cache Intelligence | <ul><li>✅ Supported - Linux, Windows</li><li>❌ Not supported - macOS</li></ul>| ❌ Not supported | ❌ Not supported | ❌ Not supported |
 | Remote Caching in **Build and Push** steps | ❌ Not supported | ❌ Not supported | ✅ Supported | ❌ Not supported |
+| [Delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) | ❌ Not supported | ✅ Supported - Pipeline and stage delegate selectors | ✅ Supported - Pipeline, stage, and connector delegate selectors | ❌ Not supported |
 | Harness Secret Manager | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Custom Secret Manager | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
 | GitHub App support | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
