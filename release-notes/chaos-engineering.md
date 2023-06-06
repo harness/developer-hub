@@ -42,7 +42,7 @@ To upgrade chaos infrastructures and experiments:
 
 * Previously, the Last Heartbeat value was empty when chaos infrastructures were pending. Now, to prevent user confusion, this value displays N/A when chaos infrastructures are pending. (CHAOS-1666)
 
-* Enhanced Chaos Infrastructures table to allow routing to corresponding connectors from the Chaos Infrastructures screen. (CHAOS-1665)
+* Enhanced the Chaos Infrastructures table to allow routing to corresponding connectors from the Chaos Infrastructures screen. (CHAOS-1665)
 
 * When scheduling an experiment fails for any reason, the user now sees the error when hovering over the status. (CHAOS-1574)
 
