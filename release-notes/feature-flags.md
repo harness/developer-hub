@@ -42,7 +42,7 @@ This release does not include early access features.
 
 * In the user onboarding flow, the Create a New Flag button did not behave as expected. This issue has been fixed. (FFM-8019)
 
-* Previously, a user could select Feature Flags in Harness without having a license. Now, users only see the FF module if they have an active license (including a free license). (FFM-8002)
+* Previously, a user could select Feature Flags in Harness without having a license, and would then get a 404 error. Now, users only see the FF module if they have an active license (including a free license). (FFM-8002)
 
 * Previously, there was an edge case where an extremely large number of pages in a UI listing could cause performance degradation. This issue has been fixed, and page numbering is now disabled if the page count exceeds 1000 pages. (FFM-7993)
 
