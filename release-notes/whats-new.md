@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-06-06T10:00
+date: 2023-06-09T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -17,7 +17,28 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 06, 2023 
+## Latest - June 09, 2023
+
+### Harness Platform
+
+- There is now an additional tab on the **Create or Select Existing Connector** dialog called `All` that lists connectors from all scopes (project, organization, and account). (PL-39029)
+
+- The Go library has been upgraded from version 1.19.8 to 1.20.4. (PL-39026)
+
+- You can now delete externally managed users from the Harness UI. (PL-38974)
+
+  Harness recommends using this action with caution since it may result in data inconsistencies between Harness and the identity provider.
+
+- The Go library for yq has been upgraded from version 1.19.8 to 1.20.4. (PL-38952)
+
+- On your profile, you can now access projects by selecting project cards. (PL-38570)
+
+- Secret references now have a validate button to verify if the path is valid. (PL-31083)
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 06, 2023 
 
 ### Cloud Cost Management, version 79601
 **Cost Category enhancement** (CCM-12585)
@@ -28,9 +49,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
    * You cannot add the same cost category as a rule in the cost bucket.
    * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
    * You can nest cost categories to a maximum of 20 levels.
-
-<details>
-<summary>2023 releases</summary>
 
 #### June 01, 2023 
 
