@@ -26,6 +26,8 @@ Note the following important information about delegates:
   
   The requirements for memory and CPU support only the delegate. The delegate host, pod, and container require additional compute resources to support other operations, systems, and services, such as Docker or Kubernetes.
 
+   ![](./static/delegate-requirements-and-limitations-00.png)
+
   The delegate runs in a Linux/UNIX container.
 
 * The minimum memory for the delegate must be provided in addition to enough memory for the host/node system. For example, an AWS EC2 instance type such as m5a.xlarge has 16GB of RAM; 8 for the delegate and 8 for the remaining operations.

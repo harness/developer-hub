@@ -32,7 +32,7 @@ The Harness SaaS manager URL. `https` indicates port 443.
 
 ### WATCHER_STORAGE_URL
 
-The URL location of the Watcher versions. See [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
+The URL location of the Watcher versions. For more information, go to [Delegate installation overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md).
 
 ```
 - WATCHER_STORAGE_URL = https://app.harness.io/public/prod/premium/watchers
@@ -89,7 +89,7 @@ The name of the delegate. This is the name that appears in Harness when the dele
 
 You can automate delegate creation by omitting the name and using a script to copy the delegate YAML file, giving a unique name to the `value` of the delegate name for each newly created delegate you want to register.
 
-See [Automate delegate installation](/docs/platform/2_Delegates/install-delegates/automate-delegate-installation.md).
+For more information, go to [Automate delegate installation](/docs/platform/2_Delegates/install-delegates/automate-delegate-installation.md).
 
 ```
 - name: DELEGATE_NAME  
@@ -129,7 +129,7 @@ The tags that were added to the delegate in Harness Manager or YAML before deleg
 
 Harness generates tags based on the delegate name. You can add others. The tags appear on the delegate details page in Harness Manager. 
 
-See [Tags reference](/docs/platform/20_References/tags-reference.md) and [Select delegates with tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
+For more information, go to [Tags reference](/docs/platform/20_References/tags-reference.md) and [Select delegates with tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
 ```
 - name: DELEGATE_TAGS  
@@ -183,7 +183,7 @@ You can use this environment variable to run scripts on the delegate. For exampl
 
 A multiline script must follow the YAML spec for [literal scalar style](https://yaml.org/spec/1.2-old/spec.html#id2795688).
 
-See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md). 
+For more information, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md). 
 
 ```
 - INIT_SCRIPT =  echo hello world!

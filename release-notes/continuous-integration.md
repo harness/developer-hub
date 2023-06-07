@@ -40,6 +40,13 @@ Fixed an issue where Git status updates failed if the Azure repository/project n
 
 ```mdx-code-block
   </TabItem>
+  <TabItem value="Hotfix version 3904">
+```
+
+This hotfix was released June 5, 2023. It contained no customer-facing changes.
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 

@@ -10,6 +10,10 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpyes from '../shared/note-smp-compatible.md'
+
+<Smpyes />
+
 
 This topic describes how to use the Harness Feature Flags Java SDK for your Java application.
 
