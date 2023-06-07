@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can use plugins to extend the functionality of Harness IDP and to customize IDP to suit your needs. This article provides step-by-step instructions on how to enable a plugin in Harness IDP.
 
-**Prerequisites:**
+**Prerequisites**
 
 Before proceeding with enabling a new plugin, ensure the following prerequisites are met:
 
