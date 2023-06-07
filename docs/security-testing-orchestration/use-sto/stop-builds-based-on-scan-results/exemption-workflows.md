@@ -7,7 +7,7 @@ sidebar_position: 60
 The `fail_on_severity` setting causes a pipeline build to fail if a Security Scan step detects one or more issues with the specified severity (Critical, High, Medium, etc.). Your organization can create "Ignore rules" for specific issues to override this behavior. If an Ignore rule is approved, a build can proceed even if a scan detects that issue.  
 
 :::note 
-Developers and SecOps users can request Ignore rules, but only SecOps users can approve them.
+Developers and SecOps users can request exemptions, but only SecOps users can approve them.
 ::: 
 
 ## Before You Begin
@@ -22,9 +22,8 @@ This topic assumes that you have the following:
      
 1. Go to the Security Tests page for the build: In the Pipeline studio, click **Execution History** (top right) or **Pipeline Executions** (left menu). Then go to a successful build.  
 
-2. Click **Security Tests**.
+2. Click **Security Tests** and then do the following:
 
-2. In the **Security Tests** tab, do the following:
    1. Select the issue you want to exempt.  The **Issue Details** pane opens on the right. 
    2. Click **Request Exemption**.
 
@@ -33,9 +32,9 @@ This topic assumes that you have the following:
    3. In **Request Exemption for Issue**, specify:
       1. **Where do you want this issue to be Exempted?** 
       2. **For how long?** 
-      3. **Reason this issue should be exempted**  Select one of the following reasons and provide any additional information for the SecOps approver:
+      3. **Reason this issue should be exempted** — Select one of the following reasons and provide any additional information for the SecOps approver:
          
-         * **Compensating controls:** Your organization has infrastructure and policies in place to mitigate the security risks of this vulnerability. 
+         * **Compensating controls** — Your organization has infrastructure and policies in place to mitigate the security risks of this vulnerability. 
 
            For example, suppose a scan detects a vulnerability with a specific service. This vulnerability might be mitigated because
 
@@ -43,17 +42,17 @@ This topic assumes that you have the following:
 
            - The network may have host- or network-based intrusion prevention systems in place.
 
-         * **Acceptable use:** The scanner identified this practice as a vulnerability, but this practice is acceptable based on your organization's security guidelines. For example, anonymous FTP access may be a deliberate practice and not a vulnerability.
+         * **Acceptable use** — The scanner identified this practice as a vulnerability, but this practice is acceptable based on your organization's security guidelines. For example, anonymous FTP access may be a deliberate practice and not a vulnerability.
 
-         * **Acceptable risk:** The security risk of this vulnerability is low and remediation would require too much effort or expense: 
+         * **Acceptable risk** — The security risk of this vulnerability is low and remediation would require too much effort or expense: 
 
            - Applying a specific patch for a vulnerability might prevent a service from functioning. 
 
            - The vulnerability is minimal and the remediation would require too much time, money, or resources.
 
-         * **False positives:** The scanner identifies this as a vulnerability but it is, in fact, a false positive. Requesting an exemption based on approval from a Qualified Security Assessor (QSA) or Approved Scanning Vendor (ASV). 
+         * **False positives** — The scanner identifies this as a vulnerability but it is, in fact, a false positive. Requesting an exemption based on approval from a Qualified Security Assessor (QSA) or Approved Scanning Vendor (ASV). 
 
-         * **Fix unavailable:** There are currently no known fixes or remediation steps available for the detected vulnerability. 
+         * **Fix unavailable** — There are currently no known fixes or remediation steps available for the detected vulnerability. 
 
          * **Other**
 
@@ -61,7 +60,7 @@ This topic assumes that you have the following:
 
    5. Click **Create Request**. 
   
-      ![](../static/exemption-issue-details.png)
+      ![](../static/exemption-click-create-request.png)
      
 3. Send a notification of your exemption request — via email, Slack, Jira, etc. — to your SecOps reviewer. Your notification should include the URL to the Security Tests page with the relevant issue selected.
 
