@@ -123,8 +123,6 @@ The fixed issues below is available with version 79500 and does not require a ne
 - Certificate issues in Harness Delegate version 23.05.79307. (CDS-70410, ZD-45105, ZD-45110, ZD-45128)
   
   The HTTP step was failing due to absence of the `certificate` value in the step. In previous delegate versions, system would bypass the absence of this field. However, in Harness Delegate version 23.05.79307, this field was incorrectly set as mandatory for HTTP steps execution for validations against servers that had self-signed certificates. This issue is fixed.
-
-- Fixed an issue where ECS instance sync failed when Harness Delegate returns a null value for ECS tasks start time. (CDS-69745)
 - Bamboo triggers were not working properly. (CDS-69605)
   
   Adding the Bamboo build to the delegate response resolved this issue. 
