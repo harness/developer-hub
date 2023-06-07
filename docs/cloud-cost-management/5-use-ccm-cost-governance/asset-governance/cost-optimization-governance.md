@@ -68,7 +68,7 @@ To create enforcement, perform the following steps:
 1. In your **Harness** application, go to **Cloud Costs**.
 2. Select **Asset Governance**.
 3. Select **Enforcements**.
-4. ClSelectick **+New Enforcement**.
+4. Select **+New Enforcement**.
 5. Enter a name for the enforcement.
 6. Optionally, enter a description of the enforcement.
 7. Select the rules or rulesets that you want to enforce. You can use the **Search** box if you have multiple rules and are looking to enforce a particular rule or rule set.
