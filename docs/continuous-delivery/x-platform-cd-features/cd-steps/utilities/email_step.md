@@ -79,11 +79,11 @@ For more information on runtime inputs and expressions, go to [fixed values, run
 
 By default, the Email step can only send emails to Harness users.
 
-To send emails to non-Harness users you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting.
+To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting.
 
 :::note Notes
 
-- The Harness internal SMTP server that is included in your account is not used to email non-Harness users.  
+- The Harness internal SMTP server included in your account is not used to email non-Harness users.  
 - Only users belonging to a user group with the **Default Setting** permission set to **Edit** can configure the **Enable Emails to be sent to non-Harness Users** default setting.
 
 :::
@@ -96,7 +96,7 @@ To send emails to non-Harness users, do the following:
   <docimage path={require('./static/de6a52a680b74f1dd5535a5e2fed34ef8ed9be4f2af244a29636a0c497cda016.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 
-Enable **Allow Overrides** to enable a project to override the setting of its org, or an org to override its account setting.
+Enable **Allow Overrides** to allow a project to override the setting of its org, or an org to override its account setting.
 
 
 
