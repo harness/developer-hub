@@ -14,7 +14,9 @@ For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/do
 
 ### What's new
 
-This release does not include any new features.
+- Enhanced the application handling mechanism when the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE`. (CDS-68821)
+
+  When the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE` for any of the releases of an application, Harness starts looking for the application that has the same name as the release name. This ensures that the correct active application is always picked in case the `HARNESS__STATUS__IDENTIFIER` is removed.
 
 ### Early access 
 
@@ -22,7 +24,11 @@ This release does not include any new early access features.
 
 ### Fixed issues
 
-- When the `HARNESS_STATUS_IDENTIFIER` environment variable is not set to `ACTIVE`, apps with a service name are now treated as production apps. (CDS-68821)
+- Helm execution failed with `KubernetesClientException` error. (CDS-70386, ZD-45051)
+
+  The Kubernetes GET APIs returned a 400 bad request during steady state check. This was occurring when Harness used a fabric8 client with Kubernetes cluster version < 1.16, or when the feature flag, `HELM_STEADY_STATE_CHECK` is turned off. 
+
+  This issue is fixed.
 
 ## May 23, 2023, Harness version 79306, Harness Delegate version 79307
 
