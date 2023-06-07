@@ -59,23 +59,23 @@ This release does not include any early access features.
 
 ### Platform fixed issues
 
-- The user invite API returns an HTTP status code of 200 if the invited user has an invalid TLD. (PL-38938)
+- The user invite API returned an HTTP status code of 200 if the invited user had an invalid TLD. (PL-38938)
 
   This has been fixed, and the API now returns a status code of 400.
 
-- It is mandatory to enter email addresses even if **Send email to all users in a user group** is checked in **Notification Preferences**. (PL-38910)
+- It was mandatory to enter email addresses even if **Send email to all users in a user group** was checked in **Notification Preferences**. (PL-38910)
 
   A code enhancement fixed this issue.
 
-- Deprovisioning user accounts from Harness results in Okta errors. (PL-38868, ZD-44150)
+- Deprovisioning user accounts from Harness resulted in Okta errors. (PL-38868, ZD-44150)
 
   A code enhancement fixed this issue.
 
-- An attempt to edit a secret repeatedly sends requests to the backend if it can't find the secret. (PL-32313)
+- An attempt to edit a secret sent repeated requests to the backend if the secret was not found. (PL-32313)
  
   A code enhancement fixed this issue.
 
-- When SMTP is not configured, password reset does not throw an error. (PL-24542)
+- When SMTP was not configured, password reset did not throw an error. (PL-24542)
   
   A code enhancement fixed this issue.
 
