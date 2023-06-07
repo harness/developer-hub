@@ -23,7 +23,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 #### Harness Delegate
 
-- Kubernetes blue/green and canary deployments now support HorizontalPodAutoscaler and PodDisruptionBudget resources. (CDS-59011)
+- Kubernetes deployments support horizontal pod autoscaling and pod disruption budget for Blue Green and Canary execution strategies. (CDS-59011)
+
+- Send emails to non-Harness users. (CDS-58625, ZD-42496)
+
+  To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
+
+  For more information on how to send emails to non-Harness users, go to [Email step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
 
 - Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SRM-14724)
 

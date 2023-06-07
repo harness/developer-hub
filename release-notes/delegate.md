@@ -31,7 +31,13 @@ Harness NextGen release 795xx includes the following changes for the Harness Del
 
 This release introduces the following new features and enhancements:
 
-- Kubernetes blue/green and canary deployments now support HorizontalPodAutoscaler and PodDisruptionBudget resources. (CDS-59011)
+- Kubernetes deployments support horizontal pod autoscaling and pod disruption budget for Blue Green and Canary execution strategies. (CDS-59011)
+
+- Send emails to non-Harness users. (CDS-58625, ZD-42496)
+
+  To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
+
+  For more information on how to send emails to non-Harness users, go to [Email step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
 
 - Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SRM-14724)
 
@@ -43,14 +49,13 @@ This release introduces the following new features and enhancements:
 
 This release includes the following early access features and enhancements:
 
-- You can now scale down the last successful stage environment you created using the blue/green deployment strategy to help efficiently manage resources. You can configure this step in the same stage or a different stage, depending your requirements. (CDS-68527)
+- Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
 
-   Scaling down removes the HorizontalPodAutoscaler and PodDisruptionBudget resources. The Deployments, StatefulSets, DaemonSets, and Deployment Configs resources are scaled down.
+  This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`. 
 
-   You must configure the same infrastructure definition as the blue/green deployment. Harness identifies resources from the release history, which is mapped to release name. A different infrastructure definition configuration may lead to scaling down important resources.
+  This functionality helps you efficiently manage your resources. The scale down step can be configured within the same stage or different stage based on your requirement.
 
-   This is behind the feature flag `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`.
-
+  During scale down, the Horizontal Pod AutoScaler and Pod Disruption Budget resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green deployment are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
 ```mdx-code-block
   </TabItem>
@@ -71,21 +76,13 @@ This issue has been resolved. Now, SignalFX's health source supports SLI functio
 
 - Spot deployments failed to retrieve instance health and expired. (CDS-56451, ZD-41436)
 
-  This issue is fixed by adding an error handler for the spot `instanceHealthiness` API. 
-
-- When a delegate selector was added at the step, stage, or pipeline level in a Jenkins step, it did not override the delegate selectors from the Jenkins connector. (CDS-68312, ZD-43710)
-
-  This issue is fixed. Any selector at a step, stage, or pipeline level overrides the selectors from the Jenkins connector.
+  This issue is fixed by adding an error handler for the spot `instanceHealthiness` API.
 
 - When you delete a template referenced by another template, Harness includes a force delete option. The force delete option incorrectly removed all template versions from Harness. (CDS-68683)
 
    This issue was fixed with a code enhancement. The force delete option no longer removes all template versions when you delete referenced templates.
 
 - Reduced error logging for failed Git authentication attempts. (CDS-68760)
-
-- Perpetual tasks caused excessive GCP error logging. (CDS-68772)
-
-  This issue was fixed by logging unsuccessful JSCH connections errors for only the last retry.
 
 - Input string pipeline variables that included letter and numbers were interpreted as scientific notation. For example, 97e0087 was interpreted as 9.7E88. (CDS-69063, ZD-44206)
 
@@ -102,10 +99,6 @@ This issue has been resolved. Now, SignalFX's health source supports SLI functio
 - Bamboo triggers weren't working correctly. (CDS-69605)
 
    This issue was fixed by adding the Bamboo build to the delegate response.
-
-- ECS tasks failed in some NPE cases when the start time was null from the delegate. (CDS-69745)
-
-   This issue was fixed with a code enhancement.
 
 - The HTTP step failed when the **Certificate** field did not include a value when validated against servers with self-signed certificates. In previous versions, the field was not required. (CDS-70410, ZD-45105, ZD-45110, ZD-45128)
 
