@@ -1,13 +1,14 @@
 ---
 title: Get started with setting up IDP
 description: Once Internal Developer Portal module is enabled in your account, follow these steps to set it up.
+sidebar_position: 20
 helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This guide describes the steps a Harness account admin can take to set up the IDP module. During the Beta phase, the module needs to be enabled on request. [Read more](./1-enabling-module.md).
+This guide describes the steps a Harness account admin can take to set up the IDP module. During the Beta phase, the module needs to be enabled on request. [Read more](./enabling-module.md).
 
 **Prerequisite**: IDP should be provisioned for the given account. The required resources, services, configurations etc. should be in place before starting the harness catalog onboarding flow
 

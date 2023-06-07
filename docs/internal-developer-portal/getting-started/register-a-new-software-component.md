@@ -1,6 +1,7 @@
 ---
 title: Add a new Software Component in the catalog
 description: Learn how you can add a new software component in the IDP Software Catalog.
+sidebar_position: 30
 helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false

@@ -1,0 +1,10 @@
+{
+  "label": "Getting Started",
+  "collapsible": "true",
+  "collapsed": "false",
+  "link": {
+    "type": "generated-index",
+    "title": "Internal developer Portal - Getting Started"
+  },
+  "customProps": {}
+}

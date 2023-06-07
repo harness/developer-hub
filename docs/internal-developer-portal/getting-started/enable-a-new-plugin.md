@@ -1,6 +1,7 @@
 ---
 title: Enable a plugin in Harness IDP
 description: Learn how you to enable a new plugin in Harness IDP and how to make use of it in your Software Catalog
+sidebar_position: 50
 helpdocs_topic_id:
 helpdocs_category_id:
 helpdocs_is_private: false
