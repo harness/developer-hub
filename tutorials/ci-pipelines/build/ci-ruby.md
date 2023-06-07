@@ -418,7 +418,7 @@ Here's a YAML example of a pipeline that:
 
 This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
-If you copy this example, replace the bracketed values with corresponding values for your Harness project, connector IDs, account/user names, and repo names.
+If you copy this example, replace the placeholder values with appropriate values for your connector IDs, account/user names, and repo names. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
 <summary>Pipeline YAML</summary>
@@ -427,7 +427,7 @@ If you copy this example, replace the bracketed values with corresponding values
 pipeline:
   name: ruby
   identifier: ruby
-  projectIdentifier: YOUR_PROJECT_ID
+  projectIdentifier: default
   orgIdentifier: default
   tags: {}
   properties:
