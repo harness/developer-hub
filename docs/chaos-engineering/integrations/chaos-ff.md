@@ -3,9 +3,9 @@ title: Use CE with Feature Flags
 sidebar_position: 1
 ---
 
-You can add chaos experiments to Harness Feature Flags (FF) pipelines as part of the process to control release of new software. An [FF pipeline](/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline) runs every time a feature flag changes, and lets you specify actions to take before the flag change takes effect. For example, you might want to have an approval step for all flag changes.
+You can add chaos experiments to Harness Feature Flags (FF) pipelines as part of the process to control release of new software. An [FF pipeline](/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline) runs every time a feature flag changes, and lets you specify actions to take before the flag change takes effect. For example, you might want to have an approval step for all flag changes, or run a chaos experiment as part of the pipeline.
 
-When you add a chaos experiment as a step in an FF pipeline, the experiment runs as part of that pipeline whenever you change a feature flag. For example, if you put a new feature behind a feature flag, you might want to run a chaos experiment on the target application affected by the new code to see how the application responds, before changing the flag to release the new feature to users.
+When you add a chaos experiment as a step in an FF pipeline, the experiment runs as part of that pipeline whenever you change a feature flag. For example, if you put a new feature behind a feature flag, you might want to run a chaos experiment on the target application affected by the new code. In this way, you can see how the application responds to chaos faults before changing the flag to release the new feature to users.
 
 For more information, see: 
 * [Build a Feature Flag pipeline](/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline)
@@ -28,8 +28,6 @@ Pipelines are organized into stages, each of which handles a major segment of th
 	Chaos steps are available for **Feature Flag**, **Deploy**, and **Custom Stage** types. 
 
 	![Select a stage screen with Feature Flag, Deploy, and Custom Stage highlighted](./static/pipeline-add-stage.png)
-
-	Alternatively, you can select an existing stage if it's one of the types circled above.
 
 1. Enter a **Stage Name**, and then select **Set Up Stage**.
 
@@ -63,17 +61,21 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 1. Back on the Configure Chaos Experiment screen, enter the **Expected Resilience Score** for this experiment.
 
-	XXXXXX *What happens to the pipeline if Resilience Score is not met? Do I get a report on the experiment when the pipeling runs?* XXXXXXX
+	XXXXXX *What happens to the pipeline if Resilience Score is not met? Do I get a report on the experiment when the pipeline runs?* XXXXXXX
 
 	For more information, see [Analyze chaos experiments](/docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments#analyze-chaos-experiments).
 
-1. (Optional) Enter an Optional Configuration by expanding this field, and entering and assertion (you can enter a fixed value, and expression, or a runtime input).
+1. (Optional) Expand the **Optional Configuration** field, and enter an assertion (you can enter a fixed value, an expression, or a runtime input).
 
 1. (Optional) Select the **Advanced** tab to configure more settings.
 
 	For more information on these settings, see [Harness pipelines](/docs/category/pipelines).
 
-1. Select **Apply Changes** to save this step.
+1. Select **Apply Changes** to save this step in the pipeline.
+
+1. Select **Save** to save changes to the pipeline.
+
+XXXXXXXX *What happens when the pipeline runs? What can I see on the experiments page? Examples of what user might decide when pipeline runs (based on results)* XXXXXXXX
 
 
 
