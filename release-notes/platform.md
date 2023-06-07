@@ -27,15 +27,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-### Harness Manager delegate new features
-
-The features below are available with version 79411 and do not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
-
 - You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
+
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You can now use the legacy UI to create delegates. (PL-38937)
 
-### All other Platform new features
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
 
@@ -51,13 +49,9 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-### Harness Manager delegate fixed issues
-
-The fixed issue below is available with version 79411 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
-
 - Delegate instances that do not shut down gracefully and do not come back online are removed from the UI after three hours. (PL-38755)
 
-### All other Platform fixed issues
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The SSH secret reference gets created even if secret creation fails due to a validation error. (PL-38549, ZD-44073)
 
