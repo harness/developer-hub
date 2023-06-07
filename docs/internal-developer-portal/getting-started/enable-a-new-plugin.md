@@ -19,7 +19,7 @@ Before you enable a new plugin, ensure that the following prerequisites are met:
 
 **Plugin types**
 
-Harness IDP offers a set of curated plugins that can be enabled. Here are some plugin types that you can consider:
+Harness IDP offers a set of curated plugins that you can enable. Here are some plugin types that you can consider:
 
 - A card in the Catalog - e.g. Pagerduty
 - A plugin with a tab in the catalog - e.g. GitHub insights
