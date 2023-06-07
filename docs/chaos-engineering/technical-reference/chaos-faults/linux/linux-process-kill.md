@@ -7,7 +7,7 @@ import Ossupport from './shared/note-supported-os.md'
 import FaultPermissions from './shared/fault-permissions.md'
 
 
-Linux process kill kills the target processes running on the Linux machines. It checks the performance of the application or process running on the Linux machine.
+Linux process kills the target processes running on the Linux machines. It checks the performance of the application or process running on the Linux machine.
 
 ![Linux process kill](./static/images/linux-process-kill.png)
 
