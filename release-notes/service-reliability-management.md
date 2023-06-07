@@ -69,7 +69,7 @@ This release does not include any early access features.
 
 ##### Fixed issues
 
-- The ErrorBudgetReset API incorrectly accepting Rolling type SLOs along with Calendar type SLOs. (SRM-14692)  
+- The ErrorBudgetReset API is incorrectly accepting Rolling type SLOs along with Calendar type SLOs. (SRM-14692)  
 
   This issue has been resolved. Now, the ErrorBudgetReset API only accepts Calendar type SLOs.
 
