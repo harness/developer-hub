@@ -27,6 +27,10 @@ This release breaks backward compatibility with older chaos infrastructures. You
 
 To upgrade chaos infrastructures and experiments:
 
+1. Upgrade the CRDs in clusters where you have deployed a chaos infrastructure: 
+
+    `kubectl apply -f https://raw.githubusercontent.com/chaosnative/hce-charts/main/hce-saas/hce-saas-crds.yaml`
+
 1. If a chaos infrastructure indicates **UPGRADE NEEDED**, select **Update**, and then follow the instructions on your screen.
 
     ![](./static/chaos-infra-upgrade-needed.png)
