@@ -20,7 +20,9 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 #### What's new
 
-This release does not include new features.
+- Enhanced the application handling mechanism when the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE`. (CDS-68821)
+  
+  When the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE` for any of the releases of an application, Harness starts looking for the application that has the same name as the release name. This ensures that the correct active application is always picked in case the `HARNESS__STATUS__IDENTIFIER` is removed.
 
 #### Early access
 
@@ -37,10 +39,6 @@ The fixed issue below is available with version 79500 and does not require a new
   The Kubernetes GET APIs returned a 400 bad request during steady state check. This was occurring when Harness used a fabric8 client with Kubernetes cluster version < 1.16, or when the feature flag, `HELM_STEADY_STATE_CHECK` is turned off. 
   
   This issue is fixed.
-- Fixed issues with Tanzu Application Services (TAS) application handling. (CDS-68821)
-  
-  The applications with service name will now be considered as Production applications if `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE`.
-  
 
 ### June 01, 2023, version 79411
 
