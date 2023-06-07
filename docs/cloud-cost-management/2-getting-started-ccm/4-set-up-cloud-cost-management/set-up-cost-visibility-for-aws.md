@@ -594,7 +594,7 @@ If you come across an error message indicating missing permissions, as displayed
 <docimage path={require('./static/asset-governance-test-output-error.png')} width="50%" height="50%" title="Click to view full size image" />
 
 1. Copy the role specified in the error message that requires permission to execute the rule.
-2. Enter the role in the search text box in IAM > Roles to filter the roles. The policies are displayed. 
+2. Enter the role in IAM > Roles search box to filter the roles. The policies are displayed. 
 
   <docimage path={require('./static/aws-missing-permission-role.png')} width="50%" height="50%" title="Click to view full size image" />
 

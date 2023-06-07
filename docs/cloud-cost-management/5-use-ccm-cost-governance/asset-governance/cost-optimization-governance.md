@@ -13,7 +13,7 @@ To optimize cloud costs, you need to create a governance rule or combine multipl
 1. In **Harness**, go to **Cloud Costs**.
 2. Select **Asset Governance**.
 3. Select **Rules**.
-4. Click **+New Rule**. 
+4. Select **+New Rule**. 
 
 
   <docimage path={require('./static/asset-governance-rule-creation.png')} width="60%" height="60%" title="Click to view full size image" />
@@ -26,8 +26,8 @@ To optimize cloud costs, you need to create a governance rule or combine multipl
 
   If the policy is invalid, an error message is displayed.
 10. Select the **Account** and the **Region** from the dropdown list in the Test Terminal.
-11. Click **Dry Run** to view the instances or services that will be acted upon when you enforce the rule. 
-12. After evaluating the output, click **Run Once** to execute the rule. 
+11. Select **Dry Run** to view the instances or services that will be acted upon when you enforce the rule. 
+12. After evaluating the output, select **Run Once** to execute the rule. 
 
   <docimage path={require('./static/asset-governance-rule-enforcement.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -56,7 +56,7 @@ The rule set is created successfully. You can view the rule set on the **Asset G
 
   <docimage path={require('./static/view-rule-set.png')} width="60%" height="60%" title="Click to view full size image" />
 
-8. Click **Enforce Rule Set** in the Enforcements column to enforce this rule set.
+1. Select **Enforce Rule Set** in the Enforcements column to enforce this rule set.
 
 
 ## Enforce a rule or a rule set
@@ -118,4 +118,4 @@ You can create filters to view selected rules:
 
   <docimage path={require('./static/filter-evalaution-rules.png')} width="40%" height="40%" title="Click to view full size image" />
 
-5. Click **Apply**.
+5. Select **Apply**.
