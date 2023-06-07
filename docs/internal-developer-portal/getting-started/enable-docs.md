@@ -1,6 +1,6 @@
 ---
 title: Enable documentation for your component
-description: Learn how you can enable the TechDocs plugin to show your markdown docs on the Docs tab of the catalog page.
+description: Learn how you can enable the TechDocs plugin to show your Markdown docs on the **Docs** tab of the catalog page.
 sidebar_position: 40
 helpdocs_topic_id:
 helpdocs_category_id:
@@ -8,12 +8,14 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-By default, the Docs tab in your catalog does not include documentation for a new software component. However, you can quickly publish Markdown documentation to the Docs tab.
+By default, the **Docs** tab in your catalog does not include documentation for a new software component. However, you can quickly publish Markdown documentation to the **Docs** tab.
 
 ![](static/docs-empty.png)
 
+To add documentation:
+
 1. Create a `docs` directory next to where you have `catalog-info.yaml`.
-2. Inside the `docs` directory, create a `index.md` file with the following contents.
+2. Inside the `docs` directory, create an `index.md` file with the following contents.
 
 ```
 # Welcome!
@@ -46,10 +48,10 @@ Here is a bulleted list:
 Check out the [Markdown Guide](https://www.markdownguide.org/) to learn more about how to
 simply create documentation.
 
-You can also learn more about how to configure and setup this documentation in Backstage,
-[read up on the TechDocs Overview](https://backstage.io/docs/features/techdocs/).
+You can also learn more about how to configure and set up this documentation in Backstage,
+[read the TechDocs Overview](https://backstage.io/docs/features/techdocs/).
 
-## Table Example
+## Table example
 
 While this documentation isn't comprehensive, in the future it should cover the following
 topics outlined in this example table:
@@ -62,7 +64,7 @@ topics outlined in this example table:
 
 ## Learn more about MkDocs
 
-TechDocs uses MkDocs as the static site generated. Visit https://www.mkdocs.org for more information about MkDocs.
+TechDocs uses MkDocs as the static site generator. Visit https://www.mkdocs.org for more information about MkDocs.
 ```
 
 3. Edit the `catalog-info.yaml` and add the TechDocs annotation.
@@ -71,7 +73,7 @@ TechDocs uses MkDocs as the static site generated. Visit https://www.mkdocs.org 
 
 ![](static/techdocs-ref.png)
 
-5. Hit the refresh button on the catalog component page.
+5. Select the refresh button on the catalog component page.
 
 ![](static/refresh-button.png)
 
