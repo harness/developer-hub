@@ -12,7 +12,7 @@ You can register any new software component with the software catalog by creatin
 
 ## Create a new `catalog-info.yaml`
 
-If you want to register an existing software component, navigate to its repository. If it is a mono-repo, navigate to its directory and create a `catalog-info.yaml` at the root of the directory. The file can technically live anywhere (for example, `.harness/catalog-info.yaml`). You can use the following YAML code:
+1. If you want to register an existing software component, navigate to its repository. If it is a mono-repo, navigate to its directory and create a `catalog-info.yaml` at the root of the directory. The file can technically live anywhere (for example, `.harness/catalog-info.yaml`). You can use the following YAML code:
 
 ```yaml
 apiVersion: backstage.io/v1alpha1
@@ -38,26 +38,26 @@ spec:
 
 Following are the key fields that you must update:
 
-1. `metadata.name`. This should be a unique name for your component. Usually, it is the name of the service.
-2. `metadata.description` - A description for your new component.
-3. `spec.type` - The new software component could be a `service`, `library`, `website`, or any other type.
-4. `spec.owner` - The user group identifier of the team that owns the component.
+* `metadata.name`. This should be a unique name for your component. Usually, it is the name of the service.
+* `metadata.description` - A description for your new component.
+* `spec.type` - The new software component could be a `service`, `library`, `website`, or any other type.
+* `spec.owner` - The user group identifier of the team that owns the component.
 
-Once the file is created in your Git repo, copy the full URL to the file. For example, `https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml`.
+2. Once the file is created in your Git repo, copy the full URL to the file. For example, `https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml`.
 
-In the left navigation, select **Create**, and then select **Register Software Component**.
+3. In the left navigation, select **Create**, and then select **Register Software Component**.
 
-![](static/create-page-sidebar.png)
-![](static/create-page.png)
+  ![](static/create-page-sidebar.png)
+  ![](static/create-page.png)
 
-Enter the URL to your new `catalog-info.yaml`.
+4. Enter the URL to your new `catalog-info.yaml`.
 
-![](static/url-on-register-page.png)
+  ![](static/url-on-register-page.png)
 
-Click import.
+5. Select **Import**.
 
-![](static/finished-state.png)
+  ![](static/finished-state.png)
 
 The new component will be available in your catalog.
 
-![](static/imported-entity.png)
+  ![](static/imported-entity.png)
