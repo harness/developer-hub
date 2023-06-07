@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-06-05T10:00:25
+date: 2023-06-07T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -17,20 +17,14 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - June 5, 2023
+## Latest - June 7, 2023
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-#### Feature Flags SDKs
-
-* The **Python** server SDK has been updated to version **1.14** with the following updates.
-
-  * The SDK now sends extra headers to backend requests to aid in diagnostics. (FFM-7362)
-
-  * The SDK now retries on failed client authentication requests for specific HTTP errors. If client authentication fails, the SDK serves the default values you provide in `variation` calls. (FFM-7177)
+This release does not include new features. 
 
 ```mdx-code-block
   </TabItem>
@@ -44,7 +38,11 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-This release does not include fixed issues.
+#### Feature Flags SDKs
+
+* The **Node.js** server SDK has been updated to version **1.2.17** with the following update.
+
+  * Previously, when `client.close()` was called, the SSE stream was not terminated. This fix ensures that the SSE stream is properly terminated. (FFM-8116)
 
 ```mdx-code-block
   </TabItem>
@@ -55,6 +53,26 @@ This release does not include fixed issues.
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 5, 2023
+
+##### What's new
+
+###### Feature Flags SDKs
+
+* The **Python** server SDK has been updated to version **1.14** with the following updates.
+
+  * The SDK now sends extra headers to backend requests to aid in diagnostics. (FFM-7362)
+
+  * The SDK now retries on failed client authentication requests for specific HTTP errors. If client authentication fails, the SDK serves the default values you provide in `variation` calls. (FFM-7177)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+This release does not include fixed issues.
 
 #### June 1, 2023
 
