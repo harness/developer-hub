@@ -80,7 +80,7 @@ Add caching to your stage.
 <TabItem value="Harness Cloud">
 ```
 
-Cache your Python module dependencies with [**Cache Intelligence**](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
+Cache your Python module dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
 Add caching to your `stage.spec`.
 
@@ -162,9 +162,8 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                       - "/root/.cache"
                     archiveFormat: Tar
 ```
- 
-</details>
 
+</details>
 
 ```mdx-code-block
 </TabItem>
@@ -196,7 +195,6 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 ```mdx-code-block
 </TabItem>
-
 <TabItem value="Self-hosted">
 ```
 

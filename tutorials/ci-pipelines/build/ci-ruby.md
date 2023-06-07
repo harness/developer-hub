@@ -51,7 +51,6 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 ```mdx-code-block
 </TabItem>
-
 <TabItem value="Self-hosted">
 ```
 
@@ -94,7 +93,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 
 ## Install dependencies
 
-Use **Run** steps to install dependencies in the build environment. [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies. You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
+Run [Bundler] commands in a **Run** step to install dependencies in the build environment.
 
 ```mdx-code-block
 <Tabs>
@@ -109,12 +108,11 @@ Use **Run** steps to install dependencies in the build environment. [Plugin step
                   spec:
                     shell: Sh
                     command: |-
-                      npm install express@4.18.2 --no-save
+                      bundle check || bundle install
 ```
 
 ```mdx-code-block
 </TabItem>
-
 <TabItem value="Self-hosted">
 ```
 
@@ -125,20 +123,27 @@ Use **Run** steps to install dependencies in the build environment. [Plugin step
                   name: Dependencies
                   spec:
                     connectorRef: account.harnessImage
-                    image: node:14.18.2-alpine
+                    image: ruby:latest
                     command: |-
-                      npm install express@14.18.2 --no-save
+                      bundle check || bundle install
 ```
 
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ```
+
+:::tip
+
+[Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies. You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
+
+:::
+
 ## Cache dependencies
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="cloud" label="Harness Cloud" default>
+<TabItem value="cloud" label="Harness Cloud" default>
 ```
 
 With Harness Cloud build infrastructure, use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) to automate caching of Node dependencies. Add `caching.enabled.true` to your `stage.spec`.
@@ -151,8 +156,8 @@ With Harness Cloud build infrastructure, use [Cache Intelligence](/docs/continuo
 ```
 
 ```mdx-code-block
-  </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
+</TabItem>
+<TabItem value="selfhosted" label="Self-hosted">
 ```
 
 With self-hosted build infrastructures, you can:
@@ -196,7 +201,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 ```
 
 ```mdx-code-block
-  </TabItem>
+</TabItem>
 </Tabs>
 ```
 
@@ -266,7 +271,6 @@ If your application requires a specific Node version, add a **Run** step to inst
 
 ```mdx-code-block
 </TabItem>
-
 <TabItem value="Self-hosted">
 ```
 
