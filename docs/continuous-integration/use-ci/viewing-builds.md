@@ -28,7 +28,11 @@ The **Builds** page provides the following information about current and past bu
 
 On the **Build details** page, you can investigate a variety of details about a specific build.
 
-* **Pipeline:** This tab shows the build stages and steps. Select a step to investigate logs, inputs, outputs, and errors (if any) for that steps. When troubleshooting failed builds, you can switch to **Console View** to allocate more screen space to logs. Once you've identified a potential cause, select **Edit Pipeline** to go directly to the Pipeline Studio.
+* **Pipeline:** This tab shows the build stages and steps.
+
+  Select a step to investigate logs, inputs, outputs, and errors (if any) for that steps.
+
+  When troubleshooting failed builds, you can switch to **Console View** to allocate more screen space to logs. Once you've identified a potential cause, select **Edit Pipeline** to go directly to the Pipeline Studio.
 
    <Debug />
 
