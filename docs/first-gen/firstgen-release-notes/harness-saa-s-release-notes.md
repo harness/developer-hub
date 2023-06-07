@@ -16,6 +16,32 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### June 07, 2023, version 79500
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+#### Harness Manager delegate fixed issues
+
+The fixed issue below is available with version 79500 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+
+- Helm execution failed with `KubernetesClientException` error. (CDS-70386, ZD-45051)
+  
+  The Kubernetes GET APIs returned a 400 bad request during steady state check. This was occurring when Harness used a fabric8 client with Kubernetes cluster version < 1.16, or when the feature flag, `HELM_STEADY_STATE_CHECK` is turned off. 
+  
+  This issue is fixed.
+- Fixed issues with Tanzu Application Services (TAS) application handling. (CDS-68821)
+  
+  The applications with service name will now be considered as Production applications if `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE`.
+  
+
 ### June 01, 2023, version 79411
 
 #### What's new

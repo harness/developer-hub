@@ -17,7 +17,49 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 01, 2023 
+## Latest - June 07, 2023 
+
+### Continuous Delivery, version 79500
+
+- The variables defined at a pipeline level can be used with the SSH Command step, and can be referenced using `$VariableName` inside the script. This is applicable for secrets as well. (CDS-70189)
+
+  For more information, go to [Command step output variables](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step/#output-variables).
+- Added support to retrieve the current status of the strategy nodes during execution by using expressions. (CDS-69780)
+  
+  Harness has introduced the following expressions to retrieve the current status of the strategy node during pipeline execution: 
+  * `<+strategy.currentStatus>`: Retrieves the `currentStatus` of the strategy node with the maximum depth.
+  * `<+strategy.node.strategyNodeIdentifier.currentStatus>`: Retrieves the `currentStatus` of the strategy node with a specific identifier, `strategyNodeIdentifier`.
+  * `<+strategy.node.get("strategyNodeIdentifier").currentStatus>`: Retrieves the `currentStatus` of the strategy node with a specific identifier, `strategyNodeIdentifier`.
+- If any entities referenced in a pipeline are updated, a warning now appears in Pipeline Studio saying that reconciliation is needed. Previously, this warning appeared only when you manually tried to reconcile. (CDS-69672)
+- The Harness Approval step now supports scheduled automatic approvals. (CDS-69415)
+  
+  For more information, go to [Harness Approval steps in CD stages](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/).
+- Edit Git details for pipelines stored using Harness Git Experience. (CDS-69130)
+  
+  You can now edit the Git metadata in the pipelines and input sets you use in your Git-synced Harness pipelines.
+
+  You can edit the Harness Git connector, repository, and path to the YAML file.
+
+  To edit the Git details, select **Edit Git Metadata** in the pipelines and input sets listing pages. 
+
+  <docimage path={require('./static/d3ae175d36c932027045989f3c6d5b8b35ff3f50d7dec64195f1e1a264b4f577.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+  <docimage path={require('./static/87cae6dd20947c866629d225293d41ad83be7848061537e28efd2def8e14ea48.png')} width="60%" height="60%" title="Click to view full size image" />
+- Support has been added to view long expressions in YAML view. (CDS-59017)
+  
+  Previously, when suggestions are displayed while entering an expression in the YAML view, expressions that were long, ended with an ellipsis, and the entire expression didn't appear properly.
+  
+  The suggestions widget is now updated with a read more icon. You can click on the icon or use Ctrl + Space to view the complete expression string. The read more icon appears only for the active suggestion item. You can use the Up and Down arrow keys to switch between different suggestion items.
+- Kubernetes deployments support horizontal pod autoscaling and pod disruption budget for BLue Green and Canary execution strategies. (CDS-59011)
+  
+  Harness Delegate version 79500 is required for this feature.
+- Send emails to non-Harness users. (CDS-58625, ZD-42496)
+  
+  To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
+
+  For more information on how to send emails to non-Harness users, go to [Email step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
+
+  Harness Delegate version 79500 is required for this feature.
 
 ### Service Reliability Management, version 79413
 
