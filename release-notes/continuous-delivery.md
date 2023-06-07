@@ -47,19 +47,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <docimage path={require('./static/87cae6dd20947c866629d225293d41ad83be7848061537e28efd2def8e14ea48.png')} width="60%" height="60%" title="Click to view full size image" />
 - Support has been added to view long expressions in YAML view. (CDS-59017)
   
-  Previously, when suggestions are displayed while entering an expression in the YAML view, expressions that were long, ended with an ellipsis, and the entire expression didn't appear properly.
+  Previously, in the YAML view, suggestions for long expressions ended with an ellipsis, and the entire expression didn't appear properly.
   
-  The suggestions widget is now updated with a read more icon. You can click on the icon or use Ctrl + Space to view the complete expression string. The read more icon appears only for the active suggestion item. You can use the Up and Down arrow keys to switch between different suggestion items.
-- Kubernetes deployments support horizontal pod autoscaling and pod disruption budget for BLue Green and Canary execution strategies. (CDS-59011)
+  The suggestions widget is now updated with a read more icon. You can select the icon or use Ctrl + Space to view the complete expression string. The read more icon appears only for the active suggestion item. You can use the Up and Down arrow keys to switch between different suggestion items.
+- Kubernetes deployments support horizontal pod autoscaling and pod disruption budget for Blue Green and Canary execution strategies. (CDS-59011)
   
-  Harness Delegate version 79500 is required for this feature.
+  Harness Manager Delegate version 79500 is required for this feature.
 - Send emails to non-Harness users. (CDS-58625, ZD-42496)
   
   To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
 
   For more information on how to send emails to non-Harness users, go to [Email step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
 
-  Harness Delegate version 79500 is required for this feature.
+  Harness Manager Delegate version 79500 is required for this feature.
 
 ```mdx-code-block
   </TabItem>
@@ -74,7 +74,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   During scale down, the Horizontal Pod AutoScaler and Pod Disruption Budget resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green deployment are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
-  Harness Delegate version 79500 is required for this feature.
+  Harness Manager Delegate version 79500 is required for this feature.
   
 
 ```mdx-code-block
@@ -99,7 +99,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Fixed an issue preventing the pipelines from running caused due to the update in YAML when moving step groups by dragging and dropping them in Pipeline Studio. (CDS-69622, ZD-44481)
 - Unable to make a variable for a pipeline mandatory. (CDS-69597, ZD-44438, ZD-45217)
   
-  This issue is fixed by adding required field for variables. Validation is added to throw an error ff a required variable field is empty. Harness no longer allows empty values for variables that are marked as required in the YAML. 
+  This issue is fixed by adding required fields for variables. Validation is added to throw error if any required variable field is empty. Harness no longer allow empty values for variables that are marked as required in the YAML. 
   
   By default, the required field for any newly created variable in the YAML is set to `false`. Also, if required field is missing in the YAML, it is considered as `false`. 
   
@@ -114,17 +114,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   Fixed this issue by adding proper validations to GCR artifacts used for SSH pipelines.
 
-### Harness Manager delegate fixed issues
+### Harness Manager Delegate fixed issues
 
-The fixed issue below is available with version 79500 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
+The fixed issues below is available with version 79500 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
 
 - Fixed an issue where the `eventPayload` expressions were not resolving when rerunning a failed pipeline that was previously fired by using a trigger. (CDS-70559)
 
 - Certificate issues in Harness Delegate version 23.05.79307. (CDS-70410, ZD-45105, ZD-45110, ZD-45128)
   
-  The HTTP step was failing due to absence of the `certificate` value in the step. In previous delegate versions, system would bypass the absence of this field. However, in Harness Delegate version 23.05.79307, this field was incorrectly set as mandatory for HTTPS steps execution for validations against servers that had self-signed certificates. This issue is fixed.
+  The HTTP step was failing due to absence of the `certificate` value in the step. In previous delegate versions, system would bypass the absence of this field. However, in Harness Delegate version 23.05.79307, this field was incorrectly set as mandatory for HTTP steps execution for validations against servers that had self-signed certificates. This issue is fixed.
 
-- Fixed an issue where ECS instance sync fails when Harness Delegate returns a null value for ECS tasks start time. (CDS-69745)
+- Fixed an issue where ECS instance sync failed when Harness Delegate returns a null value for ECS tasks start time. (CDS-69745)
 - Bamboo triggers were not working properly. (CDS-69605)
   
   Adding the Bamboo build to the delegate response resolved this issue. 
@@ -133,10 +133,10 @@ The fixed issue below is available with version 79500 and does not require a new
   Improved error message handling for YAML processing fails. The error message now display files that contain errors and points to the problematic part of the file. 
 - Step or stage requested input values during execution and failed with the error: `Cannot update execution status for the PlanExecution IZCFwQMXR5uSv_RxC7fqCA with RUNNING`. (CDS-69342, ZD-44344)
   
-  A code enhancement fixed this issue. With this enhancement, the quotes inside the filed YAML can be escaped resulting in a valid YAML.
+  A code enhancement fixed this issue. With this enhancement, the quotes inside the field YAML can be escaped resulting in a valid YAML.
 - Fixed an issue where strings were interpreted as scientific notations. (CDS-69063, ZD-44206)
 - Fixed an issue where error logs were removed to stop error flooding into GCP logs when Git authentication fails. (CDS-68760)
-- A force delete option appeared when deleting a template referenced by another template. Enabling the force delete deleted the referenced template but the remaining versions were no longer visible on the UI. (CDS-68683)
+- A force delete option appeared when deleting a template referenced by another template. Enabling force delete deleted the referenced template but the remaining versions were no longer visible on the UI. (CDS-68683)
   
   Added additional test coverage for some workflows to resolve this issue.
 - Spot Elastigroup deployments failed to fetch the instance health, and expired. (CDS-56451, ZD-41436)
