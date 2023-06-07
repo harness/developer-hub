@@ -1,0 +1,1 @@
+When viewing logs for a failed step, select the Harness AI Copilot icon to review error analysis and troubleshooting suggestions.

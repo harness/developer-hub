@@ -76,7 +76,7 @@ Harness CI now supports remote debugging. This feature was initially released in
 * The build fails at a **Run** step with a Bash or Shell script in a **Build** (`CI`) stage.
 * The build runs in Harness Cloud, on a virtual machine, or in Kubernetes.
 
-You can re-run builds in debug mode through the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. For more information, go to the [debug mode](/docs/continuous-integration/use-ci/debug-mode) documentation.
+You can re-run builds in debug mode through the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. For more information, go to the [debug mode](/docs/continuous-integration/troubleshoot-ci/debug-mode) documentation.
 
 ##### Fixed issues
 

@@ -8,10 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
-import Debug from '/docs/continuous-integration/shared/debug-ai-partial.md';
-```
-
 From the **Builds** page, you can inspect past builds and monitor the progress of ongoing builds.
 
 ![CI Build list.](./static/ci-builds-list.png)
@@ -30,11 +26,9 @@ On the **Build details** page, you can investigate a variety of details about a 
 
 * **Pipeline:** This tab shows the build stages and steps.
 
-  Select a step to investigate logs, inputs, outputs, and errors (if any) for that steps.
+  Select a step to investigate logs, inputs, outputs, and errors (if any) for that steps. If enabled, [Harness AI Copilot](../troubleshoot-ci/copilot.md) can provide troubleshooting assistance.
 
   When troubleshooting failed builds, you can switch to **Console View** to allocate more screen space to logs. Once you've identified a potential cause, select **Edit Pipeline** to go directly to the Pipeline Studio.
-
-   <Debug />
 
 * **Inputs**: This tab lists pipeline-level inputs. Step-level inputs are reported in the step details on the **Pipeline** tab.
 * **Artifacts:** This tab provides links to artifacts, such as images or reports, produced during the build. Availability of artifact details depends on the upload location, build configuration, or build infrastructure.

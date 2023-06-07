@@ -34,6 +34,18 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by aimurphy for DOC-3231 on June 7 2023
+
+    {
+      from: "/docs/continuous-integration/troubleshooting-ci",
+      to: "/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci",
+    },
+
+    {
+      from: "/docs/continuous-integration/use-ci/debug-mode",
+      to: "/docs/continuous-integration/troubleshoot-ci/debug-mode",
+    },
+
     // Created by aimurphy for branch doc-2951 on May 4 2023
 
     {
@@ -155,18 +167,13 @@ module.exports = {
     },
 
     {
-      from: "/docs/category/troubleshoot-ci",
-      to: "/docs/continuous-integration/troubleshooting-ci",
-    },
-
-    {
       from: "/docs/category/troubleshoot-and-optimize-ci",
-      to: "/docs/continuous-integration/troubleshooting-ci",
+      to: "/docs/category/troubleshoot-ci",
     },
 
     {
       from: "/docs/continuous-integration/troubleshoot/troubleshooting-ci",
-      to: "/docs/continuous-integration/troubleshooting-ci",
+      to: "/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci",
     },
 
     {

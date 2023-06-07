@@ -1,22 +1,22 @@
 ---
 title: Troubleshoot Continuous Integration
 description: Troubleshoot common CI issues.
-sidebar_position: 40
+sidebar_position: 10
 helpdocs_topic_id: jx7ew69ypa
 helpdocs_category_id: 99m8m1s55y
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-```mdx-code-block
-import Debug from '/docs/continuous-integration/shared/debug-ai-partial.md';
-```
-
 This topic contains troubleshooting information for error messages and other issues that can arise with Harness CI. For more Harness troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
 
-If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or visit the [Harness Community Forum](https://community.harness.io/).
+:::tip Troubleshooting tools
 
-<Debug />
+[Harness AI Copilot](./copilot.md) and [debug mode](/docs/continuous-integration/troubleshoot-ci/debug-mode.md) can help you troubleshoot errors and other issues in Harness CI.
+
+:::
+
+If you cannot find a resolution, please contact [Harness Support](mailto:support@harness.io) or visit the [Harness Community Forum](https://community.harness.io/).
 
 ## Git connector fails to connect to the SCM service
 
@@ -54,15 +54,11 @@ environment:
 
 For more information about self-signed certificates, delegates, and delegate environment variables, go to:
 
-* [Delegate environment variables](../platform/2_Delegates/delegate-reference/delegate-environment-variables.md)
-* [Docker delegate environment variables](../platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md)
-* [Set up a local runner build infrastructure](./use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md)
-* [Install delegates](https://developer.harness.io/docs/category/install-delegates)
-* [Configure a Kubernetes build farm to use self-signed certificates](./use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
-
-## Use debug mode to troubleshoot remote builds
-
-The Harness CI [Re-run in Debug Mode](./use-ci/debug-mode.md) feature can troubleshoot remote builds.
+* [Delegate environment variables](/docs/platform/2_Delegates/delegate-reference/delegate-environment-variables.md)
+* [Docker delegate environment variables](/docs/platform/2_Delegates/delegate-reference/docker-delegate-environment-variables.md)
+* [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure.md)
+* [Install delegates](/docs/category/install-delegates)
+* [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates.md)
 
 ## Truncated execution logs
 
@@ -87,7 +83,7 @@ For more information, refer to the following Microsoft Azure troubleshooting doc
 
 ## CI pods appear to be evicted by Kubernetes autoscaling
 
- Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, if you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](./use-ci/viewing-builds.md), add the following annotation to your [Kubernetes cluster build infrastructure settings](./use-ci/set-up-build-infrastructure/ci-stage-settings.md#infrastructure):
+ Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, if you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](/docs/continuous-integration/use-ci/viewing-builds.md), add the following annotation to your [Kubernetes cluster build infrastructure settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md#infrastructure):
 
 ```
 "cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
@@ -101,7 +97,7 @@ For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshootin
 
 ## Docker Hub rate limiting
 
-By default, Harness uses anonymous access to [Harness Docker Hub](https://hub.docker.com/u/harness) to [pull Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md). If you experience rate limiting issues when pulling images, [use a Docker connector to connect to the Harness container image registry](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/) and provide login information in the [connector's authentication settings](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials).
+By default, Harness uses anonymous access to [Harness Docker Hub](https://hub.docker.com/u/harness) to [pull Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md). If you experience rate limiting issues when pulling images, [use a Docker connector to connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/) and provide login information in the [connector's authentication settings](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials).
 
 ## Out of memory errors with Gradle
 
@@ -118,7 +114,7 @@ Your Java options must use [UseContainerSupport](https://www.eclipse.org/openj9/
 Depending on when your account was created, the built-in **Harness Docker Connector** (`account.harnessImage`) might be configured to connect through a Harness Delegate instead of the Harness Platform. In this case, attempting to use this connector with Harness Cloud build infrastructure generates the following error:
 
 ```
-While using hosted infrastructure, all connectors should be configured to go via the Harness platform instead of via the delegate. Please update the connectors: [harnessImage] to connect via the Harness platform instead. This can be done by editing the connecotr and updating the connectivity to go via the Harness platform.
+While using hosted infrastructure, all connectors should be configured to go via the Harness platform instead of via the delegate. Please update the connectors: [harnessImage] to connect via the Harness platform instead. This can be done by editing the connector and updating the connectivity to go via the Harness platform.
 ```
 
 To resolve this error, you can either modify the **Harness Docker Connector** or use another Docker connector that you have already configured to connect through the Harness Platform.

@@ -1,0 +1,1 @@
+If a step fails, Harness AI Copilot analyzes the errors and provides troubleshooting suggestions.
