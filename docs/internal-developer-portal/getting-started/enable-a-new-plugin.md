@@ -12,7 +12,7 @@ You can use plugins to extend the functionality of Harness IDP and to customize 
 
 **Prerequisites**
 
-Before proceeding with enabling a new plugin, ensure the following prerequisites are met:
+Before you enable a new plugin, ensure that the following prerequisites are met:
 
 - Harness IDP should be provisioned and accessible.
 - Onboarding for the given account should be completed.
