@@ -4,6 +4,7 @@ title: Linux CPU stress
 ---
 
 import Ossupport from './shared/note-supported-os.md'
+import FaultPermissions from './shared/fault-permissions.md'
 
 
 Linux CPU stress fault applies stress on the CPU of the target Linux machines for a specific duration.
@@ -16,6 +17,11 @@ Linux CPU stress fault applies stress on the CPU of the target Linux machines fo
 - Simulates slow application traffic or exhaustion of the resources, leading to degradation in the performance of processes on the machine.
 
 <Ossupport />
+
+<FaultPermissions />
+
+## External packages
+This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which is installed as part of the infrastructure installation.
 
 ## Fault tunables
 <h3>Optional tunables</h3>

@@ -9,7 +9,7 @@ helpdocs_is_published: true
 ---
 
 
-:::note
+:::important
 Currently, this feature is behind the Feature Flag `OPA_PIPELINE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::

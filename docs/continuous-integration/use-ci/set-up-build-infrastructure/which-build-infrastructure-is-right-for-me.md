@@ -93,14 +93,15 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 | Test Parallelism | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Cache Intelligence | <ul><li>✅ Supported - Linux, Windows</li><li>❌ Not supported - macOS</li></ul>| ❌ Not supported | ❌ Not supported | ❌ Not supported |
 | Remote Caching in **Build and Push** steps | ❌ Not supported | ❌ Not supported | ✅ Supported | ❌ Not supported |
+| [Delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) | ❌ Not supported | ✅ Supported - Pipeline and stage delegate selectors | ✅ Supported - Pipeline, stage, and connector delegate selectors | ❌ Not supported |
 | Harness Secret Manager | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Custom Secret Manager | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
 | GitHub App support | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
 | STO step in Build stage | ✅ Supported - Linux | ❌ Not supported | ✅ Supported | <ul><li>✅ Supported - Linux</li><li> ❌ Not supported - Windows</li></ul> |
 | STO stage in CI pipeline |  ✅ Supported - Linux | ❌ Not supported  | ✅ Supported | <ul><li>✅ Supported - Linux</li><li> ❌ Not supported - Windows</li></ul> |
 | Plugins (Containers) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| Plugins (Host VM) | ✅ Supported | ❌ Not supported | ❌ Not supported | ❌ Not supported |
-|GitHub Actions | ✅ Supported - GitHub Actions plugin step | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin |
-| Bitrise Integrations | ✅ Supported - Bitrise plugin step | ❌ Not supported | ❌ Not supported | ❌ Not supported |
-| Plugin output variables | ✅ Supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
-| Build details - Artifacts tab | ✅ Supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
+| Plugins (Host VM) | ✅ Supported | ❌ Not supported | 🔸 Not applicable | ❌ Not supported |
+| [GitHub Actions](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins#github-actions) | ✅ Supported - GitHub Actions plugin step | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin |
+| [Bitrise Integrations](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins#bitrise-integrations) | ✅ Supported - Bitrise plugin step | ❌ Not supported | ❌ Not supported | ❌ Not supported |
+| Plugin output variables | ✅ Supported | ❌ Not supported | ✅ Supported | ✅ Supported |
+| [Build details - Artifacts tab](/docs/continuous-integration/use-ci/viewing-builds#build-details) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |

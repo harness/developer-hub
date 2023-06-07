@@ -9,7 +9,11 @@ sidebar_position: 14
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
-Review the notes below for details about recent changes to Harness Delegate, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
+Review the notes below for details about recent changes to Harness Delegate, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). 
+
+:::info note
+Harness Delegate, NextGen SaaS releases every two weeks. Harness Platform, NextGen SaaS and Harness Platform, FirstGen SaaS release weekly. New features, early access features, and fixes for Harness Platform, NextGen SaaS and FirstGen SaaS that do not require a new delegate version are included in Harness Platform release notes under **Harness Manager delegate new features** and **Harness Manager delegate fixes**. For NextGen Harness Platform release notes, go to [Harness Platform release notes](/release-notes/platform). For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
+:::
 
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
@@ -26,27 +30,25 @@ Harness NextGen release 79306 includes the following changes for the Harness Del
 
 This release introduces the following new features and enhancements:
 
-- A new [`listDelegates` API](https://app.harness.io/gateway/ng/api/delegate-setup/listDelegates/accountIdentifier=string&orgIdentifier=string&projectIdentifier=string') enables you to list and filter delegates in your project, organization, or account. (PL-37981)
+- Added support to provide quartz cron expressions for scheduled triggers. (CDS-59261, CDS-59260)
 
-   You can use the body parameters to filter your delegate list:
+- Added support for accessing connector attributes for Deployment Templates. (CDS-54247)
+    
+  The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions. 
+  
+  * [AWS KMS](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
+  * [AWS Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
+  * [Azure Key Vault](/docs/platform/Secrets/Secrets-Management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
+  * [Google KMS](/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
+  * [Google Cloud secret manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
+  * [Custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
+  * [HashiCorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
 
-   ```json
-   {
-   "filterType":"Delegate", //This field is mandatory.
-   
-   "delegateInstanceFilter": "EXPIRED/AVAILABLE",
+- Git polling tasks for triggers are executed on the same delegate selector used in the Git connector. (CDS-58115)
+  
+  Previously, triggers used the round robin algorithm to select any available delegate within a project or account. Now, the delegate-based trigger polling selects the same delegate you used in the connectors for triggers. 
 
-   "status": "CONNECTED/DISCONNECTED",
-   
-   "delegateType": "KUBERNETES/DOCKER/HELM_DELEGATE/SHELL_SCRIPT/ECS",
-   
-   "delegateName": "<>",
-   
-   "description": "<>",
-   
-   "delegateTags": "[]"
-   }
-   ```
+- The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set a secret expiration date. (PL-32708, ZD-42524)
 
 ```mdx-code-block
   </TabItem>
@@ -74,13 +76,50 @@ This release introduces the following new features and enhancements:
 
 This release includes the following fixes:
 
+- Fixed an issue where the expressions of tags were not rendered properly. (CDS-68703, ZD-43797)
+
+- Executions were failing with `Canary failed: [Canary Deployment failed - NoSuchMethodError: org.yaml.snakeyaml.constructor.SafeConstructor: method 'void <init>()' not found ]` error message. (CDS-68293, ZD-43753, ZD-43769)
+  
+  The Fabric8 library used by Harness is upgraded from version 5.x to 6.x. Harness was explicitly using snake.yaml version 2.x due to vulnerabilities present in the 1.x version.
+  
+  Harness' usages of Fabric8 library were throwing the above mentioned because Fabric8 library version 5.12.1 uses the old snake.yaml library version 1.x.
+
+  Customers who were using the following were affected:
+    - FirstGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - FirstGen Traffic Split step.
+    - FirstGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+    - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+
+  This change does not create any behavioral changes.
+
+- The access denied exception was saving the OAuth secret in the Harness Source Code Manager (SCM) user profile. (CDS-68144)
+  
+  This issue is fixed by passing the context correctly from the SCM service to the Git service.
+
+- Pipelines with multi-level templates displayed Java errors because a secret was referenced by another secret. (CDS-68094)
+  
+  This issue is fixed in by improving the error messages.
+  
+- Fixed an issue by eliminating NPE during ASG pipeline execution. (CDS-59383)
+
+- The Canary Delete step during rollback did not delete all canary resources when the forward Canary Delete step expired. The Canary Delete step uses Harness release history when the Canary Deployment step expires. An API call issue prevented Harness release history from being updated in time and available for the Canary Delete step during rollback. (CDS-58702)
+
+   This issue has been resolved. The Canary Delete step now properly deletes canary workloads when the forward Canary Deployment step expires.
+
+- Fixed an issue by adding support for retrying `sockettimeoutExceptions` as they can occur due to intermittent issues during a Kubernetes deployment. (CDS-57688)
+
+- Invites to users fail with an unauthorized error while RBAC setup is still in progress. (PL-32117)
+
+  A polling system ensures that RBAC setup has been completed.
+
+- Custom Secret Manager creation does not consider the delegate selector. (PL-32260)
+
+  In Custom SM configuration, decrypting secrets using the SSH connection to validate delegate selection fixed this issue.
+
 - Deployments consistently failed during the same stage. (PL-38247)
 
    This issue was fixed by updating the delegate YAML. Startup now fails when you use a legacy delegate image with an immutable delegate.
-
-- Delegates were intermittently unavailable during upgrade. (PL38283)
-  
-   This issue was fixed by adding a two minute wait period to rolling upgrades after a new pod is created before the previous pod is removed.
 
 ```mdx-code-block
   </TabItem>

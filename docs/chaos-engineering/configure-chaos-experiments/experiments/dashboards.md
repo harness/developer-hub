@@ -1,5 +1,5 @@
 ---
-title: Use the chaos dashboards
+title: Get experiment data in dashboards
 sidebar_position: 80
 ---
 
@@ -7,7 +7,7 @@ sidebar_position: 80
 This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
 :::
 
-Harness Chaos Engineering (HCE) comes with out-of-the-box dashboards that provide various aggregated views of data about your chaos experiments at an organization level. This includes experiments across all projects and environments in an organization.
+Harness Chaos Engineering (CE) comes with out-of-the-box dashboards that provide various aggregated views of data about your chaos experiments at an organization level. This includes experiments across all projects and environments in an organization.
 
 With Harness dashboards, you can:
 
@@ -17,13 +17,13 @@ With Harness dashboards, you can:
 
 For a complete guide to Harness dashboards, go to [Dashboards](/docs/category/dashboards-1).
 
-This topic provides some highlights and useful information about the HCE dashboards.
+This topic provides some highlights and useful information about the CE dashboards.
 
-## HCE dashboard highlights
+## CE dashboard highlights
 
-### View the HCE dashboards
+### View the CE dashboards
 
-To view the HCE dashboards: 
+To view the CE dashboards: 
 
 1. In Harness, select **Dashboards** in the left navigation pane.
 1. In the Dashboards page, select **Chaos**, and then select one of the Chaos dashboards.
@@ -39,7 +39,7 @@ On any dashboard, you can:
 * Clone a dashboard to customize it for different needs and audiences.
 
 
-### Experiment Runs by Users dashboard
+### View experiment runs by users
 
 This dashboard shows the number of experiments run by each chaos user over time. Three charts are available for: **Last Week**, **Last Month**, and **Last Year**.
 
@@ -48,7 +48,7 @@ This dashboard shows the number of experiments run by each chaos user over time.
 * Hover over any bar on the chart to see details.
 * Click any bar on the chart to drill down and see information in tabular form. From here, you can download the data in several formats to use in other tools.
 
-### Chaos Infrastructures by Users dashboard
+### View chaos infrastructures by users
 
 This dashboard shows the number of infrastructures created by each chaos user over time. Three charts are available for: **Last Week**, **Last Month**, and **Last Year**.
 

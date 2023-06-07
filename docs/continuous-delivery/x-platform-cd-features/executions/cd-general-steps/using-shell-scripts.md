@@ -341,3 +341,13 @@ Harness assumes that you trust your Harness users to add safe scripts to your Sh
 
 Please ensure that users adding scripts, as well as executing deployments that run the scripts, are trusted.
 
+### Escaping characters
+
+Escape characters are used to remove special meaning from a single character. Escaping tells shell to interpret characters literally. 
+
+You can selectively escape characters when using shell scripts by using the following syntax: 
+
+`shell.escapeChars(<input string>, <string of characters to be escaped>)`
+
+For example, the output for `shell.escapeChars("hello", "ho")` is `"\hell\o"`.
+

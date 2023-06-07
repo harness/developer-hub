@@ -27,7 +27,7 @@ Harness Cloud Cost Management (CCM) allows you to view your AWS costs at a glanc
 
 The Perspectives provides deep insights into your AWS costs. The cost includes all the applicable credits and discounts.
 
-1. In **Cloud Costs**, click **Perspectives**,and then click **AWS**. The AWS services are displayed.
+1. In **Cloud Costs**, select **Perspectives**,and then select **AWS**. The AWS services are displayed.
    
      ![](./static/analyze-cost-for-aws-07.png)
 2. Select the **date range** for the costs you want to analyze.
@@ -56,8 +56,8 @@ The Perspectives provides deep insights into your AWS costs. The cost includes a
 
 Perform the following steps to add filters.
 
-1. In **Cloud Costs**, click **Perspectives**,and then click **AWS**.
-2. Click **add filter**.
+1. In **Cloud Costs**, select **Perspectives**,and then select **AWS**.
+2. Select **add filter**.
    
      ![](./static/analyze-cost-for-aws-10.png)
 3. Select AWS, Region, Product, or Label.

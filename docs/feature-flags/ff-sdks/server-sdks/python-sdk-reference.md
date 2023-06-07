@@ -10,6 +10,9 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+<Smpno />
 
 This topic describes how to use the Harness Feature Flags Java SDK for your Java application.
 
@@ -26,7 +29,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **1.1.12**.
+The current version of this SDK is **1.1.14**.
 
 ## Requirements
 
@@ -54,6 +57,10 @@ To initialize the Python SDK, you need to:
 1. Add your Server SDK Key to connect to your Harness Environment.
 2. Add a Target that you want to Evaluate against a Feature Flag.
 3. (Optional) Configure the SDK options. For more details on what features you can configure for this SDK, go to [Configure the SDK](python-sdk-reference.md#configure-the-sdk).
+
+:::info note
+If the SDK fails to authenticate with the Feature Flags service and cannot initialise, the SDK will operate in a "limited" mode and will only serve the default values you provide in variation calls.
+:::
 
 ### Add the Server SDK Key
 
@@ -128,14 +135,16 @@ You can configure the following features of the SDK:
 
 
 
-|  |  |  |  |
-| --- | --- | --- | --- |
-| **Name** | **Example** | **Description** | **Default Value** |
-| baseUrl | `with_base_url("https://config.ff.harness.io/api/1.0")` | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://config.ff.harness.io/api/1.0` |
-| eventUrl | `with_events_url("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000` | `https://events.ff.harness.io/api/1.0` |
-| pollInterval | `Config(pull_interval=60)` | The interval **in seconds** that we poll for changes when you are using stream mode. | `60` (seconds) |
-| streamEnabled | `with_stream_enabled(True)` | Set to ``True`` to enable streaming mode.Set to `False` to disable streaming mode. | `True` |
-| analyticsEnabled | `with_analytics_enabled(True)` | Set to `True` to enable analytics.Set to `False` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `True` |
+|                  |                                                           |                                                                                                                                          |                                        |
+|------------------|-----------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|----------------------------------------|
+| **Name**         | **Example**                                               | **Description**                                                                                                                          | **Default Value**                      |
+| **baseUrl**          | `with_base_url("https://config.ff.harness.io/api/1.0")`   | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000`                      | `https://config.ff.harness.io/api/1.0` |
+| **eventUrl**         | `with_events_url("https://events.ff.harness.io/api/1.0")` | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000`        | `https://events.ff.harness.io/api/1.0` |
+| **pollInterval**     | `Config(pull_interval=60)`                                | The interval **in seconds** that we poll for changes when you are using stream mode.                                                     | `60` (seconds)                         |
+| **streamEnabled**    | `with_stream_enabled(True)`                               | Set to ``True`` to enable streaming mode. Set to `False` to disable streaming mode.                                                       | `True`                                 |
+| **analyticsEnabled** | `with_analytics_enabled(True)`                            | Set to `True` to enable analytics. Set to `False` to disable analytics. <br />**Note**: When enabled, analytics data is posted every 60 seconds. | `True`                                 |
+| **maxAuthRetries**   | with_max_auth_retries(10)                                 | The number of retry attempts to make if client authentication fails on a retryable HTTP error                                            | 10                                     |
+
 
 For example:
 

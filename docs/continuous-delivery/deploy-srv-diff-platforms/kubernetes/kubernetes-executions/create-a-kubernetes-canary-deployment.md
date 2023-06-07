@@ -60,7 +60,7 @@ Harness provides a Canary group as a way to test the new build, run your verific
 
 When you add a Canary Strategy to a stage, Harness automatically generates the steps for Canary and Primary Deployment groups.
 
-If you're new to Kubernetes RollingUpdate deployments, see [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) from Kubernetes. That guide summaries Rolling Update and provides an interactive online tutorial.Although it isn't covered here, you can also scale your Workloads between the Canary and Rolling steps if you like. You simply add a new Phase and use the Scale step. See [Scale Kubernetes Pods](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas).
+If you're new to Kubernetes RollingUpdate deployments, go to [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) from Kubernetes. That guide summaries Rolling Update and provides an interactive online tutorial.Although it isn't covered here, you can also scale your Workloads between the Canary and Rolling steps if you like. You simply add a new Phase and use the Scale step. See [Scale Kubernetes Pods](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas).
 
 ## Visual summary
 
@@ -116,15 +116,15 @@ If you have `replicas: 3` in a manifest in Service, and you enter **50** for 
 
 #### Canary Delete step
 
-Since the **Canary Deployment** step was successful, it is no longer needed. The **Canary Delete** step is used to clean up the workload deployed by the **Canary Deployment** step. See [Canary Delete Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-canary-delete-step).
+Since the **Canary Deployment** step was successful, it is no longer needed. The **Canary Delete** step is used to clean up the workload deployed by the **Canary Deployment** step. For more information, go to [Canary Delete Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-canary-delete-step).
 
-For step on deleting other Kubernetes resources, you can use the standard **Delete** step. See [Delete Kubernetes Resources](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources).
+For step on deleting other Kubernetes resources, you can use the standard **Delete** step. For more details, go to [Delete Kubernetes Resources](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources).
 
 ## Primary deployment rolling update
 
 The Primary Deployment group runs the actual deployment as a rolling update with the number of pods you specify in the Service Definition **Manifests** files (for example, `replicas: 3`).
 
-Click **Rolling Deployment**. For details on its settings, see [Kubernetes Rollout Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollout-step).
+Click **Rolling Deployment**. For details on its settings, go to [Kubernetes Rollout Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollout-step).
 
 Similar to application-scaling, during a rolling update of a Deployment, the Kubernetes service will load-balance the traffic only to available pods (an instance that is available to the users of the application) during the update.
 
@@ -271,7 +271,7 @@ my-nginx-7df7559456-xdwg5                 1/1       Running   0          9h
 
 ## Rollback
 
-See [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
+For more information, go to [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
 
 ## Important notes
 
