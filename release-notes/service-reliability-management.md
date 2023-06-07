@@ -45,6 +45,15 @@ This release does not include any early access features.
 
   This issue has been resolved. Now, SignalFX's health source supports SLI functionality, and you can create SLOs using SignalFX metrics.
 
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Hotfix version 79416">
+```
+
+- Released June 5, 2023
+- Does not include customer-facing changes
+
 ```mdx-code-block
   </TabItem>
 </Tabs>
