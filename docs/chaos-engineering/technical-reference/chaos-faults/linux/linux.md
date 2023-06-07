@@ -13,7 +13,7 @@ import { experiments } from "./experiments"
 
 ## Introduction
 
-Linux faults disrupt the resources running on a Linux machine. This deteriorates the performance of the application for the chaos duration.
+Linux faults disrupt the resources running on a Linux machine. This deteriorates the performance of the application for the duration of the chaos experiment.
 
 ## Resource consumption
 The infrastructure consumes minimal system resources in an idle state, when no experiment is being executed. For example, in a GCP e2-micro VM instance with **2 vCPU** and **1 GB** of memory that runs **Ubuntu 22.04** operating system, the average resource consumption was found to be as follows:
