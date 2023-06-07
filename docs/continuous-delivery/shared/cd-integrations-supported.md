@@ -64,8 +64,8 @@ import TabItem from '@theme/TabItem';
       - Secrets
       - ConfigMap
       - StatefulSet
-      - HorizontalPodAutoScalar is coming soon.
-      - PodDisruptionBudget is coming soon.
+      - HorizontalPodAutoScalar
+      - PodDisruptionBudget
 - **Supported integrations:**
   - Traffic Shifting for Advanced Deployment Strategies:
     - Istio
