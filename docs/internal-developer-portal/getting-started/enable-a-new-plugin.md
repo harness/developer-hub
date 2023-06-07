@@ -17,7 +17,7 @@ Before you enable a new plugin, ensure that the following prerequisites are met:
 - Harness IDP is provisioned and accessible.
 - Onboarding for your Harness account is completed.
 
-**Plugin Types:**
+**Plugin types**
 
 Harness IDP offers a set of curated plugins that can be enabled. Here are some plugin types that you can consider:
 
