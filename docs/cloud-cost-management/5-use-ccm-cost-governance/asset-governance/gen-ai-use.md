@@ -29,7 +29,7 @@ To create a rule by using the Harness AI Copilot, perform the following steps:
 
 
 10.  Select **Apply script on Rule Editor**.
-11.  The system performs a validation process to ensure rule accuracy. If any errors are detected within the rule, a notification banner will be displayed. To access more information regarding these errors, select the **More Details** option. You will be provided with a comprehensive breakdown of the specific error details, allowing you to identify and address any issues effectively. 
+11.  The system performs a validation process to ensure rule accuracy. If any errors are detected within the rule, a notification banner is displayed. To access more information regarding these errors, select the **More Details** option. You can view a comprehensive breakdown of the specific error details to identify and address any issues effectively. 
 
     <docimage path={require('./static/ai-validation-error-banner.png')} width="60%" height="60%" title="Click to view full size image" />
 12. You can update the rule on the **Rule Editor** and save the rule.
@@ -39,7 +39,7 @@ To create a rule by using the Harness AI Copilot, perform the following steps:
 The Harness AI Copilot offers valuable insights by providing the description of the rule along with its implications. When a rule is generated using the AI Copilot, it presents a clear and concise description of the rule's purpose, functionality, and potential impact. This information helps you understand the rationale behind the rule and how it aligns with your governance objectives. 
 1. In your Harness application, navigate to the **Asset Governance** page.
 2. Select **Rules**.
-3. Select the **more options** icon for a rule, and then select **Learn more about rule** or select the rule, and then select **Learn More**.
+3. Select the more options icon for a rule, and then select **Learn more about rule** or select the rule, and then select **Learn More**.
 
   The Harness AI Copilot displays the description of the rule and its implications.
 
