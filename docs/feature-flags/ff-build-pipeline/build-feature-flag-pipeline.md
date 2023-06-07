@@ -187,9 +187,9 @@ For more information, go to [Schedule pipeline using triggers](/docs/platform/tr
 
 ## Add chaos experiments to your FF pipeline
 
-You can use Harness Chaos Engineering (CE) to run chaos experiments, which are intentionally designed to disrupt systems to test their resilience and vulnerability to faults. So adding chaos steps to run CE experiments as part of your FF pipeline is a useful way to test the resilience of new software behind a feature flag before releasing that software to users.
+You can use Harness Chaos Engineering (CE) to run chaos experiments, which are intentionally designed to disrupt systems to test their resilience and vulnerability to faults. Adding chaos steps that run CE experiments as part of your FF pipeline is a useful way to test the resilience of new software behind a feature flag before releasing that software to users.
 
-For information, go to [Use CE with Feature Flags](/docs/chaos-engineering/integrations/chaos-ff).
+For more information, go to [Use CE with Feature Flags](/docs/chaos-engineering/integrations/chaos-ff).
 
 ## More information
 
