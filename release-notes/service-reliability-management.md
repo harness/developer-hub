@@ -51,7 +51,8 @@ This release does not include any early access features.
   <TabItem value="Hotfix version 79416">
 ```
 
-This hotfix does not include any customer-facing changes.
+- Released June 5, 2023
+- Does not include customer-facing changes
 
 ```mdx-code-block
   </TabItem>
