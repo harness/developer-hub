@@ -4,6 +4,7 @@ title: Linux service restart
 ---
 
 import Ossupport from './shared/note-supported-os.md'
+import FaultPermissions from './shared/fault-permissions.md'
 
 
 Linux service restart stops the target system services running in a Linux machine.
@@ -16,6 +17,8 @@ Linux service restart stops the target system services running in a Linux machin
 - Determines how efficiently an application recovers and restarts the services.
 
 <Ossupport />
+
+<FaultPermissions />
 
 ## Fault tunables
 <h3>Mandatory tunables</h3>
