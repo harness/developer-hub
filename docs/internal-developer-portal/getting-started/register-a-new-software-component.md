@@ -1,6 +1,6 @@
 ---
-title: Add a new Software Component in the catalog
-description: Learn how you can add a new software component in the IDP Software Catalog.
+title: Add a new software component in the catalog
+description: Learn how you can add a new software component in the IDP software catalog.
 sidebar_position: 30
 helpdocs_topic_id:
 helpdocs_category_id:
@@ -8,11 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Any new Software Component can be registered in the software catalog by creating a `catalog-info.yaml` file in your Git repository and registering its url.
+You can register any new software component with the software catalog by creating a `catalog-info.yaml` file in your Git repository and then registering its URL.
 
 ## Create a new `catalog-info.yaml`
 
-If you want to register an existing software component, navigate to its repository. If it is a mono-repo, navigate to its directory and create a `catalog-info.yaml` at the root of the directory. The file can technically live at any place e.g. `.harness/catalog-info.yaml`. Feel free to use this sample YAML -
+If you want to register an existing software component, navigate to its repository. If it is a mono-repo, navigate to its directory and create a `catalog-info.yaml` at the root of the directory. The file can technically live anywhere (for example, `.harness/catalog-info.yaml`). You can use the following YAML code:
 
 ```yaml
 apiVersion: backstage.io/v1alpha1
@@ -36,16 +36,16 @@ spec:
   system: project-x
 ```
 
-The key fields for you to update here are
+Following are the key fields that you must update:
 
-1. `metadata.name` - This should be a unique name of your component, usually the name of the service.
-2. `metadata.description` - The description of your new component.
-3. `spec.type` - The new software component could be a `service`, `library`, `website` or something else.
-4. `spec.owner` - The user group identifier of the team who owns the component.
+1. `metadata.name`. This should be a unique name for your component. Usually, it is the name of the service.
+2. `metadata.description` - A description for your new component.
+3. `spec.type` - The new software component could be a `service`, `library`, `website`, or any other type.
+4. `spec.owner` - The user group identifier of the team that owns the component.
 
-Once the file is created on your git, copy the full URL to the file e.g. `https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml`.
+Once the file is created in your Git repo, copy the full URL to the file. For example, `https://github.com/harness-community/idp-samples/blob/main/catalog-info.yaml`.
 
-Navigate to the `Create` from the sidebar. Click on the "Register Software Component".
+In the left navigation, select **Create**, and then select **Register Software Component**.
 
 ![](static/create-page-sidebar.png)
 ![](static/create-page.png)

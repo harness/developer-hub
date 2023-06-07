@@ -1,6 +1,6 @@
 ---
-title: Enable module in account
-description: This guide describes the basic steps for getting started with Harness Internal Developer Portal.
+title: Enable the module
+description: Enable the Harness Internal Developer Portal in your account.
 sidebar_position: 10
 helpdocs_topic_id:
 helpdocs_category_id:
@@ -10,6 +10,6 @@ helpdocs_is_published: true
 
 Harness IDP is currently in Beta and is available to a limited set of customers. To get started, send an email to idp-interest@harness.io for a demo and a Harness specialist will get you going.
 
-Once the IDP module is enabled for your account, any one of your account admin can proceed with onboarding of your services and configuring the required plugins.
+Once Harness IDP is enabled in your account, an account administrator can onboard your services and configure the required plugins.
 
-If the module is already made available in your account, check out [setting up IDP](./setting-up-idp.md).
+If the module is enabled and you are an account administrator, go to [Setting up IDP](./setting-up-idp.md).

@@ -1,6 +1,6 @@
 ---
-title: Enable the Docs for your component
-description: Learn how you can enable the TechDocs plugin to show your markdown docs under the "Docs" tab on the catalog page
+title: Enable documentation for your component
+description: Learn how you can enable the TechDocs plugin to show your markdown docs on the Docs tab of the catalog page.
 sidebar_position: 40
 helpdocs_topic_id:
 helpdocs_category_id:
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-By default, the "Docs" tab in your catalog will be empty for a new software component. However, let's quickly get our markdown docs rendered for the component on the "Docs" page in the catalog.
+By default, the Docs tab in your catalog does not include documentation for a new software component. However, you can quickly publish Markdown documentation to the Docs tab.
 
 ![](static/docs-empty.png)
 
@@ -18,7 +18,7 @@ By default, the "Docs" tab in your catalog will be empty for a new software comp
 ```
 # Welcome!
 
-This is a basic example of documentation. It is intended as a showcase of some of the
+This is a basic example of documentation. It is intended to showcase some of the
 features that TechDocs provides out of the box.
 
 ## Basic Markdown
@@ -67,14 +67,14 @@ TechDocs uses MkDocs as the static site generated. Visit https://www.mkdocs.org 
 
 3. Edit the `catalog-info.yaml` and add the TechDocs annotation.
 
-In the `metadata.annotations` field, add `backstage.io/techdocs-ref: dir:.`.
+4. In the `metadata.annotations` field, add `backstage.io/techdocs-ref: dir:.`.
 
 ![](static/techdocs-ref.png)
 
-4. Hit the refresh button on the catalog component page.
+5. Hit the refresh button on the catalog component page.
 
 ![](static/refresh-button.png)
 
-5. Now navigate to the `Docs` tab and your docs will be available shortly!
+6. Navigate to the **Docs** tab to review the documentation, which should become available shortly. 
 
 ![](static/docs-rendered.png)
