@@ -12,6 +12,15 @@ import TabItem from '@theme/TabItem';
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 ```
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
+
 You can build and test a [Ruby](https://www.ruby-lang.org/en/) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
@@ -22,78 +31,9 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 <CISignupTip />
 
-## Build and run tests
-
-Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to build and [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
-
-```mdx-code-block
-<Tabs>
-<TabItem value="Harness Cloud">
-```
-
-```yaml
-              - step:
-                  type: Run
-                  name: npm test
-                  identifier: npm_test
-                  spec:
-                    shell: Sh
-                    command: |-
-                      npm install
-                      npm run build --if-present
-                      npm test
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - report.xml
-```
-
-```mdx-code-block
-</TabItem>
-<TabItem value="Self-hosted">
-```
-
-```yaml
-              - step:
-                  type: Run
-                  name: npm test
-                  identifier: npm test
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: node:latest
-                    shell: Sh
-                    command: |-
-                      npm install
-                      npm run build --if-present
-                      npm test
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - report.xml
-```
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
-
-### Visualize test results
-
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/),  make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification.
-
-```yaml
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - report.xml
-```
-
 ## Install dependencies
 
-Run [Bundler] commands in a **Run** step to install dependencies in the build environment.
+Run [Bundler](https://bundler.io/guides/getting_started.html) commands in a **Run** step to install dependencies in the build environment.
 
 ```mdx-code-block
 <Tabs>
@@ -135,7 +75,9 @@ Run [Bundler] commands in a **Run** step to install dependencies in the build en
 
 :::tip
 
-[Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies. You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
+[Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies.
+
+You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
 
 :::
 
@@ -146,13 +88,20 @@ Run [Bundler] commands in a **Run** step to install dependencies in the build en
 <TabItem value="cloud" label="Harness Cloud" default>
 ```
 
-With Harness Cloud build infrastructure, use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) to automate caching of Node dependencies. Add `caching.enabled.true` to your `stage.spec`.
+<!-- not sure what the cache path is for Ruby. Also update in full pipeline example. -->
+
+You can cache your Ruby dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec` and specify the cache paths (in `paths` and `sharedPaths`).
 
 ```yaml
     - stage:
         spec:
           caching:
             enabled: true
+            key: cache-{{ checksum "gemfile.lock" }} ## ??
+            paths:
+              - "/vendor/cache" ## ?? /vendor/bundle??
+          sharedPaths:
+            - /vendor/cache ## ??
 ```
 
 ```mdx-code-block
@@ -174,10 +123,10 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                   name: Restore Cache From S3
                   identifier: Restore_Cache_From_S3
                   spec:
-                    connectorRef: AWS_Connector
+                    connectorRef: AWS_connector
                     region: us-east-1
-                    bucket: your-s3-bucket
-                    key: cache-{{ checksum filepath1 }}
+                    bucket: some_s3_bucket
+                    key: cache-{{ checksum "gemfile.lock" }} ## ??
                     archiveFormat: Tar
               - step:
                   type: Run
@@ -190,10 +139,10 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                   name: Save Cache to S3
                   identifier: Save_Cache_to_S3
                   spec:
-                    connectorRef: AWS_Connector
+                    connectorRef: AWS_connector
                     region: us-east-1
-                    bucket: your-s3-bucket
-                    key: cache-{{ checksum filepath1 }}
+                    bucket: some_s3_bucket
+                    key: cache-{{ checksum "gemfile.lock" }} ## ??
                     sourcePaths:
                       - directory1
                       - directory2
@@ -202,10 +151,139 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 ```mdx-code-block
 </TabItem>
+<TabItem value="bundler" label="Bundler">
+```
+<!-- is this valid for either Hosted or K8s infra? -->
+
+You can use `bundle cache` in a **Run** step.
+
+<!-- Hosted -->
+```yaml
+              - step:
+                  type: Run
+                  identifier: dependencies
+                  name: Dependencies
+                  spec:
+                    shell: Sh
+                    command: |-
+                      bundle check || bundle install
+```
+
+<!-- K8s -->
+```yaml
+              - step:
+                  type: Run
+                  identifier: dependencies
+                  name: Dependencies
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: ruby:latest
+                    command: |-
+                      bundle cache
+```
+
+```mdx-code-block
+</TabItem>
 </Tabs>
 ```
 
-## Specify version
+## Run tests
+
+Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Harness Cloud">
+```
+
+```yaml
+                - step:
+                  type: Run
+                  name: Run Ruby Tests
+                  identifier: run_ruby_tests
+                  spec:
+                    shell: Sh
+                    command: |-
+                      bundle exec rake test
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Self-hosted">
+```
+
+```yaml
+              - step:
+                  type: Run
+                  name: Run Ruby Tests
+                  identifier: run_ruby_tests
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: ruby:latest
+                    shell: Sh
+                    command: |-
+                      bundle exec rake test
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+### Visualize test results
+
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), your test reports must be in JUnit XML format and your steps must include the `reports` specification. The following examples use the [Minitest JUnit Formatter](https://github.com/aespinosa/minitest-junit). For more information and an RSpec example, go to [Format test reports - Ruby](/docs/continuous-integration/use-ci/set-up-test-intelligence/test-report-ref#ruby).
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Harness Cloud">
+```
+
+```yaml
+              - step:
+                  type: Run
+                  name: Run Ruby Tests
+                  identifier: run_ruby_tests
+                  spec:
+                    shell: Sh
+                    command: |-
+                      bundle exec rake test --junit
+                  reports:
+                    type: JUnit
+                    spec:
+                      paths:
+                        - "/harness/report.xml"
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Self-hosted">
+```
+
+```yaml
+              - step:
+                  type: Run
+                  name: Run Ruby Tests
+                  identifier: run_ruby_tests
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: ruby:latest
+                    shell: Sh
+                    command: |-
+                      bundle exec rake test --junit
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "/harness/report.xml"
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+<!-- commented out due to bug  CI-8203 - ## Specify version
 
 ```mdx-code-block
 <Tabs>
@@ -329,15 +407,16 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
 </TabItem>
 </Tabs>
 ```
+-->
 
 ## Full pipeline examples
 
 Here's a YAML example of a pipeline that:
 
-1. Tests a Node code repo.
+1. Tests a Ruby code repo.
 2. Builds and pushes an image to Docker Hub.
 
-This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence), and [Test Intelligence](/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts).
+This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
 If you copy this example, replace the bracketed values with corresponding values for your Harness project, connector IDs, account/user names, and repo names.
 
@@ -346,21 +425,32 @@ If you copy this example, replace the bracketed values with corresponding values
 
 ```yaml
 pipeline:
-  name: nodejs-sample
-  identifier: nodejssample
-  projectIdentifier: [project-ID]
+  name: ruby
+  identifier: ruby
+  projectIdentifier: YOUR_PROJECT_ID
   orgIdentifier: default
   tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_REPO_NAME
+        build: <+input>
   stages:
     - stage:
-        name: Build Node App
-        identifier: Build_Node_App
+        name: build
+        identifier: build
         description: ""
         type: CI
         spec:
           cloneCodebase: true
           caching:
             enabled: true
+            key: cache-{{ checksum "gemfile.lock" }} ## ??
+            paths:
+              - /vendor/cache ## ?
+          sharedPaths:
+            - /vendor/cache ## ?
           platform:
             os: Linux
             arch: Amd64
@@ -371,29 +461,21 @@ pipeline:
             steps:
               - step:
                   type: Run
-                  name: npm test
-                  identifier: npm_test
+                  identifier: dependencies
+                  name: Dependencies
                   spec:
                     shell: Sh
-                    command: |-
-                      npm install
-                      npm run build --if-present
-                      npm test
+                    command: bundle check || bundle install
               - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1
                   identifier: BuildAndPushDockerRegistry_1
                   spec:
-                    connectorRef: [Docker-connector-ID]
-                    repo: [Docker-Hub-username]/[Docker-repo]
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
+                    repo: YOUR_DOCKER_HUB_USERNAME/YOUR_DOCKER_REPO_NAME
                     tags:
                       - <+pipeline.sequenceId>
-  properties:
-    ci:
-      codebase:
-        connectorRef: [code-repo-connector]
-        repoName: [scm-account-name]/[repo-name]
-        build: <+input>
+
 ```
 
 </details>
