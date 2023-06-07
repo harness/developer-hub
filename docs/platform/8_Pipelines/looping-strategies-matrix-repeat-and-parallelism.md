@@ -150,7 +150,6 @@ The current status of the looping strategy for the node with a specific stage/st
 
 For example, `echo <+strategy.node.get("ShellScript_1").currentStatus>`.
 
-The expressions are available in pipelines during execution and rollback.
 
 ### See also
 
