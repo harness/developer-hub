@@ -84,12 +84,12 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
         </tr>
         <tr> 
           <td> CLUSTER_NAME </td>
-          <td> Name of the target ECS cluster. </td>
+          <td> Name of the target ECS cluster </td>
           <td> For example, <code>cluster-1</code>. </td>
         </tr>
         <tr> 
           <td> SERVICE_NAME </td>
-          <td> Name of the ECS service under chaos. </td>
+          <td> Name of the ECS service under chaos </td>
           <td> For example, <code>nginx-svc</code>. </td>
         </tr>
         <tr>
@@ -107,22 +107,22 @@ Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-spe
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds) </td>
         <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> Interval between successive instance terminations (in seconds).</td>
+        <td> Interval between successive instance terminations (in seconds)</td>
         <td> Defaults to 30s. </td>
       </tr>
       <tr> 
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
-        <td> Path to the AWS secret credentials.</td>
+        <td> Path to the AWS secret credentials</td>
         <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds).  </td>
+        <td> Period to wait before and after injecting chaos (in seconds)  </td>
         <td> For example, 30s. </td>
       </tr>
     </table>
