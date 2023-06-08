@@ -180,7 +180,8 @@ In the **Personal Access Token** field, provide a GitHub [personal access token]
 
 ![](../../static/add-a-git-hub-connector-36.png)
 
-:::info Personal access token permissions
+<details>
+<summary>Personal access token permissions</summary>
 
 To use a personal access token with a GitHub organization that uses SAML single sign-on (SSO), you must first authorize the token, as described in the GitHub documentation on [authorizing a personal access token for use with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/authorizing-a-personal-access-token-for-use-with-saml-single-sign-on).
 
@@ -189,7 +190,7 @@ To use a personal access token with a GitHub organization that uses SAML single 
 
 ![Selecting PAT permission scopes.](./static/git-hub-connector-settings-reference-01.png)
 
-:::
+</details>
 
 ## Connectivity Mode settings
 
@@ -200,7 +201,7 @@ Select whether you want Harness to connect directly to your GitHub account or re
 
 If you select **Connect through the Harness Platform**, the Harness Manager exchanges a key pair with the Secrets Manager configured in Harness using an encrypted connection. Next, the Harness Manager uses the encrypted key and the encrypted secret and then discards them. The keys never leave the Harness Manager. Secrets are always encrypted in transit, in memory, and in the Harness database.
 
-**Connect through a Harness Delegate**, a [Harness Delegate](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) handles the connection. This option is often used for [Harness Self-Managed Enterprise Edition Overview](../../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md).
+**Connect through a Harness Delegate**, a [Harness Delegate](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) handles the connection. This option is often used for [Harness Self-Managed Enterprise Edition Overview](/docs/self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview).
 
 </details>
 

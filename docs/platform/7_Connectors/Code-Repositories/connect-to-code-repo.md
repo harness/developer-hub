@@ -45,7 +45,7 @@ For instructions on setting up the IAM user for CodeCommit connections, go to th
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="codecommit" label="AWS CodeCommit Connector" default>
+  <TabItem value="codecommit" label="AWS CodeCommit connector" default>
 ```
 <!-- I think this needs to be revised because the instructions here don't match the "Settings reference" topic, and I don't see an AWS CodeCommit option under Code Repos in the connector drawer -->
 
