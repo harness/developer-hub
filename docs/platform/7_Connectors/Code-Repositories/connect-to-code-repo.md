@@ -1,7 +1,7 @@
 ---
 title: Connect to a Git repository
 description: Learn about Harness code repository connectors.
-sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: zbhehjzsnv
 helpdocs_category_id: o1zhrfo8n5
 helpdocs_is_private: false
@@ -15,33 +15,17 @@ import TabItem from '@theme/TabItem';
 
 Harness code repository connectors connect your Harness account with your Git platform. Connectors are used to pull code as well as other important files, such as Helm charts, Kubernetes manifests, and Terraform scripts, from your Git repos.
 
-## Connect to Your Git Repositories
-
-You can add a Code Repo Connector to the Account, Org, or Project scope. This topic will explain how to add it to the Project scope. The process is the same for Org and Account. 
-
-## Important notes
-
-Currently, this feature is behind the feature flag, `OPTIMIZED_GIT_FETCH_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection may time out. 
-
-Enable the feature flag, `OPTIMIZED_GIT_FETCH_FILES` to fetch very large repositories from Azure Repo. When this feature flag is enabled, Harness will use provider-specific APIs to improve performance.
-
-:::info
-
-If the `OPTIMIZED_GIT_FETCH_FILES` feature flag is enabled, and the GitHub organization has SAML enabled, the token must be SAML authorized to access the organization even if the repository is public. For more information, go to [GitHub authentication with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/about-authentication-with-saml-single-sign-on).
-
-:::
+You can add code repo connectors at the account, organization, or project scopes. This topic assumes you're adding connectors at the project scope, but the process is the same for the other scopes.
 
 ## Permissions
 
-In general, the Git provider user account you use to set up the Connector needs the same permissions it would need if you were working from Git.
+In general, the Git provider user account you use to set up a connector needs the same permissions it would need if you were working from Git.
 
-So, if you are using the Harness Connector to pull manifests from a repo, the user account you use in the Connector must have a `read repo` permission for your Git provider.
+This means that, if you are using a Harness code repo connector to pull manifests from a repo, then the user account you use in the connector must have `read repo` (or equivalent) permissions in your Git provider.
 
-For Harness Git Experience, see [Source Code Manager Settings](../../7_Connectors/Code-Repositories/ref-source-repo-provider/source-code-manager-settings.md).
+For permissions in the Harness Git Experience, go to [Source Code Manager Settings](./ref-source-repo-provider/source-code-manager-settings.md).
 
-A public Git repo does not require a username and password/token. Harness does not validate public Git repo credentials.
+<!-- I don't believe these two sentences are true; all connectors require auth, even for read-only and public repos:  Public Git repos don't require a username and password/token. Harness does not validate public Git repo credentials. -->
 
 ## Connect to AWS CodeCommit
 
@@ -113,86 +97,51 @@ With the generic Git connector, you must use a username and password for the IAM
 
 Azure Repos is a set of version control tools that you can use to manage your code. Azure Repos provide the following kinds of version control:
 
-- Git: distributed version control
-- Team Foundation Version Control (TFVC): centralized version control
+- Git: Distributed version control
+- Team Foundation Version Control (TFVC): Centralized version control
 
-For steps on connecting Harness to Azure Repo, go to [Connect to Azure Repos](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo).
+For instructions, go to [Connect to Azure Repos](./connect-to-a-azure-repo.md).
 
 ## Connect to Bitbucket
 
-:::note
-
-For more details on the settings to create this connector, see [Bitbucket Connector Settings Reference](../../7_Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference.md).
-
 Harness supports both Cloud and Data Center (On-Prem) versions of Bitbucket.
 
-:::
-
-1. Open a Harness Project.
-2. In **Project Setup**, click **Connectors**.
-3. Click **New Connector**, and click **Bitbucket** in **Code Repositories**. The Bitbucket settings appear.
-4. In **Name**, enter a name for this connector.
-5. Select **Account** or **Repository** in **URL Type**.
-6. Select **Connection Type** as **HTTP** or **SSH**. For more information, see [Connection Type](../../7_Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference.md#connection-type).
-7. Enter your **Bitbucket Account URL**.  
-For **HTTP**, the format for the URL should be `https://bitbucket.org/<userName>/<repoName>.git`.
-8. In **Test Repository**, enter your repository name to test the connection.
-9. Click **Save and Continue**.
-10. Enter your **Username**.
-11. In **Secret Key** you can either create a new [Encrypted Text](../../Secrets/2-add-use-text-secrets.md) or use an existing one.
-12. Click **Continue**.
-13. In **Setup Delegates**, you can choose **Connect via any delegate** or **Connect only via delegates which has all of the following tags**.
-14. Click **Save and Continue**.
-15. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
+1. In your Harness project, select **Connectors** under **Project Setup**.
+2. Select **New Connector**, and select **Bitbucket** under **Code Repositories**.
+3. Configure the [Bitbucket connector settings](./ref-source-repo-provider/bitbucket-connector-settings-reference.md).
+4. After the connection test runs, select **Finish** to save the connector.
 
 ## Connect to GitHub
 
-See [Add a GitHub Connector](./add-a-git-hub-connector.md).
+1. In your Harness project, select **Connectors** under **Project Setup**.
+2. Select **New Connector**, and select **GitHub** under **Code Repositories**.
+3. Configure the [GitHub connector settings](./ref-source-repo-provider/git-hub-connector-settings-reference.md).
+4. After the connection test runs, select **Finish** to save the connector.
 
 ## Connect to GitLab
 
-:::note
-For more details on the settings to create this connector, see [GitLab Connector Settings Reference](../../7_Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference.md).
-
-:::
-
-1. Open a Harness Project.
-2. In **Project Setup**, click **Connectors**.
-3. Click **New Connector**, and click **GitLab** in **Code Repositories**. The GitLab Connector settings appear.
-4. In **Name**, enter a name for this connector.
-5. Select **Account** or **Repository** in **URL Type**.
-6. Select **Connection Type** as **HTTP** or **SSH**. For more information, see [Connection Type](../../7_Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference.md#connection-type).
-7. Enter your **GitLab Account URL**.
-8. In **Test Repository**, enter your repository name to test the connection.
-9. Click **Continue**.
-10. In **Credentials,** Enter your **Username**.
-11. In **Secret Key** you can either create a new [Encrypted Text](../../Secrets/2-add-use-text-secrets.md) or use an existing one.
-12. Click **Continue**.
-13. In **Setup Delegates**, you can choose **Connect via any delegate** or **Connect only via delegates which has all of the following tags**.
-14. Click **Save and Continue**.
-15. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
+1. In your Harness project, select **Connectors** under **Project Setup**.
+2. Select **New Connector**, and select **GitLab** under **Code Repositories**.
+3. Configure the [GitLab connector settings](./ref-source-repo-provider/git-lab-connector-settings-reference.md).
+4. After the connection test runs, select **Finish** to save the connector.
 
 ## Use the platform-agnostic Git connector
 
-In most cases, you'll want to add a Connector for a popular Git provider like GitHub, described in [Add a GitHub Connector](./add-a-git-hub-connector.md). You can also add a platform-agnostic connection to a Git provider using **Git Repo**.
+If Harness doesn't have a dedicated code repo connector for your Git provider, or your configuration prevents you from using the platform-specific code repo connector, you can use the platform-agnostic Git connector.
 
-For more details on the settings to create this connector, see [Git Connector Settings Reference](../../7_Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference.md).
+1. In your Harness project, select **Connectors** under **Project Setup**.
+2. Select **New Connector**, and select **Git** under **Code Repositories**.
+3. Configure the [Git connector settings](./ref-source-repo-provider/git-connector-settings-reference.md).
+4. After the connection test runs, select **Finish** to save the connector.
 
-1. In your **Project** select a module such as CD.
-2. In **Project Setup**, click **Connectors**.
-3. Click **New Connector**, and click **Git** in **Code Repositories**. The Git settings appear.
-   
-   ![](../static/connect-to-code-repo-08.png)
+## Network connection times out when fetching large repos
 
-4. In **Name**, enter a name for this connector.
-5. Select **Account** (which is an Organization) or **Repository** in **URL Type**.
-6. Select **Connection Type** as **HTTP** or **SSH**. For more information, see [Connection Type](../../7_Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference.md#connection-type).
-7. Enter the Git Account (org) or repo URL.
-8. If you selected **Account**, in **Test Repository**, enter a repository name to test the connection.
-9. Click **Continue**.
-10. In **Credentials,** Enter your **Username**.
-11. In **Secret Key** you can either create a new [Encrypted Text](../../Secrets/2-add-use-text-secrets.md) or use an existing one.
-12. Click **Continue**.
-13. In **Setup Delegates**, you can choose **Connect via any delegate** or **Connect only via delegates which has all of the following tags**.
-14. Click **Save and Continue**.
-15. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
+Currently, the fetch optimization feature is behind the feature flag `OPTIMIZED_GIT_FETCH_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+Harness performs a `git clone` to fetch files. When fetching very large repositories, the network connection can time out. With fetch optimization enabled, Harness uses provider-specific APIs to improve performance when fetching very large repos.
+
+:::info Optimized fetching for GitHub orgs with SAML
+
+If the `OPTIMIZED_GIT_FETCH_FILES` feature flag is enabled, and your GitHub organization has SAML enabled, the token must be SAML-authorized to access the organization, even if the repository is public. For more information, go to the GitHub documentation on [GitHub authentication with SAML single sign-on](https://docs.github.com/en/enterprise-cloud@latest/authentication/authenticating-with-saml-single-sign-on/about-authentication-with-saml-single-sign-on).
+
+:::

@@ -67,6 +67,12 @@ In the **GitHub Repository URL** field, provide the complete URL to the GitHub r
 </Tabs>
 ```
 
+:::info GitHub Enterprise URLs
+
+For Github Enterprise, the URL must include your hostname and the organization name, such as `https://mygithub.com/harness/repo-name.git` or `git@mygithub.com:harness/repo-name.git`. In these examples `mygithub.com` is the hostname and `harness` is the organization name.
+
+:::
+
 ## Credentials settings
 
 Provide authentication credentials for the connector.
@@ -171,6 +177,8 @@ This setting is only available for connection types and authentication methods w
 You must enable API access to use Git-based triggers, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required. API access requires personal access token authentication.
 
 In the **Personal Access Token** field, provide a GitHub [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) as a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md). If you selected **Username and Token** authentication, use the same personal access token secret for both **Personal Access Token** fields.
+
+![](../../static/add-a-git-hub-connector-36.png)
 
 :::info Personal access token permissions
 
