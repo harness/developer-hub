@@ -18,12 +18,49 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
-## Latest - May 25, 2023, version 1.54.1
+## Latest - June 8, 2023, version 1.57.4
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+* Added the existing Typescript scanning library to Sonarqube scans so that Typescript is always supported. (STO-6007)
+* Added a `product_zip_max_size` setting to Checkmarx scans that enable you to override the maximum size of ZIP files uploaded to the STO pipeline (the default size is 200 MB). To override this setting in a Checkmarx scan step, add the `product_zip_max_size` setting and value under **Settings (*optional*)**. 
+
+  ![](./static/checkmarx-zip-size-override-sto-5991.png)
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not incude early-access features. 
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+* Fixed an issue where STO results were not showing up in output variables when using STO outside of a template or a step group. (STO-6444, ZD-45802)
+
+* Updated the Golang library used in STO code to remediate CVE-2022-21698. (STO-5993) 
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Latest - May 25, 2023, version 1.54.1
+
+##### New features
 
 * This release include new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
 
@@ -40,33 +77,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * This release includes a minor UI update. In **Security Tests** > **Details**, the **Exempt** button has been renamed to **Request Exemption** to make the button's purpose more clear. (STO-5928)
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early-access features
 
 This release does not incude early-access features. 
 
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
 
 * Fixed a UI issue where **Security Tests** would briefly display the message "No issues were found" when the window initially loaded. (STO-5927)
 
 * Fixed an issue in non-Kubernetes builds where a scan would not produce output variables. This meant that failing a pipeline using `fail_on_severity` was not supported on non-Kubernetes builds.  Now, STO can generate output variables and fail pipelines using `fail_on_severity` on all supported build infrastructures. (STO-5483)
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 17, 2023, version 1.53.0
 
