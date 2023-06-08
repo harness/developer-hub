@@ -31,10 +31,10 @@ Harness NextGen release 795xx includes the following changes for the Harness Del
 
 This release introduces the following new features and enhancements:
 
-- Kubernetes deployments support horizontal pod autoscaling and pod disruption budget for Blue Green and Canary execution strategies. (CDS-59011)
+- Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. (CDS-59011)
 
 - Send emails to non-Harness users. (CDS-58625, ZD-42496)
-
+  
   To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
 
   For more information on how to send emails to non-Harness users, go to [Email step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
@@ -50,13 +50,13 @@ This release introduces the following new features and enhancements:
 This release includes the following early access features and enhancements:
 
 - Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
-
+  
   This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`. 
 
   This functionality helps you efficiently manage your resources. The scale down step can be configured within the same stage or different stage based on your requirement.
 
-  During scale down, the Horizontal Pod AutoScaler and Pod Disruption Budget resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green deployment are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
-
+  During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green deployment are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
+  
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
@@ -68,49 +68,41 @@ This release includes the following fixes:
 
 - Unable to create SLO using SignalFX metrics. (OIP-406)
 
-This issue has been resolved. Now, SignalFX's health source supports SLI functionality, and you can create SLOs using SignalFX metrics.
+  This issue has been resolved. Now, SignalFX's health source supports SLI functionality, and you can create SLOs using SignalFX metrics.
 
 - Fixed an issue where Harness was unable to retrieve the Git status or push updates to Azure repos with project names with white spaces. (CI-8105, ZD-44679)
 
-   This issue is fixed.
+  This issue is fixed.
 
-- Spot deployments failed to retrieve instance health and expired. (CDS-56451, ZD-41436)
+- Spot Elastigroup deployments failed to fetch instance health and expired. (CDS-56451, ZD-41436)
+  
+  Harness improved the handling mechanism for the Spot `instanceHealthiness` API to fix this issue.
 
-  This issue is fixed by adding an error handler for the spot `instanceHealthiness` API.
+- A force delete option appeared when deleting a template referenced by another template. This deleted the referenced template, but the remaining versions were no longer visible on the UI. (CDS-68683)
+  
+  Added additional test coverage for some workflows to resolve this issue.
 
-- When you delete a template referenced by another template, Harness includes a force delete option. The force delete option incorrectly removed all template versions from Harness. (CDS-68683)
+- Fixed an issue where error logs were removed to stop error flooding into GCP logs when Git authentication fails. (CDS-68760)
 
-   This issue was fixed with a code enhancement. The force delete option no longer removes all template versions when you delete referenced templates.
+- Fixed an issue where strings were interpreted as scientific notations. (CDS-69063, ZD-44206)
 
-- Reduced error logging for failed Git authentication attempts. (CDS-68760)
+- Input values needed in steps or stages for execution failed with the error: `Cannot update execution status for the PlanExecution [execution Id] with RUNNING`. (CDS-69342, ZD-44344)
+  
+  This error occurred when converting YAML to JSON. A code enhancement fixed this issue. With this enhancement, quotes inside the field YAML are escaped, resulting in valid YAML.
 
-- Input string pipeline variables that included letter and numbers were interpreted as scientific notation. For example, 97e0087 was interpreted as 9.7E88. (CDS-69063, ZD-44206)
+- The pipeline execution error message for YAML related errors was unclear. (CDS-69576)
+  
+  Improved error message handling for YAML processing failures. The error message now display files that contain errors and points to the problematic part of the file. 
 
-   This issue was fixed with a code enhancement by adding quotes around strings in this format.
+- Bamboo triggers were not working properly. (CDS-69605)
+  
+  Adding the Bamboo build to the delegate response resolved this issue. 
 
-- Input values during stage and step execution failed with errors. (CDS-69342, ZD-4344)
+- Certificate issues in Harness Delegate version 23.05.79307. (CDS-70410, ZD-45105, ZD-45110, ZD-45128)
+  
+  The HTTP step was failing due to absence of the `certificate` value in the step. In previous delegate versions, the delegate would bypass the absence of this field. However, in delegate version 23.05.79307, this field was incorrectly set as mandatory for HTTP step execution for validations against servers that had self-signed certificates. This issue is fixed.
 
-   This issue is fixed. The execution input helper is updated to use JsonNode. With this change, quotes inside the fields are escaped, resulting in valid YAML.
-
-- The error message displayed for pipeline execution failures was unclear. (CDS-69576)
-
-   The error message is now updated to convey the error properly when YAML processing fails.
-
-- Bamboo triggers weren't working correctly. (CDS-69605)
-
-   This issue was fixed by adding the Bamboo build to the delegate response.
-
-- The HTTP step failed when the **Certificate** field did not include a value when validated against servers with self-signed certificates. In previous versions, the field was not required. (CDS-70410, ZD-45105, ZD-45110, ZD-45128)
-
-   This issue was fixed with a code enhancement. The **Certificate** field is no longer required in the HTTP step. 
-
-- `eventPayload` trigger expressions did not resolve when failed pipelines were restarted. (CDS-70559)
-
-  This issue is fixed and `eventPayload` trigger expressions now resolve when you restart failed pipelines.
-
-- Instance Sync for rolling deployments took the new instances and left earlier instances in place when the index matched. (CDS-70825)
-
-   This issue is fixed. Instance Sync for rolling deployments no longer retain earlier instances.
+- Fixed an issue where the `eventPayload` expressions were not resolving when rerunning a failed pipeline that was previously fired by using a trigger. (CDS-70559)
 
 ```mdx-code-block
   </TabItem>
