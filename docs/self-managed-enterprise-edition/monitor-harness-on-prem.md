@@ -168,7 +168,7 @@ Use the following overrides when you install or upgrade your Harness Helm charts
 
 ```yaml
 platform:
-  mongo:
+  mongodb:
     metrics:
       enabled: true
     podAnnotations:
