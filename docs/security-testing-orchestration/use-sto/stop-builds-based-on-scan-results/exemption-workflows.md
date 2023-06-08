@@ -1,10 +1,10 @@
 ---
-title: Exemptions (Ignore Rules) for Specific Issues
+title: Exemptions ("ignore rules") for specific issues
 description: You can specify exemptions (ignore rules) for specific security issues. An ignore rule allows pipeline builds to proceed even if a security scan detects an issue. 
 sidebar_position: 60
 ---
 
-The `fail_on_severity` setting causes a pipeline build to fail if a Security Scan step detects one or more issues with the specified severity (Critical, High, Medium, etc.). Your organization can create "Ignore rules" for specific issues to override this behavior. If an Ignore rule is approved, a build can proceed even if a scan detects that issue.  
+The `fail_on_severity` setting causes a pipeline build to fail if a Security Scan step detects one or more issues with the specified severity (Critical, High, Medium, etc.). Your organization can create exemptions ("Ignore rules") for specific issues to override this behavior. If an exemption is approved, a build can proceed even if a scan detects that issue.  
 
 :::note 
 Developers and SecOps users can request exemptions, but only SecOps users can approve them.
@@ -18,7 +18,7 @@ This topic assumes that you have the following:
 * The pipeline has a Security scan step with a configured `fail_on_severity` setting.
 * At least one successful build with a set of detected security issues.  
 
-## Request an Ignore Rule (_Developers or SecOps users_) 
+## Request an exemption (_Developers or SecOps users_) 
      
 1. Go to the Security Tests page for the build: In the Pipeline studio, click **Execution History** (top right) or **Pipeline Executions** (left menu). Then go to a successful build.  
 
@@ -74,7 +74,7 @@ An exemption, if approved, overrides the default behavior for running a pipeline
 * Each security step should have a `fail_on_severity` setting. If the step detects any issue with the specified severity or higher, the build fails. 
 * Each exemption applies to one specific issue. The rule allows the pipeline to proceed even if the scan detects that issue.    
 
-### Review an Ignore Rule 
+### Review an exemption
 
 1. You should receive a notification from a developer that includes a URL to the relevant issue. Go to the URL provided.
  
@@ -88,7 +88,7 @@ An exemption, if approved, overrides the default behavior for running a pipeline
 
   ![](../static/exemption-issue-details.png)  
           
-### Review all Ignore Rules
+### Review all exemptions
 
 You can review all exemptions in the current project in the **Security Review** page. 
 
