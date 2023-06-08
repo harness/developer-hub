@@ -1,6 +1,6 @@
 ---
 title: GitLab connector settings reference
-description: Add a GitLab connector.
+description: Connect to a GitLab account or repository.
 sidebar_position: 40
 helpdocs_topic_id: 5abnoghjgo
 helpdocs_category_id: xyexvcc206
@@ -45,10 +45,10 @@ import TabItem from '@theme/TabItem';
   <TabItem value="account" label="URL Type: Account" default>
 ```
 
-In the **GitLab Account URL** field, provide only the account-identifying portion of the GitLab URL, such as `https://gitlab.com/YOUR_ACCOUNT_NAME/`. Do not include any repo name or project name. The URL format depends on the **Connection Type**:
+In the **GitLab Account URL** field, provide only the account-identifying portion of the GitLab URL, such as `https://gitlab.com/YOUR_ACCOUNT_NAME/`. Do not include a repo name. The URL format depends on the **Connection Type**:
 
 * **HTTP:** `https://gitlab.com/YOUR_ACCOUNT_NAME/`
-* **SSH:** `git@gitlab.com:YOUR_ACCOUNT_/`
+* **SSH:** `git@gitlab.com:YOUR_ACCOUNT_NAME/`
 
 ### Test Repository
 
@@ -91,18 +91,6 @@ Authentication is required for all accounts and repos, including read-only repos
 2. In the **Username** field, enter `git`. Do not enter any other value besides `git`.
 3. In the **Password** field, provide your GitLab account password as a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
 
-#### Enable API access
-
-This setting is only available for HTTP connections that use **Username and Password** or **Username and Token** authentication. API access is enabled by default for other authentication methods.
-
-You must enable API access to use Git-based triggers, Git Sync, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required. API access requires personal access token authentication.
-
-In the **Personal Access Token** field, provide a GitLab [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) as a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
-
-Make sure your personal access token has the following permissions: `api`, `read_repository`, and `write_repository`.
-
-![](./static/git-lab-connector-settings-reference-04.png)
-
 ```mdx-code-block
   </TabItem>
   <TabItem value="usertoken" label="Username and Token" default>
@@ -112,17 +100,13 @@ Make sure your personal access token has the following permissions: `api`, `read
 2. In the **Username** field, enter `git`. Do not enter any other value besides `git`.
 3. In the **Personal Access Token** field, provide a GitLab [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) as a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
 
+:::info Personal access token permissions
+
 Make sure your personal access token has the following permissions: `api`, `read_repository`, and `write_repository`.
 
 ![](./static/git-lab-connector-settings-reference-04.png)
 
-#### Enable API access
-
-This setting is only available for HTTP connections that use **Username and Password** or **Username and Token** authentication. API access is enabled by default for other authentication methods.
-
-You must enable API access to use Git-based triggers, Git Sync, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required. API access requires personal access token authentication.
-
-In the **Personal Access Token** field, provide the same personal access token secret you used for the other **Personal Access Token** field.
+:::
 
 ```mdx-code-block
   </TabItem>
@@ -165,6 +149,22 @@ To sync with GitLab, you must generate an SSH key pair and add the SSH key to yo
   </TabItem>
 </Tabs>
 ```
+
+### Enable API access
+
+This setting is only available for connection types and authentication methods where it is not enabled by default.
+
+You must enable API access to use Git-based triggers, Git Sync, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required. API access requires personal access token authentication.
+
+In the **Personal Access Token** field, provide a GitLab [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) as a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md). If you selected **Username and Token** authentication, use the same personal access token secret for both **Personal Access Token** fields.
+
+:::info Personal access token permissions
+
+Make sure your personal access token has the following permissions: `api`, `read_repository`, and `write_repository`.
+
+![](./static/git-lab-connector-settings-reference-04.png)
+
+:::
 
 ## Connectivity Mode settings
 
