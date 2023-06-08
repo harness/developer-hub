@@ -24,12 +24,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - The variables defined at a pipeline level can be used with the SSH Command step, and can be referenced using `$VariableName` inside the script. This is applicable for secrets as well. (CDS-70189)
 
   For more information, go to [Command step output variables](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step/#output-variables).
-- Added support to retrieve the current status of the strategy nodes during execution by using expressions. (CDS-69780)
+- Added expressions to retrieve the current execution status of the [looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for nodes (stages/steps) using a matrix or repeat strategy. (CDS-69780)
   
-  Harness has introduced the following expressions to retrieve the current status of the strategy node during pipeline execution: 
-  * `<+strategy.currentStatus>`: Retrieves the `currentStatus` of the strategy node with the maximum depth.
-  * `<+strategy.node.strategyNodeIdentifier.currentStatus>`: Retrieves the `currentStatus` of the strategy node with a specific identifier, `strategyNodeIdentifier`.
-  * `<+strategy.node.get("strategyNodeIdentifier").currentStatus>`: Retrieves the `currentStatus` of the strategy node with a specific identifier, `strategyNodeIdentifier`.
+  The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
+  
+  Harness has introduced the following expressions to retrieve the current status of the node (stage/step) using a looping strategy: 
+  * `<+strategy.currentStatus>`: Retrieves the current status of the node with the maximum depth.
+  * `<+strategy.node.[strategyNodeIdentifier].currentStatus>`: Retrieves the current status of the node with a specific stage/step identifier, `strategyNodeIdentifier`. For example, `echo <+strategy.node.cs1.currentStatus>`.
+  * `<+strategy.node.get("[strategyNodeIdentifier]").currentStatus>`: Retrieves the current status of the node with a specific stage/step identifier, `strategyNodeIdentifier`. For example, `echo <+strategy.node.get("ShellScript_1").currentStatus>`.
 - If any entities referenced in a pipeline are updated, a warning now appears in Pipeline Studio saying that reconciliation is needed. Previously, this warning appeared only when you manually tried to reconcile. (CDS-69672)
 - The Harness Approval step now supports scheduled automatic approvals. (CDS-69415)
   
@@ -50,7 +52,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   Previously, in the YAML view, suggestions for long expressions ended with an ellipsis, and the entire expression didn't appear properly.
   
   The suggestions widget is now updated with a read more icon. You can select the icon or use Ctrl + Space to view the complete expression string. The read more icon appears only for the active suggestion item. You can use the Up and Down arrow keys to switch between different suggestion items.
-- Kubernetes deployments support horizontal pod autoscaling and pod disruption budget for Blue Green and Canary execution strategies. (CDS-59011)
+- Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. (CDS-59011)
   
   Harness Manager Delegate version 79500 is required for this feature.
 - Send emails to non-Harness users. (CDS-58625, ZD-42496)
@@ -72,7 +74,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   This functionality helps you efficiently manage your resources. The scale down step can be configured within the same stage or different stage based on your requirement.
 
-  During scale down, the Horizontal Pod AutoScaler and Pod Disruption Budget resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green deployment are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
+  During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green deployment are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
   Harness Manager Delegate version 79500 is required for this feature.
   
@@ -82,28 +84,27 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="Fixed issues">
 ```
 
-- Links to Org or Account level service or environment in a pipeline were redirecting to the Project level entities. (CDS-70607)
+- Links to org or account level service or environment in a pipeline were redirecting to the project level entities. (CDS-70607)
   
-  This issue is fixed by adding correct links to Org and Account level services and environments in the pipeline Deployments page.
+  This issue is fixed by adding correct links to org and account level services and environments in the pipeline Deployments page.
 - Unable to trigger pipelines using custom webhook triggers because the latest enhancement to custom webhook triggers requires a unique token for authentication. (CDS-70320, ZD-45022)
   
-  This issue is fixed by introducing a new API for custom webhook triggers, `/v3` that contains the token required for authenticating webhook triggers. 
+  This issue was caused by introducing a new API for custom webhook triggers, `/v3`, that generates a token for authenticating webhook triggers. You can see the token when you copy the trigger cURL command in Harness. This issues is fixed by allowing users to continue to use the previous API, `v2`, when the feature flag `SPG_DISABLE_CUSTOM_WEBHOOK_V3_URL` is enabled.
 - Fixed an issue to honor default values in runtime inputs when trying to reconcile. (CDS-70075, ZD-44892)
-- The `lastYamlToMerge` field in the Input Set reference API didn't display any values. (CDS-70048, ZD-44855)
+- The `lastYamlToMerge` parameter in the [pipeline execution with input set API](https://apidocs.harness.io/tag/Pipeline-Execute#operation/postPipelineExecuteWithInputSetList) didn't display any values. (CDS-70048, ZD-44855)
   
   To execute a pipeline with Input Set references, there is an optional field, `lastYamlToMerge` in the API request body. The values set for the `lastYamlToMerge` field were not acknowledged.
 
   This issue is fixed by acknowledging and properly overriding the `lastYamlToMerge` value. For more details, go to [Execute a pipeline with input set references](https://apidocs.harness.io/tag/Pipeline-Execute#operation/postPipelineExecuteWithInputSetList).
 - Support has been added to poll the get approval API to fetch and update the ticket status field for JIRA and ServiceNow approvals. (CDS-69770)
-- When Git back-end entities are referenced, the Artifactory triggers are validated before firing the trigger. (CDS-69727, ZD-44713)
-- Fixed an issue preventing the pipelines from running caused due to the update in YAML when moving step groups by dragging and dropping them in Pipeline Studio. (CDS-69622, ZD-44481)
+- When Git-backend entities are referenced in a trigger, the inputs are validated before firing the trigger. (CDS-69727, ZD-44713)
+- Fixed an issue preventing pipelines from running due to YAML updates made when moving step groups in Pipeline Studio. (CDS-69622, ZD-44481)
 - Unable to make a variable for a pipeline mandatory. (CDS-69597, ZD-44438, ZD-45217)
   
   This issue is fixed by adding required fields for variables. Validation is added to throw error if any required variable field is empty. Harness no longer allow empty values for variables that are marked as required in the YAML. 
   
-  By default, the required field for any newly created variable in the YAML is set to `false`. Also, if required field is missing in the YAML, it is considered as `false`. 
+  By default, the required field for any newly created variable in the YAML is set to `false`. Also, if the `required` field is missing in the YAML, it is considered as `false`. 
   
-  The UI changes for this issue will be available in the upcoming release.
 - Fixed an issue where deployment freeze notifications were not being sent when a freeze window was activated. (CDS-69455)
 - The expression, `<+artifacts.primary.identifier>` was not working properly for Google Cloud Storage deployments. (CDS-68993, ZD-44217)
   
@@ -116,30 +117,30 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Harness Manager Delegate fixed issues
 
-The fixed issues below is available with version 79500 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
+The fixed issues below are available with version 79500 and do not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
 
 - Fixed an issue where the `eventPayload` expressions were not resolving when rerunning a failed pipeline that was previously fired by using a trigger. (CDS-70559)
 
 - Certificate issues in Harness Delegate version 23.05.79307. (CDS-70410, ZD-45105, ZD-45110, ZD-45128)
   
-  The HTTP step was failing due to absence of the `certificate` value in the step. In previous delegate versions, system would bypass the absence of this field. However, in Harness Delegate version 23.05.79307, this field was incorrectly set as mandatory for HTTP steps execution for validations against servers that had self-signed certificates. This issue is fixed.
+  The HTTP step was failing due to absence of the `certificate` value in the step. In previous delegate versions, the delegate would bypass the absence of this field. However, in delegate version 23.05.79307, this field was incorrectly set as mandatory for HTTP step execution for validations against servers that had self-signed certificates. This issue is fixed.
 - Bamboo triggers were not working properly. (CDS-69605)
   
   Adding the Bamboo build to the delegate response resolved this issue. 
-- The pipeline execution error message for YAML related errors were unclear. (CDS-69576)
+- The pipeline execution error message for YAML related errors was unclear. (CDS-69576)
   
-  Improved error message handling for YAML processing fails. The error message now display files that contain errors and points to the problematic part of the file. 
-- Step or stage requested input values during execution and failed with the error: `Cannot update execution status for the PlanExecution IZCFwQMXR5uSv_RxC7fqCA with RUNNING`. (CDS-69342, ZD-44344)
+  Improved error message handling for YAML processing failures. The error message now display files that contain errors and points to the problematic part of the file. 
+- Input values needed in steps or stages for execution failed with the error: `Cannot update execution status for the PlanExecution [execution Id] with RUNNING`. (CDS-69342, ZD-44344)
   
-  A code enhancement fixed this issue. With this enhancement, the quotes inside the field YAML can be escaped resulting in a valid YAML.
+  This error occurred when converting YAML to JSON. A code enhancement fixed this issue. With this enhancement, quotes inside the field YAML are escaped, resulting in valid YAML.
 - Fixed an issue where strings were interpreted as scientific notations. (CDS-69063, ZD-44206)
 - Fixed an issue where error logs were removed to stop error flooding into GCP logs when Git authentication fails. (CDS-68760)
-- A force delete option appeared when deleting a template referenced by another template. Enabling force delete deleted the referenced template but the remaining versions were no longer visible on the UI. (CDS-68683)
+- A force delete option appeared when deleting a template referenced by another template. This deleted the referenced template, but the remaining versions were no longer visible on the UI. (CDS-68683)
   
   Added additional test coverage for some workflows to resolve this issue.
-- Spot Elastigroup deployments failed to fetch the instance health, and expired. (CDS-56451, ZD-41436)
+- Spot Elastigroup deployments failed to fetch instance health and expired. (CDS-56451, ZD-41436)
   
-  A better error handling mechanism for Spot `instanceHealthiness` API fixed this issue.
+  Harness improved the handling mechanism for the Spot `instanceHealthiness` API to fix this issue.
 
 ```mdx-code-block
   </TabItem>
