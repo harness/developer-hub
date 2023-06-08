@@ -10,7 +10,7 @@ The ECS Fargate CPU Hog experiment enables you to intentionally increase the CPU
 ## Use cases
 
 - Tests the behavior of your ECS tasks subjected to CPU stress, and validates the resilience and performance of your ECS tasks during the stress.
-- This involves employing a sidecar container to augment the CPU utilization of an ECS task, which may result in latency issues impacting the performance of the main container.
+- Involves employing a sidecar container to augment the CPU utilization of an ECS task, which may result in latency issues impacting the performance of the main container.
 - Validates the behavior of your application and infrastructure during a heavy CPU load, such as:
   - Testing the resilience of your system during stress, including verifying if the latency of the main container is increased and if the container fail to survive.
 
