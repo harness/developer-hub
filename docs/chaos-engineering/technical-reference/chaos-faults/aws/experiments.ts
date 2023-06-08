@@ -356,7 +356,7 @@ export const experiments: ExperimentDetails[] = [
   {
     name: "NLB AZ down",
     description:
-      "NLB AZ Down induces chaos restricts access to specific availability zones by blocking the subnet ACL for a specified duration",
+      "NLB AZ Down induces chaos to restrict access to specific availability zones by blocking the subnet ACL for a specified duration",
     tags: [],
     category: "aws",
   },
