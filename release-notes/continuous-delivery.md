@@ -111,9 +111,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - SSH pipelines with GCR artifacts ran without populating the required runtime inputs. (CDS-55689)
   
   Fixed this issue by adding proper validations to GCR artifacts used for SSH pipelines.
-- The Java object output values of expressions were incorrectly converted to string type using the `String.valueOf` method resulting in incorrect formatting. (CDS-71619)
-
-  This issue is fixed and the output values for expressions are now returned as JSON objects.
+- The expressions corresponding to objects like list, maps, and so on were incorrectly converted to string type using the Java `String.valueOf` method resulting in incorrect formatting. (CDS-71619)
+  
+  This issue is fixed and the output values for expressions are returned as JSON objects.
 
 ### Harness Manager delegate fixed issues
 
