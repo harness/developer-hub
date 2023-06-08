@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Continuous In
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 09, 2023, version 4001
+## Latest - June 09, 2023, version 4005
 
 ```mdx-code-block
 <Tabs>
@@ -36,7 +36,7 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-Fixed an issue where Git status updates failed if the Azure repository/project name had white space. Harness now decodes white spaces in URLs so the Git status update request can succeed. The [Harness Delegate version 795xx or later](/release-notes/delegate) is required for this fix. (CI-8105, ZD-44679)
+Fixed an issue where Git status updates failed if the Azure repository/project name had white space. Harness now decodes white spaces in URLs so the Git status update request can succeed. The [Harness Delegate version 79503 or later](/release-notes/delegate) is required for this fix. (CI-8105, ZD-44679)
 
 ```mdx-code-block
   </TabItem>
