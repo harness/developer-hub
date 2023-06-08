@@ -13,72 +13,84 @@ import add_text_secret from './static/add-use-text-secrets-45.png'
 import add_encrypted_text from './static/add-use-text-secrets-46.png'
 import edit_encrypted_text from './static/add-use-text-secrets-49.png'
 import create_edit_encrypted_text from './static/add-use-text-secrets-47.png'
+import secret_expiry_date from './static/azurekeyvault-select-date.png'
 ```
 
-You can add a text secret to the Secret Manager and use them in your resources like Pipelines and Connectors.
+You can add a text secret to the secret manager and use them in your resources like pipelines and connectors.
 
 This topic describes how to add a text secret in Harness.
 
-### Step 1: Add Text Secret
+## Add a text secret
 
-This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
+This topic assumes you have a Harness project set up. If not, see [Create organizations and projects](../organizations-and-projects/create-an-organization.md).
 
-Secrets can be added inline while setting up a Connector or other setting, and they can also be set up in the Account/Organization/Project resources.
+Secrets can be added inline while setting up a connector or other setting, and they can also be set up in the account, organization, or project resources.
 
-These steps are for setting up a secret in the Account/Organization/Project resources. To do this, go to Project setup, Organization, or Account Resources.
+This topic explains the steps to add an encrypted test secret in the account scope. 
 
-Click **Secrets**.
+To add an encrypted text secret in the account scope: 
 
-Click **Secret** and select **Text.**
+1. In your Harness account, select **ACCOUNT SETTINGS**.
+   
+2. Select **Account Resources**, and then select **Secrets**.
+
+3. Select **New Secret**, and then select **Text**.
 
 ```mdx-code-block
-<img src={add_text_secret} alt="add_text_secret" height="300" width="700"/>
+<img src={add_text_secret} alt="add_text_secret" height="200" width="500"/>
 ```
 
 The **Add new Encrypted Text** settings appear.
 
 ```mdx-code-block
-<img src={add_encrypted_text} alt="add_encrypted_text" height="300" width="700"/>
+<img src={add_encrypted_text} alt="add_encrypted_text" height="200" width="500"/>
 ```
 
-Select the **Secret Manager** you will use to encrypt this secret.
+4. Select the **Secret Manager** you will use to encrypt this secret.
 
-In **Secret Name**, enter a name for the encrypted text. This is the name you will use to reference the text elsewhere in your resources.
+5. In **Secret Name**, enter a name for the encrypted text. This is the name you will use to reference the text elsewhere in your resources.
 
-#### Option: Inline Secret Value
+6. In **Inline Secret** **Value**, enter a value for the encrypted text.
 
-In **Inline Secret** **Value**, enter a value for the encrypted text.
+7. Create a Harness secret that refers to an existing secret by selecting **Reference** **Secret** and using that secret's name.
 
-#### Option: Reference Secret
+   You can reference existing secrets in the following types of Secret Managers:
 
-You can create a Harness secret that refers to an existing secret by selecting **Reference** **Secret** and using that secret's name.
+   * Azure Key Vault
+   * Hashicorp Vault
 
-You can reference existing secrets in the following types of Secret Managers:
+8. A secret can have an expiry date if it is managed by Azure Key Vault. To set an expiry date, select a date in **Expires on**.
 
-* Azure Key Vault
-* Hashicorp Vault
+   ```mdx-code-block
+   <img src={secret_expiry_date} alt="secret_expiry_date" height="200" width="500"/>
+   ```
+   
+   :::important
+   The Harness Delegate version 79306 is required for this feature.
+   :::
 
-Enter **Description** for your secret.
 
-Enter **Tags** for your secret.
+9. Enter **Description** for your secret.
 
-Click **Save.**
+10. Enter **Tags** for your secret.
 
-### Step 2: Use the Encrypted Text in Connectors
+11. Select **Save.**
+
+## Use the Encrypted Text in Connectors
 
 All of the passwords and keys used in Harness Connectors are stored as Encrypted Text secrets in Harness.
 
 You can either create the Encrypted Text secret first and then select it in the Connector or you can create/select it from the Connector by clicking **Create or Select a Secret**:
 
 ```mdx-code-block
-<img src={create_edit_encrypted_text} alt="create_edit_encrypted_text" height="300" width="700"/>
+<img src={create_edit_encrypted_text} alt="create_edit_encrypted_text" height="200" width="500"/>
 ```
 You can also edit it in the Connector.
 
 ```mdx-code-block
-<img src={edit_encrypted_text} alt="edit_encrypted_text" height="300" width="700"/>
+<img src={edit_encrypted_text} alt="edit_encrypted_text" height="200" width="500"/>
 ```
-### Step 3: Reference the Encrypted Text by Identifier
+## Reference the Encrypted Text by Identifier
 
 
 :::important
@@ -112,7 +124,7 @@ Avoid using `$` in your secret value. If your secret value includes `$`, you mus
 For example, if your secret in the Project scope has a value `'my$secret'`, and identifier `doc-secret`, to echo, use single quotes:  
 `echo '<+secrets.getValue("doc-secret")>'`
 
-### Review: Invalid Characters in Secret Names
+## Invalid Characters in Secret Names
 
 The following characters aren't allowed in the names of secrets:
 
@@ -121,7 +133,7 @@ The following characters aren't allowed in the names of secrets:
  ~ ! @ # $ % ^ & * ' " ? / < > , ;
 ```
 
-### Review: Secrets in Outputs
+## Secrets in Outputs
 
 When a secret is displayed in an output, Harness substitutes the secret value with asterisks so that the secret value is masked. Harness replaces each character in the name with an asterisk (\*).
 
@@ -132,7 +144,7 @@ If you accidentally use a very common value in your secret, like whitespace, the
 
 If you see an output like this, review your secret and fix the error.
 
-### Review: Secret Scope
+## Secret Scope
 
 When creating secrets, it's important to understand their scope in your Harness account.
 
@@ -140,7 +152,7 @@ A user can only create a secret according to the scope set by its Harness User p
 
 For example, when you create a new project or a new organization, a Harness Secret Manager is automatically scoped to that level.
 
-### Review: Line breaks and Shell-Interpreted Characters
+## Line breaks and Shell-Interpreted Characters
 
 A text secret can be referenced in a script and written to a file as well. For example, here is a secret decoded from [base64](https://linux.die.net/man/1/base64) and written to a file:
 
@@ -163,10 +175,10 @@ MySecret:<+secrets.getValue("test")>
 EOF
 ```
 
-### Review: Characters length limit in Secret Names
+## Characters length limit in Secret Names
 A secret name cannot exceed 100 characters if you are using the Vault V2 engine.
 
-### Sanitization
+## Sanitization
 
 Sanitization only looks for an exact match of what is stored. So, if you stored a base64 encoded value then only the base64 encoded value is sanitized.
 
@@ -189,7 +201,7 @@ echo <+secrets.getValue("linebreaks")> | base64 -d
 The result loses any secret sanitization.
 
 ![](./static/add-use-text-secrets-52.png)
-### Nested expressions using string concatenation
+## Nested expressions using string concatenation
 
 You can use the + operator or concat method inside the secret reference. For example, each of these expressions use one method and another Harness variable expression:
 
