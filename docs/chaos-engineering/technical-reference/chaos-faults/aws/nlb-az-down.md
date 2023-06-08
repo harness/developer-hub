@@ -3,15 +3,14 @@ id: nlb-az-down
 title: NLB AZ down
 ---
 
-The NLB (Network Load Balancer) AZ (Availability Zones) down fault triggers the unavailability of an Availability Zone (AZ) on a target network load balancer, resulting in potential disruptions to service delivery. This fault deliberately restricts access to specific availability zones by blocking the subnet ACL (Access Control List) for a defined duration. By simulating this scenario, you can assess the resilience and performance of your system when faced with an inaccessible AZ.
+The NLB (Network Load Balancer) AZ (Availability Zone) down fault triggers the unavailability of an Availability Zone (AZ) on a target network load balancer, resulting in potential disruptions to service delivery. This fault deliberately restricts access to specific availability zones by blocking the subnet ACL (Access Control List) for a defined duration. By simulating this scenario, you can assess the resilience and performance of your system when faced with an inaccessible AZ.
 
 ![NLB AZ Down](./static/images/nlb-az-down.png)
 
 ## Use cases
 
-NLB AZ Down:
-- Performing this experiment, you can evaluate the application's behavior and assess its ability to handle and recover from a scenario where traffic from a particular Availability Zone (AZ) is blocked.
-- It conduct an application test by deliberately blocking traffic originating from a specific Availability Zone (AZ) on the network load balancer. This experiment involves intentionally preventing incoming and outgoing traffic from the designated AZ from reaching the application through the load balancer
+- With this experiment, you can evaluate the application's behavior and assess its ability to handle and recover from a scenario where traffic from a particular AZ is blocked.
+- It conducts an application test by deliberately blocking traffic originating from a specific AZ on the network load balancer. This experiment involves intentionally preventing incoming and outgoing traffic from the designated AZ from reaching the application through the load balancer.
 
 ## Prerequisites
 
@@ -73,17 +72,17 @@ Here is an example AWS policy to execute the fault.
       </tr>
       <tr>
         <td> LOAD_BALANCER_ARN </td>
-        <td> Target load balancer ARN whose AZ should be detached. </td>
+        <td> Target load balancer ARN whose AZ should be detached </td>
         <td> For example, <code>arn:aws:elasticloadbalancing:us-east-2:11111111111:loadbalancer/app/test-nlb/09121290906ffab7</code>. </td>
       </tr>
       <tr>
         <td> ZONES </td>
-        <td> Target zones that should be detached from the NLB. </td>
+        <td> Target zones that should be detached from the NLB </td>
         <td> For example, <code>us-east-1a</code>. </td>
       </tr>
       <tr>
         <td> REGION </td>
-        <td> Region name for the target volumes. </td>
+        <td> Region name for the target volumes </td>
         <td> For example, <code>us-east-1</code>. </td>
       </tr>
     </table>
@@ -96,22 +95,22 @@ Here is an example AWS policy to execute the fault.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration to insert chaos (in seconds). </td>
+        <td> Duration to insert chaos (in seconds) </td>
         <td> Default: 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos"> duration of the chaos.</a></td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> Duration between the attachment and detachment of the volumes (in seconds). </td>
+        <td> Duration between the attachment and detachment of the volumes (in seconds) </td>
         <td> Default: 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#chaos-interval"> chaos interval.</a></td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
-        <td> Sequence of chaos execution for multiple volumes. </td>
+        <td> Sequence of chaos execution for multiple volumes </td>
         <td> Default: parallel. Supports serial and parallel. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#sequence-of-chaos-execution"> sequence of chaos execution.</a></td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Duration to wait before and after injecting chaos (in seconds). </td>
+        <td> Duration to wait before and after injecting chaos (in seconds) </td>
         <td> For example, 30 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#ramp-time"> ramp time.</a></td>
       </tr>
     </table>
