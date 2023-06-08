@@ -144,6 +144,13 @@ Do not enter a folder. Harness requires a direct path to the file.
 
 That's all the setup required. You can now deploy the Service and the script is executed at runtime.
 
+## Helm Chart Manifests
+
+When configuring a Helm Chart with Custom Remote Manifests, under **Advanced**, users can now configure the Helm Version they are using and the Command Flags they wish to pass based on the version. 
+
+For more information on Helm Command Flags please see [Helm Command Flags Support](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts/#add-the-helm-chart)
+
+
 ## Notes
 
 You can use Go templating in your Kubernetes resource files, just as you would for files stored in Git or inline. See [Example Kubernetes Manifests Using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating). For OpenShift, you must use OpenShift templating.
