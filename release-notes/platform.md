@@ -84,6 +84,10 @@ This release does not include any early access features.
 - When SMTP was not configured, password reset did not throw an error. (PL-24542)
   
   A code enhancement fixed this issue.
+  
+- The expressions corresponding to objects like list, maps, and so on were incorrectly converted to string type using the Java String.valueOf method resulting in incorrect formatting. (CDS-71619)
+
+  This issue is fixed and the output values for expressions are returned as JSON objects.
 
 ```mdx-code-block
   </TabItem>
