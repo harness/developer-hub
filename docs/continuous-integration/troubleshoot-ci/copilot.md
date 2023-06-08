@@ -32,4 +32,6 @@ Currently, Harness AI Copilot for CI is behind the feature flag `CI_AI_ENHANCED_
 
 <Use />
 
+![The Harness AI Copilot dialog.](./static/copilot-launch-button.png)
+
 You can find step logs on the [**Build details** page](../use-ci/viewing-builds.md).
