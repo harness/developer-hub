@@ -3,7 +3,7 @@ id: resource-access-restrict
 title: Resource Access Restrict
 ---
 
-The AWS Resource Access Restrict Chaos experiment allows you to create network access restrictions by selectively blocking incoming or outgoing traffic from a security group associated with a specific service
+The AWS Resource Access Restrict chaos experiment allows you to create network access restrictions by selectively blocking incoming or outgoing traffic from a security group associated with a specific service
 
 ![Resource Access Restrict](./static/images/resource-access-restrict.png)
 
