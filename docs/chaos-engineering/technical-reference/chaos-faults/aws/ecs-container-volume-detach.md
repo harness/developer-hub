@@ -8,7 +8,7 @@ ECS container volume detach provides a mechanism to detach and remove volumes as
 ![ECS Container Volume Detach](./static/images/ecs-container-volume-detach.png)
 
 ## Use cases
-ECS invalid container image:
+
 - This experiment allows you to test and validate the behavior of your ECS tasks when volumes are detached. You can verify the resilience and performance of your application during volume detachment scenarios, ensuring that the containers continue to function as expected
 - By detaching volumes, you can safely remove the volume associations from the containers without deleting the volumes themselves. 
 - By detaching unnecessary volumes, you can optimize the resource utilization within your ECS tasks. This helps to free up storage space and minimize any potential performance impact associated with unused volumes.
