@@ -33,9 +33,7 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 ## Install dependencies
 
-Use **Run** steps to install dependencies in the build environment.
-
-[Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) can be used to run dependent services that are needed by steps in the same stage.
+Use [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
 
 ```mdx-code-block
 <Tabs>
@@ -78,6 +76,12 @@ Use **Run** steps to install dependencies in the build environment.
 </TabItem>
 </Tabs>
 ```
+
+:::tip
+
+[Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) can be used to run dependent services that are needed by steps in the same stage.
+
+:::
 
 ## Cache dependencies
 

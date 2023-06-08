@@ -33,7 +33,7 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 ## Install dependencies
 
-Run [Bundler](https://bundler.io/guides/getting_started.html) commands in a **Run** step to install dependencies in the build environment.
+Run [Bundler](https://bundler.io/guides/getting_started.html) commands in a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
 
 ```mdx-code-block
 <Tabs>
@@ -75,7 +75,7 @@ Run [Bundler](https://bundler.io/guides/getting_started.html) commands in a **Ru
 
 :::tip
 
-[Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies.
+In addition to Run steps, [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies.
 
 You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
 

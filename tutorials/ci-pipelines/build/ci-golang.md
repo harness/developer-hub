@@ -33,7 +33,7 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 ## Install dependencies
 
-If necessary, add a **Run** step to install any dependencies.
+If necessary, add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install any dependencies.
 
 ```mdx-code-block
 <Tabs>
