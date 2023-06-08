@@ -49,9 +49,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   Previously, in the YAML view, suggestions for long expressions ended with an ellipsis, and the entire expression didn't appear properly.
   
   The suggestions widget is now updated with a read more icon. You can select the icon or use Ctrl + Space to view the complete expression string. The read more icon appears only for the active suggestion item. You can use the Up and Down arrow keys to switch between different suggestion items.
-- Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. (CDS-59011)
-  
-  Harness Delegate version 79500 is required for this feature.
 - Send emails to non-Harness users. (CDS-58625, ZD-42496)
   
   To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
@@ -74,8 +71,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green deployment are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
   Harness Delegate version 79500 is required for this feature.
-  
+- Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. (CDS-59011)
 
+  This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. 
+  
+  Harness Delegate version 79500 is required for this feature.
+  
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
