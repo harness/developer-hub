@@ -143,9 +143,19 @@ In the stage's **Execution**, click **Add Step**, and select the **Blue Green** 
 
 Harness adds all the steps you need to perform the Blue Green strategy:
 
-![](./static/create-a-kubernetes-blue-green-deployment-30.png)
+![bg steps](./static/create-a-kubernetes-blue-green-deployment-30.png)
 
 That's it. Harness will deploy the artifact using the stage service initially, and swap traffic to the primary service.
+
+Additionally, you can add a Blue Green Stage Scale Down step to scale down the last successful stage environment created during a Blue Green deployment.
+
+This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`. 
+
+![bg scale down](./static/bg-scale-down-step.png)
+
+This functionality helps you efficiently manage your resources. The scale down step can be configured within the same stage or different stage based on your requirement.
+
+During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green deployment are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
 Let's look at the default settings for the Stage Deployment step.
 
