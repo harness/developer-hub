@@ -11,9 +11,9 @@ If you don't upgrade your infrastructure for these types of releases, chaos expe
 
 These are the high-level steps to upgrade your chaos infrastructure, explained in detail later:
 
-1. [Delete the old ChaosEngine CR](#step-1-delete-the-old-chaosengine).
+1. [Delete the old ChaosEngine CRs](#step-1-delete-the-old-chaosengine) where you've deployed a chaos infrastructure.
 1. [Update CRDs](#step-2-upgrade-crds-where-youve-deployed-a-chaos-infrastructure) where you've deployed a chaos infrastructure.
-1. [Update the chaos infrastructure in Harness](#step-3-update-the-chaos-infrastructure-in-harness).
+1. [Update the chaos infrastructure in Harness](#step-3-update-the-chaos-infrastructure-in-harness) in environments where you've deployed it.
 1. [Edit experiment YAML](#step-4-update-the-chaosnativego-runner-image-in-experiment-yaml) to update the chaosnative/go-runner image to the new version.
 
 ## How to tell if an infrastructure upgrade is required
