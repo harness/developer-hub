@@ -6,6 +6,10 @@ sidebar_position: 15
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+<Smpno />
+
 This topic describes how to use the Harness Feature Flags Erlang SDK for your Erlang or Elixir based application. 
 
 For getting started quickly:

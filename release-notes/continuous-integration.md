@@ -42,6 +42,13 @@ This release does not include early access features.
 
 ```mdx-code-block
   </TabItem>
+  <TabItem value="Hotfix version 3904">
+```
+
+This hotfix was released June 5, 2023. It contained no customer-facing changes.
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 

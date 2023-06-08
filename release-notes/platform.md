@@ -33,6 +33,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - The Go library has been upgraded from version 1.19.8 to 1.20.4. (PL-39026)
 
+- You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508, ZD-40688)
+
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 - You can now delete externally managed users from the Harness UI. (PL-38974)
 
   Harness recommends using this action with caution since it may result in data inconsistencies between Harness and the identity provider.
@@ -42,6 +46,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - On your profile, you can now access projects by selecting project cards. (PL-38570)
 
 - Secret references now have a validate button to verify if the path is valid. (PL-31083)
+
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 
 
 ```mdx-code-block
@@ -55,7 +62,6 @@ This release does not include any early access features.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
-
 
 ### Platform fixed issues
 
@@ -114,6 +120,10 @@ The fixed issue below is available with version 79411 and does not require a new
 - Delegate instances that do not shut down gracefully and do not come back online are removed from the UI after three hours. (PL-38755)
 
 ##### Platform fixed issues
+
+- Delegate instances that do not shut down gracefully and do not come back online are removed from the UI after three hours. (PL-38755)
+
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The SSH secret reference gets created even if secret creation fails due to a validation error. (PL-38549, ZD-44073)
 
