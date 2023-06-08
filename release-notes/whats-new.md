@@ -17,9 +17,9 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 07, 2023 
+## Latest - June 09, 2023 
 
-### Continuous Delivery, version 79500
+### Continuous Delivery, version 79516
 
 - Added expressions to retrieve the current execution status of the [looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for nodes (stages/steps) using a matrix or repeat strategy. (CDS-69780)
   
@@ -55,7 +55,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   For more information on how to send emails to non-Harness users, go to [Email step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
 
-  Harness Delegate version 79500 is required for this feature.
+  Harness Delegate version 79503 is required for this feature.
 
 ### Cloud Cost Management, version 79601
 **Cost Category enhancement** (CCM-12585)
