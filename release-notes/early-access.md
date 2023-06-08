@@ -10,9 +10,9 @@ Review the notes below to learn about the early access (aka BETA) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 07, 2023
+## Latest - June 09, 2023
 
-### Continuous Delivery, version 79500
+### Continuous Delivery, version 79516
 
 - Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
   
@@ -22,12 +22,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green deployment are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
-  Harness Delegate version 79500 is required for this feature.
+  Harness Delegate version 79503 is required for this feature.
 - Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. (CDS-59011)
 
   This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. 
   
-  Harness Delegate version 79500 is required for this feature.
+  Harness Delegate version 79503 is required for this feature.
 
 ## Previous releases
 
