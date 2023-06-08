@@ -4,7 +4,7 @@ description: Learn how to manage Feature Flags for Self-Managed Enterprise Editi
 # sidebar_position: 10
 ---
 
-This topic describes how to manage Feature Flags for Harness Self-Managed Enterprise Edition. You update Feature Flags using the override.yaml file for your base installation.
+This topic describes how to manage Feature Flags for Harness Self-Managed Enterprise Edition. You update Feature Flags using the `override.yaml` file for your base installation.
 
 ## View installed Feature Flags
 
@@ -91,7 +91,7 @@ You can add Feature Flags included with the base configuration.
 
 To remove Feature Flags, do the following:
 
-1. Open your `harness-manager` values.yaml file in a text editor.
+1. Open your Harness Manager `values.yaml` file in a text editor.
 
    :::info note
    This file is typically located in the following default path in the release directory.
@@ -115,7 +115,7 @@ To remove Feature Flags, do the following:
     NG: "ENABLE_DEFAULT_NG EXPERIENCE_FOR_ONPREM,_NEXT_GEN_ENABLED,NEW_LEFT_NAVBAR_SETTINGS,SPG_SIDENAV_COLLAPSE"
    ```
 
-3. Add the Feature Flag to the list, comma separated without spaces.
+3. Add the Feature Flag to the list, comma-separated without spaces.
 
 4. Save the file.
 
