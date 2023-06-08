@@ -36,7 +36,7 @@ This topic assumes that you have the following:
          
          * **Compensating controls** — Your organization has infrastructure and policies in place to mitigate the security risks of this vulnerability. 
 
-           For example, suppose a scan detects a vulnerability with a specific service. This vulnerability might be mitigated because
+           For example, suppose a scan detects a vulnerability with a specific service. This vulnerability might be mitigated because:
 
            - The service is behind a firewall that requires authorized access, or
 
