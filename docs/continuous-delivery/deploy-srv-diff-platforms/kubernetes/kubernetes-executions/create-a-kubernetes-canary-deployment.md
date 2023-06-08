@@ -273,6 +273,131 @@ my-nginx-7df7559456-xdwg5                 1/1       Running   0          9h
 
 For more information, go to [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
 
+## Using Horizontal Pod Autoscaler (HPA)
+
+:::info
+
+Currently, this functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+HPA is a form of autoscaling that increase or decrease the number of pods in a ReplicationController, Deployment, ReplicaSet, or StatefulSet based on CPU utilization. The scaling is horizontal because it affects the number of instances rather than the resources allocated to a single container. HPA can make scaling decisions based on custom or externally provided metrics and works automatically after the initial configuration. All you need to do is define the minimum and maximum number of replicas and a trigger limit.
+
+Here's a sample HPA resource: 
+
+```yaml
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+ name: hpa
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: nginx-deployment
+ minReplicas: 1
+ maxReplicas: 10
+ targetCPUUtilizationPercentage: 50
+```
+Once configured, the HPA controller checks the metrics, and then scale your replicas up or down accordingly. By default, HPA checks metrics every 15 seconds.
+
+Consider the following example Kubernetes resource: 
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: test-deployment
+  template:
+    metadata:
+      labels:
+        app: test-deployment
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+```
+
+HPA references its target using `kind` and `name`. After the initial rolling deployment, Harness creates a `test-deployment` deployment and a `test-hpa` HPA resource. For any subsequent Canary deployment, Harness creates a `test-deployment-canary` deployment and a `test-hpa-canary` HPA resource which updates the reference for the `test-deployment-canary` deployment. 
+
+```yaml
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+ name: test-hpa-canary
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: test-deployment-canary
+ minReplicas: 1
+ maxReplicas: 10
+ targetCPUUtilizationPercentage: 50
+```
+
+The release history contains the name of the HPA resource as part of list of resources.
+
+In the Canary Delete step, Harness deletes the resources based on the release history.
+
+## Using Pod Disruption Budget (PDB)
+
+:::info
+
+Currently, this functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+PDB defines the budget for voluntary disruption. PDB lets the cluster be aware of a minimum threshold in terms of available pods that the cluster needs to guarantee in order to ensure a baseline availability or performance. 
+
+PDB can be applied for the following types of controllers:
+
+* Deployment
+* ReplicationController
+* ReplicaSet
+* StatefulSet
+
+Here's a sample PBD resource: 
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: test-deployment
+  template:
+    metadata:
+      labels:
+        app: test-deployment
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+```
+
+After the initial rolling deployment, Harness creates a `test-deployment` deployment and a `test-pdb` PDB resource. For any subsequent Canary deployment, Harness creates a `test-deployment-canary` deployment and a `test-pdb-canary` PDB resource which updates the reference for the `test-deployment-canary` deployment. Additionally, PDB updates selectors (`.spec.selectors`) to match the selectors of the deployment. 
+
+```yaml
+app=test-deployment
+harness.io/track=canary
+```
+
+The release history contains the name of the PDB resource as part of list of resources.
+
+In the Canary Delete step, Harness deletes the resources based on the release history.
+
 ## Important notes
 
 * Harness does not roll back Canary deployments because your production is not affected during Canary. Canary catches issues before moving to production. Also, you might want to analyze the Canary deployment. The Canary Delete step is useful to perform cleanup when required.

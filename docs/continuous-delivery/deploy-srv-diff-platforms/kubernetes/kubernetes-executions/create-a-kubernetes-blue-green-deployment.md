@@ -326,9 +326,78 @@ kubectl scale deploy -n <+infra.namespace> $(kubectl get deploy -n <+infra.names
 
 This example does not apply to scaling down multiple deployments in the same namespace. If you use the example and you have multiple deployments in the same namespace it will impact multiple deployments. You should also include a label (or another matchSelector) specific to the particular deployment, so it doesn’t scale down all the blue deployments in the namespace. For example, match `blue` and `my-specific-app`.
 
-### Option: Using the Horizontal Pod Autoscaler (HPA)
+### Using Horizontal Pod Autoscaler (HPA)
 
-If you are using the Horizontal Pod Autoscaler with your deployment, create a `blue` and `green` HPA configuration that will point at your deployments.
+:::info
+
+Currently, this functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+HPA is a form of autoscaling that increase or decrease the number of pods in a ReplicationController, Deployment, ReplicaSet, or StatefulSet based on CPU utilization. The scaling is horizontal because it affects the number of instances rather than the resources allocated to a single container. HPA can make scaling decisions based on custom or externally provided metrics and works automatically after the initial configuration. All you need to do is define the minimum and maximum number of replicas and a trigger limit.
+
+Here's a sample HPA resource: 
+
+```yaml
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+ name: hpa
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: nginx-deployment
+ minReplicas: 1
+ maxReplicas: 10
+ targetCPUUtilizationPercentage: 50
+```
+Once configured, the HPA controller checks the metrics, and then scale your replicas up or down accordingly. By default, HPA checks metrics every 15 seconds.
+
+Consider the following example Kubernetes resource and stage color `blue`:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-deployment
+  template:
+    metadata:
+      labels:
+        app: test-deployment
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+```
+
+You're using HPA with your deployment named `test-deployment`. Harness creates a `blue` or `green` HPA configuration (based on which colors the primary and stage are), marking the name of the deployment `test-deployment-blue` or `test-deployment-green`. 
+
+Harness creates a `test-deployment-blue` deployment and a `test-hpa-blue` HPA which references the `test-deployment-blue` deployment:
+
+```yaml
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+ name: test-hpa-blue
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: test-deployment-blue
+ minReplicas: 1
+ maxReplicas: 10
+ targetCPUUtilizationPercentage: 50
+```
+
+If you are using HPA with your deployment without enabling the feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`, create a `blue` and `green` HPA configuration that will point at your deployments.
 
 templates/hpa-blue.yaml:
 
@@ -393,6 +462,88 @@ autoscaling:
         averageUtilization: 20
 ```
 When using this with a traffic splitting strategy, your pods will scale automatically as your new pods begin receiving heavier loads.
+
+## Using Pod Disruption Budget (PDB)
+
+:::info
+
+Currently, this functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+PDB defines the budget for voluntary disruption. PDB lets the cluster be aware of a minimum threshold in terms of available pods that the cluster needs to guarantee in order to ensure a baseline availability or performance. 
+
+PDB can be applied for the following types of controllers:
+
+* Deployment
+* ReplicationController
+* ReplicaSet
+* StatefulSet
+
+Here's a sample PBD resource: 
+
+```yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: pdb
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: nginx
+```
+PDB can have either a `minAvailable` or `maxUnavailable` field with absolute or percentage values.
+
+Consider the following example Kubernetes resource and stage color `blue`:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment-blue
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-deployment-blue
+  template:
+    metadata:
+      labels:
+        app: test-deployment-blue
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+```
+
+Here you're using PDB with your deployment named `test-deployment`. Harness creates a `blue` configuration, marking the name of the deployment `test-deployment-blue`.
+
+Harness creates PDB resource, `test-pdb-blue`:
+
+```yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: test-pdb
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: test-deployment
+```
+
+Additionally, `harness.io/color=blue` value is added to the selectors list:
+
+```yaml
+app: test-deployment
+harness.io/color=blue
+```
+Note that the selectors for PDB, `.spec.selector` must match the controller's `.spec.selector`.
+
+The release history contains the name of the stage PDB resource (for example, `test-pdb-blue`) as part of list of resources.
 
 ## Notes
 
