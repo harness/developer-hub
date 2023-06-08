@@ -36,6 +36,23 @@ This release includes the following module and component versions.
 
 #### Continuous Delivery & GitOps
 
+
+### Early access
+#### Continuous Delivery & GitOps
+
+- Pipelines in different projects are now independent. (CDS-55830, ZD-41377)
+
+	This change is behind the feature flag `PROJECT_SCOPED_RESOURCE_CONSTRAINT_QUEUE`.
+	
+	Pipelines were waiting on resource constraints although no other deployment was running with the same service and infrastructure definition combination. 
+	
+	Resource Constraints were scoped too broadly, so users' pipelines went into a wait state.
+	
+	This was because of other pipelines in other projects with the same infrastructure configuration. 
+	
+	This has now been changed by scoping resource constraints to the project.
+
+
 ### Fixed issues
 #### Continuous Delivery & GitOps
 
@@ -45,7 +62,13 @@ This release includes the following module and component versions.
 	
 	This change is behind the feature flag `SPG_GRAPHQL_VERIFY_APPLICATION_FROM_USER_GROUP`.
 
+- Canary Delete step during rollback deleting the primary deployment. (CDS-58661, ZD-42392)
+  
+	This occurred when the user skipped the dry run in the Canary Deployment step, and Harness was unable to process the manifest.yaml file during error handling. This resulted in the storage of the primary resource name as the canary workload name.
+	
+	The issue has been resolved, and Harness now relies on release history instead of populating the canary workload if there is an error in the deployment manifest and the dry run is skipped.
 
+- Resolved a null pointer exception when the Canary Deployment step is initialized with the Helm manifest type. (CDS-59214)
 
 
 ### April 26, 2023, version 78926
