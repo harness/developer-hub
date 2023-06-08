@@ -55,7 +55,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   For more information on how to send emails to non-Harness users, go to [Email step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
 
-  Harness Delegate version 79500 is required for this feature.
+  Harness Delegate version 79503 is required for this feature.
 
 ```mdx-code-block
   </TabItem>
@@ -70,12 +70,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
-  Harness Delegate version 79500 is required for this feature.
+  Harness Delegate version 79503 is required for this feature.
 - Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. (CDS-59011)
 
   This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. 
   
-  Harness Delegate version 79500 is required for this feature.
+  Harness Delegate version 79503 is required for this feature.
   
 ```mdx-code-block
   </TabItem>
