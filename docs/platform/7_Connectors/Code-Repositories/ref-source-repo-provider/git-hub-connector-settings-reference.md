@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the GitHub connector.
+This topic provides settings and permissions for the GitHub connector. For instructions and more information about code repo connectors, go to [Connect to a Git repository](../connect-to-code-repo.md).
 
 ## Overview settings
 
@@ -194,6 +194,15 @@ To use a personal access token with a GitHub organization that uses SAML single 
 ## Connectivity Mode settings
 
 Select whether you want Harness to connect directly to your GitHub account or repo, or if you want Harness to communicate with your GitHub account or repo through a delegate.
+
+<details>
+<summary>About connectivity modes</summary>
+
+If you select **Connect through the Harness Platform**, the Harness Manager exchanges a key pair with the Secrets Manager configured in Harness using an encrypted connection. Next, the Harness Manager uses the encrypted key and the encrypted secret and then discards them. The keys never leave the Harness Manager. Secrets are always encrypted in transit, in memory, and in the Harness database.
+
+**Connect through a Harness Delegate**, a [Harness Delegate](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) handles the connection. This option is often used for [Harness Self-Managed Enterprise Edition Overview](../../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md).
+
+</details>
 
 ### Delegates Setup
 

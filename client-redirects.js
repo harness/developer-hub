@@ -34,6 +34,18 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by aimurphy for branch doc-1594 on June 8, 2023
+
+    {
+      from: "/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector",
+      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
+    },
+
+    {
+      from: "/docs/platform/Connectors/add-a-git-hub-connector",
+      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
+    },
+
     // Created by aimurphy for branch doc-2951 on May 4 2023
 
     {
@@ -597,10 +609,6 @@ module.exports = {
     {
       from: "/docs/platform/Connectors/connect-to-code-repo",
       to: "/docs/platform/Connectors/Code-Repositories/connect-to-code-repo",
-    },
-    {
-      from: "/docs/platform/Connectors/add-a-git-hub-connector",
-      to: "/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector",
     },
     {
       from: "/docs/platform/Connectors/connect-to-a-azure-repo",
