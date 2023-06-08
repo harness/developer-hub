@@ -63,7 +63,7 @@ For more details on the settings to create this connector, see [Git Connector Se
 14. Click **Save and Continue**.
 15. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
-### ​Add GitHub Repo
+### Add GitHub Repo
 
 See [Add a GitHub Connector](./add-a-git-hub-connector.md).
 
@@ -145,7 +145,7 @@ For **HTTP**, the format for the URL should be `https://bitbucket.org/<userName>
 14. Click **Save and Continue**.
 15. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
-### Add GitLab Repo
+### Add a GitLab Repo
 
 :::note
 For more details on the settings to create this connector, see [GitLab Connector Settings Reference](../../7_Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference.md).
@@ -168,7 +168,7 @@ For more details on the settings to create this connector, see [GitLab Connector
 14. Click **Save and Continue**.
 15. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
-### Azure Repo
+### Add an Azure Repo
 
 Azure Repos is a set of version control tools that you can use to manage your code. Azure Repos provide the following kinds of version control:
 

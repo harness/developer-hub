@@ -86,7 +86,17 @@ If you selected **Git Account** in [URL Type](#url_type), enter the URL witho
 
 All GitHub repos, including read-only repos, require authentication.
 
-You can use a username and password/token for HTTPS credentials. If you selected **SSH** as the connection protocol, you must add the **SSH Key** to use with the connection.
+You can use **OAuth** or a **Username and Token** for HTTPS connections If you selected **SSH** as the connection protocol, you must add the **SSH Key** to use with the connection.
+
+### OAuth
+
+:::note
+
+Currently, OAuth for GitHub connectors is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Select **Link to GitHub** to open a new browser tab and authorize access to your GitHub account.
 
 ### Username
 

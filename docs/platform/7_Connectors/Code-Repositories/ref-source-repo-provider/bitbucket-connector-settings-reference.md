@@ -44,14 +44,14 @@ import TabItem from '@theme/TabItem';
   <TabItem value="account" label="URL Type: Account" default>
 ```
 
-In the **Bitbucket Account URL** field, provide only the account-identifying portion of the Bitbucket URL, such as `https://bitbucket.org/my-bitbucket`. Do not include any repo name or project name.
+In the **Bitbucket Account URL** field, provide only the account-identifying portion of the Bitbucket URL, such as `https://bitbucket.org/my-bitbucket/`. Do not include any repo name or project name.
 
 The URL format depends on the **Connection Type** and your Bitbucket account type (Cloud or Data Center). The following table provides format examples for each combination.
 
 | Connection Type | Bitbucket Cloud | Bitbucket Data Center (On-Prem) |
 | --------------- | --------------- | ------------------------------- |
-| HTTP | `https://bitbucket.org/<username>` | `https://bitbucket.<your-org-hostname>/scm` |
-| SSH | `git@bitbucket.org:<username>` | `git@bitbucket.<your-org-hostname>` |
+| HTTP | `https://bitbucket.org/<username>/` | `https://bitbucket.<your-org-hostname>/scm/` |
+| SSH | `git@bitbucket.org:<username>/` | `git@bitbucket.<your-org-hostname>/` |
 
 Here is an example of the **Details** settings for a Bitbucket Cloud account URL in HTTP and SSH formats:
 
