@@ -61,7 +61,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 1. Back on the Configure Chaos Experiment screen, enter the **Expected Resilience Score** for this experiment.
 
-	XXXXXX *What happens to the pipeline if Resilience Score is not met? Do I get a report on the experiment when the pipeline runs?* XXXXXXX
+	If the resilience score is not met, this chaos step fails.
 
 	For more information, see [Analyze chaos experiments](/docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments#analyze-chaos-experiments).
 
@@ -71,11 +71,21 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 	For more information on these settings, see [Harness pipelines](/docs/category/pipelines).
 
-1. Select **Apply Changes** to save this step in the pipeline.
+1. Select **Apply Changes** to save this step in the pipeline, and then select **Save** to save changes to the pipeline.
 
-1. Select **Save** to save changes to the pipeline.
+## What happens when the FF pipeline runs with a chaos step
 
-XXXXXXXX *What happens when the pipeline runs? What can I see on the experiments page? Examples of what user might decide when pipeline runs (based on results)* XXXXXXXX
+When a flag change triggers the FF pipeline:
+
+* The chaos step you added to the pipeline triggers the experiment to run on the target application.
+
+* The Chaos Experiments page records the experiment run as part of a pipeline, and you can select the experiment to view its execution.
+
+* In the FF pipeline, if the chaos step (the experiment) fails, you can click the failed step to see the log, which includes the resilience score obtained and how many chaos probes passed or failed.
+	* You can select **View Detailed Execution** to go to the experiment's execution page in CE.
+
+* Based on the experiment's success or failure, you can decide whether to enable the flag change to show or hide the feature in the target environment.
+
 
 
 
