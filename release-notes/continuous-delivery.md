@@ -58,7 +58,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   For more information on how to send emails to non-Harness users, go to [Email step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
 
-  Harness Manager Delegate version 79500 is required for this feature.
+  Harness Delegate version 79500 is required for this feature.
 
 ```mdx-code-block
   </TabItem>
@@ -111,8 +111,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - SSH pipelines with GCR artifacts ran without populating the required runtime inputs. (CDS-55689)
   
   Fixed this issue by adding proper validations to GCR artifacts used for SSH pipelines.
+- The Java object output values of expressions were incorrectly converted to string type using the `String.valueOf` method resulting in incorrect formatting. (CDS-71619)
 
-### Harness Manager Delegate fixed issues
+  This issue is fixed and the output values for expressions are now returned as JSON objects.
+
+### Harness Manager delegate fixed issues
 
 The fixed issues below are available with version 79500 and do not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
 

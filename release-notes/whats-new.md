@@ -21,15 +21,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Continuous Delivery, version 79500
 
-- The variables defined at a pipeline level can be used with the SSH Command step, and can be referenced using `$VariableName` inside the script. This is applicable for secrets as well. (CDS-70189)
-
-  For more information, go to [Command step output variables](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step/#output-variables).
-- Added support to retrieve the current status of the strategy nodes during execution by using expressions. (CDS-69780)
+- Added expressions to retrieve the current execution status of the [looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for nodes (stages/steps) using a matrix or repeat strategy. (CDS-69780)
   
-  Harness has introduced the following expressions to retrieve the current status of the strategy node during pipeline execution: 
-  * `<+strategy.currentStatus>`: Retrieves the `currentStatus` of the strategy node with the maximum depth.
-  * `<+strategy.node.strategyNodeIdentifier.currentStatus>`: Retrieves the `currentStatus` of the strategy node with a specific identifier, `strategyNodeIdentifier`.
-  * `<+strategy.node.get("strategyNodeIdentifier").currentStatus>`: Retrieves the `currentStatus` of the strategy node with a specific identifier, `strategyNodeIdentifier`.
+  The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
+  
+  Harness has introduced the following expressions to retrieve the current status of the node (stage/step) using a looping strategy: 
+  * `<+strategy.currentStatus>`: Retrieves the current status of the node with the maximum depth.
+  * `<+strategy.node.[strategyNodeIdentifier].currentStatus>`: Retrieves the current status of the node with a specific stage/step identifier, `strategyNodeIdentifier`. For example, `echo <+strategy.node.cs1.currentStatus>`.
+  * `<+strategy.node.get("[strategyNodeIdentifier]").currentStatus>`: Retrieves the current status of the node with a specific stage/step identifier, `strategyNodeIdentifier`. For example, `echo <+strategy.node.get("ShellScript_1").currentStatus>`.
 - If any entities referenced in a pipeline are updated, a warning now appears in Pipeline Studio saying that reconciliation is needed. Previously, this warning appeared only when you manually tried to reconcile. (CDS-69672)
 - The Harness Approval step now supports scheduled automatic approvals. (CDS-69415)
   
@@ -47,10 +46,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <docimage path={require('./static/87cae6dd20947c866629d225293d41ad83be7848061537e28efd2def8e14ea48.png')} width="60%" height="60%" title="Click to view full size image" />
 - Support has been added to view long expressions in YAML view. (CDS-59017)
   
-  Previously, when suggestions are displayed while entering an expression in the YAML view, expressions that were long, ended with an ellipsis, and the entire expression didn't appear properly.
+  Previously, in the YAML view, suggestions for long expressions ended with an ellipsis, and the entire expression didn't appear properly.
   
-  The suggestions widget is now updated with a read more icon. You can click on the icon or use Ctrl + Space to view the complete expression string. The read more icon appears only for the active suggestion item. You can use the Up and Down arrow keys to switch between different suggestion items.
-- Kubernetes deployments support horizontal pod autoscaling and pod disruption budget for BLue Green and Canary execution strategies. (CDS-59011)
+  The suggestions widget is now updated with a read more icon. You can select the icon or use Ctrl + Space to view the complete expression string. The read more icon appears only for the active suggestion item. You can use the Up and Down arrow keys to switch between different suggestion items.
+- Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. (CDS-59011)
   
   Harness Delegate version 79500 is required for this feature.
 - Send emails to non-Harness users. (CDS-58625, ZD-42496)
