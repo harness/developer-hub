@@ -3,13 +3,11 @@ id: resource-access-restrict
 title: Resource Access Restrict
 ---
 
-The AWS Resource Access Restrict chaos experiment allows you to create network access restrictions by selectively blocking incoming or outgoing traffic from a security group associated with a specific service
+The AWS Resource Access Restrict chaos experiment allows you to create network access restrictions by selectively blocking incoming or outgoing traffic from a security group associated with a specific service.
 
 ![Resource Access Restrict](./static/images/resource-access-restrict.png)
 
 ## Use cases
-
-Resource Access restrict:
 
 - This experiment enables you to simulate scenarios where network connectivity is restricted for an AWS service, providing valuable insights into the behavior and resilience of your system in such conditions.
 - By imposing these access restrictions, you can evaluate how your application and resources handle limited network access and ensure that they continue to operate effectively and securely.
@@ -80,7 +78,7 @@ Here is an example AWS policy to execute the fault.
         </tr>
         <tr> 
           <td> SECURITY_GROUP_IDS </td>
-          <td> Provide all the target security group as comma separated value</td>
+          <td> Provide all the target security groups as comma separated values.</td>
           <td> For example, <code>sg-12314,sg-2351324</code>. </td>
         </tr>
         <tr>
@@ -98,27 +96,27 @@ Here is an example AWS policy to execute the fault.
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds) </td>
         <td> Defaults to 30s. </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
-        <td> Interval between successive instance terminations (in seconds).</td>
+        <td> Interval between successive instance terminations (in seconds)</td>
         <td> Defaults to 30s. </td>
       </tr>
       <tr> 
         <td> AWS_SHARED_CREDENTIALS_FILE </td>
-        <td> Path to the AWS secret credentials.</td>
+        <td> Path to the AWS secret credentials</td>
         <td> Defaults to <code>/tmp/cloud_config.yml</code>. </td>
       </tr>
       <tr> 
         <td> RULE_TYPE </td>
-        <td> Provide the rule type to be blocked. Supported value <code>inbound</code> and <code> outbound </code></td>
-        <td> Default to <code>inbound</code> </td>
+        <td> Provide the rule type to be blocked. Supported value <code>inbound</code> and <code>outbound</code>.</td>
+        <td> Defaults to <code>inbound</code>.</td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
-        <td> Period to wait before and after injecting chaos (in seconds).  </td>
+        <td> Period to wait before and after injecting chaos (in seconds)  </td>
         <td> For example, 30s. </td>
       </tr>
     </table>
