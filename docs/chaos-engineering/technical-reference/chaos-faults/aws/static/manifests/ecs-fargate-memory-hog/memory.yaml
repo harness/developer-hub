@@ -1,0 +1,20 @@
+# Set container image for the target ECS task
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: aws-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-fargate-memory-hog
+    spec:
+      components:
+        env:
+        - name: MEMORY_IN_MEGABYTE
+          value: '500'
+        - name: REGION
+          value: 'us-east-2'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'

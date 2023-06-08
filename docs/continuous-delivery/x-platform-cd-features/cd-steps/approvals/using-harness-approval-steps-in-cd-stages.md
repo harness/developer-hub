@@ -106,6 +106,30 @@ If you don't want the User that initiated the pipeline execution to approve this
 
 Even if the User is in the user group selected in **User Group**, they won't be able to approve this step.
 
+
+## Automatic Approvals
+
+:::note
+
+Currently, the automatic approvals feature is behind the feature flag `CDS_AUTO_APPROVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can set the Approval step to automatically approve at a specific date and time.
+
+1. In **Schedule Auto Approval**, select **Auto Approve**.
+2. In **Timezone**, select the timezone to use for the schedule.
+3. In **Time**, select the date and time when the automatic approval should occur.
+4. In **Message**, enter the message that the users in the **User Groups** setting will see when the automatic approval occurs.
+
+
+:::notes
+
+- The Auto approve schedule should be greater than 15 minutes past the current time.
+- In addition to automatic approvals, you can also set a step-level failure strategy of **Mark as Success**. If the step exceeds its **Timeout** setting or fails for a different reason, **Mark as Success** will automatically approve the step. This is not a replacement for the **Auto Approve** option.
+
+:::
+
 ## Approver inputs
 
 In **Inputs to be provided by approver**, you can enter variables and when the approver views the step, they can provide new values for the variables.
@@ -127,6 +151,7 @@ These variables can serve as inputs to later stages of the same pipeline, where 
 For example, in a subsequent step's **Conditional Execution** settings, you could use an expression that only runs the step if the expression evaluates to 1.
 
 `<+pipeline.stages.Shell_Script.spec.execution.steps.Harness_Approval_Step.output.approverInputs.foo> == 1`
+
 
 ## Advanced settings
 

@@ -77,7 +77,7 @@ Step and step group delegator selectors are not available for [Harness CI](/docs
 
 ### Option: Select a delegate for a connector using tags
 
-When you add a connector, you are given the option of connecting to your third part account using any available delegate or specific delegates.
+When you add a connector, you are given the option of connecting to your third-party account using any available delegate or specific delegates.
 
 ![](./static/select-delegates-with-selectors-21.png)
 

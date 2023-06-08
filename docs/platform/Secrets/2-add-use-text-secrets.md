@@ -8,6 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import add_text_secret from './static/add-use-text-secrets-45.png'
+import add_encrypted_text from './static/add-use-text-secrets-46.png'
+import edit_encrypted_text from './static/add-use-text-secrets-49.png'
+import create_edit_encrypted_text from './static/add-use-text-secrets-47.png'
+```
+
 You can add a text secret to the Secret Manager and use them in your resources like Pipelines and Connectors.
 
 This topic describes how to add a text secret in Harness.
@@ -24,11 +31,15 @@ Click **Secrets**.
 
 Click **Secret** and select **Text.**
 
-![](./static/add-use-text-secrets-45.png)
+```mdx-code-block
+<img src={add_text_secret} alt="add_text_secret" height="300" width="700"/>
+```
 
 The **Add new Encrypted Text** settings appear.
 
-![](./static/add-use-text-secrets-46.png)
+```mdx-code-block
+<img src={add_encrypted_text} alt="add_encrypted_text" height="300" width="700"/>
+```
 
 Select the **Secret Manager** you will use to encrypt this secret.
 
@@ -59,12 +70,14 @@ All of the passwords and keys used in Harness Connectors are stored as Encrypted
 
 You can either create the Encrypted Text secret first and then select it in the Connector or you can create/select it from the Connector by clicking **Create or Select a Secret**:
 
-![](./static/add-use-text-secrets-47.png)
-
+```mdx-code-block
+<img src={create_edit_encrypted_text} alt="create_edit_encrypted_text" height="300" width="700"/>
+```
 You can also edit it in the Connector.
 
-![](./static/add-use-text-secrets-49.png)
-
+```mdx-code-block
+<img src={edit_encrypted_text} alt="edit_encrypted_text" height="300" width="700"/>
+```
 ### Step 3: Reference the Encrypted Text by Identifier
 
 

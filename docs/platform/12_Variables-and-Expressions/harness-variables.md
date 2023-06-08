@@ -1287,19 +1287,35 @@ If you use this variable in a pipeline, such as in a Shell script step, Harness 
 
 ## Strategy
 
-The following expressions provide the `currentStatus` of the strategy node. The expressions are available in pipelines and during rollback.
+You can use Harness expressions to retrieve the current execution status of the [looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for nodes (stages/steps) using a matrix or repeat strategy.
+  
+The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
+
+Harness provides the following expressions to retrieve the current status of the node (stage/step) using a looping strategy. The expressions are available in pipelines during execution and rollback.
 
 ### <+strategy.currentStatus>
 
-The `currentStatus` of the strategy node with maximum depth.
+The current status of the looping strategy for the node with maximum depth.
 
-### <+strategy.node.strategyNodeIdentifier.currentStatus>
+When this expression is used in a step, Harness will resolve it to the looping strategy status of the first parent node (stage/step) of the step.
 
-The `currentStatus` of the strategy node with the `strategyNodeIdentifier`.
+If the step using the expression is the first node using a looping strategy, then the expression will resolve to its looping strategy status. 
 
-### <+strategy.node.get("strategyNodeIdentifier").currentStatus>
+If the previous step in the stage uses a looping strategy, the expression will resolve to that step's looping strategy status. 
 
-The `currentStatus` of the strategy node with the `strategyNodeIdentifier`.
+If there are no previous steps using a looping strategy, but the stage uses a looping strategy, the expression will resolve to the stage's looping strategy status.
+
+### <+strategy.node.[strategyNodeIdentifier].currentStatus>
+
+The current status of the looping strategy for the node with a specific stage/step identifier, `strategyNodeIdentifier`.
+
+For example, `echo <+strategy.node.cs1.currentStatus>`.
+
+### <+strategy.node.get("[strategyNodeIdentifier]").currentStatus>
+
+The current status of the looping strategy for the node with a specific stage/step identifier, `strategyNodeIdentifier`.
+
+For example, `echo <+strategy.node.get("ShellScript_1").currentStatus>`.
 
 ## Triggers
 
