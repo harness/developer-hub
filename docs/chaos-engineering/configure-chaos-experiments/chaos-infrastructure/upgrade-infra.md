@@ -45,7 +45,7 @@ This step removes all ChaosEngine custom resources (CRs) in the infrastructure n
 1. Confirm ChaosEngine CRs are deleted.
 
 	```
-	kubectl get chaosenginekubectl get chaosengine -n NAMESPACE_OF_CHAOS_INFRASTRUCTURE
+	kubectl get chaosengine -n NAMESPACE_OF_CHAOS_INFRASTRUCTURE
 	```
 
 ### Step 2: Upgrade CRDs where you've deployed a chaos infrastructure
