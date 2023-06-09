@@ -163,10 +163,10 @@ export const CIList: CardItem[] = [
     newDoc: false,
   },
   {
-    title: "iOS application",
+    title: "iOS and macOS applications",
     module: MODULES.ci,
     description:
-      "Build and test an iOS application.",
+      "Build and test an iOS or macOS application.",
     link: "/tutorials/ci-pipelines/build/ios",
     type: [docType.Documentation],
     time: "15 min",
