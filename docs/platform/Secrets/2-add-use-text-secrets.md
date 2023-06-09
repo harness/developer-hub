@@ -46,7 +46,7 @@ The **Add new Encrypted Text** settings appear.
 <img src={add_encrypted_text} alt="add_encrypted_text" height="200" width="500"/>
 ```
 
-4. Select the **Secret Manager** you will use to encrypt this secret.
+4. In **Secrets Manager** select the secrets manager you will use to encrypt this secret.
 
 5. In **Secret Name**, enter a name for the encrypted text. This is the name you will use to reference the text elsewhere in your resources.
 
