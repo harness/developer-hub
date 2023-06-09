@@ -125,6 +125,12 @@ This release includes the following Harness module and component versions.
 
   ![picture 67](static/162273825052b81df3a86e5b649c38bdcf12f9175bd60cb7db872d223c2635c5.png)
 
+- ACR in Azure GovCloud is supported in the Docker Registry connector. (CDS-57777)
+  
+  You can now use `.io` and `.us` domains.
+
+  ![picture 73](static/40962ce702cb34f682116d48237a0b3a99d68d840ef0f6e39e4b260b79fba3dc.png)
+
 - Deployment freeze supports quarterly recurrence. (CDS-57792)
   
   You can now configure a deployment freeze with a recurrence of `n` months, where `n` can be between `2` to `11`.
@@ -292,6 +298,14 @@ This release includes the following Harness module and component versions.
 
   ```
 
+- Harness will remove comments when evaluating commented lines in manifests to avoid rendering failures. (CDS-57721, ZD-41676)
+  
+  This functionality is behind a feature flag, `CDS_REMOVE_COMMENTS_FROM_VALUES_YAML`.
+  
+  Expressions in comments were causing issues for some customers as Harness was trying to evaluate the expressions and this was causing failures.
+  
+  Harness will remove comments from values.yaml files to prevent expressions in comments from being evaluated and causing failures.
+
 - Harness now supports variable expressions in plain text config files. (CDS-58399)
   
   This functionality is behind a feature flag, `CDS_NG_CONFIG_FILE_EXPRESSION`.
@@ -302,6 +316,163 @@ This release includes the following Harness module and component versions.
 
 
 ### Fixed issues
+
+#### Continuous Integration
+
+- Fixed a minor UI issue where selecting the **Commits** tab on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds) caused the navigation menu to expand. (CI-6274)
+
+- You can now successfully use [references to secrets in non-Harness Secret Managers](/docs/platform/Secrets/Secrets-Management/reference-existing-secret-manager-secrets) in CI pipelines. Previously, these references failed because CI handles secrets as environment variables and some characters in these types of secret references aren't supported for environment variables. Now, CI automatically replaces unsupported characters with supported ones so it can process these references as environment variables. (CI-7443, ZD-41124)
+
+- Fixed an issue where looping strategies were not working for some steps. (CI-7499, ZD-41659)
+
+- When creating a [stage template](/docs/platform/templates/add-a-stage-template), the UI no longer crashes if you select the [expression input type](/docs/platform/references/runtime-inputs) for the **Shell** field in a **Run** step. (CI-7510)
+
+- Fixed an issue where [GCP connectors](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/) that inherit credentials from a Delegate were erroneously reporting failed connection tests. (CI-7538)
+
+- Build statuses are now updated as expected in BitBucket if the [BitBucket connector's Authentication settings](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference/#authentication) use a text secret for the **Username**. (CI-7576, ZD-41969)
+
+- Fixed an issue where the [SSL Verify setting](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#ssl-verify) in the **Git Clone** step always treated the value as false. (CI-7721, ZD-42483)
+
+#### Continuous Delivery & GitOps
+
+- Selecting the edit button on the YAML section of the **Triggers** page took users back to the visual section of the page. (CDS-50426)
+
+- Harness manager Pipeline Studio was showing all infrastructures when **Runtime input** was selected. (CDS-51784)
+
+- Incorrect error message when environment is set as an expression but no expression is provided. (CDS-53491)
+  
+  We have added schema validation for empty identifiers for envGroupRef, environmentRef, and infrastructure identifiers. Now the correct error messages will appear.
+
+- The error message for webhook trigger registration failure was unclear. (CDS-53600)
+
+  This issue is fixed by improving the error handling for webhook trigger registration. The error message now conveys a proper error summary.
+
+- Users were unable to create or edit the runtime input default values when configuring services, environments, templates, and pipelines. (CDS-53919, ZD-39998, ZD-40031, ZD-41197, ZD-41889)
+
+- Fixed minor bugs to improve consistency between connection test and steps when using a Kubernetes connector with client-key authentication. (CDS-54137)
+
+- Data was not cleared in ACR artifact source template. (CDS-54212)
+  
+  In the ACR artifact source template, the form details were not getting cleared when the connector was changed. This issue has been fixed now.
+
+- In the Jenkins step, the **Job Parameter** setting was disappearing when selecting the **Expression** type for the setting. (CDS-54325)
+  
+  You can now only select **Fixed values** or **Runtime input** in **Job Parameter** in the Jenkins step.
+
+- Pipeline name edits were lost when a template input was changed in a pipeline template. (CDS-54332)
+  
+  Pipeline template inputs such as pipeline name, if changed, are no longer getting reset when changing template inputs.
+
+- Infrastructure runtime input was not visible in template inputs section. (CDS-54511)
+  
+  Support has been added to make the resolved pipeline YAML available to template inputs so that dependent fields can be rendered.
+
+- Editing SSH credentials in the Infrastructure Definition was failing. (CDS-54519)
+  
+  This is fixed. Editing the SSH Credentials is now working as expected.
+
+- Docker artifact label expressions were not resolved in SSH or WinRm Command step scripts. (CDS-54744)
+  
+  You can now copy custom artifact output labels which have a '.' or a '-' in the output label and use that in an expression without encountering any errors during expression evaluation.
+
+- Expressions for stage templates were showing FQN (stage.spec.serviceVariables.var1) instead of local name (serviceVariables.var1). (CDS-54791)
+  
+  This minor bug fix enforces the use of the local value.
+
+- Pipeline links in templates were opening pipeline with unsaved changes. (CDS-55066)
+  
+  Entity link references were opening up in the same tab. With this fix, links now open in new tabs.
+
+- Improve Infrastructure API Design. (CDS-55827)
+  
+  Perviously, our infrastructure APIs (create/update) required YAML as input, but the API also accepted some of the fields as part of request body directly (name/identifier/envRef etc.). Harness expected some of the fields to be present in both places (YAML as well as the request body).
+  
+  Now Harness accepts everything as part of the YAML, making the YAML sufficient to create an infrastructure. Harness now reads all the required fields from the YAML or, if missing, reads them from the request body.
+  
+  :::info note
+  The API will still fail if fields have different values in the YAML and request body.
+  :::
+
+- Schema validation for step group templates was not working.	(CDS-56492)
+  
+  Validation is now working. The entityType in template schema needed to be passed.
+
+- Nexus 3 artifact **Tag** and **Repository** values were not updated when switching the repository type. (CDS-56640)
+  
+  When switching the repository format from Raw to Docker or any other supported formats, the **Tag** and **Repository** input fields were not cleared. This is fixed and the fields are cleared.
+
+- Incorrect FQN paths were used in dropdowns for multi service deployments. (CDS-56752, ZD-40553)
+  
+  When listing values in the pipeline run form when using multi services, the incorrect FQNs were used. This is now fixed the correct FQNs are used.
+
+- Read-only Secret Manager was allowed for TerraForm plans. (CDS-57772, ZD-40401)
+  
+  Harness stores TerraForm plans in secrets in the Secret Manager you have set up in your Harness account. Now Harness won't allow the use of a secret manager for a Terraform plan if the secret manager is read-only.
+
+- Missing task type support resulted in com.esotericsoftware.kryo.KryoException: Encountered unregistered class ID: 873575 error. (CDS-57912)
+  Harness has added the unsupported task type.
+
+
+
+
+
+
+
+
+
+
+
+#### Harness Platform
+
+- It is possible to delete an encrypted text or file secret, even if it is referenced by another secret. (PL-31037)
+  
+  A code enhancement fixed this issue.
+
+- JWT log sanitizer throws a null pointer exception when it receives null log messages. (PL-32136)
+
+  A code enhancement to add an empty check before sanitizing a log line for secret and JWT masking has fixed this issue.
+
+- Role assignments by **Scope** filter do not populate usernames or email addresses for existing users. (PL-32206)
+  
+  A code enhancement fixed this issue.
+
+- The tooltip for **Optional Configuration** in **Run Step** flashes in and out in a loop, making it difficult to read the text.(PL-32462, ZD-42201)
+  
+  A code enhancement fixed this issue.
+
+- Pagination does not work correctly in the **Group memberships** page.(PL-32551, ZD-42803)
+  
+  A code enhancement fixed this issue.
+
+- In **Group Memberships**, the selected scope value does not match the scope of the displayed user groups. (PL-32552)
+  
+  A code enhancement to fetch data corresponding to the selected scope has fixed the issue.
+
+- The option to remove a secret is hidden when it has a long name. (PL-32571)
+  
+  A code enhancement fixed this issue.
+
+#### Feature Flags
+
+- Fixed an issue where the metrics loading spinner was hanging indefinitely. (FFM-6735)
+
+- The UI now provides improved RBAC messaging when trying to toggle or edit a flag in an environment without the correct permissions. (FFM-7234)
+
+- Updated the field validation for the **YAML path** field in the Git connection form to prevent entering invalid path names beginning with `./`. (FFM-7448)
+
+* Fixed an issue in the onboarding flow where the flag validation did not work as expected. (FFM-7534)
+
+
+#### Service Reliability Management
+
+- When switched to a different project while a template was open, the health sources from the previous template would remain visible in the template, even though they were not part of the new project. (SRM-12236)  
+  
+  This issue has been resolved. Now, when you switch to a different project while a template is open, you will be redirected to the templates listing page.
+
+- The **Error Budget Burn Rate is above** SLO notification setting was not triggering notifications, even when the condition was met. (SRM-14613)  
+  
+  This issue has been resolved and notifications are being triggered when the **Error Budget Burn Rate is above** condition is met.
+
 
 
 
