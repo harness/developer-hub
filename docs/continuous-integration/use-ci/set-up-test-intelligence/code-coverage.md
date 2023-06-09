@@ -408,12 +408,5 @@ For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/pla
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="jacoco" label="JaCoCo plugin">
-```
-
-If you're using JaCoCo, you can use the JaCoCo Drone plugin, as explained in the [Java section](#java).
-
-```mdx-code-block
-  </TabItem>
 </Tabs>
 ```
