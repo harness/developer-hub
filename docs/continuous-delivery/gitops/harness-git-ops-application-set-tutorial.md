@@ -439,7 +439,7 @@ In **Execution**, Harness automatically adds the following steps:
   You can also enter variables in this step to update key:value pairs in the config file you are deploying.  
   If there is a matching variable name in the variables of the Service or Environment used in this Pipeline, the variable entered in this step will override them. 
   
-  When the value for a variable is empty or blank, the variable is ignored and will not be updated in the JSON or YAML file.
+  If an empty or blank value is provided for a variable, it will be disregarded, and no updates will be made to the JSON or YAML file for that specific variable.
   
   ![](./static/harness-git-ops-application-set-tutorial-56.png)
 
