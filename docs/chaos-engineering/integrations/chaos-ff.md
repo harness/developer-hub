@@ -59,7 +59,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 1. Select the experiment you want to run in this step, and then select **Add to Pipeline**.
 
-1. Back on the Configure Chaos Experiment screen, enter the **Expected Resilience Score** for this experiment.
+1. Back in **Configure Chaos Experiment**, enter the **Expected Resilience Score** for this experiment.
 
 	If the resilience score is not met, this chaos step fails.
 
