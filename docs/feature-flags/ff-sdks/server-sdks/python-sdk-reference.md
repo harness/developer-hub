@@ -293,6 +293,8 @@ The SDK logs the following codes for certain lifecycle events, e.g. authenticati
 | **2001** | Authentication failed with a non recoverable error                                       |
 | **2002** | Authentication failed and is retrying                                                    |
 | **2003** | Authentication failed and max retries have been exceeded                                 |
+| **3000** | SDK Closing                                                                              |
+| **3001** | SDK closed successfully                                                                  |
 | **4000** | Polling service started                                                                  |
 | **4001** | Polling service stopped                                                                  |
 | **5000** | Streaming service started                                                                |
