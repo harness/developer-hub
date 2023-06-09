@@ -49,7 +49,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 	![Select an existing experiment screen grid of experiments and one experiment selected.](./static/pipeline-select-experiment.png)
 
-	When you select an experiment on this screen, the experiment's last resilience score, and a preview of the experiment and the chaos faults included in it, is displayed on the right.
+	When you select an experiment, the experiment's last resilience score, a preview of the experiment, and its chaos faults, are displayed.
 
 1. (Optional) On this screen you can:
 	* Select **New Experiment** to create a new experiment in Chaos Studio. 
