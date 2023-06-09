@@ -389,7 +389,7 @@ spec:
 
 After the initial rolling deployment, Harness creates a `test-deployment` deployment and a `test-pdb` PDB resource. For any subsequent Canary deployment, Harness creates a `test-deployment-canary` deployment and a `test-pdb-canary` PDB resource which updates the reference for the `test-deployment-canary` deployment. 
 
-```
+```yaml
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
