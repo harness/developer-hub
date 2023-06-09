@@ -354,7 +354,7 @@ end
 ```
 
 ## Troubleshooting
-The SDK logs the following codes for certain lifecycle events, e.g. authentication, which can aid troubleshooting.
+The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
 
 |          |                                                                                          |
 |----------|------------------------------------------------------------------------------------------|
