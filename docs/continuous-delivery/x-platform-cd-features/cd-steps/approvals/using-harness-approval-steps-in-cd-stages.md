@@ -53,6 +53,10 @@ Here's what a manual approval step looks like in YAML:
               - name: foo  
                 defaultValue: bar
 ```
+## Important notes
+
+Approval steps should not be added to run in parallel with other steps, including other Approval steps. The Harness Pipeline Studio will not allow you to add Approval steps in parallel with other steps, but the pipeline YAML editor does not prevent this setup. During execution, a successful parallel Approval step will not fail the deployment, but it is not a valid configuration because Approvals are checks on the release process and should always be used between steps.
+
 ## Add approval step
 
 1. In a CD stage, in **Execution**, select **Add Step**.
