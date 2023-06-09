@@ -58,6 +58,24 @@ This release does not include early access features.
 <details>
 <summary>2023 releases</summary>
 
+#### June 7, 2023
+
+##### What's new
+
+This release does not include new features. 
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+* The **Node.js** server SDK has been updated to version **1.2.17** with the following update.
+
+  * Previously, when `client.close()` was called, the SSE stream was not terminated. This fix ensures that the SSE stream is properly terminated. (FFM-8116)
+
 #### June 5, 2023
 
 ##### What's new
