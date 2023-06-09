@@ -15,12 +15,45 @@ Review the notes below for details about recent changes to Harness Chaos Enginee
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 5, 2023, version 0.13.4
+## Latest - June 12, 2023, version 0.13.5
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+
+* Added a new Linux chaos fault, Disk Fill, which fills up the available disk space at a given system path for a specific duration. (CHAOS-1419)
+
+* To help users select the right infrastructure for their use case, the Chaos Infrastructures UI screen has been enhanced to show supported faults by different chaos infrastructure categories. (CHAOS-1811)
+
+* The database was upgraded to update the index in linuxInfrastructures collection. (CHAOS-1836)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+* This release does not include any early access features.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+* The Chaos Faults screen in ChaosHub was crashing when the **Platform** field was missing in CSV. This issue has been fixed. (CHAOS-1841)
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 5, 2023, version 0.13.4
+
+##### What's new
 
 :::caution
 This release breaks backward compatibility with older chaos infrastructures. You must update chaos infrastructures and the chaosnative/go-runner image in experiment definitions. If you don't upgrade, then chaos experiments will start to fail.
@@ -58,30 +91,15 @@ For detailed instructions, go to [Upgrade chaos infrastructure](/docs/chaos-engi
 
 * Added a new advanced configuration to allow users to add annotations to all chaos pods using the UI. (CHAOS-1465) 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
+
 * This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
 
 * Improved the UI message returned when users search for a GameDay and the search term is not found. Now the message more accurately states "No GameDay found matching the search term." (CHAOS-1717)
 
 * Previously, users were able to complete a GameDay even when some of the associated experiments were running. This could cause issues because it's not possible to edit or abort those experiments when a GameDay is closed. Now, users must abort running experiments in a GameDay before they can close it. (CHAOS-1713)
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 23, 2023, version 0.12.1
 
