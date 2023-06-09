@@ -22,11 +22,11 @@ This topic describes how to add a text secret in Harness.
 
 ## Add a text secret
 
-This topic assumes you have a Harness project set up. If not, see [Create organizations and projects](../organizations-and-projects/create-an-organization.md).
+You can add a text secret at account, organization, or project scope. 
+
+This topic explains the steps to add an encrypted test secret in the account scope.
 
 Secrets can be added inline while setting up a connector or other setting, and they can also be set up in the account, organization, or project resources.
-
-This topic explains the steps to add an encrypted test secret in the account scope. 
 
 To add an encrypted text secret in the account scope: 
 
