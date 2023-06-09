@@ -24,7 +24,22 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
   <TabItem value="What's new">
 ```
 
-This release does not include new features.
+#### Feature Flags SDKs
+
+* To aid in debugging, we added a list of codes logged for each lifecycle of the SDK. (FFM-7363)
+
+  Some of the lifecycle events these codes cover are:
+
+  * Initialization
+  * Authentication
+  * Polling
+  * Streaming
+  * Evaluation
+  * Metrics
+  * Close
+
+For a full list of codes, go to [Troubleshooting](/docs/feature-flags/ff-sdks/server-sdks/python-sdk-reference/#troubleshooting).
+
 
 ```mdx-code-block
   </TabItem>
@@ -37,6 +52,12 @@ This release does not include early access features.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
+
+#### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.1.15** with the following updates.
+
+* Previously, the SDK crashed if client.close() was called at any point before a stream event was sent to the SDK. With this fix, the SDK closes all threads correctly. (FFM-7363)
 
 #### Feature Flags UI
 
