@@ -45,7 +45,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 1. In the Configure Chaos Experiment screen, enter a **Name** for this step.
 
-1. Select the **Select Chaos Experiment** field to see existing chaos experiments you can add to this pipeline.
+1. Select **Select Chaos Experiment** to see the chaos experiments you can add to this stage.
 
 	![Select an existing experiment screen grid of experiments and one experiment selected.](./static/pipeline-select-experiment.png)
 
