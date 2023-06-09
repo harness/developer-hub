@@ -52,8 +52,8 @@ In Harness, a **managed** Kubernetes workload is a Kubernetes object deployed a
 | **Deployment** | Yes | Yes | Yes | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | Yes |
 | **StatefulSet** | Yes | Yes | Yes | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | Yes |
 | **DaemonSet** | Yes | Yes | Yes | No | No | Yes |
-| **HorizontalPodAutoscaler** | No | No | No | Yes<br/>This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. | Yes<br/>This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. | Yes |
-| **PodDisruptionBudget** | No | No | No | Yes<br/>This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. | Yes<br/>This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. | Yes |
+| **HorizontalPodAutoscaler** | No | No | No | Yes<br/>Behind the feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. | Yes<br/>Behind the feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. | No |
+| **PodDisruptionBudget** | No | No | No | Yes<br/>Behind the feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. | Yes<br/>Behind the feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. | No |
 | **CRDs** | Yes | Yes | Yes | No | No | No |
 | **Any Object** | Yes | No | No | No | No | No |
 
