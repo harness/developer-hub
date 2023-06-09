@@ -76,7 +76,7 @@ Go has built-in code coverage functionality.
 
    * If you're using JaCoCo, use the [JaCoCo Drone plugin](https://github.com/harness-community/drone-jacoco-s3) in a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md). This plugin uploads your JaCoCo code coverage report to S3 and publishes it to the **Artifacts** tab on the [Build details page](../viewing-builds.md).
    * With other Java code coverage tools:
-      * Add either an [Upload Artifacts to GCS step](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md) or [Upload Artifacts to S3 step](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md).
+      * Add an [Upload Artifacts to GCS step](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md) or [Upload Artifacts to S3 step](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md).
       * Use the Artifact Metadata Publisher Drone plugin to [view your code coverage report on the Artifacts tab](#view-code-coverage-reports-on-the-artifacts-tab).
 
 ### JavaScript
@@ -84,24 +84,24 @@ Go has built-in code coverage functionality.
 1. If necessary, set up a JavaScript code coverage tool, such as [Istanbul](https://github.com/gotwarlost/istanbul). Your test tool may already include code coverage; for example, [Istanbul is included with Jest](https://jestjs.io/docs/configuration/#collectcoverage-boolean).
 2. Add code coverage arguments or commands to the relevant **Run** step. For example, with Jest, add `--collectCoverage=true` to your `jest` command.
 
-```yaml
-              - step:
-                  type: Run
-                  name: Run Jest Tests
-                  identifier: run_jest_tests
-                  spec:
-                    shell: Sh
-                    command: |-
-                      yarn add --dev jest-junit
-                      jest --ci --runInBand --reporters=default --reporters=jest-junit --collectCoverage=true
-                    envVariables:
-                      JEST_JUNIT_OUTPUT_DIR: "/harness/reports"
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - "/harness/reports/*.xml"
-```
+   ```yaml
+                 - step:
+                     type: Run
+                     name: Run Jest Tests
+                     identifier: run_jest_tests
+                     spec:
+                       shell: Sh
+                       command: |-
+                         yarn add --dev jest-junit
+                         jest --ci --runInBand --reporters=default --reporters=jest-junit --collectCoverage=true
+                       envVariables:
+                         JEST_JUNIT_OUTPUT_DIR: "/harness/reports"
+                       reports:
+                         type: JUnit
+                         spec:
+                           paths:
+                             - "/harness/reports/*.xml"
+   ```
 
 3. Add a step to upload your code coverage report to cloud storage.
 
@@ -164,7 +164,7 @@ The built-in [phpdbg](https://www.php.net/manual/en/book.phpdbg.php) tool can ge
                      python3 -m pip install coverage
    ```
 
-2. Add code coverage commands to the relevant **Run** or **Run Tests** step.
+2. Add code coverage commands to the **Run** step where your run your tests.
 
    ```yaml
              - step:
@@ -277,6 +277,12 @@ Add `envVariables` to the `step.spec` for the relevant `Run` or `RunTests` step.
 ## View code coverage reports on the Artifacts tab
 
 You can use [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) to view code coverage reports on the **Artifacts** tab on the [Build details page](../viewing-builds.md).
+
+:::tip
+
+Code coverage reports are not the only artifacts you can publish to the **Artifacts** tab. You can [publish any URL to the Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab).
+
+:::
 
 ```mdx-code-block
 <Tabs>
@@ -402,11 +408,12 @@ For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/pla
 
 ```mdx-code-block
   </TabItem>
-</Tabs>
+  <TabItem value="jacoco" label="JaCoCo plugin">
 ```
 
-:::tip
+If you're using JaCoCo, you can use the JaCoCo Drone plugin, as explained in the [Java section](#java).
 
-Code coverage reports are not the only artifacts you can publish to the **Artifacts** tab. You can [publish any URL to the Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab).
-
-:::
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```

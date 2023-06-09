@@ -22,13 +22,6 @@ import { MODULES } from "../../constants";
           link: "/tutorials/ci-pipelines/test/codecov",
         },
         {
-          title: "Publish to the Artifacts tab",
-          module: MODULES.ci,
-          description:
-            "Publish any URL to the Artifacts tab.",
-          link: "/tutorials/ci-pipelines/publish/artifacts-tab",
-        },
-        {
           title: "Run LocalStack",
           module: MODULES.ci,
           description:

@@ -15,18 +15,25 @@ import { MODULES } from "../../constants";
         "",
       list: [
         {
-          title: "Amazon ECR",
+          title: "Publish to Amazon ECR",
           module: MODULES.ci,
           description:
             "Publish an Image to an Amazon Elastic Container Registry.",
           link: "/tutorials/ci-pipelines/publish/amazon-ecr",
         },
         {
-          title: "Google GAR",
+          title: "Publish to Google GAR",
           module: MODULES.ci,
           description:
             "Publish an Image to a Google Artifact Registry.",
           link: "/tutorials/ci-pipelines/publish/google-gar",
+        },
+        {
+          title: "Publish to the Artifacts tab",
+          module: MODULES.ci,
+          description:
+            "Publish any URL to the Artifacts tab.",
+          link: "/tutorials/ci-pipelines/publish/artifacts-tab",
         },
       ],
     },
