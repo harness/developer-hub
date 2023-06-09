@@ -43,7 +43,7 @@ This release does not incude early-access features.
   <TabItem value="Fixed issues">
 ```
 
-* Fixed an issue where STO results were not showing up in output variables when using STO outside of a template or a step group. (STO-6038, ZD-45802)
+* Fixed an issue where STO results were not showing up in output variables when using STO steps inside a step group in a security stage. (STO-6038, ZD-45802)
 
 * Updated the Golang library used in STO code to remediate CVE-2022-21698. (STO-5993) 
 
