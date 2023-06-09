@@ -283,7 +283,7 @@ if __name__ == "__main__":
 The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
 
 | **Code** | **Description**                                                                          |
-|----------|------------------------------------------------------------------------------------------|
+|----------|:-----------------------------------------------------------------------------------------|
 | **1000** | Successfully initialized                                                                 |
 | **1001** | Failed to initialize due to authentication error                                         |
 | **1002** | Failed to initialize due to a missing or empty API key                                   |
