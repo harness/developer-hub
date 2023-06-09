@@ -72,7 +72,7 @@ The **Add new Encrypted Text** settings appear.
    :::
 
 
-9. Enter **Description** for your secret.
+9. (Optional) Enter a **Description** and **Tags** for your secret.
 
 10. Enter **Tags** for your secret.
 
