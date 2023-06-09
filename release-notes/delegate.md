@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 Review the notes below for details about recent changes to Harness Delegate, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). 
 
 :::info note
-Harness Delegate, NextGen SaaS releases every two weeks. Harness Platform, NextGen SaaS and Harness Platform, FirstGen SaaS release weekly. New features, early access features, and fixes for Harness Platform, NextGen SaaS and FirstGen SaaS that do not require a new delegate version are included in Harness Platform release notes under **Harness Manager delegate new features** and **Harness Manager delegate fixes**. For NextGen Harness Platform release notes, go to [Harness Platform release notes](/release-notes/platform). For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
+Harness Delegate, NextGen SaaS releases every two weeks. Harness Platform, NextGen SaaS and Harness Platform, and FirstGen SaaS release weekly. New features, early access features, and fixes for Harness Platform, NextGen SaaS, and FirstGen SaaS that do not require a new delegate version are included in the Harness Platform release notes. For NextGen Harness Platform release notes, go to [Harness Platform release notes](/release-notes/platform). For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 :::
 
 :::info note
