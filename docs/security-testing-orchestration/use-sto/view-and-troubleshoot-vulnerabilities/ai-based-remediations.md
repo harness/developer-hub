@@ -23,7 +23,7 @@ import remediate_occurrence_three from '../static/ai-remediation-occurrence-3.pn
 import remediate_issue_refine from '../static/ai-remediation-issue-refine.png'
 ```
 
-Harness AI Copilot generates suggestions for fixing detected vulnerability. AI copilot explains the vulnerability, gives solutions how to fix it, and (where applicable) provides code changes that remediate the vulnerability.
+Harness AI Copilot auto-generates suggestions for fixing detected vulnerabilities. AI Copilot explains the vulnerability, gives solutions how to fix it, and (where applicable) provides code changes that remediate the vulnerability.
 
 ![](../static/ai-copilot-issue-example.png)
 
