@@ -20,6 +20,10 @@ Pipelines are organized into stages, each of which handles a major segment of th
 * Deploy
 * Custom Stage
 
+:::info note
+Harness recommends that when you add a chaos step to an FF pipeline, you also add a subsequent step that disables the feature flag if the chaos step fails. This way, software is not released if the chaos experiment fails.
+:::
+
 **To add a chaos experiment as a step in your FF pipeline:**
 
 1. In Harness, select **Feature Flags > Pipelines**, and then select the pipeline where you want to add a chaos experiment.
@@ -61,7 +65,8 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 1. Back in **Configure Chaos Experiment**, enter the **Expected Resilience Score** for this experiment.
 
-	If the resilience score is not met, this chaos step fails and the stage failure strategy is initiated.
+	* If the resilience score is not met, this chaos step fails and the [stage failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings) is initiated.
+	* We recommend you add another step in the pipeline that disables the flag if the chaos step fails.
 
 	For more information, see [Analyze chaos experiments](/docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments#analyze-chaos-experiments).
 
@@ -79,9 +84,9 @@ When a flag change triggers the FF pipeline:
 
 * The chaos step you added to the pipeline triggers the experiment to run on the target application.
 
-* The Chaos Experiments page records the experiment run as part of a pipeline, and you can select the experiment to view its execution.
+* The Chaos Experiments page (**Chaos > Chaos Experiments**) records the experiment run as part of a pipeline, and you can select the experiment to view its execution.
 
-* In the FF pipeline, if the chaos step (the experiment) fails, you can click the failed step to see the log, which includes the resilience score obtained and how many chaos probes passed or failed.
+* In the FF pipeline, if the chaos step (the experiment) fails, you can select the failed step to see the log, which includes the resilience score obtained and how many chaos probes passed or failed.
 	* You can select **View Detailed Execution** to go to the experiment's execution page in CE.
 
 * Based on the experiment's success or failure, you can decide whether to enable the flag change to show or hide the feature in the target environment.
