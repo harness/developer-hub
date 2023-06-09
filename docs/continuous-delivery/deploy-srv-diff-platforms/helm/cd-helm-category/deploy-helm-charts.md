@@ -400,6 +400,12 @@ All dependency repositories must be available and accessible from the Harness De
 :::
 
 ## Service hooks 
+  
+:::note
+
+Currently, this feature is behind the feature flag `CDS_K8S_SERVICE_HOOKS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 Kubernetes and Helm deployments use service hooks to fetch Helm Chart dependencies that refer to Git and other repositories, and install them with the main Helm Chart. 
 
