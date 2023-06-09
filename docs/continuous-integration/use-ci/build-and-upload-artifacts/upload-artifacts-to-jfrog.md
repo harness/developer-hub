@@ -68,7 +68,7 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 ## Confirm the upload
 
-After adding the steps and saving the pipeline, select **Run** to run the pipeline.
+After you add the steps and save the pipeline, select **Run** to run the pipeline.
 
 On the [build details page](../viewing-builds.md), you can see the logs for each step as they run.
 

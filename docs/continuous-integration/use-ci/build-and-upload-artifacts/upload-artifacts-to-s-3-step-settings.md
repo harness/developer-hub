@@ -125,7 +125,7 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 ## Confirm the upload
 
-After adding the steps and saving the pipeline, select **Run** to run the pipeline.
+After you add the steps and save the pipeline, select **Run** to run the pipeline.
 
 On the [build details page](../viewing-builds.md), you can see the logs for each step as they run.
 
@@ -205,13 +205,13 @@ Configure the **Plugin** step settings as follows:
    * **Container Registry:** Select a Docker connector.
    * **Image:** Enter `harnesscommunity/drone-s3-upload-publish`.
    * **Settings:** Add the following seven settings as key-value pairs.
-      * `aws_access_key_id`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID, such as `<+pipeline.variables.AWS_ACCESS>`
-      * `aws_secret_access_key`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`
-      * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`
+      * `aws_access_key_id`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID, such as `<+pipeline.variables.AWS_ACCESS>`.
+      * `aws_secret_access_key`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`.
+      * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`.
       * `aws_bucket`: The target S3 bucket.
       * `artifact_file`: `url.txt`
       * `source`: The path to store and retrieve the artifact in the S3 bucket.
-   * **Image Pull Policy:** Select **If Not Present**
+   * **Image Pull Policy:** Select **If Not Present**.
 
 ```mdx-code-block
   </TabItem>

@@ -70,7 +70,7 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 ## Confirm the upload
 
-After adding the steps and saving the pipeline, select **Run** to run the pipeline.
+After you add the steps and save the pipeline, select **Run** to run the pipeline.
 
 On the [build details page](../viewing-builds.md), you can see the logs for each step as they run.
 
@@ -95,7 +95,7 @@ Configure the **Plugin** step settings as follows:
 * **Container Registry:** Select a Docker connector.
 * **Image:** Enter `plugins/artifact-metadata-publisher`.
 * **Settings:** Add the following two settings as key-value pairs.
-  * `file_urls`: A GCS URL using the **Bucket** and **Target** specified in the **Upload Artifacts to GCS** step, such as `https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH.html`
+  * `file_urls`: A GCS URL using the **Bucket** and **Target** specified in the **Upload Artifacts to GCS** step, such as `https://storage.googleapis.com/GCS_BUCKET_NAME/TARGET_PATH.html`.
   * `artifact_file`: `artifact.txt`
 
 ```mdx-code-block
