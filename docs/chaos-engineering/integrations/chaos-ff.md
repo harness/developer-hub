@@ -22,7 +22,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 **To add a chaos experiment as a step in your FF pipeline:**
 
-1. In Harness, select **Feature Flags > Pipelines**, and then select the pipeline you want to add a chaos experiment to.
+1. In Harness, select **Feature Flags > Pipelines**, and then select the pipeline where you want to add a chaos experiment.
 1. In the selected pipeline, select **Add Stage**, and then select a stage type.
 
 	Chaos steps are available for **Feature Flag**, **Deploy**, and **Custom Stage** types. 
