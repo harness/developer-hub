@@ -27,11 +27,21 @@ This release breaks backward compatibility with older chaos infrastructures. You
 
 To upgrade chaos infrastructures and experiments:
 
+1. Delete old ChaosEngines, if any:
+
+    `kubectl delete chaosengines --all -n <namespace-of-chaosinfrastructure>`
+
+1. Upgrade the CRDs in clusters where you have deployed a chaos infrastructure: 
+
+    `kubectl apply -f https://raw.githubusercontent.com/chaosnative/hce-charts/main/hce-saas/hce-saas-crds.yaml`
+
 1. If a chaos infrastructure indicates **UPGRADE NEEDED**, select **Update**, and then follow the instructions on your screen.
 
     ![](./static/chaos-infra-upgrade-needed.png)
 
-1. Edit the YAML definitions of experiments to update the chaosnative/go-runner image to version 0.13.1. Do the same for experiments in custom chaos hubs that may be connected to your project.
+1. Edit the YAML definitions of existing experiments to update the chaosnative/go-runner image to version 0.13.1. Do the same for existing experiments in custom chaos hubs that may be connected to your project. (Not required for new expriments.)
+
+For detailed instructions, go to [Upgrade chaos infrastructure](/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/upgrade-infra).
 :::
 
 * Added audit events for various GameDay operations such as create, update, etc., so that users can easily audit operations done on their GameDays. (CHAOS-1709)

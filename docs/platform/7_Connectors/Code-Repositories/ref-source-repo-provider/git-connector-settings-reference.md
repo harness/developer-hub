@@ -22,7 +22,7 @@ The **Details** settings specify which Git account or repository you want this c
 
 ### URL Type
 
-Select **Account** to connect an entire Git account. This option lets you use one connector to connect to all repositories in the specified account. Make sure you have at least one repo in the account; you need a repo to test the connection and save the connector.
+Select **Account** to connect an entire Git account or organization. This option lets you use one connector to connect to all repositories in the specified account. Make sure you have at least one repo in the account; you need a repo to test the connection and save the connector.
 
 Select **Repository** to connect to a single, specific repo in a Git account.
 

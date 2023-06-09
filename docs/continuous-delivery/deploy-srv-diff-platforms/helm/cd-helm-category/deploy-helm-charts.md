@@ -400,6 +400,12 @@ All dependency repositories must be available and accessible from the Harness De
 :::
 
 ## Service hooks 
+  
+:::note
+
+Currently, this feature is behind the feature flag `CDS_K8S_SERVICE_HOOKS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 Kubernetes and Helm deployments use service hooks to fetch Helm Chart dependencies that refer to Git and other repositories, and install them with the main Helm Chart. 
 
@@ -467,6 +473,12 @@ hooks:
 ```
 
 For more information about Helm dependencies, go to [Helm dependency](https://helm.sh/docs/helm/helm_dependency/) and [Helm dependency update](https://helm.sh/docs/helm/helm_dependency_update/).
+
+### Video summary
+
+<!-- Video:
+https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
+<docvideo src="https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537" />
 
 ### Use case: Add private repositories as a Helm Chart dependency
 

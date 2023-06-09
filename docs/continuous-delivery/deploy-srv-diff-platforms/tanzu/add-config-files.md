@@ -42,7 +42,7 @@ For example, in a Tanzu Command step, you can reference the config file by enter
 Currently, this feature is behind a feature flag `CDS_GIT_CONFIG_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
 :::
 
-1. Select a GitHub connector, and select **Continue**. You can also add a [new GitHub connector](/docs/platform/connectors/code-repositories/add-a-git-hub-connector/) here and reference it.
+1. Select a GitHub connector, and select **Continue**. You can also add a [new GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference) here and reference it.
 2. In **Config File Details**, enter a config file name.
 3. Enter the name of the repository you want to reference from your GitHub account.
 4. In **Git Fetch Type**, select **Latest from Branch**, and then specify the **Branch** name. 

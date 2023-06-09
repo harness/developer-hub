@@ -1,7 +1,7 @@
 ---
 title: SLO as code
 description: Learn how to manage SLOs through code using Terraform based entities.
-sidebar_position: 2
+sidebar_position: 3
 ---
 
 Harness provides tools such as [Git Experience](https://developer.harness.io/docs/platform/git-experience/git-experience-overview/) and Terraform, to help you manage entities using code. 

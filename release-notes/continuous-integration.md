@@ -66,7 +66,7 @@ This release does not include early access features.
 
 ##### Hotfix version 3904
 
-This hotfix was released June 5, 2023. It contained no customer-facing changes.
+This hotfix was released on June 5, 2023. This hotfix does not include customer-facing changes.
 
 #### May 23, 2023, version 3805
 
