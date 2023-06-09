@@ -32,7 +32,7 @@ This release does not include early access features.
 
 #### Harness Manager delegate fixed issues
 
-The fixed issue below is available with version 79500 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+The fixed issue below is available with version 79503 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
 
 - Helm execution failed with `KubernetesClientException` error. (CDS-70386, ZD-45051)
   

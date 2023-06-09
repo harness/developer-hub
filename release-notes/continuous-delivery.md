@@ -118,7 +118,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Harness Manager delegate fixed issues
 
-The fixed issues below are available with version 79500 and do not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
+The fixed issues below are available with version 79503 and do not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
 
 - Fixed an issue where the `eventPayload` expressions were not resolving when rerunning a failed pipeline that was previously fired by using a trigger. (CDS-70559)
 
