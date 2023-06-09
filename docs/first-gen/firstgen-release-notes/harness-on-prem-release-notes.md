@@ -31,7 +31,8 @@ This release includes the following module and component versions.
 | Gateway | 10701 |
 
 ### New features and enhancements
-#### Harness Platform
+
+#### Harness Delegate
 
 - Removed the `DELEGATE_IMAGE_TAG` version override when delegates with the immutable image type are enabled. (PL-37852, DEL-6202)
 

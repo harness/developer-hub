@@ -212,6 +212,14 @@ This release includes the following Harness module and component versions.
 - You can now configure session time-out in the UI. (PL-32258)
   In case of inactivity, Harness logs users out of their accounts after the configured session timeout.
 
+#### Delegate
+
+- Added APIs to enable auto upgrading with custom delegate images. (PL-37871, DEL-6183)
+
+   `SupportedDelegateVersion` returns the maximum delegate version number to install.
+
+   `overrideDelegateImageTag` changes the tag the upgrader uses to upgrade delegates when auto upgrade is on.
+
 #### Service Reliability Management
 
 - Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
