@@ -25,7 +25,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 * Added the existing Typescript scanning library to Sonarqube scans so that Typescript is always supported. (STO-6007)
-* Added a `product_zip_max_size` setting to Checkmarx scans that enable you to override the maximum size of ZIP files uploaded to the STO pipeline (the default size is 200 MB). To override this setting in a Checkmarx scan step, add the `product_zip_max_size` setting and value (in MB) under **Settings (*optional*)**. 
+* Added a `product_zip_max_size` setting to Checkmarx scans that enable you to override the maximum size of ZIP files uploaded to the STO pipeline (the default size is 200 MB). To override this setting in a Checkmarx scan step, add the `product_zip_max_size` setting and value (in MB) under **Settings (*optional*)**. (STO-5991)
 
   ![](./static/checkmarx-zip-size-override-sto-5991.png)
 
@@ -43,7 +43,7 @@ This release does not incude early-access features.
   <TabItem value="Fixed issues">
 ```
 
-* Fixed an issue where STO results were not showing up in output variables when using STO outside of a template or a step group. (STO-6444, ZD-45802)
+* Fixed an issue where STO results were not showing up in output variables when using STO outside of a template or a step group. (STO-6044, ZD-45802)
 
 * Updated the Golang library used in STO code to remediate CVE-2022-21698. (STO-5993) 
 
