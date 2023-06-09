@@ -380,7 +380,7 @@ spec:
 
 You're using HPA with your deployment named `test-deployment`. Harness creates a `blue` or `green` HPA configuration (based on which colors the primary and stage are), marking the name of the deployment `test-deployment-blue` or `test-deployment-green`. 
 
-Harness creates a `test-deployment-blue` deployment and a `test-hpa-blue` HPA which references the `test-deployment-blue` deployment:
+In this example, Harness creates a `test-deployment-blue` deployment and a `test-hpa-blue` HPA which references the `test-deployment-blue` deployment:
 
 ```yaml
 apiVersion: autoscaling/v1
@@ -471,7 +471,7 @@ Currently, this functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB
 
 :::
 
-PDB defines the budget for voluntary disruption. PDB lets the cluster be aware of a minimum threshold in terms of available pods that the cluster needs to guarantee in order to ensure a baseline availability or performance. 
+PDB defines the budget for voluntary disruption. PDB lets the cluster know the minimum threshold for available pods that the cluster needs to guarantee to ensure baseline availability or performance. 
 
 PDB can be applied for the following types of controllers:
 
@@ -521,7 +521,7 @@ spec:
 
 Here you're using PDB with your deployment named `test-deployment`. Harness creates a `blue` configuration, marking the name of the deployment `test-deployment-blue`.
 
-Harness creates PDB resource, `test-pdb-blue`:
+Harness creates a PDB resource, `test-pdb-blue`:
 
 ```yaml
 apiVersion: policy/v1
@@ -543,7 +543,7 @@ harness.io/color=blue
 ```
 Note that the selectors for PDB, `.spec.selector` must match the controller's `.spec.selector`.
 
-The release history contains the name of the stage PDB resource (for example, `test-pdb-blue`) as part of list of resources.
+The release history contains the name of the stage PDB resource (for example, `test-pdb-blue`) as part of the list of resources.
 
 ## Notes
 
