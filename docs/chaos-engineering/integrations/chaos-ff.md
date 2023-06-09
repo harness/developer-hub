@@ -65,7 +65,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 	For more information, see [Analyze chaos experiments](/docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments#analyze-chaos-experiments).
 
-1. (Optional) Expand the **Optional Configuration** field, and enter an assertion (you can enter a fixed value, an expression, or a runtime input).
+1. (Optional) Expand **Optional Configuration**, and enter an assertion (you can enter a fixed value, an expression, or a runtime input).
 
 1. (Optional) Select the **Advanced** tab to configure more settings.
 
