@@ -31,9 +31,9 @@ Click **Secrets**.
 
 Click **Secret** and select **Text.**
 
-```mdx-code-block
-<img src={add_text_secret} alt="add_text_secret" height="300" width="700"/>
-```
+<!-- ![](./static/add-use-text-secrets-45.png) -->
+
+<docimage path={require('./static/add-use-text-secrets-45.png')} />
 
 The **Add new Encrypted Text** settings appear.
 

@@ -27,6 +27,10 @@ For permissions in the Harness Git Experience, go to [Source Code Manager Settin
 
 <!-- I don't believe these two sentences are true; all connectors require auth, even for read-only and public repos:  Public Git repos don't require a username and password/token. Harness does not validate public Git repo credentials. -->
 
+## SSH Key authentication
+
+If your code repo connector uses SSH Key authentication, the SSH Key is stored as a [Harness SSH credential secret](/docs/platform/Secrets/add-use-ssh-secrets), and the SSH credential's **Username** must be `git`.
+
 ## Connect to AWS CodeCommit
 
 You can use either an AWS CodeCommit connector or the platform-agnostic Git connector to connect to AWS CodeCommit repos.
