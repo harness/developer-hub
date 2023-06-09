@@ -94,7 +94,7 @@ You can also edit the secret in the connector.
 ## Reference the secret by identifier
 
 
-:::important
+:::info important
 Harness does not support the creation of a secret that points to a secret manager in a different scope.
 :::
 
