@@ -299,9 +299,9 @@ spec:
  maxReplicas: 10
  targetCPUUtilizationPercentage: 50
 ```
-Once configured, the HPA controller checks the metrics, and then scale your replicas up or down accordingly. By default, HPA checks metrics every 15 seconds.
+Once configured, the HPA controller checks the metrics and scales your replicas accordingly. HPA checks metrics every 15 seconds by default.
 
-Consider the following example Kubernetes resource: 
+Here is a sample Kubernetes resource with stage color `blue`:
 
 ```yaml
 apiVersion: apps/v1
@@ -354,7 +354,7 @@ Currently, this functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB
 
 :::
 
-PDB defines the budget for voluntary disruption. PDB lets the cluster be aware of a minimum threshold in terms of available pods that the cluster needs to guarantee in order to ensure a baseline availability or performance. 
+A Pod Disruption Budget (PDB) defines the budget for voluntary disruptions. To ensure baseline availability or performance, the PDB lets the cluster know the minimum threshold for pod availability.
 
 PDB can be applied for the following types of controllers:
 
