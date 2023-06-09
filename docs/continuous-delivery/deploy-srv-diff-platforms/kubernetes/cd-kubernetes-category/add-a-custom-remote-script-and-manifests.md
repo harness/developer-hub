@@ -16,12 +16,12 @@ Harness provides Custom Remote Manifests to let you run your script at deploymen
 
 In some cases, your manifests are in a packaged archive and you simply wish to extract and use them at runtime. In these cases, you can use a packaged archive with Custom Remote Manifests.
 
-You simply use Custom Remote Manifests to add a script that pulls the package and extracts its contents. Next, you supply the path to the manifest or template for Harness to use.
+You can simply use Custom Remote Manifests to add a script that pulls the package and extracts its contents. Next, you supply the path to the manifest or template for Harness to use.
 
 Custom Remote Manifests are supported for:
 
 * Kubernetes
-* Helm Chart
+* Helm chart
 * OpenShift
 
 Looking for other methods? See [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests).
@@ -143,6 +143,13 @@ Provide the path to the OpenShift template, Kubernetes manifest, or Helm file. F
 Do not enter a folder. Harness requires a direct path to the file.
 
 That's all the setup required. You can now deploy the Service and the script is executed at runtime.
+
+## Helm chart manifests
+
+When configuring a Helm chart with Custom Remote manifests, in the **Manifest Details** > **Advanced** section, you can select a **Helm Version**, and then add the command flags that you wish to pass based on the version. 
+
+For more information on Helm command flags, go to [Add Helm chart](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts/#add-the-helm-chart).
+
 
 ## Notes
 
