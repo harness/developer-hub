@@ -492,7 +492,7 @@ Now that you've created a basic pipeline for building and testing a Java app, yo
 
 * [Using Terraform notifications to automatically start builds](/tutorials/ci-pipelines/build/tfc-notification).
 * [Uploading artifacts to JFrog](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog).
-* [Publishing an Allure Report to the Artifacts tab](/tutorials/ci-pipelines/test/allure-report).
+* [Publishing any URL to the Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab).
 * [Including CodeCov code coverage and publishing results to your CodeCov dashboard](/tutorials/ci-pipelines/test/codecov/).
 * [Updating Jira issues when builds run](/docs/continuous-integration/use-ci/use-drone-plugins/ci-jira-int-plugin).
 
