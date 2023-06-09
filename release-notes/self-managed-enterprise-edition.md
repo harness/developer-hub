@@ -412,10 +412,123 @@ This release includes the following Harness module and component versions.
 - Missing task type support resulted in com.esotericsoftware.kryo.KryoException: Encountered unregistered class ID: 873575 error. (CDS-57912)
   Harness has added the unsupported task type.
 
+- Users were unable to delete a [V1 environments](/docs/continuous-delivery/get-started/upgrading/upgrade-cd-v2). (CDS-57943, ZD-41828)
+  
+  User can now delete V2 and V1 environments.
 
+- The Services dashboard was displaying deleted instances for project-level agents. (CDS-58041)
+  
+  The instance deletion did not happen due to an incorrect condition. This condition now picks up the instances for deletion.
 
+- The GitOps Clusters step was missing null checks. (CDS-58049)
+  
+  The Gitops Clusters step is added automatically during pipeline runtime when the stage **GitOps** option is selected. For example, in [PR pipeline](https://developer.harness.io/docs/continuous-delivery/cd-gitops/harness-git-ops-application-set-tutorial).
+  
+  <docimage path={require('./static/73cdc440ba09f067a25838780163b73f1afb34dc16e3fb4c625b6a84d0c295cf.png')} width="60%" height="60%" title="Click to view full size image" />
 
+  DeployToAll is a Boolean field in the step that can have true, false, or null values. The DeployToAll value was not set correctly when re-running pipelines because null checks were not present in all places where DeployToAll was referred to. This is now fixed.
 
+- The [Deployment Template](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial/)'s **Referenced By** setting was throwing an error. (CDS-58073)
+  
+  The search filters in the template is fixed now. The **Referenced By** setting now shows the pipelines that are using the template. 
+
+- The GitOps Fetch Linked Apps step was returning a null value. (CDS-58150)
+  
+  The GitOps Fetch Linked Apps step output was not set correctly, leading to a null value for the step. This has been fixed and the step now returns the linked apps correctly.
+
+- When using the Fetch Linked Apps step with the sync option unselected, the configs were not cleared from the YAML. (CDS-58151)
+  
+  Minor bug fix with resolving inputs in Fetch Linked Apps step.
+
+- The Jenkins step was not exporting `GIT_SHA` variable as an output. (CDS-58256, ZD-42196)
+  
+  The Jenkins was only exporting the following five variables, which you could select in the step's **Output** tab:
+  
+  ![picture 70](static/1b5a85ed162b70c2c13e84e1b2b5e19f1a6f1e5f4367168cd920100afde0a93a.png)  
+
+  Now the Jenkins step will also export the `GIT_SHA` expression.
+
+- The wrong Command step is being deleted. (CDS-58311)
+  
+  This is fixed and now the correct Command steps are always deleted.
+
+- Harness was evaluating commented lines in manifests causing rendering failures for OpenShift Params, Kustomize patches, etc. (CDS-58445)
+  
+  Expressions in comments were causing rendering of manifests failures. Harness now can retain their comments and Harness will evaluate the values.yaml as-is.
+
+- ECR artifact source deployment was failing in Tanzu. (CDS-58459)
+  
+  This is fixed and now Tanzu Application Service deployments using ECR as the artifact source are working as expected.
+
+- Webhook triggers were not working for GitLab connectors with SSH auth type and API tokens. (CDS-58471)
+  
+  Added support for SSH URL in triggers.
+
+- Users were able to edit the **Freeze Windows>** **Schedule** tab when a freeze window was active. (CDS-58507)
+  
+  The **Schedule** tab is not editable anymore when a freeze window is active. It is also uneditable for users with read-only permissions.
+
+- Unable to resolve number variables in a service, environment, or an Update step of a GitOps pipeline. (CDS-58531)
+  
+  This issue is fixed.
+
+- Not clear that file store UI has more content at the bottom of the file. (CDS-58551)
+  
+  This has been fixed.
+
+- For declarative rollback, the manifest outcome was not being passed in the Kubernetes Delete step. (CDS-58591)
+  
+  We have improved the behavior of declarative rollback with the Kubernetes Delete step and the manifest outcome is now passed to the step.
+
+- White spaces and special characters (except for `_` and `$`) were causing errors in the **Artifact** and **Manifest Name** identifiers. (CDS-58678, ZD-42015)
+  
+  **Important:** white spaces and special characters (except for `_` and `$`) are prevented automatically in **Artifact** and **Manifest Name** identifiers. If you are using **Artifact** and **Manifest Name** identifiers with white spaces and special characters, you will need to update them.
+
+- Unable to fetch the bucket list for the Helm chart manifest type using a Google Cloud Storage (GCS) connector if set as a runtime input. (CDS-58722)
+
+  This issue is fixed.
+
+- Template inputs was throwing a 400 error.	(CDS-58726)
+  
+  Template inputs are now refreshed consistently to avoid this error.
+
+- Resolved an issue where the Jira Create and Jira Update steps were failing when multi-select fields were added. (CDS-58928, ZD-42795)
+
+- Resolved an issue where users were not able to save the updated CloudFormation create stack step template. (CDS-59018)
+
+- The **Allow simultaneous deployments on the same infrastructure** setting was not being preserved when switching to YAML view for Azure deployment types. (CDS-59044)
+  
+  The setting is now preserved when switching modeling methods.
+
+- Tanzu rolling rollback was deleting the application instead of rolling back to previous state. (CDS-59089)
+  
+  The Rolling Rollback step in a Tanzu rolling deployment strategy was deleting the Tanzu application instead of rolling back to the previous version.
+  
+  We now provide more coverage to ensure multiple failure scenarios are covered in application failure and rollback for Tanzu rolling deployments.
+
+- Repository format is now supported for Artifactory artifact source templates. (CDS-59092)
+
+  <docimage path={require('./static/61a6e0b480e05303bfc5926bec326c1555eff5ae087014c0b6a7e00a1fa94ec2.png')} width="60%" height="60%" title="Click to view full size image" />
+
+- The **Verify Connection** error message for WinRM credential connection test was unclear. (CDS-59108)
+  
+  The error handling is now improved to provide a more meaningful error message when the connection to the target host fails. 
+
+- Usernames that were provided as secrets were not being decrypted for Github packages artifacts. (CDS-59187)
+  
+  When a Github connector was created with a username and password/token, if the username was a secret then its value was not decrypted.
+  
+  We now decrypt the username when provided as a secret.
+
+- The Security Testing Orchestration (STO) module was present in the Harness CD Community Edition (CE). (CDS-59269)
+  
+  Added support to hide the STO module from CE.
+
+- Unable to save pipeline input sets even if the user had the Pipeline Editor permission. (CDS-67985)
+  
+  Users with Pipeline Editor permission can now save input sets.
+
+- Resolved an issue that converted runtime fields with default values to fixed values when viewing the template-linked parts of a pipeline like steps, stage, and so on. (CDS-67999, ZD-42765)
 
 
 

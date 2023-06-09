@@ -33,6 +33,11 @@ This release includes the following module and component versions.
 ### New features and enhancements
 #### Harness Platform
 
+- Removed the `DELEGATE_IMAGE_TAG` version override when delegates with the immutable image type are enabled. (PL-37852, DEL-6202)
+
+- Updated legacy delegate images `kubectl` version to 1.25.8. (PL-38281, DEL-6087)
+
+
 
 #### Continuous Delivery & GitOps
 
@@ -69,6 +74,14 @@ This release includes the following module and component versions.
 	The issue has been resolved, and Harness now relies on release history instead of populating the canary workload if there is an error in the deployment manifest and the dry run is skipped.
 
 - Resolved a null pointer exception when the Canary Deployment step is initialized with the Helm manifest type. (CDS-59214)
+
+#### Harness Platform
+
+- Updated the error message for failed task execution to include the delegate host name or ID. (PL-38329, DEL-6187)
+
+
+
+
 
 
 ### April 26, 2023, version 78926
