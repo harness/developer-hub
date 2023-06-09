@@ -127,7 +127,7 @@ Currently, OAuth for GitLab connectors is behind a feature flag. Contact [Harnes
   <TabItem value="ssh" label="SSH Key">
 ```
 
-SSH connections require an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH keys are stored as [Harness Encrypted File secrets](../../../Secrets/3-add-file-secrets.md).
+SSH connections require an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH Credential secrets](/docs/platform/Secrets/add-use-ssh-secrets). When creating an SSH Credential secret for a code repo connector, the SSH Credential's **Username** must be `git`.
 
 For details on creating SSH keys and adding them to your GitLab account, go to the GitLab documentation about [Using SSH keys to communicate with GitLab](https://docs.gitlab.com/ee/user/ssh.html).
 

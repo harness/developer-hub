@@ -83,6 +83,7 @@ Click **Continue**.
 Enter the username and password from the repo.
 
 ![](../static/connect-to-a-azure-repo-04.png)
+
 #### Enable API Access
 
 This option is required for using Git-based triggers, Webhooks management, and updating Git statuses.​

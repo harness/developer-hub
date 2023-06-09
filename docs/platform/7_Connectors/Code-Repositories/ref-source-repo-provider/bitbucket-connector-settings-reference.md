@@ -145,7 +145,7 @@ Bitbucket accounts with two-factor authentication must use access tokens.
   <TabItem2 value="ssh" label="SSH Key">
 ```
 
-The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH keys are stored as [Harness Encrypted File secrets](../../../Secrets/3-add-file-secrets.md).
+The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH Credential secrets](/docs/platform/Secrets/add-use-ssh-secrets). When creating an SSH Credential secret for a code repo connector, the SSH Credential's **Username** must be `git`.
 
 For details on creating SSH keys and adding them to your Bitbucket account, go to the Bitbucket documentation about [Configuring SSH and two-step verification](https://support.atlassian.com/bitbucket-cloud/docs/configure-ssh-and-two-step-verification/).
 

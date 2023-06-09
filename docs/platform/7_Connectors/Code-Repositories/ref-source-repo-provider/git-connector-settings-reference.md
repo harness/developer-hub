@@ -106,7 +106,7 @@ If your Git account uses two-factor authentication, you must provide a personal 
   <TabItem value="ssh" label="SSH Key">
 ```
 
-The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH keys are stored as [Harness Encrypted File secrets](../../../Secrets/3-add-file-secrets.md).
+The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH Credential secrets](/docs/platform/Secrets/add-use-ssh-secrets). When creating an SSH Credential secret for a code repo connector, the SSH Credential's **Username** must be `git`.
 
 :::tip
 
