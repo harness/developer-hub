@@ -527,7 +527,7 @@ Harness creates a PDB resource, `test-pdb-blue`:
 apiVersion: policy/v1
 kind: PodDisruptionBudget
 metadata:
-  name: test-pdb
+  name: test-pdb-blue
 spec:
   minAvailable: 1
   selector:
