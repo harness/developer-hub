@@ -387,7 +387,21 @@ spec:
         - containerPort: 80
 ```
 
-After the initial rolling deployment, Harness creates a `test-deployment` deployment and a `test-pdb` PDB resource. For any subsequent Canary deployment, Harness creates a `test-deployment-canary` deployment and a `test-pdb-canary` PDB resource which updates the reference for the `test-deployment-canary` deployment. Additionally, PDB updates selectors (`.spec.selectors`) to match the selectors of the deployment. 
+After the initial rolling deployment, Harness creates a `test-deployment` deployment and a `test-pdb` PDB resource. For any subsequent Canary deployment, Harness creates a `test-deployment-canary` deployment and a `test-pdb-canary` PDB resource which updates the reference for the `test-deployment-canary` deployment. 
+
+```
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: test-pdb-canary
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: test-deployment-canary
+```
+
+Additionally, PDB updates selectors (`.spec.selectors`) to match the selectors of the deployment. 
 
 ```yaml
 app=test-deployment
