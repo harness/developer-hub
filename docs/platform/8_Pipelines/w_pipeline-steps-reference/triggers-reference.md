@@ -465,7 +465,7 @@ For information about other provider's token scopes, go to:
 * [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
 
 :::info note
-Harness Self-Managed Enterprise Edition does not support webhook triggers for self-signed certificates.
+Harness Self-Managed Enterprise Edition does not support webhook triggers for Helm-based installations using self-signed certificates.
 :::
 
 1. In Harness, obtain the trigger webhook by selecting the **Webhook/Link** icon in the list of triggers.
