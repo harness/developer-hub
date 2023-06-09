@@ -1,5 +1,5 @@
 ---
-title: Fix issues using AI
+title: Fix issues using AI AI Copilot enhanced remediation steps
 description: Fix detected issues using Harness STO's AI-enhanced remediation engine.
 sidebar_position: 35
 ---
