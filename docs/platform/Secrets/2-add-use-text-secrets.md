@@ -176,7 +176,7 @@ MySecret:<+secrets.getValue("test")>
 EOF
 ```
 
-## Characters length limit in Secret Names
+## Characters length limit in secret names
 A secret name cannot exceed 100 characters if you are using the Vault V2 engine.
 
 ## Sanitization
