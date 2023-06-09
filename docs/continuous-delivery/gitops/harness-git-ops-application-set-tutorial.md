@@ -360,7 +360,7 @@ To add a Github connector:
     
     7. Select **Enable API access** and use the same Harness Secret.
     
-    For more information, go to [add a GitHub connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector).
+    For more information, go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 3. Select **Continue**.
 4. In **Connect to the provider**, select **Connect through Harness Platform**., and then click **Save and Continue**.
 5. When the **Connection Test** in complete, click **Continue**.

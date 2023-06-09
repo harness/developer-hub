@@ -52,7 +52,7 @@ To run this pipeline in your project, do the following.
 
 1. Create the following connectors if you don't have them:
 
-   -  [GitHub Connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector)
+   - [GitHub Connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
    - [GCP Connector](/docs/platform/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp) 
       Use the file secret you just created for the GCP credentials.
    - [Docker Hub Connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)  
