@@ -134,7 +134,7 @@ The following characters aren't allowed in the names of secrets:
  ~ ! @ # $ % ^ & * ' " ? / < > , ;
 ```
 
-## Secrets in Outputs
+## Secrets in outputs
 
 When a secret is displayed in an output, Harness substitutes the secret value with asterisks so that the secret value is masked. Harness replaces each character in the name with an asterisk (\*).
 
