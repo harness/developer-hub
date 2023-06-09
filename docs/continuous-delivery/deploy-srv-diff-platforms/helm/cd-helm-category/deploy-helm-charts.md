@@ -474,6 +474,12 @@ hooks:
 
 For more information about Helm dependencies, go to [Helm dependency](https://helm.sh/docs/helm/helm_dependency/) and [Helm dependency update](https://helm.sh/docs/helm/helm_dependency_update/).
 
+### Video summary
+
+<!-- Video:
+https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
+<docvideo src="https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537" />
+
 ### Use case: Add private repositories as a Helm Chart dependency
 
 1. Add a repository in Helm using the following script: 
