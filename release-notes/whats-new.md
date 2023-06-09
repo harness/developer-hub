@@ -87,6 +87,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Kubernetes deployments support horizontal pod autoscaling and pod disruption budget for Blue Green and Canary execution strategies. (CDS-59011)
 
 - Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SRM-14724)
+
+### Cloud Cost Management, version 79601
+**Cost Category enhancement** (CCM-12585)
+
+  When building a cost category, it is now possible to incorporate another cost category as a rule. However, there are important considerations to keep in mind when using a cost category within your rule. 
+  
+   * You cannot include a nested cost category as a rule within another cost category if either of these cost categories contains a shared bucket.
+   * You cannot add the same cost category as a rule in the cost bucket.
+   * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
+   * You can nest cost categories to a maximum of 20 levels.
   
 ## June 01, 2023
 
