@@ -57,7 +57,7 @@ This release does not include early access features.
 
 The **Python** server SDK has been updated to version **1.1.15** with the following update.
 
-* Previously, the SDK crashed if client.close() was called at any point before a stream event was sent to the SDK. With this fix, the SDK closes all threads correctly. (FFM-7363)
+* Previously, the SDK crashed if `client.close()` was called at any point before a stream event was sent to the SDK. With this fix, the SDK closes all threads correctly. (FFM-7363)
 
 #### Feature Flags UI
 
