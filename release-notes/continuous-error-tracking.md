@@ -57,13 +57,11 @@ This release does not include any early access features.
   <TabItem value="Hotfix (et-service 5.23.1)">
 ```
 
-Released June xx, 2023
+#### Released June xx, 2023
 
-##### Fixed issues
-
-- CET Agents that were started without providing an agent token are not appearing on the list of running agents. This issue has been resolved. (CET-1411)  
+- CET Agents that were started without providing an agent token are not appearing on the list of running agents. (CET-1411)  
   
-  Now, all running agents, regardless of the presence of an agent token, are properly displayed on the running agents list.
+  This issue has been resolved. Now, all running agents, regardless of the presence of an agent token, are properly displayed on the running agents list.
 
 ```mdx-code-block
   </TabItem>
@@ -88,7 +86,7 @@ This release does not include any early access features.
 
 ##### Fixed issues
 
-- The CET Agent list is failing to load correctly when running in SMP installations with Postgres. (CET-1279)  
+- The CET Agent list is failing to load correctly when running in SMP installations with Postgres. (CET-1279)   
   
   The issue has been resolved. The CET Agent list now loads properly in SMP installations with Postgres.
   
