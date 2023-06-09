@@ -19,7 +19,7 @@ You can use the **Upload Artifacts to S3** step in your CI pipelines to upload a
 
 As an alternative to the **Upload Artifacts to S3** step, you can use the [S3 Upload and Publish Drone plugin](https://github.com/harness-community/drone-s3-upload-publish) to uploads a specified file or directory to AWS S3 and publish it to the **Artifacts** tab.
 
-For instructions, go to [Publish artifacts to the Artifacts tab](#publish-artifacts-to-the-artifacts-tab).
+For instructions, go to [View artifacts on the Artifacts tab](#view-artifacts-on-the-artifacts-tab).
 
 :::
 
@@ -131,7 +131,7 @@ On the [build details page](../viewing-builds.md), you can see the logs for each
 
 After the **Upload Artifacts to S3** step runs, you can see the uploaded artifacts on S3.
 
-### Publish artifacts to the Artifacts tab
+### View artifacts on the Artifacts tab
 
 As an alternative to manually finding artifacts on S3, you can use [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) to view code coverage reports on the **Artifacts** tab on the [Build details page](../viewing-builds.md).
 

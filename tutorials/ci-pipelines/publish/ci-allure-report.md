@@ -1,12 +1,12 @@
 ---
-title: Publish Allure Report
+title: Artifacts tab
 sidebar_position: 2
-description: Create a CI pipeline that runs a Maven test and generates an Allure Report that you can view in the Harness UI.
+description: You can publish any URL to the Artifacts tab.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial, maven, Allure]
-slug: /ci-pipelines/test/allure-report
+slug: /ci-pipelines/publish/artifacts-tab
 ---
 
-# Publish an Allure Report to the Artifacts tab 
+# Publish any URL to the Artifacts tab
 
 <ctabanner
   buttonText="Learn More"
@@ -17,7 +17,7 @@ slug: /ci-pipelines/test/allure-report
   target="_self"
 />
 
-This tutorial provides an example pipeline that builds a Java Maven application and generates an Allure Report that you can view in the Harness UI. 
+You can publish any URL to the **Artifacts** tab on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds). This tutorial demonstrates how to do this by creating an example pipeline that builds a Java Maven application and generates an Allure Report that you can view in the Harness UI.
 
 ### Pipeline workflow 
 
@@ -130,7 +130,7 @@ pipeline:
                     bucket: demo-allure-report
                     sourcePath: target/YOUR_GCS_BUCKET_NAME/complete.html
                     target: <+pipeline.sequenceId>/index.html
-# STEP 5: Publish upload report url in artifact tab
+# STEP 5: Publish upload report url in Artifacts tab
                - step:                 
                   type: Plugin
                   name: publish metadata for allure report

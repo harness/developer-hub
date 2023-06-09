@@ -93,11 +93,11 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
   },
   {
-    title: "Publish an Allure Report",
+    title: "Publish to the Artifacts tab",
     module: MODULES.ci,
     description:
-      "Publish an Allure Report.",
-    link: "/tutorials/ci-pipelines/test/allure-report",
+      "Publish any URL to the Artifacts tab.",
+    link: "/tutorials/ci-pipelines/publish/artifacts-tab",
     type: [docType.Documentation],
     time: "5 min",
     icon: "img/icon_ci.svg"
