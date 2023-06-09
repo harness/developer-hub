@@ -125,7 +125,7 @@ Avoid using `$` in your secret value. If your secret value includes `$`, you mus
 For example, if your secret in the Project scope has a value `'my$secret'`, and identifier `doc-secret`, to echo, use single quotes:  
 `echo '<+secrets.getValue("doc-secret")>'`
 
-## Invalid Characters in Secret Names
+## Invalid characters in secret names
 
 The following characters aren't allowed in the names of secrets:
 
