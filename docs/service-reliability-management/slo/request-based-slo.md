@@ -8,6 +8,10 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
+:::info note
+Currently, this feature is behind the feature flag `SRM_ENABLE_REQUEST_SLO`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 A request-based Service Level Objective (SLO) uses a Service Level Indicator (SLI), which calculates the ratio of successful requests to the total number of requests. It tells you how well a service is performing based on the ratio of successful requests to the total number of requests.
 
 Let's say you have a website that allows users to search for products. To measure the SLI, you would track the number of search requests that were completed successfully (example: the user received the search results) and divide it by the total number of search requests made.
@@ -26,6 +30,8 @@ For example, if you had 100 search requests and 95 of them returned the expected
 <details>
 <summary><b> Steps to create a project in Harness.</b></summary>
 
+To create a project in Harness, do the following:
+
 1. In Harness, select **Service Reliability** > **Create Project**.
    
 2. On the **About the Project** page, do the following, and then select **Save and Continue**: 
@@ -43,9 +49,9 @@ For example, if you had 100 search requests and 95 of them returned the expected
 
 - Health source connector. Ensure that your health source is connected to Harness. The health source can be a monitoring and logging system such as Prometheus. This enables Harness to collect health and performance metrics and monitor your SLO. For more information, go to [Connect to Monitoring and Logging Systems](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems).
 
-## Create a request based SLO
+## Create a request-based SLO
 
-To create a request based SLO:
+To create a request based SLO, do the following:
 
 1. In your Harness project, navigate to the **Service Reliability** module, and then select **SLOs** > **+ Create SLO**.  
    The Create SLO page appears.
@@ -61,18 +67,18 @@ In the **SLO details** section, do the following:
 
 ### Configure Service Level Indicators (SLIs)
 
-SLI is like a ruler or a tool that you use to measure your service's performance. It helps you determine how close or far you are from meeting your SLO so that you can take corrective action if necessary.
+SLIs are tools you use to measure your service's performance. It helps you determine how close or far you are from meeting your SLO so that you can take corrective action if necessary.
 
 In this section, you will configure a request-based SLI for your SLO. A request-based SLI is a measurement that tells you how well a service is performing based on the ratio of successful requests to the total number of requests.
 
-To configure request-based SLI:
+To configure request-based SLIs, do the following:
 
 1. Select a **Health Source to manage the service level**. If you haven't already added a health source, follow these instructions.
 
 <details>
 <summary><b> Steps to add a health source.</b></summary>
 
-To add a health source:
+To add a health source, do the following:
 
 1. Under **Health Source to manage the service level**, select **+ New Health Source**.  
    The Add New Health Source dialog appears.
@@ -98,12 +104,14 @@ The configuration settings for health source metrics depend on the selected heal
 
 ##### Define a query
 
+To define a query, do the following:
+
 1. In the **Query Specifications and Mapping** section, in the **Group Name** field, select **+ Add New**.  
    The New Prometheus Group Name dialog appears.
    
-2. Enter a name for the group and select **Submit**. 
+2. Enter a name for the group, and then select **Submit**. 
 
-3. Expand **Build your Query** and do the following:
+3. Expand **Build your Query**, and do the following:
    
    - From the **Prometheus Metric** dropdown list, select a filter for metric.
    - From the **Filter on Environment** dropdown list, select a filter for environment.
@@ -131,7 +139,7 @@ The configuration settings for health source metrics depend on the selected heal
 
 3. From the **Event type** dropdown list, select the type of event that you want to measure. The available options are **Good** and **Bad**.
 
-4.  Select a metric from the dropdown list based on the event type you have chosen. The metric dropdown field that you see varies depending on the event type selected. For example, if you have chosen the **Good** event type, you will see the **Metric for good requests** dropdown list, while if you have chosen the **Bad** event type, you will see the **Metric for bad requests** dropdown list.
+4.  Select a metric from the dropdown list based on the event type you have chosen. The metric dropdown field varies depending on the event type selected. For example, if you have chosen the **Good** event type, you will see the **Metric for good requests** dropdown list, while if you have chosen the **Bad** event type, you will see the **Metric for bad requests** dropdown list.
 
 5. From the **Metric for valid requests** dropdown list, select a metric for the valid requests.
 
@@ -157,11 +165,6 @@ The **Rolling period** type calculates the compliance period based on the curren
 
 On the other hand, the **Calendar period** type sets fixed calendar periods for the compliance period, such as weekly, monthly, or quarterly. For example, if you select a monthly period length, the compliance period will always be the entire calendar month, regardless of when the measurement starts.
 :::
-
-
-### Set error budget policy
-
-Optionally, you can set up notifications for SLOs' error budget to keep your team informed about the remaining percentage and minutes, as well as the burn rate. With these alerts, you can ensure that your team is aware of any changes in your service's performance and takes appropriate action as needed. To learn how to set error budget policy notifications, go to [SLO notifications](../notifications/slo-notifications.md).
 
 
 ### Save
