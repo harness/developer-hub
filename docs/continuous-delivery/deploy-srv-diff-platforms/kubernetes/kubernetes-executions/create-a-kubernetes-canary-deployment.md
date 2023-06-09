@@ -281,7 +281,7 @@ Currently, this functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB
 
 :::
 
-HPA is a form of autoscaling that increase or decrease the number of pods in a ReplicationController, Deployment, ReplicaSet, or StatefulSet based on CPU utilization. The scaling is horizontal because it affects the number of instances rather than the resources allocated to a single container. HPA can make scaling decisions based on custom or externally provided metrics and works automatically after the initial configuration. All you need to do is define the minimum and maximum number of replicas and a trigger limit.
+The Horizontal Pod Autoscaler (HPA) automatically scales ReplicationControllers, Deployments, ReplicaSets, or StatefulSets based on CPU utilization. Scaling is horizontal, as it affects the number of instances rather than the resources allocated to one container. Upon initial configuration, HPA can make scaling decisions based on custom or external metrics. All you need to do is define the minimum and maximum number of replicas and a trigger limit.
 
 Here's a sample HPA resource: 
 
