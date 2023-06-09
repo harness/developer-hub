@@ -145,7 +145,7 @@ If you accidentally use a very common value in your secret, like whitespace, the
 
 If you see an output like this, review your secret and fix the error.
 
-## Secret Scope
+## Secret scope
 
 When creating secrets, it's important to understand their scope in your Harness account.
 
