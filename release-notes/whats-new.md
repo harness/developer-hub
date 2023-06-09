@@ -82,7 +82,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
    * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
    * You can nest cost categories to a maximum of 20 levels.
 
-### Harness Delegate version 79503
+### Harness version 79516, Harness Delegate version 79503
 
 - Kubernetes deployments support horizontal pod autoscaling and pod disruption budget for Blue Green and Canary execution strategies. (CDS-59011)
 
@@ -138,11 +138,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
-This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You can now use the legacy UI to create delegates. (PL-38937)
 
-This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
 
