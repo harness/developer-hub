@@ -174,7 +174,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 ```
 
 ```yaml
-                - step:
+              - step:
                   type: Run
                   name: Run Ruby Tests
                   identifier: run_ruby_tests
@@ -388,17 +388,16 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
 
 ## Full pipeline examples
 
-Here's a YAML example of a pipeline that:
+The following YAML examples describe pipelines that install dependencies, run tests, use caching, and build and push images to Docker Hub.
 
-1. Tests a Ruby code repo.
-2. Builds and pushes an image to Docker Hub.
+```mdx-code-block
+<Tabs>
+  <TabItem value="hosted" label="Harness Cloud" default>
+```
 
 This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
 If you copy this example, replace the placeholder values with appropriate values for your connector IDs, account/user names, and repo names. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
-
-<details>
-<summary>Pipeline YAML</summary>
 
 ```yaml
 pipeline:
@@ -425,9 +424,9 @@ pipeline:
             enabled: true
             key: cache-{{ checksum "gemfile.lock" }}
             paths:
-              - /vendor/cache ## ?
+              - /vendor/cache
           sharedPaths:
-            - /vendor/cache ## ?
+            - /vendor/cache
           platform:
             os: Linux
             arch: Amd64
@@ -444,6 +443,18 @@ pipeline:
                     shell: Sh
                     command: bundle check || bundle install
               - step:
+                  type: Run
+                  name: Run Ruby Tests
+                  identifier: run_ruby_tests
+                  spec:
+                    shell: Sh
+                    command: bundle exec rake test --junit
+                  reports:
+                    type: JUnit
+                    spec:
+                      paths:
+                        - /harness/report.xml
+              - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1
                   identifier: BuildAndPushDockerRegistry_1
@@ -454,9 +465,106 @@ pipeline:
                       - <+pipeline.sequenceId>
 ```
 
-</details>
+```mdx-code-block
+  </TabItem>
+  <TabItem value="self" label="Self-hosted">
+```
 
-<!-- need a K8s pipeline example -->
+This pipeline uses [self-hosted Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) and [Save and Restore Cache from S3 steps](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/).
+
+If you copy this example, replace the placeholder values with appropriate values for your connector IDs, account/user names, repo names, and other settings. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
+
+```yaml
+pipeline:
+  name: ruby-k8s
+  identifier: ruby_k8s
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_REPO_NAME
+        build: <+input>
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          execution:
+            steps:
+              - step:
+                  type: RestoreCacheS3
+                  name: Restore Cache From S3
+                  identifier: Restore_Cache_From_S3
+                  spec:
+                    connectorRef: YOUR_AWS_CONNECTOR_ID
+                    region: us-east-1 ## Set to your bucket's AWS region
+                    bucket: YOUR_AWS_BUCKET_NAME
+                    key: cache-{{ checksum "gemfile.lock" }}
+                    archiveFormat: Tar
+              - step:
+                  type: Run
+                  identifier: dependencies
+                  name: Dependencies
+                  spec:
+                    shell: Sh
+                    command: bundle check || bundle install
+                    connectorRef: account.harnessImage
+                    image: ruby:latest
+              - step:
+                  type: Run
+                  name: Run Ruby Tests
+                  identifier: run_ruby_tests
+                  spec:
+                    shell: Sh
+                    command: bundle exec rake test --junit
+                    connectorRef: account.harnessImage
+                    image: ruby:latest
+                  reports:
+                    type: JUnit
+                    spec:
+                      paths:
+                        - /harness/report.xml
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: BuildAndPushDockerRegistry_1
+                  identifier: BuildAndPushDockerRegistry_1
+                  spec:
+                    connectorRef: YOUR_DOCKER_CONNECTOR_ID
+                    repo: YOUR_DOCKER_HUB_USERNAME/YOUR_DOCKER_REPO_NAME
+                    tags:
+                      - <+pipeline.sequenceId>
+              - step:
+                  type: SaveCacheS3
+                  name: Save Cache to S3
+                  identifier: Save_Cache_to_S3
+                  spec:
+                    connectorRef: YOUR_AWS_CONNECTOR_ID
+                    region: us-east-1 ## Set to your bucket's AWS region
+                    bucket: YOUR_AWS_BUCKET_NAME
+                    key: cache-{{ checksum "gemfile.lock" }}
+                    sourcePaths:
+                      - /vendor/cache
+                    archiveFormat: Tar
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_KUBERNETES_NAMESPACE
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## Next steps
 
