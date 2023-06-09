@@ -81,7 +81,7 @@ The **Add new Encrypted Text** settings appear.
 
 All of the passwords and keys used in Harness connectors are stored as encrypted text secrets in Harness.
 
-You can either create the Encrypted Text secret first and then select it in the Connector or you can create/select it from the Connector by clicking **Create or Select a Secret**:
+You can either [create the secret](#add-a-text-secret) first and then select it in the connector or you can create it from the connector by clicking **Create or Select a Secret**:
 
 ```mdx-code-block
 <img src={create_edit_encrypted_text} alt="create_edit_encrypted_text" height="200" width="500"/>
