@@ -403,7 +403,7 @@ templates/hpa-blue.yaml:
 
 
 ```yaml
-apiVersion: autoscaling/v2beta2  
+apiVersion: autoscaling/v2 
 kind: HorizontalPodAutoscaler  
 metadata:  
   name: {{.Values.name}}-blue  
@@ -423,7 +423,7 @@ spec:
 templates/hpa-green.yaml:
 
 ```yaml
-apiVersion: autoscaling/v2beta2  
+apiVersion: autoscaling/v2  
 kind: HorizontalPodAutoscaler  
 metadata:  
   name: {{.Values.name}}-green  
