@@ -98,6 +98,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
    * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
    * You can nest cost categories to a maximum of 20 levels.
   
+## June 08, 2023
+
+### Security Testing Orchestration, version 1.57.4
+
+* Added the existing Typescript scanning library to Sonarqube scans so that Typescript is always supported. (STO-6007)
+* Added a `product_zip_max_size` setting to Checkmarx scans that enable you to override the maximum size of ZIP files uploaded to the STO pipeline (the default size is 200 MB). To override this setting in a Checkmarx scan step, add the `product_zip_max_size` setting and value (in MB) under **Settings (*optional*)**. (STO-5991)
+
+  ![](./static/checkmarx-zip-size-override-sto-5991.png)
+
 ## June 01, 2023
 
 ### Service Reliability Management, version 79413
