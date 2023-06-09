@@ -187,7 +187,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 - Deployments load static files from the application server and no longer attempt to connect to static.harness.io. (SMP-851)
 #### Continuous Integration
 - When you [use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
-#### Continous Delivery & GitOps
+#### Continuous Delivery & GitOps
 - You can no longer delete an infrastructure used in a pipeline or template. (CDS-42182)
 
   This check ensures that you do not remove an entity you are using in your delivery.

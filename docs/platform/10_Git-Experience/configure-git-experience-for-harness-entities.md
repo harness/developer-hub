@@ -29,10 +29,13 @@ Make sure you have the following set up Before you begin this quickstart:
 * A Personal Access Token (PAT) for your Git account.
 	+ Harness needs the PAT to use the Git platform APIs.
 	+ You add the PAT to Harness as a Text Secret and it is encrypted using a Harness Secret Manager.
-	+ Your Git Personal Access Token is stored in your Harness secret and is a private key to which only you have access. This secret cannot be accessed or referenced by any other user.
+	+ Your Git Personal Access Token is stored in your Harness secret and is a private key to which only you have access. This secret cannot be accessed or referenced by any other user. 
+	  
+	  Make sure you configure SSO for your GitHub token when enabling Git provider access via SSO.
+	  
 	+ The PAT must have the following scope:
 		- GitHub:![](./static/configure-git-experience-for-harness-entities-35.png)
-		- Bitbucket:![](./static/configure-git-experience-for-harness-entities-36.png)
+        - Bitbucket:![](./static/configure-git-experience-for-harness-entities-36.png)
 	+ To enable Git Experience for your resources, make sure that you have Create/Edit permissions for them.​​
 
 

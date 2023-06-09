@@ -15,7 +15,7 @@
 |Harness Cloud - Describe Supported Platform And Os (Linux, Mac, Windows)|[Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/)|
 |Harness Cloud - Test Build Infrastructure On Harness Cloud|[Get started with Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart)|
 |Describe Available Connectors |[Connectors](https://developer.harness.io/docs/category/connectors)|
-|Configure a Git Connector|[Add a GitHub Connector](https://developer.harness.io/docs/platform/connectors/code-repositories/add-a-git-hub-connector/)|
+|Configure a Git Connector| [GitHub connector settings reference](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference) |
 |Configure a Docker Hub Connector|[Connect to Harness Container Image Registry Using Docker Connector](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)|
 |Understand Harness Delegate Role For The CI Capability|[CI pipeline basics](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics)| <!--- ||Describe Pipeline Studio Vs Yaml Structure|-| -->
 |Secrets Management - Describe Possible Usages For Harness CI|[Add and Reference Text Secrets](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets/)|

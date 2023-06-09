@@ -365,8 +365,8 @@ Add the [Minitest Junit Formatter](https://github.com/aespinosa/minitest-junit) 
 ```yaml
   - step:
       type: Run
-      name: Run RSpec Tests
-      identifier: run_rspec_tests
+      name: Run Ruby Tests
+      identifier: run_ruby_tests
       spec:
         shell: Sh
         command: |

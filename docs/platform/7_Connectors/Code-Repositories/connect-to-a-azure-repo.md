@@ -1,7 +1,7 @@
 ---
 title: Connect to Azure Repos
 description: This topic explains how to connect to Azure Repos.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: swe06e41w7
 helpdocs_category_id: o1zhrfo8n5
 helpdocs_is_private: false
