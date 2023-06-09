@@ -153,7 +153,7 @@ A user can only create a secret according to the scope set by its Harness User p
 
 For example, when you create a new project or a new organization, a Harness Secret Manager is automatically scoped to that level.
 
-## Line breaks and Shell-Interpreted Characters
+## Line breaks and shell-interpreted characters
 
 A text secret can be referenced in a script and written to a file as well. For example, here is a secret decoded from [base64](https://linux.die.net/man/1/base64) and written to a file:
 
