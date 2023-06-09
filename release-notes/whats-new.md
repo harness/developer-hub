@@ -36,7 +36,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Secret references now have a validate button to verify if the path is valid. (PL-31083)
 
-
 ### Continuous Delivery, version 79516
 
 - Added expressions to retrieve the current execution status of the [looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for nodes (stages/steps) using a matrix or repeat strategy. (CDS-69780)
