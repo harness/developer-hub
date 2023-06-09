@@ -21,9 +21,9 @@ To sync applications from the **Applications** page:
      ![](./static/sync-applications-2.png)
 3. Configure the sync options, and then select **Synchronize**.
 
-   When synchronizing the application, you have the option to configure the specific revision to apply. By default, it always refers to the target revision of        the application.
+   When synchronizing the application, you have the option to apply a specific revision of the application. By default, target revision of the application is selected.
    
-   The branch and tag options display a list of available branches and tags, allowing you to make a selection. Additionally, the ref option enables                  synchronization of branches, tags, and commit hashes.
+   The Branch and Tag options display a list of available branches and tags, allowing you to make a selection. Additionally, the Ref option enables synchronization of branches, tags, and commit hashes.
    
    ![](./static/sync-applications-4.png)
 
