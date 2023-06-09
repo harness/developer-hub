@@ -26,7 +26,7 @@ This command converts your existing file headers from `BEGIN OPENSSH PRIVATE KEY
 
 Use these steps to add an SSH key that can be referenced in Harness entities.
 
-You can add SSH Credentials while creating connectors and other account or project resources, or you can select **Secrets** under **Account/Organization/Project Setup** and create an **SSH Credential** secret.
+You can add SSH credentials while creating connectors and other account or project resources, or you can select **Secrets** under **Account/Organization/Project Setup** and create an **SSH Credential** secret.
 
 <!-- ![](./static/add-use-ssh-secrets-17.png) -->
 
@@ -38,7 +38,7 @@ Configure the **SSH Credential** settings as follows.
 
 <docimage path={require('./static/add-use-ssh-secrets-18.png')} />
 
-1. Enter a **Name** for the SSH Credential and select **Continue**.
+1. Enter a **Name** for the SSH credential and select **Continue**.
 2. Under **Select an Auth Scheme**, select one of the following:
 
    * **SSH Key:** Add SSH keys for Harness to use when connecting to remote servers.
@@ -56,7 +56,7 @@ Configure the **SSH Credential** settings as follows.
 
    :::note
 
-   If you need to update the SSH key for an existing SSH Credential, you can't edit the actual encrypted file secret that you selected when you created the credential. Instead, you must create a new encrypted SSH key file secret.
+   If you need to update the SSH key for an existing SSH credential, you can't edit the actual encrypted file secret that you selected when you created the credential. Instead, you must create a new encrypted SSH key file secret.
 
    :::
 
@@ -67,4 +67,4 @@ Configure the **SSH Credential** settings as follows.
 
    If the test is unsuccessful, you might see an error stating that no Harness Delegate could reach the host, or that a credential is invalid. Make sure that your settings are correct and that a Harness Delegate is able to connect to the server.
 
-   When the test succeeds, select **Submit** to save the SSH Credential secret.
+   When the test succeeds, select **Submit** to save the SSH credential.

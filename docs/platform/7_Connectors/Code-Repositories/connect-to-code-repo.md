@@ -29,7 +29,7 @@ For permissions in the Harness Git Experience, go to [Source Code Manager Settin
 
 ## SSH Key authentication
 
-If your code repo connector uses SSH Key authentication, the SSH Key is stored as a [Harness SSH Credential secret](/docs/platform/Secrets/add-use-ssh-secrets), and the SSH Credential's **Username** must be `git`.
+If your code repo connector uses SSH Key authentication, the SSH Key is stored as a [Harness SSH credential secret](/docs/platform/Secrets/add-use-ssh-secrets), and the SSH credential's **Username** must be `git`.
 
 ## Connect to AWS CodeCommit
 
