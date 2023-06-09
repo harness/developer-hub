@@ -33,6 +33,13 @@ This release includes the following Harness module and component versions.
 
 ### What's new
 
+#### Self-Managed Enterprise Edition
+
+- (SMP-1347)
+
+- (SMP-1359)
+
+
 #### Continuous Delivery & GitOps
 
 - You can now trigger a pipeline when there are changes to an artifact in Bamboo. (CDS-51742)
@@ -317,6 +324,16 @@ This release includes the following Harness module and component versions.
 
 ### Fixed issues
 
+#### Self-Managed Enterprise Edition
+
+- (SMP-1186)
+
+- (SMP-1255)
+
+- (SMP-1368)
+
+- (SMP-1389)
+
 #### Continuous Integration
 
 - Fixed a minor UI issue where selecting the **Commits** tab on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds) caused the navigation menu to expand. (CI-6274)
@@ -530,11 +547,6 @@ This release includes the following Harness module and component versions.
 
 - Resolved an issue that converted runtime fields with default values to fixed values when viewing the template-linked parts of a pipeline like steps, stage, and so on. (CDS-67999, ZD-42765)
 
-
-
-
-
-
 #### Harness Platform
 
 - It is possible to delete an encrypted text or file secret, even if it is referenced by another secret. (PL-31037)
@@ -574,7 +586,6 @@ This release includes the following Harness module and component versions.
 - Updated the field validation for the **YAML path** field in the Git connection form to prevent entering invalid path names beginning with `./`. (FFM-7448)
 
 * Fixed an issue in the onboarding flow where the flag validation did not work as expected. (FFM-7534)
-
 
 #### Service Reliability Management
 
