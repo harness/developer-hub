@@ -11,6 +11,8 @@ import TabItem from '@theme/TabItem';
 
 Results on the [Tests tab](./viewing-tests.md) are parsed from test reports specified in the **Report Paths** setting in **Run** and **Run Tests** steps. Test reports must be in [JUnit XML format](https://llg.cubic.org/docs/junit/) to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only.
 
+For information about code coverage reports and viewing reports on the **Artifacts** tab, go to [code coverage](./code-coverage.md).
+
 ## JUnit XML format resources
 
 Use these resources to learn about JUnit XML formatting.
