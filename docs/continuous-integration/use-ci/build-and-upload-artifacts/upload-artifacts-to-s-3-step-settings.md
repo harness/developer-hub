@@ -8,7 +8,20 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 You can use the **Upload Artifacts to S3** step in your CI pipelines to upload artifacts to AWS or other S3 providers, such as [MinIO](https://min.io/product/s3-compatibility). Harness CI also provides steps to [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md) and [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md).
+
+:::tip S3 Upload and Publish Drone plugin
+
+As an alternative to the **Upload Artifacts to S3** step, you can use the [S3 Upload and Publish Drone plugin](https://github.com/harness-community/drone-s3-upload-publish) to uploads a specified file or directory to AWS S3 and publish it to the **Artifacts** tab.
+
+For instructions, go to [Publish artifacts to the Artifacts tab](#publish-artifacts-to-the-artifacts-tab).
+
+:::
 
 ## Prepare a pipeline
 
@@ -120,12 +133,17 @@ After the **Upload Artifacts to S3** step runs, you can see the uploaded artifac
 
 ### Publish artifacts to the Artifacts tab
 
-As an alternative to manually finding artifacts on S3, you can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifacts to the [Artifacts tab](../viewing-builds.md). To do this, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to S3** step.
+As an alternative to manually finding artifacts on S3, you can use [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) to view code coverage reports on the **Artifacts** tab on the [Build details page](../viewing-builds.md).
 
 ```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
+<Tabs>
+  <TabItem value="artifactmetadata" label="Artifact Metadata Publisher plugin" default>
 ```
+
+The [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) pulls content from cloud storage and publishes it to the **Artifacts** tab.
+
+Add the [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to S3** step.
+
 ```mdx-code-block
 <Tabs>
   <TabItem value="Visual" label="Visual">
@@ -158,6 +176,77 @@ Add a `Plugin` step that uses the `artifact-metadata-publisher` plugin.
                     settings:
                       file_urls: ## Provide the URL to the target artifact that was uploaded in the Upload Artifacts to S3 step.
                       artifact_file: artifact.txt
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="s3publisher" label="S3 Upload and Publish plugin">
+```
+
+The [S3 Upload and Publish Drone plugin](https://github.com/harness-community/drone-s3-upload-publish) uploads a specified file or directory to AWS S3 and publishes it to the **Artifacts** tab.
+
+If you use this plugin, you **do not** need an **Upload Artifacts to S3** step in your pipeline.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin.
+
+Configure the **Plugin** step settings as follows:
+
+   * **Name:** Enter a name.
+   * **Container Registry:** Select a Docker connector.
+   * **Image:** Enter `harnesscommunity/drone-s3-upload-publish`.
+   * **Settings:** Add the following seven settings as key-value pairs.
+      * `aws_access_key_id`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID, such as `<+pipeline.variables.AWS_ACCESS>`
+      * `aws_secret_access_key`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`
+      * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`
+      * `aws_bucket`: The target S3 bucket.
+      * `artifact_file`: `url.txt`
+      * `source`: The path to store and retrieve the artifact in the S3 bucket.
+   * **Image Pull Policy:** Select **If Not Present**
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin, for example:
+
+   ```yaml
+                 - step:
+                     type: Plugin
+                     name: s3-upload-publish
+                     identifier: custom_plugin
+                     spec:
+                       connectorRef: account.harnessImage
+                       image: harnesscommunity/drone-s3-upload-publish
+                       settings:
+                         aws_access_key_id: <+pipeline.variables.AWS_ACCESS> ## Reference to a Harness secret or pipeline variable containing your AWS access ID.
+                         aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to a Harness secret or pipeline variable containing your AWS access key.
+                         aws_default_region: ap-southeast-2 ## Set to your default AWS region.
+                         aws_bucket: bucket-name ## The target S3 bucket.
+                         artifact_file: url.txt
+                         source: OBJECT_PATH ## Path to store and retrieve the artifact from S3.
+                       imagePullPolicy: IfNotPresent
+   ```
+
+:::tip
+
+For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/references/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key.
+
+:::
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
 ```
 
 ```mdx-code-block

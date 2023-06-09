@@ -30,34 +30,54 @@ Go has built-in code coverage functionality.
    go tool cover -html=c.out -o coverage.html
    ```
 
+   For example:
+
+   ```yaml
+                 - step:
+                     type: Run
+                     identifier: test
+                     name: Test
+                     spec:
+                       shell: Sh
+                       command: |-
+                         go test -cover -coverprofile=c.out
+                         go tool cover -html=c.out -o coverage.html
+   ```
+
 2. Add a step to upload your code coverage report to cloud storage.
 
    * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
    * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
 
-3. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
+3. Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
 
 ### Java
 
-1. Set up a Java code coverage tool, such as [JaCoCo](https://github.com/jacoco/jacoco).
-2. Run your tests in a **Run** or **Run Tests** step.
+1. Set up a Java code coverage tool, such as [JaCoCo](https://github.com/jacoco/jacoco). By including JaCoCo in `pom.xml`, the `mvn test` command automatically writes a code coverage report to an `exec` file.
+2. Run your tests in a **Run** or **Run Tests** step, for example:
 
-   By including JaCoCo in `pom.xml`, the `mnv test` command automatically writes a code coverage report to an `exec` file.
+   ```yaml
+                   - step:
+                     type: Run
+                     name: run test
+                     identifier: run_test
+                     spec:
+                       shell: Sh
+                       command: |-
+                         mvn test
+                       reports:
+                         type: JUnit
+                         spec:
+                           paths:
+                             - target/surefire-reports/*.xml
+   ```
 
-3. Add a step to upload your code coverage report to cloud storage.
+3. Store and publish your code coverage report:
 
-   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
-   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
-
-4. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
-
-:::tip JaCoCo Drone plugin
-
-As an alternative to steps three and four, you can use the [JaCoCo Drone plugin](https://github.com/harness-community/drone-jacoco-s3). Instead of two separate steps, you use one [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) to run the JaCoCo Drone plugin, which uploads the JaCoCo code coverage report to S3 and publishes it to the **Artifacts** tab.
-
-:::
+   * If you're using JaCoCo, use the [JaCoCo Drone plugin](https://github.com/harness-community/drone-jacoco-s3) in a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md). This plugin uploads your JaCoCo code coverage report to S3 and publishes it to the **Artifacts** tab on the [Build details page](../viewing-builds.md).
+   * With other Java code coverage tools:
+      * Add either an [Upload Artifacts to GCS step](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md) or [Upload Artifacts to S3 step](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md).
+      * Use the Artifact Metadata Publisher Drone plugin to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
 
 ### JavaScript
 
@@ -86,10 +106,9 @@ As an alternative to steps three and four, you can use the [JaCoCo Drone plugin]
 3. Add a step to upload your code coverage report to cloud storage.
 
    * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
    * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
 
-4. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
+4. Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
 
 ### PHP
 
@@ -101,13 +120,32 @@ The built-in [phpdbg](https://www.php.net/manual/en/book.phpdbg.php) tool can ge
    phpdbg -qrr vendor/bin/phpunit --coverage-html build/coverage-report
    ```
 
+   For example:
+
+   ```yaml
+                 - step:
+                     type: Run
+                     identifier: test
+                     name: Test
+                     spec:
+                       shell: Sh
+                       command: |-
+                         mkdir -p /harness/phpunit
+                         phpunit --log-junit /harness/phpunit/junit.xml tests
+                         phpdbg -qrr vendor/bin/phpunit --coverage-html build/coverage-report
+                       reports:
+                         type: JUnit
+                         spec:
+                           paths:
+                             - /harness/phpunit/junit.xml
+   ```
+
 2. Add a step to upload your code coverage report to cloud storage.
 
    * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
    * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
 
-3. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
+3. Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
 
 ### Python
 
@@ -119,8 +157,6 @@ The built-in [phpdbg](https://www.php.net/manual/en/book.phpdbg.php) tool can ge
                  identifier: installdependencies
                  name: Install dependencies
                  spec:
-                   connectorRef: account.harnessImage
-                   image: python:3.12.0b1-alpine3.18
                    command: |
                      python3 -m pip install --upgrade pip
                      pip install -r requirements.txt
@@ -136,8 +172,6 @@ The built-in [phpdbg](https://www.php.net/manual/en/book.phpdbg.php) tool can ge
                  identifier: runtests
                  name: Run Tests
                  spec:
-                   connectorRef: account.harnessImage
-                   image: python:3.12.0b1-alpine3.18
                    command: |
                      coverage run -m pytest --junit-xml=report.xml
                      coverage report
@@ -155,10 +189,9 @@ The built-in [phpdbg](https://www.php.net/manual/en/book.phpdbg.php) tool can ge
 3. Add a step to upload your code coverage report to cloud storage.
 
    * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
    * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
 
-4. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
+4. Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
 
 ### Ruby
 
@@ -170,10 +203,9 @@ The built-in [phpdbg](https://www.php.net/manual/en/book.phpdbg.php) tool can ge
 3. Add a step to upload your code coverage report to cloud storage.
 
    * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-   * [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
    * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
 
-4. Optional: Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
+4. Add a step to [publish your code coverage report to the Artifacts tab](#publish-code-coverage-reports-to-the-artifacts-tab).
 
 ## Code coverage services
 
@@ -244,18 +276,27 @@ Add `envVariables` to the `step.spec` for the relevant `Run` or `RunTests` step.
 
 ## Publish code coverage reports to the Artifacts tab
 
-You can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish code coverage reports to the **Artifacts** tab on the [Build details page](../viewing-builds.md).
+You can use [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) to view code coverage reports on the **Artifacts** tab on the [Build details page](../viewing-builds.md).
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="artifactmetadata" label="Artifact Metadata Publisher plugin" default>
+```
+
+The [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) pulls content from cloud storage and publishes it to the **Artifacts** tab.
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="Visual" label="Visual">
 ```
 
-To publish a code coverage report to the **Artifacts** tab, you must:
+1. Add steps to your pipeline that run tests with code coverage and produce code coverage reports.
+2. Add a step to upload the report artifact to cloud storage.
 
-1. Include steps in your pipeline that run tests with code coverage and produce code coverage reports.
-2. Include a step to upload the report artifact to cloud storage, such as [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md), [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md), or [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md).
-3. Include a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `artifact-metadata-publisher` plugin. Configure the **Plugin** step settings as follows:
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+
+3. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `artifact-metadata-publisher` plugin. Configure the **Plugin** step settings as follows:
 
    * **Name:** Enter a name.
    * **Container Registry:** Select a Docker connector.
@@ -269,9 +310,13 @@ To publish a code coverage report to the **Artifacts** tab, you must:
   <TabItem value="YAML" label="YAML" default>
 ```
 
-1. Include steps in your pipeline that run tests with code coverage and produce code coverage reports.
-2. Include a step to upload the report artifact to cloud storage, such as [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md), [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md), or [Upload Artifacts to JFrog Artifactory](../build-and-upload-artifacts/upload-artifacts-to-jfrog.md).
-3. Include a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `artifact-metadata-publisher` plugin, for example:
+1. Add steps to your pipeline that run tests with code coverage and produce code coverage reports.
+2. Add a step to upload the report artifact to cloud storage.
+
+   * [Upload Artifacts to GCS](../build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
+   * [Upload Artifacts to S3](../build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
+
+3. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `artifact-metadata-publisher` plugin, for example:
 
    ```yaml
                   - step:
@@ -285,6 +330,75 @@ To publish a code coverage report to the **Artifacts** tab, you must:
                          file_urls: ## Provide the URL to the code coverage artifact that was uploaded in the Upload Artifacts step.
                          artifact_file: artifact.txt
    ```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="s3publisher" label="S3 Upload and Publish plugin">
+```
+
+The [S3 Upload and Publish Drone plugin](https://github.com/harness-community/drone-s3-upload-publish) uploads a specified file or directory to AWS S3 and publishes it to the **Artifacts** tab.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+1. Add steps to your pipeline that run tests with code coverage and produce code coverage reports.
+2. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin. Configure the **Plugin** step settings as follows:
+
+   * **Name:** Enter a name.
+   * **Container Registry:** Select a Docker connector.
+   * **Image:** Enter `harnesscommunity/drone-s3-upload-publish`.
+   * **Settings:** Add the following seven settings as key-value pairs.
+      * `aws_access_key_id`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID, such as `<+pipeline.variables.AWS_ACCESS>`
+      * `aws_secret_access_key`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access key, such as `<+pipeline.variables.AWS_SECRET>`
+      * `aws_default_region`: Your default AWS region, such as `ap-southeast-2`
+      * `aws_bucket`: The target S3 bucket.
+      * `artifact_file`: `url.txt`
+      * `source`: The path to store and retrieve the artifact in the S3 bucket.
+   * **Image Pull Policy:** Select **If Not Present**
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+1. Add steps to your pipeline that run tests with code coverage and produce code coverage reports.
+2. Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin, for example:
+
+   ```yaml
+                 - step:
+                     type: Plugin
+                     name: s3-upload-publish
+                     identifier: custom_plugin
+                     spec:
+                       connectorRef: account.harnessImage
+                       image: harnesscommunity/drone-s3-upload-publish
+                       settings:
+                         aws_access_key_id: <+pipeline.variables.AWS_ACCESS> ## Reference to a Harness secret or pipeline variable containing your AWS access ID.
+                         aws_secret_access_key: <+pipeline.variables.AWS_SECRET> ## Reference to a Harness secret or pipeline variable containing your AWS access key.
+                         aws_default_region: ap-southeast-2 ## Set to your default AWS region.
+                         aws_bucket: bucket-name ## The target S3 bucket.
+                         artifact_file: url.txt
+                         source: OBJECT_PATH ## Path to store and retrieve the artifact from S3.
+                       imagePullPolicy: IfNotPresent
+   ```
+
+:::tip
+
+For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/references/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key.
+
+:::
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ```mdx-code-block
   </TabItem>
