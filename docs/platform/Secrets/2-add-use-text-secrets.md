@@ -36,43 +36,40 @@ To add an encrypted text secret in the account scope:
 
 3. Select **New Secret**, and then select **Text**.
 
-```mdx-code-block
-<img src={add_text_secret} alt="add_text_secret" height="200" width="500"/>
-```
+   ```mdx-code-block
+   <img src={add_text_secret} alt="add_text_secret" height="200" width="500"/>
+   ```
 
-The **Add new Encrypted Text** settings appear.
+   The **Add new Encrypted Text** settings appear.
 
-```mdx-code-block
-<img src={add_encrypted_text} alt="add_encrypted_text" height="200" width="500"/>
-```
+   ```mdx-code-block
+   <img src={add_encrypted_text} alt="add_encrypted_text" height="200" width="500"/>
+   ```
 
 4. In **Secrets Manager** select the secrets manager you will use to encrypt this secret.
 
 5. In **Secret Name**, enter a name for the encrypted text. 
 
-    This is the name you will use to reference the text elsewhere in your resources.
+   This is the name you will use to reference the text elsewhere in your resources.
 
-6. In **Inline Secret** **Value**, enter a value for the encrypted text.
-
-7. Create a Harness secret that refers to an existing secret by selecting **Reference** **Secret** and using that secret's name.
-
-   You can reference existing secrets in the following types of Secret Managers:
-
-   * Azure Key Vault
-   * Hashicorp Vault
-
-8. A secret can have an expiry date if it is managed by Azure Key Vault. To set an expiry date, select a date in **Expires on**.
-
-   ```mdx-code-block
-   <img src={secret_expiry_date} alt="secret_expiry_date" height="200" width="500"/>
-   ```
+6. You can create the following typres of secrets:
+   - **Inline Secret Value**: In **Inline Secret** **Value**, enter a value for the encrypted text.
+     (Optional) If your secret is managed by Azure Key Vault, set an expiry date, select a date in **Expires on**.
+     
+      ```mdx-code-block
+      <img src={secret_expiry_date} alt="secret_expiry_date" height="200" width="500"/>
+      ```
    
-   :::important
-   The Harness Delegate version 79306 is required for this feature.
-   :::
+      :::important
+      The Harness Delegate version 79306 is required for this feature.
+      :::
+    
+   - **Reference Secret**: Create a Harness secret that refers to an existing secret and use that secret's name.
+                           You can reference existing secrets in the following types of Secret Managers:
+                           - Azure Key Vault
+                           - Hashicorp Vault
 
-
-9. (Optional) Enter a **Description** and **Tags** for your secret.
+7. (Optional) Enter a **Description** and **Tags** for your secret.
 
 
 11. Select **Save.**
