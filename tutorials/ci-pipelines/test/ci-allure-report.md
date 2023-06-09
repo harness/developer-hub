@@ -8,6 +8,15 @@ slug: /ci-pipelines/test/allure-report
 
 # Publish an Allure Report to the Artifacts tab 
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
+
 This tutorial provides an example pipeline that builds a Java Maven application and generates an Allure Report that you can view in the Harness UI. 
 
 ### Pipeline workflow 
@@ -43,7 +52,7 @@ To run this pipeline in your project, do the following.
 
 1. Create the following connectors if you don't have them:
 
-   -  [GitHub Connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector)
+   - [GitHub Connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
    - [GCP Connector](/docs/platform/Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp) 
       Use the file secret you just created for the GCP credentials.
    - [Docker Hub Connector](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)  

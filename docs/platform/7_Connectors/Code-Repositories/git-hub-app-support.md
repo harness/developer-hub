@@ -1,7 +1,7 @@
 ---
 title: Use a GitHub app in a GitHub connector
 description: Harness supports API access to GitHub using a GitHub App. GitHub recommends using GitHub Apps when integrating with GitHub. GitHub Apps offer more granular permissions to access data than typical aut…
-# sidebar_position: 2
+sidebar_position: 30
 helpdocs_topic_id: nze5evmqu1
 helpdocs_category_id: o1zhrfo8n5
 helpdocs_is_private: false
@@ -38,9 +38,11 @@ See [Creating a GitHub App](https://docs.github.com/en/developers/apps/creating-
 In your GitHub personal account, click **Settings**.
 
 ![](../static/git-hub-app-support-50.png)
+
 Click **Developer settings**.
 
 ![](../static/git-hub-app-support-51.png)
+
 Click **New GitHub App**.
 
 Enter the following settings, and then click **Create GitHub App**.
@@ -94,6 +96,7 @@ Once the app is installed, you'll need to record the following information to us
 * **App ID:** the App ID is located in the GitHub app's **General** tab.
 
 ![](../static/git-hub-app-support-55.png)
+
 ### Step 3: Generate and Download Key
 
 Now we'll create the private key for the GitHub app that you will use in your Harness Connector.
@@ -103,6 +106,7 @@ Open the GitHub app you created.
 In **Private keys**, click **Generate a private key**.
 
 ![](../static/git-hub-app-support-56.png)
+
 Download the private key to your local machine.
 
 Open a terminal and navigate to the folder containing the key.
@@ -142,6 +146,7 @@ You can open a Connector from **Resources** in an account, org, or project, or f
 For example, in a CI stage, click **Codebase**. The Connector for the codebase is displayed.
 
 ![](../static/git-hub-app-support-57.png)
+
 Click the Connector, and then click the edit button. The GitHub Connector is displayed.
 
 In the Connector **Credentials**, enter a username and Personal Access Token (PAT), and then select **Enable API access**.

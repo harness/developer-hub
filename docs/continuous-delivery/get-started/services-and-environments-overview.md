@@ -12,14 +12,14 @@ This topic describes Harness Continuous Delivery (CD) services and environments.
 
 If you are new to Harness, please review [Harness key concepts](../../getting-started/learn-harness-key-concepts.md) and [CD pipeline modeling overview](./cd-pipeline-modeling-overview.md).
 
-## Product demo: services
+## Video: Services
 
 <!-- Video:
 https://harness-1.wistia.com/medias/xtmi0c0z95-->
 <docvideo src="https://harness-1.wistia.com/medias/xtmi0c0z95" />
 
 
-### Product demo: services and environments at the account and org level
+### Video: Services and environments at the account and org level
 
 <!-- Video:
 https://harness-1.wistia.com/medias/s89yka6hal-->

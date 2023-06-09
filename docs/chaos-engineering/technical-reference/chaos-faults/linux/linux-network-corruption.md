@@ -4,6 +4,7 @@ title: Linux network corruption
 ---
 
 import Ossupport from './shared/note-supported-os.md'
+import FaultPermissions from './shared/fault-permissions.md'
 
 
 Linux network corruption injects chaos to disrupt network connectivity on a Linux machine by corrupting the network requests.
@@ -15,6 +16,8 @@ Linux network corruption injects chaos to disrupt network connectivity on a Linu
 - Simulates network corruption by corrupting requests of the machine.
 
 <Ossupport />
+
+<FaultPermissions />
 
 ## Fault tunables
 <h3>Mandatory tunables</h3>

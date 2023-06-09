@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-05-23T10:00:15
+date: 2023-06-09T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -15,12 +15,226 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 23, 2023, version 79306
+## Latest - June 09, 2023, version 79516
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+- Added expressions to retrieve the current execution status of the [looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for nodes (stages/steps) using a matrix or repeat strategy. (CDS-69780)
+  
+  The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
+  
+  Harness has introduced the following expressions to retrieve the current status of the node (stage/step) using a looping strategy: 
+  * `<+strategy.currentStatus>`: Retrieves the current status of the node with the maximum depth.
+  * `<+strategy.node.[strategyNodeIdentifier].currentStatus>`: Retrieves the current status of the node with a specific stage/step identifier, `strategyNodeIdentifier`. For example, `echo <+strategy.node.cs1.currentStatus>`.
+  * `<+strategy.node.get("[strategyNodeIdentifier]").currentStatus>`: Retrieves the current status of the node with a specific stage/step identifier, `strategyNodeIdentifier`. For example, `echo <+strategy.node.get("ShellScript_1").currentStatus>`.
+- If any entities referenced in a pipeline are updated, a warning now appears in Pipeline Studio saying that reconciliation is needed. Previously, this warning appeared only when you manually tried to reconcile. (CDS-69672)
+- The Harness Approval step now supports scheduled automatic approvals. (CDS-69415)
+  
+  For more information, go to [Harness Approval steps in CD stages](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/).
+- Edit Git details for pipelines stored using Harness Git Experience. (CDS-69130)
+  
+  You can now edit the Git metadata in the pipelines and input sets you use in your Git-synced Harness pipelines.
+
+  You can edit the Harness Git connector, repository, and path to the YAML file.
+
+  To edit the Git details, select **Edit Git Metadata** in the pipelines and input sets listing pages. 
+
+  <docimage path={require('./static/d3ae175d36c932027045989f3c6d5b8b35ff3f50d7dec64195f1e1a264b4f577.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+  <docimage path={require('./static/87cae6dd20947c866629d225293d41ad83be7848061537e28efd2def8e14ea48.png')} width="60%" height="60%" title="Click to view full size image" />
+- Support has been added to view long expressions in YAML view. (CDS-59017)
+  
+  Previously, in the YAML view, suggestions for long expressions ended with an ellipsis, and the entire expression didn't appear properly.
+  
+  The suggestions widget is now updated with a read more icon. You can select the icon or use Ctrl + Space to view the complete expression string. The read more icon appears only for the active suggestion item. You can use the Up and Down arrow keys to switch between different suggestion items.
+- Send emails to non-Harness users. (CDS-58625, ZD-42496)
+  
+  To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
+
+  For more information on how to send emails to non-Harness users, go to [Email step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
+
+  Harness Delegate version 79503 is required for this feature.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+- Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
+  
+  This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`. 
+
+  This functionality helps you efficiently manage your resources. The scale down step can be configured within the same stage or a different stage, based on your requirement.
+
+  During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets, and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
+
+  Harness Delegate version 79503 is required for this feature.
+- Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. (CDS-59011)
+
+  This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. 
+  
+  Harness Delegate version 79503 is required for this feature.
+  
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+- Links to org or account level service or environment in a pipeline were redirecting to the project level entities. (CDS-70607)
+  
+  This issue is fixed by adding correct links to org and account level services and environments in the pipeline Deployments page.
+- Unable to trigger pipelines using custom webhook triggers because the latest enhancement to custom webhook triggers requires a unique token for authentication. (CDS-70320, ZD-45022)
+  
+  This issue was caused by introducing a new API for custom webhook triggers, `/v3`, that generates a token for authenticating webhook triggers. You can see the token when you copy the trigger cURL command in Harness. This issues is fixed by allowing users to continue to use the previous API, `v2`, when the feature flag `SPG_DISABLE_CUSTOM_WEBHOOK_V3_URL` is enabled.
+- Fixed an issue to honor default values in runtime inputs when trying to reconcile. (CDS-70075, ZD-44892)
+- The `lastYamlToMerge` parameter in the [pipeline execution with input set API](https://apidocs.harness.io/tag/Pipeline-Execute#operation/postPipelineExecuteWithInputSetList) didn't display any values. (CDS-70048, ZD-44855)
+  
+  To execute a pipeline with Input Set references, there is an optional field, `lastYamlToMerge` in the API request body. The values set for the `lastYamlToMerge` field were not acknowledged.
+
+  This issue is fixed by acknowledging and properly overriding the `lastYamlToMerge` value. For more details, go to [Execute a pipeline with input set references](https://apidocs.harness.io/tag/Pipeline-Execute#operation/postPipelineExecuteWithInputSetList).
+- Support has been added to poll the get approval API to fetch and update the ticket status field for JIRA and ServiceNow approvals. (CDS-69770)
+- When Git-backend entities are referenced in a trigger, the inputs are validated before firing the trigger. (CDS-69727, ZD-44713)
+- Fixed an issue preventing pipelines from running due to YAML updates made when moving step groups in Pipeline Studio. (CDS-69622, ZD-44481)
+- Unable to make a variable for a pipeline mandatory. (CDS-69597, ZD-44438, ZD-45217)
+  
+  This issue is fixed by adding required fields for variables. Validation is added to throw error if any required variable field is empty. Harness no longer allow empty values for variables that are marked as required in the YAML. 
+  
+  By default, the required field for any newly created variable in the YAML is set to `false`. Also, if the `required` field is missing in the YAML, it is considered as `false`. 
+  
+- Fixed an issue where deployment freeze notifications were not being sent when a freeze window was activated. (CDS-69455)
+- The expression, `<+artifacts.primary.identifier>` was not working properly for Google Cloud Storage deployments. (CDS-68993, ZD-44217)
+  
+  This issue is fixed. You can now see the identifier of the source selected as primary when using the expression `<+artifacts.primary.identifier>`. This functionality is behind the feature flag, `CDS_ARTIFACTS_PRIMARY_IDENTIFIER`.
+- Fixed an issue where the SSH and WinRM rollback were not skipped even if there were no successful previous deployments. (CDS-68583)
+- Fixed an issue where optional fields in a JIRA Update step were saved as key-value pairs. (CDS-58174)
+- SSH pipelines with GCR artifacts ran without populating the required runtime inputs. (CDS-55689)
+  
+  Fixed this issue by adding proper validations to GCR artifacts used for SSH pipelines.
+- The expressions corresponding to objects like list, maps, and so on were incorrectly converted to string type using the Java `String.valueOf` method resulting in incorrect formatting. (CDS-71619)
+  
+  This issue is fixed and the output values for expressions are returned as JSON objects.
+
+### Harness Manager delegate fixed issues
+
+The fixed issues below are available with version 79503 and do not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
+
+- Fixed an issue where the `eventPayload` expressions were not resolving when rerunning a failed pipeline that was previously fired by using a trigger. (CDS-70559)
+
+- Certificate issues in Harness Delegate version 23.05.79307. (CDS-70410, ZD-45105, ZD-45110, ZD-45128)
+  
+  The HTTP step was failing due to absence of the `certificate` value in the step. In previous delegate versions, the delegate would bypass the absence of this field. However, in delegate version 23.05.79307, this field was incorrectly set as mandatory for HTTP step execution for validations against servers that had self-signed certificates. This issue is fixed.
+- Bamboo triggers were not working properly. (CDS-69605)
+  
+  Adding the Bamboo build to the delegate response resolved this issue. 
+- The pipeline execution error message for YAML related errors was unclear. (CDS-69576)
+  
+  Improved error message handling for YAML processing failures. The error message now display files that contain errors and points to the problematic part of the file. 
+- Input values needed in steps or stages for execution failed with the error: `Cannot update execution status for the PlanExecution [execution Id] with RUNNING`. (CDS-69342, ZD-44344)
+  
+  This error occurred when converting YAML to JSON. A code enhancement fixed this issue. With this enhancement, quotes inside the field YAML are escaped, resulting in valid YAML.
+- Fixed an issue where strings were interpreted as scientific notations. (CDS-69063, ZD-44206)
+- Fixed an issue where error logs were removed to stop error flooding into GCP logs when Git authentication fails. (CDS-68760)
+- A force delete option appeared when deleting a template referenced by another template. This deleted the referenced template, but the remaining versions were no longer visible on the UI. (CDS-68683)
+  
+  Added additional test coverage for some workflows to resolve this issue.
+- Spot Elastigroup deployments failed to fetch instance health and expired. (CDS-56451, ZD-41436)
+  
+  Harness improved the handling mechanism for the Spot `instanceHealthiness` API to fix this issue.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 01, 2023, version 79411
+
+##### What's New
+
+- Step group templates can now be used in custom and deploy stages. (CDS-68210, ZD-43059)
+  
+  The same step group template can be used in a **Custom** or **Deploy** stage type.
+
+  <docimage path={require('./static/64a3aee31250b15c98b4978994ca1ff14e720b2d739c8feec72fdee12d6220a7.png')} width="60%" height="60%" title="Click to view full size image" />
+
+  The same step group template can be used in both **Custom** or **Deploy** stage types if the step group does not contain steps that are specific to the **Deploy** stage type.
+
+- New default Git connector for Git Experience (CDS-66921)
+
+  You can now set the default Git connector for Git Experience pipelines and input sets. The default Git connector will be selected whenever you create or import operations with the Git Experience entities. The default connector can be changed at any time and another connector can be used when needed.
+
+  You can select the default connector in your project, org, or account **Default Settings**:
+
+  <docimage path={require('./static/abb924b38a23ab57c26b3703d7c38e096eb60005625a6dfcd42793d503553a6e.png')} width="60%" height="60%" title="Click to view full size image" />
+
+- Approval step notifications. (CDS-31886, ZD-43905)
+  
+  Notifications are sent once a Harness [Approval step](https://developer.harness.io/docs/category/approvals) is approved or rejected. Harness sends the approval details along with the status.
+
+  Notifications are sent to the destinations set up in the user group(s) listed in the Approval step's **Approvers** setting. This includes email, Slack, PagerDuty, and MS Teams.
+
+  ![picture 87](static/fa61423c00604c9a2d1dcf3cd2e8c040d71992791e34abf983eb5befe8640159.png)
+
+  For information on setting up notifications for user groups, go to [Add and manage user groups](https://developer.harness.io/docs/platform/User-Management/add-user-groups).
+
+##### Early Access
+
+This release does not include any early access features.
+
+##### Fixed Issues
+
+- Selecting stages in Triggers was resetting to all stages in the YAML editor. (CDS-69725)
+  
+  Now Harness avoids sending multiple API calls for merge, and stage selecting works as intended.
+
+  ![picture 88](static/ee0f296b5c9ed5249f409415b8a1dbb6b901ceed5e3b7118ee1ad40a6f93b77d.png)  
+
+- Infrastructure provisioning steps were missing for Google Function and AWS Lambda	Serverless	deployment types. (CDS-69595)
+  
+  Now both deployment types include [infrastructure provisioning steps](https://developer.harness.io/docs/category/provision-infrastructure).
+- Unable to fetch the resolved service when evaluating the repo format for artifact source templates. (CDS-69485, ZD-45064)	
+
+  This issue is fixed. Now the repo format (Generic/Docker) is honoured for the artifact source template in the **Run Pipeline** form.
+- The getTriggerDetails API was returning incorrect code (CDS-69329, ZD-44372)
+  
+  The [getTriggerDetails](https://apidocs.harness.io/tag/Triggers/#operation/getTriggerDetails) API was returning a 200 status code when it was not able to find a Trigger. Now it returns a 404 status code and appropriate error message.
+- Pipelines services listing was limited to 100. (CDS-69273)
+  
+  Now the services list is paginated and all services can be viewed.
+- CD license utilization data was not reported for some accounts. (CDS-69101)
+  
+  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
+
+  This issue has been resolved. The license usage now retrieves the required information in batches to avoid read timeout.
+- Deployment template connector variable expressions were not resolving. (CDS-68880)
+  
+  You can access information about the connectors used in a deployment template using connector variable expressions (for example, `<+stage.spec.infrastructure.output.variable.[name]>`). 
+  
+  <docimage path={require('./static/0e40fbf0db025ce3330a7b4e7352a8203acb51d5a06653b1b010a279e2f42cc5.png')} width="60%" height="60%" title="Click to view full size image" />
+  
+  This issue is fixed.	
+- Multi-service stage templates could not be saved with fixed values. (CDS-68848, ZD-44569)
+  
+  Users were unable to save multi-service pipelines when changing the type from **Runtime** to **Fixed Value**.
+  
+  This is now fixed and you can save multiple services as fixed values in stage templates.
+- Encrypted config file opens secret text instead of secret file. (CDS-68601)
+  
+  Config files should only support encrypted files, so we removed encrypted text for config files in the Harness store.
+- The Save button greyed out when variables are added or updated in a service template. (CDS-59320, ZD-43110)
+  
+  Users can now use the Save button when variables are added or updated in a service template.
+
+#### May 23, 2023, version 79306
+
+##### What's New
+
 - Support for the **Enforce Git experience for pipelines and templates** Git experience. (CDS-67885)
   
   A new Git experience is introduced, **Enforce git experience for pipelines and templates**. Enabling this setting will let you create only remote pipelines and templates. If this setting is enabled, then the `InputSet` will be out of scope as it is controlled by the pipelines. 
@@ -74,20 +288,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   The Harness Delegate version 79307 is required for this feature.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early Access
+
 - Trigger all artifacts and manifests using **On New Artifact** and **On New Manifest** triggers respectively. (CDS-68262, ZD-43588, ZD-43726)
   
   This functionality is behind a feature flag, `TRIGGER_FOR_ALL_ARTIFACTS`. 
 
   Earlier, you could trigger only the last pushed artifact or manifest using triggers. You can now trigger all collected artifacts and manifests of perpetual tasks in one single execution using the **On New Artifact** or **On New Manifest** trigger options. 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed Issues
+
 - Unable to save multiple services when changing the input type from runtime input to fixed inside a template stage or a pipeline. (CDS-68848, ZD-44569)
   
   You can now change the input type of multiple services from runtime input to fixed.
@@ -166,17 +376,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   This issue was fixed in the Harness Delegate version 79307. Now the Canary Delete step is properly deleting canary workloads when the forward Canary Deployment step expires.
 - Fixed an issue by adding support for retrying `sockettimeoutExceptions` as they can occur due to intermittent issues during a Kubernetes deployment. (CDS-57688)
-
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 04, 2023, version 79214
 

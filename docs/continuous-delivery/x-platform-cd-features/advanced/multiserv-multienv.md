@@ -136,7 +136,7 @@ Make sure that you have added tags when creating your environment in the **Confi
 
 :::note
 
-Currently, this feature is behind the feature flag, `CDS_FILTER_INFRA_CLUSTERS_ON_TAGS`. Make sure these related feature flags, `MULTI_SERVICE_INFRA`, `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Make sure that the feature flags, `MULTI_SERVICE_INFRA`, `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -173,7 +173,7 @@ Make sure that you have added tags when creating your environment in the **Confi
 
 :::note
 
-Currently, this feature is behind the feature flag, `CDS_FILTER_INFRA_CLUSTERS_ON_TAGS`. Make sure these related feature flags, `MULTI_SERVICE_INFRA`, `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Make sure that the feature flags, `MULTI_SERVICE_INFRA`, `NG_SVC_ENV_REDESIGN`, `ENV_GROUP`, `OPTIMIZED_GIT_FETCH_FILES` are enabled. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 

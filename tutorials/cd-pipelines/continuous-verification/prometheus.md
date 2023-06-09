@@ -5,6 +5,15 @@ description: Verify Kubernetes Deployments with Prometheus
 
 # Verify Kubernetes Deployment with Prometheus 
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Delivery & GitOps Certification today!"
+  link="/certifications/continuous-delivery"
+  closable={true}
+  target="_self"
+/>
+
 When validating a deployment, looking at external systems such as APM, logging, or monitoring solutions is an approach to validate deployments in a systematic manner. Harness Continuous Verification has the capability of querying these systems on your behalf to validate your deployments. Harness also has the ability to [apply AI/ML](https://developer.harness.io/docs/continuous-delivery/verify/cv-concepts/machine-learning) to watch markers that are trending towards failure or regression. 
 
 In this tutorial, we will [deploy an application that writes to a Prometheus](https://github.com/harness-apps/cv-example-app) endpoint and is validated by Harness Continuous Verification. 
@@ -16,7 +25,7 @@ In this tutorial, we will [deploy an application that writes to a Prometheus](ht
 To deploy to Kubernetes with Harness, you will need a manifest and access to a Kubernetes cluster. To deploy the Sample Application in an existing K8s cluster:
 
 * A Harness Account ([Sign Up Here](https://app.harness.io/auth/#/signup/?module=cd&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started))
-* Connectivity to [GitHub](https://developer.harness.io/docs/platform/connectors/code-repositories/add-a-git-hub-connector/) 
+* Connectivity to [GitHub](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
 * Connectivity to [Docker Hub](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)
 * A Prometheus Endpoint
 

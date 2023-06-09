@@ -28,27 +28,33 @@ Harness expressions are identified using the `<+...>` syntax. For example, `<+p
 
 The content between the `<+...>` delimiters is passed on to the [Java Expression Language (JEXL)](http://commons.apache.org/proper/commons-jexl/) where it is evaluated. Using JEXL, you can build complex variable expressions that use JEXL methods. For example, here is an expression that uses Webhook Trigger payload information:
 
-
 ```
 <+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") || <+trigger.payload.repository.owner.name> == "wings-software"
 ```
 Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) and other steps.
 
-### You can use all Java string methods
+### Java string methods
 
 You can use all Java string methods on Harness variable expressions.
 
-The above example used `contains()`:
+The example mentioned in the previous section used `contains()`:
 
 `<+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo")`
 
-Let's look at another example. Imagine you have a variable called `abc` with the value `def:ghi`. You can use `split()` like this:
-
+Let's look at another example. For a variable called `abc` with value, `def:ghi`. You can use `split()` like this:
 
 ```
-echo <+pipeline.variables.abc.split(':')[1]>
+echo <+<+pipeline.variables.abc>.split(':')[1]>
 ```
-The result would be `ghi`.
+The output of this expression is `ghi`.
+
+The correct way to use a Java method with a variable is `<+<+expression>.methodName()>`.
+
+For example, for a variable `myvar` using methods substring and indexOf, with value `Hello`. You can use the methods like: 
+
+<+<+stage.variables.myvar>.substring(<+<+stage.variables.myvar>.indexOf("e")>)>
+
+This expression evaluates to `ello`.
 
 ### FQNs and expressions
 
@@ -1278,6 +1284,38 @@ If you use this variable in a pipeline, such as in a Shell script step, Harness 
 The public IP of the host where the service is deployed.
 
 If you use this variable in a pipeline, such as in a Shell script step, Harness will apply the script to all target instances. You do not have to loop through instances in your script.
+
+## Strategy
+
+You can use Harness expressions to retrieve the current execution status of the [looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for nodes (stages/steps) using a matrix or repeat strategy.
+  
+The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
+
+Harness provides the following expressions to retrieve the current status of the node (stage/step) using a looping strategy. The expressions are available in pipelines during execution and rollback.
+
+### <+strategy.currentStatus>
+
+The current status of the looping strategy for the node with maximum depth.
+
+When this expression is used in a step, Harness will resolve it to the looping strategy status of the first parent node (stage/step) of the step.
+
+If the step using the expression is the first node using a looping strategy, then the expression will resolve to its looping strategy status. 
+
+If the previous step in the stage uses a looping strategy, the expression will resolve to that step's looping strategy status. 
+
+If there are no previous steps using a looping strategy, but the stage uses a looping strategy, the expression will resolve to the stage's looping strategy status.
+
+### <+strategy.node.[strategyNodeIdentifier].currentStatus>
+
+The current status of the looping strategy for the node with a specific stage/step identifier, `strategyNodeIdentifier`.
+
+For example, `echo <+strategy.node.cs1.currentStatus>`.
+
+### <+strategy.node.get("[strategyNodeIdentifier]").currentStatus>
+
+The current status of the looping strategy for the node with a specific stage/step identifier, `strategyNodeIdentifier`.
+
+For example, `echo <+strategy.node.get("ShellScript_1").currentStatus>`.
 
 ## Triggers
 
