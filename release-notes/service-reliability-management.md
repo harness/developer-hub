@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-06-01T10:00:20
+date: 2023-06-09T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -15,14 +15,14 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 01, 2023, version 79413
+## Latest - June 09, 2023, version 79517
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-- Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
+This release does not include any new features.
 
 
 ```mdx-code-block
@@ -37,13 +37,10 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-- The ErrorBudgetReset API incorrectly accepting Rolling type SLOs along with Calendar type SLOs. (SRM-14692)  
+- Unable to select multiple environments when creating a monitored service for infrastructure. (SRM-14794)  
+  
+  This issue has been resolved. You can now select multiple environments when creating a monitored service for infrastructure.
 
-  This issue has been resolved. Now, the ErrorBudgetReset API only accepts Calendar type SLOs.
-
-- Unable to create SLO using SignalFX metrics. (OIP-406)  
-
-  This issue has been resolved. Now, SignalFX's health source supports SLI functionality, and you can create SLOs using SignalFX metrics.
 
 ```mdx-code-block
   </TabItem>
@@ -54,6 +51,32 @@ This release does not include any early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 05, 2023, Hotfix version 79416
+
+This release does not include any customer-facing changes.
+
+
+#### June 01, 2023, version 79413
+
+##### What's new
+
+- Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- The ErrorBudgetReset API is incorrectly accepting Rolling type SLOs along with Calendar type SLOs. (SRM-14692)  
+
+  This issue has been resolved. Now, the ErrorBudgetReset API only accepts Calendar type SLOs.
+
+- Unable to create SLO using SignalFX metrics. (OIP-406)  
+
+  This issue has been resolved. Now, SignalFX's health source supports SLI functionality, and you can create SLOs using SignalFX metrics.
+
 
 #### May 23, 2023, version 79307
 

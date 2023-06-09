@@ -437,7 +437,9 @@ In **Execution**, Harness automatically adds the following steps:
   This step supports hierarchical variables. If you specify a dot-separated variable in this step, it creates or updates a nested variable.  
 
   You can also enter variables in this step to update key:value pairs in the config file you are deploying.  
-  If there is a matching variable name in the variables of the Service or Environment used in this Pipeline, the variable entered in this step will override them.  
+  If there is a matching variable name in the variables of the Service or Environment used in this Pipeline, the variable entered in this step will override them. 
+  
+  If an empty or blank value is provided for a variable, it will be disregarded, and no updates will be made to the JSON or YAML file for that specific variable.
   
   ![](./static/harness-git-ops-application-set-tutorial-56.png)
 
