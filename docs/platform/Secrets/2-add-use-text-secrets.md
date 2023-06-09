@@ -48,7 +48,9 @@ The **Add new Encrypted Text** settings appear.
 
 4. In **Secrets Manager** select the secrets manager you will use to encrypt this secret.
 
-5. In **Secret Name**, enter a name for the encrypted text. This is the name you will use to reference the text elsewhere in your resources.
+5. In **Secret Name**, enter a name for the encrypted text. 
+
+    This is the name you will use to reference the text elsewhere in your resources.
 
 6. In **Inline Secret** **Value**, enter a value for the encrypted text.
 
