@@ -278,12 +278,6 @@ Add `envVariables` to the `step.spec` for the relevant `Run` or `RunTests` step.
 
 You can use [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) to view code coverage reports on the **Artifacts** tab on the [Build details page](../viewing-builds.md).
 
-:::tip
-
-Code coverage reports are not the only artifacts you can publish to the **Artifacts** tab. You can [publish any URL to the Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab).
-
-:::
-
 ```mdx-code-block
 <Tabs>
   <TabItem value="artifactmetadata" label="Artifact Metadata Publisher plugin" default>
@@ -395,18 +389,20 @@ The [S3 Upload and Publish Drone plugin](https://github.com/harness-community/dr
                        imagePullPolicy: IfNotPresent
    ```
 
-:::tip
-
 For `aws_access_key_id` and `aws_secret_access_key`, use [expressions](/docs/platform/references/runtime-inputs/#expressions) to reference [Harness secrets](/docs/category/secrets) or [pipeline variables](/docs/platform/Variables-and-Expressions/add-a-variable) containing your AWS access ID and key.
 
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+:::tip
+
+Code coverage reports are not the only artifacts you can publish to the **Artifacts** tab. You can [publish any URL to the Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab).
+
 :::
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
