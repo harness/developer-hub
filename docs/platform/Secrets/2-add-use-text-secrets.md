@@ -91,7 +91,7 @@ You can also edit the secret in the connector.
 ```mdx-code-block
 <img src={edit_encrypted_text} alt="edit_encrypted_text" height="200" width="500"/>
 ```
-## Reference the Encrypted Text by Identifier
+## Reference the secret by identifier
 
 
 :::important
