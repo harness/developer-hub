@@ -4,13 +4,29 @@ description: Fix detected issues using Harness STO's AI-enhanced remediation eng
 sidebar_position: 35
 ---
 
+<!-- style>
+
+.green {
+    color: green;
+    font-weight:700;
+    font-size: 30px;
+}
+
+.hidden {
+   display: none;
+}
+</style -->
+
 ```mdx-code-block
 import remediate_indiv_occurrences from '../static/ai-remediation-occurrences.png'
 import remediate_occurrence_three from '../static/ai-remediation-occurrence-3.png'
 import remediate_issue_refine from '../static/ai-remediation-issue-refine.png'
 ```
 
-Harness STO has an AI-enhanced remediation engine that generates suggestions for fixing detected issues. This feature is especially useful when the external tool does not provide remediations for a specific issue. 
+Harness AI Copilot generates suggestions for fixing detected vulnerability. AI copilot explains the vulnerability, gives solutions how to fix it, and (where applicable) provides code changes that remediate the vulnerability.
+
+![](../static/ai-copilot-issue-example.png)
+
 
 ## Important notes
 * Currently, this feature is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
@@ -19,7 +35,7 @@ Harness STO has an AI-enhanced remediation engine that generates suggestions for
   * STO queries to the Bard API include the following information only: the CWE or CVE ID, the issue description, and the specific context of the occurrence (such as the code snippet or image layer).
   * STO anonymizes all information it includes in a Bard query. The Bard engine deletes all query information immediately after it sends a response. 
 * The accuracy, reliability, and completeness of a suggestion depends on the publicly-known information about the detected issue. An issue might have no known remediation, especially if it was recently discovered. An issue might have multiple suggested remediations that are contradictory, controversial, or applicable only to specific use cases.
-* Before you implement an AI-generated suggestion, consider carefully the reliability and extent of the publicly-known information that that issue. Also consider the suggestion's applicability to your specific organization and use case.
+* Before you implement an AI Copilot suggestion, consider carefully the reliability and extent of the publicly-known information that that issue. Also consider the suggestion's applicability to your specific organization and use case.
 * The workflow description below shows how you can refine a suggestion by providing more information, such as additional context or code snippets, to the AI engine.
 
 ## Workflow description
@@ -33,8 +49,14 @@ Harness STO has an AI-enhanced remediation engine that generates suggestions for
    1. click **Edit Input**. 
 
    2. Specify the occurrence, reference ID, and language (if you've scanned a codebase). 
+   
+      AI Copilot can often auto-detect the language of a code snippet, but it's good practice to confirm that the language setting is correct. 
 
    3. Add any additional context in the text pane. This might be a code snippet, a Dockerfile, or some other piece of information that's relevant to the specific target and issue. Then click **Generate**. 
+
+      :::note
+      For best results, include the entire function or method where the vulnerability was found. Do not include multiple snippets.
+      :::   
 
        ```mdx-code-block
       <img src={remediate_issue_refine} alt="Generate a new remediation using additional information." height="50%" width="50%" />
