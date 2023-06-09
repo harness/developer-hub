@@ -86,7 +86,7 @@ You can either [create the secret](#add-a-text-secret) first and then select it 
 ```mdx-code-block
 <img src={create_edit_encrypted_text} alt="create_edit_encrypted_text" height="200" width="500"/>
 ```
-You can also edit it in the Connector.
+You can also edit the secret in the connector.
 
 ```mdx-code-block
 <img src={edit_encrypted_text} alt="edit_encrypted_text" height="200" width="500"/>
