@@ -55,7 +55,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 	* Select **New Experiment** to create a new experiment in Chaos Studio. 
 	* Select **Edit in Chaos Studio** to edit a selected experiment.
 
-	Either of the above links you to Chaos Studio without saving your work.
+	Selecting these options takes you to Chaos Studio without saving your work.
 
 1. Select the experiment you want to run in this pipeline step, and then select **Add to Pipeline**.
 
