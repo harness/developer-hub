@@ -17,8 +17,7 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-
-## Latest - June 09, 2023 
+## Latest - June 09, 2023
   
 ### Harness Platform, version 79516
 
@@ -82,15 +81,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
    * You cannot add the same cost category as a rule in the cost bucket.
    * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
    * You can nest cost categories to a maximum of 20 levels.
-  
-### June 01, 2023 
 
-<details>
-<summary>2023 releases</summary>
-  
-#### June 01, 2023 
+### Harness Delegate version 79503
 
-##### Service Reliability Management, version 79413
+- Kubernetes deployments support horizontal pod autoscaling and pod disruption budget for Blue Green and Canary execution strategies. (CDS-59011)
+
+- Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SRM-14724)
+  
+## June 01, 2023
+
+### Service Reliability Management, version 79413
 
 - Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
 
@@ -136,18 +136,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Harness Platform, version 79411
 
-#### Harness Manager delegate
-
-The features below are available with version 79411 and do not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
-
 - You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
+
+This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You can now use the legacy UI to create delegates. (PL-38937)
 
-#### All other Platform new features
+This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
-
 
 <details>
 <summary>2023 releases</summary>
