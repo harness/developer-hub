@@ -16,7 +16,7 @@ import create_edit_encrypted_text from './static/add-use-text-secrets-47.png'
 import secret_expiry_date from './static/azurekeyvault-select-date.png'
 ```
 
-You can add a text secret to the secret manager and use them in your resources like pipelines and connectors.
+You can add an encrypted text secret to a secrets manager and use the secret in resources such as pipelines and connectors.
 
 This topic describes how to add a text secret in Harness.
 
