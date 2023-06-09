@@ -77,7 +77,7 @@ The **Add new Encrypted Text** settings appear.
 
 11. Select **Save.**
 
-## Use the Encrypted Text in Connectors
+## Use the secret in connectors
 
 All of the passwords and keys used in Harness Connectors are stored as Encrypted Text secrets in Harness.
 
