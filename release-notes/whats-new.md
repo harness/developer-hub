@@ -19,6 +19,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - June 09, 2023
   
+### Continuous Error Tracking, version et-service 5.23.0
+
+- Now, when you create a Jira ticket for an event, CET prompts you to complete any mandatory fields that do not have a default value. (CET-1231)
+
+- You can now conveniently access a comprehensive list of all active agents running across your entire account directly from the subscription page. (CET-1225)
+
 ### Harness Platform, version 79516
 
 - There is now an additional tab on the **Create or Select Existing Connector** dialog called `All` that lists connectors from all scopes (project, organization, and account). (PL-39029)
