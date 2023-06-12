@@ -361,11 +361,11 @@ To fix this, use:
 
 `print("...", flush=True)`
  
- or 
+or 
  
- `
- import functools
- print = functools.partial(print, flush=True)
-`
+```
+import functools
+print = functools.partial(print, flush=True)
+```
 
 You might have to make similar changes to your script depending on the content of the script being used.
