@@ -637,6 +637,10 @@ This release includes the following Harness module and component versions.
 
 * Fixed an issue in the onboarding flow where the flag validation did not work as expected. (FFM-7534)
 
+### Security Testing Orchestration
+
+- Fixed a UI issue to ensure that all input fields related to STO security steps appear the Template Studio view. (STO-5746, ZD-42167)
+
 ### Service Reliability Management
 
 - When switched to a different project while a template was open, the health sources from the previous template would remain visible in the template, even though they were not part of the new project. (SRM-12236)  
