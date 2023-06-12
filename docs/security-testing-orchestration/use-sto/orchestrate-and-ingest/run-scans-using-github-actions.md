@@ -1,6 +1,6 @@
 ---
-title: Run scans using GitHub Action and Drone Plugin steps
-description: You can easily run security scans and ingest results using GitHub Actions and Drone Plugins.  
+title: Ingest SARIF results from external scanners
+description: STO can ingest data from any scanner that can publish in SARIF format.  
 sidebar_position: 80
 ---
 
