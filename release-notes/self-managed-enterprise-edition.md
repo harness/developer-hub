@@ -241,6 +241,11 @@ This release includes the following Harness module and component versions.
   </TabItem>
   <TabItem value="Early access">
 ```
+### Harness Delegate
+
+- Added the ability to use delegate credentials to access the Google Cloud Platform Secret Manager. (PL-31248)
+
+   This functionality is behind a feature flag,`PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM`.
 
 ### Continuous Delivery & GitOps
 
