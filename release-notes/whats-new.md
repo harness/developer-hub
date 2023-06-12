@@ -18,6 +18,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 ## Latest - June 09, 2023
+
+### Cloud Cost Management, version 79701
   
 ### Continuous Error Tracking, version et-service 5.23.0
 
