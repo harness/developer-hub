@@ -14,7 +14,7 @@ For Harness SaaS release notes, see [Harness SaaS Release Notes](https://develop
 
 Release notes are displayed with the most recent release first.
 
-### June 15, 2023, version 79230
+### June 13, 2023, version 79230
 
 Delegate: 78924
 
@@ -31,6 +31,8 @@ This release includes the following module and component versions.
 | Gateway | 10701 |
 
 ### New features and enhancements
+
+
 
 #### Harness Delegate
 
@@ -60,11 +62,15 @@ This release includes the following module and component versions.
 
 
 ### Fixed issues
+
+
+
+
 #### Continuous Delivery & GitOps
 
 - When an app was removed it was still returning inside the GraphQL query result for a short period of time. (CDS-54879, ZD-40375)
   
-	We added new functionality to verify each appId before returning the user group GraphQL. If the appId does not exist it's removed from the response. 
+	We added new functionality to verify each appId before returning the user group GraphQL. If the appId does not exist it's removed from the response.
 	
 	This change is behind the feature flag `SPG_GRAPHQL_VERIFY_APPLICATION_FROM_USER_GROUP`.
 

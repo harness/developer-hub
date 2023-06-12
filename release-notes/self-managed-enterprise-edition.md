@@ -14,7 +14,7 @@ import delete_project from './static/delete-project.png'
 ```
 Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes).
 
-## Latest - June 15, 2023, patch release for version 79230
+## Latest - June 13, 2023, patch release for version 79230
 
 This release includes the following Harness module and component versions.
 
@@ -35,10 +35,16 @@ This release includes the following Harness module and component versions.
 
 #### Self-Managed Enterprise Edition
 
-- (SMP-1347)
+- Harness updated the following images to use versioned tags: (SMP-1347)
 
-- (SMP-1359)
+   - docker.io/harness/sto-plugin:1.12.0
+   - docker.io/curlimages/curl:8.1.1
 
+   The docker.io/harness/helm-init-container image will be updated to use a versioned tag in a future release.
+
+   Timescaledb-ha uses uses versioned tag pg13-ts2.9 (for pg13, Harness uses the `ts2.9-oss-latest` image, which updates with any minor releases, currently 2.9.3 with this release).
+
+- The `PRUNE_KUBERNETES_RESOURCES` feature flag is now disabled by default in stages and Self-Managed Enterprise Edition releases.
 
 #### Continuous Delivery & GitOps
 
@@ -329,18 +335,42 @@ This release includes the following Harness module and component versions.
   
   Variable expressions are not supported for encrypted text config files because expressions impact the encoded secret.
 
-
 ### Fixed issues
 
 #### Self-Managed Enterprise Edition
 
-- (SMP-1186)
+- Attempts the sign up URL failed. (SMP-1186)
 
-- (SMP-1255)
+    This issue is fixed by using in-cluster DNS to route from container to container. You can now use LoadBalancer to reroute traffic from your Harness gateway pod to other pods, or you can use an Nginx/Istio gateway.
 
-- (SMP-1368)
+   ```yaml
+   global:
+     ingress:
+       enabled: true/false
+       ingressGatewayServiceUrl:
+       <internal-nginx-controller-service-url>
+       hosts:
+       - <harness-domain-name>
+       - <ingressGatewayServiceUrl>
+     istio:
+       enabled: false/true
+       istioGatewayServiceUrl: <internal-istio-gateway-service-url>
+       virtualService:
+         hosts:
+           - <harness-domain-name>
+           - <istioGatewayServiceUrl>
+         hosts:
+           - <harness-domain-name>
+           - <istioGatewayServiceUrl>
+   ```
 
-- (SMP-1389)
+- The `global.imagePullSecrets` field in the Harness `overrides.yaml` file was not used against the `StatefulSet` object. (SMP-1255)
+
+   This issue if fixed with a code enhancement. TimescaleDB now pulls private images using the field `global.imagePullSecrets`.
+  
+- Helm delegate installations failed. (SMP-1368)
+
+   This issue is fixed with a code enhancement. The delegate installation command now includes an override `--set deployMode="KUBERNETES_ONPREM"`.
 
 #### Continuous Integration
 
