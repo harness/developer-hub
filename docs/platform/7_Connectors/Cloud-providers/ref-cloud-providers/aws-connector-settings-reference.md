@@ -651,7 +651,7 @@ The AWS connector settings include:
   * **Assume IAM Role on Delegate:** This assumes the SA of the Delegate. Ensure the IAM roles attached to the nodes have the right access. This is often the simplest method for connecting Harness to your AWS account and services. Once you select this option, you can select a delegate in the next step of AWS connector creation. Typically, the delegate runs in the target infrastructure.
   * **AWS Access Key:** The [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) of the IAM Role to use for the AWS account. You can use [Harness Text Secrets](../../../Secrets/2-add-use-text-secrets.md) for both.
   * **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account; whereas, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate.
-* **AWS Backoff Strategy:** see [AWS Backoff Strategy](#aws-backoff-strategy) below.
+* **AWS Backoff Strategy:** Go to [AWS Backoff Strategy](#aws-backoff-strategy) below.
 
 <details>
 <summary>Configure IRSA credentials for AWS connectors</summary>
@@ -768,7 +768,7 @@ Currently, this functionality is behind the feature flag `CDS_AWS_BACKOFF_STRATE
 
 In some Harness CloudFormation and ECS deployments you might get failures with `ThrottlingException` or `Rate exceeded` errors for CloudFormation and ECS API calls.
 
-This can happen when CloudFormation and ECS API calls exceed the maximum allowed API request rate per AWS account and region. Requests are throttled for each AWS account on a per-region basis to help service performance. See [Service endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html) from AWS.
+This can happen when CloudFormation and ECS API calls exceed the maximum allowed API request rate per AWS account and region. Requests are throttled for each AWS account on a per-region basis to help service performance. Go to [Service endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html) from AWS.
 
 The AWS Backoff Strategy settings remedy this situation by setting Amazon SDK default backoff strategy params for CloudFormation and ECS.
 
@@ -821,7 +821,7 @@ Here's list of throttled error codes where equal jitter strategy is applied:
 "429 Too Many Requests"
 ```
 
-For more strategies, see [Exponential Backoff And Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/) from AWS.
+For more strategies, go to [Exponential Backoff And Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/) from AWS.
 
 #### Setting the AWS backoff strategy
 
@@ -831,9 +831,9 @@ These options are part of the AWS [software.amazon.awssdk.core.retry.backoff](ht
 
 The settings are:
 
-- **Fixed Delay:** this is a simple backoff strategy that always uses a [fixed delay](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/retry/backoff/FixedDelayBackoffStrategy.html) before the next retry attempt.
-- **Equal Jitter:** this strategy uses [equal jitter](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/retry/backoff/EqualJitterBackoffStrategy.html) for computing the delay before the next retry.
-- **Full Jitter:** this strategy uses a [full jitter](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/retry/backoff/FullJitterBackoffStrategy.html) strategy for computing the next backoff delay.  
+- **Fixed Delay:** This is a simple backoff strategy that always uses a [fixed delay](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/retry/backoff/FixedDelayBackoffStrategy.html) before the next retry attempt.
+- **Equal Jitter:** This strategy uses [equal jitter](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/retry/backoff/EqualJitterBackoffStrategy.html) for computing the delay before the next retry.
+- **Full Jitter:** This strategy uses a [full jitter](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/retry/backoff/FullJitterBackoffStrategy.html) strategy for computing the next backoff delay.  
 
 
 
