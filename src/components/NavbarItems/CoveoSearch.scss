@@ -306,6 +306,57 @@
 	color: var(--mod-sei-300);
 }
 
+// IDP
+.harness-search-module .CoveoFieldValue.CoveoFieldValueIDP {
+	background: var(--mod-idp-100);
+	border: 1px solid var(--mod-idp-200);
+	color: var(--mod-idp-300);
+	&::before {
+		content: url('/img/icon_idp_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueIDP .coveo-clickable {
+	color: var(--mod-idp-300);
+}
+
+// IaCM
+.harness-search-module .CoveoFieldValue.CoveoFieldValueIACM {
+	background: var(--mod-iacm-100);
+	border: 1px solid var(--mod-iacm-200);
+	color: var(--mod-iacm-300);
+	&::before {
+		content: url('/img/icon_iacm_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueIACM .coveo-clickable {
+	color: var(--mod-iacm-300);
+}
+
+// Gitness
+.harness-search-module .CoveoFieldValue.CoveoFieldValueGitness {
+	background: var(--mod-gitness-100);
+	border: 1px solid var(--mod-gitness-200);
+	color: var(--mod-gitness-300);
+	&::before {
+		content: url('/img/icon_gitness_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueGitness .coveo-clickable {
+	color: var(--mod-gitness-300);
+}
+
 .harness-search-module .CoveoFieldValue.CoveoFieldValuePlatform {
     &::before {
         content: url('/img/icon_harness_s.svg');
