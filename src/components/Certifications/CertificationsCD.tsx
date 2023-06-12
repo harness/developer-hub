@@ -201,8 +201,7 @@ export default function CertificationsCD() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Continuous Delivery & GitOps - Administrator (BETA COMING
-                    SOON)
+                    Continuous Delivery & GitOps - Administrator (BETA)
                   </h2>
                   <img
                     src={`${baseUrl}img/cert_adm_cd_badge.svg`}
@@ -219,11 +218,11 @@ export default function CertificationsCD() {
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy and maintain CD
                     projects and the overall Harness Platform. This exam builds upon
-                    the <a href="/certifications/continuous-delivery?lvl=developer">CD Developer Certification</a>. 
+                    the <a href="/certifications/continuous-delivery?lvl=developer">Continuous Delivery & GitOps Developer Certification</a>. 
                   </div>
                   <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="#">
+                    <Link href="https://university.harness.io/continuous-delivery-gitops-administrator">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -246,7 +245,7 @@ export default function CertificationsCD() {
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="#">
+                <Link href="https://university.harness.io/continuous-delivery-gitops-administrator">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
