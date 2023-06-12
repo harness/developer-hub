@@ -7,6 +7,10 @@ description: This topic explains how to create rules by using Harness AI Copilot
 
 This topic explains how to create rules and view rule descriptions by using Harness AI Copilot.
 
+:::note
+Currently, this feature is behind the feature flag **CCM_GOVERNANCE_GENAI_ENABLE**. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 ## Create a rule by using Harness AI Copilot
 
 To create a rule by using the Harness AI Copilot, perform the following steps: 
