@@ -52,7 +52,7 @@ The correct way to use a Java method with a variable is `<+<+expression>.methodN
 
 For example, let's use a variable `myvar` using the methods `substring` and `indexOf` with value `Hello`. You can use these methods like this: 
 
-<+<+stage.variables.myvar>.substring(<+<+stage.variables.myvar>.indexOf("e")>)>
+`<+<+stage.variables.myvar>.substring(<+<+stage.variables.myvar>.indexOf("e")>)>`
 
 This expression evaluates to `ello`.
 
@@ -84,10 +84,10 @@ Click **Variables** in the pipeline to view all the inputs and copy their expres
 
 <docimage path={require('./static/21a3df06a049a40a2787e3f0e929617974284e0afd8a86ebe8890d8a4d9c871d.png')} width="60%" height="60%" title="Click to view full size image" />  
 
-These variable expressions follow these formats:
+The pipeline and stage level variable expressions follow these formats:
 
 - **Pipeline-level** expressions use the format `<+pipeline.variables.VAR_NAME>`.
-- **Stage-level** expressions you can use these formats:
+- **Stage-level** expressions use these formats:
   - **Use in this stage:** Use this option to reference the input anywhere in its stage. The format is `<+stage.variables.VAR_NAME>`.
   - **Use in any pipeline:** Use this option to reference the input anywhere in the pipeline. The format is `<+pipeline.stages.STAGE_NAME.VAR_NAME>`. 
 
@@ -168,10 +168,10 @@ You can copy and reference the input settings for steps using the pipeline **Var
 
 <docimage path={require('./static/2d3f480ea623c75e83c074a1e8a6d90d1fb1eccc1d9c3bcda1184179483ef529.png')} width="60%" height="60%" title="Click to view full size image" />  
 
-These variables follow this format:
+Input variables follow this format:
 
-- Stage-level: `<+execution.steps.STEP_Id.SETTING>`.
-- Pipeline-level: `<+pipeline.stages.STAGE_Id.spec.execution.steps.STEP_Id.SETTING>`.
+- **Stage-level**: `<+execution.steps.STEP_Id.SETTING>`.
+- **Pipeline-level**: `<+pipeline.stages.STAGE_Id.spec.execution.steps.STEP_Id.SETTING>`.
 
 :::note
 
@@ -228,14 +228,14 @@ Review the following guidelines to avoid errors when using variable expressions.
 
 When Harness automatically presents variable expressions in a setting, it only exposes the expressions that can be used in that setting. You will not see a variable expression available in a setting where it cannot be used.
 
-This does not prevent a user from trying to use an expression outside of its scope.
+This does not prevent you from trying to use an expression outside of its scope.
 
-Here's some guidelines to help you use expressions successfully:
+Here are some guidelines to help you use expressions successfully:
 
 - Don't refer to a step's expressions within the same step.
 - Don't refer to the settings for a subsequent step in a previous step.
 - Don't refer to inputs or outputs of a stage's **Execution** tab in the stage's **Service** or **Environment** tabs. 
-  - The execution takes place after the service and environment settings are used, and so expressions used in the execution are not resolved during the running of the service and environment sections.
+  - The execution takes place after the service and environment settings are used. Consequently, the expressions used in the execution cannot be resolved when running the service and environment sections.
 
 
 :::note Exception
@@ -253,7 +253,7 @@ In this illustration, you can see how the information in each section of the sta
 Here is how you reference the information in each of these sections.
 
 * **Service expressions** can only be resolved after Harness has progressed through the **Service** section of the pipeline.
-	+ Consequently, service expressions can be used in **Infrastructure** and **Execution**.
+	+ Consequently, service expressions can be used in the **Infrastructure** and **Execution** sections.
 * **Infrastructure expressions** can only be used after Harness has progressed through the **Infrastructure** section of the pipeline.
 	+ In **Infrastructure**, you can reference **Service** settings.
 	+ Since **Execution** follows **Infrastructure**, you can reference **Infrastructure** expressions in **Execution**.
@@ -309,7 +309,7 @@ if ((x * 2) == 5) { <+pipeline.name = abc>; } else { <+pipeline.name = def>; }
 ```
 ### Variable names across the pipeline
 
-Variables names must be unique within the same stage. You can use same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
+Variable names must be unique within the same stage. You can use same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
 
 ### Hyphens in variable names
 
@@ -563,7 +563,7 @@ For CD pipelines, the Id is named execution. For CI pipelines, the Id is named b
 
 ![](./static/harness-variables-26.png)
 
-You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repo, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For an example, go to the [Build and test on a Kubernetes cluster build infrastructure tutorial](https://developer.harness.io/tutorials/ci-pipelines/kubernetes-build-farm/) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-CD-other-modules).
+You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](https://developer.harness.io/tutorials/ci-pipelines/kubernetes-build-farm/) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-CD-other-modules).
 
 ### <+pipeline.startTs>
 
