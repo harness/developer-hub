@@ -92,9 +92,7 @@ To set up Prometheus in-cluster, do the following:
 
 In a production environment, you can use a central Grafana setup to visualize metrics from multiple Prometheus endpoints. Depending on your requirements, you may want to monitor multiple projects or environments. For example, you may have your production environment in one cluster and your development environment in a second cluster, and you want to monitor both environments.
 
-To expose in-cluster Prometheus metrics to an external instance of Grafana, do the following:
-
-- Set up your ingress or VirtualService.
+To expose in-cluster Prometheus metrics to an external instance of Grafana, set up your ingress or VirtualService.
 
 ```mdx-code-block
 <Tabs>
@@ -164,7 +162,11 @@ To use Istio, create a VirtualService for Prometheus.
 
 ## Required overrides
 
-Use the following overrides when you install or upgrade your Harness Helm charts. You can add the `monitoring.yaml` file from the Helm charts repo to enable the metrics of all databases and Harness services, or you can enable metrics for each service. 
+Use the following overrides when you install or upgrade your Harness Helm charts. You can add the `monitoring.yaml` file from the Helm charts repo to enable the metrics of all databases and Harness services, or you can enable metrics for each service.
+
+:::info note
+For this example, we use the Prometheus operator packaged by Bitnami as an external Prometheus setup.
+:::
 
 ```yaml
 platform:
@@ -203,10 +205,6 @@ global:
     port: 8889
     path: /metrics
 ```
-
-:::info note
-For this example, we use the Prometheus operator packaged by Bitnami as an external Prometheus setup.
-:::
 
 ## View metrics on the Grafana dashboard
 
