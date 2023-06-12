@@ -1,4 +1,4 @@
-To safeguard your operations and protect against potential security vulnerabilities, Harness will launch an update to deprecate the Helm 2 binary from delegates with an immutable image type (image tag yy.mm.xxxxx) on July 30, 2023. For delegates types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+To safeguard your operations and protect against potential security vulnerabilities, Harness will launch an update to deprecate the Helm 2 binary from delegates with an immutable image type (image tag yy.mm.xxxxx) on July 30, 2023. For delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 Helm 2 was deprecated by the Helm Community in November 2020 and is no longer supported. Continuing to maintain the Helm 2 binary on your delegate introduces high and critical vulnerabilities, which may put your infrastructure at risk.
 
