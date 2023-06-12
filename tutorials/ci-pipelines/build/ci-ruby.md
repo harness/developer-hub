@@ -88,8 +88,6 @@ You can use [Background steps](/docs/continuous-integration/use-ci/manage-depend
 <TabItem value="cloud" label="Harness Cloud" default>
 ```
 
-<!-- not sure what the cache path is for Ruby. Also update in full pipeline example. -->
-
 You can cache your Ruby dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec` and specify the cache paths (in `paths` and `sharedPaths`).
 
 ```yaml
@@ -99,9 +97,9 @@ You can cache your Ruby dependencies with [Cache Intelligence](/docs/continuous-
             enabled: true
             key: cache-{{ checksum "gemfile.lock" }}
             paths:
-              - "/vendor/cache" ## ?? /vendor/bundle??
+              - "vendor/bundle"
           sharedPaths:
-            - /vendor/cache ## ??
+            - vendor/bundle
 ```
 
 ```mdx-code-block
@@ -115,8 +113,6 @@ With self-hosted build infrastructures, you can:
 * [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
 
 Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
-
-<!-- need a run step to do `bundle cache` and then save the cache? -->
 
 ```yaml
             steps:
@@ -137,15 +133,6 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                   type: BuildAndPushDockerRegistry
                   ...
               - step:
-                  type: Run
-                  identifier: dependencies
-                  name: Dependencies
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: ruby:latest
-                    command: |-
-                      bundle cache
-              - step:
                   type: SaveCacheS3
                   name: Save Cache to S3
                   identifier: Save_Cache_to_S3
@@ -153,9 +140,9 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     connectorRef: AWS_connector
                     region: us-east-1
                     bucket: some_s3_bucket
-                    key: cache-{{ checksum "gemfile.lock" }} ## How do you save what was cached by `bundle cache`?
+                    key: cache-{{ checksum "gemfile.lock" }}
                     sourcePaths:
-                      - /vendor/cache
+                      - vendor/bundle
                     archiveFormat: Tar
 ```
 
@@ -229,7 +216,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                     type: JUnit
                     spec:
                       paths:
-                        - "/harness/report.xml" ## Can this just be /report.xml?
+                        - report.xml
 ```
 
 ```mdx-code-block
@@ -252,7 +239,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                       type: JUnit
                       spec:
                         paths:
-                          - "/harness/report.xml"
+                          - report.xml
 ```
 
 ```mdx-code-block
@@ -424,9 +411,9 @@ pipeline:
             enabled: true
             key: cache-{{ checksum "gemfile.lock" }}
             paths:
-              - /vendor/cache
+              - vendor/bundle
           sharedPaths:
-            - /vendor/cache
+            - vendor/bundle
           platform:
             os: Linux
             arch: Amd64
@@ -441,7 +428,7 @@ pipeline:
                   name: Dependencies
                   spec:
                     shell: Sh
-                    command: bundle check || bundle install
+                    command: bundle install --path vendor/bundle
               - step:
                   type: Run
                   name: Run Ruby Tests
@@ -453,7 +440,7 @@ pipeline:
                     type: JUnit
                     spec:
                       paths:
-                        - /harness/report.xml
+                        - report.xml
               - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1
@@ -513,7 +500,7 @@ pipeline:
                   name: Dependencies
                   spec:
                     shell: Sh
-                    command: bundle check || bundle install
+                    command: bundle install --path vendor/bundle
                     connectorRef: account.harnessImage
                     image: ruby:latest
               - step:
@@ -529,7 +516,7 @@ pipeline:
                     type: JUnit
                     spec:
                       paths:
-                        - /harness/report.xml
+                        - report.xml
               - step:
                   type: BuildAndPushDockerRegistry
                   name: BuildAndPushDockerRegistry_1
@@ -549,7 +536,7 @@ pipeline:
                     bucket: YOUR_AWS_BUCKET_NAME
                     key: cache-{{ checksum "gemfile.lock" }}
                     sourcePaths:
-                      - /vendor/cache
+                      - vendor/bundle
                     archiveFormat: Tar
           infrastructure:
             type: KubernetesDirect
