@@ -10,7 +10,7 @@ This topic explains how to view and edit the default settings for Git Experience
 
 ## Use default connector for Git Experience
 
-You can use a default connector if a connector is not selected during pipeline or template creation. To do this, enable **Default Connector For Git Experience with Entities - Pipelines/InputSets/Templates**. After enabling this setting, the default connector is preselected during pipeline or template creation. It is, however, possible to use any other connector if necessary.
+In order to avoid selecting the same connector repeatedly, you can enable the default connector settings **Default Connector For Git Experience with Entities - Pipelines/InputSets/Templates**. When this setting is enabled, the default connector is preselected during pipeline or template creation. You can, however, use any other connector if necessary.
 
 To enable this setting in Harness: 
 
