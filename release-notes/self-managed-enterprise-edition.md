@@ -16,6 +16,11 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 ## Latest - June 13, 2023, patch release for version 79230
 
+```mdx-code-block
+<Tabs>
+  <TabItem value="What's new">
+```
+
 This release includes the following Harness module and component versions.
 
 | **Name** | **Version** |
@@ -31,9 +36,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.347.19 |
 | LE NG | 67808 |
 
-### What's new
-
-#### Self-Managed Enterprise Edition
+### Self-Managed Enterprise Edition
 
 - Harness updated the following images to use versioned tags: (SMP-1347)
 
@@ -46,7 +49,7 @@ This release includes the following Harness module and component versions.
 
 - The `PRUNE_KUBERNETES_RESOURCES` feature flag is now disabled by default in stages and Self-Managed Enterprise Edition releases.
 
-#### Continuous Delivery & GitOps
+### Continuous Delivery & GitOps
 
 - You can now trigger a pipeline when there are changes to an artifact in Bamboo. (CDS-51742)
   
@@ -197,7 +200,7 @@ This release includes the following Harness module and component versions.
   
   `Warning: Abort command will not clean up any resources created during execution so far. Please mark the stage as failed if you would like to clean up and revert back to the old state.`
 
-#### Continuous Integration
+### Continuous Integration
 
 - The following features are now generally available. These were enabled by default for all users, but they were behind features flags until they were deemed stable. (CI-6537)
   - `CI_LE_STATUS_REST_ENABLED`: All CI steps send status updates to the [Harness Manager](/docs/getting-started/harness-platform-architecture#harness-platform-components) directly by HTTP rather than through a Delegate.
@@ -213,12 +216,12 @@ This release includes the following Harness module and component versions.
 
 - The CI Getting Started workflow leads you through creating an SCM connector and a pipeline. This workflow has been improved to generate a pipeline based on the repository you select. (CI-7603)
 
-#### Harness Platform
+### Harness Platform
 
 - You can now configure session time-out in the UI. (PL-32258)
   In case of inactivity, Harness logs users out of their accounts after the configured session timeout.
 
-#### Delegate
+### Delegate
 
 - Added APIs to enable auto upgrading with custom delegate images. (PL-37871, DEL-6183)
 
@@ -228,7 +231,7 @@ This release includes the following Harness module and component versions.
 
 - Removed the legacy delegate installation UI. (PL-37882, )
 
-#### Service Reliability Management
+### Service Reliability Management
 
 - Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
 
@@ -238,7 +241,12 @@ This release includes the following Harness module and component versions.
 
 - An icon appears on the SLO performance trend chart timeline to indicate when the error budget was reset and the amount of budget that was added. (SRM-14550)
 
-### Early access
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+### Continuous Delivery & GitOps
 
 - ServiceNow custom table support. (CDS-55046)
   
@@ -337,9 +345,11 @@ This release includes the following Harness module and component versions.
   
   Variable expressions are not supported for encrypted text config files because expressions impact the encoded secret.
 
-### Fixed issues
-
-#### Self-Managed Enterprise Edition
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+### Self-Managed Enterprise Edition
 
 - Attempts the sign up URL failed. (SMP-1186)
 
@@ -374,7 +384,7 @@ This release includes the following Harness module and component versions.
 
    This issue is fixed with a code enhancement. The delegate installation command now includes an override `--set deployMode="KUBERNETES_ONPREM"`.
 
-#### Continuous Integration
+### Continuous Integration
 
 - Fixed a minor UI issue where selecting the **Commits** tab on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds) caused the navigation menu to expand. (CI-6274)
 
@@ -390,7 +400,7 @@ This release includes the following Harness module and component versions.
 
 - Fixed an issue where the [SSL Verify setting](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#ssl-verify) in the **Git Clone** step always treated the value as false. (CI-7721, ZD-42483)
 
-#### Continuous Delivery & GitOps
+### Continuous Delivery & GitOps
 
 - Selecting the edit button on the YAML section of the **Triggers** page took users back to the visual section of the page. (CDS-50426)
 
@@ -587,7 +597,7 @@ This release includes the following Harness module and component versions.
 
 - Resolved an issue that converted runtime fields with default values to fixed values when viewing the template-linked parts of a pipeline like steps, stage, and so on. (CDS-67999, ZD-42765)
 
-#### Harness Platform
+### Harness Platform
 
 - It is possible to delete an encrypted text or file secret, even if it is referenced by another secret. (PL-31037)
   
@@ -617,7 +627,7 @@ This release includes the following Harness module and component versions.
   
   A code enhancement fixed this issue.
 
-#### Feature Flags
+### Feature Flags
 
 - Fixed an issue where the metrics loading spinner was hanging indefinitely. (FFM-6735)
 
@@ -627,7 +637,7 @@ This release includes the following Harness module and component versions.
 
 * Fixed an issue in the onboarding flow where the flag validation did not work as expected. (FFM-7534)
 
-#### Service Reliability Management
+### Service Reliability Management
 
 - When switched to a different project while a template was open, the health sources from the previous template would remain visible in the template, even though they were not part of the new project. (SRM-12236)  
   
@@ -637,15 +647,12 @@ This release includes the following Harness module and component versions.
   
   This issue has been resolved and notifications are being triggered when the **Error Budget Burn Rate is above** condition is met.
 
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Patch releases">
+```
 
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
-#### May 30, 2023, patch release for version 78926
+## May 30, 2023, patch release for version 78926
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -664,11 +671,11 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
-#### What's new
+### What's new
 
 - You can now use an external database with your installation. For more information, go to [Use an external database](/docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database). (SMP-545)
 
-#### Fixed issues
+### Fixed issues
 
 - You can now deploy the delegate-minimal image in an air-gapped environment using `useMinimalDelegate` in your `overrides.yaml` file. For more information, got to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/). (SMP-1130)
 
@@ -695,7 +702,7 @@ This release includes the following Harness module and component versions.
          tolerations: []
    ```
 
-#### May 12, 2023, patch release for version 78926
+## May 12, 2023, patch release for version 78926
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -714,13 +721,23 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
-#### Fixed issues
+### Fixed issues
 
 - The FirstGen to NextGen migrator disabled initialization for some feature flags. (SMP-1294)
 
    This issue is fixed. The migrator is now only enabled when `global.migrator.enabled` is set to `true`.
 
 - The legacy delegate is no longer the default delegate type. The default value of `useImmutableDelegate` is now set to `true`. (SMP-1280)
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
 
 #### April 26, 2023, version 78926
 
