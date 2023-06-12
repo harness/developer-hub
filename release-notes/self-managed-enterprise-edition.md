@@ -45,7 +45,7 @@ This release includes the following Harness module and component versions.
 
    The docker.io/harness/helm-init-container image will be updated to use a versioned tag in a future release.
 
-   Timescaledb-ha uses uses versioned tag pg13-ts2.9 (for pg13, Harness uses the TimescaleDB `ts2.9-oss-latest` image, which updates with any minor release, currently 2.9.3).
+   Timescaledb-ha uses uses versioned tag pg13-ts2.9 (for pg13, Harness uses the TimescaleDB `ts2.9-oss-latest` image, which updates with any minor release and is currently 2.9.3).
 
 - The `PRUNE_KUBERNETES_RESOURCES` feature flag is now disabled by default in stages and Self-Managed Enterprise Edition releases.
 
