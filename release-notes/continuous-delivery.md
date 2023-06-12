@@ -60,7 +60,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   To use the matrix labels naming strategy, do the following: 
   1. In Harness, select **Account Settings**.
-  2. Select **Account Resources**, then select **Pipeline**.
+  2. Select **Account Resources**, and then select **Pipeline**.
   3. Set **Enable Matrix Labels By Name** to `true`.
   4. Select **Save**.
 
