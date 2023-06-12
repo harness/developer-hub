@@ -643,6 +643,10 @@ This release includes the following Harness module and component versions.
   
   This issue has been resolved. Now, when you switch to a different project while a template is open, you will be redirected to the templates listing page.
 
+- Unable to create notifications while configuring composite SLO at account level. (SRM-14474)
+
+   This issue has been resolved. Now, you can create notifications for composite SLOs at the account level.
+
 - The **Error Budget Burn Rate is above** SLO notification setting was not triggering notifications, even when the condition was met. (SRM-14613)  
   
   This issue has been resolved and notifications are being triggered when the **Error Budget Burn Rate is above** condition is met.
