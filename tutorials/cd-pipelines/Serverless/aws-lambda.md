@@ -2,10 +2,10 @@
 sidebar_position: 1
 hide_table_of_contents: true
 title: Serverless
-description: Deploy a Serverless app using Harness CD Pipeline
+description: Deploy a Serverless app on AWS Lambda using Serverless.com Infrastructure. 
 ---
 
-# Deploy with Serverless Lambda  
+# Deploy a Serverless app on AWS Lambda using Serverless.com Infrastructure.
 
 This tutorial will get you started with Serverless Deployment using Harness Continuous Delivery (CD). We will guide you through deploying a sample application using Harness pipeline. 
 
@@ -21,11 +21,10 @@ Verify the following:
 
 1. **Obtain GitHub personal access token with the repo scope**. See the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
 2. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness Delegates and deploying a sample application in a local development environment.
-    - Check [Delegate system requirements](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-requirements).
-3. **Install the [Helm CLI](https://helm.sh/docs/intro/install/)** in order to install the Harness Helm delegate.
-4. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
+    - Check [Delegate system requirements](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-requirements)
+3. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
     - See [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) for more information on forking a GitHub repository.
-5. **AWS User account with required policy:** Serverless deployments require an AWS User with specific AWS permissions, as described in AWS Credentials from Serverless.com. To create the AWS User, follow the steps mentioned [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console). 
+4. **AWS User account with required policy:** Serverless deployments require an AWS User with specific AWS permissions, as described in AWS Credentials from Serverless.com. To create the AWS User, follow the steps mentioned [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console). 
 
 ### **Limitations and Capabilities**
     
@@ -60,112 +59,55 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 
 1. Under **Project Setup**, select **Delegates**.
 
-    For this tutorial, we require Harness Delegate with Serverless installed:
-
-    <details>
-   <summary>Install a new delegate using Kubernetes Manifest</summary>
-
-    1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
-    2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Kubernetes**.
-    3. In **Install your Delegate**, select **Kubernetes Manifest**.
-    4. Enter a delegate name, `harness-serverless-delegate`
-    5. At a terminal, run the following cURL command to copy the Kuberntes YAML file to the target location for installation.
-
-    `curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml`
-
-    6. Open the `harness-delegate.yaml` file. Find and specify the following placeholder values as described.
-
-    | **Value** | **Description** |
-    | :-- | :-- |
-    | `PUT_YOUR_DELEGATE_NAME` | harness-serverless-delegate |
-    | `PUT_YOUR_ACCOUNT_ID` | Harness account ID. |
-    | `PUT_YOUR_MANAGER_ENDPOINT` | URL of your cluster. See the following table of Harness clusters and endpoints. |
-    | `PUT_YOUR_DELEGATE_TOKEN` | Delegate token. To find it, go to **Account Settings** > **Account Resources**, select **Delegate**, and select **Tokens**. For more information on how to add your delegate token to the harness-delegate.yaml file, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/). |
-
-    Your Harness manager endpoint depends on your Harness SaaS cluster location. Use the following table to find the Harness manager endpoint in your Harness SaaS cluster.
-
-    | **Harness cluster location** | **Harness Manager endpoint** |
-    | :-- | :-- |
-    | SaaS prod-1 | https://app.harness.io |
-    | SaaS prod-2 | https://app.harness.io/gratis |
-    | SaaS prod-3 | https://app3.harness.io |
-
-    7. Install the delegate by running the following command:
-
-    `kubectl apply -f harness-delegate.yaml`
-
-    The successful output looks like this.
+    For this tutorial, we require Custom Harness Delegate image with Serverless installed:
     
-    ```
-    namespace/harness-delegate-ng unchanged
-    clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-cluster-admin unchanged
-    secret/cd-doc-delegate-account-token created
-    deployment.apps/cd-doc-delegate created
-    service/delegate-service configured
-    role.rbac.authorization.k8s.io/upgrader-cronjob unchanged
-    rolebinding.rbac.authorization.k8s.io/upgrader-cronjob configured
-    serviceaccount/upgrader-cronjob-sa unchanged
-    secret/cd-doc-delegate-upgrader-token created
-    configmap/cd-doc-delegate-upgrader-config created
-    cronjob.batch/cd-doc-delegate-upgrader-job created
-    ```
+  1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
+  2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Docker**.
+  3. Enter a delegate name, `harness-serverless-delegate`
 
-   8. Select **Verify** to make sure that the delegate is installed properly.
-   
-   </details>
+<h3> Prerequisite </h3>
+
+Ensure that you have the Docker runtime installed on your host. If not, use one of the following options to install Docker:
+
+- [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
+- [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
+- [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+- [Docker for Debian](https://docs.docker.com/engine/install/debian/)
+- [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
+
+<h3> Install on Docker </h3>
+
+Now you can install the delegate using the following command.
+
+```bash
+docker run --cpus=1 --memory=2g \
+  -e DELEGATE_NAME=docker-delegate \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
+  -e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE \
+  -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
+  -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
+  harness-community/custom-delegate:23.05.79310 
+```
+Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+
+| Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
+| ------------------------| -------------------------------------------	|
+| SaaS prod-1  	 		| `https://app.harness.io`       				|
+| SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
+| SaaS prod-3  	 		| `https://app3.harness.io`        				|
+| [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
+| [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
+
+To use local runner build infrastructure, modify the delegate command using the instructions to install the delegate in [Use local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-delegate)
 
 
-### Installing Serverless on the Delegate
+### Verify delegate connectivity
+
+Select **Continue**. After the health checks pass, your delegate is available for you to use. Select **Done** and verify your new delegate is listed.
+
     
-Now we need to edit the YAML to install Serverless when the Delegate pods are created.
-
-1. Open the Delegate YAML in a text editor.
-2. Locate the Environment variable `INIT_SCRIPT` in the `StatefulSet` (Legacy Delegate) or `Deployment` (Harness Delegate) object:
-    ```yaml
-    ...  
-            - name: INIT_SCRIPT  
-            value: ""  
-    ...
-    ```
-    1. Replace the value with the following Serverless installation script (the Harness Delegate uses the Red Hat Universal Base Image (UBI)).
-        
-        Here's an example using microdnf and npm:
-        
-        ```yaml
-        ...  
-            - name: INIT_SCRIPT  
-            value: |-  
-                #!/bin/bash
-                
-                # Install Node.js and npm on the Red Hat UBI image using Microdnf
-                microdnf install -y nodejs
-                
-                # Install the Serverless Framework using npm
-                npm install -g serverless@2.50.0 
-        ...
-        
-        ```
-
-        Here's an example using `yum` and `npm`:
-        
-        ```yaml
-        ...  
-            - name: INIT_SCRIPT  
-            value: |-  
-                #!/bin/bash
-
-                # Install Node.js and npm on the Red Hat UBI image
-                yum install -y nodejs
-
-                # Install the Serverless Framework using npm
-                npm install -g serverless@2.50.0
-        ...	
-        
-        ```
-
-In cases when the Delegate OS doesn't support `apt` (Red Hat Linux), you can edit this script to install `npm`. The rest of the code should remain the same. If you are using Harness Delegate, the base image is Red Hat UBI.Save the YAML file as **harness-delegate.yml**.
-    
-
 
 ### Secrets
 
