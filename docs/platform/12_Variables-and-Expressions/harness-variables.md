@@ -1297,11 +1297,11 @@ Harness provides the following expressions to retrieve the current status of the
 
 The current status of the looping strategy for the node with maximum depth.
 
-When this expression is used in a step, Harness will resolve it to the looping strategy status of the first parent node (stage/step) of the step.
+When this expression is used in a step, Harness will resolve it to the looping strategy current status of the first parent node (stage/step) of the step.
 
-So if the step and stage both has the looping strategy then the expression will resolve to the step's looping strategy status.
+In cases where both the step and the stage have the looping strategy configured, the expression will resolve to the looping strategy current status of the step.
 
-If the step(or stepGroup) does not have the looping strategy configured then the expression will resolve to the stage's looping strategy status.
+If the step (or stepGroup) does not have the looping strategy configured, the expression will instead resolve to the looping strategy current status of the stage.
 
 ### <+strategy.node.[strategyNodeIdentifier].currentStatus>
 
@@ -1317,27 +1317,27 @@ For example, `echo <+strategy.node.get("ShellScript_1").currentStatus>`.
 
 ### <+strategy.identifierPostFix>
 
-It returns the identifierPostFix of the current node or any parent of current node that is child of the looping strategy.
+This expression retrieves the identifierPostFix of the current node or any parent node that is a child of the looping strategy.
 
-When this expression is used in a step, Harness will resolve it to the identifierPostFix of the child of first looping strategy parent node (stage/step) of the step.
+When used in a step, Harness resolves <+strategy.identifierPostFix> to the identifierPostFix of the child node belonging to the first looping strategy parent node (either stage or step).
 
-So if the step and stage both has the looping strategy then the expression will resolve to the step's identifierPostFix.
+If both the step and stage have the looping strategy configured, the expression resolves to the identifierPostFix of the step.
 
-If the step(or stepGroup) does not have the looping strategy configured then the expression will resolve to the stage's identifierPostFix.
+If the step (or stepGroup) does not have the looping strategy configured, the expression resolves to the identifierPostFix of the stage.
 
-Note: identifierPostFix is the node(stage/step/stepGroup) identifiers postfix added during execution when the node is child of the looping strategy. So that all children of the looping strategy have unique identifiers. 
+Note: The identifierPostFix is a postfix added to the identifiers of nodes (stage/step/stepGroup) during execution when the node is a child of the looping strategy. This ensures that all children of the looping strategy have unique identifiers.
 
 ### <+step.identifierPostFix>
 
-It returns the identifierPostFix of the current step when the current step is the child of looping strategy.
+This expression returns the identifierPostFix of the current step when the step is a child of a looping strategy.
 
 ### <+stage.identifierPostFix>
 
-It returns the identifierPostFix of the stage when the current node's stage is the child of looping strategy.
+This expression retrieves the identifierPostFix of the stage when the current node's stage is a child of a looping strategy.
 
 ### <+stepGroup.identifierPostFix>
 
-It returns the identifierPostFix of the stepGroup when the current node is under the stepGroup or current node is stepGroup and that stepGroup is child of looping strategy.
+This expression returns the identifierPostFix of the stepGroup when the current node is under the stepGroup or when the current node is the stepGroup itself and that stepGroup is a child of a looping strategy.
 
 ## Triggers
 
