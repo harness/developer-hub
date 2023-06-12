@@ -137,6 +137,10 @@ This release does not incude early-access features.
 
 ##### Fixed issues
 
+* Fixed an issue to ensure that all input fields related to STO security steps appear the Template Studio view. (STO-5746, ZD-42167)
+
+* Fixed a UI issue where the "Default Project" and "Default Issue Type" drop-downs in the External Tickets settings page always used the account-level Jira connector, even when a different connector was selected on the project- or organization-level settings page. (STO-5756)
+
 * Fixed an issue with Mend scans that caused builds to fail with the log message “Missing valid image". (STO-5867)
 
 * Fixed an issue with Mend scans where the `product_domain` step setting did not get passed to the CLI, causing the scan to point to the default US server. (STO-5708)
