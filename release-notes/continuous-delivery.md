@@ -123,7 +123,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   Fixed this issue by adding proper validations to GCR artifacts used for SSH pipelines.
 - The expressions corresponding to objects like list, maps, and so on were incorrectly converted to string type using the Java `String.valueOf` method resulting in incorrect formatting. (CDS-71619)
   
-  This issue is fixed and the output values for expressions are returned as JSON objects.
+  For example, the expression `<+pipeline.variables>` corresponding to a map object is incorrectly converted to `{key1=val1, key2=val2}`, and a list object is incorrectly converted to `["a", "b", "c"]`. 
+  
+  This issue is fixed and the output values for expressions are returned as JSON objects. Now, the expression in the above example for a map object returns `{"key1":"val1","key2": "val2"}` and the list object returns `["a","b","c"]`.
 
 ### Harness Manager delegate fixed issues
 
@@ -151,6 +153,18 @@ The fixed issues below are available with version 79503 and do not require a new
 - Spot Elastigroup deployments failed to fetch instance health and expired. (CDS-56451, ZD-41436)
   
   Harness improved the handling mechanism for the Spot `instanceHealthiness` API to fix this issue.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Hotfix version 79518">
+```
+**Released June 12, 2023**
+
+- Pipeline executions failed with the following exception:
+  
+  `RecasterException: Class for value is not found for - io.harness.cdng.service.steps.ServiceStepV3Parameters; Cause: ClassNotFoundException: io.harness.cdng.service.steps.ServiceStepV3Parameters`
+
+  This issue is fixed. 
 
 ```mdx-code-block
   </TabItem>
