@@ -351,15 +351,17 @@ You can selectively escape characters when using shell scripts by using the foll
 
 For example, the output for `shell.escapeChars("hello", "ho")` is `"\hell\o"`.
 
-### Real time logging 
+### Realtime logging 
 
-Sometimes, depending on the type of the script, the log lines appear at the end of the execution, and may not be real time. This happens if the script doesn't flush logs in `stdout` at the correct time.
+Sometimes, depending on the type of the script, the log lines appear at the end of the execution, and might not be realtime. This happens if the script doesn't flush logs in `stdout` at the correct time.
 
-For example, a Python script with `print("..")` may show delayed logs. 
+For example, a Python script with `print("..")` might show delayed logs. 
 
 To fix this, use: 
 
-`print("...", flush=True)`
+```
+print("...", flush=True)
+```
  
 or 
  
@@ -368,4 +370,4 @@ import functools
 print = functools.partial(print, flush=True)
 ```
 
-You might have to make similar changes to your script depending on the content of the script being used.
+You might have to make similar changes to your script depending on its contents.
