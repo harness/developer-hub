@@ -123,9 +123,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   Fixed this issue by adding proper validations to GCR artifacts used for SSH pipelines.
 - The expressions corresponding to objects like list, maps, and so on were incorrectly converted to string type using the Java `String.valueOf` method resulting in incorrect formatting. (CDS-71619)
   
-  For example, the expression `<+pipeline.variables>` corresponding to a map object is incorrectly converted to `{key1=val1, key2=val2}`, and a list object is incorrectly converted to `["a", "b", "c"]`. 
+  For example, the expression `<+pipeline.variables>` corresponding to the following object types are incorrectly converted to:
+  * Map: `{key1=val1, key2=val2}`
+  * List: `["a", "b", "c"]` (with spaces)
   
-  This issue is fixed and the output values for expressions are returned as JSON objects. Now, the expression in the above example for a map object returns `{"key1":"val1","key2": "val2"}` and the list object returns `["a","b","c"]`.
+  This issue is fixed and the output values for expressions are returned as JSON objects. Now, the expression in the above example for a map object returns `{"key1":"val1","key2": "val2"}`, and a list object returns `["a","b","c"]` (without spaces).
 
 ### Harness Manager delegate fixed issues
 
@@ -160,9 +162,7 @@ The fixed issues below are available with version 79503 and do not require a new
 ```
 **Released June 12, 2023**
 
-- Pipeline executions failed with the following exception:
-  
-  `RecasterException: Class for value is not found for - io.harness.cdng.service.steps.ServiceStepV3Parameters; Cause: ClassNotFoundException: io.harness.cdng.service.steps.ServiceStepV3Parameters`
+- Pipeline executions failed with the exception, `RecasterException: Class for value is not found for - io.harness.cdng.service.steps.ServiceStepV3Parameters; Cause: ClassNotFoundException: io.harness.cdng.service.steps.ServiceStepV3Parameters`. (CDS-71866, ZD-45867, ZD-45868)
 
   This issue is fixed. 
 
