@@ -18,7 +18,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   You can now propagate force cool down from primary rule to dependent rules.
 
-  Earlier, when cooling down a rule from the UI, you had to stop its dependant rules one by one. With this enhancement, you can propagate the stop operation to dependant rules as well. 
+  Earlier, when stopping a rule from the UI, you had to stop its dependant rules one by one. With this enhancement, you can propagate the stop operation to dependant rules as well. 
   
   Propagating cool down to dependant rules is optional. You can stop the primary rule with or without propagating cool down to dependant rules.
 
