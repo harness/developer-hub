@@ -30,7 +30,7 @@ This example setup requires:
 
 ![](./static/monitor-harness-on-prem-2.png)
 
-<figcaption>Figure 2: Example monitoring setup server inside Harness services</figcaption>
+<figcaption>Figure 1: Example monitoring setup server inside Harness services.</figcaption>
 
 </figure>
 
@@ -38,9 +38,9 @@ This example setup requires:
 
 To set up Prometheus in-cluster, do the following:
 
-1. Install your Prometheus server using a Prometheus operator the same cluster as your Harness services and databases.
+1. Install your Prometheus server using a Prometheus operator in the same cluster as your Harness services and databases.
 
-2. Set up the environment s that prometheus is able to scrape all these endpoints within the cluster.
+2. Set up the environment so that prometheus is able to scrape all these endpoints within the cluster.
 
 3. Use the Bitnami chart with following override file.
 
@@ -90,7 +90,7 @@ To set up Prometheus in-cluster, do the following:
 
 ## Grafana setup options
 
-In a production environment, you can use a central Grafana setup to visualize metrics from multiple Prometheus endpoints. Depending on your requirements, you may want to monitor multiple projects or environments. For example, you may have your production environment in a cluster and your development environment in a different cluster, and you want to monitor both environments.
+In a production environment, you can use a central Grafana setup to visualize metrics from multiple Prometheus endpoints. Depending on your requirements, you may want to monitor multiple projects or environments. For example, you may have your production environment in one cluster and your development environment in a second cluster, and you want to monitor both environments.
 
 To expose in-cluster Prometheus metrics to an external instance of Grafana, do the following:
 
