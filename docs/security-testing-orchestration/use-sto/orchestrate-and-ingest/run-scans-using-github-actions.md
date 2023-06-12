@@ -1,5 +1,5 @@
 ---
-title: Ingest SARIF results from external scanners
+title: Run scans using GitHub Action and Drone Plugin steps
 description: STO can ingest data from any scanner that can publish in SARIF format.  
 sidebar_position: 80
 ---
