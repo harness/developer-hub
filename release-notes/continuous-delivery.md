@@ -164,6 +164,8 @@ The fixed issues below are available with version 79503 and do not require a new
 
 - Pipeline executions failed with the exception, `RecasterException: Class for value is not found for - io.harness.cdng.service.steps.ServiceStepV3Parameters; Cause: ClassNotFoundException: io.harness.cdng.service.steps.ServiceStepV3Parameters`. (CDS-71866, ZD-45867, ZD-45868)
 
+  This issue only applied to pipelines that started before the latest version of Harness was deployed to the prod-2 cluster.
+
   This issue is fixed. 
 
 ```mdx-code-block
