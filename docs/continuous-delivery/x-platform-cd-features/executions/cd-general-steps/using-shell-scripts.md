@@ -353,19 +353,19 @@ For example, the output for `shell.escapeChars("hello", "ho")` is `"\hell\o"`.
 
 ### Real time logging 
 
-Sometimes, depending on the type of the script, the log lines can appear at the end of the execution and may not be real time. This can happen, for instance, if the script 
-itself does not flush logs to stdout at the correct time.
+Sometimes, depending on the type of the script, the log lines appear at the end of the execution, and may not be real time. This happens if the script don't flush logs in `stdout` at the correct time.
 
-For eg. a python script with `print("..")` may show delayed logs. The way to fix it in this case would be use 
+For example, a Python script with `print("..")` may show delayed logs. 
+
+To fix this, use: 
 
 `print("...", flush=True)`
- OR
+ 
+ or 
+ 
  `
  import functools
  print = functools.partial(print, flush=True)
 `
 
-Similar changes might need to be done depending on the content of the script being used
-
-
-
+You might have to make similar changes to your script depending on the content of the script being used.
