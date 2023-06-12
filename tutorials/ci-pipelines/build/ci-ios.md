@@ -27,15 +27,12 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 * [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
 * [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
-* [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm)
 
 <CISignupTip />
 
 :::info Xcode, Fastlane, and Swift
 
 The examples in this guide use [Xcode](https://developer.apple.com/xcode/). You can also use [Fastlane](https://docs.fastlane.tools/) to build and test your iOS and macOS apps.
-
-[Swift](https://www.swift.org/about/) is a popular iOS/macOS language. However, to make your app eligible for the Apple App Store, you must use the version of [Swift included with Xcode](https://www.swift.org/download/#:~:text=Using%20Downloads-,Apple%20Platforms,-Xcode%20includes%20a).
 
 :::
 
@@ -61,13 +58,7 @@ stages:
             arch: Arm64 ## selects M1 architecture
 ```
 
-:::info Use Intel-based architecture
-
-[Rosetta](https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment) is pre-installed on Harness Cloud's M1 machines. If you need to use it, add the prefix `arch -x86_64` to commands in your scripts.
-
-Keep in mind that running apps through Rosetta can impact performance. Use native Apple Silicon apps whenever possible to ensure optimal performance.
-
-:::
+If you need to use Intel-based architecture, [Rosetta](https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment) is pre-installed on Harness Cloud's M1 machines. If you need to use it, add the prefix `arch -x86_64` to commands in your scripts. Keep in mind that running apps through Rosetta can impact performance. Use native Apple Silicon apps whenever possible to ensure optimal performance.
 
 ```mdx-code-block
   </TabItem>
@@ -76,13 +67,7 @@ Keep in mind that running apps through Rosetta can impact performance. Use nativ
 
 To configure a self-hosted macOS build infrastructure, go to [Set up a macOS VM build infrastructure with Anka Registry](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry).
 
-:::info Use Intel-based architecture
-
-If [Rosetta](https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment) is not already installed on your build infrastructure machines, you can use a **Run** step to [install this dependency](#install-dependencies).
-
-Keep in mind that running apps through Rosetta can impact performance. Use native Apple Silicon apps whenever possible to ensure optimal performance.
-
-:::
+If you need to use Intel-based architecture and [Rosetta](https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment) is not already installed on your build infrastructure machines, you can use a **Run** step to [install this dependency](#install-dependencies). Keep in mind that running apps through Rosetta can impact performance. Use native Apple Silicon apps whenever possible to ensure optimal performance.
 
 ```mdx-code-block
   </TabItem>
@@ -159,12 +144,6 @@ You can [add package dependencies](https://developer.apple.com/documentation/xco
                       xcodebuild -resolvePackageDependencies
 ```
 
-:::tip
-
-[Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) can be used to run dependent services that are needed by steps in the same stage.
-
-:::
-
 ## Cache dependencies
 
 Add caching to your stage.
@@ -174,11 +153,6 @@ Add caching to your stage.
 ```mdx-code-block
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
-
-```mdx-code-block
-<Tabs>
-<TabItem value="Cache Intelligence">
 ```
 
 Use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) by adding `caching` to your `stage.spec`.
@@ -192,74 +166,6 @@ Use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cac
               - /Users/anka/Library/Developer/Xcode/DerivedData
           sharedPaths:
             - /Users/anka/Library/Developer/Xcode/DerivedData
-```
-
-```mdx-code-block
-</TabItem>
-<TabItem value="Save and Restore Cache steps">
-```
-
-You can:
-
-* [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
-* [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
-
-Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps. It also includes a **Run** step that creates the `.ipa` archive with `xcodebuild archive` and `xcodebuild --exportArchive`.
-
-```yaml
-            steps:
-              - step:
-                  type: RestoreCacheS3
-                  name: Restore Cache From S3
-                  identifier: Restore_Cache_From_S3
-                  spec:
-                    connectorRef: AWS_Connector
-                    region: us-east-1
-                    bucket: your-s3-bucket
-                    key: cache-{{ checksum "cache.ipa" }} ## What is the cache key for xcode?
-                    archiveFormat: Tar
-              - step:
-                  type: Run
-                  ...
-              - step:
-                  type: Run
-                  ...
-              - step:
-                  type: Run
-                  identifier: create_cache
-                  name: create cache
-                  spec:
-                    shell: Sh
-                    command: |-
-                      xcodebuild archive
-                      xcodebuild -exportArchive
-              - step:
-                  type: SaveCacheS3
-                  name: Save Cache to S3
-                  identifier: Save_Cache_to_S3
-                  spec:
-                    connectorRef: AWS_Connector
-                    region: us-east-1
-                    bucket: your-s3-bucket
-                    key: cache-{{ checksum "cache.ipa" }} ## What is the cache key for xcode?
-                    sourcePaths:
-                      - "/Users/anka/Library/Developer/Xcode/DerivedData"
-                    archiveFormat: Tar
-```
-
-```mdx-code-block
-</TabItem>
-<TabItem value="Bitrise Integration plugin">
-```
-
-You can use the [Bitrise Integration plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-bitrise-plugin) to run Bitrise Integrations, such as:
-
-* [Xcode Archive & Export for iOS](https://bitrise.io/integrations/steps/xcode-archive)
-* [Xcode Archive for Mac](https://bitrise.io/integrations/steps/xcode-archive-mac)
-
-```mdx-code-block
-</TabItem>
-</Tabs>
 ```
 
 ```mdx-code-block
@@ -320,7 +226,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 </Tabs>
 ```
 
-## Run tests
+## Build and run tests
 
 Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
 
