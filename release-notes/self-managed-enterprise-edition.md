@@ -653,10 +653,15 @@ This release includes the following Harness module and component versions.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Patch releases">
+</Tabs>
 ```
 
-## May 30, 2023, patch release for version 78926
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 30, 2023, patch release for version 78926
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -675,11 +680,11 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
-### What's new
+#### What's new
 
 - You can now use an external database with your installation. For more information, go to [Use an external database](/docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database). (SMP-545)
 
-### Fixed issues
+#### Fixed issues
 
 - You can now deploy the delegate-minimal image in an air-gapped environment using `useMinimalDelegate` in your `overrides.yaml` file. For more information, got to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/). (SMP-1130)
 
@@ -706,7 +711,7 @@ This release includes the following Harness module and component versions.
          tolerations: []
    ```
 
-## May 12, 2023, patch release for version 78926
+#### May 12, 2023, patch release for version 78926
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -725,23 +730,13 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
-### Fixed issues
+#### Fixed issues
 
 - The FirstGen to NextGen migrator disabled initialization for some feature flags. (SMP-1294)
 
    This issue is fixed. The migrator is now only enabled when `global.migrator.enabled` is set to `true`.
 
 - The legacy delegate is no longer the default delegate type. The default value of `useImmutableDelegate` is now set to `true`. (SMP-1280)
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### April 26, 2023, version 78926
 
