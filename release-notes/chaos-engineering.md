@@ -39,7 +39,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="Fixed issues">
 ```
 
-* The Chaos Faults screen in ChaosHub was crashing when the **Platform** field was missing in CSV. This issue has been fixed. (CHAOS-1841)
+* The Chaos Faults screen in ChaosHub was crashing when the **Platform** field was missing in faults metadata file. This issue has been fixed. (CHAOS-1841)
 
 ```mdx-code-block
   </TabItem>
