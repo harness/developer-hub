@@ -23,18 +23,14 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 You can build and test [iOS](https://developer.apple.com/ios/) and [macOS](https://developer.apple.com/macos/) applications using a macOS platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted macOS VM](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) build infrastructure.
 
+The examples in this guide use [Xcode](https://developer.apple.com/xcode/). You can also use [Fastlane](https://docs.fastlane.tools/) to build and test your iOS and macOS apps.
+
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
 
 * [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components)
 * [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
 
 <CISignupTip />
-
-:::info Xcode, Fastlane, and Swift
-
-The examples in this guide use [Xcode](https://developer.apple.com/xcode/). You can also use [Fastlane](https://docs.fastlane.tools/) to build and test your iOS and macOS apps.
-
-:::
 
 ## Specify architecture
 
