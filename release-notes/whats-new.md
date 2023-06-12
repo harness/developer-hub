@@ -78,6 +78,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   For more information on how to send emails to non-Harness users, go to [Email step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
 
   Harness Delegate version 79503 is required for this feature.
+- Use labels for matrix naming strategy. (CDS-68030)
+  
+  To use the matrix labels naming strategy, do the following: 
+  1. In Harness, select **Account Settings**.
+  2. Select **Account Resources**, and then select **Pipeline**.
+  3. Set **Enable Matrix Labels By Name** to `true`.
+  4. Select **Save**.
+
+  This option is available at the project, org, and account level. 
 
 **Cost Category enhancement** (CCM-12585)
 
