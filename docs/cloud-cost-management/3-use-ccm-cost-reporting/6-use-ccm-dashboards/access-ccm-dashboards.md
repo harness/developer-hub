@@ -43,10 +43,5 @@ To access the dashboards outside the CCM module, perform the following steps:
 2. Select **By Harness** or **Cloud Cost** to filter the list.
 3. Click the required tile to view the corresponding dashboard.
 
-## Next steps
+## See also
 * [Use Dashboard Actions](../../../platform/18_Dashboards/use-dashboard-actions.md)
-* [View AWS Reservation Efficiency Dashboard](aws-reservation-coverage-and-service-cost.md)
-* [View Azure Cost Dashboard](azure-cost-dashboard.md)
-* [View Cluster Cost Dashboard](cluster-cost-dashboard.md)
-* [View AWS Cost Dashboard](aws-dashboard.md)
-* [View GCP Cost Dashboard](aws-dashboard.md)
