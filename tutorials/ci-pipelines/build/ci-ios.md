@@ -46,7 +46,7 @@ The examples in this guide use [Xcode](https://developer.apple.com/xcode/). You 
 To use M1 machines with Harness Cloud, use the `Arm64` architecture.
 
 ```yaml
-stages:
+ stages:
     - stage:
         name: build
         identifier: build
@@ -66,6 +66,24 @@ If you need to use Intel-based architecture, [Rosetta](https://developer.apple.c
 ```
 
 To configure a self-hosted macOS build infrastructure, go to [Set up a macOS VM build infrastructure with Anka Registry](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry).
+
+```yaml
+ stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: VM
+            spec:
+              type: Pool
+              spec:
+                poolName: YOUR_VM_POOL_NAME
+                os: MacOS
+```
 
 If you need to use Intel-based architecture and [Rosetta](https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment) is not already installed on your build infrastructure machines, you can use a **Run** step to [install this dependency](#install-dependencies). Keep in mind that running apps through Rosetta can impact performance. Use native Apple Silicon apps whenever possible to ensure optimal performance.
 
@@ -94,7 +112,19 @@ Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                     shell: Sh
                     command: |-
                       brew install fastlane
-                      brew install xcode-archive-cache
+```
+
+You can [add package dependencies](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app) in your Xcode project and then run Xcode commands in **Run** steps to interact with your project's dependencies.
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: dependencies
+                  name: Dependencies
+                  spec:
+                    shell: Sh
+                    command: |-
+                      xcodebuild -resolvePackageDependencies
 ```
 
 ```mdx-code-block
@@ -121,15 +151,7 @@ Due to the long install time, make sure [Xcode](https://developer.apple.com/xcod
                     shell: Sh
                     command: |-
                       brew install fastlane
-                      brew install xcode-archive-cache
 ```
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-<!-- this example is the same for both infras because xcode should already be installed on the self-hosted VMs -->
 
 You can [add package dependencies](https://developer.apple.com/documentation/xcode/adding-package-dependencies-to-your-app) in your Xcode project and then run Xcode commands in **Run** steps to interact with your project's dependencies.
 
@@ -144,11 +166,16 @@ You can [add package dependencies](https://developer.apple.com/documentation/xco
                       xcodebuild -resolvePackageDependencies
 ```
 
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
 ## Cache dependencies
 
 Add caching to your stage.
 
-<!-- unknown checksum key-->
+<!-- unknown checksum key and path for both hosted and self-hosted infras.-->
 
 ```mdx-code-block
 <Tabs>
@@ -230,6 +257,11 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 
 Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
 
+```mdx-code-block
+<Tabs>
+  <TabItem value="hosted" label="Harness Cloud" default>
+```
+
 ```yaml
               - step:
                   type: Run
@@ -241,8 +273,6 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                       xcodebuild
                       xcodebuild test -scheme SampleApp
 ```
-
-### Visualize test results
 
 If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification. the following example uses [xcpretty](https://github.com/xcpretty/xcpretty) to produce reports in JUnit XML format.
 
@@ -269,6 +299,56 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                       spec:
                         paths:
                           - "build/reports/junit.xml"
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="selfhosted" label="Self-hosted">
+```
+
+
+```yaml
+              - step:
+                  type: Run
+                  name: Test
+                  identifier: test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      xcodebuild
+                      xcodebuild test -scheme SampleApp
+```
+
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification. the following example uses [xcpretty](https://github.com/xcpretty/xcpretty) to produce reports in JUnit XML format.
+
+```yaml
+              - step:
+                  type: Run
+                  name: Test
+                  identifier: test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      brew install xcpretty
+              - step:
+                  type: Run
+                  name: Test
+                  identifier: test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      xcodebuild
+                      xcodebuild test -scheme SampleApp | xcpretty -r junit
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "build/reports/junit.xml"
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
 ```
 
 ## Specify version
@@ -403,6 +483,165 @@ If your application requires a specific Xcode version, you can a **Run** step to
 
 ```mdx-code-block
 </TabItem>
+</Tabs>
+```
+
+## Deploy to the App Store
+
+The following examples use [Fastlane in a Continuous Integration setup](https://docs.fastlane.tools/best-practices/continuous-integration/) to deploy an app to the Apple App Store. The environment variables in these examples use [secrets](https://developer.harness.io/docs/category/secrets) and [expressions](https://developer.harness.io/docs/platform/Variables-and-Expressions/harness-variables) to store and recall sensitive values, such as `FASTLANE_PASSWORD=<+secrets.getValue('fastlanepassword')>`.
+
+To learn more about app distribution, go to the Apple Developer documentation on [Distribution](https://developer.apple.com/documentation/xcode/distribution).
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="hosted" label="Harness Cloud" default>
+```
+
+```yaml
+              - step:
+                  type: Run
+                  name: Fastlane Build
+                  identifier: Fastlane_Build
+                  spec:
+                    shell: Sh
+                    command: |-
+                      export LC_ALL=en_US.UTF-8
+                      export LANG=en_US.UTF-8
+
+                      export APP_ID="osx.hello-harness"
+                      export APP_STORE_CONNECT_KEY_ID="FW...CV3"
+                      export APP_STORE_CONNECT_ISSUER_ID="80...e54"
+                      export APP_STORE_CONNECT_KEY_FILEPATH="/tmp/build_certificate.p12"
+
+                      export FASTLANE_USER=sample@mail.com
+                      export FASTLANE_PASSWORD=<+secrets.getValue('fastlanepassword')>
+                      export BUILD_CERTIFICATE_BASE64=<+secrets.getValue('BUILD_CERTIFICATE_BASE64')>
+                      export BUILD_PROVISION_PROFILE_BASE64=<+secrets.getValue('BUILD_PROVISION_PROFILE_BASE64')>
+                      export P12_PASSWORD=<+secrets.getValue('certpassword')>
+                      export KEYCHAIN_PASSWORD=admin
+                      export FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD=<+secrets.getValue('fastlaneapppassword')>
+                      export FASTLANE_SESSION='-..._at: *1\n'
+                      export APP_STORE_CONNECT_KEY_BASE64=<+secrets.getValue('appstoreapikey')>
+
+                      sudo xcode-select -switch /Applications/Xcode_14.1.0.app
+                      cd hello-harness
+
+                      CERTIFICATE_PATH=/tmp/build_certificate.p12
+                      PP_PATH=/tmp/profile.mobileprovision
+                      KEYCHAIN_PATH=/tmp/app-signing.keychain-db
+                      KEY_FILE_PATH="/tmp/app_store_connect_key.p8"
+
+                      echo "$BUILD_CERTIFICATE_BASE64" >> ce
+                      base64 -i ce --decode > $CERTIFICATE_PATH
+
+                      echo "$BUILD_PROVISION_PROFILE_BASE64" >> prof
+                      base64 -i prof --decode > $PP_PATH
+
+                      echo "$APP_STORE_CONNECT_KEY_BASE64" >> key_base64
+                      base64 -i key_base64 --decode > $KEY_FILE_PATH
+                      export APP_STORE_CONNECT_KEY_FILEPATH="$KEY_FILE_PATH"
+
+                      security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+                      security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+                      security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+
+                      security import $CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
+                      security list-keychain -d user -s $KEYCHAIN_PATH
+                      mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+                      cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+
+                      gem install bundler
+                      bundle install
+
+                      bundle exec fastlane beta
+                      echo $ABC
+                    envVariables:
+                      ABC: samples
+              - step:
+                  type: Run
+                  name: Run_2
+                  identifier: Run_2
+                  spec:
+                    shell: Sh
+                    command: echo $ABC
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="selfhosted" label="Self-hosted">
+```
+
+```yaml
+              - step:
+                  type: Run
+                  name: Fastlane Build
+                  identifier: Fastlane_Build
+                  spec:
+                    shell: Sh
+                    command: |-
+                      export LC_ALL=en_US.UTF-8
+                      export LANG=en_US.UTF-8
+
+                      export APP_ID="osx.hello-harness"
+                      export APP_STORE_CONNECT_KEY_ID="FW...CV3"
+                      export APP_STORE_CONNECT_ISSUER_ID="801...e54"
+                      export APP_STORE_CONNECT_KEY_FILEPATH="/tmp/build_certificate.p12"
+
+                      export FASTLANE_USER=sample@mail.com
+                      export FASTLANE_PASSWORD=<+secrets.getValue('fastlanepassword')>
+                      export BUILD_CERTIFICATE_BASE64=<+secrets.getValue('BUILD_CERTIFICATE_BASE64')>
+                      export BUILD_PROVISION_PROFILE_BASE64=<+secrets.getValue('BUILD_PROVISION_PROFILE_BASE64')>
+                      export P12_PASSWORD=<+secrets.getValue('certpassword')>
+                      export KEYCHAIN_PASSWORD=admin
+                      export FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD=<+secrets.getValue('fastlaneapppassword')>
+                      export FASTLANE_SESSION='-...*1\n'
+                      export APP_STORE_CONNECT_KEY_BASE64=<+secrets.getValue('appstoreapikey')>
+
+                      sudo xcode-select -switch /Applications/Xcode_14.1.0.app
+                      cd hello-harness
+
+                      CERTIFICATE_PATH=/tmp/build_certificate.p12
+                      PP_PATH=/tmp/profile.mobileprovision
+                      KEYCHAIN_PATH=/tmp/app-signing.keychain-db
+                      KEY_FILE_PATH="/tmp/app_store_connect_key.p8"
+
+                      echo "$BUILD_CERTIFICATE_BASE64" >> ce
+                      base64 -i ce --decode > $CERTIFICATE_PATH
+
+                      echo "$BUILD_PROVISION_PROFILE_BASE64" >> prof
+                      base64 -i prof --decode > $PP_PATH
+
+                      echo "$APP_STORE_CONNECT_KEY_BASE64" >> key_base64
+                      base64 -i key_base64 --decode > $KEY_FILE_PATH
+                      export APP_STORE_CONNECT_KEY_FILEPATH="$KEY_FILE_PATH"
+
+                      security create-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+                      security set-keychain-settings -lut 21600 $KEYCHAIN_PATH
+                      security unlock-keychain -p "$KEYCHAIN_PASSWORD" $KEYCHAIN_PATH
+
+                      security import $CERTIFICATE_PATH -P "$P12_PASSWORD" -A -t cert -f pkcs12 -k $KEYCHAIN_PATH
+                      security list-keychain -d user -s $KEYCHAIN_PATH
+                      mkdir -p ~/Library/MobileDevice/Provisioning\ Profiles
+                      cp $PP_PATH ~/Library/MobileDevice/Provisioning\ Profiles
+
+                      gem install bundler
+                      bundle install
+
+                      bundle exec fastlane beta
+                      echo $ABC
+                    envVariables:
+                      ABC: samples
+              - step:
+                  type: Run
+                  name: Run_2
+                  identifier: Run_2
+                  spec:
+                    shell: Sh
+                    command: echo $ABC
+```
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 
@@ -567,7 +806,7 @@ pipeline:
 
 ## Next steps
 
-Now that you have created a pipeline that builds and tests a Ruby app, you could:
+Now that you have created a pipeline that builds and tests a iOS/macOS app, you could:
 
 * Create [triggers](/docs/category/triggers) to automatically run your pipeline.
 * Add steps to [build and upload artifacts](/docs/category/build-and-upload-artifacts).
