@@ -244,7 +244,7 @@ pipeline:
    </table>
 
 
-4. Add a [**Custom Ingest**](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-scan-reference) step and set it up to ingest the data file. 
+4. Add a [**Custom Ingest**](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference) step and set it up to ingest the data file. 
 
 #### Example setup
 
