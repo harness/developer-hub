@@ -35,7 +35,7 @@ To add an encrypted text secret in the account scope:
 2. Select **Account Resources**, and then select **Secrets**.
 
 3. Select **New Secret**, and then select **Text**.
-
+   
    ```mdx-code-block
    <img src={add_text_secret} alt="add_text_secret" height="200" width="500"/>
    ```

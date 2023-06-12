@@ -1,6 +1,6 @@
 ---
 title: Run Sauce Connect Proxy
-sidebar_position: 4
+sidebar_position: 3
 description: This build automation guide walks you through running Sauce Connect Proxy as a Background step in a CI Pipeline
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/test/saucelabs-proxy

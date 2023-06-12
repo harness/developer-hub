@@ -1,6 +1,6 @@
 ---
 title: Run LocalStack
-sidebar_position: 3
+sidebar_position: 2
 description: Run LocalStack as a Background step in a CI Pipeline
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/test/localstack

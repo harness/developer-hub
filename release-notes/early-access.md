@@ -10,9 +10,43 @@ Review the notes below to learn about the early access (aka BETA) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 23, 2023, version 79306
+## Latest - June 09, 2023
 
-### Continuous Delivery
+### Cloud Cost Management, version 79701
+
+**Propagate force cool down** (CCM-12338)
+  
+  You can now propagate force cool down from primary rule to dependent rules.
+
+  Earlier, when stopping a rule from the UI, you had to stop its dependant rules one by one. With this enhancement, you can propagate the stop operation to dependant rules as well. 
+  
+  Propagating cool down to dependant rules is optional. You can stop the primary rule with or without propagating cool down to dependant rules.
+
+### Continuous Delivery, version 79516
+
+- Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
+  
+  This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`. 
+
+  This functionality helps you efficiently manage your resources. The scale down step can be configured within the same stage or different stage based on your requirement.
+
+  During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green deployment are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
+
+  Harness Delegate version 79503 is required for this feature.
+- Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. (CDS-59011)
+
+  This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. 
+  
+  Harness Delegate version 79503 is required for this feature.
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 23, 2023, version 79306
+
+##### Continuous Delivery
 
 - Trigger all artifacts and manifests using **On New Artifact** and **On New Manifest** triggers respectively. (CDS-68262, ZD-43588, ZD-43726)
   
@@ -20,7 +54,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   Earlier, you could trigger only the last pushed artifact or manifest using triggers. You can now trigger all collected artifacts and manifests of perpetual tasks in one single execution using the **On New Artifact** or **On New Manifest** trigger options. 
 
-### Continuous Integration
+##### Continuous Integration
 
 Harness CI now supports remote debugging. This feature was initially released in January 2023 and subsequently reverted for further development. Debug mode is available if all of the following conditions are met:
 
@@ -30,11 +64,6 @@ Harness CI now supports remote debugging. This feature was initially released in
 * The build runs in Harness Cloud, on a virtual machine, or in Kubernetes.
 
 You can re-run builds in debug mode through the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. For more information, go to the [debug mode](/docs/continuous-integration/use-ci/debug-mode) documentation.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 04, 2023, version 79214
 
