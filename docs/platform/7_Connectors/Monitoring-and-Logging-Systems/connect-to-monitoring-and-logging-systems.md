@@ -17,9 +17,9 @@ You can add a verification provider Connector inline when developing your pipeli
 
 You can add a verification provider Connector at the Account/Org/Project scope.
 
-This topic will explain how to add it at the Project scope. The process is same for Org and Account.
+This topic explains how to add a verification provider Connector at the Project scope. The process is same for Org and Account.
 
-### Step: Add AppDynamics
+### Add AppDynamics
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
@@ -39,7 +39,7 @@ This topic will explain how to add it at the Project scope. The process is same 
 7. In **Account Name**, enter the name of AppDynamics account you want to use.
 
    
-:::note
+:::info note
 For Harness On-Prem, enter **customer1**.
 :::
    
@@ -52,7 +52,7 @@ For Harness On-Prem, enter **customer1**.
 11. Click **Save and Continue**.
 12. Once the Test Connection succeeds, click **Finish**. AppDynamics is listed under the list of Connectors.
 
-### Step: Add Prometheus
+### Add Prometheus
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
@@ -67,7 +67,7 @@ For Harness On-Prem, enter **customer1**.
    ![](../static/connect-to-monitoring-and-logging-systems-14.png)
 
    
-:::note
+:::info note
 You cannot use a Grafana URL.
 :::
 
@@ -77,7 +77,7 @@ You cannot use a Grafana URL.
 3.  Click **Save and Continue**.
 4.  Once the Test Connection succeeds, click **Finish**. Prometheus is listed under the list of Connectors.
 
-### Step: Add New Relic
+### Add New Relic
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
@@ -109,7 +109,7 @@ If you have trouble finding step on generating the **Insights query key**, look 
 
 Usage scope is inherited from the secrets used in the settings. Pro or higher subscription level is needed. For more information, see [Introduction to New Relic's REST API Explorer](https://docs.newrelic.com/docs/apis/rest-api-v2/api-explorer-v2/introduction-new-relics-rest-api-explorer) from New Relic.
 
-### Step: Add Splunk
+### Add Splunk
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
@@ -143,7 +143,7 @@ We've given this role access to **All non-internal indexes**. However, we could
 2. In **Password** field, you can choose **Create or Select a secret.**
 
 
-:::note
+:::info note
 For secrets and other sensitive settings, select or create a new [Text Secret.](../../Secrets/2-add-use-text-secrets.md)
 
 :::
@@ -153,10 +153,10 @@ For secrets and other sensitive settings, select or create a new [Text Secret.]
 3.  Click **Save and Continue**.
 4.  Once the Test Connection succeeds, click **Finish**. Splunk is listed under the list of Connectors.
 
-### Step: Add Google Cloud Operations (formerly Stackdriver)
+### Add Google Cloud Operations (formerly Stackdriver)
 
 
-:::note
+:::info note
 For details on settings and permissions, see [Google Cloud Platform (GCP) Connector Settings Reference](../Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
 
 :::
@@ -170,7 +170,7 @@ The following roles must be attached to the account used to connect Harness and 
 
 See [Access control](https://cloud.google.com/monitoring/access-control) from Google.
 
-### Step: Add Datadog
+### Add Datadog
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
@@ -187,7 +187,7 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
 
    
 
-:::note
+:::info note
    The trailing forward slash after `api` (`api/`) is mandatory.
    
    Your URL should look like one of the following : 
@@ -223,37 +223,54 @@ To create an API key in Datadog, do the following:
 3.  Click **Save and Continue**.
 4.  Once the Test Connection succeeds, click **Finish**. Datadog is listed under the list of Connectors.
 
-### Step: Add Dynatrace
+### Add Dynatrace
 
-1. Open a Harness Project.
-2. In **Project Setup**, click **Connectors**.
-3. Click **+** **Connector**, and click **Dynatrace**in **Monitoring and Logging Systems**. The Custom Health connector settings appear.
-   
-   ![](../static/connect-to-monitoring-and-logging-systems-28.png)
-   
-4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
-5. Click **Continue**.
-6. In **URL**, enter the URL of your Dynatrace account. The URL has the following syntax: **https://*****your\_environment\_ID*****.live.dynatrace.com.** HTTPS is mandatory for Dynatrace connections.
-7.  In **API Token**, enter the API token generated in Dynatrace. To generate a Dynatrace access token, perform the following steps:
-	1. Log into your Dynatrace environment.
-	2. In the navigation menu, click **Settings**, and then click **Integration**.
-	3. Select **Dynatrace API**. The Dynatrace API page appears.
-   
-       ![](../static/connect-to-monitoring-and-logging-systems-29.png)
-   
-	4. Enter a token name in the text field. The default Dynatrace API token switches are sufficient for Harness.
-	5. Click **Generate**. The token appears in the token list.
-	6. Click **Edit**. The token details appear.
-   
-       ![](../static/connect-to-monitoring-and-logging-systems-31.png)
-   
-	7. Click **Copy**. You will use this token when connecting Harness to Dynatrace.
-8. Click **Next**. The Setup Delegates settings appear.
-9. You can choose **Connect via any available Delegate** or **Connect only via Delegates which has all of the following tag****.** If you select a Delegate, Harness will always use that Delegate for this Connector.
-10. Click **Save and Continue**.
-11. Once the Test Connection succeeds, click **Finish**. Dynatrace is listed under the list of Connectors.
+1.	Open a Harness Project, and then under **Project Setup**, select **Connectors** > **+ New Connector**.
 
-### Step: Add Custom Health
+2.	Under **Monitoring and Logging Systems**, select **Dynatrace**.
+
+3.	In the dialog that appears, in the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**.    
+If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+
+4.	In the **Credentials** tab, enter the URL of your Dynatrace account.  
+Using HTTPS is mandatory for establishing connections with Dynatrace.
+
+5.	Select the **API Token field** > **+ New Secret Text**.
+
+6.	In the Add New Encrypted Text dialog, select a secret manager, and then enter a name for the secret.
+
+7.	In the **Secret Value** field, enter the API token generated in Dynatrace. If you don’t have one, follow these steps to create an API token in Dynatrace:
+
+      1. Log into your Dynatrace environment.
+      2. Go to the Dynatrace menu, select Access tokens, and select Generate new token and then follow the on-screen instructions. 
+         
+         :::important
+         Ensure that you select the following scopes: Read metrics, Read entities., and Read events.
+         :::
+
+      3. Generate the token and copy the generated token to the clipboard. You need this token for connecting Harness to Dynatrace.  
+      For more information generating Dynatrace API tokens, go to [Dynatrace API - Tokens and authentication](https://www.dynatrace.com/support/help/dynatrace-api/basics/dynatrace-api-authentication).
+
+8.	Select **Save**.
+
+9.	In the Create or Select an Existing Secret dialog, select the Dynatrace secret that you added, and then select **Apply Selected**.
+
+1.  Select **Next**.
+
+2.  In the **Delegates Setup** tab, choose one of the following:
+
+   - **Use any available Delegate**: Harness automatically assigns an available delegate.
+  
+   - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the Delegates that have been assigned those specific tags.
+
+3.  Select **Save** and **Continue**.
+    Harness verifies the connection. 
+
+4.  Once the verification is successful, select **Finish**.
+    The Dynatrace connector is added to the list of connectors.
+
+
+### Add Custom Health
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
