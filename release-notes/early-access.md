@@ -12,6 +12,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - June 09, 2023
 
+### Cloud Cost Management, version 79701
+
+**Propagate force cool down** (CCM-12338)
+  
+  You can now propagate force cool down from primary rule to dependent rules.
+
+  Earlier, when cooling down a rule from the UI, you had to stop its dependant rules one by one. With this enhancement, you can propagate the stop operation to dependant rules as well. 
+  
+  Propagating cool down to dependant rules is optional. You can stop the primary rule with or without propagating cool down to dependant rules.
+
 ### Continuous Delivery, version 79516
 
 - Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)

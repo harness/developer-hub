@@ -24,7 +24,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 ### What's new
 
-
+This release does not include any new features.
 
 ```mdx-code-block
   </TabItem>
@@ -32,7 +32,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 ### Early access
 
-This release does not include any early access features.
+**Propagate force cool down** (CCM-12338)
+  
+  You can now propagate force cool down from primary rule to dependent rules.
+
+  Earlier, when cooling down a rule from the UI, you had to stop its dependant rules one by one. With this enhancement, you can propagate the stop operation to dependant rules as well. 
+  
+  Propagating cool down to dependant rules is optional. You can stop the primary rule with or without propagating cool down to dependant rules.
 
 ```mdx-code-block
   </TabItem>
@@ -140,6 +146,7 @@ This release does not include any new features.
 
 
 ##### Early access
+
 **Asset Governance**
 
 The Asset Governance feature now includes support for access control through Role-Based Access Control (RBAC). This enhancement allows more granular control and management of permissions. For more information, go to [Asset Governance RBAC](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov). 
