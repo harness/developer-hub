@@ -170,6 +170,18 @@ pipeline:
           execution:
             steps:
               - step:
+                  type: Background
+                  name: Postgress-Dependecy-Service
+                  identifier: PostgressDependecyService
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: postgres:10.8
+                    shell: Sh
+                    envVariables:
+                      POSTGRES_USER: postgres
+                      POSTGRES_PASSWORD: <+secrets.getValue("DbPasswordSecret")>
+                      POSTGRES_DB: postgres
+              - step:
                   type: Run
                   name: step1
                   identifier: step1
@@ -184,17 +196,6 @@ pipeline:
           runtime:
             type: Cloud
             spec: {}
-          serviceDependencies:
-            - identifier: PostgressDependecyService
-              name: Postgress-Dependecy-Service
-              type: Service
-              spec:
-                connectorRef: account.harnessImage
-                image: postgres:10.8
-                envVariables:
-                  POSTGRES_USER: postgres
-                  POSTGRES_PASSWORD: <+secrets.getValue("DbPasswordSecret")>
-                  POSTGRES_DB: postgres
     - stage:
         name: Stage2
         identifier: Stage2
