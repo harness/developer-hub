@@ -29,13 +29,19 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **1.0.10.**
+The current version of this SDK is **2.0.0.**
 
-## Requirements
+## Flutter and Dart Requirements
 
-To use this SDK, make sure you:
+To use version 2 and greater of this SDK, make sure you:
 
 * Install the [Flutter SDK, version 2.10.4 or higher](https://docs.flutter.dev/get-started/install).
+* Minimum Dart SDK is 2.12
+
+To use version 1 and earlier versions of this SDK, make sure you:
+
+* Install the [Flutter SDK, version 2.10.4
+* Use Dart SDK 2.7 - to 2.10
 * (For iOS apps) Install [Xcode](https://docs.flutter.dev/get-started/install/macos#install-xcode).
 * (For Android apps) Install [Android Studio](https://developer.android.com/studio?gclid=CjwKCAjwp7eUBhBeEiwAZbHwkRqdhQkk6wroJeWGu0uGWjW9Ue3hFXc4SuB6lwYU4LOZiZ-MQ4p57BoCvF0QAvD_BwE&gclsrc=aw.ds), or install the Android SDK for Command-Line Interface (CLI) only.
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-flutter-client-sdk)
