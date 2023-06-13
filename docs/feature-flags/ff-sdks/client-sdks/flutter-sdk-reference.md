@@ -42,6 +42,9 @@ To use version 1 and earlier versions of this SDK, make sure you:
 
 * Install the [Flutter SDK, version 2.10.4
 * Use Dart SDK 2.7 - to 2.10
+
+## General requirements
+
 * (For iOS apps) Install [Xcode](https://docs.flutter.dev/get-started/install/macos#install-xcode).
 * (For Android apps) Install [Android Studio](https://developer.android.com/studio?gclid=CjwKCAjwp7eUBhBeEiwAZbHwkRqdhQkk6wroJeWGu0uGWjW9Ue3hFXc4SuB6lwYU4LOZiZ-MQ4p57BoCvF0QAvD_BwE&gclsrc=aw.ds), or install the Android SDK for Command-Line Interface (CLI) only.
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-flutter-client-sdk)
