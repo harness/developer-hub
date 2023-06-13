@@ -22,7 +22,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ### Continuous Integration, version 40xx
 
 * (CI-8025)
-* (CI-7817, ZD-39203)
 * The Harness Cloud Linux amd64 image has been updated with new major and minor versions for multiple components. Major version updates are described below. For a complete list of component versions, refer to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#platforms-and-image-specifications). (CI-7537)
 
    :::caution

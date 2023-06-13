@@ -7,10 +7,16 @@ sidebar_position: 2
 Review the notes below to learn about the early access (aka BETA) features in Harness NextGen SaaS across all Harness modules and the Harness Platform. Early access features require a feature flag. For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 
 :::info note
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
+Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 09, 2023
+## Latest - June 15, 2023
+
+### Continuous Integration, version 40xx
+
+The feature flag `CI_OUTPUT_VARIABLES_AS_ENV` makes pipeline variables available as environment variables in steps in Build (`CI`) stages. This means, if you have a stage with three steps, an output variable produced in step one is available as an environment variable for steps two and three without additional exporting or definition. (CI-7817, ZD-39203)
+
+## June 09, 2023
 
 ### Cloud Cost Management, version 79701
 
