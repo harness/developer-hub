@@ -4,21 +4,7 @@ description: Add informative notes about service-related events, deployments, an
 sidebar_position: 70
 ---
 
-You can add annotations about specific events or changes that affect service performance and the error budgets. 
-
-For example, if website response time suddenly increases due to a marketing campaign driving more visitors, you can add an annotation for that period explaining the service health degradation for that period. These notes help you understand why anomalies occur and act as a record for future reference.
-
-Another example can be instances where a specific incident or deployment consumes a significant portion of the budget. For instance, when a critical bug causes a service outage for a few hours, you can add an annotation to indicate that a major incident occurred during that period, explaining the decrease in the budget.
-
-In summary, the annotation feature allows you to add notes or comments about important events or changes in your services. These annotations help provide context, record significant incidents, and enhance the understanding of your system's performance over time.
-
-Annotations bring several benefits to service monitoring and analysis:
-
-- **Improved context**: Annotations provide important context for performance anomalies, helping us understand the reasons behind fluctuations.
-
-- **Efficient analysis**: Annotations serve as a record of significant events, enabling us to analyze past incidents and their impact on service performance.
-
-- **Effective collaboration**: Annotations facilitate communication among team members and stakeholders by creating a shared understanding of important events and changes.
+You can add annotations about specific events or changes that affect service performance and the error budgets.
 
 ## Add an annotation to SLO
 
