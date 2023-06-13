@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 hide_table_of_contents: true
-title: Serverless
+title: Aws-Lambda
 description: Deploy a Serverless app on AWS Lambda using Serverless.com Infrastructure. 
 ---
 
@@ -20,11 +20,21 @@ This tutorial will get you started with Serverless Deployment using Harness Cont
 Verify the following:
 
 1. **Obtain GitHub personal access token with the repo scope**. See the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
-2. **A Kubernetes cluster**. Use your own Kubernetes cluster or we recommend using [K3D](https://k3d.io/v5.5.1/) for installing Harness Delegates and deploying a sample application in a local development environment.
+2. **Docker**. For this tutorial ensure that you have the Docker runtime installed on your host. If not, use one of the following options to install Docker:
+    - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
+    - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
+    - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+    - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
+    - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
     - Check [Delegate system requirements](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-requirements)
 3. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
     - See [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository) for more information on forking a GitHub repository.
-4. **AWS User account with required policy:** Serverless deployments require an AWS User with specific AWS permissions, as described in AWS Credentials from Serverless.com. To create the AWS User, follow the steps mentioned [here](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_users_create.html#id_users_create_console). 
+4. **AWS User account with required policy:** Serverless deployments require an AWS User with specific AWS permissions, as described in AWS Credentials from Serverless.com. To create the AWS User, follow the follwing steps:
+
+    1. Click **Users**, and then **Add user**. Enter a name. Enable **Programmatic access** by clicking the checkbox. Click **Next** to go to the Permissions page. Do one of the following:
+
+    * **Full Admin Access:** click on **Attach existing policies directly**. Search for and select **AdministratorAccess** then click **Next: Review**. Check to make sure everything looks good and click **Create user**.
+    * **Limited Access:** click on **Create policy**. Select the **JSON tab**, and add the JSON from the [Serverless gist: IAMCredentials.json](https://gist.github.com/ServerlessBot/7618156b8671840a539f405dea2704c8#file-iamcredentials-json)
 
 ### **Limitations and Capabilities**
     
@@ -58,52 +68,34 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 </details>
 
 1. Under **Project Setup**, select **Delegates**.
-
-    For this tutorial, we require Custom Harness Delegate image with Serverless installed:
     
   1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
   2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Docker**.
   3. Enter a delegate name, `harness-serverless-delegate`
 
-<h3> Prerequisite </h3>
-
-Ensure that you have the Docker runtime installed on your host. If not, use one of the following options to install Docker:
-
-- [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
-- [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
-- [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
-- [Docker for Debian](https://docs.docker.com/engine/install/debian/)
-- [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
-
-<h3> Install on Docker </h3>
-
-Now you can install the delegate using the following command.
+Now you can install the delegate by using the command that appears on your installation wizard with prefilled info for the environement varables as mentioned in the example below. 
 
 ```bash
 docker run --cpus=1 --memory=2g \
-  -e DELEGATE_NAME=docker-delegate \
+  -e DELEGATE_NAME=harness-serverless-delegate \
   -e NEXT_GEN="true" \
   -e DELEGATE_TYPE="DOCKER" \
-  -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
-  -e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE \
-  -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
-  -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
-  harness-community/custom-delegate:23.05.79310 
+  -e ACCOUNT_ID= YOUR_HARNESS_ACCOUNTID\
+  -e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN\
+  -e LOG_STREAMING_SERVICE_URL=YOUR_MANAGER_HOST_AND_PORT /
+  log-service/ \
+  -e MANAGER_HOST_AND_PORT=YOUR_MANAGER_HOST_AND_PORT \
+  DELEGATE_IMAGE:TAG
 ```
-Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+:::info
 
-| Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
-| ------------------------| -------------------------------------------	|
-| SaaS prod-1  	 		| `https://app.harness.io`       				|
-| SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
-| SaaS prod-3  	 		| `https://app3.harness.io`        				|
-| [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
-| [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
+Replace the `DELEGATE_IMAGE:TAG` variable with the custom delegate image `harnesscommunity/serverless-delegate:latest` with serverless installed on the same.
 
-To use local runner build infrastructure, modify the delegate command using the instructions to install the delegate in [Use local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-delegate)
+For this tutorial, we require Custom Harness Delegate image with Serverless installed.
 
+:::
 
-### Verify delegate connectivity
+#### Verify delegate connectivity
 
 Select **Continue**. After the health checks pass, your delegate is available for you to use. Select **Done** and verify your new delegate is listed.
 
@@ -118,11 +110,19 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 
 </details>
 
-1. Under **Project Setup**, select **Secrets**.
-    1. Select **New Secret**, and then select **Text**.
-    2. Enter the secret name `harness_gitpat`.
-    3. For the secret value, paste the GitHub personal access token you saved earlier.
-    4. Select **Save**.
+### Github Secret
+ Under **Project Setup**, select **Secrets**.
+1. Select **New Secret**, and then select **Text**.
+2. Enter the secret name `harness_gitpat`.
+3. For the secret value, paste the GitHub personal access token you saved earlier.
+4. Select **Save**.
+
+### AWS Secret
+    
+1. Select **New Secret**, and then select **Text**.
+2. Enter the secret name `aws_access_key`.
+3. For the secret value, paste the access token for your  AWS User account, the Harness Delegate uses these credentials to authenticate Harness with AWS at deployment runtime.
+4. Select **Save**.
 
 ### Connectors
 
@@ -134,26 +134,23 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 </details>
 
 1. Create the **GitHub connector**.
-    1. Copy the contents of 1-github-connector.yml
+    1. Copy the contents of [1-github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/pull/5/files#diff-62fa72d1a9a8dbf5291286f754852e861b71ce696f4c76cf5561e426ea77da54)
     2. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     3. Select **Create via YAML Builder** and paste the copied YAML.
     4. Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
-    5. In `projectIdentifier`, replace with the project identifier with yours, which you can you in the browser URL. For example, `Default_Project_1663189008762`.
+    5. In `projectIdentifier`, replace with the project identifier with yours, i.e, `default`. 
     6. Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     7. Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
 
-2. Kubernetes Connector:
+2. AWS Connector:
+    1. Copy the contents of [2-aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/pull/5/files#diff-39fc98f5da075727ab9ed4c0d4c5c82537002693809680777b77fdb3d951e42b)
+    2. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
+    3. Select **Create via YAML Builder** and paste the copied YAML.
+    4. Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **crossAccountRoleArn** with your AWS role's ARN in the YAML, also replace the **accessKey** field with your [aws access key](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html) for the AWS User you created with the required policies.
+    5. In `projectIdentifier`, replace with the project identifier with yours, i.e, `default`. 
+    6. Select **Save Changes** and verify that the new connector named **harness_awsconnector** is successfully created.
+    7. Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful. 
     
-In the Harness web console, under **Project Setup**, click **Connectors**.
-
- Enter the following and click **Save and Continue**.
-        
-* **Name:** `AWS Serverless`.
-* **Credentials:** `AWS Access Key`. Enter the AWS access key for the AWS User you created with the required policies.
-* Enter the secret key as a [Harness Text Secret](/docs/platform/Secrets/add-use-text-secrets). The Harness Delegate uses these credentials to authenticate Harness with AWS at deployment runtime.
-* **Delegates Setup:** `Only use Delegates with all of the following tags`.
-* Select the Delegate you added earlier in this tutorial.
-     The **Connection Test** verifies the connection. Click **Finish**.
 
 ### Environment
 
@@ -166,10 +163,10 @@ Environments define the deployment location, categorized as **Production** or **
 
 1. In your Harness project, select **Environments**.
     1. Select **New Environment**, and then select **YAML**.
-    2. Copy the contents of 3-environment.yml, paste it into the YAML editor, and select **Save**.
+    2. Copy the contents of [3-environment.yml](https://github.com/harness-community/harnesscd-example-apps/pull/5/files#diff-aeb8cdef306b7609e80d4c1bb177f484823d0f8227def8940e5dce872a312c7e), paste it into the YAML editor, and select **Save**.
     3. In your new environment, select the **Infrastructure Definitions** tab.
     4. Select **Infrastructure Definition**, and then select **YAML**.
-    5. Copy the contents of 4-infrastructure-definition.yml and paste it into the YAML editor.
+    5. Copy the contents of [4-infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/pull/5/files#diff-23250d4678f1771d2a57524f728510853f125310610a1ea25d9a1a00e4eaabaa) and paste it into the YAML editor.
     6. Select **Save** and verify that the environment and infrastructure definition are created successfully.
 
 ### Services
@@ -185,7 +182,7 @@ In Harness, services represent what you deploy to environments. You use services
     1. Select **New Service**.
     2. Enter the name `harnessserverless`.
     3. Select **Save**, and then **YAML** (on the **Configuration** tab).
-    4. Select **Edit YAML**, copy the contents of 5-service.yml, and paste the into the YAML editor.
+    4. Select **Edit YAML**, copy the contents of [5-service.yml](https://github.com/harness-community/harnesscd-example-apps/pull/5/files#diff-b0be747257be31d1317c164d86b90288650f785282c17703b6f644445826863a), and paste the into the YAML editor.
     5. Select **Save** and verify that the service **harness_serverless** is successfully created.
 
 ### Pipeline
@@ -206,72 +203,24 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
     6. Select **Edit YAML** and choose any of the following execution strategies. Paste the respective YAML based on your selection.
 
 
-```mdx-code-block
-<TabItem value="Serverless Lambda Deploy">
-```
+### AWS Lambda Deploy using Serverless Infrastructure
 
-Copy the contents of following YAML
+1. Copy the contents of [6-serverless-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/pull/5/files#diff-cf56d82df663e07eeb1e15e3d126bf2315bab21cae6f2de431b4fdeb7ef7bb19).
+2. In your Harness pipeline YAML editor, paste the YAML.
+3. Select **Save**.
+   
+   You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
 
-```YAML
-    pipeline:
-  name: serverless-demo
-  identifier: serverlessdemo
-  projectIdentifier: communityeng
-  orgIdentifier: default
-  tags: {}
-  stages:
-    - stage:
-        name: stage-1
-        identifier: stage1
-        description: ""
-        type: Deployment
-        spec:
-          deploymentType: ServerlessAwsLambda
-          service:
-            serviceRef: Serverless
-          execution:
-            steps:
-              - step:
-                  name: Serverless Lambda Deploy
-                  identifier: ServerlessLambdaDeploy
-                  type: ServerlessAwsLambdaDeploy
-                  timeout: 10m
-                  spec:
-                    commandOptions: ""
-            rollbackSteps:
-              - step:
-                  name: Serverless Lambda Rollback
-                  identifier: ServerlessLambdaRollback
-                  type: ServerlessAwsLambdaRollback
-                  timeout: 10m
-                  spec: {}
-          environment:
-            environmentRef: demoenv
-            deployToAll: false
-            infrastructureDefinitions:
-              - identifier: demoec2
-        tags: {}
-        failureStrategies:
-          - onFailure:
-              errors:
-                - AllErrors
-              action:
-                type: StageRollback
-        variables: []
 
-```
-
-```mdx-code-block
-</TabItem>
-```
+ <docimage path={require('../static/harness-cicd-tutorial/serverless-aws-lambda.png')}/>
 
 10. Finally, it's time to execute the Pipeline. Click on **Run**, and then click **Run Pipeline** to initiate the deployment.
 Finally, it's time to execute your pipeline. 
 
-1.  Select **Run**, and then select **Run Pipeline** to initiate the deployment.
-    - Observe the execution logs as Harness deploys the workload and checks for steady state.
+11.  Select **Run**, and then select **Run Pipeline** to initiate the deployment.
+        * Observe the execution logs as Harness deploys the workload and checks for steady state.
 
 
 ### Congratulations!🎉
 
-You've just learned how to use Harness CD to deploy an application using serverless lambda.
+You've just learned how to use Harness CD to deploy an application on aws lambda using serverless.com infrastructure. 
