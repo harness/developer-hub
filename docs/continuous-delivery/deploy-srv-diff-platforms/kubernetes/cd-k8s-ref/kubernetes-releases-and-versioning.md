@@ -10,15 +10,10 @@ helpdocs_is_published: true
 
 This topic describes how Harness tracks releases and versions in Kubernetes deployments.
 
-Every Harness deployment creates a new release with an incrementally increasing number. Release history is stored in the Kubernetes cluster in a ConfigMap. This ConfigMap is essential for release tracking, versioning, and rollback.
+Every Harness deployment creates a new release with an incrementally increasing number. Release history is stored in the Kubernetes cluster in a ConfigMap or Secret object. This object is essential for release tracking, versioning and rollback.
 
-By default, all managed workloads like Deployment, StatefulSet, DaemonSet and DeploymentConfig are versioned by Harness. Corresponding references in PodSpec are also updated with versions.
-
-:::note
-
-ConfigMap and Secret are not versioned by Harness.
-
-:::
+By default, all ConfigMaps and Secrets are versioned by Harness. The corresponding references for these ConfigMaps and Secrets in other manifest objects are also updated (for example - managed workloads like Deployment, Statefulset and so on).
+Versioning does not change how you use ConfigMaps or Secrets. You do not need to reference these release numbers when using ConfigMaps or Secrets. 
 
 You can see the use of release numbers and versioning in the **Deployments** page details (`Current release number is`, `Previous Successful Release is 4`):
 
@@ -36,11 +31,23 @@ INFO   2019-02-15 10:53:33
 INFO   2019-02-15 10:53:33    Previous Successful Release is 4
 ```
 
-Versioning does not change how you use Secrets. You do not need to reference versions when using Secrets.
 
-For cases where versioning is not required, the manifest entered in the Harness Service **Manifests** section should be annotated with `harness.io/skip-versioning: "true"`.
+For cases where versioning is not required, it can be skipped in these three ways: 
+- The manifest provided in the Harness Service **Manifests** section can be annotated with `harness.io/skip-versioning: "true"`
+- The checkbox `Skip Versioning` present within the `Advanced` settings in the Harness Service **Manifests** section (**Manifest Configuration** page) can be set
 
-For example. you might want to skip versioning is for an ImagePullSecret because it never changes, or for TLS certs if they are referred in a Kubernetes container cmd args.
+:::note
+Versioning is not done when declarative rollback is enabled.
+:::
 
+For example. you might want to skip versioning for an ImagePullSecret because it never changes, or for TLS certs if they are referred in a Kubernetes container cmd args.
+
+
+### Release Name
 Harness also uses a release name for tracking releases. You can supply a release name in a stage's Infrastructure **Release Name** setting.
+This release name is used to create the corresponding harness release ConfigMap or Secret. Thus, the provided release name should at least be a valid [DNS subdomain name](https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#dns-subdomain-names).
+
+:::note
+When declarative rollback is enabled, the corresponding secret name is of the format `harness.release.<release-name>.<release-number>`.
+:::
 
