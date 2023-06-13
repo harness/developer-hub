@@ -1734,6 +1734,12 @@ module.exports = {
 
 
     // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
+    
+    {
+      from: "/docs/continuous-delivery/integrations/cd-integrations",
+      to: "/docs/continuous-delivery/cd-integrations",
+    },
+
     {
       from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart",
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart",

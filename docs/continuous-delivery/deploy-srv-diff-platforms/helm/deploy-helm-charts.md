@@ -1,7 +1,7 @@
 ---
 title: Deploy Helm charts
 description: This topic describes how to deploy Helm charts from a remote Git repository, HTTP Helm Repository, or cloud storage service.
-sidebar_position: 1
+sidebar_position: 2
 helpdocs_topic_id: 7owpxsaqar
 helpdocs_category_id: xot6u3ge9d
 helpdocs_is_private: false
@@ -117,14 +117,14 @@ Adding a Helm chart is a simple process of connecting Harness to the Git or HTTP
 3. In **Manifests**, click **Add Manifest**.
 4. In **Specify Manifest Type**, select **Helm Chart**, and click **Continue**.
    
-   ![](./static/deploy-helm-charts-02.png)
+   ![](./cd-helm-category/static/deploy-helm-charts-02.png)
 5. In **Specify Helm Chart Store**, select the type of repo or or cloud storage service (Google Cloud Storage, AWS S3) you're using.
 
 For the steps and settings of each option, see the [Connect to an Artifact Repo](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo/) How-tos.
 
 If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](https://developer.harness.io/docs/category/cloud-platform-connectors/).
 
-You can also use a local Helm chart if you are deploying the same Helm chart and version to many clusters/namespaces in parallel. For information, see [Use a local Helm Chart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/use-a-local-helm-chart). For all of the Helm Chart Store types (Git, GitHub, HTTP Helm, OCI, etc), you will need to provide the following Helm info:
+You can also use a local Helm chart if you are deploying the same Helm chart and version to many clusters/namespaces in parallel. For information, see [Use a local Helm Chart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/use-a-local-helm-chart). For all of the Helm Chart Store types (Git, GitHub, HTTP Helm, OCI, etc), you will need to provide the following Helm info:
 
 
 - **Manifest Identifier**: Enter a name that identifies this Helm chart. It doesn't have to be the chart name. It can be the name of the service you are deploying or another name. Ex: `helm_chart`.
@@ -154,7 +154,7 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 
   For example, let's say you have 3 files: the default values.yaml, values2.yaml added next, and values3.yaml added last. 
   
-  ![](static/deploy-helm-charts-05.png)
+  ![](cd-helm-category/static/deploy-helm-charts-05.png)
   
   All files contain the same key:value pair. 
 
@@ -170,36 +170,93 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 
 Here's an example:
 
-![](./static/deploy-helm-charts-03.png)
+![](./cd-helm-category/static/deploy-helm-charts-03.png)
 
 If you haven't set up a Harness delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
 
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
 
-![](./static/deploy-helm-charts-04.png)
+![](./cd-helm-category/static/deploy-helm-charts-04.png)
 
-### Using subcharts
+## Using subcharts
 
-You can specify a path to Helm charts within the Helm repository and Harness will fetch the Helm chart and its subordinate charts within that folder.
+:::note
+This feature is currently behind the feature flag, `NG_CDS_HELM_SUB_CHARTS`. Contact [Harness Support](mailto:support@harness.io) to enable this feature. 
+:::
 
-<docimage path={require('./static/70e9b1aa646408c07a6fef1ca8b6e0dfa2eef53e5f7eea3e88ac28b5a4d3e1c4.png')} width="60%" height="60%" title="Click to view full size image" />  
+Helm charts can have dependencies called subcharts. You can define subcharts in your service YAML. Helm downloads these dependencies from exisiting or seperate repositories. Harness fetches the defined subcharts during pipeline execution.
 
-When you deploy, the logs will include all subcharts, like this:
+### Important notes
 
-```sh
-  Successfully fetched following files:
-  - Chart.yaml
-  - values.yaml
-  - charts/first-child/Chart.yaml
-  - charts/first-child/values.yaml
-  - charts/first-child/templates/deployment.yaml
-  - charts/shared-lib/Chart.yaml
-  - charts/shared-lib/templates/_service.yaml
-  - charts/shared-lib/templates/_helpers.tpl
-  - charts/shared-lib/templates/_deployment.yaml
-  - templates/_helpers.tpl
-  - README.md
+* Helm subcharts are supported for the following deployment types only.
+    - Kubernetes deployments using canary, blue/green, and rolling deployment strategies
+    - Native Helm deployments using basic strategy
+* Harness Continuous Delivery (CD) captures the parent chart as the deployed instance. Harness Continuous Verification (CV) detects and verifies the parent chart as the deployed instance. CV cannot simultaneously verify all subcharts as deployed instances. 
+
+### Service configuration
+
+To configure Helm subcharts, you must define the subchart name and path in your service YAML. 
+
+To resolve dependencies, you must configure the Helm command `Template` with the flag, `--dependency-update`. This allows Harness to fetch your dependencies defined in `Chart.yaml`.
+
+:::important
+Helm charts store their dependencies in the `charts/` folder. Make sure that all subcharts are located within the `charts/` folder inside your parent chart. Look at the sample [Harness respository](https://github.com/thisrohangupta/custom-remote-test-repo/tree/main/parent-chart) for structural guidance.
+
+Here is a sample directory: 
+
 ```
+charts/
+	- subchart1/
+		 - templates/
+			 - app.yaml
+		 - Chart.yaml
+		 - values.yaml
+```
+:::
+
+Here is a sample service YAML where a subchart is defined.
+
+```
+service:
+  name: K8sHelmSubChart
+  identifier: K8sHelmSubChart
+  serviceDefinition:
+    type: Kubernetes
+    spec:
+      manifests:
+        - manifest:
+            identifier: m1
+            type: HelmChart
+            spec:
+              store:
+                type: Github
+                spec:
+                  connectorRef: gitHubAchyuth
+                  gitFetchType: Branch
+                  folderPath: parent-chart
+                  branch: main
+              subChartName: first-child
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+              helmVersion: V3
+              commandFlags:
+                - commandType: Template
+                  flag: "--dependency-update"
+  gitOpsEnabled: false
+
+```
+
+### Pipeline execution of a Helm chart with subcharts
+
+During pipeline execution, Harness fetches the subcharts and dependencies for the deployment based on the values in the service YAML. 
+
+You can see the subchart and the list of files fetched in the fetch section of the pipeline execution log.
+
+![](./static/helm-subchart-fetch.png)
+
+You can see the `template` command with the `--dependency-update` flag running in the prepare section of the pipeline execution.
+
+![](./static/helm-dependency.png)
 
 ## Reference the artifact
 
@@ -224,7 +281,7 @@ If you use multiple files, priority is given from the last file to the first fil
 
 For example, let's say you have 3 files: the default values.yaml, values2.yaml added next, and values3.yaml added last.
 
-![](./static/deploy-helm-charts-05.png)
+![](./cd-helm-category/static/deploy-helm-charts-05.png)
 
 All files contain the same key:value pair. The values3.yaml key:value pair overrides the key:value pair of values2.yaml and values.yaml files.
 
@@ -240,7 +297,7 @@ Let's look at an example.
 
 Let's say there is a repo with three values YAML files, dev.yaml, qa.yaml. prod.yaml. In the **Values YAML** setting for the values file, you use the `<+env.name>` expression.
 
-![](./static/deploy-helm-charts-06.png)
+![](./cd-helm-category/static/deploy-helm-charts-06.png)
 
 Next, in the environment setting, you add three environments, one for each YAML file name.
 
@@ -511,7 +568,7 @@ https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
 
 3. Run the `--dependency-update` command flag in the manifest configuration to update dependencies as shown in the image below:
    
-   ![](./static/dependency-update.png)
+   ![](./cd-helm-category/static/dependency-update.png)
 
 ### Use case: Use secrets to encrypt and decrypt files
 
@@ -535,7 +592,7 @@ https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
    
    Alternatively, run the `--dependency-update -f secrets.yaml` command flag in the manifest configuration to resolve the values as shown in the image below:
 
-   ![](./static/dependency-update-secrets-yaml.png)
+   ![](./cd-helm-category/static/dependency-update-secrets-yaml.png)
 
 ## Uninstall command flag
 

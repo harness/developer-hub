@@ -1,6 +1,6 @@
 ---
-title: Supported CD features and integrations
-description: Select the tools and platforms for deploying your apps. 
+title: What's supported
+description: Supported CD features and integrations. 
 sidebar_position: 1
 ---
 
