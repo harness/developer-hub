@@ -6,7 +6,7 @@ description: How to install delegates with custom certificates.
 
 This topic explains how to install delegates with custom certificates. There are two aspects of custom certificates:
 1. A certificate for the delegate JAVA process, which makes connections to external systems.
-2. A certificate for the OS itself so if another process, for example, a shell script, is spawned, then it has access to custom certificates.
+2. A certificate for the OS itself so if another process such as a shell script is spawned, then it has access to custom certificates.
 
 In this topic we will do the following:
 
