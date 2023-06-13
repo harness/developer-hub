@@ -1327,6 +1327,8 @@ If the step (or stepGroup) does not have the looping strategy configured, the ex
 
 Note: The identifierPostFix is a postfix added to the identifiers of nodes (stage/step/stepGroup) during execution when the node is a child of the looping strategy. This ensures that all children of the looping strategy have unique identifiers.
 
+Example: During the execution of a stage with the identifier `build_and_upload` with looping strategy `Matrix` multiple child stages will be created from the `build_and_upload` stage. These child stages will have identifiers with the postfix appended, such as `build_and_upload_0` or `build_and_upload_docker`. In this scenario, using the expression `<+strategy.identifierPostFix>` will result in value `_0` or `_docker`.
+
 ### <+step.identifierPostFix>
 
 This expression returns the identifierPostFix of the current step when the step is a child of a looping strategy.
