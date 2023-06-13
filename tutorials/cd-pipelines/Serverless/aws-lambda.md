@@ -1,11 +1,16 @@
 ---
 sidebar_position: 1
 hide_table_of_contents: true
-title: Aws-Lambda
-description: Deploy a Serverless app on AWS Lambda using Serverless.com Infrastructure. 
+title: AWS Lambda
+description: Deploy a Serverless app on AWS Lambda.
 ---
 
-# Deploy a Serverless app on AWS Lambda using Serverless.com Infrastructure.
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+# Deploy a Serverless app on AWS Lambda 
 
 This tutorial will get you started with Serverless Deployment using Harness Continuous Delivery (CD). We will guide you through deploying a sample application using Harness pipeline. 
 
@@ -14,6 +19,11 @@ This tutorial will get you started with Serverless Deployment using Harness Cont
 [Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=tutorials-cd-kubernetes-manifest).
 
 :::
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Serverless.com Infrastructure">
+```
 
 ## Before you begin
 
@@ -90,8 +100,6 @@ docker run --cpus=1 --memory=2g \
 :::info
 
 Replace the `DELEGATE_IMAGE:TAG` variable with the custom delegate image `harnesscommunity/serverless-delegate:latest` with serverless installed on the same.
-
-For this tutorial, we require Custom Harness Delegate image with Serverless installed.
 
 :::
 
@@ -213,6 +221,11 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 
  <docimage path={require('../static/harness-cicd-tutorial/serverless-aws-lambda.png')}/>
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 10. Finally, it's time to execute the Pipeline. Click on **Run**, and then click **Run Pipeline** to initiate the deployment.
 Finally, it's time to execute your pipeline. 
