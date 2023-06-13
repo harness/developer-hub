@@ -4,6 +4,10 @@ description: Image and repository scans with Grype
 sidebar_position: 150
 ---
 
+:::note
+Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 You can scan container images and repositories using [Fossa](https://www.fossa.com), a scanner that detects license violations, compliance alerts, and security vulnerabilities in open-source projects. 
 
 
