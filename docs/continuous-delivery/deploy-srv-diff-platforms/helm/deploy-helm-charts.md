@@ -154,7 +154,7 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 
   For example, let's say you have 3 files: the default values.yaml, values2.yaml added next, and values3.yaml added last. 
   
-  ![](cd-helm-category/static/deploy-helm-charts-05.png)
+  ![]./static/deploy-helm-charts-05.png)
   
   All files contain the same key:value pair. 
 
@@ -281,7 +281,7 @@ If you use multiple files, priority is given from the last file to the first fil
 
 For example, let's say you have 3 files: the default values.yaml, values2.yaml added next, and values3.yaml added last.
 
-![](./static/deploy-helm-charts-05.png)
+![Alt text](./static/deploy-helm-charts-05.png)
 
 All files contain the same key:value pair. The values3.yaml key:value pair overrides the key:value pair of values2.yaml and values.yaml files.
 
