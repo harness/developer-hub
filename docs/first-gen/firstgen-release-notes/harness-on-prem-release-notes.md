@@ -78,9 +78,9 @@ This release includes the following module and component versions.
 
 #### Harness Delegate
 
-- Delegate configurations downloads failed for Helm installations. The `DELEGATE_METADATA_URL` pulled the latest version during download. The latest version variable is no longer used.
+- Shell delegates did not upgrade automatically. Delegate URLs were not included in installation scripts. (PL-38304, DEL-6276)
 
-   This issue is fixed with a code update. 
+   This issue is fixed with a code enhancement.
 
 - Updated the error message for failed task execution to include the delegate host name or ID. (PL-38329, DEL-6187)
 
