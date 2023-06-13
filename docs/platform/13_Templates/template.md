@@ -216,7 +216,6 @@ template:
                               skipDryRun: false  
                           timeout: 10m  
                 rollbackSteps: []  
-            serviceDependencies: []  
         failureStrategies:  
             - onFailure:  
                   errors:  
