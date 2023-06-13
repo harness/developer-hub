@@ -221,6 +221,8 @@ This release includes the following Harness module and component versions.
 
 - Added a CORS filter for NG Manager, pipeline, and template services. (PL-32604)
 
+- The Bitnami PostgreSQL image is upgraded to 14.7.0-debian-11-r28 for Helm installations. (PL-32690)
+
 ### Delegate
 
 - Added APIs to enable auto upgrading with custom delegate images. (PL-37871, DEL-6183)
