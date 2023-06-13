@@ -32,7 +32,7 @@ INFO   2019-02-15 10:53:33    Previous Successful Release is 4
 ```
 
 
-For cases where versioning is not required, it can be skipped in these three ways: 
+For cases where versioning is not required, it can be skipped in these two ways: 
 - The manifest provided in the Harness Service **Manifests** section can be annotated with `harness.io/skip-versioning: "true"`
 - The checkbox `Skip Versioning` present within the `Advanced` settings in the Harness Service **Manifests** section (**Manifest Configuration** page) can be set
 
