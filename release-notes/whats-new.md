@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-06-09T10:00
+date: 2023-06-15T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -17,8 +17,16 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 09, 2023
-  
+## Latest - June 15, 2023
+
+### Continuous Integration, version 40xx
+
+* (CI-8025)
+* (CI-7817, ZD-39203)
+* (CI-7537)
+
+## June 09, 2023
+
 ### Continuous Error Tracking, version et-service 5.23.0
 
 - Now, when you create a Jira ticket for an event, CET prompts you to complete any mandatory fields that do not have a default value. (CET-1231)
@@ -164,7 +172,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   Notifications are sent to the destinations set up in the user group(s) listed in the Approval step's **Approvers** setting. This includes email, Slack, PagerDuty, and MS Teams.
 
-  ![picture 87](static/fa61423c00604c9a2d1dcf3cd2e8c040d71992791e34abf983eb5befe8640159.png)
+  <docimage path={require('./static/fa61423c00604c9a2d1dcf3cd2e8c040d71992791e34abf983eb5befe8640159.png')} width="60%" height="60%" title="Click to view full size image" />
 
   For information on setting up notifications for user groups, go to [Add and manage user groups](https://developer.harness.io/docs/platform/User-Management/add-user-groups).
 
@@ -179,6 +187,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
    This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
+
+## Previous releases
 
 <details>
 <summary>2023 releases</summary>

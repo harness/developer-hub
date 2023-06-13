@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-06-12T10:00:10
+date: 2023-06-15T10:00:10
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -15,14 +15,16 @@ Review the notes below for details about recent changes to Harness Continuous In
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 12, 2023, version 4006
+## Latest - June 15, 2023, version 40xx
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-This release does not include new features.
+* (CI-8025)
+* (CI-7817, ZD-39203)
+* (CI-7537)
 
 ```mdx-code-block
   </TabItem>
@@ -36,7 +38,7 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-Fixed an issue where Git status updates failed if the Azure repository/project name had white space. Harness now decodes white spaces in URLs so the Git status update request can succeed. The [Harness Delegate version 79503 or later](/release-notes/delegate) is required for this fix. (CI-8105, ZD-44679)
+* 
 
 ```mdx-code-block
   </TabItem>
@@ -47,6 +49,20 @@ Fixed an issue where Git status updates failed if the Azure repository/project n
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 12, 2023, version 4006
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+Fixed an issue where Git status updates failed if the Azure repository/project name had white space. Harness now decodes white spaces in URLs so the Git status update request can succeed. The [Harness Delegate version 79503 or later](/release-notes/delegate) is required for this fix. (CI-8105, ZD-44679)
 
 #### June 01, 2023, version 3903
 
