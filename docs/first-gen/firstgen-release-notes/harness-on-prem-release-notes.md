@@ -38,10 +38,6 @@ This release includes the following module and component versions.
 
 - Updated legacy delegate images `kubectl` version to 1.25.8. (PL-38281, DEL-6087)
 
-#### Continuous Delivery & GitOps
-
-- Release notes candidate set to Yes and No. (CDS-59026)
-
 ### Early access
 #### Continuous Delivery & GitOps
 

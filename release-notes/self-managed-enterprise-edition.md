@@ -36,7 +36,7 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.347.19 |
 | LE NG | 67808 |
 
-### Self-Managed Enterprise Edition
+#### Self-Managed Enterprise Edition
 
 - Harness updated the following images to use versioned tags: (SMP-1347)
 
@@ -47,7 +47,7 @@ This release includes the following Harness module and component versions.
 
 - Redis images and the GitOps Redis agent are upgraded to 6.2.12-alpine. (SMP-1402)
 
-### Continuous Delivery & GitOps
+#### Continuous Delivery & GitOps
 
 - You can now trigger a pipeline when there are changes to an artifact in Bamboo. (CDS-51742)
   
@@ -198,7 +198,7 @@ This release includes the following Harness module and component versions.
   
   `Warning: Abort command will not clean up any resources created during execution so far. Please mark the stage as failed if you would like to clean up and revert back to the old state.`
 
-### Continuous Integration
+#### Continuous Integration
 
 - The following features are now generally available. These were enabled by default for all users, but they were behind features flags until they were deemed stable. (CI-6537)
   - `CI_LE_STATUS_REST_ENABLED`: All CI steps send status updates to the [Harness Manager](/docs/getting-started/harness-platform-architecture#harness-platform-components) directly by HTTP rather than through a Delegate.
@@ -214,7 +214,7 @@ This release includes the following Harness module and component versions.
 
 - The CI Getting Started workflow leads you through creating an SCM connector and a pipeline. This workflow has been improved to generate a pipeline based on the repository you select. (CI-7603)
 
-### Harness Platform
+#### Harness Platform
 
 - You can now configure session time-out in the UI. (PL-32258)
   In case of inactivity, Harness logs users out of their accounts after the configured session timeout.
@@ -223,7 +223,7 @@ This release includes the following Harness module and component versions.
 
 - The Bitnami PostgreSQL image is upgraded to 14.7.0-debian-11-r28 for Helm installations. (PL-32690)
 
-### Delegate
+#### Harness Delegate
 
 - Added APIs to enable auto upgrading with custom delegate images. (PL-37871, DEL-6183)
 
@@ -231,9 +231,9 @@ This release includes the following Harness module and component versions.
 
    `overrideDelegateImageTag` changes the tag the upgrader uses to upgrade delegates when auto upgrade is on.
 
-- Removed the legacy delegate installation UI. (PL-37882, )
+- Removed the legacy delegate installation UI. (PL-37882, DEL-6300)
 
-### Service Reliability Management
+#### Service Reliability Management
 
 - Filters applied to the monitored services list on the **Monitored Services** page will get reset when you switch to a different project. (SRM-14383)
 
@@ -247,13 +247,13 @@ This release includes the following Harness module and component versions.
   </TabItem>
   <TabItem value="Early access">
 ```
-### Harness Delegate
+#### Harness Delegate
 
 - Added the ability to use delegate credentials to access the Google Cloud Platform Secret Manager. (PL-31248)
 
    This functionality is behind a feature flag,`PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM`.
 
-### Continuous Delivery & GitOps
+##### Continuous Delivery & GitOps
 
 - ServiceNow custom table support. (CDS-55046)
   
@@ -356,7 +356,7 @@ This release includes the following Harness module and component versions.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
-### Self-Managed Enterprise Edition
+#### Self-Managed Enterprise Edition
 
 - Attempts the sign up URL failed. (SMP-1186)
 
@@ -391,7 +391,7 @@ This release includes the following Harness module and component versions.
 
    This issue is fixed with a code enhancement. The delegate installation command now includes an override `--set deployMode="KUBERNETES_ONPREM"`.
 
-### Continuous Integration
+#### Continuous Integration
 
 - Fixed a minor UI issue where selecting the **Commits** tab on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds) caused the navigation menu to expand. (CI-6274)
 
@@ -407,7 +407,7 @@ This release includes the following Harness module and component versions.
 
 - Fixed an issue where the [SSL Verify setting](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline#ssl-verify) in the **Git Clone** step always treated the value as false. (CI-7721, ZD-42483)
 
-### Continuous Delivery & GitOps
+#### Continuous Delivery & GitOps
 
 - Selecting the edit button on the YAML section of the **Triggers** page took users back to the visual section of the page. (CDS-50426)
 
@@ -604,7 +604,7 @@ This release includes the following Harness module and component versions.
 
 - Resolved an issue that converted runtime fields with default values to fixed values when viewing the template-linked parts of a pipeline like steps, stage, and so on. (CDS-67999, ZD-42765)
 
-### Harness Platform
+#### Harness Platform
 
 - It is possible to delete an encrypted text or file secret, even if it is referenced by another secret. (PL-31037)
   
@@ -634,7 +634,7 @@ This release includes the following Harness module and component versions.
   
   A code enhancement fixed this issue.
 
-### Feature Flags
+#### Feature Flags
 
 - Fixed an issue where the metrics loading spinner was hanging indefinitely. (FFM-6735)
 
@@ -644,11 +644,11 @@ This release includes the following Harness module and component versions.
 
 * Fixed an issue in the onboarding flow where the flag validation did not work as expected. (FFM-7534)
 
-### Security Testing Orchestration
+#### Security Testing Orchestration
 
 - Fixed a UI issue to ensure that all input fields related to STO security steps appear the Template Studio view. (STO-5746, ZD-42167)
 
-### Service Reliability Management
+#### Service Reliability Management
 
 - When switched to a different project while a template was open, the health sources from the previous template would remain visible in the template, even though they were not part of the new project. (SRM-12236)  
   
