@@ -36,7 +36,7 @@ The current version of this SDK is **2.0.0.**
 To use version 2 and greater of this SDK, make sure you:
 
 * Install the [Flutter SDK, version 2.10.4 or higher](https://docs.flutter.dev/get-started/install).
-* Minimum Dart SDK is 2.12
+* Use Dart SDK 2.12 and later
 
 To use version 1 and earlier versions of this SDK, make sure you:
 
