@@ -14,7 +14,7 @@ For Harness SaaS release notes, see [Harness SaaS Release Notes](https://develop
 
 Release notes are displayed with the most recent release first.
 
-### June 13, 2023, version 79230
+## June 13, 2023, version 79230
 
 Delegate: 78924
 
@@ -84,7 +84,7 @@ This release includes the following module and component versions.
 
 - Updated the error message for failed task execution to include the delegate host name or ID. (PL-38329, DEL-6187)
 
-### April 26, 2023, version 78926
+## April 26, 2023, version 78926
 
 Delegate: 78904
 
