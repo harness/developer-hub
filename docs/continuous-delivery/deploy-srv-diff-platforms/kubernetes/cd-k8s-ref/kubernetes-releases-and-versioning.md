@@ -36,7 +36,7 @@ In some cases, you might want to skip versioning. For example, skip versioning f
 - TLS certs if they are referred in a Kubernetes container command or arguments.
 
 For cases where versioning is not required, it can be skipped by using these two ways: 
-- Annotate the manifest provided in the Harness Service **Manifests** section with `harness.io/skip-versioning: "true"`.
+- Annotate the manifest provided in the Harness service's **Manifests** section with `harness.io/skip-versioning: "true"`.
 - In the Harness service's **Manifest Configuration** page, select **Manifests** > **Advanced**, and then select the **Skip Versioning** checkbox.
 
 :::note info
