@@ -21,9 +21,7 @@ import PartialExample from '/docs/continuous-delivery/shared/cd-integrations-sup
 
 ## Continuous Integration (CI)
 
-```mdx-code-block
 import Ci from '/docs/continuous-integration/shared/ci-supported-platforms.md';
-```
 
 <Ci />
 
