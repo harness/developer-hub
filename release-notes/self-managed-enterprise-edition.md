@@ -45,6 +45,8 @@ This release includes the following Harness module and component versions.
 
 - The `PRUNE_KUBERNETES_RESOURCES` feature flag is now disabled by default. (SMP-1359)
 
+- Redis images and the GitOps Redis agent are upgraded to 6.2.12-alpine. (SMP-1402)
+
 ### Continuous Delivery & GitOps
 
 - You can now trigger a pipeline when there are changes to an artifact in Bamboo. (CDS-51742)
