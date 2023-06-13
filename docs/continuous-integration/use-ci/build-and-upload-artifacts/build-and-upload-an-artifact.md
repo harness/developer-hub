@@ -334,7 +334,7 @@ pipeline:
 
 ## YAML example
 
-Here's a YAML example for a CI pipeline that has a **Build** stage with a **Build and Push** step:
+Here's a YAML example of a CI pipeline that has a **Build** stage with a **Build and Push** step:
 
 ```yaml
 pipeline:
