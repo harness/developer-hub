@@ -334,7 +334,7 @@ pipeline:
 
 ## YAML example
 
-Here's a YAML example for a CI pipeline that has a **Build** stage with a **Build and Push** step:
+Here's a YAML example of a CI pipeline that has a **Build** stage with a **Build and Push** step:
 
 ```yaml
 pipeline:
@@ -369,7 +369,6 @@ pipeline:
             spec:
               connectorRef: account.cidelegate
               namespace: harness-delegate-uat
-          serviceDependencies: []
   projectIdentifier: CI_Quickstart
   orgIdentifier: default
 ```

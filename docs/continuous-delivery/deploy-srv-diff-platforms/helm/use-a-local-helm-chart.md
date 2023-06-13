@@ -24,7 +24,7 @@ New to Helm deployments in Harness? Review [Helm Chart Deployment Tutorial](/doc
    The delegate host must have Helm installed on it. Harness installs Helm with the delegate automatically, so you don't need to do anything unless you have removed Helm for the delegate host.  
    For information on the Helm binaries installed by default, see [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).  
    You can install the chart manually on the host, but it is easier to install it using the `INIT_SCRIPT` environment variable in the delegate YAML.  
-2. Add the `INIT_SCRIPT` environment variable to the StatefulSet (legacy delegate) or deployment (immutable delegate) object in the delegate YAML, and add your Helm chart installation script. 
+2. Add the `INIT_SCRIPT` environment variable to the StatefulSet (legacy delegate) or deployment (delegate with an immutable image type) object in the delegate YAML, and add your Helm chart installation script. 
 
    For information on using `INIT_SCRIPT`, go to [Build custom delegate images with third-party tools](https://developer.harness.io/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
@@ -34,7 +34,7 @@ New to Helm deployments in Harness? Review [Helm Chart Deployment Tutorial](/doc
 
 You need to provide the path to the local chart in the delegate YAML using the `HELM_LOCAL_REPOSITORY` environment variable.
 
-1. Add the `HELM_LOCAL_REPOSITORY` environment variable to the StatefulSet (legacy delegate) or deployment (immutable delegate) object in the delegate YAML.
+1. Add the `HELM_LOCAL_REPOSITORY` environment variable to the StatefulSet (legacy delegate) or deployment (delegate with an immutable image type) object in the delegate YAML.
 
 The format should be:
 
