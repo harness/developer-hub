@@ -223,7 +223,7 @@ mountPath: /opt/harness-et-agent
 ..
 env:
 - name: JAVA_TOOL_OPTIONS
-value: "-agentpath=/opt/harness-et-agent/lib/libETAgent.so"
+value: "-agentpath:/opt/harness-et-agent/lib/libETAgent.so"
 - name: ET_COLLECTOR_URL
 value: "https://collector.et.harness.io/prod1/"
 - name: ET_APPLICATION_NAME
