@@ -117,7 +117,7 @@ Adding a Helm chart is a simple process of connecting Harness to the Git or HTTP
 3. In **Manifests**, click **Add Manifest**.
 4. In **Specify Manifest Type**, select **Helm Chart**, and click **Continue**.
    
-   ![](./cd-helm-category/static/deploy-helm-charts-02.png)
+   ![](./static/deploy-helm-charts-02.png)
 5. In **Specify Helm Chart Store**, select the type of repo or or cloud storage service (Google Cloud Storage, AWS S3) you're using.
 
 For the steps and settings of each option, see the [Connect to an Artifact Repo](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo/) How-tos.
@@ -170,13 +170,13 @@ You can also use a local Helm chart if you are deploying the same Helm chart and
 
 Here's an example:
 
-![](./cd-helm-category/static/deploy-helm-charts-03.png)
+![](./static/deploy-helm-charts-03.png)
 
 If you haven't set up a Harness delegate, you can add one as part of the connector setup. This process is described in [Helm CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
 
 Once your Helm chart is added, it appears in the **Manifests** section. For example:
 
-![](./cd-helm-category/static/deploy-helm-charts-04.png)
+![](./static/deploy-helm-charts-04.png)
 
 ## Using subcharts
 
@@ -281,7 +281,7 @@ If you use multiple files, priority is given from the last file to the first fil
 
 For example, let's say you have 3 files: the default values.yaml, values2.yaml added next, and values3.yaml added last.
 
-![](./cd-helm-category/static/deploy-helm-charts-05.png)
+![](./static/deploy-helm-charts-05.png)
 
 All files contain the same key:value pair. The values3.yaml key:value pair overrides the key:value pair of values2.yaml and values.yaml files.
 
@@ -297,7 +297,7 @@ Let's look at an example.
 
 Let's say there is a repo with three values YAML files, dev.yaml, qa.yaml. prod.yaml. In the **Values YAML** setting for the values file, you use the `<+env.name>` expression.
 
-![](./cd-helm-category/static/deploy-helm-charts-06.png)
+![](./static/deploy-helm-charts-06.png)
 
 Next, in the environment setting, you add three environments, one for each YAML file name.
 
@@ -568,7 +568,7 @@ https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
 
 3. Run the `--dependency-update` command flag in the manifest configuration to update dependencies as shown in the image below:
    
-   ![](./cd-helm-category/static/dependency-update.png)
+   ![](./static/dependency-update.png)
 
 ### Use case: Use secrets to encrypt and decrypt files
 
@@ -592,7 +592,7 @@ https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
    
    Alternatively, run the `--dependency-update -f secrets.yaml` command flag in the manifest configuration to resolve the values as shown in the image below:
 
-   ![](./cd-helm-category/static/dependency-update-secrets-yaml.png)
+   ![](./static/dependency-update-secrets-yaml.png)
 
 ## Uninstall command flag
 

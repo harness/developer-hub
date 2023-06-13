@@ -65,7 +65,7 @@ Chart fetching and deployment is performed by the same step. For example, in a K
 
 You can select a delegate for a step to use in the step's **Advanced** settings, **Delegate Selector**.
 
-![](./cd-helm-category/static/use-a-local-helm-chart-00.png)
+![](./static/use-a-local-helm-chart-00.png)
 
 Ensure that the delegate(s) selected here is the same delegate(s) with the local Helm chart install and the delegate YAML updated accordingly.
 
@@ -89,7 +89,7 @@ If you use a local Helm chart, Harness does not clean up the downloaded files po
 
 There is a slight difference in the logs for local and remote Helm charts. For example, if Harness doesn't find the chart in the local delegate disk at the time of first deployment, the logs include `Did not find the chart and version in local repo`:
 
-![](./cd-helm-category/static/use-a-local-helm-chart-01.png)
+![](./static/use-a-local-helm-chart-01.png)
 
 When Harness finds the charts it displays the message `Found the chart at local repo at path`.
 
