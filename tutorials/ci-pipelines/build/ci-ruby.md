@@ -73,14 +73,6 @@ Run [Bundler](https://bundler.io/guides/getting_started.html) commands in a [Run
 </Tabs>
 ```
 
-:::tip
-
-In addition to Run steps, [Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins) are also useful for installing dependencies.
-
-You can use [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) to run dependent services that are needed by multiple steps in the same stage.
-
-:::
-
 ## Cache dependencies
 
 ```mdx-code-block
@@ -151,7 +143,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
 </Tabs>
 ```
 
-## Run tests
+## Build and run tests
 
 Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/) to [run tests in Harness CI](/docs/continuous-integration/use-ci/set-up-test-intelligence/run-tests-in-ci).
 
