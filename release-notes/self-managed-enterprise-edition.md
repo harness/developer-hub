@@ -14,7 +14,7 @@ import delete_project from './static/delete-project.png'
 ```
 Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes).
 
-## Latest - June 13, 2023, patch release for version 79230
+## Latest - June 13, 2023, version 79230
 
 ```mdx-code-block
 <Tabs>
@@ -216,6 +216,8 @@ This release includes the following Harness module and component versions.
 
 - You can now configure session time-out in the UI. (PL-32258)
   In case of inactivity, Harness logs users out of their accounts after the configured session timeout.
+
+- Added a CORS filter for NG Manager, pipeline, and template services. (PL-32604)
 
 ### Delegate
 
