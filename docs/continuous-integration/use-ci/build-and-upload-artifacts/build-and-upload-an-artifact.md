@@ -369,7 +369,6 @@ pipeline:
             spec:
               connectorRef: account.cidelegate
               namespace: harness-delegate-uat
-          serviceDependencies: []
   projectIdentifier: CI_Quickstart
   orgIdentifier: default
 ```
