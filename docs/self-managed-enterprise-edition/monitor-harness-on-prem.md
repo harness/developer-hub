@@ -138,7 +138,7 @@ To use Istio, create a VirtualService for Prometheus.
         gateways:
           - istio-system/public
         hosts:
-          - smp-istio.test.harness.io
+          - istio.test.com
         http:
           - match:
              - uri:
