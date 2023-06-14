@@ -22,13 +22,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-### License usage count includes commit authors for manual builds (CI-8025)
-
-For [license usage](/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt#license-usage) purposes, an _active developer_ is defined as an active codebase committer observed in the builds managed by Harness CI. In keeping with this definition, commit authors are now counted as active developers for builds started manually (by selecting **Run** in the Harness UI), regardless of the current logged-in user. Previously, manual builds recorded the logged-in user as the active developer instead of the commit author.
-
-### Harness Cloud Linux amd64 image update (CI-7537)
-
-The Harness Cloud Linux amd64 image has new major and minor versions for multiple components. Major version upgrades are described below. For a complete list of component versions, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#platforms-and-image-specifications).
+The Harness Cloud Linux amd64 image has new major and minor versions for multiple components. Major version upgrades are described below. For a complete list of component versions, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#platforms-and-image-specifications). (CI-7537)
 
 :::caution
 
@@ -80,7 +74,8 @@ For more information on this feature, go to the documentation on [Output variabl
   <TabItem value="Fixed issues">
 ```
 
-Improved error messages for [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) using [AWS connectors](/docs/platform/Connectors/Cloud-providers/add-aws-connector) with invalid credentials in [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures). (CI-7942, ZD-44039)
+* Improved error messages for [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) using [AWS connectors](/docs/platform/Connectors/Cloud-providers/add-aws-connector) with invalid credentials in [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures). (CI-7942, ZD-44039)
+* Fixed an issue where the active developer count was not reported for builds triggered manually. (CI-8025)
 
 ```mdx-code-block
   </TabItem>
