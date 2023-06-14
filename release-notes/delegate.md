@@ -23,6 +23,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 Harness NextGen release 79516 includes the following changes for the Harness Delegate.
 
+### Deprecation notice
+
+import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
+
+<Helmdep />
 
 ```mdx-code-block
 <Tabs>
