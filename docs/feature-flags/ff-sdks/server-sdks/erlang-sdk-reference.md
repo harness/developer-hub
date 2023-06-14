@@ -301,7 +301,7 @@ To close the SDK, run one of the following commands.
 
 ### Set log level of the SDK
 
-Optionally you may set the required log level of the SDK. If not provided, the SDK will default to `warning`
+Optionally, you may set the required log level of the SDK. If a log level is not provided, the SDK defaults to `warning`.
 
 #### Elixir logging configuration example
 ```elixir
