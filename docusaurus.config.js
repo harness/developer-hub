@@ -251,7 +251,12 @@ const config = {
           {
             position: "right",
             to: "kb",
-            label: "Knowledge Base",
+            label: "KB",
+          },
+          {
+            position: "right",
+            to: "community",
+            label: "Community",
           },
           {
             position: "right",
