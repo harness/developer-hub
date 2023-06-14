@@ -63,7 +63,7 @@ To add an encrypted text secret in the account scope:
       :::important
       The Harness Delegate version 79306 is required for this feature.
       :::
-    
+      
    - **Reference Secret**: Create a Harness secret that refers to an existing secret and use that secret's name.
                            You can reference existing secrets in the following types of Secret Managers:
                            - Azure Key Vault
