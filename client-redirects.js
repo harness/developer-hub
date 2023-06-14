@@ -1734,6 +1734,12 @@ module.exports = {
 
 
     // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
+    
+    {
+      from: "/docs/continuous-delivery/integrations/cd-integrations",
+      to: "/docs/continuous-delivery/cd-integrations",
+    },
+
     {
       from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart",
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart",
@@ -1959,12 +1965,12 @@ module.exports = {
 
     {
       from: "/docs/continuous-delivery/cd-advanced/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts",
-      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts",
     },
 
     {
       from: "/docs/continuous-delivery/cd-advanced/cd-helm-category/use-a-local-helm-chart",
-      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/use-a-local-helm-chart",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/use-a-local-helm-chart",
     },
 
     {

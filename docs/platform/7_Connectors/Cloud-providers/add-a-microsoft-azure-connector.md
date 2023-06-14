@@ -62,7 +62,7 @@ The **Secret** and **Certificate** options are available when you select the **S
 
 The **System Assigned Managed Identity** and **User Assigned Managed Identity** options are available when you select the **Use the credentials of a specific Harness Delegate** option in the Azure connector.
 
-You can install the kubelogin plugin on the delegate by creating an immutable delegate and updating the following commands in `INIT_SCRIPT`:
+You can install the kubelogin plugin on the delegate by creating a delegate with an immutable image and updating the following commands in `INIT_SCRIPT`:
 
 <details>
 <summary>RHEL 7 OS</summary>
@@ -79,7 +79,7 @@ chmod 755 /opt/harness-delegate/bin/linux_amd64/kubelogin
 // Add the binary to PATH
 mv ./bin/linux_amd64/kubelogin /usr/local/bin
 
-// If the AKS cloud provider auth type is Certificate then we need to install azure-cli as its PEM format is not supported by kubelogin. It can be installed on the delegate by creating an immutable delegate and updating the following commands in INIT_SCRIPT
+// If the AKS cloud provider auth type is Certificate then we need to install azure-cli as its PEM format is not supported by kubelogin. It can be installed on the delegate by creating a delegate with an immutable image and updating the following commands in INIT_SCRIPT
 rpm --import https://packages.microsoft.com/keys/microsoft.asc
 echo -e "[azure-cli]
 name=Azure CLI
@@ -103,7 +103,7 @@ chmod 755 /opt/harness-delegate/bin/linux_amd64/kubelogin
 // Add the binary to PATH
 mv ./bin/linux_amd64/kubelogin /usr/local/bin
 
-// If the AKS cloud provider auth type is Certificate then we need to install az-cli as its PEM format is not supported by kubelogin. It can be installed on the delegate by creating an immutable delegate and updating the following commands in INIT_SCRIPT
+// If the AKS cloud provider auth type is Certificate then we need to install az-cli as its PEM format is not supported by kubelogin. It can be installed on the delegate by creating a delegate with an immutable image and updating the following commands in INIT_SCRIPT
 curl -sL https://aka.ms/InstallAzureCLIDeb | bash
 ```
 </details>

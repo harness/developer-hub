@@ -177,7 +177,6 @@ pipeline:
                                     outputVariables: []  
                                     executionTarget: {}  
                                 timeout: 10m  
-                  serviceDependencies: []  
               tags: {}
 ```
 The pipeline YAML also includes a Shell Script step that displays an output expression for the Policy step.As you can see in the above **Policy** step, in **Payload**, we reference the output from the HTTP step:

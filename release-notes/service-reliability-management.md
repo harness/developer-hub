@@ -172,6 +172,11 @@ This release does not include any early access features.
 
   Support for IRSA connectivity was added.
 
+- Unable to create notifications while configuring composite SLO at account level. (14474)
+  
+  This issue has been resolved. Now, you can create notifications for composite SLOs at the account level. 
+
+
 #### April 10, 2023, version 79015
 
 ##### What's new

@@ -141,7 +141,6 @@ pipeline:
                     settings:
                       file_urls: https://storage.googleapis.com/YOUR_GCS_BUCKET_NAME/<+pipeline.sequenceId>/index.html
                       artifact_file: artifact.txt
-          serviceDependencies: []
           infrastructure:
             type: KubernetesDirect
             spec:

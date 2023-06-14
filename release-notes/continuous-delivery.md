@@ -56,6 +56,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   For more information on how to send emails to non-Harness users, go to [Email step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
 
   Harness Delegate version 79503 is required for this feature.
+- Use labels for matrix naming strategy. (CDS-68030)
+  
+  To use the matrix labels naming strategy, do the following: 
+  1. In Harness, select **Account Settings**.
+  2. Select **Account Resources**, and then select **Pipeline**.
+  3. Set **Enable Matrix Labels By Name** to `true`.
+  4. Select **Save**.
+
+  This option is available at the project, org, and account level. 
 
 ```mdx-code-block
   </TabItem>
@@ -114,7 +123,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   Fixed this issue by adding proper validations to GCR artifacts used for SSH pipelines.
 - The expressions corresponding to objects like list, maps, and so on were incorrectly converted to string type using the Java `String.valueOf` method resulting in incorrect formatting. (CDS-71619)
   
-  This issue is fixed and the output values for expressions are returned as JSON objects.
+  For example, the expression `<+pipeline.variables>` corresponding to the following object types are incorrectly converted to:
+  * Map: `{key1=val1, key2=val2}`
+  * List: `["a", "b", "c"]` (with spaces)
+  
+  This issue is fixed and the output values for expressions are returned as JSON objects. Now, the expression in the above example for a map object returns `{"key1":"val1","key2": "val2"}`, and a list object returns `["a","b","c"]` (without spaces).
 
 ### Harness Manager delegate fixed issues
 
@@ -142,6 +155,18 @@ The fixed issues below are available with version 79503 and do not require a new
 - Spot Elastigroup deployments failed to fetch instance health and expired. (CDS-56451, ZD-41436)
   
   Harness improved the handling mechanism for the Spot `instanceHealthiness` API to fix this issue.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Hotfix version 79518">
+```
+**Released June 12, 2023**
+
+- Pipeline executions failed with the exception, `RecasterException: Class for value is not found for - io.harness.cdng.service.steps.ServiceStepV3Parameters; Cause: ClassNotFoundException: io.harness.cdng.service.steps.ServiceStepV3Parameters`. (CDS-71866, ZD-45867, ZD-45868)
+
+  This issue only applied to pipelines that were started before the latest version of Harness was deployed to the prod-2 cluster.
+
+  This issue is fixed. 
 
 ```mdx-code-block
   </TabItem>
@@ -553,7 +578,7 @@ This release does not include any early access features.
 - Deployment freeze supports quarterly recurrence.	(CDS-57792)
   
   You can now configure a deployment freeze with a recurrence of `n` months, where `n` can be between `2` to `11`.
-- You can now use any path to [Helm charts within the Helm repository](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts). (CDS-57667, ZD-41758)
+- You can now use any path to [Helm charts within the Helm repository](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts). (CDS-57667, ZD-41758)
   
   You can now specify a path to Helm charts within the Helm repository and Harness will fetch the Helm chart and its subordinate charts within that folder.
 
