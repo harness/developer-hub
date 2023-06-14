@@ -1,4 +1,4 @@
-The following table lists the Server-side Feature Flag SDKs Harness supports.
+The following table lists the server-side Feature Flag SDKs that  Harness supports.
 
 | SDK                                                        | Documentation                                                                                            |
 | ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
