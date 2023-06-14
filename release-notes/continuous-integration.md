@@ -67,16 +67,18 @@ If you have pipelines running on Harness Cloud that rely on specific component v
   <TabItem value="Early access">
 ```
 
-The feature flag `CI_OUTPUT_VARIABLES_AS_ENV` makes pipeline variables available as environment variables in steps in Build (`CI`) stages. This means, if you have a stage with three steps, an output variable produced in step one is available as an environment variable for steps two and three without additional exporting or definition. (CI-7817, ZD-39203)
+With the feature flag `CI_OUTPUT_VARIABLES_AS_ENV` enabled, output variables from steps are automatically available as environment variables for other steps in the same Build (`CI`) stage. (CI-7817, ZD-39203)
+
+This means that, if you have a Build stage with three steps, an output variable produced from step one is automatically available as an environment variable for steps two and three. In other steps in the same stage, you can refer to the output variable by it's key without additional identification. For example, an output variable called `MY_VAR` can be referenced later as simply `$MY_VAR`. Without this feature flag enabled, you must use an [expression](/docs/platform/references/runtime-inputs/#expressions) to reference where the variable originated, such as `<+steps.stepID.output.outputVariables.MY_VAR>`.
+
+For more information on this feature, go to the documentation on [Output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables).
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
 
-* Fixed an issue where [Upload Artifacts to JFrog Artifactory steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog) failed because the `artifactory` plugin on the [Harness Cloud Linux arm64 image](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#platforms-and-image-specifications) used the incorrect URL to download the JFrog CLI binary. (CI-8333)
-* ? (CI-8253)
-* Improved error handling for [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures). (CI-7942, ZD-44039)
+Improved error messages for [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) using [AWS connectors](/docs/platform/Connectors/Cloud-providers/add-aws-connector) with invalid credentials in [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures). (CI-7942, ZD-44039)
 
 ```mdx-code-block
   </TabItem>

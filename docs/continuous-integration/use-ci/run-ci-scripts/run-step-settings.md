@@ -8,11 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import OutVar from '/docs/continuous-integration/shared/output-var.md';
+```
+
 You can use a CI **Run** step to [run scripts in CI Build stages](/docs/category/run-scripts). This topic describes settings for the **Run** step.
 
 :::info
 
-Depending on the stage's build infrastructure, some settings may be unavailable or optional.
+Depending on the stage's build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 :::
 
@@ -79,10 +85,6 @@ If the Background step is inside a step group, you must include step group ID, s
 
 Select each tab below to view examples for each `shell` type.
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 ```mdx-code-block
 <Tabs>
   <TabItem value="bash" label="Bash" default>
@@ -215,21 +217,17 @@ If your script produces an output variable, you must declare the output variable
 
 :::
 
-## Optional Configuration
-
-Use the following settings to add additional configuration to the step. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
-
-### Privileged
+## Privileged
 
 Enable this option to run the container with escalated privileges. This is equivalent to running a container with the Docker `--privileged` flag.
 
-### Report Paths
+## Report Paths
 
 Specify one or more paths to files that store [test results in JUnit XML format](../set-up-test-intelligence/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
 This setting is required for the Run step to be able to [publish test results](../set-up-test-intelligence/viewing-tests.md).
 
-### Environment Variables
+## Environment Variables
 
 You can inject environment variables into a container and use them in the **Command** script. You must input a **Name** and **Value** for each variable.
 
@@ -246,67 +244,9 @@ Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/pla
 
 For more information, go to the [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md).
 
-### Output Variables
+## Output Variables
 
-Output variables expose values for use by other steps or stages in the pipeline.
-
-To create an output variable, do the following in the step where the output variable originates:
-
-1. In the **Command** field, export the output variable. For example, the following command exports a variable called `myVar` with a value of `varValue`:
-
-   ```
-   export myVar=varValue
-   ```
-
-2. In the step's **Output Variables**, declare the variable name, such as `myVar`.
-
-To call a previously-exported output variable in a later step or stage in the same pipeline, use a variable expression that includes the originating step's ID and the variable name.
-
-<!-- ![](./static/run-step-output-variable-example.png) -->
-
-<docimage path={require('./static/run-step-output-variable-example.png')} />
-
-To reference an output variable in another step in the same stage, use either of the following expressions:
-
-```
-<+steps.[stepID].output.outputVariables.[varName]>
-<+execution.steps.[stepID].output.outputVariables.[varName]>
-```
-
-To reference an output variable in a different stage than the one where it originated, use either of the following expressions:
-
-```
-<+stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>
-<+pipeline.stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>
-```
-
-<details>
-<summary>YAML example: Output variable</summary>
-
-In the following YAML example, step `alpha` exports an output variable called `myVar`, and then step `beta` references that output variable.
-
-```yaml
-              - step:
-                  type: Run
-                  name: alpha
-                  identifier: alpha
-                  spec:
-                    shell: Sh
-                    command: export myVar=varValue
-                    outputVariables:
-                      - name: myVar
-              - step:
-                  type: Run
-                  name: beta
-                  identifier: beta
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo <+steps.alpha.output.outputVariables.myVar>
-                      echo <+execution.steps.alpha.output.outputVariables.myVar>
-```
-
-</details>
+<OutVar />
 
 <!--<details>
 <summary>Export output variables to stage or pipeline variables</summary>
@@ -321,7 +261,7 @@ For example, if a step exported an output variable called `BUILD_NUM`, you could
 
 </details>-->
 
-### Image Pull Policy
+## Image Pull Policy
 
 If you specified a [Container Registry and Image](#container-registry-and-image), you can specify an image pull policy:
 
@@ -329,20 +269,20 @@ If you specified a [Container Registry and Image](#container-registry-and-image)
 * **If Not Present**: The image is pulled only if it is not already present locally.
 * **Never**: The image is assumed to exist locally. No attempt is made to pull the image.
 
-### Run as User
+## Run as User
 
 If you specified a [Container Registry and Image](#container-registry-and-image), you can specify the user ID to use for running processes in containerized steps.
 
 For a Kubernetes cluster build infrastructure, the step uses this user ID to run all processes in the pod. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
-### Set Container Resources
+## Set Container Resources
 
 Maximum resources limits for the resources used by the container at runtime:
 
 * **Limit Memory:** Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number with the suffixes `G` or `M`. You can also use the power-of-two equivalents, `Gi` or `Mi`. Do not include spaces when entering a fixed value. The default is `500Mi`.
 * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
-### Timeout
+## Timeout
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
