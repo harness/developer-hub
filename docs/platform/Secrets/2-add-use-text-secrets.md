@@ -59,15 +59,21 @@ To add an encrypted text secret in the account scope:
       ```mdx-code-block
       <img src={secret_expiry_date} alt="secret_expiry_date" height="200" width="500"/>
       ```
-   
+      
       :::important
       The Harness Delegate version 79306 is required for this feature.
       :::
-    
+      
    - **Reference Secret**: Create a Harness secret that refers to an existing secret and use that secret's name.
-                           You can reference existing secrets in the following types of Secret Managers:
-                           - Azure Key Vault
-                           - Hashicorp Vault
+
+     You can reference existing secrets in the following types of Secret Managers:
+     - Azure Key Vault
+     - Hashicorp Vault
+     - AWS Secrets Manager
+     - GCP Secrets Manager
+     Select **Test** to validate the secret reference path.
+
+     ![](./static/test-secret-reference-path.png)
 
 7. (Optional) Enter a **Description** and **Tags** for your secret.
 
