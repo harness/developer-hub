@@ -239,66 +239,62 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 </Tabs>
 ```
 
-<!-- commented out due to bug  CI-8203 - ## Specify version
+## Specify version
 
 ```mdx-code-block
 <Tabs>
 <TabItem value="Harness Cloud">
 ```
 
-Node is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+Ruby is pre-installed on Harness Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-If your application requires a specific Node version, add a **Run** step to install it.
+If your application requires a specific Ruby version, add a **Run** step to install it.
+
+Use the [setup-ruby](https://github.com/ruby/setup-ruby) action in a [GitHub Actions step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/) to install the required Ruby version.
+
+You will need a [personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token), stored as a [secret](/docs/platform/Secrets/add-use-text-secrets), with read-only access for GitHub authentication.
 
 <details>
-<summary>Install one Node version</summary>
+<summary>Install one Ruby version</summary>
 
 ```yaml
               - step:
-                  type: Run
-                  name: Install Node
-                  identifier: installnode
+                  type: Action
+                  name: Install ruby
+                  identifier: installruby
                   spec:
-                    shell: Sh
-                    envVariables:
-                      NODE_VERSION: 18.16.0
-                    command: |-
-                      mkdir $HOME/nodejs
-                      curl -L https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz | tar xJ -C $HOME/nodejs
-                      export PATH=$HOME/nodejs/node-v${NODE_VERSION}-linux-x64/bin:$PATH
+                    uses: ruby/setup-ruby@v1
+                    with:
+                      ruby-version: 3.0
 ```
 
 </details>
 
 <details>
-<summary>Install multiple Node versions</summary>
+<summary>Use multiple Ruby versions</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add a [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
 
 ```yaml
     - stage:
         strategy:
           matrix:
-            nodeVersion:
-              - 18.16.0
-              - 20.2.0
+            rubyVersion:
+              - 3.2.2
+              - 2.7.8
 ```
 
 2. Reference the matrix variable in your steps.
 
 ```yaml
               - step:
-                  type: Run
-                  name: Install node
-                  identifier: installnode
+                  type: Action
+                  name: Install ruby
+                  identifier: installruby
                   spec:
-                    shell: Sh
-                    command: |-
-                      mkdir $HOME/nodejs
-                      curl -L https://nodejs.org/dist/v${NODE_VERSION}/node-v${NODE_VERSION}-linux-x64.tar.xz | tar xJ -C $HOME/nodejs
-                      export PATH=$HOME/nodejs/node-v${NODE_VERSION}-linux-x64/bin:$PATH
-                    envVariables:
-                      NODE_VERSION: <+matrix.nodeVersion>
+                    uses: ruby/setup-ruby@v1
+                    with:
+                      ruby-version: <+ stage.matrix.rubyVersion >
 ```
 
 </details>
@@ -308,38 +304,38 @@ If your application requires a specific Node version, add a **Run** step to inst
 <TabItem value="Self-hosted">
 ```
 
-Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in your steps. There is no need for a separate install step when using Docker.
+Specify the desired [Ruby Docker image](https://hub.docker.com/_/ruby) tag in your steps. There is no need for a separate install step when using Docker.
 
 <details>
-<summary>Use a specific Node version</summary>
+<summary>Use a specific Ruby version</summary>
 
 ```yaml
               - step:
                   type: Run
-                  name: Node Version
-                  identifier: nodeversion
+                  name: Ruby Version
+                  identifier: rubyversion
                   spec:
                     connectorRef: account.harnessImage
-                    image: node:18.16.0
+                    image: ruby:latest
                     shell: Sh
                     command: |-
-                      npm version
+                      ruby --version
 ```
 
 </details>
 
 <details>
-<summary>Use multiple node versions</summary>
+<summary>Use multiple Ruby versions</summary>
 
-1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+1. Add a [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
 
 ```yaml
     - stage:
         strategy:
           matrix:
-            nodeVersion:
-              - 18.16.0
-              - 20.2.0
+            rubyVersion:
+              - 3.2.2
+              - 2.7.8
 ```
 
 2. Reference the matrix variable in the `image` field of your steps.
@@ -347,14 +343,14 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
 ```yaml
               - step:
                   type: Run
-                  name: Node Version
-                  identifier: nodeversion
+                  name: Ruby Version
+                  identifier: rubyversion
                   spec:
                     connectorRef: account.harnessImage
-                    image: node:<+matrix.nodeVersion>
+                    image: ruby:<+ stage.matrix.rubyVersion >
                     shell: Sh
                     command: |-
-                      npm version
+                      ruby --version
 ```
 
 </details>
@@ -363,7 +359,6 @@ Specify the desired [Node Docker image](https://hub.docker.com/_/node) tag in yo
 </TabItem>
 </Tabs>
 ```
--->
 
 ## Full pipeline examples
 
