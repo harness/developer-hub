@@ -136,7 +136,7 @@ To use Istio, create a VirtualService for Prometheus.
         namespace: harness
       spec:
         gateways:
-          - istio-system/public
+          - istio-test/public
         hosts:
           - istio.test.com
         http:
