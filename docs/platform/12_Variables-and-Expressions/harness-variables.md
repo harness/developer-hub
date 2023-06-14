@@ -1299,9 +1299,9 @@ The current status of the looping strategy for the node with maximum depth.
 
 When this expression is used in a step, Harness will resolve it to the looping strategy current status of the first parent node (stage/step) of the step.
 
-In cases where both the step and the stage have the looping strategy configured, the expression will resolve to the looping strategy current status of the step.
+In cases where both the step and the stage have the looping strategy configured, the expression will resolve to the looping strategy status of the current step.
 
-If the step (or stepGroup) does not have the looping strategy configured, the expression will instead resolve to the looping strategy current status of the stage.
+If the step (or step group) does not have the looping strategy configured, the expression will instead resolve to the looping strategy status of the  current stage.
 
 ### <+strategy.node.[strategyNodeIdentifier].currentStatus>
 
