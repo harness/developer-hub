@@ -27,7 +27,7 @@ The minimal delegate image, denoted by the `yy.mm.xxxxx.minimal` image tag, does
 
 ### Use INIT_SCRIPT
 
-This option installs the 3rd party custom binaries on a delegate container instance without changing the delegate image itself. Below is an inline tutorial that shows you how to use this option. You can also review the tutorial directly [here](./install-a-delegate-with-3-rd-party-tool-custom-binaries).
+This option installs the 3rd party custom binaries on a delegate container instance without changing the delegate image itself. Below is an inline tutorial that shows you how to use this option. You can also review the tutorial directly [here](/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
 
 <details>
 <summary>Use INIT_SCRIPT</summary>
@@ -36,7 +36,7 @@ This option installs the 3rd party custom binaries on a delegate container insta
 
 ### Build a custom image
 
-This option installs the 3rd party custom binaries on a new custom delegate image that uses the Harness minimal delegate image as its base image. Below is an inline tutorial that shows you how to use this option. You can also review the tutorial directly [here](./build-custom-delegate-images-with-third-party-tools).
+This option installs the 3rd party custom binaries on a new custom delegate image that uses the Harness minimal delegate image as its base image. Below is an inline tutorial that shows you how to use this option. You can also review the tutorial directly [here](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 <details>
 <summary>Build a custom image</summary>
@@ -51,7 +51,7 @@ For network proxy details, go to [Configure delegate proxy settings](/docs/platf
 
 ### CI-specific variables
 
-For CI-specific variables, go to [Install the delegate](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#install-the-delegate).
+For CI-specific variables, go to [Install the delegate](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure#install-the-delegate.md).
 
 ### Custom certificates
 
@@ -65,8 +65,8 @@ The legacy delegate used `DELEGATE_GROUP_NAME` for group names. This environment
 
 ### Install Docker delegate to Amazon ECS Fargate
 
-You can install the Docker delegate into Amazon ECS Fargate. For more information, go to [Deploy a Docker delegate to Amazon ECS or AWS Fargate](./docker-delegate-to-ecs-fargate).
+You can install the Docker delegate into Amazon ECS Fargate. For more information, go to [Deploy a Docker delegate to Amazon ECS or AWS Fargate](/docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate.md).
 
 ### Install a legacy Kubernetes delegate
 
-The legacy Kubernetes delegate, denoted `latest` container image tag, is used primarily in Harness FirstGen had the auto-upgrade setting ON by default and did not have the flexibility to turn OFF this setting if needed. This type of delegate is now deprecated for new Harness accounts. For more information, go to [Install a legacy Kubernetes delegate](./install-a-kubernetes-delegate).
+The legacy Kubernetes delegate, denoted `latest` container image tag, is used primarily in Harness FirstGen had the auto-upgrade setting ON by default and did not have the flexibility to turn OFF this setting if needed. This type of delegate is now deprecated for new Harness accounts. For more information, go to [Install a legacy Kubernetes delegate](/docs/platform/delegates/install-delegates/install-a-kubernetes-delegate.md).
