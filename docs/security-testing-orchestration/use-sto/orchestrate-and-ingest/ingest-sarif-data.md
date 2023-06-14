@@ -59,8 +59,6 @@ import StoSettingIngestionFile from '../../sto-techref-category/shared/step_pale
 
 #### Fail on Severity
 
-docs/security-testing-orchestration/sto-techref-category/shared/step_palette/_sto-ref-ui-fail-on-severity.md
-
 ```mdx-code-block
 import StoSettingFailOnSeverity from '../../sto-techref-category/shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```

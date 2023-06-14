@@ -1,6 +1,7 @@
 ---
-title: What's supported
+title: What's supported in Harness STO
 description: Supported STO features and integrations
+sidebar_label: What's supported
 sidebar_position: 5
 ---
 
