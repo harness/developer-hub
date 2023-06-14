@@ -43,6 +43,14 @@ import { MODULES } from "../../constants";
           link: "/tutorials/ci-pipelines/build/python",
           newDoc: true,
         },
+        {
+          title: "Ruby application",
+          module: MODULES.ci,
+          description:
+            "Build a Docker Image of a Ruby application.",
+          link: "/tutorials/ci-pipelines/build/ruby",
+          newDoc: true,
+        },
       ],
     },
   ];
