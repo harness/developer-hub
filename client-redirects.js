@@ -2849,5 +2849,10 @@ module.exports = {
       from: "/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem",
       to: "/docs/self-managed-enterprise-edition/monitor-harness-on-prem",
     },
+    // PR-2012
+    {
+      from: "/docs/security-testing-orchestration/sto-techref-category/custom-ingest-scan-reference",
+      to:   "/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference",
+    },
   ],
 };
