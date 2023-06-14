@@ -299,6 +299,42 @@ To close the SDK, run one of the following commands.
 
 ## Additional options
 
+### Set log level of the SDK
+
+Optionally you may set the required log level of the SDK. If not provided, the SDK will default to `warning`
+
+#### Elixir logging configuration example
+```elixir
+config :cfclient,
+  # Set the log level of the SDK to debug
+    log_level: :debug
+    [api_key: System.get_env("FF_API_KEY_0"),
+    # For additional config you can pass in, see Erlang SDK docs: https://github.com/harness/ff-erlang-server-sdk/blob/main/docs/further_reading.md#further-reading
+    # we are just using the main config url here as an example.
+    config: [
+      config_url: "https://config.ff.harness.io/api/1.0",
+      events_url: "https://events.ff.harness.io/api/1.0",
+      poll_interval: 60000,
+      analytics_enabled: true
+    ]]
+```
+
+#### Erlang logging configuration example
+
+```erlang
+[{cfclient, [
+    %% Set the log level of the SDK to debug
+    {log_level, debug},
+    {api_key, {envrionment_variable, "YOUR_API_KEY_ENV_VARIABLE"},
+    {config, [
+        {config_url, "https://config.ff.harness.io/api/1.0"},
+        {events_url, "https://config.ff.harness.io/api/1.0"},
+        {poll_interval, 60},
+        {analytics_enabled, true},
+    ]},
+    ]}]
+```
+
 ### Run multiple instances of the SDK
 
 The SDK by default starts up a single instance called `default` which is configured with your project API key.
