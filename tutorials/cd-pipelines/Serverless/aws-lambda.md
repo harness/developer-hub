@@ -142,7 +142,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 </details>
 
 1. Create the **GitHub connector**.
-    1. Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/pull/5/files#diff-62fa72d1a9a8dbf5291286f754852e861b71ce696f4c76cf5561e426ea77da54)
+    1. Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/1-github-connector.yml)
     2. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     3. Select **Create via YAML Builder** and paste the copied YAML.
     4. Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
@@ -150,8 +150,8 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     6. Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
     7. Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
 
-2. AWS Connector:
-    1. Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/pull/5/files#diff-39fc98f5da075727ab9ed4c0d4c5c82537002693809680777b77fdb3d951e42b)
+2. Create the **AWS Connector**.
+    1. Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/2-aws-connector.yml)
     2. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
     3. Select **Create via YAML Builder** and paste the copied YAML.
     4. Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **crossAccountRoleArn** with your AWS role's ARN in the YAML, also replace the **accessKey** field with your [aws access key](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html) for the AWS User you created with the required policies.
@@ -171,10 +171,10 @@ Environments define the deployment location, categorized as **Production** or **
 
 1. In your Harness project, select **Environments**.
     1. Select **New Environment**, and then select **YAML**.
-    2. Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/pull/5/files#diff-aeb8cdef306b7609e80d4c1bb177f484823d0f8227def8940e5dce872a312c7e), paste it into the YAML editor, and select **Save**.
+    2. Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/3-environement.yml), paste it into the YAML editor, and select **Save**.
     3. In your new environment, select the **Infrastructure Definitions** tab.
     4. Select **Infrastructure Definition**, and then select **YAML**.
-    5. Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/pull/5/files#diff-23250d4678f1771d2a57524f728510853f125310610a1ea25d9a1a00e4eaabaa) and paste it into the YAML editor.
+    5. Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/4-infrastructure-definition.yml) and paste it into the YAML editor.
     6. Select **Save** and verify that the environment and infrastructure definition are created successfully.
 
 ### Services
@@ -190,7 +190,7 @@ In Harness, services represent what you deploy to environments. You use services
     1. Select **New Service**.
     2. Enter the name `harnessserverless`.
     3. Select **Save**, and then **YAML** (on the **Configuration** tab).
-    4. Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/pull/5/files#diff-b0be747257be31d1317c164d86b90288650f785282c17703b6f644445826863a), and paste the into the YAML editor.
+    4. Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/5-service.yml), and paste the into the YAML editor.
     5. Select **Save** and verify that the service **harness_serverless** is successfully created.
 
 ### Pipeline
@@ -213,7 +213,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ### AWS Lambda Deploy using Serverless Infrastructure
 
-1. Copy the contents of [serverless-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/pull/5/files#diff-cf56d82df663e07eeb1e15e3d126bf2315bab21cae6f2de431b4fdeb7ef7bb19).
+1. Copy the contents of [serverless-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/6-serverless-pipeline.yml).
 2. In your Harness pipeline YAML editor, paste the YAML.
 3. Select **Save**.
    
