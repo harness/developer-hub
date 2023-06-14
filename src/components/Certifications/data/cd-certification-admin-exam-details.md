@@ -1,10 +1,10 @@
-** (BETA Coming Soon) ** The Continuous Delivery Administrator exam tests your knowledge and skills of the Harness Continuous Delivery module.  
+** (BETA) ** The Continuous Delivery & GitOps Administrator exam tests your knowledge and skills of the Harness Continuous Delivery module.  
 
 ## Prerequisites
 
 - Basic terminal skills
 - Intermediate understanding of on-premise or cloud architecture
-- This exam builds upon the [CD Developer Exam](/certifications/continuous-delivery?lvl=developer)
+- This exam builds upon the [Continuous Delivery & GitOps Developer Exam](/certifications/continuous-delivery?lvl=developer)
 
 ## Exam Details
 | Exam Type                               | Duration         |

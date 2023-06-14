@@ -205,18 +205,19 @@ pipeline:
                           os: Linux  
                   sharedPaths:  
                       - /var/run  
-                  serviceDependencies:  
-                      - identifier: dind  
-                        name: dind  
-                        type: Service  
-                        spec:  
-                            connectorRef: $DOCKER_CONNECTOR  
-                            image: docker:dind  
-                            privileged: true  
-                            entrypoint:  
-                                - dockerd-entrypoint.sh  
                   execution:  
                       steps:  
+                        - step:
+                            type: Background
+                            name: dind
+                            identifier: dind
+                            spec:
+                              connectorRef: $DOCKER_CONNECTOR
+                              image: docker:dind
+                              shell: Sh
+                              privileged: true
+                              entrypoint:
+                                - dockerd-entrypoint.sh
                           - step:  
                                 type: Security  
                                 name: owasp scan  

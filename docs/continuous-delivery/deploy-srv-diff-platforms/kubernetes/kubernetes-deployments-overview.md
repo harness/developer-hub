@@ -1,6 +1,6 @@
 ---
-title: Kubernetes deployments basics
-description: High-level steps involved in a Harness Kubernetes deployment.
+title: Kubernetes deployments overview
+description: High-level view of Harness Kubernetes deployment.
 sidebar_position: 1
 ---
 

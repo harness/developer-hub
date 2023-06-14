@@ -223,7 +223,6 @@ We'll create a quick CD pipeline that deploys a public manifest and image to a l
                                       skipDryRun: false  
                                   timeout: 10m  
                         rollbackSteps: []  
-                    serviceDependencies: []  
                 tags: {}  
                 failureStrategies:  
                     - onFailure:  

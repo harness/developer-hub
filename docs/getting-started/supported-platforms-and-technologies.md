@@ -21,67 +21,9 @@ import PartialExample from '/docs/continuous-delivery/shared/cd-integrations-sup
 
 ## Continuous Integration (CI)
 
-The following table lists Harness support for CI platforms, repos, registries, and related technologies.
+import Ci from '/docs/continuous-integration/shared/ci-supported-platforms.md';
 
-<table>
-  <thead>
-    <tr>
-      <th>Source Code Management (SCM)</th>
-      <th>Artifact repositories</th>
-      <th>Container registries</th>
-      <th>Build farm platforms</th>
-      <th>Testing frameworks</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr valign="top">
-      <td>
-        <ul>
-          <li>GitLab</li>
-          <li>Bitbucket</li>
-          <li>GitHub</li>
-          <li>AWS CodeCommit</li>
-          <li>Other</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>Artifactory</li>
-          <li>AWS S3</li>
-          <li>GCP GCS</li>
-          <li>JFrog</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>Azure Container Registry (ACR)</li>
-          <li>Amazon Elastic Container Registry (ECR)</li>
-          <li>Google Container Registry (GCR)</li>
-          <li>Docker registries (e.g. Docker Hub)</li>
-          <li>Other</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>Kubernetes cluster (platform agnostic)</li>
-          <li>Amazon Elastic Kubernetes Service (Amazon EKS)</li>
-          <li>Google Kubernetes Engine (GKE)</li>
-          <li>AWS Linux and Windows VMs</li>
-          <li>Red Hat OpenShift 4</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>Bazel</li>
-          <li>Maven</li>
-          <li>Gradle</li>
-          <li>NET CLI</li>
-          <li>Nunit</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<Ci />
 
 ## Continuous Verification
 
@@ -329,7 +271,7 @@ The following table lists the major supported features for Harness Self-Managed 
 
 ### Supported Kubernetes versions for Harness Self-Managed Enterprise Edition
 
-* Self-Managed Enterprise Edition supports Kubernetes v.1.24, as well as versions 1.23, 1.22, 1.21, and 1.20.
+* Self-Managed Enterprise Edition supports Kubernetes v.1.25, as well as versions 1.24, 1.23, 1.22, 1.21 and 1.20.
 * Effective October 7, 2022, with the release of version 76918, Self-Managed Enterprise Edition no longer supports Kubernetes open-source versions 1.18 and earlier.
 * Self-Managed Enterprise Edition supports the other versions of Kubernetes you use on a best-effort basis.
 * Harness commits to support new minor versions of Kubernetes within three months of the first stable release. For example, if the stable release of 1.25.0 occurs on August 31, Harness extends compatibility by November 30.
@@ -364,16 +306,16 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 |                                     |                       |                       |
 | ----------------------------------- | --------------------- | --------------------- |
 | **Manifest Type**                   | **Required Tool/SDK** | **Certified Version** |
-| Kubernetes                          | kubectl               | v1.24.3               |
+| Kubernetes                          | kubectl               | v1.25.6               |
 |                                     | go-template           | v0.4                  |
-| Helm                                | kubectl               | v1.24.3               |
+| Helm                                | kubectl               | v1.25.6               |
 |                                     | helm                  | v3.9.2                |
-| Helm (chart is stored in GCS or S3) | kubectl               | v1.24.3               |
+| Helm (chart is stored in GCS or S3) | kubectl               | v1.25.6               |
 |                                     | helm                  | v3.9.2                |
 |                                     | chartmuseum           | v0.8.2 and v0.12.0    |
-| Kustomize                           | kubectl               | v1.24.3               |
+| Kustomize                           | kubectl               | v1.25.6               |
 |                                     | kustomize             | v4.5.4                |
-| OpenShift                           | kubectl               | v1.24.3               |
+| OpenShift                           | kubectl               | v1.25.6               |
 |                                     | oc                    | v4                    |
 
 ### Native Helm deployments
@@ -384,7 +326,7 @@ For [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platform
 | ----------------- | ----------------------------------------------- | --------------------- |
 | **Manifest Type** | **Required Tool/SDK**                           | **Certified Version** |
 | Helm Chart        | helm                                            | v3.9.2                |
-|                   | kubectlRequired if Kubernetes version is 1.16+. | v1.24.3               |
+|                   | kubectlRequired if Kubernetes version is 1.16+. | v1.25.6               |
 
 ### Install a Delegate with custom SDK and 3rd-party tool binaries
 

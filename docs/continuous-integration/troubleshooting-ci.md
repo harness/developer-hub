@@ -1,7 +1,7 @@
 ---
 title: Troubleshoot Continuous Integration
 description: Troubleshoot common CI issues.
-sidebar_position: 40
+sidebar_position: 50
 helpdocs_topic_id: jx7ew69ypa
 helpdocs_category_id: 99m8m1s55y
 helpdocs_is_private: false
