@@ -22,7 +22,7 @@ The following workflow describes how to set up an ingestion pipeline for any sca
 
 3. Copy the SARIF file to the `/shared/customer_artifacts` folder. 
 
-3. Add an ingestion step step after the Run step and configure it as follows.
+3. Add an ingestion step after the Run step and configure it as follows.
 
 :::note
 If you're using a scanner that has a scanner template, use the scanner template to ingest your results. Otherwise use a [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference) step. 
