@@ -59,7 +59,7 @@ To add an encrypted text secret in the account scope:
       ```mdx-code-block
       <img src={secret_expiry_date} alt="secret_expiry_date" height="200" width="500"/>
       ```
-   
+      
       :::important
       The Harness Delegate version 79306 is required for this feature.
       :::
@@ -70,9 +70,9 @@ To add an encrypted text secret in the account scope:
                            - Hashicorp Vault
                            - AWS Secrets Manager
                            - GCP Secrets Manager
-   You can validate the secret reference path using the **Test** button as shown below:
+     Select **Test** to validate the secret reference path.
 
-      ![](./static/test-secret-reference-path.png)
+     ![](./static/test-secret-reference-path.png)
 
 7. (Optional) Enter a **Description** and **Tags** for your secret.
 
