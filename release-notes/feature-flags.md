@@ -43,7 +43,11 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-This release does not include fixed issues. 
+#### Feature Flags SDKs
+
+Updated the ff-erland-server-sdk to version 1.1.0 to add an optional logging configuration option so that the logging level can be set for the SDK. (FFM-8217)
+
+If this option is not set, the SDK uses the default log level of `warning`. To see an example logging configuration, go to [the SDK readme](https://github.com/harness/ff-erlang-server-sdk/blob/main/README.md#set-logging-level).
 
 ```mdx-code-block
   </TabItem>
