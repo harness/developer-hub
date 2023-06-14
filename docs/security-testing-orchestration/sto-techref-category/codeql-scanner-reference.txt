@@ -4,6 +4,8 @@ description: Repository scans with CodeQL
 sidebar_position: 103
 ---
 
+<!-- hiding this topic until the integration is ready to GA -->
+
 You can scan your code repositories using [CodeQL](https://codeql.github.com/), an analysis engine used by developers to automate security checks, and by security researchers to perform variant analysis. 
 
 The basic workflow is
@@ -261,16 +263,16 @@ pipeline:
                         memory: 2G
                         cpu: 2000m
               - step:
-                  type: CodeQL
-                  name: CodeQL_ingest
-                  identifier: CodeQL_1
+                  type: CustomIngest
+                  name: custom_ingest
+                  identifier: custom_ingest
                   spec:
                     mode: ingestion
-                    config: default
+                    config: sarif
                     target:
                       name: codeql-dvpwa
                       type: repository
-                      variant: test
+                      variant: develop
                     advanced:
                       log:
                         level: info
