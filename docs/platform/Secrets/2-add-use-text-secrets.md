@@ -65,11 +65,12 @@ To add an encrypted text secret in the account scope:
       :::
       
    - **Reference Secret**: Create a Harness secret that refers to an existing secret and use that secret's name.
-                           You can reference existing secrets in the following types of Secret Managers:
-                           - Azure Key Vault
-                           - Hashicorp Vault
-                           - AWS Secrets Manager
-                           - GCP Secrets Manager
+
+     You can reference existing secrets in the following types of Secret Managers:
+     - Azure Key Vault
+     - Hashicorp Vault
+     - AWS Secrets Manager
+     - GCP Secrets Manager
      Select **Test** to validate the secret reference path.
 
      ![](./static/test-secret-reference-path.png)
