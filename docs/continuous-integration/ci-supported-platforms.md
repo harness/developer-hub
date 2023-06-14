@@ -1,5 +1,5 @@
 ---
-title: What's supported?
+title: What's supported
 description: Platforms and technologies supported by Harness CI
 sidebar_position: 10
 ---
