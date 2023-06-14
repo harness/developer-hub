@@ -53,7 +53,6 @@ This release includes the following module and component versions.
 	
 	This has now been changed by scoping resource constraints to the project.
 
-
 ### Fixed issues
 
 #### Continuous Delivery & GitOps
