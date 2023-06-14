@@ -138,14 +138,6 @@ STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-b
         <td align="center">✅</td>
     </tr>
     <tr>
-        <td>MacOS</td>
-        <td>arm64</td>
-        <td align="center">Not Verified</td>
-        <td align="center">Not Verified</td>
-        <td align="center">Not Verified</td>
-        <td align="center">❌</td>
-    </tr>
-    <tr>
         <td>Windows</td>
         <td>amd64</td>
         <td align="center">Roadmap</td>
@@ -155,12 +147,21 @@ STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-b
     </tr>
     <tr>
         <td>MacOS</td>
+        <td>amd64</td>
+        <td align="center">Not Verified</td>
+        <td align="center">Not Verified</td>
+        <td align="center">Not Verified</td>
+        <td align="center">❌</td>
+    </tr>
+    <tr>
+        <td>MacOS</td>
         <td>arm64</td>
         <td align="center">❌</td>
         <td align="center">❌</td>
         <td align="center">❌</td>
         <td align="center">❌</td>
-    </tr></table>
+    </tr>
+</table>
 
 ### Next Steps
 

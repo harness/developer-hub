@@ -16,7 +16,9 @@ The following workflow describes how to set up an ingestion pipeline for any sca
 
 2. Publish your scan results to a data file in [SARIF 2.1.0 ](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) format.  
 
-   You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. See [CodeQL Scanner Reference](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference) for an example workflow. 
+   You might want to set up a Run step to generate your scans automatically whenever the pipeline runs. 
+   
+   <!-- See [CodeQL Scanner Reference](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference) for an example workflow. -->
 
 3. Copy the SARIF file to the `/shared/customer_artifacts` folder. 
 
@@ -67,6 +69,6 @@ import StoSettingFailOnSeverity from '../../sto-techref-category/shared/step_pal
 
 ### Example workflows
 
-* [CodeQL Scanner Reference](docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference)
-* [Run scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-scans-using-github-actions)
+<!-- * [CodeQL Scanner Reference](docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference) -->
+For example workflows that show how you can ingest SARIF data, go to [Run scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-scans-using-github-actions)
 
