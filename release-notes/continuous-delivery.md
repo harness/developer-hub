@@ -578,7 +578,7 @@ This release does not include any early access features.
 - Deployment freeze supports quarterly recurrence.	(CDS-57792)
   
   You can now configure a deployment freeze with a recurrence of `n` months, where `n` can be between `2` to `11`.
-- You can now use any path to [Helm charts within the Helm repository](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts). (CDS-57667, ZD-41758)
+- You can now use any path to [Helm charts within the Helm repository](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts). (CDS-57667, ZD-41758)
   
   You can now specify a path to Helm charts within the Helm repository and Harness will fetch the Helm chart and its subordinate charts within that folder.
 

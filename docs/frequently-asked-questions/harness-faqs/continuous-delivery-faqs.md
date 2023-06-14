@@ -246,7 +246,7 @@ Harness Kubernetes deployments using Helm charts can involve adding your artifac
 
 In addition to this method, you can also deploy the Helm chart without adding your artifact to Harness. Instead, the Helm chart identifies the artifact. Harness installs the chart, gets the artifact from the repo, and then installs the artifact. We call this a *Helm chart deployment*.
 
-See [Deploy helm charts](../../continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts.md).
+See [Deploy helm charts](../../continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts.md).
 
 #### Can I run Kubernetes jobs?
 
@@ -372,7 +372,7 @@ You can select Helm 3 when you create the service, or upgrade Helm 2 to Helm 3.
 
 ![](./static/continuous-delivery-faqs-04.png)
 
-See [Deploy Helm charts](../../continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts.md).
+See [Deploy Helm charts](../../continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts.md).
 
 #### Can I use Helm Chart Hooks in Kubernetes deployments?
 
