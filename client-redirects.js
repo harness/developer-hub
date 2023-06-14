@@ -34,6 +34,42 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by aimurphy for branch doc-2550 on June 9, 2023
+
+    {
+      from: "/tutorials/build-code/ci-publish-allure-report",
+      to: "/tutorials/ci-pipelines/publish/artifacts-tab",
+    },
+
+    {
+      from: "/tutorials/build-code/test/allure-report",
+      to: "/tutorials/ci-pipelines/publish/artifacts-tab",
+    },
+
+    {
+      from: "/tutorials/ci-pipelines/test/allure-report",
+      to: "/tutorials/ci-pipelines/publish/artifacts-tab",
+    },
+
+    // Created by aimurphy for branch doc-1594 on June 8, 2023
+
+    {
+      from: "/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector",
+      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
+    },
+
+    {
+      from: "/docs/platform/Connectors/add-a-git-hub-connector",
+      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
+    },
+
+    // Created by aimurphy for branch doc-2951 on May 4 2023
+
+    {
+      from: "/docs/continuous-integration/ci-quickstarts/drone-and-harness",
+      to: "/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins",
+    },
+
     // Created by SudheendraKatte for branch cv-metric-log on May 31 2023
 
     {
@@ -592,10 +628,6 @@ module.exports = {
       to: "/docs/platform/Connectors/Code-Repositories/connect-to-code-repo",
     },
     {
-      from: "/docs/platform/Connectors/add-a-git-hub-connector",
-      to: "/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector",
-    },
-    {
       from: "/docs/platform/Connectors/connect-to-a-azure-repo",
       to: "/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo",
     },
@@ -859,10 +891,6 @@ module.exports = {
       to: "/tutorials/ci-pipelines/test/saucelabs-proxy",
     },
     {
-      from: "/tutorials/build-code/test/allure-report",
-      to: "/tutorials/ci-pipelines/test/allure-report",
-    },
-    {
       from: "/tutorials/build-code/test/codecov",
       to: "/tutorials/ci-pipelines/test/codecov",
     },
@@ -1104,7 +1132,7 @@ module.exports = {
     },
     {
       from: "/docs/cloud-cost-management/monitor-cloud-cost-with-integration/integration/datadog-integration",
-      to: "/docs/cloud-cost-management/monitor-cloud-cost-with-integration/datadog-integration",
+      to: "/docs/cloud-cost-management/datadog-integration",
     },
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/share-cost-perspective-report",
@@ -1313,10 +1341,6 @@ module.exports = {
     {
       from: "/tutorials/build-code/ci-tutorial-push-to-gar",
       to: "/tutorials/ci-pipelines/publish/google-gar",
-    },
-    {
-      from: "/tutorials/build-code/ci-publish-allure-report",
-      to: "/tutorials/ci-pipelines/test/allure-report",
     },
     {
       from: "/tutorials/build-code/ci-tutorial-codecov-test",

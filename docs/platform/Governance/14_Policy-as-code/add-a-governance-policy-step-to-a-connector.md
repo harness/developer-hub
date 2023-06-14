@@ -25,14 +25,17 @@ In Harness, go to **Account Settings**.
 Click **Policies**.
 
 ![](./static/add-a-governance-policy-step-to-a-connector-14.png)
+
 Click **Policies**, and then click **New Policy**.
 
 ![](./static/add-a-governance-policy-step-to-a-connector-15.png)
+
 The **New Policy** settings appear.
 
 Enter a **Name** for your policy and click **Apply**.
 
 ![](./static/add-a-governance-policy-step-to-a-connector-16.png)
+
 Next you need to add your policy. Enter your own Rego policy. For example:
 
 
@@ -85,7 +88,7 @@ Now your Policy Set is automatically set to Enforced, to make it unenforced, tog
 
 After you have created your Policy Set, and added your policies to it, apply the policy to a Connector. 
 
-Let us take the example of a [GitHub Connector](../../7_Connectors/Code-Repositories/add-a-git-hub-connector.md).
+Let us take the example of a [GitHub Connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 
 You can add a Connector from any module in your Project in Project setup, or in your Organization, or Account Resources.
 

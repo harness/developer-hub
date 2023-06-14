@@ -50,7 +50,7 @@ The Harness GCP connector has 2 credential types. For each type, you must instal
 - **Service Account Key** (`ServiceAccountKey`): gcloud and gke-gcloud-auth-plugin binary.
 - **Inherit From Delegate** (`InheritFromDelegate`): gcloud and gke-gcloud-auth-plugin binary.
 
-You can install the gke-gcloud-auth-plugin on the delegate by creating an immutable delegate and updating the following commands in `INIT_SCRIPT`:
+You can install the gke-gcloud-auth-plugin on the delegate by creating a delegate with an immutable image and updating the following commands in `INIT_SCRIPT`:
 
 <details>
 <summary>RHEL 7 OS</summary>

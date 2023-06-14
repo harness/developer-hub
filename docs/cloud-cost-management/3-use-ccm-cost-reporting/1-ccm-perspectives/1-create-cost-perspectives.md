@@ -12,10 +12,7 @@ You can add business context to your Harness Cloud Cost Management (CCM) data us
 
 ### Before You Begin
 
-* [Set Up Cloud Cost Management for AWS](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-aws.md)
-* [Set Up Cloud Cost Management for Azure](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md)
-* [Set Up Cloud Cost Management for GCP](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-gcp.md)
-* [Set Up Cloud Cost Management for Kubernetes](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
+* [Set Up Cloud Cost Management for your cloud service provider](https://developer.harness.io/docs/category/set-up-cloud-cost-management)
 * [Use Cost Categories](../2-ccm-cost-categories/1-ccm-cost-categories.md)
 
 ## Cloud Costs Perspective Concepts
@@ -71,7 +68,7 @@ As you add your resources in the **Perspective Builder**, a **Preview** of your 
 
 ![](./static/create-cost-perspectives-18.png)
 
-The following are the key advantages of Preview:
+The following are the key advantages of preview:
 
 * Provides a quick visual representation of your resources in the Perspective without saving them.
 * Allows you to group resources in the preview mode itself. You can group by **Common**, **Custom** (if Custom Fields are available), **Cluster**, **AWS**, **GCP**, and **Azure**.
@@ -126,7 +123,7 @@ When you create a new Perspective, data across all cloud service providers and c
 
 
 :::note
-If you've added labels and cluster rules in the perspective builder section, it's considered a cluster perspective, hence all cluster labels are considered. In this case, data from cloud service providers such as GCP, Azure, and AWS are not considered. However, if you have applied a label that belongs to the cloud provider data, and you want to view the cluster data as well, then, you have to add a Cloud Provider filter.
+If you've added labels and cluster rules in the perspective builder section, it's considered a cluster perspective, hence all cluster labels are considered. In this case, data from cloud service providers such as GCP, Azure, and AWS are not considered. However, if you have applied a label that belongs to the cloud provider data, and you want to view the cluster data as well, then you have to add a Cloud Provider filter.
 :::
 ## Budgets, Reports, and Alerts
 For details on adding Budgets, Reports, and Alerts go to:
@@ -164,14 +161,14 @@ In some graphs, you will also see an **Unallocated** item. This is included to h
 The **Include Unallocated** option is only available in the chart when the **Group By** is using **Cluster** and the following options are selected:
 
 * Namespace
-* Namespace Id
+* Namespace ID
 * Workload
-* Workload Id
+* Workload ID
 * ECS Task
-* ECS Task Id
-* ECS Service Id
+* ECS Task ID
+* ECS Service ID
 * ECS Service
-* ECS Launch Type Id
+* ECS Launch Type ID
 * ECS Launch Type
 
 ### Review: No Account/Project/etc
@@ -226,12 +223,5 @@ You can also move a Perspective to a folder from its more options (⋮) setting.
 
 ![](./static/create-cost-perspectives-30.png)
 
-## Next Steps
 
-* [Create a Budget for Your Perspective](../../3-use-ccm-cost-reporting/1-ccm-perspectives/3-create-a-budget-perspective.md)
-* [Share Your Cost Perspective Report](../../3-use-ccm-cost-reporting/1-ccm-perspectives/4-share-cost-perspective-report.md)
-* [Analyze Cost for Kubernetes Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives.md)
-* [Analyze Cost for AWS Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-aws.md)
-* [Analyze Cost for GCP ​Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md)
-* [Analyze Cost for Azure Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-azure.md)
 

@@ -24,7 +24,7 @@ A GameDay typically involves the following steps:
 GameDays help decide the type of failure the system would undergo based on the nature of the chaos experiments present within the GameDay. Hence, it is strongly recommended to begin with easy use cases where the blast radius is minimal, such as breaking one container, degrading one instance, and making one availability zone unavailable. Later on, you can delve into more complex failures, such as failing an entire service or affecting a large percentage of requests.
 :::
 
-Running a GameDay by using HCE’s GameDay feature involves the following steps:
+Running a GameDay by using CE’s GameDay feature involves the following steps:
 
 1. Plan your GameDay
 2. Create a GameDay and specify the details
@@ -33,12 +33,12 @@ Running a GameDay by using HCE’s GameDay feature involves the following steps:
 5. Record the conclusion and action items
 
 :::info note
-Once you create a GameDay in HCE, you can run it as many times as you wish. HCE saves information about every run, which includes the date, summary, and any notes you add.
+Once you create a GameDay in CE, you can run it as many times as you wish. CE saves information about every run, which includes the date, summary, and any notes you add.
 :::
 
 ## Prerequisites
 You can create a GameDay provided you have the following prerequisites.
-1. HCE account
+1. CE account
 2. Access to a cluster
 
 ## Creating a GameDay
@@ -111,5 +111,5 @@ You can add up to 20 experiments to every GameDay, and every chaos experiment ca
 ![](./static/run-gameday/17-run-complete.png)
 
 ## Conclusion
-Congratulations! You have successfully executed your first GameDay in HCE. Don’t forget to check out [other HCE tutorials](/tutorials/chaos-experiments).
+Congratulations! You have successfully executed your first GameDay in CE. Don’t forget to check out [other CE tutorials](/tutorials/chaos-experiments).
 

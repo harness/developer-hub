@@ -16,15 +16,9 @@ Add a **Build and Push** step to your CI pipeline to build your codebase and the
 * [Amazon Elastic Container Registry (ECR)](/tutorials/ci-pipelines/publish/amazon-ecr)
 * [Google Artifact Registry (GAR)](/tutorials/ci-pipelines/publish/google-gar#configure-pipeline-steps)
 
-:::info
-
-For language-specific tutorials, go to the [CI Build tutorials](/tutorials/ci-pipelines/build/).
-
-For information about **Upload Artifact** steps, go to [Upload Artifacts to JFrog](./upload-artifacts-to-jfrog.md)
-
-:::
-
 This topic describes a simple one-step build workflow that does not include testing. It builds the code in a build farm, and then pushes it to a repo.
+
+For information about **Upload Artifact** steps, go to [Upload Artifacts to JFrog](./upload-artifacts-to-jfrog.md), [Upload Artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [Upload Artifacts to S3](./upload-artifacts-to-s-3-step-settings.md).
 
 <details>
 <summary>Video summary</summary>
@@ -148,22 +142,55 @@ As a more specific example, if you have a [Background step](../manage-dependenci
 
 You can use your CI pipeline to test a Dockerfile used in your codebase and verify that the resulting image is correct before you push it to your Docker repository.
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="hosted" label="Harness Cloud build infrastructure" default>
+```
+
 1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
 2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
-3. Click **Add Variable** and enter the following:
-	1. Name: **PLUGIN\_NO\_PUSH**
-	2. Type: **String**
-	3. Value: **true**
+3. Select **Add Variable** and enter the following:
+   * **Name:** `PLUGIN_DRY_RUN`
+   * **Type:** **String**
+   * **Value:** `true`
 4. Save and run the pipeline.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="other" label="Other build infrastructures">
+```
+
+1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
+2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
+3. Select **Add Variable** and enter the following:
+   * **Name:** `PLUGIN_NO_PUSH`
+   * **Type:** **String**
+   * **Value:** `true`
+4. Save and run the pipeline.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 </details>
 
 <details>
 <summary>Build multi-architecture images</summary>
 
-To use a CI pipeline to build multi-architecture images, create a stage for each architecture.
+To use a CI pipeline to build multi-architecture images, create a separate stage for building and pushing each architecture.
 
-The following YAML example describes a multi-architecture pipeline.
+The following YAML example describes a multi-architecture pipeline with two stages. Both stages have similar components but they are slightly different according to the architecture of the image that the stage builds.
+
+Each stage:
+
+* Uses a variation of a Kubernetes cluster build infrastructure.
+* Has a **Run** step that prepares the DockerFile.
+* Has a **Build and Push** step that builds and uploads the image.
 
 ```yaml
 pipeline:
@@ -307,7 +334,7 @@ pipeline:
 
 ## YAML example
 
-Here's a YAML example for a CI pipeline that has a **Build** stage with a **Build and Push** step:
+Here's a YAML example of a CI pipeline that has a **Build** stage with a **Build and Push** step:
 
 ```yaml
 pipeline:
@@ -342,7 +369,6 @@ pipeline:
             spec:
               connectorRef: account.cidelegate
               namespace: harness-delegate-uat
-          serviceDependencies: []
   projectIdentifier: CI_Quickstart
   orgIdentifier: default
 ```

@@ -8,6 +8,15 @@ slug: /ci-pipelines/test/codecov
 
 # Code coverage with CodeCov in Harness CI
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
+
 This tutorial shows how you can use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage) to include [CodeCov code coverage](https://docs.codecov.com/docs/about-code-coverage#top-5-codecov-features) in a Harness CI pipeline.
 
 ## Prerequisites

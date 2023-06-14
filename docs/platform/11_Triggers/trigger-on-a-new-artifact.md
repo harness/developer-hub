@@ -8,6 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
 :::note
 
@@ -98,10 +102,7 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 4. The **On New Artifact Trigger** options are listed under **Artifact**. Each of the **Artifact** options are described below.
 5. Select the artifact registry where your artifact is hosted. If you artifact is hosted on Docker Hub and you select GCR, you won't be able to set up your trigger.
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
+
 ```mdx-code-block
 <Tabs>
 <TabItem value="Docker Registry Artifacts" label="Docker Registry Artifacts">
@@ -224,6 +225,152 @@ For example, if the build is `todolist-v2.0`:
 If the regex expression does not result in a match, Harness ignores the value.
 
 Harness supports standard Java regex. For example, if regex is enabled and the intent is to match any branch, the wildcard should be `.*` instead of simply a wildcard `*`. If you wanted to match all of the files that end in `-DEV.tar` you would enter `.*-DEV\.tar`.
+
+#### Set metadata conditions
+
+On New Artifact Triggers support conditions based on artifact metadata expressions.
+
+You can define conditions based on metadata apart from the artifact build and JEXL conditions.
+
+To configure a condition based on artifact metadata, do the following:
+
+1. In the configuration of an artifact trigger, select **Conditions**.
+2. In **Metadata Conditions**, select **Add**.
+4. Enter an expression in **Attribute**.
+5. Select an operator and a value to match to the metadata attribute when the expression is resolved.
+
+When the trigger is executed, the metadata condition is evaluated and, if the condition matches, the pipeline is executed.
+
+Here are the artifact metadata expressions you can use:
+
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Docker registry" label="Docker registry" default>
+```
+
+You can use the following expressions:
+
+```bash
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.image>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.tag>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.SHAV2>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.SHA>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.url>
+<+pipeline.stages.DS.spec.artifacts.primary.dockerConfigJsonSecret>
+```
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="ECR" label="ECR">
+```
+
+You can use the following expressions:
+
+```bash
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.image>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.tag>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.SHAV2>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.SHA>
+<+pipeline.stages.DS.spec.artifacts.primary.dockerConfigJsonSecret>
+```
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="ACR" label="ACR">
+```
+
+You can use the following expressions:
+
+```bash
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.image>
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.registryHostname>
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.tag>
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.SHAV2>
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.SHA>
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.url>
+```
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="GAR" label="GAR">
+```
+
+Here are the expressions for Google Artifact Registry (GAR).
+
+```bash
+<+pipeline.stages.firstS.spec.artifacts.primary.metadata.image>
+<+pipeline.stages.firstS.spec.artifacts.primary.metadata.registryHostname>
+<+pipeline.stages.firstS.spec.artifacts.primary.metadata.SHAV2>
+<+pipeline.stages.firstS.spec.artifacts.primary.metadata.SHA>
+```
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Artifactory" label="Artifactory">
+```
+
+You can use the following expressions:
+
+```bash
+<+pipeline.stages.tas_0.spec.artifacts.primary.metadata.fileName>
+<+pipeline.stages.tas_0.spec.artifacts.primary.metadata.url>
+```
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Jenkins" label="Jenkins">
+```
+
+You can use the following expressions:
+
+```bash
+<+pipeline.stages.SSH_Jenkins_ArtifactSource.spec.artifacts.primary.metadata.url>
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Nexus 2" label="Nexus 2">
+```
+
+You can use the following expressions:
+
+```bash
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.fileName>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.package>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.repositoryName>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.version>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.url>
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Nexus 3" label="Nexus 3">
+```
+
+You can use the following expressions:
+
+```bash
+<+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.extension>
+<+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.fileName>
+<+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.imagePath>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.repositoryName>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.version>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.url>
+<+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.artifactId>
+<+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.groupId>
+```
+
+```mdx-code-block
+  </TabItem>  
+</Tabs>
+```
+
 
 ### Select pipeline inputs
 

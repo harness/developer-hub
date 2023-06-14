@@ -2,13 +2,33 @@
 
 These release notes document changes to Harness Delegate in Harness FirstGen.
 
-:::note
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means the features and fixes that these release notes describe might not be immediately available in your cluster. 
+:::info note
+Harness deploys changes to Harness SaaS clusters on a progressive basis. This means the features and fixes that these release notes describe might not be immediately available in your cluster.
 
 To identify the cluster that hosts your account, open Harness FirstGen and go to **Account Settings**. Then click **Overview**. The cluster is listed in **Harness Cluster Hosting Account**.
 :::
 
 For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, see [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
+
+## Latest release - June 9, 2023, Harness version 79514, Harness Delegate version 79503
+
+### What's new
+
+- Enhanced the application handling mechanism when the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE`. (CDS-68821)
+
+  When the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE` for any of the releases of an application, Harness starts looking for the application that has the same name as the release name. This ensures that the correct active application is always picked in case the `HARNESS__STATUS__IDENTIFIER` is removed.
+
+### Early access 
+
+This release does not include any new early access features.
+
+### Fixed issues
+
+- Helm execution failed with `KubernetesClientException` error. (CDS-70386, ZD-45051)
+
+  The Kubernetes GET APIs returned a 400 bad request during steady state check. This was occurring when Harness used a fabric8 client with Kubernetes cluster version < 1.16, or when the feature flag, `HELM_STEADY_STATE_CHECK` is turned off. 
+
+  This issue is fixed.
 
 ## May 23, 2023, Harness version 79306, Harness Delegate version 79307
 
@@ -39,9 +59,9 @@ This release does not include any new early access features.
 
   This change does not create any behavioral changes.
 
-- Secret decryption failures were not included in logs. 
+- Secret decryption failures were not included in logs. (PL-31517)
 
-  A code enhancement to return runtime errors from secret managers during decryption fixed this issue. (PL-31517)
+  A code enhancement to return runtime errors from secret managers during decryption fixed this issue.
 
 - The org.json:json is upgraded from version 20160810 to 20230227 to address vulnerabilities. (PL-37905)
 

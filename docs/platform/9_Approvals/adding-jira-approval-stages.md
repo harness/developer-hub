@@ -87,6 +87,7 @@ Select a successful execution, and click the Jira Create/Update step in the exec
 Click the **Output** tab, locate the **Key** setting, and click the copy button.
 
 ![](./static/adding-jira-approval-stages-09.png)
+
 The expression will look something like this:
 
 `<+pipeline.stages.Jira_Stage.spec.execution.steps.jiraCreate.issue.key>`
@@ -98,6 +99,7 @@ Go back to your Jira Approval step. You can just select **Edit Pipeline**.
 In **Issue Key**, select **Expression**.
 
 ![](./static/adding-jira-approval-stages-10.png)
+
 In **Issue Key**, paste in the expression you copied from the previous Jira Create/Update step.
 
 Now this Jira Approval step will use the issue created by the Jira Create/Update step.
@@ -109,6 +111,7 @@ Some users can forget that when you use a Jira Create step it creates a new, i
 The **Approval Criteria** in the step determines if the Pipeline or stage is approved or rejected.
 
 ![](./static/adding-jira-approval-stages-11.png)
+
 Whether the Pipeline/stage stops executing depends on the stage or step [Failure Strategy](../8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md). You can specify criteria using **Conditions** and/or **JEXL Expression**. If you use them in combination they both must evaluate to `True` for the step to be successful.
 
 In **Conditions**, you simply use the Jira Field, Operator, and Value to define approval criteria.
@@ -137,6 +140,7 @@ Run the Pipeline.
 When the Jira Approval step is reached, you can see its approval and rejection criteria:
 
 ![](./static/adding-jira-approval-stages-12.png)
+
 You can also click the **JIRA Ticket Pending Approval** link to open the ticket.
 
 The step can take a few minutes to receive information from Jira.
@@ -148,6 +152,7 @@ You can use `<+issue>` to refer to the value in the **Issue Key** setting.
 For example, `<+issue.Status> == "Done"` in the Approval Criteria **JEXL Expression** checks to see in the status of the issue in Issue Key is **Done**:
 
 ![](./static/adding-jira-approval-stages-13.png)
+
 `Status` is an issue field. You can use any issue field.
 
 ### Notes

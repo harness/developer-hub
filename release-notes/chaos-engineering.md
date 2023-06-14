@@ -2,7 +2,7 @@
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-05-04T10:00
+date: 2023-06-05T10:00
 sidebar_position: 9
 ---
 ```mdx-code-block
@@ -15,39 +15,31 @@ Review the notes below for details about recent changes to Harness Chaos Enginee
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 23, 2023, version 0.12.1
+## Latest - June 12, 2023, version 0.13.5
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-* Reports can now be downloaded. (CHAOS-1615)
+* Added a new Linux chaos fault, Disk Fill, which fills up the available disk space at a given system path for a specific duration. (CHAOS-1419)
 
-    * You can now download reports for experiments as well as associated experiment runs. Reports include details about target chaos infrastructure, and execution details for experiment runs.
+* To help users select the right infrastructure for their use case, the Chaos Infrastructures UI screen has been enhanced to show supported faults by different chaos infrastructure categories. (CHAOS-1811)
+
+* The database was upgraded to update the index in linuxInfrastructures collection. (CHAOS-1836)
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-* Introduction of [Chaos dashboards](/docs/chaos-engineering/configure-chaos-experiments/experiments/dashboards). (CHAOS-719)
-    * Two new dashboards include number of experiments and number of infrastructures by user, as well as statistics of the chaos faults that were executed.
-    * This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
+* This release does not include any early access features.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
 
-* Corrected the UI text for the Inactive and Pending states for Linux infrastructure states. (CHAOS-1633)
-
-* Improved the UI text when there are empty search results for Kubernetes or Linux infrastructures. (CHAOS-1629)
-
-* Corrected the UI text for Linux infrastructure screens. (CHAOS-1619) 
-
-* There was an issue where the total number of probes incorrectly came to 0 when an experiment was running in a GameDay. This has been fixed. (CHAOS-1618)
-
-* Fixed a text wrapping issue on the confirmation dialog for deleting a chaos infrastructure. (CHAOS-1578)
+* The Chaos Faults screen in ChaosHub was crashing when the **Platform** field was missing in the faults metadata file. This issue has been fixed. (CHAOS-1841)
 
 ```mdx-code-block
   </TabItem>
@@ -58,6 +50,82 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 5, 2023, version 0.13.4
+
+##### What's new
+
+:::caution
+This release breaks backward compatibility with older chaos infrastructures. You must update chaos infrastructures and the chaosnative/go-runner image in experiment definitions. If you don't upgrade, then chaos experiments will start to fail.
+
+To upgrade chaos infrastructures and experiments:
+
+1. Delete old ChaosEngines, if any:
+
+    `kubectl delete chaosengines --all -n <namespace-of-chaosinfrastructure>`
+
+1. Upgrade the CRDs in clusters where you have deployed a chaos infrastructure: 
+
+    `kubectl apply -f https://raw.githubusercontent.com/chaosnative/hce-charts/main/hce-saas/hce-saas-crds.yaml`
+
+1. If a chaos infrastructure indicates **UPGRADE NEEDED**, select **Update**, and then follow the instructions on your screen.
+
+    ![](./static/chaos-infra-upgrade-needed.png)
+
+1. Edit the YAML definitions of existing experiments to update the chaosnative/go-runner image to version 0.13.1. Do the same for existing experiments in custom chaos hubs that may be connected to your project. (Not required for new expriments.)
+
+For detailed instructions, go to [Upgrade chaos infrastructure](/docs/chaos-engineering/configure-chaos-experiments/chaos-infrastructure/upgrade-infra).
+:::
+
+* Added audit events for various GameDay operations such as create, update, etc., so that users can easily audit operations done on their GameDays. (CHAOS-1709)
+
+* Browser tabs now show the module page name to help users switching between different tabs. (CHAOS-1683)
+
+* The Delete Chaos Infrastructure API has been updated to allow deletion of only one infrastructure. (CHAOS-1681)
+
+* Previously, the Last Heartbeat value was empty when chaos infrastructures were pending. Now, to prevent user confusion, this value displays N/A when chaos infrastructures are pending. (CHAOS-1666)
+
+* Enhanced the Chaos Infrastructures table to allow routing to corresponding connectors from the Chaos Infrastructures screen. (CHAOS-1665)
+
+* When scheduling an experiment fails for any reason, the user now sees the error when hovering over the status. (CHAOS-1574)
+
+* Added a new advanced configuration to allow users to add annotations to all chaos pods using the UI. (CHAOS-1465) 
+
+##### Early access
+
+* This release does not include any early access features.
+
+##### Fixed issues
+
+* Improved the UI message returned when users search for a GameDay and the search term is not found. Now the message more accurately states "No GameDay found matching the search term." (CHAOS-1717)
+
+* Previously, users were able to complete a GameDay even when some of the associated experiments were running. This could cause issues because it's not possible to edit or abort those experiments when a GameDay is closed. Now, users must abort running experiments in a GameDay before they can close it. (CHAOS-1713)
+
+#### May 23, 2023, version 0.12.1
+
+##### What's new
+
+* Reports can now be downloaded. (CHAOS-1615)
+
+    * You can now download reports for experiments as well as associated experiment runs. Reports include details about target chaos infrastructure, and execution details for experiment runs.
+
+##### Early access
+
+* Introduction of [Chaos dashboards](/docs/chaos-engineering/configure-chaos-experiments/experiments/dashboards). (CHAOS-719)
+    * Two new dashboards include number of experiments and number of infrastructures by user, as well as statistics of the chaos faults that were executed.
+    * This feature is currently behind a feature flag named `CHAOS_DASHBOARD_ENABLED`. Contact Harness support to enable this feature.
+
+##### Fixed Issues
+
+* Corrected the UI text for the Inactive and Pending states for Linux infrastructure states. (CHAOS-1633)
+
+* Improved the UI text when there are empty search results for Kubernetes or Linux infrastructures. (CHAOS-1629)
+
+* Corrected the UI text for Linux infrastructure screens. (CHAOS-1619) 
+
+* There was an issue where the total number of probes incorrectly came to 0 when an experiment was running in a GameDay. This has been fixed. (CHAOS-1618)
+
+* Fixed a text wrapping issue on the confirmation dialog for deleting a chaos infrastructure. (CHAOS-1578)
 
 #### May 5, 2023, version 0.11.1
 

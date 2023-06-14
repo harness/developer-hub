@@ -10,6 +10,9 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+<Smpno />
 
 This SDK is currently in beta. This topic describes how to use the Harness Feature Flags Apex SDK for your Apex application.
 
@@ -26,7 +29,7 @@ Make sure you read and understand:
 
 ## Version
 
-This SDK is currently in beta. 
+This SDK is currently in **beta version 0.5.1**. 
 
 ## Requirements
 

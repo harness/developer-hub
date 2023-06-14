@@ -16,7 +16,7 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 ## Latest - May 30, 2023, patch release for version 78926
 
-Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and updates to address potential security vulnerabilities.
+Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
 This release includes the following Harness module and component versions.
 
@@ -33,13 +33,15 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.344.13 |
 | LE NG | 67708 |
 
-### Fixed issues
+### What's new
 
 - You can now use an external database with your installation. For more information, go to [Use an external database](/docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database). (SMP-545)
 
+### Fixed issues
+
 - You can now deploy the delegate-minimal image in an air-gapped environment using `useMinimalDelegate` in your `overrides.yaml` file. For more information, got to [Install in an air-gapped environment](/docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/). (SMP-1130)
 
-- The `nodeSelector` in Harness services failed for Redis and was missing in other services.
+- The `nodeSelector` in Harness services failed for Redis and was missing in other services. (SMP-1180)
 
    This issue is fixed. To use Redis `nodeSelector`, update the `overrides.yaml` file.
 
@@ -69,7 +71,7 @@ This release includes the following Harness module and component versions.
 
 #### May 12, 2023, patch release for version 78926
 
-Patch releases for Harness Self-Managed Enterprise Edition include minor bug fixes and updates to address potential security vulnerabilities.
+Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
 This release includes the following Harness module and component versions.
 
@@ -185,7 +187,7 @@ https://github.com/harness/helm-charts/releases/tag/harness-0.5.0
 - Deployments load static files from the application server and no longer attempt to connect to static.harness.io. (SMP-851)
 #### Continuous Integration
 - When you [use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support#step-5-use-github-app-and-secret-in-harness-github-connector), you can now use encrypted text secrets for the **Installation ID** and **Application ID**. (CI-7380)
-#### Continous Delivery & GitOps
+#### Continuous Delivery & GitOps
 - You can no longer delete an infrastructure used in a pipeline or template. (CDS-42182)
 
   This check ensures that you do not remove an entity you are using in your delivery.

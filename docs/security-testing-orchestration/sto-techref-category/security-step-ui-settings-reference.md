@@ -5,7 +5,7 @@ sidebar_position: 1000
 ---
 
 
-Some Security steps include a step palette UI for setting up a scan. This topic describes the settings available in the UI. 
+Some Security steps include a scanner template UI for setting up a scan. This topic describes the settings available in the UI. 
 
 <!-- ============================================================================= -->
 
@@ -19,10 +19,10 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 <!-- ============================================================================= -->
 
 ## Configuring a Security step  
-To set up a scan using the step palette, add a SecurityTests stage to your pipeline. Then add a Security step for the scanner of interest and configure the step using the available options. 
+To set up a scan using the scanner template, add a SecurityTests stage to your pipeline. Then add a Security step for the scanner of interest and configure the step using the available options. 
 
 <details>
-    <summary>Step Palette</summary>
+    <summary>Scanner Template</summary>
 
 ![](static/step-palette-00.png) 
 

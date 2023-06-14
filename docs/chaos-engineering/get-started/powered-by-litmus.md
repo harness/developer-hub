@@ -10,7 +10,7 @@ Harness Chaos Engineering (CE) is powered by the open source CNCF chaos engineer
 
 Go to [Harness CE versus LitmusChaos](#harness-ce-versus-litmuschaos) for a quick comparison.
 
-## Common capabilities of HCE and LitmusChaos
+## Common capabilities of CE and LitmusChaos
 Following are the common features between Litmus and Harness Chaos Engineering:
 
 1. Scalable platform

@@ -14,7 +14,7 @@ export const certifications: CardItem[] = [
       // numberOfCerts: 1,
     },
     {
-      title: "Continuous Delivery & GitOps - Administrator (BETA COMING SOON)",
+      title: "Continuous Delivery & GitOps - Administrator (BETA)",
       module: MODULES.cd,
       type: certType.administrator,
       description:

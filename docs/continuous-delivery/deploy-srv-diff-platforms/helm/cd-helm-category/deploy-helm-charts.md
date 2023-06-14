@@ -395,13 +395,149 @@ To update Helm chart dependencies:
 
 :::info
   
-All dependency repositories must be available and accessible from the Harness delegate(s) used by the deployment.
+All dependency repositories must be available and accessible from the Harness Delegate(s) used by the deployment.
 
 :::
-  
-## Notes
 
-#### Uninstall command flag
+## Service hooks 
+  
+:::note
+
+Currently, this feature is behind the feature flag `CDS_K8S_SERVICE_HOOKS_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Kubernetes and Helm deployments use service hooks to fetch Helm Chart dependencies that refer to Git and other repositories, and install them with the main Helm Chart. 
+
+Harness supports two types of service hooks: preHook and postHook. These are the service hook actions supported by Harness: 
+
+* Fetch files: Service hooks can be triggered before or after the manifest files are fetched. 
+* Manifest templates: Service hooks can be triggered before or after the manifest has been rendered. 
+* Steady state check: Service hooks can be triggered before or after the steady state check.
+
+Each service hook has its own context variable: 
+
+| **Action** | **Context Variable and Description** |
+| :--- | :--- |
+| Fetch files | `$MANIFEST_FILES_DIRECTORY`: The path to the directory from where the manifest files can be downloaded. |
+| Manifest template | `$MANIFEST_FILES_DIRECTORY`: The path to the directory where the original Kubernetes template is located. <br />`$MANIFEST_FILE_OUTPUT_PATH`: The path to the final `manifest.yaml` file. |
+| Steady state check | `$WORKLOADS_LIST`: The comma separated list of all workloads. <br />`$MANAGED_WORKLOADS`: The comma separated list of workloads managed by Harness. <br />`$CUSTOM_WORKLOADS`: The comma separated list of custom workloads. |
+
+You can use service hooks to run additional configurations when carrying out the actions above. For example, when you run a deployment, you must fetch files first. After fetching the files, you can resolve the secrets of those encrypted files using Helm secrets, SOPS, AGE keys, and so on. You can use the context variables above during deployment. For more details, go to [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts).
+
+Here are some sample service hook YAMLs: 
+
+```
+hooks:
+  - preHook:
+      identifier: sample
+      storeType: Inline
+      actions:
+        - FetchFiles
+        - TemplateManifest
+        - SteadyStateCheck
+      store:
+        content: echo "sample Hook for all action"
+```
+
+```
+hooks:
+  - postHook:
+      identifier: dependency
+      storeType: Inline
+      actions:
+        - FetchFiles
+      store:
+        content: |
+          cd $MANIFEST_FILES_DIRECTORY
+          helm repo add test-art-remote https://sample.jfrog.io/artifactory/sample-charts/ --username automationuser --password <+secrets.getValue("reposecret")>
+          helm dependency build
+          cd charts
+```
+
+```
+hooks:
+  - postHook:
+      identifier: cdasd
+      storeType: Inline
+      actions:
+        - FetchFiles
+      store:
+        content: |-
+          source $HOME/.profile
+          cd $MANIFEST_FILES_DIRECTORY
+          echo $MANIFEST_FILES_DIRECTORY
+          export SOPS_AGE_KEY=<+secrets.getValue("agesecret")>
+          helm secrets decrypt secrets.enc.yaml
+          helm secrets decrypt secrets.enc.yaml > secrets.yaml
+```
+
+For more information about Helm dependencies, go to [Helm dependency](https://helm.sh/docs/helm/helm_dependency/) and [Helm dependency update](https://helm.sh/docs/helm/helm_dependency_update/).
+
+### Video summary
+
+<!-- Video:
+https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537-->
+<docvideo src="https://www.loom.com/share/d6b8061648bb4b9fb2afc5142d340537" />
+
+### Use case: Add private repositories as a Helm Chart dependency
+
+1. Add a repository in Helm using the following script: 
+
+   ```
+   helm repo add test-remote-name 
+   https://url.to.chart.example.artifactory/artifactory/harness-helm-charts/ --username 
+   <+secrets.getValue("username")> --password <+secrets.getValue("password")>
+   ```
+2. Add the required name and version of the dependency in the `Chart.yaml` to reference these dependencies. 
+   
+   The repository name starts with `@` followed by the name you used for the repository in your script.
+
+   ```
+   apiVersion: v1
+   appVersion: "1.0"
+   description: A Helm chart for Kubernetes
+   name: todolist
+   version: 0.2.0
+   
+   dependencies:
+     - name: trivy-operator
+       version: "0.1.9"
+       repository: "https://aquasecurity.github.io/helm-charts/"
+     - name: kube-prometheus-stack
+       version: "16.13.0"
+       repository: "@test-art-remote"
+   ```
+
+3. Run the `--dependency-update` command flag in the manifest configuration to update dependencies as shown in the image below:
+   
+   ![](./static/dependency-update.png)
+
+### Use case: Use secrets to encrypt and decrypt files
+
+1. Install [SOPS](https://github.com/mozilla/sops) or [AGE](https://github.com/FiloSottile/age) keys to generate a public key to encrypt files. 
+2. Enter the following commands to encrypt and save your files in your Git repository: 
+   
+   ```
+   export SOPS_AGE_KEY=<"ENTER_YOUR_SOPS_AGE_KEY">
+   sops --encrypt --age $SOPS_AGE_KEY secrets.yaml > secrets.enc.yaml
+   ```
+   This command creates a `secrets.yaml` file.
+3. Enter the following commands to decrypt the `secrets.yaml` file and use it to resolve the values in your Chart:
+   
+   ```
+   cd $MANIFEST_FILES_DIRECTORY    //go to the directory containing manifest-files
+   export SOPS_AGE_KEY=<+secrets.getValue("agesecret")> // export the PRIVATE Key to be used to decrypt
+   sops --decrypt secrets.enc.yaml     // you can decrypt using sops
+   helm secrets decrypt secrets.enc.yaml     // or by using helm secrets
+   helm secrets decrypt secrets.enc.yaml > secrets.yaml    // store the decrypted file in a temporary folder
+   ```
+   
+   Alternatively, run the `--dependency-update -f secrets.yaml` command flag in the manifest configuration to resolve the values as shown in the image below:
+
+   ![](./static/dependency-update-secrets-yaml.png)
+
+## Uninstall command flag
 
 If you want to use the uninstall command in the **Manifest Details**, be aware of the following:
 
@@ -409,10 +545,13 @@ If you want to use the uninstall command in the **Manifest Details**, be aware o
 * If the deployment fails on the very first execution, then Harness will apply the `--uninstall` flag itself. You can see this in the logs under `Wait For Steady State`.
 * If you want to pass in some command flags when Harness performs the `--uninstall`, enter uninstall in **Manifest Details** and enter in the relevant command flags.
 
-#### Authentication for Google Cloud with Helm OCI connector
+## Authentication for Google Cloud with Helm OCI connector
 
  To configure authentication for GCP with a Helm OCI connector, you must provide the username and password to your Google service account.
   
  **Username**: A _json_key or _json_key_base64. We recommend that you use the json_key_base64 to encode your Google service account file to base64.
   
  **Password**: Your Google service account file content.
+ 
+
+

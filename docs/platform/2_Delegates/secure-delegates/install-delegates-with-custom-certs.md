@@ -6,7 +6,7 @@ description: How to install delegates with custom certificates.
 
 This topic explains how to install delegates with custom certificates. There are two aspects of custom certificates:
 1. A certificate for the delegate JAVA process, which makes connections to external systems.
-2. A certificate for the OS itself so if another process, for example, a shell script, is spawned then it has access to custom certificates.
+2. A certificate for the OS itself so if another process such as a shell script is spawned, then it has access to custom certificates.
 
 In this topic we will do the following:
 
@@ -55,7 +55,7 @@ kubectl create secret -n harness-delegate-ng generic mysecret --from-file harnes
    
 4. Add the volume mount with read-only permission:
  
-   ```
+   ```yaml
         volumeMounts:
         - mountPath: /cacerts
           name: custom-truststore
@@ -74,7 +74,7 @@ In this section we will cover how to add certificates to the delegate pod so any
 
 1. Mount these certificates to the delegate pod at `/etc/pki/ca-trust/source/anchors/`:
 
-   ```
+   ```yaml
         volumeMounts:
         - name: certs
           mountPath : "/usr/local/share/ca-certificates/cert1.crt"
@@ -97,9 +97,9 @@ In this section we will cover how to add certificates to the delegate pod so any
    ```
 ## Example `harness-delegate.yaml` file
 
-The following example `harness-delegate.yaml` file includes the changes required to install an immutable delegate with a custom certificate.
+The following example `harness-delegate.yaml` file includes the changes required to install a delegate with a custom certificate.
 
-```
+```yaml
 apiVersion: v1
 kind: Namespace
 metadata:

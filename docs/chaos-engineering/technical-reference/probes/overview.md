@@ -23,7 +23,7 @@ A probe, with its spec defined in the Chaos Engine, is triggered by the Chaos Ru
 
 ### Types
 
-HCE facilitates four types of probes.
+CE facilitates four types of probes.
 
 - **HTTP Probe**: To query health/downstream URIs
 - **Command Probe**: To execute any user-desired health-check function implemented as a shell command
@@ -101,7 +101,7 @@ It is an important metric in evaluating the results of a chaos experiment and ca
 
 ## Probe status and deriving inferences
 
-The litmus chaos experiments run the probes defined in the ChaosEngine and update their stage-wise success in the ChaosResult custom resource, with details including the overall **probeSuccessPercentage** (a ratio of successful checks v/s total probes) and failure step, where applicable. The success of a probe is dependent on whether the expected status/results are met and also on whether it is successful in all the experiment phases defined by the probe’s execution mode. For example, probes that are executed in “Edge” mode, need the checks to be successful both during the pre-chaos & post-chaos phases to be declared as successful.
+The chaos experiments run the probes defined in the ChaosEngine and update their stage-wise success in the ChaosResult custom resource, with details including the overall **probeSuccessPercentage** (a ratio of successful checks v/s total probes) and failure step, where applicable. The success of a probe is dependent on whether the expected status/results are met and also on whether it is successful in all the experiment phases defined by the probe’s execution mode. For example, probes that are executed in “Edge” mode, need the checks to be successful both during the pre-chaos & post-chaos phases to be declared as successful.
 
 The pass criteria for an experiment is the logical conjunction of all probes defined in the ChaosEngine and an inbuilt entry/exit criteria. Failure of either indicates a failed hypothesis and is deemed experiment failure.
 

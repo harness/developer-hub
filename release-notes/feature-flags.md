@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-05-25T10:00:25
+date: 2023-06-09T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -11,19 +11,35 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Review the notes below for details about recent changes to Harness Feature Flags, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
+Review the notes below for details about recent changes to Harness Feature Flags (FF), NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 
 :::info note
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - May 25, 2023
+## Latest - June 9, 2023
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-This release does not include new features.
+
+#### Feature Flags SDKs
+
+* To aid in debugging, we added a list of codes logged for each lifecycle of the SDK. (FFM-7363)
+
+  Some of the lifecycle events these codes cover are:
+
+  * Initialization
+  * Authentication
+  * Polling
+  * Streaming
+  * Evaluation
+  * Metrics
+  * Close
+
+For a full list of codes, go to [Troubleshooting](/docs/feature-flags/ff-sdks/server-sdks/python-sdk-reference/#troubleshooting).
+
 
 ```mdx-code-block
   </TabItem>
@@ -37,19 +53,21 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-#### Feature Flags server
-
-The **FF server** has been updated to version **1.1071.0** with the following updates.
-
-* For customers with a large volume of targets (in the millions), the Target page load time could be slow. Harness has introduced additional indexes to improve the response time of this page. (FFM-7988)
-
-* There was an issue when Git Sync was first configured, a sync was not attempted until a flag was changed or a new one was created. With this fix, a sync is immediately attempted when you configure Git Sync, and the existing flags in your project are backed up to the remote file. (FFM-7681)
-
 #### Feature Flags SDKs
 
-The **Python** server SDK has been updated to version **1.1.12** with the following update.
+The **Python** server SDK has been updated to version **1.1.15** with the following update.
 
-*  There was an issue where if an error occurred when processing a new stream event, the SDK could potentially log a blank string. This issue has been fixed and the SDK now logs these errors correctly. (FFM-8015)
+* Previously, the SDK crashed if `client.close()` was called at any point before a stream event was sent to the SDK. With this fix, the SDK closes all threads correctly. (FFM-7363)
+
+#### Feature Flags UI
+
+* In the user onboarding flow, the Create a New Flag button did not behave as expected. This issue has been fixed. (FFM-8019)
+
+* Previously, a user could select Feature Flags in Harness without having a license, and would then get a 404 error. Now, users only see the FF module if they have an active license (including a free license). (FFM-8002)
+
+* Previously, there was an edge case where an extremely large number of pages in a UI listing could cause performance degradation. This issue has been fixed, and page numbering is now disabled if the page count exceeds 1000 pages. (FFM-7993)
+
+* There was an issue where toggling between the Targets and Target Groups pages caused the new page to re-render. This issue has been fixed. (FFM-7965)
 
 ```mdx-code-block
   </TabItem>
@@ -60,6 +78,95 @@ The **Python** server SDK has been updated to version **1.1.12** with the follow
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 7, 2023
+
+##### What's new
+
+This release does not include new features. 
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+* The **Node.js** server SDK has been updated to version **1.2.17** with the following update.
+
+  * Previously, when `client.close()` was called, the SSE stream was not terminated. This fix ensures that the SSE stream is properly terminated. (FFM-8116)
+
+#### June 5, 2023
+
+##### What's new
+
+###### Feature Flags SDKs
+
+* The **Python** server SDK has been updated to version **1.14** with the following updates.
+
+  * The SDK now sends extra headers to backend requests to aid in diagnostics. (FFM-7362)
+
+  * The SDK now retries on failed client authentication requests for specific HTTP errors. If client authentication fails, the SDK serves the default values you provide in `variation` calls. (FFM-7177)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+This release does not include fixed issues.
+
+#### June 1, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
+* Previously, display of the FF module depended on an internal Harness feature flag. Now, display of the FF module is instead based on having an active license (including 'free'). (FFM-7866)
+
+* Previously when a new user was onboarding in the Feature Flags page, when they selected **Get Started**, they saw a dropdown of flags, even though they hadn't created any flags yet. Now, when users do not have any existing flags, they see a text box that prompts them to create one.
+
+###### Feature Flags SDKs
+
+* The **iOS** client SDK has been updated to version **1.0.4** with the following updates.
+
+  * Fixed the stream connection to have a read timeout of 60 seconds. This enables stale connections to be detected and closed, and retries to be started for polling/SSE connections. (FFM-8051)
+  * Fixed a nil pointer dereference bug that caused the SDK to crash under certain conditions. (FFM-8034)
+
+#### May 25, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server
+
+The **FF server** has been updated to version **1.1071.0** with the following updates.
+
+* For customers with a large volume of targets (in the millions), the Target page load time could be slow. Harness has introduced additional indexes to improve the response time of this page. (FFM-7988)
+
+* There was an issue when Git Sync was first configured, a sync was not attempted until a flag was changed or a new one was created. With this fix, a sync is immediately attempted when you configure Git Sync, and the existing flags in your project are backed up to the remote file. (FFM-7681)
+
+###### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.1.12** with the following update.
+
+*  There was an issue where if an error occurred when processing a new stream event, the SDK could potentially log a blank string. This issue has been fixed and the SDK now logs these errors correctly. (FFM-8015)
 
 #### May 24, 2023
 
@@ -295,6 +402,9 @@ This release does not include early access features.
   * Added a Ruby on Rails example in the SDK [repository](https://github.com/harness/ff-ruby-server-sdk). (FFM-6926)
   * Disabling the metrics processor didn't disable entries being written to the queue, causing an eventual memory leak. This fix corrects this behavior. (FFM-6965)
   * Added TLS support to the SDK and updated the documentation in the SDK [repository](https://github.com/harness/ff-ruby-server-sdk).
+
+* The **Apex** server SDK has been updated to version **beta 0.5.1** with the following update.
+  * The JSON parsing code was unable to parse the fields `createdAt` and `modifiedAt` in the Target Segment response, because the values were too large for an Integer data type. This issue has been fixed. (FFM-7812)
 
 #### April 4, 2023
 

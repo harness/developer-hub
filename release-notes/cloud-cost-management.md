@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-05-31T10:00
+date: 2023-06-09T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -16,42 +16,37 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - May 29, 2023, version 79600
+## Latest - June 09, 2023, version 79701
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-
 ### What's new
 
-**Azure VM recommendations**
-
-  Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
-
-
+This release does not include any new features.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-
 ### Early access
 
-  This release does not include any early access features.
+**Propagate force cool down** (CCM-12338)
+  
+  You can now propagate force cool down from primary rule to dependent rules.
 
+  Earlier, when stopping a rule from the UI, you had to stop its dependant rules one by one. With this enhancement, you can propagate the stop operation to dependant rules as well. 
+  
+  Propagating cool down to dependant rules is optional. You can stop the primary rule with or without propagating cool down to dependant rules.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
-
 ### Fixed issues
-  
-* The recommendations for workloads with containers that do not have properly set limits and requests displayed a value of -1 or null. (CCM-11765).
 
-  This issue has been resolved.
-
+This release does not include any fixed issues.
   
 ```mdx-code-block
   </TabItem>
@@ -63,20 +58,50 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <details>
 <summary>2023 releases</summary>
 
-#### May 24, 2023, version 79505
+#### June 06, 2023, version 79601
 
 ##### What's new
 
-This release does not include any new features.
+**Cost Category enhancement** (CCM-12585)
+
+  When building a cost category, it is now possible to incorporate another cost category as a rule. However, there are important considerations to keep in mind when using a cost category within your rule. 
+  
+   * You cannot include a nested cost category as a rule within another cost category if either of these cost categories contains a shared bucket.
+   * You cannot add the same cost category as a rule in the cost bucket.
+   * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
+   * You can nest cost categories to a maximum of 20 levels.
 
 ##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+  
+* Budgets that contain the `/` character in their names were previously experiencing issues with correctly opening the budget details page. (CCM-12062)
+
+  Previously, when the budget name appended to the URL contained the `/` character, it was treated as a separate route. This caused the browser to fail in loading the corresponding budget details. Now, before appending the budget name to the URL, it is properly encoded. This ensures that the browser handles the `/` character correctly, allowing the page to load as expected.
+
+#### May 29, 2023, version 79505
+
+##### What's new
+
+**Azure VM recommendations**
+
+  Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
+
+##### Early access
+
 This release does not include any early access features.
 
 ##### Fixed issues
 
+* The recommendations for workloads with containers that do not have properly set limits and requests displayed a value of -1 or null. (CCM-11765).
+
+  This issue has been resolved.
+
 * The users encountered an issue where they were unable to toggle the **Hide progress** page and **Dry run** options. Each time the toggle button was clicked, an error was thrown, preventing them from enabling or disabling these options successfully. (CCM-12438)
 
-  The UI was relying on a deprecated API to update the rule, causing issues with toggling the values. This issue has been resolved by replacing the older API with a new v2 API. This update restored the functionality, allowing users to effortlessly toggle the values.
+  The UI was relying on a deprecated API to update the rule, causing issues with toggling the values. This issue has been resolved by replacing the older API with a new v2 API. This update restored the functionality, allowing users to toggle the values.
 
 * The ALB that was created in AWS did not appear on the Harness AutoStopping rules creation page. (CCM-12517)
 
@@ -85,6 +110,11 @@ This release does not include any early access features.
 * The AutoStopping fixed schedule did not execute the rule as configured in the schedule settings. (CCM-12396)
 
   The issue was identified as missing triggers from Dkron, an external service, corresponding to the created schedule. To address this, a backup job was created. This backup job is designed to trigger the required operation in case the triggers from Dkron are missed. By implementing this solution, the system ensures that the necessary operation will still be executed even if the triggers from Dkron are not received.
+
+* The users were not able to create an Azure Application Gateway successfully as the Azure function package was corrupt. (CCM-12550)
+
+  Rolling back to the previous function package fixed this issue.
+
 
 #### May 19, 2023, version 79400
 
@@ -104,19 +134,24 @@ This release does not include any early access features.
 
 * An error occurred while attempting to save an AutoStopping rule with multiple proxy configurations and a custom domain in the GCP proxy. (CCM-12048)
 
-  Saving the AutoStopping rule did not append custom domain providers for non-AWS cloud providers. This resulted in a validation error at the back-end. This issue has been resolved. The required field `custom_domain_provider` is now being set for every cloud provider.
+  Saving the AutoStopping rule did not append custom domain providers for non-AWS cloud providers. This resulted in a validation error at the back-end. This issue has been resolved. The required field `custom_domain_provider` is now being set for all cloud providers.
 
 
 
 #### May 05, 2023, version 79300
 
 ##### What's new
+
 This release does not include any new features.
 
 
 ##### Early access
-This release does not include any early access features.
 
+**Asset Governance**
+
+The Asset Governance feature now includes support for access control through Role-Based Access Control (RBAC). This enhancement allows more granular control and management of permissions. For more information, go to [Asset Governance RBAC](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov). 
+
+This feature is behind the feature flag, `CCM_ENABLE_CLOUD_ASSET_GOVERNANCE_UI`.
 ##### Fixed issues
 
 * Previously, the budget amount in the monthly fields did not default to zero when selecting the yearly budget period. (CCM-12289)
@@ -159,6 +194,7 @@ This release does not include any early access features.
 * The **Recommendations** page displayed incorrect savings value. (CCM-12082)
 
   This issue has been resolved. The value in the grid now matches with the widgets.
+
 * Spike in BigQuery cost. (CCM-12027)
 
   Limited the data queried by users with restricted access (granular RBAC enabled) by implementing a time filter of 30 days. These users can retrieve recommendations only from the past 30 days, effectively reducing the overall size of the query results.
