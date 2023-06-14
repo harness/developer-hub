@@ -171,7 +171,7 @@ See [Security Step Settings Reference](../security-testing-orchestration/sto-tec
 
 ## Feature Flags
 
-Harness Feature Flags support [client-side and server-side SDKs](../feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.
+Harness Feature Flags supports [client-side and server-side SDKs](../feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.
 
 ### Supported client-side SDKs
 
