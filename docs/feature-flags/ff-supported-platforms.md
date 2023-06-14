@@ -5,7 +5,7 @@ sidebar_label: What's supported
 sidebar_position: 10
 ---
 
-Harness Feature Flags support [client-side and server-side SDKs](../feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.
+Harness Feature Flags support [client-side and server-side SDKs](/docs/feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.
 
 ## Supported client-side SDKs
 
