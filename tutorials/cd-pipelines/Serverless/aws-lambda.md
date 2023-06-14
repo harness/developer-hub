@@ -236,4 +236,4 @@ Finally, it's time to execute your pipeline.
 
 ### Congratulations!🎉
 
-You've just learned how to use Harness CD to deploy an application on aws lambda using serverless.com infrastructure. 
+You've just learned how to use Harness CD to deploy an application on aws lambda. 
