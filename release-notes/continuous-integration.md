@@ -22,7 +22,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-### Licensing counts (CI-8025)
+### License usage count includes commit authors for manual builds (CI-8025)
+
+For [license usage](/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt#license-usage) purposes, an _active developer_ is defined as an active codebase committer observed in the builds managed by Harness CI. In keeping with this definition, commit authors are now counted as active developers for builds started manually (by selecting **Run** in the Harness UI), regardless of the current logged-in user. Previously, manual builds recorded the logged-in user as the active developer instead of the commit author.
 
 ### Harness Cloud Linux amd64 image update (CI-7537)
 
@@ -67,7 +69,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
   <TabItem value="Early access">
 ```
 
-With the feature flag `CI_OUTPUT_VARIABLES_AS_ENV` enabled, output variables from steps are automatically available as environment variables for other steps in the same Build (`CI`) stage. (CI-7817, ZD-39203)
+Output variables from steps can be available as environment variables for other steps in the same Build (`CI`) stage. This functionality is behind a feature flag, `CI_OUTPUT_VARIABLES_AS_ENV`. (CI-7817, ZD-39203)
 
 This means that, if you have a Build stage with three steps, an output variable produced from step one is automatically available as an environment variable for steps two and three. In other steps in the same stage, you can refer to the output variable by it's key without additional identification. For example, an output variable called `MY_VAR` can be referenced later as simply `$MY_VAR`. Without this feature flag enabled, you must use an [expression](/docs/platform/references/runtime-inputs/#expressions) to reference where the variable originated, such as `<+steps.stepID.output.outputVariables.MY_VAR>`.
 

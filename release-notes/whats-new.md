@@ -21,7 +21,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ### Continuous Integration, version 40xx
 
-#### Licensing counts (CI-8025)
+#### License usage count includes commit authors for manual builds (CI-8025)
+
+For [license usage](/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt#license-usage) purposes, an _active developer_ is defined as an active codebase committer observed in the builds managed by Harness CI. In keeping with this definition, commit authors are now counted as active developers for builds started manually (by selecting **Run** in the Harness UI), regardless of the current logged-in user. Previously, manual builds recorded the logged-in user as the active developer instead of the commit author.
 
 #### Harness Cloud Linux amd64 image update (CI-7537)
 
