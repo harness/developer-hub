@@ -8,7 +8,7 @@ sidebar_position: 150
 Currently, this feature is behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-You can scan container images and repositories using [Fossa](https://www.fossa.com), a scanner that detects license violations, compliance alerts, and security vulnerabilities in open-source projects. 
+You can scan container images and repositories using [Fossa](https://www.fossa.com), a scanner that detects security vulnerabilities and other issues in open-source projects. 
 
 
 ## Before you begin
@@ -108,14 +108,7 @@ import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-
 
 ### Ingestion File
 
-```mdx-code-block
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
-
-<StoSettingIngestionFile  />
-
-
-
+The Fossa JSON results file to ingest. 
 
 <!--   Log Level, CLI flags, and Fail on Severity ------------------------------------------------------------------------------------------------- -->
 
@@ -161,3 +154,61 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 * [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
+## YAML pipeline example
+
+This pipeline pulls a Fossa JSON data file from a GitHub repo and then ingests it. 
+
+![](./static/fossa-scan-pipeline.png)
+
+
+```yaml
+pipeline:
+  name: smp-fossa
+  identifier: fossastp
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: fossa-test
+        identifier: fossatest
+        type: SecurityTests
+        spec:
+          cloneCodebase: false
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Pull File
+                  identifier: Pull_File
+                  spec:
+                    connectorRef: MY_DOCKER_CONNECTOR
+                    image: alpine/curl
+                    shell: Sh
+                    command: |-
+                      curl https://github.com/myorg/fossa-scans/latest.json > /harness/latest.json
+                      cat /harness/latest.json
+              - step:
+                  type: Fossa
+                  name: Fossa_1
+                  identifier: Fossa_1
+                  spec:
+                    imagePullPolicy: Always
+                    mode: ingestion
+                    config: default
+                    target:
+                      type: repository
+                      name: test
+                      variant: test
+                    ingestion:
+                      file: /harness/latest.json
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: MY_DELEGATE
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+
+```
