@@ -10,7 +10,21 @@ Review the notes below to learn about the early access (aka BETA) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 09, 2023
+## Latest - June 15, 2023
+
+### Continuous Delivery, version 79600
+
+- Scheduled automatic approvals have been added to manual approval steps. (CDS-69415)
+  
+  This functionality is behind a feature flag, `CDS_AUTO_APPROVAL`.
+
+  You can configure a manual approval step to automatically approve at a specific date and time.
+
+  <docimage path={require('./static/058d3e80cc8f95965e51010541d0c28f77865e484f8a84beea205b49172c658d.png')} width="60%" height="60%" title="Click to view full size image" />    
+
+  For more details, go to [Automatic Approvals](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/#automatic-approvals).
+
+## June 09, 2023
 
 ### Cloud Cost Management, version 79701
 
