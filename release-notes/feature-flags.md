@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-06-07T10:00:25
+date: 2023-06-09T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -17,14 +17,29 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - June 7, 2023
+## Latest - June 9, 2023
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-This release does not include new features. 
+#### Feature Flags SDKs
+
+* To aid in debugging, we added a list of codes logged for each lifecycle of the SDK. (FFM-7363)
+
+  Some of the lifecycle events these codes cover are:
+
+  * Initialization
+  * Authentication
+  * Polling
+  * Streaming
+  * Evaluation
+  * Metrics
+  * Close
+
+For a full list of codes, go to [Troubleshooting](/docs/feature-flags/ff-sdks/server-sdks/python-sdk-reference/#troubleshooting).
+
 
 ```mdx-code-block
   </TabItem>
@@ -40,9 +55,19 @@ This release does not include early access features.
 
 #### Feature Flags SDKs
 
-* The **Node.js** server SDK has been updated to version **1.2.17** with the following update.
+The **Python** server SDK has been updated to version **1.1.15** with the following update.
 
-  * Previously, when `client.close()` was called, the SSE stream was not terminated. This fix ensures that the SSE stream is properly terminated. (FFM-8116)
+* Previously, the SDK crashed if `client.close()` was called at any point before a stream event was sent to the SDK. With this fix, the SDK closes all threads correctly. (FFM-7363)
+
+#### Feature Flags UI
+
+* In the user onboarding flow, the Create a New Flag button did not behave as expected. This issue has been fixed. (FFM-8019)
+
+* Previously, a user could select Feature Flags in Harness without having a license, and would then get a 404 error. Now, users only see the FF module if they have an active license (including a free license). (FFM-8002)
+
+* Previously, there was an edge case where an extremely large number of pages in a UI listing could cause performance degradation. This issue has been fixed, and page numbering is now disabled if the page count exceeds 1000 pages. (FFM-7993)
+
+* There was an issue where toggling between the Targets and Target Groups pages caused the new page to re-render. This issue has been fixed. (FFM-7965)
 
 ```mdx-code-block
   </TabItem>
@@ -53,6 +78,24 @@ This release does not include early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 7, 2023
+
+##### What's new
+
+This release does not include new features. 
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+* The **Node.js** server SDK has been updated to version **1.2.17** with the following update.
+
+  * Previously, when `client.close()` was called, the SSE stream was not terminated. This fix ensures that the SSE stream is properly terminated. (FFM-8116)
 
 #### June 5, 2023
 

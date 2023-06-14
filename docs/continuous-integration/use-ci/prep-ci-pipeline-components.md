@@ -78,7 +78,7 @@ Harness uses [code repo connectors](/docs/category/code-repo-connectors) to conn
 
 ### Build infrastructure
 
-All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me?](./set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me](./set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 :::tip Tutorials
 

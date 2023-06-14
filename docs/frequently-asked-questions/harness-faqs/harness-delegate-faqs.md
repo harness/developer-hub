@@ -100,7 +100,7 @@ Harness provides different types of delegates to give you flexibility in how you
 
 You are not limited to using a delegate of the same type as your deployment platform, although that is more complicated to set up initially.
 
-For delegates types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+For delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
 
 #### Where do I install the Harness Delegate?
 

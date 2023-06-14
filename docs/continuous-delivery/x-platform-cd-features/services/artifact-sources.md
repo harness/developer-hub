@@ -2390,7 +2390,7 @@ You can use Github Packages as artifacts for deployments.
 
 Currently, Harness supports only the packageType as `docker(container)`. Support for npm, maven, rubygems, and nuget is coming soon. 
 
-You connect to Github using a Harness [Github Connector](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector), username, and Personal Access Token (PAT).
+You connect to GitHub using a Harness [GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference), username, and personal access token (PAT).
 
 :::tip
 
