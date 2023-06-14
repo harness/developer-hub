@@ -14,7 +14,7 @@ import delete_project from './static/delete-project.png'
 ```
 Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes).
 
-## Latest - June 13, 2023, version 79230
+## Latest - June 14, 2023, version 79230
 
 ```mdx-code-block
 <Tabs>

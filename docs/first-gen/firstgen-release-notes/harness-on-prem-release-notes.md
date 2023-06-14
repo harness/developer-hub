@@ -14,7 +14,7 @@ For Harness SaaS release notes, see [Harness SaaS Release Notes](https://develop
 
 Release notes are displayed with the most recent release first.
 
-## June 13, 2023, version 79230
+## June 14, 2023, version 79230
 
 Delegate: 78924
 
