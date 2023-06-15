@@ -1,7 +1,7 @@
 ---
 title: Harness Kubernetes services
 description: Define a Kubernetes service.
-sidebar_position: 1
+sidebar_position: 3
 helpdocs_topic_id: 2nx0de3w99
 helpdocs_category_id: wfnd8y0ifs
 helpdocs_is_private: false

@@ -1,7 +1,7 @@
 ---
 title: AWS Lambda deployments
 description: Deploy your Lambda functions using Harness CD.
-sidebar_position: 1
+sidebar_position: 3
 ---
 
 :::note

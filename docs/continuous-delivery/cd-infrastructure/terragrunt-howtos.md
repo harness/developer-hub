@@ -1,7 +1,7 @@
 ---
 title: Terragrunt provisioning
-description: Harness has first-class support for Terragrunt as an infrastructure provisioner.
-sidebar_position: 1
+description: Learn about the Terragrunt steps you can use in you CD stage, and how these steps are commonly used together.
+sidebar_position: 300
 ---
 
 
@@ -15,7 +15,7 @@ Harness lets you use Terragrunt to provision infrastructure as part of your depl
 
 Harness can provision any resource that is supported by Terragrunt and the related Terraform provider or plugin.
 
-If you want to use Terraform without Terragrunt, Harness supports that, too. See [Terraform how-tos](../../cd-infrastructure/terraform-infra/terraform-how-tos).
+If you want to use Terraform without Terragrunt, Harness supports that, too. See [Terraform how-tos](./terraform-infra/terraform-how-tos).
 
 ### Using Terragrunt steps together
 
@@ -36,7 +36,7 @@ Here's how to use all the steps together:
 4. Terragrunt Rollback step:
    1. Reference the Terragrunt Apply or Plan step using the same **Provisioner Identifier**.
 
-<!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
+<!-- ![](../static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
 <docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
@@ -155,7 +155,7 @@ For the Terragrunt Destroy step to destroy the plan from the Terragrunt Plan ste
 
 Here's an example of how the **Provisioner Identifier** is used across steps:
 
-<!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
+<!-- ![](../static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
 <docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
@@ -261,7 +261,7 @@ The **Provisioner Identifier** can be used with other steps to perform common Te
 
 Here's an example of how the **Provisioner Identifier** is used across steps:
 
-<!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
+<!-- ![](../static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
 <docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
@@ -280,7 +280,7 @@ Here, you'll add a connection to the Terragrunt script repo.
 1. Click **Specify Config File** or click the edit icon. The **Terragrunt Config File Store** settings appear.
 2. Click the provider where your files are hosted.
     
-    ![picture 4](../../cd-advanced/terragrunt/static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png)
+    ![picture 4](../cd-advanced/terragrunt/static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png
 3. Select or create a [Git connector](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) for your repo.
 4. Once you have selected a connector, click **Continue**.
 5. In **Config File Details**, provide the Git repo details.
@@ -354,7 +354,7 @@ The most common use of **Provisioner Identifier** is to destroy resources from a
 
 Here's an example of how the **Provisioner Identifier** is used across steps:
 
-<!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
+<!-- ![](../static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
 <docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
@@ -404,7 +404,7 @@ Provisioning can be time-consuming so use at least `5m`.
 
 Here's an example of how the **Provisioner Identifier** is used across steps:
 
-<!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
+<!-- ![](../static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
 <docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
@@ -444,7 +444,7 @@ The **Configuration File Repository** setting is available in the Terragrunt Pla
 1. Click **Specify Config File** or click the edit icon. The **Terragrunt Config File Store** settings appear.
 2. Click the provider where your files are hosted.
     
-    ![picture 4](../../cd-advanced/terragrunt/static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png)
+    ![picture 4](../cd-advanced/terragrunt/static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png
 3. Select or create a [Git connector](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) for your repo.
 4. Once you have selected a connector, click **Continue**.
    

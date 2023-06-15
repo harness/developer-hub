@@ -1,7 +1,7 @@
 ---
 title: Google Cloud Functions deployments
 description: Deploy single-purpose functions to Google Cloud.
-sidebar_position: 14
+sidebar_position: 800
 ---
 
 This topic explains how to deploy new Cloud Functions to Google Cloud using Harness.

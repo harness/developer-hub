@@ -1,7 +1,7 @@
 ---
 title: Kubernetes infrastructure
 description: Specify the Kubernetes cluster you want to target for your deployment.
-sidebar_position: 1
+sidebar_position: 4
 helpdocs_topic_id: 0ud2ut4vt2
 helpdocs_category_id: y2cksg5q0x
 helpdocs_is_private: false

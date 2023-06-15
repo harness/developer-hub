@@ -1,7 +1,7 @@
 ---
 title: Use Kustomize for Kubernetes deployments
 description: Use kustomizations in your Kubernetes deployments.
-sidebar_position: 1
+sidebar_position: 2
 helpdocs_topic_id: 98u2hvzj0t
 helpdocs_category_id: hpy9lyd9b3
 helpdocs_is_private: false
@@ -51,7 +51,7 @@ Your Delegate hosts, typically a pod in the target cluster, require outbound HTT
 
 The Delegate you use for Kustomize deployments must have access to the Git repo containing your Kustomize and resource files.The remainder of this topic assumes you have a running Harness Delegate and Cloud Provider Connector.
 
-For details on setting those up, see [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure)
+For details on setting those up, see [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
 
 ## Add manifests and kustomization
 

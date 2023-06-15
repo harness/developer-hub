@@ -1,7 +1,7 @@
 ---
 title: Run Jenkins jobs in CD pipelines
-description: This topic shows you how to run Jenkins jobs in CD stages.
-sidebar_position: 3
+description: Run Jenkins jobs in CD stages.
+sidebar_position: 2
 ---
 
 This topic describes how to use the Jenkins step in a Harness CD pipeline.
@@ -71,7 +71,7 @@ Runtime inputs and expressions are supported for the **Value** only. You can ref
 
 | **Job parameters from Jenkins step** | **Executed Jenkins step inputs** |
 | --- | --- |
-| ![](./static/jenkinsparamfromjenkins.png) | ![](./static/xecutedjenkinsinputs.png) |
+| ![](./static/jenkinsparamfromjenkins.png) | ![].../static/xecutedjenkinsinputs.png) |
 
 ## Treat unstable Jenkins status as success
 
