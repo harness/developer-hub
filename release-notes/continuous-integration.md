@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-06-15T10:00:10
+date: 2023-06-19T10:00:10
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Continuous In
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 15, 2023, version 40xx
+## Latest - June 19, 2023, version 40xx
 
 ```mdx-code-block
 <Tabs>
@@ -63,11 +63,17 @@ If you have pipelines running on Harness Cloud that rely on specific component v
   <TabItem value="Early access">
 ```
 
-Output variables from steps can be available as environment variables for other steps in the same Build (`CI`) stage. This functionality is behind a feature flag, `CI_OUTPUT_VARIABLES_AS_ENV`. (CI-7817, ZD-39203)
+#### Output variables automatically become environment variables (CI-7817, ZD-39203)
+
+Output variables from steps can be available as environment variables for other steps in the same Build (`CI`) stage. This functionality is behind a feature flag, `CI_OUTPUT_VARIABLES_AS_ENV`.
 
 This means that, if you have a Build stage with three steps, an output variable produced from step one is automatically available as an environment variable for steps two and three. In other steps in the same stage, you can refer to the output variable by its key without additional identification. For example, an output variable called `MY_VAR` can be referenced later as simply `$MY_VAR`. Without this feature flag enabled, you must use an [expression](/docs/platform/references/runtime-inputs/#expressions) to reference where the variable originated, such as `<+steps.stepID.output.outputVariables.MY_VAR>`.
 
 For more information on this feature, go to the documentation on [Output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables).
+
+#### Remote debugging enhancements (CI-8135, CI-8048)
+
+**Re-run in Debug Mode** now supports Python and Powershell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
 
 ```mdx-code-block
   </TabItem>

@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-05-23T10:00
+date: 2023-06-19T10:00
 sidebar_position: 2
 ---
 
@@ -10,7 +10,7 @@ Review the notes below to learn about the early access (aka BETA) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 15, 2023
+## Latest - June 19, 2023
 
 ### Continuous Integration, version 40xx
 
@@ -23,6 +23,10 @@ With this feature flag enabled, output variables from steps are automatically av
 In other steps in the same stage, you can refer to the output variable by its key without additional identification. For example, an output variable called `MY_VAR` can be referenced later as simply `$MY_VAR`. Without this feature flag enabled, you must use an [expression](/docs/platform/references/runtime-inputs/#expressions) to reference where the variable originated, such as `<+steps.stepID.output.outputVariables.MY_VAR>`.
 
 For more information on this feature, go to the documentation on [Output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables).
+
+#### Remote debugging enhancements (CI-8135, CI-8048)
+
+**Re-run in Debug Mode** now supports Python and Powershell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
 
 ## June 09, 2023
 
