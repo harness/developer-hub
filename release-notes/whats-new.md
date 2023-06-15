@@ -1963,7 +1963,7 @@ The Build UI now shows a new VM icon. (CI-4630)
         * PagerDuty Notifications
         * Microsoft Teams Notifications
 
-  For more information, refer to [Manage Notifications](https://developer.harness.io/docs/category/notifications-1/), [Add a Pipeline Notification Strategy](https://developer.harness.io/docs/continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events/).
+  For more information, refer to [Manage Notifications](https://developer.harness.io/docs/category/notifications), [Add a Pipeline Notification Strategy](https://developer.harness.io/docs/continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events/).
 
 - Improved error messages in the console view for Pipeline execution.​ (PIE-3915, ZD-31031)
 
