@@ -127,8 +127,16 @@ To save Docker images, do the following:
     ./harness-airgap-images.sh -r <REGISTRY.YOURDOMAIN.COM:PORT> -f harness-airgapped.tgz
     ````
 
+## Set Docker architecture
+
+Air-gapped environment installation requires Docker build architecture amd64.
+
+Run the following command before you download and push Helm charts.
+
+ `export DOCKER_DEFAULT_PLATFORM=linux/amd64`
+
 ## Download and push Helm charts
-After you save Docker images to your private registry, you must download the Helm charts and push them to your repository.
+After you save Docker images to your private registry and set the build architecture, you must download the Helm charts and push them to your repository.
 
 To download and push Helm charts:
 
