@@ -453,8 +453,6 @@ graph TD
   end
 ```
 
-## See also
+## Caching with non-private ACL
 
-* [Harness CI for UI Builds](https://harness.io/blog/continuous-integration/harness-cie-ui-builds/)
-* [Share CI data across steps and stages](./share-ci-data-across-steps-and-stages.md)
-* [Cache Intelligence](./cache-intelligence.md)
+If your bucket's ACL is blank, set to `bucket-owner-full-control`, or set to some other value than `private`, you must add a [stage variable]() called `PLUGIN_ACL` and set the value to the relevant ACL value.
