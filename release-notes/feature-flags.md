@@ -26,7 +26,7 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 #### Feature Flags SDKs
 
-Updated the ff-flutter-client-sdf version 2.0.0 to use null safety. (FFM-8222)
+Updated the ff-flutter-client-sdk version 2.0.0 to use null safety. (FFM-8222)
 
 Flutter 2.0 and Dart 2.12 and later are required. For more information, go to [https://dart.dev/null-safety](https://dart.dev/null-safety).
 
