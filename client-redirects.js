@@ -91,11 +91,6 @@ module.exports = {
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure",
     },
 
-    {
-      from: "/docs/continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines",
-      to: "/docs/continuous-delivery/x-platform-cd-features/advanced/run-jenkins-jobs-in-cd-pipelines",
-    },
-
     // Created by aimurphy for branch doc-2550 on June 9, 2023
 
     {
@@ -2006,11 +2001,6 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure",
-      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure",
-    },
-
-    {
       from: "/docs/continuous-delivery/cd-advanced/cd-helm-category/use-a-local-helm-chart",
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/use-a-local-helm-chart",
     },
@@ -2123,11 +2113,6 @@ module.exports = {
     {
       from: "/docs/continuous-delivery/cd-execution/cd-general-steps/run-a-script-on-multiple-target-instances",
       to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/run-jenkins-jobs-in-cd-pipelines",
-      to: "/docs/continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines",
     },
 
     {
