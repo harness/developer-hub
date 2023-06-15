@@ -1,8 +1,8 @@
 The following table lists the major supported features for Harness Self-Managed Enterprise Edition offerings. For supported features, go to [Supported features and integrations](/docs/self-managed-enterprise-edition/introduction/supported-features-and-integrations).
 
-| Solution                                                          | Supported Platform           | Connected | HA | Monitoring          | Disaster Recovery | Auto Restart | Features Under Controlled Release 
-| ----------------------------------------------------------------- | ---------------------------- | ----------- | ---------------- | ------------------- | ----------------- | ------------ | --------------------------------- |
-| Kubernetes Cluster                   | Kubernetes - GKE - AKS - EKS | Yes         | Coming soon              | Prometheus, Grafana | Coming soon        | Supported    |                                   
+Solution| Supported Platform| Connected | HA | Monitoring| Disaster Recovery | 
+| ----------------------------------------------------------------- | ---------------------------- | ----------- | ---------------- | ------------------- | ----------------- | 
+| Kubernetes Cluster| Kubernetes - GKE - AKS - EKS | Yes| Coming soon| Prometheus, Grafana | Coming soon                                  
 
 ### Supported Kubernetes versions for Harness Self-Managed Enterprise Edition
 
