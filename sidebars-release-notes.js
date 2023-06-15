@@ -45,6 +45,15 @@ const sidebars = {
       items: [
         {
           type: "link",
+          label: "All modules",
+          href: "pathname:///release-notes/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
           label: "What's new",
           href: "pathname:///release-notes/whats-new/rss.xml",
           className: "sidebar-item-rss",
