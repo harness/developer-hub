@@ -34,9 +34,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   <docimage path={require('./static/153beccc9216340c35b3e2ca53ad81a35ec15e8b4621cd0402f0adc8372acc45.png')} width="60%" height="60%" title="Click to view full size image" />
   
-  The **Required** options is also enforcement when the variable is defined in a template and the template is included in a pipeline. 
+  The **Required** options is also enforced when the variable is defined in a template and the template is included in a pipeline. 
   
   This feature is supported for pipeline, stage, service, and environment variables.
+- Select a Git branch when executing a pipeline that uses Git Experience. (CDS-68007, ZD-42205, ZD-42453)
+  
+  For pipelines that use Harness Git Experience (also called **remote pipelines**), you can select what Git branch to use when running the pipeline.  
+
+  <docimage path={require('./static/47ce888b8bd290e2d68db294eae373c08dc6185f1e66f6aad00b65f136dda1df.png')} width="60%" height="60%" title="Click to view full size image" />  
 
 ```mdx-code-block
   </TabItem>
@@ -89,21 +94,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   When setting up triggers for selective stage execution, the trigger displayed all of the stages, and not just the selected stages. This issue has now been fixed.
 - Improved usability by adding an underline on the **Save Changes** button. (CDS-70328)
   
-The button now has an underline to help users know it is clickable.	
+  The button now has an underline to help users know it is clickable.	
 - Jenkins step marking voluntary settings as mandatory. (CDS-70071, ZD-44924)
   
   User were unable to save empty values for job parameters in the Jenkins step due to validations present in the UI. This has been fixed now and the incorrect validations have been removed.
 - Provisioners can't be set as runtime inputs or expressions in stage templates.(CDS-69913)
   
   The provisioner setting could not be set as a runtime input or expression in stage templates. This has been fixed and **Provisioners** can now be set as a runtime input or expression.
-- Azure project value was not sent while fetching Azure Artifact versions. (CDS-69585)
-  
-  This issue has been fixed. Support has been added to send the Azure project value while fetching versions.
-- Custom artifact source template values are difficult to. (CDS-69098)
-  
-  The input variables were rendered in limited UI space. Consequently, it was not possible to read the values for the linked custom artifact source template.
-  
-  This issue has been fixed now.
+
 
 ```mdx-code-block
   </TabItem>
