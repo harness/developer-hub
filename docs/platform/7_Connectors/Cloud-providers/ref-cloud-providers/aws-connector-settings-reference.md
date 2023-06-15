@@ -424,7 +424,7 @@ Make sure you've met the following requirements to connect to the EKS cloud conn
   `aws-iam-authenticator` supports the role to be assumed and external ID as arguments. If the connector is configured with a cross-account access and external ID, `kubeconfig` can be modified accordingly.
   ::: 
   
-* You have created a delegate with an immutable images and installed the `aws-iam-authenticator` in the delegate. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types).
+* You have created a delegate with an immutable image type and installed the `aws-iam-authenticator` in the delegate. For more information on delegate types, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types).
     1. Open the `delegate.yaml` file in a text editor.
     2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
     3. Replace `value: ""` with the following script to install `aws-iam-authenticator`. For more information, go to [install AWS IAM authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
