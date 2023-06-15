@@ -4,6 +4,7 @@ title: Linux DNS spoof
 ---
 
 import Ossupport from './shared/note-supported-os.md'
+import FaultPermissions from './shared/fault-permissions.md'
 
 
 Linux DNS spoof injects chaos to mimic DNS resolution on a Linux machine.
@@ -16,6 +17,8 @@ Linux DNS spoof injects chaos to mimic DNS resolution on a Linux machine.
 - Resolves DNS target host names (or domains) to other IPs provided as user input.
 
 <Ossupport />
+
+<FaultPermissions />
 
 ## Fault tunables
 <h3>Mandatory tunables</h3>

@@ -14,6 +14,7 @@ slug: /ci-pipelines/fastest-ci
   tagline="Sign up today to get started for free!"
   link="https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Top-Nav"
   closable={true}
+  target="_blank"
 />
 
 :::info

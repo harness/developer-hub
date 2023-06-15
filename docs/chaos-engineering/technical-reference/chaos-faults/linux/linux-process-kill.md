@@ -4,9 +4,10 @@ title: Linux process kill
 ---
 
 import Ossupport from './shared/note-supported-os.md'
+import FaultPermissions from './shared/fault-permissions.md'
 
 
-Linux process kill kills the target processes running on the Linux machines. It checks the performance of the application or process running on the Linux machine.
+The Linux process kill fault kills the target processes running on the Linux machines. It checks the performance of the application or process running on the Linux machine.
 
 ![Linux process kill](./static/images/linux-process-kill.png)
 
@@ -17,6 +18,8 @@ Linux process kill:
 - Determines the resilience of applications when processes on a Linux machine are unexpectedly killed (or disrupted).
 
 <Ossupport />
+
+<FaultPermissions />
 
 ## Fault tunables
 <h3>Mandatory tunables</h3>

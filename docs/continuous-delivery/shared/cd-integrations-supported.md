@@ -47,7 +47,7 @@ import TabItem from '@theme/TabItem';
     - 1.16
     - 1.27
     - We support what each of the Cloud Providers support. We recommend users to keep their binary versions up to date.
-    - By default Harness ships with kubectl client - 1.24
+    - By default Harness ships with kubectl client - 1.25
   - Tooling:
     - OpenShift - oc client binary
     - Kustomize - kustomize binary
@@ -64,8 +64,8 @@ import TabItem from '@theme/TabItem';
       - Secrets
       - ConfigMap
       - StatefulSet
-      - HorizontalPodAutoScalar is coming soon.
-      - PodDisruptionBudget is coming soon.
+      - HorizontalPodAutoScalar
+      - PodDisruptionBudget
 - **Supported integrations:**
   - Traffic Shifting for Advanced Deployment Strategies:
     - Istio
@@ -111,14 +111,16 @@ The following versions are tested and supported for Kubernetes Canary, Rolling, 
 - 1.22.0
 - 1.23.0
 - 1.24.3
+- 1.24.9
+- 1.25.6
 
 For details on other tools and versions included in Harness, see [Delegate-required SDKs](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-required-sdks).
 
 Guidelines:
 
-- Harness will officially support 3 previous versions from the last stable release. For example, the current most recent stable release is 1.24.3, and so Harness supports 1.23, 1.22, and 1.21.
+- Harness will officially support 3 previous versions from the last stable release. For example, the current most recent stable release is 1.25.6, and so Harness supports 1.24, 1.23, and 1.22.
 - Harness supports any other versions of Kubernetes you are using on a best effort basis.
-- Harness commits to support new minor versions within 3 months of the first stable release. For example, if the stable release of 1.24.3 occurs on August 15th, we will support it for compatibility by November 15th.
+- Harness commits to support new minor versions within 3 months of the first stable release. For example, if the stable release of 1.25.6 occurs on April 15th, we will support it for compatibility by July 15th.
 
 ### Helm notes
 

@@ -151,7 +151,7 @@ Here are some YAML examples and additional information about specific Drone plug
 
 Use the [artifact-metadata-publisher plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish a URL of an artifact file to the [Artifacts tab](../viewing-builds.md).
 
-An example of the **Plugin** step configuration is provided below; however your pipeline must also include steps to upload the file that you want to link to on the Artifacts tab, as demonstrated in the [Publish Allure reports to the Artifact tab tutorial](/tutorials/ci-pipelines/test/allure-report/).
+An example of the **Plugin** step configuration is provided below; however your pipeline must also include steps to upload the file that you want to link to on the Artifacts tab, as demonstrated in the [Publish any URL to the Artifacts tab tutorial](/tutorials/ci-pipelines/publish/artifacts-tab/).
 
 ```yaml
                - step:

@@ -4,6 +4,7 @@ title: Linux network latency
 ---
 
 import Ossupport from './shared/note-supported-os.md'
+import FaultPermissions from './shared/fault-permissions.md'
 
 
 Linux network latency injects chaos to disrupt network connectivity in linux machine by adding delay to the network requests.
@@ -15,6 +16,8 @@ Linux network latency injects chaos to disrupt network connectivity in linux mac
 - Simulates latency in connectivity access by delaying the network requests of the machine.
 
 <Ossupport />
+
+<FaultPermissions />
 
 ## Fault tunables
 <h3>Mandatory tunables</h3>

@@ -1,7 +1,7 @@
 ---
 title: Sync GitOps applications
 description: This topic describes how to sync GitOps applications.
-sidebar_position: 8
+sidebar_position: 9
 ---
 
 Sync is a process that ensures that the live state of a system matches its desired state by applying a declarative description. This process involves synchronizing the desired Git state with the live cluster state. 
@@ -20,6 +20,10 @@ To sync applications from the **Applications** page:
 
      ![](./static/sync-applications-2.png)
 3. Configure the sync options, and then select **Synchronize**.
+
+   When synchronizing the application, you have the option to apply a specific revision. By default, target revision of the application is selected.
+   
+   The Branch and Tag options display a list of available branches and tags, allowing you to make a selection. Additionally, the Ref option enables synchronization of branches, tags, and commit hashes.
    
    ![](./static/sync-applications-4.png)
 
