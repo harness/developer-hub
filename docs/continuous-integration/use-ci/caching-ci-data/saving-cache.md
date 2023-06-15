@@ -455,4 +455,4 @@ graph TD
 
 ## Caching with non-private ACL
 
-If your bucket's ACL is blank, set to `bucket-owner-full-control`, or set to some other value than `private`, you must add a [stage variable]() called `PLUGIN_ACL` and set the value to the relevant ACL value.
+If your bucket's ACL is blank, set to `bucket-owner-full-control`, or set to some other value than `private`, you must add a [stage variable](/docs/platform/pipelines/add-a-stage/#option-stage-variables) called `PLUGIN_ACL` and set the value to the relevant ACL value.
