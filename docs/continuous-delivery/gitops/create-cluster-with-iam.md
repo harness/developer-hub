@@ -4,7 +4,7 @@ description: This topic describes how to create a Harness GitOps cluster in Amaz
 sidebar_position: 2
 ---
 
-This topic describes how to create a Harness GitOps cluster in Amazon EKS and deploy to it using an IAM role.
+This topic describes how to create a Harness GitOps cluster in Amazon EKS and deploy Applications to it using an IAM role.
 
 ## What is an IAM Role?
 
