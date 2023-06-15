@@ -272,7 +272,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                       xcodebuild test -scheme SampleApp
 ```
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification. the following example uses [xcpretty](https://github.com/xcpretty/xcpretty) to produce reports in JUnit XML format.
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification. The following example uses [xcpretty](https://github.com/xcpretty/xcpretty) to produce reports in JUnit XML format.
 
 ```yaml
               - step:
@@ -317,7 +317,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                       xcodebuild test -scheme SampleApp
 ```
 
-If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification. the following example uses [xcpretty](https://github.com/xcpretty/xcpretty) to produce reports in JUnit XML format.
+If you want to [view test results in Harness](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests/), make sure your test commands produce reports in JUnit XML format and that your steps include the `reports` specification. The following example uses [xcpretty](https://github.com/xcpretty/xcpretty) to produce reports in JUnit XML format.
 
 ```yaml
               - step:
