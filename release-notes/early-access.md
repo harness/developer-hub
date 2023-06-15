@@ -146,7 +146,7 @@ You can re-run builds in debug mode through the **Builds**, **Execution**, and *
 
 ##### Continuous Delivery
 
-- [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/lambda/aws-lambda-deployments)
+- [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
   
   This functionality is behind a feature flag, `CDS_AWS_NATIVE_LAMBDA`.
   
@@ -398,7 +398,7 @@ For more information, go to [Secure Shell (SSH) deployment tutorial](https://dev
 
 Enable Feature Flags NG_SVC_ENV_REDESIGN and NG_DEPLOYMENT_TEMPLATE.
 
-For more information, go to the [Custom deployments using deployment templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial).
+For more information, go to the [Custom deployments using deployment templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
 
 ##### Harness Platform
 

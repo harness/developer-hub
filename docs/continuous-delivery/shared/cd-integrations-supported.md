@@ -138,7 +138,7 @@ To use an AKS cluster for deployment, the AKS cluster parameter `disableLocalAcc
 <summary>Native Helm</summary>
 
 - **Overview:**
-  - [Native Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart)
+  - [Native Helm](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart)
 - **Supported connectors for deployment:**
   - Kubernetes Connector
     - Username + Password
@@ -246,7 +246,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Amazon AMI/ASG</summary>
 
 - **Overview:**
-  - [AWS AMI/ASG](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial)
+  - [AWS AMI/ASG](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial)
 - **Supported connectors for deployment:**
   - AWS cloud connector
     - IRSA
@@ -265,7 +265,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>AWS Lambda</summary>
 
 - **Overview:**
-  - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/lambda/aws-lambda-deployments)
+  - [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
 - **Supported connectors for deployment:**
   - AWS Cloud Connector
     - IRSA
@@ -364,7 +364,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Google Functions</summary>
 
 - **Overview:**
-  - [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google/google-functions)
+  - [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions)
 - **Supported connectors for deployment:**
   - Google Cloud Connector
   - Service Account
@@ -386,7 +386,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Spot Instances</summary>
 
 - **Overview:**
-  - [Spot Elastigroup deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-deployment)
+  - [Spot Elastigroup deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
 - **Supported connectors for deployment:**
   - Spot Connector
     - AccountID + API Token
@@ -404,7 +404,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
 <summary>Serverless.com Framework</summary>
 
 - **Overview:**
-  - [Serverless.com Framework](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart) (AWS Lambda)
+  - [Serverless.com Framework](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart) (AWS Lambda)
 - **Supported connectors for deployment:**
   - AWS Cloud Connector
     - IRSA
@@ -465,7 +465,7 @@ If you are using Harness Continuous Delivery (CD) but not Harness Continuous Int
 Harness integrates with [Jenkins](https://jenkins.io/), enabling you to run Jenkins jobs and dynamically capture inputs and outputs from the jobs. 
 
 - **Overview:**
-  - [Run Jenkins jobs in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines)
+  - [Run Jenkins jobs in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/advanced/run-jenkins-jobs-in-cd-pipelines)
 
 </details>
 
@@ -519,7 +519,7 @@ Harness CD Community Edition is intended to get devs started with Harness quickl
 For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
 
 - **Overview:**
-  - [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial)
+  - [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial)
 
 
 </details>
@@ -533,14 +533,14 @@ For non-native deployments, Harness provides a custom deployment option using De
 Harness supports the following infrastructure provisioning tools:
 
 - [Terraform](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness)
-- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos)
+- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
 - Azure ARM and Blueprint
 - [AWS CloudFormation](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/cloud-formation-how-tos)
 - Shell script (custom)
 
 ### Terraform version support
 
-Harness does not include Terraform on the Harness Delegate. You must install Terraform on the Delegate when using Terraform in Harness. For more information, go to [Terraform How-tos](/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos).
+Harness does not include Terraform on the Harness Delegate. You must install Terraform on the Delegate when using Terraform in Harness. For more information, go to [Terraform How-tos](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos).
 
 Harness supports the following Terraform versions:
 
