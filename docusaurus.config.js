@@ -351,7 +351,7 @@ const config = {
               },
               {
                 label: "Open Source",
-                to: "https://harness-community.github.io/",
+                to: "https://www.harness.io/open-source",
               },
               {
                 label: "YouTube",
