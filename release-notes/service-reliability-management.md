@@ -38,21 +38,21 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-- SLOs are getting stuck in the recalculation state even after the recalculation process is complete. (SRM-14849)  
+- SLOs were getting stuck in the recalculation state even after the recalculation process was complete. (SRM-14849)  
   
-  This issue has been resolved. Now, the SLOs will transition to the appropriate state once the recalculation has finished successfully.
+  This issue has been resolved. Now, the SLOs transition to the appropriate state once the recalculation has finished successfully.
 
 - When configuring a Deploy stage and selecting a value in the **Propagate from** field to propagate a service from the previous parallel stage, an error would occur when attempting to create a monitored service. (SRM-12454)  
   
   This issue has been resolved. You can now successfully create a monitored service even when selecting a value in the **Propagate from** field to propagate a service from the previous parallel stage.
 
-- The Monitored Service Listing page is not displaying the latest updated monitored service first. (SRM-14845)  
+- The Monitored Service Listing page was not displaying the latest updated monitored service first. (SRM-14845)  
   
   This issue has been resolved. Now, the monitored service list is sorted in the following order:
 
   - A monitored service with the most recent update will be displayed at the top of the list.
 
-  - If a monitored service has been updated with new analysis data, it will be given higher priority and displayed before other services on the list.
+  - If a monitored service has been updated with new analysis data, it is given higher priority and displayed before other services on the list.
 
 
 ```mdx-code-block
