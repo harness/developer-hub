@@ -1,9 +1,10 @@
 ---
-title: Summary of your asset governance rules  
-sidebar_label: Asset governance summary 
+title: Asset governance overview page
 description: This topic talks about Harness cloud asset governance.
 # sidebar_position: 2
 ---
+
+# Cloud asset governance overview page
 
 The **Overview** page offers a consolidated summary of your organization's governance rules, enforcements, and cost savings resulting from rule executions. This provides a quick and easy way to monitor your cloud spend and ensure compliance with your governance policies. Additionally, you can access valuable recommendations for optimizing resource utilization, allowing you to achieve even greater cost savings. 
 
@@ -28,8 +29,6 @@ In certain cases, there can be overlapping rules targeting the same resource. Fo
   - **Breakdown by resource type** — The cumulative count of evaluations for each resource type.
   
 To apply a recommendation, select the row. The recommendation opens on the **Recommendations** page. To learn how to enforce this recommendation, go to [Governance recommendations](../../4-use-ccm-cost-optimization/1-ccm-recommendations/governance.md).
-
-Make use of Harness AI Copilot to create a new rule. Select the **Create a new rule with Copilot** option. A new rule opens on the Rule Editor with an auto-generated name. For more information, go to [Generative AI overview](gen-ai-overview.md).
 
 <!---## How are the cost savings calculated?
 
