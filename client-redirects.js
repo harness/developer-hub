@@ -86,6 +86,16 @@ module.exports = {
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart",
     },
 
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure",
+    },
+
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines",
+      to: "/docs/continuous-delivery/x-platform-cd-features/advanced/run-jenkins-jobs-in-cd-pipelines",
+    },
+
     // Created by aimurphy for branch doc-2550 on June 9, 2023
 
     {
