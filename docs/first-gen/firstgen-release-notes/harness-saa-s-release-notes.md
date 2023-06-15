@@ -16,6 +16,14 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### June 15, 2023, version 79600
+
+#### What's new
+
+- Service instances were not showing correctly for Tanzu deployments. (CDS-68737, ZD-42950)
+  
+	Some instances were not showing up on the **Services** dashboard. This fix ensures the **Services** dashboard shows the correct Tanzu instances.
+
 ### June 09, 2023, version 79516
 
 #### What's new
