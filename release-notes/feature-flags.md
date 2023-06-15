@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-06-14T10:00:25
+date: 2023-06-15T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -17,18 +17,18 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - June 14, 2023
+## Latest - June 15, 2023
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-#### Feature Flags SDKs
+#### Feature Flags UI
 
-Updated the ff-flutter-client-sdk version 2.0.0 to use null safety. (FFM-8222)
+Ability to create a new environment during the onboarding workflow. (FFM-7393)
 
-Flutter 2.0 and Dart 2.12 and later are required. For more information, go to [Sound null safety](https://dart.dev/null-safety) in the Dart documentation.
+In the **Create or select an Environment** section, you can now enter the name of a new environment, and then select **Create an Environment** to create a new evironment during the onboarding workflow. 
 
 
 ```mdx-code-block
@@ -43,11 +43,15 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-#### Feature Flags SDKs
+#### Feature Flags UI
 
-Updated the ff-erlang-server-sdk to version 1.1.0 to add an optional logging configuration option so that the logging level can be set for the SDK. (FFM-8217)
+* In the onboarding workflow, the **Create a Flag** button did not work as expected when there was an existing flag. (FFM-8019)
 
-If this option is not set, the SDK uses the default log level of `warning`. To see an example logging configuration, go to [the SDK readme](https://github.com/harness/ff-erlang-server-sdk/blob/main/README.md#set-logging-level).
+  A requirement in the logic was missed. This issue has been fixed and the button works as expected. 
+
+* The view for setting up Git Experience was not wide enough to show the appropriate errors. There was also a horizontal scroll. (FFM-7311)
+
+  This issue has been fixed so that the view performs as expected. 
 
 ```mdx-code-block
   </TabItem>
@@ -58,6 +62,28 @@ If this option is not set, the SDK uses the default log level of `warning`. To s
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 14, 2023
+
+##### What's new
+
+###### Feature Flags SDKs
+
+Updated the ff-flutter-client-sdk version 2.0.0 to use null safety. (FFM-8222)
+
+Flutter 2.0 and Dart 2.12 and later are required. For more information, go to [Sound null safety](https://dart.dev/null-safety) in the Dart documentation.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+Updated the ff-erlang-server-sdk to version 1.1.0 to add an optional logging configuration option so that the logging level can be set for the SDK. (FFM-8217)
+
+If this option is not set, the SDK uses the default log level of `warning`. To see an example logging configuration, go to [the SDK readme](https://github.com/harness/ff-erlang-server-sdk/blob/main/README.md#set-logging-level).
 
 #### June 9, 2023
 
