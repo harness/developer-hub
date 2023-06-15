@@ -15,7 +15,7 @@ Looping strategies enable you to run a Stage or Step multiple times with differe
 * You have a Build Pipeline with 20 unit tests. To speed up execution, you want to run the tests in parallel across 4 jobs that run 5 tests each.
 
 :::info note
-The identifier of the stage or step on which a looping strategy is applied is updated because two stages cannot have same identifier. To use the expression, you must use the updated identifier for that stage. 
+The identifier of the stage or step that has a looping strategy applied is updated because two stages cannot have the same identifier. To use the expression, you must use the updated identifier for that stage.
 
 For example, if a stage named `build` in YAML has a looping strategy applied, the expression `<+pipeline.stages.build.variables>` does not work. Use `<+pipeline.stages.build_0.variables>` to represent the updated identifier.
 :::
