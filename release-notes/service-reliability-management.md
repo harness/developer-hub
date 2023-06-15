@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 09, 2023, version 79517
+## Latest - June xx, 2023, version 796xx
 
 ```mdx-code-block
 <Tabs>
@@ -32,14 +32,27 @@ This release does not include any new features.
 
 This release does not include any early access features.
 
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
 
-- Unable to select multiple environments when creating a monitored service for infrastructure. (SRM-14794)  
+- SLOs are getting stuck in the recalculation state even after the recalculation process is complete. (SRM-14849)  
   
-  This issue has been resolved. You can now select multiple environments when creating a monitored service for infrastructure.
+  This issue has been resolved. Now, the SLOs will transition to the appropriate state once the recalculation has finished successfully.
+
+- When configuring a Deploy stage and selecting a value in the **Propagate from** field to propagate a service from the previous parallel stage, an error would occur when attempting to create a monitored service. (SRM-12454)  
+  
+  This issue has been resolved. You can now successfully create a monitored service even when selecting a value in the **Propagate from** field to propagate a service from the previous parallel stage.
+
+- The Monitored Service Listing page is not displaying the latest updated monitored service first. (SRM-14845)  
+  
+  This issue has been resolved. Now, the monitored service list is sorted in the following order:
+
+  - A monitored service with the most recent update will be displayed at the top of the list.
+
+  - If a monitored service has been updated with new analysis data, it will be given higher priority and displayed before other services on the list.
 
 
 ```mdx-code-block
@@ -51,6 +64,24 @@ This release does not include any early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+
+#### June 09, 2023, version 79517
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- Unable to select multiple environments when creating a monitored service for infrastructure. (SRM-14794)  
+  
+  This issue has been resolved. You can now select multiple environments when creating a monitored service for infrastructure.
+
 
 #### June 05, 2023, Hotfix version 79416
 
