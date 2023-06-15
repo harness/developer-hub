@@ -1,10 +1,10 @@
 ---
-title: Create a GitOps Cluster with IAM role
+title: Create a GitOps cluster with IAM role
 description: Create a Harness GitOps cluster in Amazon EKS and deploy applications to it using an IAM role.
 sidebar_position: 6
 ---
 
-This topic describes how to create a Harness GitOps cluster in Amazon EKS and deploy applications to it using an IAM role.
+This topic describes how to create a Harness GitOps cluster in Amazon EKS, and deploy applications to the cluster using an IAM role.
 
 ## What is an IAM role?
 
@@ -20,7 +20,7 @@ Currently, this feature is behind the feature flag, `GITOPS_IAM`. Contact [Harn
 
 :::info
 
-GitOps Clusters with IAM roles can be created only for a GitOps Agent installed in Amazon EKS.
+GitOps clusters with IAM roles can be created only for a GitOps Agent installed in Amazon EKS.
 
 :::
 
@@ -52,7 +52,7 @@ Here, you will create two clusters in a single AWS account. The configuration wo
 
    `eksctl create cluster --name management --with-oidc`
 
-   This command takes anywhere between 10 to 20 minutes to execute. It creates a management cluster, and everything it needs to function such as VPC, security groups, EC2 nodegrpup, and so on.
+   This command takes anytime between 10 to 20 minutes to execute. It creates a management cluster, and everything it needs to function such as VPC, security groups, EC2 nodegroup, and so on.
 
    The AWS authenticator packaged with Harness GitOps Agent uses the OIDC provider to acquire a token. Using this token, the Agent can assume the IAM role, **role/ArgoCD** that you'll create in the next step.
 
@@ -92,7 +92,7 @@ Here, you will create two clusters in a single AWS account. The configuration wo
 
      ```
 
-     Make sure that the `trust.json` file includes the proper `AWS_ACCOUNT_ID` and `OIDC_PROVIDER`. You will use `trust.json` while creating the IAM role:
+     Make sure that the `trust.json` file includes the proper `AWS_ACCOUNT_ID` and `OIDC_PROVIDER`:
 
      ```
 
@@ -101,7 +101,7 @@ Here, you will create two clusters in a single AWS account. The configuration wo
      ```
    * Create an inline policy that gives the IAM role the ability to assume other roles so that GitOps Agent can assume the Deployer role that you'll create later.
 
-     You could also use the ArgoCD role directly for this purpose, but having a separate role to deploy resources into the testing cluster is generally more flexible and more secure.
+     You could also use the ArgoCD role directly. However, having a separate role to deploy resources into the testing cluster is recommended as it is more flexible and secure.
 
      ```
      read -r -d '' POLICY <<EOF
@@ -167,7 +167,7 @@ Here, you will create two clusters in a single AWS account. The configuration wo
          -p='[{"op": "add", "path": "/spec/template/spec/securityContext/fsGroup", "value": 999}]'
      ```
 
-     After patching Deployment and StatefulSet, you can see the `application-controller` and `gitops-agent` pods restart.
+     After patching Deployment and StatefulSet, the `application-controller` and `gitops-agent` pods restart.
 
      Ensure that the GitOps Agent is healthy and connected before proceeding any further.
 
@@ -236,4 +236,4 @@ You have a working management cluster with GitOps Agent installed now. Next, you
 
 4. Deploy applications to your cluster.
 
-   You can now deploy applications to your cluster through Harness. Go to [Add a Harness GitOps Application](harness-cd-git-ops-quickstart.md#step-4-add-a-harness-gitops-application) for more details.
+   You can now deploy applications to your cluster through Harness. Go to [Add a Harness GitOps application](harness-cd-git-ops-quickstart.md#step-4-add-a-harness-gitops-application) for more details.
