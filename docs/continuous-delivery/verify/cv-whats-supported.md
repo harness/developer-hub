@@ -1,53 +1,45 @@
 ---
-title: What's supported?
-description: Health and change sources supported by Harness SRM
+title: What's supported in Harness CV
+description: Health and change sources supported by Harness CV.
+sidebar_label: What's supported
 sidebar_position: 10
 ---
 
-A Health Source monitors changes in health trends of the service using metrics and logs collected from Application Performance Monitoring (APM) or log providers respectively.
+Harness Continuous Verification (CV) supports the following health and change sources:
+
+## Health sources
+
+A health source monitors changes in health trends of the service using metrics and logs collected from Application Performance Monitoring (APM) health source or log providers respectively.
+
+### APM health sources
+
+Harness CV supports the following APM health sources (also known as metric health sources):
+
+- AppDynamics
+- Cloudwatch
+- Custom health source
+- Datadog
+- Dynatrace
+- Google Cloud Operations (formerly Stackdriver)
+- New Relic
+- Prometheus
+- Splunk Observability
+- Sumologic
 
 
-### APM providers
+### Log health sources
 
-Harness supports the following APM providers:
+Harness CV supports the following log health sources:
 
+- Custom health source
+- Datadog
+- ELK
+- Google Cloud Operations (formerly Stackdriver)
+- Grafana Loki
+- Splunk
+- Sumologic
 
-| Metrics provider          | Metric pack                  | Deployment verification      |
-| :----------------------------- | :--------------------------- | :--------------------------- |
-| AppDynamics                    |                              |                              |
-| Business Transactions          | Yes                          |                              |
-| AppDynamics                    |                              |                              |
-| JVM and Infra Metrics          | Supported via Custom Metrics |                              |
-| Datadog                        |                              |                              |
-| Docker Infra Metrics           | Yes                          |                              |
-| Dynatrace                      |                              |                              |
-| Performance                    | Yes                          |                              |
-| Google Cloud Operations (GCP)  |                              |                              |
-| Infrastructure Metrics         | Yes                          |                              |
-| Google Cloud Operations (GCP)  | Custom metrics from explorer | No                           |
-| New Relic                      |                              |                              |
-| Business Transactions          | Yes                          |                              |
-| New Relic                      | Insights                     | Supported via custom metrics |
-| Prometheus                     |                              |                              |
-| Custom metrics from Prometheus | Yes                          |                              |
-
-
-### Log providers
-
-Harness supports the following log providers:
-
-| Log provider | Deployment verification |
-| ------------ | ----------------------- |
-| Splunk       | Yes                     |
-| Google Cloud Operations (GCP)             |            Yes             |
-
-
-### Custom health sources
-
-Harness offers support for all major APM vendors and log providers, but there are cases where a customized APM or log provider is needed. The Custom Health Source lets you customize APMs and log providers of your choice.
-
-Harness also supports customized APMs. To know more about using customized APMs of your choice, go to [Custom health source](../verify/configure-cv/verify-deployments-with-custom-health-metrics.md).
-
+To know how to add a health source, go to [Configure CV](/docs/category/configure-cv).
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).
 
