@@ -1,7 +1,7 @@
 ---
 title: Continuous Verification (CV)
 description: Get an overview of Harness CV.
-sidebar_position: 1
+sidebar_position: 20
 helpdocs_topic_id: 3xhqq9xllp
 helpdocs_category_id: 9mefqceij0
 helpdocs_is_private: false
