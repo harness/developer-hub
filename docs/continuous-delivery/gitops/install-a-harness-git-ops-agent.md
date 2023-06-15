@@ -85,9 +85,15 @@ In **Name**, enter the name for the new Agent.
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
 
-Click **Next**. The **Review YAML** settings appear.
+Click **Next**. The **Download YAML/Helm Chart** settings appear.
 
-This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.
+![](./static/install-a-harness-git-ops-agent-95.png)
+
+The **YAML** option lets you download the manifest YAML for the Harness GitOps Agent. You can download this YAML file and run it in your Harness GitOps Agent cluster.
+
+The **Helm Chart** option lets you download the helm-chart for the Harness GitOps Agent. You can download this helm-chart and install it in your Harness GitOps Agent cluster.
+
+![](./static/install-a-harness-git-ops-agent-96.png)
 
 ## Harness GitOps Agent with Existing Argo CD Project
 
@@ -101,11 +107,13 @@ In **Name**, enter the name for the existing Agent CD Project. For example, **de
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
 
-Click **Next**. The **Review YAML** settings appear.
+Click **Next**. The **Download YAML/Helm Chart** settings appear.
 
-This is the manifest YAML for the Harness GitOps Agent. You will download this YAML file and run it in your Harness GitOps Agent cluster.
+The **YAML** option lets you download the manifest YAML for the Harness GitOps Agent. You can download this YAML file and run it in your Harness GitOps Agent cluster.
 
-Once you have installed the Agent, Harness will start importing all the entities from the existing Argo CD Project.
+The **Helm Chart** option lets you download the helm-chart for the Harness GitOps Agent. You can download this helm-chart and install it in your Harness GitOps Agent cluster.
+
+Once you have installed the Agent using any of the above options, Harness will start importing all the entities from the existing Argo CD Project.
 
 ## Install the Agent
 
@@ -122,15 +130,21 @@ For example, here's a typical GKE login:
 gcloud container clusters get-credentials <cluster_name> --zone us-central1-c --project <project_name>
 ```
 
-Run the following command to apply the YAML file you downloaded (in this example, `default` was the namespace entered in the **Namespace** setting):
+In case of **YAML**, Run the following command to apply the YAML file you downloaded (in this example, `default` was the namespace entered in the **Namespace** setting):
 
 ```
 kubectl apply -f gitops-agent.yaml -n default
 ```
 
+In case of **Helm Chart**, Run the following command to install the helm-chart file you downloaded (in this example, `default` was the namespace entered in the **Namespace** setting):
+
+```
+helm install gitops-agent ./gitops-agent.tgz -n default
+```
+
 In the following output example you can see all of the Harness GitOps objects created in Kubernetes.
 
-This example output is for installing a new Harness GitOps Agent without using an existing Argo CD instance.
+This example output is for installing a new Harness GitOps Agent without using an existing Argo CD instance using the YAML.
 
 ```
 % kubectl apply -f harness-gitops-agent.yaml -n default  
