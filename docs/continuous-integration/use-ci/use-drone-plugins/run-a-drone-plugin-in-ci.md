@@ -186,7 +186,7 @@ Go to [Integrate Jira in a CI pipeline](./ci-jira-int-plugin.md).
 <details>
 <summary>Slack plugin</summary>
 
-Harness has built-in [notifications](/docs/category/notifications-1) for email, Microsoft Teams, and Slack.
+Harness has built-in [notifications](/docs/category/notifications-1/) for email, Microsoft Teams, and Slack.
 
 </details>
 
