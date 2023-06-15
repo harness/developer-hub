@@ -277,9 +277,7 @@ Single-value operators include:
 * **Ends With** - Expects a single value. Matches any full path ending with the value.
 * **Contains** - Expects a single value. Matches any full path containing the value.
 * **In** and **Not In** - Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. For some **Conditions**, you can also use Regex, such as `main,release/.*`
-* **Regex** - Expects a single Regex value. Matches full paths based on the Regex. Use this operator if you want to specify multiple paths.
-
-You can use Regex to specify all files in a parent folder, such as `ci/*`.
+* **Regex** - Expects a single Regex value, which can be a complex Regex expression such as `^((?!README\.md).)*$`. Matches full paths based on the Regex. Use this operator if you want to specify multiple paths. You can use Regex to specify all files in a parent folder, such as `ci/*`.
 
 ### Matches Value
 
