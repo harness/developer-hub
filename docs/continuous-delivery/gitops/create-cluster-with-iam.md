@@ -8,7 +8,7 @@ This topic describes how to create a Harness GitOps cluster in Amazon EKS and de
 
 ## What is an IAM role?
 
-Identity and Access Management (IAM) roles allow you to manage user access and permissions to various Amazon Web Services (AWS) services and resources. IAM roles are set of permissions that you can assign to AWS services or resources, rather than individual users. 
+Identity and Access Management (IAM) roles allow you to manage user access and permissions to various Amazon Web Services (AWS) services and resources. IAM roles are sets of permissions that you can assign to AWS services or resources, rather than individual users. 
 
 This tutorial covers how to handle Harness GitOps Agent setup in a multi-cluster AWS environment and deploy applications to those clusters by letting the Agent assume an IAM role. 
 
