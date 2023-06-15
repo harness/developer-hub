@@ -5,7 +5,7 @@ tags:
    - harness policy engine
    - OPA
    - feature flag
-sidebar_position: 80
+sidebar_position: 150
 helpdocs_topic_id: 4vx27jqwv2
 helpdocs_category_id: yo726tfqly
 helpdocs_is_private: false
