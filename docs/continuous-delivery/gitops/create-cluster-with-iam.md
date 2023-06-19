@@ -30,9 +30,9 @@ GitOps clusters with IAM roles can be created only for a GitOps Agent installed 
 You'll learn how to create:
 
 * A management cluster that hosts the Harness GitOps Agent.
-* An IAM role **role/ArgoCD** that the GitOps Agent assumes first.
+* An IAM role, `role/ArgoCD` that the GitOps Agent assumes first.
 * A testing cluster in which you can deploy a guestbook application.
-* An IAM role **role/Deployer** that has permissions to deploy applications in your testing cluster.
+* An IAM role, `role/Deployer` that has permissions to deploy applications in your testing cluster.
 
   ![](static/create-cluster-iam-86.png)
 
