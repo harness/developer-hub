@@ -337,7 +337,7 @@ Certain platforms and orchestration tools, like Kubernetes, have their own namin
 
 The following keywords are reserved, and cannot be used as a variable name or property.
 
-`or and eq ne lt gt le ge div mod not null true false new var return shellScriptProvisioner`
+`or and eq ne lt gt le ge div mod not null true false new var return shellScriptProvisioner class`
 
 For more information, go to [JEXL grammar details](https://people.apache.org/~henrib/jexl-3.0/reference/syntax.html).
 
