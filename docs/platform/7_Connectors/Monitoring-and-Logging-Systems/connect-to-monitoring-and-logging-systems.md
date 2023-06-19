@@ -242,31 +242,31 @@ Using HTTPS is mandatory for establishing connections with Dynatrace.
 7.	In the **Secret Value** field, enter the API token generated in Dynatrace. If you don’t have one, follow these steps to create an API token in Dynatrace:
 
       1. Log into your Dynatrace environment.
-      2. Go to the Dynatrace menu, select Access tokens, and select Generate new token and then follow the on-screen instructions. 
-         
-         :::important
-         Ensure that you select the following scopes: Read metrics, Read entities., and Read events.
-         :::
+      2. In the Dynatrace menu, select **Access tokens** > Select **Generate new token**.
+      3. Enter a name for your token.
+      4. Be sure to provide a meaningful name for each token you generate. Proper naming helps you to efficiently manage your tokens and perhaps delete them when they're no longer needed.
+      5. Select the following scopes: **Read metrics**, **Read entities**, and **Read events**.
+      6. Select **Generate token**.
+      7. Copy the generated token to the clipboard. Store the token in a password manager for future use. You can only access your token once upon creation. You can't reveal it afterward.
 
-      3. Generate the token and copy the generated token to the clipboard. You need this token for connecting Harness to Dynatrace.  
-      For more information generating Dynatrace API tokens, go to [Dynatrace API - Tokens and authentication](https://www.dynatrace.com/support/help/dynatrace-api/basics/dynatrace-api-authentication).
+      For more information on generating Dynatrace API tokens, go to [Dynatrace API - Tokens and authentication](https://www.dynatrace.com/support/help/dynatrace-api/basics/dynatrace-api-authentication).
 
 8.	Select **Save**.
 
 9.	In the Create or Select an Existing Secret dialog, select the Dynatrace secret that you added, and then select **Apply Selected**.
 
-1.  Select **Next**.
+11.  Select **Next**.
 
-2.  In the **Delegates Setup** tab, choose one of the following:
+12.  In the **Delegates Setup** tab, choose one of the following:
 
    - **Use any available Delegate**: Harness automatically assigns an available delegate.
   
    - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the Delegates that have been assigned those specific tags.
 
-3.  Select **Save** and **Continue**.
+13.  Select **Save** and **Continue**.  
     Harness verifies the connection. 
 
-4.  Once the verification is successful, select **Finish**.
+14.  Once the verification is successful, select **Finish**.  
     The Dynatrace connector is added to the list of connectors.
 
 
