@@ -225,7 +225,8 @@ To create an API key in Datadog, do the following:
 
 ### Add Dynatrace
 
-1.	Open a Harness Project, and then under **Project Setup**, select **Connectors** > **+ New Connector**.
+1. Open a Harness Project.
+2. Under **Project Setup**, select **Connectors** > **+ New Connector**.
 
 2.	Under **Monitoring and Logging Systems**, select **Dynatrace**.
 
