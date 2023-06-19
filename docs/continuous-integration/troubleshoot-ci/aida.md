@@ -27,3 +27,5 @@ Currently, AIDA for CI is behind the feature flag `CI_AI_ENHANCED_REMEDIATIONS`.
 ![An example of AIDA dialog.](./static/aida-launch-button.png)
 
 You can find step logs on the [**Build details** page](../use-ci/viewing-builds.md).
+
+<Legal />
