@@ -26,7 +26,7 @@ import remediate_occurrence_three from '../static/ai-remediation-occurrence-3.pn
 import remediate_issue_refine from '../static/ai-remediation-issue-refine.png'
 ```
 
-Harness AI Development Assistant (AIDA) auto-generates remediaton advice for detected vulnerabilities. AIDA explains the vulnerability, gives solutions how to fix it, and (where applicable) provides updated code snippets. 
+Harness AI Development Assistant (AIDA) auto-generates remediation advice for detected vulnerabilities. Harness AIDA explains the vulnerability, gives solutions how to fix it, and (where applicable) provides updated code snippets. 
 
 ![](../static/ai-remediation-issue.png)
 
@@ -40,14 +40,14 @@ Harness AI Development Assistant (AIDA) auto-generates remediaton advice for det
 * You should also consider the suggestion's applicability to your specific target and use case. 
    
    An issue might have no known remediation, especially if it was recently discovered. An issue might have multiple suggested remediations that are contradictory or applicable only to specific use cases. 
-   
+
 * The workflow description below shows how you can refine a suggestion by providing more information, such as additional context or code snippets, to Harness AIDA.
 
 ## Workflow description
 
 1. When you go to **Security Tests** and then select an issue, an initial **AI enhanced remediation** appears in **Issue Details**. 
 
-   This suggested remediation is based on public information about the CVE or CWE and the first detected occurrence (**Occurrence 1**) in the target. If the scanner captures the specific line where the vulnerability is occurring, the query to AIDA includes this line as well.    
+   This suggested remediation is based on public information about the CVE or CWE and the first detected occurrence (**Occurrence 1**) in the target. If the scanner captures the specific line where the vulnerability is occurring, the query to Harness AIDA includes this line as well.    
 
       ```mdx-code-block
       <img src={remediation_issue} alt="Generate a new remediation using additional information." height="50%" width="50%" />
@@ -61,7 +61,7 @@ Harness AI Development Assistant (AIDA) auto-generates remediaton advice for det
 
    2. Specify the occurrence, reference ID, and language (if you've scanned a codebase). 
    
-     AIDA can often auto-detect the language of a code snippet, but it's good practice to confirm that the language setting is correct. 
+     Harness AIDA can often auto-detect the language of a code snippet, but it's good practice to confirm that the language setting is correct. 
 
    3. Add any additional context in the text pane. This might be a code snippet, a Dockerfile, or some other piece of information that's relevant to the specific target and issue. Then click **Generate**. 
 
