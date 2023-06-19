@@ -245,7 +245,7 @@ You must use HTTPS to establishing connections with Dynatrace.
       1. Sign in to your Dynatrace environment.
       2. In the Dynatrace menu, select **Access tokens** > Select **Generate new token**.
       3. Enter a name for your token.
-      4. Be sure to provide a meaningful name for each token you generate. Proper naming helps you to efficiently manage your tokens and perhaps delete them when they're no longer needed.
+      4. Be sure to provide a meaningful name for each token you generate. Proper naming helps you efficiently manage your tokens and delete them when they're no longer needed.
       5. Select the following scopes: **Read metrics**, **Read entities**, and **Read events**.
       6. Select **Generate token**.
       7. Copy the generated token to the clipboard. Store the token in a password manager for future use. You can only access your token once upon creation. You can't reveal it afterward.
