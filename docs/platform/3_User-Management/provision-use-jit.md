@@ -18,7 +18,7 @@ You can automatically provision users added to your SAML applications configured
 Provisioning users automatically eliminates repetitive tasks related to manual provisioning, simplifying user management.
 
 :::important
-Harness supports Just-in-time provisioning only if a new user attempts to log in via IDP.
+Harness supports JIT provisioning only if a new user attempts to log in via IDP.
 :::
 
 ## Enable JIT provisioning in Harness
