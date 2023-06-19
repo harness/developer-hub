@@ -215,4 +215,4 @@ This means that if a role does not have these permissions, the user with that ro
 
 ### Third-party tools installed with the delegate
 
-For details about the SDKs and third-party tools installed with the delegate, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).
+For details about the SDKs and third-party tools installed with the delegate, go to [Third-party tools included in the delegate image type](/docs/platform/delegates/delegate-concepts/delegate-image-types/#third-party-tools-included-in-the-delegate-image-type).

@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-05-31T10:00
+date: 2023-06-09T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -16,38 +16,85 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - May 29, 2023, version 79505
+## Latest - June 09, 2023, version 79701
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-
 ### What's new
 
-**Azure VM recommendations**
-
-  Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
-
-
+This release does not include any new features.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-
 ### Early access
 
-  This release does not include any early access features.
+**Propagate force cool down** (CCM-12338)
+  
+  You can now propagate force cool down from primary rule to dependent rules.
 
+  Earlier, when stopping a rule from the UI, you had to stop its dependant rules one by one. With this enhancement, you can propagate the stop operation to dependant rules as well. 
+  
+  Propagating cool down to dependant rules is optional. You can stop the primary rule with or without propagating cool down to dependant rules.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
-
 ### Fixed issues
+
+This release does not include any fixed issues.
   
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 06, 2023, version 79601
+
+##### What's new
+
+**Cost Category enhancement** (CCM-12585)
+
+  When building a cost category, it is now possible to incorporate another cost category as a rule. However, there are important considerations to keep in mind when using a cost category within your rule. 
+  
+   * You cannot include a nested cost category as a rule within another cost category if either of these cost categories contains a shared bucket.
+   * You cannot add the same cost category as a rule in the cost bucket.
+   * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
+   * You can nest cost categories to a maximum of 20 levels.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+  
+* Budgets that contain the `/` character in their names were previously experiencing issues with correctly opening the budget details page. (CCM-12062)
+
+  Previously, when the budget name appended to the URL contained the `/` character, it was treated as a separate route. This caused the browser to fail in loading the corresponding budget details. Now, before appending the budget name to the URL, it is properly encoded. This ensures that the browser handles the `/` character correctly, allowing the page to load as expected.
+
+#### May 29, 2023, version 79505
+
+##### What's new
+
+**Azure VM recommendations**
+
+  Introducing Azure VM recommendations that identifies idle or under utilized VMs, ensuring efficient resource allocation and significant cost savings. For more information, go to [Azure recommendations](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/ccm-recommendations/azure-vm/).
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
 * The recommendations for workloads with containers that do not have properly set limits and requests displayed a value of -1 or null. (CCM-11765).
 
   This issue has been resolved.
@@ -68,16 +115,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   Rolling back to the previous function package fixed this issue.
 
-  
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 19, 2023, version 79400
 
@@ -109,6 +146,7 @@ This release does not include any new features.
 
 
 ##### Early access
+
 **Asset Governance**
 
 The Asset Governance feature now includes support for access control through Role-Based Access Control (RBAC). This enhancement allows more granular control and management of permissions. For more information, go to [Asset Governance RBAC](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov). 
@@ -156,6 +194,7 @@ This feature is behind the feature flag, `CCM_ENABLE_CLOUD_ASSET_GOVERNANCE_UI`.
 * The **Recommendations** page displayed incorrect savings value. (CCM-12082)
 
   This issue has been resolved. The value in the grid now matches with the widgets.
+
 * Spike in BigQuery cost. (CCM-12027)
 
   Limited the data queried by users with restricted access (granular RBAC enabled) by implementing a time filter of 30 days. These users can retrieve recommendations only from the past 30 days, effectively reducing the overall size of the query results.

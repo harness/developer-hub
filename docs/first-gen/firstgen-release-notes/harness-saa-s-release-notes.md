@@ -16,6 +16,48 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### June 19, 2023, version 79606
+
+#### What's new
+
+- Service instances were not showing correctly for Tanzu deployments. (CDS-68737, ZD-42950)
+  
+	Some instances were not showing up on the **Services** dashboard. This fix ensures the **Services** dashboard shows the correct Tanzu instances.
+
+- Free, Community, and Paid accounts can now have a maximum of 100, 100, and 50000 users, respectively. (PL-39235)
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+This release does not include fixed issues.
+
+### June 09, 2023, version 79516
+
+#### What's new
+
+- Enhanced the application handling mechanism when the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE`. (CDS-68821)
+  
+  When the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE` for any of the releases of an application, Harness starts looking for the application that has the same name as the release name. This ensures that the correct active application is always picked in case the `HARNESS__STATUS__IDENTIFIER` is removed.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+#### Harness Manager delegate fixed issues
+
+The fixed issue below is available with version 79503 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+
+- Helm execution failed with `KubernetesClientException` error. (CDS-70386, ZD-45051)
+  
+  The Kubernetes GET APIs returned a 400 bad request during steady state check. This was occurring when Harness used a fabric8 client with Kubernetes cluster version < 1.16, or when the feature flag, `HELM_STEADY_STATE_CHECK` is turned off. 
+  
+  This issue is fixed.
+
 ### June 01, 2023, version 79411
 
 #### What's new

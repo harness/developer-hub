@@ -38,8 +38,22 @@ matrix:
   maxConcurrency: 2 # run up to 2 jobs in parallel based on your resources  
 # example run:  
 # testgroup0 -> testgroup2  
-# testgroup1 -> testgroup3 
+# testgroup1 -> testgroup3
 ```
+
+By default, Harness uses indexes for the matrix naming strategy. You can also use labels.
+
+To use the matrix labels naming strategy, do the following:
+
+1. In Harness, select **Account Settings**.
+2. Select **Account Resources**, then select **Pipeline**.
+3. Set **Enable Matrix Labels By Name** to `true`.
+4. Select **Save**.
+
+:::info note
+ This option is available at the project, organization, and account level.
+:::
+
 #### Parallelism
 
 Parallelism strategies are useful for CI Build Stages that include a lot of tests. Suppose your Stage includes over 100 tests. You can specify the following to split your tests into 10 groups and test 5 groups at a time.
@@ -103,6 +117,39 @@ Here's a video that explains how to define looping strategy as a runtime input:
 <!-- Video:
 https://harness-24.wistia.com/medias/79nqqvqybt-->
 <docvideo src="https://harness-24.wistia.com/medias/79nqqvqybt" />
+
+## Looping strategy expressions
+
+You can use Harness expressions to retrieve the current execution status of the looping strategy for nodes (stages/steps) using a matrix or repeat strategy.
+  
+The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
+
+Harness provides the following expressions to retrieve the current status of the node (stage/step) using a looping strategy. The expressions are available in pipelines during execution and rollback.
+
+### <+strategy.currentStatus>
+
+The current status of the looping strategy for the node with maximum depth.
+
+When this expression is used in a step, Harness will resolve it to the looping strategy status of the first parent node (stage/step) of the step using a looping strategy.
+
+If the step using the expression is the first node using a looping strategy, then the expression will resolve to its looping strategy status. 
+
+If the previous step in the stage uses a looping strategy, the expression will resolve to that step's looping strategy status. 
+
+If there are no previous steps using a looping strategy, but the stage uses a looping strategy, the expression will resolve to the stage's looping strategy status.
+
+### <+strategy.node.[strategyNodeIdentifier].currentStatus>
+
+The current status of the looping strategy for the node with a specific stage/step identifier, `strategyNodeIdentifier`.
+
+For example, `echo <+strategy.node.cs1.currentStatus>`.
+
+### <+strategy.node.get("[strategyNodeIdentifier]").currentStatus>
+
+The current status of the looping strategy for the node with a specific stage/step identifier, `strategyNodeIdentifier`.
+
+For example, `echo <+strategy.node.get("ShellScript_1").currentStatus>`.
+
 
 ### See also
 

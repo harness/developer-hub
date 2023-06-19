@@ -1,6 +1,6 @@
 ---
 title: Run scans using GitHub Action and Drone Plugin steps
-description: You can easily run security scans and ingest results using GitHub Actions and Drone Plugins.  
+description: STO can ingest data from any scanner that can publish in SARIF format.  
 sidebar_position: 80
 ---
 
@@ -82,7 +82,7 @@ import TabItem from '@theme/TabItem';
    </table>
 
 
-4. Add a [**Custom Ingest**](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-scan-reference) step and set it up to ingest the data file. 
+4. Add a [**Custom Ingest**](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference) step and set it up to ingest the data file. 
 
 #### Example setup
 
@@ -244,7 +244,7 @@ pipeline:
    </table>
 
 
-4. Add a [**Custom Ingest**](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-scan-reference) step and set it up to ingest the data file. 
+4. Add a [**Custom Ingest**](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference) step and set it up to ingest the data file. 
 
 #### Example setup
 

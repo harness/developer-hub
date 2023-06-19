@@ -10,6 +10,9 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+<Smpno />
 
 This topic describes how to use the Harness Feature Flags Node.js SDK for your Node.js application.
 
@@ -26,7 +29,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **1.2.16**.
+The current version of this SDK is **1.2.17**.
 
 ## Requirements
 

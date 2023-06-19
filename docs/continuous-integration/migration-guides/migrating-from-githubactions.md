@@ -326,7 +326,7 @@ jobs:
 
 In Harness CI, each pipeline has a codebase specification that identifies the code repo (input) that the pipeline uses to build an artifact (output). [Codebase configuration](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) has two components:
 
-* The codebase _connector_, such as a [GitHub connector](/docs/platform/connectors/code-repositories/add-a-git-hub-connector/), that specifies the codebase URL and required credentials to access your code repos.
+* The codebase _connector_, such as a [GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference), that specifies the codebase URL and required credentials to access your code repos.
 * A series of settings describing how you want the pipeline to clone and build the repo.
 
 When you create a Harness CI pipeline, you specify a default codebase to use for all stages in the pipeline. By default, each stage automatically clones the designated code repo from your Git provider into the stage's build infrastructure when the pipeline runs.
