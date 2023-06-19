@@ -49,7 +49,7 @@ You can add a variable to the account, organization, or project [scope](../4_Rol
 ### Account
 
 1. In Harness, select **Account Settings**.
-2. Select **Account Resources** and then select **Variables**.
+2. Select **Account Resources**, and then select **Variables**.
    
    <docimage path={require('./static/add-a-variable-02.png')} width="60%" height="60%" title="Click to view full size image" />  
 3. Select **New Variable**. The **Add Variable** settings appear.
@@ -69,7 +69,7 @@ You can add a variable to the account, organization, or project [scope](../4_Rol
    
    <docimage path={require('./static/add-a-variable-05.png')} width="60%" height="60%" title="Click to view full size image" />  
 5. Select **New Variable**.
-6. Enter a name, select the variable type, and enter a value.
+6. Enter a name, select the variable type, and then enter a value.
 7. For example, here's a variable named **organiz\_var**.
    
    ![](./static/add-a-variable-06.png)  
@@ -119,7 +119,7 @@ curl -i -X POST \
 
 1. In a Harness Project, select **Project Setup**, and then select **Variables**.
 2. Select **New Variable**.
-3. Enter a name, select the variable type, and enter a value.
+3. Enter a name, select the variable type, and then enter a value.
 4. For example, here's a variable named **proj\_var**.
    
    ![](./static/add-a-variable-07.png)  
@@ -137,7 +137,7 @@ curl -i -X POST \
 
 Variables added to pipelines and stages are available to all stages in the pipeline. 
 
-Variables added to a service and environment are available in all stages that use that service and environment. Here's [a video](https://youtu.be/lqbmO6EVGuU) covering those variable types.
+Variables added to a service and environment are available in all stages that use that service and environment. Here's a [video](https://youtu.be/lqbmO6EVGuU) covering those variable types.
 
 You can also override service variables at the environment level. For more information, go to [Overriding services at the environment level](/docs/continuous-delivery/x-platform-cd-features/environments/service-overrides).
 
@@ -191,14 +191,14 @@ When you run the Pipeline, the variable references are resolved and output:
 8.  In your pipeline stage, copy the service variable from the **Variables** panel:
    
    ![](./static/add-a-variable-11.png)
-9. In your Shell Script step, reference the Service variable with:
+9. In your Shell Script step, reference the service variable with:
     
     `<+stage.spec.serviceConfig.serviceDefinition.spec.variables.serv_var>`
 10. Run the pipeline and see that the value for the account variable is passed into the service variable:
     
     ![](./static/add-a-variable-12.png)
 
-You can refer to a variable in most settings. for example, if you an account variable storing a service named **Example**, you can refer to it inline using the same expression.
+You can refer to a variable in most settings. For example, if you have an account variable storing a service named **Example**, you can refer to it inline using the same expression.
 
 ![](./static/add-a-variable-13.png)
 
