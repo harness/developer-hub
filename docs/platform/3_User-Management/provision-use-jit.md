@@ -71,7 +71,7 @@ To enable JIT provisioning in Harness:
    This enables Just-In-Time (JIT) provisioning to add users to Harness on their first login via the configured SAML provider.
 
 6. To control who can get added to Harness on their first login, define the key-value that must be present in the SAML assertions by entering the following: 
-   - **JIT Validation Key**: To log in for the first time, the SAML assertion must contain the key.
+   - **JIT Validation Key**: The SAML assertion must contain this key on first login.
    - **JIT Validation Value**: At the time of first login, enter the value for the validation key that must be present in the SAML assertion.
    
      ![](./static/jit-user-provisioning.png)
