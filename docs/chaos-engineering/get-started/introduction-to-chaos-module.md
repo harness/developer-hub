@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: Build resilient applications with chaos engineering
+title: Build resilient applications with Chaos Engineering (CE)
 ---
 ## Introduction
 
