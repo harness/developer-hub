@@ -65,28 +65,28 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - A deleted template in the template library cannot be recreated. (CDS-71335, ZD-45591)
   
-  The template list page was not showing the last template, so customers believed it was deleted. When customers tried to create a new template with the same identifier and version label they received the error saying the template already existed.
+  The template list page was not showing the last template. Trying to create a new template with the same identifier and version label resulted in an error saying that the template already existed.
   
   The issue is now fixed.
 - Unable to fetch templates from different repositories when the feature flag `PIE_NG_BATCH_GET_TEMPLATES` is enabled. (CDS-71267)
   
   When the feature flag `PIE_NG_BATCH_GET_TEMPLATES` was enabled and Harness was performing a fetch for all the repositories associated with a given SCM connector, Harness was only fetching the connector once instead of every related repository. This resulted in a file not found error.
   
-  Now Harness performs a fetch for every repository for a given Connector.
-- Rollback steps were not running on approval step rejection. (CDS-71032, ZD-45472)
+  Now Harness performs a fetch for every repository for a given connector.
+- Rollback steps were not running on Approval step rejection. (CDS-71032, ZD-45472)
   
-  When **Rollback** was selected as the failure strategy for an approval step, the steps in the stage **Rollback** section were not running.
+  When **Rollback** was selected as the failure strategy for an Approval step, the steps in the stage **Rollback** section were not running.
   
   Rollback steps are now correctly supported.
 - Pipeline shows success, but many stages haven't started running. (CDS-70850, ZD-45392)
   
-  Previously, if a user attempted to rerun the execution of the aborted stage that used a matrix looping strategy, the aborted matrix stages would execute, but all subsequent stages would be skipped. This resulted in the pipeline execution being finished without running all stages.
+  Previously, when you attempted to rerun the execution of the aborted stage that used a matrix looping strategy, the aborted matrix stages would execute, but all subsequent stages would be skipped. This resulted in the pipeline execution being finished without running all stages.
   
   Now, when resuming execution from an aborted matrix stage, the stages after the aborted stage are executed correctly.
 - Unable to save a pipeline that uses a step group template. (CDS-70762)
   
   There was an error that prevented the saving of pipelines that used a step group template. This error has been fixed.
-- Tag value not cleared when the regex option is selected in artifact details. (CDS-70487)
+- Tag value did not clear when the **Regex** option is selected in the artifact details. (CDS-70487)
   
   When setting up artifact repositories, artifacts can be specified by name or regex. The **Tag** setting was not being cleared when this selection changed from **Name** to **Regex** or vice versa. This bug has now been fixed.
 - Selecting stages for trigger execution shows all stages. (CDS-70419)
