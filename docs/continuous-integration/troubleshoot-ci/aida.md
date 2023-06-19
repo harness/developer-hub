@@ -18,9 +18,9 @@ Currently, AIDA for CI is behind the feature flag `CI_AI_ENHANCED_REMEDIATIONS`.
 
 <Intro />
 
-<!-- ![Harness AI Copilot offers error analysis and possible solutions.](./static/copilot-dialog-example.png) -->
+<!-- ![Harness AI Copilot offers error analysis and possible solutions.](./static/aida-dialog-example.png) -->
 
-<docimage path={require('./static/copilot-dialog-example.png')} />
+<docimage path={require('./static/aida-dialog-example.png')} />
 
 :::info EULA and privacy overview
 
