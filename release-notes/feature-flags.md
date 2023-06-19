@@ -26,7 +26,7 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 #### Feature Flags UI
 
-Ability to create a new environment during the onboarding workflow. (FFM-7393)
+Added the ability to create a new environment during the onboarding workflow. (FFM-7393)
 
 In the **Create or select an Environment** section, you can now enter the name of a new environment, and then select **Create an Environment** to create a new evironment during the onboarding workflow. 
 
