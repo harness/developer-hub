@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-06-09T10:00
+date: 2023-06-19T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -17,7 +17,27 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 09, 2023
+## Latest - June 19, 2023
+
+### Harness Platform, version 79600
+
+- In earlier releases, users were allowed to include the following special characters in the user name field in their profile: colon (`:`), slash (`/`), less than sign (`<`), greater than sign (`>`), equal sign (`=`), and parentheses (`(` and `)`). Support for these special characters allowed malicious users to inject HTML and JavaScript code into deployment-related emails such as approval emails. (PL-39099)
+
+  For enhanced security, Harness no longer allows a user to include these special characters in their name. If an existing user name has any of these special characters, Harness does not include the special characters when adding the name to emails.
+
+- Free and Community accounts are now limited to 100 connectors. (PL-32654)
+
+- The dialog for adding an encrypted text secret now includes an option to test a referenced secret. (PL-31083) 
+
+- The dialog that enables you to select a connector did not list connectors in any order. (PL-27568)
+
+  This release adds a menu that you can use to sort the listed connectors in various ways (for example, by name or by date).
+
+- In earlier releases, you could change the Git branch only in Pipeline Studio. (CDS-68007)
+
+  Starting with this release, you can also change the branch in the dialog for running a pipeline. You can also run the pipeline from any branch directly from the pipeline listing page.
+
+## June 09, 2023
   
 ### Continuous Error Tracking, version et-service 5.23.0
 
