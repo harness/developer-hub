@@ -337,7 +337,7 @@ Certain platforms and orchestration tools, like Kubernetes, have their own namin
 
 The following keywords are reserved, and cannot be used as a variable name or property.
 
-`or and eq ne lt gt le ge div mod not null true false new var return shellScriptProvisioner`
+`or and eq ne lt gt le ge div mod not null true false new var return shellScriptProvisioner class`
 
 For more information, go to [JEXL grammar details](https://people.apache.org/~henrib/jexl-3.0/reference/syntax.html).
 
@@ -1252,7 +1252,7 @@ Use the following fully qualified expression to get the execution URL for a spec
 
 The following instance expressions are supported in SSH, WinRM, and custom deployments using deployment templates. These deployments can be done on physical data centers, AWS, and Azure.
 
-For details on these deployment types, go to [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng), [WinRM deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial), and [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial).
+For details on these deployment types, go to [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng), [WinRM deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial), and [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
 
 To use these instance expressions in a step, you must use the repeat [Looping Strategy](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
 
@@ -1278,7 +1278,7 @@ For Microsoft Azure or AWS:
 
 ### Deployment templates
 
-For [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial), you can use `<+instance...>` expressions to reference host(s) properties.
+For [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial), you can use `<+instance...>` expressions to reference host(s) properties.
 
 The `<+instance...>` expressions refer to the **Instance Attributes** in the deployment template:
 
@@ -1337,13 +1337,11 @@ Harness provides the following expressions to retrieve the current status of the
 
 The current status of the looping strategy for the node with maximum depth.
 
-When this expression is used in a step, Harness will resolve it to the looping strategy status of the first parent node (stage/step) of the step.
+When this expression is used in a step, Harness will resolve it to the looping strategy current status of the first parent node (stage/step) of the step.
 
-If the step using the expression is the first node using a looping strategy, then the expression will resolve to its looping strategy status. 
+In cases where both the step and the stage have the looping strategy configured, the expression will resolve to the looping strategy status of the current step.
 
-If the previous step in the stage uses a looping strategy, the expression will resolve to that step's looping strategy status. 
-
-If there are no previous steps using a looping strategy, but the stage uses a looping strategy, the expression will resolve to the stage's looping strategy status.
+If the step (or step group) does not have the looping strategy configured, the expression will instead resolve to the looping strategy status of the  current stage.
 
 ### <+strategy.node.STRATEGY_NODE_IDENTIFIER.currentStatus>
 
@@ -1356,6 +1354,63 @@ For example, `echo <+strategy.node.cs1.currentStatus>`.
 The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`.
 
 For example, `echo <+strategy.node.get("ShellScript_1").currentStatus>`.
+
+### identifierPostFix overview
+
+When you use a looping strategy like matrix or parallelism on a stage/step/step group, Harness automatically generates the unique Ids of the child stages/steps/step groups created by the looping operation.
+
+The `identifierPostFix` is a postfix added to the identifiers of nodes (stage/step/step group) during execution when the node is a child of the looping strategy. This ensures that all children of the looping strategy have unique identifiers.
+
+For example, here is a matrix strategy for a stage:
+
+```
+strategy:
+  matrix:
+    repo:
+      - docker
+      - gcr
+      - ecr
+```
+
+The above matrix will spawn 3 stages by picking `repo` values `docker`, `gcr`, and `ecr`.
+
+The `identifierPostfix` values would be `_docker`, `_gcr`, and `_ecr` for the different combinations of each stage run.
+
+Let's look at an example for parallelism:
+
+```
+strategy:
+  parallelism: 4
+```
+
+The above strategy will spawn 4 stages/steps and the `identifierPostfix` values will be `_0`, `_1`, `_2`, and `_3`.
+
+
+### <+strategy.identifierPostFix>
+
+This expression retrieves the `identifierPostFix` of the current node or any parent node that is a child of the looping strategy.
+
+When used in a step, Harness resolves `<+strategy.identifierPostFix>` to the `identifierPostFix` of the child node belonging to the first looping strategy parent node (either stage or step).
+
+If both the step and stage have the looping strategy configured, the expression resolves to the `identifierPostFix` of the step.
+
+If the step (or stepGroup) does not have the looping strategy configured, the expression resolves to the `identifierPostFix` of the stage.
+
+Let's look at an example using the execution of a stage with the identifier `build_and_upload` and matrix looping strategy.
+
+Multiple child stages will be created from the `build_and_upload` stage. These child stages will have identifiers with the postfix appended, such as `build_and_upload_0`, `build_and_upload_docker`, etc. In this scenario, using the expression `<+strategy.identifierPostFix>` will result in value `_0` or `_docker`.
+
+### <+step.identifierPostFix>
+
+This expression returns the `identifierPostFix` of the current step when the step is a child of a looping strategy.
+
+### <+stage.identifierPostFix>
+
+This expression retrieves the `identifierPostFix` of the stage when the current node's stage is a child of a looping strategy.
+
+### <+stepGroup.identifierPostFix>
+
+This expression returns the `identifierPostFix` of the step group when the current node is under the step group, or when the current node is the step group itself, and that step group is a child of a looping strategy.
 
 ## Triggers
 

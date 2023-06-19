@@ -28,11 +28,11 @@ The following list is optional. You can allowlist these IPs if needed.
 
 
 ```
-35.201.91.229  
-162.159.134.64  
-162.159.135.64  
-2606:4700:7::a29f:8640  
-2606:4700:7::a29f:8740
+35.201.91.229
+34.120.225.85
+34.110.203.189
+34.149.33.161
+34.160.153.7
 ```
 Harness will not change IPs without 30 days notice to all customers. If a security emergency requires a change, all customers will be notified.
 

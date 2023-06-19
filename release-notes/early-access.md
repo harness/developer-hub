@@ -12,7 +12,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - June 19, 2023
 
-### Continuous Integration, version 40xx
+### Continuous Integration, version 4206
 
 #### Output variables automatically become environment variables (CI-7817, ZD-39203)
 
@@ -27,6 +27,18 @@ For more information on this feature, go to the documentation on [Output variabl
 #### Remote debugging enhancements (CI-8135, CI-8048)
 
 **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
+
+### Continuous Delivery, version 79606
+
+- Scheduled automatic approvals have been added to manual approval steps. (CDS-69415)
+  
+  This functionality is behind a feature flag, `CDS_AUTO_APPROVAL`.
+
+  You can configure a manual approval step to automatically approve at a specific date and time.
+
+  <docimage path={require('./static/058d3e80cc8f95965e51010541d0c28f77865e484f8a84beea205b49172c658d.png')} width="60%" height="60%" title="Click to view full size image" />    
+
+  For more details, go to [Automatic Approvals](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/#automatic-approvals).
 
 ## June 09, 2023
 
@@ -164,7 +176,7 @@ You can re-run builds in debug mode through the **Builds**, **Execution**, and *
 
 ##### Continuous Delivery
 
-- [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/lambda/aws-lambda-deployments)
+- [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
   
   This functionality is behind a feature flag, `CDS_AWS_NATIVE_LAMBDA`.
   
@@ -416,7 +428,7 @@ For more information, go to [Secure Shell (SSH) deployment tutorial](https://dev
 
 Enable Feature Flags NG_SVC_ENV_REDESIGN and NG_DEPLOYMENT_TEMPLATE.
 
-For more information, go to the [Custom deployments using deployment templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial).
+For more information, go to the [Custom deployments using deployment templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
 
 ##### Harness Platform
 
