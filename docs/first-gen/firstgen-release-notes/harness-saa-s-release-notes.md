@@ -32,7 +32,7 @@ This release does not include early access features.
 
 #### Fixed issues
 
-This release does not include any fixed issues.
+This release does not include fixed issues.
 
 ### June 09, 2023, version 79516
 
