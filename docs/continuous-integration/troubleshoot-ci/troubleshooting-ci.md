@@ -12,7 +12,7 @@ This topic contains troubleshooting information for error messages and other iss
 
 :::tip Troubleshooting tools
 
-[Harness AI Copilot](./copilot.md) and [debug mode](/docs/continuous-integration/troubleshoot-ci/debug-mode.md) can help you troubleshoot errors and other issues in Harness CI.
+[AIDA](./aida.md) and [debug mode](/docs/continuous-integration/troubleshoot-ci/debug-mode.md) can help you troubleshoot errors and other issues in Harness CI.
 
 :::
 
