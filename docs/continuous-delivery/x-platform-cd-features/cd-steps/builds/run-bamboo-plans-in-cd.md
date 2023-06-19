@@ -4,11 +4,11 @@ description: Run Bamboo plans in CD stages.
 sidebar_position: 2
 ---
 
-This topic describes how to use the Bamboo step in a Harness CD pipeline.
+This topic describes how to use the Bamboo step in a Harness Continuous Delivery (CD) pipeline.
 
 Continuous Integration (CI) can be performed in Harness using the module and CI pipelines.
 
-If you are using Harness Continuous Delivery (CD) but not Harness Continuous Integration (CI), you can still perform CI using the Bamboo step in your CD stage.
+If you are using Harness CD but not Harness Continuous Integration (CI), you can still perform CI using the Bamboo step in your CD stage.
 
 Harness integrates with Bamboo, enabling you to run Bamboo plans as part of your CD stage.
 
@@ -33,7 +33,7 @@ Make sure the connector's user account has the following Bamboo permissions:
 - View plan.
 - Build plan (if you plan to trigger a build as part of your pipeline).
 
-For more information, see [Bamboo Permissions](https://confluence.atlassian.com/bamboo/bamboo-permissions-369296034.html).
+For more information, go to [Bamboo Permissions](https://confluence.atlassian.com/bamboo/bamboo-permissions-369296034.html).
 
 ## Plan Name
 
