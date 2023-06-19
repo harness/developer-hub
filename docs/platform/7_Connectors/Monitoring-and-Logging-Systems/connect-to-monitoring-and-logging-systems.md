@@ -170,58 +170,75 @@ The following roles must be attached to the account used to connect Harness and 
 
 See [Access control](https://cloud.google.com/monitoring/access-control) from Google.
 
+
 ### Add Datadog
 
 1. Open a Harness Project.
-2. In **Project Setup**, click **Connectors**.
-3. Click **+** **Connector**, and click **Datadog** in **Monitoring and Logging Systems**. The Datadog connector settings appear.
+
+2. In **Project Setup**, click **Connectors**.
+
+3. Click **+ Connector**, and click **Datadog** in **Monitoring and Logging Systems**. The Datadog connector settings appear.
    
    ![](../static/connect-to-monitoring-and-logging-systems-24.png)
    
-4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
-5. Click **Continue**.
-6. Connect to a datadog dashboard
-  - Copy the protocol and domain part of the URL such as https://app.datadoghq.com/ 
-  - Append a trailing `api/` to create the following URL `https://app.datadoghq.com/api/`, The trailing forward slash after `api` (`api/`) is mandatory. Also, if your URL has `v1` at the end of it, remove `v1`.
-  - In **URL** field, enter the URL `https://app.datadoghq.com/api/` as indicated below : 
-
+4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
    
+5. Click **Continue**.
 
-:::info note
-   The trailing forward slash after `api` (`api/`) is mandatory.
-   
-   Your URL should look like one of the following : 
+6. Connect to a Datadog dashboard.
+   To connect to a Datadog dashboard:
+7. Copy the protocol and domain part of the URL such as `https://app.datadoghq.com/`.
+
+8. Append a trailing `api/` to create the following URL: `https://app.datadoghq.com/api/](https://app.datadoghq.com/api/`.
+    The trailing forward slash after `api`is mandatory. If your URL has `v1` at the end of it, remove `v1`.
+
+9.  In URL field, enter the URL `https://app.datadoghq.com/api/`. The trailing forward slash after api (api/) is mandatory.
+    
+10. Your URL should look like one of the following:
       - `https://app.datadoghq.com/api/`
       - `https://us3.datadoghq.com/api/`
       - `https://us5.datadoghq.com/api/`
       - `https://app.datadoghq.eu/api/`
       - `https://app.ddog-gov.com/api/`
 
-:::
-   
    ![](../static/connect-to-monitoring-and-logging-systems-25.png)
-   
-1.  In **Encrypted APP Key**, enter the application key.  
     
-	To create an application key in Datadog, do the following:
-	1. In **Datadog**, hover over **Integrations**, and then click **APIs**. The **APIs** page appears.
-   
-       ![](../static/connect-to-monitoring-and-logging-systems-26.png)
-   
-	2. In **Application Keys**, in **New application key**, enter a name for the application key, such as **Harness**, and click **Create Application Key**.
-	3. Copy the API key and, in **Harness**, paste it into the **Application Key** field.
-2. In Encrypted API Key, enter the API key for API calls.  
-To create an API key in Datadog, do the following:
-	1. In **Datadog**, hover over **Integrations**, and then click **APIs**. The **APIs** page appears.
-   
-       ![](../static/connect-to-monitoring-and-logging-systems-27.png)
-   
-	2. In **API Keys**, in **New API key**, enter the name for the new API key, such as **Harness**, and then click **Create API key**.
-	3. Copy the API key and, in **Harness**, paste it into the **API Key** field.
-1. Click **Next**. The Setup Delegates settings appear.
-2.  You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
-3.  Click **Save and Continue**.
-4.  Once the Test Connection succeeds, click **Finish**. Datadog is listed under the list of Connectors.
+11. In **Encrypted APP** Key, enter the application key.
+    
+    To create an application key in Datadog, do the following:
+
+      1.  In **Datadog**, hover over **Integrations**, and then click **APIs**. The APIs page appears.
+
+         ![](../static/connect-to-monitoring-and-logging-systems-26.png)
+
+      2.  In **Application Keys**, in **New application key**, enter a name for the application key, such as **Harness**, and click **Create Application Key**.
+
+      3.  Copy the application key and, in **Harness**, paste it into the **Application Key** field.
+
+12. In Encrypted API Key, enter the API key for API calls.
+    
+    To create an API key in Datadog, do the following:
+      
+      1.  In **Datadog**, hover over **Integrations**, and then click **APIs**. The **APIs** page appears.
+    
+         ![](../static/connect-to-monitoring-and-logging-systems-27.png)
+      
+      2.  In **API Keys**, in **New API key**, enter the name for the new API key, such as **Harness**, and then click **Create API key**.
+      
+      3.  Copy the API key and, in **Harness**, paste it into the **API Key** field.
+
+13. Click **Next**. The Setup Delegates settings appear.
+
+14. You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags**. If you select a Delegate, Harness will always use that Delegate for this Connector.
+
+15. Click **Save** and **Continue**.
+
+16. Once the Test Connection succeeds, click **Finish**. Datadog is listed under the list of Connectors.
+
+
+
+
+
 
 ### Add Dynatrace
 
