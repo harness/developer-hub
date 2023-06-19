@@ -46,6 +46,18 @@ This release does not include early access features.
 
 * The Create a new flag button did not behave as expected on the onboarding screen if there were existing flags. This issue has been fixed. (FFM-8019)
 
+#### Feature Flags SDKs
+
+The **Java** server SDK has been updated to version **1.2.3** with the following updates.
+
+* There were reports of customers having difficulty running the SDK because of a missing dependency, `oksse`. Unless users have the JitPack repo in their POM/Gradle file, they are likely to have this problem at compile time. With this fix, we've removed the `oksse` dependency and now use `okhttp-sse` instead. (FFM-5915)
+
+* Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
+
+* Updated the `maven-model` dependency to version 3.5.0 to remove the CVE-2022-4245 vulnerability. (FFM-8133)
+
+* Updated to the latest version of Guava, 32.0.1-jre, to remove security issues. (FFM-8233)
+
 ```mdx-code-block
   </TabItem>
 </Tabs>
