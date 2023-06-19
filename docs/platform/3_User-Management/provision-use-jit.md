@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 Currently, this feature is behind the feature flag `PL_ENABLE_JIT_USER_PROVISION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-Just-in-time (JIT) provisioning in Harness lets you provision users automatically upon first sign in to Harness through SAML SSO.
+Just-in-time (JIT) provisioning in Harness lets you provision users automatically upon first sign-in to Harness through SAML SSO.
 You can automatically provision users added to your SAML applications configured in Harness and allow them to access Harness.
 Provisioning users automatically eliminates repetitive tasks related to manual provisioning, simplifying user management.
 
