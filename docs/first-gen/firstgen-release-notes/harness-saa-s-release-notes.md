@@ -26,6 +26,14 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 - Free, Community, and Paid accounts can now have a maximum of 100, 100, and 50000 users, respectively. (PL-39235)
 
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+This release does not include any fixed issues.
+
 ### June 09, 2023, version 79516
 
 #### What's new
