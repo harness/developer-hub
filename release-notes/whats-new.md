@@ -19,7 +19,28 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - June 19, 2023
 
-### Harness Platform, version 79600
+### Continuous Delivery, version 79606
+
+- Harness variables now have a **Required** setting. (CDS-69710)
+  
+  A **Required** setting is now added to both the API, Harness Manager, and YAML variable settings. 
+
+  <docimage path={require('./static/0bf162c7149b298e69fb52a15588e994357d3b0cf283c9146b6a0f0dac0deccd.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+  When enabled, a variable with no value returns an error at pipeline runtime.  
+
+  <docimage path={require('./static/153beccc9216340c35b3e2ca53ad81a35ec15e8b4621cd0402f0adc8372acc45.png')} width="60%" height="60%" title="Click to view full size image" />
+  
+  The **Required** options is also enforced when the variable is defined in a template and the template is included in a pipeline. 
+  
+  This feature is supported for pipeline, stage, service, and environment variables.
+- Select a Git branch when executing a pipeline that uses Git Experience. (CDS-68007, ZD-42205, ZD-42453)
+  
+  For pipelines that use Harness Git Experience (also called **remote pipelines**), you can select what Git branch to use when running the pipeline.  
+
+  <docimage path={require('./static/47ce888b8bd290e2d68db294eae373c08dc6185f1e66f6aad00b65f136dda1df.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+### Harness Platform, version 79606
 
 - In earlier releases, users were allowed to include the following special characters in the user name field in their profile: colon (`:`), slash (`/`), less than sign (`<`), greater than sign (`>`), equal sign (`=`), and parentheses (`(` and `)`). Support for these special characters allowed malicious users to inject HTML and JavaScript code into deployment-related emails such as approval emails. (PL-39099)
 

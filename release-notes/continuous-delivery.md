@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-06-09T10:00:15
+date: 2023-06-19T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -15,12 +15,108 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 09, 2023, version 79516
+## Latest - June 19, 2023, version 79606
+
+
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+
+- Harness variables now have a **Required** setting. (CDS-69710)
+  
+  A **Required** setting is now added to both the API, Harness Manager, and YAML variable settings. 
+
+  <docimage path={require('./static/0bf162c7149b298e69fb52a15588e994357d3b0cf283c9146b6a0f0dac0deccd.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+  When enabled, a variable with no value returns an error at pipeline runtime.  
+
+  <docimage path={require('./static/153beccc9216340c35b3e2ca53ad81a35ec15e8b4621cd0402f0adc8372acc45.png')} width="60%" height="60%" title="Click to view full size image" />
+  
+  The **Required** options is also enforced when the variable is defined in a template and the template is included in a pipeline. 
+  
+  This feature is supported for pipeline, stage, service, and environment variables.
+- Select a Git branch when executing a pipeline that uses Git Experience. (CDS-68007, ZD-42205, ZD-42453)
+  
+  For pipelines that use Harness Git Experience (also called **remote pipelines**), you can select what Git branch to use when running the pipeline.  
+
+  <docimage path={require('./static/47ce888b8bd290e2d68db294eae373c08dc6185f1e66f6aad00b65f136dda1df.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+- Scheduled automatic approvals have been added to manual approval steps. (CDS-69415)
+  
+  This functionality is behind a feature flag, `CDS_AUTO_APPROVAL`.
+
+  You can configure a manual approval step to automatically approve at a specific date and time.
+
+  <docimage path={require('./static/058d3e80cc8f95965e51010541d0c28f77865e484f8a84beea205b49172c658d.png')} width="60%" height="60%" title="Click to view full size image" />    
+
+  For more details, go to [Automatic Approvals](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/#automatic-approvals).
+  
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+- A deleted template in the template library cannot be recreated. (CDS-71335, ZD-45591)
+  
+  The template list page was not showing the last template. Trying to create a new template with the same identifier and version label resulted in an error saying that the template already existed.
+  
+  The issue is now fixed.
+- Unable to fetch templates from different repositories when the feature flag `PIE_NG_BATCH_GET_TEMPLATES` is enabled. (CDS-71267)
+  
+  When the feature flag `PIE_NG_BATCH_GET_TEMPLATES` was enabled and Harness was performing a fetch for all the repositories associated with a given SCM connector, Harness was only fetching the connector once instead of every related repository. This resulted in a file not found error.
+  
+  Now Harness performs a fetch for every repository for a given connector.
+- Rollback steps were not running on Approval step rejection. (CDS-71032, ZD-45472)
+  
+  When **Rollback** was selected as the failure strategy for an Approval step, the steps in the stage **Rollback** section were not running.
+  
+  Rollback steps are now correctly supported.
+- Pipeline shows success, but many stages haven't started running. (CDS-70850, ZD-45392)
+  
+  Previously, when you attempted to rerun the execution of the aborted stage that used a matrix looping strategy, the aborted matrix stages would execute, but all subsequent stages would be skipped. This resulted in the pipeline execution being finished without running all stages.
+  
+  Now, when resuming execution from an aborted matrix stage, the stages after the aborted stage are executed correctly.
+- Unable to save a pipeline that uses a step group template. (CDS-70762)
+  
+  There was an error that prevented the saving of pipelines that used a step group template. This error has been fixed.
+- Tag value did not clear when the **Regex** option is selected in the artifact details. (CDS-70487)
+  
+  When setting up artifact repositories, artifacts can be specified by name or regex. The **Tag** setting was not being cleared when this selection changed from **Name** to **Regex** or vice versa. This bug has now been fixed.
+- Selecting stages for trigger execution shows all stages. (CDS-70419)
+  
+  When setting up triggers for selective stage execution, the trigger displayed all of the stages, and not just the selected stages. This issue has now been fixed.
+- Improved usability by adding an underline on the **Save Changes** button. (CDS-70328)
+  
+  The button now has an underline to help users know it is clickable.	
+- Jenkins step marking voluntary settings as mandatory. (CDS-70071, ZD-44924)
+  
+  User were unable to save empty values for job parameters in the Jenkins step due to validations present in the UI. This has been fixed now and the incorrect validations have been removed.
+- Provisioners can't be set as runtime inputs or expressions in stage templates.(CDS-69913)
+  
+  The provisioner setting could not be set as a runtime input or expression in stage templates. This has been fixed and **Provisioners** can now be set as a runtime input or expression.
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### Latest - June 09, 2023, version 79516
+
+##### What's new
+
 - Added expressions to retrieve the current execution status of the [looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for nodes (stages/steps) using a matrix or repeat strategy. (CDS-69780)
   
   The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
@@ -66,10 +162,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   This option is available at the project, org, and account level. 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 - Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
   
@@ -85,11 +178,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. 
   
   Harness Delegate version 79503 is required for this feature.
-  
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+
+##### Fixed issues
 
 - Links to org or account level service or environment in a pipeline were redirecting to the project level entities. (CDS-70607)
   
@@ -156,27 +246,6 @@ The fixed issues below are available with version 79503 and do not require a new
   
   Harness improved the handling mechanism for the Spot `instanceHealthiness` API to fix this issue.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Hotfix version 79518">
-```
-**Released June 12, 2023**
-
-- Pipeline executions failed with the exception, `RecasterException: Class for value is not found for - io.harness.cdng.service.steps.ServiceStepV3Parameters; Cause: ClassNotFoundException: io.harness.cdng.service.steps.ServiceStepV3Parameters`. (CDS-71866, ZD-45867, ZD-45868)
-
-  This issue only applied to pipelines that were started before the latest version of Harness was deployed to the prod-2 cluster.
-
-  This issue is fixed. 
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### June 01, 2023, version 79411
 
