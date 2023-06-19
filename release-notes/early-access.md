@@ -12,7 +12,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - June 19, 2023
 
-### Continuous Delivery, version 79600
+### Continuous Delivery, version 79606
 
 - Scheduled automatic approvals have been added to manual approval steps. (CDS-69415)
   
