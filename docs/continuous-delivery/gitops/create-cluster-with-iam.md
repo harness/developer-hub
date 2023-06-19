@@ -24,6 +24,7 @@ GitOps clusters with IAM roles can be created only for a GitOps Agent installed 
 
 :::
 
+
 ## Objectives
 
 You'll learn how to create:

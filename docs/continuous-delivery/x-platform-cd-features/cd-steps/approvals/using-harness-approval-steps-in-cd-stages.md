@@ -127,7 +127,7 @@ You can set the Approval step to automatically approve at a specific date and ti
 4. In **Message**, enter the message that the users in the **User Groups** setting will see when the automatic approval occurs.
 
 
-:::notes
+:::note
 
 - The Auto approve schedule should be greater than 15 minutes past the current time.
 - In addition to automatic approvals, you can also set a step-level failure strategy of **Mark as Success**. If the step exceeds its **Timeout** setting or fails for a different reason, **Mark as Success** will automatically approve the step. This is not a replacement for the **Auto Approve** option.

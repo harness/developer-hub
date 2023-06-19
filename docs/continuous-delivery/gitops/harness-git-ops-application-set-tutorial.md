@@ -1,7 +1,7 @@
 ---
 title: Harness GitOps ApplicationSet and PR pipeline tutorial
 description: This topic describes how to create a GitOps ApplicationSet and PR Pipeline in Harness GitOps.
-sidebar_position: 7
+sidebar_position: 8
 helpdocs_topic_id: lf6a27usso
 helpdocs_category_id: 013h04sxex
 helpdocs_is_private: false
