@@ -1,7 +1,7 @@
 ---
-title: AWS Lambda deployments (Serverless.com Framework)
-description: This topic walks you through deploying a Serverless Lambda application to AWS Lambda using Harness.
-sidebar_position: 7
+title: Serverless.com Framework (AWS Lambda deployments)
+description: Deploy a Serverless Lambda application to AWS Lambda using Harness.
+sidebar_position: 900
 helpdocs_topic_id: 5fnx4hgwsa
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
@@ -178,13 +178,13 @@ Pipelines are collections of stages. For this quickstart, we'll create a new Pip
 3. Click **Add Stage** and select **Deploy**.
 4. Enter the name **Deploy Service**, make sure **Service** is selected, and then click **Set Up Stage**.
 
-   ![](static/serverless-lambda-cd-quickstart-110.png)
+   ![](./static/serverless-lambda-cd-quickstart-110.png)
    
    The new stage settings appear.
 5. In **About the** **Service**, click **New Service**.
 6. Give the Service the name **quickstart** and click **Save**.
 
-![](static/serverless-lambda-cd-quickstart-111.png)
+![](./static/serverless-lambda-cd-quickstart-111.png)
 
 :::note
 
@@ -216,7 +216,7 @@ Next, we can add a serverless.yaml for our deployment. We'll use [the publicly-a
      * In **Secret Value**, paste in a GitHub Personal access token.When you're logged into GitHub, these tokens are listed at <https://github.com/settings/tokens>. For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
      * Make sure your PAT has the **repo** scope selected:
 
-	![](static/repoScope.png)
+	![](./static/repoScope.png)
 5. Select **Connect through Harness Platform**.
 6. Click **Finish**.
 7. Back in **Specify Serverless Lambda Manifest Store**, click **Continue**.
@@ -229,7 +229,7 @@ Next, we can add a serverless.yaml for our deployment. We'll use [the publicly-a
   
 You can see the serverless.yaml manifest in Harness.
 
-![](static/serverless-lambda-cd-quickstart-112.png)
+![](./static/serverless-lambda-cd-quickstart-112.png)
 
 Here's what the serverless.yaml looks like:
 
@@ -273,7 +273,7 @@ We'll add a new Artifactory Connector and install a Harness Kubernetes Delegate 
 6. In **Details**, in **Artifactory Repository URL**, enter `https://harness.jfrog.io/artifactory/`.
 7. In **Authentication**, select **Anonymous**.
    
-   ![](static/serverless-lambda-cd-quickstart-113.png)
+   ![](./static/serverless-lambda-cd-quickstart-113.png)
 
 8. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then select **Continue**.
    We don't recommend using the **Connect through Harness Platform** option here because you'll need a delegate later for connecting to your target environment. Typically, the **Connect through Harness Platform** option is a quick way to make connections without having to use delegates.
@@ -339,11 +339,11 @@ We'll add a new Artifactory Connector and install a Harness Kubernetes Delegate 
 10. Select the **Connect using Delegates with the following Tags** option.
 11. Enter the tag of the new Delegate and click **Save and Continue**.
    
-   ![](static/serverless-lambda-cd-quickstart-118.png)
+   ![](./static/serverless-lambda-cd-quickstart-118.png)
 
 12. In **Connection Test**, you can see that the connection is successful. Click **Finish**.
    
-   ![](static/serverless-lambda-cd-quickstart-119.png)
+   ![](./static/serverless-lambda-cd-quickstart-119.png)
 
 ## Installing Serverless on the Delegate
 
@@ -409,7 +409,7 @@ In cases when the Delegate OS doesn't support `apt` (Red Hat Linux), you can edi
 
 	The artifact is now in the Service.
 
-	![](static/serverless-lambda-cd-quickstart-120.png)
+	![](./static/serverless-lambda-cd-quickstart-120.png)
 
 2. Click **Continue** to view the **Infrastructure**.
 
@@ -433,7 +433,7 @@ Now that you have configured the Service, we can define the target for our deplo
 2. Back in **Amazon Web Services Details**, in **Region**, enter the region for your AWS Lambda service, such as **us-east-1**.
 3. In **Stage**, enter the name of the stage in your service that you want to deploy to, such as **dev**. This is the same as the `--stage` option in the `serverless deploy` command.
    
-   ![](static/serverless-lambda-cd-quickstart-121.png)
+   ![](./static/serverless-lambda-cd-quickstart-121.png)
    
    When you run your deployment, you'll see these settings used in the logs. For example: `serverless deploy list --stage dev --region us-east-1`.
 4. Click **Continue**. The **Execution** steps appear.
@@ -446,12 +446,12 @@ Harness automatically adds two Serverless Lambda steps to **Execution**:
 * **Serverless Lambda Deploy:** this step performs the deployment.
 * **Serverless Lambda Rollback:** this step performs a rollback in the event of a deployment failure. To see this step, toggle the Execution/Rollback setting.
  
-![](static/serverless-lambda-cd-quickstart-122.png)
+![](./static/serverless-lambda-cd-quickstart-122.png)
 
 1. In **Execution**, click **Serverless Lambda Deploy**.
 2. Click the **Advanced** tab and select the Delegate that you installed in **Delegate Selector**.
    
-   ![](static/serverless-lambda-cd-quickstart-123.png)
+   ![](./static/serverless-lambda-cd-quickstart-123.png)
    
    If you only have one Delegate installed in your Project, then this isn't necessary. But if you have multiple Delegates, you want to make sure the Serverless Lambda Deploy step uses the Delegate where you installed Serverless.
 3. Click **Apply Changes**.
@@ -475,11 +475,11 @@ serverless deploy --stage dev --region us-east-1 --conceal
 1. Save your Pipeline and then click **Run**, and then **Run Pipeline**. The Pipeline executes.
 2. In the **Serverless AWS Lambda Deploy** step, click **Input** to see the deployment inputs:
 
-   ![](static/serverless-lambda-cd-quickstart-124.png)
+   ![](./static/serverless-lambda-cd-quickstart-124.png)
 
 3. Click **Output** to see what's deployed:
    
-   ![](static/serverless-lambda-cd-quickstart-125.png)
+   ![](./static/serverless-lambda-cd-quickstart-125.png)
 4. Click **Details** or **Console View** to see the logs.
 
 In the logs you can see the successful deployment.
@@ -635,11 +635,11 @@ You reference sidecar artifacts with the format `<+artifacts.sidecars.[artifact_
 
 The artifact Id comes from the Artifact Details:
 
-![](static/serverless-lambda-cd-quickstart-126.png)
+![](./static/serverless-lambda-cd-quickstart-126.png)
 
 You can see it in the artifact list:
 
-![](static/serverless-lambda-cd-quickstart-127.png)
+![](./static/serverless-lambda-cd-quickstart-127.png)
 
 #### Docker sidecars
 

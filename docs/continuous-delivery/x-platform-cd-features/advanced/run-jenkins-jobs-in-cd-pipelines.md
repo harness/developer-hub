@@ -1,7 +1,7 @@
 ---
 title: Run Jenkins jobs in CD pipelines
-description: This topic shows you how to run Jenkins jobs in CD stages.
-sidebar_position: 3
+description: Run Jenkins jobs in CD stages.
+sidebar_position: 2
 ---
 
 This topic describes how to use the Jenkins step in a Harness CD pipeline.

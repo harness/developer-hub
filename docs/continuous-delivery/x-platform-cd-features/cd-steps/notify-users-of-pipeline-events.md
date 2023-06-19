@@ -1,7 +1,7 @@
 ---
 title: Add a pipeline notification strategy
 description: Notify users of different pipeline events.
-sidebar_position: 1
+sidebar_position: 300
 ---
 
 This topic describes how to notify users of different pipeline events using popular notification methods.
@@ -27,7 +27,7 @@ To create or enable a notification rule, a user must belong to a user group with
 
 In your pipeline, select **Notify**.
 
-![](../../../cd-advanced/cd-notifications/static/notify-users-of-pipeline-events-00.png)
+![](./static/notify-users-of-pipeline-events-00.png)
 
 To create a new notification rule, select **Notifications**. The **Notification Rule** settings appear.
 
@@ -43,7 +43,7 @@ You can select events for the pipeline or stages.
 
 If you select the stage events, you can select which stages to use.
 
-![](../../../cd-advanced/cd-notifications/static/notify-users-of-pipeline-events-01.png)
+![](./static/notify-users-of-pipeline-events-01.png)
 
 Select **Continue**.
 
@@ -62,7 +62,7 @@ Enter multiple addresses as a comma-separated list. For example, `john.doe@examp
 
 Here's an example of an email notification for the pipeline Start event:
 
-![](../../../cd-advanced/cd-notifications/static/notify-users-of-pipeline-events-02.png)
+![](./static/notify-users-of-pipeline-events-02.png)
 
 Along with the start date and who triggered the pipeline, the email includes a link to the pipeline execution in Harness.
 
@@ -74,7 +74,7 @@ Follow the steps in Slack documentation for creating a Slack app, selecting your
 
 When you are done, you'll have a webhook that looks something like this:
 
-![](../../../cd-advanced/cd-notifications/static/notify-users-of-pipeline-events-03.png)
+![](./static/notify-users-of-pipeline-events-03.png)
 
 Copy the webhook.
 
@@ -100,7 +100,7 @@ You can reference a secret within the Account scope using an expression with `ac
 ```bash
 <+secrets.getValue(“account.your-secret-Id”)>​​​
 ```
-![](../../../cd-advanced/cd-notifications/static/notify-users-of-pipeline-events-04.png)
+![](./static/notify-users-of-pipeline-events-04.png)
 
 ## PagerDuty notifications
 
@@ -128,7 +128,7 @@ You can reference a secret within the Account scope using an expression with `ac
 
 You can copy or paste this key from PagerDuty's **Configuration** > **Services** > **Service Details** dialog > **Integrations** tab, as shown below.
 
-![](../../../cd-advanced/cd-notifications/static/notify-users-of-pipeline-events-05.png)
+![](./static/notify-users-of-pipeline-events-05.png)
 
 For details, see PagerDuty's documentation on [creating integrations](https://support.pagerduty.com/docs/services-and-integrations).
 
@@ -140,17 +140,17 @@ You create a channel connector in Microsoft Teams to generate the webhook Harnes
 
 In Microsoft Teams, right-click the channel where you want to send notifications, and select **Connectors**.
 
-![](../../../cd-advanced/cd-notifications/static/notify-users-of-pipeline-events-06.png)
+![](./static/notify-users-of-pipeline-events-06.png)
 
 In **Connectors**, locate **Incoming Webhook**, and select **Configure.**
 
-![](../../../cd-advanced/cd-notifications/static/notify-users-of-pipeline-events-07.png)
+![](./static/notify-users-of-pipeline-events-07.png)
 
 In **Incoming Webhook**, enter a name, such as **Harness**.
 
 Right-click and save the Harness icon from here:
 
-![](../../../cd-advanced/cd-notifications/static/notify-users-of-pipeline-events-08.png)
+![](./static/notify-users-of-pipeline-events-08.png)
 
 Select **Upload Image** and add the Harness icon you downloaded.
 
@@ -158,13 +158,13 @@ Next, you'll create the webhook URL needed by Harness.
 
 In your Microsoft Teams connector, select **Create**. The webhook URL is generated.
 
-![](../../../cd-advanced/cd-notifications/static/notify-users-of-pipeline-events-09.png)
+![](./static/notify-users-of-pipeline-events-09.png)
 
 Click the copy button to copy the webhook URL, and then select **Done**.
 
 The channel indicates that the connector was set up.
 
-![](../../../cd-advanced/cd-notifications/static/notify-users-of-pipeline-events-10.png)
+![](./static/notify-users-of-pipeline-events-10.png)
 
 In Harness, in **Notification Method** settings, enter the webhook URL for your Microsoft Teams channel in **Microsoft Teams Webhook URL** or add it as an [encrypted text](/docs/platform/Secrets/add-use-text-secrets) and reference it here.
 
@@ -197,5 +197,5 @@ Go to [send notifications using Slack](/docs/platform/Notifications/send-notific
 
 Once you've created notification rules, you can enable and disable them in the **Notifications** page.
 
-![](../../../cd-advanced/cd-notifications/static/notify-users-of-pipeline-events-11.png)
+![](./static/notify-users-of-pipeline-events-11.png)
 

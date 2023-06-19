@@ -1,7 +1,7 @@
 ---
 title: Custom deployments using Deployment Templates
-description: This topic walks you through a custom deployment in Harness using Deployment Templates to connect to target platforms, obtain target host information, and execute deployment steps.
-sidebar_position: 10
+description: Perform custom deployment in Harness using Deployment Templates to connect to target platforms, obtain target host information, and execute deployment steps.
+sidebar_position: 1300
 helpdocs_topic_id: 6k9t49p6mn
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
@@ -86,7 +86,7 @@ You can add your own scripts or tests to your Pipelines to describe deployments,
 
 1. Note the default tag added to the Delegate. You will use this to select this Delegate in future steps.
 
-![](static/custom-deployment-tutorial-13.png)
+![](./static/custom-deployment-tutorial-13.png)
 
 ## Create custom Deployment Template
 
@@ -98,22 +98,22 @@ You can create a Deployment Template at the Account, Org, or Project level. For 
 4. Select **Deployment**.
 1. In **Create New Deployment Template**, in **Name**, enter **DT**.
 2. In **Version Label**, enter **v1**.In **Logo**, you can upload an image to use as the icon for this template.
-  ![](static/custom-deployment-tutorial-14.png)
+  ![](./static/custom-deployment-tutorial-14.png)
 3. Click **Start**.
 
 The Deployment Template is composed of two major sections:
 
 - **Infrastructure:**
 
-  ![](static/dt-Infrastructure.png)
+  ![](./static/dt-Infrastructure.png)
 
   - **Variables:** variables that can be used when the script is run.
-  - **Fetch Instances Script:** script needed to fetch a JSON array of the target instances. The script can be entered here or you can use the [Harness File Store](../../x-platform-cd-features/services/add-inline-manifests-using-file-store.md) to share scripts with others.
+  - **Fetch Instances Script:** script needed to fetch a JSON array of the target instances. The script can be entered here or you can use the [Harness File Store](../x-platform-cd-features/services/add-inline-manifests-using-file-store.mdo share scripts with others.
   - **Instance Object Array Path:** the JSON path to the label that lists the array of instances, such as `items`.
   - **Instance Attributes:** the JSON path to the instance name label for the target instances.Mapping the fieldname `instancename` to the JSON Path is mandatory.You can add more instance attributes for additional target instance values you want to use.
 - **Execution:**
   
-  ![](static/dt-execution.png)
+  ![](./static/dt-execution.png)
 
   - Any steps that you want to use in the stage and associate with this template. If you create these in the Deployment Template, they are automatically created as separate Step Templates.
   - Your stage is not limited to using these steps. You can add any steps you want to your stage.
@@ -225,9 +225,9 @@ You can map any additional attributes containing information you want to referen
 1. Click **Save**.
 2. In **Save as new Template**, in **Name**, enter **deploy**.
 3. In **Version Label**, enter **v1**.
-  ![](static/custom-deployment-tutorial-16.png)
+  ![](./static/custom-deployment-tutorial-16.png)
 4. Click **Save**. The step template is added to the Deployment Template.
-  ![](static/custom-deployment-tutorial-17.png)
+  ![](./static/custom-deployment-tutorial-17.png)
 5. Click **Save** to save the Deployment Template. If you haven't already, name the Deployment Template **DT**.
 
 ## Create the Pipeline
@@ -240,7 +240,7 @@ Now we'll create a Harness Pipeline that will use the Deployment Template.
 4. Click **Add Stage**.
 5. Click **Deploy**, and enter the name **DT Tutorial**.
 6. In **Deployment** **Templates**, click the Deployment Template you created, **DT**, and then click **Use Template**.  
-  ![](static/custom-deployment-tutorial-18.png)
+  ![](./static/custom-deployment-tutorial-18.png)
 7. Click **Set Up Stage**.
 
 The stage is created and you are on the **Service** tab.
@@ -270,7 +270,7 @@ Now let's add the Docker image for deployment.
 5. In **Docker Registry URL**, enter the following:
 	1. **URL** `https://registry.hub.docker.com/v2/`.
 	2. In **Authentication**, select **Anonymous**, and click **Continue**.
-  ![](static/custom-deployment-tutorial-19.png)
+  ![](./static/custom-deployment-tutorial-19.png)
 6. In **Connect to the provider**, click **Connect through a Harness Delegate**, and then click **Continue**.
 7. In **Delegates Setup**, click **Only use Delegates with all of the following tags**, and then enter the tag of the Delegate you set up earlier.
 8. Click **Save and Continue**.
@@ -279,9 +279,9 @@ Now let's add the Docker image for deployment.
 	3. **Image Path:** `library/nginx`.
 	4. **Tag:** Change the setting to a **Fixed value**, and then select **perl**.
 11. Click **Submit**. The artifact is now added to the Service.
-  ![](static/custom-deployment-tutorial-22.png)
+  ![](./static/custom-deployment-tutorial-22.png)
 1.  Click **Save**. The Service is now added to the stage.
-  ![](static/custom-deployment-tutorial-23.png)
+  ![](./static/custom-deployment-tutorial-23.png)
 1. Click **Continue** to set up the Environment for the stage.
 
 ## Referencing the artifact in your files
@@ -309,7 +309,7 @@ You can create Environments and their Infrastructure Definitions inside a stage 
 4. Name the Infrastructure Definition **DT Tutorial**, and then click **Save**.
   The Infrastructure Definition is added to the stage.
   
-  ![](static/custom-deployment-tutorial-24.png)
+  ![](./static/custom-deployment-tutorial-24.png)
 
   Next, we'll define the Execution steps for the deployment.
 5. Click **Continue** to see Execution.
@@ -318,7 +318,7 @@ You can create Environments and their Infrastructure Definitions inside a stage 
 
 The **Fetch Instances** step is added automatically.
 
-![](static/custom-deployment-tutorial-25.png)
+![](./static/custom-deployment-tutorial-25.png)
 
 When the pipeline runs, that step will run your Deployment Template's script and traverse the JSON instances array returned to identify the target instances for deployment.
 
@@ -330,8 +330,10 @@ Execution has Fetch Instances but it still needs a step for deployment.
   
   The **deploy** step you added to the Deployment Template is displayed.
   
-  ![](static/custom-deployment-tutorial-26.png)1. Click the **deploy** step and click **Use Template**.
-2. Enter the name **DT Tutorial** for the step and click **Apply Changes**.
+  ![](./static/custom-deployment-tutorial-26.png)
+
+2. Click the **deploy** step and click **Use Template**.
+3. Enter the name **DT Tutorial** for the step and click **Apply Changes**.
 
 Let's add one more step to describe the deployment and see how it worked on each fetched instance.
 
@@ -342,9 +344,9 @@ Let's add one more step to describe the deployment and see how it worked on each
 ```bash
 kubectl describe deployment nginx-deployment
 ```
-![](static/custom-deployment-tutorial-27.png)
+![](./static/custom-deployment-tutorial-27.png)
 
-Next, we need this script to loop through all the fetched instances. We do that by using a [Looping Strategy](../../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) in the step's **Advanced** section.
+Next, we need this script to loop through all the fetched instances. We do that by using a [Looping Strategy](../../platform/8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.mdn the step's **Advanced** section.
 
 1. Click **Advanced**.
 2. Click **Looping Strategy**.
@@ -355,7 +357,7 @@ Next, we need this script to loop through all the fetched instances. We do that 
     items: <+stage.output.hosts>
   ```
 
-  ![](static/custom-deployment-tutorial-28.png)
+  ![](./static/custom-deployment-tutorial-28.png)
 
   The `<+stage.output.hosts>` expression references all of the hosts/pods/instances returned by your script.
 4. Click **Apply Changes**.
@@ -371,7 +373,7 @@ For this tutorial, we'll use a single Delegate because we are deploying to its c
 1. Click the **Advanced** tab.
 2. Click in **Define Delegate Selector** and select the tag of the Delegate you installed earlier.
 
-![](static/custom-deployment-tutorial-29.png)
+![](./static/custom-deployment-tutorial-29.png)
 
 ## Run and verify the pipeline
 
@@ -382,11 +384,11 @@ The Pipeline runs and you can see the Kubernetes Deployment object created and t
 
 Click the **Fetch Instances** step, and then click **Output** to see the instances output from your script:
 
-![](static/custom-deployment-tutorial-30.png)
+![](./static/custom-deployment-tutorial-30.png)
 
 Lastly, look at the **kubectl describe deployments** step to see the deployment on each pod:
 
-![](static/custom-deployment-tutorial-31.png)
+![](./static/custom-deployment-tutorial-31.png)
 
 Congratulations!
 
@@ -411,7 +413,7 @@ See the following sections for information on other settings.
 
 You can create the following types of variables.
 
-![](static/custom-deployment-tutorial-32.png)
+![](./static/custom-deployment-tutorial-32.png)
 
 * **String:** any string you might want to reference in your stage steps.
 * **Secret:** select or create a secret in Harness using Harness default Secret Manager or a Secret Manager you have configured in Harness. For more information, go to [Secrets and Secret Management](/docs/category/security).
@@ -433,7 +435,7 @@ Here are some examples.
 
 First, here's the variables:
 
-![](static/refvars.png)
+![](./static/refvars.png)
 
 Here's the expressions referencing these variables:
 
@@ -475,7 +477,7 @@ When you define the Infrastructure Definition in your stage **Environment**, you
 
 | **Deployment Template** | **Infrastructure Definition** |
 | --- | --- |
-| ![](static/dt-Infrastructure.png) | ![](static/dtinfra2.png) |
+| ![](./static/dt-Infrastructure.png) ../static/dtinfra2.pngnfra2.png) |
 
 #### Target host instance variable expressions
 
@@ -483,7 +485,7 @@ You can use `<+instance...>` expressions to reference host(s) properties.
 
 The `<+instance...>` expressions refer to the **Instance Attributes** in the Deployment Template:
 
-![](static/custom-deployment-tutorial-33.png)
+![](./static/custom-deployment-tutorial-33.png)
 
 The following expressions refer to instance(s) collected by the mandatory **instancename** field:
 
@@ -503,7 +505,7 @@ To use these expressions, you need to enable the Repeat Looping Strategy and use
 
 For example, here is a Shell Script step that outputs these expressions:
 
-![](static/custom-deployment-tutorial-34.png)
+![](./static/custom-deployment-tutorial-34.png)
 
 1. In the step, in **Advanced**, click **Looping Strategy**.
 2. Select **Repeat**.
@@ -574,7 +576,7 @@ In this example, the **Host Object Array Path** is `$` and the **instancenam
 
 You can reference each instance fetched by the **Fetched Instances** step using the step's **Output** tab.
 
-![](static/custom-deployment-tutorial-35.png)
+![](./static/custom-deployment-tutorial-35.png)
 
 You can expand each instances and copy the expression for the instance metadata you need.
 

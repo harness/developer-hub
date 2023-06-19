@@ -33,6 +33,63 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },
     //===================================================================================
+    
+    // Created by roshnisarangadharan from branch DOC-3192-remove-single-topic-folders on June 15 2023
+    
+    {
+      from: "/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos",
+      to: "/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/aws/lambda/aws-lambda-deployments",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-deployment",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/google/google-functions",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial",
+    },
+
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events",
+    },
+
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines",
+      to: "/docs/continuous-delivery/x-platform-cd-features/advanced/run-jenkins-jobs-in-cd-pipelines",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure",
+    },
 
     // Created by aimurphy for branch doc-2550 on June 9, 2023
 
@@ -1761,23 +1818,8 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial",
-      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial",
-    },
-
-    {
-      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart",
-      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart",
-    },
-
-    {
       from: "/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-Jira",
       to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events",
-      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events",
     },
 
     {
@@ -1959,11 +2001,6 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure",
-      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure",
-    },
-
-    {
       from: "/docs/continuous-delivery/cd-advanced/cd-helm-category/use-a-local-helm-chart",
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/use-a-local-helm-chart",
     },
@@ -2076,11 +2113,6 @@ module.exports = {
     {
       from: "/docs/continuous-delivery/cd-execution/cd-general-steps/run-a-script-on-multiple-target-instances",
       to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/run-jenkins-jobs-in-cd-pipelines",
-      to: "/docs/continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines",
     },
 
     {

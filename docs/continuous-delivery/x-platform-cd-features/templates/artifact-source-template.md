@@ -87,7 +87,7 @@ You can also select **Runtime input** or **Expression** for this setting.
 
 Different repository types have different **Artifact Details** settings.
 
-For information on how to configure each repository's settings, see the examples in [Harness Kubernetes services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services).
+For information on how to configure each repository's settings, see the examples in [Harness Kubernetes services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services).
 
 ### Tags
 

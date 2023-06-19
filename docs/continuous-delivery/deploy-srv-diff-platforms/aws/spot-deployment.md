@@ -1,7 +1,7 @@
 ---
 title: Spot Elastigroup deployments
-description: This topic walks you through deploying Spot Elastigroup using Harness.
-sidebar_position: 1
+description: Deploy a Spot Elastigroup using Harness CD.
+sidebar_position: 4
 ---
 
 :::info
@@ -446,7 +446,7 @@ With this incremental traffic shift strategy, you are controlling the percentage
 1. In Execution Strategies, select **Blue Green**, and then click **Use Strategy**.
 2. The blue green execution steps are added. 
    
-   ![](.static/../static/spot-bg.png)
+   ![](./static/spot-bg.png)
 3. Select the **Elastigroup Blue Green Stage Setup** step to define **Step Parameters**.
     * **Name**: Enter the deployment step name.
     * **Timeout**: Set how long you want the Harness delegate to wait for the Spot cloud to respond to API requests before timeout.

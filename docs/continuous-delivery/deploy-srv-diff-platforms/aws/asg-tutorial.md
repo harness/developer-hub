@@ -1,7 +1,7 @@
 ---
 title: AWS ASG deployments
-description: Deploy an ASG using Harness.
-sidebar_position: 13
+description: Deploy an ASG using Harness CD.
+sidebar_position: 1
 ---
 
 :::note
@@ -346,13 +346,13 @@ To configure a Harness ASG service in the Harness Manager, do the following:
    
    This is the same as the **Automatic scaling** option in the ASG console setup:
 
-   ![Automatic scaling option in the ASG console setup](static/ae598a44899643397e7ee9502a8fc6698bd8703bff7209fe7a4c95c4b82c3704.png)  
+   ![Automatic scaling option in the ASG console setup](./static/ae598a44899643397e7ee9502a8fc6698bd8703bff7209fe7a4c95c4b82c3704.png)  
 
    1. [Scheduled update group action](https://docs.aws.amazon.com/autoscaling/ec2/userguide/ec2-auto-scaling-scheduled-scaling.html). This is optional.
    
    This is the same as the scheduled action in the ASG console setup:
    
-   ![Edit scheduled action](static/5cfdb08c486ac86332089f793e1dbc0b011e1730c595d18e937370f6ca1587fc.png)  
+   ![Edit scheduled action](./static/5cfdb08c486ac86332089f793e1dbc0b011e1730c595d18e937370f6ca1587fc.png)  
    
    Next, in **Artifacts**, you add the private AMI image to use for the ASG instances.
 7. In **Artifacts**, select **Add Artifact Source**.
@@ -432,7 +432,7 @@ In the **Variables** section of the service, you can add service variables and t
 
 For example, you could create a variable named **desiredCapacity** and set its value as a [fixed value, runtime input, or expression](https://developer.harness.io/docs/platform/references/runtime-inputs/).
 
-![service variable](static/c590ccda5addd62225b690d85c60237b2f6e9378e8ed4b02ba3e82ba9bda29e9.png)  
+![service variable](./static/c590ccda5addd62225b690d85c60237b2f6e9378e8ed4b02ba3e82ba9bda29e9.png)  
 
 Next, in your ASG configuration file, you could reference the variable like this (see `<+serviceVariables.desiredCapacity>`):
 
@@ -946,7 +946,7 @@ Here's a flowchart that explains how Harness performs rolling deployments:
 <details>
 <summary>Rolling deployments flowchart</summary>
 
-![ASG rolling flowchart](static/ab01a5afe7406d7dad3496fbf0544cd304c512179589a24ae47eefa418fdc989.png)  
+![ASG rolling flowchart](./static/ab01a5afe7406d7dad3496fbf0544cd304c512179589a24ae47eefa418fdc989.png)  
 
 
 </details>
@@ -1077,7 +1077,7 @@ The ASG canary deployment uses two step groups:
 
 Here's what the two step groups look like:
 
-![ASG canary step groups](static/22f0a4be013dcf977b67e4f645941ce03ea5f63e6d9225a28f5efa383b5b5bdc.png)  
+![ASG canary step groups](./static/22f0a4be013dcf977b67e4f645941ce03ea5f63e6d9225a28f5efa383b5b5bdc.png)  
 
 
 ```mdx-code-block
@@ -1199,11 +1199,11 @@ A Blue/Green deployment reliably deploys your ASGs by maintaining new and old ve
 
 In the first stage of deployment, the new ASG is attached to the stage target group:
 
-![first stage](static/ea87f58fb9e638f26d1c0a7cefde20158f4ad3c88496b3de827121992dd0ba0a.png)  
+![first stage](./static/ea87f58fb9e638f26d1c0a7cefde20158f4ad3c88496b3de827121992dd0ba0a.png)  
 
 Blue/Green deployments are achieved by swapping routes between the target groups—always attaching the new ASG first to the stage target group, and then to the prod target group:
 
-![second stage](static/88aa5c64d8375bea18c47e77b218c94fae1d06e6652c984c912d795132e84e63.png)  
+![second stage](./static/88aa5c64d8375bea18c47e77b218c94fae1d06e6652c984c912d795132e84e63.png)  
 
 </details>
 
@@ -1212,7 +1212,7 @@ Here's a flowchart that explains how Harness performs Blue Green deployments:
 <details>
 <summary>Blue Green deployments flowchart</summary>
 
-![blue green flowchart map](static/65c67ea9418a480ee1fc97fce06fe551ac3afea9fb6e5297a2d70fcb7711ee0c.png)  
+![blue green flowchart map](./static/65c67ea9418a480ee1fc97fce06fe551ac3afea9fb6e5297a2d70fcb7711ee0c.png)  
 
 </details>
 

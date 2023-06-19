@@ -1,7 +1,7 @@
 ---
 title: Harness Kubernetes services
 description: Define a Kubernetes service.
-sidebar_position: 1
+sidebar_position: 3
 helpdocs_topic_id: 2nx0de3w99
 helpdocs_category_id: wfnd8y0ifs
 helpdocs_is_private: false
@@ -638,7 +638,7 @@ You cannot use Harness variables in the base manifest or kustomization.yaml. You
 - Kustomize patches override values in the base manifest. Harness supports the `patchesStrategicMerge` patches type.
 - If the `patchesStrategicMerge` label is missing from the kustomization YAML file, but you have added Kustomize Patches to your Harness Service, Harness will add the Kustomize Patches you added in Harness to the `patchesStrategicMerge` in the kustomization file. If you have hardcoded patches in `patchesStrategicMerge`, but not add these patches to Harness as Kustomize Patches, Harness will ignore them.
 
-For a detailed walkthrough of using patches in Harness, go to [Use Kustomize for Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments).
+For a detailed walkthrough of using patches in Harness, go to [Use Kustomize for Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/use-kustomize-for-kubernetes-deployments).
 
 To use Kustomize Patches, do the following:
 
@@ -676,7 +676,7 @@ To use Kustomize Patches, do the following:
 
 If this is your first time using Harness for a Kustomize deployment, see the [Kustomize Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart).
 
-For a detailed walkthrough of deploying Kustomize in Harness, including limitations, see [Use Kustomize for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments).
+For a detailed walkthrough of deploying Kustomize in Harness, including limitations, see [Use Kustomize for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/use-kustomize-for-kubernetes-deployments).
 
 #### Important notes
 
@@ -3217,5 +3217,5 @@ For more information, go to:
 
 Once you've configured your service, you can move onto the stage's **Environment** settings and define the target Kubernetes cluster and namespace for your deployment.
 
-See [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure).
+See [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure).
 
