@@ -234,7 +234,7 @@ To create an API key in Datadog, do the following:
 If you are going to use multiple providers of the same type, ensure you give each provider a different name.
 
 5.	In the **Credentials** tab, enter the URL of your Dynatrace account.  
-Using HTTPS is mandatory for establishing connections with Dynatrace.
+You must use HTTPS to establishing connections with Dynatrace.
 
 5.	Select the **API Token field** > **+ New Secret Text**.
 
