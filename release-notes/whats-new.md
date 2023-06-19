@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 import delete_project from './static/delete-project.png'
 ```
 
-Review the notes below to learn about the new features that are Generally Available (GA) in Harness NextGen SaaS across all Harness modules and the Harness Platform. For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
+Review the notes below to learn about the new features that are Generally Available (GA) across all Harness modules and the Harness Platform. For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
@@ -57,6 +57,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - In earlier releases, you could change the Git branch only in Pipeline Studio. (CDS-68007)
 
   Starting with this release, you can also change the branch in the dialog for running a pipeline. You can also run the pipeline from any branch directly from the pipeline listing page.
+
+## June 14, 2023
+
+### Self-Managed Enterprise Edition, version 79230
+
+- Harness updated the following images to use versioned tags: (SMP-1347)
+
+   - docker.io/harness/sto-plugin:1.12.0
+   - docker.io/curlimages/curl:8.1.1
+
+- The `PRUNE_KUBERNETES_RESOURCES` feature flag is now disabled by default. (SMP-1359)
+
+- Redis images and the GitOps Redis agent are upgraded to 6.2.12-alpine. (SMP-1402)
 
 ## June 09, 2023
   
