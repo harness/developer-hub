@@ -58,6 +58,14 @@ The **Java** server SDK has been updated to version **1.2.3** with the following
 
 * Updated to the latest version of Guava, 32.0.1-jre, to remove security issues. (FFM-8233)
 
+The **Android** client SDK has been updated to version **1.1.0** with the following updates.
+
+* Added a new API to allow SDK users to provide a trusted TLS CA certificate for connecting to Feature Flag services with private root CAs. (FFM-7008)
+
+* Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
+
+* Fixed broken links in the first time setup documentation. (FFM-7867)
+
 ```mdx-code-block
   </TabItem>
 </Tabs>
