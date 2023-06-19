@@ -230,7 +230,7 @@ To create an API key in Datadog, do the following:
 
 3.   Under **Monitoring and Logging Systems**, select **Dynatrace**.
 
-3.	In the dialog that appears, in the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**.    
+4.	In the dialog that appears, in the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**.    
 If you are going to use multiple providers of the same type, ensure you give each provider a different name.
 
 4.	In the **Credentials** tab, enter the URL of your Dynatrace account.  
