@@ -1,6 +1,6 @@
 ---
 title: Create a connector using YAML
-description: To solve [problem], [general description of How-to solution]. In this topic --  Before you begin. Visual Summary. Step 1 --  Title. Step 2 --  Title. Next steps. Before you begin. Your target environment must…
+description: This topic explains how to add a connector using the YAML Builder.
 # sidebar_position: 2
 helpdocs_topic_id: m0awmzipdp
 helpdocs_category_id: o1zhrfo8n5
