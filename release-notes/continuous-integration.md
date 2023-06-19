@@ -73,7 +73,7 @@ For more information on this feature, go to the documentation on [Output variabl
 
 #### Remote debugging enhancements (CI-8135, CI-8048)
 
-**Re-run in Debug Mode** now supports Python and Powershell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
+**Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
 
 ```mdx-code-block
   </TabItem>
