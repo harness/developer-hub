@@ -17,7 +17,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - June 15, 2023
+## Latest - June 19, 2023
 
 ```mdx-code-block
 <Tabs>
