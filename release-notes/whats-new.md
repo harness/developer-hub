@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-06-16T10:00
+date: 2023-06-19T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -17,9 +17,9 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 16, 2023
+## Latest - June 19, 2023
 
-### Harness Platform, version 796xx
+### Harness Platform, version 79600
 
 - In earlier releases, users were allowed to include the following special characters in the user name field in their profile: colon (`:`), slash (`/`), less than sign (`<`), greater than sign (`>`), equal sign (`=`), and parentheses (`(` and `)`). Support for these special characters allowed malicious users to inject HTML and JavaScript code into deployment-related emails such as approval emails. (PL-39099)
 
