@@ -236,7 +236,7 @@ If you are going to use multiple providers of the same type, ensure you give eac
 5.	In the **Credentials** tab, enter the URL of your Dynatrace account.  
 You must use HTTPS to establishing connections with Dynatrace.
 
-5.	Select the **API Token field** > **+ New Secret Text**.
+6.	Select the **API Token field** > **+ New Secret Text**.
 
 6.	In the Add New Encrypted Text dialog, select a secret manager, and then enter a name for the secret.
 
