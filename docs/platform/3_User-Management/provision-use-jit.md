@@ -17,6 +17,10 @@ Just-in-time (JIT) provisioning in Harness lets you provision users automaticall
 You can automatically provision users added to your SAML applications configured in Harness and allow them to access Harness.
 Provisioning users automatically eliminates repetitive tasks related to manual provisioning, simplifying user management.
 
+:::important
+Harness supports Just-in-time provisioning only if a new user attempts to log in via IDP.
+:::
+
 ## Enable JIT provisioning in Harness
 
 To enable JIT provisioning in Harness: 
@@ -73,3 +77,4 @@ To enable JIT provisioning in Harness:
      ![](./static/jit-user-provisioning.png)
 
 Harness automatically provisions any new SAML users with the matching **JIT Validation Key** and **JIT Validation Value** after they log in for the first time.
+If you do not provide **JIT Validation Key** and **JIT Validation Value**, Harness allows all SAML users to be provisioned just in time.
