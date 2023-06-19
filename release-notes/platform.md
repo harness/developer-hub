@@ -61,13 +61,15 @@ You are missing the following permission: "View default settings" in Account sco
 
 This issue has been fixed by the removal of an account-level permission check that has been deemed unnecessary.
 
-- SCIM PATCH requests for deleting a Harness user do not return a `user does not exist` message, even though the user has been deactivated by the identity provider. (PL-38868, ZD-44150)
+- SCIM PATCH requests for deleting a Harness user return a “user does not exist” message in a successful delete operation. (PL-38868, ZD-44150)
+
+  This issue has been resolved by returning a NULL response in the Patch operation to delete a user.
 
 - In earlier releases, the button for managing role bindings for users, user groups, and service accounts was named +Role. However, given that you can also remove role bindings in the Manage Role Bindings dialog, the button has been renamed to Manage Roles. (PL-28484)
 
 - Improved randomness when there are multiple eligible delegates with no tasks running to avoid selecting the same delegate each time. (PL-39219)
 
-This item is available with Harness Platform version 796xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item is available with Harness Platform version 796xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ```mdx-code-block
   </TabItem>
