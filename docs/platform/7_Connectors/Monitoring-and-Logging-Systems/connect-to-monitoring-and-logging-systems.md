@@ -238,7 +238,7 @@ You must use HTTPS to establishing connections with Dynatrace.
 
 6.	Select the **API Token field** > **+ New Secret Text**.
 
-6.	In the Add New Encrypted Text dialog, select a secret manager, and then enter a name for the secret.
+7.	In the Add New Encrypted Text dialog, select a secret manager, and then enter a name for the secret.
 
 7.	In the **Secret Value** field, enter the API token generated in Dynatrace. If you don’t have one, follow these steps to create an API token in Dynatrace:
 
