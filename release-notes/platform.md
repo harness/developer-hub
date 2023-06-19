@@ -2,7 +2,7 @@
 title: Harness Platform release notes
 sidebar_label: Harness Platform
 tags: [NextGen, "platform"]
-date: 2023-06-16T10:00:30
+date: 2023-06-19T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Platform, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 16, 2023, version 796xx
+## Latest - June 19, 2023, version 79600
 
 
 ```mdx-code-block
@@ -69,7 +69,7 @@ This issue has been fixed by the removal of an account-level permission check th
 
 - Improved randomness when there are multiple eligible delegates with no tasks running to avoid selecting the same delegate each time. (PL-39219)
 
-  This item is available with Harness Platform version 796xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item is available with Harness Platform version 79503 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ```mdx-code-block
   </TabItem>
