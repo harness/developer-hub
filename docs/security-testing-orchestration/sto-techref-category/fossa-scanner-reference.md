@@ -1,6 +1,6 @@
 ---
 title: Fossa scanner reference
-description: Image and repository scans with Grype
+description: Image and repository scans with Fossa
 sidebar_position: 150
 ---
 
