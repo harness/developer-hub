@@ -70,7 +70,7 @@ Repeat this command for each certificate you want to include in the truststore.
    kubectl apply -f addcerts.yaml
    ```
 
-4. If another tool such as Argo deletes the secret, you must recreate the secret. Add a YAML manifest `minio.yaml` file with the following values in addition to your other Harness manifests:
+4. If another tool such as Argo deletes the secret, you must recreate the secret. Add a MinIO YAML manifest `minio.yaml` file with the following values in addition to your other Harness manifests:
 
    ```yaml
    apiVersion: v1
@@ -78,8 +78,8 @@ Repeat this command for each certificate you want to include in the truststore.
    metadata:
      name: minio
    data:
-     root-password: YTJnZnA2OWhrZg==
-     root-user: cmQwNmhpY3ZoYQ==
+     root-password: ROOT_PASSWORD
+     root-user: ROOT_USER
    ```
 
 ## Modify the delegate YAML
