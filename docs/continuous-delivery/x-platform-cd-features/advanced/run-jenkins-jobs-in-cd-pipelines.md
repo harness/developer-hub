@@ -71,7 +71,7 @@ Runtime inputs and expressions are supported for the **Value** only. You can ref
 
 | **Job parameters from Jenkins step** | **Executed Jenkins step inputs** |
 | --- | --- |
-| ![](./static/jenkinsparamfromjenkins.png) | ![].../static/xecutedjenkinsinputs.png) |
+| ![](./static/jenkinsparamfromjenkins.png) | ![](./static/xecutedjenkinsinputs.png) |
 
 ## Treat unstable Jenkins status as success
 

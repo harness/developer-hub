@@ -155,7 +155,7 @@ For the Terragrunt Destroy step to destroy the plan from the Terragrunt Plan ste
 
 Here's an example of how the **Provisioner Identifier** is used across steps:
 
-<!-- ![](../static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
+<!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
 <docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
@@ -354,7 +354,7 @@ The most common use of **Provisioner Identifier** is to destroy resources from a
 
 Here's an example of how the **Provisioner Identifier** is used across steps:
 
-<!-- ![](../static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
+<!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
 <docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
@@ -404,7 +404,7 @@ Provisioning can be time-consuming so use at least `5m`.
 
 Here's an example of how the **Provisioner Identifier** is used across steps:
 
-<!-- ![](../static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
+<!-- ![](./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png) -->
 
 <docimage path={require('./static/2161eed44e5b1ef3369542d40747af39160c7a25b71f03f160ce1e29329c6bab.png')} />
 
@@ -444,7 +444,7 @@ The **Configuration File Repository** setting is available in the Terragrunt Pla
 1. Click **Specify Config File** or click the edit icon. The **Terragrunt Config File Store** settings appear.
 2. Click the provider where your files are hosted.
     
-    ![picture 4](../cd-advanced/terragrunt/static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png
+    ![picture 4](./static/2c7889d9dbae6966e8899d90310b0564b4552af33f2fffb553d30d11d96298d7.png)
 3. Select or create a [Git connector](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) for your repo.
 4. Once you have selected a connector, click **Continue**.
    
@@ -594,7 +594,7 @@ For examples, see the settings available for [AWS S3](https://www.terraform.io/d
 
 ### Targets
 
-* In **Target**, target one or more specific modules in your Terraform script, just like using the `terraform plan -target`, `terraform apply -target`, or `terraform destory -target` commands. See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
+* In **Target**, target one or more specific modules in your Terraform script, just like using the `terraform plan -target`, `terraform apply -target`, or `terraform destroy -target` commands. See [Resource Targeting](https://www.terraform.io/docs/commands/plan.html#resource-targeting) from Terraform.
 
   If you have multiple modules in your script and you do not select one in **Targets**, all modules are used.
 
