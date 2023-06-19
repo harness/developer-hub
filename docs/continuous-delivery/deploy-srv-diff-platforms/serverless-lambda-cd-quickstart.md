@@ -1,5 +1,5 @@
 ---
-title: AWS Lambda deployments (Serverless.com Framework)
+title: Serverless.com Framework (AWS Lambda deployments)
 description: Deploy a Serverless Lambda application to AWS Lambda using Harness.
 sidebar_position: 900
 helpdocs_topic_id: 5fnx4hgwsa
