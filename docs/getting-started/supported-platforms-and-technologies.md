@@ -171,34 +171,23 @@ See [Security Step Settings Reference](../security-testing-orchestration/sto-tec
 
 ## Feature Flags
 
-Harness Feature Flags support [client-side and server-side SDKs](../feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.
+Harness Feature Flags supports [client-side and server-side SDKs](../feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.
 
-### Client-side SDKs
+### Supported client-side SDKs
 
-The following table lists the Client-side Feature Flag SDKs Harness supports.
+```mdx-code-block
+import Ff from '/docs/feature-flags/shared/ff-supported-platforms-shared.md';
+```
 
-| SDK                                                                   | Documentation                                                                                          |
-| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| [Android](https://github.com/harness/ff-android-client-sdk)           | [Android SDK Reference](../feature-flags/ff-sdks/client-sdks/android-sdk-reference.md)           |
-| [iOS](https://github.com/harness/ff-ios-client-sdk)                   | [iOS SDK Reference](../feature-flags/ff-sdks/client-sdks/ios-sdk-reference.md)                   |
-| [Flutter](https://github.com/harness/ff-flutter-client-sdk)           | [Flutter SDK Reference](../feature-flags/ff-sdks/client-sdks/flutter-sdk-reference.md)           |
-| [Javascript](https://github.com/harness/ff-javascript-client-sdk)     | [Javascript SDK Reference](../feature-flags/ff-sdks/client-sdks/java-script-sdk-references.md)   |
-| [React Native](https://github.com/harness/ff-react-native-client-sdk) | [React Native SDK Reference](../feature-flags/ff-sdks/client-sdks/react-native-sdk-reference.md) |
-| [Xamarin](https://github.com/harness/ff-xamarin-client-sdk)           | [Xamarin SDK Reference](../feature-flags/ff-sdks/client-sdks/xamarin-sdk-reference.md)           |
+<Ff />
 
-### Server-side SDKs
+### Supported server-side SDKs
 
-The following table lists the Server-side Feature Flag SDKs Harness supports.
+```mdx-code-block
+import Ffs from '/docs/feature-flags/shared/ff-supported-platforms-shared-server.md';
+```
 
-| SDK                                                        | Documentation                                                                                            |
-| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| [.NET](https://github.com/harness/ff-dotnet-server-sdk)    | [.NET SDK Reference](../feature-flags/ff-sdks/server-sdks/net-sdk-reference.md)                    |
-| [Go](https://github.com/harness/ff-golang-server-sdk)      | [Go SDK Reference](../feature-flags/ff-sdks/server-sdks/feature-flag-sdks-go-application.md)       |
-| [Java](https://github.com/harness/ff-java-server-sdk)      | [Java SDK Reference](../feature-flags/ff-sdks/server-sdks/integrate-feature-flag-with-java-sdk.md) |
-| [Node.js](https://github.com/harness/ff-nodejs-server-sdk) | [Node.js SDK Reference](../feature-flags/ff-sdks/server-sdks/node-js-sdk-reference.md)             |
-| [Python](https://github.com/harness/ff-python-server-sdk)  | [Python SDK Reference](../feature-flags/ff-sdks/server-sdks/python-sdk-reference.md)               |
-| [Ruby](https://github.com/harness/ff-ruby-server-sdk)      | [Ruby SDK Reference](../feature-flags/ff-sdks/server-sdks/ruby-sdk-reference.md)                   |
-| [PHP](https://github.com/harness/ff-php-server-sdk)        | [PHP SDK Reference](../feature-flags/ff-sdks/server-sdks/php-sdk-reference.md)                     |
+<Ffs />
 
 ## Harness Chaos Engineering
 
@@ -263,26 +252,9 @@ See [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Managem
 
 ## Harness Self-Managed Enterprise Edition
 
-The following table lists the major supported features for Harness Self-Managed Enterprise Edition offerings. For supported features, go to [Supported features and integrations](/docs/self-managed-enterprise-edition/introduction/supported-features-and-integrations).
+import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-platforms.md';
 
-| Solution                                                          | Supported Platform           | Connected | HA | Monitoring          | Disaster Recovery | Auto Restart | Features Under Controlled Release 
-| ----------------------------------------------------------------- | ---------------------------- | ----------- | ---------------- | ------------------- | ----------------- | ------------ | --------------------------------- |
-| Kubernetes Cluster                   | Kubernetes - GKE - AKS - EKS | Yes         | Coming soon              | Prometheus, Grafana | Coming soon        | Supported    |                                   
-
-### Supported Kubernetes versions for Harness Self-Managed Enterprise Edition
-
-* Self-Managed Enterprise Edition supports Kubernetes v.1.25, as well as versions 1.24, 1.23, 1.22, 1.21 and 1.20.
-* Effective October 7, 2022, with the release of version 76918, Self-Managed Enterprise Edition no longer supports Kubernetes open-source versions 1.18 and earlier.
-* Self-Managed Enterprise Edition supports the other versions of Kubernetes you use on a best-effort basis.
-* Harness commits to support new minor versions of Kubernetes within three months of the first stable release. For example, if the stable release of 1.25.0 occurs on August 31, Harness extends compatibility by November 30.
-
-### Terms of support for Harness Self-Managed Enterprise Edition
-
-Harness Self-Managed Enterprise Edition does not introduce changes that break compatibility with supported versions of Kubernetes. For example, Self-Managed Enterprise Edition does not use features from Kubernetes version n that do not work in Kubernetes version n-2.
-
-Installation and upgrade preflight checks provide warnings when you use unsupported Kubernetes versions.
-
-In cases where you encounter a problem related to an incompatibility issue, you must upgrade your cluster. Harness does not issue a patch to accommodate the use of unsupported Kubernetes versions.
+<Smp />
 
 ## SDKs installed with the Delegate
 
