@@ -24,7 +24,7 @@ GitOps clusters with IAM roles can be created only for a GitOps Agent installed 
 
 :::
 
-## Objective
+## Objectives
 
 You'll learn how to create:
 
@@ -35,7 +35,7 @@ You'll learn how to create:
 
   ![](static/create-cluster-iam-86.png)
 
-## Prerequisites
+## Requirements
 
 Make sure that you have met the following requirements:
 
@@ -48,192 +48,197 @@ Make sure that you have met the following requirements:
 
 Here, you will create two clusters in a single AWS account. The configuration works with cross-account and multi-cluster setups by setting the proper trust relations between the IAM roles.
 
-1. Use the following command to provision the management cluster using an OpenID Connect (OIDC) provider:
+### Provision the management cluster
 
-   `eksctl create cluster --name management --with-oidc`
+Use the following command to provision the management cluster using an OpenID Connect (OIDC) provider:
 
-   This command takes anytime between 10 to 20 minutes to execute. It creates a management cluster, and everything it needs to function such as VPC, security groups, EC2 nodegroup, and so on.
+`eksctl create cluster --name management --with-oidc`
 
-   The AWS authenticator packaged with Harness GitOps Agent uses the OIDC provider to acquire a token. Using this token, the Agent can assume the IAM role, **role/ArgoCD** that you'll create in the next step.
+This command takes anytime between 10 to 20 minutes to execute. It creates a management cluster, and everything it needs to function such as VPC, security groups, EC2 nodegroup, and so on.
 
-2. Create an IAM role for your GitOps Agent.
-   * Set the management cluster `AWS_ACCOUNT_ID` and `OIDC_PROVIDER` as environment variables using the following commands:
+The AWS authenticator packaged with Harness GitOps Agent uses the OIDC provider to acquire a token. Using this token, the Agent can assume the IAM role, **role/ArgoCD** that you'll create in the next step.
 
-     `AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)`
+### Create an IAM role for your GitOps Agent
 
-     `OIDC_PROVIDER=$(aws eks describe-cluster --name management --query "cluster.identity.oidc.issuer" --output text | sed -e "s/^https:\/\///")`
-   * Create a `trust.json` file with the variables you set in the previous step. 
+1. Set the management cluster `AWS_ACCOUNT_ID` and `OIDC_PROVIDER` as environment variables using the following commands:
+
+   `AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)`
+
+   `OIDC_PROVIDER=$(aws eks describe-cluster --name management --query "cluster.identity.oidc.issuer" --output text | sed -e "s/^https:\/\///")`
+2. Create a `trust.json` file with the variables you set in the previous step. 
      
-     You must reference the namespace on which you will deploy your GitOps Agent so that all cluster roles can assume the IAM role you'll create in the next step.
+   You must reference the namespace on which you will deploy your GitOps Agent so that all cluster roles can assume the IAM role you'll create in the next step.
 
-     ```
+   ```
 
-     read -r -d '' TRUST_RELATIONSHIP <<EOF
-     {
-       "Version": "2012-10-17",
-       "Statement": [
-         {
-           "Effect": "Allow",
-           "Principal": {
-             "Federated": "arn:aws:iam::${AWS_ACCOUNT_ID}:oidc-provider/${OIDC_PROVIDER}"
-           },
-           "Action": "sts:AssumeRoleWithWebIdentity",
-           "Condition": {
-             "StringLike": {
-               "${OIDC_PROVIDER}:sub": "system:serviceaccount:iam:*"
-             }
+   read -r -d '' TRUST_RELATIONSHIP <<EOF
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "Federated": "arn:aws:iam::${AWS_ACCOUNT_ID}:oidc-provider/${OIDC_PROVIDER}"
+         },
+         "Action": "sts:AssumeRoleWithWebIdentity",
+         "Condition": {
+           "StringLike": {
+             "${OIDC_PROVIDER}:sub": "system:serviceaccount:iam:*"
            }
          }
+       }
+     ]
+   }
+   EOF
+
+   echo "${TRUST_RELATIONSHIP}" > trust.json && cat trust.json 
+
+   ```
+
+   Make sure that the `trust.json` file includes the proper `AWS_ACCOUNT_ID` and `OIDC_PROVIDER`:
+
+   ```
+
+   aws iam create-role --role-name ArgoCD --assume-role-policy-document file://trust.json --description "IAM Role to be used by Harness GitOps Agent to gain AWS access"
+
+   ```
+3. Create an inline policy that gives the IAM role the ability to assume other roles so that GitOps Agent can assume the Deployer role that you'll create later.
+
+   You could also use the ArgoCD role directly. However, having a separate role to deploy resources into the testing cluster is recommended as it is more flexible and secure.
+
+   ```
+   read -r -d '' POLICY <<EOF
+    {
+       "Version": "2012-10-17",
+       "Statement": [
+           {
+               "Sid": "AssumeRole",
+               "Effect": "Allow",
+               "Action": "sts:AssumeRole",
+               "Resource": "*"
+           }
        ]
-     }
-     EOF
+   }
+   EOF
 
-     echo "${TRUST_RELATIONSHIP}" > trust.json && cat trust.json 
+   echo "${POLICY}" > policy.json && cat policy.json
 
-     ```
+   aws iam put-role-policy --role-name ArgoCD --policy-name AssumeRole --policy-document file://policy.json
+   ```
 
-     Make sure that the `trust.json` file includes the proper `AWS_ACCOUNT_ID` and `OIDC_PROVIDER`:
+   Use the AWS web console to check the role you just created. The Kubernetes service accounts that the Agent uses in the management cluster assumes the IAM role through the OIDC provider.
 
-     ```
+### Set up Harness GitOps Agent
 
-     aws iam create-role --role-name ArgoCD --assume-role-policy-document file://trust.json --description "IAM Role to be used by Harness GitOps Agent to gain AWS access"
+Create a namespace for Harness GitOps Agent in the management cluster using the following command:
 
-     ```
-   * Create an inline policy that gives the IAM role the ability to assume other roles so that GitOps Agent can assume the Deployer role that you'll create later.
+`kubectl create namespace iam`
 
-     You could also use the ArgoCD role directly. However, having a separate role to deploy resources into the testing cluster is recommended as it is more flexible and secure.
+Go to [Installing a GitOps Agent](install-a-harness-git-ops-agent.md) for a tutorial on how to create a Harness GitOps Agent.
 
-     ```
-     read -r -d '' POLICY <<EOF
-      {
-          "Version": "2012-10-17",
-          "Statement": [
-              {
-                 "Sid": "AssumeRole",
-                 "Effect": "Allow",
-                 "Action": "sts:AssumeRole",
-                 "Resource": "*"
-             }
-         ]
-     }
-     EOF
+### Patch the GitOps Agent
 
-     echo "${POLICY}" > policy.json && cat policy.json
+1. Annotate the Kubernetes service accounts the Agent used with the ARN of the role to instruct the GitOps Agent to use the role you defined earlier.
 
-     aws iam put-role-policy --role-name ArgoCD --policy-name AssumeRole --policy-document file://policy.json
-     ```
+   ```
+   kubectl -n iam patch serviceaccount argocd-application-controller --type=json \
+   -p="[{\"op\": \"add\", \"path\": \"/metadata/annotations/eks.amazonaws.com~1role-arn\", \"value\": \"arn:aws:iam::${AWS_ACCOUNT_ID}:role/ArgoCD\"}]"
 
-     Use the AWS web console to check the role you just created. The Kubernetes service accounts that the Agent uses in the management cluster assumes the IAM role through the OIDC provider.
+   kubectl -n iam patch serviceaccount gitops-agent --type=json \
+   -p="[{\"op\": \"add\", \"path\": \"/metadata/annotations/eks.amazonaws.com~1role-arn\", \"value\": \"arn:aws:iam::${AWS_ACCOUNT_ID}:role/ArgoCD\"}]"
+   ```
 
-3. Set up Harness GitOps Agent.
+   It is important that the annotations show the correct ARN of the ArgoCD role otherwise the Agent won't know which IAM role to assume. 
 
-   Create a namespace for Harness GitOps Agent in the management cluster using the following command:
+2. Verify that the service accounts are changed correctly using the following commands:
 
-   `kubectl create namespace iam`
+   ```
+   kubectl -n iam describe serviceaccount gitops-agent
 
-   Go to [Installing a GitOps Agent](install-a-harness-git-ops-agent.md) for a tutorial on how to create a Harness GitOps Agent.
+   kubectl -n iam describe serviceaccount argocd-application-controller
+   ```
 
-4. Patch the GitOps Agent.
-
-   * Annotate the Kubernetes service accounts the Agent used with the ARN of the role to instruct the GitOps Agent to use the role you defined earlier.
-
-     ```
-     kubectl -n iam patch serviceaccount argocd-application-controller --type=json \
-         -p="[{\"op\": \"add\", \"path\": \"/metadata/annotations/eks.amazonaws.com~1role-arn\", \"value\": \"arn:aws:iam::${AWS_ACCOUNT_ID}:role/ArgoCD\"}]"
-
-     kubectl -n iam patch serviceaccount gitops-agent --type=json \
-         -p="[{\"op\": \"add\", \"path\": \"/metadata/annotations/eks.amazonaws.com~1role-arn\", \"value\": \"arn:aws:iam::${AWS_ACCOUNT_ID}:role/ArgoCD\"}]"
-     ```
-
-     It is important that the annotations show the correct ARN of the ArgoCD Role otherwise the Agent won't know which IAM role to assume. 
-
-   * Verify that the service accounts are changed correctly using the following commands:
-
-     ```
-     kubectl -n iam describe serviceaccount gitops-agent
-
-     kubectl -n iam describe serviceaccount argocd-application-controller
-     ```
-
-   * Patch the deployments to set the `securityContext/fsGroup` to `999` so that the Docker image user can use the IAM authenticator. 
+3. Patch the deployments to set the `securityContext/fsGroup` to `999` so that the Docker image user can use the IAM authenticator. 
      
-     The IAM authenticator tries to mount a secret on `/var/run/secrets/eks.amazonaws.com/serviceaccount/token`. If the correct `fsGroup` (999 corresponds to the ArgoCD user) isn't set, it will fail.
+   The IAM authenticator tries to mount a secret on `/var/run/secrets/eks.amazonaws.com/serviceaccount/token`. If the correct `fsGroup` (999 corresponds to the ArgoCD user) isn't set, it will fail.
 
-     ```
-     kubectl -n iam patch deployment gitops-agent --type=json  \
-         -p='[{"op": "add", "path": "/spec/template/spec/securityContext/fsGroup", "value": 999}]'
+   ```
+   kubectl -n iam patch deployment gitops-agent --type=json  \
+   -p='[{"op": "add", "path": "/spec/template/spec/securityContext/fsGroup", "value": 999}]'
 
-     kubectl -n iam patch statefulset argocd-application-controller --type=json \
-         -p='[{"op": "add", "path": "/spec/template/spec/securityContext/fsGroup", "value": 999}]'
-     ```
+   kubectl -n iam patch statefulset argocd-application-controller --type=json \
+   -p='[{"op": "add", "path": "/spec/template/spec/securityContext/fsGroup", "value": 999}]'
+   ```
 
-     After patching Deployment and StatefulSet, the `application-controller` and `gitops-agent` pods restart.
+   After patching Deployment and StatefulSet, the `application-controller` and `gitops-agent` pods restart.
 
-     Ensure that the GitOps Agent is healthy and connected before proceeding any further.
+   Ensure that the GitOps Agent is healthy and connected before proceeding any further.
 
 ## Create a testing cluster 
 
 You have a working management cluster with GitOps Agent installed now. Next, you have to set up a testing cluster to which you can deploy the GitOps Agent. 
 
-1. Enter the following command to provision the testing cluster:
+### Provision the testing cluster
 
-   `eksctl create cluster --name testing`
+Enter the following command to provision the testing cluster:
 
-   You don't need an OIDC provider for the testing cluster. However, you need an IAM role to deploy applications in this cluster.
+`eksctl create cluster --name testing`
 
-2. Create an IAM Role to deploy applications. 
+You don't need an OIDC provider for the testing cluster. However, you need an IAM role to deploy applications in this cluster.
 
-   * Create a trust relationship for the ArgoCD role so that it can assume the Deployer role.
+### Create an IAM Role to deploy applications
+
+1. Create a trust relationship for the ArgoCD role so that it can assume the Deployer role.
    
-     :::info
+   :::info
    
-     In a multi account setup, you can change the trust relationship to reference the ArgoCD role in the account that holds the management cluster, and place the Deployer role in the same account as the testing cluster.
+   In a multi account setup, you can change the trust relationship to reference the ArgoCD role in the account that holds the management cluster, and place the Deployer role in the same account as the testing cluster.
    
-     :::
+   :::
 
-     ```
-     read -r -d '' TRUST_TESTING <<EOF
-     {
-       "Version": "2012-10-17",
-       "Statement": [
-         {
-           "Effect": "Allow",
-           "Principal": {
-             "AWS": "arn:aws:iam::${AWS_ACCOUNT_ID}:role/ArgoCD"
-           },
-           "Action": "sts:AssumeRole",
-           "Condition": {}
-         }
-       ]
-     }
-     EOF
+   ```
+   read -r -d '' TRUST_TESTING <<EOF
+   {
+     "Version": "2012-10-17",
+     "Statement": [
+       {
+         "Effect": "Allow",
+         "Principal": {
+           "AWS": "arn:aws:iam::${AWS_ACCOUNT_ID}:role/ArgoCD"
+         },
+         "Action": "sts:AssumeRole",
+         "Condition": {}
+       }
+     ]
+   }
+   EOF
 
-     echo "${TRUST_TESTING}" > trust-testing.json && cat trust-testing.json
-     ```
-   * Verify that the `AWS_ACCOUNT_ID` for the ArgoCD role is correct:
+   echo "${TRUST_TESTING}" > trust-testing.json && cat trust-testing.json
+   ```
+2. Verify that the `AWS_ACCOUNT_ID` for the ArgoCD role is correct:
 
-     ```
-     aws iam create-role --role-name Deployer --assume-role-policy-document file://trust-testing.json --description "IAM Role to be used by AWS to Deploy in the testing cluster"
+   ```
+   aws iam create-role --role-name Deployer --assume-role-policy-document file://trust-testing.json --description "IAM Role to be used by AWS to Deploy in the testing cluster"
 
-     eksctl create iamidentitymapping --cluster testing  --arn arn:aws:iam::${AWS_ACCOUNT_ID}:role/Deployer --group system:masters --username deployer
-     ```
+   eksctl create iamidentitymapping --cluster testing  --arn arn:aws:iam::${AWS_ACCOUNT_ID}:role/Deployer --group system:masters --username deployer
+   ```
 
-3. Register the testing cluster with Harness to create and deploy applications.
+### Register the testing cluster with Harness to create and deploy applications
    
-   * In Harness, select **Deployments** > **GitOps**.
-   * Select **Settings** on the top right corner, and then select **Clusters** > **New Cluster**.
-   * Enter a name for the cluster.
-   * Select the GitOps Agent, and then select **Continue**.
-   * In **Details**:
-     - **Master URL**: Enter the HTTP endpoint of the Kubernetes API of the server.
-     - **Authentication**: Select **IRSA**. IRSA stands for IAM Roles for Service Accounts.
-     - **Role ARN**: Enter the role your GitOps Agent will have to assume to deploy to this cluster.
-     - **Certificate Authority Data**: Enter the corresponding public certificate of the Kubernetes API.
+1. In Harness, select **Deployments** > **GitOps**.
+2. Select **Settings** on the top right corner, and then select **Clusters** > **New Cluster**.
+3. Enter a name for the cluster.
+4. Select the GitOps Agent, and then select **Continue**.
+5. In **Details**:
+   - **Master URL**: Enter the HTTP endpoint of the Kubernetes API of the server.
+   - **Authentication**: Select **IRSA**. IRSA stands for IAM Roles for Service Accounts.
+   - **Role ARN**: Enter the role your GitOps Agent will have to assume to deploy to this cluster.
+   - **Certificate Authority Data**: Enter the corresponding public certificate of the Kubernetes API.
 
-     ![](static/create-cluster-iam-87.png)
+   ![](static/create-cluster-iam-87.png)
 
-   You have successfully created a cluster in Harness with the connection status, `unknown`.
+You have successfully created a cluster in Harness with the connection status, `unknown`.
 
-4. Deploy applications to your cluster.
+### Deploy applications to your cluster
 
-   You can now deploy applications to your cluster through Harness. Go to [Add a Harness GitOps application](harness-cd-git-ops-quickstart.md#step-4-add-a-harness-gitops-application) for more details.
+You can now deploy applications to your cluster through Harness. Go to [Add a Harness GitOps application](harness-cd-git-ops-quickstart.md#step-4-add-a-harness-gitops-application) for more details.
