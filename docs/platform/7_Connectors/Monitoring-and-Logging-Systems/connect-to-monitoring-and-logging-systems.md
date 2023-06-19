@@ -262,7 +262,7 @@ You must use HTTPS to establishing connections with Dynatrace.
 
    - **Use any available Delegate**: Harness automatically assigns an available delegate.
   
-   - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the Delegates that have been assigned those specific tags.
+   - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the delegates that have been assigned those specific tags.
 
 13.  Select **Save** and **Continue**.  
     Harness verifies the connection. 
