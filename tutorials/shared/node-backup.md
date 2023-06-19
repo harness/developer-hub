@@ -107,7 +107,7 @@ If this is your first project with CI, the CI pipeline wizard starts after you s
 
 ### Create the GitHub connector
 
-Next, you'll create a _connector_ that allows Harness to connect to your Git codebase. A connector is a configurable object that connects to an external resource automatically while the pipeline runs. For detailed instructions on creating GitHub connectors, go to [Add a GitHub connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector). For details about GitHub connector settings, go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
+Next, you'll create a _connector_ that allows Harness to connect to your Git codebase. A connector is a configurable object that connects to an external resource automatically while the pipeline runs. For more information, go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 
 1. Under **Project Setup**, select **Connectors**.
 2. Select **New Connector**, and then select **GitHub** under **Code Repositories**.
@@ -566,8 +566,8 @@ Now that you've created a basic pipeline for building and testing a NodeJS app, 
 
 * [Using Terraform notification triggers to automatically start builds.](/tutorials/ci-pipelines/build/tfc-notification)
 * [Uploading artifacts to JFrog.](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog)
-* [Publishing Allure reports to the Artifacts tab.](/tutorials/ci-pipelines/test/allure-report).
-* [Including CodeCov code coverage and publishing results to your CodeCov dashboard.](/tutorials/ci-pipelines/test/codecov/)
+* [Publishing any URL to the Artifacts tab.](/tutorials/ci-pipelines/publish/artifacts-tab)
+* [Including CodeCov code coverage and publishing results to your CodeCov dashboard.](/tutoria/test/allure-reportls/ci-pipelines/test/codecov/)
 * [Updating Jira issues when builds run.](/docs/continuous-integration/use-ci/use-drone-plugins/ci-jira-int-plugin)
 * [Using variables.](#use-variables)
 * [Deploying artifacts.](#deploy-artifacts)

@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes the default (built-in) and custom Harness expressions, as well as the prefixes used to identify user-created variables. This list will be periodically updated when new expressions are added to Harness.
+This topic describes default (built-in) and custom Harness expressions, as well as the prefixes used to identify user-created variables. This list will be updated when new expressions are added to Harness.
 
-Looking for how-tos? See [Variable Expressions How-tos](/docs/category/variables-and-expressions).
+Looking for how-tos? For more information, go to [Variable Expressions How-tos](/docs/category/variables-and-expressions).
 
 ## Variable expression basics
 
@@ -18,7 +18,7 @@ Let's quickly review what Harness built-in and custom variable expressions are a
 
 ### What is a Harness variable expression?
 
-Harness variables are a way to refer to something in Harness, such as an entity name or a configuration setting. At pipeline runtime, Harness evaluates all variables and replaces them with the resulting value.
+Harness variables are a way to refer to something in Harness, such as an entity name or a configuration setting. At pipeline runtime, Harness evaluates all variable expressions and replaces them with the resulting value.
 
 Harness variables are powerful because they let you template configuration information, pipeline settings, and values in your scripts, and they enable your pipelines to pass information between stages and settings.
 
@@ -50,9 +50,9 @@ The output of this expression is `ghi`.
 
 The correct way to use a Java method with a variable is `<+<+expression>.methodName()>`.
 
-For example, for a variable `myvar` using methods substring and indexOf, with value `Hello`. You can use the methods like: 
+For example, let's use a variable `myvar` using the methods `substring` and `indexOf` with value `Hello`. You can use these methods like this: 
 
-<+<+stage.variables.myvar>.substring(<+<+stage.variables.myvar>.indexOf("e")>)>
+`<+<+stage.variables.myvar>.substring(<+<+stage.variables.myvar>.indexOf("e")>)>`
 
 This expression evaluates to `ello`.
 
@@ -64,34 +64,36 @@ The FQN is the path to a setting in the YAML of your pipeline.
 
 ![](./static/harness-variables-14.png)
 
-You can select the expression for a setting or value in the pipeline editor or execution.
+You can use the expression in nearly any setting in the pipeline editor.
 
 You don't need to build the expression yourself. Harness provides multiple places where you can copy the variable expression.
 
-For example, you can click the copy button in a pipeline execution to get the expressions of settings and values.
+For example, you can click the copy button in a pipeline execution to get the expressions of output settings and values.
 
 ![](./static/harness-variables-15.png)
 
-When building a pipeline in pipeline studio, you can copy the FQN of a setting using **Variables**.
+When building a pipeline in Pipeline Studio, you can copy the FQN of a setting using **Variables**.
 
 ![](./static/harness-variables-16.png)
 
-#### Stage level and pipeline level expressions
+### Stage level and pipeline level expressions
 
-Every section and step in a stage contains input information you can reference as expressions.
+You can create variables at the pipeline and stage level and reference them using the FQN expressions within their scope.
 
 Click **Variables** in the pipeline to view all the inputs and copy their expressions.
 
-![](./static/harness-variables-17.png)
+<docimage path={require('./static/21a3df06a049a40a2787e3f0e929617974284e0afd8a86ebe8890d8a4d9c871d.png')} width="60%" height="60%" title="Click to view full size image" />  
 
-There are two expressions for each input:
+The pipeline and stage level variable expressions follow these formats:
 
-* **Stage-level:** Use this option to reference the input anywhere in its stage.
-* **Pipeline-level:** Begins with `pipeline.stages`. Use this option to reference the input anywhere in the pipeline.
+- **Pipeline-level** expressions use the format `<+pipeline.variables.VAR_NAME>`.
+- **Stage-level** expressions use these formats:
+  - **Use in this stage:** Use this option to reference the input anywhere in its stage. The format is `<+stage.variables.VAR_NAME>`.
+  - **Use in any pipeline:** Use this option to reference the input anywhere in the pipeline. The format is `<+pipeline.stages.STAGE_NAME.VAR_NAME>`. 
 
-#### Expression example
+### Expression example
 
-Here is a simple example of a Shell script step echoing some common variable expressions.
+Here is a simple example of a Shell Script step echoing some common variable expressions.
 
 
 ```
@@ -153,16 +155,29 @@ infrastructure releaseName: docs
   
 Command completed with ExitCode (0)
 ```
-#### Input and output variable expressions
+### Input and output variables
 
 You can reference the inputs and outputs of any part of your pipeline.
 
-* **Input variable expressions** reference the values and setting selections you made in your pipeline.
-* **Output variable expressions** reference the results of a pipeline execution.
+* **Input variable expressions** reference the values and setting selections you made *in your pipeline*.
+* **Output variable expressions** reference *the results* of a pipeline's execution.
 
-You can reference inputs in pipeline **Variables**.
+#### Input variables in the pipeline
 
-![](./static/harness-variables-18.png)
+You can copy and reference the input settings for steps using the pipeline **Variables** panel.
+
+<docimage path={require('./static/2d3f480ea623c75e83c074a1e8a6d90d1fb1eccc1d9c3bcda1184179483ef529.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+Input variables follow this format:
+
+- **Stage-level**: `<+execution.steps.STEP_Id.SETTING>`.
+- **Pipeline-level**: `<+pipeline.stages.STAGE_Id.spec.execution.steps.STEP_Id.SETTING>`.
+
+:::note
+
+Pipeline and stage custom variable expressions use the *variable name* to reference the variable. The execution step variables use the stage and step *identifier (Id)* in references.
+
+:::
 
 #### Input and output variable expressions in executions
 
@@ -172,84 +187,97 @@ Here are the inputs and outputs for a Kubernetes rollout deployment step.
 
 | **Inputs** | **Outputs** |
 | :--- | :--- |
-| ![](./static/rolloutdeployment1.png) | ![](./static/rolloutdeployment3.png) |
+| <docimage path={require('./static/rolloutdeployment1.png')} width="100%" height="100%" title="Click to view full size image" /> | <docimage path={require('./static/rolloutdeployment3.png')} width="100%" height="100%" title="Click to view full size image" /> |
 
 You can copy the expressions for the names or values of any input or output.
 
 | **Name** | **Value** |
 | :--- | :--- |
-|  ![](./static/name.png)|![](./static/value.png)  |
+|  <docimage path={require('./static/name.png')} width="100%" height="100%" title="Click to view full size image" />|<docimage path={require('./static/value.png')} width="100%" height="100%" title="Click to view full size image" />  |
 
 Here are the **Name** and **Value** expressions for the `podIP` setting.
 
 * Name:
-```
-<+pipeline.stages.Deploy_Service.spec.execution.steps.rolloutDeployment.deploymentInfoOutcome.serverInstanceInfoList[0].podIP>
-```
+
+  ```
+  <+pipeline.stages.k8s_deployment.spec.execution.steps.rolloutDeployment.deploymentInfoOutcome.serverInstanceInfoList[0].podIP>
+  ```  
 * Value: `10.100.0.6`
 
-#### Using expressions in settings
+### Using expressions in settings
 
 You can use Harness variable expressions in most settings.
 
-When you select **Expression** in a setting, you type `<+` and a value and the list of available variables appears.
+When you select the **Expression** option for a setting, you can type `<+` and the list of available variable expressions appears.
 
 ![](./static/harness-variables-19.png)
 
-Simply click a variable expression name to use it as the value for this setting.
+Select a variable expression to use it as the value for this setting.
 
 At runtime, Harness will replace the variable with the runtime value.
 
 You can also paste expressions that don't appear. For example, expressions that reference settings in previous stages.
 
-See [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
+For more information, go to [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
 
-#### Only use expressions after they ll be resolved
+## Expression guidelines and boundaries
+
+Review the following guidelines to avoid errors when using variable expressions.
+
+### Scope
+
+When Harness automatically presents variable expressions in a setting, it only exposes the expressions that can be used in that setting. You will not see a variable expression available in a setting where it cannot be used.
+
+This does not prevent you from trying to use an expression outside of its scope.
+
+Here are some guidelines to help you use expressions successfully:
+
+- Don't refer to a step's expressions within the same step.
+- Don't refer to the settings for a subsequent step in a previous step.
+- Don't refer to inputs or outputs of a stage's **Execution** tab in the stage's **Service** or **Environment** tabs. 
+  - The execution takes place after the service and environment settings are used. Consequently, the expressions used in the execution cannot be resolved when running the service and environment sections.
+
+
+:::note Exception
+You can reference the environment name variable, `<+env.name>`, in a service's Values YAML file, specs, and config files.
+:::
+
+### Only use expressions after they can be resolved
 
 When Harness encounters an expression during pipeline execution, it tries to resolve the expression with the information it has at that point in the execution. Consequently, you can use an expression only after Harness has the required information. If you try to use an expression before Harness has its information, it will fail.
 
 In this illustration, you can see how the information in each section of the stage is referenced.
 
-![](./static/harness-variables-20.png)
+<docimage path={require('./static/harness-variables-20.png')} width="80%" height="80%" title="Click to view full size image" />
 
 Here is how you reference the information in each of these sections.
 
-* **Service expressions** can only be used after Harness has progressed through the **Service** section of the pipeline.
-	+ **Service** expressions they can be used in **Infrastructure** and **Execution**.
+* **Service expressions** can only be resolved after Harness has progressed through the **Service** section of the pipeline.
+	+ Consequently, service expressions can be used in the **Infrastructure** and **Execution** sections.
 * **Infrastructure expressions** can only be used after Harness has progressed through the **Infrastructure** section of the pipeline.
 	+ In **Infrastructure**, you can reference **Service** settings.
 	+ Since **Execution** follows **Infrastructure**, you can reference **Infrastructure** expressions in **Execution**.
 * **Execution expressions** apply to steps in **Execution**.
-	+ Each step's **Execution** expressions can only be used after Harness has progressed through that step in the **Execution** section:![](./static/harness-variables-21.png)
-  
+	+ Each step's **Execution** expressions can only be used after Harness has progressed through that step in the **Execution** section:  
 
-##### Variable expressions in conditional execution settings
+<docimage path={require('./static/harness-variables-21.png')} width="80%" height="80%" title="Click to view full size image" />
+
+
+### Variable expressions in conditional execution settings
 
 Stages and steps support variable expressions in the JEXL conditions of their **Conditional Execution** settings.
 
-You can only use variable expressions in the JEXL conditions that can be resolved before the stage.
+You can only use variable expressions in the JEXL conditions that can be resolved before the stage is run.
 
-Since **Conditional Execution** settings are used to determine if the stage should be run, you cannot use variable expressions that can't be resolved until the stage is run.
+Conditional execution settings are used to determine if the stage *should be run*, and therefore you cannot use variable expressions that can't be resolved until the stage *is run*.
 
 For more information on conditional execution, go to [Stage and Step Conditional Execution Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
-
-## Variable expression limitations and restrictions
-
-Review the following variable expression limitations and restrictions to avoid errors when using variable expressions.
-
-### Scope
-
-Harness permits variables only within their scope. You will not see a variable available in a field where it cannot be used.
-
-You cannot refer to a pipeline step's expressions within the same step.
-
-For example, if you have an HTTP step with the Id `foo` you cannot use the expression `<+execution.steps.foo.spec.url>` to reference the HTTP URL within that same step. Put another way, you can only reference a step's settings from a different step.
 
 ### Variable value size
 
 A variable value (the evaluated expression) is limited to 256 KB.
 
-### Harness expressions not allowed in comments of Values YAML or Kustomize patches
+### Expressions not allowed in comments of Values YAML or Kustomize patches
 
 You cannot use Harness expressions in comments in:
 
@@ -281,11 +309,11 @@ if ((x * 2) == 5) { <+pipeline.name = abc>; } else { <+pipeline.name = def>; }
 ```
 ### Variable names across the pipeline
 
-Variables names must be unique within the same stage. You can use same variable names in different stages of the same pipeline or other pipelines.
+Variable names must be unique within the same stage. You can use same variable names in different stages of the same pipeline or other pipelines, but not within the same stage.
 
 ### Hyphens in variable names
 
-Do not use hyphens (dashes) in variable names, as some Linux distributions and deployment-related software do not allow them. Also, it can cause issues with headers.
+Do not use hyphens (dashes) in variable names, as some Linux distributions and deployment-related software do not allow them. Also, hyphens (dashes) in variable names can cause issues with headers.
 
 For example, `<+execution.steps.httpstep.spec.headers.x-auth>` will not work.
 
@@ -309,16 +337,16 @@ Certain platforms and orchestration tools, like Kubernetes, have their own namin
 
 The following keywords are reserved, and cannot be used as a variable name or property.
 
-`or and eq ne lt gt le ge div mod not null true false new var return shellScriptProvisioner`
+`or and eq ne lt gt le ge div mod not null true false new var return shellScriptProvisioner class`
 
-See [JEXL grammar details](https://people.apache.org/~henrib/jexl-3.0/reference/syntax.html).
+For more information, go to [JEXL grammar details](https://people.apache.org/~henrib/jexl-3.0/reference/syntax.html).
 
 ### Number variables
 
 Number type variables are always treated as doubles (double-precision floating-point).
 
-* -1.79769313486231E308 to -4.94065645841247E-324 for negative values
-* 4.94065645841247E-324 to 1.79769313486232E308 for positive values
+* -1.79769313486231E308 to -4.94065645841247E-324 for negative values.
+* 4.94065645841247E-324 to 1.79769313486232E308 for positive values.
 
 For example, here is a pipeline variable of number type.
 
@@ -336,15 +364,15 @@ The expression to reference that pipeline variable, `<+pipeline.variables.double
 
 Whether the number in a variable is treated as a double or string depends on the field that you use it in.
 
-If you enter 123 in a string filed, such as a name, it is treated as a string. If you enter 123 in a count field, such as instance count, it is treated as a double.
+If you enter `123` in a string setting, such as a **Name**, it is treated as a string. If you enter `123` in a count setting, such as **Instances**, it is treated as a double.
 
-### Contains
+### Contains method
 
 When using `contains`, ensure the expression is wrapped within `<+ >` and the specific string is within `"`.
 
 For example, `<+stage.name.contains("s1")>`.
 
-### Split
+### Split method
 
 When using `split`, ensure the expression is wrapped within `<+ >`.
 
@@ -354,34 +382,36 @@ For example, `<+pipeline.variables.abc.split(':')[1]>`.
 
 When using a complex expression, ensure the expression is wrapped within `<+ >`.
 
-For example, `<+ <+trigger.payload.pull_request.diff_url.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "wings-software">`.
+For example:
+
+```
+<+ <+trigger.payload.pull_request.diff_url.contains("triggerNgDemo")> || <+trigger.payload.repository.owner.name> == "wings-software">
+```
 
 
 ### Ternary operators
 
 When using ternary conditional `?:` operators, do not use spaces between the operators and values. Ensure the expression is wrapped within `<+ >`.
 
-For example, `<+condition ? <value_if_true> : <value_if_false>>` will not work. Use `<+condition?<value_if_true>:<value_if_false>>` instead.
+For example, `<+condition ? <value_if_true> : <value_if_false>>` will not work. 
 
-### Equals
+Use `<+condition?<value_if_true>:<value_if_false>>` instead.
 
-When using `==` condition, ensure the expression is wrapped within `<+ >`.
+### Equals operator
+
+When using the `==` operator, ensure the expression is wrapped within `<+ >`.
 
 For example, `<+<+pipeline.name> == "pipeline1">` or `<+<+stage.variables.v1> == "dev">`.
 
 ### Variable concatenation
 
-Harness recommends that you use Java string method for concatenating pipeline variables. Ensure the expression is wrapped within `<+ >`.
+Harness recommends that you use the Java string method for concatenating pipeline variables. Ensure the expression is wrapped within `<+ >`.
 
-For example, use syntax `<+pipeline.variables.var1.concat("_suffix")>` or `<+<+pipeline.variables.var1>.concat("_suffix")>` or `<+<+pipeline.variables.var1> + "_suffix">` instead of `<+pipeline.variable.var1>_suffix`. 
+For example, instead of `<+pipeline.variable.var1>_suffix`, use these syntaxes:
 
-### Forward references
-
-Harness does not support referencing variables from future steps. For example, in a pipeline with four steps: step A, B, C and D, you cannot reference variables from step C in step A. 
-
-:::note Exception:
-You can reference the variable, `<+env.name>` (environment name) in a service step.
-:::
+- `<+pipeline.variables.var1.concat("_suffix")>`
+- `<+<+pipeline.variables.var1>.concat("_suffix")>`
+- `<+<+pipeline.variables.var1> + "_suffix">` 
 
 
 ## Built-in CIE codebase variables reference
@@ -390,9 +420,9 @@ In Harness, you set up your [codebase](/docs/continuous-integration/use-ci/codeb
 
 Harness also retrieves your Git details and presents them in your build stage once a pipeline is run.
 
-Using Harness built-in expressions, you can refer to the various attributes of your codebase in Harness stages.
+Using Harness built-in expressions, you can refer to the various attributes of your codebase in Harness steps and settings.
 
-Here is a simple example of a Shell script step echoing some common codebase variable expressions.
+Here is a simple example of a Shell Script step echoing some common codebase variable expressions.
 
 
 ```
@@ -411,7 +441,7 @@ echo <+codebase.pullRequestLink>
 echo <+codebase.pullRequestBody>  
 echo <+codebase.state>
 ```
-See [Built-in CIE Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
+For more information, go to [Built-in CIE Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md).
 
 ## Account
 
@@ -431,7 +461,7 @@ The name of the company for the account.
 
 ### Custom account variables
 
-See [Add Account, Org, and Project-level Variables](add-a-variable.md).
+For more information, go to [Add Account, Org, and Project-level Variables](add-a-variable.md).
 
 ## Org
 
@@ -451,7 +481,7 @@ The description of the org.
 
 ### Custom org variables
 
-See [Add Account, Org, and Project-level Variables](add-a-variable.md).
+For more information, go to [Add Account, Org, and Project-level Variables](add-a-variable.md).
 
 ## Project
 
@@ -473,7 +503,7 @@ The entity [identifier](../20_References/entity-identifier-reference.md) of the 
 
 ### Custom project variables
 
-See [Add Account, Org, and Project-level Variables](add-a-variable.md).
+For more information, go to [Add Account, Org, and Project-level Variables](add-a-variable.md).
 
 ## Pipeline
 
@@ -487,15 +517,15 @@ https://www.youtube.com/watch?v=lqbmO6EVGuU-->
 
 ### <+pipeline.identifier>
 
-The [Entity Identifier](../20_References/entity-identifier-reference.md) (Id) for the pipeline.
+The [identifier](../20_References/entity-identifier-reference.md) (Id) for the pipeline.
 
 ![](./static/harness-variables-24.png)
 
 ### <+pipeline.executionId>
 
-Every execution of a pipeline is given a universally unique identifier (UUID). The UUID can be referenced anywhere.
+Every execution of a pipeline is given a universally unique identifier (UUId). The UUId can be referenced anywhere.
 
-For example, in the following execution URL, the UUID follows `executions` and is `kNHtmOaLTu66f_QNU-wdDw`.
+For example, in the following execution URL, the UUId follows `executions` and is `kNHtmOaLTu66f_QNU-wdDw`.
 
 
 ```
@@ -525,23 +555,23 @@ The name of the current pipeline.
 
 ### <+pipeline.sequenceId>
 
-The incremental sequential ID for the execution of a pipeline. A `<+pipeline.executionId>` does not change, but a `<+pipeline.sequenceId>` is incremented with each run of the pipeline.
+The incremental sequential Id for the execution of a pipeline. A `<+pipeline.executionId>` does not change, but a `<+pipeline.sequenceId>` is incremented with each run of the pipeline.
 
-The first run of a pipeline receives a sequence ID of 1 and each subsequent execution is incremented by 1.
+The first run of a pipeline receives a sequence Id of 1 and each subsequent execution is incremented by 1.
 
-For CD pipelines, the ID is named execution. For CI pipelines, the ID is named builds.
+For CD pipelines, the Id is named execution. For CI pipelines, the Id is named builds.
 
 ![](./static/harness-variables-26.png)
 
-You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repo, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For an example, go to the [Build and test on a Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/kubernetes-build-farm).
+You can use `<+pipeline.sequenceId>` to tag a CI build when you push it to a repository, and then use `<+pipeline.sequenceId>` to pull the same build and tag in a subsequent stage. For examples, go to [Build and test on a Kubernetes cluster build infrastructure tutorial](https://developer.harness.io/tutorials/ci-pipelines/kubernetes-build-farm/) and [Integrating CD with other Harness modules](/docs/continuous-delivery/get-started/integrating-CD-other-modules).
 
 ### <+pipeline.startTs>
 
-The start time of a pipeline execution in [Unix Epoch format](https://www.epoch101.com/). See [Trigger How-tos](/docs/category/triggers).
+The start time of a pipeline execution in [Unix Epoch format](https://www.epoch101.com/). For more information, go to [Triggers](/docs/category/triggers).
 
 ### <+pipeline.triggerType>
 
-The type of trigger. See [Trigger How-tos](/docs/category/triggers).
+The type of trigger. For more information, go to [Triggers](/docs/category/triggers).
 
 Here are the possible `<+pipeline.triggerType>` and `<+trigger.type>` values.
 
@@ -555,13 +585,13 @@ Here are the possible `<+pipeline.triggerType>` and `<+trigger.type>` values.
 
 ### <+pipeline.triggeredBy.name>
 
-The name of the user or the trigger name if the pipeline is triggered using a webhook. See [Trigger Pipelines using Git Events](../11_Triggers/triggering-pipelines.md).
+The name of the user or the trigger name if the pipeline is triggered using a webhook. For more information, go to [Trigger Pipelines using Git Events](../11_Triggers/triggering-pipelines.md).
 
 If a user name is not present in the event payload, the `<+pipeline.triggeredBy.name>` expression will resolve as empty. For example, in the SaaS edition of Bitbucket, a user name is not present.
 
 ### <+pipeline.triggeredBy.email>
 
-The email of the user who triggered the pipeline. This returns NULL if the pipeline is triggered using a webhook. See [Trigger How-tos](/docs/category/triggers).
+The email of the user who triggered the pipeline. This returns NULL if the pipeline is triggered using a webhook. For more information, go to [Trigger How-tos](/docs/category/triggers).
 
 ### <+pipeline.selectedStages>
 
@@ -581,7 +611,7 @@ You can use any status value in a JEXL condition. For example, `<+pipeline.stage
 
 ### Step status
 
-The expression `<+pipeline.stages.[stage name].spec.execution.steps.[step Id].status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
+The expression `<+pipeline.stages.STAGE_NAME.spec.execution.steps.STEP_ID.status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
 
 You must use the expression after the step in execution.
 
@@ -626,9 +656,9 @@ image: <+artifacts.primary.image>
 ```
 When you run this pipeline, the value for `name` is used for the values.yaml file. The value can be a fixed value, expression, or runtime input.
 
-You reference stage variables **within their stage** using the expression `<+stage.variables.[variable name]>`.
+You reference stage variables **within their stage** using the expression `<+stage.variables.VARIABLE_NAME>`.
 
-You reference stage variables **outside their stage** using the expression `<+pipeline.stages.[stage name].variables.[variable name]>`.
+You reference stage variables **outside their stage** using the expression `<+pipeline.stages.STAGE_NAME.variables.VARIABLE_NAME>`.
 
 ### <+stage.name>
 
@@ -642,7 +672,7 @@ The description of the stage where the expression is evaluated.
 
 ### <+stage.tags>
 
-The tags on the stage where the expression is evaluated. See [Tags Reference](../20_References/tags-reference.md).
+The tags on the stage where the expression is evaluated. For more information, go to [Tags Reference](../20_References/tags-reference.md).
 
 These tags are different from Docker image tags.
 
@@ -667,7 +697,7 @@ Here is an example with a Shell script step.
 
 ![](./static/harness-variables-31.png)
 
-For examples, see the looping strategies used in the [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng).
+For examples, see the looping strategies used in the [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng).
 
 ### <+stage.executionUrl>
 
@@ -676,7 +706,7 @@ The execution URL of the stage. This is the same URL you see in your browser whe
 Use the following fully qualified expression to get the execution URL for a specific stage in the pipeline: 
 
 ```
-<+pipeline.stages.[stageId].executionUrl>
+<+pipeline.stages.STAGE_ID.executionUrl>
 
 ```
 
@@ -694,7 +724,7 @@ For more information, go to [Services and Environments Overview](/docs/continuou
 
 ### Service-level variables for service v2
 
-To reference a service variable, use the expression `<+serviceVariables.[variable name]>`.
+To reference a service variable, use the expression `<+serviceVariables.VARIABLE_NAME>`.
 
 For example, `<+serviceVariables.myvar>`.
 
@@ -707,9 +737,9 @@ Here is a quick video that explains how to create and reference pipeline, stage,
 https://www.youtube.com/watch?v=lqbmO6EVGuU-->
 <docvideo src="https://www.youtube.com/watch?v=lqbmO6EVGuU" />
 
-### <+serviceConfig.serviceDefinition.spec.variables.[var\_name]>
+### <+serviceConfig.serviceDefinition.spec.variables.VAR\_NAME>
 
-The value of the service-level variable in `[var_name]`.
+The value of the service-level variable in `VAR_NAME`.
 
 ![](./static/harness-variables-32.png)
 
@@ -722,9 +752,9 @@ To reference the variables, click the copy button.
 There are two options:
 
 * **Copy variable name:** use this option if you will only be referencing this variable in the current stage. Expression:
-	+ `<+serviceConfig.serviceDefinition.spec.variables.[name]>`
+	+ `<+serviceConfig.serviceDefinition.spec.variables.NAME>`
 * **Copy fully qualified name:** use this option if you will be referencing this variable in another stage. Example:
-	+ `<+pipeline.stages.[stage_name].spec.serviceConfig.serviceDefinition.spec.variables.[name]>`
+	+ `<+pipeline.stages.STAGE_NAME.spec.serviceConfig.serviceDefinition.spec.variables.NAME>`
 
 You can use these expressions in any setting in your pipeline. Select the expression option and enter the expression.
 
@@ -746,7 +776,7 @@ The description of the service where the expression is evaluated.
 
 The tags on the service where the expression is evaluated.
 
-To reference a specific tag use `<+service.tags.[tag_key]>`.
+To reference a specific tag use `<+service.tags.TAG_KEY>`.
 
 ### <+service.identifier>
 
@@ -770,11 +800,11 @@ For details on using the GitOps option, go to [Harness GitOps ApplicationSet and
 
 There are generic and deployment type-specific expressions for manifests.
 
-Manifest settings are referenced by **name**.
+Manifest settings are referenced by **Id**.
 
 You can always determine the expressions you can use by looking at the service YAML.
 
-For example, the expression `<+manifests.mymanifest.valuesPaths>` can be created by using the manifest name and the valuesPaths key in the YAML.
+For example, the expression `<+manifests.mymanifest.valuesPaths>` can be created by using the manifest Id and the `valuesPaths` key in the YAML.
 
 
 ```
@@ -796,7 +826,7 @@ For example, the expression `<+manifests.mymanifest.valuesPaths>` can be created
 ```
 Let's look at a few generic manifest expressions.
 
-### <+manifests.[manifest name].identifier>
+### <+manifests.MANIFEST_ID.identifier>
 
 Resolves to the manifest Id in Harness.
 
@@ -808,7 +838,7 @@ Resolves to the manifest Id in Harness.
             identifier: mymanifest  
 ...
 ```
-### <+manifests.[manifest name].type>
+### <+manifests.MANIFEST_ID.type>
 
 Resolves to the manifest type. For example, `K8sManifest`.
 
@@ -821,7 +851,7 @@ Resolves to the manifest type. For example, `K8sManifest`.
             type: K8sManifest  
 ...
 ```
-### <+manifests.[manifest name].store>
+### <+manifests.MANIFEST_ID.store>
 
 Resolves to where the manifest is stored. For example, this manifest is stored in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 
@@ -840,11 +870,11 @@ Resolves to where the manifest is stored. For example, this manifest is stored i
                     - account:/Templates  
 ...
 ```
-### <+manifest.identifier.commitID>
+### <+manifest.MANIFEST_ID.commitId>
 
-The commit ID of the manifests used in a service. This is captured in the [output section](#input-and-output-variable-expressions-in-executions) of a deployment step.
+The commit Id of the manifests used in a service. This is captured in the [output section](#input-and-output-variable-expressions-in-executions) of a deployment step.
 
-You can copy the expressions for the name and value of `commitID`.
+You can copy the expressions for the Id and value of `commitId`.
 
 For example:
 
@@ -854,15 +884,19 @@ Value: `8d30fc49e6ed13155590b7d8c16931cd1a7b5bac`
 
 ## Artifact
 
-If an artifact expression is in a manifest or step and you have not selected an artifact in a service definition, or set the artifact is set as a runtime Input, you will be prompted to select an artifact at runtime. This is true even if the stage does not deploy an artifact (such as a custom stage or a stage performing a [Kustomize](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-quickstart) deployment). 
+In order to use an artifact expression, you must select an artifact in the service definition of the Harness service you are deploying.
+
+If you have not selected an artifact, you will be prompted to select an artifact at runtime. If the artifact in the service definition is a runtime input, you will be prompted also.
+
+This is true even if the stage does not deploy an artifact, such as a custom stage. 
 
 For example, here is how the common artifact expressions resolve for a Kubernetes deployment with a Docker image on Docker Hub:
 
 * **<+artifacts.primary.tag>:** `stable`
 * **<+artifacts.primary.image>:** `index.docker.io/library/nginx:stable`
 * **<+artifacts.primary.imagePath>:** `library/nginx`
-* **<+artifacts.primary.imagePullSecret>:** `secret-value`
-* **<+artifacts.primary.dockerConfigJsonSecret>:** `secret-value`
+* **<+artifacts.primary.imagePullSecret>:** `****`
+* **<+artifacts.primary.dockerConfigJsonSecret>:** `****`
 * **<+artifacts.primary.type>:** `DockerRegistry`
 * **<+artifacts.primary.connectorRef>:** `DockerHub`
 
@@ -1069,11 +1103,11 @@ The sidecar identifier is set when you add the sidecar artifact. You can see it 
 
 Here are the sidecar expressions:
 
-* `<+artifacts.sidecars.[sidecar_identifier].imagePath>`
-* `<+artifacts.sidecars.[sidecar_identifier].image>`
-* `<+artifacts.sidecars.[sidecar_identifier].type>`
-* `<+artifacts.sidecars.[sidecar_identifier].tag>`
-* `<+artifacts.sidecars.[sidecar_identifier].connectorRef>`
+* `<+artifacts.sidecars.SIDECAR_IDENTIFIER.imagePath>`
+* `<+artifacts.sidecars.SIDECAR_IDENTIFIER.image>`
+* `<+artifacts.sidecars.SIDECAR_IDENTIFIER.type>`
+* `<+artifacts.sidecars.SIDECAR_IDENTIFIER.tag>`
+* `<+artifacts.sidecars.SIDECAR_IDENTIFIER.connectorRef>`
 
 ## Environment
 
@@ -1155,6 +1189,12 @@ The name of the connector used in the infrastructure definition.
 
 ### <+INFRA\_KEY>
 
+:::note
+
+This expression is `<+INFRA_KEY>` exactly. `INFRA_KEY` is not a placeholder.
+
+:::
+
 The infrastructure key. The key is a unique string that identifies a deployment target infrastructure. It is typically used in the **Release Name** setting to add labels to release for tracking.
 
 For example, in the infrastructure definition of a deploy stage, the `<+INFRA_KEY>` is used in the **Release Name** to give the release a unique name.
@@ -1204,7 +1244,7 @@ The execution URL of the step. This is the same URL you see in your browser when
 Use the following fully qualified expression to get the execution URL for a specific step in the pipeline: 
 
 ```
-<+pipeline.stages.[stageId].spec.execution.steps.[stepid].executionUrl>
+<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.executionUrl>
 ```
 
 
@@ -1212,7 +1252,7 @@ Use the following fully qualified expression to get the execution URL for a spec
 
 The following instance expressions are supported in SSH, WinRM, and custom deployments using deployment templates. These deployments can be done on physical data centers, AWS, and Azure.
 
-For details on these deployment types, go to [Secure Shell (SSH) deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng), [WinRM deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial), and [Custom deployments using Deployment Templates tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial).
+For details on these deployment types, go to [Secure Shell (SSH) deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng), [WinRM deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial), and [Custom deployments using Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial).
 
 To use these instance expressions in a step, you must use the repeat [Looping Strategy](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
 
@@ -1238,7 +1278,7 @@ For Microsoft Azure or AWS:
 
 ### Deployment templates
 
-For [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial), you can use `<+instance...>` expressions to reference host(s) properties.
+For [Deployment Templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial), you can use `<+instance...>` expressions to reference host(s) properties.
 
 The `<+instance...>` expressions refer to the **Instance Attributes** in the deployment template:
 
@@ -1250,7 +1290,7 @@ The following expressions refer to instance(s) collected by the mandatory **inst
 * `​<+instance.host.instanceName>`
 * `​<+instance.name>`
 
-The expression `<+instance.host.properties.[property name]>` can used to reference the other properties you added to **Instance Attributes**.
+The expression `<+instance.host.properties.PROPERTY_NAME>` can used to reference the other properties you added to **Instance Attributes**.
 
 For example, in the example above you can see the `artifact` field name mapped to the `artifactBuildNo` property.
 
@@ -1287,19 +1327,90 @@ If you use this variable in a pipeline, such as in a Shell script step, Harness 
 
 ## Strategy
 
-The following expressions provide the `currentStatus` of the strategy node. The expressions are available in pipelines and during rollback.
+You can use Harness expressions to retrieve the current execution status of the [looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for nodes (stages/steps) using a matrix or repeat strategy.
+  
+The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
+
+Harness provides the following expressions to retrieve the current status of the node (stage/step) using a looping strategy. The expressions are available in pipelines during execution and rollback.
 
 ### <+strategy.currentStatus>
 
-The `currentStatus` of the strategy node with maximum depth.
+The current status of the looping strategy for the node with maximum depth.
 
-### <+strategy.node.strategyNodeIdentifier.currentStatus>
+When this expression is used in a step, Harness will resolve it to the looping strategy current status of the first parent node (stage/step) of the step.
 
-The `currentStatus` of the strategy node with the `strategyNodeIdentifier`.
+In cases where both the step and the stage have the looping strategy configured, the expression will resolve to the looping strategy status of the current step.
 
-### <+strategy.node.get("strategyNodeIdentifier").currentStatus>
+If the step (or step group) does not have the looping strategy configured, the expression will instead resolve to the looping strategy status of the  current stage.
 
-The `currentStatus` of the strategy node with the `strategyNodeIdentifier`.
+### <+strategy.node.STRATEGY_NODE_IDENTIFIER.currentStatus>
+
+The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`.
+
+For example, `echo <+strategy.node.cs1.currentStatus>`.
+
+### <+strategy.node.get("STRATEGY_NODE_IDENTIFIER").currentStatus>
+
+The current status of the looping strategy for the node with a specific stage/step identifier, `STRATEGY_NODE_IDENTIFIER`.
+
+For example, `echo <+strategy.node.get("ShellScript_1").currentStatus>`.
+
+### identifierPostFix overview
+
+When you use a looping strategy like matrix or parallelism on a stage/step/step group, Harness automatically generates the unique Ids of the child stages/steps/step groups created by the looping operation.
+
+The `identifierPostFix` is a postfix added to the identifiers of nodes (stage/step/step group) during execution when the node is a child of the looping strategy. This ensures that all children of the looping strategy have unique identifiers.
+
+For example, here is a matrix strategy for a stage:
+
+```
+strategy:
+  matrix:
+    repo:
+      - docker
+      - gcr
+      - ecr
+```
+
+The above matrix will spawn 3 stages by picking `repo` values `docker`, `gcr`, and `ecr`.
+
+The `identifierPostfix` values would be `_docker`, `_gcr`, and `_ecr` for the different combinations of each stage run.
+
+Let's look at an example for parallelism:
+
+```
+strategy:
+  parallelism: 4
+```
+
+The above strategy will spawn 4 stages/steps and the `identifierPostfix` values will be `_0`, `_1`, `_2`, and `_3`.
+
+
+### <+strategy.identifierPostFix>
+
+This expression retrieves the `identifierPostFix` of the current node or any parent node that is a child of the looping strategy.
+
+When used in a step, Harness resolves `<+strategy.identifierPostFix>` to the `identifierPostFix` of the child node belonging to the first looping strategy parent node (either stage or step).
+
+If both the step and stage have the looping strategy configured, the expression resolves to the `identifierPostFix` of the step.
+
+If the step (or stepGroup) does not have the looping strategy configured, the expression resolves to the `identifierPostFix` of the stage.
+
+Let's look at an example using the execution of a stage with the identifier `build_and_upload` and matrix looping strategy.
+
+Multiple child stages will be created from the `build_and_upload` stage. These child stages will have identifiers with the postfix appended, such as `build_and_upload_0`, `build_and_upload_docker`, etc. In this scenario, using the expression `<+strategy.identifierPostFix>` will result in value `_0` or `_docker`.
+
+### <+step.identifierPostFix>
+
+This expression returns the `identifierPostFix` of the current step when the step is a child of a looping strategy.
+
+### <+stage.identifierPostFix>
+
+This expression retrieves the `identifierPostFix` of the stage when the current node's stage is a child of a looping strategy.
+
+### <+stepGroup.identifierPostFix>
+
+This expression returns the `identifierPostFix` of the step group when the current node is under the step group, or when the current node is the step group itself, and that step group is a child of a looping strategy.
 
 ## Triggers
 
@@ -1378,14 +1489,14 @@ This will help you to:
 
 You can reference tags using Harness expressions.
 
-You simply reference the tagged entity and then use `tags.[tag name]`, like `<+pipeline.tags.docs>`
+You simply reference the tagged entity and then use `tags.TAG_NAME`, like `<+pipeline.tags.docs>`
 
 For example, here are several different references:
 
-* `<+pipeline.tags.[tag name]>`
-* `<+stage.tags.[tag name]>`
-* `<+pipeline.stages.s1.tags.[tag name]>`
-* `<+serviceConfig.service.tags.[tag name]>`
+* `<+pipeline.tags.TAG_NAME>`
+* `<+stage.tags.TAG_NAME>`
+* `<+pipeline.stages.STAGE_ID.tags.TAG_NAME>`
+* `<+serviceConfig.service.tags.TAG_NAME>`
 
 ## Migrating FirstGen expressions to NextGen
 
@@ -1400,16 +1511,16 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | FirstGen                                                              | Next Gen                                                                                                                                                                                                                                                                             |
 | --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Approvals**                                                             | **Approvals**                                                                                                                                                                                                                                                                            |
-| approvedBy.name                                                       | pipeline.stages.[stage_Id].spec.execution.steps.HarnessApproval.output.approvalActivities[0].user.name                                                                                                                                                                                    |
-| approvedBy.email                                                      | pipeline.stages.[stage_Id].spec.execution.steps.HarnessApproval.output.approvalActivities[0].user.email                                                                                                                                                                                   |
+| approvedBy.name                                                       | pipeline.stages.STAGE_ID.spec.execution.steps.HarnessApproval.output.approvalActivities[0].user.name                                                                                                                                                                                    |
+| approvedBy.email                                                      | pipeline.stages.STAGE_ID.spec.execution.steps.HarnessApproval.output.approvalActivities[0].user.email                                                                                                                                                                                   |
 | **HTTP Step**                                                             | **HTTP Step**                                                                                                                                                                                                                                                                            |
 | httpResponseCode                                                      | httpResponseCode                                                                                                                                                                                                                                                                     |
 | httpResponseBody                                                      | httpResponseBody                                                                                                                                                                                                                                                                     |
 | httpMethod                                                            | httpMethod                                                                                                                                                                                                                                                                           |
 | httpUrl                                                               | httpUrl                                                                                                                                                                                                                                                                              |
-| httpResponseMethod                                                    | pipeline.stages.HTTP.spec.execution.steps.[step_Id].output.httpMethod                                                                                                                                                                                                                     |
-| httpResponseCode                                                      | pipeline.stages.HTTP.spec.execution.steps.[step_Id].output.httpResponseCode                                                                                                                                                                                                               |
-| httpResponseBody                                                      | pipeline.stages.HTTP.spec.execution.steps.[step_Id].output.httpResponseBody                                                                                                                                                                                                               |
+| httpResponseMethod                                                    | pipeline.stages.HTTP.spec.execution.steps.STEP_ID.output.httpMethod                                                                                                                                                                                                                     |
+| httpResponseCode                                                      | pipeline.stages.HTTP.spec.execution.steps.STEP_ID.output.httpResponseCode                                                                                                                                                                                                               |
+| httpResponseBody                                                      | pipeline.stages.HTTP.spec.execution.steps.STEP_ID.output.httpResponseBody                                                                                                                                                                                                               |
 | **Artifacts**                                                             | **Artifacts**                                                                                                                                                                                                                                                                            |
 | artifact.metadata.image                                               | artifact.image                                                                                                                                                                                                                                                                       |
 | artifact.source.dockerconfig                                          | artifact.imagePullSecret                                                                                                                                                                                                                                                             |
@@ -1417,8 +1528,8 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | artifact.metadata.tag                                                 | artifact.tag                                                                                                                                                                                                                                                                         |
 | artifact.url                                                          | artifact.metadata.url                                                                                                                                                                                                                                                                |
 | artifact.buildNo                                                      | artifact.tag                                                                                                                                                                                                                                                                         |
-| artifact.metadata.image                                               | artifact.imageartifact.image. Path for sidecar artifact: artifacts.sidecars.sidecarId.[property]                                                                                                                                                                             |
-| artifact.metadata.[KEY]                                               | artifact.metadata.[KEY]                                                                                                                                                                                                                                                              |
+| artifact.metadata.image                                               | artifact.imageartifact.image. Path for sidecar artifact: artifacts.sidecars.sidecarId.PROPERTY                                                                                                                                                                             |
+| artifact.metadata.KEY                                               | artifact.metadata.KEY                                                                                                                                                                                                                                                              |
 | artifact.displayName                                                  |                                                                                                                                                                                                                                                                                      |
 | artifact.description                                                  | NA                                                                                                                                                                                                                                                                                   |
 | artifact.source.username                                              | NA                                                                                                                                                                                                                                                                                   |
@@ -1445,17 +1556,17 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | **Service**                                                               | **Service**                                                                                                                                                                                                                                                                              |
 | service.name                                                          | service.name  |
 | service.description                                                   | service.description                                                                                                                                                                                                                                                                  |
-| serviceVariable.[var_name]                                         | serviceVariables.[var_name]                                                                                              |
+| serviceVariable.VAR_NAME                                         | serviceVariables.VAR_NAME                                                                                              |
 | service.manifest                                                      | manifest.name                                                                                                                                                                                                                                                                        |
 | service.manifest.repoRoot                                             | manifest.repoName                                                                                                                                                                                                                                                                    |
 | **Environment**                                                           | **Environment**                                                                                                                                                                                                                                                                          |
-| env.description                                                       | FQN: stages.[stage_Id].spec.infrastructure.environment.name. Alias: env.description. FQN: stages.[stage_Id].spec.infrastructure.environment.description                                                                                                                          |
+| env.description                                                       | FQN: stages.STAGE_ID.spec.infrastructure.environment.name. Alias: env.description. FQN: stages.STAGE_ID.spec.infrastructure.environment.description                                                                                                                          |
 | env.environmentType                                                   | env.type                                                                                                                                                                                                                                                                             |
 | env.name                                                              | env.name                                                                                                                                                                                                                                                                             |
 | env.accountId                                                         | account.identifier                                                                                                                                                                                                                                                                   |
 | env.keywordsenvironmentVariable.variable_name                     | env.variables.var_name                                                                                                                                                                                                                                                               |
 | **Infrastructure**                                                        | **Infrastructure**                                                                                                                                                                                                                                                                       |
-| infra.kubernetes.namespace                                            | infra.namespace or infra.releaseName. FQN: stages.[stage_Id].spec.infrastructure.infrastructureDefinition.spec.namespace                                                                                                                                                      |
+| infra.kubernetes.namespace                                            | infra.namespace or infra.releaseName. FQN: stages.STAGE_ID.spec.infrastructure.infrastructureDefinition.spec.namespace                                                                                                                                                      |
 | infra.route                                                           |                                                                                                                                                                                                                                                                                      |
 | infra.tempRoute                                                       |                                                                                                                                                                                                                                                                                      |
 | infra.name                                                            | infra.name                                                                                                                                                                                                                                                                           |
@@ -1469,7 +1580,7 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | workflow.pipelineResumeUuid                                           | NA                                                                                                                                                                                                                                                                                   |
 | workflow.pipelineDeploymentUuid                                       | pipeline.executionIdpipeline.sequenceId                                                                                                                                                                                                                                          |
 | workflow.startTs                                                      | pipeline.startTs                                                                                                                                                                                                                                                                     |
-| workflow.variables.[var_name]                                           | pipeline.variables.[var_name] or stage.variables.[var_name]                                                                                                                                                                                                                              |
+| workflow.variables.VAR_NAME                                           | pipeline.variables.VAR_NAME or stage.variables.VAR_NAME                                                                                                                                                                                                                              |
 | timestampId                                                           |                                                                                                                                                                                                                                                                                      |
 | deploymentUrl                                                         | pipeline.execution.url​                                                                                                                                                                                                                                                              |
 | context.published_name.var_name                                       |                                                                                                                                                                                                                                                                                      |
@@ -1500,13 +1611,13 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | instance.host.ip                                                      | instance.host.privateIpinstance.host.publicIp. The privateIp and publicIp are supported for Azure, AWS, SSH/WinRM deployments.                                                                                                                                         |
 | instance.dockerId                                                     | TBD                                                                                                                                                                                                                                                                                  |
 | instance.host.publicDns                                               | NA                                                                                                                                                                                                                                                                                   |
-| instance.EcsContainerDetails.completeDockerId                         | pipeline.stages.[stage_identifier].spec.execution.steps.[step_identifier].steps.[step_identifier].deploymentInfoOutcome.serverInstanceInfoList[x].containers[x].runtimeId                                                                                                            |
-| instance.ecsContainerDetails.taskId                                   | pipeline.stages.[stage_identifier].spec.execution.steps.[step_identifier].steps.[step_identifier].deploymentInfoOutcome.serverInstanceInfoList[x].taskArn                                                                                                                            |
-| instance.ecsContainerDetails.taskArn                                  | pipeline.stages.[stage_identifier].spec.execution.steps.[step_identifier].steps.[step_identifier].deploymentInfoOutcome.serverInstanceInfoList[x].taskArn                                                                                                                            |
+| instance.EcsContainerDetails.completeDockerId                         | pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_IDENTIFIER.steps.STEP_IDENTIFIER.deploymentInfoOutcome.serverInstanceInfoList[x].containers[x].runtimeId                                                                                                            |
+| instance.ecsContainerDetails.taskId                                   | pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_IDENTIFIER.steps.STEP_IDENTIFIER.deploymentInfoOutcome.serverInstanceInfoList[x].taskArn                                                                                                                            |
+| instance.ecsContainerDetails.taskArn                                  | pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_IDENTIFIER.steps.STEP_IDENTIFIER.deploymentInfoOutcome.serverInstanceInfoList[x].taskArn                                                                                                                            |
 | [step__name].serviceName                                              | N/A                                                                                                                                                                                                                                                                                  |
-| ECS__Service__Setup.serviceName                                       | service.nameThis expression only works if customer chooses to use this in service definition manifest as wellorpipeline.stages.ecs.spec.execution.steps.[Step ID].output.serviceName                                                                                     |
+| ECS__Service__Setup.serviceName                                       | service.nameThis expression only works if customer chooses to use this in service definition manifest as wellorpipeline.stages.ecs.spec.execution.steps.[Step Id].output.serviceName                                                                                     |
 | ECS__Service__Setup.clusterName                                       | infra.cluster                                                                                                                                                                                                                                                                        |
-| instance.EcsContainerDetails.dockerId                                 | pipeline.stages.[stage_identifier].spec.execution.steps.[step_identifier].steps.[step_identifier].deploymentInfoOutcome.serverInstanceInfoList[x].containers[x].runtimeId                                                                                                            |
+| instance.EcsContainerDetails.dockerId                                 | pipeline.stages.STAGE_IDENTIFIER.spec.execution.steps.STEP_IDENTIFIER.steps.STEP_IDENTIFIER.deploymentInfoOutcome.serverInstanceInfoList[x].containers[x].runtimeId                                                                                                            |
 | **Host** (Deprecated) All host properties are available using Instance    | **Host** (Deprecated) All host properties are available using Instance                                                                                                                                                                                                                   |
 | host.name                                                             |                                                                                                                                                                                                                                                                                      |
 | host.ip                                                               |                                                                                                                                                                                                                                                                                      |
@@ -1525,46 +1636,46 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | host.ec2Instance.vpcId                                                |                                                                                                                                                                                                                                                                                      |
 | host.hostName                                                         |                                                                                                                                                                                                                                                                                      |
 | **Terraform**                                                             | **Terraform**                                                                                                                                                                                                                                                                            |
-| terraform.clusterName                                                 | [step_Id].output.[output_name]. For example: pipeline.stages.stage1.spec.execution.steps.TerraformApply.output.clusterName                                                                                                                                                                  |
+| terraform.clusterName                                                 | STEP_ID.output.OUTPUT_NAME. For example: pipeline.stages.stage1.spec.execution.steps.TerraformApply.output.clusterName                                                                                                                                                                  |
 | terraformApply.tfplan                                                 |                                                                                                                                                                                                                                                                                      |
 | terraformDestroy.tfplan                                               |                                                                                                                                                                                                                                                                                      |
-| terraformPlan.jsonFilePath()                                          | execution.steps.[Terraform Plan step Id].plan.jsonFilePath. For example: execution.steps.terraformPlan.plan.jsonFilePath                                                                                                                                                                    |
-| terraformPlan.destroy.jsonFilePath()                                  | execution.steps.[Terraform Plan step Id].plan.jsonFilePath For example: execution.steps.terraformPlan.plan.jsonFilePath                                                                                                                                                                    |
+| terraformPlan.jsonFilePath()                                          | execution.steps.TERRAFORM_PLAN_STEP_ID.plan.jsonFilePath. For example: execution.steps.terraformPlan.plan.jsonFilePath                                                                                                                                                                    |
+| terraformPlan.destroy.jsonFilePath()                                  | execution.steps.TERRAFORM_PLAN_STEP_ID.plan.jsonFilePath For example: execution.steps.terraformPlan.plan.jsonFilePath                                                                                                                                                                    |
 | terraformApply.add                                                    |                                                                                                                                                                                                                                                                                      |
 | terraformApply.change                                                 |                                                                                                                                                                                                                                                                                      |
 | terraformApply.destroy                                                |                                                                                                                                                                                                                                                                                      |
 | terraformDestroy.add                                                  |                                                                                                                                                                                                                                                                                      |
 | terraformDestroy.change                                               |                                                                                                                                                                                                                                                                                      |
 | terraformDestroy.destroy                                              |                                                                                                                                                                                                                                                                                      |
-| terraformApply.tfplanHumanReadable                                    | execution.steps.[Terraform Plan step Id].plan.humanReadableFilePath. For example: execution.steps.terraformPlan.plan.humanReadableFilePath                                                                                                                                                  |
-| terraformDestroy.tfplanHumanReadable                                  | execution.steps.[Terraform Plan step Id].plan.humanReadableFilePath. For example: execution.steps.terraformPlan.plan.humanReadableFilePath                                                                                                                                                  |
-| terraform.[output_name]                                               | pipeline.stages.[stage-Id].spec.execution.steps.TerraformApply.output.[output_name]                                                                                                                                                                                                  |
+| terraformApply.tfplanHumanReadable                                    | execution.steps.TERRAFORM_PLAN_STEP_ID.plan.humanReadableFilePath. For example: execution.steps.terraformPlan.plan.humanReadableFilePath                                                                                                                                                  |
+| terraformDestroy.tfplanHumanReadable                                  | execution.steps.TERRAFORM_PLAN_STEP_ID.plan.humanReadableFilePath. For example: execution.steps.terraformPlan.plan.humanReadableFilePath                                                                                                                                                  |
+| terraform.OUTPUT_NAME                                               | pipeline.stages.STAGE_ID.spec.execution.steps.TerraformApply.output.OUTPUT_NAME                                                                                                                                                                                                  |
 | **CloudFormation**                                                        | **CloudFormation**                                                                                                                                                                                                                                                                       |
-| cloudformation.[output_name]                                          | pipeline.stages.stage1.spec.execution.steps.CreateStack.output.[output_name]                                                                                                                                                                                                         |
+| cloudformation.OUTPUT_NAME                                          | pipeline.stages.stage1.spec.execution.steps.CreateStack.output.OUTPUT_NAME                                                                                                                                                                                                         |
 | cloudformation.region                                                 | pipeline.stages.stage1.spec.execution.steps.CreateStack.output.region                                                                                                                                                                                                                |
 |                                                                       |                                                                                                                                                                                                                                                                                      |
 | **HARNESS_KUBE_CONFIG_PATH**                                              | **HARNESS_KUBE_CONFIG_PATH**                                                                                                                                                                                                                                                             |
 | infra.kubernetes.infraId                                              | N/A                                                                                                                                                                                                                                                                                  |
 | **Helm**                                                                  | **Helm**                                                                                                                                                                                                                                                                                 |
-| infra.helm.releaseNameservice.name-env.name-infra.helm.shortId    | pipeline.stages.[stage_Id].spec.infrastructure.infrastructureDefinition.spec.output.releaseName, pipeline.stages.[stage_Id].spec.execution.steps.rolloutDeployment.deploymentInfoOutcome.serverInstanceInfoList[2].releaseName                                                 |
+| infra.helm.releaseNameservice.name-env.name-infra.helm.shortId    | pipeline.stages.STAGE_ID.spec.infrastructure.infrastructureDefinition.spec.output.releaseName, pipeline.stages.STAGE_ID.spec.execution.steps.rolloutDeployment.deploymentInfoOutcome.serverInstanceInfoList[2].releaseName                                                 |
 | infra.helm.shortId                                                    | N/A                                                                                                                                                                                                                                                                                  |
 | helmChart.description                                                 | service.description                                                                                                                                                                                                                                                                  |
-| helmChart.displayName                                                 | pipeline.stages.[stage_Id].spec.serviceConfig.output.manifestResults.[service_Id].chartName                                                                                                                                                                                          |
+| helmChart.displayName                                                 | pipeline.stages.STAGE_ID.spec.serviceConfig.output.manifestResults.SERVICE_ID.chartName                                                                                                                                                                                          |
 | helmChart.metadata.basePath                                           | N/A                                                                                                                                                                                                                                                                                  |
 | helmChart.metadata.bucketName                                         | N/A                                                                                                                                                                                                                                                                                  |
 | helmChart.metadata.repositoryName                                     | N/A                                                                                                                                                                                                                                                                                  |
 | helmChart.metadata.url                                                | N/A                                                                                                                                                                                                                                                                                  |
-| helmChart.name                                                        | pipeline.stages.[stage_Id].spec.execution.steps.rolloutDeployment.output.releaseName                                                                                                                                                                                                 |
-| helmChart.version                                                     | pipeline.stages.[stage_Id].spec.serviceConfig.output.manifestResults.[service_Id].helmVersion                                                                                                                                                                                             |
+| helmChart.name                                                        | pipeline.stages.STAGE_ID.spec.execution.steps.rolloutDeployment.output.releaseName                                                                                                                                                                                                 |
+| helmChart.version                                                     | pipeline.stages.STAGE_ID.spec.serviceConfig.output.manifestResults.SERVICE_ID.helmVersion                                                                                                                                                                                             |
 | Nested Expression: secrets.getValue("terraform-aws-env_name-id") | secrets.getValue("test_secret" + pipeline.variables.envVar), or secrets.getValue("test_secret".concat(pipeline.variables.envVar))                                                                                                                                             |
 | **Email Step**                                                            | **Email Step**                                                                                                                                                                                                                                                                           |
-| toAddress                                                             | pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].spec.to                                                                                                                                                            |
-| ccAddress                                                             | pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].spec.cc                                                                                                                                                                                                                            |
-| subject                                                               | pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].spec.subject                                                                                                                                                                                                                         |
-| body                                                                  | pipeline.stages.[stage_Id].spec.execution.steps.[step_Id].spec.body                                                                                                                                                                                                                            |
+| toAddress                                                             | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.to                                                                                                                                                            |
+| ccAddress                                                             | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.cc                                                                                                                                                                                                                            |
+| subject                                                               | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.subject                                                                                                                                                                                                                         |
+| body                                                                  | pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.spec.body                                                                                                                                                                                                                            |
 | **AMI**                                                                   | **AMI**                                                                                                                                                                                                                                                                                  |
-| ami.newAsgName                                                        | Rolling: pipeline.stages.[stage_Id].spec.execution.steps.AsgRollingDeployStep.output.asg.autoScalingGroupName. Blue Green: pipeline.stages.[stage_Id].spec.execution.steps.AsgRollingDeployStep.output.prodAsg.autoScalingGroupName                                                  |
-| ami.oldAsgName                                                        | Rolling: pipeline.stages.[stage_Id].spec.execution.steps.AsgRollingDeployStep.output.asg.autoScalingGroupName. Blue Green: pipeline.stages.[stage_Id].spec.execution.steps.AsgRollingDeployStep.output.stageAsg.autoScalingGroupName                                                 |
+| ami.newAsgName                                                        | Rolling: pipeline.stages.STAGE_ID.spec.execution.steps.AsgRollingDeployStep.output.asg.autoScalingGroupName. Blue Green: pipeline.stages.STAGE_ID.spec.execution.steps.AsgRollingDeployStep.output.prodAsg.autoScalingGroupName                                                  |
+| ami.oldAsgName                                                        | Rolling: pipeline.stages.STAGE_ID.spec.execution.steps.AsgRollingDeployStep.output.asg.autoScalingGroupName. Blue Green: pipeline.stages.STAGE_ID.spec.execution.steps.AsgRollingDeployStep.output.stageAsg.autoScalingGroupName                                                 |
 | **Tanzu Application Services**                                            | **Tanzu Application Services**                                                                                                                                                                                                                                                           |
 | pcf.finalRoutes                                                       | pcf.finalRoutes                                                                                                                                                                                                                                                                      |
 | pcf.oldAppRoutes                                                      | pcf.oldAppRoutes                                                                                                                                                                                                                                                                     |
@@ -1598,7 +1709,7 @@ For more information migrating to NextGen, go to the following:
 - [FirstGen and NextGen CD parity matrix](/docs/continuous-delivery/get-started/upgrading/feature-parity-matrix/)
 - [Harness CD upgrading FAQ](/docs/continuous-delivery/get-started/upgrading/cdng-upgrade-faq/)
 
-## See also
+For more information, go to:
 
 * [Codebase Variables Reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference.md)
 * [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).

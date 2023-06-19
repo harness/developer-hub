@@ -27,7 +27,7 @@ For **Deployment Type**, select **Kubernetes**. Custom Artifact is supported in 
 
 You can now see the **Manifests** and **Artifacts** sections.
 
-We'll focus on **Artifacts** to demonstrate custom artifact, but you can find information on manifests in [Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services).
+We'll focus on **Artifacts** to demonstrate custom artifact, but you can find information on manifests in [Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services).
 
 ## Add a custom artifact source
 
@@ -225,7 +225,7 @@ namespace: <+infra.namespace>
 ...
 ```
 
-For details on using *values.yaml* in Harness, go to [Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services).
+For details on using *values.yaml* in Harness, go to [Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services).
 
 [Harness Variables and Expressions](/docs/platform/Variables-and-Expressions/harness-variables) can be added to Values files (for example values.yaml), not the manifests themselves. This provides more flexibility.
 

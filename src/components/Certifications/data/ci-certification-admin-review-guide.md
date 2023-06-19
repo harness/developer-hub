@@ -16,7 +16,7 @@
 | Describe Ephemeral Environments | [Get started with Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) |
 | Describe Harness Cloud Build Infrastructure | [Get started with Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) |
 | Describe Connectors (you can use Source Providers, Artifact Repos, Cloud Providers, etc) | [Connectors](https://developer.harness.io/docs/category/connectors) |
-| Configure a Git Connector | [Add a GitHub Connector](https://developer.harness.io/docs/platform/Connectors/add-a-git-hub-connector) |
+| Configure a Git Connector | [GitHub connector settings reference](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference) |
 | Configure a DockerHub Connector | [Connect to Harness container image registry Using Docker connector](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/) |
 | Describe Harness Delegate role for the CI capability | [CI Pipeline Basics](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics) |
 | Secrets Management - How to retrieve and render secrets using Harness Expressions | [Add/Use Text Secrets](https://developer.harness.io/docs/platform/security/add-use-text-secrets/) |
