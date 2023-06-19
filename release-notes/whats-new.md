@@ -19,6 +19,44 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - June 19, 2023
 
+### Continuous Integration, version 4206
+
+The Harness Cloud Linux amd64 image has new major and minor versions for multiple components. Major version upgrades are described below. For a complete list of component versions, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#platforms-and-image-specifications). (CI-7537)
+
+:::caution
+
+If you have pipelines running on Harness Cloud that rely on specific component versions, you might need to [lock versions or install additional tools](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#lock-versions-or-install-additional-tools) to prevent your pipeline from failing due to image changes.
+
+:::
+
+<details>
+<summary>Major version upgrades for the Harness Cloud Linux amd64 image</summary>
+
+| Component | Previous version | Current version |
+| --------  | ---------------- | --------------- |
+| Homebrew | 3.6.3 | 4.0.17 |
+| Miniconda | 4.12.0 | 23.3.1 |
+| Lerna | 5.5.2 | 6.6.2 |
+| Bazel | 5.3.1 | 6.1.2 |
+| Docker-Moby Client | 20.10.18 | 23.0.6 |
+| Docker-Moby Server | 20.10.18 | 23.0.6 |
+| Heroku | 7.63.4 | 8.1.3 |
+| Kustomize | 4.5.7 | 5.0.2 |
+| Google Cloud SDK | 403.0.0 | 428.0.0 |
+| Netlify CLI | 12.0.0 | 15.0.2 |
+| ORAS CLI | 0.15.0 | 1.0.0 |
+| Vercel CLI | 28.4.4 | 29.1.1 |
+| Google Chrome | 106.0.5249.61 | 113.0.5672.92 |
+| ChromeDriver | 106.0.5249.21 | 113.0.5672.63 |
+| Chromium | 106.0.5235.0 | 113.0.5672.0 |
+| Microsoft Edge | 105.0.1343.53 | 113.0.1174.35 |
+| Microsoft Edge WebDriver | 105.0.1343.53 | 113.0.1774.35 |
+| Android Command Line Tools | 7.0 | 9.0 |
+| Android Emulator | 31.3.11 | 32.1.12 |
+| Android SDK Platform-Tools | 33.0.3 | 34.0.1 |
+
+</details>
+
 ### Continuous Delivery, version 79606
 
 - Harness variables now have a **Required** setting. (CDS-69710)
@@ -59,7 +97,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   Starting with this release, you can also change the branch in the dialog for running a pipeline. You can also run the pipeline from any branch directly from the pipeline listing page.
 
 ## June 09, 2023
-  
+
 ### Continuous Error Tracking, version et-service 5.23.0
 
 - Now, when you create a Jira ticket for an event, CET prompts you to complete any mandatory fields that do not have a default value. (CET-1231)
@@ -205,7 +243,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   Notifications are sent to the destinations set up in the user group(s) listed in the Approval step's **Approvers** setting. This includes email, Slack, PagerDuty, and MS Teams.
 
-  ![picture 87](static/fa61423c00604c9a2d1dcf3cd2e8c040d71992791e34abf983eb5befe8640159.png)
+  <docimage path={require('./static/fa61423c00604c9a2d1dcf3cd2e8c040d71992791e34abf983eb5befe8640159.png')} width="60%" height="60%" title="Click to view full size image" />
 
   For information on setting up notifications for user groups, go to [Add and manage user groups](https://developer.harness.io/docs/platform/User-Management/add-user-groups).
 
@@ -220,6 +258,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
    This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
+
+## Previous releases
 
 <details>
 <summary>2023 releases</summary>
