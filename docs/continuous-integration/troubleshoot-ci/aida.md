@@ -22,14 +22,6 @@ Currently, AIDA for CI is behind the feature flag `CI_AI_ENHANCED_REMEDIATIONS`.
 
 <docimage path={require('./static/aida-dialog-example.png')} />
 
-:::info EULA and privacy overview
-
-<Legal />
-
-:::
-
-## How do I troubleshoot with AIDA?
-
 <Use />
 
 ![An example of AIDA dialog.](./static/aida-launch-button.png)
