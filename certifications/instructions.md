@@ -13,17 +13,15 @@ These instructions are in BETA and in support of our Admin and Architect level e
 
 ## Accessing your Hands On Exam 
 
-1. After registering for the administrator or architect level exam, you will find two exam items in your registration: 
-   - A 50-question multiple-choice knowledge exam
-   - A Hands-on exam with a Cloud Shell using Instruqt
+1. After registering for the administrator or architect level exam, the final question will be the hands-on exam. 
 
-2. Before accessing the hands-on exam, you need to pass the knowledge exam.
+2. Once you access the Hands-on exam, you will see instructions to open the Instruqt Hands On exam by copy and pasting the exam URL in a new tab.  
 
-3. Once you access the Hands-on exam, you will see instructions to open the Instruqt Hands On exam by clicking on the link in the window. 
+	![New Tab](./static/new-tab.png)
 
-4. Follow the instructions provided within the hands-on labs to complete the exercises. Make sure to finish all the labs. Once you have completed all the labs, a secret password will be displayed.
+3. Follow the instructions provided within the hands-on labs to complete the exercises. Make sure to finish all the labs. Once you have completed all the labs, a secret password will be displayed which will be used for credit.
 
-5. At this point, return to the main exam window and answer the question related to the secret password. This step ensures that you have finished all the labs.
+4. At this point, return to the main exam window and answer the question related to the secret password. This step ensures that you have finished all the labs.
 
 By following these steps, you will be able to access and complete the hands-on exam using Instruqt. Good luck!
 
