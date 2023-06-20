@@ -12,7 +12,7 @@ Following are some key benefits of Harness AIDA:
 
 - Auto-recognition of failures in pipelines: The RCA option generates recommendations for step failures. Using the log service along with the failed step context, Harness provides the root cause of the failing pipeline by providing step logs.
 
-- Asset governance: Assists in drafting rules based on specific requirements. It generates custom rules aligned with your governance goals based on your requirements. Harness AIDA governance support offers detailed descriptions of pre-existing rules. When creating policies, this feature facilitates informed decision-making by clarifying the purpose, scope, and implications of each rule.
+- Asset governance: The asset governance feature assists you in drafting rules that are based on your requirements and aligned with your governance goals. Harness AIDA governance support also offers detailed descriptions of built-in rules. When you are creating policies, this feature facilitates informed decision-making by clarifying the purpose, scope, and implications of each rule.
   
 - Security: Harness AI identifies security vulnerabilities, explains them, and suggests remediation.
 
