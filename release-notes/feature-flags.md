@@ -72,7 +72,7 @@ This release does not include early access features.
 
   * Reworked metrics caching to use a map instead of a queue. This improves memory usage and performance. (FFM-7475)
 
-  * We now send the SDK Version information with the metrics payload for better analytics and tracking. (FFM-6904)
+  * We now send the SDK version information with the metrics payload for better analytics and tracking. (FFM-6904)
 
   * Added logging when a default evaluation is served. (FFM-7473)
 
