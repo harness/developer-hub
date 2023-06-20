@@ -113,7 +113,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <details>
 <summary>2023 releases</summary>
 
-#### Latest - June 09, 2023, version 79516
+#### June 09, 2023, version 79516
 
 ##### What's new
 
@@ -164,7 +164,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ##### Early access
 
-- Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
+<!--- Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
   
   This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`. 
 
@@ -172,7 +172,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets, and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
-  Harness Delegate version 79503 is required for this feature.
+  Harness Delegate version 79503 is required for this feature.-->
 - Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. (CDS-59011)
 
   This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. 
