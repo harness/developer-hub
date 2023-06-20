@@ -6,7 +6,7 @@ sidebar_position: 4
 
 Harness is the industry’s first software delivery platform to use AI to simplify your DevOps processes—CI, CD, GitOps, Feature Flags, Cloud Costs, Chaos Engineering, and much more. 
 
-[Harness](https://harness.io) offers a free hosted LitmusChaos for those who are trying to get started with LitmusChaos, and also for those who are getting started with Chaos Engineering (CE) in general. The Harness CE free plan is a free-forever plan that has features equivalent to LitmusChaos, and also bundles Harness platform features such as  RBAC and hosted logging—all for free.
+[Harness](https://harness.io) offers a free hosted LitmusChaos for those who are trying to get started with LitmusChaos, and also for those who are getting started with Chaos Engineering (CE) in general. The Harness CE free plan is a free-forever plan that has features equivalent to LitmusChaos, and also bundles Harness platform features such as RBAC and hosted logging—all for free.
 
 Sign up at [app.harness.io](https://app.harness.io) to get started with a free plan for either the hosted Harness CE or the hosted LitmusChaos. 
 
