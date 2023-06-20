@@ -19,7 +19,7 @@ If your step inputs or parameters size is greater than 4 KB then it cannot be pa
 
 ## Writing expressions using JSON
 
-Here's how the execution JSON looks like: 
+Let's see how to extract data from the following sample Execution JSON: 
 
 ```
 {
@@ -390,7 +390,7 @@ Here's how the execution JSON looks like:
 }
 ```
 
-Retrieve specific chunks of data in the above JSON by locating the corresponding path. For instance, to access the status of a combination within the matrix named cStage1, use the following expression: 
+You can retrieve specific chunks of data from the sample JSON above by locating the corresponding path. For example, to access the status of a combination within the matrix named cStage1, use the following expression: 
 
 `pipeline.stages.cStage.cStage_0.status`
 
