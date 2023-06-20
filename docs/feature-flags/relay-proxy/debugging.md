@@ -42,13 +42,13 @@ The response looks something like this:
   "cacheStatus": "healthy"
 }
 ```
-- `id` is the environments ID
-- `state` represents the state of the Proxy -> SaaS feature flags stream for an environment
-    - `INITIALIZING` means the proxy is initializing a stream with SaaS feature flags for the environment
-    - `CONNECTED` means the proxy has a healthy stream connection with SaaS feature flags
+- `id` is the environments ID.
+- `state` represents the state of the Proxy -> SaaS feature flags stream for an environment:
+    - `INITIALIZING` means the proxy is initializing a stream with SaaS feature flags for the environment.
+    - `CONNECTED` means the proxy has a healthy stream connection with SaaS feature flags.
     - `DISCONNECTED` means the proxy has an healthy stream connection with SaaS feature flags and it will poll for changes
-- `since` represents the time that `state` was last updated
-- `cacheStatus` represents the state of the connection between the Proxy and the cache
+- `since` represents the time that `state` was last updated.
+- `cacheStatus` represents the state of the connection between the Proxy and the cache.
 
 
 If you've configured a custom port using the PORT environment variable, your healthcheck should point at that port instead, for example, for port 10000 it would be set to:
