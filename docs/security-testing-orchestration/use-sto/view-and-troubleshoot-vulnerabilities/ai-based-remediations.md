@@ -65,7 +65,7 @@ Harness AIDA reduces developer toil by streamlining and simplifying the process 
    
      Harness AIDA can often auto-detect the language of a code snippet, but it's good practice to confirm that the language setting is correct. 
 
-   3. Add any additional context in the text pane. For example, you might want to include relevant code immediately before the snippet where the vulnerability was identified, in addition to the snippet itself. Then click **Generate**.   
+   3. Add any additional context in the text pane. For example, you might want to include relevant code immediately before the snippet where the vulnerability was identified, in addition to the snippet itself. Then select **Generate**.   
 
        ```mdx-code-block
       <img src={remediate_issue_refine} alt="Generate a new remediation using additional information." height="50%" width="50%" />
