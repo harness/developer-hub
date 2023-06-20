@@ -16,7 +16,7 @@ To get started, head to [Build resiient applications with Chaos Engineering](/do
 
 ## Existing users
 
-If you're an existing users in https://cloud.chaosnative.com, you'll need to migrate your chaos infrastructure by August 31, 2023. To do so, follow these steps:
+If you're an existing user in https://cloud.chaosnative.com, you'll need to migrate your chaos infrastructure by August 31, 2023. To do so, follow these steps:
 
 1. [Disconnect](https://docs.litmuschaos.io/docs/user-guides/uninstall-litmus) your Litmus chaos infrastructure.
 
