@@ -14,11 +14,8 @@ Sign up at [app.harness.io](https://app.harness.io) to get started with a free p
 The Harness CE free plan replaces [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). New signups are not being accepted at [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). Users on that platform are advised to move to the Harness CE free plan before August 31, 2023. For free support on migration, contact [Harness](https://harness.io) Support.
 :::
 
-## New users 
 
-To get started, head to [Build resiient applications with Chaos Engineering](/docs/chaos-engineering/get-started/introduction-to-chaos-module).
-
-## Existing users
+## Migration for existing LitmusChaos users
 
 If you're an existing user in [cloud.chaosnative.com](https://cloud.chaosnative.com/signin), you'll need to migrate your chaos infrastructure by August 31, 2023. To do so, follow these steps:
 
