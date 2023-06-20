@@ -10,7 +10,7 @@ The Harness platform leverages Harness AI Developer Assistant (AIDA) to revoluti
 
 Following are some key benefits of Harness AIDA:
 
-- Auto-recognition of failures in pipelines: The RCA option generates recommendations for step failures. Using the log service along with the failed step context, Harness provides the root cause of the failing pipeline by providing step logs.
+- Auto-recognition of failures in pipelines: The root cause analysis (RCA) option generates recommendations for step failures in pipelines. Harness bases these recommendations on the step logs and the context of the failed step.
 
 - Asset governance: The asset governance feature assists you in drafting rules that are based on your requirements and aligned with your governance goals. Harness AIDA governance support also offers detailed descriptions of built-in rules. When you are creating policies, this feature facilitates informed decision-making by clarifying the purpose, scope, and implications of each rule.
   
