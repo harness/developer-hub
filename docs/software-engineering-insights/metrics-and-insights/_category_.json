@@ -1,0 +1,11 @@
+{
+   "label":"Metrics and insights",
+   "position": 30,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Metrics and insights"
+   }
+}
