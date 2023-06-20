@@ -14,7 +14,72 @@ For Harness SaaS release notes, see [Harness SaaS Release Notes](https://develop
 
 Release notes are displayed with the most recent release first.
 
-### April 26, 2023, version 78926
+## June 14, 2023, version 79230
+
+Delegate: 78924
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 79230 |
+| Delegate | 78924 |
+| Watcher | 78424 |
+| Verification Service | 79230 |
+| UI | 79202 |
+| Learning Engine | 67708 | 
+| Gateway | 10701 |
+
+### New features and enhancements
+
+#### Harness Delegate
+
+- Removed the `DELEGATE_IMAGE_TAG` version override when delegates with the immutable image type are enabled. (PL-37852, DEL-6202)
+
+- Updated legacy delegate images `kubectl` version to 1.25.8. (PL-38281, DEL-6087)
+
+### Early access
+#### Continuous Delivery & GitOps
+
+- Pipelines in different projects are now independent. (CDS-55830, ZD-41377)
+
+	This change is behind the feature flag `PROJECT_SCOPED_RESOURCE_CONSTRAINT_QUEUE`.
+	
+	Pipelines were waiting on resource constraints although no other deployment was running with the same service and infrastructure definition combination. 
+	
+	Resource Constraints were scoped too broadly, so users' pipelines went into a wait state.
+	
+	This was because of other pipelines in other projects with the same infrastructure configuration. 
+	
+	This has now been changed by scoping resource constraints to the project.
+
+### Fixed issues
+
+#### Continuous Delivery & GitOps
+
+- When an app was removed it was still returning inside the GraphQL query result for a short period of time. (CDS-54879, ZD-40375)
+  
+	We added new functionality to verify each appId before returning the user group GraphQL. If the appId does not exist it's removed from the response.
+	
+	This change is behind the feature flag `SPG_GRAPHQL_VERIFY_APPLICATION_FROM_USER_GROUP`.
+
+- Canary Delete step during rollback deleting the primary deployment. (CDS-58661, ZD-42392)
+  
+	This occurred when the user skipped the dry run in the Canary Deployment step, and Harness was unable to process the manifest.yaml file during error handling. This resulted in the storage of the primary resource name as the canary workload name.
+	
+	The issue has been resolved, and Harness now relies on release history instead of populating the canary workload if there is an error in the deployment manifest and the dry run is skipped.
+
+- Resolved a null pointer exception when the Canary Deployment step is initialized with the Helm manifest type. (CDS-59214)
+
+#### Harness Delegate
+
+- Shell delegates did not upgrade automatically. Delegate URLs were not included in installation scripts. (PL-38304, DEL-6276)
+
+   This issue is fixed with a code enhancement.
+
+- Updated the error message for failed task execution to include the delegate host name or ID. (PL-38329, DEL-6187)
+
+## April 26, 2023, version 78926
 
 Delegate: 78904
 

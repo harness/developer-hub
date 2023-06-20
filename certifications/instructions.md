@@ -19,24 +19,11 @@ These instructions are in BETA and in support of our Admin and Architect level e
 
 2. Before accessing the hands-on exam, you need to pass the knowledge exam.
 
-3. Once you access the Hands-on exam, our proctor site will check your connectivity.
+3. Once you access the Hands-on exam, you will see instructions to open the Instruqt Hands On exam by clicking on the link in the window. 
 
-4. After your system is verified by the proctor, you will be presented with our terms and conditions. Please read and accept them to proceed.
+4. Follow the instructions provided within the hands-on labs to complete the exercises. Make sure to finish all the labs. Once you have completed all the labs, a secret password will be displayed.
 
-5. On the following screen, click the **Start Exam** button to begin the Hands-on exam.
-
-6. Within this screen, you will see a toolbar to the right of this question, you will then see a Widget that will house your Instruqt Hands-On Labs, click the icon below to display your labs: 
-
-![Instruqt Widget](./static/instruqt-widget-scorpion.png)
-
-7. A widget will appear, housing your Instruqt Hands-On Labs. 
-8. To expand the window to complete your labs, click the arrow icons to navigate between the hands-on widget and the question below:
-
-![Arrow Button](./static/scorpion-arrow.png)
-
-8. Follow the instructions provided within the hands-on labs to complete the exercises. Make sure to finish all the labs. Once you have completed all the labs, a secret password will be displayed.
-
-9. At this point, return to the main exam window and answer the question related to the secret password. This step ensures that you have finished all the labs.
+5. At this point, return to the main exam window and answer the question related to the secret password. This step ensures that you have finished all the labs.
 
 By following these steps, you will be able to access and complete the hands-on exam using Instruqt. Good luck!
 
