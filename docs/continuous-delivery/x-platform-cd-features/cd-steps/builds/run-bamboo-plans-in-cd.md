@@ -4,6 +4,12 @@ description: Run Bamboo plans in CD stages.
 sidebar_position: 2
 ---
 
+:::note
+
+Currently, this feature is behind the feature flag `BAMBOO_ARTIFACT_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 This topic describes how to use the Bamboo step in a Harness Continuous Delivery (CD) pipeline.
 
 Continuous Integration (CI) can be performed in Harness using the module and CI pipelines.
