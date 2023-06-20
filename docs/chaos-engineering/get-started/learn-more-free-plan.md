@@ -6,7 +6,7 @@ sidebar_position: 4
 
 Harness is the industry’s first software delivery platform to use AI to simplify your DevOps processes—CI, CD, GitOps, Feature Flags, Cloud Costs, Chaos Engineering and much more. 
 
-Harness is built on Litmus core, and offers a free plan in the hosted (SaaS) version of Harness Chaos Engineering (CE) for Litmus core community members. Once logged in, you can use Harness CE SaaS to execute your chaos scenarios in the cloud. Harness manages all your chaos control plane components, while the chaos execution plane components exist on your Kubernetes cluster as chaos infrastructure.
+Harness Chaos Engineering (CE) is built on Litmus core, and offers a free plan in the hosted (SaaS) version of CE for Litmus core community members. Once logged in, you can use Harness CE SaaS to execute your chaos scenarios in the cloud. Harness manages all your chaos control plane components, while the chaos execution plane components exist on your Kubernetes cluster as chaos infrastructure.
 
 To get started with Harness CE SaaS, visit [Harness](https://app.harness.io/) and a free forever plan is created for you. 
 
