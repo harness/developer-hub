@@ -1,6 +1,6 @@
 ---
-title: Harness AI Developer Assistant Overview
-description: An overview of the Harness AIDA.
+title: Overview of Harness AI Developer Assistant (AIDA)
+description: Learn about how AIDA improves your experience on the Harness platform.
 sidebar_position: 2
 ---
 
