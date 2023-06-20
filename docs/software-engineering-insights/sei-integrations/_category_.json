@@ -1,11 +1,11 @@
 {
-   "label":"SEI integrations",
-   "position": 50,
+   "label":"Integrations",
+   "position": 40,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"SEI integrations"
+      "title":"Integrations"
    }
 }
