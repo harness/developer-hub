@@ -4,18 +4,18 @@ description: Learn about the enhanced expressions experience using any JSON pars
 sidebar_position: 4
 ---
 
-To provide the best experience for customers when using expressions, Harness has introduced support for writing expressions with any JSON parser tool. With this enhancement, we are effectively addressing customer concerns and providing them with a more user-friendly and adaptable expression engine. These improvements enhance the overall user experience, increase productivity, and empower customers to have greater control and customization capabilities in their evaluation processes.
+To provide the best experience for customers when using expressions, Harness has introduced support for writing expressions by using any JSON parser tool. With this enhancement, we are effectively addressing customer concerns and providing them with a more user-friendly and adaptable expression engine. These improvements enhance the overall user experience, increase productivity, and empower customers to have greater control and customization capabilities in their evaluation processes.
 
 The key enhancements are as follows: 
 
-* Enhanced expression discovery: You have the ability to independently determine the expressions associated with a specific step. This empowers you to explore and understand the system better and thereby reduce reliance on external support.
+* Enhanced expression discovery: You have the ability to independently determine the expressions associated with a specific step. This empowers you to explore and understand the system better, and thereby reduce reliance on external support.
 * Comprehensive execution JSON: You can access the execution JSON for all stages or individual steps. This JSON contains detailed information about inputs and outputs for each step within the stage. This lets you analyze and troubleshoot workflows effectively and extract the required information easily.
 * Flexible JSON parsing: You can utilize any JSON parsing tool of your choice. This gives you the freedom to parse the execution JSON based on your preferred methods and extract the necessary information as per your requirements.
 * JEXL script support: This enhancement enables you to leverage the full power and flexibility of JEXL expressions, overcoming the limitations of the previous framework. You can now write complex expressions and customize the evaluation process to meet specific needs.
 
 ## Limitations
 
-If your step inputs or parameters size is greater than 4 KB then it cannot be part of your expanded JSON. This is to safeguard our system.
+If your step inputs or parameters size is greater than 4 KB, then it cannot be part of your expanded JSON. This is to safeguard your system.
 
 ## Writing expressions using JSON
 
@@ -390,18 +390,27 @@ Let's see how to extract data from the following sample Execution JSON:
 }
 ```
 
-You can retrieve specific chunks of data from the sample JSON above by locating the corresponding path. For example, to access the status of a combination within the matrix named cStage1, use the following expression: 
+You can retrieve specific chunks of data from the sample JSON above by locating the corresponding path. For example, to access the status of a combination within the matrix named `cStage1`, use the following expression: 
 
 `pipeline.stages.cStage.cStage_0.status`
 
-You can easily determine the complete expression for any desired data by traversing the JSON. Here are a few considerations to keep in mind when constructing the expression. By following these guidelines, you can easily construct expressions to fetch the desired JSON data without using complex and lengthy paths.
+You can easily determine the complete expression for any desired data by traversing the JSON. 
+
+Here are a few considerations to keep in mind when constructing such expressions. By following these guidelines, you can easily construct expressions to fetch the desired JSON data without using complex and lengthy paths.
 
 * The full path, starting from the `pipeline` always works as a reference point.
 * Fields like `stepInputs` and `outcome` can be ignored when constructing the full path.
 * Relative paths can also be used by identifying the common parent between the step or stage you want to refer and the step or stage where the reference is made.
-* Begin the expression from the common parent. For example, in the given expression, if you to refer to the status of `CStage_0` from `CStage_1`, use the expression, `cStage.cStage_0.status`. This approach allows you to avoid constructing the full name each time.
+* Begin the expression from the common parent. For example, in the given expression, if you want to refer to the status of `CStage_0` from `CStage_1`, use the expression, `cStage.cStage_0.status`. This approach allows you to avoid constructing the full name each time.
 
-## Writing complex expressions
+## Writing complex expressions using JQ
+
+JQ is a lightweight, powerful command-line tool specifically designed for JSON processing in Bash. It provides a wide range of features for querying, filtering, and transforming JSON data. JQ can be easily integrated into Bash scripts and can be used to extract specific values or perform complex JSON operations.
+
+Make sure that the following requirements are met to use JQ: 
+
+* Your Harness Delegate should support JQ if you are using a shell script step. For more details, go to [How to install JQ on Ubuntu](https://www.golinuxcloud.com/ubuntu-install-jq/).
+* Your image should support JQ if you are using a container step.
 
 Let's consider the following sample pipeline YAML to develop expressions for some complex use cases: 
 
@@ -481,14 +490,6 @@ pipeline:
         tags: {}
 
 ```
-### Writing expressions using JQ
-
-JQ is a lightweight, powerful command-line tool specifically designed for JSON processing in Bash. It provides a wide range of features for querying, filtering, and transforming JSON data. JQ can be easily integrated into Bash scripts and can be used to extract specific values or perform complex JSON operations.
-
-Make sure that the following requirements are met to use JQ: 
-
-* Your Harness Delegate should support JQ if you are using a shell script step. For more details, go to [How to install JQ on Ubuntu](https://www.golinuxcloud.com/ubuntu-install-jq/).
-* Your image should support JQ if you are using a container step.
 
 #### Fetch the status of all combinations of stage named `stageWithMatrix`
 
@@ -516,9 +517,9 @@ t='<+json.format(<+pipeline.stages.stepWithMatrix.spec.execution.steps.ShellScri
 echo $t | jq '(. | to_entries[] | select(.key | startswith("ShellScript_1")) | .value.status)'
 ```
 
-### Writing expressions using JEXL
+### Writing complex expressions using JEXL
 
-By introducing script support, Harness enables you to define functions, utilize loops, and incorporate if conditions within your expressions. This expanded functionality empowers you to handle more complex logic and perform advanced operations.
+By introducing script support, Harness enables you to define functions, utilize loops, and incorporate IF conditions within your expressions. This expanded functionality empowers you to handle more complex logic and perform advanced operations.
 
 #### Fetch the status of all combinations of a stage named `stageWithMatrix`
 
