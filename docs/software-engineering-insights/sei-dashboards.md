@@ -12,7 +12,21 @@ This topic explains how to create and view SEI dashboards. For information about
 
 ### Use templates
 
-#### Business alignment dashboard
+#### Business Alignment Dashboard
+
+A Business Alignment Dashboard can help visualize where your teams are expending the most effort and help your teams prioritize their time.
+
+To create a Business Alignment Dashboard, add a dashboard, and then select the **Effort Investment Profile** option under **Parameters**.
+
+<!-- image /.gitbook/assets/image (4).png - Create dashboard with Effort Investment Profile selected -->
+
+The default dashboard has the following widgets, which provide an overview of the categories or projects where engineers are allocating the most time:
+
+* **Effort Investment Single Stat**
+* **Effort Investment Trend Report**
+* **Effort Investment By Engineer**
+
+For more information about these metrics, go to [Alignment metrics](./sei-metrics-and-insights/alignment-metrics.md).
 
 ### Add widgets
 

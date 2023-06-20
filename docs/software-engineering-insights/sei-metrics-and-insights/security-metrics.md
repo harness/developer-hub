@@ -1,7 +1,7 @@
 ---
 title: Security metrics
 description: Identify top issues, improve resolution time, and improve your security posture.
-sidebar_position: 50
+sidebar_position: 40
 ---
 
 SEI integrates with some of the best security tools to produce reports that help you analyze anomalies or threats that can lead to failures and data loss or corruption.
