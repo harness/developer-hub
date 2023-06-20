@@ -26,7 +26,7 @@ Debug mode is available if the following conditions are met:
 
 Debug mode is never available for a pipeline's first build. You must run the pipeline at least once before you can run the build in debug mode.
 
-If debug mode isn't available for your pipeline, try [AIDA, the Harness AI Development Assistant](./aida.md).
+If debug mode isn't available for your pipeline, try [AIDA](./aida.md).
 
 ## Enable debug mode
 

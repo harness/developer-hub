@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot with AIDA
-description: AIDA is the Harness AI Development Assistant.
+description: AIDA is the Harness AI Developer Assistant.
 sidebar_position: 20
 ---
 
@@ -18,7 +18,7 @@ Currently, AIDA for CI is behind the feature flag `CI_AI_ENHANCED_REMEDIATIONS`.
 
 <Intro />
 
-<!-- ![Harness AI Copilot offers error analysis and possible solutions.](./static/aida-dialog-example.png) -->
+<!-- ![AIDA offers error analysis and possible solutions.](./static/aida-dialog-example.png) -->
 
 <docimage path={require('./static/aida-dialog-example.png')} />
 
