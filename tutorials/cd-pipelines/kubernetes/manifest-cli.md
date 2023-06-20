@@ -148,9 +148,10 @@ Under this step, you would see a bunch of CLI command to run, before procceding 
         ```
     - Please check the delegate name to be `kubernetes-delegate` in the `kubernetes-connector.yml`
     - Create the **Kubernetes connector** using the following CLI Command
-        ```
-        harness-cli connector --file kubernetes-connector.yml apply --delegate-name kubernetes-delegate
-        ```
+        
+    ```
+    harness-cli connector --file kubernetes-connector.yml apply --delegate-name kubernetes-delegate
+    ```
 
     ### Environment
 
