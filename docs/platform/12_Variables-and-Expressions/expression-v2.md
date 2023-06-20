@@ -1,27 +1,23 @@
 ---
-title: Expressions v2
-description: Learn about v2 enhanced expressions experience
+title: Writing expressions using any JSON parser tool
+description: Learn about the enhanced expressions experience using any JSON parser tool.
 sidebar_position: 4
 ---
 
-To provide the best experience for customers when using expressions, Harness has introduced enhanced expressions. We have named this enhancement **expressions v2**.
-
-With expressions v2, we are effectively addressing customer concerns and providing them with a more user-friendly and adaptable expression engine. These improvements enhance the overall user experience, increase productivity, and empower customers to have greater control and customization capabilities in their evaluation processes.
+To provide the best experience for customers when using expressions, Harness has introduced support for writing expressions with any JSON parser tool. With this enhancement, we are effectively addressing customer concerns and providing them with a more user-friendly and adaptable expression engine. These improvements enhance the overall user experience, increase productivity, and empower customers to have greater control and customization capabilities in their evaluation processes.
 
 The key enhancements are as follows: 
 
 * Enhanced expression discovery: You have the ability to independently determine the expressions associated with a specific step. This empowers you to explore and understand the system better and thereby reduce reliance on external support.
 * Comprehensive execution JSON: You can access the execution JSON for all stages or individual steps. This JSON contains detailed information about inputs and outputs for each step within the stage. This lets you analyze and troubleshoot workflows effectively and extract the required information easily.
 * Flexible JSON parsing: You can utilize any JSON parsing tool of your choice. This gives you the freedom to parse the execution JSON based on your preferred methods and extract the necessary information as per your requirements.
-* JEXL script support: Expression V2 introduces support for JEXL scripts within Harness. This enhancement enables you to leverage the full power and flexibility of JEXL expressions, overcoming the limitations of the previous framework. You can now write complex expressions and customize the evaluation process to meet specific needs.
+* JEXL script support: This enhancement enables you to leverage the full power and flexibility of JEXL expressions, overcoming the limitations of the previous framework. You can now write complex expressions and customize the evaluation process to meet specific needs.
 
 ## Limitations
 
-Expressions v2 has the following limitation: 
+If your step inputs or parameters size is greater than 4 KB then it cannot be part of your expanded JSON. This is to safeguard our system.
 
-* If your step inputs or parameters size is greater than 4 KB then it cannot be part of your expanded JSON. This is to safeguard our system.
-
-## Understanding JSON and writing expressions
+## Writing expressions using JSON
 
 Here's how the execution JSON looks like: 
 
@@ -491,7 +487,7 @@ JQ is a lightweight, powerful command-line tool specifically designed for JSON p
 
 Make sure that the following requirements are met to use JQ: 
 
-* Your Harness Delegate should support JQ if you are using a shell script step.
+* Your Harness Delegate should support JQ if you are using a shell script step. For more details, go to [How to install JQ on Ubuntu](https://www.golinuxcloud.com/ubuntu-install-jq/).
 * Your image should support JQ if you are using a container step.
 
 #### Fetch the status of all combinations of stage named `stageWithMatrix`
