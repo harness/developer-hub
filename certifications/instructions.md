@@ -11,11 +11,11 @@ These instructions are in BETA and in support of our Admin and Architect level e
 
 :::
 
-## Accessing your Hands On Exam 
+## Accessing your Hands-On Exam 
 
 1. After registering for the administrator or architect level exam, the final question will be the hands-on exam. 
 
-2. Once you access the Hands-on exam, you will see instructions to open the Instruqt Hands On exam by copy and pasting the exam URL in a new tab.  
+2. Once you access the hands-on exam, you will see instructions to open the Instruqt Hands-On exam by copy and pasting the exam URL in a new tab.  
 
 	![New Tab](./static/new-tab.png)
 
@@ -36,7 +36,7 @@ Below is a picture of the cloud shell you will see during an exam.
 3. Instruqt will now launch the lab environment for you. You may need to wait for a few moments while the environment initializes.
 4. Once the lab environment is ready, you will be presented with a web-based terminal or console interface. This interface allows you to interact with the lab environment and perform the required tasks.
 5. Follow the instructions provided within the lab environment to complete the hands-on exercises. The instructions will guide you through the necessary steps and provide any additional information or resources you may need.
-6. As you progress through the lab, make sure to read the instructions carefully and perform the tasks as directed. If you encounter any issues or have questions, you can refer to the lab's chat or discussion panel for assistance.
+6. As you progress through the lab, make sure to read the instructions carefully and perform the tasks as directed. 
 
 
 
