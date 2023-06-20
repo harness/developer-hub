@@ -1,6 +1,6 @@
 ---
 title: Troubleshoot with AIDA
-description: AIDA is the Harness AI Developer Assistant.
+description: AIDA is the Harness AI Development Assistant.
 sidebar_position: 20
 ---
 
