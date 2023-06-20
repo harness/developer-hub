@@ -403,7 +403,7 @@ Here are a few considerations to keep in mind when constructing such expressions
 * Relative paths can also be used by identifying the common parent between the step or stage you want to refer and the step or stage where the reference is made.
 * Begin the expression from the common parent. For example, in the given expression, if you want to refer to the status of `CStage_0` from `CStage_1`, use the expression, `cStage.cStage_0.status`. This approach allows you to avoid constructing the full name each time.
 
-## Writing complex expressions using JQ
+### Writing complex expressions using JQ
 
 JQ is a lightweight, powerful command-line tool specifically designed for JSON processing in Bash. It provides a wide range of features for querying, filtering, and transforming JSON data. JQ can be easily integrated into Bash scripts and can be used to extract specific values or perform complex JSON operations.
 
