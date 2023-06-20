@@ -46,7 +46,7 @@ The response looks something like this:
 - `state` represents the state of the Proxy -> SaaS feature flags stream for an environment:
     - `INITIALIZING` means the proxy is initializing a stream with SaaS feature flags for the environment.
     - `CONNECTED` means the proxy has a healthy stream connection with SaaS feature flags.
-    - `DISCONNECTED` means the proxy has an healthy stream connection with SaaS feature flags and it will poll for changes
+    - `DISCONNECTED` means the proxy has an healthy stream connection with SaaS feature flags and it will poll for changes.
 - `since` represents the time that `state` was last updated.
 - `cacheStatus` represents the state of the connection between the Proxy and the cache.
 
