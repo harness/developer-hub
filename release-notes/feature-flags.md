@@ -48,23 +48,37 @@ This release does not include early access features.
 
 #### Feature Flags SDKs
 
-The **Java** server SDK has been updated to version **1.2.3** with the following updates.
+* The **Java** server SDK has been updated to version **1.2.3** with the following updates.
 
-* There were reports of customers having difficulty running the SDK because of a missing dependency, `oksse`. Unless users have the JitPack repo in their POM/Gradle file, they are likely to have this problem at compile time. With this fix, we've removed the `oksse` dependency and now use `okhttp-sse` instead. (FFM-5915)
+  * There were reports of customers having difficulty running the SDK because of a missing dependency, `oksse`. Unless users have the JitPack repo in their POM/Gradle file, they are likely to have this problem at compile time. With this fix, we've removed the `oksse` dependency and now use `okhttp-sse` instead. (FFM-5915)
 
-* Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
+  * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
 
-* Updated the `maven-model` dependency to version 3.5.0 to remove the CVE-2022-4245 vulnerability. (FFM-8133)
+  * Updated the `maven-model` dependency to version 3.5.0 to remove the CVE-2022-4245 vulnerability. (FFM-8133)
 
-* Updated to the latest version of Guava, 32.0.1-jre, to remove security issues. (FFM-8233)
+  * Updated to the latest version of Guava, 32.0.1-jre, to remove security issues. (FFM-8233)
 
-The **Android** client SDK has been updated to version **1.1.0** with the following updates.
+* The **Android** client SDK has been updated to version **1.1.0** with the following updates.
 
-* Added a new API to allow SDK users to provide a trusted TLS CA certificate for connecting to Feature Flag services with private root CAs. (FFM-7008)
+  * Added a new API to allow SDK users to provide a trusted TLS CA certificate for connecting to Feature Flag services with private root CAs. (FFM-7008)
 
-* Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
+  * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
 
-* Fixed broken links in the first time setup documentation. (FFM-7867)
+  * Fixed broken links in the first time setup documentation. (FFM-7867)
+
+* The **.NET** server sdk has been updated to version **1.1.8** with the following updates.
+
+  * Added additional headers to SDK HTTP requests for better analytics. (FFM-7477)
+
+  * Reworked metrics caching to use a map instead of a queue. This improves memory usage and performance. (FFM-7475)
+
+  * We now send the SDK Vvrsion information with the metrics payload for better analytics and tracking. (FFM-6904)
+
+  * Added logging when a default evaluation is served. (FFM-7473)
+
+  * Standardized and improved Logging across the SDK. (FFM-7472)
+
+  * Fixed error handling when a null target is passed in. (FFM-8128)
 
 ```mdx-code-block
   </TabItem>
