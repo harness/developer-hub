@@ -14,6 +14,6 @@ Following are some key benefits of Harness AIDA:
 
 - Asset governance: The asset governance feature assists you in drafting rules that are based on your requirements and aligned with your governance goals. Harness AIDA governance support also offers detailed descriptions of built-in rules. When you are creating policies, this feature facilitates informed decision-making by clarifying the purpose, scope, and implications of each rule.
   
-- Security: Harness AI identifies security vulnerabilities, explains them, and suggests remediation.
+- Security: Harness AI identifies security vulnerabilities, describes them, and suggests remediation.
 
 The Harness Platform, powered by AI, offers a comprehensive set of tools and features that transform software delivery processes. By automating and optimizing various aspects of the development lifecycle, the Harness Platform enables organizations to deliver high-quality applications at an accelerated pace. With its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities, the platform empowers teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
