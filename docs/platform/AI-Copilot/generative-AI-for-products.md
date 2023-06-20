@@ -4,7 +4,7 @@ description: Learn about how AIDA improves your experience on the Harness platfo
 sidebar_position: 2
 ---
 
-The Harness platform leverages Harness AI Developer Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps practices, the Harness platform streamlines and accelerates the software development lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently.
+The Harness platform leverages Harness AI Developer Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software development lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empowers teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
 
 
 
@@ -15,5 +15,3 @@ Following are some key benefits of Harness AIDA:
 - Asset governance: The asset governance feature assists you in drafting rules that are based on your requirements and aligned with your governance goals. Harness AIDA governance support also offers detailed descriptions of built-in rules. When you are creating policies, this feature facilitates informed decision-making by clarifying the purpose, scope, and implications of each rule.
   
 - Security: Harness AI identifies security vulnerabilities, describes them, and suggests remediation.
-
-The Harness Platform, powered by AI, offers a comprehensive set of tools and features that transform software delivery processes. By automating and optimizing various aspects of the development lifecycle, the Harness Platform enables organizations to deliver high-quality applications at an accelerated pace. With its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities, the platform empowers teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
