@@ -6,9 +6,13 @@ sidebar_position: 4
 
 Harness is the industry’s first software delivery platform to use AI to simplify your DevOps processes—CI, CD, GitOps, Feature Flags, Cloud Costs, Chaos Engineering and much more. 
 
-Harness Chaos Engineering (CE) is built on Litmus core, and offers a free plan in the hosted (SaaS) version of CE for Litmus core community members. Once logged in, you can use Harness CE SaaS to execute your chaos scenarios in the cloud. Harness manages all your chaos control plane components, while the chaos execution plane components exist on your Kubernetes cluster as chaos infrastructure.
+[Harness](https://harness.io) offers a free hosted LitmusChaos for those who are trying to get started with LitmusChaos, and also for those who are getting started with Chaos Engineering (CE) in general. The Harness CE free plan is a free-forever plan that has features equivalent to LitmusChaos, and also bundles Harness platform features such as  RBAC and hosted logging—all for free.
 
-To get started with Harness CE SaaS, visit [Harness](https://app.harness.io/) and a free forever plan is created for you. 
+Sign up at [app.harness.io](https://app.harness.io) to get started with a free plan for either the hosted Harness CE or the hosted LitmusChaos. 
+
+:::info important
+The Harness CE free plan replaces [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). New signups are not being accepted at [cloud.chaosnative.com](https://cloud.chaosnative.com/signin). Users on that platform are advised to move to the Harness CE free plan before August 31, 2023. For free support on migration, contact [Harness](https://harness.io) Support.
+:::
 
 ## New users 
 
@@ -16,7 +20,7 @@ To get started, head to [Build resiient applications with Chaos Engineering](/do
 
 ## Existing users
 
-If you're an existing user in https://cloud.chaosnative.com, you'll need to migrate your chaos infrastructure by August 31, 2023. To do so, follow these steps:
+If you're an existing user in [cloud.chaosnative.com](https://cloud.chaosnative.com/signin), you'll need to migrate your chaos infrastructure by August 31, 2023. To do so, follow these steps:
 
 1. [Disconnect](https://docs.litmuschaos.io/docs/user-guides/uninstall-litmus) your Litmus chaos infrastructure.
 
