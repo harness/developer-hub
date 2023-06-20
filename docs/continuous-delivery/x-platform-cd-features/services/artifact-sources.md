@@ -2219,7 +2219,41 @@ To add an artifact from an S3 bucket, do the following:
 
 #### Permissions
 
-TBD 
+You need a dedicated S3 bucket for your artifacts and an AWS connector with read/write access to this bucket.
+
+<details><summary>Sample S3 Cache Bucket Policy</summary>
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowS3BucketAccess",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::your-s3-bucket/*",
+                "arn:aws:s3:::your-s3-bucket"
+            ]
+        },
+        {
+            "Sid": "AllowDescribeRegions",
+            "Effect": "Allow",
+            "Action": "ec2:DescribeRegions",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+</details>
+
+For more information on configuring an S3 connector and S3 bucket policies, go to [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector) and the [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
 
 
 
