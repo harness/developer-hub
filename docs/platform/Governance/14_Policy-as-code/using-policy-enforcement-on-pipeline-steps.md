@@ -96,7 +96,7 @@ The first step of using policies with your steps is navigating to policies and c
 
 The policy will be coupled with how the step is designed and configured. If the step is more free-form like a shell script step, it's essential that you properly map and capture the outputs of variables you wish to reference in your policy step for validation.
 
-More out-of-the-box steps like the rolling deployment step, have a pre-defined output variable path and make it eaiser for the policy to be re-used across multiple steps.
+More out-of-the-box steps like the rolling deployment step, have a pre-defined output variable path and make it easier for the policy to be re-used across multiple steps.
 
 For this example, we will be modeling the policy around this shell script step
 
