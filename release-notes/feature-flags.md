@@ -158,6 +158,8 @@ The **Python** server SDK has been updated to version **1.1.15** with the follow
 
 ##### What's new
 
+###### Feature Flags SDKs
+
 The **React** client SDK has been updated to version **1.4.0** with the following enhancements. (FFM-6920)
 
 * Added a new [useFeatureFlagsLoading](https://github.com/harness/ff-react-client-sdk#usefeatureflagsloading) hook to allow apps to react to changing of loading state.
