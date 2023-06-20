@@ -15,7 +15,7 @@ The Harness CE free plan replaces [cloud.chaosnative.com](https://cloud.chaosnat
 :::
 
 
-## Migration for existing LitmusChaos users
+## Migration for existing LitmusCloud users
 
 If you're an existing user in [cloud.chaosnative.com](https://cloud.chaosnative.com/signin), you'll need to migrate your chaos infrastructure by August 31, 2023. To do so, follow these steps:
 
