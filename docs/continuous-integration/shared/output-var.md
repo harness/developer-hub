@@ -108,7 +108,7 @@ In the following YAML example, a step called `alpha` exports an output variable 
                   spec:
                     shell: Sh
                     command: |-
-                      echo $MYVAR
+                      echo $myVar
 ```
 
 The following YAML example has two stages. In the first stage, a step called `alpha` exports an output variable called `myVar`, and then, in the second stage, a step called `beta` references that output variable.
@@ -187,7 +187,7 @@ In the following YAML example, step `alpha` and `zeta` both export output variab
                   identifier: alpha
                   spec:
                     shell: Sh
-                    command: export myVar=varValue
+                    command: export myVar=varValue1
                     outputVariables:
                       - name: myVar
               - step:
@@ -196,7 +196,7 @@ In the following YAML example, step `alpha` and `zeta` both export output variab
                   identifier: zeta
                   spec:
                     shell: Sh
-                    command: export myVar=varValue
+                    command: export myVar=varValue2
                     outputVariables:
                       - name: myVar
               - step:
@@ -206,7 +206,7 @@ In the following YAML example, step `alpha` and `zeta` both export output variab
                   spec:
                     shell: Sh
                     command: |-
-                      echo $MYVAR
+                      echo $myVar
 ```
 
 The following YAML example is the same as the previous example except that step `beta` uses an expression to call the value of `myVar` from step `alpha`.
@@ -218,7 +218,7 @@ The following YAML example is the same as the previous example except that step 
                   identifier: alpha
                   spec:
                     shell: Sh
-                    command: export myVar=varValue
+                    command: export myVar=varValue1
                     outputVariables:
                       - name: myVar
               - step:
@@ -227,7 +227,7 @@ The following YAML example is the same as the previous example except that step 
                   identifier: zeta
                   spec:
                     shell: Sh
-                    command: export myVar=varValue
+                    command: export myVar=varValue2
                     outputVariables:
                       - name: myVar
               - step:
