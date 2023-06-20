@@ -1,0 +1,11 @@
+{
+   "label":"SEI scripting framework",
+   "position": 60,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"SEI scripting framework"
+   }
+}

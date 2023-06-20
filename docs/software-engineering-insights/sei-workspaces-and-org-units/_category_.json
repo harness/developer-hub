@@ -1,0 +1,11 @@
+{
+   "label":"Workspaces and Org Units",
+   "position": 20,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"SEI Workspaces and Org Units"
+   }
+}

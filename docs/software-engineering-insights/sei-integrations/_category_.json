@@ -1,11 +1,11 @@
 {
-   "label":"Metrics and insights",
-   "position": 30,
+   "label":"SEI integrations",
+   "position": 50,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Metrics and insights"
+      "title":"SEI integrations"
    }
 }
