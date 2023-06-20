@@ -5,11 +5,15 @@ tags: [NextGen, "software engineering insights"]
 date: 2023-06-19T10:00:10
 sidebar_position: 10
 ---
+
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
+
 Review the notes below for details about recent changes to Harness Software Engineering Insights.
+
+For information about data privacy and security, go to the [Harness Trust Center](https://trust.harness.io/).
 
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
