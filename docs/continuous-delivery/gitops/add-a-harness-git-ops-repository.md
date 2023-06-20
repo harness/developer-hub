@@ -133,13 +133,14 @@ If you use a [GitOps Repository Credentials Template](add-harness-git-ops-reposi
 1. Click **Helm**.
 2. In **Repository Name**, enter a name.
 3. In **GitOps Agent**, select or create the Agent you want to use to fetch charts from this repo. See [Install a Harness GitOps Agent](install-a-harness-git-ops-agent.md).
-4. In **Repository URL**, enter the URL to your OCI Helm Repository. For example, ``.
-5. Click **Continue**.
-6. In **Credentials**, select one of the following:
+4. In **Repository URL**, enter the URL to your OCI Helm Repository. For example, `registry-1.docker.io/docker`.
+5. Clieck on **Enable OCI**
+6. Click **Continue**.
+7. In **Credentials**, select one of the following:
     * Specify Credentials for Repository
         - In **Credentials**, in **Connection Type**, select **HTTPS**.
             - You can choose **HTTPS** the **Anonymous** option for public repo.
-            - For private choose authentication with username and password. This authentication is supported for docker and github. AWS and Google have shortlived tokens and this may not work as expected.
+            - For private choose authentication with username and password. This authentication is supported for docker and github. AWS and Google have shortlived tokens and this may not work as expected. You can check [here](./helm-oci-repository-aws-ecr.md) how to configure access to AWS ECR.
         - Click **Save & Continue**. Harness validates the connection.
     * Credentials Template is not supported for OCI Helm repository.
 

@@ -25,7 +25,7 @@ A Harness GitOps Repository is used for Harness GitOps only. For other Harness f
 
 ## Limitations
 
-* Currently, only Git platforms and HTTP Helm servers are supported in a GitOps Repository. Not supported for OCI Helm repositories.
+* Currently, only Git platforms and HTTP Helm servers are supported in a GitOps Repository.
 
 ## Review: GitOps Repository
 
