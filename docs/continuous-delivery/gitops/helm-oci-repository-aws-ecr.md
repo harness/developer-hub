@@ -1,5 +1,5 @@
 ---
-title: Setup access to OCI Helm repository in private AWS ECR.
+title: Setup access to OCI Helm repository in private AWS ECR
 description: This topic describes how can we rotate token for accessing AWS ECR where we can store OCI Helm repository.
 sidebar_position: 8
 helpdocs_topic_id: lf6a27usso
