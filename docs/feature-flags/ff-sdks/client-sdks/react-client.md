@@ -27,7 +27,7 @@ For getting started quickly, you can use our [sample code from the SDK README](h
 
 ## Version
 
-The current version of this SDK is **1.1.0.**
+The current version of this SDK is **1.4.0.**
 
 ## Prerequisites
 

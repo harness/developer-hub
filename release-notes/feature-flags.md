@@ -154,6 +154,31 @@ The **Python** server SDK has been updated to version **1.1.15** with the follow
 
 * There was an issue where toggling between the Targets and Target Groups pages caused the new page to re-render. This issue has been fixed. (FFM-7965)
 
+#### June 8, 2023
+
+##### What's new
+
+The **React** client SDK has been updated to version **1.4.0** with the following enhancements. (FFM-6920)
+
+* Added a new [useFeatureFlagsLoading](https://github.com/harness/ff-react-client-sdk#usefeatureflagsloading) hook to allow apps to react to changing of loading state.
+
+* Added a new [TestWrapper](https://github.com/harness/ff-react-client-sdk#testing-with-jest) testing component to allow easy mocking of the network portion of the SDK for use in [Jest](https://github.com/harness/ff-react-client-sdk#testing-with-jest) unit tests.
+
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **React** client SDK has been updated to version **1.4.0** with the following updates. (FFM-6920)
+
+* Updated the included JavaScript SDK from version 1.10.0 to version 1.13.0.
+
+* Refactored all hooks and Higher Order Components (HOCs) to ensure proper triggering of metrics.
+
 #### June 7, 2023
 
 ##### What's new
