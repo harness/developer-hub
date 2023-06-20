@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic provides settings and permissions for the Kubernetes Cluster Connector.
 
-The Kubernetes Cluster Connector is a platform-agnostic connection to a Kubernetes cluster located anywhere.
+The Kubernetes cluster connector is a platform-agnostic connection to a Kubernetes cluster located anywhere.
 
 For cloud platform-specific connections, go to platform [Cloud Connectors](https://developer.harness.io/docs/category/cloud-platform-connectors/).
 
@@ -18,7 +18,7 @@ Looking for the How-to? Go to [Add a Kubernetes Cluster Connector](https://devel
 
 ## Video Summary
 
-Here's a 10min video that walks you through adding a Harness Kubernetes Cluster Connector and Harness Kubernetes Delegate. The delegate is added to the target cluster, and then the Kubernetes Cluster Connector uses the delegate to connect to the cluster:
+Here's a ten minute video that walks you through adding a Harness Kubernetes cluster connector and Harness Kubernetes delegate. The delegate is added to the target cluster, and then the Kubernetes cluster connector uses the delegate to connect to the cluster:
 
 <!-- Video:
 https://www.youtube.com/watch?v=wUC23lmqfnY-->
@@ -26,20 +26,20 @@ https://www.youtube.com/watch?v=wUC23lmqfnY-->
 
 ## Kubernetes Cluster Connector vs Platform Connectors
 
-The Kubernetes Cluster Connector is platform-agnostic. Use it to access a cluster on any platform.
+The Kubernetes cluster connector is platform-agnostic. You can use it to access a cluster on any platform.
 
-It cannot access platform-specific services and resources. For those, use a platform Connector like Google Cloud Platform (GCP) or Amazon Web Services.
+The Kubernetes cluster connector can't access platform-specific services and resources. For those, use a platform-specific connector, like the [GCP connector](../../../7_Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md) or the [AWS connector](../../../7_Connectors/Cloud-providers/add-aws-connector.md).
 
 For more information, go to [Add a Google Cloud Platform (GCP) Connector](../../../7_Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md) and [Add an AWS Connector](../../../7_Connectors/Cloud-providers/add-aws-connector.md).
 
-For example, let's say you have a GKE Kubernetes cluster hosted in GCP. You can use the Kubernetes Cluster Connector to connect Harness to the cluster in GCP. The Kubernetes Cluster Connector cannot also access Google Container Registry (GCR).
+For example, let's say you have a GKE Kubernetes cluster hosted in GCP. You can use the Kubernetes cluster connector to connect Harness to the cluster in GCP, but the Kubernetes cluster connector can't also access Google Container Registry (GCR).
 
 In this case, you have two options:
 
 1. Use a GCP Connector to access the GKE cluster and all other GCP resources you need.
 2. Set up a Kubernetes Cluster Connector for the GKE cluster. Next, set up a GCP Connector for all other GCP services and resources.
 
-When you set up a deployment in Harness, you will specify the Connector to use for the artifact and target cluster. If we use option 2 above, you will select a GCP Connector for the GCR container. Next, you will select Kubernetes Cluster Connector for the target cluster.
+When you set up a deployment in Harness, you will specify the connector to use for the artifact and target cluster. If you use option two, described above, you will select a GCP connector for the GCR container and a Kubernetes cluster connector for the target cluster.
 
 Which option you choose depends on how your teams use Harness.
 
@@ -47,7 +47,7 @@ Which option you choose depends on how your teams use Harness.
 
 The IAM roles and policies needed by the account used in the connector depend on what operations you are using with Harness and what operations you want Harness to perform in the cluster.
 
-You can use different methods for authenticating with the Kubernetes cluster, but all of them use a Kubernetes Role.
+You can use different methods for authenticating with the Kubernetes cluster, but all of them use a Kubernetes role.
 
 The Role used must have either the `cluster-admin` permission in the target cluster or admin permissions in the target namespace.
 
@@ -160,11 +160,11 @@ Go to [Tags Reference](../../../20_References/tags-reference.md).
 
 ### Manual or Use a Delegate
 
-**Recommended:** Install and run the Harness Kubernetes delegate in the target Kubernetes cluster, and then use the Kubernetes Cluster Connector to connect to that cluster using the Harness Kubernetes delegate you installed. This is the easiest method to connect to a Kubernetes cluster.You can select to enter the authentication details of the target cluster or use the role associated with a Harness Delegate.
+**Recommended:** Install and run the Harness Kubernetes delegate in the target Kubernetes cluster, and then use the Kubernetes cluster connector to connect to that cluster using the Harness Kubernetes delegate you installed. This is the easiest method to connect to a Kubernetes cluster. You can select to enter the authentication details of the target cluster or use the role associated with a Harness Delegate.
 
 When you select a delegate, the Harness Delegate inherits the Kubernetes service account associated with the delegate pod.
 
-The service account associated with the Delegate pod must have the Kubernetes `cluster-admin` role.
+The service account associated with the delegate pod must have the Kubernetes `cluster-admin` role.
 
 Go to [Install a Kubernetes Delegate](../../../2_Delegates/install-delegates/overview.md).
 
