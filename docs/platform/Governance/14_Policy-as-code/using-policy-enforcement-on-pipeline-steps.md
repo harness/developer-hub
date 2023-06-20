@@ -22,16 +22,16 @@ This topic explains steps to create policies using the Harness Policy As Code an
 * Make sure you have set up a project and a working pipeline in the Harness platform.
 * Policies use OPA authoring language Rego. For more information, go to:
 	+ Free online course on Rego from Styra founder and OPA co-creator Tim Hendricks: [OPA Policy Authoring](https://academy.styra.com/courses/opa-rego).
-	+ [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) from OPA.
+        + [Policy Language](https://www.openpolicyagent.org/docs/latest/policy-language/) from OPA.
         + [Rego Cheat Sheet](https://dboles-opa-docs.netlify.app/docs/v0.10.7/rego-cheatsheet/).
 
-## Video of using Policies with Harness Steps
+## Video of using policies with Harness steps
 
 <!-- Video:
 https://www.loom.com/share/5ca3d3a110694ab6b272ec604998395e-->
 <docvideo src="https://www.loom.com/share/5ca3d3a110694ab6b272ec604998395e" />
 
-## Sample Pipeline to follow tutorial
+## Sample pipeline
 
 Here is a sample YAML of a pipeline with steps:
 
