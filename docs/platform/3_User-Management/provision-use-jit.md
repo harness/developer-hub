@@ -1,7 +1,7 @@
 ---
 title: Provision users JIT
 description: Just-in-time user provisioning.
-sidebar_position: 2
+sidebar_position: 7
 ---
 
 :::important
