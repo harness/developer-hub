@@ -24,7 +24,7 @@ If you are new to Harness GitOps, familiarize yourself with the following topics
 
 ## Supported platforms
 
-* Currently, only Git platforms and HTTP Helm servers are supported in a GitOps Repository.
+* Currently, only Git platforms and HTTP Helm servers are supported in a GitOps Repository. Also OCI Helm repository is supported. 
 
 ## Add a Git repository
 
@@ -129,7 +129,22 @@ If you use a [GitOps Repository Credentials Template](add-harness-git-ops-reposi
 
         Harness will auto-detect the Repository Credentials Template (if any) based on the GitOps Repository **URL** and auto-populate it. If Harness auto-populated the GitOps Repository, then you cannot edit the Repository Credentials Template setting.
 
+## Option: OCI Helm Repository
+1. Click **Helm**.
+2. In **Repository Name**, enter a name.
+3. In **GitOps Agent**, select or create the Agent you want to use to fetch charts from this repo. See [Install a Harness GitOps Agent](install-a-harness-git-ops-agent.md).
+4. In **Repository URL**, enter the URL to your OCI Helm Repository. For example, ``.
+5. Click **Continue**.
+6. In **Credentials**, select one of the following:
+    * Specify Credentials for Repository
+        - In **Credentials**, in **Connection Type**, select **HTTPS**.
+            - You can choose **HTTPS** the **Anonymous** option for public repo.
+            - For private choose authentication with username and password. This authentication is supported for docker and github. AWS and Google have shortlived tokens and this may not work as expected.
+        - Click **Save & Continue**. Harness validates the connection.
+    * Credentials Template is not supported for OCI Helm repository.
+
 ## Option: Skip Server Verification
+
 
 Select this option to have the GitOps Agent skip verification of the URL and credentials.
 

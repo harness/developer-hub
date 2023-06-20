@@ -311,7 +311,7 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
 12. In **Revision Type**, select **Branch**.
 13. In **Revision**, select **master**.
 14. Wait a moment for **Path** to populate. Harness will pull the paths from the repo.
-15. In **Path**, select **helm-guestbook**. This is the location of this app in the repo: `https://github.com/argoproj/argocd-example-apps/tree/master/helm-guestbook`.
+15. In **Path**, select **helm-guestbook**. This is the location of this app in the repo: `https://github.com/argoproj/argocd-example-apps/tree/master/helm-guestbook`. For Git and Helm repos prepopulated path or chart dropbox will be shown as well as branch or tag for Git and version for Helm chart and , for OCI Helm repository chart.
 16. In **Helm**, in **Values Files**, select **values.yaml**.
 17. Scroll down to see **Parameters**.
   All of the parameters from values.yaml are displayed and can be edited. This lets you modify values.yaml parameters in your Harness GitOps Application.
