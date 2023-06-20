@@ -1,7 +1,7 @@
 ---
-title: Enabling TLS
+title: Enable TLS
 description: This topic contains information on how to enable TLS in the Proxy
-sidebar_position: 120
+sidebar_position: 35
 ---
 
 There are two ways to configure the Relay Proxy to accept HTTPS requests:
