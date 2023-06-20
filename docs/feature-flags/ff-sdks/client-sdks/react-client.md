@@ -9,6 +9,10 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+<Smpno />
+
 
 This topic describes how to use the Harness Feature Flags SDK for your React Client application. 
 
@@ -23,7 +27,7 @@ For getting started quickly, you can use our [sample code from the SDK README](h
 
 ## Version
 
-The current version of this SDK is **1.1.0.**
+The current version of this SDK is **1.4.0.**
 
 ## Prerequisites
 

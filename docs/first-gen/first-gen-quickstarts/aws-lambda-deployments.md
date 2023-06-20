@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart.md).This quickstart shows you how to deploy a Node.js function to your AWS Lambda service using a Basic Deployment strategy in Harness.
+This content is for Harness [FirstGen](../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](../../continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart.mdws you how to deploy a Node.js function to your AWS Lambda service using a Basic Deployment strategy in Harness.
 
 ### Objectives
 

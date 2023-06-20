@@ -1,7 +1,7 @@
 ---
 title: Map Argo projects to Harness GitOps projects
 description: This topic describes how to manage multiple Argo CD projects within one Harness Project.
-sidebar_position: 6
+sidebar_position: 7
 helpdocs_topic_id: gzw782fcqz
 helpdocs_category_id: 013h04sxex
 helpdocs_is_private: false

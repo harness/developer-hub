@@ -12,6 +12,15 @@ import TabItem from '@theme/TabItem';
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 ```
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
+
 You can build and test a [Python](https://www.python.org/) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
@@ -24,9 +33,7 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 ## Install dependencies
 
-Use **Run** steps to install dependencies in the build environment.
-
-[Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) can be used to run dependent services that are needed by steps in the same stage.
+Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
 
 ```mdx-code-block
 <Tabs>
@@ -49,7 +56,6 @@ Use **Run** steps to install dependencies in the build environment.
 
 ```mdx-code-block
 </TabItem>
-
 <TabItem value="Self-hosted">
 ```
 
@@ -71,6 +77,12 @@ Use **Run** steps to install dependencies in the build environment.
 </Tabs>
 ```
 
+:::tip
+
+[Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) can be used to run dependent services that are needed by steps in the same stage.
+
+:::
+
 ## Cache dependencies
 
 Add caching to your stage.
@@ -80,7 +92,7 @@ Add caching to your stage.
 <TabItem value="Harness Cloud">
 ```
 
-Cache your Python module dependencies with [**Cache Intelligence**](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
+Cache your Python module dependencies with [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
 Add caching to your `stage.spec`.
 
@@ -98,7 +110,6 @@ Add caching to your `stage.spec`.
 
 ```mdx-code-block
 </TabItem>
-
 <TabItem value="Self-hosted">
 ```
 
@@ -162,9 +173,8 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                       - "/root/.cache"
                     archiveFormat: Tar
 ```
- 
-</details>
 
+</details>
 
 ```mdx-code-block
 </TabItem>
@@ -196,7 +206,6 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
 
 ```mdx-code-block
 </TabItem>
-
 <TabItem value="Self-hosted">
 ```
 
@@ -240,7 +249,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 <TabItem value="Harness Cloud">
 ```
 
-Python is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+Python is pre-installed on Harness Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
 If your application requires a specific Python version, add a **Run** step to install it.
 
@@ -359,18 +368,16 @@ Specify the desired [Python Docker image](https://hub.docker.com/_/python) tag i
 
 ## Full pipeline examples
 
-Full pipeline examples based on the steps above.
+The following full pipeline examples are based on the partial examples above.
 
 ```mdx-code-block
 <Tabs>
 <TabItem value="Harness Cloud">
 ```
 
-This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
+This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) and [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
 
-If you copy this example, replace the bracketed values with corresponding values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and repository name.
-
-Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
+If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
 <summary>Pipeline with default Python version</summary>
@@ -434,8 +441,8 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: [your-code-repo-connector-ID] # replace with your connector ID
-        repoName: [your-repository-name] # replace with your repository name
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_REPO_NAME
         build: <+input>
 ```
 
@@ -517,8 +524,8 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: [your-code-repo-connector-ID] # replace with your connector ID
-        repoName: [your-repository-name] # replace with your repository name
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_REPO_NAME
         build: <+input>
 ```
 
@@ -526,13 +533,10 @@ pipeline:
 
 ```mdx-code-block
 </TabItem>
-
 <TabItem value="Self-hosted">
 ```
 
-Replace the bracketed values with corresponding values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector), kubernetes namespace, and repository name.
-
-Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
+If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector), kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
 <summary>Pipeline with one specific Python version</summary>
@@ -572,8 +576,8 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: [your-kube-connector-ID] # replace with your connector ID
-              namespace: [your-kube-namespace] # replace with your namespace
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_KUBERNETES_NAMESPACE
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
@@ -581,8 +585,8 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: [your-code-repo-connector-ID] # replace with your connector ID
-        repoName: [your-repository-name] # replace with your repository name
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_REPO_NAME
         build: <+input>
 ```
 
@@ -633,8 +637,8 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: [your-kube-connector-ID] # replace with your connector ID
-              namespace: [your-kube-namespace] # replace with your namespace
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_KUBERNETES_NAMESPACE
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
@@ -642,8 +646,8 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: [your-code-repo-connector-ID] # replace with your connector ID
-        repoName: [your-repository-name] # replace with your repository name
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_REPO_NAME
         build: <+input>
 ```
 

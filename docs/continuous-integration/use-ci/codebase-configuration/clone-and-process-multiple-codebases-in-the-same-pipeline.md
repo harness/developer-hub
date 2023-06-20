@@ -55,17 +55,13 @@ Select a connector for the source control provider hosting the code repo that yo
 
 The following topics provide more information about creating code repo connectors:
 
-* AWS CodeCommit: [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo#add-aws-codecommit-repo)
 * Azure Repos: [Connect to Azure Repos](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo)
-* Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-* GitHub:
-  * [Add a GitHub connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector)
-  * [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-  * [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support)
+* Bitbucket: [Bitbucket connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+* GitHub: [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
 * GitLab: [GitLab Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 * Other Git providers:
-  * [Connect to a Git repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo)
   * [Git connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
+  * [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo)
 
 ### Repository Name
 
@@ -233,7 +229,7 @@ As an alternative to the **Git Clone** step, you can use scripts in **Run** step
 
 You might want to define [stage variables](../set-up-build-infrastructure/ci-stage-settings.md#advanced-stage-variables) for the names and URLs of the codebases that you clone into the workspace. These variables are accessible across all steps in the stage.
 
-Depending on the image you use for the **Run** step, you might need to install Git before you clone any repos. For example, you could use this code in a **Run** step to install git, verify that it's working, and clone the repo with the Dockerfile needed to build an image. This example uses stage variables for the GitHub usenrame and Docker repo.
+Depending on the image you use for the **Run** step, you might need to install Git before you clone any repos. For example, you could use this code in a **Run** step to install git, verify that it's working, and clone the repo with the Dockerfile needed to build an image. This example uses stage variables for the GitHub username and Docker repo.
 
 ```
 apk add git  

@@ -78,7 +78,7 @@ The stage's build infrastructure determines whether these fields are required or
 
 Use these fields to define the commands that you need to run in the Background step.
 
-For **Shell**, select the shell script type for the arguments and commands defined in **Entry Point** and **Command**. Options include: **Bash**, **Powershell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
+For **Shell**, select the shell script type for the arguments and commands defined in **Entry Point** and **Command**. Options include: **Bash**, **PowerShell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
 
 For **Entry Point** supply a list of arguments in `exec` format. **Entry Point** arguments override the image `ENTRYPOINT` and any commands in the **Command** field. Enter each argument separately.
 
@@ -144,9 +144,9 @@ This Bash script example checks the Java version.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="powershell" label="Powershell">
+  <TabItem value="powershell" label="PowerShell">
 ```
-This is a simple Powershell `Wait-Event` example.
+This is a simple PowerShell `Wait-Event` example.
 
 ```yaml
               - step:
@@ -158,7 +158,7 @@ This is a simple Powershell `Wait-Event` example.
 
 :::tip
 
-You can run Powershell commands on Windows VMs running in AWS build farms.
+You can run PowerShell commands on Windows VMs running in AWS build farms.
 
 :::
 
@@ -168,7 +168,7 @@ You can run Powershell commands on Windows VMs running in AWS build farms.
   <TabItem value="pwsh" label="Pwsh">
 ```
 
-This Powershell Core example runs `ForEach-Object` over a list of events.
+This PowerShell Core example runs `ForEach-Object` over a list of events.
 
 ```yaml
               - step:
@@ -182,7 +182,7 @@ This Powershell Core example runs `ForEach-Object` over a list of events.
 
 :::tip
 
-You can run Powershell Core commands in pods or containers that have `pwsh` installed.
+You can run PowerShell Core commands in pods or containers that have `pwsh` installed.
 
 :::
 

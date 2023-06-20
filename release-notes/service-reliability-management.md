@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-06-01T10:00:20
+date: 2023-06-20T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -15,14 +15,14 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 01, 2023, version 79413
+## Latest - June 19, 2023, version 79600
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-- Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
+This release does not include any new features.
 
 
 ```mdx-code-block
@@ -32,18 +32,36 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 This release does not include any early access features.
 
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
 
-- The ErrorBudgetReset API incorrectly accepting Rolling type SLOs along with Calendar type SLOs. (SRM-14692)  
+- SLOs were getting stuck in the recalculation state even after the recalculation process was complete. (SRM-14849)  
+  
+  This issue has been resolved. Now, the SLOs transition to the appropriate state once the recalculation has finished successfully.
 
-  This issue has been resolved. Now, the ErrorBudgetReset API only accepts Calendar type SLOs.
+- When configuring a Deploy stage and selecting a value in the **Propagate from** field to propagate a service from the previous parallel stage, an error would occur when attempting to create a monitored service. (SRM-12454)  
+  
+  This issue has been resolved. You can now successfully create a monitored service even when selecting a value in the **Propagate from** field to propagate a service from the previous parallel stage.
 
-- Unable to create SLO using SignalFX metrics. (OIP-406)  
+- The Monitored Service Listing page was not displaying the latest updated monitored service first. (SRM-14845)  
+  
+  This issue has been resolved. Now, the monitored service list is sorted in the following order:
 
-  This issue has been resolved. Now, SignalFX's health source supports SLI functionality, and you can create SLOs using SignalFX metrics.
+  - A monitored service with the most recent update will be displayed at the top of the list.
+
+  - If a monitored service has been updated with new analysis data, it is given higher priority and displayed before other services on the list.
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Hotfix version 79608">
+
+  #### Released June 20, 2023
+
+  - Optimized Prometheus API calls by grouping per-host calls into a single call using the 'by' clause. As a result, the number of API calls to the Prometheus server during verification is reduced, leading to improved overall performance and efficiency in data retrieval and processing. (OIP-552)
 
 ```mdx-code-block
   </TabItem>
@@ -54,6 +72,50 @@ This release does not include any early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+
+#### June 09, 2023, version 79517
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- Unable to select multiple environments when creating a monitored service for infrastructure. (SRM-14794)  
+  
+  This issue has been resolved. You can now select multiple environments when creating a monitored service for infrastructure.
+
+
+#### June 05, 2023, Hotfix version 79416
+
+This release does not include any customer-facing changes.
+
+
+#### June 01, 2023, version 79413
+
+##### What's new
+
+- Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- The ErrorBudgetReset API is incorrectly accepting Rolling type SLOs along with Calendar type SLOs. (SRM-14692)  
+
+  This issue has been resolved. Now, the ErrorBudgetReset API only accepts Calendar type SLOs.
+
+- Unable to create SLO using SignalFX metrics. (OIP-406)  
+
+  This issue has been resolved. Now, SignalFX's health source supports SLI functionality, and you can create SLOs using SignalFX metrics.
+
 
 #### May 23, 2023, version 79307
 
@@ -148,6 +210,11 @@ This release does not include any early access features.
 - For CloudWatch CV connector, IRSA was not supported for connectivity. (SRM-13907)
 
   Support for IRSA connectivity was added.
+
+- Unable to create notifications while configuring composite SLO at account level. (14474)
+  
+  This issue has been resolved. Now, you can create notifications for composite SLOs at the account level. 
+
 
 #### April 10, 2023, version 79015
 

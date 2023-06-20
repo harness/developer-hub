@@ -1,7 +1,7 @@
 ---
 title: Format test reports
 description: Test reports must be in JUnit XML format to appear on the Tests tab.
-sidebar_position: 40
+sidebar_position: 50
 ---
 
 ```mdx-code-block
@@ -10,6 +10,8 @@ import TabItem from '@theme/TabItem';
 ```
 
 Results on the [Tests tab](./viewing-tests.md) are parsed from test reports specified in the **Report Paths** setting in **Run** and **Run Tests** steps. Test reports must be in [JUnit XML format](https://llg.cubic.org/docs/junit/) to appear on the **Tests** tab, because Harness parses test reports that are in JUnit XML format only.
+
+For information about code coverage reports and viewing reports on the **Artifacts** tab, go to [Code Coverage](./code-coverage.md).
 
 ## JUnit XML format resources
 
@@ -365,8 +367,8 @@ Add the [Minitest Junit Formatter](https://github.com/aespinosa/minitest-junit) 
 ```yaml
   - step:
       type: Run
-      name: Run RSpec Tests
-      identifier: run_rspec_tests
+      name: Run Ruby Tests
+      identifier: run_ruby_tests
       spec:
         shell: Sh
         command: |

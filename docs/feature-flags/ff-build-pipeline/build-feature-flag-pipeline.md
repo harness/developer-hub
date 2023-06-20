@@ -15,13 +15,13 @@ helpdocs_is_published: true
 import ff_pipeline from './static/1-build-feature-flag-pipeline-07.png'
 ```
 
-A Feature Flag pipeline enables you to combine a Feature Flag with other actions such as adding Jira issues, creating notifications, adding approvals, etc. You can:
+A Feature Flag (FF) pipeline enables you to combine a flag with other actions such as adding Jira issues, creating notifications, adding approvals, etc. You can:
 
 * Use Jira issues to approve or reject a pipeline or stage at any point in its execution
-* Create notification rules to send notifications about the events on your Feature Flag pipeline
+* Create notification rules to send notifications about the events on your FF pipeline
 * Schedule pipeline executions using Cron-based Triggers, etc.
 
-This topic explains how to build a Feature Flag pipeline. Watch this video for an introduction:
+This topic explains how to build an FF pipeline. Watch this video for an introduction:
 
 <!-- Video:
 https://www.loom.com/share/f9bfceb163454af89c7baf50c66ae916-->
@@ -35,7 +35,7 @@ You should be familiar with the [Harness' Key Concepts](/docs/getting-started/le
 
 This topic assumes you have already set up a [project](/docs/feature-flags/ff-creating-flag/create-a-project#create-a-project).
 
-To create a pipeline for Feature Flags:
+To create an FF pipeline:
 
 1. In Harness, select **Feature Flags**, and then select an existing project or [create a new one](/docs/feature-flags/ff-creating-flag/create-a-project#create-a-project).
 2. Navigate to **Pipelines > Create a Pipeline**.
@@ -47,7 +47,7 @@ Now you're ready to add a stage.
 
 ## Add a stage
 
-A Feature Flag pipeline is organized into stages. Each stage contains the logic to perform one major segment of the pipeline process. You must have a minimum of one stage to run the pipeline.
+An FF pipeline is organized into stages. Each stage contains the logic to perform one major segment of the pipeline process. You must have a minimum of one stage to run the pipeline.
 
 1. Click **Add Stage**, and then select one of the available stage types. 
 
@@ -115,7 +115,7 @@ To add details to a Flag Configuration step:
 	| **Default Rules**   | Select the default rule for when the flag is ON and OFF. For example, if the flag is ON, serve the variation `True`. |
 	| **Serve Variation to Individual Target** | Select the target and the flag variation to serve to that target. |
 	| **Serve Variation to Target Group** | Select the target group and the flag variation to serve to that group. |
-	| **Serve Percentage Rollout** | Select a target group, and then select a percentage of users in that group to serve a selected variation, and a percentage to serve another variation. For more information, go to [Target Users with Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags#target-specific-users-or-target-groups-when-a-flag-is-enabled). |
+	| **Serve Percentage Rollout** | Select a target group, and then select a percentage of users in that group to serve a selected variation, and a percentage to serve another variation. For more information, go to [Target users with flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags#target-specific-users-or-target-groups-when-a-flag-is-enabled). |
 
   
 	For information on managing variations, go to [**Change the variations of your flags**](/docs/feature-flags/ff-creating-flag/manage-variations).
@@ -139,7 +139,7 @@ Click each stage's steps to see the logs in real-time. Click **Console View** 
 
 ## Pipeline notification strategy
 
-You can create notification rules to send notifications about the events on your Feature Flag pipeline that are important to you. You can notify your User Group members using Slack, Microsoft Teams, Email, or PagerDuty as one of the notification channels. Event notifications are set up using **Notification Rules.**
+You can create notification rules to send notifications about the events on your FF pipeline that are important to you. You can notify your User Group members using Slack, Microsoft Teams, Email, or PagerDuty as one of the notification channels. Event notifications are set up using **Notification Rules.**
 
 ### Slack notification
 
@@ -151,13 +151,13 @@ For more information, go to [Send Notifications using Slack](/docs/platform/Noti
 
 For email notifications, simply type in the email addresses that you want to notify.
 
-For more information, go to [Email notifications](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events#email-notifications).
+For more information, go to [Email notifications](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events#email-notifications).
 
 ### PagerDuty notification
 
 For PagerDuty notifications, enter the key for a PagerDuty Account/Service to which Harness can send notifications.
 
-For more information, go to [Send Notifications using PagerDuty](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events#pagerduty-notifications).
+For more information, go to [Send Notifications using PagerDuty](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events#pagerduty-notifications).
 
 ### Microsoft Teams notification
 
@@ -178,11 +178,18 @@ The entire pipeline is available as YAML, also.
 
 ## Schedule pipelines using triggers
 
-You can trigger Feature Flag pipeline on a time schedule. You can select how often to execute the trigger by minute, hour, days, etc.
+You can trigger an FF pipeline on a time schedule. You can select how often to execute the trigger by minute, hour, days, etc.
 
 All the cron jobs are executed in Universal Time Coordinated (UTC). Cron triggers allow you to create pipelines that start on a specific time schedule.
 
 For more information, go to [Schedule pipeline using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers).
+
+
+## Add chaos experiments to your FF pipeline
+
+You can use Harness Chaos Engineering (CE) to run chaos experiments, which are intentionally designed to disrupt systems to test their resilience and vulnerability to faults. Adding chaos steps that run CE experiments as part of your FF pipeline is a useful way to test the resilience of new software behind a feature flag before releasing that software to users.
+
+For more information, go to [Use CE with Feature Flags](/docs/chaos-engineering/integrations/chaos-ff).
 
 ## More information
 

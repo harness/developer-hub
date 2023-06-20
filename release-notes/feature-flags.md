@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-06-02T10:00:25
+date: 2023-06-14T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -17,13 +17,16 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - June 1, 2023
+## Latest - June 19, 2023
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-This release does not include new features.
+
+#### Feature Flags UI
+
+* In the onboarding flow, we added a new button and text box for a new project when there are no environments created. (FFM-7393)
 
 ```mdx-code-block
   </TabItem>
@@ -39,16 +42,43 @@ This release does not include early access features.
 
 #### Feature Flags UI
 
-* Previously, display of the FF module depended on an internal Harness feature flag. Now, display of the FF module is instead based on having an active license (including 'free'). (FFM-7866)
+* The view in the modal screen for setting up GitEx was not wide enough to show appropriate errors. This issue has been fixed. (FFM-7311)
 
-* Previously when a new user was onboarding in the Feature Flags page, when they selected **Get Started**, they saw a dropdown of flags, even though they hadn't created any flags yet. Now, when users do not have any existing flags, they see a text box that prompts them to create one.
+* The Create a new flag button did not behave as expected on the onboarding screen if there were existing flags. This issue has been fixed. (FFM-8019)
 
 #### Feature Flags SDKs
 
-* The **iOS** client SDK has been updated to version **1.0.4** with the following updates.
+* The **Java** server SDK has been updated to version **1.2.3** with the following updates.
 
-  * Fixed the stream connection to have a read timeout of 60 seconds. This enables stale connections to be detected and closed, and retries to be started for polling/SSE connections. (FFM-8051)
-  * Fixed a nil pointer dereference bug that caused the SDK to crash under certain conditions. (FFM-8034)
+  * There were reports of customers having difficulty running the SDK because of a missing dependency, `oksse`. Unless users have the JitPack repo in their POM/Gradle file, they are likely to have this problem at compile time. With this fix, we've removed the `oksse` dependency and now use `okhttp-sse` instead. (FFM-5915)
+
+  * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
+
+  * Updated the `maven-model` dependency to version 3.5.0 to remove the CVE-2022-4245 vulnerability. (FFM-8133)
+
+  * Updated to the latest version of Guava, 32.0.1-jre, to remove security issues. (FFM-8233)
+
+* The **Android** client SDK has been updated to version **1.1.0** with the following updates.
+
+  * Added a new API to allow SDK users to provide a trusted TLS CA certificate for connecting to Feature Flag services with private root CAs. (FFM-7008)
+
+  * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
+
+  * Fixed broken links in the first time setup documentation. (FFM-7867)
+
+* The **.NET** server sdk has been updated to version **1.1.8** with the following updates.
+
+  * Added additional headers to SDK HTTP requests for better analytics. (FFM-7477)
+
+  * Reworked metrics caching to use a map instead of a queue. This improves memory usage and performance. (FFM-7475)
+
+  * We now send the SDK version information with the metrics payload for better analytics and tracking. (FFM-6904)
+
+  * Added logging when a default evaluation is served. (FFM-7473)
+
+  * Standardized and improved Logging across the SDK. (FFM-7472)
+
+  * Fixed error handling when a null target is passed in. (FFM-8128)
 
 ```mdx-code-block
   </TabItem>
@@ -59,6 +89,160 @@ This release does not include early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 14, 2023
+
+##### What's new
+
+###### Feature Flags SDKs
+
+Updated the ff-flutter-client-sdk version 2.0.0 to use null safety. (FFM-8222)
+
+Flutter 2.0 and Dart 2.12 and later are required. For more information, go to [Sound null safety](https://dart.dev/null-safety) in the Dart documentation.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+#### Feature Flags SDKs
+
+Updated the ff-erlang-server-sdk to version 1.1.0 to add an optional logging configuration option so that the logging level can be set for the SDK. (FFM-8217)
+
+If this option is not set, the SDK uses the default log level of `warning`. To see an example logging configuration, go to [the SDK readme](https://github.com/harness/ff-erlang-server-sdk/blob/main/README.md#set-logging-level).
+
+#### June 9, 2023
+
+##### What's new
+
+###### Feature Flags SDKs
+
+* To aid in debugging, we added a list of codes logged for each lifecycle of the SDK. (FFM-7363)
+
+  Some of the lifecycle events these codes cover are:
+
+  * Initialization
+  * Authentication
+  * Polling
+  * Streaming
+  * Evaluation
+  * Metrics
+  * Close
+
+For a full list of codes, go to [Troubleshooting](/docs/feature-flags/ff-sdks/server-sdks/python-sdk-reference/#troubleshooting).
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.1.15** with the following update.
+
+* Previously, the SDK crashed if `client.close()` was called at any point before a stream event was sent to the SDK. With this fix, the SDK closes all threads correctly. (FFM-7363)
+
+###### Feature Flags UI
+
+* In the user onboarding flow, the Create a New Flag button did not behave as expected. This issue has been fixed. (FFM-8019)
+
+* Previously, a user could select Feature Flags in Harness without having a license, and would then get a 404 error. Now, users only see the FF module if they have an active license (including a free license). (FFM-8002)
+
+* Previously, there was an edge case where an extremely large number of pages in a UI listing could cause performance degradation. This issue has been fixed, and page numbering is now disabled if the page count exceeds 1000 pages. (FFM-7993)
+
+* There was an issue where toggling between the Targets and Target Groups pages caused the new page to re-render. This issue has been fixed. (FFM-7965)
+
+#### June 8, 2023
+
+##### What's new
+
+###### Feature Flags SDKs
+
+The **React** client SDK has been updated to version **1.4.0** with the following enhancements. (FFM-6920)
+
+* Added a new [useFeatureFlagsLoading](https://github.com/harness/ff-react-client-sdk#usefeatureflagsloading) hook to allow apps to react to changing of loading state.
+
+* Added a new [TestWrapper](https://github.com/harness/ff-react-client-sdk#testing-with-jest) testing component to allow easy mocking of the network portion of the SDK for use in [Jest](https://github.com/harness/ff-react-client-sdk#testing-with-jest) unit tests.
+
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **React** client SDK has been updated to version **1.4.0** with the following updates. (FFM-6920)
+
+* Updated the included JavaScript SDK from version 1.10.0 to version 1.13.0.
+
+* Refactored all hooks and Higher Order Components (HOCs) to ensure proper triggering of metrics.
+
+#### June 7, 2023
+
+##### What's new
+
+This release does not include new features. 
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+* The **Node.js** server SDK has been updated to version **1.2.17** with the following update.
+
+  * Previously, when `client.close()` was called, the SSE stream was not terminated. This fix ensures that the SSE stream is properly terminated. (FFM-8116)
+
+#### June 5, 2023
+
+##### What's new
+
+###### Feature Flags SDKs
+
+* The **Python** server SDK has been updated to version **1.14** with the following updates.
+
+  * The SDK now sends extra headers to backend requests to aid in diagnostics. (FFM-7362)
+
+  * The SDK now retries on failed client authentication requests for specific HTTP errors. If client authentication fails, the SDK serves the default values you provide in `variation` calls. (FFM-7177)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+This release does not include fixed issues.
+
+#### June 1, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
+* Previously, display of the FF module depended on an internal Harness feature flag. Now, display of the FF module is instead based on having an active license (including 'free'). (FFM-7866)
+
+* Previously when a new user was onboarding in the Feature Flags page, when they selected **Get Started**, they saw a dropdown of flags, even though they hadn't created any flags yet. Now, when users do not have any existing flags, they see a text box that prompts them to create one.
+
+###### Feature Flags SDKs
+
+* The **iOS** client SDK has been updated to version **1.0.4** with the following updates.
+
+  * Fixed the stream connection to have a read timeout of 60 seconds. This enables stale connections to be detected and closed, and retries to be started for polling/SSE connections. (FFM-8051)
+  * Fixed a nil pointer dereference bug that caused the SDK to crash under certain conditions. (FFM-8034)
 
 #### May 25, 2023
 

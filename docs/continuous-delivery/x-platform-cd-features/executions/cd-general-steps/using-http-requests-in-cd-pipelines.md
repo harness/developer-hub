@@ -21,7 +21,7 @@ Go to [Harness REST API quickstart](/docs/platform/Resource-Development/APIs/api
 ## Before you begin
 
 * [Kubernetes CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
-* [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure): You can run an HTTP step in a CD stage without specifying specs or artifacts, but you do need to set up the infrastructure definition.
+* [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure): You can run an HTTP step in a CD stage without specifying specs or artifacts, but you do need to set up the infrastructure definition.
 
 ## Add the HTTP step
 
