@@ -40,6 +40,10 @@ This topic describes how to add a Policy step to a Stage.
 
 Here's a quick video showing you how to use the Policy step to evaluate a custom JSON payload.
 
+<!-- Video:
+https://www.youtube.com/embed/D6jZoY6TfOM-->
+<docvideo src="https://www.youtube.com/embed/D6jZoY6TfOM" />  
+
 ### Step 1: Add the Policy Step
 
 Open a Harness Pipeline, and then add or open a new CD Stage.
