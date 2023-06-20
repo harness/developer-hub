@@ -134,7 +134,7 @@ If you use a [GitOps Repository Credentials Template](add-harness-git-ops-reposi
 2. In **Repository Name**, enter a name.
 3. In **GitOps Agent**, select or create the Agent you want to use to fetch charts from this repo. See [Install a Harness GitOps Agent](install-a-harness-git-ops-agent.md).
 4. In **Repository URL**, enter the URL to your OCI Helm Repository. For example, `registry-1.docker.io/docker`.
-5. Clieck on **Enable OCI**
+5. Click on **Enable OCI**
 6. Click **Continue**.
 7. In **Credentials**, select one of the following:
     * Specify Credentials for Repository
