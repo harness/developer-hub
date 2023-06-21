@@ -15,7 +15,7 @@ export default function ServerlessCD() {
         <div className={styles.spaceBetween}>
           <div className={styles.moduleTitle}>
             <img src={`${baseUrl}img/icon_cv.svg`} />
-            <h1>Continuous Verification Tutorials</h1>
+            <h1>Serverless Tutorials </h1>
           </div>
         </div>
         <div className={styles.spaceBetween}>
