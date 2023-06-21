@@ -1,7 +1,7 @@
 ---
 title: Debug with SSH
-description: Use debug mode to troubleshoot builds
-sidebar_position: 110
+description: Use debug mode to troubleshoot remote builds
+sidebar_position: 30
 ---
 
 :::note
@@ -21,10 +21,12 @@ You can also use **Re-run in Debug Mode** to troubleshoot local builds.
 Debug mode is available if the following conditions are met:
 
 * You have the feature flag `CI_REMOTE_DEBUG` enabled. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-* The build fails at a [Run step](./run-ci-scripts/run-step-settings.md) with a Bash, Shell, Python, or PowerShell Core (`pwsh`) script in a **Build** (`CI`) stage.
-* The build runs on a Linux-based OS on any [build infrastructure](./set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md) (Harness Cloud, a self-hosted VM, a Kubernetes cluster, or a local runner).
+* The build fails at a [Run step](../use-ci/run-ci-scripts/run-step-settings.md) with a Bash, Shell, Python, or PowerShell Core (`pwsh`) script in a **Build** (`CI`) stage.
+* The build runs on a Linux-based OS on any [build infrastructure](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md) (Harness Cloud, a self-hosted VM, a Kubernetes cluster, or a local runner).
 
 Debug mode is never available for a pipeline's first build. You must run the pipeline at least once before you can run the build in debug mode.
+
+If debug mode isn't available for your pipeline, try [AIDA](./aida.md).
 
 ## Enable debug mode
 
@@ -41,7 +43,7 @@ import TabItem from '@theme/TabItem';
 Use these steps to use debug mode for builds on Harness Cloud, self-hosted VM, or Kubernetes cluster build infrastructures.
 
 1. Create a [Harness personal access token (PAT)](/docs/platform/user-management/add-and-manage-api-keys/#create-personal-access-token) with `pipeline execution` permissions, if you do not have one already.
-2. Navigate to the [**Builds**](./viewing-builds.md), **Execution**, or **Execution History** page.
+2. Navigate to the [**Builds**](/docs/continuous-integration/use-ci/viewing-builds.md), **Execution**, or **Execution History** page.
 3. Locate the build you want to troubleshoot, select **More Options** (&vellip;), and select **Re-run in Debug Mode**.
 
    <!-- ![Using the build's More Options menu to trigger debug mode.](./static/ci-rerun-build-in-debug-mode.png) -->
@@ -74,7 +76,7 @@ Use these steps to use debug mode for builds on [local runner build infrastructu
 2. If necessary, mount the install path. By default, Harness mounts the `/addon` path. If you installed tmate elsewhere, you need to mount that path.
 3. In your CI pipeline, add the environment variable `TMATE_PATH` to your Run step. Set the value to the tmate mount path, such as `/addon/tmate`.
 4. Create a [Harness personal access token (PAT)](/docs/platform/user-management/add-and-manage-api-keys/#create-personal-access-token) with `pipeline execution` permissions, if you do not have one already.
-5. Navigate to the [**Builds**](./viewing-builds.md), **Execution**, or **Execution History** page.
+5. Navigate to the [**Builds**](/docs/continuous-integration/use-ci/viewing-builds.md), **Execution**, or **Execution History** page.
 6. Locate the build you want to troubleshoot, select **More Options** (&vellip;), and select **Re-run in Debug Mode**.
 
    <!-- ![Using the build's More Options menu to trigger debug mode.](./static/ci-rerun-build-in-debug-mode.png) -->
@@ -103,6 +105,6 @@ Use these steps to use debug mode for builds on [local runner build infrastructu
 
 :::tip
 
-You can force a build to fail if you need to troubleshoot pipelines that appear to build successfully but still need remote troubleshooting. To do this, add a [Run step](./run-ci-scripts/run-step-settings.md) with the command `exit 1`. This forces the build to fail so you can re-run it in debug mode.
+You can force a build to fail if you need to troubleshoot pipelines that appear to build successfully but still need remote troubleshooting. To do this, add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) with the command `exit 1`. This forces the build to fail so you can re-run it in debug mode.
 
 :::
