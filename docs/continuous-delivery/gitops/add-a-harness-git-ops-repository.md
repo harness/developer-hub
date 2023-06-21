@@ -154,7 +154,7 @@ import TabItem from '@theme/TabItem';
 6. Select **Continue**.
 7. In **Credentials**, select **Specify Credentials for Repository**.
    - In **Credentials**, in **Connection Type**, select **HTTPS**, the **Anonymous** option to add a public repository.
-   - To add a private repository, select the authentication option with username and password. 
+   - To add a private repository, select the authentication option with username and password, and enter the access token.
 
      This authentication is supported for Docker and GitHub. AWS and Google have short-lived tokens, and may not work as expected. For details on how to configure access to AWS ECR, go to [Store and access OCI Helm repository in private AWS ECR](./helm-oci-repository-aws-ecr.md).
 8. Select **Save & Continue**. Harness validates the connection.
