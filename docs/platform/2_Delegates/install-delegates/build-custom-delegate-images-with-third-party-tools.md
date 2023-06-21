@@ -14,6 +14,10 @@ This document explains how you can:
 * Build and host a custom delegate image that includes the tools you select.
 * Use your custom delegate in CI/CD pipelines.
 
+:::info note
+Delegates with an immutable image type (image tag `yy.mm.xxxxx`) include non-root user privileges and are compatible with OpenShift. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+:::
+
 ### Select the delegate image
 
 You can build on either of the following Harness-provided images.

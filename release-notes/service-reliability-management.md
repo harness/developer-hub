@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-06-19T10:00:20
+date: 2023-06-20T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -54,6 +54,14 @@ This release does not include any early access features.
 
   - If a monitored service has been updated with new analysis data, it is given higher priority and displayed before other services on the list.
 
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Hotfix version 79608">
+
+  #### Released June 20, 2023
+
+  - Optimized Prometheus API calls by grouping per-host calls into a single call using the 'by' clause. As a result, the number of API calls to the Prometheus server during verification is reduced, leading to improved overall performance and efficiency in data retrieval and processing. (OIP-552)
 
 ```mdx-code-block
   </TabItem>

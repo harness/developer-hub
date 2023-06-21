@@ -30,7 +30,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.2.2.**
+The current version of this SDK is **1.2.3.**
 
 ## Requirements
 
@@ -554,4 +554,33 @@ public class GettingStarted {
         return value;  
     }  
 }
+```
+
+## Known issues
+
+### Error when importing the SDK JAR file
+
+If you're using the Java server SDK version 1.2.2 or earlier, you may see the following error when importing the SDK JAR file:
+
+`Missing artifact com.github.heremaps:oksse:jar:0.9.0`
+
+If you get this error, then add the Maven repository `https://jitpack.io` to your build system as follows:
+
+**If using Gradle:** 
+
+```
+repositories {
+  maven {
+    url 'https://jitpack.io'
+  }
+}
+```
+
+**If using Maven:**
+
+```
+<repository>
+  <url>https://jitpack.io</url>
+  ...
+</repository>
 ```

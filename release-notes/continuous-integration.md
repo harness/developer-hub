@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-06-12T10:00:10
+date: 2023-06-19T10:00:10
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -11,32 +11,79 @@ import TabItem from '@theme/TabItem';
 ```
 Review the notes below for details about recent changes to Harness Continuous Integration, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 
+For information about data privacy and security, go to the [Harness Trust Center](https://trust.harness.io/).
+
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 12, 2023, version 4006
+## Latest - June 19, 2023, version 4206
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-This release does not include new features.
+The Harness Cloud Linux amd64 image has new major and minor versions for multiple components. Major version upgrades are described below. For a complete list of component versions, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#platforms-and-image-specifications). (CI-7537)
+
+:::caution
+
+If you have pipelines running on Harness Cloud that rely on specific component versions, you might need to [lock versions or install additional tools](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#lock-versions-or-install-additional-tools) to prevent your pipeline from failing due to image changes.
+
+:::
+
+<details>
+<summary>Major version upgrades for the Harness Cloud Linux amd64 image</summary>
+
+| Component | Previous version | Current version |
+| --------  | ---------------- | --------------- |
+| Homebrew | 3.6.3 | 4.0.17 |
+| Miniconda | 4.12.0 | 23.3.1 |
+| Lerna | 5.5.2 | 6.6.2 |
+| Bazel | 5.3.1 | 6.1.2 |
+| Docker-Moby Client | 20.10.18 | 23.0.6 |
+| Docker-Moby Server | 20.10.18 | 23.0.6 |
+| Heroku | 7.63.4 | 8.1.3 |
+| Kustomize | 4.5.7 | 5.0.2 |
+| Google Cloud SDK | 403.0.0 | 428.0.0 |
+| Netlify CLI | 12.0.0 | 15.0.2 |
+| ORAS CLI | 0.15.0 | 1.0.0 |
+| Vercel CLI | 28.4.4 | 29.1.1 |
+| Google Chrome | 106.0.5249.61 | 113.0.5672.92 |
+| ChromeDriver | 106.0.5249.21 | 113.0.5672.63 |
+| Chromium | 106.0.5235.0 | 113.0.5672.0 |
+| Microsoft Edge | 105.0.1343.53 | 113.0.1174.35 |
+| Microsoft Edge WebDriver | 105.0.1343.53 | 113.0.1774.35 |
+| Android Command Line Tools | 7.0 | 9.0 |
+| Android Emulator | 31.3.11 | 32.1.12 |
+| Android SDK Platform-Tools | 33.0.3 | 34.0.1 |
+
+</details>
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
 
-This release does not include early access features.
+#### Output variables automatically become environment variables (CI-7817, ZD-39203)
+
+Output variables from steps can be available as environment variables for other steps in the same Build (`CI`) stage. This functionality is behind a feature flag, `CI_OUTPUT_VARIABLES_AS_ENV`.
+
+This means that, if you have a Build stage with three steps, an output variable produced from step one is automatically available as an environment variable for steps two and three. In other steps in the same stage, you can refer to the output variable by its key without additional identification. For example, an output variable called `MY_VAR` can be referenced later as simply `$MY_VAR`. Without this feature flag enabled, you must use an [expression](/docs/platform/references/runtime-inputs/#expressions) to reference where the variable originated, such as `<+steps.stepID.output.outputVariables.MY_VAR>`.
+
+For more information on this feature, go to the documentation on [Output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables).
+
+#### Remote debugging enhancements (CI-8135, CI-8048)
+
+**Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
 
-Fixed an issue where Git status updates failed if the Azure repository/project name had white space. Harness now decodes white spaces in URLs so the Git status update request can succeed. The [Harness Delegate version 79503 or later](/release-notes/delegate) is required for this fix. (CI-8105, ZD-44679)
+* Improved error messages for [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) using [AWS connectors](/docs/platform/Connectors/Cloud-providers/add-aws-connector) with invalid credentials in [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures). (CI-7942, ZD-44039)
+* Fixed an issue where the active developer count was not reported for builds triggered manually. (CI-8025)
 
 ```mdx-code-block
   </TabItem>
@@ -47,6 +94,20 @@ Fixed an issue where Git status updates failed if the Azure repository/project n
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 12, 2023, version 4006
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+Fixed an issue where Git status updates failed if the Azure repository/project name had white space. Harness now decodes white spaces in URLs so the Git status update request can succeed. The [Harness Delegate version 79503 or later](/release-notes/delegate) is required for this fix. (CI-8105, ZD-44679)
 
 #### June 01, 2023, version 3903
 
@@ -87,7 +148,7 @@ Harness CI now supports remote debugging. This feature was initially released in
 * The build fails at a **Run** step with a Bash or Shell script in a **Build** (`CI`) stage.
 * The build runs in Harness Cloud, on a virtual machine, or in Kubernetes.
 
-You can re-run builds in debug mode through the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. For more information, go to the [debug mode](/docs/continuous-integration/use-ci/debug-mode) documentation.
+You can re-run builds in debug mode through the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. For more information, go to the [debug mode](/docs/continuous-integration/troubleshoot-ci/debug-mode) documentation.
 
 ##### Fixed issues
 
