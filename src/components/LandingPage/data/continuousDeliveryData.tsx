@@ -112,4 +112,14 @@ export const CDList: CardItem[] = [
     time: "15min",
     link: "/tutorials/cd-pipelines/continuous-verification/prometheus",
   },
+  {
+    title: "Serverless Google Cloud function  ",
+    module: MODULES.cd,
+    icon: "img/icon_cv.svg",
+    description: <>Deploy Serverless Google Cloud Functions.</>,
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "15min",
+    link: "/tutorials/cd-pipelines/serverless/gcp-cloud-func",
+  },
 ];
