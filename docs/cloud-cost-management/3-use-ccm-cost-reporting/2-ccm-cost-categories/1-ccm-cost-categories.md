@@ -79,7 +79,7 @@ Typically, you want to create multiple cost buckets in the cost category. For ex
 The AND and OR operators are used to filter data based on more than one condition:
 
  * AND: use AND to filter data sources that include both criteria.
- * OR: use OR to filter data sources that include one of the criteria.You can use AND and OR together.
+ * OR: use OR to filter data sources that include one of the criteria. You can use AND and OR together.
   
     ![](./static/use-ccm-cost-categories-04.png)
 

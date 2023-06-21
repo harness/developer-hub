@@ -48,23 +48,37 @@ This release does not include early access features.
 
 #### Feature Flags SDKs
 
-The **Java** server SDK has been updated to version **1.2.3** with the following updates.
+* The **Java** server SDK has been updated to version **1.2.3** with the following updates.
 
-* There were reports of customers having difficulty running the SDK because of a missing dependency, `oksse`. Unless users have the JitPack repo in their POM/Gradle file, they are likely to have this problem at compile time. With this fix, we've removed the `oksse` dependency and now use `okhttp-sse` instead. (FFM-5915)
+  * There were reports of customers having difficulty running the SDK because of a missing dependency, `oksse`. Unless users have the JitPack repo in their POM/Gradle file, they are likely to have this problem at compile time. With this fix, we've removed the `oksse` dependency and now use `okhttp-sse` instead. (FFM-5915)
 
-* Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
+  * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
 
-* Updated the `maven-model` dependency to version 3.5.0 to remove the CVE-2022-4245 vulnerability. (FFM-8133)
+  * Updated the `maven-model` dependency to version 3.5.0 to remove the CVE-2022-4245 vulnerability. (FFM-8133)
 
-* Updated to the latest version of Guava, 32.0.1-jre, to remove security issues. (FFM-8233)
+  * Updated to the latest version of Guava, 32.0.1-jre, to remove security issues. (FFM-8233)
 
-The **Android** client SDK has been updated to version **1.1.0** with the following updates.
+* The **Android** client SDK has been updated to version **1.1.0** with the following updates.
 
-* Added a new API to allow SDK users to provide a trusted TLS CA certificate for connecting to Feature Flag services with private root CAs. (FFM-7008)
+  * Added a new API to allow SDK users to provide a trusted TLS CA certificate for connecting to Feature Flag services with private root CAs. (FFM-7008)
 
-* Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
+  * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
 
-* Fixed broken links in the first time setup documentation. (FFM-7867)
+  * Fixed broken links in the first time setup documentation. (FFM-7867)
+
+* The **.NET** server sdk has been updated to version **1.1.8** with the following updates.
+
+  * Added additional headers to SDK HTTP requests for better analytics. (FFM-7477)
+
+  * Reworked metrics caching to use a map instead of a queue. This improves memory usage and performance. (FFM-7475)
+
+  * We now send the SDK version information with the metrics payload for better analytics and tracking. (FFM-6904)
+
+  * Added logging when a default evaluation is served. (FFM-7473)
+
+  * Standardized and improved Logging across the SDK. (FFM-7472)
+
+  * Fixed error handling when a null target is passed in. (FFM-8128)
 
 ```mdx-code-block
   </TabItem>
@@ -139,6 +153,33 @@ The **Python** server SDK has been updated to version **1.1.15** with the follow
 * Previously, there was an edge case where an extremely large number of pages in a UI listing could cause performance degradation. This issue has been fixed, and page numbering is now disabled if the page count exceeds 1000 pages. (FFM-7993)
 
 * There was an issue where toggling between the Targets and Target Groups pages caused the new page to re-render. This issue has been fixed. (FFM-7965)
+
+#### June 8, 2023
+
+##### What's new
+
+###### Feature Flags SDKs
+
+The **React** client SDK has been updated to version **1.4.0** with the following enhancements. (FFM-6920)
+
+* Added a new [useFeatureFlagsLoading](https://github.com/harness/ff-react-client-sdk#usefeatureflagsloading) hook to allow apps to react to changing of loading state.
+
+* Added a new [TestWrapper](https://github.com/harness/ff-react-client-sdk#testing-with-jest) testing component to allow easy mocking of the network portion of the SDK for use in [Jest](https://github.com/harness/ff-react-client-sdk#testing-with-jest) unit tests.
+
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **React** client SDK has been updated to version **1.4.0** with the following updates. (FFM-6920)
+
+* Updated the included JavaScript SDK from version 1.10.0 to version 1.13.0.
+
+* Refactored all hooks and Higher Order Components (HOCs) to ensure proper triggering of metrics.
 
 #### June 7, 2023
 
