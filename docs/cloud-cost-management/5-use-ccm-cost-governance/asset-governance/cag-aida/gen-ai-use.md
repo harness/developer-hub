@@ -82,7 +82,7 @@ Harness AIDA offers valuable insights by providing a description of the rule alo
 
  Harness AIDA displays the description of the rule and its implications.
 
-From the current page, you have the option to create a new rule. Select **Create another rule** to initiate the process. Upon selecting this option, a new Rule Editor is presented, featuring an AI-generated name for the rule. Select the edit icon to customize the rule name, which allows you to modify the generated name according to your preference.
+From the current page, you have the option to create a new rule. Select **Create another rule** to initiate the process. Upon selecting this option, a new rule editor is presented, and it displays an AI-generated name for the rule. To customize the rule name, select the edit icon, and then modify the generated name according to your preference.
 
   <docimage path={require('./static/create-another-rule.gif')} width="60%" height="60%" title="Click to view full size image" />
 

@@ -29,5 +29,4 @@ In certain cases, there can be overlapping rules targeting the same resource. Fo
   
 To apply a recommendation, select the row. The recommendation opens on the **Recommendations** page. To learn how to enforce this recommendation, go to [Governance recommendations](../../4-use-ccm-cost-optimization/1-ccm-recommendations/governance.md).
 
-Make use of Harness AI Copilot to create a new rule. Select the **Create a new rule with Copilot** option. A new rule opens on the Rule Editor with an auto-generated name. For more information, go to [Generative AI overview](gen-ai-overview.md).
-
+Make use of Harness AIDA to create a new rule. Select the **Create a new rule with AIDA** option. A new rule opens in the rule editor with an auto-generated name. For more information, go to [Harness AIDA for asset governance](../asset-governance/cag-aida/gen-ai-overview.md).
