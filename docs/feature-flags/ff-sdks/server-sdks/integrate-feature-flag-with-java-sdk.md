@@ -560,7 +560,7 @@ public class GettingStarted {
 
 ### Error when importing the SDK JAR file
 
-You may see the following error when importing the SDK JAR file:
+If you're using the Java server SDK version 1.2.2 or earlier, you may see the following error when importing the SDK JAR file:
 
 `Missing artifact com.github.heremaps:oksse:jar:0.9.0`
 
