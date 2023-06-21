@@ -48,6 +48,16 @@ The **FF server** has been updated to version **1.1075.0** with the following up
 
 * Where users had multiple target rules, in certain circumstances users couldn't delete these rules when the wrong IDs were returned. This fix addresses the problem of the incorrect IDs being returned, and ensures the targets can be removed.
 
+#### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.1.16** with the following updates.
+
+* Previously, if the SDK evaluated flags with a large amount of targets (tens of thousands), the SDK could encounter `read_timeout` errors. This fix increases the HTTP timeout of the SDK, and imposes a limit of 50,000 on the number of targets that can be sent to the UI. (FFM-8231)
+
+  **Known issue** - We are working on resolving the following issue in a future version:
+
+  * During a metrics interval, if you evaluate flags with more than 50,000 unique targets (based on identifier, name and attributes), then only the first 50,000 targets get sent in the request to the metrics API. This means that the targets that are not included in the request do not appear in the UI, but when they are included in evaluations during subsequent metrics intervals, they will be correctly registered in the UI.
+
 ```mdx-code-block
   </TabItem>
 </Tabs>
