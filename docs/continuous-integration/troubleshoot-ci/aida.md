@@ -19,8 +19,8 @@ Currently, AIDA for CI is behind the feature flag `CI_AI_ENHANCED_REMEDIATIONS`.
 <Intro />
 
 <!-- Video: AIDA demo
-https://youtu.be/p-3FZM49RqQ-->
-<docvideo src="https://youtu.be/p-3FZM49RqQ" />
+https://www.youtube.com/watch?v=p-3FZM49RqQ-->
+<docvideo src="https://www.youtube.com/watch?v=p-3FZM49RqQ" />
 
 <Use />
 
