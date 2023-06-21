@@ -18,7 +18,7 @@ Review the notes below for details about recent changes to Continuous Error Trac
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June xx, 2023, versions ET-Service 5.24.0 and ET-Collector 5.24.0
+## Latest - June xx, 2023, versions ET-Service 5.24.3 and ET-Collector 5.24.3
 
 ```mdx-code-block
 <Tabs>
@@ -48,22 +48,19 @@ This release does not include any early access features.
   
   This issue has been resolved. You can now edit notification rules that include the **Timeout Error** event type.
 
-- The configured notifications count shown on the monitored services listing page does not match the count displayed on the monitored service details page for a specific service. (CET-1294)
+- The configured notification count on the Monitored Services listing page of the CET module displays notifications for all types of alerts related to a particular monitored service. (CET-1294)
+  
+  This issue has been resolved. Now, the notification list on the Monitored Services page of the CET module shows only the notifications for Code Errors.
 
-  This issue has been resolved. The configured notifications count displayed on the monitored services listing page now accurately matches the count shown on the monitored service details page for each specific service.
+- The events list disappears from the Events Summary page, despite having multiple agents running. (CET-1517)
+
+  The issue was caused when the same event occurred across two deployments and environments. This issue has been resolved. The Events Summary page now accurately renders the events list, regardless of the occurrence of the same event across multiple deployments.
 
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Hotfix (ET-Service 5.24.3)">
 ```
-
-
-#### Released June xx, 2023
-
-- The events list disappears from the Events Summary page, despite having multiple agents running. (CET-1517)
-
-  The issue was caused when the same event occurred across two deployments and environments. This issue has been resolved. The Events Summary page now accurately renders the events list, regardless of the occurrence of the same event across multiple deployments.
 
 
 ```mdx-code-block
