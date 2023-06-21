@@ -2,7 +2,7 @@
 title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
 tags: [NextGen, "cet"]
-date: 2023-05-02T10:55
+date: 2023-06-09T10:55
 sidebar_position: 11
 ---
 ```mdx-code-block
@@ -18,24 +18,80 @@ Review the notes below for details about recent changes to Continuous Error Trac
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - May 09, 2023, versions et-service 5.21.0 and et-collector 5.19.2
+## Latest - June 09, 2023, versions et-service 5.23.0 and et-collector 5.23.0
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-This release does not include new features.
+
+- Now, when you create a Jira ticket for an event, CET prompts you to complete any mandatory fields that do not have a default value. (CET-1231)
+
+- You can now conveniently access a comprehensive list of all active agents running across your entire account directly from the subscription page. (CET-1225)
+
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
+
 This release does not include any early access features.
+
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
+
+- Caught exceptions are displayed as uncaught exceptions on the event list. (CET-1388)  
+  
+  This issue has been resolved. Now, the caught exceptions are being displayed correctly.
+
+- Agents are being incorrectly displayed as **Registered** or **Peer closed** on the status page while still in the process of connecting. (CET-1359)  
+  
+  This issue has been fixed. The status page now correctly reflects the actual status of agents.
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Hotfix (et-service 5.23.1)">
+```
+
+#### Released June 09, 2023
+
+- CET Agents that were started without providing an agent token are not appearing on the list of running agents. (CET-1411)  
+  
+  This issue has been resolved. Now, all running agents, regardless of the presence of an agent token, are properly displayed on the running agents list.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### May 25, 2023, versions et-service 5.22.0 and et-collector 5.22.0
+
+##### What's new
+
+This release does not include new features and enhancements.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- The CET Agent list is failing to load correctly when running in SMP installations with Postgres. (CET-1279)   
+  
+  The issue has been resolved. The CET Agent list now loads properly in SMP installations with Postgres.
+  
+
+#### May 09, 2023, versions et-service 5.21.0 and et-collector 5.19.2
 
 - The Events Summary page is taking longer (exceeding eight hours) to display the events. (CET-1356)  
   
@@ -60,18 +116,6 @@ This release does not include any early access features.
 - The Impacted Services column is displayed in the event list when viewed from the CI pipeline. (CET-1232)  
   
     This issue has been fixed, and now the Impacted Services column is not being displayed.
-
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
 
 #### May 08, 2023, version 79111
 

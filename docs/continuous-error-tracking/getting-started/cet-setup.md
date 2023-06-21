@@ -86,19 +86,18 @@ Future releases will include support for more operating systems.
 
 | **Operating System** | **Supported JVM Versions** | **Supported JVM Containers** |
 | --- | --- | --- |
-| Linux Operating System: <ul><li>Ubuntu: 14+</li><li>jDebian</li><li>CentOS: 6.5+</li><li>RedHat: 5.0 +</li><li>Suse: SLES12</li></ul>| <ul><li>Oracle/HotSpot:6u20 - 6u457 - 7u808 - 8u2218 - 8u2329 - all updates10/11/16/17 - all updates </li><li>OpenJDK:6u20 - 6u457 - 7u808 - 8u2228 - 8u2329 - all updates10/11/16/17 - all updates</li></ul> | <ul><li>Jetty</li><li>Scala</li><li>Eclipse</li><li>NetBeans</li><li>IntelliJ</li><li>JBoss/Wildfly</li><li>CloudFoundry</li><li>Weblogic</li><li>Play Framework</li><li>Glassfish</li><li>Mule</li><li>WebSphere</li><li>Tomcat</li></ul> |
+| Linux Operating System: <ul><li>Ubuntu: 14+</li><li>jDebian</li><li>CentOS: 6.5+</li><li>RedHat: 5.0 +</li><li>Suse: SLES12</li></ul>| <ul><li>Oracle JDK:<ul><li>6u20 - 6u45</li><li>7 - 7u80</li><li>8 - 8u221</li><li>8 - 8u232</li><li>9 - all updates</li><li>10/11/16/17 - all updates</li></ul></li><li>OpenJDK:<ul><li>6u20 - 6u457</li><li>7 - 7u80</li><li>8 - 8u221</li><li>8 - 8u232</li><li>9 - all updates</li><li>10/11/16/17 - all updates</li></ul></li></ul> | <ul><li>Jetty</li><li>Scala</li><li>Eclipse</li><li>NetBeans</li><li>IntelliJ</li><li>JBoss/Wildfly</li><li>CloudFoundry</li><li>Weblogic</li><li>Play Framework</li><li>Glassfish</li><li>Mule</li><li>WebSphere</li><li>Tomcat</li></ul> |
 
 ##### JVM Requirements
 
 When you attach the Harness Error Tracking Agent to a JVM that runs Java 10, 11, 16, 17, or any IBM Java version, ensure that the following requirements are met:
 
 * Turn off class sharing using the following flags:
-
-  |  |  |
-| --- | --- |
-| IBM Java | `‑Xshareclasses:none` |
-| HotSpot | `-Xshare:off -XX:-UseTypeSpeculation` |
-
+  
+  | **JVM**  | **Flag**                              |
+  | -------- | ------------------------------------- |
+  | IBM Java | `‑Xshareclasses:none`                 |
+  | HotSpot  | `-Xshare:off -XX:-UseTypeSpeculation` |
 
 * Increase `ReservedCodeCache` to at least 512mb by adding the following flag:  
 `-XX:ReservedCodeCacheSize=512m`
@@ -134,7 +133,7 @@ This option lets you install the Error Tracking Agent as a standalone. Perform t
 
   This parameter can also be specified using `JAVA_TOOL_OPTIONS`. For example:
 
-    `exportJAVA_TOOL_OPTIONS=-agentpath:/home/user/harness/lib/libETAgent.so`.
+    `export JAVA_TOOL_OPTIONS=-agentpath:/home/user/harness/lib/libETAgent.so`.
 
 4. Set the Agent environment variables so that your application can map to a Harness Service.
 
@@ -144,7 +143,7 @@ This option lets you install the Error Tracking Agent as a standalone. Perform t
 | `ET_APPLICATION_NAME` | Name of your application or Service. | `myapp` |
 | `ET_DEPLOYMENT_NAME` | Deployment or version number of your application or Service. When your application or Service is updated to a new version, it's recommended that you update this variable as well, so that the Error Tracking Agent can identify when new errors are introduced. | `1` |
 | `ET_ENV_ID` | ID of your Harness Environment. | `production` |
-| `ET_TOKEN` | ET Agent Token created on Harness. | `b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a` |
+| `ET_TOKEN` | ET Agent Token created on Harness. | `b34*****-****-****-****-***********42a` |
 
   For example:
 
@@ -153,7 +152,7 @@ ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1/
 ENV ET_APPLICATION_NAME=yourapp  
 ENV ET_DEPLOYMENT_NAME=1  
 ENV ET_ENV_ID=env1
-ENV ET_TOKEN= agenttoken
+ENV ET_TOKEN=b34*****-****-****-****-***********42a
 ```
 
 5. Restart your application after installing the Error Tracking Agent.
@@ -176,7 +175,7 @@ RUN wget -qO- https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar
 | `ET_APPLICATION_NAME` | Name of your application or Service. | `myapp` |
 | `ET_DEPLOYMENT_NAME` | Deployment or version number of your application or Service. When your application or Service is updated to a new version, it's recommended that you update this variable as well, so that the Error Tracking Agent can identify when new errors are introduced. | `1` |
 | `ET_ENV_ID` | ID of your Harness Environment. | `production` |
-| `ET_TOKEN` | ET Agent Token created on Harness. | `b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a` |
+| `ET_TOKEN` | ET Agent Token created on Harness. | `b34*****-****-****-****-***********42a` |
 
   For example:
 ```
@@ -184,7 +183,7 @@ ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1
 ENV ET_APPLICATION_NAME=yourapp  
 ENV ET_DEPLOYMENT_NAME=1  
 ENV ET_ENV_ID=env1 
-ENV ET_TOKEN= agenttoken
+ENV ET_TOKEN=b34*****-****-****-****-***********42a
 ```
 1. Add JVM arguments to the Docker image, which instructs the JVM to load the Agent. This is done by adding `agentpath:/harness/lib/libETAgent.so`to the application `ENTRYPOINT`. For example, `ENTRYPOINT java -agentpath:/harness/lib/libETAgent.so -jar yourapp.jar`. This parameter can also be specified using `JAVA_TOOL_OPTIONS`, for example `ENV JAVA_TOOL_OPTIONS="-agentpath:/harness/lib/libETAgent.so"`.
 2. Once the Dockerfile is updated, rebuild the Docker image and restart any containers running on it to start monitoring using Error Tracking.
@@ -196,7 +195,7 @@ ENV ET_COLLECTOR_URL=https://collector.et.harness.io/prod1/
 ENV ET_APPLICATION_NAME=yourapp  
 ENV ET_DEPLOYMENT_NAME=1  
 ENV ET_ENV_ID=env1  
-ENV ET_TOKEN= agenttoken 
+ENV ET_TOKEN=b34*****-****-****-****-***********42a  
 RUN wget -qO- <https://get.et.harness.io/releases/latest/nix/harness-et-agent.tar.gz> | tar -xz  
 ENTRYPOINT java -jar yourapp.jar
 ```
@@ -224,7 +223,7 @@ mountPath: /opt/harness-et-agent
 ..
 env:
 - name: JAVA_TOOL_OPTIONS
-value: "-agentpath=/opt/harness-et-agent/lib/libETAgent.so"
+value: "-agentpath:/opt/harness-et-agent/harness/lib/libETAgent.so"
 - name: ET_COLLECTOR_URL
 value: "https://collector.et.harness.io/prod1/"
 - name: ET_APPLICATION_NAME
@@ -234,7 +233,7 @@ value: 1
 - name: ET_ENV_ID
 value: production
 - name: ET_TOKEN
-value: b34a3f1a-7b38-4bb6-b5fe-49f52314f5342a
+value: b34*****-****-****-****-***********42a
 ```
   </TabItem>
 </Tabs>

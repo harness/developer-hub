@@ -21,67 +21,9 @@ import PartialExample from '/docs/continuous-delivery/shared/cd-integrations-sup
 
 ## Continuous Integration (CI)
 
-The following table lists Harness support for CI platforms, repos, registries, and related technologies.
+import Ci from '/docs/continuous-integration/shared/ci-supported-platforms.md';
 
-<table>
-  <thead>
-    <tr>
-      <th>Source Code Management (SCM)</th>
-      <th>Artifact repositories</th>
-      <th>Container registries</th>
-      <th>Build farm platforms</th>
-      <th>Testing frameworks</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr valign="top">
-      <td>
-        <ul>
-          <li>GitLab</li>
-          <li>Bitbucket</li>
-          <li>GitHub</li>
-          <li>AWS CodeCommit</li>
-          <li>Other</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>Artifactory</li>
-          <li>AWS S3</li>
-          <li>GCP GCS</li>
-          <li>JFrog</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>Azure Container Registry (ACR)</li>
-          <li>Amazon Elastic Container Registry (ECR)</li>
-          <li>Google Container Registry (GCR)</li>
-          <li>Docker registries (e.g. Docker Hub)</li>
-          <li>Other</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>Kubernetes cluster (platform agnostic)</li>
-          <li>Amazon Elastic Kubernetes Service (Amazon EKS)</li>
-          <li>Google Kubernetes Engine (GKE)</li>
-          <li>AWS Linux and Windows VMs</li>
-          <li>Red Hat OpenShift 4</li>
-        </ul>
-      </td>
-      <td>
-        <ul>
-          <li>Bazel</li>
-          <li>Maven</li>
-          <li>Gradle</li>
-          <li>NET CLI</li>
-          <li>Nunit</li>
-        </ul>
-      </td>
-    </tr>
-  </tbody>
-</table>
+<Ci />
 
 ## Continuous Verification
 
@@ -153,6 +95,9 @@ The following table lists the ingress controllers supported for Kubernetes AutoS
 | Istio as API gateway       | Fully supported                                                    |
 | Ambassador as API gateway  | Supported by manually editing the mapping                          |
 
+:::note
+The supported Kubernetes version for AutoStopping is 1.19.
+:::
 ### Feature Support Matrix
 
 This section lists the feature support matrix for the supported cloud platforms:
@@ -226,34 +171,23 @@ See [Security Step Settings Reference](../security-testing-orchestration/sto-tec
 
 ## Feature Flags
 
-Harness Feature Flags support [client-side and server-side SDKs](../feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.
+Harness Feature Flags supports [client-side and server-side SDKs](../feature-flags/ff-sdks/sdk-overview/client-side-and-server-side-sdks.md) for a number of programming languages.
 
-### Client-side SDKs
+### Supported client-side SDKs
 
-The following table lists the Client-side Feature Flag SDKs Harness supports.
+```mdx-code-block
+import Ff from '/docs/feature-flags/shared/ff-supported-platforms-shared.md';
+```
 
-| SDK                                                                   | Documentation                                                                                          |
-| --------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------ |
-| [Android](https://github.com/harness/ff-android-client-sdk)           | [Android SDK Reference](../feature-flags/ff-sdks/client-sdks/android-sdk-reference.md)           |
-| [iOS](https://github.com/harness/ff-ios-client-sdk)                   | [iOS SDK Reference](../feature-flags/ff-sdks/client-sdks/ios-sdk-reference.md)                   |
-| [Flutter](https://github.com/harness/ff-flutter-client-sdk)           | [Flutter SDK Reference](../feature-flags/ff-sdks/client-sdks/flutter-sdk-reference.md)           |
-| [Javascript](https://github.com/harness/ff-javascript-client-sdk)     | [Javascript SDK Reference](../feature-flags/ff-sdks/client-sdks/java-script-sdk-references.md)   |
-| [React Native](https://github.com/harness/ff-react-native-client-sdk) | [React Native SDK Reference](../feature-flags/ff-sdks/client-sdks/react-native-sdk-reference.md) |
-| [Xamarin](https://github.com/harness/ff-xamarin-client-sdk)           | [Xamarin SDK Reference](../feature-flags/ff-sdks/client-sdks/xamarin-sdk-reference.md)           |
+<Ff />
 
-### Server-side SDKs
+### Supported server-side SDKs
 
-The following table lists the Server-side Feature Flag SDKs Harness supports.
+```mdx-code-block
+import Ffs from '/docs/feature-flags/shared/ff-supported-platforms-shared-server.md';
+```
 
-| SDK                                                        | Documentation                                                                                            |
-| ---------------------------------------------------------- | -------------------------------------------------------------------------------------------------------- |
-| [.NET](https://github.com/harness/ff-dotnet-server-sdk)    | [.NET SDK Reference](../feature-flags/ff-sdks/server-sdks/net-sdk-reference.md)                    |
-| [Go](https://github.com/harness/ff-golang-server-sdk)      | [Go SDK Reference](../feature-flags/ff-sdks/server-sdks/feature-flag-sdks-go-application.md)       |
-| [Java](https://github.com/harness/ff-java-server-sdk)      | [Java SDK Reference](../feature-flags/ff-sdks/server-sdks/integrate-feature-flag-with-java-sdk.md) |
-| [Node.js](https://github.com/harness/ff-nodejs-server-sdk) | [Node.js SDK Reference](../feature-flags/ff-sdks/server-sdks/node-js-sdk-reference.md)             |
-| [Python](https://github.com/harness/ff-python-server-sdk)  | [Python SDK Reference](../feature-flags/ff-sdks/server-sdks/python-sdk-reference.md)               |
-| [Ruby](https://github.com/harness/ff-ruby-server-sdk)      | [Ruby SDK Reference](../feature-flags/ff-sdks/server-sdks/ruby-sdk-reference.md)                   |
-| [PHP](https://github.com/harness/ff-php-server-sdk)        | [PHP SDK Reference](../feature-flags/ff-sdks/server-sdks/php-sdk-reference.md)                     |
+<Ffs />
 
 ## Harness Chaos Engineering
 
@@ -267,18 +201,18 @@ The following table lists Harness support for collaboration tools.
 
 Most providers are used in both Pipeline Notification Strategies and User Group notifications:
 
-- [Add a Pipeline Notification Strategy](../continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events.md)
+- [Add a Pipeline Notification Strategy](../continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md
 - [Send Notifications Using Slack](../platform/5_Notifications/send-notifications-using-slack.md)
 - [Send Notifications to Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md)
 
 | Provider Name                                                                                       | Notification | Approval/Change Management |
 | --------------------------------------------------------------------------------------------------- | ------------ | -------------------------- |
 | [Microsoft Teams](../platform/5_Notifications/send-notifications-to-microsoft-teams.md)             | Yes          | N/A                        |
-| [Email](../continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events.md)     | Yes          | N/A                        |
+| [Email](../continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md       | N/A                        |
 | [Slack](../platform/5_Notifications/send-notifications-using-slack.md)                              | Yes          | N/A                        |
 | [Jira](../platform/9_Approvals/adding-jira-approval-stages.md)                                      | Yes          | Yes                        |
 | [ServiceNow](../platform/9_Approvals/service-now-approvals.md)                                      | N/A          | Yes                        |
-| [PagerDuty](../continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events.md) | Yes          | N/A                        |
+| [PagerDuty](../continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md   | N/A                        |
 
 ## Access control
 
@@ -318,26 +252,9 @@ See [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Managem
 
 ## Harness Self-Managed Enterprise Edition
 
-The following table lists the major supported features for Harness Self-Managed Enterprise Edition offerings. For supported features, go to [Supported features and integrations](/docs/self-managed-enterprise-edition/introduction/supported-features-and-integrations).
+import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-platforms.md';
 
-| Solution                                                          | Supported Platform           | Connected | HA | Monitoring          | Disaster Recovery | Auto Restart | Features Under Controlled Release 
-| ----------------------------------------------------------------- | ---------------------------- | ----------- | ---------------- | ------------------- | ----------------- | ------------ | --------------------------------- |
-| Kubernetes Cluster                   | Kubernetes - GKE - AKS - EKS | Yes         | Coming soon              | Prometheus, Grafana | Coming soon        | Supported    |                                   
-
-### Supported Kubernetes versions for Harness Self-Managed Enterprise Edition
-
-* Self-Managed Enterprise Edition supports Kubernetes v.1.24, as well as versions 1.23, 1.22, 1.21, and 1.20.
-* Effective October 7, 2022, with the release of version 76918, Self-Managed Enterprise Edition no longer supports Kubernetes open-source versions 1.18 and earlier.
-* Self-Managed Enterprise Edition supports the other versions of Kubernetes you use on a best-effort basis.
-* Harness commits to support new minor versions of Kubernetes within three months of the first stable release. For example, if the stable release of 1.25.0 occurs on August 31, Harness extends compatibility by November 30.
-
-### Terms of support for Harness Self-Managed Enterprise Edition
-
-Harness Self-Managed Enterprise Edition does not introduce changes that break compatibility with supported versions of Kubernetes. For example, Self-Managed Enterprise Edition does not use features from Kubernetes version n that do not work in Kubernetes version n-2.
-
-Installation and upgrade preflight checks provide warnings when you use unsupported Kubernetes versions.
-
-In cases where you encounter a problem related to an incompatibility issue, you must upgrade your cluster. Harness does not issue a patch to accommodate the use of unsupported Kubernetes versions.
+<Smp />
 
 ## SDKs installed with the Delegate
 
@@ -361,27 +278,27 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 |                                     |                       |                       |
 | ----------------------------------- | --------------------- | --------------------- |
 | **Manifest Type**                   | **Required Tool/SDK** | **Certified Version** |
-| Kubernetes                          | kubectl               | v1.24.3               |
+| Kubernetes                          | kubectl               | v1.25.6               |
 |                                     | go-template           | v0.4                  |
-| Helm                                | kubectl               | v1.24.3               |
+| Helm                                | kubectl               | v1.25.6               |
 |                                     | helm                  | v3.9.2                |
-| Helm (chart is stored in GCS or S3) | kubectl               | v1.24.3               |
+| Helm (chart is stored in GCS or S3) | kubectl               | v1.25.6               |
 |                                     | helm                  | v3.9.2                |
 |                                     | chartmuseum           | v0.8.2 and v0.12.0    |
-| Kustomize                           | kubectl               | v1.24.3               |
+| Kustomize                           | kubectl               | v1.25.6               |
 |                                     | kustomize             | v4.5.4                |
-| OpenShift                           | kubectl               | v1.24.3               |
+| OpenShift                           | kubectl               | v1.25.6               |
 |                                     | oc                    | v4                    |
 
 ### Native Helm deployments
 
-For [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md), the following SDKs/tools are certified.
+For [Native Helm deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md), the following SDKs/tools are certified.
 
 |                   |                                                 |                       |
 | ----------------- | ----------------------------------------------- | --------------------- |
 | **Manifest Type** | **Required Tool/SDK**                           | **Certified Version** |
 | Helm Chart        | helm                                            | v3.9.2                |
-|                   | kubectlRequired if Kubernetes version is 1.16+. | v1.24.3               |
+|                   | kubectlRequired if Kubernetes version is 1.16+. | v1.25.6               |
 
 ### Install a Delegate with custom SDK and 3rd-party tool binaries
 

@@ -25,7 +25,7 @@ If there are items that don't belong to any of these cost categories, the cost a
 
 ## Prerequisites and permissions
 
-To use Cost Categories, your Harness User account must belong to a User Group with the following Role permissions:
+To use cost categories, your Harness user account must belong to a user group with the following role permissions:
 
 * **Cloud Cost Management**: **Cost Categories**: **Create/Edit**
 
@@ -50,8 +50,8 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 You can create a Cost Category
 
 1. In your Harness application, go to **Cloud Costs**.
-2. Go to **Setup**, and then click **Cost Categories**.
-3. Click **New Cost Category**.
+2. Go to **Setup**, and then select **Cost Categories**.
+3. Select **New Cost Category**.
 
 
 You can also create a new Cost Category when you create a Perspective.
@@ -67,7 +67,7 @@ The new Cost Category appears.
 
 
 ### Create cost buckets
-1. Click **New Cost Bucket**.
+1. Select **New Cost Bucket**.
 2. Enter a name for the cost bucket, such as the name of a department.
 3. Define the rules (data sources) for the cost bucket. You could add multiple conditions to this rule using the AND operator.  
 Add a new row for each rule until the cost bucket correctly includes all the costs incurred for this bucket. These rules are defined using the OR operator.  
@@ -79,13 +79,13 @@ Typically, you want to create multiple cost buckets in the cost category. For ex
 The AND and OR operators are used to filter data based on more than one condition:
 
  * AND: use AND to filter data sources that include both criteria.
- * OR: use OR to filter data sources that include one of the criteria.You can use AND and OR together.
+ * OR: use OR to filter data sources that include one of the criteria. You can use AND and OR together.
   
     ![](./static/use-ccm-cost-categories-04.png)
 
 ### Create shared cost buckets
 
-1. Click **+ New Shared Bucket**.
+1. Select **+ New Shared Bucket**.
 2. Enter a relevant name for the shared bucket.
 3. Define rules and conditions as per requirement.
 4. Select the sharing strategy.  
@@ -95,6 +95,14 @@ For example, consider two cost targets named team A and team B. These two teams 
   *  **Fixed percentage**: This option allows the distribution of the cost of the shared bucket by a fixed percentage between cost buckets. For example, 30% to team A and 70% to team B.
 
   ![](./static/cost-category-builder-2.png)
+  
+   
+:::info important
+  * You cannot include a nested cost category as a rule within another cost category if either of these cost categories contains a shared bucket.
+  * You cannot add the same cost category as a rule in the cost bucket.
+  * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
+  * You can nest cost categories to a maximum of 20 levels.
+:::
 
 ### Manage unallocated costs
 
@@ -109,4 +117,6 @@ In **Manage Unallocated Costs**, you can choose to show or ignore unallocated co
 Save the cost category. Now, you can view the cost bucket details in a cost category on the **Cost Categories** page.
 
   ![](./static/cost-bucket-details.png)
+
+  
 

@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-05-23T10:00:10
+date: 2023-06-19T10:00:10
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -11,48 +11,79 @@ import TabItem from '@theme/TabItem';
 ```
 Review the notes below for details about recent changes to Harness Continuous Integration, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 
+For information about data privacy and security, go to the [Harness Trust Center](https://trust.harness.io/).
+
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - May 23, 2023, version 3805
+## Latest - June 19, 2023, version 4206
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-Added support for showing artifacts on the **Artifacts** tab in Harness Cloud and VMs. (CI-7218)
+The Harness Cloud Linux amd64 image has new major and minor versions for multiple components. Major version upgrades are described below. For a complete list of component versions, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#platforms-and-image-specifications). (CI-7537)
 
-Previously, this was supported only for Kubernetes builds. The artifacts are visible on the execution **Artifact** tab and the artifact details are visible on the step output window. 
+:::caution
+
+If you have pipelines running on Harness Cloud that rely on specific component versions, you might need to [lock versions or install additional tools](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#lock-versions-or-install-additional-tools) to prevent your pipeline from failing due to image changes.
+
+:::
+
+<details>
+<summary>Major version upgrades for the Harness Cloud Linux amd64 image</summary>
+
+| Component | Previous version | Current version |
+| --------  | ---------------- | --------------- |
+| Homebrew | 3.6.3 | 4.0.17 |
+| Miniconda | 4.12.0 | 23.3.1 |
+| Lerna | 5.5.2 | 6.6.2 |
+| Bazel | 5.3.1 | 6.1.2 |
+| Docker-Moby Client | 20.10.18 | 23.0.6 |
+| Docker-Moby Server | 20.10.18 | 23.0.6 |
+| Heroku | 7.63.4 | 8.1.3 |
+| Kustomize | 4.5.7 | 5.0.2 |
+| Google Cloud SDK | 403.0.0 | 428.0.0 |
+| Netlify CLI | 12.0.0 | 15.0.2 |
+| ORAS CLI | 0.15.0 | 1.0.0 |
+| Vercel CLI | 28.4.4 | 29.1.1 |
+| Google Chrome | 106.0.5249.61 | 113.0.5672.92 |
+| ChromeDriver | 106.0.5249.21 | 113.0.5672.63 |
+| Chromium | 106.0.5235.0 | 113.0.5672.0 |
+| Microsoft Edge | 105.0.1343.53 | 113.0.1174.35 |
+| Microsoft Edge WebDriver | 105.0.1343.53 | 113.0.1774.35 |
+| Android Command Line Tools | 7.0 | 9.0 |
+| Android Emulator | 31.3.11 | 32.1.12 |
+| Android SDK Platform-Tools | 33.0.3 | 34.0.1 |
+
+</details>
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
 
-Harness CI now supports remote debugging. This feature was initially released in January 2023 and subsequently reverted for further development. Debug mode is available if all of the following conditions are met:
+#### Output variables automatically become environment variables (CI-7817, ZD-39203)
 
-* You have the feature flag `CI_REMOTE_DEBUG` enabled. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
-* The build infrastructure uses a Linux-based OS.
-* The build fails at a **Run** step with a Bash or Shell script in a **Build** (`CI`) stage.
-* The build runs in Harness Cloud, on a virtual machine, or in Kubernetes.
+Output variables from steps can be available as environment variables for other steps in the same Build (`CI`) stage. This functionality is behind a feature flag, `CI_OUTPUT_VARIABLES_AS_ENV`.
 
-You can re-run builds in debug mode through the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. For more information, go to the [debug mode](/docs/continuous-integration/use-ci/debug-mode) documentation.
+This means that, if you have a Build stage with three steps, an output variable produced from step one is automatically available as an environment variable for steps two and three. In other steps in the same stage, you can refer to the output variable by its key without additional identification. For example, an output variable called `MY_VAR` can be referenced later as simply `$MY_VAR`. Without this feature flag enabled, you must use an [expression](/docs/platform/references/runtime-inputs/#expressions) to reference where the variable originated, such as `<+steps.stepID.output.outputVariables.MY_VAR>`.
+
+For more information on this feature, go to the documentation on [Output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables).
+
+#### Remote debugging enhancements (CI-8135, CI-8048)
+
+**Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
 
-* Fixed the [license usage](/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt) sort function. (CI-7945)
-* [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) now supports caching subdirectory builds. (CI-7853)
-* In step templates for **Run**, **Run Tests**, and **Background** steps, the `connectorRef` and `image` settings are now optional because these settings are not required for all build infrastructures. Validations are triggered when you use these templates in a pipeline that requires these settings. (CI-7845)
-* Previously, test splitting wouldn't work with step-level parallelism on a Kubernetes cluster build infrastructure due to the way certain environment variables were read. This is fixed. (CI-7800, ZD-43259, <!-- CI-7803, ZD-43272 -->)
-* If you run a pipeline that uses a Kubernetes cluster build infrastructure and step templates with empty `connectorRef` and `image` values, the resulting error message is more accurate and informative. (CI-7785)
-* When manually running a pipeline, you can chose to run specific stages, rather than the entire pipeline. Previously, if you chose to run only stages with **Clone Codebase** disabled, you were blocked by a field validation error requiring you to populate the **Git Branch** and **Repository** fields, which weren't visible. This has been fixed so that you are only asked to provide codebase information if **Clone Codebase** is enabled for at least one of the selected stages. (CI-7559, CI-7934 ZD-41974, ZD-43980, ZD-44041) <!-- combined CI-7934 & ZD-43980 -->
-* If the GitLab SCM URL is of the form of anything other than `https://<domain>/project/repo.git`, then the API access fails for the connector. To fix this, a new field called `apiUrl` was added to the connector YAML. You can specify the new field to be used for all API requests. (CI-7838)
-
+* Improved error messages for [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) using [AWS connectors](/docs/platform/Connectors/Cloud-providers/add-aws-connector) with invalid credentials in [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures). (CI-7942, ZD-44039)
+* Fixed an issue where the active developer count was not reported for builds triggered manually. (CI-8025)
 
 ```mdx-code-block
   </TabItem>
@@ -63,6 +94,71 @@ You can re-run builds in debug mode through the **Builds**, **Execution**, and *
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 12, 2023, version 4006
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+Fixed an issue where Git status updates failed if the Azure repository/project name had white space. Harness now decodes white spaces in URLs so the Git status update request can succeed. The [Harness Delegate version 79503 or later](/release-notes/delegate) is required for this fix. (CI-8105, ZD-44679)
+
+#### June 01, 2023, version 3903
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+* Previously, in situations where a build pod wasn't created, an error occurred when the cleanup event couldn't find details of a pod to cleanup. Now, handling has been added to avoid this error. (CI-8065)
+* Fixed an issue where running multiple [Build and Push an image to Docker Registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) steps [in parallel](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) could result in multiple copies of the same image being pushed to the Docker repository. While the image names were different, the underlying image was the same. (CI-8039)
+* Fixed an issue where passing an empty runtime input value for the **Dockerfile** setting in a [Build and Push an image to Docker Registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) step didn't resolve properly. (CI-7912, ZD-43490)
+
+##### Hotfix version 3904
+
+This hotfix was released on June 5, 2023. This hotfix does not include customer-facing changes.
+
+#### May 23, 2023, version 3805
+
+Starting with the May 04, 2023 release, CI release notes use the CI Manager version number rather than the Harness Delegate version number.
+
+##### What's new
+
+Added support for showing artifacts on the **Artifacts** tab in Harness Cloud and VMs. (CI-7218)
+
+Previously, this was supported only for Kubernetes builds. The artifacts are visible on the execution **Artifact** tab and the artifact details are visible on the step output window.
+
+##### Early access
+
+Harness CI now supports remote debugging. This feature was initially released in January 2023 and subsequently reverted for further development. Debug mode is available if all of the following conditions are met:
+
+* You have the feature flag `CI_REMOTE_DEBUG` enabled. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+* The build infrastructure uses a Linux-based OS.
+* The build fails at a **Run** step with a Bash or Shell script in a **Build** (`CI`) stage.
+* The build runs in Harness Cloud, on a virtual machine, or in Kubernetes.
+
+You can re-run builds in debug mode through the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. For more information, go to the [debug mode](/docs/continuous-integration/troubleshoot-ci/debug-mode) documentation.
+
+##### Fixed issues
+
+* Fixed the [license usage](/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt) sort function. (CI-7945)
+* [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) now supports caching subdirectory builds. (CI-7853)
+* In step templates for **Run**, **Run Tests**, and **Background** steps, the `connectorRef` and `image` settings are now optional because these settings are not required for all build infrastructures. Validations are triggered when you use these templates in a pipeline that requires these settings. (CI-7845)
+* Previously, test splitting wouldn't work with step-level parallelism on a Kubernetes cluster build infrastructure due to the way certain environment variables were read. This is fixed. (CI-7800, CI-7803, ZD-43259, ZD-43272)
+* If you run a pipeline that uses a Kubernetes cluster build infrastructure and step templates with empty `connectorRef` and `image` values, the resulting error message is more accurate and informative. (CI-7785)
+* When manually running a pipeline, you can chose to run specific stages, rather than the entire pipeline. Previously, if you chose to run only stages with **Clone Codebase** disabled, you were blocked by a field validation error requiring you to populate the **Git Branch** and **Repository** fields, which weren't visible. This has been fixed so that you are only asked to provide codebase information if **Clone Codebase** is enabled for at least one of the selected stages. (CI-7559, CI-7934 ZD-41974, ZD-43980, ZD-44041)
+* If the GitLab SCM URL is of the form of anything other than `https://<domain>/project/repo.git`, then the API access fails for the connector. To fix this, a new field called `apiUrl` was added to the connector YAML. You can specify the new field to be used for all API requests. (CI-7838)
 
 #### May 04, 2023, version 3506
 
@@ -99,6 +195,7 @@ This release does not include early access features.
 * Build statuses are now updated as expected in BitBucket if the [BitBucket connector's Authentication settings](/docs/platform/connectors/code-repositories/ref-source-repo-provider/bitbucket-connector-settings-reference/#authentication) use a text secret for the **Username**. (CI-7576, ZD-41969)
 * Fixed an issue where looping strategies were not working for some steps. (CI-7499, ZD-41659)
 * When you [create a step template](/docs/continuous-delivery/x-platform-cd-features/templates/create-a-remote-step-template) for a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings), the **Container Registry** and **Image** fields are now optional because these fields are not required for all build infrastructures. (CI-7594, ZD-42131, ZD-43027)
+* Fixed an issue where [GCP connectors](/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/) that inherit credentials from a Delegate were erroneously reporting failed connection tests. (CI-7538)
 
 #### April 10, 2023, version 79015
 

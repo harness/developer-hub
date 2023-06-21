@@ -33,6 +33,123 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },
     //===================================================================================
+    
+    // Created by roshnisarangadharan from branch DOC-3192-remove-single-topic-folders on June 15 2023
+    
+    {
+      from: "/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos",
+      to: "/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg/asg-tutorial",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/aws/asg-tutorial",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/aws/lambda/aws-lambda-deployments",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot/spot-deployment",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/google/google-functions",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial",
+    },
+
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events",
+    },
+
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/builds/run-jenkins-jobs-in-cd-pipelines",
+    },
+
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/advanced/run-jenkins-jobs-in-cd-pipelines",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/builds/run-jenkins-jobs-in-cd-pipelines",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart",
+    },
+
+    {
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure",
+    },
+
+    // Created by aimurphy for branch doc-2550 on June 9, 2023
+
+    {
+      from: "/tutorials/build-code/ci-publish-allure-report",
+      to: "/tutorials/ci-pipelines/publish/artifacts-tab",
+    },
+
+    {
+      from: "/tutorials/build-code/test/allure-report",
+      to: "/tutorials/ci-pipelines/publish/artifacts-tab",
+    },
+
+    {
+      from: "/tutorials/ci-pipelines/test/allure-report",
+      to: "/tutorials/ci-pipelines/publish/artifacts-tab",
+    },
+
+    // Created by aimurphy for branch doc-1594 on June 8, 2023
+
+    {
+      from: "/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector",
+      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
+    },
+
+    {
+      from: "/docs/platform/Connectors/add-a-git-hub-connector",
+      to: "/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference",
+    },
+
+    // Created by aimurphy for DOC-3231 on June 7 2023
+
+    {
+      from: "/docs/continuous-integration/troubleshooting-ci",
+      to: "/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci",
+    },
+
+    {
+      from: "/docs/continuous-integration/use-ci/debug-mode",
+      to: "/docs/continuous-integration/troubleshoot-ci/debug-mode",
+    },
+
+    // Created by aimurphy for branch doc-2951 on May 4 2023
+
+    {
+      from: "/docs/continuous-integration/ci-quickstarts/drone-and-harness",
+      to: "/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins",
+    },
+
+    // Created by SudheendraKatte for branch cv-metric-log on May 31 2023
+
+    {
+      from:"/docs/continuous-delivery/verify/cv-concepts/verification-results",
+      to: "/docs/category/understand-cv-results",
+    },
 
     // Created by Charanya Jayaraman to fix CCM broken link on May 23 2023
 
@@ -141,18 +258,13 @@ module.exports = {
     },
 
     {
-      from: "/docs/category/troubleshoot-ci",
-      to: "/docs/continuous-integration/troubleshooting-ci",
-    },
-
-    {
       from: "/docs/category/troubleshoot-and-optimize-ci",
-      to: "/docs/continuous-integration/troubleshooting-ci",
+      to: "/docs/category/troubleshoot-ci",
     },
 
     {
       from: "/docs/continuous-integration/troubleshoot/troubleshooting-ci",
-      to: "/docs/continuous-integration/troubleshooting-ci",
+      to: "/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci",
     },
 
     {
@@ -291,7 +403,7 @@ module.exports = {
 
     {
       from: "/kb/continuous-delivery/continuous-verification-results",
-      to: "/docs/continuous-delivery/verify/cv-concepts/verification-results",
+      to: "/docs/category/understand-cv-results",
     },
 
     {
@@ -585,10 +697,6 @@ module.exports = {
       to: "/docs/platform/Connectors/Code-Repositories/connect-to-code-repo",
     },
     {
-      from: "/docs/platform/Connectors/add-a-git-hub-connector",
-      to: "/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector",
-    },
-    {
       from: "/docs/platform/Connectors/connect-to-a-azure-repo",
       to: "/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo",
     },
@@ -852,10 +960,6 @@ module.exports = {
       to: "/tutorials/ci-pipelines/test/saucelabs-proxy",
     },
     {
-      from: "/tutorials/build-code/test/allure-report",
-      to: "/tutorials/ci-pipelines/test/allure-report",
-    },
-    {
       from: "/tutorials/build-code/test/codecov",
       to: "/tutorials/ci-pipelines/test/codecov",
     },
@@ -1097,7 +1201,7 @@ module.exports = {
     },
     {
       from: "/docs/cloud-cost-management/monitor-cloud-cost-with-integration/integration/datadog-integration",
-      to: "/docs/cloud-cost-management/monitor-cloud-cost-with-integration/datadog-integration",
+      to: "/docs/cloud-cost-management/datadog-integration",
     },
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/ccm-perspectives/share-cost-perspective-report",
@@ -1306,10 +1410,6 @@ module.exports = {
     {
       from: "/tutorials/build-code/ci-tutorial-push-to-gar",
       to: "/tutorials/ci-pipelines/publish/google-gar",
-    },
-    {
-      from: "/tutorials/build-code/ci-publish-allure-report",
-      to: "/tutorials/ci-pipelines/test/allure-report",
     },
     {
       from: "/tutorials/build-code/ci-tutorial-codecov-test",
@@ -1703,6 +1803,12 @@ module.exports = {
 
 
     // Created by michael cretzman to fix CCM redirects on Apr 12, 2023
+    
+    {
+      from: "/docs/continuous-delivery/integrations/cd-integrations",
+      to: "/docs/continuous-delivery/cd-integrations",
+    },
+
     {
       from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/tanzu-app-services-quickstart",
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart",
@@ -1724,23 +1830,8 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/custom-deployment-tutorial",
-      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial",
-    },
-
-    {
-      from: "/docs/continuous-delivery/onboard-cd/cd-quickstarts/serverless-lambda-cd-quickstart",
-      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart",
-    },
-
-    {
       from: "/docs/continuous-delivery/cd-advanced/ticketing-systems-category/update-jira-issues-in-cd-Jira",
       to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-advanced/cd-notifications/notify-users-of-pipeline-events",
-      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events",
     },
 
     {
@@ -1760,7 +1851,7 @@ module.exports = {
 
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/cloud-integration/use-cloud-integration",
-      to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/use-cloud-integration",
+      to: "/docs/cloud-cost-management/getting-started-ccm/set-up-cloud-cost-management/use-quick-create-k8s",
     },
 
     {
@@ -1922,18 +2013,18 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure",
-      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure",
+      from: "/docs/continuous-delivery/cd-advanced/cd-helm-category/use-a-local-helm-chart",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/use-a-local-helm-chart",
     },
 
     {
       from: "/docs/continuous-delivery/cd-advanced/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts",
-      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts",
     },
 
     {
-      from: "/docs/continuous-delivery/cd-advanced/cd-helm-category/use-a-local-helm-chart",
-      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/use-a-local-helm-chart",
+      from: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts",
     },
 
     {
@@ -2034,11 +2125,6 @@ module.exports = {
     {
       from: "/docs/continuous-delivery/cd-execution/cd-general-steps/run-a-script-on-multiple-target-instances",
       to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/run-jenkins-jobs-in-cd-pipelines",
-      to: "/docs/continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines",
     },
 
     {
@@ -2804,12 +2890,13 @@ module.exports = {
     
     // Created by bfisher for SMP PR 1837 on May 23, 2023
     {
-      from: "/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm",
-      to: "/docs/self-managed-enterprise-edition/back-up-and-restore-helm",
-    },
-    {
       from: "/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem",
       to: "/docs/self-managed-enterprise-edition/monitor-harness-on-prem",
+    },
+    // PR-2012
+    {
+      from: "/docs/security-testing-orchestration/sto-techref-category/custom-ingest-scan-reference",
+      to:   "/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference",
     },
   ],
 };

@@ -34,7 +34,7 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 <StoScannerStepNotes />
 
 <details>
-    <summary>Step Palette</summary>
+    <summary>Scanner Template</summary>
 
 ![](static/step-palette-00.png) 
 
@@ -82,7 +82,6 @@ import StoSettingScanTypeCont     from './shared/step_palette/_sto-ref-ui-scan-t
 <a name="scan-type"></a>
 <StoSettingScanTypeCont />
 
-<a name="target-name"></a>
 
 #### Name 
 
@@ -92,7 +91,6 @@ import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 
 <StoSettingProductID />
 
-<a name="target-variant"></a>
 
 #### Variant
 

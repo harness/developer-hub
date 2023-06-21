@@ -12,9 +12,79 @@ Harness progressively deploys updates to different Harness cluster hosting accou
 
 Harness is updated regularly. This document describes recent changes.
 
-For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Release Notes](harness-on-prem-release-notes.md). Release notes are displayed with the most recent release first.
+For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Release Notes](harness-on-prem-release-notes.md). Release notes are displayed with the most recent release first.
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+### June 19, 2023, version 79606
+
+#### What's new
+
+- Service instances were not showing correctly for Tanzu deployments. (CDS-68737, ZD-42950)
+  
+	Some instances were not showing up on the **Services** dashboard. This fix ensures the **Services** dashboard shows the correct Tanzu instances.
+
+- Free, Community, and Paid accounts can now have a maximum of 100, 100, and 50000 users, respectively. (PL-39235)
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+This release does not include fixed issues.
+
+### June 09, 2023, version 79516
+
+#### What's new
+
+- Enhanced the application handling mechanism when the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE`. (CDS-68821)
+  
+  When the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE` for any of the releases of an application, Harness starts looking for the application that has the same name as the release name. This ensures that the correct active application is always picked in case the `HARNESS__STATUS__IDENTIFIER` is removed.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+#### Harness Manager delegate fixed issues
+
+The fixed issue below is available with version 79503 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+
+- Helm execution failed with `KubernetesClientException` error. (CDS-70386, ZD-45051)
+  
+  The Kubernetes GET APIs returned a 400 bad request during steady state check. This was occurring when Harness used a fabric8 client with Kubernetes cluster version < 1.16, or when the feature flag, `HELM_STEADY_STATE_CHECK` is turned off. 
+  
+  This issue is fixed.
+
+### June 01, 2023, version 79411
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+#### Harness Manager delegate fixed issues
+
+The fixed issue below is available with version 79411 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+
+- The `DMS_MONGO_URI` was missing from the ConfigMap of cg-manager for Self-Managed Enterprise Edition Helm installations. (PL-38850)
+
+   This issue is fixed. The `DMS_MONGO_URI` is included in the ConfigMap.
+
+#### All other Platform fixed issues
+
+- CD license utilization data was not reported for some accounts. (CDS-69101)
+  
+  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
+
+- HTML characters in the `userName` caused issues during deployments. The following characters are no longer allowed in the `userName`: `:` , `/` , `<` , `>` , `=` , `(` , `)`. (PL-24129)
 
 ### May 23, 2023, version 79306
 

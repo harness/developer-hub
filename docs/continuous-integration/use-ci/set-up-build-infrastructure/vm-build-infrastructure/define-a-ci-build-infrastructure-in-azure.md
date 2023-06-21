@@ -297,6 +297,6 @@ If you have problems running the delegate, runner, or VMs, you can collect debug
 ## See also
 
 * [Set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
-* For more details on VM Runner, visit this [GitHub](https://github.com/drone-runners/drone-runner-aws) page.
-* [Troubleshoot Continuous Integration](/docs/continuous-integration/troubleshooting-ci.md)
+* For more details on VM Runner, go to the [AWS Drone Runner GitHub repo](https://github.com/drone-runners/drone-runner-aws).
+* [Troubleshoot Continuous Integration](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md)
 

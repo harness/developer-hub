@@ -16,7 +16,7 @@
 | Describe Ephemeral Environments | [Get started with Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) |
 | Describe Harness Cloud Build Infrastructure | [Get started with Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart) |
 | Describe Connectors (you can use Source Providers, Artifact Repos, Cloud Providers, etc) | [Connectors](https://developer.harness.io/docs/category/connectors) |
-| Configure a Git Connector | [Add a GitHub Connector](https://developer.harness.io/docs/platform/Connectors/add-a-git-hub-connector) |
+| Configure a Git Connector | [GitHub connector settings reference](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference) |
 | Configure a DockerHub Connector | [Connect to Harness container image registry Using Docker connector](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/) |
 | Describe Harness Delegate role for the CI capability | [CI Pipeline Basics](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics) |
 | Secrets Management - How to retrieve and render secrets using Harness Expressions | [Add/Use Text Secrets](https://developer.harness.io/docs/platform/security/add-use-text-secrets/) |
@@ -69,7 +69,7 @@
 | Understand How to Parallel Steps in a Stage - K8s infra - Describe Limit vs Requests | [Speed up CI test pipelines using parallelism](https://developer.harness.io/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/) |
 |** 3. RBAC, Best Practices, and Small Configuration Tasks **                                                                  ||
 | Elaborate on Anonymous Docker Image pulls and its risks. | [Connect to Harness container image registry Using Docker connector](https://developer.harness.io/docs/platform/connectors/connect-to-harness-container-image-registry-using-docker-connector/#step-2-enter-credentials) |
-| Debug a Pipeline step by running the step locally (troubleshooting) | [Troubleshooting CI](https://developer.harness.io/docs/continuous-integration/troubleshoot/troubleshooting-ci/) |
+| Debug a Pipeline step by running the step locally (troubleshooting) | [Troubleshooting CI](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci) |
 | Configure Git Experience for CI (pipeline) | [Harness Git Experience quickstart](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/) |
 | Credentials and Permissions - Configure or Elaborate on User and Groups for Acc, Org, Project levels | [Role Based Access Control](https://developer.harness.io/docs/category/role-based-access-control) |
 | Describe Set Container Resources​ - Limit Memory and Limit CPU | [Set Container Resources](https://developer.harness.io/docs/continuous-integration/ci-technical-reference/run-step-settings/#set-container-resources) |

@@ -16,7 +16,7 @@ Harness Canary and [Blue Green](create-a-kubernetes-blue-green-deployment.md) st
 
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md)
 * [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests.md)
-* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md)
+* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md)
 
 ## What workloads can I deploy?
 
@@ -60,7 +60,7 @@ Harness provides a Canary group as a way to test the new build, run your verific
 
 When you add a Canary Strategy to a stage, Harness automatically generates the steps for Canary and Primary Deployment groups.
 
-If you're new to Kubernetes RollingUpdate deployments, see [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) from Kubernetes. That guide summaries Rolling Update and provides an interactive online tutorial.Although it isn't covered here, you can also scale your Workloads between the Canary and Rolling steps if you like. You simply add a new Phase and use the Scale step. See [Scale Kubernetes Pods](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas).
+If you're new to Kubernetes RollingUpdate deployments, go to [Performing a Rolling Update](https://kubernetes.io/docs/tutorials/kubernetes-basics/update/update-intro/) from Kubernetes. That guide summaries Rolling Update and provides an interactive online tutorial.Although it isn't covered here, you can also scale your Workloads between the Canary and Rolling steps if you like. You simply add a new Phase and use the Scale step. See [Scale Kubernetes Pods](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas).
 
 ## Visual summary
 
@@ -79,7 +79,7 @@ Create your CD Pipeline stage.
 To set up your Service and Infrastructure in the stage, follow the steps in these topics:
 
 * [Add Kubernetes Manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/define-kubernetes-manifests)
-* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure)
+* [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
 
 Once the Service and Infrastructure are set up, you can add the execution steps.
 
@@ -116,15 +116,15 @@ If you have `replicas: 3` in a manifest in Service, and you enter **50** for 
 
 #### Canary Delete step
 
-Since the **Canary Deployment** step was successful, it is no longer needed. The **Canary Delete** step is used to clean up the workload deployed by the **Canary Deployment** step. See [Canary Delete Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-canary-delete-step).
+Since the **Canary Deployment** step was successful, it is no longer needed. The **Canary Delete** step is used to clean up the workload deployed by the **Canary Deployment** step. For more information, go to [Canary Delete Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-canary-delete-step).
 
-For step on deleting other Kubernetes resources, you can use the standard **Delete** step. See [Delete Kubernetes Resources](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources).
+For step on deleting other Kubernetes resources, you can use the standard **Delete** step. For more details, go to [Delete Kubernetes Resources](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/delete-kubernetes-resources).
 
 ## Primary deployment rolling update
 
 The Primary Deployment group runs the actual deployment as a rolling update with the number of pods you specify in the Service Definition **Manifests** files (for example, `replicas: 3`).
 
-Click **Rolling Deployment**. For details on its settings, see [Kubernetes Rollout Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollout-step).
+Click **Rolling Deployment**. For details on its settings, go to [Kubernetes Rollout Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollout-step).
 
 Similar to application-scaling, during a rolling update of a Deployment, the Kubernetes service will load-balance the traffic only to available pods (an instance that is available to the users of the application) during the update.
 
@@ -271,7 +271,146 @@ my-nginx-7df7559456-xdwg5                 1/1       Running   0          9h
 
 ## Rollback
 
-See [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
+For more information, go to [Kubernetes Rollback](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback).
+
+## Using Horizontal Pod Autoscaler (HPA)
+
+:::info
+
+Currently, this functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+The Horizontal Pod Autoscaler (HPA) automatically scales ReplicationControllers, Deployments, ReplicaSets, or StatefulSets based on CPU utilization. Scaling is horizontal, as it affects the number of instances rather than the resources allocated to one container. Upon initial configuration, HPA can make scaling decisions based on custom or external metrics. All you need to do is define the minimum and maximum number of replicas and a trigger limit.
+
+Here's a sample HPA resource: 
+
+```yaml
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+ name: hpa
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: nginx-deployment
+ minReplicas: 1
+ maxReplicas: 10
+ targetCPUUtilizationPercentage: 50
+```
+Once configured, the HPA controller checks the metrics and scales your replicas accordingly. HPA checks metrics every 15 seconds by default.
+
+Here is a sample Kubernetes resource with stage color `blue`:
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: test-deployment
+  template:
+    metadata:
+      labels:
+        app: test-deployment
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+```
+
+HPA references its target using `kind` and `name`. After the initial rolling deployment, Harness creates a `test-deployment` deployment and a `test-hpa` HPA resource. For any subsequent Canary deployment, Harness creates a `test-deployment-canary` deployment and a `test-hpa-canary` HPA resource which updates the reference for the `test-deployment-canary` deployment. 
+
+```yaml
+apiVersion: autoscaling/v1
+kind: HorizontalPodAutoscaler
+metadata:
+ name: test-hpa-canary
+spec:
+ scaleTargetRef:
+   apiVersion: apps/v1
+   kind: Deployment
+   name: test-deployment-canary
+ minReplicas: 1
+ maxReplicas: 10
+ targetCPUUtilizationPercentage: 50
+```
+
+The release history contains the name of the HPA resource as part of list of resources.
+
+In the Canary Delete step, Harness deletes the resources based on the release history.
+
+## Using Pod Disruption Budget (PDB)
+
+:::info
+
+Currently, this functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+A Pod Disruption Budget (PDB) defines the budget for voluntary disruptions. To ensure baseline availability or performance, the PDB lets the cluster know the minimum threshold for pod availability.
+
+PDB can be applied for the following types of controllers:
+
+* Deployment
+* ReplicationController
+* ReplicaSet
+* StatefulSet
+
+Here's a sample PBD resource: 
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-deployment
+spec:
+  replicas: 10
+  selector:
+    matchLabels:
+      app: test-deployment
+  template:
+    metadata:
+      labels:
+        app: test-deployment
+    spec:
+      containers:
+      - name: nginx
+        image: nginx:latest
+        ports:
+        - containerPort: 80
+```
+
+After the initial rolling deployment, Harness creates a `test-deployment` deployment and a `test-pdb` PDB resource. For any subsequent Canary deployment, Harness creates a `test-deployment-canary` deployment and a `test-pdb-canary` PDB resource which updates the reference for the `test-deployment-canary` deployment. 
+
+```yaml
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  name: test-pdb-canary
+spec:
+  minAvailable: 1
+  selector:
+    matchLabels:
+      app: test-deployment-canary
+```
+
+Additionally, PDB updates selectors (`.spec.selectors`) to match the selectors of the deployment. 
+
+```yaml
+app=test-deployment
+harness.io/track=canary
+```
+
+The release history contains the name of the PDB resource as part of list of resources.
+
+In the Canary Delete step, Harness deletes the resources based on the release history.
 
 ## Important notes
 

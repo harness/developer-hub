@@ -13,14 +13,114 @@ import { experiments } from "./experiments"
 
 ## Introduction
 
-AWS faults disrupt the resources running on different AWS services from the EKS cluster. To perform such AWS chaos experiments, you will need to authenticate HCE with the AWS platform. This can be done in two ways.  
+AWS faults disrupt the resources running on different AWS services from the EKS cluster. To perform such AWS chaos experiments, you will need to authenticate CE with the AWS platform. This can be done in two ways.  
 
-- **Using secrets:** You can use secrets to authenticate HCE with AWS regardless of whether the Kubernetes cluster is used for the deployment. This is Kubernetes’ native way of authenticating HCE with AWS.
-- [**IAM integration:**](./aws-iam-integration) You can authenticate HCE using AWS using IAM when you have deployed chaos on the EKS cluster. You can associate an IAM role with a Kubernetes service account. This service account can be used to provide AWS permissions to the experiment pod which uses the particular service account.
+- **Using secrets:** You can use secrets to authenticate CE with AWS regardless of whether the Kubernetes cluster is used for the deployment. This is Kubernetes’ native way of authenticating CE with AWS.
+- [**IAM integration:**](./aws-iam-integration) You can authenticate CE using AWS using IAM when you have deployed chaos on the EKS cluster. You can associate an IAM role with a Kubernetes service account. This service account can be used to provide AWS permissions to the experiment pod which uses the particular service account.
 
 Here are AWS faults that you can execute and validate.
 
 <ExperimentListSection experiments={experiments} />
+
+<FaultDetailsCard category="aws">
+
+### NLB AZ down
+
+NLB AZ down takes down the access for AZ (Availability Zones) on a target network load balancer for a specific duration. This fault:
+- Restricts access to certain availability zones for a specific duration.
+- Tests the application's ability to handle the loss of availability zones and maintain uninterrupted traffic flow.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+
+- NLB AZ down fault disrupts the traffic routing through the network load balancer, testing the application's resilience to AZ failures.
+- Simulating network failures and verifying the application's ability to recover and redirect traffic appropriately.
+
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS Fargate Memory Hog
+
+ECS Fargate Memory Hog generates high memory consumption on a specific container in an ECS Fargate task. This fault:
+- Simulates a scenario where a task container consumes excessive memory, causing memory pressure and potential out-of-memory errors.
+- Tests the slowness and allocation capabilities of the ECS Fargate cluster.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+
+- Testing the ability of the ECS Fargate task to handle memory-intensive workloads and effectively manage memory resources.
+- Evaluating the impact of memory contention on the main container running in the task.
+
+</accordion>
+</FaultDetailsCard>
+<FaultDetailsCard category="aws">
+
+### Resource Access Restrict
+
+Resource Access Restrict restricts access to a specific AWS resource for a specific duration. This fault:
+- Tests the application's resiliency and error handling when access to a critical AWS resource is restricted.
+- Validates the application's ability to handle and recover from temporary resource unavailability.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+
+- Testing the application's response to restricted access to AWS resources, such as ec2, database storage.
+- Evaluating the application's error handling and recovery mechanisms in the face of resource unavailability.
+
+</accordion>
+</FaultDetailsCard>
+<FaultDetailsCard category="aws">
+
+### ECS Container Volume Detach
+
+ECS Container Volume Detach detaches a volume from a specific container running in an ECS task. This fault:
+- Simulates the detachment of a volume from a task container to test the application's resilience and data management capabilities.
+- Validates the application's ability to handle volume detachment scenarios and recover gracefully.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+
+- Testing the application's response to volume detachment, such as ensuring proper data persistence and handling of volume unavailability.
+- Verifying the application's recovery mechanisms when a volume is detached from a container.
+
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS Fargate CPU Hog
+
+ECS Fargate CPU Hog generates high CPU load on a specific task running in an ECS service. This fault:
+- Simulates a scenario where a task consumes excessive CPU resources, impacting the performance of other main container in the task.
+- Tests the slowness and resource allocation capabilities of the ECS Fargate task.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+
+- Testing the ability of the ECS Fargate task to handle CPU-intensive workloads and dynamically allocate resources.
+- Evaluating the impact of resource contention on other container running in the task.
+
+</accordion>
+</FaultDetailsCard>
+
+<FaultDetailsCard category="aws">
+
+### ECS Fargate Memory Hog
+
+ECS Fargate Memory Hog generates high CPU load on a specific task running in an ECS service. This fault:
+- Simulates a scenario where a task consumes excessive CPU resources, impacting the performance of other main container in the task.
+- Tests the slowness and resource allocation capabilities of the ECS Fargate task.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+
+- Testing the ability of the ECS Fargate task to handle CPU-intensive workloads and dynamically allocate resources.
+- Evaluating the impact of resource contention on other container running in the task.
+
+</accordion>
+</FaultDetailsCard>
 
 <FaultDetailsCard category="aws">
 

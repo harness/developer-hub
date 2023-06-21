@@ -44,7 +44,7 @@ export const FeaturedList: CardItem[] = [
         Use a Run step to include CodeCov code coverage.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "15 min",
     link: "/tutorials/ci-pipelines/test/codecov",
@@ -58,10 +58,21 @@ export const FeaturedList: CardItem[] = [
        Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: '9 min',
     link: "/tutorials/ci-pipelines/tfc-notification",
+  },
+  {
+    title: "Python application",
+    module: MODULES.ci,
+    description:
+      "Build and test a Python application.",
+    link: "/tutorials/ci-pipelines/build/python",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
   },
 ];
 
@@ -103,7 +114,7 @@ export const CIList: CardItem[] = [
     title: "Go application",
     module: MODULES.ci,
     description:
-      "Build a Go application.",
+      "Build and test a Go application.",
     link: "/tutorials/ci-pipelines/build/go",
     type: [docType.Documentation],
     time: "15 min",
@@ -113,7 +124,7 @@ export const CIList: CardItem[] = [
     title: "Java application",
     module: MODULES.ci,
     description:
-      "Build a Docker Image of Java application.",
+      "Build and test a Java application.",
     link: "/tutorials/ci-pipelines/build/java",
     icon: "img/icon_ci.svg",
     time: "15 min",
@@ -123,11 +134,44 @@ export const CIList: CardItem[] = [
     title: "NodeJS application",
     module: MODULES.ci,
     description:
-      "Build a Docker Image of a NodeJS application.",
+      "Build and test a NodeJS application.",
     link: "/tutorials/ci-pipelines/build/nodejs",
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
+  },
+  {
+    title: "Ruby application",
+    module: MODULES.ci,
+    description:
+      "Build and test a Ruby application.",
+    link: "/tutorials/ci-pipelines/build/ruby",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: false,
+  },
+  {
+    title: "Python application",
+    module: MODULES.ci,
+    description:
+      "Build and test a Python application.",
+    link: "/tutorials/ci-pipelines/build/python",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: false,
+  },
+  {
+    title: "iOS and macOS applications",
+    module: MODULES.ci,
+    description:
+      "Build and test an iOS or macOS application.",
+    link: "/tutorials/ci-pipelines/build/ios",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
   },
   {
     title: "Terraform Cloud notification triggers",
@@ -135,7 +179,7 @@ export const CIList: CardItem[] = [
     icon: "img/icon_ci.svg",
     description:
       "Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.",
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: '9 min',
     link: "/tutorials/ci-pipelines/tfc-notification",
@@ -169,14 +213,14 @@ export const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
-    newDoc: true,
+    newDoc: false,
   },
   {
-    title: "Publish Allure Report",
+    title: "Publish to the Artifacts tab",
     module: MODULES.ci,
     description:
-      "Publish an Allure Report.",
-    link: "/tutorials/ci-pipelines/test/allure-report",
+      "Publish any URL to the Artifacts tab.",
+    link: "/tutorials/ci-pipelines/publish/artifacts-tab",
     type: [docType.Documentation],
     time: "5 min",
     icon: "img/icon_ci.svg"

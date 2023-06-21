@@ -1,5 +1,5 @@
 ---
-sidebar_position: 5
+sidebar_position: 1
 title: Go application
 description: Use a CI pipeline to build and test a Go application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
@@ -12,6 +12,15 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
+
 You can build and test a [Go](https://go.dev/) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
@@ -21,6 +30,144 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 * [Kubernetes cluster pipeline tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm)
 
 <CISignupTip />
+
+## Install dependencies
+
+If necessary, add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install any dependencies.
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Harness Cloud">
+```
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: dependencies
+                  name: Dependencies
+                  spec:
+                    shell: Sh
+                    command: |-
+                      go get example.com/my-go-module
+```
+
+```mdx-code-block
+</TabItem>
+
+<TabItem value="Self-hosted">
+```
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: dependencies
+                  name: Dependencies
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: golang:latest
+                    command: |-
+                      go get example.com/my-go-module
+```
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+## Cache dependencies
+
+Add caching to your stage.
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Harness Cloud">
+```
+
+Cache your Go module dependencies with [**Cache Intelligence**](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence). Add `caching.enabled.true` to your `stage.spec`.
+
+```yaml
+    - stage:
+        spec:
+          caching:
+            enabled: true
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Self-hosted">
+```
+
+With self-hosted build infrastructures, you can:
+
+ * [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
+ * [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
+
+
+:::info Go cache key and path requirements
+
+Go pipelines must reference `go.sum` for `spec.key` in **Save Cache** and **Restore Cache** steps, for example:
+
+```yaml
+                  spec:
+                    key: cache-{{ checksum "go.sum" }}
+```
+
+Additionally, `spec.sourcePaths` must include `/go/pkg/mod` and `/root/.cache/go-build` in the **Save Cache** step, for example:
+
+```yaml
+                  spec:
+                    sourcePaths:
+                      - /go/pkg/mod
+                      - /root/.cache/go-build
+```
+
+:::
+
+<details>
+<summary>YAML example: Save and restore cache steps</summary>
+
+Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
+
+```yaml
+            steps:
+              - step:
+                  type: RestoreCacheS3
+                  name: Restore Cache From S3
+                  identifier: Restore_Cache_From_S3
+                  spec:
+                    connectorRef: AWS_Connector
+                    region: us-east-1
+                    bucket: your-s3-bucket
+                    key: cache-{{ checksum "go.sum" }}
+                    archiveFormat: Tar
+              - step:
+                  type: Run
+                  ...
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  ...
+              - step:
+                  type: SaveCacheS3
+                  name: Save Cache to S3
+                  identifier: Save_Cache_to_S3
+                  spec:
+                    connectorRef: AWS_Connector
+                    region: us-east-1
+                    bucket: your-s3-bucket
+                    key: cache-{{ checksum "go.sum" }}
+                    sourcePaths:
+                      - /go/pkg/mod
+                      - /root/.cache/go-build
+                    archiveFormat: Tar
+```
+
+</details>
+
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
 
 ## Build and run tests
 
@@ -52,7 +199,6 @@ Add [**Run**](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settin
 
 ```mdx-code-block
 </TabItem>
-
 <TabItem value="Self-hosted">
 ```
 
@@ -116,7 +262,6 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
 
 ```mdx-code-block
 </TabItem>
-
 <TabItem value="Self-hosted">
 ```
 
@@ -138,145 +283,6 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
                         paths:
                           - report.xml
 ```
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
-
-## Install dependencies
-
-If necessary, add a **Run** step to install any dependencies.
-
-```mdx-code-block
-<Tabs>
-<TabItem value="Harness Cloud">
-```
-
-```yaml
-              - step:
-                  type: Run
-                  identifier: dependencies
-                  name: Dependencies
-                  spec:
-                    shell: Sh
-                    command: |-
-                      go get example.com/my-go-module
-```
-
-```mdx-code-block
-</TabItem>
-
-<TabItem value="Self-hosted">
-```
-
-```yaml
-              - step:
-                  type: Run
-                  identifier: dependencies
-                  name: Dependencies
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: golang:latest
-                    command: |-
-                      go get example.com/my-go-module
-```
-
-```mdx-code-block
-</TabItem>
-</Tabs>
-```
-
-## Cache dependencies
-
-Add caching to your stage.
-
-```mdx-code-block
-<Tabs>
-<TabItem value="Harness Cloud">
-```
-
-Cache your Go module dependencies with [**Cache Intelligence**](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
-
-```yaml
-    - stage:
-        spec:
-          caching:
-            enabled: true
-```
-
-```mdx-code-block
-</TabItem>
-
-<TabItem value="Self-hosted">
-```
-
-With self-hosted build infrastructures, you can:
-
- * [Save and Restore Cache from S3](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache/)
- * [Save and Restore Cache from GCS](/docs/continuous-integration/use-ci/caching-ci-data/save-cache-in-gcs)
-
-<details>
-<summary>Go cache key and path requirements</summary>
-
-Go pipelines must reference `go.sum` for `spec.key` in **Save Cache** and **Restore Cache** steps, for example:
-
-```yaml
-                  spec:
-                    key: cache-{{ checksum "go.sum" }}
-```
-
-Additionally, `spec.sourcePaths` must include `/go/pkg/mod` and `/root/.cache/go-build` in the **Save Cache** step, for example:
-
-```yaml
-                  spec:
-                    sourcePaths:
-                      - /go/pkg/mod
-                      - /root/.cache/go-build
-```
-
-</details>
-
-<details>
-<summary>YAML example: Save and restore cache steps</summary>
-
-Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache from S3** steps.
-
-```yaml
-            steps:
-              - step:
-                  type: RestoreCacheS3
-                  name: Restore Cache From S3
-                  identifier: Restore_Cache_From_S3
-                  spec:
-                    connectorRef: AWS_Connector
-                    region: us-east-1
-                    bucket: your-s3-bucket
-                    key: cache-{{ checksum "go.sum" }}
-                    archiveFormat: Tar
-              - step:
-                  type: Run
-                  ...
-              - step:
-                  type: BuildAndPushDockerRegistry
-                  ...
-              - step:
-                  type: SaveCacheS3
-                  name: Save Cache to S3
-                  identifier: Save_Cache_to_S3
-                  spec:
-                    connectorRef: AWS_Connector
-                    region: us-east-1
-                    bucket: your-s3-bucket
-                    key: cache-{{ checksum "go.sum" }}
-                    sourcePaths:
-                      - /go/pkg/mod
-                      - /root/.cache/go-build
-                    archiveFormat: Tar
-```
-
-</details>
-
 
 ```mdx-code-block
 </TabItem>
@@ -346,7 +352,6 @@ If your application requires a specific version of Go, add a **Run** step to ins
 
 ```mdx-code-block
 </TabItem>
-
 <TabItem value="Self-hosted">
 ```
 
@@ -408,16 +413,14 @@ Specify the desired [Golang Docker image](https://hub.docker.com/_/golang) tag i
 
 ## Full pipeline examples
 
-Full pipeline examples based on the steps above.
+The following full pipeline examples are based on the partial examples above.
 
 ```mdx-code-block
 <Tabs>
 <TabItem value="Harness Cloud">
 ```
 
-Replace the bracketed values with corresponding values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and repository name.
-
-Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
+If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors) and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
 <summary>Pipeline with one specific Go version</summary>
@@ -485,8 +488,8 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: [your-code-repo-connector-ID] # replace with your connector ID
-        repoName: [your-repository-name] # replace with your repository name
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_REPO_NAME
         build: <+input>
 ```
 
@@ -563,8 +566,8 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: [your-code-repo-connector-ID] # replace with your connector ID
-        repoName: [your-repository-name] # replace with your repository name
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_REPO_NAME
         build: <+input>
 ```
 
@@ -572,13 +575,10 @@ pipeline:
 
 ```mdx-code-block
 </TabItem>
-
 <TabItem value="Self-hosted">
 ```
 
-Replace the bracketed values with corresponding values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector), kubernetes namespace, and repository name.
-
-Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
+If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), [Kubernetes cluster connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector), Kubernetes namespace, and repository name. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 <details>
 <summary>Pipeline with one specific Go version</summary>
@@ -627,8 +627,8 @@ pipeline:
                           - report.xml
           infrastructure:
             spec:
-              connectorRef: [your-kube-connector-ID] # replace with your connector ID
-              namespace: [your-kube-namespace] # replace with your namespace
+              connectorRef: YOUR_KUBERNETES_CONNECTOR_ID
+              namespace: YOUR_KUBERNETES_NAMESPACE
             type: KubernetesDirect
           platform:
             arch: Amd64
@@ -636,8 +636,8 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: [your-code-repo-connector-ID] # replace with your connector ID
-        repoName: [your-repository-name] # replace with your repository name
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_REPO_NAME
         build: <+input>
 ```
 
@@ -695,8 +695,8 @@ pipeline:
                           - report_*.xml
           infrastructure:
             spec:
-              connectorRef: [your-kube-connector-ID] # replace with your connector ID
-              namespace: [your-kube-namespace] # replace with your namespace
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_KUBERNETES_NAMESPACE
             type: KubernetesDirect
           platform:
             arch: Amd64
@@ -704,8 +704,8 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: [your-code-repo-connector-ID] # replace with your connector ID
-        repoName: [your-repository-name] # replace with your repository name
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_REPO_NAME
         build: <+input>
 ```
 

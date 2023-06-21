@@ -79,7 +79,7 @@ const config = {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "img/logo_dlp.svg",
+          src: "img/logo_pride.svg",
         },
         items: [
           /*{
@@ -199,6 +199,10 @@ const config = {
                 to: "docs/self-managed-enterprise-edition",
               },
               {
+                label: "Internal Developer Portal",
+                to: "docs/internal-developer-portal",
+              },
+              {
                 label: "Harness FirstGen",
                 to: "docs/first-gen",
               },
@@ -247,7 +251,12 @@ const config = {
           {
             position: "right",
             to: "kb",
-            label: "Knowledge Base",
+            label: "KB",
+          },
+          {
+            position: "right",
+            to: "community",
+            label: "Community",
           },
           {
             position: "right",
@@ -334,7 +343,7 @@ const config = {
               },
               {
                 label: "Forum",
-                to: "https://community.harness.io",
+                to: "https://discuss.harness.io",
               },
               {
                 label: "University",
@@ -342,7 +351,7 @@ const config = {
               },
               {
                 label: "Open Source",
-                to: "https://harness-community.github.io/",
+                to: "https://www.harness.io/open-source",
               },
               {
                 label: "YouTube",

@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-05-17T10:00
+date: 2023-06-08T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 9
 ---
@@ -18,16 +18,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
-## Latest - May 17, 2023, version 1.53.0
+## Latest - June 8, 2023, version 1.57.4
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+* Added the existing Typescript scanning library to Sonarqube scans so that Typescript is always supported. (STO-6007)
+* Added a `product_zip_max_size` setting to Checkmarx scans that enable you to override the maximum size of ZIP files uploaded to the STO pipeline (the default size is 200 MB). To override this setting in a Checkmarx scan step, add the `product_zip_max_size` setting and value (in MB) under **Settings (*optional*)**. (STO-5991)
 
-* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
+  ![](./static/checkmarx-zip-size-override-sto-5991.png)
 
-  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
 
 ```mdx-code-block
   </TabItem>
@@ -42,7 +43,9 @@ This release does not incude early-access features.
   <TabItem value="Fixed issues">
 ```
 
-* Fixed an issue that would sometimes cause long-running scans to fail with a `requests.exceptions.ReadTimeout` exception and scan results to be lost.  (STO-5907)
+* Fixed an issue where STO results were not showing up in output variables when using STO steps inside a step group in a security stage. (STO-6038, ZD-45802)
+
+* Updated the Golang library used in STO code to remediate CVE-2022-21698. (STO-5993) 
 
 ```mdx-code-block
   </TabItem>
@@ -54,6 +57,55 @@ This release does not incude early-access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### May 25, 2023, version 1.54.1
+
+##### New features
+
+* This release include new scanner templates, with simplified UIs and workflows, for the following scanners. (STO-5990)
+
+  * [AWS ECR](/docs/security-testing-orchestration/sto-techref-category/aws-ecr-scanner-reference)
+  * [AWS Security Hub](/docs/security-testing-orchestration/sto-techref-category/aws-security-hub-scanner-reference)
+  * [Brakeman](/docs/security-testing-orchestration/sto-techref-category/brakeman-scanner-reference)
+  * [Custom Ingest](/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference)
+  * [Nikto](/docs/security-testing-orchestration/sto-techref-category/nikto-scanner-reference)
+  * [Nmap](/docs/security-testing-orchestration/sto-techref-category/nmap-scanner-reference)
+  * [OWASP](/docs/security-testing-orchestration/sto-techref-category/owasp-scanner-reference)
+  * [Prowler](/docs/security-testing-orchestration/sto-techref-category/prowler-scanner-reference)
+
+* The **Account Settings** > **Subscriptions** page has a new **Activity & Usage** section that shows the number of security scans and user activity over the past 30 days. (STO-4942)
+
+* This release includes a minor UI update. In **Security Tests** > **Details**, the **Exempt** button has been renamed to **Request Exemption** to make the button's purpose more clear. (STO-5928)
+
+##### Early-access features
+
+This release does not incude early-access features. 
+
+##### Fixed issues
+
+* Fixed a UI issue where **Security Tests** would briefly display the message "No issues were found" when the window initially loaded. (STO-5927)
+
+* Fixed an issue in non-Kubernetes builds where a scan would not produce output variables. This meant that failing a pipeline using `fail_on_severity` was not supported on non-Kubernetes builds.  Now, STO can generate output variables and fail pipelines using `fail_on_severity` on all supported build infrastructures. (STO-5483)
+
+
+
+#### May 17, 2023, version 1.53.0
+
+##### New features
+
+* Code snippets in Security Issue details are now displayed in the UI with syntax highlighting. (STO-5959)
+
+  ![](./static/sto-context-highlite-code-snippets-sto-5959.png)
+
+##### Early access
+
+This release does not incude early-access features. 
+
+##### Fixed issues
+
+* Fixed an issue that would sometimes cause long-running scans to fail with a `requests.exceptions.ReadTimeout` exception and scan results to be lost.  (STO-5907)
+
+
 
 #### May 10, 2023, version 1.50.3
 
@@ -84,6 +136,10 @@ This release does not incude early-access features.
 
 
 ##### Fixed issues
+
+* Fixed a UI issue to ensure that all input fields related to STO security steps appear the Template Studio view. (STO-5746, ZD-42167)
+
+* Fixed a UI issue where the **Default Project** and **Default Issue Type** drop-downs in the External Tickets settings page always used the account-level Jira connector, even when a different connector was selected on the project- or organization-level settings page. (STO-5756)
 
 * Fixed an issue with Mend scans that caused builds to fail with the log message “Missing valid image". (STO-5867)
 

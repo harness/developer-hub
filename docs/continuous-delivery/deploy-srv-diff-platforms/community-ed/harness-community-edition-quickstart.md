@@ -54,7 +54,7 @@ Harness takes care of the rest.
 Harness CD Community Edition has two main components:
 
 * **Harness Manager:** the Harness Manager is where your CD configurations are stored and your pipelines are managed.
-  * After you install Harness, you sign up in the Manager at <http://localhost/#/signup>.
+  * After you install Harness, you sign up in the Manager at `http://localhost/#/signup`.
   * Pipelines are triggered manually in the Harness Manager or automatically in response to Git events, schedules, new artifacts, and so on.
 * **Harness Delegate:** the Harness Delegate is a software service you install in your environment that connects to the Harness Manager and performs tasks using your container orchestration platforms, artifact repositories, etc. 
   * You can install a Delegate inline when setting up connections to your resources or separately as needed. This guide will walk you through setting up a Harness Delegate inline.
@@ -223,7 +223,6 @@ We'll create a quick CD pipeline that deploys a public manifest and image to a l
                                       skipDryRun: false  
                                   timeout: 10m  
                         rollbackSteps: []  
-                    serviceDependencies: []  
                 tags: {}  
                 failureStrategies:  
                     - onFailure:  
@@ -233,11 +232,14 @@ We'll create a quick CD pipeline that deploys a public manifest and image to a l
                               type: StageRollback
   ```
 1. In Pipeline Studio, select **YAML**.
+   
   ![](./static/harness-community-edition-quickstart-134.png)
+
 2. Select **Edit YAML**.
 3. Replace the YAML contents with the YAML you copied above.
 4. Select **Save**.
 5. Select **Visual**. The new pipeline is created.
+   
   ![](./static/harness-community-edition-quickstart-135.png)
 
   Let's quickly review some key pipeline concepts:
@@ -291,16 +293,18 @@ This Delegate will perform all operations at runtime.
 12. In **Secret Value**, paste in a GitHub Personal Access Token (PAT). When you're logged into GitHub, these are typically listed at <https://github.com/settings/tokens>.
   For steps on setting up a GitHub PAT, see [Creating a personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) from GitHub.
   Ensure you PAT has the **repo** scope selected:
+
   ![](./static/repoScope.png)
-1. Select **Save**, and then select **Continue**.
-2. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then **Continue**.
-3. In **Delegates Setup**, select **Install a New Delegate**.
-4. Select **Kubernetes**, and then select **Continue**.
-5. Enter a name **quickstart** for the Delegate, select the **Laptop** size, and then select **Continue**.
-6. Select **Download YAML file**.
+
+13. Select **Save**, and then select **Continue**.
+14. In **Connect to the provider**, select **Connect through a Harness Delegate**, and then **Continue**.
+15. In **Delegates Setup**, select **Install a New Delegate**.
+16. Select **Kubernetes**, and then select **Continue**.
+17. Enter a name **quickstart** for the Delegate, select the **Laptop** size, and then select **Continue**.
+18. Select **Download YAML file**.
   The YAML file for the Kubernetes Delegate will download to your computer. 
 
-7. Open a terminal and navigate to where the Delegate file is located.If you're using a remote Kubernetes cluster, go to [notes](#notes) below.
+19. Open a terminal and navigate to where the Delegate file is located.If you're using a remote Kubernetes cluster, go to [notes](#notes) below.
 
     On a terminal, run this command:
 
@@ -309,13 +313,13 @@ This Delegate will perform all operations at runtime.
     ```
 
     This installs the Delegate into the default cluster that comes with Docker Desktop Kubernetes. It can take a few minutes for the Delegate pod to run.
-8. Run `kubectl get pods -n harness-delegate-ng` to verify that it is **Ready: 1/1** and **Status: Running**.
-1. Back in Harness, select **Continue**.
-2. Once the Delegate registers, select **Done**.
-3. In **Delegates Setup**, select **Connect only via Delegates which has all of the following tags**, and then select the tag for your new Delegate (**quickstart**).
-4. Select **Save and Continue**.
-5. The **Connection Test** should prove successful. If not, review your credentials.
-6. Select **Finish**.
+20. Run `kubectl get pods -n harness-delegate-ng` to verify that it is **Ready: 1/1** and **Status: Running**.
+21. Back in Harness, select **Continue**.
+22. Once the Delegate registers, select **Done**.
+23. In **Delegates Setup**, select **Connect only via Delegates which has all of the following tags**, and then select the tag for your new Delegate (**quickstart**).
+24. Select **Save and Continue**.
+25. The **Connection Test** should prove successful. If not, review your credentials.
+26. Select **Finish**.
 
 #### Repository name
 
@@ -333,7 +337,7 @@ Here you'll create a connection to the target cluster for this CD stage.
 1. Select the **Connector** dropdown menu, and then select **New Connector**.
 2. In **Name**, enter **localK8s**, and then select **Continue**.
 3. In **Details**, select **Use the credentials of a specific Harness Delegate**, and then select **Continue**.
-   + If you are running a local Delegate but using a target cluster that does not have a Delegate installed in it, select **Specify master URL and credentials**, and then go to [notes](#notes) below.
+   + If you are running a local Delegate but using a target cluster that does not have a Delegate installed in it, select **Specify master URL and credentials**, and then go to [Notes](#notes) below.
 4. In **Delegates Setup**, select **Connect only via Delegates which has all of the following tags**, and then enter and select **quickstart**. The Delegate you added earlier is selected.
 5. Select **Save and Continue**.
 6. In **Connection Test**, select **Finish**.

@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-05-23T10:00:20
+date: 2023-06-20T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -15,12 +15,111 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - May 23, 2023, version 79306
+## Latest - June 19, 2023, version 79600
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+
+This release does not include any new features.
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not include any early access features.
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+- SLOs were getting stuck in the recalculation state even after the recalculation process was complete. (SRM-14849)  
+  
+  This issue has been resolved. Now, the SLOs transition to the appropriate state once the recalculation has finished successfully.
+
+- When configuring a Deploy stage and selecting a value in the **Propagate from** field to propagate a service from the previous parallel stage, an error would occur when attempting to create a monitored service. (SRM-12454)  
+  
+  This issue has been resolved. You can now successfully create a monitored service even when selecting a value in the **Propagate from** field to propagate a service from the previous parallel stage.
+
+- The Monitored Service Listing page was not displaying the latest updated monitored service first. (SRM-14845)  
+  
+  This issue has been resolved. Now, the monitored service list is sorted in the following order:
+
+  - A monitored service with the most recent update will be displayed at the top of the list.
+
+  - If a monitored service has been updated with new analysis data, it is given higher priority and displayed before other services on the list.
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Hotfix version 79608">
+
+  #### Released June 20, 2023
+
+  - Optimized Prometheus API calls by grouping per-host calls into a single call using the 'by' clause. As a result, the number of API calls to the Prometheus server during verification is reduced, leading to improved overall performance and efficiency in data retrieval and processing. (OIP-552)
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+
+#### June 09, 2023, version 79517
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- Unable to select multiple environments when creating a monitored service for infrastructure. (SRM-14794)  
+  
+  This issue has been resolved. You can now select multiple environments when creating a monitored service for infrastructure.
+
+
+#### June 05, 2023, Hotfix version 79416
+
+This release does not include any customer-facing changes.
+
+
+#### June 01, 2023, version 79413
+
+##### What's new
+
+- Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- The ErrorBudgetReset API is incorrectly accepting Rolling type SLOs along with Calendar type SLOs. (SRM-14692)  
+
+  This issue has been resolved. Now, the ErrorBudgetReset API only accepts Calendar type SLOs.
+
+- Unable to create SLO using SignalFX metrics. (OIP-406)  
+
+  This issue has been resolved. Now, SignalFX's health source supports SLI functionality, and you can create SLOs using SignalFX metrics.
+
+
+#### May 23, 2023, version 79307
+
+##### What's new
 
 - Continuous Error Tracking (CET) is a separate module in Harness now and no longer available as a health source in SRM. To learn more about CET, go to the [Continuous Error Tracking Documentation](https://developer.harness.io/docs/continuous-error-tracking). (SRM-14701)
 
@@ -37,23 +136,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   Now, errors are displayed in the following scenarios:
   
   - Ongoing Problem: Errors are displayed when an SLO experiences an ongoing problem, such as an issue with the health of a connector.
-  - 
+  
   - Missing Data: Errors are shown when there is missing data in an SLO, even if there is no current error. This helps identify any gaps in historical SLO records.
-  - 
+  
   - Contributing SLO Issues: Errors in contributing SLOs are now reflected in the composite SLO, ensuring a complete picture of performance when individual components encounter problems.
 
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
 
 - Error budget burn rate notifications are not being sent for Request Based SLO. (SRM-14705).  
   
@@ -78,16 +170,6 @@ This release does not include any early access features.
 - Missing data in SLOs was not considered in error budget burn rate notifications. (SRM-14682)  
 
   - This issue has been resolved. Now the missing data is treated according to user preference (GOOD, BAD, or IGNORE), contributes to error budget burn rate, and is included in notifications.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 04, 2023, version 79214
 
@@ -128,6 +210,11 @@ This release does not include any early access features.
 - For CloudWatch CV connector, IRSA was not supported for connectivity. (SRM-13907)
 
   Support for IRSA connectivity was added.
+
+- Unable to create notifications while configuring composite SLO at account level. (14474)
+  
+  This issue has been resolved. Now, you can create notifications for composite SLOs at the account level. 
+
 
 #### April 10, 2023, version 79015
 
