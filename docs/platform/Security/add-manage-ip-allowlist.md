@@ -9,7 +9,7 @@ Currently, this feature is behind the feature flag `PL_IP_ALLOWLIST_NG`. Contact
 :::
 
 
-Management of the IP allowlist involves reviewing and updating the list of approved IP addresses regularly to ensure that only authorized users are granted access. After you add and enable an IP allowlist, only users connecting from the IP address/[CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) block may log into Harness.
+Management of the IP allowlist involves reviewing and updating the list of approved IP addresses regularly to ensure that only authorized users are granted access. After you enable IP allowlist, only users connecting from the configured IP address/[CIDR](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) block will be able to log into Harness.
 
 The following are some key benefits of IP allowlist management:
 
@@ -27,6 +27,7 @@ This topic explains how to set up an IP allowlist in Harness.
 
 ## Important
 - Make sure you have **View**, **Create/Edit**, and **Delete** permissions for **Authentication Settings** to add and manage IP allowlists.
+- Please ensure that your IP is added first when configuring IP allowlist else you'll lose access
 - Harness returns a status code of HTTP 401 if an IP address is not allowlisted but tries to access Harness.
 - An allowlist can be based on IPv4 or IPv6 or a mix of both.
 - The following are the exceptions to the IP allowlist in Harness:
