@@ -46,7 +46,7 @@ This release does not incude early-access features.
 
 * A defective Zap runner image was rebuilt to resolve failures in orchestrated Zap scans. (STO-6094, ZD-46330)
 
-* In the "Request Exemption" dialog, the extended reason description text box is now required only when the "Other" exemption reason is selected. (STO-5942)
+* In the **Request Exemption** dialog, you need to provide a reason only when the **Other** exemption reason is selected. (STO-5942)
 
 ```mdx-code-block
   </TabItem>
