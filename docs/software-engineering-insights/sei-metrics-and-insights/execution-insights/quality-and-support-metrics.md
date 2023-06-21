@@ -38,8 +38,8 @@ Select a metric to use for the Y-axis. The Issues Report widget supports the fol
 * **X-axis:** Select the attribute to use for the X-axis. For example, if you selected the **Number of Tickets** metric for the Y-axis, you could select **Issues Resolved by week** for the X-axis. Additional examples of X-axis dimensional attributes include **Project**, **Assignee**, **Labels**, **Priority**, and so on.
 * * **Stacks:** Select how you want to group data in each X-axis dimension. For example, if you select **Priority** for the X-axis and stack by **Status Category**, then data in each X-axis column are grouped by status.
 
-<!-- Figure 1: An Issues Report widget configured to show <b>Ticket count</b> on the Y-axis and <b>Priority</b> across the X-axis. For each Priority, the issues are stacked by <b>Status</b>. -->
-<!-- img https://files.gitbook.com/v0/b/gitbook-x-prod.appspot.com/o/spaces%2FEb01tnHrNFJhZsvID4IW%2Fuploads%2Fgtbk8giItf7dlTVo92h9%2Fimage.png?alt=media&#x26;token=a0166b30-465b-48ed-9396-2d85600d45f0 - Issues Report widget example -->
+<!--Figure 1: An Issues Report widget configured to show <b>Ticket count</b> on the Y-axis and <b>Priority</b> across the X-axis. For each Priority, the issues are stacked by <b>Status</b>.-->
+<!-- mg spaces%2FEb01tnHrNFJhZsvID4IW%2Fuploads%2Fgtbk8giItf7dlTVo92h9%2Fimage.png - Issues Report widget example-->
 
 #### Settings
 
@@ -80,7 +80,7 @@ Category Score = ( Number of Tickets Missing Hygiene / Total Number of Tickets i
 Total Score = Sum of Category Scores
 ```
 
-<!-- image .gitbook/assets/image (72).png - Active Sprint Hygiene Insights widget -->
+<!--image .gitbook/assets/image (72).png - Active Sprint Hygiene Insights widget-->
 
 ### Configure the Issue Hygiene Report widget
 
@@ -95,7 +95,7 @@ The following options are available when configuring the Issue Hygiene Report wi
 * **Filters:** Filters can be blank or filtered down to a desired ticket type or time frame.
 * **Weights:** Configure the weight for each **Hygiene Criteria**. A lower weight causes a criterion to have a lower impact on the overall score, and a higher weight causes a criterion to have a larger impact on the overall score. Make sure the total of all weights equals 100.
 
-   <!-- image - /.gitbook/assets/image (71).png -- Issue Hygiene Report widget config - Weights tab -->
+<!--image - .gitbook/assets/image (71).png -- Issue Hygiene Report widget config - Weights tab-->
 
 * **Settings:** Select the issue management system to use for this widget. Available options are based on your configured integrations.
 
@@ -114,7 +114,7 @@ Here are some examples of configurations for the Issue Hygiene Report widget.
 
 You can configure the widget to show your team's current sprint only. To do this, go to the **Filter** tab, select **Sprint**, and then select **Includes Active Sprints Only**.
 
-<!-- img .gitbook/assets/image (55).png - Configure issue hygiene report -- filters tab - include active sprints only -->
+<!--img .gitbook/assets/image (55).png - Configure issue hygiene report -- filters tab - include active sprints only-->
 
 </details>
 
@@ -123,7 +123,7 @@ You can configure the widget to show your team's current sprint only. To do this
 
 _Dashboard time_ is the time range selected by the user when viewing the dashboard. You can configure the widget to show the hygiene score for all tickets created in the user-selected dashboard time. To do this, go to the **Filter** tab, select **Issue Created In**, and then select **Use Dashboard Time**.
 
-<!-- img .gitbook/assets/image (33).png - Configure issue hygiene report -- filters tab - use dashboard time -->
+<!--img .gitbook/assets/image (33).png - Configure issue hygiene report -- filters tab - use dashboard time-->
 
 </details>
 
@@ -132,7 +132,7 @@ _Dashboard time_ is the time range selected by the user when viewing the dashboa
 
 You can configure the widget to show the hygiene score for all in-progress tickets. To do this, go to the **Filter** tab, select **Status**, and then select the statuses that correspond to in-progress tickets.
 
-<!-- img .gitbook/assets/image (64).png - Configure issue hygiene report -- filters tab - filter by in progress tickets -->
+<!--img .gitbook/assets/image (64).png - Configure issue hygiene report -- filters tab - filter by in progress tickets-->
 
 </details>
 
@@ -141,7 +141,7 @@ You can configure the widget to show the hygiene score for all in-progress ticke
 
 You can configure the widget to show the hygiene score for all tickets in your backlog. To do this, go to the **Filter** tab, select **Status**, and then select the statuses that correspond to backlog tickets.
 
-<!-- img .gitbook/assets/image (47).png - Configure issue hygiene report -- filters tab - filter by status "to do" -->
+<!--img .gitbook/assets/image (47).png - Configure issue hygiene report -- filters tab - filter by status "to do"-->
 
 </details>
 
