@@ -23,7 +23,7 @@ Rollback deployment initiates a rollback of your most-recent successful deployme
 * Only the rollback steps that are part of the stage can be rolled back.
 * You cannot rollback the same pipeline multiple times. You can perform rollback if the pipeline is executed again.
 * If the pipeline configuration has changed between executions, the previous execution YAML is used as reference to rollback.
-* If the rollback steps of a stage have the same expressions present in the steps of a successful deployment, the steps of the deployed pipeline must be resolved first. For example, you should be able to reuse a step in the rollback section as the output of a step in the steps section.
+* You can refer expressions used in a step executed during the pipeline execution in the deployment rollback step. The expressions are automatically resolved with values from the original execution in the deployment rollback step.
 * The stages should rollback in reverse order when rollback deployment is triggered. 
 
 ## Rollback deployments
