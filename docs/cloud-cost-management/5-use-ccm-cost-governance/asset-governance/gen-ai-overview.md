@@ -13,7 +13,7 @@ Asset governance policies play a crucial role in governing and optimizing costs 
 The Harness AIDA offers comprehensive support with the following functionalities:
 
 * Assists in writing rules based on specific requirements: Helps you formulate rules tailored to your specific needs. By understanding your requirements, it generates customized rules to align with your governance objectives.
-* Provides descriptions of existing rules: Offers detailed descriptions of pre-existing rules. This feature allows you to gain a clear understanding of the purpose, scope, and implications of each rule, facilitating informed decision-making during the policy creation process.
+* Provides descriptions of existing rules: Offers detailed descriptions of pre-existing rules. This feature allows you to understand the purpose, scope, and implications of each rule, facilitating informed decision-making during the policy creation process.
 
 ## Visual summary
 
