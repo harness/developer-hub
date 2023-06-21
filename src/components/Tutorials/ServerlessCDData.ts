@@ -19,7 +19,7 @@ import { MODULES } from "../../constants";
           module: MODULES.cd,
           description:
             "Deploy a Serverless Google Cloud Function.",
-          link: "tutorials/cd-pipelines/serverless/gcp-cloud-func",
+          link: "/tutorials/cd-pipelines/serverless/gcp-cloud-func",
         },
       ],
     },
