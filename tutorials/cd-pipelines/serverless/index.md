@@ -1,14 +1,14 @@
 ---
-sidebar_position: 1
+sidebar_position: 5
 hide_table_of_contents: true
 hide_title: true
-title: Kubernetes
+title: Serverless
 ---
 
-<!-- # CD K8S -->
+<!-- # Serverless -->
 
 <!-- Custom component -->
 
-import ContinuousDeliveryK8S from '@site/src/components/Tutorials/ContinuousDeliveryK8S';
+import ServerlessCD from '@site/src/components/Tutorials/ServerlessCD';
 
-<ContinuousDeliveryK8S />
+<ServerlessCD />
