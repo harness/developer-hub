@@ -59,12 +59,6 @@ This release does not include any early access features.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Hotfix (ET-Service 5.24.3)">
-```
-
-
-```mdx-code-block
-  </TabItem>
 </Tabs>
 ```
 
