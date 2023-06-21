@@ -1,24 +1,18 @@
 ---
-title: Setup access to OCI Helm repository in private AWS ECR
-description: This topic describes how can we rotate token for accessing AWS ECR where we can store OCI Helm repository.
+title: Store and access OCI Helm repository in private Amazon ECR
+description: This topic describes how to store OCI Helm repository in private Amazon ECR, and access them by rotating tokens.
 sidebar_position: 8
-helpdocs_topic_id: lf6a27usso
-helpdocs_category_id: 013h04sxex
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
-This topic describes how can we rotate token for accessing AWS ECR where we can store OCI Helm repository.
-It will assume that OCI Helm repository is created following procedure described [here](./add-a-harness-git-ops-repository.md#option-oci-helm-repository)
+This topic assumes that you have already created as [OCI Helm repository](/docs/continuous-delivery/gitops/add-a-harness-git-ops-repository#add-a-repository).
 
-When storing OCI Helm repository in AWS ECR to access we need to obtain a token which is short lived and gets rotated. Gitops repositories are stored in kubernetes secrets, and in order for Gitops to be able to pull from AWS ECR we need to rotate credentials stored in a secret.
-There are two solutions that can help us to achieve this [External Secrets Operator](https://external-secrets.io) and [Argocd ECR Updater](https://artifacthub.io/packages/helm/argocd-aws-ecr-updater/argocd-ecr-updater).
-We will describe `External Secrets Operator` procedure.
+When storing an OCI Helm repository in Amazon Elastic Container Registry (Amazon ECR), you must obtain a token. The Amazon ECR tokens are short-lived, hence need rotation. 
 
-## External Secrets Operator
+GitOps repositories are stored in Kubernetes secrets. For GitOps to be able to pull these repositories from Amazon ECR, you have to rotate the credentials stored in the secret. You can use [External Secrets Operator](https://external-secrets.io) and [ArgoCD ECR Updater](https://artifacthub.io/packages/helm/argocd-aws-ecr-updater/argocd-ecr-updater) to achieve this.
 
+In this topic, we will walk you through how to use the external secrets operator.
 
-First lets install External Secrets into cluster where argocd is installed.
+## Install external secrets in the cluster where Argo CD is installed
 
 ```bash
 helm repo add external-secrets https://charts.external-secrets.io
@@ -29,10 +23,16 @@ external-secrets/external-secrets \
 --set installCRDs=true
 ```
 
-This will install external secret operator allong with necessary CRDs. External Secret operator has `ClusterSecretStore` and `ExternalSecret` CRDs that are used to manage secrets update. `ClusterSecretStore` defines secret storage, while `ExternalSecret` connects storage and destination kubernetes secret to get updated.
-There is additional CRDs `ECRAuthorizationToken` which is Generator and it will be used instead of `ClusterSecretStore` in our setup.
+The above commands installs the external secret operator with necessary Custom Resource Definitions (CRDs). 
+   
+The external secret operator has `ClusterSecretStore` and `ExternalSecret` CRDs that are used to manage the secrets update. `ClusterSecretStore` defines secret storage, whereas `ExternalSecret` connects the Kubernetes secret's storage and destination.
+   
+There is an additional CRD, `ECRAuthorizationToken` that generates the token. We will use this token instead of `ClusterSecretStore` in this setup.
 
-Lets create AWS credentials kubernetes secret that we will use in generator (example credentials used, replace them with your values). 
+## Create AWS credentials in Kubernetes secret
+   
+Use the following command to create AWS credentials in Kubernetes secret: 
+
 ```bash
 export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
 export AWS_SECRET_ACCESS_KEY=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
@@ -41,8 +41,12 @@ echo -n AWS_SECRET_ACCESS_KEY > ./secret-access-key
 echo -n AWS_ACCESS_KEY_ID  > ./access-key  
 kubectl create secret generic awssm-secret --from-file=./access-key  --from-file=./secret-access-key
 ```
+The credentials used below are samples only. Use your actual credentials.
 
-Create generator.yaml with contents like this. We reference previously created credentials `awssm-secret` secret.
+## Create Generator YAML
+
+The credentials created in the previous step `awssm-secret` is referenced here.
+   
 ```yaml
 apiVersion: generators.external-secrets.io/v1alpha1
 kind: ECRAuthorizationToken
@@ -66,12 +70,19 @@ spec:
         name: "awssm-secret"
         key: "secret-access-key"
 ```
-Apply yaml
+
+## Apply Generator YAML
+
+Apply the `generator.yaml` using the following command: 
+
 ```bash
 kubectl apply -f generator.yaml
 ```
 
-Now, we need to get secret name that contains OCI Helm Repo data. When repository is created in your argocd namespace you will see something like this.
+## Create external secrets
+
+The repository created in your Argo CD namespace looks something like this: 
+
 ```bash
 kubectl get secret -n <namespace>
 repo-1281561554                   Opaque   4      27d
@@ -82,10 +93,15 @@ repo-2937759919                   Opaque   4      27d
 repo-2968584119                   Opaque   5      27d
 repo-3429865765                   Opaque   3      19h
 ```
-e.g.
+
+Obtain the secret name that contains the OCI Helm repository data. For example, to obtain the secret name of `repo-2529854065`, use the following command: 
+
 ```bash
 kubectl get secret repo-2529854065 -n <namespace> -o yaml
 ```
+
+The output of the command looks something like this: 
+
 ```yaml
 apiVersion: v1
 data:
@@ -107,7 +123,8 @@ metadata:
 type: Opaque```
 ```
 
-Next we create `ExternalSecret` that will update that secret using previously configured generator
+Create `ExternalSecret` that will update the secret using the previously configured `generator.yaml`: 
+
 ```yaml
 apiVersion: external-secrets.io/v1beta1
 kind: ExternalSecret
@@ -128,17 +145,18 @@ spec:
         kind: ECRAuthorizationToken
         name: "ecr-gen"
 ```
-* ecr-gen - references previously configured generator
+In the above YAML: 
 
-* name - must match secret name that represents OCI Helm repository
-
-* creationPolicy - `Merge` means that External Secret operator expects that secret is already created and it will just add data specified in template
-
-
-    template:
-      data:
-        password: "{{ .password  }}"
-* templating enables a way to change, parse output of generator and then inject into secret, we will use it just to inject password unchanged.
+* `ecr-gen` references the previously configured `generator.yaml`.
+* `name` must match secret name that represents the OCI Helm repository.
+* `creationPolicy: Merge` means that the external secret operator expects that the secret is already created, and will only add the data specified in the template.
+  
+  ```
+  template:
+    data:
+      password: "{{ .password  }}"
+  ```     
+* `template` enables a way to change, parse output of generator, and then inject it into the secret. Here, we use it just to inject the unchanged password.
 
 
 
