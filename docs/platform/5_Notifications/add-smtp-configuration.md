@@ -58,13 +58,15 @@ Click **Continue**.
 Enter the username and password for the email account.
 
 ![](./static/add-smtp-configuration-credentials.png)
+
 Click **Continue**.
 
 ### Step 4: Delegate Setup
 
-In **Delegates** **Setup**, use [**Selectors**](../../Delegates/manage-delegates/select-delegates-with-selectors#option-select-a-delegate-for-a-connector-using-tags) to select any specific **Delegates** that you want to use.
+In **Delegates Setup**, use [**Selectors**](../../Delegates/manage-delegates/select-delegates-with-selectors#option-select-a-delegate-for-a-connector-using-tags) to select any specific **Delegates** you want to use.
 
 ![](./static/smtp-delegate.png)
+
 Click **Save and Continue**.
 
 ### Step 5: Test Connection
