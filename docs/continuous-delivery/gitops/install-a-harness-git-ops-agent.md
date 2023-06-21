@@ -91,7 +91,7 @@ Click **Next**. The **Download YAML/Helm Chart** settings appear.
 
 The **YAML** option lets you download the manifest YAML for the Harness GitOps Agent. You can download this YAML file and run it in your Harness GitOps Agent cluster.
 
-The **Helm Chart** option lets you download the helm-chart for the Harness GitOps Agent. You can download this helm-chart and install it in your Harness GitOps Agent cluster.
+The **Helm Chart** option lets you download a `helm-chart` file for the Harness GitOps Agent. You can download this file and install it in your Harness GitOps Agent cluster.
 
 ![](./static/install-a-harness-git-ops-agent-96.png)
 
@@ -130,13 +130,13 @@ For example, here's a typical GKE login:
 gcloud container clusters get-credentials <cluster_name> --zone us-central1-c --project <project_name>
 ```
 
-In case of **YAML**, run the following command to apply the YAML file you downloaded (in this example, `default` was the namespace entered in the **Namespace** setting):
+In case of **YAML**, run the following command to apply the YAML file you downloaded (in this example, the namespace entered in the **Namespace** setting is `default`):
 
 ```
 kubectl apply -f gitops-agent.yaml -n default
 ```
 
-In case of **Helm Chart**, run the following command to install the `helm-chart` file you downloaded (in this example, `default` was the namespace entered in the **Namespace** setting):
+In case of **Helm Chart**, run the following command to install the `helm-chart` file you downloaded (in this example, the namespace entered in the **Namespace** setting is `default`):
 
 ```
 helm install gitops-agent ./gitops-agent.tgz -n default
