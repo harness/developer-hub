@@ -85,8 +85,8 @@ This example downloads the Drone Linux amd64 tarball. It provides a username and
                     image: plugins/download
                     settings:
                       source: https://github.com/drone/drone-cli/releases/download/v0.8.5/drone_linux_amd64.tar.gz ## Target to download
-					            username: my-username ## Username for authentication to the source
-					            password: `<+secrets.getValue("mygithubpersonalaccesstoken")>` ## Password for authentication to the source
+		      username: my-username ## Username for authentication to the source
+		      password: `<+secrets.getValue("mygithubpersonalaccesstoken")>` ## Password for authentication to the source
 ```
 
 ```mdx-code-block
