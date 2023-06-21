@@ -555,3 +555,32 @@ public class GettingStarted {
     }  
 }
 ```
+
+## Known issues
+
+### Error when importing the SDK JAR file
+
+You may see the following error when importing the SDK JAR file:
+
+`Missing artifact com.github.heremaps:oksse:jar:0.9.0`
+
+If you get this error, then add the Maven repository `https://jitpack.io` to your build system as follows:
+
+**If using Gradle:** 
+
+```
+repositories {
+  maven {
+    url 'https://jitpack.io'
+  }
+}
+```
+
+**If using Maven:**
+
+```
+<repository>
+  <url>https://jitpack.io</url>
+  ...
+</repository>
+```
