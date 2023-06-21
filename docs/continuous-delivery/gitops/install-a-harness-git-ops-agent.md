@@ -67,25 +67,25 @@ The Harness GitOps **Overview**, **Applications**, and **Settings** appear. If t
 
 All entities other than Applications are in **Settings**.
 
-Click **Settings**. The Harness GitOps settings appear.
+Select **Settings**. The Harness GitOps settings appear.
 
 ![](./static/install-a-harness-git-ops-agent-88.png)
 
-Click **GitOps** **Agents**.
+Select **GitOps** > **Agents**.
 
-Click **New GitOps Agent**. The Agent wizard appears.
+Select **New GitOps Agent**. The Agent wizard appears.
 
 ## Harness GitOps Agent without an existing Argo CD project
 
 In **Getting started with Harness GitOps**, you have the option of installing a new Harness GitOps Agent with or without an existing Argo CD instances.
 
-Click **No**, and then click **Start**.
+Select **No**, and then click **Start**.
 
 In **Name**, enter the name for the new Agent.
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
 
-Click **Next**. The **Download YAML/Helm Chart** settings appear.
+Select **Next**. The **Download YAML** or **Download Helm Chart** settings appear.
 
 ![](./static/install-a-harness-git-ops-agent-95.png)
 
@@ -99,7 +99,7 @@ The **Helm Chart** option lets you download a `helm-chart` file for the Harness 
 
 In **Getting started with Harness GitOps**, you have the option of installing a new Harness GitOps Agent with or without an existing Argo CD instances.
 
-Click **Yes**, and then click **Start**.
+Select **Yes**, and then select **Start**.
 
 In **Name**, enter the name for the existing Agent CD Project. For example, **default** in the this example:
 
@@ -107,7 +107,7 @@ In **Name**, enter the name for the existing Agent CD Project. For example, **de
 
 In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent. Typically, this is the target namespace for your deployment.
 
-Click **Next**. The **Download YAML/Helm Chart** settings appear.
+Select **Next**. The **Download YAML** or **Download Helm Chart** settings appear.
 
 The **YAML** option lets you download the manifest YAML for the Harness GitOps Agent. You can download this YAML file and run it in your Harness GitOps Agent cluster.
 
@@ -117,7 +117,7 @@ Once you have installed the Agent by using any of the above options, Harness wil
 
 ## Install the Agent
 
-Click **Download & Continue**. You are prompted to save the YAML file.
+Select **Download & Continue**. You are prompted to save the YAML file.
 
 Open a terminal and navigate to the folder where you downloaded the YAML file.
 
@@ -194,13 +194,13 @@ If the Harness GitOps Agent is being deployed to a cluster running Kubernetes v1
 
 :::
 
-Back in Harness, click **Continue**.
+Back in Harness, select **Continue**.
 
 Harness indicates that the Harness GitOps Agents is registered.
 
 ![](./static/install-a-harness-git-ops-agent-90.png)
 
-Click **Continue**.
+Select **Continue**.
 
 :::note
 
