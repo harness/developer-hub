@@ -37,10 +37,10 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 ```mdx-code-block
-import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
+import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 ```
 
-<StoLegacyInstance />
+<StoLegacyRepo />
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
