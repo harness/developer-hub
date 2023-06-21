@@ -220,7 +220,7 @@ A canary deployment updates nodes/functions/etc. in a single environment gradual
 
 </details>
 
-1. Copy the contents of [canary-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd%20gen/6-canary-pipeline.yml).
+1. Copy the contents of [canary-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd%20gen/6-canary-pipeline.yml).
 2. In your Harness pipeline YAML editor, paste the YAML.
 3. Select **Save**.
    You can switch to the **Visual** editor and confirm the pipeline stage and execution steps as shown below.
@@ -241,7 +241,7 @@ Blue Green deployments involve running two identical environments (stage and pro
 </details>
 
 
-1. Copy the contents of [bluegreen-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd%20gen/6-bluegreen-pipeline.yml).
+1. Copy the contents of [bluegreen-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd%20gen/6-bluegreen-pipeline.yml).
 2. In your Harness pipeline YAML editor, paste the YAML.
 3. Select **Save**.
    
@@ -264,7 +264,7 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
 
 
 
-1. Copy the contents of [rolling-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd%20gen/6-rolling-pipeline.yml).
+1. Copy the contents of [basic-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/2nd%20gen/6-basic-pipeline.yml).
 2. In your Harness pipeline YAML editor, paste the YAML.
 3. Select **Save**.
    
@@ -455,7 +455,7 @@ For Google Cloud Functions, the basic deployment execution strategy deploys the 
 
 </details>
 
-1. Copy the contents of [rolling-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/1st%20gen/6-rolling-pipeline.yml).
+1. Copy the contents of [basic-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/1st%20gen/6-basic-pipeline.yml).
 2. In your Harness pipeline YAML editor, paste the YAML.
 3. Select **Save**.
    
