@@ -18,9 +18,9 @@ Currently, AIDA for CI is behind the feature flag `CI_AI_ENHANCED_REMEDIATIONS`.
 
 <Intro />
 
-<!-- ![AIDA offers error analysis and possible solutions.](./static/aida-dialog-example.png) -->
-
-<docimage path={require('./static/aida-dialog-example.png')} />
+<!-- Video: AIDA demo
+https://youtu.be/p-3FZM49RqQ-->
+<docvideo src="https://youtu.be/p-3FZM49RqQ" />
 
 <Use />
 
