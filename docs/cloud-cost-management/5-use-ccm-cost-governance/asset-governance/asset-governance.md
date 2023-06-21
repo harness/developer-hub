@@ -109,7 +109,7 @@ policies:
         immediate: true
 ```
 
-For resizing, let's consider a policy for EBS volume migration from gp2 to gp3: 
+<!-- For resizing, let's consider a policy for EBS volume migration from gp2 to gp3: 
 
 ```
 policies:
@@ -122,7 +122,7 @@ policies:
     - type: modify
       volume-type: gp3
 ```
-Executing this rule can potentially result in cost savings of up to 30%. However, the decision to resize should consider workload requirements and performance needs. Generally, gp3 volumes have a lower price per GB compared to gp2 volumes. It's important to note that there are scenarios where gp2 volumes may still be the preferred option. For instance, if your workload involves numerous small, random I/O operations, gp2 volumes offer better IOPS performance compared to gp3 volumes.
+Executing this rule can potentially result in cost savings of up to 30%. However, the decision to resize should consider workload requirements and performance needs. Generally, gp3 volumes have a lower price per GB compared to gp2 volumes. It's important to note that there are scenarios where gp2 volumes may still be the preferred option. For instance, if your workload involves numerous small, random I/O operations, gp2 volumes offer better IOPS performance compared to gp3 volumes. 
 
 Deleting an EBS snapshot: You might have two policies related to deleting EBS snapshots.
 
@@ -155,7 +155,7 @@ An EBS snapshot with no associated volume refers to a snapshot that was created 
 
 On the other hand, an unused EBS snapshot refers to a snapshot that is not currently being utilized by any resources, such as an EC2 instance or an AMI. This type of snapshot can still be valuable as it can be used to create a new volume or restore an existing one. However, if an unused snapshot is no longer needed, deleting it can help reduce storage costs.
 
-In summary, an EBS snapshot with no volume is an orphaned resource that cannot be used, while an unused EBS snapshot is a potentially useful resource that is not currently in use.
+In summary, an EBS snapshot with no volume is an orphaned resource that cannot be used, while an unused EBS snapshot is a potentially useful resource that is not currently in use.-->
 
 ## AWS access permissions
 

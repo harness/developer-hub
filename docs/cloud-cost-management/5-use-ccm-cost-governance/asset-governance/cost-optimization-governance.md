@@ -1,5 +1,5 @@
 ---
-title: Create asset governance rules
+title: Create and execute rules
 description: This topic describes how to optimize cloud costs using asset governance.
 # sidebar_position: 2
 ---
