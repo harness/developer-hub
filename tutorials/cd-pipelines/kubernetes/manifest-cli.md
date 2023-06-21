@@ -55,15 +55,42 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 
 </details>
 
-- Now follow the delegate installtion wizard and install your delegate using **Kubernetes Manifest**
-    - In the wizard make sure your delegate is named as `kubernetes-delegate`.
-    - Preview and Copy the manifest YAML, create a file named `harness-delegate.yaml` and paste the contents on the folder where you have your cluster access, alternatively you can download and use the YAML directly. 
-    - Make sure to run the following command to install the Harness Delegate on your Kubernetes Cluster. 
+- Now follow the delegate installtion wizard and install your delegate using **Helm Chart**
+    - In the wizard make sure your delegate is named as `helm-delegate`.
+    - Preview and Copy the manifest YAML, create a file named `harness-delegate.yaml` 
+            - Add the Harness Helm chart repo to your local helm registry using the following commands.
+        
+        ```bash
+        helm repo add harness-delegate https://app.harness.io/storage/harness-download/delegate-helm-chart/
         ```
-        kubectl apply -f harness-delegate.yaml
-        ```
-    - Verify once the delegate is installed and move on to the next steps. 
 
+        - Update the repo:
+
+        ```bash
+        helm repo update harness-delegate
+        ```
+
+        -  In the command provided, `ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the delegate installation wizard.
+        -  Replace **DELEGATE_TOKEN** in the command with the token that was copied earlier and proceed with delegate installation.
+
+         
+        ```bash
+        helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
+        harness-delegate/harness-delegate-ng \
+         --set delegateName=helm-delegate \
+         --set accountId=ACCOUNT_ID \
+         --set managerEndpoint=MANAGER_ENDPOINT \
+         --set delegateDockerImage=harness/delegate:23.03.78904 \
+         --set replicas=1 --set upgrader.enabled=false \
+         --set delegateToken=DELEGATE_TOKEN
+        ```
+        - Select **Verify** to verify that the delegate is installed successfully and can connect to the Harness Manager.
+
+:::note
+
+You can also follow the [Install Harness Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/) tutorial to install the delegate using the Harness Terraform Provider or a Kubernetes manifest.
+
+:::
 
 ### Building the Pipeline Resources 
 1. **Create an API key**, make sure to copy and save it for fututre use while creating resources for the pipeline. 
@@ -146,7 +173,7 @@ Under this step, you would see a bunch of CLI command to run, before procceding 
         ```
         harness-cli connector --file github-connector.yml apply --git-user <YOUR GITHUB USERNAME>
         ```
-    - Please check the delegate name to be `kubernetes-delegate` in the `kubernetes-connector.yml`
+    - Please check the delegate name to be `helm-delegate` in the `kubernetes-connector.yml`
     - Create the **Kubernetes connector** using the following CLI Command
         
     ```
