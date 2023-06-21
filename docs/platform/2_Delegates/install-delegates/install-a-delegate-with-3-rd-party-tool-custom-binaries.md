@@ -107,7 +107,7 @@ export PATH=/opt/harness-delegate/custom-client-tools/:<path>
 
 ## Private Cloud Foundry (PCF)
 
-PCF deployments require CLI 6 or CLI 7. For installation instructions, go to [Install Cloud Foundry CLI Versions on the Harness Delegate](/docs/first-gen/continuous-delivery/pcf-deployments/install-cloud-foundry-cli-6-and-7-on-harness-delegates/#cf_cli_6_3).
+PCF deployments require CLI 7. For installation instructions, go to [Install Cloud Foundry CLI versions on the Harness Delegate](/docs/platform/delegates/delegate-reference/common-delegate-profile-scripts/#cloud-foundry-cli/).
 
 ## Add your custom tools
 
