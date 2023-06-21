@@ -6,14 +6,6 @@ sidebar_position: 30
 
 This topic describes quality and support metrics, as well as configuration options for widgets associated with these metrics.
 
-## Mean Time To Recover (MTTR)
-
-Mean Time To Recovery measures the average amount of time it takes to resolve an incident or failure, from the moment it is detected to the moment it is fully resolved.
-
-## Mean Time Between Failures (MTBF)
-
-Mean Time Between Failures measures the average amount of time a system or component operates without failing. It is expressed as a continuous operating time in hours, days, or other units of time.
-
 ## Issues Report
 
 The Issues Report gives insight into various tickets/work items (epics, stories, bugs, tasks, and so on) in your issue management system. The report aggregates data based on selected attributes, such as priority, status, labels, components, or any other field. This report helps you create comparisons based on various fields and derive insights to make decisions.
@@ -53,12 +45,28 @@ Select a metric to use for the Y-axis. The Issues Report widget supports the fol
 
 * Select the issue management system to use for this widget. Available options are based on your configured integrations.
 * Select how you want to sort X-axis data, such as ascending or descending.
-* Select values to show on the X-axis.
+* Select the maximum number of values to show on the X-axis.
 * Select the visualization style for the widget:
   * Bar chart
   * Donut Chart
   * Multi-Line chart
   * Percentage stacked bar chart
+
+## Issue Bounce Report
+
+_Bounce_ describes tickets that are reassigned to a previous assignee. The Issue Bounce Report shows the number of times a ticket "bounced" between assignees. Bounce can occur if an issue isn't triaged correctly initially, or if the issue doesn't have enough information to be assigned correctly. Excessive bounce can potentially cause missed SLAs and unnecessary resource utilization.
+
+The Issue Bounce Report widget is usually configured to observe the median number of bounces by component, project, or initiative. This widget can highlight issues that are being bounced around to different resources.
+
+Instances of reassignment to new assignees are captured by the [Issue Hops Report](#issue-hops-report).
+
+## Issue Hops Report
+
+_Hops_ describes the number of times a ticket is reassigned to a new assignee (someone who has never been assigned to that issue before). The Issue Hops Report shows the number of times a ticket "hopped" to new assignees. Hops can occur if an issue isn't triaged correctly initially, or if the issue doesn't have enough information to be assigned correctly. Excessive hops can potentially cause missed SLAs and unnecessary resource utilization.
+
+The Issue Hops Report widget is usually configured to observe the median number of hops by component, project, or initiative. This widget can highlight issues that are reassigned multiple times.
+
+Instances of reassignment to a previous assignee are captured by the [Issue Bounce Report](#issue-bounce-report).
 
 ## Issue Hygiene Report
 
@@ -139,78 +147,90 @@ You can configure the widget to show the hygiene score for all tickets in your b
 
 ## Issue Resolution Time Report
 
-  The Issue Resolution Time Report is a bar graph showing the average time it
-  takes to close a ticket.
-
-The Issue Resolution Time Report shows the average time taken to close tickets from the time they were created. Resolution Time report can be used to answer questions like:
+The Issue Resolution Time Report is a bar graph showing the number of tickets closed along with the average time it took to close those tickets, based on the time the tickets were created. This report can help answer questions like:
 
 * Is my team getting faster at delivering features or fixing issues?
-* Are resolution times for a project or component decreasing over time?
-* On average how long does it take fix customer issues? Are we able to meet the SLA timeline?
+* Is the resolution times for a project or component decreasing over time?
+* On average, how long does it take fix customer issues? Are we able to meet the SLA timeline?
 
-The Issue Resolution Time Report graphs the average time for ticket close, along with the number of tickets that were closed. The X Axis can be a variety of variables, which changes the insights given by the graph.
+<!-- img .gitbook/assets/image (76).png - issue resolution time report widget example -->
 
-<figure><img src="../../../.gitbook/assets/image (76).png" alt=""><figcaption></figcaption></figure>
+### Configure the Issue Resolution Time Report widget
 
-### Setting Up The Widget&#x20;
+By default, the Issue Resolution Time Report widget is filtered by issues closed (**Last closed date**) within a selected time range. Usually, the time range is set to **Use Dashboard Time**, which allows the user to select a time range when viewing the dashboard.
 
-By default, the widget is filtered by Issues closed within the selected period of time. This is most often set as the dashboard time.
+<!-- img .gitbook/assets/image (56).png - issue resolution time report widget config - filters tab - last closed date and dashboard time -->
 
-<figure><img src="../../../.gitbook/assets/image (56).png" alt=""><figcaption></figcaption></figure>
+On the **Aggregations** tab, you can select the dimension, from your issue management system, to use for the X-axis, such as **Assignee**, **Story Points**, **Ticket Category**, **Issue Closed Last Time Period**, and so on. This determines what you want the widget to focus on, and it determines the insights provided by the widget. For example, focusing on **Category** or **Component** can show you the issue resolution time for different work areas; whereas, focusing on **Assignee** can show you issue resolution time by developer.
 
-The X Axis can be set to a variety of filters from your issue management system. Some of the most common selections are Assignee, Story Points, Ticket Category, Issue Closed Last Time Period.
+<!-- img .gitbook/assets/image (59).png - issue resolution time report widget config - aggregations tab - x axis dropdown -->
 
-<figure><img src="../../../.gitbook/assets/image (59).png" alt=""><figcaption></figcaption></figure>
+On the **Settings** tab, you can:
 
-### Popular Configurations
+* Select the issue management system to use for this widget. Available options are based on your configured integrations.
+* Select how you want to sort X-axis data, such as ascending or descending.
+* Select the maximum number of unique values to show on the X-axis.
 
-There are many ways to utilize this widget. The primary way to change the insights gained will be by changing the Aggregation (X-Axis). The most common Aggregations are listed below, along with any special setup instructions.
+#### Example configurations
 
-*
-* **Average Time to Issue Closed By Assignee**
-  *   Aggregation = Assignee: This will give a bar graph of who is taking the most time to close issues within the selected time frame. It is recommended that the X-Axis is sorted by Value, High --> Low and the Max X-Axis Entries is able to show all of your team members. \
+The primary way to modify the Issue Resolution Time Report widget is to change the X-axis dimension on the **Aggregations** tab. Here are some examples of other configurations for this widget.
 
+<details>
+<summary>Average time to issue closed by assignee</summary>
 
-      <figure><img src="../../../.gitbook/assets/image (53).png" alt=""><figcaption></figcaption></figure>
+This configuration produces a bar graph showing which assignees are taking the most time to close issues within the selected time frame.
 
+1. On the **Aggregations** tab, select **Assignee** for the X-axis dimension.
+2. On the **Settings** tab, sort the X-axis by **Value, High --> Low**, and set the **Max X-Axis Entries** high enough so that it can show all team members.
 
-* **Story Point Estimation Accuracy**
-  *   Aggregation = Story Points: This widget will show a graph of how well your story points are estimated. Your graph ideally should be a linear progression, with higher story point issues taking longer to resolve than lower ones.\
+<!-- img /.gitbook/assets/image (53).png - Issue Resolution Time Report widget config - settings tab - sort xaxis high to low and 20 max entries -->
 
+</details>
 
-      <figure><img src="../../../.gitbook/assets/image (30).png" alt=""><figcaption></figcaption></figure>
+<details>
+<summary>Story point estimation accuracy</summary>
 
-      * Under Filter_,_ make sure to exclude your backlog stages by adding the **Exclude Time In Status** filter.
-      *   Under settings, you will want to **Sort X-Axis By Label, Low --> High**\
+This configuration produces a bar graph showing how well your story points are estimated. Good estimation is evidenced by a graph showing linear progression, with higher point issues taking longer to resolve than lower ones.
 
+<!-- img .gitbook/assets/image (30).png - Story point estimation accuracy bar graph w linear progression -->
 
-          <figure><img src="../../../.gitbook/assets/image (29).png" alt=""><figcaption></figcaption></figure>
-* **Time to Close Issue by Last Time Period**
-  *   Aggregation = Issue Last Closed (Week, Month, Quarter): This widget will give a historical record of the average time it took to close all issues within the selected timeframe. \
-      Filters can be configured for _MTTR_ or _Lead Time For Change_ trends by using the I**ssue Type** filter set to **Bugs** (_MTTR_) or **Tasks** + **Stories** (_Lead Time for Change_). \
+1. On the **Aggregations** tab, select **Story Points** for the X-axis dimension.
+2. On the **Filters** tab, exclude backlog stages by adding an **Exclude Time In Status** filter, and set the filter value to your backlog status(es), such as **To Do** or **Backlog**.
 
+   <!-- img .gitbook/assets/image (29).png - exclude time in status filter example config -->
 
-      <figure><img src="../../../.gitbook/assets/image (38).png" alt=""><figcaption></figcaption></figure>
+3. On the **Settings** tab, sort the X-axis by **Label, Low --> High**.
 
-## Issue Bounce Report
+</details>
 
-The term _bounce_ refers to the reassignment of a ticket to a previous assignee. The Issue Bounce Report shows the number of times a ticket "bounced" between assignees. The report is typically configured to observe the median number of "bounces" by component, project, or initiative.
+<details>
+<summary>Time to close issue by last time period</summary>
 
-The purpose of this visual is to highlight specific issues which are being bounced around to different resources. This may be because the issue wasn't initially triaged correctly, or doesn't have enough information to be assigned correctly.
+This configuration produces a bar graph showing a historical record of the average time it took to close all issues within the selected time frame.
 
-The impact is potential missed SLAs and unnecessary resource utilization.
+<!-- img .gitbook/assets/image (38).png - time to close issue by last time period bar graph example -->
 
-## Issue Hops Report
+1. On the **Aggregations** tab, select **Issue Last Closed (Week, Month, Quarter)** for the X-axis dimension.
+2. On the **Filters** tab, add filters to demonstrate [MTTR](#mean-time-to-recover-mttr) or Lead Time For Change trends:
 
-The term _hops_ refers to the number of times a ticket is reassigned. The Issue Hops Report is typically configured to observe the median number of hops or reassignments by component, project, or initiative.
+   * For MTTR: Add an **Issue Type** filter, and set the filter value to **Bugs**.
+   * For Lead Time For Change: Add an **Issue Type** filter, and set the filter values to **Tasks** and **Stories**.
 
-The purpose of this visual is to highlight specific issues which are reassigned multiple times. This may be because the issue wasn't initially triaged correctly, or doesn't have enough information to be assigned correctly.
+3. On the **Settings** tab, sort the X-axis by **Label, Low --> High**.
 
-The impact is potential missed SLAs and unnecessary resource utilization.
+</details>
+
+## Mean Time To Recover (MTTR)
+
+Mean Time To Recovery measures the average amount of time it takes to resolve an incident or failure, from the moment it is detected to the moment it is fully resolved.
+
+## Mean Time Between Failures (MTBF)
+
+Mean Time Between Failures measures the average amount of time a system or component operates without failing. It is expressed as a continuous operating time in hours, days, or other units of time.
 
 ## SCM Files Report
 
-Use the SCM Files Report to identify code areas with a high frequency of changes. Used to make sure that the hottest code areas have good test coverage.
+Use the SCM Files Report to identify code areas with a high frequency of changes. This is useful for ensuring that your hottest code areas have good test coverage.
 
 :::info
 
