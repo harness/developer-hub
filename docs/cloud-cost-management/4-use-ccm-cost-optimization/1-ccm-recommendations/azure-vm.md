@@ -41,7 +41,7 @@ Azure Advisor automatically runs in the background to find newly created resourc
 
 ### Configure Azure Advisor
 
-You must configure Azure Advisor to receive recommendations for cost optimization. For more information, go to [Enable Azure recommendations](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
+You must configure Azure Advisor to receive recommendations for cost optimization. For more information, go to [Enable Azure recommendations](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md#enable-azure-recommendations).
 
 ## Types of Azure VM recommendations
 
