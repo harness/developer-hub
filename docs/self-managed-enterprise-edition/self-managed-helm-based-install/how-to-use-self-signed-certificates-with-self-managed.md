@@ -102,7 +102,7 @@ Repeat this command for each certificate you want to include in the truststore.
 
    **Skip step 5 if your delegates do not run with Harness CI or STO**
 
-5. CI builds require the addition of the following environment variables to the `env` field:
+5. (Required) Add the following environment variables to the `env` field:
 
    ```
    - name: CI_MOUNT_VOLUMES  
