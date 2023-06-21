@@ -22,11 +22,18 @@ import { MODULES } from "../../constants";
           link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
         },
         {
-          title: "Deploy a Kubernetes Manifest",
+          title: "Deploy Kubernetes Manifests",
           module: MODULES.cd,
           description:
             "Deploy a Kubernetes Manifest onto your Kubernetes cluster.",
           link: "/tutorials/cd-pipelines/kubernetes/manifest",
+        },
+        {
+          title: "Deploy using Kustomize",
+          module: MODULES.cd,
+          description:
+            "Deploy to your Kubernetes cluster using Kustomize.",
+          link: "/tutorials/cd-pipelines/kubernetes/kustomize",
         },
       ],
     },

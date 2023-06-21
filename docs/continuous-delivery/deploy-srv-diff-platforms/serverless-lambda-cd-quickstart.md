@@ -1,5 +1,5 @@
 ---
-title: Serverless.com Framework (AWS Lambda deployments)
+title: Serverless.com framework for AWS Lambda
 description: Deploy a Serverless Lambda application to AWS Lambda using Harness.
 sidebar_position: 900
 helpdocs_topic_id: 5fnx4hgwsa
@@ -7,6 +7,8 @@ helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+
+# Serverless.com framework for AWS Lambda deployments
 
 This quickstart shows you how to deploy a Serverless Lambda application to AWS Lambda using Harness. We'll use a publicly-available serverless.yaml and artifact and deploy them to your AWS Lambda service using a Harness Pipeline.
 

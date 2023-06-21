@@ -1,5 +1,5 @@
 ---
-title: Harness CI concepts
+title: CI concepts
 description: Harness CI simplifies the code development and testing process.
 
 sidebar_position: 20

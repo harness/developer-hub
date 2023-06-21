@@ -1,6 +1,6 @@
 ---
-title: Harness Platform release notes
-sidebar_label: Harness Platform
+title: Platform release notes
+sidebar_label: Platform
 tags: [NextGen, "platform"]
 date: 2023-06-19T10:00:30
 sidebar_position: 12
