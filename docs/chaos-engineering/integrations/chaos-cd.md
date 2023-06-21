@@ -8,8 +8,8 @@ You can add chaos experiments to Harness Continuous Delivery (CD) pipelines as p
 _XXX CAN WE HAVE SOME EXAMPLES OF CHAOS FAULTS YOU MIGHT WANT TO RUN FOR EVERY DEPLOYEMNT AND WHY? XXX_
 
 For more information, see: 
-* [Build a Feature Flag pipeline](/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline)
-* [Add a default pipeline for flag changes](/docs/feature-flags/ff-build-pipeline/default-pipeline-ff)
+* [CD tutorials](/docs/continuous-delivery/get-started/cd-tutorial)
+* [Tutorial on integrating chaos and CD](/tutorials/chaos-experiments/integration-with-harness-cd)
 * [Harness pipelines](/docs/category/pipelines)
 
 ## Add a chaos experiment to a CD pipeline
@@ -20,9 +20,9 @@ Pipelines are organized into stages, each of which handles a major segment of th
 * Deploy
 * Custom Stage
 
-**To add a chaos experiment as a step in your FF pipeline:**
+**To add a chaos experiment as a step in your CD pipeline:**
 
-1. In Harness, select **Feature Flags > Pipelines**, and then select the pipeline where you want to add a chaos experiment.
+1. In Harness, select **Deployments > Pipelines**, and then select the pipeline where you want to add a chaos experiment.
 1. In the selected pipeline, select **Add Stage**, and then select a stage type.
 
 	Chaos steps are available for **Feature Flag**, **Deploy**, and **Custom Stage** types. 
@@ -61,29 +61,28 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 1. Back in **Configure Chaos Experiment**, enter the **Expected Resilience Score** for this experiment.
 
-	* If the resilience score is not met, this chaos step fails and the [stage failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings) is initiated.
-	* We recommend you add another step in the pipeline that disables the flag if the chaos step fails.
-
-	For more information, see [Analyze chaos experiments](/docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments#analyze-chaos-experiments).
+	If the resilience score is not met, this chaos step fails and the [stage failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings) is initiated.
+	
+	For more information, go to [Analyze chaos experiments](/docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments#analyze-chaos-experiments).
 
 1. (Optional) Expand **Optional Configuration**, and enter an assertion (you can enter a fixed value, an expression, or a runtime input).
 
 1. (Optional) Select the **Advanced** tab to configure more settings.
 
-	For more information on these settings, see [Harness pipelines](/docs/category/pipelines).
+	For more information on these settings, go to [Harness pipelines](/docs/category/pipelines).
 
 1. Select **Apply Changes** to save this step in the pipeline, and then select **Save** to save changes to the pipeline.
 
-## What happens when the FF pipeline runs with a chaos step
+## What happens when the CD pipeline runs with a chaos step
 
-When a flag change triggers the FF pipeline:
+When the CD pipeline is triggered:
 
 * The chaos step you added to the pipeline triggers the experiment to run on the target application.
 
 * The Chaos Experiments page (**Chaos > Chaos Experiments**) records the experiment run as part of a pipeline, and you can select the experiment to view its execution.
 
-* In the FF pipeline, if the chaos step (the experiment) fails, you can select the failed step to see the log, which includes the resilience score obtained and how many chaos probes passed or failed.
+* In the CD pipeline, if the chaos step (the experiment) fails, you can select the failed step to see the log, which includes the resilience score obtained and how many chaos probes passed or failed.
 	* You can select **View Detailed Execution** to go to the experiment's execution page in CE.
 
-* Based on the experiment's success or failure, you can decide whether to enable the flag change to show or hide the feature in the target environment.
+* Based on the experiment's success or failure, you can decide whether to continue with the deployment. You can automate this by defining a failure strategy in your pipeline. For more information, go to [Define a failure strategy on stages and steps](/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps). 
 

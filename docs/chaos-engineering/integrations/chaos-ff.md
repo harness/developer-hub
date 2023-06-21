@@ -68,13 +68,13 @@ Harness recommends that when you add a chaos step to an FF pipeline, you also ad
 	* If the resilience score is not met, this chaos step fails and the [stage failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings) is initiated.
 	* We recommend you add another step in the pipeline that disables the flag if the chaos step fails.
 
-	For more information, see [Analyze chaos experiments](/docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments#analyze-chaos-experiments).
+	For more information, go to [Analyze chaos experiments](/docs/chaos-engineering/configure-chaos-experiments/experiments/create-complex-chaos-experiments#analyze-chaos-experiments).
 
 1. (Optional) Expand **Optional Configuration**, and enter an assertion (you can enter a fixed value, an expression, or a runtime input).
 
 1. (Optional) Select the **Advanced** tab to configure more settings.
 
-	For more information on these settings, see [Harness pipelines](/docs/category/pipelines).
+	For more information on these settings, go to [Harness pipelines](/docs/category/pipelines).
 
 1. Select **Apply Changes** to save this step in the pipeline, and then select **Save** to save changes to the pipeline.
 
