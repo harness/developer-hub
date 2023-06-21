@@ -38,7 +38,9 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-#### Feature Flags UI
+#### Feature Flags server/UI
+
+The **FF server** has been updated to version **1.1075.0** with the following updates.
 
 * The Activity tab on the flag detail page was sometimes slow to load on flags with many (hundreds) of historical changes. This has been resolved, and this tab's loading times are improved. (FFM-8256)
 
