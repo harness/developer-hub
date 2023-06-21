@@ -1,7 +1,7 @@
 ---
 title: Quality and support metrics
 description: Learn about quality and support metrics and widgets.
-sidebar_position: 30
+sidebar_position: 40
 ---
 
 This topic describes quality and support metrics, as well as configuration options for widgets associated with these metrics.
@@ -211,7 +211,7 @@ This configuration produces a bar graph showing a historical record of the avera
 <!-- img .gitbook/assets/image (38).png - time to close issue by last time period bar graph example -->
 
 1. On the **Aggregations** tab, select **Issue Last Closed (Week, Month, Quarter)** for the X-axis dimension.
-2. On the **Filters** tab, add filters to demonstrate [MTTR](#mean-time-to-recover-mttr) or Lead Time For Change trends:
+2. On the **Filters** tab, add filters to demonstrate [MTTR](#mttr-and-mtbf) or [Lead Time For Changes](./dora-metrics.md#lead-time-for-changes) trends:
 
    * For MTTR: Add an **Issue Type** filter, and set the filter value to **Bugs**.
    * For Lead Time For Change: Add an **Issue Type** filter, and set the filter values to **Tasks** and **Stories**.
@@ -220,13 +220,13 @@ This configuration produces a bar graph showing a historical record of the avera
 
 </details>
 
-## Mean Time To Recover (MTTR)
+## MTTR and MTBF
 
-Mean Time To Recovery measures the average amount of time it takes to resolve an incident or failure, from the moment it is detected to the moment it is fully resolved.
+Mean Time To Recover (MTTR) measures the average amount of time it takes to resolve an incident or failure, from the moment it is detected to the moment it is fully resolved.
 
-## Mean Time Between Failures (MTBF)
+Mean Time Between Failures (MTBF) measures the average amount of time a system or component operates without failing. It is expressed as a continuous operating time in hours, days, or other units of time.
 
-Mean Time Between Failures measures the average amount of time a system or component operates without failing. It is expressed as a continuous operating time in hours, days, or other units of time.
+For more information about MTTR, MTBF, and other DORA metrics, go to [DORA metrics](./dora-metrics.md).
 
 ## SCM Files Report
 
