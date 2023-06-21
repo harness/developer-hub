@@ -27,7 +27,7 @@ The above commands installs the external secret operator with necessary Custom R
    
 The external secret operator has `ClusterSecretStore` and `ExternalSecret` CRDs that are used to manage the secrets update. `ClusterSecretStore` defines secret storage, whereas `ExternalSecret` connects the Kubernetes secret's storage and destination.
    
-There is an additional CRD, `ECRAuthorizationToken` that generates the token. We will use this token instead of `ClusterSecretStore` in this setup.
+There is an additional CRD, `ECRAuthorizationToken` that generates the token. We will use this CRD instead of `ClusterSecretStore` in this setup.
 
 ## Create AWS credentials in Kubernetes secret
    
