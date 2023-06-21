@@ -17,16 +17,14 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - June 19, 2023
+## Latest - June 21, 2023
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-#### Feature Flags UI
-
-* In the onboarding flow, we added a new button and text box for a new project when there are no environments created. (FFM-7393)
+This release does not include new features.  
 
 ```mdx-code-block
   </TabItem>
@@ -42,11 +40,43 @@ This release does not include early access features.
 
 #### Feature Flags UI
 
+* The Activity tab on the flag detail page was sometimes slow to load on flags with many (hundreds) of historical changes. This has been resolved, and this tab's loading times are improved. (FFM-8256)
+
+* On the flag detail page, Flag Pipeline tab, the pipeline execution list was sorted with most recent executions last. This ordering has been reversed so that the most recent pipeline executions are shown first. This allows pending executions to be viewed at the top.
+
+* Where users had multiple target rules, in certain circumstances users couldn't delete these rules when the wrong IDs were returned. This fix addresses the problem of the incorrect IDs being returned, and ensures the targets can be removed.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 19, 2023
+
+##### What's new
+
+###### Feature Flags UI
+
+* In the onboarding flow, we added a new button and text box for a new project when there are no environments created. (FFM-7393)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
 * The view in the modal screen for setting up GitEx was not wide enough to show appropriate errors. This issue has been fixed. (FFM-7311)
 
 * The Create a new flag button did not behave as expected on the onboarding screen if there were existing flags. This issue has been fixed. (FFM-8019)
 
-#### Feature Flags SDKs
+###### Feature Flags SDKs
 
 * The **Java** server SDK has been updated to version **1.2.3** with the following updates.
 
@@ -79,16 +109,6 @@ This release does not include early access features.
   * Standardized and improved Logging across the SDK. (FFM-7472)
 
   * Fixed error handling when a null target is passed in. (FFM-8128)
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### June 14, 2023
 
