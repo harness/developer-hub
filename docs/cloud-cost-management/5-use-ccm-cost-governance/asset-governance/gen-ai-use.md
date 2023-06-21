@@ -40,10 +40,11 @@ import TabItem from '@theme/TabItem';
 
 
 4.   Select **Apply script on Rule Editor**.
-5.   The system performs a validation process to ensure rule accuracy. If any errors are detected within the rule, a notification banner is displayed. To access more information regarding these errors, select the **More Details** option or select **Validate Rule**. You can view a comprehensive breakdown of the specific error details to identify and address any issues effectively. 
+5.   Select **Validate Rule**
+6.   The system performs a validation process to ensure rule accuracy. If errors are detected within the rule, a notification banner is displayed. To access more information regarding these errors, select the **More Details** option. You can view a comprehensive breakdown of the specific error details to identify and address any issues effectively. 
 
     <docimage path={require('./static/ai-validation-error-banner.png')} width="60%" height="60%" title="Click to view full size image" />
-6.  You can update the rule on the **Rule Editor** and save the rule.
+7.  You can update the rule on the **Rule Editor** and save the rule.
 
 ```mdx-code-block
 </TabItem>
@@ -65,10 +66,11 @@ import TabItem from '@theme/TabItem';
 
 
 6. Select **Apply script on Rule Editor**.
-7. The system performs a validation process to ensure rule accuracy. If any errors are detected within the rule, a notification banner is displayed. To access more information regarding these errors, select the **More Details** option or select **Validate Rule**. You can view a comprehensive breakdown of the specific error details to identify and address any issues effectively. 
+7. Select **Validate Rule**
+8. The system performs a validation process to ensure rule accuracy. If any errors are detected within the rule, a notification banner is displayed. To access more information regarding these errors, select the **More Details** option. You can view a comprehensive breakdown of the specific error details to identify and address any issues effectively. 
 
     <docimage path={require('./static/ai-validation-error-banner.png')} width="60%" height="60%" title="Click to view full size image" />
-8.  You can update the rule on the **Rule Editor** and save the rule.
+9.  You can update the rule on the **Rule Editor** and save the rule.
 
 ```mdx-code-block
 </TabItem>
@@ -77,14 +79,14 @@ import TabItem from '@theme/TabItem';
 
 ## View rule description by using Harness AIDA
 
-The Harness AIDA offers valuable insights by providing the description of the rule along with its implications. When a rule is generated using the AIDA, it presents a clear and concise description of the purpose, functionality, and potential impact of the rule. This information helps you understand the rationale behind the rule and how it aligns with your governance objectives. 
+The Harness AIDA offers valuable insights by providing a description of the rule along with its implications. When a rule is generated using the AIDA, it presents a clear and concise description of its purpose, functionality, and potential impact. This information helps you understand the rationale behind the rule and how it aligns with your governance objectives.
 1. In your Harness application, navigate to the **Asset Governance** page.
 2. Select **Rules**.
 3. Select the more options icon for a rule, and then select **Learn more about rule** or select the rule, and then select **Learn More**.
 
   The Harness AIDA displays the description of the rule and its implications.
 
-From the current page, you have the option to create a new rule. Select **Create another rule** to initiate the process. Upon selecting this option, a new Rule Editor is presented, featuring an AI-generated name for the rule. To customize the rule name, select the edit icon, which allows you to modify the generated name according to your preference.
+From the current page, you have the option to create a new rule. Select **Create another rule** to initiate the process. Upon selecting this option, a new Rule Editor is presented, featuring an AI-generated name for the rule. Select the edit icon to customize the rule name, which allows you to modify the generated name according to your preference.
 
   <docimage path={require('./static/create-another-rule.gif')} width="60%" height="60%" title="Click to view full size image" />
 
