@@ -90,7 +90,7 @@ Next, the Harness modules appear.
 
 ### Project FAQs
 
-**Q: Can I move things between projects?**
+#### Can I move resources between projects?
 
 No, currently a limitation, we do not support moving resources between projects, nor organizations.
 
