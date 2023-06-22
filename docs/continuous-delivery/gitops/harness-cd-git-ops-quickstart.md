@@ -16,7 +16,7 @@ GitOps automates Kubernetes-based deployments by syncing declarative specificati
 
 You set up Harness GitOps by installing a GitOps Agent in your environment. Next, you define how to manage the desired and target state in a GitOps Application in Harness. The GitOps Agent performs the sync operations defined in the Application and reacts to events in the source and target states.
 
-![](./static/harness-cd-git-ops-quickstart-00.png)
+![Harness GitOps architecture](static/572d35be32e656cea58795c7aefde6d91f50270201ac7f1906d8875ef3c1408a.png)  
 
 This quickstart shows you how to set up Harness GitOps using one of your Kubernetes clusters.
 
