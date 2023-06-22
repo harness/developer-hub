@@ -12,7 +12,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - June 19, 2023
 
-### Continuous Integration, version 4206
+### Continuous Integration, version 4204
 
 #### Output variables automatically become environment variables (CI-7817, ZD-39203)
 

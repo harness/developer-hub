@@ -7,7 +7,7 @@ sidebar_position: 70
 # Debugging
 
 ### Outbound requests
-To learn more about what requests the Relay Proxy sends see [Endpoints](/docs/feature-flags/relay-proxy/endpoints).
+To learn more about what requests the Relay Proxy sends see [Endpoints](/docs/feature-flags/relay-proxy/outbound_endpoints).
 
 ### Debug mode
 
