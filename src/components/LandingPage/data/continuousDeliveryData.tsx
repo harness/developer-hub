@@ -113,7 +113,17 @@ export const CDList: CardItem[] = [
     link: "/tutorials/cd-pipelines/continuous-verification/prometheus",
   },
   {
-    title: "Serverless Google Cloud function  ",
+    title: "Serverless AWS Lambda  ",
+    module: MODULES.cd,
+    icon: "img/icon_cv.svg",
+    description: <>Deploy Serverless AWS Lambda Functions.</>,
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "15min",
+    link: "/tutorials/cd-pipelines/serverless/aws-lambda",
+  },
+  {
+    title: "Serverless Google Cloud Function  ",
     module: MODULES.cd,
     icon: "img/icon_cv.svg",
     description: <>Deploy Serverless Google Cloud Functions.</>,
