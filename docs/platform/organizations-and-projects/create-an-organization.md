@@ -96,7 +96,7 @@ Harness does not support moving resources between projects or organizations at t
 
 #### What is the best way to decommission a project while retaining its history?
 
-We recommend removing rbac access to the the project and only allow for users to either view it or hide it entirely from most users. Only account admins can maintain view access to check configurations and deployment history in the project. If you delete the project, the deployment history will also be removed so its better to leave the project available and block access and usage to it in order to keep your history.
+Harness recommends removing RBAC access to the project and only allowing users to view it or hiding it from most users. Admins are the only ones who can view configurations and deployment history in a project. Deleting a project will also delete its deployment history. In order to keep your history, it is better to leave the project available but block access and usage.
 
 
 
