@@ -16,7 +16,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - June 09, 2023, version 79701
+## Latest - June 21, 2023, version 79803
 
 ```mdx-code-block
 <Tabs>
@@ -24,7 +24,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 ### What's new
 
-This release does not include any new features.
+* On the **Cloud Integration** page, if the connector data is unavailable, the **View costs** link is disabled. However, as soon as the data becomes available, the link is enabled. Now, a tooltip providing a concise explanation as to why the link is disabled appears when you hover over the disabled link. (CCM-12559)
+* Previously, in the **Asset Governance** > **Evaluations** page, only the target accounts with `execute` permissions were included in the **Target Accounts** field in the filter panel. Now, this functionality is enhanced so that all target accounts with `view` permissions are also included in the list. (CCM-12854)
 
 ```mdx-code-block
   </TabItem>
@@ -32,13 +33,7 @@ This release does not include any new features.
 ```
 ### Early access
 
-**Propagate force cool down** (CCM-12338)
-  
-  You can now propagate force cool down from primary rule to dependent rules.
 
-  Earlier, when stopping a rule from the UI, you had to stop its dependant rules one by one. With this enhancement, you can propagate the stop operation to dependant rules as well. 
-  
-  Propagating cool down to dependant rules is optional. You can stop the primary rule with or without propagating cool down to dependant rules.
 
 ```mdx-code-block
   </TabItem>
@@ -46,7 +41,9 @@ This release does not include any new features.
 ```
 ### Fixed issues
 
-This release does not include any fixed issues.
+* The budget screen displayed inconsistent margins, leading to overlapping text in different columns. To address this issue, the columns in the budget list have been readjusted, ensuring that the text in each column no longer coincides with the text in adjacent columns. (CCM-10980)
+  
+
   
 ```mdx-code-block
   </TabItem>
@@ -58,6 +55,24 @@ This release does not include any fixed issues.
 <details>
 <summary>2023 releases</summary>
 
+#### June 09, 2023, version 79701
+
+##### What's new
+This release does not include any new features.
+
+##### Early access
+**Propagate force cool down** (CCM-12338)
+  
+  You can now propagate force cool down from primary rule to dependent rules.
+
+  Earlier, when stopping a rule from the UI, you had to stop its dependant rules one by one. With this enhancement, you can propagate the stop operation to dependant rules as well. 
+  
+  Propagating cool down to dependant rules is optional. You can stop the primary rule with or without propagating cool down to dependent rules.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+  
 #### June 06, 2023, version 79601
 
 ##### What's new
