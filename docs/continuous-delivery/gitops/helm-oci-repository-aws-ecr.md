@@ -8,7 +8,7 @@ This topic assumes that you have already created an [OCI Helm repository](/docs/
 
 When storing an OCI Helm repository in Amazon Elastic Container Registry (ECR), you must obtain a token. The Amazon ECR tokens are short-lived, hence need rotation. 
 
-GitOps repositories are stored in Kubernetes secrets. For GitOps to be able to pull these repositories from Amazon ECR, you have to rotate the credentials stored in the secret. You can use [External Secrets Operator](https://external-secrets.io) and [ArgoCD ECR Updater](https://artifacthub.io/packages/helm/argocd-aws-ecr-updater/argocd-ecr-updater) to achieve this.
+GitOps repository credentials are stored in Kubernetes secrets. For GitOps to be able to pull these repositories from Amazon ECR, you have to rotate the credentials stored in the secret. You can use [External Secrets Operator](https://external-secrets.io) and [ArgoCD ECR Updater](https://artifacthub.io/packages/helm/argocd-aws-ecr-updater/argocd-ecr-updater) to achieve this.
 
 In this topic, we will walk you through how to use the External Secrets Operator.
 
