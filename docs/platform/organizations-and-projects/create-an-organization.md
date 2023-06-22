@@ -92,7 +92,7 @@ Next, the Harness modules appear.
 
 #### Can I move resources between projects?
 
-No, currently a limitation, we do not support moving resources between projects, nor organizations.
+Harness does not support moving resources between projects or organizations at the moment.
 
 **Q: How can I decommission a Project and still retain its history?**
 
