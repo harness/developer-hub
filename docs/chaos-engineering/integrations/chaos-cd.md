@@ -5,11 +5,11 @@ sidebar_position: 2
 
 You can add chaos experiments to Harness Continuous Delivery (CD) pipelines as part of your deployment process. This ensures that you validate your system resiliency with every new deployment. For example, you might consider injecting these types of faults as chaos steps in your CD pipeline:
 
-* **Network chaos faults** can be used for verifying service or microservice dependencies on each other when there's latency, or when one of the microservices is down.
+* **Network chaos faults** can be used for verifying service or microservice dependencies on each other when there's latency, or when one of the microservices is down. The [Pod network latency](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-network-latency/) fault is an example.
 
-* **Stress chaos faults** can be used for verifying how microservices behave when there is a noisy neighbor.
+* **Stress chaos faults** can be used for verifying how microservices behave when there is a noisy neighbor. The [Pod CPU hog](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-cpu-hog/) fault is an example.
 
-* **HTTP chaos faults** can be used for verifying how services or APIs behave when one of the APIs is under chaos.
+* **HTTP chaos faults** can be used for verifying how services or APIs behave when one of the APIs is under chaos. The [Pod HTTP latency](/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/pod-http-latency/) fault is an example.
 
 For more information, see: 
 * [CD tutorials](/docs/continuous-delivery/get-started/cd-tutorial)
