@@ -1,7 +1,7 @@
 ---
 sidebar_position: 1
 hide_table_of_contents: true
-title: AWS Lambda (Serverless.com Framework)
+title: AWS Lambda
 description: Deploy a Serverless app on AWS Lambda.
 ---
 
