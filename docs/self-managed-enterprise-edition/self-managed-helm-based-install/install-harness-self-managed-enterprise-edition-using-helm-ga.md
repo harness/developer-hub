@@ -8,13 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This document explains how to use Helm to install, upgrade or uninstall Harness Self-Managed Enterprise Edition. This document describes an installation on Google Kubernetes Engine (GKE). The same installation process, however, applies to installations on Kubernetes versions 1.*x* and later.
+This document explains how to use Helm to install, upgrade, or uninstall Harness Self-Managed Enterprise Edition. This document describes an installation on Google Kubernetes Engine (GKE). The same installation process, however, applies to installations on Kubernetes versions 1.*x* and later.
 
 Helm package manager provides a declarative approach to Kubernetes application management in which software packages are specified as “charts.” For more information, go to the [Helm documentation](https://helm.sh/docs/).
 
 :::info note
 You can also install Harness Self-Managed Enterprise Edition in an air-gapped environment. For more information, go to [Install in air-gapped environment](docs/self-managed-enterprise-edition/self-managed-helm-based-install/install-in-an-air-gapped-environment/).
 :::
+
+## Role requirements
+
+The account you use to install Harness Self-Managed Enterprise Edition must have the Account Admin role to create service accounts. For more information on role-based permissions, go to [Role-based access control overview](/docs/platform/role-based-access-control/rbac-in-harness/).
 
 ## Download the Harness Helm chart
 
@@ -101,7 +105,7 @@ enabled: true
 
 ### Add a Harness license
 
-Harness Self-Managed Enterprise Edition needs a license to be provisioned for the Harness NextGen platform. Please contact Harness Support to procure the license and add it to the `override.yaml` file.
+Harness Self-Managed Enterprise Edition needs a license to be provisioned for the Harness NextGen platform. Contact [Harness Support](mailto:support@harness.io) to procure the license and add it to the `override.yaml` file.
 ```
   license:
     # -- Insert CG License String to enable CG license

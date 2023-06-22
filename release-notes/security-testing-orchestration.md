@@ -18,16 +18,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
-## Latest - June 8, 2023, version 1.57.4
+## Latest - June 21, 2023, version 1.58.3
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-* Added the existing Typescript scanning library to Sonarqube scans so that Typescript is always supported. (STO-6007)
-* Added a `product_zip_max_size` setting to Checkmarx scans that enable you to override the maximum size of ZIP files uploaded to the STO pipeline (the default size is 200 MB). To override this setting in a Checkmarx scan step, add the `product_zip_max_size` setting and value (in MB) under **Settings (*optional*)**. (STO-5991)
+Harness AI Development Assistant (AIDA) uses state-of-the-art AI technology to streamline the process of triaging and fixing security vulnerabilities. For every vulnerability detected by STO, Harness AIDA explains the issue precisely and provides detailed advice  — including code changes and package upgrades — on how to fix it. Harness AIDA is based on large, well-trained language models. It learns continuously based on feedback and the latest public knowledge. Optionally, you can regenerate advice with additional context and thereby optimize your results. 
 
-  ![](./static/checkmarx-zip-size-override-sto-5991.png)
+Harness AIDA reduces developer toil by streamlining and simplifying the process of fixing vulnerabilities. It enables developers and security personnel to manage security-issue backlogs and address critical issues promptly. Harness AIDA can dramatically reduce your TTR, speed up your software development lifecycle, and improve the security posture of your applications and services.
+
+For more information, go to [Remediations with AIDA](https://developer.harness.io/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
 
 
 ```mdx-code-block
@@ -43,9 +44,9 @@ This release does not incude early-access features.
   <TabItem value="Fixed issues">
 ```
 
-* Fixed an issue where STO results were not showing up in output variables when using STO steps inside a step group in a security stage. (STO-6038, ZD-45802)
+* A defective Zap runner image was rebuilt to resolve failures in orchestrated Zap scans. (STO-6094, ZD-46330)
 
-* Updated the Golang library used in STO code to remediate CVE-2022-21698. (STO-5993) 
+* In the **Request Exemption** dialog, you need to provide a reason only when the **Other** exemption reason is selected. (STO-5942)
 
 ```mdx-code-block
   </TabItem>
@@ -57,6 +58,27 @@ This release does not incude early-access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 8, 2023, version 1.57.4
+
+##### New features
+
+* Added the existing Typescript scanning library to Sonarqube scans so that Typescript is always supported. (STO-6007)
+* Added a `product_zip_max_size` setting to Checkmarx scans that enable you to override the maximum size of ZIP files uploaded to the STO pipeline (the default size is 200 MB). To override this setting in a Checkmarx scan step, add the `product_zip_max_size` setting and value (in MB) under **Settings (*optional*)**. (STO-5991)
+
+  ![](./static/checkmarx-zip-size-override-sto-5991.png)
+
+
+##### Early access features
+
+This release does not incude early-access features. 
+
+##### Fixed issues
+
+* Fixed an issue where STO results were not showing up in output variables when using STO steps inside a step group in a security stage. (STO-6038, ZD-45802)
+
+* Updated the Golang library used in STO code to remediate CVE-2022-21698. (STO-5993) 
+
 
 #### May 25, 2023, version 1.54.1
 

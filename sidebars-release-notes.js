@@ -7,7 +7,7 @@ const sidebars = {
     // Release Notes Parent
     {
       type: "category",
-      label: "Release notes",
+      label: "Release Notes",
       link: {
         type: "doc",
         id: "whats-new",

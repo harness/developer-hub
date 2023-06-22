@@ -1,15 +1,16 @@
 ---
-title: Terragrunt provisioning
+title: Terragrunt
 description: Learn about the Terragrunt steps you can use in you CD stage, and how these steps are commonly used together.
 sidebar_position: 300
 ---
 
+# Terragrunt provisioning
 
 Harness has first-class support for [Terragrunt](https://terragrunt.gruntwork.io/docs/) as an infrastructure provisioner.
 
 This topic describes each of the Terragrunt steps you can use in you CD stage, and how these steps are commonly used together.
 
-## Terragrunt provisioning summary
+## Summary
 
 Harness lets you use Terragrunt to provision infrastructure as part of your deployment process. 
 
