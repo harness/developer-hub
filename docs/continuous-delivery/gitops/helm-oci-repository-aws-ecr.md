@@ -12,6 +12,12 @@ GitOps repository credentials are stored in Kubernetes secrets. For GitOps to be
 
 In this topic, we will walk you through how to use the External Secrets Operator.
 
+1. [Install external secrets in the cluster where Argo CD is installed](#install-external-secrets-in-the-cluster-where-argo-cd-is-installed).
+2. [Create AWS credentials in Kubernetes secret](#create-aws-credentials-in-kubernetes-secret).
+3. [Create generator YAML](#create-generator-yaml).
+4. [Apply generator YAML](#apply-generator-yaml).
+5. [Create external secrets](#create-external-secrets).
+
 ## Install external secrets in the cluster where Argo CD is installed
 
 ```bash
@@ -31,7 +37,9 @@ There is an additional CRD, `ECRAuthorizationToken` that generates the token. We
 
 ## Create AWS credentials in Kubernetes secret
    
-Use the following commands to create AWS credentials in Kubernetes secret: 
+Use the following commands to create AWS credentials in Kubernetes secret.
+
+The credentials used below are samples only. Use your actual credentials.
 
 ```bash
 export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
@@ -41,7 +49,6 @@ echo -n AWS_SECRET_ACCESS_KEY > ./secret-access-key
 echo -n AWS_ACCESS_KEY_ID  > ./access-key  
 kubectl create secret generic awssm-secret --from-file=./access-key  --from-file=./secret-access-key
 ```
-The credentials used above are samples only. Use your actual credentials.
 
 ## Create generator YAML
 
@@ -73,7 +80,7 @@ spec:
 
 ## Apply generator YAML
 
-Apply the `generator.yaml` using the following command: 
+Apply `generator.yaml` using the following command: 
 
 ```bash
 kubectl apply -f generator.yaml
@@ -148,8 +155,8 @@ spec:
 In the above YAML: 
 
 * `ecr-gen` references the previously configured `generator.yaml`.
-* `name` must match secret name that represents the OCI Helm repository.
-* `creationPolicy: Merge` means that the external secret operator expects that the secret is already created, and will only add the data specified in the template.
+* `name` must match the secret name that represents the OCI Helm repository.
+* `creationPolicy: Merge` means that the External Secrets Operator expects that the secret is already created, and will only add the data specified in the template.
   
   ```
   template:

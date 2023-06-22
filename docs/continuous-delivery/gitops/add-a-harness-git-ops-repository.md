@@ -111,7 +111,8 @@ import TabItem from '@theme/TabItem';
          password: my-password  
          username: my-username
    ```
-
+7. Select **Save & Continue**. Harness validates the connection.
+   
 ```mdx-code-block
 </TabItem>
 <TabItem value="HTTP Helm repository" label="HTTP Helm repository">
@@ -140,7 +141,8 @@ import TabItem from '@theme/TabItem';
         For example, if you created a repository credentials template for the URL `https://something.com`, GitOps repositories that have their URL as `https://something.com/*` are able to use that repository credentials template.
 
         Harness will auto-detect the repository credentials template (if any) based on the GitOps repository **URL** and auto-populate it. If Harness auto-populated the GitOps repository, then you cannot edit the repository credentials template setting.
-
+7. Select **Save & Continue**. Harness validates the connection.
+   
 ```mdx-code-block
 </TabItem>
 <TabItem value="OCI Helm repository" label="OCI Helm repository">
