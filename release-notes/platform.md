@@ -89,10 +89,6 @@ This issue has been fixed by the removal of an account-level permission check th
 
 - The Go library has been upgraded from version 1.19.8 to 1.20.4. (PL-39026)
 
-- You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508, ZD-40688)
-
-   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
 - You can now delete externally managed users from the Harness UI. (PL-38974)
 
   Harness recommends using this action with caution since it may result in data inconsistencies between Harness and the identity provider.
@@ -103,7 +99,7 @@ This issue has been fixed by the removal of an account-level permission check th
 
 - Secret references now have a validate button to verify if the path is valid. (PL-31083)
 
-   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+   This item is available with Harness Platform version 79516 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 
 ##### Early access
