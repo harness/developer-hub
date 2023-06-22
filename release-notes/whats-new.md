@@ -53,7 +53,7 @@ Review the following information for details about data privacy and terms of use
 
 ## June 19, 2023
 
-### Continuous Integration, version 4206
+### Continuous Integration, version 4204
 
 The Harness Cloud Linux amd64 image has new major and minor versions for multiple components. Major version upgrades are described below. For a complete list of component versions, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#platforms-and-image-specifications). (CI-7537)
 
