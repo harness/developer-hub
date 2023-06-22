@@ -35,9 +35,9 @@ To add the SCM PR Lead Time widget to a dashboard:
 2. Select **Settings**, and then select **Add Widget**.
 3. Select the **SCM PR Lead Time by Stage Report** widget.
 4. Configure the filters for the widget.
-5. On the **Settings** tab, select the relevant **Workflow Configuration Profile**, and then select **Next: Place Widget**.
+5. On the **Settings** tab, select the relevant [Workflow Configuration Profile](../../sei-profiles/workflow-profile.md), and then select **Next: Place Widget**.
 
-   The default workflow configuration profile for lead time has four stages:
+   The default configuration for a [PR-based workflow configuration profile](../../sei-profiles/workflow-profile.md#create-a-profile-to-track-lead-time-in-scm) has four stages:
 
    * PR creation time.
    * Time to first comment.
@@ -46,7 +46,7 @@ To add the SCM PR Lead Time widget to a dashboard:
 
     Time spent in each stage depends on the stages that a PR actually goes through. For example, if there are no comments on the PR, then there is no time to calculate for that.
 
-    You can reconfigure the profile based on a team's SDLC process.
+    You can modify workflow profile stages according to your team's SDLC process. For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
 
 6. Select where you want to place the widget on the dashboard, and then select **Save Layout**.
 

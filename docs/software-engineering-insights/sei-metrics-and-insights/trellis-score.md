@@ -6,11 +6,9 @@ sidebar_position: 60
 
 Trellis Scores are a proprietary scoring mechanism from SEI. Your Trellis Score helps you understand your team's productivity. Trellis Scores are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. You can adjust the weight given to each factor.
 
-## Requirements
+## Modify factors and weights
 
 A [Trellis profile](../sei-profiles/trellis-profile.md) is required to calculate your Trellis Score and to modify the factors and weights that contribute to your score.
-
-## Modify factors and weights
 
 In the **Factors and Weights** section of your Trellis profile, you can enable and disable individual factors to include or exclude them from your Trellis Score calculation.
 
@@ -45,7 +43,7 @@ By default, all changes to code written in the last 30 days are considered rewor
 
 The Impact factor depends on the [Investment profile](../sei-profiles/investment-profile.md). The metrics that contribute to the Impact factor require categories from the Investment profile as input parameters.
 
-To configure this, go to [Configure the Impact Factor in a Trellis profile](../sei-profiles/trellis-profile.md#configure-the-impact-factor).
+To configure this, go to [Configure the Impact Factor in a Trellis profile](../sei-profiles/trellis-profile.md#enable-the-impact-factor).
 
 :::
 
