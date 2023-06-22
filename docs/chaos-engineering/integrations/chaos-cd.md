@@ -3,9 +3,13 @@ title: Use CE with Continuous Deployment
 sidebar_position: 2
 ---
 
-You can add chaos experiments to Harness Continuous Delivery (CD) pipelines as part of your deployment process. This ensures that you validate your system resiliency with every new deployment.
+You can add chaos experiments to Harness Continuous Delivery (CD) pipelines as part of your deployment process. This ensures that you validate your system resiliency with every new deployment. For example, you might consider injecting these types of faults as chaos steps in your CD pipeline:
 
-_XXX CAN WE HAVE SOME EXAMPLES OF CHAOS FAULTS YOU MIGHT WANT TO RUN FOR EVERY DEPLOYEMNT AND WHY? XXX_
+* **Network chaos faults** can be used for verifying service or microservice dependencies on each other when there's latency, or when one of the microservices is down.
+
+* **Stress chaos faults** can be used for verifying how microservices behave when there is a noisy neighbor.
+
+* **HTTP chaos faults** can be used for verifying how services/APIs behave when one of the APIs is under chaos.
 
 For more information, see: 
 * [CD tutorials](/docs/continuous-delivery/get-started/cd-tutorial)
