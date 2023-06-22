@@ -17,7 +17,7 @@ For information about data privacy and security, go to the [Harness Trust Center
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 19, 2023, version 4206
+## Latest - June 19, 2023, version 4204
 
 ```mdx-code-block
 <Tabs>
@@ -84,6 +84,15 @@ For more information on this feature, go to the documentation on [Output variabl
 
 * Improved error messages for [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) using [AWS connectors](/docs/platform/Connectors/Cloud-providers/add-aws-connector) with invalid credentials in [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures). (CI-7942, ZD-44039)
 * Fixed an issue where the active developer count was not reported for builds triggered manually. (CI-8025)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Hotfix versions 4205, 4206">
+```
+
+**Released June 22, 2023**
+
+These hotfixes addressed regressions that caused existing pipelines to fail.
 
 ```mdx-code-block
   </TabItem>
