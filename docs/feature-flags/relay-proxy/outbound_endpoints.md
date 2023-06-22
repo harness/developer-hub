@@ -1,10 +1,10 @@
 ---
-title: Endpoints
-description: This topic provides an overview of the endpoints the Proxy uses when it connects to SASS Feature Flags
-5idebar_position: 60
+title: Outbound Endpoints
+description: This topic provides an overview of the endpoints the Proxy uses when it connects to SAAS Feature Flags
+sidebar_position: 60
 ---
 
-These are the endpoints requested by the Relay Proxy. These are listed in the order they're used:
+These are the endpoints requested by the Relay Proxy when it communicates with Harness SaaS. These are listed in the order they're used:
 - [Startup](#basic-startup)
 - [Start SDK per API key](#start-sdks)
 - [Periodic requests/polls](#periodic-requestspolls)
@@ -13,11 +13,11 @@ The base URL  of these endpoints is configurable if you need to pass it through 
 
 ## Basic startup
 
-This is the basic data fetched on startup. This fetches the account, project, and environment information required for the Relay Proxy to initialise. This will page through all projects and environments in an account, so it may make multiple requests.
+This is the basic data fetched on startup. It authenticates each sdk key and parses the project/environment info from the jwt response. It then fetches the hashed api keys + optionally targets. This will page through this data so may make multiple requests.
 
-* `GET https://app.harness.io/gateway/cf/admin/projects` - fetches account projects
+* `POST https://config.ff.harness.io/api/1.0/client/auth` - authenticates api key
 
-* `GET https://app.harness.io/gateway/cf/admin/environments` - fetches account environments
+* `GET https://app.harness.io/gateway/cf/admin/apikey` - gets all hashed api keys for this environment. These are required so connected sdks can authenticate using any key from this environment. This pages through the api keys so may make multiple requests.
 
 * `GET https://app.harness.io/gateway/cf/admin/targets` - fetches environment target data (optional - see TARGET_POLL_DURATION config option). This pages through the targets so may make multiple requests.
 
@@ -47,6 +47,18 @@ These requests happen either on demand or by various timers while the Relay Prox
 * `POST https://events.ff.harness.io/api/1.0/metrics` - sends metrics (optional - see METRIC_POST_DURATION config option).
 
 * `POST https://config.ff.harness.io/api/1.0/client/auth` - when a client authenticates with the Relay Proxy, Harness forwards this request to the remote server to register the target.
+
+## Domains Requested
+* https://app.harness.io/gateway/cf/admin/*
+
+* https://config.ff.harness.io/api/1.0/client/*
+
+* https://events.ff.harness.io/api/1.0/metrics
+
+## Protocols
+All requests to SaaS are made using HTTPS on port 443
+
+The /stream request is a long lived SSE connection that receives messages over time and may need special network configuration to be allowed in corporate environments.
 
 ## Sequence diagram for proxy requests
 
