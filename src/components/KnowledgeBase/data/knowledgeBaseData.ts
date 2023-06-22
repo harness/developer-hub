@@ -20,12 +20,6 @@ export const knowledgeBaseList: CardItem[] = [
     link: "/kb/continuous-delivery/cv-multi-service",
   },
   {
-    title: "Multi Service Deployments with Continuous Verification",
-    module: MODULES.cd,
-    date: "May 05, 2023",
-    link: "/kb/continuous-delivery/newkb",
-  },
-  {
     title: "How Can I Troubleshoot The Delegate Installation Error with Readiness Probe Failure in GKE?",
     module: MODULES.platform,
     date: "April 06, 2023",
