@@ -1,5 +1,5 @@
 ---
-title: Inbound Endpoints
+title: Inbound endpoints
 description: This topic provides an overview of the endpoints SDKs use when connecting to the Proxy.
 sidebar_position: 55
 ---
