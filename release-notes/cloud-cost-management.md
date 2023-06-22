@@ -33,7 +33,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 ### Early access
 
-
+This release does not include any early access features.
 
 ```mdx-code-block
   </TabItem>
@@ -42,6 +42,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ### Fixed issues
 
 * The budget screen displayed inconsistent margins, leading to overlapping text in different columns. To address this issue, the columns in the budget list have been readjusted, ensuring that the text in each column no longer coincides with the text in adjacent columns. (CCM-10980)
+* An error occurred with the HTTP AutoStopping rule. (CCM-12729)
+The detection of routing rules on the Azure Application Gateway was impacted due to the presence of an additional custom probe configuration. To address this issue, during the detection of routing rules for the specified port configuration, any custom probes are now ignored. However, the custom probe will continue to be utilized for the selected rule.
   
 
   
