@@ -16,11 +16,13 @@ To view installed Feature Flags, do the following:
 
    :::info note
    This file is typically located in the following default path.
-   :::
-
+   
    ```
    /path/to/helm-charts/src/override-prod.yaml
    ```
+   :::
+
+   
 
 2. Go to `platform`.
 
@@ -34,11 +36,11 @@ To add Feature Flags, do the following:
 
    :::info note
    This file is typically located in the following default path.
-   :::
-
+   
    ```
    /path/to/helm-charts/src/override-prod.yaml
    ```
+   :::
 
 2. Go to the `platform` section for the `harness-manager` component.
 
@@ -110,11 +112,11 @@ To add Feature Flags, do the following:
    
    :::info note
    For Feature Flags that affect `ng-manager`, you must restart the component(s) after the Helm upgrade is complete and the Harness Manager has restarted and is up and running. You can restart your pods or run the following rollout restart command on the Harness Manager deployment for your installation.
-   :::
 
    ```
    kubectl rollout restart deployment ng-manager
    ```
+   ::
 
    :::info note
    This example is the snapshot to update the Helm chart. You can also update the `values.yaml` file for your Kubernetes delegate.
