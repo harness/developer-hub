@@ -2,7 +2,7 @@
 
 The following settings apply to all scanners where the `scan_type` is `repository`.
 
-* `repository_project` (required) This appears as the target name in the UI. 
+* `repository_project` (required): This appears as the target name in the UI. 
 * `repository_branch` (required) This appears as the target variant in the UI.
 
 <!-- 
