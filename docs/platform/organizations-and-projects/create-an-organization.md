@@ -94,7 +94,7 @@ Next, the Harness modules appear.
 
 Harness does not support moving resources between projects or organizations at the moment.
 
-**Q: How can I decommission a Project and still retain its history?**
+#### What is the best way to decommission a project while retaining its history?
 
 We recommend removing rbac access to the the project and only allow for users to either view it or hide it entirely from most users. Only account admins can maintain view access to check configurations and deployment history in the project. If you delete the project, the deployment history will also be removed so its better to leave the project available and block access and usage to it in order to keep your history.
 
