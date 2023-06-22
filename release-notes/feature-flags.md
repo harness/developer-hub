@@ -42,7 +42,7 @@ This release does not include early access features.
 
 The **JavaScript** client SDK has been updated to version **1.14.0** with the following update.
 
-* Added a new API `refreshEvaluations()`, which can be called by a mobile app using the SDK in a web view coming to the foreground. This API updates any SSE flag events that were missed while the app was suspended. (FFM-8141)
+* Added a new API `refreshEvaluations()`, which can be called by a mobile app using the SDK in a web view coming to the foreground. This API call updates any SSE flag events that were missed while the app was suspended. (FFM-8141)
 
 ```mdx-code-block
   </TabItem>
