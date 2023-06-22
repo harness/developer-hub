@@ -4,13 +4,13 @@ description: This topic describes how to store OCI Helm repository in private Am
 sidebar_position: 8
 ---
 
-This topic assumes that you have already created as [OCI Helm repository](/docs/continuous-delivery/gitops/add-a-harness-git-ops-repository#add-a-repository).
+This topic assumes that you have already created an [OCI Helm repository](/docs/continuous-delivery/gitops/add-a-harness-git-ops-repository#add-a-repository).
 
-When storing an OCI Helm repository in Amazon Elastic Container Registry (Amazon ECR), you must obtain a token. The Amazon ECR tokens are short-lived, hence need rotation. 
+When storing an OCI Helm repository in Amazon Elastic Container Registry (ECR), you must obtain a token. The Amazon ECR tokens are short-lived, hence need rotation. 
 
 GitOps repositories are stored in Kubernetes secrets. For GitOps to be able to pull these repositories from Amazon ECR, you have to rotate the credentials stored in the secret. You can use [External Secrets Operator](https://external-secrets.io) and [ArgoCD ECR Updater](https://artifacthub.io/packages/helm/argocd-aws-ecr-updater/argocd-ecr-updater) to achieve this.
 
-In this topic, we will walk you through how to use the external secrets operator.
+In this topic, we will walk you through how to use the External Secrets Operator.
 
 ## Install external secrets in the cluster where Argo CD is installed
 
@@ -23,7 +23,7 @@ external-secrets/external-secrets \
 --set installCRDs=true
 ```
 
-The above commands installs the external secret operator with necessary Custom Resource Definitions (CRDs). 
+The above commands install the external secret operator with necessary Custom Resource Definitions (CRDs). 
    
 The external secret operator has `ClusterSecretStore` and `ExternalSecret` CRDs that are used to manage the secrets update. `ClusterSecretStore` defines secret storage, whereas `ExternalSecret` connects the Kubernetes secret's storage and destination.
    
@@ -31,7 +31,7 @@ There is an additional CRD, `ECRAuthorizationToken` that generates the token. We
 
 ## Create AWS credentials in Kubernetes secret
    
-Use the following command to create AWS credentials in Kubernetes secret: 
+Use the following commands to create AWS credentials in Kubernetes secret: 
 
 ```bash
 export AWS_ACCESS_KEY_ID=AKIAIOSFODNN7EXAMPLE
@@ -41,11 +41,11 @@ echo -n AWS_SECRET_ACCESS_KEY > ./secret-access-key
 echo -n AWS_ACCESS_KEY_ID  > ./access-key  
 kubectl create secret generic awssm-secret --from-file=./access-key  --from-file=./secret-access-key
 ```
-The credentials used below are samples only. Use your actual credentials.
+The credentials used above are samples only. Use your actual credentials.
 
-## Create Generator YAML
+## Create generator YAML
 
-The credentials created in the previous step `awssm-secret` is referenced here.
+The secret created in the previous step, `awssm-secret`, is referenced below.
    
 ```yaml
 apiVersion: generators.external-secrets.io/v1alpha1
@@ -71,7 +71,7 @@ spec:
         key: "secret-access-key"
 ```
 
-## Apply Generator YAML
+## Apply generator YAML
 
 Apply the `generator.yaml` using the following command: 
 
