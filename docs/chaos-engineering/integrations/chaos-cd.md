@@ -1,5 +1,5 @@
 ---
-title: Use CE with Continuous Deployment
+title: Use CE with Continuous Delivery
 sidebar_position: 2
 ---
 
