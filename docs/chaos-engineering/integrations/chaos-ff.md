@@ -33,7 +33,7 @@ Harness recommends that when you add a chaos step to an FF pipeline, you also ad
 
 	![Select a stage screen with Feature Flag, Deploy, and Custom Stage highlighted](./static/pipeline-add-stage.png)
 
-1. Enter a **Stage Name**, and then select **Set Up Stage**.
+1. Enter a **Stage Name** (and Deployment Type if applicable), and then select **Set Up Stage**.
 
 1. With the stage you want selected, select **Add Step > Add Step**.
 
@@ -56,7 +56,7 @@ Harness recommends that when you add a chaos step to an FF pipeline, you also ad
 	When you select an experiment, the experiment's last resilience score, a preview of the experiment, and its chaos faults, are displayed.
 
 1. (Optional) On this screen you can:
-	* Select **New Experiment** to create a new experiment in Chaos Studio. 
+	* Select **New Experiment** to [create a new experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments) in Chaos Studio. 
 	* Select **Edit in Chaos Studio** to edit a selected experiment.
 
 	Selecting these options takes you to Chaos Studio without saving your work.

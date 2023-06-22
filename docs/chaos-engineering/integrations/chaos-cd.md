@@ -9,7 +9,7 @@ You can add chaos experiments to Harness Continuous Delivery (CD) pipelines as p
 
 * **Stress chaos faults** can be used for verifying how microservices behave when there is a noisy neighbor.
 
-* **HTTP chaos faults** can be used for verifying how services/APIs behave when one of the APIs is under chaos.
+* **HTTP chaos faults** can be used for verifying how services or APIs behave when one of the APIs is under chaos.
 
 For more information, see: 
 * [CD tutorials](/docs/continuous-delivery/get-started/cd-tutorial)
@@ -33,7 +33,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 
 	![Select a stage screen with Feature Flag, Deploy, and Custom Stage highlighted](./static/pipeline-add-stage.png)
 
-1. Enter a **Stage Name**, and then select **Set Up Stage**.
+1. Enter a **Stage Name** (and Deployment Type if applicable), and then select **Set Up Stage**.
 
 1. With the stage you want selected, select **Add Step > Add Step**.
 
@@ -56,7 +56,7 @@ Pipelines are organized into stages, each of which handles a major segment of th
 	When you select an experiment, the experiment's last resilience score, a preview of the experiment, and its chaos faults, are displayed.
 
 1. (Optional) On this screen you can:
-	* Select **New Experiment** to create a new experiment in Chaos Studio. 
+	* Select **New Experiment** to [create a new experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments) in Chaos Studio. 
 	* Select **Edit in Chaos Studio** to edit a selected experiment.
 
 	Selecting these options takes you to Chaos Studio without saving your work.
