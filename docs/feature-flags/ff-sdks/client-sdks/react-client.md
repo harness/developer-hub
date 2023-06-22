@@ -240,7 +240,7 @@ When you receive a response showing the current status of your feature flag, go 
 When testing your React application with Jest, you may want to mock the SDK to avoid making network requests. You can do this by using the `TestWrapper` component included in the SDK. This component accepts a listing of flags and their values, and mocks the SDK to return those values. 
 
 :::info note
-To use the `TestWrapper` component, you must import it from the `dist/cjs/test-utils` directory, not from the main package. For example, run `import from '@harnessio/ff-react-client-sdk/dist/cjs/test-utils'`.
+To use the `TestWrapper` component, you must import it from the `dist/cjs/test-utils` directory (not from the main SDK package), as shown in the example below.
 :::
 
 ### Example
