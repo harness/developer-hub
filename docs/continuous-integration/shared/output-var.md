@@ -29,6 +29,12 @@ In the following YAML example, step `alpha` exports an output variable called `m
 
 </details>
 
+:::caution
+
+If your output variable's value is a [secret](/docs/category/secrets), be aware that the secret will be visible in the [build logs](/docs/continuous-integration/use-ci/viewing-builds.md), both on the **Output** tab of the step where the output variable originates and in the logs for any later steps that reference that variable.
+
+:::
+
 ### Create an output variable
 
 To create an output variable, do the following in the step where the output variable originates:
