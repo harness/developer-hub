@@ -43,11 +43,11 @@ Verify that you have the following:
 
 :::caution
 
-For the pipeline to run successfully, follow all of the following steps as they are, including the naming conventions.
+For the pipeline to run successfully, follow all of the steps below as they are, including the naming conventions.
 
 :::
 
-### Set up the Harness delegate
+### Set up the Harness Delegate
 
 <details open>
 <summary>What is the Harness delegate?</summary>
@@ -58,8 +58,8 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 
 1. In **Project Setup**, select **Delegates**.
     1. Select **Delegates**.
-        1. Select **Install delegate**. For this tutorial, let's explore how to install the Docker Delegate.
-        2. In the command provided, `ACCOUNT_ID`, `MANAGER_ENDPOINT` and `DELEGATE_TOKEN` are auto-populated values that you can obtain from the delegate Installation wizard. 
+        1. Select **Install delegate**. For this tutorial, let's explore how to install the Docker delegate.
+        2. In the command provided, `ACCOUNT_ID`, `MANAGER_ENDPOINT` and `DELEGATE_TOKEN` are auto-populated values that you can obtain from the delegate installation wizard. 
 
             ```bash
             docker run --cpus=1 --memory=2g \
@@ -234,7 +234,7 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 Finally, it's time to execute the pipeline. 
 
 1. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
-2. Observe the execution logs as Harness copy the artifact from source to the remote server.
+2. Observe the execution logs as Harness copies the artifact from source to the remote server.
 3. After a successful execution, you can check the artifact in your remote server using the following command:  
 
 ```bash
@@ -253,7 +253,7 @@ You've just learned how to use Harness CD to copy an artifact to your remote ser
 Verify that you have the following:
 
 - **A Windows VM**. Use your own Windows VM or we recommend using [Vagrant](https://developer.hashicorp.com/vagrant/tutorials/getting-started/getting-started-install) for starting a new vm instance.
-- **[Docker](https://docs.docker.com/engine/install/)** to setup and start _Docker Delegate_.
+- **[Docker](https://docs.docker.com/engine/install/)** to set up and start _Docker Delegate_.
     - Check [delegate System and network requirements](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
 ## Getting Started with Harness CD
