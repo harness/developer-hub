@@ -1,7 +1,8 @@
 ---
-sidebar_position: -1
+sidebar_position: 10
 hide_table_of_contents: true
 title: Physical Data Center
+description: Deploy artifacts to VMs or bare-metal hosts in a physical data center.
 ---
 
 # Physical Data Center
@@ -28,25 +29,25 @@ This tutorial helps you get started with Harness Continuous Delivery (CD). We wi
 
 Verify the following:
 
-1. **One or more Linux VM**. Use your own Linux VM or we recommend using [Vagrant](https://developer.hashicorp.com/vagrant/tutorials/getting-started/getting-started-install) for starting a new vm instance.
-2. **SSH Private Key to authenticate to the remote vm/server**. For steps, check [Passwordless SSH using public-private key pairs](https://www.redhat.com/sysadmin/passwordless-ssh).
-3. **[Docker](https://docs.docker.com/engine/install/)** to setup and start _Docker Delegate_.
+1. **One or more Linux VM**. Use your own Linux VM or we recommend using [Vagrant](https://developer.hashicorp.com/vagrant/tutorials/getting-started/getting-started-install) for starting a new VM instance.
+2. **SSH Private Key to authenticate to the remote vm/server**. For steps, go to [Passwordless SSH using public-private key pairs](https://www.redhat.com/sysadmin/passwordless-ssh).
+3. **[Docker](https://docs.docker.com/engine/install/)** to set up and start _Docker Delegate_.
     - Check [delegate System and network requirements](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
 ## Getting Started with Harness CD
 ----------------------------------
 
-1. Log into [Harness](https://app.harness.io/).
+1. Log in to [Harness](https://app.harness.io/).
 
 2. Select **Projects**, and then select **Default Project**.
 
 :::caution
 
-For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
+For the pipeline to run successfully, follow all of the following steps as they are, including the naming conventions.
 
 :::
 
-### Delegate
+### Set up the Harness delegate
 
 <details open>
 <summary>What is the Harness delegate?</summary>
@@ -55,7 +56,7 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 
 </details>
 
-3. In **Project Setup**, select **Delegates**.
+1. In **Project Setup**, select **Delegates**.
     - Select **Delegates**.
         - Select **Install delegate**. For this tutorial, let's explore how to install the Docker Delegate.
         -  In the command provided, `ACCOUNT_ID`, `MANAGER_ENDPOINT` and `DELEGATE_TOKEN` are auto-populated values that you can obtain from the delegate Installation wizard. 
@@ -78,7 +79,7 @@ You can also follow the [Install Harness delegate on Kubernetes or Docker](https
 
 :::
 
-### Secrets
+### Set up a Harness secret for your SSH private key
 
 <details open>
 <summary>What are Harness secrets?</summary>
@@ -87,17 +88,17 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 
 </details>
 
-4. In **Project Setup**, select **Secrets**.
+1. In **Project Setup**, select **Secrets**.
     - Select **New Secret** > **SSH Credential**.
     - Enter the secret name `harness_sshprivatekey` and click **Continue**.
     - With **SSH Key** as the Auth Scheme, select **Username/SSH Key** as the Authentication method.
-    - Enter the username for the user account on the remote server in the **Username** field. Eg: _ubuntu_
+    - Enter the username for the user account on the remote server in the **Username** field. For example: _ubuntu_
     - Next, select **Create or Select a Secret** and click **New Secret File**.
-    - Enter the Secret Name **ssh-private-key** and click **Browse** to upload the SSH Private Key to Harness Secret Manager
-    - Click **Save** and if needed modify SSH Port number.
+    - Enter the Secret Name **ssh-private-key** and click **Browse** to upload the SSH Private Key to Harness Secret Manager.
+    - Click **Save** and if needed modify the SSH port number.
     - Finally, click **Save and Continue**.
 
-### Connectors
+### Set up Harness connectors to your physical data center and Artifactory repository
 
 <details open>
 <summary>What are connectors?</summary>
@@ -106,7 +107,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 
 </details>
 
-5. Create a **Physical Data Center connector**.
+1. Create a **Physical Data Center connector**.
     - Copy the contents of [pdc-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/1-pdc-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
@@ -114,14 +115,14 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     - Select **Save Changes** and verify that the new connector named **harness_pdc** is successfully created.
     - Finally, select **Test** under **CONNECTIVITY STATUS** to ensure the connection is successful.
 
-6. Create a **Artifactory Connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
+2. Create a **Artifactory Connector**. For this tutorial, we'll use an artifact for a ToDo List app, `todolist.war`, which is available in a public Harness Artifactory repo.
     - Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/2-artifactory-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
     - Select **Save Changes** and verify that the new connector named **harness_artifactrepo** is successfully created.
     - Finally, select **Test** under **CONNECTIVITY STATUS** to ensure the connection is successful.
 
-### Environment
+### Set up the Harness environment
 
 <details open>
 <summary>What are Harness environments?</summary>
@@ -130,14 +131,14 @@ Environments define the deployment location, categorized as **Production** or **
 
 </details>
 
-7. In **Default Project**, select **Environments**.
+1. In **Default Project**, select **Environments**.
     - Select **New Environment** and toggle to **YAML** to use the YAML editor.
     - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/3-environment.yml) and paste it into the YAML editor and select **Save**.
     - In **Infrastructure Definitions**, select **Infrastructure Definition** and select **Edit YAML**.
     - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/4-infrastructure-definition.yml) and paste it into the YAML editor.
     - Select **Save** and verify that the environment and infrastructure definition is created successfully.
 
-### Services
+### Set up the Harness service
 
 <details open>
 <summary>What are Harness services?</summary>
@@ -146,14 +147,14 @@ In Harness, services represent what you deploy to environments. You use services
 
 </details>
 
-8. In **Default Project**, select **Services**.
+1. In **Default Project**, select **Services**.
     - Select **New Service**.
     - Name the service `harness_ssh`.
     - Select **Save**, and then in the **Configuration** tab, toggle to **YAML** to use the YAML editor.
     - Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-pdc/ssh/5-service.yml) and paste it into the YAML editor.
     - Select **Save** and verify that the Service **harness_ssh** is successfully created.
 
-### Pipeline
+### Set up the pipeline
 
 <details open>
 <summary>What are Harness pipelines?</summary>
@@ -162,7 +163,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 </details>
 
-9. In **Default Project**, select **Pipelines**.
+1. In **Default Project**, select **Pipelines**.
     - Select **New Pipeline**.
     - Enter the name `harness_ssh_pipeline`.
     - Select **Inline** to store the pipeline in Harness.
@@ -227,12 +228,15 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 </Tabs>
 ```
 
-10. Finally, it's time to execute the pipeline. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
-    - Observe the execution logs as Harness copy the artifact from source to the remote server.
-    - After a successful execution, you can check the artifact in your remote server using the following command:  
-    ```bash
-    ls -l ~/harness_ssh/harnessdevenv/todolist.war
-    ```
+Finally, it's time to execute the pipeline. 
+
+- Select **Run**, and then select **Run Pipeline** to initiate the deployment.
+- Observe the execution logs as Harness copy the artifact from source to the remote server.
+- After a successful execution, you can check the artifact in your remote server using the following command:  
+
+```bash
+ls -l ~/harness_ssh/harnessdevenv/todolist.war
+```
 
 ### Congratulations!🎉
 You've just learned how to use Harness CD to copy an artifact to your remote servers via SSH.
