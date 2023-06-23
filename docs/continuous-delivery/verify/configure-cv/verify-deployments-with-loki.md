@@ -5,7 +5,7 @@ sidebar_position: 8
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-# Set up Grafana Loki health source
+# Set up a Grafana Loki health source
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -18,7 +18,7 @@ Harness Continuous Verification (CV) integrates with Grafana Loki to:
 * Verify that the deployed service is running safely and performing automatic rollbacks.
 * Apply machine learning to every deployment to identify and flag anomalies in future deployments.
 
-This topic describes how to set up a Grafana Loki health source when adding a CV step to your Continuous Deployment (CD).
+This topic describes how to set up a Grafana Loki health source when adding a CV step to your Continuous Deployment (CD) pipeline.
 
 
 ## Set up continuous verification
@@ -26,7 +26,7 @@ This topic describes how to set up a Grafana Loki health source when adding a CV
 To set up CV, you need to configure a Service Reliability Management (SRM)-monitored service. A monitored service is a mapping of a Harness service to a service that is being monitored by your Application Performance Monitoring (APM) or logging tool.
 
 
-## Add Verify Step
+## Add a Verify step to your CD pipeline
 
 To add a Verify step to your pipeline, use one of the methods below.
 
@@ -60,30 +60,36 @@ You can add a step at various points in the pipeline, such as the beginning, end
    
    The Verify settings page appears.
 
-## Define name and time out information
+## Define name and timeout information
 
 1. In **Name**, enter a name for the Verification step.
    
 2. In **Timeout**, enter a timeout value for the step. Harness uses this information to time out the verification. Use the following syntax to a define timeout:
-   - **w** for weeks. For example, to define one week, enter 1w.
-   - **d** for days. For example, to define 7 days, enter 7d.
-   - **h** for hours. For example, to define 24 hours, enter 24h.
-   - **m** for minutes, For example, to define 100 minutes, enter 100m.
-   - **s** for seconds. For example, to define 500 seconds, enter 500s.
-   - **ms** for milliseconds. For example, to define 1000 milliseconds, enter 1000ms.
+   - **w** for weeks.
+   - **d** for days.
+   - **h** for hours.
+   - **m** for minutes.
+   - **s** for seconds.
+   - **ms** for milliseconds.
 
-The maximum timeout value you can set is **53w**. You can also set timeouts at the pipeline level.
+   For example, use 1w for one week, 7d for 7 days, 24h for 24 hours, 100m for 100 minutes, 500s for 500 seconds, and 1000ms for 1000 milliseconds.
+   
+   The maximum timeout value you can set is **53w**. You can also set timeouts at the pipeline level.
+
  
-
 ## Select a continuous verification type, sensitivity, and duration
 
-1. In **Continuous Verification Type**, select a type that matches your deployment strategy. The following options are available:
+1. In **Continuous Verification Type**, one of the type below:
    
    - **Auto**: Harness automatically selects the best continuous verification type based on the deployment strategy.
+   
    - **Rolling Update**: Rolling deployment is a deployment technique that gradually replaces old versions of a service with a new version by replacing the infrastructure on which the service runs. Rolling updates are useful in situations where a sudden changeover might cause downtime or errors.
+   
    - **Canary**: A Canary deployment involves a two-phased deployment. In phase one, new pods and instances with the new service version are added to a single environment. In phase two, a rolling update is performed in the same environment. A Canary deployment helps detect issues with the new deployment before fully deploying it.
+   
    - **Blue Green**: Blue-green deployment is a technique used to deploy services to a production environment by gradually shifting user traffic from an old version to a new one. The previous version is referred to as the blue environment, while the new version is known as the green environment. Upon completion of the transfer, the blue environment remains on standby in case of a need for rollback or can be removed from production and updated to serve as the template for future updates.
-   - **Load Test**: Load testing is a strategy used in lower-level environments, such as quality assurance, where a consistent load is absent and deployment validation is typically accomplished through the execution of load-generating scripts. This is useful to ensure that the application can handle the expected load and validate that the deployment is working as expected before releasing it to the production environment.
+   
+   - **Load Test**: Load testing is a strategy used in lower-level environments, such as quality assurance, where a consistent load is absent, and deployment validation is typically accomplished through the execution of load-generating scripts. This is useful to ensure that the application can handle the expected load and validate that the deployment is working as expected before releasing it to the production environment.
 
 2. In **Sensitivity**, choose the sensitivity level. The available options are **High**, **Medium**, and **Low**. When the sensitivity is set to high, even minor anomalies are treated as verification failures. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
    
@@ -96,7 +102,15 @@ The maximum timeout value you can set is **53w**. You can also set timeouts at 
 
 ## Create a monitored service
 
-Harness CV monitors the health trend deviations using logs and metrics obtained from the health source, such as APM and logging tools, via a monitored service.
+The next step is to create a monitored service for the Verify step. Harness CV uses a monitored service to monitor health trend deviations, using logs and metrics obtained from the health source, such as APM and logging tools.
+
+
+:::info note
+If you've set up a service or environment as runtime values, the auto-create option for monitored services won't be available. When you run the pipeline, Harness combines the service and environment values to create a monitored service. If a monitored service with the same name already exists, it will be assigned to the pipeline. If not, Harness skips the Verification step.
+
+For instance, when you run the pipeline, if you input the service as `todolist` and the environment as `dev`, Harness creates a monitored service with the name `todolist_dev`. If a monitored service with that name exists, Harness assigns it to the pipeline. If not, Harness skips the Verification step.
+:::
+
 
 To create a monitored service:
 
@@ -106,26 +120,18 @@ To create a monitored service:
 
       If a monitored service with the same name and environment already exists, the **Click to autocreate a monitored service** option is hidden, and the existing monitored service is assigned to the Verify step by Harness.
 
-:::info note
-
-If you've set up a service or environment as runtime values, the auto-create option for monitored services won't be available. When you run the pipeline, Harness combines the service and environment values to create a monitored service. If a monitored service with the same name already exists, it will be assigned to the pipeline. If not, Harness skips the Verification step.
-
-For instance, when you run the pipeline, if you input the service as `todolist` and the environment as `dev`, Harness creates a monitored service with the name `todolist_dev`. If a monitored service with that name exists, Harness assigns it to the pipeline. If not, Harness skips the Verification step.
-
-:::
-
-
 ![Autocreate monitored service](./static/cv-sumologic-autocreate-monitoredservice.png)
+
 
 ## Add a health source
 
 A health source is an APM or logging tool that monitors and aggregates data in your deployment environment.
 
-### Define health source
+### Define a health source
 
 To add a health source:
 
-1. In the **Health Sources** section, select **+ Add New Health Source**.
+1. In the **Health Sources** section of the Verify screen, select **+ Add New Health Source**.
    
    The Add New Health Source dialog appears.
 
@@ -156,7 +162,9 @@ To add a health source:
 
          4. Optionally, in the **Parameters** tab, enter the **Key** and **Value** pair.
 
-         5. In the **Validation Path** tab, select either the **GET** or **POST** request method and enter the **Validation Path**. If you select **POST**, then you should also enter the request body.
+         5. In the **Validation Path** tab, select either the **GET** or **POST** request method and enter the **Validation Path**.  
+            
+            If you select **POST**, you must also include the request body. Here's an example of a validation path for a **GET** request: `loki/api/v1/labels`.
 
          6. In the **Delegates Setup** tab, choose one of the following:
 
@@ -190,27 +198,27 @@ To add a health source:
    The query that you added gets listed under **Logs Group**. The query specification and mapping settings are displayed.
    These settings help you retrieve the desired logs from the Grafana Loki platform and map them to the Harness service. 
 
-#### Define a query
 
+#### Define a query
    
 1. In the **Query** field, enter a log query and select **Run Query** to execute it.
    
     A sample record in the **Records** field. This helps you confirm the accuracy of the query you've constructed.
    
-2. In the **Field Mapping** section, select **+** to map the **service instance identifiers** to select the data that you want to be displayed from the logs.
+2. In the **Field Mapping** section, select **+** to map the **service instance identifiers** to select the data that you want to be displayed from the logs. For more information, go to [Service Instance Identifier (SII)](/docs/continuous-delivery/verify/cv-concepts/cvfg-cvng/#service-instance-identifier-sii).
 
 3. Select **Get sample log messages**.  
    
    Sample logs are displayed that help you verify if the query is correct.
 
-<details>
-<summary><b>Sample log query</b></summary>
+   <details>
+   <summary><b>Sample log query</b></summary>
 
-Query for showing data from all filenames, except for syslog: `{filename=~".+",filename!="/var/log/syslog"}`
+   Query for showing data from all filenames, except for syslog: `{filename=~".+",filename!="/var/log/syslog"}`
 
-![Grafana Loki sample query](./static/cv-loki-log-query.png)
+   ![Grafana Loki sample query](./static/cv-loki-log-query.png)
 
-</details>
+   </details>
 
 
 ### Save the health source settings
@@ -254,6 +262,6 @@ The console view displays detailed logs of the pipeline, including verification 
 
 ![Verification step console view](./static/cv-sumologic-verify-console-view.png)
 
-By default, the console displays logs of only the anomalous metrics and affected nodes. To see all logs, clear the **Display only anomalous metrics and affected nodes** check box.
+To see the logs, go to the **Logs** tab.
 
-
+![Verification step view logs](./static/cv-loki-verify-view-logs.png)
