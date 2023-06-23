@@ -1,7 +1,7 @@
 ---
 title: Splunk Observability [SignalFx] 
 description: Verify deployments with Splunk Observability [SignalFx]. 
-sidebar_position: 10
+sidebar_position: 11
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
