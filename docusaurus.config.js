@@ -55,8 +55,8 @@ const config = {
           // changefreq: 'weekly',
           // priority: 0.5,
           ignorePatterns: [
-            "/docs/infrastructure-as-code",
-            "/docs/infrastructure-as-code/**",
+            "/docs/infra-as-code-management",
+            "/docs/infra-as-code-management/**",
           ],
           // filename: 'sitemap.xml',
         },
@@ -190,17 +190,17 @@ const config = {
                 label: "Continuous Error Tracking",
                 to: "docs/continuous-error-tracking",
               },
+                            {
+                label: "Internal Developer Portal",
+                to: "docs/internal-developer-portal",
+              },
               {
-                label: "Harness Platform",
+                label: "Platform",
                 to: "docs/platform",
               },
               {
                 label: "Self-Managed Enterprise Edition",
                 to: "docs/self-managed-enterprise-edition",
-              },
-              {
-                label: "Internal Developer Portal",
-                to: "docs/internal-developer-portal",
               },
               {
                 label: "Harness FirstGen",
@@ -277,13 +277,6 @@ const config = {
             html: '<button class="button button--cta">Sign up</button>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
-          /**
-          {
-            href: "https://github.com/harness/developer-hub",
-            label: "Developer Hub GitHub",
-            position: "right",
-          },
-          */
         ],
       },
       footer: {
@@ -324,6 +317,10 @@ const config = {
                 label: "Chaos Engineering",
                 to: "https://harness.io/products/chaos-engineering",
               },
+              {
+                label: "Continuous Error Tracking",
+                to: "https://www.harness.io/products/continuous-error-tracking",
+              },
             ],
           },
           {
@@ -340,14 +337,6 @@ const config = {
               {
                 label: "API Reference",
                 to: "https://apidocs.harness.io/",
-              },
-              {
-                label: "Forum",
-                to: "https://discuss.harness.io",
-              },
-              {
-                label: "University",
-                to: "https://university.harness.io",
               },
               {
                 label: "Open Source",

@@ -1,5 +1,5 @@
 ---
-title: WinRM deployments
+title: Windows VM deployments using WinRM
 description: Deploy to any platform using WinRM.
 sidebar_position: 9
 helpdocs_topic_id: l8795ji7u3
@@ -8,8 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# Windows VM deployments using WinRM
 
-You can use Windows Remote Management (WinRM) to deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC). Harness connects to your target Windows instances using the WinRM protocol and executes PowerShell commands to deploy your artifact.
+You can use Windows Remote Management (WinRM) to deploy your artifacts to Windows VM or bare-metal hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC). Harness connects to your target Windows instances using the WinRM protocol and executes PowerShell commands to deploy your artifact.
 
 In this topic, we will deploy a .zip file to an AWS EC2 Windows instance using Harness. We will pull a publicly-available .zip file from Artifactory and deploy it to an EC2 Windows instance in your AWS account by using the Basic execution strategy.
 

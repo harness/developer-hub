@@ -236,10 +236,6 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
 16. Once the Test Connection succeeds, click **Finish**. Datadog is listed under the list of Connectors.
 
 
-
-
-
-
 ### Add Dynatrace
 
 1. Open a Harness Project.
@@ -311,3 +307,37 @@ You must use HTTPS to establishing connections with Dynatrace.
 16. Once the Test Connection succeeds, click **Finish**. Custom Health is listed under the list of Connectors.
 
 
+### Add Grafana Loki
+
+1. Open a Harness Project.
+
+2. Under **Project Setup**, select **Connectors** > **+ New Connector**.
+
+3. Under **Monitoring and Logging Systems**, select **CustomHealth**.
+   
+4. In the Create or Select an Existing Connector dialog, select **+ New Connector**.
+         
+5. In the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+   
+6. In the **Headers** tab, enter the following and select **Next**:
+
+   - **Base URL** of your Grafana Loki account. By default, Grafana Loki exposes its API on the 3100 port without any authentication. 
+   - Optionally, the **Key** and **Value** pair for the Grafana Loki log stream that you want to select in the query. For more information on the log stream selector and key-value pairs, go to [Log stream selector](https://grafana.com/docs/loki/latest/logql/log_queries/#log-stream-selector).
+
+7. Optionally, in the **Parameters** tab, enter the **Key** and **Value** pair.
+
+8. In the **Validation Path** tab, select either the **GET** or **POST** request method and enter the **Validation Path**. If you select **POST**, then you should also enter the request body.
+
+9. In the **Delegates Setup** tab, choose one of the following:
+
+   - **Use any available Delegate**: Harness automatically assigns an available delegate.
+               
+   - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the delegates that have been assigned those specific tags.
+
+11. Select **Save** and **Continue**.  
+               
+   Harness verifies the connection. 
+
+11. Once the verification is successful, select **Finish**.  
+               
+   The Grafana Loki connector is added to the list of connectors.

@@ -15,7 +15,7 @@ Comparing Pipeline YAML helps you see what changes took place between executions
 ### Before you begin
 
 * [CD Pipeline Basics](/docs/continuous-delivery/get-started/cd-pipeline-basics)
-* [CI pipeline concepts](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md)
+* [CI pipeline basics](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md)
 
 ### Limitations
 

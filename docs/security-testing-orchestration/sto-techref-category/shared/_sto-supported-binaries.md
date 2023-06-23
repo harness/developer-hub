@@ -22,7 +22,7 @@ Harness maintains and updates a container image for every scanner supported by S
   <tr>
     <td>Black Duck Hub</td>
     <td><code>synopsys detect</code></td>
-    <td>7.9.0</td>
+    <td>8.9.0</td>
   </tr>
   <tr>
     <td>Brakeman</td>

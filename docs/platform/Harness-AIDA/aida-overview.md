@@ -4,12 +4,14 @@ description: Learn about how AIDA improves your experience on the Harness platfo
 sidebar_position: 2
 ---
 
+
+:::info important
+Currently, AIDA is a beta feature that is behind the feature flags `CCM_GOVERNANCE_GENAI_ENABLE`, `CI_AI_ENHANCED_REMEDIATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+
 The Harness platform leverages Harness AI Development Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software development lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empowers teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
-
-## Before you begin
-- [AIDA Terms](https://www.harness.io/legal/aida-terms)
-- [AIDA Privacy](https://www.harness.io/legal/aida-privacy)
-
 
 Following are some key benefits of Harness AIDA:
 
@@ -22,3 +24,9 @@ Following are some key benefits of Harness AIDA:
 - Security: Harness AI identifies security vulnerabilities, describes them, and suggests remediation.
   For more information, go to [Remediations with AIDA](https://developer.harness.io/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
 
+## Additional resources
+
+Review the following information for details about data privacy and terms of use:
+
+- [AIDA Terms](https://www.harness.io/legal/aida-terms)
+- [AIDA Privacy](https://www.harness.io/legal/aida-privacy)
