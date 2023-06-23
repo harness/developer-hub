@@ -15,31 +15,62 @@ Review the notes below for details about recent changes to Harness Chaos Enginee
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 12, 2023, version 0.13.5
+## Latest - June XX, 2023, version 0.14.XXXX
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-* Added a new Linux chaos fault, Disk Fill, which fills up the available disk space at a given system path for a specific duration. (CHAOS-1419)
+* While Upgrading a Namespace scoped Chaos Infrastructure, Users will be shown command for upgrading CRDs as well. (CHAOS-1846)
 
-* To help users select the right infrastructure for their use case, the Chaos Infrastructures UI screen has been enhanced to show supported faults by different chaos infrastructure categories. (CHAOS-1811)
+* DB upgrade to update index in linuxInfrastructures collection. (CHAOS-1836)
 
-* The database was upgraded to update the index in linuxInfrastructures collection. (CHAOS-1836)
+* Show all steps in Experiment Details Pipeline Diagram. Previously when users used to trigger Chaos Experiments, The Execution Graph used to generate step nodes progressively as the experiments executes. Now the execution graph will show all step nodes just after experiment starts execution. The nodes yet to start will remain in Pending state. (CHAOS-1817)
+
+* Add `experiment_runs_count` while creating an entry in the chaosUsages collection. (CHAOS-1784)
+
+* Previously, when users used to connect a ChaosHub, Chaos Modules used to clone whole Github repository, which was causing storage issues if repository is high in size or users may be using same repository for multiple purposes. This has been enhanced to clone only single branch provided by users. (CHAOS-1722)
+
+* Subscribed to entity-crud redis stream to listen for deletion events, and added removal feature of chaos entities when a delete event for project, org or account is encountered. (CHAOS-1143)
+
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-* This release does not include any early access features.
+This release does not include any early access features.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
 
-* The Chaos Faults screen in ChaosHub was crashing when the **Platform** field was missing in the faults metadata file. This issue has been fixed. (CHAOS-1841)
+* (CHAOS-1917) _XXX ISSUE IN PROGRESS XXX_
+
+* created_by and updated_by fields are empty in chaosInfrastructures collection, this has been fixed now. (CHAOS-1897)
+
+* Probe mode has been made a required field now. (CHAOS-1882)
+    
+    _XXX WHERE IS THIS FIELD? XXX_ 
+
+* When shifting from `int/float` to `string` in cmd probe type, the criteria will automatically switch between `==` and `equal` and vice-versa. (CHAOS-1879)
+    
+    _XXX NEED A MORE HUMAN-READABLE NOTE HERE XXX_ 
+
+* Discard button will be disabled if there are no changes in the experiment. (CHAOS-1878)
+
+* Adding probes now triggers unsaved changes to be set true in the URL. (CHAOS-1877)
+
+* Add a condition to handle "websocket: close 1001 (going away): CloudFlare WebSocket proxy restarting" in subscriber. (CHAOS-1786)
+
+* The stop workflow feature wasn't able to stop experiments incase of namespace scoped infrastructures. This issue has been resolved. The stop workflow now works as expected. (CHAOS-1778)
+
+* Added support for new experiment run statuses in chaos CD step. (CHAOS-1210)
+
+* Added logic to handle parallel experiments in experiment manifest. (CHAOS-1208)
+
+* Chaos CD Step has been updated to handle new Experiment and Pipeline statuses. (CHAOS-733)
 
 ```mdx-code-block
   </TabItem>
@@ -50,6 +81,24 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 12, 2023, version 0.13.5
+
+##### What's new
+
+* Added a new Linux chaos fault, Disk Fill, which fills up the available disk space at a given system path for a specific duration. (CHAOS-1419)
+
+* To help users select the right infrastructure for their use case, the Chaos Infrastructures UI screen has been enhanced to show supported faults by different chaos infrastructure categories. (CHAOS-1811)
+
+* The database was upgraded to update the index in linuxInfrastructures collection. (CHAOS-1836)
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+* The Chaos Faults screen in ChaosHub was crashing when the **Platform** field was missing in the faults metadata file. This issue has been fixed. (CHAOS-1841)
 
 #### June 5, 2023, version 0.13.4
 
