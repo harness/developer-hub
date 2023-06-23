@@ -129,6 +129,8 @@ To update and restart an existing Docker delegate, do the following:
 
 ## Option: Revoke tokens
 
+Harness loads tokens during the delegate startup process and uses them in the heartbeat. When you change the delegate token, you must restart the delegate cycle process. Delegates are disconnected within 20 minutes token revocation.
+
 To revoke tokens, do the following:
 
 1. On the **Tokens** page, select **Revoke** to revoke any token.
