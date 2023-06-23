@@ -1,7 +1,7 @@
 ---
 title: Prometheus
 description: Verify deployments with Prometheus.
-sidebar_position: 9
+sidebar_position: 10
 helpdocs_topic_id: e9z7944qhw
 helpdocs_category_id: 9mefqceij0
 helpdocs_is_private: false
