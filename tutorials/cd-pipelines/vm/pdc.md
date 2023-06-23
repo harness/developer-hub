@@ -1,5 +1,5 @@
 ---
-sidebar_position: 10
+sidebar_position: 3
 hide_table_of_contents: true
 title: Physical Data Center
 description: Deploy artifacts to VMs or bare-metal hosts in a physical data center.
@@ -16,7 +16,7 @@ This tutorial helps you get started with Harness Continuous Delivery (CD). We wi
 
 :::info
 
-[Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=tutorials-cd-kubernetes-kustomize).
+[Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=tutorials-cd-vm-pdc).
 
 :::
 
