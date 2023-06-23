@@ -30,37 +30,105 @@ The allowed value for `upgrader` schedule is between one and 90 minutes. Harness
     <summary>Example Kubernetes manifest</summary>
 
 ```yaml
-    apiVersion: batch/v1
-    kind: CronJob
-    metadata:
-        labels:
-            harness.io/name: test-upgrader-job
-        name: test-upgrader-job
-        namespace: harness-delegate-ng
-    spec:
-        schedule: "0 */1 * * *"
-        concurrencyPolicy: Forbid
-        startingDeadlineSeconds: 20
-        jobTemplate:
+kind: Role
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: upgrader-cronjob
+  namespace: harness-delegate-ng
+rules:
+  - apiGroups: ["batch", "apps", "extensions"]
+    resources: ["cronjobs"]
+    verbs: ["get", "list", "watch", "update", "patch"]
+  - apiGroups: ["extensions", "apps"]
+    resources: ["deployments"]
+    verbs: ["get", "list", "watch", "create", "update", "patch"]
+
+---
+
+kind: RoleBinding
+apiVersion: rbac.authorization.k8s.io/v1
+metadata:
+  name: kubernetes-delegate-upgrader-cronjob
+  namespace: harness-delegate-ng
+subjects:
+  - kind: ServiceAccount
+    name: upgrader-cronjob-sa
+    namespace: harness-delegate-ng
+roleRef:
+  kind: Role
+  name: upgrader-cronjob
+  apiGroup: ""
+
+---
+
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: upgrader-cronjob-sa
+  namespace: harness-delegate-ng
+
+---
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: test-upgrader-token
+  namespace: harness-delegate-ng
+type: Opaque
+data:
+  UPGRADER_TOKEN: "DELEGATE_TOKEN"
+
+---
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: test-upgrader-config
+  namespace: harness-delegate-ng
+data:
+  config.yaml: |
+    mode: Delegate
+    dryRun: false
+    workloadName: DELEGATE_TO_AUTO_UPGRADE
+    namespace: harness-delegate-ng
+    containerName: delegate
+    delegateConfig:
+      accountId: ACCOUNT_ID
+      managerHost: HARNESS_MANAGE_ENDPOINT_URL
+
+---
+
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+    labels:
+        harness.io/name: test-upgrader-job
+    name: test-upgrader-job
+    namespace: harness-delegate-ng
+spec:
+    schedule: "0 */1 * * *"
+    concurrencyPolicy: Forbid
+    startingDeadlineSeconds: 20
+    jobTemplate:
+        spec:
+        template:
             spec:
-            template:
-                spec:
-                    serviceAccountName: upgrader-cronjob-sa
-                    restartPolicy: Never
-                    containers:
-                    - image: harness/upgrader:latest
-                    name: upgrader
-                    imagePullPolicy: Always
-                    envFrom:
-                    - secretRef:
-                        name: test-upgrader-token
-                    volumeMounts:
-                        - name: config-volume
-                        - mountPath: /etc/config
-                    volumes:
-                        - name: config-volume
-                        - configMap:
-                            name: test-upgrader-config
+                serviceAccountName: upgrader-cronjob-sa
+                restartPolicy: Never
+                containers:
+                - image: harness/upgrader:latest
+                name: upgrader
+                imagePullPolicy: Always
+                envFrom:
+                - secretRef:
+                    name: test-upgrader-token
+                volumeMounts:
+                    - name: config-volume
+                    - mountPath: /etc/config
+                volumes:
+                    - name: config-volume
+                    - configMap:
+                        name: test-upgrader-config
 
 ```
 
