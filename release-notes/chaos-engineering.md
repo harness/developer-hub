@@ -26,9 +26,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * DB upgrade to update index in linuxInfrastructures collection. (CHAOS-1836)
 
-* Show all steps in Experiment Details Pipeline Diagram. Previously when users used to trigger Chaos Experiments, The Execution Graph used to generate step nodes progressively as the experiments executes. Now the execution graph will show all step nodes just after experiment starts execution. The nodes yet to start will remain in Pending state. (CHAOS-1817)
-
-* Add `experiment_runs_count` while creating an entry in the chaosUsages collection. (CHAOS-1784)
+* Show all steps in Experiment Details Pipeline Diagram. Previously when users used to trigger Chaos Experiments, The Execution ßGraph used to generate step nodes progressively as the experiments executes. Now the execution graph will show all step nodes just after experiment starts execution. The nodes yet to start will remain in Pending state. (CHAOS-1817)
 
 * Previously, when users used to connect a ChaosHub, Chaos Modules used to clone whole Github repository, which was causing storage issues if repository is high in size or users may be using same repository for multiple purposes. This has been enhanced to clone only single branch provided by users. (CHAOS-1722)
 
@@ -49,6 +47,8 @@ This release does not include any early access features.
 * (CHAOS-1917) _XXX ISSUE IN PROGRESS XXX_
 
 * created_by and updated_by fields are empty in chaosInfrastructures collection, this has been fixed now. (CHAOS-1897)
+
+    _XXX WHERE IS "CHAOSINFRASTRUCTURE COLLECTION" IN THE UI? Is this in environment details page? XXX_
 
 * Probe mode has been made a required field now. (CHAOS-1882)
     
