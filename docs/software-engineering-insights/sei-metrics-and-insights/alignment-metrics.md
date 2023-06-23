@@ -15,7 +15,7 @@ Alignment metrics widgets help you:
 
 :::tip
 
-Create a [Business Alignment Dashboard](../sei-dashboards.md#business-alignment-dashboard) for observing these metrics.
+Create a [Business Alignment Dashboard](../sei-dashboards.md#create-a-business-alignment-dashboard) for observing these metrics.
 
 :::
 
