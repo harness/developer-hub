@@ -5,6 +5,7 @@ sidebar_position: 8
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+# Set up Grafana Loki health source
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -32,7 +33,7 @@ To add a Verify step to your pipeline, use one of the methods below.
 
 ### Add a Verify step while building a deployment stage
 
-If you're building a deployment stage and currently on the **Execution Strategies** page:
+If you're building a deployment stage and are currently on the **Execution Strategies** page:
 
 1. Select the **Enable Verification** option. 
     
@@ -50,10 +51,10 @@ If you already have a deployment stage:
 1. Select the stage where you want to add the Verify step.
    
 2. On the stage settings pane, select the **Execution** tab.
-3. On the pipeline, hover over where you want the Verify step, select the + icon, and then choose **Add Step**.  
+3. On the pipeline, hover over where you want to add the Verify step, select the **+** icon, and then choose **Add Step**.  
 
    The Step Library page appears.
-You can add a step at various points in the pipeline such as the beginning, end, in between existing steps, or below an existing step. Simply choose the location where you want to add the step and follow the prompts to add it.
+You can add a step at various points in the pipeline, such as the beginning, end, in between existing steps, or below an existing step. Simply choose the location where you want to add the step and follow the prompts to add it.
 
 4. In the **Continuous Verification** section, select **Verify**.  
    
@@ -63,7 +64,7 @@ You can add a step at various points in the pipeline such as the beginning, end,
 
 1. In **Name**, enter a name for the Verification step.
    
-2. In **Timeout**, enter a timeout value for the step. Harness uses this information to time out the verification. Use the following syntax to define timeout:
+2. In **Timeout**, enter a timeout value for the step. Harness uses this information to time out the verification. Use the following syntax to a define timeout:
    - **w** for weeks. For example, to define one week, enter 1w.
    - **d** for days. For example, to define 7 days, enter 7d.
    - **h** for hours. For example, to define 24 hours, enter 24h.
@@ -71,7 +72,7 @@ You can add a step at various points in the pipeline such as the beginning, end,
    - **s** for seconds. For example, to define 500 seconds, enter 500s.
    - **ms** for milliseconds. For example, to define 1000 milliseconds, enter 1000ms.
 
-3. The maximum timeout value you can set is **53w**. You can also set timeouts at the pipeline level.
+The maximum timeout value you can set is **53w**. You can also set timeouts at the pipeline level.
  
 
 ## Select a continuous verification type, sensitivity, and duration
@@ -80,13 +81,13 @@ You can add a step at various points in the pipeline such as the beginning, end,
    
    - **Auto**: Harness automatically selects the best continuous verification type based on the deployment strategy.
    - **Rolling Update**: Rolling deployment is a deployment technique that gradually replaces old versions of a service with a new version by replacing the infrastructure on which the service runs. Rolling updates are useful in situations where a sudden changeover might cause downtime or errors.
-   - **Canary**: Canary deployment involves a two-phased deployment. In phase one, new pods and instances with the new service version are added to a single environment. In phase two, a rolling update is performed in the same environment. Canary deployment helps to detect issues with the new deployment before fully deploying it.
+   - **Canary**: A Canary deployment involves a two-phased deployment. In phase one, new pods and instances with the new service version are added to a single environment. In phase two, a rolling update is performed in the same environment. A Canary deployment helps detect issues with the new deployment before fully deploying it.
    - **Blue Green**: Blue-green deployment is a technique used to deploy services to a production environment by gradually shifting user traffic from an old version to a new one. The previous version is referred to as the blue environment, while the new version is known as the green environment. Upon completion of the transfer, the blue environment remains on standby in case of a need for rollback or can be removed from production and updated to serve as the template for future updates.
    - **Load Test**: Load testing is a strategy used in lower-level environments, such as quality assurance, where a consistent load is absent and deployment validation is typically accomplished through the execution of load-generating scripts. This is useful to ensure that the application can handle the expected load and validate that the deployment is working as expected before releasing it to the production environment.
 
-2. In **Sensitivity**, choose the sensitivity level. The available options are **High**, **Medium**, and **Low**. When the sensitivity is set to high, even minor anomalies are treated as verification failures. When the sensitivity is set to **High**, any anomaly, no matter how small, will be treated as a verification failure. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
+2. In **Sensitivity**, choose the sensitivity level. The available options are **High**, **Medium**, and **Low**. When the sensitivity is set to high, even minor anomalies are treated as verification failures. This ensures that even the slightest issue is detected and addressed before releasing the deployment to production.
    
-3. In **Duration**, choose a duration. Harness will use the data points within this duration for analysis. For instance, if you select 10 minutes, Harness will analyze the first 10 minutes of your log or APM data. It is recommended to choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
+3. In **Duration**, choose a duration. Harness uses the data points within this duration for analysis. For instance, if you select 10 minutes, Harness analyzes the first 10 minutes of your log or APM data. It is recommended to choose 10 minutes for logging providers and 15 minutes for APM and infrastructure providers. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
    
 4. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md).
    
@@ -95,7 +96,7 @@ You can add a step at various points in the pipeline such as the beginning, end,
 
 ## Create a monitored service
 
-Harness Continuous Verification monitors the health trend deviations using logs and metrics obtained from the health source, such as APM and logging tools, via a monitored service.
+Harness CV monitors the health trend deviations using logs and metrics obtained from the health source, such as APM and logging tools, via a monitored service.
 
 To create a monitored service:
 
@@ -103,13 +104,13 @@ To create a monitored service:
 
       Harness automatically generates a monitored service name by combining the service and environment names. The generated name appears in the **Monitored Service Name** field. Note that you cannot edit the monitored service name.
 
-If a monitored service with the same name and environment already exists, the **Click to autocreate a monitored service** option is hidden and the existing monitored service is assigned to the Verify step by Harness.
+      If a monitored service with the same name and environment already exists, the **Click to autocreate a monitored service** option is hidden, and the existing monitored service is assigned to the Verify step by Harness.
 
 :::info note
 
 If you've set up a service or environment as runtime values, the auto-create option for monitored services won't be available. When you run the pipeline, Harness combines the service and environment values to create a monitored service. If a monitored service with the same name already exists, it will be assigned to the pipeline. If not, Harness skips the Verification step.
 
-For instance, if you input the service as `todolist` and the environment as `dev`, Harness creates a monitored service with the name `todolist_dev`. If a monitored service with that name exists, Harness assigns it to the pipeline. If not, Harness skips the Verification step.
+For instance, when you run the pipeline, if you input the service as `todolist` and the environment as `dev`, Harness creates a monitored service with the name `todolist_dev`. If a monitored service with that name exists, Harness assigns it to the pipeline. If not, Harness skips the Verification step.
 
 :::
 
@@ -128,15 +129,17 @@ To add a health source:
    
    The Add New Health Source dialog appears.
 
-2. On the **Define Health Source** tab, do the following:
+2. In the **Define Health Source** tab, do the following:
       
-   1. In the **Define Health Source** section, select **GrafanaLoki** as health source type.
+   1. In the **Define Health Source** section, select **GrafanaLoki** as the health source type.
       
    2. In the **Health Source Name** field, enter a name for the health source.
       
-   3. In the **Connect Health Source** section, select **Select Connector**. The Create or Select an Existing Connector dialog appears.
+   3. In the **Connect Health Source** section, select **Select Connector**. 
+   
+      The Create or Select an Existing Connector dialog appears.
       
-   4. Select a connector for the Grafana Loki health source and then select **Apply Selected**.  
+   4. Select a connector for the Grafana Loki health source, and then select **Apply Selected**.  
          The selected connector appears in the **Select Connector** dropdown. The **Grafana Loki Logs** option is selected by default in the **Select Feature** field.
          
       <details>
@@ -144,27 +147,29 @@ To add a health source:
 
          1.	In the Create or Select an Existing Connector dialog, select **+ New Connector**.
          
-         2. In the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**.  If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+         2. In the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
          
          3.	In the **Headers** tab, enter the following and select **Next**:
 
-               - **Base URL** of your Grafana Loki account. By default, Grafana Loki exposes its API on 3100 port without any authentication. 
-               - Optionally, the **Key** and **Value** pair for the Grafana Loki log stream that you want to select in the query. For more information on log stream selector and key-value pairs, go to [Log stream selector](https://grafana.com/docs/loki/latest/logql/log_queries/#log-stream-selector).
+               - **Base URL** of your Grafana Loki account. By default, Grafana Loki exposes its API on the 3100 port without any authentication. 
+               - Optionally, the **Key** and **Value** pair for the Grafana Loki log stream that you want to select in the query. For more information on the log stream selector and key-value pairs, go to [Log stream selector](https://grafana.com/docs/loki/latest/logql/log_queries/#log-stream-selector).
 
          4. Optionally, in the **Parameters** tab, enter the **Key** and **Value** pair.
 
-         5. In the **Validation Path** tab, select either **GET** or **POST** request method and enter the **Validation Path**. If you select **POST**, then you should also enter the request body.
+         5. In the **Validation Path** tab, select either the **GET** or **POST** request method and enter the **Validation Path**. If you select **POST**, then you should also enter the request body.
 
-         6.   In the **Delegates Setup** tab, choose one of the following:
+         6. In the **Delegates Setup** tab, choose one of the following:
 
                - **Use any available Delegate**: Harness automatically assigns an available delegate.
                
                - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the delegates that have been assigned those specific tags.
 
-         7.   Select **Save** and **Continue**.  
+         7. Select **Save** and **Continue**.  
+               
                Harness verifies the connection. 
 
-         8.   Once the verification is successful, select **Finish**.  
+         8. Once the verification is successful, select **Finish**.  
+               
                The Grafana Loki connector is added to the list of connectors.
 
       </details>
@@ -176,7 +181,7 @@ To add a health source:
 
 ### Define log configuration settings
 
-1. On the Configuration tab, select **+ Add Query**.  
+1. In the Configuration tab, select **+ Add Query**.  
    
    The Add Query dialog appears.
 
@@ -187,17 +192,25 @@ To add a health source:
 
 #### Define a query
 
-1. In the **Query Specifications and Mapping** section, select a log index from the **Log Indexes** list.
    
-2. In the **Query** field, enter a log query and select **Run Query** to execute it.
+1. In the **Query** field, enter a log query and select **Run Query** to execute it.
    
     A sample record in the **Records** field. This helps you confirm the accuracy of the query you've constructed.
    
-3. In the **Field Mapping** section, select **+** to map the **service instance identifiers** to select the data that you want to be displayed from the logs.
+2. In the **Field Mapping** section, select **+** to map the **service instance identifiers** to select the data that you want to be displayed from the logs.
 
-4. Select **Get sample log messages**.  
+3. Select **Get sample log messages**.  
    
-   Sample logs are displayed that help you verify if the query you built is correct.
+   Sample logs are displayed that help you verify if the query is correct.
+
+<details>
+<summary><b>Sample log query</b></summary>
+
+Query for showing data from all filenames, except for syslog: `{filename=~".+",filename!="/var/log/syslog"}`
+
+![Grafana Loki sample query](./static/cv-loki-log-query.png)
+
+</details>
 
 
 ### Save the health source settings
