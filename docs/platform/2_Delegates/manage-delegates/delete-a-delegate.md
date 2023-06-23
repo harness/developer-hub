@@ -61,6 +61,11 @@ For example, if the **Deployment** name is `quickstart-delegate`:
 Locate the delegate in the Harness account/Project/Org, click more options (⋮), and then click **Delete**.
 
 ![](static/delete-a-delegate-15.png)
+
+### Replica pod deletion
+
+Deleted replica pods unregister and clear out during shutdown after they complete all running tasks if the graceful shutdown period is sufficient, which is 10 minutes by default. During abnormal shutdown past the graceful shutdown period, replica pods clear out automatically in six hours. For more information on graceful shutdown, go to [Graceful delegate shutdown](/docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process/).
+
 ### Delete a legacy delegate
 
 Use the following process to delete a Legacy Delegate.
