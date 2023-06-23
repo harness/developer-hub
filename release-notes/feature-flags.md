@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-06-14T10:00:25
+date: 2023-06-26T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -17,14 +17,16 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - June 22, 2023
+## Latest - June 26, 2023
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-This release does not include new features.  
+#### Feature Flags UI
+
+* On the **Feature Flags** page, when viewing the state of flags across all environments, the flag status column now scrolls all the rows as one. This allows for easier viewing of flag and environment states on one screen. (FFM-7643)
 
 ```mdx-code-block
   </TabItem>
@@ -38,21 +40,33 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-#### Feature Flags SDKs
+This release does not include fixed issues.
 
-The **JavaScript** client SDK has been updated to version **1.14.0** with the following update.
-
-* Added a new function `refreshEvaluations()`, which can be called to programmatically trigger a full refetch of evaluations from the server (FFM-8141)
-
-```mdx-code-block
   </TabItem>
 </Tabs>
-```
 
 ## Previous releases
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 22, 2023
+
+##### What's new
+
+This release does not include new features.  
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **JavaScript** client SDK has been updated to version **1.14.0** with the following update.
+
+* Added a new function `refreshEvaluations()`, which can be called to programmatically trigger a full refetch of evaluations from the server (FFM-8141)
 
 #### June 21, 2023
 
