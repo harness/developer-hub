@@ -8,4 +8,3 @@ sidebar_position: 10
 * Automated integrations (incl droneci and harnessng)
 * Jenkins plugin
 * Custom CI/CD integrations
-* [Browser extension](./regex-browser-extension.md)
