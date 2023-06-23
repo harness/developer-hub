@@ -203,9 +203,7 @@ import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
 
 #### Additional CLI flags
 
-```mdx-code-block
-import StoSettingCliFlags from './shared/step_palette/_sto-ref-ui-cli-flags.md';
-```
+You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`.  
 
 <StoSettingCliFlags />
 
@@ -222,7 +220,9 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 ### Settings
 
-You can use this field to run the [Checkmarx plugin](https://checkmarx.com/resource/documents/en/34965-8152-running-scans-from-the-cli.html) with specific command-line arguments. To run an incremental scan, for example, specify `tool_args` = `-incremental`.  
+You can use this field to provide environment variable to be used during the execution of the step. As an exemple if you need to access your Checkmarx server through a proxy, you can add the following setting `JAVA_TOOL_OPTIONS` with value `-DproxySet=true -Dhttp.proxyHost=http.proxy -Dhttp.proxyPort=3128`.
+Replace http.proxy with your proxy address or proxy FQDN, and port 3128 with your proxy port.
+If you want to go through an https proxy replace -Dhttp by -Dhttps.
 
 ### Running incremental scans with Checkmarx
 
