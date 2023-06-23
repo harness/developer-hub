@@ -4,6 +4,12 @@
 
 const sidebars = {
   allcontent: [
+    // Tutorial Link from Docs
+    {
+      type: "link",
+      label: "Tutorials",
+      href: "/tutorials",
+    },
     // Documentation Parent
     {
       type: "category",
@@ -404,12 +410,6 @@ const sidebars = {
         },
       ],
     },
-  // Tutorial Link from Docs
-  {
-    type: "link",
-    label: "Tutorials",
-    href: "/tutorials",
-  },
   ],
   //Beta Sidebars
   iacmbeta: [
