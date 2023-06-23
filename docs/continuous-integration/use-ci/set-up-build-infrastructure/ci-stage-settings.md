@@ -186,7 +186,7 @@ A list of [HostAliases](https://kubernetes.io/docs/tasks/network/customize-hosts
 
 Set the timeout for the initialization phase. During this phase, Harness downloads the build step images and spins up the containers to execute the build steps.
 
-If you use large images in your Build stage's steps, you might find that the initialization step times out and the build fails when the pipeline runs. In this case, you can increase the init timeout window from the default of 10 minutes.
+If you use large images in your Build stage's steps, you might find that the initialization step times out and the build fails when the pipeline runs. In this case, you can increase the init timeout window from the default of 8 minutes.
 
 ### Override Image Connector
 
