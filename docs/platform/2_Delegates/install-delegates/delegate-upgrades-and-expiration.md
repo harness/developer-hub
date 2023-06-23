@@ -76,7 +76,7 @@ metadata:
   namespace: harness-delegate-ng
 type: Opaque
 data:
-  UPGRADER_TOKEN: "<Delegate token>"
+  UPGRADER_TOKEN: "DELEGATE_TOKEN"
 
 ---
 
@@ -89,12 +89,12 @@ data:
   config.yaml: |
     mode: Delegate
     dryRun: false
-    workloadName: <Name of the delegate that needs auto upgrade>
+    workloadName: DELEGATE_TO_AUTO_UPGRADE
     namespace: harness-delegate-ng
     containerName: delegate
     delegateConfig:
-      accountId: <Account id>
-      managerHost: <Harness manager endpoint URL>
+      accountId: ACCOUNT_ID
+      managerHost: HARNESS_MANAGE_ENDPOINT_URL
 
 ---
 
