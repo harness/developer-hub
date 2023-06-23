@@ -5,7 +5,7 @@ sidebar_position: 2
 ---
 
 
-:::important
+:::info important
 Currently, AIDA is a beta feature that is behind the feature flags `CCM_GOVERNANCE_GENAI_ENABLE`, `CI_AI_ENHANCED_REMEDIATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
