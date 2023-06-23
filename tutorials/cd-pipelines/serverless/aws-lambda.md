@@ -6,7 +6,7 @@ description: Deploy a Serverless app on AWS Lambda.
 ---
 
 
-This tutorial demonstrates how to perform a Serverless.com Framework AWS Lambda deployment using Harness Continuous Delivery (CD). We will guide you through deploying a sample function using a Harness pipeline. 
+This tutorial demonstrates how to deploy on AWS Lambda using Harness Continuous Delivery (CD). We will guide you through deploying a sample function using a Harness pipeline. 
 
 :::info
 
@@ -14,7 +14,15 @@ This tutorial demonstrates how to perform a Serverless.com Framework AWS Lambda 
 
 :::
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
+```mdx-code-block
+<Tabs>
+<TabItem value="Serverless.com Infrastructure">
+```
 
 ## Before you begin
 
@@ -38,7 +46,6 @@ Verify the following:
       * **Limited Access:** select **Create policy**. Select the **JSON tab**, and add the JSON from the [Serverless gist: IAMCredentials.json](https://gist.github.com/ServerlessBot/7618156b8671840a539f405dea2704c8#file-iamcredentials-json).
 
 ### **Limitations and Capabilities**
-    
 * Harness supports Serverless framework 1.82 and later.
 * Harness supports Serverless framework CLI versions 2.x.x and 3.x.x.
 * Harness supports all language runtimes that Serverless supports.
@@ -71,7 +78,7 @@ The Harness delegate is a service that runs in your local network or VPC to esta
     
   1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
   2. In **New Delegate**, in **Select where you want to install your Delegate**, select **Docker**.
-  3. Enter the delegate name, `harness-serverless-delegate`.
+  3. Enter the delegate name, `harness-aws-lambda-delegate`.
 
 Now you can install the delegate by using the command that appears on your installation wizard. The command is prefilled with the information for the environment variables in the example below. 
 
@@ -220,4 +227,219 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ## Congratulations!🎉
 
-You've just learned how to use Harness CD to deploy an AWS Lambda function on AWS Lambda using the Serverless.com Framework. 
+You've just learned how to use Harness CD to deploy an AWS Lambda function on AWS Lambda using the Serverless.com Framework.
+
+```mdx-code-block
+</TabItem>
+<TabItem value="Native AWS Lambda">
+```
+## Before you begin
+
+Verify the following:
+
+1. **Obtain GitHub personal access token with the repo scope**. For the GitHub documentation, go to [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line).
+2. **Docker**. For this tutorial ensure that you have the Docker runtime installed on your Harness delegate host. If not, use one of the following options to install Docker:
+    - [Docker for Mac](https://docs.docker.com/desktop/install/mac-install/)
+    - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
+    - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
+    - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
+    - [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
+    - Check [Delegate system requirements](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-requirements).
+3. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
+    - For more information on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
+4. **AWS user account with required policy:** To deploy a Lambda function, you would need an AWS Identity and Access Management (IAM) role with the necessary permissions. You will use that role in the credentials you supply to the Harness AWS connector.
+
+    * Select **Users**, and then **Add user**. Enter a name. Enable **Programmatic access** by selecting the checkbox. Select **Next** to go to the **Permissions** page. Do one of the following:
+
+      * **Full Admin Access:** select **Attach existing policies directly**. Search for and select **AdministratorAccess** then select **Next: Review**. Check to make sure everything looks good and select **Create user**.
+      * **Limited Access:** select **Create policy** and add the following minimum AWS IAM role policies that you would need to deploy a Lambda function:
+        - **IAMReadOnlyAccess**: Needed to verify required policies.
+        - **AWSLambdaRole**: Needed to invoke function.
+        - **AWSLambda_FullAccess** (previously AWSLambdaFullAccess): Needed to write to Lambda.
+        - **AmazonS3ReadOnlyAccess**: Needed to pull the function file from S3.
+        - **AmazonEC2ContainerRegistryReadOnly**: Needed to pull function container image from ECR. This policy provides read-only access to the ECR repository.
+    - **AWS Lambda Execution Role**: As a Lambda user, you probably already have the AWS Lambda Execution Role set up. If you do not, follow the steps in [AWS Lambda Execution Role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html) from AWS.
+
+        Here's an example IAM policy that includes the AWSLambdaExecutionRole, IAMReadOnlyAccess, AWSLambda_FullAccess, AmazonS3ReadOnlyAccess, and AmazonEC2ContainerRegistryReadOnly managed policies:
+
+        ```json
+        {
+            "Version": "2012-10-17",
+            "Statement": [
+                {
+                    "Sid": "IAMReadOnlyAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:Get*",
+                        "iam:List*",
+                        "iam:SimulateCustomPolicy"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "LambdaAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "lambda:CreateFunction",
+                        "lambda:UpdateFunctionCode",
+                        "lambda:UpdateFunctionConfiguration",
+                        "lambda:PublishVersion",
+                        "lambda:CreateAlias",
+                        "lambda:Get*",
+                        "lambda:List*",
+                        "lambda:InvokeFunction",
+                        "lambda:DeleteFunction",
+                        "lambda:DeleteAlias",
+                        "lambda:DeleteFunctionConcurrency",
+                        "lambda:AddPermission",
+                        "lambda:RemovePermission",
+                        "lambda:EnableReplication",
+                        "lambda:DisableReplication",
+                        "lambda:GetFunctionCodeSigningConfig",
+                        "lambda:UpdateFunctionCodeSigningConfig",
+                        "lambda:GetCodeSigningConfig",
+                        "lambda:ListCodeSigningConfigs",
+                        "lambda:CreateCodeSigningConfig",
+                        "lambda:DeleteCodeSigningConfig",
+                        "lambda:UpdateFunctionEventInvokeConfig",
+                        "lambda:GetFunctionEventInvokeConfig",
+                        "lambda:ListFunctionsByCodeSigningConfig",
+                        "lambda:ListTags",
+                        "lambda:TagResource",
+                        "lambda:UntagResource"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "S3ReadOnlyAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "s3:Get*",
+                        "s3:List*"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "ECRReadOnlyAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "ecr:GetAuthorizationToken",
+                        "ecr:BatchCheckLayerAvailability",
+                        "ecr:GetDownloadUrlForLayer",
+                        "ecr:GetRepositoryPolicy",
+                        "ecr:DescribeRepositories",
+                        "ecr:ListImages",
+                        "ecr:DescribeImages",
+                        "ecr:BatchGetImage"
+                    ],
+                    "Resource": "*"
+                },
+                {
+                    "Sid": "LambdaRoleAccess",
+                    "Effect": "Allow",
+                    "Action": [
+                        "iam:PassRole"
+                    ],
+                    "Resource": "arn:aws:iam::*:role/service-role/AWSLambdaExecutionRole"
+                }
+            ]
+        }
+        ```
+
+
+### **Limitations and Capabilities**
+
+* Harness can deploy a new Lambda function or update an existing Lambda function.
+* Harness' support only deploys and updates Lambda functions. Harness does not update auxiliary event source triggers like the API Gateway, etc. 
+* Currently, Lambda functions can be packaged as ZIP files in S3 Buckets or as containers in AWS ECR. 
+  * If Harness were to support another repository, like Nexus, when the container is fetched by the API, AWS spins up AWS resources (S3, ECR) anyways, and so Harness has limited support to S3 and ECR.
+  * The containers must exist in ECR. Containers are not supported in other repositories.
+
+
+
+## Sample pipeline 
+
+Here is the YAML for a sample pipeline:
+
+```yaml
+pipeline:
+  name: lambda-deploy
+  identifier: lambdaDeploy
+  projectIdentifier: serverless
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: deploy lambda
+        identifier: deploy
+        description: "deploy lambda"
+        type: Deployment
+        spec:
+          deploymentType: AwsLambda
+          service:
+            serviceRef: lambda
+            serviceInputs:
+              serviceDefinition:
+                type: AwsLambda
+                spec:
+                  artifacts:
+                    primary:
+                      primaryArtifactRef: <+input>
+                      sources: <+input>
+          environment:
+            environmentRef: aws
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: awslambda
+          execution:
+            steps:
+              - step:
+                  name: Deploy Aws Lambda
+                  identifier: deployawslambda
+                  type: AwsLambdaDeploy
+                  timeout: 10m
+                  spec: {}
+                  when:
+                    stageStatus: Success
+                    condition: "false"
+                  failureStrategies: []
+              - step:
+                  type: ShellScript
+                  name: Echo Service variables
+                  identifier: ShellScript
+                  spec:
+                    shell: Bash
+                    onDelegate: true
+                    source:
+                      type: Inline
+                      spec:
+                        script: echo <+serviceVariables.workload_name>
+                    environmentVariables: []
+                    outputVariables: []
+                  timeout: 10m
+            rollbackSteps:
+              - step:
+                  name: Aws Lambda rollback
+                  identifier: awslambdarollback
+                  type: AwsLambdaRollback
+                  timeout: 10m
+                  spec: {}
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+
+```
+
+
+## Congratulations!🎉
+
+You've just learned how to use Harness CD to deploy an AWS Lambda function on AWS Lambda.
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
