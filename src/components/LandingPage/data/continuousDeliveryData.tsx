@@ -133,10 +133,10 @@ export const CDList: CardItem[] = [
     link: "/tutorials/cd-pipelines/serverless/gcp-cloud-func",
   },
   {
-    title: "Deploy to a VM in a Physical Data Center",
+    title: "Deploy to a Linux VM in a Physical Data Center",
     module: MODULES.cd,
     icon: "img/icon_cv.svg",
-    description: <>Deploy an app to a VM in a physical data center.</>,
+    description: <>Deploy an app to a Linux VM in a physical data center.</>,
     newDoc: true,
     type: [docType.Documentation],
     time: "20min",
