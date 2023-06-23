@@ -1,7 +1,7 @@
 ---
 title: Grafana Loki
 description: Add Grafana Loki health source to a monitored service. 
-sidebar_position: 11
+sidebar_position: 8
 ---
 # Set up a Grafana Loki health source
 
@@ -20,9 +20,9 @@ In Harness, a health source refers to a mapping that establishes a connection be
 
 ## Prerequisites
 
-- Grafana Loki connector has been added to the Harness platform. To know how to add the Grafana Loki connector, go to [Add Grafana Loki](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-grafana-loki)
+- A Grafana Loki connector in the Harness platform. To learn how to add a Grafana Loki connector, go to [Add Grafana Loki](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-grafana-loki).
 
-- A monitored service has already been created in the Harness SRM. If you haven't yet created one, go to [Create a monitored service](/docs/service-reliability-management/monitored-service/create-monitored-service)
+- A monitored service created in the Harness SRM. If you haven't yet created one, go to [Create a monitored service](/docs/service-reliability-management/monitored-service/create-monitored-service).
 
 
 ## Add Grafana Loki health source
@@ -32,7 +32,7 @@ To add Grafana Loki as a health source:
 1. In your Harness project, go to **Service Reliability** > **Monitored Services**.  
    A list of monitored services is displayed.
 
-2. Locate the monitored service for which you want to add Grafana Loki health source, select the three vertical dots next to it, and then select **Edit service**.  
+2. Locate the monitored service for which you want to add a Grafana Loki health source, select the three vertical dots next to it, and then select **Edit service**.  
    The Configurations page appears.
 
 3. Go to the **Service** tab, and under **Define Your Sources**, select **+ Add New Health Source**.
@@ -42,7 +42,7 @@ To add Grafana Loki as a health source:
 
 ### Define a health source
 
-On the Define Health Source page of the Add New Health Source page, do the following: 
+In the **Define Health Source** tab of the Add New Health Source page, do the following: 
 
 1. In **Select health source type**, select **GrafanaLoki**.
    
@@ -52,37 +52,39 @@ On the Define Health Source page of the Add New Health Source page, do the follo
    
 4. In the Create or Select an Existing Connector dialog, select a Grafana Loki connector, and then select **Apply Selected**.
 
-   <details>
-   <summary><b>Follow these steps to create a new Grafana Loki connector.</b></summary>
+<details>
+<summary><b>Follow these steps to create a new Grafana Loki connector.</b></summary>
 
-      Follow these steps to create a new Grafana Loki connector.
 
-      1.	In the Create or Select an Existing Connector dialog, select **+ New Connector**.
-
-      1. In the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+1. In the Create or Select an Existing Connector dialog, select **+ New Connector**.
+      
+2. In the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
  
-      2. In the **Headers** tab, enter the following and select **Next**:
-      3. **Base URL** of your Grafana Loki account. By default, Grafana Loki exposes its API on the 3100 port without any authentication. 
-      4. Optionally, the **Key** and **Value** pair for the Grafana Loki log stream that you want to select in the query. For more information on the log stream selector and key-value pairs, go to [Log stream selector](https://grafana.com/docs/loki/latest/logql/log_queries/#log-stream-selector).
+3. In the **Headers** tab, enter the following, and select **Next**:
    
-      5.  Optionally, in the **Parameters** tab, enter the **Key** and **Value** pair.
+      - **Base URL** of your Grafana Loki account. By default, Grafana Loki exposes its API on the 3100 port without any authentication. 
+  
+      - Optionally, the **Key** and **Value** pair for the Grafana Loki log stream that you want to select in the query. For more information on the log stream selector and key-value pairs, go to [Log stream selector](https://grafana.com/docs/loki/latest/logql/log_queries/#log-stream-selector).
    
-      6.  In the **Validation Path** tab, select either the **GET** or **POST** request method and enter the **Validation Path**.  
+4. Optionally, in the **Parameters** tab, enter the **Key** and **Value** pair.
    
-      7.  If you select **POST**, you must also include the request body. Here's an example of a validation path for a **GET** request: `loki/api/v1/labels`.
+5. In the **Validation Path** tab, select either the **GET** or **POST** request method, and enter the **Validation Path**. If you select **POST**, you must also include the request body. 
    
-      8.  In the **Delegates Setup** tab, choose one of the following:
+   Here's an example of a validation path for a **GET** request: `loki/api/v1/labels`.
+   
+6. In the **Delegates Setup** tab, choose one of the following:
 
-            - **Use any available Delegate**: Harness automatically assigns an available delegate.
-            - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the delegates that have been assigned those specific tags.
+      - **Use any available Delegate**: Harness automatically assigns an available delegate.
+      - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the delegates that have been assigned those specific tags.
     
-      9.  Select **Save** and **Continue**.
+7. Select **Save** and **Continue**.  
+   
+      Harness verifies the connection. 
     
-    Harness verifies the connection. 
-    
-      1.  Once the verification is successful, select **Finish**. The Grafana Loki connector is added to the list of connectors.
+8.  Once the verification is successful, select **Finish**. The Grafana Loki connector is added to the list of connectors.
 
-   </details>
+</details>
+  
 
 5.  After choosing the connector, select **Apply Selected**.
 
@@ -99,13 +101,13 @@ On the Define Health Source page of the Add New Health Source page, do the follo
 
 2. Enter a name for the query and then select **Submit**.  
    
-   The query that you added gets listed under **Logs Group**. The query specification and mapping settings are displayed.
+   The query that you added is listed under **Logs Group**. The query specification and mapping settings are displayed.
    These settings help you retrieve the desired logs from the Grafana Loki platform and map them to the Harness service. 
 
 
 #### Define a query
    
-1. In the **Query** field, enter a log query and select **Run Query** to execute it.
+1. In the **Query** field, enter a log query, and select **Run Query** to execute it.
    
     A sample record in the **Records** field. This helps you confirm the accuracy of the query you've constructed.
    
