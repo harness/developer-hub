@@ -222,13 +222,6 @@ const sidebars = {
       label: "Community",
       href: "/community",
     },
-    // Slack Link from KB
-    {
-      type: "link",
-      label: "Join Slack",
-      href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
-    },
-
   ],
 };
 
