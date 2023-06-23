@@ -404,6 +404,12 @@ const sidebars = {
         },
       ],
     },
+  // Tutorial Link from Docs
+  {
+    type: "link",
+    label: "Tutorials",
+    href: "/tutorials",
+  },
   ],
   //Beta Sidebars
   iacmbeta: [

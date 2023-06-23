@@ -157,7 +157,12 @@ const sidebars = {
       ],
     },
 
-    //Additional Items in this parent can go here.
+   // Docs Link from Tutorials
+  {
+    type: "link",
+    label: "Documentation",
+    href: "/docs",
+  },
   ],
 };
 
