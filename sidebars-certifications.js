@@ -4,6 +4,18 @@
 
 const sidebars = {
   certifications: [
+    // Tutorial Link from Certs
+    {
+      type: "link",
+      label: "Tutorials",
+      href: "/tutorials",
+    },
+    // Docs Link from Certs
+    {
+      type: "link",
+      label: "Documentation",
+      href: "/docs",
+    },
     // Certifications Parent
     {
       type: "category",
@@ -28,14 +40,31 @@ const sidebars = {
           id: "continuous-integration",
         },
         // Instructions
-         {
+        {
           type: "doc",
           label: "Instructions",
           id: "instructions",
         },
       ],
     },
-    //Additional Items in this parent can go here.
+    // KB Link from Certs
+    {
+      type: "link",
+      label: "KB",
+      href: "/kb",
+    },
+    // Community Link from Certs
+    {
+      type: "link",
+      label: "Community",
+      href: "/community",
+    },
+    // Slack Link from Certs
+    {
+      type: "link",
+      label: "Join Slack",
+      href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
+    },
   ],
 };
 

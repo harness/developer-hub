@@ -4,6 +4,24 @@
 
 const sidebars = {
   kb: [
+    // Tutorial Link from KB
+    {
+      type: "link",
+      label: "Tutorials",
+      href: "/tutorials",
+    },
+    // Docs Link from KB
+    {
+      type: "link",
+      label: "Documentation",
+      href: "/docs",
+    },
+    // Cert Link from KB
+    {
+      type: "link",
+      label: "Certifications",
+      href: "/certifications",
+    },
     // KB Parent
     {
       type: "category",
@@ -195,12 +213,22 @@ const sidebars = {
           ],
         },
 
-
-
       ],
     },
 
-    
+    // Community Link from KB
+    {
+      type: "link",
+      label: "Community",
+      href: "/community",
+    },
+    // Slack Link from KB
+    {
+      type: "link",
+      label: "Join Slack",
+      href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
+    },
+
   ],
 };
 

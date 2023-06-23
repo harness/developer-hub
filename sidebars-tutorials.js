@@ -89,7 +89,7 @@ const sidebars = {
             },
           ],
         },
-        
+
         // Orchestrate Security Tests - security-testing-orchestration
         {
           type: "category",
@@ -124,8 +124,8 @@ const sidebars = {
           ],
         },
 
-         // Track Errors - error-tracking
-         {
+        // Track Errors - error-tracking
+        {
           type: "category",
           label: "Track Errors",
           link: {
@@ -157,12 +157,36 @@ const sidebars = {
       ],
     },
 
-   // Docs Link from Tutorials
-  {
-    type: "link",
-    label: "Documentation",
-    href: "/docs",
-  },
+    // Docs Link from Tutorials
+    {
+      type: "link",
+      label: "Documentation",
+      href: "/docs",
+    },
+    // Cert Link from Tutorials
+    {
+      type: "link",
+      label: "Certifications",
+      href: "/certifications",
+    },
+    // KB Link from Tutorials
+    {
+      type: "link",
+      label: "KB",
+      href: "/kb",
+    },
+    // Community Link from Tutorials
+    {
+      type: "link",
+      label: "Community",
+      href: "/community",
+    },
+    // Slack Link from Tutorials
+    {
+      type: "link",
+      label: "Join Slack",
+      href: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
+    },
   ],
 };
 
