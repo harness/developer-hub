@@ -19,13 +19,58 @@ Review the notes below for details about recent changes to Harness Platform, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 19, 2023, version 79606
+## Latest - June 27, 2023, version 797xx
 
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+
+- There is now a limit of 100 API Tokens per free and community account. (PL-39337)
+
+- When configuring SMTP, you can now select specific delegates in **Delegates Setup**. (PL-39288)
+
+- You can now sort pipelines in the pipelines list by selecting the sortable column headers or the sort dropdown. (PL-31527)
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not include any early access features.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+- When creating a service account with the same name in a different scope, an error was thrown. (PL-38885)
+
+  A code enhancement has fixed this issue.
+
+- When **ALL** scope was selected on the role binding page for a specific user, incorrect data was displayed. (PL-38426, ZD-43503)
+
+  A code enhancement has fixed this issue.
+
+- Deletion of vault connectors does not delete the corresponding perpetual tasks. (PL-27621)
+  
+  A code enhancement has fixed this issue.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 19, 2023, version 79606
+
+##### Platform new features
 
 - In earlier releases, users were allowed to include the following special characters in the user name field in their profile: colon (`:`), slash (`/`), less than sign (`<`), greater than sign (`>`), equal sign (`=`), and parentheses (`(` and `)`). Support for these special characters allowed malicious users to inject HTML and JavaScript code into deployment-related emails such as approval emails. (PL-39099)
 
@@ -43,23 +88,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   Starting with this release, you can also change the branch in the dialog for running a pipeline. You can also run the pipeline from any branch directly from the pipeline listing page. 
 
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Platform fixed issues
 
 - Certain users see the following message when they select the Connectors page for their project: "You are not authorized to view default settings.
 You are missing the following permission: "View default settings" in Account scope." (PL-39221, ZD-45360)
 
-This issue has been fixed by the removal of an account-level permission check that has been deemed unnecessary.
+  This issue has been fixed by the removal of an account-level permission check that has been deemed unnecessary.
 
 - SCIM PATCH requests for deleting a Harness user return a “user does not exist” message in a successful delete operation. (PL-38868, ZD-44150)
 
@@ -70,16 +108,6 @@ This issue has been fixed by the removal of an account-level permission check th
 - Improved randomness when there are multiple eligible delegates with no tasks running to avoid selecting the same delegate each time. (PL-39219)
 
   This item is available with Harness Platform version 79503 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### June 09, 2023, version 79516
 
