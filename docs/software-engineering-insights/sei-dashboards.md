@@ -147,8 +147,8 @@ You can configure metrics and widgets to control what data is used to calculate 
 
 There are two ways to manage dashboard associations:
 
-* Go to **Managing dashboard associations** in [Workspaces and Org Units](/docs/category/workspaces-and-org-units).
 * When viewing a dashboard, select the **Settings** icon, and then select **Org Units**.
+* From the **Edit Org Unit** page, edit the **Dashboards** settings. For more information about this option, go to **Managing dashboard associations** in [Manage Org Units](./sei-workspaces-and-org-units/manage-org-units.md#manage-dashboard-associations).
 
 ## Create Business Alignment dashboards
 
