@@ -26,7 +26,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * Added a tooltip on the **Cloud Integration** page. (CCM-12559)
 
-  On the **Cloud Integration** page, if the connector data is unavailable, the **View costs** link is disabled. However, as soon as the data becomes available, the link is enabled. Now, a tooltip providing a concise explanation as to why the link is disabled appears when you hover over the disabled link. 
+  In the **Cloud Integration** page, if the connector data is unavailable, the **View costs** link is disabled. However, as soon as the data becomes available, the link is enabled. Now, a tooltip providing a concise explanation as to why the link is disabled appears when you hover over the disabled link. 
   
 * Asset Governance filter panel enhancement. (CCM-12854)
 
