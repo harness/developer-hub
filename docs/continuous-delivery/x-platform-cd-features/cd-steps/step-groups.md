@@ -1,7 +1,7 @@
 ---
 title: Group steps using step groups
 description: This topic describes how to add steps to pipelines individually or as a step group. Steps in a step group can be run serially or in parallel.
-sidebar_position: 4
+sidebar_position: 1
 ---
 
 Steps can be added to pipelines individually or as a step group.
@@ -15,7 +15,6 @@ You can also run pipeline **stages** in parallel. Deploy multiple services simul
 Review the following topics before you add step groups.
 
 * [Kubernetes CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
-* [Add a stage](/docs/platform/pipelines/add-a-stage/)
 
 ## Limitations
 
@@ -47,7 +46,7 @@ Running steps in parallel can be beneficial in many ways, such as:
 
 In your stage, in **Execution**, select **Add Step** and then select **Step Group**.
 
-![](./static/step-groups-00.png)
+![](./utilities/static/step-groups-00.png)
 
 The step group setting appear.
 
@@ -71,7 +70,7 @@ The failure strategy can execute the Rollback steps for the step group.
 
 The step group Rollback steps are only run if the failure strategy for the step group has **Rollback Step Group** selected.
 
-![](./static/step-groups-01.png)
+![](./utilities/static/step-groups-01.png)
 
 Go to [step failure strategy settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) for more information.
 
@@ -95,7 +94,7 @@ The step group rollback steps are only run if the failure strategy for the step 
 
 In the step group, click the **Execution/Rollback** toggle:
 
-![](./static/step-groups-02.png)
+![](./utilities/static/step-groups-02.png)
 
 In the Rollback view, click **Add Step** to add a rollback step.
 
@@ -105,7 +104,7 @@ For example, you can use the Rolling Rollback step for a [Kubernetes Rollback](/
 
 You reference steps in step groups using the step group Id.
 
-![](./static/step-groups-03.png)
+![](./utilities/static/step-groups-03.png)
 
 The FQN format is:
 
@@ -121,7 +120,7 @@ For example, to reference the URL setting in an HTTP step in a step group with t
 * Delegate selectors can be configured for each step in the step group. You cannot configure a delegate selector at the group level.
 * Step groups cannot have nested step groups, but you can put groups of steps next to each other in a step group:
 
-![](./static/step-groups-04.png)
+![](./utilities/static/step-groups-04.png)
 
 The steps **in** each group run in parallel but each group runs serially.
 

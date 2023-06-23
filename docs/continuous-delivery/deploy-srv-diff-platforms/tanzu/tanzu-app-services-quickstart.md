@@ -1,5 +1,5 @@
 ---
-title: Tanzu Application Services deployments
+title: Tanzu Application Services deployments overview
 description: Deploy a publicly available application to Tanzu Application Service (TAS) by using Harness.
 sidebar_position: 1
 ---

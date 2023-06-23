@@ -355,7 +355,6 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
   - Binary Versions:
     - CF CLI v6
     - CF CLI v7
-    - CF CLI v8
 
 </details>
 

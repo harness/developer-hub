@@ -111,7 +111,7 @@ echo "Full build display name:" <+execution.steps.[step_Id].build.buildFullDispl
 
 :::note
 
-If you are using [step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups.md) the expressions must include the step group Ids also.
+If you are using [step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups.md) the expressions must include the step group Ids also.
 
 For example, `<+execution.steps.[step group Id].steps.[step Id].build.jobUrl>`.
 

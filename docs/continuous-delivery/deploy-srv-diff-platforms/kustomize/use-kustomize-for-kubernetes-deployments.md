@@ -1,5 +1,5 @@
 ---
-title: Use Kustomize for Kubernetes deployments
+title: Deploy to Kubernetes using Kustomize
 description: Use kustomizations in your Kubernetes deployments.
 sidebar_position: 2
 helpdocs_topic_id: 98u2hvzj0t

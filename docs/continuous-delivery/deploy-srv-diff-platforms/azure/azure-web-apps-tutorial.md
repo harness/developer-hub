@@ -1,5 +1,5 @@
 ---
-title: Azure Web Apps deployments
+title: Deploy Azure Web Apps
 description: This topic walks you through deploying Azure Web Apps using Harness.
 sidebar_position: 5
 helpdocs_topic_id: muegjde97q

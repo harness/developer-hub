@@ -12,7 +12,7 @@ Steps can be added to pipelines individually or as a step group.
 
 Individual steps and steps in step groups can be run serially or in parallel.
 
-Unlike individual steps, a step group can apply conditional execution (skip conditions), failure strategy, and rollback steps to all steps in the group. For more information, go to [group steps using step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups).
+Unlike individual steps, a step group can apply conditional execution (skip conditions), failure strategy, and rollback steps to all steps in the group. For more information, go to [group steps using step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups).
 
 # CD stages
 

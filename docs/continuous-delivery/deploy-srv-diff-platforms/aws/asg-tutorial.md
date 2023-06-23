@@ -1,5 +1,5 @@
 ---
-title: AWS ASG deployments
+title: AWS ASG
 description: Deploy an ASG using Harness CD.
 sidebar_position: 1
 ---

@@ -16,7 +16,7 @@ The following options help you control how deployments use your resources.
 
 ### Barriers
 
-Barriers synchronize stages/[step groups](../x-platform-cd-features/cd-steps/utilities/step-groups.md) of a Pipeline that are executed in parallel. Barriers ensure that one stage/step group does not proceed until another stage/step group has reached a specific point.
+Barriers synchronize stages/[step groups](../x-platform-cd-features/cd-steps/step-groups.md) of a Pipeline that are executed in parallel. Barriers ensure that one stage/step group does not proceed until another stage/step group has reached a specific point.
 
 See [Synchronize Parallel Stages and Step Groups using Barriers](./synchronize-deployments-using-barriers.md).
 
