@@ -140,6 +140,6 @@ export const CDList: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "20min",
-    link: "/tutorials/cd-pipelines/virtual-machine/pdc",
+    link: "/tutorials/cd-pipelines/vm/pdc",
   },
 ];
