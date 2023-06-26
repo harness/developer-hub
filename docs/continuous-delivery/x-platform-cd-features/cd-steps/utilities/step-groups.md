@@ -53,6 +53,12 @@ The step group setting appear.
 
 Enter a name for the step group.
 
+## Step Group Variables
+
+Variables of type String, Secret, or Number can be added in step group. Their values can be fixed value, runtime input, or expression.
+
+Note:- Execution input is not supported in Step group variables.
+
 ## Conditional execution
 
 A step group can have its own conditional execution settings separate from the conditional execution settings for the stage. The conditional execution settings of the step group apply to all of its steps.
