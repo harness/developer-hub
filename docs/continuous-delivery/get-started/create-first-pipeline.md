@@ -234,8 +234,8 @@ Kubernetes Cluster connector:
 
 ```yaml
 connector:
-  name: K8s Cluster
-  identifier: K8s cluster
+  name: K8sCluster
+  identifier: K8sCluster
   description: ""
   orgIdentifier: default
   projectIdentifier: CD_Docs
