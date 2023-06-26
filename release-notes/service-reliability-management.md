@@ -38,6 +38,51 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
+- When configuring a health source, unable to input zero (0) in the **Lesser Than** and **Greater Than** fields. (SRM-14326)
+  
+  This issue has been fixed.  You can now input zero (0) in both the fields.
+
+- Unable to select the environment and service at the account, organization, and project levels when using a template (that has service and environment as input values) to create a monitored service in a Verify step. (SRM-14944)
+
+  This issue has been resolved. Now, you can select the desired environment and service at the account, organization, and project levels when creating a monitored service using a template during pipeline execution.
+
+- `SocketTimedOut` error messages were not displayed in the call log. (OIP-537)
+  
+  This issue has been fixed. Enhanced the call log to show `SocketTimedOut` error messages.
+
+- In the metrics analysis section, time-series graphs exhibit data shifting when the first applicable timestamp is missing. (OIP-526)
+
+  This was occurring because the graphs relied on the data itself to determine the starting timestamp rather than using explicit start timestamps for control and test data. This issue has been resolved. Now, the graphs reflect the intended starting points by explicitly including the control and test data start timestamps.
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+
+#### June 20, 2023, Hotfix version 79608
+
+ - Optimized Prometheus API calls by grouping per-host calls into a single call using the 'by' clause. As a result, the number of API calls to the Prometheus server during verification is reduced, leading to improved overall performance and efficiency in data retrieval and processing. (OIP-552)
+
+
+#### June 19, 2023, version 79600
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
 - SLOs were getting stuck in the recalculation state even after the recalculation process was complete. (SRM-14849)  
   
   This issue has been resolved. Now, the SLOs transition to the appropriate state once the recalculation has finished successfully.
@@ -53,26 +98,6 @@ This release does not include any early access features.
   - A monitored service with the most recent update will be displayed at the top of the list.
 
   - If a monitored service has been updated with new analysis data, it is given higher priority and displayed before other services on the list.
-
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Hotfix version 79608">
-
-  #### Released June 20, 2023
-
-  - Optimized Prometheus API calls by grouping per-host calls into a single call using the 'by' clause. As a result, the number of API calls to the Prometheus server during verification is reduced, leading to improved overall performance and efficiency in data retrieval and processing. (OIP-552)
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
 
 #### June 09, 2023, version 79517
 
