@@ -26,7 +26,7 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 #### Feature Flags UI
 
-* On the **Feature Flags** page, when viewing the state of flags across all environments, the flag status column now scrolls all the rows as one. This allows for easier viewing of flag and environment states on one screen. (FFM-7643)
+* On the **Feature Flags** page, when viewing the state of flags across all environments, the flag status column now scrolls all the rows as one. This makes it easier to view flag and environment states on one screen. (FFM-7643)
 
 ```mdx-code-block
   </TabItem>
