@@ -260,92 +260,93 @@ Verify the following:
         - **AmazonEC2ContainerRegistryReadOnly**: Needed to pull function container image from ECR. This policy provides read-only access to the ECR repository.
     - **AWS Lambda Execution Role**: As a Lambda user, you probably already have the AWS Lambda Execution Role set up. If you do not, follow the steps in [AWS Lambda Execution Role](https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html) from AWS.
 
-        Here's an example IAM policy that includes the AWSLambdaExecutionRole, IAMReadOnlyAccess, AWSLambda_FullAccess, AmazonS3ReadOnlyAccess, and AmazonEC2ContainerRegistryReadOnly managed policies:
-
-        ```json
-        {
-            "Version": "2012-10-17",
-            "Statement": [
-                {
-                    "Sid": "IAMReadOnlyAccess",
-                    "Effect": "Allow",
-                    "Action": [
-                        "iam:Get*",
-                        "iam:List*",
-                        "iam:SimulateCustomPolicy"
-                    ],
-                    "Resource": "*"
-                },
-                {
-                    "Sid": "LambdaAccess",
-                    "Effect": "Allow",
-                    "Action": [
-                        "lambda:CreateFunction",
-                        "lambda:UpdateFunctionCode",
-                        "lambda:UpdateFunctionConfiguration",
-                        "lambda:PublishVersion",
-                        "lambda:CreateAlias",
-                        "lambda:Get*",
-                        "lambda:List*",
-                        "lambda:InvokeFunction",
-                        "lambda:DeleteFunction",
-                        "lambda:DeleteAlias",
-                        "lambda:DeleteFunctionConcurrency",
-                        "lambda:AddPermission",
-                        "lambda:RemovePermission",
-                        "lambda:EnableReplication",
-                        "lambda:DisableReplication",
-                        "lambda:GetFunctionCodeSigningConfig",
-                        "lambda:UpdateFunctionCodeSigningConfig",
-                        "lambda:GetCodeSigningConfig",
-                        "lambda:ListCodeSigningConfigs",
-                        "lambda:CreateCodeSigningConfig",
-                        "lambda:DeleteCodeSigningConfig",
-                        "lambda:UpdateFunctionEventInvokeConfig",
-                        "lambda:GetFunctionEventInvokeConfig",
-                        "lambda:ListFunctionsByCodeSigningConfig",
-                        "lambda:ListTags",
-                        "lambda:TagResource",
-                        "lambda:UntagResource"
-                    ],
-                    "Resource": "*"
-                },
-                {
-                    "Sid": "S3ReadOnlyAccess",
-                    "Effect": "Allow",
-                    "Action": [
-                        "s3:Get*",
-                        "s3:List*"
-                    ],
-                    "Resource": "*"
-                },
-                {
-                    "Sid": "ECRReadOnlyAccess",
-                    "Effect": "Allow",
-                    "Action": [
-                        "ecr:GetAuthorizationToken",
-                        "ecr:BatchCheckLayerAvailability",
-                        "ecr:GetDownloadUrlForLayer",
-                        "ecr:GetRepositoryPolicy",
-                        "ecr:DescribeRepositories",
-                        "ecr:ListImages",
-                        "ecr:DescribeImages",
-                        "ecr:BatchGetImage"
-                    ],
-                    "Resource": "*"
-                },
-                {
-                    "Sid": "LambdaRoleAccess",
-                    "Effect": "Allow",
-                    "Action": [
-                        "iam:PassRole"
-                    ],
-                    "Resource": "arn:aws:iam::*:role/service-role/AWSLambdaExecutionRole"
-                }
-            ]
-        }
-        ```
-
+    <details>
+    <summary>Here's an example IAM policy that includes the AWSLambdaExecutionRole, IAMReadOnlyAccess, AWSLambda_FullAccess, AmazonS3ReadOnlyAccess, and AmazonEC2ContainerRegistryReadOnly managed policies:</summary>
+    
+    ```json
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Sid": "IAMReadOnlyAccess",
+                "Effect": "Allow",
+                "Action": [
+                    "iam:Get*",
+                    "iam:List*",
+                    "iam:SimulateCustomPolicy"
+                ],
+                "Resource": "*"
+            },
+            {
+                "Sid": "LambdaAccess",
+                "Effect": "Allow",
+                "Action": [
+                    "lambda:CreateFunction",
+                    "lambda:UpdateFunctionCode",
+                    "lambda:UpdateFunctionConfiguration",
+                    "lambda:PublishVersion",
+                    "lambda:CreateAlias",
+                    "lambda:Get*",
+                    "lambda:List*",
+                    "lambda:InvokeFunction",
+                    "lambda:DeleteFunction",
+                    "lambda:DeleteAlias",
+                    "lambda:DeleteFunctionConcurrency",
+                    "lambda:AddPermission",
+                    "lambda:RemovePermission",
+                    "lambda:EnableReplication",
+                    "lambda:DisableReplication",
+                    "lambda:GetFunctionCodeSigningConfig",
+                    "lambda:UpdateFunctionCodeSigningConfig",
+                    "lambda:GetCodeSigningConfig",
+                    "lambda:ListCodeSigningConfigs",
+                    "lambda:CreateCodeSigningConfig",
+                    "lambda:DeleteCodeSigningConfig",
+                    "lambda:UpdateFunctionEventInvokeConfig",
+                    "lambda:GetFunctionEventInvokeConfig",
+                    "lambda:ListFunctionsByCodeSigningConfig",
+                    "lambda:ListTags",
+                    "lambda:TagResource",
+                    "lambda:UntagResource"
+                ],
+                "Resource": "*"
+            },
+            {
+                "Sid": "S3ReadOnlyAccess",
+                "Effect": "Allow",
+                "Action": [
+                    "s3:Get*",
+                    "s3:List*"
+                ],
+                "Resource": "*"
+            },
+            {
+                "Sid": "ECRReadOnlyAccess",
+                "Effect": "Allow",
+                "Action": [
+                    "ecr:GetAuthorizationToken",
+                    "ecr:BatchCheckLayerAvailability",
+                    "ecr:GetDownloadUrlForLayer",
+                    "ecr:GetRepositoryPolicy",
+                    "ecr:DescribeRepositories",
+                    "ecr:ListImages",
+                    "ecr:DescribeImages",
+                    "ecr:BatchGetImage"
+                ],
+                "Resource": "*"
+            },
+            {
+                "Sid": "LambdaRoleAccess",
+                "Effect": "Allow",
+                "Action": [
+                    "iam:PassRole"
+                ],
+                "Resource": "arn:aws:iam::*:role/service-role/AWSLambdaExecutionRole"
+            }
+        ]
+    }
+    ```
+    </details>
 
 ### **Limitations and Capabilities**
 
@@ -355,84 +356,179 @@ Verify the following:
   * If Harness were to support another repository, like Nexus, when the container is fetched by the API, AWS spins up AWS resources (S3, ECR) anyways, and so Harness has limited support to S3 and ECR.
   * The containers must exist in ECR. Containers are not supported in other repositories.
 
+## Getting Started with Harness CD
+----------------------------------
+
+1. Log into [Harness](https://app.harness.io/).
+2. Select **Projects**, and then select **Default Project**
+
+:::caution
+
+For the pipeline to run successfully, please follow the remaining steps as they are, including the naming conventions.
+
+:::
+
+### Delegate
+
+<details open>
+<summary>What is the Harness delegate?</summary>
+
+The Harness delegate is a service that runs in your local network or VPC to establish connections between the Harness Manager and various providers such as artifacts registries, cloud platforms, etc. The delegate is installed in the target infrastructure, for example, a Kubernetes cluster, and performs operations including deployment and integration. Learn more about the delegate in the [Delegate Overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/).
+
+</details>
+
+1. Under **Project Setup**, select **Delegates**.
+    - Select **Delegates**.
+        - Select **New Delegate**.
+          
+          For this tutorial, let's explore how to install a delegate using Docker.
+
+        -  In the command provided, `ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the delegate installation wizard.
+        -  Replace **DELEGATE_TOKEN** in the command with the token from the wizard.
+         
+        ```bash
+        docker run -dit --cpus=1 --memory=2g \
+         -e DELEGATE_NAME=docker-delegate \
+         -e NEXT_GEN="true" \
+         -e DELEGATE_TYPE="DOCKER" \
+         -e ACCOUNT_ID=ACCOUNT_ID \
+         -e DELEGATE_TOKEN=DELEGATE_TOKEN \
+         -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
+         -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.05.79310
+        ```
+        - Select **Verify** to verify that the delegate is installed successfully and can connect to the Harness Manager.
+        - Select **Verify** to verify that the delegate is installed successfully and can connect to the Harness Manager.
+
+:::note
+
+You can also follow the [Install Harness Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/) tutorial to install the delegate using the Harness Terraform Provider or a Kubernetes manifest.
+
+:::
+
+### Secrets
+
+<details open>
+<summary>What are Harness secrets?</summary>
+
+Harness offers built-in secret management for encrypted storage of sensitive information. Secrets are decrypted when needed, and only the private network-connected Harness delegate has access to the key management system. You can also integrate your own secret manager. To learn more about secrets in Harness, go to [Harness Secret Manager Overview](https://developer.harness.io/docs/platform/Secrets/Secrets-Management/harness-secret-manager-overview/).
+
+</details>
+
+1. Under **Project Setup**, select **Secrets**.
+    - Select **New Secret**, and then select **Text**.
+    - Enter the secret name `harness_gitpat`.
+    - For the secret value, paste the GitHub personal access token you saved earlier.
+    - Select **Save**.
+2. Under **Project Setup**, select **Secrets**.
+    - Select **New Secret**, and then select **File**.
+    - Enter the secret name `aws`.
+    - For the secret value, add the AWS [Secret access key](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html).
+    - Select **Save**.
+
+### Connectors
+
+<details open>
+<summary>What are connectors?</summary>
+
+Connectors in Harness enable integration with 3rd party tools, providing authentication and operations during pipeline runtime. For instance, a GitHub connector facilitates authentication and fetching files from a GitHub repository within pipeline stages. Explore connector how-tos [here](https://developer.harness.io/docs/category/connectors).
+
+</details>
+
+1. Create the **GitHub connector**.
+    - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/1-github-connector.yml)
+    - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
+    - Select **Create via YAML Builder** and paste the copied YAML.
+    - Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
+    - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
+    - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
+    - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
+
+2. Create the **AWS Connector**.
+    1. Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/aws-connector.yml).
+    2. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
+    3. Select **Create via YAML Builder** and paste the copied YAML.
+    4. Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace `crossAccountRoleArn` in the YAML with your AWS role's ARN. 
+    5. Replace the `accessKey` placeholder with the [AWS access key](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html) for the AWS user you created (with the required policies).
+    6. In `projectIdentifier`, replace with the project identifier with yours, for example, `default`. 
+    7. Select **Save Changes** and verify that the new connector named **harness_awsconnector** is successfully created.
+    8. Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful. 
+
+## Environment
+
+<details open>
+<summary>What are Harness environments?</summary>
+
+Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for serverless functions, VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
+
+</details>
+
+1. In your Harness project, select **Environments**.
+    1. Select **New Environment**, and then select **YAML**.
+    2. Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/environement.yml), paste it into the YAML editor, and select **Save**.
+    3. In your new environment, select the **Infrastructure Definitions** tab.
+    4. Select **Infrastructure Definition**, and then select **YAML**.
+    5. Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/infrastructure-definition.yml) and paste it into the YAML editor.
+    6. Select **Save** and verify that the environment and infrastructure definition are created successfully.
+## Function Definition and Function Artifacts
+<details open>
+<summary>What is AWS Lambda Function Definition?</summary>
+
+Harness uses the AWS Lambda [Create Function API](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html) to create a new Lambda function in the specified AWS account and region. In Harness, you use a JSON configuration file to define the AWS Lambda you wish to deploy. This configuration lets you define all the function settings supported by the Create Function API.
+
+</details>
 
 
-## Sample pipeline 
 
-Here is the YAML for a sample pipeline:
+## Services
 
-```yaml
-pipeline:
-  name: lambda-deploy
-  identifier: lambdaDeploy
-  projectIdentifier: serverless
-  orgIdentifier: default
-  tags: {}
-  stages:
-    - stage:
-        name: deploy lambda
-        identifier: deploy
-        description: "deploy lambda"
-        type: Deployment
-        spec:
-          deploymentType: AwsLambda
-          service:
-            serviceRef: lambda
-            serviceInputs:
-              serviceDefinition:
-                type: AwsLambda
-                spec:
-                  artifacts:
-                    primary:
-                      primaryArtifactRef: <+input>
-                      sources: <+input>
-          environment:
-            environmentRef: aws
-            deployToAll: false
-            infrastructureDefinitions:
-              - identifier: awslambda
-          execution:
-            steps:
-              - step:
-                  name: Deploy Aws Lambda
-                  identifier: deployawslambda
-                  type: AwsLambdaDeploy
-                  timeout: 10m
-                  spec: {}
-                  when:
-                    stageStatus: Success
-                    condition: "false"
-                  failureStrategies: []
-              - step:
-                  type: ShellScript
-                  name: Echo Service variables
-                  identifier: ShellScript
-                  spec:
-                    shell: Bash
-                    onDelegate: true
-                    source:
-                      type: Inline
-                      spec:
-                        script: echo <+serviceVariables.workload_name>
-                    environmentVariables: []
-                    outputVariables: []
-                  timeout: 10m
-            rollbackSteps:
-              - step:
-                  name: Aws Lambda rollback
-                  identifier: awslambdarollback
-                  type: AwsLambdaRollback
-                  timeout: 10m
-                  spec: {}
-        tags: {}
-        failureStrategies:
-          - onFailure:
-              errors:
-                - AllErrors
-              action:
-                type: StageRollback
+<details open>
+<summary>What are Harness services?</summary>
 
-```
+In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, functions, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
+
+</details>
+
+1. In your Harness project, select **Services**.
+    1. Select **New Service**.
+    2. Enter the name `harnessserverless`.
+    3. Select **Save**, and then **YAML** (on the **Configuration** tab).
+    4. Select **Edit YAML**, copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/service.yml), and paste the into the YAML editor.
+    5. Select **Save** and verify that the service **harness_serverless** is successfully created.
+
+## Pipeline
+
+<details open>
+<summary>What are Harness pipelines?</summary>
+
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact/function deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
+
+</details>
+
+1. In your Harness project, select **Pipelines**.
+    1. Select **Create a Pipeline**.
+    2. Enter the name `serverless_pipeline`.
+    3. Choose **Inline** to store the pipeline in Harness.
+    4. Select **Start**. 
+    5. In **Pipeline Studio**, select **YAML**.
+    6. Select **Edit YAML** and paste in the YAML in the next section.
+
+
+## Deploy serverless application on AWS Lambda
+
+1. Copy the contents of [serverless-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/serverless-pipeline.yml).
+2. In your Harness pipeline YAML editor, paste the YAML.
+3. Select **Save**.
+   
+   You can switch to the **Visual** pipeline editor and confirm the pipeline stage and execution steps as shown below.
+   
+   <docimage path={require('../static/harness-cicd-tutorial/serverless-aws-lambda-native.png')}/>  
+4. Finally, it's time to execute the Pipeline. Select on **Run**.
+
+5. Enter the **Primary Artifact** name and **File Path** in which the artifact is present. 
+
+6.  And then select **Run Pipeline** to initiate the deployment.
+    
+    Observe the execution logs as Harness deploys the function.
 
 
 ## Congratulations!🎉
