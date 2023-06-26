@@ -48,14 +48,14 @@ import Earlyaccess from '/release-notes/shared/cd-79700-early-access.md'
 
 - Step templates in a step group created within a stage template were not getting executed properly. (CDS-72124, ZD-45924, ZD-46151)
   
-  The nested step groups were not executing `nextNode` when the parent step group was a child of the parallel node. For example, if a step group SG1 that was a child of a parallel node, and had two child step groups SG21 and SG22, SG21 was not starting its next node SG22 during pipeline execution. Instead, SG21 sent status to the parent SG1, and SG1 finished execution without executing SG22. 
+  The nested step groups were not executing `nextNode` when the parent step group was a child of the parallel node. For example, consider a step group SG1 that was a child of a parallel node, and had two child step groups SG21 and SG22. SG21 was not starting its next node, SG22 during pipeline execution. Instead, SG21 sent status to the parent SG1, and SG1 finished execution without executing SG22. 
 
   Harness has added support to nested step groups to resolve this issue. 
 - Fixed an issue where the Container step was failing when emptyDir volume was being used. (CDS-72119, ZD-45892)
 - Fixed an issue where a multi-environment deploy stage was not executing while propagating from a previous stage when using the **Deploy to Filtered List** option with the `<service.tags>` parameter. (CDS-71887)
 - Unable to choose stages during pipeline execution. (CDS-71712, ZD-45762)
   
-  This issue is fixed by adding an error icon that will be displayed when the stage selection dropdown is disabled due to an API error. Error info will be available if you hover over the error icon.
+  This issue is fixed by adding an error icon that will be displayed when the stage selection dropdown is disabled due to an API error. Error details will be available if you hover over the error icon.
 - Unable to view the account level deployment stage templates. (CDS-71230, ZD-45557)
   
   Previously, when you provide incomplete YAML during template creation, the templates were being saved without proper stage types. The templates were filtered out and were not visible in the API response when used during pipeline creation.

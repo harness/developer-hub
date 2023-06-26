@@ -30,7 +30,7 @@ This release does not include early access features.
 
 - The delegate connectivity capability check for Azure Web App deployments failed. (CDS-71432, ZD-44862)
   
-  This issue is fixed by assigning Azure App Services task type deployment to specific delegate by using Task Category Mapping.
+  This issue is fixed by using task category mapping to assign the Azure App Services task type deployments to specific delegates.
 
 import Fixedissues from '/docs/first-gen/firstgen-release-notes/shared/cd-79700-fixed-issues.md'
 
