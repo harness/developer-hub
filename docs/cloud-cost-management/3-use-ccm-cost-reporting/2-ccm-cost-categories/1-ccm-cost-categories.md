@@ -70,7 +70,7 @@ The new Cost Category appears.
 1. Select **New Cost Bucket**.
 2. Enter a name for the cost bucket, such as the name of a department.
 3. Define the rules (data sources) for the cost bucket. You could add multiple conditions to this rule using the AND operator.  
-Add a new row for each rule until the cost bucket correctly includes all the costs incurred for this bucket. These rules are defined using the OR operator. You can add another cost category as a rule when you define your cost buckets. 
+Add a new row for each rule until the cost bucket correctly includes all costs incurred. These rules are defined using the OR operator. You can add another cost category as a rule when defining your cost buckets.
 
    
 :::important important
