@@ -397,7 +397,6 @@ The Harness delegate is a service that runs in your local network or VPC to esta
          -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.05.79310
         ```
         - Select **Verify** to verify that the delegate is installed successfully and can connect to the Harness Manager.
-        - Select **Verify** to verify that the delegate is installed successfully and can connect to the Harness Manager.
 
 :::note
 
