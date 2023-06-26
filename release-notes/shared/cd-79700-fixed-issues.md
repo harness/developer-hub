@@ -10,7 +10,7 @@
   This item requires Harness Delegate version 797xx. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
 - Pipeline execution failed when a variable whose required field is set to `TRUE` is passed as an expression. (CDS-71357, ZD-45615)
   
-  Harness checks for the value of the variable whose required field is set to `TRUE`, and the pipeline fails if the value is empty. This issue occurred when Harness also checked for the value of variables that were passed as expressions. The value of expressions cannot be resolved during pipeline creation. 
+  Harness checks for the value of the variable whose required field is set to `TRUE`, and the pipeline failed if the value was empty. This issue occurred when Harness checked for the value of variables that were passed as expressions. The value of expressions cannot be resolved during pipeline creation. 
 
   This issue is fixed by ignoring the check for variables passed as an expression. 
 
@@ -25,7 +25,7 @@
   
   When a multi-line string was passed as input for a child pipeline, the string was being converted to a single line. 
 
-  This issue is fixed. Instead of passing data using YAML, Harness now uses JSON for data processing. This helps preserve multi-line strings and YAML structure properly to process pipeline YAML and user inputs. Enable the feature flag, `PIE_PROCESS_ON_JSON_NODE` to leverage this fix.
+  This issue is fixed. Instead of passing data using YAML, Harness now uses JSON for data processing. This helps preserve multi-line strings and YAML structures properly to process pipeline YAML and user inputs. Enable the feature flag, `PIE_PROCESS_ON_JSON_NODE` to leverage this fix.
 
   This item requires Harness Delegate version 797xx. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
 - Fixed an issue where the expression, `<+lastPublished.tag>.regex()` was not resolved properly when used as runtime input for artifacts. (CDS-68810)
