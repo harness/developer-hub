@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 19, 2023, version 79600
+## Latest - June xx, 2023, version 797xx
 
 ```mdx-code-block
 <Tabs>
@@ -38,13 +38,13 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-- When configuring a health source, unable to input zero (0) in the **Lesser Than** and **Greater Than** fields. (SRM-14326)
+- When configuring a health source, unable to input zero (0) in the **Lesser Than** and **Greater Than** fields. (SRM-14936)
   
   This issue has been fixed.  You can now input zero (0) in both the fields.
 
-- Unable to select the environment and service at the account, organization, and project levels when using a template (that has service and environment as input values) to create a monitored service in a Verify step. (SRM-14944)
+- When using a template that has service and environment as input values to create a monitored service in a Verify step, users were unable to select the environment and service at the account, organization, or project levels. (SRM-14944)
 
-  This issue has been resolved. Now, you can select the desired environment and service at the account, organization, and project levels when creating a monitored service using a template during pipeline execution.
+  This issue has been resolved, and now you can select the desired environment and service in these cases as expected.
 
 - `SocketTimedOut` error messages were not displayed in the call log. (OIP-537)
   
@@ -52,7 +52,7 @@ This release does not include any early access features.
 
 - In the metrics analysis section, time-series graphs exhibit data shifting when the first applicable timestamp is missing. (OIP-526)
 
-  This was occurring because the graphs relied on the data itself to determine the starting timestamp rather than using explicit start timestamps for control and test data. This issue has been resolved. Now, the graphs reflect the intended starting points by explicitly including the control and test data start timestamps.
+  This issue has been fixed, and now the graphs reflect the intended starting points.
 
 
 ```mdx-code-block
