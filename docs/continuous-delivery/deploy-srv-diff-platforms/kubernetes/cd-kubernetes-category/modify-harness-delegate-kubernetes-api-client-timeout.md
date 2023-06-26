@@ -1,9 +1,9 @@
-
 ---
 title: Modify Harness delegate's Kubernetes API client timeout
 description: Modify the read and connection timeouts for Kubernetes API client within Harness delegate
 sidebar_position: 10
 ---
+
 
 Harness delegate uses Kubernetes java client to make programmatic API calls to the provided Kubernetes server. For example, some common API calls include various CRUD calls for Kubernetes objects like ConfigMaps, Secrets etc.
 
