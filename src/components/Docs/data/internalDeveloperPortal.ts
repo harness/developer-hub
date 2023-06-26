@@ -40,13 +40,6 @@ export const docsCards: CardSections = [
           "Set up your software catalog and software templates.",
         link: "/docs/category/get-started-with-idp",
       },
-      {
-        title: "Get started",
-        module: MODULES.idp,
-        description:
-          "Set up IDP and take your first steps toward building a developer-centric portal.",
-        link: "/docs/category/get-started-7",
-      },
     ],
   },
   {
