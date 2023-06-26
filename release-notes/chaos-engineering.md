@@ -35,6 +35,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
     * When an organization is deleted, all chaos entities in all projects under that organization are deleted. 
     * When an account is deleted, all chaos entities in all projects under that account are deleted.
 
+* Enhanced the Chaos Experiments report to show tags for selected experiments along with sequence numbers for all associated experiment runs. (CHAOS-1777)
+
+* Enhanced the Chaos Experiment Runs report to show a probe summary, along with a fault summary if there's a fault failure. (CHAOS-1776)
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
