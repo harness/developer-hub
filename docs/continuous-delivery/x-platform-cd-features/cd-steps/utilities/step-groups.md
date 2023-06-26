@@ -55,7 +55,13 @@ Enter a name for the step group.
 
 ## Step Group Variables
 
+Step group variables are custom variables you can add and refer in your Pipeline. They're available across the Pipeline.
+
 Variables of type String, Secret, or Number can be added in step group. Their values can be fixed value, runtime input, or expression.
+
+You can refer step group variables within their step group using the expression `<+execution.steps.[step group id].variables.[variable name]>`.
+
+You can refer step group variables outside their step group using the expression `<+pipeline.stages.[stage Id].spec.execution.steps.[step group id].variables.[variable name]>`.
 
 Note:- Execution input is not supported in Step group variables.
 
