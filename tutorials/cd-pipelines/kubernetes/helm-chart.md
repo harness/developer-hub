@@ -22,7 +22,9 @@ import TabItem from '@theme/TabItem';
 
 This tutorial is designed to help you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline/GitOps for deploying a Guestbook application. This Guestbook application will use Helm Chart for deployment.
 
+:::info
 [Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=tutorials-cd-kubernetes-helm-chart).
+:::
 
 ```mdx-code-block
 <Tabs>
@@ -123,7 +125,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 
 1. Create a GitHub connector.
    1. In **PROJECT SETUP**, select **Connectors**, and then select **Create via YAML Builder**.
-   2. Copy and paste the contents of [1-github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/1-github-connector.yml).
+   2. Copy and paste the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/github-connector.yml).
    3. Replace **GITHUB_USERNAME** with your GitHub account username in the YAML wherever required.
       We assume that you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository as mentioned in the [Before you begin](#before-you-begin) section.
    4. Select **Save Changes**, and verify that the new connector named _**harness_gitconnector**_ is successfully created.
@@ -131,7 +133,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
     
 2. Create a Kubernetes connector.
    1. In **PROJECT SETUP**, select **Connectors**, and then select **Create via YAML Builder**.
-   2. Copy and paste the contents of [2-kubernetes-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/2-kubernetes-connector.yml).
+   2. Copy and paste the contents of [kubernetes-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/kubernetes-connector.yml).
    3. Replace **DELEGATE_NAME** with the installed delegate name. To obtain the delegate name, navigate to **Default Project** > **PROJECT SETUP** > **Delegates**. 
    4. Select **Save Changes**, and verify that the new connector named _**harness_k8sconnector**_ is successfully created.
    5. Select **Connection Test** under **Connectivity Status** to ensure that the connection is successful.
@@ -147,9 +149,9 @@ Environments define the deployment location, categorized as **Production** or **
 
 1. In **Default Project**, select **Environments**.
 2. Select **New Environment** and toggle to the **YAML** view _(next to VISUAL)_.
-3. Copy the contents of [3-environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/3-environment.yml) and paste it in the YAML editor, and then select **Save**.
+3. Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/environment.yml) and paste it in the YAML editor, and then select **Save**.
 4. In the **Infrastructure Definitions** tab, select **Infrastructure Definition**, and then select **Edit YAML**.
-5. Copy the contents of [4-infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/4-infrastructure-definition.yml) and paste it in the YAML editor.
+5. Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/infrastructure-definition.yml) and paste it in the YAML editor.
 6. Select **Save** and verify that the environment and infrastructure definition are created successfully.
 
 ### Create a service
@@ -164,7 +166,7 @@ In Harness, services represent what you deploy to environments. You use services
 1. In **Default Project**, select **Services**.
 2. Select **New Service**, enter the name, `harnessguestbook`, and then select **Save**.
 3. Toggle to the **YAML** view _(next to VISUAL)_ under the **Configuration** tab, and then select **Edit YAML**.
-4. Copy the contents of [5-service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/5-service.yml) and paste it in the YAML editor.
+4. Copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/service.yml) and paste it in the YAML editor.
 5. Select **Save** and verify that the service, _**harness_guestbook**_ is successfully created.
 
 ### Create a pipeline
@@ -176,12 +178,6 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 </details>
 
-1. In **Deafult Project**, select **Pipelines**.
-2. Select **Create a Pipeline** and enter the following details:
-   - In **Name**, enter `harness_guestbook_pipeline`.
-   - In **How do you want to setup your pipeline?**, select **Inline**.
-   - Select **Start** and toggle to the **YAML** view _(next to VISUAL)_.
-3. Select **Edit YAML** to enable edit mode, and then select any of the following execution strategies. Paste the respective YAML based on your selection.
 
 ```mdx-code-block
 <Tabs>
@@ -195,7 +191,14 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 
 </details>
 
-- Copy the contents of [6-canary-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/6-canary-deployment.yml) and paste it in the YAML editor.
+- In **Default Project**, select **Pipelines**.
+    - Select **New Pipeline**.
+    - Enter the name `guestbook_canary_pipeline`.
+    - Select **Inline** to store the pipeline in Harness.
+    - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
+    - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
+
+- Copy the contents of [canary-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/canary-pipeline.yml) and paste it in the YAML editor.
 - Select **Save** to save the pipeline.
 - You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
 
@@ -213,8 +216,14 @@ Blue Green deployments involve running two identical environments (stage and pro
 
 </details>
 
+- In **Default Project**, select **Pipelines**.
+    - Select **New Pipeline**.
+    - Enter the name `guestbook_bluegreen_pipeline`.
+    - Select **Inline** to store the pipeline in Harness.
+    - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
+    - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
 
-- Copy the contents of [6-bluegreen-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/6-bluegreen-deployment.yml) and paste it in the YAML editor.
+- Copy the contents of [bluegreen-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/bluegreen-pipeline.yml) and paste it in the YAML editor.
 - Select **Save** to save the pipeline.
 - You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
 
@@ -232,7 +241,14 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 
 </details>
 
-- Copy the contents of [6-rolling-deployment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/6-rolling-deployment.yml) and paste it in the YAML editor.
+- In **Default Project**, select **Pipelines**.
+    - Select **New Pipeline**.
+    - Enter the name `guestbook_rolling_pipeline`.
+    - Select **Inline** to store the pipeline in Harness.
+    - Select **Start** and, in the Pipeline Studio, toggle to **YAML** to use the YAML editor.
+    - Select **Edit YAML** to enable edit mode, and choose any of the following execution strategies. Paste the respective YAML based on your selection.
+
+- Copy the contents of [rolling-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/rolling-pipeline.yml) and paste it in the YAML editor.
 - Select **Save** to save the pipeline.
 - You can switch to the **VISUAL** view, and verify that the pipeline stage and execution steps appear as shown below.
 

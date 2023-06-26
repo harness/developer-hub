@@ -7,7 +7,7 @@ sidebar_position: 70
 # Debugging
 
 ### Outbound requests
-To learn more about what requests the Relay Proxy sends see [Endpoints](/docs/feature-flags/relay-proxy/endpoints).
+To learn more about what requests the Relay Proxy sends see [Endpoints](/docs/feature-flags/relay-proxy/outbound_endpoints).
 
 ### Debug mode
 
@@ -20,7 +20,36 @@ The Relay Proxy has a `/health` endpoint that can be queried to check the health
 
 The response looks something like this:
 
-`{"cache":"healthy","env-0000-0000-0000-0000-0000":"healthy", "env-0000-0000-0000-0000-0002":"healthy"}`
+```
+{
+  "environments": [
+    {
+      "id": "0000-0000-0000-0000-0000",
+      "streamStatus": {
+        "state": "CONNECTED",
+        "since": 1687188451
+      }
+    },
+    {
+      "id": "0000-0000-0000-0000-0002",
+      "streamStatus": {
+        "state": "DISCONNECTED",
+        "since": 1687188451
+      }
+    }
+
+  ],
+  "cacheStatus": "healthy"
+}
+```
+- `id` is the environments ID.
+- `state` represents the state of the Proxy -> SaaS feature flags stream for an environment:
+    - `INITIALIZING` means the proxy is initializing a stream with SaaS feature flags for the environment.
+    - `CONNECTED` means the proxy has a healthy stream connection with SaaS feature flags.
+    - `DISCONNECTED` means the proxy has an healthy stream connection with SaaS feature flags and it will poll for changes.
+- `since` represents the time that `state` was last updated.
+- `cacheStatus` represents the state of the connection between the Proxy and the cache.
+
 
 If you've configured a custom port using the PORT environment variable, your healthcheck should point at that port instead, for example, for port 10000 it would be set to:
 

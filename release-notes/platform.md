@@ -1,8 +1,8 @@
 ---
-title: Harness Platform release notes
-sidebar_label: Harness Platform
+title: Platform release notes
+sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-06-09T10:00:30
+date: 2023-06-19T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Platform, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 09, 2023, version 79516
+## Latest - June 19, 2023, version 79606
 
 
 ```mdx-code-block
@@ -27,28 +27,21 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-### Platform new features
+- In earlier releases, users were allowed to include the following special characters in the user name field in their profile: colon (`:`), slash (`/`), less than sign (`<`), greater than sign (`>`), equal sign (`=`), and parentheses (`(` and `)`). Support for these special characters allowed malicious users to inject HTML and JavaScript code into deployment-related emails such as approval emails. (PL-39099)
 
-- There is now an additional tab on the **Create or Select Existing Connector** dialog called `All` that lists connectors from all scopes (project, organization, and account). (PL-39029)
+  For enhanced security, Harness no longer allows a user to include these special characters in their name. If an existing user name has any of these special characters, Harness does not include the special characters when adding the name to emails.
 
-- The Go library has been upgraded from version 1.19.8 to 1.20.4. (PL-39026)
+- Free and Community accounts are now limited to 100 connectors. (PL-32654)
 
-- You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508, ZD-40688)
+- The dialog for adding an encrypted text secret now includes an option to test a referenced secret. (PL-31083) 
 
-   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+- The dialog that enables you to select a connector did not list connectors in any order. (PL-27568)
 
-- You can now delete externally managed users from the Harness UI. (PL-38974)
+  This release adds a menu that you can use to sort the listed connectors in various ways (for example, by name or by date).
 
-  Harness recommends using this action with caution since it may result in data inconsistencies between Harness and the identity provider.
+- In earlier releases, you could change the Git branch only in Pipeline Studio. (CDS-68007)
 
-- The Go library for yq has been upgraded from version 1.19.8 to 1.20.4. (PL-38952)
-
-- On your profile, you can now access projects by selecting project cards. (PL-38570)
-
-- Secret references now have a validate button to verify if the path is valid. (PL-31083)
-
-   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
+  Starting with this release, you can also change the branch in the dialog for running a pipeline. You can also run the pipeline from any branch directly from the pipeline listing page. 
 
 
 ```mdx-code-block
@@ -63,7 +56,57 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-### Platform fixed issues
+- Certain users see the following message when they select the Connectors page for their project: "You are not authorized to view default settings.
+You are missing the following permission: "View default settings" in Account scope." (PL-39221, ZD-45360)
+
+This issue has been fixed by the removal of an account-level permission check that has been deemed unnecessary.
+
+- SCIM PATCH requests for deleting a Harness user return a “user does not exist” message in a successful delete operation. (PL-38868, ZD-44150)
+
+  This issue has been resolved by returning a NULL response in the Patch operation to delete a user.
+
+- In earlier releases, the button for managing role bindings for users, user groups, and service accounts was named +Role. However, given that you can also remove role bindings in the Manage Role Bindings dialog, the button has been renamed to Manage Roles. (PL-28484)
+
+- Improved randomness when there are multiple eligible delegates with no tasks running to avoid selecting the same delegate each time. (PL-39219)
+
+  This item is available with Harness Platform version 79503 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 09, 2023, version 79516
+
+##### Platform new features
+
+- There is now an additional tab on the **Create or Select Existing Connector** dialog called `All` that lists connectors from all scopes (project, organization, and account). (PL-39029)
+
+- The Go library has been upgraded from version 1.19.8 to 1.20.4. (PL-39026)
+
+- You can now delete externally managed users from the Harness UI. (PL-38974)
+
+  Harness recommends using this action with caution since it may result in data inconsistencies between Harness and the identity provider.
+
+- The Go library for yq has been upgraded from version 1.19.8 to 1.20.4. (PL-38952)
+
+- On your profile, you can now access projects by selecting project cards. (PL-38570)
+
+- Secret references now have a validate button to verify if the path is valid. (PL-31083)
+
+   This item is available with Harness Platform version 79516 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Platform fixed issues
 
 - The user invite API returned an HTTP status code of 200 if the invited user had an invalid TLD. (PL-38938)
 
@@ -89,41 +132,25 @@ This release does not include any early access features.
 
   This issue is fixed and the output values for expressions are returned as JSON objects.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
 #### June 01, 2023, version 79411
-
-##### Harness Manager delegate new features
-
-The features below are available with version 79411 and do not require a new delegate version. For Harness Delegate version-specific features, go to [Delegate release notes](/release-notes/delegate).
 
 - You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 - You can now use the legacy UI to create delegates. (PL-38937)
 
-##### Platform new features
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
 
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 ##### Early access
 
-This release does not include any early access feature.
+This release does not include any early access features.
 
-##### Harness Manager delegate fixed issues
-
-The fixed issue below is available with version 79411 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/release-notes/delegate).
-
-- Delegate instances that do not shut down gracefully and do not come back online are removed from the UI after three hours. (PL-38755)
-
-##### Platform fixed issues
+##### Fixed issues
 
 - Delegate instances that do not shut down gracefully and do not come back online are removed from the UI after three hours. (PL-38755)
 

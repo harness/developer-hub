@@ -28,7 +28,7 @@ The live state can be any microservice or application and its Kubernetes environ
 
 Here's a very simple diagram of the GitOps architecture:
 
-![](./static/harness-git-ops-basics-26.png)
+![Harness GitOps architecture](static/572d35be32e656cea58795c7aefde6d91f50270201ac7f1906d8875ef3c1408a.png)  
 
 The Harness GitOps Agent is a worker process installed in a Kubernetes cluster. The Agent can be installed in your target cluster or any cluster with connectivity to the target cluster.
 

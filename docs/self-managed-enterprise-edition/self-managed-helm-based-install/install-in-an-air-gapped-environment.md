@@ -105,6 +105,14 @@ To begin your installation, download the following files:
 - Harness air-gapped bundle [harness-airgapped-1_0_78927.tgz](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped-1_0_78927.tgz)
 - Harness airgap images [harness-airgap-images.sh](https://storage.googleapis.com/smp-airgap-bundles/harness-airgap-images.sh)
 
+## Set Docker architecture
+
+Air-gapped environment installation requires Docker build architecture amd64.
+
+Run the following command before you save Docker images to your private registry.
+
+ `export DOCKER_DEFAULT_PLATFORM=linux/amd64`
+
 ## Save Docker images to your private registry
 
 To save Docker images, do the following:
@@ -126,7 +134,7 @@ To save Docker images, do the following:
     ```
     ./harness-airgap-images.sh -r <REGISTRY.YOURDOMAIN.COM:PORT> -f harness-airgapped.tgz
     ````
-
+    
 ## Download and push Helm charts
 After you save Docker images to your private registry, you must download the Helm charts and push them to your repository.
 

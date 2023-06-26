@@ -60,7 +60,7 @@ You can also propagate and override a Service in subsequent stages by selecting 
 
 For examples, go to:
 
-* [Kubernetes Services](../deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services.md)
+* [Kubernetes Services](../deploy-srv-diff-platforms/kubernetes/kubernetes-services.md
 * [Propagate and Override CD Services](../x-platform-cd-features/services/propagate-and-override-cd-services.md)
 
 ### Service Instance
@@ -79,7 +79,7 @@ Environments represent your deployment targets logically (QA, Prod, etc). You ca
 
 Infrastructure Definitions represent an Environment's infrastructure physically. They are the actual target clusters, hosts, etc.
 
-For an example, go to [Kubernetes Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+For an example, go to [Kubernetes Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md).
 
 ### Execution Steps
 

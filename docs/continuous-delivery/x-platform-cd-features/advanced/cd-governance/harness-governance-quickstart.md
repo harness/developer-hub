@@ -125,7 +125,6 @@ pipeline:
                                     outputVariables: []  
                                     executionTarget: {}  
                                 timeout: 10m  
-                  serviceDependencies: []  
               tags: {}
 ```
 

@@ -94,7 +94,7 @@ If you have STO scan steps in your pipeline, you can set up your certificates us
 
 ## Troubleshooting
 
-If your builds fail due to an problem connecting to the scm service, add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML. For more information about this issue, go to [Troubleshoot Continuous Integration](/docs/continuous-integration/troubleshooting-ci.md).
+If your builds fail due to a problem connecting to the scm service, add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML. For more information about this issue, go to [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md).
 
 If the volumes are not getting mounted to the build containers, or you continue to see certificate errors in your pipeline, try the following:
 

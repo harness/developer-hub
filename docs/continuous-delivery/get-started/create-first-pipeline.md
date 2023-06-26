@@ -830,4 +830,4 @@ Select any execution to view its steps and logs.
 
 ## Next steps
 
-Now that you know the basics of CD pipeline modeling in Harness, go to [CD third-party integrations](../integrations/cd-integrations) to see how Harness supports your manifest and artifact repos and deployment environments. 
+Now that you know the basics of CD pipeline modeling in Harness, go to [CD third-party integrations](../cd-integrations) to see how Harness supports your manifest and artifact repos and deployment environments. 

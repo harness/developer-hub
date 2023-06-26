@@ -11,15 +11,21 @@ You can set up Nexus scans using a Security step: create a CI Build or Security 
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
+<details><summary>Nexus configuration in a Security step</summary>
+
 ```mdx-code-block
-import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
+import security_step_nexus from './static/security-step-nexus.png'
 ```
 
-<StoSecurityStepConfig />
+```mdx-code-block
+<img src={security_step_nexus} alt="Configuring a Nexus scan in a Security step" height="50%" width="50%" />
+```
+
+</details>
 
 * `product_name` = `nexusiq`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan` or `ingestionOnly`
+* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan`, `dataLoad`, or `ingestionOnly`
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan`:
 	+ `product_domain`
 	+ `product_access_id`
@@ -37,10 +43,10 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 ```mdx-code-block
-import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
+import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 ```
 
-<StoLegacyInstance />
+<StoLegacyRepo />
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';

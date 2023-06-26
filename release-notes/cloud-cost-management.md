@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-06-06T10:00
+date: 2023-06-21T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -16,46 +16,35 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - June 06, 2023, version 79601
+## Latest - June 21, 2023, version 79803
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-
 ### What's new
 
-**Cost Category enhancement** (CCM-12585)
-
-  When building a cost category, it is now possible to incorporate another cost category as a rule. However, there are important considerations to keep in mind when using a cost category within your rule. 
-  
-   * You cannot include a nested cost category as a rule within another cost category if either of these cost categories contains a shared bucket.
-   * You cannot add the same cost category as a rule in the cost bucket.
-   * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
-   * You can nest cost categories to a maximum of 20 levels.
-
-
+* In the **Cloud Integration** page, if the connector data is unavailable, the **View costs** link is disabled. However, as soon as the data becomes available, the link is enabled. Now, a tooltip providing a concise explanation as to why the link is disabled appears when you hover over the disabled link. (CCM-12559)
+* Previously, in the **Asset Governance** > **Evaluations** page, only the target accounts with `execute` permissions were included in the **Target Accounts** field in the filter panel. Now, this functionality is enhanced so that all target accounts with `view` permissions are also included in the list. (CCM-12854)
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-
 ### Early access
 
-  This release does not include any early access features.
-
+This release does not include any early access features.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
-
 ### Fixed issues
-  
-* Budgets that contain the `/` character in their names were previously experiencing issues with correctly opening the budget details page. (CCM-12062)
 
-  Previously, when the budget name appended to the URL contained the `/` character, it was treated as a separate route. This caused the browser to fail in loading the corresponding budget details. Now, before appending the budget name to the URL, it is properly encoded. This ensures that the browser handles the `/` character correctly, allowing the page to load as expected.
+* The budget screen displayed inconsistent margins, leading to overlapping text in different columns. To address this issue, the columns in the budget list have been readjusted, ensuring that the text in each column no longer coincides with the text in adjacent columns. (CCM-10980)
+* An error occurred with the HTTP AutoStopping rule. (CCM-12729)
+The detection of routing rules on the Azure Application Gateway was impacted due to the presence of an additional custom probe configuration. To address this issue, during the detection of routing rules for the specified port configuration, any custom probes are now ignored. However, the custom probe will continue to be utilized for the selected rule.
+  
 
   
 ```mdx-code-block
@@ -68,6 +57,46 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <details>
 <summary>2023 releases</summary>
 
+#### June 09, 2023, version 79701
+
+##### What's new
+This release does not include any new features.
+
+##### Early access
+**Propagate force cool down** (CCM-12338)
+  
+  You can now propagate force cool down from primary rule to dependent rules.
+
+  Earlier, when stopping a rule from the UI, you had to stop its dependant rules one by one. With this enhancement, you can propagate the stop operation to dependant rules as well. 
+  
+  Propagating cool down to dependant rules is optional. You can stop the primary rule with or without propagating cool down to dependent rules.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+  
+#### June 06, 2023, version 79601
+
+##### What's new
+
+**Cost Category enhancement** (CCM-12585)
+
+  When building a cost category, it is now possible to incorporate another cost category as a rule. However, there are important considerations to keep in mind when using a cost category within your rule. 
+  
+   * You cannot include a nested cost category as a rule within another cost category if either of these cost categories contains a shared bucket.
+   * You cannot add the same cost category as a rule in the cost bucket.
+   * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
+   * You can nest cost categories to a maximum of 20 levels.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+  
+* Budgets that contain the `/` character in their names were previously experiencing issues with correctly opening the budget details page. (CCM-12062)
+
+  Previously, when the budget name appended to the URL contained the `/` character, it was treated as a separate route. This caused the browser to fail in loading the corresponding budget details. Now, before appending the budget name to the URL, it is properly encoded. This ensures that the browser handles the `/` character correctly, allowing the page to load as expected.
 
 #### May 29, 2023, version 79505
 
@@ -134,6 +163,7 @@ This release does not include any new features.
 
 
 ##### Early access
+
 **Asset Governance**
 
 The Asset Governance feature now includes support for access control through Role-Based Access Control (RBAC). This enhancement allows more granular control and management of permissions. For more information, go to [Asset Governance RBAC](https://developer.harness.io/docs/cloud-cost-management/getting-started-ccm/access-control/rbac-asset-gov). 

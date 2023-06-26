@@ -60,7 +60,7 @@ In the templates folder, there is a folder named **jobs** and a **job.yaml** man
 
 Jobs do not require any changes to the way you specify the target cluster in Harness.
 
-For steps on setting up the target cluster, see [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure).
+For steps on setting up the target cluster, see [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure).
 
 ## Add the Job to the execution using the Apply step
 

@@ -1,12 +1,21 @@
 ---
-title: Which build infrastructure is right for me?
+title: Which build infrastructure is right for me
 description: Compare Harness-hosted and self-hosted CI build infrastructure options.
 sidebar_position: 10
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 You can run builds on Harness-hosted machines or your own infrastructure.
 
-## Harness Cloud
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="hosted" label="Harness Cloud" default>
+```
 
 With Harness Cloud, your builds run in isolation on Harness-hosted machines. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
 
@@ -14,14 +23,12 @@ Harness hosts, maintains, and upgrades these machines so that you can focus on d
 
 Harness Cloud is available with all CI plans. For more information, go to [Use Harness Cloud build infrastructure](./use-harness-cloud-build-infrastructure.md).
 
-## Self-hosted options
+```mdx-code-block
+  </TabItem>
+  <TabItem value="selfhosted" label="Self-hosted options">
+```
 
 Self-hosted build infrastructure options include local machines, Kubernetes clusters, and VMs from Cloud providers, such as AWS.
-
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 
 ```mdx-code-block
 <Tabs>
@@ -65,6 +72,11 @@ This option is available only with paid CI plans.
 Your build infrastructure can use VMs from a Cloud provider, including AWS, Microsoft Azure, GCP, and Anka (for macOS build farms).
 
 To learn more about VM build infrastructures, go to [Set up VM build infrastructures](/docs/category/set-up-vm-build-infrastructures).
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ```mdx-code-block
   </TabItem>
