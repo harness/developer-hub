@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Chaos Enginee
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June XX, 2023, version 0.14.XXXX
+## Latest - June 27, 2023, version 0.14.XXXX
 
 ```mdx-code-block
 <Tabs>
@@ -24,15 +24,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 * While upgrading a namespace-scoped chaos infrastructure, users will now be shown the command for upgrading CRDs as well. (CHAOS-1846)
 
-* Upgraded the database to update the index in the linuxInfrastructures collection. (CHAOS-1836)
-
 * We now show all steps in the experiment details pipeline diagram. (CHAOS-1817)
 
     Previously when users triggered chaos experiments, the execution graph generated step nodes progressively as the experiments executed. Now, the execution graph shows all step nodes after experiments start execution. The nodes yet to start remain in a pending state. 
 
 * Previously, when users connected a ChaosHub, CE cloned the whole Github repository. This caused storage issues if the repository was very large, or users were using the same repository for multiple purposes. This has been enhanced so that CE clones only a single branch provided by users. (CHAOS-1722)
 
-* Added a feature that removes chaos entities when there's a delete event for a project, org or account. Also subscribed to entity-crud redis stream to listen for deletion events. (CHAOS-1143)
+* When a user deletes a project, organization, or account, CE now deletes all chaos entities associated with that project, organization, or account. (CHAOS-1143)
+    * When a project is deleted, all chaos entities in that project are deleted.
+    * When an organization is deleted, all chaos entities in all projects under that organization are deleted. 
+    * When an account is deleted, all chaos entities in all projects under that account are deleted.
 
 ```mdx-code-block
   </TabItem>
@@ -45,21 +46,19 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-* (CHAOS-1917) _XXX ISSUE IN PROGRESS XXX_
+* When generating a chaos infrastructure manifest that included `NodeSelectors` or `Tolerations`, there was an issue causing the first letter of key/value pairs to be capitalized. This issue has been fixed. (CHAOS-1917)
 
-* **Probe mode** has now been made a required field. (CHAOS-1882)
+* When adding or updating a step in a chaos experiment, in the Probes tab, the **Probe mode** field is now required. (CHAOS-1882)
     
-    _XXX WHERE IS THIS FIELD? XXX_ 
-
-* The **Discard** button is now disabled if there are no changes in an experiment. (CHAOS-1878)
+* The **Discard** button in Chaos Studio is now disabled if there are no changes in an experiment. (CHAOS-1878)
 
 * The stop workflow feature wasn't able to stop experiments in the case of namespace-scoped chaos infrastructures. This issue has been resolved and the stop workflow now works as expected. (CHAOS-1778)
 
-* The **Chaos** Continuous Delivery (CD) step has been updated to handle new experiment and pipeline statuses. (CHAOS-733)
+* There was an issue where if the user aborted an experiment running as part of a pipeline, the pipeline step displayed `All your faults executed without an issue`. This has been fixed, and the correct details are now displayed based on the experiment execution. (CHAOS-733)
 
-* Added support for new experiment run statuses in the **Chaos** CD step. (CHAOS-1210)
+* Added support for new experiment run statuses in the **Chaos** Continuous Delivery (CD) step. (CHAOS-1210)
 
-* Added logic to handle parallel experiments in the experiment manifest. (CHAOS-1208)
+* There was an issue where a CD step was not showing parallel faults even though the selected experiment had multiple parallel experiments. This issue has been fixed. (CHAOS-1208)
 
 
 ```mdx-code-block
