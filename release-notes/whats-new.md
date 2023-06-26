@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-06-19T10:00
+date: 2023-06-27T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -17,7 +17,17 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 21, 2023
+## Latest - June 27, 2023
+
+### Harness Platform
+
+- There is now a limit of 100 API Tokens per free and community account. (PL-39337)
+
+- When configuring SMTP, you can now select specific delegates in **Delegates Setup**. (PL-39288)
+
+- You can now sort pipelines in the pipelines list by selecting the sortable column headers or the sort dropdown. (PL-31527)
+
+## June 21, 2023
 
 **Harness launches Harness AI Development Assistant**
 
@@ -48,8 +58,6 @@ Review the following information for details about data privacy and terms of use
 * Asset Governance filter panel enhancement. (CCM-12854)
 
   Previously, in the **Asset Governance** > **Evaluations** page, only the target accounts with `execute` permissions were included in the **Target Accounts** field in the filter panel. Now, this functionality is enhanced so that all target accounts with `view` permissions are also included in the list. 
-
-
 
 ## June 19, 2023
 
