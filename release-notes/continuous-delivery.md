@@ -21,7 +21,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <Tabs>
   <TabItem value="What's new">
 ```
-- Added tooltip and banner to provide more information about webhook payload. (CDS-53874)
+- Added tooltip and banner to provide more information about webhook payloads. (CDS-53874)
   
   <docimage path={require('./static/payload-input.png')} width="60%" height="60%" title="Click to view full size image" />  
 
@@ -31,12 +31,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="Early access">
 ```
 
-This release does not include any early access features.
+import Earlyaccess from '/release-notes/shared/cd-79700-early-access.md'
+
+<Earlyaccess />
+
   
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
+
 - Step templates in a step group created within a stage template were not getting executed properly. (CDS-72124, ZD-45924, ZD-46151)
   
   The nested step groups were not executing `nextNode` when the parent step group was a child of the parallel node. For example, if a step group SG1 that was a child of a parallel node, and had two child step groups SG21 and SG22, SG21 was not starting its next node SG22 during pipeline execution. Instead, SG21 sent status to the parent SG1, and SG1 finished execution without executing SG22. 
@@ -52,6 +56,10 @@ This release does not include any early access features.
   Previously, when you provide incomplete YAML during template creation, the templates were being saved without proper stage types. The templates were filtered out and were not visible in the API response when used during pipeline creation.
 
   Harness has implemented changes to restrict the creation of templates with incomplete YAML, ensuring that templates are saved with the necessary stage types. You are now required to provide complete YAML during template creation to ensure proper visibility and usage.
+
+import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
+
+<Fixedissues />
 
 
 ```mdx-code-block
@@ -139,6 +147,16 @@ This release does not include any early access features.
 - Provisioners can't be set as runtime inputs or expressions in stage templates.(CDS-69913)
   
   The provisioner setting could not be set as a runtime input or expression in stage templates. This has been fixed and **Provisioners** can now be set as a runtime input or expression.
+
+#### June 12, 2023, Hotfix version 79518
+
+##### Fixed issues
+
+- Pipeline executions failed with the exception, `RecasterException: Class for value is not found for - io.harness.cdng.service.steps.ServiceStepV3Parameters; Cause: ClassNotFoundException: io.harness.cdng.service.steps.ServiceStepV3Parameters`. (CDS-71866, ZD-45867, ZD-45868)
+
+  This issue only applied to pipelines that were started before the latest version of Harness was deployed to the prod-2 cluster.
+
+  This issue is fixed. 
 
 #### June 09, 2023, version 79516
 
