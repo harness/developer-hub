@@ -80,7 +80,7 @@ The final instruction switches the user back to `harness` so that our custom ima
 
 
 ```
-USER 1001
+USER harness
 ```
 The complete script is as follows:
 
@@ -102,7 +102,7 @@ RUN mkdir /opt/harness-delegate/tools && cd /opt/harness-delegate/tools \
   
 ENV PATH=/opt/harness-delegate/tools/:$PATH  
 
-USER 1001
+USER harness
 ```
 ### Upload the image to Docker Hub
 
