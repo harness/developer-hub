@@ -78,7 +78,7 @@ You can install the Docker delegate using Podman by adding Podman commands to yo
 #### Sample Podman file
 
 ```
-sudo podman pull docker.io/harness/delegate:latest
+sudo podman pull docker.io/harness/delegate:yy.mm.xxxxx
 
 sudo podman run -d --restart=always --hostname="$(hostname -f | head -c 63)" \
 
@@ -144,5 +144,5 @@ sudo podman run -d --restart=always --hostname="$(hostname -f | head -c 63)" \
 
 -e KUBECTL_PATH= \
 
-docker.io/harness/delegate:latest
+docker.io/harness/delegate:yy.mm.xxxxx
 ```
