@@ -74,7 +74,7 @@ This release does not include early access features.
 
 The **JavaScript** client SDK has been updated to version **1.14.0** with the following update.
 
-* Added a new function `refreshEvaluations()`, which can be called to programmatically trigger a full refetch of evaluations from the server (FFM-8141)
+* Added a new function, `refreshEvaluations()`, which can be called to programmatically trigger a full refetch of evaluations from the server. (FFM-8141)
 
 #### June 21, 2023
 
