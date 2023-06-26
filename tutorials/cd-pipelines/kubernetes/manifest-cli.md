@@ -154,9 +154,9 @@ Under this step, you would see a bunch of CLI command to run, before procceding 
     
     - Use the follwoing command to add Github PAT created above for secret.
     
-        ```
-        harness-cli secret --token <YOUR GITHUB PAT>
-        ```
+    ```
+    harness-cli secret --token <YOUR GITHUB PAT>
+    ```
 
     #### Connectors
 
