@@ -1,6 +1,6 @@
 ---
 title: Software catalog
-description: Learn more about the Software Catalog in Harness IDP
+description: Learn more about the software catalog in Harness IDP
 sidebar_position: 10
 helpdocs_topic_id:
 helpdocs_category_id:
@@ -14,7 +14,7 @@ The software catalog is a centralized registry for all your software (services, 
 
 ## Component definition YAML
 
-The definition for any component in the software catalog is stored in a YAML file (usually `catalog-info.yaml`) in your git repositories. Usually the YAML lives in the same repository where the code for the software lives. A typical definition file looks as follows
+The definition for any component in the software catalog is stored in a YAML file (usually `catalog-info.yaml`) in your git repository. Usually the YAML files resides in the same repository as the software code. Following is a typical definition file:
 
 ```yaml
 # file: catalog-info.yaml
@@ -39,22 +39,22 @@ spec:
   system: project-x
 ```
 
-You can read more about how to [register a new software component](../getting-started/register-a-new-software-component.md) or checkout the reference documentation of the YAML on [backstage.io](https://backstage.io/docs/features/software-catalog/descriptor-format).
+For information about how to register a software component, go to [register a new software component](../getting-started/register-a-new-software-component.md). For YAML reference documentation, go to [backstage.io](https://backstage.io/docs/features/software-catalog/descriptor-format).
 
 ## Software ecosystem modelling
 
-The catalog is home for several types of software components for example services, websites, libraries, APIs and even resources like databases. Every component is owned by a team and is part of a system. When configured properly, the catalog is a graph of your entire software ecosystem. Read more about how to think about modelling your software ecosystem on [backstage.io](https://backstage.io/docs/features/software-catalog/system-model).
+The catalog is home to several types of software components such as services, websites, libraries, APIs, and even resources such as databases. Every component is owned by a team and is part of a system. When configured properly, the catalog is a graph of your entire software ecosystem. For information about how to model your software ecosystem, go to [backstage.io](https://backstage.io/docs/features/software-catalog/system-model).
 
 ## FAQs
 
 ### How can I update the definition of a software component?
 
-Anyone can update the definition of a software component by updating the `catalog-info.yaml` file corresponding to the component. You can also use the pencil button on the catalog page to go to the source location.
+Anyone can update the definition of a software component by updating the component's `catalog-info.yaml` file. You can also use the edit button on the catalog page to go to the component's source location.
 
 ![](static/edit-button-catalog.png)
 
-Once the change has been committed, it should automatically reflect on the catalog in a couple of minutes. Or you can press the refresh button on the catalog page to instantly sync the system with git.
+Committed changes reflect on the catalog in a couple of minutes. You can also press the refresh button on the catalog page to instantly sync the system with Git.
 
-### How does the catalog read files from my git system?
+### How does the catalog read files from my Git repository?
 
-IDP uses the git connector you had chosen during the module onboarding process. Go to the "Admin" -> "Connectors" page in the IDP module and you can find the configured connector. You can also update the connector from the page.
+IDP uses the Git connector you selected during the module onboarding process. To view or update the configured connector, go to **Internal Developer Portal** > **Admin** > **Connectors**.
