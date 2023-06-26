@@ -22,16 +22,17 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-* While Upgrading a Namespace scoped Chaos Infrastructure, Users will be shown command for upgrading CRDs as well. (CHAOS-1846)
+* While upgrading a namespace-scoped chaos infrastructure, users will now be shown the command for upgrading CRDs as well. (CHAOS-1846)
 
-* DB upgrade to update index in linuxInfrastructures collection. (CHAOS-1836)
+* Upgraded the database to update the index in the linuxInfrastructures collection. (CHAOS-1836)
 
-* Show all steps in Experiment Details Pipeline Diagram. Previously when users used to trigger Chaos Experiments, The Execution ßGraph used to generate step nodes progressively as the experiments executes. Now the execution graph will show all step nodes just after experiment starts execution. The nodes yet to start will remain in Pending state. (CHAOS-1817)
+* We now show all steps in the experiment details pipeline diagram. (CHAOS-1817)
 
-* Previously, when users used to connect a ChaosHub, Chaos Modules used to clone whole Github repository, which was causing storage issues if repository is high in size or users may be using same repository for multiple purposes. This has been enhanced to clone only single branch provided by users. (CHAOS-1722)
+    Previously when users triggered chaos experiments, the execution graph generated step nodes progressively as the experiments executed. Now, the execution graph shows all step nodes after experiments start execution. The nodes yet to start remain in a pending state. 
 
-* Subscribed to entity-crud redis stream to listen for deletion events, and added removal feature of chaos entities when a delete event for project, org or account is encountered. (CHAOS-1143)
+* Previously, when users connected a ChaosHub, CE cloned the whole Github repository. This caused storage issues if the repository was very large, or users were using the same repository for multiple purposes. This has been enhanced so that CE clones only a single branch provided by users. (CHAOS-1722)
 
+* Added a feature that removes chaos entities when there's a delete event for a project, org or account. Also subscribed to entity-crud redis stream to listen for deletion events. (CHAOS-1143)
 
 ```mdx-code-block
   </TabItem>
@@ -46,31 +47,20 @@ This release does not include any early access features.
 
 * (CHAOS-1917) _XXX ISSUE IN PROGRESS XXX_
 
-* created_by and updated_by fields are empty in chaosInfrastructures collection, this has been fixed now. (CHAOS-1897)
-
-    _XXX WHERE IS "CHAOSINFRASTRUCTURE COLLECTION" IN THE UI? Is this in environment details page? XXX_
-
-* Probe mode has been made a required field now. (CHAOS-1882)
+* **Probe mode** has now been made a required field. (CHAOS-1882)
     
     _XXX WHERE IS THIS FIELD? XXX_ 
 
-* When shifting from `int/float` to `string` in cmd probe type, the criteria will automatically switch between `==` and `equal` and vice-versa. (CHAOS-1879)
-    
-    _XXX NEED A MORE HUMAN-READABLE NOTE HERE XXX_ 
+* The **Discard** button is now disabled if there are no changes in an experiment. (CHAOS-1878)
 
-* Discard button will be disabled if there are no changes in the experiment. (CHAOS-1878)
+* The stop workflow feature wasn't able to stop experiments in the case of namespace-scoped chaos infrastructures. This issue has been resolved and the stop workflow now works as expected. (CHAOS-1778)
 
-* Adding probes now triggers unsaved changes to be set true in the URL. (CHAOS-1877)
+* The **Chaos** Continuous Delivery (CD) step has been updated to handle new experiment and pipeline statuses. (CHAOS-733)
 
-* Add a condition to handle "websocket: close 1001 (going away): CloudFlare WebSocket proxy restarting" in subscriber. (CHAOS-1786)
+* Added support for new experiment run statuses in the **Chaos** CD step. (CHAOS-1210)
 
-* The stop workflow feature wasn't able to stop experiments incase of namespace scoped infrastructures. This issue has been resolved. The stop workflow now works as expected. (CHAOS-1778)
+* Added logic to handle parallel experiments in the experiment manifest. (CHAOS-1208)
 
-* Added support for new experiment run statuses in chaos CD step. (CHAOS-1210)
-
-* Added logic to handle parallel experiments in experiment manifest. (CHAOS-1208)
-
-* Chaos CD Step has been updated to handle new Experiment and Pipeline statuses. (CHAOS-733)
 
 ```mdx-code-block
   </TabItem>
