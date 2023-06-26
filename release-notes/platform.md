@@ -50,7 +50,7 @@ This release does not include any early access features.
 
   A code enhancement has fixed this issue.
 
-- When **ALL** scope was selected on the role binding page for a specific user, incorrect data was displayed. (PL-38426, ZD-43503)
+- When **ALL** scope was selected on the **Role binding** page for a specific user, incorrect data was displayed. (PL-38426, ZD-43503)
 
   A code enhancement has fixed this issue.
 
