@@ -70,3 +70,79 @@ You can install the Docker delegate into Amazon ECS Fargate. For more informatio
 ### Install a legacy Kubernetes delegate
 
 The legacy Kubernetes delegate, denoted `latest` container image tag, is used primarily in Harness FirstGen had the auto-upgrade setting ON by default and did not have the flexibility to turn OFF this setting if needed. This type of delegate is now deprecated for new Harness accounts. For more information, go to [Install a legacy Kubernetes delegate](/docs/platform/2_Delegates/install-delegates/install-a-kubernetes-delegate.md).
+
+### Install Docker delegate using Podman
+
+You can install the Docker delegate using Podman by adding Podman commands to your Dockerfile.
+
+#### Sample Podman file
+
+```
+sudo podman pull docker.io/harness/delegate:latest
+
+sudo podman run -d --restart=always --hostname="$(hostname -f | head -c 63)" \
+
+-e ACCOUNT_ID=YOUR_ACCOUNT_ID \
+
+-e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN \
+
+-e MANAGER_HOST_AND_PORT=https://app.harness.io \
+
+-e WATCHER_STORAGE_URL=https://app.harness.io/public/prod/premium/watchers \
+
+-e WATCHER_CHECK_LOCATION=current.version \
+
+-e DELEGATE_STORAGE_URL=https://app.harness.io \
+
+-e DELEGATE_CHECK_LOCATION=delegateprod.txt \
+
+-e DELEGATE_NAME=podman \
+
+-e DELEGATE_PROFILE=YOUR_DELEGATE_PROFILE \
+
+-e DELEGATE_TYPE=DOCKER \
+
+-e DEPLOY_MODE=KUBERNETES \
+
+-e PROXY_HOST= \
+
+-e PROXY_PORT= \
+
+-e PROXY_SCHEME= \
+
+-e PROXY_USER= \
+
+-e PROXY_PASSWORD= \
+
+-e NO_PROXY= \
+
+-e PROXY_MANAGER=true \
+
+-e POLL_FOR_TASKS=false \
+
+-e HELM_DESIRED_VERSION= \
+
+-e CF_PLUGIN_HOME= \
+
+-e REMOTE_WATCHER_URL_CDN=https://app.harness.io/public/shared/watchers/builds \
+
+-e CDN_URL=https://app.harness.io \
+
+-e JRE_VERSION=11.0.14 \
+
+-e HELM3_PATH= \
+
+-e HELM_PATH= \
+
+-e CF_CLI6_PATH= \
+
+-e CF_CLI7_PATH= \
+
+-e KUSTOMIZE_PATH= \
+
+-e OC_PATH= \
+
+-e KUBECTL_PATH= \
+
+docker.io/harness/delegate:latest
+```
