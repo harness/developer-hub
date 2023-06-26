@@ -68,11 +68,19 @@ RUN mkdir /opt/harness-delegate/tools && cd /opt/harness-delegate/tools \
 ```
   
 
-The final instruction defines the Linux `$PATH` environment variable that provides the location of the tools to be installed:
+The `ENV` instruction defines the Linux `$PATH` environment variable that provides the location of the tools to be installed:
 
 
 ```
 ENV PATH=/opt/harness-delegate/tools/:$PATH
+```
+
+
+The final instruction switches the user back to `harness` so that our custom image does not run as root:
+
+
+```
+USER 1001
 ```
 The complete script is as follows:
 
@@ -94,6 +102,7 @@ RUN mkdir /opt/harness-delegate/tools && cd /opt/harness-delegate/tools \
   
 ENV PATH=/opt/harness-delegate/tools/:$PATH  
 
+USER 1001
 ```
 ### Upload the image to Docker Hub
 
