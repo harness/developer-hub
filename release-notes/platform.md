@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Platform, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 27, 2023, version 797xx
+## Latest - June 28, 2023, version 797xx
 
 
 ```mdx-code-block
@@ -45,6 +45,10 @@ This release does not include any early access features.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
+
+- SAML provider **Name** and **Friendly Name** fields allowed special characters. (PL-39070)
+
+    This issue is fixed by `displayName` and `logoutURL` field validations. The `displayName` only allows alphanumeric characters, `_`, `-`, `.`, and spaces. The `logoutURL` must be a proper https URL format. 
 
 - When creating a service account with the same name in a different scope, an error was thrown. (PL-38885)
 
