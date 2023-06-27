@@ -247,7 +247,7 @@ Verify the following:
     - Check [Delegate system requirements](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-requirements).
 3. **Fork the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website.
     - For more information on forking a GitHub repository, go to [GitHub docs](https://docs.github.com/en/get-started/quickstart/fork-a-repo#forking-a-repository).
-4. **AWS S3 bucket with the artifact**, upload the [hello-world.zip](https://github.com/harness-community/harnesscd-example-apps/pull/13/files#diff-c76cb0572391dd244217f8b5795e4397e6b68670676a575b55e1f08f2b8d10d1) in a new s3 bucket, to be used as an artifact. 
+4. **AWS S3 bucket with the artifact**, upload the [hello-world.zip](https://github.com/harness-community/harnesscd-example-apps/blob/master/aws-lambda/hello_world.zip) in a new s3 bucket, to be used as an artifact. 
 4. **AWS user account with required policy:** To deploy a Lambda function, you would need an AWS Identity and Access Management (IAM) role with the necessary permissions. You will use that role in the credentials you supply to the Harness AWS connector.
 
     * Select **Users**, and then **Add user**. Enter a name. Enable **Programmatic access** by selecting the checkbox. Select **Next** to go to the **Permissions** page. Do one of the following:
