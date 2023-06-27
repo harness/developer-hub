@@ -8,3 +8,7 @@ sidebar_position: 10
 * Automated integrations (incl droneci and harnessng)
 * Jenkins plugin
 * Custom CI/CD integrations
+
+<!-- Integrations are handled in connectors -->
+
+<!-- Jira connector requires installing SEI app -->

@@ -3,7 +3,7 @@ title: Manage user records
 description: Manage user attributes and integration associations.
 sidebar_position: 50
 ---
-
+<!-- I believe these are now called Contributors -->
 SEI user records serve two primary functions: Account association and Org Unit association.
 
 Account associations connect related user accounts across your SDLC tools. For example, you can associate a user's Jira, GitHub, and Harness accounts so the data from those accounts are correlated to the same individual in SEI, rather than three "instances" of a user. This makes it easier to track individual user activity across tools.

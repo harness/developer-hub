@@ -1,10 +1,10 @@
 ---
 title: Propelo and Harness
-description: Comparison of roles for historical Propelo users
+description: Propelo is now Harness SEI.
 sidebar_position: 20
 ---
 
-In January 2023, Harness acquired Propelo, now called Harness Software Engineering Insights. This page provides information for former Propelo customers who are now using Software Engineering Insights in the Harness Platform.
+In January 2023, Harness acquired Propelo, now called Harness Software Engineering Insights (SEI). This page provides information for former Propelo customers who are now using Software Engineering Insights in the Harness Platform.
 
 For more information about the acquisition, go to the [Harness blog](https://www.harness.io/blog/harness-acquires-propelo).
 
@@ -14,21 +14,40 @@ If you're new to Harness, go to [Get started with Harness](/docs/getting-started
 
 ## Authentication, access, and user management
 
-Authentication, access, and user management are part of the Harness Platform.
+Authentication, access, and user management are part of the Harness Platform. Permissions granted to users and user groups depends on their associations with resources and resource groups, which are controlled at the Account and Project level in Harness. For more information about authentication, access, and user management, go to the following:
 
 * [Harness Platform authentication (including 2FA and SSO)](/docs/category/authentication)
 * [Harness Platform user management (including users, groups, and SCIM)](/docs/category/users)
 * [Harness RBAC overview](/docs/platform/Role-Based-Access-Control/rbac-in-harness)
 
-### User role comparison
+### User roles
 
-The following table describes role equivalencies between Propelo and Harness.
+Harness SEI has three built-in user roles:
 
-| Propelo role | Harness role | Description |
-| ------------ | ------------ | ----------- |
-| Admin |||
-| Auditor |||
-| Limited User |||
-| Restricted User |||
-| Assigned Issue User |||
-| Public Dashboard User |||
+* SEI Admin
+* SEI Team Admin
+* SEI Viewer
+
+These roles replace the six user roles that existed in Propelo (Admin, Auditor, Limited User, Restricted User, Assigned Issue User, and Public Dashboard User). In the Harness Platform, use [Harness RBAC](/docs/platform/Role-Based-Access-Control/rbac-in-harness) for access control. For example, you can [add user groups](/docs/platform/User-Management/add-user-groups) or [add user roles](/docs/platform/role-based-access-control/add-manage-roles/) according to your custom access needs.
+
+## Terminology
+
+Some Propelo terminology changed to align with the Harness Platform.
+
+| Propelo term | Harness term | Comments |
+| ------------ | ------------ | -------- |
+| Tenant | Account ||
+| Workspaces | Projects | Each Harness project is a workspace. Harness organizations are umbrellas over projects. SEI can't track an organization as a conglomerate of the projects within it. |
+| Integrations | Connectors ||
+| Global Settings | Customize | Located under **SEI Settings** in the module navigation. |
+| Audit Logs | Activity Logs | Located under **SEI Settings** in the module navigation. |
+| Users | Contributors | This refers to user records that contribute to metrics and insights. This doesn't refer to [user roles](#user-roles). |
+
+The following terms are the same:
+
+* Dashboards
+* Insights
+* Profiles
+* Propels
+* Tables
+* Trellis Score
