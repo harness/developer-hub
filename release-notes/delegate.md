@@ -45,7 +45,7 @@ This release introduces the following new features and enhancements:
   <TabItem value="Early access">
 ```
 
-This release includes the following early access features and enhancements:
+This release includes the following early access feature:
 
 - Added a new field in the release history for Blue Green deployments to differentiate between environments. (CDS-69961)
 
@@ -91,7 +91,7 @@ This release includes the following fixes:
 
 - Quotations were added to execution YAML strings inconsistently when comparing pipeline YAMLs. (CDS-67637)
 
-  This issue is fixed by enabling `MINIMIZE_QUOTES` for YamlUtils and YamlPipelineUtils classes. The compiled YAML no longer have quotations around strings where they are not needed, but only around numbers. Even if you had added quotations in the string values in the pipeline YAML, they'll be removed in the compiled YAML. Also, there won't be unnecessary audit trails where the diff only has quotations around strings.
+  This issue is fixed by enabling `MINIMIZE_QUOTES` for YamlUtils and YamlPipelineUtils classes. The compiled YAML no longer has quotations around strings where they are not needed, but only around numbers. Even if you had added quotations in the string values in the pipeline YAML, they'll be removed in the compiled YAML. Also, there won't be unnecessary audit trails where the diff only has quotations around strings.
 
 - Error collecting metric data when encountering "null" values returned by metric queries. (OIP-551)
 
