@@ -20,12 +20,6 @@ You can also install Harness Self-Managed Enterprise Edition in an air-gapped en
 
 The account you use to install Harness Self-Managed Enterprise Edition must have the Account Admin role to create service accounts. For more information on role-based permissions, go to [Role-based access control overview](/docs/platform/role-based-access-control/rbac-in-harness/).
 
-## Download the Harness Helm chart
-
-To download Harness Helm chart for the installation of Self-Managed Enterprise Edition, go to [the Harness Helm chart repo on GitHub](https://github.com/harness/helm-charts).
-
-Harness Helm chart is available for demonstration and production environments.
-
 ## Update the override.yaml file
 
 Depending on your target environment, you'll need to update the `override.yaml` file to specify a load balancer or to specify the Harness modules to be deployed.
