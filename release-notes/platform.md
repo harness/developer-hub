@@ -48,7 +48,7 @@ This release does not include any early access features.
 
 - SAML provider **Name** and **Friendly Name** fields allowed special characters. (PL-39070)
 
-    This issue is fixed by `displayName` and `logoutURL` field validations. The `displayName` only allows alphanumeric characters, `_`, `-`, `.`, and spaces. The `logoutURL` must be a proper https URL format. 
+    This issue is fixed by `displayName` and `logoutURL` field validations. The `displayName` only allows alphanumeric characters, `_`, `-`, `.`, and spaces. The `logoutURL` must be a valid HTTPS URL format. 
 
 - When creating a service account with the same name in a different scope, an error was thrown. (PL-38885)
 
