@@ -16,7 +16,7 @@ SEI identifies risk factors and slowdowns by providing insights into:
 SEI offers different velocity metrics based on the tools your teams use and the processes they follow. Velocity metrics include:
 
 * **Deployment Frequency:** This [DORA metric](./dora-metrics.md) measures how often an organization/team successfully releases software to production. This provides:
-  * Flexibility to choose integrations, like issue management, SCM, and CI/CD tools, and add the relevant filters to define the Deployment Frequency.
+  * Flexibility to choose [integrations](/docs/category/connectors-and-integrations), like issue management, SCM, and CI/CD tools, and add the relevant filters to define the Deployment Frequency.
   * Insights into your organization's Deployment Frequency for a given duration, how it's performing, and an overview of the daily, weekly, and monthly trends.
 * **SCM Lead Time:** The overall lead time is the sum of the average time spent in each stage configured in the workflow. This metric can help identify where the team is spending time and if the amount of time spent in each stage falls in an acceptable range.
 * **Effort Investment:** This metric helps align engineering efforts with business goals. You can define the categories by which you want to measure the team's performance with respect to business initiatives and goals.

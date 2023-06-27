@@ -4,6 +4,6 @@ description: Create and edit Org Units.
 sidebar_position: 40
 ---
 
-## Manage dashboard associations
+## Manage Insights associations
 
 xyz

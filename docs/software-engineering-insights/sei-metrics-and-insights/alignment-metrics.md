@@ -1,7 +1,7 @@
 ---
-title: Alignment metrics
+title: Alignment
 description: Analyze how engineering teams invest their efforts and align with business needs and strategic initiatives.
-sidebar_position: 10
+sidebar_position: 20
 ---
 
 Use alignment metrics to analyze how engineering teams invest their efforts and align with business needs and strategic initiatives.
@@ -15,7 +15,7 @@ Alignment metrics widgets help you:
 
 :::tip
 
-Create a [Business Alignment Dashboard](../sei-dashboards.md#create-a-business-alignment-dashboard) for observing these metrics.
+Use [Business Alignment Insights](./sei-insights.md#create-a-business-alignment-insights) to observe these metrics.
 
 :::
 

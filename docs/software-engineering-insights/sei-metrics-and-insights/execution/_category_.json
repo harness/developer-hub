@@ -1,11 +1,11 @@
 {
-   "label":"Execution insights",
+   "label":"Execution",
    "position": 30,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Execution insights"
+      "title":"Execution"
    }
 }

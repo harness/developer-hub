@@ -1,10 +1,11 @@
 ---
 title: Security metrics
 description: Identify top issues, improve resolution time, and improve your security posture.
-sidebar_position: 40
+sidebar_position: 50
+sidebar_label: Security
 ---
 
-SEI integrates with some of the best security tools to produce reports that help you analyze anomalies or threats that can lead to failures and data loss or corruption.
+SEI [integrates](/docs/category/connectors-and-integrations) with some of the best security tools to produce reports that help you analyze anomalies or threats that can lead to failures and data loss or corruption.
 
 ## Coverity Issues Report
 

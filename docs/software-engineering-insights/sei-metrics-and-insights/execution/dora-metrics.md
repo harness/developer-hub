@@ -6,7 +6,7 @@ sidebar_position: 20
 
 DORA (DevOps Research Assessment) identified the following key metrics that describe a software development team's performance: Deployment Frequency, Lead Time for Changes, Change Failure Rate, Time to Restore service (MTTR), and Reliability (MTBF).
 
-SEI gives you insights into your organization's DORA metrics for a given duration. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends. Furthermore, SEI gives you the flexibility to choose the integrations from which you want to derived data, such as issue management, SCM, incident managaement, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
+With SEI, you can examine your organization's DORA metrics for a given duration. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends. Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/connectors-and-integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
 
 ## Deployment Frequency
 
@@ -21,7 +21,7 @@ The overall lead time is the sum of the average time spent in each stage configu
 
 ### The SCM Lead Time widget
 
-Use the **SCM (Source Code Management) PR Lead Time by Stage Report** widget to get insights on Lead Time for Changes.
+Use the **SCM (Source Code Management) PR Lead Time by Stage Report** widget to examine Lead Time for Changes.
 
 :::info
 
@@ -29,9 +29,9 @@ The terms *Pull Request (PR)* and *Merge Request* are interchangeable.
 
 :::
 
-To add the SCM PR Lead Time widget to a dashboard:
+To add the SCM PR Lead Time widget to Insights:
 
-1. Go to the dashboard where you want to add the widget. Make sure you are in the correct project.
+1. Go to the Insight where you want to add the widget. Make sure you are in the correct project.
 2. Select **Settings**, and then select **Add Widget**.
 3. Select the **SCM PR Lead Time by Stage Report** widget.
 4. Configure the filters for the widget.
@@ -48,7 +48,7 @@ To add the SCM PR Lead Time widget to a dashboard:
 
     You can modify workflow profile stages according to your team's SDLC process. For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
 
-6. Select where you want to place the widget on the dashboard, and then select **Save Layout**.
+6. Select where you want to place the widget on the Insight, and then select **Save Layout**.
 
 ### Calculating lead time and its stages
 
@@ -139,7 +139,7 @@ Change Failure Rate represents the percentage of deployments that cause a failur
 
 ### Configure Change Failure Rate reporting
 
-To enable Change Failure Rate reporting in SEI, you must set up a workflow profile, and then add the Change Failure Rate widget to a dashboard.
+To enable Change Failure Rate reporting in SEI, you must set up a workflow profile, and then add the Change Failure Rate widget to Insights.
 
 1. Go to **Settings** and select **Workflow Profiles**.
 
@@ -153,7 +153,7 @@ To enable Change Failure Rate reporting in SEI, you must set up a workflow profi
 
 <!-- image.png, image (9).png -->
 
-4.  Select **Change Failure Rate**, and select the integration to use. Configuration details vary by integration type. Default values are pre-populated, and you can change them, if desired.
+4.  Select **Change Failure Rate**, and select the [connector](/docs/category/connectors-and-integrations) to use. Configuration details vary by connector type. Default values are pre-populated, and you can change them, if desired.
 
    * Select factors to use to calculate failed deployments.
    * Select factors to use to calculate total deployments.
@@ -163,23 +163,23 @@ To enable Change Failure Rate reporting in SEI, you must set up a workflow profi
 
 <!-- image (6).png image (3).png image (5).png -->
 
-5. If you want to view or change the [Projects and Org Units](/docs/category/projects-and-org-units) associated with the profile, select **Associations**. Projects and org units are automatically derived from the integration you chose for **Change Failure Rate**.
+5. If you want to view or change the [Projects and Org Units](/docs/category/projects-and-org-units) associated with the profile, select **Associations**. Projects and org units are automatically derived from the connector you chose for **Change Failure Rate**.
 
 <!-- image (12).png -->
 
 6. Select **Save** to save the profile.
-7. Go to the dashboard where you want to add the Change Failure Rate widget. Make sure you are in the correct project.
+7. Go to the Insight where you want to add the Change Failure Rate widget. Make sure you are in the correct project.
 8. Select **Settings**, and then select **Add Widget**.
 
 <!-- image (25).png -->
 
 9. Select the **Change Failure Rate** widget.
 
-10. Select **Next: Place Widget**, select where you want to place the widget on the dashboard, and then select **Save Layout**.
+10. Select **Next: Place Widget**, select where you want to place the widget on the Insight, and then select **Save Layout**.
 
 <!-- image (15).png, image (10).png -->
 
-The Change Failure Rate widget is now part of your dashboard.
+The Change Failure Rate widget is now part of your Insight.
 
 <!-- image (19).png -->
 
@@ -194,10 +194,10 @@ Change Failure Rate performance is ranked on the following grading scale:
 
 The Change Failure Rate is calculated by dividing the number of failed deployments by the total number of deployments. The actual values included in this calculation are based on the following factors:
 
-* The integration chosen in the Workflow Profile.
-  * If the integration is an issue management tool, SEI counts the number of issues deployed.
-  * If the integration is an SCM tool, SEI counts the number of PRs deployed.
-  * If the integration is a CI/CD tool, SEI counts the number of jobs deployed.
+* The connector chosen in the Workflow Profile.
+  * For issue management connectors, SEI counts the number of issues deployed.
+  * For SCM connectors, SEI counts the number of PRs deployed.
+  * For CI/CD connectors, SEI counts the number of jobs deployed.
 * Filters applied to the Workflow Profile.
 * OU-level filters.
 * Widget-level filters.
@@ -208,7 +208,7 @@ The Change Failure Rate is calculated by dividing the number of failed deploymen
 
 Consider the following Change Failure Rate configuration:
 
-* Integration: Jira
+* Connector: Jira
 * Filter for Failed Deployment: Status Category Equals Done
 * Filter for Total Deployment: Status Category Equals Done, To do, In Progress
 * Calculation parameter: Ticket resolved in Dashboard Time Range

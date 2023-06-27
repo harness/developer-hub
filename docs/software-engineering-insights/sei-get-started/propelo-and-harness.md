@@ -37,6 +37,7 @@ Some Propelo terminology changed to align with the Harness Platform.
 | Propelo term | Harness term | Comments |
 | ------------ | ------------ | -------- |
 | Tenant | Account ||
+| Dashboards | Insights ||
 | Workspaces | Projects | Each Harness project is a workspace. Harness organizations are umbrellas over projects. SEI can't track an organization as a conglomerate of the projects within it. |
 | Integrations | Connectors ||
 | Global Settings | Customize | Located under **SEI Settings** in the module navigation. Only includes the **Dashboard Color Scheme** setting. |
@@ -45,8 +46,6 @@ Some Propelo terminology changed to align with the Harness Platform.
 
 The following terms are the same:
 
-* Dashboards
-* Insights
 * Profiles
 * Propels
 * Tables

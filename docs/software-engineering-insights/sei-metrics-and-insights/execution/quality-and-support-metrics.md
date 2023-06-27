@@ -8,7 +8,7 @@ This topic describes quality and support metrics, as well as configuration optio
 
 ## Issues Report
 
-The Issues Report gives insight into various tickets/work items (epics, stories, bugs, tasks, and so on) in your issue management system. The report aggregates data based on selected attributes, such as priority, status, labels, components, or any other field. This report helps you create comparisons based on various fields and derive insights to make decisions.
+Use the Issues Report to examine metrics related to various tickets/work items (epics, stories, bugs, tasks, and so on) in your issue management system. The report aggregates data based on selected attributes, such as priority, status, labels, components, or any other field. This report helps you create comparisons based on various fields and draw conclusions to make decisions.
 
 ### Configure the Issues Report widget
 
@@ -43,7 +43,7 @@ Select a metric to use for the Y-axis. The Issues Report widget supports the fol
 
 #### Settings
 
-* Select the issue management system to use for this widget. Available options are based on your configured integrations.
+* Select the issue management system to use for this widget. Available options are based on your configured [connectors](/docs/category/connectors-and-integrations).
 * Select how you want to sort X-axis data, such as ascending or descending.
 * Select the maximum number of values to show on the X-axis.
 * Select the visualization style for the widget:
@@ -86,7 +86,7 @@ Total Score = Sum of Category Scores
 
 :::info Prerequisites
 
-Before adding the Issue Hygiene Report widget to a dashboard, you must configure any **Custom Hygiene Misses** in your [Integrations](../../sei-integrations/sei-integrations-overview.md).
+Before adding the Issue Hygiene Report widget to Insights, you must configure **Custom Hygiene Misses** in your [connectors](../../sei-integrations/sei-integrations-overview.md).
 
 :::
 
@@ -97,7 +97,7 @@ The following options are available when configuring the Issue Hygiene Report wi
 
 <!--image - .gitbook/assets/image (71).png -- Issue Hygiene Report widget config - Weights tab-->
 
-* **Settings:** Select the issue management system to use for this widget. Available options are based on your configured integrations.
+* **Settings:** Select the issue management system to use for this widget. Available options are based on your configured [connectors](/docs/category/connectors-and-integrations).
 
 :::tip
 
@@ -121,7 +121,7 @@ You can configure the widget to show your team's current sprint only. To do this
 <details>
 <summary>Dashboard time hygiene</summary>
 
-_Dashboard time_ is the time range selected by the user viewing the dashboard. You can configure the widget to show the hygiene score for all tickets created in the user-selected dashboard time. To do this, go to the **Filter** tab, select **Issue Created In**, and then select **Use Dashboard Time**.
+_Dashboard time_ is the time range selected by the user when viewing Insights. You can configure the widget to show the hygiene score for all tickets created in the user-selected dashboard time. To do this, go to the **Filter** tab, select **Issue Created In**, and then select **Use Dashboard Time**.
 
 <!--img .gitbook/assets/image (33).png - Configure issue hygiene report -- filters tab - use dashboard time-->
 
@@ -157,17 +157,17 @@ The Issue Resolution Time Report is a bar graph showing the number of tickets cl
 
 ### Configure the Issue Resolution Time Report widget
 
-By default, the Issue Resolution Time Report widget is filtered by issues closed (**Last closed date**) within a selected time range. Usually, the time range is set to **Use Dashboard Time**, which allows the user to select a time range when viewing the dashboard.
+By default, the Issue Resolution Time Report widget is filtered by issues closed (**Last closed date**) within a selected time range. Usually, the time range is set to **Use Dashboard Time**, which allows the user to select a time range when viewing Insights.
 
 <!-- img .gitbook/assets/image (56).png - issue resolution time report widget config - filters tab - last closed date and dashboard time -->
 
-On the **Aggregations** tab, you can select the dimension, from your issue management system, to use for the X-axis, such as **Assignee**, **Story Points**, **Ticket Category**, **Issue Closed Last Time Period**, and so on. This determines what you want the widget to focus on, and it determines the insights provided by the widget. For example, focusing on **Category** or **Component** can show you the issue resolution time for different work areas; whereas, focusing on **Assignee** can show you issue resolution time by developer.
+On the **Aggregations** tab, you can select the dimension, from your issue management system, to use for the X-axis, such as **Assignee**, **Story Points**, **Ticket Category**, **Issue Closed Last Time Period**, and so on. This determines what you want the widget to focus on. For example, focusing on **Category** or **Component** can show you the issue resolution time for different work areas; whereas, focusing on **Assignee** can show you issue resolution time by developer.
 
 <!-- img .gitbook/assets/image (59).png - issue resolution time report widget config - aggregations tab - x axis dropdown -->
 
 On the **Settings** tab, you can:
 
-* Select the issue management system to use for this widget. Available options are based on your configured integrations.
+* Select the issue management system to use for this widget. Available options are based on your configured [connectors](/docs/category/connectors-and-integrations).
 * Select how you want to sort X-axis data, such as ascending or descending.
 * Select the maximum number of unique values to show on the X-axis.
 
@@ -234,6 +234,6 @@ Use the SCM Files Report to identify code areas with a high frequency of changes
 
 :::info
 
-Several tools-based insights are available with SEI, such as SonarQube code complexity reports, Testrails test reports, PagerDuty incident reports, Junit test reports, and many more.
+Several tools-based metrics are available with SEI, such as SonarQube code complexity reports, Testrails test reports, PagerDuty incident reports, Junit test reports, and many more.
 
 :::

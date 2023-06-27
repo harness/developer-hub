@@ -1,16 +1,16 @@
 ---
-title: Sprint metrics
+title: Planning
 description: Use sprint metrics to plan and deliver on sprints more effectively.
-sidebar_position: 50
+sidebar_position: 40
 ---
+
+This page explains the various sprint metrics and how you can use them to plan and deliver on sprints more effectively.
 
 Sprint metrics for Scrum teams help you address business problems like:
 
 * Do teams consistently deliver on sprint plans? If not, why?
 * What is the impact of creep or un-estimated tickets on plans?
 * Are teams overburdened or underutilized by the sprint plans?
-
-This page explains the various sprint metrics and how you can use them to plan and deliver on sprints more effectively.
 
 ## Sprint metrics
 
@@ -76,7 +76,7 @@ The following ratios are calculated from sprint metrics:
 * `Creep missed ratio = MAX(0, 1 - Creep done ratio)`
 * `Creep done to commit ratio = Creep done points / Commit points`
 
-## Sprint insight widgets
+## Sprint metrics widgets
 
 The following widgets report sprint metrics.
 
@@ -84,9 +84,9 @@ The following widgets report sprint metrics.
 * **Sprint Metrics Percentage Trend Report:** Time series trend of selected [sprint metrics ratios](#sprint-metrics-ratios). Recommended for visualizing changes in the **commit done ratio**, **total done to commit ratio**, and **creep to commit ratio**.
 * **Sprint Metrics Trend Report:** Recommended for visualizing a time series trend of [sprint metrics](#sprint-metrics) like **commit done points**, **creep points**, or **commit points**.
 
-### Configure sprint insight widgets
+### Configure sprint metrics widgets
 
-The following two settings are recommended and popular for getting insights on sprint metrics:
+The following two settings are recommended and popular for examining sprint metrics:
 
 * **Sprint End Date:** Use this time range filter to limit metrics to the last few sprints. It is recommended to observe sprint metrics over 2 months or 6 sprints.
 * **Sprint Report:** Use this field to limit the metrics to a selected _sprint stream_ or sprint names with a common prefix.

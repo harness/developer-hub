@@ -1,10 +1,10 @@
 ---
 title: Investment profile
-description: Use Investment profiles to get insights for alignment metrics.
+description: Use Investment profiles to examine alignment metrics.
 sidebar_position: 10
 ---
 
-This topic describes the settings available for Investment profiles, which you can use to get insights on where engineers are allocating their time through [alignment metrics](../sei-metrics-and-insights/alignment-metrics.md). To create or edit Investment profiles, go to **Settings**, and then select **Investment Profiles**.
+This topic describes the settings available for Investment profiles, which you can use to understand where engineers are allocating their time through [alignment metrics](../sei-metrics-and-insights/alignment-metrics.md). To create or edit Investment profiles, go to **Settings**, and then select **Investment Profiles**.
 
 ## Basic Info
 

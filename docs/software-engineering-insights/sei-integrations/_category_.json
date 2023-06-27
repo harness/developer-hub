@@ -1,11 +1,11 @@
 {
-   "label":"Integrations",
+   "label":"Connectors and integrations",
    "position": 40,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Integrations"
+      "title":"Connectors and integrations"
    }
 }

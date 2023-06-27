@@ -4,7 +4,7 @@ description: Use Workflow profiles to define stages, events, and measurement cri
 sidebar_position: 30
 ---
 
-Workflow profiles, also known as Lead Time profiles, define the stages, events, and measurement criteria for [Lead Time reporting](../sei-metrics-and-insights/execution-insights/dora-metrics.md). You can use these profiles to get insight on end-to-end lead time taken to ship changes or the time taken for bug fixes to reach production.
+Workflow profiles, also known as Lead Time profiles, define the stages, events, and measurement criteria for [Lead Time reporting](../sei-metrics-and-insights/execution/dora-metrics.md). You can use these profiles to get insight on end-to-end lead time taken to ship changes or the time taken for bug fixes to reach production.
 
 You can configure the profile depending on the factors you want to include in your Lead Time calculations. For example, you can:
 

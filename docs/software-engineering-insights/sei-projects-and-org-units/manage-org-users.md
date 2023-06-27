@@ -1,6 +1,6 @@
 ---
 title: Manage contributors
-description: Manage contributor attributes and integration associations.
+description: Manage contributor attributes and associations.
 sidebar_position: 50
 ---
 

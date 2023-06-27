@@ -1,7 +1,7 @@
 ---
 title: Assessments and surveys
 description: You can conduct assessments and surveys within your organization.
-sidebar_position: 20
+sidebar_position: 70
 ---
 
 You can conduct assessments and surveys within your organization to analyze KPIs and derive insights.

@@ -10,7 +10,7 @@ To create or edit a Trellis profile, go to **Settings** and select **Trellis Sco
 
 :::info Predefined Trellis profiles
 
-When you add an issue management or SCM integration, a predefined Trellis profile is automatically created. You can associated predefined profiles with [Org Units](/docs/category/projects-and-org-units). You can't delete predefined profiles.
+When you add an issue management or SCM [connector](/docs/category/connectors-and-integrations), a predefined Trellis profile is automatically created. You can associated predefined profiles with [Org Units](/docs/category/projects-and-org-units). You can't delete predefined profiles.
 
 <!-- image Trellis_home_add_integrations.png - Trellis Score Profiles before integrating SCM or Issue Management tools -->
 <!-- image .gitbook/assets/Trellis\_profiles\_home.png - Trellis Score Profiles page with Predefined profiles -->
