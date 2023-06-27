@@ -70,9 +70,19 @@ For more information, see [Communication strategy between SDKs and Harness Featu
 
 On Server SDK:
 
-1. On every flag evaluation, the event is pushed to a RingBuffer.
+Evaluations:
+1. On every flag evaluation, the event is pushed to a map.
 2. Evaluation events are aggregated, `Tuple <Flag, Variation, Count>`.
-3. Every minute, the aggregated events are pushed to the server.
+3. Every minute, the aggregated events and unique targets are pushed to the server.
+
+Targets:
+1. On every flag evaluation, the Target is pushed to a map. 
+2. Unique Targets are stored in the map using a key combination of identifier, name, and attributes
+3. Every minute, the targets are pushed to the server meaning you will shortly see them within the Target Management page on Harness.
+4. Note: if you evaluate flags using over 200,000 unique targets per minute then the following will apply:
+   a. All 200,000 targets will get sent and registered as normal
+   b. The 200,001 target and onwards will not be sent in the request, meaning that it won't be shown in the Target Management page on Harness.
+   c. The targets that weren't included in this minute interval will eventually get registered when they are included in subsequent evaluations.
 
 #### What happens if Harness Feature Flag goes down?
 
