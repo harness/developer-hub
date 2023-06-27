@@ -61,9 +61,9 @@ Locate the delegate in the Harness account/Project/Org, click more options (⋮)
 
 ![](static/delete-a-delegate-15.png)
 
-### Replica pod deletion
+### Delete replica pods
 
-Deleted replica pods unregister and clear out during shutdown after they complete all running tasks if the graceful shutdown period is sufficient. The grace period is configurable. For more information on graceful shutdown, go to [Graceful delegate shutdown](docs/platform/delegates/delegate-concepts/graceful-delegate-shutdown-process/).
+Deleted replica pods unregister and clear out during shutdown after they complete all running tasks if the graceful shutdown period is sufficient. The grace period is configurable. For more information on graceful shutdown, go to [Graceful delegate shutdown](/docs/platform/2_Delegates/delegate-concepts/graceful-delegate-shutdown-process).
 
 If you do not delete the delegate in the UI, Harness automatically removes it after six hours. 
 
