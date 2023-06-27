@@ -139,7 +139,7 @@ metadata:
     - react
     - javascript
 spec:
-  owner: himanshu.mishra@harness.io
+  owner: name@company.io
   type: service
   parameters:
     - title: Next.js app details
