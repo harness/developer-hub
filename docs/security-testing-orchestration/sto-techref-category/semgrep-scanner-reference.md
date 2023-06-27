@@ -176,8 +176,8 @@ pipeline:
   tags: {}
   stages:
     - stage:
-        name: semgrep-test
-        identifier: fossatest
+        name: semgrep-ingest
+        identifier: semgrepingest
         type: CI
         spec:
           cloneCodebase: true
@@ -216,8 +216,8 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: stoqadelegate
-              namespace: harness-qa-delegate
+              connectorRef: mydelegate
+              namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
@@ -226,7 +226,7 @@ pipeline:
   properties:
     ci:
       codebase:
-        connectorRef: williamwissemanndvpwa
+        connectorRef: mygitrepodvpwa
         build: <+input>
 
 ```
