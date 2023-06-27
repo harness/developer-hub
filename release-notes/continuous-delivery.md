@@ -56,9 +56,9 @@ import Earlyaccess from '/release-notes/shared/cd-79700-early-access.md'
 - Unable to choose stages during pipeline execution. (CDS-71712, ZD-45762)
   
   This issue is fixed by adding an error icon that will be displayed when the stage selection dropdown is disabled due to an API error. Error details will be available if you hover over the error icon.
-- Unable to view the account level deployment stage templates. (CDS-71230, ZD-45557)
+- Unable to view the account-level deployment stage templates. (CDS-71230, ZD-45557)
   
-  Previously, when you provide incomplete YAML during template creation, the templates were being saved without proper stage types. The templates were filtered out and were not visible in the API response when used during pipeline creation.
+  Previously, when you provided incomplete YAML during template creation, the templates got saved without proper stage types. The templates were filtered out and were not visible in the API response when used during pipeline creation.
 
   Harness has implemented changes to restrict the creation of templates with incomplete YAML, ensuring that templates are saved with the necessary stage types. You are now required to provide complete YAML during template creation to ensure proper visibility and usage.
 - The execution view displayed host name instead of step name when the **Run on Delegate** option in [Repeat looping strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) was enabled for a Command step for SSH or WinRM deployment. (CDS-70780)
