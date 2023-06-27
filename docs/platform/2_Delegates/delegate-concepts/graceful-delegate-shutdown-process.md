@@ -40,68 +40,81 @@ Open the delegate manifest file and locate the container `spec` (`spec.container
          runAsUser: 0   
 ```
 
-### ECS deployment default interval configuration
+### Amazon ECS deployment default interval configuration
 
-Open the delegate manifest file and locate the container `containerDefinitions`. Change the `stopTimeout` as shown in the following YAML. In the example below, `stopTimeout` is set to 10 minutes.
+Open the delegate manifest file and locate the container `containerDefinitions`. Change the `stopTimeout` as shown in the following JSON. In the example below, `stopTimeout` is set to 10 minutes.
 
-```yaml
-ipcMode:  
-executionRoleArn: <ecsInstanceRole Role ARN>  
-containerDefinitions:  
-- dnsSearchDomains:  
- environmentFiles:  
- entryPoint:  
- portMappings:  
- - hostPort: 80  
-   protocol: tcp  
-   containerPort: 80  
- command:  
- linuxParameters:  
- cpu: 0  
- environment: []  
- resourceRequirements:  
- ulimits:  
- dnsServers:  
- mountPoints: []  
- workingDirectory:  
- secrets:  
- dockerSecurityOptions:  
- memory:  
- memoryReservation: 128  
- volumesFrom: []  
- stopTimeout: 600 
- image: <+artifact.image>  
- startTimeout:  
- firelensConfiguration:  
- dependsOn:  
- disableNetworking:  
- interactive:  
- healthCheck:  
- essential: true  
- links:  
- hostname:  
- extraHosts:  
- pseudoTerminal:  
- user:  
- readonlyRootFilesystem:  
- dockerLabels:  
- systemControls:  
- privileged:  
- name: nginx  
-placementConstraints: []  
-memory: '512'  
-taskRoleArn: <ecsInstanceRole Role ARN>  
-family: fargate-task-definition  
-pidMode:  
-requiresCompatibilities:  
-- FARGATE  
-networkMode: awsvpc  
-runtimePlatform:  
-cpu: '256'  
-inferenceAccelerators:  
-proxyConfiguration:  
-volumes: []
-```
+   ```json
+     {
+       "containerDefinitions": [
+         {
+           "portMappings": [
+             {
+               "hostPort": 8080,
+               "protocol": "tcp",
+               "containerPort": 8080
+             }
+           ],
+           "cpu": 1,
+           "environment": [
+             {
+               "name": "ACCOUNT_ID",
+               "value": "<ACCOUNT_ID>"
+             },
+             {
+               "name": "DELEGATE_TOKEN",
+               "value": "<DELEGATE_TOKEN>"
+             },
+             {
+               "name": "DELEGATE_TYPE",
+               "value": "DOCKER"
+             },
+             {
+               "name": "INIT_SCRIPT",
+               "value": ""
+             },
+             {
+               "name": "DEPLOY_MODE",
+               "value": "KUBERNETES"
+             },
+             {
+               "name": "MANAGER_HOST_AND_PORT",
+               "value": "<MANAGER_HOST_AND_PORT>"
+             },
+             {
+               "name": "DELEGATE_NAME",
+               "value": "<DELEGATE_NAME>"
+             },
+             {
+               "name": "LOG_STREAMING_SERVICE_URL",
+               "value": "<LOG_STREAMING_SERVICE_URL>"
+             },
+            {
+               "name": "DELEGATE_TAGS",
+               "value": ""
+             },
+   
+             {
+               "name": "NEXT_GEN",
+               "value": "true"
+             }
+            ],
+           "memory": 2048,
+           "image": "harness/delegate:22.12.77802",
+           "essential": true,
+           "hostname": "<DELEGATE_HOST>",
+           "name": "<DELEGATE_NAME>"
+         }
+       ],
+         "memory": "2048",
+         "requiresCompatibilities": [
+         "EC2"
+       ],
+     
+       "cpu": "1024",
+       "family": "harness-delegate-task-spec"
+     }
+   ```
 
 ## Graceful shutdown events
 
@@ -110,5 +123,5 @@ The event that initiates the graceful shutdown depends on delegate type.
 | **Delegate environment** | **Trigger** 
 | :-- | :--: 
 | Kubernetes | Pod termination, eviction, or user-initiated scaling 
-| Docker | `docker kill` command 
+| Docker | `docker stop` command 
 | Shell | `./stop.sh` instruction 
