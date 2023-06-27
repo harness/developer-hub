@@ -1,6 +1,6 @@
 ---
 title: Terminology
-sidebar_position: 2
+sidebar_position: 20
 ---
 
 ![Component Relationship](./static/terminologies/component-relationship.png)
