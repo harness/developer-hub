@@ -26,6 +26,12 @@ Following are some key benefits of Harness AIDA:
 
 ## Additional resources
 
+Learn more about the AI capabilities in Harness products:
+
+- CI - [Troubleshooting with AIDA](http://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida).
+- CCM - [Asset governance with AIDA](https://developer.harness.io/docs/category/harness-aida-for-asset-governance).
+- STO - [Remediations with AIDA](https://developer.harness.io/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).  
+
 Review the following information for details about data privacy and terms of use:
 
 - [AIDA Terms](https://www.harness.io/legal/aida-terms)
