@@ -44,9 +44,9 @@ This release does not include any early access features.
 ```
 
 
-- Unable to edit a notification rule in monitored service when the rule contains the **Timeout Error** event type. (CET-1295)
-  
-  This issue has been resolved. You can now edit notification rules that include the **Timeout Error** event type.
+- Unable to edit notifications created in the SRM module when using the CET module.(CET-1295)
+
+  This issue has been resolved. Now, you can edit notifications within the CET module, even if they were originally created in the SRM module.
 
 - The configured notification count on the Monitored Services listing page of the CET module displays notifications for all types of alerts related to a particular monitored service. (CET-1294)
   
