@@ -23,6 +23,8 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
 - When a delegate token is revoked, Harness now sends `SELF_DESTRUCT` to all delegates that are using the revoked token. (PL-38957)
 
+- Upgraded the delegate JRE to 11.0.19_7. (PL-37994) 
+
 ### Early access
 
 This release does not include any new early access features.
