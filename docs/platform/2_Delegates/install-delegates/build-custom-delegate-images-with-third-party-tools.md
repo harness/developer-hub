@@ -27,7 +27,7 @@ You can build on either of the following Harness-provided images.
 | Harness Delegate Docker image | A publicly available Docker image providing Harness Delegate. |
 | Harness Minimal Delegate Docker image | A minimal delegate image available in Docker Hub at <https://hub.docker.com/r/harness/delegate/tags>. |
 
-Use the  last published `yy.mm.xxxxx` version of the minimal image from the Docker repository.
+Use the last published `yy.mm.xxxxx` version of the minimal image from the Docker repository.
 
 ![](./static/build-custom-delegate-images-with-third-party-tools-07.png)
 ### Build the delegate image
@@ -68,14 +68,19 @@ RUN mkdir /opt/harness-delegate/tools && cd /opt/harness-delegate/tools \
 ```
   
 
-The final instruction defines the Linux `$PATH` environment variable that provides the location of the tools to be installed:
+The `ENV` instruction defines the Linux `$PATH` environment variable that provides the location of the tools to be installed:
 
 
 ```
 ENV PATH=/opt/harness-delegate/tools/:$PATH
 ```
-The complete script is as follows:
 
+The final instruction switches the user back to `harness` to ensure the custom image does not run as root:
+
+```
+USER harness
+```
+The complete script is as follows:
 
 ```
 FROM harness/delegate:22.10.77029.minimal  
@@ -94,6 +99,7 @@ RUN mkdir /opt/harness-delegate/tools && cd /opt/harness-delegate/tools \
   
 ENV PATH=/opt/harness-delegate/tools/:$PATH  
 
+USER harness
 ```
 ### Upload the image to Docker Hub
 

@@ -4,6 +4,12 @@
 
 const sidebars = {
   allcontent: [
+    // Tutorial Link from Docs
+    {
+      type: "link",
+      label: "Tutorials",
+      href: "/tutorials",
+    },
     // Documentation Parent
     {
       type: "category",
@@ -422,6 +428,24 @@ const sidebars = {
         },
       ],
     },
+     // Cert Link from Docs
+   {
+    type: "link",
+    label: "Certifications",
+    href: "/certifications",
+  },
+   // KB Link from Docs
+   {
+    type: "link",
+    label: "KB",
+    href: "/kb",
+  },
+  // Community Link from Docs
+  {
+    type: "link",
+    label: "Community",
+    href: "/community",
+  },
   ],
   //Beta Sidebars
   iacmbeta: [
