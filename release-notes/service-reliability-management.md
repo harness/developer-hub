@@ -50,6 +50,10 @@ This release does not include any early access features.
   
   This issue has been fixed. Enhanced the call log to show `SocketTimedOut` error messages.
 
+- The HTTP capability checks were considering status codes as an important factor, even when proper headers were not being sent. (OIP-499)
+
+  This issue has been resolved. Now, the behavior of the HTTP capability checks has been modified to ignore status codes.
+
 - In the metrics analysis section, time-series graphs exhibit data shifting when the first applicable timestamp is missing. (OIP-526)
 
   This issue has been fixed, and now the graphs reflect the intended starting points.
