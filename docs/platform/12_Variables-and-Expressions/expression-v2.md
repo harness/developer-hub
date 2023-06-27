@@ -8,10 +8,10 @@ To provide the best experience for customers when using expressions, Harness has
 
 The key enhancements are as follows: 
 
-* Enhanced expression discovery: You have the ability to independently determine the expressions associated with a specific step. This empowers you to explore and understand the system better, and thereby reduce reliance on external support.
-* Comprehensive execution JSON: You can access the execution JSON for all stages or individual steps. This JSON contains detailed information about inputs and outputs for each step within the stage. This lets you analyze and troubleshoot workflows effectively and extract the required information easily.
-* Flexible JSON parsing: You can utilize any JSON parsing tool of your choice. This gives you the freedom to parse the execution JSON based on your preferred methods and extract the necessary information as per your requirements.
-* JEXL script support: This enhancement enables you to leverage the full power and flexibility of JEXL expressions, overcoming the limitations of the previous framework. You can now write complex expressions and customize the evaluation process to meet specific needs.
+* **Enhanced expression discovery**: You have the ability to independently determine the expressions associated with a specific step. This empowers you to explore and understand the system better, and thereby reduce reliance on external support.
+* **Comprehensive execution JSON**: You can access the execution JSON for all stages or individual steps. This JSON contains detailed information about inputs and outputs for each step within the stage. This lets you analyze and troubleshoot workflows effectively and extract the required information easily.
+* **Flexible JSON parsing**: You can utilize any JSON parsing tool of your choice. This gives you the freedom to parse the execution JSON based on your preferred methods and extract the necessary information as per your requirements.
+* **JEXL script support**: This enhancement enables you to leverage the full power and flexibility of JEXL expressions, overcoming the limitations of the previous framework. You can now write complex expressions and customize the evaluation process to meet specific needs.
 
 ## Limitations
 
