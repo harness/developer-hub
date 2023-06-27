@@ -8,7 +8,7 @@ Software flow metrics help quantify the flow and efficiency of software developm
 
 Flow metrics supported by SEI include:
 
-* **Lead Time:** The time it takes from when a new feature is requested to when it is delivered to the end user.
+* **Lead Time:** The time it takes from when a new feature is requested to when it is delivered to the customer.
 * **Cycle Time:** The time it takes to complete a single iteration of the software development process, from planning to delivery.
 * **Throughput:** The number of features delivered per unit of time, such as each week or each month.
 * **Deployment Frequency:** The number of times that code is deployed to production in a given time period.

@@ -39,9 +39,9 @@ Some Propelo terminology changed to align with the Harness Platform.
 | Tenant | Account ||
 | Workspaces | Projects | Each Harness project is a workspace. Harness organizations are umbrellas over projects. SEI can't track an organization as a conglomerate of the projects within it. |
 | Integrations | Connectors ||
-| Global Settings | Customize | Located under **SEI Settings** in the module navigation. |
+| Global Settings | Customize | Located under **SEI Settings** in the module navigation. Only includes the **Dashboard Color Scheme** setting. |
 | Audit Logs | Activity Logs | Located under **SEI Settings** in the module navigation. |
-| Users | Contributors | This refers to user records that contribute to metrics and insights. This doesn't refer to [user roles](#user-roles). |
+| Org Users | Contributors | This refers to user records that contribute to metrics and insights. This doesn't refer to [user roles](#user-roles). |
 
 The following terms are the same:
 

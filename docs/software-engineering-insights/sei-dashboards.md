@@ -15,20 +15,20 @@ There are several navigation options for accessing dashboards.
 :::info
 
 * Attempting to access an unrecognized dashboard link redirects you to the SEI module home page where you'll have to select an Org Unit to proceed to the desired dashboard.
-* If you're already in a Workspace, going to the SEI module home page automatically presents the Org Unit category selection page.
-* Selecting the **Dashboard** icon on the navigation menu navigates you to the workspace's default dashboard or the first available dashboard in the first Org Unit category in the current workspace.
+* If you're already in a project, going to the SEI module home page automatically presents the Org Unit category selection page.
+* Selecting the **Dashboard** icon on the navigation menu navigates you to the project's default dashboard or the first available dashboard in the first Org Unit category in the current project.
 * To enable continuity of though processes and actions, on subsequent logins, you're automatically redirected to the dashboard you had accessed before logging off.
 
 :::
 
 1. Log in to the Harness Platform and go to the SEI module.
-2. If your organization has multiple workspaces, select a workspace.
+2. If your organization has multiple projects, select a project.
 
-    If you're already in a workspace, make sure you're in the correct workspace for the Org Unit and dashboard that you want to view. You can use the **Workspace** dropdown menu to switch workspaces.
+    If you're already in a project, make sure you're in the correct project for the Org Unit and dashboard that you want to view. You can use the **Project** dropdown menu to switch projects.
 
 <!-- image .gitbook/assets/Workspace selection page- banner updated.png - Propelo home page -->
 
-3. Select the relevant Org Unit category within the workspace.
+3. Select the relevant Org Unit category within the projecte.
 
    Admins can access Org Unit category management options from this page.
 
@@ -48,7 +48,7 @@ Once you're viewing a dashboard, you can explore the dashboard and interact with
 
 :::info Where does the data come from?
 
-Widgets derive data from integrations that are inherited from the Org Unit associated with the dashboard. In turn, Org Units inherit integrations from their associated workspaces. For more information about configuring these associations, go to [Workspaces and Org Units](/docs/category/workspaces-and-org-units).
+Widgets derive data from integrations that are inherited from the Org Unit associated with the dashboard. In turn, Org Units inherit integrations from their associated projects. For more information about configuring these associations, go to [Projects and Org Units](/docs/category/projects-and-org-units).
 
 You can configure metrics and widgets to control what data is used to calculate metrics, how data is presented, and other criteria. For more information, go to [Metrics and insights](/docs/category/metrics-and-insights).
 
@@ -56,7 +56,7 @@ You can configure metrics and widgets to control what data is used to calculate 
 
 #### Set the dashboard time
 
-_Dashboard time_ is the time range selected by the user when viewing a dashboard. Widgets and reports must be configured to **Use Dashboard Time** in order for their data to update when you change the dashboard time range.
+_Dashboard time_ is the time range selected by the user viewing a dashboard. Widgets and reports must be configured to **Use Dashboard Time** in order for their data to update when you change the dashboard time range.
 
 If a widget or report uses a specific time range, changing the dashboard time has no impact on the data shown by that widget or report.
 
@@ -125,7 +125,7 @@ If you're an admin, you can:
 
 <!-- image .gitbook/assets/Create dashboard - hover option.png - Create Dashboard dialog -->
 
-   All [Org Units](/docs/category/workspaces-and-org-units) and child org Units under the selected category are automatically associated with the dashboard. You can refine the [dashboard associations](#manage-dashboard-associations) after initial dashboard creation.
+   All [Org Units](/docs/category/projects-and-org-units) and child org Units under the selected category are automatically associated with the dashboard. You can refine the [dashboard associations](#manage-dashboard-associations) after initial dashboard creation.
 
    If you want to examine Org Units under a certain Org Unit category, select **View OUs** on the **Org Unit Categories** dropdown menu.
 
@@ -137,7 +137,7 @@ If you're an admin, you can:
 
 :::info Where does the data in widgets come from?
 
-Widgets derive data from integrations that are inherited from the Org Unit associated with the dashboard. In turn, Org Units inherit integrations from their associated workspaces. For more information about configuring these associations, go to [Workspaces and Org Units](/docs/category/workspaces-and-org-units).
+Widgets derive data from integrations that are inherited from the Org Unit associated with the dashboard. In turn, Org Units inherit integrations from their associated projects. For more information about configuring these associations, go to [Projects and Org Units](/docs/category/projects-and-org-units).
 
 You can configure metrics and widgets to control what data is used to calculate metrics, how data is presented, and other criteria. For more information, go to [Metrics and insights](/docs/category/metrics-and-insights).
 
@@ -148,7 +148,7 @@ You can configure metrics and widgets to control what data is used to calculate 
 There are two ways to manage dashboard associations:
 
 * When viewing a dashboard, select the **Settings** icon, and then select **Org Units**.
-* From the **Edit Org Unit** page, edit the **Dashboards** settings. For more information about this option, go to **Managing dashboard associations** in [Manage Org Units](./sei-workspaces-and-org-units/manage-org-units.md#manage-dashboard-associations).
+* From the **Edit Org Unit** page, edit the **Dashboards** settings. For more information about this option, go to **Managing dashboard associations** in [Manage Org Units](./sei-projects-and-org-units/manage-org-units.md#manage-dashboard-associations).
 
 ## Create Business Alignment dashboards
 

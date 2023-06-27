@@ -12,7 +12,7 @@ When you add the **CI/CD Job Count Report** widget to a dashboard, the **Job End
 
 ### Report all jobs in dashboard time
 
-_Dashboard time_ is the time range selected by the user when viewing the dashboard. If you want a more interactive widget that reports all jobs run in the user-selected dashboard time, set **Job End Date** to **Dashboard time**.
+_Dashboard time_ is the time range selected by the user viewing the dashboard. If you want a more interactive widget that reports all jobs run in the user-selected dashboard time, set **Job End Date** to **Dashboard time**.
 
 If you want the widget to report the status (success or failure) of all jobs in dashboard time, configure the widget as follows:
 

@@ -88,7 +88,7 @@ Proficiency measures how many projects are currently being worked on. It is base
 
 Leadership and collaboration measures developer teamwork and contribution to peer reviews. This is calculated from the following four metrics:
 
-* **Number of PRs approved per month:** This number represents how many PRs a user approved within the last 30 days. The recommended number of approved PRs is between 2 and 7.
-* **Number of PRs commented on per month:** This number represents how many PRs a user commented on in the last 30 days. The typical range for this value is between 2 and 7 PRs per month.
+* **Number of PRs approved per month:** This number represents how many PRs a developer approved within the last 30 days. The recommended number of approved PRs is between 2 and 7.
+* **Number of PRs commented on per month:** This number represents how many PRs a developer commented on in the last 30 days. The typical range for this value is between 2 and 7 PRs per month.
 * **Average Response Time for PR approvals:** This is the average time taken to approve another developer's PR. The industry standard for an PR approval time is between 0.75 and 2 days.
-* **Average Response Time for PR comments:** This is the average time taken for the developer to add review comments on a PR. The industry standard for a responding to a PR comment is between 0.75 and 1.5 days.
+* **Average Response Time for PR comments:** This is the average time taken for a developer to add review comments on a PR. The industry standard for a responding to a PR comment is between 0.75 and 1.5 days.

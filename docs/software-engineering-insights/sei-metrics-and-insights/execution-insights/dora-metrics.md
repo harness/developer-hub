@@ -31,7 +31,7 @@ The terms *Pull Request (PR)* and *Merge Request* are interchangeable.
 
 To add the SCM PR Lead Time widget to a dashboard:
 
-1. Go to the dashboard where you want to add the widget. Make sure you are in the correct workspace.
+1. Go to the dashboard where you want to add the widget. Make sure you are in the correct project.
 2. Select **Settings**, and then select **Add Widget**.
 3. Select the **SCM PR Lead Time by Stage Report** widget.
 4. Configure the filters for the widget.
@@ -163,12 +163,12 @@ To enable Change Failure Rate reporting in SEI, you must set up a workflow profi
 
 <!-- image (6).png image (3).png image (5).png -->
 
-5. If you want to view or change the [Workspaces and Org Units](/docs/category/workspaces-and-org-units) associated with the profile, select **Associations**. Workspace and org units are automatically derived from the integration you chose for **Change Failure Rate**.
+5. If you want to view or change the [Projects and Org Units](/docs/category/projects-and-org-units) associated with the profile, select **Associations**. Projects and org units are automatically derived from the integration you chose for **Change Failure Rate**.
 
 <!-- image (12).png -->
 
 6. Select **Save** to save the profile.
-7. Go to the dashboard where you want to add the Change Failure Rate widget. Make sure you are in the correct workspace.
+7. Go to the dashboard where you want to add the Change Failure Rate widget. Make sure you are in the correct project.
 8. Select **Settings**, and then select **Add Widget**.
 
 <!-- image (25).png -->

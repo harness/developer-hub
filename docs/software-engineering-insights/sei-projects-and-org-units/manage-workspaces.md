@@ -1,6 +1,6 @@
 ---
-title: Manage workspaces
-description: create and edit workspaces.
+title: Manage projects
+description: create and edit projects.
 sidebar_position: 20
 ---
 
