@@ -17,9 +17,27 @@ The key enhancements are as follows:
 
 If your step inputs or parameters size is greater than 4 KB, then it cannot be part of your expanded JSON. This is to safeguard your system.
 
+## Obtaining the execution JSON
+
+You can now obtain an execution JSON for all stages or individual steps of your pipeline. 
+
+To access the JSON, you must enable the **Enable JSON Support for expressions** settings first. Go to **Account Settings > Account Resources > Pipeline > Enable JSON Support for expressions**, and then set the value to `true`. 
+
+This setting is turned off by default. Enabling this setting allows you to reference JSON parsers within expressions.
+
+When you create a pipeline, in the execution section, add a Shell Script step to obtain the execution JSON. 
+
+For example, consider a pipeline with two stages. In the second stage, add a Shell Script step to obtain the JSON format of first stage: 
+
+`echo <+json.format(<+pipeline.stages.stage1>)>`
+
+In the pipeline execution page, select the **Input** section of the Shell Script step in the second stage, and then copy the JSON.
+
+<docimage path={require('./static/execution-json.png')} width="60%" height="60%" title="Click to view full size image" /> 
+
 ## Writing expressions using JSON
 
-Let's see how to extract data from the following sample Execution JSON: 
+Let's see how to extract data from the following sample execution JSON: 
 
 ```
 {
@@ -403,13 +421,39 @@ Here are a few considerations to keep in mind when constructing such expressions
 * Relative paths can also be used by identifying the common parent between the step or stage you want to refer and the step or stage where the reference is made.
 * Begin the expression from the common parent. For example, in the given expression, if you want to refer to the status of `CStage_0` from `CStage_1`, use the expression, `cStage.cStage_0.status`. This approach allows you to avoid constructing the full name each time.
 
-### Writing complex expressions using JQ
+## Writing complex expressions using JQ
 
 JQ is a lightweight, powerful command-line tool specifically designed for JSON processing in Bash. It provides a wide range of features for querying, filtering, and transforming JSON data. JQ can be easily integrated into Bash scripts and can be used to extract specific values or perform complex JSON operations.
 
 Make sure that the following requirements are met to use JQ: 
 
 * Your Harness Delegate should support JQ if you are using a shell script step. For more details, go to [How to install JQ on Ubuntu](https://www.golinuxcloud.com/ubuntu-install-jq/).
+  
+  <details>
+  <summary>Install JQ on Harness Delegate</summary>
+
+  1. Open the `delegate.yaml` in a text editor.
+  2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
+   
+     ```
+     - name: INIT_SCRIPT  
+     value: ""  
+     ```
+  3. Replace `value: ""` with the following script to install JQ.
+     
+     ```
+     - name: INIT_SCRIPT  
+     value: |
+      apt install software-properties-common -y
+      apt install python-software-properties -y
+      add-apt-repository ppa:rmescandon/yq
+      apt update
+      apt install yq -y
+      apt-get install jq -y
+     ```
+
+  </details>   
+   
 * Your image should support JQ if you are using a container step.
 
 Let's consider the following sample pipeline YAML to develop expressions for some complex use cases: 
@@ -491,7 +535,7 @@ pipeline:
 
 ```
 
-#### Fetch the status of all combinations of stage named `stageWithMatrix`
+### Fetch the status of all combinations of stage named `stageWithMatrix`
 
 Use the following expression to fetch the status of all combinations of stage named `stageWithMatrix`:
 
@@ -499,7 +543,7 @@ Use the following expression to fetch the status of all combinations of stage na
 t='<+json.format(<+pipeline.stages.stageWithMatrix>)>'
 echo $t | jq '(. | to_entries[] | select(.key | startswith("stageWithMatrix")) |  .value.status)'
 ```
-#### Fetch the status of all identifiers of a step in a stage named `stageWithMatrix`
+### Fetch the status of all identifiers of a step in a stage named `stageWithMatrix`
 
 Use the following expression to fetch the status of all identifiers of a step in a stage named `stageWithMatrix`: 
 
@@ -508,7 +552,7 @@ t='<+json.format(<+pipeline.stages.stageWithMatrix>)>'
 echo $t | jq '(. | to_entries[] | select(.key | startswith("stageWithMatrix")) | .value.spec.execution.steps | keys[] |  select(.| IN("status", "stepInputs")| not))'
 ```
 
-#### Fetch the status of all combinations of a step named `ShellScript_1`
+### Fetch the status of all combinations of a step named `ShellScript_1`
 
 Use the following expression to fetch the status of all combinations of a step named `ShellScript_1`:
 
@@ -517,11 +561,11 @@ t='<+json.format(<+pipeline.stages.stepWithMatrix.spec.execution.steps.ShellScri
 echo $t | jq '(. | to_entries[] | select(.key | startswith("ShellScript_1")) | .value.status)'
 ```
 
-### Writing complex expressions using JEXL
+## Writing complex expressions using JEXL
 
 By introducing script support, Harness enables you to define functions, utilize loops, and incorporate IF conditions within your expressions. This expanded functionality empowers you to handle more complex logic and perform advanced operations.
 
-#### Fetch the status of all combinations of a stage named `stageWithMatrix`
+### Fetch the status of all combinations of a stage named `stageWithMatrix`
 
 Consider the following example expression: 
 
@@ -559,7 +603,7 @@ The script concludes by invoking the traverse function with the argument, `<+pip
 
 This script performs a traversal and extraction operation on a data structure represented by the key parameter. It extracts stages that start with `stageWithMatrix` and collects their corresponding `.status` values into the `statuses` array.
 
-#### Fetch the status of all combinations of a step named `ShellScript_1`
+### Fetch the status of all combinations of a step named `ShellScript_1`
 
 Consider the following example expression: 
 
@@ -596,7 +640,7 @@ The script concludes by invoking the traverse function with the argument, `<+pip
 This script performs a traversal and extraction operation on a data structure represented by the key parameter. It filters stages that start with the string `ShellScript_1` and collects their corresponding status values into the statuses array.
 
 
-#### Defining functions
+### Defining functions
 
 Define functions by using the `function` keyword in JEXL. For example: 
 
@@ -617,7 +661,7 @@ The above JEXL script defines a function called `identityFunction` that takes a 
 
 The function `identityFunction` is used to retrieve the value of a specific key. In the given example, the function is invoked with the argument `keyName`. As a result, the function returns the value `keyName` itself. The `identityFunction` serves as a straightforward identity function where the input value is directly returned as the output.
 
-#### Defining loops
+### Defining loops
 
 Here's an example that demonstrates how you can use a loop in JEXL to iterate over an array or perform repetitive operations based on certain conditions: 
 
@@ -636,7 +680,7 @@ sum;
 
 This example uses an array called `numbers` containing several integer values. A variable called sum to 0 is initialized. The FOR loop iterates over each element in the number array. Within the loop, you can add each element to the sum variable After the loop completes, the script outputs the value of sum, which will be the sum of all the numbers in the array.
 
-#### Using IF conditions
+### Using IF conditions
 
 Here's an example that demonstrated how you can use an IF condition in JEXL to perform different actions or display different results based on certain conditions or criteria.
 
