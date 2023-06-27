@@ -95,9 +95,13 @@ This release includes the following fixes:
 
    This issue has been resolved by ignoring null data points and using valid data points in the window.
 
-- (PL-38828)
+- Account-level connectors with resource groups set to Specified were not available at the project-level. (PL-38828)
 
-- (PL-32498)
+   This issue is fixed with a code enhancement. The connectors list now shows the connectors to which users have resource group permissions set.
+
+- The account-level Session Timeout (in minutes) allowed values greater than the 4320 minute maximum. (PL-32498)
+
+   This issue has been resolved by adding a code validation. The field no longer accepts values above 4320 minutes.
 
 ```mdx-code-block
   </TabItem>
