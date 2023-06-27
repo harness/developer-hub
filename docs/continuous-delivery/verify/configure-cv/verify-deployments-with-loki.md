@@ -12,6 +12,10 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
+:::info note
+Currently, this feature is behind the feature flag `SRM_ENABLE_GRAFANA_LOKI_LOGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 
 Harness Continuous Verification (CV) integrates with Grafana Loki to:
 

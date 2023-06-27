@@ -761,6 +761,8 @@ Now that Keycloak is set up in Harness as a SAML SSO provider, you can enable an
 
 To prevent lockouts or in the event of OAuth downtime, a User in the Harness Administrators Group can use the [**Local Login**](https://app.harness.io/auth/#/local-login) URL (https://app.harness.io/auth/#/local-login) to log in and update the OAuth settings.
 
+:::note For the Harness production cluster prod-3, the local login URL is https://app3.harness.io/auth/#/local-login :::
+
 ![](./static/single-sign-on-saml-118.png)
 
 1. Log in using **Harness Local Login**.
