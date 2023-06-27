@@ -5,7 +5,7 @@ sidebar_position: 10
 ---
 
 
-Harness Delegate uses Kubernetes Java client to make programmatic API calls to the Kubernetes server. For example, some common API calls include various REST API calls for CRUD operations for Kubernetes objects like ConfigMaps, Secrets, and so on.
+Harness Delegate uses Kubernetes Java client to make programmatic API calls to the Kubernetes server. For example, CRUD API calls for Kubernetes objects like ConfigMaps, Secrets, and so on.
 
 
 ## Configuration
