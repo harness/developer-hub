@@ -2,7 +2,7 @@
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-06-27T10:00
+date: 2023-06-28T10:00
 sidebar_position: 9
 ---
 ```mdx-code-block
