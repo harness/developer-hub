@@ -485,9 +485,12 @@ In Harness, services represent what you deploy to environments. You use services
 <details>
 <summary>What is AWS Lambda Function Definition?</summary>
 
-Harness uses the AWS Lambda [Create Function API](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html) to create a new Lambda function in the specified AWS account and region. In Harness, you use a JSON configuration file to define the AWS Lambda you wish to deploy. This configuration lets you define all the function settings supported by the Create Function API.
-
+Harness uses the AWS Lambda [Create Function API](https://docs.aws.amazon.com/lambda/latest/dg/API_CreateFunction.html) to create a new Lambda function in the specified AWS account and region. In Harness, you use a [JSON configuration file](https://github.com/harness-community/harnesscd-example-apps/pull/13/files#diff-eea7012e08c0411b9359c74c1b9bb5ebbcb0a2ba01eb8a48700b493e9cd0d85b) to define the AWS Lambda you wish to deploy. This configuration lets you define all the function settings supported by the Create Function API.
+xs
 </details>
+
+#### Setting up Lambda functions:
+- Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repo, edit the [function-definition.json](https://github.com/harness-community/harnesscd-example-apps/pull/13/files#diff-eea7012e08c0411b9359c74c1b9bb5ebbcb0a2ba01eb8a48700b493e9cd0d85b) file in your fork and **add the ARN for your S3 bucket** in which you added the artifact. 
 
 1. In your Harness project, select **Services**.
     1. Select **New Service**.
