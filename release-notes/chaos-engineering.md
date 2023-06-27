@@ -22,6 +22,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
+* [GameDay](/docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday) is no longer behind a feature flag, and is now available to all users.
+
+* The CE [integration](/docs/chaos-engineering/integrations/use-chaos-with-srm) with Harness Service Reliability Management (SRM) is no longer behind a feature flag, and is now available to all users.
+
 * While upgrading a namespace-scoped chaos infrastructure, users will now be shown the command for upgrading CRDs as well. (CHAOS-1846)
 
 * We now show all steps in the experiment details pipeline diagram. (CHAOS-1817)
@@ -45,7 +49,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   </TabItem>
   <TabItem value="Early access">
 ```
-This release does not include any early access features.
+
+This release has no early access features.
 
 ```mdx-code-block
   </TabItem>

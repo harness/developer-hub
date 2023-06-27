@@ -368,6 +368,12 @@ module.exports = {
       to: "/docs/category/iis-net-deployments",
     },
 
+    // Created by Gigi Hanna to add CE re-direct after topic move - June 27, 2023
+    {
+      from: "/docs/chaos-engineering/configure-chaos-experiments/experiments/use-chaos-with-srm",
+      to: "/docs/chaos-engineering/integrations/use-chaos-with-srm",
+    },
+
     // Created by Sudheendra Katte to fix cv re-directs April 27th, 2023
     {
       from: "/docs/category/continuous-verification-1",
