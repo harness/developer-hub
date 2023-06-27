@@ -42,7 +42,7 @@ export const featuredTutorials: CardItem[] = [
           link: "/docs/category/get-started-with-feature-flags",
         },
         {
-          title: "Create, Update, and View Flags",
+          title: "Create, update, and view Flags",
           module: MODULES.ff,
           description:
             "Learn how to create different types of flags, edit them, and enable them.",
@@ -114,7 +114,7 @@ export const featuredTutorials: CardItem[] = [
           link: "/docs/feature-flags/connect-monitored-service",
         },
         {
-          title: "Use Pipelines with Feature Flags",
+          title: "Use pipelines with Feature Flags",
           module: MODULES.ff,
           description:
             "Use pipelines to combine a flag with other actions like adding Jira issues, creating notifications, and adding approvals.",
