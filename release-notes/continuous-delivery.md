@@ -430,7 +430,7 @@ This release does not include any early access features.
   * Sync step error for account level agents.
   * Unable to close log streams.
   * Random values in the expressions are considered as false values.
-- Instance sync was not implemented for Azure Kubernetes Service (AKS). (CDS-59624)
+- Instance sync was not implemented for Azure Kubernetes Service (AKS). (CDS-59544)
   
   Performance improvements on AKS infrastructure type instance sync improved. The service instance data from the cluster now appears on the service dashboard faster. 
 - The Harness UI hid the Interrupts button for chained pipelines for multi-service and multi-environment cases. (CDS-59374)
