@@ -4,11 +4,11 @@ description: Repository scans with Semgrep
 sidebar_position: 270
 ---
 
-<!--
+
 :::note
-Currently, this integration is behind the Feature Flag `STO_STEP_PALETTE_Semgrep`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this integration is behind the Feature Flag `STO_STEP_PALETTE_SEMGREP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
--->
+
 
 You can scan container images and repositories using [Semgrep](https://www.semgrep.com), an open-source static analysis engine for detecting dependency vulnerabilities and other issues in your code repositories. 
 
@@ -33,12 +33,12 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 
 <StoScannerStepNotes />
 
-<!--details>
-    <summary>Scanner Template</summary>
+<details>
+    <summary>Semgrep scanner template</summary>
 
-![](static/step-palette-00.png) 
+![](static/semgrep-step-config-example.png) 
 
-</details -->
+</details>
 
 ### Scan
 
