@@ -50,6 +50,29 @@ This release does not include fixed issues.
 <details>
 <summary>2023 releases</summary>
 
+#### June 26, 2023
+
+##### What's new
+
+This release does not include new features.  
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Node.js** server SDK has been updated to version **1.3.0** with the following updates.
+
+* The following changes are included in issue number FFM-8289:
+
+  * Added validation to the JWT token returned by the Feature Flags authentication service.
+  * Previously, if the SDK failed to authenticate with the Feature Flags service, the SDK crashed. With this fix, the SDK now logs a warning and serves the default variations you provided in your evaluation calls.
+  * Added a list of codes that are logged for each lifecycle event of the SDK, such as initialization, authentication, and so on. For a full list of codes, go to [Troubleshooting](/docs/feature-flags/ff-sdks/server-sdks/node-js-sdk-reference#troubleshooting).
+
+
 #### June 22, 2023
 
 ##### What's new
