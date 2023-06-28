@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-06-27T10:00
+date: 2023-06-28T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - June 27, 2023
 
-### Harness Platform
+### Harness Platform, version 79714
 
 - There is now a limit of 100 API Tokens per free and community account. (PL-39337)
 
