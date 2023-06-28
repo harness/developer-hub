@@ -164,10 +164,10 @@ Environments define the deployment location, categorized as **Production** or **
 
 1. In your Harness project, select **Environments**.
     - Select **New Environment**, and then select **YAML**.
-    - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/3-environment.yml), paste it into the YAML editor, and select **Save**.
+    - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/environment.yml), paste it into the YAML editor, and select **Save**.
     - In your new environment, select the **Infrastructure Definitions** tab.
     - Select **Infrastructure Definition**, and then select **YAML**.
-    - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/google_cloud_function/4-infrastructure-definition.yml) and paste it into the YAML editor.
+    - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/infrastructure-definition.yml) and paste it into the YAML editor.
     - Replace `GCP PROJECT NAME` with your GCP project name.
     - Replace `GCP REGION` with your GCP region name.
     - Select **Save** and verify that the environment and infrastructure definition are created successfully.
@@ -404,10 +404,10 @@ Environments define the deployment location, categorized as **Production** or **
 
 1. In your Harness project, select **Environments**.
     - Select **New Environment**, and then select **YAML**.
-    - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/3-environment.yml), paste it into the YAML editor, and select **Save**.
+    - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/environment.yml), paste it into the YAML editor, and select **Save**.
     - In your new environment, select the **Infrastructure Definitions** tab.
     - Select **Infrastructure Definition**, and then select **YAML**.
-    - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/4-infrastructure-definition.yml) and paste it into the YAML editor.
+    - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/infrastructure-definition.yml) and paste it into the YAML editor.
     - Replace `GCP PROJECT NAME` with your GCP project name.
     - Replace `GCP REGION` with your GCP region name.   
     - Select **Save** and verify that the environment and infrastructure definition are created successfully.

@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-06-19T10:00
+date: 2023-06-28T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -17,19 +17,44 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 21, 2023
+## Latest - June 28, 2023
+
+### Continuous Delivery, version 79714
+
+- JSON support for expressions. (CDS-73057)
+  
+  Harness supports a new setting, `Enable JSON Support for Expressions` at the account level. Enabling this setting allows you to reference JSON parsers within expressions. This setting is turned off by default. 
+
+  For more details, go to [Writing expressions using any JSON parser tool](/docs/platform/variables-and-expressions/expression-v2/).
+- Added tooltip and banner to provide more information about webhook payloads. (CDS-53874)
+  
+  <docimage path={require('./static/payload-input.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+### Harness Platform, version 79714
+
+- There is now a limit of 100 API Tokens per free and community account. (PL-39337)
+
+- When configuring SMTP, you can now select specific delegates in **Delegates Setup**. (PL-39288)
+
+- You can now sort pipelines in the pipelines list by selecting the sortable column headers or the sort dropdown. (PL-31527)
+
+### Harness version 79714, Harness Delegate version 79707
+
+- You can now see disconnected delegate details in selection logs and error messages when there are no eligible delegates in an active state to execute tasks. (PL-37900)
+
+- Upgraded the delegate JRE to 11.0.19_7. (PL-37994)
+
+## June 21, 2023
 
 ### Cloud Cost Management, version 79803
 
 * Added a tooltip on the **Cloud Integration** page. (CCM-12559)
 
-  On the **Cloud Integration** page, if the connector data is unavailable, the **View costs** link is disabled. However, as soon as the data becomes available, the link is enabled. Now, a tooltip providing a concise explanation as to why the link is disabled appears when you hover over the disabled link. 
+  In the **Cloud Integration** page, if the connector data is unavailable, the **View costs** link is disabled. However, as soon as the data becomes available, the link is enabled. Now, a tooltip providing a concise explanation as to why the link is disabled appears when you hover over the disabled link. 
   
 * Asset Governance filter panel enhancement. (CCM-12854)
 
   Previously, in the **Asset Governance** > **Evaluations** page, only the target accounts with `execute` permissions were included in the **Target Accounts** field in the filter panel. Now, this functionality is enhanced so that all target accounts with `view` permissions are also included in the list. 
-
-
 
 ## June 19, 2023
 

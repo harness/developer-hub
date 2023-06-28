@@ -115,6 +115,16 @@ The **Helm Chart** option lets you download a `helm-chart` file for the Harness 
 
 Once you have installed the Agent by using any of the above options, Harness will start importing all the entities from the existing Argo CD Project.
 
+:::note
+
+Make sure that you deploy only one GitOps Agent per Argo CD namespace. Deploying multiple Agents created in different projects or accounts can lead to unpredictable behaviour.
+
+Harness supports mapping Argo CD projects into Harness projects through the Agent that controls the Argo CD deployment. When importing Argo CD projects, Harness maps Argo CD projects into Harness projects that belong to one account.
+
+Enabling multiple Agents in one Argo CD namespace implies cross-account resource sharing which Harness does not support.
+
+:::
+
 ## Install the Agent
 
 Select **Download & Continue**. You are prompted to save the YAML file.

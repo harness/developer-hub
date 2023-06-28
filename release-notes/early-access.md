@@ -10,7 +10,16 @@ Review the notes below to learn about the early access (aka beta) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 21, 2023
+
+## Latest - June 28, 2023
+
+### Continuous Delivery, version 79714
+
+import Earlyaccess from '/release-notes/shared/cd-79700-early-access.md'
+
+<Earlyaccess />
+
+## June 21, 2023
 
 **Harness launches Harness AI Development Assistant as a beta feature**
 
