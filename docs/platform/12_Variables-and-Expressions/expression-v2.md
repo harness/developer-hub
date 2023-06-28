@@ -21,7 +21,7 @@ If your step inputs or parameters size is greater than 4 KB, then it cannot be p
 
 You can now obtain an execution JSON for all stages or individual steps of your pipeline. 
 
-To access the JSON, you must enable the **Enable JSON Support for expressions** settings first. Go to **Account Settings > Account Resources > Pipeline > Enable JSON Support for expressions**, and then set the value to `true`. 
+To access the JSON, you must enable the **Enable JSON Support for expressions** setting first. Go to **Account Settings > Account Resources > Pipeline > Enable JSON Support for expressions**, and then set the value to `true`. 
 
 This setting is turned off by default. Enabling this setting allows you to reference JSON parsers within expressions.
 
