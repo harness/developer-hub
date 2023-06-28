@@ -63,18 +63,6 @@ export const moduleList: CardItem[] = [
     link: "docs/continuous-error-tracking",
   },
   {
-    title: "Harness Platform",
-    module: MODULES.platform,
-    // icon: "img/logo.svg",
-    description: (
-      <>
-        Install a Kubernetes or Docker delegate, Onboard with Terraform
-        Provider, and more.
-      </>
-    ),
-    link: "docs/platform",
-  },
-  {
     title: "Internal Developer Portal",
     module: MODULES.idp,
     // icon: "img/icon_idp.svg",
