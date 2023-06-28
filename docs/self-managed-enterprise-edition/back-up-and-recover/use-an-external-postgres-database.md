@@ -40,7 +40,17 @@ PostgreSQL uses 5432 as the default communication port. To enable communication 
 
 ## Self-managed PostgreSQL
 
-For self-managed Postgres, set up streaming replication. For more information, go to [Streaming replication](https://www.postgresql.org/docs/9.3/warm-standby.html#STREAMING-REPLICATION) in the PostgreSQL documentation.
+Several third-party tools are available for self-managed PostgreSQL configurations.
+
+[Bitnami PostgreSQL-ha](https://github.com/bitnami/charts/tree/main/bitnami/postgresql-ha/) is an actively-managed chart that is widely used for self-managed PostgreSQL.
+
+This stack consists of:
+
+- `bitnami/postgresql`: The PostgreSQL database.
+
+- `bitnami/postgresql-repmgr`: An open-source tool suite to manage replication and failover in a cluster of PostgreSQL servers. This tool enhances PostgreSQL's built-in hot-standby capabilities and includes tools to set up standby servers, monitor replication, and perform administrative tasks, such as failover or manual switchover operations.
+
+- `Pgpool-II`: Pgpool-II is middleware that works between PostgreSQL servers and a PostgreSQL database client. It provides Connection Pooling, Watchdog, Replication, In Memory Query Cache, and Load Balancing. For more information, go to the [Pgpool-II documentation](https://pgpool.net/mediawiki/index.php/Main_Page).
 
 ## Vendor-managed PostgreSQL
 
