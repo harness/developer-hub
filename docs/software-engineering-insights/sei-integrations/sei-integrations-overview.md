@@ -4,17 +4,44 @@ description: Learn about SEI integration options and support.
 sidebar_position: 10
 ---
 
-* Ingestion satellite: For integration on-premise systems and applications
-* Automated integrations (incl droneci and harnessng)
-* Jenkins plugin
-* Custom CI/CD integrations
+In order to calculate metrics, you must integrate your SDLC tools with SEI.
 
-<!-- Integrations are handled in connectors -->
+SEI integrations are handled through connectors. Connectors contain the information necessary for the Harness Platform and modules to integrate and work with SDLC tools, such as Git providers, issue management systems, communication tools, and more. For example, an SEI GitHub connector authenticates through a GitHub account to collect data about activity in your teams' GitHub repos (such as PRs, commits, and merges).
 
-<!-- Jira connector requires installing SEI app -->
+For general information about connectors, go to the Harness Platform documentation on [Connectors](/docs/category/connectors).
 
-Connectors contain the information necessary to integrate and work with third-party tools, such as Git providers and artifact repos. For example, a GitHub connector authenticates with a GitHub account and/or repo and fetches files as part of a deploy stage. Harness uses connectors at pipeline runtime to authenticate and run operations in external tools.
+To integrate a tool with SEI, you can use either an application-specific connector the generic SEI connector.
 
-Connectors require different permissions depending on your build environment and the tasks your pipeline performs. For example, if your pipeline builds and pushes an image to Docker Hub, you need a connector that can connect to the Docker Hub repo and push images.
+## Application-specific connectors
 
-For more information, go to the Harness Platform documentation on [Connectors](/docs/category/connectors).
+* Azure DevOps
+* Bitbucket
+* CircleCI
+* DroneCI
+* Gerrit
+* GitHub
+* GitLab
+* HarnessNG
+* Helix
+* Jira <!-- Jira connector requires installing SEI app -->
+* PagerDuty
+* PostgreSQL
+* Salesforce
+* SCM Cloud Integrations (GitHub Cloud, GitLab Cloud, Bitbucket Cloud) <!-- combine w relevant SCM pages -->
+* Slack
+* Snyx
+* SonarQube
+* Splunk
+* Teams (Microsoft)
+* Tenable
+* Testtrail
+* Zendesk
+
+## Generic SEI connector
+
+Use the [generic SEI connector](./sei-connector-generic.md) for integrations that don't have an application-specific connector or when your configuration doesn't support the application-specific connector, including:
+
+* On-premise tools and integrations that historically used *Ingestion Satellites*.
+* The *Job Reporter Plugin* for Jenkins.
+* Custom CI/CD integrations.
+* Other tools that don't have an application-specific connector.
