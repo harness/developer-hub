@@ -36,6 +36,33 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
 
+#### Self-Managed Enterprise Edition
+
+- External Postgres database support is now available for Security Testing Orchestration, Common, Service Reliability Management, and Policy Management for the Harness Platform. (SMP-1352)
+
+   You can now deploy Harness Self-Managed Enterprise Edition with an external Postgres database by updating your `override.yaml` file with the following flags:
+   
+   ```yaml
+   global:
+      database:
+      postgres:
+      ## - Set this to false to use an external postgres cluster
+      installed: false
+      ## - protocol to use for connection
+      protocol: postgres
+      ## - host array for external
+   hosts:
+    - postgres:5432
+      ## - secret name containing external values
+      secretName: "postgres-secret"
+      ## - key within secret containing username
+      userKey: "user"
+      ## - key within secret containing password
+      passwordKey: "password"
+      ## - extra arguments set to connection string
+      extraArgs: ""
+   ```
+
 #### Continuous Integration
 
 - You can now reference [output variables produced by Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables) in pipelines that use Kubernetes cluster build infrastructures. This is an addition to previously-existing support for Harness Cloud and self-hosted Cloud provider VM build infrastructures. (CI-7491)
