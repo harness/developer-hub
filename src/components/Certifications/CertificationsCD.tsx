@@ -68,7 +68,7 @@ export default function CertificationsCD() {
             and powerful, easy-to-use pipelines. Empower your teams to deliver
             new features, faster – with AI/ML for automated canary and
             blue/green deployments, advanced verification, and intelligent
-            rollback
+            rollback.
           </div>
         </div>
         <div className={styles.right}>
