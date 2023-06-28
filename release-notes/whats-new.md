@@ -38,6 +38,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - You can now sort pipelines in the pipelines list by selecting the sortable column headers or the sort dropdown. (PL-31527)
 
+### Harness version 79714, Harness Delegate version 79707
+
+- You can now see disconnected delegate details in selection logs and error messages when there are no eligible delegates in an active state to execute tasks. (PL-37900)
+
+- Upgraded the delegate JRE to 11.0.19_7. (PL-37994)
+
 ## June 21, 2023
 
 ### Cloud Cost Management, version 79803
