@@ -38,7 +38,7 @@ This release introduces the following new features and enhancements:
 
 - You can now see disconnected delegate details in selection logs and error messages when there are no eligible delegates in an active state to execute tasks. (PL-37900)
 
-- Upgraded the delegate JRE to 11.0.19_7. (PL-37994)
+- The delegate JRE is upgraded to 11.0.19_7. (PL-37994)
 
 ```mdx-code-block
   </TabItem>
