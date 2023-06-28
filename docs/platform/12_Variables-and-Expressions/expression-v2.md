@@ -4,7 +4,7 @@ description: Learn about the enhanced expressions experience using any JSON pars
 sidebar_position: 4
 ---
 
-To provide the best experience for customers when using expressions, Harness has introduced support for writing expressions by using any JSON parser tool. With this enhancement, we are effectively addressing customer concerns and providing them with a more user-friendly and adaptable expression engine. These improvements enhance the overall user experience, increase productivity, and empower customers to have greater control and customization capabilities in their evaluation processes.
+To provide you with the best experience when using expressions, Harness has introduced support for writing expressions by using any JSON parser tool. With this enhancement, Harness effectively addresses customer concerns and provides a more user-friendly and adaptable expression engine. These improvements enhance the overall user experience, increase productivity, and empower you to have greater control and customization capabilities in your evaluation processes.
 
 The key enhancements are as follows: 
 
