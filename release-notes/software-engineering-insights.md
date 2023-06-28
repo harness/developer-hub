@@ -1,10 +1,10 @@
----
+<!-- ---
 title: Software Engineering Insights release notes
 sidebar_label: Software Engineering Insights
 tags: [NextGen, "software engineering insights"]
 date: 2023-06-19T10:00:10
 sidebar_position: 10
----
+--- -->
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
