@@ -1,5 +1,5 @@
 ---
-title: SEI Overview
+title: SEI basics
 description: Get introduced to SEI.
 sidebar_position: 10
 ---
@@ -16,8 +16,24 @@ SEI achieves this by looking at different facets of the SDLC process where bottl
 
 SEI also helps your teams drive continuous improvement by leveraging best practices and adopting a data-driven engineering mindset.
 
+## Get started with SEI
+
+To start using SEI, configure the following:
+
+1. [Projects and Org Units](/docs/category/projects-and-org-units)
+2. [Connectors and integrations](/docs/category/connectors-and-integrations)
+3. [Profiles](/docs/category/profiles)
+4. [Metrics and Insights](/docs/category/metrics-and-insights)
+
+:::tip
+
+[Propels](/docs/category/propels) are an optional way to use SEI to add human-in-the-loop automation to your SDLC.
+
+:::
+
 ## See also
 
 * [Get started with Harness](/docs/getting-started)
 * [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies)
 * [Propelo and Harness](./propelo-and-harness.md)
+* [Troubleshooting and FAQs](../sei-troubleshooting-faqs.md)

@@ -1,11 +1,11 @@
 {
-   "label":"Scripts",
-   "position": 50,
+   "label":"Propels",
+   "position": 60,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",
    "link":{
       "type":"generated-index",
-      "title":"Scripts"
+      "title":"Propels"
    }
 }
