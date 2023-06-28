@@ -225,9 +225,10 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 ### Settings
 
-You can use this field to provide environment variables to be used during the execution of the step. As an exemple, if you need to access your Checkmarx server through a proxy, you can add the following setting: 
+You can use this field to provide environment variables to be used during the execution of the step. As an exemple, if you need to access your Checkmarx server through a proxy, you can add this setting: 
 
-`JAVA_TOOL_OPTIONS` = `-DproxySet=true -Dhttp.proxyHost=MY_PROXY_ADDRESS -Dhttp.proxyPort=MY_PROXY_PORT`
+* key = `JAVA_TOOL_OPTIONS`
+* value = `-DproxySet=true -Dhttp.proxyHost=MY_PROXY_ADDRESS -Dhttp.proxyPort=MY_PROXY_PORT`
 
 Replace `MY_PROXY_ADDRESS` with your proxy address or proxy FQDN, and `MY_PROXY_PORT` with your proxy port.
 If you want to go through an HTTPS proxy, replace `-Dhttp` with `-Dhttps`.
