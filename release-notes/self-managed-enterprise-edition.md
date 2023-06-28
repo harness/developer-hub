@@ -113,6 +113,10 @@ This release includes the following Harness module and component versions.
   
   A new Git experience is introduced, **Enforce git experience for pipelines and templates**. Enabling this setting will let you create only remote pipelines and templates. If this setting is enabled, then the `InputSet` will be out of scope as it is controlled by the pipelines.
 
+#### Harness Delegate
+
+- Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SRM-14724)
+
 #### Harness Platform
 
 - You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
