@@ -71,19 +71,19 @@ For more information, see [Communication strategy between SDKs and Harness Featu
 **On Server SDKs:**
 
 **Evaluations**
-1. On every flag evaluation, the event is pushed to a map.
-2. Evaluation events are aggregated, `Tuple <Flag, Variation, Count>`.
-3. Every minute, the aggregated events and unique targets are pushed to the server.
+1. On every flag evaluation, a metric is constructed using a combination of `flag identifier`, `variation identifier`, `variation value` and `target`
+2. A map is used to store metrics, with the key being the metric itself, and the value being a counter which keeps track of how many times this metric occurred `map['{flag}-{variation}-{value}-{target}'] += 1`
+3. Every minute, the metrics are pushed to the server.
 
 **Targets**
 1. On every flag evaluation, the Target is pushed to a map. 
-2. Unique Targets are stored in the map using a key combination of identifier, name, and attributes
+2. A map is used to store targets, with the key being a combination of `target identifier`, `target name` and `target attributes`, and the value is the `target` itself `map[identifier, name, attributes] = target`
 3. Every minute, the targets are pushed to the server meaning you will shortly see them within the Target Management page on Harness.
 4. If you evaluate flags using over 200,000 unique targets per minute, the following will apply:
 
    1. The first 200,000 targets will be sent and registered as normal.
-   1. Targets 200,001 and onwards will not be sent in the request, so they won't be shown in the Target Management page on Harness.
-   1. The targets that weren't included in this one-minute interval will eventually get registered when they are included in subsequent evaluations.
+   2. Targets 200,001 and onwards will not be sent in the request, so they won't be shown in the Target Management page on Harness.
+   3. The targets that weren't included in this one-minute interval will eventually get registered when they are included in subsequent evaluations.
 
 ## What happens if Harness Feature Flag goes down?
 
