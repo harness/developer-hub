@@ -76,11 +76,11 @@ Add a new row for each rule until the cost bucket correctly includes all the cos
 :::important important
 * You cannot include a nested cost category as a rule within another cost category if either of these cost categories contains a shared bucket.
 
- To illustrate, consider the scenario of creating a cost category, `CC1`, which includes a cost bucket, `CB1`. While defining the cost bucket rules for `CB1`, if you intend to nest a cost category, `CC2` that contains a cost bucket, `CB2`, you must ensure that neither `CB1` nor `CB2` includes a shared cost bucket.
+ To illustrate, consider the scenario of creating a cost category, `CC1`, which includes a cost bucket, `CB1`. While defining the cost bucket rules for `CB1`, if you intend to nest a cost category, `CC2` that contains a cost bucket, `CB2`, you must ensure that neither `CC1` nor `CC2` includes a shared cost bucket.
 * You cannot add the same cost category as a rule in the cost bucket.
 * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
 
- Consider an example where you have a cost category named `CC1`, which includes a cost bucket called `CB1`. Additionally, you have another cost category named `CC2`, which includes a cost bucket called `CB2`. When defining the cost bucket rules, it is essential to avoid adding `CC2` as a rule in `CC1` and adding `CC1` as a rule in `CC2`.
+ Consider an example where you have a cost category named `CC1`, which includes a cost bucket called `CB1`. Additionally, you have another cost category named `CC2`, which includes a cost bucket called `CB2`. When defining the cost bucket rules, it is essential to avoid adding `CC2` as a rule in `CC1` and adding `CC1` as a rule in `CC2`. Similarly, it is not allowed to create a nested structure where CC1 nests CC2, which in turn nests CC3, then CC4, and finally circles back to CC1.
 * You can nest cost categories to a maximum of 20 levels.
 :::
 
