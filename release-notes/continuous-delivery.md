@@ -23,7 +23,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 - JSON support for expressions. (CDS-73057)
   
-  Harness supports a new setting, `Enable JSON Support for Expressions` at the account level. Enabling this setting allows you to reference JSON parsers within expressions. This setting is turned off by default. 
+  Harness has introduced support for writing expressions by using any JSON parser tool. You can now obtain an execution JSON for all stages or individual steps of your pipeline.
+  
+  To access the JSON, you must enable the **Enable JSON Support for expressions** setting first. Go to **Account Settings > Account Resources > Pipeline > Enable JSON Support for expressions**, and then set the value to `true`. Enabling this setting allows you to reference JSON parsers within expressions. This setting is turned off by default.
 
   For more details, go to [Writing expressions using any JSON parser tool](/docs/platform/variables-and-expressions/expression-v2/).
 - Added tooltip and banner to provide more information about webhook payloads. (CDS-53874)
