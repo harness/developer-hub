@@ -1,7 +1,7 @@
 ---
 title: Add variables
 description: Add variables at the account, org, project, and pipeline-level.
-# sidebar_position: 2
+# sidebar_position: 1
 helpdocs_topic_id: f3450ye0ul
 helpdocs_category_id: bp8t5hf922
 helpdocs_is_private: false
