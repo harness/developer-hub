@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
-import PlatformIllustration from "./PlatformIllustration";
+import ModuleTiles from "./Modules";
 import styles from "./styles.module.scss";
 
 // harness-platform.svg | secret-mgmt.svg
@@ -18,7 +18,7 @@ export default function LearnAboutPlatform(): JSX.Element {
           <h3>Modules</h3>
         </div>
         {/* <img src="img/harness-platform.svg" className={styles.platformIllustration} /> */}
-        <PlatformIllustration />
+        <ModuleTiles />
       </div>
 
       <div className={styles.subSectionName}>
