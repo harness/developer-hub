@@ -105,7 +105,7 @@ The following is a detailed list of exam objectives:
 
 ## Next Steps
 
-The Continuous Delivery Developer exam can start immediately after registering. Please allow 90 mins for the exam.
+The Continuous Delivery Developer exam can start immediately after registering. Please allow up to 90 mins for the exam.
 
 1. Create an account in Harness University
 2. Register for an exam 

@@ -201,7 +201,7 @@ export default function CertificationsCD() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Continuous Delivery & GitOps - Administrator (BETA)
+                    Continuous Delivery & GitOps - Administrator 
                   </h2>
                   <img
                     src={`${baseUrl}img/cert_adm_cd_badge.svg`}
