@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-04-26T10:00
+date: 2023-06-30T10:00
 sidebar_position: 13
 ---
 ```mdx-code-block
@@ -40,27 +40,27 @@ This release includes the following Harness module and component versions.
 
 - External Postgres database support is now available for Security Testing Orchestration, Common, Service Reliability Management, and Policy Management for the Harness Platform. (SMP-1352)
 
-   You can now deploy Harness Self-Managed Enterprise Edition with an external Postgres database by updating your `override.yaml` file with the following flags:
+   You can now deploy Harness Self-Managed Enterprise Edition with an external Postgres database by creating a `postgres-secret.yaml` file and updating your `override-prod.yaml` file with the following flags:
    
    ```yaml
    global:
       database:
-      postgres:
-      ## - Set this to false to use an external postgres cluster
-      installed: false
-      ## - protocol to use for connection
-      protocol: postgres
-      ## - host array for external
+         postgres:
+         ## - Set this to false to use an external postgres cluster
+         installed: false
+         ## - set the protocol for postgres
+         protocol: postgres
+         ## - host array for external
    hosts:
     - postgres:5432
-      ## - secret name containing external values
-      secretName: "postgres-secret"
-      ## - key within secret containing username
-      userKey: "user"
-      ## - key within secret containing password
-      passwordKey: "password"
-      ## - extra arguments set to connection string
-      extraArgs: ""
+        ## - provide the secret name to reference postgres username and password
+        secretName: "postgres-secret"
+        ## - provide the userKey within secret containing username
+        userKey: "user"
+        ## - provide the passwordKey to reference postgres password
+        passwordKey: "password"
+        ## - set additional arguments to connection string
+        extraArgs: ""
    ```
 
 #### Continuous Integration
