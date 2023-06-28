@@ -1,0 +1,35 @@
+---
+title: Prerequisites
+sidebar_position: 1
+---
+
+This topic describes the requirements and resources you need to run chaos experiments on your target environmments.
+
+## Chaos infrastructure requirements
+
+The following are the chaos infrastructure Execution Plane components. These components are installed in your target cluster, allowing the chaos infrastructure to run experiments there. Chaos infrastructure runs within your target environment to aid CE in accessing the target resources and injecting chaos at a cloud-native scale.
+
+## Add users to a project to run chaos experiments
+
+You must have at least one user in a project, and allow that user to do chaos experiments. The following steps generate an email invitation to the new user(s) to add themselves to the project.
+
+
+To add a new user to a project: 
+
+1. In Harness, select a project. 
+
+1. Expand the **PROJECT SETUP** menu, and then select **Access Control**.
+
+	This page lists all the users added to the current project.
+
+1. Select **New User**, and then:
+
+	1. In **New User(s)**, add the email(s) of the user(s) you want to add. 
+	1. In **User Groups**, select any of the existing user groups to which the user should be added. 
+	1. Add the roles for the user(s) to enforce their access permissions. 
+
+1. Select **Apply**.
+
+	![Add New User](./static/add-new-user.png)
+
+This will send an email invite to the new user to add themselves to the project.
