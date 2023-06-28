@@ -26,40 +26,26 @@ Harness CCM incorporates the pre-negotiated discounted costs per CSP and the add
 
 2. Add customers to the Harness CCM account. Create [Harness Support](mailto:support@harness.io) tickets to add customers.
 
-<<<<<<< HEAD
 
 :::note
 In its initial release, **Margin Obfuscation** is supported only on AWS.
 :::
 
 
-=======
->>>>>>> 378da7ed57d7338baf816338eba85fce094023e9
 ## Set Markup
 
 ![](./static/set-markup.gif)
 
 
-<<<<<<< HEAD
 To add a markup to your CSP cost of a managed account, perform the following steps: 
-=======
-To add a margin to your CSP cost for a customer, perform the following steps: 
->>>>>>> 378da7ed57d7338baf816338eba85fce094023e9
 
 1. In your Harness application, go to **Cloud Costs**.
 2. Select **Margin Obfuscation**.
 3. Select **+ Set markup**.
-<<<<<<< HEAD
 4. Select the managed account.
 5. In the **Resource Markups** section, specify the following details:
 
   * **Markup%** - Specify the markup percentage to add to the billing amount retrieved from the CSP.
-=======
-4. Select the customer account.
-5. In the **Resource Markups** section, specify the following details:
-
-  * **Markup%** - Specify the margin percentage to add to the billing amount retrieved from the CSP.
->>>>>>> 378da7ed57d7338baf816338eba85fce094023e9
   * **Scope** - Specify scope of the markup.
   
     1. Select the Cloud Service Provider.
@@ -71,7 +57,6 @@ To add a margin to your CSP cost for a customer, perform the following steps:
 ## View the set markups 
 
 The Summary area displays the following information: 
-<<<<<<< HEAD
 * **Total Markup Amount** - The total markup amount including all managed accounts.
 * **Total Spend** — The total spend includes the CSP cost plus the markup amount.
 * **Total Customers** — The total number of managed accounts set up for margin obfuscation.
@@ -79,15 +64,6 @@ The Summary area displays the following information:
 The markup details of each customer: 
 
   The managed account name, the CSP accounts, the markup percentage, the markup amount, and the total spend are displayed. Expand to view all the markups for a customer. 
-=======
-* **Total Markup Amount** - The total markup amount including all customers.
-* **Total Spend** — The total spend includes the CSP cost plus the markup amount.
-* **Total Customers** — The total number of customers set up for margin obfuscation.
-
-The markup details of each customer: 
-
-  The customer name, the CSP accounts, the markup percentage, the markup amount, and the total spend are displayed. Expand to view all the markups for a customer. 
->>>>>>> 378da7ed57d7338baf816338eba85fce094023e9
   
 <docimage path={require('./static/msp-home.png')} width="50%" height="50%" title="Click to view full size image" />
 
@@ -100,19 +76,11 @@ On this page, you can view the total markup amount and total spend associated wi
 
 To edit an existing markup, perform one of the following steps:
 
-<<<<<<< HEAD
 1. Select the more options menu (three vertical dots) available for the managed account, and then select **Edit**. The **Set Markup** window opens.
 
   (or)
   
   Select the managed account, and then select **Edit Markup** on the customer's markup details page. The **Set Markup** window opens.
-=======
-1. Select the more options menu (three vertical dots) available for the customer, and then select **Edit**. The **Set Markup** window opens.
-
-  (or)
-  
-  Select the customer, and then select **Edit Margin** on the customer's markup details page. The **Set Markup** window opens.
->>>>>>> 378da7ed57d7338baf816338eba85fce094023e9
 
 2. Update the required fields. Go to [Set Markup](msp.md#set-markup) for more information.
 3. Select **Apply**.
