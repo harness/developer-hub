@@ -71,13 +71,13 @@ For more information, see [Communication strategy between SDKs and Harness Featu
 **On Server SDKs:**
 
 **Evaluations**
-1. On every flag evaluation, a metric is constructed using a combination of `flag identifier`, `variation identifier`, `variation value` and `target`
-2. A map is used to store metrics, with the key being the metric itself, and the value being a counter which keeps track of how many times this metric occurred `map['{flag}-{variation}-{value}-{target}'] += 1`
+1. On every flag evaluation, a metric is constructed using a combination of `flag identifier`, `variation identifier`, `variation value` and `target`.
+2. A map is used to store metrics, with the key being the metric itself, and the value being a counter that keeps track of how many times this metric occurred `map['{flag}-{variation}-{value}-{target}'] += 1`.
 3. Every minute, the metrics are pushed to the server.
 
 **Targets**
 1. On every flag evaluation, the Target is pushed to a map. 
-2. A map is used to store targets, with the key being a combination of `target identifier`, `target name` and `target attributes`, and the value is the `target` itself `map[identifier, name, attributes] = target`
+2. A map is used to store targets, with the key being a combination of `target identifier`, `target name` and `target attributes`, and the value is the `target` itself `map[identifier, name, attributes] = target`.
 3. Every minute, the targets are pushed to the server meaning you will shortly see them within the Target Management page on Harness.
 4. If you evaluate flags using over 200,000 unique targets per minute, the following will apply:
 
