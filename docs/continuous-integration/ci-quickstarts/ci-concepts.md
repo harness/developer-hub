@@ -104,7 +104,7 @@ The [Harness Git Experience](/docs/category/git-experience) provides seamless in
 
 ## Harness CI components
 
-For information about CI pipeline components, go to [CI pipeline concepts](./ci-pipeline-basics.md).
+For information about CI pipeline components, go to [CI pipeline basics](./ci-pipeline-basics.md).
 
 ## FAQs
 

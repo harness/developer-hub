@@ -4,10 +4,6 @@ sidebar_position: 1
 ---
 This section describes what a GameDay is, how a typical GameDay is run, and its outcomes.
 
-:::note
-This feature is currently behind a feature flag named `CHAOS_GAMEDAY_ENABLED`. Contact Harness Support to enable the feature.
-:::
-
 ## Introduction
 
 GameDay is a methodology to execute chaos experiments in your application during a specific time period. It acts as a template to schedule and execute one or more chaos experiments within your application. In general, GameDays help apply a fatal scenario to your application in a safe environment, thereby determining the resilience of the application and verifying the system at scale. 

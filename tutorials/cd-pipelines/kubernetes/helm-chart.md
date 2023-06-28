@@ -22,7 +22,9 @@ import TabItem from '@theme/TabItem';
 
 This tutorial is designed to help you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline/GitOps for deploying a Guestbook application. This Guestbook application will use Helm Chart for deployment.
 
-[Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=tutorials-cd-kubernetes-helm-chart).
+:::info
+[Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/).
+:::
 
 ```mdx-code-block
 <Tabs>

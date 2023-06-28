@@ -206,7 +206,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 ## Deploy AWS Lambda using Serverless.com Framework
 
-1. Copy the contents of [serverless-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/serverless-pipeline.yml).
+1. Copy the contents of [serverless-pipeline.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/serverless-lambda/harnesscd-pipeline/serverless-deployment.yml).
 2. In your Harness pipeline YAML editor, paste the YAML.
 3. Select **Save**.
    

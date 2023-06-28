@@ -30,7 +30,7 @@ External database setup requires the following software:
 
 - Supported OS (MongoDB supports most platforms, including Linux/MacOS/Windows)
 
-    For details, go to the MongoDB documentation: [MongoDB Enterprise version support](https://www.mongodb.com/docs/v4.4/administration/install-enterprise/) and [MongoDB Community version support](https://www.mongodb.com/docs/v4.4/administration/install-community/).
+    For details, go to [MongoDB Enterprise version support](https://www.mongodb.com/docs/v4.4/administration/install-enterprise/) and [MongoDB Community version support](https://www.mongodb.com/docs/v4.4/administration/install-community/) in the MongoDB documentation.
 
 - MongoDB supported versions 4.4.0 to 4.4.19
 
@@ -62,7 +62,7 @@ For MongoDB Community Editions versions, Harness recommends the following third-
 
 ## Required Helm configuration updates
 
-For external MongoDB support, update the following fields in your Helm values.yaml configuration files:
+For external MongoDB support, update the following fields in your Helm `values.yaml` configuration files:
 
 ### Global configuration
 
@@ -109,7 +109,7 @@ platform:
 
 ### How do I resolve an out of sync issue?
 
-MongoDB automatically resolves out of sync issues, but manual intervention may be required for a full sync. For details, go to the MongoDB documentation: [Resync a member of a replica set](https://www.mongodb.com/docs/v4.4/tutorial/resync-replica-set-member/).
+MongoDB automatically resolves out of sync issues, but manual intervention may be required for a full sync. For details, go to [Resync a member of a replica set](https://www.mongodb.com/docs/v4.4/tutorial/resync-replica-set-member/) in the MongoDB documentation.
 
 ### Does MongoDB support non-blocking secondary reads?
 
