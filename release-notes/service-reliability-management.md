@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-06-20T10:00:20
+date: 2023-06-28T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Service Relia
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 19, 2023, version 79600
+## Latest - June 28, 2023, version 79709
 
 ```mdx-code-block
 <Tabs>
@@ -38,6 +38,55 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
+- When configuring a health source, you were unable to input zero (0) in the **Lesser Than** and **Greater Than** fields. (SRM-14936)
+  
+  This issue has been fixed.  You can now input zero (0) in both the fields.
+
+- When using a template that has a service and an environment as input values to create a monitored service in a Verify step, you were unable to select the environment and service at the account, organization, or project levels. (SRM-14944)
+
+  This issue has been resolved, and you can now select the desired environment and service in these cases as expected.
+
+- `SocketTimedOut` error messages were not displayed in the call log. (OIP-537)
+  
+  This issue has been fixed. The call log now shows `SocketTimedOut` error messages.
+
+- The HTTP capability checks were considering status codes as an important factor, even when proper headers were not being sent. (OIP-499)
+
+  This issue has been resolved. Now, the behavior of the HTTP capability checks has been modified to ignore status codes.
+
+- In the metrics analysis section, time-series graphs exhibit data shifting when the first applicable timestamp is missing. (OIP-526)
+
+  This issue has been fixed, and now the graphs reflect the intended starting points.
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+
+#### June 20, 2023, Hotfix version 79608
+
+ - Optimized Prometheus API calls by grouping per-host calls into a single call using the 'by' clause. As a result, the number of API calls to the Prometheus server during verification is reduced, leading to improved overall performance and efficiency in data retrieval and processing. (OIP-552)
+
+
+#### June 19, 2023, version 79600
+
+##### What's new
+
+This release does not include any new features.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
 - SLOs were getting stuck in the recalculation state even after the recalculation process was complete. (SRM-14849)  
   
   This issue has been resolved. Now, the SLOs transition to the appropriate state once the recalculation has finished successfully.
@@ -53,26 +102,6 @@ This release does not include any early access features.
   - A monitored service with the most recent update will be displayed at the top of the list.
 
   - If a monitored service has been updated with new analysis data, it is given higher priority and displayed before other services on the list.
-
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Hotfix version 79608">
-
-  #### Released June 20, 2023
-
-  - Optimized Prometheus API calls by grouping per-host calls into a single call using the 'by' clause. As a result, the number of API calls to the Prometheus server during verification is reduced, leading to improved overall performance and efficiency in data retrieval and processing. (OIP-552)
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
-
 
 #### June 09, 2023, version 79517
 
