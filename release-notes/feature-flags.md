@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-06-14T10:00:25
+date: 2023-06-28T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -17,14 +17,16 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - June 21, 2023
+## Latest - June 28, 2023
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-This release does not include new features.  
+#### Feature Flags UI
+
+* On the **Feature Flags** page, when viewing the state of flags across all environments, the flag status column now scrolls all the rows as one. This makes it easier to view flag and environment states on one screen. (FFM-7643)
 
 ```mdx-code-block
   </TabItem>
@@ -38,7 +40,70 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-#### Feature Flags server/UI
+This release does not include fixed issues.
+
+  </TabItem>
+</Tabs>
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 26, 2023
+
+##### What's new
+
+This release does not include new features.  
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Node.js** server SDK has been updated to version **1.3.0** with the following updates.
+
+* The following changes are included in issue number FFM-8289:
+
+  * Added validation to the JWT token returned by the Feature Flags authentication service.
+  * Previously, if the SDK failed to authenticate with the Feature Flags service, the SDK crashed. With this fix, the SDK now logs a warning and serves the default variations you provided in your evaluation calls.
+  * Added a list of codes that are logged for each lifecycle event of the SDK, such as initialization, authentication, and so on. For a full list of codes, go to [Troubleshooting](/docs/feature-flags/ff-sdks/server-sdks/node-js-sdk-reference#troubleshooting).
+
+
+#### June 22, 2023
+
+##### What's new
+
+This release does not include new features.  
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **JavaScript** client SDK has been updated to version **1.14.0** with the following update.
+
+* Added a new function, `refreshEvaluations()`, which can be called to programmatically trigger a full refetch of evaluations from the server. (FFM-8141)
+
+#### June 21, 2023
+
+##### What's new
+
+This release does not include new features.  
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server/UI
 
 The **FF server** has been updated to version **1.1075.0** with the following updates.
 
@@ -48,7 +113,7 @@ The **FF server** has been updated to version **1.1075.0** with the following up
 
 * Where users had multiple target rules, in certain circumstances users couldn't delete these rules when the wrong IDs were returned. This fix addresses the problem of the incorrect IDs being returned, and ensures the targets can be removed.
 
-#### Feature Flags SDKs
+###### Feature Flags SDKs
 
 The **Python** server SDK has been updated to version **1.1.16** with the following updates.
 
@@ -57,16 +122,6 @@ The **Python** server SDK has been updated to version **1.1.16** with the follow
   **Known issue** - We are working on resolving the following issue in a future version:
 
   * During a metrics interval, if you evaluate flags with more than 50,000 unique targets (based on identifier, name and attributes), then only the first 50,000 targets get sent in the request to the metrics API. This means that the targets that are not included in the request do not appear in the UI, but when they are included in evaluations during subsequent metrics intervals, they will be correctly registered in the UI.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### June 19, 2023
 

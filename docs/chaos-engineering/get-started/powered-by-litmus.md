@@ -37,11 +37,13 @@ Harness CE module has the following additional capabilities:
 7. Teaming around chaos hubs
 8. Additional resilience probes
 
-## Integrations
+## Integrations with other Harness modules
 
-In addition to the above features, the chaos engineering module has the following integrations in the Harness platform:
+In addition to the above features, CE integrates with these Harness modules:
 
-- [Harness Continuous Delivery (CD)](/tutorials/chaos-experiments/integration-with-harness-cd)
+- Continuous Delivery (CD). Go to [Use CE with CD](/docs/chaos-engineering/integrations/chaos-cd).
+- Feature Flags (FF). Go to [Use CE with FF](/docs/chaos-engineering/integrations/chaos-ff).
+- Service Reliability Management (SRM). Documentation coming soon.
 
 ## Harness CE versus LitmusChaos
 

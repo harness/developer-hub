@@ -22,7 +22,7 @@ Harness maintains and updates a container image for every scanner supported by S
   <tr>
     <td>Black Duck Hub</td>
     <td><code>synopsys detect</code></td>
-    <td>8ß.9.0</td>
+    <td>8.9.0</td>
   </tr>
   <tr>
     <td>Brakeman</td>
@@ -32,7 +32,7 @@ Harness maintains and updates a container image for every scanner supported by S
   <tr>
     <td>Checkmarx</td>
     <td><code>runCxConsole.sh</code></td>
-    <td>1.1.18</td>
+    <td>1.1.26</td>
   </tr>
   <tr>
     <td>Grype</td>
@@ -62,12 +62,12 @@ Harness maintains and updates a container image for every scanner supported by S
   <tr>
     <td>Twistlock</td>
     <td><code>twistcli</code></td>
-    <td>22.12.582</td>
+    <td>30.01.152</td>
   </tr>
   <tr>
     <td>Whitesource</td>
     <td><code>java -jar /opt/whitesource/wss-unified-agent.jar</code></td>
-    <td>22.10.1</td>
+    <td>23.5.2.1</td>
   </tr>
 </tbody>
 </table>

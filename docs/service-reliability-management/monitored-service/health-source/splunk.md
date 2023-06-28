@@ -1,7 +1,7 @@
 ---
 title: Splunk
 description: Add Splunk health source to a monitored service.
-sidebar_position: 10
+sidebar_position: 11
 ---
 
 In Harness, a health source is a mapping that connects a Service in Harness to a service running in a deployment environment that is being monitored by an Application Performance Monitoring (APM) or logging tool. This mapping allows Harness to collect metrics and data from the APM or logging tool and use it to determine the health and status of the Service in Harness.

@@ -4,7 +4,7 @@
 | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |** 1. Harness Basics, Platform Entities, and Key Concepts **                                                                  ||
 | Describe continuous integration fundamentals (important stages or steps) | [Harness CI](https://developer.harness.io/tutorials/ci-pipelines/fastest-ci/#harness-ci) |
-| Describe Artifacts and Packages (from jar to container image, helm, etc) | [Harness CI concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts/) |
+| Describe Artifacts and Packages (from jar to container image, helm, etc) | [CI concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts/) |
 | Describe and explain the "Pipeline, Stages, Step Groups, Steps" schema | [Key concepts](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/) |
 | Describe Harness hierarchy "Account, Organizations, Projects" | [Key concepts](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/) |
 | Trigger the build pipeline via API - With or without inputset | [Harness API quickstart](https://developer.harness.io/docs/platform/resource-development/apis/api-quickstart/) |

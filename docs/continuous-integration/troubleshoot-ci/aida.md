@@ -12,7 +12,7 @@ import Legal from '/docs/continuous-integration/shared/aida-legal.md';
 
 :::note
 
-Currently, AIDA for CI is behind the feature flag `CI_AI_ENHANCED_REMEDIATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, AIDA for CI is a beta feature that is behind the feature flag `CI_AI_ENHANCED_REMEDIATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 

@@ -11,6 +11,11 @@ These instructions are in BETA and in support of our Admin and Architect level e
 
 :::
 
+## Video of Experience
+Video on experience you will follow in the below instructions.
+
+<docvideo src="https://www.youtube.com/watch?v=v8kOnhNopkc" />
+
 ## Accessing your Hands-On Exam 
 
 1. After registering for the administrator or architect level exam, the final question will be the hands-on exam. 
