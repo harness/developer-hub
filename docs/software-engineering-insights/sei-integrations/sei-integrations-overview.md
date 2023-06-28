@@ -41,7 +41,7 @@ To integrate a tool with SEI, you can use either an application-specific connect
 
 Use the [generic SEI connector](./sei-connector-generic.md) for integrations that don't have an application-specific connector or when your configuration doesn't support the application-specific connector, including:
 
-* On-premise tools and integrations that historically used *Ingestion Satellites*.
+* On-premise tools and integrations that use *Ingestion Satellites*.
 * The *Job Reporter Plugin* for Jenkins.
 * Custom CI/CD integrations.
 * Other tools that don't have an application-specific connector.
