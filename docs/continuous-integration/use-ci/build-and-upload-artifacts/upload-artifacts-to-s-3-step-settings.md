@@ -131,7 +131,7 @@ On the [build details page](../viewing-builds.md), you can see the logs for each
 
 After the **Upload Artifacts to S3** step runs, you can see the uploaded artifacts on S3.
 
-### View artifacts on the Artifacts tab
+## View artifacts on the Artifacts tab
 
 As an alternative to manually finding artifacts on S3, you can use [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) to view code coverage reports on the **Artifacts** tab on the [Build details page](../viewing-builds.md).
 

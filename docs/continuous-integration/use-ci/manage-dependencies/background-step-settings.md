@@ -23,7 +23,7 @@ A Background step starts a service and then proceeds. For any later step that re
 
 * Background steps do not support failure strategies or output variables.
 * If the pipeline runs on a VM build infrastructure, you can run the background service directly on the VM rather than in a container. To do this, leave the **Container Registry** and **Image** fields blank.
-* Depending on the stage's build infrastructure, some settings may be unavailable or optional.
+* Depending on the stage's build infrastructure, some settings may be unavailable, optional, or located under **Additional Configuration**.
 
 :::
 
@@ -240,21 +240,17 @@ You can use `docker-compose up` to start multiple services in one Background ste
 
 :::
 
-## Additional Configuration
-
-Use these optional settings to add additional configuration to the step. Settings considered optional depend on the stage's **Infrastructure** settings. Not all options are available for all build infrastructure types.
-
-### Privileged
+## Privileged
 
 Select this option to run the container with escalated privileges. This is the equivalent of running a container with the Docker `--privileged` flag.
 
-### Report Paths
+## Report Paths
 
 The path to the file(s) that store [results in JUnit XML format](../set-up-test-intelligence/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
 This setting is required for commands run in the Background step to be able to [publish test results](../set-up-test-intelligence/viewing-tests.md).
 
-### Environment Variables
+## Environment Variables
 
 You can inject environment variables into a container and use them in the **Command** script. You must input a **Name** and **Value** for each variable.
 
@@ -269,7 +265,7 @@ Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/pla
 <figcaption>Figure 5: Using an expression for an environment variable's value.</figcaption>
 </figure>
 
-### Image Pull Policy
+## Image Pull Policy
 
 If the service is running in a container, you can select an option to set the pull policy for the image.
 
@@ -277,7 +273,7 @@ If the service is running in a container, you can select an option to set the pu
 * **If Not Present**: The image is pulled only if it is not already present locally.
 * **Never**: The image is assumed to exist locally. No attempt is made to pull the image.
 
-### Port Bindings
+## Port Bindings
 
 Depending on the Build stage's **Infrastructure**, some steps might run directly on VMs while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running: VMs use the **Host Port** and containerized steps use the **Container Port**.
 
@@ -299,11 +295,11 @@ If your build stage uses Harness Cloud build infrastructure and you are running 
 
 :::
 
-### Run as User
+## Run as User
 
 If the service is running in a container, you can specify the user ID to use for all processes in the pod. For more information about how to set the value, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
-### Set Container Resources
+## Set Container Resources
 
 The maximum memory and cores that the container can use.
 

@@ -78,7 +78,7 @@ On JFrog, you can see the uploaded artifacts.
 
 ![](./static/upload-artifacts-to-jfrog-522.png)
 
-### View artifacts on the Artifacts tab
+## View artifacts on the Artifacts tab
 
 As an alternative to manually finding artifacts on JFrog, you can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifacts to the [Artifacts tab](../viewing-builds.md). To do this, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to JFrog Artifactory** step.
 

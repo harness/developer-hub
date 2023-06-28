@@ -200,6 +200,10 @@ If your codebase connector allows API access and connects through a Harness Dele
 
 ## Troubleshooting
 
+Here are some troubleshooting suggestions for BitBucket Connectors.
+
+### Connection test failing
+
 If the connection test returns a `not authorized` error, make sure you used the **Username** specified in the Bitbucket **Account settings**.
 
 ![Bitbucket Personal settings screen, highlighting the Account settings page and the Username field.](./static/bitbucket-username-in-acct-settings.png)
@@ -207,3 +211,7 @@ If the connection test returns a `not authorized` error, make sure you used the 
 The connection test may also fail if the token doesn't have sufficient privileges.
 
 ![](./static/bitbucket-connector-settings-reference-05.png)
+
+### Status doesn't update in BitBucket Cloud PRs
+
+BitBucket Cloud limits the key size for sending status updates to PRs, and this can cause incorrect status updates in PRs due to some statuses failing to send. If you encounter this issue with BitBucket Cloud, contact [Harness Support](mailto:support@harness.io) to troubleshoot this issue by enabling a feature flag, `CI_BITBUCKET_STATUS_KEY_HASH`.

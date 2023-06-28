@@ -76,7 +76,7 @@ On the [build details page](../viewing-builds.md), you can see the logs for each
 
 After the **Upload Artifacts to GCS** step runs, you can see the uploaded artifacts on GCS.
 
-### View artifacts on the Artifacts tab
+## View artifacts on the Artifacts tab
 
 As an alternative to manually finding artifacts on GCS, you can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifacts to the [Artifacts tab](../viewing-builds.md). To do this, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to GCS** step.
 
