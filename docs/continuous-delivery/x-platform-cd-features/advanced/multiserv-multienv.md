@@ -14,7 +14,13 @@ This topic describes how to use multiple services and multiple environments in a
 
 Often, you will deploy one service to one Environment in a CD stage. In some cases, you might want to use multiple services and environments in the same stage.
 
-For example, let's say you host 1 infrastructure per customer and want to deploy your service to all customer infrastructures in the same pipeline. Instead of creating separate stages for each service and infrastructure combination, you can just deploy a single service to all infrastructures in the same stage.
+For example, let's say you host one infrastructure per customer and want to deploy your service to all customer infrastructures in the same pipeline. Instead of creating separate stages for each service and infrastructure combination, you can just deploy a single service to all infrastructures in the same stage. 
+
+:::note
+
+This functionality is also supported for GitOps clusters by configuring multiple clusters per environment.
+
+:::
 
 Another example would be when you have multiple QA environments and what to deploy to all of them together.
 
