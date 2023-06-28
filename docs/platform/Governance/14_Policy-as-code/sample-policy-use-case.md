@@ -242,9 +242,9 @@ deny[msg] {
 
 ```
 
-#### Enforce execution from default branch only if user is not part of a specific userGroup for a remote Pipeline 
+#### Enforce remote pipeline execution from the default branch only if the user is not part of a specific user group
 
-Users part of a specific user group can run pipeline from any branch, but other users can run only from default branch for remote pipelines
+Users in a specific user group can run remote pipelines from any branch, but others can only run pipelines from the default branch.
 
 ```TEXT
 package pipeline
