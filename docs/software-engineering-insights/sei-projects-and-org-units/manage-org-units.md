@@ -4,116 +4,90 @@ description: Create and edit Org Units.
 sidebar_position: 40
 ---
 
-# Managing Org Units
+Org Units are groupings representing subdivisions of an [Org Unit category](./manage-org-unit-cat.md). By default, each Org Unit category has one root, or **All**, Org Unit. For example, the Teams category automatically has an **All Teams** Org Unit. Under the root Org Unit, you can create any number of Org Units and Org Unit levels.
 
-## **Viewing Org Units under an OU category**
+For example, in the Teams category, you can have an Org Unit for your Engineering teams, and then you can create a child Org Unit for the Front End team under the Engineering teams Org Unit. The resulting hierarchy might look like this:
 
-1. From the global settings page, choose the ORG UNITS tile to access the organization settings page&#x20;
+* Harness project
+  * Teams (Org Unit category)
+    * All Teams (Root Org Unit)
+      * Engineering teams (Parent Org Unit)
+        * Front End team (Child Org Unit)
+        * Other Engineering teams...
+      * Other teams...
 
-<figure><img src="../../../.gitbook/assets/Settings home page.png" alt=""><figcaption><p>Global Settings</p></figcaption></figure>
+Inheritance flows down the Org Unit levels. For example, Org Unit categories and Org Units inherit connectors from the associated [Harness project](/docs/category/organizations-and-projects), and child Org Units inherit [Insights associations](#manage-insights-associations) from their ancestor Org Units. For more information about the relationship between projects, Org Unit categories, and Org Units, go to [Project and Org Unit hierarchies](./projects-org-units-overview.md).
 
-Note: Admins can also access the Manage Org Unit option from the OU selection pages in the dashboard navigation flow from the Home page
+## View Org Units
 
-2\. You will see the list of Org Units for different categories under different tabs as a flat list.&#x20;
+In your Harness project, go to the SEI module, and go to **Org Units** under **Project Setup**.
 
-Note: By default, the Org Units shown are for the current workspace. Use the Select Workspace dropdown to view OUs for a different workspace.
+<!-- image: where to find Org Units list -->
 
-{% hint style="info" %}
-* The "Path" column shows the hierarchical position of an OU
-* The "# of Dashboards" column indicates the number of dashboards specifically associated with an Org Unit, not including inherited dashboards
-* The root Org Unit is readily accessible for viewing/editing by choosing the Root Org Unit link at the top of the org unit list
-{% endhint %}
+Org Unit categories are shown as tabs on the Org Units page. Select a category tab to view the Org Units under that category. This page shows only Org Unit categories and Org Units relevant to the current project. Switch projects to view Org Unit categories and Org Units for other projects.
 
-<figure><img src="../../../.gitbook/assets/Org Unit settings page.png" alt=""><figcaption><p>Org Unit Settings</p></figcaption></figure>
+<!-- image: Org units list page -->
 
-3\.  You can view OU hierarchy by choosing the Tree View option. Click on the arrow icons to expand or collapse the OU levels&#x20;
+On the **Flat List** view:
 
-{% hint style="info" %}
-Org Unit editing options are limited to the flat view currently.
-{% endhint %}
+* The **Path** column shows the Org Unit's hierarchical position in the Org Unit category.
+* The **# of Insights** column indicates the number of Insights specifically associated with that Org Unit. This number **doesn't** include inherited Insights from parent Org Units.
+* Select the **Root Org Unit** name to view or edit the root Org Unit.
 
-<figure><img src="../../../.gitbook/assets/OU Tree view.png" alt=""><figcaption><p>Tree view of Org Unit hierarchy</p></figcaption></figure>
+<!-- image: Org Units - Flat List view -->
 
-## **Adding or editing Org Unit settings**
+Select **Tree View** to switch to a hierarchical outline view. Use the arrow icons to expand and collapse Org Units levels.
 
-1. Choose an Org Unit category to view the Org Units under that category
+Options for editing Org Units are only available on **Flat List** view.
 
-<figure><img src="../../../.gitbook/assets/Org Unit settings page (1).png" alt=""><figcaption><p>Org Unit Settings</p></figcaption></figure>
+<!-- image: Org Units - tree view -->
 
-2\. To add an Org Unit under Teams OU category, select the + Teams option
+## Add and edit Org Units
 
-OR
+1. In your Harness project, go to the SEI module, and go to **Org Units** under **Project Setup**.
 
-To edit settings for an already existing Org Unit, choose an Org Unit e.g. Google
+<!-- image: where to find Org Units list -->
 
-{% hint style="info" %}
-Org Unit settings consists of three tabs namely Basic Info, Dashboards, and Definition. Click on each tab to edit specific settings.
-{% endhint %}
+2. Select the Org Unit categories are shown as tabs on the Org Units page. Select the category where you want to add or edit an Org Unit. This page shows only Org Unit categories and Org Units relevant to the current project. Make sure you are in the correct project before creating or editing Org Units.
 
-3\. Choose Basic Info tab to edit basic settings for an Org Unit such as Name, Description, Org Unit Category, Parent node etc.
+<!-- image: Org units list page -->
 
-Admins are empowered with more flexibility to organize Org Units in a hierarchical structure by assigning a parent node and/or an Org Unit category to an OU
+3. To add an Org Unit, select **+ [Category Name]**. For example, in the **Teams** category, select **+ Teams**. To edit an existing Org Unit, select the Org Unit name in the list.
+4. In the **Basic Info** settings, you can:
 
-{% hint style="info" %}
-* Any Org Unit in a workspace must have a unique name
-* To move an Org Unit under a different Org Unit category, use the Org Unit Category dropdown to select a category
-* To move an Org Unit under a specific Org Unit, use the Parent Node dropdown to select an Org Unit
-{% endhint %}
+  * Enter a **Name** and **Description**. Org unit names must be unique within each project.
+  * Change the associated **Org Unit Category**.
+  * Change the Org Unit's position in the hierarchy by changing the **Parent Node**.
 
-<figure><img src="../../../.gitbook/assets/Org Unit Basic tab - Google.png" alt=""><figcaption><p>Org Unit - Basic Info</p></figcaption></figure>
+<!-- image: Edit Org Unit - Basic Info settings -->
 
-\
-6\. From the Dashboards tab, you can associate specific dashboards to an Org Unit. All child Org Units automatically inherit the dashboards associated with a parent Org Unit. Refer to the [Managing dashboard associations](managing-dashboard-associations.md) section for more information.
+5. Use the **Insights** settings to [manage Insights associations](#manage-insights-associations). By default, child Org Units automatically inherit Insights associations from their ancestor Org Units.
+6. Use the **Definitions** settings to define [integrations](/docs/category/connectors-and-integrations) associated with the Org Unit. By default, if you don't specify any integrations, the Org Unit automatically inherits integrations from the associated project.
+7. Select **Save**.
 
+<!-- image: Edit Org Unit - definitions settings -->
 
+### Manage Insights associations
 
-7\. Choose the Definition tab to limit the integrations for an Org Unit.&#x20;
+All [Insights](../sei-metrics-and-insights/sei-insights.md) must be associated with at least one Org Unit. You can configure these associations through Org Unit settings or when creating or editing Insights. For information about creating and editing Insights, go to [Insights](../sei-metrics-and-insights/sei-insights.md).
 
-{% hint style="info" %}
-By default, if no integrations are selected in this tab, Org Units automatically inherit integrations from the workspace.
-{% endhint %}
+:::info Inheritance
 
-<figure><img src="../../../.gitbook/assets/Org Unit Definition tab - Google.png" alt=""><figcaption><p>Org Unit - Definition</p></figcaption></figure>
+By default, a child Org Unit automatically inherits Insights associations from its ancestor Org Units. Inherited associations can't be removed from child Org Units.
 
+Adding an Insight association to an Org Unit also adds that association to any descendant Org Units.
 
+Adding an Insight association to an Org Unit category applies the association to all Org Units under that category.
 
+:::
 
+To view or edit an Org Unit's Insights associations:
 
+1. Follow the steps to [add and edit Org Units](#add-and-edit-org-units), and go to the Org Unit's **Insights** settings.
 
+<!-- image: Edit Org Unit - Insights settings -->
 
-
-
-
-
-## Manage Insights associations
-
-xyzPropelo dashboards must be associated with an Org Unit. When creating a dashboard, you can associate that dashboard with one or more OU categories. Refer to section [Creating dashboards](../../dashboards/creating-dashboards.md) for more information on associating dashboards with an OU category at the time of creating a dashboard.&#x20;
-
-## Managing dashboard associations from Org Unit settings > Dashboard tab
-
-1. From the global settings page, choose the ORG UNITS tile to access the organization settings page&#x20;
-
-<figure><img src="../../../.gitbook/assets/Settings home page.png" alt=""><figcaption><p>Global Settings</p></figcaption></figure>
-
-2\. Choose an Org Unit to edit its settings e.g., Google
-
-<figure><img src="../../../.gitbook/assets/Org Unit settings page (1).png" alt=""><figcaption><p>Org Unit Settings</p></figcaption></figure>
-
-3\. You can create targeted dashboard associations (e.g., associate a dashboard specifically to Google OU) from the Dashboard tab under Org Unit settings**.**&#x20;
-
-{% hint style="info" %}
-* The dashboards related to an OU category will automatically be inherited by all the OUs under this category.
-* Inherited dashboards from a parent OU are pre-populated in the selected list of dashboards for an OU and cannot be removed or reordered.
-{% endhint %}
-
-<figure><img src="../../../.gitbook/assets/Dashboard association to OU - Google.png" alt=""><figcaption><p>Dashboard association for an Org Unit</p></figcaption></figure>
-
-4\. Use the arrow icons to change the order of dashboards in the selected list of dashboards. For example, press the up arrow shown on hover for Alignment dashboard to move it to the top of the list.
-
-5\. Choose the Default button to set a dashboard as the default dashboard for an Org Unit
-
-{% hint style="info" %}
-When viewing dashboards, the order of dashboards set under the Dashboards tab for an Org Unit is honored when displaying the dashboard list for an Org Unit in the dashboard header.
-{% endhint %}
-
-<figure><img src="../../../.gitbook/assets/Dashboard association to OU - default.png" alt=""><figcaption><p>Setting a default dashboard for an Org Unit</p></figcaption></figure>
+2. Select Insights on the **Available Insights** list and use the left and right arrows to move them to the **Associated Insights** list.
+3. Use the up and down arrows on the **Associated Insights** list to change the order in which the Insights are presented when viewing Insights on the Insights list or the **All Insights** dropdown menu on the Insights header.
+4. Select **Set as Default** to designate the default Insight for the Org Unit.
+5. Select **Save**.

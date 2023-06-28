@@ -4,66 +4,63 @@ description: Create and edit Org Unit categories
 sidebar_position: 30
 ---
 
-# Managing Org Unit categories
+Org Unit categories are broad classifications that serve as containers for [Org Units](./manage-org-units.md) but are not, themselves, Org Units. For example, **Teams** is an Org Unit category; whereas **Engineering Team** and **Docs Team** are Org Units under the **Teams** category.
 
-By default, a Workspace consists of three top-level Org Unit categories: namely Teams, Projects, and Sprints. Under each OU category, a top level (root) Org Unit node will be available by default, e.g. All Teams (under the Teams OU category) under which you can create more OUs in parent-child hierarchies.
+Each [Harness project](/docs/category/organizations-and-projects) has three default Org Unit categories: Teams, Projects, and Sprints. You can modify the default categories and create custom categories.
 
-## **Viewing and editing Org Unit category settings**
+:::info Harness projects and Org Unit projects
 
-1. From the global settings page, choose the ORG UNITS tile to access the organization settings page
+The **Projects** Org Unit category is not the same as your Harness projects. This category is meant to represent sub-projects under the umbrella of the Harness Project. For example, if your Harness projects align with apps that you develop, your sub-projects could be epics, components, or Jira projects.
 
-<figure><img src="../../.gitbook/assets/Settings home page.png" alt=""><figcaption><p>Global Settings</p></figcaption></figure>
+:::
 
-Note: Admins can also access the Manage Org Unit option from the OU selection pages in the dashboard navigation flow from the Home page
+For more information about the relationship between projects, Org Unit categories, and Org Units, go to [Project and Org Unit hierarchies](./projects-org-units-overview.md).
 
-2\. You will see the list of Org Unit categories as different tabs in this page.&#x20;
+## View, edit, and enable/disable Org Unit categories
 
-By default, the Org Units shown are for the current workspace. Use the Select Workspace dropdown to view OUs for a different workspace.
+1. In your Harness project, go to the SEI module, and go to **Org Units** under **Project Setup**.
 
-<figure><img src="../../.gitbook/assets/Org Unit settings page.png" alt=""><figcaption><p>Org Unit Settings</p></figcaption></figure>
+<!-- image: Where to find org unit category settings -->
 
-3\. Choose an Org Unit category e.g., Teams and choose the settings icon to view or edit the category settings.&#x20;
+Org Unit categories are shown as tabs on the Org Units page. This page shows only Org Unit categories and Org Units relevant to the current project. Switch projects to view Org Unit categories and Org Units for other projects.
 
-<div align="left">
+<!-- image: Org units list page -->
 
-<figure><img src="../../.gitbook/assets/Org unit category settings.png" alt=""><figcaption><p>Org Unit Category settings</p></figcaption></figure>
+2. Select the tab for the Org Unit category that you want to edit, and then select the **Settings** icon next to the Org Unit category name.
+3. On the **Edit Org Unit Category** dialog, you can:
 
-</div>
+   * Edit the **Name** and **Description**.
+   * Enable or disable the Org Unit category. Disabled categories are not visible on landing pages, Insights, or elsewhere in SEI, except on the Org Unit Settings page for SEI Admin users.
 
-## **Enabling or disabling an Org Unit category**
+<!-- image: Edit Org Unit Category page -->
 
-From Org Unit category settings dialog, you can choose to enable (or disable) an OU category.&#x20;
+## Add Org Unit categories
 
-{% hint style="info" %}
-Disabled OU categories will not be visible on landing pages, dashboards or elsewhere in Propelo. They are only visible in Settings for Admins.&#x20;
-{% endhint %}
+1. In your Harness project, go to the SEI module and go to **Org Units** under **Project Setup**.
 
-<div align="left">
+<!-- image: Where to find org unit category settings -->
 
-<figure><img src="../../.gitbook/assets/Org unit category settings.png" alt=""><figcaption><p>Org Unit Category settings</p></figcaption></figure>
+Org Unit categories are shown as tabs on the Org Units page. This page shows only Org Unit categories and Org Units relevant to the current project. Make sure you are in the correct project before creating an Org Unit category.
 
-</div>
+<!-- image: Org units list page -->
 
-## Adding a custom Org Unit category
+2. Select **Add Custom**.
 
-1. From the global settings page, choose the ORG UNITS tile to access the organization settings page
+:::tip Get Support
 
-<figure><img src="../../.gitbook/assets/Settings home page.png" alt=""><figcaption><p>Global Settings</p></figcaption></figure>
+Adding custom Org Unit categories is considered an advanced feature. It is recommended to contact [Harness Support](mailto:support@harness.io) to ensure proper configuration.
 
-<figure><img src="../../.gitbook/assets/Org Unit settings page.png" alt=""><figcaption><p>Org Unit Settings</p></figcaption></figure>
+:::
 
+<!-- image: custom OU category warning -->
 
+3. Enter a **Name** and **Description**.
+4. Select **Enable Org Unit Category** to make the category available for Insights and elsewhere in SEI.
+5. Enter the **Root OU Name**. This is the name of the default, root Org Unit in this Org Unit category. It usually follows the format of `All + Org Unit category name`. For example, the root Org Unit for the Teams category is `All Teams`.
+6. Select **Save**.
 
-3\. Choose the Add Custom+ button to add a custom Org Unit category under the selected workspace and enter the required details
+<!-- image: Add org unit category dialog -->
 
-{% hint style="info" %}
-Note: Since adding a custom OU category is an advanced feature, contact Propelo Customer Support to ensure proper configuration.
-{% endhint %}
+The new Org Unit category is added as a tab to the Org Units page. From here, [add Org Units](./manage-org-units.md) to your new Org Unit category.
 
-<figure><img src="../../.gitbook/assets/Add custom 1.png" alt=""><figcaption><p>Adding custom Org Unit Category</p></figcaption></figure>
-
-4\. Choose Save to finish adding the custom OU category
-
-<figure><img src="../../.gitbook/assets/Add custom 2.png" alt=""><figcaption><p>Adding custom Org Unit Category</p></figcaption></figure>
-
-<figure><img src="../../.gitbook/assets/Add custom 3.png" alt=""><figcaption><p>Org Unit Settings showing the custom OU category</p></figcaption></figure>
+<!-- image: Org units list with new category tab -->

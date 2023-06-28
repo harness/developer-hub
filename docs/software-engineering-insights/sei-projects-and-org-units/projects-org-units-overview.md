@@ -4,7 +4,11 @@ description: Learn how projects and Org Units create hierarchies in SEI.
 sidebar_position: 10
 ---
 
-Hierarchies in SEI keep data organized. At the top of the hierarchy is a [Harness project](/docs/category/organizations-and-projects). Under each project are Organization Unit categories and one or more levels of Organizational Units. Organizational Units can be shortened as Org Units or OUs.
+Hierarchies in SEI keep data organized. At the top of the hierarchy is a [Harness project](/docs/category/organizations-and-projects). Under each project are Org Unit categories and one or more levels of Org Units.
+
+* **Harness project:** The umbrella for the SEI Org Unit hierarchy. Org Unit categories and Org Units exist under their associated project; they don't span across projects. While multiple projects can have Org Unit categories and Org Units with the same name, these are distinct groups under their designated project.
+* **Org Unit categories:** Broad classifications that serve as containers for Org Units but are not, themselves, Org Units. For example, **Teams** is an Org Unit category; whereas **Engineering Team** and **Docs Teams** are Org Units under the **Teams** category.
+* **Org Units:** Groupings or narrow classifications that are subdivisions of Org Unit categories. Each Org Unit category also has one root group that is the **All** Org Unit. For example, the root Org Unit for the **Teams** category is **All Teams**.
 
 <figure>
 
@@ -15,9 +19,17 @@ Hierarchies in SEI keep data organized. At the top of the hierarchy is a [Harnes
 
 Projects, Org Unit categories, and Org Units provide a broad way of organizing, filtering, and scoping data so you can examine data for different teams, lines of business, development initiatives, sprints, or other scopes. From there, you can configure [Metrics and Insights](/docs/categories/metrics-and-insights) to further refine and examine different facets of your teams' data.
 
+:::info
+
+Org Unit is short for Organizational Unit. It is also abbreviated as OU.
+
+:::
+
 ## Projects
 
-Projects, in addition to the roles they serve elsewhere in the Harness Platform, provide an umbrella for you to organize the Org Unit hierarchy and access Insights associated with specific Org Units.
+[Projects](/docs/category/organizations-and-projects), in addition to the roles they serve elsewhere in the Harness Platform, provide an umbrella for you to organize the Org Unit hierarchy and access Insights associated with specific Org Units.
+
+Org Unit categories and Org Units exist under their associated project; they don't span across projects. While multiple projects can have Org Unit categories and Org Units with the same name, these are distinct groups under their designated project.
 
 [Insights](../sei-metrics-and-insights/sei-insights.md) are associated with a specific project and one or more specific Org Unit categories and Org Units under that project. It is not possible to create Insights that aggregate data from multiple projects.
 
@@ -27,11 +39,13 @@ While you can create projects from within the SEI module, projects are part of t
 
 ## Org Unit categories
 
-By default, each project has three top-level Org Unit categories: Teams, Projects, and Sprints. You can modify the default categories and create custom categories. Org Unit categories are containers for Org Units.
+Org Unit categories are broad classifications that serve as containers for Org Units but are not, themselves, Org Units. For example, **Teams** is an Org Unit category; whereas **Engineering Team** and **Docs Team** are Org Units under the **Teams** category.
+
+Each project has three default Org Unit categories: Teams, Projects, and Sprints. You can modify the default categories and create custom categories.
 
 :::info Harness projects and Org Unit projects
 
-The **Projects** Org Unit category is not the same as your Harness projects. This category is meant to represent sub-projects under the umbrella of the Harness Project. For example, if your Harness projects align with apps that you develop, your sub-projects could be epics, components, or Jira projects.
+The **Projects** Org Unit category is not the same as your Harness projects. This category is meant to represent sub-projects under the umbrella of the Harness Project. For example, if your Harness projects align with apps that you develop, then your sub-projects could be epics, components, or Jira projects.
 
 :::
 
@@ -39,7 +53,7 @@ For information about configuring Org Unit categories, go to [Manage Org Unit ca
 
 ## Org Units
 
-Under each Org Unit category are one or more levels of Org Units. Inheritance flows down the Org Unit levels. For example, all Org Unit categories and Org Units automatically inherit connectors from the associated Harness project.
+Under each Org Unit category are one or more levels of Org Units. Org Units are groupings or focused classifications that are subdivisions of Org Unit categories. Inheritance flows down the Org Unit levels. For example, all Org Unit categories and Org Units automatically inherit connectors from the associated Harness project.
 
 By default, each Org Unit category has one root, or **All**, Org Unit node. For example, the Teams category automatically has an **All Teams** Org Unit. Under the root node, you can create any number of Org Units and Org Unit levels.
 
