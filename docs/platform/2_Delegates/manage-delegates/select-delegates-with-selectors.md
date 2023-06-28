@@ -121,6 +121,18 @@ You only need to select one of a delegate's tags to select it. All delegates wit
 
 Go to [Delegate Group Tags Resource](https://harness.io/docs/api/tag/Delegate-Group-Tags-Resource/).
 
+### Option: Delegate Selectors can be defined as a fixed value, runtime input and expression
+
+Delegate selectors in pipeline, stage, step and step group can be defined as a fixed value, runtime input or an expression. 
+
+With expression also, there are two options, either the entire list of delegate selectors can be an expression like or elements of delegate selectors can be expressions.
+
+Please go through the following video to understand how to define delegate selectors as expression:
+
+<!-- Video:
+https://harness-24.wistia.com/medias/8ffcic0xpi-->
+<docvideo src="https://harness-24.wistia.com/medias/8ffcic0xpi" />
+
 ### See also
 
 * [Delegate overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
