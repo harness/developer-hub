@@ -165,7 +165,7 @@ To use **Guide From Example** for a host or container name expression, do the fo
 
 In the **Guide From Example** section above we used a **host** example for the **Expression for Host/Container name** field, but if the Workflow is deploying Kubernetes, you will likely use **pod** or **pod\_name** or a custom label.
 
-For Kubernetes deployments, your Splunk account must perform Kubernetes log collection. This is typically done using [Splunk Connect for Kubernetes](https://github.com/splunk/splunk-connect-for-kubernetes). For information on using Splunk Connect, see [Deploy Splunk Enterprise on Kubernetes](https://www.splunk.com/blog/2018/12/17/deploy-splunk-enterprise-on-kubernetes-splunk-connect-for-kubernetes-and-splunk-insights-for-containers-beta-part-1.html) on the Splunk Blog.
+For Kubernetes deployments, your Splunk account must perform Kubernetes log collection. This is typically done using [Splunk Connect for Kubernetes](https://github.com/splunk/splunk-connect-for-kubernetes). For information on using Splunk Connect, see [Deploy Splunk Enterprise on Kubernetes](https://www.splunk.com/en_us/blog/platform/introducing-splunk-operator-for-kubernetes-2-0.html) on the Splunk Blog.
 
 In addition, the Splunk [fields.conf](https://docs.splunk.com/Documentation/ITSI/4.2.1/Configure/fields.conf) file should contain the following fields in order to search Kubernetes logs in Splunk:
 
