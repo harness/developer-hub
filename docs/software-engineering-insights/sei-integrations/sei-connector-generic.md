@@ -358,32 +358,24 @@ The following table lists other Jenkins plugins for which the Job Reporter plugi
 
 ## Custom CI/CI integrations
 
-Propelo supports custom CICD integrations via webhooks
+SEI supports custom CI/CD integrations through webhooks.
 
-## Pre-Requisites
+1. Create a [Harness API key](/docs/platform/user-management/add-and-manage-api-keys/) to use for authorization.
+2. Contact [Harness Support](mailto:support@harness.io) to get a UUID to identify your CI/CD system.
+3. In your Harness project, go to the SEI module, and select **Connectors** under **Project Setup**.
+4. Add a connector and select the generic **SEI connector**.
+5. Configure the connector for a custom CI/CD integration. Configure the webhook API call according to the [webhook specification](#webhook-specification).
 
-1. Create a Propelo api key to use for authorization here: [https://app.propelo.ai/#/admin/configuration/apikeys](https://app.propelo.ai/#/admin/configuration/apikeys)
-2. You will also need a uuid to identify your CICD system. Please request uuid at support@propelo.ai
+### Webhook specification
 
-## Web hook API Call
+* Summary: Post CI/CD data to SEI
+* Method: POST
+* Base URL: `https://api.levelops.io/v1/generic-requests`
+* Header: Requires API key authorization. The content type is `application/json`
+* Body: Contains a `data` object with `request_type` and `payload`.
 
-{% swagger method="post" path="" baseUrl="https://api.levelops.io/v1/generic-requests" summary="Post CICD data to Propelo" %}
-{% swagger-description %}
-
-{% endswagger-description %}
-
-{% swagger-parameter in="header" name="Authorization" required="true" %}
-Apikey <Apikey>
-{% endswagger-parameter %}
-
-{% swagger-parameter in="header" name="Content-type" required="true" %}
-application/json
-{% endswagger-parameter %}
-
-{% swagger-parameter in="body" required="true" name="data" %}
-"{\\"pipeline\\":\\"Node.js CI\\",\\"triggered_by\\":\\"SCMTrigger\\",\\"execution_parameters\\":[{\\"type\\":\\"StringParameterValue\\",\\"name\\":\\"version\\",\\"value\\":1},{\\"type\\":\\"StringParameterValue\\",\\"name\\":\\"revision\\",\\"value\\":1}],\\"repo_url\\":\\"https://api.github.com/users/rajpropelo\\",\\"start_time\\":1680006843000,\\"result\\":\\"success\\",\\"duration\\":26000,\\"build_number\\":4543097378,\\"instance_guid\\":\\"24575de4-0baa-4575-8c94-9975c737008a\\",\\"instance_name\\":\\"Jenkins Instance\\",\\"instance_url\\":\\"https://jenkins.dev.levelops.io/\\",\\"job_run\\":null,\\"job_full_name\\":\\"Node.js CI--github action\\",\\"qualified_name\\":\\"Node.js CI--github action\\",\\"branch_name\\":\\"main\\",\\"module_name\\":null,\\"scm_commit_ids\\":[\\"6ce2cfec186fbf9ae9429ad22e32e7770f1eb1fb\\"],\\"ci\\":true,\\"cd\\":false,\\"artifacts\\":[{\\"input\\":false,\\"output\\":true,\\"type\\":\\"container\\",\\"location\\":\\"http://generated/image/location\\",\\"name\\":\\"image1\\",\\"qualifier\\":\\"1\\"}],\\"trigger_chain\\":[{\\"id\\":\\"SCMTrigger\\",\\"type\\":\\"SCMTriggerCause\\"}]}"
-{% endswagger-parameter %}
-{% endswagger %}
+<details>
+<summary>Request example</summary>
 
 ```
 // POST CICD data to Propelo
@@ -392,22 +384,101 @@ curl --location 'https://api.propelo.ai/v1/generic-requests' \
 --header 'Content-Type: application/json' \
 --data '{
     "request_type": "JenkinsPluginJobRunComplete",
-    "payload": "{\"pipeline\":\"Node.js CI\",\"triggered_by\":\"SCMTrigger\",\"execution_parameters\":[{\"type\":\"StringParameterValue\",\"name\":\"version\",\"value\":1},{\"type\":\"StringParameterValue\",\"name\":\"revision\",\"value\":1}],\"repo_url\":\"https://api.github.com/users/rajpropelo\",\"start_time\":1680006843000,\"result\":\"success\",\"duration\":26000,\"build_number\":4543097378,\"instance_guid\":\"24575de4-0baa-4575-8c94-9975c737008a\",\"instance_name\":\"Jenkins Instance\",\"instance_url\":\"https://jenkins.dev.levelops.io/\",\"job_run\":null,\"job_full_name\":\"Node.js CI--github action\",\"qualified_name\":\"Node.js CI--github action\",\"branch_name\":\"main\",\"module_name\":null,\"scm_commit_ids\":[\"6ce2cfec186fbf9ae9429ad22e32e7770f1eb1fb\"],\"ci\":true,\"cd\":false,\"artifacts\":[{\"input\":false,\"output\":true,\"type\":\"container\",\"location\":\"http://generated/image/location\",\"name\":\"image1\",\"qualifier\":\"1\"}],\"trigger_chain\":[{\"id\":\"SCMTrigger\",\"type\":\"SCMTriggerCause\"}]}"
+    "payload": "{
+        "pipeline":"Node.js CI",
+        "triggered_by":"SCMTrigger",
+        "execution_parameters":
+            [{"type":"StringParameterValue","name":"version","value":1},
+            {"type":"StringParameterValue","name":"revision","value":1}],
+        "repo_url":"https://api.github.com/users/rajpropelo",
+        "start_time":1680006843000,
+        "result":"success",
+        "duration":26000,
+        "build_number":4543097378,
+        "instance_guid":"24575de4-0baa-4575-8c94-9975c737008a",
+        "instance_name":"Jenkins Instance",
+        "instance_url":"https://jenkins.dev.levelops.io/",
+        "job_run":null,
+        "job_full_name":"Node.js CI--github action",
+        "qualified_name":"Node.js CI--github action",
+        "branch_name":"main",
+        "module_name":null,
+        "scm_commit_ids":["6ce2cfec186fbf9ae9429ad22e32e7770f1eb1fb"],
+        "ci":true,
+        "cd":false,
+        "artifacts":
+            [{"input":false,"output":true,"type":"container","location":"http://generated/image/location","name":"image1","qualifier":"1"}],
+        "trigger_chain":[{"id":"SCMTrigger","type":"SCMTriggerCause"}]
+        }"
 }'
 ```
 
-### Required fields in payload
+</details>
 
-* pipeline : Name of the CICD job
-* instance\_name: Identifier for CICD instance
-* job\_full\_name: same as job name
-* qualified\_name: same as job name
-* start\_time : start time in epoch milliseconds
-* result: SUCCESS or FAILURE
-* duration: duration in seconds
-* instance_\__guid: uuid from Propelo Support
+#### Payload fields
 
-### Optional fields in payload
+`payload` is an object with required and optional fields.
 
-* execution\_parameters: An array of key/value objects that can be used to send additional information about the pipeline or deployment
-* scm\_commit\_ids: Array of commit ids related to the deployment
+Required fields:
+
+* `pipeline`: The name of the CI/CD job.
+* `job_full_name`: Same as `pipeline`.
+* `qualified_name`: Same as `pipeline`.
+* `instance_name`: The CI/CD instance identifier (not the UUID).
+* `instance_guid`: Your CI/CD instance UUID.
+* `start_time`: Job start time in epoch milliseconds.
+* `duration`: Job duration in seconds.
+* `result`: Either `success` or `failure`.
+
+
+Optional fields:
+
+* `execution_parameters`: An array of key/value objects that can be used to send additional information about the pipeline or deployment.
+* `scm_commit_ids`: An array of commit ids related to the deployment
+* `triggered_by`
+* `repo_url`
+* `build_number`
+* `instance_url`
+* `job_run`
+* `module_name`
+* `ci` and `cd`: One is `true` and the other is `false`, depending on whether this is for a CI or a CD job.
+* `artifacts`
+* `trigger_chain`
+
+<details>
+<summary>Payload example</summary>
+
+```json
+'{
+    "pipeline":"Node.js CI",
+    "triggered_by":"SCMTrigger",
+    "execution_parameters":[
+        {"type":"StringParameterValue","name":"version","value":1},
+        {"type":"StringParameterValue","name":"revision","value":1}
+        ],
+    "repo_url":"https://api.github.com/users/rajpropelo",
+    "start_time":1680006843000,
+    "result":"success",
+    "duration":26000,
+    "build_number":4543097378,
+    "instance_guid":"24575de4-0baa-4575-8c94-9975c737008a",
+    "instance_name":"Jenkins Instance",
+    "instance_url":"https://jenkins.dev.levelops.io/",
+    "job_run":null,
+    "job_full_name":"Node.js CI--github action",
+    "qualified_name":"Node.js CI--github action",
+    "branch_name":"main",
+    "module_name":null,
+    "scm_commit_ids":["6ce2cfec186fbf9ae9429ad22e32e7770f1eb1fb"],
+    "ci":true,
+    "cd":false,
+    "artifacts":[
+        {"input":false,"output":true,"type":"container","location":"http://generated/image/location","name":"image1","qualifier":"1"}
+        ],
+    "trigger_chain":[
+        {"id":"SCMTrigger","type":"SCMTriggerCause"}
+        ]
+}'
+```
+
+</details>
