@@ -242,6 +242,32 @@ deny[msg] {
 
 ```
 
+#### Enforce remote pipeline execution from the default branch only if the user is not part of a specific user group
+
+Users in a specific user group can run remote pipelines from any branch, but others can only run pipelines from the default branch.
+
+```TEXT
+package pipeline
+
+# Deny when the current date is after a start date and before an end date
+# Could be used for deployment freezes
+deny[msg] {
+        # Find all user groups that are in the project
+        userGroup = input.metadata.userGroups[_]
+        userGroup.identifier == "groupIdentifier"
+	
+	# Ensure if user is not part of the specific group 
+        not contains(userGroup.users, input.metadata.user.uuid)
+  
+	# Ensure user is running pipeline only from default branch
+        input.pipeline.gitConfig.branch == "defaultBranch"
+
+	# Show a human-friendly error message
+	msg := "Execution is only allowed from default branch for this user"
+}
+
+```
+
 
 ### Feature Flag policies
 

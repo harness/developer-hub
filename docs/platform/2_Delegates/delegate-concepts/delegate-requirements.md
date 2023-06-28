@@ -48,11 +48,10 @@ Go to [Allowlist Harness Domains and IPs](/docs/platform/20_References/allowlist
 
 The following network requirements are for connectivity between the Harness Delegate you run in your network and the **Harness Manager** (SaaS or on-prem), and for your browser connection to the Harness Manager.
 
-:::note
+:::info note
 All network connections from your local network to Harness SaaS are outbound-only.
 :::
 
-All network connections from your local network to Harness SaaS are outbound-only.
 * HTTPS port 443 outbound from the delegate to Harness.
 * Delegate requirements: The delegate needs API/SSH/HTTP access to the providers you add to Harness, such as:
 	+ Cloud Providers.

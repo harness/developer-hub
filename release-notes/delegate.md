@@ -122,7 +122,7 @@ This release includes the following fixes:
 <summary>Expand this section to view changes to previous releases</summary>
 
 
-## May 23, 2023, Harness version 79306, Harness Delegate version 79307
+#### May 23, 2023, Harness version 79306, Harness Delegate version 79307
 
 Harness NextGen release 79306 includes the following changes for the Harness Delegate.
 
