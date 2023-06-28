@@ -17,15 +17,15 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 27, 2023
+## Latest - June 28, 2023
 
-### Continuous Delivery, version 79700
+### Continuous Delivery, version 79714
 
 - JSON support for expressions. (CDS-73057)
   
   Harness supports a new setting, `Enable JSON Support for Expressions` at the account level. Enabling this setting allows you to reference JSON parsers within expressions. This setting is turned off by default. 
 
-  <!-- For more details, go to [Writing expressions using any JSON parser tool](/docs/platform/Variables-and-Expressions/expression-v2). -->
+  For more details, go to [Writing expressions using any JSON parser tool](/docs/platform/Variables-and-Expressions/expression-v2).
 - Added tooltip and banner to provide more information about webhook payloads. (CDS-53874)
   
   <docimage path={require('./static/payload-input.png')} width="60%" height="60%" title="Click to view full size image" />  

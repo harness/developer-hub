@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-06-27T10:00:15
+date: 2023-06-28T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 27, 2023, version 79700
+## Latest - June 27, 2023, version 79714
 
 ```mdx-code-block
 <Tabs>
@@ -25,7 +25,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   Harness supports a new setting, `Enable JSON Support for Expressions` at the account level. Enabling this setting allows you to reference JSON parsers within expressions. This setting is turned off by default. 
 
-  <!-- For more details, go to [Writing expressions using any JSON parser tool](/docs/platform/Variables-and-Expressions/expression-v2). -->
+  For more details, go to [Writing expressions using any JSON parser tool](/docs/platform/Variables-and-Expressions/expression-v2).
 - Added tooltip and banner to provide more information about webhook payloads. (CDS-53874)
   
   <docimage path={require('./static/payload-input.png')} width="60%" height="60%" title="Click to view full size image" />  

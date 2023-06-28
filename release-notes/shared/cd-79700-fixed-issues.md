@@ -34,7 +34,7 @@
   This item requires Harness Delegate version 797xx. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
 - Quotations were added to execution YAML strings inconsistently when comparing pipeline YAMLs. (CDS-67637)
   
-  This issue is fixed by enabling `MINIMIZE_QUOTES` for YamlUtils and YamlPipelineUtils classes. The compiled YAML no longer have quotations around strings where they are not needed, but only around numbers. Even if you had added quotations in the string values in the pipeline YAML, they'll be removed in the compiled YAML. Also, there won't be unnecessary audit trails where the diff only has quotations around strings.
+  This issue is fixed by enabling `MINIMIZE_QUOTES` for YamlUtils and YamlPipelineUtils classes. The compiled YAML no longer has quotations around strings where they are not needed, but only around numbers. Even if you had added quotations in the string values in the pipeline YAML, they'll be removed in the compiled YAML. Also, there won't be unnecessary audit trails where the diff only has quotations around strings.
 
   This item requires Harness Delegate version 797xx. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
 
