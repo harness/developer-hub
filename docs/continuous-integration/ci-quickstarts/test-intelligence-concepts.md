@@ -76,7 +76,7 @@ TI identifies the programming language and uses the **Run Tests** step to run th
 
 ## Synchronization and test selection
 
-TI is always up to date and syncs when you merge the code to the any branch.
+TI is always up to date and syncs when you merge code to any branch.
 
 When you perform a pull request, TI determines which tests should be run based on the following metrics:
 
