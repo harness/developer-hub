@@ -1,5 +1,5 @@
 ---
-title: Propels
+title: Propels overview
 description: Propels are a no-code/low-code automation framework.
 sidebar_position: 10
 ---
