@@ -18,7 +18,7 @@ For example, let's say you host one infrastructure per customer and want to depl
 
 :::note
 
-This functionality is supported for GitOps clusters by configuring multiple clusters per environment.
+This functionality is also supported for GitOps clusters by configuring multiple clusters per environment.
 
 :::
 

@@ -121,7 +121,7 @@ Make sure that you deploy only one GitOps Agent per Argo CD namespace. Deploying
 
 Harness supports mapping Argo CD projects into Harness projects through the Agent that controls the Argo CD deployment. When importing Argo CD projects, Harness maps Argo CD projects into Harness projects that belong to one account.
 
-Enabling multiple Agents in one Argo CD namespace allows cross-account resource sharing. Harness does not support cross-account sharing.
+Enabling multiple Agents in one Argo CD namespace implies cross-account resource sharing which Harness does not support.
 
 :::
 
