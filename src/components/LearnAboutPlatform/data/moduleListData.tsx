@@ -74,16 +74,4 @@ export const moduleList: CardItem[] = [
     ),
     link: "docs/internal-developer-portal",
   },
-  {
-    title: "Harness Platform",
-    module: MODULES.platform,
-    // icon: "img/logo.svg",
-    description: (
-      <>
-        Install a Kubernetes or Docker delegate, Onboard with Terraform
-        Provider, and more.
-      </>
-    ),
-    link: "docs/platform",
-  },
 ];
