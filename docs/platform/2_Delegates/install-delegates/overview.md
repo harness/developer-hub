@@ -85,13 +85,24 @@ sudo apt-get -y install podman
 podman pull docker.io/harness/delegate:yy.mm.xxxxx
 
 podman run --restart=always --hostname="$(hostname -f | head -c 63)"
--e DELEGATE_NAME=podman-delegate
+-e DELEGATE_NAME=YOUR_DELEGATE_NAME
 -e NEXT_GEN="true"
 -e DELEGATE_TYPE="DOCKER"
 -e ACCOUNT_ID=YOUR_ACCOUNT_ID
 -e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN
--e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/
--e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis docker.io/harness/delegate:yy.mm.xxxxx
+-e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/
+-e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE
+delegate:yy.mm.xxxxx
 
 podman ps
 ```
+
+Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+
+| Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
+| ------------------------| -------------------------------------------	|
+| SaaS prod-1  	 		| `https://app.harness.io`       				|
+| SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
+| SaaS prod-3  	 		| `https://app3.harness.io`        				|
+| [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
+| [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
