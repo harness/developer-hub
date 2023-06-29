@@ -22,9 +22,19 @@ CE supports these Kubernetes distributions:
 * AKS
 * VMware Tanzu
 
+#### Container runtimes
+
+The supported container runtimes are as follows:
+
+* Docker
+* Crio
+* Containerd
+
 ### Linux
 
 #### Linux distributions
+
+CE supports these Linux OS distributions:
 
 * Ubuntu version 16+
 * Debian version 10+
@@ -33,24 +43,16 @@ CE supports these Kubernetes distributions:
 * Fedora version 30+
 * openSUSE Leap version 15.4+
 
-## Container runtimes
-
-CE supports these container runtimes:
-
-* Docker
-* Crio
-* Containerd
-
-## Chaos fault types 
+## Chaos fault types
 
 The following table shows available fault types and where they are supported. For a complete list and detailed information, go to [Chaos faults](/docs/chaos-engineering/technical-reference/chaos-faults/).
 
-| Fault type | Linux | K8s | Windows | VMware | AWS | GCP | AKS |
-|------------|-------|-----|---------|--------|-----|-----|-----|
-| Networking | ✅    |     | ✅      | ✅    |     |     |     |  
-| HTTP       |        | ✅  |         | ✅    |    |     |      |
-| DNS        | ✅     | ✅  | ✅      | ✅    |    |    |      |
-| Time faults | ✅    |     |         |        |    |   |       |
-| Resource stress | ✅| ✅  | ✅     |  ✅    |    |    |  ✅  |
-| Status change |  ✅  |    |        |        |    |     |      |
-| I/O system | ✅      | ✅ | ✅     | ✅    |     |    | ✅   |
+| Fault type | Linux | K8s | Windows | VMware | AWS | GCP | Azure |
+|------------|-------|-----|---------|--------|-----|-----|-------|
+| **Network**<br>For eg. Network loss, Network latency, etc. | ✅    |   ✅  | ✅      | ✅    |  ✅  |     |     |
+| **HTTP**<br>For eg. HTTP latency, HTTP modify body, etc. |        | ✅  |         | ✅    |  ✅  |     |      |
+| **DNS**<br>For eg. DNS error, DNS spoof, etc. | ✅     | ✅  | ✅ |    ✅    |  ✅  |    |      |
+| **System time**<br>For eg. Time skew chaos, etc.  | ✅    |  ✅  |         |        |    |   |       |
+| **Resource stress**<br>For eg. CPU stress, Memory stress, etc. | ✅| ✅  | ✅     |  ✅    |  ✅  |    |  ✅  |
+| **State change**<br>For eg. VM stop, Process kill, etc.  |  ✅  |    |        |   ✅   |  ✅  |   ✅  |   ✅   |
+| **Managed Services**<br>For eg. AWS ECS agent stop, Azure web app stop, etc. |   |   |   |   ✅   |  ✅  |   ✅  |   ✅   |
