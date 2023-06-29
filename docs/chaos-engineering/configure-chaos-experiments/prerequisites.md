@@ -7,7 +7,15 @@ This topic describes the requirements and resources you need to run chaos experi
 
 ## Chaos infrastructure requirements
 
-The following are the chaos infrastructure Execution Plane components. These components are installed in your target cluster, allowing the chaos infrastructure to run experiments there. Chaos infrastructure runs within your target environment to aid CE in accessing the target resources and injecting chaos at a cloud-native scale.
+The following are the chaos infrastructure Execution Plane components and required resources . These components are installed in your target cluster, allowing the chaos infrastructure to run experiments there. Chaos infrastructure runs within your target environment to aid CE in accessing the target resources and injecting chaos at a cloud-native scale.
+
+| Deployment | Container | CPU<br />required | Memory<br />required | Image |
+|------------|-----------|-------------------|----------------------|-------|
+| chaos-operator-ce  | chaos-operator-ce     | 125m | 300M | chaosnative/chaos-operator          |
+| chaos-exporter     | chaos-exporter        | 125m | 300M | chaosnative/chaos-exporter          |
+| subscriber         | subscriber            | 125m | 300M | chaosnative/harness-chaos-subscriber|
+| workflow-controller| workflow-controller   | 125m | 300M | chaosnative/workflow-controller     |
+
 
 ## Add users to a project to run chaos experiments
 
