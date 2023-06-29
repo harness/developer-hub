@@ -43,7 +43,7 @@ Here're some examples where AIDA is used to troubleshoot issues in CD:
 
 ### Processing the error logs of a failed Kubernetes deployment
 
-AIDA processes the error logs of a Kubernetes failed deployment and provide remediation to help developers figure out how resolve the failures. AIDA helps find resolution errors within or outside of Harness.
+AIDA processes the error logs of a failed Kubernetes deployment and provide remediation to help developers figure out how resolve the failures. AIDA helps find resolution to errors within or outside of Harness.
 
 For example, a Kubernetes deployment failed due to a non-existent namespace in a cluster. 
 
