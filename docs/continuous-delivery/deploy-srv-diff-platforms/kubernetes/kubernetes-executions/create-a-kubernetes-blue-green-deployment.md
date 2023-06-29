@@ -149,13 +149,20 @@ Additionally, you can add a Blue Green Stage Scale Down step to scale down the l
 
 :::info
 
-This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`. 
+This is currently a beta functionality, and is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`. 
 
 :::
 
 ![bg scale down](./static/bg-scale-down-step.png)
 
 This functionality helps you efficiently manage your resources. You can configure the scale down step within the same stage or a different stage, based on your requirement.
+
+Here's a quick video walking through a simple Blue Green Stage Scale Down step:  
+
+<!-- Video:
+https://www.loom.com/share/c6fdc714f4234cd093a26d68dbdafdd8?sid=f1980faf-2646-4ea0-852f-a92a9fb1c7c6-->
+<docvideo src="https://www.loom.com/share/c6fdc714f4234cd093a26d68dbdafdd8?sid=f1980faf-2646-4ea0-852f-a92a9fb1c7c6" />
+
 
 During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets, and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
