@@ -463,6 +463,22 @@ TF_VAR_alist='[1,2,3]'
 ```
 You can use Harness encrypted text for values. See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
+## Encrypt terraform apply json outputs
+
+Currently, this feature is behind the flag `CDS_ENCRYPT_TERRAFORM_APPLY_JSON_OUTPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+This feature will encrypt and provide the terraform json outputs as a secret expression in Terraform Apply Step. As an example, the below terraform json outputs will be encrypted and the terraform apply step output 
+will have an expression like this: `<+secrets.getValue("encrypted_tf_output_id_1")>`.
+```
+{
+"test-output-name1": {
+"sensitive": false,
+"type": "string",
+"value": "test-output-value1"
+}
+```
+This secret expression is intended to be used in other steps which can parse,validate and extract the needed output values from the json.
+
 ## Command line options
 
 :::note
