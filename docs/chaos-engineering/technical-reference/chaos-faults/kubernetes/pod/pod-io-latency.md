@@ -2,6 +2,9 @@
 id: pod-io-latency
 title: Pod IO latency
 ---
+
+import IOFaultsCaution from './shared/io-faults-caution.md'
+
 Pod IO latency simulates slow I/O operations by introducing delays in file system calls within a container. This fault is used for testing the resilience, performance, and scalability of the pod.
 This can help identify performance bottlenecks, test the system's ability to handle high loads, and evaluate its behavior in high-stress scenarios.
 
@@ -13,6 +16,8 @@ Pod IO latency:
 - Simulates the system's behavior when dealing with increased I/O operations. This can help identify any issues that may arise when the system is under high load.
 - Tests the system performance during backup or recovery operations, it is possible to see how the system handles slow I/O performance and ensure that backups and recoveries are successful under all conditions.
 - Simulates the slow file system calls under different loads, helping to identify the optimal capacity of the system to ensure that it can handle the expected load without experiencing performance issues.
+
+<IOFaultsCaution />
 
 :::note
 - Kubernetes 1.16 is required to execute this fault.

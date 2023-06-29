@@ -1,20 +1,24 @@
 ---
 id: pod-io-attribute-override
-title: Pod IO Attribute Override
+title: Pod IO attribute override
 ---
 
-Pod IO Attribute Override simulates an error that can modify the properties or attributes of a file within a pod. 
-This fault can be triggered intentionally to test how your system responds to unexpected changes in file attributes, such as permissions, ownership, or timestamps.
+import IOFaultsCaution from './shared/io-faults-caution.md'
+
+Pod IO attribute override simulates an error that can modify the properties or attributes of a file within a pod.
+This fault should be used as a sanity test for validating your application's failover capability against unexpected changes in file attributes, such as permissions, ownership, or timestamps.
 
 ![Pod IO Attribute Override](./static/images/pod-io-attribute-override.png)
 
 
 ## Use cases
-Pod IO Attribute Override:
+Pod IO attribute override:
 - Tests whether your application is able to detect and respond to unexpected changes in file attributes, which can help you ensure that your system remains compliant and secure.
 - Tests whether your disaster recovery system is able to restore files and maintain file attributes correctly.
 - Tests whether your backup system is able to restore files and maintain file attributes correctly.
 - Tests whether your change management process is able to detect and respond to unexpected changes in file attributes, which can help you ensure that your system remains stable and secure.
+
+<IOFaultsCaution />
 
 :::note
 - Kubernetes 1.16 is required to execute this fault.
