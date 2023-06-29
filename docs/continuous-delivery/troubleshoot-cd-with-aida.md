@@ -24,7 +24,7 @@ https://www.youtube.com/watch?v=p-3FZM49RqQ-->
 
 ## Using AIDA
 
-AIDA is available if you have the AIDA feature flag enabled and a step in a pipeline failed.
+When a step in a pipeline fails, AIDA is available if you have the AIDA feature flag enabled.
 
 When viewing the failed step's logs, select the **Harness AIDA** dialog to review error analysis and troubleshooting suggestions.
 
@@ -32,14 +32,17 @@ When viewing the failed step's logs, select the **Harness AIDA** dialog to revie
 
 ## Limitations
 
-Currently, AIDA for CD has the following limitations: 
-- AIDA is supported for Deployment stages only.
-- AIDA is not supported for Custom stages. Harness anticipates providing support for Custom stages in the future. This includes Shell Script step and Run Container step configured within a Custom stage.
-- AIDA is not supported for Verify steps.
+Currently, AIDA for CD has the following limitations.
+
+AIDA is:
+
+- Supported for Deployment stages only.
+- Not supported for Custom stages. Harness anticipates providing support for Custom stages in the future. This includes Shell Script step and Run Container step configured within a Custom stage.
+- Not supported for Verify steps.
 
 ## Troubleshooting examples
 
-Here're some examples where AIDA is used to troubleshoot issues in CD: 
+Here are some examples where AIDA is used to troubleshoot issues in CD.
 
 ### Processing the error logs of a failed Kubernetes deployment
 
@@ -47,7 +50,7 @@ AIDA processes the error logs of a failed Kubernetes deployment and provides rem
 
 For example, a Kubernetes deployment failed due to a non-existent namespace in a cluster. 
 
-When you select the **Harness AIDA** dialog, AIDA provides you with information about the error, root cause of the error, and possible remediation suggestion as shown in the image below: 
+When you select the **Harness AIDA** dialog, AIDA provides you with information about the error, root cause of the error, and possible remediation suggestions as shown in the image below: 
 
 <docimage path={require('./static/aida-troubleshooting-k8s.png')} width="70%" height="70%" title="Click to view full size image" /> 
 
@@ -67,7 +70,7 @@ Let's see an example where Harness detected multiple errors in a multi-service d
   
   <docimage path={require('./static/aida-troubleshooting-k8s-2.png')} width="100%" height="100%" title="Click to view full size image" />
 
-* In the subsequent parallel stage, the service used has service definition, but the Kubernetes resource defined in the service definition is not available. This is a Kubernetes resource related error.
+* In the subsequent parallel stage, the service used has a service definition, but the Kubernetes resource defined in the service definition is not available. This is a Kubernetes resource related error.
   
   AIDA detects the error and provides a remediation as shown in the image below:  
 
@@ -77,7 +80,7 @@ Let's see another example where there were no active Harness Delegates in an SSH
 
 * In an SSH deployment, there are no active delegates. Harness detects an error that it didn't find any eligible delegates to deploy the application. 
   
-  AIDA reviews the context and provide more details about why the delegate was not detected as shown in the image below:  
+  AIDA reviews the context and provides more details about why the delegate was not detected, as shown in the image below:  
 
   <docimage path={require('./static/aida-troubleshooting-k8s-4.png')} width="100%" height="100%" title="Click to view full size image" />
 
