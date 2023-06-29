@@ -36,33 +36,6 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
 
-#### Self-Managed Enterprise Edition
-
-- External Postgres database support is now available for Security Testing Orchestration, Common, Service Reliability Management, and Policy Management for the Harness Platform. (SMP-1352)
-
-   You can now deploy Harness Self-Managed Enterprise Edition with an external Postgres database by creating a `postgres-secret.yaml` file and updating your `override-prod.yaml` file with the following flags:
-   
-   ```yaml
-   global:
-      database:
-         postgres:
-         ## - Set this to false to use an external postgres cluster
-         installed: false
-         ## - set the protocol for postgres
-         protocol: postgres
-         ## - host array for external
-   hosts:
-    - postgres:5432
-        ## - provide the secret name to reference postgres username and password
-        secretName: "postgres-secret"
-        ## - provide the userKey within secret containing username
-        userKey: "user"
-        ## - provide the passwordKey to reference postgres password
-        passwordKey: "password"
-        ## - set additional arguments to connection string
-        extraArgs: ""
-   ```
-
 #### Continuous Integration
 
 - You can now reference [output variables produced by Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables) in pipelines that use Kubernetes cluster build infrastructures. This is an addition to previously-existing support for Harness Cloud and self-hosted Cloud provider VM build infrastructures. (CI-7491)
@@ -721,7 +694,7 @@ This release includes the following Harness module and component versions.
 
 #### Early access
 
-#### Harness Delegate
+##### Harness Delegate
 
 - Added the ability to use delegate credentials to access the Google Cloud Platform Secret Manager. (PL-31248)
 
@@ -830,7 +803,7 @@ This release includes the following Harness module and component versions.
 
 #### Self-Managed Enterprise Edition
 
-- Attempts the sign up URL failed. (SMP-1186)
+- Sign up URL attempts failed for DoD IL5 installations. (SMP-1186)
 
     This issue is fixed by using in-cluster DNS to route from container to container. You can now use LoadBalancer to reroute traffic from your Harness gateway pod to other pods, or you can use an Nginx/Istio gateway.
 
