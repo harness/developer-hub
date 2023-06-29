@@ -73,7 +73,7 @@ The legacy Kubernetes delegate, denoted `latest` container image tag, is used pr
 
 ### Install Docker delegate using Podman
 
-You can install the Docker delegate using Podman by adding Podman commands to your Dockerfile. The example below using a delegate with the immutable image type. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). 
+You can install the Docker delegate using Podman by adding Podman commands to your Dockerfile. The example below uses a delegate with the immutable image type. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). 
 
 #### Sample Podman file
 
@@ -84,7 +84,7 @@ sudo apt-get -y install podman
 
 podman pull docker.io/harness/delegate:yy.mm.xxxxx
 
-podman run --restart=always --hostname="$(hostname -f | head -c 63)"
+podman run --restart=always --hostname="$(hostname -f)"
 -e DELEGATE_NAME=YOUR_DELEGATE_NAME
 -e NEXT_GEN="true"
 -e DELEGATE_TYPE="DOCKER"
