@@ -82,16 +82,14 @@ sudo apt-get -y update
 
 sudo apt-get -y install podman
 
-podman pull docker.io/harness/delegate:yy.mm.xxxxx
-
-podman run --restart=always --hostname="$(hostname -f)"
--e DELEGATE_NAME=YOUR_DELEGATE_NAME
--e NEXT_GEN="true"
--e DELEGATE_TYPE="DOCKER"
--e ACCOUNT_ID=YOUR_ACCOUNT_ID
--e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN
--e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/
--e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE
+podman run --restart=always --hostname="$(hostname -f)"  \
+-e DELEGATE_NAME=YOUR_DELEGATE_NAME  \
+-e NEXT_GEN="true"  \
+-e DELEGATE_TYPE="DOCKER"  \
+-e ACCOUNT_ID=YOUR_ACCOUNT_ID  \
+-e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN  \
+-e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/  \
+-e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  \
 delegate:yy.mm.xxxxx
 
 podman ps
