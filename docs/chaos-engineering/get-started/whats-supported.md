@@ -49,10 +49,10 @@ The following table shows available fault types and where they are supported. Fo
 
 | Fault type | Linux | K8s | Windows | VMware | AWS | GCP | Azure |
 |------------|-------|-----|---------|--------|-----|-----|-------|
-| **Network**<br>For eg. Network loss, Network latency, etc. | ✅    |   ✅  | ✅      | ✅    |  ✅  |     |     |
-| **HTTP**<br>For eg. HTTP latency, HTTP modify body, etc. |        | ✅  |         | ✅    |  ✅  |     |      |
-| **DNS**<br>For eg. DNS error, DNS spoof, etc. | ✅     | ✅  | ✅ |    ✅    |  ✅  |    |      |
-| **System time**<br>For eg. Time skew chaos, etc.  | ✅    |  ✅  |         |        |    |   |       |
-| **Resource stress**<br>For eg. CPU stress, Memory stress, etc. | ✅| ✅  | ✅     |  ✅    |  ✅  |    |  ✅  |
-| **State change**<br>For eg. VM stop, Pod kill, etc.  |  ✅  |  ✅  |        |   ✅   |  ✅  |   ✅  |   ✅   |
-| **Managed Services**<br>For eg. AWS ECS agent stop, Azure web app stop, etc. |   |   |   |   ✅   |  ✅  |   ✅  |   ✅   |
+| **Network**<br />For example Network loss, Network latency, etc. | ✅    |   ✅  | ✅      | ✅    |  ✅  |     |     |
+| **HTTP**<br />For example, HTTP latency, HTTP modify body, etc. |        | ✅  |         | ✅    |  ✅  |     |      |
+| **DNS**<br />For example, DNS error, DNS spoof, etc. | ✅     | ✅  | ✅ |    ✅    |  ✅  |    |      |
+| **System time**<br />For example, Time skew chaos, etc.  | ✅    |  ✅  |         |        |    |   |       |
+| **Resource stress**<br />For example, CPU stress, Memory stress, etc. | ✅| ✅  | ✅     |  ✅    |  ✅  |    |  ✅  |
+| **State change**<br />For example, VM stop, Pod kill, etc.  |  ✅  |  ✅  |        |   ✅   |  ✅  |   ✅  |   ✅   |
+| **Managed Services**<br />For example, AWS ECS agent stop, Azure web app stop, etc. |   |   |   |   ✅   |  ✅  |   ✅  |   ✅   |
