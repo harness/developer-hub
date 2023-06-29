@@ -4,7 +4,14 @@ description: Use Investment profiles to examine alignment metrics.
 sidebar_position: 10
 ---
 
-This topic describes the settings available for Investment profiles, which you can use to understand where engineers are allocating their time through [alignment metrics](../sei-metrics-and-insights/alignment-metrics.md). To create or edit Investment profiles, go to **Settings**, and then select **Investment Profiles**.
+This topic describes the settings available for Investment profiles, which you can use to understand where engineers are allocating their time through [alignment metrics](../sei-metrics-and-insights/alignment-metrics.md).
+
+To create or edit Investment profiles:
+
+1. In your Harness project, go to the SEI module.
+2. Select **Account**.
+3. Select **Investment** under **Profiles**.
+4. To create a profile, select **New Investment Profile**. To edit an existing profile, select the profile's name in the profiles list.
 
 ## Basic Info
 

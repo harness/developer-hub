@@ -14,14 +14,14 @@ To integrate a tool with SEI, you can use either an application-specific connect
 
 ## Application-specific connectors
 
-* Azure DevOps
-* Bitbucket
-* CircleCI
-* DroneCI
-* Gerrit
-* GitHub
+* [Azure DevOps Services](./sei-connector-azure-devops.md)
+* [Bitbucket](./sei-connector-bitbucket.md)
+* [Circle CI](./sei-connector-circleci.md)
+* [Drone CI](./sei-connector-droneci.md)
+* [Gerrit](./sei-connector-gerrit.md)
+* [GitHub](./sei-connector-github.md)
 * GitLab
-* HarnessNG
+* Harness NG
 * Helix
 * Jira <!-- Jira connector requires installing SEI app -->
 * PagerDuty
@@ -37,7 +37,7 @@ To integrate a tool with SEI, you can use either an application-specific connect
 * Testtrail
 * Zendesk
 
-## Generic SEI connector
+## Generic SEI connector (other integrations)
 
 Use the [generic SEI connector](./sei-connector-generic.md) for integrations that don't have an application-specific connector or when your configuration doesn't support the application-specific connector, including:
 

@@ -14,15 +14,15 @@ The **Projects** Org Unit category is not the same as your Harness projects. Thi
 
 :::
 
-For more information about the relationship between projects, Org Unit categories, and Org Units, go to [Project and Org Unit hierarchies](./projects-org-units-overview.md).
+For more information about the relationship between projects, Org Unit categories, and Org Units, go to [Pivot Point hierarchies](./pivot-points-overview.md).
 
 ## View, edit, and enable/disable Org Unit categories
 
-1. In your Harness project, go to the SEI module, and go to **Org Units** under **Project Setup**.
+1. In your Harness project, go to the SEI module, select **Account**, and then select **Pivot Point Setup** under **Data Settings**.
 
 <!-- image: Where to find org unit category settings -->
 
-Org Unit categories are shown as tabs on the Org Units page. This page shows only Org Unit categories and Org Units relevant to the current project. Switch projects to view Org Unit categories and Org Units for other projects.
+Org Unit categories are shown as tabs on the **Pivot Point Setup** page. This page shows only Org Unit categories and Org Units relevant to the current project. Switch projects to view Org Unit categories and Org Units for other projects.
 
 <!-- image: Org units list page -->
 
@@ -36,11 +36,11 @@ Org Unit categories are shown as tabs on the Org Units page. This page shows onl
 
 ## Add Org Unit categories
 
-1. In your Harness project, go to the SEI module and go to **Org Units** under **Project Setup**.
+1. In your Harness project, go to the SEI module, select **Account**, and then select **Pivot Point Setup** under **Data Settings**.
 
 <!-- image: Where to find org unit category settings -->
 
-Org Unit categories are shown as tabs on the Org Units page. This page shows only Org Unit categories and Org Units relevant to the current project. Make sure you are in the correct project before creating an Org Unit category.
+Org Unit categories are shown as tabs on the **Pivot Point Setup** page. This page shows only Org Unit categories and Org Units relevant to the current project. Make sure you are in the correct project before creating an Org Unit category.
 
 <!-- image: Org units list page -->
 
@@ -61,6 +61,6 @@ Adding custom Org Unit categories is considered an advanced feature. It is recom
 
 <!-- image: Add org unit category dialog -->
 
-The new Org Unit category is added as a tab to the Org Units page. From here, [add Org Units](./manage-org-units.md) to your new Org Unit category.
+The new Org Unit category is added as a tab on the **Pivot Point Setup** page. From here, [add Org Units](./manage-org-units.md) to your new Org Unit category.
 
 <!-- image: Org units list with new category tab -->

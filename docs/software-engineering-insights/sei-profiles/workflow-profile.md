@@ -14,7 +14,18 @@ You can configure the profile depending on the factors you want to include in yo
 
 ## Configure Workflow profiles
 
-To add or edit Workflow profiles, go to **Settings**, and then select **Workflow Profiles**. You can clone existing profiles and modify them as needed. Make sure to reference the correct profile in your Lead Time widgets.
+To add or edit Workflow profiles:
+
+1. In your Harness project, go to the SEI module.
+2. Select **Account**.
+3. Select **Workflow** under **Profiles**.
+4. To create a profile, select **New Workflow Profile**. To edit a profile, select the profile's name in the profiles list.
+
+:::tip
+
+You can create profiles by copying existing profiles. Make sure to edit copies accordingly and that your Lead Time widgets reference the correct profile.
+
+:::
 
 Workflow profile settings include:
 
@@ -32,23 +43,27 @@ The following examples describe popular or useful Workflow profile configuration
 
 Use this profile configuration to track Lead Time across the Pull Request lifecycle and gain insight into your SCM system, such as GitHub, Bitbucket, GitLab, and so on.
 
-1. Go to **Settings**, select **Workflow Profiles**, and then select **Add Profile**.
-2. Under **Profile Info**, enter a **Name** and optional **Description**.
-3. Under **Definitions**, select **Stages**, and set the **Start Event** to **Commit Created**.
-4. Review the prepopulated **Stages** that represent the PR lifecycle, from PR creation to merge. You can edit, add, and remove stages as needed. You can edit the data or fields that drive each stage, set time range goals, and more.
+1. In your Harness project, go to the SEI module and select **Account**.
+2. Select **Workflow** under **Profiles**.
+3. Select **New Workflow Profile**.
+4. Under **Profile Info**, enter a **Name** and optional **Description**.
+5. Under **Definitions**, select **Stages**, and set the **Start Event** to **Commit Created**.
+6. Review the prepopulated **Stages** that represent the PR lifecycle, from PR creation to merge. You can edit, add, and remove stages as needed. You can edit the data or fields that drive each stage, set time range goals, and more.
 
 <!-- image of "Create Workflow Profile" with "Commit Created" and 4 default stages. -->
 
 ### Track Lead Time in issue management and SCM
 
-1. Go to **Settings**, select **Workflow Profiles**, and then select **Add Profile**.
-2. Under **Profile Info**, enter a **Name** and optional **Description**, and then select the **Issue Management System** to associate with this profile.
-3. Under **Definitions**, select **Stages**, and set the **Start Event** to **Ticket Created**.
-4. Review the prepopulated **Development Stages** and edit them, if necessary. These stages represent the progression of code in your SCM tool, from first commit to PR merge.
+1. In your Harness project, go to the SEI module and select **Account**.
+2. Select **Workflow** under **Profiles**.
+3. Select **New Workflow Profile**.
+4. Under **Profile Info**, enter a **Name** and optional **Description**, and then select the **Issue Management System** to associate with this profile.
+5. Under **Definitions**, select **Stages**, and set the **Start Event** to **Ticket Created**.
+6. Review the prepopulated **Development Stages** and edit them, if necessary. These stages represent the progression of code in your SCM tool, from first commit to PR merge.
 
 <!-- image of "Create Workflow Profile" with default Deployment Stages -->
 
-5. To track progress in your issue management tool, select the **+** icon to add stages before and after the **Development Stages**. This allows you to track progress in both your issue management and SCM tools, from issue creation through code deployment.
+7. To track progress in your issue management tool, select the **+** icon to add stages before and after the **Development Stages**. This allows you to track progress in both your issue management and SCM tools, from issue creation through code deployment.
 
 <!-- image of "Create workflow profile" with pre- and post- development stages. -->
 
@@ -56,10 +71,12 @@ Use this profile configuration to track Lead Time across the Pull Request lifecy
 
 Use this profile configuration to use an API event to initiate Lead Time tracking.
 
-1. Go to **Settings**, select **Workflow Profiles**, and then select **Add Profile**.
-2. Under **Profile Info**, enter a **Name** and optional **Description**.
-3. Under **Definitions**, select **Stages**, and set the **Start Event** to **API Event**.
-4. Use the following REST API request to push custom API events to SEI:
+1. In your Harness project, go to the SEI module and select **Account**.
+2. Select **Workflow** under **Profiles**.
+3. Select **New Workflow Profile**.
+4. Under **Profile Info**, enter a **Name** and optional **Description**.
+5. Under **Definitions**, select **Stages**, and set the **Start Event** to **API Event**.
+6. Use the following REST API request to push custom API events to SEI:
 
 ```
 curl --location --request POST 'https://api.levelops.io/v1/generic-events' \

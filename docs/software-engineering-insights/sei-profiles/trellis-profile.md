@@ -6,11 +6,16 @@ sidebar_position: 20
 
 Trellis Scores are a proprietary scoring mechanism from SEI. Your Trellis Score helps you understand your team's productivity. [Trellis Scores](../sei-metrics-and-insights/trellis-score.md) are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. You can adjust the weight given to each factor.
 
-To create or edit a Trellis profile, go to **Settings** and select **Trellis Score Profiles**.
+To create or edit a Trellis profile:
+
+1. In your Harness project, go to the SEI module.
+2. Select **Account**.
+3. Select **Trellis** under **Profiles**.
+4. To create a profile, select **New Trellis Profile**. To edit an existing profile, select the profile's name in the profiles list.
 
 :::info Predefined Trellis profiles
 
-When you add an issue management or SCM [connector](/docs/category/connectors-and-integrations), a predefined Trellis profile is automatically created. You can associated predefined profiles with [Org Units](/docs/category/projects-and-org-units). You can't delete predefined profiles.
+Some issue management and SCM [connectors](/docs/category/connectors-and-integrations) automatically create predefined Trellis profiles. You can associated predefined profiles with [Org Units](../sei-pivot-points/manage-org-units.md). You can't delete predefined profiles.
 
 <!-- image Trellis_home_add_integrations.png - Trellis Score Profiles before integrating SCM or Issue Management tools -->
 <!-- image .gitbook/assets/Trellis\_profiles\_home.png - Trellis Score Profiles page with Predefined profiles -->
@@ -23,7 +28,7 @@ Configure basic information for the Trellis profile, such as a **Name** and opti
 
 ## Associations
 
-In the **Associations** section of your Trellis profile, map [Org Units](/docs/category/projects-and-org-units) to the Trellis profile.
+In the **Associations** section of your Trellis profile, map [Org Units](../sei-pivot-points/manage-org-units.md) to the Trellis profile.
 
 <!-- image .gitbook/assets/OU\_mapping\_profile.png - mapping org units in trellis profile -->
 

@@ -1,10 +1,10 @@
 ---
-title: Project and Org Unit hierarchies
+title: Pivot Point hierarchies
 description: Learn how projects and Org Units create hierarchies in SEI.
 sidebar_position: 10
 ---
 
-Hierarchies in SEI keep data organized. At the top of the hierarchy is a [Harness project](/docs/category/organizations-and-projects). Under each project are Org Unit categories and one or more levels of Org Units.
+Pivot Point hierarchies in SEI keep data organized. At the top of the hierarchy is a [Harness project](/docs/category/organizations-and-projects). Under each project are Org Unit categories and one or more levels of Org Units.
 
 * **Harness project:** The umbrella for the SEI Org Unit hierarchy. Org Unit categories and Org Units exist under their associated project; they don't span across projects. While multiple projects can have Org Unit categories and Org Units with the same name, these are distinct groups under their designated project.
 * **Org Unit categories:** Broad classifications that serve as containers for Org Units but are not, themselves, Org Units. For example, **Teams** is an Org Unit category; whereas **Engineering Team** and **Docs Teams** are Org Units under the **Teams** category.

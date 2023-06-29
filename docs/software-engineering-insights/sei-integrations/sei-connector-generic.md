@@ -17,8 +17,8 @@ For on-premise integrations, you need to use the generic SEI connector and insta
 
 ### Configure the connector
 
-1. In your Harness project, go to the SEI module, and select **Connectors** under **Project Setup**.
-2. Add a connector and select the generic **SEI connector**.
+1. In your Harness project, go to the SEI module, select **Account**, and then select **SEI Connectors** under **Data Settings**.
+2. Select **Available Connectors**, locate the generic SEI connector, and select **Install**.
 3. Configure the connector.
 4. When you reach the **Credentials** settings, select **Satellite integration**, and enter your credentials.
 
@@ -329,8 +329,8 @@ To use this plugin, you need to use the generic SEI connector and install the pl
 
    When plugin installation is complete, the status changes to success. If it doesn't change to success, you might need to restart.
 
-5. In your Harness project, go to the SEI module, and select **Connectors** under **Project Setup**.
-6. Add a connector and select the generic **SEI connector**.
+5. In your Harness project, go to the SEI module, select **Account**, and then select **SEI Connectors** under **Data Settings**.
+6. Select **Available Connectors**, locate the generic SEI connector, and select **Install**.
 7. Configure the connector for Jenkins.
 
 <details>
@@ -362,8 +362,8 @@ SEI supports custom CI/CD integrations through webhooks.
 
 1. Create a [Harness API key](/docs/platform/user-management/add-and-manage-api-keys/) to use for authorization.
 2. Contact [Harness Support](mailto:support@harness.io) to get a UUID to identify your CI/CD system.
-3. In your Harness project, go to the SEI module, and select **Connectors** under **Project Setup**.
-4. Add a connector and select the generic **SEI connector**.
+3. In your Harness project, go to the SEI module, select **Account**, and then select **SEI Connectors** under **Data Settings**.
+4. Select **Available Connectors**, locate the generic SEI connector, and select **Install**.
 5. Configure the connector for a custom CI/CD integration. Configure the webhook API call according to the [webhook specification](#webhook-specification).
 
 ### Webhook specification

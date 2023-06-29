@@ -20,7 +20,7 @@ SEI also helps your teams drive continuous improvement by leveraging best practi
 
 To start using SEI, configure the following:
 
-1. [Projects and Org Units](/docs/category/projects-and-org-units)
+1. [Pivot Points](/docs/category/pivot-points)
 2. [Connectors and integrations](/docs/category/connectors-and-integrations)
 3. [Profiles](/docs/category/profiles)
 4. [Metrics and Insights](/docs/category/metrics-and-insights)

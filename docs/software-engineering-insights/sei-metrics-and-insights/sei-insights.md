@@ -48,7 +48,7 @@ Once you're viewing an Insight, you can explore the widgets and interact with th
 
 :::info Where does the data come from?
 
-Widgets derive data from [integrations](/docs/category/connectors-and-integrations) that are inherited from the Org Unit associated with Insights. In turn, Org Units inherit integrations from their associated projects. For more information about configuring these associations, go to [Projects and Org Units](/docs/category/projects-and-org-units).
+Widgets derive data from [integrations](/docs/category/connectors-and-integrations) that are inherited from the Org Unit associated with Insights. In turn, Org Units inherit integrations from their associated projects. For more information about configuring these associations, go to [Pivot Points](/docs/category/pivot-points).
 
 You can configure metrics and widgets to control what data is used to calculate metrics, how data is presented, and other criteria. For more information, go to [Metrics and Insights](/docs/category/metrics-and-insights).
 
@@ -125,7 +125,7 @@ If you're an admin, you can:
 
 <!-- image .gitbook/assets/Create dashboard - hover option.png - Create Dashboard dialog -->
 
-   All [Org Units](/docs/category/projects-and-org-units) and child org Units under the selected category are automatically associated with the Insight. You can refine the [Insight associations](#manage-insights-associations) after initial Insight creation.
+   All [Org Units](../sei-pivot-points/manage-org-units.md) and child Org Units under the selected category are automatically associated with the Insight. You can refine the [Insight associations](#manage-insights-associations) after initial Insight creation.
 
    If you want to examine Org Units under a certain Org Unit category, select **View OUs** on the **Org Unit Categories** dropdown menu.
 
@@ -137,7 +137,7 @@ If you're an admin, you can:
 
 :::info Where does the data in widgets come from?
 
-Widgets derive data from [integrations](/docs/category/connectors-and-integrations) that are inherited from the Org Unit associated with Insights. In turn, Org Units inherit integrations from their associated projects. For more information about configuring these associations, go to [Projects and Org Units](/docs/category/projects-and-org-units).
+Widgets derive data from [integrations](/docs/category/connectors-and-integrations) that are inherited from the Org Unit associated with Insights. In turn, Org Units inherit integrations from their associated projects. For more information about configuring these associations, go to [Pivot Points](/docs/category/pivot-points).
 
 You can configure metrics and widgets to control what data is used to calculate metrics, how data is presented, and other criteria. For more information, go to [Metrics and insights](/docs/category/metrics-and-insights).
 
@@ -148,7 +148,7 @@ You can configure metrics and widgets to control what data is used to calculate 
 There are two ways to manage Insights associations:
 
 * When viewing Insights, select the **Settings** icon, and then select **Org Units**.
-* From the **Edit Org Unit** page, edit the **Insights** settings. For more information about this option, go to **Managing Insights associations** in [Manage Org Units](../sei-projects-and-org-units/manage-org-units.md#manage-insights-associations).
+* From the **Edit Org Unit** page, edit the **Insights** settings. For more information about this option, go to **Managing Insights associations** in [Manage Org Units](../sei-pivot-points/manage-org-units.md#manage-insights-associations).
 
 ## Create Business Alignment Insights
 

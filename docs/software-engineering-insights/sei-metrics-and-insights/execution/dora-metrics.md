@@ -163,7 +163,7 @@ To enable Change Failure Rate reporting in SEI, you must set up a workflow profi
 
 <!-- image (6).png image (3).png image (5).png -->
 
-5. If you want to view or change the [Projects and Org Units](/docs/category/projects-and-org-units) associated with the profile, select **Associations**. Projects and org units are automatically derived from the connector you chose for **Change Failure Rate**.
+5. If you want to view or change the projects and Org Units associated with the profile, select **Associations**. Projects and org units are automatically derived from the connector you chose for **Change Failure Rate**. For more information, go to [Pivot Points](/docs/category/pivot-points)
 
 <!-- image (12).png -->
 

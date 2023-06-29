@@ -18,15 +18,19 @@ SEI contributor records don't control access to SEI or the Harness Platform; the
 
 ## Configure attributes
 
-To view and modify contributors in the SEI module, go to **Data Settings**, and then select **Contributors**.
+To view and modify contributors:
+
+1. In your Harness project, go to the SEI module.
+2. Select **Account**.
+3. Select **Contributors** under **Data Settings**.
 
 <!-- img .gitbook/assets/Screen Shot 2022-12-01 at 2.23.22 PM.png - Settings page with Users tile indicated -->
 
-Select **Configure Attributes** to edit contributor attributes. By default, contributors only include a **Name** and **Email**. You can use attributes as dynamic filters for contributor-based [Org Units](./manage-org-units.md). Therefore, you might find it useful to add custom attributes, such as roles, team names, departments, supervisors, or other designations.
+Select the **Settings** (wrench) icon to edit contributor attributes. By default, contributors only include a **Name** and **Email**. You can use attributes as dynamic filters for contributor-based [Org Units](./manage-org-units.md). Therefore, you might find it useful to add custom attributes, such as roles, team names, departments, supervisors, or other designations.
 
 To add custom attributes:
 
-1. Select **Configure Attributes**
+1. Select the **Settings** (wrench) icon.
 2. Select **Add Custom Attribute**.
 3. Enter a **Title** for the custom attribute category.
 4. Select the **Type**.
@@ -52,14 +56,16 @@ SEI automatically detects user identities in your [integrations](../sei-integrat
 
 To modify contributors, you must export a CSV file, edit it, and then import the edited file.
 
-1. In the SEI module, to **Data Settings**, and then select **Contributors**.
-2. Select **Configure Attributes**.
-3. Select **Export Existing Contributors** or, if you don't yet have any contributors, select **Export Sample CSV**.
-4. Open the CSV file and edit the data accordingly.
+1. In your Harness project, go to the SEI module, and select **Account**.
+2. Select **Contributors** under **Data Settings**.
+3. Select **Import and Export Contributors**.
+4. Select **Export Existing Contributors** or, if you don't yet have any contributors, select **Export Sample CSV**.
+5. Open the CSV file and edit the data accordingly.
 
 <!-- image .gitbook/assets/Screen Shot 2022-12-01 at 2.31.01 PM.png - sample user record csv-->
 
-5. Go back to the **Contributors** page in SEI, select **Import Contributors**, and upload your modified CSV file.
+6. Go back to the **Contributors** page in SEI, and select **Import and Export Contributors**.
+7. Select **Import Contributors**, and upload your modified CSV file.
 
 ### Manually add contributors
 

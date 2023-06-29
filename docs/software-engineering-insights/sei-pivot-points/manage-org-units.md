@@ -16,15 +16,15 @@ For example, in the Teams category, you can have an Org Unit for your Engineerin
         * Other Engineering teams...
       * Other teams...
 
-Inheritance flows down the Org Unit levels. For example, Org Unit categories and Org Units inherit connectors from the associated [Harness project](/docs/category/organizations-and-projects), and child Org Units inherit [Insights associations](#manage-insights-associations) from their ancestor Org Units. For more information about the relationship between projects, Org Unit categories, and Org Units, go to [Project and Org Unit hierarchies](./projects-org-units-overview.md).
+Inheritance flows down the Org Unit levels. For example, Org Unit categories and Org Units inherit connectors from the associated [Harness project](/docs/category/organizations-and-projects), and child Org Units inherit [Insights associations](#manage-insights-associations) from their ancestor Org Units. For more information about the relationship between projects, Org Unit categories, and Org Units, go to [Pivot Point hierarchies](./pivot-points-overview.md).
 
 ## View Org Units
 
-In your Harness project, go to the SEI module, and go to **Org Units** under **Project Setup**.
+In your Harness project, go to the SEI module, select **Account**, and then select **Pivot Point Setup** under **Data Settings**.
 
 <!-- image: where to find Org Units list -->
 
-Org Unit categories are shown as tabs on the Org Units page. Select a category tab to view the Org Units under that category. This page shows only Org Unit categories and Org Units relevant to the current project. Switch projects to view Org Unit categories and Org Units for other projects.
+Org Unit categories are shown as tabs on the **Pivot Point Setup** page. Select a category tab to view the Org Units under that category. This page shows only Org Unit categories and Org Units relevant to the current project. Switch projects to view Org Unit categories and Org Units for other projects.
 
 <!-- image: Org units list page -->
 
@@ -44,15 +44,15 @@ Options for editing Org Units are only available on **Flat List** view.
 
 ## Add and edit Org Units
 
-1. In your Harness project, go to the SEI module, and go to **Org Units** under **Project Setup**.
+1. In your Harness project, go to the SEI module, select **Account**, and then select **Pivot Point Setup** under **Data Settings**.
 
 <!-- image: where to find Org Units list -->
 
-2. Select the Org Unit categories are shown as tabs on the Org Units page. Select the category where you want to add or edit an Org Unit. This page shows only Org Unit categories and Org Units relevant to the current project. Make sure you are in the correct project before creating or editing Org Units.
+2. Select the Org Unit categories are shown as tabs on the **Pivot Point Setup** page. Select the category where you want to add or edit an Org Unit. This page shows only Org Unit categories and Org Units relevant to the current project. Make sure you are in the correct project before creating or editing Org Units.
 
 <!-- image: Org units list page -->
 
-3. To add an Org Unit, select **+ [Category Name]**. For example, in the **Teams** category, select **+ Teams**. To edit an existing Org Unit, select the Org Unit name in the list.
+3. To add an Org Unit, select **+ [Category Name]**. For example, in the **Teams** category, select **+ Teams**. To edit an existing Org Unit, select the Org Unit in the **Name** column.
 4. In the **Basic Info** settings, you can:
 
   * Enter a **Name** and **Description**. Org unit names must be unique within each project.
