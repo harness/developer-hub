@@ -13,7 +13,7 @@ You can deploy chaos infrastructure on the platforms below.
 
 #### Kubernetes distributions
 
-CE supports these Kubernetes distributions:
+CE supports Kubernetes version 1.21+, in the following distributions:
 
 * OpenShift
 * Rancher
