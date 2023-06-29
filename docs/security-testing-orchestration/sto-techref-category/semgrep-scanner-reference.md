@@ -5,7 +5,7 @@ sidebar_position: 270
 ---
 
 
-:::note
+:::info note
 Currently, this integration is behind the Feature Flag `STO_STEP_PALETTE_SEMGREP`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
