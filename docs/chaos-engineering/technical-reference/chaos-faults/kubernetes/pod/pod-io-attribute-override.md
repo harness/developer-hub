@@ -20,7 +20,7 @@ Pod IO attribute override:
 
 <IOFaultsCaution />
 
-:::note
+:::info note
 - Kubernetes 1.16 is required to execute this fault.
 - The application pods should be in the running state before and after injecting chaos.
 :::
