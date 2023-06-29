@@ -18,6 +18,8 @@ Go to the [Harness legal page](https://www.harness.io/legal) for legal informati
 
 :::
 
+Here's a quick video showing how AIDA helps in troubleshooting build and deployment errors: 
+
 <!-- Video: AIDA demo
 https://www.youtube.com/watch?v=p-3FZM49RqQ-->
 <docvideo src="https://www.youtube.com/watch?v=p-3FZM49RqQ" />
