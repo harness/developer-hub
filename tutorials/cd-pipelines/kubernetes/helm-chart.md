@@ -75,7 +75,9 @@ The Harness delegate is a service that runs in your local network or VPC to esta
      helm repo update harness-delegate
      ```
      
-    - `DELEGATE_TOKEN`,`ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the Delegate Installation wizard. Copy the command from the Delegate Installation wizard.
+    - Copy the following command from the Delegate Installation wizard.
+    
+      `DELEGATE_TOKEN`,`ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the Delegate Installation wizard. 
     
       ```bash
       helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
