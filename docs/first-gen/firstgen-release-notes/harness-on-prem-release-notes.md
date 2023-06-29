@@ -95,7 +95,7 @@ This release includes the following module and component versions.
 | Learning Engine | 67708 | 
 | Gateway | 2000185 |
 
-### New features and enhancements
+#### New features and enhancements
 #### Harness Platform
 - Upgrades have been made to the following libraries:
 
@@ -126,7 +126,7 @@ This release includes the following module and component versions.
   - 2- validForDays : int
 
   Use an api-key with account edit permission in the API header.
-### Fixed issues
+#### Fixed issues
 #### Continuous Delivery & GitOps
 - When manually triggering the workflow, there is an issue preventing the selection and retrieval of GCS artifacts. (CDS-53074)
 
