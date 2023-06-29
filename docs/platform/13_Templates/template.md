@@ -89,14 +89,14 @@ You can add the following types of Templates to your Harness Account/Org/Project
 To define a linear sequence of operations for a job.
 
 ![](./static/template-01.png)
-For detailed steps to add a Step Template, see [Create a Step Template](run-step-template-quickstart.md).
+For detailed steps to add a Step Template, go to [Create a Step Template](run-step-template-quickstart.md).
 
 ### Stage Template
 
 To define a set of stages of related jobs.
 
 ![](./static/template-02.png)
-For detailed steps to create a Stage Template, see [Create a Stage Template](add-a-stage-template.md).
+For detailed steps to create a Stage Template, go to [Create a Stage Template](add-a-stage-template.md).
 
 ### Pipeline Template
 
@@ -108,7 +108,7 @@ With Pipeline Templates you can:
 * Create a Template based on an existing Pipeline.
 * Share the Template across scopes in Harness.
 
-For detailed steps to create a Pipeline Template, see [Create a Pipeline Template](create-pipeline-template.md).
+For detailed steps to create a Pipeline Template, go to [Create a Pipeline Template](create-pipeline-template.md).
 
 ## Versioning
 
@@ -148,11 +148,12 @@ You can perform the following actions while editing a Template:
 You can edit any version of your Template.
 
 ![](./static/template-08.png)
+
 Harness enables you to choose any one of the following:
 
-* **Save** - Save the updates in the selected version where you made the changes.![](./static/template-09.png)
-* **Save as new version** - Create a new version of the selected Template and save with the changes you just made.![](./static/template-10.png)
-* **Save as new Template** - Create a new Template from the selected Template and save the changes you just made.![](./static/template-11.png)
+* **Save:** Save the updates in the selected version where you made the changes.![](./static/template-09.png)
+* **Save as new version:** Create a new version of the selected Template and save with the changes you just made.![](./static/template-10.png)
+* **Save as new Template:** Create a new Template from the selected Template and save the changes you just made.![](./static/template-11.png)
 
 ## Template Settings
 
@@ -169,13 +170,15 @@ You can delete your Templates at any point. Deletion of a Template will also rem
 You can customize Templates by using placeholder expressions and [Runtime Inputs](../20_References/runtime-inputs.md) for their parameters and data types. Each time you run a Pipeline that uses the Template, users can provide values for these inputs.
 
 ![](./static/template-14.png)
-See [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
+
+Go to [Fixed Values, Runtime Inputs, and Expressions](../20_References/runtime-inputs.md).
 
 ## Template YAML
 
 You can use the Harness visual or YAML editors to create your Templates.
 
 ![](./static/template-15.png)
+
 Here's an example of the YAML for a CD Stage template:
 
 
@@ -223,12 +226,12 @@ template:
                   action:  
                       type: StageRollback
 ```
-The YAML editor is a full-fledged YAML IDE with autocomplete and other features. See [Harness YAML Quickstart](../8_Pipelines/harness-yaml-quickstart.md).
+The YAML editor is a full-fledged YAML IDE with autocomplete and other features. Go to [Harness YAML Quickstart](../8_Pipelines/harness-yaml-quickstart.md).
 
 ## Template filter
 
 You can create your own template filter and use it later to view those templates in Harness. You can create a template filter at any scope.
-This topic explains steps to create a template filter at the account scope.
+This topic explains the steps to create a template filter at the account scope.
 
 To create a template filter in Harness: 
 1. Select **ACCOUNT SETTINGS**, and then select **Account Resources**.
