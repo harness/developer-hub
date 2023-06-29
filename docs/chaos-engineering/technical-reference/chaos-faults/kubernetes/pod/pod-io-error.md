@@ -3,6 +3,8 @@ id: pod-io-error
 title: Pod IO error
 ---
 
+import IOFaultsCaution from './shared/io-faults-caution.md'
+
 The pod-io-error chaos fault simulates an error that can occur during filesystem calls within a pod.
 When triggered, it causes the call to fail and return an error, potentially disrupting critical processes that rely on accurate file operations.
 
@@ -14,6 +16,8 @@ Pod IO error:
 - Simulates errors into file system calls during a load test to see how the application responds, and whether it is able to handle the increased traffic,
 - Simulates errors to test how your application responds to unexpected failures so you can plan accordingly.
 - Simulates errors into file system call to test whether the application is vulnerable to attacks that exploit file system vulnerabilities.
+
+<IOFaultsCaution />
 
 :::note
 - Kubernetes 1.16 is required to execute this fault.
