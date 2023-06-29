@@ -1,5 +1,5 @@
 ---
-title: Add or exclude a target in a target group
+title: Add and manage target groups
 description: This topic describes how to add a Target Group to your Environment, add Targets to the group, and apply the Target Group to a Feature Flag. 
 sidebar_position: 20
 helpdocs_topic_id: 5qz1qrugyk
@@ -17,7 +17,7 @@ import target_group_5 from './static/2-add-target-groups-10.png'
 ```
 
 :::info note
- While targets are often users, a target can be anything that can be uniquely identified. For example, a target can be a user, an application, a system, a machine, or any resource uniquely identified by an IP address, email ID, user ID, etc.
+ While targets are often users, a target can be anything that can be uniquely identified. For example, a target can be a user, an application, a system, a machine, or any resource uniquely identified by an IP address, email ID, user ID, etc.
 :::
 
 Target groups are a collection of [targets](add-targets.md) that allow you to serve Feature Flag Variations to a list of users in bulk. You can group targets into a group either by picking individual targets or by defining rules that automatically map targets to a target group. For example, you can add individual targets `joe@harness.io` and `jane@harness.io` to the QA internal users group or you can define a rule that all the emails ending with `@harness.io` are added to the QA internal users group.
