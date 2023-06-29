@@ -561,6 +561,10 @@ Note that the selectors for PDB, `.spec.selector` must match the controller's `.
 
 The release history contains the name of the stage PDB resource (for example, `test-pdb-blue`) as part of the list of resources.
 
+## Additional Configurations
+
+**Skip Deployment if Using the Manifest Used in the Previous Deployment** - At runtime of the stage deployment step, Harness will render the manifests and compare the rendered manifests to the last deployed manifests to see if there are any changes. If there are no changes with the manifest, Harness will skip deployment and progress to the subsequent steps in the pipeline. This ensures that no routes or labels associated with the primary or stage (blue or green) are manipulated when there are no manifest changes present. 
+
 ## Notes
 
 * **Blue Green Rollback** — A great benefit of a Blue Green deployment is rapid rollback: rolling back to the old version of a service/artifact is simple and reliable because network traffic is simply routed back to the original instances. You do not need to redeploy previous versions of the service/artifact and the instances that comprised their environment.
