@@ -169,7 +169,9 @@ The **Stage Deployment** step is added automatically when you apply the Blue G
 
 Click the **Stage Deployment** step. The step simply includes a name, timeout, and Skip Dry Run options.
 
-**Skip Dry Run:** By default, Harness uses the `--dry-run` flag on the `kubectl apply` command during the **Initialize** step of this command, which prints the object that would be sent to the cluster without really sending it. If the **Skip Dry Run** option is selected, Harness will not use the `--dry-run` flag.The first time you deploy, the **Stage Deployment** step creates two Kubernetes services, a new pod set, and deploys your app to the pod set.
+**Skip Dry Run:** By default, Harness uses the `--dry-run` flag on the `kubectl apply` command during the **Initialize** step of this command, which prints the object that would be sent to the cluster without really sending it. If the **Skip Dry Run** option is selected, Harness will not use the `--dry-run` flag. The first time you deploy, the **Stage Deployment** step creates two Kubernetes services, a new pod set, and deploys your app to the pod set.
+
+**Skip Deployment if Using the Manifest Used in a Previous Deployment**: This functionality is currently beta and behind the feature flag, `CDS_SUPPORT_SKIPPING_BG_DEPLOYMENT_NG`. When running the **Stage Deployment** step, if you select this option, Harness render the manifests, and compare the manifests with the last deployed manifests to see if there are any changes. If there are no changes with the manifests used in the step and the previous deployment, Harness skips the step and progresses to the subsequent steps in the pipeline. This ensures that no routes or labels associated with the primary or stage (Blue or Green) are manipulated when there are no manifest changes present. 
 
 When you look at the **Stage Deployment** step in Harness **Deployments**, you will see the following log sections.
 
@@ -560,12 +562,6 @@ harness.io/color=blue
 Note that the selectors for PDB, `.spec.selector` must match the controller's `.spec.selector`.
 
 The release history contains the name of the stage PDB resource (for example, `test-pdb-blue`) as part of the list of resources.
-
-## Skip deployment if using the manifest used in a previous deployment
-
-This functionality is currently beta and behind the feature flag, `CDS_SUPPORT_SKIPPING_BG_DEPLOYMENT_NG`.
-
-When running a step in a stage deployment, in **Optional Configuration**, you can select the **Skip Deployment if Using the Manifest Used in the Previous Deployment** option to skip the deployment if the step is using the same manifest used in the previous deployment. At runtime, Harness render the manifests, and compare the manifests with the last deployed manifests to see if there are any changes. If there are no changes with the manifests used in the step and the previous deployment, Harness skips the step and progresses to the subsequent steps in the pipeline. This ensures that no routes or labels associated with the primary or stage (Blue or Green) are manipulated when there are no manifest changes present. 
 
 ## Notes
 
