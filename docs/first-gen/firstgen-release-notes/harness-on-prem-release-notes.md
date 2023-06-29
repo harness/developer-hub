@@ -16,14 +16,11 @@ Release notes are displayed with the most recent release first.
 
 ## June 30, 2023, version 79421
 
-Delegate: 78930
-
 This release includes the following module and component versions.
 
 | **Name** | **Version** |
 | :-- | :-- |
 | Manager | 79421 |
-| Delegate | 78930 |
 | Watcher | 78424 |
 | Verification Service | 79421 |
 | UI | 79401 |
