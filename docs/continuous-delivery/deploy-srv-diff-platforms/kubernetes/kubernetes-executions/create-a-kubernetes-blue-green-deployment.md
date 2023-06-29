@@ -145,7 +145,7 @@ Harness adds all the steps you need to perform the Blue Green strategy:
 
 ![bg steps](./static/create-a-kubernetes-blue-green-deployment-30.png)
 
-<!--Additionally, you can add a Blue Green Stage Scale Down step to scale down the last successful stage environment created during a Blue Green deployment.
+Additionally, you can add a Blue Green Stage Scale Down step to scale down the last successful stage environment created during a Blue Green deployment.
 
 :::info
 
@@ -157,7 +157,7 @@ This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`.
 
 This functionality helps you efficiently manage your resources. You can configure the scale down step within the same stage or a different stage, based on your requirement.
 
-During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets, and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.-->
+During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets, and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
 That's it. Harness will deploy the artifact using the stage service initially, and swap traffic to the primary service.
 
@@ -318,9 +318,9 @@ A great benefit of a Blue Green deployment is rapid rollback: rolling back to th
 
 You do not need to redeploy previous versions of the app and the pods that comprised their environment.
 
-<!--Add a [Blue Green Stage Scale Down](#add-the-execution-steps) step to scale down the last successful stage environment created during a Blue Green deployment.-->
+Add a [Blue Green Stage Scale Down](#add-the-execution-steps) step to scale down the last successful stage environment created during a Blue Green deployment.
 
-You can add a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) to the post-deployment steps of your stage to scale down the last successful stage environment.
+You can also add a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) to the post-deployment steps of your stage to scale down the last successful stage environment.
 
 Here's an example using `<+pipeline.stages.[stage_name].spec.execution.steps.stageDeployment.output.stageServiceName>` to reference the stage service name. The name of the stage is nginx so the reference is `<+pipeline.stages.nginx.spec.execution.steps.stageDeployment.output.stageServiceName>`.
 
@@ -561,9 +561,11 @@ Note that the selectors for PDB, `.spec.selector` must match the controller's `.
 
 The release history contains the name of the stage PDB resource (for example, `test-pdb-blue`) as part of the list of resources.
 
-## Additional Configurations
+## Skip deployment if using the manifest used in a previous deployment
 
-**Skip Deployment if Using the Manifest Used in the Previous Deployment** - At runtime of the stage deployment step, Harness will render the manifests and compare the rendered manifests to the last deployed manifests to see if there are any changes. If there are no changes with the manifest, Harness will skip deployment and progress to the subsequent steps in the pipeline. This ensures that no routes or labels associated with the primary or stage (blue or green) are manipulated when there are no manifest changes present. 
+This functionality is currently beta and behind the feature flag, `CDS_SUPPORT_SKIPPING_BG_DEPLOYMENT_NG`.
+
+When running a step in a stage deployment, in **Optional Configuration**, you can select the **Skip Deployment if Using the Manifest Used in the Previous Deployment** option to skip the deployment if the step is using the same manifest used in the previous deployment. At runtime, Harness render the manifests, and compare the manifests with the last deployed manifests to see if there are any changes. If there are no changes with the manifests used in the step and the previous deployment, Harness skips the step and progresses to the subsequent steps in the pipeline. This ensures that no routes or labels associated with the primary or stage (Blue or Green) are manipulated when there are no manifest changes present. 
 
 ## Notes
 
