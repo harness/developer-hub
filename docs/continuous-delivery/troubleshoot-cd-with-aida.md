@@ -39,7 +39,7 @@ Currently, AIDA for CD has the following limitations:
 
 ## Troubleshooting examples
 
-Here are some examples where AIDA is used to troubleshoot issues in CD: 
+Here're some examples where AIDA is used to troubleshoot issues in CD: 
 
 ### Processing the error logs of a failed Kubernetes deployment
 
@@ -51,7 +51,7 @@ When you select the **Harness AIDA** dialog, AIDA provides you with information 
 
 <docimage path={require('./static/aida-troubleshooting-k8s.png')} width="70%" height="70%" title="Click to view full size image" /> 
 
-Here's another example where a Kubernetes resource doesn't exist on the cluster. AIDA reviews the error and suggest possible solutions as shown in the image below: 
+Here's another example where a Kubernetes resource doesn't exist on the cluster. AIDA reviews the error and suggests possible solutions as shown in the image below: 
 
 <docimage path={require('./static/aida-troubleshooting-k8s-1.png')} width="100%" height="100%" title="Click to view full size image" /> 
 
@@ -67,7 +67,7 @@ Let's see an example where Harness detected multiple errors in a multi-service d
   
   <docimage path={require('./static/aida-troubleshooting-k8s-2.png')} width="100%" height="100%" title="Click to view full size image" />
 
-* In the subsequent parallel stage, the service used has service definition but the Kubernetes resource defined in the service definition is not available. This is a Kubernetes resource related error.
+* In the subsequent parallel stage, the service used has service definition, but the Kubernetes resource defined in the service definition is not available. This is a Kubernetes resource related error.
   
   AIDA detects the error and provides a remediation as shown in the image below:  
 
