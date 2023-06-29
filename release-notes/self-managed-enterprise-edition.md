@@ -251,7 +251,7 @@ This release includes the following Harness module and component versions.
 
    This functionality is behind a feature flag,`PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM`.
 
-##### Continuous Delivery & GitOps
+#### Continuous Delivery & GitOps
 
 - ServiceNow custom table support. (CDS-55046)
   
