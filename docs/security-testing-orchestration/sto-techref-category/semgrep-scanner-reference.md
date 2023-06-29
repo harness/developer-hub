@@ -25,7 +25,7 @@ import StoCreateDinD from './shared/dind-bg-step.md';
 
 ## Semgrep step configuration
 
-The recommended workflow is add a Semgrep step to a Security Tests or CI Build stage and then configure it as described below. 
+The recommended workflow is to add a Semgrep step to a Security Tests or CI Build stage and then configure it as described below. 
 
 ```mdx-code-block
 import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
