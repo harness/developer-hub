@@ -75,7 +75,7 @@ The Harness delegate is a service that runs in your local network or VPC to esta
      helm repo update harness-delegate
      ```
      
-    - `DELEGATE_TOKEN`,`ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the Delegate Installation wizard. Copy the command from Delegate Installation wizard.
+    - `DELEGATE_TOKEN`,`ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the Delegate Installation wizard. Copy the command from the Delegate Installation wizard.
     
       ```bash
       helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
@@ -142,7 +142,7 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 <details open>
 <summary>What are Canary deployments?</summary>
 
-A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
+A Canary deployment updates nodes in a single environment, gradually allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
 
 </details>
 
@@ -250,7 +250,7 @@ In Harness, services represent what you deploy to environments. You use services
 <details open>
 <summary>What are Harness pipelines?</summary>
 
-A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
 
 </details>
 
@@ -316,7 +316,7 @@ In Harness, services represent what you deploy to environments. You use services
 <details open>
 <summary>What are Harness pipelines?</summary>
 
-A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
 
 </details>
 
