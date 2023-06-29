@@ -54,5 +54,5 @@ The following table shows available fault types and where they are supported. Fo
 | **DNS**<br>For eg. DNS error, DNS spoof, etc. | ✅     | ✅  | ✅ |    ✅    |  ✅  |    |      |
 | **System time**<br>For eg. Time skew chaos, etc.  | ✅    |  ✅  |         |        |    |   |       |
 | **Resource stress**<br>For eg. CPU stress, Memory stress, etc. | ✅| ✅  | ✅     |  ✅    |  ✅  |    |  ✅  |
-| **State change**<br>For eg. VM stop, Process kill, etc.  |  ✅  |    |        |   ✅   |  ✅  |   ✅  |   ✅   |
+| **State change**<br>For eg. VM stop, Pod kill, etc.  |  ✅  |  ✅  |        |   ✅   |  ✅  |   ✅  |   ✅   |
 | **Managed Services**<br>For eg. AWS ECS agent stop, Azure web app stop, etc. |   |   |   |   ✅   |  ✅  |   ✅  |   ✅   |
