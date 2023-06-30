@@ -79,7 +79,7 @@ const config = {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "img/logo_pride.svg",
+          src: "img/logo.svg",
         },
         items: [
           /*{
@@ -190,7 +190,7 @@ const config = {
                 label: "Continuous Error Tracking",
                 to: "docs/continuous-error-tracking",
               },
-                            {
+              {
                 label: "Internal Developer Portal",
                 to: "docs/internal-developer-portal",
               },
