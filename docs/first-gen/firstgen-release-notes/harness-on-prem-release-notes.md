@@ -43,7 +43,7 @@ This release does not include early access features.
 
 - The feature flag, `CG_GIT_POLLING` was creating too many queries in yamlGitConfig. (CDS-45085)
   
-  This issue is fixed. Git polling for Git sync now works via a different internal method where Harness polls for a feature flag change once every 30 minutes, and then continue polling on accounts for which feature flags are enabled.
+  This issue is fixed. Git polling for Git sync now works via a different internal method where Harness polls for a feature flag change once every 30 minutes, and then continues polling on accounts for which feature flags are enabled.
 
 - Fixed an issue where perpetual tasks corresponding to a non-existing service was still running. (CDS-58137)
 
@@ -59,7 +59,9 @@ This release does not include early access features.
 
 #### Harness Platform
 
-- No members appear in user group list even after the user has been added via SCIM. (PL-32482)
+-  No members appear in user group list even after the user has been added via SCIM. This issue is fixed. (PL-32482)
+
+
 
 - Users cannot use Harness secret as LDAP password in FirstGen. (PL-32597, ZD-42655)
   A code enhancement fixed the issue.

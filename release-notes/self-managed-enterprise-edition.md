@@ -89,19 +89,19 @@ This release includes the following Harness module and component versions.
   * [Custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
   * [HashiCorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
 
-- The **Auto-Reject previous deployments paused in this step on approval** is added to the Approval step. (CDS-58063)
+- The option to **Auto-Reject previous deployments paused in this step on approval** is added to the Approval step. (CDS-58063)
   
-  With this option, you can now reject old executions waiting on approval when a latest step is approved. For more information, go to [Manual Approval steps in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages).
+  With this option, you can now reject old executions waiting for approval when a latest step is approved. For more information, go to [Manual Approval steps in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages).
 
 - Users can now add input variables of all types when adding an HTTP step from the Harness UI. (CDS-58376)
   
   For more information, go to [Input variables](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/#input-variables).
 
-- Support for creating or updating a variable of type, secret in the Update Release Repo step is now removed. (CDS-58530)
+- Removed support for creating or updating a variable of type `secret` in the Update Release Repo step. (CDS-58530)
   
-  For example, adding a variable of the type, secret in an environment will no longer create any entry in the `config.js` file via the Update Repo Step. 
+  For example, adding a variable of the type `secret` in an environment will no longer create any entry in the `config.js` file via the Update Repo Step. 
   
-  Support for all such cases are now ignored by Harness.
+  All such cases are now ignored by Harness.
 
 - Added support to provide quartz cron expressions for scheduled triggers. (CDS-59261, CDS-59260)
   
@@ -109,9 +109,9 @@ This release includes the following Harness module and component versions.
   
   For more information, go to [Schedule pipeline using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/).
 
-- Support for the **Enforce Git experience for pipelines and templates** Git experience. (CDS-67885)
+- Added support for the **Enforce Git experience for pipelines and templates** Git experience. (CDS-67885)
   
-  A new Git experience is introduced, **Enforce git experience for pipelines and templates**. Enabling this setting will let you create only remote pipelines and templates. If this setting is enabled, then the `InputSet` will be out of scope as it is controlled by the pipelines.
+  A new Git experience is introduced, **Enforce git experience for pipelines and templates**. Enabling this setting lets you create only remote pipelines and templates. If this setting is enabled, then the `InputSet` is out of scope as it is controlled by the pipelines.
 
 #### Harness Delegate
 
@@ -123,7 +123,7 @@ This release includes the following Harness module and component versions.
 
    This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- AuthZ now considers the SAML setting that the user logged in to when multiple SAML settings are present and the user belongs to more than one of them. The user will be removed from any other SAML settings that the same user might have been part of and synced with Harness through previous SAML logins. (PL-32484)
+- AuthZ now considers the SAML setting that the user logged into when multiple SAML settings are present and the user belongs to more than one of them. The user is removed from any other SAML settings that the same user might have been part of, and synced with Harness through previous SAML logins. (PL-32484)
 
 - The **Connector Details** page now shows whether a connector is connected via a delegate or via Harness Platform. (PL-32673)
 
@@ -131,7 +131,7 @@ This release includes the following Harness module and component versions.
 
 #### Service Reliability Management
 
-- New errors are introduced to provide a comprehensive insight into SLO's performance (SRM-14549).  
+- New errors are introduced to provide a comprehensive insight into SLO's performance. (SRM-14549) 
   
   Now, errors are displayed in the following scenarios:
   
@@ -143,11 +143,11 @@ This release includes the following Harness module and component versions.
 
 - You can now configure your monitored service to trigger notifications whenever there are updates or changes related to chaos experiments or feature flags. (SRM-14553)
 
-- In the event of an SLO encountering an error, it is now displayed in the respective Simple and Composite SLOs. Additionally, when the underlying issue causing data collection failures is resolved, the missed data that couldn't be collected during the error period will be restored. However, there is a time limit for data restoration, which is set at 24 hours. For example, if the issue is resolved within 48 hours, only the last 24 hours of data is restored. (SRM-14672)
+- In the event of an SLO encountering an error, it is now displayed in the respective Simple and Composite SLOs. Additionally, when the underlying issue causing data collection failures is resolved, the missed data that couldn't be collected during the error period will be restored. However, there is a 24-hour time limit for data restoration. For example, if the issue is resolved within 48 hours, only the last 24 hours of data is restored. (SRM-14672)
 
-- Clicking on a Prometheus metrics entry in the Service Health page of a monitored service directly navigates you to the Prometheus metrics dashboard. (SRM-14699)
+- Selecting a Prometheus metrics entry in the Service Health page of a monitored service directly navigates you to the Prometheus metrics dashboard. (SRM-14699)
 
-- Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
+- The Monitored Service listing page now displays a summary of changes related to the number of feature flags and chaos experiments, along with the other custom change sources. (SRM-14742)
 
 ```mdx-code-block
   </TabItem>
@@ -186,7 +186,7 @@ This release includes the following Harness module and component versions.
    | `task_failed` | The number of failed tasks. |
    | `task_rejected` | The number of tasks rejected because of a high load on the delegate. |
    | `delegate_connected` | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
-   | `resource_consumption_above_threshold` | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. |
+   | `resource_consumption_above_threshold` | Delegate CPU/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. |
 
    Enable the feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST` to use the new delegate agent metrics. When this feature flag is enabled, Harness will capture the metrics. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
 
@@ -198,11 +198,11 @@ This release includes the following Harness module and component versions.
 
 #### Continuous Integration
 
-- When manually running a pipeline, you can chose to run specific stages, rather than the entire pipeline. Previously, if you chose to run only stages with **Clone Codebase** disabled, you were blocked by a field validation error requiring you to populate the **Git Branch** and **Repository** fields, which weren't visible. This has been fixed so that you are only asked to provide codebase information if **Clone Codebase** is enabled for at least one of the selected stages. (CI-7559, CI-7934 ZD-41974, ZD-43980, ZD-44041)
+- When manually running a pipeline, you can choose to run specific stages, rather than the entire pipeline. Previously, if you chose to run only stages with **Clone Codebase** disabled, you were blocked by a field validation error requiring you to populate the **Git Branch** and **Repository** fields, which weren't visible. This has been fixed so that you are only asked to provide codebase information if **Clone Codebase** is enabled for at least one of the selected stages. (CI-7559, CI-7934 ZD-41974, ZD-43980, ZD-44041)
 
 - If you run a pipeline that uses a Kubernetes cluster build infrastructure and step templates with empty `connectorRef` and `image` values, the resulting error message is more accurate and informative. (CI-7785)
 
-- Previously, test splitting wouldn't work with step-level parallelism on a Kubernetes cluster build infrastructure due to the way certain environment variables were read. This is fixed. (CI-7800, CI-7803, ZD-43259, ZD-43272)
+- Previously, test splitting didn't work with step-level parallelism on a Kubernetes cluster build infrastructure due to the way certain environment variables were read. This is fixed. (CI-7800, CI-7803, ZD-43259, ZD-43272)
 
 - In step templates for **Run**, **Run Tests**, and **Background** steps, the `connectorRef` and `image` settings are now optional because these settings are not required for all build infrastructures. Validations are triggered when you use these templates in a pipeline that requires these settings. (CI-7845)
 
@@ -232,11 +232,11 @@ This release includes the following Harness module and component versions.
 
 - Harness displays an error message when the ASG configuration or ASG launch template is missing from the ASG deployment config file. (CDS-59154)
 
-- The Save button greyed out when variables are added or updated in a service template. (CDS-59320, ZD-43110)
+- The **Save** button greyed out when variables were added or updated in a service template. (CDS-59320, ZD-43110)
   
-  Users can now use the Save button when variables are added or updated in a service template.
+  Users can now use the **Save** button when variables are added or updated in a service template.
 
-- The Harness UI hid the Interrupts button for chained pipelines for multi-service and multi-environment cases. (CDS-59374)
+- The Harness UI hid the **Interrupts** button for chained pipelines for multi-service and multi-environment cases. (CDS-59374)
   
   Previously, the parent pipeline's **planExecutionId**, **projectId**, and **orgId** were passed in the child pipeline, and hence, the interrupt functionality for chained pipeline was not working. This issue is fixed by passing the the correct **planExecutionId**, **projectId**, and **orgId** for the child pipeline. There is no need to hide these buttons anymore.
 
@@ -272,7 +272,7 @@ This release includes the following Harness module and component versions.
   
   Extended character length support is now provided for the PDC connector hostname definitions to accommodate lengthy host and connector names.
 
-- The Terraform Plan step failed when an account level secret manager was selected an the feature flag, `CDS_NOT_ALLOW_READ_ONLY_SECRET_MANAGER_TERRAFORM_TERRAGRUNT_PLAN` was enabled. (CDS-68140)
+- The Terraform Plan step failed when an account-level secret manager was selected and the feature flag, `CDS_NOT_ALLOW_READ_ONLY_SECRET_MANAGER_TERRAFORM_TERRAGRUNT_PLAN` was enabled. (CDS-68140)
 
   This issue is now fixed.
 
@@ -280,7 +280,7 @@ This release includes the following Harness module and component versions.
   
   This issue is fixed in the Harness Delegate version 79307 by passing the context correctly from the SCM service to the Git service. 
 
-- Made code enhancements to not disable triggers if validation fails during runtime. (CDS-68168, ZD-43588)
+- Made code enhancements to prevent disabling triggers if validation fails during runtime. (CDS-68168, ZD-43588)
   
   Triggers were automatically disabled if Harness failed to fetch templates when validating a pipeline trigger. This was the expected behavior as Harness disables the trigger if pipeline validation fails. 
   
@@ -290,7 +290,7 @@ This release includes the following Harness module and component versions.
   
   This issue is fixed by adding a Helm version query parameter in the API call to fetch charts dependent on the user's Helm version.
 
-- Executions were failing with `Canary failed: [Canary Deployment failed - NoSuchMethodError: org.yaml.snakeyaml.constructor.SafeConstructor: method 'void <init>()' not found ]` error message. (CDS-68293, ZD-43753, ZD-43769)
+- Executions were failing with the error message `Canary failed: [Canary Deployment failed - NoSuchMethodError: org.yaml.snakeyaml.constructor.SafeConstructor: method 'void <init>()' not found ]`. (CDS-68293, ZD-43753, ZD-43769)
   
   The Fabric8 library used by Harness is upgraded from version 5.x to 6.x. Harness was explicitly using snake.yaml version 2.x due to vulnerabilities present in the 1.x version.
   
@@ -307,7 +307,7 @@ This release includes the following Harness module and component versions.
 
 - The Harness UI displayed incorrect default value for conditional execution. (CDS-68600)
   
-  When you create a new pipeline, if you don't have any default value for conditional execution, the Harness UI showed that the **Execute this step if the stage execution is successful thus far** is selected, but the YAML view didn't reflect the same.
+  Previously, when you created a new pipeline, if you didn't have any default value for conditional execution, the Harness UI showed that the **Execute this step if the stage execution is successful thus far** was selected, but the YAML view didn't reflect the same.
 
   This issue is fixed. If no options are selected, then the default strategy will be applied from the backend at runtime.
 
@@ -361,7 +361,7 @@ This release includes the following Harness module and component versions.
 
 - Selecting stages in Triggers was resetting to all stages in the YAML editor. (CDS-69725)
   
-  Now Harness avoids sending multiple API calls for merge, and stage selecting works as intended.
+  Now Harness avoids sending multiple API calls for merge, and selecting stages works as intended.
 
   ![picture 88](static/ee0f296b5c9ed5249f409415b8a1dbb6b901ceed5e3b7118ee1ad40a6f93b77d.png)
 
@@ -373,13 +373,13 @@ This release includes the following Harness module and component versions.
 
 - The error message displayed when permissions are missing during pipeline execution does not mention the corresponding resource Id. (PL-31350)
 
-  A code enhancement to display the resource Id in the error message fixed this issue.
+  A code enhancement to display the resource ID in the error message fixed this issue.
 
 - Invites to users fail with an unauthorized error while RBAC setup is still in progress. (PL-32117)
 
   A polling system ensures that RBAC setup has been completed. The Harness Delegate version 79307 is required for this fix.
 
-- The comparison of email addresses during sign in is case-sensitive. (PL-32198)
+- The comparison of email addresses during sign-in is case-sensitive. (PL-32198)
 
   A code enhancement has fixed this issue.
 
