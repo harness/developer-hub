@@ -95,7 +95,7 @@ delegate:yy.mm.xxxxx
 podman ps
 ```
 
-Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` value with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
 
 | Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
 | ------------------------| -------------------------------------------	|
