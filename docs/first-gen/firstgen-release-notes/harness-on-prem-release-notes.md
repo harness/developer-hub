@@ -10,9 +10,69 @@ helpdocs_is_published: true
 
 This document contains release notes for Harness Self-Managed Enterprise Edition.
 
-For Harness SaaS release notes, see [Harness SaaS Release Notes](https://developer.harness.io/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). 
+For Harness SaaS release notes, go to [Harness SaaS Release Notes](https://developer.harness.io/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). 
 
 Release notes are displayed with the most recent release first.
+
+## June 30, 2023, version 79421
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 79421 |
+| Watcher | 78424 |
+| Verification Service | 79421 |
+| UI | 79401 |
+| Learning Engine | 67903 | 
+| Gateway | 11002 |
+
+### New features and enhancements
+
+#### Harness Delegate
+
+- The org.json:json is upgraded from version 20160810 to 20230227 to address vulnerabilities. (PL-37905)
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Continuous Delivery & GitOps
+
+- The feature flag, `CG_GIT_POLLING` was creating too many queries in yamlGitConfig. (CDS-45085)
+  
+  This issue is fixed. Git polling for Git sync now works via a different internal method where Harness polls for a feature flag change once every 30 minutes, and then continues polling on accounts for which feature flags are enabled.
+
+- Fixed an issue where perpetual tasks corresponding to a non-existing service was still running. (CDS-58137)
+
+- The ASG Rollback auto-scaling step failed with an exception. (CDS-68533, ZD-43354)
+  
+  Fixed this issue by adding a back-off strategy support for ASG deployments.
+
+#### Harness Delegate
+
+- Secret decryption failures were not included in logs. (PL-31517)
+
+   A code enhancement to return runtime errors from secret managers during decryption fixed this issue.
+
+#### Harness Platform
+
+-  No members appear in user group list even after the user has been added via SCIM. This issue is fixed. (PL-32482)
+
+
+
+- Users cannot use Harness secret as LDAP password in FirstGen. (PL-32597, ZD-42655)
+  A code enhancement fixed the issue.
+
+  The user group list now displays the number of users in the group. Select this number to see the user details. This is behind the feature flag `PL_CG_SHOW_MEMBER_ID_COUNT`.
+
+- The `DMS_MONGO_URI` was missing from the ConfigMap of cg-manager for Self-Managed Enterprise Edition Helm installations. (PL-38850)
+
+   This issue is fixed. The `DMS_MONGO_URI` is included in the ConfigMap.
+   
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
 
 ## June 14, 2023, version 79230
 
