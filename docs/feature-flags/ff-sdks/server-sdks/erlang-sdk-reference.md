@@ -28,18 +28,21 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.1.0**. 
+The current version of this SDK is **2.0.0**. 
 
 ## Requirements
 
 * **For Erlang** applications, install:
 
   * Erlang/OTP 24 or later
-  * Rebar3
+  * Rebar3 3.20.0 or later
+  * Important, since version 2.0.0 the SDK depends on an Elixir hashing library, so the following is also required for Erlang applications:
+    * Elixir 1.13.4 or later available on your build system
+    * Rebar3 `rebar_mix` plugin installed in your Rebar3 plugins
 
 * **For Elixir** applications, install:
-
-  * Elixir version 1.11.4 or later
+  * Elixir version 1.13.4 or later
+  * OTP 24 or later
 
 To follow along with our test code sample, make sure you:
 
@@ -54,17 +57,26 @@ To install the SDK for Erlang based applications:
 
 1. Add the SDK as a dependency to your `rebar.config` file:
 
-  ```
+  ```erlang
   {deps, [{cfclient, "1.0.0", {pkg, harness_ff_erlang_server_sdk}}]}.
   ```
+    
+2. Add the `rebar_mix` plugin to your `rebar.config` file:
 
-2. Add the dependency to your project's `app.src`.
+  ```erlang
+  {project_plugins, [rebar_mix]}.
+  ```
+
+  Imporatant: for this plugin to work ensure you have Elixir 1.13.4 or later installed onto your build system
+
+3. Add the dependency to your project's `app.src`.
 
   ```erlang
   {applications,
     [kernel, stdlib, cfclient]
   },
   ```
+
 
 ### For Elixir applications
 
@@ -75,7 +87,7 @@ To install the SDK for Elixir based applications:
   ```
     defp deps do
       [
-          {:cfclient, "~> 1.0.0", hex: :harness_ff_erlang_server_sdk}
+          {:cfclient, "~> 2.0.0", hex: :harness_ff_erlang_server_sdk}
       ]
   ```
 
