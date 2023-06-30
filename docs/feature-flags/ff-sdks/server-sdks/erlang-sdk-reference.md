@@ -355,19 +355,21 @@ Note that this will only affect evaluation log statements.
 #### Elixir
 ```elixir
 config :cfclient,
-    log_level: :error
+    log_level: :error,
+    verbose_evaluation_logs: true,
     [api_key: System.get_env("FF_API_KEY_0"),
     config: [
-      verbose_evaluation_logs: true
+      poll_interval: 60000
     ]]
 ```
 #### Erlang
 ```erlang
 [{cfclient, [
     {log_level, error},
+    {verbose_evaluation_logs, true},
     {api_key, {envrionment_variable, "YOUR_API_KEY_ENV_VARIABLE"},
     {config, [
-        {verbose_evaluation_logs, true},
+      {poll_interval, 60}
     ]},
     ]}]
 ```
