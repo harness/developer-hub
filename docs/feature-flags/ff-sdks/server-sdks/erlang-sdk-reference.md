@@ -335,9 +335,9 @@ config :cfclient,
     ]}]
 ```
 
-### Enable Verbose Evaluation Logs
+### Enable verbose evaluation logs
 
-Evaluation logs are `debug` level by default. If required, they can be changed to `info` level. This is useful if production environments do not use `debug` level, but there is a requirement to check low level evaluation logs.
+Evaluation logs are at `debug` level by default. If required, they can be changed to `info` level. This is useful if production environments do not use `debug` level, but there is a requirement to check low level evaluation logs.
 Note that this will only affect evaluation log statements.
 
 #### Elixir
