@@ -16,6 +16,10 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 ## Latest - June 30, 2023, version 79421
 
+### Known issue
+
+-  Terraform-based pipeline automation does not function correctly in Istio environments.(PL-39776)
+
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
@@ -26,6 +30,7 @@ This release includes the following Harness module and component versions.
 | **Name** | **Version** |
 | :-- | :--: |
 | Helm Chart | [0.7.0](https://github.com/harness/helm-charts/releases/tag/harness-0.7.0) |
+| Air Gap Bundle | [0.7.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.7.0;tab=objects?prefix=&forceOnObjectsSortingFiltering=false) |
 | NG Manager | 79421 |
 | CI Manager | 3907 |
 | Pipeline Service | 1.33.8 |
@@ -35,6 +40,9 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | release-177 |
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
+
+
+
 
 #### Continuous Integration
 
