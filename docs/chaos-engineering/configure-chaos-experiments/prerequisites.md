@@ -3,7 +3,7 @@ title: Prerequisites
 sidebar_position: 1
 ---
 
-This topic describes the requirements and resources you need to run chaos experiments on your target environmments.
+This topic describes the requirements and resources you need to run chaos experiments on your target environments.
 
 ## Chaos infrastructure requirements
 
