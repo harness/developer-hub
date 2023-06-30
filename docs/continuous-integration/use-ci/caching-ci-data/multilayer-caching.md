@@ -90,7 +90,7 @@ pipeline:
                   when:
                     stageStatus: Success
                     condition: <+execution.steps.L1_Caching.status> == "IGNORE_FAILED"
-              - step:
+              - step: ## Between the Restore and Save Cache steps, add steps to build code, run tests, publish images, and so on.
                   type: Run
                   name: Run_1
                   identifier: Run_1
@@ -99,7 +99,7 @@ pipeline:
                     command: |-
                       echo <+execution.steps.L1_Caching.status>
                       mvn clean install
-              - parallel: ## This tells the pipeline to run the following steps in parallel.
+              - parallel: ## This tells the pipeline to run the following two Save Cache steps in parallel.
                   - step:
                       type: SaveCacheGCS
                       name: Save L2 Cache
@@ -122,7 +122,7 @@ pipeline:
                         sourcePaths:
                           - /.m2/repository/
                         archiveFormat: Tar
-          sharedPaths:
+          sharedPaths: ## This setting shares directories that are outside the default workspace directory (/harness).
             - /.m2/repository/
   properties:
     ci:
@@ -280,20 +280,6 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
                        condition: <+execution.steps.L1_Caching.status> == "IGNORE_FAILED"
    ```
 
-<!-- Is there a purpose to this Run step?
-
-              - step:
-                  type: Run
-                  name: Run_1
-                  identifier: Run_1
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo <+execution.steps.L1_Caching.status>
-                      mvn clean install
-
--->
-
 4. Add **Save Cache** steps. You need one step for each cache, as identified by a cache key, that you want to save. The **Save Cache** steps don't need failure strategies or conditional executions.
 
    The following YAML example would add two **Save Cache to GCS** steps to a pipeline. This example uses `sharedPaths` to make the `/.m2/respository/` directory available to the **Save Cache** steps, because this directory is outside the default workspace directory (`/harness`). For more information, go to [Share data between steps in a stage](/docs/continuous-integration/use-ci/caching-ci-data/share-ci-data-across-steps-and-stages#share-data-between-steps-in-a-stage).
@@ -353,26 +339,10 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
                  - parallel: ## This tells the pipeline to run the following steps in parallel.
                      - step:
                          type: SaveCacheGCS
-                         name: Save L2 Cache
-                         identifier: Save_L2_Cache
-                         spec:
-                           connectorRef: YOUR_GCP_CONNECTOR
-                           bucket: YOUR_GCS_BUCKET_NAME
-                           key: harness-cache-l2
-                           sourcePaths:
-                             - /.m2/repository/
-                           archiveFormat: Tar
+                         ...
                      - step:
                          type: SaveCacheGCS
-                         name: Save L1 Cache
-                         identifier: Save_L1_Cache
-                         spec:
-                           connectorRef: YOUR_GCP_CONNECTOR
-                           bucket: YOUR_GCS_BUCKET_NAME
-                           key: harness-cache-{{ checksum "pom.xml" }}
-                           sourcePaths:
-                             - /.m2/repository/
-                           archiveFormat: Tar
+                         ...
              sharedPaths:
                - /.m2/repository/
    ```
@@ -382,3 +352,5 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
    <!-- ![](./static/multilayer-caching-save-in-parallel.png) -->
 
    <docimage path={require('./static/multilayer-caching-save-in-parallel.png')} />
+
+6. Add steps between your **Restore Cache** and **Save Cache** steps to complete your CI pipeline. These could include steps to build code, run tests, build and push images, upload artifacts, and so on.
