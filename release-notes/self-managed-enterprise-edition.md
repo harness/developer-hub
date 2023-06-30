@@ -18,7 +18,7 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 ### Known issue
 
--  Terraform-based pipeline automation does not function correctly in Istio environments.(PL-39776)
+-  Terraform-based pipeline automation does not function correctly in Istio environments. UI operations are not affected. (PL-39776)
 
 ```mdx-code-block
 <Tabs>
