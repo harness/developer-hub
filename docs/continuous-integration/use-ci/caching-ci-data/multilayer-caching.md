@@ -31,14 +31,13 @@ The general pattern for multilayer caching in CI pipelines is as follows:
 * Use multiple **Save Cache** steps, which can run in parallel.
   * You need one step for each cache, as identified by a cache key, that you want to save.
   * The **Save Cache** steps don't need failure strategies or conditional execution conditions.
-  * The **Save Cache** steps can run in parallel.
 
 ### YAML example
 
 Here's an example of a pipeline with multilayer caching. It has one stage with two **Restore Cache** steps and two **Save Cache** steps.
 
 <details>
-<summary>YAML example: Multilayer caching in one stage</summary>
+<summary>YAML example: Multilayer caching</summary>
 
 ```yaml
 pipeline:
@@ -145,11 +144,11 @@ For more information, go to [Share data between steps in a stage](/docs/continuo
 
 ## Configure multilayer caching
 
-The following steps demonstrate how to configure multilayer caching in one stage.
+The following steps demonstrate how to configure multilayer caching in one stage of a CI pipeline.
 
 :::tip
 
-If you are using the visual editor in the Pipeline Studio, you can find **Conditional Execution**, **Failure Strategy**, and **Looping Strategy** settings on the **Advanced** tab of your step and stage settings.
+If you are using the visual editor in the Pipeline Studio, you can find **Conditional Execution** and **Failure Strategy** settings on the **Advanced** tab of your step settings.
 
 :::
 
@@ -182,10 +181,7 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
 
    For information about **Restore Cache** step settings, go to [Save and Restore Cache from S3](./saving-cache.md) and [Save and Restore Cache from GCS](./save-cache-in-gcs.md).
 
-2. On each **Restore Cache** step *except the last*, add a [failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) that causes the step to fail if the cache key doesn't exist:
-
-   * Enable **Fail if Key Doesn't Exist** (`failIfKeyNotFound: true`)
-   * Add a **Failure Strategy** where the step fails on **All Errors** and executes the **Ignore** action in response.
+2. On each **Restore Cache** step *except the last*, add a [failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) that causes the step to fail if the cache key doesn't exist. To do this, enable **Fail if Key Doesn't Exist** (`failIfKeyNotFound: true`) and add a **Failure Strategy** where the step fails on **All Errors** and executes the **Ignore** action in response, for example:
 
    ```yaml
                  - step:
@@ -232,11 +228,9 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
                        archiveFormat: Tar
    ```
 
-3. On each **Restore Cache** step *except the first*, add a [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions) so they only run if the preceding step failed:
+3. On each **Restore Cache** step *except the first*, add a [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions) that runs the step only if the preceding step failed.
 
-   * Add a **Conditional Execution** (`when`).
-   * Set it to **Execute this step if the stage execution is successful thus far** (`stageStatus: Success`).
-   * Add the following JEXL condition: `<+execution.steps.L1_Caching.status> == "IGNORE_FAILED"`.
+   Set the conditional execution to **Execute this step if the stage execution is successful thus far** (`stageStatus: Success`) and include the JEXL condition `<+execution.steps.L1_Caching.status> == "IGNORE_FAILED"`, for example:
 
    ```yaml
                  - step:
@@ -247,7 +241,7 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
                        condition: <+execution.steps.L1_Caching.status> == "IGNORE_FAILED"
    ```
 
-   Here is the YAML for two **Restore Cache from GCS** steps with the failure strategy applied to the first step and the conditional execution condition applied to the second step:
+   Here is the YAML for two **Restore Cache from GCS** steps with the failure strategy applied to the first step and the conditional execution applied to the second step:
 
    ```yaml
                  - step:
