@@ -8,6 +8,58 @@ Harness maintains its own set of scan images for [STO-supported scanners](/docs/
 
 This topic describes how to override the default behavior and use a private registry instead. You can download the scan images you need, perform your own security checks on the images, upload them to a private registry, and then set up your STO steps to download images from this registry. 
 
+### Create STO scanner images with your own SSL certificates (_optional_)
+
+This workflow describes how to create Docker images with your own SSL certificates. This is useful when you want your pipelines to run your STO scans as a non-root user. 
+
+:::note
+This workflow is not supported for container image scans.
+:::
+
+1. Save a copy of the following Dockerfile into a folder along with the certificates you want to copy to the image.
+
+2. Update the `FROM`, `COPY`, and `USER` commands as described in the Dockerfile comments.
+
+3. Build the new image and then upload it to your private registry.
+
+4. Update the scan step in your pipeline as follows:
+
+   1. Update the **Image** setting to point to the new image in your registry.
+   2. If you specified a `USER`in your Dockerfile, set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
+
+<!-- Need to finalize where to copy the certs.../shared/customer_artifacts/certificates/ is the STO default -->
+
+<details><summary>Dockerfile template for adding certificates to an STO scanner image</summary>
+
+``` bash
+# STEP 1 
+# Specify the STO scanner image where you want to add your certificates
+# For a list of all images in the Harness Container Registry, run the following:
+#     curl -X  GET https://app.harness.io/registry/_catalog
+FROM harness/twistlock-job-runner:latest as scanner
+
+# FYI Root access is required to load and trust certificates
+USER root
+
+# STEP 2 
+# Copy your certificates to the engine
+# You can copy multiple ca from completely different paths into SHARE_CA_PATH
+COPY ./CERTIFICATE_1.pem ../another-folder/CERTIFICATE_2.pem /shared/customer_artifacts/certificates/
+
+
+# FYI establishes trust for certificates in Python and the OS
+RUN sto_plugin --trust-certs
+
+# STEP 3 (optional)
+# Create a user and assume limited permission user
+# If you set this, you need to add runAsUser setting in the scan step
+#     i.e., runAsUser: "1000"
+USER 1000
+
+```
+
+</details>
+
 ### Workflow description
 
 1. Download the scan images you need, test and validate the images, and store them in your private registry. 
