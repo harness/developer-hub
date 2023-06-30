@@ -36,9 +36,9 @@ To add a new user to a project:
 	1. In **User Groups**, select any of the existing user groups to which the user should be added. 
 	1. Add the roles for the user(s) to enforce their access permissions. 
 
-1. Select **Apply**.
-
 	![Add New User](./static/add-new-user.png)
+
+1. Select **Apply**.
 
 This will send an email invite to the new user to add themselves to the project.
 
