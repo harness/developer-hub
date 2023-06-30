@@ -35,7 +35,7 @@ This release includes the following Harness module and component versions.
 | CI Manager | 3907 |
 | Pipeline Service | 1.33.8 |
 | Platform Service | 79202 |
-| Access Control Service | 79003 |
+| Access Control Service | 79004 |
 | Change Data Capture | 79421 |
 | Test Intelligence Service | release-177 |
 | NG UI | 0.349.16 |
