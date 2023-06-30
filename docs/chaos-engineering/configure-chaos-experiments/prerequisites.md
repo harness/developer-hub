@@ -40,7 +40,6 @@ To add a new user to a project:
 
 1. Select **Apply**.
 
-This will send an email invite to the new user to add themselves to the project.
 
 ## Prerequisites for individual chaos faults
 
