@@ -1,6 +1,6 @@
 ---
 title: What's supported
-sidebar_position: 15
+sidebar_position: 10
 ---
 
 This topic lists the platforms and technologies that Harness Chaos Engineering (CE) supports.
