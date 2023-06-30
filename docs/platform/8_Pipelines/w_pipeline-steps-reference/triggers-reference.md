@@ -197,7 +197,7 @@ You must also enter the GitHub webhook's ID in **Webhook Id**, which can be foun
 
 :::note
 
-Please note that we make an api call using github retrofit rest client to fetch the webhook events for this webhook and in case even that fails then we make a simple curl request to do the same.
+In case the API call using the GitHub retrofit REST client to fetch the webhook events fail, Harness makes a simple cURL request to do the same.
 
 :::
 
