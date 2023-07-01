@@ -195,6 +195,12 @@ You must also enter the GitHub webhook's ID in **Webhook Id**, which can be foun
 
 ![Getting a webhook ID from a GitHub webhook page URL.](./static/752891ea2d0d9bcee2511ad039994271c20f002eb525570b5bc8038915b85da1.png)
 
+:::note
+
+In case the API call using the GitHub retrofit REST client to fetch the webhook events fail, Harness makes a simple cURL request to do the same.
+
+:::
+
 ## Conditions settings
 
 Conditions are optional settings you can use to refine the trigger beyond [events and actions](#event-and-actions). These form the overall set of criteria to trigger a pipeline based on changes in a given source.
