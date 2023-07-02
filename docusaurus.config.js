@@ -251,18 +251,18 @@ const config = {
           {
             position: "right",
             to: "kb",
-            label: "KB",
+            label: "Knowledge Base",
           },
           {
             position: "right",
             to: "community",
             label: "Community",
           },
-          {
-            position: "right",
-            to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
-            label: "Join Slack",
-          },
+          //{
+          //  position: "right",
+          //  to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
+          //  label: "Join Slack",
+          //},
           {
             // type: "search",
             // position: "right",
