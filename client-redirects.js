@@ -62,6 +62,11 @@ module.exports = {
     },
 
     {
+      from: "/docs/continuous-delivery/cd-services/k8s-services/kubernetes-services",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services"
+    },
+    
+    {
       from: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services",
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services"
     },
