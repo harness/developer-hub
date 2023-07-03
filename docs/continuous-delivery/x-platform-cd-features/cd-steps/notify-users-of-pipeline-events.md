@@ -187,6 +187,19 @@ You can reference a secret within the Account scope using an expression with `ac
 <+secrets.getvalue("account.your-secret-Id")>​​
 ```
 
+## Webhook Notifications
+
+Use Webhook notifications when you need to inform an external application of the event. 
+
+TBD: screenshot of the configuration
+
+Enter the URL that you would like to be called when the event occurs. You can use expressions to compose this URL, such as 
+```https://comopanyurl.notify.com/execution=-<+pipeline.executionId>
+```
+Note that the expression needs to be evaluated in the context of the event. For example, stage related expressions may not be valid in the case of the Pipeline Start event. 
+
+The Webhook call will be made as a POST request, and include a JSON object containing the properties of the triggered event.
+
 ## Notify Slack channels in user groups
 
 If you have Harness user groups that have Slack webhooks set up in their **Notification Preferences**, you can select those groups and Harness will notify them in addition to the Email, Slack, or PagerDuty settings.
