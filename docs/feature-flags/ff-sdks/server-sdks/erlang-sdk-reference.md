@@ -350,19 +350,19 @@ config :cfclient,
 ### Enable verbose evaluation logs
 
 Evaluation logs contain statements relating to flag evaluations. These logs are set at `debug` level by default. 
-If required, you can change the evaluation log level to `info`, for example, if your production environments don't use `debug` level. But you can still check low level evaluation logs by making these verbose.
+If required, you can change the evaluation log level to `info`, for example, if your production environment doesn't use `debug` level, but you need to see verbose evaluation logs.
 
-The examples below set the evaluation log level to `info`, and make evaluation logs verbose.
+The examples below set `log_level` to `error`, but override that for the evaluation logs, which are set to `info` (more verbose). 
 
 :::info note 
-This only affects evaluation log statements. The `log_level` you set still applies to all other log statements.
+This will only affect evaluation log statements. The `log_level` you set applies to all other log statements.
 :::
 
-To enable verbose evaluation logs and set their log level to `info`: 
+**To enable verbose evaluation logs:** 
 
 * Set `verbose_evaluation_logs: true`. 
 
-  This changes the evaluation log level to `info` and makes these logs verbose. Other log levels are unaffected. 
+  This changes the evaluation log level to `info`. Other log levels are unaffected. 
 
   **Elixir example**
 
