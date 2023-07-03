@@ -9,8 +9,6 @@ description: This topic explains the advantages of using Harness AIDA for cloud 
 import Intro from '/docs/cloud-cost-management/shared/ccm-aida-overview-partial.md';
 ```
 
-## Overview of Harness AIDA for asset governance
-
 <Intro />
 
 
