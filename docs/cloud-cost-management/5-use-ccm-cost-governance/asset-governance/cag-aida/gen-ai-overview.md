@@ -7,20 +7,12 @@ description: This topic explains the advantages of using Harness AIDA for cloud 
 
 ```mdx-code-block
 import Intro from '/docs/cloud-cost-management/shared/ccm-aida-overview-partial.md';
-import Create from '/docs/cloud-cost-management/shared/ccm-aida-create-rule-partial.md';
-import View from '/docs/cloud-cost-management/shared/ccm-aida-view-rule-partial.md';
 ```
 
 ## Overview of Harness AIDA for asset governance
 
 <Intro />
 
-## Create a rule by using Harness AIDA
 
-<Create />
-
-## View rule descriptions by using Harness AIDA
-
-<View />
 
 
