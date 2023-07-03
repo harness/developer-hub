@@ -52,17 +52,13 @@ This release does not include any early access features.
 ```
 ### Fixed issues
 
-* Cost data was not displayed on the **Perspectives** page. (CCM-12752)
+* The cost data was not displayed on the **Perspectives** page. (CCM-12752)
 
   This was caused by the challenge of pushing large volumes of billing data into BigQuery. However, this problem has been resolved by adding support to upload and handle large datasets.
-* Previously, users couldn't view and manage the ignored recommendations for EC2 instances. (CCM-13004) (Zendesk Ticket ID 46353)
+* Previously, users were unable to view and manage the ignored recommendations for EC2 instances. (CCM-13004) (ZD-46353)
 
- The payload for adding EC2 Recommendations to the **Ignore List** was incorrect. Now, the issue is fixed, and the functionality is working as expected.
+ The payload for adding EC2 recommendations to the **Ignore List** was incorrect. Now, the issue is fixed, and the functionality is working as expected.
 
- 
-
-
-  
 
   
 ```mdx-code-block
