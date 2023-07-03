@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-06-28T10:00:25
+date: 2023-07-03T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -52,6 +52,41 @@ This release does not include early access features.
     `checkClientTrusted is empty, which could cause insecure network traffic due to trusting arbitrary TLS/SSL certificates presented by peers`
 
   * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
+
+* The **iOS** client SDK has been updated to version **1.1.0** with the following updates.
+
+  * The following methods now have an alternative overloaded version that allows you to get the result of the flag directly in the return value, without the need to provide a closure block. (FFM-8056)
+
+    * stringVariation()
+    * boolVariation()
+    * numberVariation()
+    * jsonVariation()
+
+  * Added TLS support for custom/private certs in the iOS SDK for config, stream and metric endpoints. (FFM-7015)
+
+    The CfConfigurationBuilder now has new methods for taking a list of X.509 certificate authority (CA) certs. This list must also include any intermediate CAs the Apple security APIs may need to resolve the full trust chain. 
+
+    For custom certificates, you must also ensure that the Subject Alternative Names (SANs) are set up correctly in the CA for domain name validation to pass.
+
+    The new function setTlsTrustedCAs() takes a list of X.509 CA certificates in PEM format, which will be used to verify the server's web cert sent during TLS handshake. Each PEM certificate must include the BEGIN/END CERTIFICATE headers.
+
+  * Made the following improvements. (FFM-8045)
+
+    *  Added standardized SDK error codes for events such as initialization, authentications, etc. For a full list, go to [Troubleshooting](/docs/feature-flags/ff-sdks/client-sdks/ios-sdk-reference#troubleshooting).
+    * Added general improvements to logging statements, reducing verbose logging to the console. 
+    * Added support for configurable custom loggers. For code examples, go to the [SDK repository](https://github.com/harness/ff-ios-client-sdk/blob/main/docs/further_reading.md#custom-loggers).
+
+  * Added retries for the authentication, and other endpoints. Network timeouts and certain HTTP error codes will be retried with a random delay up to 3 times. (FFM-8049)
+
+  * Added a new API, refreshEvaluations(), that can be called by a mobile app coming to the foreground to update any SSE events that were missed while the app was suspended. (FFM-8160)
+
+  * It is no longer necessary to call registerEventsListener() to start listening to events—calling initlialize() should be enough. (FFM-8106)
+
+  * When a target group is created Harness sends an event to connected SDKs to refetch all flags. The IOS SDK previously didn't do this refetch, and now does. (FFM-8137)
+
+  * Previously, when a target group event was received the SDK fetched all flags, but did not return an event so that apps could be updated accordingly. With this fix, in this case, the SDK returns the onPolling event after all flags are fetched. (FFM-8174)
+
+  * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-8048)
   
 
   </TabItem>
