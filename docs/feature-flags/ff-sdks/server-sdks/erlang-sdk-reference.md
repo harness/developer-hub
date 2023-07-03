@@ -28,7 +28,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.1.0**. 
+The current version of this SDK is **2.0.1**. 
 
 ## Requirements
 
