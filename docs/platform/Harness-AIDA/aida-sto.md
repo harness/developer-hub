@@ -1,7 +1,7 @@
 ---
-title: Fix issues using AI-enhanced remediation steps
+title: Fix security vulnerabilities using AIDA
 description: Enhanced remediation using Harness AI Development Assistant (AIDA)
-sidebar_position: 5
+sidebar_position: 40
 ---
 
 ```mdx-code-block
