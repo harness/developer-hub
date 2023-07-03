@@ -355,7 +355,7 @@ If required, you can change the evaluation log level to `info`, for example, if 
 The examples below set the evaluation log level to `info`, and make evaluation logs verbose.
 
 :::info note 
-This will only affect evaluation log statements. The `log_level` you set applies to all other log statements.
+This only affects evaluation log statements. The `log_level` you set still applies to all other log statements.
 :::
 
 To enable verbose evaluation logs and set their log level to `info`: 
