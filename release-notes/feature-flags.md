@@ -64,6 +64,64 @@ This release does not include early access features.
 <details>
 <summary>2023 releases</summary>
 
+#### June 30, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early acess
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Erlang** server SDK has been updated to version **2.0.0** with the following updates.
+
+:::caution
+The following are breaking changes for Erlang applications only.  
+
+* Due to a new dependency on a murmur3 hashing library implemented in Elixir, the following is now required to use the SDK in Erlang applications:
+
+  * Elixir version 1.13.4 or above must be installed on your build system when compiling your application.
+
+  * Rebar3 `rebar_mix` must be installed in your Rebar3 plugins.
+
+  For full details, go to [Install the SDK for Erlang applications](/docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-reference/#for-erlang-applications).
+
+This update does not affect Elixir applications, and no further action is required for Elixir applications upon upgrading to this version of the SDK.
+:::
+
+These changes are part of issue FFM-8364:
+
+* Enhancement: Implemented retry logic for authentication, polling, and metrics services for resilience and fault tolerance.
+* Enhancement: Changed supervisor restart intensity from 1 restart in 5 seconds to 4 restarts in 5 seconds.
+* The murmur3 nif library has been replaced by pure Elixir library.
+
+#### June 28, 2023
+
+##### What's new
+
+###### Feature Flags UI
+
+* On the **Feature Flags** page, when viewing the state of flags across all environments, the flag status column now scrolls all the rows as one. This makes it easier to view flag and environment states on one screen. (FFM-7643)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.2.0** with the following updates. (FFM-8300)
+
+  * To improve performance, the SDK now sends targets to the metrics service in batches of 1000. Up to 200 batches, or 200K unique targets, can be sent in the metrics window. This is not user-configurable, and is controlled through the SDK. For more information, go to [Feature Flag FAQs](/docs/frequently-asked-questions/harness-faqs/harness-feature-flag-faqs#how-does-the-metric-aggregatebatch-the-data-before-sending-it-to-harness).
+
+  * The SDK no longer allows `events_sync_interval` to be set below 60 seconds. If it is, the value defaults to 60 seconds.
+
 #### June 26, 2023
 
 ##### What's new
