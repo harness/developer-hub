@@ -96,12 +96,6 @@ Select the following:
 
 ### Rollback pipeline steps or stages
 
-:::info
-
-Currently, this feature is behind the feature flag, `PIPELINE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 The Rollback Pipeline failure strategy applies to all steps and stages in a pipeline. 
 
 :::info
