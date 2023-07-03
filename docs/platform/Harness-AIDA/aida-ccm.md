@@ -10,8 +10,6 @@ import Create from '/docs/cloud-cost-management/shared/ccm-aida-create-rule-part
 import View from '/docs/cloud-cost-management/shared/ccm-aida-view-rule-partial.md';
 ```
 
-## Overview of Harness AIDA for asset governance
-
 <Intro />
 
 ## Create a rule by using Harness AIDA
