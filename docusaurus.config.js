@@ -79,7 +79,7 @@ const config = {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "img/logo_pride.svg",
+          src: "img/logo_dlp.svg",
         },
         items: [
           /*{
@@ -251,18 +251,18 @@ const config = {
           {
             position: "right",
             to: "kb",
-            label: "KB",
+            label: "Knowledge Base",
           },
           {
             position: "right",
             to: "community",
             label: "Community",
           },
-          {
-            position: "right",
-            to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
-            label: "Join Slack",
-          },
+          //{
+          //  position: "right",
+          //  to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
+          //  label: "Join Slack",
+          //},
           {
             // type: "search",
             // position: "right",

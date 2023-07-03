@@ -1,7 +1,7 @@
 ---
 title: Introduction to Cloud Cost Management
 description: Provides an overview of Harness Cloud Cost Management.
-# sidebar_position: 2
+# sidebar_position: 1
 helpdocs_topic_id: rr85306lq8
 helpdocs_category_id: j4adbv9wn7
 helpdocs_is_private: false

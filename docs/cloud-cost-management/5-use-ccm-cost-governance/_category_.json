@@ -1,1 +1,12 @@
-{"label": "Cost governance", "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "Cost governance"}, "customProps": {"position": "20", "helpdocs_category_id": "iul2qmg1yk"}}
+{
+    "label":"Cost governance",
+    "position": 5,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Cost governance"
+    }
+    }
+ 

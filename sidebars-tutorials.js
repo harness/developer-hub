@@ -172,7 +172,7 @@ const sidebars = {
     // KB Link from Tutorials
     {
       type: "link",
-      label: "KB",
+      label: "Knowledge Base",
       href: "/kb",
     },
     // Community Link from Tutorials
