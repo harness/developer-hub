@@ -44,6 +44,10 @@ Open the delegate manifest file and locate the container `spec` (`spec.container
 
 Open the delegate manifest file and locate the container `containerDefinitions`. Change the `stopTimeout` as shown in the following JSON. In the example below, `stopTimeout` is set to 10 minutes.
 
+:::info note
+For more information on `stopTimeout`, go to [Container timeouts](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definition_parameters.html#container_definition_timeout) in the Amazon ECS documentation.
+:::
+
    ```json
      {
        "containerDefinitions": [
@@ -103,7 +107,8 @@ Open the delegate manifest file and locate the container `containerDefinitions`.
            "image": "harness/delegate:22.12.77802",
            "essential": true,
            "hostname": "<DELEGATE_HOST>",
-           "name": "<DELEGATE_NAME>"
+           "name": "<DELEGATE_NAME>",
+           "stopTimeout": 120
          }
        ],
          "memory": "2048",
