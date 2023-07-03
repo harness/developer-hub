@@ -35,11 +35,14 @@ The current version of this SDK is **2.0.1**.
 * **For Erlang** applications, install:
 
   * Erlang/OTP 24 or later
-  * Rebar3
+  * Rebar3 3.20.0 or later
+  * Important, since version 2.0.0 the SDK depends on an Elixir hashing library, so the following is also required for Erlang applications:
+    * Elixir 1.13.4 or later available on your build system
+    * Rebar3 `rebar_mix` plugin installed in your Rebar3 plugins
 
 * **For Elixir** applications, install:
-
-  * Elixir version 1.11.4 or later
+  * Elixir version 1.13.4 or later
+  * OTP 24 or later
 
 To follow along with our test code sample, make sure you:
 
@@ -54,17 +57,26 @@ To install the SDK for Erlang based applications:
 
 1. Add the SDK as a dependency to your `rebar.config` file:
 
-  ```
+  ```erlang
   {deps, [{cfclient, "1.0.0", {pkg, harness_ff_erlang_server_sdk}}]}.
   ```
+    
+2. Add the `rebar_mix` plugin to your `rebar.config` file:
 
-2. Add the dependency to your project's `app.src`.
+  ```erlang
+  {project_plugins, [rebar_mix]}.
+  ```
+
+  Imporatant: for this plugin to work ensure you have Elixir 1.13.4 or later installed onto your build system
+
+3. Add the dependency to your project's `app.src`.
 
   ```erlang
   {applications,
     [kernel, stdlib, cfclient]
   },
   ```
+
 
 ### For Elixir applications
 
@@ -75,7 +87,7 @@ To install the SDK for Elixir based applications:
   ```
     defp deps do
       [
-          {:cfclient, "~> 1.0.0", hex: :harness_ff_erlang_server_sdk}
+          {:cfclient, "~> 2.0.0", hex: :harness_ff_erlang_server_sdk}
       ]
   ```
 
@@ -334,6 +346,48 @@ config :cfclient,
     ]},
     ]}]
 ```
+
+### Enable verbose evaluation logs
+
+Evaluation logs contain statements relating to flag evaluations. These logs are set at `debug` level by default. 
+If required, you can change the evaluation log level to `info`, for example, if your production environment doesn't use `debug` level, but you need to see verbose evaluation logs.
+
+The examples below set `log_level` to `error`, but override that for the evaluation logs, which are set to `info` (more verbose). 
+
+:::info note 
+This will only affect evaluation log statements. The `log_level` you set applies to all other log statements.
+:::
+
+**To enable verbose evaluation logs:** 
+
+* Set `verbose_evaluation_logs: true`. 
+
+  This changes the evaluation log level to `info`. Other log levels are unaffected. 
+
+  **Elixir example**
+
+  ```elixir
+  config :cfclient,
+      log_level: :error,
+      verbose_evaluation_logs: true,
+      [api_key: System.get_env("FF_API_KEY_0"),
+      config: [
+        poll_interval: 60000
+      ]]
+  ```
+   
+  **Erlang example**
+
+  ```erlang
+  [{cfclient, [
+      {log_level, error},
+      {verbose_evaluation_logs, true},
+      {api_key, {envrionment_variable, "YOUR_API_KEY_ENV_VARIABLE"},
+      {config, [
+        {poll_interval, 60}
+      ]},
+      ]}]
+  ```
 
 ### Run multiple instances of the SDK
 
