@@ -39,13 +39,20 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-
 #### Feature Flags SDKs
 
-The **Erlang** server SDK has been updated to version **2.0.1** with the following update.
+* The **Erlang** server SDK has been updated to version **2.0.1** with the following update.
 
-* Some SDK dependencies were not included in releases created by `mix`. This issue has been fixed. (FFM-8364)
+  * Some SDK dependencies were not included in releases created by `mix`. This issue has been fixed. (FFM-8364)
 
+* The **Android** client SDK has been updated to version **1.1.1** with the following updates.
+
+  * Removed the following error, which is reported by Gradle's Lint task. (FFM-8551)
+
+    `checkClientTrusted is empty, which could cause insecure network traffic due to trusting arbitrary TLS/SSL certificates presented by peers`
+
+  * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
+  
 
   </TabItem>
 </Tabs>
@@ -62,7 +69,7 @@ The **Erlang** server SDK has been updated to version **2.0.1** with the followi
 
 This release does not include new features.
 
-##### Early acess
+##### Early access
 
 This release does not include early access features.
 
@@ -91,7 +98,6 @@ These changes are part of issue FFM-8364:
 * Enhancement: Implemented retry logic for authentication, polling, and metrics services for resilience and fault tolerance.
 * Enhancement: Changed supervisor restart intensity from 1 restart in 5 seconds to 4 restarts in 5 seconds.
 * The murmur3 nif library has been replaced by pure Elixir library.
-
 
 #### June 28, 2023
 
