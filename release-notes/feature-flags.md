@@ -39,7 +39,6 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-
 #### Feature Flags SDKs
 
 * The **Erlang** server SDK has been updated to version **2.0.1** with the following update.
@@ -70,7 +69,7 @@ This release does not include early access features.
 
 This release does not include new features.
 
-##### Early acess
+##### Early access
 
 This release does not include early access features.
 
