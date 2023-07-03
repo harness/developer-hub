@@ -16,7 +16,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - June 21, 2023, version 79803
+## Latest - June 30, 2023, version 79906
 
 ```mdx-code-block
 <Tabs>
@@ -24,13 +24,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 ### What's new
 
-* Added a tooltip on the **Cloud Integration** page. (CCM-12559)
+* Azure inventory enhancement (CCM-12676)
 
-  In the **Cloud Integration** page, if the connector data is unavailable, the **View costs** link is disabled. However, as soon as the data becomes available, the link is enabled. Now, a tooltip providing a concise explanation as to why the link is disabled appears when you hover over the disabled link. 
-  
-* Asset Governance filter panel enhancement. (CCM-12854)
-
-  Previously, in the **Asset Governance** > **Evaluations** page, only the target accounts with `execute` permissions were included in the **Target Accounts** field in the filter panel. Now, this functionality is enhanced so that all target accounts with `view` permissions are also included in the list.
+  As part of the Azure Inventory data, now you can monitor **Memory Utilization** for virtual machines (VMs) along with the existing **CPU Utilizatio**n tracking data.
 
 ```mdx-code-block
   </TabItem>
@@ -46,11 +42,16 @@ This release does not include any early access features.
 ```
 ### Fixed issues
 
-* The budget screen displayed inconsistent margins, leading to overlapping text in different columns. To address this issue, the columns in the budget list have been readjusted, ensuring that the text in each column no longer coincides with the text in adjacent columns. (CCM-10980)
-  
-* An error occurred with the HTTP AutoStopping rule. (CCM-12729)
+* Cost data was not displayed on the **Perspectives** page. (CCM-12752)
 
-  The detection of routing rules on the Azure Application Gateway was impacted due to the presence of an additional custom probe configuration. To address this issue, during the detection of routing rules for the specified port configuration, any custom probes are now ignored. However, the custom probe will continue to be utilized for the selected rule.
+  This was caused by the challenge of pushing large volumes of billing data into BigQuery. However, this problem has been resolved by adding support to upload and handle large datasets.
+* Previously, users couldn't view and manage the ignored recommendations for EC2 instances. (CCM-13004) (Zendesk Ticket ID 46353)
+
+ The payload for adding EC2 Recommendations to the **Ignore List** was incorrect. Now, the issue is fixed, and the functionality is working as expected.
+
+ 
+
+
   
 
   
@@ -63,6 +64,30 @@ This release does not include any early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 21, 2023, version 79803
+
+##### What's new
+
+* Added a tooltip on the **Cloud Integration** page. (CCM-12559)
+
+  In the **Cloud Integration** page, if the connector data is unavailable, the **View costs** link is disabled. However, as soon as the data becomes available, the link is enabled. Now, a tooltip providing a concise explanation as to why the link is disabled appears when you hover over the disabled link. 
+  
+* Asset Governance filter panel enhancement. (CCM-12854)
+
+  Previously, in the **Asset Governance** > **Evaluations** page, only the target accounts with `execute` permissions were included in the **Target Accounts** field in the filter panel. Now, this functionality is enhanced so that all target accounts with `view` permissions are also included in the list.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+* The budget screen displayed inconsistent margins, leading to overlapping text in different columns. To address this issue, the columns in the budget list have been readjusted, ensuring that the text in each column no longer coincides with the text in adjacent columns. (CCM-10980)
+  
+* An error occurred with the HTTP AutoStopping rule. (CCM-12729)
+
+  The detection of routing rules on the Azure Application Gateway was impacted due to the presence of an additional custom probe configuration. To address this issue, during the detection of routing rules for the specified port configuration, any custom probes are now ignored. However, the custom probe will continue to be utilized for the selected rule.
 
 #### June 09, 2023, version 79701
 
