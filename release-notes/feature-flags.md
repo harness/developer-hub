@@ -17,16 +17,14 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - June 28, 2023
+## Latest - July 3, 2023
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-#### Feature Flags UI
-
-* On the **Feature Flags** page, when viewing the state of flags across all environments, the flag status column now scrolls all the rows as one. This makes it easier to view flag and environment states on one screen. (FFM-7643)
+This release does not include new features.
 
 ```mdx-code-block
   </TabItem>
@@ -35,22 +33,31 @@ Harness deploys updates progressively to different Harness SaaS clusters. You ca
 
 This release does not include early access features.
 
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
 
+
 #### Feature Flags SDKs
 
-The **Python** server SDK has been updated to version **1.2.0** with the following updates. (FFM-8300)
+* The **Erlang** server SDK has been updated to version **2.0.1** with the following update.
 
-  * To improve performance, the SDK now sends targets to the metrics service in batches of 1000. Up to 200 batches, or 200K unique targets, can be sent in the metrics window. This is not user-configurable, and is controlled through the SDK. For more information, go to [Feature Flag FAQs](/docs/frequently-asked-questions/harness-faqs/harness-feature-flag-faqs#how-does-the-metric-aggregatebatch-the-data-before-sending-it-to-harness).
+  * Some SDK dependencies were not included in releases created by `mix`. This issue has been fixed. (FFM-8364)
 
-  * The SDK no longer allows `events_sync_interval` to be set below 60 seconds. If it is, the value defaults to 60 seconds.
+* The **Android** client SDK has been updated to version **1.1.1** with the following updates.
 
+  * Removed the following error, which is reported by Gradle's Lint task. (FFM-8551)
+
+    `checkClientTrusted is empty, which could cause insecure network traffic due to trusting arbitrary TLS/SSL certificates presented by peers`
+
+  * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
+  
 
   </TabItem>
 </Tabs>
+
 
 ## Previous releases
 
