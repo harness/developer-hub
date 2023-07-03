@@ -349,30 +349,45 @@ config :cfclient,
 
 ### Enable verbose evaluation logs
 
-Evaluation logs are at `debug` level by default. If required, they can be changed to `info` level. This is useful if production environments do not use `debug` level, but there is a requirement to check low level evaluation logs.
-Note that this will only affect evaluation log statements.
+Evaluation logs contain statements relating to flag evaluations. These logs are set at `debug` level by default. 
+If required, you can change the evaluation log level to `info`, for example, if your production environments don't use `debug` level. But you can still check low level evaluation logs by making these verbose.
 
-#### Elixir
-```elixir
-config :cfclient,
-    log_level: :error,
-    verbose_evaluation_logs: true,
-    [api_key: System.get_env("FF_API_KEY_0"),
-    config: [
-      poll_interval: 60000
-    ]]
-```
-#### Erlang
-```erlang
-[{cfclient, [
-    {log_level, error},
-    {verbose_evaluation_logs, true},
-    {api_key, {envrionment_variable, "YOUR_API_KEY_ENV_VARIABLE"},
-    {config, [
-      {poll_interval, 60}
-    ]},
-    ]}]
-```
+The examples below set the evaluation log level to `info`, and make evaluation logs verbose.
+
+:::info note 
+This will only affect evaluation log statements. The `log_level` you set applies to all other log statements.
+:::
+
+To enable verbose evaluation logs and set their log level to `info`: 
+
+* Set `verbose_evaluation_logs: true`. 
+
+  This changes the evaluation log level to `info` and makes these logs verbose. Other log levels are unaffected. 
+
+  **Elixir example**
+
+  ```elixir
+  config :cfclient,
+      log_level: :error,
+      verbose_evaluation_logs: true,
+      [api_key: System.get_env("FF_API_KEY_0"),
+      config: [
+        poll_interval: 60000
+      ]]
+  ```
+   
+  **Erlang example**
+
+  ```erlang
+  [{cfclient, [
+      {log_level, error},
+      {verbose_evaluation_logs, true},
+      {api_key, {envrionment_variable, "YOUR_API_KEY_ENV_VARIABLE"},
+      {config, [
+        {poll_interval, 60}
+      ]},
+      ]}]
+  ```
 
 ### Run multiple instances of the SDK
 
