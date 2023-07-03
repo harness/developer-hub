@@ -1,11 +1,11 @@
 {
-   "label":"Monitored service",
-   "position": 50,
-   "collapsible":"true",
-   "collapsed":"true",
-   "className":"red",
-   "link":{
-      "type":"generated-index",
-      "title":"Monitored service"
-   }
-   }
+  "label":"Monitored service",
+  "position": 50,
+  "collapsible":"true",
+  "collapsed":"true",
+  "className":"red",
+  "link":{
+     "type":"generated-index",
+     "title":"Monitored service"
+  }
+  }

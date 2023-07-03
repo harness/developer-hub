@@ -24,9 +24,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 ### What's new
 
-* Azure inventory enhancement (CCM-12676)
+* Azure inventory management (CCM-12676)
 
-  As part of the Azure Inventory data, now you can monitor **Memory Utilization** for virtual machines (VMs) along with the existing **CPU Utilizatio**n tracking data.
+  As part of the Azure inventory management, now you can monitor the **Memory Utilization** data for virtual machines (VMs) along with the existing **CPU Utilization** tracking data.
+
+* Clone AutoStopping rules (CCM-12337)
+
+  You can now clone an AutoStopping rule. To clone a rule, navigate to the rule you want to replicate and select the **Clone** option from the more options menu. After selecting **Clone**, you can update the instance details according to your requirements. This allows you to create a new rule based on the existing one, saving you time and effort in setting up similar rules for different instances.
+
+* Budget alert enhancement (CCM-12028)
+
+  The cost alert frequency for daily budgets has been increased. Previously, cost alerts for daily budgets were triggered only at specific intervals, which could potentially result in delayed notifications if the threshold was crossed outside those intervals. However, with the increased frequency, you can now receive timely alerts as soon as the threshold is exceeded, regardless of the time of day.
+
+  
 
 ```mdx-code-block
   </TabItem>
