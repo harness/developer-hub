@@ -79,4 +79,4 @@ To set up an external TimescaleDB service, do the following:
          certKey: "cert"
     ```
 
-   When you install or upgrade Helm, Self-Managed Enterprise Edition will automatically connect to the external TimescaleDB service.
+   When you install or upgrade Helm, Self-Managed Enterprise Edition automatically connects to the external TimescaleDB service.
