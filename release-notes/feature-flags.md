@@ -90,7 +90,7 @@ These changes are part of issue FFM-8364:
 
 * Enhancement: Implemented retry logic for authentication, polling, and metrics services for resilience and fault tolerance.
 * Enhancement: Changed supervisor restart intensity from 1 restart in 5 seconds to 4 restarts in 5 seconds.
-* The murmur3 nif library was giving unpredictable runtime behavior. This has been fixed by using a pure Elixir implementation.
+* The murmur3 nif library has been replaced by pure Elixir library.
 
 
 #### June 28, 2023
