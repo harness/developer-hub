@@ -1415,7 +1415,7 @@ This expression returns the `identifierPostFix` of the step group when the curre
 ### <+strategy.node.STRATEGY_NODE_IDENTIFIER.identifierPostFix>
 
 This expression retrieves the `identifierPostFix` for the node that is the child of a looping strategy with the identifier `STRATEGY_NODE_IDENTIFIER`.
-For example, let's consider two nested step groups, sg1 and sg2 (child of sg1). Both sg1 and sg2 have a looping strategy configured. Using the expression, `<+stepGroup.identifierPostFix>` always retrieves the `identifierPostFix` of sg2. 
+For example, let's consider two nested step groups, sg1 and sg2 (child of sg1). Both sg1 and sg2 have a looping strategy configured. The expression, `<+stepGroup.identifierPostFix>` always retrieves the `identifierPostFix` of sg2. 
 
 To obtain the `identifierPostFix` for a specific step group, you can use the following expressions:
 
