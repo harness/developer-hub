@@ -378,31 +378,34 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 </details>
 
 1. Under **Project Setup**, select **Delegates**.
-   1. Select **Delegates**.
-   2. Select **New Delegate**.
-       
-    For this tutorial, let's explore how to install a delegate using Docker.
+2. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
+3. In **New Delegate**, in **Select where you want to install your Delegate**, select **Docker**.
 
-   3. In the command provided, `ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the delegate installation wizard.
-   4. Replace **DELEGATE_TOKEN** in the command with the token from the wizard.
-      
-     ```bash
-     docker run -dit --cpus=1 --memory=2g \
-      -e DELEGATE_NAME=docker-delegate \
-      -e NEXT_GEN="true" \
-      -e DELEGATE_TYPE="DOCKER" \
-      -e ACCOUNT_ID=ACCOUNT_ID \
-      -e DELEGATE_TOKEN=DELEGATE_TOKEN \
-      -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/gratis/log-service/ \
-      -e MANAGER_HOST_AND_PORT=https://app.harness.io/gratis harness/delegate:23.05.79310
-     ```  
-   5. Select **Verify** to verify that the delegate is installed successfully and can connect to the Harness Manager.
+Now you can install the delegate by using the command that appears on your installation wizard. The command is prefilled with the information for the environment variables in the example below. 
+
+```bash
+docker run --cpus=1 --memory=2g \
+  -e DELEGATE_NAME=docker-delegate \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID= YOUR_HARNESS_ACCOUNTID \
+  -e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN \
+  -e LOG_STREAMING_SERVICE_URL=YOUR_MANAGER_HOST_AND_PORT/log-service/ \
+  -e MANAGER_HOST_AND_PORT=YOUR_MANAGER_HOST_AND_PORT \
+  DELEGATE_IMAGE:TAG
+```
 
 :::note
 
-You can also follow the [Install Harness Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/) tutorial to install the delegate using the Harness Terraform Provider or a Kubernetes manifest.
+You can also follow the [Install Harness Delegate on Kubernetes](https://developer.harness.io/tutorials/platform/install-delegate/) tutorial to install the delegate using the Harness Terraform Provider or a Kubernetes manifest.
 
 :::
+
+### Verify delegate connectivity
+
+1. Select **Continue**. After the health checks passes, your delegate is available to use.
+2. Select **Done** and verify your new delegate is listed.
+
 
 ### Secrets
 
