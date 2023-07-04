@@ -124,7 +124,7 @@ In this step, you can configure the following settings:
 
 Toggle the button to disable the display of progress page during instances' warming up process. This option is especially useful when the service is invoked by an automation system, as it prevents misinterpretation of the progress page as the intended response from a service that is onboarded to AutoStopping. By hiding the progress page, the first response of warming up a rule after a downtime will be delayed until the intended service is up and running.
 
-<docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-for-kubernetes-83.png')} width="60%" height="60%" title="Click to view full size image" />
+<docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-for-kubernetes-83.png')} width="50%" height="50%" title="Click to view full size image" />
 
 
 #### Dry Run
@@ -159,7 +159,7 @@ To create a fixed schedule for your rule, do the following:
 
 1. In **Fixed Schedules**, select **Add Fixed Schedule**.
    
-      <docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-aws-98.png')} width="60%" height="60%" title="Click to view full size image" />
+      <docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-aws-98.png')} width="50%" height="50%" title="Click to view full size image" />
 
 2. In **New Fixed Schedule**, enter a **Name** for your schedule.
 3. In **Type**, select the type for your schedule. You can schedule an **Uptime** or **Downtime** for your rule. As per your schedule, the resources go up or down.
@@ -179,13 +179,13 @@ To create a fixed schedule for your rule, do the following:
 	**Example 1**:  
 	In the following example, resources are up every Mon, Tue, Wed starting from 12:00 a.m. on February 14, 2022 till April 30, at 10:00 p.m.
      
-       <docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-aws-99.png')} width="60%" height="60%" title="Click to view full size image" />
+       <docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-aws-99.png')} width="50%" height="50%" title="Click to view full size image" />
 
      
      **Example 2**:  
 	In the following example, resources are down every day (all day) starting from 12:00 a.m. on February 14, 2022 till April 30, at 12:00 a.m.
     
-      <docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-aws-100.png')} width="60%" height="60%" title="Click to view full size image" />
+      <docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-aws-100.png')} width="50%" height="50%" title="Click to view full size image" />
 
 8. Select **Apply**.
 
