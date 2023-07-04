@@ -36,7 +36,7 @@ Harness AutoStopping Proxy provides an effective solution to reduce non-producti
 9. In the **Create a new AutoStopping Proxy** window, enter the following information:
     1. Provide a name for the AutoStopping Proxy.
     2. Select your preferred DNS provider and perform the mapping:
-        *  If you select **Route 53**, you must choose a hosted zone from the available zones and enter the domain name. AutoStopping manages Route 53 configuration automatically. 
+        *  If you select **Route 53**, you must choose a hosted zone from the available zones and enter the domain name. AutoStopping manages Route 53 configuration automatically. To know more about Route 53, go to [Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html).
         * If you select **Others**, enter the URL of the DNS provider. Make sure that you have updated the DNS mapping in your DNS provider.
     3. Click **Continue**.
 
