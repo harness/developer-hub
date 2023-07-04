@@ -267,15 +267,16 @@ To set a verification as baseline for future load testing:
 3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
    
    The selected verification is now set as the baseline for future verifications.
-   If you had previously set another verification as the baseline, an alert message appears, asking for confirmation to replace the existing pinned baseline with the current verification.
 
 
-To remove a baseline from a pipeline:
+### Replace an existing pinned baseline
+
+To use a new baseline from a pipeline and replace the existing pinned baseline, follow these steps:
 
 1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline from which you want to remove the baseline.
 
 2. Select the successful pipeline execution with the verification that you have previously pinned as the baseline.
    
-3. On the pipeline execution, navigate to the **Verify** section, and then select **Unpin baseline**.
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
    
-   The baseline for the selected pipeline will now be removed.
+   A confirmation alert message appears, asking if you want to replace the existing pinned baseline with the current verification. After you confirm, the existing pinned baseline gets replaced with the current verification.
