@@ -19,11 +19,11 @@ Harness AutoStopping Proxy provides an effective solution to reduce non-producti
 
 ## Use Harness AutoStopping proxy for RDS
 
-1. Create a Harness AutoStopping proxy. For more information, go to [AutoStopping Proxy for AWS](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb).
-2. Create an AutoStopping rule for the RDS instance or cluster. For more information, go to [Create AutoStopping rule for RDS](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-rds).
+1. Create a Harness AutoStopping proxy. <!--For more information, go to [AutoStopping Proxy for AWS](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/load-balancer/create-autoproxy-aws-lb).-->
+2. Create an AutoStopping rule for the RDS instance or cluster. <!--For more information, go to [Create AutoStopping rule for RDS](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-auto-stopping-rules-for-rds).-->
 3. Connect to the RDS instance or cluster by using the AutoStopping proxy. If the RDS instance or cluster is in the stopped state, Harness starts it for you, allowing you to resume usage seamlessly. Subsequently, when you finish utilizing the RDS instance or cluster, Harness promptly detects this and initiates the process of stopping it. 
 
-### Set Up Harness AutoStopping proxy
+### Create Harness AutoStopping proxy
 
 1.  In **Harness**, go to the **Cloud Costs** module.
 2. Under **Setup**, click **Load Balancers**.
