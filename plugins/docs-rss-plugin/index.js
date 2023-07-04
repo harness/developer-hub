@@ -60,11 +60,7 @@ async function docsPluginEnhanced(context, options) {
           : undefined,
         copyright: copyright,
       });
-      // Add <atom:link> element
-      feed.options.feedLinks = {
-        atom: `${docsBaseUrl}/atom.xml`,
-      };
-
+   
       function toFeedAuthor(author) {
         return { name: author.name, link: author.url, email: author.email };
       }
