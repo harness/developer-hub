@@ -30,7 +30,7 @@ Harness AutoStopping Proxy provides an effective solution to reduce non-producti
 2. Under **Setup**, select **Load Balancers**.
 3. Select **Create New Load Balancer**.
 4. Select **AWS**.
-5. Choose an existing connector or [create a new one](../1-add-connectors/connect-to-an-aws-connector.md).
+5. Choose an existing connector or [create a new one](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector).
 6. Select **Continue**.
 7. Select **Create AutoStopping Proxy**. 
 8. Select **Continue**.
@@ -92,7 +92,7 @@ This section walks you through the steps to configure an AutoStopping rule for y
 
 1. In **Cloud Costs,** in **AutoStopping Rules**, select **New AutoStopping Rule**.
 2. In the cloud account type, select **AWS**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
-3. Select your AWS account from the **Connect to your AWS account** dropdown list and select **Next**. If you have not added an AWS cloud account, see [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md).
+3. Select your AWS account from the **Connect to your AWS account** dropdown list and select **Next**. If you have not added an AWS cloud account, see [Connect to an AWS Connector](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/connect-to-an-aws-connector).
    
   <docimage path={require('../static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-75.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -191,13 +191,13 @@ To create a fixed schedule for your rule, do the following:
 
 ### Setup Access
 
-In the Setup Access screen, select the AutoStopping Proxy from the dropdown list or [create a new one](../3-load-balancer/create-autoproxy-aws-lb.md). Specify the source port numbers and the target TCP ports your application is listening to. If the source port is not specified, a random port will be generated at the backend. This auto-generated port will continue to be used as long as the target port remains unchanged or unless the user explicitly modifies the source port.
+In the Setup Access screen, select the AutoStopping Proxy from the dropdown list or [create a new one](#create-harness-autostopping-proxy). Specify the source port numbers and the target TCP ports your application is listening to. If the source port is not specified, a random port will be generated at the backend. This auto-generated port will continue to be used as long as the target port remains unchanged or unless the user explicitly modifies the source port.
 
 ### Review
 
 In Review, verify all the configuration details and select **Save Rule**. To edit any of the configuration settings, select **EDIT** and modify the settings.
 
-Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](../4-create-auto-stopping-rules/autostopping-dashboard.md).
+Your AutoStopping rule is listed under the [AutoStopping rules summary page](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dashboard).
 
 ### Use Harness AutoStopping CLI to Keep the RDS Instance(s) Running
 
