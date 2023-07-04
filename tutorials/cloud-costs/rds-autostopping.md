@@ -104,7 +104,7 @@ Select the cloud resources that you want to manage using this rule. AutoStopping
 
 1. In **Select the resources to be managed by the rule**, select **RDS** and then click Add RDS instance.
    
-     <docimage path={require('./static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-77.png')} width="60%" height="60%" title="Click to view full size image" />
+    <docimage path={require('./static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-77.png')} width="60%" height="60%" title="Click to view full size image" />
 
 2. In **Select RDS Instance**, do the following:
 	1. Select the region where your instance is hosted from the drop-down list.
