@@ -181,9 +181,9 @@ spec:
 
 ### Advanced Fault Tunables
 
-- `FILE_PATH`: The path for injecting faults can be specified as either a single file or a wildcard. ByDefault it targets all the files present inside the mount path.
+- `FILE_PATH`: The path for injecting faults can be specified as either a single file or a wildcard. By default it targets all the files present inside the mount path.
 - `PERCENTAGE`: The likelihood of failure per operation, expressed as a percentage. Default is 100%.
-- `METHOD_TYPES`: This contains the file system call or methods. ByDefault it targets all the methods.
+- `METHOD_TYPES`: This contains the file system call or methods. By default it targets all the methods.
 
 The following YAML snippet illustrates the use of this environment variable:
 
