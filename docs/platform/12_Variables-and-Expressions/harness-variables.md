@@ -1415,7 +1415,9 @@ This expression returns the `identifierPostFix` of the step group when the curre
 ### <+strategy.node.STRATEGY_NODE_IDENTIFIER.identifierPostFix>
 
 This expression retrieves the `identifierPostFix` for the node that is the child of a looping strategy with the identifier `STRATEGY_NODE_IDENTIFIER`.
-For example, let's consider two nested step groups, sg1 and sg2 (child of sg1). Both sg1 and sg2 have a looping strategy configured. Using the expression, `<+stepGroup.identifierPostFix>` always retrieves the `identifierPostFix` of sg2. To obtain the `identifierPostFix` for a specific step group, you can use the following expressions:
+For example, let's consider two nested step groups, sg1 and sg2 (child of sg1). Both sg1 and sg2 have a looping strategy configured. Using the expression, `<+stepGroup.identifierPostFix>` always retrieves the `identifierPostFix` of sg2. 
+
+To obtain the `identifierPostFix` for a specific step group, you can use the following expressions:
 
 * `<+strategy.node.sg1.identifierPostFix>`: Retrieves the `identifierPostFix` for the node with the identifier sg1 (parent step group).
 * `<+strategy.node.sg2.identifierPostFix>`: Retrieves the `identifierPostFix` for the node with the identifier sg2 (child step group).
@@ -1429,16 +1431,14 @@ Using this format, you can retrieve the values of any strategy expressions assoc
 Here are some examples:
 * `<+strategy.node.sg1.iteration>`: Retrieves the current iteration of the node with the identifier sg1 (parent step group).
 * `<+strategy.node.sg2.iteration>`: Retrieves the current iteration of the node with the identifier sg2 (child step group).
-<+strategy.node.some_node_with_looping_strategy.iteration>: Retrieves the current the iteration for the node with identifier some_node_with_looping_strategy.(some_node_with_looping_strategy can be any type of node stage/step/stepGroup)
+* `<+strategy.node.some_node_with_looping_strategy.iteration>`: Retrieves the current the iteration of the node with identifier `some_node_with_looping_strategy` (`some_node_with_looping_strategy` can be any type of node stage, step, or step group).
+* `<+strategy.node.sg1.iterations>`: Retrieves the total iterations of the node with the identifier sg1.
+* `<+strategy.node.sg2.iterations>`: Retrieves the total iterations of the node with the identifier sg2.
+* `<+strategy.node.some_node_with_looping_strategy.iterations>`: Retrieves the total iterations of the node with the identifier `some_node_with_looping_strategy`.
+* `<+strategy.node.sg1.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg1 if a matrix looping strategy is configured for sg1.
+* `<+strategy.node.sg2.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg2 if a matrix looping strategy is configured for sg2.
+* `<+strategy.node.some_node_with_looping_strategy.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier `some_node_with_looping_strategy` if a matrix looping strategy is configured for `some_node_with_looping_strategy`.
 
-<+strategy.node.sg1.iterations>: Retrieves the total iterations for the node with the identifier sg1(Parent stepGroup).
-<+strategy.node.sg2.iterations>: Retrieves the total iterations for the node with the identifier sg2(Child stepGroup).
-<+strategy.node.some_node_with_looping_strategy.iterations>: Retrieves the total iterations for the node with the identifier some_node_with_looping_strategy.(some_node_with_looping_strategy can be any type of node stage/step/stepGroup)
-
-<+strategy.node.sg1.matrix.key1>: Retrieves the value for matrix axis key1 for the node with the identifier sg1(Parent stepGroup), provided that a matrix looping strategy is configured on sg1.
-<+strategy.node.sg2.matrix.key1>: Retrieves the value for matrix axis key1 for the node with the identifier sg2(Child stepGroup), provided that a matrix looping strategy if configured on sg12.
-<+strategy.node.some_node_with_looping_strategy.matrix.key1>: Retrieves the value for matrix axis key1 for the node with the identifier some_node_with_looping_strategy.(some_node_with_looping_strategy can be any type of node stage/step/stepGroup), provided that a matrix looping strategy if configured on some_node_with_looping_strategy.
-```
 
 ## Triggers
 
