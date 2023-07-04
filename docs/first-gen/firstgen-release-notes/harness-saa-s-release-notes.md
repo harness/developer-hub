@@ -24,7 +24,7 @@ This release does not include new features.
 
 #### Early access
 
-- Introduced a more consistent pipeline execution status. (CDS-70387, 44892)
+- Introduced a more consistent pipeline execution status. (CDS-70387, ZD-44892)
   
   Harness has introduced an enhancement for displaying the negative status of parallel pipelines. For a pipeline with concurrently running stages, the ABORTED, REJECTED, and EXPIRED statuses now have higher priority over the FAILED status. 
 
@@ -32,7 +32,7 @@ This release does not include new features.
 
 #### Fixed issues
 
-- Improved error handling mechanism when Helm manifests were not fetched from the Artifactory repository. (CDS-68251, ZD-37458)
+- Improved error handling mechanism when Helm manifests are not fetched from the Artifactory repository. (CDS-68251, ZD-37458)
 
 ### June 28, 2023, version 79714
 

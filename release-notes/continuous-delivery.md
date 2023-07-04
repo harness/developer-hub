@@ -40,30 +40,30 @@ This release does not include any early access features.
 - An error appears when trying to access a stage template. (CDS-73138, ZD-46636)
   
   This issue is fixed. Opening the Template Inputs drawer in Template Studio was causing the error. This issue occurred only in template setups involving setup groups. 
-- Fixed an issue where pipeline YAMLs didn't get updated when the optional fields in a step was removed. (CDS-72807)
+- Fixed an issue where pipeline YAMLs didn't get updated when the optional fields in a step were removed. (CDS-72807)
 - Fixed environment links to properly redirect to the **Summary** or **Configuration** page. (CDS-72463, ZD-46260)
-- An error occurred when running a Terragrunt pipeline: `Invalid request: Oops, something went wrong on our end. Please contact Harness Support.`. (CDS-72226, ZD-46120)
+- An error occurred when running a Terragrunt pipeline: `Invalid request: Oops, something went wrong on our end. Please contact Harness Support`. (CDS-72226, ZD-46120)
   
-  The Terraform and Terragrunt step's **Secret Manager** fields were listing all available connectors instead of listing supported connectors. 
+  The Terraform and Terragrunt steps' **Secret Manager** settings were listing all available connectors instead of listing supported connectors. 
 
-  This issue is fixed. The **Secret Manager** field lists only supported connectors now. 
-- Harness has added access control check to the `/v2/{planExecutionId}` API to avoid users from anonymously accessing the plan execution Id using API. (CDS-72155) 
-- Step templates within step groups created under stage templates were not getting executed properly. (CDS-72124, ZD-45924, ZD-46151)
+  This issue is fixed. The **Secret Manager** setting lists only supported connectors now. 
+- Harness has added an access control check to the `/v2/{planExecutionId}` API to prevent users from anonymously accessing the plan execution Id using the API. (CDS-72155) 
+- Step templates within step groups created under stage templates were not executing properly. (CDS-72124, ZD-45924, ZD-46151)
   
   A code enhancement fixed this issue.
 - The pipeline build failed due to reformatting of the script. (CDS-72093, ZD-45874)
 
-  The three hyphens, `---` used in the YAML as YAML document separator was being replaced by `---\n` with an empty string due to a logic in the code. This logic made the YAML invalid.
+  The three hyphens (`---`) used as a YAML document separator were replaced by `---\n`. This formatting made the YAML invalid.
 
-  Harness no longer adds the space in the YAML, and honors the separator when processing the YAML.
-- Fixed an issue in the Shell Script connection attribute field to correctly ask the user for SSH or WinRM credentials at the template and runtime or input set view based on the values entered at the create or edit view. (CDS-72021, ZD-45926)
-- In a stage status count displayed for Matrices in the Pipeline Execution Details page, the count of stages for which failure was ignored was counted with successful stages. (CDS-72030)
+  Harness no longer adds the new line in the YAML, and honors the separator when processing the YAML.
+- Fixed an issue in the Shell Script step's **SSH/WinRM Connection Attribute** setting to correctly ask for SSH or WinRM credentials at the template/runtime/input set view based on the values entered in the step. (CDS-72021, ZD-45926)
+- In the stage status count displayed for Matrices in the Pipeline Execution Details page, the count of stages which ignored failures was counted along with successful stages. (CDS-72030)
   
-  This issue is fixed. The IgnoreFailed stages are now counted in failed stages. 
-- Fixed an issue where a change in image path did not trigger a corresponding change in the tag field when allowed values are present for the image path. (CDS-71215)
-- The **Repository Name** field in the pipeline list page was not working properly. (CDS-70784, ZD-45350)
+  This issue is fixed. The `IgnoreFailed` stages are now counted in failed stages. 
+- Fixed an issue where a change in the Artifact Details **Image Path** did not trigger a corresponding change in the **Tag** setting. (CDS-71215)
+- The **Repository Name** setting in the pipeline list page filter was not working properly. (CDS-70784, ZD-45350)
   
-  This issue is fixed. If there are any saved filters that use the Repository Name filter, you must delete and create the filter again.
+  This issue is fixed. If there are any saved filters that use **Repository Name**, you must delete and create the filter again.
 - The expression, `<+artifacts.primary.identifier>` was not working for Google Cloud Storage (GCS) artifact types. (CDS-68993, ZD-44217)
   
   This issue is fixed. You can see the identifier of the source selected as primary when using the expression `<+artifacts.primary.identifier>`. This functionality is behind the feature flag, `CDS_ARTIFACTS_PRIMARY_IDENTIFIER`. 
