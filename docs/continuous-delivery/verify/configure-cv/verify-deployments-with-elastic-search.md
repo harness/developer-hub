@@ -258,12 +258,13 @@ The following screenshots show successful and failed verifications in a deployme
 
 To set a verification as baseline for future load testing:
 
-1. Go to the Pipelines page and find the pipeline where you want to set the baseline.
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline you want to use as the baseline.
    
-2. Select the successful verification that you want to use as the baseline.
-   The pipeline details page is displayed.
+2. Select the successful pipeline execution with the verification that you want to use as the baseline.
    
-3. On the pipeline details page, navigate to the **Verify** section, and then select **Pin baseline**.
+   The pipeline execution is displayed.
+   
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Pin baseline**.
    
    The selected verification is now set as the baseline for future verifications.
    If you had previously set another verification as the baseline, an alert message appears, asking for confirmation to replace the existing pinned baseline with the current verification.
@@ -271,10 +272,10 @@ To set a verification as baseline for future load testing:
 
 To remove a baseline from a pipeline:
 
-1. Go to the Pipelines page and find the pipeline from which you want to remove the baseline.
+1. In Harness, go to **Deployments**, select **Pipelines**, and find the pipeline from which you want to remove the baseline.
 
-2. Select the successful verification that you have previously pinned as the baseline.
+2. Select the successful pipeline execution with the verification that you have previously pinned as the baseline.
    
-3. On the pipeline details page, navigate to the **Verify** section, and then select **Pin baseline**.
+3. On the pipeline execution, navigate to the **Verify** section, and then select **Unpin baseline**.
    
    The baseline for the selected pipeline will now be removed.
