@@ -17,7 +17,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - July 3, 2023
+## Latest - July 4, 2023
 
 ```mdx-code-block
 <Tabs>
@@ -40,6 +40,33 @@ This release does not include early access features.
 ```
 
 #### Feature Flags SDKs
+
+The **Java** server SDK has been updated to version **1.2.4** with the following update.
+
+* Fixed an issue where, if a flag had prerequisite flags configured, only the first prerequisite flag was being processed and the remaining were being ignored. (FFM-6412)
+
+
+  </TabItem>
+</Tabs>
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### July 3, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+##### Feature Flags SDKs
 
 * The **Erlang** server SDK has been updated to version **2.0.1** with the following update.
 
@@ -87,16 +114,6 @@ This release does not include early access features.
   * Previously, when a target group event was received the SDK fetched all flags, but did not return an event so that apps could be updated accordingly. With this fix, in this case, the SDK returns the onPolling event after all flags are fetched. (FFM-8174)
 
   * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-8048)
-  
-
-  </TabItem>
-</Tabs>
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### June 30, 2023
 
