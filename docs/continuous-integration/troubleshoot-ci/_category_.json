@@ -1,0 +1,11 @@
+{
+    "label":"Troubleshoot CI",
+    "position": 50,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Troubleshoot CI"
+    }
+ }

@@ -1,0 +1,11 @@
+# process names of target processes
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-process-kill
+  labels:
+    name: process-kill
+spec:
+  processKillChaos/inputs:
+    processNames: "nginx,redis"
+    duration: 30

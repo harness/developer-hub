@@ -182,5 +182,5 @@ The **To-Do List** app is deployed and running in your Kubernetes cluster. This 
 
 ## Next Steps
 
-Now that you've installed the Harness Sample App, proceed to our [Tour Harness Manager](meet-harness.md) topic or one of the [Quickstarts](/docs/category/get-started).
+Now that you've installed the Harness Sample App, proceed to our [Tour Harness Manager](meet-harness.md) topic or one of the [Quickstarts](/docs/category/quickstarts-1).
 

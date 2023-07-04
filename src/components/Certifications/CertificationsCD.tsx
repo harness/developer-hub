@@ -4,8 +4,11 @@ import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
+import { getCertLevel } from "./LandingPage";
 import DeveloperCertificationReviewGuide from "./data/cd-certification-developer-review-guide.md";
 import DeveloperCertificationExamDetails from "./data/cd-certification-developer-exam-details.md";
+import AdminCertificationReviewDetails from "./data/cd-certification-admin-review-guide.md";
+import AdminCertificationExamDetails from "./data/cd-certification-admin-exam-details.md";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
@@ -32,7 +35,7 @@ export default function CertificationsCD() {
   const location = useLocation();
   const history = useHistory();
   const { pathname = "/", search = "" } = location;
-  const searchKey = search.replace(/^\?.*=/, "");
+  const searchKey = getCertLevel(search);
   const [tab, setTab] = useState("developer");
   const handleSwitchTab = (tabKey) => {
     setTab(tabKey);
@@ -65,7 +68,7 @@ export default function CertificationsCD() {
             and powerful, easy-to-use pipelines. Empower your teams to deliver
             new features, faster – with AI/ML for automated canary and
             blue/green deployments, advanced verification, and intelligent
-            rollback
+            rollback.
           </div>
         </div>
         <div className={styles.right}>
@@ -159,7 +162,6 @@ export default function CertificationsCD() {
             <h2 id="exam-details">Exam Details</h2>
             <div className={styles.examDetailsCard}>
               <DeveloperCertificationExamDetails />
-
               <div className={styles.btnContainer}>
                 <Link href="https://university.harness.io/certified-continuous-delivery-developer">
                   <button className={styles.moreDetails}>
@@ -199,8 +201,7 @@ export default function CertificationsCD() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Continuous Delivery & GitOps - Administrator (BETA COMING
-                    SOON)
+                    Continuous Delivery & GitOps - Administrator 
                   </h2>
                   <img
                     src={`${baseUrl}img/cert_adm_cd_badge.svg`}
@@ -213,14 +214,19 @@ export default function CertificationsCD() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Coming Soon...</h3>
+                  <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy and maintain CD
-                    projects and the overall Harness Platform.
+                    projects and the overall Harness Platform. This exam builds upon
+                    the <a href="/certifications/continuous-delivery?lvl=developer">Continuous Delivery & GitOps Developer Certification</a>. 
                   </div>
-                  {/*
-                  <AdministratorCertificationReviewGuide />
+                  <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
+                    <Link href="https://university.harness.io/continuous-delivery-gitops-administrator">
+                      <button className={styles.moreDetails}>
+                        Register for Exam
+                      </button>
+                    </Link>
                     <Link href="/tutorials/cd-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
@@ -228,12 +234,33 @@ export default function CertificationsCD() {
                       </button>
                     </Link>
                   </div>
-                  */}
                 </div>
               </div>
             </div>
           </div>
+
+          {/* Admin Exam Details */}
+          <div className={styles.examDetails}>
+            <h2 id="exam-details">Exam Details</h2>
+            <div className={styles.examDetailsCard}>
+              <AdminCertificationExamDetails />
+              <div className={styles.btnContainer}>
+                <Link href="https://university.harness.io/continuous-delivery-gitops-administrator">
+                  <button className={styles.moreDetails}>
+                    Register for Exam
+                  </button>
+                </Link>
+                <Link href="/tutorials/cd-pipelines">
+                  <button className={styles.startLearning}>
+                    <span>Start Learning</span>
+                    <i className="fa-solid fa-arrow-right"></i>
+                  </button>
+                </Link>
+              </div>
+            </div>
+          </div>
         </div>
+
 
         {/* Architect Tab Content */}
         <div

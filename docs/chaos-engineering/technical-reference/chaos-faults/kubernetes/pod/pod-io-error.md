@@ -5,7 +5,7 @@ title: Pod IO error
 
 import IOFaultsCaution from './shared/io-faults-caution.md'
 
-The pod-io-error chaos fault simulates an error that can occur during filesystem calls within a pod.
+The pod-io-error chaos fault simulates an error that can occur during system calls of the files located within the mounted volume of the pod.
 When triggered, it causes the call to fail and return an error, potentially disrupting critical processes that rely on accurate file operations.
 
 ![Pod IO Error](./static/images/pod-io-error.png)
@@ -19,14 +19,14 @@ Pod IO error:
 
 <IOFaultsCaution />
 
-:::note
+:::info note
 - Kubernetes 1.16 is required to execute this fault.
 - The application pods should be in the running state before and after injecting chaos.
 :::
 
 ## Fault tunables
 
-  <h3>Optional tunables</h3>
+  <h3>Mandatory tunables</h3>
     <table>
       <tr>
         <th> Tunable </th>
@@ -39,18 +39,27 @@ Pod IO error:
         <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-error#error-code">error code</a>.</td>
       </tr>
       <tr>
+        <td> MOUNT_PATH </td>
+        <td> The absolute mount path of the volume mounted to the target pod</td>
+        <td> For more information, go to <a href="#mount-path">mount path</a>. </td>
+      </tr>
+    </table>
+
+  <h3>Optional tunables</h3>
+    <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to IO error </td>
         <td> If the value is not provided, the fault injects chaos on the first container of the pod. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a>.</td>
       </tr>
       <tr>
-        <td> MOUNT_PATH </td>
-        <td> Mount path of volume in the target container</td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-error#mount-path">mount path</a>. </td>
-      </tr>
-      <tr>
         <td> FILE_PATH </td>
-        <td> The path for injecting faults can be specified as either a single file or a wildcard.</td>
+        <td> The path for injecting faults can be specified as either a single file or a wildcard. If not provided, it will target all the files present inside the mount path </td>
         <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-error#advanced-fault-tunables">file path</a>. </td>
       </tr>
       <tr>
@@ -102,7 +111,7 @@ Pod IO error:
 
 ### Error Code
 
-Error code to be injected in file system calls of the target application. Tune it by using the `ERROR_CODE` environment variable. 
+Error code to be injected in system calls of the files located within the mounted volume of the pod. Tune it by using the `ERROR_CODE` environment variable. 
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -172,9 +181,9 @@ spec:
 
 ### Advanced Fault Tunables
 
-- `FILE_PATH`: The path for injecting faults can be specified as either a single file or a wildcard. By default it targets all the paths
+- `FILE_PATH`: The path for injecting faults can be specified as either a single file or a wildcard. ByDefault it targets all the files present inside the mount path.
 - `PERCENTAGE`: The likelihood of failure per operation, expressed as a percentage. Default is 100%.
-- `METHOD_TYPES`: This contains the file system call or methods. By default it targets all the methods.
+- `METHOD_TYPES`: This contains the file system call or methods. ByDefault it targets all the methods.
 
 The following YAML snippet illustrates the use of this environment variable:
 

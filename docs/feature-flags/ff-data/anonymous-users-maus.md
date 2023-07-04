@@ -1,7 +1,7 @@
 ---
 title: Track anonymous users and monthly active users
 description: This topic defines anonymous users, how their data is handled in Harness Feature Flags, and how they relate to the Monthly Active Users (MAUs) count.
-sidebar_position: 10
+sidebar_position: 30
 helpdocs_topic_id: 1ne3nozg3d
 helpdocs_category_id: axthyiihah
 helpdocs_is_private: false

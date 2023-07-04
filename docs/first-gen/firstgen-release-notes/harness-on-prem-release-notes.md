@@ -10,11 +10,136 @@ helpdocs_is_published: true
 
 This document contains release notes for Harness Self-Managed Enterprise Edition.
 
-For Harness SaaS release notes, see [Harness SaaS Release Notes](https://developer.harness.io/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). 
+For Harness SaaS release notes, go to [Harness SaaS Release Notes](https://developer.harness.io/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). 
 
 Release notes are displayed with the most recent release first.
 
-### April 26, 2023, version 78926
+## June 30, 2023, version 79421
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 79421 |
+| Watcher | 78424 |
+| Verification Service | 79421 |
+| UI | 79401 |
+| Learning Engine | 67903 | 
+| Gateway | 11002 |
+
+### New features and enhancements
+
+#### Harness Delegate
+
+- The org.json:json is upgraded from version 20160810 to 20230227 to address vulnerabilities. (PL-37905)
+
+### Early access
+
+This release does not include early access features.
+
+### Fixed issues
+
+#### Continuous Delivery & GitOps
+
+- The feature flag, `CG_GIT_POLLING` was creating too many queries in yamlGitConfig. (CDS-45085)
+  
+  This issue is fixed. Git polling for Git sync now works via a different internal method where Harness polls for a feature flag change once every 30 minutes, and then continues polling on accounts for which feature flags are enabled.
+
+- Fixed an issue where perpetual tasks corresponding to a non-existing service was still running. (CDS-58137)
+
+- The ASG Rollback auto-scaling step failed with an exception. (CDS-68533, ZD-43354)
+  
+  Fixed this issue by adding a back-off strategy support for ASG deployments.
+
+#### Harness Delegate
+
+- Secret decryption failures were not included in logs. (PL-31517)
+
+   A code enhancement to return runtime errors from secret managers during decryption fixed this issue.
+
+#### Harness Platform
+
+-  No members appear in user group list even after the user has been added via SCIM. This issue is fixed. (PL-32482)
+
+
+
+- Users cannot use Harness secret as LDAP password in FirstGen. (PL-32597, ZD-42655)
+  A code enhancement fixed the issue.
+
+  The user group list now displays the number of users in the group. Select this number to see the user details. This is behind the feature flag `PL_CG_SHOW_MEMBER_ID_COUNT`.
+
+- The `DMS_MONGO_URI` was missing from the ConfigMap of cg-manager for Self-Managed Enterprise Edition Helm installations. (PL-38850)
+
+   This issue is fixed. The `DMS_MONGO_URI` is included in the ConfigMap.
+   
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+
+## June 14, 2023, version 79230
+
+Delegate: 78924
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 79230 |
+| Delegate | 78924 |
+| Watcher | 78424 |
+| Verification Service | 79230 |
+| UI | 79202 |
+| Learning Engine | 67708 | 
+| Gateway | 10701 |
+
+### New features and enhancements
+
+#### Harness Delegate
+
+- Removed the `DELEGATE_IMAGE_TAG` version override when delegates with the immutable image type are enabled. (PL-37852, DEL-6202)
+
+- Updated legacy delegate images `kubectl` version to 1.25.8. (PL-38281, DEL-6087)
+
+### Early access
+#### Continuous Delivery & GitOps
+
+- Pipelines in different projects are now independent. (CDS-55830, ZD-41377)
+
+	This change is behind the feature flag `PROJECT_SCOPED_RESOURCE_CONSTRAINT_QUEUE`.
+	
+	Pipelines were waiting on resource constraints although no other deployment was running with the same service and infrastructure definition combination. 
+	
+	Resource Constraints were scoped too broadly, so users' pipelines went into a wait state.
+	
+	This was because of other pipelines in other projects with the same infrastructure configuration. 
+	
+	This has now been changed by scoping resource constraints to the project.
+
+### Fixed issues
+
+#### Continuous Delivery & GitOps
+
+- When an app was removed it was still returning inside the GraphQL query result for a short period of time. (CDS-54879, ZD-40375)
+  
+	We added new functionality to verify each appId before returning the user group GraphQL. If the appId does not exist it's removed from the response.
+	
+	This change is behind the feature flag `SPG_GRAPHQL_VERIFY_APPLICATION_FROM_USER_GROUP`.
+
+- Canary Delete step during rollback deleting the primary deployment. (CDS-58661, ZD-42392)
+  
+	This occurred when the user skipped the dry run in the Canary Deployment step, and Harness was unable to process the manifest.yaml file during error handling. This resulted in the storage of the primary resource name as the canary workload name.
+	
+	The issue has been resolved, and Harness now relies on release history instead of populating the canary workload if there is an error in the deployment manifest and the dry run is skipped.
+
+- Resolved a null pointer exception when the Canary Deployment step is initialized with the Helm manifest type. (CDS-59214)
+
+#### Harness Delegate
+
+- Shell delegates did not upgrade automatically. Delegate URLs were not included in installation scripts. (PL-38304, DEL-6276)
+
+   This issue is fixed with a code enhancement.
+
+- Updated the error message for failed task execution to include the delegate host name or ID. (PL-38329, DEL-6187)
+
+## April 26, 2023, version 78926
 
 Delegate: 78904
 
@@ -30,7 +155,7 @@ This release includes the following module and component versions.
 | Learning Engine | 67708 | 
 | Gateway | 2000185 |
 
-### New features and enhancements
+#### New features and enhancements
 #### Harness Platform
 - Upgrades have been made to the following libraries:
 
@@ -61,7 +186,7 @@ This release includes the following module and component versions.
   - 2- validForDays : int
 
   Use an api-key with account edit permission in the API header.
-### Fixed issues
+#### Fixed issues
 #### Continuous Delivery & GitOps
 - When manually triggering the workflow, there is an issue preventing the selection and retrieval of GCS artifacts. (CDS-53074)
 

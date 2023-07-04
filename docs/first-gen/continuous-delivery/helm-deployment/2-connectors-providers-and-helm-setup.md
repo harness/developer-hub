@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md).This topic describes how to set up the Harness Delegate, Connectors, and Cloud Providers for Helm, and provides some basic Helm setup information.
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md).This topic describes how to set up the Harness Delegate, Connectors, and Cloud Providers for Helm, and provides some basic Helm setup information.
 
 Harness includes both Kubernetes and Helm deployments, and you can Helm charts in both. Harness [Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller needing to be installed in the target cluster. See [Helm Charts](../kubernetes-deployments/use-a-helm-repository-with-kubernetes.md).
 
@@ -87,7 +87,7 @@ To specify a Docker repository as an Artifact Server, do the following:
 2. Click **Connectors**. The **Connectors** page appears.
 3. Click **Artifact Servers**, and then click **Add Artifact Server**. The **Artifact Servers** dialog appears.
 4. In **Type**, click **Docker Registry**. The dialog changes for the Docker Registry account.
-5. In **Docker Registry URL**, enter the URL for the Docker Registry (for Docker Hub, **https://registry.hub.docker.com/v2/**).
+5. In **Docker Registry URL**, enter the URL for the Docker Registry (for Docker Hub, `https://registry.hub.docker.com/v2/`).
 6. Enter a username and password for the provider (for example, your **Docker Hub** account).
 7. Click **SUBMIT**. The artifact server is displayed.
 

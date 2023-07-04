@@ -1,6 +1,6 @@
 ---
 title: Add a Microsoft Azure connector
-description: The Azure connector connects Harness to Azure.
+description: Connect Harness to your Azure accounts and services.
 sidebar_position: 3
 helpdocs_topic_id: 9epdx5m9ae
 helpdocs_category_id: o1zhrfo8n5
@@ -19,6 +19,97 @@ Use the Azure Repos connector to [connect to Azure SCM repos](../Code-Repositori
 If you're using Harness **Cloud Cost Management (CCM)**, you can [Set Up Cloud Cost Management for Azure](../../../cloud-cost-management/2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-azure.md).
 
 :::
+
+## Auth Provider API and TokenRequest API options
+
+Harness provides the option of using the Auth Provider API or TokenRequest API for authentication.
+
+<details>
+<summary>Summary of Auth Provider and TokenRequest API changes</summary>
+
+In Kubernetes 1.22, the Auth Provider API was deprecated and replaced with a new TokenRequest API. The TokenRequest API is used by client libraries and tools to request an authentication token from the Kubernetes API server.
+
+The TokenRequest API provides a more flexible and extensible authentication mechanism than the Auth Provider API. Instead of relying on pre-configured authentication plugins, client libraries and tools can now dynamically request authentication tokens from the Kubernetes API server based on their specific needs and requirements.
+
+To use the TokenRequest API for authentication, client libraries and tools can send a TokenRequest object to the Kubernetes API server. The TokenRequest object specifies the audience, scopes, and other parameters for the requested token. The Kubernetes API server then validates the request, generates a token with the requested parameters, and returns the token to the client.
+
+One advantage of the TokenRequest API is that it allows for more fine-grained control over authentication and authorization. For example, a client library or tool can request a token with only the necessary scopes to perform a specific operation, rather than requesting a token with full cluster access.
+
+Another advantage of the TokenRequest API is that it allows for easier integration with external identity providers and authentication systems. Client libraries and tools can use the TokenRequest API to request authentication tokens from external providers, such as OAuth2 providers or custom authentication systems, and use those tokens to authenticate to the Kubernetes API server.
+
+Overall, the TokenRequest API provides a more flexible and extensible authentication mechanism than the deprecated Auth Provider API, and allows for more fine-grained control over authentication and authorization in Kubernetes.
+
+</details>
+
+
+To select which API to use:
+
+- **Auth Provider API**: this is the current default. You do not have to change the default settings of Harness connectors or the Harness delegates you use.
+- **TokenRequest API**: you must install the provider-specific plugin on the Harness delegate(s) to use the TokenRequest API introduced in Kubernetes 1.22.
+
+### Install the kubelogin client-go credential (exec) plugin on the delegate
+
+When using the Harness Azure connector with Kubernetes version >= 1.22, you can use the **kubelogin client-go credential (exec) plugin** to authenticate to AKS cluster.
+
+The Harness Azure connector has 4 authentication types. For each type, you must install the following dependencies in the Harness delegates you use or Harness will follow the old Auth Provider API format.
+
+- **Secret** (`SERVICE_PRINCIPAL_SECRET`): Kubelogin binary.
+- **Certificate** (`SERVICE_PRINCIPAL_CERT`): Kubelogin binary and azurecli (azurecli is required as kubelogin does not support certificate in PEM format).
+- **System Assigned Managed Identity** (`MANAGED_IDENTITY_SYSTEM_ASSIGNED`): Kubelogin binary.
+- **User Assigned Managed Identity** (`MANAGED_IDENTITY_USER_ASSIGNED`): Kubelogin binary.
+
+The **Secret** and **Certificate** options are available when you select the **Specify credentials here** option in the Azure connector.
+
+The **System Assigned Managed Identity** and **User Assigned Managed Identity** options are available when you select the **Use the credentials of a specific Harness Delegate** option in the Azure connector.
+
+You can install the kubelogin plugin on the delegate by creating a delegate with an immutable image and updating the following commands in `INIT_SCRIPT`:
+
+<details>
+<summary>RHEL 7 OS</summary>
+
+```
+// Install dependencies
+microdnf install --nodocs openssl util-linux unzip python2 && microdnf clean all
+
+// Download kubelogin
+curl https://github.com/Azure/kubelogin/releases/download/v0.0.27/kubelogin-linux-amd64.zip -L -o kubelogin.zip
+unzip kubelogin.zip
+chmod 755 /opt/harness-delegate/bin/linux_amd64/kubelogin
+
+// Add the binary to PATH
+mv ./bin/linux_amd64/kubelogin /usr/local/bin
+
+// If the AKS cloud provider auth type is Certificate then we need to install azure-cli as its PEM format is not supported by kubelogin. It can be installed on the delegate by creating a delegate with an immutable image and updating the following commands in INIT_SCRIPT
+rpm --import https://packages.microsoft.com/keys/microsoft.asc
+echo -e "[azure-cli]
+name=Azure CLI
+baseurl=https://packages.microsoft.com/yumrepos/azure-cli
+enabled=1
+gpgcheck=1
+gpgkey=https://packages.microsoft.com/keys/microsoft.asc" | tee /etc/yum.repos.d/azure-cli.repo
+microdnf install azure-cli
+```
+</details>
+
+<details>
+<summary>Ubuntu</summary>
+
+```
+// Download kubelogin
+curl https://github.com/Azure/kubelogin/releases/download/v0.0.27/kubelogin-linux-amd64.zip -L -o kubelogin.zip
+unzip kubelogin.zip
+chmod 755 /opt/harness-delegate/bin/linux_amd64/kubelogin
+
+// Add the binary to PATH
+mv ./bin/linux_amd64/kubelogin /usr/local/bin
+
+// If the AKS cloud provider auth type is Certificate then we need to install az-cli as its PEM format is not supported by kubelogin. It can be installed on the delegate by creating a delegate with an immutable image and updating the following commands in INIT_SCRIPT
+curl -sL https://aka.ms/InstallAzureCLIDeb | bash
+```
+</details>
+
+
+For more information, go to [kubelogin](https://github.com/Azure/kubelogin/releases) from Azure and [Delegate installation overview](/docs/platform/2_Delegates/install-delegates/overview.md).
 
 ## Roles, permission, and cluster requirements
 

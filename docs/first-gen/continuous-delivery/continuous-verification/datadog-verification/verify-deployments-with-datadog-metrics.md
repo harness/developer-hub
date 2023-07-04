@@ -84,7 +84,7 @@ For example, in Datadog, a Kubernetes deployment might use the tag **pod\_name**
 Find the where the same name is identified in the deployment environment, and use that path as the expression.For example, locate the pod name in the Datadog **Event Stream** page:
 
 1. In **Datadog**, click **Events**.
-2. Locate an event using a search query. For more information, see [Event Stream](https://docs.datadoghq.com/graphing/event_stream/) from Datadog.
+2. Locate an event using a search query. For more information, see [Event Stream](https://docs.datadoghq.com/service_management/events/) from Datadog.
 3. Expand the event by click the the ellipsis at the end of the event title.
 
    [![](./static/verify-deployments-with-datadog-metrics-07.png)](./static/verify-deployments-with-datadog-metrics-07.png)

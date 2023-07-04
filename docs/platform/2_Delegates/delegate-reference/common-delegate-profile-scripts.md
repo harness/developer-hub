@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 You can run scripts on Harness Delegate pods, hosts, and containers to install applications or run commands.
 
-For more information about running scripts, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md). This topic provides information on script availability and some common delegate initialization scripts.
+For more information about running scripts, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md). This topic provides information on script availability and some common delegate initialization scripts.
 
 ### Limitations
 
@@ -56,54 +56,7 @@ mv ./terraform /usr/bin/
 terraform --version
 ```
 
-### Helm 2
-
-The following script installs Helm and Tiller in the delegate cluster:
-
-```
-# Add the Helm version that you want to install  
-HELM_VERSION=v2.14.0  
-# v2.13.0  
-# v2.12.0  
-# v2.11.0  
-  
-export DESIRED_VERSION=${HELM_VERSION}  
-  
-echo "Installing Helm $DESIRED_VERSION ..."  
-  
-curl https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get | bash  
-  
-# If Tiller is already installed in the cluster   
-helm init --client-only  
-  
-# If Tiller is not installed in the cluster  
-# helm init    
-```
-The `helm init` command is used with Helm 2 to install Tiller into a Kubernetes cluster. The command does not exist in Helm 3; nor is Tiller used in Helm 3.`DESIRED_VERSION` is used by a function in the [Helm install script](https://raw.githubusercontent.com/kubernetes/helm/master/scripts/get).If Helm is installed in a different cluster than the delegate, make sure the `kubeconfig` in the delegate cluster references the correct cluster. Use the following command to set the context.
-
-
-```
-kubectl config current-context cluster_name
-```
-
-If you are using TLS for communication between Helm and Tiller, ensure that you use the `--tls` parameter with your commands. For more information, see [Using SSL Between Helm and Tiller](https://docs.helm.sh/using_helm/#using-ssl-between-helm-and-tiller) from Helm, and the section **Securing your Helm Installation** in that document.The following example shows how to add a Helm chart from a private repository using the secrets `repoUsername` and `repoPassword` from Harness [Text Secrets](../../Secrets/2-add-use-text-secrets.md). 
-
-
-```
-# Alternate installation method  
-# curl https://raw.githubusercontent.com/helm/helm/master/scripts/get> get_helm.sh  
-# chmod 700 get_helm.sh  
-# ./get_helm.sh  
-  
-curl https://raw.githubusercontent.com/helm/helm/master/scripts/get | bash  
-  
-helm init --client-only  
-  
-helm repo add --username <+secrets.getValue("repoUsername")> --password <+secrets.getValue("repoPassword")> nginx https://charts.bitnami.com/bitnami  
-  
-helm repo update
-```
-The `helm init` command does not exist in Helm 3. This command is used with Helm 2 to install Tiller into a Kubernetes cluster. Tiller is not used in Helm 3.### Helm 3
+### Helm 3
 
 You do not need to add a script for Helm 3. Harness includes Helm 3 support in any Delegate that can connect to the target Kubernetes cluster.
 
@@ -165,9 +118,9 @@ git --version
 
 ### Cloud Foundry CLI
 
-Harness supports Cloud Foundry (CF) CLI version 6 only. Support for version 7 is pending. Below is an example of CF CLI installation; the version of the CF CLI that you install on the delegate should match the PCF features you use in your Harness PCF deployment.
+Harness supports Cloud Foundry (CF) CLI version 7 only. Below is an example of CF CLI installation; the version of the CF CLI that you install on the delegate should match the PCF features you use in your Harness PCF deployment.
 
-For example, if you are using buildpacks in the manifest.yml of your Harness service, the CLI you install on the delegate should be version 3.6 or later.
+For example, if you are using buildpacks in the `manifest.yml` file of your Harness service, the CLI you install on the delegate must be the same version or later.
 
 The following example script installs Cloud Foundry CLI on a delegate:
 
@@ -180,7 +133,6 @@ The `-y` parameter is needed for a prompt.
 
 When the script has been applied and you click the timestamp for the Delegate the output will be similar to this:
 
-
 ```
 Running transaction  
   Installing : cf-cli-6.46.1-1.x86_64                                       1/1   
@@ -192,6 +144,4 @@ Installed:
 Complete!
 ```
 
-For information on installing the CLI on different distributions, see [Installing the cf CLI](https://docs.pivotal.io/pivotalcf/2-3/cf-cli/install-go-cli.html) from PCF.
-
-
+For information on installing the CLI on different distributions, go to [Installing the cf CLI](https://docs.pivotal.io/pivotalcf/2-3/cf-cli/install-go-cli.html) from PCF.

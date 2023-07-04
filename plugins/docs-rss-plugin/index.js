@@ -47,6 +47,7 @@ async function docsPluginEnhanced(context, options) {
 
     async postBuild(params) {
       const { outDir, content, siteConfig } = params;
+      // fs.outputFile(path.join(outDir, "params.json"), JSON.stringify(params));
 
       if (
         !content ||
@@ -128,7 +129,33 @@ async function docsPluginEnhanced(context, options) {
 
           return feedItem;
         })
-      ).then((items) => items.forEach(feed.addItem));
+        // ).then((items) => items.forEach(feed.addItem));
+      ).then((items) =>
+        items.forEach((item) => {
+          feed.addItem(item);
+          const feedModule = new Feed({
+            id: item.id,
+            title: item.title,
+            // updated,
+            // language: feedOptions.language ?? locale,
+            link: item.link,
+            description: rssDescription ?? `${siteConfig.title} Release Notes`,
+            favicon: favicon
+              ? normalizeUrl([siteUrl, baseUrl, favicon])
+              : undefined,
+            copyright: copyright,
+          });
+          feedModule.addItem(item);
+          const rssBasePath = rssPath.substring(
+            0,
+            rssPath.lastIndexOf("/") + 1
+          );
+          fs.outputFile(
+            path.join(outDir, rssBasePath, item.id, "rss.xml"),
+            feedModule.rss2()
+          );
+        })
+      );
 
       fs.outputFile(path.join(outDir, rssPath), feed.rss2());
     },

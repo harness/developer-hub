@@ -4,8 +4,11 @@ import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import { useHistory, useLocation } from "@docusaurus/router";
 import { certType } from "./CertCard";
+import { getCertLevel } from "./LandingPage";
 import DeveloperCertificationReviewGuide from "./data/ci-certification-developer-review-guide.md";
 import DeveloperCertificationExamDetails from "./data/ci-certification-developer-exam-details.md";
+import AdminCertificationReviewGuide from "./data/ci-certification-admin-review-guide.md";
+import AdminCertificationExamDetails from "./data/ci-certification-admin-exam-details.md";
 import styles from "./styles.module.scss";
 
 const getCertBadges = (url: string) => [
@@ -32,7 +35,7 @@ export default function CertificationsCI() {
   const location = useLocation();
   const history = useHistory();
   const { pathname = "/", search = "" } = location;
-  const searchKey = search.replace(/^\?.*=/, "");
+  const searchKey = getCertLevel(search);
   const [tab, setTab] = useState("developer");
   const handleSwitchTab = (tabKey) => {
     setTab(tabKey);
@@ -210,23 +213,48 @@ export default function CertificationsCI() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Coming Soon...</h3>
+                  <h3>Review Study Guide - Coming Soon</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy and maintain CI
-                    projects and the overall Harness Platform.
+                    projects and the overall Harness Platform. This exam builds upon
+                    the <a href="/certifications/continuous-integration?lvl=developer">CI Developer Certification</a>. 
                   </div>
-                  {/*
-                  <AdministratorCertificationReviewGuide />
+                  <AdminCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="/tutorials/cd-pipelines">
+                    <Link href="#">
+                      <button className={styles.moreDetails}>
+                        Register for Exam
+                      </button>
+                    </Link>
+                    <Link href="/tutorials/ci-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
                     </Link>
                   </div>
-                  */}
                 </div>
+              </div>
+            </div>
+          </div>
+          {/* Admin Exam Details */}
+
+          <div className={styles.examDetails}>
+            <h2 id="exam-details">Exam Details</h2>
+            <div className={styles.examDetailsCard}>
+              <AdminCertificationExamDetails />
+              <div className={styles.btnContainer}>
+                <Link href="#">
+                  <button className={styles.moreDetails}>
+                    Register for Exam
+                  </button>
+                </Link>
+                <Link href="/tutorials/ci-pipelines">
+                  <button className={styles.startLearning}>
+                    <span>Start Learning</span>
+                    <i className="fa-solid fa-arrow-right"></i>
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

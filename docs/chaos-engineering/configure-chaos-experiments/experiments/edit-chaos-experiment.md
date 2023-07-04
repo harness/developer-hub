@@ -1,6 +1,6 @@
 ---
 title: Edit chaos experiments
-sidebar_position: 4
+sidebar_position: 40
 ---
 
 An existing chaos experiment may be edited to update the experiment to update it's metadata, faults, schedule, etc. 

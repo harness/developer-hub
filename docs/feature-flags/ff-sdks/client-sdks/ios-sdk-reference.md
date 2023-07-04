@@ -10,6 +10,9 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+<Smpno />
 
 This topic describes how to use the Harness Feature Flags iOS SDK for your iOS application. 
 
@@ -28,7 +31,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.0.3.**
+The current version of this SDK is **1.1.0**.
 
 ## Requirements
 
@@ -451,3 +454,34 @@ class ViewController: UIViewController {
 }  
 
 ```
+
+## Troubleshooting 
+
+The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
+
+| **Code** | **Description**                                                                          |
+|----------|:-----------------------------------------------------------------------------------------|
+| **1000** | Successfully initialized                                                                 |
+| **1001** | Failed to initialize due to authentication error                                         |
+| **1002** | Failed to initialize due to a missing or empty API key                                   |
+| **1003** | `wait_for_initialzation` was called and the SDK is waiting for initialzation to complete |
+| **1004** | Server presented an invalid TLS certificate                                              |
+| **1005** | Server hostname mismatch in TLS certificate                                              |
+| **2000** | Successfully authenticated                                                               |
+| **3000** | SDK Closing                                                                              |
+| **3001** | SDK closed successfully                                                                  |
+| **4000** | Polling service started                                                                  |
+| **4001** | Polling service stopped                                                                  |
+| **5000** | Streaming service started                                                                |
+| **5001** | Streaming service stopped                                                                |
+| **5002** | Streaming event received                                                                 |
+| **5003** | Streaming disconnected and is retrying to connect                                        |
+| **5004** | Streaming stopped                                                                        |
+| **6000** | Evaluation was successfully                                                              |
+| **6001** | Evaluation failed and the default value was returned                                     |
+| **7000** | Metrics service has started                                                              |
+| **7001** | Metrics service has stopped                                                              |
+| **7002** | Metrics posting failed                                                                   |
+| **7003** | Metrics posting success                                                                  |
+
+

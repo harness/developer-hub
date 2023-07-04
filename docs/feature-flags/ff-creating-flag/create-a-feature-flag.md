@@ -22,7 +22,7 @@ You can use the same flags across multiple environments within a single project,
 
 ## Before you begin
 
-Before you create a Feature Flag, you must have [completed the prerequisites](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project), that is:
+Before you create a Feature Flag, you must have [completed the prerequisites](/docs/feature-flags/ff-creating-flag/create-a-project), that is:
 
 1. Created a project
 2. Created an environment
@@ -69,7 +69,7 @@ After you have created your Boolean flag, you can:
 
 * [Manage the variations of the Feature Flag](/docs/feature-flags/ff-creating-flag/manage-variations)
 * [Add flag prerequisites](/docs/feature-flags/add-prerequisites-to-feature-flag)
-* [Target users with flags](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags)
+* [Target users with flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags)
 
 ## Create a multivariate flag
 
@@ -105,5 +105,5 @@ After you have created your multivariate flag, you can then:
 
 * [Change the Variations of the Feature Flag](/docs/feature-flags/ff-creating-flag/manage-variations)
 * [Add Flag Prerequisites](/docs/feature-flags/add-prerequisites-to-feature-flag)
-* [Target Users with Flags](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags)
+* [Target Users with Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags)
 

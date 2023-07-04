@@ -1,6 +1,6 @@
 ---
-title: Kubernetes deployments basics
-description: High-level steps involved in a Harness Kubernetes deployment.
+title: Kubernetes deployments overview
+description: High-level view of Harness Kubernetes deployment.
 sidebar_position: 1
 ---
 
@@ -34,13 +34,90 @@ The following tables provide a useful summary.
 
 In Harness, a **managed** Kubernetes workload is a Kubernetes object deployed and managed to steady state. If steady state is not reached, the deployment is considered a failure and the Failure Strategy is executed (typically rollback).
 
-| **Apply** | **Rolling** | **Rollback** | **Blue Green** | **Canary** | **Scale** |
-| --- | --- | --- | --- | --- | --- | --- |
-| **Deployment** | Yes | Yes | Yes | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | Yes |
-| **StatefulSet** | Yes | Yes | Yes | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | Yes |
-| **DaemonSet** | Yes | Yes | Yes | No | No | Yes |
-| **CRDs** | Yes | Yes | Yes | No | No | No |
-| **Any Object** | Yes | No | No | No | No | No |
+
+<table>
+    <tbody>
+        <tr>
+            <td><p></p></td>
+            <td>
+                <p><strong>Apply</strong></p>
+            </td>
+            <td>
+                <p><strong>Rolling</strong></p>
+            </td>
+            <td>
+                <p><strong>Rollback</strong></p>
+            </td>
+            <td>
+                <p><strong>Blue Green</strong></p>
+            </td>
+            <td>
+                <p><strong>Canary</strong></p>
+            </td>
+            <td>
+                <p><strong>Scale</strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p><strong>Deployment</strong></p>
+            </td>
+            <td><p>Yes</p></td>
+            <td><p>Yes</p></td>
+            <td><p>Yes</p></td>
+            <td><p>Yes: 1 Deployment or StatefulSet mandatory/allowed</p></td>
+            <td><p>Yes: 1 Deployment or StatefulSet mandatory/allowed</p></td>
+            <td><p>Yes</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p><strong>StatefulSet</strong></p>
+            </td>
+            <td><p>Yes</p></td>
+            <td><p>Yes</p></td>
+            <td><p>Yes</p></td>
+            <td><p>Yes: 1 Deployment or StatefulSet mandatory/allowed</p></td>
+            <td><p>Yes: 1 Deployment or StatefulSet mandatory/allowed</p></td>
+            <td><p>Yes</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p><strong>DaemonSet</strong></p>
+            </td>
+            <td><p>Yes</p></td>
+            <td><p>Yes</p></td>
+            <td><p>Yes</p></td>
+            <td><p>No</p></td>
+            <td><p>No</p></td>
+            <td><p>Yes</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p><strong>CRDs</strong></p>
+            </td>
+            <td><p>Yes</p></td>
+            <td><p>Yes</p></td>
+            <td><p>Yes</p></td>
+            <td><p>No</p></td>
+            <td><p>No</p></td>
+            <td><p>No</p></td>
+        </tr>
+        <tr>
+            <td>
+                <p><strong>Any Object</strong></p>
+            </td>
+            <td><p>Yes</p></td>
+            <td><p>No</p></td>
+            <td><p>No</p></td>
+            <td><p>No</p></td>
+            <td><p>No</p></td>
+            <td><p>No</p></td>
+        </tr>
+    </tbody>
+</table>
+
+
+
 
 ### Unmanaged workloads table
 
@@ -48,9 +125,59 @@ To deploy an object outside of the managed workloads in any strategy, you use th
 
 For example, Harness Canary and Blue/Green steps support a single **Deployment** or **StatefulSet** workload as a managed entity, but you can deploy additional workloads as unmanaged using the `harness.io/direct-apply:true` annotation.
 
-| **Apply** | **Rolling** | **Rollback** | **Blue Green** | **Canary** | **Scale** |
-| --- | --- | --- | --- | --- | --- | --- |
-| **Any Object** | Yes | Yes | No | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | Yes:<br/>1 Deployment or StatefulSet mandatory/allowed | No |
+<table>
+    <tbody>
+        <tr>
+            <td><p></p></td>
+            <td>
+                <p><strong>Apply</strong></p>
+            </td>
+            <td>
+                <p><strong>Rolling</strong></p>
+            </td>
+            <td>
+                <p><strong>Rollback</strong></p>
+            </td>
+            <td>
+                <p><strong>Blue Green</strong></p>
+            </td>
+            <td>
+                <p><strong>Canary</strong></p>
+            </td>
+            <td>
+                <p><strong>Scale</strong></p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p><strong>Any Object</strong></p>
+            </td>
+            <td><p>Yes</p></td>
+            <td><p>Yes</p></td>
+            <td><p>No</p></td>
+            <td><p>Yes: 1 Deployment or StatefulSet mandatory/allowed</p></td>
+            <td><p>Yes: 1 Deployment or StatefulSet mandatory/allowed</p></td>
+            <td><p>No</p></td>
+        </tr>
+    </tbody>
+</table>
+
+## Canary and Blue Green Strategies
+
+Harness Canary and Blue Green steps support a single **Deployment** or **StatefulSet** workload as a managed entity. You cannot deploy 0 or more than 1 **Deployment** or **StatefulSet** workload.
+
+## Rolling (Rollout) Strategy
+
+Rolling strategy steps support Deployment, StatefulSet, or DaemonSet as **managed** workloads, but not other workloads such as Jobs.
+
+## Apply Step
+
+The [Apply Step](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step) can deploy any workloads or objects in any strategy as a managed workload. You can select whether or not to skip steady state check.
+
+## OpenShift
+
+Harness supports OpenShift [DeploymentConfig](https://docs.openshift.com/container-platform/4.1/applications/deployments/what-deployments-are.html) in OpenShift clusters as a managed workload across Canary, Blue Green, and Rolling deployment strategies. Use `apiVersion: apps.openshift.io/v1` and not `apiVersion: v1`.
+
 
 ## What does a Harness Kubernetes deployment involve?
 
@@ -60,10 +187,10 @@ The following list describes the major steps of a Harness Kubernetes deployment.
 
 | **Step** | **Name** | **Description and Links** |
 | --- | --- | --- |
-| 1 | Install the Harness Kubernetes **Delegate** in your Kubernetes cluster.  | Typically, the Kubernetes Delegate is installed in the target cluster where you will deploy your application(s).<br/>Go to [install a Kubernetes Delegate](/docs/first-gen/firstgen-platform/account/manage-delegates/install-kubernetes-delegate/) for more information. |
-| 2 | Add Harness **Connectors**. | Add a Harness **Connector** for you artifact repo and target cluster.<br/>For example, a Docker Registry Artifact Server that connects to the Docker registry where your Docker images are located, or the public Docker Hub.You can connect to specific target cloud platforms hosting your cluster or simply make a platform-agnostic connection to the cluster.<br/>This can be done inline while creating your Pipeline, or separately in your **Resources**.<br/>For more information, go to [connect to an Artifact repository](/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo) and [Kubernetes cluster connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference). |
-| 3 | Define the Harness **Service** using the Kubernetes Deployment Type. | Add your Docker images and Kubernetes manifests and any config variables and files.<br/>For more information, go to[add container images for Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments). |
-| 6 | Define the Harness **Environment** and infrastructure definition for your target Kubernetes clusters, and any overrides. | Using the Harness Connector you set up, you can select the target Kubernetes cluster and namespace for your deployment.<br/>For more information, go to [define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure). |
+| 1 | Install the Harness Kubernetes **Delegate** in your Kubernetes cluster.  | Typically, the Kubernetes Delegate is installed in the target cluster where you will deploy your application(s).|
+| 2 | Add Harness **Connectors**. | Add a Harness **Connector** for you artifact repo and target cluster.<br/>For example, a Docker Registry Artifact Server that connects to the Docker registry where your Docker images are located, or the public Docker Hub.You can connect to specific target cloud platforms hosting your cluster or simply make a platform-agnostic connection to the cluster.<br/>This can be done inline while creating your Pipeline, or separately in your **Resources**. |
+| 3 | Define the Harness **Service** using the Kubernetes Deployment Type. | Add your Docker images and Kubernetes manifests and any config variables and files.<br/>For more information, go to [add container images for Kubernetes deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments). |
+| 6 | Define the Harness **Environment** and infrastructure definition for your target Kubernetes clusters, and any overrides. | Using the Harness Connector you set up, you can select the target Kubernetes cluster and namespace for your deployment.<br/>For more information, go to [define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure). |
 | 7 | Add the Canary, Blue Green, or Rollout steps to the Deploy stage. | The stage deploys the artifact(s) and Kubernetes workloads defined in the Harness Service to the cluster and namespace in the Infrastructure Definition.<br/>For more information, go to [create a Kubernetes Rolling deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment),  [create a Kubernetes Canary deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment), [create a Kubernetes Blue Green deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment) |
 | 8 | Deploy the pipeline. | Once you've deployed a Pipeline, learn how to improve your Kubernetes CD in [Kubernetes how-tos](/docs/category/kubernetes). | 
 

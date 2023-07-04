@@ -378,7 +378,72 @@ This example policy gives limited permission to EKS clusters.
 
 ## Connect to EKS
 
-If you want to connect Harness to Elastic Kubernetes Service (Amazon EKS), use the platform-agnostic [Kubernetes cluster connector](kubernetes-cluster-connector-settings-reference.md).
+To connect Harness to Elastic Kubernetes Service (Amazon EKS), you can use the platform-agnostic [Kubernetes cluster connector](kubernetes-cluster-connector-settings-reference.md) or Elastic Kubernetes Service (EKS) cloud connector.
+
+Make sure you've met the following requirements to connect to the EKS cloud connector.
+
+* You have enabled the `NG_CDS_NATIVE_EKS_SUPPORT` feature flag.
+* The IAM role of the worker nodes for the EKS cluster have the [required permissions](https://docs.aws.amazon.com/eks/latest/userguide/create-node-role.html).
+    * Your IAM role has the permission to access the AWS EKS cluster. You can edit the `configmap/aws-auth` entry in the EKS cluster to enable the required permissions. For more information, go to [add user role](https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html). You can also assume the IAM role used to create the AWS EKS cluster which has the required `configmap/aws-auth` entries by default.
+    * Your IAM role has the basic policies to access the AWS EKS cluster. For more information, go to [Amazon EKS identity-based policy examples](https://docs.aws.amazon.com/eks/latest/userguide/security_iam_id-based-policy-examples.html).
+* You have installed the `aws-iam-authenticator` plugin, which is used for `kubectl` authentication. For more information, go to [Create `kubeconfig` file manually](https://docs.aws.amazon.com/eks/latest/userguide/create-kubeconfig.html#create-kubeconfig-manually).
+  
+  Here's a sample `kubeconfig`:
+  
+  ```
+  apiVersion: v1
+  clusters:
+  - cluster:
+      server: $cluster_endpoint
+      certificate-authority-data: $certificate_data
+    name: arn:aws:eks:$region_code:$account_id:cluster/$cluster_name
+  contexts:
+  - context:
+      cluster: arn:aws:eks:$region_code:$account_id:cluster/$cluster_name
+      user: arn:aws:eks:$region_code:$account_id:cluster/$cluster_name
+    name: arn:aws:eks:$region_code:$account_id:cluster/$cluster_name
+  current-context: arn:aws:eks:$region_code:$account_id:cluster/$cluster_name
+  kind: Config
+  preferences: {}
+  users:
+  - name: arn:aws:eks:$region_code:$account_id:cluster/$cluster_name
+    user:
+      exec:
+        apiVersion: client.authentication.k8s.io/v1beta1
+        command: aws-iam-authenticator
+        args:
+          - "token"
+          - "-i"
+          - "$cluster_name"
+  ```
+  
+  
+  :::note
+  `aws-iam-authenticator` supports the role to be assumed and external ID as arguments. If the connector is configured with a cross-account access and external ID, `kubeconfig` can be modified accordingly.
+  ::: 
+  
+* You have created a delegate with an immutable image and installed the `aws-iam-authenticator` in the delegate.
+    1. Open the `delegate.yaml` in a text editor.
+    2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
+    3. Replace `value: ""` with the following script to install `aws-iam-authenticator`. For more information, go to [install AWS IAM authenticator](https://docs.aws.amazon.com/eks/latest/userguide/install-aws-iam-authenticator.html).
+      
+      ```
+      // Download aws-iam-authenticator
+      curl -Lo aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.9/aws-iam-authenticator_0.5.9_linux_amd64
+      chmod +x ./aws-iam-authenticator
+      // Add the binary to PATH
+      mv ./aws-iam-authenticator /usr/local/bin
+      // Verify the binary
+      aws-iam-authenticator help
+      ```
+      
+* You're using Kubernetes version 1.22 or later. Harness uses a [client-go credential plugin](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#client-go-credential-plugins) to authenticate the connection to the EKS cluster. Support for EKS is deprecated for Kubernetes 1.21 and earlier versions.
+
+Here's a quick video demonstrating Native EKS authentication support for Kubernetes:
+
+<!-- Video:
+https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34-->
+<docvideo src="https://www.loom.com/share/2f02907ff84247acaf3e617c05acab34" />
 
 ## AWS Serverless Lambda
 
@@ -390,7 +455,7 @@ There are three authentication options for the AWS connector when used for AWS E
 
 You can also use STS roles with Serverless Lambda deployments. For details about this, go to [Serverless cross-account access (STS Role)](#serverless-cross-account-access-sts-role).
 
-For instructions for Serverless Lambda deployments, go to [Serverless Lambda CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-framework/serverless-lambda-cd-quickstart).
+For instructions for Serverless Lambda deployments, go to [Serverless Lambda CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart).
 
 ### Permissions
 
@@ -578,14 +643,15 @@ For more information about installing software with the delegate, go to [Build c
 ## Harness AWS connector settings
 
 The AWS connector settings include:
-* **Name:** The unique name for the connector
-* **Id:** Go to [Entity Identifier reference](../../../20_References/entity-identifier-reference.md)
-* **Description:** Text string
-* **Tags**: Go to [Tags reference](../../../20_References/tags-reference.md)
+* **Name:** The name for the connector.
+* **Id:** Go to [Entity Identifier reference](../../../20_References/entity-identifier-reference.md).
+* **Description:** Text string.
+* **Tags**: Go to [Tags reference](../../../20_References/tags-reference.md).
 * **Credentials**: Credentials that enable Harness to connect your AWS account. There are three primary options:
   * **Assume IAM Role on Delegate:** This assumes the SA of the Delegate. Ensure the IAM roles attached to the nodes have the right access. This is often the simplest method for connecting Harness to your AWS account and services. Once you select this option, you can select a delegate in the next step of AWS connector creation. Typically, the delegate runs in the target infrastructure.
   * **AWS Access Key:** The [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) of the IAM Role to use for the AWS account. You can use [Harness Text Secrets](../../../Secrets/2-add-use-text-secrets.md) for both.
   * **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account; whereas, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate.
+* **AWS Backoff Strategy:** Go to [AWS Backoff Strategy](#aws-backoff-strategy) below.
 
 <details>
 <summary>Configure IRSA credentials for AWS connectors</summary>
@@ -691,6 +757,85 @@ By default, Harness uses the `us-east-1` region to test the credentials for AWS 
 If you want to use an AWS GovCloud account for this connector, select it in the **Test Region** field. GovCloud is used by organizations such as government agencies at the federal, state, and local level, as well as contractors, educational institutions. It is also used for regulatory compliance with these organizations.
 
 You can access AWS GovCloud with AWS GovCloud credentials (AWS GovCloud account access key and AWS GovCloud IAM user credentials). You can't access AWS GovCloud with standard AWS credentials. Likewise, you can't access standard AWS regions using AWS GovCloud credentials.
+
+### AWS backoff strategy
+
+:::note
+
+Currently, this functionality is behind the feature flag `CDS_AWS_BACKOFF_STRATEGY`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+In some Harness CloudFormation and ECS deployments you might get failures with `ThrottlingException` or `Rate exceeded` errors for CloudFormation and ECS API calls.
+
+This can happen when CloudFormation and ECS API calls exceed the maximum allowed API request rate per AWS account and region. Requests are throttled for each AWS account on a per-region basis to help service performance. Go to [Service endpoints and quotas](https://docs.aws.amazon.com/general/latest/gr/aws-service-information.html) from AWS.
+
+The AWS Backoff Strategy settings remedy this situation by setting Amazon SDK default backoff strategy params for CloudFormation and ECS.
+
+
+#### Fixed delay, equal jitter, and full jitter strategies
+
+The Amazon SDK Default backoff strategy is the combination of fixed backoff, equal jitter, and full jitter backoff strategies. 
+
+Fixed backoff is a simple backoff strategy that always uses a fixed delay for the delay before the next retry attempt.
+
+Typically, the SDK default strategy uses the full jitter strategy for non-throttled exceptions and the equal jitter strategy for throttled exceptions.
+
+Here's the list of non-throttled error and status codes where full jitter strategy is applied: 
+
+
+```
+"TransactionInProgressException",  
+"RequestTimeout",  
+"RequestTimeoutException",  
+"IDPCommunicationError",  
+500,  
+502,  
+503,  
+504,  
+"RequestTimeTooSkewed",  
+"RequestExpired",  
+"InvalidSignatureException",  
+"SignatureDoesNotMatch",  
+"AuthFailure",  
+"RequestInTheFuture",  
+"IOException"
+```
+
+Here's list of throttled error codes where equal jitter strategy is applied:
+
+
+```
+"Throttling",  
+"ThrottlingException",  
+"ThrottledException",  
+"ProvisionedThroughputExceededException",  
+"SlowDown",  
+"TooManyRequestsException",  
+"RequestLimitExceeded",  
+"BandwidthLimitExceeded",  
+"RequestThrottled",  
+"RequestThrottledException",  
+"EC2ThrottledException",  
+"PriorRequestNotComplete",  
+"429 Too Many Requests"
+```
+
+For more strategies, go to [Exponential Backoff And Jitter](https://aws.amazon.com/blogs/architecture/exponential-backoff-and-jitter/) from AWS.
+
+#### Setting the AWS backoff strategy
+
+When you create a Harness AWS connector, you can use the backoff strategy settings to configure the AWS backoff strategy.
+
+These options are part of the AWS [software.amazon.awssdk.core.retry.backoff](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/retry/backoff/package-summary.html) package.
+
+The settings are:
+
+- **Fixed Delay:** This is a simple backoff strategy that always uses a [fixed delay](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/retry/backoff/FixedDelayBackoffStrategy.html) before the next retry attempt.
+- **Equal Jitter:** This strategy uses [equal jitter](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/retry/backoff/EqualJitterBackoffStrategy.html) for computing the delay before the next retry.
+- **Full Jitter:** This strategy uses a [full jitter](https://sdk.amazonaws.com/java/api/latest/software/amazon/awssdk/core/retry/backoff/FullJitterBackoffStrategy.html) strategy for computing the next backoff delay.  
+
+
 
 ## See also
 

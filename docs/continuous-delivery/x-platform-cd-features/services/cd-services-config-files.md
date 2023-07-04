@@ -8,7 +8,19 @@ You can use files added to the **Config Files** section in your Harness services
 
 ## Supported platforms
 
-All platform [integrations](/docs/continuous-delivery/integrations/cd-integrations) (Kubernetes, etc) support config files stored in the Harness File Store. Eventually, Harness will support config files from Git platforms.
+### Harness file store
+
+All platform [integrations](/docs/continuous-delivery/cd-integrations) (Kubernetes, etc) support config files stored in the Harness File Store.
+
+### Git providers
+
+:::note
+
+Currently, Git provider support is behind the feature flag `CDS_GIT_CONFIG_FILES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can use config files in any Git provider, including GitHub, GitLab, and Bitbucket. You connect to these providers using Harness connectors. Ensure that the connector credentials have read permissions on the target repository.
 
 ## Important notes
 

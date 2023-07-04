@@ -1,7 +1,7 @@
 ---
 title: Add ingress controller annotations
 description: Learn how to annotate the Ingress controller to customize its behavior.
-# sidebar_position: 30
+sidebar_position: 3
 helpdocs_topic_id: zbqas64zn8
 helpdocs_category_id: vu99714ib1
 helpdocs_is_private: false

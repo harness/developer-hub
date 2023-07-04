@@ -1,7 +1,7 @@
 ---
 title: Sumo Logic
 description: Add Sumo Logic health source to a monitored service. 
-sidebar_position: 11
+sidebar_position: 12
 ---
 
 ```mdx-code-block

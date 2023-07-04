@@ -26,14 +26,20 @@ A good general rule to follow is: **Your looping scenario is too complex if you 
 When a Pipeline requests resources for a Step, it calculates the *maximum CPU and memory required at any point in the Stage*. Consider the following scenario:
 
 * Your Build Stage has three Steps: the first builds an artifact for a web app; the second runs the artifact in a browser to confirm that it runs, the third pushes it to a registry.
-* Each Step consumes up to 500M (memory) and 400m (CPU). Because the Steps run serially, not concurrently, the Pipeline reserves 500Mi memory and 400m CPU for the entire Stage.![](./static/best-practices-for-looping-strategies-06.png)
+* Each Step consumes up to 500M (memory) and 400m (CPU). Because the Steps run serially, not concurrently, the Pipeline reserves 500Mi memory and 400m CPU for the entire Stage.
+
+  ![](./static/best-practices-for-looping-strategies-06.png)
+
 * Suppose you want to test the app on both Chrome and Firefox. You create a simple Matrix strategy for the Step:
 ```
 matrix:  
   browser: [ chrome, firefox ]  
   maxConcurrency: 2 
 ```
-* The Pipeline creates two copies of the Run Stage and runs them concurrently. This doubles the resource consumption for the overall Stage. When the Pipeline runs, it reserves double the resources (1000M memory, 800m CPU) for the overall Stage.![](./static/best-practices-for-looping-strategies-07.png)
+* The Pipeline creates two copies of the Run Stage and runs them concurrently. This doubles the resource consumption for the overall Stage. When the Pipeline runs, it reserves double the resources (1000M memory, 800m CPU) for the overall Stage.
+
+  ![](./static/best-practices-for-looping-strategies-07.png)
+  
 * So far, so good. The Pipeline executes with no problem. But suppose you add another dimension to your matrix and increase the `maxConcurrency`to run all the Stages at once?
 ```
 matrix:  
@@ -105,7 +111,7 @@ And use the `<+matrix.jira>` expression instead.
 
 ### See also
 
-* [Optimizing CI Build Times](/docs/continuous-integration/troubleshoot/optimizing-ci-build-times/)
+* [Optimize and enhance CI pipelines](/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times)
 * [How to Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)
 * [Looping Strategies Overview: Matrix, Repeat, and Parallelism](looping-strategies-matrix-repeat-and-parallelism.md)
 * [Speed Up CI Test Pipelines Using Parallelism](../8_Pipelines/speed-up-ci-test-pipelines-using-parallelism.md)

@@ -14,6 +14,12 @@ export type CardItem = {
 
 export const knowledgeBaseList: CardItem[] = [
   {
+    title: "Multi Service Deployments with Continuous Verification",
+    module: MODULES.cd,
+    date: "May 05, 2023",
+    link: "/kb/continuous-delivery/cv-multi-service",
+  },
+  {
     title: "How Can I Troubleshoot The Delegate Installation Error with Readiness Probe Failure in GKE?",
     module: MODULES.platform,
     date: "April 06, 2023",

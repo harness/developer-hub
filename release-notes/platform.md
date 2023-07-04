@@ -1,9 +1,9 @@
 ---
-title: Harness Platform release notes
-sidebar_label: Harness Platform
+title: Platform release notes
+sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-04-22T10:00
-sidebar_position: 10
+date: 2023-06-28T10:00:30
+sidebar_position: 12
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -19,30 +19,323 @@ Review the notes below for details about recent changes to Harness Platform, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - April 22, 2023, version 79111
+## Latest - June 28, 2023, version 79714
+
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 
-- You can now configure session time-out in the UI. (PL-32258)
-  In case of inactivity, Harness logs users out of their accounts after the configured session timeout.
+- There is now a limit of 100 API Tokens per free and community account. (PL-39337)
 
-- You can now add descriptions to pipeline and stage variables. (PIE-3336)
+- When configuring SMTP, you can now select specific delegates in **Delegates Setup**. (PL-39288)
+
+- You can now sort pipelines in the pipelines list by selecting the sortable column headers or the sort dropdown. (PL-31527)
+
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
 
-This release does not include any early access feature.
+This release does not include any early access features.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
 ```
 
+- SAML provider **Name** and **Friendly Name** fields allowed special characters. (PL-39070)
+
+    This issue is fixed by `displayName` and `logoutURL` field validations. The `displayName` only allows alphanumeric characters, `_`, `-`, `.`, and spaces. The `logoutURL` must be a valid HTTPS URL format. 
+
+- When creating a service account with the same name in a different scope, an error was thrown. (PL-38885)
+
+  A code enhancement has fixed this issue.
+
+- When **ALL** scope was selected on the **Role binding** page for a specific user, incorrect data was displayed. (PL-38426, ZD-43503)
+
+  A code enhancement has fixed this issue.
+
+- Deletion of vault connectors does not delete the corresponding perpetual tasks. (PL-27621)
+  
+  A code enhancement has fixed this issue.
+
+- Account-level connectors with resource groups set to **Specified** were not available at the project-level. (PL-38828)
+
+   This issue is fixed with a code enhancement. The connectors list now shows the connectors for which users have resource group permissions set.
+
+   This item requires Harness Delegate version 79707. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- The account-level **Session Timeout (in minutes)** allowed values greater than the 4320 minute maximum. (PL-32498)
+
+   This issue has been resolved by adding a code validation. The field no longer accepts values above 4320 minutes.
+
+   This item requires Harness Delegate version 79707. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 19, 2023, version 79606
+
+##### Platform new features
+
+- In earlier releases, users were allowed to include the following special characters in the user name field in their profile: colon (`:`), slash (`/`), less than sign (`<`), greater than sign (`>`), equal sign (`=`), and parentheses (`(` and `)`). Support for these special characters allowed malicious users to inject HTML and JavaScript code into deployment-related emails such as approval emails. (PL-39099)
+
+  For enhanced security, Harness no longer allows a user to include these special characters in their name. If an existing user name has any of these special characters, Harness does not include the special characters when adding the name to emails.
+
+- Free and Community accounts are now limited to 100 connectors. (PL-32654)
+
+- The dialog for adding an encrypted text secret now includes an option to test a referenced secret. (PL-31083) 
+
+- The dialog that enables you to select a connector did not list connectors in any order. (PL-27568)
+
+  This release adds a menu that you can use to sort the listed connectors in various ways (for example, by name or by date).
+
+- In earlier releases, you could change the Git branch only in Pipeline Studio. (CDS-68007)
+
+  Starting with this release, you can also change the branch in the dialog for running a pipeline. You can also run the pipeline from any branch directly from the pipeline listing page. 
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Platform fixed issues
+
+- Certain users see the following message when they select the Connectors page for their project: "You are not authorized to view default settings.
+You are missing the following permission: "View default settings" in Account scope." (PL-39221, ZD-45360)
+
+  This issue has been fixed by the removal of an account-level permission check that has been deemed unnecessary.
+
+- SCIM PATCH requests for deleting a Harness user return a “user does not exist” message in a successful delete operation. (PL-38868, ZD-44150)
+
+  This issue has been resolved by returning a NULL response in the Patch operation to delete a user.
+
+- In earlier releases, the button for managing role bindings for users, user groups, and service accounts was named +Role. However, given that you can also remove role bindings in the Manage Role Bindings dialog, the button has been renamed to Manage Roles. (PL-28484)
+
+- Improved randomness when there are multiple eligible delegates with no tasks running to avoid selecting the same delegate each time. (PL-39219)
+
+  This item is available with Harness Platform version 79503 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+#### June 09, 2023, version 79516
+
+##### Platform new features
+
+- There is now an additional tab on the **Create or Select Existing Connector** dialog called `All` that lists connectors from all scopes (project, organization, and account). (PL-39029)
+
+- The Go library has been upgraded from version 1.19.8 to 1.20.4. (PL-39026)
+
+- You can now delete externally managed users from the Harness UI. (PL-38974)
+
+  Harness recommends using this action with caution since it may result in data inconsistencies between Harness and the identity provider.
+
+- The Go library for yq has been upgraded from version 1.19.8 to 1.20.4. (PL-38952)
+
+- On your profile, you can now access projects by selecting project cards. (PL-38570)
+
+- Secret references now have a validate button to verify if the path is valid. (PL-31083)
+
+   This item is available with Harness Platform version 79516 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Platform fixed issues
+
+- The user invite API returned an HTTP status code of 200 if the invited user had an invalid TLD. (PL-38938)
+
+  This has been fixed, and the API now returns a status code of 400.
+
+- It was mandatory to enter email addresses even if **Send email to all users in a user group** was checked in **Notification Preferences**. (PL-38910)
+
+  A code enhancement fixed this issue.
+
+- Deprovisioning user accounts from Harness resulted in Okta errors. (PL-38868, ZD-44150)
+
+  A code enhancement fixed this issue.
+
+- An attempt to edit a secret sent repeated requests to the backend if the secret was not found. (PL-32313)
+ 
+  A code enhancement fixed this issue.
+
+- When SMTP was not configured, password reset did not throw an error. (PL-24542)
+  
+  A code enhancement fixed this issue.
+  
+- The expressions corresponding to objects like list, maps, and so on were incorrectly converted to string type using the Java String.valueOf method resulting in incorrect formatting. (CDS-71619)
+
+  This issue is fixed and the output values for expressions are returned as JSON objects.
+
+#### June 01, 2023, version 79411
+
+- You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
+
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- You can now use the legacy UI to create delegates. (PL-38937)
+
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
+
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+- Delegate instances that do not shut down gracefully and do not come back online are removed from the UI after three hours. (PL-38755)
+
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- The SSH secret reference gets created even if secret creation fails due to a validation error. (PL-38549, ZD-44073)
+
+  Reference creation now only occurs if the SSH secret is created.
+
+- The error message displayed during pipeline execution when connector permissions are missing is unclear. (PL-32662)
+
+  A code enhancement to display an appropriate error message fixed this issue.
+
+- The creation of SSH or WinRM secrets in a project or organization after disabling Harness' built-in secret manager is not supported. (PL-32562)
+  
+  A code enhancement has fixed this issue.
+
+- The comparison of email addresses during sign in is case-sensitive. (PL-32198)
+
+  A code enhancement has fixed this issue.
+
+- The error message displayed when permissions are missing during pipeline execution does not mention the corresponding resource Id. (PL-31350)
+
+  A code enhancement to display the resource Id in the error message fixed this issue.
+
+#### May 23, 2023, version 79306
+
+##### What's new
+
+- The **Connector Details** page now shows whether a connector is connected via a delegate or via Harness Platform. (PL-32673)
+
+- When steps or stages fail with a **Ignore Failure** strategy, their status is displayed as **Success (Failure Ignored)** instead of **Failed**. (CDS-67670)
+
+- You can now reject old executions waiting on approval when new ones are approved by using the **Auto-Reject previous deployments paused in this step on approval** option in the **Harness Approval** step. (CDS-58063)
+
+- You can now view the most recent delegate task details and their corresponding selection logs for approvals.
+The details of the latest delegate task are automatically updated. (CDS-57927)
+  
+  You can view task details for the following:
+  - ServiceNow
+  - Jira
+  - Custom Approvals
+
+- A warning now appears if you try to save a template with an existing identifier and an updated version label. This warns you that it will be merged with the existing template (upon confirmation). (CDS-47301)
+
+- The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set a secret expiration date. The Harness Delegate version 79307 is required for this feature. (PL-32708, ZD-42524)
+
+- AuthZ now considers the SAML setting that the user logged in to when multiple SAML settings are present and the user belongs to more than one of them. The user will be removed from any other SAML settings that the same user might have been part of and synced with Harness through previous SAML logins.  (PL-32484)
+
+##### Early access
+
+This release does not include any early access feature.
+
+##### Fixed issues
+
+- The email address is displayed instead of the display name for users created through Okta. (PL-38479, ZD-43201)
+  
+  A code enhancement to populate name with the display name fixed the issue.
+
+- The email step in the pipeline succeeds and is not marked as failed, even if email delivery fails. (PL-38440, ZD-43831)
+  
+  A code enhancement fixed this issue.
+
+- The **LAST ACTIVITY** column in the **Connector List** page is not updated. (PL-32582, ZD-42966)
+  
+  This column has been removed, and the UI no longer displays this.
+
+- The secrets list API return a status code of `200` when permissions are missing. (PL-26474)
+
+  The API now returns a status code of `403` when permissions are missing on secrets.
+
+- Conditional Execution's default value is incorrect in the UI. (CDS-68600)
+
+  A code enhancement to remove the default selection fixed this issue.
+
+- In Service Dashboards, tabular data does not appear for empty artifacts. (CDS-68100)
+
+  A code enhancement fixed this issue.
+
+- Fields in the Run Pipeline view are not aligned correctly. (CDS-67966)
+
+  A code enhancement fixed this issue.
+
+- The pipeline error message does not display the variable name when variable evaluation fails. (CDS-67559)
+  
+  A code enhancement to display the variable name in the error message fixed the issue.
+
+- When an entity is not found in the Git experience, there is no detailed error message displayed. (CDS-67500)
+
+  A code enhancement to display the repository and branch name in the error message fixed the issue.
+
+- The interrupt functionality for chained pipelines does not work.  (CDS-59374)
+  
+  A code enhancement to pass the required parameters for the child pipeline fixed this issue.
+
+- Custom Secret Manager creation does not consider the delegate selector. (PL-32260)
+
+  In Custom SM configuration, decrypting secrets using the SSH connection to validate delegate selection fixed this issue.
+  The Harness Delegate version 79307 is required for this fix.
+
+- Invites to users fail with an unauthorized error while RBAC setup is still in progress. (PL-32117)
+
+  A polling system ensures that RBAC setup has been completed. The Harness Delegate version 79307 is required for this fix.
+
+#### May 04, 2023, version 79214
+
+##### What's new
+
+- You will now receive an alert on the default settings page when there are unsaved changes and you leave the page. (PL-32354)
+
+##### Early access
+
+This release does not include any early access feature.
+
+
+##### Fixed issues
+
+- In **Group Memberships**, the selected scope value does not match the scope of the displayed user groups. (PL-32552)
+  
+  A code enhancement to fetch data corresponding to the selected scope has fixed the issue.
+
+- Pagination does not work correctly in the **Group memberships** page.(PL-32551, ZD-42803)
+  
+  A code enhancement fixed this issue.
+
+- The option to remove a secret is hidden when it has a long name. (PL-32571)
+  
+  A code enhancement fixed this issue.
+
+#### April 22, 2023, version 79111
+
+##### What's new
+- You can now configure session time-out in the UI. (PL-32258)
+  In case of inactivity, Harness logs users out of their accounts after the configured session timeout.
+
+- You can now add descriptions to pipeline and stage variables. (PIE-3336)
+
+##### Early access
+This release does not include any early access feature.
+
+##### Fixed issues
 - The creation of secrets on Custom Secret Manager validates the existence of those secrets. (PL-31715)
   A code enhancement to remove secret validation during Custom Secret Manager creation has fixed the issue.
 
@@ -57,17 +350,6 @@ This release does not include any early access feature.
 
 - Logs for chained pipelines are not visible. (PIE-9242, ZD-42050)
   A code enhancement fixed this issue.
-
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### April 10, 2023, version 79015
 
@@ -323,6 +605,10 @@ This release does not include any early access feature.
 - The execution of a chained pipeline with triggers fails with the error "User is not authorized". (PL-31594,ZD-39808,39954,40294,40337,40662)
   
   A code enhancement has fixed this issue.
+
+- There is a conflict between the schema names for `InviteDTO` and `SecretManagerMetadataRequestDTO`, causing an issue with Terraform Provider. (PL-31626)
+
+  Renaming the schema name of `SecretManagerMetatadataRequestDTO` has fixed the issue.
   
 - During search, an incorrect message is displayed in the pipeline chaining selection window if no pipeline matches the selection criteria. (PIE-8526)
   
@@ -330,7 +616,7 @@ This release does not include any early access feature.
   
 - On the **Input Sets** page, the **Clone** option is disabled. (PIE-8373)
   
-  The option has been removed.  
+  The option has been removed. 
 
 #### February 23, 2023, version 78507
 
@@ -377,6 +663,10 @@ This release does not include any early access feature.
 - The UI does not display an error message when the referred connector in infra does not exist.(PL-30130)
   
   An enhancement to the error-handling system enables an error message to appear when the connector API fails.
+
+- The warning corresponding to permissions does not display properly in organization settings. (PL-31278)
+
+  An enhancement to the width of the warning fixed the issue.
 
 - Removing the default value from a variable in a service results in the addition of `.nan` as the default value in the YAML. (PIE-8129)
   

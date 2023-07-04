@@ -1,0 +1,12 @@
+# specify chaos sequence
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-service-restart
+  labels:
+    name: service-restart
+spec:
+  serviceRestartChaos/inputs:
+    services: "apache2,nginx"
+    sequence: "serial"
+    duration: 30

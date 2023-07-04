@@ -6,6 +6,10 @@ sidebar_position: 15
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+<Smpno />
+
 This topic describes how to use the Harness Feature Flags Erlang SDK for your Erlang or Elixir based application. 
 
 For getting started quickly:
@@ -24,23 +28,26 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.0.0**. 
+The current version of this SDK is **2.0.1**. 
 
 ## Requirements
 
 * **For Erlang** applications, install:
 
   * Erlang/OTP 24 or later
-  * Rebar3
+  * Rebar3 3.20.0 or later
+  * Important, since version 2.0.0 the SDK depends on an Elixir hashing library, so the following is also required for Erlang applications:
+    * Elixir 1.13.4 or later available on your build system
+    * Rebar3 `rebar_mix` plugin installed in your Rebar3 plugins
 
 * **For Elixir** applications, install:
-
-  * Elixir version 1.11.4 or later
+  * Elixir version 1.13.4 or later
+  * OTP 24 or later
 
 To follow along with our test code sample, make sure you:
 
-* [Create a Feature Flag](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-feature-flag) on the Harness Platform called `harnessappdemodarkmode`.
-* [Create a server SDK key](/docs/feature-flags/ff-using-flags/ff-creating-flag/create-a-project#create-an-sdk-key) and made a copy of it.
+* [Create a Feature Flag](/docs/feature-flags/ff-creating-flag/create-a-feature-flag) on the Harness Platform called `harnessappdemodarkmode`.
+* [Create a server SDK key](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key) and made a copy of it.
 
 ## Install the SDK
 
@@ -50,17 +57,26 @@ To install the SDK for Erlang based applications:
 
 1. Add the SDK as a dependency to your `rebar.config` file:
 
-  ```
+  ```erlang
   {deps, [{cfclient, "1.0.0", {pkg, harness_ff_erlang_server_sdk}}]}.
   ```
+    
+2. Add the `rebar_mix` plugin to your `rebar.config` file:
 
-2. Add the dependency to your project's `app.src`.
+  ```erlang
+  {project_plugins, [rebar_mix]}.
+  ```
+
+  Imporatant: for this plugin to work ensure you have Elixir 1.13.4 or later installed onto your build system
+
+3. Add the dependency to your project's `app.src`.
 
   ```erlang
   {applications,
     [kernel, stdlib, cfclient]
   },
   ```
+
 
 ### For Elixir applications
 
@@ -71,7 +87,7 @@ To install the SDK for Elixir based applications:
   ```
     defp deps do
       [
-          {:cfclient, "~> 1.0.0", hex: :harness_ff_erlang_server_sdk}
+          {:cfclient, "~> 2.0.0", hex: :harness_ff_erlang_server_sdk}
       ]
   ```
 
@@ -137,7 +153,7 @@ To initialize the Erlang SDK:
 Targets are used to control which users see which variation of a Feature Flag. For example, if you want to do internal testing, you can enable the flag for some users but not others. When creating a target, you give it a name and a unique identifier. Targets are often users, but you can create a target from anything that can be uniquely identified, such as an app or a machine.  
   </details>
 
-For more information about targets, go to [Target Users With Flags](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags).
+For more information about targets, go to [Target Users With Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
 
 To create a target, create a map and add the following keys:
 
@@ -294,6 +310,84 @@ To close the SDK, run one of the following commands.
   ```
 
 ## Additional options
+
+### Set log level of the SDK
+
+Optionally, you may set the required log level of the SDK. If a log level is not provided, the SDK defaults to `warning`.
+
+#### Elixir logging configuration example
+```elixir
+config :cfclient,
+  # Set the log level of the SDK to debug
+    log_level: :debug
+    [api_key: System.get_env("FF_API_KEY_0"),
+    # For additional config you can pass in, see Erlang SDK docs: https://github.com/harness/ff-erlang-server-sdk/blob/main/docs/further_reading.md#further-reading
+    # we are just using the main config url here as an example.
+    config: [
+      config_url: "https://config.ff.harness.io/api/1.0",
+      events_url: "https://events.ff.harness.io/api/1.0",
+      poll_interval: 60000,
+      analytics_enabled: true
+    ]]
+```
+
+#### Erlang logging configuration example
+
+```erlang
+[{cfclient, [
+    %% Set the log level of the SDK to debug
+    {log_level, debug},
+    {api_key, {envrionment_variable, "YOUR_API_KEY_ENV_VARIABLE"},
+    {config, [
+        {config_url, "https://config.ff.harness.io/api/1.0"},
+        {events_url, "https://config.ff.harness.io/api/1.0"},
+        {poll_interval, 60},
+        {analytics_enabled, true},
+    ]},
+    ]}]
+```
+
+### Enable verbose evaluation logs
+
+Evaluation logs contain statements relating to flag evaluations. These logs are set at `debug` level by default. 
+If required, you can change the evaluation log level to `info`, for example, if your production environment doesn't use `debug` level, but you need to see verbose evaluation logs.
+
+The examples below set `log_level` to `error`, but override that for the evaluation logs, which are set to `info` (more verbose). 
+
+:::info note 
+This will only affect evaluation log statements. The `log_level` you set applies to all other log statements.
+:::
+
+**To enable verbose evaluation logs:** 
+
+* Set `verbose_evaluation_logs: true`. 
+
+  This changes the evaluation log level to `info`. Other log levels are unaffected. 
+
+  **Elixir example**
+
+  ```elixir
+  config :cfclient,
+      log_level: :error,
+      verbose_evaluation_logs: true,
+      [api_key: System.get_env("FF_API_KEY_0"),
+      config: [
+        poll_interval: 60000
+      ]]
+  ```
+   
+  **Erlang example**
+
+  ```erlang
+  [{cfclient, [
+      {log_level, error},
+      {verbose_evaluation_logs, true},
+      {api_key, {envrionment_variable, "YOUR_API_KEY_ENV_VARIABLE"},
+      {config, [
+        {poll_interval, 60}
+      ]},
+      ]}]
+  ```
 
 ### Run multiple instances of the SDK
 

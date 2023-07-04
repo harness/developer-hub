@@ -30,7 +30,7 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 The Harness Docker Registry connector where you want to upload the image. For more information, go to [Docker connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference).
 
-This step supports Docker connectors that use either anonymous or username and password authentication.
+This step supports Docker connectors that use username and password authentication.
 
 ## Docker Repository
 
@@ -49,6 +49,37 @@ Add each tag separately.
 :::tip
 
 Harness expressions are a useful way to define tags. For example, `<+pipeline.sequenceId>` is a built-in Harness expression. It represents the Build ID number, such as `9`. You can use the same tag in another stage to reference the same build by its tag.
+
+
+
+<details>
+<summary>Use Harness expressions for tags</summary>
+
+When you push an image to a registry, you tag the image so you can identify it later. For example, in one pipeline stage, you push the image, and, in a later stage, you use the image name and tag to pull it and run integration tests on it.
+
+There are several ways to tag images, but Harness expressions can be useful.
+
+![](./static/build-and-upload-an-artifact-10.png)
+
+For example, `<+pipeline.sequenceId>` is a built-in Harness expression that represents the **Build Id** number, for example `9`.
+
+After the pipeline runs, you can see the `Build Id` in the output.
+
+![](./static/build-and-upload-an-artifact-15.png)
+
+The ID also appears as an image tag in your target image repo:
+
+![](./static/build-and-upload-an-artifact-12.png)
+
+The `Build Id` tags an image that you pushed in an earlier stage of your pipeline. You can use the `Build Id` to pull the same image in later stages of the same pipeline. By using a variable expression, rather than a fixed value, you don't have to use the same image name every time.
+
+For example, you can use the `<+pipeline.sequenceId>` expression as a variable tag to reference images in future pipeline stages by using syntax such as: `harnessdev/ciquickstart:<+pipeline.sequenceId>`.
+
+As a more specific example, if you have a [Background step](../manage-dependencies/background-step-settings.md) in a later stage in your pipeline, you can use the `<+pipeline.sequenceId>` variable to identify the image without needing to call on a fixed value.
+
+![](./static/build-and-upload-an-artifact-11.png)
+
+</details>
 
 :::
 
@@ -102,8 +133,8 @@ Specify the user ID to use to run all processes in the pod if running in contain
 
 Set maximum resource limits for the resources used by the container at runtime:
 
-* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`.
-* * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 ### Timeout
 
@@ -111,3 +142,201 @@ Set the timeout limit for the step. Once the timeout limit is reached, the step 
 
 * [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+
+## Useful techniques
+
+Here are some interesting ways you can use or enhance **Build and Push an Image to Docker Registry** steps.
+
+### Build a Docker image without pushing
+
+You can use your CI pipeline to test a Dockerfile used in your codebase and verify that the resulting image is correct before you push it to your Docker repository.
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="hosted" label="Harness Cloud build infrastructure" default>
+```
+
+1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
+2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
+3. Select **Add Variable** and enter the following:
+   * **Name:** `PLUGIN_DRY_RUN`
+   * **Type:** **String**
+   * **Value:** `true`
+4. Save and run the pipeline.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="other" label="Other build infrastructures">
+```
+
+1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
+2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
+3. Select **Add Variable** and enter the following:
+   * **Name:** `PLUGIN_NO_PUSH`
+   * **Type:** **String**
+   * **Value:** `true`
+4. Save and run the pipeline.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+### Build multi-architecture images
+
+To use a CI pipeline to build multi-architecture images, create a separate stage for building and pushing each architecture.
+
+<details>
+<summary>Multi-arch YAML example</summary>
+
+The following YAML example describes a multi-architecture pipeline with two stages. Both stages have similar components but they are slightly different according to the architecture of the image that the stage builds.
+
+Each stage:
+
+* Uses a variation of a Kubernetes cluster build infrastructure.
+* Has a **Run** step that prepares the DockerFile.
+* Has a **Build and Push** step that builds and uploads the image.
+
+```yaml
+pipeline:
+  allowStageExecutions: true
+  projectIdentifier: my-project
+  orgIdentifier: default
+  tags:
+    CI: ""
+  properties:
+    ci:
+      codebase:
+        connectorRef: CI_GitHub
+        repoName: Automation.git
+        build: <+input>
+  stages:
+    - stage:
+        name: K8 upload
+        identifier: k8_upload
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: K8Linux
+              namespace: <+input>
+              runAsUser: ""
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              containerSecurityContext:
+                runAsUser: ""
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: CreateDockerFile
+                  identifier: CreateDockerFile
+                  spec:
+                    connectorRef: CI_Docker_Hub
+                    image: alpine:latest
+                    command: |-
+                      touch harnessDockerfileui
+                      cat > harnessDockerfileui <<- EOM
+                      FROM alpine:latest AS dev-env
+                      ARG foo
+                      RUN echo "$foo bar"
+                      ENTRYPOINT ["pwd"]
+
+                      FROM alpine:latest AS release-env
+                      ARG hello
+                      RUN echo "$hello world"
+                      ENTRYPOINT ["ls"]
+                      EOM
+                      cat harnessDockerfileui
+                    resources:
+                      limits:
+                        memory: 100M
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: DockerPushStep
+                  identifier: DockerPushStep
+                  spec:
+                    connectorRef: my-docker-hub
+                    repo: my-repo/ciquickstart
+                    tags:
+                      - "1.0"
+                    dockerfile: harnessDockerfileui
+                    target: dev-env
+                    resources:
+                      limits:
+                        memory: 100M
+        variables: []
+    - stage:
+        name: K8s Linux arm
+        identifier: CI_Golden_ARM
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: k8sarm
+              namespace: ci-gold-arm-delegate
+              automountServiceAccountToken: true
+              tolerations:
+                - effect: NoSchedule
+                  key: kubernetes.io/arch
+                  operator: Equal
+                  value: arm64
+              nodeSelector:
+                kubernetes.io/arch: arm64
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: CreateDockerFile
+                  identifier: CreateDockerFile
+                  spec:
+                    connectorRef: CI_Docker_Hub
+                    image: alpine:latest
+                    command: |-
+                      touch harnessDockerfileui
+                      cat > harnessDockerfileui <<- EOM
+                      FROM alpine:latest AS dev-env
+                      ARG foo
+                      RUN echo "$foo bar"
+                      ENTRYPOINT ["pwd"]
+
+                      FROM alpine:latest AS release-env
+                      ARG hello
+                      RUN echo "$hello world"
+                      ENTRYPOINT ["ls"]
+                      EOM
+                      cat harnessDockerfileui
+                    resources:
+                      limits:
+                        memory: 100M
+              - step:
+                  type: BuildAndPushDockerRegistry
+                  name: DockerPushStep
+                  identifier: DockerPushStep
+                  spec:
+                    connectorRef: my-docker-hub
+                    repo: my-repo/ciquickstart
+                    tags:
+                      - "1.0"
+                    dockerfile: harnessDockerfileui
+                    target: dev-env
+                    resources:
+                      limits:
+                        memory: 100M
+        variables: []
+  variables: []
+  identifier: CI_MultiArch
+  name: CI_MultiArch
+```
+
+</details>

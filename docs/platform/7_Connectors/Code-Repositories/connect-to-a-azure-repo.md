@@ -1,7 +1,7 @@
 ---
 title: Connect to Azure Repos
 description: This topic explains how to connect to Azure Repos.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: swe06e41w7
 helpdocs_category_id: o1zhrfo8n5
 helpdocs_is_private: false
@@ -83,6 +83,7 @@ Click **Continue**.
 Enter the username and password from the repo.
 
 ![](../static/connect-to-a-azure-repo-04.png)
+
 #### Enable API Access
 
 This option is required for using Git-based triggers, Webhooks management, and updating Git statuses.​
@@ -119,3 +120,6 @@ Harness tests the connection. Click **Finish** once the verification is successf
 
 The Azure Repos connector is listed in Connectors.
 
+### Kubernetes delegate with self-signed certificates
+
+If your codebase connector allows API access and connects through a Harness Delegate that uses self-signed certificates, you must specify `ADDITIONAL_CERTS_PATH` in the delegate pod, as described in [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates#enable-self-signed-certificates).

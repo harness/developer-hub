@@ -4,13 +4,13 @@ sidebar_position: 2
 ---
 To run chaos experiments on specific namespaces, follow the below mentioned steps.
 
-1. Install HCE in cluster mode
+1. Install CE in cluster mode
 
-- Install HCE in cluster mode with the given installation manifest. 
+- Install CE in cluster mode with the given installation manifest. 
 - Restrict `litmus-admin` service account to certain target namespaces.
 
 2. Delete `litmus-admin` ClusterRole and ClusterRoleBinding
-- Once HCE is up and running in cluster mode, delete the `litmus-admin` ClusterRole and ClusterRoleBinding to restrict the chaos scope in all namespaces.
+- Once CE is up and running in cluster mode, delete the `litmus-admin` ClusterRole and ClusterRoleBinding to restrict the chaos scope in all namespaces.
 
 ```bash
 $> kubectl delete clusterrole litmus-admin
@@ -183,7 +183,7 @@ subjects:
 ```
 
 :::info
-The rolebinding subjects point to the `litmus-admin` service account only (in HCE namespace). 
+The rolebinding subjects point to the `litmus-admin` service account only (in CE namespace). 
 :::
 
 #### Create the roles
@@ -235,4 +235,4 @@ time="2022-11-14T06:50:53Z" level=error msg="Application status check failed, er
 ```
 
 
-You have successfully restricted HCE to run chaos on certain namespaces instead of all namespaces.
+You have successfully restricted CE to run chaos on certain namespaces instead of all namespaces.

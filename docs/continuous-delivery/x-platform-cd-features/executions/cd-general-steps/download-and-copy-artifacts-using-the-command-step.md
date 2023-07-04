@@ -26,6 +26,12 @@ For SSH and WinRM, the Command step(s) is added automatically when you select th
 
 Also, the looping strategy needed to run the Command step on each target host is set automatically to **Repeat**.
 
+:::info Note
+
+The Command step supports only the **Repeat** looping strategy.
+
+:::
+
 You can edit or add any automatically-added Command step.
 
 For more information, go to:
@@ -112,6 +118,12 @@ For example, a destination path for a stage that deploys **todolist.war** using 
 
 `$HOME/tutorial-service-ssh2/ssh-tutorial-env/todolist.war`
 
+:::note
+
+Always use `$` in the beginning of the path when you reference an environment variables in a Command step.
+
+:::
+
 You can use any path on the target hosts you want. Harness will not create the path if it does not exist.
 
 Here's an example of the results of a download command:
@@ -119,6 +131,27 @@ Here's an example of the results of a download command:
 ![](./static/download-and-copy-artifacts-using-the-command-step-10.png)
 
 **Deployment Templates:** to run the download command on the target hosts, add the command after the Fetch Instances step. Go to [looping strategy and target hosts](#looping-strategy-and-target-hosts) below for more information
+
+## Download artifacts with a proxy
+
+In order to support the download artifacts by using the proxy settings on remote hosts, the follow environment variables needs to be set on the target machine (host).
+
+- `HARNESS_ENV_PROXY`: boolean value for whether or not the proxy is used.
+- `HTTP_PROXY`: the proxy URL.
+
+
+<docimage path={require('./static/084f850ec904e0510100abb6e53f51389109c0d143dd4da1be73cdc5879f1158.png')} width="60%" height="60%" title="Click to view full size image" />
+
+In Harness, the artifact should be added to the Harness service and the **Download Artifact** command type in the Command step. 
+
+The **Destination Path** should be set to the location where the artifacts will be downloaded on the target machine. The destination path should exist on the target machine.
+
+<docimage path={require('./static/3bed823e82a32864c979d6397aaaa4f05f3b4328a26fb5374c5b10fbfb001019.png')} width="60%" height="60%" title="Click to view full size image" />
+
+While the pipeline is running, you will see `Using HTTP_PROXY environment variable` log message for the **Download Artifact** command type. This message indicates that the proxy is used on the target machine.
+
+<docimage path={require('./static/7d8bcd481e413b9371ed9f9b5970fda32d1ac556dfa134cebffd6532e8bd3707.png')} width="60%" height="60%" title="Click to view full size image" />
+
 
 ## Copy an artifact or config
 
@@ -278,9 +311,14 @@ Legend:
 * N: No
 * N/A: Not Applicable
 
+:::note
+
+The WinRM deployment type supports Download Artifact only. You cannot use Cope Artifact in WinRM deployments.
+
+:::
 
 
-| **Provider** | **Repository/Package Types** | **Download Artifact****(WinRM or SSH deployment types only)** | **Copy Artifact****(SSH deployment type only)** |
+| **Provider** | **Repository/Package Types** | **Download Artifact (WinRM or SSH deployment types only)** | **Copy Artifact SSH deployment type only)** |
 | --- | --- | --- | --- |
 | AWS S3 | All | Y | Y |
 | Artifactory (JFrog) | Non-Docker | Y | Y |
@@ -302,4 +340,7 @@ Legend:
 |  | Docker | N/A | N/A |
 | Azure Artifacts | Maven 2.0, NuGet | Y | Y |
 | Custom Repository | All | N/A | N (use the Exec script to use the metadata to copy artifact to target host) |
+
+
+
 

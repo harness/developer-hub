@@ -17,7 +17,7 @@ This topic describes how to set up a CI build infrastructure in Google Cloud Pla
 
 For information on using Kubernetes as a build farm, see [Set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-The following diagram illustrates a build farm. The [Harness Delegate](/docs/platform/2_Delegates/install-delegates/overview.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
+The following diagram illustrates a build farm. The [Harness Delegate](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview.md) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
 ![CI build infrastructure in Google Cloud Platform](../static/define-a-ci-build-infrastructure-in-google-cloud-platform-29.png)
 
@@ -276,5 +276,4 @@ If you have problems running the delegate, runner, or VMs, you can collect debug
 ## See Also
 
 * [Set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
-* For more details on VM Runner, go to this [GitHub](https://github.com/drone-runners/drone-runner-aws) page.
-
+* For more details on VM Runner, go to the [AWS Drone Runner GitHub repo](https://github.com/drone-runners/drone-runner-aws).

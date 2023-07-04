@@ -139,50 +139,114 @@
     }
 }
 .btnCD{
-    background: #5FB34E;
-    border-color: #5FB34E;
+    background: var(--mod-cd-200);
+    border-color: var(--mod-cd-200);
+    img{
+        padding-left: 10px;
+    }
+}
+.btnCV{
+    background: var(--mod-cv-200);
+    border-color: var(--mod-cv-200);
     img{
         padding-left: 10px;
     }
 }
 .btnCI{
-    background: #2BB1F2;
-    border-color: #2BB1F2;
+    background: var(--mod-ci-200);
+    border-color: var(--mod-ci-200);
     img{
         padding-left: 10px;
     }
 }
 .btnFF{
-    background: #EE8625;
-    border-color: #EE8625;
+    background: var(--mod-ff-200);
+    border-color: var(--mod-ff-200);
     img{
         padding-left: 10px;
     }
 }
 .btnCCM{
-    background: #01C9CC;
-    border-color: #01C9CC;
+    background: var(--mod-ccm-200);
+    border-color: var(--mod-ccm-200);
     img{
         padding-left: 10px;
     }
 }
 .btnSRM{
-    background: #AE82FC;
-    border-color: #AE82FC;
+    background: var(--mod-srm-200);
+    border-color: var(--mod-srm-200);
     img{
         padding-left: 10px;
     }
 }
 .btnSTO{
-    background: #4791FF;
-    border-color: #4791FF;
+    background: var(--mod-sto-200);
+    border-color: var(--mod-sto-200);
     img{
         padding-left: 10px;
     }
 }
 .btnCE{
-    background: #FF006A;
-    border-color: #FF006A;
+    background: var(--mod-ce-200);
+    border-color: var(--mod-ce-200);
+    img{
+        padding-left: 10px;
+    }
+}
+.btnCET{
+    background: var(--mod-cet-200);
+    border-color: var(--mod-cet-200);
+    img{
+        padding-left: 10px;
+    }
+}
+
+.btnSEI{
+    background: var(--mod-sei-200);
+    border-color: var(--mod-sei-200);
+    img{
+        padding-left: 10px;
+    }
+}
+.btnSSCA{
+    background: var(--mod-ssca-200);
+    border-color: var(--mod-ssca-200);
+    img{
+        padding-left: 10px;
+    }
+}
+.btnIDP{
+    background: var(--mod-idp-200);
+    border-color: var(--mod-idp-200);
+    img{
+        padding-left: 10px;
+    }
+}
+.btnIACM{
+    background: var(--mod-iacm-200);
+    border-color: var(--mod-iacm-200);
+    img{
+        padding-left: 10px;
+    }
+}
+.btnGitness{
+    background: var(--mod-gitness-200);
+    border-color: var(--mod-gitness-200);
+    img{
+        padding-left: 10px;
+    }
+}
+.btnPlatform{
+    background: var(--primary);
+    border-color: var(--primary);
+    img{
+        padding-left: 10px;
+    }
+}
+.btnCET{
+    background: #FF5F45;
+    border-color: #FF5F45;
     img{
         padding-left: 10px;
     }

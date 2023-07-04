@@ -1,12 +1,21 @@
 ---
-title: Which build infrastructure is right for me?
+title: Which build infrastructure is right for me
 description: Compare Harness-hosted and self-hosted CI build infrastructure options.
 sidebar_position: 10
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 You can run builds on Harness-hosted machines or your own infrastructure.
 
-## Harness Cloud
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="hosted" label="Harness Cloud" default>
+```
 
 With Harness Cloud, your builds run in isolation on Harness-hosted machines. You can run builds at scale on Linux, Windows, and macOS machines that are preinstalled with software commonly used in CI pipelines.
 
@@ -14,14 +23,12 @@ Harness hosts, maintains, and upgrades these machines so that you can focus on d
 
 Harness Cloud is available with all CI plans. For more information, go to [Use Harness Cloud build infrastructure](./use-harness-cloud-build-infrastructure.md).
 
-## Self-hosted options
+```mdx-code-block
+  </TabItem>
+  <TabItem value="selfhosted" label="Self-hosted options">
+```
 
 Self-hosted build infrastructure options include local machines, Kubernetes clusters, and VMs from Cloud providers, such as AWS.
-
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 
 ```mdx-code-block
 <Tabs>
@@ -71,6 +78,11 @@ To learn more about VM build infrastructures, go to [Set up VM build infrastruct
 </Tabs>
 ```
 
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
 ## Supported operating systems and architectures
 
 The following table shows the supported operating systems and architectures for each build infrastructure option.
@@ -93,14 +105,15 @@ Some Harness CI features are not compatible with all build infrastructures or pl
 | Test Parallelism | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Cache Intelligence | <ul><li>✅ Supported - Linux, Windows</li><li>❌ Not supported - macOS</li></ul>| ❌ Not supported | ❌ Not supported | ❌ Not supported |
 | Remote Caching in **Build and Push** steps | ❌ Not supported | ❌ Not supported | ✅ Supported | ❌ Not supported |
+| [Delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors) | ❌ Not supported | ✅ Supported - Pipeline and stage delegate selectors | ✅ Supported - Pipeline, stage, and connector delegate selectors | ❌ Not supported |
 | Harness Secret Manager | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
 | Custom Secret Manager | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
 | GitHub App support | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
 | STO step in Build stage | ✅ Supported - Linux | ❌ Not supported | ✅ Supported | <ul><li>✅ Supported - Linux</li><li> ❌ Not supported - Windows</li></ul> |
 | STO stage in CI pipeline |  ✅ Supported - Linux | ❌ Not supported  | ✅ Supported | <ul><li>✅ Supported - Linux</li><li> ❌ Not supported - Windows</li></ul> |
 | Plugins (Containers) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |
-| Plugins (Host VM) | ✅ Supported | ❌ Not supported | ❌ Not supported | ❌ Not supported |
-|GitHub Actions | ✅ Supported - GitHub Actions plugin step | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin |
-| Bitrise Integrations | ✅ Supported - Bitrise plugin step | ❌ Not supported | ❌ Not supported | ❌ Not supported |
-| Plugin output variables | ✅ Supported | <!-- unknown --> | ❌ Not supported | ✅ Supported |
-| Build details - Artifacts tab | ❌ Not supported | <!-- unknown --> | ✅ Supported | ✅ Supported |
+| Plugins (Host VM) | ✅ Supported | ❌ Not supported | 🔸 Not applicable | ❌ Not supported |
+| [GitHub Actions](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins#github-actions) | ✅ Supported - GitHub Actions plugin step | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin | ✅ Supported - Drone plugin |
+| [Bitrise Integrations](/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins#bitrise-integrations) | ✅ Supported - Bitrise plugin step | ❌ Not supported | ❌ Not supported | ❌ Not supported |
+| Plugin output variables | ✅ Supported | ❌ Not supported | ✅ Supported | ✅ Supported |
+| [Build details - Artifacts tab](/docs/continuous-integration/use-ci/viewing-builds#build-details) | ✅ Supported | ✅ Supported | ✅ Supported | ✅ Supported |

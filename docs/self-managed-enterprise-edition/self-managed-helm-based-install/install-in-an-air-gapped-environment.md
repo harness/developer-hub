@@ -1,7 +1,7 @@
 ---
 title: Install in an air-gapped environment
 description: Learn how to install the Harness Self-Managed Enterprise Edition using Helm in an air-gapped environment. 
-# sidebar_position: 6
+sidebar_position: 4
 ---
 
 This topic explains how to use Helm to install the Harness Self-Managed Enterprise Edition in an air-gapped environment and how to obtain and transfer Docker images to a private registry with secure access. The steps include pulling Docker images, saving images as .tgz files, uploading to Google Cloud storage, downloading Helm charts, and pushing charts to your private repositories. This process ensures secure and seamless deployment of the Harness Self-Managed Enterprise Edition in restricted, offline environments.
@@ -22,10 +22,13 @@ The Harness Self-Managed Platform is designed to cater to various deployment sce
 
 - Access to Helm charts or [download locally](https://github.com/harness/helm-charts/releases)
 
-- Access to [the Harness airgap bundle on GCP](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped-1_0_78927.tgz) 
+- Access to [the Harness airgap bundle on GCP](https://console.cloud.google.com/storage/browser/smp-airgap-bundles;tab=objects?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=false&pli=1) 
 
 - Kubernetes version 1.22+ (Harness recommends v1.23.x)
 
+## Required images
+
+If your cluster is in an air-gapped environment, your deployment requires the [latest container images](https://github.com/harness/helm-charts/releases).
 
 ## Installation workflow
 
@@ -36,10 +39,20 @@ The flowchart below shows the air-gapped environment installation workflow steps
 ## Download required files
 
 To begin your installation, download the following files:
-- Harness air-gapped bundle [harness-airgapped-1_0_78927.tgz](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped-1_0_78927.tgz)
+- [Harness air-gapped bundle](https://console.cloud.google.com/storage/browser/smp-airgap-bundles;tab=objects?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=false&pli=1)
 - Harness airgap images [harness-airgap-images.sh](https://storage.googleapis.com/smp-airgap-bundles/harness-airgap-images.sh)
 
+## Set Docker architecture
+
+Air-gapped environment installation requires Docker build architecture amd64.
+
+Run the following command before you save Docker images to your private registry.
+
+ `export DOCKER_DEFAULT_PLATFORM=linux/amd64`
+
 ## Save Docker images to your private registry
+
+To save Docker images, do the following:
 
 1. Sign in to your private registry.
     ```
@@ -58,11 +71,11 @@ To begin your installation, download the following files:
     ```
     ./harness-airgap-images.sh -r <REGISTRY.YOURDOMAIN.COM:PORT> -f harness-airgapped.tgz
     ````
-
+    
 ## Download and push Helm charts
 After you save Docker images to your private registry, you must download the Helm charts and push them to your repository.
 
-**To download and push Helm charts**
+To download and push Helm charts:
 
 You can use Helm to pull the chart and push it to your private repository or download the chart directly.
 
@@ -73,12 +86,14 @@ You can use Helm to pull the chart and push it to your private repository or dow
     helm push harness docker://private-repo
     ```
 
-**To download the Helm chart**
+To download the Helm chart:
  
  - Download the chart from the [Harness repository](https://github.com/harness/helm-charts/releases).
 
 ## Install via Helm
 Next, you are ready to install via Helm by updating your `override.yaml` file with your private registry information.
+
+To install via Helm, do the following:
 
 1. Update the `override.yaml` file with your private registry information.
     ```

@@ -1,7 +1,7 @@
 ---
 title: Tanzu Application Services deployments
 description: Deploy a publicly available application to Tanzu Application Service (TAS) by using Harness.
-sidebar_position: 13
+sidebar_position: 1
 ---
 
 This topic shows you how to deploy a publicly available application to your Tanzu Application Service (TAS, formerly PCF) space by using any [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts.md) in Harness.
@@ -22,7 +22,19 @@ You'll learn how to:
 
 ## Important notes
 
-* For TAS deployments, Harness supports these artifact sources: Artifactory, Nexus, Amazon S3, Google Container Registry (GCR), Amazon Elastic Container Registry (ECR), Azure Container Registry (ACR), Google Artifact Registry, GitHub Package Registry, Custom registry, and any Docker Registry such as DockerHub. You connect Harness to these registries by using your registry account credentials.
+* For TAS deployments, Harness supports the following artifact sources. You connect Harness to these registries by using your registry account credentials.
+   * [Artifactory](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#artifactory)
+   * [Nexus](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#nexus)
+   * [Docker Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#docker) 
+   * Amazon S3
+   * [Google Container Registry (GCR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr)
+   * [Amazon Elastic Container Registry (ECR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#amazon-elastic-container-registry-ecr)
+   * [Azure Container Registry (ACR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#azure-container-registry-acr) 
+   * [Google Artifact Registry (GAR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-artifact-registry)
+   * [Google Cloud Storage (GCS)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-cloud-storage-gcs)
+   * [GitHub Package Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#github-packages)
+   * Azure Artifacts
+   * [Jenkins](/docs/platform/Connectors/Artifact-Repositories/connect-to-jenkins)
 * Before you create a TAS pipeline in Harness, make sure that you have the **Continuous Delivery** module in your Harness account. For more information, go to [create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/). 
 * Your Harness delegate profile must have [CF CLI v7, `autoscaler`, and `Create-Service-Push` plugins](#install-cloud-foundry-command-line-interface-cf-cli-on-your-harness-delegate) added to it. 
 
@@ -300,7 +312,20 @@ Harness services represent your microservices or applications. You can add the s
 2. In **Specify Artifact Repository Type**, select **Artifactory**, and select **Continue**.
    
    :::important
-   TAS supports Artifactory, Nexus, Docker Registry, Amazon S3, Google Container Registry (GCR), Amazon Elastic Container Registry (ECR), Azure Container Registry (ACR), Google Artifact Registry (GAR), Google Cloud Storage (GCS), GitHub Package Registry, Azure Artifacts, Amazon Machine Image (AMI), Jenkins, and Bamboo repository types. 
+
+   For TAS deployments, Harness supports the following artifact sources. You connect Harness to these registries by using your registry account credentials.
+   * [Artifactory](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#artifactory)
+   * [Nexus](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#nexus)
+   * [Docker Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#docker) 
+   * Amazon S3
+   * [Google Container Registry (GCR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-container-registry-gcr)
+   * [Amazon Elastic Container Registry (ECR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#amazon-elastic-container-registry-ecr)
+   * [Azure Container Registry (ACR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#azure-container-registry-acr) 
+   * [Google Artifact Registry (GAR)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-artifact-registry)
+   * [Google Cloud Storage (GCS)](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#google-cloud-storage-gcs)
+   * [GitHub Package Registry](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources/#github-packages)
+   * Azure Artifacts
+   * [Jenkins](/docs/platform/Connectors/Artifact-Repositories/connect-to-jenkins)
    
    For this tutorial, we will use Artifactory.
    :::
@@ -401,7 +426,7 @@ The TAS workflow for performing a basic deployment takes your Harness TAS servic
 
      | Step name | Error types and failure strategy |
      | :--- | :--- |
-     | **App Setup** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td> Supported, but not required. Rollback step is skipped.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
+     | **App Setup** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Supported, but rollback is skipped because app is not setup.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Supported, but rollback is skipped because app is not setup.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Supported, but rollback is skipped because app is not setup.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Supported, but rollback is skipped because app is not setup.</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
      | **App Resize** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
      | **App Rollback** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |
      | **Tanzu Command** | <table> <thead> <tr> <th>Error type</th> <th>**Rollback Stage**</th> <th>**Manual Intervention**</th> <th>**Ignore Failure**</th> <th>**Retry**</th> <th>**Mark As Success**</th> <th>**Abort**</th> <th>**Mark As Failure**</th> </tr> </thead> <tbody> <tr> <td>**Delegate Provisioning Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Delegate Restart**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> <tr> <td>**Execution-time Inputs Timeout Errors**</td> <td>Invalid</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> <td>Supported</td> </tr> </tbody> </table> |

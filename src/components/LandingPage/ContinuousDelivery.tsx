@@ -3,111 +3,9 @@ import Link from "@docusaurus/Link";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./styles.module.scss";
-import TutorialCard, { CardItem, docType } from "./TutorialCard";
-
-/* Define the cards here */
-const PlansList: CardItem[] = [
-  {
-    title: "Free Plan",
-    module: "cd",
-    icon: "img/icon_cd.svg",
-    description: <>Signup for your free Harness SaaS account</>,
-    type: [docType.SaaS],
-    link: "https://app.harness.io/auth/#/signup/?module=cd&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=get-started",
-  },
-  {
-    title: "Community Edition",
-    module: "cd",
-    icon: "img/icon_cd.svg",
-    type: [docType.SelfManaged],
-    description: <>Install on your self-managed Docker or Kubernetes</>,
-    link: "/tutorials/platform/install-cd-community-edition",
-  },
-];
-
-const FeaturedList: CardItem[] = [
-  {
-    title: "Deploy a Kubernetes Helm Chart",
-    module: "cd",
-    icon: "img/icon_cd.svg",
-    description: <>Deploy a Helm Chart onto your Kubernetes cluster.</>,
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "8min",
-    link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
-  },
-  {
-    title: "Deploy a Kubernetes Manifest",
-    module: "cd",
-    icon: "img/icon_cd.svg",
-    description: (
-      <>
-        Deploy a Kubernetes Manifest onto your Kubernetes cluster.
-      </>
-    ),
-    newDoc: true,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/cd-pipelines/kubernetes/manifest",
-  },
-];
-
-const CDList: CardItem[] = [
-  {
-    title: "Deploy a Kubernetes Helm Chart",
-    module: "cd",
-    icon: "img/icon_cd.svg",
-    description: (
-      <>
-        Deploy your first set of Kubernetes Resources in a CD Pipeline with
-        Helm, a popular Kubernetes Package Manager.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    //type: [docType.Documentation, docType.Interactive, docType.Video],
-    time: "10 min",
-    link: "/tutorials/cd-pipelines/kubernetes/helm-chart",
-  },
-  {
-    title: "Deploy a Kubernetes Manifest",
-    module: "cd",
-    icon: "img/icon_cd.svg",
-    description: (
-      <>
-        Deploy your first set of Kubernetes Services in a CD Pipeline with
-        Kubernetes Manifests.
-      </>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "10min",
-    link: "/tutorials/cd-pipelines/kubernetes/manifest",
-  },
-  {
-    title: "Build and Deploy a NodeJS App to Kubernetes",
-    module: "cd",
-    icon: "img/icon_cd.svg",
-    description: (
-      <>Build and deploy a simple nodejs application using Harness CI and CD.</>
-    ),
-    newDoc: false,
-    type: [docType.Documentation],
-    //type: [docType.Documentation, docType.Interactive, docType.Video],
-    time: "10 min",
-    link: "/tutorials/cd-pipelines/unified-cicd",
-  },
-  {
-    title: "Deploy a Docker Image to Amazon ECS ",
-    module: "cd",
-    icon: "img/icon_cd.svg",
-    description: <>Deploy a Docker image to Amazon ECS.</>,
-    newDoc: false,
-    type: [docType.Documentation],
-    time: "15min",
-    link: "/tutorials/cd-pipelines/amazon-ecs",
-  },
-];
+import TutorialCard from "./TutorialCard";
+// Defined card list in "./data/continuousDeliveryData.tsx"
+import { PlansList, FeaturedList, CDList } from "./data/continuousDeliveryData";
 
 export default function CD() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -119,7 +17,10 @@ export default function CD() {
     //   </ul>
     <div className="container">
       <div className={styles.SectionName}>
-        <h3>Set up CD pipelines to automate deployment of services to your infrastructure</h3>
+        <h3>
+          Set up CD pipelines to automate deployment of services to your
+          infrastructure
+        </h3>
       </div>
       <div className={styles.topSection}>
         <div className={styles.spaceBetween}>
@@ -160,10 +61,10 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              Harness CD & GitOps enables deployment of
-              application and infrastructure changes in a safe and sustainable
-              way. Your CD pipeline or GitOps workflow should automate all of the
-              steps necessary to get your changes into production.
+              Harness CD & GitOps enables deployment of application and
+              infrastructure changes in a safe and sustainable way. Your CD
+              pipeline or GitOps workflow should automate all of the steps
+              necessary to get your changes into production.
             </p>
             <div className={styles.alignCenter}>
               <Link

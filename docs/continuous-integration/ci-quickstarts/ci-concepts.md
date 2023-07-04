@@ -1,5 +1,5 @@
 ---
-title: Harness CI concepts
+title: CI concepts
 description: Harness CI simplifies the code development and testing process.
 
 sidebar_position: 20
@@ -15,7 +15,7 @@ CI executes pipeline steps in containers, isolating code and dependencies from o
 
 This topic describes CI concepts and provides a summary of the benefits of CI.
 
-For information about general Harness Platform concepts, go to [Harness key concepts](../../getting-started/learn-harness-key-concepts.md). For information about how Drone and Harness CI work together, go to [Drone and Harness](drone-and-harness.md).
+For information about general Harness Platform concepts, go to [Harness key concepts](../../getting-started/learn-harness-key-concepts.md).
 
 ## Visual summary
 
@@ -39,7 +39,7 @@ The architecture diagram of the Harness CI setup is as follows:
 
 The [Harness Delegate](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md) is central to all CI processes and is in charge of all CI operations. It runs in your environment, such as your local network, virtual private cloud, or cluster. It connects the Harness Manager in your SaaS instance to all of your code repositories, artifacts, infrastructure, and cloud providers.
 
-The [build infrastructure](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md) communicates directly with your repos, repositories, and cloud providers. You can maintain your code and artifacts internally or on public platforms, such as GitHub or DockerHub.
+The [build infrastructure](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md) communicates directly with your repos, repositories, and cloud providers. You can maintain your code and artifacts internally or on public platforms, such as GitHub or Docker Hub.
 
 The Delegate manages your build infrastructure to run build jobs and tests as needed, and sends data back to the Harness Manager. You can use this data for DAG orchestration, debugging, health checks, analytics, notifications, and the generation of ML models.
 
@@ -47,7 +47,7 @@ When a CI pipeline build finishes successfully, the build infrastructure then se
 
 Here's a an end-to-end demo that shows how to set up a CI pipeline and run a build. You can go through a similar workflow yourself in the following tutorials:
 
-* [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+* [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 * [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
 
 <!-- Video:
@@ -104,7 +104,7 @@ The [Harness Git Experience](/docs/category/git-experience) provides seamless in
 
 ## Harness CI components
 
-For information about CI pipeline components, go to [CI pipeline concepts](./ci-pipeline-basics.md).
+For information about CI pipeline components, go to [CI pipeline basics](./ci-pipeline-basics.md).
 
 ## FAQs
 

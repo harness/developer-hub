@@ -341,3 +341,33 @@ Harness assumes that you trust your Harness users to add safe scripts to your Sh
 
 Please ensure that users adding scripts, as well as executing deployments that run the scripts, are trusted.
 
+### Escaping characters
+
+Escape characters are used to remove special meaning from a single character. Escaping tells shell to interpret characters literally. 
+
+You can selectively escape characters when using shell scripts by using the following syntax: 
+
+`shell.escapeChars(<input string>, <string of characters to be escaped>)`
+
+For example, the output for `shell.escapeChars("hello", "ho")` is `"\hell\o"`.
+
+### Realtime logging 
+
+Sometimes, depending on the type of the script, the log lines appear at the end of the execution, and might not be realtime. This happens if the script doesn't flush logs in `stdout` at the correct time.
+
+For example, a Python script with `print("..")` might show delayed logs. 
+
+To fix this, use: 
+
+```
+print("...", flush=True)
+```
+ 
+or 
+ 
+```
+import functools
+print = functools.partial(print, flush=True)
+```
+
+You might have to make similar changes to your script depending on its contents.

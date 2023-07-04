@@ -195,7 +195,6 @@ You can use your own secrets manager with Harness. Harness integrates with all o
 * [Add an AWS KMS Secrets Manager](../firstgen-platform/security/secrets-management/add-an-aws-kms-secrets-manager.md)
 * [Add an Azure Key Vault Secrets](../firstgen-platform/security/secrets-management/azure-key-vault.md)
 * [Add a HashiCorp Vault Secrets Manager](../firstgen-platform/security/secrets-management/add-a-hashi-corp-vault-secrets-manager.md)
-* [Add a CyberArk Secrets Manager](../firstgen-platform/security/secrets-management/add-a-cyber-ark-secrets-manager.md)
 
 You can configure and make use of other Secrets Managers using the Custom Secrets Manager: [Add and Use a Custom Secrets Manager](../firstgen-platform/security/secrets-management/add-and-use-a-custom-secrets-manager.md).
 

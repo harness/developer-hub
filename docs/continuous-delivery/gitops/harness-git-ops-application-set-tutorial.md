@@ -1,7 +1,7 @@
 ---
 title: Harness GitOps ApplicationSet and PR pipeline tutorial
 description: This topic describes how to create a GitOps ApplicationSet and PR Pipeline in Harness GitOps.
-sidebar_position: 7
+sidebar_position: 8
 helpdocs_topic_id: lf6a27usso
 helpdocs_category_id: 013h04sxex
 helpdocs_is_private: false
@@ -360,7 +360,7 @@ To add a Github connector:
     
     7. Select **Enable API access** and use the same Harness Secret.
     
-    For more information, go to [add a GitHub connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector).
+    For more information, go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 3. Select **Continue**.
 4. In **Connect to the provider**, select **Connect through Harness Platform**., and then click **Save and Continue**.
 5. When the **Connection Test** in complete, click **Continue**.
@@ -437,7 +437,9 @@ In **Execution**, Harness automatically adds the following steps:
   This step supports hierarchical variables. If you specify a dot-separated variable in this step, it creates or updates a nested variable.  
 
   You can also enter variables in this step to update key:value pairs in the config file you are deploying.  
-  If there is a matching variable name in the variables of the Service or Environment used in this Pipeline, the variable entered in this step will override them.  
+  If there is a matching variable name in the variables of the Service or Environment used in this Pipeline, the variable entered in this step will override them. 
+  
+  If an empty or blank value is provided for a variable, it will be disregarded, and no updates will be made to the JSON or YAML file for that specific variable.
   
   ![](./static/harness-git-ops-application-set-tutorial-56.png)
 

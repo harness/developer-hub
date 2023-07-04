@@ -59,7 +59,7 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
    ``` 
 
    :::info note
-    For information about Specific Targeting, go to [Targeting Users with Flags](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags)
+    For information about Specific Targeting, go to [Targeting Users with Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags)
    :::
    
 3. Click **Save** to save your changes.

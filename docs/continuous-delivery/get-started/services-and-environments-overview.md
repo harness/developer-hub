@@ -12,14 +12,14 @@ This topic describes Harness Continuous Delivery (CD) services and environments.
 
 If you are new to Harness, please review [Harness key concepts](../../getting-started/learn-harness-key-concepts.md) and [CD pipeline modeling overview](./cd-pipeline-modeling-overview.md).
 
-## Product demo: services
+## Video: Services
 
 <!-- Video:
 https://harness-1.wistia.com/medias/xtmi0c0z95-->
 <docvideo src="https://harness-1.wistia.com/medias/xtmi0c0z95" />
 
 
-### Product demo: services and environments at the account and org level
+### Video: Services and environments at the account and org level
 
 <!-- Video:
 https://harness-1.wistia.com/medias/s89yka6hal-->
@@ -572,6 +572,18 @@ An environment can have multiple **Infrastructure Definitions**. 
 When you select an environment in a stage, you can select the **Infrastructure Definition** to use for that stage.
 
 ![](./static/services-and-environments-overview-14.png)
+
+#### Infrastructure Tags
+
+Tags can be attached to infrastructure definitions representing their characteristics. These tags can be key value pairs. 
+
+![](./static/services-and-environments-overview-28.png)
+
+When you select the **Infrastructure Definition** for a stage, the attached tags can be accessed using their keys with the expression, ```<+infra.tags.tag_key>```. This expression is available for use throughout the stage. 
+
+For example, skipping certain steps in pipeline based on the tags attached to the infrastructure. 
+
+![](./static/services-and-environments-overview-29.png)
 
 ## Values YAML overrides and merges
 

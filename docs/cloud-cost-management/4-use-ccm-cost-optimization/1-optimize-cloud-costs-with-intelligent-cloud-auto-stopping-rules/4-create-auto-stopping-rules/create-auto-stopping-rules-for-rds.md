@@ -1,5 +1,5 @@
 ---
-title: Create AutoStopping Rules for RDS
+title: RDS
 description: This topic describes how to create AutoStopping Rules for Amazon Relational Database Service (RDS).
 # sidebar_position: 7
 helpdocs_topic_id: ryk2e3ujpn
@@ -7,7 +7,7 @@ helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+# Create AutoStopping Rules for RDS
 AutoStopping Rule is a dynamic and powerful resource orchestrator for non-production workloads. For more information, see [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md).
 
 This topic describes how to create AutoStopping Rules for Amazon Relational Database Service (RDS).

@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic describes Pipeline stage and step **Conditional Executional** settings.
 
-### Review: Failure Strategy takes Precedence over Conditional Execution
+### Failure strategy takes precedence over conditional execution
 
 Harness Pipeline stages and steps both include **Conditional Execution** and **Failure Strategy** settings:
 
@@ -27,13 +27,13 @@ In order to get stage 2 to execute, you can set the stage 1 **Failure Strategy**
 
 In general, if you want to run particular steps on a stage failure, you should add them to stage's **Rollback** section.
 
-### Review: Stage and Step Priority
+### Stage and step priority
 
 The stage Conditional Execution applies to all steps that do not have their own Conditional Execution. A step's Conditional Execution overrides its stage's Conditional Execution.
 
-### Stage Conditions
+### Stage conditions
 
-#### Execute This Stage if Pipeline Execution is Successful so Far
+#### Execute this stage if pipeline execution is successful so far
 
 Select this option if you only want this stage to run when all previous stages were successful.
 
@@ -43,7 +43,7 @@ This is the default setting and used most of the time.
 
 Select this option if you always want this stage to run regardless of the success or failure of previous stages.
 
-#### Execute This Stage Only if Prior Pipeline or Stage Failed
+#### Execute this stage only if prior pipeline or stage failed
 
 Select this option if you always want this stage to run only if the prior Pipeline or stage failed.
 
@@ -60,7 +60,7 @@ Examples:
 
 See [Built-in Harness Variables Reference](../../12_Variables-and-Expressions/harness-variables.md).
 
-### Step Conditions
+### Step conditions
 
 #### Execute this step if the stage execution is successful thus far
 
@@ -89,7 +89,7 @@ Example:
 
 For more information on variable expressions, go to [Built-in and Custom Harness Variables Reference](../../12_Variables-and-Expressions/harness-variables.md).
 
-### Variable Expressions in Conditional Execution Settings
+### Variable expressions in conditional execution settings
 
 Stages and Steps support variable expressions in the JEXL conditions of their **Conditional Execution** settings.
 
@@ -97,10 +97,20 @@ You can only use variable expressions in the JEXL conditions that can be resolve
 
 Since **Conditional Execution** settings are used to determine if the stage should be run, you cannot use variable expressions that can't be resolved until the stage is run.
 
-### Deployment Status
+### Deployment status
 
 Deployment status values are a Java enum. The list of values can be seen in the Deployments **Status** filter:
 
 ![](./static/step-skip-condition-settings-10.png)
+
 You can use any status value in a JEXL condition. For example, `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "FAILED"`.
 
+### Conditional execution as a runtime input
+
+Conditional execution settings can be defined as runtime inputs in pipelines and templates at stage, step, and step group levels. 
+
+Here's a video that explains how to define conditional execution as a runtime input:
+
+<!-- Video:
+https://harness-24.wistia.com/medias/5w053wtla8-->
+<docvideo src="https://harness-24.wistia.com/medias/5w053wtla8" />

@@ -225,9 +225,5 @@ Policies and Policy Sets are saved at the Harness Account, Organization, or Proj
 
 ![](./static/harness-governance-overview-13.png)
 
-### See also
 
-* [Harness Policy As Code quickstart](/docs/platform/Governance/Policy-as-code/harness-governance-quickstart)
-* [Add a Policy step to a pipeline](/docs/platform/Governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline)
-* [Harness Policy As Code overview for Feature Flags](/docs/feature-flags/ff-using-flags/harness-policy-engine/)
 

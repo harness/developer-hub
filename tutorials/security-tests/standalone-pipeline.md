@@ -25,7 +25,7 @@ You'll learn how to:
 You must perform all the required steps in [Set Up Harness for STO](/docs/security-testing-orchestration/onboard-sto/set-up-harness-for-sto). This topic describes how to do the following:
 
 1. Install a delegate in a Kubernetes cluster.
-2. Create connectors to your Git and DockerHub repos
+2. Create connectors to your Git and Docker Hub repos
 3. Create a pipeline with a Docker-in-Docker service and a Security step that runs a Bandit scan on a repo.
 4. Add an STO stage to a Pipeline.
 5. Add a scanner to your stage, configure it, and define the target to scan.

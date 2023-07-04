@@ -57,7 +57,7 @@ Enter a name for the step group.
 
 A step group can have its own conditional execution settings separate from the conditional execution settings for the stage. The conditional execution settings of the step group apply to all of its steps.
 
-For more information, go to [step skip condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/).
+For more information, go to [step skip condition settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/).
 
 The conditional execution settings of any step in a step group overrides the conditional execution settings of the step group.
 
@@ -73,7 +73,7 @@ The step group Rollback steps are only run if the failure strategy for the step 
 
 ![](./static/step-groups-01.png)
 
-Go to [step failure strategy settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings) for more information.
+Go to [step failure strategy settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) for more information.
 
 The failure strategy of any step in a step group overrides the Failure Strategy of the step group.
 

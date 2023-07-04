@@ -1,6 +1,6 @@
 ---
 title: Add a Kubernetes cluster connector
-description: Connect Harness to a Kubernetes cluster using a Harness Kubernetes Cluster Connector.
+description: Connect Harness to your Kubernetes clusters on any platform.
 sidebar_position: 5
 helpdocs_topic_id: 1gaud2efd4
 helpdocs_category_id: o1zhrfo8n5
@@ -19,11 +19,15 @@ Once connected, you can use Kubernetes and Harness for provisioning infrastructu
 * [Learn Harness' Key Concepts](../../../../docs/getting-started/learn-harness-key-concepts.md)
 * [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 
-### Visual Summary
+### Visual summary
 
 Here's a quick video that shows you how to add a Kubernetes Cluster Connector and install the Kubernetes Delegate in the target cluster at the same time:
 
-### Review: Roles and Policies for the Connector
+<!-- Video:
+https://www.youtube.com/embed/wUC23lmqfnY-->
+<docvideo src="https://www.youtube.com/embed/wUC23lmqfnY" />
+
+### Roles and policies for the connector
 
 The IAM roles and policies needed by the account used in the Connector depend on what operations you are using with Harness and what operations you want Harness to perform in the cluster.
 
@@ -44,19 +48,15 @@ If you don’t want to use `verbs: [“*”]` for the Role, you can list out all
 
 The YAML provided for the Harness Delegate defaults to `cluster-admin` because that ensures anything could be applied. Any restriction must take into account the actual manifests to be deployed.
 
-### Review: Use the platform-agnostic Kubernetes Cluster Connector to connect to EKS
+### Connect to Amazon EKS
 
-Harness does not have an out of the box connector for Elastic Kubernetes Service (Amazon EKS).
+To connect Harness to Amazon EKS, use the platform-agnostic Kubernetes Cluster Connector discussed in this topic or an [Elastic Kubernetes Service (EKS)](/docs/platform/connectors/cloud-providers/ref-cloud-providers/aws-connector-settings-reference/#connect-to-eks) cloud connector.
 
-If you want to connect Harness to Amazon EKS, use the platform-agnostic Kubernetes Cluster Connector discussed in this topic. 
-
-Do not use an [AWS Connector](./add-aws-connector.md).
-
-### Review: AKS Clusters Must have Local Accounts Enabled
+### AKS clusters must have local accounts enabled
 
 To use an AKS cluster for deployment, the AKS cluster must have local accounts enabled (AKS property `disableLocalAccounts=false`).
 
-### Review: Switching IAM Policies
+### Switching IAM policies
 
 If the IAM role used by your Connector does not have the policies required, you can modify or switch the role.
 
@@ -64,11 +64,11 @@ You simply change the role assigned to the cluster or the Harness Delegate your 
 
 When you switch or modify the IAM role, it might take up to 5 minutes to take effect.
 
-### Supported Platforms and Technologies
+### Supported platforms and technologies
 
 For a list of the platforms and technologies supported by Harness, see [Supported Platforms and Technologies](../../../../docs/getting-started/supported-platforms-and-technologies.md).
 
-### Step 1: Add a Kubernetes Cluster Connector
+### Add a Kubernetes cluster connector
 
 Open a Harness Project.
 
@@ -83,7 +83,7 @@ Harness automatically creates the corresponding Id ([entity identifier](../../..
 
 Click **Continue**.
 
-### Step 2: Enter Credentials
+### Enter credentials
 
 Choose the method for Harness to use when connecting to the cluster.
 
@@ -91,12 +91,12 @@ Select one of the following:
 
 * **Specify master URL and credentials**:
 	+ You provide the Kubernetes master node URL. The easiest method to obtain the master URL is using kubectl: `kubectl cluster-info`.
-	+ Next, enter the **Service Account Key** or other credentials.
+	+ Next, enter the **Service Account Key** or other credentials. You can use any service account; the service account doesn't have to be attached to a delegate.
 * **Use the credentials of a specific Harness Delegate**: Select this option to have the Connector inherit the credentials used by the Harness Delegate running in the cluster. You can install a Delegate as part of adding this Connector.
 
 For details on all of the credential settings, see [Kubernetes Cluster Connector Settings Reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).
 
-#### Obtaining the Service Account Token using kubectl
+#### Obtaining the Service Account token using kubectl
 
 To use a Kubernetes Service Account (SA) and token, you will need to either use an existing SA that has the `cluster-admin` permission (or namespace `admin`) or create a new SA and grant it the `cluster-admin` permission (or namespace `admin`).
 
@@ -157,7 +157,7 @@ echo $TOKEN
 ```
 The `| base64 -d` piping decodes the token. You can now enter it into the Connector.
 
-### Step 3: Set Up Delegates
+### Set up delegates
 
 Regardless of which authentication method you selected, you select Harness Delegates to perform authentication for this Connector.
 

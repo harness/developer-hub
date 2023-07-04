@@ -5,7 +5,7 @@ import Link from "@docusaurus/Link";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import "rc-tooltip/assets/bootstrap.css";
 import styles from "./TutorialCard.module.scss";
-import { MODULES } from "../../constants";
+import { MODULES, MODULE_ICON } from "../../constants";
 
 export enum docType {
   Documentation = "doc",
@@ -59,7 +59,11 @@ function Card({
       <div>
         {time && (
           <h6>
-            {icon && <img src={baseUrl + icon} />}
+            {icon ? (
+              <img src={baseUrl + icon} />
+            ) : (
+              <img src={baseUrl + MODULE_ICON[module]} />
+            )}
             {time}
           </h6>
         )}

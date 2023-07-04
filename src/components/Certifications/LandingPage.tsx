@@ -28,13 +28,26 @@ export const getCertBadges = (url: string) => [
   },
 ];
 
+export const getCertLevel = (search: string) => {
+  let searchKey = search.replace(/^\?.*=/, "");
+  if (URLSearchParams) {
+    // just in case user's browser doesn't support URLSearchParams
+    const params = new URLSearchParams(search);
+    const paramLvl = params.get("lvl");
+    if (paramLvl) {
+      searchKey = paramLvl;
+    }
+  }
+  return searchKey;
+};
+
 export default function Certifications() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   // React router provides the current component's route, even in SSR
   const location = useLocation();
   const history = useHistory();
   const { pathname = "/", search = "" } = location;
-  const searchKey = search.replace(/^\?.*=/, "");
+  const searchKey = getCertLevel(search);
   const [tab, setTab] = useState("developer");
   const handleSwitchTab = (tabKey) => {
     setTab(tabKey);
@@ -58,7 +71,7 @@ export default function Certifications() {
           <h1>Harness Certifications</h1>
           <div>
             Test and validate your knowledge of modern software delivery by
-            becoming a Harness Certified Expert..
+            becoming a Harness Certified Expert.
           </div>
         </div>
         <div className={styles.right}>

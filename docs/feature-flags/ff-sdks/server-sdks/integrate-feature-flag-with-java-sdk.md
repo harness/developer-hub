@@ -10,6 +10,10 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpyes from '../shared/note-smp-compatible.md'
+
+<Smpyes />
+
 
 This topic describes how to use the Harness Feature Flags Java SDK for your Java application.
 
@@ -26,7 +30,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.2.2.**
+The current version of this SDK is **1.2.3.**
 
 ## Requirements
 
@@ -100,7 +104,7 @@ To add a Target, build it and pass in arguments for the following:
 | --- | --- | --- | --- |
 | **Parameter** | **Description** | **Required?** | **Example** |
 | `identifier` | Unique ID for the TargetRead **Regex requirements for Target names and identifiers** below for accepted characters. | Required | `.identifier("HT_1")` |
-| `name` | Name for this Target. This does not have to be unique. **Note**: If you don’t provide a value, the name will be the same as the identifier.Read **Regex requirements for Target names and identifiers** below for accepted characters. | Optional**Note**: If you don't want to send a name, don't send the parameter. Sending an empty argument will cause an error. | `.name("Harness_Target_1")` |
+| `name` | Name for this Target. This does not have to be unique. **Note**: If you don’t provide a value, the name will be the same as the identifier.Read **Regex requirements for Target names and identifiers** below for accepted characters. | Optional<br />**Note**: If you don't want to send a name, don't send the parameter. Sending an empty argument will cause an error. | `.name("Harness_Target_1")` |
 | `attributes` | Additional data you can store for a Target, such as email addresses or location. | Optional | `.attributes(new HashMap<String, Object>())` |
 
 <details>
@@ -550,4 +554,33 @@ public class GettingStarted {
         return value;  
     }  
 }
+```
+
+## Known issues
+
+### Error when importing the SDK JAR file
+
+If you're using the Java server SDK version 1.2.2 or earlier, you may see the following error when importing the SDK JAR file:
+
+`Missing artifact com.github.heremaps:oksse:jar:0.9.0`
+
+If you get this error, then add the Maven repository `https://jitpack.io` to your build system as follows:
+
+**If using Gradle:** 
+
+```
+repositories {
+  maven {
+    url 'https://jitpack.io'
+  }
+}
+```
+
+**If using Maven:**
+
+```
+<repository>
+  <url>https://jitpack.io</url>
+  ...
+</repository>
 ```

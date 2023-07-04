@@ -36,7 +36,7 @@ You can do the following with a custom trigger:
 
 The **Payload Type** is set as Custom. If this were a Git provider trigger, you would specify the repo URL and events for the trigger.
 
-For more details, see [Trigger Pipelines using Git Event Payload Conditions](trigger-pipelines-using-custom-payload-conditions.md) and [Trigger Pipelines using Git Events](triggering-pipelines.md).
+For more details, go to [Trigger Pipelines using Git Events](triggering-pipelines.md).
 
 ## Conditions
 
@@ -46,14 +46,14 @@ Conditions help to form the overall set of criteria to trigger a Pipeline based 
 
 For example:
 
-* Execute pipeline if the source/target branch name matches a pattern.
-* Execute pipeline if the event is sent for file changes from specific directories in the Git repo. This is very useful when working with a monorepo (mono repository). It ensures that only specific Pipelines are triggered in response to a change.
+* Execute pipeline if the source or target branch name matches a pattern.
+* Execute pipeline if the event is sent for file changes from specific directories in the Git repository. This is very useful when working with a monorepo (mono repository). It ensures that only specific pipelines are triggered in response to a change.
 
-Conditions support Harness built-in expressions for accessing trigger settings, Git payload data and headers.
+Conditions support Harness built-in expressions for accessing trigger settings, Git payload data, and headers.
 
 JEXL expressions are also supported.
 
-For details on these settings, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
+For details on these settings, go to [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
 
 Conditions are ANDed together (boolean AND operation). All Conditions must match an event payload for it to execute the trigger.
 
@@ -61,32 +61,34 @@ Conditions are ANDed together (boolean AND operation). All Conditions must match
 
 Pipelines often have [Runtime Inputs](../20_References/runtime-inputs.md) like codebase branch names or artifact versions and tags.
 
-1. Provide values for the inputs. You can also use [input sets](../8_Pipelines/input-sets.md).
-2. Click **Create Trigger**.
+1. Provide values for the inputs. You can use [input sets](../8_Pipelines/input-sets.md). For more information, go to [Passing data in custom triggers](/docs/platform/triggers/custom-trigger-passing-data).
+2. Select **Create Trigger**.
 
-The trigger is now added to the Triggers page.
+The trigger is now added to the **Triggers** page.
 
 ## Trigger a deployment using cURL
 
-1. On the **Triggers** page, in the **Webhook** column, click the link icon for your trigger and then click **Copy as cURL Command**.
+1. On the **Triggers** page, in the **Webhook** column, select the link icon for your trigger and then select **Copy as cURL Command**.
 
 ![](./static/trigger-deployments-using-custom-triggers-02.png)
 
 Here's an example of the cURL command:
 
 ```
-curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/v2?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
+curl -X POST -H 'content-type: application/json' -H 'X-Api-Key: sample_api_key' --url 'https://app.harness.io/gateway/pipeline/api/webhook/custom/{customWebhookToken}/v3?accountIdentifier=H5W8iol5TNWc4G9h5A2MXg&orgIdentifier=default&projectIdentifier=CD_Docs&pipelineIdentifier=Custom&triggerIdentifier=Custom' -d '{"sample_key": "sample_value"}'
 ```
 
 :::note
 
+The custom webhook token is a unique token that is generated internally for every custom webhook trigger when it is created. This token cannot be changed.
+
 The `-H 'X-Api-Key: sample_api_key'` parameter is used to authorize custom triggers. You can use [Harness API keys](../3_User-Management/7-add-and-manage-api-keys.md) with this parameter. This is described below in [Custom trigger authorization using API keys](#custom-trigger-authorization-using-api-keys).
 
-To skip authorization, omit the `-H 'X-Api-Key: sample_api_key'` parameter.
+To skip authorization, omit the `-H 'X-Api-Key: sample_api_key'` parameter. When authorization is not enforced for custom webhook triggers, the API key is excluded from the generated cURL command.
 
 :::
 
-Run this command in a Terminal to trigger a Pipeline execution. The response will look something like this:
+Run the example command in a terminal to trigger a pipeline execution. The response will look something like this:
 
 ```
 {  
@@ -349,7 +351,7 @@ The response from the cURL command will contain the status of the deployment. Fo
 
 :::note
 
-Currently, this functionality is behind the feature flag `NG_SETTINGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this functionality is behind the feature flag, `NG_SETTINGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
@@ -393,9 +395,9 @@ To skip authorization omit the `-H 'X-Api-Key: sample_api_key'` parameter.
 
 You can require that all custom triggers in this Harness account use API key tokens.
 
-1. In your Harness account, click **Account Settings**.
-2. Click **Account Resources**.
-3. Click **Default Settings**.
+1. In your Harness account, select **Account Settings**.
+2. Select **Account Resources**.
+3. Select **Default Settings**.
 4. In **General**, set **Mandate Authorization for Custom Webhook Triggers** to **true**.
 
 Now all custom triggers in this account must use an API key token or an authorization error is thrown when the cURL command is run.
@@ -405,7 +407,8 @@ Now all custom triggers in this account must use an API key token or an authoriz
 ```
 
 ##### Allow overrides
-When the **Allow Overrides** box is checked at the account level, Harness users are able to select a different value for this setting at project level. 
+
+When the **Allow Overrides** box is selected at the account level, Harness users will be able to select a different value for this setting at project level. 
 
 In a project, in **Default Settings** > **General**, you can set a different value for **Mandate Authorization for Custom Webhook Triggers**.
 

@@ -28,7 +28,7 @@ You'll need a target Kubernetes cluster for the Harness Delegate and deployment.
 * **vCPUs, Memory, Disk Size:** 4vCPUs, 16GB memory, 100GB disk. In GKE, the **e2-standard-4** machine type is enough for this quickstart.
 * **Networking:** outbound HTTPS for the Harness connection to **app.harness.io**, **github.com**, and **hub.docker.com**. Allow TCP port 22 for SSH.
 * A **Kubernetes service account** with permission to create entities in the target namespace is required. The set of permissions should include `list`, `get`, `create`, and `delete` permissions. In general, the cluster-admin permission or namespace admin permission is enough.  
-For more information, see [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
+For more information, go to [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
 
 ## Create the deploy stage
 
@@ -70,7 +70,7 @@ Next, we can add a Kubernetes manifest for NGINX. We'll use the [publicly-availa
 2. In **Manifests**, select **Add Manifest**.
    :::note
 
-   **What about Artifacts?** In this quickstart we are using a publicly-available NGINX Docker image from DockerHub, and the location of the image is hardcoded in the public manifest from Kubernetes. The **Artifacts** section is only used when the public artifact is not hardcoded in the manifest or the repo is private. In those cases, you add the image in **Artifacts** with a Connector for the repo and then reference the image in your values.yaml (`image: <+artifact.image>`). See [Add Container Images as Artifacts for Kubernetes Deployments](cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
+   **What about Artifacts?** In this quickstart we are using a publicly-available NGINX Docker image from DockerHub, and the location of the image is hardcoded in the public manifest from Kubernetes. The **Artifacts** section is only used when the public artifact is not hardcoded in the manifest or the repo is private. In those cases, you add the image in **Artifacts** with a Connector for the repo and then reference the image in your values.yaml (`image: <+artifact.image>`). For more information, go to [Add Container Images as Artifacts for Kubernetes Deployments](cd-kubernetes-category/add-artifacts-for-kubernetes-deployments.md).
 
    :::
 1. Select **K8s Manifest**, and select **Continue**.
@@ -93,60 +93,29 @@ Next, we can add a Kubernetes manifest for NGINX. We'll use the [publicly-availa
    
    Expand the section below to learn more about installing delegates.
 
-   <details>
-   <summary>Install a new delegate</summary>
+<details>
+<summary>Use the delegate installation wizard</summary>
 
-    1. In **Delegates Setup**, select **Install new Delegate**. The delegate wizard appears.
-    2. In the **New Delegate** dialog, in **Select where you want to install your Delegate**, select **Kubernetes**.
-    3. In **Install your Delegate**, select **Kubernetes Manifest**.
-    4. Enter a delegate name.
-        - Delegate names must be unique within a namespace and should be unique in your cluster. 
-        - A valid name includes only lowercase letters and does not start or end with a number. 
-        - The dash character (“-”) can be used as a separator between letters.
-    5. At a terminal, run the following cURL command to copy the Kuberntes YAML file to the target location for installation.
+1. In your Harness project, select **Project Setup**.
+2. Select **Delegates**.
+3. Select **Install a Delegate**.
+4. Follow the delegate installation wizard.
 
-    `curl -LO https://raw.githubusercontent.com/harness/delegate-kubernetes-manifest/main/harness-delegate.yaml`
+Use this [delegate installation wizard video](https://www.youtube.com/watch?v=yLMCxs3onH8) to guide you through the process.
 
-    6. Open the `harness-delegate.yaml` file. Find and specify the following placeholder values as described.
+</details>
 
-    | **Value** | **Description** |
-    | :-- | :-- |
-    | `PUT_YOUR_DELEGATE_NAME` | Name of the delegate. |
-    | `PUT_YOUR_ACCOUNT_ID` | Harness account ID. |
-    | `PUT_YOUR_MANAGER_ENDPOINT` | URL of your cluster. See the following table of Harness clusters and endpoints. |
-    | `PUT_YOUR_DELEGATE_TOKEN` | Delegate token. To find it, go to **Account Settings** > **Account Resources**, select **Delegate**, and select **Tokens**. For more information on how to add your delegate token to the harness-delegate.yaml file, go to [Secure delegates with tokens](/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/). |
+```mdx-code-block
+import DelegateInstall from '/tutorials/platform/install-delegate.md';
+```
 
-    Your Harness manager endpoint depends on your Harness SaaS cluster location. Use the following table to find the Harness manager endpoint in your Harness SaaS cluster.
+<details>
+<summary>Install a delegate using the terminal</summary>
+<DelegateInstall />
+</details>
 
-    | **Harness cluster location** | **Harness Manager endpoint** |
-    | :-- | :-- |
-    | SaaS prod-1 | https://app.harness.io |
-    | SaaS prod-2 | https://app.harness.io/gratis |
-    | SaaS prod-3 | https://app3.harness.io |
+To learn more, watch the [Delegate overview](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview) video.
 
-    7. Install the delegate by running the following command:
-
-    `kubectl apply -f harness-delegate.yaml`
-
-    The successful output looks like this.
-    
-    ```
-    namespace/harness-delegate-ng unchanged
-    clusterrolebinding.rbac.authorization.k8s.io/harness-delegate-cluster-admin unchanged
-    secret/cd-doc-delegate-account-token created
-    deployment.apps/cd-doc-delegate created
-    service/delegate-service configured
-    role.rbac.authorization.k8s.io/upgrader-cronjob unchanged
-    rolebinding.rbac.authorization.k8s.io/upgrader-cronjob configured
-    serviceaccount/upgrader-cronjob-sa unchanged
-    secret/cd-doc-delegate-upgrader-token created
-    configmap/cd-doc-delegate-upgrader-config created
-    cronjob.batch/cd-doc-delegate-upgrader-job created
-    ```
-
-   1. Select **Verify** to make sure that the delegate is installed properly.
-   
-   </details>
 
 6. Back in **Set Up Delegates**, you can select the new Delegate.
    In the list of Delegates, you can see your new Delegate and its tags.
@@ -155,10 +124,10 @@ Next, we can add a Kubernetes manifest for NGINX. We'll use the [publicly-availa
    When you are done, the Connector is tested.
 9. Select **Continue**.
 10. In **Manifest Details**, enter the following settings, test the connection, and click **Submit**. We are going to provide connection and path information for a manifest located at `https://raw.githubusercontent.com/kubernetes/website/main/content/en/examples/application/nginx-app.yaml`.
-   * **Manifest Identifier:** enter **nginx**.
-   * **Git Fetch Type****:** select **Latest from Branch**.
-   * **Branch:** enter **main**.
-   * **File/Folder path:**`content/en/examples/application/nginx-app.yaml`. This is the path from the repo root.
+    * **Manifest Identifier:** enter **nginx**.
+    * **Git Fetch Type****:** select **Latest from Branch**.
+    * **Branch:** enter **main**.
+    * **File/Folder path:**`content/en/examples/application/nginx-app.yaml`. This is the path from the repo root.
     
    The manifest is now listed.
 

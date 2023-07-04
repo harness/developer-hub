@@ -35,7 +35,7 @@ Each vulnerability also has a severity level based on its CVSS score. Because ea
     </tr>
     <tr>
         <td>CRITICAL</td>
-        <td>8.1 - 10</td>
+        <td>9 - 10</td>
         <td>Critical vulnerabilities often have the following characteristics:
             <ul>
                 <li>A successful attack can grant root-level access to servers or infrastructure devices.</li>
@@ -46,7 +46,7 @@ Each vulnerability also has a severity level based on its CVSS score. Because ea
     </tr>
     <tr>
         <td>HIGH</td>
-        <td>6.1 - 8</td>
+        <td>7 - 8.9</td>
         <td>High-severity vulnerabilities often have the following characteristics:
             <ul>
                 <li>More difficult to exploit than a critical vulnerability. Requires some form of authentication.</li>
@@ -57,7 +57,7 @@ Each vulnerability also has a severity level based on its CVSS score. Because ea
     </tr>
     <tr>
         <td>MEDIUM</td>
-        <td>4.1 - 6</td>
+        <td>4.0 - 6.9</td>
         <td>Medium-severity vulnerabilities often have the following characteristics:
             <ul>
                 <li>Require dedicated effort to launch a successful attack, such as manipulating users to obtain passwords.</li>
@@ -68,7 +68,7 @@ Each vulnerability also has a severity level based on its CVSS score. Because ea
     </tr>
     <tr>
         <td>LOW</td>
-        <td>2.1 - 4</td>
+        <td>0.1 - 3.9</td>
         <td>Low-severity vulnerabilities often have the following characteristics:
             <ul>
                 <li>Have very limited access to critical resources</li>
@@ -78,7 +78,7 @@ Each vulnerability also has a severity level based on its CVSS score. Because ea
     </tr>
     <tr>
         <td>INFO</td>
-        <td>0 - 2</td>
+        <td>-1.0 or 0.0</td>
         <td>A software or other issue that has no security impact. For example: bugs, incorrect API calls, code smells, and so on. </td>
     </tr>
 </tbody></table>

@@ -17,9 +17,9 @@ You can add a verification provider Connector inline when developing your pipeli
 
 You can add a verification provider Connector at the Account/Org/Project scope.
 
-This topic will explain how to add it at the Project scope. The process is same for Org and Account.
+This topic explains how to add a verification provider Connector at the Project scope. The process is same for Org and Account.
 
-### Step: Add AppDynamics
+### Add AppDynamics
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
@@ -39,7 +39,7 @@ This topic will explain how to add it at the Project scope. The process is same 
 7. In **Account Name**, enter the name of AppDynamics account you want to use.
 
    
-:::note
+:::info note
 For Harness On-Prem, enter **customer1**.
 :::
    
@@ -52,7 +52,7 @@ For Harness On-Prem, enter **customer1**.
 11. Click **Save and Continue**.
 12. Once the Test Connection succeeds, click **Finish**. AppDynamics is listed under the list of Connectors.
 
-### Step: Add Prometheus
+### Add Prometheus
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
@@ -67,7 +67,7 @@ For Harness On-Prem, enter **customer1**.
    ![](../static/connect-to-monitoring-and-logging-systems-14.png)
 
    
-:::note
+:::info note
 You cannot use a Grafana URL.
 :::
 
@@ -77,7 +77,7 @@ You cannot use a Grafana URL.
 3.  Click **Save and Continue**.
 4.  Once the Test Connection succeeds, click **Finish**. Prometheus is listed under the list of Connectors.
 
-### Step: Add New Relic
+### Add New Relic
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
@@ -109,7 +109,7 @@ If you have trouble finding step on generating the **Insights query key**, look 
 
 Usage scope is inherited from the secrets used in the settings. Pro or higher subscription level is needed. For more information, see [Introduction to New Relic's REST API Explorer](https://docs.newrelic.com/docs/apis/rest-api-v2/api-explorer-v2/introduction-new-relics-rest-api-explorer) from New Relic.
 
-### Step: Add Splunk
+### Add Splunk
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
@@ -143,7 +143,7 @@ We've given this role access to **All non-internal indexes**. However, we could
 2. In **Password** field, you can choose **Create or Select a secret.**
 
 
-:::note
+:::info note
 For secrets and other sensitive settings, select or create a new [Text Secret.](../../Secrets/2-add-use-text-secrets.md)
 
 :::
@@ -153,10 +153,10 @@ For secrets and other sensitive settings, select or create a new [Text Secret.]
 3.  Click **Save and Continue**.
 4.  Once the Test Connection succeeds, click **Finish**. Splunk is listed under the list of Connectors.
 
-### Step: Add Google Cloud Operations (formerly Stackdriver)
+### Add Google Cloud Operations (formerly Stackdriver)
 
 
-:::note
+:::info note
 For details on settings and permissions, see [Google Cloud Platform (GCP) Connector Settings Reference](../Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference.md).
 
 :::
@@ -170,89 +170,121 @@ The following roles must be attached to the account used to connect Harness and 
 
 See [Access control](https://cloud.google.com/monitoring/access-control) from Google.
 
-### Step: Add Datadog
+
+### Add Datadog
 
 1. Open a Harness Project.
-2. In **Project Setup**, click **Connectors**.
-3. Click **+** **Connector**, and click **Datadog** in **Monitoring and Logging Systems**. The Datadog connector settings appear.
+
+2. In **Project Setup**, click **Connectors**.
+
+3. Click **+ Connector**, and click **Datadog** in **Monitoring and Logging Systems**. The Datadog connector settings appear.
    
    ![](../static/connect-to-monitoring-and-logging-systems-24.png)
    
-4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
-5. Click **Continue**.
-6. Connect to a datadog dashboard
-  - Copy the protocol and domain part of the URL such as https://app.datadoghq.com/ 
-  - Append a trailing `api/` to create the following URL `https://app.datadoghq.com/api/`, The trailing forward slash after `api` (`api/`) is mandatory. Also, if your URL has `v1` at the end of it, remove `v1`.
-  - In **URL** field, enter the URL `https://app.datadoghq.com/api/` as indicated below : 
-
+4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
    
+5. Click **Continue**.
 
-:::note
-   The trailing forward slash after `api` (`api/`) is mandatory. Also, if your URL has `v1` at the end of it, remove `v1`.
-   Your URL should look like one of the following : 
+6. Connect to a Datadog dashboard.
+   To connect to a Datadog dashboard:
+7. Copy the protocol and domain part of the URL such as `https://app.datadoghq.com/`.
+
+8. Append a trailing `api/` to create the following URL: `https://app.datadoghq.com/api/](https://app.datadoghq.com/api/`.
+    The trailing forward slash after `api`is mandatory. If your URL has `v1` at the end of it, remove `v1`.
+
+9.  In URL field, enter the URL `https://app.datadoghq.com/api/`. The trailing forward slash after api (api/) is mandatory.
+    
+10. Your URL should look like one of the following:
       - `https://app.datadoghq.com/api/`
       - `https://us3.datadoghq.com/api/`
       - `https://us5.datadoghq.com/api/`
       - `https://app.datadoghq.eu/api/`
       - `https://app.ddog-gov.com/api/`
 
-:::
-   
    ![](../static/connect-to-monitoring-and-logging-systems-25.png)
-   
-1.  In **Encrypted APP Key**, enter the application key.  
     
-	To create an application key in Datadog, do the following:
-	1. In **Datadog**, hover over **Integrations**, and then click **APIs**. The **APIs** page appears.
-   
-       ![](../static/connect-to-monitoring-and-logging-systems-26.png)
-   
-	2. In **Application Keys**, in **New application key**, enter a name for the application key, such as **Harness**, and click **Create Application Key**.
-	3. Copy the API key and, in **Harness**, paste it into the **Application Key** field.
-2. In Encrypted API Key, enter the API key for API calls.  
-To create an API key in Datadog, do the following:
-	1. In **Datadog**, hover over **Integrations**, and then click **APIs**. The **APIs** page appears.
-   
-       ![](../static/connect-to-monitoring-and-logging-systems-27.png)
-   
-	2. In **API Keys**, in **New API key**, enter the name for the new API key, such as **Harness**, and then click **Create API key**.
-	3. Copy the API key and, in **Harness**, paste it into the **API Key** field.
-1. Click **Next**. The Setup Delegates settings appear.
-2.  You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags.** If you select a Delegate, Harness will always use that Delegate for this Connector.
-3.  Click **Save and Continue**.
-4.  Once the Test Connection succeeds, click **Finish**. Datadog is listed under the list of Connectors.
+11. In **Encrypted APP** Key, enter the application key.
+    
+    To create an application key in Datadog, do the following:
 
-### Step: Add Dynatrace
+      1.  In **Datadog**, hover over **Integrations**, and then click **APIs**. The APIs page appears.
+
+         ![](../static/connect-to-monitoring-and-logging-systems-26.png)
+
+      2.  In **Application Keys**, in **New application key**, enter a name for the application key, such as **Harness**, and click **Create Application Key**.
+
+      3.  Copy the application key and, in **Harness**, paste it into the **Application Key** field.
+
+12. In Encrypted API Key, enter the API key for API calls.
+    
+    To create an API key in Datadog, do the following:
+      
+      1.  In **Datadog**, hover over **Integrations**, and then click **APIs**. The **APIs** page appears.
+    
+         ![](../static/connect-to-monitoring-and-logging-systems-27.png)
+      
+      2.  In **API Keys**, in **New API key**, enter the name for the new API key, such as **Harness**, and then click **Create API key**.
+      
+      3.  Copy the API key and, in **Harness**, paste it into the **API Key** field.
+
+13. Click **Next**. The Setup Delegates settings appear.
+
+14. You can choose **Connect via any available delegate** or **Connect only via delegates which has all of the following tags**. If you select a Delegate, Harness will always use that Delegate for this Connector.
+
+15. Click **Save** and **Continue**.
+
+16. Once the Test Connection succeeds, click **Finish**. Datadog is listed under the list of Connectors.
+
+
+### Add Dynatrace
 
 1. Open a Harness Project.
-2. In **Project Setup**, click **Connectors**.
-3. Click **+** **Connector**, and click **Dynatrace**in **Monitoring and Logging Systems**. The Custom Health connector settings appear.
-   
-   ![](../static/connect-to-monitoring-and-logging-systems-28.png)
-   
-4. In **Name**, enter a name for this connector. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
-5. Click **Continue**.
-6. In **URL**, enter the URL of your Dynatrace account. The URL has the following syntax: **https://*****your\_environment\_ID*****.live.dynatrace.com.** HTTPS is mandatory for Dynatrace connections.
-7.  In **API Token**, enter the API token generated in Dynatrace. To generate a Dynatrace access token, perform the following steps:
-	1. Log into your Dynatrace environment.
-	2. In the navigation menu, click **Settings**, and then click **Integration**.
-	3. Select **Dynatrace API**. The Dynatrace API page appears.
-   
-       ![](../static/connect-to-monitoring-and-logging-systems-29.png)
-   
-	4. Enter a token name in the text field. The default Dynatrace API token switches are sufficient for Harness.
-	5. Click **Generate**. The token appears in the token list.
-	6. Click **Edit**. The token details appear.
-   
-       ![](../static/connect-to-monitoring-and-logging-systems-31.png)
-   
-	7. Click **Copy**. You will use this token when connecting Harness to Dynatrace.
-8. Click **Next**. The Setup Delegates settings appear.
-9. You can choose **Connect via any available Delegate** or **Connect only via Delegates which has all of the following tag****.** If you select a Delegate, Harness will always use that Delegate for this Connector.
-10. Click **Save and Continue**.
-11. Once the Test Connection succeeds, click **Finish**. Dynatrace is listed under the list of Connectors.
+2. Under **Project Setup**, select **Connectors** > **+ New Connector**.
 
-### Step: Add Custom Health
+3.   Under **Monitoring and Logging Systems**, select **Dynatrace**.
+
+4.	In the dialog that appears, in the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**.    
+If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+
+5.	In the **Credentials** tab, enter the URL of your Dynatrace account.  
+You must use HTTPS to establishing connections with Dynatrace.
+
+6.	Select the **API Token field** > **+ New Secret Text**.
+
+7.	In the Add New Encrypted Text dialog, select a secret manager, and then enter a name for the secret.
+
+8.	In the **Secret Value** field, enter the API token generated in Dynatrace. If you don’t have one, follow these steps to create an API token in Dynatrace:
+
+      1. Sign in to your Dynatrace environment.
+      2. In the Dynatrace menu, select **Access tokens** > Select **Generate new token**.
+      3. Enter a name for your token.
+      4. Be sure to provide a meaningful name for each token you generate. Proper naming helps you efficiently manage your tokens and delete them when they're no longer needed.
+      5. Select the following scopes: **Read metrics**, **Read entities**, and **Read events**.
+      6. Select **Generate token**.
+      7. Copy the generated token to the clipboard. Store the token in a password manager for future use. You can only access your token once upon creation. You can't reveal it afterward.
+
+      For more information on generating Dynatrace API tokens, go to [Dynatrace API - Tokens and authentication](https://www.dynatrace.com/support/help/dynatrace-api/basics/dynatrace-api-authentication).
+
+8.	Select **Save**.
+
+9.	In the Create or Select an Existing Secret dialog, select the Dynatrace secret that you added, and then select **Apply Selected**.
+
+11.  Select **Next**.
+
+12.  In the **Delegates Setup** tab, choose one of the following:
+
+   - **Use any available Delegate**: Harness automatically assigns an available delegate.
+  
+   - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the delegates that have been assigned those specific tags.
+
+13.  Select **Save** and **Continue**.  
+    Harness verifies the connection. 
+
+14.  Once the verification is successful, select **Finish**.  
+    The Dynatrace connector is added to the list of connectors.
+
+
+### Add Custom Health
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
@@ -274,3 +306,38 @@ To create an API key in Datadog, do the following:
 15. Click **Save and Continue**.
 16. Once the Test Connection succeeds, click **Finish**. Custom Health is listed under the list of Connectors.
 
+
+### Add Grafana Loki
+
+1. Open a Harness Project.
+
+2. Under **Project Setup**, select **Connectors** > **+ New Connector**.
+
+3. Under **Monitoring and Logging Systems**, select **CustomHealth**.
+   
+4. In the Create or Select an Existing Connector dialog, select **+ New Connector**.
+         
+5. In the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**. If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+   
+6. In the **Headers** tab, enter the following and select **Next**:
+
+   - **Base URL** of your Grafana Loki account. By default, Grafana Loki exposes its API on the 3100 port without any authentication. 
+   - Optionally, the **Key** and **Value** pair for the Grafana Loki log stream that you want to select in the query. For more information on the log stream selector and key-value pairs, go to [Log stream selector](https://grafana.com/docs/loki/latest/logql/log_queries/#log-stream-selector).
+
+7. Optionally, in the **Parameters** tab, enter the **Key** and **Value** pair.
+
+8. In the **Validation Path** tab, select either the **GET** or **POST** request method and enter the **Validation Path**. If you select **POST**, then you should also enter the request body.
+
+9. In the **Delegates Setup** tab, choose one of the following:
+
+   - **Use any available Delegate**: Harness automatically assigns an available delegate.
+               
+   - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the delegates that have been assigned those specific tags.
+
+11. Select **Save** and **Continue**.  
+               
+   Harness verifies the connection. 
+
+11. Once the verification is successful, select **Finish**.  
+               
+   The Grafana Loki connector is added to the list of connectors.

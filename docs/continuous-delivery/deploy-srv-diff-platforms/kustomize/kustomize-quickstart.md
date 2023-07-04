@@ -1,7 +1,7 @@
 ---
 title: Kustomize deployments
 description: This topic walks you through deploying a kustomization using Harness.
-sidebar_position: 4
+sidebar_position: 1
 helpdocs_topic_id: uiqe6jz9o1
 helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
@@ -294,5 +294,5 @@ For steps on deleting the Delgate, go to [Delegate a delegate](/docs/platform/De
 
 ### Next Steps
 
-See [Use Kustomize for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/kustomize-howtos/use-kustomize-for-kubernetes-deployments) for more details on all the settings and Kustomize support in Harness.
+See [Use Kustomize for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kustomize/use-kustomize-for-kubernetes-deployments) for more details on all the settings and Kustomize support in Harness.
 

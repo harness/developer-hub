@@ -66,7 +66,7 @@ step1:
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: my-dockerhub-connector
+                    connectorRef: my-docker-hub-connector
                     image: openjdk:17.0-jdk
                     shell: Bash
                     command: echo "this runs on openjdk"
@@ -77,7 +77,7 @@ step1:
 </Tabs>
 ```
 
-For more information about Harness terminology, features, and pipeline components, go to [Harness CI concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts) and [CI pipeline concepts](../ci-quickstarts/ci-pipeline-basics.md).
+For more information about Harness terminology, features, and pipeline components, go to [CI concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts) and [CI pipeline basics](../ci-quickstarts/ci-pipeline-basics.md).
 
 ### Jobs and steps
 
@@ -305,7 +305,7 @@ For example, the following step includes a `connectorRef` referencing a Docker c
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: my-dockerhub-connector
+                    connectorRef: my-docker-hub-connector
                     image: openjdk:17.0-jdk
                     shell: Bash
                     command: echo "this runs on openjdk"
@@ -672,7 +672,7 @@ trigger:
 
 Review the following information before proceeding with migration:
 
-* [Harness CI Concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts)
+* [CI Concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts)
 * [Harness CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md)
 * [Caching in Harness CI](/docs/category/share-and-cache-ci-data)
 * [Speed up Harness CI pipelines using parallelism](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism)

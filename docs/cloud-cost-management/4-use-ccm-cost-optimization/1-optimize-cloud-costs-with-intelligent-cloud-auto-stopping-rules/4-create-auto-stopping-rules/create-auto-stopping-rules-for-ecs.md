@@ -1,5 +1,5 @@
 ---
-title: Create AutoStopping Rules for Amazon ECS
+title: Amazon ECS
 description: This topic describes how to create an AutoStopping Rules for Amazon ECS.
 # sidebar_position: 8
 helpdocs_topic_id: r6y5h5i6r1
@@ -7,7 +7,7 @@ helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+# Create AutoStopping Rules for Amazon ECS
 AutoStopping Rule is a dynamic and powerful resource orchestrator for non-production workloads. It automatically shuts down idle resources and runs them on spot instances without worrying about interruptions. For more information, see [AutoStopping Rules Overview](../1-add-connectors/1-auto-stopping-rules.md).
 
 This topic describes how to create AutoStopping Rules for Amazon Elastic Container Service (ECS).
@@ -114,13 +114,13 @@ In **Desired Task Count**, specify the desired task count for the selected ECS s
 
 In this step, you can configure the following settings:
 
-### Hide progress page
+#### Hide progress page
 
  Toggle the button to disable the display of progress page during instances' warming up process. This option is especially useful when the service is invoked by an automation system, as it prevents misinterpretation of the progress page as the intended response from a service that is onboarded to AutoStopping. By hiding the progress page, the first response of warming up a rule after a downtime will be delayed until the intended service is up and running.
 
 ![](./static/create-autostopping-rules-for-kubernetes-83.png)
 
-### Dry Run
+#### Dry Run
 Toggle the button if you wish to evaluate this feature without terminating your cloud resources. For more information, go to [Evaluate AutoStopping rules in dry-run mode](../4-create-auto-stopping-rules/autostopping-dry-run-mode.md).
 
 * **Add Dependency**: Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. See [Add Dependency](create-autostopping-rules-aws.md).

@@ -1,6 +1,6 @@
 ---
 title: Run chaos experiments with serial and parallel faults
-sidebar_position: 3
+sidebar_position: 30
 ---
 
 import Analyze from '/docs/chaos-engineering/configure-chaos-experiments/experiments/shared/analyze-chaos-experiment.md'

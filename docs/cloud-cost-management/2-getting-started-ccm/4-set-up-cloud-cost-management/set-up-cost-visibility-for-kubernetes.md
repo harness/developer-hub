@@ -8,6 +8,8 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# Set up CCM for Kubernetes cluster
+
 Harness Cloud Cost Management (CCM) monitors the cloud costs of your Kubernetes clusters, namespaces, nodes, workloads, and labels. CCM also allows you to optimize your Kubernetes cluster resources using intelligent cloud AutoStopping rules.
 
 This topic describes how to connect your Kubernetes cluster to CCM.
@@ -19,18 +21,82 @@ If you are using an EKS connector, the data generation is delayed. AWS ingests d
 :::
  
 
-## Kubernetes Connector Requirements and Workflow
+## Kubernetes Connector requirements and workflow
 
 For CCM, Kubernetes connectors are available only at the Account level in Harness. To set up the CCM K8s Connector, you need to perform the following tasks:
 
-## Create a Cloud Provider Kubernetes Connector
+## Create a cloud provider Kubernetes connector
 You need to have completed the following tasks before creating a CCM connector for your Kubernetes cluster:
-* You need to set up Harness Delegate for each Cloud Provider (K8s cluster) connector. Delegate is installed when adding a Connector. See [Install a Kubernetes Delegate](../../../platform/2_Delegates/install-delegates/install-a-kubernetes-delegate.md). The Delegate is responsible for collecting metrics from the K8s connector.
+* You need to set up Harness Delegate for each Cloud Provider (K8s cluster) connector. Delegate is installed when adding a Connector. For more information, go to [Install a Kubernetes Delegate](https://developer.harness.io/tutorials/platform/install-delegate/). The Delegate is responsible for collecting metrics from the K8s connector.
+
+  ### Delegate role requirements for CCM visibility features and recommendations:
+  
+    The YAML provided for the Harness Delegate defaults to the `cluster-admin` role. If you can't use cluster-admin because you are using a cluster in your company, you'll need to edit the delegate YAML.
+	
+```
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: ce-clusterrole
+rules:
+- apiGroups:
+  - ""
+  resources:
+  - pods
+  - nodes
+  - nodes/proxy
+  - events
+  - namespaces
+  - persistentvolumes
+  - persistentvolumeclaims
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - apps
+  - extensions
+  resources:
+  - statefulsets
+  - deployments
+  - daemonsets
+  - replicasets
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - batch
+  resources:
+  - jobs
+  - cronjobs
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - metrics.k8s.io
+  resources:
+  - pods
+  - nodes
+  verbs:
+  - get
+  - list
+- apiGroups:
+  - storage.k8s.io
+  resources:
+  - storageclasses
+  verbs:
+  - get
+  - list
+  - watch
+```
+  
 * You need to create a Kubernetes Cloud Provider Connector for each Kubernetes cluster. One connector can access only one cluster. See [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
  
 ## Create CCM Connector
 For the CCM Kubernetes connector, you need to reference an existing Cloud Provider Kubernetes Connector. Otherwise, you need to create one.
-For each cluster, you need to create a CCM Kubernetes connector.CCM can now connect to the K8s connector and collect CCM metrics for deep cloud cost visibility.
+For each cluster, you need to create a CCM Kubernetes connector. CCM can now connect to the K8s connector and collect CCM metrics for deep cloud cost visibility.
 
 
 :::note
@@ -40,7 +106,7 @@ Alternatively, if you wish to use a single Delegate to access multiple Kubernete
 :::
 
 
-## Visual Summary
+## Visual summary
 
 Here's a visual representation of the CCM Kubernetes connector requirements and workflow:
 
@@ -64,7 +130,7 @@ You must not rename the cluster. If you're setting up a new connector with this 
 :::
  
 	
-- **Delegate Size**: 
+- **Delegate size**: 
 Your Kubernetes cluster must have unallocated resources required to run the Harness Delegate workload:
 
   - Laptop - 1.6GB memory, 0.5CPU
@@ -77,7 +143,7 @@ Your Kubernetes cluster must have unallocated resources required to run the Harn
 These sizing requirements are for the Delegate only. Your cluster will require more memory for Kubernetes, the operating system, and other services. Ensure that the cluster has enough memory, storage, and CPU for all of its resource consumers.
 :::
 
-- **Delegate Permissions**: You can choose one of the following permissions for CCM:
+- **Delegate permissions**: You can choose one of the following permissions for CCM:
 
  **Install Delegate with cluster-wide read/write access**
 
@@ -98,26 +164,47 @@ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/down
 
 Perform the following steps to connect your Kubernetes cluster to CCM.
 
-### Overview
+1. Create a new Kubernetes connector using one of the two options below:
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-1. In Harness, click **Account Settings**.
-2. In **Account Settings**, under **Account Resources**, click **Connectors**.
+```mdx-code-block
+<Tabs queryString="tab-number">
+<TabItem value="4" label="From Account Settings">
+```
+1. Go to **Account Resources** > **Connectors**.
+2. Select **+ New Connector**.
+3. Under **Cloud Costs**, select **Kubernetes**.
+```mdx-code-block
+</TabItem>
+<TabItem value="5" label="From Cloud Costs">
+```
+1. Go to **Setup** > **Cloud Integration**.  
+2. Select **New Cluster/Cloud account**.
+3. Select **Kubernetes**.
+4. Select **Advanced**.
+
+:::note
+   For the Quick Create option, go to [Kubernetes Quick Create](../4-set-up-cloud-cost-management/use-quick-create-k8s.md).
+:::
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+### Overview
+ 
+1. In the **Kubernetes Connector** wizard, in the **Overview** section, from the **Reference an existing connector** drop-down list, select your Cloud Provider Kubernetes Connector.  
+If you do not have Cloud Provider Kubernetes Connector already created, select **Create a new connector**. See [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
+2. The name for your connector is automatically populated. You can choose to edit the name. This name appears on the **Perspectives** page to identify this cluster.
    
-     ![](./static/set-up-cost-visibility-for-kubernetes-15.png)
-3. In **Connectors**, click **+ Connector**.
-4. In **Cloud Costs**, click **Kubernetes**.![](./static/set-up-cost-visibility-for-kubernetes-16.png)
-5. In the **Kubernetes Connector** wizard, in the **Overview** section, from the **Reference an existing connector** drop-down list, select your Cloud Provider Kubernetes Connector.  
-If you do not have Cloud Provider Kubernetes Connector already created, click **Create a new connector**. See [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
-1. The **Name** for your connector is automatically populated. You can choose to edit the name. This name appears on the Perspectives page to identify this cluster.
-   
-   ![](./static/set-up-cost-visibility-for-kubernetes-17.png)
-2. Click **Save and Continue**.
+3. Select **Save and Continue**.
 
 ### Choose Requirements
 
 In **Choose Requirements**, select the Cloud Cost Management features that you would like to enable for your Kubernetes clusters. Based on your selection Harness requires specific permissions.
-
-![](./static/set-up-cost-visibility-for-kubernetes-18.png)
 
 You need to provide different permissions depending on the features that you enable for your Kubernetes clusters. CCM offers the following features:
 
@@ -131,13 +218,13 @@ You need to provide different permissions depending on the features that you ena
 For [AWS](set-up-cost-visibility-for-aws.md) and [Azure](set-up-cost-visibility-for-azure.md), if the cloud connectors are set up, then the cost will be trued-up to the pricing received from the CUR/billing export. However, for [GCP](set-up-cost-visibility-for-gcp.md) the list pricing is used.
 :::
 
-Make your selection and click **Continue**.
+Make your selection and select **Continue**.
 
 ### (Optional) Create a Secret
 
 The secret creation settings appear only if you have selected **Kubernetes Optimization by AutoStopping** feature in the **Feature Selection** step. In this step, you are providing permissions for intelligent cloud AutoStopping rules. For more information, see [Create AutoStopping Rules for AWS](../../4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/create-autostopping-rules-aws.md).
 
-1. In **Secret creation**, click create an API key here and create an API key. See [Create an API Key](/docs/platform/User-Management/add-and-manage-api-keys).
+1. In **Secret creation**, select create an API key here and create an API key. Go to [Create an API Key](/docs/platform/User-Management/add-and-manage-api-keys) for more information.
 2. Run the following commands in your Kubernetes cluster:
 	1. Create a namespace.  
 	
@@ -161,13 +248,13 @@ The secret creation settings appear only if you have selected **Kubernetes Optim
 	```
 	kubectl apply -f secret.yaml
 	```
-3. Click **Continue**.
+3. Select **Continue**.
 
 ### Provide Permissions
 
 If the cluster does not already have additional permissions, you will apply them in this step. See Delegate Permissions in the Prerequisites section for additional details.
 
-1. In **Provide Permissions**, click **Download YAML**.
+1. In **Provide Permissions**, select **Download YAML**.
 2. Copy the downloaded YAML to a machine where you have `kubectl`installed and have access to your Kubernetes cluster.
 3. Run the following command to apply the Harness Delegate permissions to your Kubernetes Cluster.  
   
@@ -175,8 +262,8 @@ If the cluster does not already have additional permissions, you will apply them
 ```
 $ kubectl apply -f ccm-kubernetes.yaml
 ```
-4. Click **Done** and **Continue**.
-5. In **Verify connection**, once the Test Connection succeeds, click **Finish**.  
+4. Select **Done** and **Continue**.
+5. In **Verify connection**, once the Test Connection succeeds, select **Finish**.  
   
 The Connector is now listed in **Connectors**.
 

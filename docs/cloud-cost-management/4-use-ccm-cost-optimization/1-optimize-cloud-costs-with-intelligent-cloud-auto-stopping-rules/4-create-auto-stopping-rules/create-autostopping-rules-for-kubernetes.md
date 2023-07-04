@@ -1,5 +1,5 @@
 ---
-title: Create AutoStopping Rules for a Kubernetes Cluster
+title: Kubernetes cluster
 description: This topic describes how to create an AutoStopping Rules for a Kubernetes cluster.
 # sidebar_position: 5
 helpdocs_topic_id: 1r80jdz2f9
@@ -8,6 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+# Create AutoStopping Rules for a Kubernetes Cluster
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. 
 
 ## Before you begin

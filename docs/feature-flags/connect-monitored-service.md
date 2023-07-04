@@ -4,7 +4,7 @@ description: This topic describes how to connect flags to monitored services to 
 tags: 
    - feature flag
    - monitored services
-sidebar_position: 30
+sidebar_position: 100
 ---
 
 You may want to monitor your services to be notified when there are issues related to Feature Flag changes. To do this, you can connect a Feature Flag to a monitored service. A monitored service is a combination of a Service and Environment that Harness [Service Reliability Management (SRM)](/docs/service-reliability-management) monitors for changes, events, and health trends. Connecting a Feature Flag to the service lets you analyze how service health is impacted by a feature. 

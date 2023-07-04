@@ -22,13 +22,6 @@ import { MODULES } from "../../constants";
           link: "/tutorials/ci-pipelines/test/codecov",
         },
         {
-          title: "Publish Allure Report",
-          module: MODULES.ci,
-          description:
-            "Publish an Allure Report.",
-          link: "/tutorials/ci-pipelines/test/allure-report",
-        },
-        {
           title: "Run LocalStack",
           module: MODULES.ci,
           description:

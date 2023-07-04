@@ -8,6 +8,15 @@ slug: /ci-pipelines/test/codecov
 
 # Code coverage with CodeCov in Harness CI
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
+
 This tutorial shows how you can use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage) to include [CodeCov code coverage](https://docs.codecov.com/docs/about-code-coverage#top-5-codecov-features) in a Harness CI pipeline.
 
 ## Prerequisites
@@ -18,7 +27,7 @@ In addition to a Harness account, this tutorial requires the following:
 * An understanding of test tools, scripts, and related commands.
 * A CI pipeline. If you haven't created a pipeline before, try one of the following tutorials:
   * [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
-  * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+  * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 ```mdx-code-block
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
@@ -148,7 +157,7 @@ For more information about **Run** step settings, go to the [Run step settings r
 
 After adding the **Run** step, run your pipeline.
 
-On the [Build details page](/docs/continuous-integration/use-ci/view-your-builds/viewing-builds), you can review CodeCov information in the **Run** step's logs. If the results were successfully uploaded to CodeCov, the logs include a `resultURL` that you can follow to view the code coverage output in your CodeCov account, such as:
+On the [Build details page](/docs/continuous-integration/use-ci/viewing-builds), you can review CodeCov information in the **Run** step's logs. If the results were successfully uploaded to CodeCov, the logs include a `resultURL` that you can follow to view the code coverage output in your CodeCov account, such as:
 
 ```
 ...

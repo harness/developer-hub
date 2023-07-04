@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Currently, this feature is behind the Feature Flag `CUSTOM_SECRETS_MANAGER`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.Harness provides first-class support and built-in integration for the most common secret managers. If you are using a [secret manager](../../security/secrets-management/secret-management.md) that Harness does provide first-class support for, you can configure and use your secret manager by using the Harness Custom Secrets Manager.
+Harness provides first-class support and built-in integration for the most common [secret managers](../../security/secrets-management/secret-management.md). If you're not using a secret manager that's supported, you can configure it by using the Harness Custom Secrets Manager.
 
 This topic describes how to create, update, and delete a Custom Secrets Manager using the Harness API.
 

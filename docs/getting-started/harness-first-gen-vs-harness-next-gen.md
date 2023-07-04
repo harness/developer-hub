@@ -1,7 +1,7 @@
 ---
 title: Harness FirstGen vs Harness NextGen
 description: Compare Harness two product suite versions.
-sidebar_position: 40
+sidebar_position: 50
 helpdocs_topic_id: 1fjmm4by22
 helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
@@ -18,7 +18,7 @@ Harness has two versions of its product suite.
 
 ![](./static/harness-first-gen-vs-harness-next-gen-19.png)
 
-Documentation for FirstGen features is located under the [FirstGen Docs](/docs/first-gen) section of docs.harness.io. The documentation in all other sections applies only to NextGen features.Review the following supported platforms and technologies topics to see which version to use today:
+Documentation for FirstGen features is located under the [FirstGen Docs](/docs/first-gen) section of docs.harness.io. The documentation in all other sections applies only to NextGen features. Review the following supported platforms and technologies topics to see which version to use today:
 
 * [FirstGen Supported Platforms and Technologies](../first-gen/starthere-firstgen/supported-platforms.md)
 * [NextGen Supported Platforms and Technologies](supported-platforms-and-technologies.md#continuous-delivery-cd)

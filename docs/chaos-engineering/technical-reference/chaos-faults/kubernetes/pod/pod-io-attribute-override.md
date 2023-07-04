@@ -5,7 +5,7 @@ title: Pod IO attribute override
 
 import IOFaultsCaution from './shared/io-faults-caution.md'
 
-Pod IO attribute override simulates an error that can modify the properties or attributes of a file within a pod.
+Pod IO Attribute Override, modify the properties of files located within the mounted volume of the pod. 
 This fault should be used as a sanity test for validating your application's failover capability against unexpected changes in file attributes, such as permissions, ownership, or timestamps.
 
 ![Pod IO Attribute Override](./static/images/pod-io-attribute-override.png)
@@ -20,14 +20,14 @@ Pod IO attribute override:
 
 <IOFaultsCaution />
 
-:::note
+:::info note
 - Kubernetes 1.16 is required to execute this fault.
 - The application pods should be in the running state before and after injecting chaos.
 :::
 
 ## Fault tunables
 
-  <h3>Optional tunables</h3>
+  <h3>Mandatory tunables</h3>
     <table>
       <tr>
         <th> Tunable </th>
@@ -40,18 +40,27 @@ Pod IO attribute override:
         <td> For more information, go to <a href="#attributes">attributes</a>.</td>
       </tr>
       <tr>
+        <td> MOUNT_PATH </td>
+        <td> The absolute mount path of the volume mounted to the target pod</td>
+        <td> For more information, go to <a href="#mount-path">mount path</a>. </td>
+      </tr>
+    </table>
+
+  <h3>Optional tunables</h3>
+    <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
+      </tr>
+      <tr>
         <td> TARGET_CONTAINER </td>
         <td> Name of the container subject to IO attribute override</td>
         <td> If the value is not provided, the fault injects chaos on the first container of the pod. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a>.</td>
       </tr>
       <tr>
-        <td> MOUNT_PATH </td>
-        <td> Mount path of volume in the target container</td>
-        <td> For more information, go to <a href="#mount-path">mount path</a>. </td>
-      </tr>
-      <tr>
         <td> FILE_PATH </td>
-        <td> The path for injecting faults can be specified as either a single file or a wildcard.</td>
+        <td> The path for injecting faults can be specified as either a single file or a wildcard. If not provided, it will target all the files present inside the mount path </td>
         <td> For more information, go to <a href="#advanced-fault-tunables">file path</a>. </td>
       </tr>
       <tr>
@@ -103,7 +112,7 @@ Pod IO attribute override:
 
 ### Attributes
 
-Modifies the file attributes present inside the target application. Tune it by using the `ATTRIBUTES` environment variable. 
+Modify the properties of files located within the mounted volume of the pod. Tune it by using the `ATTRIBUTES` environment variable. 
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -173,7 +182,7 @@ spec:
 
 ### Advanced Fault Tunables
 
-- `FILE_PATH`: The path for injecting faults can be specified as either a single file or a wildcard. By default it targets all the paths
+- `FILE_PATH`: The path for injecting faults can be specified as either a single file or a wildcard. By default it targets all the files present inside the mount path.
 - `PERCENTAGE`: The likelihood of failure per operation, expressed as a percentage. Default is 100%.
 - `METHOD_TYPES`: This contains the file system call or methods. By default it targets all the methods.
 

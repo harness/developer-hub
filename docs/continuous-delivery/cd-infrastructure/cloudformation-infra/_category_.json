@@ -1,6 +1,6 @@
 {
     "label": "CloudFormation",
-    "position": "200",
+    "position": "2",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
@@ -9,7 +9,7 @@
         "title": "CloudFormation"
     },
     "customProps": {
-        "position": "300",
+        "position": "2",
         "helpdocs_category_id": "mlqlmg0tww"
     }
 }

@@ -1,5 +1,5 @@
 ---
-title: Create AutoStopping Rules for GCP
+title: GCP
 description: This topic describes how to create an AutoStopping Rule for GCP.
 # sidebar_position: 4
 helpdocs_topic_id: 4brkwfy8yt
@@ -7,7 +7,7 @@ helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+# Create AutoStopping Rules for GCP
 AutoStopping Rules make sure that your non-production resources run only when used, and never when idle. 
 
 This topic describes how to create AutoStopping Rules for GCP.
@@ -164,7 +164,7 @@ If you need to access the resources managed by this AutoStopping rule using TCP 
 
 1. Choose an AutoStopping Proxy load balancer from the **Specify AutoStopping Proxy** dropdown list to set up access.
 2. Toggle SSH or RDP to specify the listening ports. The port number is autopopulated.
-3. Specify all the TCP ports your application is listening. Ensure these ports are open.
+3. Specify the source port numbers and the target TCP ports your application is listening to. If the source port is not specified, a random port will be generated at the backend. This auto-generated port will continue to be used as long as the target port remains unchanged or unless the user explicitly modifies the source port.
 4. Click **Next**.
    
 ### Set up access for HTTP/HTTPS workload

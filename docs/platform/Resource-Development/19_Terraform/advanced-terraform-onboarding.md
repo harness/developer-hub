@@ -259,7 +259,7 @@ module "github" {
 }
 ```
 
-[Read more about GitHub connectors on our developer hub](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector/)
+[Read more about GitHub connectors on our developer hub](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
 
 ## [Delivery](https://github.com/harness-community/terraform-harness-delivery)
 

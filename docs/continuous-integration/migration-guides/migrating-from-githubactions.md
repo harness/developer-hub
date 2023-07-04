@@ -97,7 +97,7 @@ jobs:
 </Tabs>
 ```
 
-For more information about Harness terminology, features, and pipeline components, go to [Harness CI concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts) and [CI pipeline concepts](../ci-quickstarts/ci-pipeline-basics.md).
+For more information about Harness terminology, features, and pipeline components, go to [CI concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts) and [CI pipeline basics](../ci-quickstarts/ci-pipeline-basics.md).
 
 Both Harness CI and GitHub Actions workflows are written in YAML. Whereas GitHub Actions workflow configurations are always stored in the `.github/workflows` directory in your code repo, Harness provides you a choice of inline pipeline storage or [importing pipelines from Git](/docs/platform/git-experience/import-a-pipeline/). Harness also provides both visual and code-based pipeline editors.
 
@@ -129,7 +129,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
         
-      - name: login to dockerhub
+      - name: login to docker hub
         uses: docker/login-action@v2
         with: 
           username: {{secrets.DOCKERHUB_USERNAME}}
@@ -326,7 +326,7 @@ jobs:
 
 In Harness CI, each pipeline has a codebase specification that identifies the code repo (input) that the pipeline uses to build an artifact (output). [Codebase configuration](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) has two components:
 
-* The codebase _connector_, such as a [GitHub connector](/docs/platform/connectors/code-repositories/add-a-git-hub-connector/), that specifies the codebase URL and required credentials to access your code repos.
+* The codebase _connector_, such as a [GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference), that specifies the codebase URL and required credentials to access your code repos.
 * A series of settings describing how you want the pipeline to clone and build the repo.
 
 When you create a Harness CI pipeline, you specify a default codebase to use for all stages in the pipeline. By default, each stage automatically clones the designated code repo from your Git provider into the stage's build infrastructure when the pipeline runs.
@@ -383,7 +383,7 @@ For example, in the following YAML example, the `connectorRef` references a Dock
 To log in to Docker Hub in a GitHub Actions workflow, you use `docker/login-action` in a step. You then use other `docker` actions in other steps to pull images, push images, and so on.
 
 ```yaml
-  name: login to dockerhub
+  name: login to docker hub
     uses: docker/login-action@v2
     with:
       username: {{ secrets.DOCKERHUB_USERNAME }}
@@ -411,7 +411,7 @@ To interact with Docker registries in Harness, you use a [Docker connector](/doc
                   name: step1
                   identifier: step1
                   spec:
-                    connectorRef: my-dockerhub-connector
+                    connectorRef: my-docker-hub-connector
                     image: openjdk:17.0-jdk
                     shell: Bash
                     command: echo "this runs on openjdk"
@@ -574,7 +574,7 @@ In GitHub Actions, triggers are defined in the workflow based on Git events agai
 
 Harness CI supports webhook, artifact, manifest and schedule triggers. The two most commonly used triggers are webhook triggers based on Git events and scheduled triggers based on `cron` expressions. To learn more about creating triggers, go to:
 
-* [Trigger Pipelines using Git Event Payload Conditions](/docs/platform/triggers/trigger-pipelines-using-custom-payload-conditions/)
+* [Trigger Pipelines using Git Event Payload Conditions](/docs/platform/triggers/triggering-pipelines/)
 * [Triggers](https://developer.harness.io/docs/category/triggers)
 * [Built-in CI codebase variables reference](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference)
 
@@ -637,7 +637,7 @@ trigger:
 
 Review the following information before proceeding with migration:
 
-* [Harness CI Concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts)
+* [CI Concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts)
 * [Harness CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md)
 * [Caching in Harness CI](/docs/category/share-and-cache-ci-data)
 * [Speed up Harness CI pipelines using parallelism](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism)

@@ -28,7 +28,7 @@ The live state can be any microservice or application and its Kubernetes environ
 
 Here's a very simple diagram of the GitOps architecture:
 
-![](./static/harness-git-ops-basics-26.png)
+![Harness GitOps architecture](static/572d35be32e656cea58795c7aefde6d91f50270201ac7f1906d8875ef3c1408a.png)  
 
 The Harness GitOps Agent is a worker process installed in a Kubernetes cluster. The Agent can be installed in your target cluster or any cluster with connectivity to the target cluster.
 
@@ -64,21 +64,33 @@ Harness has multiple Git-based features and it's important to understand the dif
 
 ## Service
 
-A Harness GitOps Service is the same as any other Harness Service.
+A Harness GitOps service is the same as any other Harness service.
 
-A Service represents your microservices and other workloads logically. A Service is a logical entity to be deployed, monitored, or changed independently.
+A service represents your microservices and other workloads logically. A Service is a logical entity to be deployed, monitored, or changed independently.
 
-## Service Instance
+You can create or select services from an account, organization, or project level. 
 
-Service Instances represent the dynamic instantiation of a Service you sync via Harness GitOps.
+An account level service can only reference connectors for the manifests and artifacts within the account. These services are global and cannot have dependencies at a lower hierarchy level.
 
-For example, for a service representing a Docker image, Service Instances are the number of pods running with the Docker image.
+For more information, go to [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
-A single Service can have multiple Service Instances. For example, one for Dev, one for QA, and one for Prod.
+## Service instance
+
+Service instances represent the dynamic instantiation of a service you sync via Harness GitOps.
+
+For example, for a service representing a Docker image, service instances are the number of pods running with the Docker image.
+
+A single service can have multiple service instances. For example, one for Dev, one for QA, and one for Prod.
 
 ## Environments
 
-Harness Environments represent your live environment logically (QA, Prod, etc). In Harness GitOps, an Environment is the live state of the infrastructure.
+Harness environments represent your live environment logically (QA, Prod, etc). In Harness GitOps, an environment is the live state of the infrastructure.
+
+You can create or select environments from an account, organization, or project level. 
+
+An account level environment can only reference connectors within the account, and cannot have dependencies at a lower hierarchy level.
+
+For more information, go to [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 ## Application
 

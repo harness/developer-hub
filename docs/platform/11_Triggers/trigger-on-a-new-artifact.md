@@ -8,6 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
 :::note
 
@@ -33,16 +37,24 @@ An artifact source does not need to be defined in the service definition for the
 
 ### Important notes
 
-* If more than one artifact is collected during the polling interval (two minutes), only one deployment will be started and will use the last artifact collected.
+* If more than one artifact is collected during the polling interval (one minute), only one deployment will be started and will use the last artifact collected.
 * The trigger is executed based on **file names** and not metadata changes.
 * Do not trigger on the **latest** tag of an artifact, such as a Docker image. With latest, Harness only has metadata, such as the tag name, which has not changed, and so Harness does not know if anything has changed. The trigger will not be executed.
 * In Harness, you can select who is able to create and use triggers within Harness, but you must use your repository's RBAC to control who can add the artifacts or initiate the events that start the Harness trigger.
-  
+* Whenever you create a trigger for the first time, Harness recommends submitting a tag or pushing an artifact to verify its functionality. By doing this, the trigger will execute and the pipeline will run as expected when subsequent tags are pushed.
+* Whenever a trigger is created or updated, it takes about five to ten minutes for the polling job to start, and for the trigger to be in a working state. Harness recommends that you wait for five to ten minutes after a trigger is created or updated to push the artifact. 
+* The polling stops when you disable a trigger. Artifact polling restarts after reenabling the trigger. Harness recommends that you submit a tag or push an artifact and verify the flow as this is treated as a new polling job.
+
 Familiarize yourself with Harness CD pipelines, such as the one you create in the [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart).
 
 ### Visual summary
 
 This 5 minutes video walks you through building an app from source code and pushing it to Docker Hub using Harness CIE, and then having an **On New Artifact Trigger** execute a CD pipeline to deploy the new app release automatically.
+
+<!-- Video:
+https://www.youtube.com/embed/nIPjsANiKRk-->
+<docvideo src="https://www.youtube.com/embed/nIPjsANiKRk" />
+
 
 ### Artifact polling
 
@@ -63,6 +75,10 @@ If you want the pipeline to deploy the artifact version that initiated the trigg
 ![](./static/trigger-on-a-new-artifact-23.png)
 
 If you want the pipeline to deploy the last successful published artifact version, use the expression, `<+lastPublished.tag>`.
+
+:::info note
+The `lastPublished` tag returns the lexicographically last published tag for container image based artifact sources.
+:::
 
 ![last published artifact](./static/trigger-on-a-new-artifact-30.png)
 
@@ -86,10 +102,7 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 4. The **On New Artifact Trigger** options are listed under **Artifact**. Each of the **Artifact** options are described below.
 5. Select the artifact registry where your artifact is hosted. If you artifact is hosted on Docker Hub and you select GCR, you won't be able to set up your trigger.
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
+
 ```mdx-code-block
 <Tabs>
 <TabItem value="Docker Registry Artifacts" label="Docker Registry Artifacts">
@@ -212,6 +225,152 @@ For example, if the build is `todolist-v2.0`:
 If the regex expression does not result in a match, Harness ignores the value.
 
 Harness supports standard Java regex. For example, if regex is enabled and the intent is to match any branch, the wildcard should be `.*` instead of simply a wildcard `*`. If you wanted to match all of the files that end in `-DEV.tar` you would enter `.*-DEV\.tar`.
+
+#### Set metadata conditions
+
+On New Artifact Triggers support conditions based on artifact metadata expressions.
+
+You can define conditions based on metadata apart from the artifact build and JEXL conditions.
+
+To configure a condition based on artifact metadata, do the following:
+
+1. In the configuration of an artifact trigger, select **Conditions**.
+2. In **Metadata Conditions**, select **Add**.
+4. Enter an expression in **Attribute**.
+5. Select an operator and a value to match to the metadata attribute when the expression is resolved.
+
+When the trigger is executed, the metadata condition is evaluated and, if the condition matches, the pipeline is executed.
+
+Here are the artifact metadata expressions you can use:
+
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Docker registry" label="Docker registry" default>
+```
+
+You can use the following expressions:
+
+```bash
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.image>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.tag>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.SHAV2>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.SHA>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.url>
+<+pipeline.stages.DS.spec.artifacts.primary.dockerConfigJsonSecret>
+```
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="ECR" label="ECR">
+```
+
+You can use the following expressions:
+
+```bash
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.image>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.tag>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.SHAV2>
+<+pipeline.stages.DS.spec.artifacts.primary.metadata.SHA>
+<+pipeline.stages.DS.spec.artifacts.primary.dockerConfigJsonSecret>
+```
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="ACR" label="ACR">
+```
+
+You can use the following expressions:
+
+```bash
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.image>
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.registryHostname>
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.tag>
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.SHAV2>
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.SHA>
+<+pipeline.stages.s1.spec.artifacts.primary.metadata.url>
+```
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="GAR" label="GAR">
+```
+
+Here are the expressions for Google Artifact Registry (GAR).
+
+```bash
+<+pipeline.stages.firstS.spec.artifacts.primary.metadata.image>
+<+pipeline.stages.firstS.spec.artifacts.primary.metadata.registryHostname>
+<+pipeline.stages.firstS.spec.artifacts.primary.metadata.SHAV2>
+<+pipeline.stages.firstS.spec.artifacts.primary.metadata.SHA>
+```
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Artifactory" label="Artifactory">
+```
+
+You can use the following expressions:
+
+```bash
+<+pipeline.stages.tas_0.spec.artifacts.primary.metadata.fileName>
+<+pipeline.stages.tas_0.spec.artifacts.primary.metadata.url>
+```
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Jenkins" label="Jenkins">
+```
+
+You can use the following expressions:
+
+```bash
+<+pipeline.stages.SSH_Jenkins_ArtifactSource.spec.artifacts.primary.metadata.url>
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Nexus 2" label="Nexus 2">
+```
+
+You can use the following expressions:
+
+```bash
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.fileName>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.package>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.repositoryName>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.version>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.url>
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Nexus 3" label="Nexus 3">
+```
+
+You can use the following expressions:
+
+```bash
+<+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.extension>
+<+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.fileName>
+<+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.imagePath>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.repositoryName>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.version>
+<+pipeline.stages.SSH_Nexus2_NPM.spec.artifacts.primary.metadata.url>
+<+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.artifactId>
+<+pipeline.stages.SSH_Nexus3_Maven.spec.artifacts.primary.metadata.groupId>
+```
+
+```mdx-code-block
+  </TabItem>  
+</Tabs>
+```
+
 
 ### Select pipeline inputs
 

@@ -111,6 +111,8 @@ If you are new to ECS, review the AWS documentation on [ECS Task Definitions](ht
 
 In **ECS Run Task Request Definition**, you can customize how Amazon ECS places tasks using placement constraints and placement strategies just like using a Capacity provider strategy in the ECS console.
 
+All of the parameters supported by the [RunTask API](https://docs.aws.amazon.com/AmazonECS/latest/APIReference/API_RunTask.html) can be updated using the **ECS Run Task Request Definition**. 
+
 
 ## Skip Steady-State Check
 

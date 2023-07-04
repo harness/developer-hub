@@ -17,13 +17,13 @@ You can use Harness with Terraform in the following ways:
 
 You can do both methods in the same stage if you want.
 
-For a conceptual overview of Harness Terraform integration, see [Terraform Provisioning with Harness](terraform-provisioning-with-harness).
+For a conceptual overview of Harness Terraform integration, see [Terraform Provisioning with Harness](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-provisioning-with-harness.md).
 
 ## Running Terraform Cloud workspaces how-tos
 
 In addition to running Terraform configuration files locally on the Harness delegate, Harness supports running Terraform Cloud and Enterprise workspaces.
 
-For more information, go to  [Terraform Cloud deployments](terraform-cloud-deployments.md).
+For more information, go to  [Terraform Cloud deployments](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments).
 
 ## Running Terraform locally how-tos
 
@@ -31,10 +31,10 @@ You can use the Harness Terraform steps to provision any resources. You simply a
 
 For steps on how to run Terraform configuration files on Harness delegates installed in your environment, go to:
 
-* [Plan Terraform Provisioning with the Terraform Plan Step](run-a-terraform-plan-with-the-terraform-plan-step)
-* [Provision with the Terraform Apply Step](run-a-terraform-plan-with-the-terraform-apply-step)
-* [Remove Provisioned Infra with the Terraform Destroy Step](remove-provisioned-infra-with-terraform-destroy)
-* [Rollback Provisioned Infra with the Terraform Rollback Step](rollback-provisioned-infra-with-the-terraform-rollback-step)
+* [Plan Terraform Provisioning with the Terraform Plan Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
+* [Provision with the Terraform Apply Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
+* [Remove Provisioned Infra with the Terraform Destroy Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/remove-provisioned-infra-with-terraform-destroy)
+* [Rollback Provisioned Infra with the Terraform Rollback Step](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step)
 
 
 ### Important: Install Terraform on delegates
@@ -43,7 +43,7 @@ Terraform must be installed on the delegate to use **local** Terraform configura
 
 You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+See [Build custom delegate images with third-party tools](https://developer.harness.io/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 The Harness delegate uses RedHat Universal Base Image (redhat/ubi8).
 
@@ -81,7 +81,7 @@ You will need to change the following scripts based on the operating system and 
 
 The recommended method for installing third party tools on your delegate is to create your own delegate image, push it to a container registry, and then to modify your delegate deployments to use your new custom image.
 
-For more information, go to [Build custom delegate images with third-party tools](https://developer.harness.io/docs/platform/delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools/).
+For more information, go to [Build custom delegate images with third-party tools](https://developer.harness.io/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools/).
 
 ```dockerfile
 ARG DELEGATE_TAG=23.03.78705

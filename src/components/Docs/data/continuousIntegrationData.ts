@@ -28,7 +28,7 @@ export const featuredTutorials: CardItem[] = [
       newDoc: true,
       type: [docType.Documentation],
       time: "9min",
-      link: "/tutorials/build-code/build/tfc-notification",
+      link: "/tutorials/build-code/tfc-notification",
     },
   ];
   */
@@ -181,7 +181,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.ci,
           description:
             "",
-          link: "/docs/continuous-integration/troubleshoot/troubleshooting-ci",
+          link: "/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci",
         },
         {
           title: "CI FAQs",

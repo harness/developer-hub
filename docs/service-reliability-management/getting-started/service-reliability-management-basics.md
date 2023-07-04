@@ -75,6 +75,10 @@ Harness supported Health Sources:
 * New Relic
 * Datadog
 * Dynatrace
+* Splunk Observability
+* SumoLogic
+* AWS CloudWatch
+* Loki
 
 Harness offers support for all major APM vendors, but there are cases where a customized APM is needed. The [Custom Health Source](/docs/continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics.md) lets you customize APMs of your choice.
 

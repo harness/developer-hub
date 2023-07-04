@@ -14,12 +14,12 @@ Adding a stage to your Pipeline is the same across all Harness modules (CD, CI, 
 
 The module you select determines the stage settings.
 
-### Before you begin
+## Before you begin
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
 
-### Step 1: Create a Pipeline
+## Step 1: Create a Pipeline
 
 This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
 
@@ -37,7 +37,7 @@ Enter **Name**, **Description**, **Tags**, **and Timeout** for your Pipeline.
 
 Click **Start**. Now you're ready to add a stage.
 
-### Step 2: Add a Stage
+## Step 2: Add a Stage
 
 Click **Add Stage**. The stage options appear.
 
@@ -53,7 +53,7 @@ Changing the stage name doesn't change the stage identifier (Id). The stage iden
 
 For CD stages, you can select a deployment type. A Stage can deploy Services, and other workloads. Select the type of deployment this Stage performs.
 
-### Option: Stage Variables
+## Option: Stage Variables
 
 Once you've created a stage, its settings are in the **Overview** tab. For example, here's the **Overview** tab for a Deploy stage:
 
@@ -80,14 +80,14 @@ You reference stage variables **within their stage** using the expression `<+sta
 
 You reference stage variables **outside their stage** using the expression `<+pipeline.stages.[stage Id].variables.[variable name]>`.
 
-### Option: Advanced Settings
+## Option: Advanced Settings
 
 In **Advanced**, you can use the following options:
 
 * [Stage Conditional Execution Settings](w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
-### See also
+## See also
 
 * [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md)
 

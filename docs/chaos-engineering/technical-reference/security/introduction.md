@@ -21,7 +21,7 @@ The remainder of this article provides a quick summary of the internal security 
 
 ### Connectivity from target clusters and authentication of requests
 
-You must connect your Kubernetes infrastructure (clusters or namespaces) to HCE to discover the microservices and execute chaos experiments on them. The connection between your Kubernetes infrastructure and HCE is enabled by a set of deployments on the Kubernetes cluster. The deployments comprise a relay (subscriber) that communicates with the HCE control plane and custom controllers, which carry out the chaos experiment business logic. 
+You must connect your Kubernetes infrastructure (clusters or namespaces) to CE to discover the microservices and execute chaos experiments on them. The connection between your Kubernetes infrastructure and CE is enabled by a set of deployments on the Kubernetes cluster. The deployments comprise a relay (subscriber) that communicates with the CE control plane and custom controllers, which carry out the chaos experiment business logic. 
 
 This group of deployments (known as the execution plane) is referred to as the [chaos infrastructure](../../configure-chaos-experiments/chaos-infrastructure/connect-chaos-infrastructures).
 
@@ -53,7 +53,7 @@ The permissions listed an be tuned for further minimization based on environment
 | nodes                                                                                 | patch, get, list, update                                          | <ul><li>Filter or isolate chaos targets to specific nodes.</li> <li>Subject nodes to chaos (only in cluster-scope).</li></ul> |
 | network policies                                                                      | create, delete, list, get                                         | Cause chaos through network partitions.                                                                                       |
 | services                                                                              | create, update, get, list, watch, delete, deletecollection        | <ul><li>Generate chaos metrics.</li> <li>Watch or probe application service metrics for health.</li></ul>                     |
-| custom resource definitions, chaosengines, finalizers, chaosexperiments, chaosresults | get, create, update, patch, delete, list, watch, deletecollection | Lifecycle management of chaos custom resources in HCE.                                                                        |
+| custom resource definitions, chaosengines, finalizers, chaosexperiments, chaosresults | get, create, update, patch, delete, list, watch, deletecollection | Lifecycle management of chaos custom resources in CE.                                                                        |
 | leases (CRDs)                                                                         | get, create, list, update, delete                                 | Enable high availability of chaos custom controllers via leader elections.                                                    |
 
 ### User authentication
@@ -78,7 +78,7 @@ Harness Chaos Engineering leverages secrets for administrative or management pur
 
 ### Secrets to access chaos artifact (Git) repositories  
 
-HCE allows you to add one or more [chaos hubs](../../get-started/terminologies/) to enable users to select stored chaos artifacts such as fault and experiment templates. Setting up a chaos hub involves connecting to the respective canonical source—the Git repository—by using Personal Access Tokens (PAT) or SSH keys. The module also supports committing artifacts into the repository, so you must ensure that the keys have the right scope and permissions in the Git organization.
+CE allows you to add one or more [chaos hubs](../../get-started/terminologies/) to enable users to select stored chaos artifacts such as fault and experiment templates. Setting up a chaos hub involves connecting to the respective canonical source—the Git repository—by using Personal Access Tokens (PAT) or SSH keys. The module also supports committing artifacts into the repository, so you must ensure that the keys have the right scope and permissions in the Git organization.
 
 The chaos module leverages the native Git Connectors provided by the Harness platform to achieve this connectivity, which in turn leverages the Harness Secret Manager to store the PAT or SSH keys 
 
@@ -89,9 +89,9 @@ The chaos module leverages the native Git Connectors provided by the Harness pla
 
 ### Secrets to access and inject chaos on public and on-prem cloud resources
 
-HCE supports fault injection into non-Kubernetes resources such as on-premises VMs, bare-metal machines, cloud infrastructure resources (compute, storage, and network), and cloud-managed services. It leverages provider-specific APIs to inject chaos.
+CE supports fault injection into non-Kubernetes resources such as on-premises VMs, bare-metal machines, cloud infrastructure resources (compute, storage, and network), and cloud-managed services. It leverages provider-specific APIs to inject chaos.
 
-Additionally, HCE supports custom validation tasks such as retrieving metrics from an APM, making API calls for health status, and running background processes for data integrity. 
+Additionally, CE supports custom validation tasks such as retrieving metrics from an APM, making API calls for health status, and running background processes for data integrity. 
 
 Both of the aforementioned actions require specific access to the infrastructure or service in question. This information is expected to be fed as Kubernetes secrets to the transient chaos pod resources that are launched during experiment execution. To learn more about how experiments are executed, go to [chaos architecture](../architecture).
 
@@ -105,7 +105,7 @@ The experiment artifact that is stored in a chaos hub or supplied when you creat
 
 You can fine-tune permissions to suit specific infrastructures and experiments if you want to reduce the blast radius and impact from a security perspective. This applies to both Kubernetes-based and non-Kubernetes chaos. 
 
-In the case of the Kubernetes chaos, a lower blast radius is achieved through [service accounts](namespace-considerations) mapped to custom roles instead of the default service accounts mentioned in the [Kubernetes roles for chaos infrastructure](#kubernetes-roles-for-chaos-infrastructure). For non-Kubernetes chaos, a lower blast radius is achieved through cloud-specific role definitions (for example, IAM) mapped to the user account.  
+In the case of the Kubernetes chaos, a lower blast radius is achieved through [service accounts](/docs/chaos-engineering/technical-reference/security/namespace-considerations) mapped to custom roles instead of the default service accounts mentioned in the [Kubernetes roles for chaos infrastructure](#kubernetes-roles-for-chaos-infrastructure). For non-Kubernetes chaos, a lower blast radius is achieved through cloud-specific role definitions (for example, IAM) mapped to the user account.  
 
 Every fault in the Enterprise chaos hub publishes the permissions that users need to execute the fault. Users can tune their roles. Common permission templates that work as subsets or supersets for a specific category of experiments are also available. For example, [AWS resource faults](../chaos-faults/aws/security-configurations/policy-for-all-aws-faults.md).
 

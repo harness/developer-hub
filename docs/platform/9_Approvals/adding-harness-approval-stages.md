@@ -23,14 +23,18 @@ Other approval methods are:
 
 * [Add a Stage](../8_Pipelines/add-a-stage.md)
 
-### Visual Summary
+### Visual summary
 
-Here's a Manual Approval Stage step during the execution of a Pipeline:
+Here's a Manual Approval Stage step during the execution of a pipeline:
 
 ![](./static/adding-harness-approval-stages-15.png)
-An approver can approve/reject the stage, stopping the Pipeline. The approver can also add comments and define variables for use by subsequent approvers and steps.
+An approver can approve/reject the stage, stopping the pipeline. The approver can also add comments and define variables for use by subsequent approvers and steps.
 
 Here's a quick video that walks you through setting up and running the step:
+
+<!-- Video:
+https://www.youtube.com/watch?v=V-d6kaMBf-w-->
+<docvideo src="https://www.youtube.com/watch?v=V-d6kaMBf-w" />
 
 Here's what a Manual Approval Stage and step looks like in YAML:
 
@@ -64,7 +68,7 @@ YAML Example
                                   defaultValue: myvalue  
       failureStrategies: []
 ```
-### Step 1: Add Approval Stage
+### Add the Approval stage
 
 In a CD Pipeline, click **Add Stage**.
 
@@ -74,7 +78,7 @@ Enter a name and then click **Harness Approval**. The **Harness Approval** stage
 
 Click the **Approval** step.
 
-### Step 2: Set Timeout
+### Set timeout
 
 Set a default for the step timeout. Leave enough time for the Users in **Approvers** to see and respond to the waiting step.
 
@@ -83,26 +87,38 @@ The default timeout for an Approval step is **1d** (24 hours). You can use `**w
 The maximum timeout duration is 24 days. The timeout countdown appears when the step in executed.
 
 ![](./static/adding-harness-approval-stages-16.png)
-### Option: Add Message
+
+### Add message
 
 In **Approval Message**, add the message for the Users in **Approvers**.
 
-### Option: Include stage execution details in approval
+### Include stage execution details in approval
 
 Enable this option to provide approvers with the execution history for this Pipeline. This can help approvers make their decision.
 
-### Step 3: Select Approvers
+### Auto-reject previous deployments in approval
+
+Enable this option to reject old executions waiting for approval when a latest step is approved. 
+
+:::info
+
+If you have two approval steps in a step group of a stage with the same step identifier, Harness won't be able to differentiate between the approval steps, and rejects previous deployments with the same identifier.
+
+:::
+
+### Select approvers
 
 In **Approvers**, in **User Groups**, select the Harness User Groups across Project/Org/Account scope, that will approve the step.
 
 ![](./static/adding-harness-approval-stages-17.png)
+
 In **Number of approvers**, enter how many of the Users in the User Groups must approve the step.
 
-### Option: Prevent Approval by Pipeline Executor
+### Prevent approval by pipeline executor
 
 If you don't want the User that initiated the Pipeline execution to approve this step, select the **Disallow the executor from approving the pipeline** option.
 
-### Option: Approver Inputs
+### Approver inputs
 
 You can enter variables and when the approver views the step they can provide new values for the variables.
 
@@ -124,7 +140,7 @@ For example, in a subsequent step's **Conditional Execution** settings, you coul
 
 `<+pipeline.stages.Shell_Script.spec.execution.steps.Harness_Approval_Step.output.approverInputs.foo> == 1`
 
-### Option: User Groups as Expressions
+### User groups as expressions
 
 In **User Groups**, select **Expression** as the type of value.
 
@@ -156,7 +172,7 @@ You can select one of the following types of expression for user groups:
 
    ![](./static/adding-harness-approval-stages-19.png)
 
-### Option: Advanced Settings
+### Advanced settings
 
 See:
 

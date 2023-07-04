@@ -22,7 +22,7 @@ This topic assumes that you are familiar with the following:
 * How to create Input Sets and Triggers using Git Experience. See [Manage Input Sets and Triggers in Git Experience](manage-input-sets-in-simplified-git-experience.md).
 * A basic understanding of how Pipelines, Input Sets, and Triggers work together:
 	+ [Run Pipelines using Input Sets and Overlays](../8_Pipelines/run-pipelines-using-input-sets-and-overlays.md)
-	+ [Trigger Pipelines using Git Event Payloads](../11_Triggers/trigger-pipelines-using-custom-payload-conditions.md)
+	+ [Trigger Pipelines using Git Events](/docs/platform/triggers/triggering-pipelines/)
 
 This topic also assumes you have a Git repo with the codebase you want to build and at least one branch.
 
@@ -89,7 +89,7 @@ Now that you have a Pipeline and Input Set in your default branch, you create a 
 * In the **Configuration** tab > **Repository Name** field, make sure you specify the codebase repo and not the Harness repo.
 * In the **Pipeline Input Repo** > **Pipeline Input**, select the Input Set you just created.
 * In the **Pipeline Input Repo** > **Pipeline Reference Branch** field, specify the default branch in the Harness repo where you initially saved the Pipeline. When the Trigger receives a payload, it looks in the repo where you store your Harness definitions. Then it uses the Pipeline in the branch specified by this field.The default setting for the Pipeline Reference Branch field is `<+trigger.branch>`. This is a reasonable default the Trigger is webhook-based AND your code and Harness configs are in the same repo. The second condition does not apply in this case. Therefore, you must set this field manually.
-* For information on other fields, [Trigger Pipelines using Git Event Payload Conditions](../11_Triggers/trigger-pipelines-using-custom-payload-conditions.md).
+* For information on other fields, go to [Trigger Pipelines using Git Events](/docs/platform/triggers/triggering-pipelines/).
 
 In the Pipeline Input tab, select the Input Set you just created and click **Create Trigger**.
 
@@ -137,3 +137,12 @@ Git Experience enables you to create branches in your Harness repo so you can cr
    
    ![](./static/manage-a-harness-pipeline-repo-using-git-experience-22.png)
 
+## Set default Git connector for Git Experience
+
+You can set the default Git connector for Git Experience pipelines and input sets. The default Git connector will be selected whenever you create or import operations with Git Experience entities. 
+
+This default connector can be changed at any time and another connector can be used when needed.
+
+You can select the default connector in your project, org, or account **Default Settings**:
+
+<docimage path={require('./static/78f49fd6d5d64ecd1b877cf3f76767ae04cce53bffccbb67b20447c64ccca5cf.png')} width="60%" height="60%" title="Click to view full size image" />  

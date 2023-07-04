@@ -53,6 +53,10 @@ Here's what a manual approval step looks like in YAML:
               - name: foo  
                 defaultValue: bar
 ```
+## Important notes
+
+Approval steps should not be added to run in parallel with other steps, including other Approval steps. The Harness Pipeline Studio will not allow you to add Approval steps in parallel with other steps, but the pipeline YAML editor does not prevent this setup. During execution, a successful parallel Approval step will not fail the deployment, but it is not a valid configuration because Approvals are checks on the release process and should always be used between steps.
+
 ## Add approval step
 
 1. In a CD stage, in **Execution**, select **Add Step**.
@@ -84,17 +88,51 @@ The maximum timeout duration is 24 days.The timeout countdown appears when the s
 1. In **Approval Message**, add the message for the users in **Approvers**.
 
 2. Enable the **Include Pipeline execution history in approval details** option to show approvers the pipeline's execution history. This can help an approver compare the current execution info with historical data.
+3. Enable the **Auto-Reject previous deployments paused in this step on approval** option to reject old executions waiting for approval when a latest step is approved. 
+   
+   :::info Limitations:
+
+   * If you have two approval steps in a step group of a stage with the same step identifier, Harness won't be able to differentiate between the approval steps, and rejects previous deployments with the same identifier.
+   * If you change the services in a CD stage, Harness won't reject the previous pipeline waiting for approval because you added/updated the service in the pipeline.
+
+   :::
 
 ## Select approvers
 
 1. In **User Groups**, select the Harness user groups that will approve the step. For more information, go to [add and manage user groups](/docs/platform/User-Management/add-user-groups).
 2. In **Number of approvers that are required at this step**, enter how many of the users in the user groups must approve the step.
+   
+   ![](./static/adding-harness-approval-stages.png)
 
 ## Prevent approval by pipeline executor
 
 If you don't want the User that initiated the pipeline execution to approve this step, select the **Disallow the executor from approving the pipeline** option.
 
 Even if the User is in the user group selected in **User Group**, they won't be able to approve this step.
+
+
+## Automatic Approvals
+
+:::note
+
+Currently, the automatic approvals feature is behind the feature flag `CDS_AUTO_APPROVAL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You can set the Approval step to automatically approve at a specific date and time.
+
+1. In **Schedule Auto Approval**, select **Auto Approve**.
+2. In **Timezone**, select the timezone to use for the schedule.
+3. In **Time**, select the date and time when the automatic approval should occur.
+4. In **Message**, enter the message that the users in the **User Groups** setting will see when the automatic approval occurs.
+
+
+:::note
+
+- The Auto approve schedule should be greater than 15 minutes past the current time.
+- In addition to automatic approvals, you can also set a step-level failure strategy of **Mark as Success**. If the step exceeds its **Timeout** setting or fails for a different reason, **Mark as Success** will automatically approve the step. This is not a replacement for the **Auto Approve** option.
+
+:::
 
 ## Approver inputs
 
@@ -118,13 +156,16 @@ For example, in a subsequent step's **Conditional Execution** settings, you coul
 
 `<+pipeline.stages.Shell_Script.spec.execution.steps.Harness_Approval_Step.output.approverInputs.foo> == 1`
 
+
 ## Advanced settings
 
 In **Advanced**, you can use the following options:
 
-* [Step skip condition settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings)
-* [Step failure strategy settings](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings)
-* [Select delegates with selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors)
+* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
 ## See also
 

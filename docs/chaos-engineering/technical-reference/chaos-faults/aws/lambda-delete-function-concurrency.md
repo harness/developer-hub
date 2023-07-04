@@ -2,51 +2,41 @@
 id: lambda-delete-function-concurrency
 title: Lambda delete function concurrency
 ---
-Lambda delete function concurrency is an AWS fault that deletes the Lambda function's reserved concurrency, thereby ensuring that the function has adequate unreserved concurrency to run.
-- Examines the performance of the running Lambda application, if the Lambda function lacks sufficient concurrency.
+## Introduction
 
+Lambda delete function concurrency is an AWS fault that deletes the Lambda function's reserved concurrency, thereby ensuring that the function has adequate unreserved concurrency to run.
 
 ![Lambda Delete Function Concurrency](./static/images/lambda-delete-function-concurrency.png)
 
 
-## Usage
+## Use cases
+Lambda delete function concurrency examines the performance of the running Lambda application, if the Lambda function lacks sufficient concurrency.
 
-<details>
-<summary>View fault usage</summary>
-<div>
-When there is no unreserved concurrency left to run the Lambda function, this chaos fault can be used to check how your application behaves.
-</div>
-</details>
+:::info note
+- Kubernetes version 1.17 or later is required to execute this fault.
+- Reserved concurrency must be set on the target Lambda function.
+- Lambda function must be up and running.
+- Kubernetes secret must have the AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXX
+  ```
+- Harness recommends using the same secret name, that is, `cloud-secret`. Otherwise, you must update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+- Go to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Go to [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::
 
-## Prerequisites
-
-- Kubernetes >= 1.17
-- Reserved concurrency set on the target Lambda function.
-- Kubernetes secret that has AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXX
-```
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for this fault</summary>
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -66,22 +56,13 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
-
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-## Default validations
-
-The Lambda function should be up and running.
 
 ## Fault tunables
 
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+  <h3>Mandatory tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -93,7 +74,7 @@ The Lambda function should be up and running.
       <tr>
         <td> FUNCTION_VERSION </td>
         <td> Specifies the version of the function. </td>
-        <td> Defaults to <code>$LATEST</code>. </td>
+        <td> Default: <code>$LATEST</code>. </td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -101,33 +82,26 @@ The Lambda function should be up and running.
         <td> For example, <code>us-east-2</code>. </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> Duration to insert chaos (in seconds).</td>
-        <td> Defaults to 30s. </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds).</td>
+        <td> Default: 30 s </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> Time interval between two successive deletions of reserved concurrency (in seconds).</td>
-        <td> Defaults to 30s. </td>
+        <td> Default: 30 s </td>
       </tr>
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injecting chaos (in seconds). </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. </td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common and AWS-specific tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.

@@ -21,7 +21,7 @@ Go to [Harness REST API quickstart](/docs/platform/Resource-Development/APIs/api
 ## Before you begin
 
 * [Kubernetes CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
-* [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure): You can run an HTTP step in a CD stage without specifying specs or artifacts, but you do need to set up the infrastructure definition.
+* [Define your Kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure): You can run an HTTP step in a CD stage without specifying specs or artifacts, but you do need to set up the infrastructure definition.
 
 ## Add the HTTP step
 
@@ -63,6 +63,17 @@ You can use [Harness variables](/docs/platform/Variables-and-Expressions/harness
 
 Before handing the execution of the HTTP step to a Harness Delegate, Harness performs a capability check on the URL to ensure that a non-400 response code is returned.
 
+### Character encoding
+
+:::note
+
+Currently, character encoding is behind the feature flag `CDS_ENCODE_HTTP_STEP_URL`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+By default, Harness validates the URL you enter to ensure it is not an invalid URL (or a URL with invalid characters) before it sends the request to the URL.
+
+Harness can allow URLs with invalid characters such as a blank space, `^`, `{`, `}` and URL encode them before sending the request. 
 
 <!-- ### Using secrets in the HTTP step URL
 

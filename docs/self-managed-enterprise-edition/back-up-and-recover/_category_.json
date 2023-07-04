@@ -1,6 +1,6 @@
 {
     "label":"Back up and restore",
-    "position": 60,
+    "position": 35,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
@@ -9,5 +9,6 @@
        "title":"Back up and restore"
     },
     "customProps":{
+       "helpdocs_category_id":""
     }
  }

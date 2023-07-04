@@ -109,5 +109,5 @@ Harness uses this information for sales, support, product updates, security upda
 
 The use of this information is governed by our [Privacy Policy](https://harness.io/privacy).
 
-If you would like us to stop processing your data, or if you have any other questions or requests concerning your data, please contact the [Harness Privacy Team](mailto:privacy@harness.io). For more information on how we process your data, see our [Privacy Policy](https://harness.io/privacy).
+If you would like us to stop processing your data, or if you have any other questions or requests concerning your data, contact the [Harness Privacy Team](mailto:privacy@harness.io). For more information on how we process your data, see our [Privacy Policy](https://harness.io/privacy).
 

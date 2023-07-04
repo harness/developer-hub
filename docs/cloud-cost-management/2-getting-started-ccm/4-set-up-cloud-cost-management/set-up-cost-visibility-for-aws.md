@@ -7,44 +7,336 @@ helpdocs_category_id: 7vy86n7cws
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+# Set up CCM for AWS
+Harness Cloud Cost Management (CCM) offers comprehensive solutions to manage and optimize the cloud costs of your Amazon Web Services (AWS) infrastructure. CCM provides visibility, governance, and optimization of AWS services such as EC2, S3, RDS, Lambda, and others. CCM provides recommendations to effectively right-size your cloud resources to match the workload demands and optimizes the auto-scaling groups (ASGs), and EKS clusters using intelligent cloud AutoStopping rules.
 
-Harness Cloud Cost Management (CCM) monitors and provides visibility into the cloud costs of your Amazon Web Services (AWS) across your cloud infrastructure and AWS services, such as EC2, S3, RDS, Lambda, and so on. CCM also allows you to optimize your instances, auto-scaling groups (ASGs), and EKS clusters using intelligent cloud AutoStopping rules.
+> **☆ NOTE —** After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.
 
-You can set up CCM for your AWS resources in a simple two-step process:
-
-1. Create a Cost and Usage Report (CUR) — Harness CCM uses a secure, cross-account role with a restricted policy to access the cost and usage reports and resources for cost analysis.
-2. Create a Cloudformation stack to provision IAM Roles and corresponding policies to grant access for the required features.
-
-> **☆ NOTE —** After enabling CCM, it takes about 24 hours for the data to be available for viewing and analysis.### AWS Connector requirements
+## AWS Connector requirements
 
 * The same connector cannot be used in NextGen and FirstGen. 
 * For CCM, AWS connectors are available only at the Account level in Harness.
-* You can create multiple connectors per AWS account. 
-* Review the AWS connector requirements for different CCM features:
-	+ **Cost Visibility**: You can create an AWS connector for the master or linked account. CCM requires one connector per AWS account (master or linked) for cost visibility.
-	+ **AWS ECS and Resource Inventory Management**: You need to create an AWS connector for each linked account. For inventory management, CCM requires a connector for all the linked accounts.
-	+ **AWS Resource Optimization Using AutoStopping Rules**: You need to create an AWS connector for each linked account. For resource optimization using AutoStopping Rules, CCM requires a connector for all the linked accounts.
+* If you have multiple AWS accounts, you may need to create multiple AWS connectors depending on desired functionality:
+	+ **Cost Visibility**: You may need to create one or multiple AWS connectors depending on the availability of consolidated billing. Go to **Cost and Usage Reports (CUR)** for more information. 
+	+ **Resource Inventory Management**: You need to create an AWS connector for each account.
+	+ **Optimization by AutoStopping**: You need to create an AWS connector for each account.
 
-## Cost and Usage Reports (CUR) and CCM requirements
+## Cost and Usage Reports (CUR)
 
-* If you have a [consolidated billing process](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-procedure.html) enabled, then CCM needs read-only access to the cost and usage reports (CUR) stored in the S3 bucket in the master or payer account. This gives access to the cost data for all the accounts (linked/member) in the organization.
-* If you don't have consolidated billing enabled at the organization level then you can create the CUR at a linked account level.
-* If you have provided CUR access to the master account then you do not need to provide billing details for each linked account. CCM requires one connector per AWS account (master or linked).  
-  It is recommended to create a CUR at the master account to avoid the CUR creation step for each linked account.
-* If you do not have access to the master account, you can create an AWS connector in the linked account for which you have the required access.
-* If you have created a billing report for your [AWS account ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html#FindingYourAWSId) once, then you can use the same CUR again for the AWS connector. You do not need to create CUR again for the same account.
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+```mdx-code-block
+<Tabs queryString="tab-number">
+<TabItem value="1" label="Multiple Accounts with Consolidated Billing">
+```
+* If you have [consolidated billing process](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-procedure.html) enabled, then you need to create only a single CUR for the management account. This provides cost data for all member accounts in the organization.
+
+* For the Cost Visibility feature alone, you will only need a single AWS connector configured with the management account CUR.
+
+* In order to take advantage of other features such as Inventory Management and AutoStopping, you need to create a connector for each member account:
+  * If you are using the UI to create the additional connectors, configure all connectors with the same management account CUR.
+  * If you are using the API to create the additional connectors, you can omit billing information altogether.
+
+```mdx-code-block
+</TabItem>
+
+<TabItem value="2" label="Multiple Accounts">
+```
+* If you do not have [consolidated billing process](https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/useconsolidatedbilling-procedure.html) enabled, then you need to create a CUR for each linked account.
+
+* Create an AWS connector for each AWS account, configured with the CUR for that account.
+
+```mdx-code-block
+</TabItem>
+<TabItem value="3" label="Single Account">
+```
+* Create a single CUR for your AWS account.
+
+* Create a single AWS connector configured with the CUR for your account.
+
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+
+## Connect CCM to your AWS account
+
+To enable CCM for your AWS services (such as EC2, S3, RDS, Lambda, and so on), you simply need to connect Harness to your AWS accounts.
+
+Perform the following steps to connect CCM to the AWS account.
+
+1. Create a new AWS connector using one of the two options below:
+
+```mdx-code-block
+<Tabs queryString="tab-number">
+<TabItem value="4" label="From Account Settings">
+```
+1. Go to **Account Resources** > **Connectors**.
+2. Select **+ New Connector**.
+3. Under **Cloud Costs**, select **AWS**.
+```mdx-code-block
+</TabItem>
+<TabItem value="5" label="From Cloud Costs">
+```
+1. Go to **Setup** > **Cloud Integration**.  
+2. Select **New Cluster/Cloud account**.
+3. Select **AWS**.
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+2. Perform the following tasks in the **AWS Connector** wizard.
+
+### Overview
+
+1. Enter the following details and select **Continue**.
+
+| **Field** | **Description** |
+| --- | --- |
+| **Connector Name** | Enter any name for the connector. This name will appear throughout the product to identify this AWS account. |
+| **Specify the AWS account ID** | The Account ID of the AWS account to connect to. To find your AWS account ID, see [Finding your AWS account ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html#FindingYourAWSId). |
+| **Is this an AWS GovCloud account?** | Select **Yes** if connecting to a GovCloud account. |
+
+
+### Cost and Usage Report
+
+Launch the AWS console and perform the following steps:
+
+
+1. Log into your AWS account if not already logged in.
+2. Select **Create Report**.   
+4. In the **Specify report details** step, enter the following values, and then select **Next**.
+
+| **Field** | **Description** |
+| --- | --- |
+| **Report Name** | Enter a name for the report. Make sure to copy this name, as you will need it to continue configuring the Harness connector in the steps below. |
+| **Include resource IDs** | Make sure this option is selected. |
+| **Split cost allocation data** | Make sure this option is unchecked. |
+| **Refresh automatically** | Make sure this option is selected. |
+
+5. In the **Set delivery options** step, enter the following values, and then select **Next**.
+
+| **Field** | **Description** |
+| --- | --- |
+| **Configure S3 Bucket** | Select an existing bucket or create a new one. Make sure to copy this name, as you will need it to continue configuring the Harness connector in the steps below. |
+| **S3 path prefix - required** | Enter any path prefix. Harness will automatically scan and find this prefix. |
+| **Report data time granularity** | Select **Hourly**. |
+| **Report versioning** | Select **Overwrite existing report**. |
+| **Amazon Athena** | Make sure this option is unchecked. |
+| **Amazon Redshift** | Make sure this option is unchecked. |
+| **Amazon QuickSight** | Make sure this option is unchecked. |
+| **Compression type** | Select **GZIP**. |
+
+6. In the **Review and create** step, select **Create Report**.
+
+
+7. In the Harness connector dialog, enter the following values, and then select **Continue**.
+
+| **Field** | **Description** |
+| --- | --- |
+| **Cost and Usage Report Name** | Enter the report name you copied earlier. |
+| **Cost and Usage S3 Bucket Name** | Enter the bucket name you specified earlier. |
+
+
+### Choose Requirements
+
+Select your desired features, and then select **Continue**. 
+
+Details about the features are listed below. Note that the permissions required as part of the AWS cross-account role will be based on your selections. Those permissions are listed out in the **Reference - AWS Access Permission** section below.
+
+| **Features**  | **Capabilities** | 
+| --- | --- | 
+| **Cost Visibility** (Required)| This feature is available by default and requires access to the CUR report. Provides the following capabilities:<ul><li>Insights into AWS costs by services, accounts, etc. </li><li>Root cost analysis using cost perspectives</li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul> This feature will give you cost insights that are derived from the CUR. For deep Kubernetes visibility and rightsizing recommendations based on the historical utilization and usage metrics, set up Kubernetes connectors. See [Set Up Cloud Cost Management for Kubernetes](set-up-cost-visibility-for-kubernetes.md). |
+| **Resource Inventory Management** (Optional)| This feature provides visibility into your EC2, EBS volumes, and ECS costs. The insights provided by inventory management can be consumed by Finance teams to understand resource utilization across the board. <ul><li>Breakdown by ECS cluster cost, Service, Task, and Launch Type (EC2, Fargate) </li><li>Insight into EC2 instances and their utilization</li><li>Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards. For more information, see View AWS EC2 Inventory Cost Dashboard, Orphaned EBS Volumes and Snapshots Dashboard, and View AWS EC2 Instance Metrics Dashboard.</li></ul> |
+| **Optimization by AutoStopping** (Optional)| This feature allows you to enable Intelligent Cloud AutoStopping for your AWS instances and auto-scaling groups. For more information, see [Create AutoStopping Rules for AWS](../../4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/autostopping-dashboard.md). <ul><li>Orchestrate VMs and ASGs based on idleness</li><li>Run your workloads on fully orchestrated spot instances</li><li>Granular savings visibility</li></ul> |
+| **Cloud Governance** (Optional)| This feature allows you to optimize your cloud spend and avoid unnecessary costs by rightsizing resources and decommissioning unused instances. For more information, see [Asset governance](../../5-use-ccm-cost-governance/asset-governance/1-asset-governance.md). <ul><li>Asset Management (EC2, EBS, RDS, S3)</li><li>Automated Actions</li></ul> |
+
+
+### Create Cross Account Role
+
+Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy based on the features selected above.
+
+1. In **Create Cross Account Role**, select **Launch Template on AWS console**.
+
+Perform the following steps in the AWS Console.
+
+2. In **Quick create stack**, in **Capabilities**, select the acknowledgment, and then select **Create stack**.
+  > **☆ NOTE** - The values on this page are based on your previous selections. Do not modify any values before creating the stack.  
+    
+3. In the stack's page, go to the **Outputs** tab  and copy the **Value** of **CrossAccountRoleArn Key**.
+   
+     ![](./static/set-up-cost-visibility-for-aws-36.png)
+
+
+4. In the Harness connector dialog, enter the following values, and then select **Save and Continue**.
+
+| **Field** | **Description** |
+| --- | --- |
+| **Cross Account Role ARN** | Enter the value that you copied in step 3. |
+| **External ID** | Do not modify. If you intend to create multiple AWS connectors via API, be sure to copy this value as you will need to reference it later.|
+
+### Connection Test
+
+The connection is validated, and verified in this step. After successful validation, select **Finish**.
+
+
+:::important
+Creating a new CUR (Cost and Usage Report) in AWS typically takes 6-8 hours. During this period, you might encounter an error message stating that Harness CCM is unable to find a CUR file.
+:::
+
+
+## Create Connectors for multiple AWS accounts
+
+Harness CCM also provides the ability to create connectors via API using a StackSet configured at the management account. It involves the following steps:
+
+* Create a Service Account and API Key in Harness
+* Create a StackSet in AWS
+* Create an AWS Connector via API (performed once for each AWS account)
+
+> **☆ NOTE —** You should manually create a connector via the UI for the management account before using the API method described here to create connectors for the member accounts.
+
+### Create a Service Account and API key in Harness
+
+1. At the Account level, [create a Service Account](/docs/platform/User-Management/add-and-manage-service-account#create-a-service-account) with the **Admin** role for **All Account Level Resources** or **All Resources Including Child Scopes**.
+2. [Create a Service Account Token](/docs/platform/User-Management/add-and-manage-service-account#create-a-service-account). Save the API Key, which will be used when creating AWS connectors via the API below.
+
+### Create a StackSet in AWS
+
+Perform the following steps to create a StackSet in AWS:
+
+1. Select the following link to start creating the StackSet:  
+<https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacksets/create>
+2. In the **Choose a template** step, enter the following values, and then select **Next**.
+
+| **Field** | **Description** |
+| --- | --- |
+| **Permissions** | Optional, configure if necessary based on your AWS policies. |
+| **Prerequisite - Prepare template** | Select **Template is ready**. |
+| **Specify template** | Select **Amazon S3 URL**. |
+| **Amazon S3 URL** | Enter `https://continuous-efficiency-prod.s3.us-east-2.amazonaws.com/setup/ngv1/HarnessAWSTemplate.yaml` |
+
+3. In the **Specify StackSet details** step, enter the following values, and then select **Next**.
+
+| **Field** | **Description** |
+| --- | --- |
+| **StackSet name** | Enter any name. For example, `harness-ce-iam-stackset` .|
+| **BillingEnabled** | Select **false**. |
+| **BucketName** | Leave empty. |
+| **EventsEnabled** | Select **true**. |
+| **ExternalId** | The External ID value copied in step 4 of [Create Cross Account Role](#create-cross-account-role). |
+| **GovernanceEnabled** | Select **true** to enable Governance. Otherwise, select **false**. |
+| **LambdaExecutionRoleName** | Leave as is unless your AWS policies required a different naming convention. |
+| **OptimizationEnabled** | Select **true** to enable AutoStopping. Otherwise, select **false**. |
+| **PrincipalBilling** | Do not modify. |
+| **RoleName** | Leave as is unless your AWS policies required a different naming convention. |
+   
+4. In the **Configure StackSet options** step, enter the following values and select **Next**
+
+| **Field** | **Description** |
+| --- | --- |
+| **Managed execution** | Select **Active**. |
+    
+5. In the **Set deployment options** step, enter the following values, and then select **Next**.
+
+| **Field** | **Description** |
+| --- | --- |
+| **Add stacks to StackSet** | Select **Deploy new stacks**. |
+| **Deployment locations** | Configure the accounts or organization units that you want to deploy to. |
+| **Specify regions** | Configure the regions that you want to deploy to. |
+| **Region Concurrency** | Select **Sequential**. |
+
+6. In the **Review** step, select the acknowledgment, and then select **Submit**.
+
+### Create an AWS Connector via API
+
+Use the Harness API's [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) endpoint to create an AWS connector for each member account. Below is a sample cURL command to create an AWS connector. Replace the following placeholders with your values:
+
+| **Placeholder** | **Description** |
+| --- | --- |
+| **API TOKEN** | The API Key created in the [Create a Service Account and API Key in Harness](#create-a-service-account-and-api-key-in-harness) section. |
+| **CONNECTOR NAME** | Enter any name. This will be visible in the UI, perspectives, dashboards, etc. |
+| **CONNECTOR ID** | Enter a unique ID for the connector. The ID must meet the [Entity Identifier Reference](/docs/platform/references/entity-identifier-reference/) specification. |
+| **CROSS ACCOUNT ROLE ARN** | The ARN value copied in step 3 of [Create Cross Account Role](#create-cross-account-role). |
+| **EXTERNAL ID** | The External ID value copied in step 4 of [Create Cross Account Role](#create-cross-account-role). |
+| **AWS ACCOUNT ID** | The ID of the AWS member account. |
+| **FEATURES** | A comma separated list of features to enable. Enter `"VISIBILITY", "OPTIMIZATION", "GOVERNANCE"` removing any features that you do not want to enable. |
+
+
+```
+curl -i -X POST 'https://app.harness.io/gateway/ng/api/connectors' \
+  -H 'Content-Type: application/json' \
+  -H 'x-api-key: <API TOKEN>' \
+  -d '{
+  "connector":{
+    "name":"<CONNECTOR NAME>",
+    "identifier":"<CONNECTOR ID>",
+    "type":"CEAws",
+    "spec":{
+      "crossAccountAccess":{
+        "crossAccountRoleArn":"<CROSS ACCOUNT ROLE ARN>",
+        "externalId":"<EXTERNAL ID>"
+      },
+      "awsAccountId":"<AWS ACCOUNT ID>",
+      "curAttributes":{
+        "reportName":"",
+        "s3BucketName":""
+      },
+      "featuresEnabled":[
+        <FEATURES>
+      ]
+    }
+  }
+}'
+```
+
+## Enable EC2 recommendations
+
+:::note
+If you are an existing customer, you need to:
+* Edit the IAM role used by the Harness AWS Connector corresponding to the AWS account.
+* In the IAM role, add the `ce:GetRightsizingRecommendation` permission to the **HarnessEventsMonitoringPolicy**.
+:::
+
+Once you have the `ce:GetRightsizingRecommendation` permission added to the **HarnessEventsMonitoringPolicy** in the IAM role, perform the following tasks on your AWS console to enable recommendations.
+
+1. On your AWS console, go to the **Cost Explorer** service.
+
+  <docimage path={require('./static/ec2-recom-aws-screen-1.png')} width="50%" height="50%" title="Click to view full size image" />
+
+2. Click **Preferences** on the left pane.
+3. Enable the following recommendations:
+ * Receive Amazon EC2 resource recommendations 
+ * Recommendations for linked accounts
   
-  ![](./static/set-up-cost-visibility-for-aws-21.png)
+  <docimage path={require('./static/ec2-recom-aws-screen-2.png')} width="50%" height="50%" title="Click to view full size image" />
 
-## AWS access permissions
+4. Verify that you have enabled these recommendations correctly. 
 
-CCM requires the following permissions:
+  Open AWS CloudShell and run the following command: 
+
+```
+  aws ce get-rightsizing-recommendation --service AmazonEC2
+```
+ 
+ If the recommendations are not enabled, the following error message is displayed:
+
+     
+  "An error occurred (AccessDeniedException) when calling the GetRightsizingRecommendation operation: Rightsizing EC2 recommendation is an opt-in only feature. You can enable this feature from the PAYER account’s Cost Explorer Preferences page. Normally it may take up to 24 hours in order to generate your rightsizing recommendations."
+
+5. You must install the Amazon CloudWatch agent on your EC2 instance to enable memory metrics.
+   
+## Reference - AWS access permissions
+
+CCM requires the following permissions which are automatically created via a StackSet based on the features you select during configuration.
 
 > **☆ NOTE —** If you don't have access to create a cost and usage report or run a CloudFormation template, contact your IT or security teams to provide the required permissions.
 
-### Cost Visibility
+### Cost visibility
 
-The cost visibility policy performs the following actions:
+The cost visibility policy grants the following permissions:
 
 * List CUR reports and visibility into the organization's Structure
 * Get objects from the S3 bucket configured in the CUR
@@ -115,7 +407,7 @@ If the `cur:DescribeReportDefinitions`, `organizations:Describe`, and `organizat
 * `organizations:ListAccounts`: fetches a list of all the accounts present in the organization, and also fetches the accountID to Account Name mapping.
 * `organizations:ListTagsForResource`: fetches the AWS Account level tags. Harness supports account tags within CCM that can be used for reporting and analysis.
 
-### AWS ECS and Resource Inventory Management
+### Resource inventory management
 
 The inventory management policy performs the following actions:
 
@@ -163,7 +455,8 @@ This feature provides visibility into your EC2, EBS volumes, and ECS costs. The 
 * Insight into EC2 instances and their utilization.
 * Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards. For more information, see [View AWS EC2 Inventory Cost Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard.md), [Orphaned EBS Volumes and Snapshots Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/orphaned-ebs-volumes-and-snapshots-dashboard.md), and [View AWS EC2 Instance Metrics Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-instance-metrics.md).
 
-### AWS Resource optimization using AutoStopping rules
+
+### AutoStopping rules
 
 The AutoStopping policy performs the following actions:
 
@@ -251,235 +544,74 @@ HarnessOptimisationPolicy:
       "Roles":  
         - !Ref HarnessCloudFormationRole 
 ```
-
-## Connect CCM to your AWS account
-
-To enable CCM for your AWS services (such as EC2, S3, RDS, Lambda, and so on), you simply need to connect Harness to your AWS accounts.
-
-Perform the following steps to connect CCM to the AWS cloud provider.
-
-### Overview
-
-1. In **Account Setup**, in **Account Resources**, click **Connectors**.
-   
-     ![](./static/set-up-cost-visibility-for-aws-22.png)
-2. In **Connectors**, click **+ Connector**.
-3. In **Cloud Costs**, click **AWS**.
-   
-     ![](./static/set-up-cost-visibility-for-aws-23.png)
-
-     Or
-
-1. In your Harness account, click **Cloud Costs.** Under **Setup,** click **Cloud Integration**.  
-The **Cloud Integration** page displays the existing connectors for the Kubernetes clusters and the cloud accounts.
-2. Click **New Cluster/Cloud account**.
-3. Select **AWS**.
-
-4. In **AWS Connector**, in **Overview**, enter the **Connector** **Name**. The name will appear in CCM Perspectives to identify this cloud provider.
-5. In **Specify the AWS account ID**, enter your AWS account ID and click **Continue**. To find your AWS account ID, see [Finding your AWS account ID](https://docs.aws.amazon.com/IAM/latest/UserGuide/console_account-alias.html#FindingYourAWSId).
-   
-     ![](./static/set-up-cost-visibility-for-aws-24.png)
-
-### Cost and Usage Report
-
-Cost and Usage Report (CUR) provides detailed billing data across AWS accounts to help you analyze your spending. You need to enter the **cost and usage report name** and **cost and usage S3 bucket name** in Harness. To get these details, do the following:
-
-1. In **Cost and Usage Report**, click **Launch AWS console** to log into your AWS account.
-2. In **AWS Cost and Usage Reports**, click **Create Report**.
-   
-     ![](./static/set-up-cost-visibility-for-aws-25.png)
-
-3. Enter the **Report Name**. This is the CUR name that you need to enter in Harness.
-4. In **Additional report details**, select the checkbox **Include resource IDs** to include the IDs of each individual resource in the report.
-5. In **Data refresh settings**, select the checkbox **Automatically refresh your Cost & Usage Report when charges are detected for previous months with closed bills**.
-6. Click **Next**.  
-When you are done with the **Report content** step, it will look something like this:
-
-  ![](./static/set-up-cost-visibility-for-aws-27.png)
-7. In the **S3 bucket**, click **Configure**.
-8. In **Configure S3 Bucket**, in **Create a bucket**, enter the **S3 bucket name**. This is the cost and usage S3 bucket name that you need to enter in Harness. For more information on S3 bucket naming requirements, see [Amazon S3 Bucket Naming Requirements](https://docs.aws.amazon.com/awscloudtrail/latest/userguide/cloudtrail-s3-bucket-naming-requirements.html).
-9.  Enter the report path prefix that you want to be prepended to the name of your report.
-10. Select **Hourly** in **Time granularity**.
-11. Select **Overwrite Existing Report** in **Report versioning**.
-12. Do not select any value in **Enable report data integration for**.
-13. Select **GZIP** in the **Compression type**.
-14. Click **Next**.  
-When you are done with the **Delivery options** step, it will look something like this:
-
-  ![](./static/set-up-cost-visibility-for-aws-30.png)
-17. Review your report details and click **Review and Complete**.
-  
-    ![](./static/set-up-cost-visibility-for-aws-31.png)
-    
-    Your report is listed in AWS Cost and Usage Reports.
-    
-      ![](./static/set-up-cost-visibility-for-aws-32.png)
-18. Enter the **Cost and Usage Report Name** (as entered in step 3) and **Cost and Usage S3 Bucket Name** (as entered in step 8) in Harness.
-  
-    ![](./static/set-up-cost-visibility-for-aws-33.png)
-
-### Choose Requirements
-
-Select the Cloud Cost Management features that you would like to use on your AWS account. Based on your selection Harness requires specific permissions for the cross-account role. 
-
-  ![](./static/set-up-cost-visibility-for-aws-34.png)
-  
-  CCM offers the following features:
-
-
-| **Features**  | **Capabilities** | 
-| --- | --- | 
-| **Cost Visibility** (Required)| This feature is available by default and requires access to the CUR report. Provides the following capabilities:<ul><li>Insights into AWS costs by services, accounts, etc. </li><li>Root cost analysis using cost perspectives</li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul> This feature will give you cost insights that are derived from the CUR. For deep Kubernetes visibility and rightsizing recommendations based on the historical utilization and usage metrics, set up Kubernetes connectors. See [Set Up Cloud Cost Management for Kubernetes](set-up-cost-visibility-for-kubernetes.md). |
-| **AWS ECS and Resource Inventory Management** (Optional)| This feature provides visibility into your EC2, EBS volumes, and ECS costs. The insights provided by inventory management can be consumed by Finance teams to understand resource utilization across the board. <ul><li>Breakdown by ECS cluster cost, Service, Task, and Launch Type (EC2, Fargate) </li><li>Insight into EC2 instances and their utilization</li><li>Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards. For more information, see View AWS EC2 Inventory Cost Dashboard, Orphaned EBS Volumes and Snapshots Dashboard, and View AWS EC2 Instance Metrics Dashboard.</li></ul> |
-| **AWS resource optimization using AutoStopping rules** (Optional)| This feature allows you to enable Intelligent Cloud AutoStopping for your AWS instances and auto-scaling groups. For more information, see Create AutoStopping Rules for AWS. <ul><li>Orchestrate VMs and ASGs based on idleness</li><li>Run your workloads on fully orchestrated spot instances</li><li>Granular savings visibility</li></ul> |
-
-
-Make your selection and click **Continue**.
-
-> **☆ NOTE —** The Cloudformation template has policies corresponding to all the permissions (Visibility, Inventory, and Optimization). However, it is important to note that only the permissions (policies) of the selected features are applied.
-
-### Create Cross-Account Role
-
-Harness uses the secure cross-account role to access your AWS account. The role includes a restricted policy to access the cost and usage reports and resources for the sole purpose of cost analysis and cost optimization.
-
-1. In **Create Cross Account Role**, click **Launch Template in AWS console**.
-2. In **Quick create stack**, in **Capabilities**, select the acknowledgment, and click **Create stack**.
-  > **☆ NOTE —**It is recommended that you do not modify any value in the **Quick create stack** page.  
-  The value for `BillingEnabled`, `EventsEnabled`, and `OptimizationEnabled` varies depending on the features that you have selected in the **Choose Requirements** step.
-  
-  
-  ![](./static/set-up-cost-visibility-for-aws-35.png)
-3. In the **Stacks** page, from the **Outputs** tab copy the **Value** of **CrossAccountRoleArn Key**.
-   
-     ![](./static/set-up-cost-visibility-for-aws-36.png)
-4. In **Role ARN**, enter the **Cross-Account Role ARN** that you copied from the **Output**s tab (previous step) in Harness.
-5. The **External ID** is generated dynamically for your account. For example, `harness:111111111111:lnFZRF6jQO6tQnB9xxXXXx` . 
-> **☆ NOTE —** Do not modify the value of **External ID**.
-
-  ![](./static/set-up-cost-visibility-for-aws-37.png)
-6. Click **Save and Continue**.
-
-### Test Connection
-
-The connection is validated, and verified in this step. After successful validation, click **Finish**.
-
-![](./static/set-up-cost-visibility-for-aws-38.png)
-
-Your connector is now listed in the **Connectors**.
-
-![](./static/set-up-cost-visibility-for-aws-39.png)
-
-## Create Multiple Connectors in an AWS Account
-
-Harness CCM also provides the flexibility to create multiple Connectors using a stack set configured at the master account level. It involves the following steps:
-
-* Create a stack set
-* Create an API Key in Harness
-* Add an Admin Role
-* Run the cURL Command to create connectors using the Roles created in the AWS accounts via API
-
-### Create a Stack Set in AWS
-
-Perform the following steps to create a stack set in AWS:
-
-1. Launch create stack set template using the following link:  
-<https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacksets/create>
-2. In **Choose a template**, in **Permissions**, select **Service-managed permissions**.
-3. In **Prerequisite - Prepare template**, select **Template is ready**.
-4. In the **Specify template**, in the **Template source**, select **Amazon S3 URL**.
-5. In the **Amazon S3 URL** enter the following URL and click **Next**.  
-`https://continuous-efficiency-prod.s3.us-east-2.amazonaws.com/setup/ngv1/HarnessAWSTemplate.yaml`
-
-  ![](./static/set-up-cost-visibility-for-aws-40.png)
-6. In **Specify StackSet details**, in **StackSet** **name**, enter a stack set name. For example, `harness-ce-iam-stackset`.
-7. In **Parameters**, specify the following details:
-	1. Set **BillingEnabled** to false.
-	2. Leave the **BucketName** empty.
-	3. Set **EventsEnabled** to true.
-	4. In **ExternalID** enter your <*Harness Account ID>*, for example, `harness:111122225555` .
-	5. In **LambdaExecutionRoleName**, enter Lambda execution role name, for example, `HarnessCELambdaExecutionRole`. The Lambda execution role name must begin with `Harness`.
-	6. Set **OptimizationEnabled** to true.
-	7. **PrincipalBilling** is auto-generated for your AWS account. Do not edit the Principal Billing details. For example, `arn:aws:iam::123451231355:root`.
-	8. In **RoleName**, enter the role name, for example, `HarnessCERole`. The role name must begin with Harness e.g., HarnessCERole, HarnessManagedRole.
-   
-     ![](./static/set-up-cost-visibility-for-aws-41.png)
-
-8. After entering all the details, click **Next**.
-9. In **Configure StackSet options**, in **Managed execution**, select **Active** and click **Next**.
-    
-      ![](./static/set-up-cost-visibility-for-aws-42.png)
-10. In **Set deployment options**, in **Add stacks to stack set**, select **Deploy new stacks**.
-11. In **Deployment targets**, select **Deploy to organization** (recommended). You can select **Deploy to Organizational Units (OUs)** to limit the monitoring clusters to a particular OU or a subset of linked accounts.
-12. In **Automatic deployment**, select **Enabled**.
-13. In **Account removal behavior**, select **Delete Stacks**.
-14. Select a **region** from the drop-down list and click **Next**.
-15. In **Deployment Options**, in **Region Concurrency**, select **Sequential**.
-    
-      ![](./static/set-up-cost-visibility-for-aws-43.png)
-16. Review the details, select acknowledgment, and click **Submit**.
-
-### Create an API Key in Harness
-
-1. In Harness, click **Home**.
-2. In **Account Setup**, click **Access Control**.
-3. Click **Service Accounts** and then click the service account to which you want to add a new API Key. For step-by-step instructions to add a new Service Account, see [Add and Manage Service Accounts](/docs/platform/User-Management/add-and-manage-service-account).
-4. In the Service Account's settings page, click **API Key**.
-5. In the **New API Key** settings, enter **Name, Description,** and **Tags**.
-6. Click **Save**. The new API Key is created.  
-After creating an API Key for your Service Account, generate a Token for this API Key.
-7. To generate a Token for this API Key, click **Token** below the API Key you just created.
-	1. In the **New Token** settings, enter Name, Description, and Tags.
-	2. To set an expiration date for this token, select **Set Expiration Date**.
-	3. Enter date in **Expiration Date (mm/dd/yyyy)**.
-	4. Click **Generate Token**.
-	5. Your new Token is generated.
-     ![](./static/set-up-cost-visibility-for-aws-44.png)
-   
-   You cannot see this token value after you close this dialog. Make sure to copy and store the generated token value securely.
-
-   You need to enter this Token when running your cURL command.
-
-### Add an Admin Role to the Service Account
-
-Ensure that you've added the Admin role to this Service Account. For more information, see **Harness Platform** > **Role-based Access Control** > **Add and Manage Roles** section.
-
-![](./static/set-up-cost-visibility-for-aws-46.png)
-
-### Run the cURL Command
-
-Run the following command for each AWS Account ID and IAM Role Pair:
-
+### Cloud asset governance rules
+Enable the following permissions in AWS to execute cloud governance rules:
 
 ```
-curl -i -X POST \  
-  'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=<CustomerHarnessAccountID>' \  
-  -H 'Content-Type: application/json' \  
-  -H 'x-api-key: <Enter your API Key Token>' \  
-  -d '{  
-  "connector":{  
-    "name":"AWSConnector-<AWSAccountId>",  
-    "identifier":"AWSConnector_<AWSAccountId>",  
-    "spec":{  
-      "crossAccountAccess":{  
-        "crossAccountRoleArn":"<Enter the Role Created in the Account>",  
-        "externalId":"<Enter ExternalID oused when creating the IAM Role>"  
-      },  
-      "awsAccountId":"<AWSAccountId>",  
-      "curAttributes":{  
-        "reportName":"",  
-        "s3BucketName":""  
-      },  
-      "featuresEnabled":[  
-        "VISIBILITY",  
-        "OPTIMIZATION"  
-      ]  
-    },  
-    "type":"CEAws"  
-  }  
-}'
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "ec2:Describe*",
+                "ec2:DeleteSnapshot",
+                "ec2:DeleteVolume",
+                "ec2:Get*",
+                "ec2:ListImagesInRecycleBin",
+                "ec2:ListSnapshotsInRecycleBin",
+                "elasticbeanstalk:Check*",
+                "elasticbeanstalk:Describe*",
+                "elasticbeanstalk:List*",
+                "elasticbeanstalk:Request*",
+                "elasticbeanstalk:Retrieve*",
+                "elasticbeanstalk:Validate*",
+                "elasticloadbalancing:Describe*",
+                "rds:Describe*",
+                "rds:List*",
+                "autoscaling-plans:Describe*",
+                "autoscaling-plans:GetScalingPlanResourceForecastData",
+                "autoscaling:Describe*",
+                "autoscaling:GetPredictiveScalingForecast",
+                "s3:DescribeJob",
+                "s3:Get*",
+                "s3:List*"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        }
+    ]
+}
 ```
-## Next Steps
+
+:::info
+* This is not an exhaustive list; you may require additional permissions to support custom rules.
+* A yellow underline in a custom policy indicates that you need permission to support the underlined filters and/or actions.
+:::
+
+#### Add permissions
+If you come across an error message indicating missing permissions, as displayed in the following screenshot, you need to add the missing permission [here](https://us-east-1.console.aws.amazon.com/iamv2/home#/roles). 
+
+
+<docimage path={require('./static/asset-governance-test-output-error.png')} width="50%" height="50%" title="Click to view full size image" />
+
+1. Copy the role specified in the error message that requires permission to execute the rule.
+2. Enter the role in IAM > Roles search box to filter the roles. The policies are displayed. 
+
+  <docimage path={require('./static/aws-missing-permission-role.png')} width="50%" height="50%" title="Click to view full size image" />
+
+3. In the list of policies, select the policy to edit.
+    <docimage path={require('./static/aws-select-policy.png')} width="50%" height="50%" title="Click to view full size image" />
+
+4. In the **Permissions** tab, select **Edit policy**, and then go to the **JSON** tab.
+
+      <docimage path={require('./static/aws-edit-json.png')} width="50%" height="50%" title="Click to view full size image" />
+
+5. Add the missing permissions. You can use a wildcard (asterisk) to grant multiple permissions. For example, `s3:Get*` permission would allow multiple S3 actions that start with "Get". 
+6. Save changes.
+
+For more information, go to [Editing IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html).
+
+## Next steps
 
 * [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
 * [Analyze Cost for AWS Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-aws.md)
-

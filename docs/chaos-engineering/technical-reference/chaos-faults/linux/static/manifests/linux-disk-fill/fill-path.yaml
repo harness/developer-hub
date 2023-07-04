@@ -1,0 +1,11 @@
+# specify the fill path
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-disk-fill
+  labels:
+    name: disk-fill
+spec:
+  diskFillChaos/inputs:
+    fillPath: "/"
+    duration: 30
