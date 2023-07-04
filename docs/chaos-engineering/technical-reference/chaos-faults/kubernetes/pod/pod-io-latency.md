@@ -5,7 +5,7 @@ title: Pod IO latency
 
 import IOFaultsCaution from './shared/io-faults-caution.md'
 
-Pod IO latency simulates slow I/O operations by introducing delays in file system calls within a container. This fault is used for testing the resilience, performance, and scalability of the pod.
+Pod IO latency simulates slow I/O operations by introducing delays in system calls of the files located within the mounted volume of the pod. This fault is used for testing the resilience, performance, and scalability of the pod.
 This can help identify performance bottlenecks, test the system's ability to handle high loads, and evaluate its behavior in high-stress scenarios.
 
 ![Pod IO Latency](./static/images/pod-io-latency.png)
@@ -26,7 +26,7 @@ Pod IO latency:
 
 ## Fault tunables
 
-  <h3>Optional tunables</h3>
+  <h3>Mandatory tunables</h3>
     <table>
       <tr>
         <th> Tunable </th>
@@ -35,8 +35,22 @@ Pod IO latency:
       </tr>
       <tr>
         <td> LATENCY </td>
-        <td> Specify the latency to be injected in file system calls.</td>
+        <td> Specify the latency to be injected in file system calls</td>
         <td> Accepts any unit of time, for example, 60s, 1m, or 60000ms. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-latency#io-latency">latency</a>.</td>
+      </tr>
+      <tr>
+        <td> MOUNT_PATH </td>
+        <td> The absolute mount path of the volume mounted to the target pod</td>
+        <td> For more information, go to <a href="#mount-path">mount path</a>. </td>
+      </tr>
+    </table>
+
+  <h3>Optional tunables</h3>
+    <table>
+      <tr>
+        <th> Tunable </th>
+        <th> Description </th>
+        <th> Notes </th>
       </tr>
       <tr>
         <td> TARGET_CONTAINER </td>
@@ -44,13 +58,8 @@ Pod IO latency:
         <td> If the value is not provided, the fault injects chaos on the first container of the pod. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-container">target specific container</a>.</td>
       </tr>
       <tr>
-        <td> MOUNT_PATH </td>
-        <td> Mount path of volume in the target container</td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-latency#mount-path">mount path</a>. </td>
-      </tr>
-      <tr>
         <td> FILE_PATH </td>
-        <td> The path for injecting faults can be specified as either a single file or a wildcard.</td>
+        <td> The path for injecting faults can be specified as either a single file or a wildcard. If not provided, it will target all the files present inside the mount path </td>
         <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-latency#advanced-fault-tunables">file path</a>. </td>
       </tr>
       <tr>
@@ -102,7 +111,7 @@ Pod IO latency:
 
 ### IO LATENCY
 
-IO Latency to be injected in file system calls of the target application. Tune it by using the `LATENCY` environment variable. 
+IO Latency to be injected in system calls of the files located within the mounted volume of the pod. Tune it by using the `LATENCY` environment variable. 
 
 The following YAML snippet illustrates the use of this environment variable:
 
@@ -172,9 +181,9 @@ spec:
 
 ### Advanced Fault Tunables
 
-- `FILE_PATH`: The path for injecting faults can be specified as either a single file or a wildcard. By default it targets all the paths.
+- `FILE_PATH`: The path for injecting faults can be specified as either a single file or a wildcard. ByDefault it targets all the files present inside the mount path.
 - `PERCENTAGE`: The likelihood of failure per operation, expressed as a percentage. Default is 100%.
-- `METHOD_TYPES`: This contains the file system call or methods. By default it targets all the methods.
+- `METHOD_TYPES`: This contains the file system call or methods. ByDefault it targets all the methods.
 
 The following YAML snippet illustrates the use of this environment variable:
 
