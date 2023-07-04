@@ -754,11 +754,11 @@
 
 /* [HDH-114] Cleaner Difference Between FG and NG Docs */
 .harness-search-module .CoveoFieldValue {
-	&:has(span[title*="FirstGen Docs"]) {
+	&:has(span[title*="FirstGen"]) {
 		background-color: var(--gray-200);
 		border-color: var(--gray-200);
 	}
-	&:has(span[title*="NextGen Docs"]) {
+	&:has(span[title*="NextGen"]) {
 		background-color: var(--primary-3);
 		border-color: var(--primary-3);
 	}
