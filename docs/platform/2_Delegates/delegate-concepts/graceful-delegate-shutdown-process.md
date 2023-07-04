@@ -23,7 +23,7 @@ The length of the grace period is configurable.
 | Immutable image | Yes | Configurable (details below)  |
 | Legacy image | No | 30 seconds |
 
-### Kubernetes deployment default interval configuration
+### Configure the default interval for a Kubernetes deployment
 
 Open the delegate manifest file and locate the container `spec` (`spec.containers`). Change the `terminationGracePeriodSeconds` as shown in the following YAML. In the example below, `terminationGracePeriodSeconds` is set to 10 minutes.
 
@@ -40,7 +40,7 @@ Open the delegate manifest file and locate the container `spec` (`spec.container
          runAsUser: 0   
 ```
 
-### Amazon ECS deployment default interval configuration
+### Configure the default interval for an Amazon ECS deployment
 
 Open the delegate manifest file and locate the container `containerDefinitions`. Change the `stopTimeout` as shown in the following JSON. In the example below, `stopTimeout` is set to 10 minutes.
 
