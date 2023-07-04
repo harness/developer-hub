@@ -57,9 +57,9 @@ This release does not include any early access features.
 
   Harness no longer adds the new line in the YAML, and honors the separator when processing the YAML.
 - Fixed an issue in the Shell Script step's **SSH/WinRM Connection Attribute** setting to correctly ask for SSH or WinRM credentials at the template/runtime/input set view based on the values entered in the step. (CDS-72021, ZD-45926)
-- In the stage status count displayed for Matrices in the Pipeline Execution Details page, the count of stages which ignored failures was counted along with successful stages. (CDS-72030)
+- In the stage status count displayed for Matrices in the Pipeline Execution Details page, the count of stages which ignored failures were counted in failed stages. (CDS-72030)
   
-  This issue is fixed. The `IgnoreFailed` stages are now counted in failed stages. 
+  This issue is fixed. The `IgnoreFailed` stages are now counted in successful stages. 
 - Fixed an issue where a change in the Artifact Details **Image Path** did not trigger a corresponding change in the **Tag** setting. (CDS-71215)
 - The **Repository Name** setting in the pipeline list page filter was not working properly. (CDS-70784, ZD-45350)
   
