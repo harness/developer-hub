@@ -1,9 +1,10 @@
 ---
-sidebar_position: 2
+sidebar_position: 1
+hide_table_of_contents: true
+title: AutoStopping RDS with Proxy
 description: This guide walks you through the steps to reduce RDS costs by using AutoStopping rules.
 ---
-
-# Cut down RDS costs with Harness AutoStopping Proxy
+# Reducing RDS Costs made easy with Harness AutoStopping Proxy
 
 AWS RDS, or Amazon Relational Database Service, is a fully managed database service provided by Amazon Web Services (AWS). It simplifies the process of setting up, operating, and scaling a relational database in the cloud. 
 
@@ -15,7 +16,7 @@ Harness Cloud Cost Management provides a valuable solution to address this chall
 
 Harness AutoStopping Proxy provides an effective solution to reduce non-production cloud costs with minimal setup requirements and without causing disruptions for developers and other users. By onboarding your RDS instance or cluster to AutoStopping using the proxy, you will incur costs for the RDS only when it is actively utilized. Moreover, when the RDS instances are not in use, they are automatically stopped, further optimizing your cloud expenditure. 
 
-<docimage path={require('./static/rds-autostopping-proxy/rds-tutorial.png')} width="60%" height="60%" title="Click to view full size image" />
+<docimage path={require('../static/rds-autostopping-proxy/rds-tutorial.png')} width="60%" height="60%" title="Click to view full size image" />
 
 ## Use Harness AutoStopping proxy for RDS
 
@@ -26,21 +27,21 @@ Harness AutoStopping Proxy provides an effective solution to reduce non-producti
 ### Create Harness AutoStopping proxy
 
 1.  In **Harness**, go to the **Cloud Costs** module.
-2. Under **Setup**, click **Load Balancers**.
-3. Click **Create New Load Balancer**.
+2. Under **Setup**, select **Load Balancers**.
+3. Select **Create New Load Balancer**.
 4. Select **AWS**.
 5. Choose an existing connector or [create a new one](../1-add-connectors/connect-to-an-aws-connector.md).
-6. Click **Continue**.
-7. Click **Create AutoStopping Proxy**. 
-8. Click **Continue**.
+6. Select **Continue**.
+7. Select **Create AutoStopping Proxy**. 
+8. Select **Continue**.
 9. In the **Create a new AutoStopping Proxy** window, enter the following information:
     1. Provide a name for the AutoStopping Proxy.
     2. Select your preferred DNS provider and perform the mapping:
         *  If you select **Route 53**, you must choose a hosted zone from the available zones and enter the domain name. AutoStopping manages Route 53 configuration automatically. To know more about Route 53, go to [Amazon Route 53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/Welcome.html).
         * If you select **Others**, enter the URL of the DNS provider. Make sure that you have updated the DNS mapping in your DNS provider.
-    3. Click **Continue**.
+    3. Select **Continue**.
 
-<docimage path={require('./static/rds-autostopping-proxy/aws-autoproxy-lb.png')} width="60%" height="60%" title="Click to view full size image" />
+<docimage path={require('../static/rds-autostopping-proxy/aws-autoproxy-lb.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 10.  **Select region**: Select the region where you have your cloud resources hosted.
@@ -69,10 +70,10 @@ zUfdbO+mWOKNUQDyQiBnlNNM3Gkkn5P8zYHfL97kSLXyadOOWwU0eEDd4iJJSDtJ
 ```
 
 
-<docimage path={require('./static/rds-autostopping-proxy/secret-name-convention-aws.png')} width="60%" height="60%" title="Click to view full size image" />
+<docimage path={require('../static/rds-autostopping-proxy/secret-name-convention-aws.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
-<docimage path={require('./static/rds-autostopping-proxy/secret-creation-aws.png')} width="60%" height="60%" title="Click to view full size image" />
+<docimage path={require('../static/rds-autostopping-proxy/secret-creation-aws.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 14.    **API Key**: Enter a valid API key generated in Harness New Generation. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/Resource-Development/APIs/api-quickstart) for more information.
@@ -81,7 +82,7 @@ zUfdbO+mWOKNUQDyQiBnlNNM3Gkkn5P8zYHfL97kSLXyadOOWwU0eEDd4iJJSDtJ
 17.    **TLS Private Key Secret Version**: Enter the **Secret ARN** in this field.
 
 18.  Enable **Allocate Static IP** if you need to assign an elastic IP address to make the instance publicly accessible. Update the DNS route to point to the public IP. You don't need to enable this field if it is pointing to a private IP provided the DNS resolves. For example, when the DNS resolution is done within the VPC.
-19.  Click **Save Load Balancer**.
+19.  Select **Save Load Balancer**.
 
 
 ### Set up Harness AutoStopping Rule for RDS
@@ -89,11 +90,11 @@ This section walks you through the steps to configure an AutoStopping rule for y
 
 ### Define the AutoStopping rule
 
-1. In **Cloud Costs,** in **AutoStopping Rules**, click **New AutoStopping Rule**.
+1. In **Cloud Costs,** in **AutoStopping Rules**, select **New AutoStopping Rule**.
 2. In the cloud account type, select **AWS**. It is the cloud account in which your workloads are running that you want to manage using AutoStopping rules.
-3. Select your AWS account from the **Connect to your AWS account** dropdown list and click **Next**. If you have not added an AWS cloud account, see [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md).
+3. Select your AWS account from the **Connect to your AWS account** dropdown list and select **Next**. If you have not added an AWS cloud account, see [Connect to an AWS Connector](../1-add-connectors/connect-to-an-aws-connector.md).
    
-  <docimage path={require('./static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-75.png')} width="60%" height="60%" title="Click to view full size image" />
+  <docimage path={require('../static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-75.png')} width="60%" height="60%" title="Click to view full size image" />
 
 4. In **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
 5. In **Idle time**, enter the idle time in minutes. This is the time that the AutoStopping rule will wait before stopping the idle instances.
@@ -102,18 +103,18 @@ This section walks you through the steps to configure an AutoStopping rule for y
 
 Select the cloud resources that you want to manage using this rule. AutoStopping Rule will monitor the selected resources and stop them when they are idle beyond the configured idle time.
 
-1. In **Select the resources to be managed by the rule**, select **RDS** and then click Add RDS instance.
+1. In **Select the resources to be managed by the rule**, select **RDS** and then select Add RDS instance.
    
-    <docimage path={require('./static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-77.png')} width="60%" height="60%" title="Click to view full size image" />
+    <docimage path={require('../static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-77.png')} width="60%" height="60%" title="Click to view full size image" />
 
 2. In **Select RDS Instance**, do the following:
 	1. Select the region where your instance is hosted from the drop-down list.
-	2. Select the RDS instance for which you want to enable AutoStopping Rule and click **Add Selected**.
+	2. Select the RDS instance for which you want to enable AutoStopping Rule and select **Add Selected**.
     
-      <docimage path={require('./static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-78.png')} width="60%" height="60%" title="Click to view full size image" />
+      <docimage path={require('../static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-78.png')} width="60%" height="60%" title="Click to view full size image" />
 
-	3. Once you've made all the selections, click **Add Selected**.
-3. Click **Next**.
+	3. Once you've made all the selections, select **Add Selected**.
+3. Select **Next**.
 
 ### (Optional) Set Up Advanced Configuration
 
@@ -123,7 +124,7 @@ In this step, you can configure the following settings:
 
 Toggle the button to disable the display of progress page during instances' warming up process. This option is especially useful when the service is invoked by an automation system, as it prevents misinterpretation of the progress page as the intended response from a service that is onboarded to AutoStopping. By hiding the progress page, the first response of warming up a rule after a downtime will be delayed until the intended service is up and running.
 
-<docimage path={require('./static/rds-autostopping-proxy/create-autostopping-rules-for-kubernetes-83.png')} width="60%" height="60%" title="Click to view full size image" />
+<docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-for-kubernetes-83.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 #### Dry Run
@@ -135,10 +136,10 @@ Toggle the button if you wish to evaluate this feature without terminating your 
 
 Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. For example for an application server dependant on a database server, create two AutoStopping Rules managing both the servers. Add a dependency on the Rule managing the application server to be dependant on the Rule managing the database server.
 
-1. In **Dependencies**, click **add dependency** to add a dependency on any existing rule.
+1. In **Dependencies**, select **add dependency** to add a dependency on any existing rule.
 2. Select the rule from the **RULES** drop-down list.
-3. In **DELAY IN SECS**, enter the number of seconds that rule should wait after warming up the dependent rule. For example, you have Rule 1 dependent on Rule 2 and you have set 5 seconds delay. In that case, when the request is received to warm up Rule 1, then first Rule 2 (dependent rule) is warmed up, and then there is a delay of 5 seconds before warming up Rule 1.
-4. Once you're done with all the configurations, click **Next**.
+3. In **DELAY IN SECS**, enter the number of seconds that rule should wait after warming up the dependent rule. For example, you have Rule 1 dependent on Rule 2, and you have set 5 seconds delay. In that case, when the request is received to warm up Rule 1, then first Rule 2 (dependent rule) is warmed up, and then there is a delay of 5 seconds before warming up Rule 1.
+4. Once you're done with all the configurations, select **Next**.
    
 #### Fixed Schedules
 
@@ -156,9 +157,9 @@ Harness executes scheduled rules using [Dkron](https://dkron.io/), an open-sourc
 
 To create a fixed schedule for your rule, do the following:
 
-1. In **Fixed Schedules**, click **Add Fixed Schedule**.
+1. In **Fixed Schedules**, select **Add Fixed Schedule**.
    
-      <docimage path={require('./static/rds-autostopping-proxy/create-autostopping-rules-aws-98.png')} width="60%" height="60%" title="Click to view full size image" />
+      <docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-aws-98.png')} width="60%" height="60%" title="Click to view full size image" />
 
 2. In **New Fixed Schedule**, enter a **Name** for your schedule.
 3. In **Type**, select the type for your schedule. You can schedule an **Uptime** or **Downtime** for your rule. As per your schedule, the resources go up or down.
@@ -178,15 +179,15 @@ To create a fixed schedule for your rule, do the following:
 	**Example 1**:  
 	In the following example, resources are up every Mon, Tue, Wed starting from 12:00 a.m. on February 14, 2022 till April 30, at 10:00 p.m.
      
-       <docimage path={require('./static/rds-autostopping-proxy/create-autostopping-rules-aws-99.png')} width="60%" height="60%" title="Click to view full size image" />
+       <docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-aws-99.png')} width="60%" height="60%" title="Click to view full size image" />
 
      
      **Example 2**:  
 	In the following example, resources are down every day (all day) starting from 12:00 a.m. on February 14, 2022 till April 30, at 12:00 a.m.
     
-      <docimage path={require('./static/rds-autostopping-proxy/create-autostopping-rules-aws-100.png')} width="60%" height="60%" title="Click to view full size image" />
+      <docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-aws-100.png')} width="60%" height="60%" title="Click to view full size image" />
 
-8. Click **Apply**.
+8. Select **Apply**.
 
 ### Setup Access
 
@@ -194,7 +195,7 @@ In the Setup Access screen, select the AutoStopping Proxy from the dropdown list
 
 ### Review
 
-In Review, verify all the configuration details and click **Save Rule**. To edit any of the configuration settings, click **EDIT** and modify the settings.
+In Review, verify all the configuration details and select **Save Rule**. To edit any of the configuration settings, select **EDIT** and modify the settings.
 
 Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](../4-create-auto-stopping-rules/autostopping-dashboard.md).
 
@@ -202,12 +203,12 @@ Your AutoStopping rule is listed under the [AutoStopping Rules dashboard](../4-
 
 You can also use Harness AutoStopping CLI to query the archived database using your own database client. Basically you're leveraging Harness CLI to keep the RDS instance(s) running.
 
-1. From the AutoStopping dashboard, click on the RDS rule.
+1. From the AutoStopping dashboard, select the RDS rule.
 2. In **Download CLI**, select your operating system to download the Harness CLI for your system.
    
-    <docimage path={require('./static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-79.png')} width="60%" height="60%" title="Click to view full size image" />
+    <docimage path={require('../static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-79.png')} width="60%" height="60%" title="Click to view full size image" />
 
-3. Click **Download CLI**.
+3. Select **Download CLI**.
 4. Run the following command to connect to an RDS database.  
 
 ```
