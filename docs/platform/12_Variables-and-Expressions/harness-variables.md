@@ -1414,21 +1414,21 @@ This expression returns the `identifierPostFix` of the step group when the curre
 
 ### <+strategy.node.STRATEGY_NODE_IDENTIFIER.identifierPostFix>
 
-This expressions retrieves the `identifierPostFix` for the node that is child of looping strategy with identifier `STRATEGY_NODE_IDENTIFIER`
-For example, let's consider a scenario with two nested StepGroups: sg1 and sg2 (child of sg1). Both sg1 and sg2 have a looping strategy configured. In this case, using the expression `<+stepGroup.identifierPostFix>` would always retrieve the `identifierPostFix` of sg2. To obtain the `identifierPostFix` for specific StepGroup, you can use the following expressions:
+This expression retrieves the `identifierPostFix` for the node that is the child of a looping strategy with the identifier `STRATEGY_NODE_IDENTIFIER`.
+For example, let's consider two nested step groups, sg1 and sg2 (child of sg1). Both sg1 and sg2 have a looping strategy configured. Using the expression, `<+stepGroup.identifierPostFix>` always retrieves the `identifierPostFix` of sg2. To obtain the `identifierPostFix` for a specific step group, you can use the following expressions:
 
-```
-<+strategy.node.sg1.identifierPostFix>: Retrieves the identifierPostFix for the node with the identifier sg1(Parent stepGroup).
-<+strategy.node.sg2.identifierPostFix>: Retrieves the identifierPostFix for the node with the identifier sg2(Child stepGroup).
-```
+* `<+strategy.node.sg1.identifierPostFix>`: Retrieves the `identifierPostFix` for the node with the identifier sg1 (parent step group).
+* `<+strategy.node.sg2.identifierPostFix>`: Retrieves the `identifierPostFix` for the node with the identifier sg2 (child step group).
 
 Similarly, you can use other strategy expressions for any specific strategy level if a looping strategy is configured for both the parent and child nodes.
 
 ### <+strategy.node.STRATEGY_NODE_IDENTIFIER.*>
-By following the provided format, you can retrieve the values of any strategy expressions associated with looping strategies at various levels. This is especially useful when looping strategies are configured within nested levels. Let's take a look at some examples:
-```
-<+strategy.node.sg1.iteration>: Retrieves the current iteration for the node with the identifier sg1(Parent stepGroup).
-<+strategy.node.sg2.iteration>: Retrieves the current iteration for the node with the identifier sg2(Child stepGroup).
+
+Using this format, you can retrieve the values of any strategy expressions associated with looping strategies at various levels. This is useful when looping strategies are configured within nested levels. 
+
+Here are some examples:
+* `<+strategy.node.sg1.iteration>`: Retrieves the current iteration of the node with the identifier sg1 (parent step group).
+* `<+strategy.node.sg2.iteration>`: Retrieves the current iteration of the node with the identifier sg2 (child step group).
 <+strategy.node.some_node_with_looping_strategy.iteration>: Retrieves the current the iteration for the node with identifier some_node_with_looping_strategy.(some_node_with_looping_strategy can be any type of node stage/step/stepGroup)
 
 <+strategy.node.sg1.iterations>: Retrieves the total iterations for the node with the identifier sg1(Parent stepGroup).
