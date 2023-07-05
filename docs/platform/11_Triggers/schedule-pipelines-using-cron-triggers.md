@@ -12,7 +12,7 @@ You can schedule Pipeline executions using Cron-based Triggers.
 
 For example, you can have a Pipeline run every Monday at 1AM. Harness will generate the Cron expression (`0 1 * * MON`).
 
-For general Triggers reference, see [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
+For general Triggers reference, go to [Triggers Reference](../8_Pipelines/w_pipeline-steps-reference/triggers-reference.md).
 
 import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported.md'
 
@@ -32,7 +32,7 @@ Open your Harness pipeline in Pipeline Studio.
 2. Select **New Trigger**.
 3. Select **Cron**.
    
-   For Git-based Trigger types or CodeCommit, see [Trigger Pipelines using Git Events](triggering-pipelines.md).
+   For Git-based Trigger types or CodeCommit, go to [Trigger Pipelines using Git Events](triggering-pipelines.md).
 4. In **Trigger Overview**, enter a name, description, and tags for the trigger.
 
 ### Schedule the trigger
