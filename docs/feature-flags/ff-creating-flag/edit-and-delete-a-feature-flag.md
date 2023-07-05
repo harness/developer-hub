@@ -1,5 +1,5 @@
 ---
-title: Edit, delete, or archive flags
+title: Edit or archive flags
 description: After you have created a flag, you can edit the following details of it --  Flag Name. Description. Whether or not it is marked as permanent. This topic describes how to edit these details on the Harnes…
 tags: 
    - helpDocs
@@ -23,27 +23,24 @@ After you have created a flag, you can edit the following details:
 * Description
 * Whether or not it is marked as permanent
 
-To edit a flag:
+**To edit a flag:**
 
-1. In Harness, go to **Feature Flags**.
-2. In your project, select **Feature Flags**. All your current flags are listed.
-3. Next to the flag you want to edit, select **more options** (**︙**).
-4. Select **Edit**. The flag details page appears.
+1. In your Harness project, navigate to **Feature Flags > Feature Flags**.
+1. Next to the flag you want to edit, select **more options** (**︙**), and then select **Edit**.
 
    ![A screenshot of the flag details page, with the more options icon highlighted.](./static/2-edit-and-delete-a-feature-flag-05.png)
 
-5. Edit the relevant details, and then select **Save**.
+1. Edit the relevant details, and then select **Save**.
 
+For more information, go to:
 
-### See also
-
-* [Edit your flag variations](manage-variations.md)
+* [Change your flag variations](manage-variations.md)
 * [Add prerequisite flags](/docs/feature-flags/add-prerequisites-to-feature-flag)
 * [Manage your targets](/docs/feature-flags/ff-target-management/add-targets)
 
 ## Check for stale flags
 
-You might want to check if you have stale flags so that you can decide whether to delete or archive them. In Harness, flags are counted as potentially stale if in the past 60 days:
+You might want to check if you have stale flags so that you can decide whether to archive them. In Harness, flags are counted as potentially stale if in the past 60 days:
 
 * They haven't been changed or evaluated.
 * Their default rules or target rules haven't been added to, or updated.
@@ -55,51 +52,45 @@ You might want to check if you have stale flags so that you can decide whether t
 
    ![The top of the Feature Flags page, with the filter Potentially Stale Flags highlighted](./static/potentially-stale-flag-filter.png)
 
-## Delete a flag
-
-When you are finished with a flag, it's best practice to remove it to keep your flags and application organized and tidy. You can [check for stale flags](#check-for-stale-flags) to identify which flags you might want to delete.
-
-If you're not sure if you want to delete a flag yet, consider [archiving](#archive-a-flag) it (which lets you restore the flag within 30 days).
-
-:::info note
- Make sure you are ready to delete the flag from all of your Environments. When you delete a flag on the Harness Platform or on Git, it is removed from all Environments.
-:::
-
-
-### Delete a flag using the Harness UI
-
-**To delete a flag in the UI:**
-
-1. In Harness, go to **Feature Flags**, then to the flag you want to delete.
-2. Select **more options** (**︙**) next to the flag that you want to delete, then select **Delete**.
-
-   ![A screenshot showing the Delete button for deleting a flag on the Harness Platform.](./static/4-delete-a-feature-flag-03.png)
-
-3. In **Delete Flag**, select **Delete**.
-
-
-### Delete a flag using Git
-
-**To delete a flag with Git:**
-
-If you [have set up Git Experience to manage your flags](/docs/feature-flags/manage-featureflags-in-git-repos) via a `.yaml` file on Git, you can delete flags from there. To do this:
-
-
-1. Go to the `.yaml` file where you manage your flags.
-2. Find the flag you want to delete.
-3. Delete the `- flag` object. For example, the following highlighted section would be deleted for the flag called `New_Flag:`
-
-   ![The .yaml file on Github. The flag object is highlighed for deletion. ](./static/4-delete-a-feature-flag-04.png)
 
 ## Archive and restore flags
 
+To remove a flag from Harness you must archive it first. This gives you the option of restoring the flag within 30 days. After 30 days, an archived flag is permanently deleted. You can [check for stale flags](#check-for-stale-flags) to identify which flags you might want to archive.
+
 ### Archive a flag
 
-Unlike deleting a flag, archiving a flag gives you the option of restoring it within 30 days. You can [check for stale flags](#check-for-stale-flags) to identify which flags you might want to archive.
+You can archive a flag if it's not a prerequisite to other flags. If it is, remove it as a prerequisite, and then archive it.
+
+:::info note
+ Make sure you are ready to remove the flag from all of your environments. When you archive a flag, it is removed from all environments.
+:::
 
 **To archive a flag:**
 
-1. 
+1. In your Harness project, navigate to **Feature Flags > Feature Flags**.
+1. Next to the flag you want to archive, select **more options** (**︙**), and then select **Archive**.
+
+   The Archive Flag confirmation screen appears.
+
+   :::info note
+   You cannot archive a flag if it is a prerequisite to other flags. Remove the flag as a prerequisite, and then you can archive it.
+   :::
+
+1. If you're sure you want to archive the flag, type the name or ID of the flag in the field provided, and then select **Archive**.
+
+   You can restore this flag within 30 days.
+
 
 ### Restore a flag
+
+Restoring a flag makes it available for evaluation if the flag is referenced in your code. That is, you haven't removed the references to it when you archived the flag, or you've reinstated those references.
+
+**To restore a flag:**
+
+1. In your Harness project, navigate to **Feature Flags > Feature Flags**, and then select the **Archived** filter at the top of the page.
+
+   A list of archived flags is displayed.
+
+1. Next to the flag you want to restore, select **more options** (**︙**), and then select **Restore**.
+1. On the confirmation screen, select **Restore**.
 
