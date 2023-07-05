@@ -4,10 +4,6 @@ description: Chain your pipelines in Harness to create complex workflows.
 sidebar_position: 12
 ---
 
-:::info note
-Currently, this feature is behind the feature flag `PIPELINE_CHAINING`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 Pipeline chaining involves using the output of one pipeline as input for another. You can link multiple processing steps together and execute them sequentially, creating a more complex workflow.
 
 For example, you could have a pipeline that deploys an application to a test environment. This could be followed by a pipeline that runs a set of integration tests and, finally, a pipeline that deploys the application to production. Each pipeline in the chain is triggered by the completion of the previous pipeline. The output of each pipeline is passed to the next pipeline in the chain. This way, you can automate the whole process and make sure that the application is tested properly before deploying to production.
@@ -68,7 +64,7 @@ To chain pipelines in Harness, perform the following steps:
    For example, you can use the build image in a subsequent deployment stage.
    
    :::info note
-   The outputs tab does not support auto suggestions. To use the child execution expression in the parent pipeline, you must manually copy it.
+   The **Outputs** tab supports auto suggestions.
    :::
    
 6. Repeat this process for any additional pipelines that you want to chain.
