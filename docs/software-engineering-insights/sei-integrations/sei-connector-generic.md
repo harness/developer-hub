@@ -26,6 +26,8 @@ For on-premise integrations, you need to use the generic SEI connector and insta
 
    For on-prem Jira, you must use username and password credentials.
 
+   For on-prem GitLab, you must use API key (personal access token) authentication.
+
 5. Download the Satellite configuration file, `satellite.yml`.
 
 ### Run the Satellite container
