@@ -18,7 +18,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
-## Latest - June 21, 2023, version 1.58.3
+## Latest - July 6, 2023, version 1.60.0
 
 ```mdx-code-block
 <Tabs>
