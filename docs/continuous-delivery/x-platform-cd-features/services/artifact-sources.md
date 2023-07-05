@@ -1997,7 +1997,16 @@ To add an artifact from Nexus, do the following:
     ![](static/kubernetes-services-14.png)
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
-14. Click **Submit**.
+ <!-- CDS-71711 -->
+ 15. Optionally, you can select the **Digest** for the image you want to use. Specifying an image by digest (rather than tag) is useful when you want to ensure that the image you deploy for a service is fixed and immutable. 
+ 
+    :::note
+
+    If an image with the specified digest does not exist in the artifact registry, the pipeline will fail.
+
+    :::
+16. Select **Submit**. The Artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
     
     The Artifact is added to the Service Definition.
 
@@ -2088,6 +2097,7 @@ service:
                 connectorRef: artifactorytutorialconnector
                 artifactPath: alpine
                 tag: 3.14.2
+                digest: sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
                 repository: bintray-docker-remote
                 repositoryUrl: harness-docker.jfrog.io
                 repositoryFormat: docker
@@ -2201,7 +2211,17 @@ To add an artifact from Artifactory, do the following:
     
     ![](static/kubernetes-services-16.png)
 14. If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
-15. Select **Submit**. The Artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
+ 15. Optionally, you can select the **Digest** for the image you want to use. Specifying an image by digest (rather than tag) is useful when you want to ensure that the image you deploy for a service is fixed and immutable. 
+ 
+    :::note
+
+    If an image with the specified digest does not exist in the artifact registry, the pipeline will fail.
+
+    :::
+16. Select **Submit**. The Artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
+
 
 
 ```mdx-code-block
@@ -2837,5 +2857,8 @@ Since manifests can support two schema versions, `schemaVersion1` and `schemaVer
 Here are the expressions for referencing each version:
 - SHA value of `schemaVersion1`: `<+artifacts.primary.metadata.SHA>` (same stage) or `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA>`.
 - SHA value of `schemaVersion2`: `<+artifacts.primary.metadata.SHAV2>` (same stage) or `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2>`.
+
+If the service is configured to use an image with a specific digest, you can access the digest using 
+`<+pipeline.stages.s1.spec.artifacts.primary.digest>`.
 
 </details>
