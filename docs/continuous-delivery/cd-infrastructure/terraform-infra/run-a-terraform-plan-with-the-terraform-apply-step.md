@@ -465,23 +465,54 @@ You can use Harness encrypted text for values. See [Add Text Secrets](/docs/plat
 
 ## Encrypt the Terraform Apply JSON outputs
 
-Currently, this feature is behind the feature flag, `CDS_ENCRYPT_TERRAFORM_APPLY_JSON_OUTPUT`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
+:::note
 
-This feature encrypts and provides the Terraform JSON output as a secret expression in the Terraform Apply step. 
+Currently, this feature is behind the flag, `CDS_ENCRYPT_TERRAFORM_APPLY_JSON_OUTPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-In the Terraform Apply step's **Optional Configuration**, you must select a secret manager for the **Encrypt json output** field to encrypt the Terraform JSON output as a secret expression.
+:::
 
-Here's an example of encrypted Terraform JSON output as a secret expression: `<+secrets.getValue("encrypted_tf_output_id_1")>`.
+The **Encrypt json output** setting encrypts the Terraform JSON output as a Harness secret using the secret manager you select. 
+
+The secret is ephemeral and is created and deleted during the pipeline execution. The secret is not added to the **Secrets** list in Harness.
+
+You can use an expression to retrieve the secret and its Terraform JSON output during pipeline execution.
+
+This secret expression can be used in other steps that can parse, validate, and extract the required output values from the JSON.
+
+In **Encrypt json output**, select or create a secret manager to use for encryption/decryption.
+
+To obtain the expression, do the following:
+
+1. In a pipeline execution that uses this feature, select the **Terraform Apply** step.
+2. In the step details, select **Output**.
+3. In **Output Name**, locate `TF_JSON_OUTPUT_ENCRYPTED`.
+4. Copy the expression. When you paste it, it will look something like `<+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED>`.
+
+Do not use the **Output Value**, for example `<+secrets.getValue("terraform_output_df1ds123331123122123_LYF5b3")>`.
+
+A secret is masked in Harness logs, but you can write it to a file like this:
 
 ```
+echo <+pipeline.stages.stage1.spec.execution.steps.TerraformApply_1.output.TF_JSON_OUTPUT_ENCRYPTED> | base64 -d > /path/to/file.txt
+```
+
+Here's an example of encrypted Terraform JSON output decoded from base64:
+
+```json
 {
-"test-output-name1": {
-"sensitive": false,
-"type": "string",
-"value": "test-output-value1"
+  test-output-name1: {
+    sensitive: false,
+    type: string,
+    value: test-output-value1
+  },
+  test-output-name2: {
+    sensitive: false,
+    type: string,
+    value: test-output-value2
+  }
 }
 ```
-This secret expression can be used in other steps that can parse, validate, and extract the required output values from the JSON.
+
 
 ## Command line options
 
