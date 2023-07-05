@@ -465,9 +465,9 @@ You can use Harness encrypted text for values. See [Add Text Secrets](/docs/plat
 
 ## Encrypt the Terraform Apply JSON outputs
 
-Currently, this feature is behind the flag, `CDS_ENCRYPT_TERRAFORM_APPLY_JSON_OUTPUT`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this feature is behind the feature flag, `CDS_ENCRYPT_TERRAFORM_APPLY_JSON_OUTPUT`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
-In Optional Configuration it's required to provide a secret manager for the "Encrypt json output" field.
+In **Optional Configuration** of the Terraform Apply step, you must provide a secret manager for the **Encrypt json output** field.
 
 This feature encrypts and provides the Terraform JSON output as a secret expression in the Terraform Apply step. 
 
@@ -481,7 +481,7 @@ Here's an example of encrypted Terraform JSON output as a secret expression: `<+
 "value": "test-output-value1"
 }
 ```
-This secret expression can be used in other steps that can parse, validate,and extract the required output values from the JSON.
+This secret expression can be used in other steps that can parse, validate, and extract the required output values from the JSON.
 
 ## Command line options
 
