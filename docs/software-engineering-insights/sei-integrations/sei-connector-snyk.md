@@ -1,7 +1,7 @@
 ---
 title: SEI Snyk connector
 description: Integrate SEI with Snyk.
-sidebar_position: 160
+sidebar_position: 170
 sidebar_label: Snyk
 ---
 

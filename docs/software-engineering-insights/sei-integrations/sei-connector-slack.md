@@ -1,7 +1,7 @@
 ---
 title: SEI Slack connector
 description: Integrate SEI with Slack.
-sidebar_position: 150
+sidebar_position: 160
 sidebar_label: Slack
 ---
 

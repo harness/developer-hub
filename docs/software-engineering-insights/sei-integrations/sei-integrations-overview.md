@@ -24,14 +24,14 @@ To integrate a tool with SEI, you can use either an application-specific connect
 * [Harness NG](./sei-connector-harnessng.md)
 * [Helix Core Server](./sei-connector-helix.md)
 * [Jira](./sei-connector-jira.md)
+* [Microsoft Teams](./sei-connector-ms-teams.md)
 * [PagerDuty](./sei-connector-pagerduty.md)
 * [PostgreSQL](./sei-connector-postgresql.md)
 * [Salesforce](./sei-connector-salesforce.md)
 * [Slack](./sei-connector-slack.md)
 * [Snyk](./sei-connector-snyk.md)
-* SonarQube 170
-* Splunk 180
-* Teams (Microsoft) 190
+* SonarQube 180
+* [Splunk](./sei-connector-splunk.md)
 * Tenable 200
 * Testtrail 210
 * Zendesk 220

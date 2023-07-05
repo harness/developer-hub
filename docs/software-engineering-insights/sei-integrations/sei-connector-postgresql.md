@@ -1,7 +1,7 @@
 ---
 title: SEI PostgreSQL connector
 description: Integrate SEI with PostgreSQL.
-sidebar_position: 130
+sidebar_position: 140
 sidebar_label: PostgreSQL
 ---
 
