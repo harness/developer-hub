@@ -41,7 +41,7 @@ The flowchart below shows the air-gapped environment installation workflow steps
 To begin your installation, download the following files:
 - [Harness air gap image bundle](https://console.cloud.google.com/storage/browser/smp-airgap-bundles;tab=objects?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=false&pli=1)
 
-   With each Harness Self-Managed Enterprise Edition release, Harness add individual module image files to the air gap image bundle. You can download module `*.tgz` files for only the modules you want to deploy. For example, if you only want to deploy Harness Platform, download the `platform-images.tgz` file. Available image files are:
+   With each Self-Managed Enterprise Edition release, Harness adds individual module image files to the air gap image bundle. You can download module `*.tgz` files for the modules you want to deploy. For example, if you only want to deploy Harness Platform, download the `platform-images.tgz` file. Available image files are:
 
      - Cloud Cost Management: `ccm-images.tgz`
      - Continuous Delivery & GitOps NextGen: `cdng-images.tgz`
@@ -54,6 +54,7 @@ To begin your installation, download the following files:
    
    :::info note
    The `platform-images.tgz` file includes NextGen dashboards and policy management enabled by default. The `cdng-images.tgz` file includes GitOps by default.
+   :::
 
 - Harness airgap images [harness-airgap-images.sh](https://storage.googleapis.com/smp-airgap-bundles/harness-airgap-images.sh)
 
