@@ -24,6 +24,10 @@ You can do the following with a custom trigger:
 * Use a REST call to get deployment status.
 * Start a deployment using a Webhook URL provided by Harness.
 
+import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported.md'
+
+<Variables />
+
 ## Create the custom trigger
 
 1. In your Harness pipeline in pipeline studio, click **Triggers**.
