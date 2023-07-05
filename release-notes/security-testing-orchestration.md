@@ -38,7 +38,7 @@ This release does not include new features.
   <TabItem value="Fixed issues">
 ```
 
-* Fixed an issue where some Reference Identifiers were not listed in the AIDA "edit inputs" form for enhancing a Security Issue's remediation steps. (STO-6102)
+* Fixed an issue where some Reference Identifiers were not listed in the AIDA **Edit Inputs** form for enhancing a Security Issue's remediation steps. (STO-6102)
 
 ```mdx-code-block
   </TabItem>
