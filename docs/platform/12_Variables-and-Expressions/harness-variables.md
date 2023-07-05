@@ -1422,7 +1422,7 @@ Use the following expressions to obtain the `identifierPostFix` for a specific s
 * `<+strategy.node.sg1.identifierPostFix>`: Retrieves the `identifierPostFix` for the node with the identifier sg1 (parent step group).
 * `<+strategy.node.sg2.identifierPostFix>`: Retrieves the `identifierPostFix` for the node with the identifier sg2 (child step group).
 
-![](.static/../static/nested-looping-strategy.png)
+![](./static/nested-looping-strategy.png)
 
 Similarly, you can use other strategy expressions for any specific strategy level if a looping strategy is configured for both the parent and child nodes.
 
