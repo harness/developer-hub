@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-04-26T10:00
+date: 2023-06-30T10:00
 sidebar_position: 13
 ---
 ```mdx-code-block
@@ -14,12 +14,469 @@ import delete_project from './static/delete-project.png'
 ```
 Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes).
 
-## Latest - June 14, 2023, version 79230
+## Latest - June 30, 2023, version 79421
+
+### Known issue
+
+-  Terraform-based pipeline automation does not function correctly in Istio environments. UI operations are not affected. (PL-39776)
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.7.0](https://github.com/harness/helm-charts/releases/tag/harness-0.7.0) |
+| Air Gap Bundle | [0.7.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.7.0;tab=objects?prefix=&forceOnObjectsSortingFiltering=false) |
+| NG Manager | 79421 |
+| CI Manager | 3907 |
+| Pipeline Service | 1.33.8 |
+| Platform Service | 79202 |
+| Access Control Service | 79004 |
+| Change Data Capture | 79421 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.349.16 |
+| LE NG | 67902 |
+
+
+
+
+#### Continuous Integration
+
+- You can now reference [output variables produced by Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables) in pipelines that use Kubernetes cluster build infrastructures. This is an addition to previously-existing support for Harness Cloud and self-hosted Cloud provider VM build infrastructures. (CI-7491)
+
+#### Continuous Delivery & GitOps
+
+- You can now merge templates with identical identifiers. (CDS-47301)
+  
+  A warning pops up when you create a new template with already existing identifiers in the same scope. You can choose to merge the new template with the existing template by selecting the **Save as new version of existing template** button in the warning.
+
+- Trigger artifact and manifest expressions (`<+trigger.artifact.build>` or `<+trigger.manifest.version>`) are now resolved when you rerun a pipeline that was activated by a trigger. (CDS-58192, CDS-50585)
+  
+  Here is a sample resolved YAML: 
+
+  ```
+  {
+    "status": "SUCCESS",
+    "data": {
+        "planExecutionId": "PimcPiwlQ56A2AhWogEM7A",
+        "executionYaml": "pipeline:\n  identifier: \"asda\"\n  name: \"asda\"\n  projectIdentifier: \"test\"\n  orgIdentifier: \"default\"\n  tags: {}\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      name: \"sda\"\n      description: \"\"\n      spec:\n        serviceConfig:\n          serviceRef: \"ads\"\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              variables: []\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    connectorRef: \"Test\"\n                    imagePath: \"library/nginx\"\n                    tag: \"<+trigger.artifact.build>\"\n              manifests: []\n        infrastructure:\n          environmentRef: \"wew\"\n          infrastructureDefinition:\n            type: \"KubernetesDirect\"\n            spec:\n              connectorRef: \"ad\"\n              namespace: \"asd\"\n              releaseName: \"release-<+INFRA_KEY>\"\n          allowSimultaneousDeployments: false\n        execution:\n          steps:\n          - step:\n              identifier: \"sad\"\n              type: \"ShellScript\"\n              name: \"sad\"\n              spec:\n                shell: \"Bash\"\n                onDelegate: true\n                source:\n                  type: \"Inline\"\n                  spec:\n                    script: \"echo \\\"test\\\"\"\n                environmentVariables: []\n                outputVariables: []\n                executionTarget: {}\n              timeout: \"10m\"\n          rollbackSteps: []\n      tags: {}\n      failureStrategies:\n      - onFailure:\n          errors:\n          - \"AllErrors\"\n          action:\n            type: \"StageRollback\"\n",
+        "inputYaml": "pipeline:\n  identifier: \"asda\"\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      spec:\n        serviceConfig:\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    tag: \"<+trigger.artifact.build>\"\n",
+        "resolvedYaml" "pipeline:\n  identifier: \"asda\"\n  stages:\n  - stage:\n      identifier: \"sda\"\n      type: \"Deployment\"\n      spec:\n        serviceConfig:\n          serviceDefinition:\n            type: \"Kubernetes\"\n            spec:\n              artifacts:\n                primary:\n                  type: \"DockerRegistry\"\n                  spec:\n                    tag: \"1.23-perl"\n",
+        "triggerPayload": {
+            "type": "ARTIFACT",
+            "headers": {},
+            "sourcetype": "CUSTOM_REPO",
+            "artifactdata": {
+                "build": "1.23-perl"
+            },
+            "version": 0
+        }
+    },
+    "metaData": null,
+    "correlationId": "1ad40479-c6ff-47e4-9722-db11c0a3ab06"
+  }
+  ```
+
+- You can add metadata or [JEXL conditions](/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/#jexl-conditions) on artifact triggers just like custom triggers. (CDS-51928)
+
+- Added support for accessing connector attributes for Deployment Templates. (CDS-54247)
+  
+  The Harness Delegate version 79307 is required for this feature.
+  
+  The connector attributes for Secret Manager connectors can be accessed in Deployment Templates using the following expressions. 
+  
+  * [AWS KMS](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager): `<+infra.variables.AwsKms.spec.credential.type>`
+  * [AWS Secrets Manager](/docs/platform/Secrets/Secrets-Management/add-an-aws-secret-manager): `<+infra.variables.AwsSecretsManager.spec.region>`
+  * [Azure Key Vault](/docs/platform/Secrets/Secrets-Management/azure-key-vault): `<+infra.variables.AzureKeyVault.spec.vaultName>`
+  * [Google KMS](/docs/platform/Secrets/Secrets-Management/add-google-kms-secrets-manager): `<+infra.variables.GcpKms.spec.keyName>`
+  * [Google Cloud secret manager](/docs/platform/Secrets/Secrets-Management/add-a-google-cloud-secret-manager): `<+infra.variables.GcpSecMan.spec.credentialsRef.identifier>`
+  * [Custom secret manager](/docs/platform/Secrets/Secrets-Management/custom-secret-manager): `<+infra.variables.CustomSecMan.spec.isDefault>`
+  * [HashiCorp Vault](/docs/platform/Secrets/Secrets-Management/add-hashicorp-vault): `<+infra.variables.HashiCorp.spec.vaultUrl>`
+
+- The option to **Auto-Reject previous deployments paused in this step on approval** is added to the Approval step. (CDS-58063)
+  
+  With this option, you can now reject old executions waiting for approval when a latest step is approved. For more information, go to [Manual Approval steps in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages).
+
+- Users can now add input variables of all types when adding an HTTP step from the Harness UI. (CDS-58376)
+  
+  For more information, go to [Input variables](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/http-step/#input-variables).
+
+- Removed support for creating or updating a variable of type `secret` in the Update Release Repo step. (CDS-58530)
+  
+  For example, adding a variable of the type `secret` in an environment will no longer create any entry in the `config.js` file via the Update Repo Step. 
+  
+  All such cases are now ignored by Harness.
+
+- Added support to provide quartz cron expressions for scheduled triggers. (CDS-59261, CDS-59260)
+  
+  The Harness Delegate version 79307 is required for this feature. 
+  
+  For more information, go to [Schedule pipeline using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers/).
+
+- Added support for the **Enforce Git experience for pipelines and templates** Git experience. (CDS-67885)
+  
+  A new Git experience is introduced, **Enforce git experience for pipelines and templates**. Enabling this setting lets you create only remote pipelines and templates. If this setting is enabled, then the `InputSet` is out of scope as it is controlled by the pipelines.
+
+#### Harness Delegate
+
+- Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SRM-14724)
+
+#### Harness Platform
+
+- You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
+
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- AuthZ now considers the SAML setting that the user logged into when multiple SAML settings are present and the user belongs to more than one of them. The user is removed from any other SAML settings that the same user might have been part of, and synced with Harness through previous SAML logins. (PL-32484)
+
+- The **Connector Details** page now shows whether a connector is connected via a delegate or via Harness Platform. (PL-32673)
+
+- The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set a secret expiration date. The Harness Delegate version 79307 is required for this feature. (PL-32708, PL-38465, ZD-42524)
+
+#### Service Reliability Management
+
+- New errors are introduced to provide a comprehensive insight into SLO's performance. (SRM-14549) 
+  
+  Now, errors are displayed in the following scenarios:
+  
+  - Ongoing Problem: Errors are displayed when an SLO experiences an ongoing problem, such as an issue with the health of a connector.
+  
+  - Missing Data: Errors are shown when there is missing data in an SLO, even if there is no current error. This helps identify any gaps in historical SLO records.
+  
+  - Contributing SLO Issues: Errors in contributing SLOs are now reflected in the composite SLO, ensuring a complete picture of performance when individual components encounter problems.
+
+- You can now configure your monitored service to trigger notifications whenever there are updates or changes related to chaos experiments or feature flags. (SRM-14553)
+
+- In the event of an SLO encountering an error, it is now displayed in the respective Simple and Composite SLOs. Additionally, when the underlying issue causing data collection failures is resolved, the missed data that couldn't be collected during the error period will be restored. However, there is a 24-hour time limit for data restoration. For example, if the issue is resolved within 48 hours, only the last 24 hours of data is restored. (SRM-14672)
+
+- Selecting a Prometheus metrics entry in the Service Health page of a monitored service directly navigates you to the Prometheus metrics dashboard. (SRM-14699)
+
+- The Monitored Service listing page now displays a summary of changes related to the number of feature flags and chaos experiments, along with the other custom change sources. (SRM-14742)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+#### Continuous Integration
+
+- **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. (CI-8135, CI-8048)
+
+   The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
+
+#### Continuous Delivery & GitOps
+
+- Trigger all artifacts and manifests using **On New Artifact** and **On New Manifest** triggers respectively. (CDS-68262, ZD-43588, ZD-43726)
+  
+  This functionality is behind a feature flag, `TRIGGER_FOR_ALL_ARTIFACTS`. 
+
+  Earlier, you could trigger only the last pushed artifact or manifest using triggers. You can now trigger all collected artifacts and manifests of perpetual tasks in one single execution using the **On New Artifact** or **On New Manifest** trigger options. 
+
+- Config files can now be pulled from Github. (CDS-56652, CDS-68530)
+  
+  This functionality is behind a feature flag, `CDS_GIT_CONFIG_FILES`.
+
+  For Harness services using the Tanzu deployment type, config files can be configured using Github, in addition to the Harness file store. Support for other deployment types in coming soon.
+
+#### Harness Delegate
+
+- New delegate metrics are available. This functionality is behind a feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. (PL-37908, PL-38538)
+
+   Harness captures delegate agent metrics for delegates shipped on immutable image types. The following new delegate agent metrics are available with the feature flag:
+  
+   | **Metric name** | **Description** |
+   | :-- | :-- |
+   | `task_completed` | The number of tasks completed. |
+   | `task_failed` | The number of failed tasks. |
+   | `task_rejected` | The number of tasks rejected because of a high load on the delegate. |
+   | `delegate_connected` | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
+   | `resource_consumption_above_threshold` | Delegate CPU/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. |
+
+   Enable the feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST` to use the new delegate agent metrics. When this feature flag is enabled, Harness will capture the metrics. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+#### Continuous Integration
+
+- When manually running a pipeline, you can choose to run specific stages, rather than the entire pipeline. Previously, if you chose to run only stages with **Clone Codebase** disabled, you were blocked by a field validation error requiring you to populate the **Git Branch** and **Repository** fields, which weren't visible. This has been fixed so that you are only asked to provide codebase information if **Clone Codebase** is enabled for at least one of the selected stages. (CI-7559, CI-7934 ZD-41974, ZD-43980, ZD-44041)
+
+- If you run a pipeline that uses a Kubernetes cluster build infrastructure and step templates with empty `connectorRef` and `image` values, the resulting error message is more accurate and informative. (CI-7785)
+
+- Previously, test splitting didn't work with step-level parallelism on a Kubernetes cluster build infrastructure due to the way certain environment variables were read. This is fixed. (CI-7800, CI-7803, ZD-43259, ZD-43272)
+
+- In step templates for **Run**, **Run Tests**, and **Background** steps, the `connectorRef` and `image` settings are now optional because these settings are not required for all build infrastructures. Validations are triggered when you use these templates in a pipeline that requires these settings. (CI-7845)
+
+- [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) now supports caching subdirectory builds. (CI-7853)
+
+- Fixed an issue where passing an empty runtime input value for the **Dockerfile** setting in a [Build and Push an image to Docker Registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) step didn't resolve properly. (CI-7912, ZD-43490)
+
+- Fixed an issue where running multiple [Build and Push an image to Docker Registry](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-to-docker-hub-step-settings) steps [in parallel](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) could result in multiple copies of the same image being pushed to the Docker repository. While the image names were different, the underlying image was the same. (CI-8039)
+
+- Previously, in situations where a build pod wasn't created, an error occurred when the cleanup event couldn't find details of a pod to cleanup. Now, handling has been added to avoid this error. (CI-8065)
+
+- Fixed an issue where Git status updates failed if the Azure repository/project name had white space. Harness now decodes white spaces in URLs so the Git status update request can succeed. The [Harness Delegate version 79503 or later](/release-notes/delegate) is required for this fix. (CI-8105, ZD-44679)
+
+#### Continuous Delivery & GitOps
+
+- Spot Elastigroup deployments failed to fetch instance health and expired. (CDS-56451, ZD-41436)
+  
+  Harness improved the handling mechanism for the Spot `instanceHealthiness` API to fix this issue.
+
+- Fixed an issue by adding support for retrying `sockettimeoutExceptions` as they can occur due to intermittent issues during a Kubernetes deployment. (CDS-57688)
+
+- Fixed an issue where the delegate select field is empty in the UI even if a delegate is present in the YAML. (CDS-58188)
+
+- Rollback step logs were empty when the ASG deployment is rolled back due to errors. (CDS-59152)
+  
+  This issue is fixed by adding descriptive error messages for the ASG Blue Green deployment Rollback step.
+
+- Harness displays an error message when the ASG configuration or ASG launch template is missing from the ASG deployment config file. (CDS-59154)
+
+- The **Save** button greyed out when variables were added or updated in a service template. (CDS-59320, ZD-43110)
+  
+  Users can now use the **Save** button when variables are added or updated in a service template.
+
+- The Harness UI hid the **Interrupts** button for chained pipelines for multi-service and multi-environment cases. (CDS-59374)
+  
+  Previously, the parent pipeline's **planExecutionId**, **projectId**, and **orgId** were passed in the child pipeline, and hence, the interrupt functionality for chained pipeline was not working. This issue is fixed by passing the the correct **planExecutionId**, **projectId**, and **orgId** for the child pipeline. There is no need to hide these buttons anymore.
+
+- Fixed an issue in the the Harness Delegate version 79307 by eliminating NPE during ASG pipeline execution. (CDS-59383)
+
+- Instance sync was not implemented for Azure Kubernetes Service (AKS). (CDS-59544)
+  
+  Performance improvements on AKS infrastructure type instance sync improved. The service instance data from the cluster now appears on the service dashboard faster.
+
+- Fixed the following issues in the Sync step. (CDS-59624)
+  
+  * Sync step error for account level agents.
+  * Unable to close log streams.
+  * Random values in the expressions are considered as false values.
+
+- The error message displayed when the getTemplate or merge API call failed was unclear. (CDS-67500)
+  
+  The error message now displays **Pipeline Run Failed For Repo: xx, And Branch: xx**.
+
+- Improved the **Run Pipeline** page error message by adding FQN expressions to suggest the variable name whenever the evaluation fails. (CDS-67559)
+
+- Adding a pipeline tag to a branch affects all branches. (CDS-67983, ZD-43144)
+  
+  Pipeline tags are now picked from the pipeline data in Harness whenever available. This prevents tags from changing branches if pipelines are saved remotely.
+
+- Pipelines with multi-level templates displayed Java errors because a secret was referenced by another secret. (CDS-68094)
+  
+  This issue is fixed in the Harness Delegate version 79307 by improving the error messages.
+
+- Fixed an issue where tabular data was not showing up properly in service dashboards for empty artifacts. (CDS-68100)
+
+- Unable to create a Physical Data Center (PDC) connector if the hostname definitions has more than 1000 characters. (CDS-68136)
+  
+  Extended character length support is now provided for the PDC connector hostname definitions to accommodate lengthy host and connector names.
+
+- The Terraform Plan step failed when an account-level secret manager was selected and the feature flag, `CDS_NOT_ALLOW_READ_ONLY_SECRET_MANAGER_TERRAFORM_TERRAGRUNT_PLAN` was enabled. (CDS-68140)
+
+  This issue is now fixed.
+
+- The access denied exception was saving the OAuth secret in the Harness Source Code Manager (SCM) user profile. (CDS-68144)
+  
+  This issue is fixed in the Harness Delegate version 79307 by passing the context correctly from the SCM service to the Git service. 
+
+- Made code enhancements to prevent disabling triggers if validation fails during runtime. (CDS-68168, ZD-43588)
+  
+  Triggers were automatically disabled if Harness failed to fetch templates when validating a pipeline trigger. This was the expected behavior as Harness disables the trigger if pipeline validation fails. 
+  
+  Triggers are not disabled now even if pipeline validation fails.
+
+- Helm charts were not being listed in a Helm service. (CDS-68193, ZD-43655)
+  
+  This issue is fixed by adding a Helm version query parameter in the API call to fetch charts dependent on the user's Helm version.
+
+- Executions were failing with the error message `Canary failed: [Canary Deployment failed - NoSuchMethodError: org.yaml.snakeyaml.constructor.SafeConstructor: method 'void <init>()' not found ]`. (CDS-68293, ZD-43753, ZD-43769)
+  
+  The Fabric8 library used by Harness is upgraded from version 5.x to 6.x. Harness was explicitly using snake.yaml version 2.x due to vulnerabilities present in the 1.x version.
+  
+  Harness' usages of Fabric8 library were throwing the above mentioned because Fabric8 library version 5.12.1 uses the old snake.yaml library version 1.x.
+
+  Customers who were using the following were affected:
+    - FirstGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - FirstGen Traffic Split step.
+    - FirstGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+    - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+
+  This issue is fixed in the Harness Delegate version 79307. This change does not create any behavioral changes.
+
+- The Harness UI displayed incorrect default value for conditional execution. (CDS-68600)
+  
+  Previously, when you created a new pipeline, if you didn't have any default value for conditional execution, the Harness UI showed that the **Execute this step if the stage execution is successful thus far** was selected, but the YAML view didn't reflect the same.
+
+  This issue is fixed. If no options are selected, then the default strategy will be applied from the backend at runtime.
+
+- Encrypted config file opens secret text instead of secret file. (CDS-68601)
+  
+  Config files should only support encrypted files, so we removed encrypted text for config files in the Harness store.
+
+- A force delete option appeared when deleting a template referenced by another template. This deleted the referenced template, but the remaining versions were no longer visible on the UI. (CDS-68683)
+  
+  Added additional test coverage for some workflows to resolve this issue.
+
+- Fixed an issue where the expressions of tags were not rendered properly. This issue is fixed in the Harness Delegate version 79307. (CDS-68703, ZD-43797)
+
+- Fixed an issue where error logs were removed to stop error flooding into GCP logs when Git authentication fails. (CDS-68760)
+
+- Multi-service stage templates could not be saved with fixed values. (CDS-68848, ZD-44569)
+  
+  Users were unable to save multi-service pipelines when changing the type from **Runtime** to **Fixed Value**.
+  
+  This is now fixed and you can save multiple services as fixed values in stage templates.
+
+- Deployment template connector variable expressions were not resolving. (CDS-68880)
+  
+  You can access information about the connectors used in a deployment template using connector variable expressions (for example, `<+stage.spec.infrastructure.output.variable.[name]>`). 
+  
+  <docimage path={require('./static/0e40fbf0db025ce3330a7b4e7352a8203acb51d5a06653b1b010a279e2f42cc5.png')} width="60%" height="60%" title="Click to view full size image" />
+  
+  This issue is fixed.
+
+- CD license utilization data was not reported for some accounts. (CDS-69101)
+  
+  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
+
+  This issue has been resolved. The license usage now retrieves the required information in batches to avoid read timeout.
+
+- Pipelines services listing was limited to 100. (CDS-69273)
+  
+  Now the services list is paginated and all services can be viewed.
+
+- The getTriggerDetails API was returning incorrect code (CDS-69329, ZD-44372)
+  
+  The [getTriggerDetails](https://apidocs.harness.io/tag/Triggers/#operation/getTriggerDetails) API was returning a 200 status code when it was not able to find a Trigger. Now it returns a 404 status code and appropriate error message.
+
+- Infrastructure provisioning steps were missing for Google Function and AWS Lambda	Serverless	deployment types. (CDS-69595)
+  
+  Now both deployment types include [infrastructure provisioning steps](https://developer.harness.io/docs/category/provision-infrastructure).
+
+- Bamboo triggers were not working properly. (CDS-69605)
+  
+  Adding the Bamboo build to the delegate response resolved this issue. 
+
+- Selecting stages in Triggers was resetting to all stages in the YAML editor. (CDS-69725)
+  
+  Now Harness avoids sending multiple API calls for merge, and selecting stages works as intended.
+
+  ![picture 88](static/ee0f296b5c9ed5249f409415b8a1dbb6b901ceed5e3b7118ee1ad40a6f93b77d.png)
+
+#### Harness Platform
+
+- The secrets list API return a status code of `200` when permissions are missing. (PL-26474)
+
+  The API now returns a status code of `403` when permissions are missing on secrets.
+
+- The error message displayed when permissions are missing during pipeline execution does not mention the corresponding resource Id. (PL-31350)
+
+  A code enhancement to display the resource ID in the error message fixed this issue.
+
+- Invites to users fail with an unauthorized error while RBAC setup is still in progress. (PL-32117)
+
+  A polling system ensures that RBAC setup has been completed. The Harness Delegate version 79307 is required for this fix.
+
+- The comparison of email addresses during sign-in is case-sensitive. (PL-32198)
+
+  A code enhancement has fixed this issue.
+
+- Custom Secret Manager creation does not consider the delegate selector. (PL-32260)
+
+  In Custom SM configuration, decrypting secrets using the SSH connection to validate delegate selection fixed this issue.
+  The Harness Delegate version 79307 is required for this fix.
+
+- The creation of SSH or WinRM secrets in a project or organization after disabling Harness' built-in secret manager is not supported. (PL-32562)
+  
+  A code enhancement has fixed this issue.
+
+- The **LAST ACTIVITY** column in the **Connector List** page is not updated. (PL-32582, ZD-42966)
+  
+  This column has been removed, and the UI no longer displays this.
+
+- The error message displayed during pipeline execution when connector permissions are missing is unclear. (PL-32662)
+
+  A code enhancement to display an appropriate error message fixed this issue.
+
+- The email step in the pipeline succeeds and is not marked as failed, even if email delivery fails. (PL-38440, ZD-43831)
+  
+  A code enhancement fixed this issue.
+
+- The email address is displayed instead of the display name for users created through Okta. (PL-38479, ZD-43201)
+  
+  A code enhancement to populate name with the display name fixed the issue.
+
+- The SSH secret reference gets created even if secret creation fails due to a validation error. (PL-38549, ZD-44073)
+
+  Reference creation now only occurs if the SSH secret is created.
+
+- Delegate instances that do not shut down gracefully and do not come back online are removed from the UI after three hours. (PL-38755)
+
+   This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+#### Feature Flags
+
+- The Target and Target Group pages reported successful save and edit operations before the operations completed. This issue has been fixed. (FFM-7609)
+
+- The toggle for turning Git Sync on and off was causing the branch settings menu to disappear and display the **Set Up Git Sync** button incorrectly. This issue has been fixed. (FFM-7786)
+
+- Previously, display of the FF module depended on an internal Harness feature flag. Now, display of the FF module is instead based on having an active license (including 'free'). (FFM-7866)
+
+#### Service Reliability Management
+
+- The last updated date and time of monitored services and SLOs are changing automatically even when no configuration changes were made. (SRM-14543)  
+
+  - This issue has been resolved. Now, the last updated date and time will change only when modifications are made to the configuration of the monitored services and SLOs.
+
+- Error budget burn rate notifications are not being sent for composite SLOs. (SRM-14658)  
+
+    This issue has been resolved, and error budget burn rate notifications are now being sent for composite SLOs.
+
+- Unable to create SLO using SignalFX metrics. (OIP-406)  
+
+  This issue has been resolved. Now, SignalFX's health source supports SLI functionality, and you can create SLOs using SignalFX metrics.
+
+- On the Composite SLO Details page, the environment links under the monitored services were broken. (SRM-14645)  
+  
+  This issue has been resolved. Now, clicking on the environment link correctly displays the SLOs page for the respective monitored service.
+
+- Missing data in SLOs was not considered in error budget burn rate notifications. (SRM-14682)  
+
+  - This issue has been resolved. Now the missing data is treated according to user preference (GOOD, BAD, or IGNORE), contributes to error budget burn rate, and is included in notifications.
+
+- Encountering an error when configuring monitored services using the Harness Terraform provider. (SRM-14684)  
+  
+  The Harness Terraform provider was sending the Terraform resource incorrectly, resulting in the error. This issue has been resolved.
+
+- The ErrorBudgetReset API is incorrectly accepting Rolling type SLOs along with Calendar type SLOs. (SRM-14692)  
+
+  This issue has been resolved. Now, the ErrorBudgetReset API only accepts Calendar type SLOs.
+
+- Error budget burn rate notifications are not being sent for Request Based SLO. (SRM-14705).  
+  
+    This issue has been resolved, and error budget burn rate notifications are now being sent for Request Based SLO also.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 14, 2023, version 79230
 
 This release includes the following Harness module and component versions.
 
@@ -35,6 +492,8 @@ This release includes the following Harness module and component versions.
 | Test Intelligence Service | release-172 |
 | NG UI | 0.347.19 |
 | LE NG | 67808 |
+
+#### What's new
 
 #### Self-Managed Enterprise Edition
 
@@ -241,17 +700,15 @@ This release includes the following Harness module and component versions.
 
 - An icon appears on the SLO performance trend chart timeline to indicate when the error budget was reset and the amount of budget that was added. (SRM-14550)
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
-#### Harness Delegate
+#### Early access
+
+##### Harness Delegate
 
 - Added the ability to use delegate credentials to access the Google Cloud Platform Secret Manager. (PL-31248)
 
-   This functionality is behind a feature flag,`PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM`.
+   This functionality is behind a feature flag, `PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM`.
 
-##### Continuous Delivery & GitOps
+#### Continuous Delivery & GitOps
 
 - ServiceNow custom table support. (CDS-55046)
   
@@ -350,13 +807,11 @@ This release includes the following Harness module and component versions.
   
   Variable expressions are not supported for encrypted text config files because expressions impact the encoded secret.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+#### Fixed issues
+
 #### Self-Managed Enterprise Edition
 
-- Attempts the sign up URL failed. (SMP-1186)
+- Sign up URL attempts failed for DoD IL5 installations. (SMP-1186)
 
     This issue is fixed by using in-cluster DNS to route from container to container. You can now use LoadBalancer to reroute traffic from your Harness gateway pod to other pods, or you can use an Nginx/Istio gateway.
 
@@ -659,16 +1114,6 @@ This release includes the following Harness module and component versions.
 - The **Error Budget Burn Rate is above** SLO notification setting was not triggering notifications, even when the condition was met. (SRM-14613)  
   
   This issue has been resolved and notifications are being triggered when the **Error Budget Burn Rate is above** condition is met.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 30, 2023, patch release for version 78926
 

@@ -69,6 +69,18 @@ export const featureList: CardItem[] = [
     link: "tutorials/error-tracking",
   },
   {
+    title: "Improve Developer Productivity",
+    module: MODULES.idp,
+    icon: "img/icon_idp.svg",
+    description: (
+      <>
+        Streamline software development and knowledge sharing with a developer-focused portal.
+      </>
+    ),
+    type: [docType.Documentation],
+    link: "docs/category/tutorials",
+  },
+  {
     title: "Administer Harness Platform",
     module: MODULES.platform,
     icon: "img/logo.svg",
@@ -81,16 +93,5 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
     link: "tutorials/platform",
   },
-  {
-    title: "Improve Productivity",
-    module: MODULES.idp,
-    icon: "img/icon_idp.svg",
-    description: (
-      <>
-        Streamline software development and knowledge sharing with a developer-focused portal.
-      </>
-    ),
-    type: [docType.Documentation],
-    link: "docs/category/tutorials",
-  },
+
 ];

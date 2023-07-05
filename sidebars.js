@@ -437,7 +437,7 @@ const sidebars = {
    // KB Link from Docs
    {
     type: "link",
-    label: "KB",
+    label: "Knowledge Base",
     href: "/kb",
   },
   // Community Link from Docs

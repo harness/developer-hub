@@ -62,7 +62,7 @@ Test Intelligence (TI) runs as a service, agnostic to the CI solution. The TI se
 
 During a build, there is a selection phase where the TI service uses the list of added/modified files with the call graph to identify which tests to run.
 
-The TI service can also receive real-time Git webhook notifications for any commit or merge. The TI service pulls the Git commit-graph and other metadata from Git for test selection and ordering. When the TI test runner agent sends a call graph generated from a PR, the TI service keeps that data in a staging area in case the PR doesn't get merged in to `main`. Once the TI receives the merge notification from Git, it updates and inserts the partial call graph with the `main` call graph.
+The TI service can also receive real-time Git webhook notifications for any commit or merge. The TI service pulls the Git commit-graph and other metadata from Git for test selection and ordering. When the TI test runner agent sends a call graph generated from a PR, the TI service keeps that data in a staging area in case the PR doesn't get merged into the target branch (such as `main`). Once the TI receives the merge notification from Git, it updates and inserts the partial call graph with the target branch's call graph.
 
 ### Test Runner Agent
 
@@ -76,7 +76,7 @@ TI identifies the programming language and uses the **Run Tests** step to run th
 
 ## Synchronization and test selection
 
-TI is always up to date and syncs when you merge the code to the `main` branch.
+TI is always up to date and syncs when you merge code to any branch.
 
 When you perform a pull request, TI determines which tests should be run based on the following metrics:
 

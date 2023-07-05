@@ -50,7 +50,7 @@ const sidebars = {
     // KB Link from Certs
     {
       type: "link",
-      label: "KB",
+      label: "Knowledge Base",
       href: "/kb",
     },
     // Community Link from Certs

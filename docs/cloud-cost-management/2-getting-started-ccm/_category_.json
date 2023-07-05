@@ -1,1 +1,12 @@
-{"label": "Get started", "collapsible": "true", "collapsed": "true", "className": "red", "link": {"type": "generated-index", "title": "Get started"}, "customProps": {"position": "10", "helpdocs_category_id": "nprch36pwj"}}
+{
+    "label":"Get started",
+    "position": 2,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Get started"
+    }
+    }
+ 
