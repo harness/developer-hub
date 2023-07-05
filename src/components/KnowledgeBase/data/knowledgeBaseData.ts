@@ -14,6 +14,18 @@ export type CardItem = {
 
 export const knowledgeBaseList: CardItem[] = [
   {
+    title: "Verifying New Deployment Metrics with Continuous Verification",
+    module: MODULES.cd,
+    date: "July 05, 2023",
+    link: "/kb/continuous-delivery/cv-new-deployment-metrics",
+  },
+  {
+    title: "Debugging AKS Permission Issues",
+    module: MODULES.cd,
+    date: "June 22, 2023",
+    link: "/kb/continuous-delivery/aks-permission-issues",
+  },
+  {
     title: "Multi Service Deployments with Continuous Verification",
     module: MODULES.cd,
     date: "May 05, 2023",
