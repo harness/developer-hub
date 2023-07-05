@@ -1256,7 +1256,6 @@ For details on these deployment types, go to [Secure Shell (SSH) deployments](/d
 
 To use these instance expressions in a step, you must use the repeat [Looping Strategy](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
 
-
 ```
 repeat:  
   items: <+stage.output.hosts>
