@@ -24,8 +24,8 @@ To integrate a tool with SEI, you can use either an application-specific connect
 * [Harness NG](./sei-connector-harnessng.md)
 * [Helix Core Server](./sei-connector-helix.md)
 * [Jira](./sei-connector-jira.md)
-* PagerDuty
-* PostgreSQL
+* [PagerDuty](./sei-connector-pagerduty.md)
+* [PostgreSQL](./sei-connector-postgresql.md)
 * Salesforce
 * SCM Cloud Integrations (GitHub Cloud, GitLab Cloud, Bitbucket Cloud) <!-- combine w relevant SCM pages -->
 * Slack
