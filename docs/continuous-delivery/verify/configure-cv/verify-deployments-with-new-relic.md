@@ -1,7 +1,7 @@
 ---
 title: New Relic
 description: Verify deployments with New Relic.
-sidebar_position: 8
+sidebar_position: 9
 helpdocs_topic_id: p8lqq2il39
 helpdocs_category_id: 9mefqceij0
 helpdocs_is_private: false

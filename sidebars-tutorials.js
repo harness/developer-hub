@@ -89,7 +89,7 @@ const sidebars = {
             },
           ],
         },
-        
+
         // Orchestrate Security Tests - security-testing-orchestration
         {
           type: "category",
@@ -124,8 +124,8 @@ const sidebars = {
           ],
         },
 
-         // Track Errors - error-tracking
-         {
+        // Track Errors - error-tracking
+        {
           type: "category",
           label: "Track Errors",
           link: {
@@ -157,7 +157,30 @@ const sidebars = {
       ],
     },
 
-    //Additional Items in this parent can go here.
+    // Docs Link from Tutorials
+    {
+      type: "link",
+      label: "Documentation",
+      href: "/docs",
+    },
+    // Cert Link from Tutorials
+    {
+      type: "link",
+      label: "Certifications",
+      href: "/certifications",
+    },
+    // KB Link from Tutorials
+    {
+      type: "link",
+      label: "Knowledge Base",
+      href: "/kb",
+    },
+    // Community Link from Tutorials
+    {
+      type: "link",
+      label: "Community",
+      href: "/community",
+    },
   ],
 };
 

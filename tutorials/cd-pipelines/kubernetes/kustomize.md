@@ -325,7 +325,7 @@ A Harness GitOps Repository is a repo containing the declarative description of 
 - Choose **Git**.
     - Enter a name in **Repository**.
     - In **GitOps Agent**, choose the Agent that you installed in your cluster and select **Apply**.
-    - In **Git Repository URL**, paste [https://github.com/GITHUB_USERNAME/harnesscd-example-apps.git](https://github.com/GITHUB_USERNAME/harnesscd-example-apps.git) and replace **GITHUB_USERNAME** with your GitHub username.
+    - In **Git Repository URL**, paste `https://github.com/GITHUB_USERNAME/harnesscd-example-apps.git` and replace **GITHUB_USERNAME** with your GitHub username.
     - Select **Continue**, and then choose **Specify Credentials For Repository**.
         - Choose **HTTPS** as the **Connection Type**.
         - Select **Anonymous (no credentials required)** as the **Authentication** method.

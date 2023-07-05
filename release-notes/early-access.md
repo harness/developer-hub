@@ -4,13 +4,44 @@ date: 2023-06-19T10:00
 sidebar_position: 2
 ---
 
-Review the notes below to learn about the early access (aka BETA) features in Harness NextGen SaaS across all Harness modules and the Harness Platform. Early access features require a feature flag. For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
+Review the notes below to learn about the early access (aka beta) features in Harness NextGen SaaS across all Harness modules and the Harness Platform. Early access features require a feature flag. For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 19, 2023
+
+## Latest - June 28, 2023
+
+### Continuous Delivery, version 79714
+
+import Earlyaccess from '/release-notes/shared/cd-79700-early-access.md'
+
+<Earlyaccess />
+
+## June 21, 2023
+
+**Harness launches Harness AI Development Assistant as a beta feature**
+
+The Harness platform leverages Harness AI Development Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software development lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empowers teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
+
+Following are some key benefits of Harness AIDA:
+
+- Auto-recognition of failures in pipelines: The root cause analysis (RCA) option generates recommendations for step failures in pipelines. Harness bases these recommendations on the step logs and the context of the failed step.
+  For more information, go to [Troubleshooting with AIDA](http://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida).
+
+- Asset governance: The asset governance feature assists you in drafting rules that are based on your requirements and aligned with your governance goals. Harness AIDA governance support also offers detailed descriptions of built-in rules. When you are creating policies, this feature facilitates informed decision-making by clarifying the purpose, scope, and implications of each rule.
+  For more information, go to [Asset governance with AIDA](https://developer.harness.io/docs/category/harness-aida-for-asset-governance).
+  
+- Security: Harness AI identifies security vulnerabilities, describes them, and suggests remediation.
+  For more information, go to [Remediations with AIDA](https://developer.harness.io/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
+
+Review the following information for details about data privacy and terms of use:
+
+- [AIDA Terms](https://www.harness.io/legal/aida-terms)
+- [AIDA Privacy](https://www.harness.io/legal/aida-privacy)
+
+## June 19, 2023
 
 ### Continuous Integration, version 4204
 

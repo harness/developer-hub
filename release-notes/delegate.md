@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-06-07T10:00
+date: 2023-06-28T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -19,9 +19,9 @@ Harness Delegate, NextGen SaaS releases every two weeks. Harness Platform, NextG
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest release - June 9, 2023, Harness version 79516, Harness Delegate version 79503
+## Latest - June 28, 2023, Harness version 79714, Harness Delegate version 79707
 
-Harness NextGen release 79516 includes the following changes for the Harness Delegate.
+Harness NextGen release 79714 includes the following changes for the Harness Delegate.
 
 ### Deprecation notice
 
@@ -36,6 +36,91 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
 This release introduces the following new features and enhancements:
 
+- You can now see disconnected delegate details in selection logs and error messages when there are no eligible delegates in an active state to execute tasks. (PL-37900)
+
+- The delegate JRE is upgraded to 11.0.19_7. (PL-37994)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release includes the following early access feature:
+
+- Added a new field in the release history for Blue Green deployments to differentiate between environments. (CDS-69961)
+
+  Enable the feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG` to leverage this feature. 
+
+  This is an enhancement to the Kubernetes Blue Green Stage Scale Down step. You can now scale down your last successful stage environment only if the primary resources exist. This enhancement helps you efficiently manage your resources, and prevent deleting the important resources.
+
+  Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
+  
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+This release includes the following fixes:
+
+- A project-level template crashed when opened. (CDS-71980, ZD-45950)
+
+  The three hyphens, `---` used in the YAML as YAML document separator was being replaced by `---\n` with an empty string due to a logic in the code. This logic made the YAML invalid. 
+
+  This issue is fixed by disabling `YAMLGenerator.Feature.WRITE_DOC_START_MARKER` in the YamlUtils to stop the YAML document separator `---` from being added to the YAML. 
+
+- Fixed an issue where the applications created outside Harness were deleted during rollback if a Tanzu Application Services (TAS) Rolling deployment failed the first time. (CDS-71397)
+
+- Pipeline execution failed when a variable whose required field is set to `TRUE` is passed as an expression. (CDS-71357, ZD-45615)
+
+  Harness checks for the value of the variable whose required field is set to `TRUE`, and the pipeline failed if the value was empty. This issue occurred when Harness checked for the value of variables that were passed as expressions. The value of expressions cannot be resolved during pipeline creation. 
+
+  This issue is fixed by ignoring the check for variables passed as an expression. 
+
+- Creating a launch template for an AWS Auto Scale Group (ASG) deployment resulted in a null pointer exception. (CDS-71235)
+
+  This issue is fixed by adding proper validation for the ASG launch template manifest content.
+
+- Improved the error message for pipeline execution failures when running a pipeline that has nested [chained pipelines](/docs/platform/pipelines/pipeline-chaining/). (CDS-69578, ZD-44443)
+- CloudFormation deployment failed with an unclear error message, `# Exception: Invalid request: Template format error: YAML not well-formed. (line 1, column 40) (Service: AmazonCloudFormation; Status Code: 400; Error Code: ValidationError; Request ID: 7685da0b-c14a-47e2-afe5-9e4ffde536c6; Proxy: null) while Updating stack: pipeline-demo.`. (CDS-68866, ZD-44165)
+
+  When a multi-line string was passed as input for a child pipeline, the string was being converted to a single line. 
+
+  This issue is fixed. Instead of passing data using YAML, Harness now uses JSON for data processing. This helps preserve multi-line strings and YAML structures properly to process pipeline YAML and user inputs. Enable the feature flag, `PIE_PROCESS_ON_JSON_NODE` to leverage this fix.
+
+- Fixed an issue where the expression, `<+lastPublished.tag>.regex()` was not resolved properly when used as runtime input for artifacts. (CDS-68810)
+
+- Quotations were added to execution YAML strings inconsistently when comparing pipeline YAMLs. (CDS-67637)
+
+  This issue is fixed by enabling `MINIMIZE_QUOTES` for YamlUtils and YamlPipelineUtils classes. The compiled YAML no longer has quotations around strings where they are not needed, but only around numbers. Even if you had added quotations in the string values in the pipeline YAML, they'll be removed in the compiled YAML. Also, there won't be unnecessary audit trails where the diff only has quotations around strings.
+
+- Error collecting metric data when encountering "null" values returned by metric queries. (OIP-551)
+
+   This issue has been resolved by ignoring null data points and using valid data points in the window.
+
+- Account-level connectors with resource groups set to **Specified** were not available at the project-level. (PL-38828)
+
+   This issue is fixed with a code enhancement. The connectors list now shows the connectors for which users have resource group permissions set.
+
+- The account-level **Session Timeout (in minutes)** allowed values greater than the 4320 minute maximum. (PL-32498)
+
+   This issue has been resolved by adding a code validation. The field no longer accepts values above 4320 minutes.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>Expand this section to view changes to previous releases</summary>
+
+#### June 9, 2023, Harness version 79516, Harness Delegate version 79503
+
+Harness NextGen release 79516 includes the following changes for the Harness Delegate.
+
+##### What's new
+
 - Send emails to non-Harness users. (CDS-58625, ZD-42496)
   
   To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
@@ -44,13 +129,7 @@ This release introduces the following new features and enhancements:
 
 - Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SRM-14724)
 
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
-
-This release includes the following early access features and enhancements:
+##### Early access
 
 - Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
   
@@ -62,14 +141,9 @@ This release includes the following early access features and enhancements:
 
 - Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. (CDS-59011)
 
-  This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. 
-  
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+  This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`.
 
-This release includes the following fixes:
+##### Fixed issues
 
 - Enhanced handling and logging for the `No enum constant io.harness.delegate.message.MessengerType.WATCHEIN` exception to enable the actual malformed message. This error indicates that a message is malformed and only occurs when there is an error during writing, for example, out of disk, process killed, etc. (PL-38245)
 
@@ -111,22 +185,11 @@ This release includes the following fixes:
 
 - Fixed an issue where the `eventPayload` expressions were not resolving when rerunning a failed pipeline that was previously fired by using a trigger. (CDS-70559)
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>Expand this section to view changes to previous releases</summary>
-
-
-## May 23, 2023, Harness version 79306, Harness Delegate version 79307
+#### May 23, 2023, Harness version 79306, Harness Delegate version 79307
 
 Harness NextGen release 79306 includes the following changes for the Harness Delegate.
 
-#### What's new
+##### What's new
 
 - Added support to provide quartz cron expressions for scheduled triggers. (CDS-59261, CDS-59260)
 
@@ -148,7 +211,7 @@ Harness NextGen release 79306 includes the following changes for the Harness Del
 
 - The Azure Key Vault secret manager now supports creating secrets with expiration dates. Select **Expires On** to set a secret expiration date. (PL-32708, ZD-42524)
 
-#### Early access
+##### Early access
 
 - New delegate metrics are available. This functionality is behind a feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. (PL-37908, PL-38538)
 
@@ -165,7 +228,7 @@ Harness NextGen release 79306 includes the following changes for the Harness Del
    Enable the feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST` to use the new delegate agent metrics. When this feature flag is enabled, Harness will capture the metrics. For more information, go to [Configure delegate metrics](/docs/platform/delegates/manage-delegates/delegate-metrics/).
 
 
-#### Fixed issues
+##### Fixed issues
 
 - Fixed an issue where the expressions of tags were not rendered properly. (CDS-68703, ZD-43797)
 
@@ -217,7 +280,7 @@ Harness NextGen release 79306 includes the following changes for the Harness Del
 
 Harness NextGen release 79111 includes the following changes for the Harness Delegate.
 
-#### What's new
+##### What's new
 
 - Added the following metrics for immutable delegates that you can scrape via Prometheus: (DEL-5363)
 
@@ -272,11 +335,11 @@ Harness NextGen release 79111 includes the following changes for the Harness Del
     - org.springframework:spring-tx from 5.3.25 -> 5.3.26
     - org.springframework:spring-web from 5.3.25 -> 5.3.26
 
-#### Early access
+##### Early access
 
 This release does not include any early access features.
 
-#### Fixed issues
+##### Fixed issues
 
 - Added WebSocket reconnect logic for when the Harness Manager does not receive a heartbeat from the Harness Delegate for more than five minutes. (DEL-5954)
 
@@ -291,7 +354,7 @@ Harness release 78914 includes the following changes for the Harness Delegate.
 - Added support for the latest Git CLI in the delegate maximal image. (DEL-6121)
   - The latest Git CLI is now included by default.
 
-#### Early access
+##### Early access
 
 This release does not include any early access features.
 

@@ -22,76 +22,13 @@ The Harness Self-Managed Platform is designed to cater to various deployment sce
 
 - Access to Helm charts or [download locally](https://github.com/harness/helm-charts/releases)
 
-- Access to [the Harness airgap bundle on GCP](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped-1_0_78927.tgz) 
+- Access to [the Harness airgap bundle on GCP](https://console.cloud.google.com/storage/browser/smp-airgap-bundles;tab=objects?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=false&pli=1) 
 
 - Kubernetes version 1.22+ (Harness recommends v1.23.x)
 
 ## Required images
 
-If your cluster is in an air-gapped environment, your deployment requires the following images:
-
-- docker.io/harness/gitops-service-signed:v0.62.4
-- docker.io/harness/learning-engine-onprem-signed:66700
-- docker.io/bitnami/minio:2022.8.22-debian-11-r0
-- docker.io/bitnami/mongodb:4.4.15
-- docker.io/bitnami/postgresql:14.4.0-debian-11-r9
-- docker.io/harness/accesscontrol-service-signed:78001
-- docker.io/harness/batch-processing-signed:78605-000
-- docker.io/harness/cdcdata-signed:78426
-- docker.io/harness/ce-anomaly-detection-signed:12
-- docker.io/harness/ce-cloud-info-signed:0.22.0
-- docker.io/harness/ce-nextgen-signed:78700-000
-- docker.io/harness/ci-manager-signed:2804
-- docker.io/harness/ci-scm-signed:release-114-ubi
-- docker.io/harness/cv-nextgen-signed:78426
-- docker.io/harness/dashboard-service-signed:v1.53.0.0
-- docker.io/harness/delegate-proxy-signed:78312
-- docker.io/harness/error-tracking-signed:5.14.2
-- docker.io/harness/et-collector-signed:5.14.0
-- docker.io/harness/event-service-signed:77317
-- docker.io/harness/ff-pushpin-signed:1.0.3
-- docker.io/harness/ff-pushpin-worker-signed:1.945.0
-- docker.io/harness/ff-server-signed:1.945.0
-- docker.io/harness/gateway-signed:2000149
-- docker.io/harness/helm-init-container:latest
-- docker.io/harness/le-nextgen-signed:67500
-- docker.io/harness/looker-signed:23.2.31
-- docker.io/harness/manager-signed:78426
-- docker.io/harness/mysql:enterprise-server-8.0.32
-- docker.io/harness/ng-ce-ui:0.26.3
-- docker.io/harness/policy-mgmt:v1.49.0
-- docker.io/harness/stocore-signed:v1.31.3
-- docker.io/harness/stomanager-signed:79001-000
-- docker.io/harness/telescopes-signed:10100
-- docker.io/harness/ti-service-signed:release-149
-- docker.io/harness/ui-signed:78400
-- docker.io/harness/verification-service-signed:78426
-- docker.io/ubuntu:20.04
-- docker.io/harness/template-service-signed:78426
-- docker.io/harness/ff-postgres-migration-signed:1.945.0
-- docker.io/harness/ff-timescale-migration-signed:1.945.0
-- docker.io/harness/helm-init-container:latest
-- docker.io/harness/log-service-signed:release-18
-- docker.io/harness/nextgenui-signed:0.339.19
-- docker.io/harness/ng-auth-ui-signed:1.3.3
-- docker.io/harness/ng-manager-signed:78426
-- docker.io/harness/pipeline-service-signed:1.21.13
-- docker.io/harness/platform-service-signed:78202
-- docker.io/harness/redis:6.2.7-alpine
-- docker.io/harness/ti-service-signed:release-149
-- docker.io/timescale/timescaledb-ha:pg13-ts2.9-oss-latest
-- docker.io/harness/ci-addon:1.16.4
-- docker.io/harness/gitops-agent:v0.42.0
-- docker.io/haproxy:2.0.25-alpine
-- docker.io/redis:6.2.6-alpine
-- docker.io/harness/delegate:latest
-- docker.io/harness/upgrader:latest
-- docker.io/harness/delegate:23.03.78312
-- docker.io/harness/ci-lite-engine:1.16.4
-- docker.io/bewithaman/s3:latest
-- docker.io/harness/sto-plugin:latest
-- docker.io/harness/upgrader:latest
-- docker.io/curlimages/curl:latest
+If your cluster is in an air-gapped environment, your deployment requires the [latest container images](https://github.com/harness/helm-charts/releases).
 
 ## Installation workflow
 
@@ -102,7 +39,7 @@ The flowchart below shows the air-gapped environment installation workflow steps
 ## Download required files
 
 To begin your installation, download the following files:
-- Harness air-gapped bundle [harness-airgapped-1_0_78927.tgz](https://storage.googleapis.com/smp-airgap-bundles/harness-airgapped-1_0_78927.tgz)
+- [Harness air-gapped bundle](https://console.cloud.google.com/storage/browser/smp-airgap-bundles;tab=objects?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=false&pli=1)
 - Harness airgap images [harness-airgap-images.sh](https://storage.googleapis.com/smp-airgap-bundles/harness-airgap-images.sh)
 
 ## Set Docker architecture

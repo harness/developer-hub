@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-06-19T10:00:15
+date: 2023-06-28T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -15,14 +15,81 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 19, 2023, version 79606
-
-
+## Latest - June 28, 2023, version 79714
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+- JSON support for expressions. (CDS-73057)
+  
+  Harness has introduced support for writing expressions by using any JSON parser tool. You can now obtain an execution JSON for all stages or individual steps of your pipeline.
+  
+  To access the JSON, you must enable the **Enable JSON Support for expressions** setting first. Go to **Account Settings > Account Resources > Pipeline > Enable JSON Support for expressions**, and then set the value to `true`. Enabling this setting allows you to reference JSON parsers within expressions. This setting is turned off by default.
+
+  For more details, go to [Writing expressions using any JSON parser tool](/docs/platform/variables-and-expressions/expression-v2/).
+- Added tooltip and banner to provide more information about webhook payloads. (CDS-53874)
+  
+  <docimage path={require('./static/payload-input.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+import Earlyaccess from '/release-notes/shared/cd-79700-early-access.md'
+
+<Earlyaccess />
+
+  
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+- Step templates in a step group created within a stage template were not getting executed properly. (CDS-72124, ZD-45924, ZD-46151)
+  
+  The nested step groups were not executing `nextNode` when the parent step group was a child of the parallel node. For example, consider a step group SG1 that was a child of a parallel node, and had two child step groups SG21 and SG22. SG21 was not starting its next node, SG22 during pipeline execution. Instead, SG21 sent status to the parent SG1, and SG1 finished execution without executing SG22. 
+
+  Harness has added support to nested step groups to resolve this issue. 
+- Fixed an issue where the Container step was failing when emptyDir volume was being used. (CDS-72119, ZD-45892)
+- Fixed an issue where a multi-environment deploy stage was not executing while propagating from a previous stage when using the **Deploy to Filtered List** option with the `<service.tags>` parameter. (CDS-71887)
+- Unable to choose stages during pipeline execution. (CDS-71712, ZD-45762)
+  
+  This issue is fixed by adding an error icon that will be displayed when the stage selection dropdown is disabled due to an API error. Error details will be available if you hover over the error icon.
+- Unable to view the account-level deployment stage templates. (CDS-71230, ZD-45557)
+  
+  Previously, when you provided incomplete YAML during template creation, the templates got saved without proper stage types. The templates were filtered out and were not visible in the API response when used during pipeline creation.
+
+  Harness has implemented changes to restrict the creation of templates with incomplete YAML, ensuring that templates are saved with the necessary stage types. You are now required to provide complete YAML during template creation to ensure proper visibility and usage.
+- The execution view displayed host name instead of step name when the **Run on Delegate** option in [Repeat looping strategy](/docs/platform/Pipelines/looping-strategies-matrix-repeat-and-parallelism) was enabled for a Command step for SSH or WinRM deployment. (CDS-70780)
+  
+  This issue is fixed as part of a code enhancement. Harness does not allow saving, creating, or editing Command steps with Repeat looping strategy when the **Run on Delegate** option is selected, and displays an error message: `Command Step contains a combination of looping strategy and run on delegate options enabled, please select only one.`
+- Running a [Terraform Plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step/) step created a plan secret in Vault, but didn't delete the secret. (CDS-70770, ZD-45312)
+  
+  Clearing secrets from Vault was dependent on exporting the JsonPlan or human-readable options. 
+  
+  This issue is fixed. Now, the encrypted plan stored on Vault is cleared regardless of the export options.
+
+import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
+
+<Fixedissues />
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 19, 2023, version 79606
+
+##### What's new
 
 - Harness variables now have a **Required** setting. (CDS-69710)
   
@@ -43,10 +110,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   <docimage path={require('./static/47ce888b8bd290e2d68db294eae373c08dc6185f1e66f6aad00b65f136dda1df.png')} width="60%" height="60%" title="Click to view full size image" />  
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 - Scheduled automatic approvals have been added to manual approval steps. (CDS-69415)
   
@@ -57,11 +121,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <docimage path={require('./static/058d3e80cc8f95965e51010541d0c28f77865e484f8a84beea205b49172c658d.png')} width="60%" height="60%" title="Click to view full size image" />    
 
   For more details, go to [Automatic Approvals](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/#automatic-approvals).
-  
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+
+##### Fixed issues
 
 - A deleted template in the template library cannot be recreated. (CDS-71335, ZD-45591)
   
@@ -102,16 +163,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   The provisioner setting could not be set as a runtime input or expression in stage templates. This has been fixed and **Provisioners** can now be set as a runtime input or expression.
 
+#### June 12, 2023, Hotfix version 79518
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
+##### Fixed issues
 
-## Previous releases
+- Pipeline executions failed with the exception, `RecasterException: Class for value is not found for - io.harness.cdng.service.steps.ServiceStepV3Parameters; Cause: ClassNotFoundException: io.harness.cdng.service.steps.ServiceStepV3Parameters`. (CDS-71866, ZD-45867, ZD-45868)
 
-<details>
-<summary>2023 releases</summary>
+  This issue only applied to pipelines that were started before the latest version of Harness was deployed to the prod-2 cluster.
+
+  This issue is fixed. 
 
 #### June 09, 2023, version 79516
 
@@ -430,7 +490,7 @@ This release does not include any early access features.
   * Sync step error for account level agents.
   * Unable to close log streams.
   * Random values in the expressions are considered as false values.
-- Instance sync was not implemented for Azure Kubernetes Service (AKS). (CDS-59624)
+- Instance sync was not implemented for Azure Kubernetes Service (AKS). (CDS-59544)
   
   Performance improvements on AKS infrastructure type instance sync improved. The service instance data from the cluster now appears on the service dashboard faster. 
 - The Harness UI hid the Interrupts button for chained pipelines for multi-service and multi-environment cases. (CDS-59374)

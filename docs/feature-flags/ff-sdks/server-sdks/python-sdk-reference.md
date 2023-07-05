@@ -29,7 +29,7 @@ You should read and understand the following:
 
 ## Version
 
-The current version of this SDK is **1.1.16**.
+The current version of this SDK is **1.2.1**.
 
 ## Requirements
 
@@ -301,9 +301,14 @@ The SDK logs the following codes for certain lifecycle events, for example authe
 | **5002** | Streaming event received                                                                 |
 | **5003** | Streaming disconnected and is retrying to connect                                        |
 | **5004** | Streaming stopped                                                                        |
+| **5005** | Stream is still retrying to connect after 4 attempts                                     |
 | **6000** | Evaluation was successfully                                                              |
 | **6001** | Evaluation failed and the default value was returned                                     |
 | **7000** | Metrics service has started                                                              |
 | **7001** | Metrics service has stopped                                                              |
 | **7002** | Metrics posting failed                                                                   |
 | **7003** | Metrics posting success                                                                  |
+| **7004** | Metrics max target size exceeded                                                         |
+| **7005** | Metrics batch targets sending success                                                    |
+| **7006** | Metrics batch targets sending failed                                                     |
+

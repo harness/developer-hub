@@ -3,10 +3,6 @@ title: Use chaos experiments with SRM
 sidebar_position: 35
 ---
 
-:::note
-This feature is currently behind two feature flags: `CHAOS_SRM_EVENT` and `SRM_INTERNAL_CHANGE_SOURCE_CE`. Contact Harness Support to enable the feature.
-:::
-
 Within Harness, you can see the impact of chaos faults on your target environment by using [Service Reliability Management (SRM)](/docs/service-reliability-management).
 To do this, you connect any chaos fault within an experiment to monitored services. A monitored service in Harness is a combination of a service and environment that [SRM](/docs/service-reliability-management) monitors for changes, events, and health trends. 
 

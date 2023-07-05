@@ -7,16 +7,14 @@ const { load: cheerioLoad } = require("cheerio");
 const { normalizeUrl, readOutputHTMLFile } = require("@docusaurus/utils");
 
 const { Feed } = require("feed");
-
+// import feed from "feed"
 const docsPlugin = docsPluginExports.default;
 
 async function docsPluginEnhanced(context, options) {
   const docsPluginInstance = await docsPlugin(context, options);
-
   const { siteConfig } = context;
   const { themeConfig, url: siteUrl, baseUrl, title, favicon } = siteConfig;
   const { rss } = themeConfig || {};
-
   if (!rss) {
     throw new Error(
       `You need to specify 'rss' object in 'themeConfig' with 'rssPath' field in it`
@@ -33,21 +31,8 @@ async function docsPluginEnhanced(context, options) {
 
   return {
     ...docsPluginInstance,
-
-    /*
-    async contentLoaded({ content, actions }) {
-      // Create default plugin pages
-      await docsPluginInstance.contentLoaded({ content, actions });
-
-      // Create your additional pages
-      console.log("...contentLoaded...", content);
-      // const {blogPosts, blogTags} = content;
-    },
-    */
-
     async postBuild(params) {
       const { outDir, content, siteConfig } = params;
-      // fs.outputFile(path.join(outDir, "params.json"), JSON.stringify(params));
 
       if (
         !content ||
@@ -68,17 +53,17 @@ async function docsPluginEnhanced(context, options) {
         // updated,
         // language: feedOptions.language ?? locale,
         link: docsBaseUrl,
+
         description: rssDescription ?? `${siteConfig.title} Release Notes`,
         favicon: favicon
           ? normalizeUrl([siteUrl, baseUrl, favicon])
           : undefined,
         copyright: copyright,
       });
-
+   
       function toFeedAuthor(author) {
         return { name: author.name, link: author.url, email: author.email };
       }
-
       await Promise.all(
         docs.map(async (post) => {
           const {
@@ -101,6 +86,7 @@ async function docsPluginEnhanced(context, options) {
           const feedItem = {
             title: metadataTitle,
             id,
+            guid: normalizeUrl([siteUrl, permalink]), ///added later
             link: normalizeUrl([siteUrl, permalink]),
             date: new Date(date),
             description,

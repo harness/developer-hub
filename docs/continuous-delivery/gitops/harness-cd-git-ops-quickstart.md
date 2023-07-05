@@ -312,8 +312,11 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
 13. In **Revision**, select **master**.
 14. Wait a moment for **Path** to populate. Harness will pull the paths from the repo.
 15. In **Path**, select **helm-guestbook**. This is the location of this app in the repo: `https://github.com/argoproj/argocd-example-apps/tree/master/helm-guestbook`.
-16. In **Helm**, in **Values Files**, select **values.yaml**.
-17. Scroll down to see **Parameters**.
+16. In **Revision Type**, select:
+    * **Branch**: Select a branch and path from the prepopulated dropdown list.
+    * **Tag**: Select a branch and tag from the prepopulated dropdown list.
+17. In **Helm**, in **Values Files**, select **values.yaml**.
+18. Scroll down to see **Parameters**.
   All of the parameters from values.yaml are displayed and can be edited. This lets you modify values.yaml parameters in your Harness GitOps Application.
   Do not change the parameters for this quickstart.
 1.  When you're done, **Source** will look like this:
@@ -321,7 +324,7 @@ In the Application setup, you will select the Agent, Repository, and Cluster to 
    ![](./static/harness-cd-git-ops-quickstart-15.png)
 
 2.  Click **Continue**.
-3.  In **Destination**, click in **Cluster URL** and select the Cluster you added earlier.
+3.  In **Destination**, click **Cluster URL** and select the Cluster you added earlier.
    
    You can see its name and master URL. Since a Harness GitOps Cluster contains the authentication settings needed to access the cluster, your Harness GitOps Application can select any Cluster.
 4.  In **Namespace**, enter **default**.

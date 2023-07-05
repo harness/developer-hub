@@ -29,6 +29,17 @@ In the following YAML example, step `alpha` exports an output variable called `m
 
 </details>
 
+:::caution
+
+If an output variable value contains a secret, be aware that the secret will be visible in the [build details](/docs/continuous-integration/use-ci/viewing-builds.md):
+
+*  On the **Output** tab of the step where the output variable originates.
+*  In the build logs for any later steps that reference that variable.
+
+For information about best practices for using secrets in pipelines, go to the [Secrets documentation](/docs/category/secrets).
+
+:::
+
 ### Create an output variable
 
 To create an output variable, do the following in the step where the output variable originates:
