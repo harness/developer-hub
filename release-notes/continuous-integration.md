@@ -40,7 +40,6 @@ This release does not include early access features.
 
 * Applied scrolling to long remediation messages when [troubleshooting with AIDA](/docs/continuous-integration/troubleshoot-ci/aida). (CI-8599)
 * The [Builds page](/docs/continuous-integration/use-ci/viewing-builds) now shows the correct user's avatar for manual builds, and it shows the schedule trigger name (instead of the latest commit author's name) for scheduled builds. (CI-8531, ZD-46409)
-* Queueing was applied to a backend CI manager service to reduce unnecessary noise in logs. (CI-8507)
 
 ```mdx-code-block
   </TabItem>
