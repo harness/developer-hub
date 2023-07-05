@@ -27,8 +27,8 @@ To integrate a tool with SEI, you can use either an application-specific connect
 * [PagerDuty](./sei-connector-pagerduty.md)
 * [PostgreSQL](./sei-connector-postgresql.md)
 * [Salesforce](./sei-connector-salesforce.md)
-* Slack 150
-* Snyx 160
+* [Slack](./sei-connector-slack.md)
+* [Snyk](./sei-connector-snyk.md)
 * SonarQube 170
 * Splunk 180
 * Teams (Microsoft) 190
