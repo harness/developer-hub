@@ -611,6 +611,7 @@ PR Pipelines support the wave deployments practice by allowing you to change a m
 
 ### ApplicationSet Support
 
+* Do not deploy an ApplicationSet in a namespace other than the namespace where the GitOps Agent is installed. The ApplicationResource has to be deployed in same namespace as the GitOps Agent.
 * Harness supports both JSON and YAML formats for ApplicationSets.
 * Harness supports all ApplicationSet generators. You can add an ApplicationSet for any generator as an Application in Harness:
 	+ [List Generator](https://argocd-applicationset.readthedocs.io/en/stable/Generators-List/)
