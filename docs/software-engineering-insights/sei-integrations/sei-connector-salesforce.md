@@ -5,6 +5,8 @@ sidebar_position: 150
 sidebar_label: Salesforce
 ---
 
+Salesforce is a customer relationship management solution that brings companies and customers together.
+
 Use the SEI Salesforce connector to integrate SEI with Salesforce.
 
 SEI uses OAuth 2.0 to connect to Salesforce.

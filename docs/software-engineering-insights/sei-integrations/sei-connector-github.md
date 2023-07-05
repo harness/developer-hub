@@ -5,6 +5,8 @@ sidebar_position: 70
 sidebar_label: GitHub
 ---
 
+GitHub provides hosting for software development and version control using Git.
+
 Use the SEI GitHub connector to integrate SEI with GitHub.
 
 :::info Personal and organization repositories

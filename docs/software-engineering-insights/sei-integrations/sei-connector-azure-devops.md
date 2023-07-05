@@ -5,6 +5,8 @@ sidebar_position: 20
 sidebar_label: Azure DevOps
 ---
 
+Azure DevOps is a Microsoft product that provides version control, reporting, requirements management, project management, automated builds, testing and release management capabilities. It covers the entire application lifecycle, and enables DevOps capabilities.
+
 Use the SEI Azure DevOps Services connector to integrate SEI with Azure DevOps Services. SEI ingests pipelines, Git repos, Team Foundation Version Control (TFVC), and Azure Boards data from Azure DevOps Services.
 
 Azure DevOps Services is a cloud offering. To integrate with the on-premises offering, Azure DevOps Server, you must use the [generic SEI connector](./sei-connector-generic.md).

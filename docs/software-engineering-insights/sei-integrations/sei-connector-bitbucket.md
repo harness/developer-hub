@@ -5,6 +5,8 @@ sidebar_position: 30
 sidebar_label: Bitbucket
 ---
 
+Bitbucket Cloud is a web-based version control repository hosting service, for source code and development projects that use either Mercurial or Git revision control systems.
+
 Use the SEI Bitbucket connector to integrate SEI with Bitbucket Cloud.
 
 To integrate with the on-premises offering, Bitbucket Data Center, you must use the [generic SEI connector](./sei-connector-generic.md).

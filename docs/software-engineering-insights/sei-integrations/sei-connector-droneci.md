@@ -5,6 +5,8 @@ sidebar_position: 50
 sidebar_label: Drone
 ---
 
+Drone is a self-service CI platform for busy development teams.
+
 Use the SEI Drone CI connector to integrate SEI with Drone.
 
 To integrate with Harness CI, use the [SEI Harness NG connector](./sei-connector-harnessng.md).

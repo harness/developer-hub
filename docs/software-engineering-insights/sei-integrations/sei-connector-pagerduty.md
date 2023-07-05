@@ -5,6 +5,8 @@ sidebar_position: 130
 sidebar_label: PagerDuty
 ---
 
+PagerDuty specializes in a SaaS incident response platform for IT departments.
+
 Use the SEI PagerDuty connector to integrate SEI with any Cloud-based PagerDuty account/plan.
 
 To integrate with an on-premises PagerDuty offering, you must use the [generic SEI connector](./sei-connector-generic.md).

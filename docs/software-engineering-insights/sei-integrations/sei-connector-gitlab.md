@@ -5,6 +5,8 @@ sidebar_position: 80
 sidebar_label: GitLab
 ---
 
+GitLab is a DevOps platform that provides Git repos, CI/CD pipelines, issue management, and more.
+
 Use the SEI GitLab connector to integrate SEI with GitLab.com.
 
 To integrate with the on-premises, privately-hosted GitLab, you must use the [generic SEI connector](./sei-connector-generic.md) with API key (personal access token) authentication.

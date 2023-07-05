@@ -5,6 +5,8 @@ sidebar_position: 160
 sidebar_label: Slack
 ---
 
+Slack offers many IRC-style features, including persistent chat rooms organized by topic, private groups, and direct messaging.
+
 Use the SEI Slack connector to integrate SEI with Slack.
 
 SEI uses OAuth to connect to Slack.

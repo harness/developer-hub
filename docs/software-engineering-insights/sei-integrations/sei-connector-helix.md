@@ -5,13 +5,15 @@ sidebar_position: 100
 sidebar_label: Helix Core
 ---
 
-Use the SEI Helix connector to integrate SEI with remote Perforce Helix Core Server instances.
+Perforce Helix Core is a version control software for large scale development environments. Helix Swarm allows geographically dispersed developers to coordinate their code review.
+
+Use the SEI Helix connector to integrate SEI with remote Helix Core Server instances.
 
 To integrate with the on-premises instances of Helix Core Server, you must use the [generic SEI connector](./sei-connector-generic.md).
 
 ## Configure the SEI user
 
-To transmit data from Helix to SEI, you must create an SEI user in your Perforce Helix Core Server instance.
+To transmit data from Helix to SEI, you must create an SEI user in your Helix Core Server instance.
 
 1. To create a user in Helix Core Server, run `p4 user -f USERNAME`. Replace `USERNAME` with the desired username for your SEI user.
 2. Assign at least `list` permission to the user. You must have `super` access to run `p4 protect` and modify user permissions.
@@ -26,7 +28,7 @@ For more information, go to the Helix Core documentation on the [p4 user command
 3. Select **Available Connectors**, locate the **Perforce Helix Server** connector, and select **Install**.
 4. Enter your Helix Core Server instance specifications:
 
-   * **Helix Core Server:** Enter the IP/hostname of your Perforce Helix Core Server instance.
+   * **Helix Core Server:** Enter the IP/hostname of your Helix Core Server instance.
    * **Helix Core Port:** Enter the port on which Helix Core Server is running.
    * **Username:** Enter the username of the SEI user you created in Helix Core Server.
    * **Password:** Enter the password of the SEI user.

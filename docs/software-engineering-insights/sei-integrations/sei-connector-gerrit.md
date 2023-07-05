@@ -5,6 +5,8 @@ sidebar_position: 60
 sidebar_label: Gerrit
 ---
 
+Gerrit is a free, web-based team code collaboration tool.
+
 Use the SEI Gerrit connector to integrate SEI with Gerrit.
 
 ## Generate the API key

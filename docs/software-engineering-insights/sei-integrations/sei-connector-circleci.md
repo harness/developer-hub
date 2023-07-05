@@ -5,6 +5,8 @@ sidebar_position: 40
 sidebar_label: CircleCI
 ---
 
+CircleCI lets teams build fully-automated pipelines, from testing to deployment.
+
 Use the SEI CircleCI connector to integrate SEI with CircleCI.
 
 ## Requirements

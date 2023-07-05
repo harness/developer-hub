@@ -5,6 +5,8 @@ sidebar_position: 190
 sidebar_label: Splunk
 ---
 
+Splunk produces software for searching, monitoring, and analyzing machine-generated big data via a web-style interface.
+
 Use the SEI Splunk connector to integrate SEI with Splunk.
 
 ## Configure the connector

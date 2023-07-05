@@ -5,6 +5,8 @@ sidebar_position: 90
 sidebar_label: Harness
 ---
 
+Harness is a modern software delivery platform that allows engineers and DevOps to build, test, deploy, and verify the software on demand.
+
 Use the SEI Harness connector to integrate SEI with your Harness modules.
 
 :::info

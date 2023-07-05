@@ -5,6 +5,8 @@ sidebar_position: 170
 sidebar_label: Snyk
 ---
 
+Snyk Open Source helps development teams automatically find and fix vulnerabilities and license violations in their open source dependencies.
+
 Use the SEI Snyk connector to integrate SEI with Snyk.
 
 ## Requirements

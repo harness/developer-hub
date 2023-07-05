@@ -5,6 +5,8 @@ sidebar_position: 110
 sidebar_label: Jira
 ---
 
+Jira is a proprietary issue tracking product that allows bug tracking and agile project management.
+
 Use the SEI Jira connector to integrate SEI with Jira in the Cloud.
 
 To integrate with the on-premises Jira instances, you must use the [generic SEI connector](./sei-connector-generic.md) with username and password authentication.
