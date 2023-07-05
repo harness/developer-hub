@@ -20,8 +20,8 @@ To integrate a tool with SEI, you can use either an application-specific connect
 * [Drone CI](./sei-connector-droneci.md)
 * [Gerrit](./sei-connector-gerrit.md)
 * [GitHub](./sei-connector-github.md)
-* GitLab
-* Harness NG
+* [GitLab](./sei-connector-gitlab.md)
+* [Harness NG](./sei-connector-harnessng.md)
 * Helix
 * Jira <!-- Jira connector requires installing SEI app -->
 * PagerDuty

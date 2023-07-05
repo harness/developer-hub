@@ -16,7 +16,9 @@ In other words, the owner of the [GitHub personal access token](#create-a-github
 
 ## Configure authentication
 
-If your can't use OAuth, you must create a GitHub personal access token to configure the SEI GitHub connector.
+The SEI GitHub connector can use either OAuth or personal access token authentication.
+
+If you can't use OAuth, you must create a GitHub personal access token to configure the SEI GitHub connector.
 
 1. Log in to your GitHub account and create a personal access token. For instructions, go to the GitHub documentation on [Managing your personal access tokens](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens).
 2. Select the following permissions for your personal access token:
