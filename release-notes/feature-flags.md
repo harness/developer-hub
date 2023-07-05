@@ -41,9 +41,13 @@ This release does not include early access features.
 
 #### Feature Flags SDKs
 
-The **Java** server SDK has been updated to version **1.2.4** with the following update.
+* The **Java** server SDK has been updated to version **1.2.4** with the following update.
 
-* Fixed an issue where, if a flag had prerequisite flags configured, only the first prerequisite flag was being processed and the remaining were being ignored. (FFM-6412)
+  * Fixed an issue where, if a flag had prerequisite flags configured, only the first prerequisite flag was being processed and the remaining were being ignored. (FFM-6412)
+
+The **Python** server SDK has been updated to version **1.2.1** with the following update.
+
+  * The SDK incorrectly logged low level debug information as errors. This issue has been fixed. (FFM-8544)
 
 
   </TabItem>
