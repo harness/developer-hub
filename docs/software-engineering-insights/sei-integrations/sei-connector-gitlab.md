@@ -2,6 +2,7 @@
 title: SEI GitLab connector
 description: Integrate SEI with GitLab.
 sidebar_position: 80
+sidebar_label: GitLab
 ---
 
 Use the SEI GitLab connector to integrate SEI with GitLab.com.

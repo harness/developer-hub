@@ -2,6 +2,7 @@
 title: SEI Helix connector
 description: Integrate SEI with Helix.
 sidebar_position: 100
+sidebar_label: Helix Core
 ---
 
 Use the SEI Helix connector to integrate SEI with remote Perforce Helix Core Server instances.

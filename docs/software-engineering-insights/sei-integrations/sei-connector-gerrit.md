@@ -2,6 +2,7 @@
 title: SEI Gerrit connector
 description: Integrate SEI with Gerrit.
 sidebar_position: 60
+sidebar_label: Gerrit
 ---
 
 Use the SEI Gerrit connector to integrate SEI with Gerrit.

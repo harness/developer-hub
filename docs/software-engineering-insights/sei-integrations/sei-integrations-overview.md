@@ -23,7 +23,7 @@ To integrate a tool with SEI, you can use either an application-specific connect
 * [GitLab](./sei-connector-gitlab.md)
 * [Harness NG](./sei-connector-harnessng.md)
 * [Helix Core Server](./sei-connector-helix.md)
-* Jira <!-- Jira connector requires installing SEI app -->
+* [Jira](./sei-connector-jira.md)
 * PagerDuty
 * PostgreSQL
 * Salesforce

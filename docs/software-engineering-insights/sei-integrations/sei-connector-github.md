@@ -2,6 +2,7 @@
 title: SEI GitHub connector
 description: Integrate SEI with GitHub.
 sidebar_position: 70
+sidebar_label: GitHub
 ---
 
 Use the SEI GitHub connector to integrate SEI with GitHub.

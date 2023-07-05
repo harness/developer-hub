@@ -2,6 +2,7 @@
 title: SEI Bitbucket connector
 description: Integrate SEI with Bitbucket.
 sidebar_position: 30
+sidebar_label: Bitbucket
 ---
 
 Use the SEI Bitbucket connector to integrate SEI with Bitbucket Cloud.

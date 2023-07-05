@@ -2,6 +2,7 @@
 title: SEI Harness connector
 description: Integrate SEI with Harness.
 sidebar_position: 90
+sidebar_label: Harness
 ---
 
 Use the SEI Harness connector to integrate SEI with your Harness modules.

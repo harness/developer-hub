@@ -2,6 +2,7 @@
 title: SEI Drone CI connector
 description: Integrate SEI with Drone CI.
 sidebar_position: 50
+sidebar_label: Drone
 ---
 
 Use the SEI Drone CI connector to integrate SEI with Drone.
