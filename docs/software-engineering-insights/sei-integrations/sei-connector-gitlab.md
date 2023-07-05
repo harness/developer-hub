@@ -25,7 +25,7 @@ If you can't use OAuth, you must create a GitLab personal access token to config
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Connectors** under **Data Settings**.
-3. Select **Available Connectors**, locate the **GitLab** connector, and select **Install**.
+3. Select **Available Connectors**, locate the **GitLab** or **GitLab Cloud** connector, and select **Install**.
 4. Select an authentication method for the connector:
 
    * To use OAuth, select **Authorize** and follow the prompts to grant access to GitLab.

@@ -31,3 +31,12 @@ Due to the scope of visibility required, consider using a managed service accoun
 2. Select **SEI Connectors** under **Data Settings**.
 3. Select **Available Connectors**, locate the **Jira** connector, and select **Install**.
 4. Configure the connector and install the SEI Jira app in your Jira instance.
+
+## Add the Salesforce mapping
+
+If you also have an [SEI Salesforce connector](./sei-connector-salesforce.md), you can link Salesforce tickets to Jira issues by using a custom Jira field.
+
+1. In your Harness project, go to the SEI module, and select **Account**.
+2. Select **SEI Connectors** under **Data Settings**.
+3. Find your **Jira** connector and edit it.
+4. Under **Salesforce Mapping**, select the Jira field that contains your Salesforce case IDs.

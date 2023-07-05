@@ -43,8 +43,8 @@ Depot mappings are required for your Helix Core data to be available in your SEI
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Connectors** under **Data Settings**.
-3. Find your new **Perforce Helix Server** connector.
-1. Under **Repo Paths** add repo names and corresponding depot paths.
+3. Find your new **Perforce Helix Server** connector and edit it.
+4. Under **Repo Paths** add repo names and corresponding depot paths.
 
    * A **Repo Name** is a unique identifier that identifies the set of files under a depot.
    * A **Depot Path** is a Helix Core path.

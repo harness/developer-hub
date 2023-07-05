@@ -26,8 +26,7 @@ To integrate a tool with SEI, you can use either an application-specific connect
 * [Jira](./sei-connector-jira.md)
 * [PagerDuty](./sei-connector-pagerduty.md)
 * [PostgreSQL](./sei-connector-postgresql.md)
-* Salesforce
-* SCM Cloud Integrations (GitHub Cloud, GitLab Cloud, Bitbucket Cloud) <!-- combine w relevant SCM pages -->
+* [Salesforce](./sei-connector-salesforce.md)
 * Slack
 * Snyx
 * SonarQube

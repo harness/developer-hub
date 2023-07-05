@@ -20,7 +20,7 @@ The following permissions and settings are required to use the SEI Bitbucket con
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Connectors** under **Data Settings**.
-3. Select **Available Connectors**, locate the **Bitbucket** connector, and select **Install**.
+3. Select **Available Connectors**, locate the **Bitbucket** or **Bitbucket Cloud** connector, and select **Install**.
 4. Configure and save the connector.
 
    * If you are redirected to Bitbucket, select **Grant Access** to allow the integration. You might need to sign in. Bitbucket uses OAuth authentication.
