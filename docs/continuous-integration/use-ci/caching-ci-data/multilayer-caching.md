@@ -19,7 +19,7 @@ Multilayer caching is an advanced pattern that requires you to be familiar with:
 * [Failure strategies](/docs/platform/pipelines/define-a-failure-strategy-on-stages-and-steps/)
 * [Conditional execution settings](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/), particularly [step conditions](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions).
 
-## Pattern overview
+## Pattern for multilayer caching in CI pipelines
 
 The general pattern for multilayer caching in CI pipelines is as follows:
 
@@ -143,7 +143,7 @@ For more information, go to [Share data between steps in a stage](/docs/continuo
 
 ## Configure multilayer caching
 
-The following steps demonstrate how to configure multilayer caching in one stage of a CI pipeline.
+Follow these steps to configure multilayer caching in one stage of a CI pipeline.
 
 :::tip
 
@@ -155,7 +155,7 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
 
    In this multilayer caching pattern, the cache keys represent a cadence of potential caches to restore, where you want your pipeline to check if the first cache exists, and, if it doesn't, then check for the second cache, and so on.
 
-   The following YAML example would add two **Restore Cache from GCS** steps to a pipeline:
+   For example, the following YAML adds two **Restore Cache from GCS** steps to a pipeline:
 
    ```yaml
                  - step:
@@ -180,7 +180,7 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
 
    For information about **Restore Cache** step settings, go to [Save and Restore Cache from S3](./saving-cache.md) and [Save and Restore Cache from GCS](./save-cache-in-gcs.md).
 
-2. On each **Restore Cache** step *except the last*, enable **Fail if Key Doesn't Exist** and add a [failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) where the step fails on **All Errors** and executes the **Ignore** action in response, for example:
+2. On each **Restore Cache** step *except the last*, enable **Fail if Key Doesn't Exist** and add a [failure strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/) where the step fails on **All Errors** and executes the **Ignore** action in response. For example:
 
    ```yaml
                  - step:
@@ -230,7 +230,7 @@ If you are using the visual editor in the Pipeline Studio, you can find **Condit
 
 3. On each **Restore Cache** step *except the first*, add a [conditional execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/#step-conditions) that runs the step only if the preceding step failed.
 
-   Set the conditional execution to **Execute this step if the stage execution is successful thus far** (`stageStatus: Success`) and include the JEXL condition `<+execution.steps.L1_Caching.status> == "IGNORE_FAILED"`, for example:
+   Set the conditional execution to **Execute this step if the stage execution is successful thus far** (`stageStatus: Success`) and include the JEXL condition `<+execution.steps.L1_Caching.status> == "IGNORE_FAILED"`. For example:
 
    ```yaml
                  - step:
