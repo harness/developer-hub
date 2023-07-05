@@ -2,7 +2,7 @@
 title: Security Testing Orchestration release notes
 sidebar_label: Security Testing Orchestration
 description: Provides an overview of new features and fixed issues.
-date: 2023-06-08T10:00
+date: 2023-07-05T10:00
 tags: [NextGen, "security testing orchestration"]
 sidebar_position: 9
 ---
@@ -18,7 +18,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 :::
 
-## Latest - July 6, 2023, version 1.60.0
+## Latest - July 5, 2023, version 1.60.0
 
 ```mdx-code-block
 <Tabs>
