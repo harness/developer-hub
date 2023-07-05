@@ -39,7 +39,22 @@ The flowchart below shows the air-gapped environment installation workflow steps
 ## Download required files
 
 To begin your installation, download the following files:
-- [Harness air-gapped bundle](https://console.cloud.google.com/storage/browser/smp-airgap-bundles;tab=objects?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=false&pli=1)
+- [Harness air gap image bundle](https://console.cloud.google.com/storage/browser/smp-airgap-bundles;tab=objects?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=false&pli=1)
+
+   With each Harness Self-Managed Enterprise Edition release, Harness add individual module image files to the air gap image bundle. You can download module `*.tgz` files for only the modules you want to deploy. For example, if you only want to deploy Harness Platform, download the `platform-images.tgz` file. Available image files are:
+
+     - Cloud Cost Management: `ccm-images.tgz`
+     - Continuous Delivery & GitOps NextGen: `cdng-images.tgz`
+     - Continuous Error Tracking: `ce-images.tgz`
+     - Continuous Integration: `ci-images.tgz`
+     - Feature Flags: `ff-images.tgz`
+     - Harness Platform: `platform-images.tgz`
+     - Service Reliability Management: `srm-images.tgz`
+     - Security Testing Orchestration: `sto-images.tgz`
+   
+   :::info note
+   The `platform-images.tgz` file includes NextGen dashboards and policy management enabled by default. The `cdng-images.tgz` file includes GitOps by default.
+
 - Harness airgap images [harness-airgap-images.sh](https://storage.googleapis.com/smp-airgap-bundles/harness-airgap-images.sh)
 
 ## Set Docker architecture
@@ -65,8 +80,8 @@ To save Docker images, do the following:
     #Authenticate with AWS for ECR
     aws ecr get-login-password --region <region> | docker login --username AWS --password-
     ```
-    All Docker files required to deploy Harness are stored in `harness-airgapped.tgz`.
-2. Add the `harness-airgapped.tgz` and `harness-docker-images.txt` to your air-gapped network. You can now push your images locally.
+    All Docker files required to deploy Harness are stored in the [Harness air gap image bundle](https://console.cloud.google.com/storage/browser/smp-airgap-bundles;tab=objects?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=false&pli=1) in the `harness-docker-images.txt` file.
+2. Add the `*.tgz` for each module you want to deploy and the `harness-docker-images.txt` file to your air-gapped network. You can now push your images locally.
 3. Run `harness-airgap-images.sh`.
     ```
     ./harness-airgap-images.sh -r <REGISTRY.YOURDOMAIN.COM:PORT> -f harness-airgapped.tgz
@@ -96,11 +111,13 @@ Next, you are ready to install via Helm by updating your `override.yaml` file wi
 To install via Helm, do the following:
 
 1. Update the `override.yaml` file with your private registry information.
-    ```
+
+    ```yaml
     global:
       imageRegistry: "private-123.com"
     ```
 2. Run the Helm install command.
+
     ```
     helm install my-release harness/harness -n <namespace> -f override.yaml
     ```
