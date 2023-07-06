@@ -16,13 +16,61 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - June 30, 2023, version 79906
+## Latest - July 6, 2023, version 80002
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 ### What's new
+
+* Azure VM recommendations (CCM-13142)
+
+  Now, the recommendations are computed based on both **Memory Utilization** data and the existing **CPU Utilization** tracking data.
+
+* Budget Sorting Enhancement (CCM-10948)
+
+  This enhancement allows you to conveniently sort budgets alphabetically in Harness CCM. You can now browse and navigate through budgets more efficiently.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+### Early access
+
+This release does not include any early access features.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+### Fixed issues
+
+* Cloud provider option was missing in **Group By**. (CCM-13126)
+
+  The issue occurred when the user selected the cloud provider rule with the `NOT_IN` operator. This issue was resolved by fixing the computation of data sources for the perspective when a cloud provider rule with the NOT_IN operator is involved. 
+
+* Nodepool recommendations displayed incorrect savings data. (CCM-12816)
+
+ Implemented a check to exclude nodepools that have more than one instance family from generating recommendations. This is necessary as the current calculations for such nodepools result in incorrect recommendations. 
+
+  
+
+
+  
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 30, 2023, version 79906
+
+##### What's new
 
 * Azure inventory management (CCM-12676)
 
@@ -40,26 +88,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
       <docimage path={require('./static/ccm-budget-slack-msg.png')} width="60%" height="60%" title="Click to view full size image" />
 
       <docimage path={require('./static/ccm-budget-grp-slack-msg.png')} width="60%" height="60%" title="Click to view full size image" />
-
-
-
-
-
-  
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
-### Early access
+##### Early access
 
 This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
-### Fixed issues
+##### Fixed issues
 
 * The cost data was not displayed on the **Perspectives** page. (CCM-12752)
 
@@ -67,18 +100,6 @@ This release does not include any early access features.
 * Previously, users were unable to view and manage the ignored recommendations for EC2 instances. (CCM-13004) (ZD-46353)
 
  The payload for adding EC2 recommendations to the **Ignore List** was incorrect. Now, the issue is fixed, and the functionality is working as expected.
-
-
-  
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### June 21, 2023, version 79803
 
