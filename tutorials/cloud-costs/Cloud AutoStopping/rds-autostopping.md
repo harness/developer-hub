@@ -121,9 +121,9 @@ Your AutoStopping rule is listed under the [AutoStopping rules summary page](ht
 After reviewing the rule, save it.
 
 ### Connect to the RDS instance
-Once the rule is saved, go to the **Details** page of the AutoStopping rule for instructions to connect to the RDS instance. You can connect to your RDS instance using one of the following attributes:
+Once the rule is saved, go to the **Details** page of the AutoStopping rule for instructions to connect to the RDS instance. You can connect to your RDS instance using the following attributes:
 - IP/Hostname mapped to the AutoStopping proxy
-- Port shown in the AutoStopping rule details page(20000 in this example)
+- Port displayed in the AutoStopping rule details page(20000 in this example)
 - Username and password of the RDS instance
 
     <docimage path={require('../static/rds-autostopping-proxy/details-page.png')} width="60%" height="60%" title="Click to view full size image" />
