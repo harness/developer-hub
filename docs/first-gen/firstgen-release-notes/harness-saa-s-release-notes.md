@@ -20,7 +20,7 @@ If you don't see a new feature or enhancement in your Harness account, it might 
 
 #### What's new
 
-This release does not include new features.
+- The ubi8-minimal:8.7 has been upgraded to version ubi8-minimal:8.8 (PL-39276)
 
 #### Early access
 

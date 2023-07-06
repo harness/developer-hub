@@ -175,9 +175,19 @@ The **Stage Deployment** step is added automatically when you apply the Blue G
 
 Click the **Stage Deployment** step. The step simply includes a name, timeout, and Skip Dry Run options.
 
-**Skip Dry Run:** By default, Harness uses the `--dry-run` flag on the `kubectl apply` command during the **Initialize** step of this command, which prints the object that would be sent to the cluster without actually sending it. If the **Skip Dry Run** option is selected, Harness will not use the `--dry-run` flag. The first time you deploy, the **Stage Deployment** step creates two Kubernetes services, a new pod set, and deploys your app to the pod set.
+### Skip Dry Run
 
-**Skip Deployment if Using the Manifest Used in a Previous Deployment**: This is currently a beta functionality and behind the feature flag, `CDS_SUPPORT_SKIPPING_BG_DEPLOYMENT_NG`. When running the **Stage Deployment** step, if you select this option, Harness renders the manifests and compares them with the last deployed manifests to see if there are any changes. If there are no changes in the manifests used in the step and the previous deployment, Harness skips the step and progresses to the subsequent steps in the pipeline. This ensures that no routes or labels associated with the primary or stage (Blue or Green) are manipulated when no manifest changes are present. 
+By default, Harness uses the `--dry-run` flag on the `kubectl apply` command during the **Initialize** step of this command, which prints the object that would be sent to the cluster without actually sending it. If the **Skip Dry Run** option is selected, Harness will not use the `--dry-run` flag. The first time you deploy, the **Stage Deployment** step creates two Kubernetes services, a new pod set, and deploys your app to the pod set.
+
+### Skip Deployment if Using the Manifest Used in a Previous Deployment
+
+:::note
+
+Currently, this feature is behind the feature flag `CDS_SUPPORT_SKIPPING_BG_DEPLOYMENT_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+When running the **Stage Deployment** step, if you select this option, Harness renders the manifests and compares them with the last deployed manifests to see if there are any changes. If there are no changes in the manifests used in the step and the previous deployment, Harness skips the step and progresses to the subsequent steps in the pipeline. This ensures that no routes or labels associated with the primary or stage (Blue or Green) are manipulated when no manifest changes are present. 
 
 When you look at the **Stage Deployment** step in Harness **Deployments**, you will see the following log sections.
 
