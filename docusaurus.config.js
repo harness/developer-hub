@@ -527,9 +527,9 @@ const config = {
     [
       "@docusaurus/plugin-content-blog",
       {
-        id: "releases",
-        path: "releases",
-        routeBasePath: "releases",
+        id: "product-updates",
+        path: "product-updates",
+        routeBasePath: "product-updates",
         exclude: ["**/shared/**", "**/static/**"],
         editUrl: "https://github.com/harness/developer-hub/tree/main",
         // ... other options

@@ -125,6 +125,8 @@ When you create a new Perspective, data across all cloud service providers and c
 :::note
 If you've added labels and cluster rules in the perspective builder section, it's considered a cluster perspective, hence all cluster labels are considered. In this case, data from cloud service providers such as GCP, Azure, and AWS are not considered. However, if you have applied a label that belongs to the cloud provider data, and you want to view the cluster data as well, then you have to add a Cloud Provider filter.
 :::
+
+
 ## Budgets, Reports, and Alerts
 For details on adding Budgets, Reports, and Alerts go to:
 
@@ -175,9 +177,9 @@ The **Include Unallocated** option is only available in the chart when the **Gro
 
 It's important to understand the difference between the **Others** and **No Account/Project/etc** categories.
 
-When a Perspective includes multiple data sources (for example, AWS, GCP, and Cluster) and you select one data source in a Perspective **Group By**, such as **AWS: Account**, the costs for the AWS data source are displayed individually.
+When a Perspective includes multiple data sources (for example, AWS, GCP, and Cluster) and you select one data source in a Perspective **Group By**, such as **AWS: Account**, the costs for the AWS data source are displayed individually. The costs for the other data sources (GCP, Cluster) are grouped under **No Account**.
 
-The costs for the other data sources (GCP, Cluster) are grouped under **No Account**.
+In other words, a row with No followed by the selected `Group by` is displayed for costs that don’t have any relation with the selected `Group by`. For example, **No SKUs** is displayed for costs (AWS, clusters, etc.) that don’t have any GCP SKUs associated with it.
 
 Another example is if the **Group By** is **Project**. For example, if you selected GCP: Project, then the **No Project** item in the graph represents the AWS and Cluster project costs.
 
