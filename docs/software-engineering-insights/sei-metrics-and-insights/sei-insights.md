@@ -117,9 +117,8 @@ If you're an admin, you can:
 5. If you want to make this Insight private, make sure **Allow everyone in my organization to view the Insight** is *not* selected.
 6. Under **Parameters**, you can modify the following settings:
 
-   * Select **Dashboard Time Range** if you want to enable dashboard time. _Dashboard time_ is the time range selected by the user when viewing an Insight.
-   * Select the **Effort Investment Profile** option for [Business Alignment Insights](#create-business-alignment-insights).
-   * If desired, enable **Effort Investment Units**.
+   * **Dashboard Time Range:** You can enable dashboard time. _Dashboard time_ is the time range selected by the user when viewing an Insight.
+   * **Effort Investment Profile** and **Effort Investment Units** are used for [Business Alignment Insights](#create-business-alignment-insights) and [DORA Insights](#create-dora-insights).
 
 7. Select at least one Org Unit category to associated with this Insight.
 
@@ -165,3 +164,12 @@ With **Effort Investment Profile** selected, your new Insight starts with the fo
 * **Effort Investment By Engineer**
 
 For more information about these metrics, go to the [Alignment metrics](./alignment-metrics.md) documentation.
+
+## Create DORA Insights
+
+Use DORA Insights to examine your organization's [DORA (DevOps Research Assessment) metrics](./execution/dora-metrics.md).
+
+To create DORA Insights:
+
+1. Follow the steps to [create Insights](#create-insights), and select both **Effort Investment Profile** and **Effort Investment Units**.
+2. Add widgets for [DORA metrics](./execution/dora-metrics.md).

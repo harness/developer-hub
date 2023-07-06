@@ -42,3 +42,24 @@ If you also have an [SEI Salesforce connector](./sei-connector-salesforce.md), y
 2. Select **SEI Connectors** under **Data Settings**.
 3. Find your **Jira** connector and edit it.
 4. Under **Salesforce Mapping**, select the Jira field that contains your Salesforce case IDs.
+
+## Add custom hygiene misses
+
+The [Issue Hygiene Report widget](../sei-metrics-and-insights/execution/quality-and-support-metrics.md#issue-hygiene-report) uses data from Jira to calculate hygiene scores. These scores represent _hygiene misses_ in a designated time frame. A hygiene miss means that a ticket in your issue management system was missing an important field, failed to change status in a timely manner, or was assigned to an inactive user.
+
+What constitutes a miss depends on your _hygiene categories_. There are several built-in [hygiene categories](../sei-metrics-and-insights/execution/quality-and-support-metrics.md#hygiene-categories), and you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management connectors.
+
+To add custom hygiene categories:
+
+1. In your Harness project, go to the SEI module, and select **Account**.
+2. Select **SEI Connectors** under **Data Settings**.
+3. Find your **Jira** connector and edit it.
+4. Select **Add Custom Hygiene Miss Criteria** and configure the new hygiene category:
+
+   * **Name:** Enter a name for the category. This name appears on the Issue Hygiene Report widget along with the category's score.
+   * **Field:** Select the Jira field that provides data for this category.
+   * **Operator:** Specify the operator, such as **Missing** or **Greater Than**, that determines if there was a hygiene miss for this category.
+
+   The **Operator** represents an undesired state for the specified **Field**. For example, if your *desired state* is for the specified **Field** to be populated, then your *undesired state* is that the field is empty. Therefore, you would set the **Operator** to **Missing**.
+
+5. To get scores for custom hygiene categories, you must modify the category **Weights** in your Issue Hygiene Report widgets. Custom categories don't have an initial weight, so you must modify all instances of this widget to include your custom categories in the hygiene score calculations. For instructions, go to [Configure the Issue Hygiene Report widget](../sei-metrics-and-insights/execution/quality-and-support-metrics.md#configure-the-issue-hygiene-report-widget).

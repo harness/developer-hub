@@ -8,9 +8,10 @@ Workflow profiles, also known as Lead Time profiles, define the stages, events, 
 
 You can configure the profile depending on the factors you want to include in your Lead Time calculations. For example, you can:
 
-* Define the **Start of Change** for relevant commits, which can be commits to source code, pull requests, and deployments to dev, staging, or prod environments.
-* Track time spent in various issue status, if the profile is aligned with an issue management tool (such as Jira).
-* Only track time spent in source code lifecycle stages, such as commit to merge and the activities.
+* Define the **Start of Change** to start calculating lead time, which can be ticket creation in an issue management system, commits to source code, pull requests, or deployments to dev, staging, or prod environments.
+* Track time spent in various issue statuses, if your profile includes monitoring for an issue management system, such as Jira.
+* Track time spent in source code lifecycle stages, such as commit to merge and activities related to pull requests.
+* Track lead time through your CI/CD tools.
 
 ## Configure Workflow profiles
 
@@ -52,6 +53,12 @@ Use this profile configuration to track Lead Time across the Pull Request lifecy
 
 <!-- image of "Create Workflow Profile" with "Commit Created" and 4 default stages. -->
 
+:::tip Monitor CI/CD lead time
+
+If you want to include CI/CD builds and deployments in your lead time calculation, edit your Workflow profile, and add stages to track your CI/CD build and deploy jobs.
+
+:::
+
 ### Track Lead Time in issue management and SCM
 
 1. In your Harness project, go to the SEI module and select **Account**.
@@ -66,6 +73,10 @@ Use this profile configuration to track Lead Time across the Pull Request lifecy
 7. To track progress in your issue management tool, select the **+** icon to add stages before and after the **Development Stages**. This allows you to track progress in both your issue management and SCM tools, from issue creation through code deployment.
 
 <!-- image of "Create workflow profile" with pre- and post- development stages. -->
+
+### Include CI/CD in Lead Time
+
+If you want to include CI/CD builds and deployments in your lead time calculation, follow the steps to [Track Lead Time in SCM](#track-lead-time-in-scm) or [Track Lead Time in issue management and SCM](#track-lead-time-in-issue-management-and-scm), and then add stages to track your CI/CD build and deploy jobs.
 
 ### Use a webhook to trigger Lead Time tracking
 

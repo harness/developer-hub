@@ -6,12 +6,11 @@ sidebar_position: 20
 
 DORA (DevOps Research Assessment) identified the following key metrics that describe a software development team's performance: Deployment Frequency, Lead Time for Changes, Change Failure Rate, Time to Restore service (MTTR), and Reliability (MTBF).
 
-With SEI, you can examine your organization's DORA metrics for a given duration. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends. Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/connectors-and-integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
+With SEI, you can [create DORA Insights](../sei-insights.md#create-dora-insights) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends. Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/connectors-and-integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
 
 ## Deployment Frequency
 
 Deployment Frequency represents how often an organization successfully releases software to production.
-
 
 ## Lead Time for Changes
 
@@ -19,9 +18,27 @@ Lead Time for Changes represents the amount of time it takes a commit to get int
 
 The overall lead time is the sum of the average time spent in each stage configured in the workflow. This metric can help identify where the team is spending time and if the amount of time spent in each stage falls in an acceptable range.
 
+### The Lead Time widget
+
+The **Lead Time** widget aggregates lead time across your issue management system, SCM, and CI/CD tools.
+
+To add the SCM PR Lead Time widget to Insights:
+
+1. Go to the Insight where you want to add the widget. Make sure you are in the correct project.
+2. Select **Settings**, and then select **Add Widget**.
+3. Select the **Lead Time** widget.
+4. Configure the filters for the widget.
+5. On the **Settings** tab, select the relevant [Workflow profile](../../sei-profiles/workflow-profile.md).
+
+  Workflow profiles, also known as Lead Time profiles, determine the integrations to track, the start events that trigger lead time tracking (such as ticket creation or commit creation), and the stages that issues follow in your SDLC.
+
+  You can modify workflow profile stages according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as SCM only or issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
+
+6. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
+
 ### The SCM Lead Time widget
 
-Use the **SCM (Source Code Management) PR Lead Time by Stage Report** widget to examine Lead Time for Changes.
+Use the **SCM (Source Code Management) PR Lead Time by Stage Report** widget to examine Lead Time for Changes based on PR stages.
 
 :::info
 
@@ -44,13 +61,13 @@ To add the SCM PR Lead Time widget to Insights:
    * Approval time.
    * Merge time.
 
-    Time spent in each stage depends on the stages that a PR actually goes through. For example, if there are no comments on the PR, then there is no time to calculate for that.
+   Time spent in each stage depends on the stages that a PR actually goes through. For example, if there are no comments on the PR, then there is no time to calculate for that.
 
-    You can modify workflow profile stages according to your team's SDLC process. For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
+   You can modify workflow profile stages according to your team's SDLC process. For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
 
 6. Select where you want to place the widget on the Insight, and then select **Save Layout**.
 
-### Calculating lead time and its stages
+#### Calculating lead time and stages
 
 Here are some examples of lead time and PR stage calculations.
 
