@@ -20,7 +20,12 @@ If you want the widget to report the status (success or failure) of all jobs in 
 * Metrics: Job Status
 * Aggregations: Job Name
 
-<!-- img .gitbook/assets/image (63).png - CICD Job Count Report set to all jobs in dashboard time -->
+<figure>
+
+![](./static/ci-cd-job-count-report.png)
+
+<figcaption>Figure 1: The CI/CD Job Count Report set to all jobs in dashboard time.</figcaption>
+</figure>
 
 ### Filter by failed jobs
 
@@ -31,4 +36,9 @@ If you want the widget to highlight failed jobs, set **Filter, Job Status** to *
 * Aggregations: Job Name
 * Filter, Job Status: Failed
 
-<!-- img .gitbook/assets/image (28).png - CICD Job Count Report widget showing only failed jobs. -->
+<figure>
+
+![](./static/ci-cd-job-count-report-failed.png)
+
+<figcaption>Figure 2: The CI/CD Job Count Report showing only failed jobs.</figcaption>
+</figure>

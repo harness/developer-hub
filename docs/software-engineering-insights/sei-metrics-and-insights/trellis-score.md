@@ -92,3 +92,34 @@ Leadership and collaboration measures developer teamwork and contribution to pee
 * **Number of PRs commented on per month:** This number represents how many PRs a developer commented on in the last 30 days. The typical range for this value is between 2 and 7 PRs per month.
 * **Average Response Time for PR approvals:** This is the average time taken to approve another developer's PR. The industry standard for an PR approval time is between 0.75 and 2 days.
 * **Average Response Time for PR comments:** This is the average time taken for a developer to add review comments on a PR. The industry standard for a responding to a PR comment is between 0.75 and 1.5 days.
+
+## Individual Raw Stats widget
+
+The Individual Raw Stats widget shows a table of base values that contribute to Trellis scores. By default, the widget shows the following raw, pre-calculation values for each developer:
+
+* PRs
+* Commits
+* Coding days
+* Average PR cycle time (in days)
+* Average issue resolution time (in days)
+* PRs commented on
+* PRs approved
+* Percentage of rework
+
+You can edit the widget to show different values (add/remove columns) or apply filtering.
+
+<figure>
+
+![](./static/trellis-score-raw-stats.png)
+
+<figcaption>Figure 1: The Individual Raw Stats widget.</figcaption>
+</figure>
+
+You can also use the **Download** icon to download the raw stats report.
+
+<figure>
+
+![](./static/trellis-score-raw-stats-download.png)
+
+<figcaption>Figure 2: The icon to download the Individual Raw Stats report.</figcaption>
+</figure>

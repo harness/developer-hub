@@ -57,6 +57,67 @@ Select a metric to use for the Y-axis. The Issues Report widget supports the fol
   * Percentage stacked bar chart
 * Select the date format.
 
+### Issues Report use cases
+
+Here are some examples of configurations for the Issues Report widget.
+
+<details>
+<summary>Defects raised weekly</summary>
+
+To configure the Issues Report widget to show bug tickets created weekly:
+
+1. On the **Filter** tab, add an **Issue Type** filter set to **Bug/Defect**.
+2. For the time range, either **Use dashboard time** or set **Issue Created In** to the desired time range.
+3. On the **Metrics** tab, select **Number of Tickets**.
+4. On the **Aggregations** tab, set **X-axis** to **Issue created by week**.
+5. On the **Settings** tab, set the **Visualization** to **Bar Chart**.
+6. Set the widget **Name** to **Defects raised weekly**.
+
+</details>
+
+<details>
+<summary>Stories resolved weekly</summary>
+
+To configure the Issues Report widget to show stories resolved weekly:
+
+1. On the **Filter** tab, add an **Issue Type** filter set to **Story**.
+2. For the time range, either **Use dashboard time** or set **Issue Created In** to the desired time range.
+3. On the **Metrics** tab, select **Number of Tickets**.
+4. On the **Aggregations** tab, set **Stacks** to **Priority**, and set **X-axis** to **Issue resolved by week**.
+5. On the **Settings** tab, set the **Visualization** to **Bar Chart**.
+6. Set the widget **Name** to **Stories resolved weekly**.
+
+</details>
+
+<details>
+<summary>Distribution of tickets in an active sprint</summary>
+
+To configure the Issues Report widget to show the distribution of tickets in the active sprint:
+
+1. On the **Filter** tab, add a **Sprint** filter set to **Select Active Sprints only**.
+2. On the **Metrics** tab, select **Number of Tickets**.
+3. On the **Aggregations** tab, set **Stacks** to **Issue Type**, and set **X-axis** to **Sprint**.
+4. On the **Settings** tab, set the **Visualization** to **Bar Chart**.
+5. Set the widget **Name** to **Active sprint tickets distribution**.
+
+</details>
+
+<details>
+<summary>Team workload (in stories)</summary>
+
+To configure the Issues Report widget to show the team workload:
+
+1. On the **Filter** tab, add a **Status** filter, set the value to all closed statuses (Done, Closed, Resolved, Won't Do, and so on), and select **Exclude**.
+
+   This ensures the widget only shows active or not-started work.
+
+2. On the **Metrics** tab, select **Number of Tickets**.
+3. On the **Aggregations** tab, set **Stacks** to **Issue Type**, and set **X-axis** to **Assignee**.
+4. On the **Settings** tab, set the **Visualization** to **Bar Chart**.
+5. Set the widget **Name** to **Team workload**.
+
+</details>
+
 ## Issue Bounce Report
 
 _Bounce_ describes tickets that are reassigned to a previous assignee. The Issue Bounce Report shows the number of times a ticket "bounced" between assignees. Bounce can occur if an issue isn't triaged correctly initially, or if the issue doesn't have enough information to be assigned correctly. Excessive bounce can potentially cause missed SLAs and unnecessary resource utilization.
@@ -132,7 +193,7 @@ The Issue Hygiene Report is often used in conjunction with the **Issue Hygiene T
 
 :::
 
-#### Example configurations
+#### Issue Hygiene Report use cases
 
 Here are some examples of configurations for the Issue Hygiene Report widget.
 
@@ -174,9 +235,9 @@ You can configure the widget to show the hygiene score for all tickets in your b
 
 ## Issue Resolution Time
 
-There are two Issue Resolution Time widgets: The **Issue Resolution Time Single Stat** and the **Issue Resolution Time Report**
+There are two Issue Resolution Time widgets: The **Issue Resolution Time Single Stat** and the **Issue Resolution Time Report**.
 
-The Issue Resolution Time Single Stat widget monitors a single stat, such as average issue resolution time (average time from creation to close).
+The Issue Resolution Time Single Stat widget is an [Issue Single Stat widget](#issue-single-stat-widgets) that reports the number of issues marked as resolved in a given time period.
 
 The Issue Resolution Time Report is a configurable bar graph showing the number of tickets closed along with the average time it took to close those tickets, based on the time the tickets were created. This report can help answer questions like:
 
@@ -185,6 +246,14 @@ The Issue Resolution Time Report is a configurable bar graph showing the number 
 * On average, how long does it take fix customer issues? Are we able to meet the SLA timeline?
 
 <!-- img .gitbook/assets/image (76).png - issue resolution time report widget example -->
+
+:::tip Use Issue Resolution Time to monitor MTTR and MTBF
+
+Mean Time To Recover (MTTR) and Mean Time Between Failures (MTBF) are [DORA metrics](./dora-metrics.md).
+
+You can use the **Issue Resolution Time Report** and **Issue Resolution Time Single Stat** widgets to monitor MTTR and MTBF. You'll need to configure the filters and settings for these widgets so that they only track issues related to failure recovery.
+
+:::
 
 ### Configure the Issue Resolution Time Report widget
 
@@ -212,7 +281,7 @@ The primary way to modify the Issue Resolution Time Report widget is to change t
 This configuration produces a bar graph showing which assignees are taking the most time to close issues within the selected time frame.
 
 1. On the **Aggregations** tab, select **Assignee** for the X-axis dimension.
-2. On the **Settings** tab, sort the X-axis by **Value, High --> Low**, and set the **Max X-Axis Entries** high enough so that it can show all team members.
+2. On the **Settings** tab, set **Sort X-axis** to **By Value, High --> Low**, and set the **Max X-Axis Entries** high enough so that it can show all team members.
 
 <!-- img /.gitbook/assets/image (53).png - Issue Resolution Time Report widget config - settings tab - sort xaxis high to low and 20 max entries -->
 
@@ -230,7 +299,7 @@ This configuration produces a bar graph showing how well your story points are e
 
    <!-- img .gitbook/assets/image (29).png - exclude time in status filter example config -->
 
-3. On the **Settings** tab, sort the X-axis by **Label, Low --> High**.
+3. On the **Settings** tab, set **Sort X-axis** to **By Label, Low --> High**.
 
 </details>
 
@@ -242,20 +311,27 @@ This configuration produces a bar graph showing a historical record of the avera
 <!-- img .gitbook/assets/image (38).png - time to close issue by last time period bar graph example -->
 
 1. On the **Aggregations** tab, select **Issue Last Closed (Week, Month, Quarter)** for the X-axis dimension.
-2. On the **Filters** tab, add filters to demonstrate [MTTR](#mttr-and-mtbf) or [Lead Time For Changes](./dora-metrics.md#lead-time-for-changes) trends:
+2. On the **Filters** tab, add filters to demonstrate [MTTR](./dora-metrics.md#time-to-restore-service-mttr) or [Lead Time For Changes](./dora-metrics.md#lead-time-for-changes) trends:
 
    * For MTTR: Add an **Issue Type** filter, and set the filter value to **Bugs**.
    * For Lead Time For Change: Add an **Issue Type** filter, and set the filter values to **Tasks** and **Stories**.
 
-3. On the **Settings** tab, sort the X-axis by **Label, Low --> High**.
+3. On the **Settings** tab, set **Sort X-axis** to **By Label, Low --> High**.
 
 </details>
 
-### Use Issue Resolution Time to monitor MTTR and MTBF
+### Issue Single Stat widgets
 
-Mean Time To Recover (MTTR) and Mean Time Between Failures (MTBF) are [DORA metrics](./dora-metrics.md).
+The Issue Single Stat widgets provides single metrics over the given time range. This is useful for tracking events (created, resolved, etc.) happening over a period of time. For example, you can use the **Issue Resolution Time Single Stat** widget to know how many issues were *resolved* in the given time frame. Usually, the time range is set to **Use Dashboard Time**, which allows the user to select a time range when viewing Insights.
 
-You can use the **Issue Resolution Time Report** and **Issue Resolution Time Single Stat** widgets to monitor MTTR and MTBF. You'll need to configure the filters and settings for these widgets so that they only track issues related to failure recovery.
+Issue Single Stats widgets include:
+
+* Issue created
+* Issue due
+* Issue resolution time
+* Issue updated
+
+You can configure these widgets to further filter and refine them, such as by issue type, label, priority, and so on.
 
 ## SCM Files Report
 
@@ -266,3 +342,18 @@ Use the SCM Files Report to identify code areas with a high frequency of changes
 Several tools-based metrics are available with SEI, such as SonarQube code complexity reports, Testrails test reports, PagerDuty incident reports, Junit test reports, and many more.
 
 :::
+
+## SCM PR Report
+
+The SCM PR Report widget shows a high level view of PRs moving through your SCM.
+
+On the **Filters** tab, you can configure what data feeds into this widget by creating inclusive and exclusive filters. For example, you can set the widget to show PRs in closed status in the last 7 days.
+
+On the **Aggregations** tab, you can select the dimension to use for the X-axis, such as **Project**, **Creator**, **Branch**, and so on. This determines what you want the widget to focus on. For example, focusing on **Project** can show you the PR resolution time for different work areas; whereas, focusing on **Creator** can show you PR resolution time by PR author.
+
+On the **Settings** tab, you can:
+
+* Select the code change size and code density, if you want to exclude small PRs.
+* Select how you want to sort X-axis data, such as ascending or descending.
+* Select the maximum number of unique values to show on the X-axis.
+* Select the visualization (bar chart, pie chart, line chart, and so on).
