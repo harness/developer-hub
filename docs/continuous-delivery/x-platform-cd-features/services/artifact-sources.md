@@ -1723,8 +1723,20 @@ To add an artifact from ACR, do the following:
     ![](static/kubernetes-services-13.png)
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
-14. Click **Submit**.
-    The artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
+14. Optionally, you can select the **Digest** for the image you want to use. Specifying an image by digest (rather than tag) is useful when you want deploy an image with a fixed digest/SHA for your service. 
+
+  :::note 
+
+  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+  If an image with the specified digest does not exist in the artifact registry, the pipeline will fail.
+
+  :::
+15. Select **Submit**. The Artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
+
+The artifact is added to the Service Definition.
 
 
 ```mdx-code-block
