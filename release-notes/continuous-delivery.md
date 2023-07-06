@@ -22,8 +22,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-This release does not include any new features.
 
+Template Library - Referencing specific versions of a template on a different branch from the Pipeline (CDS-69774)
+
+While using GitEx for pipeline and templates, customers will now be able to link templates from specific branches. Previously, templates were picked either from the same branch as pipeline if both pipelines and templates were present n the same repository or from the default branch of the repository if templates were stored in different repository than the pipeline. Same logic will continue to be used if no branch is specified while selecting the template but if a specific branch is picked while selecting the template then templates will always be picked from the specified branch only.
 
 ```mdx-code-block
   </TabItem>
