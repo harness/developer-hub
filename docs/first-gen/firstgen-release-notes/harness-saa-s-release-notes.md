@@ -16,6 +16,19 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### July 06, 2023, version 79807
+
+#### What's new
+
+- The ubi8-minimal:8.7 has been upgraded to version ubi8-minimal:8.8 (PL-39276)
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+
 ### June 28, 2023, version 79714
 
 #### What's new

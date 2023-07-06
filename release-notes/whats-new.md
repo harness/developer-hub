@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-07-03T10:00
+date: 2023-07-06T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -18,7 +18,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - June 30, 2023
+## Latest - July 07, 2023
+
+### Harness Platform, version 79811
+
+- Harness now allows special characters in usernames. (PL-39564, ZD-46487)
+- You can now view delegate logs when validating a connector that uses delegates to establish connections. (PL-37919)
+- When creating Azure Key Vault, you can now manually enter the vault name. (PL-32773, ZD-44045)
+## June 30, 2023
 
 ### Cloud Cost Management
 
