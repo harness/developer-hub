@@ -249,6 +249,11 @@ Following are the possible scenarios when your remote pipelines reference entiti
 - The referenced entities are stored in the same repository as the pipeline.
 - The referenced entities are stored in a different repository than the pipeline.
 
+:::important
+It is also possible to select the branch for the referenced entities if you have explicitly selected a feature branch.
+:::
+
+
 ### The referenced entities are stored in the same repository as the pipeline
 
 Following are the key points to keep in mind when the referenced entities reside in the same repository: 
