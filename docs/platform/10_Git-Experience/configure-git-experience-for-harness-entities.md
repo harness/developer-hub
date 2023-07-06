@@ -241,6 +241,10 @@ Click **Run**.
 
 Click **Run Pipeline**.
 
+## Demo Video
+
+<docvideo src="https://www.loom.com/share/a1848256318c4b92aefa965402c9dca9?sid=0ed15761-4be2-4897-b9fd-73782df1a21f"/>
+
 ## Branch selection logic for fetching referenced entities in remote pipelines
 
 The configurations of the required resources and any referenced entities like input sets and templates are fetched from Git during pipeline fetch, creation, or execution.
