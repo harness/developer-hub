@@ -74,7 +74,11 @@ Now that you have access to a Kubernetes cluster, you can install the delegate u
 
 ### Install the Helm chart
 
-As a prerequisite, you must have [Helm v3](https://helm.sh/docs/intro/install/) installed on the machine from which you connect to your Kubernetes cluster. 
+As a prerequisite, you must have [Helm v3](https://helm.sh/docs/intro/install/) installed on the machine from which you connect to your Kubernetes cluster.
+
+:::info note
+Beginning with delegate Helm chart version 1.0.11, Harness no longer supports HPA for Kubernetes versions <= 1.22. If you have Kubernetes version <= 1.22 and you want to use HPA in your Helm delegate, you must use delegate Helm chart version < 1.0.11.
+:::
 
 You can now install the delegate using the delegate Helm chart. First, add the `harness-delegate` Helm chart repo to your local Helm registry.
 
@@ -84,7 +88,7 @@ helm repo update
 helm search repo harness-delegate
 ```
 
-You can see that there are two Helm charts available. We will use the `harness-delegate/harness-delegate-ng` chart in this tutorial.
+We will use the `harness-delegate/harness-delegate-ng` chart in this tutorial.
 ```
 NAME                                	CHART VERSION	APP VERSION	DESCRIPTION                                
 harness-delegate/harness-delegate-ng	1.0.8        	1.16.0     	A Helm chart for deploying harness-delegate
