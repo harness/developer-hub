@@ -15,25 +15,25 @@ The key for using CV in a multi-service or multi-environment deployment are moni
 
 Start by going to the CD module, under project setup go to Templates, and then under `+ New Template` select `Monitored Service`. 
 
-![](./static/template-create-ms.png)
+![](../static/template-create-ms.png)
 
 Give your template a name, version, and chose wether to store the template in Harness or in a git repository.
 
 First change the service and environment options to be runtime inputs.
 
-![](./static/template-ms-svc-env.png)
+![](../static/template-ms-svc-env.png)
 
 Click `+ Add New Change Source`, select `Deployment` for the provider type, select `Harness CD NextGen`, and then give this source a name.
 
-![](./static/template-ms-cs.png)
+![](../static/template-ms-cs.png)
 
 Click `+ Add New Health Source`, select your health source (prometheus in this example), give it a name, and finally select the connector for this source.
 
-![](./static/template-ms-hs.png)
+![](../static/template-ms-hs.png)
 
 On the next screen under `Group Name` click `+ Add New` and create a metric group. Next under `Assign` select the options that relate to the metric you will be measuring. Finally make sure the Query is set to be a runtime input.
 
-![](./static/template-ms-metric.png)
+![](../static/template-ms-metric.png)
 
 Repeat the above for as many metrics as you want to track.
 
@@ -45,15 +45,15 @@ The example above used prometheus, but the same thing can be achieved for other 
 
 Start by creating a multi-service CD stage and either select the services to deploy or set a runtime input.
 
-![](./static/pipeline-ms.png)
+![](../static/pipeline-ms.png)
   
 Next fill out the environment and infrastructure we will be deploying to.
   
-![](./static/pipeline-infra.png)
+![](../static/pipeline-infra.png)
   
 For the execution wizard select your deployment type (we will use rolling for this example). Now after the deployment step add a verify step and configure it for your deployment type and add the desired verification settings.
 
-![](./static/pipeline-verify.png)
+![](../static/pipeline-verify.png)
 
 Under `Monitored Service Type` select `Template` and then `Use Template` to select the template we created in the above section.
 
@@ -73,8 +73,8 @@ max(
 )
 ```
 
-![](./static/pipeline-ms-query.png)
+![](../static/pipeline-ms-query.png)
 
 If everything has been configured correctly you should be able to deploy your services and the CV step should verify their health based on the query you provided.
 
-![](./static/pipeline-run.png)
+![](../static/pipeline-run.png)
