@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-07-07T10:00:30
+date: 2023-07-06T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Platform, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 07, 2023, version 798xx
+## Latest - July 06, 2023, version 79807
 
 
 ```mdx-code-block
@@ -29,7 +29,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Harness now allows special characters in usernames. (PL-39564, ZD-46487)
 - You can now view delegate logs when validating a connector that uses delegates to establish connections. (PL-37919)
 - When creating Azure Key Vault, you can now manually enter the vault name. (PL-32773, ZD-44045)
-- You can now add webhook notifications to pipeline events. (PL-39116)
 
 
 ```mdx-code-block
