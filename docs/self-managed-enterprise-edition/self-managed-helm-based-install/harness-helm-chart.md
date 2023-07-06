@@ -99,6 +99,6 @@ The following components are included in addition to the Harness Platform compon
 
 | **Dependency** | **Description** |
 | :-- | :-- |
-| **Ingress Controller** | [Istio](https://istio.io/latest/about/service-mesh/) is an open-source service mesh that supports the Kubernetes Ingress Controller. |
-| **Istio** | Supported by default. |
+| **Istio** | [Istio](https://istio.io/latest/about/service-mesh/) is an open-source service mesh. |
+| **Ingress Controller** | Supported by default. |
 
