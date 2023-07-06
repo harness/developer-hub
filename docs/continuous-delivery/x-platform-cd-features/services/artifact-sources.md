@@ -2812,7 +2812,7 @@ For more information, go to:
 
 You can view the SHA values and labels of the Docker images for the following artifact providers:
 
-- Docker (platform agnostic)
+- Docker Registry (platform agnostic)
 - Artifactory
 - ECR
 - GCR
