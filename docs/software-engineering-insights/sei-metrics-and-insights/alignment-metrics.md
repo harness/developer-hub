@@ -15,6 +15,8 @@ Alignment metrics widgets help you:
 
 :::tip
 
+Alignment metrics are driven by [Investment profiles](../sei-profiles/investment-profile.md).
+
 Use [Business Alignment Insights](./sei-insights.md#create-a-business-alignment-insights) to observe these metrics.
 
 :::

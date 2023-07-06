@@ -4,7 +4,7 @@ description: Use sprint metrics to plan and deliver on sprints more effectively.
 sidebar_position: 40
 ---
 
-This page explains the various sprint metrics and how you can use them to plan and deliver on sprints more effectively.
+Sprint metrics can help you plan and deliver on sprints more effectively, including backlog grooming and story hygiene.
 
 Sprint metrics for Scrum teams help you address business problems like:
 
@@ -102,7 +102,7 @@ If the average **commit done ratio** over a long period of time is above 70 perc
 An **commit done ratio** below 60 percent indicates poor performance on sprint plans, and there is room for improvement in sprint delivery. There are several reasons a team might perform poorly on sprint plans. Check for:
 
 * The impact of creep and context switching on sprint plans. Check the **creep to commit ratio** and the **creep done to commit ratio**. Creep that is consistently above 40 percent could have an impact on sprint deliverables.
-* Vague requirements that cause rework and impact sprint delivery. Use the **Jira Hygiene Report** to check the sprint's **Hygiene Score**.
+* Vague requirements that cause rework and impact sprint delivery. Use the [Hygiene Report](./execution/quality-and-support-metrics.md#issue-hygiene-report) to check the sprint's **Hygiene Score**.
 * If none of the above apply, then the team may be consistently planning for more than they can deliver.
 
 ## Example: Analyze sprint performance

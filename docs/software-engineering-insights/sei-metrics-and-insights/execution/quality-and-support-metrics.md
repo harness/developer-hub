@@ -113,7 +113,7 @@ Total Hygiene Score = Sum of Category Scores
 
 ### Configure the Issue Hygiene Report widget
 
-1. Go to the [Insight](../sei-insights.md) where you want to add the widget, edit the Insight, and select **Add Widget**.
+1. Go to the [Insight](../sei-insights.md) where you want to add the widget, select **Settings**, and select **Add Widget**.
 2. Select the **Issue Hygiene Report** widget.
 3. Configure the widget's **Filters**. Filters can be blank or filtered down to a desired ticket type or time frame.
 4. Configure the **Weights** for each hygiene category.
@@ -172,9 +172,13 @@ You can configure the widget to show the hygiene score for all tickets in your b
 
 </details>
 
-## Issue Resolution Time Report
+## Issue Resolution Time
 
-The Issue Resolution Time Report is a bar graph showing the number of tickets closed along with the average time it took to close those tickets, based on the time the tickets were created. This report can help answer questions like:
+There are two Issue Resolution Time widgets: The **Issue Resolution Time Single Stat** and the **Issue Resolution Time Report**
+
+The Issue Resolution Time Single Stat widget monitors a single stat, such as average issue resolution time (average time from creation to close).
+
+The Issue Resolution Time Report is a configurable bar graph showing the number of tickets closed along with the average time it took to close those tickets, based on the time the tickets were created. This report can help answer questions like:
 
 * Is my team getting faster at delivering features or fixing issues?
 * Is the resolution times for a project or component decreasing over time?
@@ -247,13 +251,11 @@ This configuration produces a bar graph showing a historical record of the avera
 
 </details>
 
-## MTTR and MTBF
+### Use Issue Resolution Time to monitor MTTR and MTBF
 
-Mean Time To Recover (MTTR) measures the average amount of time it takes to resolve an incident or failure, from the moment it is detected to the moment it is fully resolved.
+Mean Time To Recover (MTTR) and Mean Time Between Failures (MTBF) are [DORA metrics](./dora-metrics.md).
 
-Mean Time Between Failures (MTBF) measures the average amount of time a system or component operates without failing. It is expressed as a continuous operating time in hours, days, or other units of time.
-
-For more information about MTTR, MTBF, and other DORA metrics, go to [DORA metrics](./dora-metrics.md).
+You can use the **Issue Resolution Time Report** and **Issue Resolution Time Single Stat** widgets to monitor MTTR and MTBF. You'll need to configure the filters and settings for these widgets so that they only track issues related to failure recovery.
 
 ## SCM Files Report
 

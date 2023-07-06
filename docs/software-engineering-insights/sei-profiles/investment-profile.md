@@ -38,7 +38,12 @@ After adding [categories](#categories), you can set goals for how much time you 
 
 Adjust the sliders to define the **Ideal range** for each category. You can set ranges from zero to 100. After defining your ideal range, SEI automatically calculates the **Acceptable range** and **Poor range** based on your ideal.
 
-<!-- image (7).png - allocation goals bugs example 20-30% ideal range -->
+<figure>
+
+![](./static/investment-profile-ranges.png.png)
+
+<figcaption>Figure 1: Allocation goals for <b>Bugs</b>, where 20 to 30 percent is the ideal range.</figcaption>
+</figure>
 
 <details>
 <summary>Range calculation example</summary>
@@ -54,7 +59,5 @@ This example could result in the following ranges:
 * 20 to 30 percent: Ideal
 * 30 to 40 percent: Acceptable
 * 40 to 100 percent: Poor
-
-<!-- image (7).png - allocation goals bugs example 20-30% ideal range -->
 
 </details>
