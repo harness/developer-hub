@@ -1,5 +1,5 @@
 ---
-title: Run chaos experiments
+title: Create and run chaos experiments
 sidebar_position: 20
 ---
 
