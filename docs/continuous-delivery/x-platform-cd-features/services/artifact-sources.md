@@ -2810,7 +2810,7 @@ For more information, go to:
 
 ## Viewing SHA values and labels
 
-You can view the SHA values and labels of the Docker images for the following artifact providers:
+Harness provides expressions you can use to output the SHA values and labels of the Docker images for the following artifact providers:
 
 - Docker Registry (platform agnostic)
 - Artifactory
