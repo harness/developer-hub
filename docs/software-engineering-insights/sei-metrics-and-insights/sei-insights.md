@@ -173,3 +173,11 @@ To create DORA Insights:
 
 1. Follow the steps to [create Insights](#create-insights), and select both **Effort Investment Profile** and **Effort Investment Units**.
 2. Add widgets for [DORA metrics](./execution/dora-metrics.md).
+
+## Change the color scheme
+
+You can change the color scheme for all Insights.
+
+1. In your Harness project, go to the SEI module.
+2. Select **Account**.
+3. Select **Customize**.
