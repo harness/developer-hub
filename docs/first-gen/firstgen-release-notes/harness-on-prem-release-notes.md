@@ -14,7 +14,39 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](https://devel
 
 Release notes are displayed with the most recent release first.
 
-## June 30, 2023, version 79421
+## July 7, 2023, patch release for version 79421
+
+Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.7.0](https://github.com/harness/helm-charts/releases/tag/harness-0.7.0) |
+| Air Gap Bundle | [0.7.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.7.0;tab=objects?prefix=&forceOnObjectsSortingFiltering=false) |
+| NG Manager | 79421 |
+| CI Manager | 3907 |
+| Pipeline Service | 1.33.8 |
+| Platform Service | 79202 |
+| Access Control Service | 79004 |
+| Change Data Capture | 79421 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.349.16 |
+| LE NG | 67902 |
+
+### What's new
+
+- Custom dashboard support is added for Continuous Delivery & GitOps and Service Reliability Management data models. (SMP-1585) 
+
+### Early access
+
+This release does not include any early access features.
+
+### Fixed issues
+
+This release does not include any fixed issues.
+
+### June 30, 2023, version 79421
 
 This release includes the following module and component versions.
 
@@ -27,17 +59,17 @@ This release includes the following module and component versions.
 | Learning Engine | 67903 | 
 | Gateway | 11002 |
 
-### New features and enhancements
+#### What's new
 
 #### Harness Delegate
 
 - The org.json:json is upgraded from version 20160810 to 20230227 to address vulnerabilities. (PL-37905)
 
-### Early access
+#### Early access
 
 This release does not include early access features.
 
-### Fixed issues
+#### Fixed issues
 
 #### Continuous Delivery & GitOps
 
@@ -61,8 +93,6 @@ This release does not include early access features.
 
 -  No members appear in user group list even after the user has been added via SCIM. This issue is fixed. (PL-32482)
 
-
-
 - Users cannot use Harness secret as LDAP password in FirstGen. (PL-32597, ZD-42655)
   A code enhancement fixed the issue.
 
@@ -74,7 +104,7 @@ This release does not include early access features.
    
    This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
 
-## June 14, 2023, version 79230
+### June 14, 2023, version 79230
 
 Delegate: 78924
 
@@ -90,7 +120,7 @@ This release includes the following module and component versions.
 | Learning Engine | 67708 | 
 | Gateway | 10701 |
 
-### New features and enhancements
+#### What's new
 
 #### Harness Delegate
 
@@ -98,7 +128,7 @@ This release includes the following module and component versions.
 
 - Updated legacy delegate images `kubectl` version to 1.25.8. (PL-38281, DEL-6087)
 
-### Early access
+#### Early access
 #### Continuous Delivery & GitOps
 
 - Pipelines in different projects are now independent. (CDS-55830, ZD-41377)
@@ -113,7 +143,7 @@ This release includes the following module and component versions.
 	
 	This has now been changed by scoping resource constraints to the project.
 
-### Fixed issues
+#### Fixed issues
 
 #### Continuous Delivery & GitOps
 
@@ -139,7 +169,7 @@ This release includes the following module and component versions.
 
 - Updated the error message for failed task execution to include the delegate host name or ID. (PL-38329, DEL-6187)
 
-## April 26, 2023, version 78926
+### April 26, 2023, version 78926
 
 Delegate: 78904
 
@@ -155,7 +185,7 @@ This release includes the following module and component versions.
 | Learning Engine | 67708 | 
 | Gateway | 2000185 |
 
-#### New features and enhancements
+#### What's new
 #### Harness Platform
 - Upgrades have been made to the following libraries:
 
@@ -220,7 +250,7 @@ This release includes the following module and component versions.
 | Learning Engine | 66700 | 
 | Gateway | 2000149 |
 
-#### New features and enhancements
+#### What's new
 
 - The **kotsadmin minor version** is upgraded from 1.88.0 to 1.95.0. (SMP-835)
 
@@ -346,7 +376,7 @@ This release includes the following module and component versions.
 | Learning Engine | 66700 | 
 | Gateway | 2000137 |
 
-#### New features and enhancements
+#### What's new
 
 This release introduces the following features and enhancements.
 
@@ -378,7 +408,7 @@ This release introduces the following features and enhancements.
   | `io.netty:netty-transport-native-unix-common:4.1.77.Final` | 
   | `io.netty:netty-transport:4.1.77.Final` |
 
-#### Issues fixed in this release
+#### Fixed issues
 
 This release includes the following fixes.
 
@@ -436,7 +466,7 @@ kubectl kots admin-console upgrade -n <namespace>
 ```
 :::
 
-#### New features and enhancements
+#### What's new
 
 This release introduces the following features and enhancements.
 
@@ -454,7 +484,7 @@ This release introduces the following features and enhancements.
 |          | Additionally, LDAP user group sync will not use a quartz job. Instead, the `cron`-based scheduler will use the user-configured `cron` expression. The default value remains set to a 15-minute interval. |
 | PL-29603 | Upgraded `org.mongodb:mongo-java-driver` to version 3.12.11 to fix vulnerabilities. |
 
-#### Issues fixed in this release
+#### Fixed issues
 
 This release includes the following fixes.
 
@@ -494,7 +524,7 @@ This release includes the following fixes.
 
 Delegate: 77021
 
-#### New features and enhancements.
+#### What's new
 
 This release introduces the following features and enhancements.
 
@@ -506,7 +536,7 @@ This release introduces the following features and enhancements.
 | CDS-43911 | The user interface was changed to display the user email for approvals submitted using an API key. The information is shown in the **Approved via API by** field, in the **Details** section. |
 | DEL-4433 | Upgraded Bouncy Castle Crypto API component `org.bouncycastle:bcprov-exte-jdk15on` to version 1.70. |
 
-#### Issues fixed in this release
+#### Fixed issues
 
 This release includes the following fixes.
 
@@ -526,7 +556,7 @@ This release includes the following fixes.
 
 Delegate: 76818
 
-#### New features and enhancements.
+#### What's new
 
 This release introduces the following features and enhancements.
 
@@ -538,7 +568,7 @@ This release introduces the following features and enhancements.
 | DEL-4807 | Published a new delegate that is immutable. |
 | DEL-4889 | The specification of the `delegateGroup` version was changed for the Immutable delegate. The value was changed to the minimum version of the delegate. Formerly the `delegateGroup` variable contained a list of version numbers. |
 
-#### Issues fixed in this release
+#### Fixed issues
 
 This release includes the following fixes.
 
@@ -570,7 +600,7 @@ This release includes the following fixes.
 
 Delegate: 76614
 
-#### New Features and Enhancements
+#### What's new
 
 This release introduces the following features and enhancements:
 
@@ -584,7 +614,7 @@ This release introduces the following features and enhancements:
 | PL-25423 | The CyberArk utility has been removed from the Delegate JAR file. This utility was formerly imported as `org.bouncycastle.util.io.pem.PemObject` and `org.bouncycastle.util,io.pem.PemReader`. |
 | PL-26819 | Functionality that was formerly gated by the `CG_RBAC_EXCLUSION` feature flag is now globally available. The feature flag has been removed. |
 
-#### Issues Fixed in This Release
+#### Fixed issues
 
 | **Issue** | **Description** |
 | :-- | :-- |
@@ -623,7 +653,7 @@ To update KOTS admin console:
 curl https://kots.io/install/1.78.0 | bash  
 kubectl kots admin-console upgrade -n <namespace>
 ```
-#### New Features and Enhancements
+#### What's new
 
 This release introduces the following features and enhancements.
 
@@ -646,7 +676,7 @@ The discovery process checks the following locations in the order given; the fir
 
 N/A
 
-#### Issues Fixed in This Release
+#### Fixed issues
 
 * Clarified the process used to obtain the correct artifact for rollback. The process was changed to distinguish between the artifacts used when multiple workflows are deployed in succession by the same service on the same infrastructure. This corrects a problem with rolling back to the same artifact that was already deployed. (CDS-35655, ZD-29101, ZD-32440)
 * Modified code to display an error in the UI when an application resize step error occurs. (CDS-39556)
@@ -787,7 +817,7 @@ Any issues, please contact support@harness.io" ; exit 0
 ```
  We're pleased to present Harness Self-Managed Enterprise Edition Minor Release 76025.
 
-#### New Features and Enhancements
+#### What's new
 
 ##### Platform and Delegate
 
@@ -805,7 +835,7 @@ Any issues, please contact support@harness.io" ; exit 0
 * Changed custom deployments to eliminate polling and permit an empty artifact source script. If no script is specified, the deployment uses the provided artifact version and version information is available in the artifact variable`${artifact.*}` (CDS-34235)
 * You can now update/create Jira issues with fields of type `user`. (CDS-28853, ZD-237529)
 
-#### Issues Fixed in This Release
+#### Fixed issues
 
 * Resolved a schema problem that caused GraphQL API to fail with "TypeError: Type SecretManagerConfig must define one or more fields." The failure occurred when schema validation was enabled (PL-26534, ZD-32450, ZD-32477, ZD-32501)
 * Application Permissions under User Groups does not load (PL-26111, ZD-32018)
@@ -890,7 +920,7 @@ We're pleased to present Harness On-Premise Minor Release 75281.
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
 * [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
-#### New Features and Enhancements
+#### What's new
 
 The following new features were added to the Harness platform components:
 
@@ -910,7 +940,7 @@ The following new features were added to the Harness platform components:
 * Remove iterator logging and build first class support with OpenCensus.
 	+ As part of streamlining our monitoring and reducing the cost of logging, all the background jobs metrics are moved from log based metrics to OpenCensus metrics providing us better visibility into our critical paths. (DEL-3835)
 
-#### Issues Fixed in the Release
+#### Fixed issues
 
 * cURL query for createFreeze window returns error message on using API key (PL-24899, ZD-29519, ZD-30296)
 * Delayed Sync with Harness UI and Github Config as Code Repository. We had some slowness in case a file was renamed in Harness -→ git. We have improved it going forward. (PL-24662, ZD-28316)
@@ -920,7 +950,7 @@ The following new features were added to the Harness platform components:
 * delegateScopeList API call not working. Fixed the bug of listing Delegate scopes when the environment is not provided (DEL-3991, ZD-30462)
 * Added support for special characters in proxy password for delegate proxying. (DEL-3348, ZD-26493)
 * Triggers fail when optional input of type allowed values is not passed in the payload. Issue scenario: If you had an optional workflow variable with some allowed values, and the value was not provided for that workflow variable in trigger payload, and trigger executions starting failing with error: Trigger rejected because a passed workflow variable was not present in allowed values. Fix: Changed the validation to only occur when variable value is provided in trigger. (CDS-37510, ZD-30760, ZD-30769, ZD-30773, ZD-30777, ZD-30782, ZD-30797, ZD-30798, ZD-30810, ZD-30812)
-* Bamboo step is failing and Delegate is throwing Class is not registered: software.wings.delegatetasks.BambooTask$BambooExecutionResponse execption (CDS-37264, ZD-30567)
+* Bamboo step is failing and Delegate is throwing Class is not registered: software.wings.delegatetasks.BambooTask$BambooExecutionResponse exception (CDS-37264, ZD-30567)
 * SSH Step -> Download Artifact: NPE with DownloadArtifactCommandUnit.java. Gives UNKNOWN\_ERROR on the UI (CDS-37193, ZD-30299, ZD-30498, ZD-30499)
 * ArtifactMetadataEvaluator Class is not registered in QA (CDS-37055)
 * Artifactory Docker autosuggestion shows wrong value for Artifactory on-prem/server for "Docker Repository Server" (CDS-36996, ZD-30023, ZD-30402, ZD-30568, ZD-30623, ZD-30628)
@@ -953,7 +983,7 @@ The following new features were added to the Harness platform components:
 
 We're pleased to present Harness Self-Managed Enterprise Edition Minor Release 74969.
 
-#### New Features and Enhancements
+#### What's new
 
 The following new features and enhancements were added to Harness Self-Managed Enterprise Edition:
 
@@ -967,7 +997,7 @@ The following new features and enhancements were added to Harness Self-Managed E
 * We are reducing the heap size of Current Gen Delegate processes from 4gb to 1.5gb. We are also reducing the k8 memory requirement from 8gb to 4gb. This is behind a feature flag and will be rolled out with various accounts. (DEL-3365)
 * We now have the new application filter component that supports API-driven BE search as well as infinite scrolling. So we won't fetch all the applications at once, but instead fetch them in a batch size of 15 and relevant to the search text typed. (CDS-36365)
 
-#### Issues Fixed​
+#### Fixed issues
 
 * We have removed the Walkme integration from Harness. (PLG-988, ZD-30008)
 * When pasting the YAML definition in a Workflow, the Update failed. Reason: NullPointerException error message was thrown without any reason for the failure. (PL-24456, ZD-29097)
@@ -1040,7 +1070,7 @@ Harness accounts that use [Single Sign-On (SSO) with SAML](../firstgen-platform/
 
 ![](./static/harness-on-prem-release-notes-12.png)
 
-#### New Features and Enhancements
+#### What's new
 
 The following new features were added to the Harness platform components:
 
@@ -1057,7 +1087,7 @@ The following new features were added to the Harness platform components:
 * When you edit a Helm Connector (except the credentials and name), previously collected Helm charts will get deleted and updated. We now show a Confirm | Cancel dialog box so you have the option to cancel the operation. (CDS-29032)
 * The Deployments page has new options for configuring rollbacks after provisioning from a manual intervention, action after retries, and normal rollback vs. rollback after provisioning. (CDS-28963)
 
-#### Issues Fixed in the Release
+#### Fixed issues
 
 * Anonymous users sometimes report Refiner surveys in CG. (PLG-782)
 * Infinite scroll has been added to the User Groups list page. You can also search for your user groups in this page. A search fetches all user groups across the application. (PL-20963. ZD-18775, ZD-20187, ZD-21829, ZD-26436, ZD-28694)
@@ -1112,7 +1142,7 @@ See [Select Nodes Workflow Step](../firstgen-platform/techref-category/cd-ref/w
 
 * N/A
 
-#### Issues Fixed in the Release
+#### Fixed issues
 
 * N/A
 
@@ -1138,7 +1168,7 @@ We're pleased to present Harness On-Premise Minor Release 73610.
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
 * [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
-#### New Features and Enhancements
+#### What's new
 
 The following new features were added to the Harness platform components:
 
@@ -1158,7 +1188,7 @@ The following new features were added to the Harness platform components:
 * You can now pull Helm Charts of a specific version when needed from the manifest history by selecting **Manually pull artifact** in the Harness Service. This version can then be used in future deployments and is useful when Helm Chart collection is disabled. (CDC-16422)
 	+ [Deploy Helm Charts](../continuous-delivery/kubernetes-deployments/deploy-a-helm-chart-as-an-artifact.md).
 
-#### Issues Fixed in the Release
+#### Fixed issues
 
 * N/A
 
@@ -1184,11 +1214,11 @@ We're pleased to present Harness On-Premise Minor Release 73406.
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
 * [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
-#### New Features and Enhancements
+#### What's new
 
 * N/A
 
-#### Issues Fixed in the Release
+#### Fixed issues
 
 * VMSS: `downsizeOldVMSS` appears as `downsizeOldVMSSS` (with extra s) in YAML (CDP-19407)
 	+ In Config-as-Code for Azure VMSS BG Workflow, the `downsizeOldVMSSS` field in YAML had a typo: extra s. Fixed by updating the State field name which is directly reflected in YAML files.
@@ -1226,7 +1256,7 @@ We're pleased to present Harness On-Premise Minor Release 73225.
 * [New features added to Harness](https://changelog.harness.io/?categories=fix,improvement,new).
 * [Features behind Feature Flags](https://changelog.harness.io/?categories=early-access) (Early Access).
 
-#### New Features and Enhancements
+#### What's new
 
 The following new features were added to the Harness platform components:
 
@@ -1252,7 +1282,7 @@ The following new features were added to the Harness platform components:
 
 * N/A
 
-#### Issues Fixed in the Release
+#### Fixed issues
 
 * Pipeline failed with Workflow grayed out (CDC-15677, CDC-16042, ZD-20466)
 	+ When pipeline had many stages in parallel, pipeline execution used to intermittently fail with workflow being grayed out. We suspected the root cause of this to be a race condition between threads. We did fix it and added log lines to confirm the fix.
