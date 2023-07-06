@@ -20,7 +20,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - July 07, 2023
 
-### Harness Platform, version 79807
+### Harness Platform, version 79811
 
 - Harness now allows special characters in usernames. (PL-39564, ZD-46487)
 - You can now view delegate logs when validating a connector that uses delegates to establish connections. (PL-37919)
