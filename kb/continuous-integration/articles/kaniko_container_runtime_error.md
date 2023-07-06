@@ -13,20 +13,20 @@ Harness CI
 
 ## Issue 
 While building and pushing an image to the docker registry, one can encounter the following error:
-![](./static/kb1_img1.png)
+![](../static/kb1_img1.png)
 
 ## Resolution 
 The resolution is to add an environment stage variable named “container” with a value “docker”.
 Follow these simple steps to do add a stage variable:
 
 - Navigate to `Variable` on the left side of the pipeline studio.You can refer to the below screenshot for the reference.
-![](./static/kb1_img2.png)
+![](../static/kb1_img2.png)
 
 - Go to the stage where the `Build and Push an Image to Docker Registry` step is added.
 - Go to `stage variable` -> `Add variable`.
 - Write variable name as `container` and type will be string and then select `Save`.
 - Give the value of the variable as `docker`.
-![](./static/kb1_img3.png)
+![](../static/kb1_img3.png)
 - Click on `Apply Changes`.
 
 ## Diagnostic Step
