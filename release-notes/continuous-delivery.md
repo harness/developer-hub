@@ -64,10 +64,6 @@ This release does not include any early access features.
 - The **Repository Name** setting in the pipeline list page filter was not working properly. (CDS-70784, ZD-45350)
   
   This issue is fixed. If there are any saved filters that use **Repository Name**, you must delete and create the filter again.
-- The expression, `<+artifacts.primary.identifier>` was not working for Google Cloud Storage (GCS) artifact types. (CDS-68993, ZD-44217)
-  
-  This issue is fixed. You can see the identifier of the source selected as primary when using the expression `<+artifacts.primary.identifier>`. This functionality is behind the feature flag, `CDS_ARTIFACTS_PRIMARY_IDENTIFIER`. 
-
 
 ```mdx-code-block
   </TabItem>
