@@ -10,22 +10,22 @@ Currently, AWS SAM support is behind the feature flag `CDP_AWS_SAM`. Contact [Ha
 
 :::
 
-Harness supports AWS SAM (Serverless Application Model) deployments. SAM is an open-source framework provided by Amazon Web Services (AWS) that simplifies the deployment and management of serverless applications on AWS. It is an extension of AWS CloudFormation, which is AWS's infrastructure-as-code service.
+Harness supports AWS SAM (Serverless Application Model) deployments. SAM is an open-source framework provided by Amazon Web Services (AWS) that simplifies the deployment and management of serverless applications on AWS. It is an extension of AWS's infrastructure-as-code service, CloudFormation.
 
-You simply add your SAM template to Harness, select the target region, and Harness will perform the SAM build and deploy.
+For SAM deployments in Harness, you simply add your SAM template to Harness, select the target region, and Harness will perform the SAM build and deploy.
 
-Harness performs the SAM build and deploy within an ephemeral Docker container in a Kubernetes cluster. You can manage the Kubernetes settings for the 
+Harness performs the SAM build and deploy within an ephemeral Docker container in a Kubernetes cluster. You can manage the Kubernetes settings for these steps as needed.
 
 ## Deployment summary
 
 SAM deployments involve the following:
 
-1. Create SAM service.
-   1. Add you SAM template.
+1. Create Harness SAM service.
+   1. Add your SAM template.
    2. Add a values.yaml file (optional). Harness supports Go templating with SAM templates and values.yaml files.
-2. Create SAM environment.
+2. Create Harness SAM environment.
    1. Define the target infrastructure by adding a Harness AWS connector with the necessary AWS permissions for the deployment and a target AWS region.
-3. Create SAM pipeline stage.
+3. Create Harness SAM pipeline stage.
    1. Select the Harness SAM service to use.
    2. Select the Harness SAM environment to use.
    3. Define deployment strategy. Harness automatically generates the steps required to deploy your SAM template.
@@ -68,7 +68,6 @@ The most common roles for SAM are:
 For more details, go to [Managing resource access and permissions](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-permissions.html) from AWS.
 
 </details>
-
 
 
 ## AWS SAM service
@@ -159,11 +158,12 @@ The SAM infrastructure definition is the target AWS account and region for the S
 
 1. In the environment, select **Infrastructure Definitions**.
 2. Select **Infrastructure Definitions**.
-3. Name the infrastructure definition, and in **Deployment Type**, select **AWS SAM**.
-4. In **Connector**, select or create a Harness AWS connector. Ensure the IAM account uses the required permissions.
+3. Name the infrastructure definition and, in **Deployment Type**, select **AWS SAM**.
+4. In **Connector**, select or create a Harness AWS connector. Ensure the IAM account uses the required permissions for the operations your SAM template requires.
 5. In **Region**, select the target region.
 6. Select **Save**.
 
+When a pipeline stage uses this infrastructure definition, it will deploy your SAM template changes in the target region.
 
 ## AWS SAM stage
 
@@ -179,12 +179,12 @@ When you add a Deploy stage to a pipeline, you can select the AWS SAM deployment
 6. In **Environment**, select the SAM environment and infrastructure definition to use, and select **Continue**.
 7. Select the [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts) to use, and then select **Use Strategy**.
 
-## AWS SAM Basic strategy and steps
+## AWS SAM basic strategy and steps
 
-The Basic strategy consists of the following execution setup:
+The basic strategy consists of the following execution setup:
 
 - **SAM step group:** uses your Kubernetes cluster as a step runtime infrastructure.
-  - **DinD Background step:** creates a Docker in Docker container for the step execution resources.
+  - **DinD Background step:** creates a Docker in Docker container for the each step's execution resources.
   - **Download Manifests step:** fetches your SAM template.
   - **SAM Build step:** runs a [sam build](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html).
   - **SAM Deploy step:** runs a [sam deploy](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html).
@@ -204,35 +204,27 @@ You need to configure the following mandatory settings:
 - **Kubernetes Cluster:** add a Harness [Kubernetes Cluster connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/) to connect to the cluster that will be used as the runtime step infrastructure.
 - **Namespace:** enter the name of the cluster namespace to use.
 
-For information on configuring containerized step groups, go to [Containerized step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-step-groups).
-
-### Harness Docker Hub connector for all steps
+### Harness Docker Hub connector and image for all steps
 
 The DinD Background, SAM Build, and SAM Deploy steps are containerized. In each step, you must provide a Harness connector to a container registry and an image for the container the step uses.
 
-You can create the connector, in the any of the steps and they select it in the other steps, or you can create it separately and select it in the steps.
+When you create the **Execution** section of your stage the first time and select the Basic strategy, Harness supplies the container registry connector and image for each step automatically.
 
-For steps on how to create the connector separately using the Harness Docker Hub registry, go to [Harness Docker connector for all steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-step-groups#harness-docker-connector-for-all-steps).
-
-Now you can select the connector in each step.
+You can add/select a different container registry connector and image for each step, but the image should support the SAM template operations you are deploying.
 
 ### DinD Background step
 
-For steps on how to configure a DinD Background step, go to [Add a DinD Background step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-step-groups#add-a-dind-background-step).
+Let's review the SAM deployment's use of the DinD Background step:
 
-For this SAM deployment's use of the DinD Background step, do the following:
-
-1. Open the DinD Background step. The automatically generated step is named `dind`.
-2. In **Container Registry**, select the Harness container registry connector you set up.
+1. Open the **dind** Background step. The automatically generated step is named `dind`.
+2. In **Container Registry**, the Harness container registry connector is already set up. You can add/select your own container registry connector if you like.
+3. In **Image**, you can see the `docker:dind` Docker in Docker image is set up.
    
-   For steps on how to create the connector using the Harness Docker Hub registry, go to [Harness Docker connector for all steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-step-groups#harness-docker-connector-for-all-steps).
-3. In **Image**, enter `docker:dind`.
-   
-   The remaining settings on optional. For steps on how to set up the remaining settings, go to [Add a DinD Background step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-step-groups#add-a-dind-background-step).
+   The remaining settings on optional.
 
 ### Download manifests step
 
-The Download manifests step fetches the SAM template in the Harness service you selected for this stage. The step does require configuration. 
+The Download manifests step fetches the SAM template in the Harness service you selected for this stage. The step does not require configuration. 
 
 Here's an example of the step tasks:
 
@@ -242,27 +234,49 @@ Here's an example of the step tasks:
 4. **Checking out main branch:** the command `git checkout -b main origin/main` is executed to create and switch to a new branch named `main` based on the remote branch `origin/main`.
 
 
-### SAM build step
+### SAM Build step
 
 The SAM Build step performs a standard [sam build](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html) as well as setting up the container environment, resolving expressions in the SAM template, and building the SAM application using the specified dependencies and Docker container image.
 
 To configure the SAM Build step, do the following:
 
 1. Open the SAM Build step.
-2. In **Container Registry**, select the Harness Docker Registry connector you created.
-3. In **Image**, you can enter a SAM build image to use. For example, `harnessdev/sam-build:1.82.0-latest`. Harness will automatically populate this setting, but you can use a different image.
+2. In **Container Registry**, you can see that the Harness Docker Registry connector is already set up.
+3. In **Image**, you can see a SAM build image is already set up. For example, `harnessdev/sam-build:1.82.0-latest`. Harness will automatically populate this setting, but you can use a different image.
+
+#### AWS SAM build command options (required)
+
+The [--use-container](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html) option is set up by Harness automatically. This command ensures AWS SAM will package and build the application code inside a Docker container that is configured with the necessary dependencies and runtime environment specified in the AWS SAM template.
+
+:::caution
+
+Do not remove this command. It is required for the current beta of this feature. It will be optional in future releases.
+
+:::
+
+#### SAM build docker container registry (required)
+
+In SAM Build Docker Container Registry, you can use the same Harness Docker Registry connector automatically set up in the **Container Registry** setting or add/select your own connector.
+
+:::caution
+
+Do not remove this connector. It is required for the current beta of this feature. It will be optional in future releases.
+
+:::
+
+#### Step execution summary
 
 Here's a summary of the step's tasks that you will see in the step log once its run:
 
 1. **Setting up environment:** 
-   1. Changes the current directory to m1/SAM/sam-nodejs-multi-step.
+   1. Changes the current directory, such as `m1/SAM/sam-nodejs-multi-step`.
    2. The command `docker ps` is executed to check if Docker is running, but no containers are listed.
 2. **Exporting variables:** 
    1. Several environment variables are set using the export command, including `PLUGIN_SAM_TEMPLATE_FILE_PATH`, `PLUGIN_VALUES_YAML_FILE_PATH`, and `PLUGIN_VALUES_YAML_CONTENT`. These variables are exported to be used in subsequent commands.
 3. **Resolving expressions in SAM template:**
    1. The command `/opt/harness/client-tools/go-template/v0.4.1/go-template -t template.yaml -f values.yaml -o .` is executed to resolve expressions in the SAM template file based on the values provided in values.yaml.
    2. The resolved SAM template content is displayed in the log before and after expression resolution.
-4. **Building SAM application:**
+4. **Building SAM application code:**
    1. The command `java -jar /opt/harness/sam-build.jar` is executed to build the SAM application.
    2. The SAM CLI collects telemetry data, and it provides a link to learn more about telemetry. 
    3. The Docker container `image public.ecr.aws/sam/build-nodejs18.x:latest-x86_64` is fetched to build the SAM application. 
@@ -279,8 +293,9 @@ The SAM Deploy step performs a standard [sam deploy](https://docs.aws.amazon.com
 To configure the SAM Deploy step, do the following:
 
 1. Open the SAM Deploy step.
-2. In **Container Registry**, select the Harness Docker Registry connector you created.
-3. In **Image**, you can enter a SAM deploy image to use. For example, `harnessdev/sam-deploy:1.82.0-latest`. Harness will automatically populate this setting, but you can use a different image.
+2. In **Container Registry**, you can see that the Harness Docker Registry connector is already set up.
+3. In **Image**, you can see a SAM deploy image is already set up. For example, `harnessdev/sam-build:1.82.0-latest`. Harness will automatically populate this setting, but you can use a different image.
+4. In Stake Name, enter the name of the CloudFormation stack that will be created or updated as part of the deployment process.
 
 Here's a summary of the step's tasks that you will see in the step log once its run:
 
@@ -301,7 +316,7 @@ Now that the pipeline is complete, you can deploy it.
 1. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
 2. Observe the execution logs as Harness deploys the template and checks for a successful deployment.
 
-In the SAM Deploy step logs, you can see the CloudFormation events from stack operations and CloudFormation outputs from deployed stack.
+In the SAM Deploy step logs, you can see the CloudFormation events from stack operations and CloudFormation outputs from the deployment stack.
 
 If the deployment is successful, you will see:
 
