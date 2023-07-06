@@ -14,7 +14,7 @@ Imagine having the capability to start RDS instances when developers require the
 
 Harness Cloud Cost Management provides a valuable solution to address this challenge. Its intelligent cloud AutoStopping feature sets it apart by effectively reclaiming wasted budgets without requiring any modifications to your existing infrastructure. By leveraging AutoStopping, idle resources are automatically stopped when no traffic is detected, and promptly restarted when traffic is detected again. The implementation of this feature has resulted in significant cost savings for customers in their pre-production environments. 
 
-Harness AutoStopping Proxy provides an effective solution to reduce non-production cloud costs with minimal setup requirements and without causing disruptions for developers and other users. By onboarding your RDS instance or cluster to AutoStopping using the proxy, you will incur costs for the RDS only when it is actively utilized. Moreover, when the RDS instances are not in use, they are automatically stopped, further optimizing your cloud expenditure. 
+Harness AutoStopping Proxy provides an effective solution to reduce non-production cloud costs with minimal setup requirements and without causing disruptions for developers and other users. By onboarding your RDS instance or cluster to AutoStopping using the proxy, you will incur costs for the RDS only when it is actively utilized. Moreover, when the RDS instances are not in use, they are automatically stopped, further optimizing your cloud expenditure. The following diagram illustrates how you can use a proxy to enforce an AutoStopping rule on the RDS instance or cluster:
 
 <docimage path={require('../static/rds-autostopping-proxy/rds-tutorial.png')} width="60%" height="60%" title="Click to view full size image" />
 
@@ -26,7 +26,7 @@ Harness AutoStopping Proxy provides an effective solution to reduce non-producti
 
 ### Create Harness AutoStopping proxy
 
-1.  In **Harness**, go to the **Cloud Costs** module.
+1. In **Harness**, go to the **Cloud Costs** module.
 2. Under **Setup**, select **Load Balancers**.
 3. Select **Create New Load Balancer**.
 4. Select **AWS**.
@@ -47,39 +47,12 @@ Harness AutoStopping Proxy provides an effective solution to reduce non-producti
 10.  **Select region**: Select the region where you have your cloud resources hosted.
 11.  Select the **VPC** from the dropdown list.
 12.  **Machine type**: Select the instance family type from the dropdown list.
-13.  **TLS Certificate Secret Version**: AutoStopping proxy supports PEM-encoded certificates. You need to provide the certificate and the private key. A Cert chain is not required for the configuration. On the AWS console, go to **Secrets Manager**, and store a secret. It is recommended to use _harness/_ in the secret name. You must choose the **Other type of secret** option. Go to [https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html](https://docs.aws.amazon.com/secretsmanager/latest/userguide/create_secret.html) for more information. After successfully storing the secret, enter the **Secret ARN** in this field. 
+13.  **TLS Certificate Secret Version**: This field is optional for an RDS instance or cluster. You can leave it empty.
 
-  Sample certificate:
-
-
-```
------BEGIN CERTIFICATE-----
-eQIEAgSB9QSB8gDwAHUAtz77JN+cTbp18jnFulj0bF38Qs96nzXEnh0JgSXttJkA
-AAGGB1K4zAAABAMARjBEAiAEid8oukcRazjXOhTmBnltMywAbDEh9otaMU0uBNoX
-WAIgCv51cPbu4vdbqbnYpVzxvvaXJ3ChLT50/Hrs5TNDfdAAdwDoPtDaPvUGNTLn
-Vyi8iWvJA9PL0RFr7Otp4Xd9bQa9bgAAAYYHUrjHAAAEAwBIMEYCIQD7RInjHBFJ
-xnye2BBsRrHH4cj14KVMIARl2edDB3RbAQIhAPaCZVUyREHa+tgHPzcErg+4tojf
-W8gZLmeh45w7vaOkMA0GCSqGSIb3DQEBCwUAA4IBAQBh4DhJcp9Si2s6H+dMJjp2
-1Z6pSyUvqZ43Lv4d9FNPcMgl04YPIgVP696+CymF+7nOJucaGtI3ge1MMdSDYbNW
-NWCG+IEiumJXo/rh7XkYpoa5hMlI7RXWhcLqhz8ozfcPeYloAK7vDhse6q+jk6+4
-wvxARtulONAIBcPg/JTnGnPoNHSvg3qM4C9DV805U9qlFTEeUemOuPkmAOXV0ZMv
-VWXJ58IKOQeyI31okW0J/5p8oGjS1eN1IkbMy3YDtPP7ERCTSsBdD4V32cFwN5OT
-zUfdbO+mWOKNUQDyQiBnlNNM3Gkkn5P8zYHfL97kSLXyadOOWwU0eEDd4iJJSDtJ
------END CERTIFICATE-----
-
-```
-
-
-<docimage path={require('../static/rds-autostopping-proxy/secret-name-convention-aws.png')} width="60%" height="60%" title="Click to view full size image" />
-
-
-<docimage path={require('../static/rds-autostopping-proxy/secret-creation-aws.png')} width="60%" height="60%" title="Click to view full size image" />
-
-
-14.    **API Key**: Enter a valid API key generated in Harness New Generation. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/Resource-Development/APIs/api-quickstart) for more information.
-15.    **Select security groups**: Select the **Security Group** of your instance.
-16.    **Key pair**: Select the SSH key pair to connect to your VM.
-17.    **TLS Private Key Secret Version**: Enter the **Secret ARN** in this field.
+14.  **API Key**: Enter a valid API key generated in Harness New Generation. Choose **No Expiration** in the Expiration dropdown list while creating this API key. Go to [Create an API Key](/docs/platform/Resource-Development/APIs/api-quickstart) for more information.
+15.  **Select security groups**: Select the **Security Group** of the proxy VM.
+16.  **Key pair**: Select the SSH key pair to connect to your proxy VM.
+17.  **TLS Private Key Secret Version**: This field is optional for an RDS instance or cluster. You can leave it empty.
 
 18.  Enable **Allocate Static IP** if you need to assign an elastic IP address to make the instance publicly accessible. Update the DNS route to point to the public IP. You don't need to enable this field if it is pointing to a private IP provided the DNS resolves. For example, when the DNS resolution is done within the VPC.
 19.  Select **Save Load Balancer**.
@@ -99,7 +72,7 @@ This section walks you through the steps to configure an AutoStopping rule for y
 4. In **Define your AutoStopping rule**, in **Name your Rule**, enter a name for your rule. This is the name of your AutoStopping rule.
 5. In **Idle time**, enter the idle time in minutes. This is the time that the AutoStopping rule will wait before stopping the idle instances.
 
-### Select the Resources to be Managed by the AutoStopping Rule
+### Select the RDS instance or cluster to be managed by the AutoStopping Rule
 
 Select the cloud resources that you want to manage using this rule. AutoStopping Rule will monitor the selected resources and stop them when they are idle beyond the configured idle time.
 
@@ -120,12 +93,6 @@ Select the cloud resources that you want to manage using this rule. AutoStopping
 
 In this step, you can configure the following settings:
 
-#### Hide progress page
-
-Toggle the button to disable the display of progress page during instances' warming up process. This option is especially useful when the service is invoked by an automation system, as it prevents misinterpretation of the progress page as the intended response from a service that is onboarded to AutoStopping. By hiding the progress page, the first response of warming up a rule after a downtime will be delayed until the intended service is up and running.
-
-<docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-for-kubernetes-83.png')} width="50%" height="50%" title="Click to view full size image" />
-
 
 #### Dry Run
 
@@ -133,65 +100,17 @@ Toggle the button if you wish to evaluate this feature without terminating your 
 
 
 #### Add Dependency
+Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. See [Add Dependency](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws#add-dependency).
 
-Set dependencies between two or more AutoStopping Rules when you want one Rule to make one or more Rules to be active based on the traffic that it receives. For example for an application server dependant on a database server, create two AutoStopping Rules managing both the servers. Add a dependency on the Rule managing the application server to be dependant on the Rule managing the database server.
-
-1. In **Dependencies**, select **add dependency** to add a dependency on any existing rule.
-2. Select the rule from the **RULES** drop-down list.
-3. In **DELAY IN SECS**, enter the number of seconds that rule should wait after warming up the dependent rule. For example, you have Rule 1 dependent on Rule 2, and you have set 5 seconds delay. In that case, when the request is received to warm up Rule 1, then first Rule 2 (dependent rule) is warmed up, and then there is a delay of 5 seconds before warming up Rule 1.
-4. Once you're done with all the configurations, select **Next**.
-   
 #### Fixed Schedules
-
-Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period.
-
-In certain scenarios, you would not want your resources to go down or up. For example, every Friday at 5 p.m. you want your `ABC` resource to go down. You can schedule downtime for your `ABC` resource. During this window, the resource is forced to go down regardless of the defined rule. You can choose to specify uptime for your resources in the same way.
-
-:::note
-The fixed schedule takes precedence over the defined AutoStopping Rule. 
-:::
-
-:::note
-Harness executes scheduled rules using [Dkron](https://dkron.io/), an open-source workload automation service.
-:::
-
-To create a fixed schedule for your rule, do the following:
-
-1. In **Fixed Schedules**, select **Add Fixed Schedule**.
-   
-      <docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-aws-98.png')} width="50%" height="50%" title="Click to view full size image" />
-
-2. In **New Fixed Schedule**, enter a **Name** for your schedule.
-3. In **Type**, select the type for your schedule. You can schedule an **Uptime** or **Downtime** for your rule. As per your schedule, the resources go up or down.
-4. Select the **Time Zone** from the drop-down list.
-5. In **Set schedule period**, use the date picker to set the start and end time for your schedule.
-	1. In **Begins on**, select the start date and time for your schedule. You can select a date and specify the time.
-	2. In **Ends on**, select the end date and time for your schedule. You can select a date and specify the time. Ensure that **Never ends** checkbox is unselected to set the end time.  
-	  
-	If you don't specify an end time, the schedule continues to run until you manually update the settings or remove the schedule.
-6. Select the checbox **Never ends** if you do not want to set end time for your schedule.
-7. You can also set a recurring schedule for the rule. If you want to set a recurring schedule, in **Uptime/Downtime in the selected period**, in **Repeats**, select the repeat frequency.
-	1. Select which days of the week you'd like your schedule to repeat. You can choose any day between Sunday and Saturday.
-	2. Select **Everyday**, to set the schedule for all seven days of the week.
-	3. Set your repeat schedule's beginning and ending time. In the **Time** field, specify the start and end time for the fixed schedule.
-	4. Select **All Day**, if you wish to set your schedule for the entire day. If you choose All Day for your schedule, you won't be able to choose a start and end time.  
-	  
-	**Example 1**:  
-	In the following example, resources are up every Mon, Tue, Wed starting from 12:00 a.m. on February 14, 2022 till April 30, at 10:00 p.m.
-     
-       <docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-aws-99.png')} width="50%" height="50%" title="Click to view full size image" />
-
-     
-     **Example 2**:  
-	In the following example, resources are down every day (all day) starting from 12:00 a.m. on February 14, 2022 till April 30, at 12:00 a.m.
-    
-      <docimage path={require('../static/rds-autostopping-proxy/create-autostopping-rules-aws-100.png')} width="50%" height="50%" title="Click to view full size image" />
-
-8. Select **Apply**.
+ Create fixed uptime or downtime schedules for the resources managed by this AutoStopping Rule. When a resource is configured to go up or down on a fixed schedule, it is unaffected by activity or idleness during that time period. See [Fixed Schedules](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/create-autostopping-rules-aws#fixed-schedules).
 
 ### Setup Access
 
-In the Setup Access screen, select the AutoStopping Proxy from the dropdown list or [create a new one](#create-harness-autostopping-proxy). Specify the source port numbers and the target TCP ports your application is listening to. If the source port is not specified, a random port will be generated at the backend. This auto-generated port will continue to be used as long as the target port remains unchanged or unless the user explicitly modifies the source port.
+1. In the Setup Access screen, select the AutoStopping Proxy from the dropdown list or [create a new one](#create-harness-autostopping-proxy). 
+2. Specify the source port numbers and the target TCP ports your RDS instance or cluster is listening to. If the source port is not specified, a random port will be generated at the backend. This auto-generated port will continue to be used as long as the target port remains unchanged or unless the user explicitly modifies the source port. You will be always connecting to the RDS instance through the AutoStopping proxy using this port. To onboard a MySQL RDS instance, select 3306 as the target port on the RDS instance.
+
+    <docimage path={require('../static/rds-autostopping-proxy/setup-access.png')} width="60%" height="60%" title="Click to view full size image" />
 
 ### Review
 
@@ -199,31 +118,15 @@ In Review, verify all the configuration details and select **Save Rule**. To edi
 
 Your AutoStopping rule is listed under the [AutoStopping rules summary page](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/autostopping-dashboard).
 
-### Use Harness AutoStopping CLI to Keep the RDS Instance(s) Running
+After reviewing the rule, save it.
 
-You can also use Harness AutoStopping CLI to query the archived database using your own database client. Basically you're leveraging Harness CLI to keep the RDS instance(s) running.
+### Connect to the RDS instance
+Once the rule is saved, go to the **Details** page of the AutoStopping rule for instructions to connect to the RDS instance. You can connect to your RDS instance using one of the following attributes:
+- IP/Hostname mapped to the AutoStopping proxy
+- Port shown in the AutoStopping rule details page(20000 in this example)
+- Username and password of the RDS instance
 
-1. From the AutoStopping dashboard, select the RDS rule.
-2. In **Download CLI**, select your operating system to download the Harness CLI for your system.
-   
-    <docimage path={require('../static/rds-autostopping-proxy/create-auto-stopping-rules-for-rds-79.png')} width="60%" height="60%" title="Click to view full size image" />
-
-3. Select **Download CLI**.
-4. Run the following command to connect to an RDS database.  
-
-```
-harness connect --host hostname --port 5432
-```
-  
-The above command will start the RDS database if it is not running and set up a secure tunnel to it. This command will output the connection details to which you can connect your database client.
-5. As an example, in the case of Postgres, the following command can be used to connect to the database.  
-
-```
-psql -h localhost -p port-received-from-above -u postgres
-```
-  
-As soon as your database client is disconnected, AutoStopping recognizes the instance as idle and proceeds to automatically shut down the database after the specified idle time has elapsed.
-
+    <docimage path={require('../static/rds-autostopping-proxy/details-page.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
 
