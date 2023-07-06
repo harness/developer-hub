@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-description: This guide will walk through how start to optimize your Kubernetes Costs on a public cloud provider.
+description: This guide describes how to autostop idle VMs behind a reverse proxy.
 ---
 
 # AutoStopping idle VMs behind a reverse proxy
