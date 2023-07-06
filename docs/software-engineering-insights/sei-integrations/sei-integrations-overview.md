@@ -30,10 +30,10 @@ To integrate a tool with SEI, you can use either an application-specific connect
 * [Salesforce](./sei-connector-salesforce.md)
 * [Slack](./sei-connector-slack.md)
 * [Snyk](./sei-connector-snyk.md)
-* SonarQube 180 - SonarQube is an open-source platform for continuous inspection of code quality to perform automatic reviews with static analysis of code to detect bugs, code smells, and security vulnerabilities on 20+ programming languages.
+* [SonarQube](./sei-connector-sonarqube.md)
 * [Splunk](./sei-connector-splunk.md)
-* Tenable 200 - Tenable provides actionable insight into your entire infrastructure's security risks.
-* TestRail 210 - TestRail is a test management platform that helps you streamline your software testing processes, get visibility into QA, and release high-quality software.
+* [Tenable](./sei-connector-tenable.md)
+* [TestRail](./sei-connector-testrail.md)
 * Zendesk 220 - Zendesk is a cloud-based customer service application designed to improve communication between the company and its customers.
 
 ## Generic SEI connector (other integrations)
