@@ -82,7 +82,7 @@ To save Docker images, do the following:
     aws ecr get-login-password --region <region> | docker login --username AWS --password-
     ```
     All Docker files required to deploy Harness are stored in the [Harness Helm charts repository](https://github.com/harness/helm-charts/releases).
-2. Add the `*.tgz` for each module you want to deploy and the `harness-docker-images.txt` file to your air-gapped network. You can now push your images locally.
+2. Add the `*.tgz` for each module you want to deploy to your air-gapped network. You can now push your images locally.
 3. Run `harness-airgap-images.sh`.
     ```
     ./harness-airgap-images.sh -r REGISTRY.YOURDOMAIN.COM:PORT -f <moduleName-images.tgz>
