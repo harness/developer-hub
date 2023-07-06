@@ -39,7 +39,7 @@ The flowchart below shows the air-gapped environment installation workflow steps
 ## Download required files
 
 To begin your installation, download the following files:
-- [Harness air gap image bundle](https://console.cloud.google.com/storage/browser/smp-airgap-bundles;tab=objects?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=false&pli=1)
+- [Harness air gap image bundle](https://console.cloud.google.com/storage/browser/smp-airgap-bundles)
 
    With each Self-Managed Enterprise Edition release, Harness adds individual module image files to the air gap image bundle. You can download module `*.tgz` files for the modules you want to deploy. For example, if you only want to deploy Harness Platform, download the `platform-images.tgz` file. Available image files are:
 
@@ -81,11 +81,11 @@ To save Docker images, do the following:
     #Authenticate with AWS for ECR
     aws ecr get-login-password --region <region> | docker login --username AWS --password-
     ```
-    All Docker files required to deploy Harness are stored in the [Harness air gap image bundle](https://console.cloud.google.com/storage/browser/smp-airgap-bundles;tab=objects?pageState=(%22StorageObjectListTable%22:(%22f%22:%22%255B%255D%22))&prefix=&forceOnObjectsSortingFiltering=false&pli=1) in the `harness-docker-images.txt` file.
+    All Docker files required to deploy Harness are stored in the [Harness Helm charts repository](https://github.com/harness/helm-charts/releases).
 2. Add the `*.tgz` for each module you want to deploy and the `harness-docker-images.txt` file to your air-gapped network. You can now push your images locally.
 3. Run `harness-airgap-images.sh`.
     ```
-    ./harness-airgap-images.sh -r <REGISTRY.YOURDOMAIN.COM:PORT> -f harness-airgapped.tgz
+    ./harness-airgap-images.sh -r REGISTRY.YOURDOMAIN.COM:PORT -f <moduleName-images.tgz>
     ````
     
 ## Download and push Helm charts
