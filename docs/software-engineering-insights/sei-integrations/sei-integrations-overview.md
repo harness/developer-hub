@@ -34,7 +34,7 @@ To integrate a tool with SEI, you can use either an application-specific connect
 * [Splunk](./sei-connector-splunk.md)
 * [Tenable](./sei-connector-tenable.md)
 * [TestRail](./sei-connector-testrail.md)
-* Zendesk 220 - Zendesk is a cloud-based customer service application designed to improve communication between the company and its customers.
+* [Zendesk](./sei-connector-zendesk.md)
 
 ## Generic SEI connector (other integrations)
 
