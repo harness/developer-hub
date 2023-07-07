@@ -209,10 +209,10 @@ Here is a NodeJS hello world function example:
 
 ```json
 {
-   "Runtime": "nodejs14.x",
-   "FunctionName": "Hello_World",
-   "Handler": "handler.hello",
-   "Role": "<YOUR_AWS_ARN>"
+   "runtime": "nodejs14.x",
+   "functionName": "Hello_World",
+   "handler": "handler.hello",
+   "role": "<YOUR_AWS_ARN>"
 }
 ```
 
@@ -226,10 +226,10 @@ Here's a function definition example using service variables:
 
 ```json
 {
-  "FunctionName": "<+serviceVariables.functionName>",
-  "Runtime": "<+serviceVariables.runtime>",
-  "Handler": "<+serviceVariables.handler>",
-  "Role": "<+serviceVariables.roleARN>"
+  "functionName": "<+serviceVariables.functionName>",
+  "runtime": "<+serviceVariables.runtime>",
+  "handler": "<+serviceVariables.handler>",
+  "role": "<+serviceVariables.roleARN>"
 }
 ```
 
@@ -237,12 +237,12 @@ You can also deploy an existing function using its ARN. Here is an ECR Lambda fu
 
 ```json
 {
-  "FunctionName": "arn:aws:lambda:us-west-2:123456789012:function:my-function",
-  "Runtime": "nodejs14.x",
-  "Handler": "index.handler",
-  "Role": "arn:aws:iam::123456789012:role/my-lambda-role",
-  "Timeout": 30,
-  "MemorySize": 256
+  "functionName": "arn:aws:lambda:us-west-2:123456789012:function:my-function",
+  "runtime": "nodejs14.x",
+  "handler": "index.handler",
+  "role": "arn:aws:iam::123456789012:role/my-lambda-role",
+  "timeout": 30,
+  "memorySize": 256
 }
 
 ```

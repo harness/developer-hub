@@ -153,7 +153,7 @@ You can override the default Linux user ID for containers running in the build i
 <details>
 <summary>Init Timeout</summary>
 
-If you use large images in your Build stage's steps, you might find that the initialization step times out and the build fails when the pipeline runs. In this case, you can increase the init timeout window from the default of 10 minutes.
+If you use large images in your Build stage's steps, you might find that the initialization step times out and the build fails when the pipeline runs. In this case, you can increase the [init timeout](../ci-stage-settings.md#init-timeout) from the default of 8 minutes.
 
 </details>
 

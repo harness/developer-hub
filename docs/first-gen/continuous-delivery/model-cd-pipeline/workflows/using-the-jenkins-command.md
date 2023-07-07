@@ -30,7 +30,7 @@ Capturing and exporting output in the Jenkins step can be very powerful. For exa
 
 ## Jenkins Plugin Requirements
 
-For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject Plugin](https://wiki.jenkins.io/display/JENKINS/EnvInject+Plugin). The plugin does not provide full compatibility with the Pipeline Plugin. See [Known limitations](https://plugins.jenkins.io/envinject) from Jenkins.
+For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject Plugin](https://plugins.jenkins.io/envinject/). The plugin does not provide full compatibility with the Pipeline Plugin. See [Known limitations](https://plugins.jenkins.io/envinject/#plugin-content-other-limitations) from Jenkins.
 
 ## Before You Begin
 

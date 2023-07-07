@@ -67,6 +67,9 @@ const config = {
           trackingID: "G-46758J5H8P",
           anonymizeIP: false,
         },
+        blog: {
+          showReadingTime: false,
+        },
       }),
     ],
   ],
@@ -79,7 +82,7 @@ const config = {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "img/logo_pride.svg",
+          src: "img/logo_dlp.svg",
         },
         items: [
           /*{
@@ -251,18 +254,18 @@ const config = {
           {
             position: "right",
             to: "kb",
-            label: "KB",
+            label: "Knowledge Base",
           },
           {
             position: "right",
             to: "community",
             label: "Community",
           },
-          {
-            position: "right",
-            to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
-            label: "Join Slack",
-          },
+          //{
+          //  position: "right",
+          //  to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
+          //  label: "Join Slack",
+          //},
           {
             // type: "search",
             // position: "right",
@@ -513,6 +516,17 @@ const config = {
         routeBasePath: "kb",
         exclude: ["**/shared/**", "**/static/**"],
         sidebarPath: require.resolve("./sidebars-kb.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-blog",
+      {
+        id: "product-updates",
+        path: "product-updates",
+        routeBasePath: "product-updates",
+        exclude: ["**/shared/**", "**/static/**"],
         editUrl: "https://github.com/harness/developer-hub/tree/main",
         // ... other options
       },

@@ -4,13 +4,13 @@
 | Define Continuous Delivery | [CD overview and key concepts](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/) |
 | Delegates | [Delegate overview ](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview/) |
 | Service Overrides | [Services and environments overview](https://developer.harness.io/docs/continuous-delivery/get-started/services-and-environments-overview#service-overrides) |
-| Artifact/Kubernetes Manifest Sources  | [Harness Kubernetes Services](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services/) |
+| Artifact/Kubernetes Manifest Sources  | [Harness Kubernetes Services](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/deploy-manifests-using-apply-step) |
 | Overrides  | [Propagate and Override CD Services](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services) |
 |**2. Swimlanes** | |
 | Services and Environments | [Services and environments overview](https://developer.harness.io/docs/continuous-delivery/onboard-cd/cd-concepts/services-and-environments-overview/) |
 | Infrastructure and Environments | [Kubernetes Infrastructure](https://developer.harness.io/docs/continuous-delivery/cd-infrastructure/kubernetes-infra/define-your-kubernetes-target-infrastructure/) |
 | SSH Deployments | [Secure Shell (SSH) deployment tutorial](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng) |
-| Blue/Green Deployments  | [Create a Kubernetes Blue Green Deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services/) |
+| Blue/Green Deployments  | [Create a Kubernetes Blue Green Deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment) |
 | Canary Deployments  | [Create a Kubernetes Canary Deployment](https://developer.harness.io/docs/continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-canary-deployment) |
 |**3. Continuous Delivery** | |
 | Barriers | [Best Practices for Looping Strategies ](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/synchronize-workflows-in-your-pipeline-using-barrier/) |

@@ -189,22 +189,28 @@ Harness has full support for ECS task definitions. You simply provide Harness wi
 
 There are two ways to add the ECS task definition to the Harness service:
 
-- **Task Definition**: Add a connection to the task definition file in a remote Git repository, local [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store), or object storage (AWS S3).
+- **Task Definition**: Add a connection to the task definition file in a remote Git repository, local [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/), or object storage (AWS S3).
 - **Task Definition ARN**: Add the task definition ARN. 
   - The task definition ARN points to an existing task created and available in the AWS cluster with the required definition.
   - The task definition will be fetched using the task ARN provided and added to the ECS service configuration provided in the Harness ECS service **Service Definition**.
   - During deployment, the required task is deployed with the desired count provided in the **Service Definition**. 
 
+:::note
+
+When a task definition ARN is provided instead of a task definition spec, a force deployment is enabled for rolling deployments by default. When you perform a force deployment, ECS terminates the running tasks associated with the service and replaces them with tasks using the new task definition.
+
+:::
+
 If you are new to ECS, review the AWS documentation on [ECS Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html).
 
-Let's look at an example using a task definition file in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
+Let's look at an example using a task definition file in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/).
 
 1. In **Task Definition**, click **Add Task Definition**.  
   You specify what Task Definition to use in the **ECS Task Definition Store**.
 
   ![](./static/ecs-deployment-tutorial-40.png)
 
-  You can use a remote repo, but for this tutorial we'll use the built-in Harness file manager, [Harness File Store](//docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
+  You can use a remote repo, but for this tutorial we'll use the built-in Harness file manager, [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/).
 2. Select **Harness**, and then select **Continue**.
 3. In **Task Definition**, select **Add Task Definition**.
 4. In **Specify ECS Task Definition Store**, select **Harness**, and select **Continue**.
@@ -702,6 +708,12 @@ This is the same as [forceNewDeployment](https://docs.aws.amazon.com/AmazonECS/l
 
 
 > Determines whether to force a new deployment of the service. By default, deployments aren't forced. You can use this option to start a new deployment with no service definition changes. For example, you can update a service's tasks to use a newer Docker image with the same image/tag combination (`my_image:latest`) or to roll Fargate tasks onto a newer platform version.
+
+:::note
+
+When a task definition ARN is provided instead of a task definition spec, a force deployment is enabled for rolling deployments by default. When you perform a force deployment, ECS terminates the running tasks associated with the service and replaces them with tasks using the new task definition.
+
+:::
 
 ### ECS Canary deployments
 

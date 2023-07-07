@@ -8,17 +8,18 @@ import { MODULES } from "@site/src/constants";
 /* Define the cards - start */
 export const idpCards: CardItem[] = [
   // Featured Tutorials
-      {
-        title: "Create your first service onboarding pipeline",
-        module: MODULES.idp,
-        icon: "img/icon_idp.svg",
-        description: "Create a basic service onboarding pipeline that provisions an app on demand.",
-        newDoc: true,
-        type: [docType.Documentation],
-        time: "30min",
-        link: "/docs/internal-developer-portal/tutorials/create-your-first-service-onboarding-pipeline",
-      },
-    ];
+  {
+    title: "Create your first service onboarding pipeline",
+    module: MODULES.idp,
+    icon: "img/icon_idp.svg",
+    description:
+      "Create a basic service onboarding pipeline that provisions an app on demand.",
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "30min",
+    link: "/docs/internal-developer-portal/tutorials/create-your-first-service-onboarding-pipeline",
+  },
+];
 
 // Docs
 export const docsCards: CardSections = [
@@ -35,9 +36,8 @@ export const docsCards: CardSections = [
       },
       {
         title: "Get started with IDP",
-        module: MODULES.platform,
-        description:
-          "Set up your software catalog and software templates.",
+        module: MODULES.idp,
+        description: "Set up your software catalog and software templates.",
         link: "/docs/category/get-started-with-idp",
       },
     ],
@@ -49,16 +49,14 @@ export const docsCards: CardSections = [
       {
         title: "Software catalog",
         module: MODULES.idp,
-        description:
-          "Learn how a software catalog works.",
-        link: "/docs/getting-started/harness-ui-overview",
+        description: "Learn how a software catalog works.",
+        link: "/docs/internal-developer-portal/features/software-catalog",
       },
       {
         title: "Service onboarding pipelines",
         module: MODULES.idp,
-        description:
-          "Learn how to automate service creation.",
-        link: "/docs/getting-started/harness-ui-overview",
+        description: "Learn how to automate service creation.",
+        link: "/docs/internal-developer-portal/features/service-onboarding-pipelines",
       },
     ],
   },

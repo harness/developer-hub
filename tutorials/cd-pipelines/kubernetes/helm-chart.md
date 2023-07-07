@@ -23,7 +23,7 @@ import TabItem from '@theme/TabItem';
 This tutorial is designed to help you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline/GitOps for deploying a Guestbook application. This Guestbook application will use Helm Chart for deployment.
 
 :::info
-[Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/?module=cd&utm_source=website&utm_medium=harness-developer-hub&utm_campaign=cd-plg&utm_content=tutorials-cd-kubernetes-helm-chart).
+[Sign up today to unleash the potential of intelligent Harness CD](https://app.harness.io/auth/#/signup/).
 :::
 
 ```mdx-code-block
@@ -61,17 +61,11 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 
 </details>
 
-1. In **PROJECT SETUP**, select **Delegates**, and then select **Tokens** on the top right corner of the UI.
-   - Select **New Token**.
-   - In the **New Token** dialog, in **Name**, enter `delegate_token`.
-   - Select **Apply**.
-   - Copy the token value by selecting the copy icon. Make sure to save the token now. You won't be able to see it again.
-   - Close the **New Token** dialog.
-2. Select **Delegates** on the top right corner of the UI.
+1. In **PROJECT SETUP**, select **Delegates**, and then Select **Delegates** on the top right corner of the UI.
    - Select **New Delegate**.
      For this tutorial, let's explore how to install the delegate using Helm.
    - In **Select where you want to install your Delegate**, select **Kubernetes**.
-   - In **Install your Delegate**, select **Helm**.
+   - In **Install your Delegate**, select **Helm Chart**.
    - Add the Harness Helm Chart repository to your local helm registry using the following commands:
    
      ```bash
@@ -81,7 +75,9 @@ The Harness delegate is a service that runs in your local network or VPC to esta
      helm repo update harness-delegate
      ```
      
-    - Replace `DELEGATE_TOKEN` with the token copied in the previous step, and proceed to install the delegate. `ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the Delegate Installation wizard. 
+    - Copy the following command from the Delegate Installation wizard.
+    
+      `DELEGATE_TOKEN`,`ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the Delegate Installation wizard. 
     
       ```bash
       helm upgrade -i helm-delegate --namespace harness-delegate-ng --create-namespace \
@@ -138,6 +134,21 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
    4. Select **Save Changes**, and verify that the new connector named _**harness_k8sconnector**_ is successfully created.
    5. Select **Connection Test** under **Connectivity Status** to ensure that the connection is successful.
 
+### Deployment Strategies
+
+```mdx-code-block
+<Tabs>
+<TabItem value="Canary">
+```
+
+<details open>
+<summary>What are Canary deployments?</summary>
+
+A Canary deployment updates nodes in a single environment, gradually allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
+
+</details>
+
+
 ### Create an environment
 
 <details open>
@@ -149,9 +160,9 @@ Environments define the deployment location, categorized as **Production** or **
 
 1. In **Default Project**, select **Environments**.
 2. Select **New Environment** and toggle to the **YAML** view _(next to VISUAL)_.
-3. Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/environment.yml) and paste it in the YAML editor, and then select **Save**.
+3. Copy the contents of [environment-blucan.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/environment-blucan.yml) and paste it in the YAML editor, and then select **Save**.
 4. In the **Infrastructure Definitions** tab, select **Infrastructure Definition**, and then select **Edit YAML**.
-5. Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/infrastructure-definition.yml) and paste it in the YAML editor.
+5. Copy the contents of [infrastructure-definition-blucan.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/infrastructure-definition-blucan.yml) and paste it in the YAML editor.
 6. Select **Save** and verify that the environment and infrastructure definition are created successfully.
 
 ### Create a service
@@ -164,9 +175,9 @@ In Harness, services represent what you deploy to environments. You use services
 </details>
 
 1. In **Default Project**, select **Services**.
-2. Select **New Service**, enter the name, `harnessguestbook`, and then select **Save**.
+2. Select **New Service**, enter the name, `harnessguestbookdep`, and then select **Save**.
 3. Toggle to the **YAML** view _(next to VISUAL)_ under the **Configuration** tab, and then select **Edit YAML**.
-4. Copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/service.yml) and paste it in the YAML editor.
+4. Copy the contents of [service-blucan.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/service-blucan.yml) and paste it in the YAML editor.
 5. Select **Save** and verify that the service, _**harness_guestbook**_ is successfully created.
 
 ### Create a pipeline
@@ -175,19 +186,6 @@ In Harness, services represent what you deploy to environments. You use services
 <summary>What are Harness pipelines?</summary>
 
 A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
-
-</details>
-
-
-```mdx-code-block
-<Tabs>
-<TabItem value="Canary">
-```
-
-<details open>
-<summary>What are Canary deployments?</summary>
-
-A canary deployment updates nodes in a single environment gradually, allowing you to use gates between increments. Canary deployments allow incremental updates and ensure a controlled rollout process. For more information, go to [When to use Canary deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-canary-deployments).
 
 </details>
 
@@ -216,6 +214,48 @@ Blue Green deployments involve running two identical environments (stage and pro
 
 </details>
 
+
+### Create an environment
+
+<details open>
+<summary>What are Harness environments?</summary>
+
+Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
+
+</details>
+
+1. In **Default Project**, select **Environments**.
+2. Select **New Environment** and toggle to the **YAML** view _(next to VISUAL)_.
+3. Copy the contents of [environment-blucan.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/environment-blucan.yml) and paste it in the YAML editor, and then select **Save**.
+4. In the **Infrastructure Definitions** tab, select **Infrastructure Definition**, and then select **Edit YAML**.
+5. Copy the contents of [infrastructure-definition-blucan.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/infrastructure-definition-blucan.yml) and paste it in the YAML editor.
+6. Select **Save** and verify that the environment and infrastructure definition are created successfully.
+
+### Create a service
+
+<details open>
+<summary>What are Harness services?</summary>
+
+In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
+
+</details>
+
+
+1. In **Default Project**, select **Services**.
+2. Select **New Service**, enter the name, `harnessguestbookdep`, and then select **Save**.
+3. Toggle to the **YAML** view _(next to VISUAL)_ under the **Configuration** tab, and then select **Edit YAML**.
+4. Copy the contents of [service-blucan.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/service-blucan.yml) and paste it in the YAML editor.
+5. Select **Save** and verify that the service, _**harness_guestbook**_ is successfully created.
+
+### Create a pipeline
+
+<details open>
+<summary>What are Harness pipelines?</summary>
+
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
+
+</details>
+
 - In **Default Project**, select **Pipelines**.
     - Select **New Pipeline**.
     - Enter the name `guestbook_bluegreen_pipeline`.
@@ -238,6 +278,47 @@ Blue Green deployments involve running two identical environments (stage and pro
 <summary>What are Rolling deployments?</summary>
 
 Rolling deployments incrementally add nodes in a single environment with a new service version, either one-by-one or in batches defined by a window size. Rolling deployments allow a controlled and gradual update process for the new service version. For more information, go to [When to use rolling deployments](https://developer.harness.io/docs/continuous-delivery/manage-deployments/deployment-concepts#when-to-use-rolling-deployments).
+
+</details>
+
+
+### Create an environment
+
+<details open>
+<summary>What are Harness environments?</summary>
+
+Environments define the deployment location, categorized as **Production** or **Pre-Production**. Each environment includes infrastructure definitions for VMs, Kubernetes clusters, or other target infrastructures. To learn more about environments, go to [Environments overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/environments/environment-overview/).
+
+</details>
+
+1. In **Default Project**, select **Environments**.
+2. Select **New Environment** and toggle to the **YAML** view _(next to VISUAL)_.
+3. Copy the contents of [environment-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/environment-rolling.yml) and paste it in the YAML editor, and then select **Save**.
+4. In the **Infrastructure Definitions** tab, select **Infrastructure Definition**, and then select **Edit YAML**.
+5. Copy the contents of [infrastructure-definition-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/infrastructure-definition-rolling.yml) and paste it in the YAML editor.
+6. Select **Save** and verify that the environment and infrastructure definition are created successfully.
+
+### Create a service
+
+<details open>
+<summary>What are Harness services?</summary>
+
+In Harness, services represent what you deploy to environments. You use services to configure variables, manifests, and artifacts. The **Services** dashboard provides service statistics like deployment frequency and failure rate. To learn more about services, go to [Services overview](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/services/services-overview/).
+
+</details>
+
+1. In **Default Project**, select **Services**.
+2. Select **New Service**, enter the name, `harnessguestbook`, and then select **Save**.
+3. Toggle to the **YAML** view _(next to VISUAL)_ under the **Configuration** tab, and then select **Edit YAML**.
+4. Copy the contents of [service-rolling.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/helm-guestbook/harnesscd-pipeline/service-rolling.yml) and paste it in the YAML editor.
+5. Select **Save** and verify that the service, _**harness_guestbook**_ is successfully created.
+
+### Create a pipeline
+
+<details open>
+<summary>What are Harness pipelines?</summary>
+
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
 
 </details>
 

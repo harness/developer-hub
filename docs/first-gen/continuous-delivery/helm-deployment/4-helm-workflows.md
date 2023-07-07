@@ -151,7 +151,7 @@ Click **Phase 1** to expand it and see **Deploy Containers**. Expand **Deploy Co
 
 Let's look through the deployment log and see how your Docker image was deployed to your cluster using Helm.
 
-First, we check to see if the Helm chart repo has already been added and, if not, add it from **https://charts.bitnami.com/bitnami**.
+First, we check to see if the Helm chart repo has already been added and, if not, add it from `https://charts.bitnami.com/bitnami`.
 
 
 ```

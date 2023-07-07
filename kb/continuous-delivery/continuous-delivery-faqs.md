@@ -37,3 +37,4 @@ The form gets too long if we expose all the fixed values and we only require in 
 For the terrafrom step if remote backend is not configured, the state file is being managed by Harness and it maps to the provisioner identifier itself. Hence the only way to get rid of the state file is to change the provisioner identifier in this scenario.
 
 
+
