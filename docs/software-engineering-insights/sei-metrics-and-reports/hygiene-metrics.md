@@ -37,20 +37,20 @@ Hygiene misses are based on hygiene categories. The built-in categories are:
 * **Missed Resolution Time:** The ticket wasn't in a resolved status before the goal resolution time expired.
 * **Inactive Assignees:** The ticket was assigned to an inactive user.
 
-You can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [connectors](../../sei-integrations/sei-integrations-overview.md).
+You can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [connectors](../sei-integrations/sei-integrations-overview.md).
 
 You can modify the importance of each category when you [configure the Issue Hygiene Report](#configure-the-issue-hygiene-report).
 
 ### Configure the Issue Hygiene Report
 
-1. Go to the [Insight](../../sei-insights.md) where you want to add the widget, select **Settings**, and select **Add Widget**.
+1. Go to the [Insight](../sei-insights.md) where you want to add the widget, select **Settings**, and select **Add Widget**.
 2. Select the **Issue Hygiene Report** widget.
 3. Configure the widget's **Filters**. Filters can be blank or filtered down to a desired ticket type or time frame.
 4. Configure the **Weights** for each hygiene category.
 
    A lower weight causes a category to have a lower impact on the overall score, and a higher weight causes a category to have a larger impact on the overall score. A weight of zero excludes that category from the hygiene score calculation. Make sure the total of all weights equals 100.
 
-   In addition to the built-in categories, you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [connectors](../../sei-integrations/sei-integrations-overview.md).
+   In addition to the built-in categories, you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [connectors](../sei-integrations/sei-integrations-overview.md).
 
 <!--image - .gitbook/assets/image (71).png -- Issue Hygiene Report widget config - Weights tab-->
 
