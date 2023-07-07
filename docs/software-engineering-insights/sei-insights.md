@@ -4,9 +4,11 @@ description: Insights are dashboards.
 sidebar_position: 50
 ---
 
-Insights are dashboards that make it easy to visualize and interpret metrics that are captured by SEI. With a variety of out-of-the-box widgets, you can create Insights that show the data you care about most and help you understand your engineering team's effectiveness and efficiency. You can also share Insights with your team members.
+Insights are dashboards that make it easy to visualize and interpret metrics that are captured by SEI. With a variety of out-of-the-box widgets, you can create Insights that show the data you care about most and help you understand your engineering team's effectiveness and efficiency.
 
-This topic explains how to create and view SEI Insights. For information about metrics that are captured by SEI and reported on widgets, go to [Metrics and reports](/docs/category/metrics-and-reports).
+<!-- You can also share Insights with your team members. -->
+
+This topic explains how to create and view Insights. For information about configuring specific widgets and the metrics that are presented on widgets, go to [Metrics and reports](/docs/category/metrics-and-reports).
 
 ## View Insights
 
