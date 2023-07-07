@@ -18,13 +18,24 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - July 07, 2023
+## Latest - July 06, 2023
+
+### Continuous Delivery, version 79811
+
+- Template Library: Reference specific versions of a template on a different branch from the pipeline (CDS-69774)
+  
+  While using Harness Git Experience for pipelines and templates, you can now link templates from specific branches.
+  
+  Previously, templates were picked either from the same branch as the pipeline, if both pipelines and templates were present in the same repository, or from the default branch of the repository, if templates were stored in a different repository than the pipeline.
+  
+  The default logic will continue to be used if no branch is specified when selecting the template, but if a specific branch is picked while selecting the template then templates are always picked from the specified branch only.
 
 ### Harness Platform, version 79811
 
 - Harness now allows special characters in usernames. (PL-39564, ZD-46487)
 - You can now view delegate logs when validating a connector that uses delegates to establish connections. (PL-37919)
 - When creating Azure Key Vault, you can now manually enter the vault name. (PL-32773, ZD-44045)
+
 ## June 30, 2023
 
 ### Cloud Cost Management
