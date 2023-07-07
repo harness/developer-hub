@@ -12,7 +12,7 @@ Currently, AWS SAM support is behind the feature flag `CDP_AWS_SAM`. Contact [Ha
 
 Harness supports AWS SAM (Serverless Application Model) deployments. SAM is an open-source framework provided by Amazon Web Services (AWS) that simplifies the deployment and management of serverless applications on AWS. It is an extension of AWS's infrastructure-as-code service, CloudFormation.
 
-For SAM deployments in Harness, you simply add your SAM template to Harness, select the target region, and Harness will perform the SAM build and deploy.
+For SAM deployments in Harness, add your SAM template to Harness and select the target region. Harness will perform the SAM build and deploy.
 
 Harness performs the SAM build and deploy within an ephemeral Docker container in a Kubernetes cluster. You can manage the Kubernetes settings for these steps as needed.
 
@@ -45,7 +45,7 @@ For details on AWS support in Harness, including tooling, limitations, and repos
 
 ## AWS permissions
 
-When you set up the Harness environment for your deployment, you will add a Harness AWS connector to the Harness environment Infrastructure Definition. Typically, the AWS connector uses the access and secret keys for an AWS IAM user (there are other options). The permissions added to this IAM user account must permit whatever AWS service changes you are performing in your SAM template.
+When you set up the Harness environment for your deployment, you must add a Harness AWS connector to the Harness environment Infrastructure Definition. Typically, the AWS connector uses the access and secret keys for an AWS IAM user (there are other options). The permissions added to the IAM user account must permit whatever AWS service changes you are performing in your SAM template.
 
 <details>
 <summary>Common SAM permissions</summary>
@@ -56,7 +56,7 @@ When you set up the Harness environment for your deployment, you will add a Harn
 - **API Gateway permissions:** If your SAM application uses Amazon API Gateway for creating REST APIs, the IAM role should have permissions to manage API Gateway resources. This includes permissions for creating and managing APIs, methods, stages, deployment, and integration configurations.
 - **S3 bucket permissions:** If your SAM application requires storing artifacts or deployment packages in Amazon S3, the IAM role should have permissions to read and write to the specific S3 buckets used for storing deployment artifacts.
 - **CloudWatch logs permissions:** If your SAM application generates logs that are stored in Amazon CloudWatch Logs, the IAM role should have permissions to create and write logs to the specified log groups.
-- **Other service-specific permissions:** Depending on the services your SAM application interacts with (e.g., DynamoDB, SNS, SQS, etc.), you may need to include additional permissions specific to those services.
+- **Other service-specific permissions:** Depending on the services your SAM application interacts with (for example, DynamoDB, SNS, SQS, etc.), you may need to include additional permissions specific to those services.
 
 The most common roles for SAM are:
 
@@ -72,11 +72,11 @@ For more details, go to [Managing resource access and permissions](https://docs.
 
 ## AWS SAM service
 
-You add your SAM template in the Harness SAM service. Harness supports standard SAM templates.
+Harness supports standard SAM templates. You can add your SAM template in the Harness SAM service. 
 
 :::note
 
-For information on general service settings, go to [Services and environments basics](http://localhost:3000/docs/continuous-delivery/get-started/services-and-environments-overview).
+For information on general service settings, go to [Services and environments basics](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 :::
 
@@ -84,16 +84,16 @@ To add your template, do the following:
 
 1. In your Harness project, in **Deployments**, select **Services**.
 2. Select **New Service**.
-3. Name the service an select **Save**.
+3. Name the service and select **Save**.
 4. In **Deployment Type**, select **AWS SAM**.
 5. In **Manifests**, select **Add Manifest**.
-6. In **Specify Manifest Type**, select **AWS SAM Directory**, and select **Continue**.
+6. In **Specify Manifest Type**, select **AWS SAM Directory**, and then select **Continue**.
 7. In **Specify AWS SAM Directory Store**, select your Git provider. You can also use the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
 8. Select or create a new Harness Git connector to your Git provider, and then select **Continue**.
 9. In **Manifest Details**, enter the following:
-   1.  **Manifest Identifier:** enter a name for the template.
-   2.  **Git Fetch Type:** select how you want to fetch the template.
-   3.  **Branch**/**Commit Id:** enter the branch name or commit Id.
+   1.  **Manifest Identifier:** Enter a name for the template.
+   2.  **Git Fetch Type:** Select how you want to fetch the template.
+   3.  **Branch**/**Commit Id:** Enter the branch name or commit Id.
    4.  **File/Folder Path:** Enter the path to the template from the root of the repository.
 10. Select **Submit**.
 
@@ -107,7 +107,7 @@ Your values.yaml file can use standard Go formatting, like this:
 runtime: nodejs18.x
 ```
 
-And then your template references the values.yaml file using the format `{{.Values.KEY}}`. Here's an example using `{{.Values.runtime}}`:
+Your template references the values.yaml file using the format `{{.Values.KEY}}`. Here's an example using `{{.Values.runtime}}`:
 
 ```yaml
 ...
@@ -124,7 +124,7 @@ And then your template references the values.yaml file using the format `{{.Valu
 
 ### Variables
 
-You can create service variables and then use them in the values.yaml file you added.
+You can create service variables, and then use them in the values.yaml file you added.
 
 You simply use a service variable reference as the value:
 
@@ -134,13 +134,13 @@ runtime: <+serviceVariables.runtime>
 
 You can only use service variable references in the values.yaml file.
 
-For information on how to override service variables at the environment level, go to [Services and environments basics](http://localhost:3000/docs/continuous-delivery/get-started/services-and-environments-overview).
+For information on how to override service variables at the environment level, go to [Services and environments basics](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 ## AWS SAM environment
 
 :::note
 
-For information on general environment settings, go to [Services and environments basics](http://localhost:3000/docs/continuous-delivery/get-started/services-and-environments-overview).
+For information on general environment settings, go to [Services and environments basics](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 :::
 
@@ -175,19 +175,19 @@ When you add a Deploy stage to a pipeline, you can select the AWS SAM deployment
 2. Select **Add Stage**, and then select **Deploy**.
 3. Name your stage.
 4. In **Deployment Type**, select **AWS SAM**, and then select **Set Up Stage**.
-5. In **Service**, select the SAM service to use, and select **Continue**.
-6. In **Environment**, select the SAM environment and infrastructure definition to use, and select **Continue**.
+5. In **Service**, select the SAM service to use, and then select **Continue**.
+6. In **Environment**, select the SAM environment and infrastructure definition to use, and then select **Continue**.
 7. Select the [deployment strategy](/docs/continuous-delivery/manage-deployments/deployment-concepts) to use, and then select **Use Strategy**.
 
 ## AWS SAM basic strategy and steps
 
 The basic strategy consists of the following execution setup:
 
-- **SAM step group:** uses your Kubernetes cluster as a step runtime infrastructure.
-  - **DinD Background step:** creates a Docker in Docker container for the each step's execution resources.
-  - **Download Manifests step:** fetches your SAM template.
-  - **SAM Build step:** runs a [sam build](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html).
-  - **SAM Deploy step:** runs a [sam deploy](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html).
+- **SAM step group:** Uses your Kubernetes cluster as a step runtime infrastructure.
+  - **DinD Background step:** Creates a Docker in Docker container for the each step's execution resources.
+  - **Download Manifests step:** Fetches your SAM template.
+  - **SAM Build step:** Runs a [SAM build](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html).
+  - **SAM Deploy step:** Runs a [SAM deploy](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html).
 
 ![AWS SAM basic strategy](static/16e15bb95e3f58e3a28b3a4c0b1c7791ad1f07453fddc859da8400cfd37d7535.png)  
 
@@ -197,12 +197,12 @@ These steps are described in detail below.
 
 Harness automatically generates a containerized step group containing the steps needed for the SAM build and deploy.
 
-When the step group setting **Enable container based execution** is enabled, the step group is containerized. When it is disabled, the Harness delegate performs all tasks on its host system.
+When the step group setting **Enable container based execution** is enabled, the step group is containerized. When it is disabled, the Harness Delegate performs all tasks on its host system.
 
 You need to configure the following mandatory settings:
 
-- **Kubernetes Cluster:** add a Harness [Kubernetes Cluster connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/) to connect to the cluster that will be used as the runtime step infrastructure.
-- **Namespace:** enter the name of the cluster namespace to use.
+- **Kubernetes Cluster:** Add a Harness [Kubernetes Cluster connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference/) to connect to the cluster that will be used as the runtime step infrastructure.
+- **Namespace:** Enter the name of the cluster namespace to use.
 
 ### Harness Docker Hub connector and image for all steps
 
@@ -224,19 +224,19 @@ Let's review the SAM deployment's use of the DinD Background step:
 
 ### Download manifests step
 
-The Download manifests step fetches the SAM template in the Harness service you selected for this stage. The step does not require configuration. 
+The Download Manifests step fetches the SAM template in the Harness service you selected for this stage. This step does not require configuration. 
 
 Here's an example of the step tasks:
 
-1. **Git initialization:** the command `git init` is executed to initialize a new Git repository.
-2. **Setting remote origin:** the command `git remote add origin <repository-url>` is executed to set the remote origin for the Git repository.
-3. **Fetching remote branches:** the command `git fetch --depth=50 origin +refs/heads/main:` is executed to fetch the remote branches from the origin.
-4. **Checking out main branch:** the command `git checkout -b main origin/main` is executed to create and switch to a new branch named `main` based on the remote branch `origin/main`.
+1. **Git initialization:** The command `git init` is executed to initialize a new Git repository.
+2. **Setting remote origin:** The command `git remote add origin <repository-url>` is executed to set the remote origin for the Git repository.
+3. **Fetching remote branches:** The command `git fetch --depth=50 origin +refs/heads/main:` is executed to fetch the remote branches from the origin.
+4. **Checking out main branch:** The command `git checkout -b main origin/main` is executed to create and switch to a new branch named `main` based on the remote branch `origin/main`.
 
 
 ### SAM Build step
 
-The SAM Build step performs a standard [sam build](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html) as well as setting up the container environment, resolving expressions in the SAM template, and building the SAM application using the specified dependencies and Docker container image.
+The SAM Build step performs a standard [SAM build](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html) as well as setting up the container environment, resolving expressions in the SAM template, and building the SAM application using the specified dependencies and Docker container image.
 
 To configure the SAM Build step, do the following:
 
@@ -246,7 +246,7 @@ To configure the SAM Build step, do the following:
 
 #### AWS SAM build command options (required)
 
-The [--use-container](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html) option is set up by Harness automatically. This command ensures AWS SAM will package and build the application code inside a Docker container that is configured with the necessary dependencies and runtime environment specified in the AWS SAM template.
+The [--use-container](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-build.html) option is set up by Harness automatically. This command ensures that AWS SAM packages and builds the application code inside a Docker container that is configured with the necessary dependencies and runtime environment specified in the AWS SAM template.
 
 :::caution
 
@@ -272,7 +272,7 @@ Here's a summary of the step's tasks that you will see in the step log once its 
    1. Changes the current directory, such as `m1/SAM/sam-nodejs-multi-step`.
    2. The command `docker ps` is executed to check if Docker is running, but no containers are listed.
 2. **Exporting variables:** 
-   1. Several environment variables are set using the export command, including `PLUGIN_SAM_TEMPLATE_FILE_PATH`, `PLUGIN_VALUES_YAML_FILE_PATH`, and `PLUGIN_VALUES_YAML_CONTENT`. These variables are exported to be used in subsequent commands.
+   1. Several environment variables are set using the `export` command, including `PLUGIN_SAM_TEMPLATE_FILE_PATH`, `PLUGIN_VALUES_YAML_FILE_PATH`, and `PLUGIN_VALUES_YAML_CONTENT`. These variables are exported to be used in subsequent commands.
 3. **Resolving expressions in SAM template:**
    1. The command `/opt/harness/client-tools/go-template/v0.4.1/go-template -t template.yaml -f values.yaml -o .` is executed to resolve expressions in the SAM template file based on the values provided in values.yaml.
    2. The resolved SAM template content is displayed in the log before and after expression resolution.
@@ -288,7 +288,7 @@ Here's a summary of the step's tasks that you will see in the step log once its 
 
 ### SAM Deploy step
 
-The SAM Deploy step performs a standard [sam deploy](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html).
+The SAM Deploy step performs a standard [SAM deploy](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/sam-cli-command-reference-sam-deploy.html).
 
 To configure the SAM Deploy step, do the following:
 
@@ -304,10 +304,10 @@ Here's a summary of the step's tasks that you will see in the step log once its 
 3. The command `docker ps` is executed.
 4. The command `java -jar /opt/harness/sam-deploy.jar` is executed.
 5. Information about SAM CLI telemetry collection is displayed.
-6.  Information about the managed S3 bucket is displayed.
-7.  Details of the deployment are displayed, including stack name, region, and other parameters.
-8.  The deployment is initiated.
-9.  The SAM deployment is successful.
+6. Information about the managed S3 bucket is displayed.
+7. Details of the deployment are displayed, including stack name, region, and other parameters.
+8. The deployment is initiated.
+9. The SAM deployment is successful.
 
 ## Deploy the pipeline
 
