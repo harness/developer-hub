@@ -4,7 +4,7 @@ description: Use Workflow profiles to define stages, events, and measurement cri
 sidebar_position: 30
 ---
 
-Workflow profiles, also known as Lead Time profiles, define the stages, events, and measurement criteria for [Lead Time reporting](../sei-metrics-and-reports/execution/dora-metrics.md). You can use these profiles to get insight on end-to-end lead time taken to ship changes or the time taken for bug fixes to reach production.
+Workflow profiles, also known as Lead Time profiles, define the stages, events, and measurement criteria for [Lead Time reporting](../sei-metrics-and-reports/dora-metrics.md). You can use these profiles to get insight on end-to-end lead time taken to ship changes or the time taken for bug fixes to reach production.
 
 You can configure the profile depending on the factors you want to include in your Lead Time calculations. For example, you can:
 
@@ -32,7 +32,7 @@ Workflow profile settings include:
 
 * **Name:** Enter a name for the profile.
 * **Description:** Optional profile description.
-* **Lead Time for Changes**, **Deployment Frequency**, **Mean Time to Restore**, and **Change Failure Rate**: Modify these settings to refine your [DORA metrics](../sei-metrics-and-reports/execution/dora-metrics.md) calculations.
+* **Lead Time for Changes**, **Deployment Frequency**, **Mean Time to Restore**, and **Change Failure Rate**: Modify these settings to refine your [DORA metrics](../sei-metrics-and-reports/dora-metrics.md) calculations.
   * **Stages:** You can change the start event that initiates the first stage, and you can add, edit, and remove stages. When editing stages, you can change fields or data that drive stage changes, define ideal and acceptable time ranges, and more. This refines how you track KPIs.
   * **Issue Management System:** If applicable, select the issue management system to associated with this profile.
 * **Association:** Modify the Collections associated with this profile.

@@ -2,6 +2,7 @@
 title: Flow metrics
 description: Flow metrics quantify the flow and efficiency of software development processes.
 sidebar_position: 30
+sidebar_label: Flow
 ---
 
 Software flow metrics help quantify the flow and efficiency of software development processes. You can use these metrics to track the progress of a software project, evaluate the effectiveness of software development methodologies, identify areas for improvement, and make data-driven decisions to improve efficiency, quality, and speed.

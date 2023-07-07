@@ -82,32 +82,11 @@ import {
             link: "/docs/software-engineering-insights/sei-insights",
           },
           {
-            title: "Alignment metrics",
+            title: "Metrics and reports",
             module: MODULES.sei,
             description:
-              "Analyze your engineering team's investment efforts and alignment with business needs and strategic initiatives.",
-            link: "/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics",
-          },
-          {
-            title: "Execution metrics",
-            module: MODULES.sei,
-            description:
-              "Execution metrics include DORA metrics, flow metrics, velocity metrics, and quality and support metrics.",
-            link: "/docs/category/execution",
-          },
-          {
-            title: "Planning metrics",
-            module: MODULES.sei,
-            description:
-              "Plan and deliver on sprints more effectively.",
-            link: "/docs/software-engineering-insights/sei-metrics-and-reports/planning-sprint-metrics",
-          },
-          {
-            title: "Security metrics",
-            module: MODULES.sei,
-            description:
-              "Security metrics help you analyze anomalies or threats.",
-            link: "/docs/software-engineering-insights/sei-metrics-and-reports/security-metrics",
+              "Reports are widgets that you add to your Insights. Reports present data synthesized from metrics ingested by SEI.",
+            link: "/docs/category/metrics-and-reports",
           },
           {
             title: "Trellis Scores",

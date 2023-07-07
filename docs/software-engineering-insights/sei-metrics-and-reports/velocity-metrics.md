@@ -2,6 +2,7 @@
 title: Velocity metrics
 description: These metrics help analyze the time taken to deliver a feature.
 sidebar_position: 50
+sidebar_label: Velocity
 ---
 
 Velocity metrics help analyze the time taken to deliver a feature. They can help you identify bottlenecks in product development and delivery processes.

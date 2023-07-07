@@ -1,10 +1,11 @@
 ---
-title: Alignment
+title: Effort investment metrics
 description: Analyze how engineering teams invest their efforts and align with business needs and strategic initiatives.
 sidebar_position: 10
+sidebar_label: Effort investment
 ---
 
-Use alignment metrics to analyze how engineering teams invest their efforts and align with business needs and strategic initiatives. These metrics help you:
+Effort investment metrics, also known as alignment metrics, help you analyze how engineering teams invest their efforts and align with business needs and strategic initiatives. With these metrics, you can:
 
 * Pinpoint wasteful unplanned work, maximize engineering ROI, and reduce waste.
 * Measure PM-Engineering collaboration, eliminate back and forth, and endeavor to _build it right the first time_.
@@ -13,7 +14,7 @@ Use alignment metrics to analyze how engineering teams invest their efforts and 
 
 :::tip
 
-Alignment metrics are driven by [Investment profiles](../sei-profiles/investment-profile.md).
+Effort investment metrics are driven by [Investment profiles](../sei-profiles/investment-profile.md).
 
 Use [Business Alignment Insights](../sei-insights.md#create-a-business-alignment-insights) to observe these metrics.
 

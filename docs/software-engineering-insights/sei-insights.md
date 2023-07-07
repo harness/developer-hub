@@ -26,9 +26,9 @@ The primary way to access Insights is through the **Project** tab.
 
    To switch projects or Collections, use the **Project** and **Collection** options on the navigation menu. You can also use the breadcrumbs in the Insights header to navigate up through the [Collection hierarchy](./sei-collections/collections-overview.md).
 
-<!-- image .gitbook/assets/Dashboard view.png - example of viewing a dashboard -->
+   If integration monitoring is enabled, you can view the integration status in the Insights header.
 
-<!-- If integration monitoring is enabled, you can view the integration status in the Insights header? -->
+<!-- image .gitbook/assets/Dashboard view.png - example of viewing a dashboard -->
 
 ### Explore data
 
@@ -121,16 +121,16 @@ With **Effort Investment Profile** selected, your new Insight starts with the fo
 * **Effort Investment Trend Report**
 * **Effort Investment By Engineer**
 
-For more information about these metrics, go to the [Alignment metrics](./sei-metrics-and-reports/alignment-metrics.md) documentation.
+For more information about these metrics, go to [effort investment metrics](./sei-metrics-and-reports/effort-investment-metrics.md).
 
 ## Create DORA Insights
 
-Use DORA Insights to examine your organization's [DORA (DevOps Research Assessment) metrics](./sei-metrics-and-reports/execution/dora-metrics.md).
+Use DORA Insights to examine your organization's [DORA (DevOps Research Assessment) metrics](./sei-metrics-and-reports/dora-metrics.md).
 
 To create DORA Insights:
 
 1. Follow the steps to [create Insights](#create-insights), and select both **Effort Investment Profile** and **Effort Investment Units**.
-2. Add widgets for [DORA metrics](./sei-metrics-and-reports/execution/dora-metrics.md).
+2. Add widgets for [DORA metrics](./sei-metrics-and-reports/dora-metrics.md).
 
 ## Change the color scheme
 
