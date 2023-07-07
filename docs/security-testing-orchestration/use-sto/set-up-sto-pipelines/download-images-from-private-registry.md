@@ -47,7 +47,15 @@ USER root
 COPY ./CERTIFICATE_1.pem ../another-folder/CERTIFICATE_2.pem /shared/customer_artifacts/certificates/
 
 
-# FYI establishes trust for certificates in Python and the OS
+# FYI establishes trust for certificates in Python and the OS 
+RUN sto_plugin --trust-certs
+# Optional: To trust certificates for Java for tools such as
+# - Black Duck Hub
+# - Checkmarx
+# - Sonarqube
+# - Veracode
+# - NexusIQ
+# RUN sh /bin/setup.sh 
 RUN sto_plugin --trust-certs && sh /bin/setup.sh /usr/local/share/ca-certificates/
 
 # STEP 3 (optional)
