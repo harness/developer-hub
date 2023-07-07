@@ -3,9 +3,7 @@ title: Configure Git Experience for OPA
 description: Configure Git Experiemce for your policies.
 sidebar_position: 9
 ---
-:::important
-Currently, this feature is behind the feature flag `OPA_GIT_GOVERNANCE`. Contact Harness Support to enable the feature.
-:::
+
 
 You can create policies and store them in your Git repository. These policies are called remote policies.
 Whenever you modify your policy and push the changes, Harness uses the updated policies.
@@ -30,6 +28,10 @@ To create a remote policy, you must have:
   - Harness needs the PAT to use the Git platform APIs.
   - You add the PAT to Harness as an [encrypted text](../../Secrets/2-add-use-text-secrets.md), and it is encrypted using a Harness Secret Manager.
   - Your Git Personal Access Token is stored in your Harness secret and is a private key to which only you have access. This secret cannot be accessed or referenced by any other user.
+
+## Demo Video
+
+<docvideo src="https://www.loom.com/share/ce2ad5d95b464daa941da264cc43795a?sid=a28b9465-0915-45ed-85e5-62f7dbcdcd8c"/>
 
 ## Create a remote policy
 
