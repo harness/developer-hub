@@ -114,6 +114,7 @@ Launch the AWS console and perform the following steps:
 | --- | --- |
 | **Report Name** | Enter a name for the report. Make sure to copy this name, as you will need it to continue configuring the Harness connector in the steps below. |
 | **Include resource IDs** | Make sure this option is selected. |
+| **Split cost allocation data** | Make sure this option is unchecked. |
 | **Refresh automatically** | Make sure this option is selected. |
 
 5. In the **Set delivery options** step, enter the following values, and then select **Next**.

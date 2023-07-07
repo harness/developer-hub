@@ -4,11 +4,6 @@ description: Rollback pipelines to handle different failure conditions.
 sidebar_position: 12
 ---
 
-:::info
-
-Currently, this feature is behind the feature flag, `PIPELINE_ROLLBACK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 You can add a Rollback Pipeline failure strategy to your pipelines. Rollback pipeline applies to all steps and stages in a pipeline. 
 

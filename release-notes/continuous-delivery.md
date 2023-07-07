@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-06-28T10:00:15
+date: 2023-07-06T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -15,12 +15,76 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 28, 2023, version 79714
+## Latest - July 06, 2023, version 79811
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+
+
+- Template Library: Reference specific versions of a template on a different branch from the pipeline (CDS-69774)
+  
+  While using Harness Git Experience for pipelines and templates, you can now link templates from specific branches.
+  
+  Previously, templates were picked either from the same branch as the pipeline, if both pipelines and templates were present in the same repository, or from the default branch of the repository, if templates were stored in a different repository than the pipeline.
+  
+  The default logic will continue to be used if no branch is specified when selecting the template, but if a specific branch is picked while selecting the template then templates are always picked from the specified branch only.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not include any early access features.
+
+  
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+- An error appears when trying to access a stage template. (CDS-73138, ZD-46636)
+  
+  This issue is fixed. Opening the Template Inputs drawer in Template Studio was causing the error. This issue occurred only in template setups involving setup groups. 
+- Fixed an issue where pipeline YAMLs didn't get updated when the optional fields in a step were removed. (CDS-72807)
+- Fixed environment links to properly redirect to the **Summary** or **Configuration** page. (CDS-72463, ZD-46260)
+- An error occurred when running a Terragrunt pipeline: `Invalid request: Oops, something went wrong on our end. Please contact Harness Support`. (CDS-72226, ZD-46120)
+  
+  The Terraform and Terragrunt steps' **Secret Manager** settings were listing all available connectors instead of listing supported connectors. 
+
+  This issue is fixed. The **Secret Manager** setting lists only supported connectors now. 
+- Harness has added an access control check to the `/v2/{planExecutionId}` API to prevent users from anonymously accessing the plan execution Id using the API. (CDS-72155) 
+- Step templates within step groups created under stage templates were not executing properly. (CDS-72124, ZD-45924, ZD-46151)
+  
+  A code enhancement fixed this issue.
+- The pipeline build failed due to reformatting of the script. (CDS-72093, ZD-45874)
+
+  The three hyphens (`---`) used as a YAML document separator were replaced by `---\n`. This formatting made the YAML invalid.
+
+  Harness no longer adds the new line in the YAML, and honors the separator when processing the YAML.
+- Fixed an issue in the Shell Script step's **SSH/WinRM Connection Attribute** setting to correctly ask for SSH or WinRM credentials at the template/runtime/input set view based on the values entered in the step. (CDS-72021, ZD-45926)
+- In the stage status count displayed for Matrices in the Pipeline Execution Details page, the count of stages which ignored failures were counted in failed stages. (CDS-72030)
+  
+  This issue is fixed. The `IgnoreFailed` stages are now counted in successful stages. 
+- Fixed an issue where a change in the Artifact Details **Image Path** did not trigger a corresponding change in the **Tag** setting. (CDS-71215)
+- The **Repository Name** setting in the pipeline list page filter was not working properly. (CDS-70784, ZD-45350)
+  
+  This issue is fixed. If there are any saved filters that use **Repository Name**, you must delete and create the filter again.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 28, 2023, version 79714
+
+##### What's new
+
 - JSON support for expressions. (CDS-73057)
   
   Harness has introduced support for writing expressions by using any JSON parser tool. You can now obtain an execution JSON for all stages or individual steps of your pipeline.
@@ -32,21 +96,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   <docimage path={require('./static/payload-input.png')} width="60%" height="60%" title="Click to view full size image" />  
 
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 import Earlyaccess from '/release-notes/shared/cd-79700-early-access.md'
 
 <Earlyaccess />
 
-  
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
 
 - Step templates in a step group created within a stage template were not getting executed properly. (CDS-72124, ZD-45924, ZD-46151)
   
@@ -75,17 +131,6 @@ import Earlyaccess from '/release-notes/shared/cd-79700-early-access.md'
 import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
 <Fixedissues />
-
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### June 19, 2023, version 79606
 
@@ -224,7 +269,7 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
 ##### Early access
 
-<!--- Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
+- Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
   
   This functionality is behind a feature flag, `CDS_BG_STAGE_SCALE_DOWN_STEP_NG`. 
 
@@ -232,7 +277,7 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
   During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets, and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
-  Harness Delegate version 79503 is required for this feature.-->
+  Harness Delegate version 79503 is required for this feature.
 - Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. (CDS-59011)
 
   This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. 

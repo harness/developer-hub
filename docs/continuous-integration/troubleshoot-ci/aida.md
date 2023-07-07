@@ -1,5 +1,5 @@
 ---
-title: Troubleshoot with AIDA
+title: Troubleshoot builds with AIDA
 description: AIDA is the Harness AI Development Assistant.
 sidebar_position: 20
 ---

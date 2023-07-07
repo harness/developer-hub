@@ -194,64 +194,33 @@ This is not used, typically. Some Connectors have Basic authentication disabled 
 
 Add the service account token for the service account. The token must be pasted in decoded in the Encrypted Text secret you create/select. The service account does not have to be associated with a delegate.
 
-To get a list of the service accounts, run `kubectl get serviceAccounts`.
+In Kubernetes 1.24 and later versions, the automatic generation of ServiceAccount token secrets has been deprecated. Instead, you can use the TokenRequest subresource to obtain a token that can be used to access the Kubernetes API. Here's how you can use the TokenRequest subresource:
 
-For example, here's a manifest that creates a new SA named `harness-service-account` in the `default` namespace:
+1. Create a TokenRequest manifest. Write a YAML or JSON manifest that describes the TokenRequest object. The manifest should specify the namespace and name of the ServiceAccount for which you want to obtain a token. Here's an example TokenRequest manifest:
+   
+   ```yaml
+   apiVersion: authentication.k8s.io/v1
+   kind: TokenRequest
+   metadata:
+     name: my-token-request
+   spec:
+     audiences:
+     - api
+     expirationSeconds: 3600
+   ```
 
-```yaml
-# harness-service-account.yml  
-apiVersion: v1  
-kind: ServiceAccount  
-metadata:  
-  name: harness-service-account  
-  namespace: default
-```
-
-Next, you apply the SA.
-
-```
-kubectl apply -f harness-service-account.yml
-```
-
-Next, grant the SA the `cluster-admin` permission (see **Permissions Required** above).
-
-```yaml
-# harness-clusterrolebinding.yml  
-apiVersion: rbac.authorization.k8s.io/v1  
-kind: ClusterRoleBinding  
-metadata:  
-  name: harness-admin  
-roleRef:  
-  apiGroup: rbac.authorization.k8s.io  
-  kind: ClusterRole  
-  name: cluster-admin  
-subjects:  
-- kind: ServiceAccount  
-  name: harness-service-account  
-  namespace: default
-```
-
-Next, apply the ClusterRoleBinding.
-
-```
-kubectl apply -f harness-clusterrolebinding.yml
-```
-
-Once you have the SA added, you can gets its token using the following commands.
-
-```
-SERVICE_ACCOUNT_NAME={SA name}  
-  
-NAMESPACE={target namespace}  
-  
-SECRET_NAME=$(kubectl get sa "${SERVICE_ACCOUNT_NAME}" --namespace "${NAMESPACE}" -o=jsonpath='{.secrets[].name}')  
-  
-TOKEN=$(kubectl get secret "${SECRET_NAME}" --namespace "${NAMESPACE}" -o=jsonpath='{.data.token}' | base64 -d)  
-  
-echo $TOKEN
-```
-
-The `| base64 -d` piping decodes the token. You can now enter it into the Connector.
+   In this example, the `audiences` field specifies the intended audience of the token, which is set to api. The `expirationSeconds` field determines the token's validity period (in this case, 3600 seconds or 1 hour).
+2. Apply the TokenRequest. Use the kubectl command-line tool to apply the TokenRequest manifest to the Kubernetes cluster:
+   
+   ```
+   kubectl apply -f token-request.yaml
+   ```
+3. Retrieve the token: After applying the TokenRequest, a TokenRequest object is created in the cluster. You can retrieve the token using the following command:
+   
+   ```
+   kubectl get tokenrequest my-token-request -o jsonpath='{.status.token}' | base64
+   ```
+4. Paste the token into **Service Account Token**.
 
 ## OpenID Connect
 

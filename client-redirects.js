@@ -62,6 +62,11 @@ module.exports = {
     },
 
     {
+      from: "/docs/continuous-delivery/cd-services/k8s-services/kubernetes-services",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services"
+    },
+    
+    {
       from: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services",
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services"
     },
@@ -2285,10 +2290,6 @@ module.exports = {
     {
       from: "/docs/chaos-engineering/user-guides/validate-hypothesis-using-probes",
       to: "/docs/chaos-engineering/configure-chaos-experiments/probes/validate-hypothesis-using-probes",
-    },
-    {
-      from: "/docs/chaos-engineering/user-guides/add-a-new-user-to-a-project",
-      to: "/docs/chaos-engineering/configure-chaos-experiments/prerequisites/add-a-new-user-to-a-project",
     },
     {
       from: "/docs/chaos-engineering/user-guides/add-chaos-hub",

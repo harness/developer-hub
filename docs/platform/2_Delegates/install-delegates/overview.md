@@ -73,76 +73,34 @@ The legacy Kubernetes delegate, denoted `latest` container image tag, is used pr
 
 ### Install Docker delegate using Podman
 
-You can install the Docker delegate using Podman by adding Podman commands to your Dockerfile.
+You can install the Docker delegate using Podman by adding Podman commands to your Dockerfile. The example below uses a delegate with the immutable image type. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). 
 
 #### Sample Podman file
 
 ```
-sudo podman pull docker.io/harness/delegate:yy.mm.xxxxx
+sudo apt-get -y update
 
-sudo podman run -d --restart=always --hostname="$(hostname -f | head -c 63)" \
+sudo apt-get -y install podman
 
--e ACCOUNT_ID=YOUR_ACCOUNT_ID \
+podman run --restart=always --hostname="$(hostname -f)"  \
+-e DELEGATE_NAME=YOUR_DELEGATE_NAME  \
+-e NEXT_GEN="true"  \
+-e DELEGATE_TYPE="DOCKER"  \
+-e ACCOUNT_ID=YOUR_ACCOUNT_ID  \
+-e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN  \
+-e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/  \
+-e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  \
+delegate:yy.mm.xxxxx
 
--e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN \
-
--e MANAGER_HOST_AND_PORT=https://app.harness.io \
-
--e WATCHER_STORAGE_URL=https://app.harness.io/public/prod/premium/watchers \
-
--e WATCHER_CHECK_LOCATION=current.version \
-
--e DELEGATE_STORAGE_URL=https://app.harness.io \
-
--e DELEGATE_CHECK_LOCATION=delegateprod.txt \
-
--e DELEGATE_NAME=podman \
-
--e DELEGATE_PROFILE=YOUR_DELEGATE_PROFILE \
-
--e DELEGATE_TYPE=DOCKER \
-
--e DEPLOY_MODE=KUBERNETES \
-
--e PROXY_HOST= \
-
--e PROXY_PORT= \
-
--e PROXY_SCHEME= \
-
--e PROXY_USER= \
-
--e PROXY_PASSWORD= \
-
--e NO_PROXY= \
-
--e PROXY_MANAGER=true \
-
--e POLL_FOR_TASKS=false \
-
--e HELM_DESIRED_VERSION= \
-
--e CF_PLUGIN_HOME= \
-
--e REMOTE_WATCHER_URL_CDN=https://app.harness.io/public/shared/watchers/builds \
-
--e CDN_URL=https://app.harness.io \
-
--e JRE_VERSION=11.0.14 \
-
--e HELM3_PATH= \
-
--e HELM_PATH= \
-
--e CF_CLI6_PATH= \
-
--e CF_CLI7_PATH= \
-
--e KUSTOMIZE_PATH= \
-
--e OC_PATH= \
-
--e KUBECTL_PATH= \
-
-docker.io/harness/delegate:yy.mm.xxxxx
+podman ps
 ```
+
+Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` value with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+
+| Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
+| ------------------------| -------------------------------------------	|
+| SaaS prod-1  	 		| `https://app.harness.io`       				|
+| SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
+| SaaS prod-3  	 		| `https://app3.harness.io`        				|
+| [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
+| [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
