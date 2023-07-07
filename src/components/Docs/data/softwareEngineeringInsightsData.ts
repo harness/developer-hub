@@ -22,7 +22,7 @@ import {
       },
     ];
     */
-    
+
     // Docs
     export const docsCards: CardSections = [
       {
@@ -31,147 +31,112 @@ import {
           "",
         list: [
           {
-            title: "Get started with CI",
+            title: "SEI basics",
             module: MODULES.sei,
             description:
-              "Learn about the benefits, features, and architecture of Harness Software Engineering Insights, as well as basic SEI concepts.",
-            link: "/docs/category/get-started-with-ci",
-          },
-          {
-            title: "Pipeline creation overview",
-            module: MODULES.ci,
-            description:
-              "Learn about creating Harness CI pipelines.",
-            link: "/docs/continuous-integration/use-ci/prep-ci-pipeline-components",
+              "Learn about the benefits and features of Harness Software Engineering Insights, as well as how to get started with SEI.",
+            link: "/docs/software-engineering-insights/sei-get-started/sei-overview",
           },
         ],
       },
-  
+
       {
-        name: "Feature highlights",
+        name: "Configure",
         description:
           "",
         list: [
           {
-            title: "Harness Cloud",
-            module: MODULES.ci,
+            title: "Pivot Points",
+            module: MODULES.sei,
             description:
-              "Run builds at scale on VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines.",
-            link: "/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart",
+              "Pivot Points keep your data organized.",
+            link: "/docs/category/pivot-points",
           },
           {
-            title: "Test Intelligence",
-            module: MODULES.ci,
+            title: "Connectors and Integrations",
+            module: MODULES.sei,
             description:
-              "Improve test times by running only those unit tests that are required to confirm the quality of the code changes that triggered the pipeline.",
-            link: "/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts",
+              "SEI uses connectors to ingest data from your SDLC tools.",
+            link: "/docs/software-engineering-insights/sei-integrations/sei-integrations-overview",
           },
           {
-            title: "Cache Intelligence",
-            module: MODULES.ci,
+            title: "Profiles",
+            module: MODULES.sei,
             description:
-              "With Cache Intelligence, Harness automatically caches and restores common dependencies.",
-            link: "/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence",
-          },
-          {
-            title: "Background steps",
-            module: MODULES.ci,
-            description:
-              "Use Background steps to manage long-running service dependencies.",
-            link: "/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings",
-          },
-          {
-            title: "Plugins",
-            module: MODULES.ci,
-            description:
-              "Plugins perform predefined tasks. Use plugins to incorporate Jira updates, GitHub Actions, Bitrise Integrations, and more into your CI pipelines.",
-            link: "/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins",
-          },
-          {
-            title: "Optimization strategies",
-            module: MODULES.ci,
-            description:
-              "Make your CI pipelines faster, more efficient, and more versatile.",
-            link: "/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times",
+              "Profiles aggregate data for Trellis Scores, DORA metrics, and more.",
+            link: "/docs/category/profiles",
           },
         ],
       },
-  
+
       {
-        name: "Create pipelines",
+        name: "Analyze",
         description:
           "",
         list: [
           {
-            title: "Set up build infrastructure",
-            module: MODULES.ci,
+            title: "Insights",
+            module: MODULES.sei,
             description:
-              "Configure build farms for your CI pipelines.",
-            link: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me",
+              "Insights are dashboards that make it easy to visualize and interpret metrics that are captured by SEI.",
+            link: "/docs/software-engineering-insights/sei-metrics-and-insights/sei-insights",
           },
           {
-            title: "Build and upload artifacts",
-            module: MODULES.ci,
+            title: "Alignment metrics",
+            module: MODULES.sei,
             description:
-              "Build and upload artifacts in CI pipelines.",
-            link: "/docs/category/build-and-upload-artifacts",
+              "Analyze your engineering team's investment efforts and alignment with business needs and strategic initiatives.",
+            link: "/docs/software-engineering-insights/sei-metrics-and-insights/alignment-metrics",
           },
           {
-            title: "Run tests",
-            module: MODULES.ci,
+            title: "Execution metrics",
+            module: MODULES.sei,
             description:
-              "Run tests in CI pipelines.",
-            link: "/docs/category/run-tests",
+              "Execution metrics include DORA metrics, flow metrics, velocity metrics, and quality and support metrics.",
+            link: "/docs/category/execution",
           },
           {
-            title: "Dependencies and caching",
-            module: MODULES.ci,
+            title: "Planning metrics",
+            module: MODULES.sei,
             description:
-              "Manage dependencies, share data, and use caching in CI pipelines",
-            link: "/docs/continuous-integration/use-ci/manage-dependencies/dependency-mgmt-strategies",
+              "Plan and deliver on sprints more effectively.",
+            link: "/docs/software-engineering-insights/sei-metrics-and-insights/planning-sprint-metrics",
           },
           {
-            title: "Plugins",
-            module: MODULES.ci,
+            title: "Security metrics",
+            module: MODULES.sei,
             description:
-              "Plugins perform predefined tasks. Use plugins to incorporate Jira updates, GitHub Actions, Bitrise Integrations, and more into your CI pipelines.",
-            link: "/docs/continuous-integration/use-ci/use-drone-plugins/explore-ci-plugins",
+              "Security metrics help you analyze anomalies or threats.",
+            link: "/docs/software-engineering-insights/sei-metrics-and-insights/security-metrics",
           },
           {
-            title: "Optimization strategies",
-            module: MODULES.ci,
+            title: "Trellis Scores",
+            module: MODULES.sei,
             description:
-              "Make your CI pipelines faster, more efficient, and more versatile.",
-            link: "/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times",
+              "Trellis Scores are a proprietary scoring mechanism that helps you understand your team's productivity.",
+            link: "/docs/software-engineering-insights/sei-metrics-and-insights/trellis-score",
           },
         ],
       },
-  
+
       {
-        name: "Help and FAQs",
+        name: "Help and more",
         description:
           "",
         list: [
           {
-            title: "Migrate to Harness CI",
-            module: MODULES.ci,
+            title: "Propels",
+            module: MODULES.sei,
             description:
-              "",
-            link: "/docs/category/migrate-to-harness-ci",
+              "Propels are a no-code/low-code way to use SEI to add human-in-the-loop automation to your SDLC.",
+            link: "/docs/software-engineering-insights/sei-propels-scripts/propels-overview",
           },
           {
-            title: "Troubleshoot CI",
-            module: MODULES.ci,
+            title: "Troubleshooting and FAQs",
+            module: MODULES.sei,
             description:
               "",
-            link: "/docs/continuous-integration/troubleshooting-ci",
-          },
-          {
-            title: "CI FAQs",
-            module: MODULES.ci,
-            description:
-              "",
-            link: "/docs/frequently-asked-questions/harness-faqs/continuous-integration-ci-faqs",
+            link: "/docs/software-engineering-insights/sei-troubleshooting-faqs",
           },
         ],
       },

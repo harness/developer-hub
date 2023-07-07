@@ -52,14 +52,12 @@ Options for editing Org Units are only available on **Flat List** view.
 
 <!-- image: Org units list page -->
 
-3. To add an Org Unit, select **+ [Category Name]**. For example, in the **Teams** category, select **+ Teams**. To edit an existing Org Unit, select the Org Unit in the **Name** column.
-4. In the **Basic Info** settings, you can:
+3. To add an Org Unit, select **+ [OU Category]**. For example, in the **Teams** category, select **+ Teams**. To edit an existing Org Unit, select the Org Unit in the **Name** column.
+4. In the **Basic Info** settings, you can: <!-- image: Edit Org Unit - Basic Info settings -->
 
-  * Enter a **Name** and **Description**. Org unit names must be unique within each project.
-  * Change the associated **Org Unit Category**.
-  * Change the Org Unit's position in the hierarchy by changing the **Parent Node**.
-
-<!-- image: Edit Org Unit - Basic Info settings -->
+   * Enter a **Name** and **Description**. Org unit names must be unique within each project.
+   * Change the associated **Org Unit Category**.
+   * Change the Org Unit's position in the hierarchy by changing the **Parent Node**.
 
 5. Use the **Insights** settings to [manage Insights associations](#manage-insights-associations). By default, child Org Units automatically inherit Insights associations from their ancestor Org Units.
 6. Use the **Definitions** settings to define [integrations](/docs/category/connectors-and-integrations) associated with the Org Unit. By default, if you don't specify any integrations, the Org Unit automatically inherits integrations from the associated project.

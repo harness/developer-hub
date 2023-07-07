@@ -4,9 +4,7 @@ description: Analyze how engineering teams invest their efforts and align with b
 sidebar_position: 20
 ---
 
-Use alignment metrics to analyze how engineering teams invest their efforts and align with business needs and strategic initiatives.
-
-Alignment metrics widgets help you:
+Use alignment metrics to analyze how engineering teams invest their efforts and align with business needs and strategic initiatives. These metrics help you:
 
 * Pinpoint wasteful unplanned work, maximize engineering ROI, and reduce waste.
 * Measure PM-Engineering collaboration, eliminate back and forth, and endeavor to _build it right the first time_.

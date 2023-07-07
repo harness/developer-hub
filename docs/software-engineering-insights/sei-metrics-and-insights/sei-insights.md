@@ -42,15 +42,15 @@ There are several navigation options for accessing Insights.
 
 <!-- image .gitbook/assets/Dashboard view.png - example of viewing a dashboard -->
 
-### Explore Insight data
+### Explore data
 
 Once you're viewing an Insight, you can explore the widgets and interact with the data.
 
 :::info Where does the data come from?
 
-Widgets derive data from [integrations](/docs/category/connectors-and-integrations) that are inherited from the Org Unit associated with Insights. In turn, Org Units inherit integrations from their associated projects. For more information about configuring these associations, go to [Pivot Points](/docs/category/pivot-points).
+Widgets get data from [integrations](/docs/category/connectors-and-integrations), which are inherited from the [Org Units associated with Insights](#manage-insights-associations). In turn, Org Units inherit integrations from their associated Harness project, because integrations are configured at the project level. For more information about this hierarchy and configuring Org Units, go to [Pivot Points](/docs/category/pivot-points).
 
-You can configure metrics and widgets to control what data is used to calculate metrics, how data is presented, and other criteria. For more information, go to [Metrics and Insights](/docs/category/metrics-and-insights).
+You can also configure individual metrics and widgets to specify what data is used in calculations, how data is presented, and other criteria. For more information, go to the other [Metrics and Insights](/docs/category/metrics-and-insights) documentation.
 
 :::
 
@@ -91,28 +91,16 @@ If you're an admin, you can:
 
 #### Access Insights from the Insights list
 
-1. While viewing Insights, select **All Insights** in the header, and then select **Manage Insights** to go to the **Insights** list page.
-
-<!-- image .gitbook/assets/Dashboard - manage dashboard option.png - Dashboard header with All Dashboards menu expanded and the MAnage Dashboards button available -->
-
-2. Select the Insight you want to view from the **Insights** list.
-
-<!-- image .gitbook/assets/Dashboard List page.png - Dashboard list page -->
-
+1. While viewing Insights, select **All Insights** in the header, and then select **Manage Insights** to go to the **Insights** list page. <!-- image .gitbook/assets/Dashboard - manage dashboard option.png - Dashboard header with All Dashboards menu expanded and the MAnage Dashboards button available -->
+2. Select the Insight you want to view from the **Insights** list. <!-- image .gitbook/assets/Dashboard List page.png - Dashboard list page -->
 3. Select an Org Unit category.
 4. Select an Org Unit. Upon selecting an Org Unit, the Insight you selected from the **Insights** list opens.
 
 ## Create Insights
 
 1. Go to any Insight. For instructions, go to [View Insights](#view-insights).
-2. In the header, select **All Insights**, and then select **Manage Insights**.
-
-<!-- image .gitbook/assets/Dashboard - manage dashboard option (1).png - Dashboard header with all dashboards expanded and the manage dashboards button available. -->
-
-3. Select **New Insight**.
-
-<!-- image .gitbook/assets/Dashboard List page.png - Dashboards list page with New Dashboard button available. -->
-
+2. In the header, select **All Insights**, and then select **Manage Insights**. <!-- image .gitbook/assets/Dashboard - manage dashboard option (1).png - Dashboard header with all dashboards expanded and the manage dashboards button available. -->
+3. Select **New Insight**. <!-- image .gitbook/assets/Dashboard List page.png - Dashboards list page with New Dashboard button available. -->
 4. Enter a **Name** for the Insight.
 5. If you want to make this Insight private, make sure **Allow everyone in my organization to view the Insight** is *not* selected.
 6. Under **Parameters**, you can modify the following settings:
@@ -120,31 +108,25 @@ If you're an admin, you can:
    * **Dashboard Time Range:** You can enable dashboard time. _Dashboard time_ is the time range selected by the user when viewing an Insight.
    * **Effort Investment Profile** and **Effort Investment Units** are used for [Business Alignment Insights](#create-business-alignment-insights) and [DORA Insights](#create-dora-insights).
 
-7. Select at least one Org Unit category to associated with this Insight.
-
-<!-- image .gitbook/assets/Create dashboard - hover option.png - Create Dashboard dialog -->
+7. Select at least one Org Unit category to associated with this Insight. <!-- image .gitbook/assets/Create dashboard - hover option.png - Create Dashboard dialog -->
 
    All [Org Units](../sei-pivot-points/manage-org-units.md) and child Org Units under the selected category are automatically associated with the Insight. You can refine the [Insight associations](#manage-insights-associations) after initial Insight creation.
 
-   If you want to examine Org Units under a certain Org Unit category, select **View OUs** on the **Org Unit Categories** dropdown menu.
+   If you want to examine Org Units under a certain Org Unit category, select **View OUs** on the **Org Unit Categories** dropdown menu. <!-- image .gitbook/assets/Create dashboard - view OUs (1).png - org unit category details after selecting View OUs -->
 
-<!-- image .gitbook/assets/Create dashboard - view OUs (1).png - org unit category details after selecting View OUs -->
-
-8. Select **Create** to save the Insight metadata. Initially, the Insight is empty. From here, you can add widgets or modify the Insight settings.
-
-<!-- image .gitbook/assets/View dashboard after creation.png - empty new dashboard -->
+8. Select **Create** to save the Insight metadata. Initially, the Insight is empty. From here, you can add widgets or modify the Insight settings. <!-- image .gitbook/assets/View dashboard after creation.png - empty new dashboard -->
 
 :::info Where does the data in widgets come from?
 
-Widgets derive data from [integrations](/docs/category/connectors-and-integrations) that are inherited from the Org Unit associated with Insights. In turn, Org Units inherit integrations from their associated projects. For more information about configuring these associations, go to [Pivot Points](/docs/category/pivot-points).
+Widgets get data from [integrations](/docs/category/connectors-and-integrations), which are inherited from the [Org Units associated with Insights](#manage-insights-associations). In turn, Org Units inherit integrations from their associated Harness project, because integrations are configured at the project level. For more information about this hierarchy and configuring Org Units, go to [Pivot Points](/docs/category/pivot-points).
 
-You can configure metrics and widgets to control what data is used to calculate metrics, how data is presented, and other criteria. For more information, go to [Metrics and insights](/docs/category/metrics-and-insights).
+You can also configure individual metrics and widgets to specify what data is used in calculations, how data is presented, and other criteria. For more information, go to the other [Metrics and Insights](/docs/category/metrics-and-insights) documentation.
 
 :::
 
 ### Manage Insights associations
 
-There are two ways to manage Insights associations:
+There are two ways to manage the Org Units associated with Insights:
 
 * When viewing Insights, select the **Settings** icon, and then select **Org Units**.
 * From the **Edit Org Unit** page, edit the **Insights** settings. For more information about this option, go to **Managing Insights associations** in [Manage Org Units](../sei-pivot-points/manage-org-units.md#manage-insights-associations).

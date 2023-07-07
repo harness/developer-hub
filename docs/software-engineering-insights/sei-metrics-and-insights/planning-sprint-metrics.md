@@ -4,9 +4,7 @@ description: Use sprint metrics to plan and deliver on sprints more effectively.
 sidebar_position: 40
 ---
 
-Sprint metrics can help you plan and deliver on sprints more effectively, including backlog grooming and story hygiene.
-
-Sprint metrics for Scrum teams help you address business problems like:
+Planning and sprint metrics can help you plan and deliver on sprints more effectively, including backlog grooming and story hygiene. These metrics can help you address business problems like:
 
 * Do teams consistently deliver on sprint plans? If not, why?
 * What is the impact of creep or un-estimated tickets on plans?
@@ -78,15 +76,13 @@ The following ratios are calculated from sprint metrics:
 
 ## Sprint metrics widgets
 
-The following widgets report sprint metrics.
+Use the following widgets to analyze sprint metrics:
 
 * **Sprint Metrics Single Stat:** A sprint metric averaged over the selected time interval.
 * **Sprint Metrics Percentage Trend Report:** Time series trend of selected [sprint metrics ratios](#sprint-metrics-ratios). Recommended for visualizing changes in the **commit done ratio**, **total done to commit ratio**, and **creep to commit ratio**.
 * **Sprint Metrics Trend Report:** Recommended for visualizing a time series trend of [sprint metrics](#sprint-metrics) like **commit done points**, **creep points**, or **commit points**.
 
-### Configure sprint metrics widgets
-
-The following two settings are recommended and popular for examining sprint metrics:
+When configuring sprint metrics widgets, the following two settings are popular for examining sprint metrics:
 
 * **Sprint End Date:** Use this time range filter to limit metrics to the last few sprints. It is recommended to observe sprint metrics over 2 months or 6 sprints.
 * **Sprint Report:** Use this field to limit the metrics to a selected _sprint stream_ or sprint names with a common prefix.

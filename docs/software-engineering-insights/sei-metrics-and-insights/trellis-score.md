@@ -1,6 +1,6 @@
 ---
-title: Trellis Score
-description: Your Trellis Score helps you understand your team's productivity.
+title: Trellis Scores
+description: Trellis Scores helps you understand your team's productivity.
 sidebar_position: 60
 ---
 

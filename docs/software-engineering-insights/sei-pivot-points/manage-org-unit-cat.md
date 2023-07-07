@@ -18,33 +18,17 @@ For more information about the relationship between projects, Org Unit categorie
 
 ## View, edit, and enable/disable Org Unit categories
 
-1. In your Harness project, go to the SEI module, select **Account**, and then select **Pivot Point Setup** under **Data Settings**.
+1. In your Harness project, go to the SEI module, select **Account**, and then select **Pivot Point Setup** under **Data Settings**. <!-- image: Where to find org unit category settings -->
 
-<!-- image: Where to find org unit category settings -->
-
-Org Unit categories are shown as tabs on the **Pivot Point Setup** page. This page shows only Org Unit categories and Org Units relevant to the current project. Switch projects to view Org Unit categories and Org Units for other projects.
-
-<!-- image: Org units list page -->
+   Org Unit categories are shown as tabs on the **Pivot Point Setup** page. This page shows only Org Unit categories and Org Units relevant to the current project. Switch projects to view Org Unit categories and Org Units for other projects. <!-- image: Org units list page -->
 
 2. Select the tab for the Org Unit category that you want to edit, and then select the **Settings** icon next to the Org Unit category name.
 3. On the **Edit Org Unit Category** dialog, you can:
 
    * Edit the **Name** and **Description**.
-   * Enable or disable the Org Unit category. Disabled categories are not visible on landing pages, Insights, or elsewhere in SEI, except on the Org Unit Settings page for SEI Admin users.
-
-<!-- image: Edit Org Unit Category page -->
+   * Enable or disable the Org Unit category. Disabled categories are not visible on landing pages, Insights, or elsewhere in SEI, except on the Org Unit Settings page for SEI Admin users. <!-- image: Edit Org Unit Category page -->
 
 ## Add Org Unit categories
-
-1. In your Harness project, go to the SEI module, select **Account**, and then select **Pivot Point Setup** under **Data Settings**.
-
-<!-- image: Where to find org unit category settings -->
-
-Org Unit categories are shown as tabs on the **Pivot Point Setup** page. This page shows only Org Unit categories and Org Units relevant to the current project. Make sure you are in the correct project before creating an Org Unit category.
-
-<!-- image: Org units list page -->
-
-2. Select **Add Custom**.
 
 :::tip Get Support
 
@@ -52,11 +36,17 @@ Adding custom Org Unit categories is considered an advanced feature. It is recom
 
 :::
 
-<!-- image: custom OU category warning -->
+1. In your Harness project, go to the SEI module, select **Account**, and then select **Pivot Point Setup** under **Data Settings**. <!-- image: Where to find org unit category settings -->
 
+   Org Unit categories are shown as tabs on the **Pivot Point Setup** page. This page shows only Org Unit categories and Org Units relevant to the current project. Make sure you are in the correct project before creating an Org Unit category. <!-- image: Org units list page -->
+
+2. Select **Add Custom**.
 3. Enter a **Name** and **Description**.
 4. Select **Enable Org Unit Category** to make the category available for Insights and elsewhere in SEI.
-5. Enter the **Root OU Name**. This is the name of the default, root Org Unit in this Org Unit category. It usually follows the format of `All + Org Unit category name`. For example, the root Org Unit for the Teams category is `All Teams`.
+5. Enter the **Root OU Name**.
+
+   This is the name of the default, root Org Unit in this Org Unit category. It usually follows the format of `All + Org Unit category name`. For example, the root Org Unit for the Teams category is `All Teams`.
+
 6. Select **Save**.
 
 <!-- image: Add org unit category dialog -->

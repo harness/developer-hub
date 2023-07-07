@@ -15,7 +15,9 @@ To create or edit a Trellis profile:
 
 :::info Predefined Trellis profiles
 
-Some issue management and SCM [connectors](/docs/category/connectors-and-integrations) automatically create predefined Trellis profiles. You can associated predefined profiles with [Org Units](../sei-pivot-points/manage-org-units.md). You can't delete predefined profiles.
+Some issue management and SCM [connectors](/docs/category/connectors-and-integrations) automatically create predefined Trellis profiles. You can associate predefined profiles with [Org Units](../sei-pivot-points/manage-org-units.md).
+
+You can't delete predefined profiles. If you don't want to use a predefined profile, make sure it isn't associated with any Org Units.
 
 <!-- image Trellis_home_add_integrations.png - Trellis Score Profiles before integrating SCM or Issue Management tools -->
 <!-- image .gitbook/assets/Trellis\_profiles\_home.png - Trellis Score Profiles page with Predefined profiles -->
@@ -24,21 +26,19 @@ Some issue management and SCM [connectors](/docs/category/connectors-and-integra
 
 ## Basic Info
 
-Configure basic information for the Trellis profile, such as a **Name** and optional **Description**.
+Configure basic information for the Trellis profile, such as a **Name** and an optional **Description**.
 
 ## Associations
 
-In the **Associations** section of your Trellis profile, map [Org Units](../sei-pivot-points/manage-org-units.md) to the Trellis profile.
+In the **Associations** section of your Trellis profile, you can map [Org Units](../sei-pivot-points/manage-org-units.md) to the Trellis profile and configure **Advanced Options**.
 
 <!-- image .gitbook/assets/OU\_mapping\_profile.png - mapping org units in trellis profile -->
 
-### Advanced Options
-
-The **Advanced Options** in the **Associations** section of your Trellis profile contain several optional settings:
+The **Advanced Options** include:
 
 * **List the PRs/commits to be excluded from the current Trellis profile:** These settings are useful in scenarios where you want to ignore certain types of PRs and commits.
-  * If excluding PRs, note that the commits associated with those PRs are also excluded.
-  * If excluding commits, only the commits are excluded. PRs that happen to contain those commits are not excluded.
+  * If excluding PRs, the commits associated with those PRs are also excluded.
+  * If excluding commits, only the commits are excluded. PRs that contain those commits are not excluded.
 * **List the development stages involved:** Select the relevant issue management statuses to attribute work done by your team.
 
 <!-- image .gitbook/assets/Status\_mapping\_advanced\_options.png - Associations section - advanced options -->
@@ -52,7 +52,7 @@ In the main **Factors and Weights** section, you can:
 * Enable and disable individual factors to include or exclude them from your Trellis Score calculation.
 * Adjust the weight of each factor. Assign a low weight (1-5) to make less important factors have a lower impact on your score. Assign a higher weight (5-10) to make more important factors have a higher impact on your score. Weights are relative. For example, if all factors are weighted 5, then all factors are still equal.
 
-In the subsection for the individual factors, you can:
+In the subsections for the individual factors, you can:
 
 * Adjust the metrics that are included in each factor's calculation. For information about the metrics behind each factor, go to [Trellis Score](../sei-metrics-and-insights/trellis-score.md).
 * Define target performance ranges for each metric.

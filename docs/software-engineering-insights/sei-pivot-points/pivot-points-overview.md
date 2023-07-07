@@ -4,7 +4,7 @@ description: Learn how projects and Org Units create hierarchies in SEI.
 sidebar_position: 10
 ---
 
-Pivot Point hierarchies in SEI keep data organized. At the top of the hierarchy is a [Harness project](/docs/category/organizations-and-projects). Under each project are Org Unit categories and one or more levels of Org Units.
+Pivot Point hierarchies in SEI keep data organized. At the top of the hierarchy is a [Harness project](/docs/category/organizations-and-projects). Under each project are Org Unit categories and one or more levels of Org Units (also known as Organizational Units or OUs).
 
 * **Harness project:** The umbrella for the SEI Org Unit hierarchy. Org Unit categories and Org Units exist under their associated project; they don't span across projects. While multiple projects can have Org Unit categories and Org Units with the same name, these are distinct groups under their designated project.
 * **Org Unit categories:** Broad classifications that serve as containers for Org Units but are not, themselves, Org Units. For example, **Teams** is an Org Unit category; whereas **Engineering Team** and **Docs Teams** are Org Units under the **Teams** category.
@@ -14,16 +14,10 @@ Pivot Point hierarchies in SEI keep data organized. At the top of the hierarchy 
 
 ![](./static/org-unit-hierarchies-diagram.png)
 
-<figcaption>A diagram of the relationship between projects, Org Unit categories, and Org Units. Connectors (integrations) feed data from your SDLC tools into the project and the corresponding Org Unit categories and Org Units. Data is ultimately displayed on Insights, which are associated with particular Org Units.</figcaption>
+<figcaption>Figure 1: A diagram of the relationship between projects, Org Unit categories, and Org Units. Connectors (integrations) feed data from your SDLC tools into the project and the corresponding Org Unit categories and Org Units. Data is ultimately displayed on Insights, which are associated with particular Org Units.</figcaption>
 </figure>
 
-Projects, Org Unit categories, and Org Units provide a broad way of organizing, filtering, and scoping data so you can examine data for different teams, lines of business, development initiatives, sprints, or other scopes. From there, you can configure [Metrics and Insights](/docs/categories/metrics-and-insights) to further refine and examine different facets of your teams' data.
-
-:::info
-
-Org Unit is short for Organizational Unit. It is also abbreviated as OU.
-
-:::
+Projects, Org Unit categories, and Org Units provide a broad way of organizing, filtering, and scoping data so you can examine data for different teams, lines of business, development initiatives, sprints, or other scopes. From there, you can configure [Metrics and Insights](/docs/category/metrics-and-insights) to further refine and examine different facets of your teams' data.
 
 ## Projects
 

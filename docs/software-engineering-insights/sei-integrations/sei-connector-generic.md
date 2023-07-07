@@ -339,7 +339,9 @@ To use this plugin, you need to use the generic SEI connector and install the pl
 
 <details>
 <summary>Plugin dependencies</summary>
-The following table lists other Jenkins plugins for which the Job Reporter plugin has dependencies. It includes links to the plugins on the Jenkins plugins marketplace. These are in addition to required and implied dependenies listed on the [Job Reporter plugin's Jenkins plugin marketplace page](https://plugins.jenkins.io/propelo-job-reporter/dependencies/).
+
+The following table lists other Jenkins plugins for which the Job Reporter plugin has dependencies. It includes links to the plugins on the Jenkins plugins marketplace. These are in addition to required and implied dependencies listed on the [Job Reporter plugin's Jenkins plugin marketplace page](https://plugins.jenkins.io/propelo-job-reporter/dependencies/).
+
 
 | Dependency name | Direct/Indirect dependency | Version |
 | --------------- | -------------------------- | ------- |

@@ -4,7 +4,7 @@ description: Use Investment profiles to examine alignment metrics.
 sidebar_position: 10
 ---
 
-This topic describes the settings available for Investment profiles, which you can use to understand where engineers are allocating their time through [alignment metrics](../sei-metrics-and-insights/alignment-metrics.md).
+Investment profiles help you understand where engineers are allocating their time through [alignment metrics](../sei-metrics-and-insights/alignment-metrics.md).
 
 To create or edit Investment profiles:
 
@@ -16,13 +16,10 @@ To create or edit Investment profiles:
 ## Basic Info
 
 * **Name and Description:** Name and describe your Investment profile.
-* **Current Priorities:** Select one or more options that correspond with the team's *current* work. Options include:
+* **Current Priorities:** Select one or more options that correspond with the team's *current* work. Options include: <!-- image (27).png - investment profile - current priorities selections -->
   * **Issue is in an active sprint:** When computing resource allocation, include issues, in any status, that are in ongoing sprints.
   * **Issue is in In-Progress state:** When computing resource allocation, include in-progress issues.
   * **Issue is assigned:** When computing resource allocation, include issues, in any status, that are assigned to a team member.
-
-<!-- image (27).png - investment profile - current priorities selections -->
-
 * **Issue Management System:** Select the issue management tool, either **Jira** or **Azure**, to associate with this Investment profile.
 * **Default Profile:** Enable this setting if you want to make this Investment profile the default Investment profile. The default profile is automatically selected when creating new widgets that use Investment profiles.
 
@@ -40,7 +37,7 @@ Adjust the sliders to define the **Ideal range** for each category. You can set 
 
 <figure>
 
-![](./static/investment-profile-ranges.png.png)
+![](./static/investment-profile-ranges.png)
 
 <figcaption>Figure 1: Allocation goals for <b>Bugs</b>, where 20 to 30 percent is the ideal range.</figcaption>
 </figure>

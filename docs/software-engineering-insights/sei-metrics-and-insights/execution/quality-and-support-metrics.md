@@ -136,7 +136,7 @@ Instances of reassignment to a previous assignee are captured by the [Issue Boun
 
 ## Issue Hygiene Report
 
-The Issue Hygiene Report widget shows your overall hygiene score and individual scores for each hygiene category. Scores represent _hygiene misses_ in the designated time frame. A hygiene miss means that a ticket in your issue management system was missing an important field, failed to change status in a timely manner, or was assigned to an inactive user. Each hygiene miss is tallied against a score of 100. A score of 100 indicates that no tickets were submitted with missing hygiene points.
+The Issue Hygiene Report widget shows your overall hygiene score and individual scores for each [hygiene category](#hygiene-categories). Scores represent _hygiene misses_ in the designated time frame. A hygiene miss means that a ticket in your issue management system was missing an important field, failed to change status in a timely manner, or was assigned to an inactive user.
 
 <figure>
 
@@ -144,6 +144,14 @@ The Issue Hygiene Report widget shows your overall hygiene score and individual 
 
 <figcaption>Figure 2: The Issue Hygiene Report widget. The hygiene score can help you understand how well your tickets are organized in your issue management system.</figcaption>
 </figure>
+
+Each hygiene miss is tallied against a score of 100. A score of 100 indicates that no tickets were submitted with missing hygiene points.
+
+```
+Hygiene Category Score = ( Number of Tickets Missing Hygiene / Total Number of Tickets in Time Frame ) * Weight
+
+Total Hygiene Score = Sum of Category Scores
+```
 
 ### Hygiene categories
 
@@ -161,16 +169,6 @@ Hygiene misses are based on hygiene categories. The built-in categories are:
 You can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [connectors](../../sei-integrations/sei-integrations-overview.md).
 
 You can modify the importance of each category when you [configure the Issue Hygiene Report widget](#configure-the-issue-hygiene-report-widget).
-
-### Hygiene score formula
-
-Scores represent hygiene misses in the designated time frame. Each hygiene miss is tallied against a score of 100 using the following formula. A score of 100 indicates that no tickets were submitted with missing hygiene points.
-
-```
-Hygiene Category Score = ( Number of Tickets Missing Hygiene / Total Number of Tickets in Time Frame ) * Weight
-
-Total Hygiene Score = Sum of Category Scores
-```
 
 ### Configure the Issue Hygiene Report widget
 

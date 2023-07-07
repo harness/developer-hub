@@ -220,46 +220,24 @@ Change Failure Rate represents the percentage of deployments that cause a failur
 
 To enable Change Failure Rate reporting in SEI, you must set up a [Workflow profile](../../sei-profiles/workflow-profile.md), and then add the Change Failure Rate widget to Insights.
 
-1. Go to **Settings** and select **Workflow Profiles**.
-
-<!-- image (24).png -->
-
-2. Select **Add Profile** or select an existing profile to modify.
-
-<!-- image (22).png -->
-
-3. If this is a new profile, on the **Workflow Profile Configuration** page, enter a name for the profile.
-
-<!-- image.png, image (9).png -->
-
-4.  Select **Change Failure Rate**, and select the [connector](/docs/category/connectors-and-integrations) to use. Configuration details vary by connector type. Default values are pre-populated, and you can change them, if desired. For example:
-
+1. Go to **Settings** and select **Workflow Profiles**. <!-- image (24).png -->
+2. Select **Add Profile** or select an existing profile to modify. <!-- image (22).png -->
+3. If this is a new profile, on the **Workflow Profile Configuration** page, enter a name for the profile. <!-- image.png, image (9).png -->
+4. Select **Change Failure Rate**, and select the [connector](/docs/category/connectors-and-integrations) to use. Configuration details vary by connector type. Default values are pre-populated, and you can change them, if desired. For example:
    * Select factors to use to calculate failed deployments.
    * Select factors to use to calculate total deployments.
    * Select whether the failed deployment calculation should be based on items that were *updated/ended* or *created/started* within the dashboard time range.
 
-   Here you can also select **Show absolute value** if you would rather get the absolute value than the rate (percentage).
+   Here you can also select **Show absolute value** if you would rather get the absolute value than the rate (percentage). <!-- image (6).png image (3).png image (5).png -->
 
-<!-- image (6).png image (3).png image (5).png -->
-
-5. If you want to view or change the projects and Org Units associated with the profile, select **Associations**. Projects and org units are automatically derived from the connector you chose for **Change Failure Rate**. For more information, go to [Pivot Points](/docs/category/pivot-points).
-
-<!-- image (12).png -->
-
+5. If you want to view or change the projects and Org Units associated with the profile, select **Associations**. Projects and org units are automatically derived from the connector you chose for **Change Failure Rate**. For more information, go to [Pivot Points](/docs/category/pivot-points). <!-- image (12).png -->
 6. Select **Save** to save the profile.
 7. Go to the Insight where you want to add the Change Failure Rate widget. Make sure you are in the correct project.
-8. Select **Settings**, and then select **Add Widget**.
-
-<!-- image (25).png -->
-
+8. Select **Settings**, and then select **Add Widget**. <!-- image (25).png -->
 9. Select the **Change Failure Rate** widget.
-10. Select **Next: Place Widget**, select where you want to place the widget on the Insight, and then select **Save Layout**.
+10. Select **Next: Place Widget**, select where you want to place the widget on the Insight, and then select **Save Layout**. <!-- image (15).png, image (10).png -->
 
-<!-- image (15).png, image (10).png -->
-
-The Change Failure Rate widget is now part of your Insight.
-
-<!-- image (19).png -->
+The Change Failure Rate widget is now part of your Insight. <!-- image (19).png -->
 
 ### Change Failure Rate calculation and scoring
 
