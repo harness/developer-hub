@@ -227,7 +227,15 @@ The Slot Deployment step is where you select the Web App and source deployment s
 
 Here's an example.
 
-![](static/azure-web-apps-tutorial-163.png)
+![](static/azure-web-apps-tutorial-163.png)  
+
+:::note
+
+Currently, the following functionality is behind the feature flag `CDS_AZURE_WEBAPP_NG_LISTING_APP_NAMES_AND_SLOTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+When you select a Web App in **Web App Name**, Harness will automatically update the **Deployment Slot** setting with the slots for that Web App.
+
+:::
 
 ### Web App Rollback
 
