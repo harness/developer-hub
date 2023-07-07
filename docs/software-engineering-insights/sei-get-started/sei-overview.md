@@ -4,7 +4,7 @@ description: Get introduced to SEI.
 sidebar_position: 10
 ---
 
-Harness Software Engineering Insights (SEI) analyzes data from over 40 DevOps tools to compute [DORA metrics and over 100 other insightful metrics](/docs/category/metrics-and-insights) that provide the missing insights to help you deliver software faster with better quality.
+Harness Software Engineering Insights (SEI) analyzes data from over 40 DevOps tools to compute [DORA metrics and over 100 other insightful metrics](/docs/category/metrics-and-reports) that provide the missing insights to help you deliver software faster with better quality.
 
 SEI [integrates](/docs/category/connectors-and-integrations) seamlessly with the Harness platform, works with other common CI/CD tools (such as Jenkins, CircleCI, Gitlab, and Azure), and provides popular third-party integrations (such as Azure, Jira, and GitHub). Enterprise companies with heterogeneous environments are able to fetch data from disparate DevOps tools and receive centralized visibility into their SDLC process.
 
@@ -20,10 +20,11 @@ SEI also helps your teams drive continuous improvement by leveraging best practi
 
 To start using SEI, configure the following:
 
-1. [Pivot Points](/docs/category/pivot-points)
-2. [Connectors and Integrations](/docs/category/connectors-and-integrations)
-3. [Profiles](/docs/category/profiles)
-4. [Metrics and Insights](/docs/category/metrics-and-insights)
+* [Collections](/docs/category/collections)
+* [Connectors and integrations](/docs/category/connectors-and-integrations)
+* [Profiles](/docs/category/profiles)
+* [Insights](/docs/software-engineering-insights/sei-insights.md)
+* [Metrics and reports](/docs/category/metrics-and-reports)
 
 :::tip
 

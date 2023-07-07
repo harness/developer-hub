@@ -46,14 +46,14 @@ import {
           "",
         list: [
           {
-            title: "Pivot Points",
+            title: "Collections",
             module: MODULES.sei,
             description:
-              "Pivot Points keep your data organized.",
-            link: "/docs/category/pivot-points",
+              "Collections keep your data organized.",
+            link: "/docs/category/collections",
           },
           {
-            title: "Connectors and Integrations",
+            title: "Connectors and integrations",
             module: MODULES.sei,
             description:
               "SEI uses connectors to ingest data from your SDLC tools.",
@@ -79,14 +79,14 @@ import {
             module: MODULES.sei,
             description:
               "Insights are dashboards that make it easy to visualize and interpret metrics that are captured by SEI.",
-            link: "/docs/software-engineering-insights/sei-metrics-and-insights/sei-insights",
+            link: "/docs/software-engineering-insights/sei-insights",
           },
           {
             title: "Alignment metrics",
             module: MODULES.sei,
             description:
               "Analyze your engineering team's investment efforts and alignment with business needs and strategic initiatives.",
-            link: "/docs/software-engineering-insights/sei-metrics-and-insights/alignment-metrics",
+            link: "/docs/software-engineering-insights/sei-metrics-and-reports/alignment-metrics",
           },
           {
             title: "Execution metrics",
@@ -100,21 +100,21 @@ import {
             module: MODULES.sei,
             description:
               "Plan and deliver on sprints more effectively.",
-            link: "/docs/software-engineering-insights/sei-metrics-and-insights/planning-sprint-metrics",
+            link: "/docs/software-engineering-insights/sei-metrics-and-reports/planning-sprint-metrics",
           },
           {
             title: "Security metrics",
             module: MODULES.sei,
             description:
               "Security metrics help you analyze anomalies or threats.",
-            link: "/docs/software-engineering-insights/sei-metrics-and-insights/security-metrics",
+            link: "/docs/software-engineering-insights/sei-metrics-and-reports/security-metrics",
           },
           {
             title: "Trellis Scores",
             module: MODULES.sei,
             description:
               "Trellis Scores are a proprietary scoring mechanism that helps you understand your team's productivity.",
-            link: "/docs/software-engineering-insights/sei-metrics-and-insights/trellis-score",
+            link: "/docs/software-engineering-insights/sei-metrics-and-reports/trellis-score",
           },
         ],
       },

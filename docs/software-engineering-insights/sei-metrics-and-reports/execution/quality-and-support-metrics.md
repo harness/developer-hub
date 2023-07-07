@@ -172,7 +172,7 @@ You can modify the importance of each category when you [configure the Issue Hyg
 
 ### Configure the Issue Hygiene Report widget
 
-1. Go to the [Insight](../sei-insights.md) where you want to add the widget, select **Settings**, and select **Add Widget**.
+1. Go to the [Insight](../../sei-insights.md) where you want to add the widget, select **Settings**, and select **Add Widget**.
 2. Select the **Issue Hygiene Report** widget.
 3. Configure the widget's **Filters**. Filters can be blank or filtered down to a desired ticket type or time frame.
 4. Configure the **Weights** for each hygiene category.

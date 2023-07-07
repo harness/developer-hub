@@ -6,7 +6,7 @@ sidebar_position: 20
 
 DORA (DevOps Research Assessment) identified the following key metrics that describe a software development team's performance: Deployment Frequency, Lead Time for Changes, Change Failure Rate, Time to Restore service (MTTR), and Reliability (MTBF).
 
-With SEI, you can [create DORA Insights](../sei-insights.md#create-dora-insights) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
+With SEI, you can [create DORA Insights](../../sei-insights.md#create-dora-insights) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
 
 Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/connectors-and-integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
 
@@ -16,7 +16,7 @@ Deployment Frequency represents how often an organization successfully releases 
 
 To monitor Deployment Frequency, you must create a [Workflow profile](../../sei-profiles/workflow-profile.md) and add the Deployment Frequency widget to your Insights.
 
-Workflow profiles determine the integrations to track, the events that mark deployments (such as merged PRs or CI/CD jobs), and the associated Org Units. You can modify Workflow profiles according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as SCM only or issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
+Workflow profiles determine the integrations to track, the events that mark deployments (such as merged PRs or CI/CD jobs), and the associated Collections. You can modify Workflow profiles according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as SCM only or issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
 
 To add the Deployment Frequency widget to Insights:
 
@@ -26,7 +26,7 @@ To add the Deployment Frequency widget to Insights:
 4. Configure the widget settings as desired.
 5. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 
-The widget automatically detects the relevant Workflow profile based on the Org Units associated with the Insight.
+The widget automatically detects the relevant Workflow profile based on the Collections associated with the Insight.
 
 ### Deployment Frequency calculation
 
@@ -44,7 +44,7 @@ The Deployment Frequency formula depends on whether you are tracking issue manag
   * For SCM connectors, SEI counts the number of PRs deployed.
   * For CI/CD connectors, SEI counts the number of jobs deployed.
 * Filters applied to the Workflow profile.
-* OU-level filters.
+* Collection-level filters.
 * Widget-level filters.
 * Dashboard time range.
 
@@ -230,7 +230,7 @@ To enable Change Failure Rate reporting in SEI, you must set up a [Workflow prof
 
    Here you can also select **Show absolute value** if you would rather get the absolute value than the rate (percentage). <!-- image (6).png image (3).png image (5).png -->
 
-5. If you want to view or change the projects and Org Units associated with the profile, select **Associations**. Projects and org units are automatically derived from the connector you chose for **Change Failure Rate**. For more information, go to [Pivot Points](/docs/category/pivot-points). <!-- image (12).png -->
+5. If you want to view or change the projects and Collections associated with the profile, select **Associations**. Projects and Collections are automatically derived from the connector you chose for **Change Failure Rate**. For more information, go to [Collections](/docs/category/collections). <!-- image (12).png -->
 6. Select **Save** to save the profile.
 7. Go to the Insight where you want to add the Change Failure Rate widget. Make sure you are in the correct project.
 8. Select **Settings**, and then select **Add Widget**. <!-- image (25).png -->
@@ -255,7 +255,7 @@ The Change Failure Rate is calculated by dividing the number of failed deploymen
   * For SCM connectors, SEI counts the number of PRs deployed.
   * For CI/CD connectors, SEI counts the number of jobs deployed.
 * Filters applied to the Workflow profile.
-* OU-level filters.
+* Collection-level filters.
 * Widget-level filters.
 * Dashboard time range.
 

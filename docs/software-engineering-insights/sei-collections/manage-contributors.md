@@ -4,11 +4,11 @@ description: Manage contributor attributes and associations.
 sidebar_position: 50
 ---
 
-Contributors are developers and other team members that complete actions and activities that contribute to your SEI metrics and insights. Contributors are represented by contributor records in SEI. SEI contributor records serve two primary functions: Account association and Org Unit association.
+Contributors are developers and other team members that complete actions and activities that contribute to your SEI metrics and insights. Contributors are represented by contributor records in SEI. SEI contributor records serve two primary functions: Account association and Collection association.
 
 Account associations connect related user accounts across your SDLC tools. For example, you can associate a contributor's Jira, GitHub, and Harness accounts so the data from those accounts are correlated to the same record in SEI, rather than three "instances" of a user. This makes it easier to track individual contributor activity across tools.
 
-You can use any attributes as dynamic filters for contributor-based [Org Units](./manage-org-units.md). Some attributes are included by default, such as **Name**, **Email**, and **Integration**. You can add custom attributes to further refine contributor records and create dynamic filters unique to your organization or teams.
+You can use any attributes as dynamic filters for contributor-based [Collections](./manage-collections.md). Some attributes are included by default, such as **Name**, **Email**, and **Integration**. You can add custom attributes to further refine contributor records and create dynamic filters unique to your organization or teams.
 
 :::info
 
@@ -26,7 +26,7 @@ To view and modify contributors:
 
 <!-- img .gitbook/assets/Screen Shot 2022-12-01 at 2.23.22 PM.png - Settings page with Users tile indicated -->
 
-Select the **Settings** (wrench) icon to edit contributor attributes. By default, contributors only include a **Name** and **Email**. You can use attributes as dynamic filters for contributor-based [Org Units](./manage-org-units.md). Therefore, you might find it useful to add custom attributes, such as roles, team names, departments, supervisors, or other designations.
+Select the **Settings** (wrench) icon to edit contributor attributes. By default, contributors only include a **Name** and **Email**. You can use attributes as dynamic filters for contributor-based [Collections](./manage-collections.md). Therefore, you might find it useful to add custom attributes, such as roles, team names, departments, supervisors, or other designations.
 
 To add custom attributes:
 

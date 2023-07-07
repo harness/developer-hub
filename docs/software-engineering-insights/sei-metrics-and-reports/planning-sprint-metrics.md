@@ -1,7 +1,7 @@
 ---
 title: Planning
 description: Use sprint metrics to plan and deliver on sprints more effectively.
-sidebar_position: 40
+sidebar_position: 30
 ---
 
 Planning and sprint metrics can help you plan and deliver on sprints more effectively, including backlog grooming and story hygiene. These metrics can help you address business problems like:

@@ -4,7 +4,7 @@ description: Create a Trellis profile to get a Trellis Score.
 sidebar_position: 20
 ---
 
-Trellis Scores are a proprietary scoring mechanism from SEI. Your Trellis Score helps you understand your team's productivity. [Trellis Scores](../sei-metrics-and-insights/trellis-score.md) are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. You can adjust the weight given to each factor.
+Trellis Scores are a proprietary scoring mechanism from SEI. Your Trellis Score helps you understand your team's productivity. [Trellis Scores](../sei-metrics-and-reports/trellis-score.md) are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. You can adjust the weight given to each factor.
 
 To create or edit a Trellis profile:
 
@@ -15,9 +15,9 @@ To create or edit a Trellis profile:
 
 :::info Predefined Trellis profiles
 
-Some issue management and SCM [connectors](/docs/category/connectors-and-integrations) automatically create predefined Trellis profiles. You can associate predefined profiles with [Org Units](../sei-pivot-points/manage-org-units.md).
+Some Trellis profiles are automatically created when you create a Harness project or add certain types of [connectors](/docs/category/connectors-and-integrations). You can associate predefined profiles with [Collections](../sei-collections/manage-collections.md).
 
-You can't delete predefined profiles. If you don't want to use a predefined profile, make sure it isn't associated with any Org Units.
+You can't delete predefined profiles. If you don't want to use a predefined profile, make sure it isn't associated with any Collections.
 
 <!-- image Trellis_home_add_integrations.png - Trellis Score Profiles before integrating SCM or Issue Management tools -->
 <!-- image .gitbook/assets/Trellis\_profiles\_home.png - Trellis Score Profiles page with Predefined profiles -->
@@ -30,9 +30,9 @@ Configure basic information for the Trellis profile, such as a **Name** and an o
 
 ## Associations
 
-In the **Associations** section of your Trellis profile, you can map [Org Units](../sei-pivot-points/manage-org-units.md) to the Trellis profile and configure **Advanced Options**.
+In the **Associations** section of your Trellis profile, you can map [Collections](../sei-collections/manage-collections.md) to the Trellis profile and configure **Advanced Options**.
 
-<!-- image .gitbook/assets/OU\_mapping\_profile.png - mapping org units in trellis profile -->
+<!-- image .gitbook/assets/Collection_mapping_profile.png - mapping Collections in trellis profile -->
 
 The **Advanced Options** include:
 
@@ -54,7 +54,7 @@ In the main **Factors and Weights** section, you can:
 
 In the subsections for the individual factors, you can:
 
-* Adjust the metrics that are included in each factor's calculation. For information about the metrics behind each factor, go to [Trellis Score](../sei-metrics-and-insights/trellis-score.md).
+* Adjust the metrics that are included in each factor's calculation. For information about the metrics behind each factor, go to [Trellis Score](../sei-metrics-and-reports/trellis-score.md).
 * Define target performance ranges for each metric.
 
 <!-- image .gitbook/assets/Quality\_factor\_conf (1).png - Adjusting the Quality factor in a Trellis profile -->
