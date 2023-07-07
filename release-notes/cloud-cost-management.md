@@ -32,6 +32,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   This enhancement allows you to conveniently sort budgets alphabetically in Harness CCM. You can now browse and navigate through budgets more efficiently.
 
+* Recommendations enhancement (CCM-11665)
+
+  You can now easily move recommendations from the **Applied** state back to the **Open** state. This enhancement allows you to easily rectify accidental closure of recommendations or marking Jira tickets as done by returning them to an actionable state.
+
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
@@ -46,17 +51,12 @@ This release does not include any early access features.
 ```
 ### Fixed issues
 
-* Cloud provider option was missing in **Group By**. (CCM-13126)
-
-  The issue occurred when the user selected the cloud provider rule with the `NOT_IN` operator. This issue was resolved by fixing the computation of data sources for the perspective when a cloud provider rule with the NOT_IN operator is involved. 
 
 * Nodepool recommendations displayed incorrect savings data. (CCM-12816)
 
  Implemented a check to exclude nodepools that have more than one instance family from generating recommendations. This is necessary as the current calculations for such nodepools result in incorrect recommendations. 
 
   
-
-
   
 ```mdx-code-block
   </TabItem>
