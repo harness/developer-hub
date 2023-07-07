@@ -114,7 +114,20 @@ If you're an admin, you can:
 
    If you want to examine Collections under a certain Collection category, select **View Collections** on the **Collections Categories** dropdown menu. <!-- image .gitbook/assets/Create dashboard - view Collections (1).png - Collection category details after selecting View Collections -->
 
-8. Select **Create** to save the Insight metadata. Initially, the Insight is empty. From here, you can add widgets or modify the Insight settings. <!-- image .gitbook/assets/View dashboard after creation.png - empty new dashboard -->
+8. Select **Create** to save the Insight metadata. Initially, the Insight is empty. From here, you can [add widgets](#add-widgets) or modify the Insight settings, such as [Insights associations](#manage-insights-associations). <!-- image .gitbook/assets/View dashboard after creation.png - empty new dashboard -->
+
+### Add widgets
+
+Widgets (also known as *reports*) are the parts of your Insights that contain data. Widgets can present a single statistic or they can present charts, graphs, and tables that compare or combine multiple statistics.
+
+To add widgets to Insights:
+
+1. Go to the Insight where you want to add the widget. Make sure you are in the correct project.
+2. Select **Settings**, and then select **Add Widget**.
+3. Select the widget that you want to add.
+4. Configure the widget settings. For information about configuring specific widgets go to [Metrics and reports](/docs/category/metrics-and-reports).
+5. Select **Next: Place Widget** and arrange the widget on the Insight.
+6. Select **Save Layout**.
 
 :::info Where does the data in widgets come from?
 
