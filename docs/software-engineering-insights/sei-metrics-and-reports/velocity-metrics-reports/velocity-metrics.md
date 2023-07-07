@@ -25,11 +25,9 @@ SEI offers different velocity metrics based on the tools your teams use and the 
 * **[Flow metrics](./flow-metrics.md)**
 * **[Sprint metrics](./planning-sprint-metrics.md)**
 
-## Velocity reports and widgets
-
 Add these widgets to your Insights to analyze velocity metrics.
 
-### SCM PRs Report
+## SCM PRs Report
 
 The SCM PRs Report widget shows a high level view of PRs moving through your SCM.
 
@@ -44,7 +42,7 @@ On the **Settings** tab, you can:
 * Select the maximum number of unique values to show on the X-axis.
 * Select the visualization (bar chart, pie chart, line chart, and so on).
 
-### SCM Lead Time
+## SCM Lead Time
 
 Use the **SCM PR Lead Time by Stage Report** to examine Lead Time based on PR stages.
 
@@ -75,7 +73,7 @@ To add the SCM PR Lead Time widget to Insights:
 
 6. Select where you want to place the widget on the Insight, and then select **Save Layout**.
 
-#### Calculating lead time and stages
+### Calculating lead time and stages
 
 Here are some examples of lead time and PR stage calculations.
 
@@ -270,7 +268,7 @@ To configure the Issues Report widget to show the team workload:
 
 </details>
 
-### Issue Resolution Time
+## Issue Resolution Time
 
 There are two Issue Resolution Time widgets: The **Issue Resolution Time Single Stat** and the **Issue Resolution Time Report**.
 
@@ -292,7 +290,7 @@ You can use the **Issue Resolution Time Report** and **Issue Resolution Time Sin
 
 :::
 
-#### Configure the Issue Resolution Time Report
+### Configure the Issue Resolution Time Report
 
 By default, the Issue Resolution Time Report widget is filtered by issues closed (**Last closed date**) within a selected time range. Usually, the time range is set to **Use Dashboard Time**, which allows the user to select a time range when viewing Insights.
 
@@ -308,7 +306,7 @@ On the **Settings** tab, you can:
 * Select how you want to sort X-axis data, such as ascending or descending.
 * Select the maximum number of unique values to show on the X-axis.
 
-#### Issue Resolution Time Report examples
+### Issue Resolution Time Report examples
 
 The primary way to modify the Issue Resolution Time Report widget is to change the X-axis dimension on the **Aggregations** tab. Here are some examples of other configurations for this widget.
 
@@ -357,7 +355,7 @@ This configuration produces a bar graph showing a historical record of the avera
 
 </details>
 
-### Issue Single Stat
+## Issue Single Stat
 
 The Issue Single Stat widgets provides single metrics over the given time range. This is useful for tracking events (created, resolved, etc.) happening over a period of time. For example, you can use the **Issue Resolution Time Single Stat** widget to know how many issues were *resolved* in the given time frame. Usually, the time range is set to **Use Dashboard Time**, which allows the user to select a time range when viewing Insights.
 
