@@ -73,6 +73,10 @@ This release does not include early access features.
 
 #### Continuous Delivery & GitOps
 
+- The **Get Started** button on the Harness CD start page resulted in an error, preventing Harness CD from opening. (PLG-2570)
+
+   This issue is fixed. Harness CD now starts as expected.
+
 - The feature flag, `CG_GIT_POLLING` was creating too many queries in yamlGitConfig. (CDS-45085)
   
   This issue is fixed. Git polling for Git sync now works via a different internal method where Harness polls for a feature flag change once every 30 minutes, and then continues polling on accounts for which feature flags are enabled.
