@@ -43,6 +43,10 @@ This release includes the following Harness module and component versions.
 
 #### Continuous Integration
 
+- The **Get Started** button on the Harness CD start page resulted in an error, preventing Harness CD from opening. (CDS-70665, PLG-2570)
+
+   This issue is fixed. Harness CD now starts as expected.
+
 - You can now reference [output variables produced by Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables) in pipelines that use Kubernetes cluster build infrastructures. This is an addition to previously-existing support for Harness Cloud and self-hosted Cloud provider VM build infrastructures. (CI-7491)
 
 #### Continuous Delivery & GitOps
@@ -506,9 +510,10 @@ This release does not include any early access features.
 
 #### Fixed issues
 
-SAML SSO sign-in attempts failed after upgrading from 0.6.0 to 0.7.0.  (PL-39850, SMP-1583)
+- SAML SSO sign-in attempts failed after upgrading from 0.6.0 to 0.7.0.  (PL-39850, SMP-1583)
 
-This issue is fixed. SAML SSO sign-ins no longer fail after an upgrade.
+   This issue is fixed. SAML SSO sign-ins no longer fail after an upgrade.
+
 ```mdx-code-block
   </TabItem>
 </Tabs>
