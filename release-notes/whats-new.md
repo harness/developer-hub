@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-07-06T10:00
+date: 2023-07-07T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -18,7 +18,23 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - July 06, 2023
+## Latest - July 07, 2023
+
+### Cloud Cost Management, version 80002
+
+* Azure VM recommendations (CCM-13142)
+
+  Now, the recommendations are computed based on both **Memory Utilization** data and the existing **CPU Utilization** tracking data.
+
+* Budget Sorting Enhancement (CCM-10948)
+
+  This enhancement allows you to conveniently sort budgets alphabetically in Harness CCM. You can now browse and navigate through budgets more efficiently.
+
+* Recommendations enhancement (CCM-11665)
+
+  You can now easily move recommendations from the **Applied** state back to the **Open** state. This enhancement allows you to easily rectify accidental closure of recommendations or marking Jira tickets as done by returning them to an actionable state.
+
+## July 06, 2023
 
 ### Continuous Delivery, version 79811
 
