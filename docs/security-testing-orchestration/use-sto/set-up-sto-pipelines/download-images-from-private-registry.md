@@ -48,7 +48,7 @@ COPY ./CERTIFICATE_1.pem ../another-folder/CERTIFICATE_2.pem /shared/customer_ar
 
 
 # FYI establishes trust for certificates in Python and the OS
-RUN sto_plugin --trust-certs
+RUN sto_plugin --trust-certs && sh /bin/setup.sh /usr/local/share/ca-certificates/
 
 # STEP 3 (optional)
 # Create a user and assume limited permission user
