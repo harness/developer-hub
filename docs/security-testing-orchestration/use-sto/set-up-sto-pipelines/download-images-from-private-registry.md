@@ -56,7 +56,6 @@ RUN sto_plugin --trust-certs
 # - Veracode
 # - NexusIQ
 # RUN sh /bin/setup.sh 
-RUN sto_plugin --trust-certs && sh /bin/setup.sh /usr/local/share/ca-certificates/
 
 # STEP 3 (optional)
 # Create a user and assume limited permission user
