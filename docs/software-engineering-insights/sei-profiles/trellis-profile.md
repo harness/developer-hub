@@ -28,9 +28,9 @@ You can't delete predefined profiles. If you don't want to use a predefined prof
 
 Configure basic information for the Trellis profile, such as a **Name** and an optional **Description**.
 
-## Associations
+## Association
 
-In the **Associations** section of your Trellis profile, you can map [Collections](../sei-collections/manage-collections.md) to the Trellis profile and configure **Advanced Options**.
+In the **Association** section of your Trellis profile, you can map [Collections](../sei-collections/manage-collections.md) to the Trellis profile and configure **Advanced Options**.
 
 <!-- image .gitbook/assets/Collection_mapping_profile.png - mapping Collections in trellis profile -->
 

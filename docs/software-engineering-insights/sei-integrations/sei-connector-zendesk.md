@@ -1,7 +1,7 @@
 ---
 title: SEI Zendesk connector
 description: Integrate SEI with Zendesk.
-sidebar_position: 220
+sidebar_position: 240
 sidebar_label: Zendesk
 ---
 

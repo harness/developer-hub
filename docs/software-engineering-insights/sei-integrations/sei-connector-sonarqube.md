@@ -1,7 +1,7 @@
 ---
 title: SEI SonarQube connector
 description: Integrate SEI with SonarQube or SonarCloud.
-sidebar_position: 180
+sidebar_position: 200
 sidebar_label: SonarQube
 ---
 

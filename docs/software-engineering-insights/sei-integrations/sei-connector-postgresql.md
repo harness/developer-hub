@@ -1,13 +1,19 @@
 ---
 title: SEI PostgreSQL connector
 description: Integrate SEI with PostgreSQL.
-sidebar_position: 140
+sidebar_position: 160
 sidebar_label: PostgreSQL
 ---
 
 PostgreSQL is a free and open-source relational database management system emphasizing extensibility and SQL compliance.
 
 Use the SEI PostgreSQL connector to integrate SEI with a Cloud-based PostgreSQL instance.
+
+:::info
+
+This connector is under development. It provides limited integration support in its current state.
+
+:::
 
 To integrate with an on-premises PostgreSQL instance, you must use the [generic SEI connector](./sei-connector-generic.md).
 

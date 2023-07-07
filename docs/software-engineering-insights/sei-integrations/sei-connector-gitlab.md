@@ -1,15 +1,15 @@
 ---
 title: SEI GitLab connector
 description: Integrate SEI with GitLab.
-sidebar_position: 80
+sidebar_position: 100
 sidebar_label: GitLab
 ---
 
 GitLab is a DevOps platform that provides Git repos, CI/CD pipelines, issue management, and more.
 
-Use the SEI GitLab connector to integrate SEI with GitLab.com.
+Use the SEI GitLab connector to integrate SEI with Cloud-based GitLab instances.
 
-To integrate with the on-premises, privately-hosted GitLab, you must use the [generic SEI connector](./sei-connector-generic.md) with API key (personal access token) authentication.
+To integrate with an on-premises, privately-hosted GitLab instance, you must use the [generic SEI connector](./sei-connector-generic.md) with API key (personal access token) authentication.
 
 ## Configure authentication
 
@@ -27,11 +27,12 @@ If you can't use OAuth, you must create a GitLab personal access token to config
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Connectors** under **Data Settings**.
-3. Select **Available Connectors**, locate the **GitLab** or **GitLab Cloud** connector, and select **Install**.
-4. Select an authentication method for the connector:
+3. Select **Available Connectors**, locate the **GitLab Enterprise** or **GitLab Cloud** connector, depending on your GitLab configuration.
+4. Select **Install**.
+5. Select an authentication method for the connector:
 
    * To use OAuth, select **Authorize** and follow the prompts to grant access to GitLab.
    * To use a personal access token, enter the **URL** for your GitLab instance and paste your **Access Token**.
 
-5. In **Integration Name**, enter a name for the connector.
-6. Finish configuration and save the connector.
+6. In **Integration Name**, enter a name for the connector.
+7. Finish configuration and save the connector.

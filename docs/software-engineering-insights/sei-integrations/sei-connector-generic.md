@@ -1,7 +1,7 @@
 ---
 title: Generic SEI connector
 description: Use the generic SEI connector when you can't use an application-specific connector.
-sidebar_position: 230
+sidebar_position: 250
 sidebar_label: Other integrations
 ---
 

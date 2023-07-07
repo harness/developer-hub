@@ -16,7 +16,9 @@ To integrate a tool with SEI, you can use either an application-specific connect
 
 * [Azure DevOps Services](./sei-connector-azure-devops.md)
 * [Bitbucket](./sei-connector-bitbucket.md)
+* [Checkmarx SAST](./sei-connector-checkmarx.md)
 * [Circle CI](./sei-connector-circleci.md)
+* [Coverity](./sei-connector-coverity.md)
 * [Drone CI](./sei-connector-droneci.md)
 * [Gerrit](./sei-connector-gerrit.md)
 * [GitHub](./sei-connector-github.md)

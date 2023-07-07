@@ -1,7 +1,7 @@
 ---
 title: SEI Helix connector
 description: Integrate SEI with Helix.
-sidebar_position: 100
+sidebar_position: 120
 sidebar_label: Helix Core
 ---
 

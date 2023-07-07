@@ -1,7 +1,7 @@
 ---
 title: SEI Gerrit connector
 description: Integrate SEI with Gerrit.
-sidebar_position: 60
+sidebar_position: 80
 sidebar_label: Gerrit
 ---
 

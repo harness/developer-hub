@@ -32,14 +32,14 @@ Workflow profile settings include:
 
 * **Name:** Enter a name for the profile.
 * **Description:** Optional profile description.
-* **Issue Management System:** If applicable, select the issue management system to associated with this profile.
 * **Lead Time for Changes**, **Deployment Frequency**, **Mean Time to Restore**, and **Change Failure Rate**: Modify these settings to refine your [DORA metrics](../sei-metrics-and-reports/execution/dora-metrics.md) calculations.
   * **Stages:** You can change the start event that initiates the first stage, and you can add, edit, and remove stages. When editing stages, you can change fields or data that drive stage changes, define ideal and acceptable time ranges, and more. This refines how you track KPIs.
-* **Associations:** Modify the Collections associated with this profile.
+  * **Issue Management System:** If applicable, select the issue management system to associated with this profile.
+* **Association:** Modify the Collections associated with this profile.
 
 ## Configuration examples
 
-The following examples describe popular or useful Workflow profile configurations.
+The following examples describe Workflow profile configurations to track Lead Time.
 
 ### Track Lead Time in SCM
 
@@ -49,7 +49,7 @@ Use this profile configuration to track Lead Time across the Pull Request lifecy
 2. Select **Workflow** under **Profiles**.
 3. Select **New Workflow Profile**.
 4. Under **Profile Info**, enter a **Name** and optional **Description**.
-5. Under **Definitions** or **Lead Time for Changes**, select **Stages**, and set the **Start Event** to **Commit Created**.
+5. Under **Lead Time for Changes**, select **Stages**, and set the **Start Event** to **Commit Created**.
 6. Review the prepopulated **Stages** that represent the PR lifecycle, from PR creation to merge. You can edit, add, and remove stages as needed. You can edit the data or fields that drive each stage, set time range goals, and more.
 
 <!-- image of "Create Workflow Profile" with "Commit Created" and 4 default stages. -->
@@ -66,7 +66,7 @@ If you want to include CI/CD builds and deployments in your lead time calculatio
 2. Select **Workflow** under **Profiles**.
 3. Select **New Workflow Profile**.
 4. Under **Profile Info**, enter a **Name** and optional **Description**, and then select the **Issue Management System** to associate with this profile.
-5. Under **Definitions** or **Lead Time for Changes**, select **Stages**, and set the **Start Event** to **Ticket Created**.
+5. Under **Lead Time for Changes**, select **Stages**, and set the **Start Event** to **Ticket Created**.
 6. Review the prepopulated **Development Stages** and edit them, if necessary. These stages represent the progression of code in your SCM tool, from first commit to PR merge.
 
 <!-- image of "Create Workflow Profile" with default Deployment Stages -->
@@ -87,7 +87,7 @@ Use this profile configuration to use an API event to initiate Lead Time trackin
 2. Select **Workflow** under **Profiles**.
 3. Select **New Workflow Profile**.
 4. Under **Profile Info**, enter a **Name** and optional **Description**.
-5. Under **Definitions** or **Lead Time for Changes**, select **Stages**, and set the **Start Event** to **API Event**.
+5. Under **Lead Time for Changes**, select **Stages**, and set the **Start Event** to **API Event**.
 6. Use the following REST API request to push custom API events to SEI:
 
 ```

@@ -1,7 +1,7 @@
 ---
 title: SEI GitHub connector
 description: Integrate SEI with GitHub.
-sidebar_position: 70
+sidebar_position: 90
 sidebar_label: GitHub
 ---
 
@@ -45,15 +45,16 @@ If you can't use OAuth, you must create a GitHub personal access token to config
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Connectors** under **Data Settings**.
-3. Select **Available Connectors**, locate the **GitHub** or **GitHub Cloud** connector, and select **Install**.
-4. Select an authentication method for the connector:
+3. Select **Available Connectors**, locate the **GitHub Enterprise** or **GitHub Cloud** connector, depending on your GitHub configuration.
+4. Select **Install**.
+5. Select an authentication method for the connector:
 
    * To use OAuth, select **Authorize** and follow the prompts to grant access to GitHub.
    * To use a personal access token, paste the token in **Enter the Access Token**.
 
-5. In **Integration Name**, enter a name for the connector.
-6. Select repositories to associate with the connector or select **Ingest All Repos** to associate all current and future repos in your GitHub organization.
-7. If applicable, configure **Additional Options**:
+6. In **Integration Name**, enter a name for the connector.
+7. Select repositories to associate with the connector or select **Ingest All Repos** to associate all current and future repos in your GitHub organization.
+8. If applicable, configure **Additional Options**:
 
    * **Fetch PRs:** Allow SEI to ingest PR data from GitHub.
    * **Fetch Issues:** Allow SEI to ingest data from GitHub Issues.
@@ -62,7 +63,7 @@ If you can't use OAuth, you must create a GitHub personal access token to config
    * **Fetch Commit Files:** Allow SEI to ingest data within commits from GitHub.
    * **Connect via GitHub webhook:** Select this option if you want GitHub to *push data to SEI* through a webhook, rather than SEI *pulling data from GitHub*. This is an advanced configuration and only recommended if you are confident about using this configuration.
 
-8. Finish configuration and save the connector.
+9. Finish configuration and save the connector.
 
 :::info Issue Cycle Time webhook
 

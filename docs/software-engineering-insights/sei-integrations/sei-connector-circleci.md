@@ -1,7 +1,7 @@
 ---
 title: SEI CircleCI connector
 description: Integrate SEI with CircleCI.
-sidebar_position: 40
+sidebar_position: 50
 sidebar_label: CircleCI
 ---
 

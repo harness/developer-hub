@@ -1,7 +1,7 @@
 ---
 title: SEI Salesforce connector
 description: Integrate SEI with Salesforce.
-sidebar_position: 150
+sidebar_position: 170
 sidebar_label: Salesforce
 ---
 

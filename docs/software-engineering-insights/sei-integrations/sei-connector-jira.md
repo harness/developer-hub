@@ -1,7 +1,7 @@
 ---
 title: SEI Jira connector
 description: Integrate SEI with Jira.
-sidebar_position: 110
+sidebar_position: 130
 sidebar_label: Jira
 ---
 

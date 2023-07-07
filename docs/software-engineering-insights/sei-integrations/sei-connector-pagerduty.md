@@ -1,7 +1,7 @@
 ---
 title: SEI PagerDuty connector
 description: Integrate SEI with PagerDuty.
-sidebar_position: 130
+sidebar_position: 150
 sidebar_label: PagerDuty
 ---
 

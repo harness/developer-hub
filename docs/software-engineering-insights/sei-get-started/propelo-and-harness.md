@@ -14,7 +14,7 @@ If you're new to Harness, go to [Get started with Harness](/docs/getting-started
 
 ## Authentication, access, and user management
 
-Authentication, access, and user management are part of the Harness Platform. Permissions granted to users and user groups depends on their associations with resources and resource groups, which are controlled at the Account and Project level in Harness. For more information about authentication, access, and user management, go to the following:
+Authentication, access, and user management are part of the Harness Platform. Permissions granted to users and user groups depends on their associations with resources and resource groups, which are controlled at the account and project level in Harness. For more information about authentication, access, and user management, go to the following:
 
 * [Harness Platform authentication (including 2FA and SSO)](/docs/category/authentication)
 * [Harness Platform user management (including users, groups, and SCIM)](/docs/category/users)

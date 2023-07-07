@@ -1,7 +1,7 @@
 ---
 title: SEI TestRail connector
 description: Integrate SEI with TestRail.
-sidebar_position: 210
+sidebar_position: 230
 sidebar_label: TestRail
 ---
 

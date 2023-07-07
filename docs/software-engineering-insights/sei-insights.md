@@ -12,37 +12,23 @@ This topic explains how to create and view Insights. For information about confi
 
 ## View Insights
 
-There are several navigation options for accessing Insights.
-
-:::info
-
-* Attempting to access an unrecognized Insight link redirects you to the SEI module home page where you'll have to select a Collection to proceed to the desired Insight.
-* If you're already in a project, going to the SEI module home page automatically presents the Collection category selection page.
-* Selecting the **Insights** icon on the navigation menu navigates you to the project's default Insight or the first available Insight in the first Collection category in the current project.
-* To enable continuity of though processes and actions, on subsequent logins, you're automatically redirected to the Insight you had accessed before logging off.
-
-:::
+The primary way to access Insights is through the **Project** tab.
 
 1. Log in to the Harness Platform and go to the SEI module.
-2. If your organization has multiple projects, select a project.
-
-    If you're already in a project, make sure you're in the correct project for the Collection and Insight that you want to view. You can use the **Project** dropdown menu to switch projects.
-
-<!-- image .gitbook/assets/Workspace selection page- banner updated.png - Propelo home page -->
-
-3. Select the relevant Collection category within the project.
-
-   Admins can access Collection category management options from this page.
-
-<!-- image .gitbook/assets/Collection category selection page.png - Collection category selection page -->
-
-4. Select a Collection. The Insights available for each Collection depend on the [Insight associations](#manage-insights-associations).
+2. Select the **Project** tab on the navigation menu, and select a **Project**.
+3. Select a **Collection**.
 
 <!-- image .gitbook/assets/Collection and Dashboard selection page.pn - Collection and dashboard selection page -->
 
-5. Select an Insight to view it.
+4. Select **Insights**. The Collection's default Insight appears.
+
+   Select **All Dashboards** to view other Insights. The Insights available for each Collection depend on the [Insight associations](#manage-insights-associations). The **Default** label indicates the Collection's default Insight.
+
+   To switch projects or Collections, use the **Project** and **Collection** options on the navigation menu. You can also use the breadcrumbs in the Insights header to navigate up through the [Collection hierarchy](./sei-collections/collections-overview.md).
 
 <!-- image .gitbook/assets/Dashboard view.png - example of viewing a dashboard -->
+
+<!-- If integration monitoring is enabled, you can view the integration status in the Insights header? -->
 
 ### Explore data
 
@@ -66,43 +52,18 @@ If a widget or report uses a specific time range, changing the Insight time has 
 
 Some widgets allow you to drill down into data. For example, you can select a segment of a bar on a bar chart to examine the data for that segment.
 
-### Navigate from the Insights header
+### Access Insights from the Insights list
 
-When viewing Insights, you can use the breadcrumbs, menus, and links in the header to switch Insights and Collections.
-
-<!-- image - .gitbook/assets/Dashboard header 1.png - Dashboard header with indicators for the Collection breadcrumb and the all dashboards dropdown. -->
-
-The header includes direct links to some Insights, as well as an **All Insights** dropdown menu. The **Default** label indicates the Collection's default Insight.
-
-<!-- image .gitbook/assets/Dashboard header 3.png - Dashboard header with All Dashboards menu expanded and the MAnage Dashboards button available -->
-
-:::tip
-
-If integration monitoring is enabled, you can view the integration status in the Insights header.
-
-:::
-
-#### Admin functions in the Insights header
-
-If you're an admin, you can:
-
-* Access **Manage Teams** options from the Collection dropdown menu.
-* Access **Manage Insights** options from the **All Insights** dropdown menu.
-
-<!-- image .gitbook/assets/Dashboard header 2.png - Dashboard header with breadcrumb dropdown menu expanded and the Manage Teams button available -->
-
-#### Access Insights from the Insights list
-
-1. While viewing Insights, select **All Insights** in the header, and then select **Manage Insights** to go to the **Insights** list page. <!-- image .gitbook/assets/Dashboard - manage dashboard option.png - Dashboard header with All Dashboards menu expanded and the MAnage Dashboards button available -->
-2. Select the Insight you want to view from the **Insights** list. <!-- image .gitbook/assets/Dashboard List page.png - Dashboard list page -->
+1. While viewing an Insight, select **All Insights** in the header, and then select **Manage Insights** to go to the **Insights** list.
+2. Select the Insight you want to view from the **Insights** list.
 3. Select a Collection category.
 4. Select a Collection. Upon selecting a Collection, the Insight you selected from the **Insights** list opens.
 
 ## Create Insights
 
 1. Go to any Insight. For instructions, go to [View Insights](#view-insights).
-2. In the header, select **All Insights**, and then select **Manage Insights**. <!-- image .gitbook/assets/Dashboard - manage dashboard option (1).png - Dashboard header with all dashboards expanded and the manage dashboards button available. -->
-3. Select **New Insight**. <!-- image .gitbook/assets/Dashboard List page.png - Dashboards list page with New Dashboard button available. -->
+2. In the header, select **All Insights**, and then select **Manage Insights**.
+3. Select **New Insight**.
 4. Enter a **Name** for the Insight.
 5. If you want to make this Insight private, make sure **Allow everyone in my organization to view the Insight** is *not* selected.
 6. Under **Parameters**, you can modify the following settings:
@@ -110,13 +71,13 @@ If you're an admin, you can:
    * **Dashboard Time Range:** You can enable dashboard time. _Dashboard time_ is the time range selected by the user when viewing an Insight.
    * **Effort Investment Profile** and **Effort Investment Units** are used for [Business Alignment Insights](#create-business-alignment-insights) and [DORA Insights](#create-dora-insights).
 
-7. Select at least one Collection category to associate with this Insight. <!-- image .gitbook/assets/Create dashboard - hover option.png - Create Dashboard dialog -->
+7. Select at least one Collection category to associate with this Insight.
 
    All [Collections](./sei-collections/manage-collections.md) and child Collections under the selected category are automatically associated with the Insight. You can refine the [Insight associations](#manage-insights-associations) after initial Insight creation.
 
-   If you want to examine Collections under a certain Collection category, select **View Collections** on the **Collections Categories** dropdown menu. <!-- image .gitbook/assets/Create dashboard - view Collections (1).png - Collection category details after selecting View Collections -->
+   If you want to examine Collections under a certain Collection category, select **View Collections** on the **Collections Categories** dropdown menu.
 
-8. Select **Create** to save the Insight metadata. Initially, the Insight is empty. From here, you can [add widgets](#add-widgets) or modify the Insight settings, such as [Insights associations](#manage-insights-associations). <!-- image .gitbook/assets/View dashboard after creation.png - empty new dashboard -->
+8. Select **Create** to save the Insight metadata. From here, you can [add widgets](#add-widgets) or modify the Insight settings, such as [Insights associations](#manage-insights-associations).
 
 ### Add widgets
 
@@ -173,8 +134,27 @@ To create DORA Insights:
 
 ## Change the color scheme
 
-You can change the color scheme for all Insights.
+You can change the colors for values on bar charts and pie charts. The color scheme applies to all Insights.
 
 1. In your Harness project, go to the SEI module.
 2. Select **Account**.
 3. Select **Customize**.
+4. Select the desired color for the highest and lowest values on bar charts and pie charts.
+5. Select **Add Label** to configure colors for other values.
+6. Select **Save**.
+
+## Share Insights
+
+Authentication, access, and user management are part of the Harness Platform. Permissions granted to users and user groups depends on their associations with resources and resource groups, which are controlled at the account and project level in Harness.
+
+Harness SEI has three built-in user roles:
+
+* SEI Admin
+* SEI Team Admin
+* SEI Viewer
+
+For more information about authentication, access, and user management, go to the following:
+
+* [Harness Platform authentication (including 2FA and SSO)](/docs/category/authentication)
+* [Harness Platform user management (including users, groups, and SCIM)](/docs/category/users)
+* [Harness RBAC overview](/docs/platform/Role-Based-Access-Control/rbac-in-harness)

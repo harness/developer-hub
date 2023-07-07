@@ -1,7 +1,7 @@
 ---
 title: SEI Drone CI connector
 description: Integrate SEI with Drone CI.
-sidebar_position: 50
+sidebar_position: 70
 sidebar_label: Drone
 ---
 

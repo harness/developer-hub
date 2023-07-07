@@ -1,7 +1,7 @@
 ---
 title: SEI Microsoft Teams connector
 description: Integrate SEI with Microsoft Teams.
-sidebar_position: 120
+sidebar_position: 140
 sidebar_label: Microsoft Teams
 ---
 

@@ -1,13 +1,19 @@
 ---
 title: SEI Splunk connector
 description: Integrate SEI with Splunk.
-sidebar_position: 190
+sidebar_position: 210
 sidebar_label: Splunk
 ---
 
 Splunk produces software for searching, monitoring, and analyzing machine-generated big data via a web-style interface.
 
 Use the SEI Splunk connector to integrate SEI with Splunk.
+
+:::info
+
+This connector is under development. It provides limited integration support in its current state.
+
+:::
 
 ## Configure the connector
 

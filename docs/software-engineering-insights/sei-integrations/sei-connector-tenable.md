@@ -1,7 +1,7 @@
 ---
 title: SEI Tenable connector
 description: Integrate SEI with Tenable.
-sidebar_position: 200
+sidebar_position: 220
 sidebar_label: Tenable
 ---
 

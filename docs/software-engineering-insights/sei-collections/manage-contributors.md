@@ -69,4 +69,4 @@ To modify contributors, you must export a CSV file, edit it, and then import the
 
 ### Manually add contributors
 
-SEI automatically detects user identities in your [integrations](../sei-integrations/sei-integrations-overview.md). If you need to manually add a contributor, follow the step above to [Modify contributors](#modify-contributors-export-and-import), and add a row for each new contributor. At minimum, you must provide a name and email for the contributor to be valid.
+SEI automatically detects user identities in your [integrations](../sei-integrations/sei-integrations-overview.md). If you need to manually add a contributor, follow the steps to [Modify contributors](#modify-contributors-export-and-import), and add a row for each new contributor. At minimum, you must provide a name and email for the contributor to be valid.

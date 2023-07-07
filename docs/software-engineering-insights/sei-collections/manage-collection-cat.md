@@ -18,15 +18,15 @@ For more information about the relationship between projects, Collection categor
 
 ## View, edit, and enable/disable Collection categories
 
-1. In your Harness project, go to the SEI module, select **Account**, and then select **Collection Setup** under **Data Settings**. <!-- image: Where to find Collection category settings -->
+1. In your Harness project, go to the SEI module, select **Account**, and then select **Collection Setup** under **Data Settings**.
 
-   Collection categories are shown as tabs on the **Collection Setup** page. This page shows only Collection categories and Collections relevant to the current project. Switch projects to view Collection categories and Collections for other projects. <!-- image: Collections list page -->
+   Collection categories are shown as tabs on the **Collection Setup** page. This page shows only Collection categories and Collections relevant to the current project. Switch projects to view Collection categories and Collections for other projects.
 
 2. Select the tab for the Collection category that you want to edit, and then select the **Settings** icon next to the Collection category name.
 3. On the **Edit Collection Category** dialog, you can:
 
    * Edit the **Name** and **Description**.
-   * Enable or disable the Collection category. Disabled categories are not visible on landing pages, Insights, or elsewhere in SEI, except on the Collection Settings page for SEI Admin users. <!-- image: Edit Collection Category page -->
+   * Enable or disable the Collection category. Disabled categories are not visible on landing pages, Insights, or elsewhere in SEI, except on the Collection Settings page for SEI Admin users.
 
 ## Add Collection categories
 
@@ -36,9 +36,9 @@ Adding custom Collection categories is considered an advanced feature. It is rec
 
 :::
 
-1. In your Harness project, go to the SEI module, select **Account**, and then select **Collection Setup** under **Data Settings**. <!-- image: Where to find Collection category settings -->
+1. In your Harness project, go to the SEI module, select **Account**, and then select **Collection Setup** under **Data Settings**.
 
-   Collection categories are shown as tabs on the **Collection Setup** page. This page shows only Collection categories and Collections relevant to the current project. Make sure you are in the correct project before creating a Collection category. <!-- image: Collections list page -->
+   Collection categories are shown as tabs on the **Collection Setup** page. This page shows only Collection categories and Collections relevant to the current project. Make sure you are in the correct project before creating a Collection category.
 
 2. Select **Add Custom**.
 3. Enter a **Name** and **Description**.
@@ -49,8 +49,4 @@ Adding custom Collection categories is considered an advanced feature. It is rec
 
 6. Select **Save**.
 
-<!-- image: Add Collection category dialog -->
-
 The new Collection category is added as a tab on the **Collection Setup** page. From here, [add Collections](./manage-collections.md) to your new Collection category.
-
-<!-- image: Collections list with new category tab -->

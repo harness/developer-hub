@@ -16,7 +16,7 @@ To create or edit Investment profiles:
 ## Basic Info
 
 * **Name and Description:** Name and describe your Investment profile.
-* **Current Priorities:** Select one or more options that correspond with the team's *current* work. Options include: <!-- image (27).png - investment profile - current priorities selections -->
+* **Current Priorities:** Select one or more options that correspond with the team's *current* work. Options include:
   * **Issue is in an active sprint:** When computing resource allocation, include issues, in any status, that are in ongoing sprints.
   * **Issue is in In-Progress state:** When computing resource allocation, include in-progress issues.
   * **Issue is assigned:** When computing resource allocation, include issues, in any status, that are assigned to a team member.
