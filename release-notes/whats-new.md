@@ -52,6 +52,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - You can now view delegate logs when validating a connector that uses delegates to establish connections. (PL-37919)
 - When creating Azure Key Vault, you can now manually enter the vault name. (PL-32773, ZD-44045)
 
+## July 5, 2023 
+
+### Security Testing Orchestration, version 1.60.0
+
+You can now set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
+
+For information on how to set up this workflow, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+
 ## June 30, 2023
 
 ### Cloud Cost Management

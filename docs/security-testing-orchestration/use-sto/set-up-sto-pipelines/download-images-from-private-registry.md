@@ -10,10 +10,10 @@ This topic describes how to override the default behavior and use a private regi
 
 ### Create STO scanner images with your own SSL certificates (_optional_)
 
-This workflow describes how to create Docker images with your own SSL certificates. This is useful when you want your pipelines to run your STO scans as a non-root user. 
+You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
 
 :::note
-This workflow is not supported for container image scans.
+Running container image scans as a non-root user is not currently supported.
 :::
 
 1. Save a copy of the following Dockerfile into a folder along with the certificates you want to copy to the image.
