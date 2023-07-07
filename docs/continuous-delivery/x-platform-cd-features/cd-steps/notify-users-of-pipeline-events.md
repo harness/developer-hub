@@ -189,16 +189,19 @@ You can reference a secret within the Account scope using an expression with `ac
 
 ## Webhook Notifications
 
-Use Webhook notifications when you need to inform an external application of the event. 
+Use Webhook notifications to inform an external application of an event. 
 
-TBD: screenshot of the configuration
+Select the Webhook notification method, and then enter the URL to be called when the event occurs. 
 
-Enter the URL that you would like to be called when the event occurs. You can use expressions to compose this URL, such as 
-```https://comopanyurl.notify.com/execution=-<+pipeline.executionId>
-```
-Note that the expression needs to be evaluated in the context of the event. For example, stage related expressions may not be valid in the case of the Pipeline Start event. 
+You can also use expressions to compose this URL. For example, `https://companyurl.notify.com/execution=-<+pipeline.executionId>'.
 
-The Webhook call will be made as a POST request, and include a JSON object containing the properties of the triggered event.
+:::note 
+
+The expression needs to be evaluated in the context of the event. For example, stage related expressions may not be valid for pipeline start events. 
+
+:::
+
+The webhook call is made as a POST request, and includes a JSON object containing the properties of the triggered event.
 
 ## Notify Slack channels in user groups
 
