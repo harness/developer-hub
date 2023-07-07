@@ -22,9 +22,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   <TabItem value="What's new">
 ```
 
-* Introduced a configuration for changing the mechanism for storing access keys and tokens in configmaps instead of secrets on the execution plane. 
+* Introduced a configuration for changing the mechanism for storing access keys and tokens in Config Maps instead of secrets on the execution plane. 
 
-    When configuring chaos infrastructure, users can now select to store access keys and tokens in configmaps (instead of secrets) on their cluster for connections, authentication, and experiment executions.
+    When configuring chaos infrastructure, users can now select to store access keys and tokens in Config Maps (instead of secrets) on their cluster for connections, authentication, and experiment executions.
 
 ```mdx-code-block
   </TabItem>
