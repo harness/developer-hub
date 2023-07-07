@@ -11,7 +11,7 @@ The Issue Hygiene Report widget shows your overall hygiene score and individual 
 
 <figure>
 
-![](../static/issue-hygiene-report-widget.png)
+![](./static/issue-hygiene-report-widget.png)
 
 <figcaption>Figure 2: The Issue Hygiene Report widget. The hygiene score can help you understand how well your tickets are organized in your issue management system.</figcaption>
 </figure>
