@@ -1,0 +1,15 @@
+{
+    "label":"Get started with IaCM",
+    "position": 10,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Get started with IaCM"
+    },
+    "customProps":{
+       
+       "helpdocs_category_id":""
+    }
+ }

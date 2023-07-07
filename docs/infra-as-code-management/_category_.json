@@ -1,10 +1,10 @@
 {
-    "label":"Infrastructure as Code Management Beta",
+    "label":"Infrastructure as Code Management",
     "collapsible":"true",
     "collapsed":"true",
     "link":{
        "type":"generated-index",
-       "title":"Infrastructure as Code Management Beta"
+       "title":"Infrastructure as Code Management"
     },
     "customProps":{
     }
