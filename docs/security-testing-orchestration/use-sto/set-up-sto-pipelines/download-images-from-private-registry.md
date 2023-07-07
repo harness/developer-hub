@@ -20,12 +20,12 @@ This workflow is not supported for container image scans.
 
 2. Update the `FROM`, `COPY`, and `USER` commands as described in the Dockerfile comments.
 
-3. Build the new image and then upload it to your private registry.
+3. Build the new image and then publish it to your private registry.
 
 4. Update the scan step in your pipeline as follows:
 
    1. Update the **Image** setting to point to the new image in your registry.
-   2. If you specified a `USER`in your Dockerfile, set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
+   2. If you specified a `USER` in your Dockerfile, set the **Run as User** (`runAsUser`) setting to the user you specified in your Dockerfile.
 
 <!-- Need to finalize where to copy the certs.../shared/customer_artifacts/certificates/ is the STO default -->
 
