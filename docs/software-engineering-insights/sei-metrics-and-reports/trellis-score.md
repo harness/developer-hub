@@ -6,28 +6,6 @@ sidebar_position: 70
 
 Trellis Scores are a proprietary scoring mechanism from SEI. Your Trellis Score helps you understand your team's productivity. Trellis Scores are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. You can adjust the weight given to each factor.
 
-## Modify factors and weights
-
-A [Trellis profile](../sei-profiles/trellis-profile.md) is required to calculate your Trellis Score and to modify the factors and weights that contribute to your score.
-
-In the **Factors and Weights** section of your Trellis profile, you can enable and disable individual factors to include or exclude them from your Trellis Score calculation.
-
-<!-- image: factors and weights section of trellis profile -->
-
-Factors include:
-
-<!-- no toc -->
-- [Quality](#quality)
-- [Impact](#impact)
-- [Volume](#volume)
-- [Speed](#speed)
-- [Proficiency](#proficiency)
-- [Leadership and Collaboration](#leadership-and-collaboration)
-
-You can also adjust the weight of each factor. Assign a low weight (1-5) to make less important factors have a lower impact on your score. Assign a higher weight (5-10) to make more important factors have a higher impact on your score.
-
-Weights are relative. For example, if all factors are weighted 5, then all factors are still equal.
-
 ## Quality
 
 Quality is defined by two metrics: Percentage of rework and percentage of legacy rework.
@@ -93,33 +71,22 @@ Leadership and collaboration measures developer teamwork and contribution to pee
 * **Average Response Time for PR approvals:** This is the average time taken to approve another developer's PR. The industry standard for an PR approval time is between 0.75 and 2 days.
 * **Average Response Time for PR comments:** This is the average time taken for a developer to add review comments on a PR. The industry standard for a responding to a PR comment is between 0.75 and 1.5 days.
 
-## Individual Raw Stats widget
+## Modify factors and weights
 
-The Individual Raw Stats widget shows a table of base values that contribute to Trellis scores. By default, the widget shows the following raw, pre-calculation values for each developer:
+A [Trellis profile](../sei-profiles/trellis-profile.md) is required to calculate your Trellis Score and to modify the factors and weights that contribute to your score.
 
-* PRs
-* Commits
-* Coding days
-* Average PR cycle time (in days)
-* Average issue resolution time (in days)
-* PRs commented on
-* PRs approved
-* Percentage of rework
+In the **Factors and Weights** section of your Trellis profile, you can enable and disable individual [factors] to include or exclude them from your Trellis Score calculation.
 
-You can edit the widget to show different values (add/remove columns) or apply filtering.
+<!-- image: factors and weights section of trellis profile -->
 
-<figure>
+You can also adjust the weight of each factor. Assign a low weight (1-5) to make less important factors have a lower impact on your score. Assign a higher weight (5-10) to make more important factors have a higher impact on your score.
 
-![](./static/trellis-score-raw-stats.png)
+Weights are relative. For example, if all factors are weighted 5, then all factors are still equal.
 
-<figcaption>Figure 1: The Individual Raw Stats widget.</figcaption>
-</figure>
+## Trellis Score widgets and reports
 
-You can also use the **Download** icon to download the raw stats report.
+Add these widgets to your Insights to analyze Trellis Scores.
 
-<figure>
-
-![](./static/trellis-score-raw-stats-download.png)
-
-<figcaption>Figure 2: The icon to download the Individual Raw Stats report.</figcaption>
-</figure>
+* Trellis Score Report
+* Trellis Scores by Collection
+* [Individual Raw Stats](./other-metrics-reports.md#individual-raw-stats): A table of base values that contribute to Trellis Scores

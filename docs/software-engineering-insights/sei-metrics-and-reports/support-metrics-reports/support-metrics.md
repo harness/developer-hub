@@ -10,7 +10,7 @@ This topic describes quality and support metrics, as well as configuration optio
 
 Use the Issues Report to examine metrics related to various tickets/work items (epics, stories, bugs, tasks, and so on) in your issue management system. The report aggregates data based on selected attributes, such as priority, status, labels, components, or any other field. This report helps you create comparisons based on various fields and draw conclusions to make decisions.
 
-### Configure the Issues Report widget
+### Configure the Issues Report
 
 The following options are available when configuring the Issue Report widget.
 
@@ -118,124 +118,11 @@ To configure the Issues Report widget to show the team workload:
 
 </details>
 
-## Issue Bounce Report
-
-_Bounce_ describes tickets that are reassigned to a previous assignee. The Issue Bounce Report shows the number of times a ticket "bounced" between assignees. Bounce can occur if an issue isn't triaged correctly initially, or if the issue doesn't have enough information to be assigned correctly. Excessive bounce can potentially cause missed SLAs and unnecessary resource utilization.
-
-The Issue Bounce Report widget is usually configured to observe the median number of bounces by component, project, or initiative. This widget can highlight issues that are being bounced around to different resources.
-
-Instances of reassignment to new assignees are captured by the [Issue Hops Report](#issue-hops-report).
-
-## Issue Hops Report
-
-_Hops_ describes the number of times a ticket is reassigned to a new assignee (someone who has never been assigned to that issue before). The Issue Hops Report shows the number of times a ticket "hopped" to new assignees. Hops can occur if an issue isn't triaged correctly initially, or if the issue doesn't have enough information to be assigned correctly. Excessive hops can potentially cause missed SLAs and unnecessary resource utilization.
-
-The Issue Hops Report widget is usually configured to observe the median number of hops by component, project, or initiative. This widget can highlight issues that are reassigned multiple times.
-
-Instances of reassignment to a previous assignee are captured by the [Issue Bounce Report](#issue-bounce-report).
-
-## Issue Hygiene Report
-
-The Issue Hygiene Report widget shows your overall hygiene score and individual scores for each [hygiene category](#hygiene-categories). Scores represent _hygiene misses_ in the designated time frame. A hygiene miss means that a ticket in your issue management system was missing an important field, failed to change status in a timely manner, or was assigned to an inactive user.
-
-<figure>
-
-![](../static/issue-hygiene-report-widget.png)
-
-<figcaption>Figure 2: The Issue Hygiene Report widget. The hygiene score can help you understand how well your tickets are organized in your issue management system.</figcaption>
-</figure>
-
-Each hygiene miss is tallied against a score of 100. A score of 100 indicates that no tickets were submitted with missing hygiene points.
-
-```
-Hygiene Category Score = ( Number of Tickets Missing Hygiene / Total Number of Tickets in Time Frame ) * Weight
-
-Total Hygiene Score = Sum of Category Scores
-```
-
-### Hygiene categories
-
-Hygiene misses are based on hygiene categories. The built-in categories are:
-
-* **Idle:** The ticket had no activity for a certain period of time.
-* **Poor Description:** The **Description** field was empty or contained little content.
-* **No Due Date:** The ticket had no due date populated.
-* **No Assignee:** The ticket had no assignee populated.
-* **No Components:** The **Components** field was empty.
-* **Missed Response Time:** The ticket failed to change status before the goal response time expired.
-* **Missed Resolution Time:** The ticket wasn't in a resolved status before the goal resolution time expired.
-* **Inactive Assignees:** The ticket was assigned to an inactive user.
-
-You can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [connectors](../../sei-integrations/sei-integrations-overview.md).
-
-You can modify the importance of each category when you [configure the Issue Hygiene Report widget](#configure-the-issue-hygiene-report-widget).
-
-### Configure the Issue Hygiene Report widget
-
-1. Go to the [Insight](../../sei-insights.md) where you want to add the widget, select **Settings**, and select **Add Widget**.
-2. Select the **Issue Hygiene Report** widget.
-3. Configure the widget's **Filters**. Filters can be blank or filtered down to a desired ticket type or time frame.
-4. Configure the **Weights** for each hygiene category.
-
-   A lower weight causes a category to have a lower impact on the overall score, and a higher weight causes a category to have a larger impact on the overall score. A weight of zero excludes that category from the hygiene score calculation. Make sure the total of all weights equals 100.
-
-   In addition to the built-in categories, you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [connectors](../../sei-integrations/sei-integrations-overview.md).
-
-<!--image - .gitbook/assets/image (71).png -- Issue Hygiene Report widget config - Weights tab-->
-
-5. On the **Settings** tab, select the issue management system to use for this widget. Available options are based on your configured [connectors](/docs/category/connectors-and-integrations).
-
-:::tip
-
-The Issue Hygiene Report is often used in conjunction with the **Issue Hygiene Trend Report** to show a history of hygiene scores.
-
-:::
-
-#### Issue Hygiene Report use cases
-
-Here are some examples of configurations for the Issue Hygiene Report widget.
-
-<details>
-<summary>Active sprint hygiene</summary>
-
-You can configure the widget to show your team's current sprint only. To do this, go to the **Filter** tab, select **Sprint**, and then select **Includes Active Sprints Only**.
-
-<!--img .gitbook/assets/image (55).png - Configure issue hygiene report -- filters tab - include active sprints only-->
-
-</details>
-
-<details>
-<summary>Dashboard time hygiene</summary>
-
-_Dashboard time_ is the time range selected by the user when viewing Insights. You can configure the widget to show the hygiene score for all tickets created in the user-selected dashboard time. To do this, go to the **Filter** tab, select **Issue Created In**, and then select **Use Dashboard Time**.
-
-<!--img .gitbook/assets/image (33).png - Configure issue hygiene report -- filters tab - use dashboard time-->
-
-</details>
-
-<details>
-<summary>Issues in progress hygiene</summary>
-
-You can configure the widget to show the hygiene score for all in-progress tickets. To do this, go to the **Filter** tab, select **Status**, and then select the statuses that correspond to in-progress tickets.
-
-<!--img .gitbook/assets/image (64).png - Configure issue hygiene report -- filters tab - filter by in progress tickets-->
-
-</details>
-
-<details>
-<summary>Issues in backlog hygiene</summary>
-
-You can configure the widget to show the hygiene score for all tickets in your backlog. To do this, go to the **Filter** tab, select **Status**, and then select the statuses that correspond to backlog tickets.
-
-<!--img .gitbook/assets/image (47).png - Configure issue hygiene report -- filters tab - filter by status "to do"-->
-
-</details>
-
 ## Issue Resolution Time
 
 There are two Issue Resolution Time widgets: The **Issue Resolution Time Single Stat** and the **Issue Resolution Time Report**.
 
-The Issue Resolution Time Single Stat widget is an [Issue Single Stat widget](#issue-single-stat-widgets) that reports the number of issues marked as resolved in a given time period.
+The Issue Resolution Time Single Stat widget is an [Issue Single Stat widget](#issue-single-stat) that reports the number of issues marked as resolved in a given time period.
 
 The Issue Resolution Time Report is a configurable bar graph showing the number of tickets closed along with the average time it took to close those tickets, based on the time the tickets were created. This report can help answer questions like:
 
@@ -253,7 +140,7 @@ You can use the **Issue Resolution Time Report** and **Issue Resolution Time Sin
 
 :::
 
-### Configure the Issue Resolution Time Report widget
+### Configure the Issue Resolution Time Report
 
 By default, the Issue Resolution Time Report widget is filtered by issues closed (**Last closed date**) within a selected time range. Usually, the time range is set to **Use Dashboard Time**, which allows the user to select a time range when viewing Insights.
 
@@ -269,7 +156,7 @@ On the **Settings** tab, you can:
 * Select how you want to sort X-axis data, such as ascending or descending.
 * Select the maximum number of unique values to show on the X-axis.
 
-#### Example configurations
+#### Issue Resolution Time Report examples
 
 The primary way to modify the Issue Resolution Time Report widget is to change the X-axis dimension on the **Aggregations** tab. Here are some examples of other configurations for this widget.
 
@@ -309,7 +196,7 @@ This configuration produces a bar graph showing a historical record of the avera
 <!-- img .gitbook/assets/image (38).png - time to close issue by last time period bar graph example -->
 
 1. On the **Aggregations** tab, select **Issue Last Closed (Week, Month, Quarter)** for the X-axis dimension.
-2. On the **Filters** tab, add filters to demonstrate [MTTR](../dora-metrics-reports/dora-metrics.md#time-to-restore-service-mttr) or [Lead Time For Changes](../dora-metrics-reports/dora-metrics.md#lead-time-for-changes) trends:
+2. On the **Filters** tab, add filters to demonstrate [MTTR](../dora-metrics-reports/dora-metrics.md#mean-time-to-restore-mttr) or [Lead Time For Changes](../dora-metrics-reports/dora-metrics.md#lead-time-for-changes) trends:
 
    * For MTTR: Add an **Issue Type** filter, and set the filter value to **Bugs**.
    * For Lead Time For Change: Add an **Issue Type** filter, and set the filter values to **Tasks** and **Stories**.
@@ -318,7 +205,7 @@ This configuration produces a bar graph showing a historical record of the avera
 
 </details>
 
-### Issue Single Stat widgets
+## Issue Single Stat
 
 The Issue Single Stat widgets provides single metrics over the given time range. This is useful for tracking events (created, resolved, etc.) happening over a period of time. For example, you can use the **Issue Resolution Time Single Stat** widget to know how many issues were *resolved* in the given time frame. Usually, the time range is set to **Use Dashboard Time**, which allows the user to select a time range when viewing Insights.
 
@@ -330,28 +217,3 @@ Issue Single Stats widgets include:
 * Issue updated
 
 You can configure these widgets to further filter and refine them, such as by issue type, label, priority, and so on.
-
-## SCM Files Report
-
-Use the SCM Files Report to identify code areas with a high frequency of changes. This is useful for ensuring that your hottest code areas have good test coverage.
-
-:::info
-
-Several tools-based metrics are available with SEI, such as SonarQube code complexity reports, Testrails test reports, PagerDuty incident reports, Junit test reports, and many more.
-
-:::
-
-## SCM PR Report
-
-The SCM PR Report widget shows a high level view of PRs moving through your SCM.
-
-On the **Filters** tab, you can configure what data feeds into this widget by creating inclusive and exclusive filters. For example, you can set the widget to show PRs in closed status in the last 7 days.
-
-On the **Aggregations** tab, you can select the dimension to use for the X-axis, such as **Project**, **Creator**, **Branch**, and so on. This determines what you want the widget to focus on. For example, focusing on **Project** can show you the PR resolution time for different work areas; whereas, focusing on **Creator** can show you PR resolution time by PR author.
-
-On the **Settings** tab, you can:
-
-* Select the code change size and code density, if you want to exclude small PRs.
-* Select how you want to sort X-axis data, such as ascending or descending.
-* Select the maximum number of unique values to show on the X-axis.
-* Select the visualization (bar chart, pie chart, line chart, and so on).
