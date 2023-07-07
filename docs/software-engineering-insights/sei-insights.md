@@ -121,7 +121,7 @@ With **Effort Investment Profile** selected, your new Insight starts with the fo
 * **Effort Investment Trend Report**
 * **Effort Investment By Engineer**
 
-For more information about these metrics, go to [effort investment metrics](./sei-metrics-and-reports/effort-investment-metrics.md).
+For more information about these metrics, go to [effort investment metrics](./sei-metrics-and-reports/effort-investment-metrics-reports/effort-investment-metrics.md).
 
 ## Create DORA Insights
 
