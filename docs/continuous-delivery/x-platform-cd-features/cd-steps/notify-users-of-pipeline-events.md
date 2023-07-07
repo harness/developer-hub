@@ -193,7 +193,7 @@ Use Webhook notifications to inform an external application of an event.
 
 Select the Webhook notification method, and then enter the URL to be called when the event occurs. 
 
-You can also use expressions to compose this URL. For example, `https://companyurl.notify.com/execution=-<+pipeline.executionId>'.
+You can also use expressions to compose this URL. For example, `https://companyurl.notify.com/execution=-<+pipeline.executionId>`.
 
 :::note 
 
