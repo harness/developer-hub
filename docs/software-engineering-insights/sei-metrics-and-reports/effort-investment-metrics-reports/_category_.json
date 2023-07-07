@@ -1,0 +1,11 @@
+{
+   "label":"Effort investment",
+   "position": 20,
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Effort investment"
+   }
+}

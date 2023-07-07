@@ -6,7 +6,7 @@ sidebar_position: 20
 
 DORA (DevOps Research Assessment) identified the following key metrics that describe a software development team's performance: Deployment Frequency, Lead Time for Changes, Change Failure Rate, Time to Restore service (MTTR), and Reliability (MTBF).
 
-With SEI, you can [create DORA Insights](../sei-insights.md#create-dora-insights) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
+With SEI, you can [create DORA Insights](../../sei-insights.md#create-dora-insights) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
 
 Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/connectors-and-integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
 
@@ -14,9 +14,9 @@ Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/ca
 
 Deployment Frequency represents how often an organization successfully releases software to production.
 
-To monitor Deployment Frequency, you must create a [Workflow profile](../sei-profiles/workflow-profile.md) and add the Deployment Frequency widget to your Insights.
+To monitor Deployment Frequency, you must create a [Workflow profile](../../sei-profiles/workflow-profile.md) and add the Deployment Frequency widget to your Insights.
 
-Workflow profiles determine the integrations to track, the events that mark deployments (such as merged PRs or CI/CD jobs), and the associated Collections. You can modify Workflow profiles according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as SCM only or issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../sei-profiles/workflow-profile.md).
+Workflow profiles determine the integrations to track, the events that mark deployments (such as merged PRs or CI/CD jobs), and the associated Collections. You can modify Workflow profiles according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as SCM only or issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
 
 To add the Deployment Frequency widget to Insights:
 
@@ -90,11 +90,11 @@ To add the SCM PR Lead Time widget to Insights:
 2. Select **Settings**, and then select **Add Widget**.
 3. Select the **Lead Time** widget.
 4. Configure the filters for the widget.
-5. On the **Settings** tab, select the relevant [Workflow profile](../sei-profiles/workflow-profile.md).
+5. On the **Settings** tab, select the relevant [Workflow profile](../../sei-profiles/workflow-profile.md).
 
   Workflow profiles, also known as Lead Time profiles, determine the integrations to track, the start events that trigger lead time tracking (such as ticket creation or commit creation), and the stages that issues follow in your SDLC.
 
-  You can modify Workflow profile stages according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as SCM only or issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../sei-profiles/workflow-profile.md).
+  You can modify Workflow profile stages according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as SCM only or issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
 
 6. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 
@@ -114,9 +114,9 @@ To add the SCM PR Lead Time widget to Insights:
 2. Select **Settings**, and then select **Add Widget**.
 3. Select the **SCM PR Lead Time by Stage Report** widget.
 4. Configure the filters for the widget.
-5. On the **Settings** tab, select the relevant [Workflow profile](../sei-profiles/workflow-profile.md), and then select **Next: Place Widget**.
+5. On the **Settings** tab, select the relevant [Workflow profile](../../sei-profiles/workflow-profile.md), and then select **Next: Place Widget**.
 
-   The default configuration for a [PR-based Workflow profile](../sei-profiles/workflow-profile.md#create-a-profile-to-track-lead-time-in-scm) has four stages:
+   The default configuration for a [PR-based Workflow profile](../../sei-profiles/workflow-profile.md#create-a-profile-to-track-lead-time-in-scm) has four stages:
 
    * PR creation time.
    * Time to first comment.
@@ -125,7 +125,7 @@ To add the SCM PR Lead Time widget to Insights:
 
    Time spent in each stage depends on the stages that a PR actually goes through. For example, if there are no comments on the PR, then there is no time to calculate for that.
 
-   You can modify Workflow profile stages according to your team's SDLC process. For more information, go to [Workflow profile](../sei-profiles/workflow-profile.md).
+   You can modify Workflow profile stages according to your team's SDLC process. For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
 
 6. Select where you want to place the widget on the Insight, and then select **Save Layout**.
 
@@ -218,7 +218,7 @@ Change Failure Rate represents the percentage of deployments that cause a failur
 
 ### Configure Change Failure Rate reporting
 
-To enable Change Failure Rate reporting in SEI, you must set up a [Workflow profile](../sei-profiles/workflow-profile.md), and then add the Change Failure Rate widget to Insights.
+To enable Change Failure Rate reporting in SEI, you must set up a [Workflow profile](../../sei-profiles/workflow-profile.md), and then add the Change Failure Rate widget to Insights.
 
 1. Go to **Settings** and select **Workflow Profiles**. <!-- image (24).png -->
 2. Select **Add Profile** or select an existing profile to modify. <!-- image (22).png -->
@@ -291,10 +291,10 @@ Time to Restore Service, or Mean Time to Recover (MTTR), indicates how long it t
 
 MTTR is a good metric for assessing the speed of your recovery process across several areas of technology. The overall time can be analyzed stage by stage over the organization's failure recovery workflow.
 
-You can use [Issue Resolution Time widgets](./quality-and-support-metrics.md#issue-resolution-time) to track MTTR.
+You can use [Issue Resolution Time widgets](../quality-metrics-reports/quality-metrics.md#issue-resolution-time) to track MTTR.
 
 ## Reliability (MTBF)
 
 Mean Time Between Failures (MTBF) measures the average amount of time a system or component operates without failing. It is expressed as a continuous operating time in hours, days, or other units of time. It is an indicator of an assets reliability, or availability, and it is useful for estimating how likely an asset is to fail and how often certain failures occur. This metric is critical for reliability engineering.
 
-You can use [Issue Resolution Time widgets](./quality-and-support-metrics.md#issue-resolution-time) to track MTBF.
+You can use [Issue Resolution Time widgets](../quality-metrics-reports/quality-metrics.md#issue-resolution-time) to track MTBF.

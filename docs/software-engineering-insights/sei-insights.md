@@ -125,12 +125,12 @@ For more information about these metrics, go to [effort investment metrics](./se
 
 ## Create DORA Insights
 
-Use DORA Insights to examine your organization's [DORA (DevOps Research Assessment) metrics](./sei-metrics-and-reports/dora-metrics.md).
+Use DORA Insights to examine your organization's [DORA (DevOps Research Assessment) metrics](./sei-metrics-and-reports/dora-metrics-reports/dora-metrics.md).
 
 To create DORA Insights:
 
 1. Follow the steps to [create Insights](#create-insights), and select both **Effort Investment Profile** and **Effort Investment Units**.
-2. Add widgets for [DORA metrics](./sei-metrics-and-reports/dora-metrics.md).
+2. Add widgets for [DORA metrics](./sei-metrics-and-reports/dora-metrics-reports/dora-metrics.md).
 
 ## Change the color scheme
 

@@ -20,7 +20,7 @@ If you want the widget to report the status (success or failure) of all jobs in 
 
 <figure>
 
-![](./static/ci-cd-job-count-report.png)
+![](../static/ci-cd-job-count-report.png)
 
 <figcaption>Figure 1: The CI/CD Job Count Report set to all jobs in dashboard time.</figcaption>
 </figure>
@@ -36,7 +36,7 @@ If you want the widget to highlight failed jobs, set **Filter, Job Status** to *
 
 <figure>
 
-![](./static/ci-cd-job-count-report-failed.png)
+![](../static/ci-cd-job-count-report-failed.png)
 
 <figcaption>Figure 2: The CI/CD Job Count Report showing only failed jobs.</figcaption>
 </figure>

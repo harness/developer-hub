@@ -1,7 +1,7 @@
 ---
 title: Trellis Scores
 description: Trellis Scores helps you understand your team's productivity.
-sidebar_position: 50
+sidebar_position: 70
 ---
 
 Trellis Scores are a proprietary scoring mechanism from SEI. Your Trellis Score helps you understand your team's productivity. Trellis Scores are calculated from factors such as code quality, code volume, speed, impact, proficiency, and collaboration. You can adjust the weight given to each factor.

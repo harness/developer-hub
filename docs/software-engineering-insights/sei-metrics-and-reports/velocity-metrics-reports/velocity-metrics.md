@@ -2,7 +2,6 @@
 title: Velocity metrics
 description: These metrics help analyze the time taken to deliver a feature.
 sidebar_position: 50
-sidebar_label: Velocity
 ---
 
 Velocity metrics help analyze the time taken to deliver a feature. They can help you identify bottlenecks in product development and delivery processes.
@@ -16,7 +15,7 @@ SEI identifies risk factors and slowdowns by providing insights into:
 
 SEI offers different velocity metrics based on the tools your teams use and the processes they follow. Velocity metrics include:
 
-* **Deployment Frequency:** This [DORA metric](./dora-metrics.md) measures how often an organization/team successfully releases software to production. This provides:
+* **Deployment Frequency:** This [DORA metric](../dora-metrics-reports/dora-metrics.md) measures how often an organization/team successfully releases software to production. This provides:
   * Flexibility to choose [integrations](/docs/category/connectors-and-integrations), like issue management, SCM, and CI/CD tools, and add the relevant filters to define the Deployment Frequency.
   * Insights into your organization's Deployment Frequency for a given duration, how it's performing, and an overview of the daily, weekly, and monthly trends.
 * **SCM Lead Time:** The overall lead time is the sum of the average time spent in each stage configured in the workflow. This metric can help identify where the team is spending time and if the amount of time spent in each stage falls in an acceptable range.

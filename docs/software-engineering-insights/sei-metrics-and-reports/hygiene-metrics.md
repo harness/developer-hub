@@ -1,7 +1,7 @@
 ---
 title: Hygiene reports
 description: desc
-sidebar_position: 40
+sidebar_position: 30
 sidebar_label: Hygiene
 ---
 
