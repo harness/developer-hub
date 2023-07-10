@@ -1,0 +1,29 @@
+.feedback {
+  position: fixed;
+  z-index: 96;
+  right: 0;
+  bottom: 100px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  padding: 16px 8px 16px 8px;
+  gap: 4px;
+  height: 143px;
+  width: 40px;
+  background: linear-gradient(0deg, #0278D5 0%, #3DC7F6 100%);
+  border: 0;
+  border-radius: 8px 0px 0px 8px;
+  /* identical to box height, or 150% */
+  letter-spacing: 0.5px;
+  color: #FFFFFF;
+}
+.feedback span, .feedback div {
+  transform: rotate(-90deg);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+}
+.feedback img {
+  margin-top: 26px;
+}/*# sourceMappingURL=index.module.css.map */

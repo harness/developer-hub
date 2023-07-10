@@ -1,0 +1,15 @@
+.backToTopButton {
+  color: #0278d5;
+  font-size: 1rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.backToTopButton:hover {
+  color: #0278d5;
+}
+
+.viewDetailsButton {
+  margin-top: 2rem;
+}/*# sourceMappingURL=Buttons.module.css.map */

@@ -1,0 +1,1424 @@
+.certifications,
+.certificationsCI,
+.certificationsCD,
+.certificationsFF,
+.certificationsCCM,
+.certificationsSRM,
+.certificationsSTO,
+.certificationsCE,
+.certificationsPlatform {
+  background: url(/img/cert_harness_bg.svg) no-repeat;
+  background-position: right;
+  background-position-y: 0;
+  background-size: 55%;
+  min-height: 400px;
+  padding-top: 72px;
+}
+.certifications .hero,
+.certificationsCI .hero,
+.certificationsCD .hero,
+.certificationsFF .hero,
+.certificationsCCM .hero,
+.certificationsSRM .hero,
+.certificationsSTO .hero,
+.certificationsCE .hero,
+.certificationsPlatform .hero {
+  display: flex;
+}
+.certifications .hero .left,
+.certificationsCI .hero .left,
+.certificationsCD .hero .left,
+.certificationsFF .hero .left,
+.certificationsCCM .hero .left,
+.certificationsSRM .hero .left,
+.certificationsSTO .hero .left,
+.certificationsCE .hero .left,
+.certificationsPlatform .hero .left {
+  flex-basis: 45%;
+}
+.certifications .hero .left .linkBack,
+.certificationsCI .hero .left .linkBack,
+.certificationsCD .hero .left .linkBack,
+.certificationsFF .hero .left .linkBack,
+.certificationsCCM .hero .left .linkBack,
+.certificationsSRM .hero .left .linkBack,
+.certificationsSTO .hero .left .linkBack,
+.certificationsCE .hero .left .linkBack,
+.certificationsPlatform .hero .left .linkBack {
+  margin-bottom: 16px;
+}
+.certifications .hero .right,
+.certificationsCI .hero .right,
+.certificationsCD .hero .right,
+.certificationsFF .hero .right,
+.certificationsCCM .hero .right,
+.certificationsSRM .hero .right,
+.certificationsSTO .hero .right,
+.certificationsCE .hero .right,
+.certificationsPlatform .hero .right {
+  flex-basis: 55%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  min-height: 210px;
+}
+.certifications .hero .right img,
+.certificationsCI .hero .right img,
+.certificationsCD .hero .right img,
+.certificationsFF .hero .right img,
+.certificationsCCM .hero .right img,
+.certificationsSRM .hero .right img,
+.certificationsSTO .hero .right img,
+.certificationsCE .hero .right img,
+.certificationsPlatform .hero .right img {
+  width: 125px;
+  height: auto;
+  opacity: 0.4;
+  font-size: 14px;
+  transition-property: width, height, opacity;
+  transition-duration: 0.3s;
+}
+.certifications .hero .right img.active,
+.certificationsCI .hero .right img.active,
+.certificationsCD .hero .right img.active,
+.certificationsFF .hero .right img.active,
+.certificationsCCM .hero .right img.active,
+.certificationsSRM .hero .right img.active,
+.certificationsSTO .hero .right img.active,
+.certificationsCE .hero .right img.active,
+.certificationsPlatform .hero .right img.active {
+  width: 150px;
+  opacity: 1;
+}
+.certifications .tabs,
+.certificationsCI .tabs,
+.certificationsCD .tabs,
+.certificationsFF .tabs,
+.certificationsCCM .tabs,
+.certificationsSRM .tabs,
+.certificationsSTO .tabs,
+.certificationsCE .tabs,
+.certificationsPlatform .tabs {
+  margin-top: 72px;
+}
+.certifications .tabs ul.tabItems,
+.certificationsCI .tabs ul.tabItems,
+.certificationsCD .tabs ul.tabItems,
+.certificationsFF .tabs ul.tabItems,
+.certificationsCCM .tabs ul.tabItems,
+.certificationsSRM .tabs ul.tabItems,
+.certificationsSTO .tabs ul.tabItems,
+.certificationsCE .tabs ul.tabItems,
+.certificationsPlatform .tabs ul.tabItems {
+  border-bottom: 1px solid var(--gray-200);
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.certifications .tabs ul.tabItems .listTabItems,
+.certificationsCI .tabs ul.tabItems .listTabItems,
+.certificationsCD .tabs ul.tabItems .listTabItems,
+.certificationsFF .tabs ul.tabItems .listTabItems,
+.certificationsCCM .tabs ul.tabItems .listTabItems,
+.certificationsSRM .tabs ul.tabItems .listTabItems,
+.certificationsSTO .tabs ul.tabItems .listTabItems,
+.certificationsCE .tabs ul.tabItems .listTabItems,
+.certificationsPlatform .tabs ul.tabItems .listTabItems {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.certifications .tabs ul.tabItems .listTabItems li,
+.certificationsCI .tabs ul.tabItems .listTabItems li,
+.certificationsCD .tabs ul.tabItems .listTabItems li,
+.certificationsFF .tabs ul.tabItems .listTabItems li,
+.certificationsCCM .tabs ul.tabItems .listTabItems li,
+.certificationsSRM .tabs ul.tabItems .listTabItems li,
+.certificationsSTO .tabs ul.tabItems .listTabItems li,
+.certificationsCE .tabs ul.tabItems .listTabItems li,
+.certificationsPlatform .tabs ul.tabItems .listTabItems li {
+  list-style: none;
+  padding: 8px 16px;
+  margin: 0;
+  color: var(--gray-700);
+  font-weight: 600;
+  cursor: pointer;
+  border-radius: 8px 8px 0 0;
+}
+.certifications .tabs ul.tabItems .listTabItems li:hover,
+.certificationsCI .tabs ul.tabItems .listTabItems li:hover,
+.certificationsCD .tabs ul.tabItems .listTabItems li:hover,
+.certificationsFF .tabs ul.tabItems .listTabItems li:hover,
+.certificationsCCM .tabs ul.tabItems .listTabItems li:hover,
+.certificationsSRM .tabs ul.tabItems .listTabItems li:hover,
+.certificationsSTO .tabs ul.tabItems .listTabItems li:hover,
+.certificationsCE .tabs ul.tabItems .listTabItems li:hover,
+.certificationsPlatform .tabs ul.tabItems .listTabItems li:hover {
+  background-color: var(--gray-50);
+}
+.certifications .tabs ul.tabItems .listTabItems li.active,
+.certificationsCI .tabs ul.tabItems .listTabItems li.active,
+.certificationsCD .tabs ul.tabItems .listTabItems li.active,
+.certificationsFF .tabs ul.tabItems .listTabItems li.active,
+.certificationsCCM .tabs ul.tabItems .listTabItems li.active,
+.certificationsSRM .tabs ul.tabItems .listTabItems li.active,
+.certificationsSTO .tabs ul.tabItems .listTabItems li.active,
+.certificationsCE .tabs ul.tabItems .listTabItems li.active,
+.certificationsPlatform .tabs ul.tabItems .listTabItems li.active {
+  font-weight: 700;
+  color: var(--primary);
+  border-bottom: 2px solid var(--primary);
+  cursor: default;
+  background-color: var(--primary-1);
+}
+.certifications .tabs .tabContent,
+.certificationsCI .tabs .tabContent,
+.certificationsCD .tabs .tabContent,
+.certificationsFF .tabs .tabContent,
+.certificationsCCM .tabs .tabContent,
+.certificationsSRM .tabs .tabContent,
+.certificationsSTO .tabs .tabContent,
+.certificationsCE .tabs .tabContent,
+.certificationsPlatform .tabs .tabContent {
+  display: none;
+}
+.certifications .tabs .tabContent.active,
+.certificationsCI .tabs .tabContent.active,
+.certificationsCD .tabs .tabContent.active,
+.certificationsFF .tabs .tabContent.active,
+.certificationsCCM .tabs .tabContent.active,
+.certificationsSRM .tabs .tabContent.active,
+.certificationsSTO .tabs .tabContent.active,
+.certificationsCE .tabs .tabContent.active,
+.certificationsPlatform .tabs .tabContent.active {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.certifications .tabs .cardContainer,
+.certificationsCI .tabs .cardContainer,
+.certificationsCD .tabs .cardContainer,
+.certificationsFF .tabs .cardContainer,
+.certificationsCCM .tabs .cardContainer,
+.certificationsSRM .tabs .cardContainer,
+.certificationsSTO .tabs .cardContainer,
+.certificationsCE .tabs .cardContainer,
+.certificationsPlatform .tabs .cardContainer {
+  display: flex;
+  flex-flow: row wrap;
+  row-gap: 32px;
+  -moz-column-gap: 2.5%;
+       column-gap: 2.5%;
+}
+.certifications .tabs .certCard,
+.certificationsCI .tabs .certCard,
+.certificationsCD .tabs .certCard,
+.certificationsFF .tabs .certCard,
+.certificationsCCM .tabs .certCard,
+.certificationsSRM .tabs .certCard,
+.certificationsSTO .tabs .certCard,
+.certificationsCE .tabs .certCard,
+.certificationsPlatform .tabs .certCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 32px;
+  gap: 8px;
+  background: #ffffff;
+  border-radius: 8px;
+  border-width: 2px;
+  border-style: solid;
+  border-color: var(--primary-6);
+}
+.certifications .tabs .certCard.moduleCD,
+.certificationsCI .tabs .certCard.moduleCD,
+.certificationsCD .tabs .certCard.moduleCD,
+.certificationsFF .tabs .certCard.moduleCD,
+.certificationsCCM .tabs .certCard.moduleCD,
+.certificationsSRM .tabs .certCard.moduleCD,
+.certificationsSTO .tabs .certCard.moduleCD,
+.certificationsCE .tabs .certCard.moduleCD,
+.certificationsPlatform .tabs .certCard.moduleCD {
+  border-color: var(--mod-cd-200);
+}
+.certifications .tabs .certCard.moduleCI,
+.certificationsCI .tabs .certCard.moduleCI,
+.certificationsCD .tabs .certCard.moduleCI,
+.certificationsFF .tabs .certCard.moduleCI,
+.certificationsCCM .tabs .certCard.moduleCI,
+.certificationsSRM .tabs .certCard.moduleCI,
+.certificationsSTO .tabs .certCard.moduleCI,
+.certificationsCE .tabs .certCard.moduleCI,
+.certificationsPlatform .tabs .certCard.moduleCI {
+  border-color: var(--mod-ci-200);
+}
+.certifications .tabs .certCard.moduleCCM,
+.certificationsCI .tabs .certCard.moduleCCM,
+.certificationsCD .tabs .certCard.moduleCCM,
+.certificationsFF .tabs .certCard.moduleCCM,
+.certificationsCCM .tabs .certCard.moduleCCM,
+.certificationsSRM .tabs .certCard.moduleCCM,
+.certificationsSTO .tabs .certCard.moduleCCM,
+.certificationsCE .tabs .certCard.moduleCCM,
+.certificationsPlatform .tabs .certCard.moduleCCM {
+  border-color: var(--mod-ccm-200);
+}
+.certifications .tabs .certCard.moduleFF,
+.certificationsCI .tabs .certCard.moduleFF,
+.certificationsCD .tabs .certCard.moduleFF,
+.certificationsFF .tabs .certCard.moduleFF,
+.certificationsCCM .tabs .certCard.moduleFF,
+.certificationsSRM .tabs .certCard.moduleFF,
+.certificationsSTO .tabs .certCard.moduleFF,
+.certificationsCE .tabs .certCard.moduleFF,
+.certificationsPlatform .tabs .certCard.moduleFF {
+  border-color: var(--mod-ff-200);
+}
+.certifications .tabs .certCard.moduleSTO,
+.certificationsCI .tabs .certCard.moduleSTO,
+.certificationsCD .tabs .certCard.moduleSTO,
+.certificationsFF .tabs .certCard.moduleSTO,
+.certificationsCCM .tabs .certCard.moduleSTO,
+.certificationsSRM .tabs .certCard.moduleSTO,
+.certificationsSTO .tabs .certCard.moduleSTO,
+.certificationsCE .tabs .certCard.moduleSTO,
+.certificationsPlatform .tabs .certCard.moduleSTO {
+  border-color: var(--mod-sto-200);
+}
+.certifications .tabs .certCard.moduleSRM,
+.certificationsCI .tabs .certCard.moduleSRM,
+.certificationsCD .tabs .certCard.moduleSRM,
+.certificationsFF .tabs .certCard.moduleSRM,
+.certificationsCCM .tabs .certCard.moduleSRM,
+.certificationsSRM .tabs .certCard.moduleSRM,
+.certificationsSTO .tabs .certCard.moduleSRM,
+.certificationsCE .tabs .certCard.moduleSRM,
+.certificationsPlatform .tabs .certCard.moduleSRM {
+  border-color: var(--mod-srm-200);
+}
+.certifications .tabs .certCard.moduleCE,
+.certificationsCI .tabs .certCard.moduleCE,
+.certificationsCD .tabs .certCard.moduleCE,
+.certificationsFF .tabs .certCard.moduleCE,
+.certificationsCCM .tabs .certCard.moduleCE,
+.certificationsSRM .tabs .certCard.moduleCE,
+.certificationsSTO .tabs .certCard.moduleCE,
+.certificationsCE .tabs .certCard.moduleCE,
+.certificationsPlatform .tabs .certCard.moduleCE {
+  border-color: var(--mod-ce-200);
+}
+.certifications .tabs .certCard .certCardContainer,
+.certificationsCI .tabs .certCard .certCardContainer,
+.certificationsCD .tabs .certCard .certCardContainer,
+.certificationsFF .tabs .certCard .certCardContainer,
+.certificationsCCM .tabs .certCard .certCardContainer,
+.certificationsSRM .tabs .certCard .certCardContainer,
+.certificationsSTO .tabs .certCard .certCardContainer,
+.certificationsCE .tabs .certCard .certCardContainer,
+.certificationsPlatform .tabs .certCard .certCardContainer {
+  display: flex;
+  width: 100%;
+}
+.certifications .tabs .certCard .certCardContainer .left,
+.certificationsCI .tabs .certCard .certCardContainer .left,
+.certificationsCD .tabs .certCard .certCardContainer .left,
+.certificationsFF .tabs .certCard .certCardContainer .left,
+.certificationsCCM .tabs .certCard .certCardContainer .left,
+.certificationsSRM .tabs .certCard .certCardContainer .left,
+.certificationsSTO .tabs .certCard .certCardContainer .left,
+.certificationsCE .tabs .certCard .certCardContainer .left,
+.certificationsPlatform .tabs .certCard .certCardContainer .left {
+  flex-basis: 25%;
+  min-width: 250px;
+  flex-shrink: 1;
+  padding-right: 40px;
+}
+.certifications .tabs .certCard .certCardContainer .left img.badge,
+.certificationsCI .tabs .certCard .certCardContainer .left img.badge,
+.certificationsCD .tabs .certCard .certCardContainer .left img.badge,
+.certificationsFF .tabs .certCard .certCardContainer .left img.badge,
+.certificationsCCM .tabs .certCard .certCardContainer .left img.badge,
+.certificationsSRM .tabs .certCard .certCardContainer .left img.badge,
+.certificationsSTO .tabs .certCard .certCardContainer .left img.badge,
+.certificationsCE .tabs .certCard .certCardContainer .left img.badge,
+.certificationsPlatform .tabs .certCard .certCardContainer .left img.badge {
+  width: 85px;
+  height: auto;
+  margin-top: 12px;
+}
+.certifications .tabs .certCard .certCardContainer .left .productVersion,
+.certificationsCI .tabs .certCard .certCardContainer .left .productVersion,
+.certificationsCD .tabs .certCard .certCardContainer .left .productVersion,
+.certificationsFF .tabs .certCard .certCardContainer .left .productVersion,
+.certificationsCCM .tabs .certCard .certCardContainer .left .productVersion,
+.certificationsSRM .tabs .certCard .certCardContainer .left .productVersion,
+.certificationsSTO .tabs .certCard .certCardContainer .left .productVersion,
+.certificationsCE .tabs .certCard .certCardContainer .left .productVersion,
+.certificationsPlatform .tabs .certCard .certCardContainer .left .productVersion {
+  font-size: 12px;
+  font-weight: 13px;
+  height: 48px;
+  display: flex;
+  align-items: flex-end;
+}
+.certifications .tabs .certCard .certCardContainer .right,
+.certificationsCI .tabs .certCard .certCardContainer .right,
+.certificationsCD .tabs .certCard .certCardContainer .right,
+.certificationsFF .tabs .certCard .certCardContainer .right,
+.certificationsCCM .tabs .certCard .certCardContainer .right,
+.certificationsSRM .tabs .certCard .certCardContainer .right,
+.certificationsSTO .tabs .certCard .certCardContainer .right,
+.certificationsCE .tabs .certCard .certCardContainer .right,
+.certificationsPlatform .tabs .certCard .certCardContainer .right {
+  flex-basis: 75%;
+  flex-grow: 1;
+}
+.certifications .tabs .certCard .certCardContainer .right .btnContainer,
+.certificationsCI .tabs .certCard .certCardContainer .right .btnContainer,
+.certificationsCD .tabs .certCard .certCardContainer .right .btnContainer,
+.certificationsFF .tabs .certCard .certCardContainer .right .btnContainer,
+.certificationsCCM .tabs .certCard .certCardContainer .right .btnContainer,
+.certificationsSRM .tabs .certCard .certCardContainer .right .btnContainer,
+.certificationsSTO .tabs .certCard .certCardContainer .right .btnContainer,
+.certificationsCE .tabs .certCard .certCardContainer .right .btnContainer,
+.certificationsPlatform .tabs .certCard .certCardContainer .right .btnContainer {
+  display: flex;
+  gap: 24px;
+  justify-content: end;
+}
+.certifications .tabs .certCard .certCardContainer .right .btnContainer button,
+.certificationsCI .tabs .certCard .certCardContainer .right .btnContainer button,
+.certificationsCD .tabs .certCard .certCardContainer .right .btnContainer button,
+.certificationsFF .tabs .certCard .certCardContainer .right .btnContainer button,
+.certificationsCCM .tabs .certCard .certCardContainer .right .btnContainer button,
+.certificationsSRM .tabs .certCard .certCardContainer .right .btnContainer button,
+.certificationsSTO .tabs .certCard .certCardContainer .right .btnContainer button,
+.certificationsCE .tabs .certCard .certCardContainer .right .btnContainer button,
+.certificationsPlatform .tabs .certCard .certCardContainer .right .btnContainer button {
+  height: 48px;
+  display: flex;
+  padding: 0 24px;
+  border: none;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+}
+.certifications .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-solid,
+.certifications .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-regular,
+.certificationsCI .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-solid,
+.certificationsCI .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-regular,
+.certificationsCD .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-solid,
+.certificationsCD .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-regular,
+.certificationsFF .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-solid,
+.certificationsFF .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-regular,
+.certificationsCCM .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-solid,
+.certificationsCCM .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-regular,
+.certificationsSRM .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-solid,
+.certificationsSRM .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-regular,
+.certificationsSTO .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-solid,
+.certificationsSTO .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-regular,
+.certificationsCE .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-solid,
+.certificationsCE .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-regular,
+.certificationsPlatform .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-solid,
+.certificationsPlatform .tabs .certCard .certCardContainer .right .btnContainer button :global .fa-regular {
+  margin-left: 4px;
+}
+.certifications .tabs .certCard .certCardContainer .right .btnContainer button.moreDetails,
+.certificationsCI .tabs .certCard .certCardContainer .right .btnContainer button.moreDetails,
+.certificationsCD .tabs .certCard .certCardContainer .right .btnContainer button.moreDetails,
+.certificationsFF .tabs .certCard .certCardContainer .right .btnContainer button.moreDetails,
+.certificationsCCM .tabs .certCard .certCardContainer .right .btnContainer button.moreDetails,
+.certificationsSRM .tabs .certCard .certCardContainer .right .btnContainer button.moreDetails,
+.certificationsSTO .tabs .certCard .certCardContainer .right .btnContainer button.moreDetails,
+.certificationsCE .tabs .certCard .certCardContainer .right .btnContainer button.moreDetails,
+.certificationsPlatform .tabs .certCard .certCardContainer .right .btnContainer button.moreDetails {
+  background-color: var(--primary);
+  color: var(--white);
+}
+.certifications .tabs .certCard .certCardContainer .right .btnContainer button.startLearning,
+.certificationsCI .tabs .certCard .certCardContainer .right .btnContainer button.startLearning,
+.certificationsCD .tabs .certCard .certCardContainer .right .btnContainer button.startLearning,
+.certificationsFF .tabs .certCard .certCardContainer .right .btnContainer button.startLearning,
+.certificationsCCM .tabs .certCard .certCardContainer .right .btnContainer button.startLearning,
+.certificationsSRM .tabs .certCard .certCardContainer .right .btnContainer button.startLearning,
+.certificationsSTO .tabs .certCard .certCardContainer .right .btnContainer button.startLearning,
+.certificationsCE .tabs .certCard .certCardContainer .right .btnContainer button.startLearning,
+.certificationsPlatform .tabs .certCard .certCardContainer .right .btnContainer button.startLearning {
+  color: var(--primary);
+  background-color: transparent;
+}
+.certifications .tabs .certCard .certCardContainer ul.courseList,
+.certificationsCI .tabs .certCard .certCardContainer ul.courseList,
+.certificationsCD .tabs .certCard .certCardContainer ul.courseList,
+.certificationsFF .tabs .certCard .certCardContainer ul.courseList,
+.certificationsCCM .tabs .certCard .certCardContainer ul.courseList,
+.certificationsSRM .tabs .certCard .certCardContainer ul.courseList,
+.certificationsSTO .tabs .certCard .certCardContainer ul.courseList,
+.certificationsCE .tabs .certCard .certCardContainer ul.courseList,
+.certificationsPlatform .tabs .certCard .certCardContainer ul.courseList {
+  margin: 24px 0 24px 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 16px;
+}
+.certifications .tabs .certCard .certCardContainer ul.courseList li.courseItem,
+.certificationsCI .tabs .certCard .certCardContainer ul.courseList li.courseItem,
+.certificationsCD .tabs .certCard .certCardContainer ul.courseList li.courseItem,
+.certificationsFF .tabs .certCard .certCardContainer ul.courseList li.courseItem,
+.certificationsCCM .tabs .certCard .certCardContainer ul.courseList li.courseItem,
+.certificationsSRM .tabs .certCard .certCardContainer ul.courseList li.courseItem,
+.certificationsSTO .tabs .certCard .certCardContainer ul.courseList li.courseItem,
+.certificationsCE .tabs .certCard .certCardContainer ul.courseList li.courseItem,
+.certificationsPlatform .tabs .certCard .certCardContainer ul.courseList li.courseItem {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-basis: 250px;
+}
+.certifications .tabs .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid,
+.certificationsCI .tabs .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid,
+.certificationsCD .tabs .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid,
+.certificationsFF .tabs .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid,
+.certificationsCCM .tabs .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid,
+.certificationsSRM .tabs .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid,
+.certificationsSTO .tabs .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid,
+.certificationsCE .tabs .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid,
+.certificationsPlatform .tabs .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid {
+  color: var(--green-500);
+  margin-right: 4px;
+}
+.certifications .tabs .certCard .certCardContainer .certCardBtn,
+.certificationsCI .tabs .certCard .certCardContainer .certCardBtn,
+.certificationsCD .tabs .certCard .certCardContainer .certCardBtn,
+.certificationsFF .tabs .certCard .certCardContainer .certCardBtn,
+.certificationsCCM .tabs .certCard .certCardContainer .certCardBtn,
+.certificationsSRM .tabs .certCard .certCardContainer .certCardBtn,
+.certificationsSTO .tabs .certCard .certCardContainer .certCardBtn,
+.certificationsCE .tabs .certCard .certCardContainer .certCardBtn,
+.certificationsPlatform .tabs .certCard .certCardContainer .certCardBtn {
+  background-color: var(--gray-50);
+  border: 1px solid var(--gray-100);
+  padding: 16px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.08), 0px 0.5px 2px rgba(96, 97, 112, 0.16);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.certifications .tabs .certCard .certCardContainer .certCardBtn span,
+.certificationsCI .tabs .certCard .certCardContainer .certCardBtn span,
+.certificationsCD .tabs .certCard .certCardContainer .certCardBtn span,
+.certificationsFF .tabs .certCard .certCardContainer .certCardBtn span,
+.certificationsCCM .tabs .certCard .certCardContainer .certCardBtn span,
+.certificationsSRM .tabs .certCard .certCardContainer .certCardBtn span,
+.certificationsSTO .tabs .certCard .certCardContainer .certCardBtn span,
+.certificationsCE .tabs .certCard .certCardContainer .certCardBtn span,
+.certificationsPlatform .tabs .certCard .certCardContainer .certCardBtn span {
+  font-weight: 600;
+  color: #22222a;
+}
+.certifications .tabs .certCard .certCardContainer a,
+.certificationsCI .tabs .certCard .certCardContainer a,
+.certificationsCD .tabs .certCard .certCardContainer a,
+.certificationsFF .tabs .certCard .certCardContainer a,
+.certificationsCCM .tabs .certCard .certCardContainer a,
+.certificationsSRM .tabs .certCard .certCardContainer a,
+.certificationsSTO .tabs .certCard .certCardContainer a,
+.certificationsCE .tabs .certCard .certCardContainer a,
+.certificationsPlatform .tabs .certCard .certCardContainer a {
+  color: #22222a;
+}
+.certifications .tabs .certCard .certCardContainer a:hover,
+.certificationsCI .tabs .certCard .certCardContainer a:hover,
+.certificationsCD .tabs .certCard .certCardContainer a:hover,
+.certificationsFF .tabs .certCard .certCardContainer a:hover,
+.certificationsCCM .tabs .certCard .certCardContainer a:hover,
+.certificationsSRM .tabs .certCard .certCardContainer a:hover,
+.certificationsSTO .tabs .certCard .certCardContainer a:hover,
+.certificationsCE .tabs .certCard .certCardContainer a:hover,
+.certificationsPlatform .tabs .certCard .certCardContainer a:hover {
+  text-decoration: none;
+  color: var(--primary);
+}
+.certifications .tabs .availableCerts,
+.certificationsCI .tabs .availableCerts,
+.certificationsCD .tabs .availableCerts,
+.certificationsFF .tabs .availableCerts,
+.certificationsCCM .tabs .availableCerts,
+.certificationsSRM .tabs .availableCerts,
+.certificationsSTO .tabs .availableCerts,
+.certificationsCE .tabs .availableCerts,
+.certificationsPlatform .tabs .availableCerts {
+  margin-top: 32px;
+}
+.certifications .tabs .availableCerts h4,
+.certificationsCI .tabs .availableCerts h4,
+.certificationsCD .tabs .availableCerts h4,
+.certificationsFF .tabs .availableCerts h4,
+.certificationsCCM .tabs .availableCerts h4,
+.certificationsSRM .tabs .availableCerts h4,
+.certificationsSTO .tabs .availableCerts h4,
+.certificationsCE .tabs .availableCerts h4,
+.certificationsPlatform .tabs .availableCerts h4 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  color: #0b0b0d;
+}
+.certifications .tabs .availableCerts h4:hover,
+.certificationsCI .tabs .availableCerts h4:hover,
+.certificationsCD .tabs .availableCerts h4:hover,
+.certificationsFF .tabs .availableCerts h4:hover,
+.certificationsCCM .tabs .availableCerts h4:hover,
+.certificationsSRM .tabs .availableCerts h4:hover,
+.certificationsSTO .tabs .availableCerts h4:hover,
+.certificationsCE .tabs .availableCerts h4:hover,
+.certificationsPlatform .tabs .availableCerts h4:hover {
+  color: var(--primary);
+}
+.certifications .tabs .availableCerts p,
+.certificationsCI .tabs .availableCerts p,
+.certificationsCD .tabs .availableCerts p,
+.certificationsFF .tabs .availableCerts p,
+.certificationsCCM .tabs .availableCerts p,
+.certificationsSRM .tabs .availableCerts p,
+.certificationsSTO .tabs .availableCerts p,
+.certificationsCE .tabs .availableCerts p,
+.certificationsPlatform .tabs .availableCerts p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  /* or 175% */
+  /* Light/Text/Primary */
+  color: #0b0b0d;
+}
+.certifications .tabs .availableCerts .availableCertsBox,
+.certificationsCI .tabs .availableCerts .availableCertsBox,
+.certificationsCD .tabs .availableCerts .availableCertsBox,
+.certificationsFF .tabs .availableCerts .availableCertsBox,
+.certificationsCCM .tabs .availableCerts .availableCertsBox,
+.certificationsSRM .tabs .availableCerts .availableCertsBox,
+.certificationsSTO .tabs .availableCerts .availableCertsBox,
+.certificationsCE .tabs .availableCerts .availableCertsBox,
+.certificationsPlatform .tabs .availableCerts .availableCertsBox {
+  display: flex;
+  justify-content: space-between;
+  border: 2px solid #d9dae5;
+  border-radius: 8px;
+  padding: 32px;
+  gap: 32px;
+}
+.certifications .tabs .availableCerts .availableCertsBox .certs,
+.certificationsCI .tabs .availableCerts .availableCertsBox .certs,
+.certificationsCD .tabs .availableCerts .availableCertsBox .certs,
+.certificationsFF .tabs .availableCerts .availableCertsBox .certs,
+.certificationsCCM .tabs .availableCerts .availableCertsBox .certs,
+.certificationsSRM .tabs .availableCerts .availableCertsBox .certs,
+.certificationsSTO .tabs .availableCerts .availableCertsBox .certs,
+.certificationsCE .tabs .availableCerts .availableCertsBox .certs,
+.certificationsPlatform .tabs .availableCerts .availableCertsBox .certs {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.certifications .tabs .availableCerts .availableCertsBox .certs .certBadges h5,
+.certificationsCI .tabs .availableCerts .availableCertsBox .certs .certBadges h5,
+.certificationsCD .tabs .availableCerts .availableCertsBox .certs .certBadges h5,
+.certificationsFF .tabs .availableCerts .availableCertsBox .certs .certBadges h5,
+.certificationsCCM .tabs .availableCerts .availableCertsBox .certs .certBadges h5,
+.certificationsSRM .tabs .availableCerts .availableCertsBox .certs .certBadges h5,
+.certificationsSTO .tabs .availableCerts .availableCertsBox .certs .certBadges h5,
+.certificationsCE .tabs .availableCerts .availableCertsBox .certs .certBadges h5,
+.certificationsPlatform .tabs .availableCerts .availableCertsBox .certs .certBadges h5 {
+  margin: 24px 0 24px 0;
+}
+.certifications .tabs .availableCerts .availableCertsBox .certs .certBadges .availableCerts img,
+.certificationsCI .tabs .availableCerts .availableCertsBox .certs .certBadges .availableCerts img,
+.certificationsCD .tabs .availableCerts .availableCertsBox .certs .certBadges .availableCerts img,
+.certificationsFF .tabs .availableCerts .availableCertsBox .certs .certBadges .availableCerts img,
+.certificationsCCM .tabs .availableCerts .availableCertsBox .certs .certBadges .availableCerts img,
+.certificationsSRM .tabs .availableCerts .availableCertsBox .certs .certBadges .availableCerts img,
+.certificationsSTO .tabs .availableCerts .availableCertsBox .certs .certBadges .availableCerts img,
+.certificationsCE .tabs .availableCerts .availableCertsBox .certs .certBadges .availableCerts img,
+.certificationsPlatform .tabs .availableCerts .availableCertsBox .certs .certBadges .availableCerts img {
+  height: 93px;
+  width: 85px;
+}
+.certifications .tabs .availableCerts .availableCertsBox .certs .certBadges .unAvailableCerts img,
+.certificationsCI .tabs .availableCerts .availableCertsBox .certs .certBadges .unAvailableCerts img,
+.certificationsCD .tabs .availableCerts .availableCertsBox .certs .certBadges .unAvailableCerts img,
+.certificationsFF .tabs .availableCerts .availableCertsBox .certs .certBadges .unAvailableCerts img,
+.certificationsCCM .tabs .availableCerts .availableCertsBox .certs .certBadges .unAvailableCerts img,
+.certificationsSRM .tabs .availableCerts .availableCertsBox .certs .certBadges .unAvailableCerts img,
+.certificationsSTO .tabs .availableCerts .availableCertsBox .certs .certBadges .unAvailableCerts img,
+.certificationsCE .tabs .availableCerts .availableCertsBox .certs .certBadges .unAvailableCerts img,
+.certificationsPlatform .tabs .availableCerts .availableCertsBox .certs .certBadges .unAvailableCerts img {
+  height: 93px;
+  width: 85px;
+  opacity: 40%;
+}
+.certifications .tabs .availableCerts .availableCertsBox .certs .certDescription,
+.certificationsCI .tabs .availableCerts .availableCertsBox .certs .certDescription,
+.certificationsCD .tabs .availableCerts .availableCertsBox .certs .certDescription,
+.certificationsFF .tabs .availableCerts .availableCertsBox .certs .certDescription,
+.certificationsCCM .tabs .availableCerts .availableCertsBox .certs .certDescription,
+.certificationsSRM .tabs .availableCerts .availableCertsBox .certs .certDescription,
+.certificationsSTO .tabs .availableCerts .availableCertsBox .certs .certDescription,
+.certificationsCE .tabs .availableCerts .availableCertsBox .certs .certDescription,
+.certificationsPlatform .tabs .availableCerts .availableCertsBox .certs .certDescription {
+  height: auto;
+  min-height: 400px;
+  border-bottom: 2px solid #d9dae5;
+}
+.certifications .tabs .availableCerts .availableCertsBox .certs .certDescription .titleLine,
+.certificationsCI .tabs .availableCerts .availableCertsBox .certs .certDescription .titleLine,
+.certificationsCD .tabs .availableCerts .availableCertsBox .certs .certDescription .titleLine,
+.certificationsFF .tabs .availableCerts .availableCertsBox .certs .certDescription .titleLine,
+.certificationsCCM .tabs .availableCerts .availableCertsBox .certs .certDescription .titleLine,
+.certificationsSRM .tabs .availableCerts .availableCertsBox .certs .certDescription .titleLine,
+.certificationsSTO .tabs .availableCerts .availableCertsBox .certs .certDescription .titleLine,
+.certificationsCE .tabs .availableCerts .availableCertsBox .certs .certDescription .titleLine,
+.certificationsPlatform .tabs .availableCerts .availableCertsBox .certs .certDescription .titleLine {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.certifications .tabs .availableCerts .availableCertsBox .certs .certDescription ul,
+.certificationsCI .tabs .availableCerts .availableCertsBox .certs .certDescription ul,
+.certificationsCD .tabs .availableCerts .availableCertsBox .certs .certDescription ul,
+.certificationsFF .tabs .availableCerts .availableCertsBox .certs .certDescription ul,
+.certificationsCCM .tabs .availableCerts .availableCertsBox .certs .certDescription ul,
+.certificationsSRM .tabs .availableCerts .availableCertsBox .certs .certDescription ul,
+.certificationsSTO .tabs .availableCerts .availableCertsBox .certs .certDescription ul,
+.certificationsCE .tabs .availableCerts .availableCertsBox .certs .certDescription ul,
+.certificationsPlatform .tabs .availableCerts .availableCertsBox .certs .certDescription ul {
+  display: inline;
+  padding: 0;
+}
+.certifications .tabs .availableCerts .availableCertsBox .certs .certDescription ul li,
+.certificationsCI .tabs .availableCerts .availableCertsBox .certs .certDescription ul li,
+.certificationsCD .tabs .availableCerts .availableCertsBox .certs .certDescription ul li,
+.certificationsFF .tabs .availableCerts .availableCertsBox .certs .certDescription ul li,
+.certificationsCCM .tabs .availableCerts .availableCertsBox .certs .certDescription ul li,
+.certificationsSRM .tabs .availableCerts .availableCertsBox .certs .certDescription ul li,
+.certificationsSTO .tabs .availableCerts .availableCertsBox .certs .certDescription ul li,
+.certificationsCE .tabs .availableCerts .availableCertsBox .certs .certDescription ul li,
+.certificationsPlatform .tabs .availableCerts .availableCertsBox .certs .certDescription ul li {
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  padding: 0;
+  margin-bottom: 20px;
+}
+.certifications .tabs .availableCerts .availableCertsBox .certs .certDescription ul li i,
+.certificationsCI .tabs .availableCerts .availableCertsBox .certs .certDescription ul li i,
+.certificationsCD .tabs .availableCerts .availableCertsBox .certs .certDescription ul li i,
+.certificationsFF .tabs .availableCerts .availableCertsBox .certs .certDescription ul li i,
+.certificationsCCM .tabs .availableCerts .availableCertsBox .certs .certDescription ul li i,
+.certificationsSRM .tabs .availableCerts .availableCertsBox .certs .certDescription ul li i,
+.certificationsSTO .tabs .availableCerts .availableCertsBox .certs .certDescription ul li i,
+.certificationsCE .tabs .availableCerts .availableCertsBox .certs .certDescription ul li i,
+.certificationsPlatform .tabs .availableCerts .availableCertsBox .certs .certDescription ul li i {
+  padding: 2px;
+  margin-right: 10px;
+  height: 20px;
+  width: 20px;
+  background-color: #4dc952;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+.certifications .tabs .availableCerts .availableCertsBox .certs .certDescription ul li p,
+.certificationsCI .tabs .availableCerts .availableCertsBox .certs .certDescription ul li p,
+.certificationsCD .tabs .availableCerts .availableCertsBox .certs .certDescription ul li p,
+.certificationsFF .tabs .availableCerts .availableCertsBox .certs .certDescription ul li p,
+.certificationsCCM .tabs .availableCerts .availableCertsBox .certs .certDescription ul li p,
+.certificationsSRM .tabs .availableCerts .availableCertsBox .certs .certDescription ul li p,
+.certificationsSTO .tabs .availableCerts .availableCertsBox .certs .certDescription ul li p,
+.certificationsCE .tabs .availableCerts .availableCertsBox .certs .certDescription ul li p,
+.certificationsPlatform .tabs .availableCerts .availableCertsBox .certs .certDescription ul li p {
+  padding: 0;
+  margin: 0;
+  display: inline;
+  line-height: 1;
+}
+
+.certificationsCI .certDesc,
+.certificationsCD .certDesc,
+.certificationsFF .certDesc,
+.certificationsCCM .certDesc,
+.certificationsSRM .certDesc,
+.certificationsSTO .certDesc,
+.certificationsCE .certDesc,
+.certificationsPlatform .certDesc {
+  margin-top: 80px;
+}
+.certificationsCI .certDesc .certCard,
+.certificationsCD .certDesc .certCard,
+.certificationsFF .certDesc .certCard,
+.certificationsCCM .certDesc .certCard,
+.certificationsSRM .certDesc .certCard,
+.certificationsSTO .certDesc .certCard,
+.certificationsCE .certDesc .certCard,
+.certificationsPlatform .certDesc .certCard {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  padding: 32px 0;
+  gap: 8px;
+  background: var(--white);
+  border: 2px solid var(--gray-200);
+  border-radius: 8px;
+}
+.certificationsCI .certDesc .certCard .certCardContainer,
+.certificationsCD .certDesc .certCard .certCardContainer,
+.certificationsFF .certDesc .certCard .certCardContainer,
+.certificationsCCM .certDesc .certCard .certCardContainer,
+.certificationsSRM .certDesc .certCard .certCardContainer,
+.certificationsSTO .certDesc .certCard .certCardContainer,
+.certificationsCE .certDesc .certCard .certCardContainer,
+.certificationsPlatform .certDesc .certCard .certCardContainer {
+  border-right: 1px solid var(--gray-200);
+  padding: 8px 24px;
+}
+.certificationsCI .certDesc .certCard .certCardContainer:last-child,
+.certificationsCD .certDesc .certCard .certCardContainer:last-child,
+.certificationsFF .certDesc .certCard .certCardContainer:last-child,
+.certificationsCCM .certDesc .certCard .certCardContainer:last-child,
+.certificationsSRM .certDesc .certCard .certCardContainer:last-child,
+.certificationsSTO .certDesc .certCard .certCardContainer:last-child,
+.certificationsCE .certDesc .certCard .certCardContainer:last-child,
+.certificationsPlatform .certDesc .certCard .certCardContainer:last-child {
+  border-right: none;
+}
+.certificationsCI .certDesc .certCard .certCardContainer h3,
+.certificationsCD .certDesc .certCard .certCardContainer h3,
+.certificationsFF .certDesc .certCard .certCardContainer h3,
+.certificationsCCM .certDesc .certCard .certCardContainer h3,
+.certificationsSRM .certDesc .certCard .certCardContainer h3,
+.certificationsSTO .certDesc .certCard .certCardContainer h3,
+.certificationsCE .certDesc .certCard .certCardContainer h3,
+.certificationsPlatform .certDesc .certCard .certCardContainer h3 {
+  margin-bottom: 18px;
+}
+.certificationsCI .certDesc .certCard .certCardContainer ul.courseList,
+.certificationsCD .certDesc .certCard .certCardContainer ul.courseList,
+.certificationsFF .certDesc .certCard .certCardContainer ul.courseList,
+.certificationsCCM .certDesc .certCard .certCardContainer ul.courseList,
+.certificationsSRM .certDesc .certCard .certCardContainer ul.courseList,
+.certificationsSTO .certDesc .certCard .certCardContainer ul.courseList,
+.certificationsCE .certDesc .certCard .certCardContainer ul.courseList,
+.certificationsPlatform .certDesc .certCard .certCardContainer ul.courseList {
+  margin: 24px 0 24px 0;
+  padding: 0;
+  display: flex;
+  flex-flow: row wrap;
+  gap: 16px;
+}
+.certificationsCI .certDesc .certCard .certCardContainer ul.courseList li.courseItem,
+.certificationsCD .certDesc .certCard .certCardContainer ul.courseList li.courseItem,
+.certificationsFF .certDesc .certCard .certCardContainer ul.courseList li.courseItem,
+.certificationsCCM .certDesc .certCard .certCardContainer ul.courseList li.courseItem,
+.certificationsSRM .certDesc .certCard .certCardContainer ul.courseList li.courseItem,
+.certificationsSTO .certDesc .certCard .certCardContainer ul.courseList li.courseItem,
+.certificationsCE .certDesc .certCard .certCardContainer ul.courseList li.courseItem,
+.certificationsPlatform .certDesc .certCard .certCardContainer ul.courseList li.courseItem {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  flex-basis: 250px;
+}
+.certificationsCI .certDesc .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid,
+.certificationsCD .certDesc .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid,
+.certificationsFF .certDesc .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid,
+.certificationsCCM .certDesc .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid,
+.certificationsSRM .certDesc .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid,
+.certificationsSTO .certDesc .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid,
+.certificationsCE .certDesc .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid,
+.certificationsPlatform .certDesc .certCard .certCardContainer ul.courseList li.courseItem :global .fa-solid {
+  color: var(--green-500);
+  margin-right: 4px;
+}
+.certificationsCI .certDesc .certCard .certCardContainer .btnContainer,
+.certificationsCD .certDesc .certCard .certCardContainer .btnContainer,
+.certificationsFF .certDesc .certCard .certCardContainer .btnContainer,
+.certificationsCCM .certDesc .certCard .certCardContainer .btnContainer,
+.certificationsSRM .certDesc .certCard .certCardContainer .btnContainer,
+.certificationsSTO .certDesc .certCard .certCardContainer .btnContainer,
+.certificationsCE .certDesc .certCard .certCardContainer .btnContainer,
+.certificationsPlatform .certDesc .certCard .certCardContainer .btnContainer {
+  display: flex;
+  gap: 24px;
+}
+.certificationsCI .certDesc .certCard .certCardContainer .btnContainer button,
+.certificationsCD .certDesc .certCard .certCardContainer .btnContainer button,
+.certificationsFF .certDesc .certCard .certCardContainer .btnContainer button,
+.certificationsCCM .certDesc .certCard .certCardContainer .btnContainer button,
+.certificationsSRM .certDesc .certCard .certCardContainer .btnContainer button,
+.certificationsSTO .certDesc .certCard .certCardContainer .btnContainer button,
+.certificationsCE .certDesc .certCard .certCardContainer .btnContainer button,
+.certificationsPlatform .certDesc .certCard .certCardContainer .btnContainer button {
+  height: 48px;
+  display: flex;
+  padding: 0 18px;
+  border: none;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+}
+.certificationsCI .certDesc .certCard .certCardContainer .btnContainer button :global .fa-solid,
+.certificationsCI .certDesc .certCard .certCardContainer .btnContainer button :global .fa-regular,
+.certificationsCD .certDesc .certCard .certCardContainer .btnContainer button :global .fa-solid,
+.certificationsCD .certDesc .certCard .certCardContainer .btnContainer button :global .fa-regular,
+.certificationsFF .certDesc .certCard .certCardContainer .btnContainer button :global .fa-solid,
+.certificationsFF .certDesc .certCard .certCardContainer .btnContainer button :global .fa-regular,
+.certificationsCCM .certDesc .certCard .certCardContainer .btnContainer button :global .fa-solid,
+.certificationsCCM .certDesc .certCard .certCardContainer .btnContainer button :global .fa-regular,
+.certificationsSRM .certDesc .certCard .certCardContainer .btnContainer button :global .fa-solid,
+.certificationsSRM .certDesc .certCard .certCardContainer .btnContainer button :global .fa-regular,
+.certificationsSTO .certDesc .certCard .certCardContainer .btnContainer button :global .fa-solid,
+.certificationsSTO .certDesc .certCard .certCardContainer .btnContainer button :global .fa-regular,
+.certificationsCE .certDesc .certCard .certCardContainer .btnContainer button :global .fa-solid,
+.certificationsCE .certDesc .certCard .certCardContainer .btnContainer button :global .fa-regular,
+.certificationsPlatform .certDesc .certCard .certCardContainer .btnContainer button :global .fa-solid,
+.certificationsPlatform .certDesc .certCard .certCardContainer .btnContainer button :global .fa-regular {
+  margin-left: 4px;
+}
+.certificationsCI .certDesc .certCard .certCardContainer .btnContainer button.moreDetails,
+.certificationsCD .certDesc .certCard .certCardContainer .btnContainer button.moreDetails,
+.certificationsFF .certDesc .certCard .certCardContainer .btnContainer button.moreDetails,
+.certificationsCCM .certDesc .certCard .certCardContainer .btnContainer button.moreDetails,
+.certificationsSRM .certDesc .certCard .certCardContainer .btnContainer button.moreDetails,
+.certificationsSTO .certDesc .certCard .certCardContainer .btnContainer button.moreDetails,
+.certificationsCE .certDesc .certCard .certCardContainer .btnContainer button.moreDetails,
+.certificationsPlatform .certDesc .certCard .certCardContainer .btnContainer button.moreDetails {
+  background-color: var(--primary);
+  color: var(--white);
+}
+.certificationsCI .certDesc .certCard .certCardContainer .btnContainer button.startLearning,
+.certificationsCD .certDesc .certCard .certCardContainer .btnContainer button.startLearning,
+.certificationsFF .certDesc .certCard .certCardContainer .btnContainer button.startLearning,
+.certificationsCCM .certDesc .certCard .certCardContainer .btnContainer button.startLearning,
+.certificationsSRM .certDesc .certCard .certCardContainer .btnContainer button.startLearning,
+.certificationsSTO .certDesc .certCard .certCardContainer .btnContainer button.startLearning,
+.certificationsCE .certDesc .certCard .certCardContainer .btnContainer button.startLearning,
+.certificationsPlatform .certDesc .certCard .certCardContainer .btnContainer button.startLearning {
+  color: var(--primary);
+  background-color: transparent;
+}
+.certificationsCI .studyGuide,
+.certificationsCD .studyGuide,
+.certificationsFF .studyGuide,
+.certificationsCCM .studyGuide,
+.certificationsSRM .studyGuide,
+.certificationsSTO .studyGuide,
+.certificationsCE .studyGuide,
+.certificationsPlatform .studyGuide {
+  margin-top: 24px;
+}
+.certificationsCI .studyGuide .studyGuideCard,
+.certificationsCD .studyGuide .studyGuideCard,
+.certificationsFF .studyGuide .studyGuideCard,
+.certificationsCCM .studyGuide .studyGuideCard,
+.certificationsSRM .studyGuide .studyGuideCard,
+.certificationsSTO .studyGuide .studyGuideCard,
+.certificationsCE .studyGuide .studyGuideCard,
+.certificationsPlatform .studyGuide .studyGuideCard {
+  background-color: var(--primary-8);
+  border-radius: 8px;
+}
+.certificationsCI .studyGuide .studyGuideCard.Developers,
+.certificationsCD .studyGuide .studyGuideCard.Developers,
+.certificationsFF .studyGuide .studyGuideCard.Developers,
+.certificationsCCM .studyGuide .studyGuideCard.Developers,
+.certificationsSRM .studyGuide .studyGuideCard.Developers,
+.certificationsSTO .studyGuide .studyGuideCard.Developers,
+.certificationsCE .studyGuide .studyGuideCard.Developers,
+.certificationsPlatform .studyGuide .studyGuideCard.Developers {
+  background-color: #bc8532;
+}
+.certificationsCI .studyGuide .studyGuideCard.Administrators,
+.certificationsCD .studyGuide .studyGuideCard.Administrators,
+.certificationsFF .studyGuide .studyGuideCard.Administrators,
+.certificationsCCM .studyGuide .studyGuideCard.Administrators,
+.certificationsSRM .studyGuide .studyGuideCard.Administrators,
+.certificationsSTO .studyGuide .studyGuideCard.Administrators,
+.certificationsCE .studyGuide .studyGuideCard.Administrators,
+.certificationsPlatform .studyGuide .studyGuideCard.Administrators {
+  background-color: #88939a;
+}
+.certificationsCI .studyGuide .studyGuideCard.Architects,
+.certificationsCD .studyGuide .studyGuideCard.Architects,
+.certificationsFF .studyGuide .studyGuideCard.Architects,
+.certificationsCCM .studyGuide .studyGuideCard.Architects,
+.certificationsSRM .studyGuide .studyGuideCard.Architects,
+.certificationsSTO .studyGuide .studyGuideCard.Architects,
+.certificationsCE .studyGuide .studyGuideCard.Architects,
+.certificationsPlatform .studyGuide .studyGuideCard.Architects {
+  background-color: #c8a320;
+}
+.certificationsCI .studyGuide .studyGuideCard .info,
+.certificationsCD .studyGuide .studyGuideCard .info,
+.certificationsFF .studyGuide .studyGuideCard .info,
+.certificationsCCM .studyGuide .studyGuideCard .info,
+.certificationsSRM .studyGuide .studyGuideCard .info,
+.certificationsSTO .studyGuide .studyGuideCard .info,
+.certificationsCE .studyGuide .studyGuideCard .info,
+.certificationsPlatform .studyGuide .studyGuideCard .info {
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.367826px;
+  text-transform: uppercase;
+  color: var(--white);
+  padding: 8px 16px;
+}
+.certificationsCI .studyGuide .studyGuideCard .info :global .fa-circle-info,
+.certificationsCD .studyGuide .studyGuideCard .info :global .fa-circle-info,
+.certificationsFF .studyGuide .studyGuideCard .info :global .fa-circle-info,
+.certificationsCCM .studyGuide .studyGuideCard .info :global .fa-circle-info,
+.certificationsSRM .studyGuide .studyGuideCard .info :global .fa-circle-info,
+.certificationsSTO .studyGuide .studyGuideCard .info :global .fa-circle-info,
+.certificationsCE .studyGuide .studyGuideCard .info :global .fa-circle-info,
+.certificationsPlatform .studyGuide .studyGuideCard .info :global .fa-circle-info {
+  margin-right: 4px;
+}
+.certificationsCI .studyGuide .studyGuideCard .innerCard,
+.certificationsCD .studyGuide .studyGuideCard .innerCard,
+.certificationsFF .studyGuide .studyGuideCard .innerCard,
+.certificationsCCM .studyGuide .studyGuideCard .innerCard,
+.certificationsSRM .studyGuide .studyGuideCard .innerCard,
+.certificationsSTO .studyGuide .studyGuideCard .innerCard,
+.certificationsCE .studyGuide .studyGuideCard .innerCard,
+.certificationsPlatform .studyGuide .studyGuideCard .innerCard {
+  border: 2px solid var(--gray-200);
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 32px;
+  display: flex;
+  width: 100%;
+}
+.certificationsCI .studyGuide .studyGuideCard .innerCard .left,
+.certificationsCD .studyGuide .studyGuideCard .innerCard .left,
+.certificationsFF .studyGuide .studyGuideCard .innerCard .left,
+.certificationsCCM .studyGuide .studyGuideCard .innerCard .left,
+.certificationsSRM .studyGuide .studyGuideCard .innerCard .left,
+.certificationsSTO .studyGuide .studyGuideCard .innerCard .left,
+.certificationsCE .studyGuide .studyGuideCard .innerCard .left,
+.certificationsPlatform .studyGuide .studyGuideCard .innerCard .left {
+  flex-basis: 25%;
+  min-width: 250px;
+  flex-shrink: 1;
+  padding-right: 40px;
+}
+.certificationsCI .studyGuide .studyGuideCard .innerCard .left img.badge,
+.certificationsCD .studyGuide .studyGuideCard .innerCard .left img.badge,
+.certificationsFF .studyGuide .studyGuideCard .innerCard .left img.badge,
+.certificationsCCM .studyGuide .studyGuideCard .innerCard .left img.badge,
+.certificationsSRM .studyGuide .studyGuideCard .innerCard .left img.badge,
+.certificationsSTO .studyGuide .studyGuideCard .innerCard .left img.badge,
+.certificationsCE .studyGuide .studyGuideCard .innerCard .left img.badge,
+.certificationsPlatform .studyGuide .studyGuideCard .innerCard .left img.badge {
+  width: 85px;
+  height: auto;
+  margin-top: 12px;
+}
+.certificationsCI .studyGuide .studyGuideCard .innerCard .left .productVersion,
+.certificationsCD .studyGuide .studyGuideCard .innerCard .left .productVersion,
+.certificationsFF .studyGuide .studyGuideCard .innerCard .left .productVersion,
+.certificationsCCM .studyGuide .studyGuideCard .innerCard .left .productVersion,
+.certificationsSRM .studyGuide .studyGuideCard .innerCard .left .productVersion,
+.certificationsSTO .studyGuide .studyGuideCard .innerCard .left .productVersion,
+.certificationsCE .studyGuide .studyGuideCard .innerCard .left .productVersion,
+.certificationsPlatform .studyGuide .studyGuideCard .innerCard .left .productVersion {
+  font-size: 12px;
+  font-weight: 13px;
+  height: 48px;
+  display: flex;
+  align-items: flex-end;
+}
+.certificationsCI .studyGuide .studyGuideCard .innerCard .right,
+.certificationsCD .studyGuide .studyGuideCard .innerCard .right,
+.certificationsFF .studyGuide .studyGuideCard .innerCard .right,
+.certificationsCCM .studyGuide .studyGuideCard .innerCard .right,
+.certificationsSRM .studyGuide .studyGuideCard .innerCard .right,
+.certificationsSTO .studyGuide .studyGuideCard .innerCard .right,
+.certificationsCE .studyGuide .studyGuideCard .innerCard .right,
+.certificationsPlatform .studyGuide .studyGuideCard .innerCard .right {
+  flex-basis: 75%;
+  flex-grow: 1;
+}
+.certificationsCI .studyGuide .studyGuideCard .innerCard .right .desc,
+.certificationsCD .studyGuide .studyGuideCard .innerCard .right .desc,
+.certificationsFF .studyGuide .studyGuideCard .innerCard .right .desc,
+.certificationsCCM .studyGuide .studyGuideCard .innerCard .right .desc,
+.certificationsSRM .studyGuide .studyGuideCard .innerCard .right .desc,
+.certificationsSTO .studyGuide .studyGuideCard .innerCard .right .desc,
+.certificationsCE .studyGuide .studyGuideCard .innerCard .right .desc,
+.certificationsPlatform .studyGuide .studyGuideCard .innerCard .right .desc {
+  margin-bottom: 24px;
+}
+.certificationsCI .studyGuide .studyGuideCard .innerCard .right .btnContainer,
+.certificationsCD .studyGuide .studyGuideCard .innerCard .right .btnContainer,
+.certificationsFF .studyGuide .studyGuideCard .innerCard .right .btnContainer,
+.certificationsCCM .studyGuide .studyGuideCard .innerCard .right .btnContainer,
+.certificationsSRM .studyGuide .studyGuideCard .innerCard .right .btnContainer,
+.certificationsSTO .studyGuide .studyGuideCard .innerCard .right .btnContainer,
+.certificationsCE .studyGuide .studyGuideCard .innerCard .right .btnContainer,
+.certificationsPlatform .studyGuide .studyGuideCard .innerCard .right .btnContainer {
+  display: flex;
+  gap: 24px;
+  justify-content: end;
+  margin-top: 24px;
+}
+.certificationsCI .studyGuide .studyGuideCard .innerCard .right .btnContainer button,
+.certificationsCD .studyGuide .studyGuideCard .innerCard .right .btnContainer button,
+.certificationsFF .studyGuide .studyGuideCard .innerCard .right .btnContainer button,
+.certificationsCCM .studyGuide .studyGuideCard .innerCard .right .btnContainer button,
+.certificationsSRM .studyGuide .studyGuideCard .innerCard .right .btnContainer button,
+.certificationsSTO .studyGuide .studyGuideCard .innerCard .right .btnContainer button,
+.certificationsCE .studyGuide .studyGuideCard .innerCard .right .btnContainer button,
+.certificationsPlatform .studyGuide .studyGuideCard .innerCard .right .btnContainer button {
+  height: 48px;
+  display: flex;
+  padding: 0 24px;
+  border: none;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+}
+.certificationsCI .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-solid,
+.certificationsCI .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-regular,
+.certificationsCD .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-solid,
+.certificationsCD .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-regular,
+.certificationsFF .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-solid,
+.certificationsFF .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-regular,
+.certificationsCCM .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-solid,
+.certificationsCCM .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-regular,
+.certificationsSRM .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-solid,
+.certificationsSRM .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-regular,
+.certificationsSTO .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-solid,
+.certificationsSTO .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-regular,
+.certificationsCE .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-solid,
+.certificationsCE .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-regular,
+.certificationsPlatform .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-solid,
+.certificationsPlatform .studyGuide .studyGuideCard .innerCard .right .btnContainer button :global .fa-regular {
+  margin-left: 4px;
+}
+.certificationsCI .studyGuide .studyGuideCard .innerCard .right .btnContainer button.moreDetails,
+.certificationsCD .studyGuide .studyGuideCard .innerCard .right .btnContainer button.moreDetails,
+.certificationsFF .studyGuide .studyGuideCard .innerCard .right .btnContainer button.moreDetails,
+.certificationsCCM .studyGuide .studyGuideCard .innerCard .right .btnContainer button.moreDetails,
+.certificationsSRM .studyGuide .studyGuideCard .innerCard .right .btnContainer button.moreDetails,
+.certificationsSTO .studyGuide .studyGuideCard .innerCard .right .btnContainer button.moreDetails,
+.certificationsCE .studyGuide .studyGuideCard .innerCard .right .btnContainer button.moreDetails,
+.certificationsPlatform .studyGuide .studyGuideCard .innerCard .right .btnContainer button.moreDetails {
+  background-color: var(--primary);
+  color: var(--white);
+}
+.certificationsCI .studyGuide .studyGuideCard .innerCard .right .btnContainer button.startLearning,
+.certificationsCD .studyGuide .studyGuideCard .innerCard .right .btnContainer button.startLearning,
+.certificationsFF .studyGuide .studyGuideCard .innerCard .right .btnContainer button.startLearning,
+.certificationsCCM .studyGuide .studyGuideCard .innerCard .right .btnContainer button.startLearning,
+.certificationsSRM .studyGuide .studyGuideCard .innerCard .right .btnContainer button.startLearning,
+.certificationsSTO .studyGuide .studyGuideCard .innerCard .right .btnContainer button.startLearning,
+.certificationsCE .studyGuide .studyGuideCard .innerCard .right .btnContainer button.startLearning,
+.certificationsPlatform .studyGuide .studyGuideCard .innerCard .right .btnContainer button.startLearning {
+  color: var(--primary);
+  background-color: transparent;
+}
+
+.certificationsCI {
+  background-image: url(/img/cert_ci_bg.svg);
+}
+
+.certificationsCD {
+  background-image: url(/img/cert_cd_bg.svg);
+}
+
+/*
+.certificationsFF {
+    background-image: url(/img/cert_ff_bg.svg);
+}
+.certificationsCCM {
+    background-image: url(/img/cert_ccm_bg.svg);
+}
+.certificationsSRM {
+    background-image: url(/img/cert_srm_bg.svg);
+}
+.certificationsSTO {
+    background-image: url(/img/cert_sto_bg.svg);
+}
+.certificationsCE {
+    background-image: url(/img/cert_ce_bg.svg);
+}
+.certificationsPlatfrom {
+    background-image: url(/img/cert_platform_bg.svg);
+}
+*/
+.examDetails {
+  margin-top: 50px;
+}
+.examDetails .examDetailsCard {
+  border: 2px solid var(--gray-200);
+  background-color: var(--white);
+  border-radius: 8px;
+  padding: 32px;
+}
+.examDetails .examDetailsCard .btnContainer {
+  display: flex;
+  gap: 24px;
+  justify-content: end;
+  margin-top: 24px;
+}
+.examDetails .examDetailsCard .btnContainer button {
+  height: 48px;
+  display: flex;
+  padding: 0 24px;
+  border: none;
+  border-radius: 5px;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 16px;
+}
+.examDetails .examDetailsCard .btnContainer button :global .fa-solid,
+.examDetails .examDetailsCard .btnContainer button :global .fa-regular {
+  margin-left: 4px;
+}
+.examDetails .examDetailsCard .btnContainer button.moreDetails {
+  background-color: var(--primary);
+  color: var(--white);
+}
+.examDetails .examDetailsCard .btnContainer button.startLearning {
+  color: var(--primary);
+  background-color: transparent;
+}
+
+@media screen and (max-width: 1344px) {
+  /* for small desktop */
+  .certificationsCI .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsCD .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsFF .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsCCM .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsSRM .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsSTO .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsCE .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsPlatform .certDesc .certCard .certCardContainer .btnContainer {
+    margin-top: 32px;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+  }
+}
+@media screen and (max-width: 1199px) {
+  /* for laptop */
+  .certifications .hero .right img {
+    width: 100px;
+    height: auto;
+  }
+  .certificationsCI .certDesc .certCard,
+  .certificationsCD .certDesc .certCard,
+  .certificationsFF .certDesc .certCard,
+  .certificationsCCM .certDesc .certCard,
+  .certificationsSRM .certDesc .certCard,
+  .certificationsSTO .certDesc .certCard,
+  .certificationsCE .certDesc .certCard,
+  .certificationsPlatform .certDesc .certCard {
+    display: block;
+  }
+  .certificationsCI .certDesc .certCard .certCardContainer,
+  .certificationsCD .certDesc .certCard .certCardContainer,
+  .certificationsFF .certDesc .certCard .certCardContainer,
+  .certificationsCCM .certDesc .certCard .certCardContainer,
+  .certificationsSRM .certDesc .certCard .certCardContainer,
+  .certificationsSTO .certDesc .certCard .certCardContainer,
+  .certificationsCE .certDesc .certCard .certCardContainer,
+  .certificationsPlatform .certDesc .certCard .certCardContainer {
+    border-right: none;
+    border-bottom: 1px solid var(--gray-200);
+    padding: 24px 24px;
+  }
+  .certificationsCI .certDesc .certCard .certCardContainer:first-child,
+  .certificationsCD .certDesc .certCard .certCardContainer:first-child,
+  .certificationsFF .certDesc .certCard .certCardContainer:first-child,
+  .certificationsCCM .certDesc .certCard .certCardContainer:first-child,
+  .certificationsSRM .certDesc .certCard .certCardContainer:first-child,
+  .certificationsSTO .certDesc .certCard .certCardContainer:first-child,
+  .certificationsCE .certDesc .certCard .certCardContainer:first-child,
+  .certificationsPlatform .certDesc .certCard .certCardContainer:first-child {
+    padding-top: 0;
+  }
+  .certificationsCI .certDesc .certCard .certCardContainer:last-child,
+  .certificationsCD .certDesc .certCard .certCardContainer:last-child,
+  .certificationsFF .certDesc .certCard .certCardContainer:last-child,
+  .certificationsCCM .certDesc .certCard .certCardContainer:last-child,
+  .certificationsSRM .certDesc .certCard .certCardContainer:last-child,
+  .certificationsSTO .certDesc .certCard .certCardContainer:last-child,
+  .certificationsCE .certDesc .certCard .certCardContainer:last-child,
+  .certificationsPlatform .certDesc .certCard .certCardContainer:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .certificationsCI .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsCD .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsFF .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsCCM .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsSRM .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsSTO .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsCE .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsPlatform .certDesc .certCard .certCardContainer .btnContainer {
+    margin-top: 32px;
+    flex-direction: row;
+    gap: 24px;
+  }
+}
+@media screen and (max-width: 768px) {
+  /* for tablet */
+  .certifications .hero {
+    display: flex;
+    flex-direction: column;
+  }
+  .certifications .hero .left {
+    flex-basis: unset;
+  }
+  .certifications .hero .right {
+    flex-basis: unset;
+    margin-top: 36px;
+  }
+  .certifications .hero .right img {
+    width: 100px;
+  }
+  .availableCertsBox {
+    flex-direction: column;
+  }
+  .availableCertsBox .certDescription {
+    min-height: auto;
+  }
+  .certificationsCI,
+  .certificationsCD,
+  .certificationsFF,
+  .certificationsCCM,
+  .certificationsSRM,
+  .certificationsSTO,
+  .certificationsCE,
+  .certificationsPlatform {
+    padding-top: 36px;
+  }
+  .certificationsCI .hero,
+  .certificationsCD .hero,
+  .certificationsFF .hero,
+  .certificationsCCM .hero,
+  .certificationsSRM .hero,
+  .certificationsSTO .hero,
+  .certificationsCE .hero,
+  .certificationsPlatform .hero {
+    flex-direction: column;
+  }
+  .certificationsCI .hero .right,
+  .certificationsCD .hero .right,
+  .certificationsFF .hero .right,
+  .certificationsCCM .hero .right,
+  .certificationsSRM .hero .right,
+  .certificationsSTO .hero .right,
+  .certificationsCE .hero .right,
+  .certificationsPlatform .hero .right {
+    margin-top: 24px;
+  }
+  .certificationsCI .studyGuide .studyGuideCard .innerCard,
+  .certificationsCD .studyGuide .studyGuideCard .innerCard,
+  .certificationsFF .studyGuide .studyGuideCard .innerCard,
+  .certificationsCCM .studyGuide .studyGuideCard .innerCard,
+  .certificationsSRM .studyGuide .studyGuideCard .innerCard,
+  .certificationsSTO .studyGuide .studyGuideCard .innerCard,
+  .certificationsCE .studyGuide .studyGuideCard .innerCard,
+  .certificationsPlatform .studyGuide .studyGuideCard .innerCard {
+    flex-direction: column;
+  }
+  .certificationsCI .studyGuide .studyGuideCard .innerCard .left .productVersion,
+  .certificationsCD .studyGuide .studyGuideCard .innerCard .left .productVersion,
+  .certificationsFF .studyGuide .studyGuideCard .innerCard .left .productVersion,
+  .certificationsCCM .studyGuide .studyGuideCard .innerCard .left .productVersion,
+  .certificationsSRM .studyGuide .studyGuideCard .innerCard .left .productVersion,
+  .certificationsSTO .studyGuide .studyGuideCard .innerCard .left .productVersion,
+  .certificationsCE .studyGuide .studyGuideCard .innerCard .left .productVersion,
+  .certificationsPlatform .studyGuide .studyGuideCard .innerCard .left .productVersion {
+    height: 30px;
+  }
+  .certificationsCI .studyGuide .studyGuideCard .innerCard .right,
+  .certificationsCD .studyGuide .studyGuideCard .innerCard .right,
+  .certificationsFF .studyGuide .studyGuideCard .innerCard .right,
+  .certificationsCCM .studyGuide .studyGuideCard .innerCard .right,
+  .certificationsSRM .studyGuide .studyGuideCard .innerCard .right,
+  .certificationsSTO .studyGuide .studyGuideCard .innerCard .right,
+  .certificationsCE .studyGuide .studyGuideCard .innerCard .right,
+  .certificationsPlatform .studyGuide .studyGuideCard .innerCard .right {
+    margin-top: 24px;
+  }
+}
+@media screen and (max-width: 599px) {
+  /* for mobile */
+  .certifications .tabs .certCard .certCardContainer {
+    flex-direction: column;
+  }
+  .certifications .tabs .certCard .certCardContainer .left {
+    flex-basis: unset;
+    min-width: unset;
+  }
+  .certifications .tabs .certCard .certCardContainer .right {
+    margin-top: 24px;
+    flex-basis: unset;
+    min-width: unset;
+  }
+  .certifications :global .markdown h1:first-child {
+    --ifm-h1-font-size: 2rem;
+  }
+}
+@media screen and (max-width: 393px) {
+  /* for mobile */
+  .certifications .hero .right img {
+    width: 25%;
+    height: auto;
+  }
+  .certifications .tabs .certCard .certCardContainer .right .btnContainer {
+    flex-direction: column;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+  }
+  .certificationsCI .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsCD .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsFF .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsCCM .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsSRM .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsSTO .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsCE .certDesc .certCard .certCardContainer .btnContainer,
+  .certificationsPlatform .certDesc .certCard .certCardContainer .btnContainer {
+    margin-top: 32px;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+  }
+  .examDetails .examDetailsCard .btnContainer {
+    margin-top: 32px;
+    flex-direction: column;
+    gap: 18px;
+    align-items: center;
+  }
+}/*# sourceMappingURL=styles.module.css.map */

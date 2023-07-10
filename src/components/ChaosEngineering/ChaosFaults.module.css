@@ -1,0 +1,9 @@
+.spaceBetween {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 3rem auto;
+  gap: 2rem;
+}
+.spaceBetween a:hover {
+  text-decoration: none;
+}/*# sourceMappingURL=ChaosFaults.module.css.map */

@@ -7,6 +7,25 @@ import CertCard, { certType } from "./CertCard";
 import { certifications } from "./data/certificationsData";
 import styles from "./styles.module.scss";
 
+const devFeatures = [
+  "Beginner",
+  "Free/Team Plan",
+  "No prior experience needed",
+];
+const administratorFeatures = [
+  "Intermediate",
+  "Team/Enterprise Plan",
+  "Has understanding fundamentals",
+  "Has....experience",
+];
+const adminFeatures = [
+  "Advanced",
+  "Enterprise Plan",
+  "Has in-depth experience setting up pipeline environments",
+  "Has....experience",
+  "Expert level....",
+];
+
 export const getCertBadges = (url: string) => [
   {
     img: `${url}img/cert_dev_badge.svg`,
@@ -87,14 +106,17 @@ export default function Certifications() {
 
       <div className={styles.tabs}>
         <ul className={styles.tabItems}>
-          {Object.entries(certType).map(([tabKey, tabVal]) => (
-            <li
-              key={tabKey}
-              className={tab === tabKey ? styles.active : ""}
-              onClick={() => handleSwitchTab(tabKey)}
-            >
-              For {tabVal}
-            </li>
+          {Object.entries(certType).map(([tabKey, tabVal], index) => (
+            <div className={styles.listTabItems}>
+              <li
+                key={tabKey}
+                className={tab === tabKey ? styles.active : ""}
+                onClick={() => handleSwitchTab(tabKey)}
+              >
+                For {tabVal}
+              </li>
+              {index < 2 && <i className="fa-solid fa-chevron-right"></i>}
+            </div>
           ))}
         </ul>
 
@@ -143,6 +165,191 @@ export default function Certifications() {
               .map((cert) => (
                 <CertCard {...cert} />
               ))}
+          </div>
+        </div>
+        <div className={styles.availableCerts}>
+          <h3>Which Certification is right for you?</h3>
+
+          <p>
+            Progress from Developer to Architect Certified! - [Some description
+            here on how to progress?]
+          </p>
+
+          <div className={styles.availableCertsBox}>
+            <div className={styles.certs}>
+              <div className={styles.certDescription}>
+                <div className={styles.titleLine}>
+                  <h4>Developer</h4>
+                  <i className="fa-solid fa-chevron-right"></i>
+                </div>
+                <p>
+                  Validate your broad knowledge of cloud concepts and the
+                  products, services, tools, features, benefits, and use cases
+                  of CI.
+                </p>
+
+                <ul>
+                  {devFeatures.map((feature) => (
+                    <li>
+                      <i className="fa-solid fa-check"></i>
+                      <p>{feature}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.certBadges}>
+                <h5>Available Certification</h5>
+                <div className={styles.availableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_dev_cd_badge.svg`}
+                    alt="Developer Continuous Delivery Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_dev_ci_badge.svg`}
+                    alt="Developer Continuous Integration Badge"
+                  />
+                </div>
+                <h5>Comming Soon</h5>
+                <div className={styles.unAvailableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_dev_ccm_badge.svg`}
+                    alt="Developer Cloud Cost Management Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_dev_ce_badge.svg`}
+                    alt="Developer Chaos Engineering Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_dev_ff_badge.svg`}
+                    alt="Developer Feature Flag Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_dev_srm_badge.svg`}
+                    alt="Developer Service Reliablity Management  Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_dev_sto_badge.svg`}
+                    alt="Developer Software Testing Orchestration Badge"
+                  />
+                </div>
+              </div>
+            </div>
+            <div className={styles.verticalLine}></div>
+
+            <div className={styles.certs}>
+              <div className={styles.certDescription}>
+                <div className={styles.titleLine}>
+                  <h4>Administrator</h4>
+                  <i className="fa-solid fa-chevron-right"></i>
+                </div>
+                <p>
+                  Assesses the fundamental skills to deploy and maintain CI
+                  projects.
+                </p>
+                <ul>
+                  {administratorFeatures.map((feature) => (
+                    <li>
+                      <i className="fa-solid fa-check"></i>
+                      <p>{feature}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.certBadges}>
+                <h5>Available Certification</h5>
+                <div className={styles.availableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_adm_cd_badge.svg`}
+                    alt="Administrator Continuous Delivery Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_adm_ci_badge.svg`}
+                    alt="Administrator Continuous Integration Badge"
+                  />
+                </div>
+                <h5>Comming Soon</h5>
+                <div className={styles.unAvailableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_adm_ccm_badge.svg`}
+                    alt="Administrator Cloud Cost Management Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_adm_ce_badge.svg`}
+                    alt="Administrator Chaos Engineering Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_adm_ff_badge.svg`}
+                    alt="Administrator Feature Flag Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_adm_srm_badge.svg`}
+                    alt="Administrator Service Reliablity Management  Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_adm_sto_badge.svg`}
+                    alt="Administrator Software Testing Orchestration Badge"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <div className={styles.verticalLine}></div>
+            <div className={styles.certs}>
+              <div className={styles.certDescription}>
+                <div className={styles.titleLine}>
+                  <h4>Architect</h4>
+                </div>
+                <p>
+                  Assess key technical job functions and advanced skills in
+                  design, implementation and management of CI.
+                </p>
+                <ul>
+                  {adminFeatures.map((feature) => (
+                    <li>
+                      <i className="fa-solid fa-check"></i>
+                      <p>{feature}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.certBadges}>
+                <h5>Available Certification</h5>
+
+                <div className={styles.availableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_arc_cd_badge.svg`}
+                    alt="Architect Continuous Delivery Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_arc_ci_badge.svg`}
+                    alt="Architect Continuous Integration Badge"
+                  />
+                </div>
+                <h5>Comming Soon</h5>
+                <div className={styles.unAvailableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_arc_ccm_badge.svg`}
+                    alt="Architect Cloud Cost Management Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_arc_ce_badge.svg`}
+                    alt="Architect Chaos Engineering Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_arc_ff_badge.svg`}
+                    alt="Architect Feature Flag Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_arc_srm_badge.svg`}
+                    alt="Architect Service Reliablity Management  Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_arc_sto_badge.svg`}
+                    alt="Architect Software Testing Orchestration Badge"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

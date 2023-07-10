@@ -1,0 +1,13 @@
+.container {
+  padding-top: 4em;
+  padding-bottom: 3em;
+}
+.container h1 {
+  font-size: 3rem;
+}
+.container h2 {
+  font-size: 2rem;
+}
+.container .section {
+  margin-top: 3rem;
+}/*# sourceMappingURL=index.module.css.map */

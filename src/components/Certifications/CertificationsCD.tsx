@@ -85,14 +85,17 @@ export default function CertificationsCD() {
       {/* Tab Content */}
       <div className={styles.tabs}>
         <ul className={styles.tabItems}>
-          {Object.entries(certType).map(([tabKey, tabVal]) => (
-            <li
-              key={tabKey}
-              className={tab === tabKey ? styles.active : ""}
-              onClick={() => handleSwitchTab(tabKey)}
-            >
-              For {tabVal}
-            </li>
+          {Object.entries(certType).map(([tabKey, tabVal], index) => (
+            <div className={styles.listTabItems}>
+              <li
+                key={tabKey}
+                className={tab === tabKey ? styles.active : ""}
+                onClick={() => handleSwitchTab(tabKey)}
+              >
+                For {tabVal}
+              </li>
+              {index < 2 && <i className="fa-solid fa-chevron-right"></i>}
+            </div>
           ))}
         </ul>
 
@@ -200,9 +203,7 @@ export default function CertificationsCD() {
               </div>
               <div className={styles.innerCard}>
                 <div className={styles.left}>
-                  <h2>
-                    Continuous Delivery & GitOps - Administrator (BETA)
-                  </h2>
+                  <h2>Continuous Delivery & GitOps - Administrator (BETA)</h2>
                   <img
                     src={`${baseUrl}img/cert_adm_cd_badge.svg`}
                     alt="Harness Certified Expert - CD & GitOps Administrator"
@@ -217,8 +218,12 @@ export default function CertificationsCD() {
                   <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy and maintain CD
-                    projects and the overall Harness Platform. This exam builds upon
-                    the <a href="/certifications/continuous-delivery?lvl=developer">Continuous Delivery & GitOps Developer Certification</a>. 
+                    projects and the overall Harness Platform. This exam builds
+                    upon the{" "}
+                    <a href="/certifications/continuous-delivery?lvl=developer">
+                      Continuous Delivery & GitOps Developer Certification
+                    </a>
+                    .
                   </div>
                   <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
@@ -260,7 +265,6 @@ export default function CertificationsCD() {
             </div>
           </div>
         </div>
-
 
         {/* Architect Tab Content */}
         <div

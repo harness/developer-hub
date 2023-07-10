@@ -1,0 +1,38 @@
+.tutorialCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  /* height width*/
+  width: 270px;
+  height: 270px;
+  /* Light/Background/White */
+  background: #ffffff;
+  /* Light/Medium */
+  box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
+  border-radius: 8px;
+}
+.tutorialCard .icon {
+  width: 48px;
+  height: auto;
+  padding-bottom: 8px;
+}
+.tutorialCard .title {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: center;
+  color: #000000;
+  padding-bottom: 4px;
+}
+.tutorialCard .description {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+  text-align: center;
+  color: #22222a;
+}
+.tutorialCard .faults {
+  padding-top: 20px;
+}/*# sourceMappingURL=FaultCard.module.css.map */

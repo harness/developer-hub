@@ -1,0 +1,140 @@
+.certCard {
+  border-radius: 8px;
+  box-shadow: 0px 1px 3px rgba(40, 41, 61, 0.16), 0px 0px 2px rgba(40, 41, 61, 0.16);
+  padding: 32px 32px 56px 32px;
+  background: var(--white);
+  width: 31.5%;
+  font-family: "Inter";
+  border: 2px solid transparent;
+  position: relative;
+}
+.certCard.thumb {
+  width: 48.5%;
+  background-color: var(--white);
+  padding: 24px;
+}
+.certCard.thumb h4 {
+  font-size: 20px;
+  line-height: 28px;
+}
+.certCard.thumb p {
+  font-size: 14px;
+  line-height: 22px;
+}
+.certCard:hover {
+  text-decoration: none;
+}
+.certCard .numberOfCerts {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 13px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+}
+.certCard .numberOfCerts img {
+  height: 16px;
+  width: auto;
+  margin-right: 0.5em;
+}
+.certCard .moduleLine {
+  display: flex;
+  justify-content: space-between;
+}
+.certCard .moduleLine span {
+  color: var(--gray-700);
+}
+.certCard .moduleLine h6 {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 13px;
+  /* identical to box height, or 108% */
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #6B6D85;
+  display: flex;
+  align-items: center;
+}
+.certCard .moduleLine h6 img {
+  width: 24px;
+  margin-right: 8px;
+}
+.certCard h4 {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  color: #0B0B0D;
+}
+.certCard h4:hover {
+  color: var(--primary);
+}
+.certCard p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 28px;
+  /* or 175% */
+  /* Light/Text/Primary */
+  color: #0B0B0D;
+}
+.certCard .productVersion {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 13px;
+  /* identical to box height, or 108% */
+  /* Light/Text/Tertiary */
+  color: #6B6D85;
+  position: absolute;
+  bottom: 32px;
+}
+
+.certCard:hover {
+  border: 2px solid var(--primary);
+}
+
+.cd:hover {
+  border-color: var(--mod-cd-200);
+}
+
+.ci:hover {
+  border-color: var(--mod-ci-200);
+}
+
+.ff:hover {
+  border-color: var(--mod-ff-200);
+}
+
+.ccm:hover {
+  border-color: var(--mod-ccm-200);
+}
+
+.srm:hover {
+  border-color: var(--mod-srm-200);
+}
+
+.sto:hover {
+  border-color: var(--mod-sto-200);
+}
+
+.ce:hover {
+  border-color: var(--mod-ce-200);
+}
+
+.platform:hover {
+  border-color: var(--primary);
+}
+
+@media screen and (max-width: 1130px) {
+  .certCard {
+    width: 48.5%;
+  }
+}
+@media screen and (max-width: 512px) {
+  /* for mobile */
+  .certCard {
+    width: unset;
+  }
+  .certCard.thumb {
+    width: unset;
+    margin-top: 1.5em;
+  }
+}/*# sourceMappingURL=CertCard.module.css.map */

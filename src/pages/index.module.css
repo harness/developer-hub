@@ -1,0 +1,111 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+.homepageWrapper a {
+  color: var(--ifm-font-color-base);
+}
+.homepageWrapper a:hover {
+  color: var(--ifm-link-color);
+  text-decoration: none;
+}
+.homepageWrapper :global a.button {
+  color: #fff;
+}
+.homepageWrapper :global a.button:hover {
+  background-color: var(--primary-5);
+}
+
+.heroBanner {
+  padding-top: 7rem;
+  padding-bottom: 7rem;
+  /* text-align: center; */
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  min-height: 400px;
+  background-size: 61%;
+}
+
+.heroContainer {
+  z-index: 9;
+}
+
+.heroImg {
+  flex-basis: 60%;
+  width: 60%;
+  height: auto;
+  z-index: 1;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  overflow: hidden;
+}
+.heroImg video {
+  /* workaround to fix the black borders on left and right
+  remove it after switch to Lottie animation */
+  margin-left: -1px;
+  width: 101%;
+}
+
+.heroTitle {
+  font-size: 50px;
+  line-height: 58px;
+  font-weight: 700;
+  text-align: left;
+  margin-bottom: 24px;
+  letter-spacing: -0.5px;
+}
+
+.heroSubTitle {
+  font-size: 18px;
+  line-height: 26px;
+  padding-right: 1em;
+  width: 42%;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+}
+
+.heroButton {
+  background-color: #0278D5;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #fff;
+}
+
+@media screen and (max-width: 996px) {
+  /* for tablet */
+  .heroBanner {
+    padding: 2rem 2rem 0 2rem;
+    flex-flow: column nowrap;
+    min-height: unset;
+    background: none;
+  }
+  .heroTitle {
+    font-size: 42px;
+  }
+  .heroSubTitle {
+    width: 100%;
+  }
+  .heroImg {
+    flex-basis: 100%;
+    width: 100%;
+    position: unset;
+  }
+}
+@media screen and (max-width: 393px) {
+  /* for mobile */
+  .heroBanner {
+    padding-left: var(--ifm-spacing-horizontal);
+    padding-right: var(--ifm-spacing-horizontal);
+  }
+  .heroBanner .heroTitle {
+    font-size: 28px;
+    line-height: 150%;
+  }
+}/*# sourceMappingURL=index.module.css.map */

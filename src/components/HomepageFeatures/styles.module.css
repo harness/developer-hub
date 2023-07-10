@@ -1,0 +1,123 @@
+.features {
+  padding: 3rem 0 4rem 0;
+}
+.features h2 {
+  margin-bottom: 32px;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 40px;
+}
+.features .getStart {
+  display: flex;
+  justify-content: center;
+  flex-flow: row wrap;
+  /* width: 100%; */
+  flex-grow: 1;
+}
+.features .getStart a:hover {
+  color: unset;
+}
+.features .getStart .getStartItem {
+  width: 270px;
+  height: 230px;
+  overflow: hidden;
+  /* Light/Background/White */
+  background: #FFFFFF;
+  /* Light/Medium */
+  box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  margin: 0 32px 32px 0;
+  padding: 32px 0 24px 0;
+}
+.features .getStart .getStartItem .titleAndDesc {
+  height: 96px;
+}
+.features .getStart .getStartItem h3 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  margin-bottom: 4px;
+}
+.features .getStart .getStartItem p {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 18px;
+}
+.features .getStart .getStartItem:hover {
+  box-shadow: 0px 2px 4px rgba(40, 41, 61, 0.04), 0px 8px 16px rgba(96, 97, 112, 0.16);
+  border: 2px solid var(--primary-6);
+}
+.features .getStart .getStartItem.ci:hover {
+  border-color: var(--mod-ci-200);
+}
+.features .getStart .getStartItem.cd:hover {
+  border-color: var(--mod-cd-200);
+}
+.features .getStart .getStartItem.ccm:hover {
+  border-color: var(--mod-ccm-200);
+}
+.features .getStart .getStartItem.ff:hover {
+  border-color: var(--mod-ff-200);
+}
+.features .getStart .getStartItem.sto:hover {
+  border-color: var(--mod-sto-200);
+}
+.features .getStart .getStartItem.srm:hover {
+  border-color: var(--mod-srm-200);
+}
+.features .getStart .getStartItem.ce:hover {
+  border-color: var(--mod-ce-200);
+}
+.features .getStart .getStartItem.cet:hover {
+  border-color: var(--mod-cet-200);
+}
+.features .getStart .getStartItem.idp:hover {
+  border-color: var(--mod-idp-200);
+}
+.features .getStart ul.docTypes {
+  display: flex;
+}
+.features .getStart ul.docTypes li {
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  background-color: #F3F3FA;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  border-radius: 4px;
+  margin-right: 4px;
+}
+.features .getStart ul.docTypes li img {
+  width: 16px;
+  height: 16px;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 24px;
+}
+
+.featureSvg {
+  height: 40px;
+  width: 40px;
+}
+
+@media screen and (max-width: 768px) {
+  .features h2 {
+    font-size: 28px;
+  }
+}
+@media screen and (max-width: 393px) {
+  /* for mobile */
+  .features h2 {
+    font-size: 22px;
+    line-height: 150%;
+  }
+  .features .getStart .getStartItem {
+    margin-right: unset;
+  }
+}/*# sourceMappingURL=styles.module.css.map */

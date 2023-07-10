@@ -1,0 +1,148 @@
+.experimentListSectionContainer .experimentListSectionHeader {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+}
+.experimentListSectionContainer .experimentListSectionHeader button {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  color: #0278d5;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.experimentListSectionContainer .experimentListSectionHeader button span {
+  display: block;
+  min-width: 80px;
+}
+.experimentListSectionContainer .experimentListSectionHeader input {
+  flex-grow: 1;
+  border: 1px solid #d9dae5;
+  outline: none;
+  padding: 8px;
+  border-radius: 4px;
+  background-color: #fff;
+}
+.experimentListSectionContainer .experimentListSectionHeader input:focus, .experimentListSectionContainer .experimentListSectionHeader input:active {
+  border: 1px solid #0278d5;
+}
+
+/* commented out for HDH-69
+a {
+  color: inherit;
+}
+a:hover {
+  text-decoration: none;
+  color: inherit;
+}
+*/
+.noExperimentFound {
+  min-height: 289px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
+}
+
+.experimentListSectionContent {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 1rem;
+  align-content: flex-start;
+}
+@media (min-width: 600px) {
+  .experimentListSectionContent {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (min-width: 1280px) {
+  .experimentListSectionContent {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.experimentListSectionContent .experimentCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+  box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
+  height: 200px;
+  border-radius: 8px;
+  background-color: #fff;
+  padding: 1rem 1rem;
+}
+.experimentListSectionContent .experimentCard .experimentCardHeader {
+  display: flex;
+  align-items: center;
+}
+.experimentListSectionContent .experimentCard .experimentCardHeader .title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  line-height: 1.2;
+  color: #000000;
+  margin: 0 0 0 0.5rem;
+}
+.experimentListSectionContent .experimentCard .experimentCardContent {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  margin-left: 0.25rem;
+}
+.experimentListSectionContent .experimentCard .experimentCardContent .description {
+  font-size: 0.85rem;
+  margin: 0 0 0rem 0;
+  line-height: 1.2;
+  max-height: 80px;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 5;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  color: #000000;
+}
+.experimentListSectionContent .experimentCard .experimentCardContent .experimentCardTags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  overflow: scrol;
+}
+.experimentListSectionContent .experimentCard .experimentCardContent .experimentCardTags span {
+  display: inline-block;
+  border-radius: 6px;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  color: #fff;
+  font-weight: 600;
+}
+.experimentListSectionContent .experimentCard:hover {
+  box-shadow: 0 0 0 2px #0278d5, 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
+}
+
+.experimentListSectionFooter {
+  display: grid;
+  grid-template-columns: 32px 1fr 32px;
+  width: 25%;
+  margin: 1.5rem auto 0 auto;
+  min-height: 32px;
+  align-items: center;
+  gap: 0.5rem;
+  justify-items: center;
+}
+@media screen and (max-width: 600px) {
+  .experimentListSectionFooter {
+    width: 100%;
+  }
+}
+.experimentListSectionFooter p {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 500;
+}/*# sourceMappingURL=ExperimentListSection.module.css.map */

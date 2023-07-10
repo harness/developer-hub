@@ -1,0 +1,66 @@
+.knowledgeBase {
+  margin-top: 48px;
+}
+.knowledgeBase .kbList {
+  padding: 16px 0;
+  margin: 0;
+}
+.knowledgeBase .kbList li {
+  border-top: 1px solid var(--gray-200);
+  list-style: none;
+  padding: 32px 16px;
+  margin: 0;
+}
+.knowledgeBase .kbList li a {
+  color: unset;
+}
+.knowledgeBase .kbList li a:hover {
+  text-decoration: none;
+}
+.knowledgeBase .kbList li h3 {
+  margin: 0 0 8px 0;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+  color: #0B0B0D;
+}
+.knowledgeBase .kbList li h3:hover {
+  color: var(--primary-6);
+}
+.knowledgeBase .kbList li .props {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 18px;
+  color: #6B6D85;
+  display: flex;
+  align-items: center;
+}
+.knowledgeBase .kbList li .props > i {
+  color: #2BB1F2;
+  font-size: 8px;
+  margin-right: 4px;
+}
+.knowledgeBase .kbList li .props.ci > i {
+  color: var(--mod-ci-200);
+}
+.knowledgeBase .kbList li .props.cd > i {
+  color: var(--mod-cd-200);
+}
+.knowledgeBase .kbList li .props.ff > i {
+  color: var(--mod-ff-200);
+}
+.knowledgeBase .kbList li .props.ccm > i {
+  color: var(--mod-ccm-200);
+}
+.knowledgeBase .kbList li .props.srm > i {
+  color: var(--mod-srm-200);
+}
+.knowledgeBase .kbList li .props.sto > i {
+  color: var(--mod-sto-200);
+}
+.knowledgeBase .kbList li .props.ce > i {
+  color: var(--mod-ce-200);
+}
+.knowledgeBase .kbList li .props.platform > i {
+  color: var(--primary);
+}/*# sourceMappingURL=styles.module.css.map */

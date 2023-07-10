@@ -1,0 +1,221 @@
+.spaceBetween {
+  display: flex;
+  flex-flow: row wrap;
+}
+.spaceBetween a:hover {
+  text-decoration: none;
+}
+
+.tutorialCard {
+  border-radius: 8px;
+  box-shadow: 0px 0px 1px rgba(40, 41, 61, 0.04), 0px 2px 4px rgba(96, 97, 112, 0.16);
+  padding: 24px;
+  margin: 0 2.75% 30px 0;
+  width: 30.5%;
+  font-family: "Inter";
+  border: 2px solid transparent;
+  position: relative;
+}
+.tutorialCard .newDoc {
+  position: absolute;
+  top: 24px;
+  right: -3px;
+  z-index: -1;
+}
+.tutorialCard h6 {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 22px;
+  color: #6B6D85;
+  display: flex;
+}
+.tutorialCard h6 img {
+  width: 14px;
+  margin-right: 8px;
+}
+.tutorialCard h4 a {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: #000000;
+}
+.tutorialCard p {
+  font-weight: 400;
+  font-size: 12px;
+  font-family: "Inter";
+  color: #22222A;
+}
+.tutorialCard ul.subCategories {
+  padding-left: 2em;
+  margin: 0;
+  margin-top: -0.5em;
+}
+.tutorialCard ul.subCategories li {
+  list-style: square;
+  font-size: 12px;
+  line-height: 150%;
+}
+.tutorialCard ul.subCategories li img {
+  width: 16px;
+  height: 16px;
+}
+.tutorialCard .tags {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.tutorialCard .tags ul.docTypes {
+  display: flex;
+  padding-left: 0;
+  margin: 0;
+}
+.tutorialCard .tags ul.docTypes li {
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  background-color: #F3F3FA;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  border-radius: 4px;
+  margin: 0 4px 0 0;
+}
+.tutorialCard .tags ul.docTypes li img {
+  width: 16px;
+  height: 16px;
+}
+.tutorialCard .tags .difficulty {
+  text-transform: uppercase;
+  font-size: 12px;
+  line-height: 13px;
+  color: #6B6D85;
+}
+.tutorialCard .tags .difficulty > i {
+  transform: rotate(45deg);
+  color: #D9DAE5;
+  margin-left: 0.5em;
+}
+.tutorialCard .tags .difficulty > i.lit {
+  color: #6B6D85;
+}
+
+.tutorialCard:hover {
+  border: 2px solid var(--primary);
+}
+
+.cd:hover {
+  border-color: var(--mod-cd-200);
+}
+
+.ci:hover {
+  border-color: var(--mod-ci-200);
+}
+
+.ff:hover {
+  border-color: var(--mod-ff-200);
+}
+
+.ccm:hover {
+  border-color: var(--mod-ccm-200);
+}
+
+.srm:hover {
+  border-color: var(--mod-srm-200);
+}
+
+.sto:hover {
+  border-color: var(--mod-sto-200);
+}
+
+.ce:hover {
+  border-color: var(--mod-ce-200);
+}
+
+.cet:hover {
+  border-color: var(--mod-cet-200);
+}
+
+.sei:hover {
+  border-color: var(--mod-sei-200);
+}
+
+.ssca:hover {
+  border-color: var(--mod-ssca-200);
+}
+
+.idp:hover {
+  border-color: var(--mod-idp-200);
+}
+
+.iacm:hover {
+  border-color: var(--mod-iacm-200);
+}
+
+.gitness:hover {
+  border-color: var(--mod-gitness-200);
+}
+
+.platform:hover {
+  border-color: var(--primary);
+}
+
+.allTutorials .tutorialCard {
+  width: 28%;
+}
+.allTutorials .featuredCard {
+  width: 46%;
+}
+
+.getStartedCard {
+  text-align: center;
+  padding: 24px 40px;
+}
+.getStartedCard .docTypes {
+  justify-content: center;
+}
+.getStartedCard h4 {
+  margin-bottom: 7px;
+}
+.getStartedCard p {
+  margin-bottom: 50px;
+}
+.getStartedCard a {
+  color: #000000;
+}
+.getStartedCard.sto h4 {
+  margin-right: 30px;
+  margin-left: 30px;
+}
+
+.featuredCard {
+  box-shadow: 0px 1px 3px rgba(40, 41, 61, 0.16), 0px 0px 2px rgba(40, 41, 61, 0.16);
+  width: 47%;
+}
+.featuredCard .newDoc {
+  right: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .tutorialCard {
+    width: 47%;
+  }
+  .allTutorials .featuredCard {
+    width: 47%;
+  }
+  .allTutorials .tutorialCard {
+    width: 47%;
+  }
+}
+@media screen and (max-width: 393px) {
+  /* for mobile */
+  .tutorialCard {
+    width: unset;
+  }
+  .allTutorials .featuredCard {
+    width: unset;
+  }
+  .allTutorials .tutorialCard {
+    width: unset;
+  }
+}/*# sourceMappingURL=TutorialCard.module.css.map */

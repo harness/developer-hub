@@ -1,0 +1,160 @@
+.topSection {
+  margin-bottom: 2em;
+}
+.topSection h1 {
+  font-size: 32px;
+}
+.topSection .moduleTitle {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16px;
+  margin-top: 24px;
+  flex-shrink: 1;
+}
+.topSection .moduleTitle img {
+  padding-right: 10px;
+}
+.topSection .moduleTitle h1 {
+  margin-bottom: 0;
+}
+.topSection p {
+  font-family: "Inter";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 26px;
+  color: #000000;
+}
+
+.btnContainer {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.link {
+  background: transparent;
+  border: none;
+  color: #0278D5;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  margin-left: 32px;
+  cursor: pointer;
+}
+.link:hover {
+  text-decoration: underline;
+  color: var(--primary-8);
+}
+
+.btn {
+  padding: 12px 20px;
+  margin-left: 12px;
+  height: 48px;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--gray-600);
+  white-space: nowrap;
+  display: flex;
+  cursor: pointer;
+}
+.btn:hover {
+  color: var(--primary-8);
+}
+.btn img {
+  margin-right: 4px;
+  height: 24px;
+  width: auto;
+}
+
+.spaceBetween {
+  display: flex;
+  justify-content: space-between;
+}
+
+.subSection {
+  margin-top: 36px;
+}
+.subSection .SectionName {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.subSection .SectionName h3 {
+  font-family: "Inter";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 14px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 0;
+}
+.subSection .SectionName img {
+  width: 20px;
+  margin-right: 18px;
+}
+.subSection h3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 28px;
+  color: #22222A;
+}
+
+.sectionDivider {
+  height: 1px;
+  overflow: hidden;
+  border-bottom: 1px solid #D9DAE5;
+  margin-top: 1.5em;
+  margin-top: 2em;
+}
+
+@media screen and (max-width: 768px) {
+  .spaceBetween {
+    flex-flow: column wrap;
+  }
+  .spaceBetween .content {
+    width: 100%;
+    margin: 2em 0;
+  }
+  .spaceBetween .content > p {
+    text-align: left;
+  }
+  .spaceBetween .content .alignCenter {
+    display: flex;
+    justify-content: center;
+  }
+  .spaceBetween .moduleTitle + div {
+    display: flex;
+    justify-content: center;
+  }
+  .spaceBetween > div {
+    text-align: center;
+  }
+}
+@media screen and (max-width: 393px) {
+  /* for mobile */
+  .topSection h1 {
+    font-size: 22px;
+    line-height: 110%;
+    text-align: left;
+  }
+  .btn {
+    padding-right: 26px;
+    width: 100%;
+    margin-bottom: 4px;
+  }
+  .subSection .SectionName h3 {
+    line-height: 18px;
+  }
+  .spaceBetween .moduleTitle + div {
+    display: unset;
+    justify-content: unset;
+  }
+  .link {
+    line-height: 120%;
+  }
+}/*# sourceMappingURL=styles.module.css.map */
