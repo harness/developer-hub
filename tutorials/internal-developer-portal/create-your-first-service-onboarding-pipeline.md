@@ -15,20 +15,25 @@ Your users (developers) must perform a sequence of tasks to create the applicati
 ![](./static/service-onboarding-user-flow.png)
 
 ## Prerequisites
+
 Before you begin this tutorial, make sure that you fulfil the following requirements:
+
 - Enable Harness IDP for your account.
 - Obtain a CI or CD license if you do not have one. This is a temporary requirement.
 
 ## Create a pipeline
+
 Begin by creating a pipeline for onboarding the service.
 
 ### Create a Build or Custom stage
-To create a Build or Custom stage, perform the following steps:
-1. In the sidebar of the Harness application, select **Projects**, and then select a project. 
-  
-  You can also create a new project for the service onboarding pipelines. Eventually, all the users in your account should have permissions to execute the pipelines in this project. For information about creating a project, go to [Create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/).
 
-2. Select **Pipelines**, and then select **Create a Pipeline**. 
+To create a Build or Custom stage, perform the following steps:
+
+1. In the sidebar of the Harness application, select **Projects**, and then select a project.
+
+You can also create a new project for the service onboarding pipelines. Eventually, all the users in your account should have permissions to execute the pipelines in this project. For information about creating a project, go to [Create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/).
+
+2. Select **Pipelines**, and then select **Create a Pipeline**.
 
 3. In **Pipeline Studio**, select **Add Stage**.
 
@@ -38,11 +43,11 @@ To create a Build or Custom stage, perform the following steps:
 
 ![](./static/custom-stage.png)
 
-5. In **Stage Name**, enter a name for the stage, and then click **Set Up Stage**.  
+5. In **Stage Name**, enter a name for the stage, and then click **Set Up Stage**.
 
-6. Select **Add step**, and then, in the menu that appears, select **Add Step**. 
+6. Select **Add step**, and then, in the menu that appears, select **Add Step**.
 
-  A sidebar with available steps is displayed.
+A sidebar with available steps is displayed.
 
 7. Select **Container Step** to run a Python CLI called [cookiecutter](https://github.com/cookiecutter/cookiecutter). We need a publicly available Python image for this purpose. You can use Container Step for any such project generators (for example, [yeoman](https://yeoman.io/)).
 
@@ -53,60 +58,62 @@ In the CI or Build stage type, container step is named Run, and it has the same 
 ![](./static/container-step-tools.png)
 
 8. Configure the step as follows:
-  
-    1. Enter a name for the step. For example, name it `Create Next.js app`.
-  
-    2. You can enter `10m` (10 minutes) in the Timeout field. 
-  
-    3. In **Container Registry**, create or choose an anonymous Docker connector that connects to DockerHub (`https://registry.hub.docker.com/v2/`).
 
-    4. In **Image**, enter `python`.
-    
-    Before we write the command, we must make an infrastructure choice, which means that we specify where the pipeline executes. You can execute the pipeline on your own infrastructure or on the Harness platform. If you have an existing delegate set up for deployments, you can use the associated connector and specify its Kubernetes namespace. If you want to use the Harness platform, you have to use the CI or Build stage type instead of the Custom stage type and choose the Harness platform as your infrastructure.
+   1. Enter a name for the step. For example, name it `Create Next.js app`.
 
-    :::info note
-    Depending upon our operation, we might have to adjust the memory limit of the container. If required, you can change Limit Memory from `500Mi` to `4000Mi`.
-    :::
+   2. You can enter `10m` (10 minutes) in the Timeout field.
 
-    5. Paste the following cookiecutter-based script into **Command**.
-        
-        The script performs the following tasks:
-        1. Generates a basic Next.js app.
-      
-        2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/nextjs), whichand it's essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/templates) or create your own project from scratch.
-      
-      ```sh
-      # Pre-cleanup in case pipeline fails
+   3. In **Container Registry**, create or choose an anonymous Docker connector that connects to DockerHub (`https://registry.hub.docker.com/v2/`).
 
-      rm -rf idp-samples/
-      rm -rf "<+pipeline.variables.project_name>"
+   4. In **Image**, enter `python`.
 
-      # Clone skeleton
-      git clone https://github.com/harness-community/idp-samples
+   Before we write the command, we must make an infrastructure choice, which means that we specify where the pipeline executes. You can execute the pipeline on your own infrastructure or on the Harness platform. If you have an existing delegate set up for deployments, you can use the associated connector and specify its Kubernetes namespace. If you want to use the Harness platform, you have to use the CI or Build stage type instead of the Custom stage type and choose the Harness platform as your infrastructure.
 
-      # Generate code to be pushed
-      pip install cookiecutter
-      cookiecutter idp-samples/idp-pipelines/nextjs/skeleton project_name="<+pipeline.variables.project_name>" --no-input
+   :::info note
+   Depending upon our operation, we might have to adjust the memory limit of the container. If required, you can change Limit Memory from `500Mi` to `4000Mi`.
+   :::
 
-      # Create a new GitHub repository
-      curl -L -i -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer <+pipeline.variables.github_token>" https://api.github.com/orgs/<+pipeline.variables.github_org>/repos -d "{\"name\":\"<+pipeline.variables.github_repo>\",\"description\":\"<+pipeline.variables.project_name> - A Next.js app\",\"private\":false}"
+   5. Paste the following cookiecutter-based script into **Command**.
 
-      # Push the code
-      cd <+pipeline.variables.project_name>/
-      git init -b main
-      git config --global user.email "support@harness.io"
-      git config --global user.name "Harness Support"
-      git add .
-      git commit -m "Project init"
-      git remote add origin https://github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
-      git push https://<+pipeline.variables.github_token>@github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
-      ```
+      The script performs the following tasks:
+
+      1. Generates a basic Next.js app.
+
+      2. Creates a repository with the contents. The sample code used in the command is available [here](https://github.com/harness-community/idp-samples/tree/main/idp-pipelines/nextjs), whichand it's essentially is a [cookiecutter project](https://cookiecutter.readthedocs.io/en/stable/tutorials/tutorial2.html). You can choose from available [cookiecutter projects](https://www.cookiecutter.io/templates) or create your own project from scratch.
+
+   ```sh
+   # Pre-cleanup in case pipeline fails
+
+   rm -rf idp-samples/
+   rm -rf "<+pipeline.variables.project_name>"
+
+   # Clone skeleton
+   git clone https://github.com/harness-community/idp-samples
+
+   # Generate code to be pushed
+   pip install cookiecutter
+   cookiecutter idp-samples/idp-pipelines/nextjs/skeleton project_name="<+pipeline.variables.project_name>" --no-input
+
+   # Create a new GitHub repository
+   curl -L -i -X POST -H "Accept: application/vnd.github+json" -H "Authorization: Bearer <+pipeline.variables.github_token>" https://api.github.com/orgs/<+pipeline.variables.github_org>/repos -d "{\"name\":\"<+pipeline.variables.github_repo>\",\"description\":\"<+pipeline.variables.project_name> - A Next.js app\",\"private\":false}"
+
+   # Push the code
+   cd <+pipeline.variables.project_name>/
+   git init -b main
+   git config --global user.email "support@harness.io"
+   git config --global user.name "Harness Support"
+   git add .
+   git commit -m "Project init"
+   git remote add origin https://github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
+   git push https://<+pipeline.variables.github_token>@github.com/<+pipeline.variables.github_org>/<+pipeline.variables.github_repo>.git
+   ```
 
 9. Click **Apply Changes**.
 
 ### Manage variables in the pipeline
 
 The script uses several pipeline variables. The variables are as follows:
+
 - `<+pipeline.variables.project_name>`
 - `<+pipeline.variables.github_username>`
 - `<+pipeline.variables.github_token>`
@@ -210,8 +217,9 @@ spec:
         url: ${{ steps.trigger.output.PipelineUrl }}
 ```
 
-This YAML code is governed by Backstage. You can change the name and description of the software template. The template has the following parts: 
-1. Input from the user 
+This YAML code is governed by Backstage. You can change the name and description of the software template. The template has the following parts:
+
+1. Input from the user
 2. Execution of pipeline
 
 ![](./static/template-1.png)
@@ -242,6 +250,6 @@ The `spec.steps` field contains only one action, and that is to trigger a Harnes
 
 ### Register the template
 
-Use the URL to the `template.yaml` created above and register it by using the same process for [registering a new software component](../getting-started/register-a-new-software-component.md).
+Use the URL to the `template.yaml` created above and register it by using the same process for [registering a new software component](/docs/internal-developer-portal/getting-started/register-a-new-software-component).
 
 Now navigate to the **Create** page in IDP. You will see the newly created template appear. Try it out!

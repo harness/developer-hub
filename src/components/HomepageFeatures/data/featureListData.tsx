@@ -16,7 +16,8 @@ export const featureList: CardItem[] = [
     title: "Set up CD Pipelines",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: "Automate deployment of application services to your infrastructure.",
+    description:
+      "Automate deployment of application services to your infrastructure.",
     type: [docType.Documentation],
     link: "tutorials/cd-pipelines",
   },
@@ -64,7 +65,9 @@ export const featureList: CardItem[] = [
     title: "Track Errors",
     module: MODULES.cet,
     icon: "img/icon_cet.svg",
-    description: <>Find and fix issues in minutes with code level visibility.</>,
+    description: (
+      <>Find and fix issues in minutes with code level visibility.</>
+    ),
     type: [docType.Documentation, docType.Interactive, docType.Video],
     link: "tutorials/error-tracking",
   },
@@ -74,11 +77,12 @@ export const featureList: CardItem[] = [
     icon: "img/icon_idp.svg",
     description: (
       <>
-        Streamline software development and knowledge sharing with a developer-focused portal.
+        Streamline software development and knowledge sharing with a
+        developer-focused portal.
       </>
     ),
     type: [docType.Documentation],
-    link: "docs/category/tutorials",
+    link: "tutorials/internal-developer-portal",
   },
   {
     title: "Administer Harness Platform",
@@ -93,5 +97,4 @@ export const featureList: CardItem[] = [
     type: [docType.Documentation],
     link: "tutorials/platform",
   },
-
 ];
