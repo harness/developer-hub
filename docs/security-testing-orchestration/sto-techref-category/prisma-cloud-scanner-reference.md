@@ -352,11 +352,3 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 <StoLegacyIngest />
 
 </details>
-
-## YAML configuration
-
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-```
-
-<StoSettingYAMLexample />

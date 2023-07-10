@@ -288,10 +288,76 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 </details>
 
-## YAML configuration
+## YAML pipeline example
 
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
+<details><summary>Grype example pipeline</summary>
+
+```yaml
+
+pipeline:
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: ci stage
+        identifier: ci_stage
+        type: SecurityTests
+        spec:
+          cloneCodebase: false
+          execution:
+            steps:
+              - step:
+                  type: Background
+                  name: docker_dind
+                  identifier: docker_dind
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: docker:dind
+                    shell: Sh
+                    resources:
+                      limits:
+                        memory: 2048Mi
+                        cpu: 1000m
+              - step:
+                  type: Grype
+                  name: Grype
+                  identifier: Grype
+                  spec:
+                    mode: orchestration
+                    config: default
+                    target:
+                      name: gype_1njected/nodegoat
+                      type: container
+                      variant: latest
+                    advanced:
+                      log:
+                        level: info
+                    resources:
+                      limits:
+                        memory: 2048Mi
+                        cpu: 1000m
+                    privileged: true
+                    imagePullPolicy: Always
+                    image:
+                      type: docker_v2
+                      name: 1njected/nodegoat
+                      tag: latest
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: stoqadelegate
+              namespace: harness-qa-delegate
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          sharedPaths:
+            - /var/run
+        variables: []
+  identifier: grypepipelineexample
+  name: grype-pipeline-example
+
+
 ```
 
-<StoSettingYAMLexample />
+</details>

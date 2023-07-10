@@ -7,15 +7,7 @@ sidebar_position: 110
 
 ## Security step settings
 
-You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
-
-<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
-
-```mdx-code-block
-import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
-```
-
-<StoSecurityStepConfig />
+You can set up a Data Theorem scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
 * `product_name` = `data-theorem`
 * `product_config_name` = `default`

@@ -221,10 +221,120 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 </details>
 
-## YAML configuration
+## YAML pipeline example
 
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
+<details><summary>Snyk example pipeline</summary>
+
+```yaml
+
+pipeline:
+  allowStageExecutions: false
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: dvpwa
+        build: <+input>
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: stoqadelegate
+              namespace: harness-qa-delegate
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          sharedPaths:
+            - /var/run
+            - /shared/customer_artifacts
+          execution:
+            steps:
+              - step:
+                  type: Background
+                  name: Background_1
+                  identifier: Background_1
+                  spec:
+                    connectorRef: DockerHub
+                    image: docker:dind
+                    shell: Sh
+              - step:
+                  type: Run
+                  name: snyk via run step
+                  identifier: snyk_via_run_step
+                  spec:
+                    connectorRef: DockerNoAuth
+                    image: snyk/snyk:python
+                    shell: Sh
+                    command: |
+
+                      # scans the code repository with snyk
+                      snyk test \
+                         --json /harness > /shared/customer_artifacts/snyk_sca.json | true
+                      # snyk SAST scan
+                      snyk code test \
+                         --json /harness > /shared/customer_artifacts/snyk_sast.json | true
+                    envVariables:
+                      SNYK_TOKEN: <+secrets.getValue("snyk_api_token")>
+                  when:
+                    stageStatus: Success
+                  failureStrategies:
+                    - onFailure:
+                        errors:
+                          - AllErrors
+                        action:
+                          type: MarkAsSuccess
+              - stepGroup:
+                  name: SCA
+                  identifier: SCA
+                  steps:
+                    - parallel:
+                        - step:
+                            type: Snyk
+                            name: Snyk_1
+                            identifier: Snyk_1
+                            spec:
+                              mode: ingestion
+                              config: default
+                              target:
+                                name: dvwp
+                                type: repository
+                                variant: test
+                              advanced:
+                                log:
+                                  level: info
+                              ingestion:
+                                file: /shared/customer_artifacts/snyk_sast.json
+                        - step:
+                            type: Snyk
+                            name: Snyk_2
+                            identifier: Snyk_2
+                            spec:
+                              mode: ingestion
+                              config: default
+                              target:
+                                name: dvwp1
+                                type: repository
+                                variant: test
+                              advanced:
+                                log:
+                                  level: info
+                              ingestion:
+                                file: /shared/customer_artifacts/snyk_sast.json
+        variables:
+          - name: runner_tag
+            type: String
+            value: dev
+  identifier: snykcodeingestion
+  name: snyk-code-ingestion
+
 ```
 
-<StoSettingYAMLexample />
+</details>

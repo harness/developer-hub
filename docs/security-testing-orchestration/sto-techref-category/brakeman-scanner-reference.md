@@ -209,3 +209,90 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 <StoSettingFailOnSeverity />
 
 
+## YAML pipeline example
+
+<details><summary>Brakeman example pipeline</summary>
+
+```yaml
+pipeline:
+  name: brakeman
+  identifier: brakeman
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  properties:
+    ci:
+      codebase:
+        connectorRef: owasp_railsgoat
+        build: <+input>
+  stages:
+    - stage:
+        name: brakeman
+        identifier: brakeman
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: stoqadelegate
+              namespace: harness-qa-delegate
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          sharedPaths:
+            - /var/run
+          execution:
+            steps:
+              - step:
+                  type: Security
+                  name: brakeman
+                  identifier: brakeman
+                  spec:
+                    privileged: true
+                    settings:
+                      policy_type: orchestratedScan
+                      scan_type: repository
+                      product_name: brakeman
+                      product_config_name: brakeman-default
+                      repository_project: railsgoat
+                      repository_branch: <+codebase.branch>
+                      tool_args: "-A"
+                    imagePullPolicy: Always
+          serviceDependencies:
+            - identifier: dind
+              name: dind
+              type: Service
+              spec:
+                connectorRef: account.harnessImage
+                image: docker:dind
+                privileged: true
+                entrypoint:
+                  - dockerd-entrypoint.sh
+        variables:
+          - name: fail_on_severity
+            type: String
+            default: "0"
+            value: <+input>
+          - name: runner_registry_username
+            type: String
+            value: _json_key_base64
+          - name: runner_registry_token
+            type: Secret
+            value: readonlyGARb64serviceaccount
+          - name: runner_registry_domain
+            type: String
+            value: us-east1-docker.pkg.dev
+          - name: runner_registry_image_prefix
+            type: String
+            value: sto-play/sto-private
+          - name: runner_tag
+            type: String
+            value: dev
+          - name: LOG_LEVEL
+            type: String
+            value: DEBUG
+
+```
+
+</details>

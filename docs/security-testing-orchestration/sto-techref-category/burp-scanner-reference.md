@@ -95,3 +95,79 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 ```
 <StoSettingFailOnSeverity />
 
+### YAML pipeline example
+
+<details><summary>Burp pipeline example</summary>
+
+<!-- https://qa.harness.io/ng/account/BdsgiWzwT7CQFeJl9XkQ3A/sto/orgs/default/projects/STO/pipelines/burp_step/pipeline-studio/?storeType=INLINE&stageId=sto -->
+
+```yaml
+pipeline:
+  name: burp step
+  identifier: burp_step
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: sto
+        identifier: sto
+        description: ""
+        type: SecurityTests
+        spec:
+          cloneCodebase: false
+          execution:
+            steps:
+              - parallel:
+                  - step:
+                      type: Burp
+                      name: extract burp site
+                      identifier: extract_burp_site
+                      spec:
+                        auth:
+                          access_token: <+secrets.getValue('burp_api_key')>
+                          domain: https://bsee.dev.sto.harness.io/
+                        mode: extraction
+                        config: default
+                        target:
+                          name: <+pipeline.name>
+                          type: instance
+                          variant: dataload
+                        advanced:
+                          log:
+                            level: debug
+                          fail_on_severity: critical
+                        tool:
+                          site_id: "2"
+                  - step:
+                      type: Burp
+                      name: orchestrate burp scan
+                      identifier: orchestrate_burp_scan
+                      spec:
+                        auth:
+                          access_token: <+secrets.getValue('burp_api_key')>
+                          domain: https://bsee.dev.sto.harness.io/
+                        mode: orchestration
+                        config: crawl-and-audit-lightweight
+                        target:
+                          name: <+pipeline.name>
+                          type: instance
+                          variant: orchestration
+                        advanced:
+                          log:
+                            level: debug
+                        instance:
+                          domain: https://itsecgames.com
+                          protocol: https
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: stoqadelegate
+              namespace: harness-qa-delegate
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+
+```
+
+</details>
