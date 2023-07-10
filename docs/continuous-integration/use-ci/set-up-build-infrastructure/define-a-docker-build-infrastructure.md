@@ -302,7 +302,9 @@ Delegate selections take precedence in the following order:
 2. Pipeline
 3. Platform (build machine delegate)
 
-Stages that don't have stage-level delegate selectors use the pipeline-level selector, if present, or the platform delegate.
+This means that if delegate selectors are present at the pipeline and stage levels, then these selections override the platform delegate, which is the delegate that you installed on the build machine. If a stage has a stage-level delegate selector, then it uses that delegate. Stages that don't have stage-level delegate selectors use the pipeline-level selector, if present, or the platform delegate.
+
+For example, assume you have a pipeline with three stages called `alpha`, `beta`, and `gamma`. If you specify a stage-level delegate selector on `alpha` and you don't specify a pipeline-level delegate selector, then `alpha` uses the stage-level delegate, and the other stages (`beta` and `gamma`) use the platform delegate.
 
 Delegate selectors do not override service infrastructure connectors. Delegate selectors only determine the delegate that executes the operations of your pipeline.
 

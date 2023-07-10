@@ -117,8 +117,8 @@ Delegate selections take precedence in the following order:
 1. Step
 2. Step Group
 3. Stage
-2. Pipeline
-3. Connector
+4. Pipeline
+5. Connector
 
 Delegate selectors do not override service infrastructure connectors. Delegate selectors only determine the delegate that executes the operations of your pipeline.
 
