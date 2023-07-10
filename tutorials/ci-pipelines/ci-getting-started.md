@@ -248,7 +248,7 @@ You can build even faster with Harness CI - Learn how you can build and test Apa
 <figcaption></figcaption>
 </figure>
 
-Harness CI gives you speed benefits at a much lower cost. We compared the cost of running a single build for Apache Kafka, RocketMQ and Zookeeper.
+Harness CI gives you speed benefits at a much lower cost. We compared the cost of running a single build for Apache Kafka, RocketMQ, and Zookeeper.
 
 * GitHub Actions costs $0.008 per build minute.
 * CI Vendor 2 costs $0.0120 per build minute.
