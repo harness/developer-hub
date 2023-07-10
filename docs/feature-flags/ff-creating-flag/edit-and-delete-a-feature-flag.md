@@ -94,3 +94,20 @@ Restoring a flag makes it available for evaluation if the flag is referenced in 
 1. Next to the flag you want to restore, select **more options** (**︙**), and then select **Restore**.
 1. On the confirmation screen, select **Restore**.
 
+### Delete an archived flag
+
+Archived flags are automatically deleted 30 days after you archive them. But if you're sure you want to delete the flag immediately, you can delete an archived flag before that 30-day period ends.
+
+**To delete an archived flag:**
+
+1. In your Harness project, navigate to **Feature Flags > Feature Flags**, and then select the **Archived** filter at the top of the page.
+
+   A list of archived flags is displayed.
+
+1. Next to the flag you want to delete, select **more options** (**︙**), and then select **Delete**.
+1. Follow the instructions on the confirmation screen, and then select **Delete**.
+
+
+
+
+
