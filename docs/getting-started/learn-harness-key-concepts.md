@@ -98,7 +98,7 @@ A step group is a collection of steps that share the same logic such as the same
 
 ![](./static/learn-harness-key-concepts-13.png)
 
-See [Run Steps in a Step Group](../continuous-delivery/x-platform-cd-features/cd-steps/step-groups.md).
+See [Run Steps in a Step Group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/).
 
 ### Services
 
