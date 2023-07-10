@@ -713,7 +713,7 @@ The basic deployment execution strategy uses the **Deploy Cloud Function** step.
 
 ### Canary
 
-Harness provides a [step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups) to perform the canary deployment. 
+Harness provides a [step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups) to perform the canary deployment. 
 
 The step group consists of:
 
@@ -758,7 +758,7 @@ The step group consists of:
 
 ### Blue Green
 
-Harness provides a [step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups) to perform the blue green deployment. 
+Harness provides a [step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups) to perform the blue green deployment. 
 
 The step group consists of: 
 

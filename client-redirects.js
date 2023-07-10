@@ -62,6 +62,11 @@ module.exports = {
     },
 
     {
+      from: "/docs/continuous-delivery/cd-services/k8s-services/kubernetes-services",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services"
+    },
+    
+    {
       from: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services",
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services"
     },
@@ -84,6 +89,11 @@ module.exports = {
 
     // Created by roshnisarangadharan from branch DOC-3192-remove-single-topic-folders on June 15 2023
     
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups",
+    },
+
     {
       from: "/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos",
       to: "/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos",

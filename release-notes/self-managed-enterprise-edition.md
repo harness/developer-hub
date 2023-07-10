@@ -41,10 +41,11 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
 
-
-
-
 #### Continuous Integration
+
+- The **Get Started** button on the Harness CD start page resulted in an error, preventing Harness CD from opening. (CDS-70665, PLG-2570)
+
+   This issue is fixed. Harness CD now starts as expected.
 
 - You can now reference [output variables produced by Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables) in pipelines that use Kubernetes cluster build infrastructures. This is an addition to previously-existing support for Harness Cloud and self-hosted Cloud provider VM build infrastructures. (CI-7491)
 
@@ -465,6 +466,53 @@ This release includes the following Harness module and component versions.
 - Error budget burn rate notifications are not being sent for Request Based SLO. (SRM-14705).  
   
     This issue has been resolved, and error budget burn rate notifications are now being sent for Request Based SLO also.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Patch release">
+```
+
+## July 7, 2023, patch release for version 79421
+
+Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.7.1](https://github.com/harness/helm-charts/releases/tag/harness-0.7.1) |
+| Air Gap Bundle | [0.7.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.7.1) |
+| NG Manager | 79422 |
+| CI Manager | 3907 |
+| Pipeline Service | 1.33.8 |
+| Platform Service | 79202 |
+| Access Control Service | 79004 |
+| Change Data Capture | 79422 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.349.16 |
+| LE NG | 67902 |
+
+#### What's new
+
+- Send emails to non-Harness users. (CDS-69561, CDS-58625, ZD-42496)
+  
+  To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
+
+  For more information on how to send emails to non-Harness users, go to [Email step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
+
+  Harness Delegate version 79503 is required for this feature.
+
+- The [Harness Helm charts](https://github.com/harness/helm-charts) `values.yaml` file is updated to include Error Tracking images. (SMP-1615)
+
+#### Early access
+
+This release does not include any early access features.
+
+#### Fixed issues
+
+- SAML SSO sign-in attempts failed after upgrading from 0.6.0 to 0.7.0.  (PL-39850, SMP-1583)
+
+   This issue is fixed. SAML SSO sign-ins no longer fail after an upgrade.
 
 ```mdx-code-block
   </TabItem>

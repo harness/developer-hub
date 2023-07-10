@@ -16,6 +16,24 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### July 06, 2023, version 79807
+
+#### What's new
+
+- The ubi8-minimal:8.7 has been upgraded to version ubi8-minimal:8.8 (PL-39276)
+
+#### Early access
+
+- Introduced a more consistent pipeline execution status. (CDS-70387, ZD-44892)
+  
+  Harness has introduced an enhancement for displaying the negative status of parallel pipelines. For a pipeline with concurrently running stages, the ABORTED, REJECTED, and EXPIRED statuses now have higher priority over the FAILED status. 
+
+  This functionality is behind the feature flag, `SPG_CG_REJECT_PRIORITY_WHEN_FORK_STATE`.
+
+#### Fixed issues
+
+- Improved error handling mechanism when Helm manifests are not fetched from the Artifactory repository. (CDS-68251, ZD-37458)
+
 ### June 28, 2023, version 79714
 
 #### What's new

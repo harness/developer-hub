@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-06-28T10:00
+date: 2023-07-07T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -17,7 +17,73 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 28, 2023
+
+## Latest - July 07, 2023
+
+### Cloud Cost Management, version 80002
+
+* Azure VM recommendations (CCM-13142)
+
+  Now, the recommendations are computed based on both **Memory Utilization** data and the existing **CPU Utilization** tracking data.
+
+* Budget Sorting Enhancement (CCM-10948)
+
+  This enhancement allows you to conveniently sort budgets alphabetically in Harness CCM. You can now browse and navigate through budgets more efficiently.
+
+* Recommendations enhancement (CCM-11665)
+
+  You can now easily move recommendations from the **Applied** state back to the **Open** state. This enhancement allows you to easily rectify accidental closure of recommendations or marking Jira tickets as done by returning them to an actionable state.
+
+## July 06, 2023
+
+### Continuous Delivery, version 79811
+
+- Template Library: Reference specific versions of a template on a different branch from the pipeline (CDS-69774)
+  
+  While using Harness Git Experience for pipelines and templates, you can now link templates from specific branches.
+  
+  Previously, templates were picked either from the same branch as the pipeline, if both pipelines and templates were present in the same repository, or from the default branch of the repository, if templates were stored in a different repository than the pipeline.
+  
+  The default logic will continue to be used if no branch is specified when selecting the template, but if a specific branch is picked while selecting the template then templates are always picked from the specified branch only.
+
+### Harness Platform, version 79811
+
+- Harness now allows special characters in usernames. (PL-39564, ZD-46487)
+- You can now view delegate logs when validating a connector that uses delegates to establish connections. (PL-37919)
+- When creating Azure Key Vault, you can now manually enter the vault name. (PL-32773, ZD-44045)
+
+## July 5, 2023 
+
+### Security Testing Orchestration, version 1.60.0
+
+You can now set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
+
+For information on how to set up this workflow, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+
+## June 30, 2023
+
+### Cloud Cost Management
+
+* Azure inventory management (CCM-12676)
+
+  As part of the Azure inventory management, now you can monitor the **Memory Utilization** data for virtual machines (VMs) along with the existing **CPU Utilization** tracking data.
+
+* Clone AutoStopping rules (CCM-12337)
+
+  You can now clone an AutoStopping rule. To clone a rule, navigate to the rule you want to replicate and select the **Clone** option from the more options menu. After you choose the Clone option, you can update the instance details according to your requirements. This allows you to create a new rule based on the existing one, saving you time and effort in setting up similar rules for different instances.
+
+* Budget alert enhancements 
+
+  - The cost alerts for daily budgets are now triggered on an hourly basis. Previously, cost alerts for daily budgets were triggered only at specific intervals, which could potentially result in delayed notifications if the threshold was crossed outside those intervals. However, with the increased frequency, you can now receive timely alerts as soon as the threshold is exceeded, regardless of the time of day. (CCM-12028)
+  - Significant improvements have been made to the Slack budget alert messages for both budgets and budget groups. Now, when receiving a budget alert, you will find detailed information related to the perspective from which the budget was created, the allocated budget amount, the current spend, and the forecasted spend. (CCM-12647)
+
+      <docimage path={require('./static/ccm-budget-slack-msg.png')} width="60%" height="60%" title="Click to view full size image" />
+
+      <docimage path={require('./static/ccm-budget-grp-slack-msg.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+
+## June 28, 2023
 
 ### Continuous Delivery, version 79714
 
