@@ -1,7 +1,7 @@
 ---
 title: Overview
 description: A home for developers to create, manage, and explore software.
-sidebar_position: 50
+sidebar_position: 1
 ---
 
 # Overview of Harness IDP
