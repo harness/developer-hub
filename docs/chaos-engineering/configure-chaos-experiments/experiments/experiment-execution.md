@@ -41,21 +41,50 @@ Experiments are templates to create new chaos experiments, which contain a colle
 
 Both experiments and faults are stored as manifests in an appropriate directory structure. Hence, you can add new experiment templates and faults directly to the repository as files. In addition, you can derive the experiment templates from the existing experiments and save them to the Chaos Hub from the UI.
 
-## What is resiliency score?
+## How the resilience score is calculated
 
-**Resiliency score** is a quantitative measure of how resilient is the target environment when the respective chaos experiment is performed on it.
+The **resilience score** is a quantitative measure obtained when you run a chaos experiment. This score represents how resilient the target environment is when you run that chaos experiment on it.
 
-While creating a chaos experiment, certain weights are assigned to all the constituent faults. These weights signify the priority/importance of the respective fault. The higher the weight, the more significant is the fault.
+The score is calculated based on:
 
-The weight priority is generally divided into three sections:
+* The weight you give each fault in the experiment.
+* The success rate of the probes in each fault.
 
-- `0-3`: Low Priority
-- `4-6`: Medium Priority
-- `7-10`: High Priority
+### Fault weight
 
-Once a weight has been assigned to the fault, we look for the Probe Success Percentage (a ratio of successful checks v/s total probes) for that experiment itself post the chaos and calculate the total resilience result for that experiment as a multiplication of the weight given and the probe success percentage returned after the Chaos Run.
+While creating a chaos experiment, you can assign a weight between 1 - 10 to each fault. This represents the priority/importance of the respective fault. The higher the weight, the more significant the fault is.
 
-```
-Fault Resilience = (Fault Weight * Probe Success Percentage)
-Overall Resilience Score = Cumulative Fault Resilience / Sum of the assigned weights of the experiments
-```
+For example:
+
+- Low Priority: 0 - 3
+- Medium Priority: 4 - 6
+- High Priority: 7 - 10
+
+### Success rate of probes in each fault
+
+The **probe success percentage** for a fault is the ratio of successful probes to total probes. For example, if a fault has 4 probes and only 2 of them are successful, then the probe success percentage for this fault is 50%.
+
+### Resilience calculation
+
+Based on fault weights and probe success rates, you can calculate two types of resilience score (represented as a percentage):
+
+* **A fault's resilience** = fault weight * probe success percentage<br />
+* **The experiment's total resilience** = sum of all fault resilience / sum of all fault weights of the experiments
+
+Here's an example:
+
+* **Experiment A** runs, and includes 3 faults. Fault weights, number of probes, and resulting success rates of this experiment are as follows.
+
+   | Fault | Weight | Number<br />of probes | Probes<br />succeeded | Fault<br />resilience |
+   |:----:|:---:|:---:|:-------:|:-------:|
+   | Fault1 | 2 | 1 | 0 (or 0%) | 0%    | 
+   | Fault2 | 4 | 2 | 2 (or 100%) | 400%  | 
+   | Fault3 | 8 | 4 | 3 (or 75%) | 600%   | 
+   |        | **Sum: 14** |  |    | **Sum: 1000%**   |  
+<br />
+* **Experiment A's total resilience score** 
+
+   Divide the sum of all fault resilience by the sum of all fault weights:
+
+   **1000% / 14 = 71%**
+
