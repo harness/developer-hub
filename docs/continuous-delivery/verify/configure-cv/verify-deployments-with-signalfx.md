@@ -1,5 +1,5 @@
 ---
-title: Splunk Observability [SignalFx] 
+title: Splunk Observability (SignalFx) 
 description: Verify deployments with Splunk Observability [SignalFx]. 
 sidebar_position: 11
 helpdocs_is_private: false
@@ -23,6 +23,12 @@ Harness Continuous Verification (CV) integrates with Splunk Observability [Signa
 * Apply machine learning to every deployment to identify and flag anomalies in future deployments.
 
 This topic describes how to set up a Splunk Observability [SignalFx] health source when adding a CV step to your Continuous Deployment (CD).
+
+
+:::important
+When using Splunk Observability [SignalFx] health source, it is not possible to derive a metric by using a combination of other metrics.
+:::
+
 
 ## Prerequisite
 

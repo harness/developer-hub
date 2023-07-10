@@ -39,6 +39,16 @@ Harness CV supports the following log health sources:
 - Splunk
 - Sumologic
 
+
+### Queries
+
+Consider the following when configuring a health source and constructing a query in Harness CV:
+
+- The query result should be below 100 logs per minute. If the logs exceed this limit, Harness performs random sampling for processing.
+
+- The query response should be a single time series.
+
+
 To know how to add a health source, go to [Configure CV](/docs/category/configure-cv).
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).
