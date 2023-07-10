@@ -1,5 +1,5 @@
 ---
-title: ECS deployments
+title: ECS deployments overview
 description: This topic walks you through deploying services to AWS ECS clusters using Harness.
 sidebar_position: 1
 helpdocs_topic_id: vytf6s0kwc
