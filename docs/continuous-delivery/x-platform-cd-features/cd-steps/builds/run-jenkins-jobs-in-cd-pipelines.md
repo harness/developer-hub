@@ -18,7 +18,7 @@ For more information, go to [supported platforms and technologies](/docs/gettin
 
 ## Limitations and requirements
 
-* **EnvInject plugin**: For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject plugin](https://wiki.jenkins.io/display/JENKINS/EnvInject+Plugin). The plugin does not provide full compatibility with the pipeline plugin. Go to [known limitations](https://plugins.jenkins.io/envinject) from Jenkins for more information.
+* **EnvInject plugin**: For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject plugin](https://plugins.jenkins.io/envinject/). The plugin does not provide full compatibility with the pipeline plugin. Go to [known limitations](https://plugins.jenkins.io/envinject/#plugin-content-other-limitations) from Jenkins for more information.
 * **CD and custom stage types only**: The Jenkins step is available in CD (deploy) and custom stages only.
 * **Jenkins with GitHub plugin**: Branch names cannot contain double quotes if you are using Jenkins with a GitHub plugin. If any previous build executed by Jenkins used a branch with double quotes in its name, delete the history of branches built already, or recreate the job.
 
@@ -60,7 +60,7 @@ Go to [fixed values, runtime inputs, and expressions](https://developer.harness.
 
 ## Job parameters
 
-If you are using a [parameterized build](https://wiki.jenkins.io/display/JENKINS/Parameterized+Build), when you select the job in **Job Name**, Harness will automatically populate any job parameters from the server.
+If you are using a [parameterized build](https://wiki.jenkins.io/display/JENKINS/Parameterized-Build.html), when you select the job in **Job Name**, Harness will automatically populate any job parameters from the server.
 
 ![](../../advanced/static/run-jenkins-jobs-in-cd-pipelines-30.png)
 
@@ -111,7 +111,7 @@ echo "Full build display name:" <+execution.steps.[step_Id].build.buildFullDispl
 
 :::note
 
-If you are using [step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups.md) the expressions must include the step group Ids also.
+If you are using [step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups.md) the expressions must include the step group Ids also.
 
 For example, `<+execution.steps.[step group Id].steps.[step Id].build.jobUrl>`.
 

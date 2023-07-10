@@ -6,10 +6,17 @@ sidebar_position: 2
 
 
 :::info important
-Currently, AIDA is a beta feature that is behind the feature flags `CCM_GOVERNANCE_GENAI_ENABLE`, `CI_AI_ENHANCED_REMEDIATIONS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, AIDA is a beta feature and is behind feature flags. 
+
+CCM - `CCM_GOVERNANCE_GENAI_ENABLE`
+
+CI - `CI_AI_ENHANCED_REMEDIATIONS`
+
+STO - `STO_AI_ENHANCED_REMEDIATIONS`
+
+Contact [Harness Support](mailto:support@harness.io) to enable the features.
 
 :::
-
 
 The Harness platform leverages Harness AI Development Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software development lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empowers teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
 
@@ -25,6 +32,13 @@ Following are some key benefits of Harness AIDA:
   For more information, go to [Remediations with AIDA](https://developer.harness.io/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).
 
 ## Additional resources
+
+Learn more about the AI capabilities in Harness products:
+
+
+- CCM - [Asset governance with AIDA](https://developer.harness.io/docs/category/harness-aida-for-asset-governance).
+- CI - [Troubleshooting with AIDA](http://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida).
+- STO - [Remediations with AIDA](https://developer.harness.io/docs/security-testing-orchestration/use-sto/view-and-troubleshoot-vulnerabilities/ai-based-remediations).  
 
 Review the following information for details about data privacy and terms of use:
 

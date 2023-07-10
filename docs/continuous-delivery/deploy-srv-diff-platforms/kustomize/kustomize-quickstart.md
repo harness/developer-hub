@@ -1,5 +1,5 @@
 ---
-title: Kustomize deployments
+title: Kustomize deployments overview
 description: This topic walks you through deploying a kustomization using Harness.
 sidebar_position: 1
 helpdocs_topic_id: uiqe6jz9o1

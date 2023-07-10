@@ -70,3 +70,37 @@ You can install the Docker delegate into Amazon ECS Fargate. For more informatio
 ### Install a legacy Kubernetes delegate
 
 The legacy Kubernetes delegate, denoted `latest` container image tag, is used primarily in Harness FirstGen had the auto-upgrade setting ON by default and did not have the flexibility to turn OFF this setting if needed. This type of delegate is now deprecated for new Harness accounts. For more information, go to [Install a legacy Kubernetes delegate](/docs/platform/2_Delegates/install-delegates/install-a-kubernetes-delegate.md).
+
+### Install Docker delegate using Podman
+
+You can install the Docker delegate using Podman by adding Podman commands to your Dockerfile. The example below uses a delegate with the immutable image type. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). 
+
+#### Sample Podman file
+
+```
+sudo apt-get -y update
+
+sudo apt-get -y install podman
+
+podman run --restart=always --hostname="$(hostname -f)"  \
+-e DELEGATE_NAME=YOUR_DELEGATE_NAME  \
+-e NEXT_GEN="true"  \
+-e DELEGATE_TYPE="DOCKER"  \
+-e ACCOUNT_ID=YOUR_ACCOUNT_ID  \
+-e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN  \
+-e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/  \
+-e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  \
+delegate:yy.mm.xxxxx
+
+podman ps
+```
+
+Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` value with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+
+| Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
+| ------------------------| -------------------------------------------	|
+| SaaS prod-1  	 		| `https://app.harness.io`       				|
+| SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
+| SaaS prod-3  	 		| `https://app3.harness.io`        				|
+| [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
+| [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
