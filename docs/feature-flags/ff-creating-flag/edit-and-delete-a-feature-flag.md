@@ -63,8 +63,9 @@ To remove a flag from Harness you must archive it first. This gives you the opti
 
 You can archive a flag if it's not a prerequisite to other flags. If it is, remove it as a prerequisite, and then archive it.
 
-:::info note
- Make sure you are ready to remove the flag from all of your environments. When you archive a flag, it is removed from all environments.
+:::info notes
+1. When you archive a flag, it is removed from all environments.
+2. You cannot archive a flag if it is a prerequisite to other flags. Remove the flag as a prerequisite, and then you can archive it.
 :::
 
 **To archive a flag:**
@@ -74,10 +75,6 @@ You can archive a flag if it's not a prerequisite to other flags. If it is, remo
 
    The Archive Flag confirmation screen appears.
 
-   :::info note
-   You cannot archive a flag if it is a prerequisite to other flags. Remove the flag as a prerequisite, and then you can archive it.
-   :::
-
 1. If you're sure you want to archive the flag, type the name or ID of the flag in the field provided, and then select **Archive**.
 
    You can restore this flag within 30 days.
@@ -86,6 +83,10 @@ You can archive a flag if it's not a prerequisite to other flags. If it is, remo
 ### Restore a flag
 
 Restoring a flag makes it available for evaluation if the flag is referenced in your code. That is, you haven't removed the references to it when you archived the flag, or you've reinstated those references.
+
+:::info note
+When you delete a flag, it is permanently removed from all environments.
+:::
 
 **To restore a flag:**
 
