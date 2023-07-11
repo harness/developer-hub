@@ -37,9 +37,9 @@ export default function CD() {
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
             <p>
-              <a href="/docs/chaos-engineering/get-started/introduction-to-chaos-module">Chaos engineering</a> helps perform experiments on software to build 
-              confidence in the system's capability to withstand turbulent and unexpected conditions. 
-              It helps identify weaknesses and misconfiguration in the services, thereby building and validating resilience. 
+              <a href="/docs/chaos-engineering/get-started/introduction-to-chaos-module">Chaos engineering</a> lets you proactively inject controlled chaos experiments into your software environments to increase their resilience. 
+              With our extensive fault libraries, you 
+              can identify potential issues before they cause major problems, so you can minimize risk and downtime. 
             </p>
           </div>
         </div>
