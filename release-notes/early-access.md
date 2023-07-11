@@ -1,6 +1,6 @@
 ---
 title: Early access features
-date: 2023-06-19T10:00
+date: 2023-07-14T10:00
 sidebar_position: 2
 ---
 
@@ -11,17 +11,30 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - June 28, 2023
+## Latest - July 14, 2023
 
-### Continuous Delivery, version 79714
+### Continuous Integration, version 50xx
+
+The `CI_LE_STATUS_REST_ENABLED` feature has been rolled back to early access and disabled by default due to a discovered instability that caused the [CD Container step](docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step/) to fail. This feature causes CI steps to send status updates to the [Harness Manager](/docs/getting-started/harness-platform-architecture#harness-platform-components) directly by HTTP, rather than through a Delegate.
+
+This feature flag is now disabled by default and must be re-enabled if your CI-to-Harness-Manager communications need to support client connections with additional certificates. (CI-8338)
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 28, 2023
+
+##### Continuous Delivery, version 79714
 
 import Earlyaccess from '/release-notes/shared/cd-79700-early-access.md'
 
 <Earlyaccess />
 
-## June 21, 2023
+#### June 21, 2023
 
-**Harness launches Harness AI Development Assistant as a beta feature**
+##### Harness launches Harness AI Development Assistant as a beta feature
 
 The Harness platform leverages Harness AI Development Assistant (AIDA) to revolutionize software delivery processes. By combining AI capabilities with robust DevOps tools, features, and practices, the Harness platform streamlines and accelerates the software development lifecycle, and it empowers teams to deliver high-quality applications quickly and efficiently. Its AI-driven predictive analytics, continuous verification, and advanced release orchestration capabilities empowers teams to drive innovation, improve efficiency, and ultimately deliver exceptional user experiences.
 
@@ -41,11 +54,11 @@ Review the following information for details about data privacy and terms of use
 - [AIDA Terms](https://www.harness.io/legal/aida-terms)
 - [AIDA Privacy](https://www.harness.io/legal/aida-privacy)
 
-## June 19, 2023
+#### June 19, 2023
 
-### Continuous Integration, version 4204
+##### Continuous Integration, version 4204
 
-#### Output variables automatically become environment variables (CI-7817, ZD-39203)
+**Output variables automatically become environment variables (CI-7817, ZD-39203)**
 
 This functionality is behind a feature flag, `CI_OUTPUT_VARIABLES_AS_ENV`.
 
@@ -55,11 +68,11 @@ In other steps in the same stage, you can refer to the output variable by its ke
 
 For more information on this feature, go to the documentation on [Output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables).
 
-#### Remote debugging enhancements (CI-8135, CI-8048)
+**Remote debugging enhancements (CI-8135, CI-8048)**
 
 **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
 
-### Continuous Delivery, version 79606
+##### Continuous Delivery, version 79606
 
 - Scheduled automatic approvals have been added to manual approval steps. (CDS-69415)
   
@@ -71,9 +84,9 @@ For more information on this feature, go to the documentation on [Output variabl
 
   For more details, go to [Automatic Approvals](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages/#automatic-approvals).
 
-## June 09, 2023
+#### June 09, 2023
 
-### Cloud Cost Management, version 79701
+##### Cloud Cost Management, version 79701
 
 **Propagate force cool down** (CCM-12338)
   
@@ -83,7 +96,7 @@ For more information on this feature, go to the documentation on [Output variabl
   
   Propagating cool down to dependant rules is optional. You can stop the primary rule with or without propagating cool down to dependant rules.
 
-### Continuous Delivery, version 79516
+##### Continuous Delivery, version 79516
 
 <!--- Scale down the last successful stage environment created by using a Blue Green Deployment strategy. (CDS-68527)
   
@@ -94,16 +107,12 @@ For more information on this feature, go to the documentation on [Output variabl
   During scale down, the `HorizontalPodAutoscaler` and `PodDisruptionBudget` resources are removed, and the Deployments, StatefulSets, DaemonSets and Deployment Configs resources are scaled down. Make sure that the infrastructure definition of these resources and the Blue Green deployment are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
 
   Harness Delegate version 79503 is required for this feature.-->
+
 - Kubernetes deployments support `HorizontalPodAutoscaler` and `PodDisruptionBudget` for Blue Green and Canary execution strategies. (CDS-59011)
 
   This functionality is behind a feature flag, `CDS_SUPPORT_HPA_AND_PDB_NG`. 
   
   Harness Delegate version 79503 is required for this feature.
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 23, 2023, version 79306
 
