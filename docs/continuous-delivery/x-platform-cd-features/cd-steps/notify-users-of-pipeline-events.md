@@ -189,17 +189,19 @@ You can reference a secret within the Account scope using an expression with `ac
 
 ## Webhook Notifications
 
+:::info 
+
+Currently, this feature is behind the feature flag, `PIE_WEBHOOK_NOTIFICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
 Use Webhook notifications to inform an external application of an event. 
 
 Select the Webhook notification method, and then enter the URL to be called when the event occurs. 
 
-You can also use expressions to compose this URL. For example, `https://companyurl.notify.com/execution=-<+pipeline.executionId>`.
+You can also use expressions to compose this URL. For example, `https://companyurl.notify.com/execution=-<+pipeline.executionId>`. 
 
-:::note 
-
-The expression needs to be evaluated in the context of the event. For example, stage related expressions may not be valid for pipeline start events. 
-
-:::
+Note that the expression must be evaluated in the context of the event. For example, stage related expressions may not be valid for pipeline start events. 
 
 The webhook call is made as a POST request, and includes a JSON object containing the properties of the triggered event.
 
