@@ -1,7 +1,7 @@
 ---
 title: Create a step group template
 description: Streamline and standardize your deployment processes with step group templates.
-sidebar_position: 6
+sidebar_position: 8
 
 ---
 
@@ -20,26 +20,30 @@ https://harness-1.wistia.com/medias/x5wsia9i08-->
 
 ## Create a step group template
 
-Let us start by creating a template in the project scope within the **Deployments** module.  You can do this in any project.
+Let's start by creating a template in the project scope within the **Deployments** module. You can do this in any project.
 
-1. Navigate to the **Deployments** module and in **Projects** select the desired project.
-2. Under **Project Setup**, select **Templates**.
-3. Select **New Template**.
-4. Select **Step Group** to create a stage template.
+To create a template, do the following:
+
+1. In Harness, navigate to the **Deployments** module.
+2. In **Projects**, select the desired project.
+3. Under **Project Setup**, select **Templates**.
+4. Select **New Template**.
+5. Select **Step Group** to create a stage template.
    
    ![](./static/step-group-template-option.png)
 
    The **Create New Step Group Template** settings appear.
 
-5. In **Name**, enter a name for the template.
-6. In **Version Label**, enter the version of the stage. For example, v1.
-7. In **Save To**, select the scope at which you want save the template.
-8. To set up your template, select one of the following: 
+6. In **Name**, enter a name for the template.
+7. In **Version Label**, enter the version of the stage, for example `v1`.
+8. In **Save To**, select the scope at which you want save the template.
+9. To set up your template, select one of the following: 
    - **Inline**: Save the template in Harness.
    - **Remote**: Save the template in a Git repository.
-  
-  
+   
 ### Create a remote template
+
+To create a remote template, do the following:
 
   1. In **Git Connector**, select or create a Git Connector to the repo for your project.​ For more information, go to [Code Repo Connectors](../7_Connectors/Code-Repositories/connect-to-code-repo.md).
   2. In **Repository**, select your repository.
@@ -49,9 +53,7 @@ Let us start by creating a template in the project scope within the **Deployment
 
      :::
      
-     
-  3. In **Git Branch**, select your branch.​ 
-     
+  3. In **Git Branch**, select your branch.​
      
      :::note
      If your branch is not listed, enter the branch name to search and select it. Create the branch in your repository before entering it in **Git Branch**. ​Harness does not create the branch for you​​
@@ -62,7 +64,9 @@ Let us start by creating a template in the project scope within the **Deployment
 
 ## Select the stage type
 
-1. Select **Deploy**. The deploy stage type is a CD Stage that enables you to deploy any service to your target environment.
+To select the stage type, do the following:
+
+1. Select **Deploy**. The deploy stage type is a CD stage that enables you to deploy any service to your target environment.
 
    ![](./static/stage-type.png)
 
@@ -70,32 +74,31 @@ Let us start by creating a template in the project scope within the **Deployment
    
    The stage type you select determines where you can reference the step group template in the pipeline. If you select **Deploy** as the stage type, you can reference the template in any pipeline's deploy stage. If you select **Build** as the stage type, you can reference the template in any pipeline's build stage.
 
-2. In your stage, select **Add Step** and then select **Add Step**.
+2. In your stage, select **Add Step**, and then select **Add Step**.
 
    1. Select a step type from the step library.
 
-   2. Let us add a **Canary Deployment** step.
+   2. For this example, let's add a **Canary Deployment** step.
 
-   3. Enter a name for the step and then select **Apply Changes**.
+   3. Enter a name for the step, and then select **Apply Changes**.
 
-3. Next, let us add an approval step.
+3. Next, add an approval step.
 
    1. Select **Add Step** and then select **Add Step**.
 
    2. In **Approval**, select **Harness Approval**.
 
-   3. Enter a name for the step. Select the user groups and then select **Apply Changes**.
+   3. Enter a name for the step. Select the user groups, and then select **Apply Changes**.
 
    You can add more steps to form a step group.
    
+   You can also create step group templates using the Harness API or Harness Terraform provider.
 
-You can also create step group templates using the Harness API or Harness Terraform Provider.
+   Harness detects the step group object and automatically creates the step group template based on the YAML body. You need not define any additional fields in the API or Terraform provider.
 
-Harness detects the step group object and automatically creates the step group template based on the YAML body. You need not define any additional fields in the API or Terraform provider.
+   For more information on creating templates using API, go to [Create a Template](https://apidocs.harness.io/tag/Templates#operation/createTemplate).
 
-For more information on creating templates using API, see [Create Templates API](https://apidocs.harness.io/tag/Templates#operation/createTemplate).
-
-For more information on creating templates using Terraform Provider, see [Platform Template](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_template).
+   For more information on creating templates using Terraform Provider, go to [Platform Template](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_template).
 
 Here is an example of a step group template YAML.
    
@@ -143,17 +146,17 @@ Here is an example of a step group template YAML.
     versionLabel: "1.0"
 ```
 
-4. Click **Save** to save the step group template you just created.
+4. Select **Save** to save the step group template.
 
 ## Add details for conditional execution
 
-A step group can have its own **Conditional Execution** settings. This is in addition to the **Conditional Execution** settings at the Stage level. The Conditional Execution settings of the step group apply to all of its steps.
+A step group can have its own conditional execution settings. This is in addition to the conditional execution settings at the stage level. The conditional execution settings of the step group apply to all of its steps.
 
-For more information, see [Step Skip Condition Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+For more information, go to [Step Skip Condition Settings](../8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
-The Conditional Execution settings of any step in a step group overrides the conditional execution settings of the step group.
+The conditional execution settings of any step in a step group overrides the conditional execution settings of the step group.
 
-If you do not use step group Conditional Execution settings, then the stage's conditional execution settings are applied.
+If you do not use step group conditional execution settings, then the stage's conditional execution settings are applied.
 
 ## Add a failure strategy
 
@@ -161,11 +164,11 @@ A step group can have its own **Failure Strategy** separate from the failure str
 
 The failure strategy can execute the rollback steps for the step group.
 
-For more information, see [Step Failure Strategy Settings](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+For more information, go to [Step and stage failure strategy references](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
-The Failure Strategy of any step in a step group overrides the Failure Strategy of the step group.
+The failure strategy of any step in a step group overrides the failure strategy of the step group.
 
-If you do not use a step group Failure Strategy, then the Stage's Failure Strategy is applied.
+If you do not use a step group failure strategy, then the stage's failure strategy is applied.
 
 ## Add looping strategy
 
@@ -174,22 +177,21 @@ Select one of the following **Looping Strategy** options to run step multiple ti
 - Repeat
 - Parallelism
 
+For more information, go to [Looping strategies overview](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
 
-For more information, see [Looping Strategies Overview](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md)
-
-Select **Save**. Enter a comment for the changes and then select **Save**.
+Select **Save**. Enter a comment for the changes, and then select **Save**.
 
 ## Add the step group template to a pipeline
 
 You can use the step group template in any pipeline within your project.
 
-To add a step group template to a pipeline: 
+To add a step group template to a pipeline, do the following: 
 
 1. Go to the pipeline, and then select the stage where you want to add the template.
 2. Select **Add Step**.
 3. Select **Use template**.
 4. Select your step group template from the list of templates.
 5. Select **Use Template**.
-6. Enter a name for the template and select **Apply Changes**.
+6. Enter a name for the template, and then select **Apply Changes**.
 7. Select **Save**.
    Your pipeline now includes a reference to the template.
