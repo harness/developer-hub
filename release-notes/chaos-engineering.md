@@ -15,7 +15,7 @@ Review the notes below for details about recent changes to Harness Chaos Enginee
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 7, 2023, version 0.14.5
+## Latest - July 12, 2023, version 0.14.5
 
 ```mdx-code-block
 <Tabs>
