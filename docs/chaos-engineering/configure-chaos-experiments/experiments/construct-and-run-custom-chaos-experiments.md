@@ -90,4 +90,6 @@ You can add other faults to the experiment in addition to the existing set of fa
 
 Next, select the **Run** button to execute your chaos experiment. Alternatively, you can only save the experiment or add the experiment to a Chaos Hub using the **Save** button.
 
+## Analyze chaos experiments
+
 <Analyze />
