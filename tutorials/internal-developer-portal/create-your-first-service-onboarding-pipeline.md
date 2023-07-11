@@ -31,7 +31,7 @@ To create a Build or Custom stage, perform the following steps:
 
 1. In the sidebar of the Harness application, select **Projects**, and then select a project.
 
-You can also create a new project for the service onboarding pipelines. Eventually, all the users in your account should have permissions to execute the pipelines in this project. For information about creating a project, go to [Create organizations and projects](https://developer.harness.io/docs/platform/organizations-and-projects/create-an-organization/).
+You can also create a new project for the service onboarding pipelines. Eventually, all the users in your account should have permissions to execute the pipelines in this project. For information about creating a project, go to [Create organizations and projects](/docs/platform/organizations-and-projects/create-an-organization/).
 
 2. Select **Pipelines**, and then select **Create a Pipeline**.
 
@@ -126,7 +126,7 @@ You can use the **Variables** button on the floating sidebar on the right-hand s
 
 You can create any number of pipeline variables and decide their value type. Some variables, such as a GitHub token, a user name, and organization, can have a fixed value. The token used in the code above is a Harness secret whose value is decoded during pipeline execution.
 
-Variables such as project name and GitHub repository are runtime inputs. They are needed at the time of pipeline execution. When creating a new variable, you can specify its type in the UI. For more information about reference variables, go to the [reference documentation](https://developer.harness.io/docs/platform/Variables-and-Expressions/harness-variables) on pipeline variables.
+Variables such as project name and GitHub repository are runtime inputs. They are needed at the time of pipeline execution. When creating a new variable, you can specify its type in the UI. For more information about reference variables, go to the [reference documentation](/docs/platform/variables-and-expressions/harness-variables/) on pipeline variables.
 
 ### Create a software template definition in IDP
 
