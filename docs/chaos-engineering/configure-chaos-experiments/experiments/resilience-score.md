@@ -35,7 +35,7 @@ Based on fault weights and probe success rates, you can calculate two types of r
 
 Here's an example:
 
-* **Experiment A** runs, and includes 3 faults. Fault weights, number of probes, and resulting success rates of this experiment are as follows.
+* **Experiment A** runs, and includes 3 faults. Fault weights, number of probes, and probe success rates are as follows.
 
    | Fault | Weight | Number<br />of probes | Probes<br />succeeded | Fault<br />resilience |
    |:----:|:---:|:---:|:-------:|:-------:|
