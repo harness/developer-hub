@@ -138,6 +138,7 @@ Verify the following:
     
     - In the YAML replace the `JIRA_URL` with your company base URL for JIRA applications, for eg: `https://mycompany.atlassian.net`
     - Replcae the `Username` with the email ID you use to log into Jira.
+3. **Jira Task**: Create a dummy [jira issue](https://support.atlassian.com/jira-software-cloud/docs/create-an-issue-and-a-sub-task/) with type task on the project for which your API has read access and set the status to `Done`. 
 
 :::info
 
@@ -148,6 +149,36 @@ Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `D
 :::
 
 ## Add JIRA Approval Step
+
+1. In the **CD stage(deploy-guestbook)** go to **Execution** tab select **add step**.
+2. In the **Step Library** search **approval** and select **JIRA Approval**.
+3. Add a `name` to the step, and set the `timeout` to `20s`.
+4. Add the **JIRA connector** and add the **Issue Key** of the Issue you created above. 
+5. Now **set the approval criteria**, to do the same there are two ways and you can use the combination of the same as well, 
+    
+    - **Conditions**: Use the `Jira Field`, `Operator`, and `Value` to define approval criteria
+    - **JEXL Expression**: Use the [JEXL Expression](https://commons.apache.org/proper/commons-jexl/reference/syntax.html) to define the same values as under condtions, for eg: `<+issue.Status> == "Done"`  
+
+6. For this tutorial we will use set the condtions for `Status` to `Done`.
+7. Click on **apply changes** at the top right and your jira approval step is created.
+8. Since you already have a deploy step present before the approval step drag the deploy step to the right of Jira approval step. 
+7. Verify and confirm the pipeline stage and execution steps as shown below.
+8. **Save** and **Run** the pipeline. 
+
+## Add JIRA Approval Stage
+
+1. In the visual view of the pipeline, click on **Add Stage** and select the **Stage Type** as approval.
+2. Name the stage as `jira-approval-stage` and select the type as **Jira**. 
+
+:::info
+
+You do not need to use the `Jira Create` and `Jira Update` steps with the `Jira Approval step`, but they are **included** in the `Jira Approval stage` because many users want to create a Jira issue, approve/reject based on its settings, and then update the Jira issue all in one stage.
+
+::: 
+3. Follow the steps [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-jira-issues-in-cd-stages/#add-a-jira-create-step) and update the **Jira Create** step.
+4. Similarly follow the steps mentioned [here](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/update-jira-issues-in-cd-stages#add-a-jira-update-step) and update the **Jira Update** step. 
+5. Now drag the deploy-guestbook demo stage to the right of jira-approval stage. 
+6. **Save** and **Run** the pipeline. 
 
 
 ```mdx-code-block
