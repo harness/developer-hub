@@ -41,7 +41,6 @@ This feature flag is now disabled by default and must be re-enabled if your CI-t
 ```
 
 * [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/) now reads packages from files for all changed files, instead of relying on the file path to determine the package. This fixes an issue where tests were missed due to the test package not following the order of folders, because Test Intelligence previously determined the package from the class path. (CI-8692)
-* ? (CI-8655)
 * The `CI_LE_STATUS_REST_ENABLED` feature has been rolled back to early access due to a discovered instability that caused the [CD Container step](docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step/) to fail. This feature causes CI steps to send status updates to the [Harness Manager](/docs/getting-started/harness-platform-architecture#harness-platform-components) directly by HTTP, rather than through a Delegate. This feature flag is now disabled by default and must be re-enabled if your CI-to-Harness-Manager communications need to support client connections with additional certificates. (CI-8338)
 * ? (CI-7370)
 
