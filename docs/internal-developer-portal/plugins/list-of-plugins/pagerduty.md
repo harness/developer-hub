@@ -66,19 +66,21 @@ In order to configure the plugin for a service in the software catalog, one of t
 (Recommended)
 
 ```yaml
-annotations:
-  pagerduty.com/integration-key: [INTEGRATION_KEY]
+metadata:
+  annotations:
+    pagerduty.com/integration-key: [INTEGRATION_KEY]
 ```
 
 (Alternative)
 
 ```yaml
-annotations:
-  pagerduty.com/service-id: [SERVICE_ID]
+metadata:
+  annotations:
+    pagerduty.com/service-id: [SERVICE_ID]
 ```
 
 [Read more](https://github.com/backstage/backstage/tree/master/plugins/pagerduty#annotating-with-service-id)
 
 ## Support
 
-The plugin is owned by Spotify and managed on the [Backstage repository](https://github.com/backstage/backstage) as an Open Source project. Create a GitHub issue to report bugs or suggest new features on the plugin.
+The plugin is owned by Spotify and managed in the [Backstage repository](https://github.com/backstage/backstage) as an Open Source project. Create a GitHub issue to report bugs or suggest new features on the plugin.

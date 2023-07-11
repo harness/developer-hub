@@ -1,11 +1,13 @@
 ---
-title: Harness CI/CD
+title: Harness Feature Flags
+# Hidden until the plugin has been released
+hidden: true
 ---
 
 | Plugin details |                                                        |
 | -------------- | ------------------------------------------------------ |
 | **Created by** | Harness                                                |
-| **Category**   | CI/CD                                                  |
+| **Category**   | Feature flags                                          |
 | **Source**     | [GitHub](https://github.com/harness/backstage-plugins) |
 | **Type**       | Open Source plugin                                     |
 
@@ -29,7 +31,7 @@ proxy:
 
 ### 2. Secrets
 
-No secrets are required for this plugin since both IDP and CI/CD are part of Harness.
+No secrets are required for this plugin since both IDP and Feature Flags are part of Harness.
 
 ### 3. Delegate proxy
 
@@ -39,29 +41,22 @@ This plugin does not need a delegate proxy to be setup.
 
 ## Layout
 
-This plugin exports a UI Tab which can be added as a new "CI/CD" tab of a service or any other layout pages. Go to the layout section from **Admin** -> **Layout**, choose **Service** from the dropdown and add the following in the **CI/CD** section.
+This plugin exports a UI Tab which can be added as a new "Feature Flags" tab of a service or any other layout pages. Go to the layout section from **Admin** -> **Layout**, choose **Service** from the dropdown and add the following in a new **Feature Flags** section.
 
 ```yaml
-- name: ci-cd
-  path: /ci-cd
-  title: CI/CD
+- name: feature-flags
+  path: /feature-flags
+  title: Feature Flags
   contents:
     - component: EntitySwitch
       specs:
         cases:
-          - if: isHarnessCiCdAvailable
+          - if: isHarnessFeatureFlagAvailable
             content:
-              component: EntityHarnessCiCdContent
-          - content:
-              component: EmptyState
-              specs:
-                props:
-                  title: No CI/CD available for this entity
-                  missing: info
-                  description: You need to add an annotation to your component if you want to enable CI/CD for it. You can read more about annotations in Backstage by clicking the button below.
+              component: EntityHarnessFeatureFlagContent
 ```
 
-The `isHarnessCiCdAvailable` condition is met when either `harness.io/pipelines` or `harness.io/services` or `harness.io/project-url` (deprecated) annotation is present in the software components's `catalog-info.yaml` definition file.
+The `isHarnessFeatureFlagAvailable` condition is met when `harness.io/project-url` annotation is present in the software components's `catalog-info.yaml` definition file.
 
 ## Annotations
 
@@ -73,15 +68,8 @@ kind: Component
 metadata:
   # ...
   annotations:
-    # optional annotation
-    harness.io/pipelines: |
-      labelA: <harness_pipeline_url>
-      labelB: <harness_pipeline_url>
-    # here labelA / labelB denotes the value you will see in dropdown in execution list.
-    # optional annotation
-    harness.io/services: |
-      labelA: <harness_service_url>
-      labelB: <harness_service_url>
+    # mandatory annotation
+    harness.io/project-url: <harness_project_url>
 spec:
   type: service
   # ...
