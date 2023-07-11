@@ -21,7 +21,7 @@ curl -X  GET https://app.harness.io/registry/_catalog
 Here are some examples of Harness CI images and the purpose of each image. Build image tags change often.
 
 * `harness/ci-addon`: Used to execute steps on containers in Kubernetes pods
-* `harness/ci-lite-engine`: Used to orchestrate execution of steps on a Kubernetes pods
+* `harness/ci-lite-engine`: Used to orchestrate execution of steps on Kubernetes pods
 * `harness/drone-git`: Used to clone git repos
 * `plugins/cache`: Used to cache files to/from S3/GCS that help to expedite builds
 * `plugins/kaniko`: Used to build Docker images with the kaniko framework and push images to Docker registry out of the box
