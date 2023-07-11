@@ -1,6 +1,5 @@
 ---
-title: TODO
-description: Browse TODO comments in your project's source code.
+title: Kubernetes
 ---
 
 | Plugin details |                                                                                 |
