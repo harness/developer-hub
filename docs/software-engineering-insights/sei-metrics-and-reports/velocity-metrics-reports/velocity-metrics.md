@@ -44,7 +44,12 @@ On the **Settings** tab, you can:
 
 ## SCM Lead Time
 
-Use the **SCM PR Lead Time by Stage Report** to examine Lead Time based on PR stages.
+<!-- ("issues lead time by stage" - Lead time by development stages, entire SDLC, all tools) VELOCITY: lead time by stage, lead time trend, lead time by type, lead time single stat -->
+<!-- (Specifically for jira/issue management) VELOCITY: lead time by time spent in stages -->
+<!-- VELOCITY & DORA: SCM commit to cicd job lead time report, aka Commit to deployment lead time - jobs commits lead single stat, jobs commit leads trends report -->
+<!--  (this section) VELOCITY: SCM PR lead time by stage report - scm pr lead time trend report, scm pr lead time by stage report -->
+
+Use the **SCM PR Lead Time by Stage Report** to examine Lead Time based on PR stages. You can also use the **SCM PR Lead Time by Stage Trend Report** to examine daily, weekly, and monthly PR lead time trends.
 
 :::info
 
@@ -73,9 +78,9 @@ To add the SCM PR Lead Time widget to Insights:
 
 6. Select where you want to place the widget on the Insight, and then select **Save Layout**.
 
-### Calculating lead time and stages
+### Calculating PR lead time and stages
 
-Here are some examples of lead time and PR stage calculations.
+Here are some examples of PR lead time and stage calculations.
 
 These examples are based on the default workflow configuration profile with the four stages of PR creation time, time to first comment, approval time, and merge time.
 
@@ -88,7 +93,7 @@ When reviewing these examples, consider the following:
 * The overall lead time is the sum of the average time spent in each stage. This is where you can determine where teams are spending their time and whether this is an acceptable range.
 
 <details>
-<summary>SCM Lead Time calculation example #1</summary>
+<summary>SCM PR Lead Time calculation example #1</summary>
 
 For this example, assume the following series of events occurs:
 
@@ -111,7 +116,7 @@ Approval Time is calculated as `0` because there were no review comments made on
 </details>
 
 <details>
-<summary>SCM Lead Time calculation example #2</summary>
+<summary>SCM PR Lead Time calculation example #2</summary>
 
 For this example, assume the following series of events occurs:
 
@@ -133,7 +138,7 @@ Merge Time = Pull Request Merged event - Pull Request approval event
 </details>
 
 <details>
-<summary>SCM Lead Time calculation example #3</summary>
+<summary>SCM PR Lead Time calculation example #3</summary>
 
 For this example, assume the following series of events occurs:
 
