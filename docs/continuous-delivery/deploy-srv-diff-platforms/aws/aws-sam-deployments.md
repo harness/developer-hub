@@ -40,7 +40,7 @@ For details on AWS support in Harness, including tooling, limitations, and repos
 - Harness supports Go templating with SAM templates and values.yaml files.
 - Currently, you cannot add artifacts to your Harness SAM service.
 - The Harness AWS connector used in the Infrastructure Definition for the SAM stage must use the **AWS Access Key** option for credentials. The **Assume IAM role on Delegate** and **Use IRSA** options are not supported for SAM deployments.
-- You can manage whether Harness performs the SAM build within an ephemeral Docker container in a Kubernetes cluster using the `--use-container` in the Harness step. You can manage the Kubernetes settings for these steps as needed.
+- You can manage whether Harness performs the SAM build within an ephemeral Docker container in a Kubernetes cluster using the `--use-container` option in the Harness SAM Build step. You can manage the Kubernetes settings for these steps as needed.
 
 
 ## AWS permissions
