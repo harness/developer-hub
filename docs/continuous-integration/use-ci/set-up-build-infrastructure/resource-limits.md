@@ -5,8 +5,8 @@ sidebar_position: 80
 ---
 
 ```mdx-code-block
-import k8sEviction from '/docs/continuous-integration/shared/k8s-pod-eviction-trbs.md';
-import dockerHubRateLimit from '/docs/continuous-integration/shared/docker-hub-rate-limiting-trbs.md';
+import Kubevict from '/docs/continuous-integration/shared/k8s-pod-eviction-trbs.md';
+import Dhrl from '/docs/continuous-integration/shared/docker-hub-rate-limiting-trbs.md';
 ```
 
 This topic describes container resource allocation logic, how you can configure resource limits, and troubleshooting for issues related to resource allocation.
@@ -199,7 +199,7 @@ The following troubleshooting guidance addresses some issues you might experienc
 
 ### CI pods appear to be evicted by Kubernetes autoscaling
 
-<k8sEviction />
+<Kubevict />
 
 ### Use a parallel step to monitor failures
 
@@ -264,4 +264,4 @@ If you need to debug failures that aren't captured in the standard [Build logs](
 
 ### Docker Hub rate limiting
 
-<dockerHubRateLimit />
+<Dhrl />
