@@ -109,7 +109,7 @@ You will also select:
 
 A Harness GitOps Agent is a worker process that runs in your environment, makes secure, outbound connections to Harness SaaS, and performs all the GitOps tasks you request in Harness.
 
-Here's an image that illustrates how Agent interacts with Harness:
+Here's an image that illustrates how the Agent interacts with Harness:
 
 ![Agent and Harness interaction](static/agent.png)
 
@@ -119,7 +119,7 @@ You can run an Agent in your target cluster or in any cluster that has access to
 
 Agents can deploy to all clusters or you can isolate an Agent in a single cluster. For example, you might have one Agent deploy to Dev and QA environments and another Agent deploy to the production environment.
 
-Here's an image that illustrates a Kubernetes deployment on the same cluster as the Agent, deployment on different clusters, deployment on two different clusters from one Agent: 
+Here's an image that illustrates a Kubernetes deployment on the same cluster as the Agent, a deployment on different clusters, and deployments on two different clusters using one Agent: 
 
 ![deployment on clusters](static/deploy-cluster.png)
 
@@ -147,7 +147,7 @@ Clusters are synced with the source manifests you add as GitOps Repositories.
 
 You can run an Agent in your target cluster or in any cluster that has access to your target clusters.
 
-Clusters can have both Harness Delegate and Agent, or just the Agent: 
+Only the Agent is needed for GitOps, but the Harness Delegate is needed for other Harness operations (RBAC, etc.). You can use the Agent cluster for both the Harness Delegate and the Agent, or just the Agent: 
 
 ![cluster with agent and delegate](static/cluster-agent-delegate.png)
 
