@@ -9,8 +9,8 @@ helpdocs_is_published: true
 ---
 
 ```mdx-code-block
-import k8sEviction from '/docs/continuous-integration/shared/k8s-pod-eviction-trbs.md';
-import dockerHubRateLimit from '/docs/continuous-integration/shared/docker-hub-rate-limiting-trbs.md';
+import Kubevict from '/docs/continuous-integration/shared/k8s-pod-eviction-trbs.md';
+import Dhrl from '/docs/continuous-integration/shared/docker-hub-rate-limiting-trbs.md';
 ```
 
 This topic contains troubleshooting information for error messages and other issues that can arise with Harness CI. For more Harness troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
@@ -88,7 +88,7 @@ For more information, refer to the following Microsoft Azure troubleshooting doc
 
 ## CI pods appear to be evicted by Kubernetes autoscaling
 
-<k8sEviction />
+<Kubevict />
 
 ## Delegate is not able to connect to the created build farm
 
@@ -98,7 +98,7 @@ For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshootin
 
 ## Docker Hub rate limiting
 
-<dockerHubRateLimit />
+<Dhrl />
 
 ## Out of memory errors with Gradle
 
