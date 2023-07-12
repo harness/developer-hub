@@ -41,7 +41,7 @@ To set a connector as a favorite in Harness:
       <img src={set_connector_fav} alt="set_connector_fav" height="300" width="600"/>
    ```
 
-A filter is available on the listing pages to help you find your favorite projects and connectors. Additionally, you can filter favorite connectors in pipelines or other resources.
+A filter is available on the listing pages to help you find your favorite projects and connectors. You can also filter favorite connectors in pipelines or other resources.
 
 ## View favorites
 
