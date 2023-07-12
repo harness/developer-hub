@@ -41,7 +41,7 @@ Defining your baselines using regular expressions provides significant benefits 
   
   - Publish the current release — for example, `1.2.3` — and merge this branch into `main`. 
   - Create a "next-release" branch — for example, `1.2.4` — from `main`.
-  - Create branches from `1.2.4` for different features, hotfixed, and so on. 
+  - Create branches from `1.2.4` for different features, hotfixes, and so on. 
   - When the release is ready to publish, merge the various branches into `1.2.4`. 
   - Publish the release, merge `1.2.4` into `main`, create a new release branch such as `1.2.5`, and repeat the cycle.
 
@@ -68,7 +68,7 @@ Defining your baselines using regular expressions provides significant benefits 
 
 * You must use a consistent naming scheme for your scanned targets. This is necessary to ensure that your regular expression captures your baselines consistently and predictably. 
 
-* You should consider carefully which targets you want to use for your baselines. In general, the baseline should be the root element for all your current variants. 
+* Carefully consider which targets you want to use for your baselines. In general, the baseline should be the root element for all your current variants. 
 
 * When you specify a regular expression, the baseline is the *most recently scanned target* that matches the expression. 
 
@@ -121,7 +121,7 @@ The following table shows a few simple examples of expressions for specific use 
         <td valign="top"><code>[\d.]+</code></td>
         <td valign="top">
             <ul>
-                <li><code><b></b></code> any combination of digits and dots </li>
+                <li>Any combination of digits and dots </li>
             </ul>
         </td>
     </tr>
