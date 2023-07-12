@@ -24,7 +24,7 @@ You can set a connector as a favorite in any [scope](../4_Role-Based-Access-Cont
 
 To set a project as a favorite: 
 1. Select **Projects**.
-2. Hover on the project you want to mark as favorite, and select **Add to Favorites**.
+2. Hover on the project you want to mark as a favorite, and select **Add to Favorites**.
    
    
    ```mdx-code-block
