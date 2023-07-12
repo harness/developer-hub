@@ -168,19 +168,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="hosted" label="Harness Cloud build infrastructure" default>
 ```
 
-With the built-in **Build and Push** step:
-
 1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
-2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
-3. Select **Add Variable** and enter the following:
-   * **Name:** `PLUGIN_NO_PUSH`
-   * **Type:** **String**
-   * **Value:** `true`
-4. Save and run the pipeline.
-
-With the Buildah plugin (which is used to [build and push with non-root users](./build-and-push-nonroot.md)):
-
-1. In your CI pipeline, go to the **Build** stage that includes the **Plugin** step with the Buildah plugin.
 2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
 3. Select **Add Variable** and enter the following:
    * **Name:** `PLUGIN_DRY_RUN`
@@ -219,10 +207,22 @@ With the Buildah plugin (which is used to [build and push with non-root users](.
   <TabItem value="other" label="Kubernetes cluster build infrastructure">
 ```
 
+With the built-in **Build and Push** steps:
+
 1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
 2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
 3. Select **Add Variable** and enter the following:
    * **Name:** `PLUGIN_NO_PUSH`
+   * **Type:** **String**
+   * **Value:** `true`
+4. Save and run the pipeline.
+
+With the Buildah plugin (which is used to [build and push with non-root users](./build-and-push-nonroot.md)):
+
+1. In your CI pipeline, go to the **Build** stage that includes the **Plugin** step with the Buildah plugin.
+2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
+3. Select **Add Variable** and enter the following:
+   * **Name:** `PLUGIN_DRY_RUN`
    * **Type:** **String**
    * **Value:** `true`
 4. Save and run the pipeline.
