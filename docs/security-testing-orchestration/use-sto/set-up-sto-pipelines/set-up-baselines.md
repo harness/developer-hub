@@ -130,7 +130,7 @@ The following table shows a few simple examples of expressions for specific use 
         <td valign="top"><code>\d\d\d\d-\d\d\-\d\d</code></td>
         <td valign="top">
             <ul>
-                <li><code><b>\d\d\d\d-\d\d\-\d\d</b></code> four digits, dash, two digis, dash, two digits </li>
+                <li><code><b>\d\d\d\d-\d\d\-\d\d</b></code> four digits, dash, two digits, dash, two digits </li>
             </ul>
         </td>
     </tr>
