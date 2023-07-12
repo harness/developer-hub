@@ -34,6 +34,13 @@ module.exports = {
     //  },
     //===================================================================================
     
+    // Created by roshnisarangadharan from branch fix-broken-links-cd on July 12 2023
+
+    {
+      from: "/docs/platform/notifications",
+      to: "/docs/category/notifications",
+    },
+    
     // Created by roshnisarangadharan from branch DOC-3334-fix-broken-links-in-cd-docs on June 28 2023
 
     {
