@@ -19,11 +19,14 @@ import StoCreateDinD from './shared/dind-bg-step.md';
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
+<!-- 
 ```mdx-code-block
 import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
 ```
 
 <StoSecurityStepConfig />
+
+-->
 
 
 * `product_name` = `xray`
