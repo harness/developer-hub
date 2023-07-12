@@ -86,23 +86,22 @@ You can add the following types of templates to your Harness account/org/project
 
 ### Step template
 
-To define a linear sequence of operations for a job.
+Step templates define a linear sequence of operations for a job. For detailed steps to add a Step template, go to [Create a step template](run-step-template-quickstart.md).
 
 ![](./static/template-01.png)
-For detailed steps to add a Step Template, go to [Create a step template](run-step-template-quickstart.md).
 
 ### Stage template
 
-To define a set of stages of related jobs.
+Stage templates define a set of stages of related jobs. For detailed steps to create a Stage template, go to [Create a stage template](add-a-stage-template.md).
 
 ![](./static/template-02.png)
-For detailed steps to create a Stage Template, go to [Create a stage template](add-a-stage-template.md).
 
 ### Pipeline template
 
 You can create your own pipeline templates to standardize and distribute reusable pipelines across your team or among multiple teams. The underlying structure of a pipeline template is the same as that of a pipeline YAML.
 
 ![](./static/template-03.png)
+
 With pipeline templates you can:
 
 * Create a template based on an existing pipeline.
@@ -125,14 +124,17 @@ When using a template, you can either link to a specific version or always use 
 You can set any version of your template as the stable version using the **Set as Stable** option.
 
 ![](./static/template-04.png)
+
 ## Preview a template
 
 You can view the **Details** and **Activity Log** of your template by selecting **Preview Template**.
 
 ![](./static/template-05.png)
+
 **Activity Log** enables you to view and track all the events corresponding to your template.
 
 ![](./static/template-06.png)
+
 ## Open/edit a template
 
 You can use the **Open/Edit Template** option and navigate to the Template Studio to edit templates.
@@ -176,7 +178,7 @@ Go to [Fixed values, runtime inputs, and expressions](../20_References/runtime-i
 
 ## Template YAML
 
-You can use the Harness visual or YAML editors to create your Templates.
+You can use the Harness visual or YAML editors to create your templates.
 
 ![](./static/template-15.png)
 

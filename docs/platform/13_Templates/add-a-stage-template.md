@@ -144,7 +144,7 @@ To add a stage template to a pipeline, do the following:
 
 2. Select **Use Template**. The next page lists all the project-level templates.
 
-3. Select the Quickstart Template that you created.
+3. Select the Quickstart template that you created.
 
    ![](./static/add-a-stage-template-57.png)
 
@@ -164,7 +164,7 @@ To add a stage template to a pipeline, do the following:
 
    The template stage is added to your pipeline.
 
-   The stage is added and not copied by the Template icon in the stage.
+   The stage is added and not copied by the template icon in the stage.
 
    ![](./static/add-a-stage-template-60.png)
 

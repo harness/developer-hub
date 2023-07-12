@@ -46,9 +46,8 @@ You can add secret manager templates at any [scope](../4_Role-Based-Access-Cont
 
 The following table shows what it means to add templates at different scopes or hierarchies:
 
-|  |  |
-| --- | --- |
 | **Scope** | **When to add templates?** |
+| --- | --- |
 | **Account** | To share secret manager templates with users in the account, as well as users within the organizations and projects created within this account. |
 | **Organization** | To share secret manager templates with users in the organization, as well as within the projects created within the org. |
 | **Project** | To share secret manager templates with users within the project. |
