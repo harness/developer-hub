@@ -88,7 +88,7 @@ export default function AccessibilityPage() {
               <li>Harness CCM VAT Report</li>
               <li>Harness STO VPAT Report</li>
               <li>Harness SRM VPAT Report</li>
-              <li> Harness Chaos VPAT Report</li>
+              <li>Harness Chaos VPAT Report</li>
               <li>Harness Platform VPAT Report</li>
             </ul>
           </main>
