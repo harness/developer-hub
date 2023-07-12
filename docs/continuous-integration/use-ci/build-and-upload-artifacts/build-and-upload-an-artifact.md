@@ -37,7 +37,9 @@ These steps describes how to create a simple one-step Build stage that does not 
 
 :::info Root access required
 
-**Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md) by default. This tool requires root access to build the Docker image. It doesn't support non-root users.
+**Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md) by default (except when used with [self-hosted VM build infrastructures](/docs/category/set-up-vm-build-infrastructures), which use Docker). This tool requires root access to build the Docker image. It doesn't support non-root users.
+
+If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
 
 If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
 
@@ -196,15 +198,54 @@ import TabItem from '@theme/TabItem';
    * **Value:** `true`
 4. Save and run the pipeline.
 
+
 ```mdx-code-block
   </TabItem>
-  <TabItem value="other" label="Other build infrastructures">
+  <TabItem value="other" label="Self-hosted VM build infrastructure">
+```
+
+1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
+2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
+3. Select **Add Variable** and enter the following:
+   * **Name:** `PLUGIN_DRY_RUN`
+   * **Type:** **String**
+   * **Value:** `true`
+4. Save and run the pipeline.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="other" label="Local runner build infrastructure">
 ```
 
 1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
 2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
 3. Select **Add Variable** and enter the following:
    * **Name:** `PLUGIN_NO_PUSH`
+   * **Type:** **String**
+   * **Value:** `true`
+4. Save and run the pipeline.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="other" label="Kubernetes cluster build infrastructure">
+```
+
+With the built-in **Build and Push** steps:
+
+1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
+2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
+3. Select **Add Variable** and enter the following:
+   * **Name:** `PLUGIN_NO_PUSH`
+   * **Type:** **String**
+   * **Value:** `true`
+4. Save and run the pipeline.
+
+With the Buildah plugin (which is used to [build and push with non-root users](./build-and-push-nonroot.md)):
+
+1. In your CI pipeline, go to the **Build** stage that includes the **Plugin** step with the Buildah plugin.
+2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
+3. Select **Add Variable** and enter the following:
+   * **Name:** `PLUGIN_DRY_RUN`
    * **Type:** **String**
    * **Value:** `true`
 4. Save and run the pipeline.

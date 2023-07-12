@@ -160,9 +160,28 @@ Configure the [Security Context](https://kubernetes.io/docs/tasks/configure-pod-
 * **Allow Privilege Escalation:** When enabled, a process can gain more privileges than its parent process. This setting determines whether the [`no_new_privs`](https://www.kernel.org/doc/Documentation/prctl/no_new_privs.txt) flag gets set on the container process.
 * **Add Capabilities:** The list of capabilities to add to each step by default, in addition to the runtime defaults. This field corresponds to the [`capabilities: add`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.
 * **Drop Capabilities:** The list of capabilities that must be dropped from each step. This field corresponds to the [`capabilities: drop`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.
-* **Run as Non-Root:** Select this option to run all steps as a non-root user. You must specify a default user ID for all containers in the **Run as User** field.
 * **Read-Only Root Filesystem:** Run all steps with a read-only root filesystem that has no writable layer.
-* **Run as User:** Use the specified user ID, use as `1000`, for all containers in the pod. You can also set **Run as User** values in individual steps. If you set **Run as User** on a step, it overrides the stage's **Run as User** setting.
+* **Run as Non-Root** and **Run as User:** Go to [Run as non-root or a specific user](#run-as-non-root-or-a-specific-user).
+
+#### Run as non-root or a specific user
+
+You can use the **Run as Non-Root** and **Run as User** settings to run builds as a non-root user or a specific user ID.
+
+:::caution
+
+Using a non-root user can require other changes to your pipeline.
+
+With a Kubernetes cluster build infrastructure, all [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md) by default. This tool requires root access to build the Docker image. It doesn't support non-root users.
+
+If you enable **Run as Non-Root**, then you must:
+
+* Run the **Build and Push** step as root by setting **Run as User** to `0` on the **Build and Push** step. This will use the root user for that individual step only.
+* If your security policy doesn't allow running as root for any step, you must use the Buildah Drone plugin to [build and push with non-root users](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
+
+:::
+
+* **Run as Non-Root:** Enable this option to run all steps as a non-root user. If enabled, you must specify a default user ID for all containers in the **Run as User** field.
+* **Run as User:** Specify a user ID, such as `1000`, to use for all containers in the pod. You can also set **Run as User** values for individual steps. If you set **Run as User** on a step, it overrides the build infrastructure **Run as User** setting.
 
 ### Priority Class
 

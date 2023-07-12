@@ -12,7 +12,9 @@ This topic explains how to configure the **Build and Push to GCR** step in a Har
 
 :::info Root access required
 
-**Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md) by default. This tool requires root access to build the Docker image. It doesn't support non-root users.
+**Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md) by default (except when used with [self-hosted VM build infrastructures](/docs/category/set-up-vm-build-infrastructures), which use Docker). This tool requires root access to build the Docker image. It doesn't support non-root users.
+
+If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
 
 If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
 
@@ -102,6 +104,10 @@ Harness enables remote Docker layer caching where each Docker layer is uploaded 
 
 Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
+This step requires root access. You can use this setting if your build runs as non-root (`runAsNonRoot: true`), and you can to run the **Build and Push** step as root. To do this, set **Run as User** to `0` to use the root user for this individual step only.
+
+If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
+
 ### Set container resources
 
 Set maximum resource limits for the resources used by the container at runtime:
@@ -137,6 +143,7 @@ If the build succeeds, you can find your pushed image on GCR.
 
 ## See also
 
+* [Useful techniques for Build and Push steps](./build-and-upload-an-artifact.md#useful-techniques) (Build without pushing, build multi-architecture images, use Harness expressions for tags)
 * [Run step settings](../run-ci-scripts/run-step-settings.md)
 * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 * [Delegate overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
