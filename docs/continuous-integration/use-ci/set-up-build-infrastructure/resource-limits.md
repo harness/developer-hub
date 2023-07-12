@@ -203,32 +203,46 @@ The following troubleshooting guidance addresses some issues you might experienc
 
 ### Use a parallel step to monitor failures
 
-If you need to debug failures that aren't captured in the standard [Build logs](../viewing-builds.md#build-details), you can add a step to your pipeline that runs in parallel with the failing step. The parallel step contains commands that monitor the activity of the failing step.
+If you need to debug failures that aren't captured in the standard [Build logs](../viewing-builds.md#build-details), you can add steps to your pipeline that run in parallel with the failing step. The parallel steps contain commands that monitor the activity of the failing step and generate logs that can help you debug the failing step.
 
-1. In your pipeline's YAML, add the following step immediately after your failing step:
+1. In your pipeline's YAML, add the following two `Run` steps immediately before or after the failing step. Make sure the `timeout` is long enough to cover the time it takes for the failing step to fail; otherwise the debug steps will timeout before capturing the full logs for the failing step.
 
    ```yaml
                  - step:
                      type: Run
-                     name: Debug monitor
-                     identifier: debug_monitor
-                     connectorRef: YOUR_DOCKER_CONNECTOR ## Specify your Docker connector's ID.
-                     image: alpine ## Specify whichever image is relevant to your build.
+                     name: Debug monitor 1
+                     identifier: debug_monitor_1
                      spec:
+                       connectorRef: YOUR_DOCKER_CONNECTOR ## Specify your Docker connector's ID.
+                       image: alpine ## Specify an image relevant to your build.
+                       shell: Sh
+                       command: top -d 10
+                     timeout: 10m ## Allow enough time to cover the failing step.
+                 - step:
+                     type: Run
+                     name: Debug monitor 2
+                     identifier: debug_monitor_2
+                     spec:
+                       connectorRef: YOUR_DOCKER_CONNECTOR ## Specify your Docker connector's ID.
+                       image: alpine ## Specify an image relevant to your build.
                        shell: Sh
                        command: |-
                          i=0
                          while [ $i -lt 10 ]
                          do
-                             top -s 10
                              df -h
                              du -sh *
                              sleep 10
                              i=`expr $i + 1`
                          done
+                     timeout: 10m ## Allow enough time to cover the failing step.
    ```
 
-2. Add a `-parallel` flag above the failing step and indent your failing step and debug step under the `-parallel` flag. Other steps before and after the `-parallel` steps are indented normally. For example:
+2. Add a `-parallel` flag above the two run steps and the failing step, and then indent your failing step and debug steps under the `-parallel` flag.
+
+   Other steps before and after the `-parallel` steps should be indented normally.
+
+   For example, the following YAML shows the three parallel steps and one additional step that is outside the parallel group.
 
    ```yaml
                  - parallel:
@@ -238,27 +252,43 @@ If you need to debug failures that aren't captured in the standard [Build logs](
                          ...
                      - step:
                          type: Run
-                         name: Debug monitor
-                         identifier: debug_monitor
-                         connectorRef: YOUR_DOCKER_CONNECTOR ## Specify your Docker connector's ID.
-                         image: alpine ## Specify whichever image is relevant to your build.
+                         name: Debug monitor 1
+                         identifier: debug_monitor_1
                          spec:
+                           connectorRef: YOUR_DOCKER_CONNECTOR
+                           image: alpine
+                           shell: Sh
+                           command: top -d 10
+                         timeout: 10m
+                     - step:
+                         type: Run
+                         name: Debug monitor 2
+                         identifier: debug_monitor_2
+                         spec:
+                           connectorRef: YOUR_DOCKER_CONNECTOR
+                           image: alpine
                            shell: Sh
                            command: |-
                              i=0
                              while [ $i -lt 10 ]
                              do
-                                 top -s 10
                                  df -h
                                  du -sh *
                                  sleep 10
                                  i=`expr $i + 1`
                              done
+                         timeout: 10m
                  - step: ## Other steps are outside the parallel group.
                      type: Run
                      name: Run 3
                      ...
    ```
+
+   You can also do this in the Visual editor by dragging and dropping steps that you want to run in parallel.
+
+   <!-- ![Three steps arranged in parallel in the Pipeline Studio's Visual editor.](./static/parallel-debug-steps.png) -->
+
+   <docimage path={require('./static/parallel-debug-steps.png')} />
 
 3. Run your pipeline, and then check the parallel debug step's [Build logs](../viewing-builds.md#build-details).
 
