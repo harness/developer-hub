@@ -102,7 +102,7 @@ For instructions on creating clusters, go to:
 
    ![](../static/set-up-a-kubernetes-cluster-build-infrastructure-01.png)
 
-6. Install the Delegate on a pod in your Kubernetes build infrastructure. You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For details and instructions for each of these options, go to [Delegate installation overview](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview).
+6. Install the Delegate on a pod in your Kubernetes build infrastructure. You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For details and instructions for each of these options, go to [Delegate installation overview](/docs/platform/delegates/delegate-concepts/delegate-overview).
 7. After installing the delegate, return to the Harness UI and select **Verify** to test the connection. It might take a few minutes to verify the Delegate. Once it is verified, exit delegate creation and return to connector setup.
 8. In your Kubernetes Cluster connector's **Delegates Setup**, select **Only use Delegates with all of the following tags**.
 9. Select your new Kubernetes delegate, and then select **Save and Continue**.
