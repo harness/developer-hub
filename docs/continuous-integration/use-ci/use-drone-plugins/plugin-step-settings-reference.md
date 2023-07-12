@@ -61,22 +61,22 @@ Output variables are exposed values that can be used by other steps or stages in
 To reference an output variable in another step in the same stage, use either of the following expressions:
 
 ```
-<+steps.[stepID].output.outputVariables.[VAR_NAME]>
-<+execution.steps.[stepID].output.outputVariables.[VAR_NAME]>
+<+steps.STEP_ID.output.outputVariables.VAR_NAME>
+<+execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
 To reference an output variable in a different stage than the one where it originated, use either of the following expressions:
 
 ```
-<+stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[VAR_NAME]>
-<+pipeline.stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[VAR_NAME]>
+<+stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
+<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
 For each expression:
 
-* Replace `[stepID]` with the ID of the **Plugin** step.
+* Replace `[stepID]` with the Id of the **Plugin** step.
 * Replace `[VAR_NAME]` with the relevant variable name.
-* In cross-stage references, replace `[stageID]` with the ID of the stage where the **Plugin** step exists.
+* In cross-stage references, replace `[stageID]` with the Id of the stage where the **Plugin** step exists.
 
 ## Image Pull Policy
 
@@ -88,9 +88,9 @@ If you specified a [Container Registry and Image](#container-registry-and-image)
 
 ## Run as User
 
-If you specified a [Container Registry and Image](#container-registry-and-image), you can specify the user ID to use for running processes in containerized steps.
+If you specified a [Container Registry and Image](#container-registry-and-image), you can specify the user Id to use for running processes in containerized steps.
 
-For a Kubernetes cluster build infrastructure, the step uses this user ID to run all processes in the pod. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+For a Kubernetes cluster build infrastructure, the step uses this user Id to run all processes in the pod. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
 ## Set container resources
 
