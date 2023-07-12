@@ -41,6 +41,8 @@ This release does not include early access features.
 
 #### Feature Flags server
 
+The Feature Flags server has been updated to version **1.1076.0** with the following updates.
+
 * Fixed an issue where the query parameter `identifier` in the API `https://app.harness.io/gateway/cf/admin/segments` did not work correctly. (FFM-8298)
 
 * The flag pipeline was not updating the build number. This issue has been fixed. (FFM-8140)
