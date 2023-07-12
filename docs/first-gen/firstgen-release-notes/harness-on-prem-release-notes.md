@@ -16,7 +16,105 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](https://devel
 
 Release notes are displayed with the most recent release first.
 
-## July 7, 2023, patch release for version 79421
+## July 12, 2023, patch release for version 79421
+
+Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.7.2](https://github.com/harness/helm-charts/releases/tag/harness-0.7.2) |
+| Air Gap Bundle | [0.7.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.7.2) |
+| NG Manager | 79422 |
+| CI Manager | 3907 |
+| Pipeline Service | 1.33.8 |
+| Platform Service | 79202 |
+| Access Control Service | 79004 |
+| Change Data Capture | 79422 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.349.16 |
+| LE NG | 67902 |
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include any early access features.
+
+#### Fixed issues
+
+- Custom dashboards were not available with the 0.7.1 upgrade of Self-Managed Enterprise Edition. (CDB-981) (CDS-74271)
+
+   This issue is fixed. You can now use NextGen custom dashboards to view CurrentGen CD data, including:
+
+   - The total amount of deployed applications
+   - The total number of deployments
+   - The total number of production versus non-production deployments and the percentage of each
+   - The percentage of the applications deployed by deployment type (rolling, canary, blue/green, and basic)
+   - The change failure rate/reason for failed deployments
+  
+  To enable CD NextGen custom dashboards, you must:
+  
+  1. Run commands to update your database
+  2. Add settings to your `override.yaml` file
+  
+  Update your Harness database with the following:
+
+   ```
+   db.elasticsearchPendingBulkMigrations.remove({})
+   db.searchEntitiesIndexState.insertMany([{
+       "_id" : "software.wings.search.entities.workflow.WorkflowSearchEntity",
+       "indexName" : "workflows_0.2_1688472585962",
+       "recreateIndex" : false,
+       "syncVersion" : "0.2"
+   },
+   {
+       "_id" : "software.wings.search.entities.pipeline.PipelineSearchEntity",
+       "indexName" : "pipelines_0.2_1688472585989",
+       "recreateIndex" : false,
+       "syncVersion" : "0.2"
+   },
+   {
+       "_id" : "software.wings.search.entities.environment.EnvironmentSearchEntity",
+       "indexName" : "environments_0.2_1688472585980",
+       "recreateIndex" : false,
+       "syncVersion" : "0.2"
+   },
+   {
+       "_id" : "software.wings.search.entities.service.ServiceSearchEntity",
+       "indexName" : "services_0.2_1688472585992",
+       "recreateIndex" : false,
+       "syncVersion" : "0.2"
+   },
+   {
+       "_id" : "software.wings.search.entities.application.ApplicationSearchEntity",
+       "indexName" : "applications_0.2_1688472585986",
+       "recreateIndex" : false,
+       "syncVersion" : "0.2"
+   },
+   {
+       "_id" : "software.wings.search.entities.deployment.DeploymentSearchEntity",
+       "indexName" : "deployments_0.1_1688472585984",
+       "recreateIndex" : false,
+       "syncVersion" : "0.1"
+   }])
+   ```
+   
+   Add the following to your `override.yaml` file.
+   
+   ```yaml
+     platform:
+       harness-manager:
+          additionalConfigs:
+            SEARCH_ENABLED: 'true'
+          featureFlags:
+            ADDITIONAL: "CUSTOM_DASHBOARD_V2,TIME_SCALE_CG_SYNC" #add additional feature flags comma-separated.
+   ```
+
+### July 7, 2023, patch release for version 79421
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
@@ -36,15 +134,15 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
 
-### What's new
+#### What's new
 
 - Custom dashboard support is added for Continuous Delivery & GitOps and Service Reliability Management data models. (SMP-1585) 
 
-### Early access
+#### Early access
 
 This release does not include any early access features.
 
-### Fixed issues
+#### Fixed issues
 
 This release does not include any fixed issues.
 
