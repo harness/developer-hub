@@ -62,7 +62,7 @@ For example, the maven `m2` repo is stored in `/root/.m2` by default. If your Bu
 
 ### Advanced: Stage Variables
 
-[Stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) are available to all steps in the stage. For an example use case, go to [Build a Docker image without pushing](../build-and-upload-artifacts/build-and-upload-an-artifact.md#useful-techniques).
+[Stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) are available to all steps in the stage. For an example use case, go to [Useful techniques: Build a Docker image without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#useful-techniques).
 
 ## Infrastructure
 

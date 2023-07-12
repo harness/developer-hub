@@ -127,7 +127,7 @@ If the build succeeds, you can find your pushed image on ACR.
 
 ## See also
 
-* [Useful techniques for Build and Push steps](./build-and-upload-an-artifact.md#useful-techniques) (Build without pushing, build multi-architecture images, use Harness expressions for tags)
+* [Useful techniques for Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#useful-techniques) (Build without pushing, build multi-architecture images, use Harness expressions for tags)
 * [Run step settings](../run-ci-scripts/run-step-settings.md)
 * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 * [Delegate overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)

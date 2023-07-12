@@ -4,6 +4,11 @@ description: Use the buildah plugin if you can't use the built-in Build and Push
 sidebar_position: 90
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 All **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md) by default (except when used with [self-hosted VM build infrastructures](/docs/category/set-up-vm-build-infrastructures), which use Docker). This tool requires root access to build the Docker image. It doesn't support non-root users.
 
 If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
@@ -18,10 +23,6 @@ If your security policy doesn't allow running as root for any step, you must use
 
 ## Add a Plugin step
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 ```mdx-code-block
 <Tabs>
   <TabItem value="Visual" label="Visual">
@@ -49,7 +50,7 @@ At the point in your pipeline where you want to build and upload an image, add a
    * `dockerfile`: Specify the DockerFile to use for the build.
    * `username`: Provide the username to access the push destination, either as plaintext or an [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable), such as `<+pipeline.variables.DOCKER_HUB_USER>`
    * `password`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing the password to access the push destination, such as `<+pipeline.variables.DOCKER_HUB_SECRET>`.
-   * For additional settings, including AWS S3 settings, go to the [Buildah Drone plugin documentation](https://plugins.drone.io/plugins/buildah).
+   * For more information and additional settings, including AWS S3 settings, go to [#Settings].
 
 ```mdx-code-block
   </TabItem>
@@ -98,12 +99,30 @@ This step requires the following specifications:
    * `dockerfile`: Specify the DockerFile to use for the build.
    * `username`: Provide the username to access the push destination, either as plaintext or an [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable), such as `<+pipeline.variables.DOCKER_HUB_USER>`
    * `password`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing the password to access the push destination, such as `<+pipeline.variables.DOCKER_HUB_SECRET>`.
-   * For additional settings, including AWS S3 settings, go to the [Buildah Drone plugin documentation](https://plugins.drone.io/plugins/buildah).
+   * For more information and additional settings, including AWS S3 settings, go to [#Settings].
 
 ```mdx-code-block
   </TabItem>
 </Tabs>
 ```
+
+## Settings
+
+For information about Buildah plugin settings, go to the [Buildah README](https://github.com/drone-plugins/drone-buildah/blob/master/README.md), the [Buildah Drone Plugins Marketplace page](https://plugins.drone.io/plugins/buildah), and the the `main.go` file for each destination.
+
+* [Docker main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-docker/main.go)
+* [ACR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-acr/main.go)
+* [ECR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-ecr/main.go)
+* [GCR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-gcr/main.go)
+
+Many Buildah plugin settings correspond with settings for the built-in **Build and Push** steps. If you're encountering an error with the `buildah` plugin configuration, you can reference the settings definitions for the built-in steps for guidance on the expected value for the equivalent Buildah settings. However, keep in mind that the configuration for **Build and Push** steps (such as field names and location in the YAML) is not an exact match to the **Plugin** step configuration.
+
+| Destination | Buildah image | Buildah main.go | Equivalent Build and Push step |
+| ----------- | --------------------- | ------------------------------------- | ------------------------------ |
+| Docker Hub | `buildah-docker` | [Docker main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-docker/main.go) | [Build and Push to Docker Hub settings](./build-and-push-to-docker-hub-step-settings.md) |
+| ACR | `buildah-acr` | [ACR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-acr/main.go) | [Build and Push to ACR settings](./build-and-push-to-acr.md) |
+| ECR | `buildah-ecr` | [ECR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-ecr/main.go) | [Build and Push to ECR settings](./build-and-push-to-ecr-step-settings.md) |
+| GCR | `buildah-grc` | [GCR main.go](https://github.com/drone-plugins/drone-buildah/blob/master/cmd/drone-gcr/main.go) | [Build and Push to GCR settings](./build-and-push-to-gcr.md) |
 
 ## YAML example
 
@@ -151,18 +170,12 @@ This YAML example shows a Build (`CI`) stage with a Kubernetes cluster build inf
 
 You can use your CI pipeline to test a Dockerfile used in your codebase and verify that the resulting image is correct before you push it to your Docker repository.
 
-1. In your CI pipeline, go to the **Build** stage that includes the **Plugin** step with the Buildah plugin.
+This configuration is valid with the Docker Buildah plugin (`plugins/buildah-docker`) only.
+
+1. In your CI pipeline, go to the **Build** stage that includes the **Plugin** step with the Docker Buildah plugin.
 2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
 3. Select **Add Variable** and enter the following:
    * **Name:** `PLUGIN_DRY_RUN`
    * **Type:** **String**
    * **Value:** `true`
 4. Save and run the pipeline.
-## Troubleshooting
-
-Many **Settings** correspond with settings used in the built-in **Build and Push** steps. If you're encountering an error with the `buildah` plugin configuration, you can reference those settings definitions for information about the expected value for those settings. However, keep in mind that the configuration for **Build and Push** steps (such as field names and location in the YAML) is not an exact match to the **Plugin** step configuration.
-
-* [Build and Push to Docker Hub settings](./build-and-push-to-docker-hub-step-settings.md)
-* [Build and Push to ACR settings](./build-and-push-to-acr.md)
-* [Build and Push to GCR settings](./build-and-push-to-gcr.md)
-* [Build and Push to ECR settings](./build-and-push-to-ecr-step-settings.md)

@@ -201,7 +201,7 @@ import TabItem from '@theme/TabItem';
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="other" label="Self-hosted VM build infrastructure">
+  <TabItem value="selfvm" label="Self-hosted VM build infrastructure">
 ```
 
 1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
@@ -214,7 +214,7 @@ import TabItem from '@theme/TabItem';
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="other" label="Local runner build infrastructure">
+  <TabItem value="local" label="Local runner build infrastructure">
 ```
 
 1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.

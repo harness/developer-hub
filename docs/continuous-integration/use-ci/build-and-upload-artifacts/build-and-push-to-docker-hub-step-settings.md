@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes settings and techniques for the **Build and Push an image to Docker Registry** step, which creates a Docker image from a [Dockerfile](https://docs.docker.com/engine/reference/builder/) and pushes it to a Docker registry. For more information, go to [Build and push an artifact](./build-and-upload-an-artifact.md).
+This topic describes settings and techniques for the **Build and Push an image to Docker Registry** step, which creates a Docker image from a [Dockerfile](https://docs.docker.com/engine/reference/builder/) and pushes it to a Docker registry. For more information, go to [Build and push an artifact](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact).
 
 :::info Root access required
 
@@ -190,7 +190,7 @@ With the Buildah plugin (which is used to [build and push with non-root users](.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="other" label="Self-hosted VM build infrastructure">
+  <TabItem value="selfvm" label="Self-hosted VM build infrastructure">
 ```
 
 1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
@@ -203,7 +203,7 @@ With the Buildah plugin (which is used to [build and push with non-root users](.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="other" label="Local runner build infrastructure">
+  <TabItem value="local" label="Local runner build infrastructure">
 ```
 
 1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
