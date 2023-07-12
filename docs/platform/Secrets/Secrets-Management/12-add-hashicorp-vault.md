@@ -57,7 +57,7 @@ The Vault AppRole method allows you to define multiple roles corresponding to di
 
 To assign a **Secret ID**, you can create a new [**Secret**](../2-add-use-text-secrets.md) or choose an existing one.
 
-The SecretId should not expire and it should be valid until it is manually revoked. The App Role ID and Secret ID you supply will be used by Harness to fetch a Vault Auth Token dynamically whenever there is a CRUD operation of secrets related to this Vault. For example, when creating a secret in this vault, harness internally uses this App Role Id and Secret ID and makes a call to vault via delegate to generate a token. Now this token will be used to make the actual secret creation call to vault. This token is never received to harness side. It resides in delegate and will be destroyed after creation of secret.
+The SecretId should not expire and it should be valid until it is manually revoked. Harness uses the App Role ID and Secret ID you supply to fetch a Vault Auth Token dynamically whenever there is a CRUD operation of secrets related to this Vault. For example, when creating a secret in this Vault, Harness internally uses this App Role Id and Secret ID and makes a call to vault via the delegate to generate a token. Now, this token is used to make the actual secret creation call to vault. This token is never received on the Harness side. It resides in the delegate and is destroyed after the creation of the secret.
 
 For more information, see [RoleID](https://www.vaultproject.io/docs/auth/approle.html#roleid) and [Authenticating Applications with HashiCorp Vault AppRole](https://www.hashicorp.com/blog/authenticating-applications-with-vault-approle) from HashiCorp.
 
