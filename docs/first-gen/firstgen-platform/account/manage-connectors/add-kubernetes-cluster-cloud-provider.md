@@ -163,7 +163,7 @@ For example, here's a manifest that creates a new SA named `harness-service-acco
 
 :::note
 
-The Kubernetes SA token is not automatically generated if the SAs are provisioned under new Kubernetes versions. Create a new SA token and decode it to `base64` format.
+The Kubernetes SA token is not automatically generated if the SAs are provisioned under Kubernetes versions 1.24 or later. Create a new SA token and decode it to the `base64` format.
 
 :::
 
