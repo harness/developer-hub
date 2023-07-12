@@ -22,7 +22,7 @@ You can set a connector as a favorite in any [scope](../4_Role-Based-Access-Cont
 
 ## Set a project as a favorite
 
-To set a project as favorite: 
+To set a project as a favorite: 
 1. Select **Projects**.
 2. Hover on the project you want to mark as favorite, and select **Add to Favorites**.
    
