@@ -12,8 +12,16 @@ Harness publishes security advisories for every release. Go to the [Harness Trus
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
+## Latest - July 12, 2023
 
-## Latest - June 28, 2023
+### Security Testing Orchestration, version 1.61.1 
+
+You can now define dynamic target baselines using regular expressions. Dynamic baselines more accurately reflect the current "root" element in the context of a real-world software development life cycle. Dynamic baselines also make it easier to track the introduction and remediation of specific vulnerabilities.
+
+This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more information, go to [Set up target baselines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/set-up-baselines).
+
+
+## June 28, 2023
 
 ### Continuous Delivery, version 79714
 
