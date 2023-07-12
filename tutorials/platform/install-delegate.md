@@ -306,7 +306,11 @@ Select **Continue**. After the health checks pass, your delegate is available fo
 ### Docker
 ![Delegate Available](static/install-delegate/docker_available.png)
 
-You can now route communication to external systems in Harness connectors and pipelines by selecting this delegate via a delegate selector. 
+You can now route communication to external systems in Harness connectors and pipelines by selecting this delegate via a delegate selector.
+
+import Selector from '/docs/platform/2_Delegates/shared/selector-infrastructure.md'
+
+<Selector />
 
 ## Troubleshooting
 
