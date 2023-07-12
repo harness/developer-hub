@@ -18,6 +18,10 @@ Looking to create or update Jira issues? See [Create Jira Issues in CD Stages](/
 
 The following video shows you how to use the Jira Create, Jira Update, and Jira Approval steps:
 
+<!-- Video:
+https://www.youtube.com/embed/xVeICozz4lU-->
+<docvideo src="https://www.youtube.com/embed/xVeICozz4lU" />
+
 ### Limitations
 
 * Harness supports only Jira fields of type `Option`, `Array`, `Any`, `Number`, `Date`, and `String`. Harness does not integrate with Jira fields that manage users, issue links, or attachments. This means that Jira fields like Assignee and Sprint are not accessible in Harness' Jira integration.
