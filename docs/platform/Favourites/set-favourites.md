@@ -16,7 +16,7 @@ Currently, this feature is behind the feature flag `PL_FAVORITES`. Contact [Harn
 :::
 
 
-Set the frequently accessed projects and connectors as favorites. Harness shows favorites on the listing page and helps you navigate faster to their favorite entities or pages.
+You can set the frequently accessed projects and connectors as favorites. Harness shows favorites on the listing page and helps you navigate faster to their favorite entities or pages.
 
 You can set a connector as favorite in any [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#overview-of-the-hierarchical-setup-in-harness).
 
