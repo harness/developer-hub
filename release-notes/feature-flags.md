@@ -45,7 +45,7 @@ This release does not include early access features.
 
 * The flag pipeline was not updating the build number. This issue has been fixed. (FFM-8140)
 
-* Target attributes were not updating on conflict. This issue has been fixed. (FFM-8549)
+* Target attributes were not updating on conflict. This issue has been fixed. (FFM-8549, ZD 46770)
 
 
   </TabItem>
