@@ -44,7 +44,16 @@ Select this option to run the container with escalated privileges. This is the e
 
 ## Settings
 
-Specify plugin-specific settings according to the plugin's documentation. For more information, go to [Explore plugins](./explore-ci-plugins.md) and the [Drone plugins documentation](http://plugins.drone.io/).
+Specify plugin-specific settings according to the plugin's documentation, either in the Harness CI documentation ([Explore plugins](./explore-ci-plugins.md)) or on the Drone Plugins Marketplace.
+
+For detailed information about a plugin's settings, go to the plugin's page on the [Drone Plugins Marketplace](http://plugins.drone.io/). In addition to the settings described on a plugin's Marketplace page, each plugin has a README where you can read about the plugin's settings in detail. The README can include additional or uncommon settings that aren't described on the Marketplace page or the Harness CI documentation. You can find README links at the top of each plugin's Marketplace page.
+
+<figure>
+
+![](./static/plugin-marketplace-readme-link.png)
+
+<figcaption>Figure 1: The README link is at the top of each plugin's Drone Plugin Marketplace page.</figcaption>
+</figure>
 
 ### Output variables
 

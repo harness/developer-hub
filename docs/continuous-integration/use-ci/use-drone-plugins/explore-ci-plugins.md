@@ -35,3 +35,23 @@ How you run [GitHub Actions](https://github.com/marketplace?type=actions) in Har
 ## Jira integrations
 
 If you want your CI pipelines to update Jira issues, you can use a **Plugin** step as explained in [Integrate Jira in a CI pipeline](./ci-jira-int-plugin.md).
+
+## View artifacts
+
+You can use plugins to view artifacts on the [Artifacts tab](../viewing-builds.md). The plugin you use depends on where you upload artifacts.
+
+* **GCS:** Use the Artifact Metadata Publisher plugin. For instructions, go to [Upload artifacts to GCS: View artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings#view-artifacts-on-the-artifacts-tab).
+* **JFrog:** Use the Artifact Metadata Publisher plugin. For instructions, go to [Upload Artifacts to JFrog: View artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog#view-artifacts-on-the-artifacts-tab).
+* **S3:** Use either the Artifact Metadata Publisher plugin or the S3 Upload and Publish plugin. For instructions, go to [Upload Artifacts to S3: View artifacts on the Artifacts tab](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings#view-artifacts-on-the-artifacts-tab).
+
+## View test reports
+
+If your test reports can't be uploaded to the **Tests** tab, you can use plugins to view them on the **Artifacts** tab.
+
+* You can use the Artifact Metadata Publisher plugin to upload any test report to the **Artifacts** tab. For instructions, go to [View tests: View reports on the Artifacts tab](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests#view-reports-on-the-artifacts-tab).
+* If you use JaCoCo for code coverage, you can use the JaCoCo Drone plugin. For instructions, go to [Code coverage by language: Java](/docs/continuous-integration/use-ci/set-up-test-intelligence/code-coverage#java).
+* For other code coverage tools, you can use either the Artifact Metadata Publisher plugin or the S3 Upload and Publish plugin. For instructions, go to [Code coverage: View code coverage reports on the Artifacts tab](/docs/continuous-integration/use-ci/set-up-test-intelligence/code-coverage#view-code-coverage-reports-on-the-artifacts-tab).
+
+## Build and Push images
+
+All [Build and Push steps](../build-and-upload-artifacts/build-and-upload-an-artifact.md) use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md) by default. This tool requires root access to build the Docker image. It doesn't support non-root users. If your security policy doesn't allow running as root, you must use the [Drone Buildah plugin](https://plugins.drone.io/plugins/buildah) to build and push your images. For instructions, go to [Build and push with non-root users](../build-and-upload-artifacts/build-and-push-nonroot.md).
