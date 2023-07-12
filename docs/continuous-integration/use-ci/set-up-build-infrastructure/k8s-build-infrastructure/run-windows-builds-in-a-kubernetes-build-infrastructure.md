@@ -22,7 +22,7 @@ You can run Windows builds in your Kubernetes build infrastructure. Windows Serv
 ## Configure cluster and build infrastructure
 
 1. Set up your cluster with both Linux and Windows node pools. Linux is required for running the Delegate.
-2. [Install the Delegate](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview) on the Linux node pool by specifying the Linux node pool selector. For example, on GKE the Linux node pool label is `kubernetes.io/os: linux` and the Windows node pool label is `kubernetes.io/os: windows`. The selectors are automatically set up on the nodes.
+2. [Install the Delegate](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-overview) on the Linux node pool by specifying the Linux node pool selector. For example, on GKE the Linux node pool label is `kubernetes.io/os: linux` and the Windows node pool label is `kubernetes.io/os: windows`. The selectors are automatically set up on the nodes.
 3. In your pipeline's **Build** stage, go to the **Infrastructure** tab and configure the following settings:
    1. Select **Windows** for the **OS**.
    2. Expand the **Advanced** section, and add a **Node Selector** to use the Windows node pool. Enter `kubernetes.io/os` as the **Key** and `windows` as the **Value**.
