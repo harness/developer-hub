@@ -90,7 +90,7 @@ To create a remote stage template from the project scope, do the following:
    ![](./static/create-a-remote-stage-template-89.png)
 
 8. In **Repository**, select your repository. If your repository isn't listed, enter its name. ​Create the repository in Git before entering it in Select Repository. Harness does not create the repository for you.​
-9. In **Git Branch**, select your branch. If your branch isn't listed, enter its name since only a select few branches are filled here.Create the branch in your repository before entering it in Git Branch. Harness does not create the branch for you.​​
+9. In **Git Branch**, select your branch. If your branch isn't listed, enter its name since only a select few branches are filled here. Create the branch in your repository before entering it in Git Branch. Harness does not create the branch for you.​​
 10. ​Harness auto-populates the **YAML Path**. You can change this path and the file name.
 11. Select **Start**.​​  
 

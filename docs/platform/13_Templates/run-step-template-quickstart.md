@@ -10,13 +10,13 @@ helpdocs_is_published: true
 
 The Harness Template Library enables you to standardize and create step templates that can be re-used across pipelines and teams that use Harness.
 
-This topic walks you through the steps to create a run step template.
+This topic walks you through the steps to create a Run step template.
 
 ### Objectives
 
 You'll learn how to: 
 
-* Create a run step template.
+* Create a Run step template.
 * Define template parameters.
 * Use the run step template in a pipeline.
 

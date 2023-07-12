@@ -164,7 +164,7 @@ A step group can have its own **Failure Strategy** separate from the failure str
 
 The failure strategy can execute the rollback steps for the step group.
 
-For more information, go to [Step and stage failure strategy references](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+For more information, go to [Step and stage failure strategy references](../8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
 The failure strategy of any step in a step group overrides the failure strategy of the step group.
 

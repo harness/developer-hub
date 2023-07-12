@@ -66,7 +66,7 @@ To create a remote pipeline template, do the following:
 
 1. In your Harness Account, go to your project.
 2. In **Project SETUP**, select **Templates**.
-3. Selectd **New Template**, and then select **Pipeline**. The **Create New Pipeline Template** settings appear.
+3. Select **New Template**, and then select **Pipeline**. The **Create New Pipeline Template** settings appear.
 4. In **Name**, enter a name for the template.
 5. In **Version Label**, enter a version for the template.
 6. Select **Remote**.

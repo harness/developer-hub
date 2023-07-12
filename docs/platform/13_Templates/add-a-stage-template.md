@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-The Harness Template Library enables you to standardize and create Templates that you can use across Harness Pipelines and teams.
+The Harness Template Library enables you to standardize and create templates that you can use across Harness Pipelines and teams.
 
 A stage template is a Harness CD, CI, or approval stage template that you can use in any pipeline in any project.
 
@@ -33,7 +33,7 @@ You'll learn how to: 
 ### Review: Templates
 
 * You can add templates to template libraries at any [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope).
-* [Tags](../20_References/tags-reference.md) can be used to group ]templates. You can search or filter templates using these tags.
+* [Tags](../20_References/tags-reference.md) can be used to group templates. You can search or filter templates using these tags.
 * You can have nested templates. You can refer to a stage template from your pipeline template.
 
 ### Step 1: Create a template
@@ -93,7 +93,7 @@ To add stage parameters, do the following:
 
    Harness Services represent your microservices or applications logically. You can propagate the same service to as many stages as you need.
 
-   **Use Runtime Inputs instead of variable expressions:** when you want to template settings in a stage or step template, use [Runtime Inputs](../20_References/runtime-inputs.md) instead of variable expressions. When Harness tries to resolve variable expressions to specific Stage-level settings using fully-qualified names, it can cause issues at runtime. Every pipeline where the Stage or step template is inserted must use the same names for fully-qualified name references to operate. With runtime inputs, you can supply values for a setting at deployment runtime. In **Deployment Type**, Kubernetes is selected by default. **Deployment Type** defines how your Service will be deployed.
+   **Use Runtime Inputs instead of variable expressions:** when you want to template settings in a stage or step template, use [Runtime Inputs](../20_References/runtime-inputs.md) instead of variable expressions. When Harness tries to resolve variable expressions to specific stage-level settings using fully-qualified names, it can cause issues at runtime. Every pipeline where the stage or step template is inserted must use the same names for fully-qualified name references to operate. With runtime inputs, you can supply values for a setting at deployment runtime. In **Deployment Type**, Kubernetes is selected by default. **Deployment Type** defines how your Service will be deployed.
 
 6. Select **Next**.
 
