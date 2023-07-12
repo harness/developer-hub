@@ -41,7 +41,7 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
   <TabItem value="Fixed issues">
 ```
 
-* Fixed a regression that broke the capability to customize the code snippet for AIDA augmented remediations in the Security Tests module. (STO-6181)
+* Fixed an issue that broke the capability to customize the code snippet for AIDA-augmented remediations in the Security Tests module. (STO-6181)
 
 ```mdx-code-block
   </TabItem>
