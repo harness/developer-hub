@@ -561,16 +561,16 @@ The priority from top to bottom is:
 
 ![](./static/services-and-environments-overview-16.png)
 
-#### Override example
+#### Override priority example
 
 Suppose you have a pipeline that runs as follows:
 
 * Deploys a service named `myService`, which has a variable `cpu` set to 1. 
-* Deploys `myService` to `myEnvironmentAlpha`, which has a variable `cpu` set to 2. 
+* Deploys `myService` to `myEnvironmentAlpha`, and then overrides the `myService` variable `cpu` value to 2. 
 
-In this case, the environment variable acts as a global variable and overrides the service variable with the same name. When a pipeline runs, it uses the `cpu` value of 2. 
+In this case, the environment variable takes precedence, and overrides the service variable. When the pipeline runs, it uses the `cpu` value of 2. 
 
-Now, suppose you have a another pipeline that deploys `myService` to `myEnvironmentKappa`, which has a Service Override that sets `cpu` set to 4. In this case, the Service Override takes precdence over the environment configuration and the service setting. When the pipeline runs, it uses  the `cpu` value of 4. 
+Now, suppose you have a another pipeline that deploys `myService` to `myEnvironmentKappa`, which has a service override that sets `cpu` to 4. In this case, the environment service override takes precedence over the environment configuration and the service setting. When the pipeline runs, it uses  the `cpu` value of 4. 
 
 ### Infrastructure definitions
 
