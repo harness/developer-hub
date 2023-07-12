@@ -880,6 +880,6 @@ SMTP_PASSWORD: <SMTP_PASSWORD>
 SMTP_USERNAME: <SMTP_USERNAME>
 ```
 
-:::important
-`kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>` and increase to 100Gi. It is used by recommendations and anomalies features within CCM services.
+:::important important
+You must increase the timescale DB to 100Gi: `kubectl edit pvc wal-volume-harness-timescaledb-0 -n <namespace>`. Features like Recommendations and Anomalies within CCM services use it.
 :::
