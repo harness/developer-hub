@@ -51,37 +51,15 @@ Approvals can be added in between Stages to prevent the Pipeline execution from 
 
 ## Add Approval Stage
 
-1. In the pipeline YAML paste the following YAML under `Stages` in line 8. 
-
-```YAML
-    - stage:
-        name: Harness-approval-stage
-        identifier: Harnessapprovalstage
-        description: ""
-        type: Approval
-        spec:
-          execution:
-            steps:
-              - step:
-                  name: "manual-stage-approval "
-                  identifier: manualstageapproval
-                  type: HarnessApproval
-                  timeout: 1d
-                  spec:
-                    approvalMessage: |-
-                      Please review the following information
-                      and approve the pipeline progression
-                    includePipelineExecutionHistory: true
-                    approvers:
-                      minimumCount: 1
-                      disallowPipelineExecutor: false
-                      userGroups:
-                        - approvaldemo
-                    isAutoRejectEnabled: false
-                    approverInputs: []
-        tags: {}
-```
-2. Switch to the **Visual** view and confirm the pipeline stage and approval stage as shown below.
+1. In the visual view of the pipeline, click on **Add Stage** and select the **Stage Type** as approval.
+2. Name the stage as `manual-approval-stage` and select the type as **Harness**.
+3. Now, the Manual Approval window comes with predefined values for `name`, `Timeout` and `approval message`, you need to add the user-group you created under **Approvers**. 
+4. You can also add **approver inputs** under this step.
+5. Click on **apply changes** at the top right and your approval step is created. 
+6. **Save** the changes to the pipeline. 
+6. Since you already have a deploy stage present before the approval stage drag the deploy stage to the right of Harness approval stage. 
+7. Verify and confirm the approval stage and deploy stage as shown below.
+ 
 
 <docimage path={require('./static/harness-cicd-tutorial/manualapprovalstage.png')} />
 
@@ -125,6 +103,10 @@ Approval steps should not be added to run in parallel with other steps, includin
 </TabItem>
 <TabItem value="JIRA Approval">
 ```
+:::info
+This feature is behind a Feature Flag and is available only to our paid customers. 
+:::
+
 Jira issues can be used to approve or reject a Pipeline or stage at any point in its execution. During deployment, a Jira issue's fields are evaluated according to criteria you define and its approval/rejection determines if the Pipeline or stage may proceed.
 
 The Jira Approval step can be added in Jira Approval stages or in CD stages. The Jira Approval step prevents the stage execution from proceeding without an approval.
@@ -185,6 +167,11 @@ You do not need to use the `Jira Create` and `Jira Update` steps with the `Jira 
 </TabItem>
 <TabItem value="ServiceNow Approval">
 ```
+:::info
+
+This feature is behind a Feature Flag and is available only to our paid customers. 
+
+:::
 
 ```mdx-code-block
 </TabItem>
