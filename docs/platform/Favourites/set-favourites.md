@@ -20,7 +20,7 @@ You can set the frequently accessed projects and connectors as favorites. Harnes
 
 You can set a connector as a favorite in any [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#overview-of-the-hierarchical-setup-in-harness).
 
-## Set a project as favorite
+## Set a project as a favorite
 
 To set a project as favorite: 
 1. Select **Projects**.
