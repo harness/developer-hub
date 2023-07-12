@@ -33,7 +33,7 @@ To set a project as a favorite:
 
 ## Set a connector as favorite
 
-To set a connector as favorite in Harness: 
+To set a connector as a favorite in Harness: 
 1. Select **Projects**, and then select **Connectors**.
 2. Select **Add to Favorites** beside the connector.
 
