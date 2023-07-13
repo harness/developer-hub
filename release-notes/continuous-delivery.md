@@ -86,7 +86,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   Harness initially modifies the regex to see if it matches any build. The trigger was failing if it did not match. Now, if the regex does not match any build, Harness will use the original regex.
    This item requires Harness Delegate version 79xxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- Deserialization of `isGitDefaultBranch` in `ScmGitMetadata` is failing in platform service. (CDS-73805)
+- Deserialization of `isGitDefaultBranch` in `ScmGitMetadata` was failing in platform service. (CDS-73805)
   
   There was an issue when deserializing the `isGitDefaultBranch` value when fetching Git metadata. This has now been fixed.
 - Error while trying to access a stage template. (CDS-73138, ZD-46636)
@@ -95,12 +95,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Red and green colors implemented in some areas need to be consistent to avoid contrast issues. (CDS-73054)
   
   Improved the UI on the **Account Overview** page to distinguish the red and green metrics on the dashboard.
-- Background step with matrix is failing to find the entry point.	(CDS-73034, ZD-46534)
+- Background step with matrix was failing to find the entry point.	(CDS-73034, ZD-46534)
   
   A user was unable to use matrix expressions when the object list in the matrix exactly matched the combination of background tasks. This issue has now been fixed.
 - Template YAML is not changing after changes in the UI. (CDS-72942, ZD-46501)	
   
-  There was an issue with editing and saving account level templates in the YAML builder. This issue has now been fixed.
+  There was an issue with editing and saving account-level templates in the YAML builder. This issue has now been fixed.
 - The Harness File Store's **Referenced by** setting was not showing any results.(CDS-72250, ZD-46193)
   
   The **Referenced by** setting was not working correctly for files in the Harness File Store when they are used in pipeline steps like the  Command step. This issue has now been fixed.
@@ -116,7 +116,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   
   Executions of the pipelines waiting on Harness Approval steps were rejected without considering the time modality of the executions.
   
-  For example, let's say there are 3 executions of the same pipeline (A, B, C, in the order in which their respective approval step started) These executions are waiting on a Harness Approval step with auto-reject enabled. When approving the execution B, only execution A was expected to get rejected, and not C. The issue is that C is also being getting rejected.
+  For example, let's say there are 3 executions of the same pipeline (A, B, C, in the order in which their respective approval step started). These executions are waiting on a Harness Approval step with auto-reject enabled. When approving the execution B, only execution A was expected to get rejected, and not C. The issue was that C was also getting rejected.
   
   This behavior has been fixed. Now, auto-reject only rejects previous executions waiting on a Harness Approval step. The start time of the Harness Approval step is used to decide which executions to reject.
 - Status and count mismatch in matrix wrapper. (CDS-72030)
@@ -125,16 +125,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - A Jenkins job URL containing a space is displayed with invalid formatting in the **Output** tab of Jenkins step execution. (CDS-71362, ZD-45614)
   
   For Jenkins step **Output**, we are replacing spaces in the Jenkins URL with `%20`.
-- The **Proceed With Default Values** information is showing on UI incorrectly.	(CDS-71168)
+- The **Proceed With Default Values** information was showing on UI incorrectly.	(CDS-71168)
   We have introduced a modification to disallow the configuration of **Proceed With Default Values** as the post-retry action.
   
   The **Proceed With Default Values** action is only applicable for input timeout errors. This action allows the pipeline execution to continue with default values when users are unable to provide execution-time input within the specified time limit.
   
   With this change, users will no longer be able to set **Proceed With Default Values** as the post-retry action, ensuring that the action is only valid for handling input timeout errors scenarios.
-- The **Services** dashboard information is missing or incorrect for the latest deployment. (CDS-70856, ZD-45388)
+- The **Services** dashboard information was missing or incorrect for the latest deployment. (CDS-70856, ZD-45388)
   
   There was an issue in the **Services** dashboard when step group names had special characters in them. The issue led to incorrectly displaying names. This issue has now been fixed by sanitizing the names.
-- Rerun of  triggered pipeline throws error. (CDS-69387)
+- Rerun of triggered pipeline threw an error. (CDS-69387)
   
   There was an issue when rerunning a pipeline removed runtime inputs during the rerun. This issue has now been fixed.
 
