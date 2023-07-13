@@ -91,7 +91,7 @@ Harness CV integrates with your APMs and logging tools to:
 
 ![](./static/cd-pipeline-modeling-overview-08.png)
 
-For more details, go to [Verify Deployments with the Verify Step](../verify/verify-deployments-with-the-verify-step.md).
+For more details, go to [Verify Deployments with the Verify Step](../verify/cv-getstarted/verify-deployments-with-the-verify-step.md).
 
 ### Summary
 

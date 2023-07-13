@@ -33,7 +33,24 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },
     //===================================================================================
-    
+  
+        // Created by sudheendrakatte from branch doc-3180-cv-simple-verification on July 13 2023
+
+        {
+          from: "/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step",
+          to: "/docs/continuous-delivery/verify/cv-getstarted/verify-deployments-with-the-verify-step",
+        },
+
+        // Created by roshnisarangadharan from branch fix-broken-links-cd on July 12 2023
+
+    {
+      from: "/docs/platform/notifications",
+      to: "/docs/category/notifications",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events/",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/",
+    },
     // Created by roshnisarangadharan from branch fix-broken-links-cd on July 12 2023
 
     {
@@ -611,7 +628,7 @@ module.exports = {
     },
     {
       from: "/docs/category/9mefqceij0-cv-category",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step",
+      to: "/docs/continuous-delivery/verify/cv-getstarted/verify-deployments-with-the-verify-step",
     },
     // Created by Rashmi Sahoo to fix platform re-direct April 19th, 2023
     {
@@ -2014,7 +2031,7 @@ module.exports = {
     // Created by michael cretzman for DOC-2694 on Apr 11, 2023
     {
       from: "/docs/continuous-delivery/cd-execution/cv-category/verify-deployments-with-the-verify-step",
-      to: "/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step",
+      to: "/docs/continuous-delivery/verify/cv-getstarted/verify-deployments-with-the-verify-step",
     },
 
     {

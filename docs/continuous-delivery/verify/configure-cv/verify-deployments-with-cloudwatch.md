@@ -65,7 +65,7 @@ The maximum is `53w`.Timeouts can be set at the Pipeline level also.
 
 ## Step 3: Select a Continuous Verification Type
 
-In **Continuous Verification Type**, select a type that matches your [deployment strategy](./../verify-deployments-with-the-verify-step.md#continuous-verification-type)
+In **Continuous Verification Type**, select a type that matches your [deployment strategy](../cv-getstarted/verify-deployments-with-the-verify-step.md#continuous-verification-type)
 
 ![](./static/verify-deployments-with-cloudwatch-112.png)
 
