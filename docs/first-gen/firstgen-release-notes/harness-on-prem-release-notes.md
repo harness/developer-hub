@@ -46,75 +46,73 @@ This release does not include any early access features.
 
 #### Fixed issues
 
-- For installations with custom dashboards enabled, the Harness Helm chart version 0.7.1 included entries that caused installation issues during upgrade.
+- For installations with custom dashboards enabled, the Harness Helm chart version 0.7.1 included entries that caused installation issues during upgrade. Custom dashboards were not available with the 0.7.1 upgrade of Self-Managed Enterprise Edition. (CDB-981) (CDS-74271)
 
-- Custom dashboards were not available with the 0.7.1 upgrade of Self-Managed Enterprise Edition (CDB-981) (CDS-74271)
+   This issue is fixed. The Harness Helm chart entries are corrected, and Helm installations succeed as expected. If your installation includes custom dashboards, you can now view CD data, including:
 
-   This issue is fixed. The Harness Helm chart entries are corrected and Helm installations succeed as expected. If your installation included custom dashboards, you can now view CD data, including:
-
-   - The total amount of deployed applications
-   - The total number of deployments
-   - The total number of production versus non-production deployments and the percentage of each
-   - The percentage of the applications deployed by deployment type (rolling, canary, blue/green, and basic)
-   - The change failure rate/reason for failed deployments
+   - Total amount of deployed applications
+   - Total number of deployments
+   - Total number of production versus non-production deployments and the percentage of each
+   - Percentage of the applications deployed by deployment type (rolling, canary, blue/green, and basic)
+   - Change failure rate/reason for failed deployments
   
   To enable custom dashboards, you must:
   
   1. Run the commands below to update your Harness database.
   2. Add settings to your `override.yaml` file.
   
-  Update your Harness database with the following:
+     Update your Harness database with the following commands.
 
-   ```
-   db.elasticsearchPendingBulkMigrations.remove({})
-   db.searchEntitiesIndexState.insertMany([{
-       "_id" : "software.wings.search.entities.workflow.WorkflowSearchEntity",
-       "indexName" : "workflows_0.2_1688472585962",
-       "recreateIndex" : false,
-       "syncVersion" : "0.2"
-   },
-   {
-       "_id" : "software.wings.search.entities.pipeline.PipelineSearchEntity",
-       "indexName" : "pipelines_0.2_1688472585989",
-       "recreateIndex" : false,
-       "syncVersion" : "0.2"
-   },
-   {
-       "_id" : "software.wings.search.entities.environment.EnvironmentSearchEntity",
-       "indexName" : "environments_0.2_1688472585980",
-       "recreateIndex" : false,
-       "syncVersion" : "0.2"
-   },
-   {
-       "_id" : "software.wings.search.entities.service.ServiceSearchEntity",
-       "indexName" : "services_0.2_1688472585992",
-       "recreateIndex" : false,
-       "syncVersion" : "0.2"
-   },
-   {
-       "_id" : "software.wings.search.entities.application.ApplicationSearchEntity",
-       "indexName" : "applications_0.2_1688472585986",
-       "recreateIndex" : false,
-       "syncVersion" : "0.2"
-   },
-   {
-       "_id" : "software.wings.search.entities.deployment.DeploymentSearchEntity",
-       "indexName" : "deployments_0.1_1688472585984",
-       "recreateIndex" : false,
-       "syncVersion" : "0.1"
-   }])
-   ```
+      ```
+      db.elasticsearchPendingBulkMigrations.remove({})
+      db.searchEntitiesIndexState.insertMany([{
+         "_id" : "software.wings.search.entities.workflow.WorkflowSearchEntity",
+         "indexName" : "workflows_0.2_1688472585962",
+         "recreateIndex" : false,
+         "syncVersion" : "0.2"
+     },
+     {
+         "_id" : "software.wings.search.entities.pipeline.PipelineSearchEntity",
+         "indexName" : "pipelines_0.2_1688472585989",
+         "recreateIndex" : false,
+         "syncVersion" : "0.2"
+     },
+     {
+         "_id" : "software.wings.search.entities.environment.EnvironmentSearchEntity",
+         "indexName" : "environments_0.2_1688472585980",
+         "recreateIndex" : false,
+         "syncVersion" : "0.2"
+     },
+     {
+         "_id" : "software.wings.search.entities.service.ServiceSearchEntity",
+         "indexName" : "services_0.2_1688472585992",
+         "recreateIndex" : false,
+         "syncVersion" : "0.2"
+     },
+     {
+         "_id" : "software.wings.search.entities.application.ApplicationSearchEntity",
+         "indexName" : "applications_0.2_1688472585986",
+         "recreateIndex" : false,
+         "syncVersion" : "0.2"
+     },
+     {
+         "_id" : "software.wings.search.entities.deployment.DeploymentSearchEntity",
+         "indexName" : "deployments_0.1_1688472585984",
+         "recreateIndex" : false,
+         "syncVersion" : "0.1"
+     }])
+     ```
    
-   Add the following to your `override.yaml` file.
+      Add the following entries to your `override.yaml` file.
    
-   ```yaml
-     platform:
-       harness-manager:
-          additionalConfigs:
-            SEARCH_ENABLED: 'true'
-          featureFlags:
-            ADDITIONAL: "CUSTOM_DASHBOARD_V2,TIME_SCALE_CG_SYNC" #add additional feature flags comma-separated.
-   ```
+      ```yaml
+       platform:
+         harness-manager:
+            additionalConfigs:
+              SEARCH_ENABLED: 'true'
+            featureFlags:
+              ADDITIONAL: "CUSTOM_DASHBOARD_V2,TIME_SCALE_CG_SYNC" #add additional feature flags comma-separated.
+     ```
 
 ### July 7, 2023, patch release for version 79421
 
