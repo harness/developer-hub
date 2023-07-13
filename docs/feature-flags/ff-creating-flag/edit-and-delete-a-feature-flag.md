@@ -68,7 +68,7 @@ You can archive a flag if it's not a prerequisite to other flags. If it is, remo
 2. You cannot archive a flag if it is a prerequisite to other flags. Remove the flag as a prerequisite, and then you can archive it.
 :::
 
-**To archive a flag:**
+To archive a flag:
 
 1. In your Harness project, navigate to **Feature Flags > Feature Flags**.
 1. Next to the flag you want to archive, select **more options** (**︙**), and then select **Archive**.
