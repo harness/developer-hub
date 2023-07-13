@@ -504,11 +504,9 @@ This release does not include any early access features.
 
 #### Fixed issues
 
-- For installations with custom dashboards enabled, the Harness Helm chart version 0.7.1 included entries that caused installation issues during upgrade.
+- For installations with custom dashboards enabled, the Harness Helm chart version 0.7.1 included entries that caused installation issues during upgrade. Custom dashboards were not available with the 0.7.1 patch release for Harness Self-Managed Enterprise Edition. (CDB-981)
 
-  Custom dashboards were not available with the 0.7.1 patch release for Harness Self-Managed Enterprise Edition. (CDB-981)
-
-   This issue is fixed. The Harness Helm chart entries are corrected and Helm installations succeed as expected. Custom dashboards are available if enabled.
+   This issue is fixed. The Harness Helm chart entries are corrected, and Helm installations succeed as expected. Custom dashboards are available if enabled.
 
 
 ## July 7, 2023, patch release for version 79421
