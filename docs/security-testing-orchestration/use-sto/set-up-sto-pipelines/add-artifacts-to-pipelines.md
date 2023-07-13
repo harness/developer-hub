@@ -6,6 +6,14 @@ sidebar_position: 70
 
 In some cases, a scanner might require additional files such as SSL certificates and license files. The workflow to include these files depends on your build infrastructure.
 
+:::note
+
+Make sure that your certificates meet all requirements of the external scan tool. Your certificates must be valid, unexpired, and have a complete trust chain. 
+
+To troubleshoot certificate issues, run your pipeline in Debug mode and check for the message **`unable to get local issuer certificate`**.
+
+:::
+
 ## Kubernetes workflows
 
 The primary workflow for adding certificates to your delegate is described in the CI docs: [Configure a Kubernetes build farm to use self-signed certificates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/k8s-build-infrastructure/configure-a-kubernetes-build-farm-to-use-self-signed-certificates).

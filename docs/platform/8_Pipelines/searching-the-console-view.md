@@ -34,7 +34,7 @@ Type in your search query and the results are highlighted immediately.
 ![](./static/searching-the-console-view-43.png)
 ### Option: Console Keyboard Shortcuts
 
-Use the following shortcuts to search the log (these are Mac example, just substitute `Ctrl` for `Cmd` for Windows):
+Use the following shortcuts to search in the logs:
 
 * `Up` to go up or go to the next search result.
 * `Down` to go down or go to the previous search result.

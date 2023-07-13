@@ -11,11 +11,14 @@ You can set up any supported scanner using a Security step: create a CI Build or
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
+<!-- 
 ```mdx-code-block
 import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
 ```
 
 <StoSecurityStepConfig />
+
+-->
 
 * `product_name` = `data-theorem`
 * `product_config_name` = `default`

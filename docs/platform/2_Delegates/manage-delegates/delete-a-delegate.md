@@ -34,8 +34,7 @@ Use the following command to retrieve a list of deployments:
 
 The deployment name is specified in the `metadata.name` field of the Kubernetes manifest you used to install the delegate.
 
-
-```
+```yaml
 ...  
 apiVersion: apps/v1  
 kind: Deployment  
@@ -61,6 +60,13 @@ For example, if the **Deployment** name is `quickstart-delegate`:
 Locate the delegate in the Harness account/Project/Org, click more options (⋮), and then click **Delete**.
 
 ![](static/delete-a-delegate-15.png)
+
+### Delete replica pods
+
+Deleted replica pods unregister and clear out during shutdown after they complete all running tasks if the graceful shutdown period is sufficient. The grace period is configurable. For more information on graceful shutdown, go to [Graceful delegate shutdown](/docs/platform/2_Delegates/delegate-concepts/graceful-delegate-shutdown-process.md).
+
+If you do not delete the delegate in the UI, Harness automatically removes it after six hours. 
+
 ### Delete a legacy delegate
 
 Use the following process to delete a Legacy Delegate.

@@ -125,6 +125,4 @@ If a connector with`harnessImage` identifier already exists on your **Account**,
 ### See also
 
 * [Permission Reference](../../../platform/4_Role-Based-Access-Control/ref-access-management/permissions-reference.md)
-* [Harness CI Image List](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md)
-* [CI Build Image Updates](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-build-image-updates.md)
-
+* [Harness CI Images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md)

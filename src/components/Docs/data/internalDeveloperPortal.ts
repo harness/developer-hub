@@ -32,7 +32,7 @@ export const docsCards: CardSections = [
         module: MODULES.idp,
         description:
           "Learn how Harness's developer-centric portal helps platform engineering and development teams improve productivity.",
-        link: "/docs/internal-developer-portal/overview",
+        link: "/docs/internal-developer-portal/getting-started/overview",
       },
       {
         title: "Get started with IDP",

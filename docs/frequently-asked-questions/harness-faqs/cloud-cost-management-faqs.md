@@ -293,6 +293,16 @@ Yes, we collect metrics data every minute, and the data sent by the metrics serv
 
 We will get separate recommendations for these individual containers. The recommendations are computed at the container’s level and not at the Pod’s level.
 
+### Node pool recommendations
+
+#### Does Harness support dynamic picking of instance families in Node recommendations to optimize for Reserved Instances (RI) or Savings plan?
+
+No, Harness doesn't support dynamic picking of instance families in node recommendations to optimize for RI or Savings plan.
+
+#### Does Harness take into account Reserved Instances (RI) and Savings Plans when showing potential spend and savings?
+
+Yes, Harness considers RIs and Savings Plans to provide insights into potential spend and savings. 
+
 ### Perspectives
 
 #### What is the limit to the number of Perspectives that I can create in an account?

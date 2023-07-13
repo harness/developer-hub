@@ -19,7 +19,7 @@ Create a [chaos experiment](https://developer.harness.io/tutorials/chaos-experim
 
 ## Create a launch script
 
-HCE APIs are used to invoke or launch a chaos experiment from the pipeline. To simplify creating an API call with the required secure parameters and data, a [CLI tool](https://storage.googleapis.com/hce-api/hce-api-linux-amd64) is provided. Use this tool to create an appropriate API command to include in the pipeline script.
+HCE APIs are used to invoke or launch a chaos experiment from the pipeline. To simplify creating an API call with the required secure parameters and data, a CLI tool is provided. Use this tool to create an appropriate API command to include in the pipeline script.
 
 Below is a sample launch script.
 ```

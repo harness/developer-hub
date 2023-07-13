@@ -4,7 +4,7 @@ description: This topic describes how to synchronize different stages in your Pi
 sidebar_position: 3
 ---
 
-This topic describes how to synchronize stages and [step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups) in your pipeline using barriers.
+This topic describes how to synchronize stages and [step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups) in your pipeline using barriers.
 
 :::note
 

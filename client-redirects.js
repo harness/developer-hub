@@ -33,6 +33,35 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },
     //===================================================================================
+
+    // Create by aimurphy for branch DOC-3386 on July 11, 2023
+
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-build-image-updates",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-build-image-updates",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
+    },
+
+    {
+      from: "/docs/continuous-integration/use-ci/build-stage-settings/ci-build-image-updates",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
+    },
+
+    
+    // Created by roshnisarangadharan from branch fix-broken-links-cd on July 12 2023
+
+    {
+      from: "/docs/platform/notifications",
+      to: "/docs/category/notifications",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events/",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/",
+    },
     
     // Created by roshnisarangadharan from branch DOC-3334-fix-broken-links-in-cd-docs on June 28 2023
 
@@ -62,6 +91,11 @@ module.exports = {
     },
 
     {
+      from: "/docs/continuous-delivery/cd-services/k8s-services/kubernetes-services",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services"
+    },
+    
+    {
       from: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services",
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services"
     },
@@ -84,6 +118,11 @@ module.exports = {
 
     // Created by roshnisarangadharan from branch DOC-3192-remove-single-topic-folders on June 15 2023
     
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups",
+    },
+
     {
       from: "/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos",
       to: "/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos",
@@ -1838,14 +1877,11 @@ module.exports = {
 
     //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
     {
-      from: "/docs/continuous-integration/ci-technical-reference/ci-build-image-updates",
-      from: "/docs/continuous-integration/use-ci/build-stage-settings/ci-build-image-updates",
-      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-build-image-updates",
+      from: "/docs/continuous-integration/ci-technical-reference/harness-ci",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
     },
 
-    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
     {
-      from: "/docs/continuous-integration/ci-technical-reference/harness-ci",
       from: "/docs/continuous-integration/use-ci/build-stage-settings/harness-ci",
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
     },
@@ -2285,10 +2321,6 @@ module.exports = {
     {
       from: "/docs/chaos-engineering/user-guides/validate-hypothesis-using-probes",
       to: "/docs/chaos-engineering/configure-chaos-experiments/probes/validate-hypothesis-using-probes",
-    },
-    {
-      from: "/docs/chaos-engineering/user-guides/add-a-new-user-to-a-project",
-      to: "/docs/chaos-engineering/configure-chaos-experiments/prerequisites/add-a-new-user-to-a-project",
     },
     {
       from: "/docs/chaos-engineering/user-guides/add-chaos-hub",

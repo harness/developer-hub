@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-06-21T10:00
+date: 2023-07-07T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -11,12 +11,15 @@ import TabItem from '@theme/TabItem';
 ```
 Review the notes below for details about recent changes to Harness Cloud Cost Management, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). 
 
+For information about data privacy and security, go to the [Harness Trust Center](https://trust.harness.io/).
+
+
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
 
-## Latest - June 21, 2023, version 79803
+## Latest - July 07, 2023, version 80002
 
 ```mdx-code-block
 <Tabs>
@@ -24,13 +27,18 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 ```
 ### What's new
 
-* Added a tooltip on the **Cloud Integration** page. (CCM-12559)
+* Azure VM recommendations (CCM-13142)
 
-  In the **Cloud Integration** page, if the connector data is unavailable, the **View costs** link is disabled. However, as soon as the data becomes available, the link is enabled. Now, a tooltip providing a concise explanation as to why the link is disabled appears when you hover over the disabled link. 
-  
-* Asset Governance filter panel enhancement. (CCM-12854)
+  Now, the recommendations are computed based on both **Memory Utilization** data and the existing **CPU Utilization** tracking data.
 
-  Previously, in the **Asset Governance** > **Evaluations** page, only the target accounts with `execute` permissions were included in the **Target Accounts** field in the filter panel. Now, this functionality is enhanced so that all target accounts with `view` permissions are also included in the list.
+* Budget Sorting Enhancement (CCM-10948)
+
+  This enhancement allows you to conveniently sort budgets alphabetically in Harness CCM. You can now browse and navigate through budgets more efficiently.
+
+* Recommendations enhancement (CCM-11665)
+
+  You can now easily move recommendations from the **Applied** state back to the **Open** state. This enhancement allows you to easily rectify accidental closure of recommendations or marking Jira tickets as done by returning them to an actionable state.
+
 
 ```mdx-code-block
   </TabItem>
@@ -46,13 +54,12 @@ This release does not include any early access features.
 ```
 ### Fixed issues
 
-* The budget screen displayed inconsistent margins, leading to overlapping text in different columns. To address this issue, the columns in the budget list have been readjusted, ensuring that the text in each column no longer coincides with the text in adjacent columns. (CCM-10980)
-  
-* An error occurred with the HTTP AutoStopping rule. (CCM-12729)
 
-  The detection of routing rules on the Azure Application Gateway was impacted due to the presence of an additional custom probe configuration. To address this issue, during the detection of routing rules for the specified port configuration, any custom probes are now ignored. However, the custom probe will continue to be utilized for the selected rule.
-  
+* Nodepool recommendations displayed incorrect savings data. (CCM-12816)
 
+ Implemented a check to exclude nodepools that have more than one instance family from generating recommendations. This is necessary as the current calculations for such nodepools result in incorrect recommendations. 
+
+  
   
 ```mdx-code-block
   </TabItem>
@@ -63,6 +70,63 @@ This release does not include any early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### June 30, 2023, version 79906
+
+##### What's new
+
+* Azure inventory management (CCM-12676)
+
+  As part of the Azure inventory management, now you can monitor the **Memory Utilization** data for virtual machines (VMs) along with the existing **CPU Utilization** tracking data.
+
+* Clone AutoStopping rules (CCM-12337)
+
+  You can now clone an AutoStopping rule. To clone a rule, navigate to the rule you want to replicate and select the **Clone** option from the more options menu. After selecting **Clone**, you can update the instance details according to your requirements. This allows you to create a new rule based on the existing one, saving you time and effort in setting up similar rules for different instances.
+
+* Budget alert enhancements 
+
+  - The cost alerts for daily budgets are now triggered on an hourly basis. Previously, cost alerts for daily budgets were triggered only at specific intervals, which could potentially result in delayed notifications if the threshold was crossed outside those intervals. However, with the increased frequency, you can now receive timely alerts as soon as the threshold is exceeded, regardless of the time of day. (CCM-12028)
+  - Significant improvements have been made to the Slack budget alert messages for both budgets and budget groups. Now, when receiving a budget alert, you will find detailed information related to the perspective from which the budget was created, the allocated budget amount, the current spend, and the forecasted spend. (CCM-12647)
+
+      <docimage path={require('./static/ccm-budget-slack-msg.png')} width="60%" height="60%" title="Click to view full size image" />
+
+      <docimage path={require('./static/ccm-budget-grp-slack-msg.png')} width="60%" height="60%" title="Click to view full size image" />
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+* The cost data was not displayed on the **Perspectives** page. (CCM-12752)
+
+  This was caused by the challenge of pushing large volumes of billing data into BigQuery. This issue has been resolved by adding support to upload and handle large datasets.
+* Previously, users were unable to view and manage the ignored recommendations for EC2 instances. (CCM-13004) (ZD-46353)
+
+ The payload for adding EC2 recommendations to the **Ignore List** was incorrect. Now, the issue is fixed, and the functionality is working as expected.
+
+#### June 21, 2023, version 79803
+
+##### What's new
+
+* Added a tooltip on the **Cloud Integration** page. (CCM-12559)
+
+  In the **Cloud Integration** page, if the connector data is unavailable, the **View costs** link is disabled. However, as soon as the data becomes available, the link is enabled. Now, a tooltip providing a concise explanation as to why the link is disabled appears when you hover over the disabled link. 
+  
+* Asset Governance filter panel enhancement. (CCM-12854)
+
+  Previously, in the **Asset Governance** > **Evaluations** page, only the target accounts with `execute` permissions were included in the **Target Accounts** field in the filter panel. Now, this functionality is enhanced so that all target accounts with `view` permissions are also included in the list.
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+* The budget screen displayed inconsistent margins, leading to overlapping text in different columns. To address this issue, the columns in the budget list have been readjusted, ensuring that the text in each column no longer coincides with the text in adjacent columns. (CCM-10980)
+  
+* An error occurred with the HTTP AutoStopping rule. (CCM-12729)
+
+  The detection of routing rules on the Azure Application Gateway was impacted due to the presence of an additional custom probe configuration. To address this issue, during the detection of routing rules for the specified port configuration, any custom probes are now ignored. However, the custom probe will continue to be utilized for the selected rule.
 
 #### June 09, 2023, version 79701
 

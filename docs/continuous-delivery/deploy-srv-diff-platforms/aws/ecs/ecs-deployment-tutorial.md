@@ -1,5 +1,5 @@
 ---
-title: ECS deployments
+title: ECS deployments overview
 description: This topic walks you through deploying services to AWS ECS clusters using Harness.
 sidebar_position: 1
 helpdocs_topic_id: vytf6s0kwc
@@ -194,6 +194,12 @@ There are two ways to add the ECS task definition to the Harness service:
   - The task definition ARN points to an existing task created and available in the AWS cluster with the required definition.
   - The task definition will be fetched using the task ARN provided and added to the ECS service configuration provided in the Harness ECS service **Service Definition**.
   - During deployment, the required task is deployed with the desired count provided in the **Service Definition**. 
+
+:::note
+
+When a task definition ARN is provided instead of a task definition spec, a force deployment is enabled for rolling deployments by default. When you perform a force deployment, ECS terminates the running tasks associated with the service and replaces them with tasks using the new task definition.
+
+:::
 
 If you are new to ECS, review the AWS documentation on [ECS Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html).
 
@@ -702,6 +708,12 @@ This is the same as [forceNewDeployment](https://docs.aws.amazon.com/AmazonECS/l
 
 
 > Determines whether to force a new deployment of the service. By default, deployments aren't forced. You can use this option to start a new deployment with no service definition changes. For example, you can update a service's tasks to use a newer Docker image with the same image/tag combination (`my_image:latest`) or to roll Fargate tasks onto a newer platform version.
+
+:::note
+
+When a task definition ARN is provided instead of a task definition spec, a force deployment is enabled for rolling deployments by default. When you perform a force deployment, ECS terminates the running tasks associated with the service and replaces them with tasks using the new task definition.
+
+:::
 
 ### ECS Canary deployments
 
