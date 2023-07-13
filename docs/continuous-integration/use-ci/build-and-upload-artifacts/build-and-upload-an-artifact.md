@@ -35,9 +35,9 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 These steps describes how to create a simple one-step Build stage that does not include testing. It builds the code in a build farm, and then pushes it to a Docker repo.
 
-:::info Root access required
+:::info Kubernetes cluster build infrastructures
 
-**Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md) by default (except when used with [self-hosted VM build infrastructures](/docs/category/set-up-vm-build-infrastructures), which use Docker). This tool requires root access to build the Docker image. It doesn't support non-root users.
+With Kubernetes cluster build infrastructures, **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Other build infrastructures use [drone-docker](https://github.com/drone-plugins/drone-docker/blob/master/README.md). Kaniko requires root access to build the Docker image. It doesn't support non-root users.
 
 If your build runs as non-root (`runAsNonRoot: true`), and you want to run the **Build and Push** step as root, you can set **Run as User** to `0` on the **Build and Push** step to use the root user for that individual step only.
 
@@ -118,7 +118,7 @@ Select **Run Pipeline** to run your pipeline. Depending on your pipeline's codeb
 
 ![](./static/build-and-upload-an-artifact-13.png)
 
-While the build runs, you can monitor the **Build and Push** step logs. For example, these are the logs for a step that pushed to a Docker repo:
+While the build runs, you can monitor the **Build and Push** step logs. For example, these are the logs for a step that pushed to a Docker repo in a pipeline using a Kubernetes cluster build infrastructure:
 
 ```
 /kaniko/executor --dockerfile=Dockerfile --context=dir://. --destination=cretzman/ciquickstart:13
@@ -198,7 +198,6 @@ import TabItem from '@theme/TabItem';
    * **Value:** `true`
 4. Save and run the pipeline.
 
-
 ```mdx-code-block
   </TabItem>
   <TabItem value="selfvm" label="Self-hosted VM build infrastructure">
@@ -220,7 +219,7 @@ import TabItem from '@theme/TabItem';
 1. In your CI pipeline, go to the **Build** stage that includes the **Build and Push an image to Docker Registry** step.
 2. In the **Build** stage's **Overview** tab, expand the **Advanced** section.
 3. Select **Add Variable** and enter the following:
-   * **Name:** `PLUGIN_NO_PUSH`
+   * **Name:** `PLUGIN_DRY_RUN`
    * **Type:** **String**
    * **Value:** `true`
 4. Save and run the pipeline.
