@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-06-28T10:00
+date: 2023-07-13T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -21,9 +21,9 @@ Harness Delegate, NextGen SaaS releases every two weeks. Harness Platform, NextG
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 28, 2023, Harness version 79714, Harness Delegate version 79707
+## Latest - July 13, 2023, Harness version 799xx, Harness Delegate version 799xx
 
-Harness NextGen release 79714 includes the following changes for the Harness Delegate.
+Harness NextGen release 799xx includes the following changes for the Harness Delegate.
 
 ### Deprecation notice
 
@@ -36,18 +36,61 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
   <TabItem value="What's new">
 ```
 
-This release introduces the following new features and enhancements:
-
-- You can now see disconnected delegate details in selection logs and error messages when there are no eligible delegates in an active state to execute tasks. (PL-37900)
-
-- The delegate JRE is upgraded to 11.0.19_7. (PL-37994)
+This release does not include new features.
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
 
-This release includes the following early access feature:
+- Harness added the ability to acquire only the configured maximum number of tasks. This allows Harness Manager to use the task capacity to determine whether to assign a task to the delegate or queue it. You can configure the maximum number of tasks using the Env variable `DELEGATE_TASK_CAPACITY`. For example, if you set `DELEGATE_TASK_CAPACITY` to a value of 2 and execute 6 tasks in parallel, Harness Manager executes only 2 tasks at a time. If you don't configure `DELEGATE_TASK_CAPACITY`, Harness Manager executes all 6 tasks in parallel. (PL-39351)
+
+   This functionality is behind a feature flag, `DELEGATE_TASK_CAPACITY_CHECK`. When the feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
+
+  
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+- The Tokens list page returned a display error when tokens were present and there were multiple pages of results. (PL-36734)
+
+  A code enhancement to reset the pagination on the Tokens list page after any token is deleted fixed this issue. Previously, if you deleted the last token on any page after the first page, the page displayed an empty result list.
+
+- The `listDelegates` API failed when custom selectors were present in the delegate. (PL-39779)
+
+   A code enhancement to update custom tags fixed this issue.
+
+- The listing API failed with an `UnsupportedOperationException` when custom tags were present. Filter APIs failed with NPEs. (PL-39824)
+
+   A code enhancement fixed these issues.
+
+- The delegate token list result from the `DelegateTokenStatus` API endpoint displayed all values as `null`. (PL-39440)
+
+   A code enhancement for the `DelegateTokenStatus` endpoint to return token values even when token details are not fetched by token name fixed this issue. Token values only populate when the user has edit delegate permission. If the user doesn't have edit delegate permission, the value remains `null`.
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>Expand this section to view changes to previous releases</summary>
+
+#### June 28, 2023, Harness version 79714, Harness Delegate version 79707
+
+Harness NextGen release 79714 includes the following changes for the Harness Delegate.
+
+##### What's new
+
+- You can now see disconnected delegate details in selection logs and error messages when there are no eligible delegates in an active state to execute tasks. (PL-37900)
+
+- The delegate JRE is upgraded to 11.0.19_7. (PL-37994)
+
+##### Early access
 
 - Added a new field in the release history for Blue Green deployments to differentiate between environments. (CDS-69961)
 
@@ -56,13 +99,8 @@ This release includes the following early access feature:
   This is an enhancement to the Kubernetes Blue Green Stage Scale Down step. You can now scale down your last successful stage environment only if the primary resources exist. This enhancement helps you efficiently manage your resources, and prevent deleting the important resources.
 
   Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
-  
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
 
-This release includes the following fixes:
+##### Fixed issues
 
 - A project-level template crashed when opened. (CDS-71980, ZD-45950)
 
@@ -107,15 +145,6 @@ This release includes the following fixes:
 
    This issue has been resolved by adding a code validation. The field no longer accepts values above 4320 minutes.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>Expand this section to view changes to previous releases</summary>
 
 #### June 9, 2023, Harness version 79516, Harness Delegate version 79503
 
