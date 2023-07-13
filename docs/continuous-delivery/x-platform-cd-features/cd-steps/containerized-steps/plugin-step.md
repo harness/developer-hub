@@ -21,7 +21,9 @@ You can use plugins for anything. If it can be scripted, it can be a plugin. For
 
 ## Supported plugins
 
-You can build your own plugins or use one of the many preexisting plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/), [GitHub Actions Marketplace](https://github.com/marketplace?type=actions), or the [Bitrise Integrations library](https://bitrise.io/integrations/steps).
+You can build your own plugins or use one of the many preexisting plugins from the [Drone Plugins Marketplace](https://plugins.drone.io/) and [GitHub Actions Marketplace](https://github.com/marketplace?type=actions).
+
+The [Bitrise Integrations library](https://bitrise.io/integrations/steps) is not supported in the CD Plugin step at this time.
 
 
 ## Creating custom plugins
@@ -127,25 +129,22 @@ Output variables are not available for all plugins.
 
 Output variables are exposed values that can be used by other steps or stages in the pipeline. If the plugin writes outputs to the `.env` file present in the `DRONE_OUTPUT` path, you can use expressions to reference output variables in other steps and stages in the pipeline.
 
-To reference an output variable in another step in the same stage, use either of the following expressions:
+To reference an output variable in a later step or stage in the same pipeline, use a variable [expression](/docs/platform/references/runtime-inputs/#expressions) that includes the originating step's Id and the variable's name.
+
+Use either of the following expressions to reference an output variable in another step in the same stage:
+
 
 ```
 <+steps.STEP_ID.output.outputVariables.VAR_NAME>
-<+execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
+<+execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
-To reference an output variable in a different stage than the one where it originated, use either of the following expressions:
+Use either of the following expressions to reference an output variable in a different stage than the one where it originated:
 
 ```
-<+stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
-<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
+<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
-For each expression:
-
-* Replace `STEP_ID` with the Id of the **Plugin** step.
-* Replace `VAR_NAME` with the relevant variable name.
-* In cross-stage references, replace `STAGE_ID` with the ID of the stage where the **Plugin** step exists.
 
 ### Image Pull Policy
 

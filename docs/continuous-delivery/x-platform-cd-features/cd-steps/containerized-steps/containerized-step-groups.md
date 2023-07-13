@@ -21,21 +21,9 @@ To provide greater control over the resources used for CD steps, Harness also le
 
 You can use a CD step group that points to your cluster as the runtime infrastructure. Next, in the step group, you can add the steps supported by containerized step groups.
 
-:::note
-
-Currently, not all steps are supported. You can see which steps are supported when you try to add steps in the containerized step group.
-
-:::
-
 In this architecture, no tooling is installed on delegates. Delegates simply act as orchestrators. Any tooling is installed and removed on demand in the ephemeral step containers.
 
-:::note
-
-You can use the same cluster to run the Harness delegate and the containerized step group(s), but it is not required.
-
-:::
-
-For deployment types that support containerized step groups, automatically generated steps will use a containerized step group by default.
+When you use deployment types that support containerized step groups (for example, AWS SAM), containerized steps are automatically generated when you add the execution strategy for the stage.
 
 When you manually add a step group, you can enable containerized step groups by selecting the **Enable container based execution** option.
 
@@ -46,17 +34,16 @@ This option is disabled for deployment types that do not support containerized s
 
 ## Important notes
 
-- Currently, containerized step groups are only supported in a Deploy stage. They are not supported in a Custom stage.
+- CD containerized step groups are only supported in a Deploy stage. They are not supported in a Custom stage.
+- Not all steps are supported in containerized step groups. You can see which steps are supported when you try to add steps in the containerized step group.
+- You can use the same cluster to run the Harness delegate and the containerized step group(s), but it is not required.
+- Currently, containerized step groups are supported in the following deployment types:
+  - [AWS SAM (Serverless Application Model)](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments)
 
-## Supported deployment types
-
-Currently, containerized step groups are supported in the following deployment types:
-
-- [AWS SAM (Serverless Application Model)](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-sam-deployments)
 
 ## Add a containerized step group
 
-Typically, Harness adds the step group and steps needed for a deployment automatically when you select the stage **Execution** section for the first time.
+Typically, Harness adds the step group and steps needed for a deployment automatically when you select the stage execution strategy in the **Execution** section.
 
 Whether the containerized step group is added automatically or manually, you must configure it.
 

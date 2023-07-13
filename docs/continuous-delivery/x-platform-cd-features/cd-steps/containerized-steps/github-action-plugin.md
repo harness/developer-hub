@@ -124,8 +124,8 @@ Output variables are exposed values that can be used by other, subsequent steps 
 To reference an output variable in another step in the same stage, use either of the following expressions:
 
 ```
-<+steps.STEP_ID.output.outputVariables.SETTING_KEYNAME>
-<+execution.steps.STEP_ID.output.outputVariables.SETTING_KEYNAME>
+<+steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.SETTING_KEYNAME>
+<+execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.SETTING_KEYNAME>
 ```
 
 :::caution

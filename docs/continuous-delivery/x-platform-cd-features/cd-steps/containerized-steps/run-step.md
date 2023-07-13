@@ -278,16 +278,16 @@ To reference an output variable in a later step or stage in the same pipeline, u
 
 Use either of the following expressions to reference an output variable in another step in the same stage:
 
+
 ```
 <+steps.STEP_ID.output.outputVariables.VAR_NAME>
-<+execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
+<+execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
 Use either of the following expressions to reference an output variable in a different stage than the one where it originated:
 
 ```
-<+stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
-<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
+<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_GROUP_ID.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
 ## Image Pull Policy
