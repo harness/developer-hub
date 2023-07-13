@@ -101,10 +101,7 @@ This release has no early access features.
 - There was an issue where if the user aborted an experiment running as part of a pipeline, the pipeline step displayed `All your faults executed without an issue`. This has been fixed, and the correct details are now displayed based on the experiment execution. (CHAOS-733)
 
 
-## Previous releases
 
-<details>
-<summary>2023 releases</summary>
 
 #### June 12, 2023, version 0.13.5
 
