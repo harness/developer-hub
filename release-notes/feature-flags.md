@@ -19,7 +19,7 @@ Harness publishes security advisories for every release. Go to [trust.harness.io
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - July 12, 2023
+## Latest - July 13, 2023
 
 ```mdx-code-block
 <Tabs>
