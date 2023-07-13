@@ -1,7 +1,7 @@
 ---
 description: KB - Resolving Gti Sync issues with Input Sets.
 title: Gti Sync issues with Input Sets.
-
+---
 # Introduction
 
 An Input Set includes all the runtime inputs that are not permanent in the Pipeline. Runtime inputs contain the values that you would be prompted to provide when you executed the Pipeline.
