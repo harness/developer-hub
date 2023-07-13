@@ -37,7 +37,7 @@ You can use the same cluster to run the Harness delegate and the containerized s
 
 For deployment types that support containerized step groups, automatically generated steps will use a containerized step group by default.
 
-When you add a new step group manually, you can enable containerized step groups by selecting the **Enable container based execution** option.
+When you manually add a step group, you can enable containerized step groups by selecting the **Enable container based execution** option.
 
 ![Enable container based execution option](../static/cff025c9dc3cce0ca073b10a3ba4e73ddbbf28ff98f3b53e52da92ee183d1d96.png)  
 
@@ -187,7 +187,7 @@ In **Advanced**, you can use the following options:
 * [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
 * [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 
-### Containerized step group example
+## Containerized step group example
 
 When you run a pipeline that uses a containerized step group, you can see the container set up in the automatically generated **Initialize** step in the pipeline execution.
 

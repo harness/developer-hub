@@ -47,11 +47,11 @@ The Background step has the following settings.
 
 When you name the step, Harness automatically adds an [Id](https://developer.harness.io/docs/platform/References/entity-identifier-reference) based on the name.
 
-You can use the Background step Id to call services started by Background steps in later steps, such as commands in Run steps. For example, a cURL command could call `BACKGROUND_STEP_ID:5000` where it might otherwise call `localhost:5000`.
+You can use the Background step Id to call services started by Background steps in later steps, such as commands in Run steps. For example, a cURL command could call `STEPGROUPID_BACKGROUNDSTEPID:5000` where it might otherwise call `localhost:5000`.
 
 ![picture 0](static/1d52c641a8b442054d83fc2b8bacc1917371f53c7100a0fcf0a7b6666342ce2e.png)  
 
-If the Background step is inside a step group, you must include step group Id, such as `curl STEP_GROUP_ID_BACKGROUND_STEP_ID:5000`, even if both steps are in the same step group.
+You must include step group Id, such as `curl STEP_GROUP_ID_BACKGROUND_STEP_ID:5000`, even if both steps are in the same step group.
 
 ### Container Registry
 

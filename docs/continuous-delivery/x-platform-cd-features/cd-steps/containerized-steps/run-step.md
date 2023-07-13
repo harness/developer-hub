@@ -56,7 +56,7 @@ In **Command**, enter [POSIX](https://en.wikipedia.org/wiki/POSIX) shell script 
 
 :::tip
 
-You can reference services started in CD [Background steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/background-step.md) by using the Background step's **Id** in your Run step's **Command**. For example, a cURL command could call `BACKGROUND_STEP_ID:5000` where it might otherwise call `localhost:5000`.
+You can reference services started in CD [Background steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/background-step.md) by using the Background step's **Id** in your Run step's **Command**. For example, a cURL command could call `STEPGROUPID_BACKGROUNDSTEPID:5000` where it might otherwise call `localhost:5000`.
 
 <figure>
 
@@ -65,7 +65,7 @@ You can reference services started in CD [Background steps](/docs/continuous-del
 <figcaption>Figure 2: The Background step Id, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
 </figure>
 
-If the Background step is inside a step group, you must include step group Id, such as `curl STEP_GROUP_ID_BACKGROUND_STEP_ID:5000`, even if both steps are in the same step group.
+You must include step group Id, such as `curl STEPGROUPID_BACKGROUNDSTEPID:5000`, even if both steps are in the same step group.
 
 :::
 
