@@ -48,7 +48,7 @@ You might want to check if you have stale flags so that you can decide whether t
 
 If a flag gets stale, and then any of the above occurs, the flag is no longer considered stale.
 
-**To view a list of potentially stale flags:**
+To view a list of potentially stale flags:
 
 * Go to **Feature Flags > Feature Flags**, and then select **Potentially Stale Flags**.
 
