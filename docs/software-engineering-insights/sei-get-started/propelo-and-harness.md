@@ -25,7 +25,7 @@ Authentication, access, and user management are part of the Harness Platform. Pe
 Harness SEI has three built-in user roles:
 
 * SEI Admin
-* SEI Team Admin
+* SEI Collection Admin
 * SEI Viewer
 
 These roles replace the six user roles that existed in Propelo (Admin, Auditor, Limited User, Restricted User, Assigned Issue User, and Public Dashboard User). In the Harness Platform, use [Harness RBAC](/docs/platform/Role-Based-Access-Control/rbac-in-harness) for access control. For example, you can [add user groups](/docs/platform/User-Management/add-user-groups) or [add user roles](/docs/platform/role-based-access-control/add-manage-roles/) according to your custom access needs.

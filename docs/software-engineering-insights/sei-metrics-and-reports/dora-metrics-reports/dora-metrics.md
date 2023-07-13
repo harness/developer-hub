@@ -6,7 +6,7 @@ sidebar_position: 20
 
 DORA (DevOps Research Assessment) identified the following key metrics that describe a software development team's performance: Deployment Frequency, Lead Time for Changes, Change Failure Rate, Time to Restore service (MTTR), and Reliability (MTBF).
 
-With SEI, you can [create DORA Insights](../../sei-insights.md#create-dora-insights) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
+With SEI, you can use [DORA Metrics Insights](../../sei-insights.md#dora-metrics) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
 
 Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/connectors-and-integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
 
@@ -46,7 +46,7 @@ The Deployment Frequency formula depends on whether you are tracking issue manag
 * Filters applied to the Workflow profile.
 * Collection-level filters.
 * Widget-level filters.
-* Dashboard time range.
+* Insight time range, which is the time range selected by the user when viewing the Insight.
 
 <details>
 <summary>Deployment Frequency calculation example</summary>
@@ -55,7 +55,7 @@ Consider the following Deployment Frequency configuration:
 
 * Connector: Jira
 * Filter: Status Category Equals Done
-* Calculation parameter: Ticket resolved in Dashboard Time Range
+* Calculation parameter: Ticket resolved in Insight time range
 * Time Range selected on the dashboard: Last 3 months
 
 With this configuration, the Deployment Frequency widget shows the total number of tickets with a status of **Done** in the given time range.
@@ -111,7 +111,7 @@ To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](../.
 
    * Select factors to use to calculate failed deployments.
    * Select factors to use to calculate total deployments.
-   * Select whether the failed deployment calculation should be based on items that were *updated/ended* or *created/started* within the dashboard time range.
+   * Select whether the failed deployment calculation should be based on items that were *updated/ended* or *created/started* within the Insight time range. *Insight time* is the time range selected by the user when viewing the Insight.
 
    Here you can also select **Show absolute value** if you would rather get the absolute value than the rate (percentage).
 
@@ -142,7 +142,7 @@ The Change Failure Rate is calculated by dividing the number of failed deploymen
 * Filters applied to the Workflow profile.
 * Collection-level filters.
 * Widget-level filters.
-* Dashboard time range.
+* Insight time range, which is the time range selected by the user when viewing the Insight.
 
 <details>
 <summary>Change Failure Rate calculation example</summary>
@@ -152,7 +152,7 @@ Consider the following Change Failure Rate configuration:
 * Connector: Jira
 * Filter for Failed Deployment: Status Category Equals Done
 * Filter for Total Deployment: Status Category Equals Done, To do, In Progress
-* Calculation parameter: Ticket resolved in Dashboard Time Range
+* Calculation parameter: Ticket resolved in Insight time range
 * Time Range selected on the dashboard: Last 3 months
 
 With this configuration, the Change Failure Rate widget shows the total number of tickets with a status of **Done** divided by the total number of tickets with a status of **Done**, **In Progress**, or **To Do**.

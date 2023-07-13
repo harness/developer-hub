@@ -86,7 +86,7 @@ These examples are based on the default workflow configuration profile with the 
 
 When reviewing these examples, consider the following:
 
-* `Time to first comment` helps you understand the lead time between `PR creation time` and the first review. The Lead Time widget shows the average time for all PRs. You can drill down to explore individual PRs in the widget or dashboard time frame.
+* `Time to first comment` helps you understand the lead time between `PR creation time` and the first review. The Lead Time widget shows the average time for all PRs. You can drill down to explore individual PRs in the widget or Insight time frame.
 * There are two ways to track the time taken for a PR approval:
   * Default `Approval Time` configuration: Time spent in the review cycle when an active reviewer is involved.
   * `Approval Time + Time to First comment`: The overall approval time, starting from PR creation.
@@ -222,7 +222,7 @@ Here are some examples of configurations for the Issues Report widget.
 To configure the Issues Report widget to show bug tickets created weekly:
 
 1. On the **Filter** tab, add an **Issue Type** filter set to **Bug/Defect**.
-2. For the time range, either **Use dashboard time** or set **Issue Created In** to the desired time range.
+2. For the time range, either **Use Insight time** or set **Issue Created In** to the desired time range. **Use Insight time** allows the user to select a desired time range when viewing the Insight.
 3. On the **Metrics** tab, select **Number of Tickets**.
 4. On the **Aggregations** tab, set **X-axis** to **Issue created by week**.
 5. On the **Settings** tab, set the **Visualization** to **Bar Chart**.
@@ -236,7 +236,7 @@ To configure the Issues Report widget to show bug tickets created weekly:
 To configure the Issues Report widget to show stories resolved weekly:
 
 1. On the **Filter** tab, add an **Issue Type** filter set to **Story**.
-2. For the time range, either **Use dashboard time** or set **Issue Created In** to the desired time range.
+2. For the time range, either **Use Insight time** or set **Issue Created In** to the desired time range. **Use Insight time** allows the user to select a desired time range when viewing the Insight.
 3. On the **Metrics** tab, select **Number of Tickets**.
 4. On the **Aggregations** tab, set **Stacks** to **Priority**, and set **X-axis** to **Issue resolved by week**.
 5. On the **Settings** tab, set the **Visualization** to **Bar Chart**.
@@ -297,9 +297,9 @@ You can use the **Issue Resolution Time Report** and **Issue Resolution Time Sin
 
 ### Configure the Issue Resolution Time Report
 
-By default, the Issue Resolution Time Report widget is filtered by issues closed (**Last closed date**) within a selected time range. Usually, the time range is set to **Use Dashboard Time**, which allows the user to select a time range when viewing Insights.
+By default, the Issue Resolution Time Report widget is filtered by issues closed (**Last closed date**) within a selected time range. Usually, the time range is set to **Use Insight time**, which allows the user to select a time range when viewing Insights.
 
-<!-- img .gitbook/assets/image (56).png - issue resolution time report widget config - filters tab - last closed date and dashboard time -->
+<!-- img .gitbook/assets/image (56).png - issue resolution time report widget config - filters tab - last closed date and Insight time -->
 
 On the **Aggregations** tab, you can select the dimension, from your issue management system, to use for the X-axis, such as **Assignee**, **Story Points**, **Ticket Category**, **Issue Closed Last Time Period**, and so on. This determines what you want the widget to focus on. For example, focusing on **Category** or **Component** can show you the issue resolution time for different work areas; whereas, focusing on **Assignee** can show you issue resolution time by developer.
 
@@ -362,7 +362,7 @@ This configuration produces a bar graph showing a historical record of the avera
 
 ## Issue Single Stat
 
-The Issue Single Stat widgets provides single metrics over the given time range. This is useful for tracking events (created, resolved, etc.) happening over a period of time. For example, you can use the **Issue Resolution Time Single Stat** widget to know how many issues were *resolved* in the given time frame. Usually, the time range is set to **Use Dashboard Time**, which allows the user to select a time range when viewing Insights.
+The Issue Single Stat widgets provides single metrics over the given time range. This is useful for tracking events (created, resolved, etc.) happening over a period of time. For example, you can use the **Issue Resolution Time Single Stat** widget to know how many issues were *resolved* in the given time frame. Usually, the time range is set to **Use Insight time**, which allows the user to select a time range when viewing Insights.
 
 Issue Single Stats widgets include:
 

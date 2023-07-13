@@ -67,7 +67,7 @@ Here are some examples of configurations for the Issues Report widget.
 To configure the Issues Report widget to show bug tickets created weekly:
 
 1. On the **Filter** tab, add an **Issue Type** filter set to **Bug/Defect**.
-2. For the time range, either **Use dashboard time** or set **Issue Created In** to the desired time range.
+2. For the time range, either select **Use Insight time** or set **Issue Created In** to the desired time range. **Use Insight time** allows the user to select a desired time range when viewing the Insight.
 3. On the **Metrics** tab, select **Number of Tickets**.
 4. On the **Aggregations** tab, set **X-axis** to **Issue created by week**.
 5. On the **Settings** tab, set the **Visualization** to **Bar Chart**.
@@ -81,7 +81,7 @@ To configure the Issues Report widget to show bug tickets created weekly:
 To configure the Issues Report widget to show stories resolved weekly:
 
 1. On the **Filter** tab, add an **Issue Type** filter set to **Story**.
-2. For the time range, either **Use dashboard time** or set **Issue Created In** to the desired time range.
+2. For the time range, either **Use Insight time** or set **Issue Created In** to the desired time range. **Use Insight time** allows the user to select a desired time range when viewing the Insight.
 3. On the **Metrics** tab, select **Number of Tickets**.
 4. On the **Aggregations** tab, set **Stacks** to **Priority**, and set **X-axis** to **Issue resolved by week**.
 5. On the **Settings** tab, set the **Visualization** to **Bar Chart**.
@@ -120,7 +120,7 @@ To configure the Issues Report widget to show the team workload:
 
 ## Issue Single Stat
 
-The Issue Single Stat widgets provides single metrics over the given time range. This is useful for tracking events (created, resolved, etc.) happening over a period of time. For example, you can use the **Issue Resolution Time Single Stat** widget to know how many issues were *resolved* in the given time frame. Usually, the time range is set to **Use Dashboard Time**, which allows the user to select a time range when viewing Insights.
+The Issue Single Stat widgets provides single metrics over the given time range. This is useful for tracking events (created, resolved, etc.) happening over a period of time. For example, you can use the **Issue Resolution Time Single Stat** widget to know how many issues were *resolved* in the given time frame. Usually, the time range is set to **Use Insight time**, which allows the user to select a time range when viewing Insights.
 
 Issue Single Stats widgets include:
 

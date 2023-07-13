@@ -76,11 +76,11 @@ You can configure the widget to show your team's current sprint only. To do this
 </details>
 
 <details>
-<summary>Dashboard time hygiene</summary>
+<summary>Insight time hygiene</summary>
 
-_Dashboard time_ is the time range selected by the user when viewing Insights. You can configure the widget to show the hygiene score for all tickets created in the user-selected dashboard time. To do this, go to the **Filter** tab, select **Issue Created In**, and then select **Use Dashboard Time**.
+_Insight time_ is the time range selected by the user when viewing Insights. You can configure the widget to show the hygiene score for all tickets created in the user-selected Insight time. To do this, go to the **Filter** tab, select **Issue Created In**, and then select **Use Insight Time**.
 
-<!--img .gitbook/assets/image (33).png - Configure issue hygiene report -- filters tab - use dashboard time-->
+<!--img .gitbook/assets/image (33).png - Configure issue hygiene report -- filters tab - use Insight time-->
 
 </details>
 

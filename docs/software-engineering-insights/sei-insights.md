@@ -6,8 +6,6 @@ sidebar_position: 50
 
 Insights are dashboards that make it easy to visualize and interpret metrics that are captured by SEI. With a variety of out-of-the-box widgets, you can create Insights that show the data you care about most and help you understand your engineering team's effectiveness and efficiency.
 
-<!-- You can also share Insights with your team members. -->
-
 This topic explains how to create and view Insights. For information about configuring specific widgets and the metrics that are presented on widgets, go to [Metrics and reports](/docs/category/metrics-and-reports).
 
 ## View Insights
@@ -42,9 +40,9 @@ You can also configure individual metrics and widgets to specify what data is us
 
 :::
 
-#### Set the dashboard time
+#### Set the Insight time
 
-_Dashboard time_ is the time range selected by the user viewing an Insight. Widgets and reports must be configured to **Use Dashboard Time** in order for their data to update when you change the Insight time range.
+_Insight time_ is the time range selected by the user viewing an Insight. Widgets and reports must be configured to **Use Insight Time** in order for their data to update when you change the Insight time range.
 
 If a widget or report uses a specific time range, changing the Insight time has no impact on the data shown by that widget or report.
 
@@ -65,19 +63,18 @@ Some widgets allow you to drill down into data. For example, you can select a se
 2. In the header, select **All Insights**, and then select **Manage Insights**.
 3. Select **New Insight**.
 4. Enter a **Name** for the Insight.
-5. If you want to make this Insight private, make sure **Allow everyone in my organization to view the Insight** is *not* selected.
-6. Under **Parameters**, you can modify the following settings:
+5. Under **Parameters**, you can modify the following settings:
 
-   * **Dashboard Time Range:** You can enable dashboard time. _Dashboard time_ is the time range selected by the user when viewing an Insight.
-   * **Effort Investment Profile** and **Effort Investment Units** are used for [Business Alignment Insights](#create-business-alignment-insights) and [DORA Insights](#create-dora-insights).
+   * **Insight Time Range:** You can enable Insight time, which is the time range selected by the user when viewing an Insight.
+   * **Effort Investment Profile** and **Effort Investment Units** are used for [Business Alignment Insights](#business-alignment) and [DORA Metrics Insights](#dora-metrics).
 
-7. Select at least one Collection category to associate with this Insight.
+6. Select at least one Collection category to associate with this Insight.
 
    All [Collections](./sei-collections/manage-collections.md) and child Collections under the selected category are automatically associated with the Insight. You can refine the [Insight associations](#manage-insights-associations) after initial Insight creation.
 
    If you want to examine Collections under a certain Collection category, select **View Collections** on the **Collections Categories** dropdown menu.
 
-8. Select **Create** to save the Insight metadata. From here, you can [add widgets](#add-widgets) or modify the Insight settings, such as [Insights associations](#manage-insights-associations).
+7. Select **Create** to save the Insight metadata. From here, you can [add widgets](#add-widgets) or modify the Insight settings, such as [Insights associations](#manage-insights-associations).
 
 ### Add widgets
 
@@ -107,32 +104,7 @@ There are two ways to manage the Collections associated with Insights:
 * When viewing Insights, select the **Settings** icon, and then select **Collections**.
 * From the **Edit Collection** page, edit the **Insights** settings. For more information about this option, go to **Managing Insights associations** in [Manage Collections](./sei-collections/manage-collections.md#manage-insights-associations).
 
-## Create Business Alignment Insights
-
-Business Alignment Insights can help visualize where your teams are expending the most effort and help your teams prioritize their time.
-
-To create a Business Alignment Insights, select the **Effort Investment Profile** option under **Parameters** when [creating Insights](#create-insights).
-
-<!-- image /.gitbook/assets/image (4).png - Create dashboard with Effort Investment Profile selected -->
-
-With **Effort Investment Profile** selected, your new Insight starts with the following widgets, which provide an overview of the categories or projects where engineers are allocating the most time:
-
-* **Effort Investment Single Stat**
-* **Effort Investment Trend Report**
-* **Effort Investment By Engineer**
-
-For more information about these metrics, go to [effort investment metrics](./sei-metrics-and-reports/effort-investment-metrics-reports/effort-investment-metrics.md).
-
-## Create DORA Insights
-
-Use DORA Insights to examine your organization's [DORA (DevOps Research Assessment) metrics](./sei-metrics-and-reports/dora-metrics-reports/dora-metrics.md).
-
-To create DORA Insights:
-
-1. Follow the steps to [create Insights](#create-insights), and select both **Effort Investment Profile** and **Effort Investment Units**.
-2. Add widgets for [DORA metrics](./sei-metrics-and-reports/dora-metrics-reports/dora-metrics.md).
-
-## Change the color scheme
+### Change the color scheme
 
 You can change the colors for values on bar charts and pie charts. The color scheme applies to all Insights.
 
@@ -143,14 +115,14 @@ You can change the colors for values on bar charts and pie charts. The color sch
 5. Select **Add Label** to configure colors for other values.
 6. Select **Save**.
 
-## Share Insights
+### Visibility and sharing
 
 Authentication, access, and user management are part of the Harness Platform. Permissions granted to users and user groups depends on their associations with resources and resource groups, which are controlled at the account and project level in Harness.
 
 Harness SEI has three built-in user roles:
 
 * SEI Admin
-* SEI Team Admin
+* SEI Collection Admin
 * SEI Viewer
 
 For more information about authentication, access, and user management, go to the following:
@@ -158,3 +130,48 @@ For more information about authentication, access, and user management, go to th
 * [Harness Platform authentication (including 2FA and SSO)](/docs/category/authentication)
 * [Harness Platform user management (including users, groups, and SCIM)](/docs/category/users)
 * [Harness RBAC overview](/docs/platform/Role-Based-Access-Control/rbac-in-harness)
+
+## Built-in Insights
+
+The following five Insights are included OOTB with SEI:
+
+* DORA Metrics
+* Dev Insights
+* Business Alignment
+* Trellis
+* Planning Insights
+
+### DORA Metrics
+
+Use the DORA Metrics Insight to examine your organization's [DORA (DevOps Research Assessment) metrics](./sei-metrics-and-reports/dora-metrics-reports/dora-metrics.md).
+
+If you want to create additional DORA Metrics Insights:
+
+1. Follow the steps to [create Insights](#create-insights), and select both **Effort Investment Profile** and **Effort Investment Units**.
+2. Add widgets for [DORA metrics](./sei-metrics-and-reports/dora-metrics-reports/dora-metrics.md).
+
+### Dev Insights
+
+Dev Insights examines development efforts, particularly in relation to SCM metrics, such as PR creation, merging, and review collaboration. For more information about SCM metrics, go to [velocity metrics](./sei-metrics-and-reports/velocity-metrics-reports/velocity-metrics.md).
+
+### Business Alignment
+
+The Business Alignment Insight can help visualize where your teams are expending the most effort and help your teams prioritize their time. This Insight includes the following three widgets, which provide an overview of the categories or projects where engineers are allocating the most time:
+
+* **Effort Investment Single Stat**
+* **Effort Investment Trend Report**
+* **Effort Investment By Engineer**
+
+For more information about these reports and metrics, go to [effort investment metrics](./sei-metrics-and-reports/effort-investment-metrics-reports/effort-investment-metrics.md).
+
+If you want to create additional Business Alignment Insights, select the **Effort Investment Profile** option under **Parameters** when [creating Insights](#create-insights).
+
+<!-- image /.gitbook/assets/image (4).png - Create dashboard with Effort Investment Profile selected -->
+
+### Trellis
+
+Use the Trellis Insight to examine [Trellis Scores](./sei-metrics-and-reports/trellis-score.md).
+
+### Planning Insights
+
+Use the Planning Insight to examine [sprint metrics](./sei-metrics-and-reports/velocity-metrics-reports/planning-sprint-metrics.md).

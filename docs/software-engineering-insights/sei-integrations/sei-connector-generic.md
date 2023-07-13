@@ -315,7 +315,7 @@ kubectl rollout restart deployment levelops-satellite
 
 ## Job Reporter plugin (Jenkins)
 
-The Job Reporter plugin is a tool, written in Java, that sends reports about Jenkins builds to SEI. It monitors all job runs, and, when a job run completes (successfully or not), it sends information about job run (including any failure logs) to SEI. This plugin **doesn't** do periodic pushes.
+The [Job Reporter plugin](https://plugins.jenkins.io/propelo-job-reporter/) is a tool, written in Java, that sends reports about Jenkins builds to SEI. It monitors all job runs, and, when a job run completes (successfully or not), it sends information about job run (including any failure logs) to SEI. This plugin **doesn't** do periodic pushes.
 
 The plugin gathers information about job stages and steps depending on the outcome and structure of the job:
 
@@ -329,7 +329,7 @@ To use this plugin, you need to use the generic SEI connector and install the pl
 1. In Jenkins, select **Manage Jenkins**.
 2. Select **Manage Plugins**.
 3. Select the **Available plugins** tab, and search for `Job Reporter`.
-4. Locate and install the **Propelo Job Reporter** plugin. Select **Install without restart**.
+4. Locate and install the **SEI Job Reporter** plugin. Select **Install without restart**.
 
    When plugin installation is complete, the status changes to success. If it doesn't change to success, you might need to restart.
 
