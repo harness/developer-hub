@@ -1,11 +1,7 @@
 ---
-title: Continuous Verification (CV)
+title: Overview
 description: Get an overview of Harness CV.
-sidebar_position: 20
-helpdocs_topic_id: 3xhqq9xllp
-helpdocs_category_id: 9mefqceij0
-helpdocs_is_private: false
-helpdocs_is_published: true
+sidebar_position: 10
 ---
 
 # Harness Continuous Verification (CV) overview
@@ -21,9 +17,9 @@ If you are already familiar with setting up Harness CV and the verification step
 
 ## Before You Begin
 
-* [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
-* [Learn about Kubernetes deployments](../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
-* [Refer to the supported platforms and technologies](../../getting-started/supported-platforms-and-technologies.md#continuous-verification)
+* [Learn Harness' Key Concepts](./getting-started/../../../../getting-started/learn-harness-key-concepts.md).
+* [Learn about Kubernetes deployments](../../deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart.md).
+* [Refer to the supported platforms and technologies](../getting-started/../../../getting-started/supported-platforms-and-technologies.md)
 
 
 ## Deployment strategies for CV
