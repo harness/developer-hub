@@ -23,11 +23,6 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 <Tabs>
   <TabItem value="What's new">
 ```
-
-- [GameDay](/docs/chaos-engineering/configure-chaos-experiments/gameday/run-gameday) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
-
-- The CE [integration](/docs/chaos-engineering/integrations/use-chaos-with-srm) with Harness Service Reliability Management (SRM) is no longer behind a feature flag, and is now available to all users. (CHAOS-1964)
-
 - While upgrading a namespace-scoped chaos infrastructure, users will now be shown the command for upgrading CRDs as well. (CHAOS-1846)
 
 - We now show all steps in the experiment details pipeline diagram. (CHAOS-1817)
@@ -69,12 +64,6 @@ This release has no early access features.
 
 - There was an issue where if the user aborted an experiment running as part of a pipeline, the pipeline step displayed `All your faults executed without an issue`. This has been fixed, and the correct details are now displayed based on the experiment execution. (CHAOS-733)
 
-- There was an issue where a CD step was not showing parallel faults even though the selected experiment had multiple parallel experiments. This issue has been fixed. (CHAOS-1208)
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
 ## Previous releases
 
