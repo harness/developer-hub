@@ -4,10 +4,14 @@ import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./accessibility.module.scss";
 import Link from "@docusaurus/Link";
+// import Harness_CD_VPAT_Report from "../../../static/doc/"
 
 export default function AccessibilityPage() {
   // const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
   const { siteConfig } = useDocusaurusContext();
+
+  const baseUrl = siteConfig.url;
+
   return (
     <div>
       <MDXContent>
@@ -34,7 +38,7 @@ export default function AccessibilityPage() {
                 <div>
                   <img
                     src={`/img/accessibility/accessibility_img_1.svg`}
-                    alt=""
+                    alt="accessibility image"
                   />
                   <h4>Making all modules & features accessible</h4>
                   <p>
@@ -47,7 +51,7 @@ export default function AccessibilityPage() {
                 <div>
                   <img
                     src={`/img/accessibility/accessibility_img_2.svg`}
-                    alt=""
+                    alt="accessibility image"
                   />
                   <h4>Accessibility at the core of the business</h4>
                   <p>
@@ -61,7 +65,7 @@ export default function AccessibilityPage() {
                 <div>
                   <img
                     src={`/img/accessibility/accessibility_img_3.svg`}
-                    alt=""
+                    alt="accessibility image"
                   />
                   <h4>Embracing an accessibility mindset</h4>
                   <p>
@@ -83,30 +87,70 @@ export default function AccessibilityPage() {
               platform using the links below:
             </p>
             <ul>
-              <a href="#">
-                <li>Harness CD VPAT Report</li>
-              </a>
-              <a href="#">
-                <li>Harness CI VPAT Report</li>
-              </a>
-              <a href="#">
-                <li>Harness FF VPAT Report</li>
-              </a>
-              <a href="#">
-                <li>Harness CCM VAT Report</li>
-              </a>
-              <a href="#">
-                <li>Harness STO VPAT Report</li>
-              </a>
-              <a href="#">
-                <li>Harness SRM VPAT Report</li>
-              </a>
-              <a href="#">
-                <li>Harness Chaos VPAT Report</li>
-              </a>
-              <a href="#">
-                <li>Harness Platform VPAT Report</li>
-              </a>
+              <li>
+                <Link
+                  to={`${baseUrl}/doc/Harness_CD_VPAT_Report.pdf`}
+                  className={styles.link}
+                >
+                  Harness CD VPAT Report
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={`${baseUrl}/doc/Harness_CI_VPAT_Report.pdf`}
+                  className={styles.link}
+                >
+                  Harness CI VPAT Report
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={`${baseUrl}/doc/Harness_FF_VPAT_Report.pdf`}
+                  className={styles.link}
+                >
+                  Harness FF VPAT Report
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={`${baseUrl}/doc/Harness_CCM_VPAT_Report.pdf`}
+                  className={styles.link}
+                >
+                  Harness CCM VAT Report
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={`${baseUrl}/doc/Harness_STO_VPAT_Report.pdf`}
+                  className={styles.link}
+                >
+                  Harness STO VPAT Report
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={`${baseUrl}/doc/Harness_SRM_VPAT_Report.pdf`}
+                  className={styles.link}
+                >
+                  Harness SRM VPAT Report
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={`${baseUrl}/doc/Harness_Chaos_VPAT_Report.pdf`}
+                  className={styles.link}
+                >
+                  Harness Chaos VPAT Report
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to={`${baseUrl}/doc/Harness_Platform_VPAT_Report.pdf`}
+                  className={styles.link}
+                >
+                  Harness Platform VPAT Report
+                </Link>
+              </li>
             </ul>
           </main>
         </Layout>

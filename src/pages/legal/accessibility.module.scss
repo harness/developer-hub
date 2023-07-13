@@ -14,15 +14,13 @@
     font-size: 16px;
     line-height: 26px;
   }
-  ul {
-    a {
-      text-decoration: none;
-      li {
-        text-decoration: underline;
-        color: #0b0b0d;
-      }
-    }
+
+  .link {
+    text-decoration: underline;
+    color: #0b0b0d;
+    
   }
+
   .goals {
     display: flex;
     gap: 24px;
