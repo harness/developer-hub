@@ -197,7 +197,7 @@ export default function Certifications() {
                     alt="Developer Continuous Integration Badge"
                   />
                 </div>
-                <h5>Comming Soon</h5>
+                <h5>Coming Soon</h5>
               </div>
             </div>
             <div className={styles.verticalLine}></div>
@@ -228,7 +228,7 @@ export default function Certifications() {
                     alt="Administrator Continuous Delivery Badge"
                   />
                 </div>
-                <h5>Comming Soon</h5>
+                <h5>Coming Soon</h5>
                 <div className={styles.unAvailableCerts}>
                   <img
                     src={`${baseUrl}img/cert_adm_ci_badge.svg`}
@@ -261,7 +261,7 @@ export default function Certifications() {
 
                 <div className={styles.availableCerts}>
                 </div>
-                <h5>Comming Soon</h5>
+                <h5>Coming Soon</h5>
                 <div className={styles.unAvailableCerts}>
                   <img
                     src={`${baseUrl}img/cert_arc_cd_badge.svg`}
