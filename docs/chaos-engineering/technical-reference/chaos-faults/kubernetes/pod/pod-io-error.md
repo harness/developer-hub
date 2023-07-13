@@ -36,7 +36,7 @@ Pod IO error:
       <tr>
         <td> ERROR_CODE </td>
         <td> Specify the error code to be injected in file system calls</td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-error#error-code">error code</a>.</td>
+        <td> For more information, go to <a href="#error-code">error code</a>.</td>
       </tr>
       <tr>
         <td> MOUNT_PATH </td>

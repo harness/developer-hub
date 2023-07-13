@@ -117,6 +117,10 @@ If no delegates are selected for a CD step in its **Delegate Selector** setting,
 
 Harness will try this delegate first for the step task because this delegate has been successful in the target environment.
 
+import Selector from '/docs/platform/2_Delegates/shared/selector-infrastructure.md'
+
+<Selector />
+
 Most CI steps use connectors to pull the image of the container where the step will run. The delegates used for the step's connector are not necessarily used for running the step. In general, the delegate(s) used for the connector in the **Infrastructure** build farm is used to run the step.
 
 ### Delegate high availability (HA)
