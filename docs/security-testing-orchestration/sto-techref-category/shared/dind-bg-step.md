@@ -1,6 +1,4 @@
-#### Set up Docker-in-Docker 
-
-You need to include a Docker-in-Docker background service in your stage if any of these conditions apply:
+You need to include a Docker-in-Docker background service in your stage if either of these conditions apply:
 * You configured your scanner using a generic Security step rather than a scanner-specific template such as Aqua Trivy, Bandit, Mend, Snyk, etc. 
 * You’re scanning a container image using an Orchestration or Extraction workflow. Docker-in-Docker is not required for ingestion workflows.
 

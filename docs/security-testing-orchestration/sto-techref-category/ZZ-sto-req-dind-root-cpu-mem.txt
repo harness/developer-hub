@@ -1,0 +1,65 @@
+---
+title: Docker-in-Docker, root access, CPU, and memory requirements for individual scanners
+description: Docker-in-Docker, root access, CPU, and memory requirements for individual scanners
+sidebar_position: 1
+---
+
+### TEMPLATE
+
+<table>
+    <tr>
+        <th></th>
+        <th>Docker-in-Docker</th>
+        <th>Root access</th>
+        <th>Memory/CPU</th>
+    </tr>
+    <tr>
+        <th>Ingestion</th>
+        <td align="center">❌</td>
+        <td align="center">❌</td>
+        <td align="center">TBD/TBD</td>
+    </tr>
+    <tr>
+        <th>Orchestration</th>
+        <td align="center">✅</td>
+        <td align="center">✅</td>
+        <td align="center">TBD/TBD</td>
+    </tr>
+    <tr>
+        <th>Dataload</th>
+        <td align="center">NA</td>
+        <td align="center">NA</td>
+        <td align="center">TBD/TBD</td>
+    </tr>
+</table>
+
+### Amazon Image scanner requirements
+
+The following table outlines the Docker-in-Docker, root-access, and memory-resource requirements for each ingestion type.
+
+<table>
+    <tr>
+        <th></th>
+        <th>Docker-in-Docker</th>
+        <th>Root access</th>
+        <th>Memory/CPU</th>
+    </tr>
+    <tr>
+        <th>Ingestion </th>
+        <td align="center">Not required</td>
+        <td align="center">Not required</td>
+        <td align="center">??? / ???</td>
+    </tr>
+    <tr>
+        <th>Orchestration</th>
+        <td align="center">NA</td>
+        <td align="center">NA</td>
+        <td align="center">NA</td>
+    </tr>
+    <tr>
+        <th>Extraction</th>
+        <td align="center">Required</td>
+        <td align="center">Required</td>
+        <td align="center">??? / ???</td>
+    </tr>
+</table>
