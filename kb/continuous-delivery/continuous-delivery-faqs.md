@@ -50,8 +50,7 @@ This can be achieved by using an API which you can invoke using PowerShell https
 
 #### How to Use Expressions or Variables in Repeat Looping Strategy?
 
-You can use <+<+execution.steps.ShellScript_1.output.outputVariables.ARRAY1>.split(",")> instead of <+execution.steps.ShellScript_1.output.outputVariables.ARRAY1> as part of the items to pass a dynamic array as an input to the looping strategy of the next step.
-
+To pass a dynamic array as an input to the looping strategy of the next step, you can replace <+execution.steps.ShellScript_1.output.outputVariables.ARRAY1> with <+<+execution.steps.ShellScript_1.output.outputVariables.ARRAY1>.split(",")>. This change allows you to split the array into individual items using a comma as the delimiter.
 
 
 
