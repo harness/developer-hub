@@ -23,7 +23,7 @@ After you have created a flag, you can edit the following details:
 * Description
 * Whether or not it is marked as permanent
 
-**To edit a flag:**
+To edit a flag:
 
 1. In your Harness project, navigate to **Feature Flags > Feature Flags**.
 1. Next to the flag you want to edit, select **more options** (**︙**), and then select **Edit**.
