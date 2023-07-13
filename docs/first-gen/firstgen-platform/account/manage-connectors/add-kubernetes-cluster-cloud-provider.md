@@ -161,6 +161,14 @@ To use a Kubernetes Service Account (SA) and token, you will need to either use 
 For example, here's a manifest that creates a new SA named `harness-service-account` in the `default` namespace.
 
 
+:::note
+
+The Kubernetes SA token is not automatically generated if the SAs are provisioned under Kubernetes versions 1.24 or later. Create a new SA token and decode it to the `base64` format.
+
+:::
+
+
+
 ```
 # harness-service-account.yml  
 apiVersion: v1  

@@ -15,9 +15,18 @@ Harness CV integrates with Prometheus to:
 
 This topic covers how to add and configure Prometheus as a Health Source for the Verify step.
 
+
+:::important
+- Prometheus queries must include filters (enclosed in curly braces) to specify the nodes or data points you want to sample.
+
+- Prometheus queries must produce a single value (scalar). To learn more about Prometheus queries, go to [QUERYING PROMETHEUS](https://prometheus.io/docs/prometheus/latest/querying/basics/).
+:::
+
+
 ## Before You Begin
 
-[Add Prometheus as a verification provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems)
+- [Add Prometheus as a verification provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems)
+
 
 ## Review: CV Setup Options
 

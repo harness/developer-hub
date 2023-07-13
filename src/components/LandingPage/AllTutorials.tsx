@@ -12,6 +12,7 @@ import { STOList } from "./data/securityTestingOrchestrationData";
 import { CEList } from "./data/chaosEngineeringData";
 import { PlatformList } from "./data/platformData";
 import { CETList } from "./data/continuousErrorTrackingData";
+import { IDPList } from "./data/internalDeveloperPortalData";
 import styles from "./styles.module.scss";
 import cardStyles from "./TutorialCard.module.scss";
 
@@ -90,6 +91,13 @@ export default function AllTutorials() {
           <h3>Track Errors</h3>
         </div>
         <TutorialCard FeatureList={CETList} />
+      </div>
+      <div className={styles.subSection}>
+        <div className={styles.SectionName}>
+          <img src={`${baseUrl}img/icon_idp.svg`} />
+          <h3>Manage Developer Portal</h3>
+        </div>
+        <TutorialCard FeatureList={IDPList} />
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>

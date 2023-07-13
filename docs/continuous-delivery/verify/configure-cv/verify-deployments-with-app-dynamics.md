@@ -15,6 +15,12 @@ Harness CV integrates with AppDynamics to:
 
 This topic covers how to add and configure AppDynamics as a Health Source for the Verify step.
 
+
+:::important
+Harness supports AppDynamics metrics for applications. However, Harness doesn't support user experience metrics for browsers or mobile apps.
+:::
+
+
 ## Before You Begin
 
 [Add AppDynamics as a verification provider](./platform/../../../../platform/7_Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems.md)
