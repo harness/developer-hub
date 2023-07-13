@@ -70,16 +70,22 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - The `<+configFile.getAsBase64()>` expression not resolving correctly when the content had new lines. (CDS-73424)
   
-  The issue occurred with new line characters while encoding config files. This is fixed and Harness now replaces new line characters with unicode.
+  The issue occurred with newline characters while encoding config files. This is fixed and Harness now replaces newline characters with unicode.
+   This item requires Harness Delegate version 79900. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 - The sort order on the pipelines list page was incorrect. (CDS-73216)
   
   Now, Harness supports case-insensitive sorting for pipelines, input sets, and pipeline executions.
+  This item requires Harness Delegate version 79900. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 - Artifactory artifact source **Artifact Name** regex value was not working correctly. (CDS-73150)
   
   Harness has added support for regex values for generic type Artifactory artifacts.
-- Cron triggers artifact setting fails when modified regex does not match any build. (CDS-72589, ZD-46323)
+  This item requires Harness Delegate version 79xxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+- Cron triggers artifact setting failed when modified regex did not match any build. (CDS-72589, ZD-46323)
   
-  Harness initially modifies the regex to see if it matches any build. The trigger was failing if it did not match. Now, if the regex does not match any build Harness will use the original regex.
+  Harness initially modifies the regex to see if it matches any build. The trigger was failing if it did not match. Now, if the regex does not match any build, Harness will use the original regex.
+   This item requires Harness Delegate version 79xxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 - Deserialization of `isGitDefaultBranch` in `ScmGitMetadata` is failing in platform service. (CDS-73805)
   
   There was an issue when deserializing the `isGitDefaultBranch` value when fetching Git metadata. This has now been fixed.
