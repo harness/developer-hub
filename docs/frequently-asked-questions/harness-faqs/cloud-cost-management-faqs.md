@@ -297,7 +297,7 @@ We will get separate recommendations for these individual containers. The recomm
 
 #### Does Harness support dynamic picking of instance families in Node recommendations to optimize for Reserved Instances (RI) or Savings plan?
 
-No, Harness doesn't support dynamic picking of instance families in Node recommendations to optimize for RI or Savings plan.
+No, Harness doesn't support dynamic picking of instance families in node recommendations to optimize for RI or Savings plan.
 
 #### Does Harness take into account Reserved Instances (RI) and Savings Plans when showing potential spend and savings?
 
