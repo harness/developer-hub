@@ -8,22 +8,13 @@ import { certifications } from "./data/certificationsData";
 import styles from "./styles.module.scss";
 
 const devFeatures = [
-  "Beginner",
-  "Free/Team Plan",
-  "No prior experience needed",
+  "Free Plan",
 ];
 const administratorFeatures = [
-  "Intermediate",
-  "Team/Enterprise Plan",
-  "Has understanding fundamentals",
-  "Has....experience",
+  "Enterprise Plan",
 ];
 const adminFeatures = [
-  "Advanced",
   "Enterprise Plan",
-  "Has in-depth experience setting up pipeline environments",
-  "Has....experience",
-  "Expert level....",
 ];
 
 export const getCertBadges = (url: string) => [
