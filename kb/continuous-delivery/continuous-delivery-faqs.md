@@ -36,5 +36,22 @@ The form gets too long if we expose all the fixed values and we only require in 
 
 For the terrafrom step if remote backend is not configured, the state file is being managed by Harness and it maps to the provisioner identifier itself. Hence the only way to get rid of the state file is to change the provisioner identifier in this scenario.
 
+#### Whether pipeline GitHub triggers support for project variable reference?
+
+Pipeline GitHub triggers won’t support project variable reference. As trigger yaml is independent of the pipeline yaml and the trigger will not be aware of the expression output. 
+
+#### Is it possible to use conditional execution in looping strategies?
+
+If you use a looping strategy then you will not be able to apply conditional execution on the child steps.
+
+#### How to upload a file into a specific folder present in the harness filestore from the pipeline stage (PowerShell script)?
+
+This can be achieved by using an API which you can invoke using PowerShell https://apidocs.harness.io/tag/File-Store/#operation/create
+
+#### How to Use Expressions or Variables in Repeat Looping Strategy?
+
+You can use <+<+execution.steps.ShellScript_1.output.outputVariables.ARRAY1>.split(",")> instead of <+execution.steps.ShellScript_1.output.outputVariables.ARRAY1> as part of the items to pass a dynamic array as an input to the looping strategy of the next step.
+
+
 
 
