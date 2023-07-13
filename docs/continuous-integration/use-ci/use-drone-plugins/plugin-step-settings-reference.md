@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings for the **Plugin** step. For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md)
+This topic provides settings for the **Plugin** step. For more information about plugins, go to [Explore plugins](./explore-ci-plugins.md).
 
 :::info
 
@@ -70,22 +70,22 @@ Output variables are exposed values that can be used by other steps or stages in
 To reference an output variable in another step in the same stage, use either of the following expressions:
 
 ```
-<+steps.[stepID].output.outputVariables.[VAR_NAME]>
-<+execution.steps.[stepID].output.outputVariables.[VAR_NAME]>
+<+steps.STEP_ID.output.outputVariables.VAR_NAME>
+<+execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
 To reference an output variable in a different stage than the one where it originated, use either of the following expressions:
 
 ```
-<+stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[VAR_NAME]>
-<+pipeline.stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[VAR_NAME]>
+<+stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
+<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.VAR_NAME>
 ```
 
 For each expression:
 
-* Replace `[stepID]` with the ID of the **Plugin** step.
-* Replace `[VAR_NAME]` with the relevant variable name.
-* In cross-stage references, replace `[stageID]` with the ID of the stage where the **Plugin** step exists.
+* Replace `STEP_ID` with the ID of the **Plugin** step.
+* Replace `VAR_NAME` with the relevant variable name.
+* In cross-stage references, replace `STAGE_ID` with the ID of the stage where the **Plugin** step exists.
 
 ## Image Pull Policy
 
