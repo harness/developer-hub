@@ -57,10 +57,19 @@ Click **Continue**.
 
 Enter the username and password for the email account.
 
-![](./static/add-smtp-configuration-02.png)
+![](./static/add-smtp-configuration-credentials.png)
+
+Click **Continue**.
+
+### Step 4: Delegate Setup
+
+In **Delegates Setup**, use [**Selectors**](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#selecting-a-delegate-for-a-connector-using-tags) to select any specific **Delegates** you want to use.
+
+![](./static/smtp-delegate.png)
+
 Click **Save and Continue**.
 
-### Step 4: Test Connection
+### Step 5: Test Connection
 
 In **To,** enter the email address to which you want to send notifications.
 

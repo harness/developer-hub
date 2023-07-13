@@ -1,7 +1,7 @@
 ---
 title: Use a template
 description: This topic describes how to use an existing template in a pipeline.
-# sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: 1re7pz9bj8
 helpdocs_category_id: m8tm1mgn2g
 helpdocs_is_private: false
@@ -16,84 +16,90 @@ This topic explains how to use an existing pipeline template in a pipeline.
 
 ### Before you begin
 
-* [Templates Overview](template.md)
+* [Templates overview](template.md)
 * [Create a pipeline template](create-pipeline-template.md)
 
 ### Step: Use a template
 
-To use a pipeline template, navigate to the **Deployments** module, and select **pipelines**.
+To use a pipeline template, do the following:
 
-Click **New Pipeline**.
+1. In Harness, select **Deployments**, and then select **Pipelines**.
 
-![](./static/use-a-template-41.png)
-Enter **Name** for your pipeline and click **Start with Template**.
+2. Select **Create a Pipeline**.
 
-The next page lists all the available pipeline templates.
+    ![](./static/use-a-template-41.png)
 
-Select the template that you want to use.
+3. Enter a **Name** for your pipeline, and then select **Start with Template**.
 
-![](./static/use-a-template-42.png)
-You can filter the templates by scope. You can also use the search bar to search the template that you want to use.
+   The next page lists all the available pipeline templates.
 
-![](./static/use-a-template-43.png)
-In **Details**, you can see the following details about the selected template:
+4. Select the template that you want to use.
 
-* Type
-* Description
-* Tags
-* Verison Label: Select the version label. Harness recommends using the **Stable** version of the template. This ensures that any changes that you make to this version are propagated automatically to the pipelines using this template.
+   ![](./static/use-a-template-42.png)
 
-In **Template Inputs**, you can view the number of step or stage inputs in that template.
+   You can filter the templates by scope. You can also use the search bar to search the template that you want to use.
 
-Click **YAML** to view the YAML details of the template.
+   ![](./static/use-a-template-43.png)
 
-Click the **Activity Log** to track all template events. It shows you details, like who created the template and template version changes.
 
-Click **Use Template** to use this template to create your pipeline.
+   In **Details**, you can see the following details about the selected template:
 
-Add the runtime input values (if required), and click **Save**. The **Pipeline is published successfully** message appears.
+   * Type
+   * Description
+   * Tags
+   * Version Label: Select the version label. Harness recommends using the **Stable** version of the template. This ensures that any changes that you make to this version are propagated automatically to the pipelines using this template.
 
-You can also perform the following actions:
+   In **Template Inputs**, you can view the number of step or stage inputs in that template.
 
-* Change template
-* Remove template
-* Open template in new tab
-* Preview template YAML
+5. Select **YAML** to view the YAML details of the template.
 
-![](./static/use-a-template-44.png)
-After you've made all the changes, click **Run**, and then click **Run Pipeline**. The template is deployed.
+6. Select the **Activity Log** to track all template events. It shows you details, like who created the template and template version changes.
 
-![](./static/use-a-template-45.png)
+7. Select **Use Template** to use this template to create your pipeline.
+
+8. Add the runtime input values (if required), and then select **Save**. The **Pipeline is published successfully** message appears.
+
+   You can also perform the following actions:
+
+   * Change template
+   * Remove template
+   * Open template in new tab
+   * Preview template YAML
+
+   ![](./static/use-a-template-44.png)
+
+9. After you've made all the changes, select **Run**, and then select **Run Pipeline**. The template is deployed.
+
+   ![](./static/use-a-template-45.png)
 
 ### Option: Copy to the pipeline
 
-
 :::note
-To copy a template, make sure you have the **core_template_copy** permission.
+You must have the **core_template_copy** permission to copy a template. 
 :::
-
 
 You can also copy the contents of a specific template to your pipeline using the **Copy to Pipeline** option. This doesn't add any reference to the template. Copying a template to a pipeline is different from using a template for your pipeline. You can't change any step or stage parameters when you link to a template from your pipeline.
 
-Select the pipeline template that you want to copy.
+To copy your template to a pipeline, do the following:
 
-In **Template Inputs**, click **Copy to Pipeline**.
+1. In Harness, select the pipeline template that you want to copy.
 
-![](./static/use-a-template-46.png)
+2. In **Template Inputs**, select **Copy to Pipeline**.
 
-In **Create new Pipeline**, enter a name and click **Start**.
+   ![](./static/use-a-template-46.png)
 
-Add a stage (if required).
+3. In **Create new Pipeline**, enter a name, and then select **Start**.
 
-Once you've made all the changes, click **Save**. You can **Save Pipeline** or **Save as Template**.
+4. Add a stage (if required).
 
-![](./static/use-a-template-47.png)
+5. Once you've made all the changes, select **Save**. You can **Save Pipeline** or **Save as Template**.
 
-Click **Run** to deploy the template.
+   ![](./static/use-a-template-47.png)
+
+6. Select **Run** to deploy the template.
 
 ### See also
 
 * [Create a step template](run-step-template-quickstart.md)
 * [Create an HTTP step template](harness-template-library.md)
 * [Create a stage template](add-a-stage-template.md)
-

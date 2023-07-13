@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-06-28T10:00:30
+date: 2023-07-06T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -19,19 +19,16 @@ Review the notes below for details about recent changes to Harness Platform, Nex
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 28, 2023, version 79714
+## Latest - July 06, 2023, version 79811
 
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-
-- There is now a limit of 100 API Tokens per free and community account. (PL-39337)
-
-- When configuring SMTP, you can now select specific delegates in **Delegates Setup**. (PL-39288)
-
-- You can now sort pipelines in the pipelines list by selecting the sortable column headers or the sort dropdown. (PL-31527)
+- Harness now allows special characters in usernames. (PL-39564, ZD-46487)
+- You can now view delegate logs when validating a connector that uses delegates to establish connections. (PL-37919)
+- When creating Azure Key Vault, you can now manually enter the vault name. (PL-32773, ZD-44045)
 
 
 ```mdx-code-block
@@ -45,6 +42,36 @@ This release does not include any early access features.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
+
+- It was possible to edit project identifiers. (PL-39609)
+
+  A code enhancement has fixed this issue.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 28, 2023, version 79714
+
+##### Platform new features
+
+- There is now a limit of 100 API Tokens per free and community account. (PL-39337)
+
+- When configuring SMTP, you can now select specific delegates in **Delegates Setup**. (PL-39288)
+
+- You can now sort pipelines in the pipelines list by selecting the sortable column headers or the sort dropdown. (PL-31527)
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Platform fixed issues
 
 - SAML provider **Name** and **Friendly Name** fields allowed special characters. (PL-39070)
 
@@ -73,16 +100,6 @@ This release does not include any early access features.
    This issue has been resolved by adding a code validation. The field no longer accepts values above 4320 minutes.
 
    This item requires Harness Delegate version 79707. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### June 19, 2023, version 79606
 

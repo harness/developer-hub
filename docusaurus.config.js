@@ -146,6 +146,11 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Manage Developer Portal",
+                to: "tutorials/internal-developer-portal",
+              },
+              {
+                // type: "doc",
                 label: "Administer Harness Platform",
                 to: "tutorials/platform",
               },
@@ -193,7 +198,7 @@ const config = {
                 label: "Continuous Error Tracking",
                 to: "docs/continuous-error-tracking",
               },
-                            {
+              {
                 label: "Internal Developer Portal",
                 to: "docs/internal-developer-portal",
               },
@@ -523,9 +528,9 @@ const config = {
     [
       "@docusaurus/plugin-content-blog",
       {
-        id: "releases",
-        path: "releases",
-        routeBasePath: "releases",
+        id: "product-updates",
+        path: "product-updates",
+        routeBasePath: "product-updates",
         exclude: ["**/shared/**", "**/static/**"],
         editUrl: "https://github.com/harness/developer-hub/tree/main",
         // ... other options

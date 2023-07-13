@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-07-03T10:00
+date: 2023-07-07T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -11,18 +11,69 @@ import TabItem from '@theme/TabItem';
 ```
 Review the notes below for details about recent changes to Harness Cloud Cost Management, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). 
 
+For information about data privacy and security, go to the [Harness Trust Center](https://trust.harness.io/).
+
+
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
 
-## Latest - June 30, 2023, version 79906
+## Latest - July 07, 2023, version 80002
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
 ### What's new
+
+* Azure VM recommendations (CCM-13142)
+
+  Now, the recommendations are computed based on both **Memory Utilization** data and the existing **CPU Utilization** tracking data.
+
+* Budget Sorting Enhancement (CCM-10948)
+
+  This enhancement allows you to conveniently sort budgets alphabetically in Harness CCM. You can now browse and navigate through budgets more efficiently.
+
+* Recommendations enhancement (CCM-11665)
+
+  You can now easily move recommendations from the **Applied** state back to the **Open** state. This enhancement allows you to easily rectify accidental closure of recommendations or marking Jira tickets as done by returning them to an actionable state.
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+### Early access
+
+This release does not include any early access features.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+### Fixed issues
+
+
+* Nodepool recommendations displayed incorrect savings data. (CCM-12816)
+
+ Implemented a check to exclude nodepools that have more than one instance family from generating recommendations. This is necessary as the current calculations for such nodepools result in incorrect recommendations. 
+
+  
+  
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 30, 2023, version 79906
+
+##### What's new
 
 * Azure inventory management (CCM-12676)
 
@@ -40,26 +91,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
       <docimage path={require('./static/ccm-budget-slack-msg.png')} width="60%" height="60%" title="Click to view full size image" />
 
       <docimage path={require('./static/ccm-budget-grp-slack-msg.png')} width="60%" height="60%" title="Click to view full size image" />
-
-
-
-
-
-  
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
-### Early access
+##### Early access
 
 This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
-### Fixed issues
+##### Fixed issues
 
 * The cost data was not displayed on the **Perspectives** page. (CCM-12752)
 
@@ -67,18 +103,6 @@ This release does not include any early access features.
 * Previously, users were unable to view and manage the ignored recommendations for EC2 instances. (CCM-13004) (ZD-46353)
 
  The payload for adding EC2 recommendations to the **Ignore List** was incorrect. Now, the issue is fixed, and the functionality is working as expected.
-
-
-  
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### June 21, 2023, version 79803
 

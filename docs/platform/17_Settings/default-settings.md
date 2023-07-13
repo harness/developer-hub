@@ -8,12 +8,6 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-
-:::important
-Currently, this feature is behind the feature flag `NG_SETTINGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
-
 Harness Default Settings lets you configure parameters in your Account, Org, or Project scope for specific Harness modules.
 
 This topic explains how to view and edit Default Settings for your modules.

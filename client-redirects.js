@@ -34,6 +34,17 @@ module.exports = {
     //  },
     //===================================================================================
     
+    // Created by roshnisarangadharan from branch fix-broken-links-cd on July 12 2023
+
+    {
+      from: "/docs/platform/notifications",
+      to: "/docs/category/notifications",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events/",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/",
+    },
+    
     // Created by roshnisarangadharan from branch DOC-3334-fix-broken-links-in-cd-docs on June 28 2023
 
     {
@@ -89,6 +100,11 @@ module.exports = {
 
     // Created by roshnisarangadharan from branch DOC-3192-remove-single-topic-folders on June 15 2023
     
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups",
+    },
+
     {
       from: "/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos",
       to: "/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos",

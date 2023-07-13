@@ -437,13 +437,13 @@ Pod network latency is a Kubernetes pod-level chaos fault that introduces latenc
 - It tests the application's resilience to lossy (or flaky) networks.
 
 <accordion color="green">
-    <summary>Use cases</summary>
-The fault degrades the network without the pod being marked as unhealthy (or unworthy) of traffic by kube-proxy (unless there is a liveness probe that measures thw latency and restarts (or crashes) the container). This fault simulates issues within the pod network (or microservice communication) across services in different availability zones(or regions).
+    <summary>View fault usage</summary>
+The fault degrades the network without the pod being marked as unhealthy (or unworthy) of traffic by kube-proxy (unless there is a liveness probe that measures the latency and restarts or crashes the container). This fault simulates issues within the pod network (or microservice communication) across services in different availability zones or regions.
 
 This can be resolved by using middleware that switches traffic based on certain SLOs or performance parameters.
-Another way is to set up alerts and notifications to highlight a degradation, so that it can be addressed, and fixed. Another way is to understand the impact of the failure and determine the last point in the application stack before degradation.
+Another way is to set up alerts and notifications to highlight a degradation so that it can be addressed and fixed. Another way is to understand the impact of the failure and determine the last point in the application stack before degradation.
 
-The applications may stall or get corrupted while waiting endlessly for a packet. This fault limits the impact (blast radius) to only the traffic that you wish to test by specifying the IP addresses. This fault will help to improve the resilience of your services over time.
+The applications may stall or get corrupted while waiting endlessly for a packet. This fault limits the impact (blast radius) to only the traffic that you wish to test by specifying the IP addresses. This fault helps to improve the resilience of your services over time.
 </accordion>
 
 </FaultDetailsCard>
@@ -452,7 +452,7 @@ The applications may stall or get corrupted while waiting endlessly for a packet
 
 ### Pod network loss
 
-Pod network loss is a Kubernetes pod-level chaos fault that causes packet loss in a specific container by starting a traffic control (tc) process with netem rules to add egress (or ingress) loss.
+Pod network loss is a Kubernetes pod-level chaos fault that causes packet loss in a specific container by starting a traffic control (tc) process with netem rules to add egress or ingress loss.
 
 - It tests the application's resilience to lossy (or flaky) network.
 
@@ -474,6 +474,51 @@ Pod network partition is a Kubernetes pod-level fault that blocks 100% ingress a
 <accordion color="green">
     <summary>Use cases</summary>
 It can test the application's resilience to lossy (or flaky) network.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod IO Latency
+
+Pod IO latency is a Kubernetes pod-level fault that delays the system calls of files located within the mounted volume of the pod.
+
+- It can test the application's resilience for the latency in i/o operations.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+It can test the application's resilience for the latency in i/o operations.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod IO Error
+
+Pod IO error is a Kubernetes pod-level fault that returns an error on the system calls of files located within the mounted volume of the pod.
+
+- It can test the application's resilience for the errors in i/o operations.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+It can test the application's resilience for the errors in i/o operations.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod IO Attribute Override
+
+Pod IO attribute override is a Kubernetes pod-level fault that modify the properties of files located within the mounted volume of the pod.
+
+- It can test the application's resilience for the different values of file properties.
+
+<accordion color="green">
+    <summary>View fault usage</summary>
+It can test the application's resilience for the different values of file properties.
 </accordion>
 
 </FaultDetailsCard>

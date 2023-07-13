@@ -1,4 +1,4 @@
-This topic furnishes the Harness Cloud Cost Management supported platforms and feature support matrix: 
+This topic provides the Harness Cloud Cost Management supported platforms and feature support matrix: 
 
 ## Supported Kubernetes Management Platform
 
@@ -66,7 +66,7 @@ This section lists the feature support matrix for the supported cloud platforms:
 |                     |                         |                     |                               |
 | ------------------- | ----------------------- | ------------------- | ----------------------------- |
 |                     | **Inventory Dashboard** | **Recommendations** | **AutoStopping**              |
-| **Virtual Machine** | Yes             | Coming soon         | Yes (With Spot Orchestration) |
+| **Virtual Machine** | Yes             | Yes         | Yes (With Spot Orchestration) |
 | **AKS**             | Yes                     | Yes                 | Yes                           |
 
 For information about what's supported for other Harness modules and the Harness Platform overall, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).

@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-06-30T10:00
+date: 2023-07-12T10:00
 sidebar_position: 13
 ---
 ```mdx-code-block
@@ -13,6 +13,8 @@ import TabItem from '@theme/TabItem';
 import delete_project from './static/delete-project.png'
 ```
 Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes).
+
+Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
 ## Latest - June 30, 2023, version 79421
 
@@ -41,10 +43,11 @@ This release includes the following Harness module and component versions.
 | NG UI | 0.349.16 |
 | LE NG | 67902 |
 
-
-
-
 #### Continuous Integration
+
+- The **Get Started** button on the Harness CD start page resulted in an error, preventing Harness CD from opening. (CDS-70665, PLG-2570)
+
+   This issue is fixed. Harness CD now starts as expected.
 
 - You can now reference [output variables produced by Plugin steps](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference#output-variables) in pipelines that use Kubernetes cluster build infrastructures. This is an addition to previously-existing support for Harness Cloud and self-hosted Cloud provider VM build infrastructures. (CI-7491)
 
@@ -465,6 +468,88 @@ This release includes the following Harness module and component versions.
 - Error budget burn rate notifications are not being sent for Request Based SLO. (SRM-14705).  
   
     This issue has been resolved, and error budget burn rate notifications are now being sent for Request Based SLO also.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Patch release">
+```
+
+## July 12, 2023, patch release for version 79421
+
+Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.7.2](https://github.com/harness/helm-charts/releases/tag/harness-0.7.2) |
+| Air Gap Bundle | [0.7.2](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.7.2) |
+| NG Manager | 79422 |
+| CI Manager | 3907 |
+| Pipeline Service | 1.33.8 |
+| Platform Service | 79202 |
+| Access Control Service | 79004 |
+| Change Data Capture | 79422 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.349.16 |
+| LE NG | 67902 |
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include any early access features.
+
+#### Fixed issues
+
+- For installations with custom dashboards enabled, the Harness Helm chart version 0.7.1 included entries that caused installation issues during upgrade. Custom dashboards were not available with the 0.7.1 patch release for Harness Self-Managed Enterprise Edition. (CDB-981)
+
+   This issue is fixed. The Harness Helm chart entries are corrected, and Helm installations succeed as expected. Custom dashboards are available if enabled.
+
+
+## July 7, 2023, patch release for version 79421
+
+Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.7.1](https://github.com/harness/helm-charts/releases/tag/harness-0.7.1) |
+| Air Gap Bundle | [0.7.1](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.7.1) |
+| NG Manager | 79422 |
+| CI Manager | 3907 |
+| Pipeline Service | 1.33.8 |
+| Platform Service | 79202 |
+| Access Control Service | 79004 |
+| Change Data Capture | 79422 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.349.16 |
+| LE NG | 67902 |
+
+#### What's new
+
+- Send emails to non-Harness users. (CDS-69561, CDS-58625, ZD-42496)
+  
+  To send emails to non-Harness users, you must configure your own SMTP server and enable the **Enable Emails to be sent to non-Harness Users** default setting. This setting is available at Account, Org, and Project levels.
+
+  For more information on how to send emails to non-Harness users, go to [Email step reference](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/email_step/).
+
+  Harness Delegate version 79503 is required for this feature.
+
+- The [Harness Helm charts](https://github.com/harness/helm-charts) `values.yaml` file is updated to include Error Tracking images. (SMP-1615)
+
+#### Early access
+
+This release does not include any early access features.
+
+#### Fixed issues
+
+- SAML SSO sign-in attempts failed after upgrading from 0.6.0 to 0.7.0.  (PL-39850, SMP-1583)
+
+   This issue is fixed. SAML SSO sign-ins no longer fail after an upgrade.
 
 ```mdx-code-block
   </TabItem>

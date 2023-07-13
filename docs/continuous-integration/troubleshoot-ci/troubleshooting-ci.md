@@ -107,7 +107,7 @@ If a build that uses Gradle experiences out of memory errors, add the following 
 -XX:+UnlockExperimentalVMOptions -XX:+UseContainerSupport
 ```
 
-Your Java options must use [UseContainerSupport](https://www.eclipse.org/openj9/docs/xxusecontainersupport/) instead of `UseCGroupMemoryLimitForHeap`, which was removed in JDK 11.
+Your Java options must use [UseContainerSupport](https://eclipse.dev/openj9/docs/xxusecontainersupport/) instead of `UseCGroupMemoryLimitForHeap`, which was removed in JDK 11.
 
 ## Can't use the built-in Harness Docker Connector with Harness Cloud build infrastructure
 

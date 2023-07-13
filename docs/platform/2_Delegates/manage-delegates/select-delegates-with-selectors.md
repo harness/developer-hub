@@ -59,7 +59,7 @@ A connector can be used in multiple places in a pipeline, such as a stage infras
 
 ### Step and step group delegate selector
 
-Delegates can be selected for steps and [step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups) in their **Advanced** settings.
+Delegates can be selected for steps and [step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups) in their **Advanced** settings.
 
 Here is a step example:
 
@@ -106,6 +106,10 @@ Delegates can be selected for an entire stage in the stage **Advanced** settings
 Delegates can be selected for the connector used in a stage's **Infrastructure** settings, such as a CD stage's **Cluster Details** > **Connector** setting.
 
 ![](./static/select-delegates-with-selectors-25.png)
+
+import Selector from '/docs/platform/2_Delegates/shared/selector-infrastructure.md'
+
+<Selector />
 
 ### Selecting a delegate for a step using tags
 
