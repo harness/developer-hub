@@ -102,7 +102,7 @@ This release has no early access features.
 
 
 
-
+* There was an issue where a CD step was not showing parallel faults even though the selected experiment had multiple parallel experiments. This issue has been fixed. (CHAOS-1208)
 #### June 12, 2023, version 0.13.5
 
 ##### What's new
