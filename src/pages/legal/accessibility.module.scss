@@ -15,9 +15,12 @@
     line-height: 26px;
   }
   ul {
-    li {
-      text-decoration: underline;
-      color: #0b0b0d;
+    a {
+      text-decoration: none;
+      li {
+        text-decoration: underline;
+        color: #0b0b0d;
+      }
     }
   }
   .goals {

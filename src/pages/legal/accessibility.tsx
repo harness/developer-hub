@@ -3,6 +3,7 @@ import MDXContent from "@theme/MDXContent";
 import Layout from "@theme/Layout";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import styles from "./accessibility.module.scss";
+import Link from "@docusaurus/Link";
 
 export default function AccessibilityPage() {
   // const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -82,14 +83,30 @@ export default function AccessibilityPage() {
               platform using the links below:
             </p>
             <ul>
-              <li>Harness CD VPAT Report</li>
-              <li>Harness CI VPAT Report</li>
-              <li>Harness FF VPAT Report</li>
-              <li>Harness CCM VAT Report</li>
-              <li>Harness STO VPAT Report</li>
-              <li>Harness SRM VPAT Report</li>
-              <li> Harness Chaos VPAT Report</li>
-              <li>Harness Platform VPAT Report</li>
+              <a href="#">
+                <li>Harness CD VPAT Report</li>
+              </a>
+              <a href="#">
+                <li>Harness CI VPAT Report</li>
+              </a>
+              <a href="#">
+                <li>Harness FF VPAT Report</li>
+              </a>
+              <a href="#">
+                <li>Harness CCM VAT Report</li>
+              </a>
+              <a href="#">
+                <li>Harness STO VPAT Report</li>
+              </a>
+              <a href="#">
+                <li>Harness SRM VPAT Report</li>
+              </a>
+              <a href="#">
+                <li>Harness Chaos VPAT Report</li>
+              </a>
+              <a href="#">
+                <li>Harness Platform VPAT Report</li>
+              </a>
             </ul>
           </main>
         </Layout>

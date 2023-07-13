@@ -52,64 +52,64 @@ export const certifications: CardItem[] = [
     link: "/certifications/continuous-integration?lvl=administrator",
     // numberOfCerts: 1,
   },
-  {
-    title: "Feature Flag Certifications",
-    module: MODULES.ff,
-    type: certType.developer,
-    description:
-      "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. ",
-    // version: "Harness CI Free/Team Plans",
-    // link: "/certifications/continuous-integration?lvl=developer",
-    // numberOfCerts: 1,
-  },
-  {
-    title: "Cloud Cost Management Certifications",
-    module: MODULES.ccm,
-    type: certType.developer,
-    description:
-      "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. ",
-    // version: "Harness CI Free/Team Plans",
-    // link: "/certifications/continuous-integration?lvl=developer",
-    // numberOfCerts: 1,
-  },
-  {
-    title: "Service Reliability Management Certifications",
-    module: MODULES.srm,
-    type: certType.developer,
-    description:
-      "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. ",
-    // version: "Harness CI Free/Team Plans",
-    // link: "/certifications/continuous-integration?lvl=developer",
-    // numberOfCerts: 1,
-  },
-  {
-    title: "Security Testing Orchestration Certifications",
-    module: MODULES.sto,
-    type: certType.developer,
-    description:
-      "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. ",
-    // version: "Harness CI Free/Team Plans",
-    // link: "/certifications/continuous-integration?lvl=developer",
-    // numberOfCerts: 1,
-  },
-  {
-    title: "Chaos Engineering Certifications",
-    module: MODULES.ce,
-    type: certType.developer,
-    description:
-      "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. ",
-    // version: "Harness CI Free/Team Plans",
-    // link: "/certifications/continuous-integration?lvl=developer",
-    // numberOfCerts: 1,
-  },
-  {
-    title: "Software Engineering Insights Certifications",
-    module: MODULES.sei,
-    type: certType.developer,
-    description:
-      "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. ",
-    // version: "Harness CI Free/Team Plans",
-    // link: "/certifications/continuous-integration?lvl=developer",
-    // numberOfCerts: 1,
-  },
+  // {
+  //   title: "Feature Flag Certifications",
+  //   module: MODULES.ff,
+  //   type: certType.developer,
+  //   description:
+  //     "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. ",
+  //   // version: "Harness CI Free/Team Plans",
+  //   // link: "/certifications/continuous-integration?lvl=developer",
+  //   // numberOfCerts: 1,
+  // },
+  // {
+  //   title: "Cloud Cost Management Certifications",
+  //   module: MODULES.ccm,
+  //   type: certType.developer,
+  //   description:
+  //     "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. ",
+  //   // version: "Harness CI Free/Team Plans",
+  //   // link: "/certifications/continuous-integration?lvl=developer",
+  //   // numberOfCerts: 1,
+  // },
+  // {
+  //   title: "Service Reliability Management Certifications",
+  //   module: MODULES.srm,
+  //   type: certType.developer,
+  //   description:
+  //     "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. ",
+  //   // version: "Harness CI Free/Team Plans",
+  //   // link: "/certifications/continuous-integration?lvl=developer",
+  //   // numberOfCerts: 1,
+  // },
+  // {
+  //   title: "Security Testing Orchestration Certifications",
+  //   module: MODULES.sto,
+  //   type: certType.developer,
+  //   description:
+  //     "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. ",
+  //   // version: "Harness CI Free/Team Plans",
+  //   // link: "/certifications/continuous-integration?lvl=developer",
+  //   // numberOfCerts: 1,
+  // },
+  // {
+  //   title: "Chaos Engineering Certifications",
+  //   module: MODULES.ce,
+  //   type: certType.developer,
+  //   description:
+  //     "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. ",
+  //   // version: "Harness CI Free/Team Plans",
+  //   // link: "/certifications/continuous-integration?lvl=developer",
+  //   // numberOfCerts: 1,
+  // },
+  // {
+  //   title: "Software Engineering Insights Certifications",
+  //   module: MODULES.sei,
+  //   type: certType.developer,
+  //   description:
+  //     "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. ",
+  //   // version: "Harness CI Free/Team Plans",
+  //   // link: "/certifications/continuous-integration?lvl=developer",
+  //   // numberOfCerts: 1,
+  // },
 ];
