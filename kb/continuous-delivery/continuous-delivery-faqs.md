@@ -9,32 +9,77 @@ This article addresses some frequently asked questions about Harness Continuous 
 
 
 
-#### How to use for condition while using jexl condition for trigger?
+#### How to use the "for" condition while using jexl condition for the trigger?
 
 Suppose that trigger payload has multiple records and you want to search for a particular string so you can make use of jexl for loop to iterate the list and match a string as below:
 
 `for (item : <+trigger.payload.commits>) { if (item.message == "mymessage") {return true;} }; return false;`
 
 
-#### How to use token for OCI repo in AWS ECR as the token by default expires every 12 hours ?
+#### How to use the token for OCI repo in AWS ECR as the token by default expires every 12 hours?
 
-We can set up AWS Secret Manager connector, then save the ECR auth token into it. Set up automatic token rotation (say at 10hr intervals) within AWS secret manager. Then have the Harness connector link to that AWS SecretManager secret, so it pulls a fresh token every time.
-
-
-#### In First Gen we use WINDOWS_RUNTIME_PATH while setting up runtime directory, what is the corresponding way in Next gen ?
-
-In NG we are not using any setup variables anymore, since it is Harness internal step where we basically create temp dir for the execution. We are creating working directory in Command Init unit on this %USERPROFILE% location.
+We can set up the AWS Secret Manager connector, then save the ECR auth token into it. Set up automatic token rotation (say at 10hr intervals) within AWS secret manager. Then have the Harness connector link to that AWS SecretManager secret, so it pulls a fresh token every time.
 
 
-#### In templateInput window why we only show variables that have runtime input and not the ones which has static value for input?
+#### In First Gen we use WINDOWS_RUNTIME_PATH while setting up a runtime directory, what is the corresponding way in Next Gen?
+
+In NG we are not using any setup variables anymore, since it is Harness's internal step where we basically create a temp dir for the execution. We are creating a working directory in the Command Init unit on this %USERPROFILE% location.
+
+
+#### In templateInput window why do we only show variables that have runtime input and not the ones which have a static value for input?
 
 We only show runtime because we intend to show the user what is required of them for input.
 The form gets too long if we expose all the fixed values and we only require in the form the ones which need input and not what has already defined values.
 
 
-#### How do we clean the  state file for terraform if there is no remote backend configrued ?
+#### How do we clean the state file for Terraform if there is no remote backend configured?
 
-For the terrafrom step if remote backend is not configured, the state file is being managed by Harness and it maps to the provisioner identifier itself. Hence the only way to get rid of the state file is to change the provisioner identifier in this scenario.
+For the terraform step if the remote backend is not configured, the state file is being managed by Harness and it maps to the provisioner identifier itself. Hence the only way to get rid of the state file is to change the provisioner identifier in this scenario.
 
+
+#### Why the "Always Execute this Step” condition does not always run in the CD pipeline?
+
+Always execute step runs regardless of success or failure but in order to trigger this condition on failure the previous step should be considered as failure, if the error is rolled back then it is not considered a failure. Hence, the next step's Conditional Execution is not executed. Therefore, a failure strategy such as “Mark as failure” or "ignore failure" is required.
+
+
+#### Can we retain more than 2 older release secrets and config maps?
+
+No, Harness uses a fixed limit of 2 in its release history cleanup logic. This value cannot be changed. 
+
+See - https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-rollback/#important-notes
+
+
+#### What happens if my manifest files are changed during pipeline execution, will harness pick the latest file?
+
+The files are fetched only during the execution step i.e. during rollout. if the files are changed and committed before the "Fetch file" step is executed in the rollout phase, Harness will pick the latest file.
+
+
+#### Can I encrypt the Token/Secret passed in the INIT_SCRIPT?
+
+Directly this cannot be encrypted but this use can be achieved by creating the k8s secret for the credentials and referring them in the init script.
+
+**example** -
+
+``` aws_access_key=kubectl get secrets/pl-credentials --template={{.data.aws_access_key}} | base64 -d```
+```aws_secret_key= kubectl get secrets/pl-credentials --template={{.data.aws_secret_key}} | base64 -d```
+
+
+Another approach would be saving the value in Harness's secret manager/any other secret manager and referencing it in the script.
+Check this for more info - https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets
+
+
+#### K8s delete command is not working with the native helm?
+
+The K8s delete command/step does not work with native helm deployment because Harness has different logic to maintain versioning and rollback for native helm and k8s.In the case of the native helm, If the deployment fails, we’ll uninstall it ourselves. However, if the user wants to pass some command flags with Uninstall, that can be passed by selecting Uninstall and passing the relevant command flags. 
+
+Check this for more details - https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts/#uninstall-command-flag
+
+
+#### How do I run helm uninstall after a successful deployment?
+
+To run Helm uninstall manually after a successful deployment. you can leverage the shell script step and run the helm uninstall ```release-name``` command from the delegate onto the cluster.
+To run the shell script onto the required cluster, we need to specify the k8s cluster credentials to delegate.
+
+Check this KB article for it -  https://discuss.harness.io/t/how-to-specify-k8s-credentials-that-are-associated-with-the-infrastructure-that-is-used-in-a-workflow-when-executing-kubectl-in-a-bash-script/535
 
 
