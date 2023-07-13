@@ -53,6 +53,22 @@ This release does not include new features.
   <TabItem value="Fixed issues">
 ```
 
+- Cron triggers artifact setting failed when modified regex did not match any build. (CDS-72589, ZD-46323)
+
+  Harness initially modifies the regex to see if it matches any build. The trigger was failing if it did not match. Now, if the regex does not match any build, Harness will use the original regex.
+
+- Artifactory artifact source **Artifact Name** regex value was not working correctly. (CDS-73150)
+
+  Harness has added support for regex values for generic type Artifactory artifacts.
+
+- The sort order on the pipelines list page was incorrect. (CDS-73216)
+
+   Now, Harness supports case-insensitive sorting for pipelines, input sets, and pipeline executions.
+
+- The `<+configFile.getAsBase64()>` expression not resolving correctly when the content had new lines. (CDS-73424)
+
+  The issue occurred with newline characters while encoding config files. This is fixed and Harness now replaces newline characters with unicode.
+
 - The Tokens list page returned a display error when tokens were present and there were multiple pages of results. (PL-36734)
 
   A code enhancement to reset the pagination on the Tokens list page after any token is deleted fixed this issue. Previously, if you deleted the last token on any page after the first page, the page displayed an empty result list.
