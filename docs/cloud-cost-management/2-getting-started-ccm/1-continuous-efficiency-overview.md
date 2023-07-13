@@ -67,11 +67,6 @@ The following section lists where you can use CCM:
 	+ Kubernetes: EKS (AWS), GKE (GCP), AKS (Azure)
 	+ ECS Clusters
 * Harness SaaS
-* Harness Self-Managed Enterprise Edition
-	* AWS
-	* GCP
-
-  For more information, go to [CCM on Harness Self-Managed Enterprise Edition](https://developer.harness.io/docs/category/ccm-on-harness-self-managed-enterprise-edition).
 
 ### Supported Kubernetes Management Platform
 
