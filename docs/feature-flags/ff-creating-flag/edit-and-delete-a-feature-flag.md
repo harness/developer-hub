@@ -73,7 +73,9 @@ You can archive a flag if it's not a prerequisite to other flags. If it is, remo
 1. In your Harness project, navigate to **Feature Flags > Feature Flags**.
 1. Next to the flag you want to archive, select **more options** (**︙**), and then select **Archive**.
 
-   The Archive Flag confirmation screen appears.
+   ![The **more options** menu shown for one flag, with edit and archive options](./static/archive-flag.png)
+
+   The Archive Flag confirmation screen appears next.
 
 1. If you're sure you want to archive the flag, type the name or ID of the flag in the field provided, and then select **Archive**.
 
@@ -108,7 +110,7 @@ Archived flags are automatically deleted 30 days after you archive them. But if 
    A list of archived flags is displayed.
 
 1. Next to the flag you want to delete, select **more options** (**︙**), and then select **Delete**.
-1. Follow the instructions on the confirmation screen, and then select **Delete**.
+1. On the confirmation screen, select **Delete**.
 
 
 
