@@ -103,7 +103,7 @@ When you delete a flag, it is permanently removed from all environments.
 
 Archived flags are automatically deleted 30 days after you archive them. But if you're sure you want to delete the flag immediately, you can delete an archived flag before that 30-day period ends.
 
-**To delete an archived flag:**
+To delete an archived flag:
 
 1. In your Harness project, navigate to **Feature Flags > Feature Flags**, and then select the **Archived** filter at the top of the page.
 
