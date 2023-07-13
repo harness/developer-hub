@@ -90,7 +90,7 @@ Restoring a flag makes it available for evaluation if the flag is referenced in 
 When you delete a flag, it is permanently removed from all environments.
 :::
 
-**To restore a flag:**
+To restore a flag:
 
 1. In your Harness project, navigate to **Feature Flags > Feature Flags**, and then select the **Archived** filter at the top of the page.
 
