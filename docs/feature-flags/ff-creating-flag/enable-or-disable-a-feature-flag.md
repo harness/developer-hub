@@ -12,11 +12,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to turn a Feature Flag `on` or `off`. Flags you create are available in all Environments, but the state of the flag is independent, which means the same flag can be turned on in `Environment_A` and turned off in `Environment_B`.
+This topic describes how to turn a Feature Flag `on` or `off`. Flags you create are available in all environments, but the state of the flag is independent, which means the same flag can be turned on in `Environment_A` and turned off in `Environment_B`.
 
 Before enabling or disabling a flag, consider the following:
 
-* Remember to check which Environment you are in before toggling any flags to ensure you are enabling or disabling the feature in the correct Environment.
+* Remember to check which environment you are in before toggling any flags to ensure you are enabling or disabling the feature in the correct environment.
 * By default, flags are disabled on creation, so you need to enable them when you are ready to use them in your application.
 * When a flag is disabled, the off Variation (which is the default variation) is served to all users. The flag does not evaluate any Targets or Target Rules until you enable it.
 
