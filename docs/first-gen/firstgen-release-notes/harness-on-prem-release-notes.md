@@ -46,9 +46,11 @@ This release does not include any early access features.
 
 #### Fixed issues
 
-- Custom dashboards were not available with the 0.7.1 upgrade of Self-Managed Enterprise Edition. (CDB-981) (CDS-74271)
+- For installations with custom dashboards enabled, the Harness Helm chart version 0.7.1 included entries that caused installation issues during upgrade.
 
-   This issue is fixed. You can now use NextGen custom dashboards to view CurrentGen CD data, including:
+- Custom dashboards were not available with the 0.7.1 upgrade of Self-Managed Enterprise Edition (CDB-981) (CDS-74271)
+
+   This issue is fixed. The Harness Helm chart entries are corrected and Helm installations succeed as expected. If your installation included custom dashboards, you can now view CD data, including:
 
    - The total amount of deployed applications
    - The total number of deployments
@@ -56,10 +58,10 @@ This release does not include any early access features.
    - The percentage of the applications deployed by deployment type (rolling, canary, blue/green, and basic)
    - The change failure rate/reason for failed deployments
   
-  To enable CD NextGen custom dashboards, you must:
+  To enable custom dashboards, you must:
   
-  1. Run commands to update your database
-  2. Add settings to your `override.yaml` file
+  1. Run the commands below to update your Harness database.
+  2. Add settings to your `override.yaml` file.
   
   Update your Harness database with the following:
 

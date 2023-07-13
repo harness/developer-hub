@@ -2,7 +2,7 @@
 title: Self-Managed Enterprise Edition release notes
 sidebar_label: Self-Managed Enterprise Edition
 tags: [NextGen, "self-managed-ee"]
-date: 2023-06-30T10:00
+date: 2023-07-12T10:00
 sidebar_position: 13
 ---
 ```mdx-code-block
@@ -504,73 +504,12 @@ This release does not include any early access features.
 
 #### Fixed issues
 
-- Custom dashboards were not available with the 0.7.1 upgrade of Self-Managed Enterprise Edition. (CDB-981) (CDS-74271)
+- For installations with custom dashboards enabled, the Harness Helm chart version 0.7.1 included entries that caused installation issues during upgrade.
 
-   This issue is fixed. You can now use NextGen custom dashboards to view CurrentGen CD data, including:
+  Custom dashboards were not available with the 0.7.1 patch release for Harness Self-Managed Enterprise Edition. (CDB-981)
 
-   - The total amount of deployed applications
-   - The total number of deployments
-   - The total number of production versus non-production deployments and the percentage of each
-   - The percentage of the applications deployed by deployment type (rolling, canary, blue/green, and basic)
-   - The change failure rate/reason for failed deployments
-  
-  To enable CD NextGen custom dashboards, you must:
-  
-  1. Run commands to update your database
-  2. Add settings to your `override.yaml` file
-  
-  Update your Harness database with the following:
+   This issue is fixed. The Harness Helm chart entries are corrected and Helm installations succeed as expected. Custom dashboards are available if enabled.
 
-   ```
-   db.elasticsearchPendingBulkMigrations.remove({})
-   db.searchEntitiesIndexState.insertMany([{
-       "_id" : "software.wings.search.entities.workflow.WorkflowSearchEntity",
-       "indexName" : "workflows_0.2_1688472585962",
-       "recreateIndex" : false,
-       "syncVersion" : "0.2"
-   },
-   {
-       "_id" : "software.wings.search.entities.pipeline.PipelineSearchEntity",
-       "indexName" : "pipelines_0.2_1688472585989",
-       "recreateIndex" : false,
-       "syncVersion" : "0.2"
-   },
-   {
-       "_id" : "software.wings.search.entities.environment.EnvironmentSearchEntity",
-       "indexName" : "environments_0.2_1688472585980",
-       "recreateIndex" : false,
-       "syncVersion" : "0.2"
-   },
-   {
-       "_id" : "software.wings.search.entities.service.ServiceSearchEntity",
-       "indexName" : "services_0.2_1688472585992",
-       "recreateIndex" : false,
-       "syncVersion" : "0.2"
-   },
-   {
-       "_id" : "software.wings.search.entities.application.ApplicationSearchEntity",
-       "indexName" : "applications_0.2_1688472585986",
-       "recreateIndex" : false,
-       "syncVersion" : "0.2"
-   },
-   {
-       "_id" : "software.wings.search.entities.deployment.DeploymentSearchEntity",
-       "indexName" : "deployments_0.1_1688472585984",
-       "recreateIndex" : false,
-       "syncVersion" : "0.1"
-   }])
-   ```
-   
-   Add the following to your `override.yaml` file.
-   
-   ```yaml
-     platform:
-       harness-manager:
-          additionalConfigs:
-            SEARCH_ENABLED: 'true'
-          featureFlags:
-            ADDITIONAL: "CUSTOM_DASHBOARD_V2,TIME_SCALE_CG_SYNC" #add additional feature flags comma-separated.
-   ```
 
 ## July 7, 2023, patch release for version 79421
 
