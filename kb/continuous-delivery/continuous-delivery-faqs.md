@@ -37,4 +37,23 @@ The form gets too long if we expose all the fixed values and we only require in 
 For the terrafrom step if remote backend is not configured, the state file is being managed by Harness and it maps to the provisioner identifier itself. Hence the only way to get rid of the state file is to change the provisioner identifier in this scenario.
 
 
+#### Do we need to install jq library in delegate machine or harness itself providing jq by default?
+
+Harness by default does not provide by default the jq on delegate host. You need to add the below command in your INIT_SCRIPT for this.
+
+```microdnf install jq```
+
+#### Can plan from terraform step be encrypted using a read only secret manager ?
+
+For encrypting terraform plan with the selected secret manager we need the ability to write the encrypted plan to the secret manager and hence read only secret manager will not work for this scenario.
+
+
+#### What operations are performed as part of the cleanup step in ssh command task.
+
+For SSH, we by default add an initialize step and a clean step apart from command execution step. As part of the cleanup step we we delete the working directory that lies within /tmp on the remote connected host.
+
+
+
+
+
 
