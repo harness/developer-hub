@@ -38,7 +38,7 @@ export default function AccessibilityPage() {
                 <div>
                   <img
                     src={`/img/accessibility/accessibility_img_1.svg`}
-                    alt="accessibility image"
+                    alt="Making all modules & features accessible"
                   />
                   <h4>Making all modules & features accessible</h4>
                   <p>
@@ -51,7 +51,7 @@ export default function AccessibilityPage() {
                 <div>
                   <img
                     src={`/img/accessibility/accessibility_img_2.svg`}
-                    alt="accessibility image"
+                    alt="Accessibility at the core of the business"
                   />
                   <h4>Accessibility at the core of the business</h4>
                   <p>
@@ -65,7 +65,7 @@ export default function AccessibilityPage() {
                 <div>
                   <img
                     src={`/img/accessibility/accessibility_img_3.svg`}
-                    alt="accessibility image"
+                    alt="Embracing an accessibility mindset"
                   />
                   <h4>Embracing an accessibility mindset</h4>
                   <p>
@@ -140,7 +140,7 @@ export default function AccessibilityPage() {
                   to={`${baseUrl}/doc/Harness_Chaos_VPAT_Report.pdf`}
                   className={styles.link}
                 >
-                  Harness Chaos VPAT Report
+                  Harness Chaos Engineering VPAT Report
                 </Link>
               </li>
               <li>
