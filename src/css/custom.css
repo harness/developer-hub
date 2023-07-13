@@ -357,6 +357,27 @@ a:hover {
   border-color: var(--primary-5);
 }
 
+.button--rss,
+.button--primary {
+  background-color: rgb(243, 243, 250);
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 24px;
+  border-radius: 4px;
+  border: 1px solid var(--gray-300);
+  color: var(--gray-600);
+  filter: drop-shadow(0px 0px 1px rgba(40, 41, 61, 0.04)) drop-shadow(0px 2px 4px rgba(96, 97, 112, 0.16));
+  background-image: url(/img/icon_rss.svg);
+  background-repeat: no-repeat;
+  background-position: right;
+}
+
+.button--rss:hover,
+.button--primary:hover {
+  background-color: var(--gray-100);
+  border-color: var(--gray-100);
+}
+
 .button--primary {
   height: 48px;
   padding-left: 2em;
