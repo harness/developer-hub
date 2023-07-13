@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Add a **Build and Push** step to your CI pipeline to build your codebase and then push the artifact to a repo. The following repos are supported:
+Add a **Build and Push** step to your CI pipeline to build your codebase and then push the artifact, such as a Docker image, to a repo. The following repos are supported:
 
 * [Docker Hub](./build-and-push-to-docker-hub-step-settings.md)
 * [Azure Container Registry (ACR)](./build-and-push-to-acr.md)
@@ -16,12 +16,17 @@ Add a **Build and Push** step to your CI pipeline to build your codebase and the
 * [Amazon Elastic Container Registry (ECR)](./build-and-push-to-ecr-step-settings.md)
 * [Google Artifact Registry (GAR)](/tutorials/ci-pipelines/publish/google-gar#configure-pipeline-steps)
 
-You can also use **Upload Artifact** steps to upload any build artifact to cloud storage. For information about **Upload Artifact** steps, go to [Upload Artifacts to JFrog](./upload-artifacts-to-jfrog.md), [Upload Artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [Upload Artifacts to S3](./upload-artifacts-to-s-3-step-settings.md).
+Harness CI also supports uploading any build artifacts to cloud storage:
+
+* [Upload Artifacts to JFrog](./upload-artifacts-to-jfrog.md)
+* [Upload Artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md)
+* [Upload Artifacts to S3](./upload-artifacts-to-s-3-step-settings.md)
+* [Upload Artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md)
 
 <details>
 <summary>Video summary</summary>
 
-For a visual summary of the process described in this topic, watch the following video:
+The following video provides a visual summary of the process described in this topic.
 
 <!-- Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz-->

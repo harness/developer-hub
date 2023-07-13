@@ -13,7 +13,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-You can use the **Upload Artifacts to S3** step in your CI pipelines to upload artifacts to AWS or other S3 providers, such as [MinIO](https://min.io/product/s3-compatibility). Harness CI also provides steps to [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md) and [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md).
+You can use the **Upload Artifacts to S3** step in your CI pipelines to upload artifacts to AWS or other S3 providers, such as [MinIO](https://min.io/product/s3-compatibility). You can also [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), [upload artifacts to JFrog](./upload-artifacts-to-jfrog.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md).
 
 :::tip S3 Upload and Publish plugin
 
