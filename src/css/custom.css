@@ -359,7 +359,8 @@ a:hover {
 
 .button--rss,
 .button--primary {
-  background-color: rgb(243, 243, 250);
+  background: var(--gray-100);
+  background: #F3F3FA;
   font-weight: 600;
   font-size: 12px;
   line-height: 24px;
@@ -370,12 +371,16 @@ a:hover {
   background-image: url(/img/icon_rss.svg);
   background-repeat: no-repeat;
   background-position: right;
+  white-space: nowrap;
+  cursor: pointer;
+  width: auto;
 }
 
 .button--rss:hover,
 .button--primary:hover {
-  background-color: var(--gray-100);
-  border-color: var(--gray-100);
+  background-color: #F3F3FA;
+  border-color: var(--gray-300);
+  color: var(--primary-8);
 }
 
 .button--primary {
