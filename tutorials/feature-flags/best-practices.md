@@ -17,7 +17,7 @@ Let’s start by making sure we’re all on the same page about feature flags, b
 
 Feature flags, or feature toggles, are a way that developers can conditionally turn certain sections of their code (or code paths) on or off. You can think of feature flags as an extension of Continuous Delivery - a way to put changes into production behind a flag and turn them on in a controlled way later (or hide and remove them in the same way). They form the basis of feature flag management.
 
-Not sure if you’re using feature flags, or doing feature flagging? Some other common terms are feature toggle, release toggle, and experiment toggle. In some situations, there is also ops toggle and experiment toggle. And for those who aren’t using a formal feature flagging solution (whether built or bought), you may see feature flags represented as variables in a config file.
+Not sure if you’re using feature flags, or doing feature flagging? Some other common terms are feature toggle, release toggle, and experiment toggle. In some situations, there is also ops toggle and experiment toggle.  And for those who aren’t using a formal feature flagging solution (whether built or bought), you may see feature flags represented as variables in a config file.
 
 Whatever version of a feature flag or feature toggle you’re using, you ultimately want to derive the benefits of using the feature flagging approach.
 
