@@ -67,9 +67,6 @@ const config = {
           trackingID: "G-46758J5H8P",
           anonymizeIP: false,
         },
-        blog: {
-          showReadingTime: false,
-        },
       }),
     ],
   ],
@@ -521,17 +518,6 @@ const config = {
         routeBasePath: "kb",
         exclude: ["**/shared/**", "**/static/**"],
         sidebarPath: require.resolve("./sidebars-kb.js"),
-        editUrl: "https://github.com/harness/developer-hub/tree/main",
-        // ... other options
-      },
-    ],
-    [
-      "@docusaurus/plugin-content-blog",
-      {
-        id: "product-updates",
-        path: "product-updates",
-        routeBasePath: "product-updates",
-        exclude: ["**/shared/**", "**/static/**"],
         editUrl: "https://github.com/harness/developer-hub/tree/main",
         // ... other options
       },

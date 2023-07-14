@@ -194,3 +194,12 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 <CISignupTip />
 
+## Buttons
+Can add buttons in your MD pages with the `DocsButton` plugin. Can add the 
+icon from Font Awesome and CSS. 
+
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/security-testing-orchestration/rss.xml" />
+
+```
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/security-testing-orchestration/rss.xml" />
+```
