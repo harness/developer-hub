@@ -304,8 +304,6 @@ To add an artifact from a Docker registry, do the following:
  <!-- CDS-71711 -->
 
 
-The Artifact is added to the Service Definition.
-
 ```mdx-code-block
   </TabItem>
 </Tabs>
@@ -962,7 +960,6 @@ To add an artifact from Google Artifact Registry, do the following:
     :::
 21. Select **Submit**. The Artifact is added to the Service Definition.
  <!-- CDS-71711 -->
-    The Artifact is added to the **Service Definition**.
 
 
 ```mdx-code-block
@@ -1359,10 +1356,10 @@ To add an artifact from ECR, do the following:
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
   :::
-14. Select **Submit**. 
+14. Select **Submit**. The Artifact is added to the Service Definition.
  <!-- CDS-71711 -->
     
-    The Artifact is added to the Service Definition.
+    
 
     ![ECR artifact source in a service](static/769c54fe91e7497b4aef3733f128361457b933f1d0eccd0d9b3491f1da4ed0c7.png)
 
@@ -1736,8 +1733,6 @@ To add an artifact from ACR, do the following:
 15. Select **Submit**. The Artifact is added to the Service Definition.
  <!-- CDS-71711 -->
 
-The artifact is added to the Service Definition.
-
 
 ```mdx-code-block
   </TabItem>
@@ -2068,10 +2063,8 @@ To add an artifact from Nexus, do the following:
   If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
 
   :::
-14. Select **Submit**. 
- <!-- CDS-71711 -->
-    
-    The Artifact is added to the Service Definition.
+14. Select **Submit**. The Artifact is added to the Service Definition.
+
 
 
 ```mdx-code-block
