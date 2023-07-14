@@ -10,7 +10,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-<rnbutton text="Subscribe for Delegate release notes" link="/release-notes/delegate/rss.xml"/>
+<rnbutton text="Subscribe via RSS" link="/release-notes/delegate/rss.xml"/>
 
 
 
