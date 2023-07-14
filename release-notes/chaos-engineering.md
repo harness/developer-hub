@@ -9,6 +9,8 @@ sidebar_position: 9
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
+
+<rnbutton text="Subscribe for Chaos Engineering release notes" link="/release-notes/chaos-engineering/rss.xml" />
 Review the notes below for details about recent changes to Harness Chaos Engineering, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). 
 
 :::info note
