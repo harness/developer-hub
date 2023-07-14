@@ -1,24 +1,25 @@
 import React from "react";
 import "./styles.css";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import Link from "@docusaurus/Link";
 
 interface Props {
   text: string;
   link: string;
+  icon: string;
 }
-const RNButton: React.FC<Props> = (props) => {
+const CustonButton: React.FC<Props> = (props) => {
   const { siteConfig } = useDocusaurusContext();
   const baseUrl = siteConfig.url;
-  const handleClick = () => {
-    window.location.href = baseUrl + props.link;
-    console.log("Here");
-  };
+
   return (
-    <button className="rs-button" onClick={handleClick}>
-      {props.text}
-      <i className="fa-solid fa-square-rss"></i>
-    </button>
+    <Link to={baseUrl + props.link} className="link">
+      <button className="rs-button">
+        {props.text}
+        <i className={`${props.icon}`}></i>
+      </button>
+    </Link>
   );
 };
 
-export default RNButton;
+export default CustonButton;

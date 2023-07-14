@@ -10,7 +10,7 @@ sidebar_position: 9
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
-<rnbutton text="Subscribe for Security Testing Orchestration release notes" link="/release-notes/security-testing-orchestration/rss.xml" />
+<CustonButton icon = "fa-solid fa-square-rss" text="Subscribe" link="/release-notes/security-testing-orchestration/rss.xml" />
 Review the notes below for details about recent changes to Security Testing Orchestration, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). 
 
 :::info note

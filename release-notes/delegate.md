@@ -9,7 +9,7 @@ sidebar_position: 14
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
-<rnbutton text="Subscribe for Delegate release notes" link="/release-notes/delegate/rss.xml"/>
+<CustonButton icon = "fa-solid fa-square-rss" text="Subscribe" link="/release-notes/delegate/rss.xml" />
 
 Review the notes below for details about recent changes to Harness Delegate, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 

@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 ```mdx-code-block
 import delete_project from './static/delete-project.png'
 ```
-<rnbutton text="Subscribe for Self-Managed Enterprise Edition release notes" link="/release-notes/self-managed-enterprise-edition/rss.xml" />
+<CustonButton icon = "fa-solid fa-square-rss" text="Subscribe" link="/release-notes/self-managed-enterprise-edition/rss.xml" />
 Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes).
 
 ## Latest - June 30, 2023, version 79421

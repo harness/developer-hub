@@ -4,7 +4,7 @@ date: 2023-06-19T10:00
 sidebar_position: 2
 ---
 
-<rnbutton text="Subscribe for Early access features release notes" link="/release-notes/early-access/rss.xml" />
+<CustonButton icon = "fa-solid fa-square-rss" text="Subscribe" link="/release-notes/early-access/rss.xml" />
 Review the notes below to learn about the early access (aka beta) features in Harness NextGen SaaS across all Harness modules and the Harness Platform. Early access features require a feature flag. For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 
 :::info note
