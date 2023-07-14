@@ -47,10 +47,10 @@ At the point in your pipeline where you want to build and upload an image, add a
    * `repo`: The name of the repository where you want to store the image, for example, `<hub-user>/<repo-name>`. For private registries, specify a fully qualified repo name.
    * `tags`: Specify tags for your image.
    * `registry`: Specify the registry index, such as `https://index.docker.io/v2/`. The registry format for ECR is `aws_account_id.dkr.ecr.region.amazonaws.com`.
-   * `dockerfile`: Specify the DockerFile to use for the build.
-   * `username`: Provide the username to access the push destination, either as plaintext or an [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable), such as `<+pipeline.variables.DOCKER_HUB_USER>`
+   * `dockerfile`: Specify the Dockerfile to use for the build.
+   * `username`: Provide the username to access the push destination, either as plaintext or an [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable), such as `<+pipeline.variables.DOCKER_HUB_USER>`.
    * `password`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing the password to access the push destination, such as `<+pipeline.variables.DOCKER_HUB_SECRET>`.
-   * For more information and additional settings, including AWS S3 settings, go to [#Settings].
+   * For more information and additional settings, including AWS S3 settings, go to [Settings](#settings).
 
 ```mdx-code-block
   </TabItem>
@@ -96,10 +96,10 @@ This step requires the following specifications:
    * `repo`: The name of the repository where you want to store the image, for example, `<hub-user>/<repo-name>`. For private registries, specify a fully qualified repo name.
    * `tags`: Specify tags for your image.
    * `registry`: Specify the registry index, such as `https://index.docker.io/v2/`. The registry format for ECR is `aws_account_id.dkr.ecr.region.amazonaws.com`.
-   * `dockerfile`: Specify the DockerFile to use for the build.
-   * `username`: Provide the username to access the push destination, either as plaintext or an [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable), such as `<+pipeline.variables.DOCKER_HUB_USER>`
+   * `dockerfile`: Specify the Dockerfile to use for the build.
+   * `username`: Provide the username to access the push destination, either as plaintext or an [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable), such as `<+pipeline.variables.DOCKER_HUB_USER>`.
    * `password`: An [expression](/docs/platform/references/runtime-inputs/#expressions) referencing a [Harness secret](/docs/category/secrets) or [pipeline variable](/docs/platform/Variables-and-Expressions/add-a-variable) containing the password to access the push destination, such as `<+pipeline.variables.DOCKER_HUB_SECRET>`.
-   * For more information and additional settings, including AWS S3 settings, go to [#Settings].
+   * For more information and additional settings, including AWS S3 settings, go to [Settings](#settings).
 
 ```mdx-code-block
   </TabItem>

@@ -38,7 +38,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ## Add the Build and Push step
 
-These steps describes how to create a simple one-step Build stage that does not include testing. It builds the code in a build farm, and then pushes it to a Docker repo.
+These steps describe how to create a simple one-step Build stage that does not include testing. It builds the code in a build farm, and then pushes it to a Docker repo.
 
 :::info Kubernetes cluster build infrastructures
 
@@ -50,7 +50,7 @@ If your security policy doesn't allow running as root, go to [Build and push wit
 
 :::
 
-1. Go to **Pipelines** and create a pipeline or edit an existing pipeline. If you're not familiar with creating pipelines, go the [CI pipeline creation overview](../prep-ci-pipeline-components.md).
+1. Go to **Pipelines** and create a pipeline or edit an existing pipeline. If you're not familiar with creating pipelines, go to the [CI pipeline creation overview](../prep-ci-pipeline-components.md).
 2. Configure the pipeline's codebase, if you have not already done so. For details, go to [Create and configure a codebase](../codebase-configuration/create-and-configure-a-codebase.md).
 
    :::tip

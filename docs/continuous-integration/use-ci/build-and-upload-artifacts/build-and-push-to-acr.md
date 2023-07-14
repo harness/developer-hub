@@ -91,7 +91,7 @@ Harness enables remote Docker layer caching where each Docker layer is uploaded 
 
 Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
-Because the **Build and Push to ACR** step requires root access, use this setting if your build runs as non-root (`runAsNonRoot: true`) and you can run the **Build and Push to ACR** step as root. To do this, set **Run as User** to `0` on the **Build and Push to ACR** step to use the root user for this individual step only.
+Because the **Build and Push to ACR** step requires root access, use the **Run as User** setting if your build runs as non-root (`runAsNonRoot: true`) *and* you can run the **Build and Push to ACR** step as root. To do this, set **Run as User** to `0` on the **Build and Push to ACR** step to use the root user for this individual step only.
 
 If your security policy doesn't allow running as root, go to [Build and push with non-root users](./build-and-push-nonroot.md).
 
