@@ -12,7 +12,7 @@ import TabItem from '@theme/TabItem';
 ```mdx-code-block
 import delete_project from './static/delete-project.png'
 ```
-<CustonButton icon = "fa-solid fa-square-rss" text="Subscribe" link="/release-notes/platform/rss.xml" />
+<CustomButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/platform/rss.xml" />
 Review the notes below for details about recent changes to Harness Platform, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 
 :::info note

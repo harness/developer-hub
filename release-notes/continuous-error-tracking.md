@@ -13,7 +13,7 @@ import TabItem from '@theme/TabItem';
 import delete_project from './static/delete-project.png'
 ```
 
-<CustonButton icon = "fa-solid fa-square-rss" text="Subscribe" link="/release-notes/continuous-error-tracking/rss.xml" />
+<CustomButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-error-tracking/rss.xml" />
 Review the notes below for details about recent changes to Continuous Error Tracking.
 
 :::info note

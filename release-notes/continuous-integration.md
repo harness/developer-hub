@@ -9,7 +9,7 @@ sidebar_position: 3
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
-<CustonButton icon = "fa-solid fa-square-rss" text="Subscribe" link="/release-notes/continuous-integration/rss.xml" />
+<CustomButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-integration/rss.xml" />
 Review the notes below for details about recent changes to Harness Continuous Integration, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 
 For information about data privacy and security, go to the [Harness Trust Center](https://trust.harness.io/).
