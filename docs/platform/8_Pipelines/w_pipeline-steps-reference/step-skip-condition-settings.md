@@ -97,13 +97,25 @@ You can only use variable expressions in the JEXL conditions that can be resolve
 
 Since **Conditional Execution** settings are used to determine if the stage should be run, you cannot use variable expressions that can't be resolved until the stage is run.
 
-### Deployment status
+### Deployment status of pipelines, stages, and steps
 
 Deployment status values are a Java enum. The list of values can be seen in the Deployments **Status** filter:
 
 ![](./static/step-skip-condition-settings-10.png)
 
 You can use any status value in a JEXL condition. For example, `<+pipeline.stages.cond.spec.execution.steps.echo.status> == "FAILED"`.
+
+#### Stage status
+
+The expression `<+pipeline.stages.STAGE_ID.status>` resolves to the status of a stage.
+
+You must use the expression after the stage in execution.
+
+#### Step status
+
+The expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
+
+You must use the expression after the step in execution.
 
 ### Conditional execution as a runtime input
 
