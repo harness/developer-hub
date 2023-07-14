@@ -19,6 +19,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - July 14, 2023, version 79909
 
+### Deprecation notice
+
+import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
+
+<Helmdep />
+
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
@@ -137,6 +143,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Rerun of triggered pipeline threw an error. (CDS-69387)
   
   There was an issue when rerunning a pipeline removed runtime inputs during the rerun. This issue has now been fixed.
+- Host detection was incorrect for Canary verification when there were no common nodes among the pre-deployment and post-deployment nodes. (OIP-613)
+
+  This issue has been resolved. Now, during Canary verification, the hosts are detected correctly even when there are no common nodes among the pre-deployment and post-deployment nodes.
+- When the verification type was set to **Auto**, and Harness CV applied Canary analysis during verification, the test data representation inaccurately showed the analysis type as **Rolling** for all verification tasks. (OIP-608)
+
+  This issue has been resolved. Now, when the verification type is set to **Auto**, the analysis type displayed during verification reflects the selection made by the majority of the verification tasks.
 
 ```mdx-code-block
   </TabItem>
