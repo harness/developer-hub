@@ -1,7 +1,7 @@
 ---
 title: Dashboards
 description: This topic describes how to add and manage access control for CCM Dashboards.
-# sidebar_position: 2
+# sidebar_position: 20
 helpdocs_topic_id: ng6yaxqi2r
 helpdocs_category_id: ak4v1iorl3
 helpdocs_is_private: false

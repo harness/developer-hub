@@ -1,7 +1,7 @@
 ---
 title: Use the GitHub Action plugin step
 description: Run Github Actions in your Harness CI pipelines.
-sidebar_position: 30
+sidebar_position: 70
 ---
 
 [GitHub Actions](https://docs.github.com/en/actions/learn-github-actions/understanding-github-actions) is a GitHub feature that enables you to automate various event-driven activities in GitHub, such as cloning a repository, generating Docker images, and testing scripts. You can find over 10,000 GitHub Actions on the [GitHub Marketplace](https://github.com/marketplace?type=actions) or create your own Actions.
@@ -137,7 +137,7 @@ The `spec` parameters define which Action to use, the Action settings, and envir
 * `with:` If required by the Action, provide a mapping of key-value pairs representing Action settings, such as `go-version: '1.17'`.
 * `env:` If required by the Action, provide a mapping of environment variables to pass to the Action.
 
-For private Action repositories, you must provide the `GITHUB_TOKEN` environment variable, such as `GITHUB_TOKEN: <+secrets.getValue("[SECRET_NAME]")>`. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose.
+For [private Action repositories](#private-action-repositories), you must provide the `GITHUB_TOKEN` environment variable, such as `GITHUB_TOKEN: <+secrets.getValue("[SECRET_NAME]")>`. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose.
 
 :::tip Tips
 
@@ -206,52 +206,37 @@ pipeline:
   <TabItem2 value="visual" label="Visual editor">
 ```
 
-In the Visual editor, add the **GitHub Action plugin** step to your pipeline's **Build** stage, and then populate the step settings fields. All GitHub Actions plugin steps require **Name** and **Uses**, most Actions require **Settings**, and Actions in private repositories require **Environment Variables**.
+1. Add the **GitHub Action plugin** step to your pipeline's **Build** stage.
+2. Enter a **Name** and optional **Description**.
 
-:::tip
+   Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
+
+3. For **Uses**, specify the repo and branch or tag of the GitHub Action that you want to use, for example `actions/setup-go@v3`.
+
+   Refer to the GitHub Action's README for information about branches and tags.
+
+4. If required by the Action, add key-value pairs representing GitHub Action settings in the **Settings** field under **Optional Configuration**. For example, you would specify `go-version: '>=1.17.0'` by entering `go-version` in the key field and `>=1.17.0` in the value field.
+
+   Most Actions require settings. Refer to the GitHub Action's `with` usage specifications in the Action's README for details about specific settings available for the Action that you want to use.
+
+5. If required by the Action, add key-value pairs representing environment variables that you want to pass to the GitHub Action in the **Environment Variables** field under **Optional Configuration**. For example, you would specify `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` by entering `GITHUB_TOKEN` in the key field and `<+secrets.getValue("github_pat")>` in the value field.
+
+   For [private Action repositories](#private-action-repositories), you must provide the `GITHUB_TOKEN` environment variable. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. You can use a variable expression such as `<+secrets.getValue("[SECRET_NAME]")>` to call a token stored as a Harness secret.
+
+   Refer to the GitHub Action's `env` usage specifications for details about specific settings available for the Action that you want to use. Note that `env` specifies incoming environment variables, which are separate from outgoing environment variables that may be output by the Action.
+
+6. Optionally, you can set the **Timeout**. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
+
+   * [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
+   * [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+
+:::tip Tips
 
 You can use fixed values, runtime input, or variable expressions for **Settings** and **Environment Variables** values. For example, `<+stage.variables.[TOKEN_SECRET]>` is a [stage variable](/docs/platform/Pipelines/add-a-stage#option-stage-variables), and `<+input>` will prompt you for input at runtime.
-
-:::
-
-### Name
-
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
-
-### Description
-
-Optional text string describing the step's purpose.
-
-### Uses
-
-Specify the repo and branch or tag of the GitHub Action that you want to use, for example `actions/setup-go@v3`. Refer to the GitHub Action's repo for information about branches and tags.
-
-### Settings
-
-Found under **Optional Configuration**. If required by the Action, add key-value pairs representing GitHub Action settings. For example, you would specify `go-version: '>=1.17.0'` by entering `go-version` in the key field and `>=1.17.0` in the value field.
-
-Refer to the GitHub Action's `with` usage specifications for details about specific settings available for the Action that you want to use.
-
-:::tip
 
 For GitHub Actions steps, **Settings** are automatically exported as [output variables](#output-variables-from-github-actions-steps).
 
 :::
-
-### Environment Variables
-
-Found under **Optional Configuration**. If required by the Action, add key-value pairs representing environment variables that you want to pass to the GitHub Action. For example, you would specify `GITHUB_TOKEN: <+secrets.getValue("github_pat")>` by entering `GITHUB_TOKEN` in the key field and `<+secrets.getValue("github_pat")>` in the value field.
-
-For private Action repositories, you must provide the `GITHUB_TOKEN` environment variable. You need a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. You can use a variable expression such as `<+secrets.getValue("[SECRET_NAME]")>` to call a token stored as a Harness secret.
-
-Refer to the GitHub Action's `env` usage specifications for details about specific settings available for the Action that you want to use. Note that `env` specifies incoming environment variables, which are separate from outgoing environment variables that may be output by the Action.
-
-### Timeout
-
-Found under **Optional Configuration**. Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
-
-* [Step Skip Condition settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
 
 ```mdx-code-block
   </TabItem2>

@@ -21,6 +21,13 @@ export default function communityAspects() {
                 </button>
               </Tooltip>
             </Link>
+            <Link href="/kb">
+              <Tooltip placement="top" overlay="Knowledge Base">
+                <button className={styles.btn}>
+                  <img src={`${baseUrl}img/kb.svg`} />
+                </button>
+              </Tooltip>
+            </Link>
             <Link href="https://www.youtube.com/@Harnessio/videos">
               <Tooltip placement="top" overlay="YouTube Channel">
                 <button className={styles.btn}>
@@ -29,17 +36,10 @@ export default function communityAspects() {
                 </button>
               </Tooltip>
             </Link>
-            <Link href="https://apidocs.harness.io/">
-              <Tooltip placement="top" overlay="API Reference">
+            <Link href="https://discuss.harness.io/">
+              <Tooltip placement="top" overlay="Forum [Discourse] - Read only as of June 16, 2023">
                 <button className={styles.btn}>
-                  <img src={`${baseUrl}img/icon_api_docs.svg`} />
-                </button>
-              </Tooltip>
-            </Link>
-            <Link href="/kb">
-              <Tooltip placement="top" overlay="Knowledge Base">
-                <button className={styles.btn}>
-                  <img src={`${baseUrl}img/kb.svg`} />
+                  <img src={`${baseUrl}img/discuss.svg`} />
                 </button>
               </Tooltip>
             </Link>

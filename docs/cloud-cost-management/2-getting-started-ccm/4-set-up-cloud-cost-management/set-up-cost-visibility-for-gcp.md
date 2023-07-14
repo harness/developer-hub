@@ -7,7 +7,7 @@ helpdocs_category_id: 7vy86n7cws
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
-
+# Set up CCM for GCP
 
 ```mdx-code-block
 import select_gcp from './static/set-up-cost-visibility-for-gcp-01.png'
@@ -34,29 +34,35 @@ Connect Harness to your GCP account to gain access your GCP services, Compute En
 
 > **☆ NOTE —** Time periods in the GCP Cloud Billing report use the Pacific Time Zone (PST) and observe daylight saving time shifts. However, Harness CCM explorer uses the UTC time zone. You may notice some cloud cost differences between Harness CCM explorer and the GCP Cloud Billing report due to the time zone difference.
 
+1. Create a new Kubernetes connector using one of the two options below:
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
 
-
-1. In **Account Setup**, in **Account Resources**, click **Connectors**.
-
-    ![](./static/set-up-cost-visibility-for-gcp-00.png)
-2. In **Connectors**, click **+ Connector**.
-3. In **Cloud Costs**, click **GCP**.
-   
-   ```mdx-code-block
-<img src={select_gcp} alt="A screenshot that illstrates how and where to select the cloud provider." height="500" width="600" />
-
- Or
-
-1. In your Harness account, click **Cloud Costs.** Under **Setup,** click **Cloud Integration**.  
-The **Cloud Integration** page displays the existing connectors for the Kubernetes clusters and the cloud accounts.
-2. Click **New Cluster/Cloud account**.
+```mdx-code-block
+<Tabs queryString="tab-number">
+<TabItem value="4" label="From Account Settings">
+```
+1. Go to **Account Resources** > **Connectors**.
+2. Select **+ New Connector**.
+3. Under **Cloud Costs**, select **GCP**.
+```mdx-code-block
+</TabItem>
+<TabItem value="5" label="From Cloud Costs">
+```
+1. Go to **Setup** > **Cloud Integration**.  
+2. Select **New Cluster/Cloud account**.
 3. Select **GCP**.
-
-
-Perform the following tasks in the **GCP Connector** wizard:
+```mdx-code-block
+</TabItem>
+</Tabs>
+```
+ 
+2. Perform the following tasks in the **GCP Connector** wizard.
 ### Overview
 1. In **Overview**, in **Connector Name**, enter a name that describes this account.
-2. In **Specify Project ID**, enter the project ID and click **Continue**. For more information on how to get a project ID, see [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
+2. In **Specify Project ID**, enter the project ID and select **Continue**. For more information on how to get a project ID, go to [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
 
 ### GCP Billing Export
 
@@ -68,9 +74,9 @@ Make sure that you have enabled **Detailed Usage Cost** on the **Billing Export*
 :::
 
 
-1. In **GCP Billing Export**, click **Launch GCP console**.
-2. In the GCP **Explorer** window, in the pinned projects section, click **your project ID** to open the project. If you see an overflow menu (:) next to your project ID, click the menu and select **Open**.
-3. Click **Create dataset**. For more information, see [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
+1. In **GCP Billing Export**, select **Launch GCP console**.
+2. In the GCP **Explorer** window, in the pinned projects section, select **your project ID** to open the project. If you see an overflow menu (:) next to your project ID, select the menu and select **Open**.
+3. Select **Create dataset**. For more information, go to [Create a BigQuery dataset](https://cloud.google.com/billing/docs/how-to/export-data-bigquery-setup#create-bq-dataset).
   
   
   ```mdx-code-block
@@ -81,7 +87,7 @@ You need to enter Dataset Name in Harness.
 5. Select a **Data location**.
 6. Set the **Default table expiration** to **Never**.
 7. Set the **Encryption** option to **Google-managed key**.
-8. To save, click **CREATE DATASET**.
+8. To save, select **CREATE DATASET**.
 9. Enter the **Dataset Name** in Harness.
 
   ```mdx-code-block
@@ -91,15 +97,12 @@ You need to enter Dataset Name in Harness.
   
     ![](./static/set-up-cost-visibility-for-gcp-04.png)
 11. Enter the **Table Name** in Harness.
-12. Click **Continue**. When you are done it will look something like this:
+12. Select **Continue**. 
   
-  ![](./static/set-up-cost-visibility-for-gcp-05.png)
 
 ### Choose Requirements
 
 Select the Cloud Cost Management features that you would like to use on your GCP account.
-
-![](./static/set-up-cost-visibility-for-gcp-06.png)
 
 CCM offers the following features:
 
@@ -110,19 +113,19 @@ CCM offers the following features:
 | **GCP optimization using AutoStopping rules** (Required for AutoStopping Rules)| This feature allows you to enable Intelligent Cloud AutoStopping for your GCP cloud resources. For more information, see **Create AutoStopping Rules for GCP**.<ul><li>Orchestrate GCE VMs based on idleness</li><li>Set dependencies between VMs</li><li>Granular savings visibility</li><li>Simple one-time setup</li></ul>|
 
 
-Make your selection and click **Continue**.
+Make your selection and select **Continue**.
 
 ### Grant Permissions
 
 Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing data (such as usage and cost estimate data) to a BigQuery dataset that you specify. The export happens throughout the day automatically. 
 
-1. In **Grant permissions**, click **Open BigQuery Page**.
+1. In **Grant permissions**, select **Open BigQuery Page**.
 2. Log into the GCP console and go to the BigQuery page.
 3. Select your project in the left panel.
 4. Select your dataset. For more information on creating a dataset, see [Creating datasets](https://cloud.google.com/bigquery/docs/datasets).
 
   ![](./static/gcp_billing_export_resource.png)
-5. Click the **more actions** icon (three vertical dots) against the dataset, and then click **Share.**
+5. Select the **more actions** icon (three vertical dots) against the dataset, and then select **Share.**
 
    ![](./static/gcp-dataset-share.png)
 
@@ -132,8 +135,8 @@ Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing
   
     ![](./static/Adding-principals-gcp.png)
 
-7. In **Select a role**, select **BigQuery Data Viewer**, and then click **Add**.
-8. Click **Done**.  
+7. In **Select a role**, select **BigQuery Data Viewer**, and then select **Add**.
+8. Select **Done**.  
     When you are done, the following screen is displayed:
   
   ```mdx-code-block
@@ -141,16 +144,16 @@ Cloud Billing Export to BigQuery helps you export detailed Google Cloud billing
 
 
 :::note
-To enable AutoStopping rules, you need to add more permissions. For more information, see [Create a GCP Connector for AutoStopping Rules](../../4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/1-add-connectors/create-a-gcp-connector-for-auto-stopping-rules.md).
+To enable AutoStopping rules, you need to add more permissions. For more information, see [Create a GCP Connector for AutoStopping Rules](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/add-connectors/create-a-gcp-connector-for-auto-stopping-rules).
 :::
   
    
-1. Click **Continue** in Harness.
+9. Select **Continue** in Harness.
 
 
 ### Connection Test
 
-The connection is validated and verified in this step. After successfully testing the connection, click **Finish**.
+The connection is validated and verified in this step. After successfully testing the connection, select **Finish**.
 
 ![](./static/set-up-cost-visibility-for-gcp-12.png)
 
@@ -160,6 +163,6 @@ Your connector is now listed in the **Connectors**.
 
 ### Next Steps
 
-* [Analyze Cost for GCP ​Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md)
-* [Create Cost Perspectives](../../3-use-ccm-cost-reporting/1-ccm-perspectives/1-create-cost-perspectives.md)
+* [Analyze Cost for GCP ​Using Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/root-cost-analysis/analyze-cost-for-gcp-using-perspectives)
+* [Create Cost Perspectives](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives)
 

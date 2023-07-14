@@ -115,7 +115,7 @@ aws configure set aws_secret_access_key ${secrets.getValue("password")
 aws configure set region us-west-1  
 aws ec2 describe-instances --instance-ids i-0beacf0f260edd19f > "${INSTANCE_OUTPUT_PATH}"
 ```
-This example uses AWS. Harness already has full, first-class support for AWS deployments. We just use this script as an example. See the AWS Quickstarts in [Start Here](/docs/category/get-started).
+This example uses AWS. Harness already has full, first-class support for AWS deployments. We just use this script as an example. See the AWS Quickstarts in [Start Here](/docs/category/quickstarts-1/).
 
 This example also uses Harness secrets for username and password. See [Use Encrypted Text Secrets](../../firstgen-platform/security/secrets-management/use-encrypted-text-secrets.md).
 

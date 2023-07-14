@@ -12,6 +12,10 @@ You can automate delegate installation and registration by duplicating the downl
 
 When you apply the new delegate file, the delegate registers with Harness under the new name.
 
+:::important
+Delegate names in an account must be unique. You cannot use the same delegate name in an account that you use in an organization or project. Delegates with the same name in an account and an organization or project will start but will not register.
+:::
+
 This topic describes the process used to duplicate, rename, and register a new delegate. You will likely want to script this process.
 
 ### Review: Automation and high availability (HA)
@@ -112,4 +116,3 @@ After you update the delegate names, you can apply the configuration file. The d
 ### See also
 
 * [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md)
-

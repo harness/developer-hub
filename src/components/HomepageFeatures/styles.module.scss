@@ -49,25 +49,31 @@
         border: 2px solid var(--primary-6);
       }
       &.ci:hover {
-        border-color: var(--mod-ci-200);;
+        border-color: var(--mod-ci-200);
       }
       &.cd:hover {
-        border-color: var(--mod-cd-200);;
+        border-color: var(--mod-cd-200);
       }
       &.ccm:hover {
-        border-color: var(--mod-ccm-200);;
+        border-color: var(--mod-ccm-200);
       }
       &.ff:hover {
-        border-color: var(--mod-ff-200);;
+        border-color: var(--mod-ff-200);
       }
       &.sto:hover {
-        border-color: var(--mod-sto-200);;
+        border-color: var(--mod-sto-200);
       }
       &.srm:hover {
-        border-color: var(--mod-srm-200);;
+        border-color: var(--mod-srm-200);
       }
       &.ce:hover {
-        border-color: var(--mod-ce-200);;
+        border-color: var(--mod-ce-200);
+      }
+      &.cet:hover {
+        border-color: var(--mod-cet-200);
+      }
+      &.idp:hover {
+        border-color: var(--mod-idp-200);
       }
     }
     ul.docTypes {

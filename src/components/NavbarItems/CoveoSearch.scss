@@ -306,6 +306,57 @@
 	color: var(--mod-sei-300);
 }
 
+// IDP
+.harness-search-module .CoveoFieldValue.CoveoFieldValueIDP {
+	background: var(--mod-idp-100);
+	border: 1px solid var(--mod-idp-200);
+	color: var(--mod-idp-300);
+	&::before {
+		content: url('/img/icon_idp_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueIDP .coveo-clickable {
+	color: var(--mod-idp-300);
+}
+
+// IaCM
+.harness-search-module .CoveoFieldValue.CoveoFieldValueIACM {
+	background: var(--mod-iacm-100);
+	border: 1px solid var(--mod-iacm-200);
+	color: var(--mod-iacm-300);
+	&::before {
+		content: url('/img/icon_iacm_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueIACM .coveo-clickable {
+	color: var(--mod-iacm-300);
+}
+
+// Gitness
+.harness-search-module .CoveoFieldValue.CoveoFieldValueGitness {
+	background: var(--mod-gitness-100);
+	border: 1px solid var(--mod-gitness-200);
+	color: var(--mod-gitness-300);
+	&::before {
+		content: url('/img/icon_gitness_s.svg');
+		display: inline-block;
+		width: 16px;
+		height: 16px;
+		margin-right: 4px;
+	}
+}
+.harness-search-module .CoveoFieldValue.CoveoFieldValueGitness .coveo-clickable {
+	color: var(--mod-gitness-300);
+}
+
 .harness-search-module .CoveoFieldValue.CoveoFieldValuePlatform {
     &::before {
         content: url('/img/icon_harness_s.svg');
@@ -703,11 +754,11 @@
 
 /* [HDH-114] Cleaner Difference Between FG and NG Docs */
 .harness-search-module .CoveoFieldValue {
-	&:has(span[title*="FirstGen Docs"]) {
+	&:has(span[title*="FirstGen"]) {
 		background-color: var(--gray-200);
 		border-color: var(--gray-200);
 	}
-	&:has(span[title*="NextGen Docs"]) {
+	&:has(span[title*="NextGen"]) {
 		background-color: var(--primary-3);
 		border-color: var(--primary-3);
 	}
@@ -811,9 +862,10 @@
     }
 
 	#searchResultsCoveo .coveo-search-results {
-		top: 195px; // 50px;
+		top: 222px; // 195px; // 50px;
 		margin-right: 0;
 		z-index: 1;
+		min-width: var(--ifm-navbar-sidebar-width);
 	}
 	#searchResultsCoveo #coveo-search {
 		min-width: unset;

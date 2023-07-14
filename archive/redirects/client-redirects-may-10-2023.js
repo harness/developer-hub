@@ -1860,7 +1860,7 @@ module.exports = {
 
     {
       from: "/docs/continuous-delivery/cd-advanced/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts",
-      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-chart-with-dependencies-and-subcharts",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts",
     },
 
     {

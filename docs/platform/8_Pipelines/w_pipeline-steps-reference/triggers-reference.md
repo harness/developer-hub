@@ -107,7 +107,6 @@ Select Git events and, if applicable, one or more actions that will initiate the
 | **Payload Type** | **Event** | **Actions** |
 | --- | --- | --- |
 | **GitHub** | Pull Request | Select one or more of the following:<ul><li>Close</li><li>Edit</li><li>Open</li><li>Reopen</li><li>Label</li><li>Unlabel</li><li>Synchronize</li></ul> |
-| | Issue Comment | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li></ul> |
 | | Push | GitHub push triggers respond to commit and tag creation actions by default. |
 | | Release | Select one or more of the following:<ul><li>Create</li><li>Edit</li><li>Delete</li><li>Prerelease</li><li>Publish</li><li>Release</li><li>Unpublish</li></ul> |
 | | Issue Comment (Only comments on pull requests are supported.) | Select one or more of the following:<ul><li>Created</li><li>Deleted</li><li>Edited</li></ul> |
@@ -195,6 +194,12 @@ You must also enter the GitHub webhook's ID in **Webhook Id**, which can be foun
 
 ![Getting a webhook ID from a GitHub webhook page URL.](./static/752891ea2d0d9bcee2511ad039994271c20f002eb525570b5bc8038915b85da1.png)
 
+:::note
+
+In case the API call using the GitHub retrofit REST client to fetch the webhook events fail, Harness makes a simple cURL request to do the same.
+
+:::
+
 ## Conditions settings
 
 Conditions are optional settings you can use to refine the trigger beyond [events and actions](#event-and-actions). These form the overall set of criteria to trigger a pipeline based on changes in a given source.
@@ -273,13 +278,11 @@ Some operators require single values and some operators allow single or multiple
 Single-value operators include:
 
 * **Equals** and **Not Equals** - Expects a single, full path value.
-* **Starts With** - Expects a single value. Matches any full path starting with the value.
-* **Ends With** - Expects a single value. Matches any full path ending with the value.
-* **Contains** - Expects a single value. Matches any full path containing the value.
-* **In** and **Not In** - Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. For some **Conditions**, you can also use Regex, such as `main,release/.*`
-* **Regex** - Expects a single Regex value. Matches full paths based on the Regex. Use this operator if you want to specify multiple paths.
-
-You can use Regex to specify all files in a parent folder, such as `ci/*`.
+* **Starts With** - Expects a single value. Harness matches any full path starting with the value.
+* **Ends With** - Expects a single value. Harness matches any full path ending with the value.
+* **Contains** - Expects a single value. Harness matches any full path containing the value.
+* **In** and **Not In** - Allows a single value or multiple comma-separated values. Requires full paths, such as `source/folder1/file1.txt,source/folder2/file2.txt`. For some **Conditions**, you can also use Regex, such as `main,release/.*`. You can use Regex to specify all files in a parent folder, such as `ci/*`.
+* **Regex** - Expects a single Regex value. Harness matches full paths based on the Regex. You can use complex Regex expressions, such as `^((?!README\.md).)*$`. You can use this operator to specify multiple paths, and you can use Regex to specify all files in a parent folder, such as `ci/*`.
 
 ### Matches Value
 
@@ -464,6 +467,8 @@ For information about other provider's token scopes, go to:
 * [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
 * [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
 
+:::info note
+Harness Self-Managed Enterprise Edition does not support webhook triggers for Helm-based installations using self-signed certificates.
 :::
 
 1. In Harness, obtain the trigger webhook by selecting the **Webhook/Link** icon in the list of triggers.

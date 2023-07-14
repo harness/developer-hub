@@ -37,7 +37,7 @@ The name for the Sumo Logic verification provider connection in Harness. If you 
 
 ### Step 3: Sumo Logic API Server URL
 
-The API URL for your Sumo Logic account. The format of the URL is:https://api.*YOUR\_DEPLOYMENT*.sumologic.com/api/v1/Where *YOUR\_DEPLOYMENT* is either **us1**, **us2**, **eu**, **de**, or **au**. For **us1**, use **api.sumologic.com**.Sumo Logic applies default [rate limiting](https://help.sumologic.com/APIs/General-API-Information/API-Authentication#Rate_limiting).For more information, see [API Authentication](https://help.sumologic.com/APIs/General-API-Information/API-Authentication) from Sumo Logic.
+The API URL for your Sumo Logic account. The format of the URL is: `https://api.*YOUR\_DEPLOYMENT*.sumologic.com/api/v1/Where*YOUR\_DEPLOYMENT*` is either **us1**, **us2**, **eu**, **de**, or **au**. For **us1**, use **api.sumologic.com**.Sumo Logic applies default [rate limiting](https://help.sumologic.com/APIs/General-API-Information/API-Authentication#Rate_limiting).For more information, see [API Authentication](https://help.sumologic.com/APIs/General-API-Information/API-Authentication) from Sumo Logic.
 
 ### Step 4: Encrypted Access ID
 

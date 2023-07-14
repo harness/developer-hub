@@ -115,14 +115,7 @@ To upgrade to NextGen, select the **Launch Harness Next Generation** button in t
 
 To go back to FirstGen, select the **Launch First Generation** button in the Harness NextGen UI.
 
-The default `allowCrossGenerationAccess` value for accounts with `defaultExperience` as NextGen is `TRUE`. 
-
-The default `allowCrossGenerationAccess` value for accounts with `defaultExperience` as FirstGen is:
-
-* `TRUE` if the feature flag, `PL_HIDE_LAUNCH_NEXTGEN` is disabled.  
-* `FALSE` if the feature flag, `PL_HIDE_LAUNCH_NEXTGEN` is enabled.
-
-For new FirstGen and NextGen user accounts, this value is set to `FALSE` by default.
+The default `allowCrossGenerationAccess` value for existing CD accounts in Harness is `TRUE`, but it is set to `FALSE` for non-CD accounts. For all new FirstGen and NextGen user accounts, this value is set to `FALSE` by default.
 
 When you change the `allowCrossGenerationAccess` setting value in FirstGen or NextGen, a FirstGen or NextGen audit is generated respectively.
 

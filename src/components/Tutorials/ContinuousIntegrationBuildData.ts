@@ -15,43 +15,49 @@ import { MODULES } from "../../constants";
         "",
       list: [
         {
-          title: "Build on a Kubernetes cluster",
-          module: MODULES.ci,
-          description:
-            "Build a Docker Image on a Kubernetes cluster build farm.",
-          link: "/tutorials/ci-pipelines/kubernetes-build-farm",
-        },
-        {
           title: "Go application",
           module: MODULES.ci,
           description:
-            "Build a Go application.",
+            "Build and test a Go application.",
           link: "/tutorials/ci-pipelines/build/go",
         },
         {
           title: "Java application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of Java application.",
+            "Build and test a Java application.",
           link: "/tutorials/ci-pipelines/build/java",
         },
         {
           title: "NodeJS application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of a NodeJS application.",
+            "Build and test a NodeJS application.",
           link: "/tutorials/ci-pipelines/build/nodejs",
         },
         {
-          title: "Terraform Cloud notification triggers",
+          title: "Python application",
           module: MODULES.ci,
-          icon: "img/icon_ci.svg",
           description:
-            "Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.",
+            "Build and test a Python application.",
+          link: "/tutorials/ci-pipelines/build/python",
+          newDoc: false,
+        },
+        {
+          title: "Ruby application",
+          module: MODULES.ci,
+          description:
+            "Build and test a Ruby application.",
+          link: "/tutorials/ci-pipelines/build/ruby",
+          newDoc: false,
+        },
+        {
+          title: "iOS and macOS applications",
+          module: MODULES.ci,
+          description:
+            "Build and test an iOS or macOS application.",
+          link: "/tutorials/ci-pipelines/build/ios",
           newDoc: true,
-          type: [docType.Documentation],
-          time: '9 min',
-          link: "/tutorials/ci-pipelines/tfc-notification",
         },
       ],
     },

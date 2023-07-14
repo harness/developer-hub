@@ -1,7 +1,6 @@
 ---
 title: Save and Restore Cache from GCS
 description: Caching improves build times and enables you to share data across stages.
-
 sidebar_position: 40
 helpdocs_topic_id: v0agy0hlyj
 helpdocs_category_id: 01tyeraya4
@@ -24,7 +23,7 @@ You can't share access credentials or other [Text Secrets](/docs/platform/Secret
 This topic assumes you have created a pipeline and that you are familiar with the following:
 
 * [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md)
-* [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md)
+* [CI pipeline basics](../../ci-quickstarts/ci-pipeline-basics.md)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 * [Build infrastructure](/docs/category/set-up-build-infrastructure)
 

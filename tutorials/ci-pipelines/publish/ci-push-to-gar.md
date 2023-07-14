@@ -8,6 +8,15 @@ slug: /ci-pipelines/publish/google-gar
 
 # Push application containers to Google Artifact Registry
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
+
 This tutorial shows how to use a Harness Continuous Integration (CI) pipeline to build and push application container images to Google Artifact Registry (GAR).
 
 You'll learn how to:

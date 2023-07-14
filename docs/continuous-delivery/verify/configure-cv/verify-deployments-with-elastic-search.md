@@ -19,6 +19,14 @@ Harness Continuous Verification (CV) integrates with Elasticsearch to:
 
 This topic describes how to set up an Elasticsearch health source when adding a CV step to your Continuous Deployment (CD).
 
+
+:::important
+- Harness only supports the Lucene query language. 
+
+- Use the Java-supported format when specifying dates in a query.
+:::
+
+
 ## Prerequisite
 
 Elasticsearch is added as a verification provider in Harness.

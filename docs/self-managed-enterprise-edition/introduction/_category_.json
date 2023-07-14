@@ -1,12 +1,12 @@
 {
-    "label":"Get started",
+    "label":"Get started with Self-Managed Enterprise Edition",
     "position": 10,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Get started"
+       "title":"Get started with Self-Managed Enterprise Edition"
     },
     "customProps":{
        "helpdocs_category_id":"tvlmjozubh"

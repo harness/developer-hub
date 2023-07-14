@@ -91,7 +91,7 @@ Select one of the following:
 
 * **Specify master URL and credentials**:
 	+ You provide the Kubernetes master node URL. The easiest method to obtain the master URL is using kubectl: `kubectl cluster-info`.
-	+ Next, enter the **Service Account Key** or other credentials.
+	+ Next, enter the **Service Account Key** or other credentials. You can use any service account; the service account doesn't have to be attached to a delegate.
 * **Use the credentials of a specific Harness Delegate**: Select this option to have the Connector inherit the credentials used by the Harness Delegate running in the cluster. You can install a Delegate as part of adding this Connector.
 
 For details on all of the credential settings, see [Kubernetes Cluster Connector Settings Reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/kubernetes-cluster-connector-settings-reference.md).

@@ -1,8 +1,6 @@
 # Prevent search engines from seeing the site altogether
 User-Agent: *
-Disallow: /docs/infrastructure-as-code
-Disallow: /docs/infrastructure-as-code/
-Disallow: /community
-Disallow: /community/
+Disallow: /docs/infra-as-code-management
+Disallow: /docs/infra-as-code-management/
 
 Sitemap: https://developer.harness.io/sitemap.xml

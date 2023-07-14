@@ -1,6 +1,6 @@
 {
     "label": "Terraform",
-    "position": "100",
+    "position": "1",
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
@@ -9,7 +9,7 @@
         "title": "Terraform"
     },
     "customProps": {
-        "position": "100",
+        "position": "1",
         "helpdocs_category_id": "y5cc950ks3"
     }
 }

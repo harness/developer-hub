@@ -23,7 +23,7 @@ CET consists of an Error Tracking Agent that runs on a Java Virtual Machine (JVM
 
 ## Further reading
 
-- [Tutorials](https://developer.harness.io/tutorials/manage-service-reliability)
+- [Tutorials](https://developer.harness.io/tutorials/error-tracking)
 - [Supported platforms and technologies](https://developer.harness.io/docs/getting-started/supported-platforms-and-technologies/#service-reliability-management)
 
 

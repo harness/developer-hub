@@ -24,7 +24,7 @@ You can use the repeat looping strategy with `<+stage.output.hosts>` to target m
 
 * [SSH (Traditional)](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)
 * [WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
-* [Custom deployments using deployment templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployments/custom-deployment-tutorial)
+* [Custom deployments using deployment templates](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial)
 
 All three types can deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
 

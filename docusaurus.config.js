@@ -55,8 +55,8 @@ const config = {
           // changefreq: 'weekly',
           // priority: 0.5,
           ignorePatterns: [
-            "/docs/infrastructure-as-code",
-            "/docs/infrastructure-as-code/**",
+            "/docs/infra-as-code-management",
+            "/docs/infra-as-code-management/**",
           ],
           // filename: 'sitemap.xml',
         },
@@ -66,6 +66,9 @@ const config = {
         gtag: {
           trackingID: "G-46758J5H8P",
           anonymizeIP: false,
+        },
+        blog: {
+          showReadingTime: false,
         },
       }),
     ],
@@ -143,6 +146,11 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Manage Developer Portal",
+                to: "tutorials/internal-developer-portal",
+              },
+              {
+                // type: "doc",
                 label: "Administer Harness Platform",
                 to: "tutorials/platform",
               },
@@ -191,7 +199,11 @@ const config = {
                 to: "docs/continuous-error-tracking",
               },
               {
-                label: "Harness Platform",
+                label: "Internal Developer Portal",
+                to: "docs/internal-developer-portal",
+              },
+              {
+                label: "Platform",
                 to: "docs/platform",
               },
               {
@@ -251,9 +263,14 @@ const config = {
           },
           {
             position: "right",
-            to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
-            label: "Join Slack",
+            to: "community",
+            label: "Community",
           },
+          //{
+          //  position: "right",
+          //  to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
+          //  label: "Join Slack",
+          //},
           {
             // type: "search",
             // position: "right",
@@ -268,13 +285,6 @@ const config = {
             html: '<button class="button button--cta">Sign up</button>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
-          /**
-          {
-            href: "https://github.com/harness/developer-hub",
-            label: "Developer Hub GitHub",
-            position: "right",
-          },
-          */
         ],
       },
       footer: {
@@ -315,6 +325,10 @@ const config = {
                 label: "Chaos Engineering",
                 to: "https://harness.io/products/chaos-engineering",
               },
+              {
+                label: "Continuous Error Tracking",
+                to: "https://www.harness.io/products/continuous-error-tracking",
+              },
             ],
           },
           {
@@ -333,16 +347,8 @@ const config = {
                 to: "https://apidocs.harness.io/",
               },
               {
-                label: "Forum",
-                to: "https://community.harness.io",
-              },
-              {
-                label: "University",
-                to: "https://university.harness.io",
-              },
-              {
                 label: "Open Source",
-                to: "https://harness-community.github.io/",
+                to: "https://www.harness.io/open-source",
               },
               {
                 label: "YouTube",
@@ -390,6 +396,11 @@ const config = {
         defaultMode: "light",
         disableSwitch: true,
         respectPrefersColorScheme: false,
+      },
+      docs: {
+        sidebar: {
+          hideable: true,
+        },
       },
       /*
       announcementBar: {
@@ -510,6 +521,17 @@ const config = {
         routeBasePath: "kb",
         exclude: ["**/shared/**", "**/static/**"],
         sidebarPath: require.resolve("./sidebars-kb.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
+      "@docusaurus/plugin-content-blog",
+      {
+        id: "product-updates",
+        path: "product-updates",
+        routeBasePath: "product-updates",
+        exclude: ["**/shared/**", "**/static/**"],
         editUrl: "https://github.com/harness/developer-hub/tree/main",
         // ... other options
       },

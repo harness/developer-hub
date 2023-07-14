@@ -5,6 +5,7 @@ title: Linux time chaos
 
 
 import Ossupport from './shared/note-supported-os.md'
+import FaultPermissions from './shared/fault-permissions.md'
 
 Linux time chaos injects chaos to change the time of the Linux machine.
 
@@ -15,6 +16,8 @@ Linux time chaos injects chaos to change the time of the Linux machine.
 - Determines the resiliency of the underlying application components when subjected to a change in the system time.
 
 <Ossupport />
+
+<FaultPermissions />
 
 ## Fault tunables
 <h3>Optional tunables</h3>

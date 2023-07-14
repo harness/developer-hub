@@ -1,10 +1,10 @@
 ---
-sidebar_position: 1
-title: Build resilient applications with chaos engineering
+sidebar_position: 15
+title: Build resilient applications with Chaos Engineering (CE)
 ---
 ## Introduction
 
-Welcome to Harness Chaos Engineering (HCE)! This section introduces you to the basics of chaos engineering, its importance, and its advantages.
+Welcome to Harness Chaos Engineering (CE)! This section introduces you to the basics of chaos engineering, its importance, and its advantages.
 
 Cloud-native applications are highly distributed, elastic, resistant to failure, and loosely coupled. How would you ensure that your application performs as expected under different failure conditions?
 
@@ -41,9 +41,9 @@ are subject to frequent, and independent upgrades. The resulting paradigm is:
 - Increased ad-hoc/exploratory chaos testing by application developers and QA teams;
 - Automating chaos experiments within continuous delivery (CD) pipelines.
 
-## Benefits of HCE
+## Benefits of CE
 
-HCE takes a holistic approach to chaos engineering, and doesn't merely focus on fault injection. It is designed to help users set up a fully operational chaos function that is based on the original [principles of chaos](https://principlesofchaos.org/), and addresses several enterprise needs around its practice, which include:
+CE takes a holistic approach to chaos engineering, and doesn't merely focus on fault injection. It is designed to help users set up a fully operational chaos function that is based on the original [principles of chaos](https://principlesofchaos.org/), and addresses several enterprise needs around its practice, which include:
 
 1. Cloud native approach to chaos engineering which supports declarative definition of experiments and Git-based chaos artifact sources (chaos-experiments-as-code).
 2. Extensive fault library and robust suite of [ready-to-use experiments](../technical-reference/chaos-faults/), with support to construct complex custom experiments with [multiple faults](../configure-chaos-experiments/experiments/create-complex-chaos-experiments) in the desired order.

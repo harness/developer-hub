@@ -103,18 +103,19 @@ The following example is based on the example workflow described in this topic.
           sharedPaths:  
             - /var/run  
             - /shared/customer_artifacts  
-          serviceDependencies:  
-            - identifier: dind  
-              name: dind  
-              type: Service  
-              spec:  
-                connectorRef: DOCKER_HUB_CONNECTOR  
-                image: docker:dind  
-                privileged: true  
-                entrypoint:  
-                  - dockerd-entrypoint.sh  
           execution:  
             steps:  
+              - step:
+                  type: Background
+                  name: dind
+                  identifier: dind
+                  spec:
+                    connectorRef: $DOCKER_CONNECTOR
+                    image: docker:dind
+                    shell: Sh
+                    privileged: true
+                    entrypoint:
+                      - dockerd-entrypoint.sh
               - step:  
                   type: Run  
                   name: runTrivyScan  

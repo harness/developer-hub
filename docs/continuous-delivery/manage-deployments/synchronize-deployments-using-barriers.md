@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic describes how to synchronize stages and [step groups](../x-platform-cd-features/cd-steps/utilities/step-groups.md) in your pipeline using barriers.
+This topic describes how to synchronize stages and [step groups](../x-platform-cd-features/cd-steps/step-groups.md) in your pipeline using barriers.
 
 :::note
 

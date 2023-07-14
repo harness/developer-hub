@@ -8,6 +8,15 @@ slug: /ci-pipelines/tfc-notification
 
 # Use Terraform Cloud notifications to trigger CI
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
+
 Continuous Integration (CI) pipelines deploy CI artifacts to a *target infrastructure*. Deployments handled by CI or Continuous Deployment (CD) pipelines. Modern day architecture uses automation tools, like [Terraform](https://terraform.io) or [Ansible](https://www.ansible.com/) to provision the target infrastructure. This type of provisioning is called [infrastructure-as-code (IaC)](https://en.wikipedia.org/wiki/Infrastructure_as_code).
 
 Usually CI/CD and IaC don't run in tandem. Often, the CI pipeline is triggered only when the target infrastructure is ready to bootstrap with software components that are required by CI/CD pipelines.
@@ -148,7 +157,7 @@ Harness uses a *connector* to connect to your Git repositories.
 6. For **Select Connectivity Mode**, select **Connect through the Harness Platform**, and then select **Save and Continue**.
 7. Wait while Harness tests the connection, and then select **Finish**.
 
-For more information about creating GitHub connectors go to [Add a GitHub connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector) and the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
+For more information about creating GitHub connectors go to the [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference).
 
 ## Create a GSA key
 

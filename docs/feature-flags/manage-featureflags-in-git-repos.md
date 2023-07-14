@@ -6,7 +6,7 @@ tags:
    - git experience
    - feature flag
    - SCM
-sidebar_position: 20
+sidebar_position: 80
 helpdocs_topic_id: 6f5eylg819
 helpdocs_category_id: 77l6flntwl
 helpdocs_is_private: false
@@ -100,6 +100,10 @@ If you don’t see the changes you made in Git reflected on the Harness Platform
 
 ## Prerequisites
 
+### Create at least one flag in Harness
+
+In order to access the Git Sync setup in the Harness UI, you must [add at least one flag](/docs/feature-flags/ff-creating-flag/create-a-feature-flag) in Harness.
+
 ### Create or identify a Git repository
 
 Your repository must have at least one branch.
@@ -134,6 +138,10 @@ During the setup, you are asked to either select an existing Harness Git connect
 To set up Git Experience:
 
 1. In Harness, select **Feature Flags**, and in the Feature Flags page, select **Set Up Git Sync** at the top.
+
+  :::info note
+  You must [add at least one flag](/docs/feature-flags/ff-creating-flag/create-a-feature-flag) on this page in order to see the **Set Up Git Sync** button.
+  :::
 
   The **Set up a Git connection** form appears:
 

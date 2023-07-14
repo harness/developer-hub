@@ -19,12 +19,6 @@ import StoCreateDinD from './shared/dind-bg-step.md';
 ## Security step settings
 
 
-```mdx-code-block
-import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
-```
-
-<StoSecurityStepConfig />
-
 * `product_name` = `aws-ecr`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) =`containerImage`
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods)= `dataLoad`, `ingestionOnly`

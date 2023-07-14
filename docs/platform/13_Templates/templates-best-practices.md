@@ -1,10 +1,10 @@
 ---
 title: Best practices and guidelines for templates
-description: Best Practices for Template Versioning with GitExperience
-sidebar_position: 10
+description: Best practices for template versioning with GitExperience
+sidebar_position: 2
 ---
 
-Template versioning in Harness is an important part of maintaining effective development processes. To ensure the best practices are followed, it is essential to have a clear and consistent workflow for managing templates. 
+Template versioning in Harness is an important part of maintaining effective development processes. To ensure the best practices are followed, it is essential to have a clear and consistent workflow for managing templates.
 
 You can save your templates in remote Git repositories. For example, a core pipeline that you want all of your app pipelines to use. You can put the template in a core repository and reuse it in multiple pipelines.
 
@@ -37,9 +37,9 @@ You can select the scope of the templates based on the following
 
 Harness supports the following types of templates that can be referenced in a pipeline:
 
-- [Step Template](./run-step-template-quickstart.md)
-- [Stage Template](./add-a-stage-template.md)
-- [Pipeline Template](./create-pipeline-template.md)
+- [Step template](./run-step-template-quickstart.md)
+- [Stage template](./add-a-stage-template.md)
+- [Pipeline template](./create-pipeline-template.md)
 
 For each template, irrespective of its type, you must provide a unique identifier.
 
@@ -85,14 +85,11 @@ https://harness-1.wistia.com/medias/bv9c2a8exg-->
 
 To reference a template at the account scope, use the following expression: 
 
-
 ```
 account.<templateIdentifier>
 ```
 
-
 To reference a template at the organization scope, use the following expression: 
-
 
 ```
 org.<templateIdentifier>
@@ -126,4 +123,4 @@ org.<templateIdentifier>
 
 - You can view the Git YAML differences for the pipeline and see which lines have been modified.
 
-- To update the template click Save. Harness reconciles the change making it the default state.
+- To update the template, select **Save**. Harness reconciles the change making it the default state.

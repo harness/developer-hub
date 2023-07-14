@@ -1,9 +1,18 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 title: Unified CI/CD
 description: Build and Deploy a NodeJS App to Kubernetes
 ---
 # Build and Deploy a NodeJS App to Kubernetes
+
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Delivery & GitOps Certification today!"
+  link="/certifications/continuous-delivery"
+  closable={true}
+  target="_self"
+/>
 
 DevOps continues to grow in popularity among software development teams. It’s not surprising, given the benefits: a streamlined workflow leads to faster release frequency and deployment cycles, quicker bug detection, efficient rollback in case of any error, and a more productive team overall. DevOps engineers ensure that the processes and practices of code development, testing, and release are streamlined to reduce inefficiency, risk, and time to market. Coupled with continuous integration (CI) and continuous delivery (CD), DevOps helps IT organizations streamline their development process by automating manual tasks related to code deployment. Let’s explore how you can adopt CI/CD to improve your organization’s efficiency and delivery pipeline.
 

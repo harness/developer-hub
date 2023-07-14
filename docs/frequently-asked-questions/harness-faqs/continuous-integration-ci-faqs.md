@@ -10,20 +10,6 @@ helpdocs_is_published: true
 
 This article addresses some frequently asked questions about Harness Continuous Integration (CI).
 
-In this topic:
-
-* [How can a step call a service started by a Background step?](continuous-integration-ci-faqs.md#how-can-a-step-call-a-service-started-by-a-Background-step)
-* [What is the maximum timeout for a CI step or stage?](continuous-integration-ci-faqs.md#what-is-the-maximum-timeout-for-a-cie-step-or-stage)
-* [What are the default values for memory and CPU for CI steps?](continuous-integration-ci-faqs.md#what-are-the-default-values-for-memory-and-cpu-for-cie-steps)
-* [How do you replicate a list of Drone plugin settings in CI?](continuous-integration-ci-faqs.md#how-to-replicate-a-list-or-a-map-of-drone-plugin-settings-in-cie)
-* [What permissions are required for GitHub personal access tokens in NextGen and GitX?](continuous-integration-ci-faqs.md#permissions-required-for-git-hub-personal-access-token-in-next-gen-and-git-x)
-* [What permissions are required to run CI builds in an OpenShift cluster?](continuous-integration-ci-faqs.md#permissions-required-to-run-cie-builds-in-an-open-shift-cluster)
-* [What are the minimum permissions required for a service account role for a Kubernetes Cluster connector?](continuous-integration-ci-faqs.md#list-of-minimum-permissions-required-for-service-account-role-for-kubernetes-connector)
-* [How can you share the codebase configuration between stages in a CI pipeline?](continuous-integration-ci-faqs.md#how-can-you-share-the-codebase-configuration-between-stages-in-the-cie-pipeline)
-* [Does CI support running Docker-in-Docker images?](continuous-integration-ci-faqs.md#does-cie-support-running-docker-in-docker-images)
-* [How can you execute Docker commands in a CI pipeline that runs on a Kubernetes cluster that lacks a Docker runtime?](continuous-integration-ci-faqs.md#how-can-you-execute-docker-commands-in-a-ci-pipeline-that-runs-on-a-kubernetes-cluster-that-lacks-a-docker-runtime)
-
-
 ## How can a step call a service started by a Background step?
 
 For information about calling services started by Background steps, go to **Important notes** and **Port Bindings** in [Background step settings](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings.md).

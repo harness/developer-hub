@@ -8,7 +8,7 @@ You can run shell scripts in a CD stage using the **Shell Script** step.
 
 With the Shell Script step, you can execute scripts in the shell session of the stage in the following ways:
 
-* Execute scripts on the host running a Harness delegate. You can use delegate selectors to identify which Harness delegate to use.
+* Execute scripts on the host running a Harness delegate. You can use delegate selectors to identify which Harness delegate to use. Go to [Use delegate selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md) for more information.
 * Execute scripts on a remote target host in the deployment infrastructure definition.
 
 This topic provides a simple demonstration of how to create a script in a Shell Script step, publish its output in a variable, and use the published variable in a subsequent step.
@@ -341,3 +341,33 @@ Harness assumes that you trust your Harness users to add safe scripts to your Sh
 
 Please ensure that users adding scripts, as well as executing deployments that run the scripts, are trusted.
 
+### Escaping characters
+
+Escape characters are used to remove special meaning from a single character. Escaping tells shell to interpret characters literally. 
+
+You can selectively escape characters when using shell scripts by using the following syntax: 
+
+`shell.escapeChars(<input string>, <string of characters to be escaped>)`
+
+For example, the output for `shell.escapeChars("hello", "ho")` is `"\hell\o"`.
+
+### Realtime logging 
+
+Sometimes, depending on the type of the script, the log lines appear at the end of the execution, and might not be realtime. This happens if the script doesn't flush logs in `stdout` at the correct time.
+
+For example, a Python script with `print("..")` might show delayed logs. 
+
+To fix this, use: 
+
+```
+print("...", flush=True)
+```
+ 
+or 
+ 
+```
+import functools
+print = functools.partial(print, flush=True)
+```
+
+You might have to make similar changes to your script depending on its contents.

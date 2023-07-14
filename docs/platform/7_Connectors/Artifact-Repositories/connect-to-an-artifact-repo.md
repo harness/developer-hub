@@ -16,7 +16,7 @@ You can connect to an artifact repo inline when developing your Pipeline, or sep
 
 * [Learn Harness' Key Concepts](../../../../docs/getting-started/learn-harness-key-concepts.md)
 
-### Review: AWS, Azure, and Google Cloud Storage Artifacts
+### AWS, Azure, and Google Cloud Storage artifacts
 
 Connectors for artifacts stored in Google Cloud Storage or Amazon S3 are added as **Cloud Providers** Connectors, not **Artifact Repositories**.
 
@@ -24,15 +24,15 @@ If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connect
 
 For Azure ACR, use the **Docker Registry** Connector, described below.
 
-### Review: Artifact Repository Connectors Scope
+### Artifact repository connectors scope
 
-You can add an Artifact Repository Connector at the Account/Org/Project scope.
+You can add an artifact repository connector at the account, org, or project scope.
 
-This topic will explain how to add it at the Project scope. The process is same for Org and Account.
+This topic will explain how to add it at the project scope. The process is same for org and account.
 
-Steps on adding the Artifact Repository Connector inline when developing a Pipeline are covered in the relevant How-to and Technical Reference topics. For example, adding a Docker Registry is covered in the [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart) and [Docker Connector Settings Reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md).
+Steps on adding the artifact repository connector inline when developing a pipeline are covered in the relevant How-to and Technical Reference topics. For example, adding a Docker Registry is covered in the [Kubernetes CD Quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart) and [Docker Connector Settings Reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md).
 
-### Step: Add an Artifactory Repository
+### Add an Artifactory repository
 
 For details on settings and permissions, see [Artifactory Connector Settings Reference](../../7_Connectors/Cloud-providers/ref-cloud-providers/artifactory-connector-settings-reference.md).
 
@@ -50,7 +50,7 @@ For details on settings and permissions, see [Artifactory Connector Settings Ref
 10. Click **Save and Continue**.
 11. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
-### Step: Add a Docker Registry
+### Add a Docker registry
 
 For details on settings and permissions, see [Docker Connector Settings Reference](../../../platform/7_Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md).The Docker Connector is platform-agnostic and can be used to connect to any Docker container registry, but Harness provides first class support for registries in AWS and GCR. See [Add an AWS Connector](../Cloud-providers/add-aws-connector.md), [Google Cloud Platform (GCP) Connector Settings Reference](../Cloud-providers/connect-to-google-cloud-platform-gcp.md).
 
@@ -69,13 +69,13 @@ For details on settings and permissions, see [Docker Connector Settings Referenc
 11. Click **Save and Continue**.
 12. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
-### Step: Add an HTTP Helm Repo
+### Add an HTTP Helm repository
 
 You can add Helm Charts from an HTTP Helm Repo. Once you set up the Connector, you can use it in a Stage to add your Helm Chart.
 
 Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, Helm Charts are added to the service **Manifests** section and not its **Artifacts** section. 
 
-If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to the service **Artifacts** section. See [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts/).
+If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to the service **Artifacts** section. See [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts).
 
 For details on settings and permissions, see [HTTP Helm Repo Connector Settings Reference](../../../platform/7_Connectors/Code-Repositories/ref-source-repo-provider/http-helm-repo-connector-settings-reference.md).
 
@@ -93,11 +93,11 @@ For details on settings and permissions, see [HTTP Helm Repo Connector Settings 
 10. Click **Save and Continue**.
 11. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
-### Step: Add a Helm 3 OCI Helm Registry
+### Add a Helm 3 OCI Helm registry
 
 You can add Helm Charts from an [OCI Helm Registry](https://helm.sh/docs/topics/registries/). Once you set up the Connector, you can use it in a Stage to add your Helm Chart.
 
-Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, Helm Charts are added a Stage Service in **Manifests** and not **Artifacts**. If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to **Artifacts**. See [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts/).
+Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, Helm Charts are added a Stage Service in **Manifests** and not **Artifacts**. If you use the `<+artifact.image>` expression in your Helm Chart Values YAML files, then Harness will pull the image you add to **Artifacts**. See [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts).
 
 1. Open a Harness Project.
 2. In **Project Setup**, click **Connectors**.
@@ -118,7 +118,7 @@ Since Harness lets you use the `<+artifact.image>` expression in your Helm Chart
 10.  Click **Save and Continue**.
 11.  Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
 
-#### OCI Registry Notes
+#### OCI registry notes
 
 * Helm supports OCI registries officially for Helm version 3.8 and above. Experimental support is available with versions below 3.8.
 * You cannot use OCI Helm Registries with [Helm Chart Triggers](../../../platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md).
@@ -153,24 +153,31 @@ Copy the password and paste it into a Harness text secret.
 
 The AWS ECR authorization token in only valid for 12 hours. [This is an AWS limitation.](https://awscli.amazonaws.com/v2/documentation/api/latest/reference/ecr/get-login-password.html#description)For information on ECR authentication, go to [Private registry authentication](https://docs.aws.amazon.com/AmazonECR/latest/userguide/registry_auth.html) from AWS.
 
-### Step: Add a Nexus Repository
+### Add a Nexus repository
 
 For details on settings and permissions, see [Nexus Connector Settings Reference](../../../platform/8_Pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference.md).
 
 1. Open a Harness Project.
-2. In **Project Setup**, click **Connectors**.
-3. Click **New Connector**, and click **Nexus** in **Artifact Repositories**. The Nexus Repository settings appear.
+2. In **Project Setup**, select **Connectors**.
+3. Select **New Connector**, and then select **Nexus** in **Artifact Repositories**. The Nexus Repository settings appear.
 4. In **Name**, enter a name for this connector.
-5. Click **Continue**.
-6. Enter the **Nexus Repository URL**.
+5. Select **Continue**.
+6. In **Nexus Repository URL**, enter the URL that you use to connect to your Nexus server. For example, `https://nexus3.dev.mycompany.io/repository/your-repo-name`.
 7. Select a **Version**.
+   :::info
+
+   For Nexus 2.x, Harness supports repository formats Maven, npm, and NuGet. Go to Sonatype's website, [Supported Formats](https://help.sonatype.com/repomanager3/nexus-repository-administration/formats) for more information.
+
+   For Nexus 3.x, Harness supports repository formats Docker 3.0 and greater, Maven, npm, NuGet.
+
+   :::
 8. In **Authentication**, select one of the following options:
-  1. **Username and Password** - Once you choose this option, you need to enter the **Username** and **Password**. For Password you can either create a new Secret or use an existing one.
-  2. **Anonymous (no credentials required)**.
-9. Click **Continue**.
-10. In **Delegates Setup****,**use any Delegate or enter [Tags](../../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md) for specific Delegates that you want to allow to connect to his Connector.
-11. Click **Save and Continue**.
-12. Once the Test Connection succeeds, click **Finish**. The Connector is listed in Connectors.
+   * **Username and Password** - Once you choose this option, you need to enter the **Username** and **Password**. For Password you can either create a new Secret or use an existing one.
+   * **Anonymous (no credentials required)**.
+9.  Select **Continue**.
+10. In **Delegates Setup**, use any delegate or enter [Tags](../../../platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md) for specific delegates that you want to allow to connect to his connector.
+11. Select **Save and Continue**.
+12. Once the Test Connection succeeds, select **Finish**. The connector is listed in **Connectors**.
 
 ### See also
 

@@ -13,4 +13,4 @@ These tutorials include Kubernetes, Helm, and other integrations. For example:
 - [Deploy a Docker Image to Amazon ECS](https://developer.harness.io/tutorials/cd-pipelines/amazon-ecs)
 
 
-For information on each integration, go to [Integrations](../integrations/cd-integrations).
+For information on each integration, go to [Integrations](../cd-integrations).

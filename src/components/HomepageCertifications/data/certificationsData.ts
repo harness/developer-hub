@@ -10,7 +10,7 @@ export const certifications: CardItem[] = [
       description:
         "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way.",
       link: "/certifications/continuous-delivery",
-      numberOfCerts: 1,
+      numberOfCerts: 2,
     },
     {
       title: "Continuous Integrations Certifications",

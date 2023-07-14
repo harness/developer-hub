@@ -19,9 +19,9 @@ export default function AccessibilityPage() {
           description={`${siteConfig.tagline}`} // "Description will go into a meta tag in <head />"
         >
           <main className={`container ${styles.container}`}>
-            <h1>Welcome to The Community</h1>
+            <h1>Explore the Harness Community</h1>
 
-            <p>Welcome to the new home of the Harness Community. Build expertise and relationships through the Harness Community.</p> 
+            <p>Build relationships through knowledge sharing.</p> 
             
             <h2 className={styles.section}>Join Us</h2>
             <p>Connect with us on various mediums.</p>
@@ -30,11 +30,10 @@ export default function AccessibilityPage() {
             <CommunityAspects />
             
             <ul>
-              <li>Slack for Discussions.</li>
-              <li>KB for Articles by Harness Experts. </li>
+              <li>Slack is used for discussions.</li>
+              <li>Knowledge Base is used for articles by Harness Experts. </li>
             </ul>
             
-            <CommunityPosts />
           </main>
         </Layout>
       </MDXContent>

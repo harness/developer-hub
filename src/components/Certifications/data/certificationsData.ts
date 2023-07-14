@@ -10,17 +10,17 @@ export const certifications: CardItem[] = [
       description:
         "Continuous Delivery & GitOps focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. Your Continuous Delivery pipeline should automate all of the steps necessary to get your changes into production.",
       version: "Harness CD & GitOps Free/Team Plans",
-      link: "/certifications/continuous-delivery",
+      link: "/certifications/continuous-delivery?lvl=developer",
       // numberOfCerts: 1,
     },
     {
-      title: "Continuous Delivery & GitOps - Administrator (BETA COMING SOON)",
+      title: "Continuous Delivery & GitOps - Administrator",
       module: MODULES.cd,
       type: certType.administrator,
       description:
-        "Administrator focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. Your Continuous Delivery pipeline should automate all of the steps necessary to get your changes into production.",
+        "CD Administrator focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. Your Continuous Delivery pipeline should automate all of the steps necessary to get your changes into production.",
       version: "Harness CD & GitOps Enterprise Plan",
-      link: "/certifications/continuous-delivery",
+      link: "/certifications/continuous-delivery?lvl=administrator",
       // numberOfCerts: 1,
     },
     {
@@ -28,9 +28,9 @@ export const certifications: CardItem[] = [
       module: MODULES.cd,
       type: certType.architect,
       description:
-        "Architect focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. Your Continuous Delivery pipeline should automate all of the steps necessary to get your changes into production.",
+        "CD Architect focuses on delivery and deployment of application and infrastructure changes in a safe and sustainable way. Your Continuous Delivery pipeline should automate all of the steps necessary to get your changes into production.",
       version: "Harness CD & GitOps Enterprise Plan",
-      link: "/certifications/continuous-delivery",
+      link: "/certifications/continuous-delivery?lvl=architect",
       // numberOfCerts: 1,
     },
     {
@@ -40,7 +40,17 @@ export const certifications: CardItem[] = [
       description:
         "Continuous Integration focuses on building and testing your code. Your Continuous Integration pipeline should provides a bird's-eye view of all your builds and drill down into specific builds to troubleshoot and analyze the root causes of issues.",
       version: "Harness CI Free/Team Plans",
-      link: "/certifications/continuous-integration",
+      link: "/certifications/continuous-integration?lvl=developer",
+      // numberOfCerts: 1,
+    },
+    {
+      title: "Continuous Integration - Administrator (BETA COMING SOON)",
+      module: MODULES.ci,
+      type: certType.administrator,
+      description:
+        "CI Administrator focuses on building and testing your code at scale. Your Continuous Integration pipeline should automate all of the steps necessary to build and test your artifacts at scale.",
+      version: "Harness CI Enterprise Plan",
+      link: "/certifications/continuous-integration?lvl=administrator",
       // numberOfCerts: 1,
     },
   ];

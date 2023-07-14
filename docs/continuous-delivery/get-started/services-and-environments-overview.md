@@ -12,14 +12,14 @@ This topic describes Harness Continuous Delivery (CD) services and environments.
 
 If you are new to Harness, please review [Harness key concepts](../../getting-started/learn-harness-key-concepts.md) and [CD pipeline modeling overview](./cd-pipeline-modeling-overview.md).
 
-## Product demo: services
+## Video: Services
 
 <!-- Video:
 https://harness-1.wistia.com/medias/xtmi0c0z95-->
 <docvideo src="https://harness-1.wistia.com/medias/xtmi0c0z95" />
 
 
-### Product demo: services and environments at the account and org level
+### Video: Services and environments at the account and org level
 
 <!-- Video:
 https://harness-1.wistia.com/medias/s89yka6hal-->
@@ -560,6 +560,17 @@ The priority from top to bottom is:
 3. Service settings
 
 ![](./static/services-and-environments-overview-16.png)
+
+#### Override priority example
+
+Suppose you have a pipeline that runs as follows:
+
+* Deploys a service named `myService`, which has a variable `cpu` set to 1. 
+* Deploys `myService` to `myEnvironmentAlpha`, and then overrides the `myService` variable `cpu` value to 2. 
+
+In this case, the environment variable takes precedence, and overrides the service variable. When the pipeline runs, it uses the `cpu` value of 2. 
+
+Now, suppose you have a another pipeline that deploys `myService` to `myEnvironmentKappa`, which has a service override that sets `cpu` to 4. In this case, the environment service override takes precedence over the environment configuration and the service setting. When the pipeline runs, it uses  the `cpu` value of 4. 
 
 ### Infrastructure definitions
 

@@ -6,7 +6,7 @@ The following settings are required for Security steps where the `policy_type` i
 
 * `variant ` An identifier for a specific target to scan, such as the branch name or image tag. This identifier is used to differentiate or group results for a target. Harness maintains a historical trend for each variant.
 
-* `ingestion_file`  The results data file to use when running an Ingestion scan. You should specify the full path to the data file in your workspace, such as `/shared/customer_artifacts/my_scan_results.json`. 
+* `ingestion_file`  The results data file to use when running an Ingestion scan. You should specify the full path to the data file in your workspace, such as `/shared/customer_artifacts/my_scan_results.json`. STO steps can ingest scan data in [SARIF](https://docs.oasis-open.org/sarif/sarif/v2.1.0/sarif-v2.1.0.html) and [Harness Custom JSON](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingesting-issues-from-other-scanners) format. 
 
 The following steps outline the general workflow for ingesting scan data into your pipeline:
 

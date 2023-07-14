@@ -1,7 +1,7 @@
 ---
 title: Supported features and integrations
 description: Self-Managed Enterprise Edition supported features and integrations. 
-# sidebar_position: 10
+sidebar_position: 4
 ---
 
 This topic lists the supported features and integrations you can use to install and update Harness Self-Managed Enterprise Edition. For supported platforms, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies#harness-self-managed-enterprise-edition).

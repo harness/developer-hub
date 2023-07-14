@@ -1,6 +1,6 @@
 ---
 title: GitLab connector settings reference
-description: This topic provides settings and permissions for the GitLab Connector. Limitations. Before Harness syncs with your Git repo, it will confirm that all Harness' settings are in a valid state. If a conn…
+description: Connect to a GitLab account or repository.
 sidebar_position: 40
 helpdocs_topic_id: 5abnoghjgo
 helpdocs_category_id: xyexvcc206
@@ -8,93 +8,173 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This topic provides settings and permissions for the GitLab Connector.
+Add a connector for your GitLab account or repository.
 
-### Limitations
+Before Harness uses this connector to sync with your Git repo, it confirms that the connector settings are valid. If the connection fails, Harness can't sync with your Git repo.
 
-* Before Harness syncs with your Git repo, it will confirm that all Harness' settings are in a valid state. If a connection is not working, Harness will not sync with your Git repo.
+## Overview settings
 
-### Name
+* **Name:** The unique name for this connector. Harness generates an **Id** ([Entity Identifier](../../../20_References/entity-identifier-reference.md)) based on the **Name**. You can edit the **Id** during initial connector creation. Once you save the connector, the **Id** is locked.
+* **Description:** Optional text string.
+* **Tags:** Optional labels you can use for filtering. For details, go to the [Tags reference](../../../20_References/tags-reference.md).
 
-The unique name for this Connector.
+## Details settings
 
-### ID
-
-See [Entity Identifier Reference](../../../20_References/entity-identifier-reference.md).
-
-### Description
-
-Text string.
-
-### Tags
-
-See [Tags Reference](../../../20_References/tags-reference.md).
+The **Details** settings specify which GitLab account or repository you want this connector to connect to, whether to connect over HTTP or SSH, and the URL to use.
 
 ### URL Type
 
-You can select Git Account or Git Repository.
+Select **Account** to connect an entire GitLab account. This option lets you use one connector to connect to all repositories in the specified GitLab account. Make sure you have at least one repo in the account; you need a repo to test the connection and save the connector.
 
-You can add a connection to your entire Git account or just a repo in the account. Selecting a Git account enables you to use one Connector for all of your subordinate repos.
-
-Later when you test this connection, you will use a repo in the account.
-
-In either case, when you use the Connector later in Harness, you will specify which repo to use.
+Select **Repository** to connect to a single, specific repo in a GitLab account.
 
 ### Connection Type
 
-You can select **HTTPS** or **SSH** for the connection.
+Select the protocol, **HTTP** or **SSH**, to use for cloning and authentication. The **Connection Type** determines the URL format required for the **GitLab Account/Repository URL** field. It also determines the **Authentication** method you must use in the [Credentials settings](#credentials-settings).
 
-You will need to provide the protocol-relevant URL in **GitLab Account URL**.
+### GitLab Account/Repository URL
 
-If you use Two-Factor Authentication for your Git repo, you connect over **HTTPS** or **SSH**. HTTPS requires a personal access token.
+Enter the URL for the GitLab account or repository that you want to connect to. The required value is determined by the **URL Type** and **Connection Type**.
 
-For SSH, ensure that the key is not OpenSSH, but rather RSA or another algorithm. To generate an SSHv2 key, use: `ssh-keygen -t rsa -m PEM` The `rsa` and `-m PEM` ensure that the key is RSA. Next, follow the prompts to create the PEM key. For more information, see the [ssh-keygen man page](https://linux.die.net/man/1/ssh-keygen).To sync with GitLab, you will need to generate a SSH key pair and add the SSH key to your GitLab account. For more information, see [Generating a new SSH key pair](https://gitlab.com/help/ssh/README#generating-a-new-ssh-key-pair) from GitLab.
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="account" label="URL Type: Account" default>
+```
 
-### GitLab Account or Repo URL
+In the **GitLab Account URL** field, provide only the account-identifying portion of the GitLab URL, such as `https://gitlab.com/YOUR_ACCOUNT_NAME/`. Do not include a repo name. The URL format depends on the **Connection Type**:
 
-The URL for your Git repo. Ensure that it matches the Connection Type option you selected.
+* **HTTP:** `https://gitlab.com/YOUR_ACCOUNT_NAME/`
+* **SSH:** `git@gitlab.com:YOUR_ACCOUNT_NAME/`
 
-If you selected **Repository** in **Type**, enter the full URL for the repo. For example: `https://gitlab.com/John_User/harness.git`.
+### Test Repository
 
-You can get the URL from the **Clone** button in your repo.
+This field is only required if the **URL Type** is **Account**. Provide the name of a repo in your GitLab account that Harness can use to test the connector. Harness uses this repo to validate the connection only. When you use this connector in a pipeline, you'll specify a true code repo in your pipeline configuration or at runtime.
 
-![](./static/git-lab-connector-settings-reference-03.png)
-If you selected **Account** in **Type**, enter the URL without the repo name. When you use this Connector in a Harness setting you will be prompted to provide a repo name.
+```mdx-code-block
+  </TabItem>
+  <TabItem value="repo" label="URL Type: Repository">
+```
+
+In the **GitLab Repository URL** field, provide the complete URL to the GitLab repository that you want this connector to point to. The URL format depends on the **Connection Type**:
+
+* **HTTP:** `https://gitlab.com/YOUR_ACCOUNT_NAME/YOUR_REPO_NAME`
+* **SSH:** `git@gitlab.com:YOUR_ACCOUNT_NAME/YOUR_REPO_NAME`
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Credentials settings
+
+Provide authentication credentials for the connector.
 
 ### Authentication
 
-You can use a password/token for HTTPS credentials. Typically, a token is used.
+Authentication is required for all accounts and repos, including read-only repos. The **Connection Type** you chose in the [Details settings](#details-settings) determines the available **Authentication** methods:
 
-If you selected **SSH** as the connection protocol, you must add the **SSH Key** for use with the connection. 
+* For **HTTP** connections, you can use **OAuth**, **Username and Password**, or **Username and Token** authentication.
+* For **SSH** connections, you must use **SSH Key** authentication.
 
-### Username
+```mdx-code-block
+<Tabs>
+  <TabItem value="userpass" label="Username and Password">
+```
 
-Enter the username **git**. Do not enter any other value.
+**Username and Password** authentication is not valid for GitLab accounts with two-factor authentication. Instead, use **Username and Token**, **OAuth**, or **SSH Key** authentication.
 
-**git** is the only value you should use in **Username**.
+1. For **Authentication**, select **Username and Password**.
+2. In the **Username** field, enter `git`. Do not enter any other value besides `git`.
+3. In the **Password** field, provide your GitLab account password as a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
 
-### Password/Personal Access Token
+```mdx-code-block
+  </TabItem>
+  <TabItem value="usertoken" label="Username and Token" default>
+```
 
-Enter a [Harness Encrypted Text secret](../../../Secrets/2-add-use-text-secrets.md) for the credentials of your GitLab user account.
+1. For **Authentication**, select **Username and Token**.
+2. In the **Username** field, enter `git`. Do not enter any other value besides `git`.
+3. In the **Personal Access Token** field, provide a GitLab [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) as a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md).
 
-Typically, a Personal Access Token is used. See [Personal Access Tokens](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) from GitLab.
+:::info Personal access token permissions
 
-The Personal Access Token requirements for Harness are: `api`, `read_repository`, `write_repository`.
+Make sure your personal access token has the following permissions: `api`, `read_repository`, and `write_repository`.
 
 ![](./static/git-lab-connector-settings-reference-04.png)
-### SSH Key
 
-If you selected **SSH** as the connection protocol, you must add the **SSH Key** for use with the connection as a [Harness Encrypted Text secret](../../../Secrets/2-add-use-text-secrets.md).
+:::
 
-See [Use SSH keys to communicate with GitLab](https://docs.gitlab.com/ee/user/ssh.html) from GitLab.
+```mdx-code-block
+  </TabItem>
+  <TabItem value="oauth" label="OAuth">
+```
+
+:::note
+
+Currently, OAuth for GitLab connectors is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+1. For **Authentication**, select **OAuth**.
+2. Select **Link to GitLab** to open a new browser tab and authorize access to your GitLab account.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="ssh" label="SSH Key">
+```
+
+SSH connections require an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/Secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
+
+For details on creating SSH keys and adding them to your GitLab account, go to the GitLab documentation about [Using SSH keys to communicate with GitLab](https://docs.gitlab.com/ee/user/ssh.html).
+
+:::tip
+
+If you use the `keygen` command to generate an SSH key, include arguments such as `rsa` and `-m PEM` to ensure your key is properly formatted and uses the RSA algorithm. For example, this command creates an SSHv2 key:
+
+```
+ssh-keygen -t rsa -m PEM
+```
+
+Make sure to follow the prompts to finish creating the key. For more information, go to the Linux [ssh-keygen man page](https://linux.die.net/man/1/ssh-keygen).
+
+To sync with GitLab, you must generate an SSH key pair and add the SSH key to your GitLab account. For more information, go to the GitLab documentation on [Generating a new SSH key pair](https://gitlab.com/help/ssh/README#generating-a-new-ssh-key-pair).
+
+:::
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ### Enable API access
 
-This option is required for using Git-based triggers, Git Sync, and updating Git statuses. 
+This setting is only available for connection types and authentication methods where it is not enabled by default.
 
-You'll need this setting if you use [Harness Git Experience](https://harness.helpdocs.io/article/grfeel98am).
+You must enable API access to use Git-based triggers, Git Sync, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required. API access requires personal access token authentication.
 
-Simply use the same Personal Access Token you created earlier.
+In the **Personal Access Token** field, provide a GitLab [personal access token](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html) as a [Harness encrypted text secret](../../../Secrets/2-add-use-text-secrets.md). If you selected **Username and Token** authentication, use the same personal access token secret for both **Personal Access Token** fields.
+
+:::info Personal access token permissions
+
+Make sure your personal access token has the following permissions: `api`, `read_repository`, and `write_repository`.
+
+![](./static/git-lab-connector-settings-reference-04.png)
+
+:::
+
+## Connectivity Mode settings
+
+Select whether you want Harness to connect directly to your GitLab account or repo, or if you want Harness to communicate with your GitLab account or repo through a delegate.
+
+### Delegates Setup
+
+If you select **Connect through a Harness Delegate**, you can select **Use any available Delegate** or **Only use Delegates with all of the following tags**.
+
+If you want to use specific delegates, you must identify those delegates. For more information, go to [Select Delegates with Tags](../../../2_Delegates/manage-delegates/select-delegates-with-selectors.md).
 
 ### Kubernetes delegate with self-signed certificates
 

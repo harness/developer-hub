@@ -65,6 +65,7 @@ If you cannot find a resolution, please contact [Harness Support](mailto:suppor
 - [Terraform](#terraform)
   - [Provisioned resources already exist (Terraform state file locked)](#provisioned-resources-already-exist-terraform-state-file-locked)
   - [TerraformValidation - Terraform validation result: false](#terraformvalidation---terraform-validation-result-false)
+- [AWS ECS](#aws-ecs)
 - [Harness secret managers](#harness-secret-managers)
 - [SAML SSO](#saml-sso)
   - [Signed in user is not assigned to a role for the project (Harness)](#signed-in-user-is-not-assigned-to-a-role-for-the-project-harness)
@@ -438,7 +439,7 @@ If Harness does not show standard error, then many errors will not be captured, 
 
 ### Continuous integration
 
-For troubleshooting advice specific to Continuous Integration, go to [Troubleshoot Continuous Integration](/docs/continuous-integration/troubleshooting-ci.md).
+For troubleshooting advice specific to Continuous Integration, go to [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md).
 
 ### Helm
 
@@ -474,7 +475,7 @@ The release name you enter in the infrastructure definition **Release name** is 
 
 **Do not create a ConfigMap that uses the same name as the release name.** Your ConfigMap will override the Harness internal ConfigMap and cause a NullPointerException.
 
-See [Define your kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+See [Define your kubernetes target infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md).
 
 #### The server doesn't have a resource type "deployments"
 
@@ -597,6 +598,12 @@ If the Harness delegate does not have Terraform installed, you will see a log en
 The message `Terraform validation result: false` means Terraform is not installed on the delegate.
 
 Install Terraform on the delegate to fix this.
+
+### AWS ECS
+
+In some Harness CloudFormation and ECS deployments you might get failures with `ThrottlingException` or `Rate exceeded` errors for CloudFormation and ECS API calls.
+
+For more information, go to [AWS backoff strategy](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference#aws-backoff-strategy).
 
 ### Harness secret managers
 

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md).The following troubleshooting information should help you diagnose common problems:
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md).The following troubleshooting information should help you diagnose common problems:
 
 * [Failed to Find the Previous Helm Release Version](5-helm-troubleshooting.md#failed-to-find-the-previous-helm-release-version)
 * [Helm Install/Upgrade Failed](5-helm-troubleshooting.md#helm-install-upgrade-failed)

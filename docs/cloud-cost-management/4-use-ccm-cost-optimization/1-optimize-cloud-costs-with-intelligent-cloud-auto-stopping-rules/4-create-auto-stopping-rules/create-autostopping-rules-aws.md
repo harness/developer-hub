@@ -266,7 +266,7 @@ If you need to access the resources managed by this AutoStopping rule using TCP 
 
 1. Choose an AutoStopping Proxy load balancer from the **Specify AutoStopping Proxy** dropdown list to set up access.
 2. Toggle SSH or RDP to specify the listening ports. The port number is autopopulated based on the security group.
-3. Specify all the TCP ports your application is listening. Ensure that these ports are open.
+3. Specify the source port numbers and the target TCP ports your application is listening to. If the source port is not specified, a random port will be generated at the backend. This auto-generated port will continue to be used as long as the target port remains unchanged or unless the user explicitly modifies the source port.
 4. Click **Next**.
 
 

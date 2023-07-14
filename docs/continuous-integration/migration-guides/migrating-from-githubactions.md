@@ -97,7 +97,7 @@ jobs:
 </Tabs>
 ```
 
-For more information about Harness terminology, features, and pipeline components, go to [Harness CI concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts) and [CI pipeline concepts](../ci-quickstarts/ci-pipeline-basics.md).
+For more information about Harness terminology, features, and pipeline components, go to [CI concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts) and [CI pipeline basics](../ci-quickstarts/ci-pipeline-basics.md).
 
 Both Harness CI and GitHub Actions workflows are written in YAML. Whereas GitHub Actions workflow configurations are always stored in the `.github/workflows` directory in your code repo, Harness provides you a choice of inline pipeline storage or [importing pipelines from Git](/docs/platform/git-experience/import-a-pipeline/). Harness also provides both visual and code-based pipeline editors.
 
@@ -326,7 +326,7 @@ jobs:
 
 In Harness CI, each pipeline has a codebase specification that identifies the code repo (input) that the pipeline uses to build an artifact (output). [Codebase configuration](../use-ci/codebase-configuration/create-and-configure-a-codebase.md) has two components:
 
-* The codebase _connector_, such as a [GitHub connector](/docs/platform/connectors/code-repositories/add-a-git-hub-connector/), that specifies the codebase URL and required credentials to access your code repos.
+* The codebase _connector_, such as a [GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference), that specifies the codebase URL and required credentials to access your code repos.
 * A series of settings describing how you want the pipeline to clone and build the repo.
 
 When you create a Harness CI pipeline, you specify a default codebase to use for all stages in the pipeline. By default, each stage automatically clones the designated code repo from your Git provider into the stage's build infrastructure when the pipeline runs.
@@ -637,7 +637,7 @@ trigger:
 
 Review the following information before proceeding with migration:
 
-* [Harness CI Concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts)
+* [CI Concepts](/docs/continuous-integration/ci-quickstarts/ci-concepts)
 * [Harness CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components.md)
 * [Caching in Harness CI](/docs/category/share-and-cache-ci-data)
 * [Speed up Harness CI pipelines using parallelism](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism)

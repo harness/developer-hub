@@ -28,7 +28,7 @@ The live state can be any microservice or application and its Kubernetes environ
 
 Here's a very simple diagram of the GitOps architecture:
 
-![](./static/harness-git-ops-basics-26.png)
+![Harness GitOps architecture](static/572d35be32e656cea58795c7aefde6d91f50270201ac7f1906d8875ef3c1408a.png)  
 
 The Harness GitOps Agent is a worker process installed in a Kubernetes cluster. The Agent can be installed in your target cluster or any cluster with connectivity to the target cluster.
 
@@ -64,21 +64,33 @@ Harness has multiple Git-based features and it's important to understand the dif
 
 ## Service
 
-A Harness GitOps Service is the same as any other Harness Service.
+A Harness GitOps service is the same as any other Harness service.
 
-A Service represents your microservices and other workloads logically. A Service is a logical entity to be deployed, monitored, or changed independently.
+A service represents your microservices and other workloads logically. A Service is a logical entity to be deployed, monitored, or changed independently.
 
-## Service Instance
+You can create or select services from an account, organization, or project level. 
 
-Service Instances represent the dynamic instantiation of a Service you sync via Harness GitOps.
+An account level service can only reference connectors for the manifests and artifacts within the account. These services are global and cannot have dependencies at a lower hierarchy level.
 
-For example, for a service representing a Docker image, Service Instances are the number of pods running with the Docker image.
+For more information, go to [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
-A single Service can have multiple Service Instances. For example, one for Dev, one for QA, and one for Prod.
+## Service instance
+
+Service instances represent the dynamic instantiation of a service you sync via Harness GitOps.
+
+For example, for a service representing a Docker image, service instances are the number of pods running with the Docker image.
+
+A single service can have multiple service instances. For example, one for Dev, one for QA, and one for Prod.
 
 ## Environments
 
-Harness Environments represent your live environment logically (QA, Prod, etc). In Harness GitOps, an Environment is the live state of the infrastructure.
+Harness environments represent your live environment logically (QA, Prod, etc). In Harness GitOps, an environment is the live state of the infrastructure.
+
+You can create or select environments from an account, organization, or project level. 
+
+An account level environment can only reference connectors within the account, and cannot have dependencies at a lower hierarchy level.
+
+For more information, go to [Services and environments overview](/docs/continuous-delivery/get-started/services-and-environments-overview).
 
 ## Application
 
@@ -97,13 +109,23 @@ You will also select:
 
 A Harness GitOps Agent is a worker process that runs in your environment, makes secure, outbound connections to Harness SaaS, and performs all the GitOps tasks you request in Harness.
 
+Here's an image that illustrates how the Agent interacts with Harness:
+
+![Agent and Harness interaction](static/agent.png)
+
 The Agent uses the Repository and Cluster to connect to source repos and target environments. When you create a Harness GitOps Application, you select the Agent you want to use for these connections and GitOps operations.
 
 You can run an Agent in your target cluster or in any cluster that has access to your target clusters.
 
 Agents can deploy to all clusters or you can isolate an Agent in a single cluster. For example, you might have one Agent deploy to Dev and QA environments and another Agent deploy to the production environment.
 
+Here's an image that illustrates a Kubernetes deployment on the same cluster as the Agent, a deployment on different clusters, and deployments on two different clusters using one Agent: 
+
+![deployment on clusters](static/deploy-cluster.png)
+
 Installing an Agent involves setting up an Agent in Harness, downloading its YAML file, and applying the YAML file in a Kubernetes cluster (`kubectl apply`). Kubernetes then pulls the Harness and ArgoCD images from their respective public repositories.
+
+![fetch manifests from repo](static/gitops-archcitecture.png)
 
 ### Can I use Harness GitOps images from a local registry?
 
@@ -122,6 +144,12 @@ Harness SaaS is used to store the state cache only.
 A cluster is the target deployment cluster that is compared to the desire state.
 
 Clusters are synced with the source manifests you add as GitOps Repositories.
+
+You can run an Agent in your target cluster or in any cluster that has access to your target clusters.
+
+Only the Agent is needed for GitOps, but the Harness Delegate is needed for other Harness operations (RBAC, etc.). You can use the Agent cluster for both the Harness Delegate and the Agent, or just the Agent: 
+
+![cluster with agent and delegate](static/cluster-agent-delegate.png)
 
 ## Repository
 

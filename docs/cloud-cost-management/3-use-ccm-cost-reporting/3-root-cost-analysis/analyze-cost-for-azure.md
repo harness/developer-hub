@@ -28,7 +28,7 @@ Harness Cloud Cost Management (CCM) allows you to view your Azure costs at a gla
 
 The Perspectives provides deep insights into your Azure costs. The cost includes all the applicable credits and discounts.
 
-1. In **Cloud Costs**, click **Perspectives**,and then click **Azure**. The Azure services are displayed.
+1. In **Cloud Costs**, select **Perspectives**,and then select **Azure**. The Azure services are displayed.
    
      ![](./static/analyze-cost-for-azure-18.png)
 2. Select the **date range** for the costs you want to analyze.
@@ -59,8 +59,8 @@ The Perspectives provides deep insights into your Azure costs. The cost includes
 
 Perform the following steps to add filters.
 
-1. In **Cloud Costs**, click **Perspectives**,and then click **Azure**.
-2. Click **add filter**.
+1. In **Cloud Costs**, select **Perspectives**, and then select **Azure**.
+2. Select **add filter**.
    
      ![](./static/analyze-cost-for-azure-20.png)
 3. Select Azure, Region, Product, or Label.

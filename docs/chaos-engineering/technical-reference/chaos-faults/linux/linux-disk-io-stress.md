@@ -4,6 +4,7 @@ title: Linux disk IO stress
 ---
 
 import Ossupport from './shared/note-supported-os.md'
+import FaultPermissions from './shared/fault-permissions.md'
 
 
 Linux disk IO stress applies stress on the disk of the target Linux machines over I/O operations for a specific duration.
@@ -17,6 +18,11 @@ Linux disk IO stress applies stress on the disk of the target Linux machines ove
 - Checks how the application functions under high disk latency conditions, when I/O traffic is high and includes large I/O blocks, and when other services monopolize the I/O disks.
 
 <Ossupport />
+
+<FaultPermissions />
+
+## External packages
+This fault uses [`stress-ng`](https://github.com/ColinIanKing/stress-ng), which is installed as part of the infrastructure installation.
 
 ## Fault tunables
 <h3>Optional tunables</h3>

@@ -11,25 +11,21 @@ helpdocs_is_published: true
 
 CI pipelines build and test code that is pulled from a Git code repository. When you add a **Build** stage to a CI pipeline, you select a [code repo connector](#code-repo-connectors) that connects to the Git account or repository where your code is stored. This topic explains how to configure codebase settings for CI pipelines.
 
-This topic assumes you have an understanding of [Harness CI concepts](../../ci-quickstarts/ci-concepts.md) and the general [pipeline creation process](../prep-ci-pipeline-components.md).
+This topic assumes you have an understanding of [CI concepts](../../ci-quickstarts/ci-concepts.md) and the general [pipeline creation process](../prep-ci-pipeline-components.md).
 
 ## Code repo connectors
 
 Harness uses code repo connectors to connect to Git providers, such as Bitbucket, GitHub, GitLab, and others. You can create code repo connectors for entire accounts or specific repositories. You can view a list of your saved connectors in **Connectors** under **Project Setup**. The following topics provide more information about creating code repo connectors:
 
-* AWS CodeCommit: [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo#add-aws-codecommit-repo)
 * Azure Repos: [Connect to Azure Repos](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo)
 * Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-* GitHub:
-  * [Add a GitHub connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector)
-  * [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-  * [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support)
+* GitHub: [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
 * GitLab: [GitLab Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 * Other Git providers:
-  * [Connect to a Git repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo)
   * [Git connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
+  * [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo)
 
-The CodeCommit, Bitbucket, GitHub, and GitLab Connectors have authorization settings as required by their respective providers. The Git connector can connect with any provider using basic authentication over HTTPS.
+The CodeCommit, Azure, Bitbucket, GitHub, and GitLab connectors have authorization settings as required by their respective providers. The Git connector can connect with any provider using basic authentication over HTTPS.
 
 ## Configure a pipeline's default codebase
 
