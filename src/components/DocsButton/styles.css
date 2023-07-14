@@ -11,14 +11,21 @@
   border-radius: 8px;
   border: 1px solid var(--gray-400);
   margin-bottom: 20px;
+  text-decoration: none;
 }
 .rs-button:hover {
-  background-color: var( --gray-100);
+  background-color: var(--gray-100);
 }
-i {
+.custom-icon {
   color: var(--orange-600);
   scale: 1.5;
   margin-left: 10px;
   margin-right: 3px;
- 
+}
+
+.link {
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: none;
 }
