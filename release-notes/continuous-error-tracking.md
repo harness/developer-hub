@@ -18,7 +18,7 @@ Review the notes below for details about recent changes to Continuous Error Trac
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 27, 2023, version ET-Agent 5.5.0
+## Latest - July 14, 2023, version ET-Agent 5.5.0
 
 ```mdx-code-block
 <Tabs>
