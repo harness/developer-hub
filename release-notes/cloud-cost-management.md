@@ -19,13 +19,66 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - July 07, 2023, version 80002
+## Latest - July 13, 2023, version 80102
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-### What's new
+* Recommendations page UI enhancement (CCM-12693)
+
+ The **Include** dropdown on the **Recommendations** page has been removed. Instead, the following toggle options have been added in the Filter panel as shown in the screenshots below: 
+
+  - Show Recommendations on Parent resource
+  - Show Recommendations on Child resource
+  - Show Recommendations on resources added to the IgnoreList
+
+By default, the first two options are enabled, and you can modify the toggles to customize the list filtering.
+
+&nbsp <docimage path={require('./static/ccm-toggle-options-recommendations-filter.png')} width="40%" height="40%" title="Click to view full size image" />
+   
+  <docimage path={require('./static/ccm-tooltip-recommendations.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not include any early access features.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+* The message displayed on the UI was incorrect when there were no recommendations for the account. (CCM-13250)
+
+  This issue is fixed now.
+
+    <docimage path={require('./static/ccm-incorrect-recommendations-msg-ui.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+* Adding an invalid cost category in a perspective rule caused the Anomalies feature to not function as expected. (CCM-13218)
+
+  Now, the cost category IDs are validated when added in the perspective rule.
+
+
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### July 07, 2023, version 80002
+
+##### What's new
 
 * Azure VM recommendations (CCM-13142)
 
@@ -39,37 +92,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   You can now easily move recommendations from the **Applied** state back to the **Open** state. This enhancement allows you to easily rectify accidental closure of recommendations or marking Jira tickets as done by returning them to an actionable state.
 
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
-### Early access
+##### Early access
 
 This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
-### Fixed issues
-
+##### Fixed issues
 
 * Nodepool recommendations displayed incorrect savings data. (CCM-12816)
 
  Implemented a check to exclude nodepools that have more than one instance family from generating recommendations. This is necessary as the current calculations for such nodepools result in incorrect recommendations. 
-
-  
-  
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### June 30, 2023, version 79906
 
