@@ -143,12 +143,12 @@ export default function CertificationsCI() {
                         Register for Exam
                       </button>
                     </Link>
-                    <Link href="/tutorials/ci-pipelines">
+                    {/*<Link href="/tutorials/ci-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
-                    </Link>
+                    </Link>*/}
                   </div>
                 </div>
               </div>
@@ -167,12 +167,12 @@ export default function CertificationsCI() {
                     Register for Exam
                   </button>
                 </Link>
-                <Link href="/tutorials/ci-pipelines">
-                  <button className={styles.startLearning}>
-                    <span>Start Learning</span>
-                    <i className="fa-solid fa-arrow-right"></i>
-                  </button>
-                </Link>
+                   {/*<Link href="/tutorials/ci-pipelines">
+                      <button className={styles.startLearning}>
+                        <span>Start learning</span>
+                        <i className="fa-solid fa-arrow-right"></i>
+                      </button>
+                    </Link>*/}
               </div>
             </div>
           </div>
@@ -226,12 +226,12 @@ export default function CertificationsCI() {
                         Register for Exam
                       </button>
                     </Link>
-                    <Link href="/tutorials/ci-pipelines">
+                       {/*<Link href="/tutorials/ci-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
-                    </Link>
+                    </Link>*/}
                   </div>
                 </div>
               </div>
@@ -249,12 +249,12 @@ export default function CertificationsCI() {
                     Register for Exam
                   </button>
                 </Link>
-                <Link href="/tutorials/ci-pipelines">
-                  <button className={styles.startLearning}>
-                    <span>Start Learning</span>
-                    <i className="fa-solid fa-arrow-right"></i>
-                  </button>
-                </Link>
+                   {/*<Link href="/tutorials/ci-pipelines">
+                      <button className={styles.startLearning}>
+                        <span>Start learning</span>
+                        <i className="fa-solid fa-arrow-right"></i>
+                      </button>
+                    </Link>*/}
               </div>
             </div>
           </div>
