@@ -20,7 +20,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - July 13
+## Latest - July 13, 2023
 
 ### Cloud Cost Management, version 80102
 
