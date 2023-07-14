@@ -12,6 +12,8 @@ import TabItem from '@theme/TabItem';
 ```mdx-code-block
 import delete_project from './static/delete-project.png'
 ```
+
+<rnbutton text="Subscribe for Continuous Error Tracking release notes" link="/release-notes/continuous-error-tracking/rss.xml" />
 Review the notes below for details about recent changes to Continuous Error Tracking.
 
 :::info note
