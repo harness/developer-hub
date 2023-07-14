@@ -28,7 +28,7 @@ Harness CV supports the following APM tools:
 - Splunk Observability
 - Sumologic
 
-Harness supports most of the popular APM tools, but there may be an instance where Harness does not have a native connector. Using the **Harness Custom Health Source** feature, you can integrate such APM tools with Harness.
+Harness supports most of the popular APM tools, but there may be instances where Harness don't have a native connector. Using the **Harness Custom Health Source** feature, you can integrate such APM tools with Harness.
 
 
 ### Log management
