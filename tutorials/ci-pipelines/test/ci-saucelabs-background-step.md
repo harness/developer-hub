@@ -1,12 +1,21 @@
 ---
 title: Run Sauce Connect Proxy
-sidebar_position: 4
+sidebar_position: 3
 description: This build automation guide walks you through running Sauce Connect Proxy as a Background step in a CI Pipeline
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/test/saucelabs-proxy
 ---
 
 # Run Sauce Connect Proxy as a Background Step
+
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
 
 [Background steps](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings) are useful for running services that need to run for the entire lifetime of a Build stage. This tutorial shows how to run [Sauce Connect Proxy](https://docs.saucelabs.com/secure-connections/sauce-connect/) as a Background step in a Harness CI pipeline.
 

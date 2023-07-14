@@ -78,7 +78,7 @@ import TabItem from '@theme/TabItem';
 ```
 ```mdx-code-block
 <Tabs>
-  <TabItem value="cloud" label="Cloud" default>
+  <TabItem value="cloud" label="Cloud">
 ```
 
 Use the **Cloud** infrastructure option for [Harness Cloud build infrastructure](./use-harness-cloud-build-infrastructure.md).
@@ -90,7 +90,7 @@ The following **Platform** settings are available:
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="kubernetes" label="Kubernetes">
+  <TabItem value="kubernetes" label="Kubernetes" default>
 ```
 
 Use the **Kubernetes** infrastructure option to [set up a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
@@ -186,7 +186,7 @@ A list of [HostAliases](https://kubernetes.io/docs/tasks/network/customize-hosts
 
 Set the timeout for the initialization phase. During this phase, Harness downloads the build step images and spins up the containers to execute the build steps.
 
-If you use large images in your Build stage's steps, you might find that the initialization step times out and the build fails when the pipeline runs. In this case, you can increase the init timeout window from the default of 10 minutes.
+If you use large images in your Build stage's steps, you might find that the initialization step times out and the build fails when the pipeline runs. In this case, you can increase the init timeout window from the default of 8 minutes.
 
 ### Override Image Connector
 

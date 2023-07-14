@@ -1,6 +1,6 @@
 ---
 title: Build a Feature Flag pipeline
-description: This topic explains how to build a Feature Flag Pipeline.
+description: This topic explains how to build a Feature Flag pipeline.
 tags: 
    - helpDocs
    - Pipelines
@@ -15,13 +15,13 @@ helpdocs_is_published: true
 import ff_pipeline from './static/1-build-feature-flag-pipeline-07.png'
 ```
 
-A Feature Flag Pipeline enables you to combine a Feature Flag with other actions such as adding Jira issues, creating notifications, adding approvals, etc. You can:
+A Feature Flag (FF) pipeline enables you to combine a flag with other actions such as adding Jira issues, creating notifications, adding approvals, etc. You can:
 
-* Use Jira issues to approve or reject a Pipeline or stage at any point in its execution
-* Create notification rules to send notifications about the events on your Feature Flag Pipeline
-* Schedule Pipeline executions using Cron-based Triggers, etc.
+* Use Jira issues to approve or reject a pipeline or stage at any point in its execution
+* Create notification rules to send notifications about the events on your FF pipeline
+* Schedule pipeline executions using Cron-based Triggers, etc.
 
-This topic explains how to build a Feature Flag Pipeline. Watch this video for an introduction:
+This topic explains how to build an FF pipeline. Watch this video for an introduction:
 
 <!-- Video:
 https://www.loom.com/share/f9bfceb163454af89c7baf50c66ae916-->
@@ -31,81 +31,98 @@ https://www.loom.com/share/f9bfceb163454af89c7baf50c66ae916-->
 
 You should be familiar with the [Harness' Key Concepts](/docs/getting-started/learn-harness-key-concepts.md) and how to [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization).
 
-## Create a Pipeline
+## Create a pipeline
 
-This topic assumes you have a Harness Project set up. If not, go to [Create Organizations and Projects](/docs/platform/organizations-and-projects/create-an-organization) to create one.
+This topic assumes you have already set up a [project](/docs/feature-flags/ff-creating-flag/create-a-project#create-a-project).
 
-This topic shows you how to create a Pipeline from the Feature Flags module.
+To create an FF pipeline:
 
-To do this, perform the following steps:
+1. In Harness, select **Feature Flags**, and then select an existing project or [create a new one](/docs/feature-flags/ff-creating-flag/create-a-project#create-a-project).
+2. Navigate to **Pipelines > Create a Pipeline**.
+3. In **Name**, enter a name for your pipeline. An ID is generated automatically.
+4. Enter **Description** and **Tags** for your pipeline.
+5. Click **Start**. 
 
-1. Under **Feature Flags,** select an existing project or [Create a new project](/docs/feature-flags/ff-creating-flag/create-a-project#create-a-project).
-2. Once the project is selected or created, navigate to **Pipelines** and **Create a Pipeline**.
-3. In **Name**, enter a name for your Pipeline. An ID will be generated automatically.
-4. Enter **Description** and **Tags** for your Pipeline.
-5. Click **Start**. Now you're ready to add a Stage.
+Now you're ready to add a stage.
 
-## Add a Stage
+## Add a stage
 
-A Stage is a subset of a pipeline that contains the logic to perform one major segment of the pipeline process.
+An FF pipeline is organized into stages. Each stage contains the logic to perform one major segment of the pipeline process. You must have a minimum of one stage to run the pipeline.
 
-Feature Flag pipeline is organized into stages. There has to be a minimum of one stage to run the Pipeline.
+1. Click **Add Stage**, and then select one of the available stage types. 
 
-1. Click **Add Stage**. This gives you two options to select stage types: **Feature Flags** and **Approval**.
-2. **Approval Stage** type approves or rejects a Pipeline at any point in its execution. Approvals are added in between stages to prevent pipeline execution from proceeding without an approval. You can use Harness UI, Jira, Custom Shell Script, or ServiceNow Approval mechanisms.
-3. To add Approval Stage, go to [Manual Harness Approval Stages](/docs/platform/approvals/adding-harness-approval-stages/).
-4. To add a **Feature Flag** stage, select **Feature Flags.**
-5. In **About your Stage**, in **Name**, enter a name for your stage. Click **Set up Stage**.
+	Two common options are: **Feature Flags** and **Approval**.
 
-You can add a name when you create the stage, but you can edit the name in the **Overview** section of the stage anytime.
+	An approval stage approves or rejects a pipeline at any point in its execution. Approvals are added between stages to prevent pipeline execution from proceeding without an approval. You can use Harness UI, Jira, Custom Shell Script, or ServiceNow Approval mechanisms. For more information, go to [Using manual approval stages](/docs/platform/approvals/adding-harness-approval-stages/).
 
-Changing the stage name doesn't change the stage identifier (ID). The stage identifier is created when you first name the stage and it cannot be changed. For more information, go to [Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md).
+1. In **About your Stage**, in **Name**, enter a name for your stage. Click **Set up Stage**.
 
-You can add multiple Stages, and insert new Stages between the existing Stages. To add another stage to the Pipeline, in **Pipeline Stages**, click **+** and then follow the same steps.
+	You can edit the name in the **Overview** tab of the stage anytime.
 
-## Add a step
-
-A step is a single task. Fundamentally, a step tells what to do at a particular point in time (or "step" in the process).
-
-A Feature Flag pipeline involves a series of steps defined within a stage block. A stage can have one or many steps.
-
-### Overview
+	Changing the stage name doesn't change the stage identifier (ID). The stage identifier is created when you first name the stage and it cannot be changed. For more information, go to [Entity Identifier Reference](/docs/platform/20_References/entity-identifier-reference.md).
 
 Once you've created a stage, you can see the name and ID in the **Overview** tab.
 
-### Apply a Rollout Strategy
+You can add multiple stages, and insert new stages between the existing stages. To add another stage to the pipeline, in **Pipeline Stages**, click **+** and then follow the same steps.
 
-With the Rollout Strategy, you can deploy multiple managed workloads. When a Rollout Strategy is applied, it is possible to make changes to only a limited user group as a risk mitigation strategy. By releasing production changes gradually, error rates or performance degradation can be tracked.
+## Add a step
 
-1. In the Rollout Strategy view, click **Add Step**.
-2. **Step Library** Panel appears.
+Each stage has a rollout strategy that consists of a series of steps, or tasks, to be carried out in sequence. A stage can have one or many steps. With your rollout strategy, you can deploy multiple managed workloads. When a rollout strategy is applied, it's possible to make changes to only a limited set of users as a risk mitigation strategy. By releasing production changes gradually, error rates or performance degradation can be tracked.
+
+To add a step:
+
+1. In Harness, select **Feature Flags > Pipelines**, and then select a pipeline, or create a new one.
+1. Go to your pipeline, select the stage you want to add a step to.
+
+	The Rollout Strategy view for this stage appears below the stages. 
+
+1. Select **Add Step**.
+
+	![Pipeline visual configuration, with Add Step circled](./static/pipeline-add-step.png)
+
+	The **Step Library** panel appears, where you can choose what type of step to add.
 
 	![A screenshot of the Step library](./static/1-build-feature-flag-pipeline-05.png)
 
-## Add Feature Flag Configurations
 
-Under **Feature Flag Configuration**, add **Step Parameters:**
+## Add flag configurations
 
-1. In **Step Name**, add a name for your step.
-2. In **Environment**, select the environment type from the dropdown menu.
-3. In **Select Flag**, there are two options- either you select a flag from the **Fixed value** or **Select Runtime Inputs**.
-	1. **Fixed values**- Fixed Values are simply values that you enter manually when you configure a setting and do not change at runtime. These are settings you don't need to change based on some other step or runtime operation.
-	2. **Runtime Input**- In the case of Runtime Inputs, you can set placeholders for values that will be provided when you start a pipeline execution.
+To add details to a Flag Configuration step:
 
-When you run the Pipeline, give the inputs for flag type.
+1. In your pipeline, select a stage, and then select a Flag Configuration step.
 
-1. In **Flag Changes**, there are various options available for configurations. You can set configurations and even delete them. The Configuration options available are- **Set Flag Switch, Default Rules, Serve Variation to Individual Target**.
-	1. In **Set Flag Switch**, Select ON and OFF for the Flag switch.
-	2. **Define rules for the flag,** Define the variation you want to see by default when the Flag is ON or OFF. Once you save the variations, a Flag is created for the Environment with these variations set as ON and OFF.  
-	For example, if the flag is `ON`, serve the variation `True`. If the flag is `OFF`, serve the variation `False`.  
-	For more information, go to [**Manage Variations for Feature Flags.**](/docs/feature-flags/ff-creating-flag/manage-variations)
-	3. **Serve Variations to Target Group**, Using default rules, you can specify to serve a specific variation, or apply a percentage rollout of a variation. For more information, go to [Targeting Users with Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
-	4. **Serve Percentage Rollout**, use **Percentage Rollout** to distribute users dynamically between variations. For more information, go to [Percentage Rollout](/docs/feature-flags/ff-target-management/targeting-users-with-flags).
-2. Click **Apply Changes**.
-3. With this you finish making configuration changes in your flag. Now your pipeline is ready to be saved and run.
-4. Click **Save**.
+	The Step Parameters form appears
 
-## Run the Pipeline
+	![Flag Configuration > Step Parameters screen](./static/pipeline-flag-config.png)
+
+1. Add a **Step Name**.
+1. In **Select Environment** and **Select Flag**, select an environment and a flag.
+
+	Choose one of these options:
+
+	* **Fixed value** - A value you enter manually and do not change at runtime.
+	* **Runtime Input** - This is a placeholder for values that will be provided when you start a pipeline execution.
+
+1. In **Flag Changes**, select an action to take when this flag changes, and then configure the variation to serve based on that action.
+
+	![Flag change actions dropdown circled](./static/pipeline-flagchange-actions.png) 
+
+	Here are the available options:
+
+	| Flag change actions | Configuration |
+	|---------------------|---------------|
+	| **Set Flag Switch** | Select ON and OFF. |
+	| **Default Rules**   | Select the default rule for when the flag is ON and OFF. For example, if the flag is ON, serve the variation `True`. |
+	| **Serve Variation to Individual Target** | Select the target and the flag variation to serve to that target. |
+	| **Serve Variation to Target Group** | Select the target group and the flag variation to serve to that group. |
+	| **Serve Percentage Rollout** | Select a target group, and then select a percentage of users in that group to serve a selected variation, and a percentage to serve another variation. For more information, go to [Target users with flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags#target-specific-users-or-target-groups-when-a-flag-is-enabled). |
+
+  
+	For information on managing variations, go to [**Change the variations of your flags**](/docs/feature-flags/ff-creating-flag/manage-variations).
+
+1. Select **Apply Changes**, and then select **Save**.
+
+## Run the pipeline
 
 1. In the pipeline view, click **Run**.
 2. The pipeline runs and a success message is generated.
@@ -122,7 +139,7 @@ Click each stage's steps to see the logs in real-time. Click **Console View** 
 
 ## Pipeline notification strategy
 
-You can create notification rules to send notifications about the events on your Feature Flag Pipeline that are important to you. You can notify your User Group members using Slack, Microsoft Teams, Email, or PagerDuty as one of the notification channels. Event notifications are set up using **Notification Rules.**
+You can create notification rules to send notifications about the events on your FF pipeline that are important to you. You can notify your User Group members using Slack, Microsoft Teams, Email, or PagerDuty as one of the notification channels. Event notifications are set up using **Notification Rules.**
 
 ### Slack notification
 
@@ -134,13 +151,13 @@ For more information, go to [Send Notifications using Slack](/docs/platform/Noti
 
 For email notifications, simply type in the email addresses that you want to notify.
 
-For more information, go to [Email notifications](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events#email-notifications).
+For more information, go to [Email notifications](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events#email-notifications).
 
 ### PagerDuty notification
 
 For PagerDuty notifications, enter the key for a PagerDuty Account/Service to which Harness can send notifications.
 
-For more information, go to [Send Notifications using PagerDuty](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events#pagerduty-notifications).
+For more information, go to [Send Notifications using PagerDuty](/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events#pagerduty-notifications).
 
 ### Microsoft Teams notification
 
@@ -150,20 +167,31 @@ You can integrate your Harness User Group with Microsoft Teams and receive notif
 
 For more information, go to [Send Notifications using Microsoft Teams](/docs/platform/Notifications/send-notifications-to-microsoft-teams).
 
-## View a Pipeline using YAML
+## View a pipeline using YAML
 
-The entire Pipeline is available as YAML, also.
+The entire pipeline is available as YAML, also.
 
 1. In **Feature Flag**, in **Pipelines**, click **YAML**.
-2. You can see the entire Pipeline as YAML. You can edit anything in the Pipeline and run it again.
+2. You can see the entire pipeline as YAML. You can edit anything in the pipeline and run it again.
 
 ![A screenshot of a pipleline YAML file.](./static/1-build-feature-flag-pipeline-08.png)
 
-## Schedule Pipelines using triggers
+## Schedule pipelines using triggers
 
-You can trigger Feature Flag Pipeline on a time schedule. You can select how often to execute the trigger by minute, hour, days, etc.
+You can trigger an FF pipeline on a time schedule. You can select how often to execute the trigger by minute, hour, days, etc.
 
-All the cron jobs are executed in Universal Time Coordinated (UTC). Cron triggers allow you to create Pipelines that start on a specific time schedule.
+All the cron jobs are executed in Universal Time Coordinated (UTC). Cron triggers allow you to create pipelines that start on a specific time schedule.
 
-For more information, go to [Schedule Pipeline using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers).
+For more information, go to [Schedule pipeline using triggers](/docs/platform/triggers/schedule-pipelines-using-cron-triggers).
+
+
+## Add chaos experiments to your FF pipeline
+
+You can use Harness Chaos Engineering (CE) to run chaos experiments, which are intentionally designed to disrupt systems to test their resilience and vulnerability to faults. Adding chaos steps that run CE experiments as part of your FF pipeline is a useful way to test the resilience of new software behind a feature flag before releasing that software to users.
+
+For more information, go to [Use CE with Feature Flags](/docs/chaos-engineering/integrations/chaos-ff).
+
+## More information
+
+For more information on Harness pipelines, go to [Pipelines](/docs/category/pipelines).
 

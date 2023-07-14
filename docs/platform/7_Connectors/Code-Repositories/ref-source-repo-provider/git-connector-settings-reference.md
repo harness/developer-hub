@@ -22,7 +22,7 @@ The **Details** settings specify which Git account or repository you want this c
 
 ### URL Type
 
-Select **Account** to connect an entire Git account. This option lets you use one connector to connect to all repositories in the specified account. Make sure you have at least one repo in the account; you need a repo to test the connection and save the connector.
+Select **Account** to connect an entire Git account or organization. This option lets you use one connector to connect to all repositories in the specified account. Make sure you have at least one repo in the account; you need a repo to test the connection and save the connector.
 
 Select **Repository** to connect to a single, specific repo in a Git account.
 
@@ -106,7 +106,7 @@ If your Git account uses two-factor authentication, you must provide a personal 
   <TabItem value="ssh" label="SSH Key">
 ```
 
-The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH keys are stored as [Harness Encrypted File secrets](../../../Secrets/3-add-file-secrets.md).
+The **SSH** Connection Type requires an **SSH Key** in PEM format. OpenSSH keys are not supported. In Harness, SSH Keys are stored as [Harness SSH credential secrets](/docs/platform/Secrets/add-use-ssh-secrets). When creating an SSH credential secret for a code repo connector, the SSH credential's **Username** must be `git`.
 
 :::tip
 

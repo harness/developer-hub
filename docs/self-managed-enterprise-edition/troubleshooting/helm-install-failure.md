@@ -1,6 +1,7 @@
 ---
 title: Helm installation failure
 description: Troubleshoot installation failures in Harness Self-Management Enterprise Edition.
+sidebar_position: 55
 ---
 
 This topic provides solutions for installation problems related to Helm.

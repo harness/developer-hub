@@ -66,6 +66,10 @@ You can save the modifications in the existing branch or a new branch through a 
   <img src={branch_selection} alt="branch-selection" height="300" width="700"/>
   ```
 
+  You can also select the branch in the **Run Pipeline** settings.
+
+  <docimage path={require('./static/86a197e9afb88cb6816cea527bd7b8cee41d7d3d39f7c5104ebeedc00d6f050f.png')} width="60%" height="60%" title="Click to view full size image" />    
+
 * During pipeline execution, the configurations of the required resources and any referenced entities like input sets, are fetched from Git.  
 If the referenced entities exist in the same repo, they are fetched from the same branch that you have selected for pipeline execution.  
 If the referenced entities exist in a different repo, they are fetched from the default branch of the repo where the entities are stored.

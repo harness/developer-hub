@@ -60,7 +60,7 @@ You can manage payment methods and billing admins in your Harness account. Go to
 
 <Invoice />
 
-## License <!-- and build credit --> usage
+## License usage
 
 <License />
 

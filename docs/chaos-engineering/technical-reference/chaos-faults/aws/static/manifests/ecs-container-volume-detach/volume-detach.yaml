@@ -1,0 +1,22 @@
+# Set container image for the target ECS task
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: aws-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  chaosServiceAccount: litmus-admin
+  experiments:
+  - name: ecs-container-volume-detach
+    spec:
+      components:
+        env:
+        - name: CLUSTER_NAME
+          value: 'test-cluster'
+        - name: SERVICE_NAME
+          value: 'test-service'
+        - name: REGION
+          value: 'us-east-2'
+        - name: TOTAL_CHAOS_DURATION
+          VALUE: '60'

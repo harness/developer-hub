@@ -74,7 +74,7 @@ import {
             module: MODULES.platform,
             description:
               "Learn how to monitor the infrastructure of your installation.",
-            link: "/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem",
+            link: "/docs/self-managed-enterprise-edition/monitor-harness-on-prem",
           },
           {
             title: "Back up and restore",

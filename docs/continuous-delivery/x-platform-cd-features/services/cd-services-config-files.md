@@ -10,7 +10,7 @@ You can use files added to the **Config Files** section in your Harness services
 
 ### Harness file store
 
-All platform [integrations](/docs/continuous-delivery/integrations/cd-integrations) (Kubernetes, etc) support config files stored in the Harness File Store.
+All platform [integrations](/docs/continuous-delivery/cd-integrations) (Kubernetes, etc) support config files stored in the Harness File Store.
 
 ### Git providers
 

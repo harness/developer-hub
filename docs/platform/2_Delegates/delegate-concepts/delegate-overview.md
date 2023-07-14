@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification and other providers, with Harness Manager. The first time you connect Harness to a third-party resource, Harness Delegate is installed in your target infrastructure, for example, a Kubernetes cluster. After the delegate is installed, you connect to third-party resources. The delegate performs all operations, including deployment and integration.
+Harness Delegate is a service you run in your local network or VPC to connect your artifacts, infrastructure, collaboration, verification, and other providers, with Harness Manager. The first time you connect Harness to a third-party resource, Harness Delegate is installed in your target infrastructure, for example, a Kubernetes cluster. After the delegate is installed, you connect to third-party resources. The delegate performs all operations, including deployment and integration.
 
 ### System requirements
 
@@ -18,7 +18,8 @@ Go to [Delegate system requirements](./delegate-requirements.md).
 
 Harness Delegate connects to Harness Manager over an outbound HTTPS/WSS connection.
 
-![](./static/delegates-overview-00.png)
+![Harness Delegate overview](./static/harness-platform-architecture-00.png)
+
 The delegate connects to Harness Manager (via SaaS) over a Secure WebSockets channel (WebSockets over TLS). The channel is used to send notifications of delegate task events and to exchange connection heartbeats. The channel is not used to send task data itself.
 
 Delegate communication includes the following functions:
@@ -115,6 +116,10 @@ If no delegates are selected, then the delegates are selected as described in [T
 If no delegates are selected for a CD step in its **Delegate Selector** setting, Harness prioritizes the delegate used successfully for the infrastructure connector.
 
 Harness will try this delegate first for the step task because this delegate has been successful in the target environment.
+
+import Selector from '/docs/platform/2_Delegates/shared/selector-infrastructure.md'
+
+<Selector />
 
 Most CI steps use connectors to pull the image of the container where the step will run. The delegates used for the step's connector are not necessarily used for running the step. In general, the delegate(s) used for the connector in the **Infrastructure** build farm is used to run the step.
 
@@ -214,4 +219,4 @@ This means that if a role does not have these permissions, the user with that ro
 
 ### Third-party tools installed with the delegate
 
-For details about the SDKS and third-party tools installed with the delegate, go to [Supported platforms and technologies](/docs/getting-started/supported-platforms-and-technologies.md).
+For details about the SDKs and third-party tools installed with the delegate, go to [Third-party tools included in the delegate image type](/docs/platform/delegates/delegate-concepts/delegate-image-types/#third-party-tools-included-in-the-delegate-image-type).

@@ -1,5 +1,5 @@
 ---
-title: Harness CI concepts
+title: CI concepts
 description: Harness CI simplifies the code development and testing process.
 
 sidebar_position: 20
@@ -15,7 +15,7 @@ CI executes pipeline steps in containers, isolating code and dependencies from o
 
 This topic describes CI concepts and provides a summary of the benefits of CI.
 
-For information about general Harness Platform concepts, go to [Harness key concepts](../../getting-started/learn-harness-key-concepts.md). For information about how Drone and Harness CI work together, go to [Drone and Harness](drone-and-harness.md).
+For information about general Harness Platform concepts, go to [Harness key concepts](../../getting-started/learn-harness-key-concepts.md).
 
 ## Visual summary
 
@@ -104,7 +104,7 @@ The [Harness Git Experience](/docs/category/git-experience) provides seamless in
 
 ## Harness CI components
 
-For information about CI pipeline components, go to [CI pipeline concepts](./ci-pipeline-basics.md).
+For information about CI pipeline components, go to [CI pipeline basics](./ci-pipeline-basics.md).
 
 ## FAQs
 

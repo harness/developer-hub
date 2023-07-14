@@ -8,6 +8,12 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import OutVar from '/docs/continuous-integration/shared/output-var.md';
+```
+
 This topic describes settings for the Harness CI Run Tests step. Use the Run Tests step to [run tests](/docs/category/run-tests) and [enable Test Intelligence](./set-up-test-intelligence.md) in CI pipelines.
 
 :::info Hidden settings
@@ -55,10 +61,6 @@ Select the source code language to build: **C#**, **Java**, **Kotlin**, or **Sca
 
 Additional settings appear if you select **C#** or **Java**.
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 ```mdx-code-block
 <Tabs>
   <TabItem value="csharp" label="C#" default>
@@ -163,7 +165,7 @@ Select the build automation tool. Supported tools vary by **Language**.
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="csharp" label="C#" default>
+  <TabItem value="csharp" label="C#">
 ```
 
 * [DOTNET CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/)
@@ -171,7 +173,7 @@ Select the build automation tool. Supported tools vary by **Language**.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Java" label="Java">
+  <TabItem value="Java" label="Java" default>
 ```
 
 * [Bazel](https://bazel.build/)
@@ -201,6 +203,14 @@ Select the build automation tool. Supported tools vary by **Language**.
   </TabItem>
 </Tabs>
 ```
+
+:::info Bazel container images
+
+If you use a Bazel [container image](#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must include commands or steps to install Bazel. This is because `bazel query` is called before the container image is pulled.
+
+Bazel is already installed on Harness Cloud. For other build infrastructures, you must manually confirm if Bazel is already installed.
+
+:::
 
 ## Build Arguments
 
@@ -246,65 +256,7 @@ Variables passed to the container as environment variables and used in the step'
 
 ## Output Variables
 
-Output variables expose values for use by other steps or stages in the pipeline.
-
-To create an output variable, do the following in the step where the output variable originates:
-
-1. In the **Command** field, export the output variable. For example, the following command exports a variable called `myVar` with a value of `varValue`:
-
-   ```
-   export myVar=varValue
-   ```
-
-2. In the step's **Output Variables**, declare the variable name, such as `myVar`.
-
-To call a previously-exported output variable in a later step or stage in the same pipeline, use a variable expression that includes the originating step's ID and the variable name.
-
-<!-- ![](../run-ci-scripts/static/run-step-output-variable-example.png) -->
-
-<docimage path={require('../run-ci-scripts/static/run-step-output-variable-example.png')} />
-
-To reference an output variable in another step in the same stage, use either of the following expressions:
-
-```
-<+steps.[stepID].output.outputVariables.[varName]>
-<+execution.steps.[stepID].output.outputVariables.[varName]>
-```
-
-To reference an output variable in a different stage than the one where it originated, use the following expression:
-
-```
-<+stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>
-<+pipeline.stages.[stageID].spec.execution.steps.[stepID].output.outputVariables.[varName]>
-```
-
-<details>
-<summary>YAML example: Output variable</summary>
-
-In the following YAML example, step `a` exports an output variable called `myVar`, and then step `b` references that output variable.
-
-```yaml
-              - step:
-                  type: Run
-                  name: a
-                  identifier: a
-                  spec:
-                    shell: Sh
-                    command: export myVar=varValue
-                    outputVariables:
-                      - name: myVar
-              - step:
-                  type: Run
-                  name: b
-                  identifier: b
-                  spec:
-                    shell: Sh
-                    command: |-
-                      echo <+steps.a.output.outputVariables.myVar>
-                      echo <+execution.steps.a.output.outputVariables.myVar>
-```
-
-</details>
+<OutVar />
 
 ## Image Pull Policy
 

@@ -87,3 +87,5 @@ This section doesn't show credit consumption or credits remaining. -->
 <!-- <docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_build_credits.png')} />
 
 </details> -->
+
+For more information about license usage and pricing, go to the [CI Pricing FAQ](https://www.harness.io/pricing?module=ci#:~:text=an%20Add%2Don-,Pricing%20FAQ,-How%20is%20Harness).

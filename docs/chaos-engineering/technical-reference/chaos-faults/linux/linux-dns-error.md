@@ -4,6 +4,7 @@ title: Linux DNS error
 ---
 
 import Ossupport from './shared/note-supported-os.md'
+import FaultPermissions from './shared/fault-permissions.md'
 
 
 Linux DNS error injects chaos to disrupt the DNS resolution on a Linux machine.
@@ -15,6 +16,8 @@ Linux DNS error injects chaos to disrupt the DNS resolution on a Linux machine.
 - Simulates loss of access to host by blocking the DNS resolution of host names.
 
 <Ossupport />
+
+<FaultPermissions />
 
 ## Fault tunables
 <h3>Optional tunables</h3>

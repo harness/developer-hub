@@ -10,30 +10,41 @@ helpdocs_is_published: true
 
 Use Background steps to [manage dependent services](./dependency-mgmt-strategies.md) that need to run for the entire lifetime of a Build stage. For example, you can set up your pipeline to run multiple background services that implement a local, multi-service app.
 
-![A Build stage with multiple services running in Background steps.](./static/background-step-settings-07.png)
+<figure>
 
-## Important notes
+![](./static/background-step-settings-07.png)
+
+<figcaption>Figure 1: A Build stage with multiple services running in Background steps.</figcaption>
+</figure>
+
+A Background step starts a service and then proceeds. For any later step that relies on the service, it is good practice to verify that the service is running before sending requests.
+
+:::info
 
 * Background steps do not support failure strategies or output variables.
 * If the pipeline runs on a VM build infrastructure, you can run the background service directly on the VM rather than in a container. To do this, leave the **Container Registry** and **Image** fields blank.
-* A Background step starts a service and then proceeds. For any later step that relies on the service, it is good practice to verify that the service is running before sending requests. You can use the Background step **Id** to call services started by Background steps in later steps, such as `curl` commands in Run steps.
+* Depending on the stage's build infrastructure, some settings may be unavailable, optional, or located under **Additional Configuration**.
+
+:::
+
+## Name and Id
+
+Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id** until the step is saved; once saved, the **Id** is locked.
+
+:::tip
+
+You can use the Background step **Id** to call services started by Background steps in later steps, such as commands in Run steps. For example, a cURL command could call `[backgroundStepId]:5000` where it might otherwise call `localhost:5000`.
 
 <figure>
 
 ![](./static/background-step-settings-call-id-in-other-step.png)
 
-<figcaption>Figure 1: The Background step ID, <code>pythonscript</code>, is used in a curl command in a Run step.</figcaption>
+<figcaption>Figure 2: The Background step ID, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
 </figure>
 
-:::info
-
-Depending on the stage's build infrastructure, some settings may be unavailable.
+If the Background step is inside a step group, you must include step group ID, such as `curl [stepGroupId]_[backgroundStepId]:5000`, even if both steps are in the same step group.
 
 :::
-
-## Name
-
-Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
 ## Container Registry and Image
 
@@ -49,7 +60,7 @@ Enter a name summarizing the step's purpose. Harness automatically assigns an **
 
 ![](./static/background-step-settings-08.png)
 
-<figcaption>Figure 2: An example configuration for the <b>Container Registry</b> and <b>Image</b> fields. Note that this figure shows a <b>Run</b> step, but the fields are populated the same for <b>Background</b> steps.</figcaption>
+<figcaption>Figure 3: An example configuration for the <b>Container Registry</b> and <b>Image</b> fields. Note that this figure shows a <b>Run</b> step, but the fields are populated the same for <b>Background</b> steps.</figcaption>
 </figure>
 
 :::info
@@ -67,7 +78,7 @@ The stage's build infrastructure determines whether these fields are required or
 
 Use these fields to define the commands that you need to run in the Background step.
 
-For **Shell**, select the shell script type for the arguments and commands defined in **Entry Point** and **Command**. Options include: **Bash**, **Powershell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
+For **Shell**, select the shell script type for the arguments and commands defined in **Entry Point** and **Command**. Options include: **Bash**, **PowerShell**, **Pwsh**, **Sh**, and **Python**. If the step includes commands that aren't supported for the selected shell type, the build fails. Required binaries must be available on the build infrastructure or the specified image, as described in [Container Registry and Image](#container-registry-and-image).
 
 For **Entry Point** supply a list of arguments in `exec` format. **Entry Point** arguments override the image `ENTRYPOINT` and any commands in the **Command** field. Enter each argument separately.
 
@@ -81,11 +92,9 @@ import TabItem2 from '@theme/TabItem';
 ```
 <figure>
 
-<!-- ![](./static/dind-background-step-entry-point.png) -->
+![](./static/dind-background-step-entry-point.png)
 
-<docimage path={require('./static/dind-background-step-entry-point.png')} />
-
-<figcaption>Figure 3: <b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
+<figcaption>Figure 4: <b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
 </figure>
 
 ```mdx-code-block
@@ -135,9 +144,9 @@ This Bash script example checks the Java version.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="powershell" label="Powershell">
+  <TabItem value="powershell" label="PowerShell">
 ```
-This is a simple Powershell `Wait-Event` example.
+This is a simple PowerShell `Wait-Event` example.
 
 ```yaml
               - step:
@@ -149,7 +158,7 @@ This is a simple Powershell `Wait-Event` example.
 
 :::tip
 
-You can run Powershell commands on Windows VMs running in AWS build farms.
+You can run PowerShell commands on Windows VMs running in AWS build farms.
 
 :::
 
@@ -159,7 +168,7 @@ You can run Powershell commands on Windows VMs running in AWS build farms.
   <TabItem value="pwsh" label="Pwsh">
 ```
 
-This Powershell Core example runs `ForEach-Object` over a list of events.
+This PowerShell Core example runs `ForEach-Object` over a list of events.
 
 ```yaml
               - step:
@@ -173,7 +182,7 @@ This Powershell Core example runs `ForEach-Object` over a list of events.
 
 :::tip
 
-You can run Powershell Core commands in pods or containers that have `pwsh` installed.
+You can run PowerShell Core commands in pods or containers that have `pwsh` installed.
 
 :::
 
@@ -231,21 +240,17 @@ You can use `docker-compose up` to start multiple services in one Background ste
 
 :::
 
-## Additional Configuration
-
-Use these optional settings to add additional configuration to the step. Settings considered optional depend on the stage's **Infrastructure** settings. Not all options are available for all build infrastructure types.
-
-### Privileged
+## Privileged
 
 Select this option to run the container with escalated privileges. This is the equivalent of running a container with the Docker `--privileged` flag.
 
-### Report Paths
+## Report Paths
 
 The path to the file(s) that store [results in JUnit XML format](../set-up-test-intelligence/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
 This setting is required for commands run in the Background step to be able to [publish test results](../set-up-test-intelligence/viewing-tests.md).
 
-### Environment Variables
+## Environment Variables
 
 You can inject environment variables into a container and use them in the **Command** script. You must input a **Name** and **Value** for each variable.
 
@@ -257,10 +262,10 @@ Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/pla
 
 ![](./static/background-step-settings-09.png)
 
-<figcaption>Figure 4: Using an expression for an environment variable's value.</figcaption>
+<figcaption>Figure 5: Using an expression for an environment variable's value.</figcaption>
 </figure>
 
-### Image Pull Policy
+## Image Pull Policy
 
 If the service is running in a container, you can select an option to set the pull policy for the image.
 
@@ -268,7 +273,7 @@ If the service is running in a container, you can select an option to set the pu
 * **If Not Present**: The image is pulled only if it is not already present locally.
 * **Never**: The image is assumed to exist locally. No attempt is made to pull the image.
 
-### Port Bindings
+## Port Bindings
 
 Depending on the Build stage's **Infrastructure**, some steps might run directly on VMs while other steps run in containers. The port used to communicate with a service started by a Background step depends on where the step is running: VMs use the **Host Port** and containerized steps use the **Container Port**.
 
@@ -286,15 +291,15 @@ The host port and container port binding are similar to [port mapping in Docker]
 
 :::note
 
-If your build stage uses Harness Cloud build infrastructure and you are running a Docker image in a Background step, you must specify **Port Bindings** if you want to reference that Background step in a later step in the pipeline (such as in a `curl` command in a Run step).
+If your build stage uses Harness Cloud build infrastructure and you are running a Docker image in a Background step, you must specify **Port Bindings** if you want to reference that Background step in a later step in the pipeline (such as in a cURL command in a Run step).
 
 :::
 
-### Run as User
+## Run as User
 
 If the service is running in a container, you can specify the user ID to use for all processes in the pod. For more information about how to set the value, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
-### Set Container Resources
+## Set Container Resources
 
 The maximum memory and cores that the container can use.
 

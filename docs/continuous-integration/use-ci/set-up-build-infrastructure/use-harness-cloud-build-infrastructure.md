@@ -8,7 +8,7 @@ With Harness Cloud you can run builds in isolation on Harness-hosted VMs that ar
 
 This topic describes how to use Harness-hosted build infrastructure for your Harness CI pipelines, as well as information about machine specifications, special considerations, and additional configuration required for certain use cases.
 
-For more information about the Harness Cloud architecture, go to [Get started with Harness Cloud](../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md). For a comparison of build infrastructure options, go to [Which build infrastructure is right for me?](./which-build-infrastructure-is-right-for-me.md)
+For more information about the Harness Cloud architecture, go to [Get started with Harness Cloud](../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md). For a comparison of build infrastructure options, go to [Which build infrastructure is right for me](./which-build-infrastructure-is-right-for-me.md).
 
 ## Requirements
 

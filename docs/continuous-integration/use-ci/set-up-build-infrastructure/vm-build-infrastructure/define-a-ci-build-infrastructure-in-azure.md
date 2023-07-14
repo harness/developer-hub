@@ -17,7 +17,7 @@ This topic describes how to set up a CI build infrastructure in Microsoft Azure.
 
 For information on using Kubernetes as a build farm, see [Set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-The following diagram illustrates a build farm. The [Harness Delegate](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
+The following diagram illustrates a build farm. The [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the Delegate receives a build request, it forwards the request to the Runner, which runs the build on an available VM.
 
 ![](../static/define-a-ci-build-infrastructure-in-azure-16.png)
 
@@ -25,7 +25,7 @@ The following diagram illustrates a build farm. The [Harness Delegate](https://d
 
 * VM requirements:
 	+ For the Delegate VM, use a machine type with 4 vCPU and 16 GB memory or more.
-	+ Harness recommends the [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-server-bionic?tab=overview) image and a [Microsoft Windows Server 2019 with Containers](https://az-vm-image.info/?cmd=--all+--publisher+microsoftwindowsserver+--sku+containers+--query+%22%5B%3Fcontains%28version%2C+%272019%27%29%5D%22) image. For additional details, go to [Azure](https://docs.drone.io/runner/vm/drivers/azure/) in the Drone docs.
+	+ Harness recommends the [Ubuntu Server 18.04 LTS](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/canonical.0001-com-ubuntu-pro-bionic?tab=overview) image and a [Microsoft Windows Server 2019 with Containers](https://az-vm-image.info/?cmd=--all+--publisher+microsoftwindowsserver+--sku+containers+--query+%22%5B%3Fcontains%28version%2C+%272019%27%29%5D%22) image. For additional details, go to [Azure](https://docs.drone.io/runner/vm/drivers/azure/) in the Drone docs.
 	+ The VM must allow ingress access on ports 22 and 9079. Open port 3389 as well if you want to run Windows builds and be able to RDP into your build VMs.
 * Azure requirements:
 	+ You need permissions to create Azure Applications and VMs.
@@ -297,6 +297,6 @@ If you have problems running the delegate, runner, or VMs, you can collect debug
 ## See also
 
 * [Set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md)
-* For more details on VM Runner, visit this [GitHub](https://github.com/drone-runners/drone-runner-aws) page.
-* [Troubleshoot Continuous Integration](/docs/continuous-integration/troubleshooting-ci.md)
+* For more details on VM Runner, go to the [AWS Drone Runner GitHub repo](https://github.com/drone-runners/drone-runner-aws).
+* [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md)
 

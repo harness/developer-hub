@@ -10,6 +10,11 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+<Smpno />
+
+
 This topic describes how to use the Harness Feature Flags SDK for your Xamarin application. You can use the Xamarin SDK for Android and iOS.
 
 For getting started quickly, you can [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the  [Xamarin Client Sample GitHub Repository](https://github.com/harness/ff-xamarin-client-sample).

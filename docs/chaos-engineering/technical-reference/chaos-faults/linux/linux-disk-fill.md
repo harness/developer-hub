@@ -4,6 +4,7 @@ title: Linux disk fill
 ---
 
 import Ossupport from './shared/note-supported-os.md'
+import FaultPermissions from './shared/fault-permissions.md'
 
 
 Linux disk fill fills up the available disk space at a given system path for a specific duration.
@@ -17,6 +18,8 @@ Linux disk fill:
 - Validates application failover and data resiliency in the scenario of low disk space.
 
 <Ossupport />
+
+<FaultPermissions />
 
 ## Fault tunables
 <h3>Optional tunables</h3>

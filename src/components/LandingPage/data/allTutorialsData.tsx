@@ -56,13 +56,13 @@ export const FeaturedList: CardItem[] = [
         webhooks.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "9 min",
     link: "/tutorials/ci-pipelines/tfc-notification",
   },
   {
-    title: "Amazon ECR",
+    title: "Publish to Amazon ECR",
     module: MODULES.ci,
     description:
       "Publish an Image to an Amazon Elastic Container Registry.",
@@ -72,7 +72,7 @@ export const FeaturedList: CardItem[] = [
     icon: "img/icon_ci.svg"
   },
   {
-    title: "Google GAR",
+    title: "Publish to Google GAR",
     module: MODULES.ci,
     description:
       "Publish an Image to a Google Artifact Registry.",
@@ -90,36 +90,16 @@ export const FeaturedList: CardItem[] = [
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
-    newDoc: true,
+    newDoc: false,
   },
   {
-    title: "Publish Allure Report",
+    title: "Publish to the Artifacts tab",
     module: MODULES.ci,
     description:
-      "Publish an Allure Report.",
-    link: "/tutorials/ci-pipelines/test/allure-report",
+      "Publish any URL to the Artifacts tab.",
+    link: "/tutorials/ci-pipelines/publish/artifacts-tab",
     type: [docType.Documentation],
     time: "5 min",
-    icon: "img/icon_ci.svg"
-  },
-  {
-    title: "Run LocalStack",
-    module: MODULES.ci,
-    description:
-      "Run LocalStack as a Background step.",
-    link: "/tutorials/ci-pipelines/test/localstack",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg"
-  },
-  {
-    title: "Run Sauce Connect Proxy",
-    module: MODULES.ci,
-    description:
-      "Run Sauce Connect Proxy as a Background step.",
-    link: "/tutorials/ci-pipelines/test/saucelabs-proxy",
-    type: [docType.Documentation],
-    time: "15 min",
     icon: "img/icon_ci.svg"
   },
 ];

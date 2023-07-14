@@ -68,7 +68,7 @@ export default function CertificationsCD() {
             and powerful, easy-to-use pipelines. Empower your teams to deliver
             new features, faster – with AI/ML for automated canary and
             blue/green deployments, advanced verification, and intelligent
-            rollback
+            rollback.
           </div>
         </div>
         <div className={styles.right}>
@@ -201,8 +201,7 @@ export default function CertificationsCD() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Continuous Delivery & GitOps - Administrator (BETA COMING
-                    SOON)
+                    Continuous Delivery & GitOps - Administrator 
                   </h2>
                   <img
                     src={`${baseUrl}img/cert_adm_cd_badge.svg`}
@@ -215,14 +214,15 @@ export default function CertificationsCD() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide - Coming Soon</h3>
+                  <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy and maintain CD
-                    projects and the overall Harness Platform.
+                    projects and the overall Harness Platform. This exam builds upon
+                    the <a href="/certifications/continuous-delivery?lvl=developer">Continuous Delivery & GitOps Developer Certification</a>. 
                   </div>
                   <AdminCertificationReviewDetails />
                   <div className={styles.btnContainer}>
-                    <Link href="#">
+                    <Link href="https://university.harness.io/continuous-delivery-gitops-administrator">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -245,7 +245,7 @@ export default function CertificationsCD() {
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="#">
+                <Link href="https://university.harness.io/continuous-delivery-gitops-administrator">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>

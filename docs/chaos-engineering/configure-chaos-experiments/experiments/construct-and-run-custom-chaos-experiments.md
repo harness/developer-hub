@@ -1,11 +1,11 @@
 ---
-title: Run chaos experiments
+title: Create and run chaos experiments
 sidebar_position: 20
 ---
 
 import Analyze from '/docs/chaos-engineering/configure-chaos-experiments/experiments/shared/analyze-chaos-experiment.md'
 
-Harness Chaos Engineering (HCE) gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios for your applications that can be validated against. At the same time, the chaos experiments are declarative and can be constructed using the Chaos Studio user interface with no programmatic intervention.
+Harness Chaos Engineering (CE) gives you the flexibility to create elaborate chaos experiments that help create complex, real-life failure scenarios for your applications that can be validated against. At the same time, the chaos experiments are declarative and can be constructed using the Chaos Studio user interface with no programmatic intervention.
 
 A chaos experiment is composed of chaos faults that are arranged in a specific order to create a failure scenario. The chaos faults target various aspects of an application, including the constituent microservices and underlying infrastructure. The parameters associated with these faults can be tuned to impart the desired chaos behaviour.
 
@@ -89,5 +89,7 @@ You can add other faults to the experiment in addition to the existing set of fa
 ![Configure Fault](./static/construct-and-run-custom-chaos-experiments/configure-fault.png)
 
 Next, select the **Run** button to execute your chaos experiment. Alternatively, you can only save the experiment or add the experiment to a Chaos Hub using the **Save** button.
+
+## Analyze chaos experiments
 
 <Analyze />

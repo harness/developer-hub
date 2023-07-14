@@ -41,7 +41,7 @@ In addition to a default [codebase](#codebases), the following settings are conf
 * [Input sets and overlays](/docs/platform/Pipelines/input-sets)
 * [Triggers](/docs/category/triggers)
 * [Variables](/docs/category/variables-and-expressions)
-* [Notifications](/docs/category/notifications-1)
+* [Notifications](/docs/category/notifications)
 * [Flow Control: Synchronization barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers)
 * [Policy Sets](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 * Advanced Options: Pipeline Timeout Settings, [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
@@ -78,7 +78,7 @@ Harness uses [code repo connectors](/docs/category/code-repo-connectors) to conn
 
 ### Build infrastructure
 
-All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me?](./set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me](./set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 :::tip Tutorials
 

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines.mdtegrates with [Jenkins](https://jenkins.io/), enabling you to run Jenkins jobs, to dynamically capture output variables from the jobs, and to pull artifacts from Jenkins. 
+This content is for Harness [FirstGen](/docs/getting-started/harness-first-gen-vs-harness-next-gen.md). [NextGen](/docs/continuous-delivery/x-platform-cd-features/cd-steps/builds/run-jenkins-jobs-in-cd-pipelines) integrates with [Jenkins](https://jenkins.io/), enabling you to run Jenkins jobs, to dynamically capture output variables from the jobs, and to pull artifacts from Jenkins. 
 
 Harness' integration requires Jenkins version 2.130 or higher.
 
@@ -30,7 +30,7 @@ Capturing and exporting output in the Jenkins step can be very powerful. For exa
 
 ## Jenkins Plugin Requirements
 
-For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject Plugin](https://wiki.jenkins.io/display/JENKINS/EnvInject+Plugin). The plugin does not provide full compatibility with the Pipeline Plugin. See [Known limitations](https://plugins.jenkins.io/envinject) from Jenkins.
+For Harness to capture Jenkins environment variables, your Jenkins configuration requires the [EnvInject Plugin](https://plugins.jenkins.io/envinject/). The plugin does not provide full compatibility with the Pipeline Plugin. See [Known limitations](https://plugins.jenkins.io/envinject/#plugin-content-other-limitations) from Jenkins.
 
 ## Before You Begin
 

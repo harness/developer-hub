@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md).
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md).
 
 Harness supports Helm 2 and Helm v3. This guide will walk you through deploying a Docker image to a Kubernetes cluster using a Helm chart. This deployment scenario is very popular and a walkthrough of all the steps involved will help you set up this scenario in Harness for your own microservices and apps.
 

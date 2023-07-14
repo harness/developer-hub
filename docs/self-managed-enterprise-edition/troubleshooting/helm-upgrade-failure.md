@@ -1,6 +1,7 @@
 ---
 title: Helm upgrade failure
 description: Troubleshoot a Helm upgrade failure in Harness Self-Management Enterprise Edition.
+sidebar_position: 60
 ---
 
 This topic provides solutions for upgrade problems related to Helm.
@@ -48,7 +49,7 @@ To set the root password, do the following:
    
 #### Update the oldvalues.yaml file
 
-If you've already set the `auth.rootPassword` value one time, you can update and remove the oldvalues.yaml file.
+If you've already set the `auth.rootPassword` value one time, you can update and remove the `oldvalues.yaml` file.
 
 To update and remove the file, do the following:
 
@@ -58,7 +59,7 @@ To update and remove the file, do the following:
    helm get values <chartname> -n <namespace> > oldvalues.yaml
    ```
 
-2. Edit the oldvalues.yaml file to include the new values. The file should include the encrypted MinIO password.
+2. Edit the `oldvalues.yaml` file to include the new values. The file should include the encrypted MinIO password.
 
 3. Upgrade the file:
 
@@ -66,4 +67,4 @@ To update and remove the file, do the following:
    helm upgrade <chartname> <chartsource> -n <namespace> -f oldvalues.yaml
    ```
 
-4. Delete the oldvalues.yaml file.
+4. Delete the `oldvalues.yaml` file.

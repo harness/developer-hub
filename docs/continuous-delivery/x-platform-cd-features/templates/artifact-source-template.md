@@ -4,12 +4,6 @@ description: Create a custom artifact source for CD services.
 sidebar_position: 1
 ---
 
-:::note
-
-Currently, artifact source templates are behind the feature flag `ARTIFACT_SOURCE_TEMPLATE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 Harness templates help you standardize your pipelines for your DevOps teams. Team members can select stage, step, and other templates instead of having to create them.
 
 An artifact source template helps you define the repositories, paths, and tags for an artifact that your team can use in Harness CD services. You can define the artifact source template and your team members can select them when they use services in their pipelines.
@@ -93,7 +87,7 @@ You can also select **Runtime input** or **Expression** for this setting.
 
 Different repository types have different **Artifact Details** settings.
 
-For information on how to configure each repository's settings, see the examples in [Harness Kubernetes services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services).
+For information on how to configure each repository's settings, see the examples in [Harness Kubernetes services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services).
 
 ### Tags
 
@@ -299,4 +293,11 @@ You can see the artifact source template in the `artifacts` section:
 </Tabs2>
 ```
 
+## Reconcile artifact source template changes in a service
+
+When changes are made to an artifact source template the service using the template is not automatically updated in the Harness Manager.
+
+You can reconcile these changes by using the **Reconcile** option in the service (next to **Save**).
+
+Once the reconcile action is initiated, the changes are available in the service.
 

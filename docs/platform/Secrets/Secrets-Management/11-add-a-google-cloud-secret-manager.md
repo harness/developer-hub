@@ -54,7 +54,9 @@ This topic explains the steps to add a Google Cloud Secrets Manager to the accou
 2. Click **Account Resources**.
 3. Click **Connectors** and then click **New Connector**.
 4. In Secret Managers, click **GCP Secrets Manager**.  
-The GCP Secrets Manager settings appear.![](../../Secrets/static/add-a-google-cloud-secret-manager-39.png)
+   The GCP Secrets Manager settings appear.
+
+   ![](../../Secrets/static/add-a-google-cloud-secret-manager-39.png)
 
 ### Step 2: Add overview
 
@@ -76,7 +78,9 @@ See [Managing secrets](https://cloud.google.com/secret-manager/docs/access-cont
 4. Open your service account's Actions ⋮ menu, then select **Create key.**
 5. In the resulting **Create private key** dialog, select the **JSON** option, create the key, and download it to your computer.
 6. Go back to Harness.
-7. In **Google Secrets Manager Credentials File**, select the encrypted file you just added in Harness.![](../static/add-a-google-cloud-secret-manager-40.png)
+7. In **Google Secrets Manager Credentials File**, select the encrypted file you just added in Harness.
+
+   ![](../static/add-a-google-cloud-secret-manager-40.png)
    
 You can also create a new [File Secret](../3-add-file-secrets.md) here and add the Google Cloud service account key that you downloaded.
 1. Click **Continue**.
@@ -120,6 +124,7 @@ The **Add new Encrypted Text** settings appear.
 8. In **Version**, enter the version of your secret that you want to reference.  
 You can either enter a version number like `1`, `2`, or enter `latest` to reference the latest version.
 9. Click **Save**.
+
    ![](../static/add-a-google-cloud-secret-manager-42.png)
 
 ### Add an encrypted file secret to the GCP Secrets Manager
@@ -134,7 +139,9 @@ The **Add new Encrypted File** settings appear.
 5. Enter a **Name** for your secret.
 6. In **Select File**, browse, and select your file.
 7. Select **Configure Region** to add the region(s) for your secret.
-8. Click **Save**.![](../static/add-a-google-cloud-secret-manager-43.png)
+8. Click **Save**.
+
+   ![](../static/add-a-google-cloud-secret-manager-43.png)
 
 ### See also
 

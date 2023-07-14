@@ -24,7 +24,10 @@ The following video explains how to create a Dashboard:
 Perform the following steps to schedule a delivery:
 
 1. Click the three-dot menu in the upper right of the dashboard and select **Schedule delivery**.![](./static/share-dashboards-00.png)
-2. In Schedule, the top of the schedule window shows the name automatically given to the delivery. The name defaults to the dashboard’s name. To edit the delivery’s name, click the name (indicated by the dotted underscore), and make your edits.![](./static/share-dashboards-01.png)
+2. In Schedule, the top of the schedule window shows the name automatically given to the delivery. The name defaults to the dashboard’s name. To edit the delivery’s name, click the name (indicated by the dotted underscore), and make your edits.
+
+   ![](./static/share-dashboards-01.png)
+   
 3. In **Schedule**, the following options are available:
 	* Settings
 	* Filters

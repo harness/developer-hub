@@ -400,7 +400,7 @@ The Java Runtime Environment version used by the delegate.
  
 #### HELM3_PATH, HELM_PATH 
 
-When you Install and run a new Harness Delegate, Harness includes Helm 3 support automatically. In some cases, you may want to use one of the custom Helm binaries available from [Helm release](https://github.com/helm/helm/releases). For a Helm 3 binary, enter the local path to the binary in `HELM3_PATH`. For a Helm 2 binary, enter the path local path to the binary in `HELM_PATH`. If you are performing a [Native Helm deployment](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart), do not use `HELM_PATH` for the Helm 2 binary. Harness looks for the Helm 2 binary on the delegate in its standard path, such as `/usr/local/bin/helm`. 
+When you Install and run a new Harness Delegate, Harness includes Helm 3 support automatically. In some cases, you may want to use one of the custom Helm binaries available from [Helm release](https://github.com/helm/helm/releases). For a Helm 3 binary, enter the local path to the binary in `HELM3_PATH`.
 
   ```
   - name: HELM3_PATH  value: ""- name: HELM_PATH  value: ""

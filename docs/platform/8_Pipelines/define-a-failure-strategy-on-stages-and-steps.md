@@ -20,7 +20,7 @@ You can apply a failure strategy to the following:
 * Step Group
 * Stage
 
-For details on strategy options and how strategies work, see [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
+For details on strategy options and how strategies work, go to [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
 
 ### Before you begin
 
@@ -93,6 +93,34 @@ Select the following:
 * **On failure of type:** select one or more of the error types. See [Step and Stage Failure Strategy Settings](w_pipeline-steps-reference/step-failure-strategy-settings.md).
 * **Timeout** and **Post timeout action:** these are available if you selected **Manual Intervention** in Action. Enter the timeout for the failure strategy and the subsequent action to perform.
 * **Retry Count** and **Retry Intervals:** these are available if you selected **Retry** in Action. Enter the number of times to retry the step, and the retries intervals.
+
+### Rollback pipeline steps or stages
+
+The Rollback Pipeline failure strategy applies to all steps and stages in a pipeline. 
+
+:::info
+
+If a pipeline includes a child pipeline as a stage ([Pipeline chaining](/docs/platform/pipelines/pipeline-chaining/)), rolling back the parent pipeline will not roll back the child pipeline as the latter is considered as a separate execution. In such cases, only the deployment stages of the parent pipeline rolls back.
+
+:::
+
+Currently, the Rollback Pipeline failure strategy applies to the following deployments only:
+* Kubernetes
+* Native Helm
+* Amazon Elastic Container Service (ECS)
+
+In a pipeline's step or stage, select **Advanced**.
+
+In **Failure Strategy**, you can see the default stage strategy:
+
+**On all errors other than those specified in failure strategies defined here, perform action**
+
+To add an additional stage failure strategy, select **Add**.
+
+In **On failure of type**, select one or more of the error types, or select **All Errors**. Go to [Error types](/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings#error-types) for more information.
+
+In **Perform Action**, select **Rollback Pipeline**
+
 
 ### Failure strategy as a runtime input
 

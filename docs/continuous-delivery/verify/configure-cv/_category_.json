@@ -1,6 +1,6 @@
 {
    "label":"Configure CV",
-   "position": 20,
+   "position": 40,
    "collapsible":"true",
    "collapsed":"true",
    "className":"red",

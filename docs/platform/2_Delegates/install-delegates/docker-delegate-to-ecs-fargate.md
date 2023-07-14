@@ -11,7 +11,7 @@ Harness Delegate carries out the tasks in your Continuous Integration (CI) and C
 You can use Harness NextGen to deploy a Docker delegate to Amazon Elastic Container Service (ECS) or AWS Fargate. This tutorial steps through the process of installing the delegate into an ECS cluster as an ECS service. The installed delegate connects to your AWS resources.
 
 :::info note
-Delegate scope for an Amazon ECS delegate is based on the token you use.
+Delegate scope for a delegate for Amazon ECS is based on the token you use.
 :::
 
 ## Deploy a delegate to Amazon ECS 

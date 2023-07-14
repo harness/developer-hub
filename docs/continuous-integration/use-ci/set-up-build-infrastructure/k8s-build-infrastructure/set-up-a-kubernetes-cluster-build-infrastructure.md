@@ -102,7 +102,7 @@ For instructions on creating clusters, go to:
 
    ![](../static/set-up-a-kubernetes-cluster-build-infrastructure-01.png)
 
-6. Install the Delegate on a pod in your Kubernetes build infrastructure. You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For details and instructions for each of these options, go to [Delegate installation overview](https://developer.harness.io/docs/platform/Delegates/delegate-concepts/delegate-overview).
+6. Install the Delegate on a pod in your Kubernetes build infrastructure. You can use a Helm Chart, Terraform, or Kubernetes Manifest to install Kubernetes delegates. For details and instructions for each of these options, go to [Delegate installation overview](/docs/platform/delegates/delegate-concepts/delegate-overview).
 7. After installing the delegate, return to the Harness UI and select **Verify** to test the connection. It might take a few minutes to verify the Delegate. Once it is verified, exit delegate creation and return to connector setup.
 8. In your Kubernetes Cluster connector's **Delegates Setup**, select **Only use Delegates with all of the following tags**.
 9. Select your new Kubernetes delegate, and then select **Save and Continue**.
@@ -110,7 +110,7 @@ For instructions on creating clusters, go to:
 
 :::tip
 
-Although you must select a specific delegate when you create the Kubernetes Cluster connector, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#option-pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#option-stage-delegate-selector).
+Although you must select a specific delegate when you create the Kubernetes Cluster connector, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
 
 Delegate selections take precedence in the following order:
 
@@ -118,7 +118,7 @@ Delegate selections take precedence in the following order:
 2. Pipeline
 3. Connector
 
-This means that if delegate selectors are present at the pipeline and stage levels, then these selections override the delegate selected in the Kubernetes Cluster connector's configuration. If a stage has a stage-level delegate selector, then it uses that delegate. Stages that don't have stage-level delegate selectors use the pipeline-level selector, if present, or the connector's delegate.
+This means that if delegate selectors are present at the pipeline and stage levels, then these selections override the delegate selected in the Kubernetes cluster connector's configuration. If a stage has a stage-level delegate selector, then it uses that delegate. Stages that don't have stage-level delegate selectors use the pipeline-level selector, if present, or the connector's delegate.
 
 For example, assume you have a pipeline with three stages called `alpha`, `beta`, and `gamma`. If you specify a stage-level delegate selector on `alpha` and you don't specify a pipeline-level delegate selector, then `alpha` uses the stage-level delegate, and the other stages (`beta` and `gamma`) use the Connector delegate.
 
@@ -153,7 +153,7 @@ You can override the default Linux user ID for containers running in the build i
 <details>
 <summary>Init Timeout</summary>
 
-If you use large images in your Build stage's steps, you might find that the initialization step times out and the build fails when the pipeline runs. In this case, you can increase the init timeout window from the default of 10 minutes.
+If you use large images in your Build stage's steps, you might find that the initialization step times out and the build fails when the pipeline runs. In this case, you can increase the [init timeout](../ci-stage-settings.md#init-timeout) from the default of 8 minutes.
 
 </details>
 
@@ -230,5 +230,5 @@ Here's a YAML example of a stage configured to use a Kubernetes cluster build in
 
 For Kubernetes cluster build infrastructure troubleshooting guidance go to:
 
-* [Troubleshoot CI](/docs/continuous-integration/troubleshooting-ci.md)
+* [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md)
 * [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen)

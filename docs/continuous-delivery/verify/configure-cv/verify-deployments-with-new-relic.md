@@ -1,7 +1,7 @@
 ---
 title: New Relic
 description: Verify deployments with New Relic.
-sidebar_position: 8
+sidebar_position: 9
 helpdocs_topic_id: p8lqq2il39
 helpdocs_category_id: 9mefqceij0
 helpdocs_is_private: false
@@ -98,7 +98,7 @@ A Health Source is basically a mapping of a Harness Service to the service in a 
 8. Click **Next**. The **Customize Health Source** settings appear.
     The subsequent settings in **Customize Health Source** depend on the Health Source Type you selected. You can customize the metrics to map the Harness Service to the monitored environment. In Applications & Tiers, enter the following details:
 9.  In **Find a New Relic application** type the name of an application.
-10. In **Find an AppDynamics tier** type a tier name from which you want usage metrics, code exceptions, error conditions, or exit calls.
+10. In **Find a New Relic tier** type a tier name from which you want usage metrics, code exceptions, error conditions, or exit calls.
 11. In **Metric Packs** select the metrics you want Harness to use.
 12. Click **Submit**. The Health Source is displayed in the Verify step.
 

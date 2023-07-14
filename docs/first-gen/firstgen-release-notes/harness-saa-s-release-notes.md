@@ -12,9 +12,164 @@ Harness progressively deploys updates to different Harness cluster hosting accou
 
 Harness is updated regularly. This document describes recent changes.
 
-For Harness on-prem releases, see [Harness Self-Managed Enterprise Edition Release Notes](harness-on-prem-release-notes.md). Release notes are displayed with the most recent release first.
+For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Release Notes](harness-on-prem-release-notes.md). Release notes are displayed with the most recent release first.
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+### July 06, 2023, version 79807
+
+#### What's new
+
+- The ubi8-minimal:8.7 has been upgraded to version ubi8-minimal:8.8 (PL-39276)
+
+#### Early access
+
+- Introduced a more consistent pipeline execution status. (CDS-70387, ZD-44892)
+  
+  Harness has introduced an enhancement for displaying the negative status of parallel pipelines. For a pipeline with concurrently running stages, the ABORTED, REJECTED, and EXPIRED statuses now have higher priority over the FAILED status. 
+
+  This functionality is behind the feature flag, `SPG_CG_REJECT_PRIORITY_WHEN_FORK_STATE`.
+
+#### Fixed issues
+
+- Improved error handling mechanism when Helm manifests are not fetched from the Artifactory repository. (CDS-68251, ZD-37458)
+
+### June 28, 2023, version 79714
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- The delegate connectivity capability check for Azure Web App deployments failed. (CDS-71432, ZD-44862)
+  
+  This issue is fixed by using task category mapping to assign the Azure App Services task type deployments to specific delegates.
+
+import Fixedissues from '/docs/first-gen/firstgen-release-notes/shared/cd-79700-fixed-issues.md'
+
+<Fixedissues />
+
+### June 19, 2023, version 79606
+
+#### What's new
+
+- Service instances were not showing correctly for Tanzu deployments. (CDS-68737, ZD-42950)
+  
+	Some instances were not showing up on the **Services** dashboard. This fix ensures the **Services** dashboard shows the correct Tanzu instances.
+
+- Free, Community, and Paid accounts can now have a maximum of 100, 100, and 50000 users, respectively. (PL-39235)
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+This release does not include fixed issues.
+
+### June 09, 2023, version 79516
+
+#### What's new
+
+- Enhanced the application handling mechanism when the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE`. (CDS-68821)
+  
+  When the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE` for any of the releases of an application, Harness starts looking for the application that has the same name as the release name. This ensures that the correct active application is always picked in case the `HARNESS__STATUS__IDENTIFIER` is removed.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+#### Harness Manager delegate fixed issues
+
+The fixed issue below is available with version 79503 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+
+- Helm execution failed with `KubernetesClientException` error. (CDS-70386, ZD-45051)
+  
+  The Kubernetes GET APIs returned a 400 bad request during steady state check. This was occurring when Harness used a fabric8 client with Kubernetes cluster version < 1.16, or when the feature flag, `HELM_STEADY_STATE_CHECK` is turned off. 
+  
+  This issue is fixed.
+
+### June 01, 2023, version 79411
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+#### Harness Manager delegate fixed issues
+
+The fixed issue below is available with version 79411 and does not require a new delegate version. For Harness Delegate version-specific fixed issues, go to [Delegate release notes](/docs/first-gen/firstgen-release-notes/fg-delegate).
+
+- The `DMS_MONGO_URI` was missing from the ConfigMap of cg-manager for Self-Managed Enterprise Edition Helm installations. (PL-38850)
+
+   This issue is fixed. The `DMS_MONGO_URI` is included in the ConfigMap.
+
+#### All other Platform fixed issues
+
+- CD license utilization data was not reported for some accounts. (CDS-69101)
+  
+  [License usage](https://developer.harness.io/docs/continuous-delivery/get-started/service-licensing-for-cd/) was not retrieving the required information because the query to retrieve the license usage exceeded the connection timeout.
+
+- HTML characters in the `userName` caused issues during deployments. The following characters are no longer allowed in the `userName`: `:` , `/` , `<` , `>` , `=` , `(` , `)`. (PL-24129)
+
+### May 23, 2023, version 79306
+
+#### What's new
+
+- The following libraries have been upgraded. (PL-31421, ZD-40165,42531)
+	- org.springframework:spring-aop from 5.3.26 to 5.3.27
+	- org.springframework:spring-beans from 5.3.26 to 5.3.27
+	- org.springframework:spring-context from 5.3.26 to 5.3.27
+	- org.springframework:spring-core from 5.3.26 to 5.3.27
+	- org.springframework:spring-expression from 5.3.26 to 5.3.27
+	- org.springframework:spring-jcl from 5.3.26 to 5.3.27
+	- org.springframework:spring-messaging from 5.3.26 to 5.3.27
+	- org.springframework:spring-test from 5.3.26 to 5.3.27
+	- org.springframework:spring-tx from 5.3.26 to 5.3.27
+	- org.springframework:spring-web from 5.3.26 to 5.3.27
+
+#### Early access
+
+This release does not include early access features. 
+
+#### Fixed issues
+
+- The ASG Rollback auto-scaling step failed with an exception. (CDS-68533, ZD-43354)
+  
+  Fixed this issue by adding a back-off strategy support for ASG deployments.
+- Fixed an issue where perpetual tasks corresponding to a non-existing service was still running. (CDS-58137)
+- The feature flag, `CG_GIT_POLLING` was creating too many queries in yamlGitConfig. (CDS-45085)
+  
+  This issue is fixed. Git polling for Git sync now works via a different internal method where Harness polls for a feature flag change once every 30 minutes, and then continue polling on accounts for which feature flags are enabled.
+
+- Executions were failing with `Canary failed: [Canary Deployment failed - NoSuchMethodError: org.yaml.snakeyaml.constructor.SafeConstructor: method 'void <init>()' not found ]` error message. (CDS-68293, ZD-43753, ZD-43769)
+  
+  The Fabric8 library used by Harness is upgraded from version 5.x to 6.x. Harness was explicitly using snake.yaml version 2.x due to vulnerabilities present in the 1.x version.
+  
+  Harness' usages of Fabric8 library were throwing the above mentioned because Fabric8 library version 5.12.1 uses the old snake.yaml library version 1.x.
+
+  Customers who were using the following were affected:
+    - FirstGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - FirstGen Traffic Split step.
+    - FirstGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+    - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+
+  This issue is fixed in the Harness Delegate version 79307. This change does not create any behavioral changes. 
+- Null pointer exception occurs when generating audit events for user groups with null values. (PL-32144)
+- No members appear in user group list even after the user has been added via SCIM. (PL-32482)
 
 ### May 04, 2023, version 79214
 
@@ -31,6 +186,8 @@ This release does not include early access features.
 - Resolved a null pointer exception when the Canary Deployment step is initialized with the Helm manifest type. (CDS-59214)
 - Users cannot use Harness secret as LDAP password in FirstGen. (PL-32597, ZD-42655)
   A code enhancement fixed the issue.
+
+  The user group list now displays the number of users in the group. Select this number to see the user details. This is behind the feature flag `PL_CG_SHOW_MEMBER_ID_COUNT`.
 
 ### April 22, 2023, version 79111
 

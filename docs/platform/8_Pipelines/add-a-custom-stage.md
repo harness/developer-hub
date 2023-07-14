@@ -46,6 +46,7 @@ The following video provides a quick overview of the Custom stage.
 In your Pipeline, click **Add Stage**, and then click **Custom Stage**.
 
 ![](./static/add-a-custom-stage-58.png)
+
 Enter a name for the stage. Harness automatically adds an Id ([Entity Identifier](../20_References/entity-identifier-reference.md)) for the stage.
 
 Click **Set Up Stage**.

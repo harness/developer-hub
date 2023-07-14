@@ -142,37 +142,37 @@ Listed below is the probe schema for the Prometheus probe, with properties share
   <tr>
    <td>type
    </td>
-   <td>Flag to hold type of the data used for comparision
+   <td>Flag to hold type of the data used for comparison
    </td>
-   <td>Mandatory
+   <td>Optional
    </td>
-   <td><code>string, int, float</code>
+   <td><code>float</code>
    </td>
-   <td>The <code>type</code> contains type of data, which should be compare as part of comparision operation.
+   <td>The <code>type</code> contains type of data, which should be compared as part of comparison operation. Prometheus probe only compares with float data.
    </td>
   </tr>
   <tr>
    <td>criteria
    </td>
-   <td>Flag to hold criteria for the comparision
+   <td>Flag to hold criteria for the comparison
    </td>
    <td>Mandatory
    </td>
-   <td>it supports <code>{`>=, <=, ==, >, <, !=, oneOf, between`}</code> for int & float type. And <code>{`equal, notEqual, contains, matches, notMatches, oneOf`}</code> for string type.
+   <td>It supports <code>{`>=, <=, ==, >, <, !=, oneOf, between`}</code> for int & float type. And <code>{`equal, notEqual, contains, matches, notMatches, oneOf`}</code> for string type.
    </td>
-   <td>The <code>criteria</code> contains criteria of the comparision, which should be fulfill as part of comparision operation.
+   <td>The <code>criteria</code> contains criteria of the comparison, which should be fulfill as part of comparison operation.
    </td>
   </tr>
   <tr>
    <td>value
    </td>
-   <td>Flag to hold value for the comparision
+   <td>Flag to hold value for the comparison
    </td>
    <td>Mandatory
    </td>
    <td>N/A <code>type: string</code>
    </td>
-   <td>The <code>value</code> contains value of the comparision, which should follow the given criteria as part of comparision operation.
+   <td>The <code>value</code> contains value of the comparison, which should follow the given criteria as part of comparison operation.
    </td>
   </tr>
 </table>
@@ -276,7 +276,7 @@ probe:
       endpoint: "<prometheus-endpoint>"
       query: "<promql-query>"
       comparator:
-        criteria: "==" #supports >=,<=,>,<,==,!= comparision
+        criteria: "==" #supports >=,<=,>,<,==,!= comparison
         value: "<value-for-criteria-match>"
     mode: "Edge"
     runProperties:

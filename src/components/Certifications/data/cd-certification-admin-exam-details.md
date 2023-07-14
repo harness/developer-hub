@@ -1,9 +1,10 @@
-** (BETA Coming Soon) ** The Continuous Delivery Administrator exam tests your knowledge and skills of the Harness Continuous Delivery module.  
+** (BETA) ** The Continuous Delivery & GitOps Administrator exam tests your knowledge and skills of the Harness Continuous Delivery module.  
 
 ## Prerequisites
 
 - Basic terminal skills
 - Intermediate understanding of on-premise or cloud architecture
+- This exam builds upon the [Continuous Delivery & GitOps Developer Exam](/certifications/continuous-delivery?lvl=developer)
 
 ## Exam Details
 | Exam Type                               | Duration         |
@@ -107,10 +108,10 @@ The following is a detailed list of exam objectives:
 
 ## Next Steps
 
-The Continuous Delivery Administrator exam can start immediately after registering. Please allow 90 mins for the knowledge exam and approximately 2 hours for the hands on exam.
+The Continuous Delivery Administrator exam can start immediately after registering. Please allow up to 90 mins for the knowledge exam and up to 2 hours for the hands on exam.
 
 1. Create an account in Harness University
-2. Register for an exams 
+2. Register for an exam. There is a $50 fee for the exam
 3. Review the [instructions for the Hands On Exam](/certifications/instructions)
 4. Take the exams
     1. There will be a knowledge and hands on portion.	

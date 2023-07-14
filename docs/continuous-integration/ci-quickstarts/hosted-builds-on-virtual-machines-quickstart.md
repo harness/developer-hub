@@ -21,7 +21,7 @@ Harness Cloud provides the following advantages:
 
 [Sign up now](https://harness.io/products/continuous-integration) to get started.
 
-You can also use your own Kubernetes, VM, or local build infrastructure. For a comparison of build infrastructure options, go to [Which build infrastructure is right for me?](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md)
+You can also use your own Kubernetes, VM, or local build infrastructure. For a comparison of build infrastructure options, go to [Which build infrastructure is right for me](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 ## What happens when pipelines run on Harness Cloud?
 

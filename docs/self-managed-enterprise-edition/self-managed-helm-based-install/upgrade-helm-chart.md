@@ -1,7 +1,7 @@
 ---
 title: Upgrade the Helm chart
 description: Learn how to upgrade the Helm chart for Harness Self-Managed Enterprise Edition. 
-# sidebar_position: 4
+sidebar_position: 6
 ---
 
 Use the following instructions to upgrade the chart to a new release. 
@@ -17,7 +17,7 @@ Use the following instructions to upgrade the chart to a new release. 
    $ helm get values my-release > old_values.yaml
    ```
 
-3. Change the values of the old\_values.yaml file as required.
+3. Change the values of the `old\_values.yaml` file as required.
 
 4. Use the `helm upgrade` command to update the chart. 
 

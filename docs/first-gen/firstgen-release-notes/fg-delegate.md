@@ -2,13 +2,106 @@
 
 These release notes document changes to Harness Delegate in Harness FirstGen.
 
-:::note
-Harness deploys changes to Harness SaaS clusters on a progressive basis. This means the features and fixes that these release notes describe might not be immediately available in your cluster. 
+Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
-To identify the cluster that hosts your account, open Harness FirstGen and go to **Account Settings**. Then click **Overview**. The cluster is listed in **Harness Cluster Hosting Account**.
+:::info note
+Harness deploys changes to Harness SaaS clusters on a progressive basis. This means the features and fixes that these release notes describe might not be immediately available in your cluster.
+
+To identify the cluster that hosts your account, open Harness FirstGen, go to **Account Settings**, and then select **Overview**. The cluster is listed in **Harness Cluster Hosting Account**.
 :::
 
-For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, see [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
+For FirstGen SaaS release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, go to [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
+
+
+## Latest - June 28, 2023, Harness version 79714, Harness Delegate version 79707
+
+### Deprecation notice
+
+import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
+
+<Helmdep />
+
+### What's new
+
+- When a delegate token is revoked, Harness now sends `SELF_DESTRUCT` to all delegates that are using the revoked token. (PL-38957)
+
+- Upgraded the delegate JRE to 11.0.19_7. (PL-37994) 
+
+### Early access
+
+This release does not include any new early access features.
+
+### Fixed issues
+
+- Kubernetes deployments timed out and failed when listing pods. (CDS-71328, ZD-45584)
+
+  This issue is fixed by modifying the delegate's Kubernetes API client timeout. 
+
+  Harness Delegate uses Kubernetes Java client to make programmatic API calls to the Kubernetes server. The API client uses an OkHttp client whose default [read timeout](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/read-timeout/) and [connect timeout](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/connect-timeout/) values are set to 120 and 60 seconds respectively. These values can be configured by using environment variables, modifying the delegate's container environment. The values must be specified in seconds. 
+
+  The environment variables for these timeouts are:
+
+  - Read timeout: `K8S_API_CLIENT_READ_TIMEOUT`
+  - Connect timeout: `K8S_API_CLIENT_CONNECT_TIMEOUT`
+
+- Helm delegate installation failed in Self-Managed Enterprise Edition. (PL-39028)
+
+   This issue is fixed with a code enhancement. The `DELPOY_MODE` is now set to `KUBERNETES_ONPREM` for Self-Managed Enterprise Edition Docker and Helm delegates.
+
+## June 9, 2023, Harness version 79514, Harness Delegate version 79503
+
+### What's new
+
+- Enhanced the application handling mechanism when the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE`. (CDS-68821)
+
+  When the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE` for any of the releases of an application, Harness starts looking for the application that has the same name as the release name. This ensures that the correct active application is always picked in case the `HARNESS__STATUS__IDENTIFIER` is removed.
+
+### Early access 
+
+This release does not include any new early access features.
+
+### Fixed issues
+
+- Helm execution failed with `KubernetesClientException` error. (CDS-70386, ZD-45051)
+
+  The Kubernetes GET APIs returned a 400 bad request during steady state check. This was occurring when Harness used a fabric8 client with Kubernetes cluster version < 1.16, or when the feature flag, `HELM_STEADY_STATE_CHECK` is turned off. 
+
+  This issue is fixed.
+
+## May 23, 2023, Harness version 79306, Harness Delegate version 79307
+
+Harness FirstGen release 79306 includes the following feature changes and fixes for the Harness Delegate.
+
+### What's new
+
+This release does not include any new features.
+
+### Early access 
+
+This release does not include any new early access features. 
+
+### Fixed issues
+
+- Executions were failing with `Canary failed: [Canary Deployment failed - NoSuchMethodError: org.yaml.snakeyaml.constructor.SafeConstructor: method 'void <init>()' not found ]` error message. (CDS-68293, ZD-43753, ZD-43769)
+  
+  The Fabric8 library used by Harness is upgraded from version 5.x to 6.x. Harness was explicitly using snake.yaml version 2.x due to vulnerabilities present in the 1.x version.
+  
+  Harness' usages of Fabric8 library were throwing the above mentioned because Fabric8 library version 5.12.1 uses the old snake.yaml library version 1.x.
+
+  Customers who were using the following were affected:
+    - FirstGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - FirstGen Traffic Split step.
+    - FirstGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+    - NextGen Kubernetes deployments that contain Istio's VirtualService/DestinationRule objects.
+    - NextGen Native Helm deployments with Kubernetes cluster version 1.16 or earlier.
+
+  This change does not create any behavioral changes.
+
+- Secret decryption failures were not included in logs. (PL-31517)
+
+  A code enhancement to return runtime errors from secret managers during decryption fixed this issue.
+
+- The org.json:json is upgraded from version 20160810 to 20230227 to address vulnerabilities. (PL-37905)
 
 ## April 22, 2023, Harness version 79111, Harness Delegate version 79106
 

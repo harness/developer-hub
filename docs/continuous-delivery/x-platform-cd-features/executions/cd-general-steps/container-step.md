@@ -361,8 +361,103 @@ For example, you can set **Value** as an expression and reference the value of s
 </Tabs>
 ```
 
-### Delegate selector
-By default, the [infrastructure connector delegate selector](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/) is considered for step execution unless overridden by a step, stage or pipeline level delegate selector.
+### Select the Operating System
+
+Select the OS for the container.
+
+### Volumes
+
+This setting is the same as Kubernetes volumeMounts. Harness supports Host Path (hostPath), Empty Directory (emptyDir), and Persistent Volume Claim (persistentVolumeClaim).
+
+### Service Account Name
+
+Specify a Kubernetes service account for step containers to use when communicating with the Kubernetes API server. Leave blank to use the namespace's default service account.
+
+### Automount Service Account Token
+
+An application running inside a pod can access the Kubernetes API using automatically mounted service account credentials. See [Accessing the Cluster](https://kubernetes.io/docs/tasks/access-application-cluster/access-cluster/) to learn more.
+
+To use a different service account, enter its name here.
+
+### Labels
+
+Enter any labels to apply to the pods.
+
+### Annotations
+
+Enter any annotations to apply to the pods.
+
+### Privileged
+
+The standard `privileged` property for Kubernetes `securityContext`.
+
+When this setting is enabled, it grants the container elevated privileges within the underlying host environment. This means that the container has access to all Linux kernel capabilities and devices, similar to running processes outside the container. It effectively removes the isolation provided by the container runtime and can potentially pose security risks if not used carefully.
+
+### Allow Privilege Escalation
+
+The standard `allowPrivilegeEscalation` property for Kubernetes `securityContext`.
+
+When this setting in enabled, it allows the container to gain additional privileges beyond those initially granted during container startup.
+
+### Add Capabilities
+
+The standard `add` setting for the `capabilities` property in the Kubernetes `securityContext`.
+
+### Drop Capabilities
+
+The standard `drop` setting for the `capabilities` property in the Kubernetes `securityContext`.
+
+### Run as Non Root
+
+Enable this setting to run the container as a non-root user.
+
+### Read-only Root Filesystem
+
+The standard `readOnlyRootFilesystem` setting for the `securityContext` property.
+
+Enable this setting to ensure that the root filesystem of the container is mounted as read-only.
+
+### Run as User
+
+The standard `runAsUser` setting for the `securityContext` property.
+
+Specify the user ID (UID) under which the container should run.
+
+### Priority Class
+
+The standard Kubernetes `PriorityClass`.
+
+Enter a standard `priorityClassName` like `system-node-critical`.
+
+### Node Selector
+
+The standard Kubernetes `nodeSelector`.
+
+Enter a key like `disktype` and and value like `ssd`.
+
+### Tolerations
+
+The standard Kubernetes `tolerations`. Use the settings to specify that a pod can tolerate (or ignore) the effects of node taints.
+
+### Init Timeout
+
+The standard Kubernetes `timeoutSeconds` for `initContainers`.
+
+### Override Image Connector
+
+By default, at pipeline runtime, Harness pulls certain images from public Docker Hub repos. These images are only used for backend processes. At runtime, the Harness Delegate makes an outbound connection to the public repo and pulls the images.
+
+The Harness Container Image Registry is dedicated exclusively to Harness-supported images. 
+
+You might want to override the default behavior and download your build images from this repo instead. To view the list of images in this registry, enter the following command.
+
+```
+curl -X  GET https://app.harness.io/registry/_catalog
+```
+
+Add or select a connector to use instead of the default connector uses for the Harness Container Image Registry.
+
+For more information, go to [Connect to Harness container image registry Using Docker connector](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/).
 
 ## Advanced settings
 
