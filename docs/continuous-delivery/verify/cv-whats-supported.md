@@ -42,7 +42,7 @@ Harness CV supports the following log management tools:
 - Splunk Observability
 - Sumologic
 
-Harness supports most of the popular log management tools, but there may be an instance where Harness does not have a native connector. Using the **Harness Custom Health Source** feature, you can integrate such log management tools with Harness.
+Harness supports most of the popular log management tools, but there may be instances where Harness don't have a native connector. Using the **Harness Custom Health Source** feature, you can integrate such log management tools with Harness.
 
 
 ### Queries
