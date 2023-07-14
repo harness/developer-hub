@@ -13,6 +13,7 @@ import TabItem from '@theme/TabItem';
 import delete_project from './static/delete-project.png'
 ```
 <CustomButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/self-managed-enterprise-edition/rss.xml" />
+
 Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes).
 
 Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
