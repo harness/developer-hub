@@ -14,6 +14,7 @@ import delete_project from './static/delete-project.png'
 ```
 
 <CustomButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-error-tracking/rss.xml" />
+
 Review the notes below for details about recent changes to Continuous Error Tracking.
 
 :::info note
