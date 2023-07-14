@@ -36,7 +36,16 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
   <TabItem value="What's new">
 ```
 
-This release does not include new features.
+- The Execution Logs have been enhanced to include additional details such as duration, task ID, and more. To help in easier understanding and debugging of CV Steps, SRM Live monitoring, and SLI. (OIP-565)
+
+- Formula integration for Datadog metrics has been introduced, providing support for combining metrics. (OIP-568)
+
+- The Splunk connector has been enhanced to include support for Bearer Token. (OIP-598)
+
+- The List Tokens API now supports listing all the personal access tokens or service account tokens in the account. The API has been enhanced as follows:
+   1. Users who have user management permissions can list all the Personal Access Tokens in the account. They can also filter tokens belonging to a user or filter only active tokens.
+   2. Users who have service account management permissions can list all the service account tokens in the account. They can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
+
 
 ```mdx-code-block
   </TabItem>
@@ -69,6 +78,8 @@ This release does not include new features.
 
   The issue occurred with newline characters while encoding config files. This is fixed and Harness now replaces newline characters with unicode.
 
+- WIP (PL-32537)
+
 - The Tokens list page returned a display error when tokens were present and there were multiple pages of results. (PL-36734)
 
   A code enhancement to reset the pagination on the Tokens list page after any token is deleted fixed this issue. Previously, if you deleted the last token on any page after the first page, the page displayed an empty result list.
@@ -84,6 +95,21 @@ This release does not include new features.
 - The delegate token list result from the `DelegateTokenStatus` API endpoint displayed all values as `null`. (PL-39440)
 
    A code enhancement for the `DelegateTokenStatus` endpoint to return token values even when token details are not fetched by token name fixed this issue. Token values only populate when the user has edit delegate permission. If the user doesn't have edit delegate permission, the value remains `null`.
+
+- Account-level connectors with resource groups set to **Specified** were not available at the project-level. (PL-38828, ZD-44474). 
+
+  This issue is fixed with a code enhancement. The connectors list now shows the connectors for which users have resource group permissions set.
+
+- The AWS connector widget's prefix field did not accept prefixes starting with a slash. Such slashes were stripped off, and this led to undesired behavior. (PL-39194, ZD-45104)
+
+   Prefixes that begin with a slash are now supported.
+
+- You could not create Azure Key Vault connectors in Harness NextGen even when you used the service principal credentials that successfully created Azure Key Vault connectors in Harness FirstGen. After you entered the service principal credentials, the Vault setup window stopped responding. After several minutes, the following message is displayed: None of the active delegates were available to complete the task. ==> : 'Missing capabilities: [https:null.vault.azure.net]' (PL-39783, ZD-46756)
+
+   This issue is now fixed.
+
+
+
 
 
 ```mdx-code-block
