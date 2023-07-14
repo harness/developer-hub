@@ -46,6 +46,8 @@ This release introduces the following new features and enhancements:
 
 - The delegate JRE is upgraded to 11.0.19_7. (PL-37994)
 
+- When a delegate token is revoked, Harness now sends `SELF_DESTRUCT` to all delegates that are using the revoked token. (PL-38957)
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
