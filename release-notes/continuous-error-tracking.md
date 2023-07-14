@@ -72,7 +72,7 @@ This release does not include any early access features.
 
 ##### Fixed issues
 
-- Unable to edit notifications created in the SRM module when using the CET module.(CET-1295)
+- Notifications created in the SRM module could not be edited when using the CET module.(CET-1295)
 
   This issue has been resolved. Now, you can edit notifications within the CET module, even if they were originally created in the SRM module.
 
