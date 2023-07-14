@@ -21,6 +21,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - July 14, 2023
 
+### Harness Platform, version 799xx
+
 - The Go library has been upgraded from 1.20.4 to 1.20.5. (PL-39700)
 
   The upgrade fixes the following CVEs:
