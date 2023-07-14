@@ -779,7 +779,7 @@ This release does not include early access features.
 - OSX CI builds were failing randomly in case multiple builds are running in parallel. Issue was builds were executing on the incorrect vms. This issue has been resolved. The OSX VM builds now works correctly in runner 1.0.0-rc.7 or above tag. (CI-4935)
 - Fix to ensure that pushing to ECR works as intended. Build and Push step when set up with IAM role now works as intended during build pipeline execution step. (CI-4921, ZD-30346, ZD-32243, ZD-32333, ZD-32398, ZD-33155)
 - Fixed an issue where Harness Bitbucket hook did not publish the build status back to the Bitbucket repository. (CI-4898, ZD-32133)
-- UI fix: When a user switches between Stages, the selected tab is persitent between the previous and the current stage. (CI-4882)
+- UI fix: When a user switches between Stages, the selected tab is persistent between the previous and the current stage. (CI-4882)
 - Fixed an issue where the CI pipeline could not schedule pod due to memory allocation. (CI-4880, ZD-32118)
 
 #### July 18, 2022, version 75921

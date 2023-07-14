@@ -24,9 +24,9 @@ Here are some examples of Harness CI images and the purpose of each image. Build
 * `harness/ci-lite-engine`: Used to orchestrate execution of steps on Kubernetes pods
 * `harness/drone-git`: Used to clone git repos
 * `plugins/cache`: Used to cache files to/from S3/GCS that help to expedite builds
-* `plugins/kaniko`: Used to build Docker images with the kaniko framework and push images to Docker registry out of the box
-* `plugins/kaniko-ecr`: Used to build Docker images with the kaniko framework and push images to AWS ECR registry out of the box
-* `plugins/kaniko-gcr`: Used to build Docker images with the kaniko framework and push images to GCP GCR registry out of the box
+* `plugins/kaniko`: Used to build Docker images with the kaniko framework and push images to Docker registry out of the box for Kubernetes cluster build infrastructures.
+* `plugins/kaniko-ecr`: Used to build Docker images with the kaniko framework and push images to AWS ECR registry out of the box for Kubernetes cluster build infrastructures.
+* `plugins/kaniko-gcr`: Used to build Docker images with the kaniko framework and push images to GCP GCR registry out of the box for Kubernetes cluster build infrastructures.
 * `plugins/s3`: Used to upload files to AWS S3 buckets out of the box
 * `plugins/gcs`: Used to upload files to GCP GCS service out of the box
 
