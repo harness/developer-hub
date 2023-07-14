@@ -80,7 +80,13 @@ You can add a step at various points in the pipeline, such as the beginning, end
    
    The maximum timeout value you can set is **53w**. You can also set timeouts at the pipeline level.
 
-3. Expand **Optional** and specify the desired **Control Nodes** and **Test Nodes** that Harness CV should consider for analysis. When dealing with a large number of nodes, you can optimize the analysis process by filtering the nodes that need to be examined using CV. This can be done by specifying control nodes (nodes against which the test nodes are verified) and test nodes (the nodes that CV tests). You can enter either a specific node name or use a regular expression (Regex) to define the nodes to be filtered.
+**Node filtering**
+
+:::info note
+Currently, this feature is behind the feature flag SRM_SUMO. Contact Harness Support to enable the feature.
+:::
+
+Expand **Optional** and specify the desired **Control Nodes** and **Test Nodes** that Harness CV should consider for analysis. When dealing with a large number of nodes, you can optimize the analysis process by filtering the nodes that need to be examined using CV. You can do this by specifying control nodes (nodes against which the test nodes are verified) and test nodes (the nodes that CV tests). You can enter either a specific node name or use a regular expression (Regex) to define the nodes to be filtered.
 
  
 ## Select a continuous verification type, sensitivity, and duration
