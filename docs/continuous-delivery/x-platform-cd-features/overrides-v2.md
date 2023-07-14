@@ -6,7 +6,7 @@ sidebar_position: 300
 
 :::info
 
-Currently, this feature beta and is behind the feature flag, `CDS_SERVICE_OVERRIDES_2_0`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, this is a beta feature and is behind the feature flag, `CDS_SERVICE_OVERRIDES_2_0`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::  
 
@@ -30,7 +30,7 @@ Make sure that the `NG_SETTINGS` feature flag is enabled to view this setting.
 
 ## Migrating to overrides V2
 
-Currently, Harness migrates the existing override configuration to the new version using back end APIs. The existing override scope or scope with all child scopes are migrated based on the requirement. 
+Currently, Harness migrates the existing override configuration to the new version using back-end APIs. The existing override scope or scope with all child scopes are migrated based on the requirement. 
 
 Harness anticipates adding a Migrate button in the UI to migrate to the new override configuration in the future. 
 
@@ -98,7 +98,7 @@ You can override one or more settings for all services, environments, and infras
    - **Infrastructure Specific** 
    - **Service & Infrastructure Specific** 
 3. Select **New Override**.
-4. Select a project, organization, or account level override.
+4. Select a project, organization, or account-level override.
 5. In **Override Type**, select one of the following override types:  
    - Variable
    - Manifest
