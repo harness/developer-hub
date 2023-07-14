@@ -66,6 +66,4 @@ You can install the Harness app in your ServiceNow instance from the ServiceNow 
 
 ## Custom table support
 
-:::
-
 For details, go to **Custom table support** in [Create ServiceNow tickets in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/ticketing-systems/create-service-now-tickets-in-cd-stages#custom-table-support).
