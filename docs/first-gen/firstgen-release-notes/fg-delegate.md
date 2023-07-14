@@ -13,7 +13,7 @@ To identify the cluster that hosts your account, open Harness FirstGen, go to **
 For FirstGen SaaS release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, go to [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
 
 
-## Latest - July, 13 2023, Harness version 799xx, Harness Delegate version 799xx
+## Latest - July, 17 2023, Harness version 799xx, Harness Delegate version 799xx
 
 ### Deprecation notice
 
@@ -23,7 +23,7 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
 ### What's new
 
-
+- The ubi8-minimal:8.7 image has been upgraded to ubi8-minimal:8.8. (PL-39720, PL-39276)
 
 ### Early access
 
@@ -31,7 +31,7 @@ This release does not include any new early access features.
 
 ### Fixed issues
 
-
+This release does not include any fixed issues.
 
 ## June 28, 2023, Harness version 79714, Harness Delegate version 79707
 
