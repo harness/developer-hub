@@ -133,6 +133,8 @@ For information on how to set up this workflow, go to [Configure STO to Download
 
 - Upgraded the delegate JRE to 11.0.19_7. (PL-37994)
 
+- When a delegate token is revoked, Harness now sends `SELF_DESTRUCT` to all delegates that are using the revoked token. (PL-38957)
+
 ## June 21, 2023
 
 ### Cloud Cost Management, version 79803
