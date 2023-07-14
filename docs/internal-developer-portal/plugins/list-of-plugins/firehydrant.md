@@ -1,11 +1,11 @@
 ---
-title: Firehydrant plugin
+title: FireHydrant plugin
 description: View service incidents information from FireHydrant, such as active incidents and incident metrics.
 ---
 
 | Plugin details |                                                                                            |
 | -------------- | ------------------------------------------------------------------------------------------ |
-| **Created by** | [Firehydrant](https://firehydrant.com/)                                                    |
+| **Created by** | [FireHydrant](https://firehydrant.com/)                                                    |
 | **Category**   | Incident management                                                                        |
 | **Source**     | [GitHub](https://github.com/backstage/backstage/blob/master/plugins/firehydrant/README.md) |
 | **Type**       | Open-source plugin                                                                         |
@@ -16,7 +16,7 @@ description: View service incidents information from FireHydrant, such as active
 
 _No action required_
 
-This plugin requires a backend proxy configuration to make calls to Firehydrant with authentication. The following configuration is set by default and you do not need to change anything:
+This plugin requires a backend proxy configuration to make calls to FireHydrant with authentication. The following configuration is set by default and you do not need to change anything:
 
 ```yaml
 proxy:
@@ -31,13 +31,13 @@ proxy:
 
 ### Secrets
 
-Since the `FIREHYDRANT_TOKEN` variable is used in the application configuration, you must generate a Firehydrant API token and set it as the value of `FIREHYDRANT_TOKEN`. You can do this in your [Firehydrant app](https://app.firehydrant.io/organizations/bots).
+Since the `FIREHYDRANT_TOKEN` variable is used in the application configuration, you must generate a FireHydrant API token and set it as the value of `FIREHYDRANT_TOKEN`. You can do this in your [FireHydrant app](https://app.firehydrant.io/organizations/bots).
 
 ### Delegate proxy
 
 _No action required_
 
-This plugin does not require a delegate proxy to be set up because Firehydrant is publicly accessible.
+This plugin does not require a delegate proxy to be set up because FireHydrant is publicly accessible.
 
 ## Layout
 
@@ -59,4 +59,4 @@ metadata:
 
 ## Support
 
-The plugin is owned by Firehydrant and managed in the [Backstage repository](https://github.com/backstage/backstage) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
+The plugin is owned by FireHydrant and managed in the [Backstage repository](https://github.com/backstage/backstage) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
