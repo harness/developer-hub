@@ -88,10 +88,6 @@ You can override Application Settings and Connection Strings from **Global Envir
 
 ## Override methods
 
-Harness supports the following override methods:  
-
-
-
 1. In **Deployments**, select your project, and then select **Overrides**.
    ![](./static/overrides-v2-1.png)
 2. Select an override method:  
