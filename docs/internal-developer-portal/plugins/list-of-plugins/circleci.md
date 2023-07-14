@@ -7,15 +7,15 @@ title: CircleCI
 | **Created by** | Spotify                                                                       |
 | **Category**   | CI/CD                                                                         |
 | **Source**     | [GitHub](https://github.com/backstage/backstage/tree/master/plugins/circleci) |
-| **Type**       | Open Source plugin                                                            |
+| **Type**       | Open-source plugin                                                            |
 
 ## Configuration
 
-### 1. App config YAML
+### Application configuration YAML
 
 _No action required_
 
-This plugin needs a backend proxy config to make calls to CircleCI with authentication. This is set by default and you do not need to change anything here.
+This plugin requires a backend proxy configuration to make calls to CircleCI with authentication. The following configuration is set by default and you do not need to change anything:
 
 ```yaml
 proxy:
@@ -27,19 +27,19 @@ proxy:
       Circle-Token: ${CIRCLECI_AUTH_TOKEN}
 ```
 
-### 2. Secrets
+### Secrets
 
-Since `CIRCLECI_AUTH_TOKEN` variable is used in the app config, you need to generate a CircleCI API token and set it as a secret value of `CIRCLECI_AUTH_TOKEN`. [Read the instructions](https://circleci.com/docs/api/#add-an-api-token) on how to create a CircleCI API token.
+Since the `CIRCLECI_AUTH_TOKEN` variable is used in the application configuration, you must generate a CircleCI API token and set it as the value of `CIRCLECI_AUTH_TOKEN`. For information about how to create a CircleCI API token, go to the [instructions](https://circleci.com/docs/api/#add-an-api-token).
 
-### 3. Delegate proxy
+### Delegate proxy
 
 _No action required_
 
-This plugin does not need a delegate proxy to be setup since CircleCI can be accessed publicly on the cloud.
+This plugin does not require a delegate proxy to be set up because CircleCI is publicly accessible.
 
 ## Layout
 
-This plugin exports a UI Tab which can be added as a new "CI/CD" tab of a service or any other layout pages. Go to the layout section from **Admin** -> **Layout**, choose **Service** from the dropdown and add the following in the **CI/CD** section.
+This plugin exports a UI tab that you can use as a new CI/CD tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in the **CI/CD** section:
 
 ```yaml
 - name: ci-cd
@@ -65,7 +65,7 @@ The `isCircleCIAvailable` condition is met when the `circleci.com/project-slug` 
 
 ## Annotations
 
-In order to configure the plugin for a service in the software catalog, the following annotation must be set in its `catalog-info.yaml` definition file.
+To configure the plugin for a service in the software catalog, set the following annotation in its `catalog-info.yaml` definition file:
 
 ```yaml
 metadata:
@@ -76,4 +76,4 @@ metadata:
 
 ## Support
 
-The plugin is owned by Spotify and managed in the [Backstage repository](https://github.com/backstage/backstage) as an Open Source project. Create a GitHub issue to report bugs or suggest new features on the plugin.
+The plugin is owned by Spotify and managed in the [Backstage repository](https://github.com/backstage/backstage) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.

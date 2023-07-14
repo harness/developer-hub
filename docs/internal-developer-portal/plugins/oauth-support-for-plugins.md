@@ -1,18 +1,20 @@
 ---
 title: OAuth support for plugins
-sidebar_label: OAuth support for plugin
+sidebar_label: OAuth support
 description: Some plugins in IDP use OAuth to authenticate the logged in user against the plugin provider.
 sidebar_position: 30
 ---
 
-Some plugins and other parts of IDP do not use a fixed API key to communicate to providers like GitHub or Google. These plugins require the user to login using their GitHub/Google accounts and use the user's credentials to fetch data. This is the recommended approach for building Backstage plugins because
+Some plugins and other parts of IDP do not use a fixed API key to communicate with providers such as GitHub or Google. These plugins require the user to log in using their GitHub/Google accounts and use the user's credentials to fetch data. This is the recommended approach for building Backstage plugins, for the following reasons:
 
-1. Access Control is taken care of as the plugin makes requests on behalf of the user, rather than a general-purpose service account.
-2. Rate limiting is avoided - using a single token to authenticate all IDP users quickly results in hitting the API rate limit set by the provider.
-3. By federating access, there is no need to create one general purpose service account with access to all the systems. This is a safer security practice.
+1. Access control is taken care of because the plugin, rather than a general-purpose service account, makes requests on behalf of the user.
+2. API rate limits are no longer an issue. Using a single token to authenticate all IDP users in a short period of time can result in rate limits set by the provider being exceeded.
+3. Access is federated, so there is no need to create one general purpose service account with access to all systems. This is a safer security practice.
 
-In order to facilitate the OAuth login support for GitHub or Google based plugins, you as a platform engineer, can create GitHub or Google OAuth apps and configure it within IDP.
+To facilitate OAuth login support for GitHub or Google-based plugins, you, as a platform engineer, can create GitHub or Google OAuth applications and configure them in IDP.
 
-Navigate to **Admin** -> **OAuth Configurations** page in the IDP module. On this page, you will be able to find clear instructions on how to create either a GitHub OAuth app or a Google OAuth app. After creating the app and setting the client ID and client secret in IDP, plugins depending on OAuth, for example, [GitHub Actions](./list-of-plugins/github-actions.md) will open a **Login to GitHub** popup for the user, when they visit the catalog page with the plugin enabled.
+To create a GitHub or Google OAuth application, go to **Admin** > **OAuth Configurations**, and them follow the instructions on the page.
+
+After you create the application, plugins that depend on OAuth (for example, [GitHub Actions](./list-of-plugins/github-actions.md)) display a **Login to GitHub** dialog for users who visit the catalog page with the plugin enabled.
 
 ![](./static/oauth%20configurations%20page.png)

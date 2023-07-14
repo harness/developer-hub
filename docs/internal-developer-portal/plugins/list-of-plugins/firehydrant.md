@@ -1,6 +1,6 @@
 ---
 title: Firehydrant plugin
-description: View service incidents information from FireHydrant, such as active incidents and incident metrics, directly within Backstage.
+description: View service incidents information from FireHydrant, such as active incidents and incident metrics.
 ---
 
 | Plugin details |                                                                                            |
@@ -8,15 +8,15 @@ description: View service incidents information from FireHydrant, such as active
 | **Created by** | [Firehydrant](https://firehydrant.com/)                                                    |
 | **Category**   | Incident management                                                                        |
 | **Source**     | [GitHub](https://github.com/backstage/backstage/blob/master/plugins/firehydrant/README.md) |
-| **Type**       | Open Source plugin                                                                         |
+| **Type**       | Open-source plugin                                                                         |
 
 ## Configuration
 
-### 1. App config YAML
+### Application configuration YAML
 
 _No action required_
 
-This plugin needs a backend proxy config to make calls to Firehydrant with authentication. This is set by default and you do not need to change anything here.
+This plugin requires a backend proxy configuration to make calls to Firehydrant with authentication. The following configuration is set by default and you do not need to change anything:
 
 ```yaml
 proxy:
@@ -29,19 +29,19 @@ proxy:
       Authorization: Bearer ${FIREHYDRANT_TOKEN}
 ```
 
-### 2. Secrets
+### Secrets
 
-Since `FIREHYDRANT_TOKEN` variable is used in the app config, you need to generate a Firehyrant API token and set it as a secret value of `FIREHYDRANT_TOKEN`. You can do this on your [Firehydrant app](https://app.firehydrant.io/organizations/bots).
+Since the `FIREHYDRANT_TOKEN` variable is used in the application configuration, you must generate a Firehydrant API token and set it as the value of `FIREHYDRANT_TOKEN`. You can do this in your [Firehydrant app](https://app.firehydrant.io/organizations/bots).
 
-### 3. Delegate proxy
+### Delegate proxy
 
 _No action required_
 
-This plugin does not need a delegate proxy to be setup since Firehyrant can be accessed publicly on the cloud.
+This plugin does not require a delegate proxy to be set up because Firehydrant is publicly accessible.
 
 ## Layout
 
-This plugin exports a UI Card which can be shown on the **Overview** tab of a service or any other layout pages. Go to the layout section from **Admin** -> **Layout**, choose **Service** from the dropdown and add the following in the **Overview** section.
+This plugin exports a UI card that you can show on the **Overview** tab of a service or on any other layout page. Go to **Admin** > **Layout**, choose **Service** in the dropdown menu, and then add the following YAML code in the **Overview** section:
 
 ```yaml
 - component: FirehydrantCard
@@ -49,7 +49,7 @@ This plugin exports a UI Card which can be shown on the **Overview** tab of a se
 
 ## Annotations
 
-In order to further configure the plugin for a service in the software catalog, the following annotation can be set in its `catalog-info.yaml` definition file.
+To further configure the plugin for a service in the software catalog, set the following annotation in its `catalog-info.yaml` definition file:
 
 ```yaml
 metadata:
@@ -59,4 +59,4 @@ metadata:
 
 ## Support
 
-The plugin is owned by Firehydrant and managed in the [Backstage repository](https://github.com/backstage/backstage) as an Open Source project. Create a GitHub issue to report bugs or suggest new features on the plugin.
+The plugin is owned by Firehydrant and managed in the [Backstage repository](https://github.com/backstage/backstage) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.

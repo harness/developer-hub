@@ -9,15 +9,15 @@ hidden: true
 | **Created by** | Harness                                                |
 | **Category**   | Feature flags                                          |
 | **Source**     | [GitHub](https://github.com/harness/backstage-plugins) |
-| **Type**       | Open Source plugin                                     |
+| **Type**       | Open-source plugin                                     |
 
 ## Configuration
 
-### 1. App config YAML
+### Application configuration YAML
 
 _No action required_
 
-This plugin needs a backend proxy config to make calls to Harness APIs with authentication. This is set by default and you do not need to change anything here.
+This plugin requires a backend proxy configuration to make calls to Harness APIs with authentication. The following configuration is set by default and you do not need to change anything:
 
 ```yaml
 proxy:
@@ -29,19 +29,19 @@ proxy:
       - authorization
 ```
 
-### 2. Secrets
+### Secrets
 
-No secrets are required for this plugin since both IDP and Feature Flags are part of Harness.
+No secrets are required for this plugin because both IDP and Feature Flags are part of the Harness software delivery platform.
 
-### 3. Delegate proxy
+### Delegate proxy
 
 _No action required_
 
-This plugin does not need a delegate proxy to be setup.
+This plugin does not require a delegate proxy to be set up.
 
 ## Layout
 
-This plugin exports a UI Tab which can be added as a new "Feature Flags" tab of a service or any other layout pages. Go to the layout section from **Admin** -> **Layout**, choose **Service** from the dropdown and add the following in a new **Feature Flags** section.
+This plugin exports a UI tab that you can use as a new Feature Flags tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in a new **Feature Flags** section:
 
 ```yaml
 - name: feature-flags
@@ -56,11 +56,11 @@ This plugin exports a UI Tab which can be added as a new "Feature Flags" tab of 
               component: EntityHarnessFeatureFlagContent
 ```
 
-The `isHarnessFeatureFlagAvailable` condition is met when `harness.io/project-url` annotation is present in the software components's `catalog-info.yaml` definition file.
+The `isHarnessFeatureFlagAvailable` condition is met when the `harness.io/project-url` annotation is present in the software components's `catalog-info.yaml` definition file.
 
 ## Annotations
 
-In order to configure the plugin for a service in the software catalog, one of the following or both annotations should be set in its `catalog-info.yaml` definition file.
+To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file:
 
 ```yaml
 apiVersion: backstage.io/v1alpha1
@@ -77,4 +77,4 @@ spec:
 
 ## Support
 
-The plugin is owned by Harness and managed in the [Harness plugins repository](https://github.com/harness/backstage-plugins) as an Open Source project. Create a GitHub issue to report bugs or suggest new features on the plugin.
+The plugin is owned by Harness and managed in the [Harness plugins repository](https://github.com/harness/backstage-plugins) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.

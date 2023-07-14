@@ -7,29 +7,29 @@ title: GitHub Insights
 | **Created by** | [Roadie](https://roadie.io)                                    |
 | **Category**   | Source Control Management                                      |
 | **Source**     | [GitHub](https://github.com/roadieHQ/roadie-backstage-plugins) |
-| **Type**       | Open Source plugin                                             |
+| **Type**       | Open-source plugin                                             |
 
 ## Configuration
 
-### 1. App config YAML
+### Application configuration YAML
 
 _No action required_
 
-This plugin does not need any additional app config.
+This plugin does not require you to add application configuration.
 
-### 2. Secrets
+### Secrets
 
-This plugin requires the user to login using the configured GitHub OAuth app. Please ensure that you have a GitHub OAuth app created and configured in IDP for this plugin to work. Read more on the [instructions to configure a GitHub OAuth app](../oauth-support-for-plugins.md).
+This plugin requires the user to log in using the configured GitHub OAuth application. Make sure that you have a GitHub OAuth application created and configured in IDP. For instructions to configure a GitHub OAuth app, go to [OAuth support for plugins](../oauth-support-for-plugins.md).
 
-### 3. Delegate proxy
+### Delegate proxy
 
 _No action required_
 
-This plugin does not need a delegate proxy to be setup since GitHub can be accessed publicly on the cloud.
+This plugin does not require a delegate proxy to be set up because GitHub is publicly accessible.
 
 ## Layout
 
-This plugin exports a UI Tab which can be added as a new tab of a service or any other layout pages. It also exports several cards that can be added in the **Overview** section of any catalog layout. Go to the layout section from **Admin** -> **Layout**, choose **Service** from the dropdown and add the following in a new section.
+This plugin exports a UI tab that you can use as a new tab for a service or for any other layout page. It also exports several cards that can be added to the **Overview** section of a catalog layout. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in a new section:
 
 ```yaml
 - name: code-insights
@@ -48,7 +48,7 @@ The `isGithubInsightsAvailable` condition is met when the `github.com/project-sl
 
 ## Annotations
 
-If the `catalog-info.yaml` descriptor file for the component is stored in GitHub, the `github.com/project-slug` is automatically added as the `org/repo` where the file is stored. However, this also can be manually configured or overridden.
+If the `catalog-info.yaml` descriptor file for the component is stored in GitHub, the `github.com/project-slug` is automatically added as the `org/repo` where the file is stored, as follows. However, you can manually configure or override this setting:
 
 ```yaml
 metadata:
@@ -58,4 +58,4 @@ metadata:
 
 ## Support
 
-The plugin is owned by [Roadie](https://roadie.io) and managed in the [Roadie plugins repository](https://github.com/roadieHQ/roadie-backstage-plugins) as an Open Source project. Create a GitHub issue to report bugs or suggest new features on the plugin.
+The plugin is owned by [Roadie](https://roadie.io) and managed in the [Roadie plugins repository](https://github.com/roadieHQ/roadie-backstage-plugins) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.

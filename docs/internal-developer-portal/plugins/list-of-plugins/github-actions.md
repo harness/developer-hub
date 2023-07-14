@@ -7,29 +7,29 @@ title: GitHub Actions
 | **Created by** | Spotify                                                                             |
 | **Category**   | CI/CD                                                                               |
 | **Source**     | [GitHub](https://github.com/backstage/backstage/tree/master/plugins/github-actions) |
-| **Type**       | Open Source plugin                                                                  |
+| **Type**       | Open-source plugin                                                                  |
 
 ## Configuration
 
-### 1. App config YAML
+### Application configuration YAML
 
 _No action required_
 
-This plugin does not need any app config to be configured.
+This plugin does not require you to add application configuration.
 
-### 2. Secrets
+### Secrets
 
-This plugin requires the user to login using the configured GitHub OAuth app. Please ensure that you have a GitHub OAuth app created and configured in IDP for this plugin to work. Read more on the [instructions to configure a GitHub OAuth app](../oauth-support-for-plugins.md).
+This plugin requires the user to log in using the configured GitHub OAuth application. Make sure that you have a GitHub OAuth application created and configured in IDP. For instructions to configure a GitHub OAuth app, go to [OAuth support for plugins](../oauth-support-for-plugins.md).
 
-### 3. Delegate proxy
+### Delegate proxy
 
 _No action required_
 
-This plugin does not need a delegate proxy to be setup since GitHub can be accessed publicly on the cloud.
+This plugin does not require a delegate proxy to be set up because GitHub is publicly accessible.
 
 ## Layout
 
-This plugin exports a UI Tab which can be added as a new "CI/CD" tab of a service or any other layout pages. Go to the layout section from **Admin** -> **Layout**, choose **Service** from the dropdown and add the following in the **CI/CD** section.
+This plugin exports a UI tab that you can use as a new CI/CD tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in the **CI/CD** section:
 
 ```yaml
 - name: ci-cd
@@ -55,7 +55,7 @@ The `isGithubActionsAvailable` condition is met when the `github.com/project-slu
 
 ## Annotations
 
-If the `catalog-info.yaml` descriptor file for the component is stored in GitHub, the `github.com/project-slug` is automatically added as the `org/repo` where the file is stored. However, this also can be manually configured or overridden.
+If the `catalog-info.yaml` descriptor file for the component is stored in GitHub, the `github.com/project-slug` is automatically added as the `org/repo` where the file is stored, as follows. However, you can manually configure or override this setting:
 
 ```yaml
 metadata:
@@ -65,4 +65,4 @@ metadata:
 
 ## Support
 
-The plugin is owned by Spotify and managed in the [Backstage repository](https://github.com/backstage/backstage/tree/master/plugins/github-actions) as an Open Source project. Create a GitHub issue to report bugs or suggest new features on the plugin.
+The plugin is owned by Spotify and managed in the [Backstage repository](https://github.com/backstage/backstage/tree/master/plugins/github-actions) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.

@@ -7,15 +7,15 @@ title: Jira
 | **Created by** | [Roadie](https://roadie.io)                        |
 | **Category**   | Agile Planning                                     |
 | **Source**     | [GitHub](https://roadie.io/backstage/plugins/jira) |
-| **Type**       | Open Source plugin                                 |
+| **Type**       | Open-source plugin                                 |
 
 ## Configuration
 
-### 1. App config YAML
+### Application configuration YAML
 
 _No action required_
 
-This plugin needs a backend proxy config to make calls to Pagerduty with authentication. You need to update the `<your-jira-url>` with the Jira instance project, for example https://mycompany.atlassian.net
+This plugin requires a backend proxy configuration to make calls to Jira with authentication. In the following configuration, replace `<your-jira-url>` with the Jira instance project (for example https://mycompany.atlassian.net):
 
 ```yaml
 proxy:
@@ -31,25 +31,25 @@ proxy:
       User-Agent: "MY-UA-STRING"
 ```
 
-### 2. Secrets
+### Secrets
 
-Since `JIRA_TOKEN` variable is used in the app config, you need to generate a Jira API key and set it as a secret value of `JIRA_TOKEN`. [Read the instructions](https://developer.atlassian.com/server/framework/atlassian-sdk/consuming-an-activity-streams-feed/#authentication) on how to create it.
+Since the `JIRA_TOKEN` variable is used in the application configuration, you must generate a Jira API key and set it as the value of `JIRA_TOKEN`. For information about how to generate a Jira API key, go to the [instructions](https://developer.atlassian.com/server/framework/atlassian-sdk/consuming-an-activity-streams-feed/#authentication).
 
-### 3. Delegate proxy
+### Delegate proxy
 
 _No action required_
 
-This plugin does not need a delegate proxy to be setup since Jira can be accessed publicly on the cloud.
+This plugin does not require a delegate proxy to be set up because Jira is publicly accessible.
 
 ## Layout
 
-This plugin exports a UI Card which can be shown on the **Overview** tab of a service or any other layout pages. Go to the layout section from **Admin** -> **Layout**, choose **Service** from the dropdown and add the following in the **Overview** section.
+This plugin exports a UI card that you can show on the **Overview** tab of a service or any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following in the **Overview** section:
 
 ```yaml
 - component: EntityJiraOverviewCard
 ```
 
-You can also make the card appear conditionally for services only if Jira is configured for a service by replacing the card with a switch case, as below
+You can also make the card appear conditionally for services (only if Jira is configured for the service) by replacing the card with a switch case, as follows:
 
 ```yaml
 - component: EntitySwitch
@@ -62,7 +62,7 @@ You can also make the card appear conditionally for services only if Jira is con
 
 ## Annotations
 
-In order to configure the plugin for a service in the software catalog, one of the following annotations must be set in its `catalog-info.yaml` definition file.
+To configure the plugin for a service in the software catalog, set one of the following annotations in its `catalog-info.yaml` definition file:
 
 ```yaml
 metadata:
@@ -73,4 +73,4 @@ metadata:
 
 ## Support
 
-The plugin is owned by [Roadie](https://roadie.io) and managed in the [Roadie plugins repository](https://github.com/roadieHQ/roadie-backstage-plugins) as an Open Source project. Create a GitHub issue to report bugs or suggest new features on the plugin.
+The plugin is owned by [Roadie](https://roadie.io) and managed in the [Roadie plugins repository](https://github.com/roadieHQ/roadie-backstage-plugins) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.

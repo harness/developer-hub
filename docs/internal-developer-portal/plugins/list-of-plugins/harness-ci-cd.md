@@ -7,15 +7,15 @@ title: Harness CI/CD
 | **Created by** | Harness                                                |
 | **Category**   | CI/CD                                                  |
 | **Source**     | [GitHub](https://github.com/harness/backstage-plugins) |
-| **Type**       | Open Source plugin                                     |
+| **Type**       | Open-source plugin                                     |
 
 ## Configuration
 
-### 1. App config YAML
+### Application configuration YAML
 
 _No action required_
 
-This plugin needs a backend proxy config to make calls to Harness APIs with authentication. This is set by default and you do not need to change anything here.
+This plugin requires a backend proxy configuration to make calls to Harness APIs with authentication. The following configuration is set by default and you do not need to change anything:
 
 ```yaml
 proxy:
@@ -27,19 +27,19 @@ proxy:
       - authorization
 ```
 
-### 2. Secrets
+### Secrets
 
-No secrets are required for this plugin since both IDP and CI/CD are part of Harness.
+No secrets are required for this plugin because both IDP and CI/CD are part of the Harness software delivery platform.
 
-### 3. Delegate proxy
+### Delegate proxy
 
 _No action required_
 
-This plugin does not need a delegate proxy to be setup.
+This plugin does not require a delegate proxy to be set up.
 
 ## Layout
 
-This plugin exports a UI Tab which can be added as a new "CI/CD" tab of a service or any other layout pages. Go to the layout section from **Admin** -> **Layout**, choose **Service** from the dropdown and add the following in the **CI/CD** section.
+This plugin exports a UI tab that you can use as a new CI/CD tab for a service or for any other layout page. Go to **Admin** > **Layout**, select **Service** in the dropdown menu, and then add the following YAML code in the **CI/CD** section:
 
 ```yaml
 - name: ci-cd
@@ -61,11 +61,14 @@ This plugin exports a UI Tab which can be added as a new "CI/CD" tab of a servic
                   description: You need to add an annotation to your component if you want to enable CI/CD for it. You can read more about annotations in Backstage by clicking the button below.
 ```
 
-The `isHarnessCiCdAvailable` condition is met when either `harness.io/pipelines` or `harness.io/services` or `harness.io/project-url` (deprecated) annotation is present in the software components's `catalog-info.yaml` definition file.
+The `isHarnessCiCdAvailable` condition is met when one of the following annotations is present in the software components's `catalog-info.yaml` definition file.
+* `harness.io/pipelines`
+* `harness.io/services`
+* `harness.io/project-url` (deprecated) 
 
 ## Annotations
 
-In order to configure the plugin for a service in the software catalog, one of the following or both annotations should be set in its `catalog-info.yaml` definition file.
+To configure the plugin for a service in the software catalog, set one or both of the following annotations in its `catalog-info.yaml` definition file:
 
 ```yaml
 apiVersion: backstage.io/v1alpha1
@@ -89,4 +92,4 @@ spec:
 
 ## Support
 
-The plugin is owned by Harness and managed in the [Harness plugins repository](https://github.com/harness/backstage-plugins) as an Open Source project. Create a GitHub issue to report bugs or suggest new features on the plugin.
+The plugin is owned by Harness and managed in the [Harness plugins repository](https://github.com/harness/backstage-plugins) as an open-source project. Create a GitHub issue to report bugs or suggest new features for the plugin.
