@@ -43,7 +43,7 @@ The following examples describe Workflow profile configurations to track Lead Ti
 
 ### Track Lead Time in SCM
 
-Use this profile configuration to track Lead Time across the Pull Request lifecycle and gain insight into your SCM system, such as GitHub, Bitbucket, GitLab, and so on.
+Use this profile configuration to track Lead Time across the PR lifecycle and gain insight into your SCM tools, such as GitHub, Bitbucket, GitLab, and so on.
 
 1. In your Harness project, go to the SEI module and select **Account**.
 2. Select **Workflow** under **Profiles**.

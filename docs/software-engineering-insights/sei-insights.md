@@ -152,7 +152,7 @@ If you want to create additional DORA Metrics Insights:
 
 ### Dev Insights
 
-Dev Insights examines development efforts, particularly in relation to SCM metrics, such as PR creation, merging, and review collaboration. For more information about SCM metrics, go to [velocity metrics](./sei-metrics-and-reports/velocity-metrics-reports/velocity-metrics.md).
+Dev Insights examines development efforts, particularly in relation to SCM metrics, such as PR creation, merging, and review collaboration. For more information about SCM metrics and reports, go to [velocity metrics](./sei-metrics-and-reports/velocity-metrics-reports/velocity-metrics.md) and [SCM reports](./sei-metrics-and-reports/velocity-metrics-reports/scm-reports.md).
 
 ### Business Alignment
 

@@ -16,7 +16,7 @@ Deployment Frequency represents how often an organization successfully releases 
 
 To monitor Deployment Frequency, you must create a [Workflow profile](../../sei-profiles/workflow-profile.md) and add the **Deployment Frequency** widget to your Insights.
 
-Workflow profiles determine the integrations to track, the events that mark deployments (such as merged PRs or CI/CD jobs), and the associated Collections. You can modify Workflow profiles according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as SCM only or issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
+Workflow profiles determine the integrations to track, the events that mark deployments (such as merged PRs or CI/CD jobs), and the associated Collections. You can modify Workflow profiles according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as only SCM or combined issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
 
 To add the **Deployment Frequency** widget to Insights:
 
@@ -92,7 +92,7 @@ To add the **Lead Time for Changes** widget to Insights:
 
   Workflow profiles, also known as Lead Time profiles, determine the integrations to track, the start events that trigger lead time tracking (such as ticket creation or commit creation), and the stages that issues follow in your SDLC.
 
-  You can modify Workflow profile stages according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as SCM only or issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
+  You can modify Workflow profile stages according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as only SCM or combined issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
 
 6. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 

@@ -92,30 +92,40 @@ Only GitHub is supported, and your [SEI GitHub connector](../../sei-integrations
 
 ## SCM PR reports
 
-:::info
+Use the SCM PR reports to analyze data related to Pull Requests (also known as Merge Requests).
 
-The terms *Pull Request (PR)* and *Merge Request* are interchangeable.
-
-:::
-
-SCM PR Lead Time Trend Report (scm_pr_lead_time_trend_report)
-SCM PR Lead Time by Stage Report (scm_pr_lead_time_by_stage_report)
-SCM PRs First Review To Merge Trend Single Stat (github_prs_first_review_to_merge_single_stat)
-SCM PRs First Review To Merge Trends (github_prs_first_review_to_merge_trends)
-SCM PRs First Review Trend Single Stat (github_prs_first_review_single_stat)
-SCM PRs First Review Trends (github_prs_first_review_trends)
-SCM PRs Merge Trend Single Stat (github_prs_merge_single_stat?)
-SCM PRs Merge Trends (github_prs_merge_trends) 
-SCM PRs Report (github_prs_report)
-SCM PRs Response Time Report (github_prs_response_time_report)
-SCM PRs Response Time Single Stat (github_prs_response_time_single_stat)
-SCM PRs Single Stat (github_prs_single_stat)
-SCM Review Collaboration Report (review_collaboration_report)
+* **[SCM PRs Report](#scm-prs-report):** A high-level view of PRs moving through your SCM tool.
+* **SCM PRs Single Stat:** Report a single stat related to PR activity.
+* **SCM PRs First Review To Merge Trends:** Examine the time that passes between a PR's first review and when it is merged.
+* **SCM PRs First Review To Merge Trend Single Stat:** Examine a single stat related to first-review-to-merge time.
+* **SCM PRs First Review Trends**
+* **SCM PRs First Review Trend Single Stat**
+* **[SCM PR Lead Time by Stage Report](#scm-pr-lead-time-by-stage-report):** Examine lead time based on your defined PR lifecycle stages. By default, this report shows the average time for all PRs. You can drill down to explore data for individual PRs.
+* **SCM PR Lead Time Trend Report:** Examine trends in PR lead-time-by-stage.
+* **SCM PRs Merge Trends:** Analyze trends in lead time to merge PRs.
+* **SCM PRs Merge Trend Single Stat:** Report a single stat related to lead time to merge PRs.
+* **SCM PRs Response Time Report**
+* **SCM PRs Response Time Single Stat**
+* **SCM Review Collaboration Report:** Analyze how a team performs code reviews by examining whether PRs were approved before being merged or closed.
 * **SCM File Types Report:** Analyze commit and PR activity by file extension.
+
+To examine PRs by committer, use the [SCM Committers Report](#scm-committers-report).
+
+To understand how lead time is calculated, go to [PR lead time calculation](#pr-lead-time-calculation).
+
+### SCM Review Collaboration Report
+
+Use the **SCM Review Collaboration Report** to understand how a team performs code reviews, expended effort in the code review process, and overall team collaboration in PR reviews. You can determine if a team is adopting a buddy system culture, where peers regularly review each other's code, or if the team is overwhelmed by code reviews and merging code without proper approval.
+
+You can configure this widget to track PRs merged or PRs closed by the team, along with other filters such as destination branch, project, and so on.
 
 ### SCM PRs Report
 
-The **SCM PRs Report** shows a high level view of PRs moving through your SCM.
+The **SCM PRs Report** shows a high level view of PRs moving through your SCM tool. This is a versatile report that analyzes different attributes in the development process through your SCM tool. You can configure this report to inspect data by assignee, destination branch, reviewer, repository, and more. For example, you can use this report to:
+
+* Analyze how many PRs each developer raises.
+* Analyze PR comments and categorize them based on a threshold.
+* Better understand the overall contribution of the team.
 
 On the **Filters** tab, you can configure what data feeds into this widget by creating inclusive and exclusive filters. For example, you can set the widget to show PRs in closed status in the last 7 days.
 
@@ -123,49 +133,60 @@ On the **Aggregations** tab, you can select the dimension to use for the X-axis,
 
 On the **Settings** tab, you can:
 
-* Select the code change size and code density, if you want to exclude small PRs.
+* Set thresholds for code change size and density. This is useful if you want to exclude small PRs.
+   * Set small, medium, and large size thresholds based on lines of code or number of files.
+   * Set shallow, good, or heavy density thresholds based on number of comments per file.
 * Select how you want to sort X-axis data, such as ascending or descending.
 * Select the maximum number of unique values to show on the X-axis.
 * Select the visualization (bar chart, pie chart, line chart, and so on).
 
 ### SCM PR Lead Time by Stage Report
 
-Use the **SCM PR Lead Time by Stage Report** to examine Lead Time based on PR stages. You can also use the **SCM PR Lead Time by Stage Trend Report** to examine PR lead time trends over time.
+Use the **SCM PR Lead Time by Stage Report** to examine PR velocity based on time spent in various PR lifecycle stages. By default, this report shows the average time for all PRs. You can drill down to explore data for individual PRs. You can also configure this report to show the median, 90th percentile, or 95th percentile, instead of the average time.
 
-To add the SCM PR Lead Time widget to Insights:
+To add the **SCM PR Lead Time by Stage Report** to Insights:
 
 1. Go to the Insight where you want to add the widget. Make sure you are in the correct project.
 2. Select **Settings**, and then select **Add Widget**.
 3. Select the **SCM PR Lead Time by Stage Report** widget.
-4. Configure the filters for the widget.
-5. On the **Settings** tab, select the relevant [Workflow profile](../../sei-profiles/workflow-profile.md), and then select **Next: Place Widget**.
-
-   The default configuration for a [PR-based Workflow profile](../../sei-profiles/workflow-profile.md#create-a-profile-to-track-lead-time-in-scm) has four stages:
-
-   * PR creation time.
-   * Time to first comment.
-   * Approval time.
-   * Merge time.
-
-   Time spent in each stage depends on the stages that a PR actually goes through. For example, if there are no comments on the PR, then there is no time to calculate for that.
-
-   You can modify Workflow profile stages according to your team's SDLC process. For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
-
+4. Configure the filters for the widget, such as source/destination branch, reviewer, label, and so on. This defines the types of commits or PRs that are considered in the [lead time calculation](#pr-lead-time-calculation).
+5. On the **Settings** tab, select the relevant [Workflow profile](#workflow-profiles-for-lead-time), and then select **Next: Place Widget**.
 6. Select where you want to place the widget on the Insight, and then select **Save Layout**.
 
-### Calculating PR lead time and stages
+### Workflow profiles for lead time
 
-Here are some examples of PR lead time and stage calculations.
+Lead time is based on time spent in stages defined in a [Workflow profile](../../sei-profiles/workflow-profile.md).
 
-These examples are based on the default workflow configuration profile with the four stages of PR creation time, time to first comment, approval time, and merge time.
+The default configuration for a [PR-based Workflow profile](../../sei-profiles/workflow-profile.md#create-a-profile-to-track-lead-time-in-scm) has four stages:
+
+* PR creation time.
+* Time to first comment.
+* Approval time.
+* Merge time.
+
+When [calculating lead time](#pr-lead-time-calculation), the time spent in each stage depends on the stages that a PR actually goes through. For example, if there are no comments on the PR, then the *time to first comment* is zero.
+
+You can configure grading thresholds (good, acceptable, and slow) for each stage. These thresholds determine grades that appear on your PR lead time widgets. Grades are reported for each stage as well as a cumulative grade for all stages combined.
+
+You can modify Workflow profile stages and grades according to your team's SDLC process. If you only want to track PR lead time in SCM, make sure the **Start Event** is **Commit Created**. If your Workflow profile includes stages across issue management, SCM, and CI/CD, make sure the same event is not tracked in multiple tools, such as *Deploy to Production* in Jira and a *CI/CD Deploy* stage.
+
+For more information about modifying Workflow profiles and configuring stages for lead time calculation, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
+
+### PR lead time calculation
+
+Several SCM PR reports include lead time. Lead time is the sum of the time spent in each stage in a workflow, such as commit-to-deployment time for a change, open-to-merge time for PRs, or the issue lifetime for SCM issues. Lead time can help identify where a team is spending time and if the amount of time spent in each stage falls in an acceptable range.
+
+The specific events or stages considered in a lead time calculation depend on the report and the stages defined in the associated [Workflow profile](#workflow-profiles-for-lead-time). The time spent in each stage depends on the stages that a PR actually goes through. For example, if there are no comments on the PR, then the *time to first comment* is zero.
+
+The following examples demonstrate how PR lead time would be calculated in different scenarios. These examples are based on the default Workflow profile configuration, which has four stages: PR creation time, time to first comment, approval time, and merge time.
 
 When reviewing these examples, consider the following:
 
-* `Time to first comment` helps you understand the lead time between `PR creation time` and the first review. The Lead Time widget shows the average time for all PRs. You can drill down to explore individual PRs in the widget or Insight time frame.
+* *Time to first comment* helps you understand the lead time between PR creation time and the first review.
 * There are two ways to track the time taken for a PR approval:
-  * Default `Approval Time` configuration: Time spent in the review cycle when an active reviewer is involved.
-  * `Approval Time + Time to First comment`: The overall approval time, starting from PR creation.
-* The overall lead time is the sum of the average time spent in each stage. This is where you can determine where teams are spending their time and whether this is an acceptable range.
+  * Default *Approval Time* configuration: The overall approval time, starting from PR creation.
+  * *Approval Time* minus *Time to first comment*: Time spent in the review cycle when an active reviewer is involved.
+* The *overall lead time* is the sum of the average time spent in each stage. This is where you can determine where teams are spending their time and whether this is an acceptable range.
 
 <details>
 <summary>SCM PR Lead Time calculation example #1</summary>
