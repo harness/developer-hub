@@ -291,7 +291,7 @@ To add an artifact from a Docker registry, do the following:
     
     ![](static/kubernetes-services-09.png)
 <!-- CDS-71711 -->
-13. Optionally, you can select the **Digest** for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+13. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
 
@@ -495,7 +495,7 @@ To add an artifact from GCR, do the following:
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
  <!-- CDS-71711 -->
-14. Optionally, you can select the **Digest** for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
 
@@ -949,7 +949,7 @@ To add an artifact from Google Artifact Registry, do the following:
     ![](static/kubernetes-services-11.png)
 
  <!-- CDS-71711 -->
-20. Optionally, you can select the **Digest** for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+20. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
     :::note 
 
@@ -1347,7 +1347,7 @@ To add an artifact from ECR, do the following:
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
  <!-- CDS-71711 -->
-13. Optionally, you can select the **Digest** for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+13. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
 
@@ -1721,7 +1721,7 @@ To add an artifact from ACR, do the following:
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
  <!-- CDS-71711 -->
-14. Optionally, you can select the **Digest** for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
 
@@ -2054,7 +2054,7 @@ To add an artifact from Nexus, do the following:
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 
  <!-- CDS-71711 -->
-14. Optionally, you can select the **Digest** for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
 
@@ -2268,7 +2268,7 @@ To add an artifact from Artifactory, do the following:
     ![](static/kubernetes-services-16.png)
 14. If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
  <!-- CDS-71711 -->
-15. Optionally, you can select the **Digest** for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+15. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
 
@@ -2703,7 +2703,7 @@ To add an artifact from Github Packages, do the following:
 13. In **Package Name**, select the name of the package.
 14. In **Version**, select the version to use. 
 <!-- CDS-71711 -->
-15. Optionally, you can select the **Digest** for the image you want to use. Specifying an image by digest is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+15. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by digest is useful when you want to deploy an image with a fixed digest/SHA for your service. 
 
   :::note 
 
