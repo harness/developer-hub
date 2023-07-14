@@ -99,7 +99,7 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 
    ![](./static/trigger-on-a-new-artifact-24.png)
 
-   You reference an artifact in the Stage's Service Definition in your manifests using the expression `<+artifact.image>`. Go to [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/).
+   You reference an artifact in the stage's service definition in your manifests using the expression `<+artifact.image>`. Go to [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/) for more details.
 
 2. Select **Triggers**.
 3. Select **New Trigger**.

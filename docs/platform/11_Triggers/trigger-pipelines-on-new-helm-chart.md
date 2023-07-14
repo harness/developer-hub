@@ -62,7 +62,7 @@ When you add the Helm Chart to Harness as a Manifest, you have different options
 
 ![](./static/trigger-pipelines-on-new-helm-chart-04.png)
 * **Fixed Value:** if you use [Fixed Value](../20_References/runtime-inputs.md) for **Chart Version** (for example, `0.1.4`), Helm Chart Triggers will work, but Harness will not select the latest chart version. Instead, Harness will select the hardcoded chart version in **Chart Version** (`0.1.4`).
-* **Runtime Input:** if you use [Runtime Input](../20_References/runtime-inputs.md) for **Chart Version**, you can enter the version to use in your Trigger as part of the Trigger Pipeline Inputs. Go to [Select Pipeline Inputs](trigger-pipelines-on-new-helm-chart.md#step-4-select-pipeline-inputs) below.
+* **Runtime Input:** if you use [Runtime input](../20_References/runtime-inputs.md) for **Chart Version**, you can enter the version to use in your trigger as part of the **Trigger Pipeline Inputs**. Go to [Select pipeline inputs](trigger-pipelines-on-new-helm-chart.md#step-4-select-pipeline-inputs) below.
 * **Expression:** if you use [Expression](../20_References/runtime-inputs.md) for **Chart Version**, you can:
 	+ Use a [Harness variable expression](../12_Variables-and-Expressions/harness-variables.md), like a Service variable.
 	+ Use the expression `<+trigger.manifest.version>` to have the new chart version that initiated the Trigger passed in as the version to deploy.
@@ -80,7 +80,7 @@ Typically, you add a Helm Chart Trigger to a Pipeline that deploys a Helm Chart.
 
    ![](./static/trigger-pipelines-on-new-helm-chart-06.png)
 
-   Go to [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) for details on adding Helm Charts to a Stage's **Service Definition**.
+   Go to [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) for details on adding Helm Charts to a stage's **Service Definition**.
 
 Next, let's add the Trigger.
 
