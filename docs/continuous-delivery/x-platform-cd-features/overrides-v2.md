@@ -86,7 +86,9 @@ You can override Application Settings and Connection Strings from **Global Envir
 </Tabs>
 ```
 
-## Override methods
+## Override service, environment, and infrastructure settings
+
+You can override one or more settings for all services, environments, and infrastructures. 
 
 1. In **Deployments**, select your project, and then select **Overrides**.
    ![](./static/overrides-v2-1.png)
