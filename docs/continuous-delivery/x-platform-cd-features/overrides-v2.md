@@ -14,31 +14,117 @@ Harness has introduced an enhanced experience for service, environment, and infr
 
 Overrides can defined at project, organization, and account levels.
 
-```
-identifier: service_override_v2
-name: Service Override V2 Enabled
-category: CD
-defaultValue: false
-valueType: BOOLEAN
-allowOverrides: true
-allowedScopes:
-  - ACCOUNT
-  - ORGANIZATION
-  - PROJECT
-```
-
 When you create a new project or organization within an account, enable the account resource setting, **Enable Service Override V2** under **Account Settings > Account Resources > Continuous Deployment**.
+
+:::info
+
+Make sure that the `NG_SETTINGS` feature flag is enabled to view this setting.
+
+:::
 
 ![overridesV2](./static/overrides-v2.png)
 
-## Override global environments
+## Limitations
+
+* Runtime inputs are not supported for **Infrastructure Specific** and **Service & Infrastructure Specific** variables.
+
+## Migrating to overrides V2
+
+Currently, Harness migrates the existing override configuration to the new version using back end APIs. The existing override scope or scope with all child scopes are migrated based on the requirement. 
+
+Harness anticipates adding a button in the UI to migrate to the new override configuration in the future. 
+
+## Override types
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="Manifests" label="Manifests" default>
+```
+You can override the following manifest types:
+
+- Values YAML
+- OpenShift Param
+- Kustomize
+- Helm Repo
+- Tanzu Application Service (TAS) manifest
+- TAS vars
+- TAS AutoScalar
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Config Files" label="Config Files">
+```
+
+Config files are completely overridden.
+
+Config files are a black box that can contain multiple formats and content, such as YAML, JSON, plain text, etc. Consequently, they cannot be overridden like values YAML files.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Variables" label="Variables">
+```
+Like config files, variables are completely overridden.
+
+You can use expressions to reference infrastructure variables. For example, `<+serviceVariables.VAR_NAME>`. 
+
+You can reference service variables in your pipeline steps, values YAML, JIRA steps, and so on. 
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Application Settings and Connection Strings" label="Application Settings and Connection Strings">
+```
+In [Azure App Service configuration](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial/#app-services-configuration), App settings like Application Settings and Connection Strings can be passed as environment variables to the application code. 
+
+You can override Application Settings and Connection Strings from **Global Environment** overrides. 
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Override methods
+
+Harness supports the following override methods:  
+
+
 
 1. In **Deployments**, select your project, and then select **Overrides**.
-2. Select **Global Environment**, and then select **New Override**.
-3. In **Environment**, select a project, organization, or account level environment.
-4. In **Override Type**, select one of the following override type:  
+   ![](./static/overrides-v2-1.png)
+2. Select an override method:  
+   - **Global Environment** 
+   - **Service Specific** 
+   - **Infrastructure Specific** 
+   - **Service & Infrastructure Specific** 
+3. Select **New Override**.
+4. Select a project, organization, or account level override.
+5. In **Override Type**, select one of the following override types:  
    - Variable
    - Manifest
    - Config File
-   - Application Settings
-   - Connection Strings
+   - Application Settings (applicable to **Global Environment** override method only)
+   - Connection Strings (applicable to **Global Environment** override method only)
+3. Override the setting.
+
+## Override priority
+
+The override priority from top to bottom is:  
+
+- **Infrastructure & Service Specific** overrides
+- **Infrastructure Specific** overrides
+- **Service Specific** overrides
+- **Global Environment** overrides
+
+![override priority](./static/override-priority.png)
+
+Overrides defined at project/organization/account levels have the following override priority:  
+
+- Project
+- Organization
+- Account
+
+
+
