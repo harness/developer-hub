@@ -2,15 +2,53 @@
 
 These release notes document changes to Harness Delegate in Harness FirstGen.
 
+Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means the features and fixes that these release notes describe might not be immediately available in your cluster.
 
-To identify the cluster that hosts your account, open Harness FirstGen and go to **Account Settings**. Then click **Overview**. The cluster is listed in **Harness Cluster Hosting Account**.
+To identify the cluster that hosts your account, open Harness FirstGen, go to **Account Settings**, and then select **Overview**. The cluster is listed in **Harness Cluster Hosting Account**.
 :::
 
-For FirstGen SaaS release notes, see [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, see [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
+For FirstGen SaaS release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, go to [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
 
-## Latest release - June 9, 2023, Harness version 79514, Harness Delegate version 79503
+
+## Latest - June 28, 2023, Harness version 79714, Harness Delegate version 79707
+
+### Deprecation notice
+
+import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
+
+<Helmdep />
+
+### What's new
+
+- When a delegate token is revoked, Harness now sends `SELF_DESTRUCT` to all delegates that are using the revoked token. (PL-38957)
+
+- Upgraded the delegate JRE to 11.0.19_7. (PL-37994) 
+
+### Early access
+
+This release does not include any new early access features.
+
+### Fixed issues
+
+- Kubernetes deployments timed out and failed when listing pods. (CDS-71328, ZD-45584)
+
+  This issue is fixed by modifying the delegate's Kubernetes API client timeout. 
+
+  Harness Delegate uses Kubernetes Java client to make programmatic API calls to the Kubernetes server. The API client uses an OkHttp client whose default [read timeout](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/read-timeout/) and [connect timeout](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/connect-timeout/) values are set to 120 and 60 seconds respectively. These values can be configured by using environment variables, modifying the delegate's container environment. The values must be specified in seconds. 
+
+  The environment variables for these timeouts are:
+
+  - Read timeout: `K8S_API_CLIENT_READ_TIMEOUT`
+  - Connect timeout: `K8S_API_CLIENT_CONNECT_TIMEOUT`
+
+- Helm delegate installation failed in Self-Managed Enterprise Edition. (PL-39028)
+
+   This issue is fixed with a code enhancement. The `DELPOY_MODE` is now set to `KUBERNETES_ONPREM` for Self-Managed Enterprise Edition Docker and Helm delegates.
+
+## June 9, 2023, Harness version 79514, Harness Delegate version 79503
 
 ### What's new
 

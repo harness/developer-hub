@@ -1,5 +1,5 @@
 ---
-title: Run chaos experiments
+title: Create and run chaos experiments
 sidebar_position: 20
 ---
 
@@ -89,5 +89,7 @@ You can add other faults to the experiment in addition to the existing set of fa
 ![Configure Fault](./static/construct-and-run-custom-chaos-experiments/configure-fault.png)
 
 Next, select the **Run** button to execute your chaos experiment. Alternatively, you can only save the experiment or add the experiment to a Chaos Hub using the **Save** button.
+
+## Analyze chaos experiments
 
 <Analyze />

@@ -68,7 +68,7 @@ export default function CertificationsCD() {
             and powerful, easy-to-use pipelines. Empower your teams to deliver
             new features, faster – with AI/ML for automated canary and
             blue/green deployments, advanced verification, and intelligent
-            rollback
+            rollback.
           </div>
         </div>
         <div className={styles.right}>
@@ -145,12 +145,12 @@ export default function CertificationsCD() {
                         Register for Exam
                       </button>
                     </Link>
-                    <Link href="/tutorials/cd-pipelines">
+                    {/* <Link href="/tutorials/cd-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
-                    </Link>
+                    </Link>*/}
                   </div>
                 </div>
               </div>
@@ -168,12 +168,12 @@ export default function CertificationsCD() {
                     Register for Exam
                   </button>
                 </Link>
-                <Link href="/tutorials/cd-pipelines">
-                  <button className={styles.startLearning}>
-                    <span>Start Learning</span>
-                    <i className="fa-solid fa-arrow-right"></i>
-                  </button>
-                </Link>
+                    {/* <Link href="/tutorials/cd-pipelines">
+                      <button className={styles.startLearning}>
+                        <span>Start learning</span>
+                        <i className="fa-solid fa-arrow-right"></i>
+                      </button>
+                    </Link>*/}
               </div>
             </div>
           </div>
@@ -201,7 +201,7 @@ export default function CertificationsCD() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Continuous Delivery & GitOps - Administrator (BETA)
+                    Continuous Delivery & GitOps - Administrator 
                   </h2>
                   <img
                     src={`${baseUrl}img/cert_adm_cd_badge.svg`}
@@ -227,12 +227,12 @@ export default function CertificationsCD() {
                         Register for Exam
                       </button>
                     </Link>
-                    <Link href="/tutorials/cd-pipelines">
+                  {/* <Link href="/tutorials/cd-pipelines">
                       <button className={styles.startLearning}>
                         <span>Start learning</span>
                         <i className="fa-solid fa-arrow-right"></i>
                       </button>
-                    </Link>
+                    </Link>*/}
                   </div>
                 </div>
               </div>
@@ -250,12 +250,12 @@ export default function CertificationsCD() {
                     Register for Exam
                   </button>
                 </Link>
-                <Link href="/tutorials/cd-pipelines">
-                  <button className={styles.startLearning}>
-                    <span>Start Learning</span>
-                    <i className="fa-solid fa-arrow-right"></i>
-                  </button>
-                </Link>
+                  {/* <Link href="/tutorials/cd-pipelines">
+                      <button className={styles.startLearning}>
+                        <span>Start learning</span>
+                        <i className="fa-solid fa-arrow-right"></i>
+                      </button>
+                    </Link>*/}
               </div>
             </div>
           </div>

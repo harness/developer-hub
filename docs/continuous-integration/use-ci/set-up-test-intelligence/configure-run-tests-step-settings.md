@@ -165,7 +165,7 @@ Select the build automation tool. Supported tools vary by **Language**.
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="csharp" label="C#" default>
+  <TabItem value="csharp" label="C#">
 ```
 
 * [DOTNET CLI](https://docs.microsoft.com/en-us/dotnet/core/tools/)
@@ -173,7 +173,7 @@ Select the build automation tool. Supported tools vary by **Language**.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="Java" label="Java">
+  <TabItem value="Java" label="Java" default>
 ```
 
 * [Bazel](https://bazel.build/)
@@ -203,6 +203,14 @@ Select the build automation tool. Supported tools vary by **Language**.
   </TabItem>
 </Tabs>
 ```
+
+:::info Bazel container images
+
+If you use a Bazel [container image](#container-registry-and-image) in a build infrastructure where Bazel isn't already installed, your pipeline must include commands or steps to install Bazel. This is because `bazel query` is called before the container image is pulled.
+
+Bazel is already installed on Harness Cloud. For other build infrastructures, you must manually confirm if Bazel is already installed.
+
+:::
 
 ## Build Arguments
 

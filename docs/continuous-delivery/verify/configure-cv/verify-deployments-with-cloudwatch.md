@@ -21,6 +21,12 @@ Harness CV integrates with CloudWatch to:
 
  This topic covers how to add and configure CloudWatch as a Health Source for the Verify step.
 
+ 
+:::important
+Harness supports only the Metrics Insight query language.
+:::
+
+
 ## Review: CV Setup Options
 
 To use the Verify step, you will need a Harness Service Reliability Management Monitored Service. In the simplest terms, a Monitored Service is basically a mapping of a Harness Service to a service monitored by your APM or logging tool.

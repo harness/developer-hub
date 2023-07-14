@@ -1,7 +1,7 @@
 ---
-title: Spot Elastigroup deployments
+title: Spot Elastigroup
 description: Deploy a Spot Elastigroup using Harness CD.
-sidebar_position: 4
+sidebar_position: 5
 ---
 
 :::info

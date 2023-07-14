@@ -24,6 +24,10 @@ You can do the following with a custom trigger:
 * Use a REST call to get deployment status.
 * Start a deployment using a Webhook URL provided by Harness.
 
+import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported.md'
+
+<Variables />
+
 ## Create the custom trigger
 
 1. In your Harness pipeline in pipeline studio, click **Triggers**.
@@ -348,12 +352,6 @@ The response from the cURL command will contain the status of the deployment. Fo
 ```
 
 ## Custom trigger authorization using API keys
-
-:::note
-
-Currently, this functionality is behind the feature flag, `NG_SETTINGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 You can use [Harness API keys](../3_User-Management/7-add-and-manage-api-keys.md) in your cURL command to authorize the execution of a trigger.
 
