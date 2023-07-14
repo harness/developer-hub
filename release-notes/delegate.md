@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-07-13T10:00
+date: 2023-07-17T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -131,6 +131,8 @@ Harness NextGen release 79714 includes the following changes for the Harness Del
 - You can now see disconnected delegate details in selection logs and error messages when there are no eligible delegates in an active state to execute tasks. (PL-37900)
 
 - The delegate JRE is upgraded to 11.0.19_7. (PL-37994)
+
+- When a delegate token is revoked, Harness now sends `SELF_DESTRUCT` to all delegates that are using the revoked token. (PL-38957)
 
 ##### Early access
 
