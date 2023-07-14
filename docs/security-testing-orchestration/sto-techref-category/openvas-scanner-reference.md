@@ -11,11 +11,14 @@ You can set up OpenVAS scans using a Security step: create a CI Build or Securit
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
+<!-- 
 ```mdx-code-block
 import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
 ```
 
 <StoSecurityStepConfig />
+
+-->
 
 * `product_name` = `openvas`
  * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `instance`

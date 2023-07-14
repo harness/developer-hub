@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-07-03T10:00:25
+date: 2023-07-12T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -14,11 +14,13 @@ import TabItem from '@theme/TabItem';
 <CustomButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/feature-flags/rss.xml" />
 Review the notes below for details about recent changes to Harness Feature Flags (FF), NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 
+Harness publishes security advisories for every release. Go to [trust.harness.io](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+
 :::info note
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - July 4, 2023
+## Latest - July 13, 2023
 
 ```mdx-code-block
 <Tabs>
@@ -40,15 +42,15 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-#### Feature Flags SDKs
+#### Feature Flags server
 
-* The **Java** server SDK has been updated to version **1.2.4** with the following update.
+The Feature Flags server has been updated to version **1.1076.0** with the following updates.
 
-  * Fixed an issue where, if a flag had prerequisite flags configured, only the first prerequisite flag was being processed and the remaining were being ignored. (FFM-6412)
+* Fixed an issue where the query parameter `identifier` in the API `https://app.harness.io/gateway/cf/admin/segments` did not work correctly. (FFM-8298)
 
-The **Python** server SDK has been updated to version **1.2.1** with the following update.
+* The flag pipeline was not updating the build number. This issue has been fixed. (FFM-8140)
 
-  * The SDK incorrectly logged low level debug information as errors. This issue has been fixed. (FFM-8544)
+* Target attributes were not updating on conflict. This issue has been fixed. (FFM-8549, ZD 46770)
 
 
   </TabItem>
@@ -58,6 +60,28 @@ The **Python** server SDK has been updated to version **1.2.1** with the followi
 
 <details>
 <summary>2023 releases</summary>
+
+#### July 4, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+* The **Java** server SDK has been updated to version **1.2.4** with the following update.
+
+  * Fixed an issue where, if a flag had prerequisite flags configured, only the first prerequisite flag was being processed and the remaining were being ignored. (FFM-6412)
+
+The **Python** server SDK has been updated to version **1.2.1** with the following update.
+
+  * The SDK incorrectly logged low level debug information as errors. This issue has been fixed. (FFM-8544)
 
 #### July 3, 2023
 

@@ -617,14 +617,17 @@ You must use the expression after the step in execution.
 
 ## InputSet
 
-Input Set values are a Json value. The list of values can be searched via 
+Displays the Input Set values for the execution as a JSON value. The list of values can be searched via `<+inputSet>`.
+
+Here's an example where the **Timeout** settings for the two steps preceding the step using `<+inputSet>` are using values from an Input Set:
 
 ```
-<+inputSet>
-
+{pipeline:identifier:Custom} {pipeline:stages:[{stage:identifier:Custom}]} {pipeline:stages:[{stage:type:Custom}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:identifier:ShellScript_1}}}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:type:ShellScript}}}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:timeout:10s}}}]} {pipeline:stages:[{stage:spec:{execution:{step:identifier:json_format}]}}]} {pipeline:stages:[{stage:spec:{execution:{step:type:ShellScript}]}}]} {pipeline:stages:[{stage:spec:{execution:{step:timeout:10m}]}}]}
 ```
 
 ## Stage
+
+The following variables provide information on the pipeline stage.
 
 ### Stage-level variables
 
