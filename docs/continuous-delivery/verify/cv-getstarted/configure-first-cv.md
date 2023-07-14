@@ -4,24 +4,26 @@ description: Learn how to set up a simple CV in your Harness CD pipeline.
 sidebar_position: 20
 ---
 
-This topic describes how to add a simple Harness Continuous Verification (CV) step to Harness CD pipeline, configure your Application Performance Monitoring (APM) tool as a health source, and verify your deployment.
+This topic describes how to add a simple Harness Continuous Verification (CV) step to a Harness CD pipeline, configure your Application Performance Monitoring (APM) tool as a health source, and verify your deployment.
 
 
-## Prerequisite
+## Prerequisites
 
-You must have created a connector for your health source in Harness. To learn how to add a connector, go to [Connect to monitoring and logging systems](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems).
+Make sure that you have created:
 
-You must have created a CD pipeline in Harness. If you haven't created a CD pipeline in Harness yet, go to [Create your first CD pipeline](/docs/continuous-delivery/get-started/create-first-pipeline). 
+- A connector for your health source in Harness. To learn how to add a connector, go to [Connect to monitoring and logging systems](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems).
+
+- A CD pipeline in Harness. To learn how to create a CD pipeline in Harness yet, go to [Create your first CD pipeline](/docs/continuous-delivery/get-started/create-first-pipeline). 
 
 
-## Step 1: Add a Verify step to your CD pipeline
+## Add a Verify step to your CD pipeline
 
 To add a Verify step to your pipeline, use one of the methods below.
 
 
 ### Add a Verify step while building a deployment stage
 
-If you're building a deployment stage and are currently on the **Execution Strategies** page:
+If you're building a deployment stage and are currently on the Execution Strategies page:
 
 1. Select the **Enable Verification** option. 
     
@@ -52,7 +54,7 @@ You can add a step at various points in the pipeline, such as the beginning, end
 ![Verify step settings page](./static/verify-step-settings-page.png)
 
 
-## Step 2: Define name and timeout information
+## Define name and timeout information
 
 On the Verify settings page, do the following:
 
@@ -71,18 +73,18 @@ On the Verify settings page, do the following:
    The maximum timeout value you can set is **53w**. You can also set timeouts at the pipeline level.
 
 
-## Step 3: Select a continuous verification type, sensitivity, and duration
+## Select a continuous verification type, sensitivity, and duration
 
 On the Verify settings page, do the following:
 
 1. In **Continuous Verification Type**, select **Threshold Analysis [No ML]**.
    
-2. In **Duration**, choose a duration. Harness uses the data points within this duration for analysis. For instance, if you select 10 minutes, Harness analyzes the first 10 minutes of your APM data. It is recommended to choose 15 minutes for APM. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
+2. In **Duration**, choose a duration. Harness uses the data points within this duration for analysis. For instance, if you select 10 minutes, Harness analyzes the first 10 minutes of your APM data. Harness recommends choosing 15 minutes for APM. This helps you thoroughly analyze and detect issues before releasing the deployment to production.
    
-3. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the Service tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference this primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md).
+3. In the **Artifact Tag** field, reference the primary artifact that you added in the **Artifacts** section of the **Service** tab. Use the Harness expression `<+serviceConfig.artifacts.primary.tag>` to reference the primary artifact. To learn about artifact expression, go to [Harness expression](..//..platform/../../../platform/12_Variables-and-Expressions/harness-variables.md).
 
 
-## Step 4: Create a monitored service
+## Create a monitored service
 
 The next step is to create a monitored service for the Verify step. Harness CV uses a monitored service to monitor health trend deviations, using logs and metrics obtained from the health source, such as APM and logging tools.
 
@@ -100,14 +102,14 @@ To create a monitored service, on the Verify settings page, do the following:
 
       Harness automatically generates a monitored service name by combining the service and environment names. The generated name appears in the **Monitored Service Name** field. Note that you cannot edit the monitored service name.
 
-      If a monitored service with the same name and environment already exists, the **Click to autocreate a monitored service** option is hidden, and the existing monitored service is assigned to the Verify step by Harness.
+      If a monitored service with the same name and environment already exists, the **Click to autocreate a monitored service** option is hidden, and Harness assigns the existing monitored service to the Verify step.
 
 
-## Step 5: Add a health source
+## Add a health source
 
 A health source is an APM tool that monitors and aggregates data in your deployment environment. 
 
-The following steps use Sumologic as an example to describe how to add a heath source.
+The following steps use SumoLogic as an example to describe how to add a heath source.
 
 
 ### Define a health source
@@ -128,10 +130,10 @@ On the Verify settings page, do the following to add a health source:
    
       The Create or Select an Existing Connector dialog appears.
       
-   4. Select a connector and then select **Apply Selected**.  
+   4. Select a connector, and then select **Apply Selected**.  
          The selected connector appears in the **Select Connector** dropdown.
          
-   5. In the **Select Feature** field, choose SumoLogic Cloud Metrics and then select **Next**.  
+   5. In the **Select Feature** field, choose SumoLogic Cloud Metrics, and then select **Next**.  
    
       The **Configuration** tab appears.
 
@@ -143,14 +145,14 @@ On the Verify settings page, do the following to add a health source:
 2. Enter the following information, and then select **Submit**:  
       * **Metric name**: Enter a name for the metric. For example, Memory Metric.
       * **Group name**: If the group to which you want to add the metric already exists, select it.   
-     If you want to create a new group, select **+ Add New**. In the Add Group Name dialog enter a group name, and then select **Submit**.
+     If you want to create a new group, select **+ Add New**. In the Add Group Name dialog, enter a group name, and then select **Submit**.
 3. In the Add Metric dialog, select **Submit**.   
-   New group and metric are created. The query specifications and mapping settings are displayed. These settings help you get the desired metric data from your health source and map it to Harness service.
+   New group and metric are created. The query specifications and mapping settings are displayed. These settings help you get the desired metric data from your health source and map it to the Harness service.
 
 
 #### Define a query
 
-   In the **Query** box, enter your metric query and then select **Run Query**.  
+   In the **Query** box, enter your metric query, and then select **Run Query**.  
    Sample data is displayed in the **Records** box. The **Chart** box displays the graph corresponding to the sample data. This helps you verify if the query that you have built is correct.
 
    <details>
@@ -160,7 +162,7 @@ On the Verify settings page, do the following to add a health source:
 
    ![Query - disk usage](./static/cv-sumologic-select-metric-query-memory.png)
 
-   Disk usage records and chart being displayed for the query
+   Disk usage records and chart being displayed for the query:
 
    ![Memory usage records and charts](./static/cv-sumologic-select-metric-query-memory-chart-records.png)
 
@@ -177,20 +179,21 @@ In the **Assign** section, select the services to which you want to apply the me
 #### Configure risk profile
   
 :::info note
-The **Risk Profile** section is only visible if you have selected **Continuous Verification (Applied to the pipelines in the Continuous Deployment**) in the **Assign** section.
+The **Risk Profile** section is only visible if you have selected **Continuous Verification (Applied to the pipelines in the Continuous Deployment)** in the **Assign** section.
 :::
 
 1. Under **Risk Category**, select one of the following options:
-  - **Errors**
-  - **Infrastructure**
-  - **Performance/Throughput**
-  - **Performance/Other**
-  - **Performance/Response Time**
+   
+   - **Errors**
+   - **Infrastructure**
+   - **Performance/Throughput**
+   - **Performance/Other**
+   - **Performance/Response Time**
 
 2. Under **Deviation Compared To Baseline**, select the following settings to measure your service's behavior and calculate deviations from the health source:
 
-- **Higher counts = higher risk**
-- **Lower counts = higher risk**
+   - **Higher counts = higher risk**
+   - **Lower counts = higher risk**
 
   You can select multiple options.
 
@@ -198,7 +201,7 @@ The **Risk Profile** section is only visible if you have selected **Continuous V
 #### Map service instance identifier
 
 :::info note
-The **Map service instance identifier** section is visible only if you have selected **Continuous Verification (Applied to the pipelines in the Continuous Deployment**) in the **Assign** section.
+The **Map service instance identifier** section is visible only if you have selected **Continuous Verification (Applied to the pipelines in the Continuous Deployment)** in the **Assign** section.
 :::
 
 In **Service Instance Identifier (only needed for CV)**, specify the service instance identifier, which represents a dynamically created service that you deploy using Harness. The default value is `_sourceHost`.
@@ -206,10 +209,10 @@ In **Service Instance Identifier (only needed for CV)**, specify the service ins
 #### Advanced (Optional)
 
 :::info note
-The **Advanced (Optional)** section is only visible if you have selected **Continuous Verification (Applied to the pipelines in the Continuous Deployment**) in the **Assign** section.
+The **Advanced (Optional)** section is only visible if you have selected **Continuous Verification (Applied to the pipelines in the Continuous Deployment)** in the **Assign** section.
 :::
 
-##### Ignore Thresholds
+##### Ignore thresholds
 
 You can select the types of events for which you want to set thresholds in CV. Metrics that match the selected rules will not be flagged as anomalous, regardless of the analysis. 
 
@@ -220,7 +223,7 @@ To set the **Ignore Thresholds** for CV:
 3. In the **Criteria** field, choose **Absolute Value**, and enter the **Greater than** and **Lesser than** values.
 
 
-##### Fail-Fast Thresholds
+##### Fail-Fast thresholds
 
 You can select the type of events for which you want to set thresholds in CV. Any metric that matches the selected rules will be marked as anomalous and cause the workflow state to fail.
 
@@ -244,7 +247,7 @@ To set fail-fast thresholds for CV, follow these steps:
 2. Select **Apply Changes** to save the changes made to the Verify step.
 
 
-## Step 6: Run the pipeline
+## Run the pipeline
 
 To run the pipeline:
 
@@ -268,7 +271,7 @@ To run the pipeline:
    ![Running pipeline](./static/cv-simple-cv-running.png)
 
 
-## Step 7: View results
+## View results
 
 After the verification is complete, the Console View displays the verification details such as metric name, health source, risk, and so on.
 
