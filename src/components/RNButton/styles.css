@@ -16,7 +16,7 @@
 .rs-button:hover {
   background-color: var(--gray-100);
 }
-.i {
+.custom-icon {
   color: var(--orange-600);
   scale: 1.5;
   margin-left: 10px;
