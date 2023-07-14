@@ -10,6 +10,9 @@ To enable the same service to use different environment settings, DevOps teams c
 
 This topic explains what service settings can be overridden by environments.
 
+## Limitations
+
+* Runtime inputs are not supported if you are trying to override services in a multi environment set up.
 
 ## Override types
 
