@@ -6,9 +6,17 @@ sidebar_position: 10
 
 This topic describes quality metrics, as well as configuration options for widgets and reports associated with these metrics.
 
+:::info
+
+Several tools-based metrics are available with SEI, such as SonarQube code complexity reports, Testrails test reports, PagerDuty incident reports, Junit test reports, and many more.
+
+:::
+
 ## Issues Report
 
 Use the Issues Report to examine metrics related to various tickets/work items (epics, stories, bugs, tasks, and so on) in your issue management system. The report aggregates data based on selected attributes, such as priority, status, labels, components, or any other field. This report helps you create comparisons based on various fields and draw conclusions to make decisions.
+
+The **Issues Report** tracks issues in an issue management system, such as Jira. For information about tracking SCM issues, go to [SCM reports](../velocity-metrics-reports/scm-reports.md).
 
 ### Configure the Issues Report
 
@@ -131,12 +139,9 @@ Issue Single Stats widgets include:
 
 You can configure these widgets to further filter and refine them, such as by issue type, label, priority, and so on.
 
-## SCM Files Report
+For information about the **SCM Issues Count Single Stat** widget, go to [SCM reports](../velocity-metrics-reports/scm-reports.md).
 
-Use the SCM Files Report to identify code areas with a high frequency of changes. This is useful for ensuring that your hottest code areas have good test coverage.
+## Other quality reports
 
-:::info
-
-Several tools-based metrics are available with SEI, such as SonarQube code complexity reports, Testrails test reports, PagerDuty incident reports, Junit test reports, and many more.
-
-:::
+* **SCM Files Report:** For information about this report, go to [SCM reports](../velocity-metrics-reports/scm-reports.md).
+* **SCM File Types Report:** For information about this report, go to [SCM reports](../velocity-metrics-reports/scm-reports.md).

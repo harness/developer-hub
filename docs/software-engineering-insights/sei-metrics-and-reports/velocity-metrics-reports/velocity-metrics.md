@@ -19,7 +19,7 @@ SEI offers different velocity metrics based on the tools your teams use and the 
   * The flexibility to choose [integrations](/docs/category/connectors-and-integrations), like issue management, SCM, and CI/CD tools, and add the relevant filters to define your Deployment Frequency.
   * An understanding of your organization's deployment performance.
   * An overview of the daily, weekly, and monthly deployment trends.
-* **SCM Lead Time:** The overall lead time is the sum of the average time spent in each stage configured in the workflow. This metric can help identify where the team is spending time and if the amount of time spent in each stage falls in an acceptable range.
+* **Lead Time:** The overall lead time is the sum of the average time spent in each stage configured in a workflow, such as the commit-to-deployment cycle in SCM or the issue lifecycle in an issue management system. This metric can help identify where the team is spending time and if the amount of time spent in each stage falls in an acceptable range.
 * **PR Collaboration:** This metric provides an overview of how many PRs are being raised, by whom, who is reviewing PRs, who is merging PRs without reviews, and much more. These insights drive further actions to improve processes, initiate conversations with the team, remove the bottlenecks, and improve cycle time.
 
 There are many velocity metrics, and some overlap with other metrics categories. For more information about velocity subcategories and related metrics, go to:
@@ -33,6 +33,12 @@ For information about reports you can use to analyze velocity metrics, go to:
 
 * [CI/CD job reports](./ci-cd-reports.md)
 * [SCM reports](./scm-reports.md)
+
+<!-- Lead time -->
+<!-- ("issues lead time by stage" - Lead time by development stages, entire SDLC, all tools) VELOCITY: lead time by stage, lead time trend, lead time by type, lead time single stat -->
+<!-- (Specifically for jira/issue management) VELOCITY: lead time by time spent in stages -->
+<!-- Done - VELOCITY & DORA: SCM commit to cicd job lead time report, aka Commit to deployment lead time - jobs commits lead single stat, jobs commit leads trends report -->
+<!-- Done - (this section) VELOCITY: SCM PR lead time by stage report - scm pr lead time trend report, scm pr lead time by stage report -->
 
 ## Issues Report
 

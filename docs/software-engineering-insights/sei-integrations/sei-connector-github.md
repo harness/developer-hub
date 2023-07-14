@@ -34,7 +34,7 @@ If you can't use OAuth, you must create a GitHub personal access token to config
 
    ![The admin:org scope selections for a GitHub personal access token.](./static/github-token-scope2.png)
 
-   * The `admin:org_hook` scope is required for the **Issue Cycle Time** metric. If you don't want to track Issue Cycle Time, you don't need to select this permission.
+   * The `admin:org_hook` scope is required to track issue cycle time (for the [SCM Issue Time Across Stages Report](../sei-metrics-and-reports/velocity-metrics-reports/scm-reports.md#scm-issues-reports)). If you don't want to track issue cycle time, you don't need to select this permission.
 
    ![The admin:org_hook scope selections for a GitHub personal access token.](./static/github-token-scope3.png)
 
@@ -67,7 +67,7 @@ If you can't use OAuth, you must create a GitHub personal access token to config
 
 :::info Issue Cycle Time webhook
 
-If you created a personal access token and allowed the `admin:org_hook` permission, SEI creates a user webhook to receive the data for the **Issue Cycle Time** metric.
+If you created a personal access token and allowed the `admin:org_hook` permission, SEI creates a user webhook to receive issue cycle time data for the [SCM Issue Time Across Stages Report](../sei-metrics-and-reports/velocity-metrics-reports/scm-reports.md#scm-issues-reports).
 
 If you used OAuth, SEI creates an organization webhook instead.
 

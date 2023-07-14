@@ -96,7 +96,7 @@ To add the **Lead Time for Changes** widget to Insights:
 
 6. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 
-For information about SCM Lead Time widgets, go to [velocity metrics](../velocity-metrics-reports/velocity-metrics.md).
+For information about other SCM Lead Time reports, such as the **SCM Commit to CI/CD Job Lead Time Trend Report**, go to [SCM reports](../velocity-metrics-reports/scm-reports.md).
 
 ## Change Failure Rate
 

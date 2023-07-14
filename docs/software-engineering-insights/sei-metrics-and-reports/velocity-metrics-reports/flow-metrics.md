@@ -10,6 +10,7 @@ Flow metrics supported by SEI include:
 
 * **Lead Time:** The time it takes from when a new feature is requested to when it is delivered to the customer.
 * **Cycle Time (Flow Time):** The time it takes to complete a single iteration of the software development process, from planning to delivery, including wait times.
+   * Cycle time for SCM issues is reported on the [SCM Issue Time Across Stages Report](./scm-reports.md#scm-issues-reports).
 * **Throughput (Flow Velocity):** The number of features delivered per unit of time, such as each week or each month.
 * **Deployment Frequency:** The number of times that code is deployed to production in a given time period.
 * **Flow Efficiency:** Describes the effectiveness and overall productivity of the software development process. It measures how much time is spent actively working on items versus the total amount of time those items spend in the flow cycle.

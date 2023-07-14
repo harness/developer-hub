@@ -4,9 +4,116 @@ description: These widgets show metrics related to SCM activity.
 sidebar_position: 50
 ---
 
+SCM reports help you analyze activity in your SCM tools, including:
 
+* Individual developer contributions.
+* Volume of rework and other code changes.
+* Lead time and activities related to PRs and SCM issues.
+* Review collaboration.
+* Most active repositories and files.
 
-## SCM PRs Report
+Reports can be filtered by project, repository, time range, and other data points, depending on your SCM [integrations](../../sei-integrations/sei-integrations-overview.md).
+
+## SCM code activity reports
+
+Use SCM code activity reports to analyze direct coding activity in your SCM tool, such as volume of commits, coding days, types of files modified, rework, and activity in each repository.
+
+* **SCM Coding Days Report:** A coding day is any day where a developer commits code.
+* **SCM Coding Days Single Stat:** Report a single stat related to coding days.
+* **SCM Commits Report:** Analyze commit activity, such as number of commits per month.
+* **SCM Commits Single Stat:** Report a single stat related to commit activity.
+* **SCM Committers Report:** Analyze the volume of code changes by committer.
+* **SCM File Types Report:** Analyze commit and PR activity by file extension.
+* **SCM Files Report:** Identify code areas with a high frequency of changes. You can use this to make sure that your hottest code areas have good test coverage.
+* **SCM Repos Report:** Volume of changes by repository. You can use this to identify your most active repositories.
+* **SCM Rework Report:** Rework measures changes to previously-written code.
+
+:::info Trellis Scores
+
+Some code velocity metrics contribute to [Trellis Scores](../trellis-score.md):
+
+* Coding days are part of the **Speed** factor.
+* Number of commits per month is part of the **Volume** factor.
+* Percentage of rework determines the **Quality** factor.
+
+:::
+
+### SCM Committers Report
+
+With the **SCM Committers Report**, you can analyze the following data for each committer in the [Collection](../../sei-collections/collections-overview.md):
+
+* The number of PRs they have worked on.
+* The number of commits they've made.
+* The number of lines of code they have contributed.
+
+This information helps you with:
+
+* Accountability and transparency: Establish accountability by identifying the individuals responsible for making changes to source code, and provide transparency by showing who contributed to a project.
+* Project management and resource allocation: Understand the contributions of individual developers.
+* Performance evaluation and recognition: Evaluate the performance of individual developers or teams based on their contributions to a project.
+
+## SCM to CI/CD jobs reports
+
+* **SCM Commit to CI/CD Job Lead Time Trend Report:** Analyze the time taken to deploy commits to production. This can help you improve commit-to-deployment lead time.
+* **SCM Commit to CI/CD Job Lead Time Single Stat:** Report a single state related to commit-to-deployment lead time.
+* **SCM Change Volume to CI/CD Job Trend Report:** Analyze the frequency and volume of deployed code changes. You can use this report to correlate increases in quality issues with the volume of deployed changes.
+* **SCM Change Volume to CI/CD Jobs Single Stat:** Report a single stat related to the frequency or volume of deployed code changes.
+* **Code Volume Vs. Deployment Report**
+
+For more information about CI/CD job reports, go to [CI/CD job reports](./ci-cd-reports.md).
+
+## SCM issues reports
+
+Use SCM issues reports to analyze data related to the volume and lifetime of issues in your SCM tool.
+
+### Issue volume
+
+* **SCM Issues Report:** Analyze the number of issues in your SCM tool by time, label, or other categories.
+* **SCM Issues Count Single Stat:** Report a single stat related to the number of issues in your SCM tool.
+* **SCM Issues Report Trends:** Analyze changes over time in the volume of SCM issues.
+
+### Issue first response lead time
+
+First response lead time is measured as the time elapsed between issue creation and when someone, other than the reporter, comments on the issue.
+
+* **SCM Issues First Response Report:** Analyze the creation-to-first-response lead time for issues in your SCM tool.
+* **SCM Issues First Response Single Stat:** Report a single stat related to first response lead time.
+* **SCM Issues First Response Report Trends:** Analyze changes over time for first response lead time.
+
+### Issue resolution time
+
+Use the **SCM Issues Resolution Time Report** to analyze the overall time taken to close SCM issues.
+
+### Issue cycle time
+
+The **SCM Issues Time Across Stages Report** analyzes cycle time for SCM issues. You can configure this widget by project, repository, or other parameters to help you identify the Kanban state where issues spend the most time.
+
+Only GitHub is supported, and your [SEI GitHub connector](../../sei-integrations/sei-connector-github.md) must have the appropriate configuration to ingest issue cycle time data.
+
+## SCM PR reports
+
+:::info
+
+The terms *Pull Request (PR)* and *Merge Request* are interchangeable.
+
+:::
+
+SCM PR Lead Time Trend Report (scm_pr_lead_time_trend_report)
+SCM PR Lead Time by Stage Report (scm_pr_lead_time_by_stage_report)
+SCM PRs First Review To Merge Trend Single Stat (github_prs_first_review_to_merge_single_stat)
+SCM PRs First Review To Merge Trends (github_prs_first_review_to_merge_trends)
+SCM PRs First Review Trend Single Stat (github_prs_first_review_single_stat)
+SCM PRs First Review Trends (github_prs_first_review_trends)
+SCM PRs Merge Trend Single Stat (github_prs_merge_single_stat?)
+SCM PRs Merge Trends (github_prs_merge_trends) 
+SCM PRs Report (github_prs_report)
+SCM PRs Response Time Report (github_prs_response_time_report)
+SCM PRs Response Time Single Stat (github_prs_response_time_single_stat)
+SCM PRs Single Stat (github_prs_single_stat)
+SCM Review Collaboration Report (review_collaboration_report)
+* **SCM File Types Report:** Analyze commit and PR activity by file extension.
+
+### SCM PRs Report
 
 The **SCM PRs Report** shows a high level view of PRs moving through your SCM.
 
@@ -21,20 +128,9 @@ On the **Settings** tab, you can:
 * Select the maximum number of unique values to show on the X-axis.
 * Select the visualization (bar chart, pie chart, line chart, and so on).
 
-## SCM Lead Time
+### SCM PR Lead Time by Stage Report
 
-<!-- ("issues lead time by stage" - Lead time by development stages, entire SDLC, all tools) VELOCITY: lead time by stage, lead time trend, lead time by type, lead time single stat -->
-<!-- (Specifically for jira/issue management) VELOCITY: lead time by time spent in stages -->
-<!-- VELOCITY & DORA: SCM commit to cicd job lead time report, aka Commit to deployment lead time - jobs commits lead single stat, jobs commit leads trends report -->
-<!--  (this section) VELOCITY: SCM PR lead time by stage report - scm pr lead time trend report, scm pr lead time by stage report -->
-
-Use the **SCM PR Lead Time by Stage Report** to examine Lead Time based on PR stages. You can also use the **SCM PR Lead Time by Stage Trend Report** to examine daily, weekly, and monthly PR lead time trends.
-
-:::info
-
-The terms *Pull Request (PR)* and *Merge Request* are interchangeable.
-
-:::
+Use the **SCM PR Lead Time by Stage Report** to examine Lead Time based on PR stages. You can also use the **SCM PR Lead Time by Stage Trend Report** to examine PR lead time trends over time.
 
 To add the SCM PR Lead Time widget to Insights:
 
@@ -139,7 +235,3 @@ Merge Time = Pull Request Merged event - Pull Request approval event
 ```
 
 </details>
-
-## Other SCM and code velocity reports
-
-* **Code Volume Vs. Deployment Report**

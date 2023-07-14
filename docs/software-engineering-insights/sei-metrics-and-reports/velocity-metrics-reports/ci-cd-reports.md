@@ -58,6 +58,10 @@ Use the CI/CD job configuration change reports to understand how often job confi
 * **CI/CD Job Config Change Count Single Stat:** Report a single stat related to job config changes.
 * **CI/CD Job Config Change Count Trend Report:** Daily, weekly, and monthly trends for job config changes.
 
+## SCM to CI/CD jobs reports
+
+For information about SCM to CI/CD jobs reports, such as the **SCM Commit to CI/CD Job Lead Time Trend Report**, go to [SCM reports](./scm-reports.md).
+
 ## Configure CI/CD job reports
 
 These are some popular or useful ways to configure your CI/CD job report widgets.
