@@ -1,57 +1,16 @@
 ---
 title: What's supported in Harness CV
-description: Health and change sources supported by Harness CV.
+description: APM tools and log management tools supported by Harness CV.
 sidebar_label: What's supported
 sidebar_position: 10
 ---
 
-Harness Continuous Verification (CV) supports the following health and change monitoring tools:
+A health source monitors health trends in a service by analyzing metrics from Application Performance Monitoring (APM) tools and logs from log management tools. Harness Continuous Verification (CV) supports the following Application Performance Monitoring (APM) and log management tools:
 
 
-## Health sources
+import Cv from '/docs/continuous-delivery/verify/shared/cv-whats-supported.md';
 
-A health source monitors health trends in a service by analyzing metrics from APM tools and logs from log management tools.
-
-### APM
-
-Harness CV supports the following APM tools:
-
-- AppDynamics
-- Amazon CloudWatch
-- Custom health source
-- Datadog
-- Dynatrace
-- Google Cloud Operations (formerly Stackdriver)
-- New Relic
-- Prometheus (includes support for AWS Prometheus)
-- SignalFx
-- Splunk Observability
-- Sumologic
-
-Harness supports most of the popular APM tools, but there may be instances where Harness don't have a native connector. Using the **Harness Custom Health Source** feature, you can integrate such APM tools with Harness.
-
-
-### Log management
-
-Harness CV supports the following log management tools:
-
-- Datadog
-- Elasticsearch
-- Google Cloud Operations (formerly Stackdriver)
-- Grafana Loki
-- Splunk Observability
-- Sumologic
-
-Harness supports most of the popular log management tools, but there may be instances where Harness don't have a native connector. Using the **Harness Custom Health Source** feature, you can integrate such log management tools with Harness.
-
-
-### Queries
-
-Consider the following when configuring a health source and constructing a query in Harness CV:
-
-- The query result should be below 100 logs per minute. If the logs exceed this limit, Harness performs random sampling for processing.
-
-- The query response should be a single time-series.
+<Cv />
 
 
 To learn how to add a health source, go to [Configure CV](/docs/category/configure-cv).
