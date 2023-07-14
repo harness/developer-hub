@@ -12,9 +12,9 @@ Currently, this feature beta and is behind the feature flag, `CDS_SERVICE_OVERRI
 
 Harness has introduced an enhanced experience for service, environment, and infrastructure overrides in Continuous Delivery (CD). A new panel, **Overrides** is added in the **Deployments** section where you can override services, environments, and infrastructures.
 
-Overrides can defined at project, organization, and account levels.
+Overrides can be defined at project, organization, and account levels.
 
-When you create a new project or organization within an account, enable the account resource setting, **Enable Service Override V2** under **Account Settings > Account Resources > Continuous Deployment**.
+In **Account Settings > Account Resources > Continuous Deployment**, set the **Enable Service Override V2** to `true` for the enhanced overrides experience. 
 
 :::info
 
@@ -32,7 +32,7 @@ Make sure that the `NG_SETTINGS` feature flag is enabled to view this setting.
 
 Currently, Harness migrates the existing override configuration to the new version using back end APIs. The existing override scope or scope with all child scopes are migrated based on the requirement. 
 
-Harness anticipates adding a button in the UI to migrate to the new override configuration in the future. 
+Harness anticipates adding a Migrate button in the UI to migrate to the new override configuration in the future. 
 
 ## Override types
 
