@@ -58,9 +58,9 @@ We perform a pod fetch based on this label, which allows us to show deployed pod
 For reference: [Steady state check](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart/#spec-requirements-for-steady-state-check-and-versioning)
 
 
-#### Where we need to add release: {{ .Release.Name }}?
+#### Where we need to add label release: {{ .Release.Name }}?
 
-So, Any manifest object which creates the pod, you have to add this label in its spec. Adding it in Service, Deployment, StatefulSet and DaemonSet should be enough.
+For any manifest object which creates the pod, you have to add this label in its spec. Adding it in Service, Deployment, StatefulSet and DaemonSet should be enough.
 
 
 #### What does the release name mean in the Infrastructure?
