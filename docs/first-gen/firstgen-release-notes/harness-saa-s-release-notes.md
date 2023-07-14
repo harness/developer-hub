@@ -16,11 +16,27 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### July 14, 2023, version 799xx
+
+#### What's new
+
+- The ubi8-minimal:8.7 image has been upgraded to ubi8-minimal:8.8. (PL-39720, PL-39276)
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Pagination did not work correctly in the list-secrets-page API response. The number of records in the response exceeded the specified limit. (PL-38776)
+
+  This issue is now fixed. 
+
 ### July 06, 2023, version 79807
 
 #### What's new
 
-- The ubi8-minimal:8.7 has been upgraded to version ubi8-minimal:8.8 (PL-39276)
+- The ubi8-minimal:8.7 has been upgraded to version ubi8-minimal:8.8. (PL-39276)
 
 #### Early access
 
