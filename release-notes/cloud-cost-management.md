@@ -12,6 +12,9 @@ import TabItem from '@theme/TabItem';
 <rnbutton text="Subscribe for Cloud Cost Management release notes" link="/release-notes/cloud-cost-management/rss.xml" />
 Review the notes below for details about recent changes to Harness Cloud Cost Management, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). 
 
+For information about data privacy and security, go to the [Harness Trust Center](https://trust.harness.io/).
+
+
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::

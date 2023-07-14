@@ -36,7 +36,7 @@ Pod IO latency:
       <tr>
         <td> LATENCY </td>
         <td> Specify the latency to be injected in file system calls</td>
-        <td> Accepts any unit of time, for example, 60s, 1m, or 60000ms. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-latency#io-latency">latency</a>.</td>
+        <td> Accepts any unit of time, for example, 60s, 1m, or 60000ms. For more information, go to <a href="#io-latency">latency</a>.</td>
       </tr>
       <tr>
         <td> MOUNT_PATH </td>

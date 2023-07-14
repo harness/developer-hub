@@ -107,6 +107,10 @@ Delegates can be selected for the connector used in a stage's **Infrastructure**
 
 ![](./static/select-delegates-with-selectors-25.png)
 
+import Selector from '/docs/platform/2_Delegates/shared/selector-infrastructure.md'
+
+<Selector />
+
 ### Selecting a delegate for a step using tags
 
 You can select one or more delegates for each pipeline step.
