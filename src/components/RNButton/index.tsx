@@ -16,7 +16,7 @@ const CustomButton: React.FC<Props> = (props) => {
     <Link to={baseUrl + props.link} className="link">
       <button className="rs-button">
         {props.text}
-        <i className={`${props.icon}`}></i>
+        <i className={`${props.icon} i`}></i>
       </button>
     </Link>
   );
