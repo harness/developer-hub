@@ -11,6 +11,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
+<rnbutton text="Subscribe for Feature Flags release notes" link="/release-notes/feature-flags/rss.xml" />
 Review the notes below for details about recent changes to Harness Feature Flags (FF), NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 
 :::info note

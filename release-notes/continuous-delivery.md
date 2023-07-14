@@ -9,6 +9,7 @@ sidebar_position: 4
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
+<rnbutton text="Subscribe for Continuous Delivery & GitOps release notes" link="/release-notes/continuous-delivery/rss.xml" />
 Review the notes below for details about recent changes to Harness Continuous Delivery & GitOps, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 
 :::info note
