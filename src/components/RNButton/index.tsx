@@ -8,7 +8,7 @@ interface Props {
   link: string;
   icon: string;
 }
-const CustomButton: React.FC<Props> = (props) => {
+const DocsButton: React.FC<Props> = (props) => {
   const { siteConfig } = useDocusaurusContext();
   const baseUrl = siteConfig.url;
 
@@ -22,4 +22,4 @@ const CustomButton: React.FC<Props> = (props) => {
   );
 };
 
-export default CustomButton;
+export default DocsButton;
