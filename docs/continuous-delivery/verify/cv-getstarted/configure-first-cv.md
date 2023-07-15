@@ -4,6 +4,12 @@ description: Learn how to set up a simple CV in your Harness CD pipeline.
 sidebar_position: 20
 ---
 
+## Set a baseline for load testing
+
+:::info note
+Currently, this feature is behind the feature flag `SRM_ENABLE_SIMPLE_VERIFICATION`. Contact Harness Support to enable the feature.
+:::
+
 This topic describes how to add a simple Harness Continuous Verification (CV) step to a Harness CD pipeline, configure your Application Performance Monitoring (APM) tool as a health source, and verify your deployment.
 
 
