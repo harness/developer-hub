@@ -253,8 +253,16 @@ The following screenshots show successful and failed verifications in a deployme
 ![Failed verification step](./static/cv-sumologic-pipeline-fail.png)
 
 
+## Set a baseline for load testing
 
-## Set successful verification as a baseline for load testing
+:::info note
+Currently, this feature is behind the feature flag `SRM_ENABLE_BASELINE_BASED_VERIFICATION`. Contact Harness Support to enable the feature.
+:::
+
+You can set specific verification in a successful pipeline execution as a baseline for future load testing.
+
+
+### Set successful verification as a baseline for load testing
 
 To set a verification as baseline for future load testing:
 
