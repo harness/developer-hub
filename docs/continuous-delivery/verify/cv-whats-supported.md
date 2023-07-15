@@ -12,6 +12,13 @@ import Cv from '/docs/continuous-delivery/verify/shared/cv-whats-supported.md';
 
 <Cv />
 
+:::info note
+When configuring an APM tool or a log management tool in Harness CV and constructing a query, consider the following:
+
+- The query result should be below 100 logs per minute. If the logs exceed this limit, Harness performs random sampling for processing.
+
+- The query response should be a single time series.
+:::
 
 To learn how to add a health source, go to [Configure CV](/docs/category/configure-cv).
 
