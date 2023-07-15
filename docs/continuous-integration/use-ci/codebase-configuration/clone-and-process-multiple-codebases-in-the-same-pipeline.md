@@ -37,7 +37,7 @@ The following steps explain how to create a pipeline and add a **Build** stage. 
 7. Select **Set Up Stage**.
 8. On the stage's **Infrastructure** tab, [set up the build infrastructure](/docs/category/set-up-build-infrastructure).
 
-For more information about configuring the **Build** stage's, go to [Create and configure a codebase](./create-and-configure-a-codebase.md) and [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
+For more information about configuring the **Build** stage and the default codebase, go to [Create and configure a codebase](./create-and-configure-a-codebase.md) and [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
 
 ## Add the Git Clone step
 
@@ -103,7 +103,13 @@ If you want to use self-signed certificates in a Kubernetes Cluster build infras
 
 ### Run as User
 
-Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+This setting is available for Kubernetes cluster build infrastructures only.
+
+All Git clone steps, including the default clone codebase step and any additional **Git Clone** steps, use user 1000 by default for Kubernetes.
+
+If necessary, you can specify, in **Run as User**, a user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+
+Specifying **Run as User** at the step level overrides **Run as User** in the [build infrastructure settings](../set-up-build-infrastructure/ci-stage-settings.md#infrastructure), if you had also specified it there.
 
 ### Set Container Resources
 

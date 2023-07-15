@@ -36,5 +36,34 @@ The form gets too long if we expose all the fixed values and we only require in 
 
 For the terrafrom step if remote backend is not configured, the state file is being managed by Harness and it maps to the provisioner identifier itself. Hence the only way to get rid of the state file is to change the provisioner identifier in this scenario.
 
+#### How to use reference modules in sub-directories as part of a Terraform step? 
+
+In Harness, users may want to reference sub-modules as part of a Terraform step. Here is a sample code as part of the tf file that can be utilized:
+
+module "transit-gateway" {
+  source = "git::https://gitlab.com/rubrik-octo/lab/source-modules.git//site-deploy/transit-gateway"
+}
+
+Here you see a single git repository named 'source-modules, that has multiple modules inside various folders. By using the '//' at the end of the source location, you can instruct Terraform to checkout a specific folder. 
+
+
+#### Do we need to install jq library in delegate machine or harness itself providing jq by default?
+
+Harness by default does not provide by default the jq on delegate host. You need to add the below command in your INIT_SCRIPT for this.
+
+```microdnf install jq```
+
+#### Can plan from terraform step be encrypted using a read only secret manager ?
+
+For encrypting terraform plan with the selected secret manager we need the ability to write the encrypted plan to the secret manager and hence read only secret manager will not work for this scenario.
+
+
+#### What operations are performed as part of the cleanup step in ssh command task.
+
+For SSH, we by default add an initialize step and a clean step apart from command execution step. As part of the cleanup step we we delete the working directory that lies within /tmp on the remote connected host.
+
+
+
+
 
 

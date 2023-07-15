@@ -1,0 +1,31 @@
+.rs-button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--gray-50);
+  font-size: 12px;
+  padding: 10px 15px;
+  font-weight: bold;
+  color: var(--gray-600);
+  text-align: center;
+  border-radius: 8px;
+  border: 1px solid var(--gray-400);
+  margin-bottom: 20px;
+  text-decoration: none;
+}
+.rs-button:hover {
+  background-color: var(--gray-100);
+}
+.custom-icon {
+  color: var(--orange-600);
+  scale: 1.5;
+  margin-left: 10px;
+  margin-right: 3px;
+}
+
+.link {
+  text-decoration: none;
+}
+.link:hover {
+  text-decoration: none;
+}

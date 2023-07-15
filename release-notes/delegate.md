@@ -9,9 +9,13 @@ sidebar_position: 14
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/delegate/rss.xml" />
+
+
 Review the notes below for details about recent changes to Harness Delegate, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 
 Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+
 
 :::info note
 Harness Delegate, NextGen SaaS releases every two weeks. Harness Platform, NextGen SaaS and Harness Platform, and FirstGen SaaS release weekly. New features, early access features, and fixes for Harness Platform, NextGen SaaS, and FirstGen SaaS that do not require a new delegate version are included in the Harness Platform release notes. For NextGen Harness Platform release notes, go to [Harness Platform release notes](/release-notes/platform). For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
@@ -41,6 +45,8 @@ This release introduces the following new features and enhancements:
 - You can now see disconnected delegate details in selection logs and error messages when there are no eligible delegates in an active state to execute tasks. (PL-37900)
 
 - The delegate JRE is upgraded to 11.0.19_7. (PL-37994)
+
+- When a delegate token is revoked, Harness now sends `SELF_DESTRUCT` to all delegates that are using the revoked token. (PL-38957)
 
 ```mdx-code-block
   </TabItem>
