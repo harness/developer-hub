@@ -28,6 +28,11 @@ Make sure that the `NG_SETTINGS` feature flag is enabled to view this setting.
 
 * Runtime inputs are not supported for **Infrastructure Specific** and **Service & Infrastructure Specific** variables.
 
+## Demo Video
+
+<docvideo src="https://www.loom.com/share/a93bd67458784583b4e509c5b30e887a?sid=49124b81-4909-4079-859c-64e8950fffaa" />
+
+
 ## Migrating to overrides V2
 
 Currently, Harness migrates the existing override configuration to the new version using back-end APIs. The existing override scope or scope with all child scopes are migrated based on the requirement. 
