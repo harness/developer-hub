@@ -12,6 +12,7 @@
   border: 1px solid var(--gray-400);
   margin-bottom: 20px;
   text-decoration: none;
+  cursor: pointer;
 }
 .rs-button:hover {
   background-color: var(--gray-100);
