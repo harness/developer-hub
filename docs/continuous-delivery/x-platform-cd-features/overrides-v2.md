@@ -34,6 +34,10 @@ Currently, Harness migrates the existing override configuration to the new versi
 
 Harness anticipates adding a Migrate button in the UI to migrate to the new override configuration in the future. 
 
+## Video demo
+
+<docvideo src="https://www.loom.com/share/a93bd67458784583b4e509c5b30e887a?sid=49124b81-4909-4079-859c-64e8950fffaa" />
+
 ## Override types
 
 ```mdx-code-block
