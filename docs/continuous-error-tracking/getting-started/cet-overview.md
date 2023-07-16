@@ -21,6 +21,7 @@ CET consists of an Error Tracking Agent that runs on a Java Virtual Machine (JVM
 
 ![Harness Error Tracking](./static/et-quickstart-overview-diagram.png)
 
+
 ## Further reading
 
 - [Tutorials](https://developer.harness.io/tutorials/error-tracking)
