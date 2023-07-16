@@ -207,6 +207,28 @@ Policy Sets can be configured to evaluate policies on these Feature Flag events:
 
 See [Use Harness Policy As Code for Feature Flags](/docs/platform/Governance/Policy-as-code/using-harness-policy-engine-for-feature-flags).
 
+#### Connectors
+
+Policies are evaluated against Harness [Connectors](https://developer.harness.io/docs/category/connectors)
+
+Policy Set can be configured to evaluate policies on the save of a connector.
+
+See [Use Harness Policy As Code for Connectors](https://developer.harness.io/docs/platform/Governance/Policy-as-code/sample-policy-use-case#connector-policy-samples)
+
+
+#### Template
+
+:::note
+Currently, this feature is behind the feature flag, `CDS_OPA_TEMPLATE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+You can configure policies on templates during the creation of the template. This ensures users follow the best practices set by their organization without the organization managing each template’s creation directly. By setting guard rails at creation time it reduces the number of checks needed at runtime to enforce standards.
+
+Users can now manage the configuration of Templates at configuration time by running policies on Template Save. During Pipeline Save, users can enforce that a specific template is being used. On Pipeline Run users can ensure that the resolved contents of the pipeline meet execution standards.
+
+* On Template Save
+* On Pipeline Save
+* On Pipeline Run
+
 #### Custom
 
 You can define a policy with the entity type Custom.
