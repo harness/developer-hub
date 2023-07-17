@@ -1,0 +1,123 @@
+---
+title: Assign metadata using tags
+description: Define and apply tags (key-value pairs) to organize and view your Harness resources.
+sidebar_position: 1
+---
+
+Harness enables you to provide metadata for organizing, searching, and filtering components. You add your metadata using Harness tags. This topic explains how to create tags, including guidelines and restrictions.
+
+## Before you begin
+
+* Go to [Platform overview](/docs/platform/Get-started/platform-concepts/platform-overview.md).
+* Go to [Tags reference](/docs/platform/references/tags-reference/).
+
+## Review: Tag guidelines
+
+Harness tags function like the tags on common cloud providers' platforms. They are arbitrary key-value pairs that you can apply to Harness applications and application components. As metadata, they enable you to organize, search, and filter Harness entities.
+
+Using tags, you can overlay your organization’s structure onto Harness resources. Here are some sample use cases:
+
+* Categorizing applications and components by team.
+* Marking applications and components for reuse, preservation, or deletion.
+* Allocating costs.
+
+Some examples of Tag keys, with representative values, are:
+
+* `org: engineering`
+* `owner: jenny`
+* `validUntil: 1557444441`
+* `do-not-delete`
+
+The final Tag example above is a key with no value. If assigned to a component, such a tag with no value simply acts like a flag.
+
+### Tag format restrictions
+
+Tag names and values are restricted to the following format:
+
+`^[/A-Za-z0-9 _-]+`
+
+If you are adding tags in workflows and pipelines, you can use variable expressions in the names and values. Variable expressions follow the format `${<variable_name>}`.
+
+When the variable expression is evaluated by Harness, it does **not** need to meet the standard tag format restrictions. It has no restrictions.
+
+If a tag uses a variable expression in its name or value, you cannot edit it in **Tags Management**. You must edit the tag in a workflow or pipeline.
+
+For more information, go to [Use expressions in workflow and pipeline tags](use-expressions-in-workflow-and-pipeline-tags.md).
+
+### Tag general restrictions
+
+**Tags** in Harness have these general restrictions:
+
+* A Harness account can maintain a maximum of 500 tag names.
+* Each application, or application component, can have a maximum of 50 tags applied.
+* Each instance of a tag key can have only one value when applied to an application or component, .
+* The Tag-name prefix `harness.io/` is reserved for future use by Harness.
+
+**Tag names** (keys) have the following restrictions:
+
+* Length: 1 to 128 characters.
+* Allowed characters: letters, numbers, spaces, `_,-,/`
+* Names: Must be unique across your Harness account.
+* Names are case-sensitive.
+* Names must not begin with the characters `_, -` or spaces.
+* System tags will have the tag-name prefix `system/`.
+
+**Tag values**, when applied to applications or components, have the following restrictions:
+
+* Length: 0 to 256 characters. (Entering a value is optional—unless the tag key imposes [Allowed values](#allowed_values), in which case one of those values is required.)
+* Allowed characters: letters, numbers, spaces, `_,-,/`
+* Values are case-sensitive.
+* Must not begin with the characters `_, -` or spaces.
+
+## Review: Tag scope
+
+Tags can be added to Harness applications, and to the following application components:
+
+* Service
+* Environment
+* Workflow
+* Pipeline
+* Infrastructure Provisioner
+
+## Step 1: Assign required permissions
+
+Your options for interacting with Tags depend on your Harness [User group permissions](../../security/access-management-howtos/users-and-permissions.md), as follows:
+
+* All users can view tags (and values) that have been applied to applications and their components.
+* Users' [Application permissions](../../security/access-management-howtos/users-and-permissions.md#application-permissions) determine their ability to apply, update, and remove tags on specific applications and application components.
+* Users who have the [Account permission:](../../security/access-management-howtos/users-and-permissions.md#account-permissions) **Manage Tags** can create tag keys, impose Allowed Values on keys, and edit and delete keys.
+
+### Applying Tags
+
+Users who have appropriate [Application-level permissions](../../security/access-management-howtos/users-and-permissions.md#application-permissions) can add and modify tags on the Harness Application components listed above under [Tag scope](#tag_scope).
+
+## Step 2: Add tags
+
+To add a tag to an application or [supported](#tag_scope) application component:
+
+1. In Harness, go the application or component to display its Overview card: **Application Overview**, **Environment Overview**, **Workflow Overview**, **Services** etc.
+
+2. In **Configuration**, select the **Tags** pencil icon.
+
+   ![](./static/tags-001.png)
+
+2. In the field, type a tag name, and then press enter.
+
+   ![](./static/tags-002.png)
+
+3. Select **Save** to add your tag.
+
+   Each applied Tag's key and value will now appear on the application's or component's **Overview** card:
+
+   ![](./static/tags-003.png)
+
+## Option 2: Remove tags
+
+You can remove Tags from the same Applications and components where you have [Application Permissions](../../security/access-management-howtos/users-and-permissions.md#application-permissions) to add (attach) tags. Click the tag's **X** box, and then save the configuration.
+
+There is no automatic undo. To restore a removed tag, you must manually re-enter it.
+
+## Next Steps
+
+* [Apply filters using tags](apply-filters-using-tags.md)
+* [Manage tags](manage-tags.md)
