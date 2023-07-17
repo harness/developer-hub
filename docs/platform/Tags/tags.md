@@ -8,7 +8,7 @@ Harness enables you to provide metadata for organizing, searching, and filtering
 
 ## Before you begin
 
-* Go to [Platform overview](/docs/platform/Get-started/platform-concepts/platform-overview.md).
+* Go to [Platform overview](/docs/platform/1_Get-started/platform-concepts/platform-overview.md).
 * Go to [Tags reference](/docs/platform/references/tags-reference/).
 
 ## Review: Tag guidelines
@@ -111,7 +111,7 @@ To add a tag to an application or [supported](#tag_scope) application component:
 
 ## Option 2: Remove tags
 
-You can remove Tags from the same applications and components where you have [Application permissions](../../security/access-management-howtos/users-and-permissions.md#application-permissions) to add (attach) tags. Click the tag's **X** box, and then save the configuration.
+You can remove tags from the same applications and components where you have Application permissions to add (attach) tags. Click the tag's **X** box, and then save the configuration.
 
 There is no automatic undo. To restore a removed tag, you must manually re-enter it.
 

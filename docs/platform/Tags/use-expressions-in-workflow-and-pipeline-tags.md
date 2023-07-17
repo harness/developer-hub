@@ -10,7 +10,7 @@ Using expressions in tags lets you create dynamic metadata for your deployments.
 
 ## Before you begin
 
-* Go to [Using tags](/docs/platform/Tags/tags/)
+* Go to [Using tags](/docs/platform/Tags/tags.md)
 * Go to [Tags reference](/docs/platform/references/tags-reference/).
 
 ## Review: Tag restrictions
