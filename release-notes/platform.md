@@ -45,7 +45,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - User names cannot exceed 256 chars. (PL-21254)
 
 - The List Tokens API now supports listing all the personal access tokens or service account tokens in the account. The API has been enhanced as follows:
-1. If you have user management permissions, you can list all the Personal Access Tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
+1. If you have user management permissions, you can list all the personal access tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
 2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
 
 This item requires Harness Delegate version 799xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
