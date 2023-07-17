@@ -437,6 +437,19 @@ You can complete your Pipeline and then run it.
 
 Harness will provision the target infrastructure and then deploy to it.
 
+Terraform steps also would output the commit ID of config files stored on git.
+Those outputs also would be available using expressions, as example, for a Terraform Apply step with identifier TerraformApply which has config files, backend config files and var files 
+stored on git, the expressions would look like:
+
+For config files: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.TF_CONFIG_FILES>`
+
+For backend config files: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.TF_BACKEND_CONFIG_FILE>`
+
+For var file with identifier varfile1: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.varfile1>`
+
+<img width="939" alt="Screenshot 2023-07-17 at 14 25 21" src="https://github.com/harness/developer-hub/assets/67729695/d93fa5e4-0de3-40c3-a34a-24c6f222e888">
+
+
 ## Terraform Rollback
 
 The **Terraform Rollback** step is automatically added to the **Rollback** section.
