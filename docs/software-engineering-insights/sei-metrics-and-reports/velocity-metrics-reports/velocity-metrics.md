@@ -25,7 +25,7 @@ SEI offers different velocity metrics based on the tools your teams use and the 
 There are many velocity metrics, and some overlap with other metrics categories. For more information about velocity subcategories and related metrics, go to:
 
 * [DORA metrics](../dora-metrics.md)
-* [Effort investment metrics](../effort-investment-metrics-reports/effort-investment-metrics.md)
+* [Effort investment metrics](../effort-investment-metrics.md)
 * [Flow metrics](./flow-metrics.md)
 * [Sprint metrics](./planning-sprint-metrics.md)
 

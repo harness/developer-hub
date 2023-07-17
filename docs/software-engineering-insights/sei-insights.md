@@ -156,13 +156,13 @@ Dev Insights examines development efforts, particularly in relation to SCM metri
 
 ### Business Alignment
 
-The Business Alignment Insight can help visualize where your teams are expending the most effort and help your teams prioritize their time. This Insight includes the following three widgets, which provide an overview of the categories or projects where engineers are allocating the most time:
+The Business Alignment Insight can help visualize where your teams expend the most effort and help your teams prioritize their time. This Insight includes the following three widgets, which provide an overview of the categories or projects where engineers are allocating the most time:
 
 * **Effort Investment Single Stat**
 * **Effort Investment Trend Report**
 * **Effort Investment By Engineer**
 
-For more information about these reports and metrics, go to [effort investment metrics](./sei-metrics-and-reports/effort-investment-metrics-reports/effort-investment-metrics.md).
+For more information about these reports and metrics, go to [effort investment metrics](./sei-metrics-and-reports/effort-investment-metrics.md).
 
 If you want to create additional Business Alignment Insights, select the **Effort Investment Profile** option under **Parameters** when [creating Insights](#create-insights).
 

@@ -4,7 +4,7 @@ description: Use Investment profiles to examine effort investment metrics.
 sidebar_position: 10
 ---
 
-Investment profiles help you understand where engineers are allocating their time through [effort investment metrics](../sei-metrics-and-reports/effort-investment-metrics-reports/effort-investment-metrics.md).
+Investment profiles help you understand where engineers are allocating their time through [effort investment metrics](../sei-metrics-and-reports/effort-investment-metrics.md).
 
 To create or edit Investment profiles:
 
