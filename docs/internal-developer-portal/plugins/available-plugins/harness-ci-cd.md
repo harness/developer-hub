@@ -1,5 +1,6 @@
 ---
 title: Harness CI/CD
+description: View pipeline executions of your Harness pipelines.
 ---
 
 | Plugin details |                                                        |
@@ -62,9 +63,10 @@ This plugin exports a UI tab that you can use as a new CI/CD tab for a service o
 ```
 
 The `isHarnessCiCdAvailable` condition is met when one of the following annotations is present in the software components's `catalog-info.yaml` definition file.
-* `harness.io/pipelines`
-* `harness.io/services`
-* `harness.io/project-url` (deprecated) 
+
+- `harness.io/pipelines`
+- `harness.io/services`
+- `harness.io/project-url` (deprecated)
 
 ## Annotations
 

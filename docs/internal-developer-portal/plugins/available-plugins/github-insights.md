@@ -1,5 +1,6 @@
 ---
 title: GitHub Insights
+description: View insights like top contributors, releases, readme, etc. from GitHub.
 ---
 
 | Plugin details |                                                                |

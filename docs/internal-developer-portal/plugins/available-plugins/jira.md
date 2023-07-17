@@ -1,5 +1,6 @@
 ---
 title: Jira
+description: View project summary and latest activities from your Jira project.
 ---
 
 | Plugin details |                                                    |

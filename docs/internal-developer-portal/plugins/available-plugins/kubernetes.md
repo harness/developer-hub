@@ -1,5 +1,6 @@
 ---
 title: Kubernetes
+description: View deployment status and pod health from your Kubernetes cluster(s).
 ---
 
 | Plugin details |                                                                                 |

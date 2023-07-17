@@ -1,5 +1,6 @@
 ---
 title: CircleCI
+description: View CI/CD pipeline executions from CircleCI.
 ---
 
 | Plugin details |                                                                               |
