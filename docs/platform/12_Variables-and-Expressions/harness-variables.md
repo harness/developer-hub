@@ -601,7 +601,7 @@ The list of stages selected for execution.
 
 The pipeline level delegate selectors selected via runtime input.  
 
-## Deployment and step status
+## Deployment, pipeline, stage, and step status
 
 Deployment status values are a Java enum. The list of values can be seen in the deployments **Status** filter:
 
@@ -609,22 +609,31 @@ Deployment status values are a Java enum. The list of values can be seen in the 
 
 You can use any status value in a JEXL condition. For example, `<+pipeline.stages.stage1.status> == "FAILED"`.
 
-### Step status
+#### Stage status
 
-The expression `<+pipeline.stages.STAGE_NAME.spec.execution.steps.STEP_ID.status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
+The expression `<+pipeline.stages.STAGE_ID.status>` resolves to the status of a stage.
+
+You must use the expression after the stage in execution.
+
+#### Step status
+
+The expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
 
 You must use the expression after the step in execution.
 
 ## InputSet
 
-Input Set values are a Json value. The list of values can be searched via 
+Displays the Input Set values for the execution as a JSON value. The list of values can be searched via `<+inputSet>`.
+
+Here's an example where the **Timeout** settings for the two steps preceding the step using `<+inputSet>` are using values from an Input Set:
 
 ```
-<+inputSet>
-
+{pipeline:identifier:Custom} {pipeline:stages:[{stage:identifier:Custom}]} {pipeline:stages:[{stage:type:Custom}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:identifier:ShellScript_1}}}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:type:ShellScript}}}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:timeout:10s}}}]} {pipeline:stages:[{stage:spec:{execution:{step:identifier:json_format}]}}]} {pipeline:stages:[{stage:spec:{execution:{step:type:ShellScript}]}}]} {pipeline:stages:[{stage:spec:{execution:{step:timeout:10m}]}}]}
 ```
 
 ## Stage
+
+The following variables provide information on the pipeline stage.
 
 ### Stage-level variables
 

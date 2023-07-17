@@ -21,6 +21,10 @@ This topic demonstrates how to create a trigger for GitHub payload conditions. I
 
 :::
 
+import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported.md'
+
+<Variables />
+
 <details>
 <summary>Video summary</summary>
 
