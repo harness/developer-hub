@@ -23,7 +23,63 @@ Configure the **WinRM Credential** settings as follows.
      5. **Skip Cert Check**: Select to skip certificate check. When connected over an HTTPS connection, the client doesn't validate server certificate. 
      6. **WinRM Port**: Leave the default port **5986** or enter a new port if needed. 
    * **[Kerberos](https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview?source=recommendations)** (recommended)
-  
+     
+     
+     :::info
+     You must add the Kerberos startup script to the Harness Delegate YAML for the connection to succeed.
+
+     <details>
+     <summary>Add the Kerberos startup script to the delegate YAML</summary>
+
+     1. Open the `delegate.yaml` in a text editor.
+     2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
+        ```
+        - name: INIT_SCRIPT  
+        value: ""  
+        ```
+     3. Replace `value: ""` with the following script
+     
+     ```
+     - name: INIT_SCRIPT
+       value: |-
+        # Set up kerberos
+        microdnf update
+        microdnf install vim
+        microdnf install yum
+        microdnf install -y yum-utils
+        yes | yum install krb5-workstation krb5-libs
+        truncate -s 0 /etc/krb5.conf
+        cat <<EOT >> /etc/krb5.conf
+        [logging]
+            default = FILE:/var/log/krb5libs.log
+            kdc = FILE:/var/log/krb5kdc.log
+            admin_server = FILE:/var/log/kadmind.log
+        [libdefaults]
+            default_realm = WINRM.INTERNAL
+            dns_lookup_realm = true
+            ticket_lifetime = 24h
+            renew_lifetime = 7d
+            forwardable = true
+            rdns = false
+        [realms]
+          WINRM.INTERNAL = {
+            kdc = "DC01.WINRM.INTERNAL"
+            admin_server = "DC01.WINRM.INTERNAL"
+            default_domain = "WINRM.INTERNAL"
+            master_kdc = "DC01.WINRM.INTERNAL"
+          }
+        [domain_realm]
+          .winrm.internal = WINRM.INTERNAL
+        EOT
+        echo '3.83.239.167 ec2-3-83-239-167.compute-1.amazonaws.com EC2AMAZ-L2O9PUA.WINRM.INTERNAL' >> /etc/hosts
+        echo '54.225.189.86 ec2-54-225-189-86.compute-1.amazonaws.com DC01.WINRM.INTERNAL' >> /etc/hosts
+        echo 'Harness@123456' | kinit Administrator@WINRM.INTERNAL
+        klist
+     ```
+     </details>
+
+     :::
+     
      Enter the following authentication details:  
      1. **Principal**: Enter the account name associated with the Kerberos account. 
      2. **Realm**: Enter a realm. Realm is the logical network served by a single Kerberos database and a set of Key Distribution Centers (KDCs).
