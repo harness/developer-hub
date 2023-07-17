@@ -21,7 +21,7 @@ Harness publishes security advisories for every release. Go to [trust.harness.io
 Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
 :::
 
-## Latest - July 13, 2023
+## Latest - July 14, 2023
 
 ```mdx-code-block
 <Tabs>
@@ -43,6 +43,34 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
+#### Feature Flags SDKs
+
+The **Node.js** server SDK has been updated to version **1.3.1** with the following updates.
+
+* Previously, calling waitForInitialization was resolving before the SDK was fully initialized, leading to default values being served until initialization completes. This issue has been fixed. (FFM-8615)
+
+
+  </TabItem>
+</Tabs>
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### July 13, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
 #### Feature Flags server
 
 The Feature Flags server has been updated to version **1.1076.0** with the following updates.
@@ -52,15 +80,6 @@ The Feature Flags server has been updated to version **1.1076.0** with the follo
 * The flag pipeline was not updating the build number. This issue has been fixed. (FFM-8140)
 
 * Target attributes were not updating on conflict. This issue has been fixed. (FFM-8549, ZD 46770)
-
-
-  </TabItem>
-</Tabs>
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### July 4, 2023
 
