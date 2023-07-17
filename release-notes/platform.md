@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-07-14T10:00:30
+date: 2023-07-18T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -21,7 +21,7 @@ Harness publishes security advisories for every release. Go to the [Harness Trus
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 14, 2023, version 799xx
+## Latest - July 18, 2023, version 799xx
 
 
 ```mdx-code-block
@@ -36,7 +36,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   - [CVE-2023-29404](https://nvd.nist.gov/vuln/detail/CVE-2023-29404)
   - [CVE-2023-29403](https://nvd.nist.gov/vuln/detail/CVE-2023-29403)
 
-- An AI-powered chatbot named Ask AIDA has been integrated to make searches within the Harness Docs. Users can access the chatbot by clicking the icon located at the bottom-right corner of the screen. (PL-39613)
+- An AI-powered chatbot named Ask AIDA has been integrated to make searches within the Harness Docs. You can access the chatbot by clicking the icon located at the bottom-right corner of the screen. (PL-39613)
 
 - You can now view delegate logs when validating a connector that uses a delegate to establish connections. (PL-37919)
 
@@ -45,8 +45,8 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - User names cannot exceed 256 chars. (PL-21254)
 
 - The List Tokens API now supports listing all the personal access tokens or service account tokens in the account. The API has been enhanced as follows:
-1. Users who have user management permissions can list all the Personal Access Tokens in the account. They can also filter tokens belonging to a user or filter only active tokens.
-2. Users who have service account management permissions can list all the service account tokens in the account. They can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
+1. If you have user management permissions, you can list all the Personal Access Tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
+2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
 
 This item requires Harness Delegate version 799xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
@@ -65,23 +65,21 @@ This release does not include early access features.
 
   Now, for accounts that are only on Harness NextGen, Harness sends password reset emails from Harness NextGen.
 
-- Event notifications were not sent for Pipeline Start events after Harness Platform was upgraded to version 79606. The issue was specific to remote pipelines. (CDS-73805)
-  
-  This issue is now fixed. 
-
 - You could not create Azure Key Vault connectors in Harness NextGen even when you used the service principal credentials that successfully created Azure Key Vault connectors in Harness FirstGen. After you entered the service principal credentials, the Vault setup window stops responding. After several minutes, the following message is displayed: None of the active delegates were available to complete the task. ==> : 'Missing capabilities: [https:null.vault.azure.net]' (PL-39783, ZD-46756)
 
   This issue is now fixed.
 
+  This item requires Harness Delegate version 79xxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 - The AWS connector widget's prefix field did not accept prefixes starting with a slash. Such slashes were stripped off, and this led to undesired behavior. (PL-39194, ZD-45104)
 
-Prefixes that begin with a slash are now supported. 
+  Prefixes that begin with a slash are now supported. 
 
-This item requires Harness Delegate version 79xxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 79xxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-- - Account-level connectors with resource groups set to **Specified** were not available at the project-level. (PL-38828, ZD-44474). 
+- Account-level connectors with resource groups set to **Specified** were not available at the project-level. (PL-38828, ZD-44474). 
 
-  This issue is fixed with a code enhancement. The connectors list now shows the connectors for which users have resource group permissions set.
+  This issue is now fixed. The connectors list shows the connectors for which users have resource group permissions set.
 
   This item requires Harness Delegate version 799xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 

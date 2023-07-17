@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-07-07T10:00
+date: 2023-07-18T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,7 @@ Harness publishes security advisories for every release. Go to the [Harness Trus
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - July 14, 2023
+## Latest - July 18, 2023
 
 ### Harness Platform, version 799xx
 
@@ -31,7 +31,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
   - [CVE-2023-29404](https://nvd.nist.gov/vuln/detail/CVE-2023-29404)
   - [CVE-2023-29403](https://nvd.nist.gov/vuln/detail/CVE-2023-29403)
 
-- An AI-powered chatbot named Ask AIDA has been integrated to make searches within the Harness Docs. Users can access the chatbot by clicking the icon located at the bottom-right corner of the screen. (PL-39613)
+- An AI-powered chatbot named Ask AIDA has been integrated to make searches within the Harness Docs. You can access the chatbot by clicking the icon located at the bottom-right corner of the screen. (PL-39613)
 
 - You can now view delegate logs when validating a connector that uses a delegate to establish connections. (PL-37919)
 
@@ -40,8 +40,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - User names cannot exceed 256 chars. (PL-21254)
 
 - The List Tokens API now supports listing all the personal access tokens or service account tokens in the account. The API has been enhanced as follows:
-1. Users who have user management permissions can list all the Personal Access Tokens in the account. They can also filter tokens belonging to a user or filter only active tokens.
-2. Users who have service account management permissions can list all the service account tokens in the account. They can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
+1. If you have user management permissions, you can list all the Personal Access Tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
+2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
+
+This item requires Harness Delegate version 799xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ## July 07, 2023
 
