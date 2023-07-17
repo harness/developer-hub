@@ -13,8 +13,6 @@ title: Jenkins
 
 ### Application configuration YAML
 
-_No action required_
-
 This plugin requires a backend configuration to make calls to your Jenkins instance with authentication. Update the following configuration with your Jenkins URL and a user name:
 
 ```yaml

@@ -13,8 +13,6 @@ title: Jira
 
 ### Application configuration YAML
 
-_No action required_
-
 This plugin requires a backend proxy configuration to make calls to Jira with authentication. In the following configuration, replace `<your-jira-url>` with the Jira instance project (for example https://mycompany.atlassian.net):
 
 ```yaml
