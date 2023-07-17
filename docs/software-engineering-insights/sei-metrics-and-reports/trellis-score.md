@@ -87,6 +87,40 @@ Weights are relative. For example, if all factors are weighted 5, then all facto
 
 Add these widgets to your Insights to analyze Trellis Scores.
 
-* Trellis Score Report
-* Trellis Scores by Collection
-* [Individual Raw Stats](./other-metrics-reports.md#individual-raw-stats): A table of base values that contribute to Trellis Scores
+* **Trellis Score Report:** Trellis Scores by developer.
+* **Trellis Scores by Collection:** Trellis Scores organized by [Collection](../sei-collections/manage-collections.md).
+* **Individual Raw Stats:** A table of base values that contribute to Trellis Scores.
+* **Raw Stats by Collection:** Base values organized by [Collection](../sei-collections/manage-collections.md).
+
+### Raw stats
+
+The **Individual Raw Stats** and **Raw Stats by Collection** widgets shows tables of base values that contribute to Trellis Scores.
+
+By default, the **Individual Raw Stats** widget shows the following raw, pre-calculation values for each developer:
+
+* PRs
+* Commits
+* Coding days
+* Average PR cycle time (in days)
+* Average issue resolution time (in days)
+* PRs commented on
+* PRs approved
+* Percentage of rework
+
+You can edit the widget to show different values (add/remove columns) or apply filtering.
+
+<figure>
+
+![](./static/trellis-score-raw-stats.png)
+
+<figcaption>Figure 1: The Individual Raw Stats widget.</figcaption>
+</figure>
+
+You can also use the **Download** icon to download the raw stats report.
+
+<figure>
+
+![](./static/trellis-score-raw-stats-download.png)
+
+<figcaption>Figure 2: The icon to download the Individual Raw Stats report.</figcaption>
+</figure>

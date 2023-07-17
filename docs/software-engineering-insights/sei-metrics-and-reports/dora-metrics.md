@@ -2,6 +2,7 @@
 title: DORA metrics
 description: DORA metrics are key metrics for describing a software development team's performance.
 sidebar_position: 10
+sidebar_label: DORA
 ---
 
 DORA (DevOps Research Assessment) identified the following key metrics that describe a software development team's performance: Deployment Frequency, Lead Time for Changes, Change Failure Rate, Time to Restore service (MTTR), and Reliability (MTBF).
@@ -176,7 +177,7 @@ Mean Time To Restore/Recover (MTTR), or Time to Restore Service, indicates how l
 
 MTTR is a good metric for assessing the speed of your recovery process across several areas of technology. The overall time can be analyzed stage by stage over the organization's failure recovery workflow.
 
-There are several ways to present MTTR in SEI Insights. For example, you can use [Issue Resolution Time widgets](./support-metrics-reports/support-metrics.md#issue-resolution-time) to track MTTR.
+There are several ways to present MTTR in SEI Insights. For example, you can use the **DORA Mean Time To Restore** widget or [Issue Resolution Time widgets](./support-metrics-reports/support-metrics.md#issue-resolution-time) to track MTTR.
 
 ## Mean Time Between Failures (MTBF)
 

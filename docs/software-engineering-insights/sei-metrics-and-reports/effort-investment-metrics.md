@@ -2,6 +2,7 @@
 title: Effort investment metrics
 description: Analyze how engineering teams invest their efforts and align with business needs and strategic initiatives.
 sidebar_position: 20
+sidebar_label: Effort investment
 ---
 
 Effort investment, also known as alignment, helps you analyze how engineering teams invest their efforts and align with business needs and strategic initiatives. With these metrics, you can:
@@ -22,6 +23,7 @@ Add these widgets to your Insights to analyze effort investment metrics.
 * **Effort Investment Single Stat:** Provides a single measure of effort investment over the given time range.
 * **Effort Investment Trend Report:** Understand how work is trending across task categories and strategic initiatives, where resources are allocated, and how allocation varies over time.
 * **Issue Progress Report:** Analyze progress on effort investment categories.
+* **Program Progress Report:** Analyze progress by program.
 
 :::tip
 
@@ -33,4 +35,4 @@ Use [Business Alignment Insights](../sei-insights.md#business-alignment) to obse
 
 Effort investment metrics are driven by [Investment profiles](../sei-profiles/investment-profile.md). When you add an effort investment widget to an Insight, you select an Investment profile to associate with the widget. The data ingested by the widget depends on the categories defined in the Investment profile.
 
-Reports can be filtered by different attributes available through your [integrations](../sei-integrations/sei-integrations-overview.md), including custom fields specified in the integration or [Collection](../sei-collections/collections-overview.md). You can use `AND` operators to combine filters.
+Reports can be filtered by different attributes available through your [integrations](../sei-integrations/sei-integrations-overview.md), including custom fields specified in the integration or [Collection](../sei-collections/collections-overview.md). If you include multiple filters, they are inherently combined with an `AND` operator.

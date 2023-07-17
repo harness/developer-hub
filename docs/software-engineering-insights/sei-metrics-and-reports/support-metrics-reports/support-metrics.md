@@ -6,6 +6,10 @@ sidebar_position: 10
 
 This topic describes quality and support metrics, as well as configuration options for widgets associated with these metrics.
 
+## Hygiene reports
+
+[Support hygiene reports](../hygiene-metrics.md#support-hygiene-reports) include the **Support Hygiene Report** and the **Support Hygiene Trend Report**.
+
 ## Issues Report
 
 Use the Issues Report to examine metrics related to various tickets/work items (epics, stories, bugs, tasks, and so on) in your issue management system. The report aggregates data based on selected attributes, such as priority, status, labels, components, or any other field. This report helps you create comparisons based on various fields and draw conclusions to make decisions.

@@ -45,9 +45,9 @@ If you also have an [SEI Salesforce connector](./sei-connector-salesforce.md), y
 
 ## Add custom hygiene misses
 
-The [Issue Hygiene Report widget](../sei-metrics-and-reports/hygiene-metrics.md#issue-hygiene-report) uses data from Jira to calculate hygiene scores. These scores represent _hygiene misses_ in a designated time frame. A hygiene miss means that a ticket in your issue management system was missing an important field, failed to change status in a timely manner, or was assigned to an inactive user.
+The [Issue Hygiene Report widget](../sei-metrics-and-reports/hygiene-metrics.md#issue-hygiene-reports) uses data from Jira to calculate hygiene scores. These scores represent _hygiene misses_ in a designated time frame. A hygiene miss means that a ticket in your issue management system was missing an important field, failed to change status in a timely manner, or was assigned to an inactive user.
 
-What constitutes a miss depends on your _hygiene categories_. There are several built-in [hygiene categories](../sei-metrics-and-reports/quality-metrics-reports/quality-metrics.md#hygiene-categories), and you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management connectors.
+What constitutes a miss depends on your _hygiene categories_. There are several built-in [hygiene categories](../sei-metrics-and-reports/hygiene-metrics.md#issue-hygiene-categories), and you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management connectors.
 
 To add custom hygiene categories:
 

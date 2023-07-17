@@ -108,6 +108,7 @@ Use the SCM PR reports to analyze data related to Pull Requests (also known as M
 * **SCM PRs Response Time Single Stat**
 * **SCM Review Collaboration Report:** Analyze how a team performs code reviews by examining whether PRs were approved before being merged or closed.
 * **SCM File Types Report:** Analyze commit and PR activity by file extension.
+* **PR Activity:** Generic PR activity report.
 
 To examine PRs by committer, use the [SCM Committers Report](#scm-committers-report).
 
