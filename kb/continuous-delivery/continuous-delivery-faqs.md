@@ -131,4 +131,6 @@ For this use case within the shell script, you can simply reference credentials 
 
 With this even when running the shell script on the delegate host, it can refer to the credentials of the K8s cloud provider which is used inside the infrastructure definition associated with the workflow.
 
+#### In the Rollout Deployment step, how Harness retrieves the events in the Wait for Steady State phase?
 
+During the "Wait for Steady State" phase, Harness retrieves events using the ```kubectl rollout status``` command, which retrieves information directly from the Kubernetes API server. Harness continuously polls the Kubernetes API server while a rollout is in progress, ensuring that it remains updated until the rollout is either completed or encounters an error.
