@@ -32,7 +32,7 @@ This release does not include early access features.
 
 - Pagination did not work correctly in the list-secrets-page API response because of an incorrect offset. (PL-38776)
   
-  This issue is fixed and the correct response is now returned.
+  This issue is now fixed and the correct response is returned.
 
 ### July 06, 2023, version 79807
 
