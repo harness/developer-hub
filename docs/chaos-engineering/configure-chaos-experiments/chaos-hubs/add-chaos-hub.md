@@ -1,61 +1,122 @@
 ---
-title: Add a chaos hub
+title: Add a custom chaos hub
 sidebar_position: 5
 ---
 
-Chaos Hub is a collection experiment templates and faults using which new chaos experiments are created. While you get a default Enterprise Chaos Hub, which offers a wide array of templates and faults out of the box, you can also add a custom Chaos Hub to maintain and distribute private faults and experiments within your organization.
+A chaos hub is a collection of experiment templates and faults you can use to create chaos experiments are created. CE provides a default **Enterprise Chaos Hub** that includes a wide array of templates and faults out of the box. You can also add custom chaos hubs to maintain and distribute private faults and experiments within your organization.
 
-To get started, ensure that you have your custom Chaos Hub in a Git repository, such as GitHub, as follows:
-![Private Hub](./static/add-chaos-hub/private-hub.png)
+This topic shows how to add a custom chaos hub, and add and organize experiments in it.
 
-Next, head to the **Chaos Hubs** page. This page lists all the chaos hubs that are presently available. To add the private hub, select **New Hub**.
+## Prerequisites
 
-![Chaos Hubs](./static/add-chaos-hub/chaos-hubs.png)
+1. Be sure you have a git repository for your custom chaos hub, where you will store experiments and faults. The repository must include two folders: `experiments` and `faults`. Here's an example:
 
-Provide a name for the hub. Optionally, a description and tags can also be added. Select **Next**. 
+	![Private Hub](./static/add-chaos-hub/private-hub.png)
 
-Now, we need to add a Chaos Hub connector i.e. a Git connector for syncing the custom Chaos Hub repository. Under **Chaos Hub Connector** you'll find the existing Git connectors listed under the Project, Organization, and Account scope. Select **New Connector**.
+1. Generate a personal access token [from GitHub](https://github.com/settings/tokens) to access and sync your repository with Harness. The token must have at least the **repo** scope.
 
-![Existing Connectors](./static/add-chaos-hub/existing-connectors.png)
+	![GitHub New personal access token (classic) screen](./static/add-chaos-hub/github-access-token.png)
 
-Choose **GitHub Connector**. Add a name for the connector. Optionally, a description and tags can also be added. Select **Next**.
 
-For URL type, select **Repository**. You can also select **Account** in case you want to create a Account scoped GitHub connector, which may be used for connecting multiple Chaos Hubs from a single GitHub account. 
+## Add a custom chaos hub
 
-The connection type can be **HTTP**. Lastly, provide the custom Chaos Hub repository URL. Alternatively, if you need to provide an account URL, in case URL Type was selected as **Account**. Also, provide any Test Repository name from your GitHub account to validate the credentials.
+To add a custom chaos hub:
 
-Then, select **Next**.
+1. In Harness, navigate to the **Chaos > ChaosHubs**, and then select **+ New ChaosHub**.
 
-![Add Connector Details](./static/add-chaos-hub/add-connector-details.png)
+1. Enter a **Name** for the hub, and optionally, add a **Description** and **Tags**.
 
-For Credentials, Username and Token can be used for authenticating with GitHub. Under **Username**, provide your GitHub username as plain text. Next, a GitHub Personal Access Token needs to be provided as a Secret. Select **Create or Select a Secret**.
+1. Select **Continue**.
 
-You'll be able to view all the Secrets in the Project, Organization, and Account scope. Select **New Secret Text**.
+1. In the Git Connection screen, add a new Git connector to access and sync your repository with Harness. 
 
-![Add Secret](./static/add-chaos-hub/add-secret.png)
+	![Git Connection screen](./static/add-chaos-hub/initial-git-connection-screen.png)
 
-To add the secret, provide the secret name. Optionally, a description and tags can also be added. Then, provide the PAT under **Secret Value**. In case you haven't already created a GitHub PAT, provided that you're logged in to GitHub, head over to [GitHub Tokens](https://github.com/settings/tokens) and generate a new token (classic). Please ensure that the token at least has a **repo** scope. Finally, select **Save**.
+	1. Select the field **ChaosHub Connector**. This displays existing Git connectors listed under separate tabs for Project, Organization, and Account scopes. 
 
-![New Secret](./static/add-chaos-hub/new-secret.png)
+		![Existing Connectors](./static/add-chaos-hub/existing-connectors.png)
 
-This would add your GitHub repo connector and initialize the PAT for authentication. Select **Continue**.
+	1. Select **New Connector**, and then choose **GitHub Connector**.
 
-![Add Credentials](./static/add-chaos-hub/add-credentials.png)
+	1. In the Overview screen, enter a **Name** and optional description and tags, and then select **Continue**.
 
-Select **Connect through Harness Platform** for the connectivity mode. Finally, select **Save and Continue**.
+		The Details screen is displayed.
 
-This should prompt a connection test, which validates that Harness is able to access the Git repository with the given configuration. Select **Finish**.
+		![Add Connector Details](./static/add-chaos-hub/add-connector-details.png)
 
-![GitHub Connection Test](./static/add-chaos-hub/github-connection-test.png)
+	1. In the Details screen, for **URL Type**, select **Repository**. 
 
-This concludes the process of adding the Chaos Hub connector. For the **Hub Repository Branch**, provide the repository branch in which the Chaos Hub files exist. Lastly, select **Connect Hub**.
+		You can select **Account** instead if you want to create an account-scoped GitHub connector. This may be used for connecting multiple Chaos Hubs from a single GitHub account. 
 
-![Git Connection](./static/add-chaos-hub/git-connection.png)
+	1. For **Connection Type**, select **HTTP**. 
 
-This should prompt a connection test, which validates that the custom Chaos Hub is properly setup. Select **Finish**.
+	1. In **GitHub Repository URL**, enter the URL of your custom chaos hub repository.
 
-![Hub Connection Test](./static/add-chaos-hub/hub-connection-test.png)
+		If you selected **Account** for **URL Type**, fill out these fields instead:
 
-You've now added your custom Chaos Hub. You can browse the Experiments and Faults available as part of it by selecting it. 
+		* In **GitHub Account URL**, enter the account URL for your custom chaos hub repository.  
+
+		* In **Test Repository**, enter any repository name from your GitHub account to validate the connection.
+
+	1. Select **Continue**.
+
+		The Credentials screen is displayed.
+
+		![Credentials screen](./static/add-chaos-hub/github-con-credentials.png)
+
+1. On the Credentials screen, enter the **Username** (in plain text) for authenticating with your GitHub repo.
+
+1. In **Personal Access Token**, select **Create or Select a Secret**.
+
+	This displays all the secrets in separate tabs for Project, Organization, and Account scopes. 
+
+	![Add Secret](./static/add-chaos-hub/add-secret.png)
+
+1. Select **New Secret Text**.
+
+	![New Secret](./static/add-chaos-hub/new-secret.png)
+
+1. In the Add new Encrypted Text screen, fill out the fields as follows:
+
+	1. In **Secret Name**, enter a name for this secret.
+	1. In **Secret Value**, enter a personal access token (PAT) generated from [GitHub](https://github.com/settings/tokens).
+
+		Ensure that the token has at least a **repo** scope. 
+
+1. Select **Save**, and then on the Credentials screen, select **Continue**.
+
+	![Add Credentials](./static/add-chaos-hub/add-credentials.png)
+
+	This adds your GitHub repo connector and initialize the PAT for authentication. 
+
+1. In the Connect to provider screen, select **Connect through Harness Platform**, and then select **Save and Continue**.
+
+	This starts a connection test, which validates that Harness is able to access the Git repository with the given configuration. 
+
+	![GitHub Connection Test](./static/add-chaos-hub/github-connection-test.png)
+
+1. When the test is successful, select **Finish**.	
+
+	The Git Connection screen is displayed. 
+
+	![Git Connection](./static/add-chaos-hub/git-connection.png)
+
+1. In **Hub Repository Branch**, enter the repository branch in which the Chaos Hub files exist. 
+1. Select **Connect Hub**, and then select **Finish**.
+
+	Your new custom chaos hub appears in the **ChaosHubs** page.
+
+
+## Add experiments to a custom chaos hub
+
+:::info note
+Adding a tag helps organize your experiments. When you view the custom chaos hub, you can see all experiments, as well as experiments grouped by tag.
+::: 
+
+
+## Sync a chaos hub with your git repository
+
+## Launch an experiment from a custom chaos hub
 
 ![Private Hub Added](./static/add-chaos-hub/private-hub-added.png)
+
