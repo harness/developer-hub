@@ -131,4 +131,18 @@ For this use case within the shell script, you can simply reference credentials 
 
 With this even when running the shell script on the delegate host, it can refer to the credentials of the K8s cloud provider which is used inside the infrastructure definition associated with the workflow.
 
+#### Is it possible to have drop down options for multiple input?
+You can make the variable as Input and  define multiple allowed values by selecting checkbox Allowed values
+
+#### How to Make a Pipeline Failure or Step Failure if some condition is not passed In Bash scirpt?
+You can set below in script ```set -e``` - Exit immediately when a command fails, or you can set exit code to non zero if certain conditions match and that should fail the step.
+
+#### Is there an easy way to see all the recent deployments of that workflow that have run?
+You can use deployment filter and select the workflow and time range and you will able to see all the deployment for that workflow within that time range
+
+#### Is there any  option to execute HTTP steps on the target environment?
+As HTTP step is meant to connect over http protocol, delegate can initiate http sessions and get the response as per request setup so using target environment will not help.
+
+#### WINRM Download artifcat is not working in NG, after setting correct environment variables(HARNESS_ENV_PROXY and HTTP_PROXY).
+Please check the delegate version used as this feature was released with delegate version 791xx and make sure in console logs you are able to see Using HTTP_PROXY environment variable.
 
