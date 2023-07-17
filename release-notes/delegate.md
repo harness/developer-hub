@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-07-17T10:00
+date: 2023-07-18T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -21,7 +21,7 @@ Harness Delegate, NextGen SaaS releases every two weeks. Harness Platform, NextG
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 17, 2023, Harness version 799xx, Harness Delegate version 799xx
+## Latest - July 18, 2023, Harness version 799xx, Harness Delegate version 799xx
 
 Harness NextGen release 799xx includes the following changes for the Harness Delegate.
 
@@ -43,9 +43,8 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 - The Splunk connector has been enhanced to include support for Bearer Token. (OIP-598)
 
 - The List Tokens API now supports listing all the personal access tokens or service account tokens in the account. The API has been enhanced as follows:
-   1. Users who have user management permissions can list all the Personal Access Tokens in the account. They can also filter tokens belonging to a user or filter only active tokens.
-   2. Users who have service account management permissions can list all the service account tokens in the account. They can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
-
+   1. If you have user management permissions, you can list all the Personal Access Tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
+   2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
 
 ```mdx-code-block
   </TabItem>
@@ -177,7 +176,7 @@ Harness NextGen release 79714 includes the following changes for the Harness Del
 
 - Account-level connectors with resource groups set to **Specified** were not available at the project-level. (PL-38828)
 
-   This issue is fixed with a code enhancement. The connectors list now shows the connectors for which users have resource group permissions set.
+   This issue is now fixed. The connectors list shows the connectors for which users have resource group permissions set.
 
 - The account-level **Session Timeout (in minutes)** allowed values greater than the 4320 minute maximum. (PL-32498)
 
