@@ -8,7 +8,7 @@ Once you’ve applied tags to your Harness applications and components, you can 
 
 ## Before you begin
 
-* Go to [Platform overview](/docs/platform/Get-started/platform-concepts/platform-overview.md).
+* Go to [Platform overview](/docs/platform/Get-started/platform-concepts/platform-overview).
 * Go to [Assign metadata using tags](tags.md).
 * Go to [Tags reference](/docs/platform/references/tags-reference/).
 

@@ -79,15 +79,15 @@ Tags can be added to Harness applications, and to the following application comp
 
 ## Step 1: Assign required permissions
 
-Your options for interacting with Tags depend on your Harness [User group permissions](../../security/access-management-howtos/users-and-permissions.md), as follows:
+Your options for interacting with Tags depend on your Harness [User group permissions](/docs/platform/user-management/harness-default-user-groups/), as follows:
 
 * All users can view tags (and values) that have been applied to applications and their components.
-* Users' [Application permissions](../../security/access-management-howtos/users-and-permissions.md#application-permissions) determine their ability to apply, update, and remove tags on specific applications and application components.
-* Users who have the [Account permission:](../../security/access-management-howtos/users-and-permissions.md#account-permissions) **Manage Tags** can create tag keys, impose Allowed Values on keys, and edit and delete keys.
+* Users' [Application permissions](/docs/platform/role-based-access-control/ref-access-management/permissions-reference/) determine their ability to apply, update, and remove tags on specific applications and application components.
+* Users who have the [Account permission:](/docs/platform/role-based-access-control/ref-access-management/permissions-reference/) **Manage Tags** can create tag keys, impose Allowed Values on keys, and edit and delete keys.
 
 ### Applying tags
 
-Users who have appropriate [Application-level permissions](../../security/access-management-howtos/users-and-permissions.md#application-permissions) can add and modify tags on the Harness Application components listed above under [Tag scope](#tag_scope).
+Users who have appropriate [Application-level permissions](/docs/platform/role-based-access-control/ref-access-management/permissions-reference/) can add and modify tags on the Harness Application components listed above under [Tag scope](#tag_scope).
 
 ## Step 2: Add tags
 
@@ -118,4 +118,3 @@ There is no automatic undo. To restore a removed tag, you must manually re-enter
 ## Next Steps
 
 * [Apply filters using tags](apply-filters-using-tags.md)
-* [Manage tags](manage-tags.md)

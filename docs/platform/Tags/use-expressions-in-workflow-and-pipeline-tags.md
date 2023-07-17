@@ -10,7 +10,7 @@ Using expressions in tags lets you create dynamic metadata for your deployments.
 
 ## Before you begin
 
-* Go to [Using tags](tags.md)
+* Go to [Using tags](/docs/platform/Tags/tags/)
 * Go to [Tags reference](/docs/platform/references/tags-reference/).
 
 ## Review: Tag restrictions
@@ -130,7 +130,7 @@ You simply use the **Tag (Deployments)** option in the **Data Filter** or **Grou
 
 This can be a very powerful method for creating custom dashboards.
 
-For example, let's say you had a workflow or pipeline tag named **commitID**. The value for it is passed in as an expression, such as `${workflow.variables.commitID}`. You could provide the value for the variable using [a Trigger that passes in a Git commit ID](../../../continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows.md).
+For example, let's say you had a workflow or pipeline tag named **commitID**. The value for it is passed in as an expression, such as `${workflow.variables.commitID}`. You could provide the value for the variable using a Trigger that passes in a Git commit ID.
 
 When you deploy, the expression is evaluated and the commit ID is displayed in **Deployments** like **commitID:521747298a3790fde1710f3aa2d03b55020575aa**.
 
