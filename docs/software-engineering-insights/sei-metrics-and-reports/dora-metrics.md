@@ -1,12 +1,12 @@
 ---
 title: DORA metrics
 description: DORA metrics are key metrics for describing a software development team's performance.
-sidebar_position: 20
+sidebar_position: 10
 ---
 
 DORA (DevOps Research Assessment) identified the following key metrics that describe a software development team's performance: Deployment Frequency, Lead Time for Changes, Change Failure Rate, Time to Restore service (MTTR), and Reliability (MTBF).
 
-With SEI, you can use [DORA Metrics Insights](../../sei-insights.md#dora-metrics) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
+With SEI, you can use [DORA Metrics Insights](../sei-insights.md#dora-metrics) to examine your organization's DORA metrics. This helps you understand how your organization or team is performing and helps you get an overview of daily, weekly, and monthly trends.
 
 Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/category/connectors-and-integrations) from which you want to derive data, such as issue management, SCM, incident management, and CI/CD tools, as well as the ability to select filters to refine the data used to generate your metrics.
 
@@ -14,9 +14,9 @@ Furthermore, SEI gives you the flexibility to choose the [integrations](/docs/ca
 
 Deployment Frequency represents how often an organization successfully releases software to production.
 
-To monitor Deployment Frequency, you must create a [Workflow profile](../../sei-profiles/workflow-profile.md) and add the **Deployment Frequency** widget to your Insights.
+To monitor Deployment Frequency, you must create a [Workflow profile](../sei-profiles/workflow-profile.md) and add the **Deployment Frequency** widget to your Insights.
 
-Workflow profiles determine the integrations to track, the events that mark deployments (such as merged PRs or CI/CD jobs), and the associated Collections. You can modify Workflow profiles according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as only SCM or combined issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
+Workflow profiles determine the integrations to track, the events that mark deployments (such as merged PRs or CI/CD jobs), and the associated Collections. You can modify Workflow profiles according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as only SCM or combined issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../sei-profiles/workflow-profile.md).
 
 To add the **Deployment Frequency** widget to Insights:
 
@@ -88,21 +88,21 @@ To add the **Lead Time for Changes** widget to Insights:
 2. Select **Settings**, and then select **Add Widget**.
 3. Select the **Lead Time for Changes** widget.
 4. Configure the filters for the widget.
-5. On the **Settings** tab, select the relevant [Workflow profile](../../sei-profiles/workflow-profile.md).
+5. On the **Settings** tab, select the relevant [Workflow profile](../sei-profiles/workflow-profile.md).
 
   Workflow profiles, also known as Lead Time profiles, determine the integrations to track, the start events that trigger lead time tracking (such as ticket creation or commit creation), and the stages that issues follow in your SDLC.
 
-  You can modify Workflow profile stages according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as only SCM or combined issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../../sei-profiles/workflow-profile.md).
+  You can modify Workflow profile stages according to your team's SDLC process and the parts of the SDLC process you want to monitor (such as only SCM or combined issue management, SCM, and CI/CD). For more information, go to [Workflow profile](../sei-profiles/workflow-profile.md).
 
 6. Select **Next: Place Widget**, place the widget on the Insight, and then select **Save Layout**.
 
-For information about other SCM Lead Time reports, such as the **SCM Commit to CI/CD Job Lead Time Trend Report**, go to [SCM reports](../velocity-metrics-reports/scm-reports.md).
+For information about other SCM Lead Time reports, such as the **SCM Commit to CI/CD Job Lead Time Trend Report**, go to [SCM reports](./velocity-metrics-reports/scm-reports.md).
 
 ## Change Failure Rate
 
 Change Failure Rate represents the percentage of deployments that cause a failure in production.
 
-To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](../../sei-profiles/workflow-profile.md), and then add the **Change Failure Rate** widget to Insights.
+To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](../sei-profiles/workflow-profile.md), and then add the **Change Failure Rate** widget to Insights.
 
 1. Go to **Settings** and select **Workflow Profiles**.
 2. Select **Add Profile** or select an existing profile to modify.
@@ -176,10 +176,10 @@ Mean Time To Restore/Recover (MTTR), or Time to Restore Service, indicates how l
 
 MTTR is a good metric for assessing the speed of your recovery process across several areas of technology. The overall time can be analyzed stage by stage over the organization's failure recovery workflow.
 
-There are several ways to present MTTR in SEI Insights. For example, you can use [Issue Resolution Time widgets](../support-metrics-reports/support-metrics.md#issue-resolution-time) to track MTTR.
+There are several ways to present MTTR in SEI Insights. For example, you can use [Issue Resolution Time widgets](./support-metrics-reports/support-metrics.md#issue-resolution-time) to track MTTR.
 
 ## Mean Time Between Failures (MTBF)
 
 Mean Time Between Failures (MTBF), or reliability, measures the average amount of time a system or component operates without failing. It is expressed as a continuous operating time in hours, days, or other units of time. It is an indicator of an assets reliability, or availability, and it is useful for estimating how likely an asset is to fail and how often certain failures occur. This metric is critical for reliability engineering.
 
-There are several ways to present MTTR in SEI Insights. For example, you can use [Issue Resolution Time widgets](../support-metrics-reports/support-metrics.md#issue-resolution-time) to track MTBF.
+There are several ways to present MTTR in SEI Insights. For example, you can use [Issue Resolution Time widgets](./support-metrics-reports/support-metrics.md#issue-resolution-time) to track MTBF.

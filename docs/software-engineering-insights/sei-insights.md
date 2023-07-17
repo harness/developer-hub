@@ -143,12 +143,12 @@ The following five Insights are included OOTB with SEI:
 
 ### DORA Metrics
 
-Use the DORA Metrics Insight to examine your organization's [DORA (DevOps Research Assessment) metrics](./sei-metrics-and-reports/dora-metrics-reports/dora-metrics.md).
+Use the DORA Metrics Insight to examine your organization's [DORA (DevOps Research Assessment) metrics](./sei-metrics-and-reports/dora-metrics.md).
 
 If you want to create additional DORA Metrics Insights:
 
 1. Follow the steps to [create Insights](#create-insights), and select both **Effort Investment Profile** and **Effort Investment Units**.
-2. Add widgets for [DORA metrics](./sei-metrics-and-reports/dora-metrics-reports/dora-metrics.md).
+2. Add widgets for [DORA metrics](./sei-metrics-and-reports/dora-metrics.md).
 
 ### Dev Insights
 

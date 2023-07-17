@@ -24,7 +24,7 @@ SEI offers different velocity metrics based on the tools your teams use and the 
 
 There are many velocity metrics, and some overlap with other metrics categories. For more information about velocity subcategories and related metrics, go to:
 
-* [DORA metrics](../dora-metrics-reports/dora-metrics.md)
+* [DORA metrics](../dora-metrics.md)
 * [Effort investment metrics](../effort-investment-metrics-reports/effort-investment-metrics.md)
 * [Flow metrics](./flow-metrics.md)
 * [Sprint metrics](./planning-sprint-metrics.md)
@@ -168,7 +168,7 @@ The Issue Resolution Time Report is a configurable bar graph showing the number 
 
 :::tip Use Issue Resolution Time to monitor MTTR and MTBF
 
-Mean Time To Recover (MTTR) and Mean Time Between Failures (MTBF) are [DORA metrics](../dora-metrics-reports/dora-metrics.md).
+Mean Time To Recover (MTTR) and Mean Time Between Failures (MTBF) are [DORA metrics](../dora-metrics.md).
 
 You can use the **Issue Resolution Time Report** and **Issue Resolution Time Single Stat** widgets to monitor MTTR and MTBF. You'll need to configure the filters and settings for these widgets so that they only track issues related to failure recovery.
 
@@ -230,7 +230,7 @@ This configuration produces a bar graph showing a historical record of the avera
 <!-- img .gitbook/assets/image (38).png - time to close issue by last time period bar graph example -->
 
 1. On the **Aggregations** tab, select **Issue Last Closed (Week, Month, Quarter)** for the X-axis dimension.
-2. On the **Filters** tab, add filters to demonstrate [MTTR](../dora-metrics-reports/dora-metrics.md#mean-time-to-restore-mttr) or [Lead Time For Changes](../dora-metrics-reports/dora-metrics.md#lead-time-for-changes) trends:
+2. On the **Filters** tab, add filters to demonstrate [MTTR](../dora-metrics.md#mean-time-to-restore-mttr) or [Lead Time For Changes](../dora-metrics.md#lead-time-for-changes) trends:
 
    * For MTTR: Add an **Issue Type** filter, and set the filter value to **Bugs**.
    * For Lead Time For Change: Add an **Issue Type** filter, and set the filter values to **Tasks** and **Stories**.
