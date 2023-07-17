@@ -162,7 +162,8 @@ export default function Certifications() {
           <h3>Which Certification is right for you?</h3>
 
           <p>
-            Progress from Developer to Architect level certifications. Follow the learning paths to progress to the next level.
+            Progress from Developer to Architect level certifications. Follow
+            the learning paths to progress to the next level.
           </p>
 
           <div className={styles.availableCertsBox}>
@@ -172,9 +173,7 @@ export default function Certifications() {
                   <h4>Developer</h4>
                   <i className="fa-solid fa-chevron-right"></i>
                 </div>
-                <p>
-                  Validate your knowledge of software delivery concepts.
-                </p>
+                <p>Validate your knowledge of software delivery concepts.</p>
 
                 <ul>
                   {devFeatures.map((feature) => (
@@ -186,7 +185,9 @@ export default function Certifications() {
                 </ul>
               </div>
               <div className={styles.certBadges}>
-                <h5>Available Certification</h5>
+                <h5>
+                  Available Certification
+                </h5>
                 <div className={styles.availableCerts}>
                   <img
                     src={`${baseUrl}img/cert_dev_cd_badge.svg`}
@@ -197,7 +198,7 @@ export default function Certifications() {
                     alt="Developer Continuous Integration Badge"
                   />
                 </div>
-                <h5>Coming Soon</h5>
+                {/* <h5>Coming Soon</h5> */}
               </div>
             </div>
             <div className={styles.verticalLine}></div>
@@ -209,7 +210,8 @@ export default function Certifications() {
                   <i className="fa-solid fa-chevron-right"></i>
                 </div>
                 <p>
-                  Assesses and validate your skills to maintain the Harness Platform for your software delivery needs.
+                  Assesses and validate your skills to maintain the Harness
+                  Platform for your software delivery needs.
                 </p>
                 <ul>
                   {administratorFeatures.map((feature) => (
@@ -221,7 +223,9 @@ export default function Certifications() {
                 </ul>
               </div>
               <div className={styles.certBadges}>
-                <h5>Available Certification</h5>
+                <h5>
+                  Available Certification
+                </h5>
                 <div className={styles.availableCerts}>
                   <img
                     src={`${baseUrl}img/cert_adm_cd_badge.svg`}
@@ -245,7 +249,8 @@ export default function Certifications() {
                   <h4>Architect</h4>
                 </div>
                 <p>
-                  Assesses and validate your skills to scale the Harness Platform for your organization's software delivery needs.
+                  Assesses and validate your skills to scale the Harness
+                  Platform for your organization's software delivery needs.
                 </p>
                 <ul>
                   {adminFeatures.map((feature) => (
@@ -257,10 +262,10 @@ export default function Certifications() {
                 </ul>
               </div>
               <div className={styles.certBadges}>
-                <h5>Available Certification</h5>
+                {/* <h5>Available Certification</h5> */}
 
-                <div className={styles.availableCerts}>
-                </div>
+                {/* <div className={styles.availableCerts}>
+                </div> */}
                 <h5>Coming Soon</h5>
                 <div className={styles.unAvailableCerts}>
                   <img
