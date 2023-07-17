@@ -19,9 +19,7 @@ There are many restrictions for using variable expressions in tags. Review the f
 
 ### Expressions in workflow and pipelines tags only
 
-You can only use variable expressions in the tags created/modified in workflows and pipelines. If you attempt to add one in **Tags Management**, an error will occur:
-
-![](./static/use-expressions-in-workflow-and-pipeline-tags-20.png)
+You can only use variable expressions in the tags created/modified in workflows and pipelines.
 
 If a tag uses a variable expression in its name, you must delete the tag in a workflow or pipeline and add it again.
 
@@ -67,11 +65,6 @@ When a workflow/pipeline using tags is deployed, we say the tags have been promo
 
 When you deploy the workflow, the expressions are evaluated after every stage by Harness and their values are displayed in the **Deployments** view.
 
-Here is an example using the three types of variable expressions in the Tag **Name**:
-
-![](./static/use-expressions-in-workflow-and-pipeline-tags-25.png)
-
-
 ## Step 2: Expressions in pipeline tags
 
 1. In a Harness pipeline, select the **Tags** pencil icon next to the pipeline name.
@@ -85,27 +78,15 @@ If you want to use workflow variables in a pipeline tag, you must create a pipel
    * Pipeline Name: Use `${pipeline.name}`.
    * Pipeline Description: Use `${pipeline.description}`.
 
-   Here is an example using expressions for an application default and workflow variable in the tag **Name**:
-
-![](./static/use-expressions-in-workflow-and-pipeline-tags-26.png)
-
 ### Workflow variables in pipeline tags
 
-If you want to use Workflow variables in a Pipeline tag, you must create a pipeline variable that represents the workflow variable value.
+If you want to use workflow variables in a pipeline tag, you must create a pipeline variable that represents the workflow variable value.
 
-For example, here is a workflow variable:
-
-![](./static/use-expressions-in-workflow-and-pipeline-tags-27.png)
-
-When we add the workflow as a stage in a pipeline, we use an expression as its value:
-
-![](./static/use-expressions-in-workflow-and-pipeline-tags-28.png)
+When we add the workflow as a stage in a pipeline, we use an expression as its value.
 
 This expression is now a pipeline variable that evaluates to the workflow variable value at runtime.
 
-And now we add the pipeline variable to the pipeline tag:
-
-![](./static/use-expressions-in-workflow-and-pipeline-tags-29.png)
+And now we add the pipeline variable to the pipeline tag.
 
 ### Evaluated expressions in deployments
 
@@ -115,25 +96,17 @@ The expressions in all tags on the workflows deployed by the pipeline are also e
 
 Here is an example where the pipeline has tags using expressions for the application default and a workflow variable. In addition, a workflow in the pipeline also uses an account default expressions in a tag **Name**.
 
-As a result, the pipeline deployment displays the evaluated expressions for tags from the pipeline and its workflow:
-
-![](./static/use-expressions-in-workflow-and-pipeline-tags-30.png)
+As a result, the pipeline deployment displays the evaluated expressions for tags from the pipeline and its workflow.
 
 ## Step 3: Filtering by tag expressions in deployments
 
 In **Deployments**, you can filter by tag **Name**.
 
-Here is an example of a filter that uses a tag name that contains a workflow expression, `${workflow.variables.wfvar}`. Since you are filtering deployments, you must enter the evaluated value for the expression in the filter (`wf-var-value`) like this:
-
-![](./static/use-expressions-in-workflow-and-pipeline-tags-31.png)
-
 :::info note
 The **Display matching workflow executions as separate cards in the result** filter option allows you to see each workflow deployment as separate.
 :::
 
-The filter results in all deployments for workflows and pipelines that use the tag:
-
-![](./static/use-expressions-in-workflow-and-pipeline-tags-32.png)
+The filter results in all deployments for workflows and pipelines that use the tag.
 
 Each deployment is listed separately. If the tag is used in a single workflow/pipeline, but that workflow/pipeline has been deployed multiple times, then each deployment is listed separately.
 
@@ -155,8 +128,6 @@ You can use expression Tags in the following widgets:
 
 You simply use the **Tag (Deployments)** option in the **Data Filter** or **Group By** settings of the widget.
 
-![](./static/use-expressions-in-workflow-and-pipeline-tags-33.png)
-
 This can be a very powerful method for creating custom dashboards.
 
 For example, let's say you had a workflow or pipeline tag named **commitID**. The value for it is passed in as an expression, such as `${workflow.variables.commitID}`. You could provide the value for the variable using [a Trigger that passes in a Git commit ID](../../../continuous-delivery/model-cd-pipeline/expressions/passing-variable-into-workflows.md).
@@ -167,4 +138,4 @@ Now, you can create a custom dashboard for the name **commitID** that filters or
 
 ## Notes
 
-* When you use workflow variables for tags, a value must be provided for the workflow variable at the time of deployment. The value must be added whether the Workflow is deployed alone, as part of a Pipeline, or as part of a trigger.
+* When you use workflow variables for tags, a value must be provided for the workflow variable at the time of deployment. The value must be added whether the workflow is deployed alone, as part of a pipeline, or as part of a trigger.

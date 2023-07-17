@@ -40,8 +40,6 @@ If you are adding tags in workflows and pipelines, you can use variable expressi
 
 When the variable expression is evaluated by Harness, it does **not** need to meet the standard tag format restrictions. It has no restrictions.
 
-If a tag uses a variable expression in its name or value, you cannot edit it in **Tags Management**. You must edit the tag in a workflow or pipeline.
-
 For more information, go to [Use expressions in workflow and pipeline tags](use-expressions-in-workflow-and-pipeline-tags.md).
 
 ### Tag general restrictions
@@ -87,7 +85,7 @@ Your options for interacting with Tags depend on your Harness [User group permis
 * Users' [Application permissions](../../security/access-management-howtos/users-and-permissions.md#application-permissions) determine their ability to apply, update, and remove tags on specific applications and application components.
 * Users who have the [Account permission:](../../security/access-management-howtos/users-and-permissions.md#account-permissions) **Manage Tags** can create tag keys, impose Allowed Values on keys, and edit and delete keys.
 
-### Applying Tags
+### Applying tags
 
 Users who have appropriate [Application-level permissions](../../security/access-management-howtos/users-and-permissions.md#application-permissions) can add and modify tags on the Harness Application components listed above under [Tag scope](#tag_scope).
 
@@ -113,7 +111,7 @@ To add a tag to an application or [supported](#tag_scope) application component:
 
 ## Option 2: Remove tags
 
-You can remove Tags from the same Applications and components where you have [Application Permissions](../../security/access-management-howtos/users-and-permissions.md#application-permissions) to add (attach) tags. Click the tag's **X** box, and then save the configuration.
+You can remove Tags from the same applications and components where you have [Application permissions](../../security/access-management-howtos/users-and-permissions.md#application-permissions) to add (attach) tags. Click the tag's **X** box, and then save the configuration.
 
 There is no automatic undo. To restore a removed tag, you must manually re-enter it.
 
