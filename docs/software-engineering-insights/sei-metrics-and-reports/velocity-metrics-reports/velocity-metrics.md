@@ -152,9 +152,13 @@ To configure the Issues Report widget to show the team workload:
 
 </details>
 
-## Issue Resolution Time
+## Issue resolution time
 
-There are two Issue Resolution Time widgets: The **Issue Resolution Time Single Stat** and the **Issue Resolution Time Report**.
+Issue Resolution Time reports include:
+
+* **Issue Resolution Time Report**
+* **Issue Resolution Time Trend Report**
+* **Issue Resolution Time Single Stat**
 
 The Issue Resolution Time Single Stat widget is an [Issue Single Stat widget](#issue-single-stat) that reports the number of issues marked as resolved in a given time period.
 
@@ -164,7 +168,14 @@ The Issue Resolution Time Report is a configurable bar graph showing the number 
 * Is the resolution times for a project or component decreasing over time?
 * On average, how long does it take fix customer issues? Are we able to meet the SLA timeline?
 
-<!-- img .gitbook/assets/image (76).png - issue resolution time report widget example -->
+<figure>
+
+![](../static/issue-resolution-time-report.png)
+
+<figcaption>Figure 2: An Issue Resolution Time Report grouped by quarter.</figcaption>
+</figure>
+
+The Issue Resolution Time Trend Report monitors changes over time in issue resolution time.
 
 :::tip Use Issue Resolution Time to monitor MTTR and MTBF
 
@@ -207,6 +218,24 @@ This configuration produces a bar graph showing which assignees are taking the m
 </details>
 
 <details>
+<summary>Median bug resolution time by priority</summary>
+
+This configuration produces a bar graph showing the median resolution time for bugs, grouped by priority.
+
+1. On the **Aggregations** tab, select **Issue Last Closed (Week, Month, Quarter)** for the X-axis dimension. Set the date to the desired time range, such as the last four quarters.
+2. On the **Filters** tab:
+
+   * Add a **Type** filter, and set the filter value to **Bug**.
+   * Add a **Status Category** filter, and add filter values for done-equivalent statuses that you want to track, such as done, closed, resolved, and so on.
+
+3. On the **Settings** tab, set **Sort X-axis** to **Priority**, and set the **Max X-Axis Entries** high enough so that it can show all priority levels.
+4. For **Stacks**, use the **Median Resolution Time** and the **Number of Tickets**.
+
+<!-- need to confirm this config -->
+
+</details>
+
+<details>
 <summary>Story point estimation accuracy</summary>
 
 This configuration produces a bar graph showing how well your story points are estimated. Good estimation is evidenced by a graph showing linear progression, with higher point issues taking longer to resolve than lower ones.
@@ -216,14 +245,14 @@ This configuration produces a bar graph showing how well your story points are e
 1. On the **Aggregations** tab, select **Story Points** for the X-axis dimension.
 2. On the **Filters** tab, exclude backlog stages by adding an **Exclude Time In Status** filter, and set the filter value to your backlog status(es), such as **To Do** or **Backlog**.
 
-   <!-- img .gitbook/assets/image (29).png - exclude time in status filter example config -->
+<!-- img .gitbook/assets/image (29).png - exclude time in status filter example config -->
 
 3. On the **Settings** tab, set **Sort X-axis** to **By Label, Low --> High**.
 
 </details>
 
 <details>
-<summary>Time to close issue by last time period</summary>
+<summary>MTTR and Lead Time for Changes</summary>
 
 This configuration produces a bar graph showing a historical record of the average time it took to close all issues within the selected time frame.
 
@@ -236,6 +265,20 @@ This configuration produces a bar graph showing a historical record of the avera
    * For Lead Time For Change: Add an **Issue Type** filter, and set the filter values to **Tasks** and **Stories**.
 
 3. On the **Settings** tab, set **Sort X-axis** to **By Label, Low --> High**.
+
+</details>
+
+<details>
+<summary>Median issue resolution time over time</summary>
+
+This configuration produces a bar graph showing the median resolution time to close all issues each month in the selected time frame.
+
+1. On the **Aggregations** tab, select **Issue Last Closed (Week, Month, Quarter)** for the X-axis dimension. Set the date to the desired time range, such as the last four months.
+2. On the **Filters** tab, add a **Status Category** filter, and add filter values for all the closed-equivalent statuses that you want to track, such as done, closed, delivered, won't do, and so on.
+3. On the **Settings** tab, set **Sort X-axis** to **Issue Closed Month**.
+4. For **Stacks**, use the **Median Resolution Time** and the **Number of Tickets**, which will show, for each bar on the bar chart, the median resolution time for all tickets closed in that month.
+
+<!-- need to confirm this config -->
 
 </details>
 
