@@ -116,7 +116,7 @@ The Jira Approval step can be added in Jira Approval stages or in CD stages. The
 Verify the following:
 
 1. **Personal Access Token**: Add the [JIRA API token](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/) as a Harness [Text Secret](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets#add-a-text-secret), with the name `jirapat`
-2. **JIRA Connector**: For this tutorial you need to create a [JIRA Connector](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-jira/#add-a-jira-connector) of the name `jira-approval`, assuming you have followed the getting-started [tutorial](tutorials/cd-pipelines/kubernetes/manifest.md) use this jira-connector.yaml to create connector under the project setup. 
+2. **JIRA Connector**: For this tutorial you need to create a [JIRA Connector](https://developer.harness.io/docs/platform/connectors/ticketing-systems/connect-to-jira/#add-a-jira-connector) of the name `jira-approval`, assuming you have followed the getting-started [tutorial](tutorials/cd-pipelines/kubernetes/manifest.md) use this [jira-connector.yal](https://github.com/harness-community/harnesscd-example-apps/blob/master/harness-platform/approval/jira-connector.yml) to create connector under the project setup. 
     
     - In the YAML replace the `JIRA_URL` with your company base URL for JIRA applications, for eg: `https://mycompany.atlassian.net`
     - Replcae the `Username` with the email ID you use to log into Jira.
