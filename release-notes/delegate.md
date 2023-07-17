@@ -94,10 +94,6 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
    A code enhancement for the `DelegateTokenStatus` endpoint to return token values even when token details are not fetched by token name fixed this issue. Token values only populate when the user has edit delegate permission. If the user doesn't have edit delegate permission, the value remains `null`.
 
-- Account-level connectors with resource groups set to **Specified** were not available at the project-level. (PL-38828, ZD-44474). 
-
-  This issue is fixed with a code enhancement. The connectors list now shows the connectors for which users have resource group permissions set.
-
 - The AWS connector widget's prefix field did not accept prefixes starting with a slash. Such slashes were stripped off, and this led to undesired behavior. (PL-39194, ZD-45104)
 
    Prefixes that begin with a slash are now supported.
