@@ -2,8 +2,6 @@
 
 The following settings apply to Security steps where the `scan_type` is `instance`.
 
-* `instance_identifier` (required)
-* `instance_environment` (required)
 * `instance_domain`
 * `instance_path`
 * `instance_protocol`

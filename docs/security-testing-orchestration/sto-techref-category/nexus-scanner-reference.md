@@ -25,13 +25,13 @@ import security_step_nexus from './static/security-step-nexus.png'
 
 * `product_name` = `nexusiq`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan`, `dataLoad`, or `ingestionOnly`
+* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `orchestratedScan` or `dataLoad`
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan`:
-	+ `product_domain`
-	+ `product_access_id`
-	+ `product_access_token`
-	+ `product_organization_id`
-	+ `product_project_name`
+	+ `product_domain` — The URL of your NexusIQ instance.
+	+ `product_access_id` — The password used to log in to the NexusIQ UI.
+	+ `product_access_token` — The password used to log in to the NexusIQ UI. (This is not an API access token.)
+	+ `product_organization_id` — The organization defined in Nexus. You can use the [Organzations API](https://help.sonatype.com/iqserver/automating/rest-apis/organizations-rest-api---v2) to get a list of all your organizations. 
+	+ `product_project_name` — The [application ID](https://help.sonatype.com/iqserver/managing/application-management) of the Nexus application. This also corresponds to `application-id` used in the [NexusIQ CLI](https://help.sonatype.com/iqserver/integrations/nexus-iq-cli). 
 	+ `product_lookup_type`
 		- accepted value(s): `byPrivateId`, `byPublicId`
 	+ When `product_lookup_type` is set to `byPublicId`:
@@ -42,11 +42,15 @@ import security_step_nexus from './static/security-step-nexus.png'
 		- Accepted values(s): `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+### Repository settings
+
 ```mdx-code-block
 import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 ```
 
 <StoLegacyRepo />
+
+### Ingestion settings
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
@@ -54,7 +58,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
-#### Fail on Severity
+### Fail on Severity
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
