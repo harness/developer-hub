@@ -24,8 +24,8 @@ The Agent can be installed on a variety of operating systems. The operating syst
 | Windows | 7+ |
 | Windows Server | 2012+ |
 | Alpine | 3.10+ |
-| Amazon Linux (Arm) | 2 |
-| Amazon Linux | 2 |
+| Amazon Linux (Arm) | 2 (Graviton 2) |
+| Amazon Linux | 2+ |
 | AIX | 6.1+, 7.1, 7.2, 8+ |
 
 
@@ -61,7 +61,11 @@ When using non-Java languages with the CET Agent, use the source attach to fully
 
 :::info note
 
-When attaching the CET Agent to an Oracle JVM, include the VM flag `-Xshareclasses:none` to ensure proper functionality. This flag disables class sharing, which could otherwise hinder the Agent's performance.
+Make sure to include the following VM flags when attaching an Error Tracking Agent to an Oracle JVM:
+
+- `-Xshare:off -XX:-UseTypeSpeculation`: This flag disables class sharing, which helps prevent potential issues that could hinder the agent's functionality.
+- `-XX:ReservedCodeCacheSize=512m`: This flag increases the reserved memory for the code cache to a minimum of 512 MB. This prevents performance problems when the application uses many classes.
+
 
 :::
 
@@ -89,13 +93,14 @@ OpenJDK support extends to other derivatives, but not all of them are thoroughly
 Make sure to include the following VM flags when attaching an Error Tracking Agent to an OpenJDK JVM:
 
 - `-Xshare:off -XX:-UseTypeSpeculation`: This flag disables class sharing, which helps prevent potential issues that could hinder the agent's functionality.
-- 
 - `-XX:ReservedCodeCacheSize=512m`: This flag increases the reserved memory for the code cache to a minimum of 512 MB. This prevents performance problems when the application uses many classes.
 
 :::
 
 
 ### IBM
+
+The IBM JVM(J9) is supported only on AIX., and include the following:
 
 | **Java Version** | **LTS** | **Released on** | **End of Life** | **Comments** |
 | --- | --- | --- |---|---|
