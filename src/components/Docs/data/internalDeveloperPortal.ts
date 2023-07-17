@@ -17,7 +17,7 @@ export const idpCards: CardItem[] = [
     newDoc: true,
     type: [docType.Documentation],
     time: "30min",
-    link: "/docs/internal-developer-portal/tutorials/create-your-first-service-onboarding-pipeline",
+    link: "/docs/internal-developer-portal/tutorials/service-onboarding-pipeline",
   },
 ];
 

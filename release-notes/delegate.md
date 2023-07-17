@@ -9,19 +9,14 @@ sidebar_position: 14
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
+
 <DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/delegate/rss.xml" />
 
-
-Review the notes below for details about recent changes to Harness Delegate, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
-
-Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
-
+Review the notes below for details about recent changes to Harness Delegate (NextGen SaaS). For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
 :::info note
-Harness Delegate, NextGen SaaS releases every two weeks. Harness Platform, NextGen SaaS and Harness Platform, and FirstGen SaaS release weekly. New features, early access features, and fixes for Harness Platform, NextGen SaaS, and FirstGen SaaS that do not require a new delegate version are included in the Harness Platform release notes. For NextGen Harness Platform release notes, go to [Harness Platform release notes](/release-notes/platform). For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
-:::
+Harness Delegate (NextGen SaaS) releases every two weeks. On the other hand, Harness NextGen & FirstGen SaaS Platforms releases are weekly. New features, early access features, and fixes for Harness NextGen & FirstGen SaaS Platform that do not require a new delegate version are included in the Harness Platform release notes. For NextGen Platform release notes, go to [Harness Platform release notes](/release-notes/platform). For FirstGen Platform release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
 
-:::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 

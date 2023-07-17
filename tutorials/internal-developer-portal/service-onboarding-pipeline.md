@@ -1,11 +1,7 @@
 ---
-title: Create your first service onboarding pipeline
+title: Create a service onboarding pipeline
 description: Create a basic service onboarding pipeline in Harness IDP
 sidebar_position: 10
-helpdocs_topic_id:
-helpdocs_category_id:
-helpdocs_is_private: false
-helpdocs_is_published: true
 ---
 
 This tutorial is designed to help a platform engineer to get started with Harness IDP. We will create a basic service onboarding pipeline that uses a software template and provisions a Next.js application for a developer. After you create the software template, developers can choose the template on the **Create** page and enter details such as a name for the application and the path to their Git repository. The service onboarding pipeline creates a hello world repository for storing code.

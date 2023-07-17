@@ -526,17 +526,6 @@ const config = {
       },
     ],
     [
-      "@docusaurus/plugin-content-blog",
-      {
-        id: "product-updates",
-        path: "product-updates",
-        routeBasePath: "product-updates",
-        exclude: ["**/shared/**", "**/static/**"],
-        editUrl: "https://github.com/harness/developer-hub/tree/main",
-        // ... other options
-      },
-    ],
-    [
       path.resolve(__dirname, "./plugins/docs-rss-plugin"),
       {
         id: "release-notes",
