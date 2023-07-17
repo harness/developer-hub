@@ -307,6 +307,110 @@ The suffix \`_N` is used to identify each host.
 $ sudo apt-get install postfix mailutils libsasl2-2 ca-certificates libsasl2-modules
 ```
 
+**Configuration Steps**
+
+1. Create a Deployment Stage with an SSH Type Service, and Infrastructure Definition
+2. Configure a command unit
+
+![](./static/command-unit-emai-1.png)
+
+![](./static/command-unit-email-2.png)
+
+![](./static/command-unit-email-3.png)
+
+3. Once configured, click run
+
+![](./static/command-unit-email-4.png)
+
+
+**Example Pipeline**
+
+```YAML
+pipeline:
+  name: EmailSSHPipeline
+  identifier: EmailSSHPipeline
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: stg
+        identifier: stg
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Ssh
+          service:
+            serviceRef: ArtifactiryService
+          environment:
+            environmentRef: qa
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: pdcinfra
+          execution:
+            steps:
+              - step:
+                  type: Command
+                  name: Email User
+                  identifier: Command_1
+                  spec:
+                    onDelegate: false
+                    environmentVariables: []
+                    outputVariables: []
+                    commandUnits:
+                      - identifier: test
+                        name: Email Attachment
+                        type: Script
+                        spec:
+                          workingDirectory: /home/ubuntu
+                          shell: Bash
+                          source:
+                            type: Inline
+                            spec:
+                              script: |-
+                                sudo tee -a /etc/postfix/main.cf > /dev/null <<EOT
+                                relayhost = [smtp.gmail.com]:587
+                                smtp_sasl_auth_enable = yes
+                                smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+                                smtp_sasl_security_options = 
+                                smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+                                smtp_use_tls = yes
+                                EOT
+                                sudo chmod 600 /etc/postfix/sasl_passwd
+                                sudo postmap /etc/postfix/sasl_passwd
+                                sudo systemctl restart postfix.service
+                                echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  srgupta5328@gmail.com
+                  timeout: 10m
+                  strategy:
+                    repeat:
+                      items: <+stage.output.hosts>
+            rollbackSteps:
+              - step:
+                  name: Rollback
+                  identifier: Rollback
+                  timeout: 10m
+                  strategy:
+                    repeat:
+                      items: <+stage.output.hosts>
+                  template:
+                    templateRef: account.Default_Install_War_Bash
+                    templateInputs:
+                      type: Command
+                      spec:
+                        environmentVariables:
+                          - name: DestinationDirectory
+                            type: String
+                            value: $HOME/<+service.name>/<+env.name>
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+
+```
+
 
 **Command Unit Script Sample**
 
