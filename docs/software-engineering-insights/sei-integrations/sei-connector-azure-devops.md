@@ -5,17 +5,19 @@ sidebar_position: 20
 sidebar_label: Azure DevOps
 ---
 
-Azure DevOps is a Microsoft product that provides version control, reporting, requirements management, project management, automated builds, testing and release management capabilities. It covers the entire application lifecycle, and enables DevOps capabilities.
+Azure DevOps (ADO) is a Microsoft product that provides version control, reporting, requirements management, project management, automated builds, testing and release management capabilities. It covers the entire application lifecycle, and enables DevOps capabilities.
 
-Use the SEI Azure DevOps Services connector to integrate SEI with Azure DevOps Services. SEI ingests pipelines, Git repos, Team Foundation Version Control (TFVC), and Azure Boards data from Azure DevOps Services.
+Use the SEI Azure DevOps Services connector to integrate SEI with ADO Services. SEI ingests pipelines, Git repos, Team Foundation Version Control (TFVC), and Azure Boards data from ADO Services.
 
 Azure DevOps Services is a cloud offering. To integrate with the on-premises offering, Azure DevOps Server, you must use the [generic SEI connector](./sei-connector-generic.md).
 
 ## Requirements
 
-The following permissions and settings are required to use the SEI Azure DevOps Services connector:
+The following permissions and settings are required to use the SEI ADO Services connector:
 
-* You have registered for Azure DevOps Services, created organizations and projects in Azure DevOps, and all SEI-relevant projects use **Git** for version control.
+* You have registered for Azure DevOps Services and created organizations and projects in ADO.
+* All SEI-relevant ADO projects use **Git** for version control.
+* You have enabled **Third-party application access via OAuth** in your [ADO organization policies](https://learn.microsoft.com/en-us/azure/devops/organizations/accounts/change-application-access-policies?view=azure-devops).
 * Your Azure DevOps account has one of the following access levels: **Basic**, **Basic + Test Plans**, or **Visual Studio Professional/Enterprise**. For more information, go to the Microsoft documentation on [Azure DevOps Access Levels](https://docs.microsoft.com/en-us/azure/devops/organizations/security/access-levels?view=azure-devops#supported-access-levels).
 * You have **Reader** permission (or higher) for all SEI-relevant Azure DevOps projects. For more information, go to the Microsoft documentation on [Azure DevOps Permissions](https://docs.microsoft.com/en-us/azure/devops/organizations/security/permissions-access?view=azure-devops).
 
