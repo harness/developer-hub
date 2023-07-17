@@ -9,10 +9,10 @@ sidebar_position: 3
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
-<rnbutton text="Subscribe for Continuous Integration release notes" link="/release-notes/continuous-integration/rss.xml" />
-Review the notes below for details about recent changes to Harness Continuous Integration, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 
-For information about data privacy and security, go to the [Harness Trust Center](https://trust.harness.io/).
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/continuous-integration/rss.xml" />
+
+Review the notes below for details about recent changes to Harness Continuous Integration. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
@@ -778,7 +778,7 @@ This release does not include early access features.
 - OSX CI builds were failing randomly in case multiple builds are running in parallel. Issue was builds were executing on the incorrect vms. This issue has been resolved. The OSX VM builds now works correctly in runner 1.0.0-rc.7 or above tag. (CI-4935)
 - Fix to ensure that pushing to ECR works as intended. Build and Push step when set up with IAM role now works as intended during build pipeline execution step. (CI-4921, ZD-30346, ZD-32243, ZD-32333, ZD-32398, ZD-33155)
 - Fixed an issue where Harness Bitbucket hook did not publish the build status back to the Bitbucket repository. (CI-4898, ZD-32133)
-- UI fix: When a user switches between Stages, the selected tab is persitent between the previous and the current stage. (CI-4882)
+- UI fix: When a user switches between Stages, the selected tab is persistent between the previous and the current stage. (CI-4882)
 - Fixed an issue where the CI pipeline could not schedule pod due to memory allocation. (CI-4880, ZD-32118)
 
 #### July 18, 2022, version 75921
