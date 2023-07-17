@@ -145,7 +145,7 @@ Harness CI now supports remote debugging. This feature was initially released in
 
 You can re-run builds in debug mode through the **Builds**, **Execution**, and **Execution History** pages of the Harness UI. For more information, go to the [debug mode](/docs/continuous-integration/troubleshoot-ci/debug-mode) documentation.
 
-#### Harness version 79306, Harness Delegate version 79307
+##### Harness Delegate, version 79307
 
 - New delegate metrics are available. This functionality is behind a feature flag, `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. (PL-37908, PL-38538)
 
