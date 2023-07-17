@@ -78,8 +78,12 @@ Check this for more details - https://developer.harness.io/docs/continuous-deliv
 #### How do I run helm uninstall after a successful deployment?
 
 To run Helm uninstall manually after a successful deployment. you can leverage the shell script step and run the helm uninstall ```release-name``` command from the delegate onto the cluster.
-To run the shell script onto the required cluster, we need to specify the k8s cluster credentials to delegate.
+To run the shell script onto the required cluster, we need to specify the k8s cluster credentials to delegate. 
 
-Check this KB article for it -  https://discuss.harness.io/t/how-to-specify-k8s-credentials-that-are-associated-with-the-infrastructure-that-is-used-in-a-workflow-when-executing-kubectl-in-a-bash-script/535
+For this use case within the shell script, you can simply reference credentials as ${HARNESS_KUBE_CONFIG_PATH}
+
+```export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH} kubectl get pods -n pod-test```
+
+With this even when running the shell script on the delegate host, it can refer to the credentials of the K8s cloud provider which is used inside the infrastructure definition associated with the workflow.
 
 
