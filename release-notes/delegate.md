@@ -78,8 +78,6 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
   The issue occurred with newline characters while encoding config files. This is fixed and Harness now replaces newline characters with unicode.
 
-- WIP (PL-32537)
-
 - The Tokens list page returned a display error when tokens were present and there were multiple pages of results. (PL-36734)
 
   A code enhancement to reset the pagination on the Tokens list page after any token is deleted fixed this issue. Previously, if you deleted the last token on any page after the first page, the page displayed an empty result list.
