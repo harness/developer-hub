@@ -23,7 +23,7 @@ An application configuration is a YAML-driven way of configuring a plugin's beha
 
 A plugin configuration allows you to define variables whose values are secrets. The variables can be used in the application configuration YAML file. The secret is usually an API key for the third-party provider that the plugin supports. Any secret variable defined as `${}` in the application configuration YAML file must have a corresponding secret value defined. The secrets configured in IDP are stored in the Harness platform's built-in secret manager.
 
-:::note 
+:::note
 The secret variables in IDP must be globally unique across all plugins. This requirement ensures that you can reuse one plugin's secret variable in another plugin's configuration. However, we recommend redefining variables that are required by a plugin for the benefit of other users.
 :::
 
@@ -35,7 +35,7 @@ Plugins that support publicly-accessible third-party providers can connect with 
 
 **What plugins are available in Harness IDP?**
 
-See the [list of curated plugins](/docs/category/list-of-plugins).
+See the [list of curated plugins](/docs/category/available-plugins).
 
 **A plugin is available in the Backstage marketplace but not in Harness IDP. Can we file a request to add the plugin to IDP?**
 
