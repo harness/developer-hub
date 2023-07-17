@@ -200,7 +200,7 @@ export default function CertificationsCI() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Continuous Integration - Administrator (BETA COMING SOON)
+                    Continuous Integration - Administrator (BETA)
                   </h2>
                   <img
                     src={`${baseUrl}img/cert_adm_ci_badge.svg`}
@@ -221,7 +221,7 @@ export default function CertificationsCI() {
                   </div>
                   <AdminCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="#">
+                    <Link href="https://university.harness.io/continuous-integration-administrator">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -244,7 +244,7 @@ export default function CertificationsCI() {
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="#">
+                <Link href="https://university.harness.io/continuous-integration-administrator">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>
