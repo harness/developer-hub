@@ -68,7 +68,7 @@ dependencies: [
 ```
 ### Install using CocoaPods
 
-CocoaPods is built with Ruby and can be installed with the default Ruby on macOS. You can use a Ruby Version manager, however, we recommend that you use the standard Ruby available on macOS.To install the iOS using [CocoaPods](https://cocoapods.org//), complete the following steps:
+CocoaPods is built with Ruby and can be installed with the default Ruby on macOS. You can use a Ruby Version manager, however, we recommend that you use the standard Ruby available on macOS.To install the iOS using [CocoaPods](https://cocoapods.org/), complete the following steps:
 
 1. To install CocoaPods using the default Ruby available on macOS, use the `sudo` command when installing the gems, for example:
 ```

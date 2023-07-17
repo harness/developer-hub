@@ -68,7 +68,7 @@ The following section lists where you can use CCM:
 	+ ECS Clusters
 * Harness SaaS
 
-Harness Connected On-Prem and Harness Disconnected On-Prem are not supported.### Supported Kubernetes Management Platform
+### Supported Kubernetes Management Platform
 
 The following section lists the support for Kubernetes management platform for CCM:
 

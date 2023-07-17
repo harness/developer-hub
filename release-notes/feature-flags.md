@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-07-03T10:00:25
+date: 2023-07-12T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -11,13 +11,16 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Review the notes below for details about recent changes to Harness Feature Flags (FF), NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/feature-flags/rss.xml" />
+
+Review the notes below for details about recent changes to Harness Feature Flags (FF). For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+
 
 :::info note
-Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 4, 2023
+## Latest - July 14, 2023
 
 ```mdx-code-block
 <Tabs>
@@ -41,6 +44,56 @@ This release does not include early access features.
 
 #### Feature Flags SDKs
 
+The **Node.js** server SDK has been updated to version **1.3.1** with the following updates.
+
+* Previously, calling waitForInitialization was resolving before the SDK was fully initialized, leading to default values being served until initialization completes. This issue has been fixed. (FFM-8615)
+
+
+  </TabItem>
+</Tabs>
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### July 13, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+#### Feature Flags server
+
+The Feature Flags server has been updated to version **1.1076.0** with the following updates.
+
+* Fixed an issue where the query parameter `identifier` in the API `https://app.harness.io/gateway/cf/admin/segments` did not work correctly. (FFM-8298)
+
+* The flag pipeline was not updating the build number. This issue has been fixed. (FFM-8140)
+
+* Target attributes were not updating on conflict. This issue has been fixed. (FFM-8549, ZD 46770)
+
+#### July 4, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
 * The **Java** server SDK has been updated to version **1.2.4** with the following update.
 
   * Fixed an issue where, if a flag had prerequisite flags configured, only the first prerequisite flag was being processed and the remaining were being ignored. (FFM-6412)
@@ -48,15 +101,6 @@ This release does not include early access features.
 The **Python** server SDK has been updated to version **1.2.1** with the following update.
 
   * The SDK incorrectly logged low level debug information as errors. This issue has been fixed. (FFM-8544)
-
-
-  </TabItem>
-</Tabs>
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### July 3, 2023
 
