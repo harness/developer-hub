@@ -81,7 +81,7 @@ export default function Certifications() {
           <h1>Harness Certifications</h1>
           <div>
             Test and validate your knowledge of modern software delivery by
-            becoming a Harness Certified Expert..
+            becoming a Harness Certified Expert.
           </div>
         </div>
         <div className={styles.right}>
