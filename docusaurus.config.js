@@ -67,9 +67,6 @@ const config = {
           trackingID: "G-46758J5H8P",
           anonymizeIP: false,
         },
-        blog: {
-          showReadingTime: false,
-        },
       }),
     ],
   ],
