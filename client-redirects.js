@@ -34,6 +34,12 @@ module.exports = {
     //  },
     //===================================================================================
 
+    // Created by schoudhury on July 16, 2023
+    {
+      from: "/tutorials/internal-developer-portal/create-your-first-service-onboarding-pipeline",
+      to: "/tutorials/internal-developer-portal/service-onboarding-pipeline",
+    },
+
     // Create by aimurphy for branch DOC-3386 on July 11, 2023
 
     {

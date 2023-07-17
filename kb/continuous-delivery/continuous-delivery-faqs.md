@@ -1,6 +1,6 @@
 ---
-title: Continuous Delivery  FAQs
-description: Frequently asked questions about Harness Continuous Delivery (CD).
+title: Continuous Delivery & GitOps FAQs
+description: Frequently asked questions about Harness Continuous Delivery & GitOps.
 # sidebar_position: 2
 ---
 # FAQ
