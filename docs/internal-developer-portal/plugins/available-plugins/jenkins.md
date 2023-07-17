@@ -1,6 +1,6 @@
 ---
 title: Jenkins
-description: View CI/CD executions from your Jenkins instance.
+description: View CI/CD executions running within your Jenkins instance.
 ---
 
 | Plugin details |                                                                              |

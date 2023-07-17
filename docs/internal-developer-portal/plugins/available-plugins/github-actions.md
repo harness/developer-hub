@@ -1,6 +1,6 @@
 ---
 title: GitHub Actions
-description: View CD/CD pipeline executions from GitHub actions.
+description: View CD/CD pipeline executions from GitHub Actions.
 ---
 
 | Plugin details |                                                                                     |

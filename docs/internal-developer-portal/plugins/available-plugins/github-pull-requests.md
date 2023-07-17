@@ -1,6 +1,6 @@
 ---
 title: GitHub Pull Requests
-description: View all open/closed pull requests from a GitHub repository.
+description: View all open and closed pull requests in a GitHub repository.
 ---
 
 | Plugin details |                                                                |

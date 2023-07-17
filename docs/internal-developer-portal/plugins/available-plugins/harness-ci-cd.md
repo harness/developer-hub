@@ -1,6 +1,6 @@
 ---
 title: Harness CI/CD
-description: View pipeline executions of your Harness pipelines.
+description: View the executions of your Harness pipelines.
 ---
 
 | Plugin details |                                                        |

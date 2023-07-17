@@ -2,7 +2,7 @@
 title: Harness Feature Flags
 # Hidden until the plugin has been released
 hidden: true
-description: View feature flags and their statuses for your projects.
+description: View your project's feature flags and their statuses.
 ---
 
 | Plugin details |                                                        |

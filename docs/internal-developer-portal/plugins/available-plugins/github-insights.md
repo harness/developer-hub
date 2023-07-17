@@ -1,6 +1,6 @@
 ---
 title: GitHub Insights
-description: View insights like top contributors, releases, readme, etc. from GitHub.
+description: View insights such as top contributors, releases, and READMEs from GitHub.
 ---
 
 | Plugin details |                                                                |

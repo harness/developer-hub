@@ -1,6 +1,6 @@
 ---
 title: FireHydrant plugin
-description: View service incidents information from FireHydrant, such as active incidents and incident metrics.
+description: View service incident information from FireHydrant, such as active incidents and incident metrics.
 ---
 
 | Plugin details |                                                                                            |

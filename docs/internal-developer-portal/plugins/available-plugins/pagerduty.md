@@ -1,6 +1,6 @@
 ---
 title: Pagerduty
-description: The PagerDuty plugin offers a simple way to identify any active incidents for an entity and the escalation policy.
+description: Identify active incidents for an entity and learn about the escalation policy.
 ---
 
 | Plugin details |                                                                                |
