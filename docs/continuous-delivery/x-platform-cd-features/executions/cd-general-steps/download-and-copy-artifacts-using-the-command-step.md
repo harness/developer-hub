@@ -295,6 +295,62 @@ When you run the pipeline, you will see the Command step run on each host. For e
 
 The suffix \`_N` is used to identify each host.
 
+### Adavanced Use Cases
+
+#### Use Case: Sending an Email from a Server with an attachment
+
+**Pre-Requisistes**
+
+1. Install `postfix` on the target host
+
+```BASH
+$ sudo apt-get install postfix mailutils libsasl2-2 ca-certificates libsasl2-modules
+```
+
+
+**Command Unit Script Sample**
+
+- Set the **Command Type** to Script
+- Set the working directory, to the working directory where the attachment will reside (_Note: the path can be a fixed value, runtime input, or an expression_)
+- Set the Script Location to Inline 
+
+
+```BASH
+sudo tee -a /etc/postfix/main.cf > /dev/null <<EOT
+relayhost = [smtp.gmail.com]:587
+smtp_sasl_auth_enable = yes
+smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+smtp_sasl_security_options = 
+smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+smtp_use_tls = yes
+EOT
+sudo chmod 600 /etc/postfix/sasl_passwd
+sudo postmap /etc/postfix/sasl_passwd
+sudo systemctl restart postfix.service
+echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  rohan@harness.io
+```
+
+**The Host configurations**
+
+The relay host can be any smtp port and server. 
+
+**Defining the Body and Attachment**
+
+```
+echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  rohan@harness.io
+```
+
+You can define the body of the message with the echo statement. You can provide harness expressions to resolve the body of the message. The email address can be provided as a user's email or a Distribution List email. 
+
+The `mail -A hello.jar` will send the JAR on the host as an attachment
+
+The `-s` command will provide the subject of the email
+
+the email address is the last argument in the mail command.
+
+
+Reference [AskUbuntu solution](https://askubuntu.com/questions/1332219/send-email-via-gmail-without-other-mail-server-with-postfix/1332322#1332322)
+
 ### Deployment templates
 
 Since a deployment template can be used on any host type, the Command step can only be run on the delegate. You must use the **Run on Delegate** option in the step.
