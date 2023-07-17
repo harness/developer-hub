@@ -62,6 +62,22 @@ For encrypting terraform plan with the selected secret manager we need the abili
 
 For SSH, we by default add an initialize step and a clean step apart from command execution step. As part of the cleanup step we we delete the working directory that lies within /tmp on the remote connected host.
 
+#### Whether pipeline GitHub triggers support for project variable reference?
+
+Pipeline GitHub triggers won’t support project variable reference. As trigger yaml is independent of the pipeline yaml and the trigger will not be aware of the expression output. 
+
+#### Is it possible to use conditional execution in looping strategies?
+
+If you use a looping strategy then you will not be able to apply conditional execution on the child steps.
+
+#### How to upload a file into a specific folder present in the harness filestore from the pipeline stage (PowerShell script)?
+
+This can be achieved by using an API which you can invoke using PowerShell https://apidocs.harness.io/tag/File-Store/#operation/create
+
+#### How to Use Expressions or Variables in Repeat Looping Strategy?
+
+To pass a dynamic array as an input to the looping strategy of the next step, you can replace <+execution.steps.ShellScript_1.output.outputVariables.ARRAY1> with <+<+execution.steps.ShellScript_1.output.outputVariables.ARRAY1>.split(",")>. This change allows you to split the array into individual items using a comma as the delimiter.
+
 
 
 
