@@ -1,13 +1,13 @@
 # Harness Developer Hub
 
-![CI](static/img/icon_ci.svg)
-![CD](static/img/icon_cd.svg)
-![FF](static/img/icon_ff.svg)
-![CCM](static/img/icon_ccm.svg)
-![SRM](static/img/icon_srm.svg)
-![STO](static/img/icon_sto.svg)
-![CE](static/img/icon_ce.svg)
-![IDP](static/img/icon_idp.svg)
+![CI](static/img/icon_ci_s.svg)
+![CD](static/img/icon_cd_s.svg)
+![FF](static/img/icon_ff_s.svg)
+![CCM](static/img/icon_ccm_s.svg)
+![SRM](static/img/icon_srm_s.svg)
+![STO](static/img/icon_sto_s.svg)
+![CE](static/img/icon_ce_s.svg)
+![IDP](static/img/icon_idp_s.svg)
 
 Welcome to the Harness Developer Hub (HDH)!
 
