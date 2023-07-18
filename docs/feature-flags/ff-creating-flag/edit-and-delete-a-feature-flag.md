@@ -75,7 +75,7 @@ To archive a flag:
 
    ![The **more options** menu shown for one flag, with edit and archive options](./static/archive-flag.png)
 
-   The Archive Flag confirmation screen appears next.
+   The Archive Flag confirmation screen appears next. If the flag you're archiving is a prerequisite to a second flag, you can select the second flag from this screen to remove the dependency, and then try archiving again. 
 
 1. If you're sure you want to archive the flag, type the name or ID of the flag in the field provided, and then select **Archive**.
 
