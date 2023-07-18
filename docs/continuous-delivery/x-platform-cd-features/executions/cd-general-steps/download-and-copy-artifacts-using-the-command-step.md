@@ -367,7 +367,7 @@ $ sudo apt-get install postfix mailutils libsasl2-2 ca-certificates libsasl2-mod
 
      * The `relayhost` host configuration in the following command can be any SMTP port and server.
      
-     * You can define the body of the message with an echo statement like this, `echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  rohan@harness.io`. You can provide harness expressions to resolve the body of the message. The email address can be provided as a user's email or a Distribution List email. 
+     * You can define the body of the message with an echo statement like this, `echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  johndoe@xyz.io`. You can provide harness expressions to resolve the body of the message. The email address can be provided as a user's email or a Distribution List email. 
 
        The `mail -A hello.jar` will send the JAR on the host as an attachment
 
@@ -391,7 +391,7 @@ $ sudo apt-get install postfix mailutils libsasl2-2 ca-certificates libsasl2-mod
      sudo chmod 600 /etc/postfix/sasl_passwd
      sudo postmap /etc/postfix/sasl_passwd
      sudo systemctl restart postfix.service
-     echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  rohan@harness.io
+     echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  johndoe@xyz.io
      ```
    * Select **Add**.
 5. Select **Apply Changes**.
