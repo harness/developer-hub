@@ -143,6 +143,15 @@ const sidebars = {
         },
         {
           type: "link",
+          label: "Internal Developer Portal release notes",
+          href: "pathname:///release-notes/internal-developer-portal/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
           label: "Harness Platform release notes",
           href: "pathname:///release-notes/platform/rss.xml",
           className: "sidebar-item-rss",
