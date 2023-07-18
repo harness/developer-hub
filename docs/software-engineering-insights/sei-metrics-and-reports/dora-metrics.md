@@ -177,7 +177,11 @@ Mean Time To Restore/Recover (MTTR), or Time to Restore Service, indicates how l
 
 MTTR is a good metric for assessing the speed of your recovery process across several areas of technology. The overall time can be analyzed stage by stage over the organization's failure recovery workflow.
 
-There are several ways to present MTTR in SEI Insights. For example, you can use the **DORA Mean Time To Restore** widget or [Issue Resolution Time widgets](./velocity-metrics-reports/velocity-metrics.md#issue-resolution-time-reports) to track MTTR.
+There are several ways to present MTTR in SEI Insights, including:
+
+* **DORA Mean Time To Restore**
+* **Time To Restore Service**
+* **[Issue Resolution Time Reports](./velocity-metrics-reports/velocity-metrics.md#issue-resolution-time-reports)**
 
 ## Mean Time Between Failures (MTBF)
 

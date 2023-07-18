@@ -5,7 +5,7 @@ sidebar_position: 230
 sidebar_label: TestRail
 ---
 
-TestRail is a test management platform that helps you streamline your software testing processes, get visibility into QA, and release high-quality software.
+[TestRail](https://www.testrail.com/) is a test management platform that helps you streamline your software testing processes, get visibility into QA, and release high-quality software.
 
 Use the SEI TestRail connector to integrate SEI with TestRail.
 
