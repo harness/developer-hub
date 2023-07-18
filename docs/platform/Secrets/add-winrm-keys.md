@@ -18,7 +18,7 @@ Configure the **WinRM Credential** settings as follows.
      Enter the following authentication details:  
      1. **Domain**: Enter the Active Directory domain name where the user account in the credential is registered.
      2. **Username**: Enter the username for this connection. The user must belong to the same Active Directory domain as the Windows instances that this connection uses. These are the same user account credentials you would use to log into the VM using a remote connection such as Microsoft Remote Desktop.
-     3. **Password**: Create of select an an existing [Encrypted file secret](./3-add-file-secrets.md) that contains the relevant WinRM key file.
+     3. **Password**: Create or select an existing [Encrypted file secret](./3-add-file-secrets.md) that contains the relevant WinRM key file.
      4. **Use SSL**: (Recommended) Select to enable an HTTPS connection instead of an HTTP connection. 
      5. **Skip Cert Check**: Select to skip certificate check. When connected over an HTTPS connection, the client doesn't validate server certificate. 
      6. **WinRM Port**: Leave the default port **5986** or enter a new port if needed. 
@@ -84,10 +84,10 @@ Configure the **WinRM Credential** settings as follows.
      1. **Principal**: Enter the account name associated with the Kerberos account. 
      2. **Realm**: Enter a realm. Realm is the logical network served by a single Kerberos database and a set of Key Distribution Centers (KDCs).
      3. **Use SSL**: (Recommended) Select to enable an HTTPS connection instead of an HTTP connection. 
-     4. **Skip Cert Check**: Select to skip certificate check. When connected over an HTTPS connection, the client doesn't validate server certificate. 
+     4. **Skip Cert Check**: Select to skip certificate check. When connected over an HTTPS connection, the client doesn't validate the server certificate. 
      5. **WinRM Port**: Leave the default port **5986** or enter a new port if needed. 
      6. **TGT Generation**: (Optional) Select one of the following options. Select none of the options to skip TGT generation.
-        * **Key Tab File**: Generates a new TGT from the KDC every time you authentication with the service.
+        * **Key Tab File**: Generates a new TGT from KDC every time you authenticate with the service.
         * **Password**: Use Harness [Encrypted text secrets](./2-add-use-text-secrets.md) to save the password and refer to it using this option.
 
 3. Select **Save and Continue**.
