@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-07-13T10:00
+date: 2023-07-18T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -99,14 +99,13 @@ By default, the first two options are enabled, and you can modify the toggles to
 - You can now view delegate logs when validating a connector that uses delegates to establish connections. (PL-37919)
 - When creating Azure Key Vault, you can now manually enter the vault name. (PL-32773, ZD-44045)
 
-## July 5, 2023 
+## July 5, 2023
 
 ### Security Testing Orchestration, version 1.60.0
 
 You can now set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
 
 For information on how to set up this workflow, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
-
 
 ## Previous releases
 
@@ -125,7 +124,7 @@ For information on how to set up this workflow, go to [Configure STO to Download
 
   You can now clone an AutoStopping rule. To clone a rule, navigate to the rule you want to replicate and select the **Clone** option from the more options menu. After you choose the Clone option, you can update the instance details according to your requirements. This allows you to create a new rule based on the existing one, saving you time and effort in setting up similar rules for different instances.
 
-* Budget alert enhancements 
+* Budget alert enhancements
 
   - The cost alerts for daily budgets are now triggered on an hourly basis. Previously, cost alerts for daily budgets were triggered only at specific intervals, which could potentially result in delayed notifications if the threshold was crossed outside those intervals. However, with the increased frequency, you can now receive timely alerts as soon as the threshold is exceeded, regardless of the time of day. (CCM-12028)
   - Significant improvements have been made to the Slack budget alert messages for both budgets and budget groups. Now, when receiving a budget alert, you will find detailed information related to the perspective from which the budget was created, the allocated budget amount, the current spend, and the forecasted spend. (CCM-12647)
@@ -133,8 +132,6 @@ For information on how to set up this workflow, go to [Configure STO to Download
       <docimage path={require('./static/ccm-budget-slack-msg.png')} width="60%" height="60%" title="Click to view full size image" />
 
       <docimage path={require('./static/ccm-budget-grp-slack-msg.png')} width="60%" height="60%" title="Click to view full size image" />
-
-
 
 #### June 28, 2023
 
@@ -351,13 +348,15 @@ If you have pipelines running on Harness Cloud that rely on specific component v
    * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
    * You can nest cost categories to a maximum of 20 levels.
 
-**Harness version 79516, Harness Delegate version 79503**
+
+##### Harness version 79516, Harness Delegate version 79503
 
 - Kubernetes deployments support horizontal pod autoscaling and pod disruption budget for Blue Green and Canary execution strategies. (CDS-59011)
 
 - Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SRM-14724)
 
 ##### Cloud Cost Management, version 79601
+
 **Cost Category enhancement** (CCM-12585)
 
   When building a cost category, it is now possible to incorporate another cost category as a rule. However, there are important considerations to keep in mind when using a cost category within your rule. 
