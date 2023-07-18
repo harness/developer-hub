@@ -437,18 +437,13 @@ You can complete your Pipeline and then run it.
 
 Harness will provision the target infrastructure and then deploy to it.
 
-Terraform steps also would output the commit ID of config files stored on git.
-Those outputs also would be available using expressions, as example, for a Terraform Apply step with identifier TerraformApply which has config files, backend config files and var files 
-stored on git, the expressions would look like:
+Terraform steps also output the commit Id of config files stored on Git. The outputs are available using expressions. 
 
-For config files: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.TF_CONFIG_FILES>`
+For example, for a Terraform Apply step with the identifier `TerraformApply` and with config files, backend config files, and var files stored in git, the expressions would look like this:
 
-For backend config files: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.TF_BACKEND_CONFIG_FILE>`
-
-For var file with identifier varfile1: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.varfile1>`
-
-<img width="939" alt="Screenshot 2023-07-17 at 14 25 21" src="https://github.com/harness/developer-hub/assets/67729695/d93fa5e4-0de3-40c3-a34a-24c6f222e888">
-
+- **Config files**: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.TF_CONFIG_FILES>`
+- **Backend config files**: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.TF_BACKEND_CONFIG_FILE>`
+- **Var file** with identifier `varfile1`: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.varfile1>`
 
 ## Terraform Rollback
 
