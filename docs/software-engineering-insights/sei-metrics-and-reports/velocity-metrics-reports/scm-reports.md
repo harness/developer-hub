@@ -1,7 +1,7 @@
 ---
 title: SCM reports
 description: These widgets show metrics related to SCM activity.
-sidebar_position: 50
+sidebar_position: 70
 ---
 
 SCM reports help you analyze activity in your SCM tools, including:
@@ -70,7 +70,7 @@ Use SCM issues reports to analyze data related to the volume and lifetime of iss
 
 * **SCM Issues Report:** Analyze the number of issues in your SCM tool by time, label, or other categories.
 * **SCM Issues Count Single Stat:** Report a single stat related to the number of issues in your SCM tool.
-* **SCM Issues Report Trends:** Analyze changes over time in the volume of SCM issues.
+* **SCM Issues Trends Report:** Analyze changes over time in the volume of SCM issues.
 
 ### Issue first response lead time
 
@@ -78,7 +78,7 @@ First response lead time is measured as the time elapsed between issue creation 
 
 * **SCM Issues First Response Report:** Analyze the creation-to-first-response lead time for issues in your SCM tool.
 * **SCM Issues First Response Single Stat:** Report a single stat related to first response lead time.
-* **SCM Issues First Response Report Trends:** Analyze changes over time for first response lead time.
+* **SCM Issues First Response Trends Report:** Analyze changes over time for first response lead time.
 
 ### Issue resolution time
 

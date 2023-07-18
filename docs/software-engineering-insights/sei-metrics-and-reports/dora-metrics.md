@@ -181,10 +181,10 @@ There are several ways to present MTTR in SEI Insights, including:
 
 * **DORA Mean Time To Restore**
 * **Time To Restore Service**
-* **[Issue Resolution Time Reports](./velocity-metrics-reports/velocity-metrics.md#issue-resolution-time-reports)**
+* **[Issue Resolution Time reports](./velocity-metrics-reports/issues-reports.md)**
 
 ## Mean Time Between Failures (MTBF)
 
 Mean Time Between Failures (MTBF), or reliability, measures the average amount of time a system or component operates without failing. It is expressed as a continuous operating time in hours, days, or other units of time. It is an indicator of an assets reliability, or availability, and it is useful for estimating how likely an asset is to fail and how often certain failures occur. This metric is critical for reliability engineering.
 
-There are several ways to present MTTR in SEI Insights. For example, you can use [Issue Resolution Time widgets](./velocity-metrics-reports/velocity-metrics.md#issue-resolution-time-reports) to track MTBF.
+There are several ways to present MTTR in SEI Insights. For example, you can use [Issue Resolution Time reports](./velocity-metrics-reports/issues-reports.md) to track MTBF.

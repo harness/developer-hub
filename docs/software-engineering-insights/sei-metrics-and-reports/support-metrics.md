@@ -22,7 +22,7 @@ Use these reports to examine the volume of issues/tickets. You can create filter
 * **Support Tickets Trend Report:** Analyze changes over time in ticket counts.
 * **Support Top Customers Report:** Total tickets by customer.
 
-For information about issues reports, go to [velocity metrics](./velocity-metrics-reports/velocity-metrics.md).
+For information about issues reports, go to [Issues reports](./velocity-metrics-reports/issues-reports.md).
 
 ## Reopen and reassignment reports
 
@@ -72,7 +72,7 @@ _Hops_ describes the number of times a ticket is reassigned to a new assignee (s
 * **Issue Resolution Time Trend Report:** Track changes over time in issue resolution time.
 * **Issue Resolution Time Single Stat:** Present the number of issues marked as resolved in a given time period.
 
-For information about issue resolution time reports, go to [velocity metrics](./velocity-metrics-reports/velocity-metrics.md).
+For information about issue resolution time reports, go to [Issue reports](./velocity-metrics-reports/issues-reports.md).
 
 :::tip Use Issue Resolution Time to monitor MTTR and MTBF
 

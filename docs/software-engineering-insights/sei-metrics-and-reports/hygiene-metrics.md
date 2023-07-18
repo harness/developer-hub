@@ -1,6 +1,6 @@
 ---
 title: Hygiene reports
-description: desc
+description: Use hygiene reports to understand hygiene in your issue management and support systems.
 sidebar_position: 30
 sidebar_label: Hygiene
 ---
