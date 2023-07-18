@@ -20,33 +20,34 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 14, 2023
+## Latest - July 17, 2023
 
-```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
-```
 
 This release does not include new features.
 
-```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
-```
 
 This release does not include early access features.
 
-
-```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
-```
 
 #### Feature Flags SDKs
 
-The **Node.js** server SDK has been updated to version **1.3.1** with the following updates.
+The **Python** server SDK has been updated to version **1.2.2** with the following update.
 
-* Previously, calling waitForInitialization was resolving before the SDK was fully initialized, leading to default values being served until initialization completes. This issue has been fixed. (FFM-8615)
+* Fixed an issue where the SDK was crashing when used with the relay proxy.
+
+#### Feature Flags server
+
+The Feature Flags server has been updated to version **1.1077.0** with the following updates.
+
+* Previously, the developer count reported under the Feature Flags license usage page (**Account Settings > Subscriptions > Feature Flags > License Count**) included a 'System' user that should not be counted towards the customer's total count of developers. This fix excludes the 'System' user from the count. (FFM-8658)
+
+* Previously, targets sent by the server-side SDKs were not being updated in the database. This meant if a sever-side target changed, evaluations worked as expected, but the updated attributes were not shown in the UI. This fix ensures targets are correctly updated. (FFM-8600)
 
 
   </TabItem>
@@ -57,6 +58,24 @@ The **Node.js** server SDK has been updated to version **1.3.1** with the follow
 
 <details>
 <summary>2023 releases</summary>
+
+#### July 14, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Node.js** server SDK has been updated to version **1.3.1** with the following updates.
+
+* Previously, calling waitForInitialization was resolving before the SDK was fully initialized, leading to default values being served until initialization completes. This issue has been fixed. (FFM-8615)
 
 #### July 13, 2023
 
