@@ -27,10 +27,10 @@ const sidebars = {
         },
       ],
     },
+      /*
     {
       type: "category",
       label: "Subscribe via RSS",
-      /*
       link: {
         type: "link",
         label: "Subscribe via RSS",
@@ -40,7 +40,6 @@ const sidebars = {
           target: "_blank",
         },
       },
-      */
       collapsed: true,
       items: [
         {
@@ -169,8 +168,8 @@ const sidebars = {
             target: "_blank",
           },
         },
-      ],
-    },
+      ]
+    }, */
     // {
     //   type: "link",
     //   label: "Subscribe via RSS",

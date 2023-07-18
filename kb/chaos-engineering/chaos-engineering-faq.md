@@ -1,5 +1,5 @@
 ---
-title: Harness Chaos Engineering (HCE) FAQs
+title: Chaos Engineering (CE) FAQs
 description: This article addresses some frequently asked questions about Harness Chaos Engineering.
 # sidebar_position: 2
 helpdocs_topic_id:

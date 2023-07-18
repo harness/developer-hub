@@ -14,6 +14,14 @@ Looping strategies enable you to run a Stage or Step multiple times with differe
 * You want to build artifacts for multiple JDK versions in the same Build Stage.
 * You have a Build Pipeline with 20 unit tests. To speed up execution, you want to run the tests in parallel across 4 jobs that run 5 tests each.
 
+:::info note
+
+The identifier of the stage or step that has a looping strategy applied is updated each time the stage or step runs, because two stages cannot have the same identifier. To use it in an expression, you must use the updated identifier for that stage.
+
+For example, if a stage named `build` in YAML has a looping strategy applied, the expression `<+pipeline.stages.build.variables>` does not work. Use the updated identifier in your expression, for example, `<+pipeline.stages.build_0.variables>`.
+
+:::
+
 ## Looping strategy types
 
 Harness supports the following strategies.

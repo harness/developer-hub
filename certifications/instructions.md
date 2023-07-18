@@ -7,7 +7,7 @@ title: Hands on Labs instructions
 
 :::info
 
-These instructions are in BETA and in support of our Admin and Architect level exams. 
+These instructions are in support of our Admin and Architect level exams. 
 
 :::
 
