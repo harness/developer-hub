@@ -2265,7 +2265,7 @@ To add an artifact from an S3 bucket, do the following:
     2. in **Region**, select the region where the AMI is located.
     3. Set the **AMI Tags** and/or **AMI Filters** to specify the AMI you want to use for the service artifact.
     4. In **Version**, select the AMI you want to deploy. The pull-down list is populated based on the specified region, tags, and filters.
-      <!-- TBD -->
+
 11. Select **Submit**.
     
     The Artifact is added to the Service Definition.
@@ -2274,11 +2274,6 @@ To add an artifact from an S3 bucket, do the following:
 ```mdx-code-block
   </TabItem>
 </Tabs>
-```
-
-#### Permissions
-
-TBD 
 
 
 
