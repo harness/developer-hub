@@ -21,15 +21,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - July 18, 2023
 
-### Harness Platform, version 799xx
+### Harness Platform, version 79916
 
 - The Go library has been upgraded from 1.20.4 to 1.20.5. (PL-39700)
 
   The upgrade fixes the following CVEs:
   - [CVE-2023-29402](https://nvd.nist.gov/vuln/detail/CVE-2023-29402)
-  - [CVE-2023-29405](https://nvd.nist.gov/vuln/detail/CVE-2023-29405)
-  - [CVE-2023-29404](https://nvd.nist.gov/vuln/detail/CVE-2023-29404)
   - [CVE-2023-29403](https://nvd.nist.gov/vuln/detail/CVE-2023-29403)
+  - [CVE-2023-29404](https://nvd.nist.gov/vuln/detail/CVE-2023-29404)
+  - [CVE-2023-29405](https://nvd.nist.gov/vuln/detail/CVE-2023-29405)
 
 - An AI-powered chatbot named Ask AIDA has been integrated to make searches within the Harness Docs. You can access the chatbot by clicking the icon located at the bottom-right corner of the screen. (PL-39613)
 
@@ -43,7 +43,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 1. If you have user management permissions, you can list all the personal access tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
 2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
 
-This item requires Harness Delegate version 799xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ## July 07, 2023
 

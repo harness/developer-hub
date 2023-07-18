@@ -21,7 +21,7 @@ Harness publishes security advisories for every release. Go to the [Harness Trus
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 18, 2023, version 799xx
+## Latest - July 18, 2023, version 79916
 
 
 ```mdx-code-block
@@ -48,7 +48,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 1. If you have user management permissions, you can list all the personal access tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
 2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
 
-This item requires Harness Delegate version 799xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ```mdx-code-block
   </TabItem>
@@ -69,21 +69,19 @@ This release does not include early access features.
 
   This issue is now fixed.
 
-  This item requires Harness Delegate version 79xxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The AWS connector widget's prefix field did not accept prefixes starting with a slash. Such slashes were stripped off, and this led to undesired behavior. (PL-39194, ZD-45104)
 
   Prefixes that begin with a slash are now supported. 
 
-  This item requires Harness Delegate version 79xxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Account-level connectors with resource groups set to **Specified** were not available at the project-level. (PL-38828, ZD-44474). 
 
   This issue is now fixed. The connectors list shows the connectors for which users have resource group permissions set.
 
-  This item requires Harness Delegate version 799xx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
-
-- WIP (PL-32537)
+  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ```mdx-code-block
   </TabItem>
