@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-07-18T10:00
+date: 2023-07-21T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,17 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - July 18, 2023
+## Latest - July 21, 2023
+
+### Continuous Integration, version 5100
+
+**Eliminate unnecessary connection tests for GitHub connectors (CI-7902, ZD-43391)**
+
+Harness regularly runs automatic connection tests for your GitHub connectors. Previously, Harness would continue to run these tests even if the tests were failing repeatedly. Now, if the connection test fails due to an authorization issues with GitHub credentials, Harness stops checking the connector until you update the connectors's credentials. This eliminates unnecessary testing that could cause LDAP user accounts in AD to become locked, due to excessive failed access attempts, if a connector's personal access token was associated with an specific user's account.
+
+To restart the connection tests, you must edit the [GitHub connector settings](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference) to add new credentials or trigger a connection test with existing, reinstated credentials. Updating the connector settings triggers a connection test, and, if this connection test succeeds, Harness resumes regular testing.
+
+## July 18, 2023
 
 ### Continuous Delivery, version 79916
 
