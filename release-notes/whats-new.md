@@ -21,6 +21,30 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - July 18, 2023
 
+### Harness Platform, version 79916
+
+- The Go library has been upgraded from 1.20.4 to 1.20.5. (PL-39700)
+
+  The upgrade fixes the following CVEs:
+  - [CVE-2023-29402](https://nvd.nist.gov/vuln/detail/CVE-2023-29402)
+  - [CVE-2023-29403](https://nvd.nist.gov/vuln/detail/CVE-2023-29403)
+  - [CVE-2023-29404](https://nvd.nist.gov/vuln/detail/CVE-2023-29404)
+  - [CVE-2023-29405](https://nvd.nist.gov/vuln/detail/CVE-2023-29405)
+
+- An AI-powered chatbot named Ask AIDA has been integrated to make searches within the Harness Docs. You can access the chatbot by clicking the icon located at the bottom-right corner of the screen. (PL-39613)
+
+- You can now view delegate logs when validating a connector that uses a delegate to establish connections. (PL-37919)
+
+- Previously, when password-based authentication was used with OAuth, the functionality of auto-accepting invites was not available. Now, when Oauth is enabled for an account, invites are automatically accepted. (PL-31936, ZD-40182)
+
+- User names cannot exceed 256 chars. (PL-21254)
+
+- The List Tokens API now supports listing all the personal access tokens or service account tokens in the account. The API has been enhanced as follows:
+1. If you have user management permissions, you can list all the personal access tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
+2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
+
+This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
 ### Continuous Delivery, version 79916
 
 - Retrieve the current status of the looping strategy for stages and steps during execution. (CDS-69780)
@@ -45,7 +69,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 - Support for expressions in remote Terraform Var files hosted on Github and S3. (CDS-68612, ZD-43917, ZD-45714)
   
-  This feature requires the latest Delegate version, 79904, to display console logs during execution correctly.
+  This feature requires the latest delegate version, 79904, to display console logs during execution correctly.
+
+### Harness Delegate, version 79904
+
+- The Splunk connector has been enhanced to include support for Bearer Token. (OIP-598)
+
+- The List Tokens API now supports listing all the personal access tokens or service account tokens in the account. The API has been enhanced as follows:
+   1. If you have user management permissions, you can list all the Personal Access Tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
+   2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
 
 ## July 13, 2023
 

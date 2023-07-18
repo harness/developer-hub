@@ -173,8 +173,6 @@ You can [add package dependencies](https://developer.apple.com/documentation/xco
 
 Add caching to your stage.
 
-<!-- unknown checksum key and path for both hosted and self-hosted infras.-->
-
 ```mdx-code-block
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
@@ -215,7 +213,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     connectorRef: AWS_Connector
                     region: us-east-1
                     bucket: your-s3-bucket
-                    key: cache-{{ checksum "cache.ipa" }} ## What is the cache key for xcode?
+                    key: cache-{{ checksum "cache.ipa" }}
                     archiveFormat: Tar
               - step:
                   type: Run
@@ -240,7 +238,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     connectorRef: AWS_Connector
                     region: us-east-1
                     bucket: your-s3-bucket
-                    key: cache-{{ checksum "cache.ipa" }} ## What is the cache key for xcode?
+                    key: cache-{{ checksum "cache.ipa" }}
                     sourcePaths:
                       - "/Users/anka/Library/Developer/Xcode/DerivedData"
                     archiveFormat: Tar
@@ -645,7 +643,7 @@ To learn more about app distribution, go to the Apple Developer documentation on
 
 ## Full pipeline examples
 
-The following pipeline examples install dependencies, cache dependencies, and build and test an xcode project.
+The following pipeline examples install dependencies, cache dependencies, and build and test an Xcode project.
 
 ```mdx-code-block
 <Tabs>
