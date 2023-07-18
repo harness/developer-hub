@@ -1,9 +1,9 @@
 ---
 sidebar_position: 6
 title: Android application
-description: Use a CI pipeline to build and test iOS and macOS applications.
+description: Use a CI pipeline to build and test an Android application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
-slug: /ci-pipelines/build/ios
+slug: /ci-pipelines/build/android
 ---
 
 ```mdx-code-block
@@ -20,7 +20,6 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
   closable={true}
   target="_self"
 />
-
 
 You can build and test [Android](https://developer.android.com/modern-android-development)/[Kotlin](https://developer.android.com/kotlin) applications using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/), or a [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
 
