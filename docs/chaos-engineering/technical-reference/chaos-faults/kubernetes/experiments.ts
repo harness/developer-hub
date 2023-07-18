@@ -194,4 +194,10 @@ export const experiments: ExperimentDetails[] = [
     tags: ["pod"],
     category: "kubernetes",
   },
+  {
+    name: "Time Chaos",
+    description:"Time Chaos introduces controlled time offsets to disrupt the system time of the target pod",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
 ];

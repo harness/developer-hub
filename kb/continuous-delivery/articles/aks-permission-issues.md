@@ -13,13 +13,12 @@ we are not able to perform deployment to target cluster as it throws below error
 
 `"Error: query: failed to query with labels: secrets is forbidden: User "addd761x-f76d-89f7-ee6f-21fgec090a7a" cannot list resource "secrets" in API group "" in the namespace "default": User does not have access to the resource in Azure. Update role assignment to allow access."`
 
-
 ![](../static/akserrorimage.png)
 
 ## Resolution
 
 From the error it seems the user addd is trying to access secret resource (cluster) of which it does not have access.
- 
+
 We need to update the creds such that the tenent have access to this clusters resources or add the particular role to the AKS cluster that would authorise the access to resources. Adding the group which contained user ID in Cluster admin ClusterRoleBinding should solve the issue [In Cluster configurations].
 
 To further verify if we a list permission which seems to be misssing, we will run the following commands? This will ensure that their creds are valid and have the required permissions?
