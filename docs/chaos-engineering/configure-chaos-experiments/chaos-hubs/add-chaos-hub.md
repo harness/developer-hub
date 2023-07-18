@@ -3,9 +3,9 @@ title: Add a custom chaos hub
 sidebar_position: 5
 ---
 
-A chaos hub is a collection of experiment templates and faults you can use to create chaos experiments are created. CE provides a default **Enterprise Chaos Hub** that includes a wide array of templates and faults out of the box. You can also add custom chaos hubs to maintain and distribute private faults and experiments within your organization.
+A chaos hub is a collection of experiment templates and faults you can use to launch chaos experiments. CE provides a default **Enterprise Chaos Hub** that includes a wide array of templates and faults out of the box. You can also add custom chaos hubs to maintain and distribute private faults and experiments within your organization.
 
-This topic shows how to add a custom chaos hub, and add and organize experiments in it.
+This topic shows how to add and connect a custom chaos hub. 
 
 ## Prerequisites
 
@@ -81,13 +81,13 @@ To add a custom chaos hub:
 	1. In **Secret Name**, enter a name for this secret.
 	1. In **Secret Value**, enter a personal access token (PAT) generated from [GitHub](https://github.com/settings/tokens).
 
-		Ensure that the token has at least a **repo** scope. 
+		Ensure that the token has at least a [**repo**](#prerequisites) scope. 
 
 1. Select **Save**, and then on the Credentials screen, select **Continue**.
 
 	![Add Credentials](./static/add-chaos-hub/add-credentials.png)
 
-	This adds your GitHub repo connector and initialize the PAT for authentication. 
+	This adds your GitHub repo connector and initializes the PAT for authentication. 
 
 1. In the Connect to provider screen, select **Connect through Harness Platform**, and then select **Save and Continue**.
 
@@ -106,17 +106,6 @@ To add a custom chaos hub:
 
 	Your new custom chaos hub appears in the **ChaosHubs** page.
 
+## Next steps
 
-## Add experiments to a custom chaos hub
-
-:::info note
-Adding a tag helps organize your experiments. When you view the custom chaos hub, you can see all experiments, as well as experiments grouped by tag.
-::: 
-
-
-## Sync a chaos hub with your git repository
-
-## Launch an experiment from a custom chaos hub
-
-![Private Hub Added](./static/add-chaos-hub/private-hub-added.png)
-
+Now you can add and launch experiments in your custom chaos hub, or add YAML fault and experiment definitions directly in your chaos hub GitHub repo, and then sync it with Harness. Head to [Manage custom chaos hubs](/docs/chaos-engineering/configure-chaos-experiments/chaos-hubs/manage-hub) for details.
