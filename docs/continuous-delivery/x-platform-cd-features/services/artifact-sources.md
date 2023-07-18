@@ -1754,9 +1754,7 @@ To add an artifact from ECR, do the following:
 14. Select **Submit**. The Artifact is added to the Service Definition.
  <!-- CDS-71711 -->
     
-    
-
-    ![ECR artifact source in a service](static/769c54fe91e7497b4aef3733f128361457b933f1d0eccd0d9b3491f1da4ed0c7.png)
+ ![ECR artifact source in a service](static/769c54fe91e7497b4aef3733f128361457b933f1d0eccd0d9b3491f1da4ed0c7.png)
 
 
 ```mdx-code-block
@@ -2037,18 +2035,8 @@ To add an artifact from an S3 bucket, do the following:
     ![](static/kubernetes-services-13.png)
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
- <!-- CDS-71711 -->
-14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+12. Select **Submit**. The Artifact is added to the Service Definition.
 
-  :::note 
-
-  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
-
-  If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
-
-  :::
-15. Select **Submit**. The Artifact is added to the Service Definition.
- <!-- CDS-71711 -->
 
 
 ```mdx-code-block
