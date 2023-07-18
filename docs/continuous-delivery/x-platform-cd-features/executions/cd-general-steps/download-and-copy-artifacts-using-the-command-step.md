@@ -343,14 +343,6 @@ The WinRM deployment type supports Download Artifact only. You cannot use Cope A
 
 ## Use case: Sending an email from a server with an attachment
 
-#### Prerequisites
-
-Make sure that you have installed `postfix` on the target host.
-
-
-
-#### Configuration
-
 1. Install `postfix` on the target host using the following command:  
    
    ```BASH
@@ -388,7 +380,7 @@ Make sure that you have installed `postfix` on the target host.
      The `mail -A hello.jar` will send the JAR on the host as an attachment. The `-s` command will provide the subject of the email. The email address is the last argument in the mail command.
 
      For more information on sending emails with `postfix`, go to [AskUbuntu solution](https://askubuntu.com/questions/1332219/send-email-via-gmail-without-other-mail-server-with-postfix/1332322#1332322).
-     
+
    * Select **Add**.
 6. Select **Apply Changes**.
 7. **Run** the pipeline. 
