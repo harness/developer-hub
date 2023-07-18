@@ -52,7 +52,7 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
 - Support for expressions in remote Terraform Var files hosted on Github and S3. (CDS-68612, ZD-43917, ZD-45714)
   
-  This feature requires the latest Delegate version, 79900, to display console logs during execution correctly.
+  This feature requires the latest Delegate version, 79904, to display console logs during execution correctly.
 
 
 
@@ -77,20 +77,24 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 - The `<+configFile.getAsBase64()>` expression not resolving correctly when the content had new lines. (CDS-73424)
   
   The issue occurred with newline characters while encoding config files. This is fixed and Harness now replaces newline characters with unicode.
-   This item requires Harness Delegate version 79900. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - The sort order on the pipelines list page was incorrect. (CDS-73216)
   
   Now, Harness supports case-insensitive sorting for pipelines, input sets, and pipeline executions.
-  This item requires Harness Delegate version 79900. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 - Artifactory artifact source **Artifact Name** regex value was not working correctly. (CDS-73150)
   
   Harness has added support for regex values for generic type Artifactory artifacts.
-  This item requires Harness Delegate version 79xxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 - Cron triggers artifact setting failed when modified regex did not match any build. (CDS-72589, ZD-46323)
   
   Harness initially modifies the regex to see if it matches any build. The trigger was failing if it did not match. Now, if the regex does not match any build, Harness will use the original regex.
-   This item requires Harness Delegate version 79xxx. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+  This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - Deserialization of `isGitDefaultBranch` in `ScmGitMetadata` was failing in platform service. (CDS-73805)
   
