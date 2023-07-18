@@ -347,37 +347,24 @@ The WinRM deployment type supports Download Artifact only. You cannot use Cope A
 
 Make sure that you have installed `postfix` on the target host.
 
-```BASH
-$ sudo apt-get install postfix mailutils libsasl2-2 ca-certificates libsasl2-modules
-```
+
 
 #### Configuration
 
-1. Create a deployment stage with an SSH type service and infrastructure definition.
-2. Add a Command step under the **Executions** tab.
-3. In **Step Parameters** enter a name and timeout duration. 
-4. In **Run the following commands**, select **Add Command**.
+1. Install `postfix` on the target host using the following command:  
+   
+   ```BASH
+   $ sudo apt-get install postfix mailutils libsasl2-2 ca-certificates libsasl2-modules
+   ```
+2. Create a deployment stage with an SSH type service and infrastructure definition.
+3. Add a Command step under the **Executions** tab.
+4. In **Step Parameters**, enter a name and timeout duration. 
+5. In **Run the following commands**, select **Add Command**.
    * Enter a command name.
    * Set the **Command Type** to **Script**.
    * Enter the **Working Directory** path where the attachment resides. The path can be a fixed value, runtime input, or an expression.
    * In **Select script location**, select **Inline**.
    * In **Script Type**, select **Bash** and enter the following command: 
-     
-     :::info
-
-     * The `relayhost` host configuration in the following command can be any SMTP port and server.
-     
-     * You can define the body of the message with an echo statement like this, `echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  johndoe@xyz.io`. You can provide harness expressions to resolve the body of the message. The email address can be provided as a user's email or a Distribution List email. 
-
-       The `mail -A hello.jar` will send the JAR on the host as an attachment
-
-       The `-s` command will provide the subject of the email
-
-       The email address is the last argument in the mail command.
-
-       For more information on sending emails with `postfix`, go to [AskUbuntu solution](https://askubuntu.com/questions/1332219/send-email-via-gmail-without-other-mail-server-with-postfix/1332322#1332322).
-
-     :::
      
      ```BASH
      sudo tee -a /etc/postfix/main.cf > /dev/null <<EOT
@@ -393,9 +380,18 @@ $ sudo apt-get install postfix mailutils libsasl2-2 ca-certificates libsasl2-mod
      sudo systemctl restart postfix.service
      echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  johndoe@xyz.io
      ```
+     
+     The `relayhost` host configuration in the above command can be any SMTP port and server.
+     
+     You can define the body of the message with an echo statement like this, `echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  johndoe@xyz.io`. You can provide harness expressions to resolve the body of the message. The email address can be provided as a user's email or a Distribution List email. 
+
+     The `mail -A hello.jar` will send the JAR on the host as an attachment. The `-s` command will provide the subject of the email. The email address is the last argument in the mail command.
+
+     For more information on sending emails with `postfix`, go to [AskUbuntu solution](https://askubuntu.com/questions/1332219/send-email-via-gmail-without-other-mail-server-with-postfix/1332322#1332322).
+     
    * Select **Add**.
-5. Select **Apply Changes**.
-6. **Run** the pipeline. 
+6. Select **Apply Changes**.
+7. **Run** the pipeline. 
    
    ![](./static/command-unit-email-4.png)
 
