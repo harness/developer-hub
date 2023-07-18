@@ -8,6 +8,10 @@ Various stages of a pipeline might require input data or parameters to function 
 
 Passing variables and parameters to a pipeline when triggering it can help streamline the pipeline execution based on the specific needs of each run.
 
+import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported.md'
+
+<Variables />
+
 ## How data is passed in the trigger cURL command
 
 Once you create a custom trigger, Harness provides the Webhook URL and cURL command to initiate the trigger.

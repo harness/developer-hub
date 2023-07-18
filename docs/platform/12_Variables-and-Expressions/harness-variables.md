@@ -601,7 +601,7 @@ The list of stages selected for execution.
 
 The pipeline level delegate selectors selected via runtime input.  
 
-## Deployment and step status
+## Deployment, pipeline, stage, and step status
 
 Deployment status values are a Java enum. The list of values can be seen in the deployments **Status** filter:
 
@@ -609,9 +609,15 @@ Deployment status values are a Java enum. The list of values can be seen in the 
 
 You can use any status value in a JEXL condition. For example, `<+pipeline.stages.stage1.status> == "FAILED"`.
 
-### Step status
+#### Stage status
 
-The expression `<+pipeline.stages.STAGE_NAME.spec.execution.steps.STEP_ID.status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
+The expression `<+pipeline.stages.STAGE_ID.status>` resolves to the status of a stage.
+
+You must use the expression after the stage in execution.
+
+#### Step status
+
+The expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
 
 You must use the expression after the step in execution.
 

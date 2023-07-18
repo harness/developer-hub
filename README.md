@@ -7,6 +7,7 @@
 ![SRM](static/img/icon_srm.svg)
 ![STO](static/img/icon_sto.svg)
 ![CE](static/img/icon_ce.svg)
+![IDP](static/img/icon_idp.svg)
 
 Welcome to the Harness Developer Hub (HDH)!
 
