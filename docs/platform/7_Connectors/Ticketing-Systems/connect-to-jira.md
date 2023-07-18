@@ -49,7 +49,7 @@ In Jira, the base URL is set to the same URL that Web browsers use to view your 
    - **Personal Access Token**: Add your Personal Access Token (PAT) to Harness as an [encrypted text](../../Secrets/2-add-use-text-secrets.md) and select the same in the Jira connector.
       
      :::important
-     Currently, this feature is behind the feature flag `CDS_JIRA_PAT_AUTH`. Contact Harness Support to enable the feature.
+     This feature requires Harness Delegate version 78707. 
      :::
 
      ```yaml

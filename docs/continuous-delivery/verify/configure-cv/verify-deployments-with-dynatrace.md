@@ -15,6 +15,17 @@ Harness CV integrates with Dynatrace to:
 
 This topic covers how to add and configure Dynatrace as a Health Source for the Verify step.
 
+
+:::important
+When creating a Dynatrace query:
+
+- Mark the service as a key request.
+
+- Ensure that the entity selector for metrics is a service or service method.
+:::
+
+
+
 ## Before You Begin
 
 [Add Dynatrace as a verification provider](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#step-add-dynatrace)

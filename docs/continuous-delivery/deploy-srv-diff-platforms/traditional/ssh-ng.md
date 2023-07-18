@@ -1,5 +1,5 @@
 ---
-title: Secure Shell (SSH) deployments
+title: VM deployments using SSH
 description: Deploy to any platform using SSH.
 sidebar_position: 8
 helpdocs_topic_id: mpx2y48ovx
@@ -7,9 +7,9 @@ helpdocs_category_id: c9j6jejsws
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
+# VM deployments using SSH
 
-
-You can use a Secure Shell (SSH) deployment type to deploy your artifacts to hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
+You can use a Secure Shell (SSH) deployment type to deploy your artifacts to VM or bare-metal hosts located in Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC).
 
 :::note
 

@@ -14,6 +14,10 @@ This document explains how you can:
 * Build and host a custom delegate image that includes the tools you select.
 * Use your custom delegate in CI/CD pipelines.
 
+:::info note
+Delegates with an immutable image type (image tag `yy.mm.xxxxx`) include non-root user privileges and are compatible with OpenShift. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+:::
+
 ### Select the delegate image
 
 You can build on either of the following Harness-provided images.
@@ -23,7 +27,7 @@ You can build on either of the following Harness-provided images.
 | Harness Delegate Docker image | A publicly available Docker image providing Harness Delegate. |
 | Harness Minimal Delegate Docker image | A minimal delegate image available in Docker Hub at <https://hub.docker.com/r/harness/delegate/tags>. |
 
-Use the  last published `yy.mm.xxxxx` version of the minimal image from the Docker repository.
+Use the last published `yy.mm.xxxxx` version of the minimal image from the Docker repository.
 
 ![](./static/build-custom-delegate-images-with-third-party-tools-07.png)
 ### Build the delegate image
@@ -64,14 +68,19 @@ RUN mkdir /opt/harness-delegate/tools && cd /opt/harness-delegate/tools \
 ```
   
 
-The final instruction defines the Linux `$PATH` environment variable that provides the location of the tools to be installed:
+The `ENV` instruction defines the Linux `$PATH` environment variable that provides the location of the tools to be installed:
 
 
 ```
 ENV PATH=/opt/harness-delegate/tools/:$PATH
 ```
-The complete script is as follows:
 
+The final instruction switches the user back to `harness` to ensure the custom image does not run as root:
+
+```
+USER harness
+```
+The complete script is as follows:
 
 ```
 FROM harness/delegate:22.10.77029.minimal  
@@ -90,6 +99,7 @@ RUN mkdir /opt/harness-delegate/tools && cd /opt/harness-delegate/tools \
   
 ENV PATH=/opt/harness-delegate/tools/:$PATH  
 
+USER harness
 ```
 ### Upload the image to Docker Hub
 

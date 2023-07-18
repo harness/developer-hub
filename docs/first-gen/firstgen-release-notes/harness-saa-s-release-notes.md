@@ -16,6 +16,62 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### July 18, 2023, version 79915
+
+#### What's new
+
+- The Universal Base Image Minimal used for the Harness Delegate has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-39720)
+- The Universal Base Image Minimal used for various Harness services has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-39276)
+
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Pagination did not work correctly in the list-secrets-page API response because of an incorrect offset. (PL-38776)
+  
+  This issue is now fixed and the correct response is returned.
+
+### July 06, 2023, version 79807
+
+#### What's new
+
+- The Universal Base Image Minimal used for various Harness services has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-39276)
+
+#### Early access
+
+- Introduced a more consistent pipeline execution status. (CDS-70387, ZD-44892)
+  
+  Harness has introduced an enhancement for displaying the negative status of parallel pipelines. For a pipeline with concurrently running stages, the ABORTED, REJECTED, and EXPIRED statuses now have higher priority over the FAILED status. 
+
+  This functionality is behind the feature flag, `SPG_CG_REJECT_PRIORITY_WHEN_FORK_STATE`.
+
+#### Fixed issues
+
+- Improved error handling mechanism when Helm manifests are not fetched from the Artifactory repository. (CDS-68251, ZD-37458)
+
+### June 28, 2023, version 79714
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- The delegate connectivity capability check for Azure Web App deployments failed. (CDS-71432, ZD-44862)
+  
+  This issue is fixed by using task category mapping to assign the Azure App Services task type deployments to specific delegates.
+
+import Fixedissues from '/docs/first-gen/firstgen-release-notes/shared/cd-79700-fixed-issues.md'
+
+<Fixedissues />
+
 ### June 19, 2023, version 79606
 
 #### What's new

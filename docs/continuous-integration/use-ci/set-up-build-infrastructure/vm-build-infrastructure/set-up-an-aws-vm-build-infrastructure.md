@@ -17,7 +17,7 @@ This topic describes how to set up and use AWS VMs as build infrastructures for 
 
 For information on using Kubernetes as a build farm, go to [Set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-The following diagram illustrates an AWS build farm. The [Harness Delegate](/docs/platform/Delegates/delegate-concepts/delegate-overview) communicates directly with your Harness instance. The [VM runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the delegate receives a build request, it forwards the request to the runner, which runs the build on an available VM.
+The following diagram illustrates an AWS build farm. The [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) communicates directly with your Harness instance. The [VM runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the delegate receives a build request, it forwards the request to the runner, which runs the build on an available VM.
 
 ![](../static/set-up-an-aws-vm-build-infrastructure-12.png)
 
@@ -26,7 +26,7 @@ The following diagram illustrates an AWS build farm. The [Harness Delegate](/doc
 This topic assumes you're familiar with the following:
 
 * [Building and testing on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
-* [Delegates overview](/docs/platform/Delegates/delegate-concepts/delegate-overview)
+* [Delegates overview](/docs/platform/delegates/delegate-concepts/delegate-overview)
 * [CI Build stage settings](../ci-stage-settings.md)
 * [Harness key concepts](../../../../getting-started/learn-harness-key-concepts.md)
 * Drone VM runner
@@ -46,7 +46,7 @@ The following are required for the AWS EC2 configuration:
 * Authentication requirements:
    + You can use an access key and access secret ([AWS secret](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_access-keys.html#Using_CreateAccessKey)) for configuration of the runner.
      - For Windows instances, you need to add the [AdministratorAccess policy](https://docs.aws.amazon.com/IAM/latest/UserGuide/getting-started_create-admin-group.html) to the IAM role associated with the access key and access secret [IAM](https://console.aws.amazon.com/iamv2/home#/users).
-   + You can use IAM profiles instead of access and secret keys. You need to run the delegate VM with an IAM role that has CRUD permissions on EC2. This role provides the runner with temporary security credentials to create VMs and manage the build pool.
+   + You can use IAM profiles instead of access and secret keys. You need to run the delegate VM with an IAM role that has CRUD permissions on EC2. This role provides the runner with temporary security credentials to create VMs and manage the build pool. For details, go to the Amazon documentation on [AmazonEC2FullAccess Managed policy](https://docs.aws.amazon.com/aws-managed-policy/latest/reference/AmazonEC2FullAccess.html).
    + If you want ot use IAM roles with Windows VMs, go to the AWS documentation for [additional configuration for Windows IAM roles for tasks](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/windows_task_IAM_roles.html). This additional configuration is required because containers running on Windows can't directly access the IAM profile on the host.
 * Set up VPC firewall rules for the build instances on EC2.
    + Create a Security Group. You need the Security Group ID to configure the runner. For information on creating Security Groups, go to the AWS documentation on [authorizing inbound traffic for your Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html).
@@ -207,7 +207,7 @@ services:
     image: drone/drone-runner-aws:1.0.0-rc.38
     network_mode: "host"
     volumes:  
-      - .:/runner  
+      - ./runner:/runner  
     entrypoint: ["/bin/drone-runner-aws", "delegate", "--pool", "pool.yml"]  
     working_dir: /runner
 ```
@@ -223,13 +223,13 @@ For more information on Harness Docker Delegate environment variables, go to the
 
    ```
    $ ls -a
-   . .. docker-compose.yml pool.yml
+   . .. docker-compose.yaml pool.yml
    ```
 
 3. Run the following command to install the delegate and runner:
 
    ```
-   $ docker-compose -f docker-compose.yml up -d
+   $ docker-compose -f docker-compose.yaml up -d
    ```
 
 4. Verify that both containers are running correctly. For example, wait a few minutes for both processes to start, and then run the following commands:
@@ -385,10 +385,10 @@ You can configure the following settings in your `pool.yml` file.
 
 ## Runner settings reference
 
-You can set the following runner options in your `docker-compose.yml` file. These can be useful for advanced use cases such as troubleshooting the runner.
+You can set the following runner options in your `docker-compose.yaml` file. These can be useful for advanced use cases such as troubleshooting the runner.
 
 <details>
-<summary>Example: docker-compose.yml with Drone Environment Settings</summary>
+<summary>Example: docker-compose.yaml with Drone Environment Settings</summary>
 
 ```yaml
 version: "3.7"  

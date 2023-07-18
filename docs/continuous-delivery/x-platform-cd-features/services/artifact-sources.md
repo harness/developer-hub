@@ -290,8 +290,19 @@ To add an artifact from a Docker registry, do the following:
 12. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
     
     ![](static/kubernetes-services-09.png)
-13. Click **Submit**.
-14. The Artifact is added to the Service Definition.
+<!-- CDS-71711 -->
+13. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+  :::note 
+
+  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+  If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
+
+  :::
+14. Select **Submit**. The Artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
+
 
 ```mdx-code-block
   </TabItem>
@@ -480,10 +491,21 @@ To add an artifact from GCR, do the following:
     Images in repos need to reference a path starting with the project Id that the artifact is in, for example: `myproject-id/image-name`.
 13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select a [runtime input or expression](https://developer.harness.io/docs/platform/references/runtime-inputs/).
     
-    ![](static/kubernetes-services-10.png)
+    ![](./static/kubernetes-services-10.png)
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
-14. Click **Submit**.
+ <!-- CDS-71711 -->
+14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+  :::note 
+
+  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+  If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
+
+  :::
+14. Select **Submit**. 
+ <!-- CDS-71711 -->
     
     The Artifact is added to the **Service Definition**.
 
@@ -917,17 +939,29 @@ To add an artifact from Google Artifact Registry, do the following:
 17. In **Package**, enter the artifact name.
 18. In **Version Details**, select **Value** or **Regex**.
 19. In **Version**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/).
-    
-    ![](static/kubernetes-services-11.png)
+
+    :::note 
+
+    If you used Fixed Value in **Version** and Harness is not able to fetch the image tags, ensure that the GCP service account key used in the GCP connector credentials, or in the service account used to install the Harness delegate, has the required permissions. See the **Permissions** tab in this documentation. 
+   
+    :::
+
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 
-    :::note
-    
-    If you used Fixed Value in **Version** and Harness is not able to fetch the image tags, ensure that the GCP service account key used in the GCP connector credentials, or in the service account used to install the Harness delegate, has the required permissions. See the **Permissions** tab in this documentation. 
-    
+    ![](static/kubernetes-services-11.png)
+
+ <!-- CDS-71711 -->
+20. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+    :::note 
+
+    This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+    If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
+
     :::
-20. Click **Submit**.
-    The Artifact is added to the **Service Definition**.
+21. Select **Submit**. The Artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
 
 
 ```mdx-code-block
@@ -1707,9 +1741,20 @@ To add an artifact from ECR, do the following:
     ![ECR artifact details](static/74fe6d9189f8f18b2e854598026ab1db27944dab47c3056f4ffaaab93582242a.png)
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
-13. Select **Submit**.
+ <!-- CDS-71711 -->
+13. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+  :::note 
+
+  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+  If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
+
+  :::
+14. Select **Submit**. The Artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
     
-    The Artifact is added to the Service Definition.
+    
 
     ![ECR artifact source in a service](static/769c54fe91e7497b4aef3733f128361457b933f1d0eccd0d9b3491f1da4ed0c7.png)
 
@@ -1989,7 +2034,21 @@ To add an artifact from an S3 bucket, do the following:
     4. In **File path**, enter the path (from the bucket root) and name of the artifact you want to deploy.
 11. Select **Submit**.
     
-    The Artifact is added to the Service Definition.
+    ![](static/kubernetes-services-13.png)
+    
+    If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
+ <!-- CDS-71711 -->
+14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+  :::note 
+
+  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+  If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
+
+  :::
+15. Select **Submit**. The Artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
 
 
 ```mdx-code-block
@@ -2427,9 +2486,19 @@ To add an artifact from Nexus, do the following:
     ![](static/kubernetes-services-14.png)
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
-14. Click **Submit**.
-    
-    The Artifact is added to the Service Definition.
+
+ <!-- CDS-71711 -->
+14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+  :::note 
+
+  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+  If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
+
+  :::
+14. Select **Submit**. The Artifact is added to the Service Definition.
+
 
 
 ```mdx-code-block
@@ -2518,6 +2587,7 @@ service:
                 connectorRef: artifactorytutorialconnector
                 artifactPath: alpine
                 tag: 3.14.2
+                digest: sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
                 repository: bintray-docker-remote
                 repositoryUrl: harness-docker.jfrog.io
                 repositoryFormat: docker
@@ -2631,7 +2701,19 @@ To add an artifact from Artifactory, do the following:
     
     ![](static/kubernetes-services-16.png)
 14. If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
-15. Select **Submit**. The Artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
+15. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+  :::note 
+
+  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+  If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
+
+  :::
+16. Select **Submit**. The Artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
+
 
 
 ```mdx-code-block
@@ -3054,6 +3136,16 @@ To add an artifact from Github Packages, do the following:
 12. In **Package Type**, select the type of package you are using.
 13. In **Package Name**, select the name of the package.
 14. In **Version**, select the version to use. 
+<!-- CDS-71711 -->
+15. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by digest is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+  :::note 
+
+  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+  If an image with the specified tag/digest combination does not exist in the Github Package registry repository, the pipeline will fail.
+
+  :::
 15. Select **Submit**. The Artifact is added to the Service Definition.
 
 ```mdx-code-block
@@ -3240,8 +3332,9 @@ For more information, go to:
 
 ## Viewing SHA values and labels
 
-You can view the SHA values and labels of the Docker images for the following artifact types:
+Harness provides expressions you can use to output the SHA values and labels of the Docker images for the following artifact providers:
 
+- Docker Registry (platform agnostic)
 - Artifactory
 - ECR
 - GCR
@@ -3267,5 +3360,8 @@ Since manifests can support two schema versions, `schemaVersion1` and `schemaVer
 Here are the expressions for referencing each version:
 - SHA value of `schemaVersion1`: `<+artifacts.primary.metadata.SHA>` (same stage) or `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA>`.
 - SHA value of `schemaVersion2`: `<+artifacts.primary.metadata.SHAV2>` (same stage) or `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2>`.
+
+If the service is configured to use an image with a specific digest, you can access the digest using 
+`<+pipeline.stages.STAGE_ID.spec.artifacts.primary.digest>`.
 
 </details>

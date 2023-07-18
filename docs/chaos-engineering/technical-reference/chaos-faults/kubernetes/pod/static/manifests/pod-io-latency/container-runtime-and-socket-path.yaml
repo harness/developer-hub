@@ -1,0 +1,31 @@
+## provide the container runtime and socket file path
+apiVersion: litmuschaos.io/v1alpha1
+kind: ChaosEngine
+metadata:
+  name: engine-nginx
+spec:
+  engineState: "active"
+  annotationCheck: "false"
+  appinfo:
+    appns: "default"
+    applabel: "app=nginx"
+    appkind: "deployment"
+  chaosServiceAccount: litmus-admin
+  experiments:
+    - name: pod-io-latency
+      spec:
+        components:
+          env:
+            # runtime for the container
+            # supports docker, containerd, crio
+            - name: CONTAINER_RUNTIME
+              value: 'containerd'
+            # path of the socket file
+            - name: SOCKET_PATH
+              value: '/run/containerd/containerd.sock'
+            - name: LATENCY
+              value: '2s'
+            - name: MOUNT_PATH
+              value: '/etc/config'
+            - name: TOTAL_CHAOS_DURATION
+              VALUE: '60'

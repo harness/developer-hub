@@ -1,5 +1,5 @@
 ---
-title: Harness CI concepts
+title: CI concepts
 description: Harness CI simplifies the code development and testing process.
 
 sidebar_position: 20
@@ -104,7 +104,7 @@ The [Harness Git Experience](/docs/category/git-experience) provides seamless in
 
 ## Harness CI components
 
-For information about CI pipeline components, go to [CI pipeline concepts](./ci-pipeline-basics.md).
+For information about CI pipeline components, go to [CI pipeline basics](./ci-pipeline-basics.md).
 
 ## FAQs
 

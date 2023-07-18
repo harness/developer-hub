@@ -87,7 +87,7 @@ To specify a Docker repository as an Artifact Server, do the following:
 2. Click **Connectors**. The **Connectors** page appears.
 3. Click **Artifact Servers**, and then click **Add Artifact Server**. The **Artifact Servers** dialog appears.
 4. In **Type**, click **Docker Registry**. The dialog changes for the Docker Registry account.
-5. In **Docker Registry URL**, enter the URL for the Docker Registry (for Docker Hub, **https://registry.hub.docker.com/v2/**).
+5. In **Docker Registry URL**, enter the URL for the Docker Registry (for Docker Hub, `https://registry.hub.docker.com/v2/`).
 6. Enter a username and password for the provider (for example, your **Docker Hub** account).
 7. Click **SUBMIT**. The artifact server is displayed.
 

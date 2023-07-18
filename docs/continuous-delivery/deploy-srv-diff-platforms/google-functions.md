@@ -1,12 +1,14 @@
 ---
-title: Google Cloud Functions deployments
+title: Google Cloud Functions
 description: Deploy single-purpose functions to Google Cloud.
 sidebar_position: 800
 ---
 
+# Google Cloud Functions deployments
+
 This topic explains how to deploy new Cloud Functions to Google Cloud using Harness.
 
-## Cloud Functions support
+## Supported versions
 
 Harness integration with Google's serverless offering Google Functions.
 
@@ -711,7 +713,7 @@ The basic deployment execution strategy uses the **Deploy Cloud Function** step.
 
 ### Canary
 
-Harness provides a [step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups) to perform the canary deployment. 
+Harness provides a [step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups) to perform the canary deployment. 
 
 The step group consists of:
 
@@ -756,7 +758,7 @@ The step group consists of:
 
 ### Blue Green
 
-Harness provides a [step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups) to perform the blue green deployment. 
+Harness provides a [step group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups) to perform the blue green deployment. 
 
 The step group consists of: 
 

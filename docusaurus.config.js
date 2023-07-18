@@ -55,8 +55,8 @@ const config = {
           // changefreq: 'weekly',
           // priority: 0.5,
           ignorePatterns: [
-            "/docs/infrastructure-as-code",
-            "/docs/infrastructure-as-code/**",
+            "/docs/infra-as-code-management",
+            "/docs/infra-as-code-management/**",
           ],
           // filename: 'sitemap.xml',
         },
@@ -79,7 +79,7 @@ const config = {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "img/logo_pride.svg",
+          src: "img/logo_dlp.svg",
         },
         items: [
           /*{
@@ -143,6 +143,11 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Manage Developer Portal",
+                to: "tutorials/internal-developer-portal",
+              },
+              {
+                // type: "doc",
                 label: "Administer Harness Platform",
                 to: "tutorials/platform",
               },
@@ -191,16 +196,16 @@ const config = {
                 to: "docs/continuous-error-tracking",
               },
               {
-                label: "Harness Platform",
+                label: "Internal Developer Portal",
+                to: "docs/internal-developer-portal",
+              },
+              {
+                label: "Platform",
                 to: "docs/platform",
               },
               {
                 label: "Self-Managed Enterprise Edition",
                 to: "docs/self-managed-enterprise-edition",
-              },
-              {
-                label: "Internal Developer Portal",
-                to: "docs/internal-developer-portal",
               },
               {
                 label: "Harness FirstGen",
@@ -251,18 +256,18 @@ const config = {
           {
             position: "right",
             to: "kb",
-            label: "KB",
+            label: "Knowledge Base",
           },
           {
             position: "right",
             to: "community",
             label: "Community",
           },
-          {
-            position: "right",
-            to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
-            label: "Join Slack",
-          },
+          //{
+          //  position: "right",
+          //  to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
+          //  label: "Join Slack",
+          //},
           {
             // type: "search",
             // position: "right",
@@ -277,13 +282,6 @@ const config = {
             html: '<button class="button button--cta">Sign up</button>',
             href: "https://app.harness.io/auth/#/signup/&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=plt-plg&utm_content=get-started",
           },
-          /**
-          {
-            href: "https://github.com/harness/developer-hub",
-            label: "Developer Hub GitHub",
-            position: "right",
-          },
-          */
         ],
       },
       footer: {
@@ -324,6 +322,10 @@ const config = {
                 label: "Chaos Engineering",
                 to: "https://harness.io/products/chaos-engineering",
               },
+              {
+                label: "Continuous Error Tracking",
+                to: "https://www.harness.io/products/continuous-error-tracking",
+              },
             ],
           },
           {
@@ -340,14 +342,6 @@ const config = {
               {
                 label: "API Reference",
                 to: "https://apidocs.harness.io/",
-              },
-              {
-                label: "Forum",
-                to: "https://discuss.harness.io",
-              },
-              {
-                label: "University",
-                to: "https://university.harness.io",
               },
               {
                 label: "Open Source",

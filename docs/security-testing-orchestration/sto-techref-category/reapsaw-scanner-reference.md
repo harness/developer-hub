@@ -11,11 +11,14 @@ You can set up Reapsaw scans using a Security step: create a CI Build or Securit
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
+<!-- 
 ```mdx-code-block
 import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
 ```
 
 <StoSecurityStepConfig />
+
+-->
 
 
 * `product_name` = `reapsaw`

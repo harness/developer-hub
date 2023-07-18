@@ -1,5 +1,5 @@
 ---
-title: CI pipeline concepts
+title: CI pipeline basics
 description: Basic terminology and concepts related to CI pipelines
 sidebar_position: 30
 helpdocs_topic_id: 3amcd8hn53

@@ -10,15 +10,15 @@ helpdocs_is_published: true
 
 This topic provides settings and permissions for the Kubernetes Cluster Connector.
 
-The Kubernetes Cluster Connector is a platform-agnostic connection to a Kubernetes cluster located anywhere.
+The Kubernetes cluster connector is a platform-agnostic connection to a Kubernetes cluster located anywhere.
 
-For cloud platform-specific connections, see platform [Cloud Connectors](https://developer.harness.io/docs/category/cloud-platform-connectors/).
+For cloud platform-specific connections, go to platform [Cloud Connectors](https://developer.harness.io/docs/category/cloud-platform-connectors/).
 
-Looking for the How-to? See [Add a Kubernetes Cluster Connector](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
+Looking for the How-to? Go to [Add a Kubernetes Cluster Connector](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector).
 
 ## Video Summary
 
-Here's a 10min video that walks you through adding a Harness Kubernetes Cluster Connector and Harness Kubernetes Delegate. The Delegate is added to the target cluster and then the Kubernetes Cluster Connector uses the Delegate to connect to the cluster:
+Here's a ten minute video that walks you through adding a Harness Kubernetes cluster connector and Harness Kubernetes delegate. The delegate is added to the target cluster, and then the Kubernetes cluster connector uses the delegate to connect to the cluster:
 
 <!-- Video:
 https://www.youtube.com/watch?v=wUC23lmqfnY-->
@@ -26,42 +26,42 @@ https://www.youtube.com/watch?v=wUC23lmqfnY-->
 
 ## Kubernetes Cluster Connector vs Platform Connectors
 
-The Kubernetes Cluster Connector is platform-agnostic. Use it to access a cluster on any platform.
+The Kubernetes cluster connector is platform-agnostic. You can use it to access a cluster on any platform.
 
-It cannot also access platform-specific services and resources. For those, use a platform Connector like Google Cloud Platform or Amazon Web Services.
+The Kubernetes cluster connector can't access platform-specific services and resources. For those, use a platform-specific connector, like the [GCP connector](../../../7_Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md) or the [AWS connector](../../../7_Connectors/Cloud-providers/add-aws-connector.md).
 
-See [Add a Google Cloud Platform (GCP) Connector](../../../7_Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md), [Add an AWS Connector](../../../7_Connectors/Cloud-providers/add-aws-connector.md).
+For more information, go to [Add a Google Cloud Platform (GCP) Connector](../../../7_Connectors/Cloud-providers/connect-to-google-cloud-platform-gcp.md) and [Add an AWS Connector](../../../7_Connectors/Cloud-providers/add-aws-connector.md).
 
-For example, let's say you have a GKE Kubernetes cluster hosted in Google Cloud Platform (GCP). You can use the Kubernetes Cluster Connector to connect Harness to the cluster in GCP. The Kubernetes Cluster Connector cannot also access Google Container Registry (GCR).
+For example, let's say you have a GKE Kubernetes cluster hosted in GCP. You can use the Kubernetes cluster connector to connect Harness to the cluster in GCP, but the Kubernetes cluster connector can't also access Google Container Registry (GCR).
 
 In this case, you have two options:
 
-1. Use a Google Cloud Platform Connector to access the GKE cluster and all other GCP resources you need.
-2. Set up a Kubernetes Cluster Connector for the GKE cluster. Next, set up a Google Cloud Platform Connector for all other GCP services and resources.
+1. Use a GCP Connector to access the GKE cluster and all other GCP resources you need.
+2. Set up a Kubernetes Cluster Connector for the GKE cluster. Next, set up a GCP Connector for all other GCP services and resources.
 
-When you set up a deployment in Harness, you will specify Connector to use for the artifact and target cluster. If we use option 2 above, you will select a Google Cloud Platform Connector for the GCR container. Next, you will select Kubernetes Cluster Connector for the target cluster.
+When you set up a deployment in Harness, you will specify the connector to use for the artifact and target cluster. If you use option two, described above, you will select a GCP connector for the GCR container and a Kubernetes cluster connector for the target cluster.
 
 Which option you choose depends on how your teams use Harness.
 
 ## Permissions Required
 
-The IAM roles and policies needed by the account used in the Connector depend on what operations you are using with Harness and what operations you want Harness to perform in the cluster.
+The IAM roles and policies needed by the account used in the connector depend on what operations you are using with Harness and what operations you want Harness to perform in the cluster.
 
-You can use different methods for authenticating with the Kubernetes cluster, but all of them use a Kubernetes Role.
+You can use different methods for authenticating with the Kubernetes cluster, but all of them use a Kubernetes role.
 
 The Role used must have either the `cluster-admin` permission in the target cluster or admin permissions in the target namespace.
 
-For a detailed list of roles and policies, see [Harness Role-Based Access Control Overview](../../../4_Role-Based-Access-Control/1-rbac-in-harness.md#role).
+For a detailed list of roles and policies, go to [Harness Role-Based Access Control Overview](../../../4_Role-Based-Access-Control/1-rbac-in-harness.md#role).
 
 ### Harness CI Permission Requirements
 
 If you are only using the Kubernetes Cluster Connector for Harness Continuous Integration (CI), you can use a reduced set of permissions.
 
-For Harness CI, the Delegate requires CRUD permissions on Secret and Pod.
+For Harness CI, the delegate requires CRUD permissions on Secret and Pod.
 
 Here is a same Service Account and RoleBinding that lists the minimum permissions:
 
-```
+```yaml
 apiVersion: v1  
 kind: Namespace  
 metadata:  
@@ -104,7 +104,7 @@ roleRef:
 
 A Kubernetes service account with CRUD permissions on Secret, Service, Pod, and PersistentVolumeClaim (PVC).
 
-For more information, see [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
+For more information, go to [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) in the Kubernetes documentation.
 
 ### Deployments (CD)
 
@@ -118,7 +118,7 @@ The YAML provided for the Harness Delegate defaults to `cluster-admin` because t
 
 ## Harness CI Cluster Requirements
 
-For Harness **Continuous Integration**, the resources required for the Kubernetes cluster depends on the number of builds running in parallel, as well as the resources required for each build.
+For Harness CI, the resources required for the Kubernetes cluster depends on the number of builds running in parallel, as well as the resources required for each build.
 
 Below is a rough estimation of the resources required, based on the number of daily builds:
 
@@ -130,7 +130,7 @@ Below is a rough estimation of the resources required, based on the number of da
 
 ## Credential Validation
 
-When you click **Submit**, Harness uses the provided credentials to list controllers in the **default** namespace in order to validate the credentials. If validation fails, Harness does not save the Connector and the **Submit** fails.
+When you click **Submit**, Harness uses the provided credentials to list controllers in the **default** namespace in order to validate the credentials. If validation fails, Harness does not save the connector and the **Submit** fails.
 
 If your cluster does not have a **default** namespace, or your credentials do not have permission in the **default** namespace, then you can check **Skip default namespace validation** to skip this check and saving your Connector settings.
 
@@ -146,7 +146,7 @@ The unique name for this Connector.
 
 ## ID
 
-See [Entity Identifier Reference](../../../20_References/entity-identifier-reference.md).
+Go to [Entity Identifier Reference](../../../20_References/entity-identifier-reference.md).
 
 ## Description
 
@@ -154,19 +154,19 @@ Text string.
 
 ## Tags
 
-See [Tags Reference](../../../20_References/tags-reference.md).
+Go to [Tags Reference](../../../20_References/tags-reference.md).
 
 ## Cluster Details
 
 ### Manual or Use a Delegate
 
-**Recommended:** Install and run the Harness Kubernetes Delegate in the target Kubernetes cluster, and then use the Kubernetes Cluster Connector to connect to that cluster using the Harness Kubernetes Delegate you installed. This is the easiest method to connect to a Kubernetes cluster.You can select to enter the authentication details of the target cluster or use the role associated with a Harness Delegate.
+**Recommended:** Install and run the Harness Kubernetes delegate in the target Kubernetes cluster, and then use the Kubernetes cluster connector to connect to that cluster using the Harness Kubernetes delegate you installed. This is the easiest method to connect to a Kubernetes cluster. You can select to enter the authentication details of the target cluster or use the role associated with a Harness Delegate.
 
-When you select a Delegate, the Harness Delegate inherits the Kubernetes service account associated with the Delegate pod.
+When you select a delegate, the Harness Delegate inherits the Kubernetes service account associated with the delegate pod.
 
-The service account associated with the Delegate pod must have the Kubernetes `cluster-admin` role.
+The service account associated with the delegate pod must have the Kubernetes `cluster-admin` role.
 
-See [Install a Kubernetes Delegate](../../../2_Delegates/install-delegates/overview.md).
+Go to [Install a Kubernetes Delegate](../../../2_Delegates/install-delegates/overview.md).
 
 ### Master URL
 
@@ -194,64 +194,33 @@ This is not used, typically. Some Connectors have Basic authentication disabled 
 
 Add the service account token for the service account. The token must be pasted in decoded in the Encrypted Text secret you create/select. The service account does not have to be associated with a delegate.
 
-To get a list of the service accounts, run `kubectl get serviceAccounts`.
+In Kubernetes 1.24 and later versions, the automatic generation of ServiceAccount token secrets has been deprecated. Instead, you can use the TokenRequest subresource to obtain a token that can be used to access the Kubernetes API. Here's how you can use the TokenRequest subresource:
 
-For example, here's a manifest that creates a new SA named `harness-service-account` in the `default` namespace:
+1. Create a TokenRequest manifest. Write a YAML or JSON manifest that describes the TokenRequest object. The manifest should specify the namespace and name of the ServiceAccount for which you want to obtain a token. Here's an example TokenRequest manifest:
+   
+   ```yaml
+   apiVersion: authentication.k8s.io/v1
+   kind: TokenRequest
+   metadata:
+     name: my-token-request
+   spec:
+     audiences:
+     - api
+     expirationSeconds: 3600
+   ```
 
-```
-# harness-service-account.yml  
-apiVersion: v1  
-kind: ServiceAccount  
-metadata:  
-  name: harness-service-account  
-  namespace: default
-```
-
-Next, you apply the SA.
-
-```
-kubectl apply -f harness-service-account.yml
-```
-
-Next, grant the SA the `cluster-admin` permission (see **Permissions Required** above).
-
-```
-# harness-clusterrolebinding.yml  
-apiVersion: rbac.authorization.k8s.io/v1  
-kind: ClusterRoleBinding  
-metadata:  
-  name: harness-admin  
-roleRef:  
-  apiGroup: rbac.authorization.k8s.io  
-  kind: ClusterRole  
-  name: cluster-admin  
-subjects:  
-- kind: ServiceAccount  
-  name: harness-service-account  
-  namespace: default
-```
-
-Next, apply the ClusterRoleBinding.
-
-```
-kubectl apply -f harness-clusterrolebinding.yml
-```
-
-Once you have the SA added, you can gets its token using the following commands.
-
-```
-SERVICE_ACCOUNT_NAME={SA name}  
-  
-NAMESPACE={target namespace}  
-  
-SECRET_NAME=$(kubectl get sa "${SERVICE_ACCOUNT_NAME}" --namespace "${NAMESPACE}" -o=jsonpath='{.secrets[].name}')  
-  
-TOKEN=$(kubectl get secret "${SECRET_NAME}" --namespace "${NAMESPACE}" -o=jsonpath='{.data.token}' | base64 -d)  
-  
-echo $TOKEN
-```
-
-The `| base64 -d` piping decodes the token. You can now enter it into the Connector.
+   In this example, the `audiences` field specifies the intended audience of the token, which is set to api. The `expirationSeconds` field determines the token's validity period (in this case, 3600 seconds or 1 hour).
+2. Apply the TokenRequest. Use the kubectl command-line tool to apply the TokenRequest manifest to the Kubernetes cluster:
+   
+   ```
+   kubectl apply -f token-request.yaml
+   ```
+3. Retrieve the token: After applying the TokenRequest, a TokenRequest object is created in the cluster. You can retrieve the token using the following command:
+   
+   ```
+   kubectl get tokenrequest my-token-request -o jsonpath='{.status.token}' | base64
+   ```
+4. Paste the token into **Service Account Token**.
 
 ## OpenID Connect
 
@@ -299,19 +268,21 @@ The remaining OIDC Token settings are part of the provider app you are using to 
 
 ## Client Key Certificate
 
+All secrets must be Base64 encoded. Here is an example to create Base64 values for a client key: `cat myuser.key | base64 | tr -d "\n"`.
+
 ### Client Key
 
-Create or select a Harness secret to add the client key for the client certificate. The key can be pasted into the secret either Base64 encoded or decoded.
+Create or select a Harness secret to add the client key for the client certificate. The key must be pasted into the secret Base64 encoded.
 
 ### Client Key passphrase
 
-Create or select a Harness secret to add the client key passphrase. The passphrase can be pasted in either Base64 encoded or decoded.
+Create or select a Harness secret to add the client key passphrase. The passphrase must be pasted in Base64 encoded.
 
 ### Client Certificate
 
 Create or select a Harness secret to add the client certificate for the cluster.
 
-The public client certificate is generated along with the private client key used to authenticate. The certificate can be pasted in either Base64 encoded or decoded.
+The public client certificate is generated along with the private client key used to authenticate. The certificate must be pasted in Base64 encoded.
 
 ### Client Key Algorithm (optional)
 
@@ -319,7 +290,7 @@ Specify the encryption algorithm used when the certificate was created. Typicall
 
 ### CA Certificate (optional)
 
-Create or select a Harness secret to add the Certificate authority root certificate used to validate client certificates presented to the API server. For more information, see [Authenticating](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) from Kubernetes.
+Create or select a Harness secret to add the Certificate authority root certificate used to validate client certificates presented to the API server. The certificate must be pasted in Base64 encoded. For more information, go to [Authenticating](https://kubernetes.io/docs/reference/access-authn-authz/authentication/) in the Kubernetes documentation.
 
 ## Amazon AWS EKS Support
 
@@ -327,14 +298,14 @@ AWS EKS is supported using the Inherit Delegate Credentials option in the Kubern
 
 To install a delegate in your AWS infrastructure, do the following:
 
-* Install a Harness Kubernetes Delegate in your EKS cluster.You must be logged in as an admin user when you run the `kubectl apply -f harness-delegate.yaml` command.
-* Give it a name that you can recognize as an EKS cluster Delegate. For information on installing a Kubernetes Delegate, see [Install a Kubernetes Delegate](../../../2_Delegates/install-delegates/overview.md).
-* In the Kubernetes Cluster Connector settings, select the Delegate.
+* Install a Harness Kubernetes Delegate in your EKS cluster. You must be logged in as an admin user when you run the `kubectl apply -f harness-delegate.yaml` command.
+* Give it a name that you can recognize as an EKS cluster delegate. For information on installing a Kubernetes Delegate, go to [Install a Kubernetes Delegate](../../../2_Delegates/install-delegates/overview.md).
+* In the Kubernetes Cluster Connector settings, select the delegate.
 * When setting up the EKS cluster as the target Infrastructure, select the Kubernetes Cluster Connector.
 
 ## OpenShift Support
 
-This section describes how to support OpenShift using a Delegate running externally to the Kubernetes cluster. Harness does support running Delegates internally for OpenShift 3.11 or greater, but the cluster must be configured to allow images to run as root inside the container in order to write to the filesystem.Typically, OpenShift is supported through an external Delegate installation (shell script installation of the Delegate outside of the Kubernetes cluster) and a service account token, entered in the **Service Account** setting.
+This section describes how to support OpenShift using a delegate running externally to the Kubernetes cluster. Harness does support running delegates internally for OpenShift 3.11 or greater, but the cluster must be configured to allow images to run as root inside the container in order to write to the filesystem.Typically, OpenShift is supported through an external delegate installation (shell script installation of the Delegate outside of the Kubernetes cluster) and a service account token, entered in the **Service Account** setting.
 
 You only need to use the **Master URL** and **Service Account Token** setting in the **Kubernetes Cluster Connector** settings.
 
@@ -343,7 +314,7 @@ The following shell script is a quick method for obtaining the service account t
 Set the `SERVICE_ACCOUNT_NAME` and `NAMESPACE` values to the values in your infrastructure.
 
 
-```
+```shell
 SERVICE_ACCOUNT_NAME=default  
 NAMESPACE=mynamepace  
 SECRET_NAME=$(kubectl get sa "${SERVICE_ACCOUNT_NAME}" --namespace "${NAMESPACE}" -o json | jq -r '.secrets[].name')  
@@ -362,7 +333,7 @@ Once configured, OpenShift is used by Harness as a typical Kubernetes cluster.
 
 ## YAML Example
 
-```
+```yaml
 connector:  
   name: Doc Kubernetes Cluster  
   identifier: Doc_Kubernetes_Cluster  

@@ -86,17 +86,9 @@ Project deletion has the following rules:
 
 ### Force delete
 
-
-:::note
-Currently, this feature is behind the feature flags `PL_FORCE_DELETE_CONNECTOR_SECRET` and `NG_SETTINGS`. Contact Harness Support to enable the feature.
-
-:::
-
 You can force delete a Harness entity even if your pipelines or other entities reference it. Following are the entities that you can force delete in Harness:
 - Connectors
 - Secrets
-
-Make sure you enable the feature flags `CDS_FORCE_DELETE_ENTITIES` to be able to force delete the following entities: 
 - Service
 - Infrastructure
 - Environments

@@ -114,6 +114,7 @@ Launch the AWS console and perform the following steps:
 | --- | --- |
 | **Report Name** | Enter a name for the report. Make sure to copy this name, as you will need it to continue configuring the Harness connector in the steps below. |
 | **Include resource IDs** | Make sure this option is selected. |
+| **Split cost allocation data** | Make sure this option is unchecked. |
 | **Refresh automatically** | Make sure this option is selected. |
 
 5. In the **Set delivery options** step, enter the following values, and then select **Next**.
@@ -151,7 +152,7 @@ Details about the features are listed below. Note that the permissions required 
 | **Cost Visibility** (Required)| This feature is available by default and requires access to the CUR report. Provides the following capabilities:<ul><li>Insights into AWS costs by services, accounts, etc. </li><li>Root cost analysis using cost perspectives</li><li>Cost anomaly detection</li><li>Governance using budgets and forecasts</li><li>Alert users using Email and Slack notification</li></ul> This feature will give you cost insights that are derived from the CUR. For deep Kubernetes visibility and rightsizing recommendations based on the historical utilization and usage metrics, set up Kubernetes connectors. See [Set Up Cloud Cost Management for Kubernetes](set-up-cost-visibility-for-kubernetes.md). |
 | **Resource Inventory Management** (Optional)| This feature provides visibility into your EC2, EBS volumes, and ECS costs. The insights provided by inventory management can be consumed by Finance teams to understand resource utilization across the board. <ul><li>Breakdown by ECS cluster cost, Service, Task, and Launch Type (EC2, Fargate) </li><li>Insight into EC2 instances and their utilization</li><li>Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards. For more information, see View AWS EC2 Inventory Cost Dashboard, Orphaned EBS Volumes and Snapshots Dashboard, and View AWS EC2 Instance Metrics Dashboard.</li></ul> |
 | **Optimization by AutoStopping** (Optional)| This feature allows you to enable Intelligent Cloud AutoStopping for your AWS instances and auto-scaling groups. For more information, see [Create AutoStopping Rules for AWS](../../4-use-ccm-cost-optimization/1-optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/4-create-auto-stopping-rules/autostopping-dashboard.md). <ul><li>Orchestrate VMs and ASGs based on idleness</li><li>Run your workloads on fully orchestrated spot instances</li><li>Granular savings visibility</li></ul> |
-| **Cloud Governance** (Optional)| This feature allows you to optimize your cloud spend and avoid unnecessary costs by rightsizing resources and decommissioning unused instances. For more information, see [Asset governance](../../5-use-ccm-cost-governance/asset-governance/asset-governance.md). <ul><li>Asset Management (EC2, EBS, RDS, S3)</li><li>Automated Actions</li></ul> |
+| **Cloud Governance** (Optional)| This feature allows you to optimize your cloud spend and avoid unnecessary costs by rightsizing resources and decommissioning unused instances. For more information, see [Asset governance](../../5-use-ccm-cost-governance/asset-governance/1-asset-governance.md). <ul><li>Asset Management (EC2, EBS, RDS, S3)</li><li>Automated Actions</li></ul> |
 
 
 ### Create Cross Account Role
@@ -455,7 +456,7 @@ This feature provides visibility into your EC2, EBS volumes, and ECS costs. The 
 * Access to AWS EC2 Inventory Cost and EBS Volumes and Snapshots inventory dashboards. For more information, see [View AWS EC2 Inventory Cost Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-inventory-cost-dashboard.md), [Orphaned EBS Volumes and Snapshots Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/orphaned-ebs-volumes-and-snapshots-dashboard.md), and [View AWS EC2 Instance Metrics Dashboard](../../3-use-ccm-cost-reporting/6-use-ccm-dashboards/view-aws-ec-2-instance-metrics.md).
 
 
-### Optimization by AutoStopping
+### AutoStopping rules
 
 The AutoStopping policy performs the following actions:
 
@@ -543,7 +544,7 @@ HarnessOptimisationPolicy:
       "Roles":  
         - !Ref HarnessCloudFormationRole 
 ```
-### Cloud asset governance
+### Cloud asset governance rules
 Enable the following permissions in AWS to execute cloud governance rules:
 
 ```
@@ -586,6 +587,29 @@ Enable the following permissions in AWS to execute cloud governance rules:
 * This is not an exhaustive list; you may require additional permissions to support custom rules.
 * A yellow underline in a custom policy indicates that you need permission to support the underlined filters and/or actions.
 :::
+
+#### Add permissions
+If you come across an error message indicating missing permissions, as displayed in the following screenshot, you need to add the missing permission [here](https://us-east-1.console.aws.amazon.com/iamv2/home#/roles). 
+
+
+<docimage path={require('./static/asset-governance-test-output-error.png')} width="50%" height="50%" title="Click to view full size image" />
+
+1. Copy the role specified in the error message that requires permission to execute the rule.
+2. Enter the role in IAM > Roles search box to filter the roles. The policies are displayed. 
+
+  <docimage path={require('./static/aws-missing-permission-role.png')} width="50%" height="50%" title="Click to view full size image" />
+
+3. In the list of policies, select the policy to edit.
+    <docimage path={require('./static/aws-select-policy.png')} width="50%" height="50%" title="Click to view full size image" />
+
+4. In the **Permissions** tab, select **Edit policy**, and then go to the **JSON** tab.
+
+      <docimage path={require('./static/aws-edit-json.png')} width="50%" height="50%" title="Click to view full size image" />
+
+5. Add the missing permissions. You can use a wildcard (asterisk) to grant multiple permissions. For example, `s3:Get*` permission would allow multiple S3 actions that start with "Get". 
+6. Save changes.
+
+For more information, go to [Editing IAM policies](https://docs.aws.amazon.com/IAM/latest/UserGuide/access_policies_manage-edit.html).
 
 ## Next steps
 

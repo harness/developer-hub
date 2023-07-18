@@ -70,7 +70,7 @@ Perform the following steps to create a budget:
 To edit a budget:
 
 1. In **Perspectives**, select the Perspective for which you want to edit the budget.
-2. Click Edit.
+2. Click **Edit**.
    
    <docimage path={require('./static/create-a-budget-perspective-12.png')} width="50%" height="50%" title="Click to view full size image" />
 
@@ -91,7 +91,7 @@ Once a budget is deleted, it cannot be restored.
 To delete a budget:
 
 1. In **Perspectives**, select the Perspective for which you want to edit the budget.
-2. Click Edit.
+2. Click **Edit**.
    
      <docimage path={require('./static/create-a-budget-perspective-14.png')} width="50%" height="50%" title="Click to view full size image" />
 
@@ -101,10 +101,5 @@ To delete a budget:
      <docimage path={require('./static/create-a-budget-perspective-15.png')} width="50%" height="50%" title="Click to view full size image" />
 
 
-### Next Steps
-* [Analyze Cost for Kubernetes Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives.md)
-* [Analyze Cost for AWS Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-aws.md)
-* [Analyze Cost for GCP ​Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md)
-* [Analyze Cost for Azure Using Perspectives](../../3-use-ccm-cost-reporting/3-root-cost-analysis/analyze-cost-for-azure.md)
 
 

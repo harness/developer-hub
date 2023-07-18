@@ -4,7 +4,7 @@
 | -------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 |** 1. Harness Basics, Platform Entities, and Key Concepts **                                                                  ||
 | Describe continuous integration fundamentals (important stages or steps) | [Harness CI](https://developer.harness.io/tutorials/ci-pipelines/fastest-ci/#harness-ci) |
-| Describe Artifacts and Packages (from jar to container image, helm, etc) | [Harness CI concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts/) |
+| Describe Artifacts and Packages (from jar to container image, helm, etc) | [CI concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts/) |
 | Describe and explain the "Pipeline, Stages, Step Groups, Steps" schema | [Key concepts](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/) |
 | Describe Harness hierarchy "Account, Organizations, Projects" | [Key concepts](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts/) |
 | Trigger the build pipeline via API - With or without inputset | [Harness API quickstart](https://developer.harness.io/docs/platform/resource-development/apis/api-quickstart/) |
@@ -69,7 +69,7 @@
 | Understand How to Parallel Steps in a Stage - K8s infra - Describe Limit vs Requests | [Speed up CI test pipelines using parallelism](https://developer.harness.io/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/) |
 |** 3. RBAC, Best Practices, and Small Configuration Tasks **                                                                  ||
 | Elaborate on Anonymous Docker Image pulls and its risks. | [Connect to Harness container image registry Using Docker connector](https://developer.harness.io/docs/platform/connectors/connect-to-harness-container-image-registry-using-docker-connector/#step-2-enter-credentials) |
-| Debug a Pipeline step by running the step locally (troubleshooting) | [Troubleshooting CI](https://developer.harness.io/docs/continuous-integration/troubleshoot/troubleshooting-ci/) |
+| Debug a Pipeline step by running the step locally (troubleshooting) | [Troubleshooting CI](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci) |
 | Configure Git Experience for CI (pipeline) | [Harness Git Experience quickstart](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/) |
 | Credentials and Permissions - Configure or Elaborate on User and Groups for Acc, Org, Project levels | [Role Based Access Control](https://developer.harness.io/docs/category/role-based-access-control) |
 | Describe Set Container Resources​ - Limit Memory and Limit CPU | [Set Container Resources](https://developer.harness.io/docs/continuous-integration/ci-technical-reference/run-step-settings/#set-container-resources) |

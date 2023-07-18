@@ -118,9 +118,9 @@ git --version
 
 ### Cloud Foundry CLI
 
-Harness supports Cloud Foundry (CF) CLI version 6 only. Support for version 7 is pending. Below is an example of CF CLI installation; the version of the CF CLI that you install on the delegate should match the PCF features you use in your Harness PCF deployment.
+Harness supports Cloud Foundry (CF) CLI version 7 only. Below is an example of CF CLI installation; the version of the CF CLI that you install on the delegate should match the PCF features you use in your Harness PCF deployment.
 
-For example, if you are using buildpacks in the manifest.yml of your Harness service, the CLI you install on the delegate should be version 3.6 or later.
+For example, if you are using buildpacks in the `manifest.yml` file of your Harness service, the CLI you install on the delegate must be the same version or later.
 
 The following example script installs Cloud Foundry CLI on a delegate:
 

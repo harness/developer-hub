@@ -1,7 +1,7 @@
 ---
 title: Introduction to Cloud Cost Management
 description: Provides an overview of Harness Cloud Cost Management.
-# sidebar_position: 2
+# sidebar_position: 1
 helpdocs_topic_id: rr85306lq8
 helpdocs_category_id: j4adbv9wn7
 helpdocs_is_private: false
@@ -68,7 +68,7 @@ The following section lists where you can use CCM:
 	+ ECS Clusters
 * Harness SaaS
 
-Harness Connected On-Prem and Harness Disconnected On-Prem are not supported.### Supported Kubernetes Management Platform
+### Supported Kubernetes Management Platform
 
 The following section lists the support for Kubernetes management platform for CCM:
 

@@ -7,7 +7,7 @@ const sidebars = {
     // Release Notes Parent
     {
       type: "category",
-      label: "Release notes",
+      label: "Release Notes",
       link: {
         type: "doc",
         id: "whats-new",
@@ -27,10 +27,10 @@ const sidebars = {
         },
       ],
     },
+      /*
     {
       type: "category",
       label: "Subscribe via RSS",
-      /*
       link: {
         type: "link",
         label: "Subscribe via RSS",
@@ -40,7 +40,6 @@ const sidebars = {
           target: "_blank",
         },
       },
-      */
       collapsed: true,
       items: [
         {
@@ -144,6 +143,15 @@ const sidebars = {
         },
         {
           type: "link",
+          label: "Internal Developer Portal release notes",
+          href: "pathname:///release-notes/internal-developer-portal/rss.xml",
+          className: "sidebar-item-rss",
+          customProps: {
+            target: "_blank",
+          },
+        },
+        {
+          type: "link",
           label: "Harness Platform release notes",
           href: "pathname:///release-notes/platform/rss.xml",
           className: "sidebar-item-rss",
@@ -169,8 +177,8 @@ const sidebars = {
             target: "_blank",
           },
         },
-      ],
-    },
+      ]
+    }, */
     // {
     //   type: "link",
     //   label: "Subscribe via RSS",

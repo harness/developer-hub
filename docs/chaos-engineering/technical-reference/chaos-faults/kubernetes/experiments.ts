@@ -176,4 +176,28 @@ export const experiments: ExperimentDetails[] = [
     tags: ["pod"],
     category: "kubernetes",
   },
+  {
+    name: "Pod IO latency",
+    description:"Pod IO latency, delays the system calls of files located within the mounted volume of the pod",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod IO error",
+    description:"Pod IO error, returns an error on the system calls of files located within the mounted volume of the pod",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Pod IO attribute override",
+    description:"Pod IO attribute override, modify the properties of files located within the mounted volume of the pod",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
+  {
+    name: "Time Chaos",
+    description:"Time Chaos introduces controlled time offsets to disrupt the system time of the target pod",
+    tags: ["pod"],
+    category: "kubernetes",
+  },
 ];

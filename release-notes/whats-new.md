@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-06-19T10:00
+date: 2023-07-18T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -11,15 +11,206 @@ import TabItem from '@theme/TabItem';
 import delete_project from './static/delete-project.png'
 ```
 
-Review the notes below to learn about the new features that are Generally Available (GA) across all Harness modules and the Harness Platform. For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/whats-new/rss.xml" />
+
+Review the notes below to learn about the new features that are Generally Available (GA) across all Harness modules and the Harness Platform. For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - June 19, 2023
+## Latest - July 18, 2023
 
-### Continuous Integration, version 4206
+### Harness Platform, version 79916
+
+- The Go library has been upgraded from 1.20.4 to 1.20.5. (PL-39700)
+
+  The upgrade fixes the following CVEs:
+  - [CVE-2023-29402](https://nvd.nist.gov/vuln/detail/CVE-2023-29402)
+  - [CVE-2023-29403](https://nvd.nist.gov/vuln/detail/CVE-2023-29403)
+  - [CVE-2023-29404](https://nvd.nist.gov/vuln/detail/CVE-2023-29404)
+  - [CVE-2023-29405](https://nvd.nist.gov/vuln/detail/CVE-2023-29405)
+
+- An AI-powered chatbot named Ask AIDA has been integrated to make searches within the Harness Docs. You can access the chatbot by clicking the icon located at the bottom-right corner of the screen. (PL-39613)
+
+- You can now view delegate logs when validating a connector that uses a delegate to establish connections. (PL-37919)
+
+- Previously, when password-based authentication was used with OAuth, the functionality of auto-accepting invites was not available. Now, when Oauth is enabled for an account, invites are automatically accepted. (PL-31936, ZD-40182)
+
+- User names cannot exceed 256 chars. (PL-21254)
+
+- The List Tokens API now supports listing all the personal access tokens or service account tokens in the account. The API has been enhanced as follows:
+1. If you have user management permissions, you can list all the personal access tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
+2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
+
+This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+### Continuous Delivery, version 79916
+
+- Retrieve the current status of the looping strategy for stages and steps during execution. (CDS-69780)
+  
+  New built-in Harness expressions provide the current execution status of the looping strategy for nodes (stages/steps) using a matrix or repeat strategy.
+  
+  The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
+
+  The list of expressions include:
+  
+  - `<+strategy.currentstatus>`
+  - `<+strategy.node.strategy_node_identifier.currentstatus>`
+  - `<+strategy.node.get("strategy_node_identifier").currentstatus>`
+  - `<+strategy.identifierpostfix>`
+  - `<+step.identifierpostfix>`
+  - `<+stage.identifierpostfix>`
+  - `<+stepgroup.identifierpostfix>`
+  - `<+strategy.node.strategy_node_identifier.identifierpostfix>`
+  - `<+strategy.node.strategy_node_identifier.*>`
+
+  For information on using the expressions, go to [Strategy](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#strategy).
+
+- Support for expressions in remote Terraform Var files hosted on Github and S3. (CDS-68612, ZD-43917, ZD-45714)
+  
+  This feature requires the latest delegate version, 79904, to display console logs during execution correctly.
+
+### Harness Delegate, version 79904
+
+- The Splunk connector has been enhanced to include support for Bearer Token. (OIP-598)
+
+- The List Tokens API now supports listing all the personal access tokens or service account tokens in the account. The API has been enhanced as follows:
+   1. If you have user management permissions, you can list all the Personal Access Tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
+   2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
+
+## July 13, 2023
+
+### Cloud Cost Management, version 80102
+
+* Recommendations page UI enhancement (CCM-12693)
+
+ The **Include** dropdown on the **Recommendations** page has been removed. Instead, the following toggle options have been added in the Filter panel as shown in the screenshots below: 
+
+  - Show Recommendations on Parent resource
+  - Show Recommendations on Child resource
+  - Show Recommendations on resources added to the IgnoreList
+
+By default, the first two options are enabled, and you can modify the toggles to customize the list filtering.
+
+&nbsp <docimage path={require('./static/ccm-toggle-options-recommendations-filter.png')} width="40%" height="40%" title="Click to view full size image" />
+   
+  <docimage path={require('./static/ccm-tooltip-recommendations.png')} width="60%" height="60%" title="Click to view full size image" />
+
+## July 07, 2023
+
+### Cloud Cost Management, version 80002
+
+* Azure VM recommendations (CCM-13142)
+
+  Now, the recommendations are computed based on both **Memory Utilization** data and the existing **CPU Utilization** tracking data.
+
+* Budget Sorting Enhancement (CCM-10948)
+
+  This enhancement allows you to conveniently sort budgets alphabetically in Harness CCM. You can now browse and navigate through budgets more efficiently.
+
+* Recommendations enhancement (CCM-11665)
+
+  You can now easily move recommendations from the **Applied** state back to the **Open** state. This enhancement allows you to easily rectify accidental closure of recommendations or marking Jira tickets as done by returning them to an actionable state.
+
+## July 06, 2023
+
+### Continuous Delivery, version 79811
+
+- Template Library: Reference specific versions of a template on a different branch from the pipeline (CDS-69774)
+  
+  While using Harness Git Experience for pipelines and templates, you can now link templates from specific branches.
+  
+  Previously, templates were picked either from the same branch as the pipeline, if both pipelines and templates were present in the same repository, or from the default branch of the repository, if templates were stored in a different repository than the pipeline.
+  
+  The default logic will continue to be used if no branch is specified when selecting the template, but if a specific branch is picked while selecting the template then templates are always picked from the specified branch only.
+
+### Harness Platform, version 79811
+
+- Harness now allows special characters in usernames. (PL-39564, ZD-46487)
+- You can now view delegate logs when validating a connector that uses delegates to establish connections. (PL-37919)
+- When creating Azure Key Vault, you can now manually enter the vault name. (PL-32773, ZD-44045)
+
+## July 5, 2023
+
+### Security Testing Orchestration, version 1.60.0
+
+You can now set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
+
+For information on how to set up this workflow, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### June 30, 2023
+
+##### Cloud Cost Management
+
+* Azure inventory management (CCM-12676)
+
+  As part of the Azure inventory management, now you can monitor the **Memory Utilization** data for virtual machines (VMs) along with the existing **CPU Utilization** tracking data.
+
+* Clone AutoStopping rules (CCM-12337)
+
+  You can now clone an AutoStopping rule. To clone a rule, navigate to the rule you want to replicate and select the **Clone** option from the more options menu. After you choose the Clone option, you can update the instance details according to your requirements. This allows you to create a new rule based on the existing one, saving you time and effort in setting up similar rules for different instances.
+
+* Budget alert enhancements
+
+  - The cost alerts for daily budgets are now triggered on an hourly basis. Previously, cost alerts for daily budgets were triggered only at specific intervals, which could potentially result in delayed notifications if the threshold was crossed outside those intervals. However, with the increased frequency, you can now receive timely alerts as soon as the threshold is exceeded, regardless of the time of day. (CCM-12028)
+  - Significant improvements have been made to the Slack budget alert messages for both budgets and budget groups. Now, when receiving a budget alert, you will find detailed information related to the perspective from which the budget was created, the allocated budget amount, the current spend, and the forecasted spend. (CCM-12647)
+
+      <docimage path={require('./static/ccm-budget-slack-msg.png')} width="60%" height="60%" title="Click to view full size image" />
+
+      <docimage path={require('./static/ccm-budget-grp-slack-msg.png')} width="60%" height="60%" title="Click to view full size image" />
+
+#### June 28, 2023
+
+##### Continuous Delivery, version 79714
+
+- JSON support for expressions. (CDS-73057)
+  
+  Harness has introduced support for writing expressions by using any JSON parser tool. You can now obtain an execution JSON for all stages or individual steps of your pipeline.
+  
+  To access the JSON, you must enable the **Enable JSON Support for expressions** setting first. Go to **Account Settings > Account Resources > Pipeline > Enable JSON Support for expressions**, and then set the value to `true`. Enabling this setting allows you to reference JSON parsers within expressions. This setting is turned off by default.
+
+  For more details, go to [Writing expressions using any JSON parser tool](/docs/platform/variables-and-expressions/expression-v2/).
+- Added tooltip and banner to provide more information about webhook payloads. (CDS-53874)
+  
+  <docimage path={require('./static/payload-input.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+##### Harness Platform, version 79714
+
+- There is now a limit of 100 API Tokens per free and community account. (PL-39337)
+
+- When configuring SMTP, you can now select specific delegates in **Delegates Setup**. (PL-39288)
+
+- You can now sort pipelines in the pipelines list by selecting the sortable column headers or the sort dropdown. (PL-31527)
+
+##### Harness version 79714, Harness Delegate version 79707
+
+- You can now see disconnected delegate details in selection logs and error messages when there are no eligible delegates in an active state to execute tasks. (PL-37900)
+
+- Upgraded the delegate JRE to 11.0.19_7. (PL-37994)
+
+- When a delegate token is revoked, Harness now sends `SELF_DESTRUCT` to all delegates that are using the revoked token. (PL-38957)
+
+#### June 21, 2023
+
+##### Cloud Cost Management, version 79803
+
+* Added a tooltip on the **Cloud Integration** page. (CCM-12559)
+
+  In the **Cloud Integration** page, if the connector data is unavailable, the **View costs** link is disabled. However, as soon as the data becomes available, the link is enabled. Now, a tooltip providing a concise explanation as to why the link is disabled appears when you hover over the disabled link. 
+  
+* Asset Governance filter panel enhancement. (CCM-12854)
+
+  Previously, in the **Asset Governance** > **Evaluations** page, only the target accounts with `execute` permissions were included in the **Target Accounts** field in the filter panel. Now, this functionality is enhanced so that all target accounts with `view` permissions are also included in the list. 
+
+#### June 19, 2023
+
+##### Continuous Integration, version 4204
 
 The Harness Cloud Linux amd64 image has new major and minor versions for multiple components. Major version upgrades are described below. For a complete list of component versions, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#platforms-and-image-specifications). (CI-7537)
 
@@ -57,7 +248,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 </details>
 
-### Continuous Delivery, version 79606
+##### Continuous Delivery, version 79606
 
 - Harness variables now have a **Required** setting. (CDS-69710)
   
@@ -78,7 +269,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
   <docimage path={require('./static/47ce888b8bd290e2d68db294eae373c08dc6185f1e66f6aad00b65f136dda1df.png')} width="60%" height="60%" title="Click to view full size image" />  
 
-### Harness Platform, version 79606
+##### Harness Platform, version 79606
 
 - In earlier releases, users were allowed to include the following special characters in the user name field in their profile: colon (`:`), slash (`/`), less than sign (`<`), greater than sign (`>`), equal sign (`=`), and parentheses (`(` and `)`). Support for these special characters allowed malicious users to inject HTML and JavaScript code into deployment-related emails such as approval emails. (PL-39099)
 
@@ -96,9 +287,9 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
   Starting with this release, you can also change the branch in the dialog for running a pipeline. You can also run the pipeline from any branch directly from the pipeline listing page.
 
-## June 14, 2023
+#### June 14, 2023
 
-### Self-Managed Enterprise Edition, version 79230
+##### Self-Managed Enterprise Edition, version 79230
 
 - Harness updated the following images to use versioned tags: (SMP-1347)
 
@@ -109,15 +300,15 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 - Redis images and the GitOps Redis agent are upgraded to 6.2.12-alpine. (SMP-1402)
 
-## June 09, 2023
+#### June 09, 2023
 
-### Continuous Error Tracking, version et-service 5.23.0
+##### Continuous Error Tracking, version et-service 5.23.0
 
 - Now, when you create a Jira ticket for an event, CET prompts you to complete any mandatory fields that do not have a default value. (CET-1231)
 
 - You can now conveniently access a comprehensive list of all active agents running across your entire account directly from the subscription page. (CET-1225)
 
-### Harness Platform, version 79516
+##### Harness Platform, version 79516
 
 - There is now an additional tab on the **Create or Select Existing Connector** dialog called `All` that lists connectors from all scopes (project, organization, and account). (PL-39029)
 
@@ -133,7 +324,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 - Secret references now have a validate button to verify if the path is valid. (PL-31083)
 
-### Continuous Delivery, version 79516
+##### Continuous Delivery, version 79516
 
 - Added expressions to retrieve the current execution status of the [looping strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) for nodes (stages/steps) using a matrix or repeat strategy. (CDS-69780)
   
@@ -189,13 +380,15 @@ If you have pipelines running on Harness Cloud that rely on specific component v
    * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
    * You can nest cost categories to a maximum of 20 levels.
 
-### Harness version 79516, Harness Delegate version 79503
+
+##### Harness version 79516, Harness Delegate version 79503
 
 - Kubernetes deployments support horizontal pod autoscaling and pod disruption budget for Blue Green and Canary execution strategies. (CDS-59011)
 
 - Converted Harness CD from an explicit to an implicit change source for Service Reliability Management. (SRM-14724)
 
-### Cloud Cost Management, version 79601
+##### Cloud Cost Management, version 79601
+
 **Cost Category enhancement** (CCM-12585)
 
   When building a cost category, it is now possible to incorporate another cost category as a rule. However, there are important considerations to keep in mind when using a cost category within your rule. 
@@ -205,22 +398,22 @@ If you have pipelines running on Harness Cloud that rely on specific component v
    * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
    * You can nest cost categories to a maximum of 20 levels.
   
-## June 08, 2023
+#### June 08, 2023
 
-### Security Testing Orchestration, version 1.57.4
+##### Security Testing Orchestration, version 1.57.4
 
 * Added the existing Typescript scanning library to Sonarqube scans so that Typescript is always supported. (STO-6007)
 * Added a `product_zip_max_size` setting to Checkmarx scans that enable you to override the maximum size of ZIP files uploaded to the STO pipeline (the default size is 200 MB). To override this setting in a Checkmarx scan step, add the `product_zip_max_size` setting and value (in MB) under **Settings (*optional*)**. (STO-5991)
 
   ![](./static/checkmarx-zip-size-override-sto-5991.png)
 
-## June 01, 2023
+#### June 01, 2023
 
-### Service Reliability Management, version 79413
+##### Service Reliability Management, version 79413
 
 - Now a summary of changes related to the number of feature flags and chaos experiments is also displayed on the Monitored Service listing page, along with the other custom change sources. (SRM-14742)
 
-### Continuous Delivery, version 79411
+##### Continuous Delivery, version 79411
 
 - Edit Git details for pipelines stored using Harness Git Experience. (CDS-69130)
   
@@ -260,7 +453,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
   For information on setting up notifications for user groups, go to [Add and manage user groups](https://developer.harness.io/docs/platform/User-Management/add-user-groups).
 
-### Harness Platform, version 79411
+##### Harness Platform, version 79411
 
 - You can now fetch the list of delegates registered to an account using the Harness API. You can also filter these by scope, tags, status, and version. (PL-37981, ZD-40508,40688)
 
@@ -271,11 +464,6 @@ If you have pipelines running on Harness Cloud that rely on specific component v
    This item is available with Harness Platform version 79411 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You can now see the total number of secrets in the secrets list and sort them by various columns. (PL-31528)
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### May 29, 2023, version 79505
 

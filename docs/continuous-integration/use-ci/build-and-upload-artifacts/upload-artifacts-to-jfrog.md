@@ -8,9 +8,9 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use the **Upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory). Harness CI also provides steps to [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md) and [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md).
+You can use the **Upload Artifacts to JFrog Artifactory** step in your CI pipelines to upload artifacts to [JFrog Artifactory](https://www.jfrog.com/confluence/display/JFROG/JFrog+Artifactory). You can also [upload artifacts to S3](./upload-artifacts-to-s-3-step-settings.md), [upload artifacts to GCS](./upload-artifacts-to-gcs-step-settings.md), and [upload artifacts to Sonatype Nexus](./upload-artifacts-to-sonatype-nexus.md).
 
-This topic assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to the [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and the CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+This topic assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to the [CI pipeline creation overview](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) and the [CI tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
 
 ## Prepare artifacts to upload
 
@@ -78,7 +78,7 @@ On JFrog, you can see the uploaded artifacts.
 
 ![](./static/upload-artifacts-to-jfrog-522.png)
 
-### View artifacts on the Artifacts tab
+## View artifacts on the Artifacts tab
 
 As an alternative to manually finding artifacts on JFrog, you can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish artifacts to the [Artifacts tab](../viewing-builds.md). To do this, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after the **Upload Artifacts to JFrog Artifactory** step.
 

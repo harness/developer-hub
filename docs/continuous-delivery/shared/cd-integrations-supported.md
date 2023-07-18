@@ -353,9 +353,7 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
   - VMware Tanzu Platform
 - **Versions and tooling support:**
   - Binary Versions:
-    - CF CLI v6
     - CF CLI v7
-    - CF CLI v8
 
 </details>
 
@@ -374,6 +372,9 @@ Helm chart dependencies are not supported in Git source repositories. Helm chart
   - Google SDK. Supported versions:
     - Google Functions Gen 1
     - Google Functions Gen 2
+- **Deployment strategies:**
+    - Google Functions Gen 1: Basic.
+    - Google Functions Gen 2: Basic, blue green, canary.
 - **Supported integrations:**
   - Artifact Repository:
     - Google Cloud Storage

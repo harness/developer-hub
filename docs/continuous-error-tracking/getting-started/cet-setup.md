@@ -78,29 +78,11 @@ This topic provides details about:
 * Compatibility and requirements to install an Error Tracking Agent.
 * Steps to install an Error Tracking Agent on a Java Application.
 
+
 ### Compatibility and Requirements
 
-This table lists the supported operating system, Java Virtual Machine (JVM) versions, and JVM containers.
+To learn about supported operating systems, Java Virtual Machine (JVM), and JVM containers, go to [Continuous Error Tracking Agent compatibility](../agent-compatibility.md).
 
-Future releases will include support for more operating systems.
-
-| **Operating System** | **Supported JVM Versions** | **Supported JVM Containers** |
-| --- | --- | --- |
-| Linux Operating System: <ul><li>Ubuntu: 14+</li><li>jDebian</li><li>CentOS: 6.5+</li><li>RedHat: 5.0 +</li><li>Suse: SLES12</li></ul>| <ul><li>Oracle JDK:<ul><li>6u20 - 6u45</li><li>7 - 7u80</li><li>8 - 8u221</li><li>8 - 8u232</li><li>9 - all updates</li><li>10/11/16/17 - all updates</li></ul></li><li>OpenJDK:<ul><li>6u20 - 6u457</li><li>7 - 7u80</li><li>8 - 8u221</li><li>8 - 8u232</li><li>9 - all updates</li><li>10/11/16/17 - all updates</li></ul></li></ul> | <ul><li>Jetty</li><li>Scala</li><li>Eclipse</li><li>NetBeans</li><li>IntelliJ</li><li>JBoss/Wildfly</li><li>CloudFoundry</li><li>Weblogic</li><li>Play Framework</li><li>Glassfish</li><li>Mule</li><li>WebSphere</li><li>Tomcat</li></ul> |
-
-##### JVM Requirements
-
-When you attach the Harness Error Tracking Agent to a JVM that runs Java 10, 11, 16, 17, or any IBM Java version, ensure that the following requirements are met:
-
-* Turn off class sharing using the following flags:
-  
-  | **JVM**  | **Flag**                              |
-  | -------- | ------------------------------------- |
-  | IBM Java | `‑Xshareclasses:none`                 |
-  | HotSpot  | `-Xshare:off -XX:-UseTypeSpeculation` |
-
-* Increase `ReservedCodeCache` to at least 512mb by adding the following flag:  
-`-XX:ReservedCodeCacheSize=512m`
 
 ### Install an Error Tracking Agent
 

@@ -21,6 +21,23 @@ This process is also covered in the [Helm Chart deployment tutorial](/docs/conti
 ## Important notes
 
 * Harness does not support AWS cross-account access for [ChartMuseum](https://chartmuseum.com/) and AWS S3. For example, if the Harness Delegate used to deploy charts is in AWS account A, and the S3 bucket is in AWS account B, the Harness Cloud Provider that uses this Delegate in A cannot assume the role for the B account.
+* Helm 2 was deprecated by the Helm community in November 2020 and is no longer supported by Helm. If you continue to maintain the Helm 2 binary on your delegate, it might introduce high and critical vulnerabilities and put your infrastructure at risk.
+  
+  To safeguard your operations and protect against potential security vulnerabilities, Harness will launch an update to deprecate the Helm 2 binary from delegates with an immutable image type (image tag `yy.mm.xxxxx`) on **July 30, 2023**. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+
+  If your delegate is set to auto-upgrade, Harness will automatically remove the binary from your delegate. This will result in pipeline and workflow failures for services deployed via Helm 2. 
+
+  :::info note
+  If your development team still uses Helm 2, you can reintroduce the binary on the delegate. Harness is not responsible for any vulnerabilities or risks that might result from reintroducing the Helm 2 binary.
+  :::
+
+  For more information about updating your delegates to reintroduce Helm 2, go to:
+
+  - [Delegate automatic upgrades and expiration policy](/docs/platform/delegates/install-delegates/delegate-upgrades-and-expiration/)
+
+  - [Install a delegate with third-party tool custom binaries](/docs/platform/delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries/)
+
+  Contact [Harness Support](mailto:support@harness.io) if you have any questions.
 
 ## Supported platforms and technologies
 
@@ -122,7 +139,7 @@ Adding a Helm chart is a simple process of connecting Harness to the Git or HTTP
 
 For the steps and settings of each option, see the [Connect to an Artifact Repo](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-an-artifact-repo/) How-tos.
 
-If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](https://developer.harness.io/docs/category/cloud-platform-connectors/).
+If you are using Google Cloud Storage or Amazon S3, see [Cloud Platform Connectors](/docs/category/cloud-providers).
 
 You can also use a local Helm chart if you are deploying the same Helm chart and version to many clusters/namespaces in parallel. For information, see [Use a local Helm Chart](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/use-a-local-helm-chart). For all of the Helm Chart Store types (Git, GitHub, HTTP Helm, OCI, etc), you will need to provide the following Helm info:
 
