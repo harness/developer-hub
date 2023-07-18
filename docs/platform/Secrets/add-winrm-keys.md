@@ -21,7 +21,13 @@ Configure the **WinRM Credential** settings as follows.
      3. **Password**: Create or select an existing [Encrypted file secret](./3-add-file-secrets.md) that contains the relevant WinRM key file.
      4. **Use SSL**: (Recommended) Select to enable an HTTPS connection instead of an HTTP connection. 
      5. **Skip Cert Check**: Select to skip certificate check. When connected over an HTTPS connection, the client doesn't validate server certificate. 
-     6. **WinRM Port**: Leave the default port **5986** or enter a new port if needed. 
+     6. **WinRM Port**: Leave the default port or enter a new port if needed.
+
+        :::info
+
+        The default port for SSL is **5986**. If you haven't selected the **Use SSL** option, the default port is **5985**. Harness switches ports depending on whether or not SSL is enabled.
+
+        :::
    * **[Kerberos](https://learn.microsoft.com/en-us/windows-server/security/kerberos/kerberos-authentication-overview?source=recommendations)** (recommended)
      
      
@@ -85,8 +91,14 @@ Configure the **WinRM Credential** settings as follows.
      2. **Realm**: Enter a realm. Realm is the logical network served by a single Kerberos database and a set of Key Distribution Centers (KDCs).
      3. **Use SSL**: (Recommended) Select to enable an HTTPS connection instead of an HTTP connection. 
      4. **Skip Cert Check**: Select to skip certificate check. When connected over an HTTPS connection, the client doesn't validate the server certificate. 
-     5. **WinRM Port**: Leave the default port **5986** or enter a new port if needed. 
-     6. **TGT Generation**: (Optional) Select one of the following options. Select none of the options to skip TGT generation.
+     5. **WinRM Port**: Leave the default port or enter a new port if needed.
+  
+        :::info
+
+        The default port for SSL is **5986**. If you haven't selected the **Use SSL** option, the default port is **5985**. Harness switches ports depending on whether or not SSL is enabled.
+
+        :::
+     6. **TGT Generation**: Select one of the following options:
         * **Key Tab File**: Generates a new TGT from KDC every time you authenticate with the service.
         * **Password**: Use Harness [Encrypted text secrets](./2-add-use-text-secrets.md) to save the password and refer to it using this option.
 
