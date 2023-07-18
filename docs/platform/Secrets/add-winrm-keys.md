@@ -4,7 +4,7 @@ description: This topic explains how to add and use WinRM secrets.
 sidebar_position: 4
 ---
 
-Use these steps to add a WinRM key that can be referenced in Harness entities.
+Use these steps to add a WinRM credential key that can be referenced in Harness entities.
 
 You can add WinRM credentials when creating connectors and other account or project resources, or you can select **Secrets** under **Account/Organization/Project Setup** and create an **WinRM Credential** secret.
 
