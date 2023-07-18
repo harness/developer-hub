@@ -19,8 +19,35 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
+## Latest - July 18, 2023
 
-## Latest - July 13, 2023
+### Continuous Delivery, version 79916
+
+- Retrieve the current status of the looping strategy for stages and steps during execution. (CDS-69780)
+  
+  New built-in Harness expressions provide the current execution status of the looping strategy for nodes (stages/steps) using a matrix or repeat strategy.
+  
+  The statuses of the nodes (stages/steps) using a looping strategy are `RUNNING`, `FAILED`, `SUCCESS`.
+
+  The list of expressions include:
+  
+  - `<+strategy.currentstatus>`
+  - `<+strategy.node.strategy_node_identifier.currentstatus>`
+  - `<+strategy.node.get("strategy_node_identifier").currentstatus>`
+  - `<+strategy.identifierpostfix>`
+  - `<+step.identifierpostfix>`
+  - `<+stage.identifierpostfix>`
+  - `<+stepgroup.identifierpostfix>`
+  - `<+strategy.node.strategy_node_identifier.identifierpostfix>`
+  - `<+strategy.node.strategy_node_identifier.*>`
+
+  For information on using the expressions, go to [Strategy](https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#strategy).
+
+- Support for expressions in remote Terraform Var files hosted on Github and S3. (CDS-68612, ZD-43917, ZD-45714)
+  
+  This feature requires the latest Delegate version, 79904, to display console logs during execution correctly.
+
+## July 13, 2023
 
 ### Cloud Cost Management, version 80102
 
@@ -320,6 +347,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
    * You cannot add the same cost category as a rule in the cost bucket.
    * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
    * You can nest cost categories to a maximum of 20 levels.
+
 
 ##### Harness version 79516, Harness Delegate version 79503
 

@@ -12,6 +12,19 @@ Review the notes below to learn about the early access (aka beta) features in Ha
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
+## Latest - July 18, 2023
+
+### Continuous Delivery, version 79916
+
+- Digest support added for Nexus 3, Github, and Artifactory [artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources). (CDS-71711)
+  
+  This feature is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`.
+
+  The **Artifact Details** page has a new, optional **Digest** setting where you can specify the digest/SHA for a container image artifact.
+  
+  Specifying an image by digest, rather than just tag, is useful when you want to ensure that the image you deploy for a service is fixed and immutable. If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline execution fails.
+
+## July 12, 2023
 
 ## Latest - July 18, 2023
 
@@ -68,7 +81,7 @@ Review the following information for details about data privacy and terms of use
 
 ##### Continuous Integration, version 4204
 
-**Output variables automatically become environment variables (CI-7817, ZD-39203)**
+###### Output variables automatically become environment variables (CI-7817, ZD-39203)
 
 This functionality is behind a feature flag, `CI_OUTPUT_VARIABLES_AS_ENV`.
 
@@ -78,7 +91,7 @@ In other steps in the same stage, you can refer to the output variable by its ke
 
 For more information on this feature, go to the documentation on [Output variables](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables).
 
-**Remote debugging enhancements (CI-8135, CI-8048)**
+###### Remote debugging enhancements (CI-8135, CI-8048)
 
 **Re-run in Debug Mode** now supports Python and PowerShell Core (`pwsh`). You can also now use debug mode for local runner build infrastructures. The remote debugging functionality is behind a feature flag, `CI_REMOTE_DEBUG`. For more information, go to [Debug with SSH](/docs/continuous-integration/use-ci/debug-mode).
 
