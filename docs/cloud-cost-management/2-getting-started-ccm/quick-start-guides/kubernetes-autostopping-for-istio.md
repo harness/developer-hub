@@ -1,14 +1,14 @@
 ---
 title: Kubernetes AutoStopping for Istio
 description: This article provides instructions to create AutoStopping rules for Kubernetes with the Istio ingress controller.
-# sidebar_position: 9
+# sidebar_position: 20
 helpdocs_topic_id: xp8orapo9t
 helpdocs_category_id: biypfy9p1i
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This article provides instructions on creating AutoStopping rules for Kubernetes with the Istio ingress controller.
+This article provides instructions to create AutoStopping rules for Kubernetes with the Istio ingress controller.
 
 ### Prerequisites
 
