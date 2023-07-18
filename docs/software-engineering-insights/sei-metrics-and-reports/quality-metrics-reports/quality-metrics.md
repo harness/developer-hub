@@ -145,3 +145,4 @@ For information about the **SCM Issues Count Single Stat** widget, go to [SCM re
 
 * **SCM Files Report:** For information about this report, go to [SCM reports](../velocity-metrics-reports/scm-reports.md).
 * **SCM File Types Report:** For information about this report, go to [SCM reports](../velocity-metrics-reports/scm-reports.md).
+* **Support Hotspots Report (Support Files Report):** For information about this report, go to [Support reports](../support-metrics.md).

@@ -33,6 +33,12 @@ For information about reports you can use to analyze velocity metrics, go to:
 
 * [CI/CD job reports](./ci-cd-reports.md)
 * [SCM reports](./scm-reports.md)
+* [Support reports](../support-metrics.md) (Issues, resolution time, response time, and requester wait time reports only)
+* [Issues Report](#issues-report)
+* [Issue resolution time reports](#issue-resolution-time-reports)
+* [Issue Single Stat](#issue-single-stat)
+* [Issue Bounce Report](#issue-bounce-report)
+* [Issue Hops Report](#issue-hops-report)
 
 <!-- Lead time -->
 <!-- ("issues lead time by stage" - Lead time by development stages, entire SDLC, all tools) VELOCITY: lead time by stage, lead time trend, lead time by type, lead time single stat -->
@@ -152,7 +158,7 @@ To configure the Issues Report widget to show the team workload:
 
 </details>
 
-## Issue resolution time
+## Issue resolution time reports
 
 Issue Resolution Time reports include:
 
@@ -284,16 +290,19 @@ This configuration produces a bar graph showing the median resolution time to cl
 
 ## Issue Single Stat
 
-The Issue Single Stat widgets provides single metrics over the given time range. This is useful for tracking events (created, resolved, etc.) happening over a period of time. For example, you can use the **Issue Resolution Time Single Stat** widget to know how many issues were *resolved* in the given time frame. Usually, the time range is set to **Use Insight time**, which allows the user to select a time range when viewing Insights.
+Single stats are versatile widgets that provide a single metric over a given time range. These are useful for tracking events (created, resolved, etc.) happening over a period of time. For example:
 
-Issue Single Stats widgets include:
+* **Issues Single Stat:** Show a single value such as total issues/tickets created, total issues/tickets due, total issues/tickets updated, and so on.
+* **Issue Resolution Time Single Stat:** Show how many issues were resolved in a given time frame.
 
-* Issue created
-* Issue due
-* Issue resolution time
-* Issue updated
+When you configure a single stat widget:
 
-You can configure these widgets to further filter and refine them, such as by issue type, label, priority, and so on.
+* You can create filters for any field that can be viewed as a single value, such as issue type, priority, status, labels, components, and so on.
+* The available fields depend on your [integrations](/docs/category/connectors-and-integrations), and you can choose from custom fields, if they exist in your SCM, issue management, or support tool.
+* If you use multiple filters to focus the widget (such as to show the total number of *bugs* in the *won't do* status for a specific project), the filters are inherently combined by `AND` operators.
+* Keep in mind that single stat widgets intend to show a single value, such as the total number of tickets or the sum of story points. Determine what single stat you want to show, and then create your filters accordingly.
+
+You might want to set the time range to **Use Insight time**, which allows the user to select a time range when viewing the Insight where this widget is present.
 
 ## Issue Bounce Report
 
