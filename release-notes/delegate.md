@@ -35,17 +35,11 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
   <TabItem value="What's new">
 ```
 
-- The Execution Logs have been enhanced to include additional details such as duration, task ID, and more. This makes it easier to understand and debug CV Steps, SRM Live monitoring, and SLI. (OIP-565)
-
-- Formula integration for Datadog metrics has been introduced, providing support for combining metrics. (OIP-568)
-
 - The Splunk connector has been enhanced to include support for Bearer Token. (OIP-598)
 
 - The List Tokens API now supports listing all the personal access tokens or service account tokens in the account. The API has been enhanced as follows:
    1. If you have user management permissions, you can list all the Personal Access Tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
    2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
-
-- When a delegate token is revoked, Harness now sends `SELF_DESTRUCT` to all delegates that are using the revoked token. (PL-38957)
 
 ```mdx-code-block
   </TabItem>
@@ -101,10 +95,6 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 - You could not create Azure Key Vault connectors in Harness NextGen even when you used the service principal credentials that successfully created Azure Key Vault connectors in Harness FirstGen. After you entered the service principal credentials, the Vault setup window stopped responding. After several minutes, the following message is displayed: `None of the active delegates were available to complete the task. ==> : 'Missing capabilities: [https:null.vault.azure.net]'` (PL-39783, ZD-46756)
 
    This issue is now fixed.
-
-
-
-
 
 ```mdx-code-block
   </TabItem>
