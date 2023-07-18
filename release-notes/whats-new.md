@@ -188,7 +188,7 @@ For information on how to set up this workflow, go to [Configure STO to Download
 
 - You can now sort pipelines in the pipelines list by selecting the sortable column headers or the sort dropdown. (PL-31527)
 
-##### Harness version 79714, Harness Delegate version 79707
+##### Harness Delegate, version 79707
 
 - You can now see disconnected delegate details in selection logs and error messages when there are no eligible delegates in an active state to execute tasks. (PL-37900)
 
@@ -369,19 +369,9 @@ If you have pipelines running on Harness Cloud that rely on specific component v
   3. Set **Enable Matrix Labels By Name** to `true`.
   4. Select **Save**.
 
-  This option is available at the project, org, and account level. 
+  This option is available at the project, org, and account level.
 
-**Cost Category enhancement** (CCM-12585)
-
-  When building a cost category, it is now possible to incorporate another cost category as a rule. However, there are important considerations to keep in mind when using a cost category within your rule. 
-  
-   * You cannot include a nested cost category as a rule within another cost category if either of these cost categories contains a shared bucket.
-   * You cannot add the same cost category as a rule in the cost bucket.
-   * You cannot create cyclic nested cost categories, where a cost category is nested within each other.
-   * You can nest cost categories to a maximum of 20 levels.
-
-
-##### Harness version 79516, Harness Delegate version 79503
+##### Harness Delegate, version 79503
 
 - Kubernetes deployments support horizontal pod autoscaling and pod disruption budget for Blue Green and Canary execution strategies. (CDS-59011)
 
