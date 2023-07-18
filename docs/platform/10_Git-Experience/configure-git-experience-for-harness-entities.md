@@ -214,27 +214,21 @@ Click **Update**.
 
 The changes you made in Git are now applied to Harness.​
 
-## Edit Git Details for the pipeline
+## Edit Git details for a pipeline
 
-Harness UI allows you to edit the Git details after the pipeline is configured and saved. You can modify following 3 Git fields
+The Harness manager allows you to edit the Git details after the pipeline is configured and saved. You can modify following Git settings:
 
-- Git Connector
+- Git connector
 - Repository
 - YAML path
 
+To modify these Git settings, do the following:
 
-1. In your Project, click **Pipelines**.
-
-2. Go to the pipeline for which you want to edit the Git details and click on the 3 dots on the right
-
-
-![](./static/harness-git-experience-quickstart-74.png)
-
-
-3. In the pop up, you can make changes to any of the 3 fields and click Save.
-
-![](./static/harness-git-experience-quickstart-75.png)
-
+1. In your Project, select **Pipelines**.
+2. Go to the pipeline where you want to edit the Git details, and select more options (⋮).
+  ![](./static/harness-git-experience-quickstart-74.png)
+3. Make changes to the settings, and then select **Save**.
+  ![](./static/harness-git-experience-quickstart-75.png)
 
 
 ## Execute pipeline
