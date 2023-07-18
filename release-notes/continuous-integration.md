@@ -144,9 +144,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 ##### Hotfix versions 4205, 4206
 
-**Released June 22, 2023**
-
-These hotfixes addressed regressions that caused existing pipelines to fail.
+Released June 22, 2023 - These hotfixes addressed regressions that caused existing pipelines to fail.
 
 #### June 12, 2023, version 4006
 
