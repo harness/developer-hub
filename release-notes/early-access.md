@@ -12,9 +12,9 @@ Harness publishes security advisories for every release. Go to the [Harness Trus
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## July 14, 2023
+## July 18, 2023
 
-### Continuous Delivery, version 79909
+### Continuous Delivery, version 79916
 
 - Digest support added for Nexus 3, Github, and Artifactory [artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources). (CDS-71711)
   

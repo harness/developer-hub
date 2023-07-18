@@ -20,9 +20,9 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - July 14, 2023
+## Latest - July 18, 2023
 
-### Continuous Delivery
+### Continuous Delivery, version 79916
 
 - Retrieve the current status of the looping strategy for stages and steps during execution. (CDS-69780)
   

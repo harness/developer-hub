@@ -17,7 +17,7 @@ Harness publishes security advisories for every release. Go to the [Harness Trus
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe might not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page in your Harness account. 
 :::
 
-## Latest - July 14, 2023, version 79909
+## Latest - July 18, 2023, version 79916
 
 ### Deprecation notice
 
