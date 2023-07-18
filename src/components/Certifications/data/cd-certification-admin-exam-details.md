@@ -1,4 +1,4 @@
-** (BETA) ** The Continuous Delivery & GitOps Administrator exam tests your knowledge and skills of the Harness Continuous Delivery module.  
+The Continuous Delivery & GitOps Administrator exam tests your knowledge and skills of the Harness Continuous Delivery module.  
 
 ## Prerequisites
 
