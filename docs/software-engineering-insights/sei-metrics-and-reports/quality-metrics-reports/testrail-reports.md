@@ -1,7 +1,7 @@
 ---
 title: TestRail reports
-description: Bullseye is a C++ code coverage tool.
-sidebar_position: 30
+description: TestRail is a test management platform.
+sidebar_position: 40
 ---
 
 [TestRail](https://www.testrail.com/) is a test management platform. To analyze your TestRail data in SEI, set up a [TestRail connector](../../sei-integrations/sei-connector-testrail.md), and then add TestRail reports to your [Insights](../../sei-insights.md).
