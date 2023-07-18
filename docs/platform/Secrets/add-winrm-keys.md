@@ -114,5 +114,4 @@ Configure the **WinRM Credential** settings as follows:
 5. Select **Test Connection**.
 
    If a message appears stating that no Harness Delegate could reach the host, or that a credential is invalid, verify that your settings are correct, and your Harness Delegate is able to connect to the server.
-
 6. After the test succeeds, select **Finish** to save the WinRM credential.
