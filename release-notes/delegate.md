@@ -35,7 +35,7 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
   <TabItem value="What's new">
 ```
 
-- The Execution Logs have been enhanced to include additional details such as duration, task ID, and more. To help in easier understanding and debugging of CV Steps, SRM Live monitoring, and SLI. (OIP-565)
+- The Execution Logs have been enhanced to include additional details such as duration, task ID, and more. This makes it easier to understand and debug CV Steps, SRM Live monitoring, and SLI. (OIP-565)
 
 - Formula integration for Datadog metrics has been introduced, providing support for combining metrics. (OIP-568)
 
@@ -98,7 +98,7 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
    Prefixes that begin with a slash are now supported.
 
-- You could not create Azure Key Vault connectors in Harness NextGen even when you used the service principal credentials that successfully created Azure Key Vault connectors in Harness FirstGen. After you entered the service principal credentials, the Vault setup window stopped responding. After several minutes, the following message is displayed: None of the active delegates were available to complete the task. ==> : 'Missing capabilities: [https:null.vault.azure.net]' (PL-39783, ZD-46756)
+- You could not create Azure Key Vault connectors in Harness NextGen even when you used the service principal credentials that successfully created Azure Key Vault connectors in Harness FirstGen. After you entered the service principal credentials, the Vault setup window stopped responding. After several minutes, the following message is displayed: `None of the active delegates were available to complete the task. ==> : 'Missing capabilities: [https:null.vault.azure.net]'` (PL-39783, ZD-46756)
 
    This issue is now fixed.
 
