@@ -213,7 +213,7 @@ Policies are evaluated against Harness [Connectors](https://developer.harness.io
 
 Policy Set can be configured to evaluate policies on the save of a connector.
 
-See [Use Harness Policy As Code for Connectors](https://developer.harness.io/docs/platform/Governance/Policy-as-code/sample-policy-use-case#connector-policy-samples)
+See [Use Harness Policy As Code for Connectors](https://developer.harness.io/docs/platform/Governance/Policy-as-code/sample-policy-use-case#connector-policy-samples).
 
 
 #### Template
