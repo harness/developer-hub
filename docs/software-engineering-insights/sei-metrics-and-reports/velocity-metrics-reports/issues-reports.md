@@ -6,31 +6,6 @@ sidebar_position: 50
 
 Use these issues reports to analyze data related to issues in issue management systems, such as Jira. Some reports can also be used for support tickets and tickets or issues that cover multiple systems (support, issue management, SCM, and CI/CD).
 
-* Issues Report
-* Issues Trend Report
-* Issues Single Stat
-
-* Issue Resolution Time Report
-* Issue Resolution Time Trend Report
-* Issue Resolution Time Single stat (included w/ issue single stat)
-* Issue Response Time Report
-* Issue Response Time Trends Report
-* Issue Response Time Single Stat (include w/ issue single stat)
-
-* Issue Assignee Time Report
-* Issue First Assignee Report
-* Issue By First Assignee
-
-* Issue Hotspots Report (scm-jira-files-report)
-
-* Issue Lead Time by Stage report (cover on lead time?)
-* Issue Lead Time By Type Report (cover on lead time?)
-* Issue Time Across Stages
-
-* Issue Backlog Trend Report
-* Issue Progress Report (covered on effort investment)
-* Releases Report/Release Table Report??
-
 ## Issue count reports
 
 Issue count reports are versatile reports that you can use to examine metrics related to tickets or work items (epics, stories, bugs, tasks, story points, and so on) in your issue management system. You can examine any measurable aspect of your issue management data, such as type, priority, status, labels, components, or any other field, including custom fields.
@@ -38,8 +13,9 @@ Issue count reports are versatile reports that you can use to examine metrics re
 * **Issues Report:** Analyze issues by priority, status, or any other field.
 * **Issues Trend Report:** Examine changes over time in issues.
 * **Issues Single Stat:** Show a [single stat](#issue-single-stats).
+* **Issue First Assignee Report:** This is an [initial response and assignment time report](#initial-response-and-assignment-time-reports).
 
-### Issues Report
+### Configure the Issues Report
 
 Use the **Issues Report** to examine metrics related to issues in your issue management system. The report aggregates data based on selected attributes, such as priority, status, labels, components, or any other field. This report helps you create comparisons based on various fields and draw conclusions to make decisions.
 
@@ -64,7 +40,7 @@ The following settings are available to configure the Issues Report:
 <figcaption>Figure 1: An Issues Report configured to show <b>Ticket count</b> on the Y-axis and <b>Assignee</b> across the X-axis. For each Assignee, the issues are stacked by <b>Priority</b>.</figcaption>
 </figure>
 
-#### Issues Report use cases
+### Issues Report use cases
 
 Here are some examples of configurations for the Issues Report.
 
@@ -127,15 +103,25 @@ To configure the Issues Report to show the number of stories associated with eac
 
 ## Issue resolution time reports
 
-Issue Resolution Time reports include:
+Issue resolution time reports help you understand how long tickets remain open, including cycle time and lead time metrics.
 
-* **Issue Resolution Time Report**
-* **Issue Resolution Time Trend Report**
-* **Issue Resolution Time Single Stat**
+* **[Issue Resolution Time Report](#configure-the-issue-resolution-time-report):** A configurable bar graph showing the number of tickets closed along with the average time it took to close those tickets, based on the time the tickets were created.
+* **Issue Resolution Time Trend Report:** Monitor changes over time in issue resolution time.
+* **Issue Resolution Time Single Stat:** A [single stat widget](#issue-single-stats) showing the number of issues marked as resolved in a given time period.
+* **Issue Time Across Stages:** Analyze cycle time by status. Cycle time is the elapsed time for an iteration of the issue workflow, from open to close.
+* **[Issue Lead Time by Stage Report](./lead-time-reports.md)**
+* **[Issue Lead Time By Type Report](./lead-time-reports.md)**
+* **[Jira Releases Report](#configure-the-jira-releases-report):** Analyze your team's release pattern by understanding the average time elapsed between issue creation and release.
 
-The **Issue Resolution Time Single Stat** widget is an [single stat widget](#issue-single-stats) that reports the number of issues marked as resolved in a given time period.
+:::tip Use Issue Resolution Time to monitor MTTR and MTBF
 
-The Issue Resolution Time Report is a configurable bar graph showing the number of tickets closed along with the average time it took to close those tickets, based on the time the tickets were created. This report can help answer questions like:
+Mean Time To Recover (MTTR) and Mean Time Between Failures (MTBF) are [DORA metrics](../dora-metrics.md). You can use the **Issue Resolution Time Report** and **Issue Resolution Time Single Stat** widgets to monitor MTTR and MTBF. To do this, configure the filters and settings for these widgets so that they only track issues related to failure recovery.
+
+:::
+
+### Configure the Issue Resolution Time Report
+
+The **Issue Resolution Time Report** can help answer questions like:
 
 * Is my team getting faster at delivering features or fixing issues?
 * Is the resolution times for a project or component decreasing over time?
@@ -148,19 +134,7 @@ The Issue Resolution Time Report is a configurable bar graph showing the number 
 <figcaption>Figure 2: An Issue Resolution Time Report grouped by quarter.</figcaption>
 </figure>
 
-The Issue Resolution Time Trend Report monitors changes over time in issue resolution time.
-
-:::tip Use Issue Resolution Time to monitor MTTR and MTBF
-
-Mean Time To Recover (MTTR) and Mean Time Between Failures (MTBF) are [DORA metrics](../dora-metrics.md).
-
-You can use the **Issue Resolution Time Report** and **Issue Resolution Time Single Stat** widgets to monitor MTTR and MTBF. You'll need to configure the filters and settings for these widgets so that they only track issues related to failure recovery.
-
-:::
-
-### Configure the Issue Resolution Time Report
-
-By default, the Issue Resolution Time Report widget is filtered by issues closed (**Last closed date**) within a selected time range. Usually, the time range is set to **Use Insight time**, which allows the user to select a time range when viewing Insights.
+By default, the Issue Resolution Time Report is filtered by issues closed (**Last Closed Date**) within a selected time range. Usually, the time range is set to **Use Insight time**, which allows the user to select a time range when viewing Insights.
 
 <!-- img .gitbook/assets/image (56).png - issue resolution time report widget config - filters tab - last closed date and Insight time -->
 
@@ -174,9 +148,9 @@ On the **Settings** tab, you can:
 * Select how you want to sort X-axis data, such as ascending or descending.
 * Select the maximum number of unique values to show on the X-axis.
 
-### Issue Resolution Time Report examples
+### Issue Resolution Time Report use cases
 
-The primary way to modify the Issue Resolution Time Report widget is to change the X-axis dimension on the **Aggregations** tab. Here are some examples of other configurations for this widget.
+The primary way to modify the Issue Resolution Time Report is to change the X-axis dimension on the **Aggregations** tab. Here are some examples of configurations for this widget.
 
 <details>
 <summary>Average time to issue closed by assignee</summary>
@@ -255,6 +229,80 @@ This configuration produces a bar graph showing the median resolution time to cl
 
 </details>
 
+### Configure the Jira Releases Report
+
+Use the **Jira Releases Report** to analyze your team's release pattern by understanding the average time elapsed between issue creation and release.
+
+#### Benefits
+
+The benefits of the **Jira Releases Report** include:
+
+* **In-depth analysis:** By combining Jira releases with lead time measurements, you can understand the time taken for each stage of your release process. This helps you identify areas where you can optimize and make data-driven decisions to improve efficiency.
+* **Improved predictability:** By tracking lead time for each release, you can gain a better understanding of the time required to deliver features and enhancements. This improved predictability allows you to set realistic expectations with stakeholders and ensure smoother project planning and resource allocation.
+* **Continuous process improvement:** The combination of Jira releases and lead time measurements facilitates a continuous improvement mindset. By analyzing lead time data, you can identify patterns, recurring issues, and areas of inefficiency.
+
+#### Best practices
+
+To get the most benefit from this report, the following best practices are recommended:
+
+* Practice good Jira [hygiene](../hygiene-metrics.md), especially when changing issue statuses. Selecting the incorrect status, having an unclear status workflow, or having too many similar statuses can result in poor or inaccurate lead time measurements.
+* Whenever possible, map issues to a single version, rather than multiple versions.
+* Make sure all **Done** issues are eventually moved to the **Resolved** status (Ideally, moved to completion from the development and testing perspective).
+* Perform releases only after all linked issues are in the **Resolved** status.
+
+#### Configuration requirements
+
+This widget requires both the release time and resolution time of issues as mandatory inputs. This is because the deployment process can only include tickets that have reached the **Resolved** status.
+
+You can select any attributes, such as priority, status, labels, components, or any other field, to precisely refine this report according to your release process. Available options are based on your [connectors](/docs/category/connectors-and-integrations). If you add multiple filters, they are inherently combined by `AND` operators.
+
+:::tip
+
+Use the **Jira Releases Report** along with the **[Lead Time by Time Spent in Stages Report](./lead-time-reports.md)**, which can show you a breakdown of stages that contribute to the average lead time value present in your **Jira Releases Report**.
+
+:::
+
+## Initial response and assignment time reports
+
+These reports measure the first assignee or response on an issue, including who receives the most "first assignments" and how much time passes between issue creation and the first assignment or response.
+
+* **Issue First Assignee Report:** Analyze the time taken for initial assignment of issues (from issue creation to first assignment). You can use this to confirm that high priority issues are being assigned as soon as possible.
+* **Issues By First Assignee:** Analyze who receives the most "first assignments" for issues.
+* **Issue Response Time Report:** Issue response time is the elapsed time between when an issue is created and the first response.
+* **Issue Response Time Trends Report:** Analyze changes over time in initial response time.
+* **Issue Response Time Single Stat:** Show a [single stat](#issue-single-stats) related to initial response time.
+
+<figure>
+
+![](../static/issue-first-assignee-report.png)
+
+<figcaption>Figure 3: Issue First Assignee Report.</figcaption>
+</figure>
+
+For details about issues bouncing between assignees or being reassigned to new assignees, use the [issue bounce reports](#issue-bounce-reports) and [issue hops reports](#issue-hops-reports).
+
+For details about issues that are in the backlog or sitting with one assignee for a long time, use the [issue backlog reports](#issue-backlog-reports).
+
+## Issue backlog reports
+
+* **Issue Assignee Time Report:** A table of issues that have sat with the same assignee for the longest amount of time.
+
+<figure>
+
+![](../static/issue-assignee-time-report.png)
+
+<figcaption>Figure 4: Issue Assignee Time Report.</figcaption>
+</figure>
+
+* **Issue Backlog Trend Report:** Understand whether your issue backlog is under control. This can help answer questions about backlog growth and age. When you configure this widget, make sure the **Status Category** is set to **To Do** so that you only track open, unstarted issues. You can use a **Project** filter to limit the report to a specific project's backlog.
+
+<figure>
+
+![](../static/issue-backlog-trend-report.png)
+
+<figcaption>Figure 5: The Issue Backlog Trend Report. The bars show the number of issues in the backlog at a specific point in time. The line tracks the median age of issues over time.</figcaption>
+</figure>
+
 ## Issue bounce reports
 
 _Bounce_ describes tickets that are reassigned to a previous assignee or return to a previous stage. Bounce can occur if an issue isn't triaged correctly initially, or if the issue doesn't have enough information to be assigned correctly. Excessive bounce can potentially cause missed SLAs and unnecessary resource utilization.
@@ -265,7 +313,7 @@ _Bounce_ describes tickets that are reassigned to a previous assignee or return 
 * **Stage Bounce:** Analyze the number of times issues bounced between stages.
 * **Stage Bounce Single Stat:** Show a [single stat](#issue-single-stats) related to stage bounce.
 
-### Issue Bounce Report
+### Configure the Issue Bounce Report
 
 The **Issue Bounce Report** can highlight issues that are being excessively bounced around to different resources. You can then inspect those issues in your issue management system and determine why they are being bounced so much.
 
@@ -279,7 +327,7 @@ If you want to observe bounce for tickets that have been open for a long time, s
 
 ![](../static/issue-bounce-report.png)
 
-<figcaption>Figure 2: Issue Bounce Report</figcaption>
+<figcaption>Figure 5: Issue Bounce Report</figcaption>
 </figure>
 
 ## Issue hops reports
@@ -290,7 +338,7 @@ _Hops_ describes the number of times a ticket is reassigned to a new assignee (s
 * **Issue Hops Trends Report:** Analyze changes over time in issue hops.
 * **Issue Hops Single Stat:** Show a [single stat](#issue-single-stats) related to issue hops.
 
-### Issue Hops Report
+### Configure the Issue Hops Report
 
 The **Issue Hops Report** can highlight issues that are being reassigned excessively. You can then inspect those issues in your issue management system and determine why they are hopping so much.
 
@@ -304,7 +352,7 @@ If you want to observe hops for tickets that have been open for a long time, set
 
 ![](../static/issue-hops-report.png)
 
-<figcaption>Figure 3: Issue Hops Report</figcaption>
+<figcaption>Figure 6: Issue Hops Report</figcaption>
 </figure>
 
 ## Issue hygiene reports
@@ -317,6 +365,7 @@ Single stats are versatile widgets that provide a single metric over a given tim
 
 * **Issues Single Stat:** Show a single value such as total issues/tickets created, total issues/tickets due, total issues/tickets updated, and so on.
 * **Issue Resolution Time Single Stat:** Show how many issues were resolved in a given time frame.
+* **Issue Response Time Single Stat:** Show a single stat for [issue response time](#issue-response-time-reports).
 * **Issue Bounce Single Stat:** Show a single stat related to [issue bounce](#issue-bounce-reports) between assignees.
 * **Stage Bounce Single Stat:** Show a single stat related to [issue bounce](#issue-bounce-reports) between stages.
 * **Issue Hops Single Stat:** Show a single stat related to [issue hops](#issue-hops-reports).
@@ -330,6 +379,8 @@ When you configure a single stat widget:
 
 You might want to set the time range to **Use Insight time**, which allows the user to select a time range when viewing the Insight where this widget is present.
 
-## SCM issues
+## Other issues reports
 
-For information about reports for issues tracked in SCM, go to [SCM reports](./scm-reports.md).
+* **Issue Hotspots Report:** Determine code hotspots most often result in issues being created in your issue management system. This can help you identify code areas that need better test coverage.
+* **Issue Progress Report:** Analyze progress on [effort investment categories](../effort-investment-metrics.md).
+* **SCM issues:** For information about reports that track SCM issues, go to [SCM reports](./scm-reports.md).
