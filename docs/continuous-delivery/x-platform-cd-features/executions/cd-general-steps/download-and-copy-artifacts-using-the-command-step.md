@@ -341,7 +341,7 @@ The WinRM deployment type supports Download Artifact only. You cannot use Cope A
 | Azure Artifacts | Maven 2.0, NuGet | Y | Y |
 | Custom Repository | All | N/A | N (use the Exec script to use the metadata to copy artifact to target host) |
 
-## Use case: Sending an email from a server with an attachment
+## Use case: Sen emails from a server with an attachment
 
 1. Install `postfix` on the target host using the following command:  
    
