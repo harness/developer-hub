@@ -92,8 +92,8 @@ If you select **Target Host**, depending on the script type, enter the following
 
 **PowerShell**
 * **Target Host:** enter the IP address or hostname of the remote host where you want to execute the script. The target host must be in the **Infrastructure Definition** selected when you defined the stage **Infrastructure**, and the Harness Delegate must have network access to the target host. You can also enter the variable `<+instance.name>` and the script will execute on whichever target host is used during deployment.
-* **WinRM Credential:** Select the WinRM credentials to use for the PowerShell session. For information on setting up WinRM credentials, go to [add WinRM credential](/docs/platform/Secrets/add-winrm-keys).
-* **Working Directory** provide the working directory for the script to be executed, keep in mind that the directory path should be present on the host.
+* **WinRM Credential:** select the WinRM credentials to use for the PowerShell session. For information on setting up WinRM credentials, go to [add WinRM credential](/docs/platform/Secrets/add-winrm-keys).
+* **Working Directory:** provide the working directory for the script to be executed. Keep in mind that the directory path should be present on the host.
   
 ## Advanced
 
