@@ -1,4 +1,4 @@
-** (BETA) ** The Continuous Integration Administrator exam tests your knowledge and skills of the Harness Continuous Integration module.  
+**(BETA)** The Continuous Integration Administrator exam tests your knowledge and skills of the Harness Continuous Integration module.  
 
 ## Prerequisites
 
