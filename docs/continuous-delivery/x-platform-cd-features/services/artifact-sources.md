@@ -2928,6 +2928,6 @@ Here are the expressions for referencing each version:
 - SHA value of `schemaVersion2`: `<+artifacts.primary.metadata.SHAV2>` (same stage) or `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2>`.
 
 If the service is configured to use an image with a specific digest, you can access the digest using 
-`<+pipeline.stages.s1.spec.artifacts.primary.digest>`.
+`<+pipeline.stages.STAGE_ID.spec.artifacts.primary.digest>`.
 
 </details>
