@@ -41,14 +41,6 @@ The **Python** server SDK has been updated to version **1.2.2** with the followi
 
 * Fixed an issue where the SDK was crashing when used with the relay proxy.
 
-#### Feature Flags server
-
-The Feature Flags server has been updated to version **1.1077.0** with the following updates.
-
-* Previously, the developer count reported under the Feature Flags license usage page (**Account Settings > Subscriptions > Feature Flags > License Count**) included a 'System' user that should not be counted towards the customer's total count of developers. This fix excludes the 'System' user from the count. (FFM-8658)
-
-* Previously, targets sent by the server-side SDKs were not being updated in the database. This meant if a sever-side target changed, evaluations worked as expected, but the updated attributes were not shown in the UI. This fix ensures targets are correctly updated. (FFM-8600)
-
 
   </TabItem>
 </Tabs>
