@@ -36,6 +36,11 @@ Before you run the delegate, edit the YAML file to change the following:
 
 * Delegate environment variables
 * Delegate image
+* Third-party tool custom binaries
+
+   :::info note
+   Add your third-party tool custom binaries to `initScript` in your `values.yaml` file to run them before delegate installation.
+   :::
 
 ## Add Harness-required SDKs
 
