@@ -456,7 +456,7 @@ pipeline:
                                 sudo chmod 600 /etc/postfix/sasl_passwd
                                 sudo postmap /etc/postfix/sasl_passwd
                                 sudo systemctl restart postfix.service
-                                echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  srgupta5328@gmail.com
+                                echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  johndoe@xyz.io
                   timeout: 10m
                   strategy:
                     repeat:
