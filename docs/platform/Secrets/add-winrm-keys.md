@@ -1,14 +1,14 @@
 ---
 title: Add WinRM keys
-description: This topic explains how to add and use WinRM secrets.
+description: Learn how to add and use WinRM secrets.
 sidebar_position: 4
 ---
 
 Use these steps to add a WinRM credential key that can be referenced in Harness entities.
 
-You can add WinRM credentials when creating connectors and other account or project resources, or you can select **Secrets** under **Account/Organization/Project Setup** and create an **WinRM Credential** secret.
+You can add WinRM credentials when creating connectors and other account or project resources. Or, you can select **Secrets** under **Account/Organization/Project Setup** and create a WinRM credential secret.
 
-Configure the **WinRM Credential** settings as follows.
+Configure the **WinRM Credential** settings as follows:
 
 1. Enter a **Name** for the WinRM credential and select **Continue**.
 2. Under **Select an Auth Scheme**, select one of the following:
@@ -16,11 +16,11 @@ Configure the **WinRM Credential** settings as follows.
    * **[NLTM](https://learn.microsoft.com/en-us/windows-server/security/kerberos/ntlm-overview)**
   
      Enter the following authentication details:  
-     1. **Domain**: Enter the Active Directory domain name where the user account in the credential is registered.
-     2. **Username**: Enter the username for this connection. The user must belong to the same Active Directory domain as the Windows instances that this connection uses. These are the same user account credentials you would use to log into the VM using a remote connection such as Microsoft Remote Desktop.
+     1. **Domain**: Enter the Active Directory domain name with which the user account in the credential is registered.
+     2. **Username**: Enter the user name for this connection. The user must belong to the same Active Directory domain as the Windows instances that this connection uses. These are the same user account credentials you would use when logging in to the VM through an application such as Microsoft Remote Desktop.
      3. **Password**: Create or select an existing [Encrypted file secret](./3-add-file-secrets.md) that contains the relevant WinRM key file.
      4. **Use SSL**: (Recommended) Select to enable an HTTPS connection instead of an HTTP connection. 
-     5. **Skip Cert Check**: Select to skip certificate check. When connected over an HTTPS connection, the client doesn't validate server certificate. 
+     5. **Skip Cert Check**: Select to skip the certificate check. When connected over HTTPS, the client doesn't validate the server certificate. 
      6. **WinRM Port**: Leave the default port or enter a new port if needed.
 
         :::info
@@ -37,7 +37,7 @@ Configure the **WinRM Credential** settings as follows.
      <details>
      <summary>Add the Kerberos startup script to the delegate YAML</summary>
 
-     1. Open the `delegate.yaml` in a text editor.
+     1. Open `delegate.yaml` in a text editor.
      2. Locate the environment variable `INIT_SCRIPT` in the `Deployment` object.
         ```
         - name: INIT_SCRIPT  
@@ -95,7 +95,7 @@ Configure the **WinRM Credential** settings as follows.
      
      Enter the following authentication details:  
      1. **Principal**: Enter the account name associated with the Kerberos account. 
-     2. **Realm**: Enter a realm. Realm is the logical network served by a single Kerberos database and a set of Key Distribution Centers (KDCs).
+     2. **Realm**: Enter a realm. A realm is a logical network served by a single Kerberos database and a set of Key Distribution Centers (KDCs).
      3. **Use SSL**: (Recommended) Select to enable an HTTPS connection instead of an HTTP connection. 
      4. **Skip Cert Check**: Select to skip certificate check. When connected over an HTTPS connection, the client doesn't validate the server certificate. 
      5. **WinRM Port**: Leave the default port or enter a new port if needed.
@@ -110,9 +110,9 @@ Configure the **WinRM Credential** settings as follows.
         * **Password**: Use Harness [Encrypted text secrets](./2-add-use-text-secrets.md) to save the password and refer to it using this option.
 
 3. Select **Save and Continue**.
-4. Enter a **Host Name** of the remote server you want to connect to. For example, if it is an AWS EC2 instance, it might be something like `ec2-54-175-135-106.compute-1.amazonaws.com`.
+4. Enter the **Host Name** of the remote server you want to connect to. For example, if the server is an AWS EC2 instance, the host name might be similar to `ec2-54-175-135-106.compute-1.amazonaws.com`.
 5. Select **Test Connection**.
 
    If the test is unsuccessful, you might see an error stating that no Harness Delegate could reach the host, or that a credential is invalid. Make sure that your settings are correct and that a Harness Delegate is able to connect to the server.
 
-6. When the test succeeds, select **Finish** to save the WinRM credential.
+6. After the test succeeds, select **Finish** to save the WinRM credential.
