@@ -43,45 +43,52 @@ Configure the **WinRM Credential** settings as follows.
         - name: INIT_SCRIPT  
         value: ""  
         ```
-     3. Replace `value: ""` with the following script
+     3. Replace `value: ""` with the following script:
+    
+        :::info
+    
+        Make sure to use the actual Kerberos domain values, host IP, and password in the following script.
+    
+        :::
+  
+        ```
+        - name: INIT_SCRIPT
+          value: |-
+           # Set up kerberos
+           microdnf update
+           microdnf install vim
+           microdnf install yum
+           microdnf install -y yum-utils
+           yes | yum install krb5-workstation krb5-libs
+           truncate -s 0 /etc/krb5.conf
+           cat <<EOT >> /etc/krb5.conf
+           [logging]
+               default = FILE:/var/log/krb5libs.log
+               kdc = FILE:/var/log/krb5kdc.log
+               admin_server = FILE:/var/log/kadmind.log
+           [libdefaults]
+               default_realm = KERBEROS.DOMAIN
+               dns_lookup_realm = true
+               ticket_lifetime = 24h
+               renew_lifetime = 7d
+               forwardable = true
+               rdns = false
+           [realms]
+             KERBEROS.DOMAIN = {
+               kdc = "SERVER_NAME.KERBEROS.DOMAIN"
+               admin_server = "SERVER_NAME.KERBEROS.DOMAIN"
+               default_domain = "KERBEROS.DOMAIN"
+               master_kdc = "SERVER_NAME.KERBEROS.DOMAIN"
+             }
+           [domain_realm]
+             .KERBEROS.DOMAIN = KERBEROS.DOMAIN
+           EOT
+           echo 'host_ip host_name SERVER_NAME.KERBEROS.DOMAIN' >> /etc/hosts
+           echo 'password' | kinit USERNAME@KERBEROS.DOMAIN
+           klist
+        ```
      
-     ```
-     - name: INIT_SCRIPT
-       value: |-
-        # Set up kerberos
-        microdnf update
-        microdnf install vim
-        microdnf install yum
-        microdnf install -y yum-utils
-        yes | yum install krb5-workstation krb5-libs
-        truncate -s 0 /etc/krb5.conf
-        cat <<EOT >> /etc/krb5.conf
-        [logging]
-            default = FILE:/var/log/krb5libs.log
-            kdc = FILE:/var/log/krb5kdc.log
-            admin_server = FILE:/var/log/kadmind.log
-        [libdefaults]
-            default_realm = WINRM.INTERNAL
-            dns_lookup_realm = true
-            ticket_lifetime = 24h
-            renew_lifetime = 7d
-            forwardable = true
-            rdns = false
-        [realms]
-          WINRM.INTERNAL = {
-            kdc = "DC01.WINRM.INTERNAL"
-            admin_server = "DC01.WINRM.INTERNAL"
-            default_domain = "WINRM.INTERNAL"
-            master_kdc = "DC01.WINRM.INTERNAL"
-          }
-        [domain_realm]
-          .winrm.internal = WINRM.INTERNAL
-        EOT
-        echo '3.83.239.167 ec2-3-83-239-167.compute-1.amazonaws.com EC2AMAZ-L2O9PUA.WINRM.INTERNAL' >> /etc/hosts
-        echo '54.225.189.86 ec2-54-225-189-86.compute-1.amazonaws.com DC01.WINRM.INTERNAL' >> /etc/hosts
-        echo 'Harness@123456' | kinit Administrator@WINRM.INTERNAL
-        klist
-     ```
+     
      </details>
 
      :::
