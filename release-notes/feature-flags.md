@@ -39,7 +39,7 @@ This release does not include early access features.
 
 The **Python** server SDK has been updated to version **1.2.2** with the following update.
 
-* Fixed an issue where the SDK was crashing when used with the relay proxy.
+* Fixed an issue where the SDK was crashing when used with the relay proxy. (FFM-8544)
 
 
   </TabItem>
