@@ -2279,7 +2279,6 @@ To add an artifact from an S3 bucket, do the following:
 
 </details>
 
-<!-- AWS AMI END -->
 
 ### Nexus
 
