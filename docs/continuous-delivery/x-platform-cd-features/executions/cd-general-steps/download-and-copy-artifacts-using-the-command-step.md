@@ -295,35 +295,112 @@ When you run the pipeline, you will see the Command step run on each host. For e
 
 The suffix \`_N` is used to identify each host.
 
-### Adavanced Use Cases
+### Deployment templates
 
-#### Use Case: Sending an Email from a Server with an attachment
+Since a deployment template can be used on any host type, the Command step can only be run on the delegate. You must use the **Run on Delegate** option in the step.
 
-**Pre-Requisistes**
+Consequently, there is no reason to use a looping strategy when using the Command step with deployment templates.
 
-1. Install `postfix` on the target host
+## Copy and download artifact provider support
+
+The following table lists the providers supported by the copy and download commands in a Command step.
+
+Legend:
+
+* Y: Yes
+* N: No
+* N/A: Not Applicable
+
+:::note
+
+The WinRM deployment type supports Download Artifact only. You cannot use Cope Artifact in WinRM deployments.
+
+:::
+
+
+| **Provider** | **Repository/Package Types** | **Download Artifact (WinRM or SSH deployment types only)** | **Copy Artifact SSH deployment type only)** |
+| --- | --- | --- | --- |
+| AWS S3 | All | Y | Y |
+| Artifactory (JFrog) | Non-Docker | Y | Y |
+|  | Docker | N/A | N/A |
+| SMB | IIS related | Y | N/A |
+| SFTP | IIS related | Y | N/A |
+| Jenkins | All | Y | Y |
+| Docker Registry | Docker | N/A | N/A |
+| AWS ECR | Docker | N/A | N/A |
+| Google Cloud Storage | All | N/A | N/A |
+| Google Container Registry | Docker | N/A | N/A |
+| Nexus 2.x/ 3.x | Maven 2.0 | Y | Y |
+|  | NPM | Y | Y |
+|  | NuGet | Y | Y |
+|  | Docker | N/A | N/A |
+| Nexus 2.x/ 3.x | Maven 2.0 | Y | Y |
+|  | NPM | Y | Y |
+|  | NuGet | Y | Y |
+|  | Docker | N/A | N/A |
+| Azure Artifacts | Maven 2.0, NuGet | Y | Y |
+| Custom Repository | All | N/A | N (use the Exec script to use the metadata to copy artifact to target host) |
+
+## Use case: Sending an email from a server with an attachment
+
+#### Prerequisites
+
+Make sure that you have installed `postfix` on the target host.
 
 ```BASH
 $ sudo apt-get install postfix mailutils libsasl2-2 ca-certificates libsasl2-modules
 ```
 
-**Configuration Steps**
+#### Configuration
 
-1. Create a Deployment Stage with an SSH Type Service, and Infrastructure Definition
-2. Configure a command unit
+1. Create a deployment stage with an SSH type service and infrastructure definition.
+2. Add a Command step under the **Executions** tab.
+3. In **Step Parameters** enter a name and timeout duration. 
+4. In **Run the following commands**, select **Add Command**.
+   * Enter a command name.
+   * Set the **Command Type** to **Script**.
+   * Enter the **Working Directory** path where the attachment resides. The path can be a fixed value, runtime input, or an expression.
+   * In **Select script location**, select **Inline**.
+   * In **Script Type**, select **Bash** and enter the following command: 
+     
+     :::info
 
-![](./static/command-unit-emai-1.png)
+     * The `relayhost` host configuration in the following command can be any SMTP port and server.
+     
+     * You can define the body of the message with an echo statement like this, `echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  rohan@harness.io`. You can provide harness expressions to resolve the body of the message. The email address can be provided as a user's email or a Distribution List email. 
 
-![](./static/command-unit-email-2.png)
+       The `mail -A hello.jar` will send the JAR on the host as an attachment
 
-![](./static/command-unit-email-3.png)
+       The `-s` command will provide the subject of the email
 
-3. Once configured, click run
+       The email address is the last argument in the mail command.
 
-![](./static/command-unit-email-4.png)
+       For more information on sending emails with `postfix`, go to [AskUbuntu solution](https://askubuntu.com/questions/1332219/send-email-via-gmail-without-other-mail-server-with-postfix/1332322#1332322).
 
+     :::
+     
+     ```BASH
+     sudo tee -a /etc/postfix/main.cf > /dev/null <<EOT
+     relayhost = [smtp.gmail.com]:587
+     smtp_sasl_auth_enable = yes
+     smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+     smtp_sasl_security_options = 
+     smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+     smtp_use_tls = yes
+     EOT
+     sudo chmod 600 /etc/postfix/sasl_passwd
+     sudo postmap /etc/postfix/sasl_passwd
+     sudo systemctl restart postfix.service
+     echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  rohan@harness.io
+     ```
+   * Select **Add**.
+5. Select **Apply Changes**.
+6. **Run** the pipeline. 
+   
+   ![](./static/command-unit-email-4.png)
 
-**Example Pipeline**
+<details>
+<summary>Sample pipeline YAML</summary>
 
 ```YAML
 pipeline:
@@ -411,96 +488,4 @@ pipeline:
 
 ```
 
-
-**Command Unit Script Sample**
-
-- Set the **Command Type** to Script
-- Set the working directory, to the working directory where the attachment will reside (_Note: the path can be a fixed value, runtime input, or an expression_)
-- Set the Script Location to Inline 
-
-
-```BASH
-sudo tee -a /etc/postfix/main.cf > /dev/null <<EOT
-relayhost = [smtp.gmail.com]:587
-smtp_sasl_auth_enable = yes
-smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
-smtp_sasl_security_options = 
-smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
-smtp_use_tls = yes
-EOT
-sudo chmod 600 /etc/postfix/sasl_passwd
-sudo postmap /etc/postfix/sasl_passwd
-sudo systemctl restart postfix.service
-echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  rohan@harness.io
-```
-
-**The Host configurations**
-
-The relay host can be any smtp port and server. 
-
-**Defining the Body and Attachment**
-
-```
-echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  rohan@harness.io
-```
-
-You can define the body of the message with the echo statement. You can provide harness expressions to resolve the body of the message. The email address can be provided as a user's email or a Distribution List email. 
-
-The `mail -A hello.jar` will send the JAR on the host as an attachment
-
-The `-s` command will provide the subject of the email
-
-the email address is the last argument in the mail command.
-
-
-Reference [AskUbuntu solution](https://askubuntu.com/questions/1332219/send-email-via-gmail-without-other-mail-server-with-postfix/1332322#1332322)
-
-### Deployment templates
-
-Since a deployment template can be used on any host type, the Command step can only be run on the delegate. You must use the **Run on Delegate** option in the step.
-
-Consequently, there is no reason to use a looping strategy when using the Command step with deployment templates.
-
-## Copy and download artifact provider support
-
-The following table lists the providers supported by the copy and download commands in a Command step.
-
-Legend:
-
-* Y: Yes
-* N: No
-* N/A: Not Applicable
-
-:::note
-
-The WinRM deployment type supports Download Artifact only. You cannot use Cope Artifact in WinRM deployments.
-
-:::
-
-
-| **Provider** | **Repository/Package Types** | **Download Artifact (WinRM or SSH deployment types only)** | **Copy Artifact SSH deployment type only)** |
-| --- | --- | --- | --- |
-| AWS S3 | All | Y | Y |
-| Artifactory (JFrog) | Non-Docker | Y | Y |
-|  | Docker | N/A | N/A |
-| SMB | IIS related | Y | N/A |
-| SFTP | IIS related | Y | N/A |
-| Jenkins | All | Y | Y |
-| Docker Registry | Docker | N/A | N/A |
-| AWS ECR | Docker | N/A | N/A |
-| Google Cloud Storage | All | N/A | N/A |
-| Google Container Registry | Docker | N/A | N/A |
-| Nexus 2.x/ 3.x | Maven 2.0 | Y | Y |
-|  | NPM | Y | Y |
-|  | NuGet | Y | Y |
-|  | Docker | N/A | N/A |
-| Nexus 2.x/ 3.x | Maven 2.0 | Y | Y |
-|  | NPM | Y | Y |
-|  | NuGet | Y | Y |
-|  | Docker | N/A | N/A |
-| Azure Artifacts | Maven 2.0, NuGet | Y | Y |
-| Custom Repository | All | N/A | N (use the Exec script to use the metadata to copy artifact to target host) |
-
-
-
-
+</details>
