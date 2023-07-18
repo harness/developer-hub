@@ -34,6 +34,7 @@ For information about reports you can use to analyze velocity metrics, go to:
 * [CI/CD job reports](./ci-cd-reports.md)
 * [SCM reports](./scm-reports.md)
 * [Support reports](../support-metrics.md) (Issues, resolution time, response time, and requester wait time reports only)
+* [PagerDuty reports](../quality-metrics-reports/pagerduty-reports.md) (Ack trend, after hours, response, response times, and stacks reports only)
 * [Issues Report](#issues-report)
 * [Issue resolution time reports](#issue-resolution-time-reports)
 * [Issue Single Stat](#issue-single-stat)

@@ -1,7 +1,7 @@
 ---
 title: SonarQube reports
 description: SonarQube is a tool that inspects code quality.
-sidebar_position: 30
+sidebar_position: 40
 ---
 
 SonarQube is an open-source platform for continuous inspection of code quality. To analyze your SonarQube data in SEI, set up a [SonarQube connector](../../sei-integrations/sei-connector-sonarqube.md), and then add SonarQube reports to your [Insights](../../sei-insights.md).
