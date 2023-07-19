@@ -14,6 +14,12 @@ Sprint metrics can help you plan and deliver on sprints more effectively, includ
 
 Sprint metrics include commit points, commit done points, commit missed points, creep points, creep done points, and delivered points.
 
+:::info
+
+Sprint metrics are not supported for sub-tasks.
+
+:::
+
 ### Commit points
 
 Commit points represents the number of story points a team planned to deliver at the beginning of the sprint. It is the sum of story points for all the tickets in the sprint backlog at the sprint start time.
@@ -74,22 +80,12 @@ The following ratios are calculated from sprint metrics:
 * `Creep missed ratio = MAX(0, 1 - Creep done ratio)`
 * `Creep done to commit ratio = Creep done points / Commit points`
 
-## Sprint metrics widgets
+## Sprint metrics use cases
 
-Use the following widgets to analyze sprint metrics:
+These examples show how you can use sprint metrics to measure team performance.
 
-* **Sprint Metrics Single Stat:** A sprint metric averaged over the selected time interval.
-* **Sprint Metrics Percentage Trend Report:** Time series trend of selected [sprint metrics ratios](#sprint-metrics-ratios). Recommended for visualizing changes in the **commit done ratio**, **total done to commit ratio**, and **creep to commit ratio**.
-* **Sprint Metrics Trend Report:** Recommended for visualizing a time series trend of [sprint metrics](#sprint-metrics) like **commit done points**, **creep points**, or **commit points**.
-
-When configuring sprint metrics widgets, the following two settings are popular for examining sprint metrics:
-
-* **Sprint End Date:** Use this time range filter to limit metrics to the last few sprints. It is recommended to observe sprint metrics over 2 months or 6 sprints.
-* **Sprint Report:** Use this field to limit the metrics to a selected _sprint stream_ or sprint names with a common prefix.
-
-## Example: Measure team performance in recent sprints
-
-This example shows how you can use sprint metrics to measure team performance.
+<details>
+<summary>Example #1: Measure team performance in recent sprints</summary>
 
 Use the **commit done ratio** to check the team's performance on recent sprint plans. Compute this metric as an average over the last 2 months or 6 sprints.
 
@@ -101,7 +97,16 @@ An **commit done ratio** below 60 percent indicates poor performance on sprint p
 * Vague requirements that cause rework and impact sprint delivery. Use an [Issue Hygiene Report](../quality-metrics-reports/quality-metrics.md#issue-hygiene-reports) to check the sprint's **Hygiene Score**.
 * If none of the above apply, then the team may be consistently planning for more than they can deliver.
 
-## Example: Analyze sprint performance
+Here is a flow chart illustrating the use of sprint metrics for performance analysis:
+
+<!-- ![](../static/diagram-sprint-metrics.png) -->
+
+<docimage path={require('../static/diagram-sprint-metrics.png')} />
+
+</details>
+
+<details>
+<summary>Example #2: Analyze sprint performance</summary>
 
 This example analyzes team performance over a sprint, as represented by the following JIRA sprint report:
 
@@ -136,3 +141,57 @@ Using the above points values to produce sprint metrics ratios, the results of t
 | Done/Delivered to commit ratio  | 10/10 = 100% | Indicates an overall good job delivering on commitments.   |
 | Creep to commit ratio           | 6/10 = 60%   | Indicates too much creep in the plan.                      |
 | Creep done to commit ratio      | 5/10 = 50%   | Poor performance on the plan is explained by creep.        |
+
+</details>
+
+## Sprint metrics reports
+
+Use sprint metrics reports to analyze sprint and planning metrics.
+
+:::tip
+
+When configuring sprint metrics reports, the following two settings are popular for examining sprint metrics:
+
+* **Sprint End Date:** Use this time range filter to limit metrics to the last few sprints. It is recommended to observe sprint metrics over 2 months or 6 sprints.
+* **Sprint Report:** Use this field to limit the metrics to a selected _sprint stream_ or sprint names with a common prefix.
+
+:::
+
+## Sprint Metrics Trend Report
+
+The **Sprint Metrics Trend Report** is recommended for visualizing a time series trend of sprint metrics, like **commit done points**, **creep points**, or **commit points**.
+
+<figure>
+
+![](../static/sprint-metrics-trend-report.png)
+
+<figcaption>Figure 1: A Sprint Metrics Trend Report.</figcaption>
+</figure>
+
+### Sprint Metrics Percentage Trend Report
+
+Use the **Sprint Metrics Percentage Trend Report** to examine a time series trend of selected [sprint metrics ratios](#sprint-metrics-ratios). This report is recommended for visualizing changes in the **commit done ratio**, **total done to commit ratio**, and **creep to commit ratio**.
+
+<figure>
+
+![](../static/sprint-metrics-percentage-trend-report.png)
+
+<figcaption>Figure 2: A Sprint Metrics Percentage Trend Report.</figcaption>
+</figure>
+
+### Sprint Metrics Single Stat
+
+**Sprint Metrics Single Stat** presents a single sprint metric averaged over the selected time interval.
+
+<figure>
+
+![](../static/sprint-metric-single-stat.png)
+
+<figcaption>Figure 3: A Sprint Metrics Single Stat widget.</figcaption>
+</figure>
+
+### Other reports
+
+* **Sprint Impact of Unestimated Tickets Report**
+* **Sprint Goal Report**
+* **Sprint Distribution Retrospective Report**
