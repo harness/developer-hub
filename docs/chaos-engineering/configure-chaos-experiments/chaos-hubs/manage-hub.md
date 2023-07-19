@@ -48,7 +48,7 @@ To add an experiment to a custom chaos hub:
 	![Save to ChaosHub screen](./static/manage-hub/save-to-chaos-hub-dialog.png)
 
 	:::tip
-	Including **Experiment Category Tag(s)** helps organize your experiments. When you [view](#view-chaos-hubs) the custom chaos hub, you can see all experiments, as well as experiments grouped by tag.
+	Including **Experiment Category Tag(s)** helps organize your experiments. When you [view](#view-chaos-hubs) the custom chaos hub, you can see all experiments as well as experiments grouped by tag.
 	::: 
 
 1. Select the **Hub** field, choose the custom chaos hub you want to add the experiment to, and then select **Apply**.
