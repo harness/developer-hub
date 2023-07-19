@@ -1,9 +1,9 @@
 ---
-sidebar_position: 2
-title: Go application
-description: Use a CI pipeline to build and test a Go application.
+sidebar_position: 1
+title: C# application (.NET Core)
+description: Use a CI pipeline to build and test a C# application on .NET Core.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
-slug: /ci-pipelines/build/go
+slug: /ci-pipelines/build/dotnet
 ---
 
 ```mdx-code-block
@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
   target="_self"
 />
 
-You can build and test a [Go](https://go.dev/) application using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
+You can build and test a [C#](https://go.dev/) application on [.NET Core](https://learn.microsoft.com/en-us/dotnet/core/introduction) using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
 
@@ -33,7 +33,7 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 ## Install dependencies
 
-If necessary, add a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install any dependencies.
+Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install any dependencies.
 
 ```mdx-code-block
 <Tabs>
@@ -76,7 +76,7 @@ If necessary, add a [Run step](/docs/continuous-integration/use-ci/run-ci-script
 
 ## Cache dependencies
 
-Add caching to your stage.
+Add caching to your Build (`CI`) stage.
 
 ```mdx-code-block
 <Tabs>
