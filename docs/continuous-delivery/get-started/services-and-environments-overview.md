@@ -549,7 +549,7 @@ Service overrides are different from **Environment Configuration** in the follow
 * Environment **Service Overrides**: applies to specific services you select. Whenever that service is used with that environment, the **Service Override** is applied.
 
 :::note
-Runtime inputs are not supported if you are trying to override services in a multi service and multi environment set up.
+Runtime inputs are not supported if you are trying to override services in multi-service and multi-environment set ups.
 :::
 
 #### Override priority
