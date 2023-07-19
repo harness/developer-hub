@@ -229,7 +229,7 @@ In your Shell Script step, you can export these service variables as environment
 
 :::info Limitation
 
-Shell script executing on remote hosts may not be able to export the correct value if you're using the special characters `-`, `_`, `$`, `%`, and spaces in Bash.
+Shell script executing on remote hosts cannot export the correct value if you're using special characters such as `-`, `_`, `$`, `%`, and spaces in Bash.
 
 :::
 
