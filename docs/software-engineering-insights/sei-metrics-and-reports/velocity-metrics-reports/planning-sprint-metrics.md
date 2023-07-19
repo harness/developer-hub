@@ -157,7 +157,7 @@ When configuring sprint metrics reports, the following two settings are popular 
 
 :::
 
-## Sprint Metrics Trend Report
+### Sprint Metrics Trend Report
 
 The **Sprint Metrics Trend Report** is recommended for visualizing a time series trend of sprint metrics, like **commit done points**, **creep points**, or **commit points**.
 
