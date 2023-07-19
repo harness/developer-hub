@@ -100,7 +100,7 @@ Use [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cac
           caching:
             enabled: true
             paths:
-              - YOUR_CACHE_PATH ## Only needed if you are not using 
+              - YOUR_CACHE_PATH
           sharedPaths:
             - YOUR_CACHE_PATH
 ```
@@ -183,7 +183,7 @@ If you're using Kotlin, you can take advantage of Harness' [Test Intelligence](/
                   spec:
                     shell: Sh
                     command: |-
-                      ./gradlew app:assembleRelease macrobenchmark:assemble
+                      ./gradlew test assemble -YOUR_PROJECT
                       ./gradlew testDebug
 ```
 
@@ -197,7 +197,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                   spec:
                     shell: Sh
                     command: |-
-                      ./gradlew app:assembleRelease macrobenchmark:assemble
+                      ./gradlew test assemble -YOUR_PROJECT
                       ./gradlew testDebug
               - step:
                   type: Run
@@ -228,6 +228,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                   spec:
                     shell: Sh
                     command: |-
+                      ./gradlew test assemble -YOUR_PROJECT
                       ./gradlew testDebug
 ```
 
@@ -241,6 +242,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                   spec:
                     shell: Sh
                     command: |-
+                      ./gradlew test assemble -YOUR_PROJECT
                       ./gradlew testDebug
               - step:
                   type: Run
