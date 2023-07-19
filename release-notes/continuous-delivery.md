@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe might not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page in your Harness account. 
 :::
 
-## Latest - July 18, 2023, version 79916
+## Latest - July 21, 2023, version 800xx
 
 ### Deprecation notice
 
@@ -46,9 +46,9 @@ This release does not include early access features.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
-- Fixed a UI issue causing the stage dropdown options in the Tests tab of the execution page to scroll unexpectedly when an execution is in progress. (CDS-74026, ZD-47103)	
+- Fixed a UI issue causing the stage dropdown options in the **Tests** tab of the execution page to scroll unexpectedly when an execution is in progress. (CDS-74026, ZD-47103)	
 
-- Fixed a UI issue in the File Store page where clicking on an entity link redirected to the Services page. With this fix, an entity link now points to the details page for the referenced entity. (CDS-73834, ZD-46193)	
+- Fixed a UI issue in the **File Store** page where clicking on an entity link redirected to the Services page. With this fix, an entity link now points to the details page for the referenced entity. (CDS-73834, ZD-46193)	
 
 - Fixed a UI issue to ensure that the pipeline execution UI shows correct icons for container steps. (CDS-73725, ZD-47103)	
 
@@ -77,11 +77,11 @@ This release does not include early access features.
                 - account:/s	
   ```
 
-- Fixed an issue where using selective stage execution in the advanced settings of a pipeline would cause the pipeline build to fail. This was due to incorrect index handling when processing <+pipeline> variables in shell scripts, which would result in index-array-out-of-bounds errors. (CDS-72840)	
+- Fixed an issue where using selective stage execution in the advanced settings of a pipeline would cause the pipeline build to fail. This was due to incorrect index handling when processing `<+pipeline>` variables in shell scripts, which would result in index-array-out-of-bounds errors. (CDS-72840)	
 
-- Fixed an API issue where a request to update a remote pipeline/InputSets did not update the lastUpdateAt field in the pipeline/InputSets. (CDS-72098)	
+- Fixed an API issue where a request to update a remote pipeline/InputSets did not update the `lastUpdateAt` field in the pipeline/InputSets. (CDS-72098)	
 
-- Fixed an issue where Jira and ServiceNow approvals didn't fail fast if a connector provided was an incorrect type or not present.The pipeline would repeatedly request details of the Jira/ServiceNow ticket and keep failing with the same error (connector not found or incorrect connector).
+- Fixed an issue where Jira and ServiceNow approvals didn't fail fast if a connector provided was an incorrect type or not present. The pipeline would repeatedly request details of the Jira/ServiceNow ticket and keep failing with the same error (connector not found or incorrect connector).
   
   With this fix, the pipeline fails at the very beginning of the step execution if the connector type is incorrect or not present. This avoids the repeated polling and the delayed failure. (CDS-69683)
 

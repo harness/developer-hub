@@ -28,7 +28,7 @@ This release does not include early access features.
 
 #### Fixed issues
 
-- Fixed an issue where Nexus 2 artifact details would appear as "null" in the Service Instances page. (CDS-74053)
+- Fixed an issue where Nexus 2 artifact details would appear as "null" in the **Service Instances** page. (CDS-74053)
 
 
 ### July 18, 2023, version 79915
