@@ -45,7 +45,7 @@ Hygiene misses are based on hygiene categories. The built-in categories are:
 
 Data for hygiene categories are derived from your [integrations](/docs/category/connectors-and-integrations).
 
-You can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [connectors](../sei-integrations/sei-integrations-overview.md). You can have up to ten categories.
+You can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [SEI connectors](../sei-integrations/sei-integrations-overview.md). You can have up to ten categories.
 
 You can modify the importance of each category when you [configure the Issue Hygiene Report](#configure-the-issue-hygiene-report).
 
@@ -58,11 +58,11 @@ You can modify the importance of each category when you [configure the Issue Hyg
 
    A lower weight causes a category to have a lower impact on the overall score, and a higher weight causes a category to have a larger impact on the overall score. A weight of zero excludes that category from the hygiene score calculation. Make sure the total of all weights equals 100.
 
-   In addition to the built-in categories, you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [connectors](../sei-integrations/sei-integrations-overview.md).
+   In addition to the built-in categories, you can add custom hygiene categories by configuring **Custom Hygiene Misses** in your issue management [SEI connectors](../sei-integrations/sei-integrations-overview.md).
 
 <!--image - .gitbook/assets/image (71).png -- Issue Hygiene Report widget config - Weights tab-->
 
-5. On the **Settings** tab, select the issue management system to use for this widget. Available options are based on your configured [connectors](/docs/category/connectors-and-integrations).
+5. On the **Settings** tab, select the issue management system to use for this widget. Available options are based on your configured [SEI connectors](/docs/category/connectors-and-integrations).
 
 :::tip
 

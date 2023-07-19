@@ -11,7 +11,7 @@ Use the SEI Coverity connector to integrate SEI with Coverity.
 
 :::info
 
-This connector is under development. It provides limited integration support in its current state.
+This SEI connector is under development. It provides limited integration support in its current state.
 
 :::
 

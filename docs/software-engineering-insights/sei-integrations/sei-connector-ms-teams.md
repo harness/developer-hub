@@ -11,7 +11,7 @@ Use the SEI Microsoft Teams connector to integrate SEI with Microsoft Teams.
 
 To transmit data from Microsoft Teams to SEI, you must create a service account in your Microsoft Teams account. The service account must have a user role.
 
-## Create the connector
+## Configure the connector
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Connectors** under **Data Settings**.

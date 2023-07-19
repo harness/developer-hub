@@ -11,7 +11,7 @@ Use the SEI PostgreSQL connector to integrate SEI with a Cloud-based PostgreSQL 
 
 :::info
 
-This connector is under development. It provides limited integration support in its current state.
+This SEI connector is under development. It provides limited integration support in its current state.
 
 :::
 

@@ -40,10 +40,10 @@ Deployment Frequency performance is ranked on the following grading scale:
 
 The Deployment Frequency formula depends on whether you are tracking issue management, SCM, or CI/CD. The following factors can contribute to Deployment Frequency calculations:
 
-* The connector chosen in the Workflow profile.
-  * For issue management connectors, SEI counts the number of issues deployed.
-  * For SCM connectors, SEI counts the number of PRs deployed.
-  * For CI/CD connectors, SEI counts the number of jobs deployed.
+* The SEI connector chosen in the Workflow profile.
+  * For issue management SEI connectors, SEI counts the number of issues deployed.
+  * For SCM SEI connectors, SEI counts the number of PRs deployed.
+  * For CI/CD SEI connectors, SEI counts the number of jobs deployed.
 * Filters applied to the Workflow profile.
 * Collection-level filters.
 * Widget-level filters.
@@ -54,7 +54,7 @@ The Deployment Frequency formula depends on whether you are tracking issue manag
 
 Consider the following Deployment Frequency configuration:
 
-* Connector: Jira
+* SEI connector: Jira
 * Filter: Status Category Equals Done
 * Calculation parameter: Ticket resolved in Insight time range
 * Time Range selected on the dashboard: Last 3 months
@@ -108,7 +108,7 @@ To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](../s
 1. Go to **Settings** and select **Workflow Profiles**.
 2. Select **Add Profile** or select an existing profile to modify.
 3. If this is a new profile, on the **Workflow Profile Configuration** page, enter a name for the profile.
-4. Select **Change Failure Rate**, and select the [connector](/docs/category/connectors-and-integrations) to use. Configuration details vary by connector type. Default values are pre-populated, and you can change them, if desired. For example:
+4. Select **Change Failure Rate**, and select the [SEI connector](/docs/category/connectors-and-integrations) to use. Configuration details vary by SEI connector type. Default values are pre-populated, and you can change them, if desired. For example:
 
    * Select factors to use to calculate failed deployments.
    * Select factors to use to calculate total deployments.
@@ -116,7 +116,7 @@ To monitor Change Failure Rate in SEI, you must set up a [Workflow profile](../s
 
    Here you can also select **Show absolute value** if you would rather get the absolute value than the rate (percentage).
 
-5. If you want to view or change the projects and Collections associated with the profile, select **Associations**. Projects and Collections are automatically derived from the connector you chose for **Change Failure Rate**. For more information, go to [Collections](/docs/category/collections).
+5. If you want to view or change the projects and Collections associated with the profile, select **Associations**. Projects and Collections are automatically derived from the SEI connector you chose for **Change Failure Rate**. For more information, go to [Collections](/docs/category/collections).
 6. Select **Save** to save the profile.
 7. Go to the Insight where you want to add the Change Failure Rate widget. Make sure you are in the correct project.
 8. Select **Settings**, and then select **Add Widget**.
@@ -136,10 +136,10 @@ Change Failure Rate performance is ranked on the following grading scale:
 
 The Change Failure Rate is calculated by dividing the number of failed deployments by the total number of deployments. The actual values included in this calculation are based on the following factors:
 
-* The connector chosen in the Workflow profile.
-  * For issue management connectors, SEI counts the number of issues deployed.
-  * For SCM connectors, SEI counts the number of PRs deployed.
-  * For CI/CD connectors, SEI counts the number of jobs deployed.
+* The SEI connector chosen in the Workflow profile.
+  * For issue management SEI connectors, SEI counts the number of issues deployed.
+  * For SCM SEI connectors, SEI counts the number of PRs deployed.
+  * For CI/CD SEI connectors, SEI counts the number of jobs deployed.
 * Filters applied to the Workflow profile.
 * Collection-level filters.
 * Widget-level filters.
@@ -150,7 +150,7 @@ The Change Failure Rate is calculated by dividing the number of failed deploymen
 
 Consider the following Change Failure Rate configuration:
 
-* Connector: Jira
+* SEI connector: Jira
 * Filter for Failed Deployment: Status Category Equals Done
 * Filter for Total Deployment: Status Category Equals Done, To do, In Progress
 * Calculation parameter: Ticket resolved in Insight time range

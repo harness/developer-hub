@@ -16,7 +16,7 @@ For example, in the Teams category, you can have a Collection for your Engineeri
         * Other Engineering teams...
       * Other teams...
 
-Inheritance flows down the Collection levels. For example, Collection categories and Collections inherit connectors from the associated [Harness project](/docs/category/organizations-and-projects), and child Collections inherit [Insights associations](#manage-insights-associations) from their ancestor Collections. For more information about the relationship between projects, Collection categories, and Collections, go to [Collection hierarchies](./collections-overview.md).
+Inheritance flows down the Collection levels. For example, Collection categories and Collections inherit SEI connectors from the associated [Harness project](/docs/category/organizations-and-projects), and child Collections inherit [Insights associations](#manage-insights-associations) from their ancestor Collections. For more information about the relationship between projects, Collection categories, and Collections, go to [Collection hierarchies](./collections-overview.md).
 
 ## View Collections
 

@@ -9,7 +9,7 @@ Use the SEI Checkmarx SAST connector to integrate SEI with Checkmarx Static Anal
 
 :::info
 
-This connector is under development. It provides limited integration support in its current state.
+This SEI connector is under development. It provides limited integration support in its current state.
 
 :::
 

@@ -21,7 +21,7 @@ SEI also helps your teams drive continuous improvement by leveraging best practi
 To start using SEI, configure the following:
 
 * [Collections](/docs/category/collections)
-* [Connectors and integrations](/docs/category/connectors-and-integrations)
+* [SEI connectors and integrations](/docs/category/connectors-and-integrations)
 * [Profiles](/docs/category/profiles)
 * [Insights](/docs/software-engineering-insights/sei-insights.md)
 * [Metrics and reports](/docs/category/metrics-and-reports)

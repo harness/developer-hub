@@ -15,7 +15,7 @@ To create or edit a Trellis profile:
 
 :::info Predefined Trellis profiles
 
-Some Trellis profiles are automatically created when you create a Harness project or add certain types of [connectors](/docs/category/connectors-and-integrations). You can associate predefined profiles with [Collections](../sei-collections/manage-collections.md).
+Some Trellis profiles are automatically created when you create a Harness project or add certain types of [SEI connectors](/docs/category/connectors-and-integrations). You can associate predefined profiles with [Collections](../sei-collections/manage-collections.md).
 
 You can't delete predefined profiles. If you don't want to use a predefined profile, make sure it isn't associated with any Collections.
 

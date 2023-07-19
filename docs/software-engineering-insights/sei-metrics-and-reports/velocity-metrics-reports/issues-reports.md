@@ -27,7 +27,7 @@ The following settings are available to configure the Issues Report:
    * **X-axis:** Select the attribute to use for the X-axis. For example, if you selected the **Number of Tickets** metric for the Y-axis, you could select **Issues Resolved by week** for the X-axis. Additional examples of X-axis dimensional attributes include **Project**, **Assignee**, **Labels**, **Priority**, and so on.
    * **Stacks:** Select how you want to group data in each X-axis dimension. For example, if you select **Priority** for the X-axis and stack by **Status Category**, then data in each X-axis column are grouped by status.
 * **Settings:**
-   * Select the issue management system to use for this widget. Available options are based on your [connectors](/docs/category/connectors-and-integrations).
+   * Select the issue management system to use for this widget. Available options are based on your [SEI connectors](/docs/category/connectors-and-integrations).
    * Select how you want to sort X-axis data, such as ascending or descending.
    * Select the maximum number of values to show on the X-axis.
    * Select the visualization style for the widget, such as bar chart, donut chart, multi-line chart, or percentage-stacked bar chart.
@@ -144,7 +144,7 @@ On the **Aggregations** tab, you can select the dimension, from your issue manag
 
 On the **Settings** tab, you can:
 
-* Select the issue management system to use for this widget. Available options are based on your configured [connectors](/docs/category/connectors-and-integrations).
+* Select the issue management system to use for this widget. Available options are based on your configured [SEI connectors](/docs/category/connectors-and-integrations).
 * Select how you want to sort X-axis data, such as ascending or descending.
 * Select the maximum number of unique values to show on the X-axis.
 
@@ -254,7 +254,7 @@ To get the most benefit from this report, the following best practices are recom
 
 This widget requires both the release time and resolution time of issues as mandatory inputs. This is because the deployment process can only include tickets that have reached the **Resolved** status.
 
-You can select any attributes, such as priority, status, labels, components, or any other field, to precisely refine this report according to your release process. Available options are based on your [connectors](/docs/category/connectors-and-integrations). If you add multiple filters, they are inherently combined by `AND` operators.
+You can select any attributes, such as priority, status, labels, components, or any other field, to precisely refine this report according to your release process. Available options are based on your [SEI connectors](/docs/category/connectors-and-integrations). If you add multiple filters, they are inherently combined by `AND` operators.
 
 :::tip
 

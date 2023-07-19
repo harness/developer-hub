@@ -21,7 +21,7 @@ To transmit data from Salesforce to SEI, you must create an SEI user in your Sal
 
 For more information, go to the Salesforce documentation on [creating or cloning profiles](https://help.salesforce.com/s/articleView?id=sf.users_profiles_cloning.htm&type=5) and [adding a single user](https://help.salesforce.com/s/articleView?id=sf.adding_new_users.htm&type=5).
 
-## Create the connector
+## Configure the connector
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Connectors** under **Data Settings**.
