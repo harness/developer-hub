@@ -67,6 +67,12 @@ You can create triggers in Harness to execute a pipeline under multiple conditio
 
 When a freeze is running, triggers will not execute frozen pipelines. The trigger invocations are rejected. 
 
+:::info 
+
+Pipelines executed with custom webhook triggers can override deployment freeze. This can be enabled by associating the API key or Service Account API key authorization with deployment freeze override permissions.
+
+:::
+
 You can create a freeze window notification to notify users when a trigger invocation was rejected. Notifications are described below.
 
 ### API freeze

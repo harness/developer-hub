@@ -14,7 +14,7 @@ In Harness IDP, a service onboarding pipeline (also known as a software template
 
 <!-- See it in action: Demo video -->
 
-**To get started, check out the tutorial to [create your first service onboarding pipeline](/tutorials/internal-developer-portal/create-your-first-service-onboarding-pipeline).**
+**To get started, check out the tutorial to [create your first service onboarding pipeline](/tutorials/internal-developer-portal/service-onboarding-pipeline).**
 
 ## Template registration
 

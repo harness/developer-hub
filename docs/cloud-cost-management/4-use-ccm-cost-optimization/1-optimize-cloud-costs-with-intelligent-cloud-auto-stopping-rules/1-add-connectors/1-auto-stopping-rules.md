@@ -21,7 +21,7 @@ AutoStopping Rules make sure that your non-production resources run only when us
 
 The following blog post walks you through how to manage your idle cloud costs:
 
-[Cloud AutoStopping – Active Management of Idle Cloud Costs](https://harness.io/blog/product-updates/cloud-autostopping/)
+[Cloud AutoStopping – Active Management of Idle Cloud Costs](https://www.harness.io/blog/cloud-autostopping)
 
 ### What is AutoStopping Rule?
 

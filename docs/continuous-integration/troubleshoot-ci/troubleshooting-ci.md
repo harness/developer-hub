@@ -8,6 +8,11 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+```mdx-code-block
+import Kubevict from '/docs/continuous-integration/shared/k8s-pod-eviction-trbs.md';
+import Dhrl from '/docs/continuous-integration/shared/docker-hub-rate-limiting-trbs.md';
+```
+
 This topic contains troubleshooting information for error messages and other issues that can arise with Harness CI. For more Harness troubleshooting guidance, go to [Troubleshooting Harness](/docs/troubleshooting/troubleshooting-nextgen).
 
 :::tip Troubleshooting tools
@@ -83,11 +88,7 @@ For more information, refer to the following Microsoft Azure troubleshooting doc
 
 ## CI pods appear to be evicted by Kubernetes autoscaling
 
- Harness CI pods shouldn't be evicted due to autoscaling of Kubernetes nodes because [Kubernetes doesn't evict pods that aren't backed by a controller object](https://github.com/kubernetes/autoscaler/blob/master/cluster-autoscaler/FAQ.md#what-types-of-pods-can-prevent-ca-from-removing-a-node). However, if you notice either sporadic pod evictions or failures in the Initialize step in your [Build logs](/docs/continuous-integration/use-ci/viewing-builds.md), add the following annotation to your [Kubernetes cluster build infrastructure settings](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings.md#infrastructure):
-
-```
-"cluster-autoscaler.kubernetes.io/safe-to-evict": "false"
-```
+<Kubevict />
 
 ## Delegate is not able to connect to the created build farm
 
@@ -97,7 +98,7 @@ For more delegate and Kubernetes troubleshooting guidance, go to [Troubleshootin
 
 ## Docker Hub rate limiting
 
-By default, Harness uses anonymous access to [Harness Docker Hub](https://hub.docker.com/u/harness) to [pull Harness images](/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci.md). If you experience rate limiting issues when pulling images, [use a Docker connector to connect to the Harness container image registry](/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/) and provide login information in the [connector's authentication settings](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials).
+<Dhrl />
 
 ## Out of memory errors with Gradle
 

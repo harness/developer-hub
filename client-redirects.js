@@ -33,6 +33,30 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },
     //===================================================================================
+
+    // Created by schoudhury on July 16, 2023
+    {
+      from: "/tutorials/internal-developer-portal/create-your-first-service-onboarding-pipeline",
+      to: "/tutorials/internal-developer-portal/service-onboarding-pipeline",
+    },
+
+    // Create by aimurphy for branch DOC-3386 on July 11, 2023
+
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-build-image-updates",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-build-image-updates",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
+    },
+
+    {
+      from: "/docs/continuous-integration/use-ci/build-stage-settings/ci-build-image-updates",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
+    },
+
     
     // Created by roshnisarangadharan from branch fix-broken-links-cd on July 12 2023
 
@@ -1259,7 +1283,7 @@ module.exports = {
     },
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/kubernetes-autostopping-for-istio",
-      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/kubernetes-autostopping-for-istio",
+      to: "/docs/cloud-cost-management/getting-started-ccm/quick-start-guides/kubernetes-autostopping-for-istio",
     },
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/review-autostopping-rules-reqs",
@@ -1859,14 +1883,11 @@ module.exports = {
 
     //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
     {
-      from: "/docs/continuous-integration/ci-technical-reference/ci-build-image-updates",
-      from: "/docs/continuous-integration/use-ci/build-stage-settings/ci-build-image-updates",
-      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-build-image-updates",
+      from: "/docs/continuous-integration/ci-technical-reference/harness-ci",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
     },
 
-    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
     {
-      from: "/docs/continuous-integration/ci-technical-reference/harness-ci",
       from: "/docs/continuous-integration/use-ci/build-stage-settings/harness-ci",
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
     },

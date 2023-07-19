@@ -2,28 +2,27 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-06-28T10:00
+date: 2023-07-18T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
-Review the notes below for details about recent changes to Harness Delegate, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
 
-Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/delegate/rss.xml" />
 
-:::info note
-Harness Delegate, NextGen SaaS releases every two weeks. Harness Platform, NextGen SaaS and Harness Platform, and FirstGen SaaS release weekly. New features, early access features, and fixes for Harness Platform, NextGen SaaS, and FirstGen SaaS that do not require a new delegate version are included in the Harness Platform release notes. For NextGen Harness Platform release notes, go to [Harness Platform release notes](/release-notes/platform). For FirstGen release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
-:::
+Review the notes below for details about recent changes to Harness Delegate (NextGen SaaS). For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
 :::info note
+Harness Delegate (NextGen SaaS) releases every two weeks. On the other hand, Harness NextGen & FirstGen SaaS Platforms releases are weekly. New features, early access features, and fixes for Harness NextGen & FirstGen SaaS Platform that do not require a new delegate version are included in the Harness Platform release notes. For NextGen Platform release notes, go to [Harness Platform release notes](/release-notes/platform). For FirstGen Platform release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes).
+
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 28, 2023, Harness version 79714, Harness Delegate version 79707
+## Latest - July 18, 2023, Harness version 79916, Harness Delegate version 79904
 
-Harness NextGen release 79714 includes the following changes for the Harness Delegate.
+Harness NextGen release 79916 includes the following changes for the Harness Delegate.
 
 ### Deprecation notice
 
@@ -36,18 +35,90 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
   <TabItem value="What's new">
 ```
 
-This release introduces the following new features and enhancements:
+- The Splunk connector has been enhanced to include support for Bearer Token. (OIP-598)
 
-- You can now see disconnected delegate details in selection logs and error messages when there are no eligible delegates in an active state to execute tasks. (PL-37900)
-
-- The delegate JRE is upgraded to 11.0.19_7. (PL-37994)
+- The List Tokens API now supports listing all the personal access tokens or service account tokens in the account. The API has been enhanced as follows:
+   1. If you have user management permissions, you can list all the Personal Access Tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
+   2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
 
-This release includes the following early access feature:
+- Harness added the ability to acquire only the configured maximum number of tasks. This allows Harness Manager to use the task capacity to determine whether to assign a task to the delegate or queue it. You can configure the maximum number of tasks using the Env variable `DELEGATE_TASK_CAPACITY`. For example, if you set `DELEGATE_TASK_CAPACITY` to a value of 2 and execute 6 tasks in parallel, Harness Manager executes only 2 tasks at a time. If you don't configure `DELEGATE_TASK_CAPACITY`, Harness Manager executes all 6 tasks in parallel. (PL-39351)
+
+   This functionality is behind a feature flag, `DELEGATE_TASK_CAPACITY_CHECK`. When the feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
+
+  
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+- Cron triggers artifact setting failed when modified regex did not match any build. (CDS-72589, ZD-46323)
+
+  Harness initially modifies the regex to see if it matches any build. The trigger was failing if it did not match. Now, if the regex does not match any build, Harness will use the original regex.
+
+- Artifactory artifact source **Artifact Name** regex value was not working correctly. (CDS-73150)
+
+  Harness has added support for regex values for generic type Artifactory artifacts.
+
+- The sort order on the pipelines list page was incorrect. (CDS-73216)
+
+   Now, Harness supports case-insensitive sorting for pipelines, input sets, and pipeline executions.
+
+- The `<+configFile.getAsBase64()>` expression not resolving correctly when the content had new lines. (CDS-73424)
+
+  The issue occurred with newline characters while encoding config files. This is fixed and Harness now replaces newline characters with unicode.
+
+- The Tokens list page returned a display error when tokens were present and there were multiple pages of results. (PL-36734)
+
+  A code enhancement to reset the pagination on the Tokens list page after any token is deleted fixed this issue. Previously, if you deleted the last token on any page after the first page, the page displayed an empty result list.
+
+- The `listDelegates` API failed when custom selectors were present in the delegate. (PL-39779)
+
+   A code enhancement to update custom tags fixed this issue.
+
+- The listing API failed with an `UnsupportedOperationException` when custom tags were present. Filter APIs failed with NPEs. (PL-39824)
+
+   A code enhancement fixed these issues.
+
+- The delegate token list result from the `DelegateTokenStatus` API endpoint displayed all values as `null`. (PL-39440)
+
+   A code enhancement for the `DelegateTokenStatus` endpoint to return token values even when token details are not fetched by token name fixed this issue. Token values only populate when the user has edit delegate permission. If the user doesn't have edit delegate permission, the value remains `null`.
+
+- The AWS connector widget's prefix field did not accept prefixes starting with a slash. Such slashes were stripped off, and this led to undesired behavior. (PL-39194, ZD-45104)
+
+   Prefixes that begin with a slash are now supported.
+
+- You could not create Azure Key Vault connectors in Harness NextGen even when you used the service principal credentials that successfully created Azure Key Vault connectors in Harness FirstGen. After you entered the service principal credentials, the Vault setup window stopped responding. After several minutes, the following message is displayed: `None of the active delegates were available to complete the task. ==> : 'Missing capabilities: [https:null.vault.azure.net]'` (PL-39783, ZD-46756)
+
+   This issue is now fixed.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>Expand this section to view changes to previous releases</summary>
+
+#### June 28, 2023, Harness version 79714, Harness Delegate version 79707
+
+Harness NextGen release 79714 includes the following changes for the Harness Delegate.
+
+##### What's new
+
+- You can now see disconnected delegate details in selection logs and error messages when there are no eligible delegates in an active state to execute tasks. (PL-37900)
+
+- The delegate JRE is upgraded to 11.0.19_7. (PL-37994)
+
+- When a delegate token is revoked, Harness now sends `SELF_DESTRUCT` to all delegates that are using the revoked token. (PL-38957)
+
+##### Early access
 
 - Added a new field in the release history for Blue Green deployments to differentiate between environments. (CDS-69961)
 
@@ -56,13 +127,8 @@ This release includes the following early access feature:
   This is an enhancement to the Kubernetes Blue Green Stage Scale Down step. You can now scale down your last successful stage environment only if the primary resources exist. This enhancement helps you efficiently manage your resources, and prevent deleting the important resources.
 
   Make sure that the infrastructure definition of these resources and the Blue Green service are the same. This is necessary as Harness identifies resources from the release history, which is mapped to a release name. If you configure a different infrastructure definition, it might lead to scaling down important resources.
-  
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
 
-This release includes the following fixes:
+##### Fixed issues
 
 - A project-level template crashed when opened. (CDS-71980, ZD-45950)
 
@@ -101,21 +167,12 @@ This release includes the following fixes:
 
 - Account-level connectors with resource groups set to **Specified** were not available at the project-level. (PL-38828)
 
-   This issue is fixed with a code enhancement. The connectors list now shows the connectors for which users have resource group permissions set.
+   This issue is now fixed. The connectors list shows the connectors for which users have resource group permissions set.
 
 - The account-level **Session Timeout (in minutes)** allowed values greater than the 4320 minute maximum. (PL-32498)
 
    This issue has been resolved by adding a code validation. The field no longer accepts values above 4320 minutes.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>Expand this section to view changes to previous releases</summary>
 
 #### June 9, 2023, Harness version 79516, Harness Delegate version 79503
 

@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-07-12T10:00:25
+date: 2023-07-19T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -11,35 +11,113 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Review the notes below for details about recent changes to Harness Feature Flags (FF), NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/feature-flags/rss.xml" />
 
-Harness publishes security advisories for every release. Go to [trust.harness.io](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+Review the notes below for details about recent changes to Harness Feature Flags (FF). For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+
 
 :::info note
-Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 13, 2023
+## Latest - July 19, 2023
 
-```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
-```
 
 This release does not include new features.
 
-```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
-```
 
 This release does not include early access features.
 
-
-```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
-```
+
+#### Feature Flags server
+
+The Feature Flags server has been updated to version **1.1077.0** with the following updates.
+
+* Previously, the developer count reported under the Feature Flags license usage page (**Account Settings > Subscriptions > Feature Flags > License Count**) included a 'System' user that should not be counted towards the customer's total count of developers. This fix excludes the 'System' user from the count. (FFM-8658)
+
+* Previously, targets sent by the server-side SDKs were not being updated in the database. This meant if a server-side target changed, evaluations worked as expected, but the updated attributes were not shown in the UI. This fix ensures targets are correctly updated. (FFM-8600)
+
+
+  </TabItem>
+</Tabs>
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### July 18, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Android** client SDK has been updated to version **1.1.2** with the following update.
+
+* There was an issue where the python SDK failed when connecting to the proxy. When connecting to Harness SaaS, the SDK extracts the `accountID` from the auth response and adds it to a header in all future requests. The `accountID` is not availabe to the SDK when connecting to the proxy, so it failed due to its absence. This fix ensures the SDK skips the header if `accountID` does not exist. (FFM-8686)
+
+#### July 17, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.2.2** with the following update.
+
+* Fixed an issue where the SDK was crashing when used with the relay proxy. (FFM-8544)
+
+#### July 14, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Node.js** server SDK has been updated to version **1.3.1** with the following updates.
+
+* Previously, calling waitForInitialization was resolving before the SDK was fully initialized, leading to default values being served until initialization completes. This issue has been fixed. (FFM-8615)
+
+#### July 13, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
 
 #### Feature Flags server
 
@@ -50,15 +128,6 @@ The Feature Flags server has been updated to version **1.1076.0** with the follo
 * The flag pipeline was not updating the build number. This issue has been fixed. (FFM-8140)
 
 * Target attributes were not updating on conflict. This issue has been fixed. (FFM-8549, ZD 46770)
-
-
-  </TabItem>
-</Tabs>
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### July 4, 2023
 
