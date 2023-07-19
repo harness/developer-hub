@@ -24,7 +24,7 @@ To add a custom chaos hub:
 
 1. In Harness, navigate to the **Chaos > ChaosHubs**, and then select **+ New ChaosHub**.
 
-1. Enter a **Name** for the hub, and optionally, add a **Description** and **Tags**.
+1. Enter a **Name** for the hub and, optionally, add a **Description** and **Tags**.
 
 1. Select **Continue**.
 
