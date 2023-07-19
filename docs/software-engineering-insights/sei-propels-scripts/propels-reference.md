@@ -59,7 +59,7 @@ The value of `return` is an object containing output data. The output schema is 
 
 ## SEI services
 
-Use the `levelops` object to invoke [SEI services](#sei-services).
+Use the `levelops` object to invoke SEI services.
 
 ### CI/CD
 
