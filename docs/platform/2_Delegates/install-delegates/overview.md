@@ -61,6 +61,9 @@ For custom certificates, go to [Install delegates with custom certificates](/doc
 
 The legacy delegate used `DELEGATE_GROUP_NAME` for group names. This environment is not valid in NextGen. Use `DELEGATE_NAME` for group names. 
 
+### Connection check
+The immutable delegate launches a script to check connectivity from delegate to Harness Manager endpoint at the time of starting a delegate. You can disable this by setting `PRECHECK_CONN` environment variable to `false`.
+
 ## Additional installation approaches
 
 ### Install Docker delegate to Amazon ECS Fargate
