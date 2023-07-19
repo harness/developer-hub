@@ -233,7 +233,7 @@ Shell script executing on remote hosts cannot export the correct value if you're
 
 :::
 
-Run the pipeline and see that the value of these service variables passed as environment variables.
+Run the pipeline and see the value of these service variables passed as environment variables.
 
 <docimage path={require('./static/export-srv-var-as-env-var.png')} width="100%" height="100%" title="Click to view full size image" />  
 
