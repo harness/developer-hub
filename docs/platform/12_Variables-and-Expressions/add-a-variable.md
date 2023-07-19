@@ -227,9 +227,15 @@ Let's consider an example where you have added the following service variables:
 
 In your Shell Script step, you can export these service variables as environment variables if you had enabled the **Export Service Variables as Env Variables** setting.
 
+:::info Limitation
+
+The shell script executing on remote hosts may not be able to export the correct value if you're using the special characters `-`, `_`, `$`, `%`, and spaces in Bash.
+
+:::
+
 Run the pipeline and see that the value of these service variables passed as environment variables.
 
 <docimage path={require('./static/export-srv-var-as-env-var.png')} width="100%" height="100%" title="Click to view full size image" />  
 
-**Limitations:** The shell script executing on remote hosts may not be able to export the correct value if you're using the special characters `-`, `_`, `$`, `%`, and spaces in Bash.
+
 
