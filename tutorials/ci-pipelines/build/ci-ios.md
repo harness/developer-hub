@@ -1,5 +1,5 @@
 ---
-sidebar_position: 7
+sidebar_position: 8
 title: iOS and macOS applications
 description: Use a CI pipeline to build and test iOS and macOS applications.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
