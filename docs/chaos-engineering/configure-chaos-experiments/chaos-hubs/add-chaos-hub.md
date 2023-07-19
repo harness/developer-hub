@@ -28,7 +28,7 @@ To add a custom chaos hub:
 
 1. Select **Continue**.
 
-1. In the Git Connection screen, add a new Git connector to access and sync your repository with Harness. 
+1. On the Git Connection screen, add a new Git connector to access and sync your repository with Harness. 
 
 	![Git Connection screen](./static/add-chaos-hub/initial-git-connection-screen.png)
 
