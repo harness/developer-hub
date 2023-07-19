@@ -16,6 +16,21 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### July 21, 2023, version 800xx
+
+#### What's new
+
+This release does not include new features.
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Fixed an issue where Nexus 2 artifact details would appear as "null" in the Service Instances page. (CDS-74053)
+
+
 ### July 18, 2023, version 79915
 
 #### What's new

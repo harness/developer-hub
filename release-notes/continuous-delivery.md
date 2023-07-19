@@ -32,6 +32,75 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
   <TabItem value="What's new">
 ```
 
+This release does not include new features. 
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not include early access features.
+
+  
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+- Fixed a UI issue causing the stage dropdown options in the Tests tab of the execution page to scroll unexpectedly when an execution is in progress. (CDS-74026, ZD-47103)	
+
+- Fixed a UI issue in the File Store page where clicking on an entity link redirected to the Services page. With this fix, an entity link now points to the details page for the referenced entity. (CDS-73834, ZD-46193)	
+
+- Fixed a UI issue to ensure that the pipeline execution UI shows correct icons for container steps. (CDS-73725, ZD-47103)	
+
+- Harness does not currently support using expressions in failure strategies, so this support has been removed from the UI. Harness has a roadmap item to simplify YAML definitionss, which will support using expressions in failure strategies. (CDS-73614)	
+
+- Fixed an issue with the `/ng/api/environmentsV2` endpoint. Previously, the endpoint would ignore overrides in YAML payloads when posting a request to create an environment. This endpoint now supports overrides in YAML environment definitions, as shown in the following example. (CDS-73496)
+
+  ```yaml
+  environment:
+    name: coola
+    identifier: coola
+    tags: {}
+    type: Production
+    orgIdentifier: default
+    projectIdentifier: H
+    overrides:
+      manifests:
+      - manifest:
+          identifier: sdda
+          type: Values
+          spec:
+            store:
+              type: Harness
+              spec:
+                files:
+                - account:/s	
+  ```
+
+- Fixed an issue where using selective stage execution in the advanced settings of a pipeline would cause the pipeline build to fail. This was due to incorrect index handling when processing <+pipeline> variables in shell scripts, which would result in index-array-out-of-bounds errors. (CDS-72840)	
+
+- Fixed an API issue where a request to update a remote pipeline/InputSets did not update the lastUpdateAt field in the pipeline/InputSets. (CDS-72098)	
+
+- Fixed an issue where Jira and ServiceNow approvals didn't fail fast if a connector provided was an incorrect type or not present.The pipeline would repeatedly request details of the Jira/ServiceNow ticket and keep failing with the same error (connector not found or incorrect connector).
+  
+  With this fix, the pipeline fails at the very beginning of the step execution if the connector type is incorrect or not present. This avoids the repeated polling and the delayed failure. (CDS-69683)
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+
+#### July 18, 2023, version 79916
+
+##### What's new
+
 - Retrieve the current status of the looping strategy for stages and steps during execution. (CDS-69780)
   
   New built-in Harness expressions provide the current execution status of the looping strategy for nodes (stages/steps) using a matrix or repeat strategy.
@@ -56,12 +125,7 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
   
   This feature requires the latest Delegate version, 79904, to display console logs during execution correctly.
 
-
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 - Digest support added for Nexus 3, Github, and Artifactory [artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources). (CDS-71711)
   
@@ -70,11 +134,8 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
   The **Artifact Details** page has a new, optional **Digest** setting where you can specify the digest/SHA for a container image artifact.
   
   Specifying an image by digest, rather than just tag, is useful when you want to ensure that the image you deploy for a service is fixed and immutable. If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline execution fails.
-  
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+
+##### Fixed issues
 
 - The `<+configFile.getAsBase64()>` expression not resolving correctly when the content had new lines. (CDS-73424)
   
@@ -155,16 +216,6 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 - When the verification type was set to **Auto**, and Harness CV applied Canary analysis during verification, the test data representation inaccurately showed the analysis type as **Rolling** for all verification tasks. (OIP-608)
 
   This issue has been resolved. Now, when the verification type is set to **Auto**, the analysis type displayed during verification reflects the selection made by the majority of the verification tasks.
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 
 #### July 06, 2023, version 79811
