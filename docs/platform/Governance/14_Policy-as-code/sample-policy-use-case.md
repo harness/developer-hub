@@ -575,7 +575,7 @@ getIndex(str, stage) = result {
 
 #### Enforce a step is used only in specific pipelines
 
-The below policy can be applied on pipeline save, or on pipeline run. Users can deny a step being used in a particular list of pipelines. In the below example, users can enforce the jenkins step in a particular list of pipelines.
+The below policy can be applied on pipeline save or on pipeline run. Users can deny a step being used in a particular list of pipelines. In the below example, users can enforce the Jenkins step in a particular list of pipelines.
 
 ```TEXT
 package pipeline
