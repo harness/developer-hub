@@ -58,7 +58,7 @@ To add an experiment to a custom chaos hub:
 	This saves your experiment as a template in a custom chaos hub.
 
 :::info note
-You can also save an experiment as a template to a custom chaos hub when [creating the experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments) in Chaos Studio. The **Save** button saves the experiment itself so it appears in the Chaos Experiments page. Selecting the **down-arrow** next to **Save** lets you add the experiment as a template to a custom chaos hub.
+You can also save an experiment as a template to a custom chaos hub when [creating the experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/construct-and-run-custom-chaos-experiments) in Chaos Studio. The **Save** button saves the experiment itself so that it appears on the Chaos Experiments page. Selecting the **down-arrow** next to **Save** lets you add the experiment as a template to a custom chaos hub.
 
 ![Experiment details screen with Save and Add to ChaosHub options circled](./static/manage-hub/experiment-save-to-hub.png)
 :::
