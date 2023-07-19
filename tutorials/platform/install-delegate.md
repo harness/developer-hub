@@ -276,7 +276,13 @@ docker run --cpus=1 --memory=2g \
   -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
   harness/delegate:23.03.78904
 ```
-Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation.
+
+For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/1_Get-started/platform-concepts/view-account-info-and-subscribe-to-alerts.md).
+
+![](/docs/platform/1_Get-started/platform-concepts/static/view-account-info-and-subscribe-to-downtime-alerts-29.png)
+
+For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
 
 | Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
 | ------------------------| -------------------------------------------	|

@@ -73,11 +73,30 @@ The legacy Kubernetes delegate, denoted `latest` container image tag, is used pr
 
 ### Install Docker delegate using Podman
 
-You can install the Docker delegate using Podman by adding Podman commands to your Dockerfile. The example below uses a delegate with the immutable image type. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). 
+You can install the Docker delegate using Podman by adding Podman commands to your Dockerfile. 
+
+You can use the Docker installation command below, and edit the command using the Podman details in the sample file.
+
+### Docker installation command
+
+```bash
+docker run --cpus=1 --memory=2g \
+  -e DELEGATE_NAME=docker-delegate \
+  -e NEXT_GEN="true" \
+  -e DELEGATE_TYPE="DOCKER" \
+  -e ACCOUNT_ID=PUT_YOUR_HARNESS_ACCOUNTID_HERE \
+  -e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE \
+  -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
+  -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
+  harness/delegate:yy.03.78904
+```
+
+The example below uses a delegate with the immutable image type. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
+
 
 #### Sample Podman file
 
-```
+```bash
 sudo apt-get -y update
 
 sudo apt-get -y install podman
@@ -95,7 +114,11 @@ delegate:yy.mm.xxxxx
 podman ps
 ```
 
-Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` value with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` value with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For more information, go to [View account info and subscribe to downtime alerts](/docs/platform/1_Get-started/platform-concepts/view-account-info-and-subscribe-to-alerts.md).
+
+![](/docs/platform/1_Get-started/platform-concepts/static/view-account-info-and-subscribe-to-downtime-alerts-29.png)
+
+For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
 
 | Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
 | ------------------------| -------------------------------------------	|
