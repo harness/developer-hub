@@ -224,7 +224,7 @@ Harness enables you to configure a maximum number of tasks for each delegate. Th
 For example, if you set `DELEGATE_TASK_CAPACITY` to a value of 2 and execute 6 tasks in parallel, Harness Manager only executes 2 tasks at a time. If you don't configure `DELEGATE_TASK_CAPACITY`, Harness Manager executes all 6 tasks in parallel. 
 
 :::info note
-   This functionality is currently behind the feature flag, `DELEGATE_TASK_CAPACITY_CHECK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. When the feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
+   This functionality is currently behind the feature flag `DELEGATE_TASK_CAPACITY_CHECK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. When the feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
 :::
 
 ### Third-party tools installed with the delegate
