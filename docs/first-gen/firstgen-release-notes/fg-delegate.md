@@ -8,8 +8,6 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-# Delegate (FirstGen)
-
 These release notes document changes to Harness Delegate in Harness FirstGen.
 
 Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
@@ -21,9 +19,6 @@ To identify the cluster that hosts your account, open Harness FirstGen, go to **
 :::
 
 For FirstGen SaaS release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, go to [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
-
-
-
 
 
 ## Latest - July, 18 2023, Harness version 79916, Harness Delegate version 79904
@@ -79,7 +74,6 @@ Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
 
 <details>
 <summary>2023 releases</summary>
-
 
 ### June 28, 2023, Harness version 79714, Harness Delegate version 79707
 
@@ -237,7 +231,6 @@ This release does not include any new early access features.
 
 Upgraded org.codehaus.groovy:groovy to 3.0.15 to fix a vulnerability. (DEL-6015)
 
-
 ### March 8, 2023, Harness version 78619, Harness Delegate version 78500
 
 Harness FirstGen release 78619 includes the following feature changes and fixes for the Harness Delegate.
@@ -311,7 +304,6 @@ This release introduces the following security enhancements:
   | | 4.0.0 | |
   | scm | The Harness-generated library and version are changed with every fix. | The Harness-generated library and version are changed with every fix. |
   
-  
 - The `org_mongodb_mongodb_driver_sync` and `org_mongodb_mongodb_driver_legacy` libraries were removed from the delegate to eliminate their vulnerabilities. (DEL-5721) 
 
 #### Fixed issues
@@ -323,7 +315,6 @@ This release includes the following fixes.
 - Added validation to ensure that delegates using the YAML of the Legacy Delegate fail on start with the correct error message. (DEL-5715)
 
 - Changed delegate behavior to ensure that the tasks assigned to a delegate fail if the delegate does not send heartbeats for a period of three minutes. (DEL-5821)
-
 
 ### January 17, 2023, Harness version 78215, Harness Delegate version 78101
 
