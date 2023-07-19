@@ -14,7 +14,7 @@ Currently, this feature is behind the feature flag `NG_SVC_ENV_REDESIGN`. Contac
 
 :::
 
-In some cases, you might be using a platform that does not have first class support in Harness, such as OpenStack, WebLogic, WebSphere, Google Cloud functions, etc. We call these non-native deployments.
+In some cases, you might be using a platform that does not have first class support in Harness, such as OpenStack, WebLogic, WebSphere, etc. We call these non-native deployments.
 
 For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
 
