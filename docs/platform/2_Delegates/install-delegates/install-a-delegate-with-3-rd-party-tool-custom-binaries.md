@@ -39,7 +39,7 @@ Before you run the delegate, edit the YAML file to change the following:
 * Third-party tool custom binaries
 
 :::info note
-Add your third-party tool custom binaries to `initScript` in your `values.yaml` file to run them before delegate installation.
+For delegate Helm chart deployments, add your third-party tool custom binaries to `initScript` in your `values.yaml` file to run them before delegate installation. The default [values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) is located in the [delegate-helm-chart](https://github.com/harness/delegate-helm-chart) GitHub repo.
 :::
 
 ## Add Harness-required SDKs
