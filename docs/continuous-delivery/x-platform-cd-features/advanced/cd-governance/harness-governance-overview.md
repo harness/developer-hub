@@ -211,7 +211,7 @@ See [Use Harness Policy As Code for Feature Flags](/docs/platform/Governance/Pol
 
 Policies are evaluated against Harness [Connectors](https://developer.harness.io/docs/category/connectors).
 
-Policy Set can be configured to evaluate policies on the save of a connector.
+You can configure a Policy Set to evaluate policies when you save a container.
 
 See [Use Harness Policy As Code for Connectors](https://developer.harness.io/docs/platform/Governance/Policy-as-code/sample-policy-use-case#connector-policy-samples).
 
