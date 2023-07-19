@@ -9,7 +9,7 @@ This topic shows how to add and connect a custom chaos hub.
 
 ## Prerequisites
 
-1. Be sure you have a git repository for your custom chaos hub, where you will store experiments and faults. The repository must include two folders: `experiments` and `faults`. Here's an example:
+1. Be sure you have a Git repository for your custom chaos hub, where you will store experiments and faults. The repository must include two folders: `experiments` and `faults`. Here's an example:
 
 	![Private Hub](./static/add-chaos-hub/private-hub.png)
 
