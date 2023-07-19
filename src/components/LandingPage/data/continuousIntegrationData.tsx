@@ -75,10 +75,10 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
   },
   {
-    title: "C# application (.NET Core)",
+    title: "C# (.NET Core) application",
     module: MODULES.ci,
     description:
-      "Build and test a C# app application on .NET Core.",
+      "Build and test a C# (.NET Core) application.",
     link: "/tutorials/ci-pipelines/build/dotnet",
     type: [docType.Documentation],
     time: "15 min",
@@ -125,7 +125,7 @@ export const CIList: CardItem[] = [
     title: "C# (.NET Core)",
     module: MODULES.ci,
     description:
-      "Build and test a C# app application on .NET Core.",
+      "Build and test a C# (.NET Core) application.",
     link: "/tutorials/ci-pipelines/build/dotnet",
     type: [docType.Documentation],
     time: "15 min",

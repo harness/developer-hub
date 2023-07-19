@@ -18,7 +18,7 @@ import { MODULES } from "../../constants";
           title: "C# (.NET Core)",
           module: MODULES.ci,
           description:
-            "Build and test a C# app application on .NET Core.",
+            "Build and test a C# (.NET Core) application.",
           link: "/tutorials/ci-pipelines/build/dotnet",
           newDoc: true,
         },
