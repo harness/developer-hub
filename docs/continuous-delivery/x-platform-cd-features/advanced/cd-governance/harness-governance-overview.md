@@ -222,7 +222,7 @@ Go to [Use Harness Policy As Code for Connectors](https://developer.harness.io/d
 Currently, this feature is behind the feature flag, `CDS_OPA_TEMPLATE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-You can configure policies on templates during the creation of the template. This ensures that users follow the best practices set by their organization without the organization managing each template’s creation directly. By setting guardrails at creation time, you can reduce the number of checks needed at runtime to enforce standards.
+You can configure template policies during the creation of the template. This ensures that you follow your organization's established best practices without the need to manage each template directly. By setting guardrails at creation time, you can reduce the number of checks required at runtime to enforce standards.
 
 Users can now manage the configuration of Templates at configuration time by running policies on Template Save. During Pipeline Save, users can enforce that a specific template is being used. On Pipeline Run users can ensure that the resolved contents of the pipeline meet execution standards.
 
