@@ -22,7 +22,7 @@ The account you use to install Harness Self-Managed Enterprise Edition must have
 
 ## Update the override.yaml file
 
-The chart values, explanations of the default values, and descriptions of the fields are available at https://github.com/harness/helm-charts#values.
+Helm chart values, default value definitions, and fields descriptions are available in the [Harness Helm chart repo](https://github.com/harness/helm-charts#values).
 
 Depending on your target environment, you'll need to update the `override.yaml` file to specify a load balancer or to specify the Harness modules to be deployed.
 
