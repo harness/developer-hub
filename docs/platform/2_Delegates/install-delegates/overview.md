@@ -88,7 +88,7 @@ docker run --cpus=1 --memory=2g \
   -e DELEGATE_TOKEN=PUT_YOUR_DELEGATE_TOKEN_HERE \
   -e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/ \
   -e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE \
-  harness/delegate:yy.03.78904
+  harness/delegate:yy.mm.xxxxx
 ```
 
 The example below uses a delegate with the immutable image type. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types).
