@@ -1,7 +1,7 @@
 ---
 title: Kubernetes Autostopping for Traefik
 description: This article provides instructions to create AutoStopping rules for Kubernetes with the Traefik ingress controller.
-# sidebar_position: 30
+sidebar_position: 30
 ---
 
 This article provides instructions to create AutoStopping rules for Kubernetes with the Traefik ingress controller.
@@ -26,7 +26,7 @@ Allowing traffic to external names by setting the flag `--providers.kubernetescr
 
 
 ### Set up your cluster
-Create an AutoStopping rule in your cluster, either through harness UI or through applying YAML directly on the cluster of the form:
+Create an AutoStopping rule in your cluster, either through the Harness UI or by applying YAML directly on the cluster of the form:
 
 
 ```
