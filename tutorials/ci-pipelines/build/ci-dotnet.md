@@ -1,6 +1,6 @@
 ---
 sidebar_position: 1
-title: C# application (.NET Core)
+title: C# (.NET Core) application
 description: Use a CI pipeline to build and test a C# (.NET Core) application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/dotnet
@@ -177,6 +177,8 @@ The .NET Core SDK and other .NET libraries are pre-installed on Harness Cloud ru
 
 <TabItem value="Self-hosted">
 ```
+
+You can use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies or run commands such as `dotnet restore`.
 
 ```yaml
               - step:
