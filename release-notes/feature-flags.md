@@ -53,6 +53,24 @@ The Feature Flags server has been updated to version **1.1077.0** with the follo
 <details>
 <summary>2023 releases</summary>
 
+#### July 18, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Android** client SDK has been updated to version **1.1.2** with the following update.
+
+* There was an issue where the python SDK failed when connecting to the proxy. When connecting to Harness SaaS, the SDK extracts the `accountID` from the auth response and adds it to a header in all future requests. The `accountID` is not availabe to the SDK when connecting to the proxy, so it failed due to its absence. This fix ensures the SDK skips the header if `accountID` does not exist. (FFM-8686)
+
 #### July 17, 2023
 
 ##### What's new
@@ -65,7 +83,7 @@ This release does not include early access features.
 
 ##### Fixed issues
 
-###### Feature Flags server
+###### Feature Flags SDKs
 
 The **Python** server SDK has been updated to version **1.2.2** with the following update.
 
