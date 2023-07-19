@@ -224,7 +224,7 @@ Currently, this feature is behind the feature flag, `CDS_OPA_TEMPLATE_GOVERNANCE
 
 You can configure template policies during the creation of the template. This ensures that you follow your organization's established best practices without the need to manage each template directly. By setting guardrails at creation time, you can reduce the number of checks required at runtime to enforce standards.
 
-Users can now manage the configuration of Templates at configuration time by running policies on Template Save. During Pipeline Save, users can enforce that a specific template is being used. On Pipeline Run users can ensure that the resolved contents of the pipeline meet execution standards.
+You can now manage template configuration by running policies on Template Save. During Pipeline Save, you can enforce the use of a specific template. On Pipeline Run, you can ensure that the resolved contents of the pipeline meet execution standards.
 
 * On Template Save
 * On Pipeline Save
