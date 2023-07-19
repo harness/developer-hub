@@ -202,15 +202,15 @@ You can refer to a variable in most settings. For example, if you have an accoun
 
 Now, when you run your Pipeline the referenced value is evaluated at runtime.
 
-### Exporting service variables as environment variables in a Shell Script step
+### Export service variables as environment variables in a Shell Script step
 
-Harness has introduced a new setting, **Export Service Variables as Env Variables** to export service variables as environment variables. This setting is available at account, organization, and project-levels.
+You can use the **Export Service Variables as Env Variables** setting to export service variables as environment variables. This setting is available at account, organization, and project-levels.
 
 To enable this setting, go to **Account Setting > Account Resources > Default Settings > Pipeline**, and then set the **Export Service Variables as Env Variables** setting to `true`.
 
 When you enable this setting, service variables are available as Bash variables in a Shell Script step. You can access the service variables like you access any Bash variables. For example, the service variable, `var1` is available for use in a Shell Script step as `$var1`.
 
-When you [add a service](#use-an-account-org-or-project-variable-in-a-service-variable), you can select variables of type, **String**, **Secret**, or **Number**. 
+When you [add a service](#use-an-account-org-or-project-variable-in-a-service-variable), you can select variables of type **String**, **Secret**, or **Number**. 
 
 Let's consider an example where you have added the following service variables: 
 
@@ -229,11 +229,11 @@ In your Shell Script step, you can export these service variables as environment
 
 :::info Limitation
 
-Shell script executing on remote hosts cannot export the correct value if you're using special characters such as `-`, `_`, `$`, `%`, and spaces in Bash.
+Shell scripts executing on remote hosts cannot export the correct value if you're using special characters such as `-`, `_`, `$`, `%`, and spaces in Bash.
 
 :::
 
-Run the pipeline and see the value of these service variables passed as environment variables.
+When you run the pipeline, you can see the value of the service variables passed as environment variables.
 
 <docimage path={require('./static/export-srv-var-as-env-var.png')} width="100%" height="100%" title="Click to view full size image" />  
 
