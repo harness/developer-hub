@@ -1,9 +1,0 @@
-{
-    "position": "20", 
-    "label": "Platform concepts", 
-    "collapsible": "true", 
-    "collapsed": "true", 
-    "className": "red", 
-    "link": {"type": "generated-index", "title": "Learn platform concepts"}, 
-    "customProps": {"helpdocs_category_id": "", "helpdocs_parent_category_id":""}
-}
