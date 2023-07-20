@@ -4,15 +4,17 @@ description: Learn about rate limits that help maximize the stability of the Har
 sidebar_position: 4
 ---
 
-The Harness API uses a number of safeguard mechanisms against bursts of incoming traffic to help maximize its stability, including rate limits.
-
-:::info note
-API throttling is a type of rate limiting used to control the amount of traffic that an API can handle. It is a way of limiting the number of requests the API will accept in a given period.
-:::
+The Harness API uses several mechanisms, including rate limits, to safeguard against bursts of incoming traffic and help maximize stability.
 
 Harness has several rate limiters in the API. Users who send multiple requests in quick succession may receive status code 429 error responses.
 
-A rate limiter restricts the number of requests received by the API within any given minute, after which Harness throttles requests from the IP address. These limits include:
+A rate limiter restricts the number of requests received by the API within any given minute, after which Harness throttles requests from the IP address.
+
+:::info note
+API throttling is a type of rate limiting used to control the amount of traffic that an API can handle. It is a way of limiting the number of requests the API accepts in a given period.
+:::
+
+Harness API rate limits include:
 
 - Any call: Harness allows 5000 requests every 10 seconds (30,000 requests per minute) per IP address.
 - API calls: Harness allows 1000 requests per API key per minute.
