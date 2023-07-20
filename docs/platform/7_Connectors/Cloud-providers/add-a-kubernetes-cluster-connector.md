@@ -102,7 +102,6 @@ To use a Kubernetes Service Account (SA) and token, you will need to either use 
 
 For example, here's a manifest that creates a new SA named `harness-service-account` in the `default` namespace.
 
-
 ```
 # harness-service-account.yml  
 apiVersion: v1  
@@ -155,9 +154,9 @@ echo $TOKEN
 ```
 The `| base64 -d` piping decodes the token. You can now enter it into the Connector.
 
-:::info Creating SA for Kubernetes versions 1.24 or later
+**Creating Service Account tokens for Kubernetes versions 1.24 and later**
 
-The Kubernetes SA token is not automatically generated if the SAs are provisioned under Kubernetes versions 1.24 or later. You must create a new SA token and decode it to the `base64` format.
+The Kubernetes SA token is not automatically generated if the SAs are provisioned under Kubernetes versions 1.24 and later. You must create a new SA token and decode it to the `base64` format.
 
 Use the following command to create a SA bound token using kubectl:
 
@@ -181,8 +180,6 @@ metadata:
   annotations:
     kubernetes.io/service-account.name: "<service-account-name>"
 ```
-
-:::
 
 ### Set up delegates
 
