@@ -1,7 +1,7 @@
 ---
 title: Exporting service variables as environment variables in a Shell Script step
 description: Learn how to export service variables as environment variables when using a Shell Script step
-sidebar_position: 2
+sidebar_position: 8
 ---
 
 You can use the **Export Service Variables as Env Variables** setting to export service variables as environment variables. This setting is available at account, organization, and project-levels.
