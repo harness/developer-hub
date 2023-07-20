@@ -106,27 +106,27 @@ For an Encrypted Text secret that's been scoped to a Project, you reference the 
 
 ![](./static/add-use-text-secrets-50.png)
 
-Always reference a secret in an expression using its identifier. Names will not work.For example, if you have a text secret with the identifier `doc-secret`, you can reference it in a Shell Script step like this:
+Always reference a secret in an expression using its identifier. Names will not work.For example, if you have a text secret with the identifier `Docker_Hub_MRC`, you can reference it in a Shell Script step like this:
 
 
 ```
-echo "text secret is: " <+secrets.getValue("doc-secret")>
+echo "text secret is: " <+secrets.getValue("Docker_Hub_MRC")>
 ```
 You can reference a secret at the Org scope using an expression with `org`:
 
 
 ```
-<+secrets.getValue("org.your-secret-Id")>​
+<+secrets.getValue("org.Docker_Hub_MRC")>​
 ```
 You can reference a secret at the Account scope using an expression with `account`:
 
 
 ```
-<+secrets.getValue("account.your-secret-Id")>​​
+<+secrets.getValue("account.Docker_Hub_MRC")>​​
 ```
 Avoid using `$` in your secret value. If your secret value includes `$`, you must use single quotes when you use the expression in a script.  
-For example, if your secret in the Project scope has a value `'my$secret'`, and identifier `doc-secret`, to echo, use single quotes:  
-`echo '<+secrets.getValue("doc-secret")>'`
+For example, if your secret in the Project scope has a value `'my$secret'`, and identifier `Docker_Hub_MRC`, to echo, use single quotes:  
+`echo '<+secrets.getValue("Docker_Hub_MRC")>'`
 
 ## Invalid characters in secret names
 
