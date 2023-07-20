@@ -52,13 +52,29 @@ You can edit the [Name](#stage-name), [Description](#description), and [Tags](#t
 
 ### Shared Paths
 
-You can use **Shared Paths** to [share data across steps](../caching-ci-data/share-ci-data-across-steps-and-stages.md) or customize cache paths for [Cache Intelligence](../caching-ci-data/cache-intelligence.md) by specifying paths folders outside the default workspace.
+You can use **Shared Paths** to specify paths to folders outside the default workspace. You can use this to [share data across steps](../caching-ci-data/share-ci-data-across-steps-and-stages.md) or customize cache paths for [Cache Intelligence](../caching-ci-data/cache-intelligence.md).
 
 When a pipeline runs, it creates a temporary volume called a *workspace*. During initialization, the stage clones your codebase to the root of the workspace. Then, the steps in the stage run inside the root. The workspace is the current working directory for each step in the stage. The workspace persists for the lifetime of the stage and enables steps in that stage to communicate and share state information. The default shared working directory for a stage is `/harness`. The workspace is destroyed when the stage ends.
 
-Individual steps can communicate and share state using the workspace filesystem. The workspace is a volume, so filesystem changes persist throughout the stage lifetime. If you need to share additional volumes, you can add **Shared Paths**. Path declarations must begin with a forward slash, such as `/vol`. <!-- resolves as `/vol/harness`? -->
+Individual steps can communicate and share state using the workspace filesystem. The workspace is a volume, so filesystem changes persist throughout the stage lifetime. If you need to share additional volumes, you can add **Shared Paths**. Path declarations must begin with a forward slash, such as `/vol`.
 
 For example, the maven `m2` repo is stored in `/root/.m2` by default. If your Build stage uses Maven, you can specify `/root/.m2` as a **Shared Path** so that all steps in that stage can access that directory.
+
+### Cache Intelligence
+
+You can enable  <!-- and configure --> [Cache Intelligence](../caching-ci-data/cache-intelligence.md). This feature is only available for Linux and Windows platforms on Harness Cloud build infrastructure.
+
+For fully supported build tools with dependencies stored in the default location for the tool used, you only need to select **Enable Cache Intelligence**.
+
+For other build tools or non-default cache locations, you must provide custom cache paths in addition to enabling Cache Intelligence.
+
+<!-- select **Enable Cache Intelligence** and provide **Paths** to cache.-->
+
+Optionally, you can specify a custom cache key.
+
+<!-- Optionally, you can specify a custom cache **Key**. -->
+
+For information about supported tools, enabling cache intelligence, and configuring custom cache paths and keys, go to the [Cache Intelligence](../caching-ci-data/cache-intelligence.md) documentation.
 
 ### Advanced: Stage Variables
 
