@@ -127,6 +127,8 @@ Installing an Agent involves setting up an Agent in Harness, downloading its YAM
 
 ![fetch manifests from repo](static/gitops-archcitecture.png)
 
+You need to set up an Agent before you can set up a Cluster, Repository, or Application, as the Agent is selected in all three of these.
+
 ### Can I use Harness GitOps images from a local registry?
 
 Yes.  Pulling images from your private registry is possible and can be done by pulling the publicly available images to your private registry and then updating the GitOPS Agent YAML to use the private registry.

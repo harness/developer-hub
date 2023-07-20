@@ -8,9 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness GitOps Agent is a worker process that runs in your environment, makes secure, outbound connections to Harness SaaS, and performs all the GitOps tasks you request in Harness.
-
-You need to set up an Agent before you can set up a Cluster, Repository, or Application, as the Agent is selected in all three of these.
+GitOps Agent is a worker process that runs in your environment, makes secure, outbound connections to Harness SaaS, and performs all the GitOps tasks you request in Harness.
 
 Typically, you install the Agent in the target cluster, but you can install it any cluster and it can connect to remote clusters using the credentials you provide.
 
@@ -26,44 +24,18 @@ The Harness GitOps Agent has the following requirements:
 	For more information, see [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
 * **Namespace:** The target namespace in the cluster must already exist. Harness will not create the namespace for you.
 
-## Using existing Argo CD instance
-
-If you already have an existing Argo CD instance, see [Onboard to Harness GitOps with your own Argo](harness-git-ops-byoa.md).
-
-## Navigating to Agents page
-
-Ensure your Harness Project has the **Continuous Delivery** module enabled.
-
-![](./static/install-a-harness-git-ops-agent-86.png)
-
-In your Harness Project, click **GitOps**.
-
-The Harness GitOps **Overview**, **Applications**, and **Settings** appear. All entities other than Applications are in **Settings**.
-
-![](./static/install-a-harness-git-ops-agent-87.png)
-
-Select **Settings**. The Harness GitOps settings appear.
-
-![](./static/install-a-harness-git-ops-agent-88.png)
-
-Select **GitOps** > **Agents**.
-
-Select **New GitOps Agent**. The Agent wizard appears.
-
 ## Installing an Agent
 
-1. In **Getting started with Harness GitOps**, you have the option of installing a new Harness GitOps Agent with or without an existing Argo CD instances.  
-   Select **No**, and then click **Start**.
+1. In **Getting started with Harness GitOps**, you have the option of installing a new Harness GitOps Agent with or without an existing Argo CD instances.
+  
+   If you already have an existing Argo CD instance, proceed with [Onboard to Harness GitOps with your own Argo](harness-git-ops-byoa.md).
+   If not, select **No**, and then click **Start**.
 
-2. In **Name**, enter the name for the new Agent.  
-   In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent.
+2. In **Name**, enter the name for the new Agent. In **Namespace**, enter the namespace where you want to install the Harness GitOps Agent.
 
-3. Select **Next**. The **Download YAML** or **Download Helm Chart** settings appear.
-   ![Install Agent with YAML](./static/install-a-harness-git-ops-agent-95.png)
+3. Select **Next**. The **Download YAML** or **Download Helm Chart** settings appear. The **YAML** option lets you download the manifest YAML and the **Helm Chart** option lets you download a `helm-chart` file for the Agent.
 
-   The **YAML** option lets you download the manifest YAML and the **Helm Chart** option lets you download a `helm-chart` file for the Agent.
-
-   ![Install Agent with Helm chart](./static/install-a-harness-git-ops-agent-96.png)
+   Select your preferred option and click **Continue**
 
 4. Select **Download & Continue**. You will be prompted to save the file.
 
@@ -137,7 +109,7 @@ Select **New GitOps Agent**. The Agent wizard appears.
 
     :::
 
-5. select **Continue**.
+5. Select **Continue**.
 
    Harness will indicates that the Agent is registered.
 
@@ -147,10 +119,6 @@ Select **New GitOps Agent**. The Agent wizard appears.
    When you are finished, the **Agents** list shows the new Agent as **Healthy** and **Connected**.
 
    ![](./static/install-a-harness-git-ops-agent-91.png)
-
-   In your cloud platform Kubernetes cluster you can see the agent workload:
-
-   ![](./static/install-a-harness-git-ops-agent-92.png)
 
 Now you have the Harness GitOps Agent installed, registered, and running.
 
@@ -188,28 +156,6 @@ Yes, the Harness GitOps Agent can also work on environments where traffic is rou
    ```
    localhost,argocd-repo-server,argocd-dex-server,argocd-redis,127.0.0.1,$(KUBERNETES_SERVICE_HOST)
    ```
-
-## Troubleshooting
-
-The following solutions can help with Agent installation errors.
-
-### Agent took too long to respond
-
-If you see the error `the Agent took too long to respond` during installation of an Agent with an existing Argo CD instance, the Agent cannot connect to the Redis/repo server and needs additional `NetworkPolicy` settings.
-
-Add the following `podSelector` settings to the `NetworkPolicy` objects defined in your existing Argo CD **argocd-redis** and **argocd-repo-server** services.
-
-The following table lists the `NetworkPolicy` objects for HA and non-HA Agents, and include the YAML before and after the new `podSelector` is added.
-
-
-
-| **NetworkPolicy** | **HA Agent** |
-| --- | --- |
-| `argocd-redis-ha-proxy-network-policy` | ![](static/argocd-redis-ha-proxy-network-policy.png)  |
-| `argocd-repo-server-network-policy` | ![](static/argocd-repo-server-network-policy.png)  |
-|  | **Non-HA Agent** |
-| `argocd-redis-network-policy` | ![](static/argocd-redis-network-policy.png)  |
-| `argocd-repo-server-network-policy` | ![](static/argocd-repo-server-network-policy-nonha.png)  |
 
 ## References
 
