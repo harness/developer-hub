@@ -28,6 +28,8 @@ Harness Helm charts are available for demonstration and production environments.
 
 ## Update the override.yaml file
 
+Helm chart values, default value definitions, and field descriptions are available in the [Harness Helm chart repo](https://github.com/harness/helm-charts#values).
+
 Depending on your target environment, you'll need to update the `override.yaml` file to specify a load balancer or to specify the Harness modules to be deployed.
 
 ### Add a load balancer
