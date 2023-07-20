@@ -183,21 +183,11 @@ You can use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-s
 ```yaml
               - step:
                   type: Run
-                  identifier: install_sdk
-                  name: install_sdk
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: alpine:latest
-                    command: |-
-                      sudo apk add dotnet7-sdk
-                      sudo apk add aspnetcore7-runtime
-              - step:
-                  type: Run
                   identifier: dependencies
                   name: Dependencies
                   spec:
                     connectorRef: account.harnessImage
-                    image: alpine:latest
+                    image: mcr.microsoft.com/dotnet/sdk:7.0
                     command: |-
                       dotnet restore
 ```
@@ -318,7 +308,7 @@ Add [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-sett
                   name: Build DotNet App
                   spec:
                     connectorRef: account.harnessImage
-                    image: alpine:latest
+                    image: mcr.microsoft.com/dotnet/sdk:6.0
                     shell: Sh
                     command: |-
                       dotnet restore
@@ -384,7 +374,7 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
                   name: install converter
                   spec:
                     connectorRef: account.harnessImage
-                    image: alpine:latest
+                    image: mcr.microsoft.com/dotnet/sdk:6.0
                     shell: Sh
                     command: |-
                       dotnet tool install -g trx2junit
@@ -395,7 +385,7 @@ For your pipeline to produce test reports, you need to modify the **Run** step t
                   name: Build DotNet App
                   spec:
                     connectorRef: account.harnessImage
-                    image: alpine:latest
+                    image: mcr.microsoft.com/dotnet/sdk:6.0
                     shell: Sh
                     command: |-
                       dotnet restore
@@ -463,7 +453,7 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
                   name: runTestsWithIntelligence
                   spec:
                     connectorRef: account.harnessImage
-                    image: alpine:latest
+                    image: mcr.microsoft.com/dotnet/sdk:6.0
                     language: Csharp
                     buildEnvironment: Core
                     frameworkVersion: "6.0"
@@ -496,20 +486,111 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 <TabItem value="Harness Cloud">
 ```
 
-The .NET Core SDK and other .NET libraries are pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+The .NET SDK is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-If your application requires a specific version of a tool, you can add a **Run** step to [install it](#install-dependencies).
+If you need a version of the .NET SDK that isn't already installed, you can use a **Run** step to install it.
 
-To build and test on one or more specific frameworks, specify `<TargetFramework>` in your project. For more information, refer to the Microsoft documentation on [target frameworks](https://learn.microsoft.com/en-us/dotnet/core/versions/selection#target-framework-monikers-define-build-time-apis).
+<details>
+<summary>Install a specific .NET SDK version</summary>
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: install_dotnet
+                  name: install dotnet
+                  spec:
+                    shell: Sh
+                    command: |-
+                      sudo apk add dotnet7-sdk
+                      dotnet --info
+```
+
+</details>
+
+<details>
+<summary>Install multiple .NET SDK versions</summary>
+
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+
+```yaml
+        strategy:
+          matrix:
+            dotnetVersion:
+              - 7
+              - 5
+```
+
+2. Reference the matrix variable in your steps.
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: install_dotnet
+                  name: install dotnet
+                  spec:
+                    shell: Sh
+                    command: |-
+                      sudo apk add dotnet<+matrix.dotnetVersion>-sdk
+                      dotnet --info
+```
+
+</details>
 
 ```mdx-code-block
 </TabItem>
 <TabItem value="Self-hosted">
 ```
 
-You can specify Docker image tags in your steps. There is no need for a separate install step when using Docker.
+Specify the desired [.NET SDK image](https://hub.docker.com/_/python) tag in your steps. There is no need for a separate install step when using Docker.
 
-To build and test on one or more specific frameworks, specify `<TargetFramework>` in your project. For more information, refer to the Microsoft documentation on [target frameworks](https://learn.microsoft.com/en-us/dotnet/core/versions/selection#target-framework-monikers-define-build-time-apis).
+<details>
+<summary>Use a specific .NET SDK version</summary>
+
+```yaml
+              - step:
+                  type: Run
+                  name: dotnet version
+                  identifier: dotnet_version
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: mcr.microsoft.com/dotnet/sdk:7.0
+                    shell: Sh
+                    command: |-
+                      dontet --info
+```
+
+</details>
+
+<details>
+<summary>Use multiple .NET SDK versions</summary>
+
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+
+```yaml
+    - stage:
+        strategy:
+          matrix:
+            dotnetVersion:
+              - 7.0
+              - 6.0
+```
+
+2. Reference the matrix variable in the `image` field of your steps.
+
+```yaml
+              - step:
+                  type: Run
+                  name: dotnet Version
+                  identifier: dotnet_version
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: mcr.microsoft.com/dotnet/sdk:<+ stage.matrix.dotnetVersion >
+                    shell: Sh
+                    command: |-
+                      dotnet --info
+```
+
+</details>
 
 ```mdx-code-block
 </TabItem>
@@ -656,21 +737,21 @@ pipeline:
                     archiveFormat: Tar
               - step:
                   type: Run
-                  identifier: install_sdk
-                  name: install_sdk
+                  name: dotnet version
+                  identifier: dotnet_version
                   spec:
                     connectorRef: account.harnessImage
-                    image: alpine:latest
+                    image: mcr.microsoft.com/dotnet/sdk:7.0
+                    shell: Sh
                     command: |-
-                      sudo apk add dotnet7-sdk
-                      sudo apk add aspnetcore7-runtime
+                      dontet --info
               - step:
                   type: Run
                   identifier: dependencies
                   name: Dependencies
                   spec:
                     connectorRef: account.harnessImage
-                    image: alpine:latest
+                    image: mcr.microsoft.com/dotnet/sdk:7.0
                     command: |-
                       dotnet restore
               - step:
@@ -679,7 +760,7 @@ pipeline:
                   name: install converter
                   spec:
                     connectorRef: account.harnessImage
-                    image: alpine:latest
+                    image: mcr.microsoft.com/dotnet/sdk:7.0
                     shell: Sh
                     command: |-
                       dotnet tool install -g trx2junit
@@ -690,7 +771,7 @@ pipeline:
                   name: Build DotNet App
                   spec:
                     connectorRef: account.harnessImage
-                    image: alpine:latest
+                    image: mcr.microsoft.com/dotnet/sdk:7.0
                     shell: Sh
                     command: |-
                       dotnet restore
