@@ -23,13 +23,6 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 
 <StoScannerStepNotes />
 
-<details>
-    <summary>Scanner Template</summary>
-
-![](static/step-palette-00.png) 
-
-</details>
-
 
 ### Scan Mode
 
@@ -177,9 +170,6 @@ In the **Advanced** settings, you can use the following options:
 
 
 ## Security step configuration (_deprecated_)
- 
-
-<details><summary>Set up a Bandit scan in a Security step</summary>
 
 You can set up a Security step with [Bandit](https://bandit.readthedocs.io/en/latest/) to find common security issues in your Python code.
 
@@ -206,11 +196,10 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
-</details>
 
 
 
-## YAML configuration
+## YAML pipeline example
 
 ```mdx-code-block
 import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
