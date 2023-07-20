@@ -1,7 +1,7 @@
 ---
 title: Service Reliability Management release notes
 sidebar_label: Service Reliability Management
-date: 2023-07-06T10:00:20
+date: 2023-07-18T10:00:20
 tags: [NextGen, "service reliability management"]
 sidebar_position: 7
 ---
@@ -55,6 +55,7 @@ This release does not include any early access features.
 
 <details>
 <summary>2023 releases</summary>
+
 
 #### June 28, 2023, version 79709
 

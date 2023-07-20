@@ -85,6 +85,10 @@ In some cases, access keys, secrets, and SSH keys are needed. You can add these 
 
 ## Terragrunt steps
 
+:::note 
+Terragrunt steps are available in Deploy and Custom stages only.
+:::
+
 You can add Terragrunt steps anywhere in your CD stage's **Execution**. The most common order is Terragrunt Plan -> Terragrunt Apply -> Terragrunt Destroy. 
 
 You add the Terragrunt Rollback step in the stage **Rollback** section.
@@ -102,8 +106,11 @@ import TabItem from '@theme/TabItem';
 
 To add a Terragrunt Plan step, do the following:
 
-1. In your CD stage Execution, click **Add Step**, and then click **Terragrunt Plan**.
-2. Enter the following Terragrunt Plan settings.
+1. Do the following if you haven't yet done so:
+   1. [Add a Deploy or Custom stage](/docs/platform/pipelines/add-a-stage/) to your pipeline.
+   2. If you're setting up a Deploy stage, add a [service](https://developer.harness.io/docs/category/services) and [environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/).
+2. In the **Execution** tab, click **Add Step**, and then click **Terragrunt Plan**.
+3. Enter the following Terragrunt Plan settings.
 
 #### Name
 
@@ -198,8 +205,11 @@ You can now configure a Terragrunt Apply, Destroy, or Rollback step to use the T
 
 To add a Terragrunt Apply step, do the following:
 
-1. In your CD stage Execution, click **Add Step**, and then click **Terragrunt Apply**.
-2. Enter the following Terragrunt Apply settings.
+1. Do the following if you haven't yet done so:
+   1. [Add a Deploy or Custom stage](/docs/platform/pipelines/add-a-stage/) to your pipeline.
+   2. If you're setting up a Deploy stage, add a [service](https://developer.harness.io/docs/category/services) and [environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/).
+2. In your CD stage Execution, click **Add Step**, and then click **Terragrunt Apply**.
+3. Enter the following Terragrunt Apply settings.
 
 #### Name
 
@@ -305,8 +315,11 @@ You can now configure a Terragrunt Destroy or Rollback step to use the Terragrun
 
 To add a Terragrunt Destroy step, do the following:
 
-1. In your CD stage **Execution**, click **Add Step**, and then click **Terragrunt Destroy**.
-2. Enter the following Terragrunt Destroy settings.
+1. Do the following if you haven't yet done so:
+   1. [Add a Deploy or Custom stage](/docs/platform/pipelines/add-a-stage/) to your pipeline.
+   2. If you're setting up a Deploy stage, add a [service](https://developer.harness.io/docs/category/services) and [environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/).
+2. In your CD stage **Execution**, click **Add Step**, and then click **Terragrunt Destroy**.
+3. Enter the following Terragrunt Destroy settings.
 
 #### Name
 
@@ -371,9 +384,10 @@ For this reason, it's important that all your project members know the provision
 ```
 
 To add a Terragrunt Rollback step, do the following:
-
-1. In your CD stage Execution, click Rollback.
-2. Click **Add Step**, and then click **Terragrunt Rollback**.
+1. Do the following if you haven't yet done so:
+   1. [Add a Deploy or Custom stage](/docs/platform/pipelines/add-a-stage/) to your pipeline.
+   2. If you're setting up a Deploy stage, add a [service](https://developer.harness.io/docs/category/services) and [environment](/docs/continuous-delivery/x-platform-cd-features/environments/create-environments/).
+2. In your CD stage **Execution**, click **Add Step** and then **Terragrunt Rollback**.
 3. Enter the following Terragrunt Rollback settings.
 
 #### Name
