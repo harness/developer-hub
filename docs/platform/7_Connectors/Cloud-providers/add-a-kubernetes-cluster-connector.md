@@ -181,6 +181,9 @@ metadata:
     kubernetes.io/service-account.name: "<service-account-name>"
 ```
 
+For more details, go to [Managing Service Accounts](https://kubernetes.io/docs/reference/access-authn-authz/service-accounts-admin/).
+
+
 ### Set up delegates
 
 Regardless of which authentication method you selected, you select Harness Delegates to perform authentication for this Connector.
