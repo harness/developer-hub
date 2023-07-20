@@ -1,22 +1,44 @@
-.rs-button {
+.doc-button {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: var(--gray-50);
-  font-size: 12px;
-  padding: 10px 15px;
+  /* background-color: var(--gray-50);
   font-weight: bold;
   color: var(--gray-600);
   text-align: center;
-  border-radius: 8px;
   border: 1px solid var(--gray-400);
-  margin-bottom: 20px;
-  text-decoration: none;
+ 
+  text-decoration: none; */
   cursor: pointer;
+  background: #f3f3fa;
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+  color: var(--gray-600);
+  filter: drop-shadow(0 0 1px rgba(40, 41, 61, 0.04))
+    drop-shadow(0 2px 4px rgba(96, 97, 112, 0.16));
+  font-weight: 600;
+  margin-bottom: 20px;
+  white-space: nowrap;
 }
-.rs-button:hover {
-  background-color: var(--gray-100);
+.doc-button:hover {
+  background: white;
+  color: var(--primary-8);
 }
+.small {
+  font-size: 12px;
+  padding: 10px 15px;
+}
+.medium {
+  height: 36px;
+  font-size: 14px;
+  padding: 12px 18px;
+}
+.large {
+  font-size: 16px;
+  height: 48px;
+  padding: 12px 20px;
+}
+
 .custom-icon {
   color: var(--orange-600);
   scale: 1.5;
