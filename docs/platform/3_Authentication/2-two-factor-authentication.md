@@ -24,7 +24,7 @@ You can manage 2FA in two ways:
 * **All account users:** if you have **Create/Edit** permissions for Authentication Settings, you can enforce 2FA for all users in Harness. First, you set up 2FA for your own account, and then you can enforce 2FA account-wide in the Harness account's **Login Settings**.
 
 :::info note
-If 2FA is disabled at the account level, you can still enable 2FA for your user account. If 2FA is enabled account-wide, you cannot turn it off for your user account. When you enforce 2FA, users receive an email where they can scan a QR Code using their smartphones and a token generator app. The next time they log in with their username and password, they are prompted to use 2FA to complete the log in.
+If 2FA is disabled at the account level, you can still enable 2FA for your user account. When an administrator enables the account-level 2FA setting, Harness sends users 2FA emails but does not enable the user-level 2FA settings. Users can enable or disable the user-level setting in their profiles. When a user attempts to sign in to their account, Harness sends a 2FA challenge only if one or both of the settings (the account-level setting and the user-level setting) are enabled. If both settings are disabled, Harness does not send a 2FA challenge.
 :::
 
 ### Set up two-factor authentication for your profile
@@ -42,8 +42,6 @@ You can now see **Harness-Inc** in your 2FA token generator app, which provides 
 6. Obtain the code from your 2FA token generator app, and enter it. You can then log into your Harness account.
 
 ### Set up account-wide two-factor authentication
-
-When an administrator enables the account-level 2FA setting, Harness sends users 2FA emails but does not enable the user-level 2FA settings. Users can enable or disable the user-level setting in their profiles. When a user attempts to sign in to their account, Harness sends a 2FA challenge only if one or both of the settings (the account-level setting and the user-level setting) are enabled. If both settings are disabled, Harness does not send a 2FA challenge.
 
 Once you have set up 2FA for your account, you set it for all users and groups in the account. When 2FA is enforced, account users will experience the following changes:
 
