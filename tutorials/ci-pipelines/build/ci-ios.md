@@ -712,7 +712,7 @@ pipeline:
   <TabItem value="selfhosted" label="Self-hosted">
 ```
 
-This pipeline uses a [self-hosted VM build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) and [Save and Restore Cache from S3 steps](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
+This pipeline uses a [self-hosted VM build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) and [Save and Restore Cache from S3 steps](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache).
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), repository name, and other applicable values. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 

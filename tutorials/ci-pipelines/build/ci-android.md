@@ -21,7 +21,7 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
   target="_self"
 />
 
-You can build and test [Android](https://developer.android.com/modern-android-development)/[Kotlin](https://developer.android.com/kotlin) applications using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/), or a [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
+You can build and test [Android](https://developer.android.com/modern-android-development) applications using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/), or a [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
 
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
 
@@ -32,14 +32,14 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 ## Install dependencies
 
-Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
-
 ```mdx-code-block
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
 ```
 
 Many Android packages, such as command line tools and an emulator, are already installed on Harness Cloud Linux machines. For more information about preinstalled tools and libraries, go to the [Harness Cloud image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+
+Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
 
 ```yaml
               - step:
@@ -62,12 +62,16 @@ Many Android packages, such as command line tools and an emulator, are already i
   <TabItem value="selfhosted" label="Self-hosted">
 ```
 
+Use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to install dependencies in the build environment.
+
 ```yaml
               - step:
                   type: Run
                   identifier: dependencies
                   name: dependencies
                   spec:
+                    connectorRef: account.harnessImage
+                    image: fabernovel/android:api-30-v1.7.0
                     shell: Sh
                     command: |-
                       npm install -g firebase-tools
@@ -140,7 +144,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     connectorRef: AWS_Connector
                     region: us-east-1
                     bucket: your-s3-bucket
-                    key: cache-{{ checksum "file.jar" }} ## Example cache key based on checksum.
+                    key: cache-{{ checksum "package.json" }} ## Example cache key based on checksum.
                     archiveFormat: Tar
               - step:
                   type: Run
@@ -153,7 +157,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     connectorRef: AWS_Connector
                     region: us-east-1
                     bucket: your-s3-bucket
-                    key: cache-{{ checksum "file.jar" }} ## Example cache key based on checksum.
+                    key: cache-{{ checksum "package.json" }} ## Example cache key based on checksum.
                     sourcePaths:
                       - "YOUR_CACHE_PATH"
                     archiveFormat: Tar
@@ -174,6 +178,8 @@ If you're using Kotlin, you can take advantage of Harness' [Test Intelligence](/
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
 ```
+
+<!-- bundle exec fastlane test -->
 
 ```yaml
               - step:
@@ -220,12 +226,16 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
   <TabItem value="selfhosted" label="Self-hosted">
 ```
 
+<!-- bundle exec fastlane test -->
+
 ```yaml
               - step:
                   type: Run
                   name: Test
                   identifier: test
                   spec:
+                    connectorRef: account.harnessImage
+                    image: fabernovel/android:api-30-v1.7.0
                     shell: Sh
                     command: |-
                       ./gradlew test assemble -YOUR_PROJECT
@@ -240,6 +250,8 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                   name: Test
                   identifier: test
                   spec:
+                    connectorRef: account.harnessImage
+                    image: fabernovel/android:api-30-v1.7.0
                     shell: Sh
                     command: |-
                       ./gradlew test assemble -YOUR_PROJECT
@@ -249,6 +261,8 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                   name: Save tests
                   identifier: save_tests
                   spec:
+                    connectorRef: account.harnessImage
+                    image: fabernovel/android:api-30-v1.7.0
                     shell: Sh
                     command: |-
                       mkdir -p ~/test-results/junit/
@@ -274,33 +288,133 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 
 Android packages are pre-installed on Harness Cloud machines. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-For packages with multiple versions, use commands in **Run** steps to switch between pre-installed versions. You can use **Run** or **Plugin** steps to install additional versions.
+If you need to install additional versions, use a **Run** step. These examples use [faberNovel/docker-android](https://github.com/faberNovel/docker-android).
+
+<details>
+<summary>Use one version</summary>
 
 ```yaml
-
+              - step:
+                  type: Run
+                  name: android version
+                  identifier: android_version
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: fabernovel/android:api-30-v1.7.0
+                    shell: Sh
+                    command: |-
+                      fastlane run echo
 ```
+
+</details>
+
+<details>
+<summary>Use multiple versions</summary>
+
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+
+```yaml
+    - stage:
+        strategy:
+          matrix:
+            androidVersion:
+              - 30
+              - 31
+              - 33
+```
+
+2. Reference the matrix variable in the `image` field of your steps.
+
+```yaml
+              - step:
+                  type: Run
+                  name: android Version
+                  identifier: android_version
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: fabernovel/android:api-<+ stage.matrix.androidVersion >-v1.7.0
+                    shell: Sh
+                    command: |-
+                      fastlane run echo
+```
+
+</details>
 
 ```mdx-code-block
 </TabItem>
 <TabItem value="Self-hosted">
 ```
 
-You can use a **Run** or **Plugin** step to install Java versions that are not already installed on your host machine.
+Specify the desired Android Docker image tag in your steps. There is no need for a separate install step when using Docker.
+
+These examples use [faberNovel/docker-android](https://github.com/faberNovel/docker-android).
+
+<details>
+<summary>Use one version</summary>
 
 ```yaml
-
+              - step:
+                  type: Run
+                  name: android version
+                  identifier: android_version
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: fabernovel/android:api-30-v1.7.0
+                    shell: Sh
+                    command: |-
+                      fastlane run echo
 ```
+
+</details>
+
+<details>
+<summary>Use multiple versions</summary>
+
+1. Add the [matrix looping strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) configuration to your stage.
+
+```yaml
+    - stage:
+        strategy:
+          matrix:
+            androidVersion:
+              - 30
+              - 31
+              - 33
+```
+
+2. Reference the matrix variable in the `image` field of your steps.
+
+```yaml
+              - step:
+                  type: Run
+                  name: android Version
+                  identifier: android_version
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: fabernovel/android:api-<+ stage.matrix.androidVersion >-v1.7.0
+                    shell: Sh
+                    command: |-
+                      fastlane run echo
+```
+
+</details>
 
 ```mdx-code-block
 </TabItem>
 </Tabs>
 ```
 
-## Deploy to the Google Play Store
+## Deploy to Firebase
 
-The following examples use [Fastlane in a Continuous Integration setup](https://docs.fastlane.tools/best-practices/continuous-integration/) to deploy an app to the Google Play Store. The environment variables in these examples use [secrets](https://developer.harness.io/docs/category/secrets) and [expressions](https://developer.harness.io/docs/platform/Variables-and-Expressions/harness-variables) to store and recall sensitive values, such as `FASTLANE_PASSWORD=<+secrets.getValue('fastlanepassword')>`.
+The following examples use [fastlane in a Continuous Integration setup](https://docs.fastlane.tools/best-practices/continuous-integration/) to prepare an app for deployment to Firebase.
 
-To learn more about app distribution, go to the Google documentation on [Firebase App Distribution](https://firebase.google.com/docs/app-distribution).
+These are intended as examples only. These are not considered full, working demos. To learn more about app distribution, go to the Google documentation on [Firebase App Distribution](https://firebase.google.com/docs/app-distribution) and the fastlane documentation on [Deploying to Google Play using fastlane](https://docs.fastlane.tools/getting-started/android/release-deployment/).
+
+:::tip
+
+Use [secrets](https://developer.harness.io/docs/category/secrets) and [expressions](https://developer.harness.io/docs/platform/Variables-and-Expressions/harness-variables) to store and recall sensitive values in commands, such as `FASTLANE_PASSWORD=<+secrets.getValue('fastlanepassword')>`.
+
+:::
 
 ```mdx-code-block
 <Tabs>
@@ -308,7 +422,63 @@ To learn more about app distribution, go to the Google documentation on [Firebas
 ```
 
 ```yaml
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Fastlane Setup
+                  identifier: Fastlane_Setup
+                  spec:
+                    shell: Sh
+                    command: |-
+                      mkdir fastlane
 
+                      cat << EOF >> fastlane/Fastfile
+                      default_platform(:android)
+
+                      platform :android do
+
+                        desc "Build release code"
+                        lane :buildRelease do
+                          increment_version_code(
+                            gradle_file_path: "./app/build.gradle",
+                          )
+                          gradle(
+                            task: "assemble",
+                            flavor: "production",
+                            build_type: "release"
+                          )
+                        end
+
+                        desc "Submit a new Beta Build to Firebase App Distribution"
+                        lane :beta do
+                        buildRelease
+
+                        firebase_app_distribution(
+                            app: "Preproducion",
+                            groups: "Dev",
+                            release_notes: "Bug fixes."
+                        )
+                        end
+
+                      end
+                      ...
+                ...
+          sharedPaths:
+            - /root/.gradle
 ```
 
 ```mdx-code-block
@@ -316,8 +486,68 @@ To learn more about app distribution, go to the Google documentation on [Firebas
   <TabItem value="selfhosted" label="Self-hosted">
 ```
 
-```yaml
+This example uses a [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
 
+```yaml
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Docker
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Fastlane Setup
+                  identifier: Fastlane_Setup
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: fabernovel/android:api-30-v1.7.0
+                    shell: Sh
+                    command: |-
+                      mkdir fastlane
+
+                      cat << EOF >> fastlane/Fastfile
+                      default_platform(:android)
+
+                      platform :android do
+
+                        desc "Build release code"
+                        lane :buildRelease do
+                          increment_version_code(
+                            gradle_file_path: "./app/build.gradle",
+                          )
+                          gradle(
+                            task: "assemble",
+                            flavor: "production",
+                            build_type: "release"
+                          )
+                        end
+
+                        desc "Submit a new Beta Build to Firebase App Distribution"
+                        lane :beta do
+                        buildRelease
+
+                        firebase_app_distribution(
+                            app: "Preproducion",
+                            groups: "Dev",
+                            release_notes: "Bug fixes."
+                        )
+                        end
+
+                      end
+                      ...
+                ...
+          sharedPaths:
+            - /root/.gradle
 ```
 
 ```mdx-code-block
@@ -339,7 +569,76 @@ This pipeline uses [Harness Cloud build infrastructure](/docs/continuous-integra
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), repository name, and other applicable values. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 ```yaml
+pipeline:
+  name: default
+  identifier: default
+  projectIdentifier: default
+  orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_REPO_NAME
+        build: <+input>
+  tags: {}
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          caching:
+            enabled: true
+            paths:
+              - "YOUR_CACHE_PATH"
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  identifier: dependencies
+                  name: dependencies
+                  spec:
+                    shell: Sh
+                    command: |-
+                      npm install -g firebase-tools
+                      gem install fastlane
 
+                      fastlane add_plugin load_json
+                      fastlane add_plugin increment_version_code
+                      fastlane add_plugin firebase_app_distribution
+              - step:
+                  type: Run
+                  name: build and test
+                  identifier: build-and-test
+                  spec:
+                    shell: Sh
+                    command: |-
+                      ./gradlew test assemble -YOUR_PROJECT
+                      ./gradlew testDebug
+              - step:
+                  type: Run
+                  name: Save tests
+                  identifier: save_tests
+                  spec:
+                    shell: Sh
+                    command: |-
+                      mkdir -p ~/test-results/junit/
+                      find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} ~/test-results/junit/ \;
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "~/test-results/junit.xml"
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          sharedPaths:
+            - YOUR_CACHE_PATH
 ```
 
 ```mdx-code-block
@@ -347,12 +646,106 @@ If you copy this example, replace the placeholder values with appropriate values
   <TabItem value="selfhosted" label="Self-hosted">
 ```
 
-This pipeline uses a [local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) and [Save and Restore Cache from S3 steps](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence).
+This pipeline uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures) and [Save and Restore Cache from S3 steps](/docs/continuous-integration/use-ci/caching-ci-data/saving-cache).
 
 If you copy this example, replace the placeholder values with appropriate values for your [code repo connector](/docs/continuous-integration/use-ci/codebase-configuration/create-and-configure-a-codebase/#code-repo-connectors), repository name, and other applicable values. Depending on your project and organization, you may also need to replace `projectIdentifier` and `orgIdentifier`.
 
 ```yaml
+pipeline:
+  name: default
+  identifier: default
+  projectIdentifier: default
+  orgIdentifier: default
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODE_REPO_CONNECTOR_ID
+        repoName: YOUR_REPO_NAME
+        build: <+input>
+  tags: {}
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_NAMESPACE
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+            steps:
+              - step:
+                  type: RestoreCacheS3
+                  name: Restore Cache From S3
+                  identifier: Restore_Cache_From_S3
+                  spec:
+                    connectorRef: AWS_Connector
+                    region: us-east-1
+                    bucket: your-s3-bucket
+                    key: cache-{{ checksum "package.json" }} ## Example cache key based on checksum.
+                    archiveFormat: Tar
+              - step:
+                  type: Run
+                  identifier: dependencies
+                  name: dependencies
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: fabernovel/android:api-30-v1.7.0
+                    shell: Sh
+                    command: |-
+                      npm install -g firebase-tools
+                      gem install fastlane
 
+                      fastlane add_plugin load_json
+                      fastlane add_plugin increment_version_code
+                      fastlane add_plugin firebase_app_distribution
+              - step:
+                  type: Run
+                  name: Test
+                  identifier: test
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: fabernovel/android:api-30-v1.7.0
+                    shell: Sh
+                    command: |-
+                      ./gradlew test assemble -YOUR_PROJECT
+                      ./gradlew testDebug
+              - step:
+                  type: Run
+                  name: Save tests
+                  identifier: save_tests
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: fabernovel/android:api-30-v1.7.0
+                    shell: Sh
+                    command: |-
+                      mkdir -p ~/test-results/junit/
+                      find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} ~/test-results/junit/ \;
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "~/test-results/junit.xml"
+              - step:
+                  type: SaveCacheS3
+                  name: Save Cache to S3
+                  identifier: Save_Cache_to_S3
+                  spec:
+                    connectorRef: AWS_Connector
+                    region: us-east-1
+                    bucket: your-s3-bucket
+                    key: cache-{{ checksum "package.json" }} ## Example cache key based on checksum.
+                    sourcePaths:
+                      - "YOUR_CACHE_PATH"
+                    archiveFormat: Tar
 ```
 
 ```mdx-code-block
