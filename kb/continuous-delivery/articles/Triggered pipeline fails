@@ -1,0 +1,38 @@
+# Introduction
+
+Customer may see a triggered execution failing while a manually run execution succeeds. 
+
+## Problem Statement
+
+It has been reported by a few customers that a triggered pipeline fails. 
+
+Customer have reported seeing this message while executing the pipeline. 
+
+`No manifests configured in the service. manifest expressions will not work
+No config files configured in the service. configFiles expressions will not work
+No service hooks configured in the service. hooks expressions will not work
+Failed to complete service step`
+
+## Resolution
+
+In this scenario, the artifact source for the trigger is responsible for the error and correcting this resolves the failing trigger. 
+
+
+        - stage:
+            identifier: xxxxx
+            template:
+              templateInputs:
+                type: Deployment
+                spec:
+                  service:
+                    serviceInputs:
+                      serviceDefinition:
+                        type: CustomDeployment
+                        spec:
+                          artifacts:
+                            primary:
+                              sources:
+                                - identifier: xxxxxx
+                                  type: xxxxx
+                                  spec:
+                                    tag: <xxxxxx>
