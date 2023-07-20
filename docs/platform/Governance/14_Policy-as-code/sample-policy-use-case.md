@@ -401,6 +401,61 @@ deny[msg] {
 }
 ```
 
+#### Enforce an Approval step in a Stage Template 
+
+Enforce an Approval Step is configured in a Stage Template when a user is creating a template. Here is a sample policy that can be applied using the **On Save** ** of a template.
+
+```TEXT
+package template
+# Deny template that don't have an approval step
+# NOTE: Try removing the HarnessApproval step from your input to see the policy fail
+deny[msg] {
+    # Find all stages that are Deployments ...
+    input.template.spec.stages[i].stage.type == "Deployment"
+    # ... that are not in the set of stages with HarnessApproval steps
+    not stages_with_approval[i]
+    # Show a human-friendly error message
+    msg := sprintf("deployment stage '%s' does not have a HarnessApproval step", [input.template.spec.stages[i].stage.name])
+}
+# Find the set of stages that contain a HarnessApproval step
+stages_with_approval[i] {
+    input.template.spec.stages[i].stage.spec.execution.steps[_].step.type == "HarnessApproval"
+}
+```
+
+#### Enforce specific environments to be configured for a stage template
+
+This policy enforces only allowed environments to be configured on a stage template at design time. Here is a sample policy that can be applied using the **On Save** of a template.
+```
+package template
+# Deny pipeline template that do not use allowed environments
+# NOTE: Try removing "test" from the 'allowed_environments' list to see the policy fail
+deny[msg] {
+    # Find all deployment stages
+    stage = input.template.spec.stages[_].stage
+    stage.type == "Deployment"
+    # ... where the environment is not in the allow list
+    not contains(allowed_environments, stage.spec.environment.infrastructureDefinitions[i].identifier)
+    # Show a human-friendly error message
+    msg := sprintf("deployment stage '%s' cannot be deployed to environment '%s'", [stage.spec.environment.infrastructureDefinitions[i].identifier])
+}
+# Deny pipeline templates if the environment is missing completely
+deny[msg] {
+    # Find all deployment stages
+    stage = input.template.spec.stages[_].stage
+    stage.type == "Deployment"
+    # ... without an environment
+    not stage.spec.environment.environmentRef
+    # Show a human-friendly error message
+    msg := sprintf("deployment stage '%s' has no environment identifier", [stage.name])
+}
+# Environments that can be used for deployment
+allowed_environments = ["prod","stage"]
+contains(arr, elem) {
+    arr[_] = elem
+}
+```
+
 
 #### Enforce a stage templates use in a pipeline
 
@@ -482,6 +537,8 @@ deny[msg] {
 	msg = sprintf("In stage %s, step %s uses the wrong template, it must use template %s", [stage.name, step.name, template])
 }
 ```
+
+
 
 #### Enforce the stage structure of a pipeline
 
