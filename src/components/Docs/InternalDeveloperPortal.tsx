@@ -25,15 +25,13 @@ export default function IDP() {
                 Tutorials
               </button>
             </Link>
-          </div>
-          {/*
-            <Link href="/release-notes/feature-flags">
+            <Link href="/release-notes/internal-developer-portal">
               <button className={styles.btn}>
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />
                 Release Notes
               </button>
             </Link>
-          </div> */}
+          </div>
         </div>
         <div className={styles.spaceBetween}>
           <div className={styles.content}>
