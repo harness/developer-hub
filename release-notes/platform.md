@@ -198,7 +198,7 @@ You are missing the following permission: "View default settings" in Account sco
 
 - Improved randomness when there are multiple eligible delegates with no tasks running to avoid selecting the same delegate each time. (PL-39219)
 
-  This item is available with Harness Platform version 79503 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item is available with Harness Platform version 79606 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 #### June 09, 2023, version 79516
 
