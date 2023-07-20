@@ -76,6 +76,8 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
   <TabItem value="Fixed issues">
 ```
 
+- When Helm Deployment occurred and the Helm Deploy step timed out during Helm Steady State check, the helm rollback failed to initialize. This is fixed and now the rollback does execute. (CDS-73264). Please make sure the delegate is on 80100 for the changes.
+
 - The `<+configFile.getAsBase64()>` expression not resolving correctly when the content had new lines. (CDS-73424)
   
   The issue occurred with newline characters while encoding config files. This is fixed and Harness now replaces newline characters with unicode.
