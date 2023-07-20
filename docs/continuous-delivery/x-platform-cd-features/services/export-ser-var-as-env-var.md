@@ -36,3 +36,8 @@ Shell scripts executing on remote hosts cannot export the correct value if you'r
 When you run the pipeline, you can see the value of the service variables passed as environment variables.
 
 <docimage path={require('./static/export-srv-var-as-env-var.png')} width="100%" height="100%" title="Click to view full size image" />  
+
+## See also
+
+- [Using Shell Script steps in CD stages](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts/)
+- [Add variables](/docs/platform/variables-and-expressions/add-a-variable/#use-an-account-org-or-project-variable-in-a-service-variable)
