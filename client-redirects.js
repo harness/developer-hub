@@ -2980,6 +2980,15 @@ module.exports = {
       from: "/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem",
       to: "/docs/self-managed-enterprise-edition/monitor-harness-on-prem",
     },
+    // Created by bfisher for DOC-3432 on July 20, 2023
+    {
+      from: "/docs/platform/Get-started/platform-concepts/view-account-info-and-subscribe-to-alerts",
+      to: "/docs/platform/Get-started/view-account-info-and-subscribe-to-alerts",
+    },
+    {
+      from: "/docs/platform/Get-started/platform-concepts/platform-overview",
+      to: "/docs/platform/Get-started/platform-overview",
+    },
     // PR-2012
     {
       from: "/docs/security-testing-orchestration/sto-techref-category/custom-ingest-scan-reference",
