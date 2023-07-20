@@ -1,7 +1,7 @@
 .doc-button {
   display: inline;
   cursor: pointer;
-  background: var(--gray-300);
+  background: var(--gray-100);
   border: 1px solid var(--gray-300);
   border-radius: 4px;
   color: var(--gray-600);
