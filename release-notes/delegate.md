@@ -40,6 +40,8 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 - The List Tokens API now supports listing all the personal access tokens or service account tokens in the account. The API has been enhanced as follows:
    1. If you have user management permissions, you can list all the Personal Access Tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
    2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
+ 
+- When Helm Deployment occurred and the Helm Deploy step timed out during Helm Steady State check, the helm rollback failed to initialize. This is fixed and now the rollback does execute. (CDS-73264). Please make sure the delegate is on 80100 for the changes.
 
 ```mdx-code-block
   </TabItem>
