@@ -1,7 +1,7 @@
 ---
 title: Create perspectives
 description: Perspectives allow you to group your resources in ways that are more meaningful to your business needs.
-# sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: dvspc6ub0v
 helpdocs_category_id: e7k0qds7tw
 helpdocs_is_private: false
