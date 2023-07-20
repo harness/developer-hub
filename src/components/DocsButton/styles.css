@@ -1,14 +1,5 @@
 .doc-button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  /* background-color: var(--gray-50);
-  font-weight: bold;
-  color: var(--gray-600);
-  text-align: center;
-  border: 1px solid var(--gray-400);
- 
-  text-decoration: none; */
+  display: inline;
   cursor: pointer;
   background: #f3f3fa;
   border: 1px solid var(--gray-300);
@@ -47,8 +38,12 @@
 }
 
 .link {
+  margin: 0;
+  padding: 0;
+  display: inline;
   text-decoration: none;
 }
+
 .link:hover {
   text-decoration: none;
 }
