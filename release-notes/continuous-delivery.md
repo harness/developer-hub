@@ -76,7 +76,9 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
   <TabItem value="Fixed issues">
 ```
 
-- When Helm Deployment occurred and the Helm Deploy step timed out during Helm Steady State check, the helm rollback failed to initialize. This is fixed and now the rollback does execute. (CDS-73264). Please make sure the delegate is on 80100 for the changes.
+- The **Helm Deploy** step timed out during the Helm steady state check and Helm rollback failed to initialize. (CDS-73264)
+
+  This is now fixed and the rollback does execute. Please make sure your Harness delegate(s) are on delegate version 80100 to use these changes.
 
 - The `<+configFile.getAsBase64()>` expression not resolving correctly when the content had new lines. (CDS-73424)
   
