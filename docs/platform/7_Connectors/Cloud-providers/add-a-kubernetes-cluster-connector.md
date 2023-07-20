@@ -160,7 +160,9 @@ The Kubernetes SA token is not automatically generated if the SAs are provisione
 
 Use the following command to create a SA bound token using kubectl:
 
-`kubectl create token <service-account-name> --bound-object-kind Secret --bound-object-name <token-secret-name>`
+```
+kubectl create token <service-account-name> --bound-object-kind Secret --bound-object-name <token-secret-name>
+```
 
 You can also create SAs using manifests. For example, here's a manifest that creates a new SA:
 
