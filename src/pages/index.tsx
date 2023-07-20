@@ -9,7 +9,7 @@ import HomepageCertifications from "@site/src/components/HomepageCertifications"
 import Feedback from "@site/src/components/Feedback";
 import MDXContent from "@theme/MDXContent";
 import Lottie from "lottie-react";
-import allModuleAnimation from "./hdh_hero.json";
+import allModuleAnimation from "./assets/hdh_hero.json";
 
 import styles from "./index.module.scss";
 
