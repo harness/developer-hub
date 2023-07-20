@@ -162,7 +162,7 @@ Use the following command to create a SA bound token using kubectl:
 
 `kubectl create token <service-account-name> --bound-object-kind Secret --bound-object-name <token-secret-name>`
 
-You can create SAs using manifests also. For example, here's a manifest that creates a new SA:
+You can also create SAs using manifests. For example, here's a manifest that creates a new SA:
 
 ```
 apiVersion: v1
