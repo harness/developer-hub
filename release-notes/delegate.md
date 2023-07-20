@@ -107,7 +107,7 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
 ## Hotfix version 79906
 
-- Helm deployments timed out after the initial installation/upgrade phase, preventing the execution of a Helm rollback.
+- Helm deployment steps timed out after the initial installation/upgrade phase, preventing the execution of a Helm rollback. (CDS-73264)
 
    This issue is now fixed.
 
