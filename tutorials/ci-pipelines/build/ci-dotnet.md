@@ -21,7 +21,7 @@ import TabItem from '@theme/TabItem';
   target="_self"
 />
 
-You can build and test a [C#](https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/) or [.NET Core](https://learn.microsoft.com/en-us/dotnet/core/introduction) application using a Linux or Windows platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
+You can build and test a [C#](https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/) and [.NET Core](https://learn.microsoft.com/en-us/dotnet/core/introduction) application using a Linux or Windows platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) or a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/) build infrastructure.
 
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
 
