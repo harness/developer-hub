@@ -4,9 +4,7 @@ description: Learn about rate limits that help maximize the stability of the Har
 sidebar_position: 4
 ---
 
-The Harness API uses several mechanisms, including rate limits, to safeguard against bursts of incoming traffic and help maximize stability.
-
-A rate limiter restricts the number of requests received by the API within any given minute, after which Harness throttles requests from the IP address.
+The Harness API uses several mechanisms, including rate limits, to safeguard against bursts of incoming traffic and help maximize stability. A rate limiter restricts the number of requests received by the API within any given minute, after which Harness throttles requests from the IP address.
 
 Harness has several rate limiters in the API. Users who send multiple requests in quick succession may receive status code 429 error responses.
 
@@ -24,5 +22,5 @@ Harness API rate limits include:
 - User invites: 10 calls per minute per IP address.
 
 :::info important
-Harness reserves the rights to change this limit at any time to protect the platform.
+Harness reserves the rights to change limits at any time to protect the platform.
 :::
