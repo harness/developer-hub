@@ -337,15 +337,18 @@ terraform {
 }
 ```
 
-In **Backend Configuration**, for this case you provide the required configuration variables for that backend type. 
-For remote backend-configuration the variables should be in .tfvars file.
+In **Backend Configuration**, you provide the required configuration variables for the backend type. 
+
+For a remote backend configuration, the variables should be in .tfvars file.
 
 Example:
+
 ```json
 bucket  = "tf-state-prod"  
 prefix  = "terraform/state"
 ```
-In your terraform .tf config file it would require to have only the definition of the terraform backend:
+
+In your Terraform .tf config file, only the definition of the Terraform backend is required:
 
 ```json
 terraform {  
