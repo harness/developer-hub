@@ -47,8 +47,7 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-* Manual builds now show the user ID of the latest commit author under **Executed By** and on the **Build details** page. (CI-8502, ZD-46409)
-* Fixed an issue where the active developer count was not reported for builds triggered by chron jobs or custom webhooks. (CI-8502, ZD-46409)
+* Fixed an issue where the active developer count was not reported for builds triggered by chron jobs, custom webhooks, and other triggers. (CI-8502, ZD-46409)
 * Fixed an issue where step details for other steps were shown when using [AIDA](/docs/continuous-integration/troubleshoot-ci/aida) to troubleshoot a pipeline with multiple failed steps. (CI-8735)
 
 ```mdx-code-block
