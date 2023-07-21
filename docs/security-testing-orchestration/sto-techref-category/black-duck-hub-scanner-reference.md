@@ -301,17 +301,6 @@ In the **Advanced** settings, you can use the following options:
 
 You can set up a Black Duck Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-<details><summary>Black Duck Hub scan configuration example</summary>
-
-
-```mdx-code-block
-import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
-```
-
-<StoSecurityStepConfig />
-
-</details>
-
 #### Target and variant
 
 ```mdx-code-block
@@ -346,13 +335,6 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 <StoLegacyContainer />
 
 
-#### Repository scan settings
-
-
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
-
 <StoLegacyRepo />
 
 #### Ingestion file
@@ -362,13 +344,3 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
-
-
-
-## YAML configuration
-
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-```
-
-<StoSettingYAMLexample />

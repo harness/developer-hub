@@ -46,13 +46,6 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 
 <StoScannerStepNotes />
 
-<details>
-    <summary>Scanner Template</summary>
-
-![](static/step-palette-00.png) 
-
-</details>
-
 ### Scan
 
 
@@ -302,12 +295,3 @@ Go to the [SonarQube docs](https://docs.sonarqube.org/latest/user-guide/user-tok
 * `product_exclude` — If you want to exclude some files from a scan, you can set the sonar.exclusions key in your SonarQube project. See [Narrowing the Focus](https://docs.sonarqube.org/latest/project-administration/narrowing-the-focus/) in the SonarQube docs.
 * `product_java_binaries` — When scanning Java, you need to set the `sonar.java.binaries` key in SonarQube. This is a list of comma-separated paths with the compiled bytecode that correspond to your source files. See [Java](https://docs.sonarqube.org/latest/analysis/languages/java/) in the SonarQube docs.
 * `product_java_libraries` — `sonar.java.binaries` is a comma-separated list of paths to files with third-party libraries (JAR or Zip files) used by your project. See [Java](https://docs.sonarqube.org/latest/analysis/languages/java/) in the SonarQube docs.
-
-
-## YAML configuration
-
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-```
-
-<StoSettingYAMLexample />

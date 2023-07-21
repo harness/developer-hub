@@ -50,7 +50,7 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 <details>
     <summary>Scanner Template</summary>
 
-![](static/step-palette-00.png) 
+![](static/aqua-trivy-security-scan-step.png) 
 
 </details>
 
@@ -202,7 +202,15 @@ STO supports the following `policy_type` settings for Aqua-Trivy:
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
 * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md).
 
-#### Required settings
+#### Target and variant
+
+```mdx-code-block
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+```
+
+<StoLegacyTargetAndVariant />
+
+#### Aqua Trivy scan settings
 
 * `product_name` = `aqua-trivy`
 * `scan_type` = `containerImage`, `ingestionOnly`
@@ -215,6 +223,8 @@ STO supports the following `policy_type` settings for Aqua-Trivy:
 * `container_type` — Set to `local_image`, `docker_v2`, `jfrog_artifactory`, or `aws_ecr`  
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+#### Container scan settings
+
 The following settings are also required, depending on the container type:
 + if `container_type` = `docker_v2`
 	- `container_access_id`: Username
@@ -226,6 +236,8 @@ The following settings are also required, depending on the container type:
 + if `container_type` = `jfrog_artifactory`
 	- `container_access_id`: Username
 	- `container_access_token`: Password/Token
+
+#### Ingestion file 
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';

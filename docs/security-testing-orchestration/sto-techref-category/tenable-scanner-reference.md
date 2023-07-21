@@ -25,7 +25,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
-### Security step settings
+## Security step settings
 
 ### Target and variant
 
