@@ -1,7 +1,6 @@
 ---
 title: Set up a GCP VM build infrastructure
 description: This topic describes how to set up a CI build infrastructure in Google Cloud Platform.
-
 sidebar_position: 30
 helpdocs_topic_id: k5rvvhw49i
 helpdocs_category_id: rg8mrhqm95
@@ -72,7 +71,7 @@ instances:
         json_path: /path/to/key.json ## Your JSON credentials file.
       image: projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-1804-bionic-v20220510
       machine_type: e2-small
-      zone: ## To avoid latency issues between delegate and build VMs, specify the same zone where your delegate is running.
+      zone: ## To minimize latency between delegate and build VMs, specify the same zone where your delegate VM is running.
         - us-centra1-a
         - us-central1-b
         - us-central1-c
@@ -92,7 +91,7 @@ You can configure the following settings in your `pool.yml` file. You can also l
 | `pool` (Integer) | NA | `pool: 1` | Minimum pool size number. Denotes the minimum number of cached VMs in ready state to be used by the Runner. |
 | `limit` (Integer) | NA | `limit: 3` | Maximum pool size number. Denotes the maximum number of cached VMs in ready state to be used by the Runner. |
 | `platform` | os (String) | `platform: os: windows`arch (String) |`platform: arch:` variant (String) |`platform: variant:` version (String) |`platform: version:` | Configure the details of your VM platform.  |
-| `spec` |  | Configure settings for the build VMs.<br/><ul><li>`account`: Specify your GCP project Id and the full path and filename of your local Google credentials file.</li><li>`image`: The image type to use for the build VM.</li><li>`machine_type`: The google machine type. See [About Machine Families](https://cloud.google.com/compute/docs/machine-types) in the Google Cloud docs.</li><li>`zone`: To minimize latency, specify the zone where the Delegate is running.</li></ul> |
+| `spec` |  | Configure settings for the build VMs.<br/><ul><li>`account`: Specify your GCP project Id and the full path and filename of your local Google credentials file.</li><li>`image`: The image type to use for the build VM.</li><li>`machine_type`: The google machine type. See [About Machine Families](https://cloud.google.com/compute/docs/machine-types) in the Google Cloud docs.</li><li>`zone`: To minimize latency, specify the zone where the delegate is running.</li></ul> |
 
 <!--
 ## Step 3: Configure the docker-compose.yaml file
@@ -218,7 +217,7 @@ The Delegate and Runner are now installed, registered, and connected.
 
 ## Step 3: Start the runner and install the delegate
 
-1. [SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) into the Delegate VM and run the following command to start the Runner:
+1. [SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) into the delegate VM and run the following command to start the runner:
 
 	 ```
 	 $ docker run -v /home/YOUR_NAME/drone-runner-aws/runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
@@ -227,7 +226,6 @@ The Delegate and Runner are now installed, registered, and connected.
    This command mounts the volume to the Docker container providing access to `pool.yml` and JSON credentials to authenticate with GCP. It also exposes port 3000 and passes arguments to the container.
 
 2. Install the Harness Delegate on your delegate VM. Follow the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/), and then run the delegate installation command provided in the Harness Platform.
-
 3. Verify that the delegate and runner containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
 
 	 ```
