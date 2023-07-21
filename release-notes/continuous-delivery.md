@@ -90,7 +90,7 @@ This release does not include early access features.
 
 - Fixed an issue where Jira and ServiceNow approvals didn't fail fast if the connector provided was an incorrect type or not present. The pipeline repeatedly requested details of the Jira/ServiceNow ticket and kept failing with the same error (connector not found or incorrect connector). (CDS-69683)
   
-  With this fix, the pipeline fails at the very beginning of the step execution if the connector type is incorrect or not present. This avoids the repeated polling and the delayed failure. (CDS-69683)
+  With this fix, the pipeline fails at the very beginning of the step execution if the connector type is incorrect or not present. This avoids the repeated polling and the delayed failure.
 
 
 ```mdx-code-block
