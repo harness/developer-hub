@@ -66,10 +66,9 @@ This release does not include any early access features.
 
 #### July 21, 2023, Hotfix version ET-Service 5.24.7
 
-- The Events Summary page in CET was timing out in some cases. (CET-1569)  
-  
-  This issue has been happening when there were events that marked as resolved which caused slowness while fetching the summary data. This issue has been resolved. Now, the Events Summary page should load significantly faster.
+- The Events Summary page timed out in some instances when events marked as resolved caused slowness while fetching summary data. (CET-1569)  
 
+   This issue has been resolved. Now, the Events Summary page loads faster and does not time out.
 
 #### June 27, 2023, versions ET-Service 5.24.3 and ET-Collector 5.24.3
 
