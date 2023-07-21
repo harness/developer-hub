@@ -205,20 +205,11 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                     command: |-
                       ./gradlew test assemble -YOUR_PROJECT
                       ./gradlew testDebug
-              - step:
-                  type: Run
-                  name: Save tests
-                  identifier: save_tests
-                  spec:
-                    shell: Sh
-                    command: |-
-                      mkdir -p ~/test-results/junit/
-                      find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} ~/test-results/junit/ \;
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "~/test-results/junit.xml"
+                          - "*/build/test-results/.*xml"
 ```
 
 ```mdx-code-block
@@ -256,22 +247,11 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
                     command: |-
                       ./gradlew test assemble -YOUR_PROJECT
                       ./gradlew testDebug
-              - step:
-                  type: Run
-                  name: Save tests
-                  identifier: save_tests
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: fabernovel/android:api-30-v1.7.0
-                    shell: Sh
-                    command: |-
-                      mkdir -p ~/test-results/junit/
-                      find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} ~/test-results/junit/ \;
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "~/test-results/junit.xml"
+                          - "*/build/test-results/.*xml"
 ```
 
 ```mdx-code-block
@@ -610,27 +590,18 @@ pipeline:
                       fastlane add_plugin firebase_app_distribution
               - step:
                   type: Run
-                  name: build and test
-                  identifier: build-and-test
+                  name: Test
+                  identifier: test
                   spec:
                     shell: Sh
                     command: |-
                       ./gradlew test assemble -YOUR_PROJECT
                       ./gradlew testDebug
-              - step:
-                  type: Run
-                  name: Save tests
-                  identifier: save_tests
-                  spec:
-                    shell: Sh
-                    command: |-
-                      mkdir -p ~/test-results/junit/
-                      find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} ~/test-results/junit/ \;
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "~/test-results/junit.xml"
+                          - "*/build/test-results/.*xml"
           platform:
             os: Linux
             arch: Amd64
@@ -718,22 +689,11 @@ pipeline:
                     command: |-
                       ./gradlew test assemble -YOUR_PROJECT
                       ./gradlew testDebug
-              - step:
-                  type: Run
-                  name: Save tests
-                  identifier: save_tests
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: fabernovel/android:api-30-v1.7.0
-                    shell: Sh
-                    command: |-
-                      mkdir -p ~/test-results/junit/
-                      find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} ~/test-results/junit/ \;
                     reports:
                       type: JUnit
                       spec:
                         paths:
-                          - "~/test-results/junit.xml"
+                          - "*/build/test-results/.*xml"
               - step:
                   type: SaveCacheS3
                   name: Save Cache to S3
