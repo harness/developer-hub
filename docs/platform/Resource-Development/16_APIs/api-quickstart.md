@@ -1,7 +1,7 @@
 ---
 title: Harness API quickstart
 description: This document explains the steps to get started with Harness NG APIs.
-sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: f0aqiv3td7
 helpdocs_category_id: pm96bpz4kf
 helpdocs_is_private: false

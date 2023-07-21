@@ -1,6 +1,7 @@
 ---
 title: Use a JWT token for Harness SCIM API authentication
 description: Access SCIM APIs through JWT Token.
+sidebar_position: 4
 ---
 
 
