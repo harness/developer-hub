@@ -43,7 +43,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 Running all unit tests every time the code changes is expensive and time-consuming. Test Intelligence builds software faster than a full build-and-test run by doing the following:
 
-* Uses *test selection* to prioritize and run only those tests that are relevant to code changes. This includes changes to your software's code as well as changes to your tests (new or modified tests).
+* Uses *test selection* to run only those tests that are relevant to code changes. This includes changes to your software's code as well as changes to your tests (new or modified tests).
 * Identifies negative trends and provides actionable insights to improve quality.
 * Uses the call graph of the instrumented source code to ensure full accuracy.
 

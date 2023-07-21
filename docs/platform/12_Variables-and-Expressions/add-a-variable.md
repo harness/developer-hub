@@ -204,11 +204,11 @@ Now, when you run your Pipeline the referenced value is evaluated at runtime.
 
 ### Export service variables as environment variables in a Shell Script step
 
-You can use the **Export Service Variables as Env Variables** setting to export service variables as environment variables. This setting is available at account, organization, and project-levels.
+You can use the **Export Service Variables as Env Variables** setting to export service variables as environment variables. This setting is available at account, organization, and project levels.
 
-To enable this setting, go to **Account Setting > Account Resources > Default Settings > Pipeline**, and then set the **Export Service Variables as Env Variables** setting to `true`.
+To enable this setting, go to **Account Settings > Account Resources > Default Settings > Pipeline**, and then expand **Pipeline**. Next, set the **Export Service Variables as Env Variables** setting to `true`.
 
-When you enable this setting, service variables are available as Bash variables in a Shell Script step. You can access the service variables like you access any Bash variables. For example, the service variable, `var1` is available for use in a Shell Script step as `$var1`.
+Once you enable this setting, a service's variables are available as Bash variables in any Shell Script step in a stage that deploys that service. You can access the service variables like you access any Bash variables. For example, the service variable, `var1` is available for use in a Shell Script step as `$var1`.
 
 When you [add a service](#use-an-account-org-or-project-variable-in-a-service-variable), you can select variables of type **String**, **Secret**, or **Number**. 
 
@@ -225,7 +225,7 @@ Let's consider an example where you have added the following service variables:
 | `svar5$abc` | String | key_With_Dollar |
 | `svar6` | String | abc,ghj,klk |
 
-In your Shell Script step, you can export these service variables as environment variables if you had enabled the **Export Service Variables as Env Variables** setting.
+In your Shell Script step, you can use these service variables as environment variables if you had enabled the **Export Service Variables as Env Variables** setting.
 
 :::info Limitation
 
