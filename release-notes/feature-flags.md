@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-07-19T10:00:25
+date: 2023-07-21T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -20,7 +20,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 19, 2023
+## Latest - July 20, 2023
 
 <Tabs>
   <TabItem value="What's new">
@@ -35,13 +35,17 @@ This release does not include early access features.
   </TabItem>
   <TabItem value="Fixed issues">
 
-#### Feature Flags server
+#### Feature Flags SDKs
 
-The Feature Flags server has been updated to version **1.1077.0** with the following updates.
+* The **.NET** server SDK has been updated to version **1.1.9** with the following update.
 
-* Previously, the developer count reported under the Feature Flags license usage page (**Account Settings > Subscriptions > Feature Flags > License Count**) included a 'System' user that should not be counted towards the customer's total count of developers. This fix excludes the 'System' user from the count. (FFM-8658)
+  * Fixed an issue where using the relay proxy caused the SDK to crash. (FFM-8686)
 
-* Previously, targets sent by the server-side SDKs were not being updated in the database. This meant if a server-side target changed, evaluations worked as expected, but the updated attributes were not shown in the UI. This fix ensures targets are correctly updated. (FFM-8600)
+* The **Ruby** server SDK has been updated to version **1.1.2** with the following update.
+
+  * There was an issue where if a feature flag was configured to use a custom attribute with the `IN` operator clause, the `IN` operator didn't work correctly. This issue has been fixed. (FFM-8670)
+
+
 
 
   </TabItem>
@@ -52,6 +56,26 @@ The Feature Flags server has been updated to version **1.1077.0** with the follo
 
 <details>
 <summary>2023 releases</summary>
+
+#### July 19, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server
+
+The Feature Flags server has been updated to version **1.1077.0** with the following updates.
+
+* Previously, the developer count reported under the Feature Flags license usage page (**Account Settings > Subscriptions > Feature Flags > License Count**) included a 'System' user that should not be counted towards the customer's total count of developers. This fix excludes the 'System' user from the count. (FFM-8658)
+
+* Previously, targets sent by the server-side SDKs were not being updated in the database. This meant if a server-side target changed, evaluations worked as expected, but the updated attributes were not shown in the UI. This fix ensures targets are correctly updated. (FFM-8600)
 
 #### July 18, 2023
 
