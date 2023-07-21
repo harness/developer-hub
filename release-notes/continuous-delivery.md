@@ -53,7 +53,7 @@ This release does not include early access features.
 
 - Fixed a UI issue in the **File Store** page where clicking on an entity link redirected to the **Services** page. With this fix, an entity link now points to the **Details** page for the referenced entity. (CDS-73834, ZD-46193)	
 
-- Fixed a UI issue to ensure that the pipeline execution UI shows correct icons for container steps. (CDS-73725, ZD-47103)	
+- Fixed a UI issue to ensure that the pipeline execution UI shows correct icons for Container steps. (CDS-73725, ZD-47103)	
 
 - Fixed a Helm Chart deployment issue where specifying the Chart Version in the manifest as a runtime input resulted in the error Failed to query chart versions. Response code [404]. The OCI Helm connector now fetches the chart version correctly. (CDS-73714, ZD-47063)
 
