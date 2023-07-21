@@ -51,7 +51,7 @@ This release does not include early access features.
 
 - Fixed a UI issue causing the stage dropdown options in the **Tests** tab of the execution page to scroll unexpectedly when an execution is in progress. (CDS-74026)	
 
-- Fixed a UI issue in the **File Store** page where clicking on an entity link redirected to the Services page. With this fix, an entity link now points to the details page for the referenced entity. (CDS-73834, ZD-46193)	
+- Fixed a UI issue in the **File Store** page where clicking on an entity link redirected to the **Services** page. With this fix, an entity link now points to the **Details** page for the referenced entity. (CDS-73834, ZD-46193)	
 
 - Fixed a UI issue to ensure that the pipeline execution UI shows correct icons for container steps. (CDS-73725, ZD-47103)	
 
