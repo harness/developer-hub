@@ -36,7 +36,7 @@ Make sure you read and understand:
 
 ## Version
 
-The current version of this SDK is **1.1.8.**
+The current version of this SDK is **1.1.9.**
 
 If you are using an older version of the .NET Framework, it may not default the security protocol to TLS 1.2. For compatibility with this SDK, set the protocol to TLS 1.2 by using the following:
 
