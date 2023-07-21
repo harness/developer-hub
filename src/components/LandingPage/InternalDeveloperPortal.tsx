@@ -40,9 +40,7 @@ export default function IDP() {
                 Documentation
               </button>
             </Link>
-
-            {/* Release notes coming soon. */}
-            {/* <Link href="/release-notes/internal-developer-portal">
+            <Link href="/release-notes/internal-developer-portal">
               <button
                 className={clsx(
                   "button button--lg",
@@ -53,7 +51,7 @@ export default function IDP() {
                 <img src={`${baseUrl}img/icon_release_notes.svg`} />
                 Release Notes
               </button>
-            </Link> */}
+            </Link>
           </div>
         </div>
         <div className={styles.spaceBetween}>

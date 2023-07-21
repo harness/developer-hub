@@ -1,7 +1,7 @@
 ---
 title: Use the Harness REST API
 description: Use the Harness REST API to automate Harness operations.
-# sidebar_position: 2
+sidebar_position: 3
 helpdocs_topic_id: bn72tvbj6r
 helpdocs_category_id: pm96bpz4kf
 helpdocs_is_private: false
