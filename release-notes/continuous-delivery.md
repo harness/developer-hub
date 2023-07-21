@@ -88,7 +88,7 @@ This release does not include early access features.
 
 - Fixed an API issue where a request to update the input sets of pipeline when importing the pipeline from Git did not update the `lastUpdateAt` field. (CDS-72098)	
 
-- Fixed an issue where Jira and ServiceNow approvals didn't fail fast if a connector provided was an incorrect type or not present. The pipeline would repeatedly request details of the Jira/ServiceNow ticket and keep failing with the same error (connector not found or incorrect connector).
+- Fixed an issue where Jira and ServiceNow approvals didn't fail fast if the connector provided was an incorrect type or not present. The pipeline repeatedly requested details of the Jira/ServiceNow ticket and kept failing with the same error (connector not found or incorrect connector). (CDS-69683)
   
   With this fix, the pipeline fails at the very beginning of the step execution if the connector type is incorrect or not present. This avoids the repeated polling and the delayed failure. (CDS-69683)
 
