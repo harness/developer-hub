@@ -57,7 +57,7 @@ This release does not include early access features.
 
 - Fixed a Helm Chart deployment issue where specifying the Chart Version in the manifest as a runtime input resulted in the error Failed to query chart versions. Response code [404]. The OCI Helm connector now fetches the chart version correctly. (CDS-73714, ZD-47063)
 
-- Harness does not currently support using expressions in failure strategies, so this support has been removed from the UI. Harness has a roadmap item to simplify YAML definitionss, which will support using expressions in failure strategies. (CDS-73614)	
+- Harness does not currently support using expressions in failure strategies, so this support has been removed from the UI. Harness has a roadmap item to simplify YAML definitions, which will support using expressions in failure strategies. (CDS-73614)	
 
 - Fixed an issue with the `/ng/api/environmentsV2` endpoint. Previously, the endpoint would ignore overrides in YAML payloads when posting a request to create an environment. This endpoint now supports overrides in YAML environment definitions, as shown in the following example. (CDS-73496)
 
