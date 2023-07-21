@@ -16,11 +16,25 @@ STO supports container scans only with Aqua Trivy.
 
 ## Before you begin
 
+### Docker-in-Docker requirements
+
+
 ```mdx-code-block
-import StoCreateDinD from './shared/dind-bg-step.md';
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 ```
 
-<StoCreateDinD />
+<StoDinDRequirements />
+
+
+### Root access requirements 
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
+
+
 
 
 ## Aqua Trivy step configuration
@@ -173,11 +187,9 @@ In the **Advanced** settings, you can use the following options:
 
 
 
-## Security step configuration (_deprecated_)
- 
- <details><summary>Set up an Aqua Trivy scan in a Security step</summary>
- 
- You can set up a Security step with [Aqua Trivy](https://aquasecurity.github.io/trivy) to detect vulnerabilities and misconfigurations in your container images.
+## Security step settings (_deprecated_)
+
+You can set up a Security step with [Aqua Trivy](https://aquasecurity.github.io/trivy) to detect vulnerabilities and misconfigurations in your container images.
 
 #### Important Notes
 
@@ -221,12 +233,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
-</details>
 
-
-
-
-## YAML configuration
+## YAML pipeline example
 
 ```mdx-code-block
 import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';

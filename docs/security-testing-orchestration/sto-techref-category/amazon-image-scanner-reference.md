@@ -58,7 +58,7 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 
 <StoLegacyContainer />
 
-### Ingestion settings
+### Ingestion file
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';

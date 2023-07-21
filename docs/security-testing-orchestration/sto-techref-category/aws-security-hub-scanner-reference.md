@@ -6,6 +6,25 @@ sidebar_position: 40
 
 You can scan your configurations using [AWS Security Hub](https://docs.aws.amazon.com/securityhub/latest/userguide/what-is-securityhub.html), which provides a comprehensive view of your security state in AWS and helps you check your environment against security industry standards and best practices. 
 
+## Before you begin
+
+### Docker-in-Docker requirements
+
+
+```mdx-code-block
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+```
+
+<StoDinDRequirements />
+
+
+### Root access requirements 
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
 
 ## AWS Security Hub step configuration
 
@@ -176,7 +195,15 @@ You can set up an AWS Security Hub scan using a Security step: create a CI Build
 * `product_config_name` =  `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-### Configuration settings
+#### Target and variant
+
+```mdx-code-block
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+```
+
+<StoLegacyTargetAndVariant />
+
+#### Configuration settings
 
 ```mdx-code-block
 import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
@@ -184,7 +211,7 @@ import StoLegacyConfig from './shared/legacy/_sto-ref-legacy-config.md';
 
 <StoLegacyConfig  />
 
-### Ingestion setting
+#### Ingestion file
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';

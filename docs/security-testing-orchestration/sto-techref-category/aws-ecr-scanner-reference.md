@@ -6,6 +6,25 @@ sidebar_position: 30
 
 You can scan your container images using [Amazon Elastic Container Registry (ECR)](https://docs.aws.amazon.com/AmazonECR/latest/userguide/what-is-ecr.html). 
 
+## Before you begin
+
+### Docker-in-Docker requirements
+
+
+```mdx-code-block
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+```
+
+<StoDinDRequirements />
+
+### Root access requirements 
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
+
 
 ## AWS ECR step configuration
 

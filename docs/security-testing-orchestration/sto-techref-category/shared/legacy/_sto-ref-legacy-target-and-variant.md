@@ -1,7 +1,7 @@
-The following settings are required for every Security step.
+The following settings are required for every Security step:
 
 * `target_name` A user-defined label for the code repository, container, application, or configuration to scan. 
-* `target_variant` A user-defined label for the branch, tag, or other target variant to scan.
+* `variant` A user-defined label for the branch, tag, or other target variant to scan.
 
 :::note
 

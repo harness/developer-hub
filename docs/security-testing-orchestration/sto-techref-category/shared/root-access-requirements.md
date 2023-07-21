@@ -1,4 +1,8 @@
-You need to run the scan step with root access if you need to add trusted certificates to your scan images at run time. 
+You need to run the scan step with root access if either of the following apply:
+
+* You need to run a Docker-in-Docker background service.
+
+* You need to add trusted certificates to your scan images at run time. 
 
 :::note
 

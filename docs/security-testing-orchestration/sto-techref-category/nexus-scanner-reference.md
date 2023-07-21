@@ -4,10 +4,27 @@ description: Repository scans with Nexus
 sidebar_position: 180
 ---
 
+You can run Nexus scans on your repositories using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-### Security step settings
+## Before you begin
 
-You can set up Nexus scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+### Docker-in-Docker requirements
+
+```mdx-code-block
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+```
+
+<StoDinDRequirements />
+
+### Root access requirements
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
+
+## Security step settings
 
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
@@ -22,6 +39,16 @@ import security_step_nexus from './static/security-step-nexus.png'
 ```
 
 </details>
+
+### Target and variant
+
+```mdx-code-block
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+```
+
+<StoLegacyTargetAndVariant />
+
+### Nexus scan settings
 
 * `product_name` = `nexusiq`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository`
@@ -42,15 +69,7 @@ import security_step_nexus from './static/security-step-nexus.png'
 		- Accepted values(s): `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-### Repository settings
-
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
-
-<StoLegacyRepo />
-
-### Ingestion settings
+### Ingestion file
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';

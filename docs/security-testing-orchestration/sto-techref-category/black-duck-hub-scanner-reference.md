@@ -9,12 +9,21 @@ You can scan your container images using Black Duck Hub, a comprehensive and ver
 
 ## Before you begin
 
+### Docker-in-Docker requirements
+
 ```mdx-code-block
-import StoCreateDinD from './shared/dind-bg-step.md';
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 ```
 
-<StoCreateDinD />
+<StoDinDRequirements />
 
+### Root access requirements 
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
 
 ## BlackDuck step configuration
 
@@ -290,15 +299,28 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step configuration (_deprecated_)
 
-<details><summary>Set up a Black Duck Hub scan in a Security step</summary>
-
 You can set up a Black Duck Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
+
+<details><summary>Black Duck Hub scan configuration example</summary>
+
 
 ```mdx-code-block
 import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
 ```
 
 <StoSecurityStepConfig />
+
+</details>
+
+#### Target and variant
+
+```mdx-code-block
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+```
+
+<StoLegacyTargetAndVariant />
+
+#### Black Duck Hub scan settings
 
 * `product_name` = `blackduckhub`
 * `product_config_name` = `default`
@@ -315,7 +337,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 
-<!-- CONTAINERS --------------------------------------------------------------------------- -->
+#### Container image scan settings
 
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
@@ -324,7 +346,7 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 <StoLegacyContainer />
 
 
-<!-- REPOS --------------------------------------------------------------------------- -->
+#### Repository scan settings
 
 
 ```mdx-code-block
@@ -333,14 +355,13 @@ import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
 
 <StoLegacyRepo />
 
+#### Ingestion file
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
-
-</details>
 
 
 
