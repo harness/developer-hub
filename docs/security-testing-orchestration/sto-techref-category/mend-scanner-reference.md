@@ -35,13 +35,6 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 
 <StoScannerStepNotes />
 
-<details>
-    <summary>Scanner Template</summary>
-
-![](static/step-palette-00.png) 
-
-</details>
-
 ### Scan
 
 
