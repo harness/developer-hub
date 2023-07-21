@@ -45,7 +45,7 @@ You can now see **Harness-Inc** in your 2FA token generator app, which provides 
 
 Once you have set up 2FA for your account, you set it for all users and groups in the account. When 2FA is enforced, account users will experience the following changes:
 
-* **New members** will be able set up 2FA during signup.
+* **New members** will be able to set up 2FA during signup.
 * **Existing members** who do not have 2FA enabled will receive an email with a QR Code, and instructions on how to set up 2FA.
 
 To set up 2FA for all account users and groups, do the following:
