@@ -337,7 +337,23 @@ terraform {
 }
 ```
 
-In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
+In **Backend Configuration**, for this case you provide the required configuration variables for that backend type. 
+For remote backend-configuration the variables should be in .tfvars file.
+
+Example:
+```json
+bucket  = "tf-state-prod"  
+prefix  = "terraform/state"
+```
+In your terraform .tf config file it would require to have only the definition of the terraform backend:
+
+```json
+terraform {  
+  backend "gcs" {}
+}
+```
+
+See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
 
 You can use Harness secrets for credentials. See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
