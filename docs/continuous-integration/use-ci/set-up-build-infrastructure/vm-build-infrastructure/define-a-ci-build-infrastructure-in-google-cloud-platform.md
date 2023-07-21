@@ -30,7 +30,7 @@ For your Google Cloud VM configuration:
 
 To find images to use on Google Compute Engine, use `gcloud compute images list`.
 
-Valid image references follow the format of `projects/PROJECT/global/images/IMAGE`. For example: `projects/docs-test/global/images/ubuntu-pro-1804-bionic-v20220131`
+Valid image references follow the format of `projects/PROJECT/global/images/IMAGE`. For example: `projects/docs-test/global/images/ubuntu-pro-1804-bionic-v20220131`.
 
 ## Step 1: Set up the delegate VM
 
@@ -84,14 +84,13 @@ instances:
 
 You can configure the following settings in your `pool.yml` file. You can also learn more in the Drone documentation for the [Pool File](https://docs.drone.io/runner/vm/configuration/pool/) and [Google Drivers](https://docs.drone.io/runner/vm/drivers/google/).
 
-|  |  |  |
-| --- | --- | --- |
-| **Subfields** | **Examples** | **Description** |
-| `name` (String) | NA | `name: windows_pool` | Unique identifier of the pool. You will need to specify this pool name in the Harness Manager when you set up the CI Stage Infrastructure. |
-| `pool` (Integer) | NA | `pool: 1` | Minimum pool size number. Denotes the minimum number of cached VMs in ready state to be used by the Runner. |
-| `limit` (Integer) | NA | `limit: 3` | Maximum pool size number. Denotes the maximum number of cached VMs in ready state to be used by the Runner. |
-| `platform` | os (String) | `platform: os: windows`arch (String) |`platform: arch:` variant (String) |`platform: variant:` version (String) |`platform: version:` | Configure the details of your VM platform.  |
-| `spec` |  | Configure settings for the build VMs.<br/><ul><li>`account`: Specify your GCP project Id and the full path and filename of your local Google credentials file.</li><li>`image`: The image type to use for the build VM.</li><li>`machine_type`: The google machine type. See [About Machine Families](https://cloud.google.com/compute/docs/machine-types) in the Google Cloud docs.</li><li>`zone`: To minimize latency, specify the zone where the delegate is running.</li></ul> |
+| Setting | Type | Example | Description |
+| ------- | ---- | ------- | ----------- |
+| `name` | String | `name: windows_pool` | Unique identifier of the pool. You will need to specify this pool name in the Harness Manager when you set up the CI Stage Infrastructure. |
+| `pool` | Integer | `pool: 1` | Minimum pool size number. Denotes the minimum number of cached VMs in ready state to be used by the Runner. |
+| `limit` | Integer | `limit: 3` | Maximum pool size number. Denotes the maximum number of cached VMs in ready state to be used by the Runner. |
+| `platform` | Key-value pairs, strings | `platform: os: linux arch: amd64 variant: VERSION` | Specify VM platform operating system (`os`) and architecture (`arch`). `variant` is optional. |
+| `spec` | Various | Configure settings for the build VMs.<br/><ul><li>`account`: Specify your GCP project Id and the full path and filename of your local Google credentials file.</li><li>`image`: The image type to use for the build VM.</li><li>`machine_type`: The google machine type. See [About Machine Families](https://cloud.google.com/compute/docs/machine-types) in the Google Cloud docs.</li><li>`zone`: To minimize latency, specify the zone where the delegate is running.</li></ul> |
 
 <!--
 ## Step 3: Configure the docker-compose.yaml file
