@@ -16,7 +16,7 @@ More details on this here: https://developer.harness.io/docs/platform/resource-d
 
 How to create a Create Resource group via Terraform with "Specified Orgs (with Projects) and Account Level resources included". 
 
-## Steps to achieve this usecase
+## Steps to achieve this use case
 Here is the sample code that you can use to achieve this requirement:
 
 ```
