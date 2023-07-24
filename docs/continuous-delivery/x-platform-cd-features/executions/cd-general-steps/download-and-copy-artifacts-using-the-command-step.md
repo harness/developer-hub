@@ -341,6 +341,139 @@ The WinRM deployment type supports Download Artifact only. You cannot use Cope A
 | Azure Artifacts | Maven 2.0, NuGet | Y | Y |
 | Custom Repository | All | N/A | N (use the Exec script to use the metadata to copy artifact to target host) |
 
+## Use case: Send emails from a server with an attachment
 
+1. Install `postfix` on the target host using the following command:  
+   
+   ```BASH
+   $ sudo apt-get install postfix mailutils libsasl2-2 ca-certificates libsasl2-modules
+   ```
+2. Create a deployment stage with an SSH type service and infrastructure definition.
+3. Add a Command step under the **Executions** tab.
+4. In **Step Parameters**, enter a name and timeout duration. 
+5. In **Run the following commands**, select **Add Command**.
+   * Enter a command name.
+   * Set the **Command Type** to **Script**.
+   * Enter the **Working Directory** path where the attachment resides. The path can be a fixed value, runtime input, or an expression.
+   * In **Select script location**, select **Inline**.
+   * In **Script Type**, select **Bash** and enter the following command: 
+     
+     ```BASH
+     sudo tee -a /etc/postfix/main.cf > /dev/null <<EOT
+     relayhost = [smtp.gmail.com]:587
+     smtp_sasl_auth_enable = yes
+     smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+     smtp_sasl_security_options = 
+     smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+     smtp_use_tls = yes
+     EOT
+     sudo chmod 600 /etc/postfix/sasl_passwd
+     sudo postmap /etc/postfix/sasl_passwd
+     sudo systemctl restart postfix.service
+     echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  johndoe@xyz.io
+     ```
+     
+     The `relayhost` host configuration in the above command can be any SMTP port and server.
+     
+     You can define the body of the message with an echo statement like this, `echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  johndoe@xyz.io`. You can provide harness expressions to resolve the body of the message. The email address can be provided as a user's email or a Distribution List email. 
 
+     The `mail -A hello.jar` will send the JAR on the host as an attachment. The `-s` command will provide the subject of the email. The email address is the last argument in the mail command.
 
+     For more information on sending emails with `postfix`, go to [AskUbuntu solution](https://askubuntu.com/questions/1332219/send-email-via-gmail-without-other-mail-server-with-postfix/1332322#1332322).
+
+   * Select **Add**.
+6. Select **Apply Changes**.
+7. **Run** the pipeline. 
+   
+   ![](./static/command-unit-email-4.png)
+
+<details>
+<summary>Sample pipeline YAML</summary>
+
+```YAML
+pipeline:
+  name: EmailSSHPipeline
+  identifier: EmailSSHPipeline
+  projectIdentifier: default
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: stg
+        identifier: stg
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Ssh
+          service:
+            serviceRef: ArtifactiryService
+          environment:
+            environmentRef: qa
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: pdcinfra
+          execution:
+            steps:
+              - step:
+                  type: Command
+                  name: Email User
+                  identifier: Command_1
+                  spec:
+                    onDelegate: false
+                    environmentVariables: []
+                    outputVariables: []
+                    commandUnits:
+                      - identifier: test
+                        name: Email Attachment
+                        type: Script
+                        spec:
+                          workingDirectory: /home/ubuntu
+                          shell: Bash
+                          source:
+                            type: Inline
+                            spec:
+                              script: |-
+                                sudo tee -a /etc/postfix/main.cf > /dev/null <<EOT
+                                relayhost = [smtp.gmail.com]:587
+                                smtp_sasl_auth_enable = yes
+                                smtp_sasl_password_maps = hash:/etc/postfix/sasl_passwd
+                                smtp_sasl_security_options = 
+                                smtp_tls_CAfile = /etc/ssl/certs/ca-certificates.crt
+                                smtp_use_tls = yes
+                                EOT
+                                sudo chmod 600 /etc/postfix/sasl_passwd
+                                sudo postmap /etc/postfix/sasl_passwd
+                                sudo systemctl restart postfix.service
+                                echo "This is the body of an encrypted email" | mail -A hello.jar -s "log file"  johndoe@xyz.io
+                  timeout: 10m
+                  strategy:
+                    repeat:
+                      items: <+stage.output.hosts>
+            rollbackSteps:
+              - step:
+                  name: Rollback
+                  identifier: Rollback
+                  timeout: 10m
+                  strategy:
+                    repeat:
+                      items: <+stage.output.hosts>
+                  template:
+                    templateRef: account.Default_Install_War_Bash
+                    templateInputs:
+                      type: Command
+                      spec:
+                        environmentVariables:
+                          - name: DestinationDirectory
+                            type: String
+                            value: $HOME/<+service.name>/<+env.name>
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+
+```
+
+</details>

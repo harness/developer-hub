@@ -1,6 +1,5 @@
-
 import { certType, CardItem } from "../CertCard";
-import { MODULES } from "../../../constants"
+import { MODULES } from "../../../constants";
 
 export const certifications: CardItem[] = [
     {

@@ -17,6 +17,7 @@ Rollback deployment initiates a rollback of your most-recent successful deployme
 * Rollback deployment is currently supported for the following deployment types only: 
   - Kubernetes
   - Tanzu Application Services (TAS)
+  - Amazon Elastic Container Service (ECS)
 
     Harness anticipates expanding this feature to other deployment types in the future.
 * You can rollback successful pipelines only. The rollback option is not available for failed pipelines.

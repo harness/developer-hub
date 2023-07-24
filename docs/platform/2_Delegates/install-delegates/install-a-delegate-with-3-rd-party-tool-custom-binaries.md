@@ -18,7 +18,7 @@ For a list of the SDK versions that are certified for different types of deploym
 
 The primary use cases for customization of the delegate image include:
 
-- Vulnerability scans detect unresolved vulnerabilities in older binary versions. You want to use binaries that reduce your attack surface.
+- You want to use binaries that reduce your attack surface. Vulnerability scans detect unresolved vulnerabilities in older binary versions.
 
 - You're interested in using tools that Harness does not include on the delegate image.
 
@@ -36,6 +36,11 @@ Before you run the delegate, edit the YAML file to change the following:
 
 * Delegate environment variables
 * Delegate image
+* Third-party tool custom binaries
+
+:::info note
+For delegate Helm chart deployments, add your third-party tool custom binaries to `initScript` in your `values.yaml` file to run them before delegate installation. The default [values.yaml](https://github.com/harness/delegate-helm-chart/blob/main/harness-delegate-ng/values.yaml) is located in the [delegate-helm-chart](https://github.com/harness/delegate-helm-chart) GitHub repo.
+:::
 
 ## Add Harness-required SDKs
 
@@ -51,7 +56,7 @@ The following delegate YAML contains examples of downloads for all Harness-requi
 
 You can edit the YAML to include only the SDKs and versions Harness requires for your deployment type.
 
-```
+```yaml
 ...   
         - name: DELEGATE_TYPE  
           value: "KUBERNETES"  
@@ -99,6 +104,7 @@ You can edit the YAML to include only the SDKs and versions Harness requires for
             cd /opt/harness-delegate  
 ...
 ```
+
 You can modify the export `PATH` as needed using the following command:
 
 ```
@@ -112,7 +118,6 @@ PCF deployments require CLI 7. For installation instructions, go to [Install Clo
 ## Add your custom tools
 
 In the delegate container `spec`, use the `INIT_SCRIPT` environment variable to download any additional tools you want to add.
-
 
 ## See also
 
