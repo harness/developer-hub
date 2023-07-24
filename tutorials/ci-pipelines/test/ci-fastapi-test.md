@@ -1,8 +1,8 @@
 ---
 sidebar_position: 4
-description: Run automated tests in a FastAPI project using CI
+description: Use Harness CI to run automated tests in a FastAPI project.
 keywords: [Continuous Integration, CI Tutorial, FastAPI, Testing, Run Tests]
-title: Run Fast API tests on CI
+title: Test a FastAPI project
 slug: /ci-pipelines/test/fastapi
 ---
 

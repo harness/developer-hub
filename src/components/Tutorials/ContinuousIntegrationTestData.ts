@@ -36,10 +36,10 @@ import { MODULES } from "../../constants";
           link: "/tutorials/ci-pipelines/test/saucelabs-proxy",
         },
         {
-          title: "Run FastAPI tests on CI",
+          title: "Test a FastAPI project",
           module: MODULES.ci,
           description:
-            "Run tests on a FastAPI project in Harness CI",
+            "Use Harness CI to run tests on a FastAPI project.",
           link: "/tutorials/ci-pipelines/test/fastapi",
         },
       ],
