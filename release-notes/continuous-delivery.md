@@ -162,6 +162,19 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
 ```mdx-code-block
   </TabItem>
+  <TabItem value="Hotfix version 79922">
+```
+
+## July 21, 2023, version 79922
+
+### Fixed issues
+
+- Some users experienced unrelated errors in the pipeline YAML view, causing problems when attempting to save the pipeline and disabling the toggle to switch to the visual view. (OIP-668)
+  
+  This issue has been resolved. Users can save the pipelines and toggle to the visual view without interruptions.
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 
