@@ -395,6 +395,17 @@ To resolve this, see [Add and manage roles](../platform/4_Role-Based-Access-Cont
 
 The following issues can occur when running Pipeline deployments.
 
+#### Error with release name too long
+
+In the deployment logs in Harness you may get an error similar to this:
+
+```
+6m11s Warning FailedCreate statefulset/release-xxx-xxx create Pod release-xxx-xxx-0 in StatefulSet release-xxx-xxx failed error: Pod "release-xxx-xxx-0" is invalid: metadata.labels: Invalid value: "release-xxx-argus-xxx": must be no more than 63 characters
+```
+
+This is an error coming from the kubernetes cluster stating that the release name is too long.  This can be adjusted in Environments > click Name of the Environment in Question > Infrastructure Definitions > click Name of the Infrastructure Definition in Question > scroll down > expand Advanced > modify the Release name to be something shorter
+
+
 #### Deployment rate limits
 
 If your deployment rate reaches 85% of the limit, the following message is displayed:
