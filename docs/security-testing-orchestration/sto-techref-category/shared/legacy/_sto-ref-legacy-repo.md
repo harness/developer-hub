@@ -1,4 +1,4 @@
-<details><summary>Repository scan settings</summary>
+<!-- details><summary>Repository scan settings</summary -->
 
 The following settings apply to all scanners where the `scan_type` is `repository`.
 
@@ -20,4 +20,4 @@ You can see the target name, type, and variant in the [Test Targets](/docs/secur
 
 ![Target name, type, and branch](../../static/repo-settings.png)
 
-</details>
+<!-- /details -->

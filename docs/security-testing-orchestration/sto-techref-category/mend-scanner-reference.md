@@ -9,11 +9,21 @@ You can scan container images and repositories using [Mend](https://www.mend.io)
 
 ## Before you begin
 
+### Docker-in-Docker requirements
+
 ```mdx-code-block
-import StoCreateDinD from './shared/dind-bg-step.md';
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 ```
 
-<StoCreateDinD />
+<StoDinDRequirements />
+
+### Root access requirements
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
 
 ## Mend step configuration
 
@@ -24,13 +34,6 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 ```
 
 <StoScannerStepNotes />
-
-<details>
-    <summary>Scanner Template</summary>
-
-![](static/step-palette-00.png) 
-
-</details>
 
 ### Scan
 
@@ -285,21 +288,19 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 * [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
-
-
-
 ## Security step configuration (_deprecated_)
-
-<details><summary>Set up a Mend scan in a Security step</summary>
 
 You can set up Mend scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
+#### Target and variant
 
 ```mdx-code-block
-import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
 ```
 
-<StoSecurityStepConfig />
+<StoLegacyTargetAndVariant />
+
+#### Mend scan settings
 
 * `product_name` = `whitesource`
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `ingestionOnly`, `dataLoad`, or `orchestratedScan`
@@ -327,6 +328,7 @@ You must configure the following settings depending on the product lookup type  
 * `product_project_token`
 * `product_project_token`
 
+#### Container scan settings
 
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
@@ -334,22 +336,10 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 
 <StoLegacyContainer />
 
+#### Ingestion file
+
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
-
-</details>
-
-<!--
-
-## YAML configuration
-
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-```
-
-<StoSettingYAMLexample />
-
--->
