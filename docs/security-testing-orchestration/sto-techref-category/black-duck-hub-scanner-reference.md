@@ -313,11 +313,11 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 
 * `product_name` = `blackduckhub`
 * `product_config_name` = `default`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository` or `container`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) =  `orchestratedScan` , `ingestionOnly`, or `dataLoad`
+* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) : `repository` or `container`
+* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) : `orchestratedScan` , `ingestionOnly`, or `dataLoad`
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan`:
 	+ `product_domain`
-	+ `product_auth_type` = `usernamePassword` | `apiKey`
+	+ `product_auth_type` : `usernamePassword` | `apiKey`
 	+ `product_access_id`: API username
 	+ `product_access_token` API password or API key
 	+ `product_api_version`

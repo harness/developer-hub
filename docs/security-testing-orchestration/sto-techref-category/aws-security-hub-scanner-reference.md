@@ -189,10 +189,10 @@ You can set up an AWS Security Hub scan using a Security step: create a CI Build
 <!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
 
 
-* `product_name` = `aws-security-hub`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `configuration`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) = `dataLoad` or `ingestionOnly`
-* `product_config_name` =  `default`
+* `product_name` : `aws-security-hub`
+* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) : `configuration`
+* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) : `dataLoad` or `ingestionOnly`
+* `product_config_name` : `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 #### Target and variant

@@ -203,13 +203,13 @@ import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-a
 #### Snyk scan settings
 
 * `product_name` = `snyk`:
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) =  `containerImage` or `repository`
+* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) : `containerImage` or `repository`
 * [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods)
 	+ accepted value for `containerImage`: `ingestionOnly`
 	+ accepted values for `repository`: `orchestratedScan`, `ingestionOnly`
 * `product_access_token`
-* `product_config_name` = `default`
-* `snyk_api` = URL to the Snyk instance, if you're using an on-prem installation.
+* `product_config_name` : `default`
+* `snyk_api` :  URL to the Snyk instance, if you're using an on-prem installation.
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 #### Container scan settings
