@@ -4,7 +4,7 @@ description: These images are loaded with helpful libraries for CI pipelines.
 sidebar_position: 80
 ---
 
-The [Harness Community](https://github.com/harness-community/) maintains pre-built, public Docker images that you can use to quickly set up a specific build environment. These pre-built public images are heavily extended versions of official Docker images that are loaded with useful tools for CI pipelines.
+The [Harness Community](https://github.com/harness-community/) maintains pre-built, public Docker images that you can use to quickly set up a build environment. These images are heavily extended versions of official Docker images, and they include useful tools for CI pipelines.
 
 Pre-built images are usually squashed, meaning they have have fewer and smaller layers. These images take less time to download, if they are not already cached on the host. By using pre-built images, your builds start faster.
 
