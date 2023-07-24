@@ -24,7 +24,7 @@ The delegate is instrumented for the collection of the following delegate agent 
 :::info note
 Metrics notated with * above only visible if you start your delegate with `DYNAMIC_REQUEST_HANDLING` to be true in your delegate yaml. Go to [Configure delegate resource threshold](#configure-delegate-resource-threshold) for more information.
 
-Also note that the above metrics are available only if your delegate version is later than 23.05.79311
+Also note that the above metrics are available only if your delegate version is later than 23.05.79311.
 :::
 
 This topic includes example YAML files you can use to create application manifests for your Prometheus and Grafana configurations.
