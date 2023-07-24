@@ -33,16 +33,11 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 
 ## Specify architecture
 
-You can use a Linux or Windows platform to build and test C# (.NET Core) apps.
+You can use a Linux or Windows platform to build and test C# (.NET Core) apps. These examples use Linux build infrastructure.
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="hosted" label="Harness Cloud" default>
-```
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="hosted-nix" label="Linux" default>
 ```
 
 ```yaml
@@ -63,41 +58,10 @@ You can use a Linux or Windows platform to build and test C# (.NET Core) apps.
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="hosted-win" label="Windows">
-```
-
-```yaml
- stages:
-    - stage:
-        name: build
-        identifier: build
-        type: CI
-        spec:
-          cloneCodebase: true
-          platform:
-            os: Windows
-            arch: Amd64
-          runtime:
-            type: Cloud
-            spec: {}
-```
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-```mdx-code-block
-  </TabItem>
   <TabItem value="selfhosted" label="Self-hosted">
 ```
 
-There are several self-hosted build infrastructure options. These examples use a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures).
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="sh-nix" label="Linux" default>
-```
+There are several self-hosted build infrastructure options. This example uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures).
 
 ```yaml
  stages:
@@ -116,35 +80,6 @@ There are several self-hosted build infrastructure options. These examples use a
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
-```
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="sh-win" label="Windows">
-```
-
-```yaml
- stages:
-    - stage:
-        name: build
-        identifier: build
-        description: ""
-        type: CI
-        spec:
-          cloneCodebase: true
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
-              namespace: YOUR_NAMESPACE
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Windows
-```
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
 ```
 
 ```mdx-code-block
@@ -169,7 +104,7 @@ The .NET Core SDK and other .NET libraries are pre-installed on Harness Cloud ru
                   spec:
                     shell: Sh
                     command: |-
-                      dotnet restore
+                      dotnet add package Newtonsoft.json --version 12.0.1
 ```
 
 ```mdx-code-block
@@ -189,7 +124,7 @@ You can use [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-s
                     connectorRef: account.harnessImage
                     image: mcr.microsoft.com/dotnet/sdk:7.0
                     command: |-
-                      dotnet restore
+                      dotnet add package Newtonsoft.json --version 12.0.1
 ```
 
 ```mdx-code-block
@@ -213,7 +148,7 @@ Cache your .NET dependencies with [Cache Intelligence](/docs/continuous-integrat
         spec:
           caching:
             enabled: true
-            key: cache-{{ checksum "MyProject.csproj" }}
+            key: cache-{{ checksum "packages.lock.json" }}
             paths:
               - "~/.local/share/NuGet/cache"
           sharedPaths:
@@ -245,7 +180,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     connectorRef: YOUR_AWS_CONNECTOR_ID
                     region: us-east-1
                     bucket: YOUR_S3_BUCKET
-                    key: cache-{{ checksum "MyProject.csproj" }}
+                    key: cache-{{ checksum "packages.lock.json" }}
                     archiveFormat: Tar
               - step:
                   type: Run
@@ -261,7 +196,7 @@ Here's an example of a pipeline with **Save Cache to S3** and **Restore Cache fr
                     connectorRef: YOUR_AWS_CONNECTOR_ID
                     region: us-east-1
                     bucket: YOUR_S3_BUCKET
-                    key: cache-{{ checksum "MyProject.csproj" }}
+                    key: cache-{{ checksum "packages.lock.json" }}
                     sourcePaths:
                       - ~/.local/share/NuGet/cache
                     archiveFormat: Tar
@@ -488,21 +423,20 @@ With this feature flag enabled, you can use [Run Tests steps](/docs/continuous-i
 
 The .NET SDK is pre-installed on Hosted Cloud runners. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
-If you need a version of the .NET SDK that isn't already installed, you can use a **Run** step to install it.
+If you need a specific .NET Core SDK version that isn't already installed, you can use a **Run** step to install it, or you can use the [setup-dotnet](https://github.com/actions/setup-dotnet) action in a [GitHub Action plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/ci-github-action-step/).
 
 <details>
-<summary>Install a specific .NET SDK version</summary>
+<summary>Install one .NET SDK version</summary>
 
 ```yaml
               - step:
-                  type: Run
+                  type: Action
+                  name: Install dotnet
                   identifier: install_dotnet
-                  name: install dotnet
                   spec:
-                    shell: Sh
-                    command: |-
-                      sudo apk add dotnet7-sdk
-                      dotnet --info
+                    uses: actions/setup-dotnet@v3
+                    with:
+                      dotnet-version: '3.1.x'
 ```
 
 </details>
@@ -516,22 +450,21 @@ If you need a version of the .NET SDK that isn't already installed, you can use 
         strategy:
           matrix:
             dotnetVersion:
-              - 7
-              - 5
+              - 7.0.x
+              - 5.0.x
 ```
 
 2. Reference the matrix variable in your steps.
 
 ```yaml
               - step:
-                  type: Run
+                  type: Action
+                  name: Install dotnet
                   identifier: install_dotnet
-                  name: install dotnet
                   spec:
-                    shell: Sh
-                    command: |-
-                      sudo apk add dotnet<+matrix.dotnetVersion>-sdk
-                      dotnet --info
+                    uses: actions/setup-dotnet@v3
+                    with:
+                      dotnet-version: <+matrix.dotnetVersion>
 ```
 
 </details>
@@ -544,7 +477,7 @@ If you need a version of the .NET SDK that isn't already installed, you can use 
 Specify the desired [.NET SDK image](https://hub.docker.com/_/python) tag in your steps. There is no need for a separate install step when using Docker.
 
 <details>
-<summary>Use a specific .NET SDK version</summary>
+<summary>Use one .NET SDK version</summary>
 
 ```yaml
               - step:
@@ -584,7 +517,7 @@ Specify the desired [.NET SDK image](https://hub.docker.com/_/python) tag in you
                   identifier: dotnet_version
                   spec:
                     connectorRef: account.harnessImage
-                    image: mcr.microsoft.com/dotnet/sdk:<+ stage.matrix.dotnetVersion >
+                    image: mcr.microsoft.com/dotnet/sdk:<+stage.matrix.dotnetVersion>
                     shell: Sh
                     command: |-
                       dotnet --info
@@ -634,7 +567,7 @@ pipeline:
           cloneCodebase: true
           caching:
             enabled: true
-            key: cache-{{ checksum "MyProject.csproj" }}
+            key: cache-{{ checksum "packages.lock.json" }}
             paths:
               - "~/.local/share/NuGet/cache"
           execution:
@@ -646,7 +579,7 @@ pipeline:
                   spec:
                     shell: Sh
                     command: |-
-                      dotnet restore
+                      dotnet add package Newtonsoft.json --version 12.0.1
               - step:
                   type: Run
                   identifier: install_converter
@@ -733,7 +666,7 @@ pipeline:
                     connectorRef: YOUR_AWS_CONNECTOR_ID
                     region: us-east-1
                     bucket: YOUR_S3_BUCKET
-                    key: cache-{{ checksum "MyProject.csproj" }}
+                    key: cache-{{ checksum "packages.lock.json" }}
                     archiveFormat: Tar
               - step:
                   type: Run
@@ -753,7 +686,7 @@ pipeline:
                     connectorRef: account.harnessImage
                     image: mcr.microsoft.com/dotnet/sdk:7.0
                     command: |-
-                      dotnet restore
+                      dotnet add package Newtonsoft.json -- version 12.0.1
               - step:
                   type: Run
                   identifier: install_converter
@@ -791,7 +724,7 @@ pipeline:
                     connectorRef: YOUR_AWS_CONNECTOR_ID
                     region: us-east-1
                     bucket: YOUR_S3_BUCKET
-                    key: cache-{{ checksum "MyProject.csproj" }}
+                    key: cache-{{ checksum "packages.lock.json" }}
                     sourcePaths:
                       - ~/.local/share/NuGet/cache
                     archiveFormat: Tar
