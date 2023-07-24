@@ -75,6 +75,7 @@ If you cannot find a resolution, please contact [Harness Support](mailto:suppor
   - [FileNotFoundExeption inside shell script execution task](#filenotfoundexeption-inside-shell-script-execution-task)
 - [Harness policy engine](#harness-policy-engine)
   - [Policy evaluation failed](#policy-evaluation-failed)
+- [Feature Flags](#feature-flags)
 <!-- TOC end -->
 
 ### Login issues
@@ -665,5 +666,17 @@ If a Harness policy engine policy set is enabled and your pipeline or other reso
 ![](./static/troubleshooting-nextgen-03.png)
 
 Contact your Harness account administrator to resolve the issue. If the policy set has an error, you can disable it by locating the policy set and turning off the **Enforced** toggle.
+
+### Feature Flags
+
+Below are some potential issues and fixes for Feature Flags
+
+#### Flag creation keeps failing
+
+When creating a feature flag it could be that the identifier has a character that's not permitted.  The regex used for flag identifiers is:
+
+```
+^[a-zA-Z0-9_][a-zA-Z0-9._$-]*$
+```
 
 ![](./static/troubleshooting-nextgen-04.png)
