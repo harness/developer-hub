@@ -1,7 +1,7 @@
 ---
 title: Resource allocation
 description: Learn about container resource allocation logic and troubleshooting.
-sidebar_position: 80
+sidebar_position: 90
 ---
 
 ```mdx-code-block

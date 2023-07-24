@@ -57,7 +57,7 @@ You can use expressions or [Runtime Inputs](/docs/platform/20_References/runtime
 
 1. In your pipeline's **Build** stage, and a [Plugin step](./plugin-step-settings-reference.md).
 2. Enter a **Name** and optional **Description**.
-3. For **Container Registry**, select a container registry connector that has DockerHub access.
+3. For **Container Registry**, select a container registry connector that has Docker Hub access.
 4. In the **Image** field, enter the name of the GitHub Actions Drone Plugin image: `plugins/github-actions`.
 5. Expand the **Optional Configuration**, and select **Privileged**.
 
