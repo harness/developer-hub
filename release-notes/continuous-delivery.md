@@ -33,6 +33,7 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 ```
 
 You can now edit Git details after the pipeline is configured and saved. This can be very useful in Git Experience workflows. For example, this enables you to move your YAML configs from one location to another in your Git configs repositories. (CDS-66621)
+
 The following Git settings can be modified through the Harness UI: 
 * Git connector
 * Repository
