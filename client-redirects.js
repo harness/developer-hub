@@ -2105,11 +2105,6 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/http-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
-    },
-
-    {
       from: "/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-plan-step",
       to: "/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step",
     },
@@ -2227,36 +2222,6 @@ module.exports = {
     {
       from: "/docs/continuous-delivery/cd-execution/kubernetes-executions/scale-kubernetes-replicas",
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/container-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/run-a-script-on-multiple-target-instances",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/wait-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/wait-step",
     },
 
     {
