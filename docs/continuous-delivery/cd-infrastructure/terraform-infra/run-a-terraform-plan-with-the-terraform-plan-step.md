@@ -581,7 +581,10 @@ If you use the `-detailed-exitcode` option in a step that follows the Harness Te
 
 * `0`: succeeded with empty diff (no changes)
 * `1`: error
-* `2`: succeeded with non-empty diff (changes present)
+* `2`: succeeded with non-empty diff (changes present)|
+
+The exit code will be available as Terraform Plan step output which can be accessed using an expression like:
+`<+pipeline.stages.TfStage.spec.execution.steps.TfPlan.plan.detailedExitCode>`
 
 ## Option: Advanced Settings
 
