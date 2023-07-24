@@ -1,6 +1,7 @@
 ---
 title: Use an external PostgreSQL database with your installation
-description: Learn how to use an external PostgreSQL database with Self-Managed Enterprise Edition installations. 
+description: Learn how to use an external PostgreSQL database with Self-Managed Enterprise Edition installations.
+sidebar_label: Use an external PostgreSQL database
 # sidebar_position: 37
 ---
 
