@@ -110,7 +110,7 @@ The **Step Parameters** settings appear.​
 3. Specify your **Input Variables** and **Output Variables**.
 4. In **Execution Target**,​ specify where you want to execute the script.  
 You can select **Specify on Target Host** or **On Delegate**.  
-For more information, go to [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts).
+For more information, go to [Using shell scripts in CD stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts).
 5. Select **Save**. The **Save Template to Git** settings appear.
 
     ![](./static/create-a-remote-step-template-21.png)
