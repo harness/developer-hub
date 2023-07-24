@@ -131,6 +131,10 @@ For this use case within the shell script, you can simply reference credentials 
 
 With this even when running the shell script on the delegate host, it can refer to the credentials of the K8s cloud provider which is used inside the infrastructure definition associated with the workflow.
 
+#### In the Rollout Deployment step, how Harness retrieves the events in the Wait for Steady State phase?
+
+During the "Wait for Steady State" phase, Harness retrieves events using the ```kubectl rollout status``` command, which retrieves information directly from the Kubernetes API server. Harness continuously polls the Kubernetes API server while a rollout is in progress, ensuring that it remains updated until the rollout is either completed or encounters an error.
+
 #### When migrating from FirstGen to NextGen, will the release number of ConfigMaps and Secrets be reset to 1?
 
 In the case of migrating from Harness FirstGen to Harness NextGen, the numbering of `ConfigMaps` and `Secrets` in Kubernetes will not be automatically reset to start from 1 again. The numbering is based on the release history and is incremented based on the latest release number.
@@ -147,3 +151,24 @@ For more information, you can refer to the documentation on declarative rollback
 If you are using the default release name format in Harness FirstGen as `release-${infra.kubernetes.infraId}`, it's important to note that when migrating to Harness NextGen, you will need to replace `${infra.kubernetes.infraId}` with the new expression.
 
 In Harness NextGen, a similar expression `<+INFRA_KEY>` is available for defining release names. However, it's crucial to understand that these expressions will resolve to completely different values compared to the expressions used in Harness FirstGen.
+
+#### Is it possible to have drop down options for multiple input?
+
+You can make the variable as Input and  define multiple allowed values by selecting checkbox Allowed values
+
+#### How to Make a Pipeline Failure or Step Failure if some condition is not passed In Bash script?
+
+You can set below in script ```set -e``` - Exit immediately when a command fails, or you can set exit code to non zero if certain conditions match and that should fail the step.
+
+#### Is there an easy way to see all the recent deployments of that workflow that have run?
+
+You can use deployment filter and select the workflow and time range and you will able to see all the deployment for that workflow within that time range
+
+#### Is there any  option to execute HTTP steps on the target environment?
+
+As HTTP step is meant to connect over http protocol, delegate can initiate http sessions and get the response as per request setup so using target environment will not help.
+
+#### WINRM Download artifact is not working in NG, after setting correct environment variables(HARNESS_ENV_PROXY and HTTP_PROXY).
+
+Please check the delegate version used as this feature was released with delegate version 791xx and make sure in console logs you are able to see Using HTTP_PROXY environment variable.
+
