@@ -6,6 +6,8 @@ keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]
 slug: /ci-pipelines/build/android
 ---
 
+<!-- Add step to switch Android Studio. Test on Kotlin sample project -->
+
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
@@ -21,7 +23,7 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
   target="_self"
 />
 
-You can build and test [Android](https://developer.android.com/modern-android-development) applications using a Linux platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/), or a [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
+You can build and test [Android](https://developer.android.com/modern-android-development) applications using a Linux or Mac platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure), a [self-hosted Kubernetes cluster](/docs/category/set-up-kubernetes-cluster-build-infrastructures/), or a [local runner](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure) build infrastructure.
 
 This guide assumes you've created a Harness CI pipeline. For more information about creating pipelines, go to:
 
@@ -29,6 +31,138 @@ This guide assumes you've created a Harness CI pipeline. For more information ab
 * [Harness Cloud pipeline tutorial](/tutorials/ci-pipelines/fastest-ci)
 
 <CISignupTip />
+
+## Specify architecture
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="hosted" label="Harness Cloud" default>
+```
+
+You can build and test Android apps on a Linux or Mac platform on [Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) build infrastructure.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="h1" label="Linux" default>
+```
+
+```yaml
+  stages:
+    - stage:
+        name: Build
+        identifier: Build
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="h2" label="macOS">
+```
+
+To use M1 machines with Harness Cloud, use the `Arm64` architecture.
+
+```yaml
+ stages:
+    - stage:
+        name: build
+        identifier: build
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: MacOS ## selects macOS operating system
+            arch: Arm64 ## selects M1 architecture
+          runtime:
+            type: Cloud
+            spec: {}
+```
+
+If you need to use Intel-based architecture, [Rosetta](https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment) is pre-installed on Harness Cloud's M1 machines. If you need to use it, add the prefix `arch -x86_64` to commands in your scripts. Keep in mind that running apps through Rosetta can impact performance. Use native Apple Silicon apps whenever possible to ensure optimal performance.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="selfhosted" label="Self-hosted">
+```
+
+You can build Android apps on a Linux or Mac platform on self-hosted [build infrastructures](/docs/category/set-up-build-infrastructure), including Kubernetes clusters, VMs, and local runners.
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="sh1" label="Linux" default>
+```
+
+This example sets up a Linux platform on a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures/).
+
+```yaml
+  stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_NAMESPACE
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="sh2" label="macOS">
+```
+
+To configure a self-hosted macOS build infrastructure, go to [Set up a macOS VM build infrastructure with Anka Registry](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/vm-build-infrastructure/define-macos-build-infra-with-anka-registry) or [Set up a local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure).
+
+This example uses a VM build infrastructure:
+
+```yaml
+ stages:
+    - stage:
+        name: build
+        identifier: build
+        description: ""
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: VM
+            spec:
+              type: Pool
+              spec:
+                poolName: YOUR_VM_POOL_NAME
+                os: MacOS
+```
+
+If you need to use Intel-based architecture and [Rosetta](https://developer.apple.com/documentation/apple-silicon/about-the-rosetta-translation-environment) is not already installed on your build infrastructure machines, you can use a **Run** step to [install this dependency](#install-dependencies). Keep in mind that running apps through Rosetta can impact performance. Use native Apple Silicon apps whenever possible to ensure optimal performance.
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
 
 ## Install dependencies
 
@@ -217,8 +351,6 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
   <TabItem value="selfhosted" label="Self-hosted">
 ```
 
-<!-- bundle exec fastlane test -->
-
 ```yaml
               - step:
                   type: Run
@@ -266,7 +398,7 @@ If you want to [view test results in Harness](/docs/continuous-integration/use-c
 <TabItem value="Harness Cloud">
 ```
 
-Android packages are pre-installed on Harness Cloud machines. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
+Android packages, including Android SDK tools, are pre-installed on Harness Cloud machines. For details about all available tools and versions, go to [Platforms and image specifications](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications).
 
 If you need to install additional versions, use a **Run** step. These examples use [faberNovel/docker-android](https://github.com/faberNovel/docker-android).
 
