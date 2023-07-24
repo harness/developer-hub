@@ -22,7 +22,7 @@ The delegate is instrumented for the collection of the following delegate agent 
 | `io_harness_custom_metric_resource_consumption_above_threshold`* | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. For more information, go to [Configure delegate resource threshold](#configure-delegate-resource-threshold). |
 
 :::info note
-Metrics notated with * above only visible if you start your delegate with `DYNAMIC_REQUEST_HANDLING` to be true in your delegate yaml. Check https://developer.harness.io/docs/platform/delegates/manage-delegates/delegate-metrics/#configure-delegate-resource-threshold for more details
+Metrics notated with * above only visible if you start your delegate with `DYNAMIC_REQUEST_HANDLING` to be true in your delegate yaml. Go to [Configure delegate resource threshold](#configure-delegate-resource-threshold) for more information.
 
 Also note that the above metrics are available only if your delegate version is later than 23.05.79311
 :::
