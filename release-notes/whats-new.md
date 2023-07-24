@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-07-21T10:00
+date: 2023-08-01T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,7 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - July 21, 2023
+## Latest - August 01, 2023
 
 ### Continuous Integration, version 5100
 
@@ -33,9 +33,14 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 * **Upload artifacts to Sonatype Nexus.**
    * You can use the **Nexus Publish** Drone plugin to [upload artifacts to Sonatype Nexus](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus).
 
-## July 18, 2023
+## Previous releases
 
-### Harness Platform, version 79916
+<details>
+<summary>2023 releases</summary>
+
+#### July 18, 2023
+
+##### Harness Platform, version 79916
 
 - The Go library has been upgraded from 1.20.4 to 1.20.5. (PL-39700)
 
@@ -59,7 +64,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-### Continuous Delivery, version 79916
+##### Continuous Delivery, version 79916
 
 - Retrieve the current status of the looping strategy for stages and steps during execution. (CDS-69780)
   
@@ -85,7 +90,7 @@ This item requires Harness Delegate version 79904. For information about feature
   
   This feature requires the latest delegate version, 79904, to display console logs during execution correctly.
 
-### Harness Delegate, version 79904
+##### Harness Delegate, version 79904
 
 - The Splunk connector has been enhanced to include support for Bearer Token. (OIP-598)
 
@@ -93,9 +98,9 @@ This item requires Harness Delegate version 79904. For information about feature
    1. If you have user management permissions, you can list all the Personal Access Tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
    2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
 
-## July 13, 2023
+#### July 13, 2023
 
-### Cloud Cost Management, version 80102
+##### Cloud Cost Management, version 80102
 
 * Recommendations page UI enhancement (CCM-12693)
 
@@ -111,9 +116,9 @@ By default, the first two options are enabled, and you can modify the toggles to
    
   <docimage path={require('./static/ccm-tooltip-recommendations.png')} width="60%" height="60%" title="Click to view full size image" />
 
-## July 07, 2023
+#### July 07, 2023
 
-### Cloud Cost Management, version 80002
+##### Cloud Cost Management, version 80002
 
 * Azure VM recommendations (CCM-13142)
 
@@ -127,9 +132,9 @@ By default, the first two options are enabled, and you can modify the toggles to
 
   You can now easily move recommendations from the **Applied** state back to the **Open** state. This enhancement allows you to easily rectify accidental closure of recommendations or marking Jira tickets as done by returning them to an actionable state.
 
-## July 06, 2023
+#### July 06, 2023
 
-### Continuous Delivery, version 79811
+##### Continuous Delivery, version 79811
 
 - Template Library: Reference specific versions of a template on a different branch from the pipeline (CDS-69774)
   
@@ -139,24 +144,19 @@ By default, the first two options are enabled, and you can modify the toggles to
   
   The default logic will continue to be used if no branch is specified when selecting the template, but if a specific branch is picked while selecting the template then templates are always picked from the specified branch only.
 
-### Harness Platform, version 79811
+##### Harness Platform, version 79811
 
 - Harness now allows special characters in usernames. (PL-39564, ZD-46487)
 - You can now view delegate logs when validating a connector that uses delegates to establish connections. (PL-37919)
 - When creating Azure Key Vault, you can now manually enter the vault name. (PL-32773, ZD-44045)
 
-## July 5, 2023
+#### July 5, 2023
 
-### Security Testing Orchestration, version 1.60.0
+##### Security Testing Orchestration, version 1.60.0
 
 You can now set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. This workflow supports any STO-compatible scanner that can run natively without root access. This workflow also supports build environments that use a self-signed proxy server between the Harness Delegate and the Harness Manager.
 
 For information on how to set up this workflow, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### June 30, 2023
 
