@@ -341,6 +341,8 @@ The parent YAML will include an example of a YAML screenshot if you explicitly s
 
 The parent YAML will not contain a branch for the child if you do not specify a branch explicitly. 
 
+To switch referring child entity from feature branch to default branch, the user should manually remove the field gitBranch from the parent YAML.
+
 ## Next steps
 
 * [Manage Input Sets and Triggers in Simplified Git Experience​](manage-input-sets-in-simplified-git-experience.md)
