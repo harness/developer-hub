@@ -23,6 +23,7 @@ Harness Infrastructure as Code Management (IaCM) provides a way to avoid the fol
 
 * Organizational complexity and scale - As infrastructure scales, it requires more teams to maintain it. For effective collaboration, it's essential to delegate ownership of infrastructure across these teams and empower them to work in parallel without conflict.  Also, allow them to determine their tools and processes while ensuring compliance.
 
+* Lack of collaboration - Users and small teams face challenges when it comes to collaboration on shared resources and may end up with conflicts when it comes to resource changes. 
 
 
 
