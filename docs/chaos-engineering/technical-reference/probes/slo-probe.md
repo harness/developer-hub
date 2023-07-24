@@ -5,10 +5,6 @@ sidebar_position: 7
 
 SLO Probes allow users to validate the error budget for a given SLO when the corresponding application is under chaos and determine the verdict based on the percentage change of the error budget. The probe leverages API from SRM module and fetches the error budget values between the chaos execution time period. The success of a chaos probe can be defined based on the drop in the percentage of the error budget values. The percentage drop is defined by the users in the probe configuration.
 
-:::info YAML only feature
-In case of complex queries that span multiple lines, the `queryPath` attribute can be used to provide the link to a file consisting of the query. This file can be made available in the experiment pod via a ConfigMap resource, with the ConfigMap being passed in the [ChaosEngine](https://docs.litmuschaos.io/docs/concepts/chaos-engine) or the [ChaosExperiment](https://docs.litmuschaos.io/docs/concepts/chaos-experiment) CR. Also, `query` and `queryPath` attributes are mutually exclusive. Refer to the probe schema [here](https://docs.litmuschaos.io/docs/concepts/probes#promprobe).
-:::
-
 ## Defining the probe
 
 You can define the probes at **.spec.experiments[].spec.probe** path inside the chaos engine.
