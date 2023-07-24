@@ -1,6 +1,7 @@
 ---
-title: Use an external database with your installation
-description: Learn how to use an external database with Self-Managed Enterprise Edition installations. 
+title: Use an external MongoDB server with your installation
+description: Learn how to use an external MongoDB server with Self-Managed Enterprise Edition installations.
+sidebar_label: Use an external MongoDB server
 # sidebar_position: 37
 ---
 
