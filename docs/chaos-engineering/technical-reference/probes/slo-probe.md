@@ -3,7 +3,7 @@ title: SLO probe
 sidebar_position: 7
 ---
 
-SLO Probes allow users to validate the error budget for a given SLO when the corresponding application is under chaos and determine the verdict based on the percentage change of the error budget. The probe leverages API from SRM module and fetches the error budget values between the chaos execution time period. The success of a chaos probe can be defined based on the drop in the percentage of the error budget values. The percentage drop is defined by the users in the probe configuration.
+Service Level Objective (SLO) probes let users validate the error budget for a given SLO when the corresponding application is under chaos, and determine the verdict based on the percentage change of the error budget. The probe leverages the API from the Service Reliability Management (SRM) module, and fetches the error budget values during the chaos execution time period. The success of a chaos probe can be defined based on the drop in the percentage of the error budget values. The percentage drop is defined by the user in the probe configuration.
 
 ## Defining the probe
 
@@ -31,7 +31,7 @@ spec:
 
 ## Schema
 
-Listed below is the probe schema for the Prometheus probe, with properties shared across all the probes and properties unique to the Prometheus probe.
+Listed below is the probe schema for the SLO probe, with properties shared across all the probes and properties unique to the SLO probe.
 
 <table>
   <tr>
@@ -55,7 +55,7 @@ Listed below is the probe schema for the Prometheus probe, with properties share
    </td>
    <td>N/A <code>type: string</code>
    </td>
-   <td>The <code>name</code> holds the name of the probe. It can be set based on the usecase
+   <td>The <code>name</code> holds the name of the probe. It can be set based on the usecase.
    </td>
   </tr>
   <tr>
@@ -67,7 +67,7 @@ Listed below is the probe schema for the Prometheus probe, with properties share
    </td>
    <td><code>httpProbe, k8sProbe, cmdProbe, promProbe</code>
    </td>
-   <td>The <code>type</code> supports four types of probes. It can one of the httpProbe, k8sProbe, cmdProbe, promProbe
+   <td>The <code>type</code> supports four types of probes. It can one of the httpProbe, k8sProbe, cmdProbe, promProbe.
    </td>
   </tr>
   <tr>
@@ -252,7 +252,7 @@ Listed below is the probe schema for the Prometheus probe, with properties share
    </td>
    <td>N/A <code>type: integer</code>
    </td>
-   <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data
+   <td>The <code>probeTimeout</code> represents the time limit for the probe to execute the specified check and return the expected data.
    </td>
   </tr>
   <tr>
@@ -276,7 +276,7 @@ Listed below is the probe schema for the Prometheus probe, with properties share
    </td>
    <td>N/A <code>type: boolean</code>
    </td>
-   <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails
+   <td>The <code>stopOnFailure</code> can be set to true/false to stop or continue the experiment execution after probe fails.
    </td>
   </tr>
   <tr>
@@ -284,9 +284,7 @@ Listed below is the probe schema for the Prometheus probe, with properties share
    </td>
    <td>Flags to hold the total evaluation time for the probe
    </td>
-    <td>Optional
-   </td>
-   <td>
+   <td>Optional
    </td>
    <td>N/A <code>type: string</code>
    </td>
