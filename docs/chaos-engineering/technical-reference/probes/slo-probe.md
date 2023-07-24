@@ -284,6 +284,8 @@ Listed below is the probe schema for the Prometheus probe, with properties share
    </td>
    <td>Flags to hold the total evaluation time for the probe
    </td>
+    <td>Optional
+   </td>
    <td>
    </td>
    <td>N/A <code>type: string</code>
