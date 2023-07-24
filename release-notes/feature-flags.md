@@ -20,7 +20,7 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 21, 2023
+## Latest - July 24, 2023
 
 <Tabs>
   <TabItem value="What's new">
@@ -37,11 +37,9 @@ This release does not include early access features.
 
 #### Feature Flags SDKs
 
-The **Android** client SDK has been updated to version **1.1.3** with the following updates.
+The **Ruby** server SDK has been updated to version **1.1.3** with the following updates.
 
-* The SDK's cache has been rewritten to improve its stability. (FFM-8630)
-
-* The gradle wrapper has been included in the SDK repository so that users can build without having to install gradle. (FFM-7868)
+* Fixed an issue where if no attributes were given in the target, the SDK sometimes threw a TypeError exception when processing rules. (FFM-8725)
 
 
   </TabItem>
@@ -51,6 +49,26 @@ The **Android** client SDK has been updated to version **1.1.3** with the follow
 
 <details>
 <summary>2023 releases</summary>
+
+#### July 21, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Android** client SDK has been updated to version **1.1.3** with the following updates.
+
+* The SDK's cache has been rewritten to improve its stability. (FFM-8630)
+
+* The gradle wrapper has been included in the SDK repository so that users can build without having to install gradle. (FFM-7868)
 
 #### July 20, 2023
 
