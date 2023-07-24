@@ -1,7 +1,7 @@
 ---
 title: Terragrunt
 description: Learn about the Terragrunt steps you can use in you CD stage, and how these steps are commonly used together.
-sidebar_position: 300
+sidebar_position: 5
 ---
 
 # Terragrunt provisioning
