@@ -10,13 +10,15 @@ You may want to have a single pipeline that provisions or updates resources used
 
 * A CD stage to perform deployments.
 
-However, you can pass variables from an IaCM pipeline to CD. For example, you might want to pass the Kubernetes namespace as a value. 
+For information about CD stages, go to [CD steps, stages, and strategies](/docs/continuous-delivery/x-platform-cd-features/executions/stages-steps-strategies.md).
+
+You can pass [variables](/docs/platform/12_Variables-and-Expressions/add-a-variable.md) from an IaCM pipeline to CD. For example, you might want to pass the Kubernetes namespace as a value. 
 
 If you select a pipeline and select the **Apply** step, you will see that all the Terraform outputs are available as output parameters. You can paste the path and use it in any additional stage that you have.
 
 ![Output](./static/output.png)
 
-Here’s an example of how to pass a variable from an IaCM stage to an another stage:
+The following example shows how to pass a variable from an IaCM stage to an another stage. If you are interested in using the "bucket_name" as an input, you either copy the current value or the path to the variables, meaning that the value will be fetched at runtime.
 
 `<+pipeline.stages.iacstage.spec.execution.steps.apply.output.outputVariables.bucket_name>`
 

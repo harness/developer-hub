@@ -19,5 +19,3 @@ Once you have created the workspace and performed an update, you should see how 
     ![State](./static/state.png)
 
 3. Select the **Execution History** tab, where you can see the execution details of the pipeline and the status of the provision.
-
-    ![Execution history](./static/execution-history.png)

@@ -28,8 +28,6 @@ import TabItem from '@theme/TabItem';
 
 4. On the **Workspace** tab, select an existing workspace or select **+ Create New Workspace** to create a new workspace. 
 
-    ![Select a workspace](./static/workspace-tab.png)
-
 5. Select the **Execution** tab, and then add the **IACM Terraform steps** for adding Terraform plugins. Five operations are supported: init/plan/apply/destroy/plan-destroy.
 
     * The steps required for provision are as follows: init, plan, and apply.

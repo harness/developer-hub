@@ -6,7 +6,7 @@ sidebar_position: 10
 
 A workspace is a named environment that stores Terraform configurations, variables, states, and other resources necessary to manage infrastructure. Each workspace is mapped to a single state.
 
-Users can assign Terraform configuration with multiple workspaces to enforce the same desired configuration. Each workspace creates a different state from the configuration and independent lifecycle. For example, users can have a Terraform configuration to set up a Kubernetes cluster and use it with different workspaces, resulting in different clusters. The configuration is unique to each workspace and can be managed through Environment/Terraform variables.
+Users can assign Terraform configuration with multiple workspaces to enforce the same desired configuration. Each workspace creates a different state from the configuration and independent lifecycle. For example, you can have a single configuration of a Kubernetes cluster and can create multiple workspaces out of it, which leads to different clusters. The configuration is unique to each workspace and can be managed through Environment/Terraform variables.
 
 To create a new workspace, follow these steps:
 
