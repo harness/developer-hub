@@ -85,4 +85,39 @@ export const experiments: ExperimentDetails[] = [
     tags: ["linux","time"],
     category: "linux",
   },
+  {
+    name: "Linux HTTP latency",
+    description:
+      "Linux HTTP latency injects chaos to cause HTTP request/response latency to a service deployed on a Linux machine.",
+    tags: ["linux","http","latency"],
+    category: "linux",
+  },
+  {
+    name: "Linux HTTP modify body",
+    description:
+      "Linux HTTP modify body injects chaos to cause HTTP request/response body for a service to be modified on a Linux machine.",
+    tags: ["linux","http","modify-body"],
+    category: "linux",
+  },
+  {
+    name: "Linux HTTP modify header",
+    description:
+      "Linux HTTP modify header injects chaos to add or update the HTTP headers for request/response to a service deployed on a Linux machine.",
+    tags: ["linux","http","modify-header"],
+    category: "linux",
+  },
+  {
+    name: "Linux HTTP reset peer",
+    description:
+      "Linux HTTP reset peer injects chaos to stop outgoing HTTP requests by resetting the TCP connection. This is achieved by starting the proxy server and redirecting the request/response traffic through the proxy server.",
+    tags: ["linux","http","reset-peer"],
+    category: "linux",
+  },
+  {
+    name: "Linux HTTP status code",
+    description:
+      "Linux HTTP reset peer injects chaos to modify the status code of the response from the application server to the desired status code provided by the user.",
+    tags: ["linux","http","status-code"],
+    category: "linux",
+  },
 ];

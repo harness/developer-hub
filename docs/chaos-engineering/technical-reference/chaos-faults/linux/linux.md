@@ -25,14 +25,15 @@ The infrastructure consumes minimal system resources in an idle state, when no e
 ## Fault compatibility matrix
 The faults have been tested for compatibility in the following Linux OS distributions:
 
-|                                                 | Stress faults (cpu, memory, disk IO) | Network faults (loss, latency, corruption, duplication) | DNS faults (error, spoof) | Process faults (process kill, service restart) | Time chaos | Disk fill |
-|-------------------------------------------------|--------------------------------------|---------------------------------------------------------|---------------------------|------------------------------------------------|------------|-----------|
-| Ubuntu 16+                                      | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          | ✓         |
-| Debian 10+                                      | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          | ✓         |
-| CentOS 7+                                       | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          | ✓         |
-| RHEL 7+                                         | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          | ✓         |
-| Fedora 30+                                      | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          | ✓         |
-| openSUSE LEAP 15.4+ / SUSE Linux Enterprise 15+ | ✓                                    | ✓                                                       | ✓                         | ✓                                              | ✓          | ✓         |
+|                                                 | Stress faults (cpu, memory, disk IO) | Network faults (loss, latency, corruption, duplication) | DNS faults (error, spoof) | HTTP faults(latency, modify body, modify header, reset peer, status code) | Process faults (process kill, service restart) | Time chaos | Disk fill |
+|-------------------------------------------------|--------------------------------------|---------------------------------------------------------|---------------------------|---------------------------------------------------------------------------|------------------------------------------------|------------|-----------|
+| Ubuntu 16+                                      | ✓                                    | ✓                                                       | ✓                         | ✓                                                                         | ✓                                              | ✓          | ✓         |
+| Debian 10+                                      | ✓                                    | ✓                                                       | ✓                         | ✓                                                                         | ✓                                              | ✓          | ✓         |
+| CentOS 7+                                       | ✓                                    | ✓                                                       | ✓                         | ✓                                                                         | ✓                                              | ✓          | ✓         |
+| RHEL 7+                                         | ✓                                    | ✓                                                       | ✓                         | ✓                                                                         | ✓                                              | ✓          | ✓         |
+| Fedora 30+                                      | ✓                                    | ✓                                                       | ✓                         | ✓                                                                         | ✓                                              | ✓          | ✓         |
+| openSUSE LEAP 15.4+ / SUSE Linux Enterprise 15+ | ✓                                    | ✓                                                       | ✓                         | ✓                                                                         | ✓                                              | ✓          | ✓         |
+
 
 <!-- Experiment List and Search Bar (every experiment added below, need to be added in this file also) -->
 
@@ -232,6 +233,88 @@ Linux time chaos injects chaos to change the time of the Linux machine.
 
 - Induces time chaos to change the system time on the target Linux machines.
 - Determines the resiliency of the underlying application components when subjected to a change in the system time.
+
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Linux HTTP latency
+
+Linux HTTP latency injects chaos to cause HTTP request/response latency to a service deployed on a Linux machine.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Evaluates the application's resilience to erroneous or incorrect HTTP response body.
+
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Linux HTTP modify body
+
+Linux HTTP modify body injects chaos to cause HTTP request/response body for a service to be modified on a Linux machine.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Evaluates the application's resilience to lossy or flaky HTTP responses.
+- Simulates latency to specific API services for (or from) a given service.
+- Simulates a slow response on specific third-party or dependent components or services.
+
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Linux HTTP modify header
+
+Linux HTTP modify header injects chaos to add or update the HTTP headers for request/response to a service deployed on a Linux machine.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Evaluates the application's resilience to incorrect or incomplete headers in application services.
+
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Linux HTTP reset peer
+
+Linux HTTP reset peer injects chaos to stop outgoing HTTP requests by resetting the TCP connection. This is achieved by starting the proxy server and redirecting the request/response traffic through the proxy server.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Tests the application's resilience to lossy or flaky HTTP connection.
+- Simulates premature connection loss that may occur due to firewall issues or other issues between microservices thereby verifying connection timeout.
+- Simulates connection resets due to resource limitations on the server side such as out of memory error, process kills, overload on the server due to high amounts of traffic.
+
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="linux">
+
+### Linux HTTP status code
+
+Linux HTTP reset peer injects chaos to modify the status code of the response from the application server to the desired status code provided by the user.
+
+<accordion color="green">
+<summary>Use cases</summary>
+
+- Tests the application's resilience to error code HTTP responses from the provided application server.
+- Simulates unavailability of specific API services (503, 404).
+- Simulates unavailability of specific APIs for (or from) a given microservice.
+- Simulates unauthorized requests for third party services (401 or 403), and API malfunction, that is internal server error (50x).
 
 </accordion>
 

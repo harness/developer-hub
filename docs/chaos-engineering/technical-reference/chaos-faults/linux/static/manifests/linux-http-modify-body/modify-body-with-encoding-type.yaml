@@ -1,0 +1,15 @@
+# provide the content encoding and content type
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-http-modify-body
+  labels:
+    name: http-modify-body
+spec:
+  httpChaos/inputs:
+    duration: 30
+    networkInterface: "ens4"
+    targetServicePort: 443
+    responseBody: "modified body"
+    contentType: "text/html"
+    contentEncoding: "gzip"

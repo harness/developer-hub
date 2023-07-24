@@ -1,0 +1,13 @@
+# provide the reset timeout value
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-http-reset-peer
+  labels:
+    name: http-reset-peer
+spec:
+  httpChaos/inputs:
+    duration: 30
+    networkInterface: "ens4"
+    targetServicePort: 443
+    resetTimeout: 500

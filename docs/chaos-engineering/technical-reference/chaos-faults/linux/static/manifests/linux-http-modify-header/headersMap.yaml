@@ -1,0 +1,13 @@
+## provide the headers as a map
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-http-modify-header
+  labels:
+    name: http-modify-header
+spec:
+  httpChaos/inputs:
+    duration: 30
+    networkInterface: "ens4"
+    targetServicePort: 443
+    headersMap: '{"X-Litmus-Test-Header": "X-Litmus-Test-Value"}'

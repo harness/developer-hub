@@ -1,0 +1,13 @@
+# modified status code for the http response
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-http-status-code
+  labels:
+    name: http-status-code
+spec:
+  httpChaos/inputs:
+    duration: 30
+    networkInterface: "ens4"
+    targetServicePort: 443
+    statusCode: "501"
