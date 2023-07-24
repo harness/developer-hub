@@ -37,7 +37,7 @@ This release does not include early access features.
 
 #### Feature Flags SDKs
 
-The **Ruby** server SDK has been updated to version **1.1.3** with the following updates.
+The **Ruby** server SDK has been updated to version **1.1.3** with the following update.
 
 * Fixed an issue where if no attributes were given in the target, the SDK sometimes threw a TypeError exception when processing rules. (FFM-8725)
 
