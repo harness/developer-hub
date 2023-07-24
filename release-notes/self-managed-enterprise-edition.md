@@ -126,8 +126,6 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 - There is now a limit of 100 API Tokens per free and community account. (PL-39337)
 
-
-
 #### Service Reliability Management
 
 - `SocketTimedOut` error messages were not displayed in the call log. (OIP-537)
@@ -177,12 +175,6 @@ Review the notes below for details about recent changes to Harness Self-Managed 
   </TabItem>
   <TabItem value="Fixed issues">
 ```
-
-#### Chaos Engineering
-
-- (CHAOS-1823)
-
-- (CHAOS-1847)
 
 #### Continuous Delivery & GitOps
 
@@ -487,7 +479,7 @@ You are missing the following permission: "View default settings" in Account sco
   
   This issue has been resolved. You can now successfully create a monitored service even when selecting a value in the **Propagate from** field to propagate a service from the previous parallel stage.
 
-- Unable to select multiple environments when creating a monitored service for infrastructure. (SRM-14794)  
+- Unable to select multiple environments when creating a monitored service for infrastructure. (SRM-14794, SRM-14862)  
   
   This issue has been resolved. You can now select multiple environments when creating a monitored service for infrastructure.
 
