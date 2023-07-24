@@ -164,6 +164,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
 * Improved error messages for [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) using [AWS connectors](/docs/platform/Connectors/Cloud-providers/add-aws-connector) with invalid credentials in [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures). (CI-7942, ZD-44039)
 * Fixed an issue where the active developer count was not reported for builds triggered manually. (CI-8025)
+* Fixed an issue related to logs for Background steps. (CI-7615, ZD-44501)
 
 ##### Hotfix versions 4205, 4206
 
