@@ -8,6 +8,22 @@ A workspace is a named environment that stores Terraform configurations, variabl
 
 Users can assign Terraform configuration with multiple workspaces to enforce the same desired configuration. Each workspace creates a different state from the configuration and independent lifecycle. For example, you can have a single configuration of a Kubernetes cluster and can create multiple workspaces out of it, which leads to different clusters. The configuration is unique to each workspace and can be managed through Environment/Terraform variables.
 
+A workspace may have one of the following statuses:
+
+* Active - Sucessfully deployed and running. 
+
+* Inactive - Successfully destroyed or was not provisioned.
+
+* Drift - Drift was detected. 
+
+* Provisioning - Currently being provisioned. 
+
+* Destroying - Currently being destroyed. 
+
+* Failed - Errors were encountered during provisioning or destroying. 
+
+* Unknown - Changes were made outside of the product. 
+
 To create a new workspace, follow these steps:
 
 1. Sign in to app.harness.io.
