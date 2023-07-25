@@ -8,7 +8,7 @@ sidebar_position: 103
 
 You can scan your code repositories using [CodeQL](https://codeql.github.com/), an analysis engine used by developers to automate security checks, and by security researchers to perform variant analysis. 
 
-The basic workflow is
+The following steps outline the basic workflow:
 
 1. Run a CodeQL scan, either externally or as part of a Run step, and publish the results to SARIF.
 
@@ -18,12 +18,38 @@ The basic workflow is
 
    2. Use a Run step to add your scan results to the shared folder.
 
-2. Use a [Custom Ingest](./custom-ingest-reference.md) step to ingest the results. 
+2. Use a [CodeQL](#codeql-step-configuration) step to ingest the results. 
 
-   This topic includes an end-to-end YAML pipeline that illustrates this workflow. 
+   :::note
+   Currently, the CodeQL scanner template is behind the feature flag `STO_STEP_PALETTE_CODEQL`. Contact [Harness Support](mailto:support@harness.io) to enable this feature.
 
+   Alternately, you can use a [Custom ingest step](./custom-ingest-reference.md) to ingest your data instead.
+   :::
 
-<!-- START step-palette-config ----------------------------------------------------------------------------- 
+   
+This topic includes an [end-to-end YAML pipeline](#yaml-pipeline-example) that illustrates this workflow. 
+
+## Before you begin
+
+<!-- 
+### Docker-in-Docker requirements
+
+```mdx-code-block
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+```
+
+<StoDinDRequirements />
+
+-->
+
+### Root access requirements
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
+
 
 ## CodeQL step configuration
 
@@ -36,7 +62,7 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 <StoScannerStepNotes />
 
 <details>
-    <summary>Step Palette</summary>
+    <summary>CodeQL Step Palette</summary>
 
 ![](./static/codeql-security-scan-step.png) 
 
@@ -49,11 +75,8 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 import StoSettingScanModeIngest from './shared/step_palette/_sto-ref-ui-scan-mode-02-ingestonly.md';
 ```
 
-
 <StoSettingScanModeIngest />
 
-<!-- ============================================================================= 
-<a name="scan-config"></a>
 
 ### Scan Configuration
 
@@ -67,9 +90,6 @@ import StoSettingProductConfigName from './shared/step_palette/_sto-ref-ui-produ
 ### Target
 
 
-<!-- ============================================================================= 
-<a name="target-type"></a>
-
 #### Type
 
 ```mdx-code-block
@@ -79,10 +99,6 @@ import StoSettingScanTypeRepo from './shared/step_palette/_sto-ref-ui-scan-type-
 
 <StoSettingScanTypeRepo />
 
-
-<!-- ============================================================================= 
-<a name="target-name"></a>
-
 #### Name 
 
 ```mdx-code-block
@@ -90,9 +106,6 @@ import StoSettingProductID from './shared/step_palette/_sto-ref-ui-prod-id.md';
 ```
 
 <StoSettingProductID />
-
-<!-- ============================================================================= 
-<a name="target-variant"></a>
 
 #### Variant
 
@@ -102,23 +115,8 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 
 <StoSettingTargetVariant  />
 
-<!-- ============================================================================= 
-<a name="target-workspace"></a>
 
-#### Workspace (_repository_)
-
-```mdx-code-block
-import StoSettingTargetWorkspace from './shared/step_palette/_sto-ref-ui-target-workspace.md';
-```
-
-<StoSettingTargetWorkspace  />
-
-### Ingestion settings
-
-
-<a name="ingestion-file"></a>
-
-#### Ingestion File
+### Ingestion file
 
 ```mdx-code-block
 import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
@@ -183,7 +181,6 @@ In the **Advanced** settings, you can use the following options:
 * [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
 * [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 
-<!-- END step-palette-config ----------------------------------------------------------------------------- -->
 
 <!-- yaml pipeline example ----------------------------------------------------------------------------- -->
 
@@ -263,16 +260,16 @@ pipeline:
                         memory: 2G
                         cpu: 2000m
               - step:
-                  type: CustomIngest
-                  name: custom_ingest
-                  identifier: custom_ingest
+                  type: CodeQL
+                  name: CodeQL_ingest
+                  identifier: CodeQL_1
                   spec:
                     mode: ingestion
-                    config: sarif
+                    config: default
                     target:
                       name: codeql-dvpwa
                       type: repository
-                      variant: develop
+                      variant: test
                     advanced:
                       log:
                         level: info
@@ -284,13 +281,13 @@ pipeline:
           infrastructure:
             type: KubernetesDirect
             spec:
-              connectorRef: stoqadelegate
-              namespace: harness-qa-delegate
+              connectorRef: hyharnesslegate
+              namespace: harness-delegate-ng
               automountServiceAccountToken: true
               nodeSelector: {}
               os: Linux
-  identifier: CodeQLtestv3
-  name: CodeQL-test-v3
+  identifier: CodeQLv3
+  name: CodeQL-v3
 
 
 ```
