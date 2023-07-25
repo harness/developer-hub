@@ -14,13 +14,13 @@ With the [Javascript SDK 1.14.0](https://github.com/harness/ff-javascript-client
 
 Follow these instructions and code snippets to make your mobile app flags resilient during a mobile web browser refresh.
 
-## Integrating refreshEvaluations() WebView On Mobile Devices
+## Integrating refreshEvaluations() WebView on mobile devices
 
 The SDK can be used inside WebView on native mobile apps for iOS and Android. You will need to add some additional code to tell the SDK to update its local evaluations when the app comes to the foreground after being placed in the background. This will ensure the SDK has the latest evaluations, as the SSE stream will not receive events while the app is suspended in the background. Similarly, you may want to refresh the SDK if the network comes online after a period of no connectivity.
 
-The SDK provides a function on the client instance called `refreshEvaluations()`. Calling this allows you to soft poll the servers for the latest evaluations. Note to avoid overloading the backend servers, this function will only call out to the network after enough time has elapsed.
+The SDK provides a function on the client instance called `refreshEvaluations()`. Calling this allows you to soft poll the servers for the latest evaluations. To avoid overloading the backend servers, this function will only call out to the network after enough time has elapsed.
 
-### toForeground() JS Function
+### toForeground() JS function
 Once you have a client instance add a function that can be easily invoked from the device's native language
 
 ```
@@ -30,7 +30,7 @@ Once you have a client instance add a function that can be easily invoked from t
 ```
 
 ### iOS
-On iOS add an observer to wait for [willEnterForegroundNotification](https://developer.apple.com/documentation/uikit/uiapplication/1622944-willenterforegroundnotification) on the [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview) to call [evaluateJavaScript()](https://developer.apple.com/documentation/webkit/wkwebview/1415017-evaluatejavascript)
+On iOS, add an observer to wait for [willEnterForegroundNotification](https://developer.apple.com/documentation/uikit/uiapplication/1622944-willenterforegroundnotification) on the [WKWebView](https://developer.apple.com/documentation/webkit/wkwebview) to call [evaluateJavaScript()](https://developer.apple.com/documentation/webkit/wkwebview/1415017-evaluatejavascript).
 
 ```
   _ = NotificationCenter.default.addObserver(
@@ -50,7 +50,7 @@ On iOS add an observer to wait for [willEnterForegroundNotification](https://dev
 ```
 
 ### Android
-On Android register an [ActivityLifecycleCallbacks](https://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks) listener and override [onActivityStarted](https://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks#onActivityStarted(android.app.Activity) (API level 29) then once a foreground event arrives you can call [evaluateJavascript()](https://developer.android.com/reference/android/webkit/WebView#evaluateJavascript(java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.String%3E)) on the [WebView](https://developer.android.com/reference/android/webkit/WebView)
+On Android, register an [ActivityLifecycleCallbacks](https://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks) listener and override [onActivityStarted](https://developer.android.com/reference/android/app/Application.ActivityLifecycleCallbacks#onActivityStarted(android.app.Activity)) (API level 29). Then once a foreground event arrives, you can call [evaluateJavascript()](https://developer.android.com/reference/android/webkit/WebView#evaluateJavascript(java.lang.String,%20android.webkit.ValueCallback%3Cjava.lang.String%3E)) on the [WebView](https://developer.android.com/reference/android/webkit/WebView).
 
 ```
   @Override
@@ -71,8 +71,8 @@ On Android register an [ActivityLifecycleCallbacks](https://developer.android.co
   }
 ```
 
-### Mobile Web Browsers
-When not embedded inside a WebView and using a mobile browser you can detect when the browser app comes to the foreground by listening for the 'visibilitychange' event as described here [Page Lifecycle API](https://developer.chrome.com/blog/page-lifecycle-api/)
+### Mobile web browsers
+When not embedded inside a WebView and using a mobile browser, you can detect when the browser app comes to the foreground by listening for the 'visibilitychange' event as described here [Page Lifecycle API](https://developer.chrome.com/blog/page-lifecycle-api/).
 
 ```
 document.addEventListener('visibilitychange', () => {
