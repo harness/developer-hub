@@ -46,9 +46,7 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 
 Harness Secret Manager is a platform designed to securely and centrally manage secrets. It offers a unified interface to store, manage, and distribute secrets, including API keys, passwords, and certificates, used in software applications. Developers can seamlessly incorporate secrets into their applications, enforce access controls, and monitor secret usage. This system streamlines secret management and strengthens security for organizations utilizing Harness in their software development and deployment workflows.
 
-<docimage path={require('../static/secret/SecretManager.png')} width="60%" height="60%" title="Click to view full size image" />
-
-# How to Manage secrets with In-built Harness Secret Manager
+# How to Manage Secrets with In-built Harness Secret Manager
 
 Google Cloud Key Management Service is the default Secret Manager in Harness and is named Harness Secret Manager Google KMS. To configure the same you should go through the link [how to add a Google KMS Secret Manager in Harness.](https://developer.harness.io/docs/platform/secrets/secrets-management/add-google-kms-secrets-manager/)
 
