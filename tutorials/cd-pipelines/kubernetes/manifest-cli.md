@@ -102,21 +102,24 @@ You can also follow the [Install Harness Delegate on Kubernetes or Docker](https
 <TabItem value="MacOS">
 ```
 ```
-curl -L0 https://github.com/harness/harness-cli/releases/download/v0.2.8/harness-cli-v0.2.8-darwin-amd64.tar.gz
+curl -L0 https://github.com/harness/harness-cli/releases/download/v0.0.10-alpha/harness-v0.0.10-alpha-darwin-amd64.tar.gz
+
 ```
 ```mdx-code-block
 </TabItem>
 <TabItem value="Linux">
 ```
 ```
-<Command For Linux>
+curl -L0 https://github.com/harness/harness-cli/releases/download/v0.0.10-alpha/harness-v0.0.10-alpha-linux-amd64.tar.gz
+
 ```
 ```mdx-code-block
 </TabItem>
 <TabItem value="Windows">
 ```
 ```
-<Command For Windows>
+curl -L0 https://github.com/harness/harness-cli/releases/download/v0.0.10-alpha/harness-v0.0.10-alpha-windows-amd64.zip
+
 ```
 ```mdx-code-block
 </TabItem>
