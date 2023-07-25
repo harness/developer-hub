@@ -539,6 +539,8 @@ const config = {
     path.join(__dirname, "/plugins/utmcookie-plugin"),
     path.join(__dirname, "/plugins/munity-plugin"),
   ],
+
+   clientModules: [require.resolve("./client-modules/DetailsFromDocs")],
 };
 
 module.exports = config;
