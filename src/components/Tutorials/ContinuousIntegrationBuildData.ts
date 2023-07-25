@@ -57,7 +57,7 @@ import { MODULES } from "../../constants";
           description:
             "Build and test an iOS or macOS application.",
           link: "/tutorials/ci-pipelines/build/ios",
-          newDoc: true,
+          newDoc: false,
         },
       ],
     },
