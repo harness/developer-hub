@@ -75,6 +75,7 @@ If you cannot find a resolution, please contact [Harness Support](mailto:suppor
   - [FileNotFoundExeption inside shell script execution task](#filenotfoundexeption-inside-shell-script-execution-task)
 - [Harness policy engine](#harness-policy-engine)
   - [Policy evaluation failed](#policy-evaluation-failed)
+- [Feature Flags](#feature-flags)
 <!-- TOC end -->
 
 ### Login issues
@@ -395,6 +396,17 @@ To resolve this, see [Add and manage roles](../platform/4_Role-Based-Access-Cont
 
 The following issues can occur when running Pipeline deployments.
 
+#### Error with release name too long
+
+In the deployment logs in Harness you may get an error similar to this:
+
+```
+6m11s Warning FailedCreate statefulset/release-xxx-xxx create Pod release-xxx-xxx-0 in StatefulSet release-xxx-xxx failed error: Pod "release-xxx-xxx-0" is invalid: metadata.labels: Invalid value: "release-xxx-argus-xxx": must be no more than 63 characters
+```
+
+This is an error coming from the kubernetes cluster stating that the release name is too long.  This can be adjusted in Environments > click Name of the Environment in Question > Infrastructure Definitions > click Name of the Infrastructure Definition in Question > scroll down > expand Advanced > modify the Release name to be something shorter
+
+
 #### Deployment rate limits
 
 If your deployment rate reaches 85% of the limit, the following message is displayed:
@@ -624,6 +636,24 @@ curl -X POST -d '{"role_id":"<APPROLE_ID>", "secret_id":"<SECRET_ID>"}' https://
 ```
 If the delegate fails to connect, it is likely because of the credentials or a networking issue.
 
+#### Vault
+
+I have a secret that is connected to vault.
+
+How would i view it? Do i need to connect to vault?
+
+For security reasons you would need to connect to Vault to view the secrets.  You can use them however.
+ 
+[https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault/](https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault/)
+ 
+[https://developer.harness.io/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/](https://developer.harness.io/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/)
+ 
+[https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/)
+ 
+You can reference the secrets using the following as a guide
+ 
+[https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier)
+
 ### SAML SSO
 
 The following errors might occur during the set up or use of SAML SSO.
@@ -665,5 +695,17 @@ If a Harness policy engine policy set is enabled and your pipeline or other reso
 ![](./static/troubleshooting-nextgen-03.png)
 
 Contact your Harness account administrator to resolve the issue. If the policy set has an error, you can disable it by locating the policy set and turning off the **Enforced** toggle.
+
+### Feature Flags
+
+Below are some potential issues and fixes for Feature Flags
+
+#### Flag creation keeps failing
+
+When creating a feature flag it could be that the identifier has a character that's not permitted.  The regex used for flag identifiers is:
+
+```
+^[a-zA-Z0-9_][a-zA-Z0-9._$-]*$
+```
 
 ![](./static/troubleshooting-nextgen-04.png)

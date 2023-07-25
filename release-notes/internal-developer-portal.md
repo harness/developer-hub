@@ -11,6 +11,8 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/internal-developer-portal/rss.xml" />
+
 Review the notes below for details about recent changes to Harness Internal Developer Portal.
 
 ## Latest - July 12, 2023, version 0.6.0

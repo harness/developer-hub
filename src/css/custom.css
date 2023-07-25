@@ -610,7 +610,12 @@ ol ol,
 ul ol {
   list-style-type: lower-alpha;
 }
-
+/* .navbar__logo{
+  margin-bottom: 10px;
+} */
+.navbar__logo{
+  margin-bottom: 10px;
+}
 @media screen and (min-width: 1200px) {
 
   /* style for the search bar in higher resolution */
@@ -630,10 +635,18 @@ ul ol {
   .navbar__item img[alt="BETA"] {
     display: none;
   }
-
   .searchBar {
     display: none;
   }
+}
+
+
+/* for navbar alignment */
+@media screen and (max-width: 1400px) {
+.navbar__logo{
+  margin-bottom: 5px;
+}
+
 }
 
 @media screen and (max-width: 393px) {
