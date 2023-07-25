@@ -59,7 +59,7 @@ When you have a values YAML file at two or more of the environment **Service Ove
 
 :::info limitation
 
-You cannot check the parametrized values in the values YAML. However, you can view these values in the pipeline execution console view for any deployment type under the Initialize section if you're referencing the values YAML in the corresponding manifest.
+You cannot check the parametrized values in the values YAML. However, you can view these values in the pipeline execution console view for any deployment type under the Initialize section, when referencing the values YAML in the corresponding manifest.
 
 ![parametrized value](./static/values-yaml-parametrized-values.png)
 
