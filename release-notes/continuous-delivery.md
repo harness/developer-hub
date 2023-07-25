@@ -580,9 +580,9 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
   - List: `["a", "b", "c"]` (with spaces)
 
   This issue is fixed and the output values for expressions are returned as JSON objects. Now, the expression in the above example for a map object returns `{"key1":"val1","key2": "val2"}`, and a list object returns `["a","b","c"]` (without spaces).
-- Pipeline execution triggered using a webhook trigger failed with the error, `Invalid request: Invalid request: Error while retrieving template with identifier [c6pay_terraform] and versionLabel []`. (CDS-70552, ZD-45178)
+- Pipeline execution triggered using a webhook trigger failed with the error, `Error while retrieving template with identifier [%s] and versionLabel [%s], templateIdentifier, versionLabel`. (CDS-70552, ZD-45178)
   
-  This issue is fixed and a cleared the error message has been added.
+  This issue is fixed. The error message has been improved to display the cause of pipeline execution failure. 
 
 ### Harness Manager delegate fixed issues
 
