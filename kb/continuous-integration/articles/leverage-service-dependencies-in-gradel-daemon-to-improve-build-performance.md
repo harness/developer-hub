@@ -25,7 +25,7 @@ If you are interested in optimizing the build process to improve its overall spe
 
 By doing so, you can reduce the overhead of daemon startup and enhance the efficiency of the entire build pipeline.
 
-## Steps to achieve this usecase
+## Steps to achieve this usecase :
 Below is an example of a running Gradle daemon in a Service Dependency. In the Gradle check and the Gradle build step, it does not start the daemon again.
 
 ```
