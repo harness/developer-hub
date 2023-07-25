@@ -172,7 +172,7 @@ To configure a local runner build infrastructure for Windows, you need two machi
 * A Windows machine where the Drone Runner will run. This machine must have Docker for Windows. The Drone Runner runs as a container.
 * A Linux machine where the Harness Delegate will run. This machine must have Docker. The delegate runs as a container.
 
-There is a one-to-one relationship between Drone Runners and Harness Delegates. If you need to run 3 local hosts, each must have a runner and a delegate.
+There is a one-to-one relationship between Drone Runners and Harness Delegates. If you need to run three local hosts, each must have a runner and a delegate.
 
 ## Install the delegate
 
