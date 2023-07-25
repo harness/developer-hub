@@ -4,14 +4,13 @@ hide_table_of_contents: true
 title: AWS
 ---
 
-# AWS
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-This tutorial helps you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline  with deployment type **Secure Shell (SSH)** that manages remote linux servers.
+This tutorial helps you get started with Harness Continuous Delivery (CD). We will guide you through creating a CD pipeline with deployment types **Secure Shell (SSH)** and **WinRM** to deploy applications to remote Linux and Windows servers.
 
 :::info
 
@@ -28,23 +27,20 @@ This tutorial helps you get started with Harness Continuous Delivery (CD). We wi
 
 Verify the following:
 
-1. **One or more Linux Instance on AWS**. Make sure port **22** is open on the security group.
-2. **SSH Private Key (*.pem file) to authenticate to the remote instance.** To understand how SSH passwordless authentication works, check [Passwordless SSH using public-private key pairs](https://www.redhat.com/sysadmin/passwordless-ssh).
-3. **[Docker](https://docs.docker.com/engine/install/)** to setup and start _Docker Delegate_.
-    - Check [delegate System and network requirements](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-requirements).
+1. **One or more Linux Instances on AWS**. Make sure port **22** is open on the security group.
+2. **SSH private key (*.pem file) to authenticate with the remote instance(s).** To understand how SSH password-less authentication works, go to [Passwordless SSH using public-private key pairs](https://www.redhat.com/sysadmin/passwordless-ssh).
+3. **[Docker](https://docs.docker.com/engine/install/)** to set up and start the Harness Docker delegate.
+    - For more information, go to [Delegate system and network requirements](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
-## Getting Started with Harness CD
-----------------------------------
+## Getting started with Harness CD
 
 1. Log into [Harness](https://app.harness.io/).
-
 2. Select **Projects**, and then select **Default Project**.
+   :::caution
 
-:::caution
+   For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
 
-For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
-
-:::
+   :::
 
 ### Delegate
 
@@ -55,10 +51,10 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 
 </details>
 
-3. In **Project Setup**, select **Delegates**.
+1. In **Project Setup**, select **Delegates**.
     - Select **Delegates**.
         - Select **Install delegate**. For this tutorial, let's explore how to install the Docker Delegate.
-        -  In the command provided, `ACCOUNT_ID`, `MANAGER_ENDPOINT` and `DELEGATE_TOKEN` are auto-populated values that you can obtain from the delegate Installation wizard. 
+        -  In the command provided, `ACCOUNT_ID`, `MANAGER_ENDPOINT` and `DELEGATE_TOKEN` are auto-populated values that you can obtain from the delegate installation wizard. 
 
             ```bash
             docker run --cpus=1 --memory=2g \
@@ -74,7 +70,7 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 
 :::note
 
-You can also follow the [Install Harness delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/) tutorial to install the Kubernetes Delegate using the Helm, Terraform Helm Provider or Kubernetes manifest.
+You can also follow the [Install Harness delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/) tutorial to install the Kubernetes Delegate using Helm, the Terraform Helm Provider, or a Kubernetes manifest.
 
 :::
 
@@ -87,20 +83,19 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 
 </details>
 
-4. Create a Secret of type **SSH Crendential** 
+1. Create a secret of type **SSH Credential**. 
     - In **Project Setup**, select **Secrets**.
-    - Select **New Secret** > **SSH Credential**.
-    - Enter the secret name `harness_sshprivatekey` and click **Continue**.
-    - With **SSH Key** as the Auth Scheme, select **Username/SSH Key** as the Authentication method.
-    - Enter the username for the user account on the remote server in the **Username** field. Eg: _ubuntu_
-    - Next, select **Create or Select a Secret** and click **New Secret File**.
-    - Enter the Secret Name `ssh-private-key` and click **Browse** to upload the SSH Private Key to Harness Secret Manager
-    - Click **Save** and if needed modify SSH Port number.
-    - Finally, click **Save and Continue** and verify the connection to remote server is successfull.
-
-5. Create a Secret to store AWS Secrete Key
+    - Select **New Secret**, and then select **SSH Credential**.
+    - Enter the secret name `harness_sshprivatekey` and select **Continue**.
+    - With **SSH Key** as the auth scheme, select **Username/SSH Key** as the authentication method.
+    - In **Username**, enter the username for the user account on the remote server. For example, `ubuntu`.
+    - Next, select **Create or Select a Secret** and select **New Secret File**.
+    - Enter the secret name `ssh-private-key` and select **Browse** to upload the SSH private key to the Harness Secret Manager.
+    - Select **Save** and, if needed, modify the SSH port number.
+    - Finally, select **Save and Continue** and verify the connection to remote server is successful.
+2. Create a secret to store the AWS secrete key.
     - In **Project Setup**, select **Secrets**.
-    - Select **New Secret** > **Text**.
+    - , and then select **Text**.
     - Enter the secret name `harness_awssecretkey`.
     - For the secret value, paste in the AWS Secret Key.
     - Select **Save**.
@@ -114,20 +109,19 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 
 </details>
 
-6. Create a **AWS connector**.
+1. Create an **AWS connector**.
     - Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/1-aws-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
     - In the YAML, replace **AWS_ACCESS_KEY_ID** with the AWS Access Key ID value.
     - Select **Save Changes** and verify that the new connector named **harness_awsconnector** is successfully created.
-    - Finally, select **Test** under **CONNECTIVITY STATUS** to ensure the connection is successful.
-
-7. Create a **Artifactory Connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
+    - Finally, select **Test** under **Connectivity Status** to ensure the connection is successful.
+2. Create a **Artifactory Connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
     - Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/2-artifactory-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
     - Select **Save Changes** and verify that the new connector named **harness_artifactrepo** is successfully created.
-    - Finally, select **Test** under **CONNECTIVITY STATUS** to ensure the connection is successful.
+    - Finally, select **Test** under **Connectivity Status** to ensure the connection is successful.
 
 ### Environment
 
@@ -138,7 +132,7 @@ Environments define the deployment location, categorized as **Production** or **
 
 </details>
 
-8. In **Default Project**, select **Environments**.
+1. In **Default Project**, select **Environments**.
     - Select **New Environment** and toggle to **YAML** to use the YAML editor.
     - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/3-environment.yml) and paste it into the YAML editor and select **Save**.
     - In **Infrastructure Definitions**, select **Infrastructure Definition** and select **Edit YAML**.
@@ -155,23 +149,23 @@ In Harness, services represent what you deploy to environments. You use services
 
 </details>
 
-9. In **Default Project**, select **Services**.
+1. In **Default Project**, select **Services**.
     - Select **New Service**.
     - Name the service `harness_ssh`.
     - Select **Save**, and then in the **Configuration** tab, toggle to **YAML** to use the YAML editor.
     - Select **Edit YAML** and copy the contents of [service.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/ssh/5-service.yml) and paste it into the YAML editor.
-    - Select **Save** and verify that the Service **harness_ssh** is successfully created.
+    - Select **Save** and verify that the service **harness_ssh** is successfully created.
 
 ### Pipeline
 
 <details open>
 <summary>What are Harness pipelines?</summary>
 
-A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD Pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
+A pipeline is a comprehensive process encompassing integration, delivery, operations, testing, deployment, and monitoring. It can utilize CI for code building and testing, followed by CD for artifact deployment in production. A CD pipeline is a series of stages where each stage deploys a service to an environment. To learn more about CD pipeline basics, go to [CD pipeline basics](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-basics/).
 
 </details>
 
-10. In **Default Project**, select **Pipelines**.
+1. In **Default Project**, select **Pipelines**.
     - Select **New Pipeline**.
     - Enter the name `harness_ssh_pipeline`.
     - Select **Inline** to store the pipeline in Harness.
@@ -237,12 +231,13 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 </Tabs>
 ```
 
-11. Finally, it's time to execute the pipeline. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
-    - Observe the execution logs as Harness copy the artifact from source to the remote server.
+1. Finally, it's time to execute the pipeline. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
+    - Observe the execution logs as Harness copies the artifact from its source to the remote server.
     - After a successful execution, you can check the artifact in your remote server using the following command:  
-    ```bash
-    ls -l ~/harness_ssh/harnessdevenv/todolist.war
-    ```
+      
+      ```bash
+      ls -l ~/harness_ssh/harnessdevenv/todolist.war
+      ```
 
 ```mdx-code-block
 </TabItem>
@@ -252,23 +247,21 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 
 Verify the following:
 
-1. **One or more Windows Instance on AWS**. Make sure port **5985** is open on the security group.
-    - Check Microsoft Docs on [how to install and configure WinRM](https://learn.microsoft.com/en-us/windows/win32/winrm/installation-and-configuration-for-windows-remote-management)
-2. **[Docker](https://docs.docker.com/engine/install/)** to setup and start _Docker Delegate_.
-    - Check [delegate System and network requirements](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-requirements).
+1. **One or more Windows instances on AWS**. Make sure port **5985** is open on the security group.
+    - Review Microsoft docs on [how to install and configure WinRM](https://learn.microsoft.com/en-us/windows/win32/winrm/installation-and-configuration-for-windows-remote-management)
+2. **[Docker](https://docs.docker.com/engine/install/)** to set up and start the Harness Docker Delegate.
+    - For more information, go to [delegate System and network requirements](https://developer.harness.io/docs/platform/delegates/delegate-concepts/delegate-requirements).
 
-## Getting Started with Harness CD
-----------------------------------
+## Getting started with Harness CD
 
 1. Log into [Harness](https://app.harness.io/).
-
 2. Select **Projects**, and then select **Default Project**.
 
-:::caution
+    :::caution
 
-For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
+    For the pipeline to run successfully, please follow all of the following steps as they are, including the naming conventions.
 
-:::
+    :::
 
 ### Delegate
 
@@ -279,7 +272,7 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 
 </details>
 
-3. In **Project Setup**, select **Delegates**.
+1. In **Project Setup**, select **Delegates**.
     - Select **Delegates**.
         - Select **Install delegate**. For this tutorial, let's explore how to install the Docker Delegate.
         -  In the command provided, `ACCOUNT_ID`, `MANAGER_ENDPOINT` and `DELEGATE_TOKEN` are auto-populated values that you can obtain from the delegate Installation wizard. 
@@ -298,7 +291,7 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 
 :::note
 
-You can also follow the [Install Harness delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/) tutorial to install the Kubernetes Delegate using the Helm, Terraform Helm Provider or Kubernetes manifest.
+You can also follow the [Install Harness delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/) tutorial to install the Kubernetes Delegate using Helm, the Terraform Helm Provider, or a Kubernetes manifest.
 
 :::
 
@@ -311,19 +304,18 @@ Harness offers built-in secret management for encrypted storage of sensitive inf
 
 </details>
 
-4. Create a Secret of type **WinRM Crendential** 
+1. Create a Secret of type **WinRM Crendential**. 
     - In **Project Setup**, select **Secrets**.
-    - Select **New Secret** > **WinRM Credential**.
-    - Enter the secret name `harness_winrmpwd` and click **Continue**.
-    - With **NTLM** as the Auth Scheme, Enter the domain name. This is the Active Directory domain name where the user account in the credentials is registered.
-    - Enter the username for the user account on the remote server in the **Username** field. Eg: _Administrator_
-    - Next, select **Create or Select a Secret** and click **New Secret Text**.
-    - Enter the Secret Name `winrm_passwd` and enter the user password in the **Secret Value** field and click **Save**.
-    - Finally, click **Save and Continue** and verify the connection to the remote Windows server is successfull.
-
-5. Create a Secret to store AWS Secrete Key
+    - Select **New Secret**, and then select **WinRM Credential**.
+    - Enter the secret name `harness_winrmpwd` and select **Continue**.
+    - With **NTLM** as the auth scheme, and enter the domain name. This is the Active Directory domain name where the user account in the credentials is registered.
+    - In **Username**, enter the username for the user account on the remote server. For example, `Administrator`.
+    - Next, select **Create or Select a Secret** and select **New Secret Text**.
+    - Enter the secret name `winrm_passwd` and enter the user password in the **Secret Value** field and select **Save**.
+    - Finally, select **Save and Continue** and verify the connection to the remote Windows server is successful.
+2. Create a secret to store the AWS secrete key.
     - In **Project Setup**, select **Secrets**.
-    - Select **New Secret** > **Text**.
+    - Select **New Secret**, and then select **Text**.
     - Enter the secret name `harness_awssecretkey`.
     - For the secret value, paste in the AWS Secret Key.
     - Select **Save**.
@@ -337,20 +329,19 @@ Connectors in Harness enable integration with 3rd party tools, providing authent
 
 </details>
 
-6. Create a **AWS connector**.
+1. Create a **AWS connector**.
     - Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/1-aws-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
     - Select **Create via YAML Builder** and paste the copied YAML.
     - In the YAML, replace **AWS_ACCESS_KEY_ID** with the AWS Access Key ID value.
     - Select **Save Changes** and verify that the new connector named **harness_awsconnector** is successfully created.
-    - Finally, select **Test** under **CONNECTIVITY STATUS** to ensure the connection is successful.
-
-7. Create a **Artifactory Connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
+    - Finally, select **Test** under **Connectivity Status** to ensure the connection is successful.
+2. Create a **Artifactory Connector**. For this tutorial, we'll use a publicly available ToDo List app artifact, todolist.war, available in a public Harness Artifactory repo.
     - Copy the contents of [artifactory-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/2-artifactory-connector.yml).
     - In Harness, in **Project Setup**, select **Connectors**.
-    - Select **Create via YAML Builder** and paste the copied YAML.
+    - Select **Create via YAML Builder** and paste in the copied YAML.
     - Select **Save Changes** and verify that the new connector named **harness_artifactrepo** is successfully created.
-    - Finally, select **Test** under **CONNECTIVITY STATUS** to ensure the connection is successful.
+    - Finally, select **Test** under **Connectivity Status** to ensure the connection is successful.
 
 ### Environment
 
@@ -361,10 +352,10 @@ Environments define the deployment location, categorized as **Production** or **
 
 </details>
 
-8. In **Default Project**, select **Environments**.
+1. In **Default Project**, select **Environments**.
     - Select **New Environment** and toggle to **YAML** to use the YAML editor.
     - Copy the contents of [environment.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/3-environment.yml) and paste it into the YAML editor and select **Save**.
-    - In **Infrastructure Definitions**, select **Infrastructure Definition** and select **Edit YAML**.
+    - In **Infrastructure Definitions**, select **Infrastructure Definition**, and the select **Edit YAML**.
     - Copy the contents of [infrastructure-definition.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/vm-aws/winrm/4-infrastructure-definition.yml) and paste it into the YAML editor.
     - In the Infra Definition YAML, replace **AWS_REGION** with the region where your instance is running and **INSTANCE_NAME** with the name of the instance.
     - Select **Save** and verify that the environment and infrastructure definition is created successfully.
@@ -378,7 +369,7 @@ In Harness, services represent what you deploy to environments. You use services
 
 </details>
 
-9. In **Default Project**, select **Services**.
+1. In **Default Project**, select **Services**.
     - Select **New Service**.
     - Name the service `harness_winrm`.
     - Select **Save**, and then in the **Configuration** tab, toggle to **YAML** to use the YAML editor.
@@ -394,7 +385,7 @@ A pipeline is a comprehensive process encompassing integration, delivery, operat
 
 </details>
 
-10. In **Default Project**, select **Pipelines**.
+1. In **Default Project**, select **Pipelines**.
     - Select **New Pipeline**.
     - Enter the name `harness_winrm_pipeline`.
     - Select **Inline** to store the pipeline in Harness.
@@ -460,12 +451,13 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 </Tabs>
 ```
 
-11. Finally, it's time to execute the pipeline. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
+1. Finally, it's time to execute the pipeline. Select **Run**, and then select **Run Pipeline** to initiate the deployment.
     - Observe the execution logs as Harness copy the artifact from source to the remote server.
     - After a successful execution, you can check the artifact in your remote server using the following command:  
-    ```bash
-    Get-ChildItem harness_winrm/harnessdevenv
-    ```
+    
+      ```bash
+      Get-ChildItem harness_winrm/harnessdevenv
+      ```
 
 ```mdx-code-block
 </TabItem>
@@ -473,8 +465,8 @@ With basic deployments, all nodes (pods, instances, etc) within a single environ
 ```
 
 ### Congratulations!🎉
-You've just learned how to use Harness CD to copy an artifact to AWS Instances.
+You've just learned how to use Harness CD to copy an artifact to AWS instances.
 
 #### What's Next?
 - Keep learning about Harness CD. Add triggers to your pipeline that'll respond to Git events by following this [guide](https://developer.harness.io/docs/platform/Triggers/triggering-pipelines).
-- Visit the [Harness Developer Hub](https://developer.harness.io/) for more Tutorials and resources.
+- Visit the [Harness Developer Hub](https://developer.harness.io/) for more tutorials and resources.
