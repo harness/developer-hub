@@ -16,7 +16,7 @@ Harness Platform rate limits include:
 
 - Any call: Harness allows 5000 requests every 10 seconds (30,000 requests per minute) per IP address.
 - API calls: Harness allows 1000 requests per API key per minute.
-- GraphQL APIs: Harness allows up to 1000 requests per minute per IP address.
+- GraphQL APIs (For First Gen Only) : Harness allows up to 1000 requests per minute per IP address.
 - Large requests (character size > 500,000): 1 payload every 10 seconds.
 - Reset password: 5 calls per minute per IP address.
 - User invites: 10 calls per minute per IP address.
