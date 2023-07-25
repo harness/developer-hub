@@ -121,7 +121,7 @@ This release does not include any early access features.
 
 - There is now a limit of 100 API Tokens per free and community account. (PL-39337)
 
-- When configuring SMTP, you can now select specific delegates in **Delegates Setup**. (PL-39288)
+- When configuring SMTP, you can now select specific delegates in **Delegates Setup**. (PL-39024)
 
 - You can now sort pipelines in the pipelines list by selecting the sortable column headers or the sort dropdown. (PL-31527)
 
