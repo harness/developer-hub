@@ -12,7 +12,7 @@ slug: /ci-pipelines/test/fastapi
 
 Using FastAPI can significantly increase the speed at which features are developed, with developers reporting a 200-300% increase in development speed. Additionally, FastAPI can help reduce the number of bugs in code by approximately 40%, making it a reliable choice for building complex web applications.
 
-In this article we’ll see how to run automated tests in a FastAPI project when new changes are pushed to the main branch of your repository using Harness CI module.
+In this tutorial, you'll use Harness CI to run automated tests in a FastAPI project when changes are pushed to the `main` branch of your repository.
 
 ## Pre-requisites
 
