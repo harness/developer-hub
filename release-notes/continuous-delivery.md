@@ -357,6 +357,9 @@ import Earlyaccess from '/release-notes/shared/cd-79700-early-access.md'
   Clearing secrets from Vault was dependent on exporting the JsonPlan or human-readable options.
 
   This issue is fixed. Now, the encrypted plan stored on Vault is cleared regardless of the export options.
+- When a pipeline is retried from a stage, and there's a step that passed after multiple retries, Harness was not copying the status of the step correctly in the retries. Instead, the first try for step that failed was copied. This made the stage appear as failed in retry. (CDS-72101, ZD-46049)
+
+  This issue is fixed, and all the retries for the step are now copied correctly in the status.
 
 import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
@@ -577,6 +580,9 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
   - List: `["a", "b", "c"]` (with spaces)
 
   This issue is fixed and the output values for expressions are returned as JSON objects. Now, the expression in the above example for a map object returns `{"key1":"val1","key2": "val2"}`, and a list object returns `["a","b","c"]` (without spaces).
+- Pipeline execution triggered using a webhook trigger failed with the error, `Invalid request: Invalid request: Error while retrieving template with identifier [c6pay_terraform] and versionLabel []`. (CDS-70552, ZD-45178)
+  
+  This issue is fixed and a cleared the error message has been added.
 
 ### Harness Manager delegate fixed issues
 
