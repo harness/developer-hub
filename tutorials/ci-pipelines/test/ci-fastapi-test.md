@@ -14,7 +14,7 @@ Using FastAPI can significantly increase the speed at which features are develop
 
 In this tutorial, you'll use Harness CI to run automated tests in a FastAPI project when changes are pushed to the `main` branch of your repository.
 
-## Pre-requisites
+## Prerequisites
 
 * Knowledge of Python and FastAPI.
 * Git and GitHub basics.
