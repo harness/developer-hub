@@ -8,7 +8,7 @@ slug: /ci-pipelines/test/fastapi
 
 # Introduction
 
-[FastAPI](https://fastapi.tiangolo.com/) is a modern and highly performant web framework that allows developers to build APIs in Python 3.7+ using standard Python type hints. One of the most notable features of FastAPI is its impressive speed, which rivals that of popular frameworks such as NodeJS and Go. This is made possible thanks to the underlying Starlette and Pydantic libraries. 
+[FastAPI](https://fastapi.tiangolo.com/) is a modern and highly performant web framework that you can use to build APIs in Python 3.7+ using standard Python type hints. One of the most notable features of FastAPI is its impressive speed, which rivals that of popular frameworks such as NodeJS and Go. This is made possible by the underlying Starlette and Pydantic libraries. 
 
 Using FastAPI can significantly increase the speed at which features are developed, with developers reporting a 200-300% increase in development speed. Additionally, FastAPI can help reduce the number of bugs in code by approximately 40%, making it a reliable choice for building complex web applications.
 
