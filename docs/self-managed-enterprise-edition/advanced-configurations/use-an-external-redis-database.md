@@ -150,7 +150,7 @@ To configure your Redis cluster, do the following:
    7. Select **Next**.
 
      :::info
-     You can skip the cluster key for now if the page opens. (You can procure a license key from Redis Labs independently.)
+     You can skip the cluster key for now if the page opens. (You can procure a license key from Redis Labs later, if required.)
      :::
 
 3. Open https://<EXTERNAL_IP_OF_NODE2>:8443 in your browser, and then complete the following on the node setup page. 
@@ -218,6 +218,27 @@ To test your connectivity using, do the following:
 
    ```shell
    redis-cli -h <YOUR_INTERNAL_ENDPOINT> -p <port>
+   ```
+
+2. Run the following.
+  
+   ```shell
+   ping
+   ```
+
+  The expected response is `pong`.
+
+3. Run the following.
+   
+   ```shell
+   set foo bar
+   ```
+
+4. Run the following.
+
+   ```shell
+   get foo
+   ```
 
    The expected response is `bar`.
 
@@ -227,7 +248,7 @@ After you've tested your connectivity, you're ready to configure your Harness en
 
 To configure your Harness environment and Helm chart, do the following:
 
-1. Add the following override entries to your newly-installed Harness Redis instance.
+- Add the following override entries to your newly-installed Harness Redis instance.
 
    ```yaml
    global:
