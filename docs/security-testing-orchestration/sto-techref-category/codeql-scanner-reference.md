@@ -40,8 +40,6 @@ import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoDinDRequirements />
 
--->
-
 ### Root access requirements
 
 ```mdx-code-block
@@ -50,6 +48,17 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 <StoRootRequirements />
 
+-->
+
+### Root access requirements
+
+You need to run the scan step with root access if you need to add trusted certificates to your scan images at run time. 
+
+:::note
+
+You can set up your STO scan images and pipelines to run scans as non-root and establish trust for your own proxies using self-signed certificates. For more information, go to [Configure STO to Download Images from a Private Registry](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/download-images-from-private-registry).
+
+:::
 
 ## CodeQL step configuration
 
@@ -185,9 +194,9 @@ In the **Advanced** settings, you can use the following options:
 <!-- yaml pipeline example ----------------------------------------------------------------------------- -->
 
 
-## YAML pipeline example
+## CodeQL pipeline example
 
-The following pipeline example illustrates this workflow.
+The following pipeline example an ingestion workflow. It consists of two steps.  A Run step installs CodeQL, scans the repository defined in the Codebase object, and publishes the scan results to a SARIF file. A CodeQL step then ingests the SARIF file. 
 
 ```yaml
 
