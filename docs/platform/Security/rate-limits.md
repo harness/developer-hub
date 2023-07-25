@@ -12,6 +12,11 @@ Throttling is a type of rate limiting used to control the amount of traffic that
 
 Harness has several rate limiters in the platform. Users who send multiple requests in quick succession may receive status code 429 error responses.
 
+:::info note
+Retry-After in the 429 error responses is not currently supported by Google Cloud Armor.
+:::
+
+
 Harness Platform rate limits include:
 
 - Any call: Harness allows 5000 requests every 10 seconds (30,000 requests per minute) per IP address.
