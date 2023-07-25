@@ -34,7 +34,7 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 <CISignupTip />
 
-## Setting up the pipeline in Harness CI
+## Set up the pipeline
 
 In this tutorial we focus on running some basic test cases but you can configure the pipeline to run integration tests, mutation tests, etc.
 Let’s start with a FastAPI project to work with.
