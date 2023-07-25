@@ -184,6 +184,10 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 - Fixed an issue where optional fields in a JIRA Update step were saved as key-value pairs. (CDS-58174)
 
+- When a delegate selector was added at the step, stage, or pipeline level in a Jenkins step, it did not override the delegate selectors from the Jenkins connector. (CDS-68312, ZD-43710)
+
+   This issue is fixed. Any selector at a step, stage, or pipeline level overrides the selectors from the Jenkins connector.
+
 - Fixed an issue where the SSH and WinRM rollback were not skipped even if there were no successful previous deployments. (CDS-68583)
 
 - Fixed an issue where the expression, `<+lastPublished.tag>.regex()` was not resolved properly when used as runtime input for artifacts. (CDS-68810)
@@ -243,6 +247,10 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 - Tag value did not clear when the **Regex** option is selected in the artifact details. (CDS-70487)
   
   When setting up artifact repositories, artifacts can be specified by name or regex. The **Tag** setting was not being cleared when this selection changed from **Name** to **Regex** or vice versa. This bug has now been fixed.
+
+- Pipeline execution triggered using a webhook trigger failed with the error, `Error while retrieving template with identifier [%s] and versionLabel [%s]"", templateIdentifier, versionLabel`. (CDS-70552, ZD-45178)
+
+   This issue is fixed. The error message has been improved to display the cause of pipeline execution failure.
 
 - Fixed an issue where the `eventPayload` expressions were not resolving when rerunning a failed pipeline that was previously fired by using a trigger. (CDS-70559)
 
@@ -334,6 +342,12 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
   Harness no longer adds the new line in the YAML, and honors the separator when processing the YAML.
 
+- Fixed an issue where Harness asked users to enter SSH credentials in the **SSH Connection Attribute** field in the **Run Pipeline** page for a template created to capture WinRM credentials. (CDS-72071, ZD-45926)
+
+- When a pipeline is retried from a stage, and there's a step that passed after multiple retries, Harness was not copying the status of the step correctly in the retries. Instead, the first try for step that failed was copied. This made the stage appear as failed in retry. (CDS-72101, ZD-46049)
+
+   This issue is fixed, and all the retries for the step are now copied correctly in the status.
+
 - Fixed an issue where the Container step was failing when emptyDir volume was being used. (CDS-72119, ZD-45892)
 
 - Step templates within step groups created under stage templates were not executing properly. (CDS-72124, ZD-45924, ZD-46151)
@@ -357,6 +371,8 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 - When creating a step template, the labels for **Configure Run Tests step** and **Configure Run step** have been shorted to **Run Tests** and **Run** respectively. This change follows labeling conventions used elsewhere in Harness CI. (CI-4771)
 
 - When configuring a [Background step](/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings), the **Entry Point** field is now located under **Additional Configuration** if the stage uses the Harness Cloud, local runner, or self-hosted VM build infrastructure. (CI-6993)
+
+- Fixed an issue related to logs for Background steps. (CI-7615, ZD-44501)
 
 - Improved error messages for [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) using [AWS connectors](/docs/platform/Connectors/Cloud-providers/add-aws-connector) with invalid credentials in [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures). (CI-7942, ZD-44039)
 

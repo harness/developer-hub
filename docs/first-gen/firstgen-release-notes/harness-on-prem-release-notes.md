@@ -49,8 +49,6 @@ This release does not include any early access features.
 
 This issue is fixed with a code enhancement. The `DELPOY_MODE` is now set to `KUBERNETES_ONPREM` for Self-Managed Enterprise Edition Docker and Helm delegates.
 
-- (PL-39853)
-
 - Improved error handling mechanism when Helm manifests are not fetched from the Artifactory repository. (CDS-68251, ZD-37458)
 
 - Service instances were not showing correctly for Tanzu deployments. (CDS-68737, ZD-42950)
@@ -63,7 +61,9 @@ This issue is fixed with a code enhancement. The `DELPOY_MODE` is now set to `KU
 
    This issue is fixed.
 
-- (CDS-70560)
+- Fixed an issue where the Google Cloud Build (GCB) triggers were throwing an invalid credentials error intermittently. (CDS-70560, ZD-40187)
+
+   This item requires Harness Delegate version 79707. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
 
 - Kubernetes deployments timed out and failed when listing pods. (CDS-71328, ZD-45584)
 
