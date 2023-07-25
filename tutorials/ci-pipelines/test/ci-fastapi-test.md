@@ -5,7 +5,14 @@ keywords: [Continuous Integration, CI Tutorial, FastAPI, Testing, Run Tests]
 title: Test a FastAPI project
 slug: /ci-pipelines/test/fastapi
 ---
-
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
 # Introduction
 
 [FastAPI](https://fastapi.tiangolo.com/) is a modern and highly performant web framework that you can use to build APIs in Python 3.7+ using standard Python type hints. One of the most notable features of FastAPI is its impressive speed, which rivals that of popular frameworks such as NodeJS and Go. This is made possible by the underlying Starlette and Pydantic libraries. 
