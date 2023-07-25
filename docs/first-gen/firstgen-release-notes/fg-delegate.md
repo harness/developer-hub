@@ -55,6 +55,17 @@ This release does not include any fixed issues.
   <TabItem value="Hotfix release">
 ```
 
+## Hotfix version 79908
+
+Google Cloud builds failed with the message `Invalid Google Cloud Platform credentials`. (CDS-73352)
+
+This issue is now fixed with a code enhancement to GCP build triggers integration to improve stability.
+
+:::info note
+Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
+:::
+
+
 ## Hotfix version 79711
 
 Google Cloud builds failed with the message `Invalid Google Cloud Platform credentials`. (CDS-73352)

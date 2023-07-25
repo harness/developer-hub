@@ -30,6 +30,9 @@ import StoSupportedMethods from './shared/_sto-supported-methods.md';
 
 The scanner, targets, and scan approach combinations are covered in the next section.
 
+
+
+
 ### Harness STO scanner support
 
 ```mdx-code-block
@@ -45,6 +48,22 @@ import StoSupportedBinaries from './shared/_sto-supported-binaries.md';
 ```
 
 <StoSupportedBinaries />
+
+### Docker-in-Docker requirements
+
+```mdx-code-block
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+```
+
+<StoDinDRequirements />
+
+### Root access requirements
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
 
 ### Security steps and scanner templates
 

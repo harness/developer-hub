@@ -6,7 +6,7 @@ sidebar_position: 3
 
 :::note
 
-Currently, AWS Lambda support is behind the feature flag `CDS_AWS_NATIVE_LAMBDA`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, AWS Lambda support is behind the feature flag `NG_SVC_ENV_REDESIGN`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 

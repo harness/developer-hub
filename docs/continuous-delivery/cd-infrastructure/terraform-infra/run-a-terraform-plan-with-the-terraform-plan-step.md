@@ -440,15 +440,33 @@ For example, if your config.tf file has the following backend:
 
 
 ```json
-terraform {  
-  backend "gcs" {  
-    bucket  = "tf-state-prod"  
-    prefix  = "terraform/state"  
-  }  
+terraform {
+  backend "gcs" {
+    bucket  = "tf-state-prod"
+    prefix  = "terraform/state"
+}
 }
 ```
 
-In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
+In **Backend Configuration**, you provide the required configuration variables for the backend type. 
+
+For a remote backend configuration, the variables should be in .tfvars file.
+
+Example:
+```json
+bucket  = "tf-state-prod"  
+prefix  = "terraform/state"
+```
+
+In your Terraform .tf config file, only the definition of the Terraform backend is required:
+
+```json
+terraform {  
+  backend "gcs" {}
+}
+```
+
+See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
 
 ## Targets
 
@@ -563,7 +581,20 @@ If you use the `-detailed-exitcode` option in a step that follows the Harness Te
 
 * `0`: succeeded with empty diff (no changes)
 * `1`: error
-* `2`: succeeded with non-empty diff (changes present)
+* `2`: succeeded with non-empty diff (changes present)|
+
+Exit codes are available as Terraform Plan step outputs that can be accessed using expressions with the following format:
+
+```
+<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.plan.detailedExitCode>
+```
+
+For example:
+
+```
+<+pipeline.stages.TfStage.spec.execution.steps.TfPlan.plan.detailedExitCode>
+```
+
 
 ## Option: Advanced Settings
 

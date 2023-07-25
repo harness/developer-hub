@@ -1,6 +1,7 @@
 ---
-sidebar_position: 1
+sidebar_position: 2
 description: Walks you through adding JavaScript Feature Flags to a TypeScript and React Application.
+keywords: [JavaScript, React, Feature Flags, FF Tutorial]
 ---
 
 # Add Feature Flags to a JavaScript app
@@ -9,21 +10,21 @@ description: Walks you through adding JavaScript Feature Flags to a TypeScript a
 
 As software engineers, we innovate by diving into creating the unknown, sometimes for the first time. Core to innovative work is experimenting and prototyping, because incremental success builds greater success. As changes get closer to production, the experimentation that was appropriate in lower environments tapers off as the potential blast radius grows. That is, if we get the experiment wrong, there’s a greater impact on a larger number of users.
 
-[Feature Flags](https://harness.io/blog/what-are-feature-flags) let you experiment by allowing blocks of code to be executed conditionally. Conditional statements are nothing new, but the management of inventorying and toggling these conditional statements are newer, and Feature Flag platforms are here. Feature Flags enable progressive delivery, or the incremental release of features. 
+[Feature Flags](https://harness.io/blog/what-are-feature-flags) let you experiment by allowing blocks of code to be executed conditionally. Conditional statements are nothing new, but the management of inventorying and toggling these conditional statements are newer, and Feature Flag platforms are here. Feature Flags enable progressive delivery, or the incremental release of features.
 
 In this tutorial we will walk you through your first Feature Flag creation and execution.
 
 ## What you need for executing your first Feature Flag
 
 This example requires:
-* A GitHub account. 
-* An editor such as an IDE. 
-* A [Harness Feature Flags account](https://app.harness.io/auth/#/signup/?module=cf&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ff-plg&utm_content=get-started). 
+* A GitHub account.
+* An editor such as an IDE.
+* A [Harness Feature Flags account](https://app.harness.io/auth/#/signup/?module=cf&?utm_source=website&utm_medium=harness-developer-hub&utm_campaign=ff-plg&utm_content=get-started).
 * The ability to run an [NPM Install](https://docs.npmjs.com/cli/v7/commands/npm-install) in your local or remote environment.
 
 ![Feature Flag Overview](static/ff-tutorial-typescript/ff_overview.png)
 
-Feature Flags have a close relationship with the code base since they surround/decorate conditional statements. You’ll need to include a Feature Flag SDK as a dependency, then wire the Feature Flag client. To support this, the underlying code base and necessary dependencies to build/run the code base is needed. If this is your first time leveraging a Feature Flag, [Google’s React Store](https://github.com/google-pay/react-store) is a great sample app to modify and use with Harness Feature Flags. 
+Feature Flags have a close relationship with the code base since they surround/decorate conditional statements. You’ll need to include a Feature Flag SDK as a dependency, then wire the Feature Flag client. To support this, the underlying code base and necessary dependencies to build/run the code base is needed. If this is your first time leveraging a Feature Flag, [Google’s React Store](https://github.com/google-pay/react-store) is a great sample app to modify and use with Harness Feature Flags.
 
 ## Video Tutorial
 
