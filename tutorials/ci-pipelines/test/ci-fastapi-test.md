@@ -26,10 +26,9 @@ import TabItem from '@theme/TabItem';
 
 You need the following for this tutorial:
 
-* Knowledge of Python and FastAPI.
-* Git and GitHub basics.
-* [A GitHub Account](https://github.com/join).
-* [A Harness Account](https://app.harness.io/).
+* Knowledge of Python, FastAPI, Git, and GitHub.
+* [A GitHub account](https://github.com/join).
+* [A Harness account](https://app.harness.io/).
 
 ```mdx-code-block
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
@@ -120,7 +119,7 @@ These steps summarize pipeline creation. For more information, go to [CI pipelin
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="Visual" label="Visual">
+  <TabItem value="Visual" label="Visual" default>
 ```
 
 1. Select **Add Stage**, and select the **Build** stage.
@@ -131,7 +130,7 @@ These steps summarize pipeline creation. For more information, go to [CI pipelin
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="YAML" label="YAML" default>
+  <TabItem value="YAML" label="YAML">
 ```
 
 In the Pipeline Studio's YAML editor, add a `CI` stage and [set up your build infrastructure](/docs/category/set-up-build-infrastructure).
@@ -244,7 +243,7 @@ This tutorial runs basic unit tests, but you can run all types of tests (integra
 ```yaml
               - step:
                   type: Run
-                  name: Run Pytest
+                  name: Pytest
                   identifier: Pytest
                   spec:
                     shell: Sh
@@ -293,7 +292,7 @@ You can run this pipeline manually as it is, or you can add a trigger to automat
 
 For this tutorial, you'll create a trigger that listens for pushes to the `main` branch.
 
-1. In Harness, select **Triggers** in the Pipeline Studio header, and then select **Add New Trigger**.
+1. In Harness, in the same pipeline, select **Triggers** in the Pipeline Studio header, and then select **Add New Trigger**.
 2. Select **GitHub** under **Webhook**.
 3. Enter a **Name**.
 4. For **Connector**, select your GitHub connector, and enter the FastAPI repo name if necessary.
@@ -310,7 +309,7 @@ To test the Git event trigger and run the pipeline, go to your FastAPI repo fork
 
 Upon pushing to `main` (either directly or by merging a PR), the trigger should start your pipeline within a few moments. While the build runs, you can view the logs and monitor build activity on the [Build details page](docs/continuous-integration/use-ci/viewing-builds).
 
-After the pytest step, if the step succeeded, you find logs indicating that the `output-test.xml` file was generated, and you can [view the test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests) on the Tests tab.
+After the pytest step runs, you can find logs indicating that the `output-test.xml` file was generated, and you can [view the test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests) on the Tests tab.
 
 ## Complete YAML examples
 
@@ -368,7 +367,7 @@ pipeline:
                       PIP_CACHE_DIR: /root/.cache
               - step:
                   type: Run
-                  name: Run Pytest
+                  name: Pytest
                   identifier: Pytest
                   spec:
                     shell: Sh
@@ -386,7 +385,7 @@ pipeline:
 <TabItem value="selfhosted" label="Self-hosted">
 ```
 
-This pipeline uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures).
+This example uses a [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures).
 
 ```yaml
 pipeline:
