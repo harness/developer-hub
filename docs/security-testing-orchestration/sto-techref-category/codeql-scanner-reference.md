@@ -185,7 +185,7 @@ In the **Advanced** settings, you can use the following options:
 <!-- yaml pipeline example ----------------------------------------------------------------------------- -->
 
 
-#### YAML pipeline example
+## YAML pipeline example
 
 The following pipeline example illustrates this workflow.
 
