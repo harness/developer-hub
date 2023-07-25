@@ -5,7 +5,7 @@ sidebar_label: Configure external databases
 # sidebar_position: 1
 ---
 
-Harness uses an embedded database by default, which is suitable for evaluation or small to medium scale deployments. However, as your deployments scale and become critical for your organization, it's essential to switch to a more robust external database solution. 
+Harness uses an embedded database by default, which is suitable for evaluation or small to medium scale deployments. However, as your deployments scale and become critical for your organization, switching to a more robust external database solution is essential. 
 
 Harness supports multiple databases when you deploy Harness Self Managed Enterprise Edition. To use an external database with Harness, you'll need to install and configure the database software as a self-managed solution or on a cloud instance. Once the external database is set up, you can configure Harness to connect to it. This involves specifying the database connection properties, such as the database URL, username, and password.
 
