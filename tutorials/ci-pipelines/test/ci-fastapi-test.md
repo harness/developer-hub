@@ -156,7 +156,7 @@ uvicorn app.main:app --reload
 
 ## Create your pipeline
 
-1. From the left pane, select **Pipelines**, then select **+ Create a Pipeline**.
+1. From the left pane, select **Pipelines**, then select **Create a Pipeline**.
 2. In the **Name** field, enter a name for your pipeline, then select **Start**.
 3. Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
 
