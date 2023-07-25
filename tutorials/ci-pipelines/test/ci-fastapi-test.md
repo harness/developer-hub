@@ -63,7 +63,7 @@ Your cloned project should have the structure shown below:
 * fastapi-todo-tests/app/main.py - Implements three API endpoints for : creating a task, deleting a task, and getting a list of created tasks.
 * fastapi-todo-tests/test_main.py - This file defines three test cases.
 
-## Setting up the Project Locally
+<details> <summary> Setting up the Project Locally </summary>
 
 :::info
 
@@ -149,6 +149,8 @@ uvicorn app.main:app --reload
 
 * Go to **localhost:8000/docs** on your browser to test things out in the local server.
 
+</details>
+
 ## Create your pipeline
 
 1. From the left pane, select **Pipelines**, then select **Create a Pipeline**.
@@ -163,6 +165,14 @@ Append the following configuration:
 ```
 
 **Cloud** pipelines run in managed infrastructure provided by Harness.
+
+**Now let’s understand the pipeline snippet above:**
+
+* Here we first created a single Builds stage and specified our infrastructure settings as Harness Cloud(OS: Linux & Architecture: AMD64)
+
+* We then configured the execution settings for the Builds stage and defined 2 steps: 
+    * Install Dependencies: This step executes the command to install all the project dependencies from the requirements.txt file
+    * We then define & run the unit tests in the next step using the pytest command.
 
 ```yaml
   properties:
@@ -220,6 +230,16 @@ Append the following configuration:
 ```mdx-code-block
   </TabItem>
   <TabItem value="selfhosted" label="Self-hosted">
+
+**Kubernetes** pipelines run in a Kubernetes cluster that you manage. Kubernetes pipelines are an enterprise feature.
+
+**Now let’s understand the pipeline snippet above:**
+
+* Here we first created a single Builds stage and specified our infrastructure settings as Kubernetes.
+
+* We then configured the execution settings for the Builds stage and defined 2 steps: 
+    * Install Dependencies: This step executes the command to install all the project dependencies from the requirements.txt file
+    * We then define & run the unit tests in the next step using the pytest command.
 
 ```yaml
   properties:
@@ -280,14 +300,51 @@ Append the following configuration:
 </Tabs>
 ```
 
-**Now let’s understand the pipeline snippet above:**
+After adding the the above snippet, **save** your pipeline.
 
-* Here we first created a single Builds stage and specified our infrastructure settings as Harness Cloud(OS: Linux & Architecture: AMD64) or Kubernetes
+## Add the trigger
 
-* We then configured the execution settings for the Builds stage and defined 4 steps: 
-    * Install Dependencies: This step executes the command to install all the project dependencies from the requirements.txt file
-    * We then define & run the unit tests in the next step using pip & pytest command.
+You can run this pipeline manually as it is. To automatically run tests whenever the codebase changes, you need to add a [Git event trigger](/docs/platform/Triggers/triggering-pipelines) that listens for pushes (or any other git event) to the `main` branch of your code repository (or whichever repository you choose to track).
 
-Now open the GitHub repository that you’ve already forked. Here you’ll notice that it automatically pushed the Harness CI pipeline under the .harness/ directory in the codebase.
+<details><summary>Register the webhook in the Git provider</summary>
 
-And that’s it. Now you can jump in back to the Harness CI module and test the pipeline execution manually. Note that we can also automate the pipeline invocation using the [git-event triggers](https://developer.harness.io/docs/category/triggers) for push, pull request, etc.. 
+For all Git providers supported by Harness, non-custom webhooks are automatically created in the repo. For details about automatically-registered Git events, go to the [Triggers reference](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/).
+
+
+However, if automatic registration fails or you created a custom webhook, you must manually copy the webhook URL and add it to your repo webhooks.
+
+:::info Required permissions
+
+To configure a functioning Git event webhook trigger:
+
+* You must have the appropriate level of access to configure repo webhooks in your Git provider.
+* The personal access token use for code repo connector authentication must have the appropriate scopes.
+
+For example, for GitHub, you must be a repo admin and the GitHub personal access token used in the pipeline's GitHub connector must include all `repo`, `user`, and `admin:repo_hook` options for **Scopes**.
+
+For information about other provider's token scopes, go to:
+
+* [GitLab - Personal access token scopes](https://docs.gitlab.com/ee/user/profile/personal_access_tokens.html#personal-access-token-scopes)
+* [Bitbucket Cloud - Repository access token permissions](https://support.atlassian.com/bitbucket-cloud/docs/repository-access-token-permissions/)
+* [AWS - Permissions for actions on triggers](https://docs.aws.amazon.com/codecommit/latest/userguide/auth-and-access-control-permissions-reference.html#aa-triggers)
+
+:::
+
+1. Go to your pipeline in Harness and select **Triggers**.
+2. Select your custom webhook.
+3. Select the link icon to copy the webhook URL.
+4. Log in to your repo in Github and navigate to the repo's webhook settings.
+5. Create a new webhook and paste the webhook URL you copied from Harness.
+6. Make sure that the content type for outbound requests is **Application/json**.
+7. Make sure that **Enable verification** is enabled.
+8. Select the events that you would like to trigger this webhook. The following example selected **Just the push event**, which means that this webhook is only triggered if there is a push event.
+9. Select **Update webhook**.
+For more information about manual webhook registration, go to the [Triggers reference](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/triggers-reference/).
+
+</details>
+
+## Run Your Pipeline
+
+1. Click the **Save** button, then click **Run**.
+2. Click **Run Pipeline** in the **Run Pipeline** dialogue window.
+3. On the Build details page, you can review execution information in the console logs. If the tests were successful you will find the /harness/output-test.xml file generated with the test results.
