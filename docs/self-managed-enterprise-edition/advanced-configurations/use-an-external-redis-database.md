@@ -29,13 +29,13 @@ Harness recommends a Redis configuration with the following minimum hardware:
 - 8GB memory per machine
 - 64GB disk per machine (SSD preferred)
 - 1GB/s minimum network bandwidth
-- 
+
 ## Software requirements
 
 External database setup requires the following software:
 
 - Supported OS (Ubuntu 20.04 LTS)
-- [Redis enterprise](https://redis.com/redis-enterprise-software/download-center/software/)
+- [Redis enterprise download URL](https://redis.com/redis-enterprise-software/download-center/software/)
 
 ## Firewall rules
 
@@ -141,7 +141,7 @@ To configure your Redis cluster, do the following:
 
    3. Disable external traffic on the internal IP.
 
-   4. Add the DNS record subdomain in the **FQDN** field, for example `redis.harness-redis.com`.
+   4. Add the DNS record subdomain in the **FQDN** field used in the NS record, for example, `redis.harness-redis.com`.
 
    5. Create your admin credentials.
 
@@ -150,7 +150,7 @@ To configure your Redis cluster, do the following:
    7. Select **Next**.
 
      :::info
-     You can skip the cluster key if the page opens.
+     You can skip the cluster key for now if the page opens. (You can procure a license key from Redis Labs independently.)
      :::
 
 3. Open https://<EXTERNAL_IP_OF_NODE2>:8443 in your browser, and then complete the following on the node setup page. 
@@ -201,7 +201,7 @@ To configure your Redis database, do the following:
 
 6. Set the database memory to 2GB.
 
-7. Add a password if you require authentication for the default user.
+7. Skip the database password. 
 
 8. Select **Create**.
 
@@ -218,31 +218,6 @@ To test your connectivity using, do the following:
 
    ```shell
    redis-cli -h <YOUR_INTERNAL_ENDPOINT> -p <port>
-   ```
-2. If you set a database password, run the following command.
-
-   ```shell
-   auth <YOUR_DATABASE_PASSWORD>
-   ```
-3. Run the following.
-  
-   ```shell
-   ping
-   ```
-
-  The expected response is `pong`.
-
-4. Run the following.
-   
-   ```shell
-   set foo bar
-   ```
-
-5. Run the following.
-
-   ```shell
-   get foo
-   ```
 
    The expected response is `bar`.
 
@@ -252,15 +227,7 @@ After you've tested your connectivity, you're ready to configure your Harness en
 
 To configure your Harness environment and Helm chart, do the following:
 
-1. Create a new secret in the namespace where Harness is installed.
-
-   ```shell
-   kubectl create secret generic redis-user-pass \
-    --from-literal=username='' \
-    --from-literal=password='<YOUR_REDIS_CLUSTER_PASSWORD>'
-   ```
-
-2. Add the following override entries to your newly-installed Harness Redis instance.
+1. Add the following override entries to your newly-installed Harness Redis instance.
 
    ```yaml
    global:
@@ -269,7 +236,6 @@ To configure your Harness environment and Helm chart, do the following:
          installed: false
          hosts:
          - <YOUR_INTERNAL_ENDPOINT_AND_PORT>
-         secretName: "YOUR_REDIS_USER_PASSWORD"
-         userKey: "username"
-         passwordKey: "password"
-   ```
+         secretName: ""
+         userKey: ""
+         passwordKey: ""
