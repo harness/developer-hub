@@ -143,6 +143,38 @@ It's important to note that Harness provides a declarative rollback feature, whi
 
 For more information, you can refer to the documentation on declarative rollback in the link provided: [Harness Declarative Rollback](https://docs.harness.io/article/6y7xs2rh5a-declarative-rollback).
 
+#### What are the main differences between using JSON and YAML as a Values file for GO Templating?
+
+1. YAML 1.2 does not allow tabs for indentation.
+2. YAML imposes limitations on key lengths.
+3. YAML uses some different unicode escape sequences.
+
+However, apart from these differences, basic JSON documents are considered valid YAML and can be used with GO Templating.
+
+#### Under what condition does an immutable delegate automatically upgrade?
+
+AutoUpgrade initiates when a new version of the delegate is published, not when the delegate is expired.
+
+#### Under what condition does an immutable delegate automatically upgrade?
+
+AutoUpgrade initiates when a new version of the delegate is published, not when the delegate is expired.
+
+#### Is there an environment variable to set when starting the container to force the Docker delegate to use client tool libs from harness-qa-public QA repo?
+
+To achieve this, you need to create a test image that points to the harness-qa-public QA repository. This involves updating the Docker file with the appropriate path to the QA buckets.
+
+#### Is there a method to simulate CloudFormation changes without actually applying them?
+
+Yes, you can achieve this by utilizing the Change Set Feature. First, create a change set to preview the changes that will be made. Once you are satisfied with the preview, you can execute the change set using the command: [aws cloudformation execute-change-set](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/execute-change-set.html). This allows you to assess the impact of the changes before applying them.
+
+#### Is it possible to include FirstGen measures and dimensions in custom dashboards using NextGen dashboards?
+
+Yes, NG Dashboards support CG (Custom Group) Data, and you can create custom dashboards with FirstGen measures and dimensions using the "create dashboard" option.
+
+#### What steps are involved in obtaining output from a chained pipeline for use in a different stage?
+
+To get output from a chained pipeline and utilize it in another stage, you need to specify the expression of the output variable for the chained pipeline at the parent pipeline level in the output section.
+
 **Note:**
 If you are using the default release name format in Harness FirstGen as `release-${infra.kubernetes.infraId}`, it's important to note that when migrating to Harness NextGen, you will need to replace `${infra.kubernetes.infraId}` with the new expression.
 
