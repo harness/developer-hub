@@ -13,7 +13,6 @@ This topic explains what service settings can be overridden by environments.
 ## Limitations
 
 * Runtime inputs are not supported if you are trying to override services in multi-service and multi-environment set ups.
-* You cannot check the parametrized values in the values YAML. However, you can view these values in the pipeline execution console view for any deployment type under the Initialize section if you're referencing the values YAML in the corresponding manifest.
 
 ## Override types
 
@@ -58,9 +57,11 @@ Here is an example of specifying it at the environment's **Configuration**:
 
 When you have a values YAML file at two or more of the environment **Service Overrides**, **Environment Configuration**, and the service itself, Harness merges the files into a single values YAML for deployment. This merging is performed at pipeline execution runtime.
 
-:::info note
+:::info limitation
 
 You cannot check the parametrized values in the values YAML. However, you can view these values in the pipeline execution console view for any deployment type under the Initialize section if you're referencing the values YAML in the corresponding manifest.
+
+![parametrized value](./static/values-yaml-parametrized-values.png)
 
 :::
 
