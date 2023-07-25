@@ -225,7 +225,8 @@ spec:
             - name: et-agent
               mountPath: /opt/harness-et-agent
 ```
-By using a shared volume, the init-container will execute and install the harness-et-agent in the path `/opt/harness-et-agent` this is than mounted into target container `my-javaapp-container` using the volume mount. Enivornment variables are defined
+
+By using a shared volume, the init-container executes and installs the harness-et-agent in the path `/opt/harness-et-agent`. This installation is then mounted into the target container `my-javaapp-container` using the volume mount. To properly configure and optimize the functionality of the Agent, ensure to set the variables listed in the following table:
 
 | **Required Environment Variable** | **Description** | **Example** |
 | --- | --- | --- |
