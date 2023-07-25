@@ -560,12 +560,6 @@ Ensure the Harness delegate you have installed can reach `storage.cloud.google.c
 
 ### Google Cloud Storage (GCS)
 
-:::note
-
-Currently, Google Cloud Storage (GCS) is behind the feature flag `CDS_GOOGLE_CLOUD_FUNCTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 <details>
 <summary>Use GCS artifacts</summary>
 
