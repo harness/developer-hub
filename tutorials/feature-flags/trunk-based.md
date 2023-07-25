@@ -1,5 +1,5 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 description: Trunk-based development boasts immediate benefits. Learn how Feature Flags helps you get there.
 keywords: [Feature Flags, FF Tutorial]
 ---
