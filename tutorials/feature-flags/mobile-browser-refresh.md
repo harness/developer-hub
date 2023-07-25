@@ -21,7 +21,7 @@ The SDK can be used inside WebView on native mobile apps for iOS and Android. Yo
 The SDK provides a function on the client instance called `refreshEvaluations()`. Calling this allows you to soft poll the servers for the latest evaluations. Note to avoid overloading the backend servers, this function will only call out to the network after enough time has elapsed.
 
 ### toForeground() JS Function
-Once you have a client instance (as shown on the previous page) add a function that can be easily invoked from the device's native language
+Once you have a client instance add a function that can be easily invoked from the device's native language
 
 ```
  function toForeground() {
