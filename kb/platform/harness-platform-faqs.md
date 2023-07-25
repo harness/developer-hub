@@ -14,7 +14,7 @@ The simple answer is that a user executing pipeline tasks either it is to modify
 
 Unfortunately, JEXL conditions do not support the direct usage of environment variables. The conditions in JEXL only allow the use of variable expressions that can be resolved before the stage is executed. Since environment variables are resolved during runtime, it is not possible to utilize variable expressions that cannot be resolved until the stage is run.
 
-### What is the PT Iterator delay (Max delay from PT created, to PT being assigned if delegate is available) ?
+### What is the Perpretual Task(PT) Iterator delay (Max delay from PT created, to PT being assigned if delegate is available) ?
 
 Max delay is 60s, we run pt iterator every 60s for task assignment
 
@@ -24,11 +24,7 @@ It depends on task to task, you can find the interval for your task in perpetual
 
 ### Can we check the past connectivity of delegates, Whether the delegates we available at a particular time?
 
-Logs are the option
-
-### Is Hashicorp Vault’s Azure secret engine integration is supported in Harness secret manager ?
-
-No, this is not supported currently.
+Yes , this can be checked via delegate logs.
 
 ### If there are some users that were manually added to the account, then will they get removed once the SCIM integration is configured/enabled for the account?
 
@@ -51,19 +47,11 @@ Yes , you can setup prometheus to get the metrics . For more Information on sett
 By default, delegate logs are only sent to Harness and it can be enabled/disabled using this env variable - `STACK_DRIVER_LOGGING_ENABLED
 `. To know more about this, please go through the following [Documentation](https://developer.harness.io/docs/platform/delegates/delegate-reference/delegate-environment-variables/#stack_driver_logging_enabled)
 
-### I am Running a Pipeline and there has been no change in it , it fails for no reason. How to solve this ?
-
-We are aware of this issue , it is because of some issue with YAML Reader , we advice you to upgrade to delegate version 797xx and above .
-
-### LDAP Authentication fails during setup and returns an error message "Operation Not Permitted".
-
-We are aware of this issue , it has been resolved now and we advice you to upgrade to delegate version 799xx and above.
-
 ### I have setup SAML Successfully , but it doesn't populate in Link to SSO inside usergroup 
 
 You need to Enable Authorization in your SAML post that you need to enable SAML.
 
-### I have FF `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` enabled , but still I am getting emails when I add a user in an Org/Project
+### I have FF PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES enabled, but still I am getting emails when I add a user in an Org/Project
 
 The FF `PL_NO_EMAIL_FOR_SAML_ACCOUNT_INVITES` works for UserInvite case. For cases where a User is added as member to a UserGroup, a separate notification is sent which is not dependent on this FF.
 
