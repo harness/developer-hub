@@ -17,7 +17,7 @@ The **Issue Hygiene Report** shows your overall hygiene score and individual sco
 
 ![](./static/issue-hygiene-report-widget.png)
 
-<figcaption>Figure 1: The Issue Hygiene Report widget. The hygiene score can help you understand how well your tickets are organized in your issue management system.</figcaption>
+<figcaption>The Issue Hygiene Report. The hygiene score can help you understand how well your tickets are organized in your issue management system.</figcaption>
 </figure>
 
 Each hygiene miss is tallied against a score of 100. A score of 100 indicates that no tickets were submitted with missing hygiene points.

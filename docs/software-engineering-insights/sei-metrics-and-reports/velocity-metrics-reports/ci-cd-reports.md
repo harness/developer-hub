@@ -86,7 +86,7 @@ If you want the widget to report the status (success or failure) of all jobs in 
 
 ![](../static/ci-cd-job-count-report.png)
 
-<figcaption>Figure 1: The CI/CD Job Count Report set to all jobs in Insight time.</figcaption>
+<figcaption>A CI/CD Job Count Report set to all jobs in Insight time.</figcaption>
 </figure>
 
 ### Filter by failed jobs
@@ -102,5 +102,5 @@ If you want the widget to highlight failed jobs, add a **Job Status** filter and
 
 ![](../static/ci-cd-job-count-report-failed.png)
 
-<figcaption>Figure 2: The CI/CD Job Count Report showing only failed jobs.</figcaption>
+<figcaption>A CI/CD Job Count Report showing only failed jobs.</figcaption>
 </figure>

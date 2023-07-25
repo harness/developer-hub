@@ -19,7 +19,7 @@ To use the SEI PagerDuty connector, you need a **read-only PagerDuty API key**. 
 
 ![](./static/pagerduty-api-key.png)
 
-<figcaption>Figure 1: Creating a read-only PagerDuty API key.</figcaption>
+<figcaption>Creating a read-only PagerDuty API key.</figcaption>
 </figure>
 
 ## Configure the connector

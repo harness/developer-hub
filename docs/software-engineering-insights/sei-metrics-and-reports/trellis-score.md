@@ -113,7 +113,7 @@ You can edit the widget to show different values (add/remove columns) or apply f
 
 ![](./static/trellis-score-raw-stats.png)
 
-<figcaption>Figure 1: The Individual Raw Stats widget.</figcaption>
+<figcaption>Individual Raw Stats</figcaption>
 </figure>
 
 You can also use the **Download** icon to download the raw stats report.
@@ -122,5 +122,5 @@ You can also use the **Download** icon to download the raw stats report.
 
 ![](./static/trellis-score-raw-stats-download.png)
 
-<figcaption>Figure 2: The icon to download the Individual Raw Stats report.</figcaption>
+<figcaption>Use the <b>Download</b> icon to download the Individual Raw Stats data.</figcaption>
 </figure>

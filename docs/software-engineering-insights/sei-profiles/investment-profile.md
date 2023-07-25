@@ -39,7 +39,7 @@ Adjust the sliders to define the **Ideal range** for each category. You can set 
 
 ![](./static/investment-profile-ranges.png)
 
-<figcaption>Figure 1: Allocation goals for <b>Bugs</b>, where 20 to 30 percent is the ideal range.</figcaption>
+<figcaption>Allocation goals for <b>Bugs</b>, where 20 to 30 percent is the ideal range.</figcaption>
 </figure>
 
 <details>

@@ -37,7 +37,7 @@ The following settings are available to configure the Issues Report:
 
 ![](../static/issues-report-widget.png)
 
-<figcaption>Figure 1: An Issues Report configured to show <b>Ticket count</b> on the Y-axis and <b>Assignee</b> across the X-axis. For each Assignee, the issues are stacked by <b>Priority</b>.</figcaption>
+<figcaption>An Issues Report configured to show <b>Ticket count</b> on the Y-axis and <b>Assignee</b> across the X-axis. For each Assignee, the issues are stacked by <b>Priority</b>.</figcaption>
 </figure>
 
 ### Issues Report use cases
@@ -131,7 +131,7 @@ The **Issue Resolution Time Report** can help answer questions like:
 
 ![](../static/issue-resolution-time-report.png)
 
-<figcaption>Figure 2: An Issue Resolution Time Report grouped by quarter.</figcaption>
+<figcaption>An Issue Resolution Time Report grouped by quarter.</figcaption>
 </figure>
 
 By default, the Issue Resolution Time Report is filtered by issues closed (**Last Closed Date**) within a selected time range. Usually, the time range is set to **Use Insight time**, which allows the user to select a time range when viewing Insights.
@@ -276,7 +276,7 @@ These reports measure the first assignee or response on an issue, including who 
 
 ![](../static/issue-first-assignee-report.png)
 
-<figcaption>Figure 3: Issue First Assignee Report.</figcaption>
+<figcaption>Issue First Assignee Report</figcaption>
 </figure>
 
 For details about issues bouncing between assignees or being reassigned to new assignees, use the [issue bounce reports](#issue-bounce-reports) and [issue hops reports](#issue-hops-reports).
@@ -291,7 +291,7 @@ For details about issues that are in the backlog or sitting with one assignee fo
 
 ![](../static/issue-assignee-time-report.png)
 
-<figcaption>Figure 4: Issue Assignee Time Report.</figcaption>
+<figcaption>Issue Assignee Time Report</figcaption>
 </figure>
 
 * **Issue Backlog Trend Report:** Understand whether your issue backlog is under control. This can help answer questions about backlog growth and age. When you configure this widget, make sure the **Status Category** is set to **To Do** so that you only track open, unstarted issues. You can use a **Project** filter to limit the report to a specific project's backlog.
@@ -300,7 +300,7 @@ For details about issues that are in the backlog or sitting with one assignee fo
 
 ![](../static/issue-backlog-trend-report.png)
 
-<figcaption>Figure 5: The Issue Backlog Trend Report. The bars show the number of issues in the backlog at a specific point in time. The line tracks the median age of issues over time.</figcaption>
+<figcaption>The Issue Backlog Trend Report. The bars show the number of issues in the backlog at a specific point in time. The line tracks the median age of issues over time.</figcaption>
 </figure>
 
 ## Issue bounce reports
@@ -327,7 +327,7 @@ If you want to observe bounce for tickets that have been open for a long time, s
 
 ![](../static/issue-bounce-report.png)
 
-<figcaption>Figure 5: Issue Bounce Report</figcaption>
+<figcaption>Issue Bounce Report</figcaption>
 </figure>
 
 ## Issue hops reports
@@ -352,7 +352,7 @@ If you want to observe hops for tickets that have been open for a long time, set
 
 ![](../static/issue-hops-report.png)
 
-<figcaption>Figure 6: Issue Hops Report</figcaption>
+<figcaption>Issue Hops Report</figcaption>
 </figure>
 
 ## Issue hygiene reports

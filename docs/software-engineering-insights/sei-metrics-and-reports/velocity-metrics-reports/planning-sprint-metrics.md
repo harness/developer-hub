@@ -165,7 +165,7 @@ The **Sprint Metrics Trend Report** is recommended for visualizing a time series
 
 ![](../static/sprint-metrics-trend-report.png)
 
-<figcaption>Figure 1: A Sprint Metrics Trend Report.</figcaption>
+<figcaption>Sprint Metrics Trend Report</figcaption>
 </figure>
 
 ### Sprint Metrics Percentage Trend Report
@@ -176,7 +176,7 @@ Use the **Sprint Metrics Percentage Trend Report** to examine a time series tren
 
 ![](../static/sprint-metrics-percentage-trend-report.png)
 
-<figcaption>Figure 2: A Sprint Metrics Percentage Trend Report.</figcaption>
+<figcaption>Sprint Metrics Percentage Trend Report</figcaption>
 </figure>
 
 ### Sprint Metrics Single Stat
@@ -187,7 +187,7 @@ Use the **Sprint Metrics Percentage Trend Report** to examine a time series tren
 
 ![](../static/sprint-metric-single-stat.png)
 
-<figcaption>Figure 3: A Sprint Metrics Single Stat widget.</figcaption>
+<figcaption>Sprint Metrics Single Stat</figcaption>
 </figure>
 
 ### Other reports
