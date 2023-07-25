@@ -20,11 +20,11 @@ To run `git lfs` commands, such as `git lfs clone`, in Harness CI, use **Run** s
 
 ## Install the Git LFS client
 
-Use a **Run** step to install the Git LFS client into the build workspace.
+You can use a **Run** step to install the Git LFS client into the build workspace.
 
-If the client is already installed on your host machine, skip to [Run git lfs commands](#run-git-lfs-commands).
+With self-hosted build infrastructures, if the client is already installed on your host machine, skip to [Run git lfs commands](#run-git-lfs-commands).
 
-A version of Git LFS is already installed on Harness Cloud runners. For Harness Cloud image specs, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). You can use a **Run** step to install a different version of the Git LFS client if you do not want to use the pre-installed version. Otherwise, skip to [Run git lfs commands](#run-git-lfs-commands).
+With Harness Cloud build infrastructure, a version of Git LFS is already installed on Harness Cloud runners. For Harness Cloud image specs, go to [Use Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure). You can use a **Run** step to install a different version of the Git LFS client if you do not want to use the pre-installed version. Otherwise, skip to [Run git lfs commands](#run-git-lfs-commands).
 
 ```mdx-code-block
 <Tabs>
