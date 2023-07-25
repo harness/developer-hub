@@ -38,6 +38,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Previously, when password-based authentication was used with OAuth, the functionality of auto-accepting invites was not available. Now, when Oauth is enabled for an account, invites are automatically accepted. (PL-31936, ZD-40182)
 
 - User names cannot exceed 256 chars. (PL-21254)
+  
+- Custom webhook triggers called with the X-Api-Key header follow role-based access control:
+1. The trigger execution checks if the provided API key has the necessary permissions regarding entities access and deployment freeze override.
+2. The expression `<+pipeline.triggeredBy.name>` has been fixed to contain the user name mapped to the API key. (CDS-73127)
 
 - The List Tokens API now supports listing all the personal access tokens or service account tokens in the account. The API has been enhanced as follows:
 1. If you have user management permissions, you can list all the personal access tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
