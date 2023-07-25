@@ -17,6 +17,24 @@ You can set up a Security step with [SonarQube SonarScanner](https://docs.sonarq
 Go to the [SonarQube language reference](https://docs.sonarqube.org/latest/analysis/languages/overview/) for details about specific language requirements.
 :::
 
+## Before you begin
+
+### Docker-in-Docker requirements
+
+```mdx-code-block
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+```
+
+<StoDinDRequirements />
+
+### Root access requirements
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
+
 ## SonarQube step configuration
 
 The recommended workflow is add a SonarQube step to a Security Tests or CI Build stage and then configure it as described below. You can also configure SonarQube scans programmatically by copying, pasting, and editing the [YAML definition](#yaml-configuration). 
@@ -27,13 +45,6 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 ```
 
 <StoScannerStepNotes />
-
-<details>
-    <summary>Scanner Template</summary>
-
-![](static/step-palette-00.png) 
-
-</details>
 
 ### Scan
 
@@ -232,8 +243,6 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step configuration (_deprecated_)
 
-<details><summary>Set up a SonarQube scan in a Security step</summary>
-
 You can set up a Security step with [SonarQube SonarScanner](https://docs.sonarqube.org/latest/) to analyze your code repos and ensure that they are secure, reliable, readable, and modular, among other key attributes.
 
 #### Scan types
@@ -242,9 +251,17 @@ STO supports the following scan types for SonarQube:
 
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
 * `dataLoad`  — The pipeline downloads scan results using the [SonarScanner API](https://docs.sonarqube.org/latest/extend/web-api/).
-* `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md).
+<!-- * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](../use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline.md). -->
 
-#### Required settings
+#### Target and variant
+
+```mdx-code-block
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+```
+
+<StoLegacyTargetAndVariant />
+
+#### SonarQube SonarScanner settings
 
 * `product_name` = `sonarqube`
 * `scan_type` = `repository`
@@ -257,6 +274,7 @@ STO supports the following scan types for SonarQube:
 * `repository_branch` — The git branch to scan. You can specify a hardcoded string or use the runtime variable [`<+codebase.branch>`](/docs/continuous-integration/use-ci/codebase-configuration/built-in-cie-codebase-variables-reference#manual-branch-build-expressions). This sets the branch based on the user input or trigger payload at runtime.
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+<!-- 
 #### `ingestionOnly` settings
 
 ```mdx-code-block
@@ -264,6 +282,8 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
+
+-->
 
 ####  `orchestratedScan` and `dataLoad` settings
 
@@ -275,13 +295,3 @@ Go to the [SonarQube docs](https://docs.sonarqube.org/latest/user-guide/user-tok
 * `product_exclude` — If you want to exclude some files from a scan, you can set the sonar.exclusions key in your SonarQube project. See [Narrowing the Focus](https://docs.sonarqube.org/latest/project-administration/narrowing-the-focus/) in the SonarQube docs.
 * `product_java_binaries` — When scanning Java, you need to set the `sonar.java.binaries` key in SonarQube. This is a list of comma-separated paths with the compiled bytecode that correspond to your source files. See [Java](https://docs.sonarqube.org/latest/analysis/languages/java/) in the SonarQube docs.
 * `product_java_libraries` — `sonar.java.binaries` is a comma-separated list of paths to files with third-party libraries (JAR or Zip files) used by your project. See [Java](https://docs.sonarqube.org/latest/analysis/languages/java/) in the SonarQube docs.
-
-</details>
-
-## YAML configuration
-
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-```
-
-<StoSettingYAMLexample />

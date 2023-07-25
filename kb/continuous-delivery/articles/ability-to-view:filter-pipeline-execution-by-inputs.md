@@ -1,7 +1,9 @@
 ---
 description: KB - Ability to view/filter pipeline executions by inputs. 
 ---
-# Introduction
+# Ability to view/filter pipeline executions by inputs
+
+## Introduction
 
 The harness provides a number of features for managing pipeline executions, including Viewing and comparing pipeline executions. 
 
@@ -22,7 +24,7 @@ Here are some additional resources that you may find helpful:
 
 How to view/filter pipeline executions by inputs. 
 
-## Steps to achieve this usecase
+## Steps to achieve this use case
 1. You can add used expressions or new pipeline variables in your pipeline to pipeline tags.
 2. Then you can filter or search in the deployment dashboard based on the input you have provided to see the execution which ran with only that execution.
 
