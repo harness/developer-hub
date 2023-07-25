@@ -28,6 +28,12 @@ In this tutorial, you'll use Harness CI to run automated tests in a FastAPI proj
 * [A GitHub Account](https://github.com/join).
 * [A Harness Account](https://app.harness.io/).
 
+```mdx-code-block
+import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
+```
+
+<CISignupTip />
+
 ## Setting up the pipeline in Harness CI
 
 In this tutorial we focus on running some basic test cases but you can configure the pipeline to run integration tests, mutation tests, etc.
