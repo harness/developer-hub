@@ -220,10 +220,7 @@ Append the following configuration:
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="kubernetes" label="Kubernetes">
-```
-**Kubernetes** pipelines run in a Kubernetes cluster that you manage. Kubernetes pipelines are an enterprise feature.
-
+  <TabItem value="selfhosted" label="Self-hosted">
 
 ```yaml
   properties:
