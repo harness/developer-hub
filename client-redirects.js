@@ -2989,10 +2989,10 @@ module.exports = {
       from: "/docs/platform/Get-started/platform-concepts/platform-overview",
       to: "/docs/platform/Get-started/platform-overview",
     },
-    // Created by bfisher for DOC-3458 on July 24, 2023
+    // Created by bfisher for DOC-3458 on July 25, 2023
     {
       from: "/docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database",
-      to: "/docs/self-managed-enterprise-edition/advanced-configurations/use-an-external-mongodb-database",
+      to: "/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database",
     },
     {
       from: "/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm",
