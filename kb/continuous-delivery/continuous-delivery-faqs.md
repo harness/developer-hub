@@ -147,3 +147,15 @@ For more information, you can refer to the documentation on declarative rollback
 If you are using the default release name format in Harness FirstGen as `release-${infra.kubernetes.infraId}`, it's important to note that when migrating to Harness NextGen, you will need to replace `${infra.kubernetes.infraId}` with the new expression.
 
 In Harness NextGen, a similar expression `<+INFRA_KEY>` is available for defining release names. However, it's crucial to understand that these expressions will resolve to completely different values compared to the expressions used in Harness FirstGen.
+
+#### Pipeline GitHub trigger support for project variable reference?
+
+This is not possible as trigger yaml is independent of the pipeline yaml and the trigger will not be aware of the expression output.
+
+#### Procedure to take backup of the Services
+
+We do not have any backup ability for services out of the box but you can take the backup of service yamls and use them later for creating service if there is any issue with the service.
+
+#### Harness FirstGen Graphql API to create Harness pipelines in a specific application
+
+We do not have a way to create a new pipeline using Graphql in FirstGen. However, we do support API to create Harness pipelines in NextGen.
