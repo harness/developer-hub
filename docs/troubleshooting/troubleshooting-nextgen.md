@@ -636,6 +636,24 @@ curl -X POST -d '{"role_id":"<APPROLE_ID>", "secret_id":"<SECRET_ID>"}' https://
 ```
 If the delegate fails to connect, it is likely because of the credentials or a networking issue.
 
+#### Vault
+
+I have a secret that is connected to vault.
+
+How would i view it? Do i need to connect to vault?
+
+For security reasons you would need to connect to Vault to view the secrets.  You can use them however.
+ 
+[https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault/](https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault/)
+ 
+[https://developer.harness.io/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/](https://developer.harness.io/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/)
+ 
+[https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/)
+ 
+You can reference the secrets using the following as a guide
+ 
+[https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier)
+
 ### SAML SSO
 
 The following errors might occur during the set up or use of SAML SSO.
