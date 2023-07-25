@@ -4,7 +4,7 @@ description: Ensuring flags are refreshed after a mobile web browser gets brough
 keywords: [Mobile application testing, Feature Flags, FF Tutorial]
 ---
 
-# Making Flags Resilient During A Mobile Web Browser Refresh
+# Making flags resilient during a mobile web browser refresh
 
 ![FF Workflow](static/ff-mobile-browser-refresh/ffworkflow.png)
 
