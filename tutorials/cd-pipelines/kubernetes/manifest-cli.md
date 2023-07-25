@@ -58,7 +58,7 @@ The Harness delegate is a service that runs in your local network or VPC to esta
 - Now follow the delegate installtion wizard and install your delegate using **Helm Chart**
     - In the wizard make sure your delegate is named as `helm-delegate`.
     - Preview and Copy the manifest YAML, create a file named `harness-delegate.yaml` 
-            - Add the Harness Helm chart repo to your local helm registry using the following commands.
+        - Add the Harness Helm chart repo to your local helm registry using the following commands.
         
         ```bash
         helm repo add harness-delegate https://app.harness.io/storage/harness-download/delegate-helm-chart/
@@ -70,8 +70,7 @@ The Harness delegate is a service that runs in your local network or VPC to esta
         helm repo update harness-delegate
         ```
 
-        -  In the command provided, `ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated values that you can obtain from the delegate installation wizard.
-        -  Replace **DELEGATE_TOKEN** in the command with the token that was copied earlier and proceed with delegate installation.
+        -  Use the command provided in the wizard which looks similar to the one given below, `ACCOUNT_ID` and `MANAGER_ENDPOINT` are auto-populated in the commands available on the delegate installation wizard.
 
          
         ```bash
@@ -143,7 +142,7 @@ Under this step, you would see a bunch of CLI command to run, before procceding 
     - Example of Harness URL: `https://app.harness.io/ng/account/<account ID>/cd/orgs/<org ID>/projects/<Project ID>/`
     - Now use the following CLI command to login. 
     ```
-    harness-cli login --api-key <YOUR API KEY> --account-id <YOUR ACCOUNT ID>
+    harness login --api-key <YOUR API KEY> --account-id <YOUR ACCOUNT ID>
     ```
 
     #### Secrets
@@ -158,7 +157,7 @@ Under this step, you would see a bunch of CLI command to run, before procceding 
     - Use the follwoing command to add Github PAT created above for secret.
     
     ```
-    harness-cli secret --token <YOUR GITHUB PAT>
+    harness secret --token <YOUR GITHUB PAT>
     ```
 
     #### Connectors
@@ -174,13 +173,13 @@ Under this step, you would see a bunch of CLI command to run, before procceding 
     - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
     - Now create the **GitHub connector** using the following CLI Command
         ```
-        harness-cli connector --file github-connector.yml apply --git-user <YOUR GITHUB USERNAME>
+        harness connector --file github-connector.yml apply --git-user <YOUR GITHUB USERNAME>
         ```
     - Please check the delegate name to be `helm-delegate` in the `kubernetes-connector.yml`
     - Create the **Kubernetes connector** using the following CLI Command
         
     ```
-    harness-cli connector --file kubernetes-connector.yml apply --delegate-name kubernetes-delegate
+    harness connector --file kubernetes-connector.yml apply --delegate-name kubernetes-delegate
     ```
 
     ### Environment
@@ -194,12 +193,12 @@ Under this step, you would see a bunch of CLI command to run, before procceding 
 
     - Use the follwing CLI Command to create **Environments** in your Harness project
         ```
-        harness-cli environment --file environment.yml apply
+        harness environment --file environment.yml apply
         ```
         
     - In your new environment, add **Infrastructure Definitions** using the following CLI command.
         ```
-        harness-cli infrastructure --file infrastructure-definition.yml apply
+        harness infrastructure --file infrastructure-definition.yml apply
         ```
 
 ### Services
@@ -213,7 +212,7 @@ In Harness, services represent what you deploy to environments. You use services
 
 - Use the following CLI command to create **Services** in your Harness Project. 
     ```
-    harness-cli service -file service.yml apply
+    harness service -file service.yml apply
     ```
 
 ### Pick Your Deployment Strategy
@@ -240,7 +239,7 @@ A canary deployment updates nodes in a single environment gradually, allowing yo
 - CLI Command for canary deployment:
 
     ```
-    harness-cli pipeline --file canary-pipeline.yml apply
+    harness pipeline --file canary-pipeline.yml apply
     ```
 
 
@@ -259,7 +258,7 @@ Blue Green deployments involve running two identical environments (stage and pro
 - CLI Command for blue-green deployment:
 
     ```
-    harness-cli pipeline --file bluegreen-pipeline.yml apply
+    harness pipeline --file bluegreen-pipeline.yml apply
     ```
 
 
@@ -278,7 +277,7 @@ Rolling deployments incrementally add nodes in a single environment with a new s
 - CLI Command for Rolling deployment:
 
     ```
-    harness-cli pipeline --file rolling-pipeline.yml apply
+    harness pipeline --file rolling-pipeline.yml apply
     ```
 
 
