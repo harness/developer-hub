@@ -112,7 +112,7 @@ Make sure to create the delegate at the appropriate scope, such as the project l
 
 ## Install the Drone Runner
 
-The Drone Runner service performs the build work. The delegate needs the runner to run CI builds.
+The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
 
 1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases) corresponding to your build farm's OS and architecture.
 2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
@@ -206,7 +206,7 @@ Make sure to create the delegate at the appropriate scope, such as the project l
 
 ## Install the Drone Runner
 
-The Drone Runner service performs the build work. The delegate needs the runner to run CI builds.
+The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
 
 :::caution
 
