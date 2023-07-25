@@ -22,47 +22,25 @@ import TabItem from '@theme/TabItem';
 
 1. In the left pane, select **Pipelines**.
 2. Select **+ Create a Pipeline** and set up a pipeline. 
-3. In the **Select Stage Type** pane, select **Infrastructure**.
+3. Select **Add Stage**, and then on the **Select Stage Type** pane, select **Infrastructure**.
 
     ![Add infrastructure stage](./static/select-stage.png)
 
-4. On the **Workspace** tab, select an existing workspace or select **+ Create New Workspace** to create a new workspace. 
+4. Enter a stage name and an optional description and tag. Select **Set Up Stage**. 
 
-5. Select the **Execution** tab, and then add the **IACM Terraform steps** for adding Terraform plugins. Five operations are supported: init/plan/apply/destroy/plan-destroy.
+5. On the **Workspace** tab, select an existing workspace or select **+ Create New Workspace** to create a new workspace. 
 
-    * The steps required for provision are as follows: init, plan, and apply.
+6. Select the **Execution** tab, and then select the option to provision for Terraform. Five operations are supported: init/plan/apply/destroy/plan-destroy.
 
-    * The init step initializes Terraform by downloading all the modules that are required and preparing the worker to perform the Terraform operations.
+7. Select **Use Strategy**.
 
-        * Third-party plugins that don’t need a plan can be included.
-    
-    * The plan step generates a Terraform plan. This Terraform plan is accessible to all the steps after the IaCM Terraform plan, and is accessible on “<+pipeline.stages.{nameofthestage}.spec.execution.steps.{nameofthestep}.output.outputVariables.parsedPlan>”
+  Init, plan, and apply steps are added.
 
-        * Third-party plugins that require a plan can be added here.
+8. Select **Save**, and then select **Run Pipeline**. 
 
-    * Lastly, the apply step will apply the plan generated in the previous step.
+9. After the plan is created, switch to the **Resources** tab to see all the resources and Terraform outputs that will be generated once the plan is applied. You can see which resources will be added, changed, or removed from the state. 
 
-6. To create the Provision pipeline, follow these steps:
-
-    a. Select **Add Step**.
-
-    b. Select the **IACMTerraformPlugin**.
-
-    c. Provide the Name and Timeout, and select the command `init`.
-
-    d. Repeat the above steps for **plan** and **apply**.
-
-    ![Add plugin](./static/plugin-step.png)
-
-    You should now have a stage with an init > plan > apply sequence. 
-
-    ![Sequence example](./static/init-plan-apply.png)
-
-7. Select **Save**, and then select **Run Pipeline**. 
-
-8. After the plan is created, switch to the **Resources** tab to see all the resources and Terraform outputs that will be generated once the plan is applied. You can see which resources will be added, changed, or removed from the state. 
-
-9. Select **Resources** to see the attribute details. 
+10. Select **Resources** to see the attribute details. 
 
     The execution completed and the state was created. Harness IaCM provides state management, so the state was saved in the Harness backend. This implicit step happens behind the scenes during pipeline execution, and you don’t need to configure it. 
 
