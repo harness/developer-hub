@@ -1,7 +1,7 @@
 ---
 title: Harness API quickstart
 description: This document explains the steps to get started with Harness NG APIs.
-sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: f0aqiv3td7
 helpdocs_category_id: pm96bpz4kf
 helpdocs_is_private: false
@@ -277,8 +277,7 @@ To explore the Harness API, see [Harness API Reference Docs](https://harness.io/
 
 ### Notes
 
-* **Rate Limiting:** Harness uses rate limiting to control API traffic and ensure the stability of the system. The Harness APIs are protected against sudden large bursts of traffic, and sustained high volumes of requests, for example, frequent polling.
-    The rate limit set in Harness is 1000 requests per minute per API key. Harness reserves the rights to change this limit at any time to protect the platform.
+* **Rate Limiting:** Harness uses rate limiting to control traffic and ensure the stability of the platform. For platform rate limit information, go to [Rate limits](/docs/platform/Security/rate-limits). For API rate limit information, go to [API rate limits](/docs/platform/Resource-Development/APIs/rate-limits).
 
 * **Cross-origin Resource Sharing (CORS):** Harness APIs support CORS. This allows interactions between resources from different origins, which is normally prohibited to prevent malicious behavior. Each request must provide credentials (personal access tokens and service access tokens are both supported options).
 * **Errors:** Harness uses conventional HTTP response codes to indicate the success or failure of an API request.

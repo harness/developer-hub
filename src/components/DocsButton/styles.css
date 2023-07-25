@@ -1,22 +1,35 @@
-.rs-button {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: var(--gray-50);
+.doc-button {
+  display: inline;
+  cursor: pointer;
+  background: var(--gray-100);
+  border: 1px solid var(--gray-300);
+  border-radius: 4px;
+  color: var(--gray-600);
+  filter: drop-shadow(0 0 1px rgba(40, 41, 61, 0.04))
+    drop-shadow(0 2px 4px rgba(96, 97, 112, 0.16));
+  font-weight: 600;
+  margin-bottom: 20px;
+  white-space: nowrap;
+}
+.doc-button:hover {
+  background: white;
+  color: var(--primary-8);
+}
+.small {
   font-size: 12px;
   padding: 10px 15px;
-  font-weight: bold;
-  color: var(--gray-600);
-  text-align: center;
-  border-radius: 8px;
-  border: 1px solid var(--gray-400);
-  margin-bottom: 20px;
-  text-decoration: none;
-  cursor: pointer;
 }
-.rs-button:hover {
-  background-color: var(--gray-100);
+.medium {
+  height: 36px;
+  font-size: 14px;
+  padding: 12px 18px;
 }
+.large {
+  font-size: 16px;
+  height: 48px;
+  padding: 12px 20px;
+}
+
 .custom-icon {
   color: var(--orange-600);
   scale: 1.5;
@@ -25,8 +38,12 @@
 }
 
 .link {
+  margin: 0;
+  padding: 0;
+  display: inline;
   text-decoration: none;
 }
+
 .link:hover {
   text-decoration: none;
 }

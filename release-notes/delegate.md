@@ -102,6 +102,17 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
 ```mdx-code-block
   </TabItem>
+  <TabItem value="Hotfix release">
+```
+
+## Hotfix version 79906
+
+- Helm deployment steps timed out after the initial installation/upgrade phase, preventing the execution of a Helm rollback step. (CDS-73264)
+
+   This issue is now fixed.
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 
