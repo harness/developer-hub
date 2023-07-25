@@ -1,12 +1,13 @@
 import ExecutionEnvironment from "@docusaurus/ExecutionEnvironment";
 
-const OpenDetailTab = () => {
+const OpenDetailTab =async  () => {
   const currentURL = window.location.href;
   const url = new URL(currentURL);
   if (url.hash) {
     const element = document.getElementsByTagName("details");
     for (let i = 0; i < element.length; i++) {
       element[i].setAttribute("data-collapsed", "false");
+      element[i].setAttribute("open", "true");
 
       const divElement = element[i].querySelector("div");
       divElement.style.display = "block";
@@ -21,3 +22,9 @@ const OpenDetailTab = () => {
 if (ExecutionEnvironment.canUseDOM) {
   window.addEventListener("popstate", OpenDetailTab);
 }
+
+document.addEventListener("readystatechange", (event) => {
+  if (event.target.readyState === "complete") {
+    OpenDetailTab();
+  }
+});
