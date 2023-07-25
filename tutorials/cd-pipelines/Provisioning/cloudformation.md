@@ -55,7 +55,16 @@ This totrial will focsus on the use of Cloudformation to provision any resources
 <Tabs>
 <TabItem value="Provision with Cloudformation Create Stack">
 ```
-This tutorial will provision resources in a CD stage's deployment infrastructure using the CloudFormation **Create Stack** step, in a CD stage's **Execution section**
+This tutorial will provision resources in a **Custom stage** using the CloudFormation **Create Stack** step.
+
+## Before You Begin
+
+Verify that you have the following:
+
+1. **A Kubernetes cluster** in Cloudformation: Create a **stack** in CloudFormation to provsion a **EKS cluster** to be used as **deployment infrastructure**.
+2. **Obtain GitHub personal access token with the repo scope**. See the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line). 
+3. Fork the **[harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website, which contains the **CF template** file. 
+4. A functioning **Harness Pipeline** that deploys an application on your cluster using a mnifest, please follow this [get started tutorial](tutorials/cd-pipelines/kubernetes/manifest.md) to set it up. 
 
 ```mdx-code-block
 </TabItem>
