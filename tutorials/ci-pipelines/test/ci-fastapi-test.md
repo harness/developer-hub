@@ -5,6 +5,12 @@ keywords: [Continuous Integration, CI Tutorial, FastAPI, Testing, Run Tests]
 title: Test a FastAPI project
 slug: /ci-pipelines/test/fastapi
 ---
+
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 <ctabanner
   buttonText="Learn More"
   title="Continue your learning journey."
@@ -14,7 +20,7 @@ slug: /ci-pipelines/test/fastapi
   target="_self"
 />
 
-In this tutorial, you'll use Harness CI to run automated tests in a FastAPI project when changes are pushed to the `main` branch of your repository.
+[FastAPI](https://fastapi.tiangolo.com/) is a modern and highly performant web framework that you can use to build APIs in Python 3.7+ using standard Python type hints. In this tutorial, you'll use Harness CI to automatically run tests on your FastAPI project when changes are pushed to a specific branch of your code repository.
 
 ## Prerequisites
 
@@ -29,12 +35,11 @@ import CISignupTip from '/tutorials/shared/ci-signup-tip.md';
 
 <CISignupTip />
 
-## Set up the pipeline
+## Prepare the codebase
 
-In this tutorial we focus on running some basic test cases but you can configure the pipeline to run integration tests, mutation tests, etc.
+<!-- fork repo and create code repo connector -->
+
 Let’s start with a FastAPI project to work with.
-
-**Cloning the Project**
 
 For this tutorial we already have a to-do REST API with sample test cases hosted in Harness Community [repository](https://github.com/harness-community/fastapi-harness-sample). Follow the following steps to run the project on your machine.
 
@@ -63,7 +68,7 @@ Your cloned project should have the structure shown below:
 * fastapi-todo-tests/app/main.py - Implements three API endpoints for : creating a task, deleting a task, and getting a list of created tasks.
 * fastapi-todo-tests/test_main.py - This file defines three test cases.
 
-<details> <summary> Setting up the Project Locally </summary>
+<details> <summary>Optional exercise: Local set up</summary>
 
 :::info
 
@@ -75,11 +80,6 @@ In addition to a Harness & Github account, this tutorial requires the following:
 
 
 * Create a virtual environment name test-env 
-
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 
 ```mdx-code-block
 <Tabs>
@@ -151,37 +151,20 @@ uvicorn app.main:app --reload
 
 </details>
 
-## Create your pipeline
+## Prepare the pipeline
+
+
+### Create a pipeline
+<!-- pipeline creation-->
+
+In this tutorial we focus on running some basic test cases but you can configure the pipeline to run integration tests, mutation tests, etc.
 
 1. From the left pane, select **Pipelines**, then select **Create a Pipeline**.
 2. In the **Name** field, enter a name for your pipeline, then select **Start**.
-3. Switch from the **Visual** view to the **YAML** view, and then select **Edit YAML**.
-
-Append the following configuration:
-
-```mdx-code-block
-<Tabs>
-  <TabItem value="Cloud" label="Cloud" default>
-```
-
-**Cloud** pipelines run in managed infrastructure provided by Harness.
-
-**Now let’s understand the pipeline snippet above:**
-
-* Here we first created a single Builds stage and specified our infrastructure settings as Harness Cloud(OS: Linux & Architecture: AMD64)
-
-* We then configured the execution settings for the Builds stage and defined 2 steps: 
-    * Install Dependencies: This step executes the command to install all the project dependencies from the requirements.txt file
-    * We then define & run the unit tests in the next step using the pytest command.
+3. Add build stage.
+4. Specify build infra.
 
 ```yaml
-  properties:
-    ci:
-      codebase:
-        connectorRef: GIT_CONNECTOR
-        repoName: fastapi-harness-sample
-        build: <+input>
-  stages:
     - stage:
         name: test
         identifier: test
@@ -196,6 +179,36 @@ Append the following configuration:
             spec: {}
           execution:
             steps:
+```
+
+```yaml
+    - stage:
+        name: test
+        identifier: test
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_KUBERNETES_NAMESPACE
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+```
+
+### Install dependencies
+
+<!-- Check python guide https://developer.harness.io/tutorials/ci-pipelines/build/python -->
+
+<!-- Harness Cloud has some software preinstalled on the images. Check the image specs to see if this is necessary.
+
+https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure#platforms-and-image-specifications -->
+
+```yaml
               - step:
                   type: Run
                   name: Install Dependencies
@@ -204,13 +217,27 @@ Append the following configuration:
                     shell: Sh
                     command: |-
                       sudo apt-get update && sudo apt-get install -y python3-dev && sudo apt-get install default-libmysqlclient-dev
-
                       pip install --cache-dir .pip_cache -r requirements.txt
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - output-test.xml
+```
+
+
+```yaml
+              - step:
+                  type: Run
+                  name: Install Dependencies
+                  identifier: Install_Dependencies
+                  spec:
+                    shell: Sh
+                    command: |-
+                      sudo apt-get update && sudo apt-get install -y python3-dev && sudo apt-get install default-libmysqlclient-dev
+                      pip install --cache-dir .pip_cache -r requirements.txt
+```
+
+### Run tests
+
+<!-- Check python guide https://developer.harness.io/tutorials/ci-pipelines/build/python -->
+
+```yaml
               - step:
                   type: Run
                   name: Run Pytest
@@ -224,54 +251,9 @@ Append the following configuration:
                       spec:
                         paths:
                           - output-test.xml
-
 ```
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="selfhosted" label="Self-hosted">
-
-**Kubernetes** pipelines run in a Kubernetes cluster that you manage. Kubernetes pipelines are an enterprise feature.
-
-**Now let’s understand the pipeline snippet above:**
-
-* Here we first created a single Builds stage and specified our infrastructure settings as Kubernetes.
-
-* We then configured the execution settings for the Builds stage and defined 2 steps: 
-    * Install Dependencies: This step executes the command to install all the project dependencies from the requirements.txt file
-    * We then define & run the unit tests in the next step using the pytest command.
-
 ```yaml
-  properties:
-    ci:
-      codebase:
-        connectorRef: GIT_CONNECTOR
-        repoName: fastapi-harness-sample
-        build: <+input>
-  stages:
-    - stage:
-        name: test
-        identifier: test
-        type: CI
-        spec:
-          cloneCodebase: true
-          execution:
-            steps:
-              - step:
-                  type: Run
-                  name: Install Dependencies
-                  identifier: Install_Dependencies
-                  spec:
-                    shell: Sh
-                    command: |-
-                      sudo apt-get update && sudo apt-get install -y python3-dev && sudo apt-get install default-libmysqlclient-dev
-
-                      pip install --cache-dir .pip_cache -r requirements.txt
-                    reports:
-                      type: JUnit
-                      spec:
-                        paths:
-                          - output-test.xml
               - step:
                   type: Run
                   name: Pytest
@@ -285,26 +267,23 @@ Append the following configuration:
                       spec:
                         paths:
                           - output-test.xml
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: Kubernetes_Connector
-              namespace: <+pipeline.variables.KUBERNETES_NAMESPACE>
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
 ```
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
+## Run the pipeline
 
-After adding the the above snippet, **save** your pipeline.
+Save and run the pipeline.
+
+While the build runs, you can view the logs and monitor build activity on the [Build details page](docs/continuous-integration/use-ci/viewing-builds).
+
+After the pytest step, if the step succeeded, you find logs indicating that the `output-test.xml` file was generated.
+
+You can [view test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests) on the Tests tab or the Artifacts tab.
 
 ## Add the trigger
 
-You can run this pipeline manually as it is. To automatically run tests whenever the codebase changes, you need to add a [Git event trigger](/docs/platform/Triggers/triggering-pipelines) that listens for pushes (or any other git event) to the `main` branch of your code repository (or whichever repository you choose to track).
+You can run this pipeline manually as it is, or you can add a trigger to automatically run these tests whenever the codebase changes. To do this, add a [Git event trigger](/docs/platform/Triggers/triggering-pipelines) that listens for an event on a specific branch of your FastAPI project's code repository.
+
+For this tutorial, you'll create a trigger that listens for pushes to the `main` branch.
 
 <details><summary>Register the webhook in the Git provider</summary>
 
@@ -343,8 +322,137 @@ For more information about manual webhook registration, go to the [Triggers refe
 
 </details>
 
-## Run Your Pipeline
+## Test the trigger
 
-1. Click the **Save** button, then click **Run**.
-2. Click **Run Pipeline** in the **Run Pipeline** dialogue window.
-3. On the Build details page, you can review execution information in the console logs. If the tests were successful you will find the /harness/output-test.xml file generated with the test results.
+To test the Git event trigger, go to your FastAPI repo, make a change, and commit and push it to `main`. For this tutorial, you could commit directly to `main`, but in a real world development situation, you would want to create and merge a PR.
+
+Upon pushing to `main` (either directly or by merging a PR), the trigger should start your pipeline within a few moments. Check the [Builds page](docs/continuous-integration/use-ci/viewing-builds) in Harness to confirm that the build started.
+
+## Pipeline YAML examples
+
+<!-- full pipelines with triggers for self-hosted and cloud -->
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Cloud" label="Harness Cloud" default>
+```
+
+This pipeline has:
+
+* A **Build** (`CI`) stage.
+* [Harness Cloud build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure).
+* A **Run** step that installs dependencies for the FastAPI project, as defined in `requirements.txt`.
+* A **Run** step that uses `pytest` to run unit tests.
+* A Git event webhook trigger.
+
+```yaml
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        repoName: fastapi-harness-sample
+        build: <+input>
+  stages:
+    - stage:
+        name: test
+        identifier: test
+        type: CI
+        spec:
+          cloneCodebase: true
+          platform:
+            os: Linux
+            arch: Amd64
+          runtime:
+            type: Cloud
+            spec: {}
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Install Dependencies
+                  identifier: Install_Dependencies
+                  spec:
+                    shell: Sh
+                    command: |-
+                      sudo apt-get update && sudo apt-get install -y python3-dev && sudo apt-get install default-libmysqlclient-dev
+                      pip install --cache-dir .pip_cache -r requirements.txt
+              - step:
+                  type: Run
+                  name: Run Pytest
+                  identifier: Pytest
+                  spec:
+                    shell: Sh
+                    command: |
+                      pytest --junitxml=output-test.xml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - output-test.xml
+```
+
+```mdx-code-block
+</TabItem>
+<TabItem value="selfhosted" label="Self-hosted">
+```
+
+This pipeline has:
+
+* A **Build** (`CI`) stage.
+* [Kubernetes cluster build infrastructure](/docs/category/set-up-kubernetes-cluster-build-infrastructures).
+* A **Run** step that installs dependencies for the FastAPI project, as defined in `requirements.txt`.
+* A **Run** step that uses `pytest` to run unit tests and output results in JUnit XML format.
+* A Git event webhook trigger.
+
+```yaml
+  properties:
+    ci:
+      codebase:
+        connectorRef: YOUR_CODEBASE_CONNECTOR_ID
+        repoName: fastapi-harness-sample
+        build: <+input>
+  stages:
+    - stage:
+        name: test
+        identifier: test
+        type: CI
+        spec:
+          cloneCodebase: true
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: YOUR_KUBERNETES_CLUSTER_CONNECTOR_ID
+              namespace: YOUR_KUBERNETES_NAMESPACE
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Run
+                  name: Install Dependencies
+                  identifier: Install_Dependencies
+                  spec:
+                    shell: Sh
+                    command: |-
+                      sudo apt-get update && sudo apt-get install -y python3-dev && sudo apt-get install default-libmysqlclient-dev
+                      pip install --cache-dir .pip_cache -r requirements.txt
+              - step:
+                  type: Run
+                  name: Pytest
+                  identifier: Pytest
+                  spec:
+                    shell: Sh
+                    command: |
+                      pytest --junitxml=output-test.xml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - output-test.xml
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
