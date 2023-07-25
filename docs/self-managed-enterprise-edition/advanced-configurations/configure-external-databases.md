@@ -16,4 +16,4 @@ You can choose some of the below databases to be external and others as internal
 :::
 
 ## MongoDB
-[Self-managed solution](/docs/self-managed-enterprise-edition/advanced-configurations/use-an-external-mongodb-database)
+[Self-managed solution](/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database)
