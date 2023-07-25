@@ -34,6 +34,10 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ## Burp step configuration
 
+:::note
+Currently, this feature is behind the Feature Flag `STO_STEP_PALETTE_BURP_ENTERPRISE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 <details><summary>Orchestrated scan in a Burp scanner template</summary>
 
 ![](./static/burp-scanner-template.png)
@@ -354,4 +358,70 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
+## Burp pipeline example 
 
+```yaml
+
+pipeline:
+  name: burp extraction
+  identifier: burp_extraction
+  projectIdentifier: STO
+  orgIdentifier: default
+  tags: {}
+  stages:
+    - stage:
+        name: extraction
+        identifier: extraction
+        type: SecurityTests
+        spec:
+          cloneCodebase: false
+          infrastructure:
+            type: KubernetesDirect
+            spec:
+              connectorRef: myharnessdelegate
+              namespace: harness-delegate-ng
+              automountServiceAccountToken: true
+              nodeSelector: {}
+              os: Linux
+          execution:
+            steps:
+              - step:
+                  type: Background
+                  name: docker dind
+                  identifier: docker_dind
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: docker:dind
+                    shell: Sh
+              - step:
+                  type: Security
+                  name: data load from burp enterprise
+                  identifier: data_load_from_burp_enterprise
+                  spec:
+                    privileged: true
+                    settings:
+                      policy_type: dataLoad
+                      scan_type: instance
+                      product_name: burp
+                      product_config_name: default
+                      product_site_id: <+pipeline.variables.burp_site_id>
+                      instance_identifier: <+pipeline.name>
+                      instance_environment: <+pipeline.variables.burp_site_id>
+                      log_level: debug
+                      product_domain: https://bsee.dev.my.org.org/
+                      product_access_token: <+secrets.getValue('burp_api_key')>
+          sharedPaths:
+            - /var/run
+            - /shared/customer_artifacts/
+        variables:
+          - name: runner_tag
+            type: String
+            description: ""
+            value: dev
+  variables:
+    - name: burp_site_id
+      type: String
+      description: burp_site_id
+      value: <+input>
+
+```
