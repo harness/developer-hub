@@ -18,6 +18,8 @@ This topic lists the supported features and integrations you can use to install 
    | Security Testing Orchestration | 4 | 3| 7 | 0 |
    | Feature Flags | 3 | 3 | 6 | 0 |
    | Service Reliability Management | 6 | 8 | 18 | 0 |
+   | Chaos Engineering | 5 | 4 | 8 | 20 |
+
 
 ### Ingress
 * Istio supported version: 1-15-3
@@ -49,4 +51,4 @@ The following permissions are required:
 * [Service Reliability Management](https://developer.harness.io/docs/service-reliability-management/)
 * [Feature Flags](https://developer.harness.io/docs/feature-flags/)
 * [Cloud Cost Management (Beta)](https://developer.harness.io/docs/cloud-cost-management/)
-* [Chaos Engineering (Beta)](https://developer.harness.io/docs/chaos-engineering/)
+* [Chaos Engineering](https://developer.harness.io/docs/chaos-engineering/)
