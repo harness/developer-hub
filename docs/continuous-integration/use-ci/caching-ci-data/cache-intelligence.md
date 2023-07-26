@@ -25,15 +25,6 @@ Cache Intelligence fully supports **Bazel**, **Maven**, **Gradle**, **Yarn**, **
 
 For other build tools or non-default cache locations, you can leverage Harness Cloud's cache storage by [enabling Cache Intelligence](#enable-cache-intelligence) and providing [custom cache paths](#customize-cache-paths).
 
-:::info Known Issue
-
-A known issue is causing Cache Intelligence to be incompatible with Maven 3.9. A fix is coming soon. Until this is fixed, you can use one of these workarounds:
-
-* Use Maven 3.8.
-* Run `echo "-Dmaven.repo.local=.m2/repository" > .mvn/maven.config` in the pre-command or command before building.
-
-:::
-
 ## Cache storage
 
 Harness Cloud allows up to 2GB of cache storage per account. All pipelines in the account use the same cache storage, and each build tool has a unique cache key that is used to restore the appropriate cache data at runtime.
