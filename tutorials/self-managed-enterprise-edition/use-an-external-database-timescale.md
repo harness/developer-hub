@@ -1,7 +1,7 @@
 ---
 title: Use an external TimescaleDB server with your installation
 description: Learn how to use an external TimescaleDB server with Self-Managed Enterprise Edition installations.
-sidebar_label: Use an external TimescaleDB server
+sidebar_label: Configure an external TimescaleDB server
 # sidebar_position: 37
 ---
 
