@@ -23,7 +23,6 @@ const OpenDetailTab = async () => {
           .replace(/\u200B/g, "")
           .trim();
         if (changedHeading == changedTarget) {
-          console.log(headingsInsideDiv[i].id);
           divElement.style.display = "block";
           divElement.style.overflow = "visible";
           divElement.style.height = "auto";
@@ -39,7 +38,6 @@ const OpenDetailTab = async () => {
 if (ExecutionEnvironment.canUseDOM) {
   window.addEventListener("popstate", OpenDetailTab);
   window.onload = () => {
-    console.log("here");
     OpenDetailTab();
   };
 }
