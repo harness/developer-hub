@@ -2985,5 +2985,18 @@ module.exports = {
       from: "/docs/security-testing-orchestration/sto-techref-category/custom-ingest-scan-reference",
       to:   "/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference",
     },
+    // Created by bfisher for DOC-3488 on July 26, 2023
+    {
+      from: "/docs/platform/resource-development/apis/rate-limits/",
+      to:   "/docs/platform/rate-limits",
+    },
+    {
+      from: "/docs/platform/Security/rate-limits",
+      to:   "/docs/platform/rate-limits",
+    },
+    {
+      from: "/docs/category/Resource-development",
+      to:   "/docs/category/APIs/Terraform",
+    },
   ],
 };
