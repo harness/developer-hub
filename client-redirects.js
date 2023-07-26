@@ -2994,9 +2994,5 @@ module.exports = {
       from: "/docs/platform/Security/rate-limits",
       to:   "/docs/platform/rate-limits",
     },
-    {
-      from: "/docs/category/Resource-development",
-      to:   "/docs/category/APIs/Terraform",
-    },
   ],
 };
