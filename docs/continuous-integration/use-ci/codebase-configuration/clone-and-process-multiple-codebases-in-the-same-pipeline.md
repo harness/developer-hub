@@ -1,7 +1,6 @@
 ---
 title: Clone multiple code repos in one pipeline
 description: Use Git Clone steps to clone additional code repos into a pipeline's workspace.
-
 sidebar_position: 20
 helpdocs_topic_id: k8tz6mtiut
 helpdocs_category_id: 7ljl8n7mzn
@@ -15,6 +14,12 @@ In addition to the pipeline's default [codebase](./create-and-configure-a-codeba
 * Pull code from separate code and build repos. For example, if your code files are in a repo managed by the Engineering team and your Dockerfiles are in a different repo managed by the Security team, you can clone both repos into the pipeline's workspace.
 
 This topic assumes you are familiar with [CI concepts](../../ci-quickstarts/ci-concepts.md) and the general [pipeline creation process](../prep-ci-pipeline-components.md).
+
+:::info Large file storage
+
+If you need to clone LFS-enabled repositories or run `git lfs` commands (such as `git lfs clone`), go to [Git Large File Storage](./gitlfs.md).
+
+:::
 
 ## Configure the default codebase
 
