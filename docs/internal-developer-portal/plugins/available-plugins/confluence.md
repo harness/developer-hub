@@ -19,7 +19,8 @@ Mention list of spaces as `spaces: [ENG, IT, OPS]` that needs to be searched in 
 
 :::note
 
-If there is no space defined `spaces: []`, then this plugin will not consider any space to start indexing. 
+If there is no space defined `spaces: []`, then this plugin will not consider any space to start indexing.
+Currently, indexing happens every 12 hours for the given spaces.
 
 :::
 
