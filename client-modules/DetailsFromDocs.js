@@ -45,3 +45,4 @@ document.addEventListener("readystatechange", (event) => {
     OpenDetailTab();
   }
 });
+
