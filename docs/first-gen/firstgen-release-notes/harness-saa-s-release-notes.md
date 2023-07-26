@@ -16,6 +16,20 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### July 31, 2023, version 80018
+
+#### What's new
+
+This release does not include new features. 
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Fixed an issue where Nexus 2 artifact details would appear as `null` (for example, `null:870`) in the Harness UI. (CDS-74053)
+
 ### July 18, 2023, version 79915
 
 #### What's new
@@ -30,9 +44,7 @@ This release does not include early access features.
 
 #### Fixed issues
 
-- Pagination did not work correctly in the list-secrets-page API response because of an incorrect offset. (PL-38776)
-  
-  This issue is now fixed and the correct response is returned.
+- Fixed an issue where Nexus 2 artifact details would appear as `null` (for example, `null:870`) in the Harness UI. (CDS-74053)
 
 ### July 06, 2023, version 79807
 
