@@ -98,7 +98,7 @@ The OCI Helm connector now fetches the chart version correctly.
 
 - Fixed an issue where Jira and ServiceNow approvals didn't fail fast if a connector provided was an incorrect type or not present. The pipeline would repeatedly request details of the Jira/ServiceNow ticket and keep failing with the same error (connector not found or incorrect connector). (CDS-69683)
   
-  With this fix, the pipeline fails at the very beginning of the step execution if the connector type is incorrect or not present. This avoids the repeated polling and the delayed failure. (CDS-69683)
+  With this fix, the pipeline fails at the very beginning of the step execution if the connector type is incorrect or not present. This avoids the repeated polling and the delayed failure. 
 
 - Error messages from health source providers are now included in API responses for improved user experience and debugging efficiency. (OIP-657)
 
