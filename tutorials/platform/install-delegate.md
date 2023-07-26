@@ -102,7 +102,7 @@ To install the delegate, do the following:
 2. Select **Delegates** under **Project Setup**.
 3. Select **Install a Delegate** to open the **New Delegate** dialog.
 
-   ![](./static/install-a-k8s-delegate-helm.png)
+   ![](./static/install-delegate/install-a-k8s-delegate-helm.png)
 
 4. Select **Helm Chart** under **Install your Delegate**.
 
