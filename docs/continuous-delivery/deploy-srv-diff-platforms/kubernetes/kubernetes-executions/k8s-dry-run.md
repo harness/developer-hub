@@ -121,7 +121,7 @@ For example, if the stage Id is `Deploy` and the Dry Run step Id is `Dry_Run` th
 <+pipeline.stages.Deploy.spec.execution.steps.Dry_Run.k8s.ManifestDryRun>
 ```
 
-You can enter the expression in subsequent steps such as the [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) or [Approval](/docs/category/approvals/) steps.
+You can enter the expression in subsequent steps such as the [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) or [Approval](/docs/category/approvals/) steps.
 
 
 ## Dry Run steps and Skip Dry Run settings

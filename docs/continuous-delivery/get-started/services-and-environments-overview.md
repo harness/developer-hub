@@ -548,6 +548,9 @@ Service overrides are different from **Environment Configuration** in the follow
 * Environment **Configuration**: applies to every service that is used with the environment.
 * Environment **Service Overrides**: applies to specific services you select. Whenever that service is used with that environment, the **Service Override** is applied.
 
+:::note
+Runtime inputs are not supported if you are trying to override services in multi-service and multi-environment set ups.
+:::
 
 #### Override priority
 
@@ -560,6 +563,17 @@ The priority from top to bottom is:
 3. Service settings
 
 ![](./static/services-and-environments-overview-16.png)
+
+#### Override priority example
+
+Suppose you have a pipeline that runs as follows:
+
+* Deploys a service named `myService`, which has a variable `cpu` set to 1. 
+* Deploys `myService` to `myEnvironmentAlpha`, and then overrides the `myService` variable `cpu` value to 2. 
+
+In this case, the environment variable takes precedence, and overrides the service variable. When the pipeline runs, it uses the `cpu` value of 2. 
+
+Now, suppose you have a another pipeline that deploys `myService` to `myEnvironmentKappa`, which has a service override that sets `cpu` to 4. In this case, the environment service override takes precedence over the environment configuration and the service setting. When the pipeline runs, it uses  the `cpu` value of 4. 
 
 ### Infrastructure definitions
 

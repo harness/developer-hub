@@ -8,14 +8,17 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can define a CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness delegate and local Drone Runner. When the pipeline runs, the Drone Runners runs the build actions in the environment where it is installed. The delegate handles communication between Harness and the Drone Runner.
+You can define a CI build infrastructure on a Linux, macOS, or Windows host by installing a Harness Docker Delegate and local Drone Runner. When the pipeline runs, the Drone Runner runs the build actions in the environment where it is installed. The delegate handles communication between Harness and the Drone Runner.
 
 Local runner build infrastructure is recommended for small, limited builds, such as a one-off build on your local machine. Consider [other build infrastructure options](/docs/category/set-up-build-infrastructure) for builds-at-scale.
+
+## Docker delegate requirements
 
 The Harness Docker Delegate is limited by the total amount of memory and CPU on the local host. Builds can fail if the host runs out of CPU or memory when running multiple builds. The Harness Docker Delegate has the following system requirements:
 
 * Default 0.5 CPU.
 * Default 1.5GB. Ensure that you provide the minimum memory for the delegate and enough memory for the host/node system.
+* The machine where the delegate runs must have Docker installed.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -109,7 +112,7 @@ Make sure to create the delegate at the appropriate scope, such as the project l
 
 ## Install the Drone Runner
 
-The Drone Runner service performs the build work. The delegate needs the runner to run CI builds.
+The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
 
 1. Download a [Drone Runner executable](https://github.com/harness/drone-docker-runner/releases) corresponding to your build farm's OS and architecture.
 2. To use self-signed certificates, export `CI_MOUNT_VOLUMES` along with a comma-separated list of source paths and destination paths formatted as `path/to/source:path/to/destination`, for example:
@@ -166,8 +169,10 @@ sudo chmod +x drone-docker-runner-darwin-arm64
 
 To configure a local runner build infrastructure for Windows, you need two machines:
 
-* A Windows machine where the Drone Runner will run.
-* A Linux machine where the delegate will run.
+* A Windows machine where the Drone Runner will run. This machine must have Docker for Windows. The Drone Runner runs as a container.
+* A Linux machine where the Harness Delegate will run. This machine must have Docker. The delegate runs as a container.
+
+There is a one-to-one relationship between Drone Runners and Harness Delegates. If you need to run three local hosts, each must have a runner and a delegate.
 
 ## Install the delegate
 
@@ -201,7 +206,7 @@ Make sure to create the delegate at the appropriate scope, such as the project l
 
 ## Install the Drone Runner
 
-The Drone Runner service performs the build work. The delegate needs the runner to run CI builds.
+The [Drone Runner](https://docs.drone.io/runner/overview/) service performs the build work. The delegate needs the runner to run CI builds.
 
 :::caution
 
@@ -294,7 +299,7 @@ In the pipeline's build stage (`type: CI`), insert `platform` and `runtime` spec
 
 :::tip
 
-Although you must install a delegate to use the local runner build infrastructure, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#option-pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#option-stage-delegate-selector).
+Although you must install a delegate to use the local runner build infrastructure, you can choose to use a different delegate for executions and cleanups in individual pipelines or stages. To do this, use [pipeline-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#pipeline-delegate-selector) or [stage-level delegate selectors](/docs/platform/Delegates/manage-delegates/select-delegates-with-selectors#stage-delegate-selector).
 
 Delegate selections take precedence in the following order:
 

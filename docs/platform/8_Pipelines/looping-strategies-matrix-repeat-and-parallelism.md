@@ -14,11 +14,19 @@ Looping strategies enable you to run a Stage or Step multiple times with differe
 * You want to build artifacts for multiple JDK versions in the same Build Stage.
 * You have a Build Pipeline with 20 unit tests. To speed up execution, you want to run the tests in parallel across 4 jobs that run 5 tests each.
 
-### Looping strategy types
+:::info note
+
+The identifier of the stage or step that has a looping strategy applied is updated each time the stage or step runs, because two stages cannot have the same identifier. To use it in an expression, you must use the updated identifier for that stage.
+
+For example, if a stage named `build` in YAML has a looping strategy applied, the expression `<+pipeline.stages.build.variables>` does not work. Use the updated identifier in your expression, for example, `<+pipeline.stages.build_0.variables>`.
+
+:::
+
+## Looping strategy types
 
 Harness supports the following strategies.
 
-#### Matrix
+### Matrix
 
 Matrix strategies are highly flexible and applicable for both CD and CI Pipelines.
 
@@ -30,7 +38,7 @@ When a Pipeline runs, it creates multiple copies of the Stage or Step and runs t
 matrix:   
   service: [svc1, svc2, svc3]  
   env: [env1, env2]  
-  exclude: # don’t run [svc1, env1] or [svc3, env3]  
+  exclude: # don't run [svc1, env1] or [svc3, env3]  
    - service: svc1   
      env: env1   
    - service: svc3   
@@ -54,7 +62,7 @@ To use the matrix labels naming strategy, do the following:
  This option is available at the project, organization, and account level.
 :::
 
-#### Parallelism
+### Parallelism
 
 Parallelism strategies are useful for CI Build Stages that include a lot of tests. Suppose your Stage includes over 100 tests. You can specify the following to split your tests into 10 groups and test 5 groups at a time.
 
@@ -68,7 +76,7 @@ parallelism: 10
 # testgroup3 -> testgroup8  
 # testgroup4 -> testgroup9
 ```
-#### Repeat
+### Repeat
 
 Repeat strategies are alternative methods for defining Matrix or Parallelism or one-dimensional Matrix strategies.
 
@@ -98,7 +106,7 @@ If you opt to use only a `times` repeat, without a list, you can still access th
 <+strategy.iteration> -> current count starting with 0
 <+strategy.iterations> -> total iterations
 ```
-##### Running steps on multiple target hosts
+#### Running steps on multiple target hosts
 
 To run steps on multiple target hosts, such as in a CD stage that performs a Deployment Template or SSH/WinRM deployment, you must use the `<+stage.output.hosts>` expression to reference all of the hosts/pods/instances:
 
@@ -106,9 +114,9 @@ To run steps on multiple target hosts, such as in a CD stage that performs a Dep
 repeat:  
   items: <+stage.output.hosts>
 ```
-For more information, go to [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances/).
+For more information, go to [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/run-a-script-on-multiple-target-instances).
 
-### Looping strategy as a runtime input
+## Looping strategy as a runtime input
 
 Looping strategies can be defined as runtime inputs in pipelines and templates at stage, step, and step group levels.
 
@@ -151,7 +159,7 @@ The current status of the looping strategy for the node with a specific stage/st
 For example, `echo <+strategy.node.get("ShellScript_1").currentStatus>`.
 
 
-### See also
+## See also
 
 * [Best Practices for Looping Strategies](best-practices-for-looping-strategies.md)
 * [Run a Stage or Step Multiple Times using a Matrix](run-a-stage-or-step-multiple-times-using-a-matrix.md)

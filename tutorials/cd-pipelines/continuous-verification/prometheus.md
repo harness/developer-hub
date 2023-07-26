@@ -18,7 +18,7 @@ When validating a deployment, looking at external systems such as APM, logging, 
 
 In this tutorial, we will [deploy an application that writes to a Prometheus](https://github.com/harness-apps/cv-example-app) endpoint and is validated by Harness Continuous Verification. 
 
-![Overview](../static/cv-prom/overview.png)
+![Overview](../static/cv-prom/cv-overview.png)
 
 ## Prerequisites 
 
@@ -133,4 +133,4 @@ Clicking View Details will allow you to see what values were used for the compar
 Since Harness Continuous Verification uses AI/ML to help determine regressions, you can also wire in [static values](https://developer.harness.io/docs/continuous-delivery/verify/cv-concepts/machine-learning/#plain-threshold-based-verification) that are known failures such as long response times or deviations from a value. This example is just the start of what is possible with Continuous Verification.
 
 ## Next Steps with Verifying Your Deployments with Harness
-There is a lot of possibility with validating your deployments with Harness. You can enact different [automatic or manual failure strategies](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/#failure-strategy-settings) in your pipeline. More complex deployments such as [Multi Service Deployments](https://developer.harness.io/kb/continuous-delivery/cv-multi-service) can benefit from Harness Continuous Verification. With the [Sample Application](https://github.com/harness-apps/cv-example-app#modifying-application), feel free to modify/fork the application to come up with more different scenarios. 
+There is a lot of possibility with validating your deployments with Harness. You can enact different [automatic or manual failure strategies](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/#failure-strategy-settings) in your pipeline. More complex deployments such as [Multi Service Deployments](https://developer.harness.io/kb/continuous-delivery/articles/cv-multi-service) can benefit from Harness Continuous Verification. With the [Sample Application](https://github.com/harness-apps/cv-example-app#modifying-application), feel free to modify/fork the application to come up with more different scenarios. 

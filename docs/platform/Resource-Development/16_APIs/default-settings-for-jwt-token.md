@@ -1,7 +1,7 @@
 ---
 title: Use the setting API to enable SCIM API authentication through JWT
 description: Enable SCIM API authentication through JSON Web Tokens.
-sidebar_position: 3
+sidebar_position: 2
 ---
 
 You can use JWT to access Harness SCIM APIs. To do this, you must first configure the settings corresponding to JWT using the [Setting API](https://apidocs.harness.io/tag/Setting#operation/updateSettingValue)

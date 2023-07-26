@@ -1,7 +1,6 @@
 ---
 title: Save and Restore Cache from GCS
 description: Caching improves build times and enables you to share data across stages.
-
 sidebar_position: 40
 helpdocs_topic_id: v0agy0hlyj
 helpdocs_category_id: 01tyeraya4

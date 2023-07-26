@@ -1,0 +1,11 @@
+{
+  "label": "Cloud AutoStopping",
+  "collapsible": "true",
+  "collapsed": "false",
+  "position": 10,
+  "link": {
+    "type": "generated-index",
+    "title": "Cloud AutoStopping"
+  },
+  "customProps": {}
+}

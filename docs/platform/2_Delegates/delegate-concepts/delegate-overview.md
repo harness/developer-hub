@@ -117,6 +117,10 @@ If no delegates are selected for a CD step in its **Delegate Selector** setting,
 
 Harness will try this delegate first for the step task because this delegate has been successful in the target environment.
 
+import Selector from '/docs/platform/2_Delegates/shared/selector-infrastructure.md'
+
+<Selector />
+
 Most CI steps use connectors to pull the image of the container where the step will run. The delegates used for the step's connector are not necessarily used for running the step. In general, the delegate(s) used for the connector in the **Infrastructure** build farm is used to run the step.
 
 ### Delegate high availability (HA)
@@ -211,7 +215,17 @@ Access to a delegate can also be restricted by downstream resource types:
 - **Secrets:** Access
 - **Connectors:** Access
 
-This means that if a role does not have these permissions, the user with that role cannot use the related delegates in these pipelines, secrets, or connectors. 
+This means that if a role does not have these permissions, the user with that role cannot use the related delegates in these pipelines, secrets, or connectors.
+
+### Delegate task capacity
+
+Harness enables you to configure a maximum number of tasks for each delegate. This allows Harness Manager to use the task capacity to determine whether to assign a task to the delegate or queue it. You can configure the maximum number of tasks using the environment variable, `DELEGATE_TASK_CAPACITY`. 
+
+For example, if you set `DELEGATE_TASK_CAPACITY` to a value of 2 and execute 6 tasks in parallel, Harness Manager only executes 2 tasks at a time. If you don't configure `DELEGATE_TASK_CAPACITY`, Harness Manager executes all 6 tasks in parallel. 
+
+:::info note
+   This functionality is currently behind the feature flag `DELEGATE_TASK_CAPACITY_CHECK`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. When the feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
+:::
 
 ### Third-party tools installed with the delegate
 

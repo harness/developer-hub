@@ -31,7 +31,7 @@ The content between the `<+...>` delimiters is passed on to the [Java Expressio
 ```
 <+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") || <+trigger.payload.repository.owner.name> == "wings-software"
 ```
-Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) and other steps.
+Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) and other steps.
 
 ### Java string methods
 
@@ -601,7 +601,7 @@ The list of stages selected for execution.
 
 The pipeline level delegate selectors selected via runtime input.  
 
-## Deployment and step status
+## Deployment, pipeline, stage, and step status
 
 Deployment status values are a Java enum. The list of values can be seen in the deployments **Status** filter:
 
@@ -609,22 +609,31 @@ Deployment status values are a Java enum. The list of values can be seen in the 
 
 You can use any status value in a JEXL condition. For example, `<+pipeline.stages.stage1.status> == "FAILED"`.
 
-### Step status
+#### Stage status
 
-The expression `<+pipeline.stages.STAGE_NAME.spec.execution.steps.STEP_ID.status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
+The expression `<+pipeline.stages.STAGE_ID.status>` resolves to the status of a stage.
+
+You must use the expression after the stage in execution.
+
+#### Step status
+
+The expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.status>` resolves to the status of a step. For example, `<+pipeline.stages.MyStageName.spec.execution.steps.mystep.status>`.
 
 You must use the expression after the step in execution.
 
 ## InputSet
 
-Input Set values are a Json value. The list of values can be searched via 
+Displays the Input Set values for the execution as a JSON value. The list of values can be searched via `<+inputSet>`.
+
+Here's an example where the **Timeout** settings for the two steps preceding the step using `<+inputSet>` are using values from an Input Set:
 
 ```
-<+inputSet>
-
+{pipeline:identifier:Custom} {pipeline:stages:[{stage:identifier:Custom}]} {pipeline:stages:[{stage:type:Custom}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:identifier:ShellScript_1}}}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:type:ShellScript}}}]} {pipeline:stages:[{stage:spec:{execution:steps:[{step:timeout:10s}}}]} {pipeline:stages:[{stage:spec:{execution:{step:identifier:json_format}]}}]} {pipeline:stages:[{stage:spec:{execution:{step:type:ShellScript}]}}]} {pipeline:stages:[{stage:spec:{execution:{step:timeout:10m}]}}]}
 ```
 
 ## Stage
+
+The following variables provide information on the pipeline stage.
 
 ### Stage-level variables
 
@@ -1256,14 +1265,13 @@ For details on these deployment types, go to [Secure Shell (SSH) deployments](/d
 
 To use these instance expressions in a step, you must use the repeat [Looping Strategy](../8_Pipelines/looping-strategies-matrix-repeat-and-parallelism.md) and identify all the hosts for the stage as the target.
 
-
 ```
 repeat:  
   items: <+stage.output.hosts>
 ```
 ![](./static/harness-variables-48.png)
 
-For examples, see [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances/).
+For examples, see [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/run-a-script-on-multiple-target-instances).
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
@@ -1412,6 +1420,36 @@ This expression retrieves the `identifierPostFix` of the stage when the current 
 
 This expression returns the `identifierPostFix` of the step group when the current node is under the step group, or when the current node is the step group itself, and that step group is a child of a looping strategy.
 
+### <+strategy.node.STRATEGY_NODE_IDENTIFIER.identifierPostFix>
+
+This expression retrieves the `identifierPostFix` for the node that is the child of a looping strategy with the identifier `STRATEGY_NODE_IDENTIFIER`.
+For example, let's consider two nested step groups, sg1 and sg2 (child of sg1). Both sg1 and sg2 have a looping strategy configured. The expression, `<+stepGroup.identifierPostFix>` always retrieves the `identifierPostFix` of sg2. 
+
+Use the following expressions to obtain the `identifierPostFix` for a specific step group:
+
+* `<+strategy.node.sg1.identifierPostFix>`: Retrieves the `identifierPostFix` for the node with the identifier sg1 (parent step group).
+* `<+strategy.node.sg2.identifierPostFix>`: Retrieves the `identifierPostFix` for the node with the identifier sg2 (child step group).
+
+![](./static/nested-looping-strategy.png)
+
+Similarly, you can use other strategy expressions for any specific strategy level if a looping strategy is configured for both the parent and child nodes.
+
+### <+strategy.node.STRATEGY_NODE_IDENTIFIER.*>
+
+Using this format, you can retrieve the values of any strategy expressions associated with looping strategies at various levels. This is useful when looping strategies are configured within nested levels. 
+
+Here are some examples:
+* `<+strategy.node.sg1.iteration>`: Retrieves the current iteration of the node with the identifier sg1 (parent step group).
+* `<+strategy.node.sg2.iteration>`: Retrieves the current iteration of the node with the identifier sg2 (child step group).
+* `<+strategy.node.some_node_with_looping_strategy.iteration>`: Retrieves the current the iteration of the node with identifier `some_node_with_looping_strategy` (`some_node_with_looping_strategy` can be any type of node stage, step, or step group).
+* `<+strategy.node.sg1.iterations>`: Retrieves the total iterations of the node with the identifier sg1.
+* `<+strategy.node.sg2.iterations>`: Retrieves the total iterations of the node with the identifier sg2.
+* `<+strategy.node.some_node_with_looping_strategy.iterations>`: Retrieves the total iterations of the node with the identifier `some_node_with_looping_strategy`.
+* `<+strategy.node.sg1.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg1 if a matrix looping strategy is configured for sg1.
+* `<+strategy.node.sg2.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier sg2 if a matrix looping strategy is configured for sg2.
+* `<+strategy.node.some_node_with_looping_strategy.matrix.key1>`: Retrieves the value for the matrix axis key1 for the node with the identifier `some_node_with_looping_strategy` if a matrix looping strategy is configured for `some_node_with_looping_strategy`.
+
+
 ## Triggers
 
 ### <+trigger.artifact.build>
@@ -1461,7 +1499,7 @@ Consequently, you can only use `${HARNESS_KUBE_CONFIG_PATH}` when you are using 
 
 If you are running the script using an in-cluster delegate with the **Use the credentials of a specific Harness Delegate** credentials option, then there are no credentials to store in a kubeconfig file since the Delegate is already an in-cluster process.
 
-You can use this variable in a [Shell script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step to set the environment variable at the beginning of your kubectl script:
+You can use this variable in a [Shell script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step to set the environment variable at the beginning of your kubectl script:
 
 `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`
 
@@ -1582,7 +1620,7 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | workflow.startTs                                                      | pipeline.startTs                                                                                                                                                                                                                                                                     |
 | workflow.variables.VAR_NAME                                           | pipeline.variables.VAR_NAME or stage.variables.VAR_NAME                                                                                                                                                                                                                              |
 | timestampId                                                           |                                                                                                                                                                                                                                                                                      |
-| deploymentUrl                                                         | pipeline.execution.url​                                                                                                                                                                                                                                                              |
+| deploymentUrl                                                         | pipeline.executionUrl​                                                                                                                                                                                                                                                              |
 | context.published_name.var_name                                       |                                                                                                                                                                                                                                                                                      |
 | deploymentTriggeredBy                                                 | pipeline.triggeredBy.name​pipeline.triggeredBy.email​                                                                                                                                                                                                                            |
 | currentStep.name                                                      | step.name                                                                                                                                                                                                                                                                            |
@@ -1590,7 +1628,7 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | currentStep.type                                                      | N/A                                                                                                                                                                                                                                                                                  |
 | **Pipeline Variables**                                                    | **Pipeline Variables**                                                                                                                                                                                                                                                                   |
 | pipeline.name                                                         | pipeline.name                                                                                                                                                                                                                                                                        |
-| deploymentUrl                                                         | pipeline.execution.url​                                                                                                                                                                                                                                                              |
+| deploymentUrl                                                         | pipeline.executionUrl​                                                                                                                                                                                                                                                              |
 | deploymentTriggeredBy                                                 | pipeline.triggeredBy.name​pipeline.triggeredBy.email​                                                                                                                                                                                                                            |
 | **Rollback Artifact Variables**                                           | **Rollback Artifact Variables**                                                                                                                                                                                                                                                          |
 | rollbackArtifact.url                                                  | NA                                                                                                                                                                                                                                                                                   |

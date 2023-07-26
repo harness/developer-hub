@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-06-28T10:00:25
+date: 2023-07-21T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -11,42 +11,35 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Review the notes below for details about recent changes to Harness Feature Flags (FF), NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition).
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/feature-flags/rss.xml" />
+
+Review the notes below for details about recent changes to Harness Feature Flags (FF). For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
+
 
 :::info note
-Harness deploys updates progressively to different Harness SaaS clusters. You can identify the cluster hosting your account in your Account Overview page. The features and fixes in the release notes may not be available in your cluster immediately.
+Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - June 28, 2023
+## Latest - July 24, 2023
 
-```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
-```
 
-#### Feature Flags UI
+This release does not include new features.
 
-* On the **Feature Flags** page, when viewing the state of flags across all environments, the flag status column now scrolls all the rows as one. This makes it easier to view flag and environment states on one screen. (FFM-7643)
-
-```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
-```
 
 This release does not include early access features.
 
-```mdx-code-block
   </TabItem>
   <TabItem value="Fixed issues">
-```
 
 #### Feature Flags SDKs
 
-The **Python** server SDK has been updated to version **1.2.0** with the following updates. (FFM-8300)
+The **Ruby** server SDK has been updated to version **1.1.3** with the following update.
 
-  * To improve performance, the SDK now sends targets to the metrics service in batches of 1000. Up to 200 batches, or 200K unique targets, can be sent in the metrics window. This is not user-configurable, and is controlled through the SDK. For more information, go to [Feature Flag FAQs](/docs/frequently-asked-questions/harness-faqs/harness-feature-flag-faqs#how-does-the-metric-aggregatebatch-the-data-before-sending-it-to-harness).
-
-  * The SDK no longer allows `events_sync_interval` to be set below 60 seconds. If it is, the value defaults to 60 seconds.
+* Fixed an issue where if no attributes were given in the target, the SDK sometimes threw a TypeError exception when processing rules. (FFM-8725)
 
 
   </TabItem>
@@ -56,6 +49,285 @@ The **Python** server SDK has been updated to version **1.2.0** with the followi
 
 <details>
 <summary>2023 releases</summary>
+
+#### July 21, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Android** client SDK has been updated to version **1.1.3** with the following updates.
+
+* The SDK's cache has been rewritten to improve its stability. (FFM-8630)
+
+* The gradle wrapper has been included in the SDK repository so that users can build without having to install gradle. (FFM-7868)
+
+#### July 20, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+* The **.NET** server SDK has been updated to version **1.1.9** with the following update.
+
+  * Fixed an issue where using the relay proxy caused the SDK to crash. (FFM-8686)
+
+* The **Ruby** server SDK has been updated to version **1.1.2** with the following update.
+
+  * There was an issue where if a feature flag was configured to use a custom attribute with the `IN` operator clause, the `IN` operator didn't work correctly. This issue has been fixed. (FFM-8670)
+
+#### July 19, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags server
+
+The Feature Flags server has been updated to version **1.1077.0** with the following updates.
+
+* Previously, the developer count reported under the Feature Flags license usage page (**Account Settings > Subscriptions > Feature Flags > License Count**) included a 'System' user that should not be counted towards the customer's total count of developers. This fix excludes the 'System' user from the count. (FFM-8658)
+
+* Previously, targets sent by the server-side SDKs were not being updated in the database. This meant if a server-side target changed, evaluations worked as expected, but the updated attributes were not shown in the UI. This fix ensures targets are correctly updated. (FFM-8600)
+
+#### July 18, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Android** client SDK has been updated to version **1.1.2** with the following update.
+
+* There was an issue where the python SDK failed when connecting to the proxy. When connecting to Harness SaaS, the SDK extracts the `accountID` from the auth response and adds it to a header in all future requests. The `accountID` is not availabe to the SDK when connecting to the proxy, so it failed due to its absence. This fix ensures the SDK skips the header if `accountID` does not exist. (FFM-8686)
+
+#### July 17, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.2.2** with the following update.
+
+* Fixed an issue where the SDK was crashing when used with the relay proxy. (FFM-8544)
+
+#### July 14, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Node.js** server SDK has been updated to version **1.3.1** with the following updates.
+
+* Previously, calling waitForInitialization was resolving before the SDK was fully initialized, leading to default values being served until initialization completes. This issue has been fixed. (FFM-8615)
+
+#### July 13, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+#### Feature Flags server
+
+The Feature Flags server has been updated to version **1.1076.0** with the following updates.
+
+* Fixed an issue where the query parameter `identifier` in the API `https://app.harness.io/gateway/cf/admin/segments` did not work correctly. (FFM-8298)
+
+* The flag pipeline was not updating the build number. This issue has been fixed. (FFM-8140)
+
+* Target attributes were not updating on conflict. This issue has been fixed. (FFM-8549, ZD 46770)
+
+#### July 4, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+* The **Java** server SDK has been updated to version **1.2.4** with the following update.
+
+  * Fixed an issue where, if a flag had prerequisite flags configured, only the first prerequisite flag was being processed and the remaining were being ignored. (FFM-6412)
+
+The **Python** server SDK has been updated to version **1.2.1** with the following update.
+
+  * The SDK incorrectly logged low level debug information as errors. This issue has been fixed. (FFM-8544)
+
+#### July 3, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+##### Feature Flags SDKs
+
+* The **Erlang** server SDK has been updated to version **2.0.1** with the following update.
+
+  * Some SDK dependencies were not included in releases created by `mix`. This issue has been fixed. (FFM-8364)
+
+* The **Android** client SDK has been updated to version **1.1.1** with the following updates.
+
+  * Removed the following error, which is reported by Gradle's Lint task. (FFM-8551)
+
+    `checkClientTrusted is empty, which could cause insecure network traffic due to trusting arbitrary TLS/SSL certificates presented by peers`
+
+  * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-7037)
+
+* The **iOS** client SDK has been updated to version **1.1.0** with the following updates.
+
+  * The following methods now have an alternative overloaded version that allows you to get the result of the flag directly in the return value, without the need to provide a closure block. (FFM-8056)
+
+    * stringVariation()
+    * boolVariation()
+    * numberVariation()
+    * jsonVariation()
+
+  * Added TLS support for custom/private certs in the iOS SDK for config, stream and metric endpoints. (FFM-7015)
+
+    The CfConfigurationBuilder now has new methods for taking a list of X.509 certificate authority (CA) certs. This list must also include any intermediate CAs the Apple security APIs may need to resolve the full trust chain. 
+
+    For custom certificates, you must also ensure that the Subject Alternative Names (SANs) are set up correctly in the CA for domain name validation to pass.
+
+    The new function setTlsTrustedCAs() takes a list of X.509 CA certificates in PEM format, which will be used to verify the server's web cert sent during TLS handshake. Each PEM certificate must include the BEGIN/END CERTIFICATE headers.
+
+  * Made the following improvements. (FFM-8045)
+
+    *  Added standardized SDK error codes for events such as initialization, authentications, etc. For a full list, go to [Troubleshooting](/docs/feature-flags/ff-sdks/client-sdks/ios-sdk-reference#troubleshooting).
+    * Added general improvements to logging statements, reducing verbose logging to the console. 
+    * Added support for configurable custom loggers. For code examples, go to the [SDK repository](https://github.com/harness/ff-ios-client-sdk/blob/main/docs/further_reading.md#custom-loggers).
+
+  * Added retries for the authentication, and other endpoints. Network timeouts and certain HTTP error codes will be retried with a random delay up to 3 times. (FFM-8049)
+
+  * Added a new API, refreshEvaluations(), that can be called by a mobile app coming to the foreground to update any SSE events that were missed while the app was suspended. (FFM-8160)
+
+  * It is no longer necessary to call registerEventsListener() to start listening to events—calling initlialize() should be enough. (FFM-8106)
+
+  * When a target group is created Harness sends an event to connected SDKs to refetch all flags. The IOS SDK previously didn't do this refetch, and now does. (FFM-8137)
+
+  * Previously, when a target group event was received the SDK fetched all flags, but did not return an event so that apps could be updated accordingly. With this fix, in this case, the SDK returns the onPolling event after all flags are fetched. (FFM-8174)
+
+  * Added `Harness-SDK-Info`, `Harness-EnvironmentID` and `Harness-AccountID` HTTP headers to outbound HTTP connections. (FFM-8048)
+
+#### June 30, 2023
+
+##### What's new
+
+This release does not include new features.
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Erlang** server SDK has been updated to version **2.0.0** with the following updates.
+
+:::caution
+The following are breaking changes for Erlang applications only.  
+
+* Due to a new dependency on a murmur3 hashing library implemented in Elixir, the following is now required to use the SDK in Erlang applications:
+
+  * Elixir version 1.13.4 or above must be installed on your build system when compiling your application.
+
+  * Rebar3 `rebar_mix` must be installed in your Rebar3 plugins.
+
+  For full details, go to [Install the SDK for Erlang applications](/docs/feature-flags/ff-sdks/server-sdks/erlang-sdk-reference/#for-erlang-applications).
+
+This update does not affect Elixir applications, and no further action is required for Elixir applications upon upgrading to this version of the SDK.
+:::
+
+These changes are part of issue FFM-8364:
+
+* Enhancement: Implemented retry logic for authentication, polling, and metrics services for resilience and fault tolerance.
+* Enhancement: Changed supervisor restart intensity from 1 restart in 5 seconds to 4 restarts in 5 seconds.
+* The murmur3 nif library has been replaced by pure Elixir library.
+
+#### June 28, 2023
+
+##### What's new
+
+###### Feature Flags UI
+
+* On the **Feature Flags** page, when viewing the state of flags across all environments, the flag status column now scrolls all the rows as one. This makes it easier to view flag and environment states on one screen. (FFM-7643)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags SDKs
+
+The **Python** server SDK has been updated to version **1.2.0** with the following updates. (FFM-8300)
+
+  * To improve performance, the SDK now sends targets to the metrics service in batches of 1000. Up to 200 batches, or 200K unique targets, can be sent in the metrics window. This is not user-configurable, and is controlled through the SDK. For more information, go to [Feature Flag FAQs](/docs/frequently-asked-questions/harness-faqs/harness-feature-flag-faqs#how-does-the-metric-aggregatebatch-the-data-before-sending-it-to-harness).
+
+  * The SDK no longer allows `events_sync_interval` to be set below 60 seconds. If it is, the value defaults to 60 seconds.
 
 #### June 26, 2023
 

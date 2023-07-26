@@ -34,6 +34,67 @@ module.exports = {
     //  },
     //===================================================================================
     
+    // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-http-requests-in-cd-pipelines",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/run-a-script-on-multiple-target-instances",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/wait-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/wait-step",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/container-step",
+    },
+
+    // Created by schoudhury on July 16, 2023
+    {
+      from: "/tutorials/internal-developer-portal/create-your-first-service-onboarding-pipeline",
+      to: "/tutorials/internal-developer-portal/service-onboarding-pipeline",
+    },
+
+    // Create by aimurphy for branch DOC-3386 on July 11, 2023
+
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-build-image-updates",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
+    },
+
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/ci-build-image-updates",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
+    },
+
+    {
+      from: "/docs/continuous-integration/use-ci/build-stage-settings/ci-build-image-updates",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
+    },
+
+    
+    // Created by roshnisarangadharan from branch fix-broken-links-cd on July 12 2023
+
+    {
+      from: "/docs/platform/notifications",
+      to: "/docs/category/notifications",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events/",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/",
+    },
+    
     // Created by roshnisarangadharan from branch DOC-3334-fix-broken-links-in-cd-docs on June 28 2023
 
     {
@@ -62,6 +123,11 @@ module.exports = {
     },
 
     {
+      from: "/docs/continuous-delivery/cd-services/k8s-services/kubernetes-services",
+      to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services"
+    },
+    
+    {
       from: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services",
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services"
     },
@@ -84,6 +150,11 @@ module.exports = {
 
     // Created by roshnisarangadharan from branch DOC-3192-remove-single-topic-folders on June 15 2023
     
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups",
+    },
+
     {
       from: "/docs/continuous-delivery/cd-infrastructure/terragrunt/terragrunt-howtos",
       to: "/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos",
@@ -1238,7 +1309,7 @@ module.exports = {
     },
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/kubernetes-autostopping-for-istio",
-      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/kubernetes-autostopping-for-istio",
+      to: "/docs/cloud-cost-management/getting-started-ccm/quick-start-guides/kubernetes-autostopping-for-istio",
     },
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/review-autostopping-rules-reqs",
@@ -1838,14 +1909,11 @@ module.exports = {
 
     //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
     {
-      from: "/docs/continuous-integration/ci-technical-reference/ci-build-image-updates",
-      from: "/docs/continuous-integration/use-ci/build-stage-settings/ci-build-image-updates",
-      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-build-image-updates",
+      from: "/docs/continuous-integration/ci-technical-reference/harness-ci",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
     },
 
-    //  Created by aimurphy for branch ci-reorg-pt-2 on Apr 10, 2023
     {
-      from: "/docs/continuous-integration/ci-technical-reference/harness-ci",
       from: "/docs/continuous-integration/use-ci/build-stage-settings/harness-ci",
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/harness-ci",
     },
@@ -2037,11 +2105,6 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/http-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
-    },
-
-    {
       from: "/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-plan-step",
       to: "/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step",
     },
@@ -2162,36 +2225,6 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/container-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/run-a-script-on-multiple-target-instances",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/wait-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/wait-step",
-    },
-
-    {
       from: "/docs/continuous-delivery/cd-deployments-category/deployment-logs-and-limitations",
       to: "/docs/continuous-delivery/manage-deployments/deployment-logs-and-limitations",
     },
@@ -2285,10 +2318,6 @@ module.exports = {
     {
       from: "/docs/chaos-engineering/user-guides/validate-hypothesis-using-probes",
       to: "/docs/chaos-engineering/configure-chaos-experiments/probes/validate-hypothesis-using-probes",
-    },
-    {
-      from: "/docs/chaos-engineering/user-guides/add-a-new-user-to-a-project",
-      to: "/docs/chaos-engineering/configure-chaos-experiments/prerequisites/add-a-new-user-to-a-project",
     },
     {
       from: "/docs/chaos-engineering/user-guides/add-chaos-hub",
@@ -2942,10 +2971,37 @@ module.exports = {
       from: "/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem",
       to: "/docs/self-managed-enterprise-edition/monitor-harness-on-prem",
     },
+    // Created by bfisher for DOC-3432 on July 20, 2023
+    {
+      from: "/docs/platform/Get-started/platform-concepts/view-account-info-and-subscribe-to-alerts",
+      to: "/docs/platform/Get-started/view-account-info-and-subscribe-to-alerts",
+    },
+    {
+      from: "/docs/platform/Get-started/platform-concepts/platform-overview",
+      to: "/docs/platform/Get-started/platform-overview",
+    },
+    // Created by bfisher for DOC-3458 on July 25, 2023
+    {
+      from: "/docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database",
+      to: "/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database",
+    },
+    {
+      from: "/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm",
+      to: "/docs/self-managed-enterprise-edition/back-up-and-restore-helm",
+    },
     // PR-2012
     {
       from: "/docs/security-testing-orchestration/sto-techref-category/custom-ingest-scan-reference",
       to:   "/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference",
+    },
+    // Created by bfisher for DOC-3488 on July 26, 2023
+    {
+      from: "/docs/platform/resource-development/apis/rate-limits/",
+      to:   "/docs/platform/rate-limits",
+    },
+    {
+      from: "/docs/platform/Security/rate-limits",
+      to:   "/docs/platform/rate-limits",
     },
   ],
 };

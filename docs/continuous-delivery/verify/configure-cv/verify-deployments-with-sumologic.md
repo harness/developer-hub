@@ -22,6 +22,12 @@ Harness Continuous Verification (CV) integrates with Sumo Logic to:
 
 This topic describes how to set up a Sumo Logic health source when adding a CV step to your Continuous Deployment (CD).
 
+
+:::important
+If you are using an aggregation operator in your Sumologic metrics query, then you must include the service instance identifier dimension.
+
+:::
+
 ## Prerequisite
 
 Sumo Logic is added as a verification provider in Harness.

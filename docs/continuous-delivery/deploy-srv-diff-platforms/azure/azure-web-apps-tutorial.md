@@ -1,5 +1,5 @@
 ---
-title: Azure Web Apps deployments
+title: Deploy Azure Web Apps
 description: This topic walks you through deploying Azure Web Apps using Harness.
 sidebar_position: 5
 helpdocs_topic_id: muegjde97q
@@ -227,7 +227,15 @@ The Slot Deployment step is where you select the Web App and source deployment s
 
 Here's an example.
 
-![](static/azure-web-apps-tutorial-163.png)
+![](static/azure-web-apps-tutorial-163.png)  
+
+:::note
+
+Currently, the following functionality is behind the feature flag `CDS_AZURE_WEBAPP_NG_LISTING_APP_NAMES_AND_SLOTS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+When you select a Web App in **Web App Name**, Harness will automatically update the **Deployment Slot** setting with the slots for that Web App.
+
+:::
 
 ### Web App Rollback
 
@@ -277,7 +285,7 @@ The Slot Deployment step is considered successful once the slot is in a running 
 
 A health check after Slot Deployment can ensure a successful deployment.
 
-A health check can be performed using a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
+A health check can be performed using a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
 
 ### Traffic Shift steps
 
@@ -354,7 +362,7 @@ The Slot Deployment step is considered successful once the slot is in a running 
 
 A health check after Slot Deployment can ensure a successful deployment.
 
-A health check can be performed using a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
+A health check can be performed using a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step. You can also use Harness [Approval](/docs/category/approvals) steps to ensure the app is running before proceeding to the Traffic Shift step.
 
 ### Swap Slot step
 

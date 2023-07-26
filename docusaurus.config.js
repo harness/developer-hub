@@ -79,7 +79,7 @@ const config = {
         title: "Harness Developer Hub",
         logo: {
           alt: "Harness Developer Hub",
-          src: "img/logo_pride.svg",
+          src: "img/logo_dlp.svg",
         },
         items: [
           /*{
@@ -143,8 +143,18 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Manage Developer Portal",
+                to: "tutorials/internal-developer-portal",
+              },
+              {
+                // type: "doc",
                 label: "Administer Harness Platform",
                 to: "tutorials/platform",
+              },
+              {
+                // type: "doc",
+                label: "Administer Harness Self-Managed Enterprise Edition",
+                to: "tutorials/self-managed-enterprise-edition",
               },
             ],
           },
@@ -190,7 +200,7 @@ const config = {
                 label: "Continuous Error Tracking",
                 to: "docs/continuous-error-tracking",
               },
-                            {
+              {
                 label: "Internal Developer Portal",
                 to: "docs/internal-developer-portal",
               },
@@ -251,18 +261,18 @@ const config = {
           {
             position: "right",
             to: "kb",
-            label: "KB",
+            label: "Knowledge Base",
           },
           {
             position: "right",
             to: "community",
             label: "Community",
           },
-          {
-            position: "right",
-            to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
-            label: "Join Slack",
-          },
+          //{
+          //  position: "right",
+          //  to: "https://join.slack.com/t/harnesscommunity/shared_invite/zt-1h2cy1up2-Bf3MQQvKTf~YkVcsnkJ5pw",
+          //  label: "Join Slack",
+          //},
           {
             // type: "search",
             // position: "right",
@@ -518,6 +528,18 @@ const config = {
       },
     ],
     [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "community",
+        path: "community",
+        routeBasePath: "community",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-community.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
       path.resolve(__dirname, "./plugins/docs-rss-plugin"),
       {
         id: "release-notes",
@@ -534,6 +556,7 @@ const config = {
     path.join(__dirname, "/plugins/utmcookie-plugin"),
     path.join(__dirname, "/plugins/munity-plugin"),
   ],
+  clientModules: [require.resolve("./client-modules/DetailsFromDocs")],
 };
 
 module.exports = config;

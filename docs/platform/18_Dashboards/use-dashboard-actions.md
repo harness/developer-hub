@@ -16,17 +16,34 @@ Perform the following steps to use Dashboard actions:
 
 1. In Harness, click **Dashboards**.
 2. In **All Dashboards**, select **By Harness** and click **AWS Cost Dashboard**.
-3. In AWS Cost Dashboard, click **Dashboard actions** (3-dot menu to the right of the filter button).![](./static/use-dashboard-actions-33.png)The **Dashboard actions** provide the following options:  
-  
+3. In AWS Cost Dashboard, click **Dashboard actions** (3-dot menu to the right of the filter button).![](./static/use-dashboard-actions-33.png)
 
+### Dashboard Action options
 
-|  |  |
-| --- | --- |
-| **Option** | **Description** |
-| Download | Downloads the dashboard in PDF or CSV format. See [Download Dashboard Data](download-dashboard-data.md). |
-| Reset filters | Resets the filter to its default value. By default, AWS Cost Dashboard displays the last 30 days' data. |
-| Each tile's time zone | Updates the time zone of the dashboard. The time zone applied to your dashboard can affect the results shown, because of slight differences in the exact hours used for time-based data. If you are interested in the data as it applies to a different region, change the time zone of your dashboard to reflect that region.You can choose one of the following options:
-	* Choose **Each tile’s time zone** to run all tiles in the time zone in which they were saved.
-	* Choose **Viewer time zone** to run all tiles in the time zone selected in your account settings.
-	* Choose any of the time zones listed in the drop-down to run all tiles in that time zone.After you select your time zone, click **Update** in the dashboard time zone window; the dashboard will update for the new time zone.Once you navigate away from the dashboard, the dashboard will return to its default time zone setting. |
-
+<table>
+	<tr>
+		<th>Option</th>
+		<th>Description</th>
+	</tr>
+	<tr>
+		<td valign="top">Download</td>
+		<td>Downloads the dashboard in PDF or CSV format. See <a href="/docs/platform/Dashboards/download-dashboard-data">Download Dashboard Data</a>.</td>
+	</tr>
+	<tr>
+		<td valign="top">Reset filters</td>
+		<td>Resets the filter to its default value. By default, AWS Cost Dashboard displays the last 30 days' data.</td>
+	</tr>
+	<tr>
+		<td valign="top">Each tile's time zone</td>
+		<td>
+		<p>Updates the time zone of the dashboard. The time zone applied to your dashboard can affect the results shown, because of slight differences in the exact hours used for time-based data. If you are interested in the data as it applies to a different region, change the time zone of your dashboard to reflect that region.</p>
+		<p>You can choose one of the following options:</p>
+		<ul>
+			<li>Choose <b>Each tile’s time zone</b> to run all tiles in the time zone in which they were saved.</li>
+			<li>Choose <b>Viewer time zone</b> to run all tiles in the time zone selected in your account settings.</li>
+			<li>Choose any of the time zones listed in the drop-down to run all tiles in that time zone.</li>
+		</ul>
+		    After you select your time zone, click <b>Update</b> in the dashboard time zone window; the dashboard will update for the new time zone.Once you navigate away from the dashboard, the dashboard will return to its default time zone setting.
+		</td>
+	</tr>
+</table>
