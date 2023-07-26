@@ -25,6 +25,6 @@ export const SMPList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "5 min",
-    link: "/tutorials/self-managed-enterprise-edition/use-an-database-timescale",
+    link: "/tutorials/self-managed-enterprise-edition/use-an-external-database-timescale",
   },
 ];
