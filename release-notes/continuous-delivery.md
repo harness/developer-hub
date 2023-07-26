@@ -61,7 +61,9 @@ This release does not include early access features.
 
 - Fixed a UI issue to ensure that the pipeline execution UI shows correct icons for container steps. (CDS-73725, ZD-47103)	
 
-- Fixed a Helm Chart deployment issue where specifying the Chart Version in the manifest as a runtime input resulted in the error Failed to query chart versions. Response code [404]. The OCI Helm connector now fetches the chart version correctly. (CDS-73714, ZD-47063)
+- Fixed a Helm chart deployment issue where specifying the chart version in the manifest as a runtime input resulted in the error, `Failed to query chart versions. Response code [404]`. (CDS-73714, ZD-47063)
+
+The OCI Helm connector now fetches the chart version correctly. 
 
 - Harness does not currently support using expressions in failure strategies, so this support has been removed from the UI. Harness has a roadmap item to simplify YAML definitionss, which will support using expressions in failure strategies. (CDS-73614)	
 
