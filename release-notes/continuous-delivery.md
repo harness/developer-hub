@@ -450,6 +450,7 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 - Provisioners can't be set as runtime inputs or expressions in stage templates.(CDS-69913)
 
   The provisioner setting could not be set as a runtime input or expression in stage templates. This has been fixed and **Provisioners** can now be set as a runtime input or expression.
+- Fixed an issue where Harness asked users to enter SSH credentials in the **SSH Connection Attribute** field in the **Run Pipeline** page for a template created to capture WinRM credentials. (CDS-72071, ZD-45926)
 
 #### June 12, 2023, Hotfix version 79518
 
