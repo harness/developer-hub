@@ -14,7 +14,7 @@ export const FeaturedList: CardItem[] = [
         React Application.
       </>
     ),
-    newDoc: true,
+    newDoc: false,
     type: [docType.Documentation],
     time: "10min",
     link: "/tutorials/feature-flags/typescript-react",
@@ -60,9 +60,23 @@ export const FFList: CardItem[] = [
         This tutorial walks you through using an SDK method to ensure your application continues working during a mobile browser refresh.
       </>
     ),
-    newDoc: false,
+    newDoc: true,
     type: [docType.Documentation],
     time: "5min",
     link: "/tutorials/feature-flags/mobile-browser-refresh",
+  },
+  {
+    title: "Feature Flags best practices",
+    module: MODULES.ff,
+    icon: "img/icon_ff.svg",
+    description: (
+      <>
+        Learn about best practices when leveraging Feature Flags
+      </>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "5min",
+    link: "/tutorials/feature-flags/best-practices",
   },
 ];
