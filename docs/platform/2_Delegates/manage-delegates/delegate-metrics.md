@@ -300,7 +300,7 @@ spec:
 You can set the delegate to reject new tasks if x% of memory is being consumed. You can then spin up new delegates when resources are above the threshold.
 
 :::info note
-The `resource_consumption_above_threshold` metric is currently behind the feature flag `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+The `io_harness_custom_metric_resource_consumption_above_threshold` metric is only visible if you start your delegate with DYNAMIC_REQUEST_HANDLING to be true in your delegate yaml. 
 :::
 
 To configure the delegate resource threshold, make the following changes to the delegate YAML file:
