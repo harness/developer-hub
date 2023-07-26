@@ -4,10 +4,28 @@ description: Repository scans with Brakeman
 sidebar_position: 70
 ---
 
-You can scan your container images using [Brakeman](https://brakemanscanner.org/), a free tool for scanning Ruby on Rails applications. 
+You can run [Brakeman](https://brakemanscanner.org/) scans on your Ruby on Rails applications. 
 
 
-<!-- START step-palette-config ----------------------------------------------------------------------------- -->
+## Before you begin
+
+### Docker-in-Docker requirements
+
+
+```mdx-code-block
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+```
+
+<StoDinDRequirements />
+
+
+### Root access requirements 
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
 
 ## Brakeman step configuration
 
@@ -175,13 +193,15 @@ In the **Advanced** settings, you can use the following options:
 
 You can set up any supported scanner using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
-<!-- SECURITY STEP CONFIG DBOX --------------------------------------------------------------------------- -->
+#### Target and variant
 
 ```mdx-code-block
-import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
 ```
 
-<StoSecurityStepConfig />
+<StoLegacyTargetAndVariant />
+
+#### Brakeman scan settings
 
 * `product_name` = `brakeman`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository`
@@ -190,12 +210,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 * `tool_args` — You can use this field to run the brakeman scanner with specific command-line arguments. For example, you can generate warnings with only the highest confidence using `-w3`: `tool_args` = `-w3`
 
-
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
-
-<StoLegacyRepo />
+#### Ingestion file
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';

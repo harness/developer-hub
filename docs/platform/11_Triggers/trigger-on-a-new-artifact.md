@@ -35,6 +35,10 @@ An artifact source does not need to be defined in the service definition for the
 
 :::
 
+import Variables from '/docs/platform/11_Triggers/shared/variables-not-supported.md'
+
+<Variables />
+
 ### Important notes
 
 * If more than one artifact is collected during the polling interval (one minute), only one deployment will be started and will use the last artifact collected.
@@ -95,7 +99,7 @@ You can also set tag as a runtime input and then use `<+trigger.artifact.build>`
 
    ![](./static/trigger-on-a-new-artifact-24.png)
 
-   You reference an artifact in the Stage's Service Definition in your manifests using the expression `<+artifact.image>`. See [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/).
+   You reference an artifact in the stage's service definition in your manifests using the expression `<+artifact.image>`. Go to [Add Container Images as Artifacts for Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/) for more details.
 
 2. Select **Triggers**.
 3. Select **New Trigger**.

@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-![](../static/catalog-screenshot.png)
+![](../getting-started/static/catalog-screenshot.png)
 
 The software catalog is a centralized registry for all your software (services, websites, libraries, data pipelines, and so on), and it helps you track their ownership, metadata, and dependencies. The catalog is built from metadata YAML files, each of which is stored with its code and owned by a team. It is powered by the [Backstage Software Catalog](https://backstage.io/docs/features/software-catalog/).
 
@@ -44,6 +44,20 @@ For information about how to register a software component, go to [register a ne
 ## Software ecosystem modelling
 
 The catalog is home to several types of software components such as services, websites, libraries, APIs, and even resources such as databases. Every component is owned by a team and is part of a system. When configured properly, the catalog is a graph of your entire software ecosystem. For information about how to model your software ecosystem, go to [backstage.io](https://backstage.io/docs/features/software-catalog/system-model).
+
+## API access
+
+You can access catalog APIs to retrieve software components from the catalog, register new components, or build your automation on top of it.
+
+Start by generating a Harness API Key as described in [Add and manage API keys](/docs/platform/user-management/add-and-manage-api-keys/). Then, by using your Harness account ID and the API Key, you can make requests to the IDP catalog APIs as follows:
+
+```
+curl --location 'https://idp.harness.io/{ACCOUNT_IDENTIFIER}/idp/api/catalog/locations' \
+--header 'x-api-key: {X_API_KEY}' \
+--header 'Harness-Account: {ACCOUNT_IDENTIFIER}'
+```
+
+To learn more about the available catalog APIs supported by Backstage, go to [API](https://backstage.io/docs/features/software-catalog/software-catalog-api/).
 
 ## FAQs
 

@@ -74,7 +74,8 @@ Now that you have access to a Kubernetes cluster, you can install the delegate u
 
 ### Install the Helm chart
 
-As a prerequisite, you must have [Helm v3](https://helm.sh/docs/intro/install/) installed on the machine from which you connect to your Kubernetes cluster. 
+As a prerequisite, you must have [Helm v3](https://helm.sh/docs/intro/install/) installed on the machine from which you connect to your Kubernetes cluster.
+
 
 You can now install the delegate using the delegate Helm chart. First, add the `harness-delegate` Helm chart repo to your local Helm registry.
 
@@ -84,7 +85,7 @@ helm repo update
 helm search repo harness-delegate
 ```
 
-You can see that there are two Helm charts available. We will use the `harness-delegate/harness-delegate-ng` chart in this tutorial.
+We will use the `harness-delegate/harness-delegate-ng` chart in this tutorial.
 ```
 NAME                                	CHART VERSION	APP VERSION	DESCRIPTION                                
 harness-delegate/harness-delegate-ng	1.0.8        	1.16.0     	A Helm chart for deploying harness-delegate
@@ -302,7 +303,11 @@ Select **Continue**. After the health checks pass, your delegate is available fo
 ### Docker
 ![Delegate Available](static/install-delegate/docker_available.png)
 
-You can now route communication to external systems in Harness connectors and pipelines by selecting this delegate via a delegate selector. 
+You can now route communication to external systems in Harness connectors and pipelines by selecting this delegate via a delegate selector.
+
+import Selector from '/docs/platform/2_Delegates/shared/selector-infrastructure.md'
+
+<Selector />
 
 ## Troubleshooting
 

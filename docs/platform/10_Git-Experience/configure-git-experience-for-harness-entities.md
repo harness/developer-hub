@@ -214,6 +214,23 @@ Click **Update**.
 
 The changes you made in Git are now applied to Harness.​
 
+## Edit Git details for a pipeline
+
+The Harness manager allows you to edit the Git details after the pipeline is configured and saved. You can modify following Git settings:
+
+- Git connector
+- Repository
+- YAML path
+
+To modify these Git settings, do the following:
+
+1. In your Project, select **Pipelines**.
+2. Go to the pipeline where you want to edit the Git details, and select more options (⋮).
+  ![](./static/harness-git-experience-quickstart-74.png)
+3. Make changes to the settings, and then select **Save**.
+  ![](./static/harness-git-experience-quickstart-75.png)
+
+
 ## Execute pipeline
 
 In your Project, click **Pipelines**.
@@ -248,6 +265,7 @@ The configurations of the required resources and any referenced entities like in
 Following are the possible scenarios when your remote pipelines reference entities:
 - The referenced entities are stored in the same repository as the pipeline.
 - The referenced entities are stored in a different repository than the pipeline.
+
 
 ### The referenced entities are stored in the same repository as the pipeline
 
@@ -289,6 +307,41 @@ When you execute this pipeline, Harness fetches these nested entities from the d
 ![](./static/entities-in-diff-repo.png)
   
 Harness resolves all the dependencies and then proceeds with Pipeline execution.​
+
+### Manual branch selection
+
+It is also possible to select the branch for the referenced entities if you have explicitly selected a feature branch.
+
+For example, you can select a branch in your pipeline to reference templates from another branch.
+
+Here is a demo explaining steps to select a branch for a referenced template: 
+
+<docvideo src="https://www.loom.com/share/a1848256318c4b92aefa965402c9dca9?sid=0ed15761-4be2-4897-b9fd-73782df1a21f"/>
+
+
+To specify the remote branch for the referenced template:
+
+1. Select your remote pipeline, and then select **Add Stage**.
+
+2. Select **Use Template**.
+
+3. Select the branch, and then select **Use Template**.
+
+   ![](./static/select-branch.png)
+
+   The template has now been referenced from a different branch in the remote pipeline.
+
+   Harness displays the pipeline branch and the referenced template branch.
+
+   ![](./static/branch-details.png)
+
+4. Select **Save**.
+
+The parent YAML will include an example of a YAML screenshot if you explicitly select any branch for the child template.
+
+The parent YAML will not contain a branch for the child if you do not specify a branch explicitly. 
+
+To switch the referring child entity from a feature branch to a default branch, manually remove the field `gitBranch` from the parent YAML.
 
 ## Next steps
 

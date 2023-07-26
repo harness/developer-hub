@@ -1,11 +1,12 @@
 ---
 title: Use a JWT token for Harness SCIM API authentication
 description: Access SCIM APIs through JWT Token.
+sidebar_position: 4
 ---
 
 
 :::note
-Currently, this feature is behind the feature flags `NG_SETTINGS` and `PL_SUPPORT_JWT_TOKEN_SCIM_API`. Contact Harness Support to enable the feature.
+Currently, this feature is behind the feature flag, `PL_SUPPORT_JWT_TOKEN_SCIM_API`. Contact Harness Support to enable the feature.
 :::
 
 

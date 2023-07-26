@@ -1,4 +1,12 @@
-To scan a container image, you must have Docker-in-Docker running as a background service in the stage where you're running the scan.
+:::note 
+
+Docker-in-Docker is not required for ingestion workflows where the scan data has already been generated.
+
+:::
+
+You need to include a Docker-in-Docker background service in your stage if either of these conditions apply:
+* You configured your scanner using a generic Security step rather than a scanner-specific template such as Aqua Trivy, Bandit, Mend, Snyk, etc. 
+* You’re scanning a container image using an Orchestration or Extraction workflow. 
 
 <details><summary>Set up a Docker-in-Docker background step</summary>
 

@@ -143,8 +143,18 @@ const config = {
               },
               {
                 // type: "doc",
+                label: "Manage Developer Portal",
+                to: "tutorials/internal-developer-portal",
+              },
+              {
+                // type: "doc",
                 label: "Administer Harness Platform",
                 to: "tutorials/platform",
+              },
+              {
+                // type: "doc",
+                label: "Administer Harness Self-Managed Enterprise Edition",
+                to: "tutorials/self-managed-enterprise-edition",
               },
             ],
           },
@@ -190,7 +200,7 @@ const config = {
                 label: "Continuous Error Tracking",
                 to: "docs/continuous-error-tracking",
               },
-                            {
+              {
                 label: "Internal Developer Portal",
                 to: "docs/internal-developer-portal",
               },
@@ -518,6 +528,18 @@ const config = {
       },
     ],
     [
+      "@docusaurus/plugin-content-docs",
+      {
+        id: "community",
+        path: "community",
+        routeBasePath: "community",
+        exclude: ["**/shared/**", "**/static/**"],
+        sidebarPath: require.resolve("./sidebars-community.js"),
+        editUrl: "https://github.com/harness/developer-hub/tree/main",
+        // ... other options
+      },
+    ],
+    [
       path.resolve(__dirname, "./plugins/docs-rss-plugin"),
       {
         id: "release-notes",
@@ -534,6 +556,7 @@ const config = {
     path.join(__dirname, "/plugins/utmcookie-plugin"),
     path.join(__dirname, "/plugins/munity-plugin"),
   ],
+  clientModules: [require.resolve("./client-modules/DetailsFromDocs")],
 };
 
 module.exports = config;

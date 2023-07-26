@@ -1,7 +1,7 @@
 ---
 title: Kubernetes Autostopping quickstart guide
 description: This quickstart shows you how to create and test an AutoStopping rule for your Kubernetes cluster.
-# sidebar_position: 2
+sidebar_position: 10
 helpdocs_topic_id: 9l4gblg2we
 helpdocs_category_id: e04ek5vxtx
 helpdocs_is_private: false

@@ -15,4 +15,6 @@ To add a fault in parallel to another fault, select the `+` icon below the alrea
 
 ![Complex Faults Experiment](./static/create-complex-chaos-experiments/complex-faults-experiment.png)
 
+## Analyze chaos experiments
+
 <Analyze />

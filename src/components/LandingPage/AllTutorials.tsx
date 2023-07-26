@@ -12,6 +12,8 @@ import { STOList } from "./data/securityTestingOrchestrationData";
 import { CEList } from "./data/chaosEngineeringData";
 import { PlatformList } from "./data/platformData";
 import { CETList } from "./data/continuousErrorTrackingData";
+import { IDPList } from "./data/internalDeveloperPortalData";
+import { SMPList } from "./data/smpData";
 import styles from "./styles.module.scss";
 import cardStyles from "./TutorialCard.module.scss";
 
@@ -93,10 +95,24 @@ export default function AllTutorials() {
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
+          <img src={`${baseUrl}img/icon_idp.svg`} />
+          <h3>Manage Developer Portal</h3>
+        </div>
+        <TutorialCard FeatureList={IDPList} />
+      </div>
+      <div className={styles.subSection}>
+        <div className={styles.SectionName}>
           <img src={`${baseUrl}img/logo.svg`} />
           <h3>Administer Harness Platform</h3>
         </div>
         <TutorialCard FeatureList={PlatformList} />
+      </div>
+      <div className={styles.subSection}>
+        <div className={styles.SectionName}>
+          <img src={`${baseUrl}img/logo.svg`} />
+          <h3>Administer Harness Self-Managed Enterprise Edition</h3>
+        </div>
+        <TutorialCard FeatureList={SMPList} />
       </div>
     </div>
     // </Layout>
