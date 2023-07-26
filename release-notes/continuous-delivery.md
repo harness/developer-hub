@@ -357,7 +357,7 @@ import Earlyaccess from '/release-notes/shared/cd-79700-early-access.md'
   Clearing secrets from Vault was dependent on exporting the JsonPlan or human-readable options.
 
   This issue is fixed. Now, the encrypted plan stored on Vault is cleared regardless of the export options.
-- When a pipeline is retried from a stage, and there's a step that passed after multiple retries, Harness was not copying the status of the step correctly in the retries. Instead, the status of first step that failed was copied. This made the stage appear as failed in retry. (CDS-72101, ZD-46049)
+- When a pipeline is retried from a stage, and there's a step that passed after multiple retries, Harness was not copying the status of the step correctly in the retries. Instead, the status of the first step that failed was copied. This made the stage appear as failed in retry. (CDS-72101, ZD-46049)
 
   This issue is fixed, and all the retries for the step are now copied correctly in the status.
 
