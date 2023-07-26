@@ -79,7 +79,7 @@ You can use: 
 
 For example, 1d for one day.
 
-The maximum timeout duration is 24 days.The timeout countdown appears when the step in executed.
+The maximum timeout duration is 53 weeks.The timeout countdown appears when the step in executed.
 
 ![](./static/using-harness-approval-steps-in-cd-stages-01.png)
 

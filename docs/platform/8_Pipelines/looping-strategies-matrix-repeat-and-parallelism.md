@@ -114,7 +114,7 @@ To run steps on multiple target hosts, such as in a CD stage that performs a Dep
 repeat:  
   items: <+stage.output.hosts>
 ```
-For more information, go to [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances/).
+For more information, go to [Run a step on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/run-a-script-on-multiple-target-instances).
 
 ## Looping strategy as a runtime input
 
