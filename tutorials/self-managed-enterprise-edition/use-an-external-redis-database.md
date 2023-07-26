@@ -1,7 +1,7 @@
 ---
 title: Use an external Redis database with your installation
 description: Learn how to use an external Redis database with Self-Managed Enterprise Edition installations.
-sidebar_label: Use an external Redis database
+sidebar_label: Configure an external Redis database
 # sidebar_position: 37
 ---
 
