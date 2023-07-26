@@ -4,24 +4,23 @@ description: Instance scans with Burp
 sidebar_position: 80
 ---
 
-You can run Burp scans on your application instances. To set up a Burp scan, do the following:
+You can scan your application instances automatically using [Burp Enterprise](https://portswigger.net/burp/enterprise). 
 
-1. Ceate a CI Build or Security Tests stage.
+To set up a Burp scan:
 
-2. Add a [Burp step](#burp-step-settings) (recommended) or a [Security step](#security-step-configuration-deprecated) (deprecated). 
+1. Ccreate a CI Build or Security Tests stage,
+2. Add a [Burp](#burp-step-configuration) or a [Security](#security-step-settings-deprecated)
+3. Configure the step as specified in the following sections. 
 
-3. Configure the step as described in the following sections.
+<details><summary>Burp scan configuration in Security step</summary>
 
+![](./static/burp-security-scan-step.png)
+
+</details>
 
 ## Before you begin
 
-### Docker-in-Docker requirements
 
-```mdx-code-block
-import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
-```
-
-<StoDinDRequirements />
 
 
 ### Root access requirements 
@@ -101,9 +100,7 @@ Make sure that you give unique, descriptive names for the target and variant. Th
 
 :::
 
-<a name="target-type"></a>
-
-#### Type
+##### Type
 
 ```mdx-code-block
 import StoSettingScanTypeInst     from './shared/step_palette/_sto-ref-ui-scan-type-02-instance.md';
@@ -138,43 +135,25 @@ Make sure that you give unique, descriptive names for the target and variant. Th
 
 :::
 
+
+
 ### Authentication settings
 
 #### Domain 
 
-The fully-qualified URL to the scanner. 
-
-
-<!-- 
-#### Access ID (_orchestration_)
-
-```mdx-code-block
-import StoSettingAuthAccessID from './shared/step_palette/_sto-ref-ui-auth-access-id.md';
-```
-
-<StoSettingAuthAccessID />
-
--->
+Domain of the application instance to scan. Example: `https://myapp.io/portal/us`
 
 #### Access Token
 
-```mdx-code-block
-import StoSettingAuthAccessToken from './shared/step_palette/_sto-ref-ui-auth-access-token.md';
-```
+The access token used to log in to a specific product in the scanner. This is required for some scans. In most cases this is a password or an API key. 
 
-<StoSettingAuthAccessToken />
+You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
-### Ingestion File
+### Scan Tool
 
-```mdx-code-block
-import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
-```
-
-<StoSettingIngestionFile  />
-
+Use this setting to specify a specific scan to ingest. If this is not specified, the pipeline will ingest the most recent scan. 
 
 ### Instance settings
-
 
 <!-- ============================================================================= -->
 <a name="instance-domain"></a>
@@ -219,66 +198,46 @@ import StoSettingInstancePath from './shared/step_palette/_sto-ref-ui-instance-p
 
 <StoSettingInstancePath />
 
+#### Username
 
-### Log Level, CLI flags, and Fail on Severity
+Username to log in to the instance you want to scan.
 
-<a name="log-level"></a>
 
-#### Log Level
+#### Password
 
-```mdx-code-block
-import StoSettingLogLevel from './shared/step_palette/_sto-ref-ui-log-level.md';
-```
+The access token to log in to the instance you want to scan. In most cases this is a password or an API key. 
 
-<StoSettingLogLevel />
+You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
-<a name="cli-flags"></a>
 
-#### Additional CLI Flags
-
-You can use this field to run the [Nmap scanner](https://nmap.org/book/man-briefoptions.html) with specific command-line arguments. For example, you can include IPv6 tests as follows: `tool_args` = `-6`
-
-#### Fail on Severity
+### Ingestion File
 
 ```mdx-code-block
-import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
+import StoSettingIngestionFile from './shared/step_palette/_sto-ref-ui-ingestion-file.md';
 ```
-<StoSettingFailOnSeverity />
 
-<!-- 
+<StoSettingIngestionFile  />
 
-### Settings
+## Security step settings (_deprecated_)
 
-TBD
+#### Docker-in-Docker requirements
 
--->
+```mdx-code-block
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+```
 
-### Additional Configuration
-
-In the **Additional Configuration** settings, you can use the following options:
-
-* [Privileged](/docs/continuous-integration/ci-technical-reference/background-step-settings/#privileged)
-* [Image Pull Policy](/docs/continuous-integration/ci-technical-reference/background-step-settings/#image-pull-policy)
-* [Run as User](/docs/continuous-integration/ci-technical-reference/background-step-settings/#run-as-user)
-* [Set Container Resources](/docs/continuous-integration/ci-technical-reference/background-step-settings/#set-container-resources)
+<StoDinDRequirements />
 
 
-### Advanced settings
+#### Target and variant
 
-In the **Advanced** settings, you can use the following options:
+```mdx-code-block
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+```
 
-* [Conditional Execution](/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
-* [Failure Strategy](/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
-* [Looping Strategy](/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
-* [Policy Enforcement](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
+<StoLegacyTargetAndVariant />
 
-## Security step configuration (_deprecated_)
-
-<details><summary>Burp scan configuration in Security step</summary>
-
-![](./static/burp-security-scan-step.png)
-
-</details>
+#### Burp scan settings
 
 * `product_name` = `burp`
 * [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `instance`
@@ -310,15 +269,8 @@ In the **Advanced** settings, you can use the following options:
 		-  `audit-checks-all-except-java-script-analysis`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
-### Target and variant
 
-```mdx-code-block
-import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
-```
-
-<StoLegacyTargetAndVariant />
-
-### Instance scan settings
+#### Instance scan settings
 
 ```mdx-code-block
 import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
@@ -326,7 +278,7 @@ import StoLegacyInstance from './shared/legacy/_sto-ref-legacy-instance.md';
 
 <StoLegacyInstance />
 
-### Orchestration scan settings
+#### Orchestration scan settings
 
 ```mdx-code-block
 import StoLegacyOrch from './shared/legacy/_sto-ref-legacy-orchestrated.md';
@@ -334,7 +286,7 @@ import StoLegacyOrch from './shared/legacy/_sto-ref-legacy-orchestrated.md';
 
 <StoLegacyOrch />
 
-### Dataload scan settings
+#### Dataload scan settings
 
 The following settings are required for Security steps where the `policy_type` is `dataLoad`.
 
@@ -350,7 +302,7 @@ The following settings are required for Security steps where the `policy_type` i
 
   You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
-### Ingestion file
+#### Ingestion file
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
@@ -358,70 +310,9 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
-## Burp pipeline example 
+#### Fail on Severity
 
-```yaml
-
-pipeline:
-  name: burp extraction
-  identifier: burp_extraction
-  projectIdentifier: STO
-  orgIdentifier: default
-  tags: {}
-  stages:
-    - stage:
-        name: extraction
-        identifier: extraction
-        type: SecurityTests
-        spec:
-          cloneCodebase: false
-          infrastructure:
-            type: KubernetesDirect
-            spec:
-              connectorRef: myharnessdelegate
-              namespace: harness-delegate-ng
-              automountServiceAccountToken: true
-              nodeSelector: {}
-              os: Linux
-          execution:
-            steps:
-              - step:
-                  type: Background
-                  name: docker dind
-                  identifier: docker_dind
-                  spec:
-                    connectorRef: account.harnessImage
-                    image: docker:dind
-                    shell: Sh
-              - step:
-                  type: Security
-                  name: data load from burp enterprise
-                  identifier: data_load_from_burp_enterprise
-                  spec:
-                    privileged: true
-                    settings:
-                      policy_type: dataLoad
-                      scan_type: instance
-                      product_name: burp
-                      product_config_name: default
-                      product_site_id: <+pipeline.variables.burp_site_id>
-                      instance_identifier: <+pipeline.name>
-                      instance_environment: <+pipeline.variables.burp_site_id>
-                      log_level: debug
-                      product_domain: https://bsee.dev.my.org.org/
-                      product_access_token: <+secrets.getValue('burp_api_key')>
-          sharedPaths:
-            - /var/run
-            - /shared/customer_artifacts/
-        variables:
-          - name: runner_tag
-            type: String
-            description: ""
-            value: dev
-  variables:
-    - name: burp_site_id
-      type: String
-      description: burp_site_id
-      value: <+input>
-
+```mdx-code-block
+import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```
+<StoSettingFailOnSeverity />
