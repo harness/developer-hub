@@ -94,7 +94,7 @@ The OCI Helm connector now fetches the chart version correctly.
 
 - Fixed an issue where in some cases removing a file reference from a service did not clear the file reference. In addition, enabling **Force Delete** did not allow users to remove the file. This fix ensures the intended behavior: when a file, secret, or template is removed from a service configuration, any references between the service and the referenced object are also removed. (CDS-72350, ZD-46133)
 
-- Fixed an API issue where a request to update a remote pipeline/InputSets did not update the `lastUpdateAt` field in the pipeline/InputSets. (CDS-72098)	
+- Fixed an API issue where a request to update the input sets of a pipeline when importing the pipeline from Git did not update the `lastUpdateAt` field. (CDS-72098)
 
 - Fixed an issue where Jira and ServiceNow approvals didn't fail fast if a connector provided was an incorrect type or not present. The pipeline would repeatedly request details of the Jira/ServiceNow ticket and keep failing with the same error (connector not found or incorrect connector).
   
