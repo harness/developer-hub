@@ -32,9 +32,9 @@ This tutorial demonstrates how to do this by creating a Harness CI pipeline that
 
 ## Prerequisites
 
-This tutorial assumes you have a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md).
+This tutorial assumes you have a [CI pipeline](/docs/continuous-integration/use-ci/prep-ci-pipeline-components) with a [Build stage](/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings).
 
-If you haven't created a pipeline before, try [Get started with the fastest CI](/tutorials/ci-pipelines/fastest-ci) or [Build on a Kubernetes cluster](/utorials/ci-pipelines/kubernetes-build-farm) before starting this tutorial.
+If you haven't created a pipeline before, try [Get started with the fastest CI](/tutorials/ci-pipelines/fastest-ci) or [Build on a Kubernetes cluster](/tutorials/ci-pipelines/kubernetes-build-farm) before starting this tutorial.
 
 ## Prepare cloud storage
 
@@ -60,7 +60,7 @@ If you haven't created a pipeline before, try [Get started with the fastest CI](
 
 ## Prepare artifacts to upload
 
-Add steps to your pipeline that generate and prepare artifacts to upload, such as [Run steps](../set-up-test-intelligence/configure-run-tests-step-settings.md). The steps you use depend on what artifacts you ultimately want to upload.
+Add steps to your pipeline that generate and prepare artifacts to upload, such as [Run steps](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings). The steps you use depend on what artifacts you ultimately want to upload.
 
 For example, this tutorial uses three **Run** steps to generate and prepare an artifact:
 
@@ -115,10 +115,10 @@ For `connectorRef`, you can use the built-in Docker connector, `account.harnessI
 
 Add a step to upload your artifact to cloud storage:
 
-* [Upload Artifacts to JFrog](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog.md)
-* [Upload Artifacts to GCS](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings.md)
-* [Upload Artifacts to S3](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings.md)
-* [Upload Artifacts to Sonatype Nexus](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus.md)
+* [Upload Artifacts to JFrog](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-jfrog)
+* [Upload Artifacts to GCS](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-gcs-step-settings)
+* [Upload Artifacts to S3](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-s-3-step-settings)
+* [Upload Artifacts to Sonatype Nexus](/docs/continuous-integration/use-ci/build-and-upload-artifacts/upload-artifacts-to-sonatype-nexus)
 
 For example, this tutorial uploads the combined Allure report to GCS:
 
@@ -142,7 +142,7 @@ The `target` value uses a [Harness expression](/docs/platform/references/runtime
 
 ## View artifacts on the Artifacts tab
 
-At this point, you can run the pipeline and then manually find the uploaded artifact in your cloud storage bucket or repo. Alternately, you can use a [Drone plugin](../use-drone-plugins/explore-ci-plugins.md) to publish the artifact URL to the **Artifacts** tab in Harness. This makes it easier to find the artifact directly associated with a particular build.
+At this point, you can run the pipeline and then manually find the uploaded artifact in your cloud storage bucket or repo. Alternately, you can use a [Drone plugin](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference) to publish the artifact URL to the **Artifacts** tab in Harness. This makes it easier to find the artifact directly associated with a particular build.
 
 ```mdx-code-block
 <Tabs>
@@ -151,7 +151,7 @@ At this point, you can run the pipeline and then manually find the uploaded arti
 
 The [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) pulls content from cloud storage and publishes it to the **Artifacts** tab. You can use this plugin with any cloud storage provider.
 
-To use this plugin, add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) after your upload artifact step.
+To use this plugin, add a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference) after your upload artifact step.
 
 For example, this step publishes the URL for the combined Allure report on GCS:
 
@@ -187,7 +187,7 @@ If you use this plugin, you **do not** need an **Upload Artifacts to S3** step i
 
 This plugin only supports S3.
 
-Add a [Plugin step](../use-drone-plugins/plugin-step-settings-reference.md) that uses the `drone-s3-upload-publish` plugin, for example:
+Add a [Plugin step](/docs/continuous-integration/use-ci/use-drone-plugins/plugin-step-settings-reference) that uses the `drone-s3-upload-publish` plugin, for example:
 
 ```yaml
               - step:
