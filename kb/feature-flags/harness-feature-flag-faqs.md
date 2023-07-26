@@ -11,4 +11,12 @@ helpdocs_is_published: true
 # FAQ
 
 
-### Coming Soon
+### Below are some potential issues and fixes for Feature Flags
+
+#### Flag creation keeps failing
+
+When creating a feature flag it could be that the identifier has a character that's not permitted.  The regex used for flag identifiers is:
+
+```
+^[a-zA-Z0-9_][a-zA-Z0-9._$-]*$
+```
