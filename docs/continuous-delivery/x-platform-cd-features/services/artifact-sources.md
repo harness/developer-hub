@@ -2876,7 +2876,12 @@ For more information, go to [Bamboo Permissions](https://confluence.atlassian.co
 
 You can use Github Packages as artifacts for deployments.
 
-Currently, Harness supports only the packageType as `docker(container)`. Support for npm, maven, rubygems, and nuget is coming soon. 
+Package type (`packageType`) support:
+
+- Docker 
+- NPM
+- Maven
+- Nuget 
 
 You connect to GitHub using a Harness [GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference), username, and personal access token (PAT).
 
