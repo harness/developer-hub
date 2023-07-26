@@ -17,11 +17,11 @@ import TabItem from '@theme/TabItem';
 Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-This topic describes how to set up a CI build infrastructure in Microsoft Azure by creating a VM and installing a Harness Delegate and Drone Runner on it. The delegate creates VMs dynamically in response to CI build requests.
+This topic describes how to set up a CI build infrastructure in Microsoft Azure by creating a VM and installing a Harness Delegate and Drone VM Runner on it. The delegate creates VMs dynamically in response to CI build requests.
 
 This is one of several CI build infrastructure options. For example, you can also [set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
-The following diagram illustrates a build farm. The [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the delegate receives a build request, it forwards the request to the runner, which runs the build on an available VM.
+The following diagram illustrates a CI build farm. The [Harness Delegate](/docs/platform/delegates/delegate-concepts/delegate-overview) communicates directly with your Harness instance. The [VM Runner](https://docs.drone.io/runner/vm/overview/) maintains a pool of VMs for running builds. When the delegate receives a build request, it forwards the request to the runner, which runs the build on an available VM.
 
 ![](../static/define-a-ci-build-infrastructure-in-azure-16.png)
 
@@ -155,11 +155,11 @@ The `account` settings (`client_id`, `client_secret`, `subscription_id`, and `te
 | `pool` | Integer | `pool: 1` | Minimum pool size number. Denotes the minimum number of cached VMs in ready state to be used by the runner. |
 | `limit` | Integer | `limit: 3` | Maximum pool size number. Denotes the maximum number of cached VMs in ready state to be used by the runner. |
 | `platform` | Key-value pairs, strings | `platform: os: linux arch: amd64 variant: VERSION` | Specify VM platform operating system (`os`) and architecture (`arch`). `variant` is optional. |
-| `spec` | Key-value pairs, various | Go to [pool.yml examples](#poolyml-examples). | Configure settings for the build VMs.<br/>For `account`, provide the Azure account settings that the runner needs to create new VMs:<ul><li>`client_id`: Your Azure application ID. To find the client ID in Azure, go to **App Registrations**, then **Directory (tenant) ID**, and then select your app.</li><li>`client_secret`: To create a client secret, go to your app in Azure, and then select **Certificates and Secrets**.</li><li>`subscription_id`: To find the subscription ID in Azure, go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines) and select your delegate VM.</li><li>`tenant_id`: Your Directory ID. To find the tenant ID in Azure, go to **App Registrations**, then **Directory (tenant) ID**, and then select your app.</li></ul><br/>For `image`, specify the image type to use for the build VM.<br/>For `location`, specify the Azure region for the build VMs. To minimize latency, use the same region as the delegate VM.<br/> For `size`, specify the Azure VM size.<br/> For `tag`, you can add an optional tag to identify build VMs. |
+| `spec` | Key-value pairs, various | Go to [pool.yml examples](#poolyml-examples). | Configure settings for the build VMs.<ul><li>`account`: Provide Azure account settings the runner needs to create new VMs:<ul><li>`client_id`: Your Azure application ID. To find the client ID in Azure, go to **App Registrations**, then **Directory (tenant) ID**, and then select your app.</li><li>`client_secret`: To create a client secret, go to your app in Azure, and then select **Certificates and Secrets**.</li><li>`subscription_id`: To find the subscription ID in Azure, go to [Virtual Machines](https://portal.azure.com/#view/HubsExtension/BrowseResource/resourceType/Microsoft.Compute%2FVirtualMachines) and select your delegate VM.</li><li>`tenant_id`: Your Directory ID. To find the tenant ID in Azure, go to **App Registrations**, then **Directory (tenant) ID**, and then select your app.</li></ul></li><li>`image`: The image type to use for the build VM.</li><li>`location`: The Azure region for the build VMs. To minimize latency, use the same region as the delegate VM.</li><li>`size`: The Azure VM size.</li><li>`tag`: You can add an optional tag to identify build VMs.</li></ul> |
 
 ## Start the runner and install the delegate
 
-1. [SSH](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) into the delegate VM and run the following command to start the runner:
+1. [SSH into the delegate VM](https://learn.microsoft.com/en-us/azure/virtual-machines/windows/connect-ssh?tabs=azurecli) and run the following command to start the runner:
 
 	 ```
 	 $ docker run -v /home/YOUR_NAME/drone-runner-aws/runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
