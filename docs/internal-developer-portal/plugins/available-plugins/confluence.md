@@ -1,6 +1,6 @@
 ---
 title: Confluence Search
-description: Index Confluence pages into IDP to allow you to search them with the IDP Search feature.
+description: Extend IDP Search to include results from your Confluence pages.
 ---
 
 | Plugin details |                                      |
@@ -17,6 +17,12 @@ description: Index Confluence pages into IDP to allow you to search them with th
 This plugin requires a backend configuration to make calls to Confluence with authentication. In the following configuration, replace `<your-org-name>` with the Confluence instance project (for example https://mycompany.atlassian.net). 
 Mention list of spaces as `spaces: [ENG, IT, OPS]` that needs to be searched in IDP and specify username for `<your-username>`. 
 
+:::note
+
+If there is no space defined `spaces: []`, then this plugin will not consider any space to start indexing. 
+
+:::
+
 ```yaml
 confluence:
   wikiUrl: https://<your-org-name>.atlassian.net/wiki
@@ -32,9 +38,8 @@ Since the `CONFLUENCE_TOKEN` variable is used in the application configuration, 
 
 ### Delegate proxy
 
-If confluence is self-hosted, ensure that you include the base URL `mycompany.atlassian.net` in this section. If confluence is hosted in public cloud, skip this section.
-
-After adding the host, you can select one or more delegates that have access to the host. If you leave the delegate selectors field empty, it is assumed that all delegates in the account have access to the confluence.
+If your Confluence website is self-hosted or has an IP allow-list , ensure that you include the base URL `mycompany.atlassian.net` in the delegate proxy section. If your confluence is hosted on public cloud and can be accessed directly using a token, skip this section.
+After adding the host, you can select one or more delegates that have access to the host.
 
 :::note
 
@@ -46,7 +51,7 @@ When adding the host, include only the host name. Remove the protocol (HTTP/HTTP
 
 ## Layout
 
-This plugin does not export any cards.
+This plugin provides components that are included in the Search results page. It does not export any components to be used in the layout section of the IDP Admin UI.
 
 ## Annotations
 
