@@ -3,7 +3,7 @@
     "collapsible": "true",
     "collapsed": "true",
     "className": "red",
-    "position": 0,
+    "position": "2",
     "link": {
         "type": "generated-index",
         "title": "Get Started"
