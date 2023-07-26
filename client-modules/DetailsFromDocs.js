@@ -39,5 +39,5 @@ if (ExecutionEnvironment.canUseDOM) {
   window.addEventListener("popstate", OpenDetailTab);
   window.onload = () => {
     OpenDetailTab();
-  };
+  }
 }
