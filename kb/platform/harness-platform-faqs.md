@@ -6,6 +6,24 @@ description: Frequently asked questions about Harness Platform.
 # FAQ
 
 
+### Vault
+
+I have a secret that is connected to vault.
+
+How would i view it? Do i need to connect to vault?
+
+For security reasons you would need to connect to Vault to view the secrets.  You can use them however.
+
+[https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault/](https://developer.harness.io/docs/platform/secrets/secrets-management/add-hashicorp-vault/)
+
+[https://developer.harness.io/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/](https://developer.harness.io/docs/platform/secrets/secrets-management/reference-existing-secret-manager-secrets/)
+
+[https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/](https://developer.harness.io/docs/platform/secrets/secrets-management/harness-secret-manager-overview/)
+
+You can reference the secrets using the following as a guide
+
+[https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier)
+
 ### What RBAC permissions do users executing pipeline tasks using API need? 
 
 The simple answer is that a user executing pipeline tasks either it is to modify or execute pipeline, will need the same permissions when running via API as if they were running the same tasks through the Harness UI. 
