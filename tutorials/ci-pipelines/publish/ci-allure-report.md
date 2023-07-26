@@ -136,7 +136,7 @@ For example, this tutorial uploads the combined Allure report to GCS:
 
 :::tip
 
-The `target` value uses a [Harness expression](/docs/platform/references/runtime-inputs/#expressions), `<+pipeline.sequenceId>``, to ensure that artifacts uploaded by this pipeline are stored in unique directories and don't overwrite one another.
+The `target` value uses a [Harness expression](/docs/platform/references/runtime-inputs/#expressions), `<+pipeline.sequenceId>`, to ensure that artifacts uploaded by this pipeline are stored in unique directories and don't overwrite one another.
 
 :::
 
@@ -181,7 +181,7 @@ For example, this tutorial uses `https://storage.googleapis.com/YOUR_GCS_BUCKET/
   <TabItem value="s3publisher" label="S3 Upload and Publish plugin">
 ```
 
-If you use S3 as your cloud storage provider, you can use the [S3 Upload and Publish Drone plugin](https://github.com/harness-community/drone-s3-upload-publish) to both upload your artifact and publishes the URL to the **Artifacts** tab.
+If you use S3 as your cloud storage provider, you can use the [S3 Upload and Publish Drone plugin](https://github.com/harness-community/drone-s3-upload-publish) to both upload your artifact and publish the URL to the **Artifacts** tab.
 
 If you use this plugin, you **do not** need an **Upload Artifacts to S3** step in your pipeline.
 
