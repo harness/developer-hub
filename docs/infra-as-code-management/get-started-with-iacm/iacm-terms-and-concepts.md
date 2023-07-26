@@ -11,7 +11,7 @@ Infrastructure as Code (IaC) is the ability to define cloud resources as code de
 
 A company offering the ability to run cloud resources on your behalf, for example AWS, Azure, GCP, and others.
 
-For information about how to connect to a cloud provider, go to [Connect to a cloud provider](/docs/platform/7_Connectors/Cloud-providers/connect-to-a-cloud-provider.md)
+For information about how to connect to a cloud provider, go to [Connect to a cloud provider](/docs/platform/7_Connectors/Cloud-providers/connect-to-a-cloud-provider.md).
 
 ## Cloud resource
 
@@ -31,11 +31,11 @@ Functionality to determine if the cloud resources defined in the IaC code are pr
 
 ## Harness state tracking
 
-Functionality to not only have the current state but to track the changes to a stack over its lifecycle. 
+Functionality to monitor the current state and to track changes to a stack over its lifecycle. 
 
 ## Provision
 
-The process of taking the infrastructure configuration and applying it against a cloud provider to create cloud resources. For example, “terraform apply” against a main.tf file.
+The process of taking the infrastructure configuration and applying it against a cloud provider to create cloud resources. For example, running `terraform apply` using a main.tf file.
 
 ## Terraform state backend
 
@@ -43,7 +43,7 @@ A service that manages access and changes to a shared Terraform statefile.
 
 ## Variables
 
-Typically, IaC code is extensible through the ability to insert variables. Environment and Terraform variables are available. 
+Typically, IaC code is extended by inserting variables. Environment and Terraform variables are available. 
 
 ## Workspace
 

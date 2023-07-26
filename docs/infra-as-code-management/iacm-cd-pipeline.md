@@ -14,7 +14,7 @@ For information about CD stages, go to [CD steps, stages, and strategies](/docs/
 
 You can pass [variables](/docs/platform/12_Variables-and-Expressions/add-a-variable.md) from an IaCM pipeline to CD. For example, you might want to pass the Kubernetes namespace as a value. 
 
-If you select a pipeline and select the **Apply** step, you will see that all the Terraform outputs are available as output parameters. You can paste the path and use it in any additional stage that you have.
+If you view an executed pipeline and select the **Apply** step, you will see that all the Terraform outputs are available as output expressions. You can copy an output expression and then use it in any subsequent step or stage in the pipeline, or even other pipelines.
 
 ![Output](./static/output.png)
 
