@@ -62,8 +62,8 @@ Identifiers have the following restrictions:
 	+ org
 	+ account
 
-:::Exceptions
-Custom roles cannot start with underscore( _ ) as Harness managed roles identifiers start with underscore
+:::note
+Exceptions: Custom roles cannot start with underscore( _ ) as Harness managed roles identifiers start with underscore
 :::
 
 #### Identifier uniqueness
