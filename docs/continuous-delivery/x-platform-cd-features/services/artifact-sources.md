@@ -2881,7 +2881,13 @@ Package type (`packageType`) support:
 - Docker 
 - NPM
 - Maven
-- Nuget 
+- Nuget
+
+:::note
+
+Currently, support for NPM, Maven, and Nuget are behind the feature flag `CDS_GITHUB_PACKAGES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 You connect to GitHub using a Harness [GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference), username, and personal access token (PAT).
 
