@@ -38,10 +38,8 @@ const OpenDetailTab = async () => {
 
 if (ExecutionEnvironment.canUseDOM) {
   window.addEventListener("popstate", OpenDetailTab);
-}
-
-document.addEventListener("readystatechange", (event) => {
-  if (event.target.readyState === "complete") {
+  window.onload = () => {
+    console.log("here");
     OpenDetailTab();
-  }
-});
+  };
+}
