@@ -2980,10 +2980,28 @@ module.exports = {
       from: "/docs/platform/Get-started/platform-concepts/platform-overview",
       to: "/docs/platform/Get-started/platform-overview",
     },
+    // Created by bfisher for DOC-3458 on July 25, 2023
+    {
+      from: "/docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database",
+      to: "/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database",
+    },
+    {
+      from: "/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm",
+      to: "/docs/self-managed-enterprise-edition/back-up-and-restore-helm",
+    },
     // PR-2012
     {
       from: "/docs/security-testing-orchestration/sto-techref-category/custom-ingest-scan-reference",
       to:   "/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference",
+    },
+    // Created by bfisher for DOC-3488 on July 26, 2023
+    {
+      from: "/docs/platform/resource-development/apis/rate-limits/",
+      to:   "/docs/platform/rate-limits",
+    },
+    {
+      from: "/docs/platform/Security/rate-limits",
+      to:   "/docs/platform/rate-limits",
     },
   ],
 };

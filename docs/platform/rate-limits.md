@@ -1,7 +1,7 @@
 ---
-title: Rate limits
+title: Platform rate limits
 description: Learn about rate limits that help maximize the stability of the Harness Platform.
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 The Harness Platform uses several mechanisms, including rate limits, to safeguard against bursts of incoming traffic and help maximize stability. A rate limiter restricts the number of requests received within any given minute, after which Harness throttles requests from the IP address.
@@ -27,5 +27,5 @@ Harness Platform rate limits include:
 - User invites: 10 calls per minute per IP address.
 
 :::info important
-Harness reserves the rights to change limits at any time to protect the platform.
+Harness reserves the right to change limits at any time to protect the platform.
 :::

@@ -20,3 +20,9 @@ When creating a feature flag it could be that the identifier has a character tha
 ```
 ^[a-zA-Z0-9_][a-zA-Z0-9._$-]*$
 ```
+
+#### Do you support undeleting a Feature Flags project?
+
+Undeleting a Feature Flags project is unsupported due to GDPR.  Because of GDPR the general guideline is:
+
+GDPR Data Retention rules state that personal data should never be retained longer than strictly necessary to accomplish the set business purpose.
