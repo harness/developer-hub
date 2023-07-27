@@ -22,6 +22,11 @@ Before using recommendations in your cluster environment, ensure that you evalua
 Using recommendations without proper assessment could result in unexpected changes, such as issues with system performance or poor reliability.
 :::
 
+
+:::important note
+Recommendations will not be generated for nodepools with multiple instance families when the cluster is already managed by third party tools like spot.io.
+:::
+
 ## Before You begin
 
 * [Set Up Cloud Cost Management for Kubernetes](../../2-getting-started-ccm/4-set-up-cloud-cost-management/set-up-cost-visibility-for-kubernetes.md)
@@ -35,9 +40,9 @@ Harness CCM uses labels to process node pool recommendations. Make sure to add o
 
 |  **Cloud provider**| **Labels** |
 | --- | --- |
-| Amazon Web Services (AWS) |<ul><li>`eks.amazonaws.com/nodegroup​`</li> <li>`alpha.eksctl.io/nodegroup-name​`</li><li> `node-pool-name​`</li><li> `kops.k8s.io/instancegroup`</li></ul>|
-| Google Cloud Platform (GCP) |  <ul><li>`cloud.google.com/gke-nodepool`</li><li> `node-pool-name​`</li><li> `kops.k8s.io/instancegroup`</li></ul>|
-| Microsoft Azure | <ul><li> `Agentpool​`</li><li> `node-pool-name​` </li><li>`kops.k8s.io/instancegroup`</li></ul>|
+| Amazon Web Services (AWS) |<ul><li>`eks.amazonaws.com/nodegroup​`</li> <li>`alpha.eksctl.io/nodegroup-name​`</li><li> `node-pool-name​`</li><li> `kops.k8s.io/instancegroup`</li><li>`nodegroup​`</li></ul>|
+| Google Cloud Platform (GCP) |  <ul><li>`cloud.google.com/gke-nodepool`</li><li> `nodegroup​`</li><li>`kops.k8s.io/instancegroup`</li></ul>|
+| Microsoft Azure | <ul><li> `Agentpool​`</li><li> `node-pool-name​` </li><li> `nodegroup​`</li><li>`kops.k8s.io/instancegroup`</li></ul>|
 
 ## How are node pool recommendations computed?
 

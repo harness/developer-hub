@@ -179,9 +179,14 @@ It's important to understand the difference between the **Others** and **No Acco
 
 When a Perspective includes multiple data sources (for example, AWS, GCP, and Cluster) and you select one data source in a Perspective **Group By**, such as **AWS: Account**, the costs for the AWS data source are displayed individually. The costs for the other data sources (GCP, Cluster) are grouped under **No Account**.
 
-In other words, a row with No followed by the selected `Group by` is displayed for costs that don’t have any relation with the selected `Group by`. For example, **No SKUs** is displayed for costs (AWS, clusters, etc.) that don’t have any GCP SKUs associated with it.
+In other words, a row with **No** followed by the selected `Group by` is displayed for costs that don’t have any relation with the selected `Group by`. For example, **No SKUs** is displayed for costs (AWS, clusters, etc.) that don’t have any GCP SKUs associated with it.
 
 Another example is if the **Group By** is **Project**. For example, if you selected GCP: Project, then the **No Project** item in the graph represents the AWS and Cluster project costs.
+
+Essentially, `No GroupBy` represents the null values for that `Group By` grouping. To filter or work with these null values, users should use the "IS NULL" function on that field. Since Perspectives don't explicitly provide a `No GroupBy` value in the filters, the "IS NULL" field serves as the way to handle these `No GroupBy` items. You could also use the "IS NULL" field in the rules of the perspective. 
+
+  For example, if your perspective includes both GCP and AWS cloud providers, and you want to group the costs by AWS accounts (GroupBy), any GCP costs will be categorized under "No Account." However, for project costs not to be shown under "No Account", you can implement this workaround: Rule: `Cloud Provider` IN GCP and `GCP > Project` IS NULL.
+
 
 ## Edit a Perspective
 

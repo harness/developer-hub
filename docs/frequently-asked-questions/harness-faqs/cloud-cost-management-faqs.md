@@ -182,11 +182,31 @@ For GCP, Harness identifies the node type the pod is running on and fetches the 
 
 For AWS/Azure, node cost is trued up from CUR reports. CUR reports take into account RIs, savings plans etc.
 
+#### How's cost calculated for K8s on EC2 and K8s on bare metal?
+
+* For Kubernetes on EC2, the cost calculation process relies on the CUR report data to obtain the node cost using the `resource-id`. With this information, Harness CCM calculates the pod cost based on the node pricing.
+However, there might be instances where the `resource-id` is not immediately available due to data ingestion delays in the CUR report. In such cases, CCM falls back to using public pricing to calculate the node cost. During the subsequent run, specific data for previous days are deleted to true up the costs.
+* For Kubernetes on bare metal, the cost computation involves using hard-coded values for both node and pod cost calculations.
+
+ **Compute instance pricing**:
+ 
+   For spot instances, the CPU price per hour is $0.00064 and the memory price per hour is $0.0032.
+   For on-demand instances, the CPU price per hour is $0.0016 and the memory price per hour is $0.008.
+
+ **ECS Fargate pricing**: 
+
+   For spot instances, the CPU price per hour is $0.01334053 and the memory price per hour is $0.00146489.
+   For on-demand instances, the CPU price per hour is $0.04656 and the memory price per hour is $0.00511.
+
+ **Storage Pricing**:
+
+  Price per hour is computed by using the formula: `storageMb * pricePerMbPerHour`
+
 ### AutoStopping Kubernetes cluster
 
-#### Will the AutoStoppingRule YAML need to replace the ingress we currently use? If so, this might be problematic as we are using external Helm charts.
+#### Will the AutoStopping Rule YAML need to replace the ingress we currently use? If so, this might be problematic as we are using external Helm charts.
 
-You do not have to replace your current ingress. The AutoStoppingRule configuration will reference your current ingress by name.
+You do not have to replace your current ingress. The AutoStopping Rule configuration will reference your current ingress by name.
 
 #### Does AutoStopping support Fargate for EKS?
 
