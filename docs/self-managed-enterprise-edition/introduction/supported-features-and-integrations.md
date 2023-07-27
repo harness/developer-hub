@@ -18,7 +18,7 @@ This topic lists the supported features and integrations you can use to install 
    | Security Testing Orchestration | 4 | 3| 7 | 0 |
    | Feature Flags | 3 | 3 | 6 | 0 |
    | Service Reliability Management | 6 | 8 | 18 | 0 |
-   | Chaos Engineering | 5 | 4 | 8 | 20 |
+   | Chaos Engineering | 15 | 12 | 24 | 50 |
 
 
 ### Ingress
