@@ -599,6 +599,32 @@ getIndex(str, stage) = result {
 }
 ```
 
+#### Enforce a step is used only in specific pipelines
+
+The below policy can be applied on pipeline save or on pipeline run. Users can deny a step being used in a particular list of pipelines. In the below example, users can enforce the Jenkins step in a particular list of pipelines.
+
+```TEXT
+package pipeline
+
+# Deny usage of jenkins steps outside named pipelines
+deny[msg] {
+  # Check the current pipeline is not in the named list
+  not contains(jenkins_pipelines, input.pipeline.name)
+
+  # Check if the pipeline contains a JenkinsBuild step
+  step := input.pipeline.stages[_].stage.spec.execution.steps[_].step
+  step.type == "JenkinsBuild"
+  msg := sprintf("Pipeline '%s' with Jenkins connector is not permitted", [input.pipeline.name])
+}
+
+# Pipelines allowed to have a jenkins step
+jenkins_pipelines = ["qa_pipeline","prod_pipeline"]
+
+contains(arr, elem) {
+	arr[_] = elem
+}
+```
+
 ### Secret policy samples
 
 #### Ensure there are no principals in the secret secrets.
