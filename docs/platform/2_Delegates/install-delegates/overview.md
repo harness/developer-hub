@@ -87,16 +87,17 @@ To install the Docker delegate using Podman, do the following:
 
 5. Copy the Docker installation command.
 
-6. Run the following.
+6. Paste the Docker installation command from the UI in your CLI, and replace the `docker run` command with the `podman run` command below.
 
    ```bash
-   sudo apt-get -y update
-
-   sudo apt-get -y install podman
+   podman run --restart=always --hostname="$(hostname -f)"
+   -e DELEGATE_NAME=docker-delegate \
+   -e NEXT_GEN="true" \
+   -e DELEGATE_TYPE="DOCKER" \
+   -e ACCOUNT_ID=<ACCOUNT_ID_COPIED_FROM_THE_UI_COMMAND> \
+   -e DELEGATE_TOKEN=<DELEGATE_TOKEN_COPIED_FROM_THE_UI_COMMAND>= \
+   -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
+   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.07.79904 
    ```
 
-7. Paste the Docker installation command in your CLI, and replace the `docker run` command with the `podman run` command below.
-
-   ```bash
-   podman run --restart=always --hostname="$(hostname -f)" 
-   ```
+7. Run the command.
