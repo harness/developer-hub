@@ -5,7 +5,7 @@ The following settings are required for every Security step:
 
 :::note
 
-Make sure that you give unique, descriptive names for the target and variant. This will make it much easier to navigate your scan results in the STO UI. 
+Make sure that you give unique, descriptive names for the target and variant. This makes navigating your scan results in the STO UI much easier. 
 
 :::
 
