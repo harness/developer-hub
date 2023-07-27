@@ -71,7 +71,7 @@ Enforce authorization type to prevent users from setting up connectors that migh
 
 Here is a sample policy that you can evaluate using the **On Save** event for a Harness connector:
 
-```rego
+```json
 package connector
 
 import future.keywords.in
@@ -100,7 +100,7 @@ The administrator can control which users can select a specific connector for pi
 
 Here is a sample policy to enforce which users and user groups can deploy and build using the connector:
 
-```TEXT
+```json
 package connector
 
 # Choose a connector type to check
@@ -129,9 +129,10 @@ contains(userGroups) {
 #### Enforce the connector naming conventions when users add a new connector
 
 Administrators can enforce naming conventions for connectors created in the Harness account.
+
 Here is a sample policy to enforce naming conventions for connectors that can be applied using the **On Save** event for connector:
 
-```TEXT
+```json
 package connectors
 
 # Deny connectors whose names do not follow the correct naming convention
@@ -154,9 +155,10 @@ deny[msg] {
 #### Prevent other developers from deploying into a non-compliant environment
 
 Administrators can enforce policies to restrict the environments that developers can deploy to. 
+
 Here is a sample policy to do this. This policy can be applied using the **On Run** event for a pipeline:
 
-```TEXT
+```json
 package pipeline
 
 # Deny pipelines that do not use allowed environments
@@ -200,7 +202,7 @@ Administrators can restrict and prevent users from publishing images to public r
 
 Here is a sample policy that can be applied using the **On Run** event for a pipeline:
 
-```TEXT
+```json
 package pipeline
 
 # Deny build pipelines that don't push to "us.gcr.io"
@@ -229,9 +231,10 @@ deny[msg] {
 #### Prevent users from leveraging steps that are not allowed by the company
 
 You can restrict developers from using specific steps in their pipelines. 
+
 Here is a sample policy that can be applied using the **On Save** and **On Run** events for a pipeline:
 
-```TEXT
+```json
 package pipeline
 
 # Deny pipelines that are missing required steps
@@ -267,7 +270,7 @@ Administrators can configure a deployment freeze via policy to supplement the [d
 
 Here is a sample policy to do this, that can be applied using the **On Run** event for a pipeline:
 
-```TEXT
+```json
 package pipeline
 
 # Deny when the current date is after a start date and before an end date
@@ -290,7 +293,7 @@ deny[msg] {
 
 Users in a specific user group can run remote pipelines from any branch, but others can only run pipelines from the default branch.
 
-```TEXT
+```json
 package pipeline
 
 # Deny when the current date is after a start date and before an end date
@@ -326,7 +329,7 @@ Enforce a policy on Feature Flags to ensure the configuration of the flag is pro
 
 Here is a sample policy to do this:
 
-```TEXT
+```json
 package feature_flags
 
 # Deny flags that are enabled in "production" but not in "stage"
@@ -352,7 +355,7 @@ deny[msg] {
 Enforce policies to configure Feature Flags with a boolean value. 
 Here is a sample policy to do this, which can be applied using the **On Creation** events for a Feature Flag:
 
-```TEXT
+```json
 package feature_flags
 
 # Deny flags that aren't "boolean"
@@ -368,7 +371,7 @@ deny[msg] {
 Enforce policies to prevent users from configuring flags and serving true to all the end users of the flag. It allows for a safer rollout of the flag. 
 Here is a sample policy to do this, which can be applied on feature flag configuration:
 
-```TEXT
+```json
 package feature_flags
 
 # Deny flags that serve true by default when turned off to prevent accidentally enabling the flag
@@ -391,7 +394,7 @@ deny[msg] {
 Establish policies to ensure no one falls outside the proper naming convention for internal flags when naming Feature Flags. 
 Here is a sample policy to do this, which can be applied using the **On Save** event for the Feature Flag:
 
-```TEXT
+```json
 package feature_flags
 
 # Deny flags whose names do not contain a validly formatted Jira ticket number
@@ -419,9 +422,10 @@ deny[msg] {
 #### Enforce the use of stable templates in a pipeline
 
 Enforce policies to ensure that the correct version of a template is used in the pipeline. 
+
 Here is a sample policy that can be applied using the `On Save` or `On Run` events for a pipeline:
 
-```TEXT
+```json
 package pipeline
 
 template := "my_template"
@@ -465,7 +469,7 @@ deny[msg] {
 
 Ensure that an Approval Step is configured in a Stage Template when a user is creating a template. Here is a sample policy that can be applied using the **On Save** of a template.
 
-```TEXT
+```json
 package template
 # Deny template that don't have an approval step
 # NOTE: Try removing the HarnessApproval step from your input to see the policy fail
@@ -485,8 +489,11 @@ stages_with_approval[i] {
 
 #### Enforce specific environments to be configured for a stage template
 
-This policy enforces only allowed environments to be configured on a stage template at design time. Here is a sample policy that can be applied using the **On Save** of a template.
-```
+This policy enforces only allowed environments to be configured on a stage template at design time. 
+
+Here is a sample policy that can be applied using the **On Save** of a template.
+
+```json
 package template
 # Deny pipeline template that do not use allowed environments
 # NOTE: Try removing "test" from the 'allowed_environments' list to see the policy fail
@@ -518,11 +525,10 @@ contains(arr, elem) {
 
 
 #### Enforce use of an approved stage template in a pipeline
+ 
+You can apply this sample policy using the **On Save** or **On Run** events for a pipeline:
 
-Enforce the usage of an approved stage template in a pipeline. 
-Here is a sample policy that can be applied using the **On Save** or **On Run** events for a pipeline:
-
-```TEXT
+```json
 package pipeline
 
 stageType := "Deployment"
@@ -560,9 +566,10 @@ deny[msg] {
 #### Enforce step templates to be used in a pipeline
 
 Enforce the usage of a step template in a pipeline. This ensures that correct and approved steps are used.
+
 Here is a sample policy that can be applied using the **On Save** or **On Run** event for a pipeline:
 
-```TEXT
+```json
 package pipeline
 
 stepType := "Policy"
@@ -608,7 +615,7 @@ This ensures that pipeline designers have the freedom to design a pipeline while
 
 Here is a sample policy that can be applied using the **On Save** event for a pipeline:
 
-```TEXT
+```json
 package pipeline
 
 stage_order := ["OPA check", "deploy"]
@@ -642,9 +649,10 @@ getIndex(str, stages) = result {
 #### Enforce steps in a pipeline
 
 Enforce policies to ensure mandatory steps are configured in a pipeline. 
+
 Here is a sample policy that can be applied using the **On Save** or **On Run** event for a pipeline:
 
-```TEXT
+```json
 
 ppackage pipeline
 
@@ -681,9 +689,10 @@ contains(arr, elem) {
 #### Enforce step order in a pipeline
 
 Enforce policies for the ordering of steps that are configured in a pipeline. 
+
 Here is a sample policy that can be applied using the **On Save** or **On Run** event for a pipeline:
 
-```TEXT
+```json
 package pipeline
 
 step_order := ["Get version", "Run OPA policy"]
@@ -725,9 +734,10 @@ getIndex(str, stage) = result {
 #### Ensure there are no principals in the secret secrets.
 
 Enforce policies to ensure that the secrets configured in Harness are configured by the correct [principal](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#principal). 
+
 Here is a sample policy that can be applied using the **On Save** event for a secret:
 
-```TEXT
+```json
 package secret
 
 import future.keywords.in
@@ -744,9 +754,10 @@ deny["Principal is not allowed to save secrets"] {
 #### Enforce secret naming conventions
 
 Enforce policies to ensure that developers add secrets to Harness with a common naming standard. This makes it easy to identify and manage them. 
+
 Here is a sample policy that can be applied using the **On Save** event for a secret:
 
-```TEXT
+```json
 package secrets
 
 # Deny secrets whose names do not follow the correct naming convention
@@ -765,7 +776,7 @@ Enforce policies to store your secrets in a specific secrets manager.
 Here is a sample policy that can be applied using the **On Save** event for a secret:
 
 
-```TEXT
+```json
 package secrets
 
 import future.keywords.in
