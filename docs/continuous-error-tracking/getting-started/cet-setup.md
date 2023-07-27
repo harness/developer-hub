@@ -185,38 +185,60 @@ ENTRYPOINT java -jar yourapp.jar
 </TabItem>
 <TabItem value="Init container" label="Init container">
 
-When your Java application is running on Kubernetes, use an init container to automatically install the Agent at runtime without changing the existing images. The image is publicly hosted in [Docker Hub](https://hub.docker.com/r/harness/et-agent-sidecar).
+When your Java application is running on Kubernetes, you can use an init container to automatically install the Agent at runtime without changing the existing images. The image is publicly hosted in [Docker Hub](https://hub.docker.com/r/harness/et-agent-sidecar).
 
 Consider the following Kubernetes deployment example for a Java application:
 
 ```
+kind: Deployment
 spec:
-containers:
-- name: my-javaapp-container
-image: my-javaapp-image
-..
-initContainers:
-- name: init-et-agent
-image: harness/et-agent-sidecar
-imagePullPolicy: Always
-volumeMounts:
-- name: et-agent
-mountPath: /opt/harness-et-agent
-..
-env:
-- name: JAVA_TOOL_OPTIONS
-value: "-agentpath:/opt/harness-et-agent/harness/lib/libETAgent.so"
-- name: ET_COLLECTOR_URL
-value: "https://collector.et.harness.io/prod1/"
-- name: ET_APPLICATION_NAME
-value: yourapp
-- name: ET_DEPLOYMENT_NAME
-value: 1
-- name: ET_ENV_ID
-value: production
-- name: ET_TOKEN
-value: b34*****-****-****-****-***********42a
+  template:
+    spec:
+      volumes:
+        - name: et-agent
+          emptyDir: {}
+      initContainers:
+        - name: init-et-agent
+          image: harness/et-agent-sidecar
+          imagePullPolicy: Always
+          volumeMounts:
+            - name: et-agent
+              mountPath: /opt/harness-et-agent
+
+      containers:
+        - name: my-javaapp-container
+          image: my-javaapp-image
+          env:
+            - name: JAVA_TOOL_OPTIONS
+              value: "-agentpath:/opt/harness-et-agent/harness/lib/libETAgent.so"
+            - name: ET_COLLECTOR_URL
+              value: "https://collector.et.harness.io/prod1/"
+            - name: ET_APPLICATION_NAME
+              value: my-javaapp
+            - name: ET_DEPLOYMENT_NAME
+              value: 1
+            - name: ET_ENV_ID
+              value: production
+            - name: ET_TOKEN
+              value: b34*****-****-****-****-***********42a
+          volumeMounts:
+            - name: et-agent
+              mountPath: /opt/harness-et-agent
 ```
+
+By using a shared volume, the init-container executes and installs the harness-et-agent in the path `/opt/harness-et-agent`. This installation is then mounted into the target container `my-javaapp-container` using the volume mount. To properly configure and optimize the functionality of the Agent, ensure to set the variables listed in the following table:
+
+| **Required Environment Variable** | **Description** | **Example** |
+| --- | --- | --- |
+| `JAVA_TOOL_OPTIONS` | JVM Option which instructs the JVM to load the Agent at the mounted volume location. | `-agentpath:/opt/harness-et-agent/harness/lib/libETAgent.so` |
+| `ET_COLLECTOR_URL` | URL to the Error Tracking collector. | `https://collector.et.harness.io/prod1` |
+| `ET_APPLICATION_NAME` | Name of your application or Service. | `my-javaapp` |
+| `ET_DEPLOYMENT_NAME` | Deployment or version number of your application or Service. When your application or Service is updated to a new version, it's recommended that you update this variable as well, so that the Error Tracking Agent can identify when new errors are introduced. | `1` |
+| `ET_ENV_ID` | ID of your Harness Environment. | `production` |
+| `ET_TOKEN` | ET Agent Token created on Harness. | `b34*****-****-****-****-***********42a` |
+
+If the agent is already installed as part of your docker image, simply set the corresponding environment variables without the need of an init container.
+
   </TabItem>
 </Tabs>
 

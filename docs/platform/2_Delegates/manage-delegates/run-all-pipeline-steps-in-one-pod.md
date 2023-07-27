@@ -14,7 +14,11 @@ When you have multiple steps in your pipeline, you can configure your delegate t
 
 To run all the steps in the same pod, do the following:
 
-* Provide the delegate hostname as a dynamic selector to pick one individual delegate among the delegate groups.
+1. Create the first step that will select one delegate from the list of eligible delegates, and store it in an output variable.
+2. Provide the output variable in step 1 as a dynamic delegate selector in the consecutive steps/stages to pick one individual delegate among the delegate group.
+
+   For example, in the below pipeline, the `select_delegate` step stores the delegate hostname as an output variable named `HOST_SELECTOR` and then provides that as a 
+   delegate selector in the `use_delegate` step.
 
 ### Example pipeline
 

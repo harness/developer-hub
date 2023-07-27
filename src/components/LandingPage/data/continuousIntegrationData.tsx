@@ -267,4 +267,15 @@ export const CIList: CardItem[] = [
     time: "15 min",
     icon: "img/icon_ci.svg"
   },
+  {
+    title: "Test a FastAPI project",
+    module: MODULES.ci,
+    description:
+      "Use Harness CI to test a FastAPI project.",
+    link: "/tutorials/ci-pipelines/test/fastapi",
+    type: [docType.Documentation],
+    time: "20 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
+  },
 ];

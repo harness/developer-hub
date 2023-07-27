@@ -186,7 +186,7 @@ export default function Certifications() {
               </div>
               <div className={styles.certBadges}>
                 <h5>
-                  Available Certification
+                  Available Certifications
                 </h5>
                 <div className={styles.availableCerts}>
                   <img
@@ -224,21 +224,21 @@ export default function Certifications() {
               </div>
               <div className={styles.certBadges}>
                 <h5>
-                  Available Certification
+                  Available Certifications
                 </h5>
                 <div className={styles.availableCerts}>
                   <img
                     src={`${baseUrl}img/cert_adm_cd_badge.svg`}
                     alt="Administrator Continuous Delivery Badge"
                   />
-                </div>
-                <h5>Coming Soon</h5>
-                <div className={styles.unAvailableCerts}>
                   <img
                     src={`${baseUrl}img/cert_adm_ci_badge.svg`}
                     alt="Administrator Continuous Integration Badge"
                   />
                 </div>
+               {/* <h5>Coming Soon</h5> */}
+               {/* <div className={styles.unAvailableCerts}>
+                </div> */}
               </div>
             </div>
 

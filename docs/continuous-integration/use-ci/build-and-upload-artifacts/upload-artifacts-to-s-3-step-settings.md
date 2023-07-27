@@ -133,7 +133,7 @@ After the **Upload Artifacts to S3** step runs, you can see the uploaded artifac
 
 ## View artifacts on the Artifacts tab
 
-As an alternative to manually finding artifacts on S3, you can use [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) to view code coverage reports on the **Artifacts** tab on the [Build details page](../viewing-builds.md).
+As an alternative to manually finding artifacts on S3, you can use [Drone plugins](../use-drone-plugins/explore-ci-plugins.md) to view artifacts on the **Artifacts** tab on the [Build details page](../viewing-builds.md).
 
 ```mdx-code-block
 <Tabs>
