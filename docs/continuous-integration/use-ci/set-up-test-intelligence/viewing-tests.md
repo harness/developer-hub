@@ -1,7 +1,7 @@
 ---
 title: View tests
 description: View the results from CI tests.
-sidebar_position: 60
+sidebar_position: 70
 helpdocs_topic_id: sof7n3qjap
 helpdocs_category_id: flam7377aq
 helpdocs_is_private: false

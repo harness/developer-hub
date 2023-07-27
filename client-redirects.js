@@ -43,6 +43,18 @@ module.exports = {
       from: "/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage",
       to: "/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings",
     },
+    {
+      from: "/docs/continuous-integration/use-ci/run-ci-scripts/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/build-stage-settings/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build",
+    },
 
     // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
     {
@@ -2805,14 +2817,6 @@ module.exports = {
     {
       from: "/docs/continuous-integration/ci-technical-reference/ci-stage-settings",
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings",
-    },
-    {
-      from: "/docs/continuous-integration/use-ci/build-stage-settings/modify-and-override-build-settings-before-a-build",
-      to: "/docs/continuous-integration/use-ci/run-ci-scripts/modify-and-override-build-settings-before-a-build",
-    },
-    {
-      from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
-      to: "/docs/continuous-integration/use-ci/run-ci-scripts/modify-and-override-build-settings-before-a-build",
     },
     {
       from: "/docs/category/build-stage-settings",
