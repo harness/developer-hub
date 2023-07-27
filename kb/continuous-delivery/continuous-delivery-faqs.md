@@ -217,3 +217,15 @@ In the deployment logs in Harness you may get an error similar to this:
 ```
 
 This is an error coming from the kubernetes cluster stating that the release name is too long.  This can be adjusted in Environments > click Name of the Environment in Question > Infrastructure Definitions > click Name of the Infrastructure Definition in Question > scroll down > expand Advanced > modify the Release name to be something shorter
+
+#### Pipeline GitHub trigger support for project variable reference?
+
+This is not possible as trigger yaml is independent of the pipeline yaml and the trigger will not be aware of the expression output.
+
+#### Procedure to take backup of the Services
+
+We do not have any backup ability for services out of the box but you can take the backup of service yamls and use them later for creating service if there is any issue with the service.
+
+#### Harness FirstGen Graphql API to create Harness pipelines in a specific application
+
+We do not have a way to create a new pipeline using Graphql in FirstGen. However, we do support API to create Harness pipelines in NextGen.

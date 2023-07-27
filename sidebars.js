@@ -438,7 +438,7 @@ const sidebars = {
       id: "infra-as-code-management",
       */
       type: "category",
-      label: "Infrastructure as Code",
+      label: "Infrastructure as Code Management",
       link: {
         type: "generated-index",
         slug: "/infra-as-code-management",

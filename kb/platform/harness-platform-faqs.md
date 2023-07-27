@@ -24,6 +24,22 @@ You can reference the secrets using the following as a guide
 
 [https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier](https://developer.harness.io/docs/platform/secrets/add-use-text-secrets/#reference-the-secret-by-identifier)
 
+### Terraform
+
+#### I'm getting an error "missing expected [" whereas I did not get it before
+
+You might get the error below because Harness standardized to move from using maps to sets of strings for tags
+
+```
+Planning failed. Terraform encountered an error while generating this plan.
+Error: missing expected [
+...
+Error: Terraform exited with code 1.
+Error: Process completed with exit code 1.
+```
+
+To fix this update your state file to change the tags field from a map to a set of strings for example `"tags": {}` to `"tags": []`
+
 ### What RBAC permissions do users executing pipeline tasks using API need? 
 
 The simple answer is that a user executing pipeline tasks either it is to modify or execute pipeline, will need the same permissions when running via API as if they were running the same tasks through the Harness UI. 

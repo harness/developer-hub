@@ -1,7 +1,7 @@
 ---
 title: Continuous Delivery & GitOps release notes
 sidebar_label: Continuous Delivery & GitOps
-date: 2023-07-06T10:00:15
+date: 2023-07-27T10:00:15
 tags: [NextGen, "continuous delivery"]
 sidebar_position: 4
 ---
@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe might not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page in your Harness account.
 :::
 
-## Latest - July 18, 2023, version 79916
+## Latest - July 27, 2023, version 80018
 
 ### Deprecation notice
 
@@ -31,6 +31,97 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 <Tabs>
   <TabItem value="What's new">
 ```
+
+- You can now edit Git details after the pipeline is configured and saved. This can be very useful in Git Experience workflows. For example, this enables you to move your YAML configs from one location to another in your Git configs repositories. (CDS-66621)
+
+  The following Git settings can be modified through the Harness UI: 
+  * Git connector
+  * Repository
+  * YAML path
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not include early access features.
+  
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+
+- Fixed an error-handling issue with Native Helm deployment failures. Previously, the pipeline printed only the last line of the error message in the console and ignored previous error lines, which resulted in a partial explanation. The pipeline now prints all lines in the error message, which provides a better understanding. (CDS-74348)
+
+- Fixed an issue when configuring ECS blue/green deployments: trying to specify expressions for certain fields would cause the page to crash with an error (`Something went wrong...`). (CDS-74156, ZD-47387)
+
+- Fixed a UI issue causing the stage dropdown options in the **Tests** tab of the execution page to scroll unexpectedly when an execution is in progress. (CDS-74026)	
+
+- Fixed a UI issue in the **File Store** page where clicking on an entity link redirected to the Services page. With this fix, an entity link now points to the details page for the referenced entity. (CDS-73834, ZD-46193)	
+
+- Fixed a UI issue to ensure that the pipeline execution UI shows the correct icons for container steps. (CDS-73725, ZD-47103)	
+
+- Fixed a Helm chart deployment issue where specifying the chart version in the manifest as a runtime input resulted in the error, `Failed to query chart versions. Response code [404]`. The OCI Helm connector now fetches the chart version correctly. (CDS-73714, ZD-47063) 
+
+- Harness does not currently support using expressions in failure strategies, so this support has been removed from the UI. Harness has a roadmap item to simplify YAML definitions, which will support using expressions in failure strategies. (CDS-73614)	
+
+- Fixed an issue with the `/ng/api/environmentsV2` endpoint. Previously, the endpoint would ignore overrides in YAML payloads when posting a request to create an environment. This endpoint now supports overrides in YAML environment definitions, as shown in the following example. (CDS-73496)
+
+  ```yaml
+  environment:
+    name: coola
+    identifier: coola
+    tags: {}
+    type: Production
+    orgIdentifier: default
+    projectIdentifier: H
+    overrides:
+      manifests:
+      - manifest:
+          identifier: sdda
+          type: Values
+          spec:
+            store:
+              type: Harness
+              spec:
+                files:
+                - account:/s	
+  ```
+
+- Fixed an issue where using selective stage execution in the advanced settings of a pipeline would cause the pipeline build to fail. This was due to incorrect index handling when processing `<+pipeline>` variables in shell scripts, which would result in index-array-out-of-bounds errors. (CDS-72840)	
+
+- Fixed an issue where, in some cases, removing a file reference from a service did not clear the file reference. In addition, enabling **Force Delete** did not allow users to remove the file. This fix ensures the intended behavior: when a file, secret, or template is removed from a service configuration, any references between the service and the referenced object are also removed. (CDS-72350, ZD-46133)
+
+- Fixed an issue that would cause `<+artifact.imagePullSecret>` to be resolved as null when setting up an AWS connector in IRSA mode. The delegate creates sync tasks for fetching ImagePull secrets for ECR. The delegate was creating the sync task incorrectly, as it only looked at account-level delegates, causing the capability check to fail. Now, the delegate creates the relevant tasks correctly.  (CDS-72334, ZD-46266)
+
+- Fixed an API issue where a request to update the input sets of a pipeline when importing the pipeline from Git did not update the `lastUpdateAt` field. (CDS-72098)
+
+- Fixed an issue where Jira and ServiceNow approvals didn't fail fast if a connector provided was an incorrect type or not present. The pipeline would repeatedly request details of the Jira/ServiceNow ticket and keep failing with the same error (connector not found or incorrect connector). (CDS-69683)
+  
+  With this fix, the pipeline fails at the very beginning of the step execution if the connector type is incorrect or not present. This avoids repeated polling and delayed failure. 
+
+- Error messages from health source providers are now included in API responses for improved user experience and debugging efficiency. (OIP-657)
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### July 18, 2023, version 79916
+
+### Deprecation notice
+
+<Helmdep />
+
+##### What's new
 
 
 - Retrieve the current status of the looping strategy for stages and steps during execution. (CDS-69780)
@@ -59,10 +150,7 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
 
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 - Digest support added for Nexus 3, Github, and Artifactory [artifact sources](/docs/continuous-delivery/x-platform-cd-features/services/artifact-sources). (CDS-71711)
   
@@ -73,11 +161,7 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
   
   Specifying an image by digest, rather than just tag, is useful when you want to ensure that the image you deploy for a service is fixed and immutable. If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline execution fails.
   
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
-
+##### Fixed issues
 
 - The **Helm Deploy** step timed out during the Helm steady state check and Helm rollback failed to initialize. (CDS-73264)
 
@@ -163,12 +247,7 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
   This issue has been resolved. Now, when the verification type is set to **Auto**, the analysis type displayed during verification reflects the selection made by the majority of the verification tasks.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Hotfix version 79922">
-```
-
-## July 21, 2023, version 79922
+##### July 21, 2023, Hostfix version 79922
 
 ### Fixed issues
 
@@ -176,15 +255,6 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
   
   This issue has been resolved. Users can save the pipelines and toggle to the visual view without interruptions.
 
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 
 #### July 06, 2023, version 79811
@@ -291,6 +361,9 @@ import Earlyaccess from '/release-notes/shared/cd-79700-early-access.md'
   Clearing secrets from Vault was dependent on exporting the JsonPlan or human-readable options.
 
   This issue is fixed. Now, the encrypted plan stored on Vault is cleared regardless of the export options.
+- When a pipeline is retried from a stage, and there's a step that passed after multiple retries, Harness was not copying the status of the step correctly in the retries. Instead, the status of the first step that failed was copied. This made the stage appear as failed in retry. (CDS-72101, ZD-46049)
+
+  This issue is fixed, and all the retries for the step are now copied correctly in the status.
 
 import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 
@@ -381,6 +454,7 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
 - Provisioners can't be set as runtime inputs or expressions in stage templates.(CDS-69913)
 
   The provisioner setting could not be set as a runtime input or expression in stage templates. This has been fixed and **Provisioners** can now be set as a runtime input or expression.
+- Fixed an issue where Harness asked users to enter SSH credentials in the **SSH Connection Attribute** field in the **Run Pipeline** page for a template created to capture WinRM credentials. (CDS-72071, ZD-45926)
 
 #### June 12, 2023, Hotfix version 79518
 
@@ -511,6 +585,9 @@ import Fixedissues from '/release-notes/shared/cd-79700-fixed-issues.md'
   - List: `["a", "b", "c"]` (with spaces)
 
   This issue is fixed and the output values for expressions are returned as JSON objects. Now, the expression in the above example for a map object returns `{"key1":"val1","key2": "val2"}`, and a list object returns `["a","b","c"]` (without spaces).
+- Pipeline execution triggered using a webhook trigger failed with the error, `Error while retrieving template with identifier [%s] and versionLabel [%s], templateIdentifier, versionLabel`. (CDS-70552, ZD-45178)
+  
+  This issue is fixed. The error message has been improved to display the cause of pipeline execution failure. 
 
 ### Harness Manager delegate fixed issues
 

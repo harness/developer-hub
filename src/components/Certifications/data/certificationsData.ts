@@ -43,7 +43,7 @@ export const certifications: CardItem[] = [
       // numberOfCerts: 1,
     },
     {
-      title: "Continuous Integration - Administrator (BETA)",
+      title: "Continuous Integration - Administrator",
       module: MODULES.ci,
       type: certType.administrator,
       description:

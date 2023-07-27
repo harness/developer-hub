@@ -1,10 +1,11 @@
 ---
-title: Use an external database with your installation
-description: Learn how to use an external database with Self-Managed Enterprise Edition installations. 
-# sidebar_position: 37
+title: Use an external cloud-based MongoDB with your installation
+description: Learn how to use an external cloud-based MongoDB with Self-Managed Enterprise Edition installations.
+sidebar_label: Configure an external cloud-based MongoDB
+# sidebar_position: 2
 ---
 
-Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external database server with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external MongoDB server with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This topic describes how to configure an external MongoDB server for your installation and lists the software, hardware, and network requirements.
+Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external database with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external MongoDB with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This tutorial describes how to configure an external cloud-based MongoDB for your installation.
 
 ## Benefits of the MongoDB replica set
 
