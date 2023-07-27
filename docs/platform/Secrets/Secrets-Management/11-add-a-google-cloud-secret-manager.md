@@ -91,8 +91,6 @@ See [Managing secrets](https://cloud.google.com/secret-manager/docs/access-cont
 7. In **Google Secrets Manager Credentials File**, select the encrypted file you just added in Harness.
 
    ![](../static/GCP-specifyCredentials.png)
-
-   ![](../static/add-a-google-cloud-secret-manager-40.png)
    
 You can also create a new [File Secret](../3-add-file-secrets.md) here and add the Google Cloud service account key that you downloaded.
 
