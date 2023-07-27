@@ -1,7 +1,8 @@
 ---
-title: CI Run step settings
+title: Use CI Run steps
 description: This topic describes settings for the CI Run step.
 sidebar_position: 20
+sidebar_label: Use Run steps
 helpdocs_topic_id: 1i1ttvftm4
 helpdocs_category_id: 4xo13zdnfx
 helpdocs_is_private: false
@@ -14,13 +15,126 @@ import TabItem from '@theme/TabItem';
 import OutVar from '/docs/continuous-integration/shared/output-var.md';
 ```
 
-You can use a CI **Run** step to [run scripts in CI Build stages](/docs/category/run-scripts). This topic describes settings for the **Run** step.
+You can use a **Run** step to run commands or scripts in a CI pipeline. Here are some examples of different ways you can use **Run** steps.
 
-:::info
+```mdx-code-block
+<Tabs>
+  <TabItem value="test" label="Run tests" default>
+```
 
-Depending on the stage's build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+This example runs `pytest`, includes [code coverage](../set-up-test-intelligence/code-coverage.md) and produces a report in JUnit XML format.
+
+```yaml
+              - step:
+                  type: Run
+                  name: Run pytest
+                  identifier: Run_pytest
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: python:latest
+                    shell: Sh
+                    command: |-
+                      echo "Welcome to Harness CI"
+                      uname -a
+                      pip install pytest
+                      pip install pytest-cov
+                      pip install -r requirements.txt
+
+                      pytest -v --cov --junitxml="result.xml" test_api.py test_api_2.py test_api_3.py
+
+                      echo "Done"
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "**/*.xml"
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="dependencies" label="Install dependencies">
+```
+
+This example installs Go dependencies.
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: dependencies
+                  name: Dependencies
+                  spec:
+                    shell: Sh
+                    command: |-
+                      go get example.com/my-go-module
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="version" label="Specify versions">
+```
+
+This example uses a **Run** step to select a version of Xcode.
+
+```yaml
+              - step:
+                  type: Run
+                  name: set_xcode_version
+                  identifier: set_xcode_version
+                  spec:
+                    shell: Sh
+                    command: |-
+                      sudo xcode-select -switch /Applications/Xcode_13.4.1.app
+                      xcodebuild -version
+```
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="scripts" label="Run scripts">
+```
+
+**Run** steps are highly versatile, and you can use them to run a wide variety of individual commands or multi-line scripts.
+
+For example, this step is from the [Terraform notifications tutorial](/tutorials/ci-pipelines/tfc-notification), and it produces [output variables](#output-variables) from Terraform values. These output variables are used by another step later in the same pipeline.
+
+```yaml
+              - step:
+                  type: Run
+                  name: Terraform Outputs
+                  identifier: tf_outputs
+                  spec:
+                    connectorRef: account.harnessImage
+                    image: kameshsampath/kube-dev-tools
+                    shell: Sh
+                    command: |-
+                      cd /harness/vanilla-gke/infra
+                      terraform init
+                      GCP_PROJECT=$(terraform output -raw project-name)
+                      GCP_ZONE=$(terraform output -raw zone)
+                      GKE_CLUSTER_NAME=$(terraform output -raw kubernetes-cluster-name)
+                    envVariables:
+                      TF_TOKEN_app_terraform_io: <+secrets.getValue("terraform_cloud_api_token")>
+                      TF_WORKSPACE: <+trigger.payload.workspace_name>
+                      TF_CLOUD_ORGANIZATION: <+trigger.payload.organization_name>
+                    outputVariables:
+                      - name: GCP_PROJECT
+                      - name: GCP_ZONE
+                      - name: GKE_CLUSTER_NAME
+                    imagePullPolicy: Always
+                  description: Get the outputs of terraform provision
+```
+
+:::tip
+
+Consider [creating plugins](../use-drone-plugins/custom_plugins.md) for scripts that you reuse often.
 
 :::
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+The **Run** step settings are described below. Depending on the stage's build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
 
 ## Name
 
@@ -226,6 +340,24 @@ Enable this option to run the container with escalated privileges. This is equiv
 Specify one or more paths to files that store [test results in JUnit XML format](../set-up-test-intelligence/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
 This setting is required for the Run step to be able to [publish test results](../set-up-test-intelligence/viewing-tests.md).
+
+For example, this step runs `pytest` and produces a test report in JUnit XML format.
+
+```yaml
+              - step:
+                  type: Run
+                  name: Pytest
+                  identifier: Pytest
+                  spec:
+                    shell: Sh
+                    command: |-
+                      pytest test_main.py --junit-xml=output-test.xml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - output-test.xml
+```
 
 ## Environment Variables
 

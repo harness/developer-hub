@@ -4,13 +4,87 @@ description: Use Run and Run Tests steps to run tests in CI pipelines.
 sidebar_position: 10
 ---
 
-In a CI pipeline, you can run a variety of tests, such as integration tests, functional tests, and unit tests.
+You can run all types of tests in CI pipeline, including integration tests, functional tests, mutation tests, unit tests, and more.
 
-## Run tests in a CI pipeline
+To run tests in CI pipelines, you can use **Run** or **Run Tests** steps.
 
-To run tests in CI pipelines, you can use [Run steps](../run-ci-scripts/run-a-script-in-a-ci-stage.md) or a [Run Tests steps](./configure-run-tests-step-settings.md). The major difference between these two options is that you must use the **Run Tests** step if you want to [enable Test Intelligence](./set-up-test-intelligence.md).
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+```mdx-code-block
+<Tabs>
+  <TabItem value="run" label="Run step" default>
+```
 
-You can also include [code coverage](./code-coverage.md) commands in these steps.
+You can run any type of test for any language in a [Run step](../run-ci-scripts/run-a-script-in-a-ci-stage.md).
+
+For example, this step runs `pytest` and produces a test report in JUnit XML format.
+
+```yaml
+              - step:
+                  type: Run
+                  name: Pytest
+                  identifier: Pytest
+                  spec:
+                    shell: Sh
+                    command: |-
+                      pytest test_main.py --junit-xml=output-test.xml
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - output-test.xml
+```
+
+For more information about configuring **Run** steps, go to [Use Run steps](../run-ci-scripts/run-step-settings.md).
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="runtests" label="Run Tests step">
+```
+
+The [Run Tests step](./configure-run-tests-step-settings.md) is required to [enable Test Intelligence](./set-up-test-intelligence.md); however, it doesn't support all languages.
+
+This example runs Maven tests with [Test Intelligence](./set-up-test-intelligence.md) and produces a test report in JUnit XML format.
+
+```yaml
+              - step:
+                  type: RunTests
+                  name: runTestsWithIntelligence
+                  identifier: runTestsWithIntelligence
+                  spec:
+                    connectorRef: account.GCR
+                    image: maven:3-openjdk-8
+                    args: test -Dmaven.test.failure.ignore=true -DfailIfNoTests=false
+                    buildTool: Maven
+                    language: Java
+                    packages: org.apache.dubbo,com.alibaba.dubbo
+                    runOnlySelectedTests: true
+                    reports:
+                      type: JUnit
+                      spec:
+                        paths:
+                          - "target/surefire-reports/*.xml"
+```
+
+You can use **Run Tests** steps with or without Test Intelligence.
+
+For more information about configuring **Run Tests** steps and Test Intelligence, go to:
+
+* [Run Tests step settings](./configure-run-tests-step-settings.md).
+* [Enable Test Intelligence](./set-up-test-intelligence.md).
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+:::tip
+
+You can [include code coverage](./code-coverage.md) commands in your **Run** and **Run Tests** steps.
+
+:::
 
 ## Improve test times
 
@@ -30,4 +104,4 @@ You might also try these test optimization practices:
 
 ## Test results
 
-After a pipeline that includes tests runs, you can [view the test results](./viewing-tests.md) in Harness.
+You can [view test results](./viewing-tests.md) in Harness.
