@@ -38,11 +38,13 @@ To add a chaos experiment:
 	
 1. Select how you want to build the experiment. The options, explained later, are:
 
-	* **Blank Canvas** - Lets you build the experiment from scratch, adding the specific faults you want.
-	* **Templates from Chaos Hubs** - Lets you preview and select and experiment from pre-curated experiment templates available in [Chaos Hubs](/docs/category/chaos-hubs).
-	* **Upload YAML** - Lets you upload an experiment manifest YAML file.
+	* [**Blank Canvas**](#if-you-select-blank-canvas) - Lets you build the experiment from scratch, adding the specific faults you want.
+	* [**Templates from Chaos Hubs**](#if-you-select-templates-from-chaos-hubs) - Lets you preview and select and experiment from pre-curated experiment templates available in [Chaos Hubs](/docs/category/chaos-hubs).
+	* [**Upload YAML**](#if-you-select-upload-yaml) - Lets you upload an experiment manifest YAML file.
 
-	**If you select Blank Canvas:**
+	These options are explained below.
+
+	#### If you select Blank Canvas:
 
 	The Experiment Builder tab is displayed.
 
@@ -70,7 +72,7 @@ To add a chaos experiment:
 
 		![Complex Faults Experiment](./static/construct-and-run-custom-chaos-experiments/complex-faults-experiment.png)
 
-	**If you select Templates from Chaos Hubs:**
+	#### If you select Templates from Chaos Hubs:
 
 	1. Select an experiment template from a [chaos hub](/docs/category/chaos-hubs).
 
@@ -81,7 +83,7 @@ To add a chaos experiment:
 
 		You can edit the template to add more faults or update the existing faults.
 
-	**If you select Upload YAML:**
+	#### If you select Upload YAML:
 
 	1. Upload an experiment manifest YAML file to create the experiment. 
 

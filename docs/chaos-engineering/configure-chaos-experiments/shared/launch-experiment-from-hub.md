@@ -1,7 +1,7 @@
 You can launch experiments from the default Enterprise Chaos Hub or from custom hubs. 
 
 :::info note
-Launching the experiment from a hub is different from running an experiment from the Chaos Experiments page. The experiments in chaos hubs are actually templates, so when you launch them from a hub you must provide some additional details. The experiments in the Chaos Experiments page execute immediately as configured when you select to run them.
+Launching the experiment from a hub is different from running an experiment from the Chaos Experiments page. The experiments in chaos hubs are actually templates, so when you launch them from a hub you must provide some additional details. The experiments in the Chaos Experiments page execute immediately, as configured, when you run them.
 :::
 
 To launch an experiment from a chaos hub:
