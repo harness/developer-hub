@@ -151,6 +151,11 @@ const config = {
                 label: "Administer Harness Platform",
                 to: "tutorials/platform",
               },
+              {
+                // type: "doc",
+                label: "Administer Harness Self-Managed Enterprise Edition",
+                to: "tutorials/self-managed-enterprise-edition",
+              },
             ],
           },
           {
@@ -555,6 +560,7 @@ const config = {
     path.join(__dirname, "/plugins/utmcookie-plugin"),
     path.join(__dirname, "/plugins/munity-plugin"),
   ],
+  clientModules: [require.resolve("./client-modules/DetailsFromDocs")],
 };
 
 module.exports = config;

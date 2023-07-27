@@ -1,7 +1,7 @@
 ---
-title: Rate limits
+title: Platform rate limits
 description: Learn about rate limits that help maximize the stability of the Harness Platform.
-sidebar_position: 2
+sidebar_position: 1
 ---
 
 The Harness Platform uses several mechanisms, including rate limits, to safeguard against bursts of incoming traffic and help maximize stability. A rate limiter restricts the number of requests received within any given minute, after which Harness throttles requests from the IP address.
@@ -11,6 +11,11 @@ Throttling is a type of rate limiting used to control the amount of traffic that
 :::
 
 Harness has several rate limiters in the platform. Users who send multiple requests in quick succession may receive status code 429 error responses.
+
+:::info note
+Retry-After in the 429 error responses is not currently supported by Google Cloud Armor.
+:::
+
 
 Harness Platform rate limits include:
 
@@ -22,5 +27,5 @@ Harness Platform rate limits include:
 - User invites: 10 calls per minute per IP address.
 
 :::info important
-Harness reserves the rights to change limits at any time to protect the platform.
+Harness reserves the right to change limits at any time to protect the platform.
 :::
