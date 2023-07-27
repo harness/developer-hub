@@ -72,6 +72,10 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
   The issue occurred with newline characters while encoding config files. This is fixed and Harness now replaces newline characters with unicode.
 
+- There was an error collecting metric data when encountering  `null` values returned by metric queries. (OIP-551)
+
+   This issue has been resolved by ignoring null data points and using valid data points in the window.
+
 - The Tokens list page returned a display error when tokens were present and there were multiple pages of results. (PL-36734)
 
   A code enhancement to reset the pagination on the Tokens list page after any token is deleted fixed this issue. Previously, if you deleted the last token on any page after the first page, the page displayed an empty result list.
@@ -93,6 +97,17 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
    Prefixes that begin with a slash are now supported.
 
 - You could not create Azure Key Vault connectors in Harness NextGen even when you used the service principal credentials that successfully created Azure Key Vault connectors in Harness FirstGen. After you entered the service principal credentials, the Vault setup window stopped responding. After several minutes, the following message is displayed: `None of the active delegates were available to complete the task. ==> : 'Missing capabilities: [https:null.vault.azure.net]'` (PL-39783, ZD-46756)
+
+   This issue is now fixed.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Hotfix release">
+```
+
+## Hotfix version 79906
+
+- Helm deployment steps timed out after the initial installation/upgrade phase, preventing the execution of a Helm rollback step. (CDS-73264)
 
    This issue is now fixed.
 
@@ -160,10 +175,6 @@ Harness NextGen release 79714 includes the following changes for the Harness Del
 - Quotations were added to execution YAML strings inconsistently when comparing pipeline YAMLs. (CDS-67637)
 
   This issue is fixed by enabling `MINIMIZE_QUOTES` for YamlUtils and YamlPipelineUtils classes. The compiled YAML no longer has quotations around strings where they are not needed, but only around numbers. Even if you had added quotations in the string values in the pipeline YAML, they'll be removed in the compiled YAML. Also, there won't be unnecessary audit trails where the diff only has quotations around strings.
-
-- Error collecting metric data when encountering "null" values returned by metric queries. (OIP-551)
-
-   This issue has been resolved by ignoring null data points and using valid data points in the window.
 
 - Account-level connectors with resource groups set to **Specified** were not available at the project-level. (PL-38828)
 

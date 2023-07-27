@@ -2,7 +2,7 @@
 title: Continuous Error Tracking release notes
 sidebar_label: Continuous Error Tracking
 tags: [NextGen, "cet"]
-date: 2023-07-14T10:55
+date: 2023-07-21T17:20
 sidebar_position: 11
 ---
 ```mdx-code-block
@@ -63,6 +63,12 @@ This release does not include any early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### July 21, 2023, Hotfix version ET-Service 5.24.7
+
+- The Events Summary page timed out in some instances when events marked as resolved caused slowness while fetching summary data. (CET-1569)  
+
+   This issue has been resolved. Now, the Events Summary page loads faster and does not time out.
 
 #### June 27, 2023, versions ET-Service 5.24.3 and ET-Collector 5.24.3
 

@@ -11,7 +11,25 @@ helpdocs_is_published: true
 You can scan your code repositories using [Bandit](https://github.com/PyCQA/bandit), an open-source tool designed to find common security issues in Python code. 
 
 
-<!-- START step-palette-config ----------------------------------------------------------------------------- -->
+## Before you begin
+
+### Docker-in-Docker requirements
+
+
+```mdx-code-block
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+```
+
+<StoDinDRequirements />
+
+
+### Root access requirements 
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
 
 ## Bandit step configuration
 
@@ -22,13 +40,6 @@ import StoScannerStepNotes from './shared/step_palette/_sto-palette-notes.md';
 ```
 
 <StoScannerStepNotes />
-
-<details>
-    <summary>Scanner Template</summary>
-
-![](static/step-palette-00.png) 
-
-</details>
 
 
 ### Scan Mode
@@ -177,9 +188,6 @@ In the **Advanced** settings, you can use the following options:
 
 
 ## Security step configuration (_deprecated_)
- 
-
-<details><summary>Set up a Bandit scan in a Security step</summary>
 
 You can set up a Security step with [Bandit](https://bandit.readthedocs.io/en/latest/) to find common security issues in your Python code.
 
@@ -191,7 +199,18 @@ STO supports the following policy\_type settings for Bandit:
 * `orchestratedScan`  — A Security step in the pipeline runs the scan and ingests the results. This is the easiest to set up and supports scans with default or predefined settings.
 * `ingestionOnly` — Run the scan in a Run step, or outside the pipeline, and then ingest the results. This is useful for advanced workflows that address specific security needs. See [Ingest scan results into an STO pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/ingest-scan-results-into-an-sto-pipeline).
 
-#### Required Settings
+
+#### Target and variant
+
+```mdx-code-block
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+```
+
+<StoLegacyTargetAndVariant />
+
+#### Bandit scan settings
+
+The following settings are required for Bandit scans:
 
 * `product_name` = `bandit`
 * `scan_type` = `repository`
@@ -204,13 +223,14 @@ STO supports the following policy\_type settings for Bandit:
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
+#### Ingestion file
+
 <StoLegacyIngest />
 
-</details>
 
 
 
-## YAML configuration
+## YAML pipeline example
 
 ```mdx-code-block
 import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';

@@ -13,7 +13,7 @@ You can use a Secure Shell (SSH) deployment type to deploy your artifacts to VM 
 
 :::note
 
-Many traditional deployments use runtime environments such as Tomcat or JBoss. Your target hosts should have these installed before deployment. You can use the Harness [Command](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step) step to install them in the same pipeline as your SSH deployment.
+Many traditional deployments use runtime environments such as Tomcat or JBoss. Your target hosts should have these installed before deployment. You can use the Harness [Command](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/download-and-copy-artifacts-using-the-command-step) step to install them in the same pipeline as your SSH deployment.
 
 :::
 

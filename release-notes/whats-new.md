@@ -37,6 +37,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - You can now configure the `create_namespace` Terraform parameter to disable default namespace creation. Set the parameter to `false` in the `main.tf` file to disable namespace creation. (PL-39822, ZD-47021)
   This item is available with Harness Platform version 80022 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
+### Continuous Delivery, version 80022
+
+- You can now edit Git details after the pipeline is configured and saved. This can be very useful in Git Experience workflows. For example, this enables you to move your YAML configs from one location to another in your Git configs repositories. (CDS-66621)
+
+  The following Git settings can be modified through the Harness UI: 
+  - Git connector
+  - Repository
+  - YAML path
+
+### Feature Flags
+
+* When specifying percentages for a rollout, the UI now provides feedback while you edit to let you know the percentage that requires assignment. (FFM-8085)
+
 ## July 18, 2023
 
 ### Harness Platform, version 79916
@@ -56,14 +69,22 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - Previously, when password-based authentication was used with OAuth, the functionality of auto-accepting invites was not available. Now, when Oauth is enabled for an account, invites are automatically accepted. (PL-31936, ZD-40182)
 
 - User names cannot exceed 256 chars. (PL-21254)
-
+  
 - The List Tokens API now supports listing all the personal access tokens or service account tokens in the account. The API has been enhanced as follows:
-1. If you have user management permissions, you can list all the personal access tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
-2. If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
+  
+  If you have user management permissions, you can list all the personal access tokens in your account. You can also filter tokens belonging to a user or filter only active tokens.
+
+  If you have service account management permissions, you can list all the service account tokens in your account. You can also filter tokens for a service account or filter only active tokens. (PL-31870, ZD-40110)
 
 This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ### Continuous Delivery, version 79916
+
+- Custom webhook triggers using with the X-Api-Key header now follow role-based access control.  (CDS-73127)
+
+  The trigger execution checks if the provided API key has the necessary permissions for accessing entities and orverriding deployment freeze.
+
+  The expression `<+pipeline.triggeredBy.name>` has been fixed to contain the user name mapped to the API key.
 
 - Retrieve the current status of the looping strategy for stages and steps during execution. (CDS-69780)
   

@@ -8,12 +8,21 @@ You can scan container images using Prisma Cloud.
 
 ## Before you begin
 
+### Docker-in-Docker requirements
+
 ```mdx-code-block
-import StoCreateDinD from './shared/dind-bg-step.md';
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 ```
 
-<StoCreateDinD />
+<StoDinDRequirements />
 
+### Root access requirements
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
 
 ## PrismaCloud step configuration
 
@@ -288,7 +297,7 @@ import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-
 
 ### Settings
 
-You can add a `tool_args` setting to run the [twistcli images scan binary](https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images#) with specific command-line arguments. For example, you can prevent the scan from publishing results to the Console like this:  `tool_args` = `--publish FALSE`.
+You can add a `tool_args` setting to run the [twistcli images scan binary](https://docs.paloaltonetworks.com/prisma/prisma-cloud/prisma-cloud-admin-compute/tools/twistcli_scan_images#) with specific command-line arguments. For example, you can prevent the scan from publishing results to the Console like this:  `tool_args` : `--publish FALSE`.
 
 ### Additional Configuration
 
@@ -312,23 +321,22 @@ In the **Advanced** settings, you can use the following options:
 
 
 ## Security step configuration (_deprecated_)
- 
-
-
-<details><summary>Set up a Prisma Cloud scan in a Security step</summary>
 
 You can set up Prisma Cloud scans using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
+#### Target and variant
+
 ```mdx-code-block
-import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
 ```
 
-<StoSecurityStepConfig />
+<StoLegacyTargetAndVariant />
 
+#### Prisma Cloud scan settings
 
 * `product_name` = `twistlock`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `containerImage`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) =  `orchestratedScan`, `dataLoad`, or `ingestionOnly`
+* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) : `containerImage`
+* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) :  `orchestratedScan`, `dataLoad`, or `ingestionOnly`
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan` or `dataLoad`:
 	+ `product_image_name`
 	+ `product_domain`
@@ -339,24 +347,18 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 		- `default`
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+#### Container image scan settings
+
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 ```
 
 <StoLegacyContainer />
 
+#### Ingestion file
+
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
-
-</details>
-
-## YAML configuration
-
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-```
-
-<StoSettingYAMLexample />
