@@ -490,9 +490,9 @@ When configuring SSH Key for connector, exporting SSH Key with Passphrase for Mo
 Syntax examples to reference terraform module using ssh protocol:
 
 ```json
-  source = "git@github.com:your-username/your-private-module.git"
-  or
-  source = "git::ssh://git@github.com/your-username/your-private-module.git"
+source = "git@github.com:your-username/your-private-module.git"
+or
+source = "git::ssh://git@github.com/your-username/your-private-module.git"
 ```
 
 ### Module Configuration
