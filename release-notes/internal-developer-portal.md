@@ -15,7 +15,44 @@ import TabItem from '@theme/TabItem';
 
 Review the notes below for details about recent changes to Harness Internal Developer Portal.
 
-## Latest - July 12, 2023, version 0.6.0
+## Latest - July 27, 2023, version 0.7.0
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="What's new">
+```
+
+- Added the Confluence search plugin to include results from Confluence spaces. Learn more in the [plugin docs](link-to-confluence-plugin-docs) (IDP-845)
+- Added `harness:create-secret` and `harness:delete-secret` actions which are available to be used in `template.yaml`. These can be used to take secret as an input, create short lived secrets and use them in a Pipeline variable as a runtime input. [Docs link](coming) (IDP-780)
+- Increased the Software Catalog to git polling interval to 15 mins. (IDP-749)
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not include early access features.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+- Fixed TechDocs not loading when using a delegate to connect to the Git provider. (IDP-687)
+- System optimization when saving secrets or configs. (IDP-830)
+- Fixed a bug in connecting to GitHub when using SSH keys. (IDP-850 ZD-47845)
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+## July 12, 2023, version 0.6.0
 
 ```mdx-code-block
 <Tabs>
@@ -46,11 +83,6 @@ This release does not include early access features.
   </TabItem>
 </Tabs>
 ```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### June 27, 2023, version 0.5.0
 
