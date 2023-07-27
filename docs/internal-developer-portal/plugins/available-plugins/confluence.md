@@ -20,12 +20,6 @@ Replace `<list-of-spaces>` with a comma-separated list of the Confluence spaces 
 
 Replace  `<your-username>` with the user name. 
 
-:::note
-
-
-
-:::
-
 ```yaml
 confluence:
   wikiUrl: https://<your-org-name>.atlassian.net/wiki
