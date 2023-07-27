@@ -22,8 +22,9 @@ Review the notes below for details about recent changes to Harness Internal Deve
   <TabItem value="What's new">
 ```
 
-- Added the Confluence search plugin to include results from Confluence spaces. Learn more in the [plugin docs](link-to-confluence-plugin-docs) (IDP-845)
-- Added `harness:create-secret` and `harness:delete-secret` actions which are available to be used in `template.yaml`. These can be used to take secret as an input, create short lived secrets and use them in a Pipeline variable as a runtime input. [Docs link](coming) (IDP-780)
+- Added the Confluence search plugin to include results from Confluence spaces. Learn more in the [plugin docs](/docs/internal-developer-portal/plugins/available-plugins/confluence) (IDP-845)
+  <!-- Omitting this for now for a hotfix coming in a day or two -->
+  <!-- - Added `harness:create-secret` and `harness:delete-secret` actions which are available to be used in `template.yaml`. These can be used to take secret as an input, create short lived secrets and use them in a Pipeline variable as a runtime input. [Docs link](coming) (IDP-780) -->
 - Increased the Software Catalog to git polling interval to 15 mins. (IDP-749)
 
 ```mdx-code-block
