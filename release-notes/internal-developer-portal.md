@@ -22,10 +22,10 @@ Review the notes below for details about recent changes to Harness Internal Deve
   <TabItem value="What's new">
 ```
 
-- Added the Confluence search plugin to include results from Confluence spaces. Learn more in the [plugin docs](/docs/internal-developer-portal/plugins/available-plugins/confluence) (IDP-845)
+- IDP now includes the Confluence search plugin to include results from Confluence spaces. To learn more, got to the [plugin documentation](/docs/internal-developer-portal/plugins/available-plugins/confluence). (IDP-845)
   <!-- Omitting this for now for a hotfix coming in a day or two -->
   <!-- - Added `harness:create-secret` and `harness:delete-secret` actions which are available to be used in `template.yaml`. These can be used to take secret as an input, create short lived secrets and use them in a Pipeline variable as a runtime input. [Docs link](coming) (IDP-780) -->
-- Increased the Software Catalog to git polling interval to 15 mins. (IDP-749)
+- The interval at which IDP polls Git repositories associated with the software catalog has increased from 5 minutes to 15 minutes. (IDP-749)
 
 ```mdx-code-block
   </TabItem>
@@ -39,9 +39,13 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-- Fixed TechDocs not loading when using a delegate to connect to the Git provider. (IDP-687)
+- When you used a delegate to connect to a Git provider, the Docs tab failed to load, and the following message was displayed: `Failed to build the docs page: TAR_BAD_ARCHIVE: Unrecognized archive format`. (IDP-687)
+
+  This issue is now fixed. 
+
 - System optimization when saving secrets or configs. (IDP-830)
-- Fixed a bug in connecting to GitHub when using SSH keys. (IDP-850 ZD-47845)
+
+- Fixed a bug in connecting to GitHub when using SSH keys. (IDP-850, ZD-47845)
 
 ```mdx-code-block
   </TabItem>
@@ -53,12 +57,9 @@ This release does not include early access features.
 <details>
 <summary>2023 releases</summary>
 
-## July 12, 2023, version 0.6.0
+#### July 12, 2023, version 0.6.0
 
-```mdx-code-block
-<Tabs>
-  <TabItem value="What's new">
-```
+##### What's new
 
 - You can now access IDP catalog APIs by using the Harness X-API-Key. For more information, go to [API access](/docs/internal-developer-portal/features/software-catalog#api-access). (IDP-768)
 - A newer version of the Harness CI/CD plugin has been added with new annotations support. It's now possible to filter pipelines across projects and orgs. For more information, go to the [plugin's readme](https://github.com/harness/backstage-plugins/tree/main/plugins/harness-ci-cd). (IDP-758)
@@ -66,24 +67,13 @@ This release does not include early access features.
 - The `trigger:harness-custom-pipeline` action on the software template `template.yaml` is now synchronous with pipeline execution. The action keeps running during pipeline execution, and it shows the current status of the pipeline.
 - Since the `trigger:harness-custom-pipeline` is now synchronous, you can use the `catalog:register` action in a template and register the newly generated software component's `catalog-info.yaml`.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
+##### Early access
 
 This release does not include early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+##### Fixed issues
 
 - Fixed a bug with access control around de-registering a software component. (IDP-757)
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
 
 #### June 27, 2023, version 0.5.0
 
