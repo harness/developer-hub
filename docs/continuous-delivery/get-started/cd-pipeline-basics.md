@@ -60,7 +60,7 @@ You can also propagate and override a Service in subsequent stages by selecting 
 
 For examples, go to:
 
-* [Kubernetes Services](../deploy-srv-diff-platforms/kubernetes/kubernetes-services.md
+* [Kubernetes Services](../deploy-srv-diff-platforms/kubernetes/kubernetes-services.md)
 * [Propagate and Override CD Services](../x-platform-cd-features/services/propagate-and-override-cd-services.md)
 
 ### Service Instance
