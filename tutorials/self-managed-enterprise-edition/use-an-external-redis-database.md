@@ -1,19 +1,19 @@
 ---
-title: Use an external Redis database with your installation
-description: Learn how to use an external Redis database with Self-Managed Enterprise Edition installations.
-sidebar_label: Configure an external Redis database
+title: Use an external self-managed Redis database with your installation
+description: Learn how to use an external self-managed Redis database with Self-Managed Enterprise Edition installations.
+sidebar_label: Configure an external self-managed Redis database
 # sidebar_position: 37
 ---
 
-Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external database server with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external Redis database with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration.
+Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external database with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external self-managed Redis database with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration.
 
 Redis offers an enterprise on-premise solution to deploy an HA solutions that functions like a single server. You can install Redis on your preferred choice of virtual machines and provide the endpoint in your Harness Helm charts. Harness recommends this solution to install Redis in HA mode.
 
-This topic describes how to configure an external Redis server on GCP for your installation and lists the software, hardware, and network requirements.
+This tutorial describes how to configure an external self-managed Redis database on GCP for your installation.
 
-## Benefits of a Redis external database
+## Benefits of a self-managed Redis external database
 
-Below are some of the benefits of using a Redis external database:
+Below are some of the benefits of using a self-managed Redis external database:
 
 - High availability
 - Disaster recovery
@@ -60,7 +60,7 @@ To create a firewall rule in GCP, do the following:
 
 ## Install Redis on GCP
 
-After you configure your firewall rules, you must install Redis on GCP.To install Redis on GCP, you must create three VMs, create a public zone, configure your Redis cluster, configure your Redis database, and test your connectivity.
+After you configure your firewall rules, you must install Redis on GCP. To install Redis on GCP, you must create three VMs, create a public zone, configure your Redis cluster, configure your Redis database, and test your connectivity.
 
 ### Create your VMs
 
