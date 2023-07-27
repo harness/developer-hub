@@ -15,4 +15,16 @@ export const SMPList: CardItem[] = [
     time: "5 min",
     link: "/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database",
   },
+  {
+    title: "Configure a self-managed TimescaleDB",
+    module: MODULES.smp,
+    icon: "img/logo.svg",
+    description: (
+      <>Learn how to use an external self-managed PostgreSQL database with Self-Managed Enterprise Edition installations.</>
+    ),
+    newDoc: false,
+    type: [docType.Documentation],
+    time: "5 min",
+    link: "/tutorials/self-managed-enterprise-edition/use-an-external-sm-timescaledb",
+  },
 ];
