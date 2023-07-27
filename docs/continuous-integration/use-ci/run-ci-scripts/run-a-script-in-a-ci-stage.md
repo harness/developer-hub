@@ -62,7 +62,7 @@ import TabItem from '@theme/TabItem';
 1. Go to the **Build** stage in the pipeline where you want to add the **Run** step.
 2. Select **Add Step**, select **Add Step** again, and then select **Run** in the Step Library.
 3. Enter a **Name** and optional **Description**.
-4. Depending on the stage's build infrastructure, specify the **Container Registry** and **Image** containing the binaries that the step needs to run your script. For example, a cURL script may require a cURL image, such as `curlimages/curl:7.73.0`. For information about when these fields are required and how to specify images, go to the [Run step settings reference](./run-step-settings.md).
+4. Depending on the stage's build infrastructure, specify the **Container Registry** and **Image** containing the binaries that the step needs to run your script. For example, a cURL script may require a cURL image, such as `curlimages/curl:7.73.0`. For information about when these fields are required and how to specify images, go to [Use Run steps](./run-step-settings.md).
 5. Select the **Shell** type and input your script in the **Command** field.
 6. Populate other [Run step settings](./run-step-settings.md) as necessary. For example:
 
@@ -92,7 +92,7 @@ For all build infrastructures, you must specify `type`, `name`, `identifier`, `s
                       # Enter commands/script.
 ```
 
-Depending on your build infrastructure and the commands you are running, `connectorRef` and `image` might be required. These settings define a container registry connector and image containing the binaries that the step needs to run your script. For example, a cURL script might require a cURL image, such as `curlimages/curl:7.73.0`. For information about when these settings are required and how to specify images, go to the [Run step settings reference](./run-step-settings.md).
+Depending on your build infrastructure and the commands you are running, `connectorRef` and `image` might be required. These settings define a container registry connector and image containing the binaries that the step needs to run your script. For example, a cURL script might require a cURL image, such as `curlimages/curl:7.73.0`. For information about when these settings are required and how to specify images, go to [Use Run steps](./run-step-settings.md).
 
 The following example shows a `Run` step with `connectorRef` and `image`.
 
