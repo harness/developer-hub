@@ -4,7 +4,7 @@ description: TestRail is a test management platform.
 sidebar_position: 60
 ---
 
-[TestRail](https://www.testrail.com/) is a test management platform. To analyze your TestRail data in SEI, set up a [TestRail SEI integration](../../sei-integrations/sei-connector-testrail.md), and then add TestRail reports to your [Insights](../../sei-insights.md).
+[TestRail](https://www.testrail.com/) is a test management platform. To analyze your TestRail data in SEI, set up a [TestRail SEI integration](../../sei-integrations/sei-integration-testrail.md), and then add TestRail reports to your [Insights](../../sei-insights.md).
 
 * TestRail Test Report
 * TestRail Test Trend Report

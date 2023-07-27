@@ -9,7 +9,7 @@ GitLab is a DevOps platform that provides Git repos, CI/CD pipelines, issue mana
 
 Use the SEI GitLab integration to integrate SEI with Cloud-based GitLab instances.
 
-To integrate with an on-premises, privately-hosted GitLab instance, you must use the [generic SEI integration](./sei-connector-generic.md) with API key (personal access token) authentication.
+To integrate with an on-premises, privately-hosted GitLab instance, you must use the [generic SEI integration](./sei-integration-generic.md) with API key (personal access token) authentication.
 
 ## Configure authentication
 

@@ -34,5 +34,5 @@ You can link Salesforce tickets to Jira issues by using a custom Jira field.
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Integrations** under **Data Settings**.
-3. Find your [SEI Jira integration](./sei-connector-jira.md) and edit it.
+3. Find your [SEI Jira integration](./sei-integration-jira.md) and edit it.
 4. Under **Salesforce Mapping**, select the Jira field that contains your Salesforce case IDs.

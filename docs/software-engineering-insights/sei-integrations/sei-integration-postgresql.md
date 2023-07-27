@@ -15,7 +15,7 @@ This SEI integration is under development. It provides limited integration suppo
 
 :::
 
-To integrate with an on-premises PostgreSQL instance, you must use the [generic SEI integration](./sei-connector-generic.md).
+To integrate with an on-premises PostgreSQL instance, you must use the [generic SEI integration](./sei-integration-generic.md).
 
 ## Configure the integration
 

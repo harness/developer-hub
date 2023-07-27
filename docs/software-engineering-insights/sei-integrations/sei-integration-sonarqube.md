@@ -9,7 +9,7 @@ SonarQube is an open-source platform for continuous inspection of code quality t
 
 Use the SEI SonarQube integration to integrate SEI with SonarQube or SonarCloud.
 
-To integrate with the on-premises SonarQube instances, you must use the [generic SEI integration](./sei-connector-generic.md).
+To integrate with the on-premises SonarQube instances, you must use the [generic SEI integration](./sei-integration-generic.md).
 
 ## Requirements
 

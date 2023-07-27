@@ -9,7 +9,7 @@ Perforce Helix Core is a version control software for large scale development en
 
 Use the SEI Helix integration to integrate SEI with remote Helix Core Server instances.
 
-To integrate with the on-premises instances of Helix Core Server, you must use the [generic SEI integration](./sei-connector-generic.md).
+To integrate with the on-premises instances of Helix Core Server, you must use the [generic SEI integration](./sei-integration-generic.md).
 
 ## Configure the SEI user
 

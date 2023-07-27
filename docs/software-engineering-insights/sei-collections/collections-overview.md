@@ -14,7 +14,7 @@ Collection hierarchies in SEI keep data organized. At the top of the hierarchy i
 
 ![](./static/collections-hierarchies-diagram.png)
 
-<figcaption>A diagram of the relationship between projects, Collection categories, and Collections. SEI connectors (integrations) feed data from your SDLC tools into the project and the corresponding Collection categories and Collections. Data is ultimately displayed on Insights, which are associated with particular Collections.</figcaption>
+<figcaption>A diagram of the relationship between projects, Collection categories, and Collections. SEI integrations feed data from your SDLC tools into the project and the corresponding Collection categories and Collections. Data is ultimately displayed on Insights, which are associated with particular Collections.</figcaption>
 </figure>
 
 Projects, Collection categories, and Collections provide a broad way of organizing, filtering, and scoping data so you can examine data for different teams, lines of business, development initiatives, sprints, or other scopes. From there, you can configure [metrics and reports](/docs/category/metrics-and-reports) to further refine and examine different facets of your teams' data.

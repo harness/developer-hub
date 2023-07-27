@@ -9,7 +9,7 @@ PagerDuty specializes in a SaaS incident response platform for IT departments.
 
 Use the SEI PagerDuty integration to integrate SEI with any Cloud-based PagerDuty account/plan.
 
-To integrate with an on-premises PagerDuty offering, you must use the [generic SEI integration](./sei-connector-generic.md).
+To integrate with an on-premises PagerDuty offering, you must use the [generic SEI integration](./sei-integration-generic.md).
 
 ## Requirements
 

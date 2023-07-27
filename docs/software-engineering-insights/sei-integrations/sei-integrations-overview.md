@@ -12,33 +12,33 @@ To integrate a tool with SEI, you can use either an application-specific SEI int
 
 ## Application-specific SEI integrations
 
-* [Azure DevOps Services](./sei-connector-azure-devops.md)
-* [Bitbucket](./sei-connector-bitbucket.md)
-* [Checkmarx SAST](./sei-connector-checkmarx.md)
-* [Circle CI](./sei-connector-circleci.md)
-* [Coverity](./sei-connector-coverity.md)
-* [Drone CI](./sei-connector-droneci.md)
-* [Gerrit](./sei-connector-gerrit.md)
-* [GitHub](./sei-connector-github.md)
-* [GitLab](./sei-connector-gitlab.md)
-* [Harness NG](./sei-connector-harnessng.md)
-* [Helix Core Server](./sei-connector-helix.md)
-* [Jira](./sei-connector-jira.md)
-* [Microsoft Teams](./sei-connector-ms-teams.md)
-* [PagerDuty](./sei-connector-pagerduty.md)
-* [PostgreSQL](./sei-connector-postgresql.md)
-* [Salesforce](./sei-connector-salesforce.md)
-* [Slack](./sei-connector-slack.md)
-* [Snyk](./sei-connector-snyk.md)
-* [SonarQube](./sei-connector-sonarqube.md)
-* [Splunk](./sei-connector-splunk.md)
-* [Tenable](./sei-connector-tenable.md)
-* [TestRail](./sei-connector-testrail.md)
-* [Zendesk](./sei-connector-zendesk.md)
+* [Azure DevOps Services](./sei-integration-azure-devops.md)
+* [Bitbucket](./sei-integration-bitbucket.md)
+* [Checkmarx SAST](./sei-integration-checkmarx.md)
+* [Circle CI](./sei-integration-circleci.md)
+* [Coverity](./sei-integration-coverity.md)
+* [Drone CI](./sei-integration-droneci.md)
+* [Gerrit](./sei-integration-gerrit.md)
+* [GitHub](./sei-integration-github.md)
+* [GitLab](./sei-integration-gitlab.md)
+* [Harness NG](./sei-integration-harnessng.md)
+* [Helix Core Server](./sei-integration-helix.md)
+* [Jira](./sei-integration-jira.md)
+* [Microsoft Teams](./sei-integration-ms-teams.md)
+* [PagerDuty](./sei-integration-pagerduty.md)
+* [PostgreSQL](./sei-integration-postgresql.md)
+* [Salesforce](./sei-integration-salesforce.md)
+* [Slack](./sei-integration-slack.md)
+* [Snyk](./sei-integration-snyk.md)
+* [SonarQube](./sei-integration-sonarqube.md)
+* [Splunk](./sei-integration-splunk.md)
+* [Tenable](./sei-integration-tenable.md)
+* [TestRail](./sei-integration-testrail.md)
+* [Zendesk](./sei-integration-zendesk.md)
 
 ## Generic SEI integration (other integrations)
 
-Use the [generic SEI integration](./sei-connector-generic.md) for integrations that don't have an application-specific SEI integration or when your configuration doesn't support the application-specific SEI integration, including:
+Use the [generic SEI integration](./sei-integration-generic.md) for integrations that don't have an application-specific SEI integration or when your configuration doesn't support the application-specific SEI integration, including:
 
 * On-premise tools and integrations that use *Ingestion Satellites*.
 * The *Job Reporter plugin* for Jenkins.

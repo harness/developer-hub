@@ -9,7 +9,7 @@ Jira is a proprietary issue tracking product that allows bug tracking and agile 
 
 Use the SEI Jira integration to integrate SEI with Jira in the Cloud.
 
-To integrate with the on-premises Jira instances, you must use the [generic SEI integration](./sei-connector-generic.md) with username and password authentication.
+To integrate with the on-premises Jira instances, you must use the [generic SEI integration](./sei-integration-generic.md) with username and password authentication.
 
 ## Configure Jira
 
@@ -36,7 +36,7 @@ Due to the scope of visibility required, consider using a managed service accoun
 
 ## Add the Salesforce mapping
 
-If you also have an [SEI Salesforce integration](./sei-connector-salesforce.md), you can link Salesforce tickets to Jira issues by using a custom Jira field.
+If you also have an [SEI Salesforce integration](./sei-integration-salesforce.md), you can link Salesforce tickets to Jira issues by using a custom Jira field.
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Integrations** under **Data Settings**.

@@ -9,7 +9,7 @@ Drone is a self-service CI platform for busy development teams.
 
 Use the SEI Drone CI integration to integrate SEI with Drone.
 
-To integrate with Harness CI, use the [SEI Harness NG integration](./sei-connector-harnessng.md).
+To integrate with Harness CI, use the [SEI Harness NG integration](./sei-integration-harnessng.md).
 
 ## Requirements
 

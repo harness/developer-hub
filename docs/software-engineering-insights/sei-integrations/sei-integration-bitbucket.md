@@ -9,7 +9,7 @@ Bitbucket is a web-based version control repository hosting service, for source 
 
 Use the SEI Bitbucket integration to integrate SEI with Bitbucket Cloud or Bitbucket Enterprise.
 
-To integrate with the on-premises offering, Bitbucket Data Center, you must use the [generic SEI integration](./sei-connector-generic.md).
+To integrate with the on-premises offering, Bitbucket Data Center, you must use the [generic SEI integration](./sei-integration-generic.md).
 
 ## Requirements
 
