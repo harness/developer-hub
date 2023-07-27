@@ -17,6 +17,18 @@ For information about how to connect to a cloud provider, go to [Connect to a cl
 
 Any running instance of cloud infrastructure, for example an EC2 instance or an S3 bucket.
 
+## Workspace
+
+A group of infrastructure resources. A workspace brings together IaC code, IaC variables, cloud provider connection, state and workflows. For Terraform, every workspace has its own state file.
+
+## Variables
+
+Typically, IaC code is extended by inserting variables. Environment and Terraform variables are available. 
+
+## Provision
+
+The process of taking the infrastructure configuration and applying it against a cloud provider to create cloud resources. For example, running `terraform apply` using a main.tf file.
+
 ## Destroy
 
 The process of removing all resources that are provisioned under the IaC code. This is also called Destroy. 
@@ -33,18 +45,6 @@ Functionality to determine if the cloud resources defined in the IaC code are pr
 
 Functionality to monitor the current state and to track changes to a stack over its lifecycle. 
 
-## Provision
-
-The process of taking the infrastructure configuration and applying it against a cloud provider to create cloud resources. For example, running `terraform apply` using a main.tf file.
-
 ## Terraform state backend
 
 A service that manages access and changes to a shared Terraform statefile.
-
-## Variables
-
-Typically, IaC code is extended by inserting variables. Environment and Terraform variables are available. 
-
-## Workspace
-
-A group of infrastructure resources. A workspace brings together IaC code, IaC variables, cloud provider connection, state and workflows. For Terraform, every stack has its own state file.
