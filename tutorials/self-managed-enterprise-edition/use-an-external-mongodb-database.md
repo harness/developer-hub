@@ -1,7 +1,7 @@
 ---
-title: Use an external cloud-based MongoDB server with your installation
-description: Learn how to use an external cloud-based MongoDB server with Self-Managed Enterprise Edition installations.
-sidebar_label: Configure an external cloud-based MongoDB server
+title: Use an external cloud-based MongoDB with your installation
+description: Learn how to use an external cloud-based MongoDB with Self-Managed Enterprise Edition installations.
+sidebar_label: Configure an external cloud-based MongoDB
 # sidebar_position: 2
 ---
 
