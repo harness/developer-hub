@@ -8,7 +8,7 @@ export const SMPList: CardItem[] = [
     module: MODULES.smp,
     icon: "img/logo.svg",
     description: (
-      <>Learn how to use an external cloud-based MongoDB server with Self-Managed Enterprise Edition installations.</>
+      <>Learn how to use an external cloud-based MongoDB with Self-Managed Enterprise Edition installations.</>
     ),
     newDoc: false,
     type: [docType.Documentation],
