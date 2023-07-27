@@ -50,7 +50,7 @@ We'll be using public manifests from <https://github.com/argoproj/argocd-example
 
 ## Note
 
-GitOps entities can be created at all three levels: account, organization, and project. The agent serves as the prerequisite for creating other entities. A GitOps agent associated with an account has the authority to create and control entities at all levels. On the other hand, an organization-level agent can manage entities within the organization and its projects, while a project-level agent is limited to managing entities at the project level.
+GitOps entities can be created at account, organization, and project levels. The GitOps Agent is needed to create other entities. A GitOps Agent associated with an account has the authority to create and control entities at all levels. However, an organization-level Agent can manage entities within the organization and its projects and a project-level Agent can only manage entities at a project level.
 
 ## Step 1: Add a Harness GitOps Agent
 
