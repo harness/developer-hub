@@ -22,7 +22,7 @@ For more information, go to [Harness Policy As Code quickstart](/docs/platform/G
 
 For information about how to add a policy step to a stage, go to [Add a policy step to a pipeline](https://developer.harness.io/docs/platform/Governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline).
 
-This topic provides sample policies you can use in policy steps and on pipeline-level events like On Run and On Save.
+This topic provides sample policies you can use in policy steps and on pipeline-level events like **On Run** and **On Save**.
 
 <!-- https://ecotrust-canada.github.io/markdown-toc/ -->
 
