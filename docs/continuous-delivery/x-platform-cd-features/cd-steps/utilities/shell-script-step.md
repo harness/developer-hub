@@ -6,7 +6,7 @@ sidebar_position: 3
 
 This topic provides settings and permissions for the Shell Script CD step.
 
-For steps on using the step, go to [using shell scripts in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts).
+For steps on using the step, go to [using shell scripts in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts).
 
 ## Limitations
 
@@ -65,13 +65,13 @@ While you can simply declare a variable in your script using a Harness expressio
 * You can more easily identify and manage the Harness expressions used in your script.
 * You can template your script.
 
-For details, go to [using shell scripts in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts).
+For details, go to [using shell scripts in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts).
 
 ### Script output variables
 
 To export variables from the script to other steps in the stage, you use the **Script Output Variables** option.
 
-For details, go to [using shell scripts in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts).
+For details, go to [using shell scripts in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts).
 
 Shell Script step output variables have a maximum size of 512KB.
 
