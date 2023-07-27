@@ -84,6 +84,23 @@ Verify that you have the following:
 9. Select **Save Changes** and verify that the new connector named **harness_awsconnector** is successfully created.
 10. Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
 
+### Github Connector
+
+:::info
+
+If you already have a git connector that gives access to your forked [harnesscd-example-apps](https://github.com/harness-community/harnesscd-example-apps), then proceed to creating a pipeline directly. 
+
+:::
+
+1. Create the **GitHub connector**.
+    - Copy the contents of [github-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/guestbook/harnesscd-pipeline/github-connector.yml).
+    - In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
+    - Select **Create via YAML Builder** and paste the copied YAML.
+    - Assuming you have already forked the [harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork) repository mentioned earlier, replace **GITHUB_USERNAME** with your GitHub account username in the YAML.
+    - In `projectIdentifier`, verify that the project identifier is correct. You can see the Id in the browser URL (after `account`). If it is incorrect, the Harness YAML editor will suggest the correct Id.
+    - Select **Save Changes** and verify that the new connector named **harness_gitconnector** is successfully created.
+    - Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
+
 ### Create Pipeline with Custom Stage
 
 1. In **Default Project**, select **Pipelines** from left nav-bar.
@@ -98,7 +115,14 @@ Verify that you have the following:
 
 ### CloudFormation Create Stack Step
 
-5. 
+5. Under the **Step Parameters** add the **Provision Identifier** as `demo-provision`.
+6. Add the **AWS Connector** you created before and add the region for which your connector has persmission to create the Cloudformation Stack.
+7. Assuming you have already forked the harness-cd-example apps and have a functional github connector, use the same to add the template file in the file store.
+8. Select the **Git Fetch type** as `Latest from Branch` and add the **Branch** as `main` and **Template File Path** as `cf_template.yaml` and **Submit**
+9. Now provide the **Stack Name** as `harness-provisoned-stack` and **Apply Changes**.
+10. Now **Save** and **Run** the pipeline. 
+
+Check your AWS Management console for CloudFormation and you'll find the new CloudFormation Stack created. 
 
 
 ```mdx-code-block
@@ -106,6 +130,7 @@ Verify that you have the following:
 <TabItem value="Rollback provisioned infrastructure with the CloudFormation Rollback step">
 ```
 This tutorial will **rollback infrastructure** using **CloudFormation Rollback Stack step** in the **Rollback section** of your Deploy stage.
+
 
 
 ```mdx-code-block
