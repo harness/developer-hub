@@ -560,12 +560,6 @@ Ensure the Harness delegate you have installed can reach `storage.cloud.google.c
 
 ### Google Cloud Storage (GCS)
 
-:::note
-
-Currently, Google Cloud Storage (GCS) is behind the feature flag `CDS_GOOGLE_CLOUD_FUNCTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
-
 <details>
 <summary>Use GCS artifacts</summary>
 
@@ -2882,7 +2876,18 @@ For more information, go to [Bamboo Permissions](https://confluence.atlassian.co
 
 You can use Github Packages as artifacts for deployments.
 
-Currently, Harness supports only the packageType as `docker(container)`. Support for npm, maven, rubygems, and nuget is coming soon. 
+Package type (`packageType`) support:
+
+- Docker 
+- NPM
+- Maven
+- Nuget
+
+:::note
+
+Currently, support for NPM, Maven, and Nuget are behind the feature flag `CDS_GITHUB_PACKAGES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
 
 You connect to GitHub using a Harness [GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference), username, and personal access token (PAT).
 

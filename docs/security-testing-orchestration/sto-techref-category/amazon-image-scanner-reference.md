@@ -8,11 +8,21 @@ You can set up an Amazon Image scanner using a Security step: create a CI Build 
 
 ## Before you begin
 
+### Docker-in-Docker requirements
+
 ```mdx-code-block
-import StoCreateDinD from './shared/dind-bg-step.md';
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 ```
 
-<StoCreateDinD />
+<StoDinDRequirements />
+
+### Root access requirements
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
 
 
 
@@ -31,6 +41,16 @@ import StoCreateDinD from './shared/dind-bg-step.md';
 * `container_domain` = URI of the ECR container with the scan results you want to load.
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
+### Target and variant
+
+```mdx-code-block
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
+```
+
+<StoLegacyTargetAndVariant />
+
+
+### Container settings
 
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
@@ -38,13 +58,15 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 
 <StoLegacyContainer />
 
+### Ingestion file
+
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
 
-## Fail on Severity
+###  Fail on Severity
 
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
