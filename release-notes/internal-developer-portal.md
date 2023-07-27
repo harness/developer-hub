@@ -43,7 +43,7 @@ This release does not include early access features.
 
   This issue is now fixed. 
 
-- If you used a GitHub connector that used a Github App for API authentication and if the private key was a text secret, the catalog import in IDP failed. The failure was caused by Harness Secrets Manager not storing the specified private key with line breaks, which IDP expects along with proper indentation.
+- If you used a GitHub connector that used a Github App for API authentication and if the private key was a text secret, the catalog import in IDP failed. The failure was caused by Harness Secrets Manager not storing the specified private key with line breaks, which IDP expects along with proper indentation. (IDP-850, ZD-47845)
 
   Harness Secrets Manager now formats text secrets properly for text secrets used with IDP.
 
