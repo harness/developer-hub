@@ -171,7 +171,7 @@ Similar to the [Issue Lead Time by Stage Report](#issue-lead-time-by-stage-repor
 When you configure a single stat widget:
 
 * You can create filters for any field that can be viewed as a single value, such as issue type, priority, status, labels, components, and so on.
-* The available fields depend on your [integrations](/docs/category/connectors-and-integrations), and you can choose from custom fields, if they exist in your SCM, issue management, or support tool.
+* The available fields depend on your [integrations](/docs/category/integrations), and you can choose from custom fields, if they exist in your SCM, issue management, or support tool.
 * If you use multiple filters to focus the widget (such as to show the total number of *bugs* in the *won't do* status for a specific project), the filters are inherently combined by `AND` operators.
 * Keep in mind that single stat widgets intend to show a single value, such as the total number of tickets or the sum of story points. Determine what single stat you want to show, and then create your filters accordingly.
 

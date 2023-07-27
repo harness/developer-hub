@@ -6,13 +6,11 @@ sidebar_position: 10
 
 In order to calculate metrics, you must integrate your SDLC tools with SEI.
 
-SEI integrations are handled through SEI connectors. SEI connectors contain the information necessary for the Harness Platform and modules to integrate and work with SDLC tools, such as Git providers, issue management systems, communication tools, and more. For example, an SEI GitHub connector authenticates through a GitHub account to collect data about activity in your teams' GitHub repos (such as PRs, commits, and merges).
+SEI integrations are handled through SEI integrations. SEI integrations contain the information necessary for the Harness Platform and modules to integrate and work with SDLC tools, such as Git providers, issue management systems, communication tools, and more. For example, an SEI GitHub integration authenticates through a GitHub account to collect data about activity in your teams' GitHub repos (such as PRs, commits, and merges).
 
-SEI connectors are similar to Harness connectors, but they are specific to SEI data ingestion. For general information about Harness connectors, go to the Harness Platform documentation on [connectors](/docs/category/connectors).
+To integrate a tool with SEI, you can use either an application-specific SEI integration the generic SEI integration.
 
-To integrate a tool with SEI, you can use either an application-specific SEI connector the generic SEI connector.
-
-## Application-specific SEI connectors
+## Application-specific SEI integrations
 
 * [Azure DevOps Services](./sei-connector-azure-devops.md)
 * [Bitbucket](./sei-connector-bitbucket.md)
@@ -38,11 +36,11 @@ To integrate a tool with SEI, you can use either an application-specific SEI con
 * [TestRail](./sei-connector-testrail.md)
 * [Zendesk](./sei-connector-zendesk.md)
 
-## Generic SEI connector (other integrations)
+## Generic SEI integration (other integrations)
 
-Use the [generic SEI connector](./sei-connector-generic.md) for integrations that don't have an application-specific SEI connector or when your configuration doesn't support the application-specific SEI connector, including:
+Use the [generic SEI integration](./sei-connector-generic.md) for integrations that don't have an application-specific SEI integration or when your configuration doesn't support the application-specific SEI integration, including:
 
 * On-premise tools and integrations that use *Ingestion Satellites*.
 * The *Job Reporter plugin* for Jenkins.
 * Custom CI/CD integrations.
-* Other tools that don't have an application-specific SEI connector.
+* Other tools that don't have an application-specific SEI integration.

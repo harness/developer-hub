@@ -1,26 +1,26 @@
 ---
-title: Generic SEI connector
-description: Use the generic SEI connector when you can't use an application-specific SEI connector.
+title: Generic SEI integration
+description: Use the generic SEI integration when you can't use an application-specific SEI integration.
 sidebar_position: 250
 sidebar_label: Other integrations
 ---
 
-Use the generic SEI connector for integrations that don't have an application-specific SEI connector or when your configuration doesn't support the application-specific SEI connector, including:
+Use the generic SEI integration for integrations that don't have an application-specific SEI integration or when your configuration doesn't support the application-specific SEI integration, including:
 
 * On-premise tools and integrations that historically used *Ingestion Satellites*.
 * The *Job Reporter Plugin* for Jenkins.
 * Custom CI/CD integrations.
-* Other tools that don't have an application-specific SEI connector.
+* Other tools that don't have an application-specific SEI integration.
 
 ## On-premise integrations (Ingestion Satellites)
 
-For on-premise integrations, you need to use the generic SEI connector and install an Ingestion Satellite.
+For on-premise integrations, you need to use the generic SEI integration and install an Ingestion Satellite.
 
-### Configure the connector
+### Configure the integration
 
-1. In your Harness project, go to the SEI module, select **Account**, and then select **SEI Connectors** under **Data Settings**.
-2. Select **Available Connectors**, locate the generic SEI connector, and select **Install**.
-3. Configure the connector.
+1. In your Harness project, go to the SEI module, select **Account**, and then select **SEI Integrations** under **Data Settings**.
+2. Select **Available Integrations**, locate the generic SEI integration, and select **Install**.
+3. Configure the integration.
 4. When you reach the **Credentials** settings, select **Satellite integration**, and enter your credentials.
 
    These credentials are used to generate the Satellite configuration file.
@@ -324,7 +324,7 @@ The plugin gathers information about job stages and steps depending on the outco
 * If a job run fails, and hte job has steps, then the plugin captures failure logs for the failed steps.
 * The plugin doesn't capture logs for any successful jobs, stages, or steps.
 
-To use this plugin, you need to use the generic SEI connector and install the plugin in Jenkins.
+To use this plugin, you need to use the generic SEI integration and install the plugin in Jenkins.
 
 1. In Jenkins, select **Manage Jenkins**.
 2. Select **Manage Plugins**.
@@ -333,9 +333,9 @@ To use this plugin, you need to use the generic SEI connector and install the pl
 
    When plugin installation is complete, the status changes to success. If it doesn't change to success, you might need to restart.
 
-5. In your Harness project, go to the SEI module, select **Account**, and then select **SEI Connectors** under **Data Settings**.
-6. Select **Available Connectors**, locate the generic SEI connector, and select **Install**.
-7. Configure the connector for Jenkins.
+5. In your Harness project, go to the SEI module, select **Account**, and then select **SEI Integrations** under **Data Settings**.
+6. Select **Available Integrations**, locate the generic SEI integration, and select **Install**.
+7. Configure the integration for Jenkins.
 
 <details>
 <summary>Plugin dependencies</summary>
@@ -368,9 +368,9 @@ SEI supports custom CI/CD integrations through webhooks.
 
 1. Create a [Harness API key](/docs/platform/user-management/add-and-manage-api-keys/) to use for authorization.
 2. Contact [Harness Support](mailto:support@harness.io) to get a UUID to identify your CI/CD system.
-3. In your Harness project, go to the SEI module, select **Account**, and then select **SEI Connectors** under **Data Settings**.
-4. Select **Available Connectors**, locate the generic SEI connector, and select **Install**.
-5. Configure the connector for a custom CI/CD integration. Configure the webhook API call according to the [webhook specification](#webhook-specification).
+3. In your Harness project, go to the SEI module, select **Account**, and then select **SEI Integrations** under **Data Settings**.
+4. Select **Available Integrations**, locate the generic SEI integration, and select **Install**.
+5. Configure the integration for a custom CI/CD integration. Configure the webhook API call according to the [webhook specification](#webhook-specification).
 
 ### Webhook specification
 

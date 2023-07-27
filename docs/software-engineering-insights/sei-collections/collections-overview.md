@@ -27,7 +27,7 @@ Collection categories and Collections exist under their associated project; they
 
 [Insights](../sei-insights.md) are associated with a specific project and one or more specific Collection categories and Collections under that project. It is not possible to create Insights that aggregate data from multiple projects.
 
-On your [Insights](../sei-insights.md), widgets derive data from [integrations](/docs/category/connectors-and-integrations) that are inherited from the Collection associated with the Insights. Collections inherit integrations from the [SEI connectors](/docs/category/connectors-and-integrations) defined in the associated project.
+On your [Insights](../sei-insights.md), widgets derive data from [integrations](/docs/category/integrations) that are inherited from the Collection associated with the Insights. Collections inherit integrations from the [SEI integrations](/docs/category/integrations) defined in the associated project.
 
 While you can create projects from within the SEI module, projects are part of the Harness Platform and can be associated with multiple modules. For information about configuring Harness projects, go to the Harness Platform documentation on [Organizations and Projects](/docs/category/organizations-and-projects).
 
@@ -47,7 +47,7 @@ For information about configuring Collection categories, go to [Manage Collectio
 
 ## Collections
 
-Under each Collection category are one or more levels of Collections. Collections are groupings, or focused classifications, that are subdivisions of Collection categories. Inheritance flows down the Collection levels. For example, all Collection categories and Collections automatically inherit SEI connectors from the associated Harness project.
+Under each Collection category are one or more levels of Collections. Collections are groupings, or focused classifications, that are subdivisions of Collection categories. Inheritance flows down the Collection levels. For example, all Collection categories and Collections automatically inherit [SEI integrations](/docs/category/integrations) from the associated Harness project.
 
 By default, each Collection category has one root, or **All**, Collection node. For example, the Teams category automatically has an **All Teams** Collection. Under the root node, you can create any number of Collections and Collection levels.
 

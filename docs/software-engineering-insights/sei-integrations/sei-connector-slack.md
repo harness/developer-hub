@@ -1,5 +1,5 @@
 ---
-title: SEI Slack connector
+title: SEI Slack integration
 description: Integrate SEI with Slack.
 sidebar_position: 180
 sidebar_label: Slack
@@ -7,11 +7,11 @@ sidebar_label: Slack
 
 Slack offers many IRC-style features, including persistent chat rooms organized by topic, private groups, and direct messaging.
 
-Use the SEI Slack connector to integrate SEI with Slack.
+Use the SEI Slack integration to integrate SEI with Slack.
 
 SEI uses OAuth to connect to Slack.
 
-You can either use the built-in Slack connector, or create your own Slack app.
+You can either use the built-in Slack integration, or create your own Slack app.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -19,13 +19,13 @@ import TabItem from '@theme/TabItem';
 ```
 ```mdx-code-block
 <Tabs>
-  <TabItem value="connector" label="Slack connector" default>
+  <TabItem value="integration" label="Slack integration" default>
 ```
 
 1. In your Harness project, go to the SEI module, and select **Account**.
-2. Select **SEI Connectors** under **Data Settings**.
-3. Select **Available Connectors**, locate the **Slack** connector, and select **Install**.
-4. Configure the connector. You must use OAuth authentication.
+2. Select **SEI Integrations** under **Data Settings**.
+3. Select **Available Integrations**, locate the **Slack** integration, and select **Install**.
+4. Configure the integration. You must use OAuth authentication.
 
 ```mdx-code-block
   </TabItem>

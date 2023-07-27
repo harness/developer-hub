@@ -16,7 +16,7 @@ For example, in the Teams category, you can have a Collection for your Engineeri
         * Other Engineering teams...
       * Other teams...
 
-Inheritance flows down the Collection levels. For example, Collection categories and Collections inherit SEI connectors from the associated [Harness project](/docs/category/organizations-and-projects), and child Collections inherit [Insights associations](#manage-insights-associations) from their ancestor Collections. For more information about the relationship between projects, Collection categories, and Collections, go to [Collection hierarchies](./collections-overview.md).
+Inheritance flows down the Collection levels. For example, Collection categories and Collections inherit [SEI integrations](/docs/category/integrations) from the associated [Harness project](/docs/category/organizations-and-projects), and child Collections inherit [Insights associations](#manage-insights-associations) from their ancestor Collections. For more information about the relationship between projects, Collection categories, and Collections, go to [Collection hierarchies](./collections-overview.md).
 
 ## View Collections
 
@@ -51,7 +51,7 @@ Options for editing Collections are only available on **Flat List** view.
    * Change the Collection's position in the hierarchy by changing the **Parent Node**.
 
 5. Use the **Insights** settings to [manage Insights associations](#manage-insights-associations). By default, child Collections automatically inherit Insights associations from their ancestor Collections.
-6. Use the **Definition** settings to define [integrations](/docs/category/connectors-and-integrations) associated with the Collection. By default, if you don't specify any integrations, the Collection automatically inherits integrations from the associated project.
+6. Use the **Definition** settings to define [integrations](/docs/category/integrations) associated with the Collection. By default, if you don't specify any integrations, the Collection automatically inherits integrations from the associated project.
 7. Select **Save**.
 
 ### Manage Insights associations

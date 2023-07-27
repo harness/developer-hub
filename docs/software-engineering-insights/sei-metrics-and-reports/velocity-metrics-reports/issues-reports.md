@@ -27,7 +27,7 @@ The following settings are available to configure the Issues Report:
    * **X-axis:** Select the attribute to use for the X-axis. For example, if you selected the **Number of Tickets** metric for the Y-axis, you could select **Issues Resolved by week** for the X-axis. Additional examples of X-axis dimensional attributes include **Project**, **Assignee**, **Labels**, **Priority**, and so on.
    * **Stacks:** Select how you want to group data in each X-axis dimension. For example, if you select **Priority** for the X-axis and stack by **Status Category**, then data in each X-axis column are grouped by status.
 * **Settings:**
-   * Select the issue management system to use for this widget. Available options are based on your [SEI connectors](/docs/category/connectors-and-integrations).
+   * Select the issue management system to use for this widget. Available options are based on your [SEI integrations](/docs/category/integrations).
    * Select how you want to sort X-axis data, such as ascending or descending.
    * Select the maximum number of values to show on the X-axis.
    * Select the visualization style for the widget, such as bar chart, donut chart, multi-line chart, or percentage-stacked bar chart.
@@ -144,7 +144,7 @@ On the **Aggregations** tab, you can select the dimension, from your issue manag
 
 On the **Settings** tab, you can:
 
-* Select the issue management system to use for this widget. Available options are based on your configured [SEI connectors](/docs/category/connectors-and-integrations).
+* Select the issue management system to use for this widget. Available options are based on your configured [SEI integrations](/docs/category/integrations).
 * Select how you want to sort X-axis data, such as ascending or descending.
 * Select the maximum number of unique values to show on the X-axis.
 
@@ -254,7 +254,7 @@ To get the most benefit from this report, the following best practices are recom
 
 This widget requires both the release time and resolution time of issues as mandatory inputs. This is because the deployment process can only include tickets that have reached the **Resolved** status.
 
-You can select any attributes, such as priority, status, labels, components, or any other field, to precisely refine this report according to your release process. Available options are based on your [SEI connectors](/docs/category/connectors-and-integrations). If you add multiple filters, they are inherently combined by `AND` operators.
+You can select any attributes, such as priority, status, labels, components, or any other field, to precisely refine this report according to your release process. Available options are based on your [SEI integrations](/docs/category/integrations). If you add multiple filters, they are inherently combined by `AND` operators.
 
 :::tip
 
@@ -373,7 +373,7 @@ Single stats are versatile widgets that provide a single metric over a given tim
 When you configure a single stat widget:
 
 * You can create filters for any field that can be viewed as a single value, such as issue type, priority, status, labels, components, and so on.
-* The available fields depend on your [integrations](/docs/category/connectors-and-integrations), and you can choose from custom fields, if they exist in your SCM, issue management, or support tool.
+* The available fields depend on your [integrations](/docs/category/integrations), and you can choose from custom fields, if they exist in your SCM, issue management, or support tool.
 * If you use multiple filters to focus the widget (such as to show the total number of *bugs* in the *won't do* status for a specific project), the filters are inherently combined by `AND` operators.
 * Keep in mind that single stat widgets intend to show a single value, such as the total number of tickets or the sum of story points. Determine what single stat you want to show, and then create your filters accordingly.
 

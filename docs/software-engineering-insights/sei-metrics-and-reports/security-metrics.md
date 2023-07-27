@@ -5,7 +5,7 @@ sidebar_position: 50
 sidebar_label: Security
 ---
 
-SEI [integrates](/docs/category/connectors-and-integrations) with some of the best security tools to produce reports that help you analyze anomalies or threats that can lead to failures and data loss or corruption.
+SEI [integrates](/docs/category/integrations) with some of the best security tools to produce reports that help you analyze anomalies or threats that can lead to failures and data loss or corruption.
 
 
 ## Coverity
@@ -22,17 +22,17 @@ Coverity is a fast, accurate, and highly scalable static analysis (SAST) solutio
 
 The Microsoft Threat Modeling tool allows software architects to identify and mitigate potential security issues early, when they are relatively easy and cost-effective to resolve.
 
-You can use the [generic SEI connector](../sei-integrations/sei-connector-generic.md) to integrate with the Microsoft Threat Modeling tool, and then add the **Microsoft Threat Modeling Issues Report** to your [Insights](../sei-insights.md). This report helps track the progress of the issues reported by the Microsoft Threat Modeling tool. This report includes the total number of issues and their priority rankings.
+You can use the [generic SEI integration](../sei-integrations/sei-connector-generic.md) to integrate with the Microsoft Threat Modeling tool, and then add the **Microsoft Threat Modeling Issues Report** to your [Insights](../sei-insights.md). This report helps track the progress of the issues reported by the Microsoft Threat Modeling tool. This report includes the total number of issues and their priority rankings.
 
 ## NCC Group Vulnerability Scans
 
 The NCC Group's Managed Vulnerability Scanning Services deliver hands-on rapid detection, monitoring, and remediation of internal and external system vulnerabilities.
 
-You can use the [generic SEI connector](../sei-integrations/sei-connector-generic.md) to integrate with the NCC Group Vulnerability Scanner, and then add the **NCC Group Vulnerability Report** to your [Insights](../sei-insights.md). This report provides details on detected vulnerabilities. Vulnerabilities can be categorized by status.
+You can use the [generic SEI integration](../sei-integrations/sei-connector-generic.md) to integrate with the NCC Group Vulnerability Scanner, and then add the **NCC Group Vulnerability Report** to your [Insights](../sei-insights.md). This report provides details on detected vulnerabilities. Vulnerabilities can be categorized by status.
 
 ## Praetorian
 
-You can use the [generic SEI connector](../sei-integrations/sei-connector-generic.md) to integrate with [Praetorian](https://www.praetorian.com/), and then add the **Praetorian Issues Report** to your [Insights](../sei-insights.md). This report helps analyze security vulnerabilities reported by Praetorian.
+You can use the [generic SEI integration](../sei-integrations/sei-connector-generic.md) to integrate with [Praetorian](https://www.praetorian.com/), and then add the **Praetorian Issues Report** to your [Insights](../sei-insights.md). This report helps analyze security vulnerabilities reported by Praetorian.
 
 ## Snyk
 

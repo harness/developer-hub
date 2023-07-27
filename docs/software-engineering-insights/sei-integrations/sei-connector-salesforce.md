@@ -1,5 +1,5 @@
 ---
-title: SEI Salesforce connector
+title: SEI Salesforce integration
 description: Integrate SEI with Salesforce.
 sidebar_position: 170
 sidebar_label: Salesforce
@@ -7,7 +7,7 @@ sidebar_label: Salesforce
 
 Salesforce is a customer relationship management solution that brings companies and customers together.
 
-Use the SEI Salesforce connector to integrate SEI with Salesforce.
+Use the SEI Salesforce integration to integrate SEI with Salesforce.
 
 SEI uses OAuth 2.0 to connect to Salesforce.
 
@@ -21,18 +21,18 @@ To transmit data from Salesforce to SEI, you must create an SEI user in your Sal
 
 For more information, go to the Salesforce documentation on [creating or cloning profiles](https://help.salesforce.com/s/articleView?id=sf.users_profiles_cloning.htm&type=5) and [adding a single user](https://help.salesforce.com/s/articleView?id=sf.adding_new_users.htm&type=5).
 
-## Configure the connector
+## Configure the integration
 
 1. In your Harness project, go to the SEI module, and select **Account**.
-2. Select **SEI Connectors** under **Data Settings**.
-3. Select **Available Connectors**, locate the **Salesforce** connector, and select **Install**.
-4. Configure the connector. You must use OAuth authentication.
+2. Select **SEI Integrations** under **Data Settings**.
+3. Select **Available Integrations**, locate the **Salesforce** integration, and select **Install**.
+4. Configure the integration. You must use OAuth authentication.
 
 ## Add the Jira mapping
 
 You can link Salesforce tickets to Jira issues by using a custom Jira field.
 
 1. In your Harness project, go to the SEI module, and select **Account**.
-2. Select **SEI Connectors** under **Data Settings**.
-3. Find your [SEI Jira connector](./sei-connector-jira.md) and edit it.
+2. Select **SEI Integrations** under **Data Settings**.
+3. Find your [SEI Jira integration](./sei-connector-jira.md) and edit it.
 4. Under **Salesforce Mapping**, select the Jira field that contains your Salesforce case IDs.

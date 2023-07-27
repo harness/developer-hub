@@ -88,7 +88,7 @@ Use the **SCM Issues Resolution Time Report** to analyze the overall time taken 
 
 The **SCM Issues Time Across Stages Report** analyzes cycle time for SCM issues. You can configure this widget by project, repository, or other parameters to help you identify the Kanban state where issues spend the most time.
 
-Only GitHub is supported, and your [GitHub SEI connector](../../sei-integrations/sei-connector-github.md) must have the appropriate configuration to ingest issue cycle time data.
+Only GitHub is supported, and your [GitHub SEI integration](../../sei-integrations/sei-connector-github.md) must have the appropriate configuration to ingest issue cycle time data.
 
 ## SCM PR reports
 

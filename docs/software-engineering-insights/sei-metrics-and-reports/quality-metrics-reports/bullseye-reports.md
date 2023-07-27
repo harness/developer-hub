@@ -6,7 +6,7 @@ sidebar_position: 20
 
 [Bullseye](https://www.bullseye.com/) is a C++ code coverage tool. You can use the Bullseye reports in SEI to analyze code coverage trends or identify code areas with poor test coverage.
 
-Use the [generic SEI connector](../../sei-integrations/sei-connector-generic.md) to integrate with BullsEye, and then add any of the following Bullseye reports to your [Insights](../../sei-insights.md):
+Use the [generic SEI integration](../../sei-integrations/sei-connector-generic.md) to integrate with BullsEye, and then add any of the following Bullseye reports to your [Insights](../../sei-insights.md):
 
 * Bullseye Branch Coverage Report
 * Bullseye Branch Coverage Trend Report
