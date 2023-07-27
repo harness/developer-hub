@@ -1,7 +1,7 @@
 ---
 title: Use an external self-managed PostgreSQL database with your installation
 description: Learn how to use an external self-managed PostgreSQL database with Self-Managed Enterprise Edition installations.
-sidebar_label: Use an external self-managed PostgreSQL database
+sidebar_label: Configure an external self-managed PostgreSQL database
 # sidebar_position: 37
 ---
 
@@ -59,18 +59,17 @@ Ensure the following:
 
 - Add port 5432 to the NAT firewall settings allow list on the application cluster so it can connect to the PostgreSQL instance. PostgreSQL uses 5432 as the default communication port. This enables communication between Harness services running in a Self-Managed Enterprise Edition cluster and a self-managed PostgreSQL cluster.
 
-
 ## Architecture
 
 ![PostgreSQL architecture](./static/postgresql-self-managed-architecture.png)
 
-PostgreSQL streaming replication, the most common PostgreSQL replication, replicates the changes on a byte-by-byte level, creating an identical copy of the database in another server. It is based on the log shipping method. The write-ahead logs (WAL) records are moved directly moved from one database server to be applied to another server.
+PostgreSQL streaming replication, the most common PostgreSQL replication, replicates the changes on a byte-by-byte level, creating an identical copy of the database in another server. It is based on the log shipping method. The write-ahead log (WAL) records are moved directly moved from one database server to be applied to another server.
 
-WAL transfers are performed in two different ways:
+You can perform WAL transfers in two ways:
 
-- By transferring WAL records one file (WAL segment) at a time (file-based log shipping)
+- Transfer WAL records one file (WAL segment) at a time (file-based log shipping)
 
-- By transferring WAL records (a WAL file is composed of WAL records) on the fly (record based log shipping), between a primary server and one or more standby servers, without waiting for a full WAL file
+- Transfer WAL records on the fly (record based log shipping), between a primary server and one or more standby servers, without waiting for a full WAL file
 
 When you configure streaming replication, you have the option to enable WAL archiving. WAL archiving is not required, but it is extremely important for robust replication setup. Robust replication setup avoid prevents the main server from recycling old WAL files that have not been applied to the standby server. If this occurs, you must recreate the replica.
 
@@ -101,7 +100,7 @@ This stack consists of:
 
 :::info warning
 If you installed PostgreSQL through a method other than the apt package manager maintained by Debian or Ubuntu archive, you may receive errors when following these instructions. Harness recommends that you uninstall existing PostgreSQL installations before you continue.
-::
+:::
 
 To set up a PostgreSQL VM, do the following:
 
