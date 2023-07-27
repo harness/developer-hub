@@ -12,19 +12,19 @@ For example, you can have a single configuration of a Kubernetes cluster and cre
 
 A workspace may have one of the following statuses:
 
-* Active - Sucessfully deployed and running. 
+* Active: Sucessfully deployed and running. 
 
-* Inactive - Successfully destroyed or was not provisioned.
+* Inactive: Successfully destroyed or was not provisioned.
 
 * Drift - Drift was detected. 
 
-* Provisioning - Currently being provisioned. 
+* Provisioning: Currently being provisioned. 
 
-* Destroying - Currently being destroyed. 
+* Destroying: Currently being destroyed. 
 
-* Failed - Errors were encountered during provisioning or destroying. 
+* Failed: Errors were encountered during provisioning or destroying. 
 
-* Unknown - Changes were made outside of the product. 
+* Unknown: Changes were made outside of the product. 
 
 To create a new workspace, follow these steps:
 
