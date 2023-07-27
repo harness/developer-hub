@@ -19,7 +19,7 @@ Review the notes below for details about recent changes to Harness Continuous De
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe might not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page in your Harness account.
 :::
 
-## Latest - July 31, 2023, version 80018
+## Latest - July 31, 2023, version 80022
 
 ### Deprecation notice
 
