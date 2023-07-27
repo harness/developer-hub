@@ -1,6 +1,6 @@
 ---
-title: Confluence Search
-description: Extend IDP Search to include results from your Confluence pages.
+title: Confluence search
+description: Extend IDP search to include results from your Confluence pages.
 ---
 
 | Plugin details |                                      |
@@ -15,19 +15,21 @@ description: Extend IDP Search to include results from your Confluence pages.
 ### Application configuration YAML
 
 This plugin requires a backend configuration to make calls to Confluence with authentication. In the following configuration, replace `<your-org-name>` with the Confluence instance project (for example https://mycompany.atlassian.net). 
-Mention list of spaces as `spaces: [ENG, IT, OPS]` that needs to be searched in IDP and specify username for `<your-username>`. 
+
+Replace `<list-of-spaces>` with a comma-separated list of the Confluence spaces that you want to include in the search. Enclose the list in brackets, as follows: `spaces: [ENG, IT, OPS]`. For the spaces you specify, indexing occurs every 12 hours. If the list is empty, the plugin does not index spaces. 
+
+Replace  `<your-username>` with the user name. 
 
 :::note
 
-If there is no space defined `spaces: []`, then this plugin will not consider any space to start indexing.
-Currently, indexing happens every 12 hours for the given spaces.
+
 
 :::
 
 ```yaml
 confluence:
   wikiUrl: https://<your-org-name>.atlassian.net/wiki
-  spaces: [ENG]
+  spaces: [<list-of-spaces>]
   auth:
     username: <your-username>
     password: ${CONFLUENCE_TOKEN}
@@ -35,11 +37,11 @@ confluence:
 
 ### Secrets
 
-Since the `CONFLUENCE_TOKEN` variable is used in the application configuration, you must generate a Confluence API key and set it as the value of `CONFLUENCE_TOKEN`. For information about how to generate a API key, go to the [instructions](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
+Since the `CONFLUENCE_TOKEN` variable is used in the application configuration, you must generate a Confluence API key and set it as the value of `CONFLUENCE_TOKEN`. For information about how to generate an API key, go to the [instructions](https://support.atlassian.com/atlassian-account/docs/manage-api-tokens-for-your-atlassian-account/).
 
 ### Delegate proxy
 
-If your Confluence website is self-hosted or has an IP allow-list , ensure that you include the base URL `mycompany.atlassian.net` in the delegate proxy section. If your confluence is hosted on public cloud and can be accessed directly using a token, skip this section.
+If your Confluence website is self-hosted or has an IP address allowlist, include the base URL `mycompany.atlassian.net` in the delegate proxy section. If your Confluence instance is hosted on a public cloud and can be accessed directly using a token, skip this section.
 After adding the host, you can select one or more delegates that have access to the host.
 
 :::note
@@ -52,11 +54,11 @@ When adding the host, include only the host name. Remove the protocol (HTTP/HTTP
 
 ## Layout
 
-This plugin provides components that are included in the Search results page. It does not export any components to be used in the layout section of the IDP Admin UI.
+This plugin provides components that are included on the search results page. It does not export any components to be used in the layout section of the IDP Admin UI.
 
 ## Annotations
 
-No annotations required for this plugin.
+This plugin does not require annotations.
 
 ## Support
 
