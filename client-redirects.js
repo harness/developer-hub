@@ -39,6 +39,10 @@ module.exports = {
       from: "/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart",
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure",
     },
+    {
+      from: "/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage",
+      to: "/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings",
+    },
 
     // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
     {

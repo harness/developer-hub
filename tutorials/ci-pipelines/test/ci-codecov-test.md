@@ -17,7 +17,7 @@ slug: /ci-pipelines/test/codecov
   target="_self"
 />
 
-This tutorial shows how you can use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage) to include [CodeCov code coverage](https://docs.codecov.com/docs/about-code-coverage#top-5-codecov-features) in a Harness CI pipeline.
+This tutorial shows how you can use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) to include [CodeCov code coverage](https://docs.codecov.com/docs/about-code-coverage#top-5-codecov-features) in a Harness CI pipeline.
 
 ## Prerequisites
 
@@ -89,7 +89,7 @@ import TabItem from '@theme/TabItem';
 
 <docimage path={require('../static/ci-tutorial-codecov-test/run-step-with-codecov-visual.png')} />
 
-For more information about **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) and [Run a script in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage).
+For more information about **Run** step settings, go to [Use Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
 
 ```mdx-code-block
   </TabItem>
@@ -146,7 +146,7 @@ The following YAML example describes a `Run` step that uses `pytest` and the Cod
                       CODECOV_TOKEN: <+secrets.getValue("my_codecov_upload_token")> # CodeCov Upload Token secret as an environment variable.
 ```
 
-For more information about **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) and [Run a script in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage).
+For more information about **Run** step settings, go to [Use Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
 
 ```mdx-code-block
   </TabItem>

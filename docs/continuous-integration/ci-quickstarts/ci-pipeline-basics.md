@@ -52,7 +52,7 @@ Harness CI includes an extensive Step Library for common CI tasks: building arti
 
 ## Tests
 
-In a CI pipeline, you can [run a variety of tests](../use-ci/set-up-test-intelligence/run-tests-in-ci.md), such as integration tests, functional tests, and unit tests. To do this, you can use a [Run Tests step](../use-ci/set-up-test-intelligence/configure-run-tests-step-settings.md) or a [Run step](../use-ci/run-ci-scripts/run-a-script-in-a-ci-stage.md). You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md).
+In a CI pipeline, you can [run a variety of tests](../use-ci/set-up-test-intelligence/run-tests-in-ci.md), such as integration tests, functional tests, and unit tests. To do this, you can use a [Run Tests step](../use-ci/set-up-test-intelligence/configure-run-tests-step-settings.md) or a [Run step](../use-ci/run-ci-scripts/run-step-settings.md). You must use the **Run Tests** step to [enable Test Intelligence](../use-ci/set-up-test-intelligence/set-up-test-intelligence.md).
 
 ### Test Intelligence
 

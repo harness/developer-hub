@@ -70,7 +70,7 @@ The Test Runner Agent runs on the build infrastructure. It's responsible for com
 
 ### Run Tests step
 
-While you can [use a script in a Run step](../use-ci/run-ci-scripts/run-a-script-in-a-ci-stage.md) to run tests in a CI pipeline, to enable Test Intelligence, you must use the [Run Tests step](../use-ci/set-up-test-intelligence/configure-run-tests-step-settings.md). The **Run Tests** step is similar to the **Run** step, and it accepts additional test-specific information, such as the programming language of the source code being tested, build tools, and other parameters.
+While you can run tests in a [Run step](../use-ci/run-ci-scripts/run-step-settings.md), to enable Test Intelligence, you must use the [Run Tests step](../use-ci/set-up-test-intelligence/configure-run-tests-step-settings.md). The **Run Tests** step is similar to the **Run** step, and it accepts additional test-specific information, such as the programming language of the source code being tested, build tools, and other parameters.
 
 TI identifies the programming language and uses the **Run Tests** step to run the selected tests in the **Run Tests**  step container. The **Run Tests** step then parses test results and returns the results to the TI service.
 
