@@ -52,7 +52,7 @@ import StoRootRequirements from '/docs/security-testing-orchestration/sto-techre
 
 ### Root access requirements
 
-You need to run the scan step with root access if you need to add trusted certificates to your scan images at run time. 
+You need to run the scan step with root access if you need to add trusted certificates to your scan images at runtime. 
 
 :::note
 
@@ -196,7 +196,7 @@ In the **Advanced** settings, you can use the following options:
 
 ## CodeQL pipeline example
 
-The following pipeline example an ingestion workflow. It consists of two steps.  A Run step installs CodeQL, scans the repository defined in the Codebase object, and publishes the scan results to a SARIF file. A CodeQL step then ingests the SARIF file. 
+The following pipeline example is an ingestion workflow. It consists of two steps.  A Run step installs CodeQL, scans the repository defined in the Codebase object, and publishes the scan results to a SARIF file. A CodeQL step then ingests the SARIF file. 
 
 ```yaml
 

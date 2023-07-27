@@ -8,7 +8,7 @@ You can scan your application instances automatically using [Burp Enterprise](ht
 
 To set up a Burp scan:
 
-1. Ccreate a CI Build or Security Tests stage,
+1. Create a CI Build or Security Tests stage,
 2. Add a [Burp](#burp-step-configuration) or a [Security](#security-step-settings-deprecated)
 3. Configure the step as specified in the following sections. 
 
@@ -96,7 +96,7 @@ The following configurations are available for Orchestrated scans. These are [bu
 
 :::note
 
-Make sure that you give unique, descriptive names for the target and variant. This will make it much easier to navigate your scan results in the STO UI. 
+Make sure that you give unique, descriptive names for the target and variant. This makes navigating your scan results in the STO UI much easier. 
 
 :::
 
@@ -131,7 +131,7 @@ import StoSettingTargetVariant from './shared/step_palette/_sto-ref-ui-target-va
 
 :::note
 
-Make sure that you give unique, descriptive names for the target and variant. This will make it much easier to navigate your scan results in the STO UI. 
+Make sure that you give unique, descriptive names for the target and variant. This makes navigating your scan results in the STO UI much easier. 
 
 :::
 
@@ -145,13 +145,13 @@ Domain of the application instance to scan. Example: `https://myapp.io/portal/us
 
 #### Access Token
 
-The access token used to log in to a specific product in the scanner. This is required for some scans. In most cases this is a password or an API key. 
+The access token used to log in to a specific product in the scanner. This is required for some scans. In most cases, this is a password or an API key. 
 
 You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
 ### Scan Tool
 
-Use this setting to specify a specific scan to ingest. If this is not specified, the pipeline will ingest the most recent scan. 
+Use this setting to specify a specific scan to ingest. If this is not specified, the pipeline ingests the most recent scan. 
 
 ### Instance settings
 
@@ -205,7 +205,7 @@ Username to log in to the instance you want to scan.
 
 #### Password
 
-The access token to log in to the instance you want to scan. In most cases this is a password or an API key. 
+The access token to log in to the instance you want to scan. In most cases, this is a password or an API key. 
 
 You should create a Harness text secret with your encrypted token and reference the secret using the format `<+secrets.getValue("project.container-access-id")>`. For more information, go to [Add and Reference Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
