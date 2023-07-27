@@ -8,7 +8,7 @@ Once you have created the workspace and performed an update, you should see how 
 
 1. Navigate to the workspace you created, and then select the **Resource** tab. You can see the following details:
 
-    * All the resources. Selecting each resource shows you the attributes of the resources. 
+    * All the resources. Selecting each resource shows you the attributes of that resource. 
 
     * All the output variables that were generated and the values.
 

@@ -4,7 +4,7 @@ description: Learn how to provision and destroy workspaces.
 sidebar_position: 20
 ---
 
-After you create a workspace, you can perform operations against the configuration, such as provisioning and destroying. You will use a Harness pipeline to provision and optionally destroy a workspace. 
+After you create a workspace, you can perform operations against the configuration, such as provisioning and destroying. You must use a Harness pipeline to provision or destroy a workspace. 
 
 ## Provision a workspace
 
@@ -20,7 +20,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="Visual" label="Visual">
 ```
 
-1. In the left pane, select **Pipelines**.
+1. In the Harness project pane, select **Pipelines**.
 2. Select **+ Create a Pipeline** and set up a pipeline. 
 3. Select **Add Stage**, and then on the **Select Stage Type** pane, select **Infrastructure**.
 
@@ -30,7 +30,7 @@ import TabItem from '@theme/TabItem';
 
 5. On the **Workspace** tab, select an existing workspace or select **+ Create New Workspace** to create a new workspace. 
 
-6. Select the **Execution** tab, and then select the option to provision for Terraform. Five operations are supported: init/plan/apply/destroy/plan-destroy.
+6. Select the **Execution** tab, and then select the option to provision for Terraform. Five operations are supported: init, plan, apply, destroy, plan-destroy.
 
 7. Select **Use Strategy**.
 
@@ -106,15 +106,15 @@ pipeline:
 
 ## Destory a workspace
 
-You can use the Harness Visual Editor or YAML to destroy, or tear down, a workspace. To destroy a pipeline, add the “init” , “plan-destroy”,  “destroy” step.
+You can use the Harness Visual Editor or YAML to destroy, or tear down, a workspace. To destroy a workspace in your pipeline stage, add the “init” , “plan-destroy”,  and “destroy” steps.
 
-* Steps required for teardown are init, plan, and destroy, or init, plan-destroy.
+* The steps required for teardown are init, plan, and destroy, or init, plan-destroy.
 
 * The init step initialises Terraform by downloading all the modules that are required and preparing the worker to perform the Terraform operations.
 
     * Third-party plugins that don’t need a plan can be included here.
 
-* The plan-destroy step generates a Terraform plan. This Terraform plan is accessible to all the steps after the IaCM Terraform plan, and is accessible on “<+pipeline.stages.{nameofthestage}.spec.execution.steps.{nameofthestep}.output.outputVariables.parsedPlan>”.
+* The plan-destroy step generates a Terraform plan. This Terraform plan is accessible to all the steps after the IaCM Terraform plan, and can be referenced using the expression `<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.output.outputVariables.parsedPlan>`.
 
     * Third-party plugins that require a plan can be added here.
 
@@ -129,7 +129,7 @@ You can use the Harness Visual Editor or YAML to destroy, or tear down, a worksp
 
 2. Select the **IACMTerraformPlugin**.
 
-3. Provide the Name and Timeout, and select the command `init`.
+3. Provide the name and timeout, and select the command `init`.
 
 4. Repeat the above steps for **plan-destroy** and **destroy**.
 
