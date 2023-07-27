@@ -21,9 +21,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - July 27, 2023
 
+### Continuous Delivery, version 80022
+
+- You can now edit Git details after the pipeline is configured and saved. This can be very useful in Git Experience workflows. For example, this enables you to move your YAML configs from one location to another in your Git configs repositories. (CDS-66621)
+
+  The following Git settings can be modified through the Harness UI: 
+  - Git connector
+  - Repository
+  - YAML path
+
 ### Feature Flags
 
 * When specifying percentages for a rollout, the UI now provides feedback while you edit to let you know the percentage that requires assignment. (FFM-8085)
+
 
 ## July 18, 2023
 
