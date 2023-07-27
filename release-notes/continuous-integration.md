@@ -2,7 +2,7 @@
 title: Continuous Integration release notes
 sidebar_label: Continuous Integration
 tags: [NextGen, "continuous integration"]
-date: 2023-07-31T10:00:10
+date: 2023-07-27T10:00:10
 sidebar_position: 3
 ---
 ```mdx-code-block
@@ -18,7 +18,7 @@ Review the notes below for details about recent changes to Harness Continuous In
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - July 31, 2023, version 5200
+## Latest - July 27, 2023, version 5200
 
 ```mdx-code-block
 <Tabs>
@@ -47,7 +47,7 @@ This release does not include early access features.
   <TabItem value="Fixed issues">
 ```
 
-* Fixed an issue where the active developer count was not reported for builds triggered by chron jobs, custom webhooks, and other triggers. (CI-8502, ZD-46409)
+* Fixed an issue where the active developer count was not reported for builds triggered by cron jobs, custom webhooks, and other triggers. (CI-8502, ZD-46409)
 * Fixed an issue where step details for other steps were shown when using [AIDA](/docs/continuous-integration/troubleshoot-ci/aida) to troubleshoot a pipeline with multiple failed steps. (CI-8735)
 * Fixed an issue that caused [Cache Intelligence](/docs/continuous-integration/use-ci/caching-ci-data/cache-intelligence) to be incompatible with Maven 3.9. (CI-8891)
 * Fixed pagination for [license usage](/docs/continuous-integration/ci-quickstarts/ci-subscription-mgmt#license-usage) tables. (CI-8857)

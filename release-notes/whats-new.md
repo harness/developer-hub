@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-07-31T10:00
+date: 2023-07-27T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,7 +19,7 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - July 31, 2023
+## Latest - July 27, 2023
 
 ### Continuous Integration, version 5200
 
