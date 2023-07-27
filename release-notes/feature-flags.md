@@ -41,7 +41,7 @@ This release does not include early access features.
 
 #### Feature Flags UI
 
-* Fixed and issue where the API call was triggered twice in the front end when creating a flag. (FFM-8192)
+* Fixed an issue where the API call was triggered twice in the front end when creating a flag. (FFM-8192)
 
 
   </TabItem>
