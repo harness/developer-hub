@@ -1,7 +1,7 @@
 ---
-title: Use an external PostgreSQL database with your installation
-description: Learn how to use an external PostgreSQL database with Self-Managed Enterprise Edition installations.
-sidebar_label: Use an external PostgreSQL database
+title: Use an external self-managed PostgreSQL database with your installation
+description: Learn how to use an external self-managed PostgreSQL database with Self-Managed Enterprise Edition installations.
+sidebar_label: Use an external self-managed PostgreSQL database
 # sidebar_position: 37
 ---
 
@@ -9,9 +9,9 @@ Self-Managed Enterprise Edition requires you to install a database by default. Y
 
 The controller-worker replication setup described in this tutorial ensures data redundancy and fault tolerance, providing a robust and reliable environment to manage your PostgreSQL database.
 
-## Benefits of a PostgreSQL external database
+## Benefits of a self-managed PostgreSQL external database
 
-Below are some of the benefits of using a PostgreSQL external database:
+Below are some of the benefits of using a self-managed PostgreSQL external database:
 
 - High availability
 - Disaster recovery
@@ -64,7 +64,7 @@ Ensure the following:
 
 ![PostgreSQL architecture](./static/postgresql-self-managed-architecture.png)
 
-PostgreSQL streaming replication, the most common PostgreSQL replication, replicates the changes on a byte-by-byte level, creating an identical copy of the database in another server. It is based on the log shipping method. The WAL records are moved directly moved from one database server to be applied to another server.
+PostgreSQL streaming replication, the most common PostgreSQL replication, replicates the changes on a byte-by-byte level, creating an identical copy of the database in another server. It is based on the log shipping method. The write-ahead logs (WAL) records are moved directly moved from one database server to be applied to another server.
 
 WAL transfers are performed in two different ways:
 
