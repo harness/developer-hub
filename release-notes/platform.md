@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-07-25T10:00:30
+date: 2023-07-27T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -23,7 +23,7 @@ Harness publishes security advisories for every release. Go to the [Harness Trus
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 25, 2023, version 800xx
+## Latest - July 27, 2023, version 80022
 
 
 ```mdx-code-block
@@ -39,16 +39,16 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - If you attempt to delete a project or organization that includes resources from other Harness modules, Harness first prompts you to confirm the delete action and then prompts you to enter the name of the project or organization. This two-step procedure gives you an opportunity to consider the impact that your action might have on other modules. (PL-32376, ZD-42691)
 
 - Delegate selection logs now include the `DelegateId`, `DelegateName`, and `hostname`. (PL-37913)
-  This item is available with Harness Platform version 800xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item is available with Harness Platform version 80022 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You can now configure the `create_namespace` Terraform parameter to disable default namespace creation. Set the parameter to `false` in the `main.tf` file to disable namespace creation. (PL-39822, ZD-47021)
-  This item is available with Harness Platform version 800xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item is available with Harness Platform version 80022 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Early access">
 ```
-
+This release does not include any early access features.
 
 ```mdx-code-block
   </TabItem>
@@ -62,7 +62,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   This issue is now fixed. If you do not specify a scope for the resource group when using the API, Harness sets the default scope correctly, and eligible users should be able to perform operations on the resource group.
 
-- API requests to update a remote template did not update the lastUpdateAt field in the template. (CDS-72098)
+- API requests to update a remote template did not update the `lastUpdateAt` field in the template. (CDS-72098)
 
   This issue is now fixed.
 

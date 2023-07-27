@@ -1,6 +1,6 @@
 ---
 title: What's new
-date: 2023-07-25T10:00
+date: 2023-07-27T10:00
 sidebar_position: 1
 ---
 ```mdx-code-block
@@ -19,9 +19,9 @@ Review the notes below to learn about the new features that are Generally Availa
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features described in these release notes may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page.
 :::
 
-## Latest - July 25, 2023
+## Latest - July 27, 2023
 
-### Harness Platform, version 800xx
+### Harness Platform, version 80022
 
 - Earlier, when an administrator enabled the account-level two-factor authentication (2FA) setting, users were affected in the following way:
   1. Users who had elected to use that account as their default account received 2FA emails, and the user-level 2FA setting was enabled in all their profiles. The users were not allowed to disable the setting.
@@ -32,10 +32,10 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 - If you attempt to delete a project or organization that includes resources from other Harness modules, Harness first prompts you to confirm the delete action and then prompts you to enter the name of the project or organization. This two-step procedure gives you an opportunity to consider the impact that your action might have on other modules. (PL-32376, ZD-42691)
 
 - Delegate selection logs now include the `DelegateId`, `DelegateName`, and `hostname`. (PL-37913)
-  This item is available with Harness Platform version 800xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item is available with Harness Platform version 80022 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 - You can now configure the `create_namespace` Terraform parameter to disable default namespace creation. Set the parameter to `false` in the `main.tf` file to disable namespace creation. (PL-39822, ZD-47021)
-  This item is available with Harness Platform version 800xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+  This item is available with Harness Platform version 80022 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
 ## July 18, 2023
 
