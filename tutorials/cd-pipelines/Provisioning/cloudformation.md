@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
 
 :::
 
-```mdx-code-block
+<!-- ```mdx-code-block
 <Tabs>
 <TabItem value="Provision deployment infrastructure dynamically ">
 ```
@@ -44,10 +44,10 @@ This totrial will focsus on the use of Cloudformation to provision any resources
 ```mdx-code-block
 </TabItem>
 </Tabs>
-```
+``` -->
 
 ```mdx-code-block
-</TabItem>
+<Tabs>
 <TabItem value="Provision and Delete infrastructure">
 ```
 
@@ -65,6 +65,41 @@ Verify that you have the following:
 2. **Obtain GitHub personal access token with the repo scope**. See the GitHub documentation on [creating a personal access token](https://help.github.com/en/github/authenticating-to-github/creating-a-personal-access-token-for-the-command-line). 
 3. Fork the **[harnessed-example-apps](https://github.com/harness-community/harnesscd-example-apps/fork)** repository through the GitHub website, which contains the **CF template** file. 
 4. A functioning **Harness Pipeline** that deploys an application on your cluster using a mnifest, please follow this [get started tutorial](tutorials/cd-pipelines/kubernetes/manifest.md) to set it up. 
+
+### Get Started
+
+1. Login to [Harness](https://app.harness.io).
+2. Select **Projects**, and then select **Default Project**.
+
+### AWS Connector
+
+1. Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/pull/26/files).
+2. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
+3. Select **Create via YAML Builder** and paste the copied YAML.
+4. Replace the `accessKey` placeholder with the [AWS access key](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html) for the AWS user you created (with the required policies).
+5. Add the permananet secret key in `secretKeyRef`. 
+6. Here we assume the `region` for secret key to be `us-east-1`. Please replace it with the appropriate region.
+7. Add an active delegate under the `delegateSelectors`. 
+8. In `projectIdentifier`, replace with the project identifier with yours, for example, `default`. 
+9. Select **Save Changes** and verify that the new connector named **harness_awsconnector** is successfully created.
+10. Finally, select **Connection Test** under **Connectivity Status** to ensure the connection is successful.
+
+### Create Pipeline with Custom Stage
+
+1. In **Default Project**, select **Pipelines** from left nav-bar.
+    - Select **New Pipeline** or **Create a Pipeline**.
+    - Enter the name `cf_provisioned_pipeline`.
+    - Select **Inline** to store the pipeline in Harness.
+    - Select **Start**
+
+2. In the pipeline studio, **Select Stage Type** as **Custom Stage**.
+3. Name the stage as `infra-provision` and **set up stage**. 
+4. Now Add Step and search for **CloudFormation Create Stack**.
+
+### CloudFormation Create Stack Step
+
+5. 
+
 
 ```mdx-code-block
 </TabItem>
