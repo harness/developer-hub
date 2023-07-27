@@ -473,6 +473,28 @@ The **Configuration File Repository** setting is available in the Terragrunt Pla
 7. In **File Path**, enter the path from the root of the repo to the file containing the script.
 8. Click **Submit**.
 
+#### Source Module
+
+When you set up the file repo in **Configuration File Repository**, you use a Harness Connector to connect to the repo where the Terraform scripts are located.
+
+Some scripts will reference module sources in other repos and Harness will pull the source code for the desired child module at runtime (during `terraform init`).
+
+In **Source Module**, you can select **Use Connector credentials** to have Harness use the credentials of the Connector to pull the source code for the desired child module(s).
+
+If you do not select **Use Connector credentials**, Terraform will use the credentials that have been set up in the system.
+
+The **Use Connector credentials** setting is limited to Harness Git Connectors using SSH authentication (not HTTPS) and a token.
+
+When configuring SSH Key for connector, exporting SSH Key with Passphrase for Module Source is not Supported. Configure a SSH Key without the passphrase.
+
+Syntax examples to reference terraform module using ssh protocol:
+
+```json
+  source = "git@github.com:your-username/your-private-module.git"
+  or
+  source = "git::ssh://git@github.com/your-username/your-private-module.git"
+```
+
 ### Module Configuration
 
 Use this setting to specify the Terraform modules you want Terragrunt to use.
