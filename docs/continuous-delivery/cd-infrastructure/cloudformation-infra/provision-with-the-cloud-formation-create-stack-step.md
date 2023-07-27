@@ -235,7 +235,9 @@ Harness checks if the stack is in `ROLLBACK_COMPLETE` state before the deploymen
 
 In **Advanced**, you can use the following options:
 
-* [Step Skip Condition Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
-* [Step Failure Strategy Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
-* [Select Delegates with Selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md)
+* [Delegate Selector](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
+* [Conditional Execution](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/)
+* [Failure Strategy](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-failure-strategy-settings/)
+* [Looping Strategy](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/)
+* [Policy Enforcement](https://developer.harness.io/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 

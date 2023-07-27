@@ -2,53 +2,43 @@
 id: lambda-toggle-event-mapping-state
 title: Lambda toggle event mapping state
 ---
+## Introduction
 
-Lambda toggle event mapping state toggles (or sets) the event source mapping state to `disable` for a Lambda function during a specific duration.
-- It checks the performance of the running application (or service) when the event source mapping is not enabled which may cause missing entries in a database.
+Lambda toggle event mapping state toggles (or sets) the event source mapping state to `disable` for a Lambda function during a specific duration. Toggling between different states of event source mapping from a Lambda function may lead to failures when updating the database on an event trigger. This can break the service and impact its delivery. 
 
 
 ![Lambda Toggle Event Mapping State](./static/images/lambda-toggle-event-mapping-state.png)
 
+## Use cases
+Lambda toggle event mapping:
+- Checks the performance of the running application when the event source mapping is not enabled. This may cause missing entries in a database.
+- Determines if the application has proper error handling or auto recovery actions configured.
 
-## Usage
 
-<details>
-<summary>View fault usage</summary>
-<div>
-Toggling between different states of event source mapping from a Lambda function may lead to failures in updating the database on an event trigger. This can break the service and impact its delivery. It helps determine if the application has proper error handling or auto recovery actions configured.
-</div>
-</details>
+:::info note
+- Kubernetes version 1.17 or later is required to execute this fault.
+- AWS Lambda event source mapping must be healthy and attached to the Lambda function.
+- Kubernetes secret must have the AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXX
+  ```
+- Harness recommends using the same secret name, that is, `cloud-secret`. Otherwise, you must update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+- Go to [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Go to [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::
 
-## Prerequisites
-
-- Kubernetes >= 1.17
-- AWS Lambda event source mapping attached to the lambda function.
-- Kubernetes secret that has AWS access configuration(key) in the `CHAOS_NAMESPACE`. A secret file looks like this:
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXX
-```
-
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for the fault</summary>
+Below is an example AWS policy to execute the fault.
 
 ```json
 {
@@ -72,23 +62,13 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
-
-Refer to the [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-## Default validations
-
-The AWS Lambda event source mapping is healthy and attached to the lambda function.
-
 
 ## Fault tunables
 
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory fields</h2>
+   <h3>Mandatory tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -100,7 +80,7 @@ The AWS Lambda event source mapping is healthy and attached to the lambda functi
       <tr>
         <td> EVENT_UUIDS </td>
         <td> Provide the UUID for the target event source mapping.</td>
-        <td> You can provide multiple values as (,) comma-separated values. For example, <code>id1,id2</code> </td>
+        <td> You can provide multiple values as comma-separated values. For example, <code>id1,id2</code> </td>
       </tr>
       <tr>
         <td> REGION </td>
@@ -108,17 +88,17 @@ The AWS Lambda event source mapping is healthy and attached to the lambda functi
         <td> For example, <code>us-east-2</code></td>
       </tr>
     </table>
-    <h2>Optional fields</h2>
+    <h2>Optional tunables</h2>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion in seconds </td>
-        <td> Defaults to 30s </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Default: 30 s.</td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -128,22 +108,16 @@ The AWS Lambda event source mapping is healthy and attached to the lambda functi
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in sec </td>
-        <td> For example, 30 </td>
+        <td> For example, 30 s. </td>
       </tr>
     </table>
-</details>
 
-## Fault examples
-
-### Common and AWS-specific tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Multiple event source mapping
 
-It toggles between multiple event source mapping for a certain chaos duration using `EVENT_UUIDS` environment variable that takes the UUID of the events as a comma-separated value (CSV file).
+Toggle between multiple event source mapping for a specific duration. Tune it by using `EVENT_UUIDS` environment variable that takes the UUID of the events as a comma-separated value.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/lambda-toggle-event-mapping-state/multiple-events.yaml yaml)
 ```yaml

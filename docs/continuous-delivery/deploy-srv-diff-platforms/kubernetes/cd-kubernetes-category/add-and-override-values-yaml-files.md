@@ -12,7 +12,7 @@ You can use values YAML files for Kubernetes and Helm deployments in Harness.
 
 For Kubernetes manifests, the values file uses Go templating to template manifest files. See [Example Kubernetes Manifests using Go Templating](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/example-kubernetes-manifests-using-go-templating).
 
-For Helm charts, the values file defines the default values for parsing the Kubernetes templates (manifests) when deploying the Helm chart. See [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts).
+For Helm charts, the values file defines the default values for parsing the Kubernetes templates (manifests) when deploying the Helm chart. See [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts).
 
 Harness supports Kubernetes and Helm charts without requiring Helm or Tiller and Kubernetes and Helm have equal support for all Harness deployment strategies.
 
@@ -129,7 +129,7 @@ We'll cover this option below.
 
 5. In **Specify Values YAML Store**, select the Git repo provider you're using and then create or select a Connector to that repo.
 6. If you haven't set up a Harness Delegate, you can add one as part of the Connector setup.
-    This process is described in [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart), [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](/docs/platform/Delegates/advanced-installation/install-a-kubernetes-delegate).
+    This process is described in [Kubernetes deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart), [Helm Chart deployment tutorial](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/helm-cd-quickstart) and [Install a Kubernetes Delegate](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
 7. Once you've selected a Connector, click **Continue**.
 8. In **Manifest Details**, you tell Harness where the values.yaml is located.
 9. In **Manifest Identifier**, enter a name that identifies the file, like **values**.
@@ -173,6 +173,6 @@ In **Manifest Details** for the values file, in **File Path**, select **Runtime 
 
 ## See also
 
-* [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/cd-helm-category/deploy-helm-charts)
+* [Deploy Helm Charts](/docs/continuous-delivery/deploy-srv-diff-platforms/helm/deploy-helm-charts)
 * [Propagate and Override CD Services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services)
 

@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This topic covers CD Pipeline basics to get you ready to start building Pipelines easily.
 
-For details on Harness' Key Concepts, see [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
+For details on Harness' Key Concepts, go to [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md).
 
 ## Pipelines
 
@@ -58,9 +58,9 @@ When a Service is added to the stage in a Pipeline, you define its Service Defin
 
 You can also propagate and override a Service in subsequent stages by selecting its name in that stage's Service settings.
 
-For examples, see:
+For examples, go to:
 
-* [Kubernetes Services](../deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services.md)
+* [Kubernetes Services](../deploy-srv-diff-platforms/kubernetes/kubernetes-services.md
 * [Propagate and Override CD Services](../x-platform-cd-features/services/propagate-and-override-cd-services.md)
 
 ### Service Instance
@@ -71,7 +71,7 @@ Harness periodically tracks the count of running Service Instances every 10 minu
 
 Harness uses a Service-based license model to charge Harness customers using its Continuous Delivery module.
 
-See [Service-based Licensing and Usage for CD](./service-licensing-for-cd.md).
+For more information, go to [Service-based Licensing and Usage for CD](./service-licensing-for-cd.md).
 
 ### Environments and Infrastructure
 
@@ -79,7 +79,7 @@ Environments represent your deployment targets logically (QA, Prod, etc). You ca
 
 Infrastructure Definitions represent an Environment's infrastructure physically. They are the actual target clusters, hosts, etc.
 
-For an example, see [Kubernetes Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-infra/define-your-kubernetes-target-infrastructure.md).
+For an example, go to [Kubernetes Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure.md).
 
 ### Execution Steps
 
@@ -89,13 +89,13 @@ Harness automatically adds the steps you need for the deployment strategy you se
 
 You can run steps in parallel and apply execution conditions and failure strategies to them individually or as step groups.
 
-For examples, see:
+For examples, go to:
 
 * [Create a Kubernetes Rolling Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md)
 * [Create a Kubernetes Canary Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
 * [Create a Kubernetes Blue Green Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment.md)
-* [Using Shell Scripts in CD Stages](../x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md)
-* [Using HTTP Requests in CD Pipelines](../x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines.md)
+* [Using Shell Scripts in CD Stages](../x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts.md)
+* [Using HTTP Requests in CD Pipelines](../x-platform-cd-features/cd-steps/cd-general-steps/using-http-requests-in-cd-pipelines.md)
 
 ### Connectors
 
@@ -105,7 +105,7 @@ Harness uses Connectors at Pipeline runtime to authenticate and perform operatio
 
 For example, a GitHub Connector authenticates with a GitHub account and repo and fetches files as part of a deploy Stage.
 
-For example, see:
+For example, go to:
 
 * [Add a Kubernetes Cluster Connector](/docs/platform/Connectors/Cloud-providers/add-a-kubernetes-cluster-connector)
 * [Docker Connector Settings Reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference)
@@ -131,7 +131,7 @@ The Delegate also needs permissions in the target environment to execute deploym
 
 Pipeline and Stage variables are custom variables you can add and reference in your Pipeline and Stage. They're available across the Pipeline. You can propagate and override their values in later stages.
 
-See [Built-in Harness Variables Reference](../../platform/12_Variables-and-Expressions/harness-variables.md).
+For more information, go to [Built-in Harness Variables Reference](../../platform/12_Variables-and-Expressions/harness-variables.md).
 
 ### Triggers
 
@@ -139,7 +139,7 @@ You can run your Pipelines manually or use triggers to initiate their execution.
 
 You can trigger a Pipeline based on Git events, manifest changes, schedules, new artifacts, etc.
 
-For examples, see:
+For examples, go to:
 
 * [Trigger Pipelines on a New Artifact](../../platform/11_Triggers/trigger-on-a-new-artifact.md)
 * [Trigger Pipelines on New Helm Chart](../../platform/11_Triggers/trigger-pipelines-on-new-helm-chart.md)
@@ -157,7 +157,7 @@ Overlays are groups of Input Sets. Overlays enable you to provide several Input 
 
 With Input Sets and Overlays, you can make a single Pipeline template that can be used for multiple scenarios. Each scenario can be defined in an Input Set or Overlay and simply selected at runtime.
 
-See [Input Sets and Overlays](../../platform/8_Pipelines/input-sets.md).
+For more information, go to [Input Sets and Overlays](../../platform/8_Pipelines/input-sets.md).
 
 #### Conditional executions
 
@@ -165,7 +165,7 @@ You can set conditions on when you run Stages and steps. For example, `Execute T
 
 The stage Conditional Execution applies to all steps that do not have their own Conditional Execution. A step's Conditional Execution overrides its stage's Conditional Execution.
 
-See [Stage and Step Conditional Execution Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
+For more information, go to [Stage and Step Conditional Execution Settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
 #### Failure strategies
 
@@ -175,6 +175,6 @@ The failure strategy contains error conditions that must occur for the strategy 
 
 Failure strategies are a critical pipeline design component that determine what fails a step or stage and what to do when the failure occurs.
 
-See [Step and Stage Failure Strategy References](/docs/platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).
+For more information, go to [Step and Stage Failure Strategy References](/docs/platform/8_Pipelines/define-a-failure-strategy-on-stages-and-steps.md).
 
 

@@ -62,7 +62,7 @@ Set up the Harness delegate and runner.
 
 In addition to macOS, you can run your delegate and runner on [Docker](../define-a-docker-build-infrastructure.md), [Azure](define-a-ci-build-infrastructure-in-azure.md), and [Google Cloud Platform](define-a-ci-build-infrastructure-in-google-cloud-platform.md) build infrastructures.
 
-For information about installing delegates, go to [Delegate installation overview](/docs/platform/2_Delegates/install-delegates/overview.md).
+For information about installing delegates, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
 
 ## Set up the Harness runner to communicate with the Anka controller
 

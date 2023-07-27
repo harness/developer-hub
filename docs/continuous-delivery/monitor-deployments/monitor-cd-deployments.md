@@ -10,36 +10,141 @@ helpdocs_is_published: true
 
 This topic describes how you can use DORA and other advanced metrics for deployments and services in CD Dashboards.
 
-Deployments and Services can be measured within the CD module (**Overview** and **Services** in the **Deployments** module), and using the Harness Platform Dashboards (**Dashboards**). Platform Dashboards also let you create highly advanced custom dashboards.
+Deployments and services can be measured within the CD module (**Overview** and **Services** in the **Deployments** module), and using the Harness Platform Dashboards (**Dashboards**). Platform Dashboards also let you create highly advanced custom dashboards.
 
 
-## Overview and Services Dashboards
+## Overview and services dashboards
 
-Deployments are tracked in the **Overview** dashboard and Services are tracked in the **Services** dashboard.
+Deployments are tracked in the **Overview** dashboard and services are tracked in the **Services** dashboard.
 
-![](../cd-dashboards/static/monitor-cd-deployments-17.png)
+<docimage path={require('./static/monitor-cd-deployments-17.png')} width="60%" height="60%" title="Click to view full size image" />
 
-### Overview Dashboard
+## Overview dashboard
 
 The Overview dashboard provides status for deployments and workloads and an overall **Deployments Health** metric:
 
-![](../cd-dashboards/static/monitor-cd-deployments-18.png)
+<docimage path={require('./static/monitor-cd-deployments-18.png')} width="60%" height="60%" title="Click to view full size image" />
 
-### Services Dashboard
+## Services dashboard
 
-**What is a Harness Service?** A Harness Service is both a logical and configuration view of the services you deploy.
+**What is a Harness service?** A Harness service is both a logical and configuration view of the services you deploy.
 
-The logical view is immutable and contains a name, unique Id, and description. The configuration view can be changed with each stage of a Pipeline and contains the artifacts, manifests, repo URLs, etc for that stage's deployment of the Service.
+The logical view is immutable and contains a name, unique Id, and description. The configuration view can be changed with each stage of a pipeline and contains the artifacts, manifests, repo URLs, etc., for that stage's deployment of the service.
 
-**What is a Service instance in Harness?** Harness licensing is determined by the service instances you deploy. A service instance is when you use Harness to deploy the underlying infrastructure for the instance. For example, an instance of a Kubernetes workload where Harness creates the pods.
+**What is a service instance in Harness?** Harness licensing is determined by the service instances you deploy. A service instance is when you use Harness to deploy the service and the underlying infrastructure for the instance. For example, an instance of a Kubernetes workload where Harness creates the pods.
 
-The Services dashboard provides an overview of all the Services and Service instances in your Project:
+The **Services** dashboard provides an overview of all the services and service instances in your project:
 
-![](../cd-dashboards/static/monitor-cd-deployments-19.png)
+<docimage path={require('./static/monitor-cd-deployments-19.png')} width="60%" height="60%" title="Click to view full size image" />
 
-Click a Service in the Total Services table drills down to show more Service details:
+## Individual service dashboards
 
-![](../cd-dashboards/static/monitor-cd-deployments-20.png)
+:::note
+
+Currently, the following service dashboard functionality is behind the feature flag `CDC_SERVICE_DASHBOARD_REVAMP_NG`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Click a service in the **Total Services** table to drill down and show more service details:
+
+<docimage path={require('./static/eebdfe6a596f69e0fd2dca49ce04dd5659094aab8d76ef38886fa905659ffac9.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+Clicking on any card in this dashboard filters the executions list to display executions relevant to the service and environment/artifact.
+
+An individual service's dashboard includes the following features.
+
+:::note
+
+If you do not see the environment cards in the dashboard, you will see the message `There are no environments with instances in this service`. This appears when there are no environments with *active* instances for this services. You must perform an actual deployment to create active instances.  Active services are services that are part of any pipeline execution (deployment) over the past 30 Days.
+
+:::
+
+### Open tasks
+
+The **See Open Tasks** banner will appear when there are deployments with the following statuses:
+
+- Aborted
+- Aborted by deployment freeze
+- Expired
+- Waiting
+- Failed
+
+Selecting **See Open Tasks** displays executions that require your attention.
+
+The **See Open Tasks** button is only displayed if there are tasks over the last 3 days.
+
+If the **See Open Tasks** button is not displayed, you can see all tasks using the bell icon also.
+
+<docimage path={require('./static/9f67ae3af9c7f548f8bd9f802008e0d5d8710b167c9c4a00d4e8b611aa370401.png')} width="60%" height="60%" title="Click to view full size image" />
+
+### Environments tab
+
+The **Environments** tab lists the environments and environment groups where the service has been deployed by one or more pipelines.
+
+<docimage path={require('./static/4e748162f05ea1d64ee5c64ca924fc41afe6c61fce81ccbbd7f1d32a64b40a90.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+Each environment card shows the following:
+
+- **Latest artifact:** the latest artifact deployed by this service to this environment.
+- **Drift detection:** drift detection displays any differences between the deployments to environments in an environment group. For example, in this drift detection, two environments are using different artifacts with this service:
+
+  <docimage path={require('./static/2f326c7718023be7ad2226f2ea3adb8a8eb772b7407304d134bbb3ffc8e473ad.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+  Drift detection is helpful to detect inconsistencies. For example, when you deploy a service to an environment group and there are failures in one of the environments or someone performs a different deployment to one or more of the group's environments.
+
+- **Instance details:** details of the instance(s) where the service was deployed.
+
+  <docimage path={require('./static/7814890e535b27da5affb299c3bb5f38332a13a55056a2afb25b4963a17ac27c.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+  Select **Open Execution** in the instance details to see the pipeline execution that deployed the service instance.
+- **Deployments:** each deployment to a selected environment or environment group. If you filter using **My Deployments** you see only those deployments that your user account initiated.
+
+### Artifacts tab
+
+The **Artifacts** tab shows how the service is mapped to multiple artifacts.
+
+<docimage path={require('./static/68c91f46f95bed7606ce6a593c8598eca5ecec3495011123113e2e5de0b55cd2.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+Each artifact card shows the following:
+
+- **Artifacts:** each artifact used in a deployment of this service.
+- **Environments:** each environment where an artifact was deployed with the service. 
+  - Clicking the artifact name opens details for all environments where the artifact was deployed. 
+  - Clicking the environment opens details for the specific environment where the artifact was deployed.
+- **Drift detection:** drift detection displays any differences between the deployments to environments in an environment group. For example, if the artifact you select was deployed to an environment group, but one of the group's environments deployed a different artifact, it is highlighted as drift:
+
+  <docimage path={require('./static/b46ca573dd4b036c3ab5189e6edda2fd86207f6401e8337a52f365da443007a9.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+  Clicking on the environment group name will take you to that group's settings. Clicking on the execution date (in this example, `1 day ago`) will take you to the pipeline execution details.
+- **Deployments:** each deployment of the service or a selected artifact. If you filter using **My Deployments** you see only those deployments that your user account initiated. 
+
+### View in table
+
+The **View in Table** setting shows all of the instances of the service in all of the environments used with the service. 
+
+<docimage path={require('./static/d0bba45d5e8be50eeea30bcccbdffd4b0ed6d2900977782a2176257f53dc38ee.png')} width="60%" height="60%" title="Click to view full size image" /> 
+
+Select **Open Execution** in the instance details to see the pipeline execution that deployed the service instance.
+
+
+### Custom sequencing
+
+In the **Environment** tab, you can use **Custom Sequence** to arrange the environment cards.
+
+To use custom sequencing, do the following:
+
+1. Select the **Environments** tab.
+2. Select the gear icon next to **Custom Sequence**.
+   
+   <docimage path={require('./static/11ceac73896d71cbde9774efb01e64a8e42cc7d3f9470181116e58f809a91bd5.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+3. In **Environment Sequence**, reorder the environment/group to create the sequence you want.
+4. Select **Save**.
+
+  Now the environment cards are reordered. 
+  
+  You can disable custom sequencing by toggling it off.
 
 ## Platform Dashboards
 
@@ -73,7 +178,7 @@ The Deployments dashboard provides deployment frequency, status, and duration da
 
 ![](../cd-dashboards/static/monitor-cd-deployments-24.png)
 
-Clicking on data points or Service and Project names brings up data tables.
+Clicking on data points, service names,  or project names brings up data tables.
 
 ![](../cd-dashboards/static/monitor-cd-deployments-25.png)
 
@@ -85,7 +190,7 @@ All data can be downloaded in multiple formats with multiple options.
 
 #### Services
 
-The Services dashboard lets you measure the efficiency of your Service deployments by Environment and overall.
+The services dashboard lets you measure the efficiency of your service deployments by Environment and overall.
 
 ![](../cd-dashboards/static/monitor-cd-deployments-27.png)
 

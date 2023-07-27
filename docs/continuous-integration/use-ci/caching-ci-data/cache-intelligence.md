@@ -18,6 +18,15 @@ Currently, Cache Intelligence supports Bazel, Maven, Gradle, Yarn, Go, and Node 
 
 If you are using a different build tool or a non-default cache location, you can still leverage Harness' cache storage by [specifying the location(s) to cache](#customize-cache-paths).
 
+:::info Known Issue
+
+A known issue is causing Cache Intelligence to be incompatible with Maven 3.9. A fix is coming soon. Until this is fixed, you can use one of these workarounds:
+
+* Use Maven 3.8.
+* Run `echo "-Dmaven.repo.local=.m2/repository" > .mvn/maven.config` in the pre-command or command before building.
+
+:::
+
 ## Cache storage
 
 Harness Cloud allows up to 2GB of cache storage per account. All pipelines in the account use the same cache storage, and each build tool has a unique cache key that is used to restore the appropriate cache data at runtime.
@@ -26,7 +35,7 @@ The cache retention window is 15 days, which resets whenever the cache is update
 
 ## Enable Cache Intelligence
 
-To enable Cache Intelligence on a CI Build stage, add the following lines to the `stage: spec:` in your pipeline's YAML:
+To enable Cache Intelligence on a CI Build stage, add the following lines to the `stage.spec` in your pipeline's YAML:
 
 ```yaml
 caching:
@@ -70,7 +79,7 @@ Add the `paths` list to your pipeline's YAML, for example:
 ...
 ```
 
-If a path you want to cache is outside the `/harness` directory, you must also specify this as a shared path. In the YAML editor, add a list of `sharedPaths` to the `stage: spec:`, for example:
+If a path you want to cache is outside the `/harness` directory, you must also specify this as a shared path. In the YAML editor, add a list of `sharedPaths` to the `stage.spec`, for example:
 
 ```yaml
     - stage:
@@ -103,7 +112,7 @@ In the Visual editor, you can add **Shared Paths** in the stage's **Overview** s
 
 Harness generates a cache key from a hash of the build lock file (such as `pom.xml`, `build.gradle`, or `package.json`) that Harness detects. If Harness detects multiple tools or multiple lock files, Harness combines the hashes to create the cache key.
 
-To customize the cache key, add `key: [custom-key]` to `stage: spec: caching:` in your pipeline's YAML, and specify the custom key value. You can use [fixed values, runtime inputs, and expressions](/docs/platform/References/runtime-inputs) to create the key value.
+To customize the cache key, add `key: [custom-key]` to `stage.spec.caching` in your pipeline's YAML, and specify the custom key value. You can use [fixed values, runtime inputs, and expressions](/docs/platform/References/runtime-inputs) to create the key value.
 
 The following YAML example uses `key: <+input>`, which prompts the user to supply a cache key value at runtime.
 

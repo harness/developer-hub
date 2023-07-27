@@ -207,6 +207,29 @@ Policy Sets can be configured to evaluate policies on these Feature Flag events:
 
 See [Use Harness Policy As Code for Feature Flags](/docs/platform/Governance/Policy-as-code/using-harness-policy-engine-for-feature-flags).
 
+#### Connectors
+
+Policies are evaluated against Harness [Connectors](https://developer.harness.io/docs/category/connectors).
+
+You can configure a Policy Set to evaluate policies when you save a container.
+
+Go to [Use Harness Policy As Code for Connectors](https://developer.harness.io/docs/platform/Governance/Policy-as-code/sample-policy-use-case#connector-policy-samples).
+
+
+#### Template
+
+:::note
+Currently, this feature is behind the feature flag, `CDS_OPA_TEMPLATE_GOVERNANCE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
+You can configure template policies during the creation of the template. This ensures that you follow your organization's established best practices without the need to manage each template directly. By setting guardrails at creation time, you can reduce the number of checks required at runtime to enforce standards.
+
+You can now manage template configuration by running policies on Template Save. During Pipeline Save, you can enforce the use of a specific template. On Pipeline Run, you can ensure that the resolved contents of the pipeline meet execution standards.
+
+* On Template Save
+* On Pipeline Save
+* On Pipeline Run
+
 #### Custom
 
 You can define a policy with the entity type Custom.
@@ -225,9 +248,5 @@ Policies and Policy Sets are saved at the Harness Account, Organization, or Proj
 
 ![](./static/harness-governance-overview-13.png)
 
-### See also
 
-* [Harness Policy As Code quickstart](/docs/platform/Governance/Policy-as-code/harness-governance-quickstart)
-* [Add a Policy step to a pipeline](/docs/platform/Governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline)
-* [Harness Policy As Code overview for Feature Flags](/docs/feature-flags/ff-using-flags/harness-policy-engine/)
 

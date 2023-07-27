@@ -23,10 +23,14 @@ Click **Secrets**.
 
 Click **Secret** and select **File.**
 
-![](../Secrets/static/add-file-secrets-55.png)
+<!-- ![](../Secrets/static/add-file-secrets-55.png) -->
+
+<docimage path={require('../Secrets/static/add-file-secrets-55.png')} />
+
 The **Add new Encrypted File** settings appear.
 
 ![](../Secrets/static/add-file-secrets-56.png)
+
 Select the **Secrets Manager** you will use to encrypt this secret.
 
 Enter a name for the encrypted file. You will use this name to reference the file in your resources.

@@ -89,8 +89,8 @@ To create a new change source, do the following:
 
 2. In the **Provider Type** dropdown list, select the change source. Following are the available options:  
 
-    - **Deployments**: You can choose **Harness CD NextGen** or **Harness CD**. 
-    - **Incident**: Select the incident management tool that monitors your application.
+    - **Deployments**: You can choose **Harness CD** or **Custom**. Note that Harness CD NextGen is automatically configured without any selection. To learn more about creating a custom deployment change source go to [Custom Deployment Change Source](https://developer.harness.io/docs/service-reliability-management/monitored-service/change-source/custom-deployment-change-source).
+    - **Incident**: Select the incident management tool that monitors your application. You can choose **PagerDuty** or **Custom**. To learn more about creating a custom incident change source go to [Custom Incident Change Source](https://developer.harness.io/docs/service-reliability-management/monitored-service/change-source/custom-incident-change-source).
 
 3. In the **Source Name** field, enter a name for the change source.
 4. In the **Application** dropdown list, select an application ID. This field is available if you select Harness CD in **Provider Type**.

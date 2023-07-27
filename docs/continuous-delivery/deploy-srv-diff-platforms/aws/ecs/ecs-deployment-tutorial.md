@@ -1,5 +1,5 @@
 ---
-title: ECS deployments
+title: ECS deployments overview
 description: This topic walks you through deploying services to AWS ECS clusters using Harness.
 sidebar_position: 1
 helpdocs_topic_id: vytf6s0kwc
@@ -139,8 +139,8 @@ The Harness Delegate is a software service you install in your environment. It c
 If you're new to Harness, read [Harness Platform architecture](/docs/getting-started/harness-platform-architecture) to learn about how Harness uses a Delegate to perform deployment tasks.
 
 1. Follow the steps here to install a Harness Delegate:
-	1. [Install a Docker Delegate](/docs/platform/Delegates/install-delegates/install-a-delegate#docker-environment).
-	2. [Install Harness Delegate on Kubernetes](/docs/platform/Delegates/install-delegates/install-a-delegate#kubernetes-environment).
+	1. [Install a Docker Delegate](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
+	2. [Install Harness Delegate on Kubernetes](https://developer.harness.io/docs/platform/Delegates/install-delegates/overview).
 
 When you are done setting up the Delegate and it has registered with Harness, you'll see the Delegate's tags on the Delegates list page:
 
@@ -189,22 +189,28 @@ Harness has full support for ECS task definitions. You simply provide Harness wi
 
 There are two ways to add the ECS task definition to the Harness service:
 
-- **Task Definition**: Add a connection to the task definition file in a remote Git repository, local [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store), or object storage (AWS S3).
+- **Task Definition**: Add a connection to the task definition file in a remote Git repository, local [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/), or object storage (AWS S3).
 - **Task Definition ARN**: Add the task definition ARN. 
   - The task definition ARN points to an existing task created and available in the AWS cluster with the required definition.
   - The task definition will be fetched using the task ARN provided and added to the ECS service configuration provided in the Harness ECS service **Service Definition**.
   - During deployment, the required task is deployed with the desired count provided in the **Service Definition**. 
 
+:::note
+
+When a task definition ARN is provided instead of a task definition spec, a force deployment is enabled for rolling deployments by default. When you perform a force deployment, ECS terminates the running tasks associated with the service and replaces them with tasks using the new task definition.
+
+:::
+
 If you are new to ECS, review the AWS documentation on [ECS Task Definitions](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/task_definitions.html).
 
-Let's look at an example using a task definition file in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
+Let's look at an example using a task definition file in the [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/).
 
 1. In **Task Definition**, click **Add Task Definition**.  
   You specify what Task Definition to use in the **ECS Task Definition Store**.
 
   ![](./static/ecs-deployment-tutorial-40.png)
 
-  You can use a remote repo, but for this tutorial we'll use the built-in Harness file manager, [Harness File Store](//docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store).
+  You can use a remote repo, but for this tutorial we'll use the built-in Harness file manager, [Harness File Store](/docs/continuous-delivery/x-platform-cd-features/services/add-inline-manifests-using-file-store/).
 2. Select **Harness**, and then select **Continue**.
 3. In **Task Definition**, select **Add Task Definition**.
 4. In **Specify ECS Task Definition Store**, select **Harness**, and select **Continue**.
@@ -703,6 +709,12 @@ This is the same as [forceNewDeployment](https://docs.aws.amazon.com/AmazonECS/l
 
 > Determines whether to force a new deployment of the service. By default, deployments aren't forced. You can use this option to start a new deployment with no service definition changes. For example, you can update a service's tasks to use a newer Docker image with the same image/tag combination (`my_image:latest`) or to roll Fargate tasks onto a newer platform version.
 
+:::note
+
+When a task definition ARN is provided instead of a task definition spec, a force deployment is enabled for rolling deployments by default. When you perform a force deployment, ECS terminates the running tasks associated with the service and replaces them with tasks using the new task definition.
+
+:::
+
 ### ECS Canary deployments
 
 In an ECS Canary deployment, Harness deploys to 1 instance, deletes it, and then performs a Rolling deployment of the new version with full desired count.
@@ -1123,17 +1135,17 @@ If you do select this option, Harness will poll the ECS task to see if it trigge
 
 ### Support for ECS Deployments with AWS Service Mesh Configuration
 
-Harness ECS Deployments supports deploying of ECS Services with AWS Service Discovery Configuration
+Harness ECS Deployments supports deploying of ECS services with AWS Service Discovery.
 
-AWS Service Discovery is a cloud service provided by Amazon Web Services (AWS) that makes it easy for microservices applications to discover and communicate with each other. It enables you to manage and discover the addresses of the services within your microservices application without the need for hard-coded IP addresses or hostnames.
+AWS Service Discovery is a cloud service provided by AWS that makes it easy for microservices applications to discover and communicate with each other. It enables you to manage and discover the addresses of the services within your microservices application without the need for hard-coded IP addresses or hostnames.
 
-It is possible to provide AWS Service Discovery as part of ECS Service Definiton and deploy using Harness.
+You can use AWS Service Discovery as part of the ECS service definition in Harness.
 
-Following are the steps required to configure a Service Discovery and deploy
+Here are the steps required to configure a Service Discovery and deploy:
 
-1. Create a Namespace in AWS Cloud Map.
-2. Create Service Discovery with above namespace,generate ARN.
-3. Provide the Service Discovery ARN in Service Definition.
+1. Create a namespace in AWS Cloud Map.
+2. Create a Service Discovery with the above namespace and generate the ARN.
+3. Provide the Service Discovery ARN in the service definition.
 
 ```
 launchType: FARGATE
@@ -1153,7 +1165,7 @@ deploymentConfiguration:
   ** - registryArn: arn:aws:servicediscovery:us-east-1:1234567890:service/srv-xeycgshb42ydmokf**
 ```
 
-With the above Service Registry ARN specified in ECS Service Definition ,deployed services are marked with Service Discovery capability
+With the above Service Registry ARN specified in the ECS service definition, deployed services are marked with Service Discovery.
 
 ### Support for circuit breaker configurations
 

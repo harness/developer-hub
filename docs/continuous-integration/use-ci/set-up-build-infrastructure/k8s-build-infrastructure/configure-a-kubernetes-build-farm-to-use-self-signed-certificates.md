@@ -14,82 +14,87 @@ CI build infrastructure pods can interact with servers using self-signed certifi
 ## Important notes
 
 * This topic assumes that you are familiar with how to implement SSL in Kubernetes. General information about implementing SSL is outside the scope of this topic.
-* Harness CI Build and Push steps use the [kaniko](https://github.com/GoogleContainerTools/kaniko) plugin by default. Kaniko uses the path `/kaniko/ssl/certs/additional-ca-cert-bundle.crt` to read certificates.
+* With a Kubernetes cluster build infrastructure, all **Build and Push** steps use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). Kaniko uses the path `/kaniko/ssl/certs/additional-ca-cert-bundle.crt` to read certificates.
 * Harness uses a UBI image for the Git Clone step. UBI reads certificates from `/etc/ssl/certs/ca-bundle.crt`.
 * Different base images use different paths as their default certificate location. For example, Alpine images use this path to recognize certificates: `/etc/ssl/certs/ca-certificates.crt` For any other image, make sure you verify the default certificate path.
+
+### STO pipelines
+
+If you have STO scan steps in your pipeline, you can set up your certificates using the workflow described below. However, there are some additional steps and requirements. For more information, go to [Adding Custom Artifacts to STO Pipelines](/docs/security-testing-orchestration/use-sto/set-up-sto-pipelines/add-artifacts-to-pipelines.md).
 
 ## Enable self-signed certificates
 
 1. Create a Kubernetes secret or config map with the required certificates in the same namespace used by the Harness Delegate.
 
-Here's a YAML example:
+   Here's a YAML example:
 
-```yaml
-apiVersion: v1  
-kind: Secret  
-metadata:  
-  name: addcerts  
-  namespace: harness-delegate-ng  
-type: Opaque  
-stringData:                             
-  ca.bundle: |  
-    -----BEGIN CERTIFICATE-----  
-    XXXXXXXXXXXXXXXXXXXXXXXXXXX  
-    -----END CERTIFICATE-------  
-    -----BEGIN CERTIFICATE-----  
-    XXXXXXXXXXXXXXXXXXXXXXXXXXX  
-    -----END CERTIFICATE-------
-```
+   ```yaml
+   apiVersion: v1  
+   kind: Secret  
+   metadata:  
+     name: addcerts  
+     namespace: harness-delegate-ng  
+   type: Opaque  
+   stringData:                             
+     ca.bundle: |  
+       -----BEGIN CERTIFICATE-----  
+       XXXXXXXXXXXXXXXXXXXXXXXXXXX  
+       -----END CERTIFICATE-------  
+       -----BEGIN CERTIFICATE-----  
+       XXXXXXXXXXXXXXXXXXXXXXXXXXX  
+       -----END CERTIFICATE-------
+   ```
 
 2. Mount the secret as a volume on the Delegate pod.
 
-For details, go to [Configure a Pod to Use a Volume for Storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/) in the Kubernetes documentation.
+   For details, go to [Configure a Pod to Use a Volume for Storage](https://kubernetes.io/docs/tasks/configure-pod-container/configure-volume-storage/) in the Kubernetes documentation.
 
-You need to specify the following environment variables in the Delegate pod:
+   You need to specify the following environment variables in the Delegate pod:
 
-* `ADDITIONAL_CERTS_PATH`: The path to the certificates in the Delegate, for example: `/tmp/ca.bundle`.
-* `CI_MOUNT_VOLUMES`: A comma-separated list of `source:destination` mappings. The `source` is the certificate path on the delegate, and the `destination` is the path where you want to expose the certificates on the build containers, for example: `/tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt`.
-This list must include *all* certificates that your build containers need to interact with external services.
+   * `ADDITIONAL_CERTS_PATH`: The path to the certificates in the Delegate, for example: `/tmp/ca.bundle`.
+   * `CI_MOUNT_VOLUMES`: A comma-separated list of `source:destination` mappings. The `source` is the certificate path on the delegate, and the `destination` is the path where you want to expose the certificates on the build containers, for example: `/tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt`.
+   
+   This list must include *all* certificates that your build containers need to interact with external services.
 
-Here's a YAML example:
+   Here's a YAML example:
 
-```yaml
-apiVersion: apps/v1  
-kind: StatefulSet  
-spec:  
-  template:  
-    spec:  
-        env:  
-        - name: ADDITIONAL_CERTS_PATH  
-          value: /tmp/ca.bundle  
-        - name: CI_MOUNT_VOLUMES  
-          value: /tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt  
-        volumeMounts:  
-        - name: certvol  
-          mountPath: /tmp/ca.bundle  
-          subPath:  ca.bundle 
-       volumes:  
-        - name: certvol  
-          secret:  
-            secretName: addcerts  
-            items:  
-            - key: ca.bundle  
-              path: ca.bundle
-```
+   ```yaml
+   apiVersion: apps/v1  
+   kind: StatefulSet  
+   spec:  
+     template:  
+       spec:  
+           env:  
+           - name: ADDITIONAL_CERTS_PATH  
+             value: /tmp/ca.bundle  
+           - name: CI_MOUNT_VOLUMES  
+             value: /tmp/ca.bundle:/etc/ssl/certs/ca-bundle.crt,/tmp/ca.bundle:/kaniko/ssl/certs/additional-ca-cert-bundle.crt  
+           volumeMounts:  
+           - name: certvol  
+             mountPath: /tmp/ca.bundle  
+             subPath:  ca.bundle 
+          volumes:  
+           - name: certvol  
+             secret:  
+               secretName: addcerts  
+               items:  
+               - key: ca.bundle  
+                 path: ca.bundle
+   ```
 
-:::caution
+   :::caution
 
-Make sure that the destination path is not same as the default CA certificate path of the corresponding container image.
+   Make sure that the destination path is not same as the default CA certificate path of the corresponding container image.
 
-If you want to override the default certificate file, make sure the Kubernetes secret or config map (from step one) includes *all* certificates required by the pipelines that will use this build infrastructure.
+   If you want to override the default certificate file, make sure the Kubernetes secret or config map (from step one) includes *all* certificates required by the pipelines that will use this build infrastructure.
 
-:::
+   :::
 
 3. Restart the Delegate. Once it is up and running, `exec` into the container and ensure that the volume exists at the mounted path and contains your certificates.
 
 ## Troubleshooting
 
-If your builds fail due to an problem connecting to the scm service, add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML. For more information about this issue, go to [Troubleshoot Continuous Integration](/docs/continuous-integration/troubleshooting-ci.md).
+If your builds fail due to a problem connecting to the scm service, add `SCM_SKIP_SSL=true` to the `environment` section of the delegate YAML. For more information about this issue, go to [Troubleshoot CI](/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci.md).
 
 If the volumes are not getting mounted to the build containers, or you continue to see certificate errors in your pipeline, try the following:
 

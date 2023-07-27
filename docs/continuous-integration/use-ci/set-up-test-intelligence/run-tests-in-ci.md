@@ -10,6 +10,8 @@ In a CI pipeline, you can run a variety of tests, such as integration tests, fun
 
 To run tests in CI pipelines, you can use [Run steps](../run-ci-scripts/run-a-script-in-a-ci-stage.md) or a [Run Tests steps](./configure-run-tests-step-settings.md). The major difference between these two options is that you must use the **Run Tests** step if you want to [enable Test Intelligence](./set-up-test-intelligence.md).
 
+You can also include [code coverage](./code-coverage.md) commands in these steps.
+
 ## Improve test times
 
 These Harness CI features can improve test times:

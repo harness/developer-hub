@@ -14,7 +14,7 @@ Harness GitOps Repositories are connections to repos containing the declarative 
 
 If you are using multiple Harness GitOps Repositories for the subfolders in the same Git or Helm repo, you don't want to add the same credentials multiple times. Instead, you can create a single GitOps Repository Credentials Template and select it when creating GitOps Repositories.
 
-A Harness GitOps Repository is used for Harness GitOps only. For other Harness features like CI, CD Pipelines, etc, use a standard [Git Connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector).
+A Harness GitOps Repository is used for Harness GitOps only. For other Harness features like CI, CD Pipelines, etc, use a standard [Git Connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference).
 
 ## Before You Begin
 

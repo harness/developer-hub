@@ -1,0 +1,10 @@
+{
+   "label":"Continuous Error Tracking",
+   "collapsible":"true",
+   "collapsed":"true",
+   "className":"red",
+   "link":{
+      "type":"generated-index",
+      "title":"Continuous Error Tracking"
+   }  
+}

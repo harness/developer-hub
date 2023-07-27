@@ -125,7 +125,6 @@ pipeline:
                                     outputVariables: []  
                                     executionTarget: {}  
                                 timeout: 10m  
-                  serviceDependencies: []  
               tags: {}
 ```
 
@@ -137,7 +136,7 @@ We use the **Quickstart** `projectIdentifier` and the **default** `orgIdentifier
 
 Click **Save**. The Pipeline is now saved.
 
-Click **Visual** and you can see it's a simple Pipeline with a manual [Approval stage](/docs/platform/approvals/adding-harness-approval-stages/) and one [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step that echoes `hello`.
+Click **Visual** and you can see it's a simple Pipeline with a manual [Approval stage](/docs/platform/approvals/adding-harness-approval-stages/) and one [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step that echoes `hello`.
 
 ![](./static/harness-governance-quickstart-60.png)
 
@@ -424,9 +423,5 @@ In this tutorial, you:
 4. Ran a Pipeline that passed a policy evaluation.
 5. Reviewed policy evaluations for a Pipeline.
 
-### See also
 
-* [Add a Policy Engine step to a pipeline](/docs/platform/Governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline)
-* [Harness Policy As Code overview](/docs/platform/Governance/Policy-as-code/harness-governance-overview/)
-* [Harness Policy As Code overview for Feature Flags](/docs/feature-flags/ff-using-flags/harness-policy-engine/)
 

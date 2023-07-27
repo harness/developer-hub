@@ -27,7 +27,11 @@ Make sure you have the following set up before you create a Kubernetes connector
 :::note
 You must not rename the cluster. If you're setting up a new connector with the cluster, it is identified by the `clustername`. Renaming the cluster results in duplicate entries in the dashboard. 
 :::
- 
+
+:::note
+The supported Kubernetes version is 1.19.
+:::
+
 **​Set up your Kubernetes Cluster**
 
 You need a target Kubernetes cluster for the Harness Delegate and deployment. Make sure your cluster meets the following requirements:

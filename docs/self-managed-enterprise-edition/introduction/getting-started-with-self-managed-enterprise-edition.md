@@ -1,16 +1,17 @@
 ---
-title: Getting started with Self-Managed Enterprise Edition
-description: This document provides the basics on how to create a Harness account and first project. These are the first tasks that come after installing Self-Managed Enterprise Edition. For links to information…
-# sidebar_position: 2
+title: Getting started with Harness Self-Managed Enterprise Edition
+sidebar_label: Getting started
+description: This document provides the basics on how to create a Harness account and first project. These are the first tasks that come after installing Harness Self-Managed Enterprise Edition. For links to information…
+sidebar_position: 2
 helpdocs_topic_id: 09gjhl0tcw
 helpdocs_category_id: tvlmjozubh
 helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This document provides the basics on how to create a Harness account and first project. These are the first tasks that come after installing Self-Managed Enterprise Edition.
+This topic provides the basics on how to create a Harness account and your first project. These are the first tasks that come after you install Harness Self-Managed Enterprise Edition.
 
-For links to information about using CI and CD pipelines, as well as the basics on Security Testing Orchestration (STO), see the last section of this documentation.
+For links to information about using CI and CD pipelines, as well as the basics on Security Testing Orchestration (STO), go to [Next steps](/docs/self-managed-enterprise-edition/introduction/getting-started-with-self-managed-enterprise-edition#next-steps).
 
 ### Create your Harness account
 
@@ -18,11 +19,11 @@ You create your Harness account the first time you use Harness Self-Managed Ente
 
 ![](./static/getting-started-with-self-managed-enterprise-edition-01.png)
 
-**To create your Harness account**
+To create your Harness account, do the following:
 
 1. On the Harness **Sign up** page, enter your email address and a secure password.
 
-2. Click **Sign up**.
+2. Select **Sign up**.
 
    After your account is created, you arrive at the **Continuous Delivery** start page.
    
@@ -32,9 +33,9 @@ You create your Harness account the first time you use Harness Self-Managed Ente
 
 It takes time to learn how to create complex CI/CD pipelines. You can start with opening a project and inviting collaborators. 
 
-**To create a project**
+To create a project, do the following:
 
-1. From the **Continuous Delivery** start page, click **Create Project**.
+1. From the **Continuous Delivery** start page, select **Create Project**.
 
    ![](./static/getting-started-with-self-managed-enterprise-edition-03.png)
 
@@ -46,13 +47,13 @@ It takes time to learn how to create complex CI/CD pipelines. You can start with
 
    ![](./static/getting-started-with-self-managed-enterprise-edition-05.png)
 
-4. Click **Setup Later**.
+4. Select **Setup Later**.
 
 ### Next steps
 
-To get started with creating pipelines and Helm-based installs in Harness Self-Managed Enterprise Edition, see [Harness Docs](https://docs.harness.io/):
+To get started with creating pipelines and Helm-based installs in Harness Self-Managed Enterprise Edition, go to [Harness Docs](https://docs.harness.io/):
 
-* For Harness CI, see [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
-* For Harness CD, see [CD Pipeline Basics](../../continuous-delivery/get-started/cd-pipeline-basics.md).
-* For Harness STO, see [Security Testing Orchestration Basics (Public Preview)](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
+* For Harness CI, go to [CI Pipeline Quickstart](../../continuous-integration/ci-quickstarts/ci-pipeline-quickstart.md).
+* For Harness CD, go to [CD Pipeline Basics](../../continuous-delivery/get-started/cd-pipeline-basics.md).
+* For Harness STO, go to [Security Testing Orchestration Basics (Public Preview)](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
 

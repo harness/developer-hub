@@ -1,5 +1,5 @@
 ---
-title: CI pipeline concepts
+title: CI pipeline basics
 description: Basic terminology and concepts related to CI pipelines
 sidebar_position: 30
 helpdocs_topic_id: 3amcd8hn53
@@ -12,7 +12,7 @@ This topic covers basic terminology and concepts related to CI pipelines. For ge
 
 ## Pipelines
 
-A CI pipeline is an end-to-end integration workflow that, in its simplest form, pulls a codebase, builds an artifact, and then uploads the artifact to storage or a registry such as DockerHub, Google Cloud Registry, JFrog Artifactory, and many others.
+A CI pipeline is an end-to-end integration workflow that, in its simplest form, pulls a codebase, builds an artifact, and then uploads the artifact to storage or a registry such as Docker Hub, Google Cloud Registry, JFrog Artifactory, and many others.
 
 You can run a pipeline manually or set up [triggers](#triggers) to automatically run it on a schedule or when an event occurs, such as a Git merge in your codebase.
 
@@ -25,7 +25,7 @@ A CI stage is a subset of a pipeline that contains one major segment of the CI w
 <details>
 <summary>What is build infrastructure?</summary>
 
-All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me?](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me](../use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 </details>
 

@@ -1,0 +1,11 @@
+# process ids of target processes
+apiVersion: litmuchaos.io/v1alpha1
+kind: LinuxFault
+metadata:
+  name: linux-process-kill
+  labels:
+    name: process-kill
+spec:
+  processKillChaos/inputs:
+    processIDs: "13453,32444,27436"
+    duration: 30

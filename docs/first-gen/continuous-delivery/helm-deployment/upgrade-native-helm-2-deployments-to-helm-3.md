@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md).
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md).
 
 For Kubernetes deployments that use Helm charts, see [Upgrade to Helm 3 Charts in Kubernetes Services](../kubernetes-deployments/upgrade-to-helm-3-charts-in-kubernetes-services.md).When you create your native [Helm deployments](helm-deployments-overview.md) in Harness, you can choose to use Helm 2 or [Helm 3](https://helm.sh/blog/helm-3-released/).
 

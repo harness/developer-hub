@@ -14,13 +14,18 @@
   /* Primary colors - for links, buttons, etc. */
   /* --primary-10: #1a1a1a; */
   --primary-10: #07182b;
-  --primary-9: #0a3364; /* Darker Primary */
+  --primary-9: #0a3364;
+  /* Darker Primary */
   --primary-8: #004ba4;
-  --primary-7: #0278d5; /* Main Primary */
-  --primary-6: #0092e4; /* rgb(0 146 228 / 0.7) */
-  --primary-5: #00ade4; /* Brand Primary */
+  --primary-7: #0278d5;
+  /* Main Primary */
+  --primary-6: #0092e4;
+  /* rgb(0 146 228 / 0.7) */
+  --primary-5: #00ade4;
+  /* Brand Primary */
   --primary-4: #3dc7f6;
-  --primary-3: #a3e9ff; /* Lighter Primary */
+  --primary-3: #a3e9ff;
+  /* Lighter Primary */
   --primary-2: #cdf4fe;
   --primary-1: #effbff;
   /* Text & Background - Gray Scale */
@@ -29,112 +34,132 @@
   --gray-800: #22222a;
   --gray-700: #383946;
   --gray-600: #4f5162;
-  --gray-500: #6b6d85; /* Main */
+  --gray-500: #6b6d85;
+  /* Main */
   --gray-400: #9293ab;
   --gray-300: #b0b1c4;
   --gray-200: #d9dae5;
   --gray-100: #f3f3fa;
-  --gray-50: #fafbfc; /* Background */
+  --gray-50: #fafbfc;
+  /* Background */
   --gray-0: #ffffff;
   /* Alerts & Statues - Green */
   --green-900: #1e5c1f;
   --green-800: #1b841d;
   --green-700: #299b2c;
   --green-600: #42ab45;
-  --green-500: #4dc952; /* Main */
+  --green-500: #4dc952;
+  /* Main */
   --green-400: #86d981;
   --green-300: #a2e29b;
   --green-200: #bdeab7;
   --green-100: #d8f3d4;
-  --green-50: #e4f7e1; /* Background */
+  --green-50: #e4f7e1;
+  /* Background */
   /* Alerts & Statues - Cornflower Blue */
   --blue-900: #2d376d;
   --blue-800: #39478f;
   --blue-700: #4c5cb0;
   --blue-600: #6374d0;
-  --blue-500: #798bec; /* Main */
+  --blue-500: #798bec;
+  /* Main */
   --blue-400: #8598ff;
   --blue-300: #97a7ff;
   --blue-200: #b1beff;
   --blue-100: #dae0ff;
-  --blue-50: #f4f6ff; /* Background */
+  --blue-50: #f4f6ff;
+  /* Background */
   /* Alerts & Statues - Yellow */
   --yellow-900: #fcb519;
   --yellow-800: #fcc026;
   --yellow-700: #fcc62d;
   --yellow-600: #fdcc35;
-  --yellow-500: #fdd13b; /* Main */
+  --yellow-500: #fdd13b;
+  /* Main */
   --yellow-400: #fedf76;
   --yellow-300: #fee89d;
   --yellow-200: #fef1c4;
   --yellow-100: #fff9e7;
-  --yellow-50: #fffbee; /* Background */
+  --yellow-50: #fffbee;
+  /* Background */
   /* Alerts & Statues - Orange */
   --orange-900: #ff5310;
   --orange-800: #ff661a;
   --orange-700: #ff7020;
   --orange-600: #ff7b26;
-  --orange-500: #ff832b; /* Main */
+  --orange-500: #ff832b;
+  /* Main */
   --orange-400: #ffa86b;
   --orange-300: #ffc195;
   --orange-200: #ffdabf;
   --orange-100: #fff0e6;
-  --orange-50: #fff5ed; /* Background */
+  --orange-50: #fff5ed;
+  /* Background */
   /* Alerts & Statues - Red */
   --red-900: #b41710;
   --red-800: #c41f17;
   --red-700: #cf2318;
   --red-600: #da291d;
-  --red-500: #e43326; /* Main */
+  --red-500: #e43326;
+  /* Main */
   --red-400: #ee5f54;
   --red-300: #ef9790;
   --red-200: #f5c0bc;
   --red-100: #fbe6e4;
-  --red-50: #fcedec; /* Background */
+  --red-50: #fcedec;
+  /* Background */
   /* Secondary & Charts - Teal */
   --teal-900: #07a0ab;
   --teal-800: #05aab6;
   --teal-700: #06b7c4;
   --teal-600: #03c0cd;
-  --teal-500: #0bc8d6; /* Main */
+  --teal-500: #0bc8d6;
+  /* Main */
   --teal-400: #47d5df;
   --teal-300: #73dfe7;
   --teal-200: #a9eff2;
   --teal-100: #c0fbfe;
-  --teal-50: #d3fcfe; /* Background */
+  --teal-50: #d3fcfe;
+  /* Background */
   /* Secondary & Charts - Lime Green */
   --lime-900: #487a34;
   --lime-800: #558b2f;
   --lime-700: #689f38;
   --lime-600: #76af34;
-  --lime-500: #7fb800; /* Main */
+  --lime-500: #7fb800;
+  /* Main */
   --lime-400: #9ccc65;
   --lime-300: #aadc72;
   --lime-200: #c5e1a5;
   --lime-100: #eaf8db;
-  --lime-50: #f1fae6; /* Background */
+  --lime-50: #f1fae6;
+  /* Background */
   /* Secondary & Charts - Purple */
   --purple-900: #4d0b8f;
   --purple-800: #4d278f;
   --purple-700: #592baa;
   --purple-600: #6938c0;
-  --purple-500: #6938c0; /* Main */
+  --purple-500: #6938c0;
+  /* Main */
   --purple-400: #ae82fc;
   --purple-300: #c19eff;
   --purple-200: #cfb4ff;
   --purple-100: #e1d0ff;
-  --purple-50: #eadeff; /* Background */
+  --purple-50: #eadeff;
+  /* Background */
   /* Secondary & Charts - Magenta */
   --magenta-900: #ca136c;
   --magenta-800: #d91f79;
   --magenta-700: #ee2a89;
   --magenta-600: #f53693;
-  --magenta-500: #ff479f; /* Main */
+  --magenta-500: #ff479f;
+  /* Main */
   --magenta-400: #ff8ac1;
   --magenta-300: #ffabd3;
   --magenta-200: #ffcde4;
   --magenta-100: #ffeef7;
-  --magenta-50: #fff3f9; /* Background */
+  --magenta-50: #fff3f9;
+  /* Background */
 
   /* ================================== *
    * ===== Style Variable Aliases ===== *
@@ -178,6 +203,13 @@
   /* Module Colors/Continuous Delivery/100 */
   --mod-cd-100: #f6fff2;
 
+  /* Module Colors/Continuous Verification/300 */
+  --mod-cv-300: #30841f;
+  /* Module Colors/Continuous Verification/200 */
+  --mod-cv-200: #5fb34e;
+  /* Module Colors/Continuous Verification/100 */
+  --mod-cv-100: #f6fff2;
+
   /* Module Colors/Continuous Integration/300 */
   --mod-ci-300: #0672b6;
   /* Module Colors/Continuous Integration/200 */
@@ -190,7 +222,7 @@
   /* Module Colors/Cloud Cost/200 */
   --mod-ccm-200: #01c9cc;
   /* Module Colors/Cloud Cost/100 */
-  --mod-100: #ecffff;
+  --mod-ccm-100: #ecffff;
 
   /* Module Colors/Feature Flags/300 */
   --mod-ff-300: #c05809;
@@ -214,23 +246,35 @@
   --mod-ce-200: #ff006a;
   --mod-ce-100: #fff1f7;
 
-  /* Module Colors/CET/200 */
+  /* Module Colors/CET */
+  --mod-cet-300: #c01406;
   --mod-cet-200: #ff5f45;
+  --mod-cet-100: #ffe2dd;
 
-  /* Module Colors/SEI/200 */
-  --mod-sei-200: var(--primary); /* To be updated */
+  /* Module Colors/SEI */
+  --mod-sei-300: #30841f;
+  --mod-sei-200: #5fb34e;
+  --mod-sei-100: #f6fff2;
 
-  /* Module Colors/SSCA/200 */
-  --mod-ssca-200: var(--primary); /* To be updated */
+  /* Module Colors/SSCA */
+  --mod-ssca-300: #c01406;
+  --mod-ssca-200: #ff5f45;
+  --mod-ssca-100: #ffe2dd;
 
-  /* Module Colors/IDP/200 */
-  --mod-idp-200: var(--primary); /* To be updated */
+  /* Module Colors/IDP */
+  --mod-idp-300: #24807f;
+  --mod-idp-200: #01c9cc;
+  --mod-idp-100: #ecffff;
 
-  /* Module Colors/IaCM/200 */
-  --mod-iacm-200: var(--primary); /* To be updated */
+  /* Module Colors/IaCM */
+  --mod-iacm-300: #30841f;
+  --mod-iacm-200: #5fb34e;
+  --mod-iacm-300: #f6fff2;
 
-  /* Module Colors/Gitness/200 */
-  --mod-gitness-200: var(--primary); /* To be updated */
+  /* Module Colors/Gitness */
+  --mod-gitness-300: #9a0041;
+  --mod-gitness-200: #ff006a;
+  --mod-gitness-100: #fff1f7;
 
   /* ----- */
   --ifm-link-decoration: none;
@@ -268,6 +312,7 @@ html {
   box-sizing: border-box;
   min-height: 100vh;
 }
+
 html *,
 html *:before,
 html *:after {
@@ -305,11 +350,13 @@ a:hover {
   line-height: 24px;
   color: var(--white);
 }
+
 .button--cta:hover,
 .button--primary:hover {
   background-color: var(--primary-5);
   border-color: var(--primary-5);
 }
+
 .button--primary {
   height: 48px;
   padding-left: 2em;
@@ -320,24 +367,29 @@ a:hover {
 .navbar__brand {
   margin-right: 0;
 }
+
 .navbar__title {
   display: none;
 }
+
 .navbar__item img[alt="BETA"] {
   margin-left: -0.25rem;
   margin-top: 10px;
   width: 36px;
   height: auto;
 }
+
 .theme-doc-markdown h3 {
   display: flex;
 }
+
 .theme-doc-markdown h3 > img {
   margin-right: 0.2em;
 }
 
 .theme-doc-markdown img[class^="img_"] {
-  border: 1px solid #d9dae5; /* var(--gray-400); */
+  border: 1px solid #d9dae5;
+  /* var(--gray-400); */
   border-radius: 8px;
 }
 
@@ -348,11 +400,13 @@ a:hover {
   --ifm-tabs-color-active: var(--primary);
   --ifm-tabs-color-active-border: var(--primary);
 }
+
 /* #HDH-103 anchor style in alert section */
 .alert a {
   color: var(--primary);
   text-decoration: none;
 }
+
 .alert a:hover {
   color: var(--primary-5);
   text-decoration: underline;
@@ -364,21 +418,26 @@ details summary {
   font-weight: 500;
   line-height: 140%;
 }
+
 details summary::before {
   border-left-color: var(--black) !important;
 }
+
 .tabs {
   border-bottom: 1px solid var(--gray-200);
 }
+
 .tabs__item--active {
   border-bottom-color: var(--primary);
   background-color: var(--primary-1);
 }
+
 .tabs__item,
 .tabs__item > * {
   display: flex;
   align-items: center;
 }
+
 .tabs__item img,
 .tabs__item i {
   width: 1em;
@@ -389,30 +448,39 @@ details summary::before {
 .color-ci {
   color: var(--mod-ci-200);
 }
+
 .color-cd {
   color: var(--mod-cd-200);
 }
+
 .color-ff {
   color: var(--mod-ff-200);
 }
+
 .color-ccm {
   color: var(--mod-ccm-200);
 }
+
 .color-srm {
   color: var(--mod-srm-200);
 }
+
 .color-sto {
   color: var(--mod-sto-200);
 }
+
 .color-ce {
   color: var(--mod-ce-200);
 }
+
 .table-of-contents ul li span[class*="color-"] {
   color: unset;
 }
+
 .theme-doc-markdown h3 {
   display: flex;
 }
+
 .theme-doc-markdown h3 > img {
   margin-right: 0.2em;
 }
@@ -427,6 +495,7 @@ a[aria-label="Search by Algolia"] {
 .flexContainer {
   display: flex;
 }
+
 /* a:hover {
     color: var(--ifm-link-color);
     text-decoration: var(--ifm-link-decoration);
@@ -436,25 +505,31 @@ a[aria-label="Search by Algolia"] {
 .rc-tooltip-inner {
   text-transform: capitalize;
 }
+
 .rc-tooltip-hidden {
   display: none !important;
 }
+
 button[title="Copy"] {
   opacity: 0.6 !important;
 }
+
 .tooltip-max-width {
   max-width: 200px;
   padding: 0.5em;
   margin: 0;
 }
+
 .searchBar .DocSearch-Button {
   border-radius: 4px;
   background: var(--white);
   border: 1px solid var(--gray-500);
 }
+
 .searchBar .DocSearch-Button .DocSearch-Search-Icon {
   color: var(--gray-600);
 }
+
 .searchBar .DocSearch-Button .DocSearch-Button-Key {
   background: none;
   box-shadow: none;
@@ -466,6 +541,7 @@ button[title="Copy"] {
   justify-content: center;
   align-items: center;
 }
+
 body.DocSearch--active #__docusaurus > div[class*="announcementBar"] {
   /* hide the announcement bar while the search bar called out */
   display: none;
@@ -475,9 +551,11 @@ body.DocSearch--active #__docusaurus > div[class*="announcementBar"] {
   display: flex;
   align-items: center;
 }
+
 .theme-doc-sidebar-container .sidebar-item-rss > a > svg {
   display: none;
 }
+
 .theme-doc-sidebar-container .sidebar-item-rss > a::after {
   content: url(/img/icon_rss.svg);
   margin-left: 0.3em;
@@ -496,12 +574,14 @@ aside nav.menu > ul > li > ul > li > a {
   line-height: 20px;
   font-weight: 600;
 }
+
 aside nav.menu > ul > li > ul > li ul > li > div > a,
 aside nav.menu > ul > li > ul > li ul > li > a {
   font-weight: 500;
   font-size: 12px;
   line-height: 18px;
 }
+
 .menu__link--sublist-caret:after,
 .menu__caret:before {
   /* width: 0.7rem;
@@ -520,6 +600,7 @@ a.card .text--truncate {
   -webkit-box-orient: vertical;
   box-orient: vertical;
 }
+
 a.card p.text--truncate {
   min-height: 3em;
 }
@@ -529,12 +610,19 @@ ol ol,
 ul ol {
   list-style-type: lower-alpha;
 }
-
+/* .navbar__logo{
+  margin-bottom: 10px;
+} */
+.navbar__logo{
+  margin-bottom: 10px;
+}
 @media screen and (min-width: 1200px) {
   /* style for the search bar in higher resolution */
   .searchBar {
-    width: calc(100vw - 1040px); /* - 925px */
+    width: calc(100vw - 1040px);
+    /* - 925px */
   }
+
   .searchBar .DocSearch-Button {
     width: 100%;
   }
@@ -548,6 +636,15 @@ ul ol {
   .searchBar {
     display: none;
   }
+}
+
+
+/* for navbar alignment */
+@media screen and (max-width: 1400px) {
+.navbar__logo{
+  margin-bottom: 5px;
+}
+
 }
 
 @media screen and (max-width: 393px) {

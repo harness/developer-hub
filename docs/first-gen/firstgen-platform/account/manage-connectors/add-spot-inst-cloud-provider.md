@@ -14,13 +14,13 @@ You add cloud providers to your Harness Account and then reference them when def
 
 In this topic:
 
-* [Before You Begin](#before-you-begin)
-* [Visual Summary](#visual-summary)
-* [Step 1: Add the Cloud Provider](#step-1-add-the-cloud-provider)
-* [Step 2: Display Name](#step-2-display-name)
-* [Step 3: Spotinst Account ID](#step-3-spotinst-account-id)
-* [Step 4: Select Encrypted Spotinst API Token](#step-4-select-encrypted-spotinst-api-token)
-* [Step 5: Test and Submit](#step-5-test-and-submit)
+- [Before You Begin](#before-you-begin)
+- [Visual Summary](#visual-summary)
+- [Step 1: Add the Cloud Provider](#step-1-add-the-cloud-provider)
+- [Step 2: Display Name](#step-2-display-name)
+- [Step 3: Spotinst Account ID](#step-3-spotinst-account-id)
+- [Step 4: Select Encrypted Spotinst API Token](#step-4-select-encrypted-spotinst-api-token)
+- [Step 5: Test and Submit](#step-5-test-and-submit)
 
 ## Before You Begin
 
@@ -52,7 +52,7 @@ From the Spotinst Console's **ACCOUNT** tab, copy/paste your **Spotinst Accou
 
 ## Step 4: Select Encrypted Spotinst API Token
 
-1. Log into the **Spotinst Console**, generate an API Token, and copy it to your clipboard. Keep the Spotinst Console open.For details, see Spotinst's [Create an API Token](https://docs.spot.io/administration/api/create-api-token?id=create-an-api-token) documentation.
+1. Log into the **Spotinst Console**, generate an API Token, and copy it to your clipboard. Keep the Spotinst Console open.For details, see Spotinst's [Create an API Token](https://docs.spot.io/administration/api/create-api-token) documentation.
 2. In the Harness Cloud Provider, in , click **Create Encrypted Text**, and then paste the token into **Select Encrypted Spotinst API Token**.
 
 ## Step 5: Test and Submit

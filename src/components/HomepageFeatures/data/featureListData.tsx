@@ -7,7 +7,7 @@ export const featureList: CardItem[] = [
     title: "Set up CI Pipelines",
     module: MODULES.ci,
     icon: "img/icon_ci.svg",
-    description: "Automate builds, tests and publishing of artifacts.",
+    description: "Automate builds, tests, and publishing of artifacts.",
     type: [docType.Documentation],
     //type: [docType.Documentation, docType.Interactive, docType.Video],
     link: "tutorials/ci-pipelines",
@@ -16,7 +16,8 @@ export const featureList: CardItem[] = [
     title: "Set up CD Pipelines",
     module: MODULES.cd,
     icon: "img/icon_cd.svg",
-    description: "Automate deployment of application services to your infrastructure.",
+    description:
+      "Automate deployment of application services to your infrastructure.",
     type: [docType.Documentation],
     link: "tutorials/cd-pipelines",
   },
@@ -40,15 +41,15 @@ export const featureList: CardItem[] = [
     title: "Manage Service Reliability",
     module: MODULES.srm,
     icon: "img/icon_srm.svg",
-    description: <>Monitor SLOs, track error budgets, debug code errors.</>,
-    type: [docType.Documentation, docType.Interactive, docType.Video],
+    description: <>Monitor SLOs, track error budgets, and debug code errors.</>,
+    type: [docType.Documentation],
     link: "tutorials/service-reliability",
   },
   {
     title: "Orchestrate Security Tests",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
-    description: <>Scan code, containers and live applications.</>,
+    description: <>Scan code, containers, and live applications.</>,
     type: [docType.Documentation],
     link: "tutorials/security-tests",
   },
@@ -61,13 +62,36 @@ export const featureList: CardItem[] = [
     link: "tutorials/chaos-experiments",
   },
   {
+    title: "Track Errors",
+    module: MODULES.cet,
+    icon: "img/icon_cet.svg",
+    description: (
+      <>Find and fix issues in minutes with code level visibility.</>
+    ),
+    type: [docType.Documentation, docType.Interactive, docType.Video],
+    link: "tutorials/error-tracking",
+  },
+  {
+    title: "Improve Developer Productivity",
+    module: MODULES.idp,
+    icon: "img/icon_idp.svg",
+    description: (
+      <>
+        Streamline software development and knowledge sharing with a
+        developer-focused portal.
+      </>
+    ),
+    type: [docType.Documentation],
+    link: "tutorials/internal-developer-portal",
+  },
+  {
     title: "Administer Harness Platform",
     module: MODULES.platform,
     icon: "img/logo.svg",
     description: (
       <>
         Install a Kubernetes or Docker delegate, Onboard with Terraform
-        Provider and more.
+        Provider, and more.
       </>
     ),
     type: [docType.Documentation],

@@ -2,19 +2,20 @@ import React from "react";
 import clsx from "clsx";
 import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
 import TutorialCard from "./TutorialCard";
-import {
-  FeaturedList,
-  CIList,
-  CDList,
-  CCMList,
-  FFList,
-  SRMList,
-  STOList,
-  CEList,
-  PlatformList,
-} from "./data/allTutorialsData";
+import { FeaturedList } from "./data/allTutorialsData";
+import { CIList } from "./data/continuousIntegrationData";
+import { CDList } from "./data/continuousDeliveryData";
+import { CCMList } from "./data/cloudCostManagementData";
+import { FFList } from "./data/featureFlagsData";
+import { SRMList } from "./data/serviceReliabilityManagementData";
+import { STOList } from "./data/securityTestingOrchestrationData";
+import { CEList } from "./data/chaosEngineeringData";
+import { PlatformList } from "./data/platformData";
+import { CETList } from "./data/continuousErrorTrackingData";
+import { IDPList } from "./data/internalDeveloperPortalData";
+import { SMPList } from "./data/smpData";
 import styles from "./styles.module.scss";
-import moduleStyles from "./TutorialCard.module.scss";
+import cardStyles from "./TutorialCard.module.scss";
 
 export default function AllTutorials() {
   const { siteConfig: { baseUrl = "/" } = {} } = useDocusaurusContext();
@@ -24,7 +25,7 @@ export default function AllTutorials() {
     //     <li>Get Started</li>
     //     <li>All Tutorials</li>
     //   </ul>
-    <div className={clsx("container", moduleStyles.allTutorials)}>
+    <div className={clsx("container", cardStyles.allTutorials)}>
       <div className={styles.topSection}>
         <h1>All Tutorials</h1>
         <p>
@@ -33,7 +34,7 @@ export default function AllTutorials() {
         </p>
       </div>
       <div className={styles.subSection}>
-        <h3>Featured Tutorials</h3>
+        <h3>All Featured Tutorials</h3>
         <TutorialCard FeatureList={FeaturedList} featuredCard={true} />
       </div>
       <div className={styles.subSection}>
@@ -87,10 +88,31 @@ export default function AllTutorials() {
       </div>
       <div className={styles.subSection}>
         <div className={styles.SectionName}>
+          <img src={`${baseUrl}img/icon_cet.svg`} />
+          <h3>Track Errors</h3>
+        </div>
+        <TutorialCard FeatureList={CETList} />
+      </div>
+      <div className={styles.subSection}>
+        <div className={styles.SectionName}>
+          <img src={`${baseUrl}img/icon_idp.svg`} />
+          <h3>Manage Developer Portal</h3>
+        </div>
+        <TutorialCard FeatureList={IDPList} />
+      </div>
+      <div className={styles.subSection}>
+        <div className={styles.SectionName}>
           <img src={`${baseUrl}img/logo.svg`} />
           <h3>Administer Harness Platform</h3>
         </div>
         <TutorialCard FeatureList={PlatformList} />
+      </div>
+      <div className={styles.subSection}>
+        <div className={styles.SectionName}>
+          <img src={`${baseUrl}img/logo.svg`} />
+          <h3>Administer Harness Self-Managed Enterprise Edition</h3>
+        </div>
+        <TutorialCard FeatureList={SMPList} />
       </div>
     </div>
     // </Layout>

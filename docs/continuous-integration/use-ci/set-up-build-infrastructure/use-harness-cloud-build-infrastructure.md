@@ -8,7 +8,7 @@ With Harness Cloud you can run builds in isolation on Harness-hosted VMs that ar
 
 This topic describes how to use Harness-hosted build infrastructure for your Harness CI pipelines, as well as information about machine specifications, special considerations, and additional configuration required for certain use cases.
 
-For more information about the Harness Cloud architecture, go to [Get started with Harness Cloud](../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md). For a comparison of build infrastructure options, go to [Which build infrastructure is right for me?](./which-build-infrastructure-is-right-for-me.md)
+For more information about the Harness Cloud architecture, go to [Get started with Harness Cloud](../../ci-quickstarts/hosted-builds-on-virtual-machines-quickstart.md). For a comparison of build infrastructure options, go to [Which build infrastructure is right for me](./which-build-infrastructure-is-right-for-me.md).
 
 ## Requirements
 
@@ -35,7 +35,7 @@ Refer to the following image specification README files for more information abo
 
 * [Linux amd64 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-amd/Ubuntu2204-Readme.md)
 * [Linux arm64 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Linux-arm/Ubuntu2204-Readme.md)
-* [macOS image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-12-Readme.md)
+* [macOS image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/macos-13-Readme.md)
 * [Windows Server 2019 image specifications](https://github.com/wings-software/harness-docs/blob/main/harness-cloud/Windows2019-Readme.md)
 
 You can include steps in your pipeline to specify a version of a tool installed on an image, lock the stage to a required version, or install additional tools and versions that aren't available on the image. These steps run on the host machine or run as separate Docker images.
@@ -74,7 +74,7 @@ In the following YAML example, an [Action step](../use-drone-plugins/ci-github-a
                   spec:
                     uses: actions/setup-java@v3
                     with:
-                      distribution: 'zulu' # See 'Supported distributions' for available options
+                      distribution: 'temurin'
                       java-version: '17'
               - step:
                   identifier: java_ver_check
@@ -124,7 +124,7 @@ The following YAML example demonstrates how a **Run** step can use a Docker imag
                   name: Welcome
                   identifier: Welcome
                   spec:
-                    connectorRef: my_dockerhub // Specify a Docker connector to pull an image from Docker.
+                    connectorRef: my_docker_hub // Specify a Docker connector to pull an image from Docker.
                     image: alpine // If no image is specified, the step runs on the host machine.
                     shell: Sh
                     command: Echo "Welcome to Harness CI"
@@ -162,7 +162,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="YAML" label="YAML editor">
 ```
 
-To enable Harness Cloud build infrastructure in your pipeline YAML, specify the `platform` and `runtime` in the `stage: spec:`. For example:
+To enable Harness Cloud build infrastructure in your pipeline YAML, specify the `platform` and `runtime` in the `stage.spec`. For example:
 
 ```yaml
           platform:

@@ -10,16 +10,35 @@ helpdocs_is_published: true
 
 Veracode is a popular tool for scanning code repos for security issues and vulnerabilities. Veracode performs dynamic (automated penetration test) and static (automated code review) code analysis and finds security vulnerabilities that include malicious code as well as the absence of functionality that can lead to security breaches.
 
-### Prerequisites
+
+## Prerequisites
 
 * Before you can ingest scan results, you must perform all the Veracode prerequisites for the repo that you're scanning. If you're scanning a Java repo, for example, the Veracode documentation outlines the specific packaging and compilation requirements for scanning your Java applications.  
 For specific requirements, got to the [Veracode docs](https://docs.veracode.com) and search for *Veracode Packaging Requirements*.
 * You also need access credentials so that STO can communicate with your Veracode instance. Harness recommends using API keys, not usernames and passwords, for your Veracode integrations  
 For instructions, go to the [Veracode docs](https://docs.veracode.com) and search for *Generate Veracode API Credentials*.  
-Harness recommends you create [text secrets](/docs/platform/Secrets/add-use-text-secrets) for your authentication credentials — password, API key, API secret key, etc. — and access your secrets using `<+secrets.getValue("<`*`my_secret`*`>")>`.
+Harness recommends you create [text secrets](/docs/platform/Secrets/add-use-text-secrets) for your authentication credentials — password, API key, API secret key, etc. — and access your secrets using `<+secrets.getValue("my-secret")>`.
 * The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) and [Veracode - Activate Scenario](https://community.harness.io/t/veracode-activate-scenario/1067) blog posts include useful information about how to ingest Veracode scan results into Harness.
 
-### Required Settings
+## Before you begin
+
+### Docker-in-Docker requirements
+
+```mdx-code-block
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
+```
+
+<StoDinDRequirements />
+
+### Root access requirements
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
+
+## Required Settings
 
 * `product_name` = `veracode`
 * `scan_type` = `repository`
@@ -44,12 +63,14 @@ In most cases, this should match the repo name used in your Git provider.
 	+ For `usernamePassword` authentication, this is your password.
 	+ For `apiKey` authorization, this is your API Secret key.
 * `product_app_id`  — The Veracode GUID, separated with hyphens, for the target application.  
-     To determine the App ID, go to the home page for the Veracode app with the results you want to scan. The App ID is the string immediately after the port number in the URL. Thus, for the following app, you would specify `1973759`.  
-`https://analysiscenter.veracode.com/auth/index.jsp#HomeAppProfile:88881:1973759`
-* `product_project_name`— The Veracode project with the scan results you want to ingest.  
-     The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) blog post describes how you can find your application ID's and project names.
 
-### Ingestion settings
+   To determine the App ID, go to the home page for the Veracode app with the results you want to scan. The App ID is the string immediately after the port number in the URL. Thus, for the following app, you would specify `1973759`.  
+    
+   `https://analysiscenter.veracode.com/auth/index.jsp#HomeAppProfile:88881:1973759` 
+
+   The [Veracode - Automated Data Load](https://community.harness.io/t/veracode-automated-data-load/1066) blog post describes in more detail how you can find your application IDs and project names.     
+
+##  Ingestion settings
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
@@ -57,7 +78,7 @@ import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 
 <StoLegacyIngest />
 
-### Fail on Severity
+## Fail on Severity
 ```mdx-code-block
 import StoSettingFailOnSeverity from './shared/step_palette/_sto-ref-ui-fail-on-severity.md';
 ```

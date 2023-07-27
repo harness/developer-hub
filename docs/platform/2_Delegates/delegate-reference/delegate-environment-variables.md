@@ -44,7 +44,7 @@ A text description of the delegate. The description is added to the delegate bef
 
 The name of the delegate. This is the name that identifies a registered delegate in Harness. 
 
-This value is not specified when delegate creation is automated. Instead, a script is used to duplicate the delegate YAML file and add a unique name to the `DELEGATE_NAME` environment variable for each delegate to be registered. See [Automate Delegate Installation](/docs/platform/2_Delegates/install-delegates/automate-delegate-installation.md). 
+This value is not specified when delegate creation is automated. Instead, a script is used to duplicate the delegate YAML file and add a unique name to the `DELEGATE_NAME` environment variable for each delegate to be registered. Go to [Automate delegate installation](/docs/platform/2_Delegates/install-delegates/automate-delegate-installation.md). 
 
 ```
 - name: DELEGATE_NAME
@@ -88,7 +88,7 @@ Delegates at the account or organization level do not have a value for this vari
 
 Delegate tags are descriptors that are added to the delegate before the registration process, in Harness Manager or in YAML. Harness generates tags based on the delegate name; you can add others. You can specify multiple tags in YAML as a comma-separated list.
 
-Tags are displayed on the delegate details page in Harness Manager. See [Tags Reference](../../20_References/tags-reference.md) and [Select Delegates with Tags](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md). 
+Tags are displayed on the delegate details page in Harness Manager. Go to [Tags reference](../../20_References/tags-reference.md) and [Use delegate selectors](/docs/platform/2_Delegates/manage-delegates/select-delegates-with-selectors.md). 
 
 ```
 - name: DELEGATE_TAGS

@@ -1,7 +1,6 @@
 ---
 title: Clone multiple code repos in one pipeline
 description: Use Git Clone steps to clone additional code repos into a pipeline's workspace.
-
 sidebar_position: 20
 helpdocs_topic_id: k8tz6mtiut
 helpdocs_category_id: 7ljl8n7mzn
@@ -14,7 +13,13 @@ In addition to the pipeline's default [codebase](./create-and-configure-a-codeba
 * Build multiple artifacts in the same pipeline. For example, suppose you use Packer and Ansible to build artifacts automatically, and you have separate repos for Packer, Ansible, and code. You can clone all three repos into the pipeline's workspace.
 * Pull code from separate code and build repos. For example, if your code files are in a repo managed by the Engineering team and your Dockerfiles are in a different repo managed by the Security team, you can clone both repos into the pipeline's workspace.
 
-This topic assumes you are familiar with [Harness CI concepts](../../ci-quickstarts/ci-concepts.md) and the general [pipeline creation process](../prep-ci-pipeline-components.md).
+This topic assumes you are familiar with [CI concepts](../../ci-quickstarts/ci-concepts.md) and the general [pipeline creation process](../prep-ci-pipeline-components.md).
+
+:::info Large file storage
+
+If you need to clone LFS-enabled repositories or run `git lfs` commands (such as `git lfs clone`), go to [Git Large File Storage](./gitlfs.md).
+
+:::
 
 ## Configure the default codebase
 
@@ -37,7 +42,7 @@ The following steps explain how to create a pipeline and add a **Build** stage. 
 7. Select **Set Up Stage**.
 8. On the stage's **Infrastructure** tab, [set up the build infrastructure](/docs/category/set-up-build-infrastructure).
 
-For more information about configuring the **Build** stage's, go to [Create and configure a codebase](./create-and-configure-a-codebase.md) and [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
+For more information about configuring the **Build** stage and the default codebase, go to [Create and configure a codebase](./create-and-configure-a-codebase.md) and [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
 
 ## Add the Git Clone step
 
@@ -55,17 +60,13 @@ Select a connector for the source control provider hosting the code repo that yo
 
 The following topics provide more information about creating code repo connectors:
 
-* AWS CodeCommit: [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo#add-aws-codecommit-repo)
 * Azure Repos: [Connect to Azure Repos](/docs/platform/Connectors/Code-Repositories/connect-to-a-azure-repo)
-* Bitbucket: [Bitbucket Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
-* GitHub:
-  * [Add a GitHub connector](/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector)
-  * [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
-  * [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support)
+* Bitbucket: [Bitbucket connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/bitbucket-connector-settings-reference)
+* GitHub: [GitHub connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference)
 * GitLab: [GitLab Connector Settings Reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-lab-connector-settings-reference)
 * Other Git providers:
-  * [Connect to a Git repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo)
   * [Git connector settings reference](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-connector-settings-reference)
+  * [Connect to an AWS CodeCommit Repo](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo)
 
 ### Repository Name
 
@@ -107,14 +108,20 @@ If you want to use self-signed certificates in a Kubernetes Cluster build infras
 
 ### Run as User
 
-Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+This setting is available for Kubernetes cluster build infrastructures only.
+
+All Git clone steps, including the default clone codebase step and any additional **Git Clone** steps, use user 1000 by default for Kubernetes.
+
+If necessary, you can specify, in **Run as User**, a user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+
+Specifying **Run as User** at the step level overrides **Run as User** in the [build infrastructure settings](../set-up-build-infrastructure/ci-stage-settings.md#infrastructure), if you had also specified it there.
 
 ### Set Container Resources
 
 Set maximum resource limits for the resources used by the container at runtime:
 
-* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`.
-* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+* **Limit Memory:** The maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number using the suffixes `G` or `M`. You can also use the power-of-two equivalents `Gi` and `Mi`. The default is `500Mi`.
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed; for example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 ### Timeout
 
@@ -233,7 +240,7 @@ As an alternative to the **Git Clone** step, you can use scripts in **Run** step
 
 You might want to define [stage variables](../set-up-build-infrastructure/ci-stage-settings.md#advanced-stage-variables) for the names and URLs of the codebases that you clone into the workspace. These variables are accessible across all steps in the stage.
 
-Depending on the image you use for the **Run** step, you might need to install Git before you clone any repos. For example, you could use this code in a **Run** step to install git, verify that it's working, and clone the repo with the Dockerfile needed to build an image. This example uses stage variables for the GitHub usenrame and Docker repo.
+Depending on the image you use for the **Run** step, you might need to install Git before you clone any repos. For example, you could use this code in a **Run** step to install git, verify that it's working, and clone the repo with the Dockerfile needed to build an image. This example uses stage variables for the GitHub username and Docker repo.
 
 ```
 apk add git  

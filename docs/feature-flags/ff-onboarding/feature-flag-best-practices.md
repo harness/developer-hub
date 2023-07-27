@@ -12,6 +12,8 @@ helpdocs_is_published: true
 
 To help you get the most out of your Feature Flags, we’ve drawn up some best practices that you can implement to manage them. The points below aren’t mandatory but they can help you organize your Flags and plan for the future so you don’t have to revise them at a later date.
 
+For a more detailed discussion on this topic, go to the tutorial [Feature Flags best practices](/tutorials/feature-flags/best-practices).
+
 ## Plan your Feature Flags
 
 Before you even create a Feature Flag, it’s best practice to create a plan for it. While planning, there are a number of things to consider: 
@@ -41,7 +43,7 @@ Determine if the flag needs prerequisite flags and be prepared to add them. For 
 
 ### Rollout rules
 
-Create a set of rules with your team to ensure your rollouts run smoothly. There are a number of Harness Features you can utilize to help with this, such as using [approval steps in pipelines](/docs/feature-flags/ff-using-flags/ff-build-pipeline/build-feature-flag-pipeline) or using the [Harness Policy Engine](/docs/feature-flags/harness-policy-engine). When creating roll out rules, it’s important to consider:
+Create a set of rules with your team to ensure your rollouts run smoothly. There are a number of Harness Features you can utilize to help with this, such as using [approval steps in pipelines](/docs/feature-flags/ff-build-pipeline/build-feature-flag-pipeline) or using the [Harness Policy Engine](/docs/feature-flags/harness-policy-engine). When creating roll out rules, it’s important to consider:
 
 * Types of roll outs you may run, and the strategy for each.
 * Rules that must be applied for all roll outs, for example, a rule stating that a flag cannot be switched on in your production environment until it has been tested in your QA environment for one week.

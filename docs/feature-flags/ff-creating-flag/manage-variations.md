@@ -40,14 +40,14 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
    ``` 
 
 3. In **Edit Variations**, you can add or delete a Variation and also edit the following:
-* **Name**: The name of the Variation, for example `Enabled`. The identifier is not changed if you change the name.
-* **Value**: The value of the Variation, for example `Feature_Enabled`.
-* **Description**: An optional description for the Variation.
-* **Default rules for the flag**: The rules that are served by default for this Flag, for example, when the Flag is enabled, serve the `Enabled` Variation.
+   * **Name**: The name of the Variation, for example `Enabled`. The identifier is not changed if you change the name.
+   * **Value**: The value of the Variation, for example `Feature_Enabled`.
+   * **Description**: An optional description for the Variation.
+   * **Default rules for the flag**: The rules that are served by default for this Flag, for example, when the Flag is enabled, serve the `Enabled` Variation.
 
-   ```mdx-code-block
-   <img src={edit_var_form} alt="A screenshot of the Edit Variations page." height="500" width="400" />
-   ``` 
+      ```mdx-code-block
+      <img src={edit_var_form} alt="A screenshot of the Edit Variations page." height="500" width="400" />
+      ``` 
 
 ## Edit the Variations served for your current Environment
 
@@ -59,7 +59,7 @@ You can edit the Variations of your Flags on the Harness Platform even after usi
    ``` 
 
    :::info note
-    For information about Specific Targeting, go to [Targeting Users with Flags](/docs/feature-flags/ff-using-flags/ff-target-management/targeting-users-with-flags)
+    For information about Specific Targeting, go to [Targeting Users with Flags](/docs/feature-flags/ff-target-management/targeting-users-with-flags)
    :::
    
 3. Click **Save** to save your changes.

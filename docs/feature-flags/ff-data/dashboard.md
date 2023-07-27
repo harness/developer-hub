@@ -4,7 +4,13 @@ description: This topic describes how to use, copy, and edit the Feature Flags d
 sidebar_position: 5
 ---
 
-Feature Flags comes with an out-of-the-box dashboard that provides various aggregated views of data about your flags at an organization level. This includes flags across all projects and environments in an organization. You can view, download, schedule, and alert on the dashboard data. You can download data in multiple formats to use in other tools, and you can also create your own custom dashboard.
+Feature Flags comes with an out-of-the-box dashboard that provides various aggregated views of data about your flags at an organization level. This includes flags across all projects and environments in an organization. 
+
+With Harness dashboards, you can:
+
+* Edit, customize, and create your own custom dashboards. 
+* Download data in multiple formats to use in other tools. 
+* Schedule delivery and set up alerts on dashboard data.  
 
 For a complete guide to Harness dashboards, go to [Dashboards](/docs/category/dashboards-1).
 

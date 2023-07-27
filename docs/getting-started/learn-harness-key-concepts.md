@@ -1,7 +1,7 @@
 ---
 title: Key concepts
 description: Learn about the key concepts and terms used in Harness products.
-sidebar_position: 60
+sidebar_position: 70
 helpdocs_topic_id: hv2758ro4e
 helpdocs_category_id: kx4hs8bn38
 helpdocs_is_private: false
@@ -98,7 +98,7 @@ A step group is a collection of steps that share the same logic such as the same
 
 ![](./static/learn-harness-key-concepts-13.png)
 
-See [Run Steps in a Step Group](../continuous-delivery/x-platform-cd-features/cd-steps/utilities/step-groups.md.
+See [Run Steps in a Step Group](/docs/continuous-delivery/x-platform-cd-features/cd-steps/step-groups/).
 
 ### Services
 

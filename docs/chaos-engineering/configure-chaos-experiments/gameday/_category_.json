@@ -3,6 +3,10 @@
   "label": "GameDay",
   "collapsible": true,
   "collapsed": true,
+  "link":{
+      "type":"generated-index",
+      "title":"GameDay"
+   },
   "customProps": {
     "description": "GameDay documentation"
   }

@@ -1,6 +1,13 @@
 {
-    "position": 1,
-    "label": "Architecture",
-    "collapsible": true,
-    "collapsed": true
+  "position": 2,
+  "label": "Architecture",
+  "collapsible": "true",
+  "collapsed": "true",
+  "link":{
+      "type":"generated-index",
+      "title":"Architecture"
+   },
+  "customProps": {
+    "description": "Harness Chaos Engineering Architecture"
+  }
 }

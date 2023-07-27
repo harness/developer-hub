@@ -1,7 +1,7 @@
 ---
 title: Splunk
 description: Verify deployments with Splunk.
-sidebar_position: 10
+sidebar_position: 12
 helpdocs_topic_id: mvjds2f3hb
 helpdocs_category_id: 9mefqceij0
 helpdocs_is_private: false

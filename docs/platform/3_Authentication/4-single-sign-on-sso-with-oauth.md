@@ -56,6 +56,8 @@ If you accidentally get locked out of Harness, email [support@harness.io](mailto
 
 To prevent lockouts or in the event of OAuth downtime, a User in the Harness Administrators Group can use the [**Local Login**](http://app.harness.io/auth/#/local-login) URL (http://app.harness.io/auth/#/local-login) to log in and update the OAuth settings.
 
+:::note For the Harness production cluster prod-3, the local login URL is https://app3.harness.io/auth/#/local-login :::
+
 ![](./static/single-sign-on-sso-with-oauth-121.png)
 1. Log in using **Harness Local Login**.
 2. Change the settings to enable users to log in.

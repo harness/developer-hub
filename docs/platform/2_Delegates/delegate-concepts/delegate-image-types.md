@@ -12,8 +12,8 @@ Harness packages and distributes delegates on different types of images. Delegat
 
 | Image type | Image tag | Image description |
 | --- | --- | --- |
-| DELEGATE | *`yy.mm.xxxxx`* | The release year, month, and version in dot-separated format. |
-| DELEGATE-MINIMAL | *`yy.mm.xxxxx.minimal`* | The minimal tag is appended to the release year, month, and version in dot-separated format. |
+| DELEGATE | *`yy.mm.xxxxx`* | The release year, month, and version in dot-separated format. Supported on both NextGen and FirstGen Harness Platform. |
+| DELEGATE-MINIMAL | *`yy.mm.xxxxx.minimal`* | The minimal tag is appended to the release year, month, and version in dot-separated format. Supported on both NextGen and FirstGen Harness Platform. |
 | DELEGATE-LEGACY | *`latest`* | Delegate that auto upgrades with no flexibility to turn off auto upgrade (DEPRECATED) |
 
 ## Image type comparison
@@ -31,8 +31,8 @@ The following table differentiates between delegate images based on key features
 | DELEGATE-LEGACY<br /><br />**Deprecated**: Not recommended for use in new Harness accounts | &#x2713; | x | &#x2713; | x | |
 
 ## Third-party tools included in the DELEGATE image type
-  
-  | **Third-party tool** | **78101 and earlier** | **78306 and later** |
+
+  | **Third-party tool/SDK** | **78101 and earlier** | **78306 and later** |
   | :-- | :-: | :-: |
   | kubectl | 1.13.2, 1.19.2 | 1.24.3 |
   | go-template | 0.4, 0.4.1 | 0.4.1 |
@@ -45,7 +45,7 @@ The following table differentiates between delegate images based on key features
   | git | NA | 2.31.1
   | scm | The Harness-generated library and version are changed with every fix. | The Harness-generated library and version are changed with every fix. |
 
-## docker pull commands
+## Docker pull commands
 
 The following table provides instructions for retrieval of delegate images.
 

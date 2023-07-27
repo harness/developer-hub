@@ -62,7 +62,7 @@ For example, the maven `m2` repo is stored in `/root/.m2` by default. If your Bu
 
 ### Advanced: Stage Variables
 
-[Stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) are available to all steps in the stage. For an example use case, go to [Build a Docker image without pushing](../build-and-upload-artifacts/build-and-upload-an-artifact.md#useful-techniques).
+[Stage variables](/docs/platform/pipelines/add-a-stage/#option-stage-variables) are available to all steps in the stage. For an example use case, go to [Useful techniques: Build a Docker image without pushing](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact#useful-techniques).
 
 ## Infrastructure
 
@@ -78,7 +78,7 @@ import TabItem from '@theme/TabItem';
 ```
 ```mdx-code-block
 <Tabs>
-  <TabItem value="cloud" label="Cloud" default>
+  <TabItem value="cloud" label="Cloud">
 ```
 
 Use the **Cloud** infrastructure option for [Harness Cloud build infrastructure](./use-harness-cloud-build-infrastructure.md).
@@ -90,7 +90,7 @@ The following **Platform** settings are available:
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="kubernetes" label="Kubernetes">
+  <TabItem value="kubernetes" label="Kubernetes" default>
 ```
 
 Use the **Kubernetes** infrastructure option to [set up a Kubernetes cluster build infrastructure](./k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
@@ -160,9 +160,28 @@ Configure the [Security Context](https://kubernetes.io/docs/tasks/configure-pod-
 * **Allow Privilege Escalation:** When enabled, a process can gain more privileges than its parent process. This setting determines whether the [`no_new_privs`](https://www.kernel.org/doc/Documentation/prctl/no_new_privs.txt) flag gets set on the container process.
 * **Add Capabilities:** The list of capabilities to add to each step by default, in addition to the runtime defaults. This field corresponds to the [`capabilities: add`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.
 * **Drop Capabilities:** The list of capabilities that must be dropped from each step. This field corresponds to the [`capabilities: drop`](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-capabilities-for-a-container) option in Kubernetes.
-* **Run as Non-Root:** Run all steps as a non-root user. To specify a default user ID for all containers, set the **Run as User** field.
 * **Read-Only Root Filesystem:** Run all steps with a read-only root filesystem that has no writable layer.
-* **Run as User:** Use the specified user ID, use as `1000`, for all containers in the pod. You can also set **Run as User** values in individual steps. If you set **Run as User** on a step, it overrides the stage's **Run as User** setting.
+* **Run as Non-Root** and **Run as User:** Go to [Run as non-root or a specific user](#run-as-non-root-or-a-specific-user).
+
+#### Run as non-root or a specific user
+
+You can use the **Run as Non-Root** and **Run as User** settings to run builds as a non-root user or a specific user ID.
+
+:::caution
+
+Using a non-root user can require other changes to your pipeline.
+
+With a Kubernetes cluster build infrastructure, all [Build and Push steps](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact) use [kaniko](https://github.com/GoogleContainerTools/kaniko/blob/main/README.md). This tool requires root access to build the Docker image. It doesn't support non-root users.
+
+If you enable **Run as Non-Root**, then you must:
+
+* Run the **Build and Push** step as root by setting **Run as User** to `0` on the **Build and Push** step. This will use the root user for that individual step only.
+* If your security policy doesn't allow running as root for any step, you must use the Buildah Drone plugin to [build and push with non-root users](/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-push-nonroot).
+
+:::
+
+* **Run as Non-Root:** Enable this option to run all steps as a non-root user. If enabled, you must specify a default user ID for all containers in the **Run as User** field.
+* **Run as User:** Specify a user ID, such as `1000`, to use for all containers in the pod. You can also set **Run as User** values for individual steps. If you set **Run as User** on a step, it overrides the build infrastructure **Run as User** setting.
 
 ### Priority Class
 
@@ -186,11 +205,11 @@ A list of [HostAliases](https://kubernetes.io/docs/tasks/network/customize-hosts
 
 Set the timeout for the initialization phase. During this phase, Harness downloads the build step images and spins up the containers to execute the build steps.
 
-If you use large images in your Build stage's steps, you might find that the initialization step times out and the build fails when the pipeline runs. In this case, you can increase the init timeout window from the default of 10 minutes.
+If you use large images in your Build stage's steps, you might find that the initialization step times out and the build fails when the pipeline runs. In this case, you can increase the init timeout window from the default of 8 minutes.
 
 ### Override Image Connector
 
-By default, [Harness pulls certain images from public DockerHub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
+By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
 ```mdx-code-block
   </TabItem>
@@ -215,7 +234,7 @@ The following **Platform** settings are available:
 
 * **Select the Operating System:** Select the build infrastructure OS.
 * **Pool Name:** Enter the pool name as specified in the `pool.yml` setup file in your build infrastructure.
-* **Override Image Connector:** By default, [Harness pulls certain images from public DockerHub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
+* **Override Image Connector:** By default, [Harness pulls certain images from public Docker Hub repos](./harness-ci.md) that are needed to run a build. You can override this by using a [Docker connector that downloads the images from the Harness Container Image Registry](/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector) instead. This option is useful when your default Delegate cannot access the public registry (for example, due to security policies in your organization or if your infrastructure is running in a private cloud).
 
 ```mdx-code-block
   </TabItem>

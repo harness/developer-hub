@@ -1,11 +1,12 @@
 ---
 title: Manage flags using Git Experience
+sidebar_label: Manage flags with Git
 description: Using Harness Git Experience with Feature Flags allows you to manage your Flags from a .yaml file in your Git repository.
 tags: 
    - git experience
    - feature flag
    - SCM
-sidebar_position: 20
+sidebar_position: 80
 helpdocs_topic_id: 6f5eylg819
 helpdocs_category_id: 77l6flntwl
 helpdocs_is_private: false
@@ -32,20 +33,6 @@ Using Harness Git Experience with Feature Flags allows you to manage your flags 
 This feature is not supported on the Harness Self-Managed Enterprise Edition (on-prem).
 :::
 
-## Before you begin
-
-You must set up Git Experience before you can use it in your Feature Flags project. To do this:
-
-<!-- TBD DOC-2410 * [ Add a Source Code Manager to your account. ](https://docs.harness.io/article/p92awqts2x-add-source-code-managers) -->
-
-* Follow the steps in [Harness Git Experience Quickstart](/docs/platform/Git-Experience/configure-git-experience-for-harness-entities) to create a Git repository that contains at least one branch. Then select or create the connector. Note that, currently, branch setup cannot be reconfigured after initial setup.
-
-* To set up Git Sync for Feature Flags, navigate to the top of the flag page and select **Set Up Git Sync**.
-
-  ![Setup button for gitEx on Feature Flag page](./static/gitex-setup-featureflags-01.png)
-
-* Also ensure you read [How Git Experience works with Feature Flags](#how-git-experience-works-with-feature-flags) below.
-
 ## How Git Experience works with Feature Flags
 
 When you set up Git Experience and enable it in your Feature Flag Project, Harness automatically creates a file specified by the user during the setup phase, for example, `flags.yaml`. All your flag, environment, and target information is stored in this file. 
@@ -58,6 +45,8 @@ The following example YAML file shows:
 * The current state of `Flag_1`, which is toggled `on`.
 * A target with the ID `T_1`.
 * The variation served to `T_1`.
+
+### Example YAML file for flags
 
 <details>
   <summary>Example of a YAML file for Feature Flags</summary>
@@ -108,6 +97,69 @@ If you don’t see the changes you made in Git reflected on the Harness Platform
 :::caution
  Syncing changes between a remote file and the Harness Platform can take up to 5 mins. During this window the changes are commited to the remote file but not yet pulled and synced by the Harness Platform. Any changes made to the Harness Platform within that window trigger remote file updates, which overwrite the content of the remote file.
 :::
+
+## Prerequisites
+
+### Create at least one flag in Harness
+
+In order to access the Git Sync setup in the Harness UI, you must [add at least one flag](/docs/feature-flags/ff-creating-flag/create-a-feature-flag) in Harness.
+
+### Create or identify a Git repository
+
+Your repository must have at least one branch.
+
+### Create a Personal Access Token (if adding a new Git connector)
+
+When you set up Git Experience, you either select an existing Git connector in Harness, or create a new one.  
+
+If you're creating a new Git connector, you must first create a Personal Access Token (PAT) for your Git account to supply to the connector. The PAT must have the following scopes selected:
+
+  * **In GitHub**
+    * repo (all permissions)
+    * user (all permissions)
+
+  * **In Bitbucket**
+    * Pull requests: Write
+    * Issues: Read
+    * Webhooks: Read and write
+
+You can create the connector beforehand in Harness, or you can create it while setting up Git Experience.
+
+## Set up Git Experience
+
+You must set up Git Experience before you can turn on syncing with Git in your Feature Flags project. 
+
+:::caution
+Do not use **Git Management** in Project Setup. This is an older version of Git Experience that does not work with Feature Flags.
+:::
+
+During the setup, you are asked to either select an existing Harness Git connector, or create a new one. If creating a new one, have your [PAT](#create-a-personal-access-token-if-adding-a-new-git-connector) ready to enter into the connector configuration. You can also create a Git connector before starting this procedure. Go to [Connect to a Git repository](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo) for instructions.
+
+To set up Git Experience:
+
+1. In Harness, select **Feature Flags**, and in the Feature Flags page, select **Set Up Git Sync** at the top.
+
+  :::info note
+  You must [add at least one flag](/docs/feature-flags/ff-creating-flag/create-a-feature-flag) on this page in order to see the **Set Up Git Sync** button.
+  :::
+
+  The **Set up a Git connection** form appears:
+
+  ![Set up a git connection form](./static/gitex-setup-git-connection.png)
+
+1. Configure these fields, and then select **Save**:
+
+    * **Git Connector** - Select an existing connector, or select **+ New Connector** to create a new one.
+
+      If creating a new connector, you must enter the access token ([PAT](#create-a-personal-access-token-if-adding-a-new-git-connector)) to your Git repo in the Credentials step, and be sure to select **Enable API access**.
+
+      ![New Git Connector form with **Enable API access** checkbox selected](./static/gitex-connector-enable-api-access.png)
+
+      For more information, go to [Connect to a Git repository](/docs/platform/Connectors/Code-Repositories/connect-to-code-repo), and [Git connector settings reference](/docs/platform/connectors/code-repositories/ref-source-repo-provider/git-connector-settings-reference/).
+
+    * **Repository** - Select or enter the name of your repository.
+    * **Git branch** - Select or enter a branch name.
+    * **YAML Path** - Enter the path to the [YAML file](#example-yaml-file-for-flags) containing your flag information.
 
 ## Turn on syncing with Git
 
@@ -193,11 +245,11 @@ If you want to always commit to the same branch, and not be prompted for commit 
 
 ## Turn off syncing with Git
 
+When you turn off syncing with Git, any changes you make to flags in Harness are not committed to the flags YAML file in your Git repository. Any changes to that file in your repository are not synced with Harness until you [turn on syncing](#turn-on-syncing-with-git) again.
+
 To turn off syncing with Git:
 
-1. In Harness, go to the project you enabled Git Experience for.
-
-1. Select **Feature Flags**.
+1. In Harness, go to the project you enabled Git Experience for, and then select **Feature Flags**.
 
 1. In the top bar navigation, next to the Git repository, select the branch, and then toggle **Sync with Git** off. 
 
@@ -209,7 +261,15 @@ To turn off syncing with Git:
   <img src={git_8} alt="A screenshot of the Git sync toggle turned off." height="500" width="300" />
   ``` 
 
-## See also
+## Reset the Git connection
 
-For more information about using Git Experience, go to [Git Experience How-tos](/docs/platform/Git-Experience/git-experience-overview).
+This procedure removes the connection to the Git repository that you configured when you [set up Git Experience](#set-up-git-experience).
+
+To reset Git settings:
+
+1. In Harness, go to the project you enabled Git Experience for, and then select **Feature Flags**.
+
+1. In the top bar navigation, next to the Git repository, select the branch, and then select **Reset Git Settings**. 
+
+  ![Reset Git Settings button circled](./static/gitex-reset-button.png)
 

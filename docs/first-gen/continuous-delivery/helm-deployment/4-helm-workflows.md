@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm/native-helm-quickstart.md).Once you have added the Harness Service and Environment for Helm, you can add a Harness Workflow to manage how your Harness Service is deployed, verified, and rolled back, among other important phases.
+This content is for Harness [FirstGen](../../../getting-started/harness-first-gen-vs-harness-next-gen.md). Switch to [NextGen](/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart.md).Once you have added the Harness Service and Environment for Helm, you can add a Harness Workflow to manage how your Harness Service is deployed, verified, and rolled back, among other important phases.
 
 Harness includes both Kubernetes and Helm deployments, and you can Helm charts in both. Harness [Kubernetes Deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-deployments-overview) allow you to use your own Helm chart (remote or local), and Harness executes the Kubernetes API calls to build everything without Helm and Tiller (for Helm v2) needing to be installed in the target cluster. See [Helm Charts](/docs/category/helm).
 
@@ -151,7 +151,7 @@ Click **Phase 1** to expand it and see **Deploy Containers**. Expand **Deploy Co
 
 Let's look through the deployment log and see how your Docker image was deployed to your cluster using Helm.
 
-First, we check to see if the Helm chart repo has already been added and, if not, add it from **https://charts.bitnami.com/bitnami**.
+First, we check to see if the Helm chart repo has already been added and, if not, add it from `https://charts.bitnami.com/bitnami`.
 
 
 ```

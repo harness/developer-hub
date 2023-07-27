@@ -10,7 +10,7 @@ For definitions of terms like stage, step, build infrastructure, delegate, conne
 
 ## Pipelines
 
-A CI pipeline is an end-to-end integration workflow that, in its simplest form, pulls a codebase, builds an artifact, and then uploads the artifact to storage or a registry such as DockerHub, Google Cloud Registry, JFrog Artifactory, and many others. Pipelines are comprised of [stages](#stages) and [steps](#steps).
+A CI pipeline is an end-to-end integration workflow that, in its simplest form, pulls a codebase, builds an artifact, and then uploads the artifact to storage or a registry such as Docker Hub, Google Cloud Registry, JFrog Artifactory, and many others. Pipelines are comprised of [stages](#stages) and [steps](#steps).
 
 You can run a pipeline manually or set up triggers to automatically run it on a schedule or when an event occurs, such as a Git merge in your codebase.
 
@@ -41,7 +41,7 @@ In addition to a default [codebase](#codebases), the following settings are conf
 * [Input sets and overlays](/docs/platform/Pipelines/input-sets)
 * [Triggers](/docs/category/triggers)
 * [Variables](/docs/category/variables-and-expressions)
-* [Notifications](/docs/category/notifications-1)
+* [Notifications](/docs/category/notifications)
 * [Flow Control: Synchronization barriers](/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers)
 * [Policy Sets](/docs/platform/Governance/Policy-as-code/harness-governance-overview)
 * Advanced Options: Pipeline Timeout Settings, [Stage Execution Settings](/docs/platform/pipelines/run-specific-stage-in-pipeline/), and [Delegate Selectors](/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/)
@@ -60,7 +60,7 @@ With Input Sets and Overlays, you can use the same pipeline for multiple scenari
 
 A CI stage is a subset of a pipeline that contains one major segment of the CI workflow. All stages have stage settings and one or more steps.
 
-To [add a stage to a pipeline](/docs/platform/pipelines/add-a-stage/), select **Add Stage** in the Pipeline Studio. The most essential stage for CI pipelines is the **Build** stage. A **Build** stage often includes [steps](#steps) for building, pushing, and testing code, among other steps.
+To [add a stage to a pipeline](/docs/platform/pipelines/add-a-stage/), select **Add Stage** in the Pipeline Studio. The most essential stage for CI pipelines is the **Build** stage, which includes [steps](#steps) that test code, build and push images, and upload artifacts, among other steps.
 
 [CI Build stage settings](./set-up-build-infrastructure/ci-stage-settings.md) include [codebase configuration](#codebases), [build infrastructure](#build-infrastructure), [shared paths](#shared-paths), and other [advanced settings](#advanced-stage-and-step-settings).
 
@@ -78,12 +78,12 @@ Harness uses [code repo connectors](/docs/category/code-repo-connectors) to conn
 
 ### Build infrastructure
 
-All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me?](./set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
+All stages have an infrastructure definition, which represents the build infrastructure used by a CI pipeline: the target clusters, hosts, and so on. Build infrastructure components and specifications depend on the build infrastructure you choose. For more information, go to [Which build infrastructure is right for me](./set-up-build-infrastructure/which-build-infrastructure-is-right-for-me.md).
 
 :::tip Tutorials
 
 * [Harness Cloud build infrastructure tutorial](/tutorials/ci-pipelines/fastest-ci)
-* [Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+* [Kubernetes cluster build infrastructure tutorial](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 :::
 

@@ -33,7 +33,7 @@ To provision non-target infrastructure, add the Terraform Plan and Apply steps t
 
 Terraform must be installed on the Delegate to use a Harness Terraform Provisioner. You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/Delegates/customize-delegates/build-custom-delegate-images-with-third-party-tools).
+See [Build custom delegate images with third-party tools](https://developer.harness.io/docs/platform/Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools).
 
 
 ```bash
@@ -337,7 +337,26 @@ terraform {
 }
 ```
 
-In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
+In **Backend Configuration**, you provide the required configuration variables for the backend type. 
+
+For a remote backend configuration, the variables should be in .tfvars file.
+
+Example:
+
+```json
+bucket  = "tf-state-prod"  
+prefix  = "terraform/state"
+```
+
+In your Terraform .tf config file, only the definition of the Terraform backend is required:
+
+```json
+terraform {  
+  backend "gcs" {}
+}
+```
+
+See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
 
 You can use Harness secrets for credentials. See [Add Text Secrets](/docs/platform/Secrets/add-use-text-secrets).
 
@@ -436,6 +455,14 @@ Now Harness has the provisioned target infrastructure set up.
 You can complete your Pipeline and then run it.
 
 Harness will provision the target infrastructure and then deploy to it.
+
+Terraform steps also output the commit Id of config files stored on Git. The outputs are available using expressions. 
+
+For example, for a Terraform Apply step with the identifier `TerraformApply` and with config files, backend config files, and var files stored in git, the expressions would look like this:
+
+- **Config files**: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.TF_CONFIG_FILES>`
+- **Backend config files**: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.TF_BACKEND_CONFIG_FILE>`
+- **Var file** with identifier `varfile1`: `<+pipeline.stages.test.spec.execution.steps.TerraformApply.git.revisions.varfile1>`
 
 ## Terraform Rollback
 

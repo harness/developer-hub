@@ -4,6 +4,11 @@ description: Connect Harness with the artifact sources to use for deployments.
 sidebar_position: 4
 ---
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
 In DevOps, an artifact source is a location where the compiled, tested, and ready-to-deploy software artifacts are stored. These artifacts could be container images, compiled binary files, executables, or any other software components that are part of the application.
 
 To add an artifact source, you add a Harness connector to the artifact platform (DockerHub, GCR, Artifactory, etc.) and then add an artifact source to a Harness service that defines the artifact source name, path, tags, and so on.
@@ -60,13 +65,10 @@ When you hardcode the artifact in your manifests, any artifacts added to your Ha
 <details>
 <summary>Use artifacts in any Docker registry</summary>
 
+
 ```mdx-code-block
-import Tabs5 from '@theme/Tabs';
-import TabItem5 from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs5>
-  <TabItem5 value="YAML" label="YAML" default>
+<Tabs>
+  <TabItem value="YAML" label="YAML" default>
 ```
 
 To use a Docker artifact, you create or use a Harness connector to connect to your Docker repo and then use that connector in your Harness service and reference the artifact to use.
@@ -136,8 +138,8 @@ service:
 
 
 ```mdx-code-block
-  </TabItem5>
-  <TabItem5 value="API" label="API">
+  </TabItem>
+  <TabItem value="API" label="API">
 ```
 
 Create the Docker connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
@@ -169,8 +171,8 @@ Create a service with an artifact source that uses the connector using the [Crea
 
 
 ```mdx-code-block
-  </TabItem5>
-  <TabItem5 value="Terraform Provider" label="Terraform Provider">
+  </TabItem>
+  <TabItem value="Terraform Provider" label="Terraform Provider">
 ```
 
 For the Terraform Provider Docker connector resource, go to [harness_platform_connector_docker](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_docker).
@@ -264,8 +266,8 @@ resource "harness_platform_service" "example" {
 </details>
 
 ```mdx-code-block
-  </TabItem5>
-  <TabItem5 value="Pipeline Studio" label="Pipeline Studio">
+  </TabItem>
+  <TabItem value="Harness Manager" label="Harness Manager">
 ```
 
 To add an artifact from a Docker registry, do the following:
@@ -288,12 +290,23 @@ To add an artifact from a Docker registry, do the following:
 12. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
     
     ![](static/kubernetes-services-09.png)
-13. Click **Submit**.
-14. The Artifact is added to the Service Definition.
+<!-- CDS-71711 -->
+13. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+  :::note 
+
+  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+  If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
+
+  :::
+14. Select **Submit**. The Artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
+
 
 ```mdx-code-block
-  </TabItem5>
-</Tabs5>
+  </TabItem>
+</Tabs>
 ```
 
 #### Important notes
@@ -313,13 +326,10 @@ To add an artifact from a Docker registry, do the following:
 
 You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
 
+
 ```mdx-code-block
-import Tabs6 from '@theme/Tabs';
-import TabItem6 from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs6>
-  <TabItem6 value="YAML" label="YAML" default>
+<Tabs>
+  <TabItem value="YAML" label="YAML" default>
 ```
 
 To use a GCR artifact, you create or use a Harness GCP Connector to connect to GCR repo and then use that connector in your Harness service and reference the artifact to use.
@@ -386,8 +396,8 @@ service:
 </details>
 
 ```mdx-code-block
-  </TabItem6>
-  <TabItem6 value="API" label="API">
+  </TabItem>
+  <TabItem value="API" label="API">
 ```
 Create the GCR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
@@ -417,8 +427,8 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
 Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
 ```mdx-code-block
-  </TabItem6>
-  <TabItem6 value="Terraform Provider" label="Terraform Provider">
+  </TabItem>
+  <TabItem value="Terraform Provider" label="Terraform Provider">
 ```
 
 For the Terraform Provider GCP connector resource, go to [harness_platform_connector_gcp](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_gcp).
@@ -457,8 +467,8 @@ resource "harness_platform_connector_gcp" "test" {
 For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
 ```mdx-code-block
-  </TabItem6>
-  <TabItem6 value="Pipeline Studio" label="Pipeline Studio">
+  </TabItem>
+  <TabItem value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to GCR using a Harness GCP Connector. For details on all the GCR requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/).
@@ -481,16 +491,27 @@ To add an artifact from GCR, do the following:
     Images in repos need to reference a path starting with the project Id that the artifact is in, for example: `myproject-id/image-name`.
 13. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image or select a [runtime input or expression](https://developer.harness.io/docs/platform/references/runtime-inputs/).
     
-    ![](static/kubernetes-services-10.png)
+    ![](./static/kubernetes-services-10.png)
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
-14. Click **Submit**.
+ <!-- CDS-71711 -->
+14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+  :::note 
+
+  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+  If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
+
+  :::
+14. Select **Submit**. 
+ <!-- CDS-71711 -->
     
     The Artifact is added to the **Service Definition**.
 
 ```mdx-code-block
-  </TabItem6>
-</Tabs6>
+  </TabItem>
+</Tabs>
 ```
 
 #### Permissions
@@ -506,26 +527,49 @@ Ensure the Harness delegate you have installed can reach `storage.cloud.google.c
 
 </details>
 
+<details>
+<summary>Use Docker Registry for GCR</summary>
+
+If you do not want to use the GCP connector for GCR, you can use the platform-agnostic Docker Registry connector.
+
+Use the following settings:
+
+- **Provider Type:** select **Other (Docker V2 compliant)**.
+- **URL:** Enter the GCR URL for your GCP account.
+  - Example: `https://gcr.io/my-account`.
+- **Authentication:**
+  - **Username:** Enter `_token`. 
+    - The usage of `_token` as a username for GCP authentication typically occurs when using certain command-line utilities or API clients that require an access token instead of a traditional username and password.
+  - **Password:** Enter the output of the `gcloud auth print-access-token` command using a Harness secret.
+
+Ensure that the GCP IAM user you use has the correct permissions for pulling from GCR.
+
+#### Permissions
+
+For Google Container Registry (GCR), the following roles are required:
+
+- Storage Object Viewer (roles/storage.objectViewer)
+- Storage Object Admin (roles/storage.objectAdmin)
+
+For more information, go to the GCP documentation about [Cloud IAM roles for Cloud Storage](https://cloud.google.com/storage/docs/access-control/iam-roles).
+
+Ensure the Harness delegate you have installed can reach `storage.cloud.google.com` and your GCR registry host name, for example `gcr.io`. 
+
+</details>
+
+
 ### Google Cloud Storage (GCS)
-
-:::note
-
-Currently, Google Cloud Storage (GCS) is behind the feature flag `CDS_GOOGLE_CLOUD_FUNCTION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-
-:::
 
 <details>
 <summary>Use GCS artifacts</summary>
 
 You connect to GCS using a Harness GCP Connector. For details on all the GCS requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/gcs-connector-settings-reference).
 
+
+
 ```mdx-code-block
-import Tabs13 from '@theme/Tabs';
-import TabItem13 from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs13>
-  <TabItem13 value="YAML" label="YAML" default>
+<Tabs>
+  <TabItem value="YAML" label="YAML" default>
 ```
 
 To use a GCS artifact, you create or use a Harness GCP Connector to connect to GCS bucket and then use that connector in your Harness service and reference the artifact to use.
@@ -589,8 +633,8 @@ service:
 </details>
 
 ```mdx-code-block
-  </TabItem13>
-  <TabItem13 value="API" label="API">
+  </TabItem>
+  <TabItem value="API" label="API">
 ```
 Create the GCP connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
 
@@ -619,8 +663,8 @@ Create the GCP connector using the [Create a Connector](https://apidocs.harness.
 Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
 ```mdx-code-block
-  </TabItem13>
-  <TabItem13 value="Terraform Provider" label="Terraform Provider">
+  </TabItem>
+  <TabItem value="Terraform Provider" label="Terraform Provider">
 ```
 
 For the Terraform Provider GCP connector resource, go to [harness_platform_connector_gcp](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_gcp).
@@ -659,8 +703,8 @@ resource "harness_platform_connector_gcp" "test" {
 For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
 ```mdx-code-block
-  </TabItem13>
-  <TabItem13 value="Pipeline Studio" label="Pipeline Studio">
+  </TabItem>
+  <TabItem value="Harness Manager" label="Harness Manager">
 ```
 
 
@@ -685,8 +729,8 @@ To add an artifact from GCS, do the following:
     The Artifact is added to the **Service Definition**.
 
 ```mdx-code-block
-  </TabItem13>
-</Tabs13>
+  </TabItem>
+</Tabs>
 ```
 
 #### Permissions
@@ -700,6 +744,8 @@ For more information, go to the GCP documentation about [Cloud IAM roles for Clo
 
 </details>
 
+<!-- GAR START -->
+
 ### Google Artifact Registry
 
 <details>
@@ -709,13 +755,10 @@ You connect to Google Artifact Registry using a Harness GCP Connector.
 
 For details on all the Google Artifact Registry requirements for the GCP Connector, see [Google Cloud Platform (GCP) Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/connect-to-google-cloud-platform-gcp/).
 
+
 ```mdx-code-block
-import Tabs7 from '@theme/Tabs';
-import TabItem7 from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs7>
-  <TabItem7 value="YAML" label="YAML" default>
+<Tabs>
+  <TabItem value="YAML" label="YAML" default>
 ```
 
 This example uses a Harness delegate installed in GCP for credentials.
@@ -784,8 +827,8 @@ service:
 </details>
 
 ```mdx-code-block
-  </TabItem7>
-  <TabItem7 value="API" label="API">
+  </TabItem>
+  <TabItem value="API" label="API">
 ```
 
 Create the Google Artifact Registry connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
@@ -817,8 +860,8 @@ Create a service with an artifact source that uses the connector using the [Crea
 
 
 ```mdx-code-block
-  </TabItem7>
-  <TabItem7 value="Terraform Provider" label="Terraform Provider">
+  </TabItem>
+  <TabItem value="Terraform Provider" label="Terraform Provider">
 ```
 
 For the Terraform Provider GCP connector resource, go to [harness_platform_connector_gcp](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_gcp).
@@ -857,8 +900,8 @@ resource "harness_platform_connector_gcp" "test" {
 For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
 ```mdx-code-block
-  </TabItem7>
-  <TabItem7 value="Pipeline Studio" label="Pipeline Studio">
+  </TabItem>
+  <TabItem value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to Google Artifact Registry using a Harness GCP Connector. 
@@ -890,22 +933,34 @@ To add an artifact from Google Artifact Registry, do the following:
 17. In **Package**, enter the artifact name.
 18. In **Version Details**, select **Value** or **Regex**.
 19. In **Version**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/).
-    
-    ![](static/kubernetes-services-11.png)
+
+    :::note 
+
+    If you used Fixed Value in **Version** and Harness is not able to fetch the image tags, ensure that the GCP service account key used in the GCP connector credentials, or in the service account used to install the Harness delegate, has the required permissions. See the **Permissions** tab in this documentation. 
+   
+    :::
+
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
 
-    :::note
-    
-    If you used Fixed Value in **Version** and Harness is not able to fetch the image tags, ensure that the GCP service account key used in the GCP connector credentials, or in the service account used to install the Harness delegate, has the required permissions. See the **Permissions** tab in this documentation. 
-    
+    ![](static/kubernetes-services-11.png)
+
+ <!-- CDS-71711 -->
+20. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+    :::note 
+
+    This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+    If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
+
     :::
-20. Click **Submit**.
-    The Artifact is added to the **Service Definition**.
+21. Select **Submit**. The Artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
 
 
 ```mdx-code-block
-  </TabItem7>
-</Tabs7>
+  </TabItem>
+</Tabs>
 ```
 
 #### Permissions
@@ -921,238 +976,196 @@ Ensure the Harness delegate you have installed can reach your Google Artifact Re
 
 </details>
 
+<!-- GAR END -->
 
 
-### Amazon Elastic Container Registry (ECR)
 
-<details>
-<summary>Use ECR artifacts</summary>
-
-You connect to ECR using a Harness AWS connector. For details on all the ECR requirements for the AWS connector, see [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector).
-
-```mdx-code-block
-import Tabs8 from '@theme/Tabs';
-import TabItem8 from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs8>
-  <TabItem8 value="YAML" label="YAML" default>
-```
-
-This example uses a Harness delegate installed in AWS for credentials.
+### Azure DevOps Artifacts
 
 <details>
-<summary>ECR connector YAML</summary>
+<summary>Use Azure Artifacts</summary>
+
+You connect to your Azure DevOps artifacts using a Harness Azure Artifacts connector.
+
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+<details>
+<summary>Azure Artifacts connector YAML</summary>
 
 ```yaml
 connector:
-  name: ECR
-  identifier: ECR
+  name: Azure Artifacts
+  identifier: Azure_Artifacts
+  description: ""
   orgIdentifier: default
   projectIdentifier: CD_Docs
-  type: Aws
+  type: AzureArtifacts
   spec:
-    credential:
-      type: ManualConfig
+    azureArtifactsUrl: https://dev.azure.com/garvit-test
+    auth:
       spec:
-        accessKey: xxxxx
-        secretKeyRef: secretaccesskey
-      region: us-east-1
+        type: PersonalAccessToken
+        spec:
+          tokenRef: azureartifactspat
     delegateSelectors:
-      - doc-immut
+      - gcpdocplay
     executeOnDelegate: true
 ```
+
 </details>
 
+
 <details>
-<summary>Service using ECR artifact YAML</summary>
+<summary>Service using Azure Artifacts artifact YAML</summary>
 
 ```yaml
 service:
-  name: ECR
-  identifier: ECR
+  name: Azure Artifacts
+  identifier: Azure_Artifacts
   tags: {}
   serviceDefinition:
     spec:
-      manifests:
-        - manifest:
-            identifier: myapp
-            type: K8sManifest
-            spec:
-              store:
-                type: Harness
-                spec:
-                  files:
-                    - /values.yaml
-              valuesPaths:
-                - /Templates
-              skipResourceVersioning: false
-              enableDeclarativeRollback: false
       artifacts:
         primary:
           primaryArtifactRef: <+input>
           sources:
-            - spec:
-                connectorRef: ECR
-                imagePath: todolist-sample
-                tag: "1.0"
-                region: us-east-1
-              identifier: myapp
-              type: Ecr
-    type: Kubernetes
+            - identifier: mypackage
+              spec:
+                connectorRef: Azure_Artifacts
+                scope: org
+                feed: garvit-test
+                packageType: maven
+                package: com.mycompany.app:my-app
+                version: 1.1-SNAPSHOT
+              type: AzureArtifacts
+    type: Ssh
 ```
+
 </details>
 
 ```mdx-code-block
-  </TabItem8>
-  <TabItem8 value="API" label="API">
+  </TabItem>
+  <TabItem value="API" label="API">
 ```
 
-Create the ECR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
-
 <details>
-<summary>ECR connector example</summary>
+<summary>Azure Artifact connector example</summary>
 
-```curl
+Create the Azure Artifact connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
+
+
+```yaml
 curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
 --header 'Content-Type: text/yaml' \
 --header 'x-api-key: pat.12345.6789' \
 --data-raw 'connector:
-  name: ECR
-  identifier: ECR
+  name: Azure Artifacts
+  identifier: Azure_Artifacts
+  description: ""
   orgIdentifier: default
   projectIdentifier: CD_Docs
-  type: Aws
+  type: AzureArtifacts
   spec:
-    credential:
-      type: ManualConfig
+    azureArtifactsUrl: https://dev.azure.com/garvit-test
+    auth:
       spec:
-        accessKey: xxxxx
-        secretKeyRef: secretaccesskey
-      region: us-east-1
+        type: PersonalAccessToken
+        spec:
+          tokenRef: azureartifactspat
     delegateSelectors:
-      - doc-immut
+      - gcpdocplay
     executeOnDelegate: true'
 ```
+
 </details>
 
 Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
-
 ```mdx-code-block
-  </TabItem8>
-  <TabItem8 value="Terraform Provider" label="Terraform Provider">
+  </TabItem>
+  <TabItem value="Harness Manager" label="Harness Manager">
 ```
-
-For the Terraform Provider ECR connector resource, go to [harness_platform_connector_aws](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_aws).
 
 <details>
-<summary>ECR connector example</summary>
+<summary>Azure Artifact connector</summary>
 
-```json
-# Credential manual
-resource "harness_platform_connector_aws" "test" {
-  identifier  = "identifier"
-  name        = "name"
-  description = "test"
-  tags        = ["foo:bar"]
+1. In your Harness project, in **Connectors**, select **New Connector**, and then select **Azure Artifacts**.
+2. Enter a name for the connector, and select **Continue**.
+3. In **Azure Artifacts URL**, enter the Azure DevOps organization URL, for example, `https://dev.azure.com/my-org`.
+4. In **Personal Access Token**, enter a PAT token for the Azure DevOps organization, and select **Continue**.
+5. In **Delegates Setup**, select a delegate that has network connectivity to the Azure Cloud.
+6. Save the connector.
 
-  manual {
-    secret_key_ref     = "account.secret_id"
-    delegate_selectors = ["harness-delegate"]
-  }
-}
-
-# Credentials inherit_from_delegate
-resource "harness_platform_connector_aws" "test" {
-  identifier  = "identifier"
-  name        = "name"
-  description = "test"
-  tags        = ["foo:bar"]
-
-  inherit_from_delegate {
-    delegate_selectors = ["harness-delegate"]
-  }
-}
-```
 </details>
 
-For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
-```mdx-code-block
-  </TabItem8>
-  <TabItem8 value="Pipeline Studio" label="Pipeline Studio">
-```
+<details>
+<summary>Add an Azure Artifact artifact</summary>
 
-You connect to ECR using a Harness AWS Connector. For details on all the ECR requirements for the AWS Connector, see [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector).
+1. In a Harness service, select **Configuration**.
+2. In **Deployment Type**, select one of the [supported deployment types](#deployment-type-support).
+3. In **Artifacts**, select **Add Artifact Source**.
+4. In **Specify Artifact Repository Type**, select **Azure Artifacts**, and select **Continue**.
+5. In **Azure Artifacts Repository**, select or create an Azure Artifacts connector that connects to your Azure DevOps organization, and then select **Continue**.
+6. In **Artifact Details**, enter the following:
+   1. **Artifact Source Identifier:** Enter the name for the artifact in Harness.
+   2. **Scope:** Select **Org** or **Project**.
+   3. **Feed:** Select the artifact feed.
+   4. **Package Name:** Select the name of the package on Azure Artifacts.
+   5. **Version:** Select the artifact version to use or set the option as a runtime input or expression.
+7. Select **Submit**.
 
-To add an artifact from ECR, do the following:
+<docimage path={require('./static/c5a9e07628ab8f1c79c71ba7f19750797af1321378f1008563e8d58595c70d74.png')} width="60%" height="60%" title="Click to view full size image" />
 
-1. In your project, in CD (Deployments), select **Services**.
-2. Select **Manage Services**, and then select **New Service**.
-3. Enter a name for the service and select **Save**.
-4. Select **Configuration**.
-5. In **Service Definition**, select **Kubernetes**.
-6. In **Artifacts**, select **Add Artifact Source**.
-7. In **Artifact Repository Type**, click **ECR**, and then select **Continue**.
-8. In **ECR Repository**, select or create an [AWS connector](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector) that connects to the AWS account where the ECR registry is located.
-9. Select **Continue**.
-10. In **Artifact Details**, in **Region**, select the region where the artifact source is located.
-11. In **Image Path**, enter the name of the artifact you want to deploy.
-12. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
-    
-    ![ECR artifact details](static/74fe6d9189f8f18b2e854598026ab1db27944dab47c3056f4ffaaab93582242a.png)
-    
-    If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
-13. Select **Submit**.
-    
-    The Artifact is added to the Service Definition.
+</details>
 
-    ![ECR artifact source in a service](static/769c54fe91e7497b4aef3733f128361457b933f1d0eccd0d9b3491f1da4ed0c7.png)
 
 
 ```mdx-code-block
-  </TabItem8>
-</Tabs8>
+  </TabItem>
+</Tabs>
 ```
+
+
+#### Deployment type support
+
+Azure DevOps Artifacts are can be used with the following Harness deployment types:
+
+- SSH
+- WinRM
+- Azure Web Apps
+- Tanzu
+
+#### Package type support
+
+Currently, Harness supports Maven and Nuget package types only.
+
+#### Azure DevOps URL
+
+This is the URL in your browser when you are in the Azure DevOps organization containing the projects and feed(s) you want to use.
+
+For example, in this URL, `https://dev.azure.com/garvit-test/sample-project/_packaging?_a=feed&feed=other-feed`, you only need to use `https://dev.azure.com/garvit-test` in Harness connector **Azure DevOps URL** setting.
 
 #### Permissions
 
-Ensure that the AWS IAM user account you use in the AWS Connector has the following policy.
+You use an Azure DevOps Personal Access Token (PAT) to authenticate with Azure.
 
-<details>
-<summary>Pull from ECR policy</summary>
+Create a Personal Access token as described in [Authenticate access with personal access tokens](https://docs.microsoft.com/en-us/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&tabs=preview-page) from Azure.
 
-* **Policy Name:** `AmazonEC2ContainerRegistryReadOnly`
-* **Policy ARN:** `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly`
-* **Description:** `Provides read-only access to Amazon EC2 Container Registry repositories.`
-* **Policy JSON:**
+Next, copy the token and paste it in the Harness Encrypted Text secret you use for the PAT in the Harness Azure Artifacts connector.
 
-```
-{
-  "Version": "2012-10-17",
-  "Statement": [
-      {
-              "Effect": "Allow",
-              "Action": [
-                  "ecr:GetAuthorizationToken",
-                  "ecr:BatchCheckLayerAvailability",
-                  "ecr:GetDownloadUrlForLayer",
-                  "ecr:GetRepositoryPolicy",
-                  "ecr:DescribeRepositories",
-                  "ecr:ListImages",
-                  "ecr:DescribeImages",
-                  "ecr:BatchGetImage"
-              ],
-              "Resource": "*"
-      }
-  ]
-}
-```
+The PAT must have the **Read** permission in **Packaging**.
+
+<docimage path={require('./static/ee464a7fb77650d47cc1c64d752f917cda4343824ba02ce64885894b5d506739.png')} width="60%" height="60%" title="Click to view full size image" />
+
 
 </details>
 
-</details>
+
 
 
 
@@ -1164,13 +1177,10 @@ Ensure that the AWS IAM user account you use in the AWS Connector has the follow
 You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure cloud connector](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector).
 
 
+
 ```mdx-code-block
-import Tabs9 from '@theme/Tabs';
-import TabItem9 from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs9>
-  <TabItem9 value="YAML" label="YAML" default>
+<Tabs>
+  <TabItem value="YAML" label="YAML" default>
 ```
 
 This example uses a Harness delegate installed in Azure for credentials.
@@ -1242,8 +1252,8 @@ service:
 </details>
 
 ```mdx-code-block
-  </TabItem9>
-  <TabItem9 value="API" label="API">
+  </TabItem>
+  <TabItem value="API" label="API">
 ```
 
 Create the ACR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
@@ -1281,8 +1291,8 @@ Create a service with an artifact source that uses the connector using the [Crea
 
 
 ```mdx-code-block
-  </TabItem9>
-  <TabItem9 value="Terraform Provider" label="Terraform Provider">
+  </TabItem>
+  <TabItem value="Terraform Provider" label="Terraform Provider">
 ```
 
 For the Terraform Provider ACR connector resource, go to [harness_platform_connector_azure_cloud_provider](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_azure_cloud_provider).
@@ -1385,8 +1395,8 @@ resource "harness_platform_connector_azure_cloud_provider" "inherit_from_delegat
 For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
 ```mdx-code-block
-  </TabItem9>
-  <TabItem9 value="Pipeline Studio" label="Pipeline Studio">
+  </TabItem>
+  <TabItem value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to ACR using a Harness Azure Connector. For details on all the Azure requirements for the Azure Connector, see [Add a Microsoft Azure Cloud Connector](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-a-microsoft-azure-connector).
@@ -1416,8 +1426,8 @@ To add an artifact from ACR, do the following:
 
 
 ```mdx-code-block
-  </TabItem9>
-</Tabs9>
+  </TabItem>
+</Tabs>
 ```
 
 #### Permissions
@@ -1517,6 +1527,751 @@ The following JSON sample creates a custom role with the required permissions. T
 
 </details>
 
+<details>
+<summary>Use Docker Registry connector for ACR</summary>
+
+If you do not want to centrally manage service principles for access to ACR, you can use the platform-agnostic Docker Registry connector and [repository-scoped permissions](https://learn.microsoft.com/en-us/azure/container-registry/container-registry-repository-scoped-permissions) to connect Harness to ACR.
+
+To use the Docker Registry connector to connect to ACR, do the following:
+
+1. In Azure ACR, in **Repository permissions**, select **Tokens**.
+   
+  <docimage path={require('./static/cfe33a0df139ae4c13d3b191c3fe1b160a0d79dd337fc16dac88be1cbdf582a4.png')} width="30%" height="30%" title="Click to view full size image" />  
+
+2. Create a new token and scope map.
+   
+  <docimage path={require('./static/6eacbefee02319d23d749a69a7adcd66666c6e7036efb267bfc37454cea6c6a6.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+3.  Generate the password for the token.
+   
+  <docimage path={require('./static/feacb89196f0649e37019b63020dc2faab70f04b135a872f21599b07b42b7cf5.png')} width="60%" height="60%" title="Click to view full size image" />  
+
+3.  In Harness, create a new Docker Registry connector. 
+4.  For **Provider Type**, select **Other**.
+5.  Select **Username and Password** for **Authentication**, and use the username and password for the ACR token.
+   
+  <docimage path={require('./static/f9b3efd13ddb3f9bd25f1686d4154bfc281501be9b9c75e5c8660858a64284ed.png')} width="60%" height="60%" title="Click to view full size image" />
+
+</details>
+
+
+
+### Amazon Elastic Container Registry (ECR)
+
+<details>
+<summary>Use ECR artifacts</summary>
+
+You connect to ECR using a Harness AWS connector. For details on all the ECR requirements for the AWS connector, see [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector).
+
+
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+This example uses a Harness delegate installed in AWS for credentials.
+
+<details>
+<summary>ECR connector YAML</summary>
+
+```yaml
+connector:
+  name: ECR
+  identifier: ECR
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  type: Aws
+  spec:
+    credential:
+      type: ManualConfig
+      spec:
+        accessKey: xxxxx
+        secretKeyRef: secretaccesskey
+      region: us-east-1
+    delegateSelectors:
+      - doc-immut
+    executeOnDelegate: true
+```
+</details>
+
+<details>
+<summary>Service using ECR artifact YAML</summary>
+
+```yaml
+service:
+  name: ECR
+  identifier: ECR
+  tags: {}
+  serviceDefinition:
+    spec:
+      manifests:
+        - manifest:
+            identifier: myapp
+            type: K8sManifest
+            spec:
+              store:
+                type: Harness
+                spec:
+                  files:
+                    - /values.yaml
+              valuesPaths:
+                - /Templates
+              skipResourceVersioning: false
+              enableDeclarativeRollback: false
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: ECR
+                imagePath: todolist-sample
+                tag: "1.0"
+                region: us-east-1
+              identifier: myapp
+              type: Ecr
+    type: Kubernetes
+```
+</details>
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="API" label="API">
+```
+
+Create the ECR connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
+
+<details>
+<summary>ECR connector example</summary>
+
+```curl
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
+--header 'Content-Type: text/yaml' \
+--header 'x-api-key: pat.12345.6789' \
+--data-raw 'connector:
+  name: ECR
+  identifier: ECR
+  orgIdentifier: default
+  projectIdentifier: CD_Docs
+  type: Aws
+  spec:
+    credential:
+      type: ManualConfig
+      spec:
+        accessKey: xxxxx
+        secretKeyRef: secretaccesskey
+      region: us-east-1
+    delegateSelectors:
+      - doc-immut
+    executeOnDelegate: true'
+```
+</details>
+
+Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Terraform Provider" label="Terraform Provider">
+```
+
+For the Terraform Provider ECR connector resource, go to [harness_platform_connector_aws](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_aws).
+
+<details>
+<summary>ECR connector example</summary>
+
+```json
+# Credential manual
+resource "harness_platform_connector_aws" "test" {
+  identifier  = "identifier"
+  name        = "name"
+  description = "test"
+  tags        = ["foo:bar"]
+
+  manual {
+    secret_key_ref     = "account.secret_id"
+    delegate_selectors = ["harness-delegate"]
+  }
+}
+
+# Credentials inherit_from_delegate
+resource "harness_platform_connector_aws" "test" {
+  identifier  = "identifier"
+  name        = "name"
+  description = "test"
+  tags        = ["foo:bar"]
+
+  inherit_from_delegate {
+    delegate_selectors = ["harness-delegate"]
+  }
+}
+```
+</details>
+
+For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Harness Manager" label="Harness Manager">
+```
+
+You connect to ECR using a Harness AWS Connector. For details on all the ECR requirements for the AWS Connector, see [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector).
+
+To add an artifact from ECR, do the following:
+
+1. In your project, in CD (Deployments), select **Services**.
+2. Select **Manage Services**, and then select **New Service**.
+3. Enter a name for the service and select **Save**.
+4. Select **Configuration**.
+5. In **Service Definition**, select **Kubernetes**.
+6. In **Artifacts**, select **Add Artifact Source**.
+7. In **Artifact Repository Type**, click **ECR**, and then select **Continue**.
+8. In **ECR Repository**, select or create an [AWS connector](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector) that connects to the AWS account where the ECR registry is located.
+9. Select **Continue**.
+10. In **Artifact Details**, in **Region**, select the region where the artifact source is located.
+11. In **Image Path**, enter the name of the artifact you want to deploy.
+12. In **Tag**, enter or select the [Docker image tag](https://docs.docker.com/engine/reference/commandline/tag/) for the image.
+    
+    ![ECR artifact details](static/74fe6d9189f8f18b2e854598026ab1db27944dab47c3056f4ffaaab93582242a.png)
+    
+    If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
+ <!-- CDS-71711 -->
+13. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+  :::note 
+
+  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+  If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
+
+  :::
+14. Select **Submit**. The Artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
+    
+ ![ECR artifact source in a service](static/769c54fe91e7497b4aef3733f128361457b933f1d0eccd0d9b3491f1da4ed0c7.png)
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+#### Permissions
+
+Ensure that the AWS IAM user account you use in the AWS Connector has the following policy.
+
+<details>
+<summary>Pull from ECR policy</summary>
+
+* **Policy Name:** `AmazonEC2ContainerRegistryReadOnly`
+* **Policy ARN:** `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly`
+* **Description:** `Provides read-only access to Amazon EC2 Container Registry repositories.`
+* **Policy JSON:**
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+              "Effect": "Allow",
+              "Action": [
+                  "ecr:GetAuthorizationToken",
+                  "ecr:BatchCheckLayerAvailability",
+                  "ecr:GetDownloadUrlForLayer",
+                  "ecr:GetRepositoryPolicy",
+                  "ecr:DescribeRepositories",
+                  "ecr:ListImages",
+                  "ecr:DescribeImages",
+                  "ecr:BatchGetImage"
+              ],
+              "Resource": "*"
+      }
+  ]
+}
+```
+
+</details>
+
+</details>
+
+
+<details>
+<summary>Use Docker Registry for ECR</summary>
+
+If you do not want to use the AWS connector for ECR, you can use the platform-agnostic Docker Registry connector.
+
+Use the following settings:
+- **Provider Type:** select **Other (Docker V2 compliant)**.
+- **URL:** Enter the same URL you would use in your push command. 
+  - For example, here is an ECR push command example: 
+  
+    `docker push 1234567890.dkr.ecr.us-east-2.amazonaws.com/my-private-repo:123`. 
+  - Include the `https://` scheme when you add the URL in **URL**.
+  - Your URL will look something like this: `https://1234567890.dkr.ecr.us-east-2.amazonaws.com`.
+- **Authentication:** 
+  - **Username:** Enter `AWS`. Do not enter an access key or user name.
+  - **Password:** Enter the password returned from the following command (replace `us-east-2` with your region):
+  
+    ```
+    aws ecr get-login-password --region us-east-2
+    ```
+
+Ensure that the AWS IAM user you use has the correct policies for pulling from ECR:
+
+<details>
+<summary>Pull from ECR policy</summary>
+
+* **Policy Name:** `AmazonEC2ContainerRegistryReadOnly`
+* **Policy ARN:** `arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly`
+* **Description:** `Provides read-only access to Amazon EC2 Container Registry repositories.`
+* **Policy JSON:**
+
+```
+{
+  "Version": "2012-10-17",
+  "Statement": [
+      {
+              "Effect": "Allow",
+              "Action": [
+                  "ecr:GetAuthorizationToken",
+                  "ecr:BatchCheckLayerAvailability",
+                  "ecr:GetDownloadUrlForLayer",
+                  "ecr:GetRepositoryPolicy",
+                  "ecr:DescribeRepositories",
+                  "ecr:ListImages",
+                  "ecr:DescribeImages",
+                  "ecr:BatchGetImage"
+              ],
+              "Resource": "*"
+      }
+  ]
+}
+```
+
+</details>
+
+
+</details>
+
+
+<!-- AWS S3 START -->
+
+### Amazon S3 Cloud Storage
+
+<details>
+<summary>Use AWS artifacts</summary>
+
+You connect to AWS using a Harness AWS connector. For details on all the AWS requirements for the connector, see [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector).
+
+<!-- AWS S3 -->
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+This example uses a Harness delegate installed in AWS for credentials.
+
+<details>
+<summary>AWS connector YAML</summary>
+
+```yaml
+connector:
+  name: jsmith-aws
+  identifier: jsmithaws
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: jsmith_project
+  type: Aws
+  spec:
+    credential:
+      type: ManualConfig
+      spec:
+        accessKeyRef: jsmithawsaccesskeyid
+        secretKeyRef: jsmithawssecretaccesskey
+      region: us-east-1
+    executeOnDelegate: false
+```
+</details>
+
+<details>
+<summary>Service using S3 artifact YAML</summary>
+
+```yaml
+service:
+  name: jsmith-aws-s3-test
+  identifier: jsmithawss3test
+  tags: {}
+  serviceDefinition:
+    spec:
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - spec:
+                connectorRef: jsmithaws
+                bucketName: jsmith-bucket
+                filePath: login-service.sh
+              identifier: jsmith_login_service_test_sh
+              type: AmazonS3
+    type: Ssh
+
+```
+
+<!-- AWS S3 -->
+</details>
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="API" label="API">
+```
+
+Create the AWS connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
+
+<details>
+<summary>AWS connector example</summary>
+
+```curl
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
+--header 'Content-Type: text/yaml' \
+--header 'x-api-key: pat.12345.6789' \
+--data-raw 'connector:
+  name: jsmith-aws
+  identifier: jsmithaws
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: jsmith_project
+  type: Aws
+  spec:
+    credential:
+      type: ManualConfig
+      spec:
+        accessKeyRef: jsmithawsaccesskeyid
+        secretKeyRef: jsmithawssecretaccesskey
+      region: us-east-1
+    executeOnDelegate: false'
+```
+</details>
+
+<!-- AWS S3 -->
+
+Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Terraform Provider" label="Terraform Provider">
+```
+
+For the Terraform Provider AWS connector resource, go to [harness_platform_connector_aws](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_aws).
+
+<details>
+
+<!-- AWS S3  -->
+
+<summary>AWS connector example</summary>
+
+```json
+# Credential manual
+resource "harness_platform_connector_aws" "test" {
+  identifier  = "identifier"
+  name        = "name"
+  description = "test"
+  tags        = ["foo:bar"]
+
+  manual {
+    secret_key_ref     = "account.secret_id"
+    delegate_selectors = ["harness-delegate"]
+  }
+}
+
+# Credentials inherit_from_delegate
+resource "harness_platform_connector_aws" "test" {
+  identifier  = "identifier"
+  name        = "name"
+  description = "test"
+  tags        = ["foo:bar"]
+
+  inherit_from_delegate {
+    delegate_selectors = ["harness-delegate"]
+  }
+}
+```
+</details>
+
+For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Harness Manager" label="Harness Manager">
+```
+
+You connect to AWS using a Harness AWS Connector. For details on all the AWS requirements for this Connector, see [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector).
+
+To add an artifact from an S3 bucket, do the following:
+
+1. In your project, in CD (Deployments), select **Services**.
+2. Select **Manage Services**, and then select **New Service**.
+3. Enter a name for the service and select **Save**.
+4. Select **Configuration**.
+5. In **Service Definition**, select **Secure Shell**.
+6. In **Artifacts**, select **Add Artifact Source**.
+7. In **Artifact Repository Type**, click **Amazon S3**, and then select **Continue**.
+8. In **AWS Connector**, select or create an [AWS connector](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector) that connects to the AWS account where the S3 bucket is located.
+9. Select **Continue**.
+10. In **Artifact Details**, specify the following:
+    1. In **Artifact Source Identifier**, add a unique identifier. You can use the Harness expression `<+artifact.primary.identifier>` to reference this setting in your pipelines.
+    2. in **Region**, select the region where the artifact source is located.
+    3. In **Bucket Name**, select the bucket where the artifact is located
+    4. In **File path**, enter the path (from the bucket root) and name of the artifact you want to deploy.
+11. Select **Submit**.
+    
+    ![](static/kubernetes-services-13.png)
+    
+    If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
+12. Select **Submit**. The Artifact is added to the Service Definition.
+
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+#### Permissions
+
+You need a dedicated S3 bucket for your artifacts and an AWS connector with read/write access to this bucket.
+
+<details><summary>Sample S3 Cache Bucket Policy</summary>
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "AllowS3BucketAccess",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject",
+                "s3:ListBucket",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::your-s3-bucket/*",
+                "arn:aws:s3:::your-s3-bucket"
+            ]
+        },
+        {
+            "Sid": "AllowDescribeRegions",
+            "Effect": "Allow",
+            "Action": "ec2:DescribeRegions",
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+</details>
+
+For more information on configuring an S3 connector and S3 bucket policies, go to [Add an AWS connector](/docs/platform/Connectors/Cloud-providers/add-aws-connector) and the [AWS connector settings reference](/docs/platform/Connectors/Cloud-providers/ref-cloud-providers/aws-connector-settings-reference).
+
+
+
+</details>
+
+<!-- AWS S3 END -->
+
+<!-- AWS AMI START -->
+
+### Amazon EC2 AMIs
+
+<details>
+<summary>Use Amazon ECS AMI artifacts</summary>
+
+You connect to Amazon ECS using a Harness AWS connector. For details on all the AWS requirements for the connector, see [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector).
+
+<!-- AWS AMI  -->
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="YAML" label="YAML" default>
+```
+
+This example uses a Harness delegate installed in AWS for credentials.
+
+<details>
+<summary>AWS connector YAML</summary>
+
+```yaml
+connector:
+  name: jsmith-aws
+  identifier: jsmithaws
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: jsmith_project
+  type: Aws
+  spec:
+    credential:
+      type: ManualConfig
+      spec:
+        accessKeyRef: jsmithawsaccesskeyid
+        secretKeyRef: jsmithawssecretaccesskey
+      region: us-east-1
+    executeOnDelegate: false
+```
+</details>
+
+<details>
+<summary>Service using EC2 AMI YAML</summary>
+
+```yaml
+
+service:
+  name: jsmith-delegate-ami-test
+  identifier: jsmithdelegateamitest
+  tags: {}
+  serviceDefinition:
+    spec:
+      artifacts:
+        primary:
+          primaryArtifactRef: <+input>
+          sources:
+            - identifier: macos_build_farm_for_ci
+              spec:
+                connectorRef: jsmithaws
+                region: us-east-1
+                tags:
+                  - name: Version
+                    value: ""
+                filters:
+                  - name: ami-image-id
+                    value: ami-xxxxxxxxxxxxxxxxx
+                version: macos-build-farm-for-ci
+              type: AmazonMachineImage
+    type: Asg
+
+```
+
+<!-- AWS AMI -->
+</details>
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="API" label="API">
+```
+
+Create the AWS connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
+
+<details>
+<summary>AWS connector example</summary>
+
+```curl
+curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors?accountIdentifier=12345' \
+--header 'Content-Type: text/yaml' \
+--header 'x-api-key: pat.12345.6789' \
+--data-raw 'connector:
+  name: jsmith-aws
+  identifier: jsmithaws
+  description: ""
+  orgIdentifier: default
+  projectIdentifier: jsmith_project
+  type: Aws
+  spec:
+    credential:
+      type: ManualConfig
+      spec:
+        accessKeyRef: jsmithawsaccesskeyid
+        secretKeyRef: jsmithawssecretaccesskey
+      region: us-east-1
+    executeOnDelegate: false'
+```
+</details>
+
+<!-- AWS S3 -->
+
+Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Terraform Provider" label="Terraform Provider">
+```
+
+For the Terraform Provider AWS connector resource, go to [harness_platform_connector_aws](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_aws).
+
+<details>
+
+<!-- AWS AMI  -->
+
+<summary>AWS connector example</summary>
+
+```json
+# Credential manual
+resource "harness_platform_connector_aws" "test" {
+  identifier  = "identifier"
+  name        = "name"
+  description = "test"
+  tags        = ["foo:bar"]
+
+  manual {
+    secret_key_ref     = "account.secret_id"
+    delegate_selectors = ["harness-delegate"]
+  }
+}
+
+# Credentials inherit_from_delegate
+resource "harness_platform_connector_aws" "test" {
+  identifier  = "identifier"
+  name        = "name"
+  description = "test"
+  tags        = ["foo:bar"]
+
+  inherit_from_delegate {
+    delegate_selectors = ["harness-delegate"]
+  }
+}
+```
+</details>
+
+For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Harness Manager" label="Harness Manager">
+```
+
+You connect to AWS using a Harness AWS Connector. For details on all the AWS requirements for this Connector, see [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector).
+
+To add an artifact from an S3 bucket, do the following:
+
+1. In your project, in CD (Deployments), select **Services**.
+2. Select **Manage Services**, and then select **New Service**.
+3. Enter a name for the service and select **Save**.
+4. Select **Configuration**.
+5. In **Service Definition**, select **AWS Auto Scaling Group**.
+6. In **Artifacts**, select **Add Artifact Source**.
+7. In **Artifact Repository Type**, click **Amazon Machine Image**, and then select **Continue**.
+8. In **AWS Connector**, select or create an [AWS connector](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector) that connects to the AWS account where the AMI is located.
+9. Select **Continue**.
+10. In **Artifact Details**, specify the following:
+    1. In **Artifact Source Identifier**, add a unique identifier. You can use the Harness expression `<+artifact.primary.identifier>` to reference this setting in your pipelines.
+    2. in **Region**, select the region where the AMI is located.
+    3. Set the **AMI Tags** and/or **AMI Filters** to specify the AMI you want to use for the service artifact.
+    4. In **Version**, select the AMI you want to deploy. The pull-down list is populated based on the specified region, tags, and filters.
+
+11. Select **Submit**.
+    
+    The Artifact is added to the Service Definition.
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+
+
+
+</details>
 
 
 ### Nexus
@@ -1526,13 +2281,10 @@ The following JSON sample creates a custom role with the required permissions. T
 
 You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/nexus-connector-settings-reference/).
 
+
 ```mdx-code-block
-import Tabs10 from '@theme/Tabs';
-import TabItem10 from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs10>
-  <TabItem10 value="YAML" label="YAML" default>
+<Tabs>
+  <TabItem value="YAML" label="YAML" default>
 ```
 
 <details>
@@ -1602,8 +2354,8 @@ service:
 
 
 ```mdx-code-block
-  </TabItem10>
-  <TabItem10 value="API" label="API">
+  </TabItem>
+  <TabItem value="API" label="API">
 ```
 
 Create the Nexus connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
@@ -1638,8 +2390,8 @@ Create a service with an artifact source that uses the connector using the [Crea
 
 
 ```mdx-code-block
-  </TabItem10>
-  <TabItem10 value="Terraform Provider" label="Terraform Provider">
+  </TabItem>
+  <TabItem value="Terraform Provider" label="Terraform Provider">
 ```
 
 For the Terraform Provider Nexus connector resource, go to [harness_platform_connector_nexus](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_nexus).
@@ -1682,8 +2434,8 @@ For the Terraform Provider service resource, go to [harness_platform_service](ht
 
 
 ```mdx-code-block
-  </TabItem10>
-  <TabItem10 value="Pipeline Studio" label="Pipeline Studio">
+  </TabItem>
+  <TabItem value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to Nexus using a Harness Nexus Connector. For details on all the requirements for the Nexus Connector, see [Nexus Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
@@ -1710,14 +2462,24 @@ To add an artifact from Nexus, do the following:
     ![](static/kubernetes-services-14.png)
     
     If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
-14. Click **Submit**.
-    
-    The Artifact is added to the Service Definition.
+
+ <!-- CDS-71711 -->
+14. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+  :::note 
+
+  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+  If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
+
+  :::
+14. Select **Submit**. The Artifact is added to the Service Definition.
+
 
 
 ```mdx-code-block
-  </TabItem10>
-</Tabs10>
+  </TabItem>
+</Tabs>
 ```
 
 #### Permissions
@@ -1744,13 +2506,10 @@ For Nexus 3, when used as a **Docker** repo, the user needs:
 
 You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, see [Artifactory Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
 
+
 ```mdx-code-block
-import Tabs11 from '@theme/Tabs';
-import TabItem11 from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs11>
-  <TabItem11 value="YAML" label="YAML" default>
+<Tabs>
+  <TabItem value="YAML" label="YAML" default>
 ```
 
 <details>
@@ -1804,6 +2563,7 @@ service:
                 connectorRef: artifactorytutorialconnector
                 artifactPath: alpine
                 tag: 3.14.2
+                digest: sha256:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
                 repository: bintray-docker-remote
                 repositoryUrl: harness-docker.jfrog.io
                 repositoryFormat: docker
@@ -1815,8 +2575,8 @@ service:
 
 
 ```mdx-code-block
-  </TabItem11>
-  <TabItem11 value="API" label="API">
+  </TabItem>
+  <TabItem value="API" label="API">
 ```
 
 Create the Artifactory connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
@@ -1846,8 +2606,8 @@ Create a service with an artifact source that uses the connector using the [Crea
 
 
 ```mdx-code-block
-  </TabItem11>
-  <TabItem11 value="Terraform Provider" label="Terraform Provider">
+  </TabItem>
+  <TabItem value="Terraform Provider" label="Terraform Provider">
 ```
 
 For the Terraform Provider Artifactory connector resource, go to [harness_platform_connector_artifactory](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_artifactory).
@@ -1891,8 +2651,8 @@ resource "harness_platform_connector_artifactory" "test" {
 For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
 ```mdx-code-block
-  </TabItem11>
-  <TabItem11 value="Pipeline Studio" label="Pipeline Studio">
+  </TabItem>
+  <TabItem value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to Artifactory (JFrog) using a Harness Artifactory Connector. For details on all the requirements for the Artifactory Connector, go to [Artifactory Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-an-artifact-repo).
@@ -1917,12 +2677,24 @@ To add an artifact from Artifactory, do the following:
     
     ![](static/kubernetes-services-16.png)
 14. If you use runtime input, when you deploy the pipeline, Harness will pull the list of tags from the repo and prompt you to select one.
-15. Select **Submit**. The Artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
+15. To specify an image digest, use **Digest** and the unique identifier for the image you want to use.  Specifying an image by tag and digest (rather than tag alone) is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+  :::note 
+
+  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+  If an image with the specified tag/digest combination does not exist in the artifact registry, the pipeline will fail.
+
+  :::
+16. Select **Submit**. The Artifact is added to the Service Definition.
+ <!-- CDS-71711 -->
+
 
 
 ```mdx-code-block
-  </TabItem11>
-</Tabs11>
+  </TabItem>
+</Tabs>
 ```
 
 #### Permissions
@@ -1957,13 +2729,10 @@ You can use Bamboo for build plans when performing deployments using the SSH/Win
 You connect to Bamboo using a Harness Bamboo connector.
 
 
+
 ```mdx-code-block
-import Tabs14 from '@theme/Tabs';
-import TabItem14 from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs14>
-  <TabItem14 value="YAML" label="YAML" default>
+<Tabs>
+  <TabItem value="YAML" label="YAML" default>
 ```
 
 <details>
@@ -2017,8 +2786,8 @@ service:
 
 
 ```mdx-code-block
-  </TabItem14>
-  <TabItem14 value="API" label="API">
+  </TabItem>
+  <TabItem value="API" label="API">
 ```
 
 Create the Bamboo connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
@@ -2054,15 +2823,15 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
 Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
 ```mdx-code-block
-  </TabItem14>
-  <TabItem14 value="Terraform Provider" label="Terraform Provider">
+  </TabItem>
+  <TabItem value="Terraform Provider" label="Terraform Provider">
 ```
 
 The Terraform Provider Bamboo connector resource is coming soon.
 
 ```mdx-code-block
-  </TabItem14>
-  <TabItem14 value="Pipeline Studio" label="Pipeline Studio">
+  </TabItem>
+  <TabItem value="Harness Manager" label="Harness Manager">
 ```
 
 To add a plan from Bamboo, do the following:
@@ -2084,8 +2853,8 @@ To add a plan from Bamboo, do the following:
 
 
 ```mdx-code-block
-  </TabItem14>
-</Tabs14>
+  </TabItem>
+</Tabs>
 ```
 
 #### Build plan permissions
@@ -2107,9 +2876,20 @@ For more information, go to [Bamboo Permissions](https://confluence.atlassian.co
 
 You can use Github Packages as artifacts for deployments.
 
-Currently, Harness supports only the packageType as `docker(container)`. Support for npm, maven, rubygems, and nuget is coming soon. 
+Package type (`packageType`) support:
 
-You connect to Github using a Harness [Github Connector](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/add-a-git-hub-connector), username, and Personal Access Token (PAT).
+- Docker 
+- NPM
+- Maven
+- Nuget
+
+:::note
+
+Currently, support for NPM, Maven, and Nuget are behind the feature flag `CDS_GITHUB_PACKAGES`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+You connect to GitHub using a Harness [GitHub connector](/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference), username, and personal access token (PAT).
 
 :::tip
 
@@ -2117,13 +2897,10 @@ You connect to Github using a Harness [Github Connector](https://developer.harne
 
 :::
 
+
 ```mdx-code-block
-import Tabs12 from '@theme/Tabs';
-import TabItem12 from '@theme/TabItem';
-```
-```mdx-code-block
-<Tabs12>
-  <TabItem12 value="YAML" label="YAML" default>
+<Tabs>
+  <TabItem value="YAML" label="YAML" default>
 ```
 
 <details>
@@ -2200,8 +2977,8 @@ service:
 
 
 ```mdx-code-block
-  </TabItem12>
-  <TabItem12 value="API" label="API">
+  </TabItem>
+  <TabItem value="API" label="API">
 ```
 
 Create the Github connector using the [Create a Connector](https://apidocs.harness.io/tag/Connectors#operation/createConnector) API.
@@ -2243,8 +3020,8 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
 Create a service with an artifact source that uses the connector using the [Create Services](https://apidocs.harness.io/tag/Services#operation/createServicesV2) API.
 
 ```mdx-code-block
-  </TabItem12>
-  <TabItem12 value="Terraform Provider" label="Terraform Provider">
+  </TabItem>
+  <TabItem value="Terraform Provider" label="Terraform Provider">
 ```
 
 For the Terraform Provider Github connector resource, go to [harness_platform_connector_github](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_connector_github).
@@ -2322,8 +3099,8 @@ resource "harness_platform_connector_github" "test" {
 For the Terraform Provider service resource, go to [harness_platform_service](https://registry.terraform.io/providers/harness/harness/latest/docs/resources/platform_service).
 
 ```mdx-code-block
-  </TabItem12>
-  <TabItem12 value="Pipeline Studio" label="Pipeline Studio">
+  </TabItem>
+  <TabItem value="Harness Manager" label="Harness Manager">
 ```
 
 You connect to Github using a Harness Github Connector, username, and Personal Access Token (PAT).
@@ -2346,11 +3123,21 @@ To add an artifact from Github Packages, do the following:
 12. In **Package Type**, select the type of package you are using.
 13. In **Package Name**, select the name of the package.
 14. In **Version**, select the version to use. 
+<!-- CDS-71711 -->
+15. To specify an image digest, use **Digest** and the unique identifier for the image you want to use. Specifying an image by digest is useful when you want to deploy an image with a fixed digest/SHA for your service. 
+
+  :::note 
+
+  This option is behind the feature flag `CD_NG_DOCKER_ARTIFACT_DIGEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature. 
+
+  If an image with the specified tag/digest combination does not exist in the Github Package registry repository, the pipeline will fail.
+
+  :::
 15. Select **Submit**. The Artifact is added to the Service Definition.
 
 ```mdx-code-block
-  </TabItem12>
-</Tabs12>
+  </TabItem>
+</Tabs>
 ```
 
 #### Permissions
@@ -2419,6 +3206,9 @@ For steps on adding a Custom Artifact source, go to [Add a custom artifact sourc
 
 Typically, if the Docker image you are deploying is in a private registry, Harness has access to that registry using the credentials set up in the Harness connector you use with your service **Artifacts**.
 
+<details>
+<summary>Pull an image from a private registry</summary>
+
 If some cases, your Kubernetes cluster might not have the permissions needed to access a private Docker registry. 
 
 For these cases, the values YAML file in Service Definition **Manifests** section must use the `dockercfg` parameter.
@@ -2443,7 +3233,11 @@ namespace: <+infra.namespace>
 ...
 ```
 
-### Reference dockercfg in Kubernetes objects
+</details>
+
+
+<details>
+<summary>Reference dockercfg in Kubernetes objects</summary>
 
 Next, verify that the Deployment and Secret objects reference `dockercfg: {{.Values.dockercfg}}`.
 
@@ -2491,10 +3285,15 @@ spec:
 With these requirements met, the cluster imports the credentials from the Docker credentials file in the artifact.
 </details>
 
+</details>
+
 
 ## Sidecar workloads
 
 You can use Harness to deploy both primary and sidecar Kubernetes workloads.
+
+<details>
+<summary>Sidecar workloads</summary>
 
 Kubernetes sidecar workloads are a powerful way to modularize and encapsulate application functionality while keeping the overall architecture simple and easy to manage.
 
@@ -2506,6 +3305,9 @@ Sidecars can also be used to implement advanced features like load balancing, se
 
 For more information, go to [Add a Kubernetes sidecar container](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-kubernetes-sidecar-container).
 
+</details>
+
+
 ### Propagate and override artifacts, manifests, and service variables
 
 You can propagate services between stages and override service settings by using multiple values YAML files and/or **Environment Overrides**. 
@@ -2514,3 +3316,39 @@ For more information, go to:
 
 - [Propagating CD services](/docs/continuous-delivery/x-platform-cd-features/services/propagate-and-override-cd-services)
 - [Add and override values YAML files](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-and-override-values-yaml-files)
+
+## Viewing SHA values and labels
+
+Harness provides expressions you can use to output the SHA values and labels of the Docker images for the following artifact providers:
+
+- Docker Registry (platform agnostic)
+- Artifactory
+- ECR
+- GCR
+- Google Artifact Registry
+- Nexus 3 Docker
+- ACR
+- Github Packages
+
+<details>
+<summary>Viewing SHA values and labels</summary>
+
+SHA values and labels for the artifact are now visible in the Harness service **Output** section of a pipeline execution.
+
+<docimage path={require('./static/726cd79347c2dabba5bd47f2264f91b0b2618f872663c90048453719e87ff634.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+Labels are visible if the artifact manifest supports `schemaVersion1`.
+
+Labels can be referenced using the expression: `<+pipeline.stages.[stage Id].spec.artifacts.primary.label.get("labelKey")>`.
+
+Since manifests can support two schema versions, `schemaVersion1` and `schemaVersion2`, there could be SHA values for each schema version.
+
+Here are the expressions for referencing each version:
+- SHA value of `schemaVersion1`: `<+artifacts.primary.metadata.SHA>` (same stage) or `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHA>`.
+- SHA value of `schemaVersion2`: `<+artifacts.primary.metadata.SHAV2>` (same stage) or `<+pipeline.stages.[stage Id].spec.artifacts.primary.metadata.SHAV2>`.
+
+If the service is configured to use an image with a specific digest, you can access the digest using 
+`<+pipeline.stages.STAGE_ID.spec.artifacts.primary.digest>`.
+
+</details>

@@ -14,7 +14,7 @@ This topic will explain these strategies to give you an idea of how to approach 
 
 ### Deploy with or without gates
 
-CD deployments are typically preformed using manual approvals before deploying changes to production. These approvals are often called approval gates or release gates. 
+CD deployments are typically performed using manual approvals before deploying changes to production. These approvals are often called approval gates or release gates. 
 
 Gates are checkpoints in the deployment process that can provide several benefits, including increased control, improved quality, compliance and security, stakeholder involvement, and better risk management.
 
@@ -36,7 +36,7 @@ For information on approval stages and steps, go to:
 
 ## Rolling deployment
 
-With a Rolling Deployment, all nodes within a single environment are incrementally added one-by-one or in N batches (as defined by a window size) with a new service/artifact version.
+With a rolling deployment, all nodes within a single environment are incrementally added one-by-one or in N batches (as defined by a window size) with a new service/artifact version.
 
 ![](../cd-deployments-category/static/deployment-concepts-00.png)
 
@@ -45,7 +45,7 @@ With a Rolling Deployment, all nodes within a single environment are incremental
 * When you need to support both new and old deployments.
 * Load balancing scenarios that require reduced downtime.
 
-One use of Rolling deployments is as the stage following a Canary deployment in a deployment pipeline. For example, in the first stage you can perform a Canary deployment to a QA environment and verify each group of nodes and, once successful, you perform a Rolling to production.
+One use of rolling deployments is as the stage following a canary deployment in a deployment pipeline. For example, in the first stage you can perform a canary deployment to a QA environment and verify each group of nodes and, once successful, you perform a rolling to production.
 
 #### Pros
 
@@ -60,11 +60,11 @@ One use of Rolling deployments is as the stage following a Canary deployment in 
 
 See [Create a Kubernetes Rolling Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-rolling-deployment.md).
 
-## Blue/Green deployment
+## Blue Green deployment
 
-With Blue/Green Deployment, two identical environments for staging and production traffic run simultaneously with different versions of the service.
+With Blue Green deployment, two identical environments for staging and production traffic run simultaneously with different versions of the service.
 
-QA and UAT are typically done on the stage environment. When satisfied, traffic is flipped (via a load balancer) from the prod environment (current version) to the stage environment (new version).
+QA and User Acceptance Testing (UAT) are typically done on the stage environment. When satisfied, traffic is flipped (via a load balancer) from the prod environment (current version) to the stage environment (new version).
 
 You can then decommission the old environment once deployment is successful.
 
@@ -72,7 +72,7 @@ Some vendors call this a red/black deployment.
 
 ![](../cd-deployments-category/static/deployment-concepts-01.png)
 
-### When to use Blue/Green deployments
+### When to use Blue Green deployments
 
 * When you want to perform verification in a full production environment.
 * When you want zero downtime.
@@ -123,7 +123,7 @@ This is currently the most common way to deploy apps/services into production.
 * Required monitoring and instrumentation for testing in production (APM, Log, Infra, End User, etc).
 * Database compatibility (schema changes, backward compatibility).
 
-For Kubernetes, Harness does this a little different.
+For Kubernetes, Harness does this a little differently.
 
 In Phase 1 we do a canary to the same group but we leave the production version alone. We just use other instances. Then we delete our canary version in Phase 1.
 
@@ -134,6 +134,75 @@ In Phase 2 we do a rolling deployment with the production version and scale down
 See:
 
 * [Create a Kubernetes Canary Deployment](../deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-canary-deployment.md)
+
+### Build deployments
+
+A Build deployment runs a build process, such as a Jenkins job that creates a WAR file and deposits it in a registry.
+
+:::note
+
+Build deployments in CD stages are not part of Harness Continuous Integration (CI). Harness CI performs extensive code testing, compiling, and artifact registration.
+
+Build deployments in CD stages are a way to perform standard job runs without using Harness CI. For an example, go to [Run Jenkins jobs in CD pipelines](/docs/continuous-delivery/x-platform-cd-features/advanced/builds/run-jenkins-jobs-in-cd-pipelines/).
+
+:::
+
+#### When to use build deployments
+
+Typically, you use build deployments as part of a build step or stage in a CD pipeline.
+
+A build step runs a build process (Jenkins job) and deposits the built artifact in a registry.
+
+#### Build step for push events
+
+Build steps can also be used to build an artifact when the source has been updated.
+
+For example, you might use a trigger to execute the CD pipeline on a Webhook event, such as a Git push event. In this case, the new artifact version needs to be built before the pipeline can pick it up.
+
+You simply add a build step at the beginning of the pipeline to build the artifact so you always have the latest build.
+
+## Basic deployments
+
+With basic deployments, all nodes (pods, instances, etc) within a single environment are updated at the same time with a single new service/artifact version.
+
+Basic deployments are supported in Harness for a number of platforms as a way for you to experiment with deployments. They are not intended for production deployments because they are not as safe as Canary or Blue Green deployments.
+
+### When to use basic deployments
+
+* Your app/service is not business, mission, or revenue-critical.
+* You’re deploying off-hours and no one is using the app/service.
+* You're experimenting with deployments and it's okay if the app/service fails.
+
+#### Pros
+
+* Simple and fast
+* Useful for learning Harness
+
+#### Cons
+
+* Risk, outages, slower rollback
+
+Not too long ago, basic deployments were how developers rolled out applications. Typically, someone in Ops updated the servers at midnight and then you hoped all goes well.
+
+## Multi-service deployments
+
+With multi-service deployments, all nodes within a single environment are updated at the same time with *multiple* new services/artifacts.
+
+For a detailed explanation of multi-service and multi-environment deployents, go to [Use multiple services and environments in a deployment
+](/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv/).
+
+### When to use multi-service deployments
+
+* When your app has service/version dependencies.
+
+#### Pros
+
+* Simple, fast, and with less risk than Basic deployment.
+
+#### Cons
+
+* Risk
+* Difficult to test/verify all service dependencies, outages, slow rollback.
 
 ## Which deployment strategy should I use?
 

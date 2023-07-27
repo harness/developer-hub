@@ -2,52 +2,42 @@
 id: lambda-update-role-permission
 title: Lambda update role permission
 ---
+## Introduction
+Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function. Sometimes, Lambda functions depend on services like RDS, DynamoDB, and S3. In such cases, certain permissions are required to access these services. This fault helps understand how your application would behave when a Lambda function does not have enough permissions to access the services.
 
-Lambda update role permission is an AWS fault that modifies the role policies associated with a Lambda function.
-- It verifies the handling mechanism for function failures.
-- It can also be used to update the role attached to a Lambda function.
-- It checks the performance of the running lambda application in case it does not have enough permissions.
 
 ![Lambda Update Role Permission](./static/images/lambda-update-role-permission.png)
 
-## Usage
+## Use cases
+Lambda updated role permission:
+- Verifies the handling mechanism for function failures.
+- Updates the role attached to a Lambda function.
+- Determines the performance of the running Lambda application when it does not have enough permissions.
 
-<details>
-<summary>View fault usage</summary>
-<div>
-Lambda functions sometimes depend on services such as RDS, DynamoDB, S3, etc. In such cases, certain permissions are required to access these services. This chaos fault helps understand how your application would behave when a Lambda function does not have enough permissions to access the services.
-</div>
-</details>
+:::info note
+- Kubernetes version 1.17 or later is required to execute this fault.
+- The Lambda function must be up and running.
+- Kubernetes secret must have the AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
+  ```yaml
+  apiVersion: v1
+  kind: Secret
+  metadata:
+    name: cloud-secret
+  type: Opaque
+  stringData:
+    cloud_config.yml: |-
+      # Add the cloud AWS credentials respectively
+      [default]
+      aws_access_key_id = XXXXXXXXXXXXXXXXXXX
+      aws_secret_access_key = XXXXXXXXXXXXXXX
+  ```
+- Harness recommends using the same secret name, that is, `cloud-secret`. Otherwise, you must update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you won't be able to use the default health check probes. 
+- Go to [AWS named profile for chaos](./security-configurations/aws-switch-profile.md) to use a different profile for AWS faults.
+- Go to [superset permission/policy](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
+- Go to the [common tunables](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and AWS-specific tunables.
+:::
 
-## Prerequisites
-
-- Kubernetes >= 1.17
-- Kubernetes secret that has AWS access configuration (key) in the `CHAOS_NAMESPACE`. Below is a sample secret file:
-
-```yaml
-apiVersion: v1
-kind: Secret
-metadata:
-  name: cloud-secret
-type: Opaque
-stringData:
-  cloud_config.yml: |-
-    # Add the cloud AWS credentials respectively
-    [default]
-    aws_access_key_id = XXXXXXXXXXXXXXXXXXX
-    aws_secret_access_key = XXXXXXXXXXXXXXX
-```
-
-- It is recommended to use the same secret name, i.e. `cloud-secret`. Otherwise, you will need to update the `AWS_SHARED_CREDENTIALS_FILE` environment variable in the fault template and you may be unable to use the default health check probes. 
-
-- Refer to [AWS Named Profile For Chaos](./security-configurations/aws-switch-profile.md) to know how to use a different profile for AWS faults.
-
-## Permissions required
-
-Here is an example AWS policy to execute the fault.
-
-<details>
-<summary>View policy for this fault if `ROLE_ARN` environment variable is set.</summary>
+Below is an example AWS policy to execute the fault when `ROLE_ARN` environment variable is set.
 
 ```json
 {
@@ -67,9 +57,9 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
-<details>
-<summary>View policy for this fault if `POLICY_ARN` environment variable is set.</summary>
+
+
+Below is an example AWS policy to execute the fault when `POLICY_ARN` environment variable is set.
 
 ```json
 {
@@ -90,23 +80,13 @@ Here is an example AWS policy to execute the fault.
     ]
 }
 ```
-</details>
-
-Refer to the [superset permission (or policy)](./security-configurations/policy-for-all-aws-faults.md) to execute all AWS faults.
-
-## Default validations
-
-The Lambda function should be up and running.
-
 
 ## Fault tunables
 
-<details>
-    <summary>Fault tunables</summary>
-    <h2>Mandatory Fields</h2>
+   <h3>Mandatory tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
@@ -117,7 +97,7 @@ The Lambda function should be up and running.
       </tr>
       <tr>
         <td> POLICY_ARN </td>
-        <td> Provide the policy arn that you want to detach from the role attached</td>
+        <td> Provide the policy ARN that you want to detach from the role attached</td>
         <td> </td>
       </tr>
       <tr>
@@ -131,22 +111,22 @@ The Lambda function should be up and running.
         <td> For example, <code>us-east-2</code> </td>
       </tr>
     </table>
-    <h2>Optional Fields</h2>
+    <h3>Optional tunables</h3>
     <table>
       <tr>
-        <th> Variables </th>
+        <th> Tunable </th>
         <th> Description </th>
         <th> Notes </th>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
-        <td> The total time duration for chaos insertion in seconds </td>
-        <td> Defaults to 30s. </td>
+        <td> Duration that you specify, through which chaos is injected into the target resource (in seconds). </td>
+        <td> Default: 30 s </td>
       </tr>
       <tr>
         <td> CHAOS_INTERVAL </td>
         <td> The interval (in seconds) between successive policy/role detach/update.</td>
-        <td> Defaults to 30s </td>
+        <td> Default: 30 s </td>
       </tr>
       <tr>
         <td> SEQUENCE </td>
@@ -156,22 +136,15 @@ The Lambda function should be up and running.
       <tr>
         <td> RAMP_TIME </td>
         <td> Period to wait before and after injection of chaos in seconds </td>
-        <td> For example, 30s. </td>
+        <td> For example, 30 s. </td>
       </tr>
     </table>
-</details>
-
-## Fault examples
-
-### Common and AWS-specific tunables
-
-Refer to the [common attributes](../common-tunables-for-all-faults) and [AWS-specific tunables](./aws-fault-tunables) to tune the common tunables for all faults and aws specific tunables.
 
 ### Role ARN
 
-You can update the role attached to a Lambda function using the `ROLE_ARN` environment variable.
+Updates the role attached to a Lambda function. Tune it by using the `ROLE_ARN` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/lambda-update-role-permission/function-role.yaml yaml)
 ```yaml
@@ -197,10 +170,10 @@ spec:
 ```
 ### Policy ARN
 
-You can detach the policies attached to the role of Lambda function using the `POLICY_ARN` environment variable. 
-Setting the `ROLE_ARN` environment variable helps update the role attached to the Lambda function. Otherwise, the policy is detached using the `POLICY_ARN` environment variable.
+Detaches the policies attached to the role of Lambda function. Tune it by using the `POLICY_ARN` environment variable. 
+Setting the `ROLE_ARN` environment variable updates the role attached to the Lambda function. Otherwise, the policy is detached using the `POLICY_ARN` environment variable.
 
-Use the following example to tune it:
+The following YAML snippet illustrates the use of this environment variable:
 
 [embedmd]:# (./static/manifests/lambda-update-role-permission/function-policy.yaml yaml)
 ```yaml

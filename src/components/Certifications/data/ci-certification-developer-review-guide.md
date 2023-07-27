@@ -4,7 +4,7 @@
 | :- | :- |
 |**1. Harness Basics, Platform Entities, and Key Concepts**||
 |Describe Continuous Integration Fundamentals|[Harness CI](https://developer.harness.io/tutorials/ci-pipelines/fastest-ci)|
-|Understand Artifacts And Packages|[Harness CI Concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts)|
+|Understand Artifacts And Packages|[CI Concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts)|
 |Utilize The "Pipeline, Stages, Step Groups, Steps" Schema|[Harness Key Concepts](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts)|
 |Illistruate Harness Hierarchy "Account, Organizations, Projects"|[Connect to an Artifact Repo](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts)|
 |Describe Artifact Repos|[Connect to an Artifact Repo](https://developer.harness.io/docs/getting-started/learn-harness-key-concepts)|
@@ -15,8 +15,8 @@
 |Harness Cloud - Describe Supported Platform And Os (Linux, Mac, Windows)|[Which build infrastructure is right for me](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/which-build-infrastructure-is-right-for-me/)|
 |Harness Cloud - Test Build Infrastructure On Harness Cloud|[Get started with Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart)|
 |Describe Available Connectors |[Connectors](https://developer.harness.io/docs/category/connectors)|
-|Configure a Git Connector|[Add a GitHub Connector](https://developer.harness.io/docs/platform/connectors/code-repositories/add-a-git-hub-connector/)|
-|Configure a DockerHub Connector|[Connect to Harness Container Image Registry Using Docker Connector](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)|
+|Configure a Git Connector| [GitHub connector settings reference](https://developer.harness.io/docs/platform/Connectors/Code-Repositories/ref-source-repo-provider/git-hub-connector-settings-reference) |
+|Configure a Docker Hub Connector|[Connect to Harness Container Image Registry Using Docker Connector](https://developer.harness.io/docs/platform/connectors/artifact-repositories/connect-to-harness-container-image-registry-using-docker-connector/)|
 |Understand Harness Delegate Role For The CI Capability|[CI pipeline basics](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-pipeline-basics)| <!--- ||Describe Pipeline Studio Vs Yaml Structure|-| -->
 |Secrets Management - Describe Possible Usages For Harness CI|[Add and Reference Text Secrets](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets/)|
 |Secrets Management - How To Retrieve And Render Secrets Using Harness Expressions|[Add and Reference Text Secrets](https://developer.harness.io/docs/platform/Secrets/add-use-text-secrets/)|
@@ -44,9 +44,9 @@
 |Configure Remote Docker Layer Caching|[Optimizing CI Build Times](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/)|
 |Describe Harness Test Intelligence|[Enable Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-test-intelligence/)|
 |Configure Harness Test Intelligence|[Test Intelligence](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts)|
-|Describe Triggers for CI |[Trigger Pipelines using Git Event Payload Conditions](https://developer.harness.io/docs/platform/triggers/trigger-pipelines-using-custom-payload-conditions)|
-|Configure Triggers for CI |[Configure Triggers for TI](https://developer.harness.io/docs/platform/triggers/trigger-pipelines-using-custom-payload-conditions/)|
-|Configure Custom Webhook Triggers |[Trigger Pipelines using Git Event Payload Conditions](https://developer.harness.io/docs/platform/Triggers/trigger-deployments-using-custom-triggers)|
+|Describe Triggers for CI |[Trigger Pipelines using Git Events](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/)|
+|Configure Triggers for CI |[Configure Triggers for CI](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/)|
+|Configure Custom Webhook Triggers |[Trigger deployments using custom triggers](https://developer.harness.io/docs/platform/Triggers/trigger-deployments-using-custom-triggers)|
 |Describe Input Sets and Overlays|[Input Sets and Overlays](https://developer.harness.io/docs/platform/Pipelines/input-sets)|
 |Configure Input Sets and Overlays|[Input Sets and Overlays](https://developer.harness.io/docs/platform/Pipelines/input-sets)|
 |Describe Failure Strategies|<p>[Step and Stage Failure Strategy References](https://developer.harness.io/docs/platform/Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings) </p><p>[Define a Failure Strategy on Stages and Steps](https://developer.harness.io/docs/platform/Pipelines/define-a-failure-strategy-on-stages-and-steps) </p>|
@@ -59,10 +59,10 @@
 |Advanced Options - Describe Selective Stage(s) Executions|[Run Specific Stages in Pipeline](https://developer.harness.io/docs/platform/Pipelines/run-specific-stage-in-pipeline)|
 |Describe Notifications - Based on Pipeline Events|[Add a Pipeline Notification Strategy](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events/)|
 |Configure Notifications - Based on Pipeline Events|[Add a Pipeline Notification Strategy](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events/)|
-|Describe How To Run Steps on Host vs Containers|[Harness CI concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts)|
+|Describe How To Run Steps on Host vs Containers|[CI concepts](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/ci-concepts)|
 |Configure To Send PR Status Updates|-|
-|Describe How To Test For Swimlanes With Harness Run Test Step|[Build, test, and publish a Docker Image for a Java HTTP server application](https://developer.harness.io/tutorials/ci-pipelines/build/java)|
-|Configure Run Test Step|[Build, test, and publish a Docker Image for a Java HTTP server application](https://developer.harness.io/tutorials/ci-pipelines/build/java)|
+|Describe How To Test For Swimlanes With Harness Run Test Step|[Build, test, and publish a Docker Image for a Java application](https://developer.harness.io/tutorials/ci-pipelines/build/java)|
+|Configure Run Test Step|[Build, test, and publish a Docker Image for a Java application](https://developer.harness.io/tutorials/ci-pipelines/build/java)|
 |Configure Outputs From One Step To Another|[Run Tests step settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings/)|
 |Step Library - Describe Save And Restore Cache In The Pipeline|[Share and Cache CI Data](https://developer.harness.io/docs/category/share-and-cache-ci-data)|
 |Step Library - Configure Save And Restore Cache In The Pipeline|[Share and Cache CI Data](https://developer.harness.io/docs/category/share-and-cache-ci-data)|
@@ -71,7 +71,7 @@
 |Step Library - Describe Git Clone Step (versus the Codebase one)|[Git Clone step settings](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline/)|
 |Step Library - Configure a Git Clone Step|[Git Clone step settings](https://developer.harness.io/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline/)|
 |Build an Artifact and send to an Artifact Repo|[Build and push an artifact](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/)|
-|Build a Container Image and send it to a Container Registry (such as DockerHub)|[Build and push an artifact](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/)|
+|Build a Container Image and send it to a Container Registry (such as Docker Hub)|[Build and push an artifact](https://developer.harness.io/docs/continuous-integration/use-ci/build-and-upload-artifacts/build-and-upload-an-artifact/)|
 |Perform Integration Test From Host Versus From A Container|[Port Bindings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/#port-bindings)|
 |Describe Chained Pipelines|[Pipeline chaining in Harness](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/)|
 |Configure Chained Pipelines|[Pipeline chaining in Harness](https://developer.harness.io/docs/platform/pipelines/pipeline-chaining/)|
@@ -86,7 +86,7 @@
 |**4. RBAC, best practices, and small configuration tasks**||
 |Elaborate on Anonymous Docker Image pulls and Their Risks |[Use a Docker Connector](https://developer.harness.io/docs/platform/Connectors/Artifact-Repositories/connect-to-harness-container-image-registry-using-docker-connector#step-2-enter-credentials)|
 |Utilize Images When Shells Are Not Available|-|
-|Debug A Pipeline Step By Running The Step Locally (Troubleshooting)|[Troubleshoot Continuous Integration](https://developer.harness.io/docs/continuous-integration/troubleshooting-ci/)|
+|Debug A Pipeline Step By Running The Step Locally (Troubleshooting)|[Troubleshoot CI](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci)|
 |Describe Harness Cloud Characteristics And Its Advantages|[Hosted Builds on VM Quickstart](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart)|
 |Configure Git Experience for CI (pipeline)|[Harness Git Experience Quickstart](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/)|
 |Credentials And Permissions - Configure Or Elaborate On User And Groups For Acc, Org, And Project Levels|[Role-based Access Control](https://developer.harness.io/docs/platform/Role-Based-Access-Control/rbac-in-harness)|

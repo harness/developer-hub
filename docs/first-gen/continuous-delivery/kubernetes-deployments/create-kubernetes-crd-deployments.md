@@ -225,7 +225,7 @@ For an example of a simple CRD setup, see [sample-controller](https://github.com
 
 ### Step 2: Define Custom Resource in Harness
 
-You add the manifest for your custom object in a Harness Service, along with the artifact you will deploy. See [Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/k8s-services/kubernetes-services).
+You add the manifest for your custom object in a Harness Service, along with the artifact you will deploy. See [Kubernetes Services](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-services).
 
 1. In your Harness Application, click **Services**, and then **Add Service**.
 2. Name your Service.

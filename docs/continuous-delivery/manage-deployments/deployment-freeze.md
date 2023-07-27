@@ -67,6 +67,12 @@ You can create triggers in Harness to execute a pipeline under multiple conditio
 
 When a freeze is running, triggers will not execute frozen pipelines. The trigger invocations are rejected. 
 
+:::info 
+
+Pipelines executed with custom webhook triggers can override deployment freeze. This can be enabled by associating the API key or Service Account API key authorization with deployment freeze override permissions.
+
+:::
+
 You can create a freeze window notification to notify users when a trigger invocation was rejected. Notifications are described below.
 
 ### API freeze
@@ -249,7 +255,7 @@ To enable notifications, do the following:
 3. Enter a name for the notification and click **Continue**.
 4. In **Configure the conditions for which you want to be notified**, select the freeze window events that send notifications.
 5. Click **Continue**.
-6. In **Notification Method**, configure one of the methods described in [Add a Pipeline Notification Strategy](../x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events.md).
+6. In **Notification Method**, configure one of the methods described in [Add a Pipeline Notification Strategy](../x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md
 7. Click **Finish**.
 8. Click **Apply Changes**.
 
@@ -278,7 +284,7 @@ To enable notifications, do the following:
             - john.doe@harness.io
       enabled: true
 ```
-For examples of all methods, see [Add a Pipeline Notification Strategy](../x-platform-cd-features/cd-steps/notifications/notify-users-of-pipeline-events.md).
+For examples of all methods, see [Add a Pipeline Notification Strategy](../x-platform-cd-features/cd-steps/notify-users-of-pipeline-events.md
 
 ```mdx-code-block
   </TabItem>

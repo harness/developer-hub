@@ -4,29 +4,38 @@ description: This topic describes how to configure Prometheus and Grafana for de
 sidebar_position: 2
 ---
 
-Harness captures delegate agent metrics for delegates shipped on immutable image types. The delegate is instrumented for the collection of the following delegate agent metrics.
+This topic explains how to configure the Prometheus monitoring tool for metrics collection and the Grafana analytics tool for metrics display.
+
+Harness captures delegate agent metrics for delegates with an immutable image type. This process requires a delegate an immutable image. For more information, go to [Delegate image types](/docs/platform/Delegates/delegate-concepts/delegate-image-types). 
+
+The delegate is instrumented for the collection of the following delegate agent metrics.
   
 | **Metric name** | **Description** |
 | :-- | :-- |
-| `task_execution_time` | The time it takes to complete a task. |
-| `tasks_currently_executing` | The number of tasks underway. |
-| `task_timeout` | The number of tasks that time out before completion. |
+| `io_harness_custom_metric_task_execution_time` | The time it takes to complete a task. |
+| `io_harness_custom_metric_tasks_currently_executing` | The number of tasks underway. |
+| `io_harness_custom_metric_task_timeout` | The number of tasks that time out before completion. |
+| `io_harness_custom_metric_task_completed` | The number of tasks completed. |
+| `io_harness_custom_metric_task_failed` | The number of failed tasks. |
+| `io_harness_custom_metric_task_rejected`* | The number of tasks rejected because of a high load on the delegate. |
+| `io_harness_custom_metric_delegate_connected` | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
+| `io_harness_custom_metric_resource_consumption_above_threshold`* | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. For more information, go to [Configure delegate resource threshold](#configure-delegate-resource-threshold). |
 
-This document explains how to configure the Prometheus monitoring tool for metrics collection, and how to configure the Grafana analytics tool for metrics display. This document includes example YAML you can use to create application manifests for both configurations.
+:::info note
+Metrics notated with * above only visible if you start your delegate with `DYNAMIC_REQUEST_HANDLING` set to `true` in your delegate YAML. Go to [Configure delegate resource threshold](#configure-delegate-resource-threshold) for more information.
+
+Also note that the above metrics are available only if your delegate version is later than 23.05.79311.
+:::
+
+This topic includes example YAML files you can use to create application manifests for your Prometheus and Grafana configurations.
 
 ### Apply the prometheus.yml file
 
 The configuration of Prometheus requires the installation of a Prometheus workload and service in your Kubernetes cluster. Use the following example configuration file to install the `harness-delegate-prometheus-deployment` workload and a service named `harness-delegate-prometheus-service`. The configuration includes a load balancer with an IP address you can use to access the Prometheus UI. 
 
-Use the following command to deploy the configuration file. 
-
-```
-kubectl apply -f prometheus.yml
-```
-
 ### Example prometheus.yml file
 
-```
+```yaml
 apiVersion: v1
 kind: Namespace
 metadata:
@@ -173,26 +182,19 @@ spec:
 
 ```
 
+Use the following command to deploy the configuration file. 
+
+```
+kubectl apply -f prometheus.yml
+```
+
 ## Set up Grafana
 
-To set up Grafana, use the following example grafana.yml file.
-
-1. Copy the grafana.yml file.
-
-2. If you're not using the default `harness-delegate-ng` namespace, replace it with the namespace into which you deployed your delegate.
-
-3. Use the following command to apply the Grafana configuration file to your deployment:
-
-   ```
-   kubectl apply -f grafana.yml
-   ```
-   
-4. This manifest also creates a load balancer and service in your Kubernetes cluster. Click the exposed URL to access Grafana.
-
+To set up Grafana, use the following example `grafana.yml` file.
 
 ### Example grafana.yml file
 
-```
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -276,3 +278,56 @@ spec:
     - port: 3000
       targetPort: 3000     
 ```
+
+1. Copy the `grafana.yml` file.
+
+2. If you're not using the default `harness-delegate-ng` namespace, replace it with the namespace into which you deployed your delegate.
+
+3. Use the following command to apply the Grafana configuration file to your deployment:
+
+   ```
+   kubectl apply -f grafana.yml
+   ```
+   
+   :::info note
+   This manifest also creates a load balancer and service in your Kubernetes cluster.
+   :::
+
+4. Select the exposed URL to access Grafana.
+
+## Configure delegate resource threshold
+
+You can set the delegate to reject new tasks if x% of memory is being consumed. You can then spin up new delegates when resources are above the threshold.
+
+:::info note
+The `io_harness_custom_metric_resource_consumption_above_threshold` metric is only visible if you start your delegate with DYNAMIC_REQUEST_HANDLING set to `true` in your delegate YAML. 
+:::
+
+To configure the delegate resource threshold, make the following changes to the delegate YAML file:
+
+1. Set the `JAVA_OPTS` env variable.
+
+   ```
+   env:
+       - name: JAVA_OPTS
+         value: "-Xmx1536M"
+   ```
+
+2. Set the `DYNAMIC_REQUEST_HANDLING` env variable to `true` to enable dynamic task rejection.
+
+   ```
+   env:
+      - name: DYNAMIC_REQUEST_HANDLING
+        value: "true"
+   ```
+
+3. Set the `RESOURCE_USAGE_THRESHOLD` env variable to the cpu/memory threshold. When the threshold is exceeded, the delegate rejects new tasks.
+
+   ```
+   env:
+      - name: RESOURCE_USAGE_THRESHOLD
+        value: "80"
+   ```
+   :::info note
+   This step is optional if you want to use the default value of 80%.
+   ::: 

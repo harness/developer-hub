@@ -66,6 +66,10 @@ You can save the modifications in the existing branch or a new branch through a 
   <img src={branch_selection} alt="branch-selection" height="300" width="700"/>
   ```
 
+  You can also select the branch in the **Run Pipeline** settings.
+
+  <docimage path={require('./static/86a197e9afb88cb6816cea527bd7b8cee41d7d3d39f7c5104ebeedc00d6f050f.png')} width="60%" height="60%" title="Click to view full size image" />    
+
 * During pipeline execution, the configurations of the required resources and any referenced entities like input sets, are fetched from Git.  
 If the referenced entities exist in the same repo, they are fetched from the same branch that you have selected for pipeline execution.  
 If the referenced entities exist in a different repo, they are fetched from the default branch of the repo where the entities are stored.
@@ -85,7 +89,13 @@ You can store your configurations in the following ways:
 * Store configuration files in a repository separate from the code.
 * Store the prod configurations in one repo, and the non-prod ones in another repo, so that only the selected developers can access prod configs.
 * Store the configuration files of different environments in different branches.
-* Store the pipelines in one repository, and other configuration files in another.
+* Store the pipelines in one repository, and other configuration files in another. 
+
+  :::important
+  To link input sets and pipelines from different repositories, enable `Allow different repo for Pipeline and InputSets` in the default settings.
+  For more information, go to [Default settings](/docs/platform/Settings/default-settings).
+  :::
+
 
 #### Multiple branch support
 

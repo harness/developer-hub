@@ -15,7 +15,7 @@ Harness supports the following modes of mTLS:
 - STRICT - only mTLS delegates are accepted. Any non-mTLS delegates are blocked. 
 
 :::info note
-mTLS is an advanced feature and is only supported on immutable delegate images. Contact Harness Support to enable it.
+mTLS is an advanced feature. Contact [Harness Support](mailto:support@harness.io) to enable it.
 :::
 
 ## Create a CA certificate and a client certificate

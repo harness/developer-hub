@@ -10,6 +10,10 @@ helpdocs_is_published: true
 
 import Sixty from '/docs/feature-flags/shared/p-sdk-run60seconds.md'
 
+import Smpno from '../shared/note-smp-not-compatible.md'
+
+<Smpno />
+
 
 This topic describes how to use the Harness Feature Flags SDK for your React Native application. 
 
@@ -236,7 +240,7 @@ let jsonEvaluation = await client.jsonVariation("demo_json_evaluation", {});
 
 ### Register the event listener
 
-Use `client.registerEventsListener` to register a listener for different events that might be triggered by SDK.
+Use `client.registerListener` to register a listener for different events that might be triggered by SDK.
 
 The possible events and their responses are outlined in the following table:
 
@@ -319,7 +323,7 @@ jsonVariation(evalutionId: string, defaultValue: any)
 ```
 
 ```
-registerEventsListener(listener: (type: string, flags: any) => void)
+registerListener(listener: (type: string, flags: any) => void)
 ```
 
 ```

@@ -138,9 +138,9 @@ Harness is currently working to remove this requirement for other scanners that 
 
 Harness  supports two RBAC roles specifically for STO users. You can customize these roles as needed in the Harness platform. 
 
-* **Developer** role — Permissions needed for developer workflows. These workflows are described in [Create a standalone STO pipeline](/tutorials/orchestrate-security-tests/sto-standalone-workflows/).
+* **Developer** role — Permissions needed for developer workflows. These workflows are described in [Create a standalone STO pipeline](/tutorials/security-tests/standalone-pipeline).
 
-* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions. These workflows are covered in [Create an integration STO/CI pipeline](/tutorials/orchestrate-security-tests/sto-integrated-workflows).
+* **SecOps** role — Permissions needed for Security Operations staff. This role includes all Developer permissions and also allows users to approve security exemptions. These workflows are covered in [Create an integrated STO/CI pipeline](/tutorials/security-tests/cicd-integrated-pipeline).
 
 ### How do I set up a  CheckMarx scan step in YAML?
 

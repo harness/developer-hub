@@ -8,6 +8,15 @@ slug: /ci-pipelines/test/codecov
 
 # Code coverage with CodeCov in Harness CI
 
+<ctabanner
+  buttonText="Learn More"
+  title="Continue your learning journey."
+  tagline="Take a Continuous Integration Certification today!"
+  link="/certifications/continuous-integration"
+  closable={true}
+  target="_self"
+/>
+
 This tutorial shows how you can use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage) to include [CodeCov code coverage](https://docs.codecov.com/docs/about-code-coverage#top-5-codecov-features) in a Harness CI pipeline.
 
 ## Prerequisites
@@ -18,7 +27,7 @@ In addition to a Harness account, this tutorial requires the following:
 * An understanding of test tools, scripts, and related commands.
 * A CI pipeline. If you haven't created a pipeline before, try one of the following tutorials:
   * [Get started for free with the fastest CI on the planet](/tutorials/ci-pipelines/fastest-ci)
-  * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/build/kubernetes-build-farm)
+  * [Build and test on a Kubernetes cluster build infrastructure](/tutorials/ci-pipelines/kubernetes-build-farm)
 
 ```mdx-code-block
 import CISignupTip from '/tutorials/shared/ci-signup-tip.md';

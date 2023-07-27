@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 This example harness-delegate.yaml file implements the approach of using the Kubernetes `emptyDir` object with an initialization (`INIT`) container to move binaries to the delegate image.
 
-For more information, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+For more information, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 
 ```

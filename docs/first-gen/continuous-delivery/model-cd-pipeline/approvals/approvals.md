@@ -40,13 +40,13 @@ Currently, **Rollback Provisioners after Phases** is behind the feature flag `RO
 
 ### Add an Approval Step in a Pipeline
 
-In your Pipeline, in **Pipeline Stages**, click **+**. The following settings appear.
-
-![](./static/approvals-09.png)
+In your Pipeline, in **Pipeline Stages**, click **+**.
 
 Select **Approval Step**.
 
 Select **Harness UI** in the **Ticketing System**.
+
+In **Description**, enter a useful description. You can use Harness variable expressions to give more information to the approvals audience.
 
 Select one or more **User Group(s)** to notify for the approval requests.
 
@@ -66,7 +66,7 @@ Ensure that the User Groups you select have **Action:** **read**, **Permission T
 
 ![](./static/approvals-12.png)
 
-Enter the time duration that Harness should wait for the approval or rejection before killing the deployment process. You can use `**w**`  for week, `**d**`  for day, `**h**`  for hour, `**m**`  for minutes, `**s**`  for seconds and `**ms**` for milliseconds. For example, 1d for one day.
+Enter the time duration that Harness should wait for the approval or rejection before killing the deployment process. You can use `w`  for week, `d`  for day, `h`  for hour, `m`  for minutes, `s`  for seconds and `ms` for milliseconds. For example, 1d for one day.
 
 The maximum is 3w 3d 20h 30m.Select **Execute in Parallel with Previous Step** checkbox to execute the steps in parallel.
 

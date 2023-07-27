@@ -44,7 +44,7 @@ export const STOList: CardItem[] = [
     link: "/tutorials/security-tests/standalone-pipeline",
   },
   {
-    title: "Create an CI/CD pipeline integrated with STO",
+    title: "Create an integrated STO/CI pipeline",
     module: MODULES.sto,
     icon: "img/icon_sto.svg",
     description: (
@@ -55,6 +55,19 @@ export const STOList: CardItem[] = [
     time: "10min",
     link: "/tutorials/security-tests/cicd-integrated-pipeline",
   },
+  {
+    title: "Set up STO integrations with GitLab CI",
+    module: MODULES.sto,
+    icon: "img/icon_sto.svg",
+    description: (
+      <>Learn how to launch pipeline builds and scans automatically based on GitLab events.</>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "10min",
+    link: "/tutorials/security-tests/gitlab-ci-integration",
+  },
+
   {
     title: "Scan a NodeJS Application",
     module: MODULES.sto,

@@ -1,7 +1,6 @@
 ---
 title: Save and Restore Cache from GCS
 description: Caching improves build times and enables you to share data across stages.
-
 sidebar_position: 40
 helpdocs_topic_id: v0agy0hlyj
 helpdocs_category_id: 01tyeraya4
@@ -24,7 +23,7 @@ You can't share access credentials or other [Text Secrets](/docs/platform/Secret
 This topic assumes you have created a pipeline and that you are familiar with the following:
 
 * [Harness key concepts](/docs/getting-started/learn-harness-key-concepts.md)
-* [CI pipeline concepts](../../ci-quickstarts/ci-pipeline-basics.md)
+* [CI pipeline basics](../../ci-quickstarts/ci-pipeline-basics.md)
 * [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md)
 * [Build infrastructure](/docs/category/set-up-build-infrastructure)
 
@@ -177,7 +176,7 @@ Specify the user ID to use to run all processes in the pod if running in contain
 Maximum resources limits for the resources used by the container at runtime:
 
 * **Limit Memory:** Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number with the suffixes `G` or `M`. You can also use the power-of-two equivalents, `Gi` or `Mi`. Do not include spaces when entering a fixed value. The default is `500Mi`.
-* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 #### Timeout
 
@@ -255,7 +254,7 @@ Specify the user ID to use to run all processes in the pod if running in contain
 Maximum resources limits for the resources used by the container at runtime:
 
 * **Limit Memory:** Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number with the suffixes `G` or `M`. You can also use the power-of-two equivalents, `Gi` or `Mi`. Do not include spaces when entering a fixed value. The default is `500Mi`.
-* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
+* **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 #### Timeout
 

@@ -29,7 +29,7 @@ import {
         newDoc: true,
         type: [docType.Documentation],
         time: "9min",
-        link: "/tutorials/build-code/build/tfc-notification",
+        link: "/tutorials/build-code/tfc-notification",
       },
     ];
     */

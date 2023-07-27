@@ -97,7 +97,7 @@ Terraform must be installed on the delegate to use local Terraform configuration
 
 You can install Terraform manually or use the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-See [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+See [Build custom delegate images with third-party tools](/docs/platform/delegates/install-delegates/build-custom-delegate-images-with-third-party-tools/).
 
 The Harness delegate uses RedHat Universal Base Image (redhat/ubi8).
 

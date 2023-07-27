@@ -15,65 +15,49 @@ import { MODULES } from "../../constants";
         "",
       list: [
         {
-          title: "Build on a Kubernetes cluster",
-          module: MODULES.ci,
-          description:
-            "Build a Docker Image on a Kubernetes cluster build farm.",
-          link: "/tutorials/ci-pipelines/build/kubernetes-build-farm",
-        },
-        {
           title: "Go application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of a Go application.",
+            "Build and test a Go application.",
           link: "/tutorials/ci-pipelines/build/go",
         },
         {
           title: "Java application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of Java HTTP Server application.",
+            "Build and test a Java application.",
           link: "/tutorials/ci-pipelines/build/java",
         },
         {
           title: "NodeJS application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of a NodeJS application.",
+            "Build and test a NodeJS application.",
           link: "/tutorials/ci-pipelines/build/nodejs",
         },
-
         {
-          title: "React application",
+          title: "Python application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of a React application.",
-          link: "/tutorials/ci-pipelines/build/react",
+            "Build and test a Python application.",
+          link: "/tutorials/ci-pipelines/build/python",
+          newDoc: false,
         },
         {
-          title: "Rust application",
+          title: "Ruby application",
           module: MODULES.ci,
           description:
-            "Build a Docker Image of a multi-architecture Rust application.",
-          link: "/tutorials/ci-pipelines/build/rust",
+            "Build and test a Ruby application.",
+          link: "/tutorials/ci-pipelines/build/ruby",
+          newDoc: false,
         },
         {
-          title: "Signed images",
+          title: "iOS and macOS applications",
           module: MODULES.ci,
           description:
-            "Build a Signed Docker Image of a Go application.",
-          link: "/tutorials/ci-pipelines/build/signed-image",
-        },
-        {
-          title: "Terraform Cloud notification triggers",
-          module: MODULES.ci,
-          icon: "img/icon_ci.svg",
-          description:
-            "Terraform Cloud notifications can trigger CI pipelines through custom CI webhooks.",
-          newDoc: true,
-          type: [docType.Documentation],
-          time: '9 min',
-          link: "/tutorials/ci-pipelines/build/tfc-notification",
+            "Build and test an iOS or macOS application.",
+          link: "/tutorials/ci-pipelines/build/ios",
+          newDoc: false,
         },
       ],
     },

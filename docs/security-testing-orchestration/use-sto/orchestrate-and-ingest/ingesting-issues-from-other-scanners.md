@@ -1,6 +1,6 @@
 ---
-title: Ingest Results from Custom or Unsupported Scanners
-description: You can ingest custom Issues from any scanning tool. This topic describes how to ingest data from scan tools that currently have no integration in STO.
+title: Ingest JSON results from custom or unsupported scanners
+description: This topic describes how to ingest data from scan tools that currently have no integration in STO.
 sidebar_position: 40
 helpdocs_topic_id: ymkcm5lypf
 helpdocs_category_id: utstv3qzqt
@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can ingest custom Issues from any scanning tool. This topic describes how to ingest data from scan tools that currently have no integration in STO.
+You can ingest custom Issues from any scanning tool. STO supports a generic JSON format for ingesting data from scanners that currently have no integration in STO.
 
 By ingesting your custom Issues, you can benefit from STO's refinement, deduplication, and correlation features. Harness handles your issue data the same way as data from supported scanners.
 
@@ -37,7 +37,6 @@ You might want to set up a Run step to generate your scans automatically wheneve
 
 The following example illustrates the required format for your data:
 
-
 ```yaml
 {  
    "meta":{  
@@ -45,11 +44,11 @@ The following example illustrates the required format for your data:
          "issueName",  
          "fileName"  
       ],  
-      "author":"Jane Doe"  
+      "subproduct":"MyCustomScanner"  
    },  
    "issues":[  
       {  
-         "scanTool":"MySastTool",  
+         "subproduct":"MyCustomScanTool",  
          "issueName":"Cross Site Scripting",  
          "issueDescription":"Lorem ipsum...",  
          "fileName":"homepage-jobs.php",  
@@ -68,9 +67,19 @@ The following example illustrates the required format for your data:
 }
 ```
 
-The basic schema includes a `“meta”` section, which requires a `“key”` — this is the name of the attribute used to deduplicate multiple occurrences of an issue. In the example data file above, `"key"` = `"issueName"`. Thus if the data includes multiple occurrences of an issue with the same `"issueName"`, the pipeline combines these occurrences into one issue. The resulting issue includes a list of all occurrences and the data for each individual occurrence.
+The basic schema includes a `“meta”` section, which requires the following: 
 
-The key used for deduplication must be a Harness field. Do not try to deduplicate based on non-Harness fields. The full JSON takes the form:
+* `“key”`
+
+   The name of the attribute used to deduplicate multiple occurrences of an issue. In the example data file above, `"key"` = `"issueName"`. Thus if the data includes multiple occurrences of an issue with the same `"issueName"`, the pipeline combines these occurrences into one issue. The resulting issue includes a list of all occurrences and the data for each individual occurrence.
+   
+   The key used for deduplication must be a Harness field. Do not try to deduplicate based on non-Harness fields. 
+
+* `“subproduct”` 
+
+   The scan tool name to apply to the overall issue. 
+   
+The full JSON takes the form:
 
 
 ```json
@@ -91,7 +100,7 @@ The key used for deduplication must be a Harness field. Do not try to deduplicat
 | **Name** | **Format** | **Description** |
 | `issueName` | String | Name of vulnerability, license issue, compliance issue, etc. |
 | `issueDescription` | String (long) | Description of vulnerability, license issue, compliance issue, etc. |
-| `scanTool` | String | The name of the scanning tool (e.g. “SonarQube”) |
+| `subProduct` | String | The scan tool name to apply to the individual occurrence of the issue. |
 | `severity` | Float | CVSS 3.0 score (a number from 1.0-10.0) |
 
 #### **Recommended fields**
