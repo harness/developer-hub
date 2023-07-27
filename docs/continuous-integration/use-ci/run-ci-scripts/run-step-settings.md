@@ -92,7 +92,7 @@ This example uses a **Run** step to select a version of Xcode.
   <TabItem value="scripts" label="Run scripts">
 ```
 
-**Run** steps are highly versatile, and you can use them to run a wide variety of individual commands or multi-line scripts.
+**Run** steps are highly versatile, and you can use them to run all manner of individual commands or multi-line scripts.
 
 For example, this step is from the [Terraform notifications tutorial](/tutorials/ci-pipelines/tfc-notification), and it produces [output variables](#output-variables) from Terraform values. These output variables are used by another step later in the same pipeline.
 
@@ -134,34 +134,82 @@ Consider [creating plugins](../use-drone-plugins/custom_plugins.md) for scripts 
 </Tabs>
 ```
 
-The **Run** step settings are described below. Depending on the stage's build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+## Add the Run step
 
-## Name
+You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run** step. If you haven't created a pipeline before, try one of the [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md).
+
+In order for the **Run** step to execute your commands, the build environment must have the necessary binaries for those commands. Depending on the stage's build infrastructure, **Run** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Container registry and image settings](#container-registry-and-image).
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
+1. Go to the **Build** stage in the pipeline where you want to add the **Run** step.
+2. On the **Execution** tab, select **Add Step**, and select the **Run** step from the Step Library.
+3. Configure the [Run step settings](#settings) and then select **Apply Changes** to save the step.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML">
+```
+
+In Harness, go to the pipeline where you want to add the `Run` step. In the `CI` stage, add a `Run` step and configure the [Run step settings](#settings).
+
+```yaml
+              - step:
+                  type: Run
+                  name: Run pytest # Specify a name for the step.
+                  identifier: Run_pytest # Define a step ID, usually based on the name.
+                  spec:
+                    connectorRef: account.harnessImage # Specify a container registry, if required.
+                    image: python:latest # Specify an image, if required.
+                    shell: Sh
+                    command: |-
+                      # Provide your commands.
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Settings
+
+The **Run** step has the following settings.
+
+Depending on the stage's build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+
+### Name
 
 Enter a name summarizing the step's purpose. Harness automatically assigns an **Id** ([Entity Identifier Reference](../../../platform/20_References/entity-identifier-reference.md)) based on the **Name**. You can change the **Id**.
 
-## Description
+### Description
 
 Optional text string describing the step's purpose.
 
-## Container Registry and Image
+### Container Registry and Image
 
-The **Container Registry** is a Harness container registry connector for the image that you want Harness to run build commands on, such as Docker Hub.
+**Container Registry** and **Image** ensure that the build environment has the binaries necessary to execute the commands that you want to run in this step. For example, a cURL script may require a cURL image, such as `curlimages/curl:7.73.0`.
 
-The **Image** is the FQN (fully-qualified name) or artifact name of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`. The image name should include the tag. If you don't include a tag, Harness uses the `latest` tag.
+The **Container Registry** is a container registry connector, such as a [Docker connector](/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/), that connects to a container registry, such as Docker Hub.
+
+The **Image** is the fully-qualified name (FQN) or artifact name of the Docker image to use when this step runs commands, for example `us.gcr.io/playground-123/quickstart-image`.
+
+The image name should include the tag. If you don't include a tag, Harness uses the `latest` tag.
 
 You can use any Docker image from any Docker registry, including Docker images from private registries. Different container registries require different name formats:
 
 * **Docker Registry:** Input the name of the artifact you want to deploy, such as `library/tomcat`. Wildcards aren't supported. FQN is required for images in private container registries.
-* **ECR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
-* **GCR:** Input the FQN (fully-qualified name) of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
+* **ECR:** Input the FQN of the artifact you want to deploy. Images in repos must reference a path, for example: `40000005317.dkr.ecr.us-east-1.amazonaws.com/todolist:0.2`.
+* **GCR:** Input the FQN of the artifact you want to deploy. Images in repos must reference a path starting with the project ID that the artifact is in, for example: `us.gcr.io/playground-243019/quickstart-image:latest`.
 
-   <figure>
+<figure>
 
-   ![](./static/run-step-settings-03.png)
+![](./static/run-step-settings-03.png)
 
-   <figcaption>Figure 1: Configuring GCR Container Registry and Image settings.</figcaption>
-   </figure>
+<figcaption>Figure 1: Configuring GCR Container Registry and Image settings.</figcaption>
+</figure>
 
 :::info
 
@@ -174,7 +222,7 @@ The stage's build infrastructure determines whether these fields are required or
 
 :::
 
-## Shell and Command
+### Shell and Command
 
 Use these fields to define the commands that you need to run in this step.
 
@@ -331,11 +379,11 @@ If your script produces an output variable, you must declare the output variable
 
 :::
 
-## Privileged
+### Privileged
 
 Enable this option to run the container with escalated privileges. This is equivalent to running a container with the Docker `--privileged` flag.
 
-## Report Paths
+### Report Paths
 
 Specify one or more paths to files that store [test results in JUnit XML format](../set-up-test-intelligence/test-report-ref.md). You can add multiple paths. If you specify multiple paths, make sure the files contain unique tests to avoid duplicates. [Glob](https://en.wikipedia.org/wiki/Glob_(programming)) is supported.
 
@@ -359,7 +407,7 @@ For example, this step runs `pytest` and produces a test report in JUnit XML for
                           - output-test.xml
 ```
 
-## Environment Variables
+### Environment Variables
 
 You can inject environment variables into a container and use them in the **Command** script. You must input a **Name** and **Value** for each variable.
 
@@ -393,7 +441,7 @@ For example, if a step exported an output variable called `BUILD_NUM`, you could
 
 </details>-->
 
-## Image Pull Policy
+### Image Pull Policy
 
 If you specified a [Container Registry and Image](#container-registry-and-image), you can specify an image pull policy:
 
@@ -401,22 +449,28 @@ If you specified a [Container Registry and Image](#container-registry-and-image)
 * **If Not Present**: The image is pulled only if it is not already present locally.
 * **Never**: The image is assumed to exist locally. No attempt is made to pull the image.
 
-## Run as User
+### Run as User
 
 If you specified a [Container Registry and Image](#container-registry-and-image), you can specify the user ID to use for running processes in containerized steps.
 
 For a Kubernetes cluster build infrastructure, the step uses this user ID to run all processes in the pod. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
 
-## Set Container Resources
+### Set Container Resources
 
 Maximum resources limits for the resources used by the container at runtime:
 
 * **Limit Memory:** Maximum memory that the container can use. You can express memory as a plain integer or as a fixed-point number with the suffixes `G` or `M`. You can also use the power-of-two equivalents, `Gi` or `Mi`. Do not include spaces when entering a fixed value. The default is `500Mi`.
 * **Limit CPU:** The maximum number of cores that the container can use. CPU limits are measured in CPU units. Fractional requests are allowed. For example, you can specify one hundred millicpu as `0.1` or `100m`. The default is `400m`. For more information, go to [Resource units in Kubernetes](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
-## Timeout
+### Timeout
 
 Set the timeout limit for the step. Once the timeout limit is reached, the step fails and pipeline execution continues. To set skip conditions or failure handling for steps, go to:
 
 * [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md)
 * [Step Failure Strategy settings](../../../platform/8_Pipelines/w_pipeline-steps-reference/step-failure-strategy-settings.md)
+
+## Logs and test results
+
+During and after pipeline runs, you can find step logs on the [Build details page](../viewing-builds.md).
+
+If your pipeline runs tests, you can [view test reports](../set-up-test-intelligence/viewing-tests.md) on the Build details page.

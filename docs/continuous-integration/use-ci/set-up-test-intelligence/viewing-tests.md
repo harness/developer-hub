@@ -35,9 +35,9 @@ Your CI pipelines can run tests in [Run steps](../run-ci-scripts/run-step-settin
 
 If the [test reports are in JUnit XML format](./test-report-ref.md), you can review test reports on the **Tests** tab on the [Build details page](../viewing-builds.md).
 
-![](./static/viewing-tests-533.png)
+![](../run-ci-scripts/static/run-a-script-in-a-ci-stage-529.png)
 
-If you [enabled Test Intelligence](./set-up-test-intelligence.md) for your unit tests, the **Tests** tab contains information unique to Test Intelligence.
+If you are using Test Intelligence for your unit tests, the **Tests** tab contains information unique to Test Intelligence. For details about this, go to [Enable Test Intelligence](./set-up-test-intelligence.md).
 
 ### Test report dashboard
 
