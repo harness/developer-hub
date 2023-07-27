@@ -317,12 +317,20 @@ CCM unifies tags in AWS/GCP/Azure as labels in Perspectives.
 
 Yes, you can view the data across the FirstGen and NextGen.
 
-#### Why do I observe cost discrepancy between the Perspective and Dashboard data?
+#### Why do I observe difference in costs between the Perspective and Dashboard data?
 
-To resolve any cost discrepancy between the Perspective and Dashboard in Harness CCM, consider the following steps:
+To resolve any cost differences between the Perspective and Dashboard in Harness CCM, consider the following steps:
 
-* **Time Period Consistency**: Make sure to set the same time period in both the Perspective and Dashboard. If you have defined a specific time period (For example, June) in the Perspective, ensure that the Dashboard also uses the same time period for accurate comparisons.
-* **Time Range Adjustment**: If the Dashboard has a default time range (Last 30 days) that does not encompass the specified time period (For example, June and July), adjust the Time Range filter to cover a larger interval that includes the Time Period filter. This ensures that the Dashboard data spans the same duration as the Perspective.
+* **Time Period Consistency**: Make sure to set the same time period in both Perspective and Dashboard. If you have defined a specific time period (For example, June) in the Perspective, ensure that the Dashboard also uses the same time period for accurate comparisons.
+* **Time Range Adjustment**: You must set the following two time filters when you create the dashboard. 
+
+  * Reporting Timeframe
+  * Time Period
+
+  If the Dashboard is set to the default **ReportingTimeframe** value (Last 30 days) that does not encompass the specified **Time Period**, adjust the Reporting Timeframe filter to cover a larger interval that includes the Time Period filter. This ensures that the Dashboard data spans the same duration as the Perspective.
+
+  ![](./static/dashboard-time-filters.png)
+
 
 
 ### Budgets and reports
