@@ -2090,7 +2090,8 @@ For more information on configuring an S3 connector and S3 bucket policies, go t
 <summary>Use Amazon EC2 AMI artifacts</summary>
 
 You connect to Amazon AWS account using a Harness AWS connector. For details on all the AWS requirements for the connector, see [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector).
-In case of AWS AMI artifacts, a version number actually represents the name of AMI here which one can filter out by using tags/filter values.
+
+For AWS AMI artifacts, a version number represents the name of AMI. You can filter names by using tags/filter values.
 
 <!-- AWS AMI  -->
 
