@@ -1,4 +1,4 @@
-The Continuous Delivery & GitOps Architect exam tests your knowledge and skills of the Harness Continuous Delivery module.  
+(BETA) The Continuous Delivery & GitOps Architect exam tests your knowledge and skills of the Harness Continuous Delivery module.  
 
 ## Prerequisites
 
