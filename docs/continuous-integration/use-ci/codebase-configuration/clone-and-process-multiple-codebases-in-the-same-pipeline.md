@@ -13,7 +13,7 @@ In addition to the pipeline's default [codebase](./create-and-configure-a-codeba
 * Build multiple artifacts in the same pipeline. For example, suppose you use Packer and Ansible to build artifacts automatically, and you have separate repos for Packer, Ansible, and code. You can clone all three repos into the pipeline's workspace.
 * Pull code from separate code and build repos. For example, if your code files are in a repo managed by the Engineering team and your Dockerfiles are in a different repo managed by the Security team, you can clone both repos into the pipeline's workspace.
 
-This topic assumes you are familiar with [CI concepts](../../ci-quickstarts/ci-concepts.md) and the general [pipeline creation process](../prep-ci-pipeline-components.md).
+This topic assumes you are familiar with the [CI pipeline creation process](../prep-ci-pipeline-components.md).
 
 :::info Large file storage
 

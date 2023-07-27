@@ -12,7 +12,7 @@ There are several ways to configure caching in Harness CI: save and restore cach
 
 ## Supported build infrastructures and tools
 
-Currently, Cache Intelligence is available only when using [Harness Cloud](/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart), the Harness-hosted build environment.
+Currently, Cache Intelligence is available only when using [Harness Cloud](../set-up-build-infrastructure/use-harness-cloud-build-infrastructure.md), the Harness-hosted build environment.
 
 Currently, Cache Intelligence supports Bazel, Maven, Gradle, Yarn, Go, and Node build tools. The dependencies must be stored in the default location for the tool used.
 

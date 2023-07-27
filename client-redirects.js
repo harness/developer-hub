@@ -33,7 +33,13 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },
     //===================================================================================
-    
+
+    // Created by aimurphy from branch ci-ti-refresh-multiple-tickets on July 27, 2023
+    {
+      from: "/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure",
+    },
+
     // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
     {
       from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",

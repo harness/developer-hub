@@ -205,7 +205,7 @@ Pipelines require build infrastructure to run. When you create your own pipeline
 <TabItem value="cloud" label="Harness Cloud" default>
 ```
 
-[Harness Cloud](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart/) uses Harness-hosted machines to run builds. Harness maintains and upgrades these machines, which gives you more time to focus on development.
+[Harness Cloud](/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure) uses Harness-hosted machines to run builds. Harness maintains and upgrades these machines, which gives you more time to focus on development.
 
 ![Harness CI Hosted Overview](../static/ci-tutorial-node-docker/harness_ci_hosted_infra_overview.png)
 
@@ -214,7 +214,7 @@ Pipelines require build infrastructure to run. When you create your own pipeline
 <TabItem value="self" label="Self-hosted infrastructure">
 ```
 
-With self-hosted build hardware, your pipelines run on your local machines or your Kubernetes clusters. To learn about self-hosted options, go to [Set up build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure).
+With self-hosted build hardware, your pipelines run on your local machines or your Kubernetes clusters. To learn about self-hosted options, go to [Set up build infrastructure](/docs/category/set-up-build-infrastructure).
 
 ![Harness CI Bring Your Own Overview](../static/ci-tutorial-node-docker/harness_ci_your_infra_overview.png)
 
