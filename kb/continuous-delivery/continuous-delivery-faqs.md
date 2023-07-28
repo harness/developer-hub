@@ -147,6 +147,28 @@ It's important to note that Harness provides a declarative rollback feature, whi
 
 For more information, you can refer to the documentation on declarative rollback in the link provided: [Harness Declarative Rollback](https://docs.harness.io/article/6y7xs2rh5a-declarative-rollback).
 
+#### How can I turn off FG (First Generation) responses or remove the switch to CG option?
+
+To disable FG responses, please follow these steps:
+1. Go to your account settings.
+2. Locate the "Allow First Gen Access" option.
+3. Turn off the "Allow First Gen Access" setting.
+4. Once disabled, the "Launch First Gen" button will no longer be visible, and you will no longer receive FG responses.
+
+#### We have multiple accounts, like sandbox and prod, and we want to move the developments from sandbox to prod easily. Is there a solution for this?
+
+Absolutely! We recommend customers to use test orgs or projects for sandbox development. Our hierarchical separation allows them to isolate test cases from production workloads effectively.
+
+For pipeline development concerns, we have a solution too. Customers can utilize our built-in branching support from GitX. You can create a separate branch for building and testing pipeline changes. Once the changes are tested and verified, you can merge the changes into their default branch.
+
+Sandbox accounts are most valuable for testing external automation running against Harness, which helps in building or modifying objects. This way, you can test changes without affecting production environments.
+
+#### Can you provide an example of deploying the delegate in a task-definition for ECS (Amazon Elastic Container Service)?
+
+Certainly! You can find a step-by-step guide on how to deploy the delegate in a task-definition for ECS on our official documentation page: [link to documentation](https://developer.harness.io/docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate/).
+
+Additionally, we have a GitHub repository with a Terraform module that demonstrates the process of deploying the delegate in ECS Fargate: [link to GitHub repository](https://github.com/harness-community/terraform-aws-harness-delegate-ecs-fargate/tree/main). This resource can further assist you in implementing the delegate deployment.
+
 #### What are the main differences between using JSON and YAML as a Values file for GO Templating?
 
 1. YAML 1.2 does not allow tabs for indentation.
@@ -208,3 +230,24 @@ As HTTP step is meant to connect over http protocol, delegate can initiate http 
 
 Please check the delegate version used as this feature was released with delegate version 791xx and make sure in console logs you are able to see Using HTTP_PROXY environment variable.
 
+#### Error with release name too long
+
+In the deployment logs in Harness you may get an error similar to this:
+
+```
+6m11s Warning FailedCreate statefulset/release-xxx-xxx create Pod release-xxx-xxx-0 in StatefulSet release-xxx-xxx failed error: Pod "release-xxx-xxx-0" is invalid: metadata.labels: Invalid value: "release-xxx-xxx-xxx": must be no more than 63 characters
+```
+
+This is an error coming from the kubernetes cluster stating that the release name is too long.  This can be adjusted in Environments > click Name of the Environment in Question > Infrastructure Definitions > click Name of the Infrastructure Definition in Question > scroll down > expand Advanced > modify the Release name to be something shorter
+
+#### Pipeline GitHub trigger support for project variable reference?
+
+This is not possible as trigger yaml is independent of the pipeline yaml and the trigger will not be aware of the expression output.
+
+#### Procedure to take backup of the Services
+
+We do not have any backup ability for services out of the box but you can take the backup of service yamls and use them later for creating service if there is any issue with the service.
+
+#### Harness FirstGen Graphql API to create Harness pipelines in a specific application
+
+We do not have a way to create a new pipeline using Graphql in FirstGen. However, we do support API to create Harness pipelines in NextGen.

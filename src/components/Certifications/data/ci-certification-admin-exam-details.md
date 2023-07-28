@@ -1,4 +1,4 @@
-**(BETA)** The Continuous Integration Administrator exam tests your knowledge and skills of the Harness Continuous Integration module.  
+The Continuous Integration Administrator exam tests your knowledge and skills of the Harness Continuous Integration module.  
 
 ## Prerequisites
 
@@ -70,7 +70,7 @@ The following is a detailed list of exam objectives:
 The Continuous Integration Administrator exam can start immediately after registering. Please allow 90 mins for the knowledge exam and approximately 90 minutes for the hands on exam.
 
 1. Create an account in Harness University
-2. Register for an exams 
+2.  Register for an exam. There is a $50 fee for the exam
 3. Review the [instructions for the Hands On Exam](/certifications/instructions)
 4. Take the exams
     1. There will be a knowledge and hands on portion.	

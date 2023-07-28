@@ -1,14 +1,15 @@
 {
-    "label":"Back up and restore",
-    "position": 35,
+    "label":"Workspaces",
+    "position": 20,
     "collapsible":"true",
     "collapsed":"true",
     "className":"red",
     "link":{
        "type":"generated-index",
-       "title":"Back up and restore"
+       "title":"Workspaces"
     },
     "customProps":{
+       
        "helpdocs_category_id":""
     }
  }

@@ -141,7 +141,7 @@ deny[sprintf("version must be greater than v0.200.0 but is currently '%s'", [inp
 }
 ```
 
-Next, in our Pipeline we'll add an [HTTP step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines) to check the version at the HTTP endpoint `https://app.harness.io/prod1/pm/api/v1/system/version`, and a **Policy** step to that uses our policy to check the version returned from the HTTP step:
+Next, in our Pipeline we'll add an [HTTP step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-http-requests-in-cd-pipelines) to check the version at the HTTP endpoint `https://app.harness.io/prod1/pm/api/v1/system/version`, and a **Policy** step to that uses our policy to check the version returned from the HTTP step:
 
 Here's the YAML for a Pipeline that uses the step:
 ```
@@ -212,7 +212,7 @@ Now when we run the Pipeline, the Policy Step will evaluate the JSON in Payload 
 
 ### Policy Step Expressions
 
-You can use the following Harness expressions to output Policy Step status in a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step:
+You can use the following Harness expressions to output Policy Step status in a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step:
 
 * `<+execution.steps.[policy step Id].output.status>`
 * `<+execution.steps.[policy step Id].output.policySetDetails.Example.status>`
