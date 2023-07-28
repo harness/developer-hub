@@ -60,11 +60,11 @@ If you haven't created a pipeline before, try [Get started with the fastest CI](
 
 ## Prepare artifacts to upload
 
-Add steps to your pipeline that generate and prepare artifacts to upload, such as [Run steps](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings). The steps you use depend on what artifacts you ultimately want to upload.
+Add steps to your pipeline that generate and prepare artifacts to upload, such as [Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings). The steps you use depend on what artifacts you ultimately want to upload.
 
 For example, this tutorial uses three **Run** steps to generate and prepare an artifact:
 
-* The first step runs Maven tests.
+* The first step runs tests with Maven.
 * The second step generates an Allure report. To ensure the build environment has the Allure tool, the step uses a Docker image that has this tool: `solutis/allure:2.9.0`.
 * The third step combines the Allure report into a single HTML file.
    * To view an Allure report in a browser, you must run a web server with the `allure open` command; however, this command won't persist after the CI pipeline ends. Instead, use the [allure-combine](https://pypi.org/project/allure-combine/) tool to convert the Allure report into a single HTML file.

@@ -31,7 +31,7 @@ If you haven't created a pipeline before, try one of the [CI tutorials](../../ci
 
 ## Prepare artifacts to upload
 
-Add steps to your pipeline that generate artifacts to upload, such as [Run steps](../set-up-test-intelligence/configure-run-tests-step-settings.md). The steps you use depend on what artifacts you ultimately want to upload.
+Add steps to your pipeline that generate artifacts to upload, such as [Run steps](../run-ci-scripts/run-step-settings.md). The steps you use depend on what artifacts you ultimately want to upload.
 
 ## Upload artifacts to S3
 

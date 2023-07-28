@@ -63,7 +63,7 @@
 |Configure To Send PR Status Updates|-|
 |Describe How To Test For Swimlanes With Harness Run Test Step|[Build, test, and publish a Docker Image for a Java application](https://developer.harness.io/tutorials/ci-pipelines/build/java)|
 |Configure Run Test Step|[Build, test, and publish a Docker Image for a Java application](https://developer.harness.io/tutorials/ci-pipelines/build/java)|
-|Configure Outputs From One Step To Another|[Run Tests step settings](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings/)|
+|Configure Outputs From One Step To Another|[Use Run steps](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings#output-variables)|
 |Step Library - Describe Save And Restore Cache In The Pipeline|[Share and Cache CI Data](https://developer.harness.io/docs/category/share-and-cache-ci-data)|
 |Step Library - Configure Save And Restore Cache In The Pipeline|[Share and Cache CI Data](https://developer.harness.io/docs/category/share-and-cache-ci-data)|
 |Step Library - Describe Background Steps|[Background step settings](https://developer.harness.io/docs/continuous-integration/use-ci/manage-dependencies/background-step-settings/)|

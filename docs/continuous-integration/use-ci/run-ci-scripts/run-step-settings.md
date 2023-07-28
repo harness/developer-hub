@@ -50,6 +50,12 @@ This example runs `pytest`, includes [code coverage](../set-up-test-intelligence
                           - "**/*.xml"
 ```
 
+:::tip
+
+You can use `parallelism` and `split_tests` to [define test splitting in a Run step](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting) and improve test times.
+
+:::
+
 ```mdx-code-block
   </TabItem>
   <TabItem value="dependencies" label="Install dependencies">

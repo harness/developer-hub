@@ -199,7 +199,7 @@ This example uses two [Run steps](/docs/continuous-integration/use-ci/run-ci-scr
 <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
 ```
 
-You must use the [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings) for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence) feature.
+You must use the **Run Tests** step for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/set-up-test-intelligence) feature.
 
 Where Run steps use the `command` field for all commands, the Run Tests step uses `preCommand`, `args`, and `postCommand` to set up the environment before testing, pass arguments for the test tool, and run any post-test commands. For example, you could declare dependencies or install test tools in `preCommand`.
 
@@ -274,7 +274,7 @@ This example uses two [Run steps](/docs/continuous-integration/use-ci/run-ci-scr
 <TabItem value="runtests" label="Run Tests step (Test Intelligence)">
 ```
 
-You must use the [Run Tests step](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings) for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence) feature.
+You must use the **Run Tests** step for your unit tests if you want to leverage Harness' [Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/set-up-test-intelligence) feature.
 
 Where Run steps use the `command` field for all commands, the Run Tests step uses `preCommand`, `args`, and `postCommand` to set up the environment before testing, pass arguments for the test tool, and run any post-test commands. For example, you could declare dependencies or install test tools in `preCommand`.
 

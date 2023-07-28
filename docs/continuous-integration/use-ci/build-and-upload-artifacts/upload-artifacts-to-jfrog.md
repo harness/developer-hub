@@ -14,7 +14,7 @@ This topic assumes you've created a Harness CI pipeline. For more information ab
 
 ## Prepare artifacts to upload
 
-Add steps to your CI pipeline that generate artifacts to upload. The steps you use depend on what artifacts you ultimately want to upload. For example, [Run steps](../set-up-test-intelligence/configure-run-tests-step-settings.md) and [Plugin steps](../use-drone-plugins/explore-ci-plugins.md) are useful for running scripts.
+Add steps to your CI pipeline that generate artifacts to upload. The steps you use depend on what artifacts you ultimately want to upload. For example, [Run steps](../run-ci-scripts/run-step-settings.md) and [Plugin steps](../use-drone-plugins/explore-ci-plugins.md) are useful for running scripts.
 
 ## Upload artifacts to JFrog Artifactory
 

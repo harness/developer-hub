@@ -13,7 +13,7 @@ import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
 
-Your CI pipelines can run tests in [Run steps](../run-ci-scripts/run-step-settings.md) and [Run Tests steps](./configure-run-tests-step-settings.md). To publish test results and view them in Harness, you must add the **Report Paths** setting to the relevant step, for example:
+Your CI pipelines can run tests in [Run steps](../run-ci-scripts/run-step-settings.md) and [Run Tests steps](./set-up-test-intelligence.md#add-the-run-tests-step). To publish test results and view them in Harness, you must add the **Report Paths** setting to the relevant step, for example:
 
 ```yaml
               - step:

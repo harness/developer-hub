@@ -59,6 +59,14 @@ module.exports = {
       from: "/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts",
       to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/set-up-test-intelligence",
     },
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence",
+    },
 
     // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
     {
@@ -2850,11 +2858,6 @@ module.exports = {
     {
       from: "/docs/continuous-integration/ci-technical-reference/configure-service-dependency-step-settings",
       to: "/docs/continuous-integration/use-ci/manage-dependencies/configure-service-dependency-step-settings",
-    },
-
-    {
-      from: "/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings",
-      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings",
     },
 
     {
