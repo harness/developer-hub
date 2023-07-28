@@ -102,5 +102,5 @@ To add a new role binding for a user, click **Role**.
 * [Add and Manage User Groups](./4-add-user-groups.md)
 * [Add and Manage Roles](../role-based-access-control/add-manage-roles)
 * [Add and Manage Resource Groups](../role-based-access-control/add-resource-groups)
-* [Permissions Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md)
+* [Permissions Reference](../role-based-access-control/permissions-reference)
 

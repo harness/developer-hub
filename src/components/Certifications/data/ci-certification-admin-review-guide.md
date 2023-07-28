@@ -24,7 +24,7 @@
 | Delve into advanced options like timeouts, selective stage executions, and stage context sharing | [Continuous Integration (CI) FAQs](https://developer.harness.io/docs/frequently-asked-questions/harness-faqs/continuous-integration-ci-faqs/#what-is-the-timeout-limit-for-a-ci-pipeline) |
 | **6. Security and Access Control** ||
 | Understand RBAC with user groups, roles, role bindings, and service account considerations | [RBAC in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness) |
-| Configure access and permissions, including tags and resource groups | [Permissions Reference](https://developer.harness.io/docs/platform/role-based-access-control/ref-access-management/permissions-reference/) |
+| Configure access and permissions, including tags and resource groups | [Permissions Reference](https://developer.harness.io/docs/platform/role-based-access-control/permissions-reference) |
 | Grasp the implications of anonymous Docker image pulls and other security considerations | [Docker Connector Settings Reference](https://developer.harness.io/docs/platform/connectors/cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference/) |
 | **7. Authentication and User Management** ||
 | Deep dive into OAuth, SAML, and SCIM integrations | [Authentication](https://developer.harness.io/docs/category/authentication) |

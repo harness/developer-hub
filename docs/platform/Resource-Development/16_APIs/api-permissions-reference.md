@@ -1,7 +1,7 @@
 ---
 title: API Permissions Reference
 description: API Keys permissions reference.
-# sidebar_position: 2
+sidebar_position: 5
 helpdocs_topic_id: bhkc68vy9c
 helpdocs_category_id: 4przngb8nk
 helpdocs_is_private: false
@@ -12,7 +12,7 @@ This topic gives you details of the Permissions available in the Harness system 
 
 ### Service Account
 
-The following table lists permissions for Service Account. To know more about Service Accounts, see [Add and Manage Service Accounts](../../3_User-Management//6-add-and-manage-service-account.md).
+The following table lists permissions for Service Account. To know more about Service Accounts, see [Add and Manage Service Accounts](../../3_User-Management/6-add-and-manage-service-account.md).
 
 
 

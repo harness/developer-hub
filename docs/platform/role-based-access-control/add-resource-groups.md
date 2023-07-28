@@ -108,5 +108,5 @@ Click **Apply Changes**.
 * [Add and Manage Users](../3_User-Management/3-add-users.md)
 * [Add and Manage User Groups](../3_User-Management/4-add-user-groups.md)
 * [Add and Manage Roles](./add-manage-roles)
-* [Permissions Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md)
+* [Permissions Reference](./permissions-reference)
 

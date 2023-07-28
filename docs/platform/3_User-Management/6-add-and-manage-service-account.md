@@ -13,7 +13,7 @@ Admin Users of an account can create a Service Account with specific Role Bindin
 
 ### Before you begin
 * Make sure you are an Account Admin to Create, Edit, Delete, and Manage Service Accounts.  
-For more details, see [API Permissions Reference](../4_Role-Based-Access-Control/ref-access-management/api-permissions-reference.md).
+For more details, see [API Permissions Reference](../Resource-Development/APIs/api-permissions-reference).
 
 ### Create a Service Account
 

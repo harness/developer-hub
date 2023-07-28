@@ -40,6 +40,14 @@ module.exports = {
       from: "/docs/platform/Role-Based-Access-Control/set-up-rbac-pipelines",
       to: "/docs/platform/Role-Based-Access-Control/rbac-in-harness",
     },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/ref-access-management/api-permissions-reference",
+      to: "/docs/platform/Resource-Development/APIs/api-permissions-reference",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference",
+      to: "/docs/platform/role-based-access-control/permissions-reference",
+    },
 
     // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
     {

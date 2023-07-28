@@ -1,7 +1,7 @@
 ---
 title: Permissions Reference
 description: This document lists the default user groups and permissions present in the Harness Access Management system.
-# sidebar_position: 2
+sidebar_position: 50
 helpdocs_topic_id: yaornnqh0z
 helpdocs_category_id: 4przngb8nk
 helpdocs_is_private: false
@@ -9,6 +9,8 @@ helpdocs_is_published: true
 ---
 
 This topic gives you details of the Harness Permissions and Default Roles and Resource Groups available in the Harness system.
+
+For API permissions, go to [API permissions reference](/docs/platform/Resource-Development/APIs/api-permissions-reference).
 
 ### Default Roles
 

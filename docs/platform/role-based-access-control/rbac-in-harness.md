@@ -119,7 +119,7 @@ For more information on creating a new resource group, see [Add and Manage Resou
 
 ### Roles
 
-A role is a set of [permissions](/docs/platform/4_Role-Based-Access-Control/ref-access-management/permissions-reference.md) that allow or deny specific operations on a specific set of resources. A Role defines access to resources within a single scope — project/org/account. 
+A role is a set of [permissions](/docs/platform/role-based-access-control/permissions-reference) that allow or deny specific operations on a specific set of resources. A Role defines access to resources within a single scope — project/org/account. 
 
 Harness has the following types of roles: 
 - Out of the box roles (OOTB): These are built-in roles that you can use for access control. 
@@ -200,9 +200,7 @@ By default, users will have **View** permissions for all resources at all scopes
 
 You can provide more control by using rules to restrict access based on a combination of attributes, such as type of environments or connectors.
 
-For more information, see [Attribute-Based Access Control](/docs/platform/4_Role-Based-Access-Control/2-attribute-based-access-control.md).
-
-* [Attribute-Based Access Control](/docs/platform/4_Role-Based-Access-Control/2-attribute-based-access-control.md)
+For more information, see [Attribute-Based Access Control](/docs/platform/role-based-access-control/attribute-based-access-control).
 
 ## Set up RBAC
 
@@ -335,7 +333,7 @@ Your User Group is now listed under User Groups.
 4. Enter a **Name** for your **Role**. In this case, enter **Pipeline Admin.**
 5. Enter optional **Description** and **Tags** for your **Role**.
 6. Click **Save**.
-7. Select the following [permissions](/docs/platform/4_Role-Based-Access-Control/ref-access-management/permissions-reference.md) for the resources:
+7. Select the following [permissions](/docs/platform/role-based-access-control/permissions-reference) for the resources:
 	1. View, Create/Edit, Delete, Execute Pipelines
 	2. View, Create/Edit, Access Secrets
 	3. View, Create/Edit, Delete, Access Connectors

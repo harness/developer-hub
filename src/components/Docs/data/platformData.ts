@@ -117,7 +117,7 @@ export const featuredTutorials: CardItem[] = [
         title: "Permissions reference",
         module: MODULES.platform,
         description: "",
-        link: "/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference",
+        link: "/docs/platform/role-based-access-control/permissions-reference",
       },
       {
         title: "Reference secrets in secrets managers",
