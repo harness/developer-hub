@@ -50,10 +50,12 @@ This release includes the following Harness module and component versions.
 
   To learn how to configure an external self-managed database, go to the following tutorials.
 
+<!---
   - [MongoDB](/tutorials/self-managed-enterprise-edition/use-an-external-self-managed-mongodb/)
   - [PostgreSQL](/tutorials/self-managed-enterprise-edition/use-an-external-postgres-database/)
   - [Redis](/tutorials/self-managed-enterprise-edition/use-an-external-redis-database/)
   - [TimescaleDB](/tutorials/self-managed-enterprise-edition/use-an-external-sm-timescaledb/)
+-->
 
 #### Continuous Delivery & GitOps
 
