@@ -147,7 +147,107 @@ It's important to note that Harness provides a declarative rollback feature, whi
 
 For more information, you can refer to the documentation on declarative rollback in the link provided: [Harness Declarative Rollback](https://docs.harness.io/article/6y7xs2rh5a-declarative-rollback).
 
+#### How can I turn off FG (First Generation) responses or remove the switch to CG option?
+
+To disable FG responses, please follow these steps:
+1. Go to your account settings.
+2. Locate the "Allow First Gen Access" option.
+3. Turn off the "Allow First Gen Access" setting.
+4. Once disabled, the "Launch First Gen" button will no longer be visible, and you will no longer receive FG responses.
+
+#### We have multiple accounts, like sandbox and prod, and we want to move the developments from sandbox to prod easily. Is there a solution for this?
+
+Absolutely! We recommend customers to use test orgs or projects for sandbox development. Our hierarchical separation allows them to isolate test cases from production workloads effectively.
+
+For pipeline development concerns, we have a solution too. Customers can utilize our built-in branching support from GitX. You can create a separate branch for building and testing pipeline changes. Once the changes are tested and verified, you can merge the changes into their default branch.
+
+Sandbox accounts are most valuable for testing external automation running against Harness, which helps in building or modifying objects. This way, you can test changes without affecting production environments.
+
+#### Can you provide an example of deploying the delegate in a task-definition for ECS (Amazon Elastic Container Service)?
+
+Certainly! You can find a step-by-step guide on how to deploy the delegate in a task-definition for ECS on our official documentation page: [link to documentation](https://developer.harness.io/docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate/).
+
+Additionally, we have a GitHub repository with a Terraform module that demonstrates the process of deploying the delegate in ECS Fargate: [link to GitHub repository](https://github.com/harness-community/terraform-aws-harness-delegate-ecs-fargate/tree/main). This resource can further assist you in implementing the delegate deployment.
+
+#### What are the main differences between using JSON and YAML as a Values file for GO Templating?
+
+1. YAML 1.2 does not allow tabs for indentation.
+2. YAML imposes limitations on key lengths.
+3. YAML uses some different unicode escape sequences.
+
+However, apart from these differences, basic JSON documents are considered valid YAML and can be used with GO Templating.
+
+#### Under what condition does an immutable delegate automatically upgrade?
+
+AutoUpgrade initiates when a new version of the delegate is published, not when the delegate is expired.
+
+#### Under what condition does an immutable delegate automatically upgrade?
+
+AutoUpgrade initiates when a new version of the delegate is published, not when the delegate is expired.
+
+#### Is there an environment variable to set when starting the container to force the Docker delegate to use client tool libs from harness-qa-public QA repo?
+
+To achieve this, you need to create a test image that points to the harness-qa-public QA repository. This involves updating the Docker file with the appropriate path to the QA buckets.
+
+#### Is there a method to simulate CloudFormation changes without actually applying them?
+
+Yes, you can achieve this by utilizing the Change Set Feature. First, create a change set to preview the changes that will be made. Once you are satisfied with the preview, you can execute the change set using the command: [aws cloudformation execute-change-set](https://docs.aws.amazon.com/cli/latest/reference/cloudformation/execute-change-set.html). This allows you to assess the impact of the changes before applying them.
+
+#### Is it possible to include FirstGen measures and dimensions in custom dashboards using NextGen dashboards?
+
+Yes, NG Dashboards support CG (Custom Group) Data, and you can create custom dashboards with FirstGen measures and dimensions using the "create dashboard" option.
+
+#### What steps are involved in obtaining output from a chained pipeline for use in a different stage?
+ 
+To get output from a chained pipeline and utilize it in another stage, you need to specify the expression of the output variable for the chained pipeline at the parent pipeline level in the output section.
+
+### If I delete an infradef after deployments are done to it, what are the implications other than potential dashboard data loss for those deployments ?
+
+At the moment there is no dependency on the instance sync and infrastructure definition. Infra definition is used only to generate infra details the instance sync itself is done for service and environment, only in case if any these are deleted the instance sync will stop and delete instances.
+
 **Note:**
 If you are using the default release name format in Harness FirstGen as `release-${infra.kubernetes.infraId}`, it's important to note that when migrating to Harness NextGen, you will need to replace `${infra.kubernetes.infraId}` with the new expression.
 
 In Harness NextGen, a similar expression `<+INFRA_KEY>` is available for defining release names. However, it's crucial to understand that these expressions will resolve to completely different values compared to the expressions used in Harness FirstGen.
+
+#### Is it possible to have drop down options for multiple input?
+
+You can make the variable as Input and  define multiple allowed values by selecting checkbox Allowed values
+
+#### How to Make a Pipeline Failure or Step Failure if some condition is not passed In Bash script?
+
+You can set below in script ```set -e``` - Exit immediately when a command fails, or you can set exit code to non zero if certain conditions match and that should fail the step.
+
+#### Is there an easy way to see all the recent deployments of that workflow that have run?
+
+You can use deployment filter and select the workflow and time range and you will able to see all the deployment for that workflow within that time range
+
+#### Is there any  option to execute HTTP steps on the target environment?
+
+As HTTP step is meant to connect over http protocol, delegate can initiate http sessions and get the response as per request setup so using target environment will not help.
+
+#### WINRM Download artifact is not working in NG, after setting correct environment variables(HARNESS_ENV_PROXY and HTTP_PROXY).
+
+Please check the delegate version used as this feature was released with delegate version 791xx and make sure in console logs you are able to see Using HTTP_PROXY environment variable.
+
+#### Error with release name too long
+
+In the deployment logs in Harness you may get an error similar to this:
+
+```
+6m11s Warning FailedCreate statefulset/release-xxx-xxx create Pod release-xxx-xxx-0 in StatefulSet release-xxx-xxx failed error: Pod "release-xxx-xxx-0" is invalid: metadata.labels: Invalid value: "release-xxx-xxx-xxx": must be no more than 63 characters
+```
+
+This is an error coming from the kubernetes cluster stating that the release name is too long.  This can be adjusted in Environments > click Name of the Environment in Question > Infrastructure Definitions > click Name of the Infrastructure Definition in Question > scroll down > expand Advanced > modify the Release name to be something shorter
+
+#### Pipeline GitHub trigger support for project variable reference?
+
+This is not possible as trigger yaml is independent of the pipeline yaml and the trigger will not be aware of the expression output.
+
+#### Procedure to take backup of the Services
+
+We do not have any backup ability for services out of the box but you can take the backup of service yamls and use them later for creating service if there is any issue with the service.
+
+#### Harness FirstGen Graphql API to create Harness pipelines in a specific application
+
+We do not have a way to create a new pipeline using Graphql in FirstGen. However, we do support API to create Harness pipelines in NextGen.

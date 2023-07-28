@@ -44,7 +44,7 @@ https://www.youtube.com/watch?v=J5eHYSbE8cg-->
 
 Running steps in parallel can be beneficial in many ways, such as:
 
-* Simulating load using multiple [HTTP steps](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines).
+* Simulating load using multiple [HTTP steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-http-requests-in-cd-pipelines).
 * Running multiple [Verify steps](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step) for different providers (AppDynamics, Splunk, Prometheus, etc).
 * Running independent steps that don't need to be run serially.
 * Running multiple Kubernetes [Apply steps](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) to deploy multiple Kubernetes resources at once.

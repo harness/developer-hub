@@ -1,6 +1,7 @@
 ---
-sidebar_position: 2
+sidebar_position: 3
 description: Trunk-based development boasts immediate benefits. Learn how Feature Flags helps you get there.
+keywords: [Feature Flags, FF Tutorial]
 ---
 
 # Using Feature Flags For Trunk-Based Development
@@ -9,19 +10,19 @@ description: Trunk-based development boasts immediate benefits. Learn how Featur
 
 To understand trunk-based development (TBD) best, it may be helpful to start with how most engineering teams work today:
 
-- Developers make a new feature branch for each initiative. 
+- Developers make a new feature branch for each initiative.
 
 - After some amount of time, when they deploy and test their feature in a specific environment, they will merge that into a lower env branch, such as dev or QA.
 
-- Most of the time, they will keep working on the feature branch, and merge at infrequent intervals going forward. 
+- Most of the time, they will keep working on the feature branch, and merge at infrequent intervals going forward.
 
 - On fixed, recurring occasions, the lower level branches like dev and QA will get merged upward (i.e. dev into QA), until eventually one is merged into the repo’s main branch to cut a new production release.
 
-Sometimes, you will see modifications of this with repo forks instead of feature branches. The specifics almost always vary a bit team by team - but this general approach tends to be the most common. 
+Sometimes, you will see modifications of this with repo forks instead of feature branches. The specifics almost always vary a bit team by team - but this general approach tends to be the most common.
 
 This is usually described as a branching strategy, and sometimes referred to as working with long lived feature branches. It emerged from a working practice called, at the time, gitflow.
 
-And, on the surface, trunk-based development is not all that dissimilar. Developers will open their own branches, there may still be lower level environment branches such as dev and QA though it’s less common, and production releases will be keyed against the repo’s main branch. 
+And, on the surface, trunk-based development is not all that dissimilar. Developers will open their own branches, there may still be lower level environment branches such as dev and QA though it’s less common, and production releases will be keyed against the repo’s main branch.
 
 So, how is it different?
 
@@ -75,8 +76,8 @@ Adding feature flags to your trunk-based development workflow, you will find mos
 
 ## Summary
 
-In this last flow, we see developers leveraging trunk-based development to increase velocity, remove long-lived feature branches, and ship to production constantly. All without the risk of incomplete and untested work causing chaos. 
+In this last flow, we see developers leveraging trunk-based development to increase velocity, remove long-lived feature branches, and ship to production constantly. All without the risk of incomplete and untested work causing chaos.
 
 This removes merge conflicts without adding risk and helps teams increase velocity without sacrificing quality or control.
 
-It’s safe to say that feature flags are a necessary part of trunk-based development. The closer any team gets to trunk-based development, the higher their impact and velocity will be. 
+It’s safe to say that feature flags are a necessary part of trunk-based development. The closer any team gets to trunk-based development, the higher their impact and velocity will be.

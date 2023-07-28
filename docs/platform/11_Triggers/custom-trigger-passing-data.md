@@ -46,7 +46,7 @@ You can use the `<+trigger.payload.[key_name]>` expression as a script, a variab
 
 ## Passing data to the pipeline
 
-This cURL command can be used in the terminal or program, but it can also be used in the [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) of a pipeline's CD stage.
+This cURL command can be used in the terminal or program, but it can also be used in the [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) of a pipeline's CD stage.
 
 If you use the command in a Shell Script step, you can pass data from one pipeline to another pipeline.
 

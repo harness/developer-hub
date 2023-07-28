@@ -51,7 +51,6 @@ If you cannot find a resolution, please contact [Harness Support](mailto:suppor
   - [zsh: no matches found](#zsh-no-matches-found)
   - [User does not have "Deployment: execute" permission](#user-does-not-have-deployment-execute-permission)
 - [Continuous delivery](#continuous-delivery)
-  - [Deployment rate limits](#deployment-rate-limits)
   - [Error in log when there is no error](#error-in-log-when-there-is-no-error)
 - [Continuous integration](#continuous-integration)
 - [Helm](#helm)
@@ -395,25 +394,15 @@ To resolve this, see [Add and manage roles](../platform/4_Role-Based-Access-Cont
 
 The following issues can occur when running Pipeline deployments.
 
-#### Deployment rate limits
+#### Error with release name too long
 
-If your deployment rate reaches 85% of the limit, the following message is displayed:
-
-
-```
-85% of deployment rate limit reached. Some deployments may not be allowed. Please contact Harness support.
-```
-If your deployment rate reaches 100% of the limit, the following message is displayed:
-
+In the deployment logs in Harness you may get an error similar to this:
 
 ```
-Deployment rate limit reached. Some deployments may not be allowed. Please contact Harness support.
+6m11s Warning FailedCreate statefulset/release-xxx-xxx create Pod release-xxx-xxx-0 in StatefulSet release-xxx-xxx failed error: Pod "release-xxx-xxx-0" is invalid: metadata.labels: Invalid value: "release-xxx-argus-xxx": must be no more than 63 characters
 ```
-Harness applies an hourly and daily deployment limit to each account to prevent configuration errors or external triggers from initiating too many undesired deployments. If you are notified that you have reached a limit, it is possible that undesired deployments are occurring. Please determine if a Trigger or other mechanism is initiating undesired deployments. If you continue to experience issues, contact [Harness Support](mailto:support@harness.io).
 
-:::note
-The limit is 100 deployments in every 24-hour period. The hourly limit is 40 deployments and is designed to detect any atypical upsurge in the number of deployments.
-:::
+This is an error coming from the kubernetes cluster stating that the release name is too long.  This can be adjusted in Environments > click Name of the Environment in Question > Infrastructure Definitions > click Name of the Infrastructure Definition in Question > scroll down > expand Advanced > modify the Release name to be something shorter
 
 #### Error in log when there is no error
 
@@ -644,7 +633,7 @@ For more information about SAML SSO configuration with Azure, see [Single sign-o
 
 ### Shell scripts
 
-This section covers common problems experienced when using a [Shell script](../continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts.md) step.
+This section covers common problems experienced when using a [Shell script](../continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts.md) step.
 
 #### FileNotFoundExeption inside shell script execution task
 
