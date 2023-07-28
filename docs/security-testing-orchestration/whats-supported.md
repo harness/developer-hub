@@ -34,6 +34,14 @@ import StoSupportedScanners from '/docs/security-testing-orchestration/sto-techr
 
 <StoSupportedScanners />
 
+### STO support by CI build infrastructure type
+
+```mdx-code-block
+import StoInfraSupport from '/docs/security-testing-orchestration/onboard-sto/shared/_supported-infrastructures.md';
+```
+
+<StoInfraSupport />
+
 ### Scanner binaries used in STO container images
 
 ```mdx-code-block
