@@ -5,13 +5,13 @@ sidebar_label: Configure an external self-managed PostgreSQL database
 # sidebar_position: 37
 ---
 
-Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external database server with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external PostgreSQL database with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This tutorial describes how to deploy PostgreSQL with VMs and replication.
+Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external self-managed database with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external PostgreSQL database with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This tutorial describes how to deploy PostgreSQL with VMs and replication.
 
 The controller-worker replication setup described in this tutorial ensures data redundancy and fault tolerance, providing a robust and reliable environment to manage your PostgreSQL database.
 
 ## Benefits of a self-managed PostgreSQL external database
 
-Below are some of the benefits of using a self-managed PostgreSQL external database:
+Below are some of the benefits of using a self-managed external PostgreSQL database:
 
 - High availability
 - Disaster recovery
@@ -156,14 +156,14 @@ To configure replication, do the following:
    // copy the public key in /var/lib/postgresql/.ssh/id_rsa.pub
    ```
 
-2. Copy the certificates to the other replicas in the same directory `/var/lib/postgresql/.ssh/`.
+2. Copy the key to the other replicas in the same directory `/var/lib/postgresql/.ssh/`.
 
 3. Run the following on your controller.
 
    ```
-   cd
+   sudo su - postgres
    mkdir .ssh
-   cd ..ssh
+   cd .ssh
    vi authorization_key
 
    // paste the public key, enter and paste it again and save, the second key should end with postgres@externalIP
@@ -224,9 +224,10 @@ To configure replication, do the following:
     host  replication reptest <External IP of Replica>/32  md5
     ```
 
-11. Create a new user, `reptest`, and log in as Postgres.
+11. Create a new user, `reptest`.
 
     ```
+    psql
     CREATE ROLE reptest WITH REPLICATION PASSWORD 'testpassword' LOGIN;
     ```
 
@@ -243,9 +244,10 @@ To configure replication, do the following:
 
    Repeat this step for each replica.
 
-13. Restart PostgreSQL on your controller and your replicas (run as root).
+13. Restart PostgreSQL.
 
     ```
+    sudo su -
     service postgresql restart 
     ```
 
@@ -258,6 +260,7 @@ To initiate replication, do the following:
 1. Stop the PostgreSQL service.
 
    ```
+   sudo su -
    service postgresql stop
    ```
 
@@ -265,9 +268,6 @@ To initiate replication, do the following:
 
    ```
    sudo su - postgres
-   ```
- 
-   ```
    cd /var/lib/postgresql/14
    mv main main.org
    mkdir main
@@ -291,13 +291,14 @@ To initiate replication, do the following:
 5. Restart PostgreSQL in your replicas.
 
    ```
+   sudo su -
    service postgresql restart
    ```
 
 6. Run the following to check the logs and verify that the replica works. 
 
    ```
-   tail -f /var/lib/postgresql/postgresql-14-main.log
+   tail -f /var/log/postgresql/postgresql-14-main.log
    ```
 
    The output should be similar to the following.
