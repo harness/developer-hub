@@ -8,6 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::important
+The ability to use the credentials of a specific Harness Delegate is behind the feature flag `PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 You can link your Google Cloud Secret Manager to Harness and use it to store any sensitive data you use in Harness, including secrets.
 
 Harness also supports [Google KMS as a secrets manager](./10-add-google-kms-secrets-manager.md).This topic explains how to add a GCP Secrets Manager in Harness.
@@ -72,10 +76,6 @@ Select one of the following options to configure details for the Google cloud se
 - **Specify credentials here**
 - **Use the credentials of a specific Harness Delegate (IAM role, service account, etc)**
 
-:::important
-The ability to use the credentials of a specific Harness Delegate is behind the feature flag `PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
-
 ![](../static/GCP-details.png)
 
 ### Specify credentials here
@@ -101,10 +101,6 @@ You can also create a new [File Secret](../3-add-file-secrets.md) here and add t
 Click **Continue**.
 
 ### Use the credentials of a specific Harness Delegate (IAM role, service account, etc)
-
-:::important
-The ability to use the credentials of a specific Harness Delegate is behind the feature flag `PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
-:::
 
 If you select this option, Harness will authenticate using the IAM role assigned to the specific delegate you select. This would be the Application Default Credentials.
 
