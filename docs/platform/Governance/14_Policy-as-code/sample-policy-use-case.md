@@ -13,14 +13,14 @@ You can enforce policies in the following ways:
 
 * **Enforce policies at a scope:** Create a policy and apply it to all pipelines in your account, organization, and project. 
 
-  Policy evaluation occurs on pipeline-level events like On Run and On Save.
+  Policy evaluation occurs on pipeline-level events like **On Run** and **On Save**.
 For more information, go to [Harness Policy As Code quickstart](/docs/platform/Governance/Policy-as-code/harness-governance-quickstart).
 
 * **Enforce policies at any stage:** Create a policy step and include a policy set and JSON payload to evaluate. 
 
   When the pipeline reaches the policy step, policy evaluation occurs. Data such as resolved expressions can be evaluated when the pipeline runs.
 
-For information about how to add a policy step to a stage, go to [Add a policy step to a pipeline](https://developer.harness.io/docs/platform/Governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline).
+For information about how to add a policy step to a stage, go to [Add a policy step to a pipeline](/docs/platform/Governance/Policy-as-code/add-a-governance-policy-step-to-a-pipeline).
 
 This topic provides sample policies you can use in policy steps and on pipeline-level events like **On Run** and **On Save**.
 
@@ -39,12 +39,12 @@ This topic provides sample policies you can use in policy steps and on pipeline-
     + [Enforce remote pipeline execution from the default branch only if the user is not part of a specific user group](#enforce-remote-pipeline-execution-from-the-default-branch-only-if-the-user-is-not-part-of-a-specific-user-group)
   * [Feature Flag policies](#feature-flag-policies)
     + [Prevent feature flags from being enabled in a production environment that are not configured in a stage environment](#prevent-feature-flags-from-being-enabled-in-a-production-environment-that-are-not-configured-in-a-stage-environment)
-    + [Enforce the flag types that are configured for Feature Flags](#enforce-the-flag-types-that-are-configured-for-feature-flags)
-    + [Deny the creation of Feature Flags that serve true by default](#deny-the-creation-of-feature-flags-that-serve-true-by-default)
-    + [Users want to enforce naming conventions for their Feature flags](#users-want-to-enforce-naming-conventions-for-their-feature-flags)
+    + [Enforce the flag types that are configured for feature flags](#enforce-the-flag-types-that-are-configured-for-feature-flags)
+    + [Deny the creation of feature flags that serve true by default](#deny-the-creation-of-feature-flags-that-serve-true-by-default)
+    + [Users want to enforce naming conventions for their feature flags](#users-want-to-enforce-naming-conventions-for-their-feature-flags)
   * [Template policy samples](#template-policy-samples)
     + [Enforce the use of stable templates in a pipeline](#enforce-the-use-of-stable-templates-in-a-pipeline)
-    + [Enforce an Approval step in a Stage Template](#enforce-an-approval-step-in-a-stage-template)
+    + [Enforce an Approval step in a stage template](#enforce-an-approval-step-in-a-stage-template)
     + [Enforce specific environments to be configured for a stage template](#enforce-specific-environments-to-be-configured-for-a-stage-template)
     + [Enforce use of an approved stage template in a pipeline](#enforce-use-of-an-approved-stage-template-in-a-pipeline)
     + [Enforce step templates to be used in a pipeline](#enforce-step-templates-to-be-used-in-a-pipeline)
@@ -52,7 +52,7 @@ This topic provides sample policies you can use in policy steps and on pipeline-
     + [Enforce steps in a pipeline](#enforce-steps-in-a-pipeline)
     + [Enforce step order in a pipeline](#enforce-step-order-in-a-pipeline)
   * [Secret policy samples](#secret-policy-samples)
-    + [Ensure there are no principals in the secret secrets.](#ensure-there-are-no-principals-in-the-secret-secrets)
+    + [Ensure there are no principals in the secret secrets](#ensure-there-are-no-principals-in-the-secret-secrets)
     + [Enforce secret naming conventions](#enforce-secret-naming-conventions)
     + [Enforce what secrets manager can be used to save secrets.](#enforce-what-secrets-manager-can-be-used-to-save-secrets)
 
@@ -409,7 +409,7 @@ deny[msg] {
 ### Template policy samples
 
 + [Enforce the use of stable templates in a pipeline](#enforce-the-use-of-stable-templates-in-a-pipeline)
-+ [Enforce an Approval step in a Stage Template](#enforce-an-approval-step-in-a-stage-template)
++ [Enforce an Approval step in a stage template](#enforce-an-approval-step-in-a-stage-template)
 + [Enforce specific environments to be configured for a stage template](#enforce-specific-environments-to-be-configured-for-a-stage-template)
 + [Enforce use of an approved stage template in a pipeline](#enforce-use-of-an-approved-stage-template-in-a-pipeline)
 + [Enforce step templates to be used in a pipeline](#enforce-step-templates-to-be-used-in-a-pipeline)
@@ -465,9 +465,9 @@ deny[msg] {
 }
 ```
 
-#### Enforce an Approval step in a Stage Template 
+#### Enforce an Approval step in a stage template 
 
-Ensure that an Approval Step is configured in a Stage Template when a user is creating a template. Here is a sample policy that can be applied using the **On Save** of a template.
+Ensure that an Approval Step is configured in a stage template when a user is creating a template. Here is a sample policy that can be applied using the **On Save** event of a template.
 
 ```json
 package template
@@ -731,7 +731,7 @@ getIndex(str, stage) = result {
 + [Enforce secret naming conventions](#enforce-secret-naming-conventions)
 + [Enforce what secrets manager can be used to save secrets.](#enforce-what-secrets-manager-can-be-used-to-save-secrets)
 
-#### Ensure there are no principals in the secret secrets.
+#### Ensure there are no principals in the secret secrets
 
 Enforce policies to ensure that the secrets configured in Harness are configured by the correct [principal](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/#principal). 
 
