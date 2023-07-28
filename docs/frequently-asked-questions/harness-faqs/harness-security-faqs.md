@@ -55,7 +55,7 @@ The set of security features that Harness provides includes the following featur
 
 * [User management](/docs/platform/User-Management/add-users)
 * [User group management](/docs/platform/User-Management/add-user-groups)
-* [Role management](../../platform/4_Role-Based-Access-Control/9-add-manage-roles.md)
+* [Role management](../../platform/role-based-access-control/add-manage-roles)
 * [Resource group management](../../platform/4_Role-Based-Access-Control/8-add-resource-groups.md)
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 * [Password policies](../../platform/3_Authentication/1-authentication-overview.md#enforce-password-policies)

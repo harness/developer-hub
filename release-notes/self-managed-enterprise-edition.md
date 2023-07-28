@@ -702,7 +702,7 @@ This release includes the following Harness module and component versions.
 
 - The **Manage Services** tab has been removed from the services dashboard page. (CDS-57974)
   
-  Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](https://developer.harness.io/docs/platform/role-based-access-control/add-manage-roles/) apply to a single Services page only.
+  Harness has consolidated the **Dashboard** and **Manage Services** tabs into one **Services** page. Now, service [CRUD operations](/docs/platform/role-based-access-control/add-manage-roles) apply to a single Services page only.
 
 - Git polling tasks for triggers are executed on the same delegate selector used in the Git connector. (CDS-58115)
   

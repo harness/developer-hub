@@ -1,7 +1,7 @@
 ---
 title: Add and manage roles
 description: This document shows steps to create new Roles and assign permissions to them.
-# sidebar_position: 2
+sidebar_position: 20
 helpdocs_topic_id: tsons9mu0v
 helpdocs_category_id: w4rzhnf27d
 helpdocs_is_private: false
@@ -20,7 +20,7 @@ This topic will explain the steps to create and manage Roles within Harness.
 
 The **Account Admin** Role has permissions for all the resources within the Account scope as well as its child scope (Organizations and Projects within this Account).
 
-![](./static/add-manage-roles-17.png)
+![](../4_Role-Based-Access-Control/static/add-manage-roles-17.png)
 ### Step: Add a New Role
 
 This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
@@ -33,7 +33,7 @@ Click **Roles**.
 
 Click **New Role**. The **New Role** settings appear.
 
-![](./static/add-manage-roles-18.png)
+![](../4_Role-Based-Access-Control/static/add-manage-roles-18.png)
 Enter a **Name** for your **Role**.
 
 Enter optional **Description** and **Tags** for your **Role**.
@@ -52,7 +52,7 @@ Click the **Roles** tab under **Access Control**.
 
 Click on the role you want to edit. The **Update Role Permissions** page appears.
 
-![](./static/add-manage-roles-19.png)
+![](../4_Role-Based-Access-Control/static/add-manage-roles-19.png)
 Add/Remove Resource-specific permissions from this page. Click **Apply Changes**.
 
 ### Harness Built-in Roles
@@ -79,6 +79,6 @@ Harness provides the following default roles at the Account, Org, and Project sc
 
 * [Add and Manage Users](../3_User-Management/3-add-users.md)
 * [Add and Manage User Groups](../3_User-Management/4-add-user-groups.md)
-* [Add and Manage Resource Groups](./8-add-resource-groups.md)
-* [Permissions Reference](./ref-access-management/permissions-reference.md)
+* [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md)
+* [Permissions Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md)
 

@@ -66,7 +66,7 @@ Your Organization now appears in the list of Organizations.
 
 11.  Click **Add**.
 12.  In **Roles**, select a Harness built-in Role or a custom Role that you have created for the desired permissions.  
-For more information on built-in roles and custom roles, see [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md).
+For more information on built-in roles and custom roles, see [Add and Manage Roles](../role-based-access-control/add-manage-roles).
 13. In **Resource Groups**, select a Harness built-in Resource Group or a custom Resource Group that you have created for the desired resources.  
 For more information on built-in roles and custom roles, see [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md).
 14. Click **Apply**.

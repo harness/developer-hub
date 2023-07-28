@@ -272,7 +272,7 @@ Let us look at the following example:
 
 Permissions can be assigned manually or via the Harness API:
 
-* [Add and Manage Roles](../4_Role-Based-Access-Control/9-add-manage-roles.md)
+* [Add and Manage Roles](../role-based-access-control/add-manage-roles)
 * [Add and Manage Resource Groups](../4_Role-Based-Access-Control/8-add-resource-groups.md)
 * [Permissions Reference](../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md)
 

@@ -9,7 +9,7 @@ You can use JWT to access Harness SCIM APIs. To do this, you must first configur
 ## Prerequisites
 
 - Make sure you have the **View** and **Edit** permissions for the **Default Settings** at the account scope.
-  For more information on assigning permissions, see [Create Resource Groups](/docs/platform/4_Role-Based-Access-Control/8-add-resource-groups.md), [Create roles](/docs/platform/4_Role-Based-Access-Control/9-add-manage-roles.md), and [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
+  For more information on assigning permissions, see [Create Resource Groups](/docs/platform/4_Role-Based-Access-Control/8-add-resource-groups.md), [Create roles](/docs/platform/role-based-access-control/add-manage-roles), and [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 - Make sure you have an active API key and a corresponding token. For more information, see [Create an API Key](../../3_User-Management/7-add-and-manage-api-keys.md#create-personal-access-token).
   
 ## Create a service account in Harness
@@ -28,7 +28,7 @@ To create a new service account, perform the following steps:
 7. Assign the following permissions to the service account:
     - **View**, **Manage**, and **Invite** users.
     - **View** and **Manage** user groups.
-  For more information on assigning permissions, see [Create Resource Groups](/docs/platform/4_Role-Based-Access-Control/8-add-resource-groups.md), [Create roles](/docs/platform/4_Role-Based-Access-Control/9-add-manage-roles.md), and [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
+  For more information on assigning permissions, see [Create Resource Groups](/docs/platform/4_Role-Based-Access-Control/8-add-resource-groups.md), [Create roles](/docs/platform/role-based-access-control/add-manage-roles), and [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 ## Configure settings to enable JWT authentication
 

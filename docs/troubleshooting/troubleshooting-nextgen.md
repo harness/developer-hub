@@ -51,6 +51,7 @@ If you cannot find a resolution, please contact [Harness Support](mailto:suppor
   - [zsh: no matches found](#zsh-no-matches-found)
   - [User does not have "Deployment: execute" permission](#user-does-not-have-deployment-execute-permission)
 - [Continuous delivery](#continuous-delivery)
+  - [Error with release name too long](#error-with-release-name-too-long)
   - [Error in log when there is no error](#error-in-log-when-there-is-no-error)
 - [Continuous integration](#continuous-integration)
 - [Helm](#helm)
@@ -388,7 +389,7 @@ Error messages of the form `User does not have "Deployment: execute" permission`
 
 ![](./static/troubleshooting-nextgen-01.png)
 
-To resolve this, see [Add and manage roles](../platform/4_Role-Based-Access-Control/9-add-manage-roles.md).
+To resolve this, see [Add and manage roles](../platform/role-based-access-control/add-manage-roles).
 
 ### Continuous delivery
 
