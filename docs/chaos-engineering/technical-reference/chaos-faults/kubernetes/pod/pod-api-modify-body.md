@@ -4,13 +4,13 @@ title: Pod API modify body
 ---
 ## Introduction
 
-Pod API modify body is a Kubernetes pod-level chaos fault that modifies the api request and response body by replacing any portions that match a specified regular expression with a provided value. This is achieved by starting the proxy server and redirecting the traffic through the proxy server
+Pod API modify body is a Kubernetes pod-level chaos fault that modifies the api request and response body by replacing any portions that match a specified regular expression with a provided value. This is achieved by starting the proxy server and redirecting the traffic through the proxy server.
 
 ![Pod API Modify Body](./static/images/pod-api-modify-body.png)
 
 ## Use cases
 Pod API modify body:
-- It can be used for API testing, by replacing specific portions of the request or response body to simulate different scenarios and validate how your application handles different data variations
+- It can be used for API testing, by replacing specific portions of the request or response body to simulate different scenarios and validate how your application handles different data variations.
 - Simulate error conditions and test the error handling capabilities of API by replacing specific patterns in the response body with error messages or custom error codes to test error handling and reporting mechanisms are in place.
 - It can be useful for obscuring or redacting personally identifiable information (PII), such as email addresses or phone numbers, before logging or transmitting the data for security and privacy compliance.
 
