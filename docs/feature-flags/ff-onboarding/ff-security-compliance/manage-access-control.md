@@ -13,7 +13,7 @@ helpdocs_is_published: true
 
 Harness provides Role-Based Access Control (RBAC) that enables you to control user and group access to Harness resources according to the user's role. By using RBAC, you can increase security and improve efficiency.
 
-This topic describes the roles available for Feature Flags. For more information about RBAC works with Harness, go to [Access Management (RBAC) Overview](../../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md) and for steps to implement Access Control, go to [Add and Manage Users](/docs/platform/User-Management/add-users).
+This topic describes the roles available for Feature Flags. For more information about RBAC works with Harness, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness) and for steps to implement Access Control, go to [Add and Manage Users](/docs/platform/User-Management/add-users).
 
 ## Feature Flags roles and permissions
 

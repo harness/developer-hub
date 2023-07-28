@@ -20,11 +20,11 @@ This topic shows you how to configure ABAC in Harness.
 
 ### Attribute-Based Access Control Overview
 
-Harness [Role-Based Access Control](../4_Role-Based-Access-Control/1-rbac-in-harness.md) (RBAC) helps you manage who has access to your Harness resources, what they can do with those resources, and in what scope they have access.
+[Harness role-based access control (RBAC)](/docs/platform/role-based-access-control/rbac-in-harness) helps you manage who has access to your Harness resources, what they can do with those resources, and in what scope they have access.
 
 RBAC is role-based. This means permissions to resources are determined by the roles assigned to Users, User Groups, and Service Accounts.
 
-Harness ABAC builds on top of Harness RBAC by adding [role assignment](../4_Role-Based-Access-Control/1-rbac-in-harness.md#role-assignment) conditions based on attributes in the context of specific actions. It lets you provide more fine-grained access management or simplify the management of hundreds of role assignments.​ 
+Harness ABAC builds on top of Harness RBAC by adding [role assignment](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment) conditions based on attributes in the context of specific actions. It lets you provide more fine-grained access management or simplify the management of hundreds of role assignments.​ 
 
 With Harness ABAC, you can have an additional check based on the type of your Harness Resources and then do the Role Assignments. The Resource type filters down the Resource Groups for access control.
 
@@ -100,7 +100,7 @@ Select **Secret Managers** and click **Add**.​
 
 ### Step 4: Assign Role and Resource Group
 
-Let us now complete the [Role Assignment](../4_Role-Based-Access-Control/1-rbac-in-harness.md#role-assignment) for the User Group to complete the ABAC setup.
+Let us now complete the [role assignment](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment) for the User Group to complete the ABAC setup.
 
 1. In your Harness Account, go to **PROJECT SETUP** in your Project.
 2. Click **Access Controls** and click **User Groups**.

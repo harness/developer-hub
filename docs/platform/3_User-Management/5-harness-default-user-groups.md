@@ -37,7 +37,7 @@ The users that you add in the Account scope will **not** be assigned the **Accou
 
 * When you add a user to an existing Account, Organization, or Project, Harness adds the user to the default User Group in the scope where you added the user.  
 For example, if you add a user to your existing Organization `OrgExample`, Harness will add the user to the All Organization Users group within `OrgExample`.
-* Admin can do the required [role assignment](../4_Role-Based-Access-Control/1-rbac-in-harness.md#role-assignment) for the default User Groups.
+* Admin can do the required [role assignment](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment) for the default User Groups.
 * When you add a user to your Harness Account, the user's default role assignment is the same as the role assignment of the default User Group in the Account.  
 For example, the **All Account Users** group in your Account has the role assignment of **Account Viewer**. All the members of this group can view resources within the scope of this Account. Now, you add a new user to this Account.  
 Harness adds this user to the **All Account Users** group and the role assignment of this user is **Account Viewer** which is inherited from the default User Group of this Account.

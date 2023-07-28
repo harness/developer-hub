@@ -34,7 +34,7 @@ The API requests in this topic use curl, but Harness supports multiple languages
 ### Before you begin
 
 * [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md)
-* [Access Management(RBAC) Overview](../../4_Role-Based-Access-Control/1-rbac-in-harness.md)
+* [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 * This quickstart walks you through adding the Harness API keys needed to authenticate with the API. To review Harness API keys, go to [Add and Manage API Keys](../../3_User-Management/7-add-and-manage-api-keys.md).
 * Make sure your Harness account has the required permissions to Create, Edit, Delete, and View the Harness resources you are creating via API. Any of the following default roles are sufficient: Account Administrator, Organization Admin, Project Admin. For more, go to [Permissions Reference](../../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md).
 

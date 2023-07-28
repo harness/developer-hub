@@ -2751,7 +2751,7 @@ We had to redesign our release history to store all rendered manifests in secret
 
 ##### Fixed issues
 
-- [RBAC](https://developer.harness.io/docs/platform/Role-Based-Access-Control/rbac-in-harness) for environment was not enforced. (CDS-49732, RN-38326)
+- [RBAC](/docs/platform/role-based-access-control/rbac-in-harness) for environment was not enforced. (CDS-49732, RN-38326)
 
   In stage templates in pipelines, access checks for the environment were skipped. Harness now performs an RBAC check.
 

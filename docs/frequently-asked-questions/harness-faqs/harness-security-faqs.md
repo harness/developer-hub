@@ -57,7 +57,7 @@ The set of security features that Harness provides includes the following featur
 * [User group management](/docs/platform/User-Management/add-user-groups)
 * [Role management](../../platform/4_Role-Based-Access-Control/9-add-manage-roles.md)
 * [Resource group management](../../platform/4_Role-Based-Access-Control/8-add-resource-groups.md)
-* [Access management (for example, RBAC)](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md)
+* [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 * [Password policies](../../platform/3_Authentication/1-authentication-overview.md#enforce-password-policies)
 * [Two-factor authentication](../../platform/3_Authentication/2-two-factor-authentication.md)
 * [Single sign-on (SSO)](../../platform/3_Authentication/3-single-sign-on-saml.md#saml-sso-with-harness-overview)
@@ -88,11 +88,11 @@ For an overview of Harness' support for platforms, methodologies, and related te
 
 Harness provides role-based access control (RBAC) that enables you to control user and group access to Harness resources according to their role assignment.
 
-Here is an overview of Harness RBAC. It shows user authentication via its User settings and authorization via its [User group](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md#defining-and-assigning-permissions) and [Role assignment](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md#role-assignment).
+Here is an overview of Harness RBAC. It shows user authentication via its User settings and authorization via its [User group](/docs/platform/role-based-access-control/rbac-in-harness/#defining-and-assigning-permissions) and [Role assignment](/docs/platform/role-based-access-control/rbac-in-harness/#role-assignment).
 
 ![](./static/harness-security-faqs-15.png)
 
-See [Access management (RBAC)](../../platform/4_Role-Based-Access-Control/1-rbac-in-harness.md).
+For more information, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 #### How are users added?
 

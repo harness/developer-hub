@@ -32,7 +32,7 @@ You'll learn how to: 
 
 ### Review: Templates
 
-* You can add templates to template libraries at any [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope).
+* You can add templates to template libraries at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness).
 * [Tags](../20_References/tags-reference.md) can be used to group templates. You can search or filter templates using these tags.
 * You can have nested templates. You can refer to a stage template from your pipeline template.
 

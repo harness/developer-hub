@@ -104,5 +104,5 @@ Harness recommends removing RBAC access to the project and only allowing users t
 ### See also
 
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
-* [Harness Role-Based Access Control Overview](../4_Role-Based-Access-Control/1-rbac-in-harness.md)
+* [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 

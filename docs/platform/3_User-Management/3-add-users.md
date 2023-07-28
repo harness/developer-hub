@@ -18,7 +18,7 @@ This topic will explain the steps to create and manage Users within Harness.
 
 ### Step: Add New User
 
-You must first invite Users to your Account/Org/Project to add them to User Groups and assign Role Bindings accordingly. For more information on User Groups and Role Bindings, see [Add and Manage User Groups](./4-add-user-groups.md) and [Role Assignment](../4_Role-Based-Access-Control/1-rbac-in-harness.md#role-assignment).
+You must first invite Users to your Account/Org/Project to add them to User Groups and assign Role Bindings accordingly. For more information on User Groups and Role Bindings, see [Add and Manage User Groups](./4-add-user-groups.md) and [Role Assignment](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment).
 
 Click **Account Settings**, and click **Access Control**.
 

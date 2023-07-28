@@ -18,7 +18,7 @@ You can also install Harness Self-Managed Enterprise Edition in an air-gapped en
 
 ## Role requirements
 
-The account you use to install Harness Self-Managed Enterprise Edition must have the Account Admin role to create service accounts. For more information on role-based permissions, go to [Role-based access control overview](/docs/platform/role-based-access-control/rbac-in-harness/).
+The account you use to install Harness Self-Managed Enterprise Edition must have the Account Admin role to create service accounts. For more information on role-based permissions, go to [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
 ## Download the Harness Helm chart
 

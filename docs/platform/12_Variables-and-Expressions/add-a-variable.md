@@ -44,7 +44,7 @@ In the following illustration, the variables in **Common To Pipelines** are acco
 
 ## Add account, org, and project variables
 
-You can add a variable to the account, organization, or project [scope](../4_Role-Based-Access-Control/1-rbac-in-harness.md#rbac-scope).
+You can add a variable to the account, organization, or project [scope](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness).
 
 ### Account
 

@@ -38,4 +38,4 @@
 | Selectors  | [Select delegates with delegate selectors and tags](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/) |
 | Tagging and Labeling  | [Select delegates with delegate selectors and tags](https://developer.harness.io/docs/platform/delegates/manage-delegates/select-delegates-with-selectors/) |
 |**7. Security**  | |
-| Role Based Access Control | [Role-Based Access Control Overview](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness/) |
+| Role Based Access Control | [RBAC in Harness](https://developer.harness.io/docs/platform/role-based-access-control/rbac-in-harness) |

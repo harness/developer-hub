@@ -8,7 +8,7 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Harness User Groups help you manage user access. Each member of a User Group inherits the [role bindings](../4_Role-Based-Access-Control/1-rbac-in-harness.md#role-assignment) assigned to that group.
+Harness User Groups help you manage user access. Each member of a User Group inherits the [role bindings](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment) assigned to that group.
 
 This topic explains the steps to create and manage User Groups within Harness.
 

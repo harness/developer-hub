@@ -89,6 +89,6 @@
 |Debug A Pipeline Step By Running The Step Locally (Troubleshooting)|[Troubleshoot CI](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/troubleshooting-ci)|
 |Describe Harness Cloud Characteristics And Its Advantages|[Hosted Builds on VM Quickstart](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart)|
 |Configure Git Experience for CI (pipeline)|[Harness Git Experience Quickstart](https://developer.harness.io/docs/platform/git-experience/configure-git-experience-for-harness-entities/)|
-|Credentials And Permissions - Configure Or Elaborate On User And Groups For Acc, Org, And Project Levels|[Role-based Access Control](https://developer.harness.io/docs/platform/Role-Based-Access-Control/rbac-in-harness)|
+|Credentials And Permissions - Configure Or Elaborate On User And Groups For Acc, Org, And Project Levels|[RBAC in Harness](https://developer.harness.io/docs/platform/Role-Based-Access-Control/rbac-in-harness)|
 |Do a Basic Delegate Installation|[Install Delegate on Kubernetes or Docker](https://developer.harness.io/tutorials/platform/install-delegate/)|
 |Set Container Resources - Limit Memory and Limit CPU|[Run Step Settings](https://developer.harness.io/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings/#set-container-resources)|

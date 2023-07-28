@@ -33,7 +33,14 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },
     //===================================================================================
-    
+
+    // Created by aimurphy for branch doc-3441-rbac on July 28, 2023
+
+    {
+      from: "/docs/platform/Role-Based-Access-Control/set-up-rbac-pipelines",
+      to: "/docs/platform/Role-Based-Access-Control/rbac-in-harness",
+    },
+
     // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
     {
       from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
