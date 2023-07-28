@@ -28,4 +28,4 @@ Harness IDP ships the following actions to be used in the software template step
 - `harness:create-secret`
 - `harness:delete-secret`
 
-Learn more about how to use them in the [service onboarding tutorial](/tutorials//internal-developer-portal/using-secret-as-an-input.md).
+Learn more about how to use them in the [service onboarding tutorial](/tutorials/internal-developer-portal/using-secret-as-an-input).
