@@ -53,10 +53,10 @@ import {
             link: "/docs/category/collections",
           },
           {
-            title: "Connectors and integrations",
+            title: "Integrations",
             module: MODULES.sei,
             description:
-              "SEI uses connectors to ingest data from your SDLC tools.",
+              "SEI uses integrations to ingest data from your SDLC tools.",
             link: "/docs/software-engineering-insights/sei-integrations/sei-integrations-overview",
           },
           {
