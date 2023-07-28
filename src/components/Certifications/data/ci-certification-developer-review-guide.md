@@ -43,7 +43,7 @@
 |Describe Remote Docker Layer Caching|[Optimizing CI Build Times](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/)|
 |Configure Remote Docker Layer Caching|[Optimizing CI Build Times](https://developer.harness.io/docs/continuous-integration/use-ci/optimize-and-more/optimizing-ci-build-times/)|
 |Describe Harness Test Intelligence|[Enable Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-test-intelligence/)|
-|Configure Harness Test Intelligence|[Test Intelligence](https://developer.harness.io/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts)|
+|Configure Harness Test Intelligence|[Test Intelligence](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-test-intelligence)|
 |Describe Triggers for CI |[Trigger Pipelines using Git Events](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/)|
 |Configure Triggers for CI |[Configure Triggers for CI](https://developer.harness.io/docs/platform/triggers/triggering-pipelines/)|
 |Configure Custom Webhook Triggers |[Trigger deployments using custom triggers](https://developer.harness.io/docs/platform/Triggers/trigger-deployments-using-custom-triggers)|

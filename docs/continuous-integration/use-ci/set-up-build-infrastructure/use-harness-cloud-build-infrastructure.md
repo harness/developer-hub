@@ -17,7 +17,7 @@ Harness Cloud provides the following advantages:
 
 During a pipeline build that uses Harness Cloud build infrastructure, Harness runs each CI stage in a new, ephemeral VM.
 
-![Example pipeline on Harness Cloud](/docs/continuous-integration/ci-quickstarts/static/hosted-builds-on-virtual-machines-quickstart-11.png)
+![Example pipeline on Harness Cloud](./static/hosted-builds-on-virtual-machines-quickstart-11.png)
 
 The steps in each stage execute on the stage's dedicated VM. This allows the stage's steps to share information through the underlying filesystem. You can run CI steps directly on the VM or in a Docker container. When the stage is complete, the VM automatically shuts down.
 

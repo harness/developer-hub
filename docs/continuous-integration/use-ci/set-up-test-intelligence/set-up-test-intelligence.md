@@ -8,29 +8,82 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. To learn more about how Test Intelligence works, go to [Get started with Test Intelligence](../../ci-quickstarts/test-intelligence-concepts.md).
+:::info
 
-You must add the **Run Tests** step to a pipeline's **Build** stage to enable Test Intelligence on that pipeline. The **Run Tests** step executes one or more tests on a container image. The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to generate an initial call graph, which sets the baseline for intelligent test selection in future builds.
+Test Intelligence applies to unit testing only. For other types of tests, [use Run steps](../run-ci-scripts/run-step-settings.md) to run tests.
 
-You can also [enable test splitting for Test Intelligence](#enable-parallelism-test-splitting-for-test-intelligence) to further optimize your tests.
+:::
 
-## Requirements
+Testing is an important part of Continuous Integration (CI). Testing safeguards the quality of your product before shipping. However, test cycles often involve many tests and it can take a significant amount of time for the tests to run. Additionally, the tests that run might be irrelevant to the code changes that triggered the build, and running all unit tests every time the code changes is expensive and time-consuming.
 
-To enable Test Intelligence, you need a CI pipeline with a **Build** stage that is connected to a supported codebase. If you haven't created a pipeline before, go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
+Harness Test Intelligence improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. You can also use [parallelism (test splitting) with Test Intelligence](#enable-parallelism-test-splitting-for-test-intelligence) to further optimize your test times.
 
-:::info Supported codebases
+Using TI doesn't require you to change your build and test processes. To enable Test Intelligence, [add a Run Tests step](#add-the-run-tests-step) and [generate a call graph](#generate-the-initial-call-graph). The **Run Tests** step executes one or more tests on a container image. The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to generate an initial call graph, which sets the baseline for test selection in future builds.
 
-Test Intelligence is available for the following codebases:
+<details>
+<summary>Video summary</summary>
+
+The following video walks you through setting up Test Intelligence in a Harness CI pipeline. The TI section starts after the 11 minute mark in the video.
+
+<!-- Video:
+https://harness-1.wistia.com/medias/rpv5vwzpxz-->
+<docvideo src="https://www.youtube.com/embed/eAtIO4bJ3No" />
+
+<!-- div class="hd--embed" data-provider="YouTube" data-thumbnail="https://i.ytimg.com/vi/kZmOCLCpvmk/hqdefault.jpg"><iframe width=" 480" height="270" src="https://www.youtube.com/embed/eAtIO4bJ3No" frameborder="0" allowfullscreen="allowfullscreen"></iframe></div -->
+
+</details>
+
+## How does Test Intelligence work?
+
+Test Intelligence uses *test selection* to run only those tests that are relevant to code changes. This includes changes to your software's code as well as changes to your tests (new or modified tests). Instead of always running all unit tests, TI selects only the relevant subset of unit tests and skips the rest.
+
+When you perform a pull request, TI uses the following metrics to select tests:
+
+* **Changed code:** TI queries Git to learn exactly which code changed in a specific build. TI uses this data to select tests that are associated directly or indirectly with the source code changes. TI selects these tests as part of the subset of the tests run in the pipeline. TI skips tests that aren't needed because there were no relevant code change.
+* **Changed tests:** When a test is changed, TI selects and runs that test, even if the code the test covers hasn't changed.
+* **New tests:** When you add a new test, TI selects and runs that test. This ensures that the test is running successfully and also finds correlations between the new test and new/existing code.
+
+TI is always up to date and syncs when you merge code to any branch.
+
+After a build runs, Test Intelligence gives you full visibility into which tests were selected and why. This can help you identify negative trends and gain insights to improve test quality and coverage. You can find the Test results and the Test Intelligence call graph visualization on the **Build details** page. The call graph visualization shows the changed classes and methods that caused each test to be selected.
+
+<!-- Test Intelligence architecture
+
+Test Intelligence is comprised of a TI service, a Test Runner Agent, and the **Run Tests** step.
+
+* **TI service:** The TI service manages the data about repositories, git-commit graphs, test results, and call graphs. When a build runs, TI service uses a list of added/modified files with the call graph to identify which tests to run.
+  * The TI service can receive real-time Git webhook notifications for any commit or merge. The TI service pulls the Git commit-graph and other metadata from Git for test selection.
+  * When the TI Test Runner Agent sends a call graph generated from a PR, the TI service keeps that data in a staging area in case the PR doesn't get merged into the target branch (such as `main`). Once the TI receives the merge notification from Git, it updates and inserts the partial call graph with the target branch's call graph.
+* **Test Runner Agent:** The Test Runner Agent runs on the build infrastructure. It's responsible for communicating with the TI service. Whenever a **Run Tests** step initializes, the Test Runner Agent provides the TI service with the build number, commit-id, and other details, and the TI service returns the list of selected tests. The Test Runner Agent runs the selected tests. After all the tests run, the Agent parses the test results and uploads the results along with the newly-generated call graph.
+* **Run Tests step:** While you can also run tests in a [Run step](../run-ci-scripts/run-step-settings.md), to enable Test Intelligence, you must use the **Run Tests** step.
+   * The **Run Tests** step is similar to the **Run** step, and it accepts additional test-specific information, such as the programming language of the source code being tested, build tools, and other parameters.
+   * TI identifies the programming language and uses the **Run Tests** step to run the selected tests in that step's container. The **Run Tests** step, through the Test Runner Agent, parses the test results and returns the results to the TI service.
+-->
+
+## Supported codebases
+
+Test Intelligence supports the following codebases:
 
 * Java
 * Kotlin
 * Scala
-* C# .NET Core, <!--Framework, -->NUnit
-  * Test Intelligence for .NET is behind the Feature Flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.<!-- * Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [build environment](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings#build-environment) in your pipeline's YAML. -->
+* C# (.NET Core, NUnit<!-- and Framework -->)
+
+:::note
+
+Currently, Test Intelligence for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+<!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [build environment](/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings#build-environment) in your pipeline's YAML. -->
 
 :::
 
+For unsupported codebases, [use Run steps](../run-ci-scripts/run-step-settings.md) to run tests.
+
 ## Add the Run Tests step
+
+You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage](../set-up-build-infrastructure/ci-stage-settings.md) where you'll add the **Run Tests** step. Your pipeline must be associated with a [supported codebase](#supported-codebases).
+
+If you haven't created a pipeline before, try one of the [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md) or go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -160,65 +213,6 @@ The first time you enable Test Intelligence on a repo, you must run all tests to
 3. Wait while the pipeline executes. To monitor the build's progress, go to **Builds** and select the build that the PR started.
 4. If the tests pass and the build succeeds, merge the PR.
 
-## View test reports
-
-To view the test report, go to the [Tests tab](./viewing-tests.md) on the [Build details page](../viewing-builds.md). The test report content is based on the tests you configured for the **Run Tests** step.
-
-In order for the **Tests** tab to show tests, your test reports must be in JUnit XML format, because Harness parses test reports that are in JUnit XML format only. For more information about formatting unit test reports, go to [Format test reports](./test-report-ref.md).
-
-![](./static/set-up-test-intelligence-03.png)
-
-Expand the sections below to learn more about the test report contents.
-
-<details>
-<summary>Test Execution Overview</summary>
-
-Provides an overview of **Total Tests**, number of **Selected Tests**, total **Duration** of all tests, and **Time Saved**.
-
-**Duration** reflects the sum of CPU time taken for all tests to complete. The values are collected as-is from the JUnit report, and they don't correspond with wall-clock time. In contrast, the pipeline execution time is a measure of wall-clock time. Therefore, it is possible that the **Duration** may exceed the total pipeline execution time.
-
-</details>
-
-<details>
-<summary>Test Execution Result</summary>
-
-Graphical representation of successful and failed tests.
-
-</details>
-
-<details>
-<summary>Test Selection Breakdown</summary>
-
-Test Intelligence analyzes changes to source files and test files in the codebase and then runs only the tests that are relevant to the detected changes. This section reports how many tests ran based on the different the types of code changes included in this build:
-
-* **Correlated with Code Changes**: The number of tests that ran due to changes in the codebase.
-* **New Tests**: The number of tests that ran because they are new.
-* **Updated Tests**: The number of tests that ran because there was a change to the actual test code or content.
-
-</details>
-
-<details>
-<summary>Test Execution</summary>
-
-Detailed list of all tests, including class methods and test methods.
-
-Initially, the list shows only failed tests. To see all tests, toggle **Show all Tests**.
-
-You can sort the list by failure rate, duration, and total tests. You can also expand test suites to see details about individual tests in that suite.
-
-</details>
-
-<details>
-<summary>Call Graph</summary>
-
-The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to run all tests and [generate the initial call graph](#generate-the-initial-call-graph). This creates a baseline for test selection in future builds; therefore, the initial call graph is not particularly useful. In subsequent builds, the call graph shows information about tests selected by Test Intelligence for that run.
-
-Select **Expand graph** to view the Test Intelligence Visualization, which shows why a specific test was selected and the reason behind every test selection. Purple nodes represent tests. Select any test (purple node) to see all the classes and methods covered by that test. Blue nodes represent changes to classes and methods that caused Test Intelligence to select that test.
-
-![](./static/set-up-set-up-test-intelligence-531.png)
-
-</details>
-
 ## Enable parallelism (test splitting) for Test Intelligence
 
 Similar to how you can use `parallelism` and `split_tests` to [define test splitting in a Run step](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/#define-test-splitting), you can enable parallelism and test splitting in your Run Tests steps to further reduce the time required for your tests to run.
@@ -226,7 +220,7 @@ Similar to how you can use `parallelism` and `split_tests` to [define test split
 With parallelism alone, you specify how you want Harness to divide the work for a step or stage. When you use parallelism and test splitting with Test Intelligence, Harness divides the work after test selection. This means that your Run Tests execution time is reduced by both test selection and parallelism.
 
 <details>
-<summary>Test Intelligence with test splitting demonstration</summary>
+<summary>Example: Time saved by combining Test Intelligence with test splitting</summary>
 
 Suppose you have a pipeline that runs 100 tests, and each test takes about one second to run. Here's how TI and parallelism can reduce your test times:
 
@@ -338,12 +332,52 @@ config:
     - "img/**/*"
 ```
 
+## View test reports
+
+To view the test report, go to the [Tests tab](./viewing-tests.md) on the [Build details page](../viewing-builds.md). The test report content is based on the tests you configured for the **Run Tests** step.
+
+![](./static/set-up-test-intelligence-03.png)
+
+In order for the **Tests** tab to show tests, your test reports must be in JUnit XML format, because Harness parses test reports that are in JUnit XML format only. For more information about formatting unit test reports, go to [Format test reports](./test-report-ref.md).
+
+### Test Execution Overview
+
+This section provides an overview of **Total Tests**, number of **Selected Tests**, total **Duration** of all tests, and **Time Saved**.
+
+**Duration** reflects the sum of CPU time taken for all tests to complete. The values are collected as-is from the JUnit report, and they don't correspond with wall-clock time. In contrast, the pipeline execution time is a measure of wall-clock time. Therefore, it is possible that the **Duration** may exceed the total pipeline execution time.
+
+### Test Execution Result
+
+This section provides a graphical representation of successful and failed tests.
+
+### Test Selection Breakdown
+
+Test Intelligence analyzes changes to source files and test files in the codebase and then runs only the tests that are relevant to the detected changes. This section reports how many tests ran based on the different the types of code changes included in this build:
+
+* **Correlated with Code Changes**: The number of tests that ran due to changes in the codebase.
+* **New Tests**: The number of tests that ran because they are new.
+* **Updated Tests**: The number of tests that ran because there was a change to the actual test code or content.
+
+### Test Execution
+
+This section provides a detailed list of all tests, including class methods and test methods.
+
+Initially, the list shows only failed tests. To see all tests, toggle **Show all Tests**.
+
+You can sort the list by failure rate, duration, and total tests. You can also expand test suites to see details about individual tests in that suite.
+
+### Call Graph
+
+The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to run all tests and [generate the initial call graph](#generate-the-initial-call-graph). This creates a baseline for test selection in future builds; therefore, the initial call graph is not particularly useful. In subsequent builds, the call graph shows information about tests selected by Test Intelligence for that run.
+
+Select **Expand graph** to view the Test Intelligence Visualization, which shows why a specific test was selected and the reason behind every test selection. Purple nodes represent tests. Select any test (purple node) to see all the classes and methods covered by that test. Blue nodes represent changes to classes and methods that caused Test Intelligence to select that test.
+
+![](./static/set-up-set-up-test-intelligence-531.png)
+
 ## Troubleshooting
 
-You may encounter the following issues when using Test Intelligence with Maven.
-
-<details>
-<summary>pom.xml includes argLine</summary>
+You might encounter these issues when using Test Intelligence.
+### pom.xml with argLine
 
 If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
 
@@ -361,10 +395,7 @@ If your `pom.xml` contains `argLine`, you must update the Java Agent as follows:
 </argLine>
 ```
 
-</details>
-
-<details>
-<summary>Jacoco/Surefire/Failsafe</summary>
+### Jacoco/Surefire/Failsafe
 
 If you're using Jacoco, Surefire, or Failsafe, make sure the `forkCount` is not set to `0`.
 
@@ -381,5 +412,3 @@ For example, the following configuration in `pom.xml` removes the `forkCount` se
     </configuration>
 </plugin>
 ```
-
-</details>

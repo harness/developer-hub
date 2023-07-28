@@ -1,7 +1,7 @@
 ---
 title: Override secrets in settings.xml at runtime
 description: Override Maven settings before a build runs.
-sidebar_position: 60
+sidebar_position: 70
 helpdocs_topic_id: 2hpamxaqf0
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false

@@ -17,7 +17,7 @@ slug: /ci-pipelines/test/codecov
   target="_self"
 />
 
-This tutorial shows how you can use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings.md) to include [CodeCov code coverage](https://docs.codecov.com/docs/about-code-coverage#top-5-codecov-features) in a Harness CI pipeline.
+This tutorial shows how you can use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to include [CodeCov code coverage](https://docs.codecov.com/docs/about-code-coverage#top-5-codecov-features) in a Harness CI pipeline.
 
 ## Prerequisites
 

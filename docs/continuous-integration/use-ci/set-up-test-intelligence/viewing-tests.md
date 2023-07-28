@@ -1,7 +1,7 @@
 ---
 title: View tests
 description: View the results from CI tests.
-sidebar_position: 70
+sidebar_position: 60
 helpdocs_topic_id: sof7n3qjap
 helpdocs_category_id: flam7377aq
 helpdocs_is_private: false
@@ -59,10 +59,6 @@ The parsed test report in the **Tests** tab comes strictly from the provided tes
 
 For reports that can't be published to the **Tests** tab, you can use the [Artifact Metadata Publisher Drone plugin](https://github.com/drone-plugins/artifact-metadata-publisher) to publish reports to the **Artifacts** tab on the [Build details page](../viewing-builds.md). You can [publish any URL to the Artifacts tab](/tutorials/ci-pipelines/publish/artifacts-tab).
 
-```mdx-code-block
-import Tabs from '@theme/Tabs';
-import TabItem from '@theme/TabItem';
-```
 ```mdx-code-block
 <Tabs>
   <TabItem value="Visual" label="Visual">

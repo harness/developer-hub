@@ -55,6 +55,10 @@ module.exports = {
       from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
       to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build",
     },
+    {
+      from: "/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/set-up-test-intelligence",
+    },
 
     // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
     {

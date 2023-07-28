@@ -81,7 +81,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.ci,
           description:
             "Improve test times by running only those unit tests that are required to confirm the quality of the code changes that triggered the pipeline.",
-          link: "/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts",
+          link: "/docs/continuous-integration/use-ci/set-up-test-intelligence",
         },
         {
           title: "Cache Intelligence",

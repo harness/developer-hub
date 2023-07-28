@@ -17,7 +17,7 @@ import TabItem from '@theme/TabItem';
   <TabItem value="run" label="Run step" default>
 ```
 
-You can run any type of test for any language in a [Run step](../run-ci-scripts/run-a-script-in-a-ci-stage.md).
+You can run any type of test for any codebase in a [Run step](../run-ci-scripts/run-step-settings.md).
 
 For example, this step runs `pytest` and produces a test report in JUnit XML format.
 
@@ -44,9 +44,9 @@ For more information about configuring **Run** steps, go to [Use Run steps](../r
   <TabItem value="runtests" label="Run Tests step">
 ```
 
-The [Run Tests step](./configure-run-tests-step-settings.md) is required to [enable Test Intelligence](./set-up-test-intelligence.md); however, it doesn't support all languages.
+The **Run Tests** step is required to [enable Test Intelligence](./set-up-test-intelligence.md). You can use **Run Tests** steps with or without Test Intelligence; however, this step requires that you use a [supported codebase](./set-up-test-intelligence.md#supported-codebases).
 
-This example runs Maven tests with [Test Intelligence](./set-up-test-intelligence.md) and produces a test report in JUnit XML format.
+This example runs Maven tests with Test Intelligence and produces a test report in JUnit XML format.
 
 ```yaml
               - step:
@@ -60,7 +60,7 @@ This example runs Maven tests with [Test Intelligence](./set-up-test-intelligenc
                     buildTool: Maven
                     language: Java
                     packages: org.apache.dubbo,com.alibaba.dubbo
-                    runOnlySelectedTests: true
+                    runOnlySelectedTests: true ## Set to false if you don't want to use Test Intelligence.
                     reports:
                       type: JUnit
                       spec:
@@ -68,12 +68,7 @@ This example runs Maven tests with [Test Intelligence](./set-up-test-intelligenc
                           - "target/surefire-reports/*.xml"
 ```
 
-You can use **Run Tests** steps with or without Test Intelligence.
-
-For more information about configuring **Run Tests** steps and Test Intelligence, go to:
-
-* [Run Tests step settings](./configure-run-tests-step-settings.md).
-* [Enable Test Intelligence](./set-up-test-intelligence.md).
+For more information about configuring **Run Tests** steps and Test Intelligence, go to [Enable Test Intelligence](./set-up-test-intelligence.md).
 
 ```mdx-code-block
   </TabItem>
@@ -90,7 +85,7 @@ You can [include code coverage](./code-coverage.md) commands in your **Run** and
 
 These Harness CI features can improve test times:
 
-* **Test Intelligence:** [Test Intelligence](../../ci-quickstarts/test-intelligence-concepts.md) speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You must use the **Run Tests** step to [enable Test Intelligence](./set-up-test-intelligence.md).
+* **Test Intelligence:** Test Intelligence speeds up your test cycles by running only the unit tests required to confirm the quality of the code changes that triggered a build. You must use the **Run Tests** step to [enable Test Intelligence](./set-up-test-intelligence.md).
 * **Parallelism:** You can use parallelism with either the **Run** or **Run Tests** steps to speed up test times. For more information, go to [Speed Up CI Test Pipelines Using Parallelism](/docs/platform/pipelines/speed-up-ci-test-pipelines-using-parallelism/).
 * **Step groups:** You can use [step groups](../optimize-and-more/group-ci-steps-using-step-groups.md) to organize and condense pipelines that run a lot of tests.
 

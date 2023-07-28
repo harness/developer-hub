@@ -151,7 +151,7 @@ In order for the **Run** step to execute your commands, the build environment mu
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="YAML" label="YAML">
+  <TabItem value="YAML" label="YAML" default>
 ```
 
 In Harness, go to the pipeline where you want to add the `Run` step. In the `CI` stage, add a `Run` step and configure the [Run step settings](#settings).
@@ -178,7 +178,11 @@ In Harness, go to the pipeline where you want to add the `Run` step. In the `CI`
 
 The **Run** step has the following settings.
 
+:::info
+
 Depending on the stage's build infrastructure, some settings may be unavailable or optional. Settings specific to containers, such as **Set Container Resources**, are not applicable when using the step in a stage with VM or Harness Cloud build infrastructure.
+
+:::
 
 ### Name
 
@@ -424,7 +428,7 @@ Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/pla
 
 For more information, go to the [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md).
 
-## Output Variables
+### Output Variables
 
 <OutVar />
 
