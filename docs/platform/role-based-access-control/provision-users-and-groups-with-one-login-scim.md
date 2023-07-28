@@ -1,7 +1,7 @@
 ---
 title: Provision users and groups with OneLogin (SCIM)
 description: Explains how to provision and manage Harness Users and User Groups using Okta's SCIM integration.
-# sidebar_position: 2
+sidebar_position: 110
 helpdocs_topic_id: y402mpkrxq
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false
@@ -272,7 +272,7 @@ Let us look at the following example:
 
 Permissions can be assigned manually or via the Harness API:
 
-* [Add and Manage Roles](../role-based-access-control/add-manage-roles)
-* [Add and Manage Resource Groups](../role-based-access-control/add-resource-groups)
-* [Permissions Reference](../role-based-access-control/permissions-reference)
+* [Add and Manage Roles](./add-manage-roles)
+* [Add and Manage Resource Groups](./add-resource-groups)
+* [Permissions Reference](./permissions-reference)
 

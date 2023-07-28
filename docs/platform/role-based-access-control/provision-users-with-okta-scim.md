@@ -1,7 +1,7 @@
 ---
 title: Provision users and groups with Okta (SCIM)
 description: Explains how to provision and manage Harness Users and User Groups using Okta's SCIM integration.
-# sidebar_position: 2
+sidebar_position: 120
 helpdocs_topic_id: umv2xdnofv
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false
@@ -272,13 +272,13 @@ Let us look at the following example:
 5. The FirstGen App Integration is used for user authentication.  
 `user1@example.com` is a member of the FirstGen App Integration and hence is authenticated and successfully logged in to Harness NextGen.  
 `user_2@example.com` is not a member of the FirstGen App Integration, hence the authentication fails and the user cannot log in to Harness NextGen.
-   ![](./static/provision-users-with-okta-scim-20.png)
+   ![](./.static/provision-users-with-okta-scim-20.png)
 
 ### Assigning permissions post-provisioning
 
 Permissions can be assigned manually or via the Harness API:
 
-* [Add and Manage Roles](../role-based-access-control/add-manage-roles)
-* [Add and Manage Resource Groups](../role-based-access-control/add-resource-groups)
-* [Permissions Reference](../role-based-access-control/permissions-reference)
+* [Add and Manage Roles](./add-manage-roles)
+* [Add and Manage Resource Groups](./add-resource-groups)
+* [Permissions Reference](./permissions-reference)
 

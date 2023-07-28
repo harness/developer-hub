@@ -1,7 +1,7 @@
 ---
 title: Provision users and groups using Azure AD (SCIM)
 description: Explains how to use Harness' SCIM integration with Azure Active Directory (AD) to automatically provision users and/or groups.
-# sidebar_position: 2
+sidebar_position: 100
 helpdocs_topic_id: 6r8hin2z20
 helpdocs_category_id: fe0577j8ie
 helpdocs_is_private: false
@@ -63,7 +63,7 @@ Before you configure Harness for automatic user provisioning with Azure AD, you 
 1. In the [Azure portal](https://portal.azure.com/), in the left pane, select **Azure Active Directory**.
    ![](./static/provision-users-and-groups-using-azure-ad-scim-29.png)
 2. Select **Enterprise applications** > **All applications**.
-3. Click **New application** to add a new application.![](../3_Authentication/static/provision-users-and-groups-using-azure-ad-scim-30.png)
+3. Click **New application** to add a new application.![](./static/provision-users-and-groups-using-azure-ad-scim-30.png)
 4. In the search box, enter **Harness**, select **Harness** in the results list, and then select the **Add** button to add the application. You can now provision users to Harness.
 
 ### Step 2: Provision users to Harness
@@ -119,5 +119,5 @@ Harness authenticates users using either the FirstGen App Integration or the Nex
 4. `user1@example.com` and `user_2@example.com` try to log in to Harness NextGen through SSO.
 5. The FirstGen App Integration is used for user authentication.  
 `user1@example.com` is a member of the FirstGen App Integration and hence is authenticated and successfully logged in to Harness NextGen.  
-`user_2@example.com` is not a member of the FirstGen App Integration, hence the authentication fails and the user cannot log in to Harness NextGen.![](../3_Authentication/static/provision-users-and-groups-using-azure-ad-scim-40.png)
+`user_2@example.com` is not a member of the FirstGen App Integration, hence the authentication fails and the user cannot log in to Harness NextGen.![](./static/provision-users-and-groups-using-azure-ad-scim-40.png)
 

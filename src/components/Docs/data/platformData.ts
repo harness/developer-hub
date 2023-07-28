@@ -91,7 +91,7 @@ export const featuredTutorials: CardItem[] = [
           module: MODULES.platform,
           description:
             "Provision users and groups in Harness using Azure AD (SCIM).",
-          link: "/docs/platform/User-Management/provision-users-and-groups-using-azure-ad-scim",
+          link: "/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim",
         },
         {
           title: "Git Experience",

@@ -215,7 +215,7 @@ module "devops" {
 
 ### [User accounts](https://github.com/harness-community/terraform-harness-rbac/tree/main/modules/user_accounts)
 
-It is not recommended that you create user accounts with terraform. Instead you should explore enabling [SSO](https://developer.harness.io/docs/platform/authentication/single-sign-on-sso-with-oauth/), [SCIM](https://developer.harness.io/docs/platform/Authentication/provision-users-and-groups-using-azure-ad-scim), or SSO linked groups to control user access from your IDP.
+It is not recommended that you create user accounts with terraform. Instead you should explore enabling [SSO](https://developer.harness.io/docs/platform/authentication/single-sign-on-sso-with-oauth/), [SCIM](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim), or SSO linked groups to control user access from your IDP.
 
 ## [Connectors](https://github.com/harness-community/terraform-harness-connectors)
 

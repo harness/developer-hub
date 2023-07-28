@@ -84,20 +84,29 @@ module.exports = {
       from: "/docs/platform/User-Management/provision-use-jit",
       to: "/docs/platform/role-based-access-control/provision-use-jit",
     },
-
-
-
     {
       from: "/docs/platform/Authentication/provision-users-with-okta-scim",
-      to: "/docs/platform/User-Management/provision-users-with-okta-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-with-okta-scim",
+    },
+    {
+      from: "/docs/platform/User-Management/provision-users-with-okta-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-with-okta-scim",
     },
     {
       from: "/docs/platform/Authentication/provision-users-and-groups-using-azure-ad-scim",
-      to: "/docs/platform/User-Management/provision-users-and-groups-using-azure-ad-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim",
+    },
+    {
+      from: "/docs/platform/User-Management/provision-users-and-groups-using-azure-ad-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim",
     },
     {
       from: "/docs/platform/Authentication/7provision-users-and-groups-with-one-login-scim",
-      to: "/docs/platform/User-Management/7provision-users-and-groups-with-one-login-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim",
+    },
+    {
+      from: "/docs/platform/User-Management/7provision-users-and-groups-with-one-login-scim",
+      to: "/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim",
     },
 
     // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023

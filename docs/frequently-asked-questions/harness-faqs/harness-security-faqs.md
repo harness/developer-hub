@@ -106,9 +106,9 @@ See:
 
 * [Single sign-on (SSO) with SAML](../../platform/3_Authentication/3-single-sign-on-saml.md)
 * [Single sign-on (SSO) with OAuth](../../platform/3_Authentication/4-single-sign-on-sso-with-oauth.md)
-* [Provision users with Okta (SCIM)](/docs/platform/User-Management/provision-users-with-okta-scim)
-* [Provision users with OneLogin (SCIM)](/docs/platform/User-Management/7provision-users-and-groups-with-one-login-scim)
-* [Provision users with Azure AD (SCIM)](/docs/platform/User-Management/provision-users-and-groups-using-azure-ad-scim)
+* [Provision users with Okta (SCIM)](/docs/platform/role-based-access-control/provision-users-with-okta-scim)
+* [Provision users with OneLogin (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-with-one-login-scim)
+* [Provision users with Azure AD (SCIM)](/docs/platform/role-based-access-control/provision-users-and-groups-using-azure-ad-scim)
 
 #### Are there best practices for setting up Harness users?
 
