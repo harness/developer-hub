@@ -11,7 +11,7 @@ Pod API latency is a Kubernetes pod-level chaos fault that injects api request a
 
 ## Use cases
 Pod API latency:
-- Simulate high traffic scenarios and testing the resilience and performance of an application or API, where the API may experience delays due to heavy load
+- Simulate high traffic scenarios and testing the resilience and performance of an application or API, where the API may experience delays due to heavy load.
 - Simulate situations where an API request takes longer than expected to respond. By introducing latency, you can test how well your application handles timeouts and implements appropriate error handling mechanisms.
 - It can be used to test, how well the application handles network delays and failures, and if it recovers gracefully when network connectivity is restored.
 
