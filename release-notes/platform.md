@@ -972,7 +972,7 @@ The location of the repository that contains the NextGen Helm chart is changing.
 - **Organization Viewer - All Organization Level Resources**: This was a role-assignment within the organization scope and has been removed for all the users.
 - **Project Viewer - All Project Level Resources**: This was a role-assignment within the project scope and has been removed for all the users.
 
-For more information, see [Default User Group](/docs/platform/User-Management/harness-default-user-groups)
+For more information, see [Default User Groups](/docs/platform/role-based-access-control/add-user-groups#default-user-groups)
 
 
 ##### What's new
@@ -1573,7 +1573,7 @@ N/A
 
   Harness now has a default User Group at each scope. These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the User Groups by default.​ Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
 
-  See [Harness Default User Groups](/docs/platform/User-Management/harness-default-user-groups).
+  See [Default User Groups](/docs/platform/role-based-access-control/add-user-groups#default-user-groups).
 
 ##### Early access
 
@@ -1660,7 +1660,7 @@ As a part of this change, Harness will stop assigning any roles to the User Grou
 
 Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group.
 
-For more information on default User Group, see [Harness Default User Groups](/docs/platform/User-Management/harness-default-user-groups).
+For more information on default User Group, see [Default User Groups](/docs/platform/role-based-access-control/add-user-groups#default-user-groups).
 
 #### September 7, 2022, version 76619
 
@@ -1668,7 +1668,7 @@ For more information on default User Group, see [Harness Default User Groups](/d
 
 - You can now inherit User Groups created at a higher scope by using Assign Roles. (PL-27237)
 
-  See [Assign Roles](https://developer.harness.io/docs/platform/User-Management/add-user-groups#step-assign-roles).
+  See [Assign Roles](/docs/platform/role-based-access-control/add-user-groups#assign-roles).
 
 - You can now view the past 10 executions of the Pipelines and sort them from the table. You can also go to a specific execution by clicking on it. (PIE-4903)
 

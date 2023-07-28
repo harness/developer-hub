@@ -12,7 +12,7 @@ Before you can access Harness API, you must obtain an access token that grants a
 
 ### Before you begin
 * Make sure you are an Account Admin to Create, Edit, Delete, and Manage Service Accounts.  
-For more details on permissions for API Keys, see [API Permissions Reference](../Resource-Development/APIs/api-permissions-reference).
+For more details on permissions for API Keys, see [API Permissions Reference](../APIs/api-permissions-reference).
 
 ### Harness API Key
 

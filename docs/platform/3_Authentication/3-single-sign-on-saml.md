@@ -246,7 +246,7 @@ You will be authorizing the same Harness Users that are authenticated using your
         ![](./static/single-sign-on-saml-74.png)
 
 	6. Click **Add**. The SAML SSO Provider is now set up to use the Group Attribute Name for authorization.
-6. Link the SAML SSO Provider to the Harness User Group. You can create a new User Group or use an existing Group so long as your Harness User account is a member and that User account is registered using the same email address you used to register with your SAML provider. For detailed instructions on creating a User Group in Harness, see [Add and Manage User Groups](../3_User-Management/4-add-user-groups.md). To link your group, perform the following steps:
+6. Link the SAML SSO Provider to the Harness User Group. You can create a new User Group or use an existing Group so long as your Harness User account is a member and that User account is registered using the same email address you used to register with your SAML provider. For detailed instructions on creating a User Group in Harness, see [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups). To link your group, perform the following steps:
 	1. In **Home**, click **Access Control** under **ACCOUNT SETUP**.
 	2. Click **User Groups** and then click on the User Group you want to link the SAML SSO Provider to**.**
 	3. Click **Link to SSO Provider Group**.
@@ -472,7 +472,7 @@ To set up Azure Authorization in Harness, do the following:
 	19. Log into Harness using the user email address, and sign in using the Azure username and password. If you are already logged into Azure in Chrome, you might be logged into Harness automatically.
 	20. In the linked Harness User Group, ensure that the Harness User account you logged in with was added.
 
-The Harness User is now added and the RBAC settings for the Harness User Group are applied to its account. For more information, see [Add and manage User Groups](../3_User-Management/4-add-user-groups.md).
+The Harness User is now added and the RBAC settings for the Harness User Group are applied to its account. For more information, see [Add and manage User Groups](/docs/platform/role-based-access-control/add-user-groups).
 
 ### SAML SSO with Azure Active Directory
 

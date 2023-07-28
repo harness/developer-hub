@@ -30,7 +30,7 @@
 | Identify deployment verification types| [Harness Continuous Verification (CV) overview](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step/)|
 | Understand CV Health Sources| [Health Source](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step/#health-source)| 
 | **10. Alerting, SMTP Configuration, Notifications**   ||
-| Configure User Group Notification - Slack, Email, etc.| [Notification Preferences](https://developer.harness.io/docs/platform/user-management/add-user-groups/#option-notification-preferences)|
+| Configure User Group Notification - Slack, Email, etc.| [Notification Preferences](https://developer.harness.io/docs/platform/role-based-access-control/add-user-groups#option-notification-preferences)|
 | Understand how to notify based in response to Pipeline and stage events| [Add a pipeline notification strategy](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/notify-users-of-pipeline-events/)| 
 | **11. GitOps**   ||
 | Explain the principles of GitOps using a comprehension/use case| [Harness GitOps Basics](https://developer.harness.io/docs/continuous-delivery/gitops/harness-git-ops-basics)|

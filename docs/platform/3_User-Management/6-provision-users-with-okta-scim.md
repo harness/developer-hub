@@ -20,7 +20,7 @@ This topic describes how to build a SCIM endpoint using OKTA and integrate it wi
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 * Make sure you are an Administrator in your Okta account and have the **Account Admin** permissions in Harness.
-* Make sure you have a Harness [API Key](./7-add-and-manage-api-keys.md) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.
+* Make sure you have a Harness [API Key](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.
 
 ### Review: Harness Okta SCIM integration
 
@@ -121,7 +121,7 @@ Enter `userName` in **Unique identifier field for users** and select **Supported
 
 Select **Authentication Mode** as HTTP Header and enter your API Token in **Bearer**.
 
-For information on how to create an API Token in Harness, see [Add and Manage API Keys](./7-add-and-manage-api-keys.md).
+For information on how to create an API Token in Harness, see [Add and Manage API Keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 
 ![](./static/provision-users-with-okta-scim-10.png)
 Click **Test Connection** and then **Save** after the test is successful.

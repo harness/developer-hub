@@ -54,7 +54,7 @@ For an overview of Harness' support for platforms, methodologies, and related te
 The set of security features that Harness provides includes the following features:
 
 * [User management](/docs/platform/User-Management/add-users)
-* [User group management](/docs/platform/User-Management/add-user-groups)
+* [User group management](/docs/platform/role-based-access-control/add-user-groups)
 * [Role management](../../platform/role-based-access-control/add-manage-roles)
 * [Resource group management](../../platform/role-based-access-control/add-resource-groups)
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
@@ -296,5 +296,5 @@ To integrate Harness with some third-party apps, you need to register Harness wi
 
 The API key is a simple encrypted string that other applications can use to access Harness without a private Harness account.
 
-See [API keys](/docs/platform/User-Management/add-and-manage-api-keys).
+See [API keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 

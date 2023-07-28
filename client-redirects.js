@@ -48,6 +48,30 @@ module.exports = {
       from: "/docs/platform/Role-Based-Access-Control/ref-access-management/permissions-reference",
       to: "/docs/platform/role-based-access-control/permissions-reference",
     },
+    {
+      from: "/docs/category/users",
+      to: "/docs/category/access-control-1",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/harness-default-user-groups",
+      to: "/docs/platform/role-based-access-control/add-user-groups",
+    },
+    {
+      from: "/docs/platform/User-Management/harness-default-user-groups",
+      to: "/docs/platform/role-based-access-control/add-user-groups",
+    },
+    {
+      from: "/docs/platform/User-Management/add-user-groups",
+      to: "/docs/platform/role-based-access-control/add-user-groups",
+    },
+    {
+      from: "/docs/platform/User-Management/add-and-manage-api-keys",
+      to: "/docs/platform/Resource-Development/APIs/add-and-manage-api-keys",
+    },
+    {
+      from: "/docs/platform/Role-Based-Access-Control/add-and-manage-api-keys",
+      to: "/docs/platform/Resource-Development/APIs/add-and-manage-api-keys",
+    },
 
     // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
     {
@@ -696,20 +720,8 @@ module.exports = {
       to: "/docs/platform/User-Management/add-users",
     },
     {
-      from: "/docs/platform/Role-Based-Access-Control/add-user-groups",
-      to: "/docs/platform/User-Management/add-user-groups",
-    },
-    {
-      from: "/docs/platform/Role-Based-Access-Control/harness-default-user-groups",
-      to: "/docs/platform/User-Management/harness-default-user-groups",
-    },
-    {
       from: "/docs/platform/Role-Based-Access-Control/add-and-manage-service-account",
       to: "/docs/platform/User-Management/add-and-manage-service-account",
-    },
-    {
-      from: "/docs/platform/Role-Based-Access-Control/add-and-manage-api-keys",
-      to: "/docs/platform/User-Management/add-and-manage-api-keys",
     },
     {
       from: "/docs/platform/Security/add-use-text-secrets",

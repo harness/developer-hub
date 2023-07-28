@@ -35,7 +35,7 @@ The API requests in this topic use curl, but Harness supports multiple languages
 
 * [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md)
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
-* This quickstart walks you through adding the Harness API keys needed to authenticate with the API. To review Harness API keys, go to [Add and Manage API Keys](../../3_User-Management/7-add-and-manage-api-keys.md).
+* This quickstart walks you through adding the Harness API keys needed to authenticate with the API. To review Harness API keys, go to [Add and Manage API Keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 * Make sure your Harness account has the required permissions to Create, Edit, Delete, and View the Harness resources you are creating via API. Any of the following default roles are sufficient: Account Administrator, Organization Admin, Project Admin. For more, go to [Permissions Reference](../../role-based-access-control/permissions-reference).
 
 ### Step 1: Create a Harness API Key and PAT
@@ -44,7 +44,7 @@ The Harness API uses API keys to authenticate requests. You create the API key i
 
 
 :::info note
-For an overview of Harness API keys, go to [Add and Manage API Keys](../../3_User-Management/7-add-and-manage-api-keys.md).
+For an overview of Harness API keys, go to [Add and Manage API Keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 
 :::
 
@@ -90,7 +90,7 @@ Your new token is generated.
 :::warning
 Please copy and store your token value somewhere safe. You won't be able to see it again.  
   
-Your API keys carry many privileges, so be sure not to share them in publicly accessible areas. Make sure you always use the updated API Key value after you rotate the token. For more details, go to [Rotate Token](../../3_User-Management/7-add-and-manage-api-keys.md#rotate-token).
+Your API keys carry many privileges, so be sure not to share them in publicly accessible areas. Make sure you always use the updated API Key value after you rotate the token. For more details, go to [Rotate Token](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#rotate-token).
 :::
 
 

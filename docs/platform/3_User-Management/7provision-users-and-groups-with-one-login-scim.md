@@ -20,7 +20,7 @@ This topic describes how to set up OneLogin provisioning for Harness Users and U
 * [Learn Harness' Key Concepts](../../getting-started/learn-harness-key-concepts.md)
 * [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness)
 * Make sure you are an Administrator in your OneLogin account and have the **Account Admin** permissions in Harness.
-* Make sure you have a Harness [API Key](./7-add-and-manage-api-keys.md) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.
+* Make sure you have a Harness [API Key](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.
 
 ### Limitations
 
@@ -69,7 +69,7 @@ Next, we will use a Harness API access key for the **SCIM Bearer Token** setti
 
 The SCIM Bearer Token value is used to authenticate requests and responses sent between the OneLogin SCIM provisioning service and Harness.
 
-1. In Harness Manager, create an API token by following the instructions in [Add and Manage API Keys](./7-add-and-manage-api-keys.md).
+1. In Harness Manager, create an API token by following the instructions in [Add and Manage API Keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 2. Copy the new API token.
 3. In OneLogin, paste the API token in the **SCIM Bearer Token** setting in your Harness OneLogin app.
 4. Ensure that the API Status is enabled and click **Save**.

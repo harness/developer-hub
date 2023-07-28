@@ -1,7 +1,7 @@
 ---
 title: Add and manage user groups
 description: This document shows steps to create new user groups and assign roles to them.
-# sidebar_position: 2
+sidebar_position: 60
 helpdocs_topic_id: dfwuvmy33m
 helpdocs_category_id: w4rzhnf27d
 helpdocs_is_private: false
@@ -11,6 +11,75 @@ helpdocs_is_published: true
 Harness User Groups help you manage user access. Each member of a User Group inherits the [role bindings](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment) assigned to that group.
 
 This topic explains the steps to create and manage User Groups within Harness.
+
+## Default user groups
+
+Harness has default User Group in each scope. These groups have all the users at the respective scope as their members.
+
+Whenever you create a new Organization or Project, Harness creates a default User Group in its scope.
+
+For example, if you add a new Organization to your Account, Harness creates a default User Group in the Organization. This group will have all the users within the scope of the Organization.
+
+This topic explains the default User Groups at each scope and how you can do the Role Assignment for each of them.
+
+### Harness default User Groups overview
+
+Harness adds the scope-specific default User group to all your existing Accounts, Organizations, and Projects as well as to any Organization and Project that you create later.
+
+The users that you add in the Account scope will **not** be assigned the **Account Viewer** role by default. The user's default role assignment is the same as the role assignment of the default User Group in the Account.The following table explains the default User Group at the individual scopes:
+
+
+
+|  |  |  |
+| --- | --- | --- |
+| **Scope** | **Default User Group Name** | **Description** |
+| Account | **All Account Users** | All the users in the Account scope are members of this User Group. |
+| Organization | **All Organization Users** | All the users in the Organization scope are members of this User Group. |
+| Project | **All Project Users** | All the users in the Project scope are members of this User Group. |
+
+* When you add a new Organization or Project, the default role assignment for the default User Group is that of **Organization Viewer** and **Project Viewer** respectively.
+
+![](../3_User-Management/static/harness-default-user-groups-57.png)
+
+* When you add a user to an existing Account, Organization, or Project, Harness adds the user to the default User Group in the scope where you added the user.  
+For example, if you add a user to your existing Organization `OrgExample`, Harness will add the user to the All Organization Users group within `OrgExample`.
+* Admin can do the required [role assignment](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment) for the default User Groups.
+* When you add a user to your Harness Account, the user's default role assignment is the same as the role assignment of the default User Group in the Account.  
+For example, the **All Account Users** group in your Account has the role assignment of **Account Viewer**. All the members of this group can view resources within the scope of this Account. Now, you add a new user to this Account.  
+Harness adds this user to the **All Account Users** group and the role assignment of this user is **Account Viewer** which is inherited from the default User Group of this Account.
+
+You cannot create, edit, or delete the default User Groups. Harness manages them.
+
+### Assign Role-Bindings for default User Group in a new Organization
+
+1. In your Harness Account, click **Account Settings.**
+2. Click **Organizations**.
+3. Click **New Organization**. The new Organization settings appear.
+4. In **Name**, enter a name for your Organization.
+5. Enter **Description**, and [Tags](https://harness.helpdocs.io/article/i8t053o0sq-tags-reference) for your new Org.
+6. Click **Save and Continue**.![](./static/harness-default-user-groups-58.png)
+7. Click **Finish**.  
+Your Organization now appears in the list of Organizations.
+8. Click on your Organization and then click **Access Control**.
+9. Click **User Groups**.  
+   **All Organization Users** is the default User Group with a default role assignment of **Organization Viewer**.
+
+   ![](./static/harness-default-user-groups-59.png)
+
+10. To assign another role to this User Group, click **Role**.  
+    The **Add Role** settings appear.
+    ![](./static/harness-default-user-groups-60.png)
+
+11.  Click **Add**.
+12.  In **Roles**, select a Harness built-in Role or a custom Role that you have created for the desired permissions.  
+For more information on built-in roles and custom roles, see [Add and Manage Roles](./add-manage-roles).
+13. In **Resource Groups**, select a Harness built-in Resource Group or a custom Resource Group that you have created for the desired resources.  
+For more information on built-in roles and custom roles, see [Add and Manage Resource Groups](./add-resource-groups).
+14. Click **Apply**.
+
+All the existing members and any new members that you add to this Organization will have the role bindings that you just added.
+
+## Create custom user groups
 
 ### Before you begin
 
@@ -59,7 +128,7 @@ Click **Remove** to delete User from this Group.
 
 Click **Role** to change Role Bindings for this User Group.
 
-### Step: Assign Roles
+### Assign Roles
 
 Harness lets you inherit User Groups created at a higher scope by using **Assign Roles**. For example, you can inherit and use User Group(s) created at the Account scope in the Org or Project scope.
 
@@ -108,15 +177,14 @@ To add notification preferences to Harness User Groups, perform the following st
 	* **Slack Webhook URL** – Enter the Slack channel Incoming Webhook URL. For more details, see [Send Notifications Using Slack](../5_Notifications/send-notifications-using-slack.md).
 	* **PagerDuty Integration Key** – Enter the key for a PagerDuty Account/Service to which Harness can send notifications. You can copy/paste this key from **Integrations** of your service in **Services** > **Service Directory.**
 	
-	![](./static/add-user-groups-56.png)
+	![](../3_User-Management/static/add-user-groups-56.png)
 
 	* **Microsoft Teams Webhook URL** - Enter the Microsoft Teams Incoming Webhook URL.
 
 ### See also
 
-* [Add and Manage Users](./3-add-users.md)
-* [Harness Default User Groups](./5-harness-default-user-groups.md)
-* [Add and Manage Roles](../role-based-access-control/add-manage-roles)
-* [Add and Manage Resource Groups](../role-based-access-control/add-resource-groups)
-* [Permissions Reference](../role-based-access-control/permissions-reference)
+* [Add and Manage Users](../3_User-Management/3-add-users.md)
+* [Add and Manage Roles](./add-manage-roles)
+* [Add and Manage Resource Groups](./add-resource-groups)
+* [Permissions Reference](./permissions-reference)
 

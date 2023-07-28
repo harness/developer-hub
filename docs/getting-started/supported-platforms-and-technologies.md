@@ -291,7 +291,7 @@ Harness includes native TUF support via the following:
 - OCI image registry support:
   - TUF recommends the use of an OCI image-spec container registry. Harness supports [OCI registry for Helm charts](https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-connectors/add-helm-repository-servers/#oci-registry).
 - Enforce the rotation of secrets and key management practices:
-  - Harness provides [token key rotation natively](/docs/platform/User-Management/add-and-manage-api-keys#rotate-token).
+  - Harness provides [token key rotation natively](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys#rotate-token).
 - Continuous Verification: TUF recommends the verification of deployments akin to [Harness Continuous Verification](https://developer.harness.io/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step).
 
 ## Harness Open Source Software (OSS) components

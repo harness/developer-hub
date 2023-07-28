@@ -18,7 +18,7 @@ This topic explains how to configure Azure Active Directory (Azure AD) to automa
 
 * This topic assumes you understand the System for Cross-domain Identity Management (SCIM). For an overview, see the article [Introduction to System for Cross-domain Identity Management (SCIM)](https://medium.com/@pamodaaw/system-for-cross-domain-identity-management-scim-def45ea83ae7).
 * Make sure you are an Administrator in your Azure AD account and have the **Account Admin** permissions in Harness.
-* Make sure you have a Harness [API Key](./7-add-and-manage-api-keys.md) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.
+* Make sure you have a Harness [API Key](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) and a valid Token under it. The API Key must have all permissions on the Users and User Groups.
 
 ### Review: Harness Azure AD SCIM integration
 
@@ -78,7 +78,7 @@ Before you configure Harness for automatic user provisioning with Azure AD, you 
 	You can obtain your Harness account ID from the **Account Overview** of your Harness account.
 	   ![](./static/provision-users-and-groups-using-azure-ad-scim-32.png)
 	1. In the **Secret Token** box, enter the SCIM Authentication Token value. This is your Harness API token within your API Key. Make sure this key's permissions are inherited from the **Account Administrator** User Group.  
-	For more information on how to create API token, see [Add and Manage API Keys](./7-add-and-manage-api-keys.md).
+	For more information on how to create API token, see [Add and Manage API Keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 	3. Select **Test Connection** to ensure that Azure AD can connect to Harness.
 	   ![](./static/provision-users-and-groups-using-azure-ad-scim-33.png)
 	If the connection fails, ensure that your Harness account has Admin permissions, and then try again.

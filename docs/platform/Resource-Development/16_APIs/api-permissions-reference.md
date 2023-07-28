@@ -23,7 +23,7 @@ The following table lists permissions for Service Account. To know more about Se
 
 ### API Key
 
-The following table lists the permissions for Service Account. To know more about Service Accounts, see [Add and Manage API Keys](../../3_User-Management/7-add-and-manage-api-keys.md).
+The following table lists the permissions for Service Account. To know more about Service Accounts, see [Add and Manage API Keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys).
 
 
 

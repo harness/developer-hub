@@ -494,7 +494,7 @@ If you have pipelines running on Harness Cloud that rely on specific component v
 
   <docimage path={require('./static/fa61423c00604c9a2d1dcf3cd2e8c040d71992791e34abf983eb5befe8640159.png')} width="60%" height="60%" title="Click to view full size image" />
 
-  For information on setting up notifications for user groups, go to [Add and manage user groups](https://developer.harness.io/docs/platform/User-Management/add-user-groups).
+  For information on setting up notifications for user groups, go to [Add and manage user groups](/docs/platform/role-based-access-control/add-user-groups).
 
 ##### Harness Platform, version 79411
 
@@ -2076,15 +2076,15 @@ For information about the current plans you can subscribe to, go to [Pricing & P
 
 - Harness Manager UI was updated to ensure that Delegate version and associated information clarifies the difference between older immutable and legacy Delegates. (DEL-4826)
 
-- A migration will run to remove the following Role Bindings directly assigned to users for accounts having ACCOUNT_BASIC_ROLE turned ON (PL-28284):​
+- A migration will run to remove the following Role Bindings directly assigned to users for accounts having ACCOUNT_BASIC_ROLE turned ON (PL-28284):
 
-  - At Account Scope, Account Basic/Account Viewer - All Account Resources​.​
-  - At Organization scope, Organization Viewer - All Organization Resources.​​
-  - At Project Scope, Project Viewer - All Project Resources.​​
+  - At Account Scope, Account Basic/Account Viewer - All Account Resources.
+  - At Organization scope, Organization Viewer - All Organization Resources.
+  - At Project Scope, Project Viewer - All Project Resources.
 
-- Harness now has a default User Group at each scope. ​These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the User Groups by default.​ Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
+- Harness now has a default User Group at each scope. These groups have all the users at the respective scope as their members. As a part of this change, Harness will stop assigning any roles to the User Groups by default. Users can assign roles to the default User Group at a specific scope, which becomes the default role for all the users in that group. (PL-26145)
 
-  See [Harness Default User Groups](/docs/platform/User-Management/harness-default-user-groups).
+  See [Harness Default User Groups](/docs/platform/role-based-access-control/add-user-groups#default-user-groups).
 
 #### September 14, 2022
 
@@ -2138,7 +2138,7 @@ To get the PHP SDK, go to our [PHP Git Repository](https://github.com/harness/ff
 
 You can now inherit User Groups created at a higher scope by using Assign Roles.
 
-See [Assign Roles](https://developer.harness.io/docs/platform/User-Management/add-user-groups#step-assign-roles).
+See [Assign Roles](/docs/platform/role-based-access-control/add-user-groups#assign-roles).
 
 #### August 31, 2022
 
