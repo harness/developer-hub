@@ -80,6 +80,25 @@ module.exports = {
       from: "/docs/platform/User-Management/add-and-manage-service-account",
       to: "/docs/platform/role-based-access-control/add-and-manage-service-account",
     },
+    {
+      from: "/docs/platform/User-Management/provision-use-jit",
+      to: "/docs/platform/role-based-access-control/provision-use-jit",
+    },
+
+
+
+    {
+      from: "/docs/platform/Authentication/provision-users-with-okta-scim",
+      to: "/docs/platform/User-Management/provision-users-with-okta-scim",
+    },
+    {
+      from: "/docs/platform/Authentication/provision-users-and-groups-using-azure-ad-scim",
+      to: "/docs/platform/User-Management/provision-users-and-groups-using-azure-ad-scim",
+    },
+    {
+      from: "/docs/platform/Authentication/7provision-users-and-groups-with-one-login-scim",
+      to: "/docs/platform/User-Management/7provision-users-and-groups-with-one-login-scim",
+    },
 
     // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
     {
@@ -711,18 +730,6 @@ module.exports = {
       to: "/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step",
     },
     // Created by Rashmi Sahoo to fix platform re-direct April 19th, 2023
-    {
-      from: "/docs/platform/Authentication/provision-users-with-okta-scim",
-      to: "/docs/platform/User-Management/provision-users-with-okta-scim",
-    },
-    {
-      from: "/docs/platform/Authentication/provision-users-and-groups-using-azure-ad-scim",
-      to: "/docs/platform/User-Management/provision-users-and-groups-using-azure-ad-scim",
-    },
-    {
-      from: "/docs/platform/Authentication/7provision-users-and-groups-with-one-login-scim",
-      to: "/docs/platform/User-Management/7provision-users-and-groups-with-one-login-scim",
-    },
     {
       from: "/docs/platform/Security/add-use-text-secrets",
       to: "/docs/platform/Secrets/add-use-text-secrets",
