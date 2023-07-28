@@ -143,6 +143,28 @@ It's important to note that Harness provides a declarative rollback feature, whi
 
 For more information, you can refer to the documentation on declarative rollback in the link provided: [Harness Declarative Rollback](https://docs.harness.io/article/6y7xs2rh5a-declarative-rollback).
 
+#### How can I turn off FG (First Generation) responses or remove the switch to CG option?
+
+To disable FG responses, please follow these steps:
+1. Go to your account settings.
+2. Locate the "Allow First Gen Access" option.
+3. Turn off the "Allow First Gen Access" setting.
+4. Once disabled, the "Launch First Gen" button will no longer be visible, and you will no longer receive FG responses.
+
+#### We have multiple accounts, like sandbox and prod, and we want to move the developments from sandbox to prod easily. Is there a solution for this?
+
+Absolutely! We recommend customers to use test orgs or projects for sandbox development. Our hierarchical separation allows them to isolate test cases from production workloads effectively.
+
+For pipeline development concerns, we have a solution too. Customers can utilize our built-in branching support from GitX. You can create a separate branch for building and testing pipeline changes. Once the changes are tested and verified, you can merge the changes into their default branch.
+
+Sandbox accounts are most valuable for testing external automation running against Harness, which helps in building or modifying objects. This way, you can test changes without affecting production environments.
+
+#### Can you provide an example of deploying the delegate in a task-definition for ECS (Amazon Elastic Container Service)?
+
+Certainly! You can find a step-by-step guide on how to deploy the delegate in a task-definition for ECS on our official documentation page: [link to documentation](https://developer.harness.io/docs/platform/delegates/install-delegates/docker-delegate-to-ecs-fargate/).
+
+Additionally, we have a GitHub repository with a Terraform module that demonstrates the process of deploying the delegate in ECS Fargate: [link to GitHub repository](https://github.com/harness-community/terraform-aws-harness-delegate-ecs-fargate/tree/main). This resource can further assist you in implementing the delegate deployment.
+
 **Note:**
 If you are using the default release name format in Harness FirstGen as `release-${infra.kubernetes.infraId}`, it's important to note that when migrating to Harness NextGen, you will need to replace `${infra.kubernetes.infraId}` with the new expression.
 
