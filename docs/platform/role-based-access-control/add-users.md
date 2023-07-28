@@ -1,7 +1,7 @@
 ---
 title: Add and manage users
 description: This document shows steps to create a new user.
-# sidebar_position: 2
+sidebar_position: 70
 helpdocs_topic_id: hyoe7qcaz6
 helpdocs_category_id: w4rzhnf27d
 helpdocs_is_private: false
@@ -27,7 +27,7 @@ Click **New User** in **Users**. The New User settings appear.
 ![](./static/add-users-11.png)
 Enter the email address(es) that the User will use to log into the Harness platform.
 
-If you have Roles and Resource Groups defined, select the Roles and Resource Groups for this user. To add Roles and Resource Groups, see [Add Roles](../role-based-access-control/add-manage-roles) and [Add Resource Groups](../role-based-access-control/add-resource-groups).
+If you have Roles and Resource Groups defined, select the Roles and Resource Groups for this user. To add Roles and Resource Groups, see [Add Roles](./add-manage-roles) and [Add Resource Groups](./add-resource-groups).
 
 Click **Save**. The user will receive a verification email at the address(es) you provided. When the user logs into Harness, the user creates a password, the email address is verified, and the user name is updated.
 
@@ -100,7 +100,7 @@ To add a new role binding for a user, click **Role**.
 ### See also
 
 * [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
-* [Add and Manage Roles](../role-based-access-control/add-manage-roles)
-* [Add and Manage Resource Groups](../role-based-access-control/add-resource-groups)
-* [Permissions Reference](../role-based-access-control/permissions-reference)
+* [Add and Manage Roles](./add-manage-roles)
+* [Add and Manage Resource Groups](./add-resource-groups)
+* [Permissions Reference](./permissions-reference)
 

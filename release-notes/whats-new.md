@@ -2170,7 +2170,7 @@ The Feature Flag Relay Proxy has been updated to version 0.9.7.
 
 - Now you can add up to 50,000 users in the Harness Non-Community Edition. (PL-27300)
 
-  See [Add and Manage Users](/docs/platform/User-Management/add-users).
+  See [Add and Manage Users](/docs/platform/role-based-access-control/add-users).
 
 - You can now use an enhanced Git Experience. (PL-26339)
 

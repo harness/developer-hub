@@ -105,7 +105,7 @@ Click **Apply Changes**.
 
 ### Next steps
 
-* [Add and Manage Users](../3_User-Management/3-add-users.md)
+* [Add and Manage Users](/docs/platform/role-based-access-control/add-users)
 * [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
 * [Add and Manage Roles](./add-manage-roles)
 * [Permissions Reference](./permissions-reference)

@@ -45,11 +45,11 @@ You cannot see this token value after you close this dialog. Make sure to copy a
 
 ### Create Service Account Token
 
-To generate a Service Access Token, you need to first create a [Service Account](/docs/platform/User-Management/add-and-manage-service-account) and create an API Key under it.
+To generate a Service Access Token, you need to first create a [Service Account](/docs/platform/role-based-access-control/add-and-manage-service-account) and create an API Key under it.
 
 1. In Harness, click **Home**.
 2. In **ACCOUNT SETUP**, click **Access Control**.
-3. Click **Service Accounts** and then click the service account to which you want to add a new API Key. For step-by-step instructions to add a new Service Account, see [Add and Manage Service Accounts](/docs/platform/User-Management/add-and-manage-service-account).
+3. Click **Service Accounts** and then click the service account to which you want to add a new API Key. For step-by-step instructions to add a new Service Account, see [Add and Manage Service Accounts](/docs/platform/role-based-access-control/add-and-manage-service-account).
 4. In the Service Account's settings page, click **API Key**.
 5. In the **New API Key** settings, enter **Name, Description,** and **Tags**.
 6. Click **Save**. The new API Key is created.

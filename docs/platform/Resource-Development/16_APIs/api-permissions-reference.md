@@ -12,7 +12,7 @@ This topic gives you details of the Permissions available in the Harness system 
 
 ### Service Account
 
-The following table lists permissions for Service Account. To know more about Service Accounts, see [Add and Manage Service Accounts](../../3_User-Management/6-add-and-manage-service-account.md).
+The following table lists permissions for Service Account. To know more about Service Accounts, see [Add and Manage Service Accounts](/docs/platform/role-based-access-control/add-and-manage-service-account).
 
 
 

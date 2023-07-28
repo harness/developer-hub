@@ -82,11 +82,11 @@ Harness provides access control by combining Principals, Resource Groups, and Ro
 
   A principal is an entity that can be assigned to a role and subsequently granted permissions to access certain resources or perform specific actions within a system. A principal can be one of the following: 
   * **Users:** These are individual users within the Harness system. A user can belong to many user groups.  
-    For more information on creating a new user, see [Add and Manage Users](../3_User-Management/3-add-users.md).
+    For more information on creating a new user, see [Add and Manage Users](/docs/platform/role-based-access-control/add-users).
   * **User Groups:** User groups contain multiple Harness users. Each user group has assigned roles. You can create user Groups at account/org/project scope.  
     For more information on creating a new user group, see [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups).
   * **Service Account:** A service account is a set of [API Keys](/docs/platform/Resource-Development/APIs/add-and-manage-api-keys) with a set of permissions assigned to them via role assignment. API keys are used for authenticating and authorizing remote services attempting to perform operations in Harness via our APIs. API keys that are part of a service account are assigned permissions (equivalent to users) that service accounts inherit.  
-   For more information on creating a new service account, see [Add and Manage Service Accounts.](/docs/platform/3_User-Management/6-add-and-manage-service-account.md)
+   For more information on creating a new service account, see [Add and Manage Service Accounts.](/docs/platform/role-based-access-control/add-and-manage-service-account)
     
     ![](./static/principal.png)
 
@@ -214,7 +214,7 @@ Workflow:
 1. [Add and Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups) and optionally apply ABAC.
 1. [Add and Manage User Groups](/docs/platform/role-based-access-control/add-user-groups)
 1. Role & resource assignment to user groups
-1. [Add and Manage Users](/docs/platform/3_User-Management/3-add-users.md) (provision users and service accounts) [Add and Manage Service Accounts](/docs/platform/3_User-Management/6-add-and-manage-service-account.md)
+1. [Add and Manage Users](/docs/platform/role-based-access-control/add-users) (provision users and service accounts) [Add and Manage Service Accounts](/docs/platform/role-based-access-control/add-and-manage-service-account)
 1. Config authentication (not sure if before or after rbac/provisioning)
 
 Other: RBAC API/Create API keys
@@ -256,7 +256,7 @@ You will learn how to:
 
 To manage access control in Harness, you must have the following components in place:
 
-* **Principal**: can be a [User](../3_User-Management/3-add-users.md), [User Group](/docs/platform/role-based-access-control/add-user-groups), or [Service Account](../3_User-Management/6-add-and-manage-service-account.md).
+* **Principal**: can be a [User](/docs/platform/role-based-access-control/add-users), [User Group](/docs/platform/role-based-access-control/add-user-groups), or [Service Account](/docs/platform/role-based-access-control/add-and-manage-service-account).
 * **Resource Group**: is a list of resources within a specific scope on which a Principal can perform actions. See [Add and Manage Resource Groups](./add-resource-groups).
 * **Roles**: is a set of permissions that is assigned to a Principal for specific Resource Groups. See [Add and Manage Roles](./add-manage-roles).
 

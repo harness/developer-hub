@@ -23,7 +23,7 @@ To create a new service account, perform the following steps:
 3. Select **Service Accounts** and then select **New Service Account**.
 4. Enter your name and email address for this account.
 5. Select **Save**.
-   For more information, see Create a [service account](../../3_User-Management/6-add-and-manage-service-account.md).
+   For more information, see Create a [service account](/docs/platform/role-based-access-control/add-and-manage-service-account).
 6. Your service account now appears in the **Service Account** list. Select ** Manage Roles** next to the service account you just created to assign role bindings to the service account you just created.
 7. Assign the following permissions to the service account:
     - **View**, **Manage**, and **Invite** users.

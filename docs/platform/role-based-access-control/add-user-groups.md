@@ -183,7 +183,7 @@ To add notification preferences to Harness User Groups, perform the following st
 
 ### See also
 
-* [Add and Manage Users](../3_User-Management/3-add-users.md)
+* [Add and Manage Users](/docs/platform/role-based-access-control/add-users)
 * [Add and Manage Roles](./add-manage-roles)
 * [Add and Manage Resource Groups](./add-resource-groups)
 * [Permissions Reference](./permissions-reference)

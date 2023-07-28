@@ -62,7 +62,7 @@ Your API keys carry many privileges, so be sure not to share them in publicly ac
 
 #### Service Account Tokens
 
-You can also use a Service Account Tokens instead of PAT. See [Add and Manage Service Accounts](../../3_User-Management/6-add-and-manage-service-account.md).
+You can also use a Service Account Tokens instead of PAT. See [Add and Manage Service Accounts](/docs/platform/role-based-access-control/add-and-manage-service-account).
 
 ### Step 2: Use the API
 

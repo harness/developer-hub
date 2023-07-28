@@ -72,6 +72,14 @@ module.exports = {
       from: "/docs/platform/Role-Based-Access-Control/add-and-manage-api-keys",
       to: "/docs/platform/Resource-Development/APIs/add-and-manage-api-keys",
     },
+    {
+      from: "/docs/platform/User-Management/add-users",
+      to: "/docs/platform/role-based-access-control/add-users",
+    },
+    {
+      from: "/docs/platform/User-Management/add-and-manage-service-account",
+      to: "/docs/platform/role-based-access-control/add-and-manage-service-account",
+    },
 
     // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
     {
@@ -714,14 +722,6 @@ module.exports = {
     {
       from: "/docs/platform/Authentication/7provision-users-and-groups-with-one-login-scim",
       to: "/docs/platform/User-Management/7provision-users-and-groups-with-one-login-scim",
-    },
-    {
-      from: "/docs/platform/Role-Based-Access-Control/add-users",
-      to: "/docs/platform/User-Management/add-users",
-    },
-    {
-      from: "/docs/platform/Role-Based-Access-Control/add-and-manage-service-account",
-      to: "/docs/platform/User-Management/add-and-manage-service-account",
     },
     {
       from: "/docs/platform/Security/add-use-text-secrets",
