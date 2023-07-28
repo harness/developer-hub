@@ -9,7 +9,7 @@ Self-Managed Enterprise Edition requires you to install a database by default. Y
 
 Redis offers an enterprise on-premise solution to deploy an HA solutions that functions like a single server. You can install Redis on your preferred choice of virtual machines and provide the endpoint in your Harness Helm charts. Harness recommends this solution to install Redis in HA mode.
 
-This tutorial describes how to configure an external self-managed Redis database on GCP for your installation.
+This tutorial describes how to configure an external self-managed Redis database for your installation.
 
 ## Benefits of a self-managed Redis external database
 
@@ -24,7 +24,7 @@ Below are some of the benefits of using a self-managed Redis external database:
 
 Harness recommends a Redis configuration with the following minimum hardware:
 
-- 3 virtual machines
+- 3 VMs
 - 8 cores per machine
 - 8GB memory per machine
 - 64GB disk per machine (SSD preferred)
@@ -34,20 +34,25 @@ Harness recommends a Redis configuration with the following minimum hardware:
 
 External database setup requires the following software:
 
-- Supported OS (Ubuntu 20.04 LTS)
-- [Redis enterprise download URL](https://redis.com/redis-enterprise-software/download-center/software/)
+- Supported OS: Ubuntu 20.04 LTS
+
+## Prerequisites
+
+The following prerequisites are needed:
+
+- A Redis Labs account. To sign up, go to the [Redis Cloud Console](https://app.redislabs.com/#/).
+
+- Redis Enterprise. To download Redis for Ubuntu 20.04, go to [Redis enterprise](https://redis.com/redis-enterprise-software/download-center/software/).
 
 ## Firewall rules
 
-External Redis requires firewall rule setup. 
+External Redis requires firewall rule setup to add ports to your allow list. 
 
-To create a firewall rule in GCP, do the following:
+To create a firewall rule, do the following:
 
-1. Go to your [GCP networks list](https://console.cloud.google.com/networking/networks/list).
+1. Select the network you want to use for your Redis nodes, for example Default.
 
-2. Select the network you want to use for your Redis nodes, for example Default.
-
-3. Go to the Firewall tab, and create a new rule using the below configurations.
+2. Go to the **Firewall** tab, and create a new rule using the below configurations.
 
    Protocol| Port| Description | 
    | ----------------------------------------------------------------- | ---------------------------- | ----------- |
@@ -58,35 +63,23 @@ To create a firewall rule in GCP, do the following:
 
 4. For testing purposes, keep the Source IP ranges set to 0.0.0.0/0.
 
-## Install Redis on GCP
+## Install Redis
 
-After you configure your firewall rules, you must install Redis on GCP. To install Redis on GCP, you must create three VMs, create a public zone, configure your Redis cluster, configure your Redis database, and test your connectivity.
+After you configure your firewall rules, you must install Redis. To install Redis, you must create three VMs, create a public zone, configure your Redis cluster, configure your Redis database, and test your connectivity.
 
 ### Create your VMs
 
 To create your VMs, do the following:
 
-1. Go to your [GCP VM instances page](https://console.cloud.google.com/compute/instances).
+1. Select the machine type based on the hardware requirements above.
 
-2. Select **Create Instance**.
+2. Change the boot disk to Ubuntu 20.04 LTS.
 
-3. Select the machine type based on the hardware requirements above.
+3. Reserve internal and external static IP addresses for the VM.
 
-4. Change the boot disk to Ubuntu 20.04 LTS.
+4. SSH into the VM.
 
-5. Select the default networking interface list under **Advanced Option > Networking**.
-
-6. Select the **Internal IP** list, and then select **Reserve Static IP**.
-
-7. Select the **External IP** list, and then select **Reserve Static IP**.
-
-8. Enable **Control VM access through IAM permissions** under **Advanced Options > Security > Manage Access**.
-
-9. Select **Create**.
-
-10. SSH into the VM.
-
-11. Run the following commands.
+5. Run the following commands.
 
      ```shell
      wget <redis-download-url>
@@ -96,32 +89,32 @@ To create your VMs, do the following:
     tar xf <redis-file-name>
     ```
 
-12. Disable port 53. For more information, go to [Ensure port availability](https://docs.redis.com/latest/rs/installing-upgrading/install/prepare-install/port-availability/#port-53) in the Redis documentation.
+6. Disable port 53. For more information, go to [Ensure port availability](https://docs.redis.com/latest/rs/installing-upgrading/install/prepare-install/port-availability/#port-53) in the Redis documentation.
 
     Output:
     ```shell
     sudo: unable to resolve host <hostname>: Temporary failure in name resolution
     ```
 
-13. Run the following command.
+7. Run the following command.
 
     ```shell
     sudo ./install.sh -y
     ```
 
-14. Review the installation logs, checking for errors.
+8. Check the installation logs for errors.
 
-15. Repeat the steps to configure your other two VMs.
+9. Repeat the steps to configure your other two VMs.
 
 ### Create a public zone
 
 To create a public zone, do the following:
 
-1. Go to GCP Cloud DNS and create a public zone with any domain name. eg. harness-redis.com
+1. Go to the DNS portal and create a public zone with any domain name, for example `harness-redis-abc.com`.
 
 2. Open the public zone page. 
 
-3. Create three type A records with subdomains for the public domain name, for example, `node1.harness-redis.com`, `node2.harness-redis.com`, and `node3.harness-redis.com`.
+3. Create three type A records with subdomains for the public domain name, for example, `node1.harness-redis-abc.com`, `node2.harness-redis-abc.com`, and `node3.harness-redis-abc.com`.
 
 4. Add the internal IP and external IP for each VM in their respective A records.
 
@@ -206,7 +199,6 @@ To configure your Redis database, do the following:
 8. Select **Create**.
 
 9. Copy the **Internal Endpoint** for later use.
-
 
 ### Test connectivity
 
