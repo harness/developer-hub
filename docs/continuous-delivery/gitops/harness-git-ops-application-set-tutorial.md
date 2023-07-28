@@ -479,7 +479,7 @@ Now your PR Pipeline is ready.
 
   Here's an example of each step:
 
-* Service:
+  * Service:
   ```bash
   Starting service step...  
   Processing service variables...  
@@ -489,7 +489,7 @@ Now your PR Pipeline is ready.
   Completed service step
   ```
 
-* GitOps Clusters:
+  * GitOps Clusters:
   ```bash
   Environment(s): {dev}   
     
@@ -503,11 +503,11 @@ Now your PR Pipeline is ready.
   Completed
   ```
 
-* Update Release Repo:
+  * Update Release Repo:
   
   ![](./static/harness-git-ops-application-set-tutorial-59.png)
 
-* Merge PR:
+  * Merge PR:
   ```bash
   PR Link: https://github.com/wings-software/gitops-pipeline-demo/pull/155  
   Pull Request successfully merged  
@@ -515,7 +515,7 @@ Now your PR Pipeline is ready.
   Done.
   ```
 
-* Revert PR:  
+  * Revert PR:  
   ```bash
   Setting git configs
   Using optimized file fetch
@@ -523,7 +523,7 @@ Now your PR Pipeline is ready.
   Done.
   ```
 
-* Merge PR_1:   
+  * Merge PR_1:   
   ```bash
   PR Link: https://github.com/wings-software/gitops-pipeline-demo/pull/156
   Pull Request successfully merged
@@ -532,7 +532,7 @@ Now your PR Pipeline is ready.
   ```
   
   
-1. Check the repo to see that the config.json file for the dev environment has been updated with the new **asset\_id** value:
+6. Check the repo to see that the config.json file for the dev environment has been updated with the new **asset\_id** value:
 
   ![](./static/harness-git-ops-application-set-tutorial-60.png)
 
