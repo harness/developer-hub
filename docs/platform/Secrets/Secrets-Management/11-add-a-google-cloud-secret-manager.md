@@ -72,6 +72,10 @@ Select one of the following options to configure details for the Google cloud se
 - **Specify credentials here**
 - **Use the credentials of a specific Harness Delegate (IAM role, service account, etc)**
 
+:::important
+The ability to use the credentials of a specific Harness Delegate is behind the feature flag `PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 ![](../static/GCP-details.png)
 
 ### Specify credentials here
@@ -97,6 +101,10 @@ You can also create a new [File Secret](../3-add-file-secrets.md) here and add t
 Click **Continue**.
 
 ### Use the credentials of a specific Harness Delegate (IAM role, service account, etc)
+
+:::important
+The ability to use the credentials of a specific Harness Delegate is behind the feature flag `PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
 
 If you select this option, Harness will authenticate using the IAM role assigned to the specific delegate you select. This would be the Application Default Credentials.
 
