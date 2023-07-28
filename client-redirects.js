@@ -57,7 +57,7 @@ module.exports = {
     },
     {
       from: "/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts",
-      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/set-up-test-intelligence",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence",
     },
     {
       from: "/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings",

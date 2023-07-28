@@ -79,7 +79,7 @@ Test Intelligence supports the following codebases:
 
 Currently, Test Intelligence for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
-<!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [build environment](/docs/continuous-integration/use-ci/set-up-test-intelligence/set-up-test-inteliigence#build-environment) in your pipeline's YAML. -->
+<!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [build environment](/docs/continuous-integration/use-ci/set-up-test-intelligence/#build-environment) in your pipeline's YAML. -->
 
 :::
 
