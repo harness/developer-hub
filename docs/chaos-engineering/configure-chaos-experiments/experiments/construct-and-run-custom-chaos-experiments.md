@@ -70,9 +70,11 @@ To add a chaos experiment:
 
 		* **Tune fault weightage:** Set the weight for the fault, which sets the importance of the fault relative to the other faults in the experiments. This is used to calculate the [resilience score](/docs/chaos-engineering/configure-chaos-experiments/experiments/resilience-score) of the experiment.
 
-	1. To configure a sequence of faults to execute before the next fault, point your mouse below a fault, and then select **Add**.
+	1. To add a fault that runs in parallel to another fault, point your mouse below an existing fault, and then select **Add**.
 
 		![Complex Faults Experiment](./static/construct-and-run-custom-chaos-experiments/complex-faults-experiment.png)
+
+		In Experiment Builder, faults that are stacked vertically run in parallel, and faults or groups of parallel faults run in sequence from left to right.
 
 	#### If you select Templates from Chaos Hubs:
 
