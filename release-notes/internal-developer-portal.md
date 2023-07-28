@@ -50,7 +50,7 @@ This release does not include early access features.
   <TabItem value="Hotfix version 0.7.1">
 ```
 
-IDP Software Templates now includes `harness:create-secret` and `harness:delete-secret` template actions which are available to be used in `template.yaml`. These can be used to take secret as an input from the developer, create a Harness secret and use it as a Pipeline variable as a runtime input. [Docs link](coming) (IDP-780)
+IDP Software Templates now includes `harness:create-secret` and `harness:delete-secret` template actions which are available to be used in `template.yaml`. These can be used to take secret as an input from the developer, create a Harness secret and use it as a pipeline variable as a runtime input. [Tutorial](/tutorials/internal-developer-portal/using-secret-as-an-input) (IDP-780)
 
 ```mdx-code-block
   </TabItem>
