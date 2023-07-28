@@ -380,6 +380,8 @@ To initiate replication, do the following:
    pg_basebackup -h <primary> -p 5432 -U reptest -D /var/lib/postgresql/13/main/ -Fp -Xs -R
    ```
 
+   The backup utility will prompt you for the password for the user named reptest
+
 4. Create a `standby.signal` file in your data directory.
    
    ```
@@ -471,6 +473,49 @@ To enable SSL on TimescaleDB, do the following:
    certKey: "cert"
    ```
 
+
+## Failover and High Availability
+PostgreSQL provides some failover functionality, where the replica is promoted to primary in the event of a failure. This is provided using the pg_ctl command or the trigger_file. However, PostgreSQL does not provide support for automatic failover.
+
+### Transition of Standby/Secondary to Primary:
+1. In the event of primary shutdown or unavailability. The timescaledb is still available but only in read-only mode. The standby needs to be to promoted to Primary. It can be done using pg_ctl promote command[Make sure the primary is totally down]:
+
+   ```
+      /usr/lib/postgresql/13/bin/pg_ctl promote -D /var/lib/postgresql/13/main/
+      service postgresql restart
+   ```
+2. Change the host in your harness instance and upgrade your helm-charts.
+
+### Recovering the old Primary
+1. Adding few terminology to used in analogy:
+   old primary ↔︎ new secondary 
+   new primary ↔︎ old secondary ↔︎ old standby
+
+2. Since we converted the old standby to new primary, operations can happen in the new primary and the old primary may go out of sync.
+
+3. We are aiming for is to have the old primary become the new secondary and the old secondary remain as the new primary.
+
+4. Firstly, we need to add the host as replication in pg_hba.conf file in the new primary
+   ```
+   host    replication     reptest         <EXTERNAL IP of OLD PRIMARY/32       md5
+   ```
+   then run (as root):
+   ```
+   service postgresql restart
+   ```
+
+5. A simple method to recover primary is to copy the data(this will not involve manual creation of signal file again)
+
+   ```
+   cd /var/lib/postgresql/13
+   mv main main.org
+   mkdir main
+   chmod -R 0700 main
+   ```
+   ```
+   pg_basebackup -h <NEW_PRIMARY_IP> -p 5432 -U reptest -D /var/lib/postgresql/13/main/ -Fp -Xs -R
+   ```
+6. Old primary is now a new secondary.
 ## Upgrade TimescaleDB
 
 You can upgrade your self-managed TimescaleDB installation in-place. A major upgrade is when you upgrade from one major version of TimescaleDB to the next major version. For example, when you upgrade from TimescaleDB 13 to TimescaleDB 14.
