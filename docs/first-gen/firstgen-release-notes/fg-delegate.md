@@ -20,8 +20,7 @@ To identify the cluster that hosts your account, open Harness FirstGen, go to **
 
 For FirstGen SaaS release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, go to [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
 
-
-## Latest - July, 18 2023, Harness version 79915, Harness Delegate version 79904
+## Latest - July, 31 2023, Harness version 801xx, Harness Delegate version 801xx
 
 ### Deprecation notice
 
@@ -34,7 +33,7 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
   <TabItem value="What's new">
 ```
 
-- The Universal Base Image Minimal used for the Harness Delegate has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-39720)
+This release does not include any new features.
 
 ```mdx-code-block
   </TabItem>
@@ -48,33 +47,14 @@ This release does not include any new early access features.
   <TabItem value="Fixed issues">
 ```
 
-This release does not include any fixed issues.
+- If the same java args are specified, the right most takes precedence. This change allows JAVA_OPTS variable in delegate yaml to override jvm memory settings. (PL-38839)
 
 ```mdx-code-block
   </TabItem>
   <TabItem value="Hotfix release">
 ```
 
-## Hotfix version 79908
-
-Google Cloud builds failed with the message `Invalid Google Cloud Platform credentials`. (CDS-73352)
-
-This issue is now fixed with a code enhancement to GCP build triggers integration to improve stability.
-
-:::info note
-Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
-:::
-
-
-## Hotfix version 79711
-
-Google Cloud builds failed with the message `Invalid Google Cloud Platform credentials`. (CDS-73352)
-
-This issue is now fixed with a code enhancement to GCP build triggers integration to improve stability.
-
-:::info note
-Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
-:::
+The current version does not include a hotfix release.
 
 ```mdx-code-block
   </TabItem>
@@ -86,19 +66,53 @@ Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
 <details>
 <summary>2023 releases</summary>
 
-### June 28, 2023, Harness version 79714, Harness Delegate version 79707
+#### July 24, 2023 Harness Delegate hotfix version 79908
 
-#### What's new
+Google Cloud builds failed with the message `Invalid Google Cloud Platform credentials`. (CDS-73352)
+
+This issue is now fixed with a code enhancement to GCP build triggers integration to improve stability.
+
+:::info note
+Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
+:::
+
+#### July 19, 2023 Harness Delegate hotfix version 79711
+
+Google Cloud builds failed with the message `Invalid Google Cloud Platform credentials`. (CDS-73352)
+
+This issue is now fixed with a code enhancement to GCP build triggers integration to improve stability.
+
+:::info note
+Currently, this feature is behind the feature flag, `GCB_CI_SYSTEM`.
+:::
+
+#### July, 18 2023, Harness version 79915, Harness Delegate version 79904
+
+##### What's new
+
+- The Universal Base Image Minimal used for the Harness Delegate has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-39720)
+
+##### Early access
+
+This release does not include any new early access features.
+
+##### Fixed issues
+
+This release does not include any fixed issues.
+
+#### June 28, 2023, Harness version 79714, Harness Delegate version 79707
+
+##### What's new
 
 - When a delegate token is revoked, Harness now sends `SELF_DESTRUCT` to all delegates that are using the revoked token. (PL-38957)
 
 - Upgraded the delegate JRE to 11.0.19_7. (PL-37994) 
 
-#### Early access
+##### Early access
 
 This release does not include any new early access features.
 
-#### Fixed issues
+##### Fixed issues
 
 - Kubernetes deployments timed out and failed when listing pods. (CDS-71328, ZD-45584)
 
@@ -114,20 +128,22 @@ This release does not include any new early access features.
 - Helm delegate installation failed in Self-Managed Enterprise Edition. (PL-39028)
 
    This issue is fixed with a code enhancement. The `DELPOY_MODE` is now set to `KUBERNETES_ONPREM` for Self-Managed Enterprise Edition Docker and Helm delegates.
+  
 
-### June 9, 2023, Harness version 79514, Harness Delegate version 79503
 
-#### What's new
+#### June 9, 2023, Harness version 79514, Harness Delegate version 79503
+
+##### What's new
 
 - Enhanced the application handling mechanism when the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE`. (CDS-68821)
 
   When the `HARNESS__STATUS__IDENTIFIER` environment variable is not set to `ACTIVE` for any of the releases of an application, Harness starts looking for the application that has the same name as the release name. This ensures that the correct active application is always picked in case the `HARNESS__STATUS__IDENTIFIER` is removed.
 
-#### Early access 
+##### Early access 
 
 This release does not include any new early access features.
 
-#### Fixed issues
+##### Fixed issues
 
 - Helm execution failed with `KubernetesClientException` error. (CDS-70386, ZD-45051)
 
@@ -135,19 +151,19 @@ This release does not include any new early access features.
 
   This issue is fixed.
 
-### May 23, 2023, Harness version 79306, Harness Delegate version 79307
+#### May 23, 2023, Harness version 79306, Harness Delegate version 79307
 
 Harness FirstGen release 79306 includes the following feature changes and fixes for the Harness Delegate.
 
-#### What's new
+##### What's new
 
 This release does not include any new features.
 
-#### Early access 
+##### Early access 
 
 This release does not include any new early access features. 
 
-#### Fixed issues
+##### Fixed issues
 
 - Executions were failing with `Canary failed: [Canary Deployment failed - NoSuchMethodError: org.yaml.snakeyaml.constructor.SafeConstructor: method 'void <init>()' not found ]` error message. (CDS-68293, ZD-43753, ZD-43769)
   
@@ -170,19 +186,19 @@ This release does not include any new early access features.
 
 - The org.json:json is upgraded from version 20160810 to 20230227 to address vulnerabilities. (PL-37905)
 
-### April 22, 2023, Harness version 79111, Harness Delegate version 79106
+#### April 22, 2023, Harness version 79111, Harness Delegate version 79106
 
 Harness FirstGen release 79111 includes the following feature changes and fixes for the Harness Delegate.
 
-#### What's new
+##### What's new
 
 This release does not include any new features.
 
-#### Early access 
+##### Early access 
 
 This release does not include any new early access features. 
 
-#### Fixed issues
+##### Fixed issues
 
 This release includes the following fixes:
 
@@ -192,11 +208,11 @@ This release includes the following fixes:
 
 - Removed the `DELEGATE_IMAGE_TAG` version override when immutable delegates are enabled. (DEL-6202)
 
-### March 23, 2023, Harness version 78817, Harness Delegate version 78705
+#### March 23, 2023, Harness version 78817, Harness Delegate version 78705
 
 Harness FirstGen release 78817 includes the following feature changes and fixes for the Harness Delegate.
 
-#### What's new
+##### What's new
 
 Users can override the delegate image for their account using an endpoint. (DEL-6024)
 
@@ -218,35 +234,35 @@ Optional arguments:
 
 Use an api-key with account edit permission in the API header.
 
-#### Early access 
+##### Early access 
 
 This release does not include any new early access features. 
 
-#### Fixed issues
+##### Fixed issues
 
 This release does not include any fixed issues. 
 
-### March 15, 2023, Harness version 78712, Harness Delegate version 78705
+#### March 15, 2023, Harness version 78712, Harness Delegate version 78705
 
 Harness FirstGen release 78712 includes the following feature changes and fixes for the Harness Delegate.
 
-#### What's new
+##### What's new
 
 This release does not include any new features. 
 
-#### Early access 
+##### Early access 
 
 This release does not include any new early access features. 
 
-#### Fixed issues
+##### Fixed issues
 
 Upgraded org.codehaus.groovy:groovy to 3.0.15 to fix a vulnerability. (DEL-6015)
 
-### March 8, 2023, Harness version 78619, Harness Delegate version 78500
+#### March 8, 2023, Harness version 78619, Harness Delegate version 78500
 
 Harness FirstGen release 78619 includes the following feature changes and fixes for the Harness Delegate.
 
-#### What's new
+##### What's new
 
 - The secrets manager cache was moved from Redis to the Harness Manager's local pod. (DEL-5884)
 
@@ -256,11 +272,11 @@ Harness FirstGen release 78619 includes the following feature changes and fixes 
 
   This migration is controlled through a configuration flag. For a period of time after the migration, any newly created tasks will have an ID with a **- DEL** suffix.
 
-#### Early access 
+##### Early access 
 
 This release does not include any new early access features. 
 
-#### Fixed issues
+##### Fixed issues
 
 API output includes a new field called **Disconnected**, which determines if a delegate is connected. (DEL-5995)
 
@@ -270,27 +286,27 @@ The **Disconnected** field is set to **true** if no heartbeat communications occ
 
 Harness FirstGen release 78507 includes the following feature changes and fixes for Harness Delegate.
 
-#### What's new
+##### What's new
 
 - You can dynamically select delegates by hostname during pipeline runs. To do so, select delegates by hostname from your delegate groups. (DEL-5052)
 
-#### Fixed issues
+##### Fixed issues
 
 This release does not include fixed issues for Harness Delegate.
 
-### February 15, 2023, Harness version 78421, Harness Delegate version 78306
+#### February 15, 2023, Harness version 78421, Harness Delegate version 78306
 
 Harness FirstGen release 78421 includes the following feature changes and fixes for Harness Delegate.
 
-#### What's new
+##### What's new
 
 - The delegate was refactored to remove the `HelmChart` entity from the delegate JAR file. The `HelmChart` entity was replaced with a data transfer object (DTO) that does not include an annotation for MongoDB. The delegate dependency on MongoDB was eliminated. (DEL-5732)
 
-### February 6, 2023, Harness version 78321, Harness Delegate version 78306
+#### February 6, 2023, Harness version 78321, Harness Delegate version 78306
 
 Harness FirstGen release 78321 includes the following feature changes and fixes for Harness Delegate.
 
-#### What's new
+##### What's new
 
 This release introduces the following security enhancements:
 
@@ -317,7 +333,7 @@ This release introduces the following security enhancements:
   
 - The `org_mongodb_mongodb_driver_sync` and `org_mongodb_mongodb_driver_legacy` libraries were removed from the delegate to eliminate their vulnerabilities. (DEL-5721) 
 
-#### Fixed issues
+##### Fixed issues
 
 This release includes the following fixes.
 
@@ -327,7 +343,7 @@ This release includes the following fixes.
 
 - Changed delegate behavior to ensure that the tasks assigned to a delegate fail if the delegate does not send heartbeats for a period of three minutes. (DEL-5821)
 
-### January 17, 2023, Harness version 78215, Harness Delegate version 78101
+#### January 17, 2023, Harness version 78215, Harness Delegate version 78101
 
 Harness FirstGen release 78215 includes no changed features or fixes for Harness Delegate.
 
