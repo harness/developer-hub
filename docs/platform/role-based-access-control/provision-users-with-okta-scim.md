@@ -272,7 +272,7 @@ Let us look at the following example:
 5. The FirstGen App Integration is used for user authentication.  
 `user1@example.com` is a member of the FirstGen App Integration and hence is authenticated and successfully logged in to Harness NextGen.  
 `user_2@example.com` is not a member of the FirstGen App Integration, hence the authentication fails and the user cannot log in to Harness NextGen.
-   ![](./.static/provision-users-with-okta-scim-20.png)
+   ![](./static/provision-users-with-okta-scim-20.png)
 
 ### Assigning permissions post-provisioning
 

@@ -25,14 +25,14 @@ Here is a quick overview of Resource Groups at various scopes:
 * **All (including all Organizations and Projects)** - To include all the resources within the scope of the Account, as well as those within the scope of the Orgs and Projects in this Account.
 * **Specified Organizations (and their Projects)** - To include all the resources within the scope of specific Organizations and their Projects.
 
-![](../4_Role-Based-Access-Control/static/add-resource-groups-32.png)
+![](./static/add-resource-groups-32.png)
 ### Review: Resource Groups and Scopes
 
 A Resource Group can contain any of the following:
 
 * All or selected resources from the list of resources in the Resource Group's scope - For example, a Resource Group RG1 created within Account Acc1 can contain all or selected resources created within the same Account Acc1.
 * All or selected resources in the scope in which it is defined. For example, all Account level resources, all Account Level Secret Managers, all Connectors in Org A.
-* All or specific resources for the entire account - For example, a Resource Group RG1 within Account Acc1 can contain all or selected resources created within Acc1, Organizations within Acc1, Projects within Organizations in Acc1.![](../4_Role-Based-Access-Control/static/add-resource-groups-33.png)
+* All or specific resources for the entire account - For example, a Resource Group RG1 within Account Acc1 can contain all or selected resources created within Acc1, Organizations within Acc1, Projects within Organizations in Acc1.![](./static/add-resource-groups-33.png)
 
 Harness includes the following built-in Resource Groups at the Account, Org, and Project scope:
 
@@ -57,20 +57,20 @@ Enter a **Name** for your **Resource Group**.
 
 Enter **Description** and **Tags** for your **Resource Group**.
 
-![](../4_Role-Based-Access-Control/static/add-resource-groups-34.png)
+![](./static/add-resource-groups-34.png)
 Click **Save**.
 
 ### Step 2: Select a Resource Scope
 
 You must select the scope of the resources that must be included in your new Resource Group after it has been saved.
 
-![](../4_Role-Based-Access-Control/static/add-resource-groups-35.png)
+![](./static/add-resource-groups-35.png)
 You can select one of the following in Resource Group:
 
 * **Account Only**
 * **All (including all Organizations and Projects)**
-* **Specified Organizations (and their Projects)**![](../4_Role-Based-Access-Control/static/add-resource-groups-36.png)
-For each Organization you select, you can further select **All** or **Specified** Projects within this Organization to include the resources accordingly.![](../4_Role-Based-Access-Control/static/add-resource-groups-37.png)
+* **Specified Organizations (and their Projects)**![](./static/add-resource-groups-36.png)
+For each Organization you select, you can further select **All** or **Specified** Projects within this Organization to include the resources accordingly.![](./static/add-resource-groups-37.png)
 
 Click **Apply**.
 
@@ -80,19 +80,19 @@ After you have selected Resource Scope, you must select the resources that you w
 
 You can either Select **All** or **Specified** resources.
 
-![](../4_Role-Based-Access-Control/static/add-resource-groups-38.png)
+![](./static/add-resource-groups-38.png)
 Click **Save**.
 
 Go back to Resource Groups. Your Resource Group is now listed here.
 
-![](../4_Role-Based-Access-Control/static/add-resource-groups-39.png)
+![](./static/add-resource-groups-39.png)
 ### Step: Delete A Resource Group
 
 Click the **Resource Groups** tab under **Access Control.**
 
 Click **Delete** on the top right corner to remove a Resource Group.
 
-![](../4_Role-Based-Access-Control/static/add-resource-groups-40.png)
+![](./static/add-resource-groups-40.png)
 ### Step: Manage Resource Group
 
 Click the **Resource Groups** tab under **Access Control.**

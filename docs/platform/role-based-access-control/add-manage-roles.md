@@ -20,7 +20,7 @@ This topic will explain the steps to create and manage Roles within Harness.
 
 The **Account Admin** Role has permissions for all the resources within the Account scope as well as its child scope (Organizations and Projects within this Account).
 
-![](../4_Role-Based-Access-Control/static/add-manage-roles-17.png)
+![](./static/add-manage-roles-17.png)
 ### Step: Add a New Role
 
 This topic assumes you have a Harness Project set up. If not, see [Create Organizations and Projects](../organizations-and-projects/create-an-organization.md).
@@ -33,7 +33,7 @@ Click **Roles**.
 
 Click **New Role**. The **New Role** settings appear.
 
-![](../4_Role-Based-Access-Control/static/add-manage-roles-18.png)
+![](./static/add-manage-roles-18.png)
 Enter a **Name** for your **Role**.
 
 Enter optional **Description** and **Tags** for your **Role**.
@@ -52,7 +52,7 @@ Click the **Roles** tab under **Access Control**.
 
 Click on the role you want to edit. The **Update Role Permissions** page appears.
 
-![](../4_Role-Based-Access-Control/static/add-manage-roles-19.png)
+![](./static/add-manage-roles-19.png)
 Add/Remove Resource-specific permissions from this page. Click **Apply Changes**.
 
 ### Harness Built-in Roles

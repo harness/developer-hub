@@ -39,7 +39,7 @@ The users that you add in the Account scope will **not** be assigned the **Accou
 
 * When you add a new Organization or Project, the default role assignment for the default User Group is that of **Organization Viewer** and **Project Viewer** respectively.
 
-![](../3_User-Management/static/harness-default-user-groups-57.png)
+![](./static/harness-default-user-groups-57.png)
 
 * When you add a user to an existing Account, Organization, or Project, Harness adds the user to the default User Group in the scope where you added the user.  
 For example, if you add a user to your existing Organization `OrgExample`, Harness will add the user to the All Organization Users group within `OrgExample`.
@@ -177,7 +177,7 @@ To add notification preferences to Harness User Groups, perform the following st
 	* **Slack Webhook URL** – Enter the Slack channel Incoming Webhook URL. For more details, see [Send Notifications Using Slack](../5_Notifications/send-notifications-using-slack.md).
 	* **PagerDuty Integration Key** – Enter the key for a PagerDuty Account/Service to which Harness can send notifications. You can copy/paste this key from **Integrations** of your service in **Services** > **Service Directory.**
 	
-	![](../3_User-Management/static/add-user-groups-56.png)
+	![](./static/add-user-groups-56.png)
 
 	* **Microsoft Teams Webhook URL** - Enter the Microsoft Teams Incoming Webhook URL.
 
