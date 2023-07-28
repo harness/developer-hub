@@ -2,30 +2,97 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-07-07T10:00
+date: 2023-07-24T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ```
-Review the notes below for details about recent changes to Harness Cloud Cost Management, NextGen SaaS. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). 
 
-For information about data privacy and security, go to the [Harness Trust Center](https://trust.harness.io/).
+<DocsButton icon = "fa-solid fa-square-rss" text="Subscribe via RSS" link="/release-notes/cloud-cost-management/rss.xml" />
 
+Review the notes below for details about recent changes to Harness Cloud Cost Management. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
 
-## Latest - July 07, 2023, version 80002
+## Latest - July 21, 2023, version 80202
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-### What's new
+This release does not include any new features.
+
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+
+This release does not include any early access features.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+```
+
+This release does not include any fixed issues.
+
+
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### July 13, 2023, version 80102
+
+##### What's new
+
+Recommendations page UI enhancement (CCM-12693)
+
+ The **Include** dropdown on the **Recommendations** page has been removed. Instead, the following toggle options have been added in the Filter panel as shown in the screenshots below: 
+
+  - Show Recommendations on Parent resource
+  - Show Recommendations on Child resource
+  - Show Recommendations on resources added to the IgnoreList
+
+By default, the first two options are enabled, and you can modify the toggles to customize the list filtering.
+
+&nbsp <docimage path={require('./static/ccm-toggle-options-recommendations-filter.png')} width="40%" height="40%" title="Click to view full size image" />
+   
+  <docimage path={require('./static/ccm-tooltip-recommendations.png')} width="60%" height="60%" title="Click to view full size image" />
+
+##### Early access
+
+This release does not include any early access features.
+
+##### Fixed issues
+
+* The message displayed on the UI was incorrect when there were no recommendations for the account. (CCM-13250)
+
+  This issue is fixed now.
+
+    <docimage path={require('./static/ccm-incorrect-recommendations-msg-ui.png')} width="60%" height="60%" title="Click to view full size image" />
+
+
+* Adding an invalid cost category in a perspective rule caused the Anomalies feature to not function as expected. (CCM-13218)
+
+  Now, the cost category IDs are validated when added in the perspective rule.
+
+
+#### July 07, 2023, version 80002
+
+##### What's new
 
 * Azure VM recommendations (CCM-13142)
 
@@ -39,37 +106,15 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
   You can now easily move recommendations from the **Applied** state back to the **Open** state. This enhancement allows you to easily rectify accidental closure of recommendations or marking Jira tickets as done by returning them to an actionable state.
 
-
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
-### Early access
+##### Early access
 
 This release does not include any early access features.
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
-### Fixed issues
-
+##### Fixed issues
 
 * Nodepool recommendations displayed incorrect savings data. (CCM-12816)
 
  Implemented a check to exclude nodepools that have more than one instance family from generating recommendations. This is necessary as the current calculations for such nodepools result in incorrect recommendations. 
-
-  
-  
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### June 30, 2023, version 79906
 

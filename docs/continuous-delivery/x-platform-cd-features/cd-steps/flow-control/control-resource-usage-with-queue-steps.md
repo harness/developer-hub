@@ -44,7 +44,7 @@ In **Advanced**, you can use the following options:
 
 Let's look at a simple example to show how Queue steps work.
 
-Here's the YAML for the pipeline that contains a Custom stage with a Queue step followed by a [shell script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step that runs a Bash `sleep 30`.
+Here's the YAML for the pipeline that contains a Custom stage with a Queue step followed by a [shell script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step that runs a Bash `sleep 30`.
 
 You can copy it and paste it into your Harness project. You need to update the `projectIdentifier` and `orgIdentifier` settings to match your current [project and org](/docs/platform/organizations-and-projects/projects-and-organizations).
 

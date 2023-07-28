@@ -9,11 +9,6 @@ helpdocs_is_published: true
 ---
 
 
-:::note
-Currently, this feature is behind the feature flag `NG_ENABLE_LDAP_CHECK`. Contact Harness Support to enable the feature.
-
-:::
-
 Harness supports Single Sign-On (SSO) with LDAP implementations, including Active Directory and OpenLDAP. Integrating Harness with your LDAP directory enables you to log your LDAP users into Harness as part of Harness' SSO infrastructure.
 
 Once you integrate your Harness account with LDAP, you can create a Harness User Group and sync it with your LDAP directory users and groups. Then the users in your LDAP directory can log into Harness using their LDAP emails and passwords.

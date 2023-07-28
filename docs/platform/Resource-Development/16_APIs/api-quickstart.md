@@ -1,7 +1,7 @@
 ---
 title: Harness API quickstart
 description: This document explains the steps to get started with Harness NG APIs.
-sidebar_position: 2
+sidebar_position: 1
 helpdocs_topic_id: f0aqiv3td7
 helpdocs_category_id: pm96bpz4kf
 helpdocs_is_private: false
@@ -13,8 +13,8 @@ Everything you can create in the Harness Manager you can create using our REST A
 This quickstart shows how to onboard Harness resources using the APIs. We'll add a new Project, Connector, and Pipeline using curl and the APIs.
 
 
-:::note
-**Looking for the API reference docs?** See [Harness API Reference Docs](https://harness.io/docs/api/).
+:::info note
+**Looking for the API reference docs?** Go to [Harness API Reference Docs](https://harness.io/docs/api/).
 
 :::
 
@@ -26,7 +26,7 @@ You'll learn how to:
 * Onboard Harness Projects, Connectors, and Pipelines using the Harness API.
 
 
-:::note
+:::info note
 The API requests in this topic use curl, but Harness supports multiple languages, such as Go, Java, and Node.js. The [Harness API Reference Docs](https://harness.io/docs/api/) provides examples for all supported languages.
 
 :::
@@ -35,16 +35,16 @@ The API requests in this topic use curl, but Harness supports multiple languages
 
 * [Harness Key Concepts](../../../first-gen/starthere-firstgen/harness-key-concepts.md)
 * [Access Management(RBAC) Overview](../../4_Role-Based-Access-Control/1-rbac-in-harness.md)
-* This quickstart walks you through adding the Harness API keys needed to authenticate with the API. To review Harness API keys, see [Add and Manage API Keys](../../3_User-Management/7-add-and-manage-api-keys.md).
-* Make sure your Harness account has the required permissions to Create, Edit, Delete, and View the Harness resources you are creating via API. Any of the following default roles are sufficient: Account Administrator, Organization Admin, Project Admin. For more, see [Permissions Reference](../../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md).
+* This quickstart walks you through adding the Harness API keys needed to authenticate with the API. To review Harness API keys, go to [Add and Manage API Keys](../../3_User-Management/7-add-and-manage-api-keys.md).
+* Make sure your Harness account has the required permissions to Create, Edit, Delete, and View the Harness resources you are creating via API. Any of the following default roles are sufficient: Account Administrator, Organization Admin, Project Admin. For more, go to [Permissions Reference](../../4_Role-Based-Access-Control/ref-access-management/permissions-reference.md).
 
 ### Step 1: Create a Harness API Key and PAT
 
 The Harness API uses API keys to authenticate requests. You create the API key in your Harness Manager User Profile, add a Personal Access Token (PAT) to the key, and then use the PAT in your API requests.
 
 
-:::note
-For an overview of Harness API keys, see [Add and Manage API Keys](../../3_User-Management/7-add-and-manage-api-keys.md).
+:::info note
+For an overview of Harness API keys, go to [Add and Manage API Keys](../../3_User-Management/7-add-and-manage-api-keys.md).
 
 :::
 
@@ -90,13 +90,13 @@ Your new token is generated.
 :::warning
 Please copy and store your token value somewhere safe. You won't be able to see it again.  
   
-Your API keys carry many privileges, so be sure not to share them in publicly accessible areas. Make sure you always use the updated API Key value after you rotate the token. For more details, see [Rotate Token](../../3_User-Management/7-add-and-manage-api-keys.md#rotate-token).
+Your API keys carry many privileges, so be sure not to share them in publicly accessible areas. Make sure you always use the updated API Key value after you rotate the token. For more details, go to [Rotate Token](../../3_User-Management/7-add-and-manage-api-keys.md#rotate-token).
 :::
 
 
 #### Service Account Tokens
 
-You can also use a Service Account Tokens instead of PAT. See [Add and Manage Service Accounts](../../../platform/3_User-Management/6-add-and-manage-service-account.md).
+You can also use service account tokens instead of PAT. For more information, go to [Add and Manage Service Accounts](../../../platform/3_User-Management/6-add-and-manage-service-account.md).
 
 ### Step 2: Create a Project via API
 
@@ -273,12 +273,11 @@ In this tutorial, you learned how to:
 * Authenticate with Harness via API using API keys.
 * Onboard Harness Projects, Connectors, and Pipelines using the Harness API.
 
-To explore the Harness API, see [Harness API Reference Docs](https://harness.io/docs/api/).
+To explore the Harness API, go to [Harness API Reference Docs](https://harness.io/docs/api/).
 
 ### Notes
 
-* **Rate Limiting:** Harness uses rate limiting to control API traffic and ensure the stability of the system. The Harness APIs are protected against sudden large bursts of traffic, and sustained high volumes of requests, for example, frequent polling.
-    The rate limit set in Harness is 1000 requests per minute per API key. Harness reserves the rights to change this limit at any time to protect the platform.
+* **Rate Limiting:** Harness uses rate limiting to control traffic and ensure the stability of the platform. For platform rate limit information, go to [Rate limits](/docs/platform/rate-limits).
 
 * **Cross-origin Resource Sharing (CORS):** Harness APIs support CORS. This allows interactions between resources from different origins, which is normally prohibited to prevent malicious behavior. Each request must provide credentials (personal access tokens and service access tokens are both supported options).
 * **Errors:** Harness uses conventional HTTP response codes to indicate the success or failure of an API request.
@@ -296,6 +295,3 @@ To explore the Harness API, see [Harness API Reference Docs](https://harness.io/
 | 404 - Not Found | The requested resource does not exist. |
 | 429 - Server Errors | The rate limit is exceeded. |
 | 500, 502, 503, 504 - Server Errors | The Harness server encountered an unexpected error. |
-
-
-

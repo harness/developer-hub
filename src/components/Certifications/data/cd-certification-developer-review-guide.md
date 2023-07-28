@@ -13,7 +13,7 @@
 | Blue/Green Deployments  | [Create a Kubernetes Blue Green Deployment](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/create-a-kubernetes-blue-green-deployment) |
 | Canary Deployments  | [Create a Kubernetes Canary Deployment](https://developer.harness.io/docs/continuous-delivery/cd-execution/kubernetes-executions/create-a-kubernetes-canary-deployment) |
 |**3. Continuous Delivery** | |
-| Barriers | [Best Practices for Looping Strategies ](https://developer.harness.io/docs/first-gen/continuous-delivery/model-cd-pipeline/workflows/synchronize-workflows-in-your-pipeline-using-barrier/) |
+| Barriers | [Synchronize Parallel Stages and Step Groups ](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/cd-steps/flow-control/synchronize-deployments-using-barriers/) |
 | Conditional Execution  | [Stage and Step Conditional Execution Settings](https://developer.harness.io/docs/platform/pipelines/w_pipeline-steps-reference/step-skip-condition-settings/) |
 | Steps | [Looping Strategies Overview ](https://developer.harness.io/docs/platform/pipelines/looping-strategies-matrix-repeat-and-parallelism/) |
 | Looping Strategies | [Best Practices for Looping Strategies ](https://developer.harness.io/docs/platform/pipelines/best-practices-for-looping-strategies/) |

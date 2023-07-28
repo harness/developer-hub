@@ -84,7 +84,7 @@ Set a default for the step timeout. Leave enough time for the Users in **Approve
 
 The default timeout for an Approval step is **1d** (24 hours). You can use `**w**` for week, `**d**` for day, `**h**` for hour, `**m**` for minutes, `**s**` for seconds and `**ms**` for milliseconds. For example, 1d for one day.
 
-The maximum timeout duration is 24 days. The timeout countdown appears when the step in executed.
+The maximum timeout duration is 53 weeks. The timeout countdown appears when the step in executed.
 
 ![](./static/adding-harness-approval-stages-16.png)
 

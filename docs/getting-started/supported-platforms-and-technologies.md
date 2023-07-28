@@ -19,7 +19,7 @@ import PartialExample from '/docs/continuous-delivery/shared/cd-integrations-sup
 <PartialExample name="integrations" />
 
 
-## Continuous Integration (CI)
+## Continuous Integration (CI) 
 
 import Ci from '/docs/continuous-integration/shared/ci-supported-platforms.md';
 
@@ -27,39 +27,11 @@ import Ci from '/docs/continuous-integration/shared/ci-supported-platforms.md';
 
 ## Continuous Verification
 
-Harness supports the following metrics and logging platforms.
+Harness supports the following Application Performance Monitoring (APM) and log management tools:
 
-### Metrics providers
+import Cv from '/docs/continuous-delivery/verify/shared/cv-whats-supported.md';
 
-The following table lists Harness support for metrics platforms (APMs).
-
-| Metrics Provider Name                                                                                                               | Metric Pack                    | Deployment Verification      |
-| ----------------------------------------------------------------------------------------------------------------------------------- | ------------------------------ | ---------------------------- |
-| [AppDynamics](../continuous-delivery/verify/configure-cv/verify-deployments-with-app-dynamics.md)                              | Business Transactions          | Yes                          |
-| [AppDynamics](../continuous-delivery/verify/configure-cv/verify-deployments-with-app-dynamics.md)                              | JVM and Infra Metrics          | Supported via Custom Metrics |
-| [New Relic](../continuous-delivery/verify/configure-cv/verify-deployments-with-new-relic.md)                                   | Business Transactions          | Yes                          |
-| New Relic                                                                                                                           | Insights                       | Supported via Custom Metrics |
-| [Google Cloud Operations (GCP)](../continuous-delivery/verify/configure-cv/verify-deployments-with-google-cloud-operations.md) | Infrastructure Metrics         | Yes                          |
-| Google Cloud Operations (GCP)                                                                                                       | Custom metrics from explorer   | No                           |
-| [Prometheus](../continuous-delivery/verify/configure-cv/verify-deployments-with-prometheus.md)                                  | Custom metrics from Prometheus | Yes                          |
-| [Datadog](../continuous-delivery/verify/configure-cv/verify-deployments-with-datadog.md)                                       | Docker Infra Metrics           | Yes                          |
-| [Dynatrace](../continuous-delivery/verify/configure-cv/verify-deployments-with-dynatrace.md)                                   | Performance                    | Yes                          |
-
-### Log providers
-
-Most logging platforms are also supported.
-
-|                                                                                                                                     |                             |
-| ----------------------------------------------------------------------------------------------------------------------------------- | --------------------------- |
-| **Log Provider Name**                                                                                                               | **Deployment Verification** |
-| [Splunk](../continuous-delivery/verify/configure-cv/verify-deployments-with-splunk.md)                                         | Yes                         |
-| [Google Cloud Operations (GCP)](../continuous-delivery/verify/configure-cv/verify-deployments-with-google-cloud-operations.md) | Yes                         |
-
-### Custom health sources
-
-Harness offers support for all major APM vendors and log providers, but there are cases where a customized APM or log provider is needed. The Custom Health Source lets you customize APMs and log providers of your choice.
-
-See [Verify Deployments with Custom Health Source](../continuous-delivery/verify/configure-cv/verify-deployments-with-custom-health-metrics.md).
+<Cv />
 
 ## Cloud Cost Management
 
@@ -167,7 +139,7 @@ A Change Source monitors change events related to deployments, infrastructure ch
 
 ## Security Testing Orchestration
 
-See [Security Step Settings Reference](../security-testing-orchestration/sto-techref-category/security-step-settings-reference.md).
+Go to [Security Step Settings Reference](../security-testing-orchestration/sto-techref-category/security-step-settings-reference.md).
 
 ## Feature Flags
 
@@ -193,7 +165,7 @@ import Ffs from '/docs/feature-flags/shared/ff-supported-platforms-shared-server
 
 Perform chaos experiments on applications in your infrastructure, such as a Kubernetes cluster. Use predefined or custom workflow templates.
 
-See [Introduction to Chaos Module](../chaos-engineering/get-started/introduction-to-chaos-module).
+Go to [Introduction to Chaos Module](../chaos-engineering/get-started/introduction-to-chaos-module).
 
 ## Collaboration
 
@@ -218,7 +190,7 @@ Most providers are used in both Pipeline Notification Strategies and User Group 
 
 The following table lists Harness support for SSO protocols and tools.
 
-See [Add and Manage Access Control](../feature-flags/ff-onboarding/ff-security-compliance/manage-access-control.md).
+Go to [Add and Manage Access Control](../feature-flags/ff-onboarding/ff-security-compliance/manage-access-control.md).
 
 | SSO Type                                                                     | SSO Providers          | Authentication Supported | Authorization (Group Linking) Supported | SCIM Provisioning |
 | ---------------------------------------------------------------------------- | ---------------------- | ------------------------ | --------------------------------------- | ----------------- |
@@ -240,7 +212,7 @@ See [Add and Manage Access Control](../feature-flags/ff-onboarding/ff-security-c
 
 The following table lists Harness support for cloud platform secrets management services.
 
-See [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager).
+Go to [Harness Secrets Management Overview](/docs/platform/Secrets/Secrets-Management/add-an-aws-kms-secrets-manager).
 
 | Provider Name                                                               | Key Encryption Support | Encrypted Data Storaged with Harness | Support for Referencing Existing Secrets |
 | --------------------------------------------------------------------------- | ---------------------- | ------------------------------------ | ---------------------------------------- |
@@ -256,22 +228,22 @@ import Smp from '/docs/self-managed-enterprise-edition/shared/smp-supported-plat
 
 <Smp />
 
-## SDKs installed with the Delegate
+## SDKs installed with Harness Delegate
 
 Harness Delegate includes binaries for the SDKs that are required for deployments with Harness-supported integrations. These include binaries for Helm, ChartMuseum, `kubectl`, Kustomize, and so on.
 
 ### Kubernetes Deployments
 
-For Kubernetes deployments, the following SDKs/tools are included in the Delegate.
+For Kubernetes deployments, the following SDKs/tools are included in the delegate image type *`yy.mm.xxxxx`* 78306 and later.
 
-- kubectl: v1.13, v1.19
-- Helm: v2.13.1, v3.1.2, v3.8.0
-- Kustomize: v3.5.4, v4.0.0
+- kubectl: v1.24.3
+- Helm: v2.13.1, 3.1.2, 3.8.0
+- Kustomize: v4.5.4
 - OpenShift: v4.2.16
 
-The versions can be found in this public GitHub repo: <https://github.com/harness/harness-core/tree/develop/960-api-services/src/main/java/io/harness/delegate/clienttools>
+The versions can be found in the [Harness public GitHub repo](https://github.com/harness/harness-core/tree/develop/960-api-services/src/main/java/io/harness/delegate/clienttools).
 
-For details on updating the default tool versions, see [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
+For details on updating the default tool versions, go to [Build custom delegate images with third-party tools](/docs/platform/2_Delegates/install-delegates/build-custom-delegate-images-with-third-party-tools.md).
 
 For Kubernetes deployments, the following SDKs/tools are certified.
 
@@ -279,7 +251,7 @@ For Kubernetes deployments, the following SDKs/tools are certified.
 | ----------------------------------- | --------------------- | --------------------- |
 | **Manifest Type**                   | **Required Tool/SDK** | **Certified Version** |
 | Kubernetes                          | kubectl               | v1.25.6               |
-|                                     | go-template           | v0.4                  |
+|                                     | go-template           | v0.4.1                  |
 | Helm                                | kubectl               | v1.25.6               |
 |                                     | helm                  | v3.9.2                |
 | Helm (chart is stored in GCS or S3) | kubectl               | v1.25.6               |
@@ -306,7 +278,7 @@ To support customization, Harness provides a Harness Delegate image that does no
 
 Using the No Tools Image and Delegate YAML, you can install the specific SDK versions you want. You install software on the Delegate using the `INIT_SCRIPT` environment variable in the Delegate YAML.
 
-For steps on using the No Tools Delegate image and installing specific SDK versions, see [Install a Delegate with 3rd Party Tool Custom Binaries](../platform/2_Delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
+For steps on using the No Tools Delegate image and installing specific SDK versions, go to [Install a Delegate with 3rd Party Tool Custom Binaries](../platform/2_Delegates/install-delegates/install-a-delegate-with-3-rd-party-tool-custom-binaries.md).
 
 ## The Update Framework (TUF)
 

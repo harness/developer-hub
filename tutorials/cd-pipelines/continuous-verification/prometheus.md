@@ -18,7 +18,7 @@ When validating a deployment, looking at external systems such as APM, logging, 
 
 In this tutorial, we will [deploy an application that writes to a Prometheus](https://github.com/harness-apps/cv-example-app) endpoint and is validated by Harness Continuous Verification. 
 
-![Overview](../static/cv-prom/overview.png)
+![Overview](../static/cv-prom/cv-overview.png)
 
 ## Prerequisites 
 

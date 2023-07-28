@@ -1,7 +1,6 @@
 ---
 title: Clone multiple code repos in one pipeline
 description: Use Git Clone steps to clone additional code repos into a pipeline's workspace.
-
 sidebar_position: 20
 helpdocs_topic_id: k8tz6mtiut
 helpdocs_category_id: 7ljl8n7mzn
@@ -15,6 +14,12 @@ In addition to the pipeline's default [codebase](./create-and-configure-a-codeba
 * Pull code from separate code and build repos. For example, if your code files are in a repo managed by the Engineering team and your Dockerfiles are in a different repo managed by the Security team, you can clone both repos into the pipeline's workspace.
 
 This topic assumes you are familiar with [CI concepts](../../ci-quickstarts/ci-concepts.md) and the general [pipeline creation process](../prep-ci-pipeline-components.md).
+
+:::info Large file storage
+
+If you need to clone LFS-enabled repositories or run `git lfs` commands (such as `git lfs clone`), go to [Git Large File Storage](./gitlfs.md).
+
+:::
 
 ## Configure the default codebase
 
@@ -37,7 +42,7 @@ The following steps explain how to create a pipeline and add a **Build** stage. 
 7. Select **Set Up Stage**.
 8. On the stage's **Infrastructure** tab, [set up the build infrastructure](/docs/category/set-up-build-infrastructure).
 
-For more information about configuring the **Build** stage's, go to [Create and configure a codebase](./create-and-configure-a-codebase.md) and [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
+For more information about configuring the **Build** stage and the default codebase, go to [Create and configure a codebase](./create-and-configure-a-codebase.md) and [CI Build stage settings](../set-up-build-infrastructure/ci-stage-settings.md).
 
 ## Add the Git Clone step
 
@@ -103,7 +108,13 @@ If you want to use self-signed certificates in a Kubernetes Cluster build infras
 
 ### Run as User
 
-Specify the user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+This setting is available for Kubernetes cluster build infrastructures only.
+
+All Git clone steps, including the default clone codebase step and any additional **Git Clone** steps, use user 1000 by default for Kubernetes.
+
+If necessary, you can specify, in **Run as User**, a user ID to use to run all processes in the pod if running in containers. For more information, go to [Set the security context for a pod](https://kubernetes.io/docs/tasks/configure-pod-container/security-context/#set-the-security-context-for-a-pod).
+
+Specifying **Run as User** at the step level overrides **Run as User** in the [build infrastructure settings](../set-up-build-infrastructure/ci-stage-settings.md#infrastructure), if you had also specified it there.
 
 ### Set Container Resources
 

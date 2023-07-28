@@ -234,8 +234,8 @@ Kubernetes Cluster connector:
 
 ```yaml
 connector:
-  name: K8s Cluster
-  identifier: K8s cluster
+  name: K8sCluster
+  identifier: K8sCluster
   description: ""
   orgIdentifier: default
   projectIdentifier: CD_Docs
@@ -316,7 +316,7 @@ infrastructureDefinition:
   deploymentType: Kubernetes
   type: KubernetesDirect
   spec:
-    connectorRef: K8s_Cluster
+    connectorRef: K8sCluster
     namespace: default
     releaseName: release-<+INFRA_KEY>
   allowSimultaneousDeployments: false
@@ -408,7 +408,7 @@ curl --location --request POST 'https://app.harness.io/gateway/ng/api/connectors
 --header 'x-api-key: [security token]' \
 --data-raw 'connector:
   name: K8s Cluster
-  identifier: K8s_Cluster
+  identifier: K8sCluster
   description: ""
   orgIdentifier: default
   projectIdentifier: [project Id]
@@ -497,7 +497,7 @@ curl -i -X POST \
     "environmentRef": "myenv",
     "deploymentType": "Kubernetes",
     "type": "KubernetesDirect",
-    "yaml": "infrastructureDefinition:\n  name: myinfra1\n  identifier: myinfra1\n  description: \"\"\n  tags: {}\n  orgIdentifier: default\n  projectIdentifier: [project Id]\n  environmentRef: myenv\n  deploymentType: Kubernetes\n  type: KubernetesDirect\n  spec:\n    connectorRef: K8s_Cluster_1679347042448\n    namespace: default\n    releaseName: release-<+INFRA_KEY>\n  allowSimultaneousDeployments: false"
+    "yaml": "infrastructureDefinition:\n  name: myinfra1\n  identifier: myinfra1\n  description: \"\"\n  tags: {}\n  orgIdentifier: default\n  projectIdentifier: [project Id]\n  environmentRef: myenv\n  deploymentType: Kubernetes\n  type: KubernetesDirect\n  spec:\n    connectorRef: K8sCluster_1679347042448\n    namespace: default\n    releaseName: release-<+INFRA_KEY>\n  allowSimultaneousDeployments: false"
   }'
 ```
 
@@ -540,7 +540,7 @@ For the Terraform Provider resource, go to [harness_platform_connector_kubernete
 ## Create the Kubernetes cluster connector
 
 resource "harness_platform_connector_kubernetes" "inheritFromDelegate" {
-  identifier  = "K8s_Cluster"
+  identifier  = "K8sCluster"
   name        = "K8s Cluster"
   description = "description"
   tags        = ["foo:bar"]
@@ -650,7 +650,7 @@ resource "harness_platform_infrastructure" "example" {
                   deploymentType: Kubernetes
                   type: KubernetesDirect
                   spec:
-                    connectorRef: K8s_Cluster
+                    connectorRef: K8sCluster
                     namespace: default
                     releaseName: release-<+INFRA_KEY>
                   allowSimultaneousDeployments: false

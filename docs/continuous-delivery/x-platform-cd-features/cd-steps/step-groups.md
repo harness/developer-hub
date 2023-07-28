@@ -16,9 +16,20 @@ Review the following topics before you add step groups.
 
 * [Kubernetes CD quickstart](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-cd-quickstart)
 
-## Limitations
+## Important notes
 
-* Currently, Harness supports step groups in CD stages only. CI stage support is coming soon.
+* Currently, Harness supports step groups in Deploy and Custom stages only. CI stage support is coming soon.
+
+## Containerized step groups
+
+By default, the tasks performed by Harness CD steps are run on the Harness delegate host system, for example, the Kubernetes cluster where a Kubernetes delegate is running.
+
+To provide greater control over the resources used for CD steps, Harness also lets you use your own Kubernetes cluster as the runtime infrastructure for CD steps.
+
+You can use a CD step group that points to your cluster as the runtime infrastructure. Next, in the step group, you can add the steps supported by containerized step groups.
+
+For more information, go to [Containerize step groups](/docs/continuous-delivery/x-platform-cd-features/cd-steps/containerized-steps/containerized-step-groups.md).
+
 
 ## Visual summary
 
@@ -33,7 +44,7 @@ https://www.youtube.com/watch?v=J5eHYSbE8cg-->
 
 Running steps in parallel can be beneficial in many ways, such as:
 
-* Simulating load using multiple [HTTP steps](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines).
+* Simulating load using multiple [HTTP steps](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-http-requests-in-cd-pipelines).
 * Running multiple [Verify steps](/docs/continuous-delivery/verify/verify-deployments-with-the-verify-step) for different providers (AppDynamics, Splunk, Prometheus, etc).
 * Running independent steps that don't need to be run serially.
 * Running multiple Kubernetes [Apply steps](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-k8s-ref/kubernetes-apply-step) to deploy multiple Kubernetes resources at once.

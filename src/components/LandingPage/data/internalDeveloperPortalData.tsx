@@ -12,7 +12,7 @@ export const FeaturedList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/internal-developer-portal/create-your-first-service-onboarding-pipeline",
+    link: "/tutorials/internal-developer-portal/service-onboarding-pipeline",
   },
 ];
 
@@ -25,6 +25,6 @@ export const IDPList: CardItem[] = [
     newDoc: false,
     type: [docType.Documentation],
     time: "10min",
-    link: "/tutorials/internal-developer-portal/create-your-first-service-onboarding-pipeline",
+    link: "/tutorials/internal-developer-portal/service-onboarding-pipeline",
   },
 ];

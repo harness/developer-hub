@@ -115,7 +115,7 @@ In **SCIM connector base URL** enter the Base URL for your API endpoint.
 
 To get the **SCIM connector base URL**, add your account ID to the end of the following
 
-URL: `https://app.harness.io/gateway/ng/api/scim/account/`
+URL: `https://app.harness.io/gateway/ng/api/scim/account/<your_account_id>`
 
 Enter `userName` in **Unique identifier field for users** and select **Supported provisioning actions**.
 
