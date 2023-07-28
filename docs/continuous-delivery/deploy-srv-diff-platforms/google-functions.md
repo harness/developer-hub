@@ -551,12 +551,24 @@ Pipelines require that an environment have an infrastructure definition. We'll c
 </Tabs1>
 ```
 
-### Cloud Functions infrastructure definitions
+## Define the infrastructure
+
+You define the target infrastructure for your deployment in the **Environment** settings of the pipeline stage. You can define an environment separately and select it in the stage, or create the environment within the stage **Environment** tab.
+
+There are two methods of specifying the deployment target infrastructure:
+
+- **Pre-existing**: the target infrastructure already exists and you simply need to provide the required settings.
+- **Dynamically provisioned**: the target infrastructure will be dynamically provisioned on-the-fly as part of the deployment process.
+
+For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
+
+### GCP connector
 
 You will need a Harness GCP Connector with [correct permissions](#cloud-functions-permission-requirements) to deploy Cloud Functions in GCP.
 
 You can pick the same GCP connector you used in the Harness service to connect to Google Cloud Storage for the artifact, or create a new connector. 
 
+### Pre-existing Functions infrastructure
 
 ```mdx-code-block
 import Tabs2 from '@theme/Tabs';
@@ -681,6 +693,132 @@ The infrastructure definition is added.
   </TabItem2>
 </Tabs2>
 ```
+
+### Dynamically provisioned Functions infrastructure
+
+:::note
+
+Currently, the dynamic provisioning documented in this topic is behind the feature flag `CD_NG_DYNAMIC_PROVISIONING_ENV_V2`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
+
+1. **Add dynamic provisioning to the CD stage**:
+   1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
+   2. Select the type of provisioner do you want to use.
+   
+      Harness automatically adds the provisioner steps for the provisioner type you selected.
+   3. Configure the provisioner steps to run your provisioning scripts.
+   4. Select or create a Harness infrastructure in **Environment**.
+2. **Map the provisioner outputs to the Infrastructure Definition**:
+   1. In the Harness infrastructure, enable the option **Map Dynamically Provisioned Infrastructure**.
+   2. Map the provisioning script/template outputs to the required infrastructure settings.
+
+#### Supported provisioners
+
+The following provisioners are supported for Google Functions deployments:
+
+- Terraform
+- Terragrunt
+- Terraform Cloud
+- Shell Script
+
+#### Adding dynamic provisioning to the stage
+
+To add dynamic provisioning to a Harness pipeline Deploy stage, do the following:
+
+1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
+2. Select the type of provisioner do you want to use.
+   
+   Harness automatically adds the necessary provisioner steps.
+3. Set up the provisioner steps to run your provisioning scripts.
+
+For documentation on each of the required steps for the provisioner you selected, go to the following topics:
+
+- Terraform:
+  - [Terraform Plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
+  - [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
+  - [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step). To see the Terraform Rollback step, toggle the **Rollback** setting.
+- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
+- [Terraform Cloud](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments)
+- [Shell Script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
+
+
+#### Mapping provisioner output
+
+Once you set up dynamic provisioning in the stage, you must map outputs from your provisioning script/template to specific settings in the Harness Infrastructure Definition used in the stage.
+
+1. In the same CD Deploy stage where you enabled dynamic provisioning, select or create (**New Infrastructure**) a Harness infrastructure.
+2. In the Harness infrastructure, in **Select Infrastructure Type**, select **Google Cloud Platform** if it is not already selected.
+3. In **Google Cloud Provider Details**, enable the option **Map Dynamically Provisioned Infrastructure**.
+   
+   A **Provisioner** setting is added and configured as a runtime input.
+4. Map the provisioning script/template outputs to the required infrastructure settings.
+
+To provision the target deployment infrastructure, Harness needs specific infrastructure information from your provisioning script. You provide this information by mapping specific Infrastructure Definition settings in Harness to outputs from your template/script.
+
+For Google Cloud Functions, Harness needs the following settings mapped to outputs:
+
+- Project
+- Region
+
+:::note
+
+Ensure the **Project** and **Region** settings are set to the **Expression** option.
+
+:::
+
+For example, here's a snippet of a Terraform script that provisions the infrastructure for a Cloud Function deployment and includes the required outputs:
+
+```json
+
+provider "google" {
+  credentials = file("<PATH_TO_YOUR_GCP_SERVICE_ACCOUNT_KEY_JSON>")
+  project     = "<YOUR_GCP_PROJECT_ID>"
+  region      = "us-central1"  # Replace with your desired region
+}
+
+resource "google_project_service" "cloudfunctions" {
+  project = "<YOUR_GCP_PROJECT_ID>"
+  service = "cloudfunctions.googleapis.com"
+}
+
+resource "google_cloudfunctions_function" "my_function" {
+  name        = "my-cloud-function"
+  description = "My Cloud Function"
+  runtime     = "nodejs14"
+  trigger_http = true
+
+  available_memory_mb = 256
+  timeout             = "60s"
+
+  # Optionally, you can define environment variables for your function
+  environment_variables = {
+    VAR1 = "value1"
+    VAR2 = "value2"
+  }
+}
+
+output "project_name" {
+  value = google_cloudfunctions_function.my_function.project
+}
+
+output "region_name" {
+  value = google_cloudfunctions_function.my_function.region
+}
+
+```
+
+
+In the Harness Infrastructure Definition, you map outputs to their corresponding settings using expressions in the format `<+provisioner.OUTPUT_NAME>`, such as `<+provisioner.project_name>`.
+
+<figure>
+
+<docimage path={require('./static/6d3712e9196c409f2d49747939b91c8913adfe7a44d2b47b019f01187d36e719.png')} width="60%" height="60%" title="Click to view full size image" />
+
+<figcaption>Figure: Mapped outputs.</figcaption>
+</figure>
 
 ## Cloud Functions execution strategies
 

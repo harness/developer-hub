@@ -11,14 +11,15 @@ Currently, the dynamic provisioning documented in this topic is behind the featu
 :::
 
 Harness provisioning is categorized into the following use cases:
-- Ad hoc provisioning: temporary and on-demand provisioning of resources for specific tasks or purposes.
-- Dynamic infrastructure provisioning: provision the target deployment environment as part of the same deployment process. Typically, dynamic infrastructure provisioning is for temporary pre-production environments, such as dev, test, and qa. Production environments are usually pre-existing.
+- **Ad hoc provisioning**: temporary and on-demand provisioning of resources for specific tasks or purposes.
+- **Dynamic infrastructure provisioning**: provision the target deployment environment as part of the same deployment process. Typically, dynamic infrastructure provisioning is for temporary pre-production environments, such as dev, test, and qa. Production environments are usually pre-existing.
 
 ## Important notes
 
-- Only provisioners that produce outputs can be used in an **Infrastructure Definition** to dynamically provision deployment target infrastructure.
-- Currently, dynamic provisioning of target infrastructure is not supported for the AWS ASG and SpotInst deployment types.
-- Dynamic provisioning is not supported when [using multiple services and environments](/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv) in a pipeline stage.
+- **Dynamic infrastructure provisioning**: 
+  - Only provisioners that produce outputs can be used in an **Infrastructure Definition** to dynamically provision deployment target infrastructure.
+  - Currently, dynamic provisioning of target infrastructure is not supported for the AWS ASG, AWS SAM, and SpotInst deployment types.
+  - Dynamic provisioning is not supported when [using multiple services and environments](/docs/continuous-delivery/x-platform-cd-features/advanced/multiserv-multienv) in a pipeline stage.
 
 ## Ad hoc provisioning
 
@@ -37,18 +38,27 @@ For example, in the following image, Harness Terraform Plan and Apply steps are 
 
 See the following topics for steps on how to perform ad hoc provisioning:
 
-- Terraform and Terraform Cloud
-- CloudFormation
-- Terragrunt
-- Azure Resource Manager (ARM)
-- Azure Blueprint
-- Shell Script
+- Terraform:
+  - [Terraform Plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
+  - [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
+  - [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step). To see the Terraform Rollback step, toggle the **Rollback** setting.
+- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
+- [Terraform Cloud](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments)
+- CloudFormation:
+  - [Create Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/provision-with-the-cloud-formation-create-stack-step)
+  - [Delete Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/remove-provisioned-infra-with-the-cloud-formation-delete-step)
+  - [Rollback Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/rollback-provisioned-infra-with-the-cloud-formation-rollback-step). To see the Rollback Stack step, toggle the **Rollback** setting.
+- [Azure Resource Management (ARM)](/docs/continuous-delivery/cd-infrastructure/azure-arm-provisioning)
+- [Azure Blueprint](/docs/continuous-delivery/cd-infrastructure/azure-blueprint-provisioning)
+- [Shell Script](/docs/continuous-delivery/cd-infrastructure/shell-script-provisioning)
 
 ## Dynamic infrastructure provisioning
 
 Dynamic infrastructure provisioning creates your target infrastructure dynamically during the execution of your pipeline.
 
-To perform dynamic provisioning in your Harness Deploy stage, you map specific provisioner script/template outputs to the target infrastructure settings in the stage **Environment** section. For example, a target Kubernetes cluster namespace is mapped to the stage's **Infrastructure**.
+To perform dynamic provisioning in your Harness Deploy stage, you add provisioning steps to the stage **Environment** settings, and then map specific provisioner script/template outputs to the target infrastructure in the same stage **Environment** section. 
+
+For example, the name of the target Kubernetes cluster namespace is provisioned by the Terraform Apply step in **Environment** section and then mapped to that stage's target **Infrastructure**.
 
 At deployment runtime, Harness does the following: 
 
@@ -66,43 +76,37 @@ At deployment runtime, Harness does the following:
 
 See the following topics for steps on how to perform dynamic provisioning:
 
-- Kubernetes (including Helm, Native Helm, and Kustomize)
-- Azure Web Apps
-<!-- - AWS ASG -->
-- AWS ECS
-- AWS Lambda
-- AWS SAM
-<!-- - Spot Elastigroup -->
-- Google Cloud Functions
-- Serverless.com framework
-- Tanzu Application Services
-- SSH deployments
-- WinRM deployments
-- Custom deployments
+- [Kubernetes infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure) (also applies to Helm, Native Helm, and Kustomize)
+- [Azure Web Apps](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial)
+- [AWS ECS](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial)
+- [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
+- [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions)
+- [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart)
+- [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
+- [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)
+- [VM deployments using WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
 
-### Provisioner and deployment type support matrix
+### Dynamic provisioning and deployment type support matrix
 
 The following table shows the provisioners you can use with each deployment type for *dynamic provisioning*.
 
 
 |                            | Terraform and Terraform Cloud | CloudFormation | Terragrunt | Azure Resource Manager (ARM) | Azure Blueprint | Shell Script |
 | -------------------------- | ----------------------------- | -------------- | ---------- | ---------------------------- | --------------- | ------------ |
-| Kubernetes                 | ✔️                            |                |            |                              |                 | ✔️           |
-| Azure Web Apps             | ✔️                            |                |            | ✔️                           | ✔️              | ✔️           |
+| Kubernetes                 | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |
+| Azure Web Apps             | ✔️                            |                | ✔️           | ✔️                           | ✔️              | ✔️           |
 | AWS ECS                    | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |
 | AWS Lambda                 | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |
-| AWS SAM                    | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |
 | Spot Elastigroup           | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |
 | Google Cloud Functions     | ✔️                            |                | ✔️         |                              |                 | ✔️           |
 | Serverless.com framework   | ✔️                            | ✔️             | ✔️         |                              |                 | ✔️           |
 | Tanzu Application Services | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |
 | SSH deployments            | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |
 | WinRM deployments          | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |
-| Custom deployments         | ✔️                            | ✔️             | ✔️         | ✔️                           | ✔️              | ✔️           |
 
 ### Dynamic provisioning outputs for mapping
 
-To use dynamic provisioning, you map outputs from your provisioner script/template that tell Harness what infrastructure to provision and use as the deployment target environment.
+To use dynamic provisioning, you map outputs from your provisioner script/template that tell Harness what infrastructure to provision and use as the deployment target infrastructure.
 
 You use these outputs in Harness expressions that you enter in the Harness infrastructure settings.
 
@@ -116,11 +120,21 @@ output "default_namespace" {
 }
 ```
 
+Here you can see the expression used to map the output in the infrastructure settings:
+
+<figure>
+
+<docimage path={require('./static/519f60992faffa19425e1436699a0d3ce27de43a16de9ad1e90b86288122235f.png')} width="60%" height="60%" title="Click to view full size image" />
+
+<figcaption>Figure: Mapped output.</figcaption>
+</figure>
+
+
 The following table shows the **Infrastructure Definition** settings that are mapped to provisioner outputs.
 
 |      **Infra type**       |           **Infra settings that require mapping**            |
 | ------------------------- | ------------------------------------------------------------ |
-| Kubernetes direct         | **Namespace**, **Release Name** (optional)                   |
+| Kubernetes Direct         | **Namespace**, **Release Name** (optional)                   |
 | Kubernetes GCP            | **Namespace**, **Cluster**, **Release Name** (optional)      |
 | Kubernetes Azure          | **Namespace**, **Cluster**                                   |
 | Kubernetes AWS            | **Namespace**, **Cluster**, **Release Name** (optional)      |
@@ -129,7 +143,6 @@ The following table shows the **Infrastructure Definition** settings that are ma
 | SSH and WinRM on Azure    | **Subscription Id**, **Resource Group**, **Tags**            |
 | Azure Web App             | **Subscription**, **Resource Group**                         |
 | Google Cloud Functions    | **Region**, **Project**                                      |
-| AWS SAM                   | **Region**                                                   |
 | AWS Lambda                | **Region**                                                   |
 | AWS ECS                   | **Region**, **Cluster**                                      |
 | Tanzu App Services        | **Organization**, **Space**                                  |
@@ -138,7 +151,13 @@ The following table shows the **Infrastructure Definition** settings that are ma
 
 ## Using ad hoc and dynamic provisioning together
 
-Ad hoc and dynamic provisioning can be used together. For example, you can dynamically provision the target deployment Kubernetes namespace and deploy your services to it, and then use ad hoc provisioning steps to track resource utilization, etc.
+Ad hoc and dynamic provisioning can be used together. 
+
+For example, you can: 
+
+1. Dynamically provision the target deployment Kubernetes namespace in the stage **Environment**.
+2. Deploy your services to the provisioned namespace in the stage **Execution**. 
+3. Use subsequent ad hoc provisioning steps in **Execution** to change the provisioned namespace, etc.
 
 Dynamic provisioning is configured in a CD Deploy stage's **Environment** settings and ad hoc provisioning is configured in its **Execution** settings.
 
@@ -146,7 +165,7 @@ At deployment runtime, Harness processes the **Environment** settings first, alo
 
 Consequently, the **Environment** settings cannot reference subsequent **Execution** settings, but the **Execution** settings can reference previous **Environment** settings.
 
-For example, if you dynamically provisioned a Kubernetes namespace in the **Environment** settings using the expression `<+provisioner.default_namespace>`, you can reference it in the **Execution** steps settings, including any files that those steps use. 
+For example, if you dynamically provisioned a Kubernetes namespace in the **Environment** settings and mapped the namespace output using the expression `<+provisioner.default_namespace>`, you can reference the namespace in the **Execution** steps settings using the same expression, including any files that those steps use. 
 
 But if you performed ad hoc provisioning in the **Execution** steps, you cannot reference the outputs of those steps in the **Environment** settings.
 

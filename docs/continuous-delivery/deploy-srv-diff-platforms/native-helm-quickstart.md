@@ -183,7 +183,22 @@ The Helm chart is added to the Service Definition.
 
 Next, we can target your Kubernetes cluster for deployment.
 
-## Define your target cluster
+## Define the infrastructure
+
+There is nothing unique about defining the target cluster infrastructure definition for a Helm chart deployment. It is the same process as a typical Harness Kubernetes deployment.
+
+For more information, go to [Define Your Kubernetes Target Infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure).
+
+### Pre-existing and dynamically provisioned infrastructure
+
+There are two methods of specifying the deployment target infrastructure:
+
+- **Pre-existing**: the target infrastructure already exists and you simply need to provide the required settings.
+- **Dynamically provisioned**: the target infrastructure will be dynamically provisioned on-the-fly as part of the deployment process.
+
+For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
+
+### Define your pre-existing target cluster
 
 1. In **Infrastructure**, in **Environment**, click **New Environment**.
 2. In **Name**, enter **quickstart**, select **Non-Production**, and click **Save**.

@@ -34,7 +34,7 @@ Harness provisioning is categorized into the following use cases:
 - **Ad hoc provisioning**: temporary and on-demand provisioning of resources for specific tasks or purposes.
 - **Dynamic infrastructure provisioning**: provision the target deployment environment as part of the same deployment process. Typically, dynamic infrastructure provisioning is for temporary pre-production environments, such as dev, test, and qa. Production environments are usually pre-existing. 
 
-For details on these types of provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
+For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
 
 :::note
 
@@ -42,6 +42,23 @@ Currently, the dynamic provisioning documented in this topic is behind the featu
 
 :::
 
+### Dynamic provisioning steps for different deployment types
+
+Each of the deployment types Harness supports (Kubernetes, AWS ECS, etc.) require that you map different script outputs to the Harness infrastructure settings in the pipeline stage.
+
+To see how to set up dynamic provisioning for each deployment type, go to the following topics:
+
+- [Kubernetes infrastructure](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/define-your-kubernetes-target-infrastructure)
+  - The Kubernetes infrastructure is also used for Helm, Native Helm, and Kustomize deployment types.
+- [Azure Web Apps](/docs/continuous-delivery/deploy-srv-diff-platforms/azure/azure-web-apps-tutorial)
+- [AWS ECS](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/ecs/ecs-deployment-tutorial)
+- [AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/aws-lambda-deployments)
+- [Spot Elastigroup](/docs/continuous-delivery/deploy-srv-diff-platforms/aws/spot-deployment)
+- [Google Cloud Functions](/docs/continuous-delivery/deploy-srv-diff-platforms/google-functions)
+- [Serverless.com framework for AWS Lambda](/docs/continuous-delivery/deploy-srv-diff-platforms/serverless-lambda-cd-quickstart)
+- [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
+- [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)	
+- [Windows VM deployments using WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
 
 ### $PROVISIONER_OUTPUT_PATH
 
@@ -258,7 +275,7 @@ You can add your provisioning script inline in the Shell Script Provision step o
 
 Your provisioning script can be used for ad hoc or dynamic provisioning.
 
-For details on these types of provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
+For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
 
 If you want to use the outputs from your script, you need to use the Harness `$PROVISIONER_OUTPUT_PATH` environment variable.
 

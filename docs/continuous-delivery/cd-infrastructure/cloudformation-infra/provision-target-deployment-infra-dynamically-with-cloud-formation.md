@@ -8,27 +8,27 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-You can use CloudFormation in Harness CD pipeline stages for ad hoc provisioning or to provision the target deployment infrastructure for the stage.
+You can use CloudFormation in Harness CD pipeline stages for ad hoc provisioning or to provision the target deployment infrastructure for the stage. Provisioning the target deployment infrastructure is called **dynamic provisioning**.
 
-This topic provides a brief overview of the steps involved in provisioning a CD stage's target deployment infrastructure using the **CloudFormation Create Stack** step.
+This topic provides a brief overview of the steps involved in dynamic provisioning using the **CloudFormation Create Stack** step.
 
 This topic also covers some important requirements.
 
 ## Important notes
 
-Target infrastructure provisioning is limited to what is available in the target environment.
+Dynamic provisioning is limited to what is available in the target environment.
 
 For example, the cloud-agnostic Kubernetes Cluster Connector requires that you have an existing cluster, so you cannot provision a new cluster. But it does let you provision a namespace.
 
 ![](./static/provision-target-deployment-infra-dynamically-with-cloud-formation-00.png)
 
-## CloudFormation dynamic infrastructure provisioning summary
+## CloudFormation dynamic provisioning summary
 
 Setting up dynamic provisioning involves adding a CloudFormation template to the stage **Environment** settings that provisions the pipeline stage's target infrastructure.
 
-Next, you map specific, required script outputs to the Harness **Infrastructure Definition** for the stage, such as the target namespace.
+Next, you map the required script outputs to the Harness **Infrastructure Definition** for the stage, such as the target namespace.
 
-During deployment, Harness provisions the target deployment infrastructure and then the stage's **Execution** steps deploy to the provisioned infrastructure.
+During deployment, Harness provisions the target deployment infrastructure and then the stage's **Execution** steps deploy to that provisioned infrastructure.
 
 ### Dynamic provisioning steps for different deployment types
 
@@ -47,7 +47,7 @@ To see how to set up dynamic provisioning for each deployment type, go to the fo
 - [Tanzu Application Services](/docs/continuous-delivery/deploy-srv-diff-platforms/tanzu/tanzu-app-services-quickstart)
 - [VM deployments using SSH](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/ssh-ng)	
 - [Windows VM deployments using WinRM](/docs/continuous-delivery/deploy-srv-diff-platforms/traditional/win-rm-tutorial)
-- [Custom deployments](/docs/continuous-delivery/deploy-srv-diff-platforms/custom-deployment-tutorial)
+
 
 
 ## Dynamic provisioning steps
@@ -58,6 +58,16 @@ When you enable dynamic provisioning in a CD Deploy stage's **Environment** sett
 - **Approval step**: Harness adds a Manual Approval step between the Create Stack and Delete Stack steps. You can remove this step or follow the steps in [Using Manual Harness Approval Steps in CD Stages](../../x-platform-cd-features/cd-steps/approvals/using-harness-approval-steps-in-cd-stages) to configure the step.
   - You can also use a [Jira or ServiceNow Approval](/docs/continuous-delivery/x-platform-cd-features/cd-steps/approvals/using-jira-and-service-now-approval-steps-in-cd-stages) step.
 - **Delete Stack** step: you can use the Delete Stack step to remove resources provisioned by the Create Stack step.
+
+### Create Stack step
+
+You use the Create Stack in the **Environment** section of a CD stage to perform dynamic provisioning.
+
+You add your provisioning CloudFormation template to the step and the step provisions the target infrastructure at runtime.
+
+You map the required CloudFormation template outputs to the stage's Infrastructure Definition settings to ensure that the provisioned infrastructure is used as the stage deployment target infrastructure.
+
+For details on configuring the Create Stack step, go to [Provision with the CloudFormation Create Stack step](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/provision-with-the-cloud-formation-create-stack-step).
 
 ### AWS Connector
 

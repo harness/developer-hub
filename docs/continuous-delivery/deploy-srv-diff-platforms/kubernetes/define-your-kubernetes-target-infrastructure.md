@@ -48,7 +48,7 @@ There are two methods of specifying the deployment target infrastructure:
 
 These methods are described below.
 
-For details on these types of provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
+For details on Harness provisioning, go to [Provisioning overview](/docs/continuous-delivery/cd-infrastructure/provisioning-overview).
 
 :::note
 
@@ -429,13 +429,13 @@ Currently, the dynamic provisioning documented in this topic is behind the featu
 
 :::
 
-Here is a summary of the steps to dynamically provisioning the target infrastructure for a deployment:
+Here is a summary of the steps to dynamically provision the target infrastructure for a deployment:
 
 1. **Add dynamic provisioning to the CD stage**:
    1. In a Harness Deploy stage, in **Environment**, enable the option **Provision your target infrastructure dynamically during the execution of your Pipeline**.
    2. Select the type of provisioner do you want to use.
    
-   Harness automatically adds the provisioner steps for the provisioner type you selected.
+    Harness automatically adds the provisioner steps for the provisioner type you selected.
    3. Configure the provisioner steps to run your provisioning scripts.
    4. Select or create a Harness infrastructure in **Environment**.
 2. **Map the provisioner outputs to the Infrastructure Definition**:
@@ -458,13 +458,13 @@ To add dynamic provisioning to a Harness pipeline Deploy stage, do the following
 
 For documentation on each of the required steps for the provisioner you selected, go to the following topics:
 
-- **Terraform:**
+- Terraform:
   - [Terraform Plan](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step)
   - [Terraform Apply](/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-apply-step)
   - [Terraform Rollback](/docs/continuous-delivery/cd-infrastructure/terraform-infra/rollback-provisioned-infra-with-the-terraform-rollback-step). To see the Terraform Rollback step, toggle the **Rollback** setting.
-- [**Terragrunt**](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
-- [**Terraform Cloud**](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments)
-- **CloudFormation:**
+- [Terragrunt](/docs/continuous-delivery/cd-infrastructure/terragrunt-howtos)
+- [Terraform Cloud](/docs/continuous-delivery/cd-infrastructure/terraform-infra/terraform-cloud-deployments)
+- CloudFormation:
   - [Create Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/provision-with-the-cloud-formation-create-stack-step)
   - [Delete Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/remove-provisioned-infra-with-the-cloud-formation-delete-step)
   - [Rollback Stack](/docs/continuous-delivery/cd-infrastructure/cloudformation-infra/rollback-provisioned-infra-with-the-cloud-formation-rollback-step). To see the Rollback Stack step, toggle the **Rollback** setting.
