@@ -11,7 +11,7 @@ The benefits of using pre-built images include:
 * **Builds start faster:** Pre-built images are usually squashed, meaning they have have fewer and smaller layers. These images take less time to download, if they are not already cached on the host. By using pre-built images, your builds start faster.
 * **Bundled with useful tools:** Pre-built images include the minimum utilities required to run most builds on Harness CI along with language- or service-specific tools, such as Bundler for Ruby.
 
-:::info Difference from Harness CI images
+:::info
 
 The Harness Community public images are optional images you can use to quickly set up a specific build environment. They are different from [Harness CI images](./harness-ci.md), which are essential images used by Harness to run CI pipelines.
 
@@ -136,7 +136,7 @@ The Harness Community updates the pre-built images as needed for bug fixes and e
 
 ## Best practice: Use a specific image tag
 
-Images are based on the most-recent Ubuntu LTS Docker image, and they have the base libraries for the specified language for service. Using the most-specific image possible makes your builds more predictable by avoiding incorporating unwanted, upstream changes until you can test them.
+Images are based on the most recent Ubuntu LTS Docker image, and they have the base libraries for the specified language for service. Using the most specific image possible makes your builds more predictable by avoiding incorporating unwanted, upstream changes until you can test them.
 
 For example, instead of using `image: harnesscommunity/node:latest`, use a specific version number, like `node:18.6`.
 
