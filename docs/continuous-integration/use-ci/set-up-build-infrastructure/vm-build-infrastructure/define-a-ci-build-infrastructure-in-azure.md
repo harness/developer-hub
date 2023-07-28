@@ -216,9 +216,9 @@ Configure your pipeline's **Build** (`CI`) stage to use your Azure VMs as build 
 4. Enter the **Pool Name** from your [pool.yml](#configure-the-drone-pool-on-the-azure-vm).
 5. Save the pipeline.
 
-<!-- ![](./static/ci-stage-settings-vm-infra.png) -->
+<!-- ![](../static/ci-stage-settings-vm-infra.png) -->
 
-<docimage path={require('./static/ci-stage-settings-vm-infra.png')} />
+<docimage path={require('../static/ci-stage-settings-vm-infra.png')} />
 
 ```mdx-code-block
   </TabItem>

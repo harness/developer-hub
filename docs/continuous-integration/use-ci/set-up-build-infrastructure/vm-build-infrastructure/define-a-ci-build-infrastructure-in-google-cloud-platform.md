@@ -156,9 +156,9 @@ import TabItem from '@theme/TabItem';
 4. Enter the **Pool Name** from your [pool.yml](#configure-the-drone-pool-on-the-google-vm).
 5. Save the pipeline.
 
-<!-- ![](./static/ci-stage-settings-vm-infra.png) -->
+<!-- ![](../static/ci-stage-settings-vm-infra.png) -->
 
-<docimage path={require('./static/ci-stage-settings-vm-infra.png')} />
+<docimage path={require('../static/ci-stage-settings-vm-infra.png')} />
 
 ```mdx-code-block
   </TabItem>
