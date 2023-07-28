@@ -9,12 +9,21 @@ You can scan your container images using Black Duck Hub, a comprehensive and ver
 
 ## Before you begin
 
+### Docker-in-Docker requirements
+
 ```mdx-code-block
-import StoCreateDinD from './shared/dind-bg-step.md';
+import StoDinDRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/dind-bg-step.md';
 ```
 
-<StoCreateDinD />
+<StoDinDRequirements />
 
+### Root access requirements 
+
+```mdx-code-block
+import StoRootRequirements from '/docs/security-testing-orchestration/sto-techref-category/shared/root-access-requirements.md';
+```
+
+<StoRootRequirements />
 
 ## BlackDuck step configuration
 
@@ -290,23 +299,25 @@ In the **Advanced** settings, you can use the following options:
 
 ## Security step configuration (_deprecated_)
 
-<details><summary>Set up a Black Duck Hub scan in a Security step</summary>
-
 You can set up a Black Duck Hub scan using a Security step: create a CI Build or Security Tests stage, add a Security step, and then add the `setting:value` pairs as specified below.
 
+#### Target and variant
+
 ```mdx-code-block
-import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config.md';
+import StoLegacyTargetAndVariant  from './shared/legacy/_sto-ref-legacy-target-and-variant.md';
 ```
 
-<StoSecurityStepConfig />
+<StoLegacyTargetAndVariant />
+
+#### Black Duck Hub scan settings
 
 * `product_name` = `blackduckhub`
 * `product_config_name` = `default`
-* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) = `repository` or `container`
-* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) =  `orchestratedScan` , `ingestionOnly`, or `dataLoad`
+* [`scan_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#scanner-categories) : `repository` or `container`
+* [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) : `orchestratedScan` , `ingestionOnly`, or `dataLoad`
 * When [`policy_type`](/docs/security-testing-orchestration/sto-techref-category/security-step-settings-reference#data-ingestion-methods) is set to `orchestratedScan`:
 	+ `product_domain`
-	+ `product_auth_type` = `usernamePassword` | `apiKey`
+	+ `product_auth_type` : `usernamePassword` | `apiKey`
 	+ `product_access_id`: API username
 	+ `product_access_token` API password or API key
 	+ `product_api_version`
@@ -315,7 +326,7 @@ import StoSecurityStepConfig from './shared/legacy/_sto-ref-security-step-config
 * `fail_on_severity` - See [Fail on Severity](#fail-on-severity).
 
 
-<!-- CONTAINERS --------------------------------------------------------------------------- -->
+#### Container image scan settings
 
 ```mdx-code-block
 import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
@@ -324,30 +335,12 @@ import StoLegacyContainer from './shared/legacy/_sto-ref-legacy-container.md';
 <StoLegacyContainer />
 
 
-<!-- REPOS --------------------------------------------------------------------------- -->
-
-
-```mdx-code-block
-import StoLegacyRepo from './shared/legacy/_sto-ref-legacy-repo.md';
-```
-
 <StoLegacyRepo />
 
+#### Ingestion file
 
 ```mdx-code-block
 import StoLegacyIngest from './shared/legacy/_sto-ref-legacy-ingest.md';
 ```
 
 <StoLegacyIngest />
-
-</details>
-
-
-
-## YAML configuration
-
-```mdx-code-block
-import StoSettingYAMLexample from './shared/step_palette/_sto-ref-yaml-example.md';
-```
-
-<StoSettingYAMLexample />

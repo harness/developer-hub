@@ -31,7 +31,7 @@ The content between the `<+...>` delimiters is passed on to the [Java Expressio
 ```
 <+trigger.payload.pull_request.diff_url>.contains("triggerNgDemo") || <+trigger.payload.repository.owner.name> == "wings-software"
 ```
-Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) and other steps.
+Harness pre-populates many variables, as documented below, and you can set your own variables in the form of context output from [shell scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) and other steps.
 
 ### Java string methods
 
@@ -1271,7 +1271,7 @@ repeat:
 ```
 ![](./static/harness-variables-48.png)
 
-For examples, see [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances/).
+For examples, see [Run a script on multiple target instances](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/run-a-script-on-multiple-target-instances).
 
 For Microsoft Azure, AWS, or any platform-agnostic Physical Data Center (PDC):
 
@@ -1499,7 +1499,7 @@ Consequently, you can only use `${HARNESS_KUBE_CONFIG_PATH}` when you are using 
 
 If you are running the script using an in-cluster delegate with the **Use the credentials of a specific Harness Delegate** credentials option, then there are no credentials to store in a kubeconfig file since the Delegate is already an in-cluster process.
 
-You can use this variable in a [Shell script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step to set the environment variable at the beginning of your kubectl script:
+You can use this variable in a [Shell script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step to set the environment variable at the beginning of your kubectl script:
 
 `export KUBECONFIG=${HARNESS_KUBE_CONFIG_PATH}`
 
@@ -1620,7 +1620,7 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | workflow.startTs                                                      | pipeline.startTs                                                                                                                                                                                                                                                                     |
 | workflow.variables.VAR_NAME                                           | pipeline.variables.VAR_NAME or stage.variables.VAR_NAME                                                                                                                                                                                                                              |
 | timestampId                                                           |                                                                                                                                                                                                                                                                                      |
-| deploymentUrl                                                         | pipeline.execution.url​                                                                                                                                                                                                                                                              |
+| deploymentUrl                                                         | pipeline.executionUrl​                                                                                                                                                                                                                                                              |
 | context.published_name.var_name                                       |                                                                                                                                                                                                                                                                                      |
 | deploymentTriggeredBy                                                 | pipeline.triggeredBy.name​pipeline.triggeredBy.email​                                                                                                                                                                                                                            |
 | currentStep.name                                                      | step.name                                                                                                                                                                                                                                                                            |
@@ -1628,7 +1628,7 @@ All FirstGen expressions use the `${...}` format. For example, `${approvedBy.nam
 | currentStep.type                                                      | N/A                                                                                                                                                                                                                                                                                  |
 | **Pipeline Variables**                                                    | **Pipeline Variables**                                                                                                                                                                                                                                                                   |
 | pipeline.name                                                         | pipeline.name                                                                                                                                                                                                                                                                        |
-| deploymentUrl                                                         | pipeline.execution.url​                                                                                                                                                                                                                                                              |
+| deploymentUrl                                                         | pipeline.executionUrl​                                                                                                                                                                                                                                                              |
 | deploymentTriggeredBy                                                 | pipeline.triggeredBy.name​pipeline.triggeredBy.email​                                                                                                                                                                                                                            |
 | **Rollback Artifact Variables**                                           | **Rollback Artifact Variables**                                                                                                                                                                                                                                                          |
 | rollbackArtifact.url                                                  | NA                                                                                                                                                                                                                                                                                   |

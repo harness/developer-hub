@@ -45,7 +45,15 @@ The AWS [IAM Policy Simulator](https://docs.aws.amazon.com/IAM/latest/UserGuide/
 5. Select one of the following three primary options:
   * **Assume IAM Role on Delegate:** The connector inherits its authentication credentials from the Harness delegate that is running in AWS. For example, you can select a Harness delegate running in Amazon Elastic Kubernetes Service (EKS).
   * **AWS Access Key:** Provide an [Access Key and Secret Access Key](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys) for the IAM role you want the connector to use.
-  * **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account. Instead, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate. This option requires modifications to the delegate YAML, as described below.
+  * **Use IRSA:** Allows the Harness Kubernetes delegate in AWS EKS to use a specific IAM role when making authenticated requests to resources. By default, the Harness Kubernetes delegate uses a ClusterRoleBinding to the **default** service account. Instead, with this option, you can use AWS [IAM roles for service accounts (IRSA)](https://docs.aws.amazon.com/eks/latest/userguide/iam-roles-for-service-accounts.html) to associate a specific IAM role with the service account used by the Harness Kubernetes delegate. 
+
+  :::info note
+
+  Verify your firewall policy and make sure to whitelist all AWS endpoints for the services you're using. For more details, go to [view AWS service endpoints](https://docs.aws.amazon.com/general/latest/gr/rande.html#view-service-endpoints).
+
+  :::  
+  
+  This option requires modifications to the delegate YAML, as described below.
 
 <details>
 <summary>Configure delegate YAML for IRSA</summary>
@@ -88,7 +96,7 @@ Setting up IRSA credentials requires a few more steps than other methods, but it
       ---
       ```
 
-    2. Add `serviceAccountName` to the Deployment spec. For example:
+    1. Add `serviceAccountName` to the Deployment spec. For example:
 
       ```
       ...
