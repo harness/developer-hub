@@ -12,6 +12,8 @@ Harness Chaos Engineering (CE) gives you the flexibility to create elaborate cha
 
 A chaos experiment is composed of chaos faults that are arranged in a specific order to create a failure scenario. The chaos faults target various aspects of an application, including the constituent microservices and underlying infrastructure. The parameters associated with these faults can be tuned to impart the desired chaos behavior.
 
+For more information, go to [Flow of control in a chaos experiment](/docs/chaos-engineering/configure-chaos-experiments/experiments/experiment-execution).
+
 ## Construct a chaos experiment
 
 To add a chaos experiment:
