@@ -12,7 +12,7 @@ helpdocs_is_published: true
 Currently, this feature is behind the Feature Flag `CI_VM_INFRASTRUCTURE`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 :::
 
-This topic describes how to set up a CI build infrastructure in Google Cloud Platform (GCP) by creating an Ubuntu VM and then installing a Harness Delegate and Drone VM Runner on it. The delegate creates VMs dynamically in response to CI build requests.
+This topic describes how to set up a CI build infrastructure in Google Cloud Platform (GCP). To do this, you will create an Ubuntu VM and then install a Harness Delegate and Drone VM Runner on it. The delegate creates VMs dynamically in response to CI build requests.
 
 This is one of several CI build infrastructure options. For example, you can also [set up a Kubernetes cluster build infrastructure](../k8s-build-infrastructure/set-up-a-kubernetes-cluster-build-infrastructure.md).
 
@@ -72,7 +72,7 @@ instances:
       image: projects/ubuntu-os-pro-cloud/global/images/ubuntu-pro-1804-bionic-v20220510
       machine_type: e2-small
       zone: ## To minimize latency between delegate and build VMs, specify the same zone where your delegate VM is running.
-        - us-centra1-a
+        - us-central1-a
         - us-central1-b
         - us-central1-c
       disk:
@@ -87,23 +87,42 @@ You can configure the following settings in your `pool.yml` file. You can also l
 | Setting | Type | Example | Description |
 | ------- | ---- | ------- | ----------- |
 | `name` | String | `name: windows_pool` | Unique identifier of the pool. You will need to specify this pool name in the Harness Manager when you set up the CI stage build infrastructure. |
-| `pool` | Integer | `pool: 1` | Minimum pool size number. Denotes the minimum number of cached VMs in ready state to be used by the runner. |
-| `limit` | Integer | `limit: 3` | Maximum pool size number. Denotes the maximum number of cached VMs in ready state to be used by the runner. |
+| `pool` | Integer | `pool: 1` | Warm pool size number. Denotes the number of VMs in ready state to be used by the runner. |
+| `limit` | Integer | `limit: 3` | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize. |
 | `platform` | Key-value pairs, strings | `platform:`<br/>` os: linux`<br/>` arch: amd64` | Specify VM platform operating system (`os`) and architecture (`arch`). `variant` is optional. |
-| `spec` | Key-value pairs, various | Go to [Example pool.yml](#example-poolyml). | Configure settings for the build VMs.<br/><ul><li>`account`: Provide `project_id` and `json_path`. `project_id` is your GCP project ID, and `json_path` is the full path and filename of your local Google credentials file.</li><li>`image`: The image type to use for the build VM.</li><li>`machine_type`: The google machine type. See [About Machine Families](https://cloud.google.com/compute/docs/machine-types) in the Google Cloud docs.</li><li>`zone`: To minimize latency, specify the zone where the delegate is running.</li></ul> |
+| `spec` | Key-value pairs, various | Go to [Example pool.yml](#example-poolyml). | Configure settings for the build VMs.<br/><ul><li>`account`: Provide `project_id` and `json_path`. `project_id` is your GCP project ID, and `json_path` is the full path and filename of your local Google credentials file.</li><li>`image`: The image type to use for the build VM.</li><li>`machine_type`: The google machine type. See [About Machine Families](https://cloud.google.com/compute/docs/machine-types) in the Google Cloud docs.</li><li>`zone`: To minimize latency, specify the zone where the delegate is running.</li><li>`disk`: You can provide the `size` (as an integer representing GB) and `type` (as a string, such as `"pd-balanced"`)</li></ul> |
 
-## Start the runner and install the delegate
+## Start the runner
 
-1. [SSH into the delegate VM](https://cloud.google.com/compute/docs/connect/standard-ssh) and run the following command to start the runner:
+[SSH into the delegate VM](https://cloud.google.com/compute/docs/connect/standard-ssh) and run the following command to start the runner:
 
-	 ```
-	 $ docker run -v /home/YOUR_NAME/drone-runner-aws/runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
-	 ```
+```
+$ docker run -v /runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
+```
 
-   This command mounts the volume to the Docker container providing access to `pool.yml` and JSON credentials to authenticate with GCP. It also exposes port 3000 and passes arguments to the container.
+This command mounts the volume to the Docker container providing access to `pool.yml` and JSON credentials to authenticate with GCP. It also exposes port 3000 and passes arguments to the container.
 
-2. Install the Harness Delegate on your delegate VM. Follow the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/), and then run the delegate installation command provided in the Harness Platform.
-3. Verify that the delegate and runner containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
+## Install the delegate
+
+Install a Harness **Docker** Delegate on your delegate VM.
+
+1. Create a delegate token. The delegate uses this token to authenticate with the Harness Platform.
+
+   * In Harness, go to **Account Settings**, then **Account Resources**, and then select **Delegates**.
+   * Select **Tokens** in the header, and then select **New Token**.
+   * Enter a token name and select **Apply** to generate a token.
+   * Copy the token and store is somewhere you can retrieve it when installing the delegate.
+
+2. Again, go to **Account Settings**, then **Account Resources**, and then **Delegates**.
+3. Select **New Delegate**.
+4. Select **Docker** and enter a name for the delegate.
+5. Copy and run the install command generated in Harness. Make sure the `DELEGATE_TOKEN` matches the one you just created.
+
+For more information about delegates and delegate installation, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
+
+## Verify connectivity
+
+1. Verify that the delegate and runner containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
 
 	 ```
 	 $ docker ps
@@ -111,7 +130,7 @@ You can configure the following settings in your `pool.yml` file. You can also l
 	 $ docker logs RUNNER_CONTAINER_ID
 	 ```
 
-4. In the Harness UI, verify that the delegate appears in the delegates list. It might take two or three minutes for the Delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.
+2. In the Harness UI, verify that the delegate appears in the delegates list. It might take two or three minutes for the Delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.
 
    ![](../static/define-a-ci-build-infrastructure-in-google-cloud-platform-30.png)
 
@@ -121,13 +140,30 @@ The delegate and runner are now installed, registered, and connected.
 
 Configure your pipeline's **Build** (`CI`) stage to use your GCP VMs as build infrastructure.
 
+```mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+```
+
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
 1. In Harness, go to the CI pipeline that you want to use the GCP VM build infrastructure.
 2. Select the **Build** stage, and then select the **Infrastructure** tab.
 3. Select **VMs**.
 4. Enter the **Pool Name** from your [pool.yml](#configure-the-drone-pool-on-the-google-vm).
 5. Save the pipeline.
 
-Here's a YAML example of a **Build** stage that uses a VM build infrastructure:
+<!-- ![](./static/ci-stage-settings-vm-infra.png) -->
+
+<docimage path={require('./static/ci-stage-settings-vm-infra.png')} />
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
 
 ```yaml
     - stage:
@@ -142,9 +178,14 @@ Here's a YAML example of a **Build** stage that uses a VM build infrastructure:
             spec:
               type: Pool
               spec:
-                poolName: POOL_NAME_FROM_POOL.YML
+                poolName: POOL_NAME_FROM_POOL_YML
                 os: Linux
           execution:
             steps:
             ...
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
 ```

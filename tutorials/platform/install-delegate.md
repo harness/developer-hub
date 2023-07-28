@@ -256,7 +256,7 @@ Ensure that you have the Docker runtime installed on your host. If not, use one 
 - [Docker for CentOS](https://docs.docker.com/engine/install/centos/)
 - [Docker for Ubuntu](https://docs.docker.com/engine/install/ubuntu/)
 - [Docker for Debian](https://docs.docker.com/engine/install/debian/)
-- [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/) 
+- [Docker for Windows](https://docs.docker.com/desktop/install/windows-install/)
 
 <h3> Install on Docker </h3>
 
@@ -283,7 +283,7 @@ Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` variable with the Harness Mana
 | [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
 | [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
 
-To use local runner build infrastructure, modify the delegate command using the instructions to install the delegate in [Use local runner build infrastructure](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-delegate)
+If you are using a local runner CI build infrastructure, modify the delegate install command as explained in [Use local runner build infrastructure](/docs/continuous-integration/use-ci/set-up-build-infrastructure/define-a-docker-build-infrastructure/#install-the-delegate)
 
 ```mdx-code-block
 </TabItem>

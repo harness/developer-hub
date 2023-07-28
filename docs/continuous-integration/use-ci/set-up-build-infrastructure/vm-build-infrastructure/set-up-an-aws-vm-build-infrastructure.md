@@ -205,15 +205,15 @@ You can configure the following settings in your `pool.yml` file. You can also l
 | Setting | Type | Example | Description |
 | ------- | ---- | ------- | ----------- |
 | `name` | String | `name: windows_pool` | Unique identifier of the pool. You will need to specify this pool name in the Harness Manager when you set up the CI stage build infrastructure. |
-| `pool` | Integer | `pool: 1` | Minimum pool size number. Denotes the minimum number of cached VMs in ready state to be used by the runner. |
-| `limit` | Integer | `limit: 3` | Maximum pool size number. Denotes the maximum number of cached VMs in ready state to be used by the runner. |
-| `platform` | Key-value pairs, strings | Go to [platform example](#platform-example). | Specify VM platform operating system (`os: linux` or `os: windows`) and architecture (`arch`). `variant` and `os_name` are optional. By default, the platform is set to `os: linux` and `arch: amd64`. |
+| `pool` | Integer | `pool: 1` | Warm pool size number. Denotes the number of VMs in ready state to be used by the runner. |
+| `limit` | Integer | `limit: 3` | Maximum number of VMs the runner can create at any time. `pool` indicates the number of warm VMs, and the runner can create more VMs on demand up to the `limit`.<br/>For example, assume `pool: 3` and `limit: 10`. If the runner gets a request for 5 VMs, it immediately provisions the 3 warm VMs (from `pool`) and provisions 2 more, which are not warm and take time to initialize. |
+| `platform` | Key-value pairs, strings | Go to [platform example](#platform-example). | Specify VM platform operating system (`os: linux` or `os: windows`). `arch` and `variant` are optional. `os_name: amazon-linux` is required for AL2 AMIs. The default configuration is `os: linux` and `arch: amd64`. |
 | `spec` | Key-value pairs, various | Go to [Example pool.yml](#example-poolyml) and the examples in the following rows. | Configure settings for the build VMs and AWS instance. Contains a series of individual and mapped settings, including `account`, `tags`, `ami`, `size`, `hibernate`, `iam_profile_arn`, `network`, and `disk`. Details about these settings are provided below. |
 | `account` | Key-value pairs, strings | Go to [account example](#account-example). | AWS account configuration, including region and access key authentication.<br/><ul><li>`region`: AWS region. To minimize latency, use the same region as the delegate VM.</li><li>`availability_zone`: AWS region availability zone. To minimize latency, use the same availability zone as the delegate VM.</li><li>`access_key_id`: If using access key authentication, this is the AWS access key ID.</li><li>`access_key_secret`: If using access key authentication, this is the AWS secret key.</li><li>`key_pair_name`: Optional.</li></ul> |
 | `tags` | Key-vale pairs, strings | Go to [tags example](#tags-example). | Optional tags to apply to the instance. |
-| `ami` | String | `ami: ami-092f63f22143765a3` | The AMI ID. Search for AMIs in your Availability Zone for supported models (Ubuntu, AWS Linux, Windows 2019+). AMI IDs differ by Availability Zone. |
+| `ami` | String | `ami: ami-092f63f22143765a3` | The AMI ID. [Search for AMIs](https://cloud-images.ubuntu.com/locator/ec2/) in your Availability Zone for supported models (Ubuntu, AWS Linux, Windows 2019+). AMI IDs differ by Availability Zone. |
 | `size` | String | `size: t3.large` | The AMI size, such as `t2.nano`, `t2.micro`, `m4.large`, and so on. |
-| `hibernate` | Boolean | `hibernate: true` | When set to `true` (which is the default), VMs hibernate after startup. When `false`, VMs are always in a running state. This option is supported for AWS Linux and Windows VMs. Hibernation for Ubuntu VMs is not currently supported. For more information, go to the AWS documentation on [hibernating on-demant Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html). |
+| `hibernate` | Boolean | `hibernate: true` | When set to `true` (which is the default), VMs hibernate after startup. When `false`, VMs are always in a running state. This option is supported for AWS Linux and Windows VMs. Hibernation for Ubuntu VMs is not currently supported. For more information, go to the AWS documentation on [hibernating on-demand Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Hibernate.html). |
 | `iam_profile_arn` | String | `iam_profile_arn: arn:aws:iam::XXXX:instance-profile/XXX` | If using IAM roles, this is the instance profile ARN of the IAM role to apply to the build instances. |
 | `network` | Key-value pairs, various | Go to [network example](#network-example). | AWS network information, including security groups and user data. For more information on these attributes, go to the AWS documentation on [creating security groups](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/get-set-up-for-amazon-ec2.html#create-a-base-security-group).<br/><ul><li>`security_groups`: List of security group IDs as strings.</li><li>`vpc`: If using VPC, this is the VPC ID as an integer.</li><li>`vpc_security_groups`: If using VPC, this is a list of VPC security group IDs as strings.</li><li>`private_ip`: Boolean.</li><li>`subnet_id`: The subnet ID as a string.</li><li>`user_data` and `user_data_path`: You can use these to define user data to apply to the instance and a path to a user data script. For more information, go to the Drone documentation on [cloud-init](https://docs.drone.io/runner/vm/configuration/cloud-init/).</li></ul> |
 | `disk` | Key-value pairs, various | `disk:`<br/>`  size: 16`<br/>`  type: io1`<br/>`  iops: iops` | Optional AWS block information.<br/><ul><li>`size`: Integer, size in GB.</li><li>`type`: `gp2`, `io1`, or `standard`.</li><li>`iops`: If `type: io1`, then `iops: iops`.</li></ul> |
@@ -260,18 +260,37 @@ You can configure the following settings in your `pool.yml` file. You can also l
           ...
 ```
 
- ## Start the runner and install the delegate
+ ## Start the runner
 
-1. [SSH into the delegate VM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) and run the following command to start the runner:
+[SSH into the delegate VM](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/AccessingInstancesLinux.html) and run the following command to start the runner:
 
-	 ```
-	 $ docker run -v /home/YOUR_NAME/drone-runner-aws/runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
-	 ```
+```
+$ docker run -v /runner:/runner -p 3000:3000 drone/drone-runner-aws:latest  delegate --pool /runner/pool.yml
+```
 
-   This command mounts the volume to the Docker container providing access to `pool.yml` to authenticate with AWS. It also exposes port 3000 and passes arguments to the container.
+This command mounts the volume to the Docker container providing access to `pool.yml` to authenticate with AWS. It also exposes port 3000 and passes arguments to the container.
 
-2. Install the Harness Delegate on your delegate VM. Follow the **Docker** instructions in [Install the default delegate on Kubernetes or Docker](/docs/platform/delegates/install-delegates/overview/), and then run the delegate installation command provided in the Harness Platform.
-3. Verify that the delegate and runner containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
+## Install the delegate
+
+Install a Harness **Docker** Delegate on your delegate VM.
+
+1. Create a delegate token. The delegate uses this token to authenticate with the Harness Platform.
+
+   * In Harness, go to **Account Settings**, then **Account Resources**, and then select **Delegates**.
+   * Select **Tokens** in the header, and then select **New Token**.
+   * Enter a token name and select **Apply** to generate a token.
+   * Copy the token and store is somewhere you can retrieve it when installing the delegate.
+
+2. Again, go to **Account Settings**, then **Account Resources**, and then **Delegates**.
+3. Select **New Delegate**.
+4. Select **Docker** and enter a name for the delegate.
+5. Copy and run the install command generated in Harness. Make sure the `DELEGATE_TOKEN` matches the one you just created.
+
+For more information about delegates and delegate installation, go to [Delegate installation overview](/docs/platform/delegates/install-delegates/overview).
+
+## Verify connectivity
+
+1. Verify that the delegate and runner containers are running correctly. You might need to wait a few minutes for both processes to start. You can run the following commands to check the process status:
 
 	 ```
 	 $ docker ps
@@ -279,7 +298,7 @@ You can configure the following settings in your `pool.yml` file. You can also l
 	 $ docker logs RUNNER_CONTAINER_ID
 	 ```
 
-4. In the Harness UI, verify that the delegate appears in the delegates list. It might take two or three minutes for the Delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.
+2. In the Harness UI, verify that the delegate appears in the delegates list. It might take two or three minutes for the Delegates list to update. Make sure the **Connectivity Status** is **Connected**. If the **Connectivity Status** is **Not Connected**, make sure the Docker host can connect to `https://app.harness.io`.
 
    ![](../static/set-up-an-aws-vm-build-infrastructure-13.png)
 
@@ -289,13 +308,25 @@ The delegate and runner are now installed, registered, and connected.
 
 Configure your pipeline's **Build** (`CI`) stage to use your AWS VMs as build infrastructure.
 
+```mdx-code-block
+<Tabs>
+  <TabItem value="Visual" label="Visual">
+```
+
 1. In Harness, go to the CI pipeline that you want to use the AWS VM build infrastructure.
 2. Select the **Build** stage, and then select the **Infrastructure** tab.
 3. Select **VMs**.
 4. Enter the **Pool Name** from your [pool.yml](#configure-the-drone-pool-on-the-aws-vm).
 5. Save the pipeline.
 
-Here's a YAML example of a **Build** stage that uses a VM build infrastructure:
+<!-- ![](./static/ci-stage-settings-vm-infra.png) -->
+
+<docimage path={require('./static/ci-stage-settings-vm-infra.png')} />
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="YAML" label="YAML" default>
+```
 
 ```yaml
     - stage:
@@ -310,11 +341,16 @@ Here's a YAML example of a **Build** stage that uses a VM build infrastructure:
             spec:
               type: Pool
               spec:
-                poolName: POOL_NAME_FROM_POOL.YML
+                poolName: POOL_NAME_FROM_POOL_YML
                 os: Linux
           execution:
             steps:
             ...
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
 ```
 
 ## Troubleshooting
