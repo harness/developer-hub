@@ -97,3 +97,32 @@ To retrieve the list of users from API, you can use the following curl command.
 curl --location --request GET 'https://app.harness.io/gateway/api/users?accountId=<AccountId>&limit=3000&offset=0' \
 --header 'accept: application/json, text/plain, */*' \
 --header 'authorization: Bearer ${token}' \
+```
+### Can same Github Repository be used for Different Projects with GitX Enabled?
+
+Yes you can add multiple projects to the same repository, GitX is entity based not project based .
+
+### Can Harness Support Group at any point of time have write access to our account ?
+
+No , Harness will never have any write access to your account.
+
+### Is auto-upgrade available for ECS delegates ?
+
+We only support auto upgrade for delegates in K8s Infra.
+
+### Is SAML single logout url supported ?
+
+Yes it is supported, this can be configured while setting up SAML.
+
+### What is the Idle Session Timeout ? Can it be configured ?
+
+The idle session timeout is of 24 hours, we also support configuring the session timeout, it can be acheived by visiting Account Setting.
+
+### When does the old replicas get clear out post getting disconnected for immutable delegates ?
+
+They get cleared out in 6 hours post getting disconnected . 
+
+### Do we support auto upgrade in Helm type delegates ?
+
+Yes we support auto upgrade in both these type delegates . This can be acheived by following `upgrader.enabled=true` while running the install command .
+
