@@ -380,7 +380,7 @@ To initiate replication, do the following:
    pg_basebackup -h <primary> -p 5432 -U reptest -D /var/lib/postgresql/13/main/ -Fp -Xs -R
    ```
 
-   The backup utility will prompt you for the password for the user named reptest
+   The backup utility prompts you for the `reptest` password.
 
 4. Create a `standby.signal` file in your data directory.
    
@@ -473,38 +473,55 @@ To enable SSL on TimescaleDB, do the following:
    certKey: "cert"
    ```
 
+## Failover functionality
 
-## Failover and High Availability
-PostgreSQL provides some failover functionality, where the replica is promoted to primary in the event of a failure. This is provided using the pg_ctl command or the trigger_file. However, PostgreSQL does not provide support for automatic failover.
+PostgreSQL provides some failover functionality, where the replica is promoted to primary in the event of a failure. This is available using the `pg_ctl` command or the `trigger_file`; however, PostgreSQL does not provide support for automatic failover.
 
-### Transition of Standby/Secondary to Primary:
-1. In the event of primary shutdown or unavailability. The timescaledb is still available but only in read-only mode. The standby needs to be to promoted to Primary. It can be done using pg_ctl promote command[Make sure the primary is totally down]:
+### Promote standby/secondary to primary
+
+When a primary instance shuts down or is unavailable, the TimescaleDB remains available, but only in read-only mode. You must promote the standby/secondary to primary.
+
+:::info note
+Before you promote a replica, make sure the primary is completely down.
+:::
+
+To promote the standby/secondary to primary, do the following:
+
+1. Run the `pg_ctl` `promote` command.
 
    ```
       /usr/lib/postgresql/13/bin/pg_ctl promote -D /var/lib/postgresql/13/main/
       service postgresql restart
    ```
-2. Change the host in your harness instance and upgrade your helm-charts.
 
-### Recovering the old Primary
-1. Adding few terminology to used in analogy:
+2. Change the host in your Harness instance, and upgrade your Helm charts.
+
+### Recover the former primary
+
+You can recover the former primary VM after you promote the standby/secondary.
+
+Replica promotion affects primary and secondary use in the following way:
+
    old primary ↔︎ new secondary 
    new primary ↔︎ old secondary ↔︎ old standby
 
-2. Since we converted the old standby to new primary, operations can happen in the new primary and the old primary may go out of sync.
+When you convert the standby instance to primary, operations can happen in the new primary, and the former primary may go out of sync. To have the former primary become the new secondary and the former secondary remain as the new primary you must add host replication.
 
-3. We are aiming for is to have the old primary become the new secondary and the old secondary remain as the new primary.
+To recover the former primary and add host replication, do the following.
 
-4. Firstly, we need to add the host as replication in pg_hba.conf file in the new primary
+1. Add the host replication in the `pg_hba.conf` file in the new primary.
+
    ```
    host    replication     reptest         <EXTERNAL IP of OLD PRIMARY/32       md5
    ```
-   then run (as root):
+
+2. Run the following as root.
+
    ```
    service postgresql restart
    ```
 
-5. A simple method to recover primary is to copy the data(this will not involve manual creation of signal file again)
+3. Copy data to recover the former primary.
 
    ```
    cd /var/lib/postgresql/13
@@ -515,7 +532,9 @@ PostgreSQL provides some failover functionality, where the replica is promoted t
    ```
    pg_basebackup -h <NEW_PRIMARY_IP> -p 5432 -U reptest -D /var/lib/postgresql/13/main/ -Fp -Xs -R
    ```
-6. Old primary is now a new secondary.
+
+   The former primary instance is now a new secondary instance.
+
 ## Upgrade TimescaleDB
 
 You can upgrade your self-managed TimescaleDB installation in-place. A major upgrade is when you upgrade from one major version of TimescaleDB to the next major version. For example, when you upgrade from TimescaleDB 13 to TimescaleDB 14.
