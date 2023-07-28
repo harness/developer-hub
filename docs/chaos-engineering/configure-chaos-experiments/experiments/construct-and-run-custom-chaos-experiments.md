@@ -64,7 +64,7 @@ To add a chaos experiment:
 
 		* **Tune fault parameters:** Every fault has a set of common parameters, such as the chaos duration, ramp time, etc., and a set of unique parameters that may be customised as needed.
 
-		* **Add chaos probes:** (Optionall) On the **Probes** tab, you can add chaos [probes](/docs/category/probes-1) to automate the chaos hypothesis checks for a fault during the experiment execution. Probes are declarative checks that aid in the validation of certain criteria that are deemed necessary to declare an experiment as **passed**.
+		* **Add chaos probes:** (Optional) On the **Probes** tab, you can add chaos [probes](/docs/category/probes-1) to automate the chaos hypothesis checks for a fault during the experiment execution. Probes are declarative checks that aid in the validation of certain criteria that are deemed necessary to declare an experiment as **passed**.
 
 		* **Tune fault weightage:** Set the weight for the fault, which sets the importance of the fault relative to the other faults in the experiments. This is used to calculate the [resilience score](/docs/chaos-engineering/configure-chaos-experiments/experiments/resilience-score) of the experiment.
 
