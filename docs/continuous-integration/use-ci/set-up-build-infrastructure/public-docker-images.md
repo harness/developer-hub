@@ -71,14 +71,14 @@ The following tools are installed on all public images:
 
 ### Base image
 
-The Harness Community [CI base image](https://hub.docker.com/r/harnesscommunity/ci-base-image) is an Ubuntu-based lightweight image that installs the minimum utilities required to run most builds on Harness CI, including an Ubuntu Linux OS, Git, Docker, Docker Compose, Dockerize, curl, ssh, and so on.
+The Harness Community [CI base image](https://hub.docker.com/r/harnesscommunity/base) is an Ubuntu-based lightweight image that installs the minimum utilities required to run most builds on Harness CI, including an Ubuntu Linux OS (22.04), Git, Docker, Docker Compose, Dockerize, curl, ssh, and so on.
 
 To use the base image in a pipeline, reference it in a step's `spec.image`, for example:
 
 ```yaml
                  spec:
                    connectorRef: account.harnessImage ## Use the built-in connector or your own Docker connector.
-                   image: harnesscommunity/ci-base-image:latest ## Reference the Docker Hub repo, image, and tag.
+                   image: harnesscommunity/base:latest ## Reference the Docker Hub repo, image, and tag.
                    shell: Sh
                    command: sudo npm install -g npm ## This is an example command.
 ```
@@ -89,10 +89,10 @@ The Harness Community language images are pre-built images for specific programm
 
 Harness Community language images include:
 
-* [Android](https://hub.docker.com/r/harnesscommunity/android)
-* [Ruby](https://hub.docker.com/r/harnesscommunity/ruby)
-* [Node.js](https://hub.docker.com/r/harnesscommunity/node)
-* [OpenJDK (Java)](https://hub.docker.com/r/harnesscommunity/openjdk)
+* [Android](https://hub.docker.com/r/harnesscommunity/android) (2022.10)
+* [Ruby](https://hub.docker.com/r/harnesscommunity/ruby) (3.1.2)
+* [Node.js](https://hub.docker.com/r/harnesscommunity/node) (18.9, 18.6, 18.5, 18.4, 18.0, 17.19.1)
+* [OpenJDK (Java)](https://hub.docker.com/r/harnesscommunity/openjdk) (18.0.2)
 
 :::info Image variants
 
@@ -107,7 +107,7 @@ To use a language image in a pipeline, reference it in a step's `spec.image`, fo
 ```yaml
                  spec:
                    connectorRef: account.harnessImage ## Use the built-in connector or your own Docker connector.
-                   image: harnesscommunity/ruby-ci-image:latest ## Reference the Docker Hub repo, image, and tag.
+                   image: harnesscommunity/ruby:latest ## Reference the Docker Hub repo, image, and tag.
                    shell: Sh
                    command: bundle exec rake test ## This is an example command.
 ```
