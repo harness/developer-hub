@@ -147,7 +147,7 @@ With the integration in place, the following events occur when you create a merg
 
 ![](./static/trigger-tutorial-09-triggered-build.png)
 
-<figcaption>Figure 1: Harness pipeline build launched from trigger</figcaption>
+<figcaption>Harness pipeline build launched from trigger</figcaption>
 </figure>
 
 
@@ -155,5 +155,5 @@ With the integration in place, the following events occur when you create a merg
 
 ![](./static/trigger-tutorial-10-security-tests.png)
 
-<figcaption>Figure 2: Scan results</figcaption>
+<figcaption>Scan results</figcaption>
 </figure>

@@ -14,7 +14,7 @@ Use Background steps to [manage dependent services](./dependency-mgmt-strategies
 
 ![](./static/background-step-settings-07.png)
 
-<figcaption>Figure 1: A Build stage with multiple services running in Background steps.</figcaption>
+<figcaption>A Build stage with multiple services running in Background steps.</figcaption>
 </figure>
 
 A Background step starts a service and then proceeds. For any later step that relies on the service, it is good practice to verify that the service is running before sending requests.
@@ -39,7 +39,7 @@ You can use the Background step **Id** to call services started by Background st
 
 ![](./static/background-step-settings-call-id-in-other-step.png)
 
-<figcaption>Figure 2: The Background step ID, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
+<figcaption>The Background step ID, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
 </figure>
 
 If the Background step is inside a step group, you must include step group ID, such as `curl [stepGroupId]_[backgroundStepId]:5000`, even if both steps are in the same step group.
@@ -60,7 +60,7 @@ If the Background step is inside a step group, you must include step group ID, s
 
 ![](./static/background-step-settings-08.png)
 
-<figcaption>Figure 3: An example configuration for the <b>Container Registry</b> and <b>Image</b> fields. Note that this figure shows a <b>Run</b> step, but the fields are populated the same for <b>Background</b> steps.</figcaption>
+<figcaption>An example configuration for the <b>Container Registry</b> and <b>Image</b> fields. Note that this figure shows a <b>Run</b> step, but the fields are populated the same for <b>Background</b> steps.</figcaption>
 </figure>
 
 :::info
@@ -94,7 +94,7 @@ import TabItem2 from '@theme/TabItem';
 
 ![](./static/dind-background-step-entry-point.png)
 
-<figcaption>Figure 4: <b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
+<figcaption><b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
 </figure>
 
 ```mdx-code-block
@@ -262,7 +262,7 @@ Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/pla
 
 ![](./static/background-step-settings-09.png)
 
-<figcaption>Figure 5: Using an expression for an environment variable's value.</figcaption>
+<figcaption>Using an expression for an environment variable's value.</figcaption>
 </figure>
 
 ## Image Pull Policy
