@@ -42,6 +42,9 @@ For details on AWS support in Harness, including tooling, limitations, and repos
 - The Harness AWS connector used in the Infrastructure Definition for the SAM stage must use the **AWS Access Key** option for credentials. The **Assume IAM role on Delegate** and **Use IRSA** options are not supported for SAM deployments.
 - You can manage whether Harness performs the SAM build within an ephemeral Docker container in a Kubernetes cluster using the `--use-container` option in the Harness SAM Build step. You can manage the Kubernetes settings for these steps as needed.
 
+## Demo Video
+<docvideo src="https://www.loom.com/share/477c342c400a49dfa88d7b818eb3b605?sid=a21d7c2c-f3e5-4a54-bcd9-2837c278105e" />
+
 
 ## AWS permissions
 

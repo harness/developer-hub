@@ -12,17 +12,19 @@ The delegate is instrumented for the collection of the following delegate agent 
   
 | **Metric name** | **Description** |
 | :-- | :-- |
-| `task_execution_time` | The time it takes to complete a task. |
-| `tasks_currently_executing` | The number of tasks underway. |
-| `task_timeout` | The number of tasks that time out before completion. |
-| `task_completed`* | The number of tasks completed. |
-| `task_failed`* | The number of failed tasks. |
-| `task_rejected`* | The number of tasks rejected because of a high load on the delegate. |
-| `delegate_connected`* | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
-| `resource_consumption_above_threshold`* | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. For more information, go to [Configure delegate resource threshold](#configure-delegate-resource-threshold). |
+| `io_harness_custom_metric_task_execution_time` | The time it takes to complete a task. |
+| `io_harness_custom_metric_tasks_currently_executing` | The number of tasks underway. |
+| `io_harness_custom_metric_task_timeout` | The number of tasks that time out before completion. |
+| `io_harness_custom_metric_task_completed` | The number of tasks completed. |
+| `io_harness_custom_metric_task_failed` | The number of failed tasks. |
+| `io_harness_custom_metric_task_rejected`* | The number of tasks rejected because of a high load on the delegate. |
+| `io_harness_custom_metric_delegate_connected` | Indicates whether the delegate is connected. Values are 0 (disconnected) and 1 (connected). |
+| `io_harness_custom_metric_resource_consumption_above_threshold`* | Delegate cpu/memory is above a threshold (defaults to 80%). Provide `DELEGATE_RESOURCE_THRESHOLD` as the env variable in the delegate YAML to configure the threshold. For more information, go to [Configure delegate resource threshold](#configure-delegate-resource-threshold). |
 
 :::info note
-Metrics notated with * above are currently behind the feature flag `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Metrics notated with * above only visible if you start your delegate with `DYNAMIC_REQUEST_HANDLING` set to `true` in your delegate YAML. Go to [Configure delegate resource threshold](#configure-delegate-resource-threshold) for more information.
+
+Also note that the above metrics are available only if your delegate version is later than 23.05.79311.
 :::
 
 This topic includes example YAML files you can use to create application manifests for your Prometheus and Grafana configurations.
@@ -298,7 +300,7 @@ spec:
 You can set the delegate to reject new tasks if x% of memory is being consumed. You can then spin up new delegates when resources are above the threshold.
 
 :::info note
-The `resource_consumption_above_threshold` metric is currently behind the feature flag `DELEGATE_ENABLE_DYNAMIC_HANDLING_OF_REQUEST`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+The `io_harness_custom_metric_resource_consumption_above_threshold` metric is only visible if you start your delegate with DYNAMIC_REQUEST_HANDLING set to `true` in your delegate YAML. 
 :::
 
 To configure the delegate resource threshold, make the following changes to the delegate YAML file:

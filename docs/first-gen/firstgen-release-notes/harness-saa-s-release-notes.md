@@ -16,11 +16,41 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+### July 27, 2023, version 80017
+
+#### What's new
+
+This release does not include new features. 
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Fixed an issue where Nexus 2 artifact details would appear as `null` (for example, `null:870`) in the Harness UI. (CDS-74053)
+
+### July 18, 2023, version 79915
+
+#### What's new
+
+- The Universal Base Image Minimal used for the Harness Delegate has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-39720)
+- The Universal Base Image Minimal used for various Harness services has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-39276)
+
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- Fixed an issue where Nexus 2 artifact details would appear as `null` (for example, `null:870`) in the Harness UI. (CDS-74053)
+
 ### July 06, 2023, version 79807
 
 #### What's new
 
-- The ubi8-minimal:8.7 has been upgraded to version ubi8-minimal:8.8 (PL-39276)
+- The Universal Base Image Minimal used for various Harness services has been upgraded to ubi8-minimal:8.8. This upgrade was necessitated by version 8.7 (ubi8-minimal:8.7) reaching end of life. (PL-39276)
 
 #### Early access
 

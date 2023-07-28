@@ -30,13 +30,5 @@ Harness CV supports the following log management tools:
 
 Harness supports most of the popular log management tools, but there may be instances where Harness don't have a native connector. Using the **Harness Custom Health Source** feature, you can integrate such log management tools with Harness.
 
-:::info note
-When configuring an APM tool or a log management tool in Harness CV and constructing a query, consider the following:
-
-- The query result should be below 100 logs per minute. If the logs exceed this limit, Harness performs random sampling for processing.
-
-- The query response should be a single time series.
-:::
-
 
 

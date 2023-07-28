@@ -7,6 +7,16 @@ import CertCard, { certType } from "./CertCard";
 import { certifications } from "./data/certificationsData";
 import styles from "./styles.module.scss";
 
+const devFeatures = [
+  "Free Plan",
+];
+const administratorFeatures = [
+  "Enterprise Plan",
+];
+const adminFeatures = [
+  "Enterprise Plan",
+];
+
 export const getCertBadges = (url: string) => [
   {
     img: `${url}img/cert_dev_badge.svg`,
@@ -87,14 +97,17 @@ export default function Certifications() {
 
       <div className={styles.tabs}>
         <ul className={styles.tabItems}>
-          {Object.entries(certType).map(([tabKey, tabVal]) => (
-            <li
-              key={tabKey}
-              className={tab === tabKey ? styles.active : ""}
-              onClick={() => handleSwitchTab(tabKey)}
-            >
-              For {tabVal}
-            </li>
+          {Object.entries(certType).map(([tabKey, tabVal], index) => (
+            <div className={styles.listTabItems}>
+              <li
+                key={tabKey}
+                className={tab === tabKey ? styles.active : ""}
+                onClick={() => handleSwitchTab(tabKey)}
+              >
+                For {tabVal}
+              </li>
+              {index < 2 && <i className="fa-solid fa-chevron-right"></i>}
+            </div>
           ))}
         </ul>
 
@@ -143,6 +156,125 @@ export default function Certifications() {
               .map((cert) => (
                 <CertCard {...cert} />
               ))}
+          </div>
+        </div>
+        <div className={styles.availableCerts}>
+          <h3>Which Certification is right for you?</h3>
+
+          <p>
+            Progress from Developer to Architect level certifications. Follow
+            the learning paths to progress to the next level.
+          </p>
+
+          <div className={styles.availableCertsBox}>
+            <div className={styles.certs}>
+              <div className={styles.certDescription}>
+                <div className={styles.titleLine}>
+                  <h4>Developer</h4>
+                  <i className="fa-solid fa-chevron-right"></i>
+                </div>
+                <p>Validate your knowledge of software delivery concepts.</p>
+
+                <ul>
+                  {devFeatures.map((feature) => (
+                    <li>
+                      <i className="fa-solid fa-check"></i>
+                      <p>{feature}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.certBadges}>
+                <h5>
+                  Available Certifications
+                </h5>
+                <div className={styles.availableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_dev_cd_badge.svg`}
+                    alt="Developer Continuous Delivery Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_dev_ci_badge.svg`}
+                    alt="Developer Continuous Integration Badge"
+                  />
+                </div>
+                {/* <h5>Coming Soon</h5> */}
+              </div>
+            </div>
+            <div className={styles.verticalLine}></div>
+
+            <div className={styles.certs}>
+              <div className={styles.certDescription}>
+                <div className={styles.titleLine}>
+                  <h4>Administrator</h4>
+                  <i className="fa-solid fa-chevron-right"></i>
+                </div>
+                <p>
+                  Assesses and validate your skills to maintain the Harness
+                  Platform for your software delivery needs.
+                </p>
+                <ul>
+                  {administratorFeatures.map((feature) => (
+                    <li>
+                      <i className="fa-solid fa-check"></i>
+                      <p>{feature}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.certBadges}>
+                <h5>
+                  Available Certifications
+                </h5>
+                <div className={styles.availableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_adm_cd_badge.svg`}
+                    alt="Administrator Continuous Delivery Badge"
+                  />
+                  <img
+                    src={`${baseUrl}img/cert_adm_ci_badge.svg`}
+                    alt="Administrator Continuous Integration Badge"
+                  />
+                </div>
+               {/* <h5>Coming Soon</h5> */}
+               {/* <div className={styles.unAvailableCerts}>
+                </div> */}
+              </div>
+            </div>
+
+            <div className={styles.verticalLine}></div>
+            <div className={styles.certs}>
+              <div className={styles.certDescription}>
+                <div className={styles.titleLine}>
+                  <h4>Architect</h4>
+                </div>
+                <p>
+                  Assesses and validate your skills to scale the Harness
+                  Platform for your organization's software delivery needs.
+                </p>
+                <ul>
+                  {adminFeatures.map((feature) => (
+                    <li>
+                      <i className="fa-solid fa-check"></i>
+                      <p>{feature}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className={styles.certBadges}>
+                {/* <h5>Available Certification</h5> */}
+
+                {/* <div className={styles.availableCerts}>
+                </div> */}
+                <h5>Coming Soon</h5>
+                <div className={styles.unAvailableCerts}>
+                  <img
+                    src={`${baseUrl}img/cert_arc_cd_badge.svg`}
+                    alt="Architect Continuous Delivery Badge"
+                  />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

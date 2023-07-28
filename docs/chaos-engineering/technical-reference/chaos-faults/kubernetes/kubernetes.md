@@ -522,3 +522,82 @@ It can test the application's resilience for the different values of file proper
 </accordion>
 
 </FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Time Chaos
+
+Time Chaos is a Kubernetes pod-level fault that introduces controlled time offsets to disrupt the system time of the target pod
+
+- It can test the application's resilience for invalid system time.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+It can test the application's resilience for invalid system time.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod API latency
+
+Pod API latency is a Kubernetes pod-level chaos fault that injects api request and response latency by starting proxy server and redirecting the traffic through it.
+
+- It injects the latency into the service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+- It evaluates the application's resilience to lossy (or flaky) API requests and responses.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+This fault evaluates the application's resilience to lossy (or flaky) API requests and response.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod API Status Code
+
+Pod API status code is a Kubernetes pod-level chaos fault that change the API response status code and optionally api response body through path filtering.
+
+- It overrides the api status code of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+- It evaluates the application's resilience to lossy (or flaky) responses.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+This fault evaluates the application's resilience to lossy (or flaky) API responses.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod API modify header
+
+Pod API modify header is a Kubernetes pod-level chaos fault that overrides the header values of API requests and responses with the user-provided values for the given keys.
+
+- It modifies the headers of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+- It evaluates the application's resilience to lossy (or flaky) requests and responses.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+This fault evaluates the application's resilience to lossy (or flaky) API requests and responses.
+</accordion>
+
+</FaultDetailsCard>
+
+<FaultDetailsCard category="kubernetes" subCategory="pod">
+
+### Pod API modify body
+
+Pod API modify body is a Kubernetes pod-level chaos fault that modifies the api request and response body by replacing any portions that match a specified regular expression with a provided value.
+
+- It modifies the body of service whose port is specified using the `TARGET_SERVICE_PORT` environment variable.
+- It evaluates the application's resilience to lossy (or flaky) requests and responses.
+
+<accordion color="green">
+    <summary>Use cases</summary>
+This fault evaluates the application's resilience to lossy (or flaky) API requests and responses.
+</accordion>
+
+</FaultDetailsCard>

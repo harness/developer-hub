@@ -212,6 +212,12 @@ If you do not select **Use Connector credentials**, Terraform will use the crede
 
 The **Use Connector credentials** setting is limited to Harness Git Connectors using SSH authentication (not HTTPS) and a token.
 
+When configuring the SSH key for the connector, exporting an SSH key with a passphrase for the module source is not supported. Configure an SSH Key without the passphrase.
+
+Here are some syntax examples to reference the Terraform module using the SSH protocol:
+
+```bash
+source = "git@github.com:your-username/your-private-module.git"
 ## Workspace
 
 Harness supports Terraform [workspaces](https://www.terraform.io/docs/state/workspaces.html). A Terraform workspace is a logical representation of one your infrastructures, such as Dev, QA, Stage, Production.
@@ -440,15 +446,33 @@ For example, if your config.tf file has the following backend:
 
 
 ```json
-terraform {  
-  backend "gcs" {  
-    bucket  = "tf-state-prod"  
-    prefix  = "terraform/state"  
-  }  
+terraform {
+  backend "gcs" {
+    bucket  = "tf-state-prod"
+    prefix  = "terraform/state"
+    }
 }
 ```
 
-In **Backend Configuration**, you provide the required configuration variables for that backend type. See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
+In **Backend Configuration**, you provide the required configuration variables for the backend type. 
+
+For a remote backend configuration, the variables should be in .tfvars file.
+
+Example:
+```json
+bucket  = "tf-state-prod"  
+prefix  = "terraform/state"
+```
+
+In your Terraform .tf config file, only the definition of the Terraform backend is required:
+
+```json
+terraform {  
+  backend "gcs" {}
+}
+```
+
+See **Configuration variables** in Terraform's [gcs Standard Backend doc](https://www.terraform.io/docs/language/settings/backends/gcs.html#configuration-variables).
 
 ## Targets
 
@@ -475,7 +499,7 @@ You can use Harness encrypted text for values. See [Add Text Secrets](/docs/plat
 
 Enable this setting to use a JSON representation of the Terraform plan that is implemented in a Terraform Plan step.
 
-In subsequent **Execution** steps, such as a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step, you can reference the Terraform plan using this expression format:
+In subsequent **Execution** steps, such as a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step, you can reference the Terraform plan using this expression format:
 
 `<+execution.steps.[Terraform Plan step Id].plan.jsonFilePath>`
 
@@ -506,7 +530,7 @@ The JSON of the Terraform Plan step is not available after Rollback.
 
 ## Export Human Readable representation of Terraform Plan
 
-Enable this option to view the Terraform plan file path and contents as human-readable JSON is subsequent steps, such as a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts).
+Enable this option to view the Terraform plan file path and contents as human-readable JSON is subsequent steps, such as a [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts).
 
 Once you enable this option and run a CD stage with the Terraform Plan step, you can click in the Terraform Plan step's **Output** tab and copy the **Output Value** for the **humanReadableFilePath** output.
 
@@ -521,7 +545,7 @@ For example, if the Terraform Plan stage and step Ids are `tf` then you would ge
 - **humanReadableFilePath**:
   - `<+terraformPlanHumanReadable."pipeline.stages.tf.spec.execution.steps.tf.tf_planHumanReadable">`
 
-Next, you can enter those expressions in a subsequent [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step and Harness will resolve them to the human-readable paths and JSON.
+Next, you can enter those expressions in a subsequent [Shell Script step](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step and Harness will resolve them to the human-readable paths and JSON.
 
 For example, here is a script using the variables:
 
@@ -559,11 +583,24 @@ Terraform refresh command won't be running when this setting is selected.
 
 You can use the standard `terraform plan` command option [detailed-exitcode](https://www.terraform.io/cli/commands/plan#other-options) with the Harness Terraform Plan step.
 
-If you use the `-detailed-exitcode` option in a step that follows the Harness Terraform Plan step, such as a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step, Harness will return a detailed exit code:
+If you use the `-detailed-exitcode` option in a step that follows the Harness Terraform Plan step, such as a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step, Harness will return a detailed exit code:
 
 * `0`: succeeded with empty diff (no changes)
 * `1`: error
-* `2`: succeeded with non-empty diff (changes present)
+* `2`: succeeded with non-empty diff (changes present)|
+
+Exit codes are available as Terraform Plan step outputs that can be accessed using expressions with the following format:
+
+```
+<+pipeline.stages.STAGE_ID.spec.execution.steps.STEP_ID.plan.detailedExitCode>
+```
+
+For example:
+
+```
+<+pipeline.stages.TfStage.spec.execution.steps.TfPlan.plan.detailedExitCode>
+```
+
 
 ## Option: Advanced Settings
 

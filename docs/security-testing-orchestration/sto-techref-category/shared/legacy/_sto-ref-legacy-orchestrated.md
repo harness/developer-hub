@@ -1,4 +1,4 @@
-<details><summary>Orchestrated scan settings</summary>
+<!-- details><summary>Orchestrated scan settings</summary -->
 
 The following settings are required for Security steps where the `policy_type` is `orchestratedScan`.
 
@@ -18,4 +18,4 @@ The following settings are required for Security steps where the `policy_type` i
 For a complete workflow description and example, go to [Run an Orchestrated Scan in an STO Pipeline](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-an-orchestrated-scan-in-sto).
 
 
-</details>
+<!-- /details -->

@@ -85,14 +85,17 @@ export default function CertificationsCI() {
       {/* Tab Content */}
       <div className={styles.tabs}>
         <ul className={styles.tabItems}>
-          {Object.entries(certType).map(([tabKey, tabVal]) => (
-            <li
-              key={tabKey}
-              className={tab === tabKey ? styles.active : ""}
-              onClick={() => handleSwitchTab(tabKey)}
-            >
-              For {tabVal}
-            </li>
+          {Object.entries(certType).map(([tabKey, tabVal], index) => (
+            <div className={styles.listTabItems}>
+              <li
+                key={tabKey}
+                className={tab === tabKey ? styles.active : ""}
+                onClick={() => handleSwitchTab(tabKey)}
+              >
+                For {tabVal}
+              </li>
+              {index < 2 && <i className="fa-solid fa-chevron-right"></i>}
+            </div>
           ))}
         </ul>
 
@@ -200,7 +203,7 @@ export default function CertificationsCI() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Continuous Integration - Administrator (BETA COMING SOON)
+                    Continuous Integration - Administrator
                   </h2>
                   <img
                     src={`${baseUrl}img/cert_adm_ci_badge.svg`}
@@ -213,15 +216,19 @@ export default function CertificationsCI() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide - Coming Soon</h3>
+                  <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy and maintain CI
-                    projects and the overall Harness Platform. This exam builds upon
-                    the <a href="/certifications/continuous-integration?lvl=developer">CI Developer Certification</a>. 
+                    projects and the overall Harness Platform. This exam builds
+                    upon the{" "}
+                    <a href="/certifications/continuous-integration?lvl=developer">
+                      CI Developer Certification
+                    </a>
+                    .
                   </div>
                   <AdminCertificationReviewGuide />
                   <div className={styles.btnContainer}>
-                    <Link href="#">
+                    <Link href="https://university.harness.io/continuous-integration-administrator">
                       <button className={styles.moreDetails}>
                         Register for Exam
                       </button>
@@ -244,7 +251,7 @@ export default function CertificationsCI() {
             <div className={styles.examDetailsCard}>
               <AdminCertificationExamDetails />
               <div className={styles.btnContainer}>
-                <Link href="#">
+                <Link href="https://university.harness.io/continuous-integration-administrator">
                   <button className={styles.moreDetails}>
                     Register for Exam
                   </button>

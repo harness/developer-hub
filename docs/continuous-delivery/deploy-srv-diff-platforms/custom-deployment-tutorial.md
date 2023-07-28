@@ -14,7 +14,7 @@ Currently, this feature is behind the feature flag `NG_SVC_ENV_REDESIGN`. Contac
 
 :::
 
-In some cases, you might be using a platform that does not have first class support in Harness, such as OpenStack, WebLogic, WebSphere, Google Cloud functions, etc. We call these non-native deployments.
+In some cases, you might be using a platform that does not have first class support in Harness, such as OpenStack, WebLogic, WebSphere, etc. We call these non-native deployments.
 
 For non-native deployments, Harness provides a custom deployment option using Deployment Templates.
 
@@ -66,7 +66,7 @@ Unlike the deployments for supported platforms, like Kubernetes and AWS, Deploym
 * No steady state checks on deployed services.
 * Harness does not track releases.
 
-You can add your own scripts or tests to your Pipelines to describe deployments, check steady state, and track releases. For example, using the [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) or [HTTP](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines) steps.
+You can add your own scripts or tests to your Pipelines to describe deployments, check steady state, and track releases. For example, using the [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) or [HTTP](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-http-requests-in-cd-pipelines) steps.
 
 ## Harness Delegate setup
 
@@ -531,7 +531,7 @@ Since a Deployment Template can be used on any host type, the Command step can o
 
 Consequently, there is no reason to use a Looping Strategy when using the Command step with Deployment Templates.
 
-For more information, go to [Use the Command step to download, copy, or run scripts](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step).
+For more information, go to [Use the Command step to download, copy, or run scripts](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/download-and-copy-artifacts-using-the-command-step).
 
 ### Payloads without High-Level Objects
 

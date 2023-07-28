@@ -131,8 +131,6 @@ curl -i -X POST \
 </Tabs>
 ```
 
-
-
 ## Pipeline, stage, service, and environment
 
 Variables added to pipelines and stages are available to all stages in the pipeline. 
@@ -161,7 +159,7 @@ The expression to reference **Project** scope variables is `<+variable.VARIABLE_
 Let's add the variable in a pipeline.
 
 1. In Harness, go to a pipeline in the same org as the variable you created.
-2. In a stage **Execution** section, add a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts) step and reference the variables:
+2. In a stage **Execution** section, add a [Shell Script](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts) step and reference the variables:
 
 
 ```
@@ -174,7 +172,7 @@ When you run the Pipeline, the variable references are resolved and output:
 
 ![](./static/add-a-variable-08.png)
 
-### Using an account, org, or project variable in a service variable
+### Use an account, org, or project variable in a service variable
 
 1. In **Service**, in **Advanced**, select **Add Variable**.
    
@@ -188,7 +186,7 @@ When you run the Pipeline, the variable references are resolved and output:
    
    ![](./static/add-a-variable-10.png)
 7. Now, when you run your pipeline the referenced value is evaluated at runtime.
-8.  In your pipeline stage, copy the service variable from the **Variables** panel:
+8. In your pipeline stage, copy the service variable from the **Variables** panel:
    
    ![](./static/add-a-variable-11.png)
 9. In your Shell Script step, reference the service variable with:
@@ -203,4 +201,41 @@ You can refer to a variable in most settings. For example, if you have an accoun
 ![](./static/add-a-variable-13.png)
 
 Now, when you run your Pipeline the referenced value is evaluated at runtime.
+
+### Export service variables as environment variables in a Shell Script step
+
+You can use the **Export Service Variables as Env Variables** setting to export service variables as environment variables. This setting is available at account, organization, and project levels.
+
+To enable this setting, go to **Account Settings > Account Resources > Default Settings > Pipeline**, and then expand **Pipeline**. Next, set the **Export Service Variables as Env Variables** setting to `true`.
+
+Once you enable this setting, a service's variables are available as Bash variables in any Shell Script step in a stage that deploys that service. You can access the service variables like you access any Bash variables. For example, the service variable, `var1` is available for use in a Shell Script step as `$var1`.
+
+When you [add a service](#use-an-account-org-or-project-variable-in-a-service-variable), you can select variables of type **String**, **Secret**, or **Number**. 
+
+Let's consider an example where you have added the following service variables: 
+
+| **Variable name** | **Type** | **Value** |
+| :--- | :--- | :--- |
+| `svar1` | String | normalValue |
+| `svar2` | String | value-with-hyphen |
+| `svar3` | String | value_with_underscores |
+| `secretServiceVar` | Secret | `yourSecret` |
+| `nvar1` | Number | 1 |
+| `svar4` | String | abc%def%123 |
+| `svar5$abc` | String | key_With_Dollar |
+| `svar6` | String | abc,ghj,klk |
+
+In your Shell Script step, you can use these service variables as environment variables if you had enabled the **Export Service Variables as Env Variables** setting.
+
+:::info Limitation
+
+Shell scripts executing on remote hosts cannot export the correct value if you're using special characters such as `-`, `_`, `$`, `%`, and spaces in Bash.
+
+:::
+
+When you run the pipeline, you can see the value of the service variables passed as environment variables.
+
+<docimage path={require('./static/export-srv-var-as-env-var.png')} width="100%" height="100%" title="Click to view full size image" />  
+
+
 

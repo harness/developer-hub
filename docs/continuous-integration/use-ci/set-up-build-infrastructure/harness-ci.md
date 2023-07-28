@@ -8,7 +8,13 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
-When a Harness CI pipeline runs, there is an *initialize* step that automatically runs before any other steps in the stage. This step prepares the environment to run your steps, such as preparing the build infrastructure and pulling required Harness CI images from Docker Hub. You can find Harness Docker images at [https://hub.docker.com/u/harness](https://hub.docker.com/u/harness).
+When a Harness CI pipeline runs, there is an *initialize* step that automatically runs before any other steps in the stage. This step prepares the environment to run your steps, such as preparing the build infrastructure and pulling required [Harness images from Docker Hub](https://hub.docker.com/u/harness).
+
+:::info
+
+Harness CI images are not the same as [pre-built public images](./public-docker-images.md). Harness CI images are essential images used by Harness to run CI pipelines. Pre-built public images are extended versions of official Docker images that you can optionally use to quickly set up a specific build environment.
+
+:::
 
 ## CI images list
 
@@ -24,9 +30,9 @@ Here are some examples of Harness CI images and the purpose of each image. Build
 * `harness/ci-lite-engine`: Used to orchestrate execution of steps on Kubernetes pods
 * `harness/drone-git`: Used to clone git repos
 * `plugins/cache`: Used to cache files to/from S3/GCS that help to expedite builds
-* `plugins/kaniko`: Used to build Docker images with the kaniko framework and push images to Docker registry out of the box
-* `plugins/kaniko-ecr`: Used to build Docker images with the kaniko framework and push images to AWS ECR registry out of the box
-* `plugins/kaniko-gcr`: Used to build Docker images with the kaniko framework and push images to GCP GCR registry out of the box
+* `plugins/kaniko`: Used to build Docker images with the kaniko framework and push images to Docker registry out of the box for Kubernetes cluster build infrastructures.
+* `plugins/kaniko-ecr`: Used to build Docker images with the kaniko framework and push images to AWS ECR registry out of the box for Kubernetes cluster build infrastructures.
+* `plugins/kaniko-gcr`: Used to build Docker images with the kaniko framework and push images to GCP GCR registry out of the box for Kubernetes cluster build infrastructures.
 * `plugins/s3`: Used to upload files to AWS S3 buckets out of the box
 * `plugins/gcs`: Used to upload files to GCP GCS service out of the box
 

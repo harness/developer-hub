@@ -33,6 +33,38 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },
     //===================================================================================
+    
+    // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-http-requests-in-cd-pipelines",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/run-a-script-on-multiple-target-instances",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/wait-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/wait-step",
+    },
+    {
+      from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step",
+      to: "/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/container-step",
+    },
+
+    // Created by schoudhury on July 16, 2023
+    {
+      from: "/tutorials/internal-developer-portal/create-your-first-service-onboarding-pipeline",
+      to: "/tutorials/internal-developer-portal/service-onboarding-pipeline",
+    },
 
     // Create by aimurphy for branch DOC-3386 on July 11, 2023
 
@@ -1277,7 +1309,7 @@ module.exports = {
     },
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/kubernetes-autostopping-for-istio",
-      to: "/docs/cloud-cost-management/use-ccm-cost-optimization/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/kubernetes-autostopping-for-istio",
+      to: "/docs/cloud-cost-management/getting-started-ccm/quick-start-guides/kubernetes-autostopping-for-istio",
     },
     {
       from: "/docs/cloud-cost-management/use-cloud-cost-management/optimize-cloud-costs-with-intelligent-cloud-auto-stopping-rules/create-auto-stopping-rules/review-autostopping-rules-reqs",
@@ -2073,11 +2105,6 @@ module.exports = {
     },
 
     {
-      from: "/docs/continuous-delivery/cd-technical-reference/cd-gen-ref-category/http-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
-    },
-
-    {
       from: "/docs/continuous-delivery/cd-advanced/terraform-category/run-a-terraform-plan-with-the-terraform-plan-step",
       to: "/docs/continuous-delivery/cd-infrastructure/terraform-infra/run-a-terraform-plan-with-the-terraform-plan-step",
     },
@@ -2195,36 +2222,6 @@ module.exports = {
     {
       from: "/docs/continuous-delivery/cd-execution/kubernetes-executions/scale-kubernetes-replicas",
       to: "/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/kubernetes-executions/scale-kubernetes-replicas",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/container-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/container-step",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/download-and-copy-artifacts-using-the-command-step",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/run-a-script-on-multiple-target-instances",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/run-a-script-on-multiple-target-instances",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/using-http-requests-in-cd-pipelines",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/using-shell-scripts",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts",
-    },
-
-    {
-      from: "/docs/continuous-delivery/cd-execution/cd-general-steps/wait-step",
-      to: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/wait-step",
     },
 
     {
@@ -2974,10 +2971,37 @@ module.exports = {
       from: "/docs/self-managed-enterprise-edition/monitor-self-managed-enterprise-edition/monitor-harness-on-prem",
       to: "/docs/self-managed-enterprise-edition/monitor-harness-on-prem",
     },
+    // Created by bfisher for DOC-3432 on July 20, 2023
+    {
+      from: "/docs/platform/Get-started/platform-concepts/view-account-info-and-subscribe-to-alerts",
+      to: "/docs/platform/Get-started/view-account-info-and-subscribe-to-alerts",
+    },
+    {
+      from: "/docs/platform/Get-started/platform-concepts/platform-overview",
+      to: "/docs/platform/Get-started/platform-overview",
+    },
+    // Created by bfisher for DOC-3458 on July 25, 2023
+    {
+      from: "/docs/self-managed-enterprise-edition/back-up-and-recover/use-an-external-database",
+      to: "/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database",
+    },
+    {
+      from: "/docs/self-managed-enterprise-edition/back-up-and-recover/back-up-and-restore-helm",
+      to: "/docs/self-managed-enterprise-edition/back-up-and-restore-helm",
+    },
     // PR-2012
     {
       from: "/docs/security-testing-orchestration/sto-techref-category/custom-ingest-scan-reference",
       to:   "/docs/security-testing-orchestration/sto-techref-category/custom-ingest-reference",
+    },
+    // Created by bfisher for DOC-3488 on July 26, 2023
+    {
+      from: "/docs/platform/resource-development/apis/rate-limits/",
+      to:   "/docs/platform/rate-limits",
+    },
+    {
+      from: "/docs/platform/Security/rate-limits",
+      to:   "/docs/platform/rate-limits",
     },
   ],
 };
