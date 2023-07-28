@@ -8,6 +8,10 @@ helpdocs_is_private: false
 helpdocs_is_published: true
 ---
 
+:::important
+The ability to use the credentials of a specific Harness Delegate is behind the feature flag `PL_USE_CREDENTIALS_FROM_DELEGATE_FOR_GCP_SM`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 You can link your Google Cloud Secret Manager to Harness and use it to store any sensitive data you use in Harness, including secrets.
 
 Harness also supports [Google KMS as a secrets manager](./10-add-google-kms-secrets-manager.md).This topic explains how to add a GCP Secrets Manager in Harness.
