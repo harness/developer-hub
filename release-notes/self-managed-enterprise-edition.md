@@ -17,7 +17,7 @@ import delete_project from './static/delete-project.png'
 
 Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
-## Latest - July xx, 2023, version 79xxx
+## Latest - July 31, 2023, version 798xx
 
 ### Known issue
 
@@ -27,6 +27,33 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 <Tabs>
   <TabItem value="What's new">
 ```
+
+This release includes the following Harness module and component versions.
+
+| **Name** | **Version** |
+| :-- | :--: |
+| Helm Chart | [0.8.0](https://github.com/harness/helm-charts/releases/tag/harness-0.8.0) |
+| Air Gap Bundle | [0.8.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.8.0) |
+| NG Manager | xxxxx |
+| CI Manager | xxxx |
+| Pipeline Service | x.xx.x |
+| Platform Service | xxxxx |
+| Access Control Service | xxxxx |
+| Change Data Capture | xxxxx |
+| Test Intelligence Service | release-xxx |
+| NG UI | x.xxx.xx |
+| LE NG | xxxxx |
+
+#### Self-Managed Enterprise Edition
+
+- Harness now supports external self-managed databases for high availability. (SMP-1577, SMP-1617, SMP-1645, SMP-1646)
+
+  To learn how to configure an external self-managed database, go to the following tutorials.
+
+  - [MongoDB](/tutorials/self-managed-enterprise-edition/use-an-external-self-managed-mongodb/)
+  - [PostgreSQL](/tutorials/self-managed-enterprise-edition/use-an-external-postgres-database/)
+  - [Redis](/tutorials/self-managed-enterprise-edition/use-an-external-redis-database/)
+  - [TimescaleDB](/tutorials/self-managed-enterprise-edition/use-an-external-sm-timescaledb/)
 
 #### Continuous Delivery & GitOps
 
