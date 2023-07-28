@@ -93,7 +93,7 @@ Harness provides access control by combining Principals, Resource Groups, and Ro
 ### Resource Groups
 
 A resource group is a set of Harness resources that a principal can access. You can create resource groups at account, org, or project scope.  
-For more information on creating a new resource group, see [Add and Manage Resource Groups](/docs/platform/4_Role-Based-Access-Control/8-add-resource-groups.md).
+For more information on creating a new resource group, see [Add and Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups).
 
   Resource Groups can be of two types:
 
@@ -115,7 +115,7 @@ For more information on creating a new resource group, see [Add and Manage Resou
 
   You can also create custom resource groups within any scope.
 
-  For more information, see [Add and Manage Resource Groups](/docs/platform/4_Role-Based-Access-Control/8-add-resource-groups.md).
+  For more information, see [Add and Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups).
 
 ### Roles
 
@@ -213,7 +213,7 @@ The following blog post walks you through user and role management in Harness:
 Workflow:
 
 1. [Add and Manage Roles](/docs/platform/role-based-access-control/add-manage-roles)
-1. [Add and Manage Resource Groups](/docs/platform/4_Role-Based-Access-Control/8-add-resource-groups.md)
+1. [Add and Manage Resource Groups](/docs/platform/role-based-access-control/add-resource-groups) and optionally apply ABAC.
 1. [Add and Manage User Groups](/docs/platform/3_User-Management/4-add-user-groups.md)
 1. Role & resource assignment to user groups
 1. [Add and Manage Users](/docs/platform/3_User-Management/3-add-users.md) (provision users and service accounts) [Add and Manage Service Accounts](/docs/platform/3_User-Management/6-add-and-manage-service-account.md)
@@ -259,7 +259,7 @@ You will learn how to:
 To manage access control in Harness, you must have the following components in place:
 
 * **Principal**: can be a [User](../3_User-Management/3-add-users.md), [User Group](../3_User-Management/4-add-user-groups.md), or [Service Account](../3_User-Management/6-add-and-manage-service-account.md).
-* **Resource Group**: is a list of resources within a specific scope on which a Principal can perform actions. See [Add and Manage Resource Groups](./8-add-resource-groups.md).
+* **Resource Group**: is a list of resources within a specific scope on which a Principal can perform actions. See [Add and Manage Resource Groups](./add-resource-groups).
 * **Roles**: is a set of permissions that is assigned to a Principal for specific Resource Groups. See [Add and Manage Roles](./add-manage-roles).
 
 Harness provides a set of built-in Resource Groups and Roles for you to easily manage access control. For more information, see [Role Assignments](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment).
@@ -395,7 +395,7 @@ The following example shows you how to create a user group as the principal.
 1. Create a [user group](/docs/platform/3_User-Management/4-add-user-groups.md) named `SampleUG` in the account scope.
 2. Create a [custom role](/docs/platform/role-based-access-control/add-manage-roles) named `SampleRole` in the project scope.
    Add the `Execute` permission for pipeline and `Access` permission for connectors in this role.
-3. Create a [custom resource group](/docs/platform/4_Role-Based-Access-Control/8-add-resource-groups.md) named `SampleResourceGroup` in the project scope.
+3. Create a [custom resource group](/docs/platform/role-based-access-control/add-resource-groups) named `SampleResourceGroup` in the project scope.
    Include pipelines and all the connectors your pipeline needs in this resource group.
 
    The following table explains the ways in which you can grant execute permission for a pipeline:
