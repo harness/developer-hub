@@ -646,9 +646,9 @@ If a script is supplied here, select the corresponding **Shell** option.
 
 ### Run Only Selected Tests
 
-This option must be selected to [enable Test Intelligence](./set-up-test-intelligence.md).
+This option must be selected (`true`) to enable Test Intelligence.
 
-If this option is unchecked, Test Intelligence is disabled and all tests run on every build.
+If this option is not selected (`false`), Test Intelligence is disabled and all tests run on every build.
 
 ### Packages
 
@@ -691,7 +691,7 @@ To change what happens when steps fail, go to [Step Failure Strategy settings](.
 
 To configure when pipelines should skip certain steps, go to [Step Skip Condition settings](/docs/platform/8_Pipelines/w_pipeline-steps-reference/step-skip-condition-settings.md).
 
-## Pipeline YAMl examples
+## Pipeline YAML examples
 
 ```mdx-code-block
 <Tabs>
