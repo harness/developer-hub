@@ -36,7 +36,7 @@ Harness recommends a PostgreSQL three-member replica set configuration with the 
 
 - Three nodes
 - Four CPU (3*4 = 12 CPU)
-- 24GB RAM (3*16 = 48GB RAM)
+- 24GB RAM (324 = 72GB RAM)
 - 300GB SSD data storage, depending on your requirements
 
 ## Software requirements
@@ -110,7 +110,7 @@ To set up a TimescaleDB VM, do the following:
    echo "deb https://packagecloud.io/timescale/timescaledb/debian/ $(lsb_release -c -s) main" | sudo tee /etc/apt/sources.list.d/timescaledb.list
    ```
 
-   Ubuntu 21.10 an later:
+   Ubuntu 21.10 and later:
 
    ```
    wget --quiet -O - https://packagecloud.io/timescale/timescaledb/gpgkey | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/timescaledb.gpg
@@ -182,6 +182,7 @@ To set up TimescaleDB extension on Debian-based systems, do the following:
 
    ```
    \password postgres
+   ```
 
 6. Exit PostgreSQL.
 
@@ -377,7 +378,7 @@ To initiate replication, do the following:
 3. Restore from the base backup, using the IP address of the primary database and the replication username.
 
    ```
-   pg_basebackup -h <primary> -p 5432 -U reptest -D /var/lib/postgresql/13/main/ -Fp -Xs -R
+   pg_basebackup -h <PRIMARY_IP> -p 5432 -U reptest -D /var/lib/postgresql/13/main/ -Fp -Xs -R
    ```
 
    The backup utility prompts you for the `reptest` password.
@@ -502,10 +503,11 @@ You can recover the former primary VM after you promote the standby/secondary.
 
 Replica promotion affects primary and secondary use in the following way:
 
-   old primary ↔︎ new secondary 
-   new primary ↔︎ old secondary ↔︎ old standby
+- Former primary ↔︎ new secondary
 
-When you convert the standby instance to primary, operations can happen in the new primary, and the former primary may go out of sync. To have the former primary become the new secondary and the former secondary remain as the new primary you must add host replication.
+- New primary ↔︎ former secondary ↔︎ former standby
+
+When you convert the standby instance to primary, operations could occur in the new primary, and the former primary may go out of sync. To have the former primary become the new secondary and the former secondary remain as the new primary, you must add host replication.
 
 To recover the former primary and add host replication, do the following.
 
