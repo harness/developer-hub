@@ -64,11 +64,12 @@ With Harness STO, you are scanning at any stage in the CI/CD Pipeline, and provi
 ![](./static/security-testing-orchestration-basics-30.png)
 -->
 
+<!--
 ### Quick Summary
 
 The following 1min video provides a quick summary of STO:
 
-<!-- Video:
+ Video:
 https://harness-1.wistia.com/medias/rpv5vwzpxz>
 <docvideo src="https://fast.wistia.net/embed/iframe/yjlevup9v4" />
 -->
@@ -119,13 +120,6 @@ Now let's apply these features to common use cases:
 
 For a list of supported scanners, see [Security Step Settings Reference](../sto-techref-category/security-step-settings-reference.md#scanners-target-types-and-scan-approach).
 
-### STO support by CI build infrastructure type
-
-```mdx-code-block
-import StoInfraSupport from './shared/_supported-infrastructures.md';
-```
-
-<StoInfraSupport />
 
 ### Next Steps
 
