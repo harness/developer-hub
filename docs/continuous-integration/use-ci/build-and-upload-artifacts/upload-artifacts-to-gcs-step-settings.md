@@ -44,11 +44,13 @@ The GCS destination bucket name.
 
 ### Source Path
 
-Path to the artifact file/folder you want to upload. Harness creates the compressed file automatically.
+Path to the artifact file/folder you want to upload.
+
+If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
 
 ### Target
 
-The path, relative to the **Bucket** where you want to store the cache. If no target path is provided, the cache is saved to `[bucket]/`.
+The path, relative to the **Bucket** where you want to store the artifact. If no target path is provided, the artifact is saved to `[bucket]/`.
 
 ### Run as User
 
