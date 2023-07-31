@@ -81,21 +81,6 @@ You can update the DNS record dynamically using a script or use the service disc
 
 ![PostgreSQL DNS](./static/postgresql-self-managed-dns.png)
 
-## Third-party tools
-
-Several third-party tools are available for self-managed PostgreSQL configurations.
-
-[Bitnami PostgreSQL-ha](https://github.com/bitnami/charts/tree/main/bitnami/postgresql-ha/) is an actively-managed chart that is widely used for self-managed PostgreSQL.
-
-This stack consists of:
-
-- `bitnami/postgresql`: The PostgreSQL database.
-
-- `bitnami/postgresql-repmgr`: An open-source tool suite to manage replication and failover in a cluster of PostgreSQL servers. This tool enhances PostgreSQL's built-in hot-standby capabilities and includes tools to set up standby servers, monitor replication, and perform administrative tasks, such as failover or manual switchover operations.
-
-- `Pgpool-II`: Pgpool-II is middleware that works between PostgreSQL servers and a PostgreSQL database client. It provides Connection Pooling, Watchdog, Replication, In Memory Query Cache, and Load Balancing. For more information, go to the [Pgpool-II documentation](https://pgpool.net/mediawiki/index.php/Main_Page).
-
-
 ## Set up PostgreSQL VMs
 
 :::info warning
