@@ -73,34 +73,31 @@ The legacy Kubernetes delegate, denoted `latest` container image tag, is used pr
 
 ### Install Docker delegate using Podman
 
-You can install the Docker delegate using Podman by adding Podman commands to your Dockerfile. The example below uses a delegate with the immutable image type. For information on delegate types, go to [Delegate image types](/docs/platform/delegates/delegate-concepts/delegate-image-types). 
+You can install the Docker delegate using Podman by adding Podman commands to your Dockerfile. 
 
-#### Sample Podman file
+To install the Docker delegate using Podman, do the following:
 
-```
-sudo apt-get -y update
+1. In Harness, select **Deployments**, then select your project.
+2. Select **Delegates** under **Project Setup**.
+3. Select **Install a Delegate** to open the **New Delegate** dialog.
 
-sudo apt-get -y install podman
+   ![](./static/install-a-docker-delegate-podman.png)
 
-podman run --restart=always --hostname="$(hostname -f)"  \
--e DELEGATE_NAME=YOUR_DELEGATE_NAME  \
--e NEXT_GEN="true"  \
--e DELEGATE_TYPE="DOCKER"  \
--e ACCOUNT_ID=YOUR_ACCOUNT_ID  \
--e DELEGATE_TOKEN=YOUR_DELEGATE_TOKEN  \
--e LOG_STREAMING_SERVICE_URL=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE/log-service/  \
--e MANAGER_HOST_AND_PORT=PUT_YOUR_MANAGER_HOST_AND_PORT_HERE  \
-delegate:yy.mm.xxxxx
+4. Select **Docker** under **Select where you want to install your Delegate**.
 
-podman ps
-```
+5. Copy the Docker installation command.
 
-Replace the `PUT_YOUR_MANAGER_HOST_AND_PORT_HERE` value with the Harness Manager Endpoint noted below. For Harness SaaS accounts, you can find your Harness Cluster Location on the **Account Overview** page under the **Account Settings** section of the left navigation. For Harness CDCE, the endpoint varies based on the Docker vs. Helm installation options.
+6. Paste the Docker installation command from the UI in your CLI, and replace the `docker run` command with the `podman run` command below.
 
-| Harness Cluster Location| Harness Manager Endpoint on Harness Cluster	|
-| ------------------------| -------------------------------------------	|
-| SaaS prod-1  	 		| `https://app.harness.io`       				|
-| SaaS prod-2  	 		| `https://app.harness.io/gratis`        		|
-| SaaS prod-3  	 		| `https://app3.harness.io`        				|
-| [CDCE Docker](/tutorials/platform/install-cd-community-edition)  	 		| `http://<HARNESS_HOST>` if Docker Delegate is remote to CDCE  or  `http://host.docker.internal` if Docker Delegate is on same host as CDCE |
-| [CDCE Helm](/tutorials/platform/install-cd-community-edition)      		| `http://<HARNESS_HOST>:7143`  where HARNESS_HOST is the public IP of the Kubernetes node where CDCE Helm is running|
+   ```bash
+   podman run --restart=always --hostname="$(hostname -f)"
+   -e DELEGATE_NAME=docker-delegate \
+   -e NEXT_GEN="true" \
+   -e DELEGATE_TYPE="DOCKER" \
+   -e ACCOUNT_ID=<ACCOUNT_ID_COPIED_FROM_THE_UI_COMMAND> \
+   -e DELEGATE_TOKEN=<DELEGATE_TOKEN_COPIED_FROM_THE_UI_COMMAND>= \
+   -e LOG_STREAMING_SERVICE_URL=https://app.harness.io/log-service/ \
+   -e MANAGER_HOST_AND_PORT=https://app.harness.io harness/delegate:23.07.79904 
+   ```
+
+7. Run the command.

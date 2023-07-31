@@ -4,7 +4,7 @@ Your Harness CI subscription includes a number of developer licenses. You can ch
 
 <docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_overview.png')} />
 
-CI subscription usage details are divided into several sections providing progressively more detail about your license <!-- and build credit --> usage.
+CI subscription usage details are divided into several sections providing progressively more detail about your license and Harness Cloud build credit usage.
 
 <details>
 <summary>Subscription Details</summary>
@@ -33,11 +33,11 @@ An active developer is an active codebase committer observed in the builds manag
 
 <docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary_onetile.png')} />
 
-<!-- It also shows your total monthly credit balance at the start of the month, but it doesn't show credit consumption or credits remaining. -->
+It also shows your remaining Harness Cloud build credits balance.
 
 <!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary.png) -->
 
-<!-- <docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary.png')} /> -->
+<docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary.png')} />
 
 </details>
 
@@ -70,22 +70,29 @@ Over use indicates when the number of active developers exceeded the number of l
 
 </details>
 
-<!-- <details>
+<details>
 <summary>Build Credits</summary>
 
-In this section, you can drill down into build credit usage data, including:
+In this section, you can drill down into Harness Cloud build credit usage data, including:
 
-* Start and expiration dates for credits
-* Credit entitlement
-
-If you have a paid plan, you can see information about both free and paid credits.
-
-This section doesn't show credit consumption or credits remaining. -->
+* **Available Credits:** Current balance of credits remaining to use.
+* **Used Credits:** Credits consumed during the active credit period.
+   * The active credit period is the time between the **Start Date** and **Expiry Date** for your oldest unexpired credits.
+   * For free accounts, the credit balance resets at the end of every calendar month. Your **Start Date** is the first of the month. Your **Expiry Date** is the end of the month.
+   * If you purchased additional credits that haven't yet expired, the **Start Date** for **Used Credits** is the date that you purchased the additional credits, and the active credit period covers the lifetime of your purchased credits. For example, if you purchase credits in January that last for six months, **Used Credits** tracks credit usage from January through July, when your purchased credits expire. Therefore, **Used Credits** would include both your monthly free credits and additional purchased credits.
+* **Next Expiry Date:** The next upcoming credit expiration date.
+* **Start Date:** The date on which a block of credits were applied to your account.
+* **Expiry Date:** The date on which a block of credits expires.
+* **Entitlement:** The number of credits allotted to your account on a particular **Start Date**.
+   * All plans received 2000 free credits each month.
+   * If you have a paid plan, you can see information about both free and paid credits.
 
 <!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_build_credits.png) -->
 
-<!-- <docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_build_credits.png')} />
+<docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_build_credits.png')} />
 
-</details> -->
+These statistics update when builds finish running. It doesn't reflect usage of builds in progress.
+
+</details>
 
 For more information about license usage and pricing, go to the [CI Pricing FAQ](https://www.harness.io/pricing?module=ci#:~:text=an%20Add%2Don-,Pricing%20FAQ,-How%20is%20Harness).

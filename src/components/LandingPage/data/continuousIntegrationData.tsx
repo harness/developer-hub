@@ -85,6 +85,17 @@ export const FeaturedList: CardItem[] = [
     icon: "img/icon_ci.svg",
     newDoc: true,
   },
+  {
+    title: "C# (.NET Core) application",
+    module: MODULES.ci,
+    description:
+      "Build and test a C# (.NET Core) application.",
+    link: "/tutorials/ci-pipelines/build/dotnet",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
+  },
 ];
 
 export const DroneList: CardItem[] = [
@@ -120,6 +131,17 @@ export const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "30 min",
     icon: "img/icon_ci.svg",
+  },
+  {
+    title: "C# (.NET Core)",
+    module: MODULES.ci,
+    description:
+      "Build and test a C# (.NET Core) application.",
+    link: "/tutorials/ci-pipelines/build/dotnet",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
   },
   {
     title: "Go",

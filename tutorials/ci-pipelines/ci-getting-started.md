@@ -73,7 +73,7 @@ Harness uses containers to drop pre‑configured steps into your pipeline. Choos
 
 ## Create a pipeline for your favorite language
 
-With Harness CI, you can build, test, and deploy applications in Node.js, Python, Java, Ruby, PHP, Go, Rust, .NET, and more. You can use VMs or containers for Linux, Windows, and Mac operating systems.
+With Harness CI, you can build, test, and deploy applications in Node.js, Python, Java, Ruby, PHP, Go, Rust, C# (.NET Core), and more. You can use VMs or containers for Linux, Windows, and Mac operating systems.
 
 ```mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -164,14 +164,14 @@ import TabItem from '@theme/TabItem';
 
 ```mdx-code-block
 </TabItem>
-<TabItem value=".NET" label=".NET">
+<TabItem value=".NET" label="C# (.NET Core)">
 ```
 
-1. Fork the [.NET Core sample repository](https://github.com/rustd/hello-dotnet-core) into your GitHub account.
+1. Fork the [C# (.NET Core) sample repository](https://github.com/rustd/hello-dotnet-core) into your GitHub account.
 2. [Sign up](https://app.harness.io/auth/#/signup/?module=ci&utm_source=HDH&utm_medium=&utm_campaign=Fastest-CI-HDH-Article&utm_term=sign-up&utm_content=CI-HDH-Article) for a free Harness account.
 3. Select the Harness CI module, and follow the **Get Started** wizard for Harness CI.
 4. When asked **Which code repository do you use**, select GitHub, and then select either **OAuth** or **Access Token** as the authentication method that Harness CI will use to connect to your GitHub account.
-5. When asked to select a repository, select the .NET Core sample repository that you forked earlier, and then select **Configure Pipeline**.
+5. When asked to select a repository, select the sample repository that you forked earlier, and then select **Configure Pipeline**.
 6. Select **Generate my Pipeline configuration**, enter a branch name (such as `main`), and then select **Create Pipeline**.
 7. Switch to the **YAML** editor, and select **Edit YAML**.
 8. Replace the `echo` step with the following, and then save the pipeline.

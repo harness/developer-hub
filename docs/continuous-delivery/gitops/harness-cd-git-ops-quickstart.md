@@ -48,6 +48,10 @@ We'll be using public manifests from <https://github.com/argoproj/argocd-example
   	+ Permission to apply CustomResourceDefinition.  
   	For more information, see [User-Facing Roles](https://kubernetes.io/docs/reference/access-authn-authz/rbac/#user-facing-roles) from Kubernetes.
 
+## Note
+
+GitOps entities can be created at account, organization, and project levels. The GitOps Agent is needed to create other entities. A GitOps Agent associated with an account has the authority to create and control entities at all levels. However, an organization-level Agent can manage entities within the organization and its projects and a project-level Agent can only manage entities at a project level.
+
 ## Step 1: Add a Harness GitOps Agent
 
 A Harness GitOps Agent is a worker process that runs in your environment and performs GitOps tasks.

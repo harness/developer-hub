@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 title: NodeJS application
 description: Use a CI pipeline to build and test a NodeJS application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]

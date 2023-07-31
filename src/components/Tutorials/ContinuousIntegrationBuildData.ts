@@ -15,6 +15,14 @@ import { MODULES } from "../../constants";
         "",
       list: [
         {
+          title: "C# (.NET Core)",
+          module: MODULES.ci,
+          description:
+            "Build and test a C# (.NET Core) application.",
+          link: "/tutorials/ci-pipelines/build/dotnet",
+          newDoc: true,
+        },
+        {
           title: "Go",
           module: MODULES.ci,
           description:
