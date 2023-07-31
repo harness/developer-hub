@@ -133,7 +133,7 @@ To configure replication, do the following:
 
 1. Run the following on one of your replicas.
 
-   ```zsh
+   ```
    sudo su - postgres
    ssh-keygen -t rsa
 
