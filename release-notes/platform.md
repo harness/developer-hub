@@ -68,7 +68,7 @@ This release does not include any early access features.
 
 - The user interface of the approval step is inconsistent with the saved contents of the User Groups field. Sometimes, the field omits some of the previously saved user groups but shows the correct count while, at other times, it lists all of the previously saved user groups but shows a lower count. (PL-39294, ZD-45548)
 
-This issue is now fixed.
+   This issue is now fixed.
 
 ```
 

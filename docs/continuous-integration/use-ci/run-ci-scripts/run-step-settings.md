@@ -46,7 +46,7 @@ You can use any Docker image from any Docker registry, including Docker images f
 
    ![](./static/run-step-settings-03.png)
 
-   <figcaption>Figure 1: Configuring GCR Container Registry and Image settings.</figcaption>
+   <figcaption>Configuring GCR Container Registry and Image settings.</figcaption>
    </figure>
 
 :::info
@@ -76,7 +76,7 @@ You can reference services started in [Background steps](../manage-dependencies/
 
 ![](../manage-dependencies/static/background-step-settings-call-id-in-other-step.png)
 
-<figcaption>Figure 2: The Background step ID, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
+<figcaption>The Background step ID, <code>pythonscript</code>, is used in a cURL command in a Run step.</figcaption>
 </figure>
 
 If the Background step is inside a step group, you must include step group ID, such as `[stepGroupId]_[backgroundStepId]:5000`, even if both steps are in the same step group.
@@ -239,7 +239,7 @@ Variable values can be [Fixed Values, Runtime Inputs, and Expressions](/docs/pla
 
 ![](./static/run-step-settings-04.png)
 
-<figcaption>Figure 3: Using a Harness expression for an environment variable value.</figcaption>
+<figcaption>Using a Harness expression for an environment variable value.</figcaption>
 </figure>
 
 For more information, go to the [Built-in Harness Variables Reference](../../../platform/12_Variables-and-Expressions/harness-variables.md).

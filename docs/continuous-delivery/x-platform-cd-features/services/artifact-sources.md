@@ -2087,9 +2087,11 @@ For more information on configuring an S3 connector and S3 bucket policies, go t
 ### Amazon EC2 AMIs
 
 <details>
-<summary>Use Amazon ECS AMI artifacts</summary>
+<summary>Use Amazon EC2 AMI artifacts</summary>
 
-You connect to Amazon ECS using a Harness AWS connector. For details on all the AWS requirements for the connector, see [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector).
+You connect to Amazon AWS account using a Harness AWS connector. For details on all the AWS requirements for the connector, see [AWS Connector Settings Reference](https://developer.harness.io/docs/platform/Connectors/Cloud-providers/add-aws-connector).
+
+For AWS AMI artifacts, a version number represents the name of AMI. You can filter names by using tags/filter values.
 
 <!-- AWS AMI  -->
 
@@ -2147,7 +2149,7 @@ service:
                 filters:
                   - name: ami-image-id
                     value: ami-xxxxxxxxxxxxxxxxx
-                version: macos-build-farm-for-ci
+                version: macos-build-farm-for-ci  
               type: AmazonMachineImage
     type: Asg
 
