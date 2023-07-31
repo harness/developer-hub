@@ -22,12 +22,12 @@ This release includes the following module and component versions.
 
 | **Name** | **Version** |
 | :-- | :-- |
-| Manager | 79421 |
+| Manager | 79819 |
 | Watcher | 78424 |
-| Verification Service | 79421 |
-| UI | 79401 |
+| Verification Service | 79819 |
+| UI | 79800 |
 | Learning Engine | 67903 | 
-| Gateway | 11002 |
+| Gateway | 11201 |
 
 ### What's new
 

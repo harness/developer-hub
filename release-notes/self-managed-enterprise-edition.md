@@ -19,9 +19,11 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 ## Latest - July 31, 2023, version 798xx
 
-### Known issue
+### Known issues
 
 -  Terraform-based pipeline automation does not function correctly in Istio environments. UI operations are not affected. (PL-39776)
+
+- The `log-service` created separate Redis streams and set the expiration of all keys. Harness has temporarily disabled Redis in the `log-service`. (CI-9000)
 
 ```mdx-code-block
 <Tabs>
@@ -34,15 +36,15 @@ This release includes the following Harness module and component versions.
 | :-- | :--: |
 | Helm Chart | [0.8.0](https://github.com/harness/helm-charts/releases/tag/harness-0.8.0) |
 | Air Gap Bundle | [0.8.0](https://console.cloud.google.com/storage/browser/smp-airgap-bundles/harness-0.8.0) |
-| NG Manager | xxxxx |
-| CI Manager | xxxx |
-| Pipeline Service | x.xx.x |
-| Platform Service | xxxxx |
-| Access Control Service | xxxxx |
-| Change Data Capture | xxxxx |
-| Test Intelligence Service | release-xxx |
-| NG UI | x.xxx.xx |
-| LE NG | xxxxx |
+| NG Manager | 79819 |
+| CI Manager | 4902 |
+| Pipeline Service | 1.37.12 |
+| Platform Service | 79601 |
+| Access Control Service | 79400 |
+| Change Data Capture | 79819 |
+| Test Intelligence Service | release-177 |
+| NG UI | 0.353.10 |
+| LE NG | 68004 |
 
 #### Self-Managed Enterprise Edition
 
@@ -204,6 +206,12 @@ This release includes the following Harness module and component versions.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
+
+#### Self-Managed Enterprise Edition
+
+- Postgres prod was deployed in external self-managed database setup. Prior to this release, `global.postgres.enabled` controlled the deployment of postgres in the `override.yaml` file. (SMP-1697)
+
+   This issue is fixed by using `global.database.postgres.installed` to control the deployment of Postgres in the `override.yaml` file. 
 
 #### Continuous Delivery & GitOps
 
