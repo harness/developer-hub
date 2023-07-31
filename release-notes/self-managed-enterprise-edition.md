@@ -52,12 +52,10 @@ This release includes the following Harness module and component versions.
 
   To learn how to configure an external self-managed database, go to the following tutorials.
 
-<!---
   - [MongoDB](/tutorials/self-managed-enterprise-edition/use-an-external-self-managed-mongodb/)
   - [PostgreSQL](/tutorials/self-managed-enterprise-edition/use-an-external-postgres-database/)
   - [Redis](/tutorials/self-managed-enterprise-edition/use-an-external-redis-database/)
   - [TimescaleDB](/tutorials/self-managed-enterprise-edition/use-an-external-sm-timescaledb/)
--->
 
 #### Continuous Delivery & GitOps
 
@@ -120,8 +118,6 @@ This release includes the following Harness module and component versions.
    If you have pipelines running on Harness Cloud that rely on specific component versions, you might need to [lock versions or install additional tools](https://developer.harness.io/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure/#lock-versions-or-install-additional-tools) to prevent your pipeline from failing due to image changes.
 
    :::
-
-
 
 #### Feature Flags
 
