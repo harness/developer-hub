@@ -21,7 +21,7 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## July 31, 2023
 
-### Self-Managed Enterprise Edition
+### Self-Managed Enterprise Edition, version 79819
 
 - Harness now supports external self-managed databases for high availability. (SMP-1577, SMP-1617, SMP-1645, SMP-1646)
 
