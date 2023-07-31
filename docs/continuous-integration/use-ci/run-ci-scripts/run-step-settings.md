@@ -95,6 +95,30 @@ This example uses a **Run** step to select a version of Xcode.
 
 ```mdx-code-block
   </TabItem>
+  <TabItem value="repo" label="Clone a repo">
+```
+
+This example clones a GitHub repository.
+
+```yaml
+              - step:
+                  type: Run
+                  identifier: clone
+                  name: clone
+                  spec:
+                    shell: Sh
+                    command: |-
+                      git clone https://GH_PERSONAL_ACCESS_TOKEN@github.com/ACCOUNT_NAME/REPO_NAME.git
+```
+
+To use this command, you would replace:
+
+* `ACCOUNT_NAME` with your GitHub account name.
+* `REPO_NAME` with the name of the GitHub repo to clone.
+* `PERSONAL_ACCESS_TOKEN` with a [GitHub personal access token](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/creating-a-personal-access-token) that has pull permissions to the target repository. Additional permissions may be necessary depending on the Action's purpose. Store the token as a [Harness secret](/docs/category/secrets) and use a variable expression, such as `<+secrets.getValue("YOUR_TOKEN_SECRET")>`, to call it.
+
+```mdx-code-block
+  </TabItem>
   <TabItem value="scripts" label="Run scripts">
 ```
 
