@@ -277,3 +277,38 @@ For any manifest object which creates the pod, you have to add this label in its
 #### What does the release name mean in the Infrastructure?
 
 The release name is used to create a harness release history object, which contains some metadata about the workloads. This helps us perform the steady state check.
+
+#### I have a pipeline in CG that has a variable of ${artifact.buildNo} in a command and same variable is not working in NextGen.
+
+You can use artifact.tag in NG , which is equivalent to artifact.buildNo from CG, you can find more details around mapping as below:
+https://developer.harness.io/docs/platform/variables-and-expressions/harness-variables/#migrating-firstgen-expressions-to-nextgen 
+
+#### Is it possible to apply Notification Rule on Environment level for workflow failure/success
+
+Workflow Notification strategy we can only interpret below field so all the notification rule will be applied on workflow level
+Condition,Scope, User Group
+
+#### Does Harness support cloning "Instance type requirements" and "Instance purchase options" from base ASG in CG
+
+No, We do not support copying of these properties in CG. All of them come under the MixedInstancesPolicy property of an Auto Scaling group which we do not copy from base ASG.
+Allocation strategies & Instance purchase options come under the InstancesDistribution property of MixedInstancesPolicy.
+
+
+#### Would it be possible to be able to modify the looping stage runs inside of pipeline execution
+
+You can use Matrix strategies, there you can use labels:
+To use the matrix labels naming strategy, do the following:
+1. In Harness, select Account Settings.
+2. Select Account Resources, then select Pipeline.
+3. Set Enable Matrix Labels By Name to true.
+4. Select Save.
+
+
+#### I have a placmenetStrategy defined but I don't see it reflected in the task.
+
+As placmenetStrategy can be defined in task definition as well as in service definition. Harness picks placmenetStrategy from service definition, so please make sure its added under service definition.
+
+
+#### When querying the Harness Approval API, the Approval Details are returning with message No Approval found for execution
+
+The api will only return Approval details if there are any approval step pending for approval, If there are no such executions currently than its expected to return No Approval found for execution
