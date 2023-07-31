@@ -47,7 +47,7 @@ The following is a detailed list of exam objectives:
 | 2.2 | Architect, deploy, and manage complex, large-scale containerized applications using Kubernetes and other orchestration tools |
 | 2.3 | Demonstrate the ability to troubleshoot complex scenarios in container orchestration environments |
 | 3 | **Advanced CI/CD Techniques** |
-| 3.1 | Engineer sophisticated Continuous Integration flows, including advanced testing strategies and complex build scenarios |
+| 3.1 | Engineer sophisticated Continuous Delivery flows, including advanced testing strategies including Chaos Engineering |
 | 3.2 | Design and implement comprehensive Continuous Delivery solutions, focusing on deployment strategies, pipeline optimization, and rollback procedures |
 | 3.3 | Architect and deploy complex, scalable, and robust pipelines using Harness, including advanced features and integrations |
 | 4 | **Code Management and GitOps** |
