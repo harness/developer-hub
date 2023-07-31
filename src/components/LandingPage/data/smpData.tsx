@@ -8,11 +8,11 @@ export const SMPList: CardItem[] = [
     module: MODULES.smp,
     icon: "img/logo.svg",
     description: (
-      <>Learn how to use an external MongoDB server with Self-Managed Enterprise Edition installations.</>
+      <>Learn how to use an external cloud-based MongoDB with Self-Managed Enterprise Edition installations.</>
     ),
     newDoc: false,
     type: [docType.Documentation],
-    time: "5 min",
+    time: "10 min",
     link: "/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database",
   },
   {
@@ -26,5 +26,27 @@ export const SMPList: CardItem[] = [
     type: [docType.Documentation],
     time: "10 min",
     link: "/tutorials/self-managed-enterprise-edition/use-an-external-self-managed-mongodb",
+   },
+    title: "Configure an external self-managed Redis database",
+    module: MODULES.smp,
+    icon: "img/logo.svg",
+    description: (
+      <>Learn how to use an external self-managed Redis database with Self-Managed Enterprise Edition installations.</>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "5 min",
+    link: "/tutorials/self-managed-enterprise-edition/use-an-external-redis-database",
+   },
+    title: "Configure a self-managed PostgreSQL database",
+    module: MODULES.smp,
+    icon: "img/logo.svg",
+    description: (
+      <>Learn how to use an external PostgreSQL database with Self-Managed Enterprise Edition installations.</>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "15 min",
+    link: "/tutorials/self-managed-enterprise-edition/use-an-external-postgres-database",
   },
 ];

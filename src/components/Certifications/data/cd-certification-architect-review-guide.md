@@ -28,7 +28,7 @@
 | Design, deploy, and manage complex serverless architectures, focusing on performance, scalability, and cost optimizations | [Serverless Tutorials](https://developer.harness.io/tutorials/cd-pipelines/serverless/) |
 | Implement advanced serverless patterns within a CI/CD context and in a Harness environment | [CD pipeline modeling overview](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview/) |
 | Troubleshoot complex issues within serverless architectures | [Troubleshooting Harness](https://developer.harness.io/docs/troubleshooting/troubleshooting-nextgen) |
-| **8. Expert Harness Features Utilization**
+| **8. Expert Harness Features Utilization** ||
 | Implement Harness Delegate in complex network environments, focusing on resilience, security, and performance | [Harness Delegate](https://developer.harness.io/docs/platform/delegates/install-delegates/overview/) |
 | Use advanced Harness features such as triggers, utility pipelines, variables, and expressions for complex workflow management | [Manage input sets and triggers in Git Experience](https://developer.harness.io/docs/platform/git-experience/manage-input-sets-in-simplified-git-experience/) |
 | Leverage Harness's connector architecture, Resource Development with Harness API, and Harness AIDA for advanced CI/CD solutions | [Troubleshoot builds with AIDA](https://developer.harness.io/docs/continuous-integration/troubleshoot-ci/aida/) |

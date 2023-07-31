@@ -32,7 +32,7 @@ When using Splunk Observability [SignalFx] health source, it is not possible to 
 
 ## Prerequisite
 
-Splunk Observability [SignalFx] is added as a verification provider in Harness.
+Ensure that Splunk Observability [SignalFx] is added as a verification provider in Harness. To learn how to add Splunk Observability [SignalFx] as a connector in Harness, go to [Add Splunk Observability [SignalFX]](/docs/platform/Connectors/Monitoring-and-Logging-Systems/connect-to-monitoring-and-logging-systems#add-splunk-observability-signalfx).
 
 
 ## Set up continuous verification
