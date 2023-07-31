@@ -7,15 +7,6 @@ sidebar_label: Configure an external cloud-based MongoDB
 
 Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external database with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external MongoDB with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This tutorial describes how to configure an external cloud-based MongoDB for your installation.
 
-## Benefits of the MongoDB replica set
-
-Below are some of the benefits of the MongoDB replica set:
-
-- High availability
-- Disaster recovery
-- No maintenance downtime
-- Secondary read support (read scaling)
-
 ## Hardware requirements
 
 Harness recommends a MongoDB three member replica set configuration with the following minimum hardware:

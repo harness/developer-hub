@@ -4,7 +4,7 @@ import { MODULES } from "../../../constants";
 
 export const SMPList: CardItem[] = [
   {
-    title: "Configure a self-managed Mongo database",
+    title: "Configure an external cloud-based Mongo database",
     module: MODULES.smp,
     icon: "img/logo.svg",
     description: (
@@ -21,11 +21,13 @@ export const SMPList: CardItem[] = [
     icon: "img/logo.svg",
     description: (
       <>Learn how to use an external self-managed PostgreSQL database with Self-Managed Enterprise Edition installations.</>
-    newDoc: true,
+    ),
+      newDoc: true,
     type: [docType.Documentation],
     time: "10 min",
     link: "tutorials/self-managed-enterprise-edition/use-an-external-sm-timescaledb",
   },
+  {
     title: "Configure an external self-managed MongoDB",
     module: MODULES.smp,
     icon: "img/logo.svg",
@@ -37,6 +39,7 @@ export const SMPList: CardItem[] = [
     time: "10 min",
     link: "/tutorials/self-managed-enterprise-edition/use-an-external-self-managed-mongodb",
    },
+   {
     title: "Configure an external self-managed Redis database",
     module: MODULES.smp,
     icon: "img/logo.svg",
@@ -48,6 +51,7 @@ export const SMPList: CardItem[] = [
     time: "15 min",
     link: "/tutorials/self-managed-enterprise-edition/use-an-external-redis-database",
    },
+   {
     title: "Configure a self-managed PostgreSQL database",
     module: MODULES.smp,
     icon: "img/logo.svg",

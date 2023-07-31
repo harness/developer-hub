@@ -9,15 +9,6 @@ Self-Managed Enterprise Edition requires you to install a database by default. Y
 
 The controller-worker replication setup described in this tutorial ensures data redundancy and fault tolerance, providing a robust and reliable environment to manage your PostgreSQL database.
 
-## Benefits of a self-managed PostgreSQL external database
-
-Below are some of the benefits of using a self-managed external PostgreSQL database:
-
-- High availability
-- Disaster recovery
-- No maintenance downtime
-- Secondary read support (read scaling)
-
 ## Limitations
 
 PostgreSQL VMs offer many advantages, but there are a few limitations to consider:

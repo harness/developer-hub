@@ -7,15 +7,6 @@ sidebar_label: External self-managed MongoDB
 
 Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external self-managed database with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external self-managed MongoDB with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This tutorial describes how to deploy MongoDB with VMs and replication.
 
-## Benefits of an external self-managed MongoDB
-
-Below are some of the benefits of the MongoDB replica set:
-
-- High availability
-- Disaster recovery
-- No maintenance downtime
-- Secondary read support (read scaling)
-
 ## Limitations
 
 MongoDB VMs offer many advantages, but there are a few limitations to consider:

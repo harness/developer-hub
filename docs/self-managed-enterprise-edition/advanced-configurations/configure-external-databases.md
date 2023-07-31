@@ -37,23 +37,16 @@ Tutorials are available for each installation option.
 
 - [Cloud-based tutorial](/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database)
 
-<!---
 - [Self-managed tutorial](tutorials/self-managed-enterprise-edition/use-an-external-self-managed-mongodb)
--->
 
 ### PostgreSQL
-<!---
+
 - [Self-managed tutorial](tutorials/self-managed-enterprise-edition/use-an-external-postgres-database)
--->
 
 ### Redis
 
-<!---
 - [Self-managed tutorial](tutorials/self-managed-enterprise-edition/use-an-external-redis-database)
--->
 
 ### TimescaleDB
 
-<!---
 - [Self-managed tutorial](tutorials/self-managed-enterprise-edition/use-an-external-sm-timescaledb)
--->
