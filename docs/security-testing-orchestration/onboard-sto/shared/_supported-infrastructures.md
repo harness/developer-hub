@@ -36,9 +36,9 @@ STO uses [CI build infrastructures](/docs/continuous-integration/use-ci/set-up-b
     <tr>
         <td>MacOS</td>
         <td>amd64</td>
-        <td align="center">Not Verified</td>
-        <td align="center">Not Verified</td>
-        <td align="center">Not Verified</td>
+        <td align="center">Roadmap</td>
+        <td align="center">Roadmap</td>
+        <td align="center">Roadmap</td>
         <td align="center">❌</td>
     </tr>
     <tr>
