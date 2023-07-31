@@ -224,7 +224,7 @@ Depending on the default codebase, you might need to specify a non-root path for
 
 ```mdx-code-block
 <Tabs>
-  <TabItem value="clone" label="Example with Git Clone step"" default>
+  <TabItem value="clone" label="Example with Git Clone step" default>
 ```
 
 The following YAML example describes a pipeline that clones two code repos, one as the default codebase (`cloneCodebase: true`) and the second in the `GitClone` step.
