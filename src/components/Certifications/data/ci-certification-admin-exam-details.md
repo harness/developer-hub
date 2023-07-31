@@ -10,7 +10,7 @@ The Continuous Integration Administrator exam tests your knowledge and skills of
 | Exam Type                               | Duration         |
 | ----------------------------------- | --------------- |
 | **Knowledge Exam** | 90 minutes |
-| **Hands On Exam** | 90 minutes |
+| **Hands On Exam** | 120 minutes |
 
 | Covered Domain                                | Coverage         |
 | ----------------------------------- | --------------- |
