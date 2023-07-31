@@ -187,7 +187,7 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
 
 5. In the **Credentials** tab, enter the following, and then select **Next**:
 
-      - In **URL**, enter the URL of your Splunk Observability [SignalFX] account. The URL format should be one of the following options:
+      - In **URL**, enter the URL of your Splunk Observability [SignalFX] account. The URL format should be one of the following:
   
          - For streaming ingestion: `https://stream.<realm>.signalfx.com`
   
@@ -195,7 +195,7 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
 
          Where `<realm>` is your specific realm identifier.
    
-      - In **API Token**, select **Create or Select a Secret**. In the Create or Select an Existing Secret dialog that appears, you can either select an existing token that your have generated in Splunk Observability with the authorization scope set to API. 
+      - In **API Token**, select **Create or Select a Secret**. In the Create or Select an Existing Secret dialog that appears, you can either select an existing token that you have generated in Splunk Observability. The token must have the authorization scope set as `API Token`.
        
       To create a new secret:
 
@@ -203,7 +203,7 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
    
          2. In the Add new Encrypted Text dialog, select a secret manager and enter a name for the secret.
    
-         3.  In **Secret Value**, enter the API token generated in Splunk Observability (SignalFx). To learn about creating Splunk Observability (SignalFx) API access token, go to [Create authentication tokens](https://docs.splunk.com/Documentation/Splunk/9.1.0/Security/CreateAuthTokens).
+         3.  In **Secret Value**, enter the API token generated in Splunk Observability (SignalFx). The token must have the authorization scope set as `API Token`. To learn about creating Splunk Observability (SignalFx) API access token, go to [Create and manage authentication tokens using Splunk Observability Cloud](https://docs.splunk.com/Observability/admin/authentication/authentication-tokens/tokens.html).
    
          4.  Add an optional description and a tag, and then select **Save**.  
    
@@ -221,11 +221,11 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
     
     The Splunk Observability [SignalFX] connector is added to the list of connectors.
    
-    ![Splunk Observability [SignalFX] connector](../static/connect-to-monitoring-and-logging-systems-35.png)
+    ![Splunk Observability [SignalFX] connector](../static/connect-to-monitoring-and-logging-systems-signalfx-35.png)
 
 9.  Select a connector to view its details.
 
-   ![Splunk Observability [SignalFX] connector details](../static/connect-to-monitoring-and-logging-systems-35a.png)
+   ![Splunk Observability [SignalFX] connector details](../static/connect-to-monitoring-and-logging-systems-signalfx-35a.png)
     
 
 
