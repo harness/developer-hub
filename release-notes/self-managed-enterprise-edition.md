@@ -23,7 +23,7 @@ Review the notes below for details about recent changes to Harness Self-Managed 
 
 -  Terraform-based pipeline automation does not function correctly in Istio environments. UI operations are not affected. (PL-39776)
 
-- The `log-service` created separate Redis streams and set the expiration of all keys. Harness has temporarily disabled Redis in the `log-service` for High availability configuration. (CI-9000)
+- The `log-service` created separate Redis streams and set the expiration of all keys. Harness has temporarily disabled Redis in the `log-service` for high availability configurations. (CI-9000)
 
 ```mdx-code-block
 <Tabs>
