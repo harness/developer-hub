@@ -22,7 +22,7 @@ export const SMPList: CardItem[] = [
     description: (
       <>Learn how to use an external self-managed Redis database with Self-Managed Enterprise Edition installations.</>
     ),
-    newDoc: false,
+    newDoc: true,
     type: [docType.Documentation],
     time: "5 min",
     link: "/tutorials/self-managed-enterprise-edition/use-an-external-redis-database",

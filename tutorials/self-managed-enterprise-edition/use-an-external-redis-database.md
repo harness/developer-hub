@@ -1,7 +1,7 @@
 ---
 title: Use an external self-managed Redis database with your installation
 description: Learn how to use an external self-managed Redis database with Self-Managed Enterprise Edition installations.
-sidebar_label: Configure an external self-managed Redis database
+sidebar_label: External self-managed Redis
 # sidebar_position: 37
 ---
 
@@ -126,7 +126,7 @@ To create DNS records, do the following:
 
 To configure your Redis cluster, do the following:
 
-1. Open https://<EXTERNAL_IP_OF_NODE1>:8443 in your browser, and then complete the following on the node setup page. 
+1. Open `https://<EXTERNAL_IP_OF_NODE1>:8443` in your browser, and then complete the following on the node setup page. 
 
    1. Enable Flash Storage.
 
@@ -146,7 +146,7 @@ To configure your Redis cluster, do the following:
      You can skip the cluster key for now if the page opens. (You can procure a license key from Redis Labs later, if required.)
      :::
 
-3. Open https://<EXTERNAL_IP_OF_NODE2>:8443 in your browser, and then complete the following on the node setup page. 
+3. Open `https://<EXTERNAL_IP_OF_NODE2>:8443` in your browser, and then complete the following on the node setup page. 
 
    1. Enable Flash Storage.
 
@@ -162,7 +162,7 @@ To configure your Redis cluster, do the following:
 
    7. Select **Create**.
 
-3. Open https://<EXTERNAL_IP_OF_NODE3>:8443 in your browser, and then complete the following on the node setup page. 
+3. Open `https://<EXTERNAL_IP_OF_NODE3>:8443` in your browser, and then complete the following on the node setup page. 
 
    1. Enable Flash Storage.
 
@@ -182,7 +182,7 @@ To configure your Redis cluster, do the following:
 
 To configure your Redis database, do the following:
 
-1. Open https://<YOUR_NODE1_EXTERNAL_IP>:8443 in your browser.
+1. Open `https://<YOUR_NODE1_EXTERNAL_IP>:8443` in your browser.
 
 2. Select the **Databases** tab.
 
@@ -252,3 +252,4 @@ To configure your Harness environment and Helm chart, do the following:
          secretName: ""
          userKey: ""
          passwordKey: ""
+   ```
