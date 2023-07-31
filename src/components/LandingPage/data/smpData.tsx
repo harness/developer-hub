@@ -12,7 +12,7 @@ export const SMPList: CardItem[] = [
     ),
     newDoc: false,
     type: [docType.Documentation],
-    time: "5 min",
+    time: "10 min",
     link: "/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database",
   },
   {
@@ -22,9 +22,9 @@ export const SMPList: CardItem[] = [
     description: (
       <>Learn how to use an external PostgreSQL database with Self-Managed Enterprise Edition installations.</>
     ),
-    newDoc: false,
+    newDoc: true,
     type: [docType.Documentation],
-    time: "5 min",
+    time: "15 min",
     link: "/tutorials/self-managed-enterprise-edition/use-an-external-postgres-database",
   },
 ];

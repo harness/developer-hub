@@ -1,7 +1,7 @@
 ---
 title: Use an external self-managed PostgreSQL database with your installation
 description: Learn how to use an external self-managed PostgreSQL database with Self-Managed Enterprise Edition installations.
-sidebar_label: Configure an external self-managed PostgreSQL database
+sidebar_label: External self-managed PostgreSQL
 # sidebar_position: 37
 ---
 
@@ -83,7 +83,7 @@ You can update the DNS record dynamically using a script or use the service disc
 
 ## Set up PostgreSQL VMs
 
-:::info warning
+:::caution
 If you installed PostgreSQL through a method other than the apt package manager maintained by Debian or Ubuntu archive, you may receive errors when following these instructions. Harness recommends that you uninstall existing PostgreSQL installations before you continue.
 :::
 
