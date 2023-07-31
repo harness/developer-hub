@@ -155,7 +155,8 @@ You can customize and override service variables during the execution of a step 
     4. Environment configuration
     5. Default value
 
-- Step group overrides are not recommended for artifacts and other objects fetched during the Service phase of a pipeline. The one exception is [custom remote manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/), because they can also be used during the execution stage of a pipeline. 
+- Step group overrides are not recommended for artifacts and other objects fetched during the Service phase of a pipeline. The one exception is [custom remote manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/), because they can also be used during the execution stage of a pipeline.
+  
 :::
 
 ## Important notes
