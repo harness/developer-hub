@@ -16,6 +16,23 @@ For Harness on-prem releases, go to [Harness Self-Managed Enterprise Edition Rel
 
 If you don't see a new feature or enhancement in your Harness account, it might be behind a Feature Flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
+
+### August 2, 2023, version 801xx
+
+#### What's new
+
+- WIP: The current version of Open HFT Chronicle Queue (version 5.19.2) has been upgraded to 5.22.28 to enable the upgrade of JDK from version 11 to version 17.  (PL-39953)
+
+#### Early access
+
+This release does not include early access features.
+
+#### Fixed issues
+
+- WIP: Update operation for GCP Secrets Manager was failing in SMP environments current gen due to a bug. The bug has been fixed in this release. (PL-40151)
+
+- WIP: This change allows JAVA_OPTS variable in delegate yaml to override jvm memory settings (PL-38839)
+
 ### July 27, 2023, version 80017
 
 #### What's new
