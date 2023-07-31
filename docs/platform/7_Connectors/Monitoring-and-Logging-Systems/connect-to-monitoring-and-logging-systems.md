@@ -228,9 +228,6 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
    ![Splunk Observability [SignalFX] connector details](../static/connect-to-monitoring-and-logging-systems-signalfx-35a.png)
     
 
-
-
-
 ### Add Datadog
 
 1. Open a Harness Project.
