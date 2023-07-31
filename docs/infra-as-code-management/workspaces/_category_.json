@@ -1,0 +1,15 @@
+{
+    "label":"Workspaces",
+    "position": 20,
+    "collapsible":"true",
+    "collapsed":"true",
+    "className":"red",
+    "link":{
+       "type":"generated-index",
+       "title":"Workspaces"
+    },
+    "customProps":{
+       
+       "helpdocs_category_id":""
+    }
+ }
