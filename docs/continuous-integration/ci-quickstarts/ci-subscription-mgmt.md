@@ -46,9 +46,9 @@ If you would like to switch between paid plans or downgrade to the Free plan, yo
 
 ## Billing
 
-You can manage payment methods and billing admins in your Harness account. Go to **Account settings** and then select **Billing**.
+You can manage your payment method and billing admins in your Harness account. Go to **Account settings** and then select **Billing**.
 
-### Request changes to your billing information
+### Update your billing information
 
 <Billing />
 
@@ -60,11 +60,6 @@ You can manage payment methods and billing admins in your Harness account. Go to
 
 <Invoice />
 
-## License usage
+## License and build credit usage
 
 <License />
-
-<!-- ## See also-->
-
-<!-- FF subscription -->
-<!-- Amazon marketplace subscription -->

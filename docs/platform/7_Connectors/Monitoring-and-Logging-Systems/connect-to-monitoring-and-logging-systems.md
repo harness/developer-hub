@@ -94,7 +94,7 @@ You cannot use a Grafana URL.
 7.  To get the **New Relic Account ID** for your New Relic account, copy the number after the **/accounts/** portion of the URL in the New Relic Dashboard.
 8.  In **Encrypted** **API Key**, you can choose **Create or Select a secret.**
 
-For secrets and other sensitive settings, select or create a new [Text Secret.](../../Secrets/2-add-use-text-secrets.md)Enter the API key needed to connect with the server.
+For secrets and other sensitive settings, select or create a new [Text Secret](../../Secrets/2-add-use-text-secrets.md). Enter the API key needed to connect with the server.
 
 For steps on generating the New Relic API key, follow this doc from New Relic: [Insights query API](https://docs.newrelic.com/docs/apis/insights-apis/query-insights-event-data-api/).
 
@@ -169,6 +169,49 @@ The following roles must be attached to the account used to connect Harness and 
 * **Stackdriver Metrics** - The minimum role requirements are **compute.networkViewer** and **monitoring.viewer**.
 
 See [Access control](https://cloud.google.com/monitoring/access-control) from Google.
+
+
+### Add Splunk Observability [SignalFX]
+
+1. Open a Harness Project.
+   
+2. Under **Project Setup**, select **Connectors** > **+ New Connector**.
+
+3. Under **Monitoring and Logging Systems**, select **Splunk Observability [SignalFX]**.
+   
+   The connector settings dialog appears.
+
+4. In the **Overview** tab, enter a name for the connector, an optional description, and a tag, and then select **Continue**.  
+   
+   If you are going to use multiple providers of the same type, ensure you give each provider a different name.
+
+5. In the **Credentials** tab, enter the following, and then select **Next**:
+
+      - In **URL**, enter the URL of your Splunk Observability [SignalFX].
+   
+      - In **API Token**, select **Create or Select a Secret**.
+
+6. In the Create or Select an Existing Secret dialog that appears, you can either select an existing secret or create a new one.  
+   
+   To create a new secret:
+
+   1. Select **+ New Secret Text**. 
+   
+   2. In the Add new Encrypted Text dialog, select a secret manager, enter a name and value for the secret, an optional description, and a tag, and then select **Save**.  
+   
+   The secret key appears in the **API Token** field.
+    
+7.  In the **Delegates Setup** tab, choose one of the following:
+    
+      - **Use any available Delegate**: Harness automatically assigns an available delegate.
+   
+      - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the delegates that have been assigned those specific tags.
+    
+10. Select **Save and Continue**. Harness verifies the connection.
+    
+11. After successful verification, select **Finish**.  
+    
+    The Splunk Observability [SignalFX] connector is added to the list of connectors.
 
 
 ### Add Datadog
