@@ -33,7 +33,7 @@ An active developer is an active codebase committer observed in the builds manag
 
 <docimage path={require('/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary_onetile.png')} />
 
-It also shows your remaining balance of Harness Cloud build credits.
+It also shows your remaining Harness Cloud build credits balance.
 
 <!-- ![](/docs/continuous-integration/ci-quickstarts/static/ci_usage_plansummary.png) -->
 
@@ -82,7 +82,7 @@ In this section, you can drill down into Harness Cloud build credit usage data, 
    * If you purchased additional credits that haven't yet expired, the **Start Date** for **Used Credits** is the date that you purchased the additional credits, and the active credit period covers the lifetime of your purchased credits. For example, if you purchase credits in January that last for six months, **Used Credits** tracks credit usage from January through July, when your purchased credits expire. Therefore, **Used Credits** would include both your monthly free credits and additional purchased credits.
 * **Next Expiry Date:** The next upcoming credit expiration date.
 * **Start Date:** The date on which a block of credits were applied to your account.
-* **Expiry Date:** The date on which a block of credits will expire.
+* **Expiry Date:** The date on which a block of credits expires.
 * **Entitlement:** The number of credits allotted to your account on a particular **Start Date**.
    * All plans received 2000 free credits each month.
    * If you have a paid plan, you can see information about both free and paid credits.
