@@ -141,6 +141,23 @@ For example, to reference the URL setting in an HTTP step in a step group with t
 
 `<+pipeline.stages.HTTP.spec.execution.steps.Group1.steps.OPTIONS.spec.url>`
 
+## Override service variables in step groups
+
+You can customize and override service variables during the execution of a step group. This provides unparalleled flexibility and control over your pipelines. The expression `<+serviceVariableOverrides.VARIABLE_NAME>`overrides the original value of `VARIABLE_NAME`. You can use this expression in custom manifests, values YAML files, and other parts of the pipeline where variables are used.  
+
+:::note important notes
+- An overridden value is available only within the scope of the step group execution. In cases where a child group is included in a parent group, the child group override takes precedence. 
+
+    The pipeline overrides variables based on the following priority:
+    1. Step group override (child group, during execution)
+    2. Step group override (parent group, during execution)
+    3. Service environment overrides
+    4. Environment configuration
+    5. Default value
+
+- Step group overrides are not recommended for artifacts and other objects fetched during the Service phase of a pipeline. The one exception is [custom remote manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/), because they can also be used during the execution stage of a pipeline. 
+:::
+
 ## Important notes
 
 * When you run steps in parallel you cannot reference the outputs of one step in another step. The output for one step might not be available when another step requests it.
