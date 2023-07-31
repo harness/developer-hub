@@ -57,7 +57,7 @@ Ensure the following:
 
 - Reserve internal and external static addresses for each VM.
 
-- Add port 5432 to the NAT firewall settings allow list on the application cluster so it can connect to the PostgreSQL instance. PostgreSQL uses 5432 as the default communication port. This enables communication between Harness services running in a Self-Managed Enterprise Edition cluster and a self-managed PostgreSQL cluster.
+- Add port 5432 to the NAT firewall settings allowlist on the application cluster so it can connect to the PostgreSQL instance. PostgreSQL uses 5432 as the default communication port. This enables communication between Harness services running in a Self-Managed Enterprise Edition cluster and a self-managed PostgreSQL cluster.
 
 ## Architecture
 
@@ -169,7 +169,7 @@ To configure replication, do the following:
    // paste the public key, enter and paste it again and save, the second key should end with postgres@externalIP
    ```
 
-4. Make the following change to the `pg_hba.conf` file in `/etc/postgresql/14/main/pg_hba.conf` for your controller and replicas. This allows PostgreSQL to accept traffic from other networks and adds them to the allow list.
+4. Make the following change to the `pg_hba.conf` file in `/etc/postgresql/14/main/pg_hba.conf` for your controller and replicas. This allows PostgreSQL to accept traffic from other networks and adds them to the allowlist.
 
    ```
    #host   all             all             127.0.0.1/32           md5
@@ -178,7 +178,7 @@ To configure replication, do the following:
 
    This example allows everything to the PostgreSQL instance. Harness recommends that you configure your firewall rules to allow only certain IPs to use port 5432.
 
-5. (Optional) Make the following changes to set your allow list at the database-level.
+5. (Optional) Make the following changes to set your allowlist at the database-level.
 
    ```
    #host    all             all             127.0.0.1/32            md5 <— changes
