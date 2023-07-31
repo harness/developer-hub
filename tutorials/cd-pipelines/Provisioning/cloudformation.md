@@ -71,9 +71,18 @@ Verify that you have the following:
 1. Login to [Harness](https://app.harness.io).
 2. Select **Projects**, and then select **Default Project**.
 
+### Secrets
+
+
+1. Under **Project Setup**, select **Secrets**.
+    - Select **New Secret**, and then select **Text**.
+    - Enter the secret name `harness_gitpat`.
+    - For the secret value, paste the GitHub personal access token you saved earlier.
+    - Select **Save**.
+
 ### AWS Connector
 
-1. Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/pull/26/files).
+1. Copy the contents of [aws-connector.yml](https://github.com/harness-community/harnesscd-example-apps/blob/master/cloudformation/aws-connector.yml).
 2. In your Harness project in the Harness Manager, under **Project Setup**, select **Connectors**.
 3. Select **Create via YAML Builder** and paste the copied YAML.
 4. Replace the `accessKey` placeholder with the [AWS access key](https://docs.aws.amazon.com/powershell/latest/userguide/pstools-appendix-sign-up.html) for the AWS user you created (with the required policies).
