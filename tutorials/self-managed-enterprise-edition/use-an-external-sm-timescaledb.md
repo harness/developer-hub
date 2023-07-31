@@ -1,7 +1,7 @@
 ---
 title: Use an external self-managed TimescaleDB with your installation
 description: Learn how to use an external self-managed TimescaleDB with Self-Managed Enterprise Edition installations.
-sidebar_label: Configure an external self-managed TimescaleDB
+sidebar_label: External self-managed TimescaleDB
 # sidebar_position: 38
 ---
 
