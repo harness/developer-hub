@@ -78,10 +78,6 @@ This can be achieved by using an API which you can invoke using PowerShell https
 
 To pass a dynamic array as an input to the looping strategy of the next step, you can replace <+execution.steps.ShellScript_1.output.outputVariables.ARRAY1> with <+<+execution.steps.ShellScript_1.output.outputVariables.ARRAY1>.split(",")>. This change allows you to split the array into individual items using a comma as the delimiter.
 
-
-
-
-
 #### Why the "Always Execute this Step” condition does not always run in the CD pipeline?
 
 Always execute step runs regardless of success or failure but in order to trigger this condition on failure the previous step should be considered as failure, if the error is rolled back then it is not considered a failure. Hence, the next step's Conditional Execution is not executed. Therefore, a failure strategy such as “Mark as failure” or "ignore failure" is required.
@@ -251,3 +247,33 @@ We do not have any backup ability for services out of the box but you can take t
 #### Harness FirstGen Graphql API to create Harness pipelines in a specific application
 
 We do not have a way to create a new pipeline using Graphql in FirstGen. However, we do support API to create Harness pipelines in NextGen.
+
+#### How can only set of user able to approve the deployment?
+
+You can create a user group of specific users and specify the same user group in the Approval stage so only those users can able to approve the execution.
+
+For reference: [Select Approvers](https://developer.harness.io/docs/platform/approvals/adding-harness-approval-stages/#select-approvers)
+
+
+#### How Kubernetes Pruning option work during the deployment?
+
+If you have enabled the Kubernetes Pruning in your deployment. In that case, it will remove any resources that were present in an old manifest but are no longer present in the manifest used for the current deployment.
+
+For reference: [Prune Kubernetes resources](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/prune-kubernetes-resources/) 
+
+
+#### How release: {{ .Release.Name }} will help in steady state check in helm deployment?
+
+We perform a pod fetch based on this label, which allows us to show deployed pods in the step output and also track the same for instance sync. If we don't add these, both won't work as expected.
+
+For reference: [Steady state check](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/native-helm-quickstart/#spec-requirements-for-steady-state-check-and-versioning)
+
+
+#### Where we need to add label release: {{ .Release.Name }}?
+
+For any manifest object which creates the pod, you have to add this label in its spec. Adding it in Service, Deployment, StatefulSet and DaemonSet should be enough.
+
+
+#### What does the release name mean in the Infrastructure?
+
+The release name is used to create a harness release history object, which contains some metadata about the workloads. This helps us perform the steady state check.
