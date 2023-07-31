@@ -158,4 +158,11 @@ No there is no expiry for 2FA secret
 
 No, It’s not possible as initially user need to use invite email to set their password. This is only possible while using saml for authentication.
 
+### Is there any ability for an admin user to assume the same role as an alternate user for testing out permission issues?
+
+No, There is no such option currently. To debug permission related issues need to check the Group and Roles assigned to user
+
+### Getting error “User is not authorized to access the account. Please contact your admin” while trying to accept the invite and setting up local login password
+
+The most common reason for this failure is your account has domain whitelisting applied and the domain used in your username is not in allowed list and ideally in this case you will able to see "DOMAIN_WHITELIST_FILTER_CHECK_FAILED" in network tab 
 
