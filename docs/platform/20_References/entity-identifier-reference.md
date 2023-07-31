@@ -37,6 +37,11 @@ The `identifier` field is immutable because Harness Entities use this field to i
 Identifiers have the following restrictions:
 
 * Identifiers must start with a-z, A-Z, or \_. Identifiers can then be followed by 0-9, a-z, A-Z, \_ or $.
+
+	:::note
+	Custom roles cannot start with an underscore( _ ) because Harness-managed role identifiers start with an underscore.
+	:::
+
 * Identifiers are case-sensitive. 
 * Identifiers shouldn't be any of the following words:
 	+ or

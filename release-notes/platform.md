@@ -2,7 +2,7 @@
 title: Platform release notes
 sidebar_label: Platform
 tags: [NextGen, "platform"]
-date: 2023-07-18T10:00:30
+date: 2023-07-27T10:00:30
 sidebar_position: 12
 ---
 ```mdx-code-block
@@ -23,13 +23,69 @@ Harness publishes security advisories for every release. Go to the [Harness Trus
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 18, 2023, version 79916
+## Latest - July 27, 2023, version 80022
 
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
+- Earlier, when an administrator enabled the account-level two-factor authentication (2FA) setting, it affected users in the following manner:
+  1. Users who had set that account as their default account received 2FA emails, and the user-level 2FA setting was enabled across all their profiles. The users were not allowed to disable the setting.
+  2. Harness allowed users to modify the 2FA setting only when an administrator disabled the account-level setting subsequently. Even then, the user-level 2FA setting remained enabled, and users continued to receive a 2FA challenge until they manually disabled the user-level setting in their profiles. (PL-39507, ZD-46268)
+
+  This behavior has been remediated. When an administrator enables the account-level 2FA setting, Harness sends the users 2FA emails but does not enable the user-level 2FA settings. Users are free to enable or disable the user-level setting in their profiles. When a user attempts to log in to their Harness account, Harness presents them with a 2FA challenge only if one or both of the settings (the account-level setting and the user-level setting) are enabled. If both settings are disabled, Harness does not present a 2FA challenge.
+
+- If you attempt to delete a project or organization that includes resources from other Harness modules, Harness first prompts you to confirm the delete action and then prompts you to enter the name of the project or organization. This two-step procedure gives you an opportunity to consider the impact that your action might have on other modules. (PL-32376, ZD-42691)
+
+- Delegate selection logs now include the `DelegateId`, `DelegateName`, and `hostname`. (PL-37913)
+  This item is available with Harness Platform version 80022 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+- You can now configure the `create_namespace` Terraform parameter to disable default namespace creation. Set the parameter to `false` in the `main.tf` file to disable namespace creation. (PL-39822, ZD-47021)
+  This item is available with Harness Platform version 80022 and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Early access">
+```
+This release does not include any early access features.
+
+```mdx-code-block
+  </TabItem>
+  <TabItem value="Fixed issues">
+
+- API calls that requested role assignments filtered on user groups or service accounts (that is, API calls that used the `roleassignment/filter` endpoint with `principalTypeFilter` set to USER_GROUPS or SERVICE_ACCOUNTS, respectively) returned an empty body. (PL-39888, ZD-47208)
+
+  This issue is now fixed, and you can use the API to fetch role assignments for user groups and service accounts in any scope.
+
+- If you failed to specify the scope for a resource group that you created with the Harness API, Harness failed to apply a default scope, which it was expected to infer from the API request’s query parameters. (The Harness UI, on the other hand, behaves as expected: it sets the default scope of the resource group to the scope that you are in when creating the resource group.) This behavior led to eligible users being unable to perform operations on the resource group. (PL-39271, ZD-45488)
+
+  This issue is now fixed. If you do not specify a scope for the resource group when using the API, Harness sets the default scope correctly, and eligible users should be able to perform operations on the resource group.
+
+- API requests to update a remote template did not update the `lastUpdateAt` field in the template. (CDS-72098)
+
+  This issue is now fixed.
+
+- The user interface of the approval step is inconsistent with the saved contents of the User Groups field. Sometimes, the field omits some of the previously saved user groups but shows the correct count while, at other times, it lists all of the previously saved user groups but shows a lower count. (PL-39294, ZD-45548)
+
+   This issue is now fixed.
+
+```
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### July 18, 2023, version 79916
+
+##### What's new
+
 - The Go library has been upgraded from 1.20.4 to 1.20.5. (PL-39700)
 
   The upgrade fixes the following CVEs:
@@ -52,16 +108,11 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Early access">
-```
-This release does not include early access features.
+##### Early access
 
-```mdx-code-block
-  </TabItem>
-  <TabItem value="Fixed issues">
-```
+This release does not include any early access features.
+
+##### Fixed issues
 
 - Previously, regardless of whether your account was on Harness NextGen or Harness FirstGen, Harness sent password reset emails from Harness FirstGen. This approach failed for accounts that are only on Harness NextGen. (PL-38735)
 
@@ -84,16 +135,6 @@ This release does not include early access features.
   This issue is now fixed. The connectors list shows the connectors for which users have resource group permissions set.
 
   This item requires Harness Delegate version 79904. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate).
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### July 06, 2023, version 79811
 
@@ -121,7 +162,7 @@ This release does not include any early access features.
 
 - There is now a limit of 100 API Tokens per free and community account. (PL-39337)
 
-- When configuring SMTP, you can now select specific delegates in **Delegates Setup**. (PL-39288)
+- When configuring SMTP, you can now select specific delegates in **Delegates Setup**. (PL-39024)
 
 - You can now sort pipelines in the pipelines list by selecting the sortable column headers or the sort dropdown. (PL-31527)
 

@@ -1,7 +1,7 @@
 ---
 title: Add and manage IP allowlists
 description: Add and manage the list of allowed IP addresses.
-sidebar_position: 3
+sidebar_position: 1
 ---
 
 :::important

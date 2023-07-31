@@ -10,30 +10,28 @@ helpdocs_is_published: true
 
 You can add an extra layer of security by using a 2-step-verification, also known as Two-Factor Authentication (2FA). 
 
-This document explains the basic steps to set up Two-Factor Authentication in Harness.
+This document explains the basic steps to set up 2FA in Harness.
 
 ### Before you begin
 
 * Make sure you have permissions to **Create/Edit, Delete** Authentication Settings.
 
-### Set Up Two-Factor Authentication
+### Set up two-factor authentication
 
-You can manage Two-Factor Authentication (2FA) in two ways:
+You can manage 2FA in two ways:
 
 * **Individual user:** you can set up 2FA for your own **User Profile** without impacting other user accounts.
 * **All account users:** if you have **Create/Edit** permissions for Authentication Settings, you can enforce 2FA for all users in Harness. First, you set up 2FA for your own account, and then you can enforce 2FA account-wide in the Harness account's **Login Settings**.
 
-
-:::note
-If 2FA is disabled at the account level, you can still enable 2FA for your user account. If 2FA is enabled account-wide, you cannot turn it off for your user account.When you enforce 2FA, users receive an email where they can scan a QR Code using their smartphones and a token generator app. The next time they log in with their username and password, they are prompted to use 2FA to complete the log in.
-
+:::info note
+If 2FA is disabled at the account level, you can still enable 2FA for your user account. When an administrator enables the account-level 2FA setting, Harness sends users 2FA emails but does not enable the user-level 2FA settings. Users can enable or disable the user-level setting in their profiles. When a user attempts to sign in to their account, Harness sends a 2FA challenge only if one or both of the settings (the account-level setting and the user-level setting) are enabled. If both settings are disabled, Harness does not send a 2FA challenge.
 :::
 
-### Set Up Two-Factor Authentication For Your Profile
+### Set up two-factor authentication for your profile
 
-1. Click on your **User Profile** icon at the bottom-left corner to go to the Profile page.
+1. Click on your **User Profile** icon at the bottom-left below **Account Settings** to go to the Profile page.
 
-![](./static/two-factor-authentication-00.png)
+   ![](./static/two-factor-authentication-00.png)
 
 2. The Profile page appears.
 3. Toggle the **Two-Factor Authentication** indicator. The **Enable Two-Factor Authentication** page appears.
@@ -43,14 +41,14 @@ You can now see **Harness-Inc** in your 2FA token generator app, which provides 
 5. Click **Enable**. The next time you log in by entering your username and password, you are prompted to provide the 2FA authentication code.
 6. Obtain the code from your 2FA token generator app, and enter it. You can then log into your Harness account.
 
-### Set Up Account-Wide Two-Factor Authentication
+### Set up account-wide two-factor authentication
 
-Once you have set up 2FA for your account, you can enforce it for all users and groups in the account. When 2FA is enforced, account users will experience the following changes:
+Once you have set up 2FA for your account, you set it for all users and groups in the account. When 2FA is enforced, account users will experience the following changes:
 
-* **New members** will need to set up 2FA during signup.
+* **New members** will be able to set up 2FA during signup.
 * **Existing members** who do not have 2FA enabled will receive an email with a QR Code, and instructions on how to set up 2FA.
 
-To require that all account users and groups use 2FA, do the following:
+To set up 2FA for all account users and groups, do the following:
 
 1. Enable 2FA for your account as described in [Set Up Two-Factor Authentication for Your Profile](#set-up-two-factor-authentication-for-your-profile).
    
@@ -73,4 +71,3 @@ To require that all account users and groups use 2FA, do the following:
    ![](./static/two-factor-authentication-04.png)
 
 7. Click **Confirm**.
-

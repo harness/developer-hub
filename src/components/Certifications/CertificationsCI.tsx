@@ -203,7 +203,7 @@ export default function CertificationsCI() {
               <div className={styles.innerCard}>
                 <div className={styles.left}>
                   <h2>
-                    Continuous Integration - Administrator (BETA)
+                    Continuous Integration - Administrator
                   </h2>
                   <img
                     src={`${baseUrl}img/cert_adm_ci_badge.svg`}
@@ -216,7 +216,7 @@ export default function CertificationsCI() {
                   </span>
                 </div>
                 <div className={styles.right}>
-                  <h3>Review Study Guide - Coming Soon</h3>
+                  <h3>Review Study Guide</h3>
                   <div className={styles.desc}>
                     Assesses the fundamental skills to deploy and maintain CI
                     projects and the overall Harness Platform. This exam builds
