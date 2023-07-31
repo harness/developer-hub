@@ -77,7 +77,7 @@ In this section, you can drill down into Harness Cloud build credit usage data, 
 
 * **Available Credits:** Current balance of credits remaining to use.
 * **Used Credits:** Credits consumed during the active credit period.
-   * The active credit period is the time between the **Start Date** and **Expiry Date** for unexpired credits.
+   * The active credit period is the time between the **Start Date** and **Expiry Date** for your oldest unexpired credits.
    * For free accounts, the credit balance resets at the end of every calendar month. Your **Start Date** is the first of the month. Your **Expiry Date** is the end of the month.
    * If you purchased additional credits that haven't yet expired, the **Start Date** for **Used Credits** is the date that you purchased the additional credits, and the active credit period covers the lifetime of your purchased credits. For example, if you purchase credits in January that last for six months, **Used Credits** tracks credit usage from January through July, when your purchased credits expire. Therefore, **Used Credits** would include both your monthly free credits and additional purchased credits.
 * **Next Expiry Date:** The next upcoming credit expiration date.
