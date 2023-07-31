@@ -11,15 +11,6 @@ Redis offers an enterprise on-premise solution to deploy an HA solutions that fu
 
 This tutorial describes how to configure an external self-managed Redis database for your installation.
 
-## Benefits of a self-managed Redis external database
-
-Below are some of the benefits of using a self-managed Redis external database:
-
-- High availability
-- Disaster recovery
-- No maintenance downtime
-- Secondary read support (read scaling)
-
 ## Hardware requirements
 
 Harness recommends a Redis configuration with the following minimum hardware:

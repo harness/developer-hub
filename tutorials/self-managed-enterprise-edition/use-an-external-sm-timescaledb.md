@@ -9,15 +9,6 @@ Self-Managed Enterprise Edition requires you to install a database by default. Y
 
 The controller-worker replication setup described in this tutorial ensures data redundancy and fault tolerance, providing a robust and reliable environment to manage your TimescaleDB.
 
-## Benefits of an external self-managed TimescaleDB
-
-Below are some of the benefits of using an external self-managed TimescaleDB:
-
-- High availability
-- Disaster recovery
-- No maintenance downtime
-- Secondary read support (read scaling)
-
 ## Limitations
 
 TimescaleDB VMs offer many advantages, but there are a few limitations to consider:
