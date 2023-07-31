@@ -126,3 +126,36 @@ They get cleared out in 6 hours post getting disconnected .
 
 Yes we support auto upgrade in both these type delegates . This can be acheived by following `upgrader.enabled=true` while running the install command .
 
+### There are ‘Delegate Profiles’ for delegates in the CG. There are 'Startup Script' in it. What the equivalent of that in NG
+
+You can make use of INIT_SCRIPT as below while launching delegate:
+https://developer.harness.io/docs/first-gen/firstgen-platform/account/manage-delegates/run-initialization-scripts-on-delegates/
+
+### How to find User login activity in Harness
+
+You can filter and find user login activity in Audit trail(Both in CG and NG)
+
+### How to Secure storage of the Delegate Token
+
+You can Store delegate tokens as Kubernetes secrets: : https://developer.harness.io/docs/platform/delegates/secure-delegates/store-delegate-tokens-as-secrets/
+You can also store the token in vault and can reference the token in yaml:  https://developer.harness.io/docs/platform/delegates/secure-delegates/secure-delegates-with-tokens/#option-rotate-tokens 
+
+### Not seeing any data for newly added User
+
+Please check the User group assigned to User, If user is not assigned to any User Group/Role they will not be able to access/see any relevant data.
+
+### What is the chart name for helm delegate
+
+Chart name is  harness-delegate-ng you can see the metadata content as below and also the repo:
+https://app.harness.io/storage/harness-download/harness-helm-charts/ 
+https://github.com/harness/delegate-helm-chart
+
+### Do we have any expiry for 2FA secret
+
+No there is no expiry for 2FA secret
+
+### Is there any way to automatically accept invite for local login User
+
+No, It’s not possible as initially user need to use invite email to set their password. This is only possible while using saml for authentication.
+
+
