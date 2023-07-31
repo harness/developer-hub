@@ -108,20 +108,15 @@ While Test Intelligence is only for unit tests, you can [run a variety of tests 
 
 We ran Test Intelligence on our biggest repository, Harness-Core. Here's what we achieved:
 
-![](./static/test-intelligence-concepts-5012.png)
-
-* PRs checked: 2,500
-* Average UT time without TI: 43 minutes
-* Average UT time with TI: 32 minutes
-* Percentage of time saved with TI: 35%
-* Person Days saved with TI: 66
-* Yearly cost savings in USD: $600,000
+* PRs checked: 3000
+* Average UT time without TI: 75 minutes
+* Average UT time with TI: 25 minutes
 
 Here's how Harness Test Intelligence performed with some popular open-source repositories:
 
 | **Project name** | **Average test run time without TI** | **Average test run time with TI** |
 | -- | -- | -- |
-| Harness-Core | 43 mins | 32 mins |
+| Harness-Core | 75 mins | 25 mins |
 | Incubator Pinot | 338 mins | 228 mins |
 | Hudi | 58 mins | 43 mins |
 | RocketMQ | 4.6 mins | 3.1 mins |
