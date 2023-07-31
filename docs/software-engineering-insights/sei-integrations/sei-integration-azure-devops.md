@@ -9,7 +9,7 @@ Azure DevOps (ADO) is a Microsoft product that provides version control, reporti
 
 Use the SEI Azure DevOps Services integration to integrate SEI with ADO Services. SEI ingests pipelines, Git repos, Team Foundation Version Control (TFVC), and Azure Boards data from ADO Services.
 
-Azure DevOps Services is a cloud offering. To integrate with the on-premises offering, Azure DevOps Server, you must use the [generic SEI integration](./sei-integration-generic.md).
+Azure DevOps Services is a cloud offering. To integrate with the on-premises offering, Azure DevOps Server, you must use an [Ingestion Satellite](./sei-integration-satellite.md).
 
 ## Requirements
 

@@ -9,8 +9,6 @@ Jira is a proprietary issue tracking product that allows bug tracking and agile 
 
 Use the SEI Jira integration to integrate SEI with Jira in the Cloud.
 
-To integrate with the on-premises Jira instances, you must use the [generic SEI integration](./sei-integration-generic.md) with username and password authentication.
-
 ## Configure Jira
 
 Before you configure the SEI Jira integration, you must install the Harness SEI Jira app and generate an Atlassian API token.
@@ -33,6 +31,8 @@ Due to the scope of visibility required, consider using a managed service accoun
 2. Select **SEI Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **Jira** integration, and select **Install**.
 4. Configure the integration and install the SEI Jira app in your Jira instance.
+
+To integrate with the on-premises Jira instances, you must username and password authentication and an [Ingestion Satellite](./sei-integration-satellite.md).
 
 ## Add the Salesforce mapping
 

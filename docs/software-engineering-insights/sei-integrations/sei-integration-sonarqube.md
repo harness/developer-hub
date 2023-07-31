@@ -9,8 +9,6 @@ SonarQube is an open-source platform for continuous inspection of code quality t
 
 Use the SEI SonarQube integration to integrate SEI with SonarQube or SonarCloud.
 
-To integrate with the on-premises SonarQube instances, you must use the [generic SEI integration](./sei-integration-generic.md).
-
 ## Requirements
 
 To use the SEI SonarQube integration you need a SonarQube API token.
@@ -35,3 +33,5 @@ To use the SEI SonarQube integration you need a SonarQube API token.
    * **Project Keys:** Enter one or more project keys to ingest. If you want SEI to ingest all projects, leave this field empty. Project keys are case sensitive.
    * **Name:** Enter a name for the integration.
    * **Description** and **Tags** are optional.
+
+To integrate with the on-premises SonarQube instances, you must use an [Ingestion Satellite](./sei-integration-satellite.md).

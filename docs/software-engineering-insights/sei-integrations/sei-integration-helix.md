@@ -9,8 +9,6 @@ Perforce Helix Core is a version control software for large scale development en
 
 Use the SEI Helix integration to integrate SEI with remote Helix Core Server instances.
 
-To integrate with the on-premises instances of Helix Core Server, you must use the [generic SEI integration](./sei-integration-generic.md).
-
 ## Configure the SEI user
 
 To transmit data from Helix to SEI, you must create an SEI user in your Helix Core Server instance.
@@ -35,6 +33,8 @@ For more information, go to the Helix Core documentation on the [p4 user command
    * **Helix Swarm URL:** If you want to integrate with Helix Swarm, enter your Helix Swarm URL. If you don't want to integrate with Helix Swarm, leave this field empty.
    * **Server Uses SSL:** Select this option if your Helix Core Server instance uses SSL.
    * **SSL Fingerprint:** Enter the fingerprint for your Helix Core Server instance. You can get the fingerprint by running `p4d -Gf`, if the value of [P4SSLDIR](https://www.perforce.com/manuals/cmdref/Content/CmdRef/P4SSLDIR.html) is set correctly.
+
+   To integrate with the on-premises instances of Helix Core Server, you must use an [Ingestion Satellite](./sei-integration-satellite.md).
 
 5. Enter a **Name** for the integration. **Description** and **Tags** are optional.
 6. Finish configuration and save the integration.

@@ -18,21 +18,30 @@ Coverity is a fast, accurate, and highly scalable static analysis (SAST) solutio
 * **Coverity Issues Single Stat:** Present a single statistic related to Coverity issues.
 * **Coverity Issues Trend Report:** Understand daily, weekly, and monthly trends in your Coverity issues.
 
-## Microsoft Thread Modeling
+## Microsoft Threat Modeling
 
 The Microsoft Threat Modeling tool allows software architects to identify and mitigate potential security issues early, when they are relatively easy and cost-effective to resolve.
 
-You can use the [generic SEI integration](../sei-integrations/sei-integration-generic.md) to integrate with the Microsoft Threat Modeling tool, and then add the **Microsoft Threat Modeling Issues Report** to your [Insights](../sei-insights.md). This report helps track the progress of the issues reported by the Microsoft Threat Modeling tool. This report includes the total number of issues and their priority rankings.
+1. In your Harness project, go to the SEI module, and select **Account**.
+2. Select **SEI Integrations** under **Data Settings**.
+3. Select **Available Integrations**, locate the **Microsoft Threat Modeling Tool** semi-automated integration, and select **Upload report**.
+4. Add the **Microsoft Threat Modeling Issues Report** to your [Insights](../sei-insights.md). This report helps track the progress of the issues reported by the Microsoft Threat Modeling tool. This report includes the total number of issues and their priority rankings.
 
 ## NCC Group Vulnerability Scans
 
 The NCC Group's Managed Vulnerability Scanning Services deliver hands-on rapid detection, monitoring, and remediation of internal and external system vulnerabilities.
 
-You can use the [generic SEI integration](../sei-integrations/sei-integration-generic.md) to integrate with the NCC Group Vulnerability Scanner, and then add the **NCC Group Vulnerability Report** to your [Insights](../sei-insights.md). This report provides details on detected vulnerabilities. Vulnerabilities can be categorized by status.
+1. In your Harness project, go to the SEI module, and select **Account**.
+2. Select **SEI Integrations** under **Data Settings**.
+3. Select **Available Integrations**, locate the **NCC Group Report** semi-automated integration, and select **Upload report**.
+4. Add the **NCC Group Vulnerability Report** to your [Insights](../sei-insights.md). This report provides details on detected vulnerabilities. Vulnerabilities can be categorized by status.
 
 ## Praetorian
 
-You can use the [generic SEI integration](../sei-integrations/sei-integration-generic.md) to integrate with [Praetorian](https://www.praetorian.com/), and then add the **Praetorian Issues Report** to your [Insights](../sei-insights.md). This report helps analyze security vulnerabilities reported by Praetorian.
+1. In your Harness project, go to the SEI module, and select **Account**.
+2. Select **SEI Integrations** under **Data Settings**.
+3. Select **Available Integrations**, locate the **Praetorian Report** semi-automated integration, and select **Upload report**.
+4. Add the **Praetorian Issues Report** to your [Insights](../sei-insights.md). This report helps analyze security vulnerabilities reported by Praetorian.
 
 ## Snyk
 

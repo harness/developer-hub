@@ -36,11 +36,8 @@ To integrate a tool with SEI, you can use either an application-specific SEI int
 * [TestRail](./sei-integration-testrail.md)
 * [Zendesk](./sei-integration-zendesk.md)
 
-## Generic SEI integration (other integrations)
+On-prem integrations and tools without application-specific integrations require [Ingestion Satellites](./sei-integration-satellite.md).
 
-Use the [generic SEI integration](./sei-integration-generic.md) for integrations that don't have an application-specific SEI integration or when your configuration doesn't support the application-specific SEI integration, including:
+## Other integrations
 
-* On-premise tools and integrations that use *Ingestion Satellites*.
-* The *Job Reporter plugin* for Jenkins.
-* Custom CI/CD integrations.
-* Other tools that don't have an application-specific SEI integration.
+For information about custom CI/CD and Jenkins integrations, go to [Other SEI integrations](./sei-integration-other.md).

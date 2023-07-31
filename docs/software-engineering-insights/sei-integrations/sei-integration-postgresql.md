@@ -15,11 +15,11 @@ This SEI integration is under development. It provides limited integration suppo
 
 :::
 
-To integrate with an on-premises PostgreSQL instance, you must use the [generic SEI integration](./sei-integration-generic.md).
-
 ## Configure the integration
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Integrations** under **Data Settings**.
 3. Select **Available Integrations**, locate the **PostgreSQL** integration, and select **Install**.
 4. Configure and save the integration.
+
+To integrate with an on-premises PostgreSQL instance, you must use an [Ingestion Satellite](./sei-integration-satellite.md).

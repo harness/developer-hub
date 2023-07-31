@@ -9,7 +9,7 @@ Bitbucket is a web-based version control repository hosting service, for source 
 
 Use the SEI Bitbucket integration to integrate SEI with Bitbucket Cloud or Bitbucket Enterprise.
 
-To integrate with the on-premises offering, Bitbucket Data Center, you must use the [generic SEI integration](./sei-integration-generic.md).
+
 
 ## Requirements
 
@@ -22,7 +22,10 @@ The following permissions and settings are required to use the SEI Bitbucket int
 
 1. In your Harness project, go to the SEI module, and select **Account**.
 2. Select **SEI Integrations** under **Data Settings**.
-3. Select **Available Integrations**, and locate the **Bitbucket Enterprise** or **Bitbucket Cloud** integration, depending on your Bitbucket configuration.
+3. Select **Available Integrations**, and locate the **Bitbucket Cloud** integration, and select **Install**
+
+   To integrate with the on-premises offering, Bitbucket Data Center, install the **Bitbucket Enterprise** integration and use an [Ingestion Satellite](./sei-integration-satellite.md).
+
 4. Select **Install**.
 5. Configure and save the integration.
 

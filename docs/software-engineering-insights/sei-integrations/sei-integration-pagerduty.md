@@ -9,8 +9,6 @@ PagerDuty specializes in a SaaS incident response platform for IT departments.
 
 Use the SEI PagerDuty integration to integrate SEI with any Cloud-based PagerDuty account/plan.
 
-To integrate with an on-premises PagerDuty offering, you must use the [generic SEI integration](./sei-integration-generic.md).
-
 ## Requirements
 
 To use the SEI PagerDuty integration, you need a **read-only PagerDuty API key**. Copy the key somewhere that you can retrieve it when you configure the integration. For instructions, go to the PagerDuty documentation on [API Access Keys](https://support.pagerduty.com/docs/api-access-keys).
@@ -34,3 +32,5 @@ To use the SEI PagerDuty integration, you need a **read-only PagerDuty API key**
    * **API Key:** Enter your PagerDuty API key.
    * **Name:** Enter a name for the integration.
    * **Description** and **Tags** are optional.
+
+To integrate with an on-premises PagerDuty offering, you must use an [Ingestion Satellite](./sei-integration-satellite.md).

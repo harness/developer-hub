@@ -28,3 +28,9 @@ To use the SEI Snyk integration:
    * **API Key:** Enter the Snyk API token.
    * **Name:** Enter a name for the integration.
    * **Description** and **Tags** are optional.
+
+## Alternative: Upload report
+
+1. In your Harness project, go to the SEI module, and select **Account**.
+2. Select **SEI Integrations** under **Data Settings**.
+3. Select **Available Integrations**, locate the **Snyk Report** semi-automated integration, and select **Upload report**.
