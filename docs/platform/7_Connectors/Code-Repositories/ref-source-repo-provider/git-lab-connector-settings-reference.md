@@ -166,6 +166,8 @@ Make sure your personal access token has the following permissions: `api`, `read
 
 :::
 
+If necessary, use the **API URL** field to override the default URL for API authentication. This is primarily for the [Harness Self-Managed Enterprise Edition](/docs/self-managed-enterprise-edition).
+
 ## Connectivity Mode settings
 
 Select whether you want Harness to connect directly to your GitLab account or repo, or if you want Harness to communicate with your GitLab account or repo through a delegate.
