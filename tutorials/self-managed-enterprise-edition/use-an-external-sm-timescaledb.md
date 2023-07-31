@@ -54,7 +54,7 @@ Ensure the following:
 
 - Reserve internal and external static addresses for each VM.
 
-- Add port 5432 to the NAT firewall settings allow list on the application cluster so it can connect to the TimescaleDB instance. TimescaleDB uses 5432 as the default communication port. This enables communication between Harness services running in a Self-Managed Enterprise Edition cluster and a self-managed TimescaleDB cluster.
+- Add port 5432 to the NAT firewall settings allowlist on the application cluster so it can connect to the TimescaleDB instance. TimescaleDB uses 5432 as the default communication port. This enables communication between Harness services running in a Self-Managed Enterprise Edition cluster and a self-managed TimescaleDB cluster.
 
 ## Architecture
 
@@ -78,7 +78,7 @@ You can update the DNS record dynamically using a script or use the service disc
 
 ## Set up TimescaleDB VMs on Debian-based systems
 
-:::info warning
+:::caution
 If you installed PostgreSQL through a method other than the apt package manager maintained by Debian or Ubuntu archive, you may receive errors when following these instructions. Harness recommends that you uninstall existing PostgreSQL installations before you continue.
 :::
 
@@ -247,11 +247,12 @@ sudo su - postgres
 ```
 :::
 
-Make sure you are logged in to the VM with superUser access on postgres user.
 
 To configure replication, do the following:
 
-1. Run the following on one of your replicas.
+1. Make sure you are logged in to the VM with superUser access on postgres user.
+
+2. Run the following on one of your replicas.
    
    ```
    sudo su - postgres
@@ -260,9 +261,9 @@ To configure replication, do the following:
    // copy the public key in /var/lib/postgresql/.ssh/id_rsa.pub
    ```
 
-2. Copy the certificates to the other replicas in the same directory `/var/lib/postgresql/.ssh/`.
+3. Copy the certificates to the other replicas in the same directory `/var/lib/postgresql/.ssh/`.
 
-3. Run the following on your controller.
+4. Run the following on your controller.
 
    ```
    cd
@@ -272,7 +273,7 @@ To configure replication, do the following:
    // paste the public key, enter and paste it again and save, the second key should end with postgres@externalIP
    ```
 
-4. Make the following change to the `pg_hba.conf` file in `/etc/postgresql/13/main/pg_hba.conf` for your controller and replicas. This allows PostgreSQL to accept traffic from other networks and adds them to the allow list.
+5. Make the following change to the `pg_hba.conf` file in `/etc/postgresql/13/main/pg_hba.conf` for your controller and replicas. This allows PostgreSQL to accept traffic from other networks and adds them to the allowlist.
 
    ```
    #host   all             all             127.0.0.1/32           md5
@@ -281,7 +282,7 @@ To configure replication, do the following:
 
    This example allows everything to the TimescaleDB instance. Harness recommends that you configure your firewall rules to allow only certain IPs to use port 5432.
 
-5. (Optional) Make the following changes to set your allow list at the database-level.
+6. (Optional) Make the following changes to set your allowlist at the database-level.
 
    ```
    #host    all             all             127.0.0.1/32            md5 <— changes
@@ -291,13 +292,13 @@ To configure replication, do the following:
     host    all             all             <controller ip range>   md5 <— changes
    ```
 
-6. Change your directory to edit the `postgresql.conf` configuration file.
+7. Change your directory to edit the `postgresql.conf` configuration file.
 
    ```
    cd /etc/postgresql/13/main/
    ```
 
-7. Set `max_wal_senders` to the number of replicas. Set `max_replication_slots` to the number of replicas plus two. Edit or add the following settings.
+8. Set `max_wal_senders` to the number of replicas. Set `max_replication_slots` to the number of replicas plus two. Edit or add the following settings.
 
    ```
    listen_addresses = '*'
@@ -308,26 +309,26 @@ To configure replication, do the following:
    max_replication_slots = 4
    ```
 
-8. In your controller only, make sure you are running as Postgres.
+9. In your controller only, make sure you are running as Postgres.
 
    ```
    sudo su - postgres
    ```
 
-9. Create an archive directory in `/var/lib/postgresql/13/main`.
+10. Create an archive directory in `/var/lib/postgresql/13/main`.
 
    ```
    cd /var/lib/postgresql/13/main
    mkdir archive
    ```
 
-10. Add the following line to the bottom of your `pg_hba.conf` file.
+11. Add the following line to the bottom of your `pg_hba.conf` file.
 
     ```
     host  replication reptest <External IP of Replica>/32  md5
     ```
 
-11. Create a new user, `reptest`, and log in as Postgres.
+12. Create a new user, `reptest`, and log in as Postgres.
 
     ```
     CREATE ROLE reptest WITH REPLICATION PASSWORD 'testpassword' LOGIN;
@@ -338,7 +339,7 @@ To configure replication, do the following:
     run psql
     ```
 
-12. Create the first replication slot at the psql slot. You can use any name. This example uses `replica_1_slot`.
+13. Create the first replication slot at the psql slot. You can use any name. This example uses `replica_1_slot`.
     
     ```
     SELECT * FROM pg_create_physical_replication_slot('replica_1_slot');
@@ -346,7 +347,7 @@ To configure replication, do the following:
 
    Repeat this step for each replica.
 
-13. Restart PostgreSQL on your controller and your replicas (run as root).
+14. Restart PostgreSQL on your controller and your replicas (run as root).
     
     ```
     service postgresql restart 
