@@ -44,9 +44,11 @@ The following prerequisites are needed:
 
 - Redis Enterprise. To download Redis for Ubuntu 20.04, go to [Redis enterprise](https://redis.com/redis-enterprise-software/download-center/software/).
 
+- A public or internal domain name, for example `harness-redis-abc.com`.
+
 ## Firewall rules
 
-External Redis requires firewall rule setup to add ports to your allow list. 
+External Redis requires firewall rule setup to add ports to your allowlist. 
 
 To create a firewall rule, do the following:
 
@@ -65,7 +67,7 @@ To create a firewall rule, do the following:
 
 ## Install Redis
 
-After you configure your firewall rules, you must install Redis. To install Redis, you must create three VMs, create a public zone, configure your Redis cluster, configure your Redis database, and test your connectivity.
+After you configure your firewall rules, you must install Redis. To install Redis, you must create three VMs, create DNS records, configure your Redis cluster, configure your Redis database, and test your connectivity.
 
 ### Create your VMs
 
@@ -108,19 +110,17 @@ To create your VMs, do the following:
 
 ### Create a public zone
 
-To create a public zone, do the following:
+To create DNS records, do the following:
 
-1. Go to the DNS portal and create a public zone with any domain name, for example `harness-redis-abc.com`.
+1. Go to the DNS portal of your domain registrar.
 
-2. Open the public zone page. 
+2. Create three type A records with subdomains for the public domain name, for example, `node1.harness-redis-abc.com`, `node2.harness-redis-abc.com`, and `node3.harness-redis-abc.com`.
 
-3. Create three type A records with subdomains for the public domain name, for example, `node1.harness-redis-abc.com`, `node2.harness-redis-abc.com`, and `node3.harness-redis-abc.com`.
+3. Add the internal IP and external IP for each VM in their respective A records.
 
-4. Add the internal IP and external IP for each VM in their respective A records.
+4. Create one NS record with a different subdomain, for example `redis.harness-redis.com`.
 
-5. Create one NS record with a different subdomain, for example `redis.harness-redis.com`.
-
-6. Add the subdomains of all your nodes, for example `node1.harness-redis.com`, `node2.harness-redis.com`, and `node3.harness-redis.com`.
+5. Add the subdomains of all your nodes, for example `node1.harness-redis.com`, `node2.harness-redis.com`, and `node3.harness-redis.com`.
 
 ### Configure your Redis cluster
 
