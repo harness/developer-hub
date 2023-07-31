@@ -16,6 +16,17 @@ export const SMPList: CardItem[] = [
     link: "/tutorials/self-managed-enterprise-edition/use-an-external-mongodb-database",
   },
   {
+    title: "Configure an external self-managed Redis database",
+    module: MODULES.smp,
+    icon: "img/logo.svg",
+    description: (
+      <>Learn how to use an external self-managed Redis database with Self-Managed Enterprise Edition installations.</>
+    ),
+    newDoc: true,
+    type: [docType.Documentation],
+    time: "5 min",
+    link: "/tutorials/self-managed-enterprise-edition/use-an-external-redis-database",
+   },
     title: "Configure a self-managed PostgreSQL database",
     module: MODULES.smp,
     icon: "img/logo.svg",
