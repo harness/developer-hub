@@ -17,13 +17,13 @@ import delete_project from './static/delete-project.png'
 
 Review the notes below for details about recent changes to Harness Self-Managed Enterprise Edition, NextGen. For release notes for FirstGen Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
-## Latest - July 31, 2023, version 798xx
+## Latest - July 31, 2023, version 79819
 
 ### Known issues
 
 -  Terraform-based pipeline automation does not function correctly in Istio environments. UI operations are not affected. (PL-39776)
 
-- The `log-service` created separate Redis streams and set the expiration of all keys. Harness has temporarily disabled Redis in the `log-service` for High availability configuration. (CI-9000)
+- The `log-service` created separate Redis streams and set the expiration of all keys. Harness has temporarily disabled Redis in the `log-service`. (CI-9000)
 
 ```mdx-code-block
 <Tabs>

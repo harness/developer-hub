@@ -16,7 +16,7 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](https://devel
 
 Release notes are displayed with the most recent release first.
 
-## July 31, 2023, patch release for version 
+## July 31, 2023, patch release for version 79819
 
 This release includes the following module and component versions.
 
