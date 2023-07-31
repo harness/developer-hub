@@ -1,7 +1,7 @@
 ---
 title: Use an external self-managed MongoDB with your installation
 description: Learn how to use an external self-managed MongoDB with Self-Managed Enterprise Edition installations.
-sidebar_label: Configure an external self-managed MongoDB
+sidebar_label: External self-managed MongoDB
 # sidebar_position: 2
 ---
 
