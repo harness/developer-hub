@@ -32,7 +32,7 @@ At the point in your pipeline where you want to build and upload an image, add a
 
 * **Name:** Enter a name.
 * **Container Registry:** Select a connector corresponding to your push destination.
-   * DockerHub: Docker connector
+   * Docker Hub: Docker connector
    * ACR: Azure connector
    * ECR: AWS connector
    * GCR: GCP connector
@@ -81,7 +81,7 @@ At the point in your pipeline where you want to build and upload an image, add a
 This step requires the following specifications:
 
 * `connectorRef`: Provide the ID of a connector corresponding to your push destination.
-   * DockerHub: Docker connector
+   * Docker Hub: Docker connector
    * ACR: Azure connector
    * ECR: AWS connector
    * GCR: GCP connector

@@ -1,15 +1,15 @@
 ---
-title: Use an external TimescaleDB server with your installation
-description: Learn how to use an external TimescaleDB server with Self-Managed Enterprise Edition installations.
-sidebar_label: Configure an external TimescaleDB server
+title: Use an external cloud-based TimescaleDB with your installation
+description: Learn how to use an external cloud-based TimescaleDB with Self-Managed Enterprise Edition installations.
+sidebar_label: External cloud-based TimescaleDB
 # sidebar_position: 37
 ---
 
-Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external database server with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external TimescaleDB server with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This topic describes how to configure an external TimescaleDB server for your installation.
+Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external database with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external cloud-based TimescaleDB with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This topic describes how to configure an external cloud-based TimescaleDB for your installation.
 
 ## Set an external TimescaleDB service
 
-To use TimescaleDB with your Self-Managed Enterprise Edition installation, you must set up an external TimescaleDB service.
+To use TimescaleDB with your Self-Managed Enterprise Edition installation, you can set up an external cloud-based TimescaleDB.
 
 To set up an external TimescaleDB service, do the following:
 

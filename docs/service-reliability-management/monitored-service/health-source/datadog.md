@@ -26,9 +26,9 @@ To add Datadog as a health source:
 
 3. Go to the **Service** tab, and under **Define Your Sources**, select **+ Add New Health Source**.  
 
-![](./static/verify-deployments-with-datadog-51.png)
+      ![](./static/verify-deployments-with-datadog-51.png)
 
-4.vIn **Select health source type**, select Datadog.
+4. In **Select health source type**, select Datadog.
 
 5. In **Health Source Name**, enter a name for the Health Source.
 
@@ -36,13 +36,13 @@ To add Datadog as a health source:
 
 7. In **Connector** settings, you can either choose an existing connector or click **New Connector.**
 
-![](./static/verify-deployments-with-datadog-52.png)
+      ![](./static/verify-deployments-with-datadog-52.png)
 
 8. Click **Apply Selected**. The Connector is added to the Health Source.
 
 9. In **Select Feature**, select the Datadog feature to be used. You can choose **Cloud Metrics** or **Cloud Logs**.
 
-![](./static/verify-deployments-with-datadog-53.png)
+      ![](./static/verify-deployments-with-datadog-53.png)
 
 10. Click **Next**.
 
@@ -50,7 +50,7 @@ The subsequent settings in **Customize Health Source** depend on the Health So
 
 If you select **Cloud Metrics**, the **Select Dashboards** settings appear. It displays a list of Datadog dashboards.
 
-![](./static/verify-deployments-with-datadog-54.png)
+      ![](./static/verify-deployments-with-datadog-54.png)
 
 11. Click the dashboards of your choice. If you don't have any preexisting dashboards or don't want to select the ones in the displayed result, click **Manually input query.**
 
@@ -58,9 +58,43 @@ If you select **Cloud Metrics**, the **Select Dashboards** settings appear. It d
 
 13. Select a query from the options displayed on the left side of setting panel. The specification of the selected query auto-populates in the fields under **Query Specifications**.
 
-![](./static/verify-deployments-with-datadog-55.png)
+      ![](./static/verify-deployments-with-datadog-55.png)
 
 14. Click **Submit**. The Datadog health source gets added to the monitored service.
+
+### Configure Datadog formulas as Harness queries
+
+:::info note 
+
+Currently,this feature is behind the feature flag SRM_DATADOG_METRICS_FORMULA_SUPPORT. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+
+:::
+
+
+In manual query mode, the Datadog metrics health source provides support for formulas.
+These formulas follow a specific format: 
+
+```Query a ; Query b ; Formula using a, b```
+
+* Query a: "Query-with-a"
+* Query b: "Query-with-a"
+* The formula is "(a/b) * 100 - 5"
+
+Let's consider an example to illustrate this:
+
+
+```
+kubernetes.cpu.usage{cluster-name:chi-play};kubernetes.memory.total{cluster-name:chi-play};(a/b) * 100 - 5
+```
+
+
+In the example above, 'a' and 'b' represent the respective queries:
+
+* a = kubernetes.memory.usage{cluster-name:chi-play}
+* b = kubernetes.memory.total{cluster-name:chi-play}
+
+You can use multiple queries represented by alphabetical variables (example: a, b, c, and so on) in the final formula, but only one formula is allowed per query.
+
 
 ## Option: Cloud Logs
 
@@ -70,15 +104,15 @@ Select Cloud Logs and click **Next.** The **Customize Health Source** settin
 
 2. Click **Map Queries to Harness Services** dropdown.
 
-![](./static/verify-deployments-with-datadog-56.png)
+      ![](./static/verify-deployments-with-datadog-56.png)
 
 3. Enter a name for the query in **Name your Query**.
 
 4. In **Log Indexes**, select a log index from the list.
 
-5. 6. In **Service Instance Identifier**, click the dropdown to select the path of the service instance.
-
-Click **Submit**. The Datadog health source gets added to the monitored service.
+5. In **Service Instance Identifier**, click the dropdown to select the path of the service instance.  
+   
+   Click **Submit**. The Datadog health source gets added to the monitored service.
 
 
 

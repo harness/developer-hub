@@ -277,7 +277,7 @@ To explore the Harness API, go to [Harness API Reference Docs](https://harness.i
 
 ### Notes
 
-* **Rate Limiting:** Harness uses rate limiting to control traffic and ensure the stability of the platform. For platform rate limit information, go to [Rate limits](/docs/platform/Security/rate-limits).
+* **Rate Limiting:** Harness uses rate limiting to control traffic and ensure the stability of the platform. For platform rate limit information, go to [Rate limits](/docs/platform/rate-limits).
 
 * **Cross-origin Resource Sharing (CORS):** Harness APIs support CORS. This allows interactions between resources from different origins, which is normally prohibited to prevent malicious behavior. Each request must provide credentials (personal access tokens and service access tokens are both supported options).
 * **Errors:** Harness uses conventional HTTP response codes to indicate the success or failure of an API request.

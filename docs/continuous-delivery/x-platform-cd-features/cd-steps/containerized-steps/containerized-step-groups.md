@@ -391,7 +391,7 @@ Supply a list of arguments in `exec` format. Enter each argument separately.
 
 ![Entry Point commands](../static/0c005ac860103a5b7fb3355c95dc13ff5eab09baae3d7636ec7bf40c7ccc166e.png)  
 
-<figcaption>Figure 4: <b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
+<figcaption><b>Entry Point</b> arguments in the Pipeline Studio Visual editor.</figcaption>
 </figure>
 
 ```mdx-code-block
