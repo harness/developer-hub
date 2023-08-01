@@ -7,17 +7,17 @@ sidebar_label: External cloud-based TimescaleDB
 
 Self-Managed Enterprise Edition requires you to install a database by default. You can optionally use an external database with your Self-Managed Enterprise Edition installation. This enables you to separate your data from node execution. To use an external cloud-based TimescaleDB with your Harness Self-Managed Enterprise Edition installation, you must ensure that your hardware, software, and network meet the minimum requirements for installation and configuration. This topic describes how to configure an external cloud-based TimescaleDB for your installation.
 
-## Set an external TimescaleDB service
+## Configure an external cloud-based TimescaleDB
 
 To use TimescaleDB with your Self-Managed Enterprise Edition installation, you can set up an external cloud-based TimescaleDB.
 
-To set up an external TimescaleDB service, do the following:
+To set up an external cloud-based TimescaleDB, do the following:
 
 1. Create a [Timescale](https://portal.managed.timescale.com/login) account.
 
 2. Set up virtual private cloud (VPC) peering with your cloud provider. 
 
-3. In Timescale cloud, go to VPC in Timescale cloud, and create a new VPC connection. For more information, go to [Configure VPC peering](https://docs.timescale.com/mst/latest/vpc-peering/vpc-peering/) in the Timescale documentation.
+3. Go to VPC in Timescale cloud, and create a new VPC connection. For more information, go to [Configure VPC peering](https://docs.timescale.com/mst/latest/vpc-peering/vpc-peering/) in the Timescale documentation.
 
    :::info note
    Ensure the IP CIDr range doesn't conflict with your cloud provider’s VPC range.
@@ -80,4 +80,4 @@ To set up an external TimescaleDB service, do the following:
          certKey: "cert"
     ```
 
-   When you install or upgrade Helm, Self-Managed Enterprise Edition automatically connects to the external TimescaleDB service.
+   When you install or upgrade Helm, Self-Managed Enterprise Edition automatically connects to the external TimescaleDB.
