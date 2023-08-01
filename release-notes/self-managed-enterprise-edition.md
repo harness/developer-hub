@@ -105,6 +105,8 @@ This release includes the following Harness module and component versions.
 
 #### Continuous Error Tracking
 
+- Harness deprecated the `global.srm.enabled` field. Use the `global.cet.enabled` field to enable Continuous Error Tracking for general availability. Harness also deprecated the Service Reliability Management object in the `values.yaml` file. Use the Continuous Error Tracking object in the `values.yaml` file for general availability. (CES-1354)
+
 - You can now conveniently access a comprehensive list of all active agents running across your entire account directly from the subscription page. (CET-1225)
 
 - With introduction of new CET module, access to ET event list from CI pipeline, no longer depends on a feature flag being turned on. Instead, the event list is automatically available to users licensed for CET. (CET-1330)
