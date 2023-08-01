@@ -18,7 +18,6 @@ You can configure perspective preferences in the **Default Settings** page under
 | - | Show costs as:<ul><li>Amortised</li><li>Net-amortised</li><li>Unblended</li><li>Blended</li><li>Effective</li></ul>Default value: Unblended | - |
 
 
-
   <docimage path={require('./static/default-preferences-settings.png')} width="60%" height="60%" title="Click to view full size image" />
 
 
@@ -35,7 +34,7 @@ The following preferences settings are applicable to all perspectives. By defaul
 
  Displays the anomalies in the perspective. This option is enabled by default. For more information about cloud cost anomalies, go to [Detect anomalies](../4-detect-cloud-cost-anomalies-with-ccm.md).
 
-* **Show Others**
+* **Show others**
 
   The graphs displayed in a Perspective show the top 12 costs only. The remaining data is displayed as **Others**.
   **Others** is always the total cost minus the top 12 costs listed in the graph you are viewing.
@@ -70,15 +69,15 @@ To know how to analyze your cluster perspective data, go to [Analyze cost for Ku
 
 When creating your perspective, the **Preferences** section allows you to include specific cost factors sourced from the AWS Cost and Usage Reports (AWS CUR). These selected cost factors will be incorporated into your perspective for a more tailored and comprehensive view of your cloud costs. 
 
-* **Include Discounts**: Includes any discounts that AWS applied to your usage. Selected by default.
-* **Include Credit**: Includes any credits that AWS has applied to your bill. Selected by default.
-* **Include Refunds**: Includes the negative charges that AWS refunded money for. Selected by default.
-* **Include Taxes**: Includes any taxes that AWS applied to your bill. For example, VAT or US sales tax. Selected by default.
+* **Include Discounts**: Includes any discounts that AWS applied to your usage. 
+* **Include Credit**: Includes any credits that AWS has applied to your bill.
+* **Include Refunds**: Includes the negative charges that AWS refunded money for. 
+* **Include Taxes**: Includes any taxes that AWS applied to your bill. For example, VAT or US sales tax. 
 * **Show costs as**: The following are the various AWS cost types supported by Perspectives.
 
-  * **Net-amortised**
+  * **Net amortized**
 
-    Net-Amortized Cost in AWS is the actual cost of using resources, accounting for upfront payments made for Reserved Instances. It evenly spreads the upfront costs over the reservation term, considers monthly fees, and includes discounts like RI volume discounts. 
+    Net amortized cost in AWS is the actual cost of using resources, accounting for upfront payments made for Reserved Instances. It evenly spreads the upfront costs over the reservation term, considers monthly fees, and includes discounts like RI volume discounts. 
 
   * **Blended**
   
@@ -88,9 +87,9 @@ When creating your perspective, the **Preferences** section allows you to includ
   
     A vast majority of AWS customers use the unblended cost dataset to understand their usage. This is the default cost type.Unblended cost is the direct cost incurred for using AWS services, without factoring in any upfront payments or volume discounts. Unblended rates are the rates associated with an individual account's service usage. For a line item, the unblended cost is usage multiplied by the unblended rate. The unblended cost would be the cost of the account's usage if it were a standalone account. Unblended costs represent your usage costs on the day they are charged to you. In finance terms, they represent your costs on a cash basis of accounting.
     
-  * **Amortised**
+  * **Amortized**
 
-    Amortized Cost refers to the total upfront payment for reserved instances spread evenly over the term of the reservation. This method is used to allocate the upfront costs equally across the duration of the reservation, making it easier to analyze the cost distribution.
+    Amortized cost refers to the total upfront payment for reserved instances spread evenly over the term of the reservation. This method is used to allocate the upfront costs equally across the duration of the reservation, making it easier to analyze the cost distribution.
     
       For example, Alejandro decides to buy a Partial Upfront t2.micro Reserved Instance (RI) with a one-year term. The upfront cost for this RI is $30, which he pays at the beginning. Additionally, there is a monthly fee of $2.48 associated with the RI. In this case, the Cost Explorer chart will show Alejandro's RI costs as a spike on the first day of each month. This spike represents the monthly fee of $2.48 being charged. When Alejandro chooses "Amortized costs" in the Cost Explorer settings, it provides a different perspective on the cost data. Amortization is a process of spreading the upfront cost of a reserved instance over its duration (one year in this case). Instead of showing a large upfront cost, Amortized costs evenly distribute the upfront cost over the term of the RI. Selecting **Amortized costs** and considering a 30-day month, the Cost Explorer chart will display a daily effective rate. This daily effective rate is calculated by taking the EC2 effective rate (which is the hourly cost of running an instance) and multiplying it by the number of hours in a day. So, if the EC2 effective rate for the t2.micro instance is $0.165 per hour, the daily effective rate will be $0.165 multiplied by 24 hours, resulting in $3.96.
     
