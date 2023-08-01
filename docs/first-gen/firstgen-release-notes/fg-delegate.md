@@ -20,7 +20,7 @@ To identify the cluster that hosts your account, open Harness FirstGen, go to **
 
 For FirstGen SaaS release notes, go to [Harness SaaS Release Notes (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-saa-s-release-notes.md). For Self-Managed Enterprise Edition release notes, go to [Self-Managed Enterprise Edition (FirstGen)](/docs/first-gen/firstgen-release-notes/harness-on-prem-release-notes.md).
 
-## Latest - July, 31 2023, Harness version 801xx, Harness Delegate version 801xx
+## Latest - August 2, 2023, Harness version 801xx, Harness Delegate version 801xx
 
 ### Deprecation notice
 
@@ -47,7 +47,9 @@ This release does not include any new early access features.
   <TabItem value="Fixed issues">
 ```
 
-- If the same java args are specified, the right most takes precedence. This change allows JAVA_OPTS variable in delegate yaml to override jvm memory settings. (PL-38839)
+- Earlier, even though you could use the `JAVA_OPTS` environment variable to specify JVM options for the delegate, you could not override the default JVM options that Harness used, namely `-XX:MaxRAMPercentage=70.0` and `-XX:MinRAMPercentage=40.0`. The option to override the defaults was unavailable because the value of JAVA_OPTS was prepended to the default JVM options. (PL-38839)
+   
+   This issue has been fixed. The value of JAVA_OPTS is now appended to the default JVM options, thus allowing you to override the default options.
 
 ```mdx-code-block
   </TabItem>

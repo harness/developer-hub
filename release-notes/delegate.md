@@ -2,7 +2,7 @@
 title: Delegate release notes
 sidebar_label: Delegate
 tags: [NextGen, "Delegate"]
-date: 2023-07-31T10:00
+date: 2023-08-02T10:00
 sidebar_position: 14
 ---
 ```mdx-code-block
@@ -20,7 +20,7 @@ Harness Delegate (NextGen SaaS) releases every two weeks. On the other hand, Har
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 31, 2023, Harness version 801xx, Harness Delegate version 801xx
+## Latest - August 2, 2023, Harness version 801xx, Harness Delegate version 801xx
 
 Harness NextGen release 801xx includes the following changes for the Harness Delegate.
 
@@ -49,9 +49,63 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-- Fix issue of showing all delegates in error message and added new improved error message. (PL-39624)
+- Pending (CI-8708)
 
-- Kubernetes rollout step was slow. Improved message read performance and increased the read timeout to alleviate the issue of generating and abandoning threads. (PL-39797)
+- Pending (CDS-58892)
+
+- Pending (CDS-58919)
+
+- Pending (CDS-58931)
+
+- Pending (CDS-70172)
+
+- Pending (CDS-72737)
+
+- Pending (CDS-72869)
+
+- Pending (CDS-72911)
+
+- Pending (CDS-73264)
+
+- Pending (CDS-73641)
+
+- Pending (CDS-73727)
+
+- Pending (CDS-74042)
+
+- Pending (CDS-74144)
+
+- Pending (CDS-74163)
+
+- Pending (CDS-74259)
+
+- Pending (OIP-565)
+
+- Pending (OIP-568)
+
+- Incorrect ordering of execution logs and API call logs. (OIP-661)
+
+   This issue has been resolved. Now, the execution logs and API call logs are displayed in the correct order.
+
+- Pending (OIP-657)
+
+- Pending (PL-28392)
+
+- Earlier, even though you could use the `JAVA_OPTS` environment variable to specify JVM options for the delegate, you could not override the default JVM options that Harness used, namely `-XX:MaxRAMPercentage=70.0` and `-XX:MinRAMPercentage=40.0`. The option to override the defaults was unavailable because the value of JAVA_OPTS was prepended to the default JVM options. (PL-38839)
+
+   This issue has been fixed. The value of JAVA_OPTS is now appended to the default JVM options, thus allowing you to override the default options.
+
+- Pending (PL-39503)
+
+- If all eligible delegates are unavailable when a task needs to be executed, the task times out with a message that lists delegates from scopes outside the task’s account-organization-project hierarchy. (PL-39624, ZD-46460, ZD-46513)
+
+   This issue has been fixed.
+
+- Delegates showed high CPU usage caused by a large number of threads that perform read operations being generated and abandoned. (PL-39797)
+
+   This issue has been resolved through improved message read performance and increased read timeout.
+
+
 
 
 ```mdx-code-block
