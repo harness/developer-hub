@@ -10,8 +10,7 @@ Harness CV supports the following APM tools:
 - Google Cloud Operations (formerly Stackdriver)
 - New Relic
 - Prometheus (includes support for AWS Prometheus)
-- SignalFx
-- Splunk Observability
+- Splunk Observability (formerly SignalFx)
 - Sumo Logic
 
 Harness supports most of the popular APM tools, but there may be instances where Harness don't have a native connector. Using the **Harness Custom Health Source** feature, you can integrate such APM tools with Harness.
@@ -25,7 +24,7 @@ Harness CV supports the following log management tools:
 - Elasticsearch
 - Google Cloud Operations (formerly Stackdriver)
 - Grafana Loki
-- Splunk Observability
+- Splunk
 - Sumo Logic
 
 Harness supports most of the popular log management tools, but there may be instances where Harness don't have a native connector. Using the **Harness Custom Health Source** feature, you can integrate such log management tools with Harness.

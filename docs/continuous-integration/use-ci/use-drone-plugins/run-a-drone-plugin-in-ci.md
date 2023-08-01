@@ -146,7 +146,7 @@ For information about a plugin's settings, go to the plugin's page on the [Drone
 
 ![](./static/plugin-marketplace-readme-link.png)
 
-<figcaption>Figure 1: The README link is at the top of each plugin's Drone Plugin Marketplace page.</figcaption>
+<figcaption>The README link is at the top of each plugin's Drone Plugin Marketplace page.</figcaption>
 </figure>
 
 ### Output variables
@@ -209,7 +209,7 @@ The YAML examples in the [Drone Plugins Marketplace](https://plugins.drone.io/) 
 
 ![](./static/drone_marketplace_toggle_yaml.png)
 
-<figcaption>Figure 2: You can switch between Drone YAML and Harness YAML in the Drone Plugins Marketplace.</figcaption>
+<figcaption>You can switch between Drone YAML and Harness YAML in the Drone Plugins Marketplace.</figcaption>
 </figure>
 
 Because Drone plugins can be used outside Harness CI, there are some differences, as explained below, in the YAML format when using Drone plugins in Harness CI versus outside Harness CI. This information focuses on the `step` YAML definition.
@@ -304,7 +304,7 @@ It's often easier to define complex settings in the Harness Pipeline Studio's YA
 
 ![](./static/run-a-drone-plugin-in-ci-02.png)
 
-<figcaption>Figure 3: Using the Visual editor to configure Plugin settings.</figcaption>
+<figcaption>Using the Visual editor to configure Plugin settings.</figcaption>
 </figure>
 
 ### Text secrets

@@ -2,7 +2,7 @@
 title: Cloud Cost Management release notes
 sidebar_label: Cloud Cost Management
 tags: [NextGen, "cloud cost management"]
-date: 2023-07-20T10:00
+date: 2023-07-24T10:00
 sidebar_position: 5
 ---
 ```mdx-code-block
@@ -19,15 +19,13 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 :::
 
 
-## Latest - July 20, 2023, version 80201
+## Latest - July 21, 2023, version 80202
 
 ```mdx-code-block
 <Tabs>
   <TabItem value="What's new">
 ```
-  
 This release does not include any new features.
-
 
 
 ```mdx-code-block
@@ -42,10 +40,7 @@ This release does not include any early access features.
   <TabItem value="Fixed issues">
 ```
 
-
 This release does not include any fixed issues.
-
-
 
 ```mdx-code-block
   </TabItem>
@@ -86,6 +81,7 @@ By default, the first two options are enabled, and you can modify the toggles to
 * Adding an invalid cost category in a perspective rule caused the Anomalies feature to not function as expected. (CCM-13218)
 
   Now, the cost category IDs are validated when added in the perspective rule.
+
 
 #### July 07, 2023, version 80002
 

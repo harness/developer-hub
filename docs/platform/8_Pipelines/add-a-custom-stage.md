@@ -80,7 +80,7 @@ These steps are also available in CI, CD, and Approval stages.
 For details on the different steps, see:
 
 * [General CD](https://developer.harness.io/docs/category/general-cd-execution-steps)
-* [Using Shell Scripts in CD Stages](/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-shell-scripts)
+* [Using Shell Scripts in CD Stages](/docs/continuous-delivery/x-platform-cd-features/cd-steps/cd-general-steps/using-shell-scripts)
 * [Create an HTTP Step Template](../13_Templates/harness-template-library.md)
 * [Approvals](https://developer.harness.io/docs/category/approvals)
 * [Synchronize Deployments using Barriers](/docs/continuous-delivery/manage-deployments/synchronize-deployments-using-barriers/)

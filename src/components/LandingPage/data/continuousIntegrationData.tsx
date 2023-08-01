@@ -72,6 +72,17 @@ export const FeaturedList: CardItem[] = [
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
+    newDoc: false,
+  },
+  {
+    title: "C# (.NET Core) application",
+    module: MODULES.ci,
+    description:
+      "Build and test a C# (.NET Core) application.",
+    link: "/tutorials/ci-pipelines/build/dotnet",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
     newDoc: true,
   },
 ];
@@ -111,7 +122,18 @@ export const CIList: CardItem[] = [
     icon: "img/icon_ci.svg",
   },
   {
-    title: "Go application",
+    title: "C# (.NET Core)",
+    module: MODULES.ci,
+    description:
+      "Build and test a C# (.NET Core) application.",
+    link: "/tutorials/ci-pipelines/build/dotnet",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
+  },
+  {
+    title: "Go",
     module: MODULES.ci,
     description:
       "Build and test a Go application.",
@@ -121,7 +143,7 @@ export const CIList: CardItem[] = [
     icon: "img/icon_ci.svg",
   },
   {
-    title: "Java application",
+    title: "Java",
     module: MODULES.ci,
     description:
       "Build and test a Java application.",
@@ -131,7 +153,7 @@ export const CIList: CardItem[] = [
     type: [docType.Documentation],
   },
   {
-    title: "NodeJS application",
+    title: "NodeJS",
     module: MODULES.ci,
     description:
       "Build and test a NodeJS application.",
@@ -141,18 +163,7 @@ export const CIList: CardItem[] = [
     icon: "img/icon_ci.svg",
   },
   {
-    title: "Ruby application",
-    module: MODULES.ci,
-    description:
-      "Build and test a Ruby application.",
-    link: "/tutorials/ci-pipelines/build/ruby",
-    type: [docType.Documentation],
-    time: "15 min",
-    icon: "img/icon_ci.svg",
-    newDoc: false,
-  },
-  {
-    title: "Python application",
+    title: "Python",
     module: MODULES.ci,
     description:
       "Build and test a Python application.",
@@ -163,7 +174,18 @@ export const CIList: CardItem[] = [
     newDoc: false,
   },
   {
-    title: "iOS and macOS applications",
+    title: "Ruby",
+    module: MODULES.ci,
+    description:
+      "Build and test a Ruby application.",
+    link: "/tutorials/ci-pipelines/build/ruby",
+    type: [docType.Documentation],
+    time: "15 min",
+    icon: "img/icon_ci.svg",
+    newDoc: false,
+  },
+  {
+    title: "iOS and macOS",
     module: MODULES.ci,
     description:
       "Build and test an iOS or macOS application.",
@@ -171,7 +193,7 @@ export const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg",
-    newDoc: true,
+    newDoc: false,
   },
   {
     title: "Terraform Cloud notification triggers",
@@ -244,5 +266,16 @@ export const CIList: CardItem[] = [
     type: [docType.Documentation],
     time: "15 min",
     icon: "img/icon_ci.svg"
+  },
+  {
+    title: "Test a FastAPI project",
+    module: MODULES.ci,
+    description:
+      "Use Harness CI to test a FastAPI project.",
+    link: "/tutorials/ci-pipelines/test/fastapi",
+    type: [docType.Documentation],
+    time: "20 min",
+    icon: "img/icon_ci.svg",
+    newDoc: true,
   },
 ];

@@ -44,7 +44,9 @@ This step supports Artifactory connectors that use either anonymous or username 
 
 The **Target** is the target path in the JFrog Artifactory registry. This is a target repository name relative to the server URL in the connector. If `pom.xml` is not present, then the **Target** must be a full path to an artifacts folder, such as `groupId/artifactId/version`.
 
-**Source Path** is a path to the artifact file/folder on the local/build machine you want to upload. Harness creates the compressed file automatically.
+**Source Path** is a path to the artifact file/folder on the local/build machine you want to upload.
+
+If you want to upload a compressed file, you must use a [Run step](../run-ci-scripts/run-step-settings.md) to compress the artifact before uploading it.
 
 ![](./static/upload-artifacts-to-jfrog-519.png)
 

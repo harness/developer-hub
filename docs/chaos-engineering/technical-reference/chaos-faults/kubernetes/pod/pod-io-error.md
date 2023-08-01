@@ -60,37 +60,37 @@ Pod IO error:
       <tr>
         <td> FILE_PATH </td>
         <td> The path for injecting faults can be specified as either a single file or a wildcard. If not provided, it will target all the files present inside the mount path </td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-error#advanced-fault-tunables">file path</a>. </td>
+        <td> For more information, go to <a href="#advanced-fault-tunables">file path</a>. </td>
       </tr>
       <tr>
         <td> PERCENTAGE </td>
         <td> The likelihood of failure per operation, expressed as a percentage </td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-error#advanced-fault-tunables">percentage</a>. </td>
+        <td> For more information, go to <a href="#advanced-fault-tunables">percentage</a>. </td>
       </tr>
       <tr>
         <td> METHOD_TYPES </td>
         <td> This contains the file system call or methods. </td>
-        <td> For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-error#advanced-fault-tunables">percentage</a>. </td>
+        <td> For more information, go to <a href="#advanced-fault-tunables">percentage</a>. </td>
       </tr>
       <tr>
         <td> CONTAINER_RUNTIME </td>
         <td> Container runtime interface for the cluster </td>
-        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-error#container-runtime-and-socket-path">container runtime </a>. </td>
+        <td> Default: containerd. Supports docker, containerd and crio. For more information, go to <a href="#container-runtime-and-socket-path">container runtime </a>. </td>
       </tr>
       <tr>
         <td> SOCKET_PATH </td>
         <td> Path of the containerd or crio or docker socket file </td>
-        <td> Defaults to <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/pod-io-error#container-runtime-and-socket-path">socket path</a>.</td>
+        <td> Defaults to <code>/run/containerd/containerd.sock</code>. For more information, go to <a href="#container-runtime-and-socket-path">socket path</a>.</td>
       </tr>
       <tr>
         <td> TOTAL_CHAOS_DURATION </td>
         <td> Duration to inject insert chaos (in seconds) </td>
-        <td> Default: 60 s. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/common-tunables-for-all-faults#duration-of-the-chaos">duration of the chaos</a>. </td>
+        <td> Default: 60 s. </td>
       </tr>
       <tr>
         <td> TARGET_PODS </td>
         <td> Comma-separated list of application pod names subject to pod IO error </td>
-        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information, go to <a href="https://developer.harness.io/docs/chaos-engineering/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults#target-specific-pods"> target specific pods</a>.</td>
+        <td> If not provided, the fault selects target pods randomly based on provided appLabels. For more information go to <a href="/docs/chaos-engineering/technical-reference/chaos-faults/kubernetes/pod/common-tunables-for-pod-faults/#target-specific-pods">target specific pods</a>.</td>
       </tr>  
       <tr>
         <td> PODS_AFFECTED_PERC </td>

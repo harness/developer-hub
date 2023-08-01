@@ -105,6 +105,14 @@ sto:
 enabled: true
 ```
 
+#### Deploy the CE module
+
+```
+chaos:
+# -- Enable to deploy Chaos Engineering (CE) to your cluster
+enabled: true
+```
+
 ### Add a Harness license
 
 Harness Self-Managed Enterprise Edition needs a license to be provisioned for the Harness NextGen platform. Contact [Harness Support](mailto:support@harness.io) to procure the license and add it to the `override.yaml` file.
@@ -176,3 +184,4 @@ To get started with the modules, review the following topics:
 * For Harness Continuous Integration, go to [CI pipeline basics](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md).
 * For Harness Continuous Delivery & GitOps, go to [CD overview and key concepts](/docs/continuous-delivery/get-started/cd-pipeline-basics.md).
 * For Harness Security Testing Orchestration, go to [STO Basics](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
+* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-harness-chaos-engineering-ce).

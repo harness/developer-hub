@@ -41,6 +41,7 @@ The production environment requires the following resources.
 | CI | 2 | 2 | 12 | 0 |
 | STO | 4 | 3 | 7 | 0 |
 | FF | 3 | 3 | 6 | 0 |
+| Chaos | 15 | 12 | 24 | 50 |
 
 ### Development environment
 
@@ -53,6 +54,8 @@ The development environment requires the following resources.
 | CI | 1 | 1 | 6 | 0 |
 | STO | 2 | 1.5 | 3.5 | 0 |
 | FF | 3 | 3 | 6 | 0 |
+| Chaos | 5 | 4 | 8 | 20 |
+
 
 ## Included components
 
