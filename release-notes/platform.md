@@ -78,17 +78,21 @@ This release does not include any early access features.
   
   This issue has been fixed. Now, in this scenario, the page informs such users that they are not authorized to view the page, and it lists the permissions that they require.
 
-- This change allows the JAVA_OPTS variable in the delegate YAML file to override JVM memory settings. (PL-38839)
-
+- Earlier, even though you could use the `JAVA_OPTS` environment variable to specify JVM options for the delegate, you could not override the default JVM options that Harness used, namely `-XX:MaxRAMPercentage=70.0` and `-XX:MinRAMPercentage=40.0`. The option to override the defaults was unavailable because the value of JAVA_OPTS was prepended to the default JVM options. (PL-38839)
+  
+  This issue has been fixed. The value of JAVA_OPTS is now appended to the default JVM options, thus allowing you to override the default options.
+ 
   This item is available with Harness Platform version 801xx and does not require a new delegate version. For information about Harness Delegate features that require a specific delegate version, go the [Delegate release notes](/release-notes/delegate).
 
-- Delagates showed high CPU usage caused by a large number of threads that perform read operations being generated and abandoned. (PL-39797)
+- Delegates showed high CPU usage caused by a large number of threads that perform read operations being generated and abandoned. (PL-39797)
 
   This issue has been resolved through improved message read performance and increased read timeout. 
 
   This item requires Harness Delegate version 80100. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
-- Improved error messages on delegate task expiry and validation failures. (PL-39624, ZD-46460, ZD-46513)
+- If all eligible delegates are unavailable when a task needs to be executed, the task times out with a message that lists delegates from scopes outside the task’s account-organization-project hierarchy. (PL-39624, ZD-46460, ZD-46513)
+
+  This issue has been fixed.
 
   This item requires Harness Delegate version 80100. For information about features that require a specific delegate version, go to the [Delegate release notes](/release-notes/delegate). 
 
