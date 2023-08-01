@@ -52,7 +52,7 @@ This topic assumes you have a Harness Project set up. If not, see [Create Organ
 
 You can add a connector from any module in your project, in the Project setup, or in your organization or account resources.
 
-This topic explains the steps to add a Google Cloud Secrets Manager to the account [scope](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness).
+This topic explains the steps to add a Google Cloud Secrets Manager to the account [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 
 1. In your Harness Account, click **Account Settings**.
 2. Click **Account Resources**.

@@ -16,7 +16,7 @@ For API permissions, go to [API permissions reference](/docs/platform/Resource-D
 
 Each Harness Account, Organization and Project includes default Roles to help you with [RBAC in Harness](/docs/platform/role-based-access-control/rbac-in-harness).
 
-The following table lists permissions corresponding to the default roles at the Account [scope](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness):
+The following table lists permissions corresponding to the default roles at the Account [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes):
 
 
 
@@ -166,7 +166,7 @@ The following table lists permissions corresponding to the default roles at the 
 |  | Target Management | <li> **Create/Edit** - Can create and edit Targets and Target Groups to control visibility of variation of a Feature Flag</li>
  |
 
-The following table lists permissions corresponding to the default roles at the Organization [scope](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness):
+The following table lists permissions corresponding to the default roles at the Organization [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes):
 
 
 
@@ -310,7 +310,7 @@ The following table lists permissions corresponding to the default roles at the 
 |  | Target Management | <li> **Create/Edit** - Can create and edit Targets and Target Groups to control visibility of variation of a Feature Flag</li>
  |
 
-The following table lists permissions corresponding to the default roles at the Project [scope](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness):
+The following table lists permissions corresponding to the default roles at the Project [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes):
 
 
 

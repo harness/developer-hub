@@ -37,7 +37,7 @@ You need create/edit, delete, and access permissions on templates to create a pi
 
 ### Review: Pipeline template scope
 
-You can add templates at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness) in Harness.
+You can add templates at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) in Harness.
 
 The following table shows what it means to add templates at different scopes or hierarchies:
 
@@ -52,7 +52,7 @@ The following table shows what it means to add templates at different scopes or 
 
 Here is a quick overview of pipeline templates:
 
-* You can add a pipeline template to an account, org, or project [scope](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness).
+* You can add a pipeline template to an account, org, or project [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 * You can either link an existing stage template or add a stage to your pipeline template.
 * You can either link to a step template or add a step for any new step that you add to your pipeline stage.
 

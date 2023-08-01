@@ -36,13 +36,13 @@ You will learn how to:
 
 ### Templates overview
 
-* You can add secret manager templates to template libraries at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness).
+* You can add secret manager templates to template libraries at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes).
 * You can use [tags](../20_References/tags-reference.md) to group templates. You can search or filter templates using these tags.
 * If you change the template inputs, you must update the entities referencing the template for the changes to be reflected.
 
 ### Secret manager template scope
 
-You can add secret manager templates at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness) in Harness.
+You can add secret manager templates at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) in Harness.
 
 The following table shows what it means to add templates at different scopes or hierarchies:
 

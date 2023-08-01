@@ -24,9 +24,9 @@ For text and file secrets, the secrets are stored in the Secrets Manager. For st
 
 Once a secret is added, you can use other Harness entities instead of settings.
 
-You can reference an Encrypted Text secret created in the Org [scope](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness) using the secret identifier in the expression: `<+secrets.getValue("org.your_secret_Id")>`.
+You can reference an Encrypted Text secret created in the Org [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) using the secret identifier in the expression: `<+secrets.getValue("org.your_secret_Id")>`.
 
-You can reference a file secret created in the Org [scope](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness) using the expression `<+secrets.getValue(“org.file-secret-Id”)>`.
+You can reference a file secret created in the Org [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) using the expression `<+secrets.getValue(“org.file-secret-Id”)>`.
 
 At deployment runtime, the Harness Delegate uses the Secrets Manager to decrypt and read the secret only when it is needed.
 

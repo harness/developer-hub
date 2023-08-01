@@ -760,7 +760,7 @@ contains(arr, elem) {
 
 #### Ensure there are no principals in the secret secrets
 
-Enforce policies to ensure that the secrets configured in Harness are configured by the correct [principal](/docs/platform/role-based-access-control/rbac-in-harness/#principal). 
+Enforce policies to ensure that the secrets configured in Harness are configured by the correct [principal](/docs/platform/role-based-access-control/rbac-in-harness#rbac-components). 
 
 Here is a sample policy that can be applied using the **On Save** event for a secret:
 

@@ -51,7 +51,7 @@ For example, if you have some tasks or operations that every pipeline must do, t
 
 ## Templates scopes
 
-You can add templates at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness) in Harness.
+You can add templates at any [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) in Harness.
 
 The following table shows what it means to add templates at different scopes or hierarchies:
 

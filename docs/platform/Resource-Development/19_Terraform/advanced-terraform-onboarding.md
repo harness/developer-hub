@@ -13,7 +13,7 @@ The target audience for this article are:
 
 ## Resource scoping
 
-A common pattern you will see in the following modules is using `project_id` and `organization_id` to specify the [scope](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness) at which the resources should be created.
+A common pattern you will see in the following modules is using `project_id` and `organization_id` to specify the [scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) at which the resources should be created.
 
 - Adding the organization ID adds the resource to the target organization.
 - Adding the project ID adds the resource to the target project.

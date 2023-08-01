@@ -16,7 +16,7 @@ This topic explains Organizations and Projects in Harness.
 
 ### Visual Summary
 
-Harness enables you to manage access control at the following [scopes](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness):
+Harness enables you to manage access control at the following [scopes](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes):
 
 * Account
 * Organization

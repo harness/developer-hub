@@ -127,7 +127,7 @@ Streamed audit events have a predictable schema in the body of the response.
 |   auditEventAuthor    |  [Principal](/docs/platform/role-based-access-control/rbac-in-harness#rbac-components) attached with audit event.    |   Required    |
 |    auditModule   | Module for which the audit event is generated.      |   Required    |
 |   auditResource    |  Resource audited.     |  Required     |
-|   auditResourceScope    |  [Scope](/docs/platform/role-based-access-control/rbac-in-harness#overview-of-the-hierarchical-setup-in-harness) of the audited resource.     |   Required    |
+|   auditResourceScope    |  [Scope](/docs/platform/role-based-access-control/rbac-in-harness#permissions-hierarchy-scopes) of the audited resource.     |   Required    |
 |  auditAction     |  Action on the audited resource.     |  Required     |
 |    auditEventTime   |  Date and time of the event.     | Required      |
 |   auditHttpRequestInfo    |  Details of the HTTP request.     |  Optional     |
