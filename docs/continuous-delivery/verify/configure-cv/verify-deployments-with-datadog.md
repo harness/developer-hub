@@ -119,6 +119,33 @@ Select a query from the options displayed on the left side of setting panel. The
 
 Click **Submit**. The Health Source is displayed in the Verify step.
 
+### Configuring Datadog Formulas as Harness Queries:
+:::info note Currently, this feature is behind the feature flag
+SRM_DATADOG_METRICS_FORMULA_SUPPORT. Contact Harness Support to enable the feature.
+:::
+
+In manual Query mode, the Datadog Metrics Health source now provides support for formulas.
+These formulas follow a specific format: 
+
+```Query a ; Query b ; Formula using a, b```
+
+* Query a: "Query-with-a"
+* Query b: "Query-with-a"
+* The formula is "(a/b) * 100 - 5"
+
+Let's consider an example to illustrate this:
+```
+kubernetes.cpu.usage{cluster-name:chi-play};kubernetes.memory.total{cluster-name:chi-play};(a/b) * 100 - 5
+```
+
+In the above example, 'a' and 'b' represent the respective queries:
+
+* a = kubernetes.memory.usage{cluster-name:chi-play}
+* b = kubernetes.memory.total{cluster-name:chi-play}
+
+You can include any number of queries in the final formula using alphabetical variables, such as a, b, c, d, and so on. But only one formula is allowed per query.
+
+
 ## Option: Cloud Logs
 
 Select Cloud Logs and click **Next.** The **Customize Health Source** settings appear.
