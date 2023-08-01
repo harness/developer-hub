@@ -28,7 +28,7 @@ To create an environment:
 
   ![New Environment](./static/connect-chaos-infrastructures/new-environment.png)
 
-## Add a chaos infrastructure
+## Add a Kubernetes chaos infrastructure
 
 This section outlines the steps to add a chaos infrastructure to either a [Kubernetes](#add-a-kubernetes-chaos-infrastructure) or [Linux](#add-a-linux-chaos-infrastructure) environment.
 
@@ -106,7 +106,7 @@ To add a chaos infrastructure on an existing Harness Kubernetes connector:
 
 1. Select **Done**.
 
-### Add a Linux chaos infrastructure
+## Add a Linux chaos infrastructure
 
 :::info note
 If you're installing the chaos infrastructure alongside SElinux, you must add a policy module to enable `timedatectl`. SElinux is enabled by default in distributions such as **CentOS**, **SUSE Linux**, **RHEL**, and **Fedora** among others.
@@ -175,18 +175,22 @@ To add a Linux chaos infrastructure:
 
   ![Create Infra](./static/connect-chaos-infrastructures/2.select-linux.png)
 
-1. Specify details to enable chaos on LCI, including the name of the infrastructure and optionally a description and tags. Additionally, you can also specify the [advanced setup](./linux-chaos-infrastructure-advanced-management.md#advanced-setup) options for the infrastructure. Then, select **Next**.
+1. On the next screen, enter a **Name** for the infrastructure, and optionally, a **Description** and **Tags**. 
 
   ![Specify Details](./static/connect-chaos-infrastructures/3.configure-chaos.png)
+  
+  You can also specify the [advanced setup](./linux-chaos-infrastructure-advanced-management.md#advanced-setup) options for the infrastructure. 
 
-1. Copy the command, select **Done**, and execute the copied command in your Linux machine.
+1. Select **Next**.
 
   ![Execute Command](./static/connect-chaos-infrastructures/4.deploy-infra.png)
 
+1. On the next screen, copy the command to set up Linux chaos access, select **Done**, and then execute the copied command on your Linux machine.
 
 ## Validate the chaos infrastructure installation
-- After applying the manifest, Harness will take some time to set up all the chaos infrastructure resources. Once everything is set up, the chaos infrastructure's connection state reflects `CONNECTED`.
+
+After the final step of adding chaos infrastructure, Harness takes some time to set up all the chaos infrastructure resources. Once everything is set up, the chaos infrastructure's connection status is `CONNECTED`.
 
 ![Infrastructure State](./static/connect-chaos-infrastructures/infrastructure-state.png)
 
-That's it! Now you are all set to inject chaos into your infrastructure.
+That's it! Now you're all set to inject chaos into your infrastructure.
