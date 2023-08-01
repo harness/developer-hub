@@ -158,7 +158,42 @@ import TabItem from '@theme/TabItem';
    - In **Credentials**, in **Connection Type**, select **HTTPS**, the **Anonymous** option to add a public repository.
    - To add a private repository, select the authentication option with username and password, and enter the access token.
 
-     This authentication is supported for Docker and GitHub. AWS and Google have short-lived tokens, and may not work as expected. For details on how to configure access to AWS ECR, go to [Store and access OCI Helm repository in private AWS ECR](./helm-oci-repository-aws-ecr.md).
+     This authentication is supported for Docker and GitHub. AWS and Google have short-lived tokens, and may not work as expected. However, if you have [External Secrets Operator](https://docs.harness.io/article/3xqjzq2q2q-external-secrets-operator) installed you can configure repository for regenerating tokens. Check [OCI Helm repository with ESO](#oci-helm-repository-with-eso) for more details.
+8. Select **Save & Continue**. Harness validates the connection.
+
+:::note
+
+Credentials Template is not supported for OCI Helm repository.
+
+:::
+
+```mdx-code-block
+</TabItem>    
+<TabItem value="OCI Helm repository with ESO" label="OCI Helm repository with ESO">
+```
+
+1. In **Specify Repository Type**, select **Helm**.
+2. In **Repository Name**, enter a name.
+3. In **GitOps Agent**, select or create the Agent you want to use to fetch charts from this repo. For details, go to [Install a Harness GitOps Agent](install-a-harness-git-ops-agent.md).
+4. In **Repository URL**, enter the URL to your OCI Helm repository. For example, `us-east4-docker.pkg.dev/<gcp-project>/<repository>`.
+5. Select **Enable OCI**
+6. Select **Continue**.
+7. In **Credentials**, select **Specify Credentials for Repository**.
+    - Select the authentication option with **Username and password**, 
+      - for AWS you must put `AWS`, and for Google you put `oauth2accesstoken` for username.
+      - for password you put your shortlived token. If you have [External Secrets Operator](https://docs.harness.io/article/3xqjzq2q2q-external-secrets-operator) **Refresh token** checkbox will appear, enable it.
+    - If you checked  **Refresh Token**, fill in  **Refresh Interval** (e.g. 1m, 1h, 12h, 1d). This is the interval at which the token will be refreshed.
+    - Based on the url you entered, Harness will detect whether it is Google or AWS registry. And you can select type of authentication for the registry.
+        - For Google, you can select **Google Service Account** or **Google Workload Identity**.
+          - If you select **Google Service Account**, you must upload the service [account key file](https://cloud.google.com/iam/docs/keys-create-delete). Paste the contents of file in the **Account Key** field. Contents of a file must be one line. For example:
+          ```json
+           { "type": "service_account", "project_id": "google-project-id", "private_key_id": "xxxx70c719xxxxbe7be090083xxxxxd85eca6", "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBAD...ERhb7ipMxMQw6wpbF\n-----END PRIVATE KEY-----\n", .... "universe_domain": "googleapis.com" }
+          ```
+          - If you select **Google Workload Identity**, you must enter the GCP Workload parameters. [Google Workload Identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity).
+          - Project ID is project where registry is located.
+        - For AWS, you can select **AWS Access Credentials** or **AWS Service Account**.
+          - If you select **AWS Access Credentials**, you must enter the AWS access key id and AWS secret access key, and optionally AWS session token. [AWS Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys).
+          - If you select **AWS Service Account**, you must enter the service account.
 8. Select **Save & Continue**. Harness validates the connection.
 
 :::note
@@ -171,6 +206,7 @@ Credentials Template is not supported for OCI Helm repository.
 </TabItem>    
 </Tabs>
 ```
+
 
 ## Skip server verification
 
