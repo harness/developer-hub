@@ -25,7 +25,7 @@ export const SMPList: CardItem[] = [
       newDoc: true,
     type: [docType.Documentation],
     time: "10 min",
-    link: "tutorials/self-managed-enterprise-edition/use-an-external-sm-timescaledb",
+    link: "/tutorials/self-managed-enterprise-edition/use-an-external-sm-timescaledb",
   },
   {
     title: "Configure an external self-managed MongoDB",
