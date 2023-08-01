@@ -16,7 +16,7 @@ import Smpno from '../shared/note-smp-not-compatible.md'
 
 This topic describes how to use the Harness Feature Flags Node.js SDK for your Node.js application.
 
-For getting started quickly, you can use our [sample code from the Node.js SDK README](https://github.com/harness/ff-nodejs-server-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [Node.js SDK GitHub Repository.](https://github.com/harness/ff-nodejs-server-sdk)
+For getting started quickly, you can use our [sample code from the Node.js SDK README](https://github.com/harness/ff-nodejs-server-sdk/blob/main/README.md). You can also [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) and run a sample application from the [Node.js SDK GitHub Repository.](https://github.com/harness/ff-nodejs-server-sdk)
 
 ## Before you begin
 
@@ -33,12 +33,12 @@ The current version of this SDK is **1.3.1**.
 
 ## Requirements
 
-To use this SDK, make sure you:  
+To use this SDK, make sure you:
 
 * Install Node.js version 12 or newer
 * [Download the SDK from our GitHub repository](https://github.com/harness/ff-nodejs-server-sdk)
-* Create a Node.js application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-nodejs-server-sdk).
-* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`
+* Create a Node.js application, or [clone](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository) our [sample application](https://github.com/harness/ff-nodejs-server-sdk).
+* [Create a Feature Flag on the Harness Platform](/docs/feature-flags/ff-creating-flag/create-a-feature-flag). If you are following along with the SDK README sample code, make sure your flag is called `harnessappdemodarkmode`
 * [Create an SDK key and make a copy of it](/docs/feature-flags/ff-creating-flag/create-a-project#create-an-sdk-key)
 
 ## Install the SDK
@@ -84,7 +84,7 @@ import { Client } from '@harnessio/ff-nodejs-server-sdk';
 ```
 ### Add the Server SDK Key
 
-To connect to the correct Environment that you set up on the Harness Platform, you need to add the Server SDK Key from that Environment. Input the Client SDK Key into the `API_KEY` parameter, for example:
+To connect to the correct Environment that you set up on the Harness Platform, you need to add the Server SDK Key from that Environment. Input the Client SDK Key into the `API_KEY` parameter, for example:
 
 
 ```
@@ -107,7 +107,7 @@ To add a Target, build it and pass in arguments for the following:
 | --- | --- | --- | --- |
 | **Parameter** | **Description** | **Required?** | **Example** |
 | `identifier` | Unique ID for the Target.Read **Regex requirements for Target names and identifiers** below for accepted characters. | Required | `identifier: 'HT_1'` |
-| `name` | Name for this Target. This does not have to be unique. **Note**: If you don’t provide a value, the name will be the same as the identifier.Read **Regex requirements for Target names and identifiers** below for accepted characters. | Optional**Note**: If you don't want to send a name, don't send the parameter. Sending an empty argument will cause an error. | `name: 'Harness_Target_1'` |
+| `name` | Name for this Target. This does not have to be unique.<br />**Note**: If you don’t provide a value, the name will be the same as the identifier.Read **Regex requirements for Target names and identifiers** below for accepted characters. | Optional<br />**Note**: If you don't want to send a name, don't send the parameter. Sending an empty argument will cause an error. | `name: 'Harness_Target_1'` |
 | `attributes` | Additional data you can store for a Target, such as email addresses or location. | Optional | `attributes: {` |
 
 <details>
@@ -155,15 +155,14 @@ const target = {
 You can configure the following features of the SDK:
 
 
-
 |  |                                                                                                                                          |  |
 | --- |------------------------------------------------------------------------------------------------------------------------------------------| --- |
 | **Name** | **Description**                                                                                                                          | **Default Value** |
-| baseUrl | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000`                      | `https://config.ff.harness.io/api/1.0` |
-| eventUrl | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000`        | `https://events.ff.harness.io/api/1.0` |
+| baseUrl | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000`                      | `https://config.ff.harness.io/api/1.0` |
+| eventUrl | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000`        | `https://events.ff.harness.io/api/1.0` |
 | pollInterval | The interval **in milliseconds** that we poll for changes when you are using stream mode.                                                 | `60` (seconds) |
 | enableStream | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode.                                                         | `true` |
-| analyticsEnabled | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `true` |
+| analyticsEnabled | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `true` |
 
 For example:
 
@@ -181,17 +180,15 @@ To complete the initialization:
 
 1. Create an instance of the Feature Flag client and pass in the Server SDK Key and configuration options:
 
-
-```
-// Create client with options  
-const client = new Client(apiKey, options);
-```
+  ```
+  // Create client with options  
+  const client = new Client(apiKey, options);
+  ```
 1. Wait for the SDK to complete initialization and to fetch the Flag data:
 
-
-```
-await client.waitForInitialization();
-```
+  ```
+  await client.waitForInitialization();
+  ```
 ## Evaluate a Flag
 
 Evaluating a Flag is when the SDK processes all Flag rules and returns the correct Variation of that Flag for the Target you provide. 
@@ -253,9 +250,9 @@ function jsonVariation(
 
 You can listen for the following events:
 
-* Event.READY - Indicates the SDK was successfully initialized.
-* Event.FAILED - Indicates the SDK had thrown an error.
-* Event.CHANGED - Indicates a Flag or Segment has been updated.
+* Event.READY - Indicates the SDK was successfully initialized.
+* Event.FAILED - Indicates the SDK had thrown an error.
+* Event.CHANGED - Indicates a Flag or Segment has been updated.
 
 For example:
 
@@ -277,7 +274,7 @@ on(Event.CHANGED, (identifier) => {
 
 To avoid unexpected behavior, when the listener isn't needed, turn it off.
 
-To remove the `functionReference` listener for `Event.READY,` use:
+To remove the `functionReference` listener for `Event.READY,` use:
 
 
 ```
@@ -289,7 +286,7 @@ To remove all listeners, use:
 ```
 off(Event.READY);
 ```
-If you call `off()` without parameters it will close the client.
+If you call `off()` without parameters it will close the client.
 
 ### Test your app is connected to Harness
 
@@ -299,7 +296,7 @@ When you receive a response showing the current status of your Feature Flag, go 
 
 ## Close the SDK
 
-To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, us the following function: 
+To help prevent memory leaks, we recommend closing the SDK when it’s not in use. To do this, us the following function:
 
 
 ```
