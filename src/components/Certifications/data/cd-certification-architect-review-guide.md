@@ -9,7 +9,7 @@
 | Architect, deploy, and manage complex, large-scale containerized applications using Kubernetes and other orchestration tools | [Add a Kubernetes cluster connector](https://developer.harness.io/docs/platform/connectors/cloud-providers/add-a-kubernetes-cluster-connector/) |
 | Demonstrate the ability to troubleshoot complex scenarios in container orchestration environments | [CD steps, stages, and strategies](https://developer.harness.io/docs/continuous-delivery/x-platform-cd-features/executions/stages-steps-strategies/) |
 | **3. Advanced CI/CD Techniques** ||
-| Engineer sophisticated Continuous Integration flows, including advanced testing strategies and complex build scenarios | [Integration with Harness CD](https://developer.harness.io/tutorials/chaos-experiments/integration-with-harness-cd/) |
+| Engineer sophisticated Continuous Delivery flows, including advanced Chaos Engineering stratagies | [Chaos Engineering with Harness CD](https://developer.harness.io/tutorials/chaos-experiments/integration-with-harness-cd/) |
 | Design and implement comprehensive Continuous Delivery solutions, focusing on deployment strategies, pipeline optimization, and rollback procedures | [CD pipeline modeling overview](https://developer.harness.io/docs/continuous-delivery/get-started/cd-pipeline-modeling-overview/) |
 | Architect and deploy complex, scalable, and robust pipelines using Harness, including advanced features and integrations | [Add container images as artifacts for Kubernetes deployments](https://developer.harness.io/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-artifacts-for-kubernetes-deployments/) |
 | **4. Code Management and GitOps** ||

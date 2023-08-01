@@ -2,7 +2,7 @@
 title: Chaos Engineering release notes
 sidebar_label: Chaos Engineering
 tags: [NextGen, "chaos engineering"]
-date: 2023-06-28T10:00
+date: 2023-08-01T10:00
 sidebar_position: 9
 ---
 ```mdx-code-block
@@ -14,19 +14,16 @@ import TabItem from '@theme/TabItem';
 
 Review the notes below for details about recent changes to Harness Chaos Engineering. For release notes for Harness Self-Managed Enterprise Edition, go to [Self-Managed Enterprise Edition release notes](/release-notes/self-managed-enterprise-edition). Additionally, Harness publishes security advisories for every release. Go to the [Harness Trust Center](https://trust.harness.io/?itemUid=c41ff7d5-98e7-4d79-9594-fd8ef93a2838&source=documents_card) to request access to the security advisories.
 
-
 :::info note
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 21, 2023, version 1.15.6
+## Latest - August 1, 2023, version 1.15.7
 
 <Tabs>
   <TabItem value="What's new">
 
-* Added support for Universal Base Images (UBI) for chaos components. (CHAOS-1547)
-
-* Added enhancement to prevent users from editing/deleting cron chaos experiments if the associated infrastructure is not active. (CHAOS-1894)
+This release does not include new features.
 
 
   </TabItem>
@@ -39,6 +36,31 @@ This release does not include early access features.
   <TabItem value="Fixed issues"> 
 
 
+* Audit events for pipeline-triggered experiments were not available due to a missing parameter. This issue has been resolved. (CHAOS-2168)
+
+
+  </TabItem>
+</Tabs>
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### July 21, 2023, version 1.15.6
+
+##### What's new
+
+* Added support for Universal Base Images (UBI) for chaos components. (CHAOS-1547)
+
+* Added enhancement to prevent users from editing/deleting cron chaos experiments if the associated infrastructure is not active. (CHAOS-1894)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues 
+
 * Fixed an issue in the Gameday details screen where the fault count for selected experiments was incorrect. (CHAOS-2052)
 
 * Previously, user details were not appearing in audit events when using a service account for authentication. This issue has been fixed by adding support for account-level service account authentication for the Chaos Module. (CHAOS-1959)
@@ -48,16 +70,6 @@ This release does not include early access features.
 * Fixed an issue where editing an existing experiment would directly open in the YAML builder view instead of the visual builder view. (CHAOS-1954)
 
 * The **Create GameDay** and **Edit GameDay** buttons were displayed as active for users who did not have those permissions. This issue has been fixed. (CHAOS-1795)
-
-
-  </TabItem>
-</Tabs>
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### July 12, 2023, version 0.14.5
 

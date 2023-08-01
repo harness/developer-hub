@@ -52,7 +52,7 @@ For detailed information about a plugin's settings, go to the plugin's page on t
 
 ![](./static/plugin-marketplace-readme-link.png)
 
-<figcaption>Figure 1: The README link is at the top of each plugin's Drone Plugin Marketplace page.</figcaption>
+<figcaption>The README link is at the top of each plugin's Drone Plugin Marketplace page.</figcaption>
 </figure>
 
 ### Output variables
