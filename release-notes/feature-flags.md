@@ -1,7 +1,7 @@
 ---
 title: Feature Flags release notes
 sidebar_label: Feature Flags
-date: 2023-07-27T10:00:25
+date: 2023-08-01T10:00:25
 tags: [NextGen, "feature flags"]
 sidebar_position: 6
 ---
@@ -20,14 +20,12 @@ Review the notes below for details about recent changes to Harness Feature Flags
 Harness deploys changes to Harness SaaS clusters on a progressive basis. This means that the features and fixes that these release notes describe may not be immediately available in your cluster. To identify the cluster that hosts your account, go to the **Account Overview** page. 
 :::
 
-## Latest - July 27, 2023
+## Latest - August 1, 2023
 
 <Tabs>
   <TabItem value="What's new">
 
-#### Feature Flags UI
-
-* When specifying percentages for a rollout, the UI now provides feedback while you edit to let you know the percentage that requires assignment. (FFM-8085)
+This release does not include new features.
 
 
   </TabItem>
@@ -41,7 +39,9 @@ This release does not include early access features.
 
 #### Feature Flags UI
 
-* Fixed an issue where the API call was triggered twice in the front end when creating a flag. (FFM-8192)
+* Previously, the permission to create a feature flag was required across all environments. This restriction has been removed. (FFM-8724)
+
+* Previously, when users selected **All Environments** from the **Environments** dropdown menu, then refreshed the page or went to another page, the **Back** button didn't return the user to the All Environments page. This issue has been resolved. (FFM-8012)
 
 
   </TabItem>
@@ -51,6 +51,24 @@ This release does not include early access features.
 
 <details>
 <summary>2023 releases</summary>
+
+#### July 27, 2023
+
+##### What's new
+
+#### Feature Flags UI
+
+* When specifying percentages for a rollout, the UI now provides feedback while you edit to let you know the percentage that requires assignment. (FFM-8085)
+
+##### Early access
+
+This release does not include early access features.
+
+##### Fixed issues
+
+###### Feature Flags UI
+
+* Fixed an issue where the API call was triggered twice in the front end when creating a flag. (FFM-8192)
 
 #### July 24, 2023
 
