@@ -161,7 +161,7 @@ You can configure the following features of the SDK:
 | **Name** | **Description**                                                                                                                          | **Default Value** |
 | baseUrl | The URL used to fetch Feature Flag Evaluations. When using the Relay Proxy, change this to: `http://localhost:7000`                      | `https://config.ff.harness.io/api/1.0` |
 | eventUrl | The URL for posting metrics data to the Feature Flag service. When using the Relay Proxy, change this to: `http://localhost:7000`        | `https://events.ff.harness.io/api/1.0` |
-| pollInterval | The interval **in miliseconds** that we poll for changes when you are using stream mode.                                                 | `60` (seconds) |
+| pollInterval | The interval **in milliseconds** that we poll for changes when you are using stream mode.                                                 | `60` (seconds) |
 | enableStream | Set to `true` to enable streaming mode.Set to `false` to disable streaming mode.                                                         | `true` |
 | analyticsEnabled | Set to `true` to enable analytics.Set to `false` to disable analytics.**Note**: When enabled, analytics data is posted every 60 seconds. | `true` |
 
