@@ -187,32 +187,46 @@ See [Access control](https://cloud.google.com/monitoring/access-control) from 
 
 5. In the **Credentials** tab, enter the following, and then select **Next**:
 
-      - In **URL**, enter the URL of your Splunk Observability [SignalFX].
-   
-      - In **API Token**, select **Create or Select a Secret**.
+      - In **URL**, enter the URL of your Splunk Observability [SignalFX] account. The URL format should be one of the following:
+  
+         - For streaming ingestion: `https://stream.<realm>.signalfx.com`
+  
+         - For API access: `https://api.<realm>.signalfx.com`
 
-6. In the Create or Select an Existing Secret dialog that appears, you can either select an existing secret or create a new one.  
+         Where `<realm>` is your specific realm identifier.
    
-   To create a new secret:
+      - In **API Token**, select **Create or Select a Secret**. In the Create or Select an Existing Secret dialog that appears, you can either select an existing token that you have generated in Splunk Observability. The token must have the authorization scope set as `API Token`.
+       
+      To create a new secret:
 
-   1. Select **+ New Secret Text**. 
+         1. Select **+ New Secret Text**. 
    
-   2. In the Add new Encrypted Text dialog, select a secret manager, enter a name and value for the secret, an optional description, and a tag, and then select **Save**.  
+         2. In the Add new Encrypted Text dialog, select a secret manager and enter a name for the secret.
    
-   The secret key appears in the **API Token** field.
+         3.  In **Secret Value**, enter the API token generated in Splunk Observability (SignalFx). The token must have the authorization scope set as `API Token`. To learn about creating Splunk Observability (SignalFx) API access token, go to [Create and manage authentication tokens using Splunk Observability Cloud](https://docs.splunk.com/Observability/admin/authentication/authentication-tokens/tokens.html).
+   
+         4.  Add an optional description and a tag, and then select **Save**.  
+   
+            The secret appears in the **API Token** field.
     
-7.  In the **Delegates Setup** tab, choose one of the following:
+6.  In the **Delegates Setup** tab, choose one of the following:
     
       - **Use any available Delegate**: Harness automatically assigns an available delegate.
    
       - **Only use Delegates with all of the following tags**: You can enter tags to ensure that Harness selects only the delegates that have been assigned those specific tags.
     
-10. Select **Save and Continue**. Harness verifies the connection.
+7.  Select **Save and Continue**. Harness verifies the connection.
     
-11. After successful verification, select **Finish**.  
+8.  After successful verification, select **Finish**.
     
     The Splunk Observability [SignalFX] connector is added to the list of connectors.
+   
+    ![Splunk Observability [SignalFX] connector](../static/connect-to-monitoring-and-logging-systems-signalfx-35.png)
 
+9.  Select a connector to view its details.
+
+   ![Splunk Observability [SignalFX] connector details](../static/connect-to-monitoring-and-logging-systems-signalfx-35a.png)
+    
 
 ### Add Datadog
 
