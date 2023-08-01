@@ -141,6 +141,138 @@ For example, to reference the URL setting in an HTTP step in a step group with t
 
 `<+pipeline.stages.HTTP.spec.execution.steps.Group1.steps.OPTIONS.spec.url>`
 
+## Override service variables in step groups
+
+You can customize and override service variables during the execution of a step group. This provides significant flexibility and control over your pipelines. The expression `<+serviceVariableOverrides.VARIABLE_NAME>`overrides the original value of `VARIABLE_NAME`. You can use this expression in custom manifests, values YAML files, and other parts of the pipeline where variables are used.  
+
+:::note important notes
+- An overridden value is available only within the scope of the step group execution. In cases where a child group is included in a parent group, the child group override takes precedence. 
+
+    The pipeline overrides variables based on the following priority:
+    1. Step group override (child group, during execution)
+    2. Step group override (parent group, during execution)
+    3. Service environment overrides
+    4. Environment configuration
+    5. Default value
+
+- Step group overrides are not recommended for artifacts and other objects fetched during the Service phase of a pipeline. The one exception is [custom remote manifests](/docs/continuous-delivery/deploy-srv-diff-platforms/kubernetes/cd-kubernetes-category/add-a-custom-remote-script-and-manifests/), because they can also be used during the execution stage of a pipeline.
+
+<details><summary>Pipeline example: overriding variables in step groups</summary>
+
+The following pipeline illustrates how to override service variables. The service definition has two defined variables, `svar1` and `svar2`. The pipeline overrides these variables as follows:
+
+* The `parent` step group overrides `svar1` and assigns the variable `fromStepGroup_OverriddenAtParentStepGroup`.
+* The `parent` step group also has a variable `svarParent` with value `DefinedAtParentLevel`. The `child` step group overrides this and assigns the value `OverridenByChildStepGroup`.
+* The `child` step group overrides the `svar2` variable and assigns the value `fromStepGroup_OverriddenAtChildLevel`. 
+
+```yaml
+pipeline:
+  projectIdentifier: svcredesignhinger
+  orgIdentifier: harness
+  tags: {}
+  stages:
+    - stage:
+        name: dep
+        identifier: dep
+        description: ""
+        type: Deployment
+        spec:
+          deploymentType: Kubernetes
+          service:
+            serviceRef: TestStepGroupOverridesService
+          environment:
+            environmentRef: qa
+            environmentInputs:
+              identifier: qa
+              type: PreProduction
+              variables:
+                - name: rtvar1123
+                  type: String
+                  value: <+input>
+            deployToAll: false
+            infrastructureDefinitions:
+              - identifier: delegateInfra2
+          execution:
+            steps:
+              - stepGroup:
+                  name: parent
+                  identifier: parent
+                  steps:
+                    - step:
+                        type: ShellScript
+                        name: ShellScript_2
+                        identifier: ShellScript_2
+                        spec:
+                          shell: Bash
+                          onDelegate: true
+                          source:
+                            type: Inline
+                            spec:
+                              script: echo <+serviceVariableOverrides.svarParent>
+                          environmentVariables: []
+                          outputVariables: []
+                        timeout: 10m
+                    - stepGroup:
+                        name: child
+                        identifier: child
+                        steps:
+                          - step:
+                              type: ShellScript
+                              name: ShellScript_1
+                              identifier: ShellScript_1
+                              spec:
+                                shell: Bash
+                                onDelegate: true
+                                source:
+                                  type: Inline
+                                  spec:
+                                    script: |+
+                                      echo <+serviceVariableOverrides.svar1>
+                                      echo <+serviceVariableOverrides.svar2>
+
+                                      echo "child overriding parent value"
+                                      echo <+serviceVariableOverrides.svarParent>
+
+                                environmentVariables: []
+                                outputVariables: []
+                              timeout: 10m
+                        variables:
+                          - name: svar2
+                            type: String
+                            value: fromStepGroup_OverriddenAtChildLevel
+                            description: ""
+                            required: false
+                          - name: svarParent
+                            type: String
+                            value: OverridenByChildStepGroup
+                            description: ""
+                            required: false
+                  variables:
+                    - name: svar1
+                      type: String
+                      value: fromStepGroup_OverriddenAtParentStepGroup
+                      description: ""
+                      required: false
+                    - name: svarParent
+                      type: String
+                      value: DefinedAtParentLevel
+                      description: ""
+                      required: false
+            rollbackSteps: []
+        tags: {}
+        failureStrategies:
+          - onFailure:
+              errors:
+                - AllErrors
+              action:
+                type: StageRollback
+  identifier: StepGroupLevelOverrides
+  name: StepGroupLevelOverrides 
+
+```
+
+</details>
+
 ## Important notes
 
 * When you run steps in parallel you cannot reference the outputs of one step in another step. The output for one step might not be available when another step requests it.
