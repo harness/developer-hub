@@ -18,7 +18,15 @@ Review the following topics before you add step groups.
 
 ## Important notes
 
-* Currently, Harness supports step groups in Deploy and Custom stages only. CI stage support is coming soon.
+* Currently, Harness supports step groups in Deploy and Custom stages only. For information about using step groups in CI, go to [Use step groups to organize CI steps](/docs/continuous-integration/use-ci/optimize-and-more/group-ci-steps-using-step-groups).
+* When you run steps in parallel you cannot reference the outputs of one step in another step. The output for one step might not be available when another step requests it.
+* Delegate selectors can be configured for each step in the step group. You cannot configure a delegate selector at the group level.
+* Step groups cannot have nested step groups, but you can put groups of steps next to each other in a step group:
+
+![](./utilities/static/step-groups-04.png)
+
+The steps **in** each group run in parallel but each group runs serially.
+
 
 ## Containerized step groups
 
@@ -161,9 +169,9 @@ You can customize and override service variables during the execution of a step 
 
 The following pipeline illustrates how to override service variables. The service definition has two defined variables, `svar1` and `svar2`. The pipeline overrides these variables as follows:
 
-* The `parent` step group overrides `svar1` and assigns the variable `fromStepGroup_OverriddenAtParentStepGroup`.
-* The `parent` step group also has a variable `svarParent` with value `DefinedAtParentLevel`. The `child` step group overrides this and assigns the value `OverridenByChildStepGroup`.
-* The `child` step group overrides the `svar2` variable and assigns the value `fromStepGroup_OverriddenAtChildLevel`. 
+* The `parent` step group overrides `svar1` with the value `fromStepGroup_OverriddenAtParentStepGroup`.
+* The `parent` step group also has a variable `svarParent` with the value `DefinedAtParentLevel`. The `child` step group overrides this with the value `OverridenByChildStepGroup`.
+* The `child` step group overrides `svar2` with the value `fromStepGroup_OverriddenAtChildLevel`. 
 
 ```yaml
 pipeline:
@@ -273,13 +281,4 @@ pipeline:
 
 </details>
 
-## Important notes
-
-* When you run steps in parallel you cannot reference the outputs of one step in another step. The output for one step might not be available when another step requests it.
-* Delegate selectors can be configured for each step in the step group. You cannot configure a delegate selector at the group level.
-* Step groups cannot have nested step groups, but you can put groups of steps next to each other in a step group:
-
-![](./utilities/static/step-groups-04.png)
-
-The steps **in** each group run in parallel but each group runs serially.
 
