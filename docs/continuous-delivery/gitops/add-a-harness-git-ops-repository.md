@@ -194,6 +194,8 @@ Credentials Template is not supported for OCI Helm repository.
         - For AWS, you can select **AWS Access Credentials** or **AWS Service Account**.
           - If you select **AWS Access Credentials**, you must enter the AWS access key id and AWS secret access key, and optionally AWS session token. [AWS Credentials](https://docs.aws.amazon.com/general/latest/gr/aws-sec-cred-types.html#access-keys-and-secret-access-keys).
           - If you select **AWS Service Account**, you must enter the service account.
+          - **Region** is the region where registry is located.
+          - **Role** is the role arn that will be assumed with given credentials.
 8. Select **Save & Continue**. Harness validates the connection.
 
 :::note
