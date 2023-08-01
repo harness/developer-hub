@@ -1,4 +1,4 @@
-# Prepare Secret for GCP experiments
+# Prepare a secret for GCP experiments
 
 **Derive SA from GCP**
 
