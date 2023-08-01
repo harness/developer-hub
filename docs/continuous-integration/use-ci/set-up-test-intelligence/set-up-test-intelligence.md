@@ -736,7 +736,7 @@ pipeline:
                     buildTool: Maven ## Specify Bazel, Maven, or Gradle.
                     args: test
                     packages: io.harness.
-                    runOnlySelectedTests: true ## Set to false if you don't want to use I.
+                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     postCommand: mvn package -DskipTests
                     reports:
                       type: JUnit
