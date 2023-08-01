@@ -288,7 +288,7 @@ To [view test reports in Harness](/docs/continuous-integration/use-ci/set-up-tes
 
 ## Add the trigger
 
-You can run this pipeline manually as it is, or you can add a trigger to automatically run these tests whenever the codebase changes. To do this, add a [Git event trigger](docs/platform/Triggers/triggering-pipelines) that listens for an event on a specific branch of your FastAPI repo fork.
+You can run this pipeline manually as it is, or you can add a trigger to automatically run these tests whenever the codebase changes. To do this, add a [Git event trigger](/docs/platform/Triggers/triggering-pipelines) that listens for an event on a specific branch of your FastAPI repo fork.
 
 For this tutorial, you'll create a trigger that listens for pushes to the `main` branch.
 
@@ -307,7 +307,7 @@ GitHub webhooks are usually automatically created in the target repo. If automat
 
 To test the Git event trigger and run the pipeline, go to your FastAPI repo fork, make a change, and commit and push it to `main`. For this tutorial, you could commit directly to `main`, but in a real world development situation, you would want to create and merge a PR.
 
-Upon pushing to `main` (either directly or by merging a PR), the trigger should start your pipeline within a few moments. While the build runs, you can view the logs and monitor build activity on the [Build details page](docs/continuous-integration/use-ci/viewing-builds).
+Upon pushing to `main` (either directly or by merging a PR), the trigger should start your pipeline within a few moments. While the build runs, you can view the logs and monitor build activity on the [Build details page](/docs/continuous-integration/use-ci/viewing-builds).
 
 After the pytest step runs, you can find logs indicating that the `output-test.xml` file was generated, and you can [view the test results](/docs/continuous-integration/use-ci/set-up-test-intelligence/viewing-tests) on the Tests tab.
 

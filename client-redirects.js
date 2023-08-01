@@ -33,7 +33,41 @@ module.exports = {
     //    to: "/docs/platform/delegates/installation",
     //  },
     //===================================================================================
-    
+
+    // Created by aimurphy from branch ci-ti-refresh-multiple-tickets on July 27, 2023
+    {
+      from: "/docs/continuous-integration/ci-quickstarts/hosted-builds-on-virtual-machines-quickstart",
+      to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/use-harness-cloud-build-infrastructure",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage",
+      to: "/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/run-ci-scripts/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/build-stage-settings/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/modify-and-override-build-settings-before-a-build",
+    },
+    {
+      from: "/docs/continuous-integration/ci-quickstarts/test-intelligence-concepts",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence",
+    },
+    {
+      from: "/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence",
+    },
+    {
+      from: "/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings",
+      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence",
+    },
+
     // Created by roshnisarangadharan from branch DOC-3449 on July 24, 2023
     {
       from: "/docs/continuous-delivery/x-platform-cd-features/executions/cd-general-steps/using-http-requests-in-cd-pipelines",
@@ -2797,14 +2831,6 @@ module.exports = {
       to: "/docs/continuous-integration/use-ci/set-up-build-infrastructure/ci-stage-settings",
     },
     {
-      from: "/docs/continuous-integration/use-ci/build-stage-settings/modify-and-override-build-settings-before-a-build",
-      to: "/docs/continuous-integration/use-ci/run-ci-scripts/modify-and-override-build-settings-before-a-build",
-    },
-    {
-      from: "/docs/continuous-integration/use-ci/build-and-upload-artifacts/modify-and-override-build-settings-before-a-build",
-      to: "/docs/continuous-integration/use-ci/run-ci-scripts/modify-and-override-build-settings-before-a-build",
-    },
-    {
       from: "/docs/category/build-stage-settings",
       to: "/docs/category/set-up-build-infrastructure",
     },
@@ -2832,11 +2858,6 @@ module.exports = {
     {
       from: "/docs/continuous-integration/ci-technical-reference/configure-service-dependency-step-settings",
       to: "/docs/continuous-integration/use-ci/manage-dependencies/configure-service-dependency-step-settings",
-    },
-
-    {
-      from: "/docs/continuous-integration/ci-technical-reference/configure-run-tests-step-settings",
-      to: "/docs/continuous-integration/use-ci/set-up-test-intelligence/configure-run-tests-step-settings",
     },
 
     {
