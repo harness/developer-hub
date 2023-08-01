@@ -14,7 +14,8 @@ GCP VM instance stop by label powers off from the GCP VM instances (filtered by 
 - Kubernetes > 1.16 is required to execute this fault.
 - Adequate GCP permissions to stop and start the GCP VM instances.
 - The VM instances with the target label should be in a healthy state.
-- Kubernetes secret should have the GCP service account credentials in the default namespace. Below is a sample secret file:
+- Kubernetes secret should have the GCP service account credentials in the default namespace. Refer [prepare secret for GCP experiments docs](./security-configurations/prepare-secret-for-gcp.md) for more info.
+
 ```yaml
 apiVersion: v1
 kind: Secret
