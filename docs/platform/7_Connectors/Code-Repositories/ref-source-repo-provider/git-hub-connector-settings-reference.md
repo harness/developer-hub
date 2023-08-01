@@ -164,7 +164,7 @@ For more information about GitHub's deprecation of RSA support, go to the GitHub
   <TabItem value="ghapp" label="GitHub App">
 ```
 
-You can use a GitHub App to authenticate a Harness GitHub connector. To use this authentication method, you need to create and install a GitHub app, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub app in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support).
+You can use a GitHub App to authenticate a Harness GitHub connector. To use this authentication method, you need to create and install a GitHub App, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support).
 
 :::note
 
@@ -174,12 +174,12 @@ Currently, the option to use a GitHub App as the primary authentication method f
 
 :::caution
 
-The [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline) doesn't support GitHub connectors that use GitHub app authentication.
+The [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/clone-and-process-multiple-codebases-in-the-same-pipeline) doesn't support GitHub connectors that use GitHub App authentication.
 
 :::
 
 1. For **Authentication**, select **GitHub App**.
-2. Enter the **GitHub Installation Id**. You can find the installation ID in the URL of your installed GitHub app, such as:
+2. Enter the **GitHub Installation Id**. You can find the installation ID in the URL of your installed GitHub App, such as:
 
    ```
    https://github.com/settings/installations/INSTALLATION_ID
@@ -187,11 +187,11 @@ The [Git Clone step](/docs/continuous-integration/use-ci/codebase-configuration/
 
    ![](../../static/git-hub-app-support-58.png)
 
-3. Enter the **GitHub Application Id**. You can find the app ID on the **General** tab when viewing your GitHub app in GitHub.
+3. Enter the **GitHub Application Id**. You can find the app ID on the **General** tab when viewing your GitHub App in GitHub.
 
    ![](../../static/git-hub-app-support-59.png)
 
-4. For **GitHub Private Key**, provide your GitHub app's PEM key file as a [Harness encrypted file secret](/docs/platform/Secrets/add-file-secrets).
+4. For **GitHub Private Key**, provide your GitHub App's PEM key file as a [Harness encrypted file secret](/docs/platform/Secrets/add-file-secrets).
 
 ```mdx-code-block
   </TabItem>
@@ -204,7 +204,7 @@ This setting is only available for connection types and authentication methods w
 
 You must enable API access to use Git-based triggers, manage webhooks, or update Git statuses with this connector. If you are using the Harness Git Experience, this setting is required.
 
-Enabling API access requires configuring an API authentication method, either a personal access token or a GitHub App,
+Enabling API access requires configuring an API authentication method, either a personal access token or a GitHub App.
 
 ```mdx-code-block
 <Tabs>
@@ -232,13 +232,13 @@ To use a personal access token with a GitHub organization that uses SAML single 
 
 ```mdx-code-block
   </TabItem>
-  <TabItem value="ghapp" label="GitHub app">
+  <TabItem value="ghapp" label="GitHub App">
 ```
 
-To use this authentication method, you need to create and install a GitHub app, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub app in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support).
+To use this authentication method, you need to create and install a GitHub App, get the app's **installation ID** and **app ID**, and create a private key for the app. For instructions, go to [Use a GitHub App in a GitHub connector](/docs/platform/Connectors/Code-Repositories/git-hub-app-support).
 
 1. For **API Authentication**, select **GitHub App**.
-2. Enter the **GitHub Installation Id**. You can find the installation ID in the URL of your installed GitHub app, such as:
+2. Enter the **GitHub Installation Id**. You can find the installation ID in the URL of your installed GitHub App, such as:
 
    ```
    https://github.com/settings/installations/INSTALLATION_ID
@@ -246,11 +246,11 @@ To use this authentication method, you need to create and install a GitHub app, 
 
    ![](../../static/git-hub-app-support-58.png)
 
-3. Enter the **GitHub Application Id**. You can find the app ID on the **General** tab when viewing your GitHub app in GitHub.
+3. Enter the **GitHub Application Id**. You can find the app ID on the **General** tab when viewing your GitHub App in GitHub.
 
    ![](../../static/git-hub-app-support-59.png)
 
-4. For **GitHub Private Key**, provide your GitHub app's PEM key file as a [Harness encrypted file secret](/docs/platform/Secrets/add-file-secrets).
+4. For **GitHub Private Key**, provide your GitHub App's PEM key file as a [Harness encrypted file secret](/docs/platform/Secrets/add-file-secrets).
 
 ```mdx-code-block
   </TabItem>

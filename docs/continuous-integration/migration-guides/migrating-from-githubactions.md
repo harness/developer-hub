@@ -302,7 +302,7 @@ pipeline:
   <TabItem value="gha" label="GitHub Actions" default>
 ```
 
-Github Actions workflows are inherently associated with a code repo because the workflow YAML exists in the `.github/workflows` directory in the target code repo. The workflow can use [actions/checkout](https://github.com/actions/checkout) in a step to clone the associated codebase into the workflow workspace.
+GitHub Actions workflows are inherently associated with a code repo because the workflow YAML exists in the `.github/workflows` directory in the target code repo. The workflow can use [actions/checkout](https://github.com/actions/checkout) in a step to clone the associated codebase into the workflow workspace.
 
 ```yaml
 name: Github_actions

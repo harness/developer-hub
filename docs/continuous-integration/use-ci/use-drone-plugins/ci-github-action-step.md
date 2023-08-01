@@ -1,6 +1,6 @@
 ---
 title: Use the GitHub Action plugin step
-description: Run Github Actions in your Harness CI pipelines.
+description: Run GitHub Actions in your Harness CI pipelines.
 sidebar_position: 70
 ---
 
@@ -260,7 +260,7 @@ The following table compares GitHub Action YAML with Harness CI Action step YAML
 
 <table>
 <tr>
-<td> Github Action YAML </td> <td> Harness CI Action step YAML </td>
+<td> GitHub Action YAML </td> <td> Harness CI Action step YAML </td>
 </tr>
 <tr>
 <td>
@@ -380,7 +380,7 @@ For each expression:
 
 :::caution
 
-Github Actions settings keys can include `-`, which is not supported by JEXL. Therefore, you must wrap these variable names in quotes when using them in Harness expressions.
+GitHub Actions settings keys can include `-`, which is not supported by JEXL. Therefore, you must wrap these variable names in quotes when using them in Harness expressions.
 
 :::
 
