@@ -17,7 +17,7 @@ slug: /ci-pipelines/test/codecov
   target="_self"
 />
 
-This tutorial shows how you can use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage) to include [CodeCov code coverage](https://docs.codecov.com/docs/about-code-coverage#top-5-codecov-features) in a Harness CI pipeline.
+This tutorial shows how you can use a [Run step](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) to include [CodeCov code coverage](https://docs.codecov.com/docs/about-code-coverage#top-5-codecov-features) in a Harness CI pipeline.
 
 ## Prerequisites
 
@@ -59,7 +59,7 @@ import TabItem from '@theme/TabItem';
 1. In Harness, go to the **Build** stage in the pipeline where you want to include CodeCov.
 2. Select **Add Step**, select **Add Step** again, and then select **Run** in the Step Library.
 3. Enter a **Name** for the step.
-4. Depending on the stage's build infrastructure, specify the **Container Registry** and **Image** containing the binaries that the step needs to run your script. For example, the command example below uses `pytest` and might require a pytest image, such as `pytest:latest`. For information about when these fields are required and how to specify images, go to the [Run step settings reference](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
+4. Depending on the stage's build infrastructure, specify the **Container Registry** and **Image** containing the binaries that the step needs to run your script. For example, the command example below uses `pytest` and might require a pytest image, such as `pytest:latest`. For information about when these fields are required and how to specify images, go to [Use Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
 6. In the **Command** field, include all commands necessary to prepare the test environment, run tests with code coverage, and download and run the CodeCov Uploader tool. For example:
 
    ```sh
@@ -89,7 +89,7 @@ import TabItem from '@theme/TabItem';
 
 <docimage path={require('../static/ci-tutorial-codecov-test/run-step-with-codecov-visual.png')} />
 
-For more information about **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) and [Run a script in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage).
+For more information about **Run** step settings, go to [Use Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
 
 ```mdx-code-block
   </TabItem>
@@ -101,7 +101,7 @@ In Harness, go to the pipeline where you want to include CodeCov, and add a `Run
    *  `type: Run`
    *  `name:` A name for the step.
    *  `identifier:` A unique step ID.
-   *  `connectorRef` and `image`: Specify a container registry connector and image, if required by your build infrastructure or the commands you are running. These settings define a container registry connector and image containing the binaries that the step needs to run your script. For information about when these settings are required and how to specify images, go to the [Run step settings reference](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
+   *  `connectorRef` and `image`: Specify a container registry connector and image, if required by your build infrastructure or the commands you are running. These settings define a container registry connector and image containing the binaries that the step needs to run your script. For information about when these settings are required and how to specify images, go to [Use Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
    *  `shell:` Shell type, such as `Sh`.
    *  `command:` Include all commands necessary to prepare the test environment, run tests with code coverage, and download and run the CodeCov Uploader tool.
    *  `reports:` Declare `type` and `paths`.
@@ -146,7 +146,7 @@ The following YAML example describes a `Run` step that uses `pytest` and the Cod
                       CODECOV_TOKEN: <+secrets.getValue("my_codecov_upload_token")> # CodeCov Upload Token secret as an environment variable.
 ```
 
-For more information about **Run** step settings, go to the [Run step settings reference](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings) and [Run a script in a Build stage](/docs/continuous-integration/use-ci/run-ci-scripts/run-a-script-in-a-ci-stage).
+For more information about **Run** step settings, go to [Use Run steps](/docs/continuous-integration/use-ci/run-ci-scripts/run-step-settings).
 
 ```mdx-code-block
   </TabItem>
