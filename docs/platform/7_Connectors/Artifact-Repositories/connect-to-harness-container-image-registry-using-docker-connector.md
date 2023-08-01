@@ -30,7 +30,7 @@ If you choose to override the `harnessImageConnector`, you may also avoid trigge
 
 ### Before you begin
 
-* [CI Enterprise Concept](../../../continuous-integration/ci-quickstarts/ci-concepts.md)
+* [CI pipeline basics](../../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md)
 * [Harness Delegate Overview](/docs/platform/2_Delegates/delegate-concepts/delegate-overview.md)
 * [Docker Connector Settings Reference](../../7_Connectors/Cloud-providers/ref-cloud-providers/docker-registry-connector-settings-reference.md)
 

@@ -10,7 +10,16 @@ helpdocs_is_published: true
 
 This topic describes CI Build stage settings. For more information about configuring stages in CI pipelines, go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
 
+:::info Add a Build stage to a pipeline
+
 To create, edit, and delete stages in CI pipelines, you need either Project Admin or Project Member permissions. For more information, go to the [Permission Reference](/docs/platform/role-based-access-control/permissions-reference).
+
+1. In Harness, edit or [create a pipeline](../prep-ci-pipeline-components.md).
+2. Select **Add Stage**, and then select **Build**.
+3. Enter a **Stage Name**, enable **Clone Codebase**, and then select **Set Up Stage**.
+4. Select the [Overview](#overview), [Infrastructure](#infrastructure), [Execution](#execution), and [Advanced](#advanced) tabs to configure the stage settings, [set up the build infrastructure](https://developer.harness.io/docs/category/set-up-build-infrastructure), and add steps to the stage.
+
+:::
 
 ## Stage Name
 
@@ -32,7 +41,7 @@ If not selected, Harness does not clone the codebase when initializing the stage
 
 ## Configure Codebase
 
-Specify the pipeline's default [codebase configuration](../codebase-configuration/create-and-configure-a-codebase.md). These settings are available when you add the first stage to a pipeline. After adding the first stage, these are managed under the pipeline's overall **Codebase** settings.
+Specify the pipeline's default codebase configuration. These settings are available when you add the first stage to a pipeline. After you add the first stage, you manage these under the pipeline's overall **Codebase** settings. For more information about codebase configuration, go to [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md).
 
 ### Connector
 

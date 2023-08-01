@@ -21,7 +21,7 @@ Most CI pipelines are set up to run tests with every new commit. When you [set u
 
 :::info
 
-For more information about test splitting with Test Intelligence, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/set-up-test-intelligence.md).
+For more information about test splitting with Test Intelligence, go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence).
 
 :::
 
@@ -146,7 +146,7 @@ You can configure parallelism in the Pipeline Studio as well:
 
 :::info
 
-The following information applies to test splitting in a **Run** step. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence/set-up-test-intelligence.md).
+The following information applies to test splitting in a **Run** step. For information about test splitting with Test Intelligence (in a **Run Tests** step), go to [Enable Test Intelligence](/docs/continuous-integration/use-ci/set-up-test-intelligence).
 
 :::
 

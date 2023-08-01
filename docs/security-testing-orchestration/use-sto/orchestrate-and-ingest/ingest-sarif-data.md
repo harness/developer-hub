@@ -67,6 +67,6 @@ import StoSettingFailOnSeverity from '../../sto-techref-category/shared/step_pal
 
 ### Example workflows
 
-<!-- * [CodeQL Scanner Reference](docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference) -->
+<!-- * [CodeQL Scanner Reference](/docs/security-testing-orchestration/sto-techref-category/codeql-scanner-reference) -->
 For example workflows that show how you can ingest SARIF data, go to [Run scans using GitHub Action and Drone Plugin steps](/docs/security-testing-orchestration/use-sto/orchestrate-and-ingest/run-scans-using-github-actions)
 

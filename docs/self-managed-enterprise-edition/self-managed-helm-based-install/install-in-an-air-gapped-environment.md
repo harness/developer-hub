@@ -43,6 +43,7 @@ To begin your installation, download the following files:
 
    With each Self-Managed Enterprise Edition release, Harness adds individual module image files to the air gap image bundle. You can download module `*.tgz` files for the modules you want to deploy. For example, if you only want to deploy Harness Platform, download the `platform-images.tgz` file. Available image files are:
 
+     - Chaos Engineering: `ce-images.tgz`
      - Cloud Cost Management: `ccm-images.tgz`
      - Continuous Delivery & GitOps NextGen: `cdng-images.tgz`
      - Continuous Error Tracking: `ce-images.tgz`
