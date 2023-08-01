@@ -41,7 +41,7 @@ If not selected, Harness does not clone the codebase when initializing the stage
 
 ## Configure Codebase
 
-Specify the pipeline's default codebase configuration. These settings are available when you add the first stage to a pipeline. After adding the first stage, these are managed under the pipeline's overall **Codebase** settings. For more information about codebase configuration, go to [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md).
+Specify the pipeline's default codebase configuration. These settings are available when you add the first stage to a pipeline. After you add the first stage, you manage these under the pipeline's overall **Codebase** settings. For more information about codebase configuration, go to [Edit Codebase Configuration](../codebase-configuration/create-and-configure-a-codebase.md).
 
 ### Connector
 

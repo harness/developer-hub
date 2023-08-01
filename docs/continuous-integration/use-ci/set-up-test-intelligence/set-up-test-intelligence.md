@@ -20,11 +20,11 @@ Test Intelligence applies to unit testing only. For other types of tests, [use R
 
 :::
 
-Testing is an important part of Continuous Integration (CI). Testing safeguards the quality of your product before shipping. However, test cycles often involve many tests and it can take a significant amount of time for the tests to run. Additionally, the tests that run might be irrelevant to the code changes that triggered the build, and running all unit tests every time the code changes is expensive and time-consuming.
+Testing is an important part of Continuous Integration (CI). Testing safeguards the quality of your product before shipping. However, test cycles often involve many tests, and it can take a significant amount of time for the tests to run. Additionally, the tests that run might be irrelevant to the code changes that triggered the build, and running all unit tests every time the code changes is expensive and time-consuming.
 
-Harness Test Intelligence improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. You can also use [parallelism (test splitting) with Test Intelligence](#enable-parallelism-test-splitting-for-test-intelligence) to further optimize your test times.
+Harness Test Intelligence (TI) improves unit test time by running only the unit tests required to confirm the quality of the code changes that triggered the build. You can also use [parallelism (test splitting) with TI](#enable-parallelism-test-splitting-for-test-intelligence) to further optimize your test times.
 
-Using TI doesn't require you to change your build and test processes. To enable Test Intelligence, [add a Run Tests step](#add-the-run-tests-step) and [generate a call graph](#generate-the-initial-call-graph). The **Run Tests** step executes one or more tests on a container image. The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to generate an initial call graph, which sets the baseline for test selection in future builds.
+Using TI doesn't require you to change your build and test processes. To enable TI, [add a Run Tests step](#add-the-run-tests-step) and [generate a call graph](#generate-the-initial-call-graph). The **Run Tests** step executes one or more tests on a container image. The first time you enable TI on a repo, you must use a webhook-based PR trigger to generate an initial call graph, which sets the baseline for test selection in future builds.
 
 <details>
 <summary>Video summary</summary>
@@ -41,7 +41,7 @@ https://harness-1.wistia.com/medias/rpv5vwzpxz-->
 
 ## How does Test Intelligence work?
 
-Test Intelligence uses *test selection* to run only those tests that are relevant to code changes. This includes changes to your software's code as well as changes to your tests (new or modified tests). Instead of always running all unit tests, TI selects only the relevant subset of unit tests and skips the rest.
+Test Intelligence uses *test selection* to run only those tests that are relevant to code changes. This includes changes to your software's code, as well as changes to your tests (new or modified tests). Instead of always running all unit tests, TI selects only the relevant subset of unit tests and skips the rest.
 
 When you perform a pull request, TI uses the following metrics to select tests:
 
@@ -51,7 +51,7 @@ When you perform a pull request, TI uses the following metrics to select tests:
 
 TI is always up to date and syncs when you merge code to any branch.
 
-After a build runs, Test Intelligence gives you full visibility into which tests were selected and why. This can help you identify negative trends and gain insights to improve test quality and coverage. You can find the Test results and the Test Intelligence call graph visualization on the **Build details** page. The call graph visualization shows the changed classes and methods that caused each test to be selected.
+After a build runs, TI gives you full visibility into which tests were selected and why. This can help you identify negative trends and gain insights to improve test quality and coverage. You can find the Test results and the TI call graph visualization on the **Build details** page. The call graph visualization shows the changed classes and methods that caused each test to be selected.
 
 <!-- Test Intelligence architecture
 
@@ -77,7 +77,7 @@ Test Intelligence supports the following codebases:
 
 :::note
 
-Currently, Test Intelligence for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, TI for .NET is behind the feature flag `TI_DOTNET`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 <!-- Framework is supported on Windows [VM build infrastructures](/docs/category/set-up-vm-build-infrastructures/) only, and you must specify the [build environment](/docs/continuous-integration/use-ci/set-up-test-intelligence/#build-environment) in your pipeline's YAML. -->
 
@@ -91,7 +91,7 @@ You need a [CI pipeline](../prep-ci-pipeline-components.md) with a [Build stage]
 
 If you haven't created a pipeline before, try one of the [CI pipeline tutorials](../../ci-quickstarts/ci-pipeline-quickstart.md) or go to [CI pipeline creation overview](../prep-ci-pipeline-components.md).
 
-In order for the **Run Tests** step to execute the test commands, the build environment must have the necessary binaries for those commands. Depending on the stage's build infrastructure, **Run Tests** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Container registry and image settings](#container-registry-and-image).
+The build environment must have the necessary binaries for the **Run Tests** step to execute your test commands. Depending on the stage's build infrastructure, **Run Tests** steps can use binaries that exist in the build environment or pull an image, such as a public or private Docker image, that contains the required binaries. For more information about when and how to specify images, go to the [Container registry and image settings](#container-registry-and-image).
 
 ```mdx-code-block
 <Tabs>
@@ -141,7 +141,7 @@ In order for the **Run Tests** step to execute the test commands, the build envi
                     buildTool: Maven ## Specify Bazel, Maven, or Gradle.
                     args: test
                     packages: io.harness.
-                    runOnlySelectedTests: true ## Set to false if you don't want to use Test Intelligence.
+                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     postCommand: mvn package -DskipTests
                     reports:
                       type: JUnit
@@ -167,7 +167,7 @@ In order for the **Run Tests** step to execute the test commands, the build envi
                     buildTool: Maven ## Specify Bazel, Maven, Gradle, or Sbt.
                     args: test
                     packages: io.harness.
-                    runOnlySelectedTests: true ## Set to false if you don't want to use Test Intelligence.
+                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     postCommand: mvn package -DskipTests
                     reports:
                       type: JUnit
@@ -195,7 +195,7 @@ In order for the **Run Tests** step to execute the test commands, the build envi
                     buildTool: Dotnet ## Specify Dotnet or Nunit.
                     args: dotnet test --no-build --verbosity normal
                     namespaces: aw,fc
-                    runOnlySelectedTests: true ## Set to false if you don't want to use Test Intelligence.
+                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
                       dotnet tool install -g trx2junit
                       export PATH="$:/root/.dotnet/tools"
@@ -235,7 +235,7 @@ You can enable parallelism and test splitting in your **Run Tests** steps to fur
 With parallelism, you specify how you want Harness to divide the work for a step or stage. When you use parallelism and test splitting with Test Intelligence, Harness divides the work after test selection. This means that your test execution time is reduced by both test selection and parallelism.
 
 <details>
-<summary>Example: Time saved by combining Test Intelligence with test splitting</summary>
+<summary>Example: Time saved by combining TI with test splitting</summary>
 
 Suppose you have a pipeline that runs 100 tests, and each test takes about one second to run. Here's how TI and parallelism can reduce your test times:
 
@@ -245,9 +245,9 @@ Suppose you have a pipeline that runs 100 tests, and each test takes about one s
 
 </details>
 
-Note that while parallelism for Test Intelligence can improve the total time it takes to run all tests, some tests may still take a long time to run if, by their nature, they are intensive, long-running tests.
+Note that while parallelism for TI can improve the total time it takes to run all tests, some tests may still take a long time to run if, by their nature, they are intensive, long-running tests.
 
-To enable parallelism for Test Intelligence, you must set a parallelism `strategy` on either the **Run Tests** step or the stage where you have the **Run Tests** step, and you must add the `enableTestSplitting` parameter to your **Run Tests** step. You can also add the optional parameter `testSplitStrategy`.
+To enable parallelism for TI, you must set a parallelism `strategy` on either the **Run Tests** step or the stage where you have the **Run Tests** step, and you must add the `enableTestSplitting` parameter to your **Run Tests** step. You can also add the optional parameter `testSplitStrategy`.
 
 ```yaml
     - stage:
@@ -273,7 +273,7 @@ To enable parallelism for Test Intelligence, you must set a parallelism `strateg
                         paths:
                           - "target/surefire-reports/*.xml"
                       type: JUnit
-                    runOnlySelectedTests: true ## Enable Test Intelligence.
+                    runOnlySelectedTests: true ## Enable TIe.
                   type: RunTests
           platform:
             arch: Amd64
@@ -285,7 +285,7 @@ To enable parallelism for Test Intelligence, you must set a parallelism `strateg
           parallelism: 3 ## Set the number of groups to use for test splitting.
 ```
 
-1. Go to the pipeline where you want to enable parallelism for Test Intelligence.
+1. Go to the pipeline where you want to enable parallelism for TI.
 2. [Define the parallelism strategy](/docs/platform/Pipelines/speed-up-ci-test-pipelines-using-parallelism#define-the-parallelism-strategy) on either the stage where you have the Run Tests step or on the Run Tests step itself. You must include `strategy:parallelism`. Other options, such as `maxConcurrency` are optional.
 
    You can do this in either the visual or YAML editor. In the visual editor, **Parallelism** is found under **Looping Strategy** in the stage's or step's **Advanced** settings.
@@ -369,9 +369,9 @@ You can sort the list by failure rate, duration, and total tests. You can also e
 <details>
 <summary>Call Graph</summary>
 
-The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to run all tests and [generate the initial call graph](#generate-the-initial-call-graph). This creates a baseline for test selection in future builds; therefore, the initial call graph is not particularly useful. In subsequent builds, the call graph shows information about tests selected by Test Intelligence for that run.
+The first time you enable Test Intelligence on a repo, you must use a webhook-based PR trigger to run all tests and [generate the initial call graph](#generate-the-initial-call-graph). This creates a baseline for test selection in future builds; therefore, the initial call graph is not particularly useful. In subsequent builds, the call graph shows information about tests selected by TI for that run.
 
-Select **Expand graph** to view the Test Intelligence Visualization, which shows why a specific test was selected and the reason behind every test selection. Purple nodes represent tests. Select any test (purple node) to see all the classes and methods covered by that test. Blue nodes represent changes to classes and methods that caused Test Intelligence to select that test.
+Select **Expand graph** to view the TI Visualization, which shows why a specific test was selected and the reason behind every test selection. Purple nodes represent tests. Select any test (purple node) to see all the classes and methods covered by that test. Blue nodes represent changes to classes and methods that caused TI to select that test.
 
 ![](./static/set-up-set-up-test-intelligence-531.png)
 
@@ -648,7 +648,7 @@ If a script is supplied here, select the corresponding **Shell** option.
 
 This option must be selected (`true`) to enable Test Intelligence.
 
-If this option is not selected (`false`), Test Intelligence is disabled and all tests run on every build.
+If this option is not selected (`false`), TI is disabled and all tests run on every build.
 
 ### Packages
 
@@ -736,7 +736,7 @@ pipeline:
                     buildTool: Maven ## Specify Bazel, Maven, or Gradle.
                     args: test
                     packages: io.harness.
-                    runOnlySelectedTests: true ## Set to false if you don't want to use Test Intelligence.
+                    runOnlySelectedTests: true ## Set to false if you don't want to use I.
                     postCommand: mvn package -DskipTests
                     reports:
                       type: JUnit
@@ -787,7 +787,7 @@ pipeline:
                     buildTool: Maven ## Specify Bazel, Maven, Gradle, or Sbt.
                     args: test
                     packages: io.harness.
-                    runOnlySelectedTests: true ## Set to false if you don't want to use Test Intelligence.
+                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     postCommand: mvn package -DskipTests
                     reports:
                       type: JUnit
@@ -840,7 +840,7 @@ pipeline:
                     buildTool: Dotnet ## Specify Dotnet or Nunit.
                     args: dotnet test --no-build --verbosity normal
                     namespaces: aw,fc
-                    runOnlySelectedTests: true ## Set to false if you don't want to use Test Intelligence.
+                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
                       dotnet tool install -g trx2junit
                       export PATH="$:/root/.dotnet/tools"
@@ -910,7 +910,7 @@ pipeline:
                     buildTool: Maven ## Specify Bazel, Maven, or Gradle.
                     args: test
                     packages: io.harness.
-                    runOnlySelectedTests: true ## Set to false if you don't want to use Test Intelligence.
+                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     postCommand: mvn package -DskipTests
                     reports:
                       type: JUnit
@@ -965,7 +965,7 @@ pipeline:
                     buildTool: Maven ## Specify Bazel, Maven, Gradle, or Sbt.
                     args: test
                     packages: io.harness.
-                    runOnlySelectedTests: true ## Set to false if you don't want to use Test Intelligence.
+                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     postCommand: mvn package -DskipTests
                     reports:
                       type: JUnit
@@ -1022,7 +1022,7 @@ pipeline:
                     buildTool: Dotnet ## Specify Dotnet or Nunit.
                     args: dotnet test --no-build --verbosity normal
                     namespaces: aw,fc
-                    runOnlySelectedTests: true ## Set to false if you don't want to use Test Intelligence.
+                    runOnlySelectedTests: true ## Set to false if you don't want to use TI.
                     preCommand: |-
                       dotnet tool install -g trx2junit
                       export PATH="$:/root/.dotnet/tools"

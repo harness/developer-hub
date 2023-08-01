@@ -4,14 +4,14 @@ description: You can use Harness-hosted build infrastructure for your Harness CI
 sidebar_position: 20
 ---
 
-With Harness Cloud you can run builds in isolation on Harness-hosted VMs that are preconfigured with the tools, packages, and settings commonly used in CI pipelines. Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure.
+With Harness Cloud, you can run builds in isolation on Harness-hosted VMs that are preconfigured with tools, packages, and settings commonly used in CI pipelines. Harness hosts, maintains, and upgrades these machines so that you can focus on building software instead of maintaining build infrastructure.
 
 Harness Cloud provides the following advantages:
 
 * Free monthly credits for up to 2,000 build minutes.
 * Starter pipelines for different programming languages.
 * Blazing fast builds on Linux, macOS, and Windows.
-* Get the latest features first. Features may be enabled for Harness Cloud build infrastructure before rolling out to other build infrastructure options.
+* Get the latest features first. Harness may enable features for Harness Cloud before rolling them out to other build infrastructure options.
 
 :::info What happens when pipelines run on Harness Cloud?
 

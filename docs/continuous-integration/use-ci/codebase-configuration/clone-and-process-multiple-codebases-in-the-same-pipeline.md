@@ -287,7 +287,7 @@ pipeline:
 
 This example clones app code as the [default codebase](#configure-the-default-codebase) and then uses a **Run** step to clone a separate repo that has the Dockerfile necessary to build the app.
 
-Due to the build infrastructure and the `image` used for the **Run** step, it is necessary to install Git before cloning the additional repo. The **Run** step uses the following commands to install git, verify that it's working, and then clone the repo that has the Dockerfile needed to build the app.
+Due to the build infrastructure and the `image` used for the **Run** step, it is necessary to install Git before cloning the additional repo. The **Run** step uses the following commands to install Git, verify that it's working, and then clone the repo that has the Dockerfile needed to build the app.
 
 ```
 apk add git

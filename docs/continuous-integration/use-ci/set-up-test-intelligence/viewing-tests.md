@@ -47,7 +47,7 @@ Currently, the Unit Test Metrics dashboard is behind the feature flag `CI_TI_DAS
 
 :::
 
-The **Unit Test Metrics** dashboard aggregates data from test reports in JUnit XML format. The dashboard reports the overall failure rate and the overall success rate. Failure data is broken down by pipeline, Git repo, and test. You can filter by project, pipeline, and date range.
+The **Unit Test Metrics** dashboard aggregates data from test reports in JUnit XML format. The dashboard reports the overall failure rate and the overall success rate. The dashboard breaks down failure data by pipeline, Git repo, and test. You can filter by project, pipeline, and date range.
 
 You can find this and other [dashboards](/docs/platform/dashboards/dashboards-overview/) under the **Dashboards** section of your Harness account.
 
