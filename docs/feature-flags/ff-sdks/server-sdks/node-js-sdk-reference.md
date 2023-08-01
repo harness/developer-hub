@@ -350,24 +350,24 @@ setInterval(() => {
 ## Troubleshooting
 The SDK logs the following codes for certain lifecycle events, for example authentication, which can aid troubleshooting.
 
-| **Code** | **Description**                                                                          |
-|----------|:-----------------------------------------------------------------------------------------|
-| **1000** | Successfully initialized                                                                 |
-| **1001** | Failed to initialize due to authentication error                                         |
-| **1002** | Failed to initialize due to a missing or empty API key                                   |
-| **2000** | Successfully authenticated                                                               |
-| **3000** | SDK Closing                                                                              |
-| **3001** | SDK closed successfully                                                                  |
-| **4000** | Polling service started                                                                  |
-| **4001** | Polling service stopped                                                                  |
-| **5000** | Streaming service started                                                                |
-| **5001** | Streaming service stopped                                                                |
-| **5002** | Streaming event received                                                                 |
-| **5003** | Streaming disconnected and is retrying to connect                                        |
-| **5004** | Streaming stopped                                                                        |
-| **6000** | Evaluation was successfully                                                              |
-| **6001** | Evaluation failed and the default value was returned                                     |
-| **7000** | Metrics HarnessFFWeb harnessservice has started                                                              |
-| **7001** | Metrics service has stopped                                                              |
-| **7002** | Metrics posting failed                                                                   |
-| **7003** | Metrics posting success                                                                  |
+| **Code** | **Description**                                        |
+|----------|:-------------------------------------------------------|
+| **1000** | Successfully initialized                               |
+| **1001** | Failed to initialize due to authentication error       |
+| **1002** | Failed to initialize due to a missing or empty API key |
+| **2000** | Successfully authenticated                             |
+| **3000** | SDK Closing                                            |
+| **3001** | SDK closed successfully                                |
+| **4000** | Polling service started                                |
+| **4001** | Polling service stopped                                |
+| **5000** | Streaming service started                              |
+| **5001** | Streaming service stopped                              |
+| **5002** | Streaming event received                               |
+| **5003** | Streaming disconnected and is retrying to connect      |
+| **5004** | Streaming stopped                                      |
+| **6000** | Evaluation was successfully                            |
+| **6001** | Evaluation failed and the default value was returned   |
+| **7000** | Metrics service harnessservice has started             |
+| **7001** | Metrics service has stopped                            |
+| **7002** | Metrics posting failed                                 |
+| **7003** | Metrics posting success                                |
