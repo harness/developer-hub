@@ -99,7 +99,7 @@ To create your VMs, do the following:
 
 9. Repeat the steps to configure your other two VMs.
 
-### Create a public zone
+### Create DNS records
 
 To create DNS records, do the following:
 
