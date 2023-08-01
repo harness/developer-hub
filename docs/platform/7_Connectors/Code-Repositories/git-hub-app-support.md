@@ -108,7 +108,7 @@ import TabItem from '@theme/TabItem';
 
 :::note
 
-Currently, the option to use a GitHub App as the primary authentication method for a GitHub connector is behind a feature flag. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+Currently, the option to use a GitHub App as the primary authentication method for a GitHub connector is behind the feature flag `CDS_GITHUB_APP_AUTHENTICATION`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
 
 :::
 
