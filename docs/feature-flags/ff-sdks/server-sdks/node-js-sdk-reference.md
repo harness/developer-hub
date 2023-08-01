@@ -367,7 +367,7 @@ The SDK logs the following codes for certain lifecycle events, for example authe
 | **5004** | Streaming stopped                                      |
 | **6000** | Evaluation was successfully                            |
 | **6001** | Evaluation failed and the default value was returned   |
-| **7000** | Metrics service harnessservice has started             |
+| **7000** | Metrics service has started                            |
 | **7001** | Metrics service has stopped                            |
 | **7002** | Metrics posting failed                                 |
 | **7003** | Metrics posting success                                |
