@@ -119,4 +119,10 @@ The following cost factors retrieved from your GCP Billing Export data can be in
 * **Include Discounts**: Includes any discounts that GCP applied to your usage. 
 * **Include Taxes**: Includes any taxes that GCP applied to your bill. For example, VAT or US sales tax. This option is enabled by default.
   
+
+:::important note
+Even if GCP discounts are included in the default settings, the overview page will not take the discounted costs into account. In other words, any available discounts for GCP services will not be reflected in the cost calculations and summary provided in the overview section. 
+:::
+
+  
 To know how to analyze the perspective data, go to [Analyze cost for GCP](../3-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md).
