@@ -61,5 +61,5 @@ stringData:
 Finally, create the secret yaml file in the chaos infra namespace using the command:
 
 ```bash
-kubectl apply -f secret.yaml -n &lt;CHAOS-NAMESPACE&gt;
+kubectl apply -f secret.yaml -n <CHAOS-NAMESPACE>
 ```
