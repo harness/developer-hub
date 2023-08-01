@@ -47,8 +47,6 @@ This release does not include any early access features.
 
 - Helm delegate installation failed in Self-Managed Enterprise Edition. (PL-39028)
 
-This issue is fixed with a code enhancement. The `DELPOY_MODE` is now set to `KUBERNETES_ONPREM` for Self-Managed Enterprise Edition Docker and Helm delegates.
-
 - Improved error handling mechanism when Helm manifests are not fetched from the Artifactory repository. (CDS-68251, ZD-37458)
 
 - Service instances were not showing correctly for Tanzu deployments. (CDS-68737, ZD-42950)
@@ -79,9 +77,6 @@ This issue is fixed with a code enhancement. The `DELPOY_MODE` is now set to `KU
 - The delegate connectivity capability check for Azure Web App deployments failed. (CDS-71432, ZD-44862)
 
    This issue is fixed by using task category mapping to assign the Azure App Services task type deployments to specific delegates.
-
-- (CDS-74584)
-
 
 ### July 12, 2023, patch release for version 79421
 
