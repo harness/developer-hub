@@ -444,7 +444,7 @@ In **Execution**, Harness automatically adds the following steps:
   ![](./static/harness-git-ops-application-set-tutorial-56.png)
 
 * **Merge PR**: Merges the new PR.
-* **Revert PR**: Reverts the commit passed and creates a new PR. Use this step if you want to run any tests or automation on the pipeline, and revert the commit done by the Update Release Repo step.
+* **Revert PR**: Reverts the commit passed and creates a new PR. Use this step if you want to run any tests or automation on the pipeline and then revert the commit done by the Update Release Repo step.
   
   The Revert PR step uses the commitId of the Update Release Repo step as input. The commitId can be an expression, runtime input, or a static value. For example, `<+pipeline.stages.deploy.spec.execution.steps.updateReleaseRepo.updateReleaseRepoOutcome.commitId>`. 
   
