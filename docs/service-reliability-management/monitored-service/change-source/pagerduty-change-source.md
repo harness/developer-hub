@@ -23,7 +23,7 @@ To add a PagerDuty connector:
 
 5. Choose one of the following delegate setup options:
 
-   - **Use any available Delegate**: Allows Harness to automatically select a Delegate at runtime.
+   - **Use any available Delegate**: Allows Harness to automatically select a delegate at runtime.
 
     - **Only use Delegates with all of the following tags**: Lets you specify the tags of specific Delegates that you want to use. Add the specific Delegate by selecting the tags from the dropdown list or entering the delegate tag manually.
 
