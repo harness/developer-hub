@@ -57,6 +57,10 @@ To view a list of potentially stale flags:
 
 ## Archive and restore flags
 
+:::info note
+This feature is currently behind the feature flag `FFM_7921_ARCHIVING_FEATURE_FLAGS`. Contact [Harness Support](mailto:support@harness.io) to enable the feature.
+:::
+
 To remove a flag from Harness you must archive it first. This gives you the option of restoring the flag within 30 days. After 30 days, an archived flag is permanently deleted. You can [check for stale flags](#check-for-stale-flags) to identify which flags you might want to archive.
 
 ### Archive a flag
@@ -84,11 +88,9 @@ To archive a flag:
 
 ### Restore a flag
 
-Restoring a flag makes it available for evaluation if the flag is referenced in your code. That is, you haven't removed the references to it when you archived the flag, or you've reinstated those references.
+Restoring a flag makes it available again for evaluation if the flag is referenced in your code. That is, you haven't removed the references to it when you archived the flag, or you've reinstated those references.
 
-:::info note
-When you delete a flag, it is permanently removed from all environments.
-:::
+When you restore a flag, it's restored to all environments. All of the flag's configurations in an environment (including whether it's enabled or disabled) will be restored to the state they were in, in that environment, when the flag was archived. If you created new environments since the flag was archived, the flag will be disabled in those.
 
 To restore a flag:
 
@@ -102,6 +104,10 @@ To restore a flag:
 ### Delete an archived flag
 
 Archived flags are automatically deleted 30 days after you archive them. But if you're sure you want to delete the flag immediately, you can delete an archived flag before that 30-day period ends.
+
+:::info note
+When you delete a flag, it is permanently removed from all environments.
+:::
 
 To delete an archived flag:
 
