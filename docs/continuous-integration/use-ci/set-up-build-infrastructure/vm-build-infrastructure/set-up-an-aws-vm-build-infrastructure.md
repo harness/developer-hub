@@ -151,7 +151,7 @@ Next, you'll add the runner spec to the delegate definition. The Harness Delegat
        image: drone/drone-runner-aws
        network_mode: "host" 
        volumes:  
-        - ./runner:/runner  
+        - /runner:/runner  
        entrypoint: ["/bin/drone-runner-aws", "delegate", "--pool", "pool.yml"]  
        working_dir: /runner
    ```
