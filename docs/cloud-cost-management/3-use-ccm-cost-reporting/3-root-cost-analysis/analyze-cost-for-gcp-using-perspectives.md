@@ -70,6 +70,7 @@ Perform the following steps to add filters.
    - If you Group By on **GCP: Invoice Month**, then the data in the grid and chart will be presented in `yyyymm` format.
 :::
 
+  <docimage path={require('./static/disabled-time-filter.png')} width="60%" height="60%" title="Click to view full size image" />
 
 5. Select the operator. These operators are displayed depending on the selected filter. For example, for the Invoice Month filter, the only operator is IN. 
 

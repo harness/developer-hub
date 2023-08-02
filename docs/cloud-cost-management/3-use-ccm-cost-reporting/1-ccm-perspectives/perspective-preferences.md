@@ -7,7 +7,7 @@ sidebar_position: 3
 With perspective preferences, you have the flexibility to tailor the cost data presented in your perspective. You can opt to include or exclude specific cost data provided by the Cloud Service Providers (CSPs) according to your needs and requirements. This can help customize your CSP dashboard with Harness perspective view by ensuring accurate and comprehensive cost analysis.
 
 ## Default settings for perspective preferences
-You can configure perspective preferences in the **Default Settings** page under **Setup**. You can override these settings at the perspective level if needed. The following table provides the default values of perspective preferences:  
+You can configure perspective preferences in the **Cloud Costs** > **Setup** > **Default Settings** page. You can override these settings at the perspective level if needed. The following table provides the default values of perspective preferences:  
 
 | **General** | **AWS** | **GCP** |
 | --- | --- | --- |
@@ -25,7 +25,19 @@ You can configure perspective preferences in the **Default Settings** page under
 Changes made to these settings affect all CCM perspectives. To ensure smooth operations, it is advisable not to update these settings frequently. If changes are necessary, it's recommended to allow a time gap of at least 5 minutes between updates. 
 :::
 
+:::important note
+Even if GCP discounts are included in the default settings, the overview page will not take the discounted costs into account. In other words, any available discounts for GCP services will not be reflected in the cost calculations and summary provided in the overview section. 
+:::
 
+To edit preferences for a specific perspective: 
+1. Go to Cloud Costs.
+2. Select **Perspectives**. 
+3. Select the required perspective. 
+4. Open the **Preferences** dropdown.
+5. Enable and disable preferences based on your requirements.
+6. Select Apply.
+
+  The cost data shown in the perspective chart is influenced by the set preferences. But it's important to note that for these changes to be permanent and take effect, you need to edit the perspective and update the preferences accordingly. Applying the preferences on the perspective page will not make the changes persistent. To learn how to edit a perspective, go to [Edit a perspective](https://developer.harness.io/docs/cloud-cost-management/use-ccm-cost-reporting/ccm-perspectives/create-cost-perspectives#edit-a-perspective).
 ## General preferences
 
 The following preferences are applicable to all perspectives. By default, some of these preferences are enabled. However, you could choose to disable or enable these preferences in individual perspectives. 
@@ -39,11 +51,9 @@ The following preferences are applicable to all perspectives. By default, some o
   The graphs displayed in a Perspective show the top 12 costs only. The remaining data is displayed as **Others**.
   **Others** is always the total cost minus the top 12 costs listed in the graph you are viewing.
   
-  You can also enable **Show Others** in the Perspective chart:
   
     ![](./static/create-cost-perspectives-24.png)
     
-  Edit the perspective and enable the **Show Others** option in **Preferences** to make it persist in the perspective.
 
 * **Show "unallocated" costs on clusters**
 
@@ -65,6 +75,7 @@ The following preferences are applicable to all perspectives. By default, some o
   * ECS Launch Type
 
 To know how to analyze your cluster perspective data, go to [Analyze cost for Kubernetes or AWS ECS](../3-root-cost-analysis/analyze-cost-for-k8s-ecs-using-perspectives.md).
+
 ## AWS preferences
 
 When creating your perspective, the **Preferences** section allows you to include specific cost factors sourced from the AWS Cost and Usage Reports (AWS CUR). These selected cost factors will be incorporated into your perspective for a more tailored and comprehensive view of your cloud costs. 
@@ -113,15 +124,10 @@ Currently, Harness CCM considers only three types of discounts under the LineIte
 -->
 
 To know how to analyze the AWS perspective data, go to [Analyze cost for AWS](../3-root-cost-analysis/analyze-cost-for-aws.md).
+
 ## GCP preferences
 The following cost factors retrieved from your GCP Billing Export data can be included or excluded in your perspectives for a more comprehensive view of your cloud costs.
 * **Include Discounts**: Includes any discounts that GCP applied to your usage. 
 * **Include Taxes**: Includes any taxes that GCP applied to your bill. For example, VAT or US sales tax. This option is enabled by default.
-  
-
-:::important note
-Even if GCP discounts are included in the default settings, the overview page will not take the discounted costs into account. In other words, any available discounts for GCP services will not be reflected in the cost calculations and summary provided in the overview section. 
-:::
-
   
 To know how to analyze the perspective data, go to [Analyze cost for GCP](../3-root-cost-analysis/analyze-cost-for-gcp-using-perspectives.md).
