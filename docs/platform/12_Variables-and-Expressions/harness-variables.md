@@ -89,7 +89,7 @@ The pipeline and stage level variable expressions follow these formats:
 - **Pipeline-level** expressions use the format `<+pipeline.variables.VAR_NAME>`.
 - **Stage-level** expressions use these formats:
   - **Use in this stage:** Use this option to reference the input anywhere in its stage. The format is `<+stage.variables.VAR_NAME>`.
-  - **Use in anywhere in the pipeline:** Use this option to reference the input anywhere in the pipeline. The format is `<+pipeline.stages.STAGE_NAME.VAR_NAME>`.
+  - **Use anywhere in the pipeline:** Use this option to reference the input anywhere in the pipeline. The format is `<+pipeline.stages.STAGE_NAME.VAR_NAME>`.
 - **Pipeline-level** variables can be accessed as a collection of key-value pairs using `<+pipeline.variables>`.
 - **Stage-level** variables can be accessed as a collection of key-value pairs using `<+stage.variables>`.
 
