@@ -46,6 +46,15 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
 
 ```mdx-code-block
   </TabItem>
+
+  <TabItem value="Fossa runner update, July 20, 2023">
+```
+##### Fixed issue
+
+* Fixed a Fossa ingestion issue that caused the step to fail with a 400 client error. (CDS-6120, ZD-46601)
+
+```mdx-code-block
+  </TabItem>
 </Tabs>
 ```
 
