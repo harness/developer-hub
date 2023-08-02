@@ -48,7 +48,7 @@ Click **New GitHub App**.
 Enter the following settings, and then click **Create GitHub App**.
 
 * **GitHub App name:** enter the name for your app.
-* **Homepage URL:** enter **https://harness.io/**.
+* **Homepage URL:** enter `https://harness.io/`.
 * **Webhook:** uncheck **Active**.
 * **Repository permissions:**
 	+ **Administration:** select **Access: Read & write**.

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 4
+sidebar_position: 5
 title: Python application
 description: Use a CI pipeline to build and test a Python application.
 keywords: [Hosted Build, Continuous Integration, Hosted, CI Tutorial]

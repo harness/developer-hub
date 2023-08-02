@@ -44,7 +44,6 @@ To add the URL for a load balancer, do the following:
    global:  
     # -- Harness Application URL  
     loadbalancerURL: http://<load-balancer-IP-address>  
-    host_name: "<load-balancer-IP-address>"
    ```
 
 2. Set the `host_name` field to the IP address of the load balancer.
@@ -105,6 +104,14 @@ sto:
 enabled: true
 ```
 
+#### Deploy the CE module
+
+```
+chaos:
+# -- Enable to deploy Chaos Engineering (CE) to your cluster
+enabled: true
+```
+
 ### Add a Harness license
 
 Harness Self-Managed Enterprise Edition needs a license to be provisioned for the Harness NextGen platform. Contact [Harness Support](mailto:support@harness.io) to procure the license and add it to the `override.yaml` file.
@@ -125,13 +132,13 @@ To install the Helm chart, do the following:
 1. Add the repository.
 
    ``` 
-   $ helm repo add harness https://harness.github.io/helm-charts
+   helm repo add harness https://harness.github.io/helm-charts
    ```
 
 2. Create a namespace for your installation.  
 
    ```
-   $ kubectl create namespace <namespace>
+   kubectl create namespace <namespace>
    ```
 
 3. Modify the `override.yaml` file with your environment settings.
@@ -139,7 +146,7 @@ To install the Helm chart, do the following:
 4. Install the Helm chart.  
 
    ```
-   $ helm install my-release harness/harness-prod -n <namespace> -f override.yaml
+   helm install my-release harness/harness-prod -n <namespace> -f override.yaml
    ```
 
 ## Verify the installation
@@ -176,3 +183,4 @@ To get started with the modules, review the following topics:
 * For Harness Continuous Integration, go to [CI pipeline basics](../../continuous-integration/ci-quickstarts/ci-pipeline-basics.md).
 * For Harness Continuous Delivery & GitOps, go to [CD overview and key concepts](/docs/continuous-delivery/get-started/cd-pipeline-basics.md).
 * For Harness Security Testing Orchestration, go to [STO Basics](../../security-testing-orchestration/onboard-sto/security-testing-orchestration-basics.md).
+* For Harness Chaos Engineering, go to [Get started with Harness Chaos Engineering](/docs/category/get-started-with-harness-chaos-engineering-ce).

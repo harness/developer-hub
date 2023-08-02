@@ -1,8 +1,7 @@
 ---
 title: Override secrets in settings.xml at runtime
-description: Override Harness CI build settings before a build runs.
-
-sidebar_position: 40
+description: Override Maven settings before a build runs.
+sidebar_position: 70
 helpdocs_topic_id: 2hpamxaqf0
 helpdocs_category_id: mi8eo3qwxm
 helpdocs_is_private: false
@@ -88,4 +87,4 @@ And then you only need `mvn test` to run the test.
 
 ## See also
 
-* [Run a script in a Build stage](./run-a-script-in-a-ci-stage.md)
+* [Use Run steps](../run-ci-scripts/run-step-settings.md)

@@ -16,7 +16,69 @@ For Harness SaaS release notes, go to [Harness SaaS Release Notes](https://devel
 
 Release notes are displayed with the most recent release first.
 
-## July 12, 2023, patch release for version 79421
+## July 31, 2023, patch release for version 79819
+
+This release includes the following module and component versions.
+
+| **Name** | **Version** |
+| :-- | :-- |
+| Manager | 79819 |
+| Watcher | 78424 |
+| Verification Service | 79819 |
+| UI | 79800 |
+| Learning Engine | 67903 | 
+| Gateway | 11201 |
+
+### What's new
+
+- Upgraded the delegate JRE to 11.0.19_7. (PL-37994)
+
+- Free, Community, and Paid accounts can now have a maximum of 100, 100, and 50000 users, respectively. (PL-39235)
+
+- Enhanced the application handling mechanism when the `HARNESS_STATUS_IDENTIFIER` environment variable is not set to `ACTIVE`. (CDS-68821)
+
+- You can now skip steady state checks for native Helm deployments. This helps avoid Harness running unnecessary checks for resources where this is not required. This option is available in Helm Deployment and Helm Rollback steps. This feature requires delegate version 1.0.797xx or higher. (CDS-70124)
+
+### Early access
+
+This release does not include any early access features.
+
+### Fixed issues
+
+- Helm delegate installation failed in Self-Managed Enterprise Edition. (PL-39028)
+
+- Improved error handling mechanism when Helm manifests are not fetched from the Artifactory repository. (CDS-68251, ZD-37458)
+
+- Service instances were not showing correctly for Tanzu deployments. (CDS-68737, ZD-42950)
+
+   Some instances were not showing up on the **Services** dashboard. This fix ensures the **Services** dashboard shows the correct Tanzu instances.
+
+- Helm execution failed with `KubernetesClientException` error. (CDS-70386, ZD-45051)
+
+   The Kubernetes GET APIs returned a 400 bad request during steady state check. This was occurring when Harness used a fabric8 client with Kubernetes cluster version < 1.16, or when the feature flag, `HELM_STEADY_STATE_CHECK` is turned off.
+
+   This issue is fixed.
+
+- Fixed an issue where the Google Cloud Build (GCB) triggers were throwing an invalid credentials error intermittently. (CDS-70560, ZD-40187)
+
+   This item requires Harness Delegate version 79707. For information about features that require a specific delegate version, go to [Delegate release notes](/release-notes/delegate).
+
+- Kubernetes deployments timed out and failed when listing pods. (CDS-71328, ZD-45584)
+
+  This issue is fixed by modifying the delegate's Kubernetes API client timeout. 
+
+  Harness Delegate uses Kubernetes Java client to make programmatic API calls to the Kubernetes server. The API client uses an OkHttp client whose default [read timeout](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/read-timeout/) and [connect timeout](https://square.github.io/okhttp/4.x/okhttp/okhttp3/-ok-http-client/-builder/connect-timeout/) values are set to 120 and 60 seconds respectively. These values can be configured by using environment variables, modifying the delegate's container environment. The values must be specified in seconds. 
+
+  The environment variables for these timeouts are:
+
+  - Read timeout: `K8S_API_CLIENT_READ_TIMEOUT`
+  - Connect timeout: `K8S_API_CLIENT_CONNECT_TIMEOUT`
+
+- The delegate connectivity capability check for Azure Web App deployments failed. (CDS-71432, ZD-44862)
+
+   This issue is fixed by using task category mapping to assign the Azure App Services task type deployments to specific delegates.
+
+### July 12, 2023, patch release for version 79421
 
 Patch releases for Harness Self-Managed Enterprise Edition include minor new features, bug fixes, and updates to address potential security vulnerabilities.
 
