@@ -1,6 +1,6 @@
-# Developing an Authentication Secret for Conducting Experiments on the GCP
+# Create an authentication secret for conducting experiments on GCP
 
-**Derive Service Account (SA) from GCP**
+## Create a service account in GCP to create the secret
 
 1. Set your current project. Replace &lt;project-id&gt; with your project ID:
 
