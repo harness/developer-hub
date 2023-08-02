@@ -1,8 +1,8 @@
 # Create a secret for GCP experiments
 
-## Create a service account in GCP to create the secret
+You must create a service account to derive the authentication secret to run experiments on GCP.
 
-To create the secret:
+To create the service account and secret:
 
 1. Set your current project. Replace &lt;project-id&gt; with your project ID:
 
