@@ -21,11 +21,19 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
 ## Latest - August 02, 2023, version 80100
 
-### Deprecation notice
+### Deprecation notices
+
+#### Helm 2
 
 import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
 
 <Helmdep />
+
+#### Kustomize 3.4.5
+
+import Kustomizedep from '/release-notes/shared/kustomize-3-4-5-deprecation-notice.md'
+
+<Kustomizedep />
 
 ```mdx-code-block
 <Tabs>
