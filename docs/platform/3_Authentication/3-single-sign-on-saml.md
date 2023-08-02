@@ -10,7 +10,7 @@ helpdocs_is_published: true
 
 Harness supports Single Sign-On (SSO) with SAML, integrating with your SAML SSO provider to enable you to log your users into Harness as part of your SSO infrastructure. This document explains how to set up SAML authentication.
 
-:::note
+:::info note
 If the [Harness Self-Managed Enterprise Edition](../../self-managed-enterprise-edition/introduction/harness-self-managed-enterprise-edition-overview.md) version is not accessed using the HTTPS load balancer, SAML authentication will fail. Make sure you access the Harness Self-Managed Enterprise Edition version using an HTTPS load balancer, and not an HTTP load balancer.
 :::
 
@@ -736,7 +736,7 @@ Now that Keycloak is set up in Harness as a SAML SSO provider, you can enable an
 To prevent lockouts or in the event of OAuth downtime, a user that has Account Admin assigned on All Account Level Resources or All Resources Including Child Scopes can use the [**Local Login**](https://app.harness.io/auth/#/local-login) URL to log in and update the OAuth settings. _The user must have this access assigned directly on their Harness user, not via a group assignment._
 
 :::info note
-For the Harness production cluster prod-3, the local login URL is https://app3.harness.io/auth/#/local-login
+For the Harness production cluster prod-3, the local login URL is `https://app3.harness.io/auth/#/local-login`.
 :::
 
 1. Log in using **Harness Local Login**.
