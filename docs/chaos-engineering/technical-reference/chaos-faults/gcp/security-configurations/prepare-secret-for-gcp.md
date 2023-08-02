@@ -58,7 +58,9 @@
     client_x509_cert_url: "<client-x509-cert-url>"
   ```
 
-**Caution:** newline (\n) characters within the private key are crucial. Avoid using double quotes to prevent their loss.
+  :::caution
+  Newline (\n) characters within the private key are crucial. Avoid using double quotes to prevent their loss.
+  :::
 
 5. Create the secret YAML file in the chaos infra namespace using the command:
 
