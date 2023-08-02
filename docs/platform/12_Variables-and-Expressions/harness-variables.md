@@ -95,8 +95,7 @@ The pipeline and stage level variable expressions follow these formats:
 
 ### Expression examples
 
-Here is a simple example of a Shell Script step echoing some common variable expressions.
-
+Here is an example of a Shell script step echoing some common variable expressions.
 
 ```
 echo "Harness account name: "<+account.name>  
@@ -128,7 +127,6 @@ echo "infrastructure releaseName: "<+infra.releaseName>
 
 Here is an example of the output.
 
-
 ```
 Harness account name: Harness.io  
   
@@ -159,7 +157,7 @@ infrastructure releaseName: docs
 Command completed with ExitCode (0)
 ```
 
-Here is another example on how to use `<+stage.variables>`
+Here is another example of how to use `<+stage.variables>`.
 
 ```
 for var in <+stage.variables>;
@@ -174,7 +172,7 @@ do
 done
 ```
 
-The above bash-script prints all the key-value pairs for the stage variables.
+The above Bash script prints all the key-value pairs for the stage variables.
 If the `<+stage.variables>` is `{"a":"A","b":"B","c":"C"}` then the output will be as follows:
 
 ```
