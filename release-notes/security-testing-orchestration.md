@@ -51,7 +51,7 @@ This feature is behind the Feature Flag `STO_BASELINE_REGEX`. For more informati
 ```
 ##### Fixed issue
 
-* Fixed a Fossa ingestion issue that caused the step to fail with a 400 client error. (CDS-6120, ZD-46601)
+* Updated a Fossa runner image to fix an issue that caused the step to fail with a 400 client error. (CDS-6120, ZD-46601)
 
 ```mdx-code-block
   </TabItem>
