@@ -32,12 +32,11 @@ import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md'
   <TabItem value="What's new">
 ```
 
-- You can now edit Git details after the pipeline is configured and saved. This can be very useful in Git Experience workflows. For example, this enables you to move your YAML configs from one location to another in your Git configs repositories. (CDS-66621)
+- Upgrade Helm binary from version 3.8 to 3.12. (CDS-58931)
 
-  The following Git settings can be modified through the Harness UI: 
-  * Git connector
-  * Repository
-  * YAML path
+- Upgrade of go-template binary to version 0.4.3, which uses go version 1.20. (CDS-58919)
+
+- Removed Helm version 3.1 from immutable delegate. (CDS-58892, ZD-47520, ZD-48553)
 
 
 ```mdx-code-block
@@ -51,6 +50,82 @@ This release does not include early access features.
   </TabItem>
   <TabItem value="Fixed issues">
 ```
+
+<!-- from delegate relnotes https://harness.atlassian.net/wiki/spaces/PD/pages/21453603119/Delegate+NG+Release+SAAS+July+26th+2023+for+801xx-+Build -->
+
+- Fixed an issue where users could not use the Blue Green Stage Scale Down step with a manifest kind that was not present in the Kind list used by Harness. Now, the Blue Green Stage Scale Down Step will not fail for unknown manifest kinds. (CDS-74259, ZD-47431)
+
+- Fixed an issue that resulted in failures when deploying a Tanzu service with a vars.yaml file. (CDS-74163, ZD-47412)
+
+  You can now provide routes as variables in your TAS manifest, like this:
+
+  Sample TAS manifest:
+
+  ```yaml
+  applications:
+  - name: ((NAME))
+      memory: 500M
+      instances: 1
+      routes: ((ROUTES))
+  ```
+  Sample vars manifest:
+  ```yaml
+  NAME: harness_<+service.name>_app
+  ROUTES:
+      - route: route1.apps.tas-harness.com
+      - route: route2.apps.tas-harness.com
+  ```
+
+- Fixed an issue where the Terraform Plan step would exit with code 0 even when there was a change as per the generated plan. This would happen when using the **Export JSON representation of Terraform Plan** option. Now, the step exits with the correct code (2) based on the `terraform plan` command. (CDS-74144, ZD-47379)
+
+-  Fixed an issue where command execution logs were incomplete even though the pipeline ran successfully. This issue was observed when using Command steps in SSH or WinRM deployments. (CDS-74042, ZD-46904)
+
+- Fixed an issue where the Override Image Connector did not properly configure the image path in the container step.
+This issue has been resolved. The Override Image Connector now correctly configures the image path, including the hostname. (CDS-73727, ZD-43089, ZD-46916, ZD-47578, ZD-47716)
+
+- Fixed an issue where WinRM deployments would not honor the configured timeout. For example, the step would time out out by default in 30 minutes even when the configured timeout was 1 day. Now, the WinRM session timeout will be set to maximum of step timeout configured and 30 minutes. (CDS-73641, ZD-46904, ZD-48180)
+
+  This fix is behind the feature flag DISABLE_WINRM_COMMAND_ENCODING. Contact Harness Support to enable this fix.
+
+- Fixed an issue where Helm deployment steps timed out after the initial installation/upgrade phase, preventing the execution of a Helm rollback step. (CDS-73264, ZD-46163)
+
+- Fixed an issue in Artifactory deployments where the **Artifact Path** pull-down menu would populate even when the Artifactory connector failed to process a regular expression. Now, when a regex is supplied to an artifact tag in the pipeline for a service, the **Artifact Path** menu populates correctly based on the regex. (CDS-72737, ZD-46236)
+
+```mdx-code-block
+  </TabItem>
+</Tabs>
+```
+
+
+## Previous releases
+
+<details>
+<summary>2023 releases</summary>
+
+#### July 27, 2023, version 80018
+
+##### Deprecation notice
+
+<!-- import Helmdep from '/release-notes/shared/helm-2-deprecation-notice.md' -->
+
+<Helmdep />
+
+##### What's new
+
+- You can now edit Git details after the pipeline is configured and saved. This can be very useful in Git Experience workflows. For example, this enables you to move your YAML configs from one location to another in your Git configs repositories. (CDS-66621)
+
+  The following Git settings can be modified through the Harness UI: 
+  * Git connector
+  * Repository
+  * YAML path
+
+
+##### Early access
+
+
+This release does not include early access features.
+  
+##### Fixed issues
 
 
 - Fixed an error-handling issue with Native Helm deployment failures. Previously, the pipeline printed only the last line of the error message in the console and ignored previous error lines, which resulted in a partial explanation. The pipeline now prints all lines in the error message, which provides a better understanding. (CDS-74348)
@@ -103,17 +178,6 @@ This release does not include early access features.
   With this fix, the pipeline fails at the very beginning of the step execution if the connector type is incorrect or not present. This avoids repeated polling and delayed failure. 
 
 - Error messages from health source providers are now included in API responses for improved user experience and debugging efficiency. (OIP-657)
-
-```mdx-code-block
-  </TabItem>
-</Tabs>
-```
-
-
-## Previous releases
-
-<details>
-<summary>2023 releases</summary>
 
 #### July 18, 2023, version 79916
 
