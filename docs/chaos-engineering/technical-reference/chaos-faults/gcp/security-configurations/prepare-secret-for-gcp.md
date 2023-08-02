@@ -8,13 +8,13 @@
   gcloud config set project <project-id>
   ```
 
-1. Create a new service account. Replace &lt;service-account-name&gt; with the name you want to give to the service account:
+2. Create a new service account. Replace &lt;service-account-name&gt; with the name you want to give to the service account:
 
   ```bash
   gcloud iam service-accounts create <service-account-name>
   ```
 
-1. After the service account is created, you can generate a new JSON key file. Replace &lt;service-account-name&gt; with the name of your service account and &lt;key-file&gt; with the path where you want to save the key file:
+3. After the service account is created, you can generate a new JSON key file. Replace &lt;service-account-name&gt; with the name of your service account and &lt;key-file&gt; with the path where you want to save the key file:
 
   ```bash
   gcloud iam service-accounts keys create <key-file> \
@@ -37,7 +37,7 @@
       "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/<service-account-name>%40<project-id>.iam.gserviceaccount.com"
   }
   ```
-1. Prepare the secret YAML based on this JSON:
+4. Prepare the secret YAML based on this JSON:
 
   ```yaml
   apiVersion: v1
@@ -49,7 +49,7 @@
     type: "<type>"
     project_id: "<project-id>"
     private_key_id: "<private-key-id>"
-    private_key: "<private-key>"
+    private_key: <private-key>
     client_email: "<client-email>"
     client_id: "<client-id>"
     auth_uri: "<auth-uri>"
@@ -58,7 +58,9 @@
     client_x509_cert_url: "<client-x509-cert-url>"
   ```
 
-1. Create the secret YAML file in the chaos infra namespace using the command:
+**Caution:** newline (\n) characters within the private key are crucial. Avoid using double quotes to prevent their loss.
+
+5. Create the secret YAML file in the chaos infra namespace using the command:
 
   ```bash
   kubectl apply -f secret.yaml -n <CHAOS-NAMESPACE>
