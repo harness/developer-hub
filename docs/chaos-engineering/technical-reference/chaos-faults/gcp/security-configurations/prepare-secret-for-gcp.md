@@ -1,4 +1,7 @@
-# Create an authentication secret for conducting experiments on GCP
+---
+Title: Create an authentication secret for GCP experiments
+sidebar_label: Create a secret
+---
 
 ## Create a service account in GCP to create the secret
 
