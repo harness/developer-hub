@@ -25,7 +25,7 @@ The following diagram illustrates a CI build farm. The [Harness Delegate](/docs/
 For your Google Cloud VM configuration:
 
 * The delegate VM must use a machine type with 4 vCPU and 16 GB memory or more.
-* Harness recommends the [Ubuntu 18.04 LTS (Bionic)](https://console.cloud.google.com/marketplace/product/ubuntu-os-cloud/ubuntu-bionic?project=docs-play) machine image.
+* Harness recommends an Ubuntu 20.04 LTS machine image, such as [Focal](https://console.cloud.google.com/marketplace/product/ubuntu-os-cloud/ubuntu-focal) or [Jammy](https://console.cloud.google.com/marketplace/product/ubuntu-os-cloud/ubuntu-jammy).
 * The VM must allow ingress access on ports 22 and 9079.
 
 To find images to use on Google Compute Engine, use `gcloud compute images list`.
@@ -41,7 +41,7 @@ Valid image references follow the format of `projects/PROJECT/global/images/IMAG
 
 ## Configure the Drone pool on the Google VM
 
-The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the pipeline. A pool is a group of instantiated VMs that are immediately available to run CI pipelines.
+The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the pipeline. A pool is a group of instantiated VMs that are immediately available to run CI pipelines. You can configure multiple pools in `pool.yml`, such as a Windows VM pool and a Linux VM pool.
 
 1. Create a `/runner` folder on your delegate VM and `cd` into it:
 

@@ -52,6 +52,7 @@ These are the requirements for AWS EC2 configuration.
 
 * The delegate VM must use an Ubuntu AMI that is `t2.large` or greater.
 * Build VMs (in your VM pool) can be Ubuntu, AWS Linux, or Windows Server 2019 (or higher).
+* All machine images must have Docker installed.
 
 ### Authentication
 
@@ -85,7 +86,7 @@ To use IAM roles with Windows VMs, go to the AWS documentation for [additional c
 ### VPC, ports, and security groups
 
 * Set up VPC firewall rules for the build instances on EC2.
-* Allow ingress access to ports 22 and 9079.
+* Allow ingress access to ports 22 and 9079. Port 9079 is required for security groups within the VPC.
 * You must also open port 3389 if you want to run Windows builds and be able to RDP into your build VMs.
 * Create a Security Group. You need the Security Group ID to configure the runner. For information on creating Security Groups, go to the AWS documentation on [authorizing inbound traffic for your Linux instances](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/authorizing-access-to-an-instance.html).
 
@@ -99,9 +100,12 @@ To use IAM roles with Windows VMs, go to the AWS documentation for [additional c
 ## Configure the Drone pool on the AWS VM
 
 <!-- I don't think this is possible anymore because of the new delegate install UI.
+
 :::tip Option: Use Terraform
 
-If you have Terraform and Go installed on your EC2 environment, you can use the [cie-vm-delegate script](https://github.com/harness/cie-vm-delegate). Follow the setup instructions described in the script's README.
+If you have Terraform and Go installed on your EC2 environment, you can use the [cie-vm-delegate script](https://github.com/harness/cie-vm-delegate). Follow the setup instructions described in the script's README.-->
+
+<!-- Might need these steps - I think the Terraform workflow still uses docker-compose:
 
 When you reach the step to download the delegate YAML, follow these steps to get the docker-compose.yaml file:
 
@@ -121,7 +125,7 @@ You may need to add the runner spec to the delegate definition:
        image: drone/drone-runner-aws
        network_mode: "host" 
        volumes:  
-        - ./runner:/runner  
+        - /runner:/runner  
        entrypoint: ["/bin/drone-runner-aws", "delegate", "--pool", "pool.yml"]  
        working_dir: /runner
    ```
@@ -137,7 +141,7 @@ The Harness Delegate and runner run on the same VM. The runner communicates with
 :::
 -->
 
-The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the pipeline. A pool is a group of instantiated VMs that are immediately available to run CI pipelines. To avoid unnecessary costs, you can configure AWS Linux and Windows VMs to hibernate when not in use.
+The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the pipeline. A pool is a group of instantiated VMs that are immediately available to run CI pipelines. You can configure multiple pools in `pool.yml`, such as a Windows VM pool and a Linux VM pool. To avoid unnecessary costs, you can configure `pool.yml` to hibernate VMs when not in use.
 
 1. Create a `/runner` folder on your delegate VM and `cd` into it:
 
@@ -355,4 +359,36 @@ Configure your pipeline's **Build** (`CI`) stage to use your AWS VMs as build in
 
 ## Troubleshooting
 
-When you run the pipeline, if VM creation in the runner fails with the error `no default VPC`, then set `subnet_id` in `pool.yml`.
+### Build VM creation fails with no default VPC
+
+When you run the pipeline, if VM creation in the runner fails with the error `no default VPC`, then you need to set `subnet_id` in `pool.yml`.
+
+### CI builds stuck at the initialize step on health check
+
+If your CI build gets stuck at the initialize step on the health check for connectivity with lite-engine, either lite-engine is not running on your build VMs or there is a connectivity issue between the runner and lite-engine.
+
+1. Verify that lite-engine is running on your build VMs.
+   1. SSH/RDP into a VM from your VM pool that is in a running state.
+   2. Check whether the lite-engine process is running on the VM.
+   3. Check the cloud init output [logs](#logs) to debug issues related to startup of the lite-engine process. The lite-engine process starts at VM startup through a cloud init script.
+2. If lite-engine is running, verify that the runner can communicate with lite-engine from the delegate VM.
+   1. Run `nc -vz <build-vm-ip> 9079` from the runner.
+   2. If the status is not successful, make sure the security group settings in `runner/pool.yml` are correct, and make sure your [security group setup](#vpc-ports-and-security-groups) in AWS allows the runner to communicate with the build VMs.
+
+### Delegate connected but builds fail
+
+If the delegate is connected but your builds are failing, check the following:
+
+1. Make sure your the AMIs, specified in `pool.yml`, are still available.
+   * Amazon reprovisions their AMIs every two months.
+   * For a Windows pool, search for an AMI called `Microsoft Windows Server 2019 Base with Containers` and update `ami` in `pool.yml`.
+2. Confirm your [security group setup](#vpc-ports-and-security-groups) and security group settings in `runner/pool.yml`.
+
+### Logs
+
+* Linux
+   * lite-engine logs: `/var/log/lite-engine.log`
+   * cloud init output logs: `/var/log/cloud-init-output.log`
+* Windows
+   * lite engine logs: `C:\Program Files\lite-engine\log.out`
+   * cloud init output logs: `C:\ProgramData\Amazon\EC2-Windows\Launch\Log\UserdataExecution.log`

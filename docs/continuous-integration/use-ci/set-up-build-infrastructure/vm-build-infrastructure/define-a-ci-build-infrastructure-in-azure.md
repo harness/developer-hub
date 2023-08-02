@@ -54,7 +54,7 @@ You need to set up an Azure Application and VM. You must have access to Azure an
 
 ## Configure the Drone pool on the Azure VM
 
-The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the Pipeline. A pool is a group of instantiated VM that are immediately available to run CI Pipelines.
+The `pool.yml` file defines the VM spec and pool size for the VM instances used to run the Pipeline. A pool is a group of instantiated VM that are immediately available to run CI pipelines. You can configure multiple pools in `pool.yml`, such as a Windows VM pool and a Linux VM pool.
 
 1. Create a `/runner` folder on your delegate VM and `cd` into it:
 
