@@ -94,8 +94,6 @@ This release does not include any early access features.
   - [CVE-2023-29404](https://nvd.nist.gov/vuln/detail/CVE-2023-29404)
   - [CVE-2023-29403](https://nvd.nist.gov/vuln/detail/CVE-2023-29403)
 
-- An AI-powered chatbot named Ask AIDA has been integrated to make searches within the Harness Docs. You can access the chatbot by clicking the icon located at the bottom-right corner of the screen. (PL-39613)
-
 - You can now view delegate logs when validating a connector that uses a delegate to establish connections. (PL-37919)
 
 - Previously, when password-based authentication was used with OAuth, the functionality of auto-accepting invites was not available. Now, when Oauth is enabled for an account, invites are automatically accepted. (PL-31936, ZD-40182)
@@ -110,7 +108,9 @@ This item requires Harness Delegate version 79904. For information about feature
 
 ##### Early access
 
-This release does not include any early access features.
+- An AI-powered chatbot named Ask AIDA has been integrated to make searches within the Harness Docs. You can access the chatbot by clicking the icon located at the bottom-right corner of the screen. (PL-39613)
+
+  This feature is behind the feature flag `PL_AI_SUPPORT_CHATBOT`. 
 
 ##### Fixed issues
 

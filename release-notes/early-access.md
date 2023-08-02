@@ -30,6 +30,12 @@ Harness deploys changes to Harness SaaS clusters on a progressive basis. This me
 
    This functionality is behind a feature flag, `DELEGATE_TASK_CAPACITY_CHECK`. When the feature flag is enabled, the task is broadcast every minute in Harness Manager until it expires.
 
+### Harness Platform, version 79916
+
+- An AI-powered chatbot named Ask AIDA has been integrated to make searches within the Harness Docs. You can access the chatbot by clicking the icon located at the bottom-right corner of the screen. (PL-39613)
+
+  This feature is behind the feature flag `PL_AI_SUPPORT_CHATBOT`. 
+
 ## July 12, 2023
 
 ### Continuous Integration, version 5003
