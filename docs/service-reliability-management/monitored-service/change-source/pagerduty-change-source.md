@@ -39,7 +39,7 @@ To add PagerDuty as a change source:
 1. In your Harness project, go to **Service Reliability** > **Monitored Services**.  
    A list of monitored services is displayed.
    
-2. Locate the monitored service for which you want to add the PagerDuty as change source, select the three vertical dots next to it, and then select **Edit**.
+2. Locate the monitored service for which you want to add the PagerDuty as the change source, select the three vertical dots next to it, and then select **Edit**.
 
 3. In the **Configurations** tab, under **Define Your Sources**, select **+ Add New Change Source**.
    
