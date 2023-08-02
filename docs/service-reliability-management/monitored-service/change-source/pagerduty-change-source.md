@@ -24,11 +24,12 @@ To add a PagerDuty connector:
 5. Choose one of the following delegate setup options:
 
    - **Use any available Delegate**: Allows Harness to automatically select a Delegate at runtime.
-   - **Only use Delegates with all of the following tags**: Lets you specify the tags of specific Delegates that you want to use. Add the specific Delegate by selecting the tags from the dropdown list or entering the delegate tag manually.
 
-6. Select **Save and Continue**. Harness verifies the connection to PagerDuty using the secret you provided.
+    - **Only use Delegates with all of the following tags**: Lets you specify the tags of specific Delegates that you want to use. Add the specific Delegate by selecting the tags from the dropdown list or entering the delegate tag manually.
 
-7. Select **Finish**. The connector gets added to the Project Connects list. 
+7. Select **Save and Continue**. Harness verifies the connection to PagerDuty using the secret you provided.
+
+8. Select **Finish**. The connector gets added to the Project Connects list. 
 
 
 ### Add PagerDuty as change source
@@ -53,3 +54,4 @@ To add PagerDuty as a change source:
 8. Select **Apply Selected** and then **Submit**.  
    
     PagerDuty is added as a change source. Incidents reported by PagerDuty are displayed on the Service Health page of the monitored service.
+   
