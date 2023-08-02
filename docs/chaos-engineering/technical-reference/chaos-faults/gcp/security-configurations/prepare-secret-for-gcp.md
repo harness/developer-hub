@@ -1,9 +1,8 @@
----
-Title: Create an authentication secret for GCP experiments
-sidebar_label: Create a secret
----
+# Create a secret for GCP experiments
 
 ## Create a service account in GCP to create the secret
+
+To create the secret:
 
 1. Set your current project. Replace &lt;project-id&gt; with your project ID:
 
