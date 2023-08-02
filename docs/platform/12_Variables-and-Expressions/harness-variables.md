@@ -175,7 +175,7 @@ done
 ```
 
 The above bash-script prints all the key-value pairs for the stage variables.
-If the `<+stage.variables>` is {} then the output will be as follows:
+If the `<+stage.variables>` is `{"a":"A","b":"B","c":"C"}` then the output will be as follows:
 
 ```
 Executing command ...
