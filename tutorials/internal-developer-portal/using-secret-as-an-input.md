@@ -4,7 +4,7 @@ description: Create a secret input field for developers to provide their credent
 sidebar_position: 20
 ---
 
-Sometimes, as a platform engineer, you might want your developers to enter their credentials when using a software template in IDP. This is useful when, for example, you want to use developers' GitHub credentials in a pipeline and create a repository on their behalf. This is a good approach because it ensures that developers create repositories that they can access and that you do not have to provide a superuser token for such tasks. This tutorial explains how you can configure such software templates and the corresponding pipeline.
+Sometimes, as a platform engineer, you might want your developers to enter their credentials when using a software template in IDP. This is useful when, for example, you want to use developers' GitHub credentials in a pipeline and create a repository on their behalf. This is a good approach because it ensures that developers create repositories that they can access and that you do not have to provide a superuser token for such tasks. This tutorial explains how you can configure such a software template and the corresponding pipeline.
 
 ## Prerequisites
 
@@ -44,7 +44,7 @@ spec:
 
 ### 2. Add a step to create the secret
 
-Use the `harness:create-secret` action in a step in the `template.yaml` file to create a Harness secret from the developer's input:
+Use the `harness:create-secret` action in a step in the `template.yaml` file to create a Harness secret from the developer's input. The following step creates a secret in the specified project, so make sure that the project contains the service onboarding pipeline in which you plan to reference the secret:
 
 ```yaml
 spec:
@@ -60,7 +60,7 @@ spec:
         apikey: ${{ parameters.token }}
 ```
 
-This step creates a secret in the specified Harness project. The output of this action includes a field named `secretId`. This field stores the generated secret's ID. You will use the secret ID in subsequent steps.
+The output of this action includes a field named `secretId`. This field stores the generated secret's ID. You will use the secret ID in subsequent steps.
 
 ### 3. Use the secret as a runtime input in the pipeline
 
@@ -86,7 +86,7 @@ spec:
 
 ### 4. Delete secret after the job is done
 
-Use the `harness:delete-secret` action to remove the secret from the project as you will note require it.
+Use the `harness:delete-secret` action to remove the secret from the project as you will no longer need it.
 
 ```yaml
 spec:
