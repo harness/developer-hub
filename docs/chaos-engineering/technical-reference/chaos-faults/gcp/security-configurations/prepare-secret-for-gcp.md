@@ -1,6 +1,6 @@
-# Prepare a secret for GCP experiments
+# Developing an Authentication Method for Conducting Experiments on the Google Cloud Platform (GCP)
 
-**Derive SA from GCP**
+**Derive Service Account (SA) from GCP**
 
 1. Set your current project. Replace &lt;project-id&gt; with your project ID:
 
