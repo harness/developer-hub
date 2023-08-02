@@ -252,7 +252,7 @@ flowchart TD
 <details>
 <summary>Default role assignment configurations</summary>
 
-The following table describes the role assignments (permissions and access) that result from combinations of default roles and resource groups.
+The following table describes the role assignments (permissions and access) that result from combinations of default roles and resource groups. This table doesn't include all module-specific default roles, such as CET Admin or Chaos Admin.
 
 For information about default roles and resource groups, go to [Roles](#roles) and [Resource groups](#resource-groups).
 
@@ -306,22 +306,9 @@ ABAC provides highly refined control by using rules to restrict access based on 
 
 ## Configure RBAC in Harness
 
-To configure RBAC in Harness, you must:
+Before configuring RBAC in Harness, make sure you understand the [RBAC components](#rbac-components) and [Role assignment](#role-assignment).
 
-1. Understand the [RBAC components](#rbac-components) and [Role assignment](#role-assignment).
-2. [Create roles](/docs/platform/role-based-access-control/add-manage-roles)
-3. [Create resource groups](/docs/platform/role-based-access-control/add-resource-groups) and, optionally, apply [ABAC](./attribute-based-access-control.md).
-4. [Create user groups](/docs/platform/role-based-access-control/add-user-groups), [create service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account), and [add users](/docs/platform/role-based-access-control/add-users). You can create user groups and users directly in Harness or you can use automated provisioning, including:
-
-   * [Okta SCIM](./provision-users-with-okta-scim.md)
-   * [Azure AD SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
-   * [OneLogin SCIM](./provision-users-and-groups-with-one-login-scim.md)
-   * [Just-in-time provisioning](./provision-use-jit.md)
-
-5. [Assign roles and resource groups](#role-assignment) to users, user groups, and service accounts.
-6. If you have not already done so, [configure authentication](/docs/platform/Authentication/authentication-overview).
-
-### Permissions required
+### Required permissions
 
 To configure RBAC in Harness, you must be an admin in the relevant account, organization, or project.
 
@@ -334,154 +321,197 @@ If you are not an admin, you can configure some aspects of RBAC if you have the 
 * Resource groups: Requires **View**, **Create/Edit**, and **Delete** permissions for **Resource Groups**.
 * Roles: Requires **View**, **Create/Edit**, and **Delete** permissions for **Roles**.
 
-### Example: Configure RBAC for a Pipeline Owner
+### RBAC workflow summary
 
-This example walks through configuring RBAC for a Pipeline Creation/Owner, Execution, and Connector Admin. It demonstrates how to:
+To configure RBAC in Harness, you must:
 
-* Create custom roles.
-* Create custom resource groups.
+1. [Create roles](/docs/platform/role-based-access-control/add-manage-roles)
+2. [Create resource groups](/docs/platform/role-based-access-control/add-resource-groups) and, optionally, apply [ABAC](./attribute-based-access-control.md).
+3. [Create user groups](/docs/platform/role-based-access-control/add-user-groups), [create service accounts](/docs/platform/role-based-access-control/add-and-manage-service-account), and [add users](/docs/platform/role-based-access-control/add-users).
+4. [Assign roles and resource groups](#role-assignment) to users, user groups, and service accounts.
+5. If you have not already done so, [configure authentication](/docs/platform/Authentication/authentication-overview).
 
-Let us look at a few examples to create a few custom Resource Groups and Roles and set up RBAC accordingly.
+:::tip Automatic provisioning
 
-Let us set up access control for a custom Role called Pipeline Owner.
+You can create users and user groups directly in Harness, and you can use automated provisioning, including:
 
-Following are the components required for this RBAC setup:
+* [Okta SCIM](./provision-users-with-okta-scim.md)
+* [Azure AD SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
+* [OneLogin SCIM](./provision-users-and-groups-with-one-login-scim.md)
+* [Just-in-time provisioning](./provision-use-jit.md)
 
-* **Principal**: a User Group named `Pipeline Owners`.
-* **Resource Group**: a custom Resource Group named `All Pipeline Resources`.
-* **Role**: a custom Role named `Pipeline Admin`.
+With automated provisioning, users and user groups are imported from your IdP, and then you [assign roles and resource groups](#role-assignment) to the imported [principals](#principals) in Harness. You manage group metadata, group membership, and user profiles in your IdP, and you manage role and resource group assignments in Harness.
 
-The following table shows the Role Assignment for a Pipeline Owner:
+You can also create users and user groups directly in Harness, but any users or groups imported from your IdP must be managed in your IdP. For imported users and group, you can only change their role and resource group assignments in Harness.
 
-|  |  |  |  |  |
-| --- | --- | --- | --- | --- |
-| **Custom Role Name** | **Custom Resource Group Name** | **Resource Scope** | **Resources**  | **Permissions** |
-| **Pipeline Admin** | **All Pipeline Resources** | **All (including all Organizations and Projects)** | <li> Pipelines</li><li> Secrets</li><li>Connectors</li><li>Delegates</li><li> Environments &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li><li>Templates</li><li>Variables</li>| <li> View, Create/Edit, Delete, Execute Pipelines</li><li>View, Create/Edit, Access Secrets</li><li>View, Create/Edit, Delete, Access Connectors</li><li>View, Create/Edit Delegates</li><li>View, Create/Edit, Access Environments</li><li>View, Create/Edit, Access Templates</li><li>View, Create/Edit Variables</li>|
+:::
 
-#### Step 1: Create a User Group
+### RBAC workflow examples
 
-1. In your Harness Account, click **Account Settings**.
-2. Click **Access Control**.
-3. In **User Groups,** click **New User** **Group**. The New User Group settings appear.
-4. Enter a **Name** for your **User Group**. In this case, enter Pipeline Owners.
-5. Enter **Description** and [**Tags**](/docs/platform/20_References/tags-reference.md) for your **User Group**.
-6. Select Users under **Add Users**.
-7. Click **Save.**
+These examples walk through two specific RBAC configuration scenarios.
 
-Your User Group is now listed under User Groups.
+<details>
+<summary>Example: Configure RBAC for account-level pipeline ownership</summary>
 
-#### Step 2: Create a Custom Resource Group
+This example walks through an RBAC configuration that allows full control of pipelines and related resources (connectors, templates, and so on) across the entire account. This configuration uses a custom user group called *Pipeline Owners*, a custom role called *Pipeline Admin*, and a custom resource group called *All Pipeline Resources*.
 
-1. In your Harness Account, click **Account Settings**.
-2. Click **Access Control**.
-3. In **Resource Groups**, click **New Resource** **Group**. The New Resource Group settings appear.
-4. Enter a **Name** for your **Resource Group**. In this case, enter **All Pipeline Resources**.
-5. Enter **Description** and **Tags** for your **Resource Group**.
-6. Click **Save**.
-7. In **Resource Scope**, select **All (including all Organizations and Projects)**. This would mean the Principal can access the specified resources within the Account as well as those within the Organizations and their Projects.
+The *All Pipeline Resources* resource group exists at the account scope and allows access to pipelines, secrets, connectors, delegates, environments, templates, and variables at the account level and in all organizations and projects under the account.
+
+The *Pipeline Admin* role has the following permissions:
+
+* Pipelines: View, create/edit, delete, and execute
+* Secrets: View, create/edit, and access
+* Connectors: View, create/edit, delete, and access
+* Delegates: View and create/edit
+* Environments: View, create/edit, and access
+* Templates: View, create/edit, and access
+* Variables: View and create/edit
+
+#### Create the Pipeline Admin role
+
+1. In Harness, select **Account Settings**, and then select **Access Control**.
+2. Select **Roles** in the header, and then select **New Role**.
+3. For **Name**, enter `Pipeline Admin`. **Description** and **Tags** are optional.
+4. Select **Save**.
+5. Select the following permissions:
+
+   * For **Pipelines**, select **View**, **Create/Edit**, **Delete**, and **Execute**.
+   * For **Environments**, and then select **View**, **Create/Edit**, and **Access**.
+   * Under **Shared Resources**, select the following:
+      * For **Templates**, select **View**, **Create/Edit**, and **Access**.
+      * For **Secrets**, select **View**, **Create/Edit**, and **Access**.
+      * For **Connectors**, select **View**, **Create/Edit**, **Delete**, and **Access**.
+      * For **Variables**, select **View** and **Create/Edit**.
+      * For **Delegates**, select **View** and **Create/Edit**.
+
+6. Select **Apply Changes**.
+
+For more information about roles and permissions, go to [Add and Manage Roles](./add-manage-roles.md) and the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference).
+
+#### Create the custom resource group
+
+1. In Harness, select **Account Settings**, and then select **Access Control**.
+2. Select **Resource Groups** in the header, and then select **New Resource Group**.
+3. For **Name**, enter `All Pipeline Resources`. **Description**, **Tags**, and **Color** are optional.
+4. Select **Save**.
+5. For **Resource Scope**, select **All (including all Organizations and Projects)**. This means the resource group grants access to the specified resources at the account level and in all organizations and projects under the account.
 
    ![](./static/set-up-rbac-pipelines-41.png)
 
-8. In Resources, select **Specified**.
+6. For **Resources**, select **Specified**, and then select the following resources:
+
+   * Environments
+   * Variables
+   * Templates
+   * Secrets
+   * Delegates
+   * Connectors
+   * Pipelines
 
    ![](./static/set-up-rbac-pipelines-42.png)
 
-9. Select the following resources:
-	1. Environments
-	2. Variables
-	3. Templates
-	4. Secrets
-	5. Delegates
-	6. Connectors
-	7. Pipelines
-10. Click **Save**.
+7. Select **Save**.
 
-#### Step 3: Create a Custom Role
+For more information about creating resource groups, go to [Add and Manage Resource Groups](./add-resource-groups.md).
 
-1. In your Harness Account, click **Account Settings**.
-2. Click **Access Control**.
-3. In **Roles**, click **New Role**. The New Role settings appear.
-4. Enter a **Name** for your **Role**. In this case, enter **Pipeline Admin.**
-5. Enter optional **Description** and **Tags** for your **Role**.
-6. Click **Save**.
-7. Select the following [permissions](/docs/platform/role-based-access-control/permissions-reference) for the resources:
-	1. View, Create/Edit, Delete, Execute Pipelines
-	2. View, Create/Edit, Access Secrets
-	3. View, Create/Edit, Delete, Access Connectors
-	4. View, Create/Edit Delegates
-	5. View, Create/Edit, Access Environments
-	6. View, Create/Edit, Access Templates
+#### Create the Pipeline Owners user group
 
-#### Step 4: Assign Role Permission to the User Group
+1. In Harness, select **Account Settings**, and then select **Access Control**.
+2. Select **User Groups** in the header, and then select ***New User Group**.
+3. For **Name**, enter `Pipeline Owners`. **Description** and **Tags** are optional.
+4. In **Add Users**, select users to add to the group.
+5. Select **Save**.
 
-Let us now complete the [Role Assignment](/docs/platform/role-based-access-control/rbac-in-harness#role-assignment) for the User Group to complete the RBAC set up for Pipeline Owner.
+For more information about user groups and users, go to [Add and Manage User Groups](./add-user-groups.md) and [Add and Manage Users](./add-users.md).
 
-1. In your Harness Account, click **Account Settings**.
-2. Click **Access Control**.
-3. In **User Groups,** locate the User Group you just created and click on **Role**.
+:::tip Automatic provisioning
 
-   ![](./static/set-up-rbac-pipelines-43.png)
+You can create user groups and users directly in Harness, and you can use automated provisioning, including:
 
-   The **Add Role** settings appear.
+* [Okta SCIM](./provision-users-with-okta-scim.md)
+* [Azure AD SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
+* [OneLogin SCIM](./provision-users-and-groups-with-one-login-scim.md)
+* [Just-in-time provisioning](./provision-use-jit.md)
 
-4. In **Assign Role Bindings**, click **Add**.
-5. In **Role**, select the custom Role that you created.
-6. In **Resource** **Group**, select the custom Resource Group you just created.
+When you use automated provisioning, users and user groups are imported from your IdP, and then you assign roles and resource groups to the imported [principals](#principals) in Harness. For imported users and groups, you manage group metadata, group membership, and user profiles in your IdP, and you manage their role and resource group assignments in Harness. You can also create users and user groups directly in Harness, but any users or groups imported from your IdP must be managed in your IdP.
 
-   ![](./static/set-up-rbac-pipelines-44.png)
+For example, if you use Okta as your IdP, you could create a Pipeline Owners group in Okta and assign users to that group in Okta. When the Pipeline Owners group is first imported into Harness, the group and the group members are not associated with any roles or resource groups. You would [create the pipeline admin role](#create-the-pipeline-admin-role) and [create the custom resource group](#create-the-custom-resource-group) in Harness, and then [assign roles and resource groups](#assign-the-role-and-resource-group-to-the-user-group) to the user group. The group members inherit permissions and access from the role and resource group that is assigned to the user group.
 
-7. Click **Apply**.
+:::
 
+#### Assign the role and resource group to the user group
 
-### Example: Control access to execute pipelines
+1. Harness, select **Account Settings**, and then select **Access Control**.
+3. Select **User Groups** in the header, locate the **Pipeline Owners** group, and select **Manage Roles**.
+4. Under **Role Bindings**, select **Add**.
+5. For **Role**, select the **Pipeline Admin** role.
+6. For **Resource Groups**, select the **All Pipeline Resources** group.
+7. Select **Apply**.
 
-The following example shows you how to set up access control for pipeline execution.
+For more information about assigning roles and resource groups, go to [Role assignment](#role-assignment).
 
-Pipelines are composite entities that can contain multiple stages like CI, CD, and STO. There can be many steps in each stage, such as build, test, push, and deploy. 
+</details>
 
-A pipeline can reference other resources in it like:
+<details>
+<summary>Example: Configure RBAC to run pipelines in a specific project</summary>
 
-- GitHub connector: Check out the code for the build.
+This example walks through an RBAC configuration that provides only the ability to run pipelines in a specific project. This configuration uses a custom user group called *Project Pipeline Runners*, custom role called *Pipeline Runner*, and a custom resource group called *All Project Pipelines and Connectors*.
 
-- Artifact repository connector: Fetch the image for deployment.
+Because pipelines involve multiple resources, such as connectors, secrets, and variables, the *Pipeline Runner* role requires the following permissions:
 
-- Cloud Provider connector: Get access to the infrastructure where deployment will happen.
+* **Execute** permission for pipelines.
+* **Access** permission for any resource types used in pipelines.
 
-- Secrets: Connect to various services.
+The *All Project Pipelines and Connectors* resource group exists at the project scope, and it only includes pipelines and resources related to pipelines (such as connectors). This restricts access to these specific resources within a specific project only.
 
-To execute a pipeline, the principals need the following permissions:
+#### Create the Pipeline Runner role
 
-- Execute permissions on the pipeline.
+1. In Harness, go to the project where you want to configure RBAC.
 
-- Access permissions for the resources used in the pipeline.
+   To configure RBAC for a specific project, you must navigate to that project first.
 
-#### Create a principal, role, and resource group
+2. Select **Project Setup**, and then select **Access Control**.
+3. Select **Roles** in the header, and then select **New Role**.
+4. For **Name**, enter `Pipeline Runner`. **Description** and **Tags** are optional.
+5. Select **Save**.
+6. Select the following permissions:
 
-The following example shows you how to create a user group as the principal.
-1. Create a [user group](/docs/platform/role-based-access-control/add-user-groups) named `SampleUG` in the account scope.
-2. Create a [custom role](/docs/platform/role-based-access-control/add-manage-roles) named `SampleRole` in the project scope.
-   Add the `Execute` permission for pipeline and `Access` permission for connectors in this role.
-3. Create a [custom resource group](/docs/platform/role-based-access-control/add-resource-groups) named `SampleResourceGroup` in the project scope.
-   Include pipelines and all the connectors your pipeline needs in this resource group.
+   * For **Pipelines**, select **Execute**.
+   * Under **Shared Resources**, select **Access** for **Connectors** and any other shared resources relevant to your pipelines, such as **Templates**, **Secrets**, **Variables**, or **Delegates**.
 
-   The following table explains the ways in which you can grant execute permission for a pipeline:
+7. Select **Apply Changes**.
 
-   |  Resource scope     |  Description     |
-   |  ---  |  ---  |
-   |  Grant execute permission on specific pipelines.    | Select specific pipelines in the resource group at the project level.<br/>**Note:** You cannot select specific pipelines when resource groups are created at the org or account scope. |
-   |  Grant execute permissions on all the pipelines in a specific project.    |   Select all the pipelines in the resource group created at the project level.    |
-   |  Grant execute permissions on all the pipelines in all the projects within an org.    |   Select scope of the resource group created at org level as `All` and select all the pipelines.    |
-   |  Grant execute permissions on all the pipelines in the entire account.    |  Select scope of the resource group created at account level as `All` and selecting all the pipelines.     |
+For more information about roles and permissions, go to [Add and Manage Roles](./add-manage-roles.md) and the [Permissions reference](/docs/platform/role-based-access-control/permissions-reference).
 
-   The following table explains the ways in which you can grant access permission for the required resources: 
+#### Create the project resource group
 
-   |  Resource scope     |   Description    |
-   |  ---  |  ---  |
-   |   Grant access permissions on specific resources.    |  Select specific resources in the resource group at the project, org or account scope.      |
-   |   Grant access permissions on all the resources in pipelines for a specific project.    |  Select all the resources used in the pipeline in the corresponding resource group created at the project scope.    |
-   |   Grant access permissions on all the resources used in the pipeline in the entire org.   |   Select scope of the resource group created at org scope as `All` and select all the resources used in the pipeline.   |
-   |   Grant access permissions on all the resources used in all the pipelines in the entire account.  |   Select scope of the resource group created at account level as `All` and select all the resources used in all the pipeline.    |
+1. In the same Harness project where you [created the Pipeline Runner role](#create-the-pipeline-runner-role), select **Project Setup**, and then select **Access Control**.
+2. Select **Resource Groups** in the header, and then select **New Resource Group**.
+3. For **Name**, enter `All Project Pipelines and Connectors`. **Description**, **Tags**, and **Color** are optional.
+4. Select **Save**.
+5. For **Resources**, select **Specified**, and then select **Pipelines**, **Connectors**, and any other shared resources relevant to your pipelines.
 
-4. Assign `SampleRole` and `SampleResourceGroup` to `SampleUG`.
+   After selecting resources, you can customize access further by configuring specific access for each resource type. For example, you can limit access to specific pipelines or connectors only.
 
-The members of `SampleUG` can now execute pipelines and access the connectors referenced in the pipeline.
+6. Select **Save**.
+
+In this example, the **Resource Scope** is locked to **Project only**, which means the resource group can only access the selected resources within this project. If your pipelines use connectors or other resources at a higher scope, you would need to configure RBAC at the account or org scope and then refine access by project. Similarly, if you wanted to create a user group that could run any pipeline in an organization or account, you would need to create the role, resource group, and user group at the account scope (by navigating to **Account Settings** and then selecting **Access Control**). Note that some refinement options, such as selecting specific pipelines, aren't available at higher scopes.
+
+For more information about creating resource groups, go to [Add and Manage Resource Groups](./add-resource-groups.md).
+
+#### Configure the user group
+
+1. In the same Harness project where you [created the Pipeline Runner role](#create-the-pipeline-runner-role), select **Project Setup**, and then select **Access Control**.
+2. Select **User Groups** in the header, and then select ***New User Group**.
+3. For **Name**, enter `Project Pipeline Runners`. **Description** and **Tags** are optional.
+4. In **Add Users**, select users to add to the group.
+5. Select **Save**.
+6. Next to the **Project Pipeline Runners** group, select **Manage Roles**
+7. Under **Role Bindings**, select **Add**.
+8. For **Role**, select the **Pipeline Runner** role.
+9. For **Resource Groups**, select the **All Project Pipelines and Connectors** group.
+10. Select **Apply**.
+
+For more information about user groups, users, and role/resource group assignments, go to [Add and Manage User Groups](./add-user-groups.md), [Add and Manage Users](./add-users.md), and [Role assignment](#role-assignment).
+
+</details>

@@ -12,6 +12,27 @@ Harness User Groups help you manage user access. Each member of a User Group inh
 
 This topic explains the steps to create and manage User Groups within Harness.
 
+:::tip Automatic provisioning
+
+You can create users and user groups directly in Harness, and you can use automated provisioning, including:
+
+* [Okta SCIM](./provision-users-with-okta-scim.md)
+* [Azure AD SCIM](./provision-users-and-groups-using-azure-ad-scim.md)
+* [OneLogin SCIM](./provision-users-and-groups-with-one-login-scim.md)
+* [Just-in-time provisioning](./provision-use-jit.md)
+
+With automated provisioning, users and user groups are imported from your IdP, and then you [assign roles and resource groups](#role-assignment) to the imported [principals](#principals) in Harness. You manage group metadata, group membership, and user profiles in your IdP, and you manage role and resource group assignments in Harness.
+
+You can also create users and user groups directly in Harness, but any users or groups imported from your IdP must be managed in your IdP. For imported users and group, you can only change their role and resource group assignments in Harness.
+
+
+<!-- alternate text
+When you use automated provisioning, users and user groups are imported from your IdP, and then you assign roles and resource groups to the imported [principals](#principals) in Harness. For imported users and groups, you manage group metadata, group membership, and user profiles in your IdP, and you manage their role and resource group assignments in Harness. You can also create users and user groups directly in Harness, but any users or groups imported from your IdP must be managed in your IdP.
+
+For example, if you use Okta as your IdP, you could create a user group in Okta and assign users to that group in Okta. When the user group is first imported into Harness, the group and the group members are not associated with any roles or resource groups. You must [assign roles and resource groups](#assign-the-role-and-resource-group-to-the-user-group) to the user group in Harness. The group members then inherit permissions and access from the role and resource group that is assigned to the user group.-->
+
+:::
+
 ## Default user groups
 
 Harness has default User Group in each scope. These groups have all the users at the respective scope as their members.
