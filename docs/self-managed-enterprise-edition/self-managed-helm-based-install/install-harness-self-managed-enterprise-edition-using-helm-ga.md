@@ -44,7 +44,6 @@ To add the URL for a load balancer, do the following:
    global:  
     # -- Harness Application URL  
     loadbalancerURL: http://<load-balancer-IP-address>  
-    host_name: "<load-balancer-IP-address>"
    ```
 
 2. Set the `host_name` field to the IP address of the load balancer.
@@ -133,13 +132,13 @@ To install the Helm chart, do the following:
 1. Add the repository.
 
    ``` 
-   $ helm repo add harness https://harness.github.io/helm-charts
+   helm repo add harness https://harness.github.io/helm-charts
    ```
 
 2. Create a namespace for your installation.  
 
    ```
-   $ kubectl create namespace <namespace>
+   kubectl create namespace <namespace>
    ```
 
 3. Modify the `override.yaml` file with your environment settings.
@@ -147,7 +146,7 @@ To install the Helm chart, do the following:
 4. Install the Helm chart.  
 
    ```
-   $ helm install my-release harness/harness-prod -n <namespace> -f override.yaml
+   helm install my-release harness/harness-prod -n <namespace> -f override.yaml
    ```
 
 ## Verify the installation
